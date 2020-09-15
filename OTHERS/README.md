@@ -2,4 +2,3 @@
 * [linux常用命令](linux_cmd.md)
 * [vim快捷键](vim_shortcut.md)
 * [emacs快捷键](emacs_shortcut.md)
-* [如何从官方项目切换为自己的分支](branch_from_official.md)
