@@ -1,5 +1,5 @@
 # eos
-* [eos环境搭建](./ENV_BUILD.md)
+* [eos环境搭建](./ENV_BUILD/README.md)
 * [eos侧链与搭建](./SIDE_CHAIN.md)
 * [错误集合](./ERRORS.md)
 * [脏数据问题](./DIRTY_DATA.md)
