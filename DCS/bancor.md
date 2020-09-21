@@ -1,5 +1,5 @@
 # 摘要
-bancor算法
+bancor算法(bancor_protocol)
 
 # 详情
 ## 知识点

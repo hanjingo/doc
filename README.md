@@ -1,7 +1,7 @@
 # doc
 * [如何写markdown](how_to_write_markdown.md)
-* [读书笔记](./READ_BOOK/README.md)
-* [源码分析](./READ_SOURCE/README.md)
+* [读书笔记](./BOOK_NOTE/README.md)
+* [源码分析](./SRC_NOTE/README.md)
 * [编码之坑](./BUG/README.md)
 * [分布式](./DCS/README.md)
 * [游戏](./GAME/README.md)

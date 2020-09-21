@@ -1,6 +1,6 @@
 |用途|实现|
 |:--|:--|
-|创建钱包|cleos wallet create --to-console -n 钱包名字|=
+|创建钱包|cleos wallet create --to-console -n 钱包名字|
 |查看钱包列表|cleos wallet list|
 |查看钱包密钥列表|cleos wallet keys|
 |打开钱包|cleos wallet open -n 钱包名字|
