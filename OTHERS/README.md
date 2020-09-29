@@ -2,3 +2,4 @@
 * [linux常用命令](linux_cmd.md)
 * [vim快捷键](vim_shortcut.md)
 * [emacs快捷键](emacs_shortcut.md)
+* [重新绑定键](rebind_key.md)
