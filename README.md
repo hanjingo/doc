@@ -1,7 +1,6 @@
-# doc
-* [如何写markdown](how_to_write_markdown.md)
+# 目录
 * [笔记](./NOTE/README.md)
-* [API](./SRC_NOTE/README.md)
+* [源码笔记](./SRC/README.md)
 * [编码之坑](./BUG/README.md)
 * [分布式](./DCS/README.md)
 * [游戏](./GAME/README.md)
@@ -11,3 +10,12 @@
 * [MYSQL](./MYSQL/README.md)
 * [EOS](./EOS/README.md)
 * [C++](./C++/README.md)
+
+# 快捷导航
+[如何写markdown](how_to_write_markdown.md)
+[vim常用快捷键](OTHERS/vim_shortcut.md)
+[linux常用命令](OTHERS/linux_cmd.md)
+[chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
+[STL速查手册](C++/stl_api.md)
+[BOOST速查手册](C++/boost_api.md)
+[eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)
