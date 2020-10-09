@@ -16,6 +16,6 @@
 [vim常用快捷键](OTHERS/vim_shortcut.md)
 [linux常用命令](OTHERS/linux_cmd.md)
 [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
-[STL速查手册](C++/stl_api.md)
-[BOOST速查手册](C++/boost_api.md)
+[STL速查手册](C++/STL/api.md)
+[BOOST速查手册](C++/BOOST/api.md)
 [eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)

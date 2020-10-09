@@ -1,6 +1,2 @@
-* [std_mutex](std_mutex.md)
-* [std_move](std_move.md)
-* [std_tie](std_tie.md)
-* [boost_asio](boost_asio.md)
-* [boost_optional](boost_optional.md)
-* [boost_strand](boost_strand.md)
+* [STL](STL/README.md)
+* [BOOST](BOOST/README.md)

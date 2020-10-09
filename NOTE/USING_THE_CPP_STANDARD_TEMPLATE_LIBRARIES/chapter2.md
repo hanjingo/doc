@@ -18,10 +18,10 @@
 |end()|返回结束迭代器|Y|Y|Y|
 |rbegin()|返回反向开始迭代器|Y|Y|Y|
 |rend()|返回方向结束迭代器|Y|Y|Y|
-|cbegin()|返回const开始迭代器|Y|Y|Y|
-|cend()|返回const结束迭代器|Y|Y|Y|
-|crbegin()|返回const反向开始迭代器|Y|Y|Y|
-|crend()|返回const反向结束迭代器|Y|Y|Y|
+|cbegin()|返回const类型开始迭代器|Y|Y|Y|
+|cend()|返回const类型结束迭代器|Y|Y|Y|
+|crbegin()|返回const类型反向开始迭代器|Y|Y|Y|
+|crend()|返回const类型反向结束迭代器|Y|Y|Y|
 |assign()|用新元素替换原有内容|-|Y|Y|
 |operator=()|复制同类型容器的元素，或者用初始化列表替换现有内容|Y|Y|Y|
 |size()|返回实际元素个数|Y|Y|Y|

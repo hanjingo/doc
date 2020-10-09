@@ -43,7 +43,7 @@
 * **reverse(Bi_Iter beg, Bi_Iter end)** 会反转序列[beg, end)中元素的顺序。
 * **unique_copy(Input_Iter beg1, Input_Iter end1, Output_Iter beg2)** 会忽略持续的重复元素，将序列[beg1, end1)复制到序列beg2的开始位置。他是用==来比较元素的，它返回一个指向被复制到目的位置的最后一个元素的下一个位置的迭代器。
 * **unique_copy(Input_Iter beg1, Input_Iter end1, Output_Iter beg2, Binary_Predicate p)** 所做的事和上一个版本相同，除了他是用p来比较元素之外。
-* **unique(Fwd_Iter beg, Fwd_Iter end, Binary_Predicate p)和前一个算法做相同的事情，除了用p来比较元素之外。
+* **unique(Fwd_Iter beg, Fwd_Iter end, Binary_Predicate p)** 和前一个算法做相同的事情，除了用p来比较元素之外。
 #### 移动序列
 * move(Input_Iter beg1, Input_Iter end1, Output_Iter beg2)会将序列[beg1, end1)移到序列beg2的开始位置。他会返回一个指向最后一个被移到目的位置的元素的下一个位置的迭代器。beg2不能在[beg1, end1)之内。
 * move_backward(Bi_Iter1 beg1, Bi_Tter1 end1, Bi_Iter2 end2)会将序列[beg1, end1)移到序列end2的末尾，并且元素是以逆序移动的。算法会返回一个指向最后一个被移到目的位置的元素的迭代器。end2不能再[beg1, end1)之内。
