@@ -3,6 +3,7 @@
 |创建钱包|cleos wallet create --to-console -n 钱包名字|
 |查看钱包列表|cleos wallet list|
 |查看钱包密钥列表|cleos wallet keys|
+|查看合约部署情况|cleos get table eosio eosio abihash|
 |打开钱包|cleos wallet open -n 钱包名字|
 |解锁钱包|cleos wallet unlock -n 钱包名字|
 |创建公钥|cleos create key --to-console|
