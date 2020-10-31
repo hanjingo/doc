@@ -670,14 +670,14 @@ ipfs的p2p go语言实现
 |Validate() error|func|检查节点id是否为空|
 |Marshal() ([]byte, error)|func|id强转字节数组|
 |MarshalBinary() ([]byte, error)|func|id序列化位字节数组|
-|MarshalTo(data []byte) (n int, err error)|序列化|
-|Unmarshal(data []byte) (err error)|反序列化|
-|UnmarshalBinary(data []byte) error|反序列化|
-|Size() int|尺寸|
-|MarshalJSON() ([]byte, error)|序列化为json|
-|UnmarshalJSON(data []byte) (error)|反序列化json|
-|MarshalText() ([]byte, error)|序列化文本|
-|UnmarshalText(data []byte) error|反序列化文本|
+|MarshalTo(data []byte) (n int, err error)|func|序列化|
+|Unmarshal(data []byte) (err error)|func|反序列化|
+|UnmarshalBinary(data []byte) error|func|反序列化|
+|Size() int|func|尺寸|
+|MarshalJSON() ([]byte, error)|func|序列化为json|
+|UnmarshalJSON(data []byte) (error)|func|反序列化json|
+|MarshalText() ([]byte, error)|func|序列化文本|
+|UnmarshalText(data []byte) error|func|反序列化文本|
 
 ### PeerRecord 节点记录 
 |名字|类型|注释|
