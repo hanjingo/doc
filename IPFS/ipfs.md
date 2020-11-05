@@ -128,3 +128,28 @@ added QmVQUH9m81CvNLfyVpk3HDt6xX8RsgKtrJTZbmx4TcFsBR test
 $ ipfs cat QmVQUH9m81CvNLfyVpk3HDt6xX8RsgKtrJTZbmx4TcFsBR/hello.txt
 hango
 ```
+
+可以利用ipfs添加文件夹的特性来实现文件更新;比如
+
+```shell
+# 添加文件夹
+<15:39:20>[root@192.168.2.10] ~
+$ ipfs add -r test
+added QmYsrwNj3dZsmJ3BMoSkose94wvKoFGjwWnTLuLyVDL6wf test/hello.txt
+added QmVQUH9m81CvNLfyVpk3HDt6xX8RsgKtrJTZbmx4TcFsBR test
+ 6 B / 6 B [================================================================================================] 100.00%<15:39:35>[root@192.168.2.10] ~
+
+ # 查看文件夹下指定文件名
+$ ipfs cat QmVQUH9m81CvNLfyVpk3HDt6xX8RsgKtrJTZbmx4TcFsBR/hello.txt
+hango
+
+# 修改hello.txt并再次添加
+$ ipfs add -r test
+added QmeueCk6d2e33wQqaKbrrHSG1gHT1LiajoqARmBqHJYznX test/hello.txt
+added QmRN9JxBsf3j7bKU5oMwuD1JbpfVP7QbYZY23cVR7STHp2 test
+ 8 B / 8 B [================================================================================================] 100.00%<15:59:00>[root@192.168.2.10] ~
+
+ # 查看
+$ ipfs cat QmRN9JxBsf3j7bKU5oMwuD1JbpfVP7QbYZY23cVR7STHp2/hello.txt
+pzkj123
+```
