@@ -28,3 +28,17 @@
 * 与std::unique_ptr 相比, std::shared_ptr的尺寸通常是裸指针尺寸的2倍，它还会带来控制块的开销，并要求原子化的引用计数操作。
 * 默认的资源析构通过delete运算符进行，但同时也支持定制删除器。删除器的型别对std::shared_ptr的型别没有影响。
 * 避免使用裸指针型别的变量来创建std::shared_ptr指针。
+
+# 条款20: 对于类似std::shared_ptr但有可能空悬的指针使用std::weak_ptr
+* 使用std::weak_ptr来代替可能空悬的std::shared_ptr。
+* std::weak_ptr可能的用武之地包括缓存，观察者列表，以及避免std::shared_ptr指针环路
+
+# 条款21: 优先选用std::make_unique和std::make_shared,而非直接使用new
+* 相比于直接使用new表达式，make系列函数消除了重复代码，改进了异常安全性，并且对于std::make_shared和std::allocated_shared而言，生成的目标代码会尺寸更小，速度更快。
+* 不适于使用make系列函数的场景包括需要定制删除器，以及期望直接传递大括号初始物。
+* 对于std::shared_ptr,不建议使用make系列函数的额外场景包括:1.自定义内存管理的类；2.内存紧张的系统，非常大的对象，以及存在比指涉到相同对象的std::shared_ptr生存期更久的std::weak_ptr.
+
+# 条款22: 使用Pimpl习惯用法时，将特殊成员函数的定义放到实现文件中
+* Pimpl惯用法通过降低类的客户和类实现者之间的依赖性，减少了构建遍数。
+* 对于采用std::unique_ptr来实现的pImple指针，须在类的头文件中声明特种成员函数，但在实现文件中实现他们。即使默认函数实现有着正确行为，也必须这样做。
+* 上述建议仅适用于std::unique_ptr,但不适用std::shared_ptr.
