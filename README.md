@@ -5,6 +5,7 @@
 * [分布式](./DCS/README.md)
 * [EOS](./EOS/README.md)
 * [游戏](./GAME/README.md)
+* [IPFS&FILECOIN](./IPFS&FILECOIN/README.md)
 * [多媒体](./MEDIA/README.md)
 * [笔记](./NOTE/README.md)
 * [源码分析](./SRC/README.md)

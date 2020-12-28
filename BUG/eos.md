@@ -1,205 +1,91 @@
-# eos-go报action declares irrelevant authority错误
+# eos开发常见错误
+1.脏数据问题  
+> database dirty flag set (likely due to unclean shutdown) replay or resync required  
+> 解决方法:
+> 在nodeos启动时添加选项--hard-replay-blockchain或者--delete-all-blocks参数  
 
-先上代码
+2.eos无法启动:  
+> eos无法启动
+> 解决方法:
+> 把启动选项--producer-name eosio的eosio改成自己账号名，不然会启动不了  
 
-```go
-func ask(ctx context.Context, api *eos.API, privKey string) {
-	act := &eos.Action{
-		Account: eos.AccountName("b3"),        //部署者
-		Name:    eos.ActionName("updateipfs"), //调用函数名
-		Authorization: []eos.PermissionLevel{ //设置权限
-			{
-				Actor:      eos.AccountName("b3"),      //调用人
-				Permission: eos.PermissionName("ipfs"), //active权限
-			},
-		},
-		ActionData: eos.NewActionData(QuestParam{ //设置参数（顺序按照dapp的顺序）
-			Acc:     eos.AccountName("b3"), //参数1
-			Version: "0.0.1",
-			Os:      "win10",
-			Arch:    "x86",
-			Hash:    "hash",
-		}),
-	}
-	api.Signer.ImportPrivateKey(ctx, privKey) //签名器导入私钥
-	_, err := api.SignPushActions(ctx, act)   //签名并推送action
-	if err != nil {
-		fmt.Println("ask err:", err)
-	}
-}
+3.Error 3090003:
+> 创建账户时报错:Provided keys, permissions, and delays do not satisfy declared authorizations  
+> 解决方法:  
+> 系统私钥在 2个位置都可以找到：
+> > 1. 启动选项: --signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 这里 =KEY:的后面那一段
+> > 2. 在nodeos的配置文件（ubuntu默认路径：~/.local/share/eosio/nodeos/config/config.ini）=KEY:的后面那一段   
+
+找到后将私钥导入钱包：cleos wallet import -n 钱包名  --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+
+4.fetching abi for undefined: unknown key (eosio::chain::name):
+```shell
+6|app  | 11-24 11:25:31: Error: fetching abi for undefined: unknown key (eosio::chain::name):
+6|app  | 11-24 11:25:31:     at new RpcError (/data/api_server/node_modules/eosjs/dist/eosjs-rpcerror.js:26:28)
+6|app  | 11-24 11:25:31:     at JsonRpc.<anonymous> (/data/api_server/node_modules/eosjs/dist/eosjs-jsonrpc.js:118:35)
+6|app  | 11-24 11:25:31:     at step (/data/api_server/node_modules/eosjs/dist/eosjs-jsonrpc.js:36:23)
+6|app  | 11-24 11:25:31:     at Object.next (/data/api_server/node_modules/eosjs/dist/eosjs-jsonrpc.js:17:53)
+6|app  | 11-24 11:25:31:     at fulfilled (/data/api_server/node_modules/eosjs/dist/eosjs-jsonrpc.js:8:58)
+6|app  | 11-24 11:25:31:     at process._tickCallback (internal/process/next_tick.js:68:7)
 ```
 
-此处： Account: eos.AccountName("b3")； 把部署者写成了b3，实际是b;  
-导致提交的是ipfs权限，但是找到的却是默认的权限 active；报错！
+eosjs调用接口时，报错;因为多打了一个 } 囧
+
+原来的代码:
+```typescript
+let actions = {
+            actions: [{
+                account: eosConfig.CONTRACT_DEPLOYER,
+                name: 'adddevice',
+                authorization: [{
+                    actor:acc,
+                    permission: 'active',
+                }],
+                data:{
+                    carrier: operators, //运营商
+                    account: acc, //设备名字
+                    telephone: phone, //电话
+                    longitude: longitude, //经度
+                    latitude: latitude, //纬度
+                    place_name: place, //小区名
+                    address: addr, //地址
+                    is_enable: enable, //是否启用
+                    id: id
+                }
+            }]
+        }
+        const result = await api.transact({ actions: [ actions ]}, {
+            blocksBehind: 3,
+            expireSeconds: 30,
+        });
 ```
-Internal Service Error: Irrelevant authority included: action declares irrelevant authority '{"actor":"b3","permission":"ipfs"}'; minimum authority is {"actor":"b3","permission":"active"}
-```
 
-看一下eos验证权限的源码顺序：
+修改后:
+```typescript
+let actions = {
+            actions: [{
+                account: "collection",
+                name: 'adddevice',
+                authorization: [{
+                    actor:'carrier1',
+                    permission: 'active',
+                }],
+                data:{
+                    carrier: 'carrier1', //运营商
+                    account: 'carrier1', //设备名字
+                    telephone: '123456', //电话
+                    longitude: longitude, //经度
+                    latitude: latitude, //纬度
+                    place_name: place, //小区名
+                    address: addr, //地址
+                    is_enable: enable, //是否启用
+                    id: id
+                }
+            }]
+        }
+        const result = await api.transact( actions, {
+            blocksBehind: 3,
+            expireSeconds: 30,
+        });
 
-1. push_transaction函数调用: check_authorization检查权限
-  
-```c++
-void
-   authorization_manager::check_authorization( const vector<action>&                actions,
-                                               const flat_set<public_key_type>&     provided_keys,
-                                               const flat_set<permission_level>&    provided_permissions,
-                                               fc::microseconds                     provided_delay,
-                                               const std::function<void()>&         _checktime,
-                                               bool                                 allow_unused_keys,
-                                               const flat_set<permission_level>&    satisfied_authorizations
-                                             )const
-   {
-      const auto& checktime = ( static_cast<bool>(_checktime) ? _checktime : _noop_checktime );
-
-      auto delay_max_limit = fc::seconds( _control.get_global_properties().configuration.max_transaction_delay );
-
-      auto effective_provided_delay =  (provided_delay >= delay_max_limit) ? fc::microseconds::maximum() : provided_delay;
-
-      auto checker = make_auth_checker( [&](const permission_level& p){ return get_permission(p).auth; },
-                                        _control.get_global_properties().configuration.max_authority_depth,
-                                        provided_keys,
-                                        provided_permissions,
-                                        effective_provided_delay,
-                                        checktime
-                                      );
-
-      map<permission_level, fc::microseconds> permissions_to_satisfy;
-
-      for( const auto& act : actions ) {
-         bool special_case = false;
-         fc::microseconds delay = effective_provided_delay;
-
-         if( act.account == config::system_account_name ) {
-            special_case = true;
-
-            if( act.name == updateauth::get_name() ) {
-               check_updateauth_authorization( act.data_as<updateauth>(), act.authorization );
-            } else if( act.name == deleteauth::get_name() ) {
-               check_deleteauth_authorization( act.data_as<deleteauth>(), act.authorization );
-            } else if( act.name == linkauth::get_name() ) {
-               check_linkauth_authorization( act.data_as<linkauth>(), act.authorization );
-            } else if( act.name == unlinkauth::get_name() ) {
-               check_unlinkauth_authorization( act.data_as<unlinkauth>(), act.authorization );
-            } else if( act.name ==  canceldelay::get_name() ) {
-               delay = std::max( delay, check_canceldelay_authorization(act.data_as<canceldelay>(), act.authorization) );
-            } else {
-               special_case = false;
-            }
-         }
-
-         for( const auto& declared_auth : act.authorization ) {
-
-            checktime();
-
-            if( !special_case ) {
-               auto min_permission_name = lookup_minimum_permission(declared_auth.actor, act.account, act.name);
-               if( min_permission_name ) { // since special cases were already handled, it should only be false if the permission is eosio.any
-                  const auto& min_permission = get_permission({declared_auth.actor, *min_permission_name});
-                  EOS_ASSERT( get_permission(declared_auth).satisfies( min_permission,
-                                                                       _db.get_index<permission_index>().indices() ),
-                              irrelevant_auth_exception,
-                              "action declares irrelevant authority '${auth}'; minimum authority is ${min}",
-                              ("auth", declared_auth)("min", permission_level{min_permission.owner, min_permission.name}) );
-               }
-            }
-
-            if( satisfied_authorizations.find( declared_auth ) == satisfied_authorizations.end() ) {
-               auto res = permissions_to_satisfy.emplace( declared_auth, delay );
-               if( !res.second && res.first->second > delay) { // if the declared_auth was already in the map and with a higher delay
-                  res.first->second = delay;
-               }
-            }
-         }
-      }
-
-      // Now verify that all the declared authorizations are satisfied:
-
-      // Although this can be made parallel (especially for input transactions) with the optimistic assumption that the
-      // CPU limit is not reached, because of the CPU limit the protocol must officially specify a sequential algorithm
-      // for checking the set of declared authorizations.
-      // The permission_levels are traversed in ascending order, which is:
-      // ascending order of the actor name with ties broken by ascending order of the permission name.
-      for( const auto& p : permissions_to_satisfy ) {
-         checktime(); // TODO: this should eventually move into authority_checker instead
-         EOS_ASSERT( checker.satisfied( p.first, p.second ), unsatisfied_authorization,
-                     "transaction declares authority '${auth}', "
-                     "but does not have signatures for it under a provided delay of ${provided_delay} ms, "
-                     "provided permissions ${provided_permissions}, provided keys ${provided_keys}, "
-                     "and a delay max limit of ${delay_max_limit_ms} ms",
-                     ("auth", p.first)
-                     ("provided_delay", provided_delay.count()/1000)
-                     ("provided_permissions", provided_permissions)
-                     ("provided_keys", provided_keys)
-                     ("delay_max_limit_ms", delay_max_limit.count()/1000)
-                   );
-
-      }
-
-      if( !allow_unused_keys ) {
-         EOS_ASSERT( checker.all_keys_used(), tx_irrelevant_sig,
-                     "transaction bears irrelevant signatures from these keys: ${keys}",
-                     ("keys", checker.unused_keys()) );
-      }
-   }
-```
-2. check_authorization函数调用: lookup_minimum_permission拿到最小权限
-  
-```c++
-//如果scope是系统账号,不允许link到最小账号，报错；
-//然后调用: lookup_linked_permission拿到预先链接在action上的权限;如果找不到，默认使用 active 权限（这里正是报错的原因）；
-optional<permission_name> authorization_manager::lookup_minimum_permission( account_name authorizer_account,
-                                                                               account_name scope,
-                                                                               action_name act_name
-                                                                             )const
-   {
-      // Special case native actions cannot be linked to a minimum permission, so there is no need to check.
-      if( scope == config::system_account_name ) {
-          EOS_ASSERT( act_name != updateauth::get_name() &&
-                     act_name != deleteauth::get_name() &&
-                     act_name != linkauth::get_name() &&
-                     act_name != unlinkauth::get_name() &&
-                     act_name != canceldelay::get_name(),
-                     unlinkable_min_permission_action,
-                     "cannot call lookup_minimum_permission on native actions that are not allowed to be linked to minimum permissions" );
-      }
-
-      try {
-         optional<permission_name> linked_permission = lookup_linked_permission(authorizer_account, scope, act_name);
-         if( !linked_permission )
-            return config::active_name;
-
-         if( *linked_permission == config::eosio_any_name )
-            return optional<permission_name>();
-
-         return linked_permission;
-      } FC_CAPTURE_AND_RETHROW((authorizer_account)(scope)(act_name))
-   }
-```
-3. 根据验证者账号,scope和部署者账号找到link在action上的权限
-```c++
-optional<permission_name> authorization_manager::lookup_linked_permission( account_name authorizer_account,
-                                                                              account_name scope,
-                                                                              action_name act_name
-                                                                            )const
-   {
-      try {
-         // First look up a specific link for this message act_name
-         auto key = boost::make_tuple(authorizer_account, scope, act_name);
-         auto link = _db.find<permission_link_object, by_action_name>(key);
-         // If no specific link found, check for a contract-wide default
-         if (link == nullptr) {
-            boost::get<2>(key) = {};
-            link = _db.find<permission_link_object, by_action_name>(key);
-         }
-
-         // If no specific or default link found, use active permission
-         if (link != nullptr) {
-            return link->required_permission;
-         }
-         return optional<permission_name>();
-
-       //  return optional<permission_name>();
-      } FC_CAPTURE_AND_RETHROW((authorizer_account)(scope)(act_name))
-   }
 ```
