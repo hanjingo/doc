@@ -1,5 +1,5 @@
 * [设计模式]()
-* [计算机操作系统]()
+* [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM)
 * [stl源码剖析]()
 * [深度探索C++对象模型]()
 * [c++ Templates](CPP_STD_TEMPLATE/README.md)

@@ -7,3 +7,4 @@
 * [（李康）区块链算法：零知识证明算法之zkSNARKs...](https://www.jianshu.com/p/c0e121ebe511)
 * [零知识证明 - Trapdoor团队发现PoREP严重漏洞](https://mp.weixin.qq.com/s/bfqTWsTiEgI-HYY6TMaJng)
 * [印钞机的秘密：USDT增发最全技术细节首次披露](https://mp.weixin.qq.com/s/3bHFhLnV47xgeyFIvC4J5A)
+* [读懂区块链之零知识证明（zk-SNARK）](https://www.jianshu.com/p/7b772e5cdaef?utm_source=oschina-app)
