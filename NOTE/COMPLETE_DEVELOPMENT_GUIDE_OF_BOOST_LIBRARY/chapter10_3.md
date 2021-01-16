@@ -2,68 +2,68 @@
 ```c++
 class path // 路径表示类
 {
-		public:
-				typedef char_or_wchar_t value_type; // 路径的字符类型
-				typedef std::basic_string<value_type> string_type; // 路径使用的字符串类型
-				constexpr value_type preferred_separator; // 路径分隔符
+public:
+    typedef char_or_wchar_t value_type; // 路径的字符类型
+    typedef std::basic_string<value_type> string_type; // 路径使用的字符串类型
+    constexpr value_type preferred_separator; // 路径分隔符
 
-				path(); // 各种构造函数
-				path(const path& p);
-				path(Source const& source);
-				path(InputIterator begin, InputIterator end);
+    path(); // 各种构造函数
+    path(const path& p);
+    path(Source const& source);
+    path(InputIterator begin, InputIterator end);
 
-				path& operator=(const path& p); // 赋值操作
-				path& operator=(Source const& source);
-				path& assign(Source const& source);
-				path& assign(InputIterator begin, InputIterator end);
+    path& operator=(const path& p); // 赋值操作
+    path& operator=(Source const& source);
+    path& assign(Source const& source);
+    path& assign(InputIterator begin, InputIterator end);
 
-				path& operator/=(const path& p);
-				path& operator/=(Source const& source);
-				path& append(Source const& source);
-				path& append(InputIterator begin, InputIterator end);
+    path& operator/=(const path& p);
+    path& operator/=(Source const& source);
+    path& append(Source const& source);
+    path& append(InputIterator begin, InputIterator end);
 
-				path& operator+=(const path& x);
-				path& operator+=(const string_type& x); // 连接路径
-				path& operator+=(Source const& x);
-				path& concat(InputIterator begin, InputIterator end);
+    path& operator+=(const path& x);
+    path& operator+=(const string_type& x); // 连接路径
+    path& operator+=(Source const& x);
+    path& concat(InputIterator begin, InputIterator end);
 
-				void clear(); // 清空路径表示
-				path& remove_filename(); // 删除文件名
-				path& replace_extension(); // 更改扩展名
-				void swap(path& rhs); // 交换操作
+    void clear(); // 清空路径表示
+    path& remove_filename(); // 删除文件名
+    path& replace_extension(); // 更改扩展名
+    void swap(path& rhs); // 交换操作
 
-				const string_type& native() const; // 本地路径表示
-				const value_type* c_str() const; // 转换为c字符串
-				const string string() const; // 转换为字符串
-				const wstring wstring() const; // 转换为宽字符串
+    const string_type& native() const; // 本地路径表示
+    const value_type* c_str() const; // 转换为c字符串
+    const string string() const; // 转换为字符串
+    const wstring wstring() const; // 转换为宽字符串
 
-				int compare(const path& p) const; // 比较路径
-				int compare(const std::string& s) const;
-				int compare(const value_type* s) const;
+    int compare(const path& p) const; // 比较路径
+    int compare(const std::string& s) const;
+    int compare(const value_type* s) const;
 
-				path root_name() const; // 根名称
-				path root_directory() const; // 根目录
-				path root_path() const; // 根路径
-				path relative_path() cosnt; // 相对路径
-				path parent_path() const; // 父路径
-				path filename() const; // 文件名
-				path stem() const; // 全路径名
-				path extension() const; // 扩展名
+    path root_name() const; // 根名称
+    path root_directory() const; // 根目录
+    path root_path() const; // 根路径
+    path relative_path() cosnt; // 相对路径
+    path parent_path() const; // 父路径
+    path filename() const; // 文件名
+    path stem() const; // 全路径名
+    path extension() const; // 扩展名
 
-				bool empty() const; // 是否为空路径
-				bool has_root_name() const; // 是否有根名称
-				bool has_root_directory() const; // 是否有根目录
-				bool has_root_path() const; // 是否有根路径
-				bool has_relative_path() const; // 是否有相对路径
-				bool has_parent_path() const; // 是否有父路径
-				bool has_filename() const; // 是否有文件名
-				bool has_stem() const; // 是否有全路径名
-				bool has_extension() const; // 是否有扩展名
-				bool is_absolute() const; // 是否是绝对路径
-				bool is_relative() const; // 是否是相对路径
-				
-				iterator begin() const; // 迭代路径
-				iterator end() const;
+    bool empty() const; // 是否为空路径
+    bool has_root_name() const; // 是否有根名称
+    bool has_root_directory() const; // 是否有根目录
+    bool has_root_path() const; // 是否有根路径
+    bool has_relative_path() const; // 是否有相对路径
+    bool has_parent_path() const; // 是否有父路径
+    bool has_filename() const; // 是否有文件名
+    bool has_stem() const; // 是否有全路径名
+    bool has_extension() const; // 是否有扩展名
+    bool is_absolute() const; // 是否是绝对路径
+    bool is_relative() const; // 是否是相对路径
+    
+    iterator begin() const; // 迭代路径
+    iterator end() const;
 };
 ostream& operator<<( ostream& os, const path& p ); // 流输出操作
 path operator/ (const path& lhs, const path& rhs); // 连接两个路径
@@ -80,18 +80,18 @@ filesystems库使用异常filesystem_error来处理文件操作时发生的错�
 class filesystem_error : public system_errror
 {
 public:
-		filesystem_error(); 
-		filesystem_error(const filesystem_error&);
-		filesystem_error(const std::string& what_arg, system::error_code ec);
+    filesystem_error(); 
+    filesystem_error(const filesystem_error&);
+    filesystem_error(const std::string& what_arg, system::error_code ec);
 
-		filesystem_error(const std::string& what_arg, const path& p1, system::error_code ec);
-		filesystem_error(const std::string& what_arg, const path& p1, const path& p2, system::error_code ec);
+    filesystem_error(const std::string& what_arg, const path& p1, system::error_code ec);
+    filesystem_error(const std::string& what_arg, const path& p1, const path& p2, system::error_code ec);
 
-		const path& path1() const; // 获取路径对象
-		const path& path2() const;
+    const path& path1() const; // 获取路径对象
+    const path& path2() const;
 
-		const char* waht() const; // 错误信息
-}						 
+    const char* waht() const; // 错误信息
+}
 
 ```
 
@@ -100,15 +100,15 @@ fielsystem库提供一个文件状态类file_status以及一组相关函数，�
 ```c++
 class file_status
 {
-		public:
-				file_status(); 
-				explicit file_status(file_type ft, perms prms = perms_not_known);
+public:
+    file_status(); 
+    explicit file_status(file_type ft, perms prms = perms_not_known);
 
-				file_type type() const; // 文件类型
-				vodi type( file_type v ); // 设置文件类型
+    file_type type() const; // 文件类型
+    vodi type( file_type v ); // 设置文件类型
 
-				perms permissions() const; // 访问权限
-				void permissions(perms prms); // 设置访问权限
+    perms permissions() const; // 访问权限
+    void permissions(perms prms); // 设置访问权限
 };
 ```
 文件的类型file_type取值如下:
@@ -184,14 +184,14 @@ class directory_iterator : public boost::iterator_facade<
 						   directory_entry,
 						   boost::single_pass_traversal_tag >
 {
-		public:
-				directory_iterator(){}
-				directory_iterator(const directory_iterator&);
-				explicit directory_iterator(const path& p);
-				~directory_iterator();
+public:
+    directory_iterator(){}
+    directory_iterator(const directory_iterator&);
+    explicit directory_iterator(const path& p);
+    ~directory_iterator();
 
-				directory_iterator& operator=(const directory_iterator&);
-				directory_iterator& operator++();
+    directory_iterator& operator=(const directory_iterator&);
+    directory_iterator& operator++();
 };
 
 ```
@@ -200,12 +200,12 @@ class directory_iterator : public boost::iterator_facade<
 ```c++
 class recursive_directory_iterator
 {
-		public:
-			int depth() const; // 目录深度
-			void pop(); // 退出当前目录的遍历
-			void disable_recursion_pending(); // 不遍历本目录
-		private:
-			int m_level; // 目录深度成员变量
+public:
+    int depth() const; // 目录深度
+    void pop(); // 退出当前目录的遍历
+    void disable_recursion_pending(); // 不遍历本目录
+private:
+    int m_level; // 目录深度成员变量
 };
 ```
 
@@ -220,7 +220,7 @@ find_file(const path& dir, const string& filename)
 
 	if(!exists(dir) || !is_directory(dir)) // 检查目录的有效性
 	{
-			return result_type();
+		return result_type();
 	}
 
 	rd_iterator end; // 递归迭代器

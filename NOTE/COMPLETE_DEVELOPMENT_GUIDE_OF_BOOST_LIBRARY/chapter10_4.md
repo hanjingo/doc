@@ -145,3 +145,21 @@ public:
     command_line_parser & extra_style_parser(style_parser);
 }
 ```
+
+示例:
+```c++
+positional_options_description pod;     // 位置选项
+pod.add("filename", 1);                 // 查找文件名仅出现一个
+BOOST_AUTO(pr,                          // 使用BOOST_AUTO保存解析结果
+    command_line_parser(argc, argv).    // 构造一个解析对象
+    options(opts).                      // 传入选项描述
+    positional(pod).                    // 传入位置描述
+    run());                             // 设置完成，开始解析
+store(pr, vm);                          // 保存解析结果到vm中
+```
+
+## 分析环境变量
+分析器组件中的parse_environment()函数可以从环境变量中提取信息，其声明如下:
+```c++
+parsed_options parse_environment(const options_description &, name_mapper);
+```
