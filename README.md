@@ -18,7 +18,7 @@
 [vim常用快捷键](OTHERS/vim_shortcut.md)
 [linux常用命令](OTHERS/linux_cmd.md)
 [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
-[STL速查手册](C++/STL/api.md)
+**[STL速查手册](C++/STL/api.md)**
 [BOOST速查手册](C++/BOOST/api.md)
 [redis速查命令](DB/REDIS/cmd.md)
 [eos速查命令](EOS/cmd.md)
@@ -26,3 +26,4 @@
 [eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)
 [I帧,P帧和B帧](MEDIA/frame.md)
 **[Boost程序库完全开发指南](NOTE/COMPLETE_DEVELOPMENT_GUIDE_OF_BOOST_LIBRARY/README.md)**
+**[c++标准模板库编程实战](NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md)**
