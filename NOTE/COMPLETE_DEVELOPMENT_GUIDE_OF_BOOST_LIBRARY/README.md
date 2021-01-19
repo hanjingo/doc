@@ -1,5 +1,6 @@
 - [第三章 内存管理](chapter3.md)
 > - [scope_ptr](chapter3_1.md)
+> - [shared_ptr](chapter3_2.md)
 - [第十章 操作系统相关](chapter10.md)
 > - [filesystem](chapter10_3.md)
 > - [program_options](chapter10_4.md)

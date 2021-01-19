@@ -42,8 +42,8 @@ bool operator==(scoped_ptr<T> const & p, boost::detail::sp_nullptr_t);
 然后去掉那些多余的try/catch和delete操作即可。例:
 ```c++
 scoped_ptr<string> sp(new string("text")); // 构造一个scoped_ptr对象
-assert(sp);            // 使用显式bool转型
-assert(sp != nullptr); // 空指针比较操作
+assert(sp);                                // 使用显式bool转型
+assert(sp != nullptr);                     // 空指针比较操作
 ```
 不需要进行delete操作，scoped_ptr会自动帮我们释放资源。如果我们对scoped_ptr执行delete操作，会得到一个编译错误。
 因为scoped_ptr是一个行为类似指针的对象实例，而不是指针，所以不允许对一个对象应用delete操作。
@@ -61,8 +61,8 @@ class ptr_owned final
     scoped_ptr<int> m_ptr; // scoped_ptr成员
 };
 
-ptr_owned p;     // 类的一个实例
-ptr_owned p2(p); // 编译错误，不能拷贝构造
+ptr_owned p;               // 类的一个实例
+ptr_owned p2(p);           // 编译错误，不能拷贝构造
 ```
 
 另一个示例:
@@ -84,11 +84,11 @@ int main()
 
     if (p)
     {
-        *p = 100; // 可以像普通指针一样使用解引用操作符×
+        *p = 100;   // 可以像普通指针一样使用解引用操作符×
         cout << *p << endl;
     }
 
-    p.reset();  // 置空scoped_ptr,仅仅是演示
+    p.reset();      // 置空scoped_ptr,仅仅是演示
 
     assert(p == 0); // 与0比较，p不持有任何指针
     if (!p)
@@ -128,3 +128,76 @@ bool operator==(const unique_ptr& x, const unique_ptr& y);
 ```
 unique_ptr的基本能以与scoped_ptr相同，且比scoped_ptr有更多的功能：unique_ptr可以像原始指针一样进行比较，可以像shared_ptr一样定制删除器，也可以安全的放入标准容器。因此，如果读者使用的编译器支持c++11标准，
 那么可以毫不犹豫地使用unique_ptr来替代scoped_ptr。
+
+## 高级议题
+### 对比std::shared_ptr
+c++标准(c++11.20.7.2)中定义了std::shared_ptr,功能与boost::shared_ptr基本相同，完全可以等价互换。
+
+### 显式bool转型
+```c++
+bool bool_test()
+{
+    auto p = make_shared<int>(776);
+
+    assert(p);                   // assert可以隐式转换
+    if (p)                       // if判断可以隐形转换
+    {
+        std::cout << "explicit cast" << std::endl;
+    }
+
+    return static_cast<bool>(p); // 返回值必须显式转换
+}
+```
+
+### 指针转型函数
+shared_ptr不能使用诸如static_cast<T*>(p.get())的形式，这将导致转型后的指针无法再被shared_ptr正确管理。
+
+shared_ptr提供了类似的转型函数static_pointer_cast<T>(),const_pointer_cast<T>()和dynamic_pointer_cast<T>(),他们标准的转型操作符static_cast<T>等类似，但他们返回的是转型后的shared_ptr。
+
+例:
+```c++
+shared_ptr<std::exception> sp1(new bad_exception);
+
+auto sp2 = dynamic_pointer_cast<bad_exception>(sp1);
+auto sp3 = static_pointer_cast<std::exception>(sp2);
+
+assert(sp3 == sp1);
+```
+
+### shared_ptr<void>
+shared_ptr<void>能够存储void*型指针，而void*型指针可以指向任意类型，因此shared_ptr<void>就像是一个泛型的指针容器，拥有容纳任意类型的能力。
+
+但将指针存储为void*型的同时会丧失原来的类型信息，为了在需要的时候正确使用指针，可以用static_pointer_cast<T>等转型函数将指针重新转为原来的指针。但这设计运行时进行动态类型转换，会导致代码不够安全，建议最好不要这样使用。
+
+### 删除器的高级用法
+利用shared_ptr<void>还可以实现退出作用域时调用任意函数。例:
+```c++
+void any_func(void* p)
+{ cout << "some operate" << endl; }
+
+int main()
+{
+    shared_ptr<void> p(nullptr, any_func); // 容纳空指针，定制删除器
+}                                          // 在退出作用域时将执行any_func() 
+```
+share_ptr<void>存储了一个空指针，并指定了删除器是操作void*的一个函数，因此当它析构时会自动调用函数any_func(),从而执行任意我们想做的工作
+
+### 别名构造函数(aliasing)
+```c++
+template< class Y >
+shared_ptr( shared_ptr<Y> const & r, element_type * p );
+```
+上述函数的作用是共享r的引用计数，但它实际持有的却是另外一个可能与r毫无关系的指针p，而且它并不负责p的自动销毁;
+
+例:
+```c++
+auto p1 = make_shared<std::pair<int, int>>(0, 1); // 一个pair智能指针
+
+shared_ptr<int> p2(p1, &p1->second);              // 别名构造
+
+assert(p1.use_count() == 2 &&                     // 原引用计数增加
+        p1.use_count() == p2.use_count());        // 
+
+assert((void*)p1.get() != (void*)p2.get());
+assert(&p1->second == p2.get());
+```
