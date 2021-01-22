@@ -263,5 +263,113 @@ using namespace boost::timer;
 ### 时间类型
 cpu_timer库在boost::timer名字空间里定义了库使用的时间类型nanosecond_type和cpu_timers,声明如下:
 ```c++
+typedef boost::int_least64_t nanosecond_type;    // 计时用的纳秒类型
 
+struct cpu_times                                 // cpu时间类型
+{
+    nanosecond_type wall;                        // 挂钟（日历）时间
+    nanosecond_type user;                        // 用户cpu(进程)时间
+    nanosecond_type system;                      // 系统cpu(进程)时间
+    void clear() { wall = user = system = 0LL; } // 简单的清零操作
+};
+```
+cpu_timer库以nanosecond_type作为他的计时单位，使用int_least64_t定义为纳秒，但读者需要注意因为受系统限制他不会达到纳秒级别的精确度。实际情况是挂钟时间(wall clock time)的精度大约是微秒(1000纳秒),cpu时间的精度大约是10～15毫秒(1000x1000纳秒).
+
+cpu_times类型整合了3个计算机系统里常用的时间度量
+- wall: 挂钟(日历)时间，进程运行的实际时间。
+- user: 用户cpu时间，进程执行用户指令使用的cpu时间。
+- system: 系统cpu时间，进程执行系统内核调用使用的cpu时间。
+cpu_times是一个POD类型，只有一个简单的clear()成员函数用于时间清零。
+
+### cpu_timer摘要
+```c++
+class cpu_timer
+{
+public:
+    cpu_timer() { start(); }    // 构造函数，启动计时器
+
+    bool is_stopped() const;    // 计时器是否停止
+    cpu_times elapsed() const;  // 获取启动后流逝的时间
+    void start();               // 启动计时器
+    void stop();                // 暂停计时器
+    void resume();              // 恢复计时
+
+    // 格式化输出流逝的时间
+    std::string format(int places, const std::string& format) const;
+    std::string format(int places = default_places) const;
+private:
+    cpu_times m_times;          // 计时成员变量
+    bool m_is_stopped;          // 停止计时器的bool变量
+}
+```
+例
+```c++
+vector<string> v(10, "uncharted"); // 一个存储字符串的容器
+
+cpu_timer t;                        // 声明并启动计时器
+assert(!t.is_stopped());            // 计时器已经启动
+
+for (int i = 0; i < 10000; ++i)     // 循环一万次
+{ boost::join(v, "-"); }            // boost字符串连接算法
+
+t.stop();                           // 暂停计时器
+assert(t.is_stopped());             // 计时器已经暂停
+
+cout << "pause for a while..." << endl;
+cout << "we can do something..." << endl;
+
+t.resume();                         // 恢复计时
+assert(!t.is_stopped());            // 计时器已经启动
+
+BOOST_FOREACH(string& x, v)         // foreach算法
+{ x += x; }
+
+cout << t.format();                 // 格式化输出计时结果
+```
+
+### auto_cpu_timer
+```c++
+class auto_cpu_timer : public cpu_timer
+{
+public:
+    explicit auto_cpu_timer(short place = default_places);
+    explicit auto_cpu_timer(const std::string& format);
+             auto_cpu_timer(short places, const string& format);
+
+    explicit auto_cpu_timer(std::ostream& os, short places = default_places);
+             auto_cpu_timer(std::ostream& os, short places, const string& format);
+             auto_cpu_timer(std::ostream& os, const string& format);
+
+    void report();
+};
+```
+
+### 定制输出格式
+cpu_timer库的format函数使用2个参数来定制计时结果的时间类型cpu_times的格式:短整型的places和字符串类型的format.
+
+短整型places用于指定输出值的小数点后的精确度，默认是6（微秒），最多可以是9（纳秒，但因为计时精度的限制这通常没有意义）
+
+字符串参数format用于指定输出的格式，之前我们默认使用的格式匿名名字空间的字符串常量default_fmt确定，它的定义如下:
+```c++
+// 定义默认的输出格式
+string default_fmt(" %ws wall, %us user + %ss system = %ts CPU (%p%)\n");
+```
+其中的%格式化选项并不是printf标准，而是cpu_timer库自定义的,其含义如下。
+- %w: 挂钟时间，即cpu_times.wall值
+- %u: 用户cpu时间，即cpu_time.user值
+- %s: 系统cpu时间，即cpu_times.system值
+- %t: 总计cpu时间，即cpu_times.user+cpu_times.system
+- %p: 总计cpu时间占挂钟时间的百分比
+cpu_timer库里还有2个格式化函数，用来把cpu_times类型格式化为字符串，以被cpu_timer和auto_cpu_timer调用:
+```c++
+// 格式化输出函数
+string format(const cpu_times& times, short places, const string& format);
+string format(const cpu_times& times, short places = default_places);
+```
+例:
+```c++
+const nanosecond_type ms = 1000 * 1000; // 毫秒常量
+
+cpu_times ct = {2000 *ms, 1000*ms, 100*ms};
+cout << format(ct, 7);
 ```
