@@ -203,3 +203,65 @@ auto d = tp.time_since_epoch();
 cout << round<minutes>(d) << endl;
 cout << round<hours>(d) << endl;
 ```
+
+## 综合应用
+1. 自定义字面值
+```c++
+hours operator"" _h(unsigned long long n)         // 小时字面值
+{ return hours(n); }
+
+seconds operator"" _s(unsigned long long n)       // 秒字面值
+{ return seconds(n); }
+
+milliseconds operator"" _ms(unsigned long long n) // 毫秒字面值
+{ return milliseconds(n); }
+
+auto h = 5_h;
+auto s = 45_s;
+auto ms = 200_ms;
+```
+
+2. 将时间点转换为实际时间
+```c++
+auto tp = system_clock::now();
+auto t = system_clock::to_time_t(tp); // 转换为time_t结构
+cout << std::ctime(&t) << endl;
+```
+
+3. 高精度计时器
+```c++
+class steady_timer final
+{
+private:
+    typedef boost::chrono::steady_clock_type;          // 定义时钟类型
+    typedef clock_type::time_point time_point_type;    // 定义时间点类型
+    typedef boost::chrono::microseconds duration_type; // 使用微秒精度
+    time_point_type m_start = clock_type::now()        // 构造是记录时间点
+
+public:
+    void restart()                                     // 重启计时器
+    { m_start = clock_type::now(); }
+    duration_type elapsed() const
+    {
+        return round<duration_type>(                   // 转换时间为微秒
+            clock_type::now() - m_start);              // 计算流逝的时间
+    }
+}
+```
+
+## cpu_timer
+cpu_timer库需要chrono库的支持，因此必须先编译chrono,在jamfile里指定lib的语句如下
+```sh
+lib boost_timer : boost_chrono : <name>boost_timer;
+```
+cpu_timer位于名字空间boost::timer,需要包含的头文件如下
+```c++
+#include <boost/timer/timer.hpp>
+using namespace boost::timer;
+```
+
+### 时间类型
+cpu_timer库在boost::timer名字空间里定义了库使用的时间类型nanosecond_type和cpu_timers,声明如下:
+```c++
+
+```
