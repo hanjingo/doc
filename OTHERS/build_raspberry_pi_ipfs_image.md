@@ -1,8 +1,8 @@
 ## 准备
-* 树莓派ubuntu镜像
-* 树莓派刷机软件
-* 大于8g的tf卡
-* 树莓派2/3/4b
+- 树莓派ubuntu镜像
+- 树莓派刷机软件
+- 大于8g的tf卡
+- 树莓派2/3/4b
 
 ## 流程
 1. 从(ubuntu官网)[https://ubuntu.com/download/raspberry-pi]下载树莓派ubuntu镜像  

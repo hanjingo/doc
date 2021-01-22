@@ -46,12 +46,12 @@ typedef duration< boost::int_least32_t, ratio<3600> > hours;
 ```
 除了这些预定义的时间单位，我们也可以用typedef来简化duration类型，实现任意的时间分辨率，duration赋予了我们极大的灵活性。例:
 ```c++
-typedef duration<long, ratio<30>> half_min;   // 半分钟
-typedef duration<int, ratio<60*15>> quater;   // 一刻钟
-typedef duration<double,ratio<3600*25>> day;  // 一天
+typedef duration<long, ratio<30>> half_min;     // 半分钟
+typedef duration<int, ratio<60*15>> quater;     // 一刻钟
+typedef duration<double,ratio<3600*25>> day;    // 一天
 
-typedef duration<int,60*60> myhour;			  // 编译错误，不能直接用整数
-typedef duration<int, ratio<-1, 1000>> my_ms; // 编译错误，不能用负数
+typedef duration<int,60*60> myhour;	            // 编译错误，不能直接用整数
+typedef duration<int, ratio<-1, 1000>> my_ms;   // 编译错误，不能用负数
 ```
 
 ## 使用时间长度
@@ -187,9 +187,9 @@ public:
 auto tp1 = system_clock::now();
 cout << tp1 << endl;
 
-auto d = tp1.time_since_epoch(); // 获取自时间起点以来的时间长度
-cout << duration_cast<hours>(d) << endl; // 转换为小时
-cout << duration_cast<day>(d) << endl; // 转换为自定义的天
+auto d = tp1.time_since_epoch();            // 获取自时间起点以来的时间长度
+cout << duration_cast<hours>(d) << endl;    // 转换为小时
+cout << duration_cast<day>(d) << endl;      // 转换为自定义的天
 
 auto tp2 = tp1 + minutes(1);
 cout << tp1 << endl;
