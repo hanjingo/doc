@@ -9,3 +9,5 @@
 > - [chrono](chapter10_2.md)
 > - [filesystem](chapter10_3.md)
 > - [program_options](chapter10_4.md)
+- [第十二章 并发编程](chapter12.md)
+> - [atomic](chapter12_1.md)
