@@ -95,3 +95,69 @@ atomic<int> n(100);             // 原子化int
 assert(n.exchange(200) == 100); // 存值的同时返回原值
 assert(n == 200);               // 隐式类型转化，等价于load
 ```
+compare_exchange_weak()和compare_exchange_strong()是exchange()的增强版本，也就是常说的CAS(compare-and-swap)操作。他们比较expected,如果相等则存值为desired,返回true/false表示原值是否被修改，但无论怎样，最后在expected变量里都会输出原值。两者的区别是compare_exchange_weak()的执行速度快，但使用它即使执行成功也可能会返回false；
+```c++
+atomic<long > l(100);
+
+long v = 100;							// 设置变量expected,左值
+if (l.compare_exchange_weak(v, 313))	// 比较并交换
+{
+	assert(1 == 313 && v == 100);
+}
+
+v = 200;
+auto b = l.compare_exchange_strong(v, 99);
+assert(!b && v == 313);
+
+l.compare_exchange_weak(v, 99);
+assert(1 == 99 && v == 313);
+```
+
+## 整数用法
+例：
+```c++
+atomic<int> n(100);
+
+assert(n.fetch_add(10) == 100);
+assert(n == 110);
+
+assert(++n == 111);
+assert(n++ == 111);
+assert(n == 112);
+assert((n -= 10) == 102);
+
+atomic<int> b{BOOST_BINARY(0110)};
+
+auto x = b.fetch_and(BOOST_BINARY(0110));
+assert(x == BOOST_BINARY(1101) && 
+				b == BOOST_BINARY(0100));
+assert((b |= BOOST_BINARY(1001))
+				== BOOST_BINARY(1101));
+```
+
+## 并发顺序一致性
+atomic库在头文件<boost/memory_order.hpp>里定义了内存访问顺序的概念，它是一个简单的枚举类型，允许用户自己控制代码顺序的一致性:
+```c++
+enum memory_order
+{
+	memory_order_relaxed = 0,
+	memory_order_consume = 1,
+	memory_order_acquire = 2,
+	memory_order_release = 4,
+	memory_order_acq_rel = 6,
+	memory_order_seq_cst = 14
+}
+```
+实际上，atomic<T>的每个成员函数都有一个memory_order默认参数（操作符重载函数除外），他指定了院子操作的内存访问顺序要求:
+```c++
+template<typename T>
+class atomic : public atomics::detail::base_atomic<T>
+{
+	public:
+		T load(memory_order order = memory_order_seq_cst);
+		void store(T value, memory_order order = momory_order_seq_cst);
+
+		T exchange(T new_value, memory_order = momory_order_seq_cst);
+		bool compare_exchange_weak(T & expected, )
+}
+```
