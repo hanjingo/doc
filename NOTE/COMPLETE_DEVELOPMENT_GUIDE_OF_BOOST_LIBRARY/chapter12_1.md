@@ -158,6 +158,78 @@ class atomic : public atomics::detail::base_atomic<T>
 		void store(T value, memory_order order = momory_order_seq_cst);
 
 		T exchange(T new_value, memory_order = momory_order_seq_cst);
-		bool compare_exchange_weak(T & expected, )
+		bool compare_exchange_weak(T & expected, T desired, memory_order);
+        bool compare_exchange_strong(T & expected, T desired, memory_order);
+}
+```
+例:
+```c++
+template<typename T>
+class ref_count // 泛型的引用计数
+{
+private:
+    typedef boost::atomic<int> atomic_type;
+    mutable atomic_type m_count{0};                 // 初始化，注意是mutable
+protected:
+    ref_count(){}                                   // 这里不能使用default
+    ~ref_count(){}
+public:
+    typedef boost::intrusive_ptr<T> counted_ptr;    // 定义intrusive_ptr
+
+    void add_ref() const // 增加引用计数
+    {
+        m_count.fetch_add(
+            1, boost::memory_order_relaxed);        // 不做任何顺序要求
+    }
+
+    void sub_ref() const // 减少引用计数
+    {
+        if (m_count.fetch_sub(
+            1, boost::memory_order_release) == 1)
+        {
+            boost::atomic_thread_fence(
+                boost::memory_order_acquire);
+            delete static_cast<const T*>(this);
+        }
+    }
+
+    decltype(m_count.load()) count() const          // 获取引用计数，注意decltype c++14里可以直接用auto推导取值，
+                                                    // 也可以用隐式类型转换
+    {
+        return m_count.load();
+    }
+public:
+    template<typename ... Args>                     // 可变参数模板
+    static counted_ptr make_ptr(Args&& ... args)    // 工厂函数
+    {
+        return counted_ptr(new T(std::forward<Args>(args)...));
+    }
+private:
+    friend void intrusive_ptr_add_ref(const T* p)
+    {
+        p->add_ref();
+    }
+    friend void intrusive_ptr_release(const T* p)
+    {
+        p->sub_ref();
+    }
+};
+
+// ref_count的用法和intrusive_ref_counter一样，只要自定义类从它派生就会自动获得引用计数能力，能够被intrusive_ptr管理
+class demo : public ref_count<demo>
+{
+public:
+    demo () = default;
+    ~demo () = default;
+    int x;
+};
+
+int main()
+{
+    auto p = demo::make_ptr(); // 创建智能指针
+
+    p->x = 10;
+    assert(p->x == 10);
+    assert(p->count() == 1); // 检查引用计数
 }
 ```
