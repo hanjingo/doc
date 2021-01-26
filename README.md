@@ -19,6 +19,7 @@
 [vim常用快捷键](OTHERS/vim_shortcut.md)
 [linux常用命令](OTHERS/linux_cmd.md)
 [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
+[c++Bug](BUG/cpp.md)
 [STL速查手册](C++/STL/api.md)
 [BOOST速查手册](C++/BOOST/api.md)
 [redis速查命令](DB/REDIS/cmd.md)
@@ -29,3 +30,4 @@
 [<<Boost程序库完全开发指南>>](NOTE/COMPLETE_DEVELOPMENT_GUIDE_OF_BOOST_LIBRARY/README.md)
 [<<c++标准模板库编程实战>>](NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md)
 [<<stl源码剖析>>](NOTE/ANALYSIS_OF_STL_SOURCE_CODE/README.md)
+[cmake教程](OTHERS/cmake.md)
