@@ -57,4 +57,54 @@ catch (...)
 直接使用mutex的成员函数来锁定互斥量不够方便，而且在发生异常导致退出作用域等情况下，很可能会导致未调用unlock(),所以通常要使用try-catch块保证解锁互斥量。
 
 ## time_mutex用法
-如果
+如果不想因为mutex而阻塞线程，那么就可以使用timed_mutex,调用它的try_lock_for()或try_lock_until(),等待一个相对时间或绝对时间。在这段时间内如果获得了锁那么函数会立即返回true，否则超时返回false，表示未获得锁，线程此时就可以去做其他事情。
+```c++
+time_mutext mu;
+
+auto flag = mu.try_lock_for(100_ms); // 等待100ms，使用自定义字面值
+if (flag)                            // 检查是否成功锁定互斥量
+{
+    cout << "lock mutex">> << endl;  // 访问共享资源
+    mu.unlock();                     // 解锁
+}
+```
+
+## lock_guard
+在构造时锁定互斥量，在析构时自动解锁，从而保证了互斥量的正确操作，避免遗忘解锁,它就像一个智能指针。摘要如下:
+```c++
+template<typename Mutex>                        // 模板参数可以是互斥量
+class lock_guard : boost::noncopyable           // 不可拷贝
+{
+private:
+    Mutex& m;                                   // 内部持有引用
+public:
+    explicit lock_guard(Mutex& m_);             // 构造锁定mutex
+    lock_guard(Mutex& m_, boost::adopt_lock_t); // 不执行锁定但会解锁
+
+    ~lock_guard();                              // 析构结果mutex
+}
+```
+thread库还提供一个便捷函数with_lock_guard(),它可以使用lock_guard锁定互斥量执行一个函数，简化lock_guard的调用，其声明如下:
+```c++
+template <class Lockable, class Function, class... Args>
+auto with_lock_guard(Lockable& m, Function& func, Args&&... args);
+```
+with_lock_guard()相当于:
+```c++
+{
+    lock_guard<Lockable> g(m);
+    return func(args...);
+}
+```
+
+## unique_lock
+lock_guard接口比较简单，thread库里还有一个用法更加复杂的unique_lock,他的类摘要如下:
+```c++
+template <typename Mutex>
+class unique_lock
+{
+private:
+    Mutex* m;
+    bool is_locked;
+}
+```
