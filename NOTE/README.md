@@ -6,7 +6,7 @@
 - [c++代码整洁之道]()
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 - [密码编码学与网络安全]()
-- [c++编程规范]()
+- [c++编程规范](CPP_CODING_STANDARD)
 - [unix网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)
 - [ipfs原理与实践](PRINCIPLES_AND_PRACTICES_OF_IPFS/README.md)
 - [c++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md)

@@ -106,5 +106,13 @@ class unique_lock
 private:
     Mutex* m;
     bool is_locked;
+
+public:
+    unique_lock();
+    ~unique_lock();
+
+    unique_lock(Mutex& m);
+    unique_lock(Mutex& m, boost::adopt_lock_t);
+    unique_lock()
 }
 ```

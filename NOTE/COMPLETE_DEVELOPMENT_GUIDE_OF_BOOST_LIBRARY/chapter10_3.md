@@ -3,16 +3,16 @@
 class path // 路径表示类
 {
 public:
-    typedef char_or_wchar_t value_type; // 路径的字符类型
-    typedef std::basic_string<value_type> string_type; // 路径使用的字符串类型
-    constexpr value_type preferred_separator; // 路径分隔符
+    typedef char_or_wchar_t value_type; 				// 路径的字符类型
+    typedef std::basic_string<value_type> string_type; 	// 路径使用的字符串类型
+    constexpr value_type preferred_separator; 			// 路径分隔符
 
-    path(); // 各种构造函数
+    path(); 											// 各种构造函数
     path(const path& p);
     path(Source const& source);
     path(InputIterator begin, InputIterator end);
 
-    path& operator=(const path& p); // 赋值操作
+    path& operator=(const path& p); 					// 赋值操作
     path& operator=(Source const& source);
     path& assign(Source const& source);
     path& assign(InputIterator begin, InputIterator end);
@@ -23,51 +23,51 @@ public:
     path& append(InputIterator begin, InputIterator end);
 
     path& operator+=(const path& x);
-    path& operator+=(const string_type& x); // 连接路径
+    path& operator+=(const string_type& x); 			// 连接路径
     path& operator+=(Source const& x);
     path& concat(InputIterator begin, InputIterator end);
 
-    void clear(); // 清空路径表示
-    path& remove_filename(); // 删除文件名
-    path& replace_extension(); // 更改扩展名
-    void swap(path& rhs); // 交换操作
+    void clear(); 										// 清空路径表示
+    path& remove_filename(); 							// 删除文件名
+    path& replace_extension(); 							// 更改扩展名
+    void swap(path& rhs); 								// 交换操作
 
-    const string_type& native() const; // 本地路径表示
-    const value_type* c_str() const; // 转换为c字符串
-    const string string() const; // 转换为字符串
-    const wstring wstring() const; // 转换为宽字符串
+    const string_type& native() const; 					// 本地路径表示
+    const value_type* c_str() const; 					// 转换为c字符串
+    const string string() const; 						// 转换为字符串
+    const wstring wstring() const; 						// 转换为宽字符串
 
-    int compare(const path& p) const; // 比较路径
+    int compare(const path& p) const; 					// 比较路径
     int compare(const std::string& s) const;
     int compare(const value_type* s) const;
 
-    path root_name() const; // 根名称
-    path root_directory() const; // 根目录
-    path root_path() const; // 根路径
-    path relative_path() cosnt; // 相对路径
-    path parent_path() const; // 父路径
-    path filename() const; // 文件名
-    path stem() const; // 全路径名
-    path extension() const; // 扩展名
+    path root_name() const; 							// 根名称
+    path root_directory() const; 						// 根目录
+    path root_path() const; 							// 根路径
+    path relative_path() cosnt; 						// 相对路径
+    path parent_path() const; 							// 父路径
+    path filename() const; 								// 文件名
+    path stem() const; 									// 全路径名
+    path extension() const; 							// 扩展名
 
-    bool empty() const; // 是否为空路径
-    bool has_root_name() const; // 是否有根名称
-    bool has_root_directory() const; // 是否有根目录
-    bool has_root_path() const; // 是否有根路径
-    bool has_relative_path() const; // 是否有相对路径
-    bool has_parent_path() const; // 是否有父路径
-    bool has_filename() const; // 是否有文件名
-    bool has_stem() const; // 是否有全路径名
-    bool has_extension() const; // 是否有扩展名
-    bool is_absolute() const; // 是否是绝对路径
-    bool is_relative() const; // 是否是相对路径
+    bool empty() const; 								// 是否为空路径
+    bool has_root_name() const; 						// 是否有根名称
+    bool has_root_directory() const; 					// 是否有根目录
+    bool has_root_path() const; 						// 是否有根路径
+    bool has_relative_path() const; 					// 是否有相对路径
+    bool has_parent_path() const; 						// 是否有父路径
+    bool has_filename() const; 							// 是否有文件名
+    bool has_stem() const; 								// 是否有全路径名
+    bool has_extension() const; 						// 是否有扩展名
+    bool is_absolute() const; 							// 是否是绝对路径
+    bool is_relative() const; 							// 是否是相对路径
     
-    iterator begin() const; // 迭代路径
+    iterator begin() const; 							// 迭代路径
     iterator end() const;
 };
-ostream& operator<<( ostream& os, const path& p ); // 流输出操作
-path operator/ (const path& lhs, const path& rhs); // 连接两个路径
-bool operator==(const path& lhs, const path& rsh); // 比较操作符
+ostream& operator<<( ostream& os, const path& p ); 		// 流输出操作
+path operator/ (const path& lhs, const path& rhs); 		// 连接两个路径
+bool operator==(const path& lhs, const path& rsh); 		// 比较操作符
 ```
 ## 可移植的文件名
 自由函数portable_posix_name()和windows_name()分别检测文件名字符串是否符合POSIX规范和Windows规范。
@@ -104,35 +104,35 @@ public:
     file_status(); 
     explicit file_status(file_type ft, perms prms = perms_not_known);
 
-    file_type type() const; // 文件类型
-    vodi type( file_type v ); // 设置文件类型
+    file_type type() const; 		// 文件类型
+    vodi type( file_type v ); 		// 设置文件类型
 
-    perms permissions() const; // 访问权限
-    void permissions(perms prms); // 设置访问权限
+    perms permissions() const; 		// 访问权限
+    void permissions(perms prms); 	// 设置访问权限
 };
 ```
 文件的类型file_type取值如下:
-* status_error 获取文件类型出错
-* file_not_found 文件不存在
-* status_unknown 文件存在但状态未知
-* regular_file 该文件是一个普通文件
-* directory_file 该文件是一个目录
-* symlink_file 该文件是一个链接文件
-* block_file 该文件是一个块设备文件
-* character_file 该文件是一个字符设备文件
-* fifo_file 该文件是一个管道设备文件
-* socket_file 该文件是一个socket设备文件
-* type_unknown 文件的类型未知
+- status_error 获取文件类型出错
+- file_not_found 文件不存在
+- status_unknown 文件存在但状态未知
+- regular_file 该文件是一个普通文件
+- directory_file 该文件是一个目录
+- symlink_file 该文件是一个链接文件
+- block_file 该文件是一个块设备文件
+- character_file 该文件是一个字符设备文件
+- fifo_file 该文件是一个管道设备文件
+- socket_file 该文件是一个socket设备文件
+- type_unknown 文件的类型未知
 
 通常我们不会直接使用file_status类,而是用相关函数file_status对象:
-* status()/symlink_status()测试路径p的状态，如果路径不能被解析，那么会抛出异常filesystem_error
-* status_known()检查文件状态s，返回s.type != status_error.
+- status()/symlink_status()测试路径p的状态，如果路径不能被解析，那么会抛出异常filesystem_error
+- status_known()检查文件状态s，返回s.type != status_error.
 
 ## 文件属性
-* initial_path()返回程序启动时(进入main函数)的路径
-* current_path()返回当前路径。它和initial_path()返回的都是一个完整路径(绝对路径)
-* file_size()以字节为单位返回文件的大小
-* last_write_time()返回文件的最后修改时间，是一个std::time_t
+- initial_path()返回程序启动时(进入main函数)的路径
+- current_path()返回当前路径。它和initial_path()返回的都是一个完整路径(绝对路径)
+- file_size()以字节为单位返回文件的大小
+- last_write_time()返回文件的最后修改时间，是一个std::time_t
 这些函数都要求操作的文件必须存在，否则会抛出异常，file_size()还要求文件必须是个普通文件(is_regular_file(name) == true)
 
 含糊space()可以返回一个space_info结构，它表明了该路径下的磁盘空间的分配情况，space_info结构的定义如下:
@@ -151,20 +151,20 @@ struct space_info
 namespace fs = boost::filesystem;
 
 path ptest = "./test";
-if(exists(ptest)) // 检查路径是否存在
+if(exists(ptest)) 			// 检查路径是否存在
 {
 	if(fs::is_empty(ptest)) // 注意名字空间限定
 	{
-		remove(ptest); // remove只能删除空目录或文件
+		remove(ptest); 		// remove只能删除空目录或文件
 	}
 	else
 	{
-		remove_all(ptest); // remove_all可以递归删除
+		remove_all(ptest); 	// remove_all可以递归删除
 	}
 }
 
-assert(!exists(ptest)); // 该目录已经被删除
-create_directory(ptest); // 创建一个目录
+assert(!exists(ptest)); 	// 该目录已经被删除
+create_directory(ptest); 	// 创建一个目录
 
 copy_file("C://1.hpp", ptest / "a.txt");
 assert(exists(ptest / "a.txt"));
@@ -201,11 +201,11 @@ public:
 class recursive_directory_iterator
 {
 public:
-    int depth() const; // 目录深度
-    void pop(); // 退出当前目录的遍历
-    void disable_recursion_pending(); // 不遍历本目录
+    int depth() const; 					// 目录深度
+    void pop(); 						// 退出当前目录的遍历
+    void disable_recursion_pending(); 	// 不遍历本目录
 private:
-    int m_level; // 目录深度成员变量
+    int m_level; 						// 目录深度成员变量
 };
 ```
 
@@ -216,14 +216,14 @@ private:
 optional<path>
 find_file(const path& dir, const string& filename)
 {
-	typedef optional<path> result_type; // 定义返回值类型
+	typedef optional<path> result_type; 					// 定义返回值类型
 
-	if(!exists(dir) || !is_directory(dir)) // 检查目录的有效性
+	if(!exists(dir) || !is_directory(dir)) 					// 检查目录的有效性
 	{
 		return result_type();
 	}
 
-	rd_iterator end; // 递归迭代器
+	rd_iterator end; 										// 递归迭代器
 	for(rd_iterator pos(dir); pos != end; ++pos)
 	{
 		if(!is_directory(*pos) &&							// 不是目录

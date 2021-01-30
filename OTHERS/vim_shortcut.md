@@ -84,3 +84,9 @@
 - :sh 进入shell  
 - gg=G 自动排版  
 - g ctrl+g  
+
+# 文件操作
+- :pwd 打印当前目录
+- :edit xxx.txt 编辑文件,如果不存在就创建
+- :find xxx.txt 查找文件 
+
