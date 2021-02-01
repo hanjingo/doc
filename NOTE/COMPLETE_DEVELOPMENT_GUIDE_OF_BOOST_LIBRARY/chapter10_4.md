@@ -75,8 +75,8 @@ int main(int argc, char* argv[])
 {
     options_description opst("demo options");
 
-    string filename;    // 外部的选项值存储
-    opts.add_options()  // 产生辅助对象，调用operator()
+    string filename;                                // 外部的选项值存储
+    opts.add_options()                              // 产生辅助对象，调用operator()
 
         // 帮助选项，使用空格缩进格式
         ("help,h", "help message\n  a bit of long text")

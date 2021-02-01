@@ -18,6 +18,7 @@
 [如何写markdown](how_to_write_markdown.md)
 [vim常用快捷键](OTHERS/vim_shortcut.md)
 [linux常用命令](OTHERS/linux_cmd.md)
+[git指南](OTHERS/git.md)
 [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
 [c++Bug](BUG/cpp.md)
 [STL速查手册](C++/STL/api.md)

@@ -16,19 +16,19 @@ private:
     void operator!=( scoped_ptr const& ) const; // 不等操作私有化
 
 public:
-    explicit scoped_ptr(T * p = 0); // 显式构造函数
-    ~scoped_ptr();                  // 析构函数
-    void reset(T * p = 0);          // 重置智能指针
+    explicit scoped_ptr(T * p = 0);             // 显式构造函数
+    ~scoped_ptr();                              // 析构函数
+    void reset(T * p = 0);                      // 重置智能指针
 
-    T & operator*() const;  // 操作符重载
-    T * operator->() const; // 操作符重载
-    T * get() const;        // 获得原始指针
+    T & operator*() const;                      // 操作符重载
+    T * operator->() const;                     // 操作符重载
+    T * get() const;                            // 获得原始指针
 
-    explicit operator bool() const; // 显式bool值转型
-    void swap(scoped_ptr & b);      // 交换指针
-}；
+    explicit operator bool() const;             // 显式bool值转型
+    void swap(scoped_ptr & b);                  // 交换指针
+};
 
-template<class T> inline // 与空指针比较
+template<class T> inline                        // 与空指针比较
 bool operator==(scoped_ptr<T> const & p, boost::detail::sp_nullptr_t);
 ```
 
@@ -80,17 +80,17 @@ int main()
     // 文件类的scoped_ptr,将在离开作用域时自动析构，从而关闭文件释放资源
     scoped_ptr<posix_file> fp(new posix_file("/tmp/a.txt"));
 
-    scoped_ptr<int> p(new int); // 一个int指针的scoped_ptr
+    scoped_ptr<int> p(new int);  // 一个int指针的scoped_ptr
 
     if (p)
     {
-        *p = 100;   // 可以像普通指针一样使用解引用操作符×
+        *p = 100;               // 可以像普通指针一样使用解引用操作符×
         cout << *p << endl;
     }
 
-    p.reset();      // 置空scoped_ptr,仅仅是演示
+    p.reset();                  // 置空scoped_ptr,仅仅是演示
 
-    assert(p == 0); // 与0比较，p不持有任何指针
+    assert(p == 0);             // 与0比较，p不持有任何指针
     if (!p)
     { cout << "scoped_ptr == nullptr" << endl; }
 } // 在这里发生scoped_ptr的析构,p和fp管理的指针自动被删除
@@ -100,13 +100,13 @@ int main()
 unique_ptr是在c++标准中定义的新的智能指针，用来取代曾经的auto_ptr。unique_ptr不仅能够代理new创建的单个对象，
 也能够代理new[]创建的数组对象。c++标准中对unique_ptr的定义如下:
 ```c++
-template <class T, class D = default_delete<T>> // 使用删除器
+template <class T, class D = default_delete<T>>     // 使用删除器
 class unique_ptr {
 public:
-    typedef some_define pointer; // 内部类型定义
+    typedef some_define pointer;                    // 内部类型定义
     typedef T element_type;
 
-    constexpr unique_ptr() noexcept; // 构造函数
+    constexpr unique_ptr() noexcept;                // 构造函数
     explicit unique_ptr(pointer p) noexcept;
 
     ~unique_ptr();                                  // 析构函数

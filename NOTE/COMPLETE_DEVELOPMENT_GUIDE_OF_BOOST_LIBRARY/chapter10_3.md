@@ -288,7 +288,7 @@ vector<path> find_files(const path& dir, const string& filename)
 size_t copy_files(const path& from_dir, const path& to_dir,
 					const string& filename = "*")
 {
-	if(!is_diractory(from_dir)) // 源必须是个目录
+	if(!is_diractory(from_dir)) 		// 源必须是个目录
 	{
 		cout << "arg is not dir." << endl;
 		return 0;

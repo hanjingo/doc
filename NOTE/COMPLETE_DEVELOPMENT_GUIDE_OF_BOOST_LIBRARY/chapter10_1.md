@@ -101,13 +101,13 @@ public:
 不同的错误类别决定了error_code的含义，相同的错误代码如果属于不同的类别，那么将具有不同的含义。
 ```c++
 my_category my_cat;
-error_code ec(10, my_cat);              // 错误码10,自定义类别
+error_code ec(10, my_cat);                  // 错误码10,自定义类别
 count << ec.value() << ec.message() << endl;
-ec = error_code(10, system_category()); // 系统错误类别
+ec = error_code(10, system_category());     // 系统错误类别
 cout << ec.value() << ec.message() << endl;
 
 // 注意：在使用自定义错误类别的时候，我们不能向error_code传递临时对象构造
-error_code ec(10, my_categorty())       // 错误
+error_code ec(10, my_categorty())           // 错误
 ```
 例:
 ```c++
