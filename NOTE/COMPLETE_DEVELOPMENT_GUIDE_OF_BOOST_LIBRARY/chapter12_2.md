@@ -311,3 +311,152 @@ this_thread::yield();           // 允许CPU调度让出线程执行权
 ```
 
 ## 使用线程
+### 启动线程
+```c++
+void dummy(int n)
+{
+    for(int i = 0; i < n; ++i); // 空循环操作
+    cout << n << endl;
+}
+
+thread t1(dummy, 100);          // 向函数传递参数，启动线程
+thread t2(dummy, 500);
+
+this_thread::sleep_for(200_ms); // 等待200ms
+```
+
+### 等待线程
+thread的成员函数joinable()可以判断thread对象是否标识了一个可执行的线程体，如果joinable()返回true,我们就可以调用成员函数join()或try_join_for()/try_join_until()来阻塞等待线程执行结束。两者的区别如下:
+- join() 一直阻塞等待，直到线程结束。
+- try_join_for()/try_join_until()阻塞等待一定的时间段后，无论线程是否结束它都返回。注意，他不会一直阻塞等待到指定的时间长度，如果在这段时间里线程运行结束，即使时间未到他也会返回。
+使用join()可以这样操作thread对象:
+```c++
+thread t1(bind(dummy, 100));    // 使用bind表达式启动线程
+thread t2([]{dummy(500);});     // 使用lambda表达式启动线程
+
+t1.try_join_for(100_ms);        // 最多等待100ms后返回
+t2.join();                      // 等待t2线程结束再返回，无论t2线程执行多少时间
+```
+
+### 分离线程
+```c++
+thread t1(dummy, 100);  // 启动线程
+t1.detach();            // 与线程执行体分离，但线程继续运行
+assert(!t1.joinable());
+```
+当thread与线程执行体分离时线程执行体将不受影响地继续执行，直到函数结束，或者随主进程一起结束。因此当不需要再操作线程体时，我们就可以使用临时对象来启动线程，随即调用它的detach()。例:
+```c++
+thread(dummy, 100).detach(); // 临时对象启动线程，随即分离
+```
+
+### thread_guard
+thread库在c++标准之外提供类似lock_guard的thread_guard辅助类，可以让我们方便地控制thread对象析构时的行为:
+```c++
+struct detach;                                      // 析构时执行detach
+struct join_if_joinable;                            // 析构时执行join
+template <class CallableThread = join_if_joinable>  // 默认动作是join
+class thread_guard
+{
+    thread& t_;                                     // 持有线程的引用
+public:
+    explicit thread_guard(thread& t);
+    ~thread_guard();                                // 析构时执行策略对象
+}
+```
+例:
+```c++
+thread t1(dummy, 200);          // 启动线程
+thread t2(dummy, 300);
+thread_guard<detach> g1(t1);    // 析构后线程继续运行
+thread_guard<>       g2(t2);    // 析构时等待线程结束
+```
+
+### scoped_thread
+```c++
+template <class CallableThread = join_if_joinable>
+class scoped_thread
+{ ... }; // 接口与thread相同
+```
+scoped_thread的命名和scoped_ptr一样清晰，他的用法结合了thread和thread_guard,示例如下:
+```c++
+scoped_thread<detach> t1(dummy, 100); // 析构后线程继续运行
+scoped_thread<>       t2(dummy, 200); // 析构时等待线程结束  
+```
+
+## 中断线程
+boost::thread有2个非c++标准的成员函数interrupt()和interruption_requested(),他们允许正在执行的线程被中断：
+- interrupt(): 要求线程中断执行。
+- interruption_requested(): 检查线程是否被要求中断。
+
+### 中断示例
+```c++
+void to_interrupt(int x)
+try
+{
+    for (int i = 0; i < x; ++i)
+    {
+        this_thread::sleep_for(400_ms);
+        cout << i << endl;
+    }
+}
+catch(const thread_interrupted&)
+{
+    cout << "thread_interrupted" << endl;
+}
+
+// 启动线程，等待1s，再中断线程
+thread t(to_interrupt, 10);
+this_thread::sleep_for(1_s);        // 主线程睡眠1s
+
+t.interrupt();                      // 要求线程中断执行
+assert(t.interruption_requested()); // 断言线程要求中断
+
+t.join();                           // 因为线程已经中断，所以join()立即返回
+```
+
+### 线程的中断点
+线程不是在任何时刻都可以被中断的。thread库与定义了若干个线程的中断点，只有当线程执行到中断点的时候才可能被中断，一个线程可以拥有任意多个中断点。
+
+thread库的中断点共12个，他们都是函数调用:
+- thread::join()
+- thread::try_join_for()/try_join_until()
+- condition_variable::wait()
+- condition_variable::wait_for()/wait_until()
+- condition_variable_any::wait()
+- condition_variable_any::wait_for()/wait_until()
+- this_thread::sleep_for()/sleep_until()
+- this_thread::interruption_point()
+例:
+```c++
+void to_interrupt(int x)
+try
+{
+    for (int i = 0; i < x; ++i)
+    {
+        cout << i << endl;
+        this_thread::interruption_point(); // 这里允许中断
+    }
+}
+catch (thread_interrupted& )
+{ ... }
+
+// 启动线程后不再等待一段时间，而是立即调用interrupt()来中断线程:
+thread t(to_interrupt, 10); // 启动线程
+t.interrupt();              // 立即中断线程
+t.join();
+```
+
+### 启用/禁用线程中断
+子名字空间boost::this_thread里提供了一组函数和类来共同完成线程中的中断启动和禁用:
+- interruption_enabled()函数检测当前线程是否允许中断。
+- interruption_requested()函数检测当前线程是否被要求中断。
+- 类disable_interruption是一个RAII类型的对象，它构造时关闭线程的中断，析构时自动恢复线程的中断状态。在他的生命期内线程始终是不可中断的，除非使用了restore_interruption对象。
+- restore_interruption只能在disable_interruption的作用域内使用，他在构造时临时启用线程的中断状态，在析构时又关闭线程的中断状态。
+例:
+```c++
+void to_interrupt(int x)
+try
+{
+    using namespace this_thread;
+}
+```
