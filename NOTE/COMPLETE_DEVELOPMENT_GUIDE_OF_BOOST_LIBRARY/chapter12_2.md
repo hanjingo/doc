@@ -457,6 +457,83 @@ t.join();
 void to_interrupt(int x)
 try
 {
-    using namespace this_thread;
+    using namespace this_thread;            // 打开this_thread名字空间
+    assert(interruption_enabled());         // 此时允许中断
+
+    for (int i = 0; i < x; ++i)
+    {
+        disable_interruption di;            // 关闭中断
+        assert(!interruption_enabled());    // 此时中断不可用
+        cout << i << endl;
+        cout << this_thread::interruption_requested() << endl;
+        this_thread::interruption_point();  // 中断点被禁用
+
+        restore_interruption ri(di);        // 临时恢复中断
+        assert(interruption_enabled());     // 此时中断可用
+        cout << "can interrupted" << endl;
+        cout << this_thread::interruption_requested() << endl;
+        this_thread::interruption_point();  // 可被中断
+    }                                       // 离开作用域，di/ri都被析构
+                                            // 恢复线程最初的可中断状态
+    assert(interruption_enabled());         // 此时允许中断
+}
+catch (thread_interrupted&)
+{ ... }
+```
+
+## 线程组
+thread库提供类thread_group用于管理一组线程，它就像一个"线程池",它内部使用std::list<thread*>来融安创建的thread对象，其类摘要如下:
+```c++
+class thread_group // 不可拷贝
+{
+public:
+    thread* create_thread(F threadfunc);    // 创建爱你新线程
+    void add_thread(thread* thrd);          // 添加已有线程
+    void remove_thread(thread* thrd);       // 删除线程
+
+    bool is_this_thread_in();               // 当前线程是否在组内
+    bool is_thread_in(thread* thrd);        // 指定线程是否在组内
+
+    void join_all();                        // 等待所有线程
+    void interrupt_all();                   // 中断所有线程
+
+    int size() const;                       // 获得线程数量
+};
+```
+例:
+```c++
+thread_group tg;                    // 一个线程组
+
+tg.create_thread(bind(dummy, 100)); // 使用bind创建线程
+tg.create_thread(bind(dummy, 200));
+
+tg.join_all();                      // 等待所有线程执行结束
+```
+
+## call_once
+为了保证初始化函数在多线程环境中被正确调用，thread库提供了仅调用一次的机制call_once,使多个线程在操作函数时只能有一个线程成功执行，避免多个执行线程导致错误；call_once()函数的声明如下:
+```c++
+template<class Callable, class ...Args>
+void call_once(once_flag& flag, Callable&& func, Args&&... args);
+```
+例:
+```c++
+int g_count;            // 全局变量
+void init_count(int x)  // 初始化函数
+{
+    cout << "should call once." << endl;
+    g_count = x;
+}
+
+void call_func()
+{
+    static once_flag once;              // 一次初始化标志
+    call_once(once, init_count, 10);    // 执行一次初始化
+}
+
+int main()
+{
+    ((scoped_thread<>call_func)); // 必须用括号将临时对象括起来
+    ((scoped_thread<>call_func)); // 否则编译器会认为这是函数声明
 }
 ```
