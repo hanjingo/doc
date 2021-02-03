@@ -5,7 +5,7 @@
 
 ## TCP
 ### 三次握手
-todo
+![三次握手](RES/2_2.png)
 
 ### tcp选项
 每一个SYN可以含有多个TCP选项。下面是常用的TCP选项:
@@ -14,13 +14,13 @@ todo
 - 时间戳选项。这个选项对于高速网络连接是必要的，它可以防止由失而复得的分组可能造成的数据损坏。
 
 ### tcp连接终止
-todo
+![tcp连接终止](RES/2_3.png)
 
 ### tcp状态转移图
-todo
+![tcp状态转移图](RES/2_4.png)
 
 ### 观察分组
-todo
+![观察分组](RES/2_5.png)
 
 ## TIME_WAIT状态
 TIME_WAIT状态有2个存在的理由:
@@ -29,16 +29,16 @@ TIME_WAIT状态有2个存在的理由:
 
 ## SCTP
 ### 四路握手
-todo
+![四路握手](RES/2_6.png)
 
 ### 关联终止
-todo
+![关联终止](RES/2_7.png)
 
 ### SCTP状态转移图
-todo
+![SCTP状态转移图](RES/2_8.png)
 
 ### 观察分组
-todo
+![观察分组](RES/2_9.png)
 
 ## 端口号
 IANA(the Internet Assigned Numbers Authority, 因特网已分配数值权威机构)维护者一个端口号分配状况的清单。端口被划分为以下3段:
