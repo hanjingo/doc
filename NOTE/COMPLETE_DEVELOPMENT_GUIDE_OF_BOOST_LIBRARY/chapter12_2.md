@@ -832,3 +832,64 @@ int main()
     }
 }
 ```
+
+### 使用多个future对象
+为了支持多个future对象的使用，future还提供c++标准之外的2个自由函数:wait_for_any()和wait_for_all(),他们可以阻塞等待多个future对象，直到任意一个或所有future对象都可用(is_ready)。这2个函数有多种重载形式:
+```c++
+unsigned wait_for_any(F1& f1, Fs&... fs);
+Iterator wait_for_any(Iterator begin, Iterator end);
+void wait_for_all(F1& f1, Fs&... fs);
+Iterator wait_for_all(Iterator begin, Iterator end);
+```
+例:
+```c++
+vector<boost::future<int>> vec;         // 容器存储future
+for(int i = 0; i < 5; ++i)              // 启动5个future调用
+{ vec.push_back(async(fab, i + 10)); }  // 启动线程，开始计算
+
+wait_for_all(vec.begin(), vec.end());   // 等待所有计算结束
+
+for (auto& x : vec)
+{ cout << x.get() << ','; }
+```
+如果使用wait_for_any(),那么等待和输出的代码如下:
+```c++
+wait_for_any(vec[3], vec[4], vec[2]);   // 等待任意一个future值
+for (auto& x : vec)
+{
+    if (x.valid())
+    { cout << x.get() << endl; }
+}
+```
+
+## shared_future
+shared_future是future的增强版本，它与future类似，但它可以线程安全地多次调用get()获取计算结果，其类摘要如下:
+```c++
+template <typename T>
+class shared_future
+{
+public:
+    T get();                    // 获取future值
+    void wait() const;          // 等待线程完成计算
+    future_status wait_for(const duration& rel_time) const;
+    future_status wait_until(const time_point& abs_time) const;
+
+    bool valid() const;         // 是否为有效值
+    bool is_ready() const;      // 是否计算完毕，非c++标准
+    bool has_exception() const; // 是否有异常发生，非c++标准
+    bool has_value() const;     // 是否有值，非c++标准
+};
+```
+async()函数可以返回shared_future对象，但需要我们明确地声明类型。例:
+```c++
+auto f5 = async(fab, 5).shared(); // 使用工厂函数share()
+
+auto func = [](decltype(f5) f){
+    cout << "[" << f.get() << "]";
+};
+async(func, f5);
+async(func, f5);
+
+this_thread::sleep_for(100_ms);
+assert(f5.valid());
+```
