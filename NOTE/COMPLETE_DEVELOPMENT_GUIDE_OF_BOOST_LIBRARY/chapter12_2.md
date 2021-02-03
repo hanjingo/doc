@@ -537,3 +537,298 @@ int main()
     ((scoped_thread<>call_func)); // 否则编译器会认为这是函数声明
 }
 ```
+
+## condition_variable
+thread库提供2种条件变量对象:condition_variable和condition_variable_any,摘要如下:
+```c++
+enum class cv_status { no_timeout, timeout }; // 等待状态枚举类
+
+class condition_variable_any
+{
+public:
+    void notify_one(); // 通知一个等待中的线程
+    void notify_all(); // 通知所有等待中的线程
+
+    void wait(lock_type& lock);                             // 等待
+    void wait(lock_type& lock, predicate_type predicate);   // 条件等待
+
+    cv_status wait_for(     // 等待相对时间
+        lock_type& lock, const duration& d);
+
+    cv_status wait_for(     // 条件等待相对时间
+        lock_type& lock, const duration& d, predicate_type predicate);
+
+    cv_status wait_until(   // 等待绝对时间点
+        lock_type& lock, const time_point& t);
+
+    cv_status wait_until(   // 条件等待绝对时间点
+        lock_type& lock, const time_point& t, predicate_type predicate);
+}
+```
+
+### 用法
+```c++
+class buffer
+{
+private:
+    mutex mu;                                   // 互斥量，配合条件变量使用
+    condition_variable_any cond_put;            // 写入条件变量
+    condition_variable_any cond_get;            // 读取条件变量
+
+    stack<int> stk;                             // 缓冲区对象
+    int un_read, capacity;
+
+    bool is_full()                              // 缓冲区满判断
+    { return un_reqd == capacity; }
+
+    bool is_empty()                             // 缓冲区空判断
+    { return un_reqd == 0; }
+public:
+    buffer(size_t n):un_read(0), capacity(n) {} // 构造函数
+    void put(int x)                             // 写入数据
+    {
+        { // 开始一个局部域
+            auto lock = make_unique_lock(mu);   // 锁定互斥量
+            for(; is_full();)                   // 检查缓冲区是否满
+            {
+                cout << "full waiting... " << endl;
+                cond_put.wait(lock);            // 条件变量等待
+            } // 条件满足，停止等待
+            stk.push(x);                        // 压栈，写入数据
+            ++un_read;
+        } // 解锁互斥量，条件变量的通知不需要互斥量锁定
+        cond_get.notify_one();                  // 通知可以读取数据
+    }
+    void get(int *x)                            // 读取数据
+    {
+        {
+            auto lock = make_unique_lock(mu);   // 锁定互斥量
+            for(;is_empty();)                   // 检查缓冲区是否为空
+            {
+                cout << "empty waiting... " << endl;
+                con_get.wait(lock);             // 条件变量等待
+            }
+            --un_read;
+            *x = stk.top();                     // 读取数据
+            stk.pop();                          // 弹栈
+        }
+        cond_put.notify_one();                  // 通知可以写入数据
+    }
+};
+
+buffer buf(5);
+
+void producer(int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        cout << "put " << i << endl;
+        buf.put(i);
+    }
+}
+
+void consumer(int n)
+{
+    int x;
+    for (int i = 0; i < n; ++i)
+    {
+        buf.get(&x);                            // 读取数据
+        cout << "get " << x << endl;
+    }
+}
+
+thread_group tg;                                // 使用线程组
+
+tg.create_thread(bind(producer, 20));           // 一个生产者线程
+tg.create_thread(bind(consumer, 10));           // 2个消费者线程
+tg.create_thread(bind(consumer, 10));
+
+tg.join_all();                                  // 等待所有线程结束
+```
+
+### 其他用法
+condition_variable_any的wait()函数有一个有用的重载形式:wait(lock, prediacate),它比普通的形式多接收一个谓词函数（或函数对象），当谓词predicate不满足时持续等待，也就是谓词predicate返回true时退出等待，相当于:
+```c++
+for(;!predicate();)
+    wait(lock);
+```
+例:
+```c++
+// 使用bind表达式
+cond_put.wait(lock, !bind(&buffer::is_full, this));
+cond_get.wait(lock, !bind(&buffer::is_empty, this));
+
+// 使用lambda表达式
+cond_put.wait(lock, [this]{return un_read < capacity;});
+cond_get.wait(lock, [this]{return un_read > 0;});
+```
+
+## shared_mutex
+共享互斥量shared_mutex不同于mutex和recursive_mutex,它允许线程获取多个共享所有权和一个专享所有权，实现了读写锁的机制，即多个读线程一个写线程。摘要如下:
+```c++
+class shared_mutex
+{
+public:
+    shared_mutex();
+    ~shared_mutex();
+
+    void lock();
+    bool try_lock();
+    void unlock();
+
+    bool try_lock_for(const chrono::duration& rel_time);
+    bool try_lock_until(const chrono::time_point& abs_time);
+
+    // shared_mutex专有函数
+    bool lock_shared();
+    bool try_lock_shared();
+    void unlock_shared();
+
+    bool try_lock_shared_for(const duration& rel_time);
+    bool try_lock_shared_until(const time_point& abs_time);
+};
+```
+
+### 用法
+```c++
+class rw_data
+{
+private:
+    int m_x;                                // 用于读写的数据
+    shared_mutex rw_mu;                     // 共享互斥量
+public:
+    rw_data():m_x(0) {}                     // 构造函数
+
+    void write()                            // 写数据
+    {
+        unique_lock<shared_mutex> g(rw_mu); // 写锁定
+        ++m_x;
+    }
+    void read(int *x)                       // 读数据
+    {
+        shared_lock<shared_mutex> g(rw_mu); // 读锁定
+        *x = m_x;
+    }
+}
+
+// 定义2个用于执行线程的函数，分别执行多次读写操作
+void writer(rw_data &d)                     // 写线程
+{
+    for (int i = 0; i < 20; ++i)
+    {
+        this_thread::sleep_for(3_ms);
+        d.write();
+    }
+}
+
+void reader(rw_data &d)                     // 读线程
+{
+    int x;
+    for (int i = 0; i < 10; ++i)
+    {
+        this_thread::sleep_for(5_ms);
+        d.read(&x);
+        cout << "reader:" << x << endl;
+    }
+}
+
+rw_data d;
+thread_group pool;                          // 线程组
+
+pool.create_thread(bind(writer, ref(d)));   // 写线程 1
+pool.create_thread(bind(writer, ref(d)));   // 写线程 2
+
+pool.create_thread(bind(reader, ref(d)));   // 读线程 1
+pool.create_thread(bind(reader, ref(d)));   // 读线程 2
+pool.create_thread(bind(reader, ref(d)));   // 读线程 3
+pool.create_thread(bind(reader, ref(d)));   // 读线程 4
+
+pool.join_all();                            // 等待线程结束
+```
+
+## future
+future用来存储异步计算得到的值，它只能持有结果的唯一的一个引用，摘要如下:
+```c++
+enum class future_status {  // future的状态枚举
+    ready,                  // 已经计算完毕
+    timeout,                // 因超时而失败
+    deferred                // 还未开始计算
+}
+
+template <typename T>
+class future
+{
+public:
+    T get();                    // 获取future值
+    void wait() const;          // 等待线程完成计算
+    future_status wait_for(const duration& rel_time) const;
+    future_status wait_until(const time_point& abs_time) const;
+
+    bool valid() const;         // 是否为有效值
+
+    bool is_ready() const;      // 是否计算完毕，非c++标准
+    bool has_exception() const; // 是否有异常发生，非c++标准
+    bool hash_value() const;    // 是否有值，非c++标准
+
+    shared_future shared();     // 产生一个shared_future对象
+}
+```
+
+### async()函数
+async()函数用于产生future对象，它异步启动一个线程运行函数，返回future对象，这样随后我们就可以利用future获取计算结果。async()函数的声明如下:
+```c++
+enum class launch {         // 枚举线程的启动策略
+    none = 0,               // 行为未定义
+    async = 1,              // 立即启动线程
+    deferred = 2,           // 之后需要时才启动线程
+    any = async | deferred  // 立即或需要时启动线程
+};
+future async( Function&& f, Args&&... args ); // 默认策略是any
+future async( launch policy, Function&& f, Args&&... args );
+```
+代码:
+```c++
+async(bind(dummy, 10));                         // 线程启动函数dummy
+
+auto f = async([]{cout << "hello" << endl;});   // 线程启动lambda表达式
+f.wait();                                       // 等待线程执行完毕
+```
+等价于
+```c++
+thread(dummu, 10).detach();
+
+thread t([]{cout << "hello" << endl;});
+t.join();
+```
+策略枚举类launch可用于定制async()启动线程的时机，具体如下:
+- none: 无意义，不能使用这个枚举值，否则会导致运行错误。
+- async: 要求立即启动一个线程执行函数。
+- deferred: 只有当显式调用future的get()/wait()时才会启动线程。
+- any: async或deferred,不确定。
+
+### future+async()的用法
+```c++
+int fab(int n)
+{
+    if (n == 0 || n == 1)
+        { return 1; }
+    return fab(n-1) + fab(n-2);
+}
+
+int main()
+{
+    auto f5 = async(fab, 5);
+    auto f7 = async(launch::async, fab, 7);
+
+    cout << f5.get() + f7.get() << endl;
+    assert(!f5.valid() && !f7.valid());
+
+    auto f10 = async(fab, 10);
+    auto s = f10.wait_for(100_ms);
+    if (f10.valid())
+    {
+        assert(s == future_status::ready);
+        cout << f10.get() << endl;
+    }
+}
+```
