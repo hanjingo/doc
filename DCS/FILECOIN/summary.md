@@ -1,23 +1,23 @@
 # filecoin总结
 ## 参考
-* [filecoin技术架构分析之一：filecoin概念](https://blog.csdn.net/qq_21393091/article/details/88072946)
-* [filecoin技术架构分析之二：filecoin通用语言理解](https://blog.csdn.net/qq_21393091/article/details/88073022)
-* [filecoin技术架构分析之三：filecoin开发网络使用](https://blog.csdn.net/qq_21393091/article/details/88073071)
-* [filecoin技术架构分析之四：filecoin源码顶层架构分析](https://blog.csdn.net/qq_21393091/article/details/88073352)
-* [filecoin技术架构分析之五：filecoin源码分析之协议层心跳协议](https://blog.csdn.net/qq_21393091/article/details/88139537)
-* [FILECOIN挖矿原理](https://blog.csdn.net/vskovsko/article/details/111468620)
-* [读懂区块链之零知识证明（zk-SNARK）](https://www.jianshu.com/p/7b772e5cdaef?utm_source=oschina-app)
-* [filecoin工作原理](https://blog.csdn.net/kk3909/article/details/104814067)
-* [Filecoin 系列01-Filecoin 工作原理](http://www.r9it.com/20190226/how-filecoin-work.html)
+- [filecoin技术架构分析之一：filecoin概念](https://blog.csdn.net/qq_21393091/article/details/88072946)
+- [filecoin技术架构分析之二：filecoin通用语言理解](https://blog.csdn.net/qq_21393091/article/details/88073022)
+- [filecoin技术架构分析之三：filecoin开发网络使用](https://blog.csdn.net/qq_21393091/article/details/88073071)
+- [filecoin技术架构分析之四：filecoin源码顶层架构分析](https://blog.csdn.net/qq_21393091/article/details/88073352)
+- [filecoin技术架构分析之五：filecoin源码分析之协议层心跳协议](https://blog.csdn.net/qq_21393091/article/details/88139537)
+- [FILECOIN挖矿原理](https://blog.csdn.net/vskovsko/article/details/111468620)
+- [读懂区块链之零知识证明（zk-SNARK）](https://www.jianshu.com/p/7b772e5cdaef?utm_source=oschina-app)
+- [filecoin工作原理](https://blog.csdn.net/kk3909/article/details/104814067)
+- [Filecoin 系列01-Filecoin 工作原理](http://www.r9it.com/20190226/how-filecoin-work.html)
 
 ## 简述
 filecoin采用存储证明，存储能力越强，挖到区块的概率越大；
 
 filecoin市场存在着4个角色：
-* 存储矿工：用来存储数据
-* 检索矿工：用来提供检索，本身不一定有数据
-* 存储客户端：要存数据的用户
-* 检索客户端：要获取数据的用户
+- 存储矿工：用来存储数据
+- 检索矿工：用来提供检索，本身不一定有数据
+- 存储客户端：要存数据的用户
+- 检索客户端：要获取数据的用户
 
 ## 要点
 1. Sectors: 扇区，矿工提供存储空间的最小单元，也就是说在我们创建矿工的时候抵押存储空间大小必须是 Sector 的整数倍。
@@ -97,15 +97,15 @@ Internal Api->Core:Wallet
 
 Network:
 
-* libp2p
+- libp2p
 
 Commands:
 
-* HTTP REST / API
+- HTTP REST / API
 
 Protocols:
 
-* 挖矿协议(mining protocol)
-* 存储协议(storege protocol)
-* 检索协议(retrival protocol)
-* 心跳协议(heartbeat protocol)
+- 挖矿协议(mining protocol)
+- 存储协议(storege protocol)
+- 检索协议(retrival protocol)
+- 心跳协议(heartbeat protocol)

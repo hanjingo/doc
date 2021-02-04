@@ -1,5 +1,4 @@
 # IPFS
-- [总结](summary.md)
 - [assets](assets.md)
 - [blocks](blocks.md)
 - [commands](commands.md)
@@ -9,8 +8,8 @@
 - [go.opencesus.io](go.opencesus.io.md)
 - [ipfs-go-cid](ipfs-go-cid.md)
 - [p2p](p2p.md)
-- [summary](summary.md)
 - [gc](gc.md)
+
 ## 第三方库
 - [go-buffer-pool](3rd/go-buffer-pool.md)
 - [go-cid](3rd/go-cid.md)

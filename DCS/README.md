@@ -13,4 +13,5 @@
 - [分布式一致性算法-权益证明](pos.md)
 - [分布式一致性算法-工作量证明](pow.md)
 - [EOS](EOS/README.md)
-- [IPFS&FILECOIN](IPFS&FILECOIN/README.md)
+- [IPFS](IPFS/README.md)
+- [FILECOIN](FILECOIN/README.md)
