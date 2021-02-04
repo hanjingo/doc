@@ -333,6 +333,150 @@ private:
             boost::asio::placeholders::error)); // 使用error占位符传递错误码
     }
 
-    void handler(const error_)
+    void handler(const error_code&)
+    {
+        if (m_count++ >= m_count_max)           // 如果计数器到达上限则退出
+        { return; }
+
+        m_f();                                  // 调用function对象
+
+        m_t.expires_from_now(200_ms);           // 设置定时器的终止时间为0.2秒之后
+
+        m_t.async_wait(bind(                    // 再次启动定时器，异步等待
+            &this_type::handler, this,
+            boost::asio::placeholders::error));
+    }
+}; // timer_with_func定义结束
+
+// timer_with_func的调用代码非常简单，只需要一个io_service对象即可
+io_service io;                                  // io_service对象
+
+timer_with_func t1(io, 5, 
+    []{cout << "hello timer1" << endl;});
+
+timer_with_func t2(io, 5, 
+    []{cout << "hello timer2" << endl;});
+
+io.run();                                       // io_service等待异步调用结束
+```
+
+### 使用lambda
+```c++
+private:
+    typedef void(handler_type)(const error_code&);  // 定义handler类型
+
+    function<handler_type> m_handler =              // 捕获引用，包括this
+    [&](const error_code&)
+    {
+        ...
+        m_t.expires_from_now(200_ms);               // 设置定时器的终止时间
+        m_t.async_wait(m_handler);                  // 再次异步等待
+    };
+
+void init()
+{
+    m_t.async_wait(m_handler);                      // 异步等待，注册回调函数
 }
+```
+
+## 网络通信
+ip::tcp位于头文件<boost/asio/ip/tcp.hpp>,其摘要如下:
+```c++
+class tcp
+{
+public:
+    typedef basic_endpoint<tcp>             endpoint;
+    typedef basic_stream_socket<tcp>        socket;
+    typedef basic_socket_acceptor<tcp>      acceptor;
+    typedef basic_resolver<tcp>             resolver;
+    typedef basic_resolver_query<tcp>       resolver_query;
+    typedef basic_resolver_iterator<tcp>    resolver_iterator;
+    typedef basic_socket_iostream<tcp>      iostream;
+
+    int type() const;       // 获取协议类型
+    int protocol() const;   // 获取协议标志
+    int family() const;
+
+    static tcp v4();        // 返回ipv4版tcp对象
+    static tcp v6();        // 返回ipv6版tcp对象
+}
+```
+
+### address
+ip地址独立于TCP, UDP等通信协议之外，asio库使用类ip::address来表示IP地址，可以同时支持IPv4和IPv6两种地址，他的类摘要如下:
+```c++
+class address
+{
+public:
+    address();
+    address(const address& other);
+
+    bool is_v4() const;                          // 是否是ipv4地址
+    bool is_v6() const;                          // 是否是ipv6地址
+    bool is_loopback() const;                    // 是否是环回地址
+
+    ip::address_v4 to_v4() const;                // 转换为ipv4地址
+    ip::address_v6 to_v6() const;                // 转换为ipv6地址
+
+    string to_string() const;                    // 转换为字符串表示
+
+    static address from_string(const char* str); // 从字符串构造
+    static address from_string(const string& str);
+
+    friend bool operator==(const address& a1, const address& a2);
+    ... // 其他比较操作和流输出操作
+private:
+    enum { ipv4, ipv6 } type_;                  // ipv4地址和ipv6地址的枚举
+
+    boost::asio::ip::address_v4 ipv4_address_;  // ipv4地址的内部实现
+    boost::asio::ip::address_v6 ipv6_address_;  // ipv6地址的内部实现
+};
+```
+例:
+```c++
+ip::address addr;
+
+addr = addr.from_string("127.0.0.1");
+assert(addr.is_v4());
+cout << addr.to_string() << endl;
+
+addr = addr.from_string("ab::12:34:56");
+assert(addr.is_v6());
+```
+
+### endpoint
+有了ip地址，再加上通信用的端口号就构成了一个socket端点，在asio库中用ip::tcp::endpoint来表示
+
+endpoint是basic_endpoint的TCP协议特化，其类摘要如下:
+```c++
+template <typename InternetProtocol>
+class basic_endpoint
+{
+public:
+    typedef InternetProtocol protocol_type;
+
+    basic_endpoint(const InternetProtocol& internet_protocol,
+                    unsigned short port_num);
+    basic_endpoint(const ip::address& addr, unsigned short port_num);
+
+    basic_endpoint(basic_endpoint&& other);
+    basic_endpoint& operator=(const basic_endpoint& other);
+
+    protocol_type protocol() const;     // 获取协议
+
+    unsigned short port() const;        // 获取端口号
+    void port(unsigned short port_num); // 设置端口号
+
+    ip::address address() const;        // 获取地址
+    void address(ip::address& addr);    // 设置地址
+};
+```
+例:
+```c++
+ip::address addr;                       // ip地址对象
+addr = addr.from_string("127.0.0.1");   // 一个ipv4地址
+
+ip::tcp::endpoint ep(addr, 6688);       // 创建端点对象，端口号为6688
+assert(ep.address() == addr);
+assert(ep.port() == 6688);
 ```
