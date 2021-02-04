@@ -1,17 +1,17 @@
 # Ts
 参考:
-* [hls之m3u8、ts流格式详解](https://my.oschina.net/u/727148/blog/666824)
-* [多媒体文件格式之TS](https://www.cnblogs.com/tocy/p/media_container_6-mpegts.html)
-* [TS流PAT/PMT详解](https://www.cnblogs.com/shakin/p/3714848.html)
-* [TS协议解析第一部分](https://blog.csdn.net/u013354805/article/details/51578457)
-* [TS协议解析第二部分（PMT）](https://blog.csdn.net/u013354805/article/details/51586086)
+- [hls之m3u8、ts流格式详解](https://my.oschina.net/u/727148/blog/666824)
+- [多媒体文件格式之TS](https://www.cnblogs.com/tocy/p/media_container_6-mpegts.html)
+- [TS流PAT/PMT详解](https://www.cnblogs.com/shakin/p/3714848.html)
+- [TS协议解析第一部分](https://blog.csdn.net/u013354805/article/details/51578457)
+- [TS协议解析第二部分（PMT）](https://blog.csdn.net/u013354805/article/details/51586086)
 
 ts为传输流文件，视频编码主要格式为H264/MPEG4, 音频为AAC/MP3; ts文件分为3层:
-* ts 层：Transport Stream，是在 pes 层的基础上加入数据流的识别和传输必须的信息。
-* pes 层：Packet Elemental Stream，是在音视频数据上加了时间戳等对数据帧的说明信息。
-* es 层：Elementary Stream，即音视频数据
+- ts 层：Transport Stream，是在 pes 层的基础上加入数据流的识别和传输必须的信息。
+- pes 层：Packet Elemental Stream，是在音视频数据上加了时间戳等对数据帧的说明信息。
+- es 层：Elementary Stream，即音视频数据
 
-![ts文件格式](./ts_layer.png)
+![ts文件格式](RES/ts_layer.png)
 
 ts 包大小固定为 188 字节，ts 层分为三个部分：ts header、adaptation field、payload。ts header 固定 4 个字节；adaptation field 可能存在也可能不存在，主要作用是给不足 188 字节的数据做填充；payload 是 pes 数据。
 
@@ -29,9 +29,9 @@ ts 包大小固定为 188 字节，ts 层分为三个部分：ts header、adapta
 |continuity_counter|4b|包递增计数器，随着每一个具有相同PID的TS流分组而增加，当它达到最大值后又回复到0。范围为0~15|
 
 ts层的内容是通过PID值来标识的，主要内容包括：PAT表、PMT表、音频流、视频流。解析ts流要先找到PAT表，只要找到PAT就可以找到PMT，然后就可以找到音视频流了。PAT表的PID值固定为0。PAT表和PMT表需要定期插入ts流，因为用户随时可能加入ts流，这个间隔比较小，通常每隔几个视频帧就要加入PAT和PMT。PAT和PMT表是必须的，还可以加入其它表如SDT（业务描述表）等，不过hls流只要有PAT和PMT就可以播放了。
-* PAT表：他主要的作用就是指明了PMT表的PID值。
-* PMT表：他主要的作用就是指明了音视频流的PID值。
-* 音频流/视频流：承载音视频内容。
+- PAT表：他主要的作用就是指明了PMT表的PID值。
+- PMT表：他主要的作用就是指明了音视频流的PID值。
+- 音频流/视频流：承载音视频内容。
 
 PID值0x0000—0x000F保留。其中0x0000为PAT保留；0x0001为CAT保留；0x1fff为分组保留，即空包。标准中定义的PID分配见下表：
 
@@ -55,12 +55,12 @@ PID值0x0000—0x000F保留。其中0x0000为PAT保留；0x0001为CAT保留；0x
 
 自适应区的长度要包含传输错误指示符标识的一个字节。pcr是节目时钟参考，pcr、dts、pts都是对同一个系统时钟的采样值，pcr是递增的，因此可以将其设置为dts值，音频数据不需要pcr。如果没有字段，ipad是可以播放的，但vlc无法播放。打包ts流时PAT和PMT表是没有adaptation field的，不够的长度直接补0xff即可。视频流和音频流都需要加adaptation field，通常加在一个帧的第一个ts包和最后一个ts包里，中间的ts包不加。
 
-![ts adaption](./ts_adaption.png)
+![ts adaption](RES/ts_adaption.png)
 
 #### PAT表(Program Association Table 节目关联表) 0x0000
 TS流中会定期出现PAT表，PAT表提供了节目号和对应PMT表格的PID的对应关系；结构如下:
 
-![PAT表结构](./ts_pat.jpg)
+![PAT表结构](RES/ts_pat.jpg)
 
 |条目|长度|描述|
 |:--|:--|:--|
@@ -85,7 +85,7 @@ TS流中会定期出现PAT表，PAT表提供了节目号和对应PMT表格的PID
 #### PMT表(Program Map Tables 节目映射表)
 PMT在传送流中用于指示组成某一套节目的视频、音频和数据在传送流中的位置，即对应的TS包的PID值，以及每路节目的节目时钟参考（PCR）字段的位置; 结构如下:
 
-![PMT表结构](./ts_pmt.jpg)
+![PMT表结构](RES/ts_pmt.jpg)
 
 |条目|长度|描述|
 |:--|:--|:--|
@@ -204,7 +204,7 @@ h.264的数据是由slice组成的，slice的内容包括：视频、sps、pps�
 
 打包es层数据时pes头和es数据之间要加入一个type=9的nalu，关键帧slice前必须要加入type=7和type=8的nalu，而且是紧邻。
 
-![pes示例](./ts_pes.png)
+![pes示例](RES/ts_pes.png)
 
 ## 总结
-![总结](./ts_summary.jpg)
+![总结](RES/ts_summary.jpg)
