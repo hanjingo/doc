@@ -893,3 +893,107 @@ async(func, f5);
 this_thread::sleep_for(100_ms);
 assert(f5.valid());
 ```
+
+## 高级议题
+### 函数lock()
+除了使用mutex的成员函数或Lock_guard/unique_lock,我们还可以使用2个自由函数lock()和try_lock()来操作mutex,lock()和try_lock()类似make_unique_locks(),可以一次锁定多个互斥量，而且可以保证不会出现死锁，其声明如下:
+```c++
+template<typename Lockable, ...>    // 最多支持5个互斥量
+void lock(Lockable1& 11, ...);
+template<typename Lockable1, ...>   // 最多支持5个互斥量
+int try_lock(Lockable1& 11, ...);   // 返回锁定的数量
+```
+thread库在c++标准之外还提供对互斥量容器的支持:
+```c++
+template<typename ForwardIterator>  // 使用迭代器便利互斥量容器
+void lock(ForwardIterator begin, ForwardIterator end);
+
+template<typename ForwardIterator>  // 使用迭代器遍历互斥量容器
+ForwardIterator try_lock(ForwardIterator begin, ForwardIterator end);
+```
+lock()和try_lock()的用法如下:
+```c++
+mutex m1, m2;
+{
+    auto g1 = make_unique_lock(m1, adopt_lock); // 使用adopt_lock
+    auto g2 = make_unique_lock(m2, adopt_lock);
+
+    lock(m1, m2);                               // 使用2个mutex
+} // unique_lock自动解锁
+{
+    auto g1 = make_unique_lock(m1, defer_lock); // 使用defer_lock
+    auto g2 = make_unique_lock(m2, defer_lock);
+
+    try_lock(g1, g2);                           // 锁定2个unique_lock
+} // unique_lock自动解锁
+```
+
+### promise
+promise是future的内部实现，也用于处理异步调用返回值，但它需要配合thread使用，可以作为函数的输出参数，其用法更加灵活。
+
+promise需要在线程中用set_value()设置要返回的值，用成员函数get_future()产生future对象。例:
+```c++
+auto func = [](int n, promise<int>& p){     // 使用promise作为输出参数
+    p.set_value(fab(n));
+};
+
+promise<int> p;                             // promise变量
+thread(func, 10, boost::ref(p)).detach();   // 启动计算线程
+
+auto f = p.get_future();                    // 等待future的计算结果
+cout << f.get() << endl;
+```
+
+### barrier
+barrier是thread库基于条件变量提供的另一种同步机制，可用于多个线程同步，当线程执行到barrier时必须等待，直到所有的线程都到达这个点时才能继续执行线程。barrier的另一个名字rendezvous(约会地点)更形象地描述了这种行为。例:
+```c++
+atomic<int> x;
+barrier br(5);              // 定义1个5个线程的barrier
+
+auto func = [&](){
+    cout << "thread" << ++x << " arrived barrier." << endl;
+    br.wait();              // 在barrier处等待，必须等5个线程都到达这里才能继续执行
+    cout << "thread run." << endl;
+};
+
+thread_group tg;            // 一个线程
+for (int i = 0; i < 5; ++i) // 创建5个线程
+{
+    tg.create_thread(func);
+}
+tg.join_all();
+```
+
+### 线程本地存储
+c++引入了新的关键字thread_local,而thread库使用thread_specific_ptr实现了可移植的线程本地存储机制(thread local storage, 或thread specific storage, 简称tss),使这样的变量用起来就像是每个线程独立拥有的，从而简化多线程应用。
+
+thread_specific_ptr是一种智能指针，因此它的接口与shared_ptr相似，它重载了operator*和operator->，可以用get()获得真实的指针，它也有reset()和release()函数。
+
+thread_specific_ptr的初始值通常是空指针(nullptr),因此需要使用get()来进行检测。thread_specific_ptr没有定义隐式的bool转换，所以不能直接在bool语境中检查是否为空。例:
+```c++
+thread_specific_ptr<int> p1;    // 线程本地存储一个整数
+
+auto func = [&]{
+    pi.reset(new int());        // 直接用reset()函数赋值
+
+    ++(*pi);
+    cout << "thread v=" << *pi << endl;
+};
+
+async(func);                    // 启动2个线程
+async(func);
+```
+
+### 线程结束时执行操作
+this_thread名字空间提供了一个at_thread_exit(func)函数，它允许“登记”一个线程在结束的时候执行可调用物func,无论线程是否被中断。例:
+```c++
+void end_msg(const string& msg)             // 定义线程结束时被调用的函数
+{ cout << msg << endl; }
+
+void printing()
+{
+    ...
+    at_thread_exit(bind(end_msg, "end"));   // 使用bind得到函数对象
+}
+```
+但如果线程被特定的操作系统API强行中止，或者程序调用标准C函数exit()(如main()函数正常结束), abort(), 那么线程也会强制结束, at_thread_exit()登记的函数不会被调用。

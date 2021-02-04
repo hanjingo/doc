@@ -32,3 +32,4 @@
 [<<c++标准模板库编程实战>>](NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md)
 [<<stl源码剖析>>](NOTE/ANALYSIS_OF_STL_SOURCE_CODE/README.md)
 [cmake教程](OTHERS/cmake.md)
+[FFmpeg导航](MEDIA/FFMPEG/GUIDE.md)
