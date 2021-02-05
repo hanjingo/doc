@@ -1019,25 +1019,172 @@ int main()
     typedef ip::tcp::endpoint   endpoint_type;
     typedef ip::tcp::socket     socket_type;
 
-    io_service io; // 必需的io_service对象
+    io_service io;                                  // 必需的io_service对象
 
-    spawn(io, [&](yield_context yield){ // 使用spawn函数产生协程
-        acceptor_type acceptor(io, endpoint_type(ip::tcp::v4(), 6688));
+    spawn(io, [&](yield_context yield){             // 使用spawn函数产生协程
+        acceptor_type acceptor(io,                  // acceptor对象
+            endpoint_type(ip::tcp::v4(), 6688)); 
 
         for(;;)
         {
             socket_type sock(io);
             error_code ec;
 
-            acceptor.async_accept(sock, yield[ec]);
+            acceptor.async_accept(sock, yield[ec]); // 使用协程，无handler
 
             if (ec)
             { return; }
 
-            auto len = sock.async_write_some(
-                buffer("hello coroutine"), yield);
+            auto len = sock.async_write_some(       // 异步写数据，获取字节数
+                buffer("hello coroutine"), yield);  // 使用协程，无handler
             cout << "send " << len << "bytes" << endl;
         }
     });
 }
+```
+
+## 其他议题
+### 超时处理
+```c++
+io_service io;
+ip::tcp::socket sock(io);
+ip::tcp::endpoint ep(ip::address::from_string("127.0.0.1"), 6688);
+
+sock.async_connect(ep, [](const error_code&){});    // 异步连接
+
+steady_timer t(io, 500_ms);                         // 开始计时
+t.async_wait(                                       // 异步等待超时
+    [&](const error_code&){                         // 使用lambda表达式
+        cout << "time expired" << endl;
+        sock.close();});
+
+...
+io.run();
+```
+
+### 流操作
+```c++
+for (int i = 0; i < 5; ++i)
+{
+    // 连接到本机的6688端口
+    ip::tcp::iostream("127.0.0.1", "6688");
+    string str;
+    getline(tcp_stream, str); // 从tcp流中读取一行数据
+    cout << str << endl;
+}
+
+io_service io;
+
+ip::tcp::endpoint ep(ip::tcp::v4(), 6688);
+ip::tcp::acceptor acceptor(io, ep);
+
+for (;;)
+{
+    ip::tcp::iostream tcp_stream;
+    acceptor.accept(*tcp_stream.rdbuf());
+    tcp_stream << "hello tcp stream";
+}
+```
+
+### UDP协议通信
+UDP协议是无连接的所以不需要建立连接,示范同步的UDP客户端和服务端的用法:
+```c++
+// 服务端
+int main()
+{
+    io_service io;
+
+    ip::udp::socket sock(io,
+        ip::udp::endpoint(ip::udp::v4(), 6699)); // 使用ipv4协议，端点6699
+
+    for (;;)
+    {
+        char buf[1]; // 一个临时用缓冲区
+        ip::udp::endpoint ep; // 要接受连接的远程端点
+
+        error_code ec;
+
+        sock.receive_from( // 阻塞等待远程结束
+            buffer(buf), ep, 0, ec); // 端点信息保存在ep对象中
+
+        if (ec && ec != error::message_size)
+        { throw system_error(ec); }
+        cout << "send to " << ep.address() << endl;
+        sock.send_to(buffer("hello asio udp"), ep); // 发送数据
+    }
+}
+```
+
+```c++
+// 客户端
+int main()
+{
+    io_service io;
+
+    ip::udp::endpoint send_ep(              // 连接端点
+        ip::address::from_string("127.0.0.1"), 6699);
+
+    ip::udp::socket sock(io);               // 创建UDP socket对象
+    sock.open(ip::udp::v4());               // 使用ipv4打开socket
+
+    char buf[1];
+    sock.send_to(buffer(buf), send_ep);     // 向连接端点发送连接数据
+
+    vector<char> v(100, 0);
+    ip::udp::endpoint recv_ep;
+    sock.receive_from(buffer(v), recv_ep);  // 接收数据
+    cout << "recv from" << recv_ep.address() << " ";
+    cout << &v[0] << endl;
+}
+```
+
+### UNIX描述符
+使用UNIX文件描述符从标准流里异步读取数据:
+```c++
+io_service io;
+
+typedef boost::asio::posix::stream_descriptor descriptor_type;
+descriptor_type in(io, STDIN_FILENO);               // unix描述符
+vector<char> buf(30);                               // 缓冲区
+
+typedef void(handler_type) handler =                // 定义handler
+    [&](const error_code& ec, std::size_t len) {
+        if (ec) { return; }
+        if (len < buf.size())
+        { buf[len] = 0; }
+
+        cout << buf.data();
+
+        in.async_read_some(buffer(buf), handler);   // 再次异步读取
+    };
+
+in.async_read_some(buffer(buf), handler);           // 异步读取标准流
+io.run();                                           // 启动事件循环
+```
+UNIX文件描述符也可以使用协程
+```c++
+io_service io;
+
+typedef boost::asio::posix::stream_descriptor descriptor_type;
+descriptor_type in(io, STDIN_FILENO);
+vector<char> buf(30);
+
+spawn(io,
+    [&](yield_context yield){
+        for(;;)
+        {
+            error_code ec;
+            auto len = in.async_read_some(  // 异步读取数据
+                buffer(buf), yield[ec]);    // 使用yield
+
+            if (ec) {return;}
+
+            if (len < buf.size())
+            { buf[len] = 0; }
+
+            cout << buf.data();
+        }
+    });
+
+io.run();
 ```
