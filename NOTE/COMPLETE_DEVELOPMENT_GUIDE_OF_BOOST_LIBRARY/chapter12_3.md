@@ -480,3 +480,564 @@ ip::tcp::endpoint ep(addr, 6688);       // 创建端点对象，端口号为6688
 assert(ep.address() == addr);
 assert(ep.port() == 6688);
 ```
+
+### socket
+socket类是TCP通信的基本类,它是basic_stream_socket的TCP协议特化，其摘要如下:
+```c++
+tempate <typename Protocol, ...>
+class basic_stream_socket
+{
+public:
+    typedef Protocol protocol_type;
+    typedef typename Protocol::endpoint endpoint_type;
+
+    // 构造函数
+    explicit basic_stream_socket(io_service& io_service);
+    basic_stream_socket(io_service& io_service,
+                        const protocol_type& protocol);
+    basic_stream_socket(io_service& io_service,
+                        const endpoint_type& endpoint);
+
+    // 转移构造函数
+    basic_stream_socket(basic_stream_socket&& other);
+    basic_stream_socket& operator=(basic_stream_socket&& other);
+
+    // 打开关闭端口，取消操作
+    void open(const protocol_type& protocol = protocol_type());
+    bool is_open() const;
+    void close();
+    void shutdown(shutdown_type what);
+    void cancel();
+
+    // 可读取的字节数
+    std::size_t available() const;
+
+    // 绑定endpoint
+    void bind(const endpoint_type& endpoint);
+    // 连接endpoint
+    void connect(const endpoint_type& peer_endpoint);
+    void async_connect(const endpoint_type& peer, handler);
+
+    // 设置socket选项
+    void set_option(const SettableSocketOption& option);
+    void get_option(GettableSocketOption& option) const;
+
+    // 是否是非阻塞的
+    bool non_blocking() const;
+    void non_blocking(bool mode);
+
+    // 本地endpoint和远端endpoint
+    endpoint_type local_endpoint() const;
+    endpoint_type remote_endpoint() const;
+
+    // 发送数据
+    std::size_t send(const ConstBuffer& buffers);
+    void async_send(const ConstBuffer& buffers, handler);
+
+    // 接收数据
+    std::size_t receive(const MutableBuffer& buffers);
+    void async_receive(const MutableBuffer& buffers, handler);
+
+    // 发送数据
+    std::size_t write_some(const ConstBuffer& buffers);
+    void async_write_some(const ConstBuffer& buffers, handler);
+
+    // 接收数据
+    std::size_t read_some(const MutableBuffer& buffers);
+    void async_read_some(const MutableBuffer& buffers, handler);
+};
+```
+异步读写函数async_xxx()可以使用2种形式的handler:
+```c++
+void handler(const error_code& ec,          // 操作的错误码
+            std::size_t bytes_transferred); // 传输的字节数
+void handler(const error_code& ec);         // 忽略传输的字节数
+```
+
+### acceptor
+acceptor类对应Socket API的accept()函数功能，它用于服务器端，在指定的端口号接收连接，acceptor必须配合socket类才能完成通信。
+
+acceptor是basic_socket_acceptor的TCP协议特化，其摘要如下:
+```c++
+template <typename Protocol, ...>
+class basic_socket_acceptor
+{
+public:
+    typedef Protocol protocol_type;
+    typedef typename Protocol::endpoint endpoint_type;
+
+    // 构造函数
+    explicit basic_socket_acceptor(io_service& io_service);
+
+    basic_socket_acceptor(io_service& io_service,
+                            const protocol_type& protocol;
+    basic_socket_acceptor(io_service& io_service,
+                            const endpoint_type& endpoint,
+                            bool reuse_addr = true);
+
+    // 转移构造函数
+    basic_socket_acceptor(basic_socket_acceptor&& other);
+    basic_socket_acceptor& operator=(basic_socket_acceptor&& other);
+
+    // 打开关闭端口,取消操作
+    void open(const protocol_type& protocol = protocol_type());
+    bool is_open() const;
+    void close();
+    void cancel();
+
+    // 绑定endpoint,监听端口
+    void bind(const endpoint_type& endpoint);
+    void listen(int backlog = socket_base::max_connections);
+
+    // 是否是非阻塞的
+    bool non_blocking() const;
+    void non_blocking(bool mode);
+
+    // 设置socket选项
+    void set_option(const SettableSocketOption& option);
+    void get_option(GettableSocketOption& option);
+
+    // 本地endpoint
+    endpoint_type local_endpoint() const;
+
+    // 接收请求
+    void accept(socket& peer);
+    void async_accept(socket& peer, handler);
+    void accept(socket& peer, endpoint_type& peer_endpoint);
+    void async_accept(socket& peer, endpoint_type& peer_endpoint, handler);
+};
+```
+
+## 同步通信
+服务端:
+```c++
+int main()
+try
+{
+    typedef ip::tcp::acceptor   acceptor_type;
+    typedef ip::tcp::endpoint   endpoint_type;
+    typedef ip::tcp::socket     socket_type;
+
+    cout << "server start." << endl;
+    io_service io;                              // asio程序必需的io_service对象
+
+    acceptor_type acceptor(io,                  // 创建acceptor对象，ipv4
+        endpoint_type(ip::tcp::v4(), 6688));    // 接收6688端口，开始监听
+
+    cout << acceptor.local_endpoint().address() << endl;
+
+    for(;;) // 循环执行服务
+    {
+        socket_type sock(io);                   // 一个socket对象
+
+        acceptor.accept(sock);                  // 阻塞等待socket连接
+
+        cout << "client:";
+        cout << sock.remote_endpoint().address() << endl;
+
+        sock.send(buffer("hello asio"));        // 发送数据，使用buffer()
+    }
+}
+catch (std::exception& e)                       // 捕获可能发生的异常
+{
+    cout << e.what() << endl;
+}
+```
+客户端:
+```c++
+int main()
+try
+{
+    typedef ip::tcp::endpoint   endpoint_type;  // 简化类型定义
+    typedef ip::tcp::socket     socket_type;
+    typedef ip::address         address_type;
+
+    cout << "client start." << endl;
+
+    io_service io;                              // io_service对象
+    
+    socket_type sock(io);                       // 创建socket对象
+
+    endpoint_type ep(
+        address_type::from_string("127.0.0.1"), 6688);
+
+    sock.connect(ep);                           // socket连接到端点
+    cout << sock.available() << endl;           // 获取可读取的字节数
+
+    vector<char> str(sock.available()+1, 0);    // 定义一个vector缓冲区
+    sock.receive(buffer(str));                  // 使用buffer()包装缓冲区，接收数据
+
+    cout << "receive from " << sock.remote_endpoint().address();
+    cout << &str[0] << endl;
+}
+catch (std::exception& e)
+{
+    cout << e.what() << endl;
+}
+```
+在接受数据时，我们使用了vector<char>作为接收缓冲区，它可以分配大于sock.available()的内存，一次性接收所有数据，否则就要循环接收，直到返回错误码(或者捕获异常):
+```c++
+vector<char> str(5, 0); // 缓冲区长度5
+error_code ec;
+
+for(;;)
+{
+    sock.read_some(buffer(str), ec); // 使用read_some()的错误码形式
+    if (ec)
+    { break; }
+    cout << &str[0];
+}
+```
+
+## 异步通信
+服务器端：
+```c++
+class server
+{
+    typedef server this_type;
+    typedef ip::tcp::acceptor acceptor_type;
+    typedef ip::tcp::endpoint endpoint_type;
+    typedef ip::tcp::socket socket_type;
+    typedef shared_ptr<socket_type> sock_ptr;
+
+private:
+    io_service m_io;
+    acceptor_type m_acceptor;
+
+    /*
+    server类必需的成员变量是io_service对象和一个acceptor对象,他们是TCP通信的必备要素，
+    我们还定义了一个智能指针的typedef,它指向socket对象，用来在回调函数中传递.
+    */
+public:
+    server() : m_acceptor(m_io, endpoint_type(ip::tcp::v4(), 6688))
+    { accept(); }
+
+    void run()
+    { m_io.run(); }
+
+    /*
+    server的构造函数使用io_service, TCP协议和端口初始化acceptor对象，并用accept()函数立即启动异步服务
+    */
+    void accept()
+    {
+        sock_ptr sock(new socket_type(m_io));
+        acceptor.async_accept(*sock,
+            bind(&this_type::accept_handler, this,
+                boost::asio::placeholders::error, sock));
+    }
+
+    /*
+    accept()函数用于启动异步，接收连接，它需要调用acceptor的async_accept()函数。
+    为了能够让socket对象能够被异步调用后还能继续使用，我们可以使用shared_ptr来创建socket对象的智能指针，
+    它可以在程序的整个生命周期中存在，直到没有人使用它为止。
+    当有TCP链接发生时，server::accept_handler()函数将被调用，它使用socket对象发送数据。
+    */
+    void accept_handler(const error_code& ec, sock_ptr sock)
+    {
+        if (ec)
+        { return; }
+
+        cout << "client:";
+        cout << sock->remote_endpoint().address() << endl;
+        sock->async_write_some(buffer("hello asio"),
+            bind(&this_type::write_handler, this,
+            boost::asio::placeholders::error));
+        accept();
+    }
+
+    /*
+    发送数据的回调函数write_handler()很简单，因为我们不需要做更多的工作，可以直接实现一个空函数，
+    在这里我们简单地输出一条消息，表示异步发送数据完成。
+    */
+    void write_handler(const system::error_code&) // 忽略字节数
+    { cout << "send msg complete." << endl; }
+    void write_handler2(const error_code&, std::size_t n)
+    { cout << "send msg " << n << endl; }
+}
+
+int main()
+try
+{
+    cout << "server start." << endl;
+    server srv; // 构造server对象
+    srv.run();  // 启动异步调用事件处理循环
+}
+catch (std::exception& e)
+{
+    cout << e.what() << endl;
+}
+```
+客户端:
+```c++
+class client
+{
+    typedef client                  this_type;
+    typedef ip::tcp::endpoint       endpoint_type;
+    typedef ip::address             address_type;
+    typedef ip::tcp::socket         socket_type;
+    typedef shared_ptr<socket_type> sock_ptr;
+    typedef vector<char>            buffer_type;
+private:
+    io_service      m_io;  // io_service对象
+    buffer_type     m_buf; // 接收缓冲区
+    endpoint_type   m_ep;  // TCP端点
+
+    client():
+        m_buf(100, 0),
+            m_ep(address_type::from_string("127.0.0.1"), 6688)
+    {
+        start();
+    }
+
+    void run()
+    { m_io.run(); }
+
+    void start()
+    {
+        sock_ptr sock(new socket_type(m_io));   // 创建socket对象
+        sock->async_connect(m_ep,               // 异步链接
+            bin(&this_type::conn_handler, this,
+                boost::asio::placeholders::error, sock));
+    }
+
+    void conn_handler(const error_code& ec, sock_ptr sock)
+    {
+        if (ec)                                 // 处理错误代码
+        { return; }
+        cout << "recive from " << sock->remote_endpoint().address();
+
+        sock->async_read_some(buffer(m_buf),    // 异步读取数据
+            bind(&client::read_handler, this,
+                boost::asio::placeholders::error));
+    }
+
+    void read_handler(const error_code& ec)
+    {
+        if (ec)
+        { return; }
+        cout << &m_buf[0] << endl;
+    }
+
+    void conn_handler(const error_code& ec, sock_ptr sock)
+    {
+        ...
+        sock->async_read_some(buffer(m_buf),
+            bind(&client::read_handler, this,
+                boost::asio::placeholders::error, sock));   // 绑定sock传递
+    }
+
+    void read_handler(const error_code& ec, sock_ptr sock)
+    {
+        ...
+        sock->async_read_some(buffer(m_buf),                // 继续异步读取数据
+            bind(&client::read_handler, this,
+                boost::asio::placeholders::error, sock));
+    }
+}
+
+int main()
+try
+{
+    cout << "client start." << endl;
+    client cl;
+    cl.run();
+}
+catch (std::exception& e)
+{ cout << e.what() << endl; }
+```
+
+### 使用lambda
+服务端使用lambda:
+```c++
+void accept()
+{
+    sock_ptr sock(new socket_type(m_io));   // 智能指针
+
+    m_acceptor.async_accept(*sock,          // 异步监听服务
+        [this, sock](const error_code& ec){
+            if (ec)
+            { return; }
+
+            sock->async_send(               // 异步发送数据
+                buffer("hello asio"),
+                [](const error_code&, std::size_t)
+                { cout << "send msg complate." << endl; });
+
+            accept();                       // 再次启动异步接收连接
+        });
+}
+```
+客户端使用lambda:
+```c++
+void start()
+{
+    sock_ptr sock(new socket_type(m_io));                           // 智能指针
+
+    sock->async_connect(m_ep,                                       // 启动异步链接
+        [this, sock](const error_code& ec){                         // 捕获this和sock对象
+            if (ec)
+            { return; }                                             // 检查错误码
+
+            sock->async_read_some(buffer(m_buf),                    // 启动异步读取
+                [this, sock](const error_code& ec, std::size_t){    // lambda表达式
+                    read_handler(ec, sock);                         // 调用read_handler
+                });
+        });
+}
+```
+
+## 域名解析
+### 类摘要
+resolver是basic_resolver的TCP协议特化，其类摘要如下:
+```c++
+template <typename InternetProtocol,...>
+class basic_resolver
+{
+public:
+    typedef InternetProtocol                            protocol_type;
+    typedef typename InternetProtocol::endpoint         endpoint_type;
+    typedef basic_resolver_query<InternetProtocol>      query;
+    typedef basic_resolver_interator<InternetProtocol>  iterator;
+
+    explicit basic_resolver(io_service& io_service);
+    void cancel();
+    iterator resolve(const query& q);
+    void async_resolve(const query& q, ResolveHandler handler);
+    iterator resolve(const endpoint_type& e);
+    void async_resolve(const endpoint_type& e, ResolveHandler handler);
+};
+
+template <typename InternetProtocol>
+class basic_resolver_query
+{
+public:
+    typedef InternetProtocol protocol_type;
+
+    basic_resolver_query(const std::string& service,
+        flags resolve_flags = passive | address_configured);
+
+    basic_resolver_query(const protocol_type& protocol,
+        const std::string& service,
+        flags resolve_flags = passive | address_configured);
+
+    basic_resolver_query(const std::string& host,
+        const std::string& service,
+        flags resolve_flags = address_configured);
+
+    std::string host_name() const;
+    std::string service_name() const;
+}
+```
+
+### 用法
+```c++
+void resolve_connect(io_service &io,    // io_service对象
+    ip::tcp::socket &sock,              // socket对象
+    const char* name, int port)         // 网址和端口号
+{
+    ip::tcp::resolver r(io);            // 创建resolver对象
+
+    ip::tcp::resolver::query q(         // 创建query对象
+        name, lexical_cast<string>(port));
+
+    auto iter = r.resolve(q);           // 使用resolve()迭代端点
+    decltype(iter) end;                 // 尾部迭代器
+    error_code ec = error::host_not_found;
+
+    for (;ec && iter != end; ++iter)
+    {
+        sock.close();
+        sock.connect(*iter, ec);        // 尝试连接
+    }
+    if (ec)
+    {
+        cout << "can't connect." << endl;
+        throw system_error(ec);
+    }
+}
+
+int main()
+try
+{
+    io_service io;
+    ip::tcp::socket sock(io);
+
+    resolve_connect(io, sock, "www.baidu.com", 80);
+    cout << sock.remote_endpoint() << endl;
+}
+catch (std::exception& e)
+{
+    cout << e.what() << endl;
+};
+```
+resolver不仅能解析域名，它也支持使用IP地址和服务名:
+```c++
+ip::tcp::resolver::query q("127.0.0.1", "http");
+```
+
+## 使用协程
+使用协程功能需要包含头文件<boost/asio/spawn.hpp>,并连接libboost_context.a, libboost_coroutine.a和libboost_thread.a。
+### 摘要
+asio的协程功能主要使用类yield_context,它是basic_yield_context的typedef,其类摘要如下:
+```c++
+template <typename Handler>
+class basic_yield_context                   // 包装协程相关对象
+{
+public:
+    basic_yield_context(
+        const detail::weak_ptr<callee_type>& coro,
+        caller_type& ca, Handler& handler);
+
+    basic_yield_context operator[](boost::system::error_code& ec) const;
+
+    detail::weak_ptr<callee_type> coro_;    // 协程
+    caller_type& ca_;                       // 协程
+    Handler& handler_;                      // 完成回调函数
+    boost::system::error_code& ec_;         // 错误码
+};
+
+typedef basic_yield_context<                // 类型定义
+    detail::wrapped_handler<
+        io_service::strand, void(*)(),
+        detail::is_continuation_if_running> > yield_context;
+```
+通常我们不直接创建yield_context对象，而是使用函数spawn()创建yield_context对象。它产生yield_context对象，再将其传递给使用yield_context对象的函数。spawn()有多个重载形式，常用的是以下2种:
+```c++
+void spawn(strand s, Function function);        // 使用strand创建协程
+void spawn(io_service io, Function function);   // 使用io_service创建协程
+```
+其中的function必须符合以下函数签名:
+```c++
+void func(boost::asio::yield_context yield);    // 使用yield_context参数
+```
+
+### 用法
+```c++
+int main()
+{
+    typedef ip::tcp::acceptor   acceptor_type;
+    typedef ip::tcp::endpoint   endpoint_type;
+    typedef ip::tcp::socket     socket_type;
+
+    io_service io; // 必需的io_service对象
+
+    spawn(io, [&](yield_context yield){ // 使用spawn函数产生协程
+        acceptor_type acceptor(io, endpoint_type(ip::tcp::v4(), 6688));
+
+        for(;;)
+        {
+            socket_type sock(io);
+            error_code ec;
+
+            acceptor.async_accept(sock, yield[ec]);
+
+            if (ec)
+            { return; }
+
+            auto len = sock.async_write_some(
+                buffer("hello coroutine"), yield);
+            cout << "send " << len << "bytes" << endl;
+        }
+    });
+}
+```
