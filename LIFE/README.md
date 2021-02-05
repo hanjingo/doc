@@ -1,2 +1,2 @@
 # 生活记录
-- [房地产](HOUSE/README.md)
+- [看房笔记](HOUSE/watch_house.md)
