@@ -4,6 +4,8 @@
 > - [weak_ptr](chapter3_3.md)
 > - [intrusive_ptr](chapter3_4.md)
 > - [pool](chapter3_5.md)
+- [第七章 容器与数据结构](chapter7.md)
+> - [circular_buffer](chapter7_5.md)
 - [第十章 操作系统相关](chapter10.md)
 > - [system](chapter10_1.md)
 > - [chrono](chapter10_2.md)
