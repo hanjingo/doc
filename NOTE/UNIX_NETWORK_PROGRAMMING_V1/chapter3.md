@@ -93,4 +93,14 @@ main (int argc, char **argv)
 }
 ```
 
-    
+### 主机字节序与网络字节序的转换
+```c++
+#include <netinet/in.h>
+/*主机字节序转网络字节序*/
+uint16_t htons(uint16_t host16bitvalue);
+uint32_t htonl(uint32_t host32bitvalue);
+
+/*网络字节序转主机字节序*/
+uint16_t ntohs(uint16_t net16bitvalue);
+uint32_t ntohl(uint32_t net32bitvalue);
+```
