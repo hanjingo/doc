@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 ```
 当我们编辑好文件，点击运行，可以看到MainWindow的运行结果：
 
-![](RES/action1.png)
+![](RES/action1.jpg)
 
 这是一个相对完整的程序。首先，我们在MainWindow类中添加了一个私有函数open()和一个私有变量openAction。在 MainWindow 的构造函数中，第一行我们调用了setWindowTitle()，设置主窗口的标题。注意我们的文本使用tr()函数，这是一个用于 Qt 国际化的函数。在后续章节中我们可以看到，我们可以使用 Qt 提供的国际化工具，将tr()函数的字符串提取出来，进行国际化。由于所需进行国际化的文本应该被大多数人认识，所以，tr()函数里面一般会是英文文本。
 
