@@ -1,19 +1,17 @@
 # 目录
+- [算法](ALGORITHMS)
+- [编码之坑](BUG/README.md)
 - [C++](C++/README.md)
 - [数据库](DB/README.md)
 - [分布式](DCS/README.md)
-- [金融](FINANCE/README.md)
 - [游戏](GAME/README.md)
-- [生活](LIFE/README.md)
 - [多媒体](MEDIA/README.md)
 - [读书笔记](NOTE/README.md)
-- [源码分析](SRC/README.md)
-- [编码之坑](BUG/README.md)
 - [杂文](OTHERS/README.md)
+- [源码分析](SRC/README.md)
 
 - - -
 # 快捷导航
-- [看房笔记](LIFE/HOUSE/watch_house.md)
 - [如何写markdown](how_to_write_markdown.md)
 - [vim常用快捷键](OTHERS/vim_shortcut.md)
 - [linux常用命令](OTHERS/linux_cmd.md)
