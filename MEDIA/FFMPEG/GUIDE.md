@@ -45,13 +45,13 @@
 暂存解码之前的媒体数据（一个音/视频帧、一个字幕包等）及附加信息（解码时间戳、显示时间戳、时长等)，主要用于建立缓冲区并装载数据。
 - data/size/pos： 数据缓冲区指针、长度和媒体流中的字节偏移量
 - flags：标志域的组合，1(AV_PKT_FLAG_KEY)表示该数据是一个关键帧, 2(AV_PKT_FLAG_CORRUPT)表示该数据已经损坏
-- destruct：释放数据缓冲区的函数指针，其值可为 [av_destruct_packet]/av_destruct_packet_nofree, 会被 av_free_packet 调用
+- destruct：释放数据缓冲区的函数指针，其值可为 \[av_destruct_packet\]/av_destruct_packet_nofree, 会被 av_free_packet 调用
 
 ### AVStream
 描述一个媒体流，其大部分信息可通过 avformat_open_input 根据文件头信息确定，其他信息可通过 avformat_find_stream_info 获取，典型的有 视频流、中英文音频流、中英文字幕流(Subtitle)，可通过 av_new_stream、avformat_new_stream 等创建。
-- index：在AVFormatContext中流的索引，其值自动生成(AVFormatContext::streams[index])
+- index：在AVFormatContext中流的索引，其值自动生成(AVFormatContext::streams\[index\])
 - nb_frames：流内的帧数目
 - time_base：流的时间基准，是一个实数，该流中媒体数据的pts和dts都将以这个时间基准为粒度。通常，使用av_rescale/av_rescale_q可以实现不同时间基准的转换
-- avformat_find_stream_info：获取必要的编解码器参数(如 AVMediaType、CodecID )，设置到 AVFormatContext::streams[i]::codec 中
+- avformat_find_stream_info：获取必要的编解码器参数(如 AVMediaType、CodecID )，设置到 AVFormatContext::streams\[i\]::codec 中
 - av_read_frame：从多媒体文件或多媒体流中读取媒体数据，获取的数据由 AVPacket 来存放
 - av_seek_frame：改变媒体文件的读写指针来实现对媒体文件的随机访问，通常支持基于时间、文件偏移、帧号(AVSEEK_FLAG_FRAME)的随机访问方式

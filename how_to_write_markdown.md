@@ -113,3 +113,75 @@ $$公式内容$$
 |极限|\lim_{n\rightarrow+\infty} n|
 |累加|\sum \frac{1}{i^2}|
 |累乘|\prod \frac{1}{i^2}|
+
+# 绘制流程图，时序图，甘特图
+## 流程图
+### 样式流程图
+基本语法:
+- graph 指定流程图方向：graph LR 横向，graph TD 纵向
+- 元素的形状定义：
+> - id[描述] 以直角矩形绘制
+> - id(描述) 以圆角矩形绘制
+> - id{描述} 以菱形绘制
+> - id>描述] 以不对称矩形绘制
+> - id((描述)) 以圆形绘制
+- 线条定义：
+> - A-->B 带箭头指向
+> - A---B 不带箭头连接
+> - A-.-B 虚线连接
+> - A-.->B 虚线指向
+> - A==>B 加粗箭头指向
+> - A--描述---B 不带箭头指向并在线段中间添加描述
+> - A--描述-->B 带描述的箭头指向
+> - A-.描述.->B 带描述的虚线连指向
+> - A==描述==>B 带描述的加粗箭头指向
+- 子流程图定义:
+```sh
+subgraph title
+    graph direction
+end
+```
+
+例:
+```sh
+```mermaid
+graph LR
+    A(开始) -->B(起床)
+    B --天气不好--- C>干活]
+    C ==> D{休息时间到了}
+    D -.yes.-> E((休息))
+    D -.no.-> C
+    E --> F(吃饭)
+	subgraph one
+	F(吃饭)-->G(吃菜)-->H(夹菜)
+	end
+```
+
+### 标准流程图
+基本语法：
+- 定义模块 id=>关键字: 描述 （“描述”的前面必须有空格，“=>” 两端不能有空格）
+- 关键字：
+> - start 流程开始，以圆角矩形绘制
+> - opearation 操作，以直角矩形绘制
+> - condition 判断，以菱形绘制
+> - subroutine 子流程，以左右带空白框的矩形绘制
+> - inputoutput 输入输出，以平行四边形绘制
+> - end 流程结束，以圆角矩形绘制
+- 定义模块间的流向：
+> - 模块1 id->模块2 id ：一般的箭头指向
+> - 条件模块id (描述)->模块id(direction) ：条件模块跳转到对应的执行模块，并指定对应分支的布局方向
+
+例子:
+```sh
+```mermaid
+st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框（是或否?）
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+
+st->op->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op
+```
