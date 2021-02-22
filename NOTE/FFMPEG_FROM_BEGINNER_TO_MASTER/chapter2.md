@@ -209,3 +209,69 @@ ffplay -window_title "播放测试" rtmp://up.v.test.com/live/stream
 |ast|设置将要播放的音频流|
 |vst|设置将要播放的视频流|
 |sst|设置将要播放的字幕流|
+|stats|输出多媒体播放状态|
+|fast|非标准化规范的多媒体兼容优化|
+|sync|音视频同步设置可根据音频时间，视频时间或者外部扩展时间进行参考|
+|autoexit|多媒体播放完毕之后自动退出ffplay,ffplay默认播放完毕之后不退出播放器|
+|exitonkeydown|当有按键按下事件产生时退出ffplay|
+|exitonmousedown|当有鼠标按键事件产生时退出ffplay|
+|loop|设置多媒体文件循环播放的次数|
+|framedrop|当CPU资源占用过高时，自动丢帧|
+|infbuf|设置无极限的播放器buffer,这个选项常见于实时流媒体播放场景|
+|vf|视频滤镜设置|
+|acodec|强制使用设置的音频解码器|
+|vcodec|强制使用设置的视频解码器|
+|scodec|强制使用设置的字幕解码器|
+例:
+- 从20秒播放一个视频，播放时长为10秒钟，播放完成后自动退出ffplay,播放器窗口标题为"Hello World"
+```sh
+time ffplay -window_title "Hello World" -ss 20 -t 10 -autoexit output.mp4
+```
+- 播放Program13中的音视频流，视频流编号为4，音频流编号为5
+```sh
+ffplay -vst 4 -ast 5 ~/Movies/movie/ChainaTV-11.ts
+```
+- 加载SRT字幕
+```sh
+ffplay -window_title "Test Movie" -vf "subtitles=input.srt" output.mp4
+```
+
+### ffplay的数据可视化分析应用
+使用ffplay除了可以播放视频流媒体文件之外，还可以作为可视化的视频流媒体分析工具。
+
+例:
+- 使用ffplay播放音频文件，播放的时候将解码后的音频数据以音频波形的形式显示出来
+```sh
+ffplay -showmode 1 output.mp3
+```
+- 播放视频是想要体验解码器是如何解码每个宏块的
+```sh
+ffplay -debug vis_mb_type -window_title "show vis_mb_type" -ss 20 -t 10 -autoexit output.mp4
+```
+
+宏块显示颜色说明
+|宏块类型条件|说明|
+|:--|:--|
+|IS_PCM(MB_TYPE_INTRA_PCM)|无损（原始采样不包含预测信息）|
+|(IS_INTRA&&IS_ACPRED)|IS_INTRA16x16|16x16帧内预测|
+|IS_INTRA4x4|4x4帧内预测|
+|IS_DIRECT|无运动向量处理（B帧分片）|
+|IS_GMC&&IS_SKIP|16x16跳宏块（P或B帧分片）|
+|IS_GMC|全局运动补偿（与H.264无关）|
+|!USES_LIST(1)|参考过去的信息（P或B帧分片）|
+|!USES_LIST(0)|参考未来的信息（B帧分片）|
+|USES_LIST(0)&&USES_LIST(1)|参考过去和未来的信息（B帧分片）|
+- 通过ffplay查看B帧预测与P帧预测信息，希望将信息在窗口显示出来
+```sh
+ffplay -vismv pf output.mp4
+```
+vismv参数是用来显示图像解码时的运动向量信息的，可以设置三种类型的运动向量信息显示，具体如下:
+|参数|说明|
+|:--|:--|
+|pf|P帧向前运动估计显示|
+|bf|B帧向前运动估计显示|
+|bb|B帧向后运动估计显示|
+注意:这个vismv参数将会在未来被替换掉，未来更多的是使用codecview这个滤镜来进行设置,上面的命令可以用以下命令代替:
+```sh
+ffplay -flags2 +export_mvs -ss 40 output.mp4 -vf codecview=mv=pf+bf+bb
+```

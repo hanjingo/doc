@@ -24,6 +24,6 @@
 - [eos速查命令](DCS/EOS/cmd.md)
 - [读书笔记](NOTE/README.md)
 - [eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)
-- [I帧,P帧和B帧](MEDIA/PROTOCOL/frame.md)
+- [I帧,P帧和B帧](MEDIA/frame.md)
 - [cmake教程](OTHERS/cmake.md)
 - [FFmpeg导航](MEDIA/FFMPEG/GUIDE.md)

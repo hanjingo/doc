@@ -1,6 +1,10 @@
 # FFmpeg接口libavformat的使用
 ## 音视频流封装
-![文件Muxing接口调用流程]()
+```mermaid
+graph TD
+A[av_register_all]-->B[avformat_alloc_output_context2]-->C[avformat_new_stream]-->D[avformat_write_header]-->E[av_interleaved_write_frame]-->E[av_interleaved_write_frame]-->F[av_write_all]
+```
+
 ```c++
 /*API注册*/
 // 在使用ffmpeg的API之前，首先要注册使用FFmpeg的API，需要引用一些必要的头文件:
@@ -97,8 +101,12 @@ while(1) {
 av_write_trailer(oc);
 ```
 
-
 ## 音视频文件解封装
+```mermaid
+graph TD
+A[av_register_all]-->B[avformat_open_input]-->C[avformat_find_stream_info]-->D[av_read_frame]-->D[av_read_frame]-->F[avformat_close_input]
+```
+
 ```C++
 // API注册
 int main(int argc, char *argv[]) {
@@ -140,6 +148,14 @@ avformat_close_input(&fmt_ctx);
 ```
 
 ## 音视频文件转封装
+```mermaid
+graph TD
+A[av_register_all]-->B1[avformat_open_input]-->B2[avformat_find_stream_info]-->D[av_read_frame]
+A[av_register_all]-->C1[avformat_alloc_output_context2]-->C2[avformat_new_stream]-->C3[avcodec_copy_context]-->D[av_read_frame]
+D[av_read_frame]-->D[av_read_frame]-->E[av_interleaved_write_frame]-->F[avformat_close_input]
+E[av_interleaved_write_frame]-->G[av_write_traller]
+```
+
 ```c++
 int main(int argc, char *[argv])
 {
@@ -222,8 +238,14 @@ avformat_close_input(&ifmt_ctx);
 ```
 
 ## 视频截取
-### 流程图
-todo
+```mermaid
+graph TD
+A[av_register_all]-->B1.1[avformat_open_input]-->B1.2[avformat_find_stream_info]-->B1.3[av_seek_frame]-->C[av_read_frame]
+A[av_register_all]-->B2.1[avformat_alloc_output_context2]-->B2.2[avformat_new_stream]-->B2.3[avcodec_copy_context]-->B2.4[avformat_write_header]-->C[av_read_frame]
+C[av_read_frame]-->C[av_read_frame]-->D[av_interleaved_write_frame]
+D[av_interleaved_write_frame]-->E1[avformat_close_input]
+D[av_interleaved_write_frame]-->E2[av_write_traller]
+```
 
 ```c++
 av_seek_frame(ifmt_ctx, ifmt_ctx->streams[pkt.stream_index], ts_start, AVSEEK_FLAG_BACKWARD);
@@ -252,6 +274,15 @@ while(1) {
 ```
 
 ## avio内存数据操作
+```mermaid
+graph TD
+A[av_register_all]-->B[avformat_alloc_context]-->C[avio_alloc_context]
+C[avio_alloc_context]-->D1[avformat_open_input]
+C[avio_alloc_context]-->D2[read_pack]-->D1[avformat_open_input]
+D1[avformat_open_input]-->E[avformat_find_stream_info]-->F[av_read_frame]
+F[av_read_frame]-->F[av_read_frame]
+F[av_read_frame]-->G[avformat_close_input]
+```
 
 ```c++
 // api注册

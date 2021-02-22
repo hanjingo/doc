@@ -118,9 +118,13 @@ $$公式内容$$
 ## 流程图
 ### 样式流程图
 基本语法:
-- graph 指定流程图方向：graph LR 横向，graph TD 纵向
+- graph 指定流程图方向：
+> - graph LR 从左到右(left right)
+> - graph TD 从上到下(top bottom)
+> - graph RL 从右到左(right left)
+> - graph BT 从下到上(bottom top)
 - 元素的形状定义：
-> - id[描述] 以直角矩形绘制
+> - id【描述】 以直角矩形绘制
 > - id(描述) 以圆角矩形绘制
 > - id{描述} 以菱形绘制
 > - id>描述] 以不对称矩形绘制

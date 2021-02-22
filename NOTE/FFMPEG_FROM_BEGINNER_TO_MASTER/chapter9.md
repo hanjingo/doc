@@ -2,7 +2,16 @@
 
 ## FFmpeg新接口
 ### 使用FFmpeg新接口音频编码流程
-todo
+```mermaid
+graph TD
+A[avcodec_register_all]-->B[avcodec_find_encoder]-->C[avcodec_alloc_context3]-->D[avcodec_open2]-->E[av_packet_alloc]-->F[av_frame_alloc]-->G[av_fame_get_buffer]
+G[av_fame_get_buffer]-->H1.1[av_frame_free]-->I[av_packet_free]-->J[avcodec_free_context]
+G[av_fame_get_buffer]-->H2.1[av_frame_make_writable]-->H2.2[avcodec_send_frame]-->H2.3[avcodec_receive_packet]-->H1.1[av_frame_free]
+H2.3[avcodec_receive_packet]-->H2.3[avcodec_receive_packet]
+H2.3[avcodec_receive_packet]-->H2.1[av_frame_make_writable]
+```
+
+
 
 ```c++
 // 查找和打开编码器
@@ -86,7 +95,12 @@ static void encode(AVCodecContext *ctx, AVFrame *frame, AVPacket *pkt, FILE *out
 
 ### FFmpeg新接口音频解码
 #### 音频解码API调用流程 
-todo
+```mermaid
+graph TD
+A[avcodec_register_all]-->B[av_packet_alloc]-->C[avcodec_find_decoder]
+```
+
+
 
 ```c++
 // 查找和打开解码器
