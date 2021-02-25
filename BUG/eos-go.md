@@ -1,4 +1,6 @@
-# eos-go报action declares irrelevant authority错误
+# eos-go报错
+
+## eos-go报action declares irrelevant authority错误
 
 先上代码
 
@@ -38,7 +40,7 @@ Internal Service Error: Irrelevant authority included: action declares irrelevan
 看一下eos验证权限的源码顺序：
 
 1. push_transaction函数调用: check_authorization检查权限
-  
+
 ```c++
 void
    authorization_manager::check_authorization( const vector<action>&                actions,
@@ -144,7 +146,7 @@ void
    }
 ```
 2. check_authorization函数调用: lookup_minimum_permission拿到最小权限
-  
+
 ```c++
 //如果scope是系统账号,不允许link到最小账号，报错；
 //然后调用: lookup_linked_permission拿到预先链接在action上的权限;如果找不到，默认使用 active 权限（这里正是报错的原因）；

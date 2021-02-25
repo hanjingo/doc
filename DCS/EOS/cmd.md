@@ -12,3 +12,6 @@
 |发布合约|cleos set contract 账号 dapp地址 -p 账号@active|
 |清除合约|cleos set contract 账号 dapp地址 -p 账号@active --clear|
 |抵押net,cpu,内存|cli-baz system delegatebw 给钱的人 受益人 "用来买net而抵押的钱" "用来买cpu而抵押的钱" --transfer --buyram "要买的内存"|
+|查看节点信息|cleos get table 部署者账号 scope(默认部署者账号) producers|
+|查看节点调度信息|cleos get schedule -j|
+

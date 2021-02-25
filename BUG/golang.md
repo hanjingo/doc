@@ -1,6 +1,7 @@
-1. 
-```
+# golang常见错误
+## waitgroup的坑
 先上代码
+```go
 func main() {
     wg := new(sync.WaitGroup)
     for i := 0; i < 5; i++ {

@@ -13,21 +13,21 @@ eos货币机制
 |transfer|const name& from 转账人, const name& to 收款人, const asset& quantity 币数量, const string& memo 留言|转账|
 |open|const name& owner, const symbol& symbol, const name& ram_payer|?|
 |close|const name& owner, const symbol& symbol|?|
-  
+
 ## 定义函数
 |接口|参数|说明|
 |:-----|:------|:----|
 |get_supply|const name& token_contract_account 合约部署者, const symbol_code& sym_code 币类型|获得货币的供应量|
 |get_balance|const name& token_contract_account 合约部署者, const name& owner 要查询的人, const symbol_code& sym_code 币类型|获得币的数额|
-  
+
 ## 定义表
-#### account 余额表
+#### account 余额表(accounts)
 |类型|名字|注释|
 |:-----|:------|:----|
 |asset|balance|余额|
 |func|uint64_t primary_key()const { return balance.symbol.code().raw(); }|主键|
-  
-#### currency_stats 货币表
+
+#### currency_stats 货币表(stat)
 |类型|名字|注释|
 |:-----|:------|:----|
 |asset|supply|货币供应量|
