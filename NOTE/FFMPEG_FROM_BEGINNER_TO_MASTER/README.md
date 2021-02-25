@@ -1,6 +1,6 @@
 - [第一章](chapter1.md)
 - [第二章 FFmpeg工具使用基础](chapter2.md)
-- [第三章 FFmpeg转封装]()
+- [第三章 FFmpeg转封装](chapter3.md)
 - [第四章 FFmpeg转码]()
 - [第五章 FFmpeg流媒体]()
 - [第六章 FFmpeg滤镜使用]()

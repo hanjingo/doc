@@ -1,6 +1,6 @@
 - [设计模式](DESIGN_PATTERN/README.md)
 - [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)
-- [stl源码剖析](ANALYSIS_OF_STL_SOURCE_CODE/README.md)
+- [stl源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)
 - [深度探索C++对象模型]()
 - [c++ Templates](CPP_STD_TEMPLATE/README.md)
 - [c++代码整洁之道]()
@@ -14,3 +14,4 @@
 - [Boost程序库完全开发指南](COMPLETE_DEVELOPMENT_GUIDE_OF_BOOST_LIBRARY/README.md)
 - [必然](CERTAIN/README.md)
 - [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md)
+
