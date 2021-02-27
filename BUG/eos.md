@@ -1,15 +1,18 @@
 # eos开发常见错误
-1.脏数据问题  
+## 脏数据问题  
+
 > database dirty flag set (likely due to unclean shutdown) replay or resync required  
 > 解决方法:
 > 在nodeos启动时添加选项--hard-replay-blockchain或者--delete-all-blocks参数  
 
-2.eos无法启动:  
+## eos无法启动:  
+
 > eos无法启动
 > 解决方法:
 > 把启动选项--producer-name eosio的eosio改成自己账号名，不然会启动不了  
 
-3.Error 3090003:
+## Error 3090003:
+
 > 创建账户时报错:Provided keys, permissions, and delays do not satisfy declared authorizations  
 > 解决方法:  
 > 系统私钥在 2个位置都可以找到：
@@ -18,7 +21,8 @@
 
 找到后将私钥导入钱包：cleos wallet import -n 钱包名  --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 
-4.fetching abi for undefined: unknown key (eosio::chain::name):
+## fetching abi for undefined: unknown key (eosio::chain::name):
+
 ```shell
 6|app  | 11-24 11:25:31: Error: fetching abi for undefined: unknown key (eosio::chain::name):
 6|app  | 11-24 11:25:31:     at new RpcError (/data/api_server/node_modules/eosjs/dist/eosjs-rpcerror.js:26:28)
@@ -89,3 +93,15 @@ let actions = {
         });
 
 ```
+
+## Error 3080004: Transaction exceeded the current CPU usage limit imposed on the transaction
+
+命令执行超时了，在命令行后面加上 +x n(任意<=3600的正数，表示秒数) 就可以了,例: 
+
+```sh
+cleos push action eosio fuck '' -p eosio +x 100
+```
+
+## eos合约被冲掉的问题
+
+一个eos账号只能部署一个合约，先部署合约a，再部署合约b；会导致合约a被合约b替换掉,嗦嗨!!!

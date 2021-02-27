@@ -10,14 +10,13 @@
 - [杂文](OTHERS/README.md)
 - [源码分析](SRC/README.md)
 
-- - -
 # 快捷导航
+- [Bug速查](BUG/README.md)
 - [如何写markdown](how_to_write_markdown.md)
 - [vim常用快捷键](OTHERS/vim_shortcut.md)
 - [linux常用命令](OTHERS/linux_cmd.md)
 - [git指南](OTHERS/git.md)
 - [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
-- [c++Bug](BUG/cpp.md)
 - [STL速查手册](C++/STL/api.md)
 - [BOOST速查手册](C++/BOOST/api.md)
 - [redis速查命令](DB/REDIS/cmd.md)
@@ -26,4 +25,5 @@
 - [eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)
 - [I帧,P帧和B帧](MEDIA/frame.md)
 - [cmake教程](OTHERS/cmake.md)
-- [FFmpeg导航](MEDIA/FFMPEG/GUIDE.md)
+- [FFmpeg速查手册](MEDIA/ffmpeg_cmd.md)
+
