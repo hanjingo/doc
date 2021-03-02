@@ -8,6 +8,7 @@
 - [多媒体](MEDIA/README.md)
 - [读书笔记](NOTE/README.md)
 - [杂文](OTHERS/README.md)
+- [RUST](RUST/README.md)
 - [源码分析](SRC/README.md)
 
 # 快捷导航
