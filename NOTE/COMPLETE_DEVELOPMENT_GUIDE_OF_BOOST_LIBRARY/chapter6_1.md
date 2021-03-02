@@ -235,3 +235,74 @@ int main()
 }
 ```
 
+## test
+
+test库提供了一个用于单元测试，基于命令行界面的测试套件:Unit Test Framework(简称UTF)，它比其他的单元测试库更强大，更方便，更好用。
+
+test库包含2个库文件，需要编译才能使用，在jamfile里指定lib的语句如下:
+
+```c++
+lib boost_unit_test_framework;	// 单元测试框架库
+lib boost_test_exec_monitor;		// 程序执行监视库
+```
+
+为了使用test库，需要包含的头文件如下:
+
+```c++
+#include <boost/test/unit_test.hpp>
+```
+
+### 测试断言
+
+test库提供了4个最基本的测试断言:
+
+- BOOST_CHECK(e): 断言测试通过，如不通过也不影响程序执行。
+- BOOST_REQUIRE(e): 要求测试必须通过，否则程序停止执行。
+- BOOST_ERROR(s): 给出一个错误信息，程序继续执行。
+- BOOST_FAIL(s): 给出一个错误信息，程序运行终止。
+
+我们应当尽量少使用他们
+
+test库其他测试断言形式是BOOST_LVL_XXX,如BOOST_CHECK_EQUAL,BOOST_WARN_GT,详细的命名规则如下:
+
+- BOOST:遵循Boost库的命名规则，宏一律以大写的BOOST开头。
+- LVL:断言的级别。WARN是警告级，不影响程序运行，也不增加错误数量；CHECK是检查级别，如果断言失败则增加错误数量，但不影响程序运行；REQUIRE是最高的级别，如果断言失败将增加错误数量并终止程序运行。最常用的断言级别是CHECK,WARN可以用于不涉及程序关键功能的测试，只有当断言失败会导致程序无法继续进行测试时才能使用REQUIRE。
+- XXX:各种具体的测试断言，如断言相等/不等，抛出/不抛出异常，大于/小于等。
+
+test库中常用的几个测试断言如下:
+
+- BOOST_LVL_EQUAL(l, r):检测 l==r,当测试失败时会给出详细的信息。他不能用于浮点数的比较，浮点数的相等比较应使用BOOST_LVL_CLOSE。
+- BOOST_LVL_GE(l, r):检测l >= r,与GT(1>r),LT(l<r),LE(l<=r)和NE(l!=r)相同，他们勇于测试各种不等性。
+- BOOST_LVL_THROW(e, ex):检测表达式e,抛出指定的ex异常。
+- BOOST_LVL_NO_THROW(e):检测表达式e,不抛出任何异常。
+- BOOST_LVL_MESSAGE(e,msg):它与不带MESSAGE后缀的断言功能，但测试失败时，他会给出指定的信息。
+- BOOST_TEST_MESSAGE(msg):它仅输出通知消息，不含有任何警告或错误信息，默认情况不会显示。
+
+### 测试主体
+
+test库将测试程序定义为一个测试模块，由测试安装，测试主体，测试清理和测试运行器四部分组成。测试主体是测试模块的实际运行部分，由测试用例如测试套件组织成测试数的形式。
+
+1. 测试用例
+
+   测试用例是一个包含多个测试断言的函数，它是可以被独立执行测试的最小单位，各个测试用例之间是无关的，发生的错误不会影响其他测试用例。
+
+   向UTF注册，可以采用手动或自动2中形式添加测试用例。我们使用宏BOOST_AUTO_TEST_CASE像声明函数一样创建测试用例，它的定义如下:
+
+   ```c++
+   #define BOOST_AUTO_TEST_CASE( test_name )
+   ```
+
+   宏的参数test_name是测试用例的名字，本书一律以t开头，表明整个名字是一个测试用例。例:
+
+   ```c++
+   BOOST_AUTO_TEST_CASE(t_case1)	// 测试用例声明
+   {
+     BOOST_CHECK_EQUAL(1, 1);		// 测试1==1
+     ...
+   }
+   ```
+
+2. 测试套件
+
+   测试套件是测试用例的容器，
+

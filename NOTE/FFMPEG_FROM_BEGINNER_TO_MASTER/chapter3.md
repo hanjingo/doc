@@ -287,6 +287,197 @@ moov类型
       | 尺寸     | 4         | 这个Atom的字节数                                       |
       | 类型     | 4         | url/alis/rsrc                                          |
       | 版本     | 1         | 这个                                                   |
-      |          |           |                                                        |
-      |          |           |                                                        |
-      |          |           |                                                        |
+      | 标志     | 3         | 目前只有一个标志:0x0001                                |
+      | 数据     | 可变      | data reference信息                                     |
+
+- 12. 解析stbl容器
+
+  stbl容器又称为采样参数列表的容器(Sample Table Atom)，该容器包含转化媒体时间到实际的sample的信息，也说明了解释sample的信息，例如，视频数据是否需要解压缩，解压缩算法是什么等信息。其所包含的子容器具体如下：
+
+  - 采样描述容器: Sample Description Atom (stsd)
+  - 采样时间容器: Time To Sample Atom (stts)
+  - 采样同步容器: Sync Sample Atom(stss)
+  - Chunk采样容器: Sample To Chunk Atom(stsc)
+  - 采样大小容器: Sample Size Atom (stsz)
+  - Chunk偏移容器: Chunk Offset Atom (stco)
+  - Shadow同步容器: Shadow Sync Atom (stsh)
+
+- 13. 解析edts容器
+
+      edts容器定义了创建Movie媒体文件中一个track的一部分媒体，所有的edts数据流都在一个表里，包括每一部分的时间偏移量和长度，如果没有该表，那么这个track就会立即开始播放，一个空的edts数据用来定位到track的起始时间偏移位置，如表所示:
+
+      | 字段 | 长度/字节 | 描述             |
+      | ---- | --------- | ---------------- |
+      | 尺寸 | 4         | 这个Atom的字节数 |
+      | 类型 | 4         | edts             |
+
+### MP4分析工具
+
+1. Elecard StreamEye
+2. mp4box
+3. mp4info
+
+### MP4在FFmpeg中的Demuxer
+
+查看MP4文件的Demuxer信息：
+
+```sh
+ffmpeg -h demuxer=mp4
+```
+
+ffmpeg解封装MP4常用参数
+
+| 参数                      | 类型 | 说明                                                         |
+| ------------------------- | ---- | ------------------------------------------------------------ |
+| use_absolute_path         | 布尔 | 可以通过绝对路径加载外部的track, 可能会有安全因素的影响，默认不开启 |
+| seek_streams_individually | 布尔 | 根据单独流进行seek,默认开启                                  |
+| ignore_editlist           | 布尔 | 忽略EditList Atom信息，默认不开启                            |
+| ignore_chapters           | 布尔 | 忽略Chapers信息，默认不开启                                  |
+| enable_drefs              | 布尔 | 外部track支持，默认不开启                                    |
+
+### MP4在FFmpeg中的Muxer
+
+FFmpeg封装MP4常用参数
+
+| 参数                  | 值                | 说明                                                   |
+| --------------------- | ----------------- | ------------------------------------------------------ |
+| movflags              | -                 | MP4 Muxer标记                                          |
+| movflags              | rtphint           | 增加RTP的hint track                                    |
+| movflags              | empty_moov        | 初始化空的moov box                                     |
+| movflags              | frag_keyframe     | 在视频关键帧处切片                                     |
+| movflags              | separate_moof     | 每一个Track写独立的moof/mdat box                       |
+| movflags              | frag_custom       | 每一个caller请求时Flush一个片段                        |
+| movflags              | isml              | 创建实时流媒体（创建一个直播流发布点）                 |
+| movflags              | faststart         | 将moov box移动到文件的头部                             |
+| movflags              | omit_tfhd_offset  | 忽略tfhd容器中的基础数据偏移                           |
+| movflags              | disable_chpl      | 关闭Nero Chapter容器                                   |
+| movflags              | default_base_moof | 在tfhd容器中设置default-base-is-moof标记               |
+| movflags              | dash              | 兼容DASH格式的mp4分片                                  |
+| movflags              | frag_discont      | 分片不连续式设置discontinuous信号                      |
+| movflags              | delay_moov        | 延迟写入moov信息，直到第一个分片出来，或者第一片被刷掉 |
+| movflags              | global_sidx       | 在文件的开头设置公共的sidx索引                         |
+| movflags              | write_colr        | 写入colr容器                                           |
+| movflags              | write_gama        | 写被弃用的gama容器                                     |
+| moov_size             | 正整数            | 设置moov容器大小的最大值                               |
+| rtpflags              |                   | 设置rtp传输相关的标记                                  |
+| rtpflags              | latm              | 使用MP4A-LATM方式传输AAC音频                           |
+| rtpflags              | rfc2190           | 使用RFC2190传输H.264 H.263                             |
+| rtpflags              | skip_rtcp         | 忽略使用RTCP                                           |
+| rtpflags              | h264_mode0        | 使用RTP传输mode0的H264                                 |
+| rtpflags              | send_bye          | 当传输结束时发送RTCP的BYE包                            |
+| skip_iods             | 布尔型            | 不写入iods容器                                         |
+| iods_audio_profile    | 0~255             | 设置iods的音频profile容器                              |
+| iods_video_profile    | 0~255             | 设置iods的视频profile容器                              |
+| frag_duration         | 正整数            | 切片最大的duration                                     |
+| min_frag_duration     | 正整数            | 切片最小的duration                                     |
+| frag_size             | 正整数            | 切片最大的大小                                         |
+| ism_lookahead         | 正整数            | 预读取ISM文件的数量                                    |
+| video_track_timescale | 正整数            | 设置所有视频的时间计算方式                             |
+| brand                 | 字符串            | 写major brand                                          |
+| use_editlist          | 布尔型            | 使用edit list                                          |
+| fragment_index        | 正整数            | 下一个分片编号                                         |
+| mov_gamma             | 0~10              | Gama容器的gama值                                       |
+| frag_interleave       | 正整数            | 交错分片样本                                           |
+| encryption_scheme     | 字符串            | 配置加密的方案                                         |
+| encryption_key        | 二进制            | 秘钥                                                   |
+| encryption_kid        | 二进制            | 秘钥标识符                                             |
+
+1. faststart参数使用案例
+
+- 通过参数faststart将moov容器移动至mdat的前面:
+
+  ```sh
+  ./ffmpeg -i input.flv -c copy -f mp4 output.mp4
+  ```
+
+- 将moov移动到mdat前面:
+
+  ```sh
+  ./ffmpeg -i input.flv -c copy -f mp4 -movflags faststart output.mp4
+  ```
+
+2. dash参数使用案例
+
+- 使用mp4info查看容器的格式信息:
+
+  ```sh
+  ./ffmpeg -i input.flv -c copy -f mp4 -movflags dash output.mp4
+  ```
+
+3. isml参数使用案例
+
+- 发布ISML直播流，将ISMV推流至IIS服务器:
+
+  ```sh
+  ./ffmpeg -re -i input.mp4 -c copy -movflags isml+frag_keyframe -f ismv Stream
+  ```
+
+## 视频文件转FLV
+
+### FLV格式标准介绍
+
+FLV文件格式分为两部分：一部分为FLV文件头，另一部分为FLV文件内容
+
+1. FLV文件头
+
+   | 字段                            | 占用位数 | 说明                          |
+   | ------------------------------- | -------- | ----------------------------- |
+   | 签名字段(Signature)             | 8        | 字符"F"(0x46)                 |
+   | 签名字段(Signature)             | 8        | 字符"L"(0x4C)                 |
+   | 签名字段(Signature)             | 8        | 字符"V"(0x56)                 |
+   | 版本(Version)                   | 8        | 文件版本（例如0x01为FLV版本） |
+   | 保留标记类型(TypeFlagsReserved) | 5        | 固定为0                       |
+   | 音频标记类型(TypeFlagsAudio)    | 1        | 1为显示音频标签               |
+   | 保留标记类型(TypeFlagsReserved) | 1        | 固定为0                       |
+   | 视频标记类型(TypeFlagsVideo)    | 1        | 1为显示视频标签               |
+   | 数据偏移(DataOffset)            | 32       | 这个头的字节                  |
+
+2. FLV文件内容格式解析
+
+   | 字段                           | 类型大小                     | 说明                                                         |
+   | ------------------------------ | ---------------------------- | ------------------------------------------------------------ |
+   | 上一个TAG的大小(PreTagSize0)   | 4字节(32位)                  | 一直是0                                                      |
+   | TAG1                           | FLVTAG(FLVTAG是一个类型)     | 第一个TAG                                                    |
+   | 上一个TAG的大小(PreTagSize1)   | 4字节(32位)                  | 上一个TAG字节的大小，包括TAG的Header+Body,TAG的Header大小为11字节，所以这个字段大小为11字节+TAG的Body的大小 |
+   | TAG2                           | 上一个TAG的大小(PreTagSize0) | 第二个TAG                                                    |
+   | ...                            | ...                          | ...                                                          |
+   | 上一个TAG的大小(PreTagSizeN-1) | 4字节(32位)                  | -                                                            |
+
+3. FLVTAG格式解析
+
+   | 字段                          | 类型大小                   | 说明                                                         |
+   | ----------------------------- | -------------------------- | ------------------------------------------------------------ |
+   | 保留(Reserved)                | 2位                        | 为FMS保留，应该是0                                           |
+   | 滤镜(Filter)                  | 1位                        | 主要用来做文件内容加密处理: 0: 不预处理; 1: 预处理           |
+   | TAG类型(TagType)              | 5位                        | 8(0x08): 音频TAG; 9(0x09): 视频TAG; 18(0x12): 脚本数据(Script Data, 例如Metadata) |
+   | 数据的大小(DataSize)          | 24位                       | TAG的DATA部分的大小                                          |
+   | 时间戳(Timestamp)             | 24位                       | 以毫秒为单位的展示时间0x000000                               |
+   | 扩展时间戳(TimestampExtended) | 8位                        | 针对时间戳增加的补充时间戳                                   |
+   | 流ID(StreamID)                | 24位                       | 一直是0                                                      |
+   | TAG的Data(Data)               | 音频数据/视频数据/脚本数据 | 音视频媒体数据，包含startcode                                |
+
+4. VideoTag数据解析
+
+   | 字段                         | 数据类型                                 | 说明                                                         |
+   | ---------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
+   | 帧类型(FrameType)            | 4位                                      | 视频帧的类型，下面的值为主要定义:1. 为关键帧(H.264使用，可以seek的帧); 2. 为P或B帧(H.264使用，不可以seek的帧); 3. 仅应用于H.263; 4. 生成关键帧（服务器端使用）; 5. 视频信息/命令帧 |
+   | 编码标识(CodecID)            | 4位                                      | Codec类型定义，下面是对应的编码值与对应的编码: 2. Sorenson H.263(用的少); 3. Screen Video(用的少); 4. On2 VP6(偶尔用); 5. 带Alpha通道的On2 VP6(偶尔用); 6. Screen Video 2(用得少); 7. H.264(使用非常频繁); |
+   | H.264的包类型(AVCPacketType) | 当Codec为H.264编码时则占用这个8位(1字节) | 当H.264编码封装在FLV中时，需要三类H.264的数据: 0. H.264的Sequence Header; 1. NALU(H.264做字节流时需要用的); 2. H.264的Sequence的end |
+   | CTS(CompositionTime)         | 当Codec为H.264编码时占用这个24位(3字节)  | 当编码使用B帧时，DTS和PTS不相等，CTS用于表示PTS和DTS之间的差值 |
+   | 视频数据                     | 视频数据                                 | 压缩过的视频的数据                                           |
+
+5. AudioTag数据格式解析
+
+   | 字段                  | 数据类型 | 说明                                                         |
+   | --------------------- | -------- | ------------------------------------------------------------ |
+   | 声音格式(SoundFormat) | 4位      | 不同的值代表着不同的格式，具体如下: 0: 限行PCM，大小端取决于平台；1：ADPCM音频格式；2：MP3；3：线性PCM，小端；4：Nelly |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+   |                       |          |                                                              |
+
+   
