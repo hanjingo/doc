@@ -569,4 +569,322 @@ ffmpeg -i input.mp4 -c copy -f flv -flvflags add_keyframe_index output.flv
 
 - EXT-ENDLIST
 
-  > 
+  > 表明该M3U8文件不会再产生更多的切片，可以理解为该M3U8已停止更新，并且播放分片到这个标签后结束。
+
+- EXT-X-STREAM-INF
+
+  > EXT-X-STREAM-INF标签出现在M3U8中时，主要是出现在多级M3U8文件中时；该标签后需要跟一些属性：
+  >
+  > - BANDWIDTH: BANDWIDTH的值为最高码率值,当播放EXT-X-STREAM-INF下对应的M3U8时占用的最大码率，这个参数是EXT-X-STREAM-INF标签中比需要包含的属性
+  > - AVERANGE-BANDWIDTH: AVERAGE-BANDWIDTH的值为平均码率值，当播放EXT-X-STREAM-INF下对应的M3U8时占用的平均码率，这个参数是一个可选参数。
+  > - CODECS: CODECS的值用于声明EXT-X-STREAM-INF下面对应M3U8里面的音频编码，视频编码的信息，这个属性应该出现在EXT-X-STREAM-INF标签里，但是并不是所有的M3U8中都可以看到，仅供参考。
+  > - RESOLUTION: M3U8中视频的宽高信息描述，这个属性是一个可选属性。
+  > - FRAME-RATE: 子M3U8中的视频帧率，这个属性已然是一个可选属性。
+
+### FFmpeg转HLS参数
+
+| 参数                 | 类型         | 说明                                                         |
+| -------------------- | ------------ | ------------------------------------------------------------ |
+| start_number         | 整数         | 设置M3U8列表中的第一片的序列数                               |
+| hls_time             | 浮点数       | 设置每一片时长                                               |
+| hls_list_size        | 整数         | 设置M3U8中分片的个数                                         |
+| hls_wrap             | 整数         | 设置切片索引回滚的边界值                                     |
+| hls_allow_cache      | 整数         | 设置M3U8中EXT-X-ALLOW-CACHE的标签                            |
+| hls_base_url         | 字符串       | 设置M3U8中每一片的前置路径                                   |
+| hls_segment_filename | 字符串       | 设置切片名模板                                               |
+| hls_key_info_file    | 字符串       | 设置M3U8加密的key文件路径                                    |
+| hls_subtitle_path    | 字符串       | 设置M3U8字幕路径                                             |
+| hls_flags            | 标签（整数） | 设置M3U8文件列表的操作，具体如下: single_file: 生成一个媒体文件索引与字节范围; delete_segments: 删除M3U8文件中不包含的过期的TS切片文件; round_durations: 生成的M3U8切片信息的duration为整数; discont_start: 生成M3U8的时候在列表前边加上discontinuity标签; omit_endlist: 在M3U8末尾不追加endlist标签 |
+| use_localtime        | 布尔         | 设置M3U8文件序号为本地时间戳                                 |
+| use_localtime_mkdir  | 布尔         | 根据本地时间戳生成目录                                       |
+| hls_playlist_type    | 整数         | 设置M3U8列表为事件或者点播列表                               |
+| method               | 字符串       | 设置HTTP属性                                                 |
+
+### FFmpeg转HLS举例
+
+从文件转换HLS直播:
+
+```sh
+./ffmpeg -re -i input.mp4 -c copy -f hls -bsf:v h264_mp4toannexb output.m3u8
+```
+
+1. start_number参数
+
+   start_number参数用于设置M3U8列表中的第一片的序列数;
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -start_number 300 output.m3u8
+   ```
+
+2. hls_time参数
+
+   hls_time参数用预设值M3U8列表中切片的duration;
+
+   例:控制转码切片长度为10秒钟左右一片，该切片规则采用的方式是从关键帧处开始切片，所以时间并不是很均匀，如果先转码再进行切片，则会比较规律:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_time 10 output.m3u8
+   ```
+
+3. hls_list_size参数
+
+   hls_list_size参数用于设置M3U8列表中TS切片的个数，通过hls_list_size可以控制M3U8列表中TS分片的个数;
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_list_size 3 output.m3u8
+   ```
+
+4. hls_wrap参数
+
+   hls_wrap参数用于为M3U8列表中TS设置刷新回滚参数，当TS分片序号等于hls_wrap参数设置的数值时回滚；
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_wrap 3 output.m3u8
+   ```
+
+   ***注意:FFmpeg中的这个hls_wrap配置参数对CDN缓存节点的支持并不友好，并且会引起很多不兼容相关的问题，在新版本的FFmpeg中该参数将被弃用***
+
+5. hls_base_url参数
+
+   hls_base_url参数用于为M3U8列表中的文件路径设置前置基本路径参数，因为在FFmpeg中生成M3U8时写入的TS切片路径默认为与M3U8生成的路径相同，但是实际上TS所在存储的路径既可以为本地绝对路径，也可以为当前相对路径，还可以为网络路径，因此使用hls_base_url参数可以达到该效果;
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_base_url http://192.168.0.1/live/ -bsf:v h264_mp4toannexb output.m3u8
+   ```
+
+6. hls_segment_filename参数
+
+   hls_segment_filename参数用于为M3U8列表设置切片文件名的规则模板参数，如果不设置hls_segment_filename参数，那么生成的TS切片文件名模板将与M3U8的文件名模板相同；
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_segment_filename test_output-%d.ts -bsf:v h264_mp4toannexb output.m3u8
+   ```
+
+7. hls_flags参数
+
+   hls_flags参数包含了一些子参数，子参数包含了正常文件索引，删除过期切片，整数显示duration,列表开始插入discontinuity标签，M3U8结束不追加endlist标签
+
+   - delete_segments子参数
+
+     > 使用delete_segments参数用于删除已经不在M3U8列表中的旧文件，这里需要注意的是，FFmpeg删除切片时会将hls_list_size大小的2倍作为删除的依据；
+     >
+     > 例:
+     >
+     > ```sh
+     > ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_flags delete_segments -hls_list_size 4 -bsf:v h264_mp4toannexb output.m3u8
+     > ```
+
+   - found_durations子参数
+
+     > 使用round_durations子参数实现切片信息的duration为整型；
+     >
+     > 例:
+     >
+     > ```sh
+     > ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_flags round_durations -bsf:vh264_mp4toannexb output.m3u8
+     > ```
+
+   - discont_start子参数
+
+     > discont_start子参数在生成M3U8的时候在切片信息的前边插入discontinuity标签；
+     >
+     > 例:
+     >
+     > ```sh
+     > ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_flags discont_start -bsf:v h264_mp4toannexb output.m3u8
+     > ```
+
+   - omit_endlist子参数
+
+     > omit_endlist子参数在生成M3U8结束的时候若不在文件末尾则不追加endlist标签，因为在常规的生成M3U8文件结束时，FFmpeg会默认写入endlist标签，使用这个参数可以控制在M3U8结束时不写入endlist标签；
+     >
+     > 例:
+     >
+     > ```sh
+     > ./ffmpeg -re -i input.mp4 -c copy -f hls -hls_flags omit_endlist -bsf:v h264_mp4toannexb output.m3u8
+     > ```
+
+   - split_by_time子参数
+
+     > split_by_time子参数生成M3U8时根据hls_time参数设定的数值作为秒数参考对TS进行切片的，并不一定要遇到关键帧；
+     >
+     > 例:
+     >
+     > ```sh
+     > ./ffmpeg -re -i input.ts -c copy -f hls -hls_time 2 -hls_flags split_by_time output.m3u8
+     > ```
+     >
+     > ***注意：split_by_time参数必须与hls_time配合使用，并且使用split_by_time参数时有可能会影响首画面体验，例如花屏或者首画面显示慢的问题，因为视频的第一帧不一定是关键帧***
+
+8. use_localtime参数
+
+   使用use_localtime参数可以以本地系统时间为切片文件名；
+
+   例:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hls -use_localtime 1 -bsf:v h264_mp4toannexb output.m3u8
+   ```
+
+9. method参数
+
+   method参数用于设置HLS将M3U8及TS文件上传至HTTP服务器；
+
+   例:
+
+   ```sh
+   ./ffmpeg -i input.mp4 -c copy -f hls -hls_time 3 -hls_list_size 0 -method PUT -t 30 http://127.0.0.1/test/output_test.m3u8
+   ```
+
+## 视频文件切片
+
+### FFmpeg切片segment参数
+
+| 参数                            | 类型   | 说明                                                       |
+| ------------------------------- | ------ | ---------------------------------------------------------- |
+| reference_stream                | 字符串 | 切片参考用的stream                                         |
+| segment_format                  | 字符串 | 切片文件格式                                               |
+| segment_format_options          | 字符串 | 切片格式的私有操作参数                                     |
+| segment_list                    | 字符串 | 切片列表主文件名                                           |
+| segment_list_flags              | -      | (标签)m3u8切片的存在形式; liv; cache                       |
+| segment_list_size               | 整数   | 列表文件长度                                               |
+| segment_list_type               | -      | 列表类型; flat; csv; ext; ffconcat; m3u8; hls;             |
+| segment_atclocktime             | 布尔   | 时钟频率生效参数，启动定时切片间隔用                       |
+| segment_clocktime_offset        | 时间值 | 切片时钟偏移                                               |
+| segment_clocktime_wrap_duration | 时间值 | 切片时钟回滚duration                                       |
+| segment_time                    | 字符串 | 切片的duration                                             |
+| segment_time_delta              | 时间值 | 用于设置切片的时间点                                       |
+| segment_times                   | 字符串 | 设置切片的时间点                                           |
+| segment_frames                  | 字符串 | 设置切片的帧位置                                           |
+| segment_wrap                    | 整数   | 列表回滚阀值                                               |
+| segment_list_entry_prefix       | 字符串 | 写文件列表时写入每个切片路径的前置路径                     |
+| segment_start_number            | 整数   | 列表中切片的起始基数                                       |
+| strftime                        | 布尔   | 设置切片名为生成切片的时间点                               |
+| break_non_keyframes             | 布尔   | 忽略关键帧按照时间切片                                     |
+| individual_header_trailer       | 布尔   | 默认在每个切片中都写入文件头和文件结束容器                 |
+| write_header_trailer            | 布尔   | 只在第一个文件写入文件头以及在最后一个文件写入文件结束容器 |
+| reset_timestamps                | 布尔   | 每个切片都重新初始化时间戳                                 |
+| initial_offset                  | 时间值 | 设置初始化时间戳偏移                                       |
+
+### FFmpeg切片segment举例
+
+1. segment_format指定切片文件的格式
+
+   > 将一个MP4文件切割为MP4切片，切出来的切片文件的时间戳与上一个MP4的结束时间戳是连续的;
+   >
+   > 例:
+   >
+   > ```sh
+   > ./ffmpeg -re -i input.mp4 -c copy -f segment -segment_format mp4 test_output-%d.mp4
+   > ```
+   >
+   > 查看第一片分片MP4的最后的时间戳;
+   >
+   > 例
+   >
+   > ```sh
+   > ffprobe -v quiet -show_packets -select_streams v test_output-0.mp4 2> x|grep pts_time | tail -n 3
+   > ```
+   >
+   > 查看第二分片MP4的最开始的时间戳
+   >
+   > 例
+   >
+   > ```sh
+   > ffprobe -v quiet -show_packets -select_streams v test_output-1.mp4 2> x|grep pts_time | head -n 3
+   > ```
+
+2. segment_list与segment_list_type指定切片索引列表
+
+   > - 生成ffconcat格式索引文件
+   >
+   >   ```sh
+   >   ./ffmpeg -re -i input.mp4 -c copy -f segment -segment_format mp4 -segment_list_type ffconcat -segment_list output.1st test_output-%d.mp4
+   >   ```
+   >
+   > - 生成FLAT格式索引文件
+   >
+   >   ```sh
+   >   ./ffmpeg -re -i inputmp4 -c copy -f segment -segment_format mp4 -segment_list_type flat -segment_list filelist.txt test_output-%d.mp4
+   >   ```
+   >
+   > - 生成CSV格式索引文件
+   >
+   >   ```sh
+   >   ./ffmpeg -re -i inputmp4 -c copy -f segment -segment_format mp4 -segment_list_type csv -segment_list filelist.csv test_output-%d.mp4
+   >   ```
+   >
+   > - 生成M3U8格式索引文件
+   >
+   >   ```sh
+   >   ./ffmpeg -re -i input.mp4 -c copy -f segment -segment_format mp4 -segment_list_type m3u8 -segment_list output.m3u8 test_output-%d.mp4
+   >   ```
+
+3. reset_timestamps使切片时间戳归0
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f segment -segment_format mp4 -reset_timestamps 1 test_output-%d.mp4
+   ```
+
+4. segment_times按照时间点剪切
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f segment -segment_format mp4 -segment_times 3,9,12 test_output-%d.mp4
+   ```
+
+### FFmpeg使用ss与t参数进行切片
+
+1. 使用ss指定剪切开头部分
+
+   ```sh
+   ./ffmpeg -ss 10 -i input.mp4 -c copy output.ts
+   ```
+
+2. 使用t指定视频总长度
+
+   ```sh
+   ./ffmpeg -i input.mp4 -c copy -t 10 -copyts output.mp4
+   ```
+
+3. 使用output_ts_offset指定输出start_time
+
+   ```sh
+   ./ffmpeg -i input.mp4 -c copy -t 10 -output_ts_offset 120 output.mp4
+   ```
+
+## 音视频文件音视频流抽取
+
+### FFmpeg抽取音视频文件中的AAC音频流
+
+```sh
+./ffmpeg -i input.mp4 -vn -acodec copy output.aac
+```
+
+### FFmpeg抽取音视频文件中的H.264视频流
+
+```sh
+./ffmpeg -i input.mp4 -vcodec copy -an output.h264
+```
+
+### FFmpeg抽取音视频文件中的H.265数据
+
+```sh
+./ffmpeg -i input.mp4 -vcodec copy -an -bsf hevc_mp4toannexb -f hevc output.hevc
+```
+
+## 系统资源使用情况
+
+```sh
+./ffmpeg -re -i input.mp4 -c copy -f mpegts output.ts
+```
+

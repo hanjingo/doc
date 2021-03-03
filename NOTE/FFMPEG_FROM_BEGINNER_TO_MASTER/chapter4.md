@@ -41,7 +41,7 @@ ffmpeg -h encoder=libx264
 |chromaoffset|整数|QP色度和亮度之间的差异参数|
 |sc_threshold|整数|场景切换阀值参数|
 |noise_reduction|整数|降噪处理参数|
-|x264-params|字符串|与x264操作相同|
+|x264-params|字符串|与x264opts操作相同|
 
 ### H.264编码举例
 1. 编码器预设参数设置preset:
@@ -71,11 +71,58 @@ ffmpeg -h encoder=libx264
 - zerolatency
 
 3. H.264的profile与level设置
-x264编码profile参数
-|-|Baseline|Extented|Main|High|High10|High 4:2:2|High 4:4:4 (Predictive)|
-|:--|:--|:--|:--|:--|:--|:--|:--|
+    x264编码profile参数
 
-todo
+| -                      | Baseline | Extented | Main | High | High10 |
+| ---------------------- | -------- | -------- | ---- | ---- | ------ |
+| I与P分片               |          |          |      |      |        |
+| B分片                  |          |          |      |      |        |
+| SI和SP分片             |          |          |      |      |        |
+| 多参考帧               |          |          |      |      |        |
+| 环路去块滤波           |          |          |      |      |        |
+| CAVLC熵编码            |          |          |      |      |        |
+| CABAC熵编码            |          |          |      |      |        |
+| FMO                    |          |          |      |      |        |
+| ASO                    |          |          |      |      |        |
+| RS                     |          |          |      |      |        |
+| 数据分区               |          |          |      |      |        |
+| 场编码PAFF/MBAFF       |          |          |      |      |        |
+| 4:2:0 色度格式         |          |          |      |      |        |
+| 4:0:0 色度格式         |          |          |      |      |        |
+| 4:2:2 色度格式         |          |          |      |      |        |
+| 4:4:4 色度格式         |          |          |      |      |        |
+| 8位采样深度            |          |          |      |      |        |
+| 9和10位采样深度        |          |          |      |      |        |
+| 11至14位采样深度       |          |          |      |      |        |
+| 8x8与4x4转换适配       |          |          |      |      |        |
+| 量化计算矩阵           |          |          |      |      |        |
+| 分离Cb和Cr量化参数控制 |          |          |      |      |        |
+| 分离色彩平面编码       |          |          |      |      |        |
+| 分离无损编码           |          |          |      |      |        |
+
+H.264 level参数
+
+| Level | 亮度采样     | 宏块         | 亮度采样   | 宏块       | Baseline,Extended和Main Profile |
+| ----- | ------------ | ------------ | ---------- | ---------- | ------------------------------- |
+| -     | 最大解码速度 | 最大解码速度 | 帧最大尺寸 | 帧最大尺寸 | 视频编码层最大码率              |
+| 1     |              |              |            |            |                                 |
+| 1b    |              |              |            |            |                                 |
+| 1.1   |              |              |            |            |                                 |
+| 1.2   |              |              |            |            |                                 |
+| 1.3   |              |              |            |            |                                 |
+| 2     |              |              |            |            |                                 |
+| 2.1   |              |              |            |            |                                 |
+| 2.2   |              |              |            |            |                                 |
+| 3     |              |              |            |            |                                 |
+| 3.1   |              |              |            |            |                                 |
+| 3.2   |              |              |            |            |                                 |
+| 4     |              |              |            |            |                                 |
+| 4.1   |              |              |            |            |                                 |
+| 4.2   |              |              |            |            |                                 |
+| 5     |              |              |            |            |                                 |
+| 5.1   |              |              |            |            |                                 |
+| 5.2   |              |              |            |            |                                 |
+
 
 例:使用FFmpeg编码生成baseline与high2种profile的视频
 ```sh
@@ -104,3 +151,19 @@ FFmpeg开放了x264opts,可以通过这个参数设置x264内部私有参数
 ```sh
 ./ffmpeg -i input.mp4 -c:v libx264 -x264opts "bframes=3:b-adapt=0" -g 50 -sc_threshold 0 output.mp4
 ```
+
+6. CBR恒定码率设置参数nal-hrd
+
+   例：设置1M bit/s码率的视频，bufsize设置为50KB，可以很好地控制码率波动:
+
+   ```sh
+   ./ffmpeg -i input.mp4 -c:v libx264 -x264opts "bframes=10:b-adapt=0" -b:v 1000k -maxrate 1000k -minrate 1000k -bufsize 50k -nal-hrd cbr -g 50 -sc_threshold 0 output.ts
+   ```
+   
+   ***说明:在FFmpeg中进行H.265编码时，可以采用x265进行编码，H.265编码参数与x264的编码参数相差不多，基本可以通用。***
+
+## FFmpeg硬编解码
+
+### Nvidia GPU 硬编解码
+
+1. Nvidia硬编解码参数

@@ -1,13 +1,11 @@
 # 注册系列函数解析
 
-## av_register_all
+## 注册所有组件(包括:复用器/解复用器...) av_register_all
 
 - libavformat/allformats.c
 - libavformat/avformat.h
 
-注册所有组件(包括:复用器/解复用器...)
-
-注册函数:
+实现:
 
 ```c++
 // 注册组件到链表(复用器/解复用器...)
@@ -52,14 +50,12 @@ static void av_format_init_next(void)
 
 
 
-## avcodec_register_all
+## 注册编解码器 avcodec_register_all
 
 - libavcodec/allcodecs.c
 - libavcodec/
 
-注册编解码器
-
-注册函数:
+实现:
 
 ```c++
 static void av_codec_init_static(void)

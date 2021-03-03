@@ -7,6 +7,7 @@
 |查看合约部署情况|cleos get table eosio eosio abihash|
 |查看节点信息|cleos get table 部署者账号 scope(默认部署者账号) producers|
 |查看节点调度信息|cleos get schedule -j|
+|查看账号token信息|cleos get currency balance eosio.token 账号名|
 
 ## 合约部署&执行
 |用途|实现|
