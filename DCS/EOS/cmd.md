@@ -13,7 +13,7 @@
 |用途|实现|
 |:--|:--|
 |发布合约|cleos set contract 账号 dapp地址 -p 账号@active|
-|清除合约|cleos set contract 账号 dapp地址 -p 账号@active --clear|
+|清除合约|cleos set contract 合约部署者账号 -c|
 |抵押net,cpu,内存|cli-baz system delegatebw 给钱的人 受益人 "用来买net而抵押的钱" "用来买cpu而抵押的钱" --transfer --buyram "要买的内存"|
 
 ## 钱包&账号

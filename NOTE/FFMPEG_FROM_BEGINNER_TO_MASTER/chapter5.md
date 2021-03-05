@@ -119,4 +119,194 @@
 
 1. seekable参数举例
 
-   在使用FFmpeg打开直播或者点播文件时，可以通过seek
+   在使用FFmpeg打开直播或者点播文件时，可以通过seek操作进行播放进度移动，定位等操作:
+   
+   ```sh
+   ./ffmpeg -ss 300 -seekable 0 -i http://bbs.chinaffmpeg.com/test/ts -c copy output.mp4
+   ```
+   
+2. headers参数举例
+
+   在HTTP传输时在header中增加referer字段:
+
+   ```sh
+   ./ffmpeg -headers "referer: http://bbs.chinaffmpeg.com/index.html" -i http://play.chinaffmpeg.com/live/class.flv -c copy -f flv -y output.flv
+   ```
+
+3. user_agent参数设置
+
+   将User-Agent被设置为LiuQi's Player:
+
+   ```sh
+   ./ffmpeg -user_agent "LiuQi's Player" -i http://bbs.chinaffmpeg.com/1.flv
+   ```
+
+## HTTP拉流录制
+
+### 拉取HTTP中的流录制FLV
+
+1. 拉取FLV直播流录制为FLV:
+
+   ```sh
+   ./ffmpeg -i http://bbs.chinaffmpeg.com/live.flv -c copy -f flv output.flv
+   ```
+
+2. 拉取TS直播流录制为FLV：
+
+   ```sh
+   ./ffmpeg -i http://bbs.chinaffmpeg.com/live.ts -c copy -f flv output.flv
+   ```
+
+3. 拉取HLS直播流录制为FLV：
+
+   ```sh
+   ./ffmpeg -i http://bbs.chinaffmpeg.com/live.m3u8 -c copy -f flv output.flv
+   ```
+
+### TCP参数使用举例
+
+1. TCP监听接收流
+
+   ```sh
+   ./fffmpeg -listen 1 -f flv -i tcp://127.0.0.1:1234/live/stream -c copy -f flv output.flv
+   ```
+
+2. TCP请求发布流
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f flv tcp://127.0.0.1:1234/live/stream
+   ```
+
+3. 监听端口超时listen_timeout
+
+   超时时间为5秒，5秒内未收到任何请求则自动退出监听
+
+   ```sh
+   time ./ffmpeg -listen_timeout 5000 -listen 1 -f flv -i tcp://127.0.0.1:1234/live/stream -c copy -f flv output.flv
+   ```
+
+4. TCP拉流超时参数timeout
+
+   设置超时时间为20秒，连接TCP拉取端口1935的数据，如果超过20秒没有收到数据则自动退出
+
+   ```sh
+   time ./ffmpeg -timeout 20000000 -i tcp://192.168.100.179:1935/live/stream -c copy -f flv output.flv
+   ```
+
+5. TCP传输buffer大小设置send_buffer_size/recv_buffer_size
+
+   设置TCP传输时buffer的大小，buffer设置的越小，传输就会越频繁，网络开销就会越大:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -send_buffer_size 265 -f flv tcp://192.168.100.179:1234/live/stream
+   ```
+
+6. 绑定本地UDP端口localport
+
+   设置监听本地端口:
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -localport 23456 -f flv udp://192.168.100.179:1234/live/stream
+   ```
+
+## FFmpeg推多路流
+
+### 管道方式输出多路流
+
+使用系统管道的方式进行一次转码多次输出RTMP流
+
+```sh
+./ffmpeg -i input -acodec aac -vcodec libx264 -f flv - | ffmpeg -f mpegts -i - -c copy output1 -c copy output2 -c copy output3
+```
+
+另一种方法:
+
+```sh
+./ffmpeg -i input.mp4 -vcodec libx264 -acodec aac -f flv - | ffmpeg -f flv -i - -c copy -f flv rtmp://publish.chinaffmpeg.com/live/stream1 -c copy -f flv rtmp://publish.chinaffmpeg.com/live/stream2
+```
+
+### tee封装格式输出多路流
+
+编码一次，输出tee封装格式，格式中包含2个FLV格式的RTMP流，一路为stream1，另一路为stream2:
+
+```sh
+./ffmpeg -re -i input.mp4 -vcodec libx264 -acodec aac -map 0 -f tee "[f=flv]rtmp://publish.chinaffmpeg.com/live/stream1 | [f=flv]rtmp://publish.chinaffmpeg.com/live/stream2"
+```
+
+### tee协议输出多路流
+
+FFmpeg在3.1.3版本之后支持tee协议输出多路流
+
+```sh
+./ffmpeg -re -i input.mp4 -vcodec libx264 -acodec aac -f flv "tee:rtmp://publish.chinaffmpeg.com/live/stream1|rtmp://publish.chinaffmpeg.com/live/stream2"
+```
+
+## FFmpeg生成HDS流
+
+### HDS参数说明
+
+| 参数              | 类型 | 说明                                |
+| ----------------- | ---- | ----------------------------------- |
+| window_size       | 整数 | 设置HDS文件列表的最大文件数         |
+| extra_window_size | 整数 | 设置HDS文件列表之外的文件保留数     |
+| min_frag_duration | 整数 | 设置切片文件时长（单位：微秒）      |
+| remove_at_exit    | 布尔 | 生成HDS文件退出时删除所有列表及文件 |
+
+### HDS使用举例
+
+1. window_size参数控制文件列表大小
+
+   生成output目录，目录下面包含三种文件:
+
+   - index.f4m: 索引文件，主要为F4M参考标准中mainfest相关，Metadata信息等
+   - stream0.abst: 文件流相关描述信息
+   - stream0Seg1-Frag: 相似规则文件切片，文件切片中均为mdat信息
+
+   ```sh
+   ./ffmpeg -i input -c copy -f hds -window_size 4 output
+   ```
+
+2. extra_window_size参数控制文件个数
+
+   使用extra_window_size可以控制残留文件个数
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c copy -f hds -window_size 4 -extra_window_size 1 output
+   ```
+
+## FFmpeg生成DASH流
+
+FFmpeg生成DASH的参数:
+
+| 参数              | 类型   | 说明                         |
+| ----------------- | ------ | ---------------------------- |
+| window_size       | 整数   | 索引文件中文件的条目数       |
+| extra_window_size | 整数   | 索引文件之外的切片文件保留数 |
+| min_seg_duration  | 整数   | 最小切片时长（微秒）         |
+| remove_at_exit    | 布尔   | 当FFmpeg退出时删除所有切片   |
+| use_template      | 布尔   | 按照模板切片                 |
+| use_timeline      | 布尔   | 设置切片模板为时间模板       |
+| single_file       | 布尔   | 设置切片为单文件模式         |
+| single_file_name  | 字符串 | 设置切片文件命名模板         |
+| init_seg_name     | 字符串 | 设置切片出事命名模板         |
+| media_seg_name    | 字符串 | 设置切片文件名模板           |
+
+### DASH参数使用举例
+
+1. window_size与extra_window_size参数举例
+
+   生成文件索引列表index.mpd，文件列表长度为4个切片长度，切片之外会保留5个切片
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c:v copy -acodec copy -f dash -window_size 4 -extra_window_size 5 index.mpd
+   ```
+
+2. single_file参数举例
+
+   生成3个文件:1个索引文件，1个音频文件，1个视频文件
+
+   ```sh
+   ./ffmpeg -re -i input.mp4 -c:v copy -acodec copy -f dash -window_size 4 -extra_window_size 5 -single_file 1 index.mpd
+   ```
+
+   
