@@ -7,20 +7,20 @@
 ##### 五级标题
 ###### 六级标题
 ```
-  
+
 # 段落
 ```
 段落换行:2个空格+回车
 重新开始段落:使用一个空行
 ```
-  
+
 # 字体
 ``` 
 斜体:*字体*或_字体_
 粗体:**字体*或__字体__
 粗斜体:___字体___
-``` 
-  
+```
+
 # 分割线
 ```
 ***
@@ -29,17 +29,17 @@
 - - -
 ----------
 ```
-  
+
 # 删除线
 ``` 
 ~~删除线~~ 
-``` 
-  
+```
+
 # 下划线
 ``` 
 <u>下划线<u>
-``` 
-  
+```
+
 # 脚注
 ``` 
 [^文字] -- 注释
@@ -97,7 +97,7 @@
 | 单元格 | 单元格 |
 
 ```
-  
+
 # 公式
 ```
 $$公式内容$$
@@ -105,14 +105,38 @@ $$公式内容$$
 一些常用的数学公式：  
 |类型|写法|
 |:--|:--|
+|无穷, Delta, Gamma, Theta, Lambda, Sigma, Upsilon, Phi, Omega|$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$|
+|对于所有, 存在, 因为, 所以|$\forall$, $\exists$, $\because$, $\therefore$|
+|属于, 不属于, 子集, 非子集, 真子集, 非真子集|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|
+|并,交,差集|$x \cup y$, $x \cap y$, $x \setminus y$|
+|实数集, 自然数集, 空集|$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$|
+|加减, 减加, 乘法, 点乘, 星乘, 除法, 斜法, 空格, $\oint$|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$|
+|大于等于, 小于等于, 不等于, 约等于, 恒等于|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$|
 |分数，平方|$\frac{7x+5}{1+y^2}$|
-|下标|$z=z_l$|
-|省略号|\cdots|
-|开根号|\sqrt{2};\sqrt[n]{3}|
-|矢量|\vec{a} \cdot \vec{b}=0|
-|极限|\lim_{n\rightarrow+\infty} n|
-|累加|\sum \frac{1}{i^2}|
-|累乘|\prod \frac{1}{i^2}|
+|上标, 下标, 省略号, 开根号|$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|
+|矢量|$\vec{a} \cdot \vec{b}=0$|
+|极限|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|
+|累加|$\sum \frac{1}{i^2}$|
+|累乘|$\prod \frac{1}{i^2}$|
+|积分|$\int^{\infty}_{0}{xdx}$|
+|微分|$\frac{\partial x}{\partial y}$|
+|组合公式1|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|
+|组合公式2|$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
+
+矩阵的表示1:$$ \begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{bmatrix} $$
+
+
+
+矩阵的表示2:$$ \begin{Bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{Bmatrix} $$
+
 
 # 绘制流程图，时序图，甘特图
 ## 流程图
@@ -148,7 +172,7 @@ end
 
 例:
 ```sh
-```mermaid
+​```mermaid
 graph LR
     A(开始) -->B(起床)
     B --天气不好--- C>干活]
@@ -177,7 +201,7 @@ graph LR
 
 例子:
 ```sh
-```mermaid
+​```mermaid
 st=>start: 开始框
 op=>operation: 处理框
 cond=>condition: 判断框（是或否?）
