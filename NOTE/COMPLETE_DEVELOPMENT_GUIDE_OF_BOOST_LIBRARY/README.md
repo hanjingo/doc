@@ -6,6 +6,10 @@
 > - [weak_ptr](chapter3_3.md)
 > - [intrusive_ptr](chapter3_4.md)
 > - [pool](chapter3_5.md)
+- [第四章 实用工具](chapter4.md)
+
+  > - [noncopyable](chapter4_1.md)
+
 - [第六章 正确性与测试](chapter6.md)
 > - [assert](chapter6_1.md)
 > - [static_assert](chapter6_2.md)

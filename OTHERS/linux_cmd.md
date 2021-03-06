@@ -35,3 +35,4 @@
 |:--|:--|:--|:--|
 |uname|查看内核/操作系统/CPU信息|-|-|
 |source|使设置生效|-|source /etc/profile:让profile配置生效|
+|su|切换账户|-|su he:切换到账户he|

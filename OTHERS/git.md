@@ -1,5 +1,29 @@
 # git指南
 
+## 环境配置
+
+### 生成ssh key
+
+```sh
+ssh-keygen -t rsa -C "xxx@xxx"
+```
+
+### 设置git用户名
+
+```sh
+git config --global user.name "xxx"
+```
+
+### 设置邮箱
+
+```sh
+git config --global user.email "xxx@xxx"
+```
+
+
+
+---
+
 ## 常用命令
 ### 添加子模块
 ```shell

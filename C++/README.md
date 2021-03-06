@@ -5,5 +5,7 @@
 - [const关键字](const.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)
+- [谷歌c++编码规范](google_cpp_std.md)
+- [noncopyable关键字](noncopyable.md)
 - [optional关键字](optional.md)
 - [volatile关键字](volatile.md)
