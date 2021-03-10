@@ -144,6 +144,19 @@ ReturnType ClassName::ReallyLongFunctionName(const Type& par_name1,
 }
   
 }
+
+// 尽量不使用宏
+// 不使用异常
+// 禁止使用RTTI
+// 使用printf之类的代替流
+// 除位域不使用无符号数字
+// 除特定环境，不使用操作符重载
+// 使用4种cast运算符类型转换
+// 禁止使用Class类型全局变量，若使用必须为单例模式
+// sizeof(var)代替sizeof(type)
+// scoped_ptr可以胜任智能指针
+// 特殊情况下可用shared_ptr
+// 任何时候都不使用auto_ptr
 ```
 
 

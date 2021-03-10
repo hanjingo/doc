@@ -1,5 +1,4 @@
 - [DTS和PTS](dts_pts.md)
-- [ffmpeg速查手册](ffmpeg_cmd.md)
 - [flv协议](flv.md)
 - [I帧 P帧 B帧](frame.md)
 - [hls协议](hls.md)

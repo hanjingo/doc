@@ -47,7 +47,11 @@ int main()
 explicit BOOK(string ISBN,float price=0.0f):_bookISBN(ISBN),_price(price){}
 ```
 explicit关键字只能用于类内部的构造函数声明上.这样一来，BOOK类构造函数就不能用于隐式地创造对象了，编译上面的代码会出现这样的提示：
-![explicit错误](RES/explicit1.png)
+
+```sh
+Error:不存在用户定义的从"std::string"到"const BOOK"的适当转换
+...
+```
 
 现在用户只能进行显示类型转换，显式地创建临时对象。
 

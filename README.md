@@ -8,7 +8,6 @@
 - [多媒体](MEDIA/README.md)
 - [读书笔记](NOTE/README.md)
 - [杂文](OTHERS/README.md)
-- [RUST](RUST/README.md)
 - [源码分析](SRC/README.md)
 
 # 快捷导航
@@ -26,5 +25,5 @@
 - [eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)
 - [I帧,P帧和B帧](MEDIA/frame.md)
 - [cmake教程](OTHERS/cmake.md)
-- [FFmpeg速查手册](MEDIA/ffmpeg_cmd.md)
+- [FFmpeg速查手册](MEDIA/FFMPEG/cmd.md)
 
