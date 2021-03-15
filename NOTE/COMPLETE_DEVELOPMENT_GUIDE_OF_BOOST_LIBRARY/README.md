@@ -9,13 +9,14 @@
 - [第四章 实用工具](chapter4.md)
 
   > - [noncopyable](chapter4_1.md)
+  > - [optional](chapter4_3.md)
 
 - [第六章 正确性与测试](chapter6.md)
 > - [assert](chapter6_1.md)
 > - [static_assert](chapter6_2.md)
 > - [lightweight_test](chapter6_3.md)
 > - [test](chapter6_4.md)
-- [第七章 容器与数据结构](chapter7.md)
+- 第七章 容器与数据结构
 > - [circular_buffer](chapter7_5.md)
 - [第十章 操作系统相关](chapter10.md)
 > - [system](chapter10_1.md)
