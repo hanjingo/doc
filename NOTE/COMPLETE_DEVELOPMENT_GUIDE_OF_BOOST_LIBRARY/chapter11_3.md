@@ -237,3 +237,54 @@ dc.run();
 ```
 
 通过以上实例代码我们可以看到function用于回调的好处，它无须改变回调的接口就可以解耦客户代码，使客户代码不必绑死在一种回调形式上，进而可以持续演化，而function始终能够保证与客户代码进行正确沟通。
+
+### 对比标准
+
+有些时候，关键字auto可以取代function。例：
+
+```c++
+auto func = &f;
+cout << func(10, 20) << endl;
+
+demo_class sc;
+auto func2 = bind(&demo_class::add, &sc, _1, _2);	// 存储一个bind表达式
+cout << func2(10, 20) << endl;
+```
+
+但auto和function的实现有很大的不同。function类似一个容器，可以容纳任意有operator()的类型（函数指针，函数对象，lambda表达式），它是运行时的，可以任意拷贝，赋值，存储其他可调用物。而auto仅是在编译期推导出的一个静态类型变量，很难再赋予它其他值，它也无法容纳其他的类型，不能用于泛型编程。
+
+当需要存储一个可调用物用于回调的时候，最好使用function，它具有更强的灵活性，特别是把回调作为类的一个成员的时候我们只能使用function。
+
+auto也有它的有点，他的类型是在编译期推导的，运行时没有“开销”，它在效率上要比function略高一点。但auto声明的变量不能存储其他类型的可调用物，灵活性较差，只能用于有限范围的延后回调。
+
+c++标准定义了std::function,其声明摘要如下：
+
+```c++
+template<class R, class... ArgTypes>
+class function<R(ArgTypes...)> {
+ public:
+  function() noexcept;											// 构造函数
+  template<class F> function(F);
+  
+  void swap(function&) noexcept;						// 交换函数
+  
+  template<class F, class A>
+  void assign(F&&, const A&);								// 赋值
+  
+  explicit operator bool() const noexcept; 	// 显式bool转型
+  
+  R operator()(ArgTypes...) const;					// operator()
+  
+  const std::type_info& target_type() const noexcept;
+  template <typename T> T* target() noexcept;
+};
+```
+
+std::function与boost::function基本相同，它们只有少量的区别：
+
+- 没有clear()和empty()成员函数。
+- 提供assign()成员函数。
+- explicit显式bool转型。
+
+所以，同shared_ptr一样，std::function在函数返回值或函数参数等语境里转型bool需要使用static_cast<bool>(f)或!!f的形式。
+

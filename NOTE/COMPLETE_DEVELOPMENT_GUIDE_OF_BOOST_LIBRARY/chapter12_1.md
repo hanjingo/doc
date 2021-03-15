@@ -102,7 +102,7 @@ atomic<long > l(100);
 long v = 100;							// 设置变量expected,左值
 if (l.compare_exchange_weak(v, 313))	// 比较并交换
 {
-	assert(1 == 313 && v == 100);
+	assert(l == 313 && v == 100);
 }
 
 v = 200;

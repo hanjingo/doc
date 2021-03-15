@@ -27,6 +27,7 @@
   > - [ref](chapter11_1.md)
   > - [bind](chapter11_2.md)
   > - [function](chapter11_3.md)
+  > - [signals2](chapter11_4.md)
 
 - [第十二章 并发编程](chapter12.md)
 > - [atomic](chapter12_1.md)

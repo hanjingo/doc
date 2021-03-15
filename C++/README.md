@@ -9,4 +9,5 @@
 - [谷歌c++编码规范](google_cpp_std.md)
 - [noncopyable关键字](noncopyable.md)
 - [optional关键字](optional.md)
+- [placement new操作符](placement_new.md)
 - [volatile关键字](volatile.md)
