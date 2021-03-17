@@ -1,27 +1,5 @@
 # 第二章 空间配置器
 
-## 空间配置器需要实现的标准接口
-
-- allocator::value_type
-- allocator::pointer
-- allocator::const_pointer
-- allocator::reference
-- allocator::const_reference
-- allocator::size_type
-- allocator::diference_type
-- allocator::rebind: 一个嵌套的(nested) class template。class rebind<U>拥有唯一成员other，那是一个typedef，代表allocator<U>
-- allocator::allocator(): 默认构造函数
-- allocator::allocator(const allocator&): 复制构造函数
-- template <class U> allocator::allocator(const allocator<U>&): 泛化的复制构造函数
-- allocator::~allocator(): 析构函数
-- pointer allocator::address(reference x) const: 返回某个对象的地址
-- const_pointer allocator::address(const_reference x) const: 返回某个const对象的地址
-- pointer allocator::allocate(size_type n, const void* = 0): 配置空间，足以存储n个T对象。第二个参数是个提示。实现上可能会利用它来增进区域性，或完全忽略之
-- void allocator::deallocate(pointer p, size_type n): 归还先前配置的空间
-- size_type allocator::max_size() const: 返回可成功配置的最大值
-- void allocator::construct(pointer p, const T& x): 等同于new(const void*) p) T(x)
-- void allocatpr::destroy(pointer p): 等同于p->~T()
-
 ## 具备次配置力(sub-allocation)的SGI空间配置器
 
 SGI STL的配置器与众不同，也与标准规范不同，其名称是alloc而非allocator，而且不接收任何参数。换句话说，如果你要在程序中明白采用SGI配置器，则不能采用标准写法：

@@ -3,7 +3,7 @@
 - [第三章 FFmpeg转封装](chapter3.md)
 - [第四章 FFmpeg转码](chapter4.md)
 - [第五章 FFmpeg流媒体](chapter5.md)
-- [第六章 FFmpeg滤镜使用]()
+- [第六章 FFmpeg滤镜使用](chapter6.md)
 - [第七章 FFmpeg采集设备]()
 - [第八章 FFmpeg接口libavformat的使用](chapter8.md)
 - [第九章 FFmpeg接口libavcodec的使用](chapter9.md)
