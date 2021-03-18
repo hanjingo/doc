@@ -24,7 +24,71 @@ git config --global user.email "xxx@xxx"
 
 ---
 
+## commit规范
+
+### angular 规范
+
+```git
+<type>(<scope>): <subject>
+// 空一行
+<body>
+// 空一行
+<footer>
+```
+
+**Header**
+
+包括3个字段：type(必需), scope(可选)， subject(必需)
+
+1. type：用于说明commit类别,只允许使用下面7个标识
+
+- 添加新特性(feat)
+- 修复bug(fix)
+- 文档(docs)
+- 格式(style)
+- 重构(refactor)
+- 增加测试(test)
+- 构建过程或辅助工具的变动(chore)
+
+如果type为feat和fix，则该commit将肯定出现在Change log之中。其他情况(docs, chore, style, refactor, test)由用户决定
+
+2. scope
+
+   用于说明commit影响的范围，比如：数据层，控制层，视图层等等
+
+3. subject
+
+   简短描述，不超过50个字符，规则如下：
+
+   - 以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+   - 第一个字母小写
+   - 结尾不加句号（。）
+
+**Body**
+
+对本次commit的详细描述，可以分成多行。
+
+ 注意：
+
+1. 使用第一人称现在时，比如使用change而不是changed或changes。
+2. 应该说明代码变动的动机，以及与以前行为的对比。
+
+**Footer**
+
+Footer只用于2种情况：
+
+1. 不兼容变动
+
+   如果当前代码与上一个版本不兼容，则Footer部分以BREAKING CHANGE开头，后面是对变动的描述，以及变动理由和迁移方法。
+
+2. 关闭Issue
+
+   如果当前commit针对某个issue，那么可以在Footer部分关闭这个issue。也可以一次关闭多个issue。
+
+---
+
 ## 常用命令
+
 ### 添加子模块
 ```shell
 git submodule add -b 分支 --name 子模块名(不填默认) ssh地址 模块路径
