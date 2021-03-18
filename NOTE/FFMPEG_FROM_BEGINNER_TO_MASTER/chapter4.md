@@ -146,9 +146,9 @@ FFmpeg开放了x264opts,可以通过这个参数设置x264内部私有参数
 
    | 参数         | 类型 | 说明                                                         |
    | ------------ | ---- | ------------------------------------------------------------ |
-   | preset       | 整数 | 预设置模板，设置的模板不同，转码时的书读也会不同，模板如下（默认为medium模板）:default, slow, medium, fast, hp, hq, bd, ll, llhq, llhp, lossless, losslesshp |
-   | profile      | 整数 | 视频编码profile参数:baseline, main, high, high444p           |
-   | level        | 整数 | 视频编码Level参数:auto, 1, 1.0, 1b, 1.0b, 1.1, 1.2, 1.3, 2, 2.0, 2.1, 2.2, 3, 3.0, 3.1, 3.2, 4, 4.0, 4.1, 4.2, 5, 5.0, 5.1 |
+   | preset       | 整数 | 预设置模板，设置的模板不同，转码时的书读也会不同，模板如下（默认为medium模板）:<br>default, slow, medium, fast, hp, hq, bd, ll, llhq, llhp, lossless, losslesshp |
+   | profile      | 整数 | 视频编码profile参数:<br>baseline, main, high, high444p       |
+   | level        | 整数 | 视频编码Level参数:<br>auto, 1, 1.0, 1b, 1.0b, 1.1, 1.2, 1.3, 2, 2.0, 2.1, 2.2, 3, 3.0, 3.1, 3.2, 4, 4.0, 4.1, 4.2, 5, 5.0, 5.1 |
    | rc           | 整数 | 预设置码率控制模板:constqp, vbr, cbr, vbr_minqp, ll_2pass_quality, ll_2pass_size, vbr_2pass |
    | rc-lookahead | 整数 | 控制码率预读取帧                                             |
    | gpu          | 整数 | GPU使用: any: 默认使用第一个GPU; list: 列取可用GPU列表;      |
@@ -195,7 +195,7 @@ FFmpeg开放了x264opts,可以通过这个参数设置x264内部私有参数
    | async_depth             | 整数 | 编码最大并行处理深度                                         |
    | avbr_accuracy           | 整数 | 精确的AVBR控制                                               |
    | avbr_convergence        | 整数 | 收敛的AVBR控制                                               |
-   | preset                  | 整数 | 预设值模板:包括veryfast, faster, fast, medium, slow, slower, veryslow共7中预置参数模板 |
+   | preset                  | 整数 | 预设值模板,包括:<br>veryfast, faster, fast, medium, slow, slower, veryslow共7中预置参数模板 |
    | vcm                     | 整数 | 使用视频会议模式码率控制                                     |
    | rdo                     | 整数 | 失真优化                                                     |
    | max_frame_size          | 整数 | 帧最大size设置                                               |
@@ -270,10 +270,10 @@ FFmpeg开放了x264opts,可以通过这个参数设置x264内部私有参数
 
    | 参数     | 类型 | 说明                                                         |
    | -------- | ---- | ------------------------------------------------------------ |
-   | profile  | 整数 | 视频编码profile设置:baseline, main, high                     |
-   | level    | 整数 | 视频编码level设置:1.3, 3.0, 3.1, 3.2, 4.0, 4.1, 4.2, 5.0, 5.1, 5.2 |
+   | profile  | 整数 | 视频编码profile设置:<br>baseline, main, high                 |
+   | level    | 整数 | 视频编码level设置:<br>1.3, 3.0, 3.1, 3.2, 4.0, 4.1, 4.2, 5.0, 5.1, 5.2 |
    | allow_sw | 布尔 | 使用软编码模式，默认关闭                                     |
-   | coder    | 整数 | 熵编码模式:CAVLC, VLC, CABAC, AC                             |
+   | coder    | 整数 | 熵编码模式:<br>CAVLC, VLC, CABAC, AC                         |
    | realtime | 布尔 | 如果编码不够快则会开启实时编码模式，默认关闭                 |
 
 2. OSX硬编解码使用示例

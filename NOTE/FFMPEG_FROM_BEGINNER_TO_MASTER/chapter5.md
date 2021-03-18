@@ -68,9 +68,9 @@
 | 参数                | 类型   | 说明                                                         |
 | ------------------- | ------ | ------------------------------------------------------------ |
 | initial_pause       | 布尔   | 建立连接后暂停播放                                           |
-| rtsp_transport      | 标记   | 设置RTSP传输协议，具体如下: udp: UDP; tcp: TCP; udp_multicast: UDP多播协议; http: HTTP隧道; |
-| rtsp_flags          | 标记   | RTSP使用标记，具体如下: filter_src: 只接受指定IP的流; listen: 设置为被动接受模式; prefer_tcp: TCP亲和模式，如果TCP可用则首选TCP传输 |
-| allowed_media_types | 标记   | 设置允许接受的数据模式(默认为全部开启): video: 只接收视频; audio: 只接收音频; data: 只接收数据; sbutitle: 只接收字幕; |
+| rtsp_transport      | 标记   | 设置RTSP传输协议，具体如下: <br>udp: UDP; <br>tcp: TCP; <br>udp_multicast: UDP多播协议; <br>http: HTTP隧道; |
+| rtsp_flags          | 标记   | RTSP使用标记，具体如下:<br> filter_src: 只接受指定IP的流; <br>listen: 设置为被动接受模式; <br>prefer_tcp: TCP亲和模式，如果TCP可用则首选TCP传输 |
+| allowed_media_types | 标记   | 设置允许接受的数据模式(默认为全部开启): <br>video: 只接收视频; <br>audio: 只接收音频; <br>data: 只接收数据; <br>sbutitle: 只接收字幕; |
 | min_port            | 整数   | 设置最小本地UDP端口，默认5000                                |
 | max_port            | 整数   | 设置最大本地UDP端口，默认65000                               |
 | timeout             | 整数   | 设置监听端口超时时间                                         |

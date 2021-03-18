@@ -448,8 +448,8 @@ FLV文件格式分为两部分：一部分为FLV文件头，另一部分为FLV�
    | 字段                          | 类型大小                   | 说明                                                         |
    | ----------------------------- | -------------------------- | ------------------------------------------------------------ |
    | 保留(Reserved)                | 2位                        | 为FMS保留，应该是0                                           |
-   | 滤镜(Filter)                  | 1位                        | 主要用来做文件内容加密处理: 0: 不预处理; 1: 预处理           |
-   | TAG类型(TagType)              | 5位                        | 8(0x08): 音频TAG; 9(0x09): 视频TAG; 18(0x12): 脚本数据(Script Data, 例如Metadata) |
+   | 滤镜(Filter)                  | 1位                        | 主要用来做文件内容加密处理: <br>0: 不预处理; <br>1: 预处理;  |
+   | TAG类型(TagType)              | 5位                        | 8(0x08): 音频TAG; <br>9(0x09): 视频TAG; <br>18(0x12): 脚本数据(Script Data, 例如Metadata) |
    | 数据的大小(DataSize)          | 24位                       | TAG的DATA部分的大小                                          |
    | 时间戳(Timestamp)             | 24位                       | 以毫秒为单位的展示时间0x000000                               |
    | 扩展时间戳(TimestampExtended) | 8位                        | 针对时间戳增加的补充时间戳                                   |
@@ -460,9 +460,9 @@ FLV文件格式分为两部分：一部分为FLV文件头，另一部分为FLV�
 
    | 字段                         | 数据类型                                 | 说明                                                         |
    | ---------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
-   | 帧类型(FrameType)            | 4位                                      | 视频帧的类型，下面的值为主要定义:1. 为关键帧(H.264使用，可以seek的帧); 2. 为P或B帧(H.264使用，不可以seek的帧); 3. 仅应用于H.263; 4. 生成关键帧（服务器端使用）; 5. 视频信息/命令帧 |
-   | 编码标识(CodecID)            | 4位                                      | Codec类型定义，下面是对应的编码值与对应的编码: 2. Sorenson H.263(用的少); 3. Screen Video(用的少); 4. On2 VP6(偶尔用); 5. 带Alpha通道的On2 VP6(偶尔用); 6. Screen Video 2(用得少); 7. H.264(使用非常频繁); |
-   | H.264的包类型(AVCPacketType) | 当Codec为H.264编码时则占用这个8位(1字节) | 当H.264编码封装在FLV中时，需要三类H.264的数据: 0. H.264的Sequence Header; 1. NALU(H.264做字节流时需要用的); 2. H.264的Sequence的end |
+   | 帧类型(FrameType)            | 4位                                      | 视频帧的类型，下面的值为主要定义:<br>1. 为关键帧(H.264使用，可以seek的帧); <br>2. 为P或B帧(H.264使用，不可以seek的帧); <br>3. 仅应用于H.263; <br>4. 生成关键帧（服务器端使用）; <br>5. 视频信息/命令帧; |
+   | 编码标识(CodecID)            | 4位                                      | Codec类型定义，下面是对应的编码值与对应的编码: <br>2. Sorenson H.263(用的少); <br>3. Screen Video(用的少); <br>4. On2 VP6(偶尔用); <br>5. 带Alpha通道的On2 VP6(偶尔用); <br>6. Screen Video 2(用得少); <br>7. H.264(使用非常频繁); |
+   | H.264的包类型(AVCPacketType) | 当Codec为H.264编码时则占用这个8位(1字节) | 当H.264编码封装在FLV中时，需要三类H.264的数据: <br>0. H.264的Sequence Header; <br>1. NALU(H.264做字节流时需要用的); <br>2. H.264的Sequence的end |
    | CTS(CompositionTime)         | 当Codec为H.264编码时占用这个24位(3字节)  | 当编码使用B帧时，DTS和PTS不相等，CTS用于表示PTS和DTS之间的差值 |
    | 视频数据                     | 视频数据                                 | 压缩过的视频的数据                                           |
 
@@ -470,18 +470,18 @@ FLV文件格式分为两部分：一部分为FLV文件头，另一部分为FLV�
 
    | 字段                      | 数据类型                              | 说明                                                         |
    | ------------------------- | ------------------------------------- | ------------------------------------------------------------ |
-   | 声音格式(SoundFormat)     | 4位                                   | 不同的值代表着不同的格式，具体如下: 0: 限行PCM，大小端取决于平台；1：ADPCM音频格式；2：MP3；3：线性PCM，小端；4：Nellymoser 16kHz Mono; 5: Nellymoser 8kHz Mono; 6: Nellymoser; 7: G.711 A-law; 8: G.711 mu-law; 9: 保留; 10: AAC; 11: Speex; 14: MP3 8kHz; 15: 设备支持的声音; 格式7，8，14，15均为保留；使用频率非常高的为AAC，MP3，Speex |
-   | 音频采样率(SoundRate)     | 2位                                   | 下面各值代表不同的采样率，具体如下: 0: 5.5kHz; 1: 11kHz; 2: 22kHz; 3: 44kHz; 有些音频为48kHz的AAC也可以被包含进来，不过也是采用44kHz的方式存储，因为音频采样率在标准中只用2位来表示不同的采样率，所以一般为4种 |
-   | 采样大小(SoundSize)       | 1位                                   | 下面的值分别表示不同的采样大小，具体如下: 0: 8位采样; 1: 16位采样; |
-   | 音频类型(SoundType)       | 1位                                   | 0: Mono sound; 1: Stereo sound;                              |
-   | 音视包类型(AACPacketType) | 当音频为AAC时占用这个字节，8位(1字节) | 0: AAC Sequence Header; 1: AAC raw数据                       |
+   | 声音格式(SoundFormat)     | 4位                                   | 不同的值代表着不同的格式，具体如下: <br>0: 限行PCM，大小端取决于平台；<br>1：ADPCM音频格式；<br>2：MP3；<br>3：线性PCM，小端；<br>4：Nellymoser 16kHz Mono; <br>5: Nellymoser 8kHz Mono;<br> 6: Nellymoser; <br>7: G.711 A-law; <br>8: G.711 mu-law;<br> 9: 保留; <br>10: AAC; <br>11: Speex; <br>14: MP3 8kHz; <br>15: 设备支持的声音; 格式7，8，14，15均为保留；使用频率非常高的为AAC，MP3，Speex |
+   | 音频采样率(SoundRate)     | 2位                                   | 下面各值代表不同的采样率，具体如下: <br>0: 5.5kHz; <br>1: 11kHz; <br>2: 22kHz; <br>3: 44kHz; <br>有些音频为48kHz的AAC也可以被包含进来，不过也是采用44kHz的方式存储，因为音频采样率在标准中只用2位来表示不同的采样率，所以一般为4种 |
+   | 采样大小(SoundSize)       | 1位                                   | 下面的值分别表示不同的采样大小，具体如下: <br>0: 8位采样; <br>1: 16位采样; |
+   | 音频类型(SoundType)       | 1位                                   | 0: Mono sound; <br>1: Stereo sound;                          |
+   | 音视包类型(AACPacketType) | 当音频为AAC时占用这个字节，8位(1字节) | 0: AAC Sequence Header; <br>1: AAC raw数据                   |
    | 音频数据                  | 音频数据                              | 具体编码的音频数据                                           |
 
 6. ScriptData格式解析
 
    | 字段                  | 数据类型    | 说明                                                         |
    | --------------------- | ----------- | ------------------------------------------------------------ |
-   | 类型(Type)            | 8位(一字节) | 不同的值代表着AMF格式的不同类型，具体如下：0: Number; 1: Boolean; 2: String; 3: Object; 5: Null; 6: Undefined; 7: Reference; 8: ECMA Array; 9: Object end marker; 10: Strict Array; 11: Date; 12: Long String; |
+   | 类型(Type)            | 8位(一字节) | 不同的值代表着AMF格式的不同类型，具体如下：<br>0: Number; <br>1: Boolean; <br>2: String; <br>3: Object; <br>5: Null; <br>6: Undefined;<br>7: Reference; <br>8: ECMA Array;<br>9: Object end marker; <br>10: Strict Array; <br>11: Date; <br>12: Long String; |
    | 数据(ScriptDataValue) | -           | 按照Type的类型进行对应的AMF解析                              |
 
 ### FFmpeg转FLV参数
@@ -594,7 +594,7 @@ ffmpeg -i input.mp4 -c copy -f flv -flvflags add_keyframe_index output.flv
 | hls_segment_filename | 字符串       | 设置切片名模板                                               |
 | hls_key_info_file    | 字符串       | 设置M3U8加密的key文件路径                                    |
 | hls_subtitle_path    | 字符串       | 设置M3U8字幕路径                                             |
-| hls_flags            | 标签（整数） | 设置M3U8文件列表的操作，具体如下: single_file: 生成一个媒体文件索引与字节范围; delete_segments: 删除M3U8文件中不包含的过期的TS切片文件; round_durations: 生成的M3U8切片信息的duration为整数; discont_start: 生成M3U8的时候在列表前边加上discontinuity标签; omit_endlist: 在M3U8末尾不追加endlist标签 |
+| hls_flags            | 标签（整数） | 设置M3U8文件列表的操作，具体如下: <br>single_file: 生成一个媒体文件索引与字节范围;<br> delete_segments: 删除M3U8文件中不包含的过期的TS切片文件;<br> round_durations: 生成的M3U8切片信息的duration为整数; <br>discont_start: 生成M3U8的时候在列表前边加上discontinuity标签; <br>omit_endlist: 在M3U8末尾不追加endlist标签 |
 | use_localtime        | 布尔         | 设置M3U8文件序号为本地时间戳                                 |
 | use_localtime_mkdir  | 布尔         | 根据本地时间戳生成目录                                       |
 | hls_playlist_type    | 整数         | 设置M3U8列表为事件或者点播列表                               |
