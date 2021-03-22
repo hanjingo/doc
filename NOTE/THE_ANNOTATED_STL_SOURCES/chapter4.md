@@ -395,4 +395,306 @@ protected:
   }
   ```
 
-  
+## deque(double-ended queue, 双端队列)
+
+### deque概述
+deque是一种双向进出的连续线性空间。它是动态地分段连续空间组合而成，随时可以增加一段新的空间并连接起来。
+
+特点:
+- deque时有下表顺序容器，它允许在其首尾两端快速插入及删除
+- deque的元素不是相接存储的，典型实现用单独分配的固定大小数组的序列，外加额外的标记，这表示下标访问必须进行二次指针解引用，与之相比vector的下标访问只进行一次
+
+deque和vector的差异:
+
+- deque允许常数时间内对起头端进行元素的插入或移除操作
+- deque没有所谓容量(capacity)观念，因为它是动态地以分段连续空间组合而成，随时可以增加一段新的空间并连接起来
+
+除非必要我们应尽可能使用vector二飞deque。在对de1ue进行的排序操作时，为了最高效率，可将deque先完整复制到一个vector身上，将vector排序后(利用STL sort算法)，再复制回deque。
+
+### deque的中控器
+```c++
+template <class _Tp, class _Alloc>
+class _Deque_base
+  : public _Deque_alloc_base<_Tp,_Alloc,
+                              _Alloc_traits<_Tp, _Alloc>::_S_instanceless>
+{
+public:
+  typedef _Deque_iterator<_Tp,_Tp&,_Tp*> iterator;
+
+protected:
+  _Tp** _M_map;         // map
+  size_t _Map_map_size; // map的节点数量大小
+  iterator _M_start;  // 指向第一个缓冲区的第一个元素
+  iterator _M_finish; // 指向最后一个缓冲区的最后一个元素
+
+  typedef simple_alloc<_Tp, _Alloc>   _Node_alloc_type; // 节点配置器
+  typedef simple_alloc<_Tp*, _Alloc>  _Map_alloc_type;  // map配置器
+  ...
+};
+
+template <class _Tp, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Tp)>
+class deque : protected _Deque_base<_Tp, Alloc> {
+
+protected:
+  typedef pointer* _Map_pointer;
+  ...
+}
+```
+
+deque采用一小块连续空间(map)来做主控，map的每一个节点(node)都是指针，指向另一端比较大的连续线性空间。
+
+![deque map示意图](TODO)
+
+### deque的迭代器
+```c++
+template <class _Tp, class _Ref, class _Ptr>
+struct _Deque_iterator {
+  typedef _Tp** _Map_pointer;
+
+  _Tp* _M_curr;         // 指向节点的当前元素
+  _Tp* _M_first;        // 指向节点的头
+  _Tp* _M_last;         // 指向节点的尾部（含备用空间）
+  _Map_pointer _M_node; // 指向所在的map
+  ...
+}
+```
+
+![deque的中控器，节点，迭代器的相互关系](TODO)
+
+### deque的构造与内存管理
+- push_back
+```c++
+void push_back(const value_type& __t) {
+  if (_M_finish._M_cur != _M_finish._M_last - 1) {
+    // 最后的节点还有2个（含）以上的元素备用空间
+    construct(_M_finish._M_cur, __t); // 直接在备用空间上构造元素
+    ++_M_finish._M_cur;               // 调整最后节点的使用状态
+  }
+  else                                // 最后节点只剩一个元素的备用空间
+    _M_push_back_aux(__t);
+}
+
+template <class _Tp, class _Alloc>
+void deque<_Tp,_Alloc>::_M_push_back_aux(const value_type& __t)
+{
+  value_type __t_copy = __t;
+  _M_reserve_map_at_back();                       // 如果符合条件，重换一个map
+  *(_M_finish._M_node + 1) = _M_allocate_node();  // 配置一个新节点
+  __STL_TRY {
+    construct(_M_finish._M_cur, __t_copy);        // 赋值
+    _M_finish._M_set_node(_M_finish._M_node + 1); // 改变finish,指向新节点
+    _M_finish._M_cur = _M_finish._M_first;
+  }
+  __STL_UNWIND(_M_deallocate_node(*(_M_finish._M_node + 1)));
+}
+```
+![图4-13](TODO)
+
+- puth_front
+```c++
+void push_front() {
+  if (_M_start._M_cur != _M_start._M_first) { // 第一节点还有备用空间
+    construct(_M_start._M_cur - 1, __t);      // 构造元素
+    --_M_start._M_cur;                        // 调整第一节点的状态
+  }
+  else                                        // 第一节点无可用空间
+    _M_push_front_aux(__t);
+}
+
+template <class _Tp, class _Alloc>
+void deque<_Tp,_Alloc>::_M_push_front_aux(const value_type& __t)
+{
+  value_type __t_copy = __t;
+  _M_reserve_map_at_front();                    // 如果符合条件，更换一个map
+  *(_M_start._M_node - 1) = _M_allocate_node(); // 配置一个新节点
+  __STL_TRY {
+    _M_start._M_set_node(_M_start._M_node - 1); // 改变start，令其指向新节点
+    _M_start._M_cur = _M_start._M_last - 1;     // 设定start的状态
+    construct(_M_start._M_cur, __t_copy);       // 设置值
+  }
+  __STL_UNWIND((++_M_start, _M_deallocate_node(*(_M_start._M_node - 1))));
+}
+```
+![图4-15](TODO)
+![图4-16](TODO)
+
+### deque的元素操作
+- pop_back
+```c++
+void pop_back() {
+  if (_M_finish._M_cur != _M_finish._M_first) {
+    // 最后节点有一个（或多个）元素
+    --_M_finish._M_cur; // 调整指针
+    destroy(_M_finish._M_cur);
+  }
+  else  // 最后节点没有任何元素
+    _M_pop_back_aux();  // 释放节点
+}
+
+template <class _Tp, class _Alloc>
+void deque<_Tp,_Alloc>::_M_pop_back_aux()
+{
+  _M_deallocate_node(_M_finish._M_first); // 释放左右一个节点
+  _M_finish._M_set_node(_M_finish._M_node - 1); // 重设节点
+  _M_finish._M_cur = _M_finish._M_last - 1;
+  destroy(_M_finish._M_cur);
+}
+```
+
+- pop_front
+```c++
+void pop_front() {
+  if (_M_start._M_cur != _M_start._M_last - 1) {
+    // 第一个节点有两个（或多个）元素
+    destroy(_M_start._M_cur);
+    ++_M_start._M_cur;
+  }
+  else  // 第一个节点仅有一个元素
+    _M_pop_front_aux();
+}
+
+template <class _Tp, class _Alloc>
+void deque<_Tp,_Alloc>::_M_pop_front_aux()
+{
+  destroy(_M_start._M_cur);                   // 将第一个节点的第一个元素析构
+  _M_deallocate_node(_M_start._M_first);      // 释放第一个节点
+  _M_start._M_set_node(_M_start._M_node + 1); // 重设start
+  _M_start._M_cur = _M_start._M_first;
+}
+```
+
+- clear
+```c++
+template <class _Tp, class _Alloc>
+void deque<_Tp,_Alloc>::clear()
+{
+  for (_Map_pointer __node = _M_start._M_node + 1;
+      __node < _M_finish._M_node;
+      ++__node>) {
+    destroy(*__node, *__node + _S_buffer_size());   // 释放节点的所有元素
+  }
+
+  if (_M_start._M_node != _M_finish._M_node) {
+    destroy(_M_start._M_cur, _M_start._M_last);     // 释放头节点的所有元素
+    destroy(_M_finish._M_first, _M_finish._M_cur);  // 释放尾节点的所有元素
+    _M_deallocate_node(_M_finish._M_first);         // 是否尾节点，保留头节点
+  }
+  else
+    destroy(_M_start._M_cur, _M_finish._M_cur);
+
+  _M_finish = _M_start; // 重置尾节点
+}
+```
+
+- erase
+```c++
+template <class _Tp, class _Alloc>
+typename deque<_Tp,_Alloc>::iterator
+deque<_Tp,_Alloc>::erase(iterator __first, iterator __last)
+{
+  if (___first == _M_start && __last == _M_finish) {  // 如果时清除整个deque
+    clear();
+    return _M_finish;
+  }
+  else {
+    difference_type __n = __last - __first; // 计算长度
+    difference_type __elems_before = __first - _M_start; // 计算离start的距离
+     // 如果前面的元素较少
+    if (__elems_before < difference_type((this->size() - __n) / 2)) {
+      copy_backward(_M_start, __first, __last); // 向后移动前方元素（覆盖清除区间）
+      iterator __new_start = _M_start + __n;    // 重设新起点
+      destroy(_M_start, __new_start);
+      _M_destroy_nodes(__new_start._M_node, _M_start._M_node);
+      _M_start = __new_start;
+    }
+    else {
+      copy(__last, _M_finish, __first); // 向前移动后方元素(覆盖清除区间)
+      iterator __new_finish = _M_finish - __n;
+      destroy(__new_finish, _M_finish);
+      _M_destroy_nodes(__new_finish._M_node + 1, _M_finish._M_node + 1);
+      _M_finish = __new_finish;
+    }
+    return _M_start + __elems_before;
+  }
+}
+```
+
+- insert
+```c++
+template <class _Tp, class _Alloc>
+void deque<_Tp, _Alloc>::insert(iterator __pos,
+                                const value_type* __first,
+                                const value_type* __last) {
+  size_type __n = __last - __first; // 元素数量
+  if (__pos._M_cur == _M_start._M_cur) {  // 如果插入点是最前端
+    iterator __new_start = _M_reserve_elements_at_front(__n);
+    __STL_TRY {
+      uninitialized_copy(__first, __last, __new_start);
+      _M_start = __new_start;
+    }
+    __STL_UNWIND(_M_destroy_nodes(__new_start._M_node, _M_start._M_node));
+  }
+  else if (__pos._M_cur == _M_finish._M_cur) {  // 如果插入点是最后端
+    iterator __new_finish = _M_reserve_elements_at_back(__n);
+    __STL_TRY {
+      uninitialized_copy(__first, __last, _M_finish);
+      _M_finish = __new_finish;
+    }
+    __STL_UNWIND(_M_destroy_nodes(_M_finish._M_node + 1,
+                                  __new_finish._M_node + 1));
+  }
+  else
+    _M_insert_aux(__pos, __first, __last, __n);
+}
+
+template <class _Tp, calss _Alloc>
+void deque<_Tp,_Alloc>::_M_insert_aux(iterator __pos,
+                                      const value_type* __first,
+                                      const value_type* __last,
+                                      size_type __n)
+{
+  const difference_type __elemsbefore = __pos - _M_start;
+  size_type __length = size();
+  if (__elemsbefore < __length / 2) { // 插入点之前的元素个数较少
+    iterator __new_start = _M_reserve_elements_at_front(_n);
+    iterator __old_start = _M_start;
+    __pos = _M_start + __elemsbefore;
+    __STL_TRY {
+      if (__elemsbefore >= difference_type(__n)) { // 如果插入点之前的长度，大于要插入的元素个数
+        iterator __start_n = _M_start + difference_type(__n);
+        uninitialized_copy(_M_start, __start_n, __new_start);
+        _M_start = __new_start;
+        copy(__start_n, __pos, __old_start);
+        copy(__first, __last, __pos - difference_type(__n));
+      }
+      else {
+        const value_type* __mid =
+          __first + (difference_type(__n) - __elemsbefore);
+        __unitialized_copy_copy(_M_start, __pos, __first, __mid, __new_start);
+        
+        _M_start = __new_start;
+        copy(__mid, __last, __old_start);
+      }
+    }
+    __STL_UNWIND(_M_destroy_nodes(__new_start._M_node, _M_start._M_node);)
+  }
+  else {
+    iterator __new_finish = _M_reserve_elements_at_back(__n);
+    iterator __old_finish = _M_finish;
+    const difference_type __elemsafter = 
+      difference_type(__length) - __elemsbefore;
+    __pos = _M_finish - __elemsafter;
+    __STL_TRY {
+      if (__elemsafter > difference_type(__n)) {
+        iterator __finish_n = _M_finish - difference_type(__n);
+        uninitialized copy(__finish_n, _M_finish, _M_finish);
+        _M_finish = __new_finish;
+        copy_backward(__pos, __finish_n, __old_finish);
+        _M_finish = __new_finish;
+        copy_backward(__pos, _finish_n, __old_finish);
+        copy()
+      }
+    }
+  }
+}
+```
