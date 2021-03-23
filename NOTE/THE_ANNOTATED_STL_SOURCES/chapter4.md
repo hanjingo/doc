@@ -395,6 +395,8 @@ protected:
   }
   ```
 
+---
+
 ## deque(double-ended queue, 双端队列)
 
 ### deque概述
@@ -409,7 +411,7 @@ deque和vector的差异:
 - deque允许常数时间内对起头端进行元素的插入或移除操作
 - deque没有所谓容量(capacity)观念，因为它是动态地以分段连续空间组合而成，随时可以增加一段新的空间并连接起来
 
-除非必要我们应尽可能使用vector二飞deque。在对de1ue进行的排序操作时，为了最高效率，可将deque先完整复制到一个vector身上，将vector排序后(利用STL sort算法)，再复制回deque。
+除非必要我们应尽可能使用vector二飞deque。在对deque进行的排序操作时，为了最高效率，可将deque先完整复制到一个vector身上，将vector排序后(利用STL sort算法)，再复制回deque。
 
 ### deque的中控器
 ```c++
@@ -443,7 +445,7 @@ protected:
 
 deque采用一小块连续空间(map)来做主控，map的每一个节点(node)都是指针，指向另一端比较大的连续线性空间。
 
-![deque map示意图](TODO)
+![4-10](res/4-10.jpg)
 
 ### deque的迭代器
 ```c++
@@ -459,7 +461,7 @@ struct _Deque_iterator {
 }
 ```
 
-![deque的中控器，节点，迭代器的相互关系](TODO)
+![4-11](res/4-11.jpg)
 
 ### deque的构造与内存管理
 - push_back
@@ -488,8 +490,6 @@ void deque<_Tp,_Alloc>::_M_push_back_aux(const value_type& __t)
   __STL_UNWIND(_M_deallocate_node(*(_M_finish._M_node + 1)));
 }
 ```
-![图4-13](TODO)
-
 - puth_front
 ```c++
 void push_front() {
@@ -515,9 +515,6 @@ void deque<_Tp,_Alloc>::_M_push_front_aux(const value_type& __t)
   __STL_UNWIND((++_M_start, _M_deallocate_node(*(_M_start._M_node - 1))));
 }
 ```
-![图4-15](TODO)
-![图4-16](TODO)
-
 ### deque的元素操作
 - pop_back
 ```c++
@@ -685,16 +682,296 @@ void deque<_Tp,_Alloc>::_M_insert_aux(iterator __pos,
       difference_type(__length) - __elemsbefore;
     __pos = _M_finish - __elemsafter;
     __STL_TRY {
-      if (__elemsafter > difference_type(__n)) {
+      if (__elemsafter > difference_type(__n)) { // 如果要插入的数据长度<插入点后面的元素长度
         iterator __finish_n = _M_finish - difference_type(__n);
         uninitialized copy(__finish_n, _M_finish, _M_finish);
         _M_finish = __new_finish;
         copy_backward(__pos, __finish_n, __old_finish);
         _M_finish = __new_finish;
         copy_backward(__pos, _finish_n, __old_finish);
-        copy()
+        copy(__first, __last, __pos);
+      }
+      else {
+        const value_type* __mid = __first + __elemsafter;
+        __uninitialized_copy_copy(__mid, __last, __pos, _M_finish, _M_finish);
+        _M_finish = __new_finish;
+        copy(__first, __mid, __pos);
       }
     }
+    __STL_UNWIND(_M_destroy_nodes(_M_finish._M_node + 1,
+                                  __new_finish._M_node + 1));
   }
 }
 ```
+
+---
+
+## stack(栈)
+
+stack数据结构的特点是先进后出（一端进出），不允许遍历。
+
+stack不像vector, list, deque那样独立实现，它是可以使用某种容器作为底部结构，来实现stack的功能，更确切的说stack是adapter(适配器)。
+
+stack有2种实现方式：
+
+1. deque
+2. list
+
+stack没有迭代器。
+
+---
+
+## queue(队列)
+
+queue的数据结构特点是FIFO（先进先出），尾端进，首段出；所以queue也是不允许遍历。
+
+queue与stack一样，以某种容器为底层结构，被称为container adapter;
+
+queue有2中实现方式：
+
+1. deque
+2. list
+
+---
+
+## heap(堆)
+
+heap的数据结构就是二叉堆（完全二叉树）
+
+heap又分为：
+
+- max-heap(最大堆)：根节点是最大值，每个节点的键值都大于或等于其子节点键值。
+- min-heap(最小堆)：根节点是最小值，每个节点的键值都小于或等于其子节点键值。
+
+### heap算法
+
+### push_heap
+
+把新元素插入到底层vector的end()处，做shift up调整，使其满足heap的特性
+
+![4-21](res/4-21.jpg)
+
+```c++
+template <class _RandomAccessIterator>
+inline void
+push_heap(_RandomAccessIterator __first, _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(typename iterator_traits<_RandomAccessIterator>::value_type,
+                 _LessThanComparable);
+  // 注意，此函数被调用时，新元素应已置于底部容器的最尾端
+  __push_heap_aux(__first, __last,
+                  __DISTANCE_TYPE(__first), __VALUE_TYPE(__first));
+}
+
+template <class _RandomAccessIterator, class _Distance, class _Tp>
+inline void
+__push_heap_aux(_RandomAccessIterator __first,
+                _RandomAccessIterator __last, _Distance*, _Tp*)
+{
+  __push_heap(__first, _Distance((__last - __first) - 1), _Distance(0),
+              _Tp(*(__last - 1))); // 第三个参数就是要插入的值，位于vector尾部
+}
+
+template <class _RandomAccessIterator, class _Distance, class _Tp>
+void
+__push_heap(_RandomAccessIterator __first,
+            _Distance __holeIndex, _Distance __topIndex, _Tp __value)
+{
+  _Distance __parent = (__holeIndex - 1) / 2;	// 找到插入节点的父节点位置
+  while (__holeIndex > __topIndex && *(__first + __parent) < __value) {
+    // 当尚未到达顶端，且插入的节点大于其父节点
+    *(__first + __holeIndex) = *(__first + __parent); // 将插入节点的父节点的值赋予插入节点
+    __holeIndex = __parent;														// 索引位置改变，插入值的索引为父节点索引
+    __parent = (__holeIndex - 1) / 2;									// 插入值的索引的父节点
+  }	// 持续至顶端或满足heap的次序特性为止
+  *(__first + __holeIndex) = __value;									// 交换完后，扎到插入值的阵阵位置，赋值
+}
+```
+
+### pop_heap
+
+将根节点取出（位于vector的begin()处），然后做shift down调整，使其满足heap的特性。
+
+**特别注意，pop_heap只是将根节点的值移动到vector的尾部，并没有取出来，vector的`[first, last-1)`位置元素满足heap的pop_back()操作函数。**
+
+![4-22](res/4-22.jpg)
+
+```c++
+template <class _RandomAccessIterator>
+inline void pop_heap(_RandomAccessIterator __first,
+                     _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(typename iterator_traits<_RandomAccessIterator>::value_type,
+                 _LessThanComparable)；
+  __pop_heap_aux(__first, __last, __VALUE_TYPE(__first));
+}
+
+template <class _RandomAccessIterator, class _Tp>
+inline void
+__pop_heap_aux(_RandomAccessIterator __first, _RandomAccessIterator __last,
+               _Tp*)
+{
+  // 首先设定欲调整值为尾值，然后将首值调至尾节点(将迭代器result设置为last-1)。
+  // 然后重整[first, last-1),使之重新成为一个合格的heap
+  __pop_heap(__first, __last - 1, __last - 1,
+             _Tp(*(__last - 1)), __DISTANCE_TYPE(__first));
+}
+
+template <class _RandomAccessIterator, class _Tp, class _Distance>
+inline void
+__pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last,
+           _RandomAccessiTERATOR __result, _Tp __value, _Distance*)
+{
+  *__result = *__first;	// 先保存vector头部元素，放到vector的尾部
+  // 做shift down操作调整
+  __adjust_heap(__first, _Distance(0), _Distance(__last - __first), __value);
+}
+
+template <class _RandomAccessIterator, class _Distance, class _Tp>
+void
+__adjust_heap(_RandomAccessIterator __first, _Distance _holeIndex,
+              _Distance __len, _Tp __value)
+{
+  _Distance __topIndex = __holeIndex;	// __holeIndex = 0，为heap的根节点
+  _Distance __secondChild = 2 * __holeIndex + 2;	// 根节点的右节点的索引
+  while (__secondChild < __len) {
+    // 比较根节点的左右节点值
+    if (*(__first + __secondChild) < *(__first + (__secondChild - 1)))
+      __secondChild--;
+    *(__first + __holeIndex) = *(__first + __secondChild); // shift down
+    __holeIndex = __secondChild;
+    __secondChild = 2 * (__secondChild + 1);
+  }
+  if (__secondChild == __len) {	// 没有右子节点，只有左子节点
+    *(__first + __holeIndex) = *(__first + (__secondChild - 1));
+    _holeIndex = __secondChild - 1;
+  }
+  __push_heap(__first, __holeIndex, __topIndex, __value); // 找到真正的位置，插入
+}
+```
+
+### sort_heap
+
+一直调用pop_heap，直到迭代器last指向迭代器first为止
+
+![4-23](res/4-23.jpg)
+
+```c++
+template <class _RandomAccessIterator>
+void sort_heap(_RandomAccessIterator __first, _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(typename iterator_traits<_RandomAccessIterator>::value_type,
+                 _LessThanComparable);
+  while (__last - __first > 1)
+    pop_heap(__first, __last--);
+}
+```
+
+### make_heap
+
+将一个完全二叉树存储在vector中，然后调整为一个heap，内部调用__adjust_heap实现。
+
+```c++
+template <class _RandomAccessIterator>
+inline void
+make_heap(_RandomAccessIterator, _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(typename iterator_traits<_RandomAccessIterator>::value_type,
+                 _LessThanComparable);
+  __make_heap(__first, __last,
+              __VALUE_TYPE(__first), __DISTANCE_TYPE(__first));
+}
+
+template <class _RandomAccessIterator, class _Tp, class _Distance>
+void
+__make_heap(_RandomAccessIterator __first,
+            _RandomAccessIterator __last, __Tp*, _Distance*)
+{
+  if (__last - __first < 2) return; 		// 如果长度为0或1，不必重新排列
+  _Distance __len = __last - __first;		// 待排列的长度
+  _Distance __parent = (__len - 2) / 2;	// 父节点i和右子节点2i+2
+  
+  while (true) { // __parent就是待插入节点索引
+    __adjust_heap(__first, __parent, __len, _Tp(*(__first + __parent)));
+    if (__parent == 0) return;
+    __parent--;
+  }
+}
+```
+
+### heap没有迭代器
+
+因为heap遵循某种规律，所以不提供遍历功能，没有迭代器操作
+
+---
+
+## priority_queue(优先级队列)
+
+默认以vector为底层容器，加上heap（默认max-heap）处理规则：权值高这先出
+
+被归纳为container adapter
+
+---
+
+## slist(单向链表)
+
+slist(single linked list), 不提供push_back()，只提供push_front()。
+
+c++11提供的`std::forward_list`(正向链表)，与slist功能类似。
+
+forward_list没有想slist提供size()成员函数，以为forward_list类模板是专门为极度考虑性能的程序设计的。
+
+### slist的节点
+
+![](res/4-25.jpg)
+
+```c++
+struct _Slist_node_base
+{
+  _Slist_node_base* _M_next;	// 指向下一个节点
+};
+
+template <class _Tp, class _Alloc>
+struct _Slist_base {
+protected:
+	_Slist_node_base* _M_head; // 头部，不是指针，不是链表实际节点，哑节点  
+  ...
+};
+
+template <class _Tp, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Tp) >
+class slist : private _Slist_base<_Tp,_Alloc>
+{
+  ...
+}
+```
+
+### slist的迭代器
+
+```c++
+// slist 节点结构体
+template <class _Tp>
+struct _Slist_node : public _Slist_node_base
+{
+  _Tp _M_data; // 节点的值
+}；
+  
+// slist 迭代器-基类
+struct _Slist_iterator_base
+{
+  _Slist_node_base* _M_node; // 指向的节点
+  ...
+};
+
+// slist 迭代器
+template <class _Tp, class _Ref, class _Ptr>
+struct _Slist_iterator : public _Slist_iterator_base
+{
+  ...
+}
+```
+
+### slist的数据结构
