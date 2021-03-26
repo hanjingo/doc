@@ -3,4 +3,5 @@
 * [第二章 空间配置器](chapter2.md)
 * [第三章 迭代器概念与traits编程技法](chapter3.md)
 * [第四章 序列式容器](chapter4.md)
+* [第五章 关联式容器](chapter5.md)
 
