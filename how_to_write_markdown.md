@@ -171,8 +171,8 @@ end
 ```
 
 例:
-```sh
-​```mermaid
+```mermaid
+
 graph LR
     A(开始) -->B(起床)
     B --天气不好--- C>干活]

@@ -41,7 +41,7 @@ protected:
 
   删除指定范围的元素，后面的元素全部前移
 
-  ![](res/vector_erase.jpg)
+  ![](res/vector_erase.png)
 
 - clear
 
@@ -54,13 +54,13 @@ protected:
   1. 备用空间 > 新增元素个数
 
   >  1.1. 插入点之后的现有元素个数 > 新增元素个数
-  >  ![](res/vector_insert1.1.jpg)
+  >  ![](res/vector_insert1.1.png)
 
   >  1.2. 插入点之后的现有元素个数 ≤ 新增元素个数
-  >  ![](res/vector_insert1.2.jpg)
+  >  ![](res/vector_insert1.2.png)
 
   2. 备用空间 < 新增元素个数
-  >  ![](res/vector_insert2.1.jpg)
+  >  ![](res/vector_insert2.1.png)
 
 ### 适用场景
 
@@ -123,7 +123,7 @@ struct _List_iterator_base {
 
 环状链表
 
-![](res/list_ring.jpg)
+![](res/list_ring.png)
 
 ```c++
 // stl_list.h
@@ -177,7 +177,7 @@ protected:
   }
   ```
 
-  ![](res/list_insert.jpg)
+  ![](res/list_insert.png)
 
 - push_front
 
@@ -445,7 +445,7 @@ protected:
 
 deque采用一小块连续空间(map)来做主控，map的每一个节点(node)都是指针，指向另一端比较大的连续线性空间。
 
-![4-10](res/4-10.jpg)
+![4-10](res/4-10.png)
 
 ### deque的迭代器
 ```c++
@@ -461,7 +461,7 @@ struct _Deque_iterator {
 }
 ```
 
-![4-11](res/4-11.jpg)
+![4-11](res/4-11.png)
 
 ### deque的构造与内存管理
 - push_back
@@ -749,7 +749,7 @@ heap又分为：
 
 把新元素插入到底层vector的end()处，做shift up调整，使其满足heap的特性
 
-![4-21](res/4-21.jpg)
+![4-21](res/4-21.png)
 
 ```c++
 template <class _RandomAccessIterator>
@@ -795,7 +795,7 @@ __push_heap(_RandomAccessIterator __first,
 
 **特别注意，pop_heap只是将根节点的值移动到vector的尾部，并没有取出来，vector的`[first, last-1)`位置元素满足heap的pop_back()操作函数。**
 
-![4-22](res/4-22.jpg)
+![4-22](res/4-22.png)
 
 ```c++
 template <class _RandomAccessIterator>
@@ -856,7 +856,7 @@ __adjust_heap(_RandomAccessIterator __first, _Distance _holeIndex,
 
 一直调用pop_heap，直到迭代器last指向迭代器first为止
 
-![4-23](res/4-23.jpg)
+![4-23](res/4-23.png)
 
 ```c++
 template <class _RandomAccessIterator>
@@ -927,7 +927,7 @@ forward_list没有想slist提供size()成员函数，以为forward_list类模板
 
 ### slist的节点
 
-![](res/4-25.jpg)
+![](res/4-25.png)
 
 ```c++
 struct _Slist_node_base

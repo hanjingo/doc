@@ -3,6 +3,7 @@
 - [BOOST](BOOST/README.md)
 - [QT](QT/README.md)
 - [常量指针和指针常量](const_ptr.md)
+- [c++ gitignore模板](cpp_gitignore.md)
 - [const关键字](const.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)

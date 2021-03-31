@@ -4,6 +4,7 @@
 - [GIT](git.md)
 - [go语言](go.md)
 - [linux常用命令](linux_cmd.md)
+- [make教程](make.md)
 - [重新绑定键](rebind_key.md)
 - [测试报告模板](test.md)
 - [vim快捷键](vim_shortcut.md)
