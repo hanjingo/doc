@@ -419,7 +419,8 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   }
   ```
 
-  
+
+
 ---
 
 ## set
@@ -542,7 +543,12 @@ Hash table在插入，删除，查找等操作具有“常数平均时间”O(1)
 对于一个数，进行散列函数处理，获得一个索引（桶节点）；当数量很大时，进过散列函数处理，会得到相同的索引，那么桶的节点位置一样，此时，将相同的节点使用链表连接起来。
 
 ```c++
-
+template <class _Val>
+struct _Hashtable_node
+{
+  _Hashtable_node* _M_next; // 指向下一个节点
+  _Val _M_val;              // 节点值
+};
 ```
 
 ### hashtable的迭代器
@@ -550,38 +556,211 @@ Hash table在插入，删除，查找等操作具有“常数平均时间”O(1)
 Hash table的迭代器没有后退操作，也没有逆向迭代器。
 
 ```c++
-
+// hash table 迭代器
+struct _Hashtable_iterator {
+  _Node* _M_cur;      // 指向的节点
+  _HashTable* _M_ht;  // 保持对容器的连接关系，bucket
+}
 ```
 
 ### hashtable的数据结构
 
 ```c++
-
+template <class _Val, class _key, class _HashFcn,
+          class _ExtractKey, class _EqualKey, class _Alloc>
+class hashtable {
+public:
+  typedef _HashFcn hasher;	// 哈希函数
+private:
+  typedef _Hashtable_node<_Val> _Node;	// 节点
+public:
+  hasher hash_funct() const { return _M_hash; }
+  key_equal key_eq() const { return _M_equals; }
+  
+private:
+  hasher 								_M_hash;					// 哈希函数
+  key_equal 						_M_equals;				// 比对函数
+  _ExtractKey 					_M_get_key;				// 从节点中取出键值的函数
+  vector<_Node*,_Alloc> _M_buckets;				// 容器
+  size_type 						_M_num_elements;	// 元素个数
+};
 ```
 
 ### hashtable的构造与内存管理
 
 ![5-25](res/5-25.png)
 
+```c++
+// 在不需要重建 buckets 大小下，插入新节点，键值不能重复
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+pair<typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator, bool>
+  ::insert_unique_noresize(const value_type& __obj)
+{
+	const size_type __n = _M_bkt_num(__obj);
+  _Node* __first = _M_buckets[__n];
+    
+  for (_Node* __cur = __first; __cur; __cur = __cur->_M_next)
+    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj))) // 节点已存在，跳出
+      return pair<iterator, bool>(iterator(__cur, this), false);
+    
+  _Node* __tmp = _M_new_node(__obj); // 头插法，新建节点
+  __tmp->_M_next = __first;
+  _M_buckets[__n] = __tmp;
+  ++_M_num_elements;
+  return pair<iterator, bool>(iterator(__tmp, this), true);  
+}
+
+// 不允许有重复的节点插入
+pair<iterator, bool> insert_unique(const value_type& __obj)
+{
+  resize(_M_num_elements + 1); // 判断是否需要重置 buckets
+  return insert_unique_noresize(__obj);
+}
+
+// 在不需要重建 buckets 大小下，插入新节点，键值可以重复
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator
+hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
+  ::insert_equal_noresize(const value_type& __obj)
+{
+	const size_type __n = _M_bkt_num(__obj);
+  _Node* __first = _M_buckets[__n];
+    
+  for (_Node* __cur = __first; __cur; __cur = __cur->_M_next)
+    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj))) {	// 相等就新建节点
+      _Node* __tmp = _M_new_node(__obj); 
+      __tmp->_M_next = __cur->_M_next;
+      __cur->_M_next = __tmp;
+      ++_M_num_elements;
+      return iterator(__tm;, this);
+    }
+    
+  _Node* __tmp = _M_new_node(__obj);
+  __tmp->_M_next = __first;
+  _M_buckets[__n] = __tmp;
+  ++_M_num_elements;
+  return iterator(__tmp, this);
+}
+
+// 允许有重复的节点插入
+iterator insert_equal(const value_type& __obj)
+{
+  resize(_M_num_elements + 1);
+  return insert_equal_noresize(__obj);
+}
+```
+
+
+
 ### hash functions
 
-### hash_set
+字符串转size_t
 
-RB-tree有自动排序功能而hash table没有，所以set的元素有自动排序功能而hash_set没有。
+```c++
+// 对字符字符串进行转换
+inline size_t __stl_hash_string(const char* __s)
+{
+  unsigned long __h = 0;
+  for (; *__s; ++__s)
+    __h = 5*__h + *__s;
+  
+  return size_t(__h);
+}
+```
 
-hash_set大小指定为100（根据SGI的书籍，采用质数193）。
+---
+
+## hash_set
+
+- 底层实现机制是 hashtable, 所以 hash_set 内部实现就是封装 hash table 类
+- 键值就是实值
+- 不允许有重复元素存在，因为底层调用 hashtable 的insert_unique()
+- 默认指定 hash table 大小为100(指数 193)
+- 元素是无序的
+
+```c++
+template <class _Value, class _HashFcn, class _EqualKey, class _Alloc>
+class hash_set
+{
+private:
+  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>,
+  									_EqualKey, _Alloc> _Ht;	// 底层机制
+  _Ht _M_ht;
+}
+```
+
+
 
 ---
 
 ## hash_map
 
+- 元素结构：<key, value>键值对
+- 底层机制为hash table
+- 元素是无序的，不会自动排序
+- 默认使用hashtable大小为100
+- 不允许键值重复的元素
+
+```c++
+template <class _Key, class _Tp, class _HashFcn, class _EqualKey,
+					class _Alloc>
+class hash_map
+{
+private:
+  typedef hashtable<pair<const _Key,_Tp>,_Key,_HashFcn,
+  									_Select1st<pair<const _Key,_Tp> >, _EqualKey,_Alloc> _Ht;
+  _Ht _M_ht;
+};
+```
+
+
+
 ---
 
 ## hash_multiset
 
+Hash_multiset与hash_set除了底层调用 hasttable 的 insert_equal(),允许重复元素存在；其他特性都相同
+
+```c++
+template <class _Value, class _HashFcn, class _EqualKey, class _Alloc>
+class hash_multiset
+{
+private:
+  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>,
+  									_EqualKey, _Alloc> _Ht;
+  _Ht _M_ht;
+public:
+  hash_multiset(const value_type* __f, const value_type* __l)
+    : _M_ht(100, hasher(), key_equal(), allocator_type())
+  { _M_ht.insert_equal(__f, __l); } // 与 hash_set 唯一差别，允许键值重复
+}
+```
+
+
+
 ---
 
 ## hash_multimap
+
+Hash_multimap可以允许键值重复的元素，其它与 hash_map 特性相同
+
+```c++
+template <class _Key, class _Tp, class _HashFcn, class _EqualKey,
+					class _Alloc>
+class hash_multimap
+{
+private:
+  typedef hashtable<pair<const _Key, _Tp>, _Key, _HashFcn,
+  					_Select1st<pair<const _Key, _Tp> >, _EqualKey, _Alloc> _Ht;
+  _Ht _M_ht;
+public:
+  hash_multimap(const value_type* __f, const value_type* __l)
+    : _M_ht(100, hasher(), key_equal(), allocator_type())
+  { _M_ht.insert_equal(__f, __l); } // 与 hash_map 唯一差别是允许键值重复
+}
+```
+
+
 
 ---
 

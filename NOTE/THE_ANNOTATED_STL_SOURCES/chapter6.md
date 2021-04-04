@@ -94,3 +94,223 @@
 mutating: 质变，会改变其操作对象之内容
 
 ### 质变算法mutating algorithms-会改变操作对象的值
+
+- copy(拷贝)
+- swap(交换)
+- replace(替换)
+- fill(填充)
+- remove(删除)
+- permutation(排列组合)
+- partition(分割)
+- random shuffling(随机重排)
+- sort(排序)
+- ...
+
+### 非质变算法non mutating algorithms-不改变操作对象的值
+
+- find(查找)
+- search(匹配)
+- count(计算)
+- for_each(巡访)
+- equal, mismatch(比较)
+- max, min(寻找极值)
+- ...
+
+### STL算法的一般形式
+
+所有泛型算法的前两个参数都是一对迭代器，STL 习惯使用前闭后开的区间，`[first, last)`。
+
+最后一个元素的下一位置，称为 end()。
+
+---
+
+## 数值算法 <stl_numeric.h>
+
+STL 将数值算法的内部实现放在 <stl_numeric.h> 中，用户调用数值算法的接口，需要包含 <numeric> 头文件。
+
+- accumulate
+
+计算 init 和 `[first, last)`内所有元素的总和。
+
+- adjacent_difference
+
+计算`[first, last)`中相邻元素的差值，将 `*first` 赋值给 `*result` 并针对`[first+1, last)`内的每个迭代器i，将`*i-*(i-1)`之值赋值给`*(result+(i-first))`。
+
+- inner_product
+
+计算`[first1, last1)`和`[first2, first2 + (last1 - first1))`的一般内积。
+
+- partial_sum
+
+计算局部总和，将`*first`赋值给`*result`，将`*first`和`*(first+1)`之和赋值给`*(result+1)`。
+
+- power
+
+SGI专属，并不在STL标准之列。计算某数的n幂次方。
+
+- itoa
+
+SGI专属，并不在STL标准之列。用来设定某个区间的内容，使其内的每个元素从指定的value值开始，呈现递增状态。
+
+
+
+---
+
+## 基本算法 <stl_algobase.h>
+
+- equal
+
+如果两个序列在`[first,last)`区间内相等，equal()返回true。
+
+**注意：如果第二序列的元素比较多，多出来的元素不予考虑。**
+
+- fill
+
+将`[first, last)`内的所有元素改填新值。
+
+- fill_n
+
+将`[first, last)`内的前n个元素改填新值，返回的迭代器指向被填入的最后一个元素的下一个位置。
+
+- iter_swap
+
+将两个 ForwardIterators 所指的对象对调，如图：
+
+![](res/iter_swap.png)
+
+- Lexicographical_compare
+
+以“字典排列方式”对两个序列`[first1,last1)`和`[first2,last2)`进行比较。
+
+- max
+
+取两个对象中的较大值。
+
+- min
+
+取两个对象中的较小值。
+
+- mismatch
+
+用来平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点，如图：
+
+![](res/mismatch.png)
+
+- copy
+
+将输入区间[first,last)内的元素复制到输出区间[result,result+(last-first))内.
+
+![6-2](res/6-2.png)
+
+- copy_backward
+
+将`[first,last)`区间内的每一个元素，以逆行的方向复制到以result-1为起点，方向亦为逆行的区间上。
+
+![6-4](res/6-4.png)
+
+
+
+---
+
+## set相关算法
+
+### set_union
+
+构造两个集合的并集，是一种稳定操作，输入区间内的每个元素的相对顺序都不会改变。
+
+![6-5a](res/6-5a.png)
+
+### set_intersection
+
+构造两个集合的交集，是一种稳定操作，输出区间内的每个元素的相对顺序都和s1内的相对顺序相同。
+
+![](res/6-5b.png)
+
+### set_difference
+
+构造两个集合的差集，是一种稳定操作，输出区间内的每个元素的相对顺序都和s1内的相对顺序相同。
+
+![](res/6-5c.png)
+
+### set_symmetric_difference
+
+构造两个集合的差集，输入区间内的元素相对顺序不会被改变。
+
+![](res/6-5d.png)
+
+---
+
+## heap算法
+
+<stl_heap.h>
+
+- make_heap 
+
+建堆
+
+- pop_heap
+
+从堆中取出一个元素
+
+- push_heap(
+    
+将一个元素推进堆内
+
+- sort_heap
+
+对堆排序
+
+---
+
+## 其它算法
+
+<stl_algo.h>
+
+- adjacent_find
+
+找出第一组满足条件的相邻元素。
+
+- count
+
+运用equality操作符，将[first,last)区间内的每一个元素拿来和指定值value比较，并返回与value相等的元素个数。
+
+- count_if
+
+将指定操作（一个仿函数）pred实施于`[first,last)`区间内的每一个元素身上，并将使pred的计算结果为true的所有元素的个数返回。
+
+- find
+
+根据equality操作符，循序查找`[first,last)`内的所有元素，找出第一个匹配"等同(equality)条件"者。如果找到，就返回一个InputIterator指向该元素，否则返回迭代器last。
+
+- find_if
+
+根据指定的pred运算条件(以仿函数表示)，循序查找`[first,last)`内的所有元素，找出第一个令pred运算结果为true者。如果找到就返回一个InputIterator指向该元素，否则返回迭代器last。
+
+- find_end
+
+在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的最后一次出现点。如果序列一之内不存在“完全匹配序列二”的子序列，便返回迭代器last1。
+
+![6-6a](res/6-6a.png)
+
+- find_first_of
+
+以`[first2,last2)`区间内的某些元素作为查找目标，寻找它们在`[first1,last1)`区间内的第一次出现地点。
+
+- for_each
+
+将仿函数f施行与`[first,last)`区间内的每一个元素身上。f不可以改变元素内容，因为first和last都是InputIterators，不保证接受赋值行为(assignment)。
+
+- generate
+
+将仿函数gen的运算结果填写在`[first,alst)`区间内的所有元素身上。所谓填写，用的是迭代器所指元素之assignment操作符。
+
+- generate_n
+
+将仿函数gen的运算结果填写在从迭代器first开始的n个元素身上。所谓填写，用的是迭代器所指元素的assignment操作符。
+
+- includes
+
+
+
+---
+

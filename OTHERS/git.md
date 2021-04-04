@@ -156,6 +156,21 @@ git pull origin master --allow-unrelated-histories
 git count-objects -vH
 ```
 
+#### 如何统计git项目代码行数
+
+- 指定语言
+
+```sh
+find . "(" -name "*.java" ")" -print | xargs wc -l
+```
+
+- 总行数
+
+```sh
+git log  --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+```
+
+
 
 ---
 

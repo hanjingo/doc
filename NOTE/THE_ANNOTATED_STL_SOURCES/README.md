@@ -5,4 +5,6 @@
 * [第四章 序列式容器](chapter4.md)
 * [第五章 关联式容器](chapter5.md)
 * [第六章 算法](chapter6.md)
+* [第七章 仿函数(functors，另名 函数对象 function objects)](chapter7.md)
+* [第八章 配接器(adapters)](chapter8.md)
 
