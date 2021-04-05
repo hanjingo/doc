@@ -5,7 +5,7 @@
 - [数据库](DB/README.md)
 - [分布式](DCS/README.md)
 - [经验大全](EXPERIENCE/README.md)
-- [游戏](GAME/README.md)
+- [Go](GO/README.md)
 - [多媒体](MEDIA/README.md)
 - [读书笔记](NOTE/README.md)
 - [杂文](OTHERS/README.md)

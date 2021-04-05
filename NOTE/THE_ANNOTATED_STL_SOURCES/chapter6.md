@@ -310,7 +310,81 @@ SGI专属，并不在STL标准之列。用来设定某个区间的内容，使�
 
 - includes
 
+判断序列二s2是否包含于序列一s1。s1和s2都必须是有序集合，其中的元素都可以重复（不必唯一）。
 
+!![6-6b]()
+
+- max_element
+
+返回一个迭代器，指向序列中数值最大的元素。
+
+- merge(应用于有序区间)
+
+将两个经过排序的集合s1和s2，合并起来置于另一段空间。所得结果也是一个有序(sorted)序列。返回一个迭代器，指向最后结果序列的最后一个元素的的下一个位置。
+
+![6-6c]()
+
+- min_element
+
+返回一个迭代器，指向序列之中数值最小的元素。
+
+- partition
+
+将区间`[first,last)`中的元素重新排列。所有被一元条件运算pred判定为true的元素，都会被放在区间的前段，被判定为false的元素，都会被放在区间的后段。
+
+![6-6d]()
+
+- remove
+
+移除`[first,last)`之中所有与value相等的元素。
+
+这一算法并不真正从容器中删除那些元素（换句话说容器大小并未改变），而是将每一个不予value相等（也就是我们并不打算移除）的元素轮番赋值给first之后的空间。
+
+**注意，array不适合使用remove()和remove_if(), 因为array无法缩小尺寸，导致残余数据永远存在。对array而言，较受欢迎的算法是remove_copy()和remove_copy_if()。**
+
+![6-6e]()
+
+- remove_copy
+
+移除`[frist,last)`区间内所有与value相等的元素。
+
+它并不真正从容器中删除那些元素（换句话说，原容器没有任何改变），而是将结果复制到一个以result标示起始位置的容器身上。
+
+- remove_if
+
+移除`[first,last)`区间内所有被仿函数pred确定为true的元素。
+
+![6-6f]()
+
+- remove_copy_if
+
+移除`[first,last)`区间内所有被仿函数pred评估为true的元素。
+
+它并不真正从容器中删除那些元素（换句话说，原容器没有任何改变），而是将结果复制到一个以result标示起始位置的容器身上。
+
+- replace
+
+将`[first,last)`区间内的所有old_value都以new_value取代。
+
+- replace_copy
+
+行为与replace()类似，唯一不同的是新序列会被复制到result所指的容器中。返回值OutputIterator指向被复制的最后一个元素的下一位置。原序列没有任何改变
+
+- replace_if
+
+将`[first,last)`区间内所有被pred评估为true的元素，都以new_value取而代之。
+
+- replace_copy_if
+
+行为与replace_if()类似，但是新序列会被复制到result所指的区间内。返回值OutputIterator指向被复制的最后一个元素的下一个位置。
+
+- reverse
+
+将序列`[first,last)`的元素在原容器中颠倒重排。
+
+- reverse_copy
+
+行为类似reverse()，但产生出来的新序列会被置于
 
 ---
 
