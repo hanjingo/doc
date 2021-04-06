@@ -170,6 +170,36 @@ find . "(" -name "*.java" ")" -print | xargs wc -l
 git log  --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 ```
 
+#### 查看tag信息
+
+```
+git tag
+```
+
+#### 给commit打标签
+
+```sh
+git tag -a 标签名 commitID
+```
+
+#### 删除本地tag
+
+```sh
+git tag -d 标签名
+```
+
+#### 删除远程标签
+
+```sh
+git push origin :refs/tags/标签名
+```
+
+#### 基于某个tag创建分支
+
+```sh
+git checkout -b 分支名 tag名
+```
+
 
 
 ---
