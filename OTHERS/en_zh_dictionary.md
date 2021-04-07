@@ -6,7 +6,7 @@
 
 ## A
 
-[回到顶部](#英汉词典)   [ad](#ad)
+[ad](#ad)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### ad
 
@@ -16,7 +16,7 @@ addict `/ˈæd.ɪkt/` 有瘾的人，入迷的人
 
 ## B
 
-[回到顶部](#英汉词典)   [bu](#bu)
+[bu](#bu)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### bu
 
@@ -26,7 +26,7 @@ Bully `/bʊli/` 威吓，霸道
 
 ## C
 
-[回到顶部](#英汉词典)   [ch](#ch)
+[ch](#ch)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### ch
 
@@ -36,7 +36,7 @@ chubby `/ˈtʃʌb.i/` 胖乎乎的
 
 ## D
 
-[回到顶部](#英汉词典)   [da](#da)   [di](#di)
+[da](#da)   [di](#di)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### da
 
@@ -50,7 +50,7 @@ disappointment `/ˌdɪs.əˈpɔɪnt.mənt/` 失望，沮丧
 
 ## E
 
-[回到顶部](#英汉词典)   [el](#el)
+[el](#el)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### el
 
@@ -60,7 +60,7 @@ election `/ɪˈlɛkʃ(ə)n/` 选举
 
 ## F
 
-[回到顶部](#英汉词典)   [fa](#fa)
+[fa](#fa)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### fa
 
@@ -70,7 +70,7 @@ favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
 ## G
 
-[回到顶部](#英汉词典)   [gl](#gl)
+[gl](#gl)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### gl
 
@@ -80,31 +80,31 @@ glitch `/ɡlɪtʃ/` 失灵，小故障
 
 ## H
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## I
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## J
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## K
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## L
 
-[回到顶部](#英汉词典)   [le](#le)
+[le](#le)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### le
 
@@ -114,7 +114,7 @@ league `/liːɡ/` 联盟
 
 ## M
 
-[回到顶部](#英汉词典)   [ma](#ma)
+[ma](#ma)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### ma
 
@@ -124,13 +124,13 @@ manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改
 
 ## N
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## O
 
-[回到顶部](#英汉词典)   [ob](#ob)&nbsp;&nbsp;&nbsp;&nbsp;[or](#or)&nbsp;&nbsp;&nbsp;&nbsp;[ou](#ou)
+[ob](#ob)&nbsp;&nbsp;&nbsp;&nbsp;[or](#or)&nbsp;&nbsp;&nbsp;&nbsp;[ou](#ou)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### ob
 
@@ -148,7 +148,7 @@ outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 ## P
 
-[回到顶部](#英汉词典)   [pr](#pr)
+[pr](#pr)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### pr
 
@@ -158,7 +158,7 @@ profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
 ## Q
 
-[回到顶部](#英汉词典)   [qu](#qu)
+[qu](#qu)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### qu
 
@@ -168,13 +168,13 @@ quirky `/ˈkwəːki/` 古怪的
 
 ## R
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## S
 
-[回到顶部](#英汉词典)   [sc](#sc)&nbsp;&nbsp;&nbsp;&nbsp;[sl](#sl)&nbsp;&nbsp;&nbsp;&nbsp;[sp](#sp)
+[sc](#sc)&nbsp;&nbsp;&nbsp;&nbsp;[sl](#sl)&nbsp;&nbsp;&nbsp;&nbsp;[sp](#sp)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### sc
 
@@ -194,7 +194,7 @@ spectrum `/spɛktrəm/` 光谱，派别
 
 ## T
 
-[回到顶部](#英汉词典)   [to](#to)
+[to](#to)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### to
 
@@ -204,7 +204,7 @@ toned `/təʊnd/` 结实强壮的
 
 ## U
 
-[回到顶部](#英汉词典)   [up](#up)
+[up](#up)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 #### up
 
@@ -214,28 +214,28 @@ uproar `/ˈʌprɔ/` 喧嚣，骚动
 
 ## V
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## W
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## X
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## Y
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
 
 
 
 ## Z
 
-[回到顶部](#英汉词典)
+&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
