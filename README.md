@@ -12,6 +12,7 @@
 - [源码分析](SRC/README.md)
 
 # 快捷导航
+- [英汉词典](OTHERS/en_zh_dictionary.md)
 - [Bug速查](BUG/README.md)
 - [如何写markdown](how_to_write_markdown.md)
 - [vim常用快捷键](OTHERS/vim_shortcut.md)
