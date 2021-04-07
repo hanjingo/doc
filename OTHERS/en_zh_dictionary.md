@@ -1,241 +1,257 @@
 # 英汉词典
 
-[A](#A)&nbsp;&nbsp;&nbsp;&nbsp;[B](#B)&nbsp;&nbsp;&nbsp;&nbsp;[C](#C)&nbsp;&nbsp;&nbsp;&nbsp;[D](#D)&nbsp;&nbsp;&nbsp;&nbsp;[E](#E)&nbsp;&nbsp;&nbsp;&nbsp;[F](#F)&nbsp;&nbsp;&nbsp;&nbsp;[G](#G)&nbsp;&nbsp;&nbsp;&nbsp;[H](#H)&nbsp;&nbsp;&nbsp;&nbsp;[I](#I)&nbsp;&nbsp;&nbsp;&nbsp;[J](#J)&nbsp;&nbsp;&nbsp;&nbsp;[K](#K)&nbsp;&nbsp;&nbsp;&nbsp;[L](#L)&nbsp;&nbsp;&nbsp;&nbsp;[M](#M)&nbsp;&nbsp;&nbsp;&nbsp;[N](#N)&nbsp;&nbsp;&nbsp;&nbsp;[O](#O)&nbsp;&nbsp;&nbsp;&nbsp;[P](#P)&nbsp;&nbsp;&nbsp;&nbsp;[Q](#Q)&nbsp;&nbsp;&nbsp;&nbsp;[R](#R)&nbsp;&nbsp;&nbsp;&nbsp;[S](#S)&nbsp;&nbsp;&nbsp;&nbsp;[T](#T)&nbsp;&nbsp;&nbsp;&nbsp;[U](#U)&nbsp;&nbsp;&nbsp;&nbsp;[V](#V)&nbsp;&nbsp;&nbsp;&nbsp;[W](#W)&nbsp;&nbsp;&nbsp;&nbsp;[X](#X)&nbsp;&nbsp;&nbsp;&nbsp;[Y](#Y)&nbsp;&nbsp;&nbsp;&nbsp;[Z](#Z)
+[A](#A)---[B](#B)---[C](#C)---[D](#D)---[E](#E)---[F](#F)---[G](#G)---[H](#H)---[I](#I)---[J](#J)---[K](#K)---[L](#L)---[M](#M)---[N](#N)---[O](#O)---[P](#P)---[Q](#Q)---[R](#R)---[S](#S)---[T](#T)---[U](#U)---[V](#V)---[W](#W)---[X](#X)---[Y](#Y)---[Z](#Z)
 
 
 
-## A
+# A
 
-[ad](#ad)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[ad](#ad)---[回到顶部](#英汉词典)
 
-#### ad
+### ad
 
 addict `/ˈæd.ɪkt/` 有瘾的人，入迷的人
 
 
 
-## B
+# B
 
-[bu](#bu)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[bu](#bu)---[回到顶部](#英汉词典)
 
-#### bu
+### bu
 
 Bully `/bʊli/` 威吓，霸道
 
 
 
-## C
+# C
 
-[ch](#ch)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[ch](#ch)---[回到顶部](#英汉词典)
 
-#### ch
+### ch
 
 chubby `/ˈtʃʌb.i/` 胖乎乎的
 
 
 
-## D
+# D
 
-[da](#da)   [di](#di)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[da](#da)--[de](#de)--[di](#di)---[回到顶部](#英汉词典)
 
-#### da
+### da
 
 dawn `/dɔːn/` 黎明，破晓
 
-#### di
+### de
+
+demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
+
+### di
 
 disappointment `/ˌdɪs.əˈpɔɪnt.mənt/` 失望，沮丧
 
 
 
-## E
+# E
 
-[el](#el)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[eg](#eg)---[el](#el)---[回到顶部](#英汉词典)
 
-#### el
+### eg
+
+ego `/ˈiː.ɡəʊ/` 自我评价，自负，自尊心
+
+### el
 
 election `/ɪˈlɛkʃ(ə)n/` 选举
 
 
 
-## F
+# F
 
-[fa](#fa)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[fa](#fa)---[回到顶部](#英汉词典)
 
-#### fa
+### fa
 
 favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
 
 
-## G
+# G
 
-[gl](#gl)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[gl](#gl)---[回到顶部](#英汉词典)
 
-#### gl
+### gl
 
 glitch `/ɡlɪtʃ/` 失灵，小故障
 
 
 
-## H
+# H
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
-
-
-
-## I
-
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## J
+# I
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
-
-
-
-## K
-
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## L
+# J
 
-[le](#le)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
-#### le
+
+
+# K
+
+ [回到顶部](#英汉词典)
+
+
+
+# L
+
+[le](#le)---[回到顶部](#英汉词典)
+
+### le
 
 league `/liːɡ/` 联盟
 
 
 
-## M
+# M
 
-[ma](#ma)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[ma](#ma)---[回到顶部](#英汉词典)
 
-#### ma
+### ma
 
 manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改
 
 
 
-## N
+# N
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## O
+# O
 
-[ob](#ob)&nbsp;&nbsp;&nbsp;&nbsp;[or](#or)&nbsp;&nbsp;&nbsp;&nbsp;[ou](#ou)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[ob](#ob)---[or](#or)---[ou](#ou)---[回到顶部](#英汉词典)
 
-#### ob
+### ob
 
 obsessed `/əbˈsest/` 心神不宁的，着迷的，困扰的
 
-#### or
+### or
 
 oriented  `/ˈɔːrɪɛnt,ˈɒrɪɛnt/` 导向
 
-#### ou
+### ou
 
 outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 
 
-## P
+# P
 
-[pr](#pr)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[po](#po)---[pr](#pr)---[回到顶部](#英汉词典)
 
-#### pr
+### po
+
+potential `/pəˈten.ʃə/` 潜在的，可能的
+
+### pr
 
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
 
 
-## Q
+# Q
 
-[qu](#qu)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[qu](#qu)---[回到顶部](#英汉词典)
 
-#### qu
+### qu
 
 quirky `/ˈkwəːki/` 古怪的
 
 
 
-## R
+# R
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## S
+# S
 
-[sc](#sc)&nbsp;&nbsp;&nbsp;&nbsp;[sl](#sl)&nbsp;&nbsp;&nbsp;&nbsp;[sp](#sp)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[sc](#sc)---[sl](#sl)---[sp](#sp)---[回到顶部](#英汉词典)
 
-#### sc
+### sc
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
 scratch `/skrætʃ/` 划痕
 
-#### sl
+### sl
 
 slim `/slɪm/` 苗条的
 
-#### sp
+### sp
 
 spectrum `/spɛktrəm/` 光谱，派别
 
 
 
-## T
+# T
 
-[to](#to)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+[to](#to)---[tr](#tr)---[回到顶部](#英汉词典)
 
-#### to
+### to
 
 toned `/təʊnd/` 结实强壮的
 
+### tr
+
+treat `/triːt/` 对待
 
 
-## U
 
-[up](#up)&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+# U
 
-#### up
+[up](#up)---[回到顶部](#英汉词典)
+
+### up
 
 uproar `/ˈʌprɔ/` 喧嚣，骚动
 
 
 
-## V
+# V
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
-
-
-
-## W
-
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## X
+# W
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
-
-
-
-## Y
-
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
 
 
 
-## Z
+# X
 
-&nbsp;&nbsp;&nbsp;&nbsp;[回到顶部](#英汉词典)
+ [回到顶部](#英汉词典)
+
+
+
+# Y
+
+ [回到顶部](#英汉词典)
+
+
+
+# Z
+
+ [回到顶部](#英汉词典)
