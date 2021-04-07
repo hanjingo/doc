@@ -1,5 +1,11 @@
 # 第三章 用JNI实现与原生代码通信
 
+摘要
+
+- 
+
+
+
 ## 什么是JNI
 
 
@@ -184,19 +190,156 @@ clazz = (*env)->GetObjectClass(env, instance);
 
 - 实例域
 
+获得域id
+
 ```c++
 jfieldID instanceFieldId;
 instanceFieldId = (*env)->GetFieldID(env, clazz, "instanceField", "Ljava/lang/String;");
 ```
 
-- 静态域
+获得实例域
 
 ```c++
-jfieldID staticFieldId;
-
+jstring instanceField;
+instanceField = (*env)->GetObjectField(env, instance, instanceFieldId);
 ```
 
 
 
+- 静态域
+
+获得域id
+
+```c++
+jfieldID staticFieldId;
+staticFieldId = (*env)->GetStaticFieldID(env, clazz, "staticField", "Ljava/lang/String;");
+```
+
+获得实例域
+
+```c++
+jstring staticField;
+staticField = (*env)->GetStaticObjectField(env, clazz, staticFieldId);
+```
+
+### 调用方法
+
+- 实例方法
+
+获取方法id
+
+```c++
+jmethodID instanceMethodId;
+instanceMethodId = (*env)->GetMethodID(env, clazz, "instanceMethod", "()Ljava/lang/String;");
+```
+
+调用方法
+
+```c++
+jstring instanceMethodResult;
+instanceMethodResult = (*env)->CallStringMethod(env, instane, instanceMethodId);
+```
 
 
+
+- 静态方法
+
+获取方法id
+
+```c++
+jmethodID staticMethodId;
+staticMethodId = (*env)->GetStaticMethodID(env, clazz, "staticMethod", "()Ljava/lang/String;");
+```
+
+调用方法
+
+```c++
+jstring staticMethodResult;
+staticMethodResult = (*env)->CallStaticStringMethod(env, clazz, staticMethodId);
+```
+
+### 域和方法描述符
+
+获得域ID和方法ID分别需要域描述符和方法描述符，可以通过下表的java类型签名映射获得。
+
+| Java类型              | 签名                  |
+| --------------------- | --------------------- |
+| Boolean               | Z                     |
+| Byte                  | B                     |
+| Char                  | C                     |
+| Short                 | S                     |
+| Int                   | I                     |
+| Long                  | J                     |
+| Float                 | F                     |
+| Double                | D                     |
+| fully-qualified-class | Fully-qualified-class |
+| type[]                | [type                 |
+| method type           | (arg-type)ret-type    |
+
+反汇编程序: javap
+
+通过命令格式 `javap -classpath java文件路径 -p -s java类` 进行反汇编，例：
+
+```sh
+javap -classpath bin/classes -p -s com.example.hellojni.HelloJni
+```
+
+
+
+## 异常处理
+
+### 捕获异常
+
+原生代码的异常处理,例:
+
+```c++
+jthrowable ex;
+(*env)->CallVoidMethod(env, instance, throwingMethodId);
+ex = (*env)->ExceptionOccurred(env);
+if (0 != ex) {
+  (*env)->ExceptionClear(env);
+}
+```
+
+### 抛出异常
+
+原生代码抛出异常,例：
+
+```c++
+jclass clazz;
+clazz = (*env)->FindClass(env, "java/lang/NullPointerException");
+if (0 != clazz) {
+  (*env)->ThrowNew(env, clazz, "Exception message.");
+}
+```
+
+
+
+## 局部和全局引用
+
+### 局部引用
+
+局部引用不能再后续的调用中被缓存以及重用，因为他们的使用期限仅限于原生方法，一旦原生函数返回，局部引用即被释放。
+
+例：删除一个局部引用
+
+```c++
+jclass clazz;
+clazz = (*env)->FindClass(env, "java/lang/String");
+(*env)->DeleteLocalRef(env, clazz);
+```
+
+### 全局引用
+
+在原生方法的后续调用过程中依然有效，除非他们被原生代码显式释放。
+
+创建全局引用
+
+```c++
+jclass localClazz;
+jclass globalClazz;
+localClazz = (*env)->FindClass(env, "java/lang/String");
+globalClazz = (*env)->NewGlobalRef(env, localClazz);
+```
+
+删除全局引用
