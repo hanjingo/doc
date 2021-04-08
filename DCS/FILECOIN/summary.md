@@ -1,5 +1,29 @@
 # filecoin总结
+摘要:
+
+- [参考](#参考)
+- [简述](#简述)
+- [要点](#要点)
+- [付款方式](#付款方式)
+- [惩罚](#惩罚)
+  - [共识惩罚](#共识惩罚)
+  - [存储惩罚](#存储惩罚)
+- [证明](#证明)
+  - [存储证明(Proof-of-Storage, PoS)](#存储证明(Proof-of-Storage, PoS))
+  - [复制证明(Proof-of-Replication, PoRep)](#复制证明(Proof-of-Replication, PoRep))
+  - [时空证明(PoST)](#时空证明(PoST))
+  - [数据持有证明(Provable-Data-Possession, PDP)](#数据持有证明(Provable-Data-Possession, PDP))
+  - [可检索证明(Proof-of-Retrievability, PoRet)](#可检索证明(Proof-of-Retrievability, PoRet))
+  - [工作量证明(Proof-of-Work, PoW)](#工作量证明(Proof-of-Work, PoW))
+  - [空间证明(Proof-of-Space, PoSpace)](#空间证明(Proof-of-Space, PoSpace))
+- [架构](#架构)
+  - [存储流程](#存储流程)
+  - [消息流程](#消息流程)
+
+
+
 ## 参考
+
 - [filecoin技术架构分析之一：filecoin概念](https://blog.csdn.net/qq_21393091/article/details/88072946)
 - [filecoin技术架构分析之二：filecoin通用语言理解](https://blog.csdn.net/qq_21393091/article/details/88073022)
 - [filecoin技术架构分析之三：filecoin开发网络使用](https://blog.csdn.net/qq_21393091/article/details/88073071)
@@ -10,7 +34,10 @@
 - [filecoin工作原理](https://blog.csdn.net/kk3909/article/details/104814067)
 - [Filecoin 系列01-Filecoin 工作原理](http://www.r9it.com/20190226/how-filecoin-work.html)
 
+
+
 ## 简述
+
 filecoin采用存储证明，存储能力越强，挖到区块的概率越大；
 
 filecoin市场存在着4个角色：
@@ -19,7 +46,10 @@ filecoin市场存在着4个角色：
 - 存储客户端：要存数据的用户
 - 检索客户端：要获取数据的用户
 
+
+
 ## 要点
+
 1. Sectors: 扇区，矿工提供存储空间的最小单元，也就是说在我们创建矿工的时候抵押存储空间大小必须是 Sector 的整数倍。
 2. Pieces: 数据单元，是 Filecoin 网络中最小存储单位，每个 Pieces 大小为 512KB， Filecoin 会把大文件拆分成很多个 Pieces, 交给不同的矿工存储。
 3. AllocationTable: 数据分配追踪表，它记录了每个 Pieces 和 Sector 的对应关系，如某个 Pieces 存储在了哪个 Sector. 当某个 Sector 被存满(Fill)了之后，系统将会把该 Sector 封存(Sealing the Sector)，然后生成存储证明，这是一个缓慢的操作
@@ -27,11 +57,17 @@ filecoin市场存在着4个角色：
 5. Orders: 订单，系统中有两种订单，一种是竞价订单(bid order), 由客户发起，另一种是要价订单(ask order), 由矿工发起。
 6. Orderbook: 订单簿，也就是订单列表，包括 bid order 和 ask order，系统根据订单列表进行自动撮合匹配交易
 
+
+
 ## 付款方式
+
 1. 存储付款；并不是存储了数据就马上收款，而是分次小额支付，每完成一次挑战，就发一部分奖金
 2. 检索付款；立即收款
 
+
+
 ## 惩罚
+
 ### 共识惩罚
 在相同的高度提交两个以及以上的区块，以提高自己的 Weight（出块权重）
 
@@ -44,6 +80,8 @@ filecoin市场存在着4个角色：
 
 2. 提交非法的 PoST（作弊）
 对于通过 generation attack （生成攻击）生成 PoST 的矿工，处罚就是致命性的， 除了扣除所有的抵押代币，存储算力清零之外，处于这种状态的矿工，即使被选取为出块矿工，它产生的任何区块都将无效。
+
+
 
 ## 证明
 

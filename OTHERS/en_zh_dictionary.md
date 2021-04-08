@@ -94,7 +94,11 @@ glitch `/ɡlɪtʃ/` 失灵，小故障
 
 # I
 
- [回到顶部](#英汉词典)
+ [in](#in)---[回到顶部](#英汉词典)
+
+### in
+
+interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
 
 
@@ -156,7 +160,11 @@ outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 # P
 
-[po](#po)---[pr](#pr)---[回到顶部](#英汉词典)
+[pe](#pe)---[po](#po)---[pr](#pr)---[回到顶部](#英汉词典)
+
+### pe
+
+preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
 
 ### po
 
@@ -186,13 +194,17 @@ quirky `/ˈkwəːki/` 古怪的
 
 # S
 
-[sc](#sc)---[sl](#sl)---[sp](#sp)---[回到顶部](#英汉词典)
+[sc](#sc)---[si](#si)---[sl](#sl)---[sp](#sp)---[st](#st)---[回到顶部](#英汉词典)
 
 ### sc
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
 scratch `/skrætʃ/` 划痕
+
+### si
+
+significantly `/sɪɡˈnɪf.ɪ.kənt.li/` 显著的，相当数量地
 
 ### sl
 
@@ -201,6 +213,10 @@ slim `/slɪm/` 苗条的
 ### sp
 
 spectrum `/spɛktrəm/` 光谱，派别
+
+### st
+
+statement `/ˈsteɪt.mənt/` 说明，声明，表态
 
 
 

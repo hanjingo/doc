@@ -2,7 +2,30 @@
 
 摘要
 
-- 
+- [什么是JNI](#什么是JNI)
+- [以一个示例开始](#以一个示例开始)
+  - [原生方法的声明](#原生方法的声明)
+  - [加载共享库](#加载共享库)
+  - [实现原生方法](#实现原生方法)
+- [数据类型](#数据类型)
+  - [基本数据类型](#基本数据类型)
+  - [引用类型](#引用类型)
+- [对引用数据类型的操作](#对引用数据类型的操作)
+  - [字符串操作](#字符串操作)
+  - [数组操作](#数组操作)
+  - [NIO操作](#NIO操作)
+  - [访问域](#访问域)
+  - [调用方法](#调用方法)
+  - [域和方法描述符](#域和方法描述符)
+- [异常处理](#异常处理)
+  - [捕获异常](#捕获异常)
+  - [抛出异常](#抛出异常)
+- [局部和全局引用](#局部和全局引用)
+  - [局部引用](#局部引用)
+  - [全局引用](#全局引用)
+  - [弱全局引用](#弱全局引用)
+- [线程](#线程)
+  - [原生线程](#原生线程)
 
 
 
@@ -204,8 +227,6 @@ jstring instanceField;
 instanceField = (*env)->GetObjectField(env, instance, instanceFieldId);
 ```
 
-
-
 - 静态域
 
 获得域id
@@ -239,8 +260,6 @@ instanceMethodId = (*env)->GetMethodID(env, clazz, "instanceMethod", "()Ljava/la
 jstring instanceMethodResult;
 instanceMethodResult = (*env)->CallStringMethod(env, instane, instanceMethodId);
 ```
-
-
 
 - 静态方法
 
@@ -331,7 +350,7 @@ clazz = (*env)->FindClass(env, "java/lang/String");
 
 ### 全局引用
 
-在原生方法的后续调用过程中依然有效，除非他们被原生代码显式释放。
+在原生方法的后续调用过程中依然有效，不允许对象被垃圾回收，除非他们被原生代码显式释放。
 
 创建全局引用
 
@@ -343,3 +362,58 @@ globalClazz = (*env)->NewGlobalRef(env, localClazz);
 ```
 
 删除全局引用
+
+```c++
+(*env)->DeleteGlobalRef(env, globalClazz);
+```
+
+### 弱全局引用
+
+在原生方法的后续调用过程中依然有效，但并不阻止潜在的对象被垃圾回收
+
+创建弱全局引用
+
+```c++
+jclass weakGlobalClazz;
+weakGlobalClazz = (*env)->NewWeakGlobalRef(env, localClazz);
+```
+
+检查弱全局引用的有效性
+
+```c++
+if (JNI_FALSE == (*env)->IsSameObject(env, weakGlobalClazz, NULL)) {
+  ...
+}
+```
+
+删除弱全局引用
+
+```c++
+(*env)->DeleteWeakGlobalRef(env, weakGlobalClazz);
+```
+
+
+
+## 线程
+
+JNI约束:
+
+- 只在原生方法执行期间及正在执行原生方法的线程环境下局部引用是有效的，局部引用不能再多线程间共享，只有全局引用可以被多个线程共享。
+
+- 被传递给每个原生方法的JNIEnv接口指针在与方法调用相关的线程中也是有效的，他不能被其它线程缓存或使用。
+
+### 原生线程
+
+线程的附着和分离
+
+```c++
+JavaVM* cacheJvm;
+JNIEnv* env;
+// 将当前线程附着到虚拟机
+(*cachedJvm)->AttachCurrentThread(cachedJvm, &env, NULL);
+// 可以用JNIEnv接口实现线程与Java应用程序的通信
+...
+// 将当前线程与虚拟机分离
+(*cachedJvm)->DetachCurrentThread(cachedJvm);
+```
+

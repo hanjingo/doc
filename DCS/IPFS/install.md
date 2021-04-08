@@ -35,7 +35,9 @@ bash install.sh
 ipfs --version
 ```
 
-### windows todo
+### windows
+
+todo
 
 ## 运行
 ```shell

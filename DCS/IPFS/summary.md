@@ -1,9 +1,22 @@
 # ipfs使用总结
 
+摘要:
+
+- [ipfs add命令默认pin](#ipfs add命令默认pin)
+- [ipfs gc时无法添加文件](#ipfs gc时无法添加文件)
+- [ipfs gc时无法添加文件](#ipfs gc时无法添加文件)
+- [ipfs 添加文件/文件夹](#ipfs 添加文件/文件夹)
+
+
+
 ## ipfs add命令默认pin
+
 ipfs add 文件时默认pin
 
 ipfs get 文件时不pin
+
+
+
 
 ## ipfs gc时无法添加文件
 ipfs默认达到最大磁盘容量的90%(可配置)时启动gc; ipfs gc时，无法add文件，整个ipfs文件系统锁死; 尽量不要触发ipfs的gc;
@@ -103,10 +116,15 @@ func GC(ctx context.Context, bs bstore.GCBlockstore, dstor dstore.Datastore, pn 
 }
 ```
 
+
+
 ## ipfs pin过程
+
 ipfs pin文件时,会像节点表中的所有节点广播hash信息;
 
 如果其他节点没有拉取当前hash的文件，而本节点又解除了pin，并gc掉了缓存的话，其他节点将无法根据hash拿到文件;
+
+
 
 ## ipfs 添加文件/文件夹
 ipfs 可以添加文件也可以添加文件夹; 
