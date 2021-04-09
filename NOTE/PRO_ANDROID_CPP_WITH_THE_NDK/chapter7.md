@@ -3,10 +3,10 @@
 摘要:
 
 - [创建线程示例项目](#创建线程示例项目)
-  - [实现Main Activity](#实现Main Activity)
-  - [生成C/C++头文件](#生成C/C++头文件)
+  - [实现MainActivity](#实现MainActivity)
+  - [生成C或C++头文件](#生成C或C++头文件)
   - [实现原生函数](#实现原生函数)
-  - [更新Android.mk构建脚本](#更新Android.mk构建脚本)
+  - [更新Android。mk构建脚本](#更新Android_mk构建脚本)
 - [Java线程](#Java线程)
   - [原生代码使用Java线程的优缺点](#原生代码使用Java线程的优缺点)
 - [POSIX线程](#POSIX线程)
@@ -18,13 +18,13 @@
   - [用信号量同步POSIX线程](#用信号量同步POSIX线程)
 - [POSIX线程的优先级和调度策略](#POSIX线程的优先级和调度策略)
   - [POSIX的线程调度策略](#POSIX的线程调度策略)
-  - [POSIX Thread优先级](#POSIX Thread优先级)
+  - [POSIX Thread优先级](#POSIXThread优先级)
 
 
 
 ## 创建线程示例项目
 
-### 实现Main Activity
+### 实现MainActivity
 
 ```java
 // MainActivity.java
@@ -129,7 +129,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-### 生成C/C++头文件
+### 生成C或C++头文件
 
 ```c++
 // com_apress_threads_MainActivity.h
@@ -397,7 +397,7 @@ exit:
 }
 ```
 
-### 更新Android.mk构建脚本
+### 更新Android_mk构建脚本
 
 ```mk
 LOCAL_PATH := $(call my-dir)
@@ -518,7 +518,7 @@ include $(BUILD_SHARED_LIBRARY)
   - poilcy: 调度策略
   - param: 调度策略所需要的参数
 
-### POSIX Thread优先级
+### POSIXThread优先级
 
 POSIX Thread API提供基于调度策略调整线程优先级的方法:
 
