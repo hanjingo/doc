@@ -186,7 +186,7 @@ FILE* stream = fopen("/data/data/com.example.hellojni/test/txt", "w");
 
 ### 写入流
 
-使用 `size_t fwrite(const void* data, size_t size, size_t count, FILE* stream)` 向流中写入数据块。
+- `size_t fwrite(const void* data, size_t size, size_t count, FILE* stream)` 向流中写入数据块。
 
 ```c++
 char data[] = {'h', 'e', 'l', 'l', 'o', '\n'};
@@ -196,14 +196,14 @@ size_t count = sizeof(data) / sizeof(data[0]);
 if (count != fwrite(data, sizeof(char), count, stream)) { ... }
 ```
 
-使用 `int fputs(const char* data, FILE* stream)` 向流中写入以null结尾的字符序列。
+- `int fputs(const char* data, FILE* stream)` 向流中写入以null结尾的字符序列。
 
 ```c++
 // 向流中写字符序列
 if (EOF == fputs("hello\n", stream)) { ... }
 ```
 
- 使用 `int fputc(int c, FILE* stream)` 向流中写入一个单字符或字节。
+- `int fputc(int c, FILE* stream)` 向流中写入一个单字符或字节。
 
 ```c++
 char c = 'c';
@@ -211,36 +211,52 @@ char c = 'c';
 if (c != fputc(c, stream)) { ... }
 ```
 
-使用 `int fprintf(FILE* stream, const char* format, ...)` 在给定的流中格式化并输出可变数量的参数。
+- `int fprintf(FILE* stream, const char* format, ...)` 在给定的流中格式化并输出可变数量的参数。
 
-格式参数:
-
-- %d, %i: 将整数参数格式化为有符号十进制数
-- %u: 将无符号整数格式化为无符号十进制数
-- %o: 将无符号整数参数格式化为八进制
-- %x: 将无符号整数参数格式化为十六进制
-- %c: 将整数参数格式化为单个字符
-- %f: 将双精度参数格式化为浮点数
-- %e: 将双精度参数格式化为固定格式
-- %s: 打印给出的NULL结尾字符数组
-- %p: 打印给出的指针作为内存地址
-- %%: 写入一个%字符
-
-向流中写带格式的数据
+>  格式参数:
+>
+>  - %d, %i: 将整数参数格式化为有符号十进制数
+>
+>  - %u: 将无符号整数格式化为无符号十进制数
+>
+>  - %o: 将无符号整数参数格式化为八进制
+>
+>  - %x: 将无符号整数参数格式化为十六进制
+>
+>  - %c: 将整数参数格式化为单个字符
+>
+>  - %f: 将双精度参数格式化为浮点数
+>
+>  - %e: 将双精度参数格式化为固定格式
+>
+>  - %s: 打印给出的NULL结尾字符数组
+>
+>  - %p: 打印给出的指针作为内存地址
+>
+>  - %%: 写入一个%字符
+>
+>    
+>
+>    向流中写带格式的数据
 
 ```c++
 // 写带格式的数据
 if (0 > fprintf(stream, "The %s is %d.", "number", 2)) { ... }
 ```
 
-在以下情况下，缓冲区会自动刷新
-
-- 应用程序正常终止
-- 在行缓冲时写入新行
-- 当缓冲区已满
-- 当流被关闭
-
-也可以使用 `int fflush(FILE* stream)` 来手动刷新缓冲区
+>  在以下情况下，缓冲区会自动刷新
+>
+> - 应用程序正常终止
+>
+> - 在行缓冲时写入新行
+>
+> - 当缓冲区已满
+>
+> - 当流被关闭
+>
+>   
+>
+> 也可以使用 `int fflush(FILE* stream)` 来手动刷新缓冲区
 
 ```c++
 char data[] = { 'h', 'e', 'l', 'l', 'o', '\n' };
@@ -253,7 +269,7 @@ if (EOF == fflush(stream)) { ... }
 
  ### 流的读取
 
-使用 `size_t fread(void* data, size_t size, size_t count, FILE* stream)` 从流中读取数据块。
+- `size_t fread(void* data, size_t size, size_t count, FILE* stream)` 从流中读取数据块。
 
 ```c++
 char buffer[5];
@@ -270,7 +286,7 @@ if (count != fread(buffer, sizeof(char), count, stream))
 }
 ```
 
-使用 `char* fgets(char* buffer, int count, FILE* stream)` 从给定的流中读取以换行符结尾的字符序列。
+- `char* fgets(char* buffer, int count, FILE* stream)` 从给定的流中读取以换行符结尾的字符序列。
 
 ```c++
 char buffer[1024];
@@ -283,7 +299,7 @@ if (NULL == fgets(buffer, 1024, stream))
 }
 ```
 
-使用 `int fgetc(FILE* stream)` 从流中读取单个无符号字符。
+- `int fgetc(FILE* stream)` 从流中读取单个无符号字符。
 
 ```c++
 unsigned char ch;
@@ -299,19 +315,19 @@ if (EOF == result)
 }
 ```
 
-使用 `int fscanf(FILE* stream, const char* format, ...)` 从流中读取格式数据。
+- `int fscanf(FILE* stream, const char* format, ...)` 从流中读取格式数据。
 
-格式参数:
-
-- %d, %i: 读取一个有符号十进制数
-- %u: 读取一个无符号十进制数
-- %o: 读取一个八进制数无符号整数
-- %x: 读取一个十六进制数无符号整数
-- %c: 读取单个字符
-- %f: 读取一个浮点数
-- %e: 读取一个固定格式的浮点数
-- %s: 扫描一个字符串
-- %%: 转义%字符
+>  格式参数:
+>
+> - %d, %i: 读取一个有符号十进制数
+> - %u: 读取一个无符号十进制数
+> - %o: 读取一个八进制数无符号整数
+> - %x: 读取一个十六进制数无符号整数
+> - %c: 读取单个字符
+> - %f: 读取一个浮点数
+> - %e: 读取一个固定格式的浮点数
+> - %s: 扫描一个字符串
+> - %%: 转义%字符
 
 ```c++
 char s[5];
@@ -320,7 +336,7 @@ int i;
 if (2 != fscanf(stream, "The %s is %d", s, &i)) { ... }
 ```
 
-使用 `int feof(FILE* stream)` 检查文件结尾
+- `int feof(FILE* stream)` 检查文件结尾
 
 ```c++
 char buffer[1024];
@@ -335,14 +351,13 @@ while (0 == feof(stream))
 
 ### 搜索位置
 
-使用 `int fseek(FILE* stream, long offset, int whence)` 修改流中的位置。
-
-- stream: 流指针
-- offset: 偏移量
-- whence: 偏移量参照点
-  - SEEK_SET: 偏移量相对于流的开头
-  - SEEK_CUR: 偏移量相对于当前位置
-  - SEEK_END: 偏移量相对于流结尾
+- `int fseek(FILE* stream, long offset, int whence)` 修改流中的位置。
+  - stream: 流指针
+  - offset: 偏移量
+  - whence: 偏移量参照点
+    - SEEK_SET: 偏移量相对于流的开头
+    - SEEK_CUR: 偏移量相对于当前位置
+    - SEEK_END: 偏移量相对于流结尾
 
 ```c++
 // 写入流中
@@ -362,7 +377,7 @@ if (0 != ferror(stream)) { ... }
 
 ### 关闭流
 
-使用 `int fclose(FILE* stream)` 关闭流
+- `int fclose(FILE* stream)` 关闭流
 
 ```c++
 if (0 != fclose(stream)) { ... }
@@ -386,9 +401,9 @@ if (-1 == result || 127 == result) { ... }
 
 ### 与子进程通信
 
-使用 `FILE *popen(const char* command, const char* type)` 在父进程和子进程之间打开一个双向通道。
+- `FILE *popen(const char* command, const char* type)` 在父进程和子进程之间打开一个双向通道。
 
-使用 `int pclose(FILE* stream)` 将流关闭。
+- `int pclose(FILE* stream)` 将流关闭。
 
 ```c++
 #include <stdio.h>
@@ -426,7 +441,7 @@ Android以简单的键-值对的方式保存系统属性。先包含系统属性
 
 ### 通过名称获取系统属性值
 
-使用 `int __system_property_get(const char* name, char* value)` 根据名字查看系统属性
+- `int __system_property_get(const char* name, char* value)` 根据名字查看系统属性
 
 ```c++
 char value[PROP_VALUE_MAX];
@@ -436,9 +451,9 @@ if (0 == __system_property_get("ro.product.model", value)) { ... }
 
 ### 通过名称获取系统属性
 
-使用 `const prop_info* __system_property_find(const char* name)` 搜索系统属性。
+- `const prop_info* __system_property_find(const char* name)` 搜索系统属性。
 
-使用 `int __system_property_read(const prop_info* pi, char* name, char* value)` 读取属性值。
+- `int __system_property_read(const prop_info* pi, char* name, char* value)` 读取属性值。
 
 ```c++
 const prop_info* property;

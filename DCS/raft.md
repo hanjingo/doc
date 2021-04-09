@@ -1,17 +1,23 @@
-# 摘要
+# raft算法
+
+摘要
+
 一种相对paxos更简单的算法;具体流程:raft会先选举出leader，leader完全负责replicated log的管
 理。leader负责接受所有客户端更新请求，然后复制到follower节点，并在“安全”的时候执行这些
 请求。如果leader故障，followes会重新选举出新的leader;
 
-# 详情
-## 知识点
+
+
+## 详情
+
+### 知识点
 1. 节点的三个状态(同一时间只能由一个状态):
 * leader(领导)
 * fllower(跟随者)
 * condidate(领导候选人)
 **最大容错节点数量:(n-1)/2**
 
-## 领导竞选
+### 领导竞选
 系统一启动，所有节点都是follower状态;如果一段时间没有收到leader的心跳,发起选举;  
 1. 增加节点本地的current term, 切换到candidate状态
 2. 投自己一票

@@ -104,10 +104,20 @@ export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
 export CGO_CFLAGS="-D__BLST_PORTABLE__"
 ```
 
+设置文件存放路径
+
+```sh
+# 修改 /etc/profile 在文件末尾添加以下内容
+export LOTUS_PATH="要存放的文件夹路径"
+
+# 生效
+source /etc/profile
+```
+
 #### 编译
 
 ```sh
-make clean all
+sudo make clean all
 ```
 
 以下是报错处理方法:
@@ -159,7 +169,7 @@ sudo make install-miner-service
 #### 开启lotus进程
 
 ```sh
-lotus daemon
+sudo lotus daemon
 ```
 
 此时日志放在 `~/.lotus` 目录下
@@ -185,14 +195,12 @@ sudo systemctl status lotus-daemon
 
 
 
-
-
 ## 停止
 
 如果遇到特殊原因，需要停止lotus，使用以下命令
 
 ```sh
-lotus daemon stop
+sudo lotus daemon stop
 ```
 
 或
