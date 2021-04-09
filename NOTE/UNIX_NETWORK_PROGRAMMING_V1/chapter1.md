@@ -101,39 +101,37 @@ main(int argc, char **argv)
 
 ## 错误处理_包裹函数
 
-- socket的包裹函数
+socket的包裹函数
 
-  ```c++
-  int
-  Socket(int family, int type, int protocol)
-  {
-    int n;
-    if ( (n = socket(family, type, protocol)) < 0 )
-      err_sys("socket error");
-    return(n);
-  }
-  ```
-
-- pthread_mutex_lock的包裹函数
-
-  ```c++
-  void
-  Pthread_mutex_lock(pthread_mutex_t *mptr)
+```c
+int
+Socket(int family, int type, int protocol)
 {
-    int n;
-    if ( (n = pthread_mutex_lock(mptr)) == 0 )
-      return;
-    errno = n;
-    err_sys("pthread_mutex_lock error");
-  }
-  ```
-  
+  int n;
+  if ( (n = socket(family, type, protocol)) < 0 )
+    err_sys("socket error");
+  return(n);
+}
+```
 
+pthread_mutex_lock的包裹函数
 
+```c
+void
+Pthread_mutex_lock(pthread_mutex_t *mptr)
+{
+  int n;
+  if ( (n = pthread_mutex_lock(mptr)) == 0 )
+    return;
+  errno = n;
+  err_sys("pthread_mutex_lock error");
+}
+```
 
 ## OSI模型
 
 ![1-14](RES/1-14.png)
+
 
 
 

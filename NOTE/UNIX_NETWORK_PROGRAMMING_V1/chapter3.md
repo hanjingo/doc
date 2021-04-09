@@ -10,7 +10,7 @@
   - [确定主机字节序的程序](#确定主机字节序的程序)
   - [主机字节序与网络字节序的转换](#主机字节序与网络字节序的转换)
 - [字节操纵函数](#字节操纵函数)
-- [int_aton, inet_addr和inat_ntoa函数](#int_aton, inet_addr和inat_ntoa函数)
+- [int_aton, inet_addr和inat_ntoa函数](#int_aton inet_addr和inat_ntoa函数)
 - [inet_pton和inet_ntop函数](#inet_pton和inet_ntop函数)
 
 
@@ -207,7 +207,7 @@ uint32_t ntohl(uint32_t net32bitvalue);
 
 
 
-## int_aton, inet_addr和inat_ntoa函数
+## int_aton inet_addr和inat_ntoa函数
 
 头文件 `arpa/inet.h`
 
