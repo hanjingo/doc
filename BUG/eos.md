@@ -1,25 +1,42 @@
 # eos开发常见错误
+
+
+
 ## 脏数据问题  
 
-> database dirty flag set (likely due to unclean shutdown) replay or resync required  
-> 解决方法:
-> 在nodeos启动时添加选项--hard-replay-blockchain或者--delete-all-blocks参数  
+database dirty flag set (likely due to unclean shutdown) replay or resync required  
+
+解决方法:
+
+在nodeos启动时添加选项--hard-replay-blockchain或者--delete-all-blocks参数  
+
+
 
 ## eos无法启动:  
 
-> eos无法启动
-> 解决方法:
-> 把启动选项--producer-name eosio的eosio改成自己账号名，不然会启动不了  
+eos无法启动
+
+解决方法:
+
+把启动选项--producer-name eosio的eosio改成自己账号名，不然会启动不了  
+
+
 
 ## Error 3090003:
 
-> 创建账户时报错:Provided keys, permissions, and delays do not satisfy declared authorizations  
-> 解决方法:  
-> 系统私钥在 2个位置都可以找到：
-> > 1. 启动选项: --signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 这里 =KEY:的后面那一段
-> > 2. 在nodeos的配置文件（ubuntu默认路径：~/.local/share/eosio/nodeos/config/config.ini）=KEY:的后面那一段   
+创建账户时报错:Provided keys, permissions, and delays do not satisfy declared authorizations  
+
+解决方法:  
+
+系统私钥在 2个位置都可以找到：
+
+> 1. 启动选项: --signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 这里 =KEY:的后面那一段
+>
+> 2. 在nodeos的配置文件（ubuntu默认路径：~/.local/share/eosio/nodeos/config/config.ini）=KEY:的后面那一段   
 
 找到后将私钥导入钱包：cleos wallet import -n 钱包名  --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+
+
 
 ## fetching abi for undefined: unknown key (eosio::chain::name):
 
@@ -94,6 +111,8 @@ let actions = {
 
 ```
 
+
+
 ## Error 3080004: Transaction exceeded the current CPU usage limit imposed on the transaction
 
 命令执行超时了，在命令行后面加上 +x n(任意<=3600的正数，表示秒数) 就可以了,例: 
@@ -101,6 +120,8 @@ let actions = {
 ```sh
 cleos push action eosio fuck '' -p eosio +x 100
 ```
+
+
 
 ## eos合约被冲掉的问题
 

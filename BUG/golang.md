@@ -1,5 +1,8 @@
 # golang常见错误
+
+
 ## waitgroup的坑
+
 先上代码
 ```go
 func main() {

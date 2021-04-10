@@ -1,5 +1,7 @@
 # eos-go报错
 
+
+
 ## eos-go报action declares irrelevant authority错误
 
 先上代码

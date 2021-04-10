@@ -1,5 +1,9 @@
-## 重新绑定 escape键和capslock键
-### window
+# 重新绑定 escape键和capslock键
+
+
+
+## window
+
 新建 *.reg 文件并执行
 ```
 Windows Registry Editor Version 5.00
