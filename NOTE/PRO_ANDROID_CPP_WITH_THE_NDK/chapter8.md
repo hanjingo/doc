@@ -1,5 +1,13 @@
 # 第八章 POSIX Socket API 面向连接的通信
 
+- [Echo_Socket示例应用](#Echo_Socket示例应用)
+  - [抽象echo_activity](#抽象echo_activity)
+  - [原生echo模块](#原生echo模块)
+- [用TCP_sockets实现面向连接的通信](#用TCP_sockets实现面向连接的通信)
+  - [Echo_Server_Activity](#Echo_Server_Activity)
+  - [实现原生TCP_Server](#实现原生TCP_Server)
+  - [Echo客户端Activity](#Echo客户端Activity)
+
 
 
 ## Echo_Socket示例应用
@@ -148,6 +156,7 @@ public abstract class AbstractEchoActivity extends Activity implements OnClickLi
 #include <stddef.h>
 
 #include "com_apress_echo_EchoServerActivity.h"
+#include "com_apress_echo_EchoClientActivity.h"
 
 // 最大日志消息长度
 #define MAX_LOG_MESSAGE_LENGTH 256
@@ -496,6 +505,238 @@ exit:
     close(serverSocket);
   }
 }
+
+// 连接到给定的ip地址和给定的端口号
+static void ConnectToAddress(
+  JNIEnv* env,
+  jobject obj,
+  int sd,
+  const char* ip,
+  unsigned short port)
+{
+  // 连接到给定的IP地址和给定的端口号
+  LogMessage(env, obj, "Connecting to %s:%uh...", ip, port);
+  struct sockaddr_in address;
+  memset(&address, 0, sizeof(address));
+  address.sin_family = PF_INET;
+
+  // 将ip地址字符串转换为网络地址
+  if (0 == inet_aton(ip, &(address.sin_addr)))
+  {
+    // 抛出带错误号的异常
+    ThrowErrnoException(env, "java/io/IOException", errno);
+  }
+  else
+  {
+    // 将端口号转换为网络字节顺序
+    address.sin_port = htons(port);
+    // 转换为地址
+    if (-1 == connect(sd, (const sockaddr*) &address, sizeof(address)))
+    {
+      // 抛出带错误号的异常
+      ThrowErrnoException(env, "java/io/IOException", errno);
+    }
+    else
+    {
+      LogMessage(env, obj, "Connected.");
+    }
+  }
+}
+
+// 构造一个新的udp socket
+static int NewUdpSocket(JNIEnv* env, jobject obj) 
+{
+  // 构造socket
+  LogMessage(env, obj, "Constructing a new UDP socket...");
+  int udpSocket = socket(PF_INET, SOCKET_DGRAM, 0)；
+
+  // 检查socket构造是否正确
+  if (-1 == udpSocket)
+  {
+    // 抛出带错误号的异常
+    ThrowErrnoException(env, "java/io/IOException", errno);
+  }
+  return udpSocket;
+}
+
+// 从socket中阻塞并接受数据报保存到缓冲区，填充客户端地址
+static ssize_t ReceiveDatagramFromSocket (
+  JNIEnv* env,
+  jobject obj,
+  int sd,
+  struct sockaddr_in* address,
+  char* buffer,
+  size_t bufferSize)
+{
+  socklen_t addressLength = sizeof(struct sockaddr_in);
+  // 从socket中接受数据报
+  LogMessage(env, obj, "Receiving from the socket...");
+  ssize_t recvSize = recvfrom(sd, buffer, bufferSize, 0, (struct sockaddr*) address,
+                              &addressLength);
+  // 如果接受失败
+  if (-1 == recvSize)
+  {
+    // 抛出带错误号的异常
+    ThrowErrnoException(env, "java/io/IOException", errno);
+  }
+  else
+  {
+    // 记录地址
+    LogAddress(env, obj, "Received from", address);
+    // 以NULL终止缓冲区使其成为一个字符串
+    buffer[recvSize] = NULL;
+    // 如果数据已经接受
+    if (recvSize > 0)
+    {
+      LogMessage(env, obj, "Received %d bytes: %s", recvSize, buffer);
+    }
+  }
+  return recvSize;
+}
+
+// 用给定的socket发送数据报到给定的地址
+static ssize_t SendDatagramToSocket(
+  JNIEnv* env,
+  jobject obj,
+  int sd,
+  const struct sockaddr_in* address,
+  const char* buffer,
+  size_t bufferSize)
+{
+  // 想socket发送数据缓冲区
+  LogAddress(env, obj, "Sending to", address);
+  ssize_t sentSize = sendto(sd, buffer, bufferSize, 0, (const sockaddr*) address,
+                            sizeof(struct sockaddr_in));
+  // 如果发送失败
+  if (-1 == sentSize)
+  {
+    // 抛出带错误号的异常
+    ThrowErrnoException(env, "java/io/IOException", errno);
+  }
+  else if (sentSize > 0)
+  {
+    LogMessage(env, obj, "Sent %d bytes:%s", sentSize, buffer);
+  }
+  return sentSize;
+}
+
+void Java_com_apress_echo_EchoServerActivity_nativeStartUdpServer(
+  JNIEnv* env,
+  jobject obj,
+  jint port)
+{
+  // 构造一个新的UDP socket
+  int serverSocket = NewUdpSocket(env, obj);
+  if (NULL == env->ExceptionOccurred())
+  {
+    // 将socket绑定到某一端口号
+    BindSocketToPort(env, obj, serverSocket, (unsigned short) port);
+    if (NULL != env->ExceptionOccurred())
+      goto exit;
+    // 如果请求随机端口号
+    if (0 == port)
+    {
+      // 获取当前绑定的端口号socket
+      GetSocketPort(env, obj, serverSocket);
+      if (NULL != env->ExceptionOccurred())
+        goto exit;
+    }
+    // 客户端地址
+    struct sockaddr_in address;
+    memset(&address, 0, sizeof(address));
+
+    char buffer[MAX_BUFFER_SIZE]；
+    ssize_t recvSize;
+    ssize_t sentSize;
+
+    // 从socket中接收
+    recvSize = ReceiveDatagramFromSocket(env, obj, serverSocket, &address,
+                                         buffer, MAX_BUFFER_SIZE);
+                                        
+    if ((0 == recvSize) || (NULL != env->ExceptionOccurred()))
+      goto exit;
+
+    // 发送给socket
+    sentSize = SendDatagramToSocket(env, obj, serverSocket, &address, 
+                                    buffer, (size_t) recvSize);
+  }
+exit:
+  if (serverSocket > 0)
+  {
+    close(serverSocket);
+  }
+}
+
+void Java_com_apress_echo_EchoClientActivity_nativeStartUdpClient(
+  JNIEnv* env,
+  jobject obj,
+  jstring ip,
+  jint port,
+  jstring message)
+{
+  // 构造一个新的udp socket
+  int clientSocket = NewUdpSocket(env, obj);
+  if (NULL == env->ExceptionOccurred())
+  {
+    struct sockaddr_in address;
+
+    memset(&address, 0, sizeof(address));
+    address.sin_family = PF_INET;
+
+    // 以c字符串形式获取ip地址
+    const char* ipAddress = env->GetStringUTFChars(ip, NULL);
+    if (NULL == ipAddress)
+      goto exit;
+
+    // 将ip地址字符串转换为网络地址
+    int result = inet_aton(ipAddress, &(address.sin_addr));
+
+    // 释放IP地址
+    env->ReleaseStringUTFChars(ip, ipAddress);
+
+    // 如果转换失败
+    if (0 == result)
+    {
+      // 抛出带错误号的异常
+      ThrowErrnoException(env, "java/io/IOException", errno);
+      goto exit;
+    }
+
+    // 将端口转换为网络字节顺序
+    address.sin_port = htons(port);
+
+    // 以c字符串相识获取消息
+    const char* messageText = env->GetStringUTFChars(message, NULL);
+    if (NULL == messageText)
+      goto exit;
+
+    // 获取消息大小
+    jsize messageSize = env->GetStringUTFLength(message);
+
+    // 发消息给socket
+    SendDatagramToSocket(env, obj, clientSocket, &address, messageText, messageSize);
+
+    // 释放消息文本
+    env->ReleaseStringUTFChars(message, messageText);
+
+    // 如果发送未成功
+    if (NULL != env->ExceptionOccurred())
+      goto exit;
+
+    char buffer[MAX_BUFFER_SIZE];
+
+    // 清除地址
+    memset(&address, 0, sizeof(address));
+
+    // 从socket接受
+    ReceiveDatagramFromSocket(env, obj, clientSocket, &address, buffer, MAX_BUFFER_SIZE);
+  }
+exit:
+  if (clientSocket > 0)
+  {
+    close(clientSocket);
+  }
+}
 ```
 
 
@@ -530,25 +771,29 @@ public class EchoServerActivity extends AbstractEchoActivity {
 
   // 服务器端任务
   private class ServerTask extends AbstractEchoTask {
-	// 端口号
-	private final int port;
-	// 构造函数
-	public ServerTask(int port) {
-		this.port = port;
-	}
+	  // 端口号
+	  private final int port;
+	  // 构造函数
+	  public ServerTask(int port) {
+	  	this.port = port;
+	  }
 
-	protected void onBackground() {
-		logMessage("Starting server.");
+  	protected void onBackground() {
+  		logMessage("Starting server.");
 
-		try {
-			nativeStartTcpServer(port);
-		} catch(Exception e) {
-			logMessage(e.getMessage());
-		}
+		  try {
+		  	//nativeStartTcpServer(port);
+        nativeStartUdpServer(port);
+		  } catch(Exception e) {
+		  	logMessage(e.getMessage());
+		  }
 
-		logMessage("Server terminated.");
-	}
+		  logMessage("Server terminated.");
+	  }
   }
+
+  // 在给定端口上启动udp服务
+  private native void nativeStartUdpServer(int port) throws Exception;
 }
 ```
 
@@ -603,12 +848,12 @@ public class EchoServerActivity extends AbstractEchoActivity {
 
 头文件`sys/endian.h`提供了以下函数进行字节序转换:
 
-- htons: 将unsigned short从主机字节排序转换到网络字节排序
-- ntohs: 和htons函数相反，将unsigned short从网络字节排序转换到主机字节排序
-- htonl: 将unsigned integer从主机字节排序转换到网络字节排序
-- ntohl: 和htonl函数相反，将unsigned integer从网络字节排序转换到主机字节排序
+> - htons: 将unsigned short从主机字节排序转换到网络字节排序
+> - ntohs: 和htons函数相反，将unsigned short从网络字节排序转换到主机字节排序
+> - htonl: 将unsigned integer从主机字节排序转换到网络字节排序
+> - ntohl: 和htonl函数相反，将unsigned integer从网络字节排序转换到主机字节排序
 
-
+67u
 
 - `int listen(int socketDescriptor, int backlog)` 监听socket
   - socketDescriptor: socket描述符
@@ -631,6 +876,7 @@ public class EchoServerActivity extends AbstractEchoActivity {
   - bufferLength: 缓冲区长度
   - flags: 标记
 
+
 ### Echo客户端Activity
 
 ```java
@@ -641,7 +887,113 @@ import android.widget.EditText;
 
 // 客户端
 public class EchoClientActivity extends AbstractEchoActivity {
-  
+  // 地址
+  private EditText ipEdit;
+  // 消息编辑
+  private EditText messageEdit;
+  // 构造函数
+  public EchoClientActivity() {
+    super(R.layout.activity_echo_client);
+  }
+
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ipEdit = (EditText) findViewById(R.id.ip_edit);
+    messageEdit = (EditText) findViewById(R.id.message_edit);
+  }
+
+  protected void onStartButtonClicked() {
+    String ip = ipEdit.getText().toString();
+    Integer port = getPort();
+    String message = messageEdit.getText().toString();
+
+    if (0 != ip.length() && port != null && 0 != message.length()) {
+      ClientTask clientTask = new ClientTask(ip, port, message);
+      clientTask.start();
+    } 
+  }
+
+  // 根据给定服务器ip地址和端口号启动TCP客户端，并且发送给定消息
+  private native void nativeStartTcpClient(String ip, int port, String message) throws Exception;
+
+  // 用给定的服务器端ip地址和端口号启动udp客户端
+  private native void nativeStartUdpClient(String ip, int port, String message) throws Exception;
+
+  // 客户端任务
+  private class ClientTask extends AbastractEchoTask {
+    // 连接的ip地址
+    private final String ip;
+    // 端口号
+    private final int port;
+    // 发送的消息文本
+    private final String message;
+    public ClientTask(String ip, int port, String message) {
+      this.ip = ip;
+      this.port = port;
+      this.message = message;
+    }
+    protected void onBackground() {
+      logMessage("Starting client.");
+      try {
+        // nativeStartTcpClient(ip, port, message);
+        nativeStartUdpClient(ip, port, message);
+      } catch(Throwable e) {
+        logMessage(e.getMessage());
+      }
+      logMessage("Client terminated.");
+    }
+  }
+
+  void Java_com_apress_echo_EchoClientActivity_nativeStartTcpClient(
+    JNIEnv* env,
+    jobject obj,
+    jstring ip,
+    jint port,
+    jstring message)
+  {
+    // 构造新的TCP socket
+    int clientSocket = NewTcpSocket(env, obj);
+    if (NULL == env->ExceptionOccurred())
+    {
+      // 以c字符串形式获取ip地址
+      const char* ipAddress = env->GetStringUTFChars(ip, NULL);
+      if (NULL == ipAddress)
+        goto exit;
+      // 连接到ip地址和端口
+      ConnectToAddress(env, obj, clientSocket, ipAddress, (unsigned short) port);
+      // 释放ip地址
+      env->ReleaseStringUTFChars(ip, ipAddress);
+      // 连接成功
+      if (NULL != env->ExceptionOccurred())
+        goto exit;
+      // 以c字符串形式获取消息
+      const char* messageText = env->GetStringUTFChars(message, NULL);
+      if (NULL == messageText)
+        goto exit;
+      // 获取消息大小
+      jsize messageSize = env->GetStringUTFLength(message);
+      // 发送消息给socket
+      SendToSocket(env, obj, clientSocket, messageText, messageSize);
+      // 释放消息文本
+      env->ReleaseStringUTFChars(message, messageText);
+      // 如果发送未成功
+      if (NULL != env->ExceptionOccurred())
+        goto exit;
+      char buffer[MAX_BUFFER_SIZE];
+      // 从socket接
+      ReceiveFromSocket(env, obj, clientSocket, buffer, MAX_BUFFER_SIZE);
+    }
+exit:
+  if (clientSocket > -1)
+  {
+    close(clientSocket);
+  }
+  }
+
 }
 ```
 
+- `int connect(int socketDescriptor, const struct sockaddr *address, socklen_t addressLength)` 连接socket和sever socket
+  - socket descriptor: 指定应用程序要连接协议地址的socket实例
+  - address: 指定socket要连接的协议地址
+  - address length: 指定所提供的地址结构的长度

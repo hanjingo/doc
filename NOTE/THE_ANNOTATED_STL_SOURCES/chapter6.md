@@ -1,6 +1,51 @@
 # 算法
+[返回目录](README.md)
+
+- [算法概观](#算法概观)
+
+  - [算法分析与复杂度表示](#算法分析与复杂度表示)
+  - [STL算法总览](#STL算法总览)
+  - [质变算法mutating_algorithms-会改变操作对象的值](#质变算法mutating_algorithms-会改变操作对象的值)
+  - [非质变算法non_mutating_algorithms-不改变操作对象的值](#非质变算法non_mutating_algorithms-不改变操作对象的值)
+  - [非质变算法non_mutating_algorithms-不改变操作对象的值](#非质变算法non_mutating_algorithms-不改变操作对象的值)
+  - [STL算法的一般形式](#STL算法的一般形式)
+
+- [数值算法](#数值算法)
+
+- [基本算法](#基本算法)
+
+- [set相关算法](#set相关算法)
+
+  - [set_union](#set_union)
+  - [set_intersection](#set_intersection)
+  - [set_difference](#set_difference)
+  - [set_symmetric_difference](#set_symmetric_difference)
+
+- [heap算法](#heap算法)
+
+- [其它算法](#其它算法)
+
+  - [lower_bound](#lower_bound)
+
+  - [upper_bound](#upper_bound)
+  - [binary_search](#binary_search)
+  - [next_permutation](#next_permutation)
+  - [prev_permutation](#prev_permutation)
+  - [random_shuffle](#random_shuffle)
+  - [partial_sort&&partial_sort_copy](#partial_sort&&partial_sort_copy)
+  - [sort](#sort)
+  - [equal_range](#equal_range)
+  - [inplace_merge](#inplace_merge)
+  - [nth_element](#nth_element)
+  - [merge_sort](#merge_sort)
+
+
+
 ## 算法概观
-### 算法分析与复杂度表示O()
+
+[返回顶部](#算法)
+
+### 算法分析与复杂度表示
 算法分析(algorithm analysis)
 
 > 分析算法所耗用的空间和时间资源
@@ -93,7 +138,7 @@
 
 mutating: 质变，会改变其操作对象之内容
 
-### 质变算法mutating algorithms-会改变操作对象的值
+### 质变算法mutating_algorithms-会改变操作对象的值
 
 - copy(拷贝)
 - swap(交换)
@@ -106,7 +151,7 @@ mutating: 质变，会改变其操作对象之内容
 - sort(排序)
 - ...
 
-### 非质变算法non mutating algorithms-不改变操作对象的值
+### 非质变算法non_mutating_algorithms-不改变操作对象的值
 
 - find(查找)
 - search(匹配)
@@ -124,7 +169,11 @@ mutating: 质变，会改变其操作对象之内容
 
 ---
 
-## 数值算法 <stl_numeric.h>
+
+
+## 数值算法
+
+[返回顶部](#算法)
 
 STL 将数值算法的内部实现放在 <stl_numeric.h> 中，用户调用数值算法的接口，需要包含 <numeric> 头文件。
 
@@ -134,7 +183,8 @@ STL 将数值算法的内部实现放在 <stl_numeric.h> 中，用户调用数�
 
 ```c++
 template <class _InputIterator, class _Tp>
-_Tp accumulate(_InputIterator __first, _InputIterator __last, 
+_Tp accumulate(_InputIterator __first, 
+               _InputIterator __last, 
                _Tp __init)
 {
   __STL_REQUIRES(_InputIterator, _InputIterator);
@@ -149,10 +199,13 @@ _Tp accumulate(_InputIterator __first, _InputIterator __last,
 计算`[first, last)`中相邻元素的差值，将 `*first` 赋值给 `*result` 并针对`[first+1, last)`内的每个迭代器i，将`*i-*(i-1)`之值赋值给`*(result+(i-first))`。
 
 ```c++
-template <class _InputIterator, class _OutputIterator, class _Tp>
+template <class _InputIterator, 
+					class _OutputIterator, class _Tp>
 _OutputIterator
-__adjacent_difference(_InputIterator __first, _InputIterator __last,
-                      _OutputIterator __result, _Tp*)
+__adjacent_difference(_InputIterator __first, 
+											_InputIterator __last, 
+                      _OutputIterator __result, 
+                      _Tp*)
 {
   _Tp __value = *__first;
   while (++__first != __last) {
@@ -169,9 +222,12 @@ __adjacent_difference(_InputIterator __first, _InputIterator __last,
 计算`[first1, last1)`和`[first2, first2 + (last1 - first1))`的一般内积。
 
 ```c++
-template <class _InputIterator1, class _InputIterator2, class _Tp>
-_Tp inner_product(_InputIterator1 __first1, _InputIterator1 __last1,
-                  _InputIterator2 __first2, _Tp __init)
+template <class _InputIterator1, 
+					class _InputIterator2, class _Tp>
+_Tp inner_product(_InputIterator1 __first1, 
+            			_InputIterator1 __last1, 
+            			_InputIterator2 __first2, 
+            			_Tp __init)
 {
   __STL_REQUIRES(_InputIterator2, _InputIterator);
   __STL_REQUIRES(_InputIterator2, _InputIterator);
@@ -186,10 +242,13 @@ _Tp inner_product(_InputIterator1 __first1, _InputIterator1 __last1,
 计算局部总和，将`*first`赋值给`*result`，将`*first`和`*(first+1)`之和赋值给`*(result+1)`。
 
 ```c++
-template <class _InputIterator, class _OutputIterator, class _Tp>
+template <class _InputIterator, 
+					class _OutputIterator, class _Tp>
 _OutputIterator
-__partial_sum(_InputIterator __first, _InputIterator __last,
-              _OutputIterator __result, _Tp*)
+__partial_sum(_InputIterator __first, 
+              _InputIterator __last,
+            	_OutputIterator __result, 
+            	_Tp*)
 {
   _Tp __value = *__first;
   while (++__first != __last) {
@@ -205,8 +264,11 @@ __partial_sum(_InputIterator __first, _InputIterator __last,
 SGI专属，并不在STL标准之列。计算某数的n幂次方。
 
 ```c++
-template <class _Tp, class _Integer, class _MonoidOperation>
-_Tp __power(_Tp __x, _Integer __n, _MonoidOperation __opr)
+template <class _Tp, class _Integer, 
+					class _MonoidOperation>
+_Tp __power(_Tp __x, 
+            _Integer __n, 
+            _MonoidOperation __opr)
 {
   if (__n == 0)
     return identity_element(__opr);
@@ -247,8 +309,9 @@ SGI专属，并不在STL标准之列。用来设定某个区间的内容，使�
 
 ```c++
 template <class _ForwardIter, class _Tp>
-void
-iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
+void iota (_ForwardIter __first, 
+           _ForwardIter __last, 
+           _Tp __value)
 {
   __STL_REQUIRES(_ForwardIter, _Mutable_ForwardIterator);
   __STL_CONVERTIBLE(_Tp, 
@@ -262,21 +325,70 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 ---
 
-## 基本算法 <stl_algobase.h>
+## 基本算法
+
+[返回顶部](#算法)
+
+基本算法位于头文件`<stl_algobase.h>` 中
 
 - equal
 
-如果两个序列在`[first,last)`区间内相等，equal()返回true。
+如果两个序列在`[first,last)`区间内相等，`equal()`返回true。
 
 **注意：如果第二序列的元素比较多，多出来的元素不予考虑。**
+
+```c++
+template <class _InputIter1, class _InputIter2>
+inline bool equal(_InputIter1 __first1, 
+                  _InputIter1 __last1,
+                  _InputIter2 __first2) 
+{
+  __STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(
+    typename iterator_traits<_InputIter1>::value_type,
+    	_EqualityComparable);
+  __STL_REQUIRES(
+    typename iterator_traits<_InputIter2>::value_type,
+    	_EqualComparable);
+  for (; __first1 != __last1; ++__first1, ++__first2)
+    if (*__first1 != *__first2)
+      return false;
+  return true;
+}
+```
 
 - fill
 
 将`[first, last)`内的所有元素改填新值。
 
+```c++
+template <class _ForwardIter, class _Tp>
+void fill(_ForwardIter __first, _ForwardIter __last, 
+          const _Tp& __value) 
+{
+  __STL_REQUIRES(_ForwardIter, _Mutable_ForwardIterator);
+  for (; __first != __last; ++__first)
+    *__first = __value;
+}
+```
+
 - fill_n
 
 将`[first, last)`内的前n个元素改填新值，返回的迭代器指向被填入的最后一个元素的下一个位置。
+
+```c++
+template <class _OutputIter, class _Size, class _Tp>
+_OutputIter fill_n(_OutputIter __first, 
+                   _Size __n,
+                   const _Tp& __value) 
+{
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  for (; __n > 0; --__n, ++__first)
+    *__first = __value;
+  return __first;
+}
+```
 
 - iter_swap
 
@@ -284,17 +396,88 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 ![](res/iter_swap.png)
 
-- Lexicographical_compare
+```c++
+template <class _ForwardIter1, class _ForwardIter2, 
+					class _Tp>
+inline void __iter_swap(_ForwardIter1 __a, 
+		_ForwardIter2 __b, _Tp*) 
+{
+  _Tp __tmp = *__a;
+  *__a = *__b;
+  *__b = __tmp;
+}
+  
+template <class _ForwardIter1, class _ForwardIter2>
+inline void iter_swap(_ForwardIter1 __a, 
+                      _ForwardIter2 __b) 
+{
+  __STL_REQUIRES(_ForwardIter1, _Mutable_ForwardIterator);
+  __STL_REQUIRES(_ForwardIter2, _Mutable_ForwardIterator);
+  __STL_CONVERTIBLE(
+    typename iterator_traits<_ForwardIter1>::value_type,
+  	typename iterator_traits<_ForwardIter2>::value_type);
+  __STL_CONVERTIBLE(
+  	typename iterator_traits<_ForwardIter2>::value_type,
+  	typename iterator_traits<_ForwardIter1>::value_type);
+  __iter_swap(__a, __b, __VALUE_TYPE(__a));
+}
+```
+
+- lexicographical_compare
 
 以“字典排列方式”对两个序列`[first1,last1)`和`[first2,last2)`进行比较。
+
+```c++
+template <class _InputIter1, class _InputIter2>
+bool lexicographical_compare(_InputIter1 __first1, 
+  													 _InputIter1 __last1,
+														 _InputIter2 __first2,
+														 _InputIter2 __last2) 
+{
+  __STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(
+    typename iterator_traits<_InputIter1>::value_type,
+  	_LessThanComparable);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter2>::value_type,
+  	_LessThanComparable);
+  for (; __first1 != __last1 && __first1 != __last2;
+       ; ++__first1 < *__first2) {
+    if (*__first1 < *__first2)
+      return true;
+    if (*__first2 < *__first1)
+      return false;
+  }
+  return __first1 == __last1 && __first2 != __last2;
+}
+```
 
 - max
 
 取两个对象中的较大值。
 
+```c++
+template <class _Tp>
+inline const _Tp& max(const _Tp& __a, const _Tp& __b) 
+{
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  return __a < __b ? __b : __a;
+}
+```
+
 - min
 
 取两个对象中的较小值。
+
+```c++
+template <class _Tp>
+inline const _Tp& min(const _Tp& __a, const _Tp& __b) 
+{
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  return __b < __a ? __b : __a;
+}
+```
 
 - mismatch
 
@@ -302,23 +485,134 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 ![](res/mismatch.png)
 
+```c++
+template <class _InputIter1, class _InputIter2>
+pair<_InputIter1, _InputIter2> msimatch(_InputIter1 __first1,
+                                       	_InputIter1 __last1,
+                                        _InputIter2 __first2) 
+{
+  __STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	_EqualityComparable);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter2>::value_type,
+  	_EqualityComparable);
+  while (__first1 != __last1 && *__first1 == *__first2) {
+    ++__first1;
+    ++__first2;
+  }
+  return pair<_InputIter1, _InputIter2>(__first1, __first2);
+}
+```
+
 - copy
 
 将输入区间[first,last)内的元素复制到输出区间[result,result+(last-first))内.
 
 ![6-2](res/6-2.png)
 
+```c++
+// InputIterator版本
+template <class _InputIter, class _OutputIter, 
+					class _Distance>
+inline _OutputIter __copy(_InputIter __first, 
+                          _InputIter __last,
+                          _OutputIter __result,
+                          input_iterator_tag, 
+                          _Distance*)
+{
+  for (; __first != __last; ++__result, ++__first)
+    *__result = *__first;
+  return __result;
+}
+
+// RandomAccessIterator版本
+tempalte <class _RandomAccessIter, 
+					class _OutputIter, 
+					class _Distance>
+inline _OutputIter __copy(_RandomAccessIter __first,
+                          _RandomAccessIter __last,
+                          _OutputIter __result,
+                          random_access_iterator_tag,
+                          _Distance*)
+{
+  for (_Distance __n = __last - __first; __n > 0; --__n) {
+    *__result = *__first;
+    ++__first;
+    ++__result;
+  }
+  return __result;
+}
+
+template <class _InputIter, class _OutputIter>
+inline _OutputIter copy(_InputIter __first, 
+                        _InputIter __last,
+                        _OutputIter __result) 
+{
+  return __copy(__first, __last, __result,
+                __ITERATOR_CATEGORY(__first),
+                __DISTANCE_TYPE(__first));
+}
+```
+
 - copy_backward
 
-将`[first,last)`区间内的每一个元素，以逆行的方向复制到以result-1为起点，方向亦为逆行的区间上。
+将`[first,last)`区间内的每一个元素，以逆行的方向复制到以`result-1`为起点，方向亦为逆行的区间上。
 
 ![6-4](res/6-4.png)
 
+```c++
+template <class _BindirectionalIter1, 
+					class _BindirectionalIter2, class _Distance>
+inline _BindirectionalIter2 
+__copy_backward(_BidirectionalIter1 __first,
+                _BidirectionalIter1 __last,
+                _BidirectionalIter2 __result,
+                bidirectional_iterator_tag,
+                _Distance*)
+{
+	while (__first != __last)
+    *--__result = *--__last;
+  return __result;
+}
 
+template <class _RandomAccessIter,
+					class _BindirectionalIter,
+					class _Distance>
+inline _BidirectionalIter
+__copy_backward(_RandomAccessIter __first,
+                _RandomAccessIter __last,
+                _BindirectionalIter __result,
+                random_access_iterator_tag,
+                _Distance*)
+{
+	for (_Distance __n = __last - __first; __n > 0; --__n)
+    *--__result = *--__last;
+  return __result;
+}
+
+template <class _BI1, class _BI2>
+inline _BI2 copy_backward(_BI1 __first, 
+                          _BI1 __last, 
+                          _BI2 __result)
+{
+  return __copy_backward(__first, __last, __result,
+                         __ITERATOR_CATEGORY(__first),
+                         __DISTANCE_TYPE(__first));
+}
+```
 
 ---
 
+
+
 ## set相关算法
+
+[返回顶部](#算法)
+
+包含在头文件`<algorithm>`中
 
 ### set_union
 
@@ -326,11 +620,84 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 ![6-5a](res/6-5a.png)
 
+```c++
+template <class _InputIter1, class _InputIter2, 
+					class _OutputIter>
+_OutputIter set_union(_InputIter1 __first1,
+                      _InputIter1 __last1,
+                      _InputIter2 __first2,
+                      _InputIter2 __last2,
+                      _OutputIter __result)
+{
+	__STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  __STL_REQUIRES_SAME_TYPE(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	typename iterator_traits<_InputIter2>::value_type);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	_LessThanComparable);
+  while (__first1 != __last1 && __first2 != __last2) {
+    if (*__first1 < *__first2) {
+      *__result = *__first1;
+      ++__first;
+    }
+    else if (*__first2 < *__first1) {
+      *__result = *__first2;
+      ++__first2;
+    }
+    else {
+      *__result = *__first1;
+      ++__first1;
+      ++__first2;
+    }
+    ++__result;
+  }
+  return copy(__first2, 
+              __last2, 
+              copy(__first1, __last1, __result));
+}
+```
+
 ### set_intersection
 
 构造两个集合的交集，是一种稳定操作，输出区间内的每个元素的相对顺序都和s1内的相对顺序相同。
 
-![](res/6-5b.png)
+![6-5b](res/6-5b.png)
+
+```c++
+template <class _InputIter1, class _InputIter2,
+					class _OutputIter>
+_OutputIter set_intersection(_InputIter1 __first1,
+                             _InputIter1 __last1,
+                             _InputIter2 __first2,
+                             _InputIter2 __last2,
+                             _OutputIter __result)
+{
+	__STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  __STL_REQUIRES_SAME_TYPE(
+  	typename iterator_traits<_InputIter1>::value_type,
+    typename iterator_traits<_InputIter2>::value_type);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	_LessThanComparable);
+  while (__first1 != __last1 && __first2 != __last2)
+    if (*__first1 < *__first2)
+      ++__first1;
+    else if (*__first2 < *__first1)
+      ++__first2;
+    else {
+      *__result = *__first1;
+      ++__first1;
+      ++__first2;
+      ++__result;
+    }
+	return __result;
+}
+```
 
 ### set_difference
 
@@ -338,66 +705,412 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 ![](res/6-5c.png)
 
+```c++
+template <class _InputIter1, class _InputIter2, 
+					class _OutputIter>
+_OutputIter set_difference(_InputIter1 __first1, 
+                           _InputIter1 __last1,
+                           _InputIter2 __first2,
+                           _InputIter2 __last2,
+                           _OutputIter __result)
+{
+	__STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  _STL_REQUIRES_SAME_TYPE(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	typename iterator_traits<_InputIter2>::value_type);
+  _STL_REQUIRES(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	_LessThanComparable);
+  while (__first1 != __last1 && __first2 != __last2)
+    if (*__first1 < *__first2) {
+      *__result = *__first1;
+      ++__first1;
+      ++__result;
+    }
+    else if (*__first2 < *__first1)
+      ++__first2;
+    else {
+      ++__first1;
+      ++__first2;
+    }
+
+	return copy(__first1, __last1, __result);
+}
+```
+
 ### set_symmetric_difference
 
 构造两个集合的差集，输入区间内的元素相对顺序不会被改变。
 
 ![](res/6-5d.png)
 
+```c++
+template <class _InputIter1, class _InputIter2, 
+					class _OutputIter>
+_OutputIter
+set_symmetric_difference(_InputIter1 __first1,
+                         _InputIter1 __last1,
+                         _InputIter2 __first2, 
+                         _InputIter2 __last2, 
+                         _OutputIter __result)
+{
+	__STL_REQUIRES(_InputIter1, _InputIterator);
+  __STL_REQUIRES(_InputIter2, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  __STL_REQUIRES_SAME_TYPE(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	typename iterator_traits<_InputIter2>::value_type);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter1>::value_type,
+  	_LessThanComparable);
+  while (__first1 != __last1 && __first2 != __last2)
+    if (*__first1 < *__first2) {
+      *__result = *__first1;
+      ++__first1;
+      ++__result;
+    }
+    else if (*__first2 < *__first1) {
+      *__result = *__first2;
+      ++__first2;
+      ++__result;
+    }
+    else {
+      ++__first1;
+      ++__first2;
+    }
+   
+	return copy(__first2, __last2, 
+              copy(__first1, __last1, __result));
+}
+```
+
 ---
+
+
 
 ## heap算法
 
-<stl_heap.h>
+位于头文件`<stl_heap.h>`
+
+```c++
+template <class _RandomAccessIterator, 
+					class _Distance, class _Tp>
+void
+__adjust_heap(_RandomAccessIterator __first, 
+              _Distance __holeIndex, 
+              _Distance __len, 
+              _Tp __value)
+{
+  _Distance __topIndex = __holdeIndex;
+  _Distance __secondChild = 2 * __holeIndex + 2;
+  while (__secondChild < __len) {
+    if (*(__first + __secondChild) < 
+        *(__first + (__secondChild - 1)))
+      __secondChild--;
+    
+    *(__first + __holeIndex) = *(__first + __secondChild);
+    __holeIndex = __secondChild;
+    __secondChild = 2 * (__secondChild + 1);
+  }
+  if (__secondChild == __len) {
+    *(__first + __holeIndex) = 
+      *(__first + (__secondChild - 1));
+    __holeIndex = __secondChild - 1;
+  }
+  __push_heap(__first, __holeIndex, __topIndex, __value);
+}
+```
 
 - make_heap 
 
 建堆
 
+```c++
+template <class _RandomAccessIterator, 
+					class _Tp, class _Distance>
+void __make_heap(_RandomAccessIterator __first,
+                 _RandomAccessIterator __last,
+                 _Tp*,
+                 _Distance*)
+{
+	if (__last - __first < 2) return;
+  _Distance __len = __last - __first;
+  _Distance __parent = (__len - 2)/2;
+  
+  while (true) {
+    __adjust_heap(__first, __parent, __len, 
+                  _Tp(*(__first + __parent)));
+    if (__parent == 0) return;
+    __parent--;
+  }
+}
+
+template <class _RandomAccessIterator>
+inline void
+make_heap(_RandomAccessIterator __first, 
+          _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator,
+                 _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIterator>::value_type,
+  	_LessThanComparable);
+  __make_heap(__first, __last, __VALUE_TYPE(__first),
+              __DISTANCE_TYPE(__first));
+}
+```
+
 - pop_heap
 
 从堆中取出一个元素
 
-- push_heap(
+```c++
+template <class _RandomAccessIterator, class _Tp, 
+					class _Distance>
+inline void
+__pop_heap(_RandomAccessIterator __first,
+           _RandomAccessIterator __last,
+           _RandomAcceooIterator __result,
+           _Tp __value, _Distance*)
+{
+  *__result = *__first;
+  __adjust_heap(__first, _Distance(0), 
+                _Distance(__last - __first), __value);
+}
+  
+template <class _RandomAccessIterator, class _Tp>
+inline void
+__pop_heap_aux(_RandomAccessIterator __first, 
+               _RandomAccessIterator __last, _Tp*)
+{
+  __pop_heap(__first, __last - 1, __last - 1,
+             _Tp(*(__last - 1)), __DISTANCE_TYPE(__first));
+}
+
+template <class _RandomAccessIterator>
+inline void pop_heap(_RandomAccessIterator __first,
+                     _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator,
+                _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIterator>::value_type,
+  	_LessThanComparable);
+  __pop_heap_aux(__first, __last, __VALUE_TYPE(__first));
+}
+```
+
+- push_heap
   
 
 将一个元素推进堆内
+
+```c++
+template <class _RandomAccessIterator, class _Distance, 
+					class _Tp>
+void
+__push_heap(_RandomAccessIterator __first,
+            _Distance __holeIndex, 
+            _Distance __topIndex, 
+            _Tp __value)
+{
+  _Distance __parent = (__holeIndex - 1) / 2;
+  while (__holeIndex > __topIndex && 
+         *(__first + __parent) < __value)
+  {
+    *(__first + __holeIndex) = *(__first + __parent);
+    __holeIndex = __parent;
+    __parent = (__holeIndex - 1) / 2;
+  }
+}
+
+template <class _RandomAccessIterator, 
+					class _Distance, class _Tp>
+inline void
+__push_heap_aux(_RandomAccessIterator __first,
+                _RandomAccessIterator __last, 
+                _Distance*, _Tp*)
+{
+	__push_heap(__first, _Distance((__last - __first) - 1), 
+              _Distance(0), _Tp(*(__last - 1)));
+}
+
+template <class _RandomAccessIterator>
+inline void
+push_heap(_RandomAccessIterator __first,
+          _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator,
+                 _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIterator>::value_type,
+  	_LessThanComparable);
+  __push_heap_aux(__first, __last, __DISTANCE_TYPE(__first), 
+                  __VALUE_TYPE(__first));
+}
+```
 
 - sort_heap
 
 对堆排序
 
+```c++
+template <class _RandomAccessIterator>
+void sort_heap(_RandomAccessIterator __first,
+               _RandomAccessIterator __last)
+{
+  __STL_REQUIRES(_RandomAccessIterator, 
+                 _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIterator>::value_type,
+  	_LessThanComparable);
+  while (__last - __first > 1)
+    pop_heap(__first, __last--);
+}
+```
+
 ---
+
+
 
 ## 其它算法
 
-<stl_algo.h>
+[返回顶部](#算法)
+
+位于头文件 `<stl_algo.h>`
 
 - adjacent_find
 
 找出第一组满足条件的相邻元素。
 
+```c++
+template <class _ForwardIter>
+_ForwardIter adjacent_find(_ForwardIter __first, 
+                           _ForwardIter __last)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_ForwardIter>::value_type,
+  	_EqualityComparable);
+  if (__first == __last)
+    return __last;
+  _ForwardIter __next = __first;
+  while(++__next != __last) {
+    if (*__first == *__next)
+      return __first;
+    __first = __next;
+  }
+  return __last;
+}
+```
+
 - count
 
 运用equality操作符，将[first,last)区间内的每一个元素拿来和指定值value比较，并返回与value相等的元素个数。
+
+```c++
+template <class _InputIter, class _Tp, class _Size>
+void count(_InputIter __first, _InputIter __last, 
+           const _Tp& __value, _Size& __n)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter>::value_type,
+  	_EqualityComparable);
+  __STL_REQUIRES(_Tp, _EqualityComparable);
+  for (; __first != __last; ++__first)
+    if (*__first == __value)
+      ++__n;
+}
+```
 
 - count_if
 
 将指定操作（一个仿函数）pred实施于`[first,last)`区间内的每一个元素身上，并将使pred的计算结果为true的所有元素的个数返回。
 
+```c++
+template <class _InputIter, class _Predicate, 
+					class _Size>
+void count_if(_InputIter __first, _InputIter __last, 
+              _Predicate __pred, _Size& __n)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_UNARY_FUNCTION_CHECK(_Predicate, bool,
+  	typename iterator_traits<_InputIter>::value_type);
+  for (; __first != __last; ++__first)
+    if (__pred(*__first))
+      ++__n;
+}
+```
+
 - find
 
 根据equality操作符，循序查找`[first,last)`内的所有元素，找出第一个匹配"等同(equality)条件"者。如果找到，就返回一个InputIterator指向该元素，否则返回迭代器last。
 
+```c++
+template <class _InputIter, class _Tp>
+inline _InputIter find(_InputIter __first, _InputIter __last,
+                       const _Tp& __val, input_iterator_tag)
+{
+  while (__first != __last && !(*__first == __val))
+    ++__first;
+  return __first;
+}
+
+template <class _InputIter, class _Tp>
+inline _InputIter find(_InputIter __first, _InputIter __last, 
+                       const _Tp& __val)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_REQUIRES_BINARY_OP(_OP_EQUAL, bool,
+  	typename iterator_traits<_InputIter>::value_type, _Tp);
+  return find(__first, __last, __val, 
+              __ITERATOR_CATEGORY(__first));
+}
+```
+
 - find_if
 
 根据指定的pred运算条件(以仿函数表示)，循序查找`[first,last)`内的所有元素，找出第一个令pred运算结果为true者。如果找到就返回一个InputIterator指向该元素，否则返回迭代器last。
+
+```c++
+template <class _InputIter, class _Predicate>
+inline _InputIter fin_if(_InputIter __first, 
+                         _InputIter __last,
+                         _Predicate __pred,
+                         input_iterator_tag)
+{
+  while (__first != __last && !__pred(*__first))
+    ++__first;
+  return __first;
+}
+
+template <class _InputIter, class _Predicate>
+inline _InputIter find_if(_InputIter __first,
+                          _InputIter __last,
+                          _Predicate __pred)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_UNARY_FUNCTION_CHECK(_Predicate, bool,
+  	typename iterator_traits<_InputIter>::value_type);
+  return find_if(__first, __last, __pred, 
+                 __ITERATOR_CATEGORY(__first));
+}
+```
 
 - find_end
 
 在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的最后一次出现点。如果序列一之内不存在“完全匹配序列二”的子序列，便返回迭代器last1。
 
 ![6-6a](res/6-6a.png)
+
+```c++
+template <class _ForwardIter1, class _ForwardIter2>
+inline _ForwardIter1
+find_end()
+```
 
 - find_first_of
 
@@ -539,17 +1252,23 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 
 算法unique_copy可从`[first,last)`中将元素复制到以result开头的区间上；如果面对相邻重复元素群，只会复制其中第一个元素。返回的迭代器指向以result开头的区间的尾端。
 
-### lower_bound(应用于有序区间)
+### lower_bound
+
+应用于有序区间
 
 二分查找(binary search)的一种版本，他会返回一个迭代器，指向第一个“不小于value”的元素。如果value大于`[first,last)`内的任何一个元素，则返回last
 
 ![6-7](res/6-7.png)
 
-### upper_bound(应用于有序区间)
+### upper_bound
+
+应用于有序区间
 
 二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置”。
 
-### binary_search(应用于有序区间)
+### binary_search
+
+应用于有序区间
 
 算法binary_search是一种二分查找法，试图在已排序的`[first,last)`中寻找元素value。如果`[first,last)`内有等同于value的元素，便返回true，否则返回false。
 
@@ -574,7 +1293,7 @@ iota (_ForwardIter __first, _ForwardIter __last, _Tp __value)
 - 版本二: 使用一个会产生随机数的仿函数
 > 注意，该仿函数的传递方式是by reference而非一般的by value，这是因为随机数产生器有一个重要特质：它拥有局部状态(local state)，每次被调用时都会有所改变，并因此保障产生出来的随机数能偶随机
 
-### partial_sort / partial_sort_copy
+### partial_sort&&partial_sort_copy
 
 接受一个middle迭代器(位于序列`[first,last)`之内)，然后重新安排`[first,last)`，使序列中的middle-first个最小元素以递增顺序排序，置于`[first,middle)`内。其余last-middle个元素安置于`[middle,last)`中，不保证有任何特定顺序。
 
@@ -613,13 +1332,17 @@ Insertion Sort在面对“几近排序”的序列时，有很好的表现。
 
 当分割行为(partitioning)有恶化为二次行为的倾向时，能够自我侦测，转而改用Heap Sort
 
-### equal_range(应用于有序区间)
+### equal_range
+
+应用于有序区间
 
 算法equal_range是二分查找法的一个版本，试图在已排序的`[first,last)`中寻找value。它返回一对迭代器i和j，其中i是在不破坏次序的前提下，value可插入的第一个位置（即lower_bound），j则是在不破坏次序的前提下，value可插入的最后一个位置（即upper_bound）。因此`[i,j)`内的每个元素都等同于value，而且`[i,j)`是`[first,last)`之中符合此一性质的最大子区间。
 
 ![6-15](res/6-15.png)
 
-### inplace_merge(应用于有序区间)
+### inplace_merge
+
+应用于有序区间
 
 如果两个连接在一起的序列`[first,middle)`和`[middle,last)`都已排序，那么inplace_merge可将它们结合成单一一个序列，并仍保有序性(sorted)。如果原先两个序列是递增排序，执行结果也会是递增排序，如果原先两个序列是递减排序，执行结果也会是递减排序。
 
@@ -635,7 +1358,7 @@ Insertion Sort在面对“几近排序”的序列时，有很好的表现。
 
 ![6-17](res/6-17.png)
 
-### merge sort
+### merge_sort
 
 将区间对半分割，左右两段各自排序，再利用inplace_merge重新组合为一个完整的有序序列。
 

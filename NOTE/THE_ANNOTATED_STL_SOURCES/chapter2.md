@@ -1,6 +1,25 @@
 # 第二章 空间配置器
 
-## 具备次配置力(sub-allocation)的SGI空间配置器
+[返回目录](README.md)
+
+- [具备次配置力的SGI空间配置器](#具备次配置力的SGI空间配置器)
+  - [SGI标准的空间配置器std::allocator](#SGI标准的空间配置器std::allocator)
+  - [SGI特殊的空间配置器std::alloc](#SGI特殊的空间配置器std::alloc)
+  - [构造和析构基本工具construct和destroy](#构造和析构基本工具construct和destroy)
+  
+- [空间的配置与释放std::alloc](#空间的配置与释放std::alloc)
+  - [空间配置函数allocate](#空间配置函数allocate)
+  - [空间释放函数deallocate](#空间释放函数deallocate)
+  - [内存池](#内存池)
+  
+- [内存基本处理工具](#内存基本处理工具)
+  - [uninitialized_copy](#uninitialized_copy)
+  - [uninitialized_fill](#uninitialized_fill)
+  - [uninitialized_fill_n](#uninitialized_fill_n)
+
+
+
+## 具备次配置力的SGI空间配置器
 
 SGI STL的配置器与众不同，也与标准规范不同，其名称是alloc而非allocator，而且不接收任何参数。换句话说，如果你要在程序中明白采用SGI配置器，则不能采用标准写法：
 
@@ -21,11 +40,11 @@ template <class T, class Alloc = alloc>		// 缺省使用alloc为配置器
 class vector {...};
 ```
 
-### SGI标准的空间配置器，std::allocator
+### SGI标准的空间配置器std::allocator
 
 <defalloc.h>中包含了一个符合标准的配置器，但是不建议使用，原因：**效率较差**；
 
-### SGI特殊的空间配置器，std::alloc
+### SGI特殊的空间配置器std::alloc
 
 STL定义在<emmory>中与空间配置相关的三部分：
 * < stl_construct.h >
@@ -45,7 +64,7 @@ STL定义在<emmory>中与空间配置相关的三部分：
     >
     > un_initialized_fill_n()
 
-### 构造和析构基本工具：construct()和destroy()
+### 构造和析构基本工具construct和destroy
 
 <stl_construct.h>
 
@@ -73,7 +92,9 @@ STL定义在<emmory>中与空间配置相关的三部分：
   > inline void destroy()
   > ```
 
-### 空间的配置与释放，std::alloc
+
+
+## 空间的配置与释放std::alloc
 
 <stl_alloc.h>
 
@@ -81,8 +102,6 @@ STL定义在<emmory>中与空间配置相关的三部分：
 - 考虑多线程(multi-threads)状态。
 - 考虑内存不足时的应变措施。
 - 考虑过多“小型区块”可能造成的内存碎片(fragment)问题。
-
-## 空间的配置与释放: std::alloc
 
 一二级分配机制：
 * 一级allocator: 
@@ -128,7 +147,7 @@ static _Obj*__STL_VOLATILE _S_free_list[_NFREELISTS]; // 注意，它是数组�
 
 小额区块的结构体 **union _Obj** 使用链表连接起来。
 
-### 空间配置函数allocate()
+### 空间配置函数allocate
 
 <stl_alloc.h>
 
@@ -138,7 +157,7 @@ static void* allocate(size_t n)
 
 ![](./res/freelist_extract.jpg)
 
-### 空间释放函数deallocate()
+### 空间释放函数deallocate
 
 <stl_alloc.h>
 
@@ -161,7 +180,7 @@ char* __default_alloc_template<__threads, __inst>::_S_chunk_alloc(size_t __size,
 
 ![](./res/memory_pool.jpg)
 
-## 内存基本处理工具
+## uninitialized_copy内存基本处理工具
 
 ### uninitialized_copy
 

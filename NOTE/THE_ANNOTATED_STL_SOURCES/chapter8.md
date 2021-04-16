@@ -1,5 +1,9 @@
 # 配接器
 
+[返回目录](README.md)
+
+
+
 ## 配接器之概观与分类
 
 - function adapter: 改变仿函数(functors)接口

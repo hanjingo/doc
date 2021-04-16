@@ -1,32 +1,58 @@
 # git指南
 
-### 环境配置
+- [环境配置](#环境配置)
+  - [生成ssh_key](#生成ssh_key)
+  - [设置git用户名](#设置git用户名)
+  - [设置邮箱](#设置邮箱)
+- [commit规范](#commit规范)
+  - [angular规范](#angular规范)
+- [常用命令](#常用命令)
+  - [添加子模块](#添加子模块)
+  - [拉取子模块更新](#拉取子模块更新)
+  - [删除子模块](#删除子模块)
+  - [线上回退到某个版本](#线上回退到某个版本)
+  - [如何从官方项目切换为自己的分支](#如何从官方项目切换为自己的分支)
+  - [git如何把master的内容更新到分支](#git如何把master的内容更新到分支)
+  - [如何查看git仓库大小](#如何查看git仓库大小)
+  - [如何统计git项目代码行数](#如何统计git项目代码行数)
+  - [查看tag信息](#查看tag信息)
+  - [给commit打标签](#给commit打标签)
+  - [删除本地tag](#删除本地tag)
+  - [删除远程标签](#删除远程标签)
+  - [基于某个tag创建分支](#基于某个tag创建分支)
+  - [删除本地分支](#删除本地分支)
+  - [删除远程分支](#删除远程分支)
+- [常见bug](#常见bug)
 
-#### 生成ssh key
+
+
+## 环境配置
+
+### 生成ssh_key
 
 ```sh
 ssh-keygen -t rsa -C "xxx@xxx"
 ```
 
-#### 设置git用户名
+### 设置git用户名
 
 ```sh
 git config --global user.name "xxx"
 ```
 
-#### 设置邮箱
+### 设置邮箱
 
 ```sh
 git config --global user.email "xxx@xxx"
 ```
 
-
-
 ---
 
-### commit规范
 
-#### angular 规范
+
+## commit规范
+
+### angular规范
 
 ```git
 <type>(<scope>): <subject>
@@ -87,14 +113,16 @@ Footer只用于2种情况：
 
 ---
 
-### 常用命令
 
-#### 添加子模块
+
+## 常用命令
+
+### 添加子模块
 ```shell
 git submodule add -b 分支 --name 子模块名(不填默认) ssh地址 模块路径
 ```
 
-#### 拉取子模块更新
+### 拉取子模块更新
 1. 方法一:
 ```shell
 git submodule init
@@ -106,7 +134,7 @@ git submodule update
 git submodule update --init --recursive
 ```
 
-#### 删除子模块
+### 删除子模块
 ~~1. rm -rf 子模块目录 删除子模块目录及源码~~
 ~~2. vi .gitmodules 删除项目目录下.gitmodules文件中子模块相关条目~~
 ~~3. vi .git/config 删除配置项中子模块相关条目~~
@@ -116,7 +144,7 @@ git submodule deinit 子模块名
 git rm --cached 子模块名
 ```
 
-#### 线上回退到某个版本
+### 线上回退到某个版本
 ```shell
 # 本地回退
 git reset --hard 版本hash
@@ -125,7 +153,7 @@ git rev-parse HEAD
 git push -f
 ```
 
-#### 如何从官方项目切换为自己的分支
+### 如何从官方项目切换为自己的分支
 ```sh
 git clone --recursive 官方项目地址
 cd 项目
@@ -138,25 +166,17 @@ git branch --set-upstream-to=github/master master
 git push --set-upstream origin 我们的版本
 ```
 
-#### git如何把master的内容更新到分支
+### git如何把master的内容更新到分支
 1. 切换到分支
 2. git merge master
 
-
-#### 如何去解决fatal: refusing to merge unrelated histories
-因为远程仓库已经存在代码记录了，并且那部分代码没有和本地仓库进行关联，我们可以使用如下操作允许pull未关联的远程仓库旧代码
-
-```sh
-git pull origin master --allow-unrelated-histories
-```
-
-#### 如何查看git仓库大小
+### 如何查看git仓库大小
 
 ```sh
 git count-objects -vH
 ```
 
-#### 如何统计git项目代码行数
+### 如何统计git项目代码行数
 
 - 指定语言
 
@@ -170,37 +190,59 @@ find . "(" -name "*.java" ")" -print | xargs wc -l
 git log  --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 ```
 
-#### 查看tag信息
+### 查看tag信息
 
 ```
 git tag
 ```
 
-#### 给commit打标签
+### 给commit打标签
 
 ```sh
 git tag -a 标签名 commitID
 ```
 
-#### 删除本地tag
+### 删除本地tag
 
 ```sh
 git tag -d 标签名
 ```
 
-#### 删除远程标签
+### 删除远程标签
 
 ```sh
 git push origin :refs/tags/标签名
 ```
 
-#### 基于某个tag创建分支
+### 基于某个tag创建分支
 
 ```sh
 git checkout -b 分支名 tag名
+```
+
+### 删除本地分支
+
+```sh
+git branch -d 分支名
+```
+
+### 删除远程分支
+
+```sh
+git push origin --delete 分支名
 ```
 
 
 
 ---
 
+## 常见bug
+
+### 如何去解决fatal: refusing to merge unrelated histories
+因为远程仓库已经存在代码记录了，并且那部分代码没有和本地仓库进行关联，我们可以使用如下操作允许pull未关联的远程仓库旧代码
+
+```sh
+git pull origin master --allow-unrelated-histories
+```
+
+---

@@ -1,9 +1,13 @@
 # 第五章 关联式容器
 
+[返回目录](README.md)
+
 关联式容器分类：
 
 - 以RB-tree为基础的容器：set, map, multisite, multimap
 - 以hash table为基础的容器：hash_set, hash_map, hash_multiset, hash_multimap
+
+
 
 ## 树的导览
 
@@ -83,8 +87,10 @@ _Link_type& _M_rightmost() const	// 最大值
 
 // 颜色定义
 typedef bool _Rb_tree_Color_type;
-const _Rb_tree_Color_type _S_rb_tree_red = false;		// 红色
-const _Rb_tree_Color_type _S_rb_tree_black = true;	// 黑色
+// 红色
+const _Rb_tree_Color_type _S_rb_tree_red = false;
+// 黑色
+const _Rb_tree_Color_type _S_rb_tree_black = true;
 
 struct _Rb_tree_node_base
 {
@@ -98,13 +104,17 @@ struct _Rb_tree_node_base
   
   static _Base_ptr _S_minimum(_Base_ptr __x)
   {
-    while (__x->_M_left != 0) __x = __x->_M_left;		// 一直向左走，直到最小值
+    // 一直向左走，直到最小值
+    while (__x->_M_left != 0) 
+      __x = __x->_M_left;
     return __x;
   }
   
   static _Base_ptr _S_maximum(_Base_ptr __x)
   {
-    while (__x->_M_right != 0) __x = __x->_M_right;	// 一直向右走，直到最大值
+    // 一直向右走，直到最大值
+    while (__x->_M_right != 0) 
+      __x = __x->_M_right;	
     return __x;
   }
 };
@@ -132,14 +142,18 @@ struct _Rb_tree_base_iterator
   // 供 operator++() 调用
   void _M_increment()
   {
-    if (_M_node->_M_right != 0) {					// 如果有右子节点，向右走
+    // 如果有右子节点，向右走
+    if (_M_node->_M_right != 0) {
       _M_node = _M_node->_M_right;
-      while (_M_node->_M_left != 0)				// 一直到最左边
+      // 一直到最左边
+      while (_M_node->_M_left != 0)
         _M_node = _M_node->_M_left;
     }
     else {
-      _Base_ptr __y = _M_node->_M_parent;	// 没有右子节点，找到父节点
-      while (_M_node == __y->_M_right) {	// 如果本身是右子节点，上溯到非右子节点
+      // 没有右子节点，找到父节点
+      _Base_ptr __y = _M_node->_M_parent;
+      // 如果本身是右子节点，上溯到非右子节点
+      while (_M_node == __y->_M_right) {
         _M_node = __y;
         __y = __y->_M_parent;
       }
@@ -155,15 +169,19 @@ struct _Rb_tree_base_iterator
     if (_M_node->_M_color == _S_rb_tree_red &&
         _M_node->_M_parent->_M_parent == _M_node)
       _M_node = _M_node->_M_right;
-    else if (_M_node->_M_left != 0) {			// 找到节点的左子树最大值
+    
+    // 找到节点的左子树最大值
+    else if (_M_node->_M_left != 0) {
       _Base_ptr __y = _M_node->_M_left;
-      while (__y->_M_right != 0)					// 向右走
+      while (__y->_M_right != 0) // 向右走
         __y = __y->_M_right;
       _M_node = __y;
     }
-    else {																// 即非根节点，亦无左子节点
+    
+    // 即非根节点，亦无左子节点
+    else {
       _Base_ptr __y = _M_node->_M_parent;
-      while (_M_node == __y->_M_left) {		// 向左走
+      while (_M_node == __y->_M_left) {// 向左走
         _M_node = __y;
         __y = __y->_M_parent;
       }
@@ -191,12 +209,13 @@ protected:
   ...
 }
 
-template <class _Key, class _Value, class _KeyOfValue, class _Compare,
+template <class _Key, class _Value, 
+					class _KeyOfValue, class _Compare,
 					class _Alloc = __STL_DEFAULT_ALLOCATOR(_Value) >
 class _Rb_tree : protected _Rb_tree_base<_Value, _Alloc> {
 protected:
-  size_type _M_node_count;				// 节点数量
-  _Compare _M_key_compare;				// 节点的键值比较函数
+  size_type _M_node_count; // 节点数量
+  _Compare _M_key_compare; // 节点的键值比较函数
   ...
 }
 ```
@@ -207,40 +226,49 @@ RB-tree的构造方式有2种:
 
 - 以现有的RB-tree复制一个新的RB-tree
 
-	```c++
-  _Rb_tree(const _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>& __x) 
+  ```c++
+  _Rb_tree(const _Rb_tree<_Key,_Value,_KeyOfValue,
+           							 _Compare,_Alloc>& __x) 
     : _Base(__x.get_allocator()),
-      _M_node_count(0), _M_key_compare(__x._M_key_compare)
+      _M_node_count(0), 
+  		_M_key_compare(__x._M_key_compare)
   { 
     if (__x._M_root() == 0)
       _M_empty_initialize();
     else {
-      _S_color(_M_header) = _S_rb_tree_red;						// 设置header颜色为红色
-      _M_root() = _M_copy(__x._M_root(), _M_header);	// 根节点为黑色
+      // 设置header颜色为红色
+      _S_color(_M_header) = _S_rb_tree_red;
+      // 根节点为黑色
+      _M_root() = _M_copy(__x._M_root(), _M_header);
       _M_leftmost() = _S_minimum(_M_root());
       _M_rightmost() = _S_maximum(_M_root());
     }
     _M_node_count = __x._M_node_count;
   }
-	```
+  ```
 
 - 产生一棵空空如也的树
 
   ```c++
-  _Rb_tree()
-    : _Base(allocator_type()), _M_node_count(0), _M_key_compare()
+  _Rb_tree() : _Base(allocator_type()), 
+  									 _M_node_count(0), 
+  									 _M_key_compare()
     { _M_empty_initialize(); }
   
   _Link_type& _M_leftmost() const
-  	{ return (_Link_type&) _M_header->_M_left; }
+  { return (_Link_type&) _M_header->_M_left; }
+  
   _Link_type& _M_rightmost() const
-  	{ return (_Link_type&) _M_header->_M_right; }
+  { return (_Link_type&) _M_header->_M_right; }
   
   void _M_empty_initialize() {
-    _S_color(_M_header) = _S_rb_tree_red;	// 设置头节点为红色
-  _M_root() = 0;
-    _M_leftmost() = _M_header;	// 设置header的左子节点为自己
-    _M_rightmost() = _M_header;	// 设置header的右子节点为自己
+    // 设置头节点为红色
+    _S_color(_M_header) = _S_rb_tree_red;	
+  	_M_root() = 0;
+    // 设置header的左子节点为自己
+    _M_leftmost() = _M_header;
+    // 设置header的右子节点为自己
+    _M_rightmost() = _M_header;	
   }
   ```
   
@@ -252,9 +280,13 @@ RB-tree的构造方式有2种:
 // RB-tree 元素插入操作，_KeyOfValue为仿函数
 template <class _Key, class _Value, class _KeyOfValue,
 					class _Compare, class _Alloc>
-typename _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>::iterator
+typename _Rb_tree<_Key,_Value,_KeyOfValue,
+									_Compare,_Alloc>::iterator
+
 _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
-  ::_M_insert(_Base_ptr __x_, _Base_ptr __y_, const _Value& __v)
+                    ::_M_insert(_Base_ptr __x_, 
+              									_Base_ptr __y_, 
+              									const _Value& __v)
 {
   _Link_type __x = (_Link_type) __x_;
   _Link_type __y = (_Link_type) __Y_;
@@ -269,19 +301,20 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
       _M_rightmost() = __z;
     }
     else if (__y == _M_leftmost())	// 如果y为最左节点
-      _M_leftmost() = __z;					// 维护leftmost(),使它永远指向最左节点
+      // 维护leftmost(),使它永远指向最左节点
+      _M_leftmost() = __z;
   }
   else {
-    __z = _M_create_node(__v);			// 产生一个新节点
-    _S_right(__y) = __z;						// 令新节点成为y的右子节点
+    __z = _M_create_node(__v); // 产生一个新节点
+    _S_right(__y) = __z;			 // 令新节点成为y的右子节点
     if (__y = _M_rightmost())
       _M_rightmost() = __z;
   }
-  _S_parent(__z) = __y;							// 设定新节点的父节点
-  _S_left(__z) = 0;									// 设定新节点的左子节点
-  _S_right(__z) = 0;								// 设定新节点的右子节点
+  _S_parent(__z) = __y;				 // 设定新节点的父节点
+  _S_left(__z) = 0;						 // 设定新节点的左子节点
+  _S_right(__z) = 0;					 // 设定新节点的右子节点
   _Rb_tree_rebalance(__z, _M_header->_M_parent);
-  ++_M_node_count;									// 节点数累加
+  ++_M_node_count;						 // 节点数累加
   return iterator(__z);
 }
 ```
@@ -292,7 +325,9 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   // 插入新值，节点键值允许重复
   template <class _Key, class _Value, class _KeyOfValue,
   					class _Compare, class _Alloc>
-  typename _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>::iterator
+  
+  typename _Rb_tree<_Key,_Value,_KeyOfValue,
+  												_Compare,_Alloc>::iterator
   _Rb_tree<_Key,_Value,_KeyOfValue,_Comapre,_Alloc>
     ::insert_equal(const _Value& __v)
   {
@@ -301,8 +336,9 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
     while (__x != 0) {
       __y = __x;
       // 当插入值大于当前节点的值，向右，否则反之
-      __x = _M_key_compare(_KeyOfValue()(__v), _S_key(__x)) ? 
-        			_S_left(__x) : _S_right(__x);
+      __x = _M_key_compare(
+        _KeyOfValue()(__v), 
+      	_S_key(__x)) ? _S_left(__x) : _S_right(__x);
     }
     return _M_insert(__x, __y, __v); 
   }
@@ -314,25 +350,28 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   // 插入新值，节点键值不允许重复，唯一
   template <class _Key, class _Value, class _KeyOfValue,
   					class _Compare, class _Alloc>
-  pair<typename _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>::iteratir, bool>
+  pair<typename _Rb_tree<_Key,_Value,_KeyOfValue,
+  											 _Compare,_Alloc>::iteratir, bool>
+  
   _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
     ::insert_unique(const _Value& __v)
   {
     _Link_type __y = _M_header;
-    _Link_type __x = _M_root();		// 从根节点开始
+    _Link_type __x = _M_root(); // 从根节点开始
     bool __comp = true;
-    while (__x != 0) {						// 找适当位置插入
+    while (__x != 0) { // 找适当位置插入
       __y = __x;
       __comp = _M_key_compare(_KeyOfValue()(__v), _S_key(__x));
       __x = __comp ? _S_left(__x) : _S_right(__x);
     }
     iterator __j = iterator(__y);	// 迭代器 __j 指向插入节点之父节点 __y
     if (__comp)
-      if (__j == begin())					// 插入节点为父节点的最左节点
+      if (__j == begin()) // 插入节点为父节点的最左节点
         return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
       else
         --__j;
-    if (_M_key_compare(_S_key(__j._M_node), _KeyOfValue()(__v))) // 不重复，执行
+    // 不重复，执行
+    if (_M_key_compare(_S_key(__j._M_node), _KeyOfValue()(__v)))
       return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
     return pair<iterator,bool>(__j, false);	// 重复，不插入
   }
@@ -344,20 +383,26 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   // 查找RB树中是否有键值为k的节点
   template <class _Key, class _Value, class _KeyOfValue,
   					class _Compare, class _Alloc>
-  typename _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>::iterator
-  _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>::find(const _Key& __k)
+  typename _Rb_tree<_Key,_Value,_KeyOfValue,
+  									_Compare,_Alloc>::iterator
+  _Rb_tree<_Key,_Value,_KeyOfValue,
+  				 _Compare,_Alloc>::find(const _Key& __k)
   {
     _Link_type __y = _M_header;
     _Link_type __x = _M_root();
     
     while (__x != 0)
       if (!_M_key_compare(_S_key(__x), __k))
-        __y = __x, __x = _S_left(__x);	// 遇到大值就向左走
+        // 遇到大值就向左走
+        __y = __x, __x = _S_left(__x);
     	else
-        __x = _S_right(__x);						// 遇到小值就向右走
+        // 遇到小值就向右走
+        __x = _S_right(__x);
     
     iterator __j = iterator(__y);
-    return (__j == end() || _M_key_compare(__k, _S_key(__j._M_node))) ? end() : __j;
+    return (__j == end() || 
+            _M_key_compare(__k, _S_key(__j._M_node)) ) ? 
+      end() : __j;
   }
   ```
 
@@ -365,9 +410,10 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
 
   ```c++
   inline void
-  _Rb_tree_rebalance(_Rb_tree_node_base* __x, _Rb_tree_node_base*& __root)
+  _Rb_tree_rebalance(_Rb_tree_node_base* __x, 
+                     _Rb_tree_node_base*& __root)
   {
-    todo
+    //todo
   }
   ```
 
@@ -376,7 +422,8 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   ```c++
   // 左旋
   inline void
-  _Rb_tree_rotate_left(_Rb_tree_node_base* __x, _Rb_tree_node_base*& __root)
+  _Rb_tree_rotate_left(_Rb_tree_node_base* __x, 
+                       _Rb_tree_node_base*& __root)
   {
     _Rb_tree_node_base* __y = __x->_M_right;
     __x->_M_right = __y->_M_left;
@@ -400,7 +447,8 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
   ```c++
   // 右旋
   inline void
-  _Rb_tree_rotate_right(_Rb_tree_node_base* __x, _Rb_tree_node_base*& __root)
+  _Rb_tree_rotate_right(_Rb_tree_node_base* __x, 
+                        _Rb_tree_node_base*& __root)
   {
     _Rb_tree_node_base* __y = __x->_M_left;
     __x->_M_left = __y->_M_right;
@@ -408,20 +456,23 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
       __y->_M_right->_M_parent = __x;
     __y->_M_parent = __x->_M_parent;
     
-    if (__x == __root)												// x为根节点
+    // x为根节点
+    if (__x == __root)
       __root = __y;
-    else if (__x == __x->_M_parent->_M_right)	// x为其父节点的右子节点
+    // x为其父节点的右子节点
+    else if (__x == __x->_M_parent->_M_right)
       __x->_M_parent->_M_right = __y;
-    else																			// x为其父节点的左子节点
+    // x为其父节点的左子节点
+    else 
       __x->_M_parent->_M_left = __y;
     __y->_M_right = __x;
     __x->_M_parent = __y;
   }
   ```
 
-
-
 ---
+
+
 
 ## set
 
@@ -592,7 +643,9 @@ private:
 
 ```c++
 // 在不需要重建 buckets 大小下，插入新节点，键值不能重复
-template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+template <class _Val, class _Key, class _HF, 
+					class _Ex, class _Eq, class _All>
+
 pair<typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator, bool>
   ::insert_unique_noresize(const value_type& __obj)
 {
@@ -600,10 +653,12 @@ pair<typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator, bool>
   _Node* __first = _M_buckets[__n];
     
   for (_Node* __cur = __first; __cur; __cur = __cur->_M_next)
-    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj))) // 节点已存在，跳出
+    // 节点已存在，跳出
+    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj)))
       return pair<iterator, bool>(iterator(__cur, this), false);
-    
-  _Node* __tmp = _M_new_node(__obj); // 头插法，新建节点
+  
+  // 头插法，新建节点
+  _Node* __tmp = _M_new_node(__obj);
   __tmp->_M_next = __first;
   _M_buckets[__n] = __tmp;
   ++_M_num_elements;
@@ -618,7 +673,12 @@ pair<iterator, bool> insert_unique(const value_type& __obj)
 }
 
 // 在不需要重建 buckets 大小下，插入新节点，键值可以重复
-template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+template <class _Val, 
+					class _Key, 
+					class _HF, 
+					class _Ex, 
+					class _Eq, 
+					class _All>
 typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator
 hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
   ::insert_equal_noresize(const value_type& __obj)
@@ -627,7 +687,8 @@ hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
   _Node* __first = _M_buckets[__n];
     
   for (_Node* __cur = __first; __cur; __cur = __cur->_M_next)
-    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj))) {	// 相等就新建节点
+    // 相等就新建节点
+    if (_M_equals(_M_get_key(__cur->_M_val), _M_get_key(__obj))) {
       _Node* __tmp = _M_new_node(__obj); 
       __tmp->_M_next = __cur->_M_next;
       __cur->_M_next = __tmp;
@@ -702,13 +763,20 @@ private:
 - 不允许键值重复的元素
 
 ```c++
-template <class _Key, class _Tp, class _HashFcn, class _EqualKey,
+template <class _Key, 
+					class _Tp, 
+					class _HashFcn, 
+					class _EqualKey,
 					class _Alloc>
 class hash_map
 {
 private:
-  typedef hashtable<pair<const _Key,_Tp>,_Key,_HashFcn,
-  									_Select1st<pair<const _Key,_Tp> >, _EqualKey,_Alloc> _Ht;
+  typedef hashtable<pair<const _Key,_Tp>,
+  										_Key,
+  										_HashFcn,
+  										_Select1st<pair<const _Key,_Tp> >, 
+  									_EqualKey,
+  									_Alloc> _Ht;
   _Ht _M_ht;
 };
 ```
@@ -722,7 +790,8 @@ private:
 Hash_multiset与hash_set除了底层调用 hasttable 的 insert_equal(),允许重复元素存在；其他特性都相同
 
 ```c++
-template <class _Value, class _HashFcn, class _EqualKey, class _Alloc>
+template <class _Value, class _HashFcn, class _EqualKey, 
+					class _Alloc>
 class hash_multiset
 {
 private:
@@ -751,7 +820,7 @@ class hash_multimap
 {
 private:
   typedef hashtable<pair<const _Key, _Tp>, _Key, _HashFcn,
-  					_Select1st<pair<const _Key, _Tp> >, _EqualKey, _Alloc> _Ht;
+  	_Select1st<pair<const _Key, _Tp> >, _EqualKey, _Alloc> _Ht;
   _Ht _M_ht;
 public:
   hash_multimap(const value_type* __f, const value_type* __l)
