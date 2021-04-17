@@ -199,12 +199,11 @@ _Tp accumulate(_InputIterator __first,
 计算`[first, last)`中相邻元素的差值，将 `*first` 赋值给 `*result` 并针对`[first+1, last)`内的每个迭代器i，将`*i-*(i-1)`之值赋值给`*(result+(i-first))`。
 
 ```c++
-template <class _InputIterator, 
-					class _OutputIterator, class _Tp>
+template <class _InputIterator, class _OutputIterator, class _Tp>
 _OutputIterator
-__adjacent_difference(_InputIterator __first, 
-											_InputIterator __last, 
-                      _OutputIterator __result, 
+__adjacent_difference(_InputIterator __first,
+                      _InputIterator __last,
+                      _OutputIterator __result,
                       _Tp*)
 {
   _Tp __value = *__first;
@@ -222,8 +221,7 @@ __adjacent_difference(_InputIterator __first,
 计算`[first1, last1)`和`[first2, first2 + (last1 - first1))`的一般内积。
 
 ```c++
-template <class _InputIterator1, 
-					class _InputIterator2, class _Tp>
+template <class _InputIterator1, class _InputIterator2, class _Tp>
 _Tp inner_product(_InputIterator1 __first1, 
             			_InputIterator1 __last1, 
             			_InputIterator2 __first2, 
@@ -242,8 +240,7 @@ _Tp inner_product(_InputIterator1 __first1,
 计算局部总和，将`*first`赋值给`*result`，将`*first`和`*(first+1)`之和赋值给`*(result+1)`。
 
 ```c++
-template <class _InputIterator, 
-					class _OutputIterator, class _Tp>
+template <class _InputIterator, class _OutputIterator, class _Tp>
 _OutputIterator
 __partial_sum(_InputIterator __first, 
               _InputIterator __last,
@@ -264,8 +261,7 @@ __partial_sum(_InputIterator __first,
 SGI专属，并不在STL标准之列。计算某数的n幂次方。
 
 ```c++
-template <class _Tp, class _Integer, 
-					class _MonoidOperation>
+template <class _Tp, class _Integer, class _MonoidOperation>
 _Tp __power(_Tp __x, 
             _Integer __n, 
             _MonoidOperation __opr)
@@ -397,8 +393,7 @@ _OutputIter fill_n(_OutputIter __first,
 ![](res/iter_swap.png)
 
 ```c++
-template <class _ForwardIter1, class _ForwardIter2, 
-					class _Tp>
+template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, 
 		_ForwardIter2 __b, _Tp*) 
 {
@@ -487,9 +482,10 @@ inline const _Tp& min(const _Tp& __a, const _Tp& __b)
 
 ```c++
 template <class _InputIter1, class _InputIter2>
-pair<_InputIter1, _InputIter2> msimatch(_InputIter1 __first1,
-                                       	_InputIter1 __last1,
-                                        _InputIter2 __first2) 
+pair<_InputIter1, _InputIter2> 
+msimatch(_InputIter1 __first1,
+         _InputIter1 __last1,
+         _InputIter2 __first2) 
 {
   __STL_REQUIRES(_InputIter1, _InputIterator);
   __STL_REQUIRES(_InputIter2, _InputIterator);
@@ -515,8 +511,7 @@ pair<_InputIter1, _InputIter2> msimatch(_InputIter1 __first1,
 
 ```c++
 // InputIterator版本
-template <class _InputIter, class _OutputIter, 
-					class _Distance>
+template <class _InputIter, class _OutputIter, class _Distance>
 inline _OutputIter __copy(_InputIter __first, 
                           _InputIter __last,
                           _OutputIter __result,
@@ -529,9 +524,7 @@ inline _OutputIter __copy(_InputIter __first,
 }
 
 // RandomAccessIterator版本
-tempalte <class _RandomAccessIter, 
-					class _OutputIter, 
-					class _Distance>
+tempalte <class _RandomAccessIter, class _OutputIter, class _Distance>
 inline _OutputIter __copy(_RandomAccessIter __first,
                           _RandomAccessIter __last,
                           _OutputIter __result,
@@ -564,8 +557,7 @@ inline _OutputIter copy(_InputIter __first,
 ![6-4](res/6-4.png)
 
 ```c++
-template <class _BindirectionalIter1, 
-					class _BindirectionalIter2, class _Distance>
+template <class _BindirectionalIter1, class _BindirectionalIter2, class _Distance>
 inline _BindirectionalIter2 
 __copy_backward(_BidirectionalIter1 __first,
                 _BidirectionalIter1 __last,
@@ -578,9 +570,7 @@ __copy_backward(_BidirectionalIter1 __first,
   return __result;
 }
 
-template <class _RandomAccessIter,
-					class _BindirectionalIter,
-					class _Distance>
+template <class _RandomAccessIter, class _BindirectionalIter, class _Distance>
 inline _BidirectionalIter
 __copy_backward(_RandomAccessIter __first,
                 _RandomAccessIter __last,
@@ -621,8 +611,7 @@ inline _BI2 copy_backward(_BI1 __first,
 ![6-5a](res/6-5a.png)
 
 ```c++
-template <class _InputIter1, class _InputIter2, 
-					class _OutputIter>
+template <class _InputIter1, class _InputIter2, class _OutputIter>
 _OutputIter set_union(_InputIter1 __first1,
                       _InputIter1 __last1,
                       _InputIter2 __first2,
@@ -667,8 +656,7 @@ _OutputIter set_union(_InputIter1 __first1,
 ![6-5b](res/6-5b.png)
 
 ```c++
-template <class _InputIter1, class _InputIter2,
-					class _OutputIter>
+template <class _InputIter1, class _InputIter2, class _OutputIter>
 _OutputIter set_intersection(_InputIter1 __first1,
                              _InputIter1 __last1,
                              _InputIter2 __first2,
@@ -706,8 +694,7 @@ _OutputIter set_intersection(_InputIter1 __first1,
 ![](res/6-5c.png)
 
 ```c++
-template <class _InputIter1, class _InputIter2, 
-					class _OutputIter>
+template <class _InputIter1, class _InputIter2, class _OutputIter>
 _OutputIter set_difference(_InputIter1 __first1, 
                            _InputIter1 __last1,
                            _InputIter2 __first2,
@@ -747,8 +734,7 @@ _OutputIter set_difference(_InputIter1 __first1,
 ![](res/6-5d.png)
 
 ```c++
-template <class _InputIter1, class _InputIter2, 
-					class _OutputIter>
+template <class _InputIter1, class _InputIter2, class _OutputIter>
 _OutputIter
 set_symmetric_difference(_InputIter1 __first1,
                          _InputIter1 __last1,
@@ -795,8 +781,7 @@ set_symmetric_difference(_InputIter1 __first1,
 位于头文件`<stl_heap.h>`
 
 ```c++
-template <class _RandomAccessIterator, 
-					class _Distance, class _Tp>
+template <class _RandomAccessIterator, class _Distance, class _Tp>
 void
 __adjust_heap(_RandomAccessIterator __first, 
               _Distance __holeIndex, 
@@ -828,8 +813,7 @@ __adjust_heap(_RandomAccessIterator __first,
 建堆
 
 ```c++
-template <class _RandomAccessIterator, 
-					class _Tp, class _Distance>
+template <class _RandomAccessIterator, class _Tp, class _Distance>
 void __make_heap(_RandomAccessIterator __first,
                  _RandomAccessIterator __last,
                  _Tp*,
@@ -867,8 +851,7 @@ make_heap(_RandomAccessIterator __first,
 从堆中取出一个元素
 
 ```c++
-template <class _RandomAccessIterator, class _Tp, 
-					class _Distance>
+template <class _RandomAccessIterator, class _Tp, class _Distance>
 inline void
 __pop_heap(_RandomAccessIterator __first,
            _RandomAccessIterator __last,
@@ -908,8 +891,7 @@ inline void pop_heap(_RandomAccessIterator __first,
 将一个元素推进堆内
 
 ```c++
-template <class _RandomAccessIterator, class _Distance, 
-					class _Tp>
+template <class _RandomAccessIterator, class _Distance, class _Tp>
 void
 __push_heap(_RandomAccessIterator __first,
             _Distance __holeIndex, 
@@ -926,8 +908,7 @@ __push_heap(_RandomAccessIterator __first,
   }
 }
 
-template <class _RandomAccessIterator, 
-					class _Distance, class _Tp>
+template <class _RandomAccessIterator, class _Distance, class _Tp>
 inline void
 __push_heap_aux(_RandomAccessIterator __first,
                 _RandomAccessIterator __last, 
@@ -1031,8 +1012,7 @@ void count(_InputIter __first, _InputIter __last,
 将指定操作（一个仿函数）pred实施于`[first,last)`区间内的每一个元素身上，并将使pred的计算结果为true的所有元素的个数返回。
 
 ```c++
-template <class _InputIter, class _Predicate, 
-					class _Size>
+template <class _InputIter, class _Predicate, class _Size>
 void count_if(_InputIter __first, _InputIter __last, 
               _Predicate __pred, _Size& __n)
 {
@@ -1291,8 +1271,7 @@ _ForwardIter max_element(_ForwardIter __first,
 ![6-6c](res/6-6c.png)
 
 ```c++
-template <class _InputIter1, class _InputIter2, 
-					class _OutputIter>
+template <class _InputIter1, class _InputIter2, class _OutputIter>
 _OutputIter merge(_InputIter1 __first1, 
                   _IputIter1 __last1,
                   _InputIter2 __first2,
@@ -1546,8 +1525,7 @@ void replace_if(_ForwardIter __first,
 行为与replace_if()类似，但是新序列会被复制到result所指的区间内。返回值OutputIterator指向被复制的最后一个元素的下一个位置。
 
 ```c++
-template <class _InputIter, class _OutputIter, 
-					class _Predicate, class _Tp>
+template <class _InputIter, class _OutputIter, class _Predicate, class _Tp>
 _OutputIter replace_copy_if(_InputIter __first, 
                             _InputIter __last, 
                             _OutputIter __result, 
@@ -1569,8 +1547,7 @@ _OutputIter replace_copy_if(_InputIter __first,
 将序列`[first,last)`的元素在原容器中颠倒重排。
 
 ```c++
-template <class _ForwardIter1, class _ForwardIter2, 
-					class _Tp>
+template <class _ForwardIter1, class _ForwardIter2, class _Tp>
 inline void __iter_swap(_ForwardIter1 __a, 
                         _ForwardIter2 __b, _Tp*)
 {

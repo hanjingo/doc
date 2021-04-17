@@ -36,7 +36,8 @@ vector<int, std::alloc> iv;
 SGI STL allocator未能符合标准规格，这个事实通常不会给我们带来困扰，因为通常我们使用缺省的空间配置器，很少需要自行指定配置器名称，而SGI STL的每个容器都已经指定其缺省的空间配置器为alloc。例如下面的vector声明：
 
 ```c++
-template <class T, class Alloc = alloc>		// 缺省使用alloc为配置器
+// 缺省使用alloc为配置器
+template <class T, class Alloc = alloc>
 class vector {...};
 ```
 
@@ -72,9 +73,10 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
   > ```c++
   > template <class T1, class T2>
-  >    inline void construct(T1 *p, const T2& value) {
-  >      new (p) T1(value);		// placement new; 调用T1::T1(value);
-  >    }
+  > inline void construct(T1 *p, const T2& value) {
+  >   // placement new; 调用T1::T1(value);
+  >   new (p) T1(value);
+  > }
   > ```
 
 - destroy()
@@ -83,10 +85,12 @@ STL定义在<emmory>中与空间配置相关的三部分：
   > // destroy()第一个版本，接受一个指针
   > template <class T>
   > inline void destroy(T* pointer) {
-  >   pointer->~T();			// 调用dtor ~T()
+  >   // 调用dtor ~T()
+  > 	pointer->~T();
   > }
   > 
-  > // destroy()第二个版本，接收两个迭代器。此函数设法找出元素的数值型别，
+  > // destroy()第二个版本，接收两个迭代器。
+  > // 此函数设法找出元素的数值型别，
   > // 进而利用 __type_traits<>求取最适当措施
   > template <class ForwardIterator>
   > inline void destroy()
@@ -129,16 +133,21 @@ STL定义在<emmory>中与空间配置相关的三部分：
 自由链表:
 
 ```c++
-enum {_ALIGN = 8}; 								// 小型区块的上调边界
-enum {_MAX_BYTES = 128}; 					// 小型区块的上限
-enum {_NFREELISTS = 16};					// _MAX_BYTES/_ALIGN free-list的个数
+// 小型区块的上调边界
+enum {_ALIGN = 8};
+// 小型区块的上限
+enum {_MAX_BYTES = 128};
+// _MAX_BYTES/_ALIGN free-list的个数
+enum {_NFREELISTS = 16};
 
 // free-list的节点结构，降低维护链表list带来的额外负担
 union _Obj {
-  union _Obj* _M_free_list_link;	// 利用联合体特点
+  // 利用联合体特点
+  union _Obj* _M_free_list_link;
   char _M_client_data[1];
 };
-static _Obj*__STL_VOLATILE _S_free_list[_NFREELISTS]; // 注意，它是数组，每个数组元素包含若干相等的小额区块
+// 注意，它是数组，每个数组元素包含若干相等的小额区块
+static _Obj*__STL_VOLATILE _S_free_list[_NFREELISTS];
 ```
 
 ![](./res/freelist_realize.jpg)

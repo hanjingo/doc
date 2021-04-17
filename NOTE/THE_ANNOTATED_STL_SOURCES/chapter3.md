@@ -62,11 +62,11 @@ template partial specialization 模板偏特化：针对 template 参数更进�
 ```cpp
 template <class I>
 struct iterator_traits {
-  typedef typename I::iterator_category iterator_category;
-  typedef typename I::value_type 				value_type;
-  typedef typename I::difference_type 	difference_type;
-  typedef typename I::pointer 					pointer;
-  typedef typename I::reference 				reference;
+  typedef typename I::iterator_category	iterator_category;
+  typedef typename I::value_type	value_type;
+  typedef typename I::difference_type	difference_type;
+  typedef typename I::pointer	pointer;
+  typedef typename I::reference	reference;
 };
 ```
 
@@ -80,7 +80,8 @@ struct iterator_traits {
 
 ```c++
 template <class I, class T>
-typename iterator_traits<I>::difference_type // 这一整行是函数返回类型
+// 这一整行是函数返回类型
+typename iterator_traits<I>::difference_type 
 count(I first, I last, const T& value) {
   typename iterator_traits<I>::difference_type n = 0;
   for (; first != last; ++first)
@@ -129,16 +130,12 @@ Output Iterator--->Forward Iterator...
 STL提供了一个iterators class，如果每个新设计的迭代器都继承自它，即可满足规范：
 
 ```c++
-template <class Category,
-					class T,
-					class Distance = ptrdiff_t,
-					class Pointer = T*,
-					class Reference = T&>
+template <class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
 struct iterator {
-  typedef Category  iterator_category;
-  typedef T					value_type;
+  typedef Category	iterator_category;
+  typedef T	value_type;
   typedef Distance	difference_type;
-  typedef Pointer		pointer;
+  typedef Pointer	pointer;
   typedef Reference	reference;
 };
 ```

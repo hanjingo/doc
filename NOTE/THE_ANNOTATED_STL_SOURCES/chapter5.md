@@ -278,10 +278,8 @@ RB-tree的构造方式有2种:
 
 ```c++
 // RB-tree 元素插入操作，_KeyOfValue为仿函数
-template <class _Key, class _Value, class _KeyOfValue,
-					class _Compare, class _Alloc>
-typename _Rb_tree<_Key,_Value,_KeyOfValue,
-									_Compare,_Alloc>::iterator
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+typename _Rb_tree<_Key,_Value,_KeyOfValue, _Compare,_Alloc>::iterator
 
 _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
                     ::_M_insert(_Base_ptr __x_, 
@@ -323,8 +321,7 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
 
   ```c++
   // 插入新值，节点键值允许重复
-  template <class _Key, class _Value, class _KeyOfValue,
-  					class _Compare, class _Alloc>
+  template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
   
   typename _Rb_tree<_Key,_Value,_KeyOfValue,
   												_Compare,_Alloc>::iterator
@@ -343,13 +340,12 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
     return _M_insert(__x, __y, __v); 
   }
   ```
-
+  
 - insert_unique
 
   ```c++
   // 插入新值，节点键值不允许重复，唯一
-  template <class _Key, class _Value, class _KeyOfValue,
-  					class _Compare, class _Alloc>
+  template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
   pair<typename _Rb_tree<_Key,_Value,_KeyOfValue,
   											 _Compare,_Alloc>::iteratir, bool>
   
@@ -376,15 +372,13 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
     return pair<iterator,bool>(__j, false);	// 重复，不插入
   }
   ```
-
+  
 - find
 
   ```c++
   // 查找RB树中是否有键值为k的节点
-  template <class _Key, class _Value, class _KeyOfValue,
-  					class _Compare, class _Alloc>
-  typename _Rb_tree<_Key,_Value,_KeyOfValue,
-  									_Compare,_Alloc>::iterator
+  template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+  typename _Rb_tree<_Key,_Value,_KeyOfValue, _Compare,_Alloc>::iterator
   _Rb_tree<_Key,_Value,_KeyOfValue,
   				 _Compare,_Alloc>::find(const _Key& __k)
   {
@@ -405,7 +399,7 @@ _Rb_tree<_Key,_Value,_KeyOfValue,_Compare,_Alloc>
       end() : __j;
   }
   ```
-
+  
 - __Rb_tree_rebalance
 
   ```c++
@@ -513,8 +507,7 @@ private:
 template <class _Key, class _Tp, class _Compare, class _Alloc>
 class map {
 private:
-  typedef _Rb_tree<key_type, value_type, _Select1st<value_type>,
-  								 key_compare, _Alloc> _Rep_type;
+  typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
   _Rep_type _M_t;	// 底层实现为 RB-tree
   ...
 }
@@ -536,8 +529,7 @@ private:
 template <class _Key, class _Compare, class _Allox>
 class multiset {
 private:
-  typedef _Rb_tree<key_type, value_type, _Identity<value_type>,
-  								 key_compare, _Alloc> _Req_type;
+  typedef _Rb_tree<key_type, value_type, _Identity<value_type>, key_compare, _Alloc> _Req_type;
   _Req_type _M_t;	// 底层实现为 RB-tree
   ...
 }
@@ -559,8 +551,7 @@ multimap 的插入操作采用的是底层机制 RB-tree 的 insert_equal()。
 template <class _Key, class _Tp, class _Compare, class _Alloc>
 class multimap {
 private:
-  typedef _Rb_tree<key_type, value_type, _Select1st<value_type>,
-  								 key_compare, _Alooc> _Rep_type;
+  typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alooc> _Rep_type;
   _Rep_type _M_t;	// 底层实现为 RB-tree
 }
 ```
@@ -597,8 +588,8 @@ Hash table在插入，删除，查找等操作具有“常数平均时间”O(1)
 template <class _Val>
 struct _Hashtable_node
 {
-  _Hashtable_node* _M_next; // 指向下一个节点
-  _Val _M_val;              // 节点值
+  _Hashtable_node* _M_next;	// 指向下一个节点
+  _Val _M_val;	// 节点值
 };
 ```
 
@@ -609,16 +600,15 @@ Hash table的迭代器没有后退操作，也没有逆向迭代器。
 ```c++
 // hash table 迭代器
 struct _Hashtable_iterator {
-  _Node* _M_cur;      // 指向的节点
-  _HashTable* _M_ht;  // 保持对容器的连接关系，bucket
+  _Node* _M_cur;	// 指向的节点
+  _HashTable* _M_ht;	// 保持对容器的连接关系，bucket
 }
 ```
 
 ### hashtable的数据结构
 
 ```c++
-template <class _Val, class _key, class _HashFcn,
-          class _ExtractKey, class _EqualKey, class _Alloc>
+template <class _Val, class _key, class _HashFcn, class _ExtractKey, class _EqualKey, class _Alloc>
 class hashtable {
 public:
   typedef _HashFcn hasher;	// 哈希函数
@@ -629,11 +619,11 @@ public:
   key_equal key_eq() const { return _M_equals; }
   
 private:
-  hasher 								_M_hash;					// 哈希函数
-  key_equal 						_M_equals;				// 比对函数
-  _ExtractKey 					_M_get_key;				// 从节点中取出键值的函数
-  vector<_Node*,_Alloc> _M_buckets;				// 容器
-  size_type 						_M_num_elements;	// 元素个数
+  hasher	_M_hash;	// 哈希函数
+  key_equal	_M_equals;	// 比对函数
+  _ExtractKey	_M_get_key;	// 从节点中取出键值的函数
+  vector<_Node*,_Alloc>	_M_buckets;	// 容器
+  size_type	_M_num_elements;	// 元素个数
 };
 ```
 
@@ -643,11 +633,9 @@ private:
 
 ```c++
 // 在不需要重建 buckets 大小下，插入新节点，键值不能重复
-template <class _Val, class _Key, class _HF, 
-					class _Ex, class _Eq, class _All>
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
 
-pair<typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator, bool>
-  ::insert_unique_noresize(const value_type& __obj)
+pair<typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator, bool>::insert_unique_noresize(const value_type& __obj)
 {
 	const size_type __n = _M_bkt_num(__obj);
   _Node* __first = _M_buckets[__n];
@@ -673,12 +661,7 @@ pair<iterator, bool> insert_unique(const value_type& __obj)
 }
 
 // 在不需要重建 buckets 大小下，插入新节点，键值可以重复
-template <class _Val, 
-					class _Key, 
-					class _HF, 
-					class _Ex, 
-					class _Eq, 
-					class _All>
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
 typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::iterator
 hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
   ::insert_equal_noresize(const value_type& __obj)
@@ -744,8 +727,7 @@ template <class _Value, class _HashFcn, class _EqualKey, class _Alloc>
 class hash_set
 {
 private:
-  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>,
-  									_EqualKey, _Alloc> _Ht;	// 底层机制
+  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>, _EqualKey, _Alloc> _Ht;	// 底层机制
   _Ht _M_ht;
 }
 ```
@@ -763,20 +745,11 @@ private:
 - 不允许键值重复的元素
 
 ```c++
-template <class _Key, 
-					class _Tp, 
-					class _HashFcn, 
-					class _EqualKey,
-					class _Alloc>
+template <class _Key, class _Tp, class _HashFcn, class _EqualKey, class _Alloc>
 class hash_map
 {
 private:
-  typedef hashtable<pair<const _Key,_Tp>,
-  										_Key,
-  										_HashFcn,
-  										_Select1st<pair<const _Key,_Tp> >, 
-  									_EqualKey,
-  									_Alloc> _Ht;
+  typedef hashtable<pair<const _Key,_Tp>, _Key, _HashFcn, _Select1st<pair<const _Key,_Tp> >, _EqualKey, _Alloc> _Ht;
   _Ht _M_ht;
 };
 ```
@@ -790,18 +763,17 @@ private:
 Hash_multiset与hash_set除了底层调用 hasttable 的 insert_equal(),允许重复元素存在；其他特性都相同
 
 ```c++
-template <class _Value, class _HashFcn, class _EqualKey, 
-					class _Alloc>
+template <class _Value, class _HashFcn, class _EqualKey, class _Alloc>
 class hash_multiset
 {
 private:
-  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>,
-  									_EqualKey, _Alloc> _Ht;
+  typedef hashtable<_Value, _Value, _HashFcn, _Identity<_Value>, _EqualKey, _Alloc> _Ht;
   _Ht _M_ht;
 public:
+  // 与 hash_set 唯一差别，允许键值重复
   hash_multiset(const value_type* __f, const value_type* __l)
     : _M_ht(100, hasher(), key_equal(), allocator_type())
-  { _M_ht.insert_equal(__f, __l); } // 与 hash_set 唯一差别，允许键值重复
+  { _M_ht.insert_equal(__f, __l); } 
 }
 ```
 
@@ -814,18 +786,17 @@ public:
 Hash_multimap可以允许键值重复的元素，其它与 hash_map 特性相同
 
 ```c++
-template <class _Key, class _Tp, class _HashFcn, class _EqualKey,
-					class _Alloc>
+template <class _Key, class _Tp, class _HashFcn, class _EqualKey, class _Alloc>
 class hash_multimap
 {
 private:
-  typedef hashtable<pair<const _Key, _Tp>, _Key, _HashFcn,
-  	_Select1st<pair<const _Key, _Tp> >, _EqualKey, _Alloc> _Ht;
+  typedef hashtable<pair<const _Key, _Tp>, _Key, _HashFcn, _Select1st<pair<const _Key, _Tp> >, _EqualKey, _Alloc> _Ht;
   _Ht _M_ht;
 public:
+  // 与 hash_map 唯一差别是允许键值重复
   hash_multimap(const value_type* __f, const value_type* __l)
     : _M_ht(100, hasher(), key_equal(), allocator_type())
-  { _M_ht.insert_equal(__f, __l); } // 与 hash_map 唯一差别是允许键值重复
+  { _M_ht.insert_equal(__f, __l); } 
 }
 ```
 
