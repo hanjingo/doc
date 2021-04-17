@@ -1,6 +1,6 @@
 # FFmpeg从入门到精通
 
-- [第一章](chapter1.md)
+- [第一章 FFmpeg简介](chapter1.md)
 - [第二章 FFmpeg工具使用基础](chapter2.md)
 - [第三章 FFmpeg转封装](chapter3.md)
 - [第四章 FFmpeg转码](chapter4.md)

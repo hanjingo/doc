@@ -84,14 +84,16 @@ protected:
 
   1. 备用空间 > 新增元素个数
 
-  	> 1.1. 插入点之后的现有元素个数 > 新增元素个数
-  	> ![](res/vector_insert1.1.png)
-  	> 1.2. 插入点之后的现有元素个数 ≤ 新增元素个数
-  	>	![](res/vector_insert1.2.png)
+    - 插入点之后的现有元素个数 > 新增元素个数
+  
+      ![](res/vector_insert1.1.png)
+    - 插入点之后的现有元素个数 ≤ 新增元素个数
+  
+      ![](res/vector_insert1.2.png)
   
   2. 备用空间 < 新增元素个数
   	
-  	> ![](res/vector_insert2.1.png)
+  	![](res/vector_insert2.1.png)
 
 ### 适用场景
 

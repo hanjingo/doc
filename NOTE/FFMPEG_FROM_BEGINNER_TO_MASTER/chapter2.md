@@ -271,7 +271,9 @@ vismv参数是用来显示图像解码时的运动向量信息的，可以设置
 |pf|P帧向前运动估计显示|
 |bf|B帧向前运动估计显示|
 |bb|B帧向后运动估计显示|
+
 注意:这个vismv参数将会在未来被替换掉，未来更多的是使用codecview这个滤镜来进行设置,上面的命令可以用以下命令代替:
+
 ```sh
 ffplay -flags2 +export_mvs -ss 40 output.mp4 -vf codecview=mv=pf+bf+bb
 ```

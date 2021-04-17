@@ -321,7 +321,9 @@ int main(int argc, char *argv[])
 ```
 
 - - -
-###　装饰(DECORATOR)
+
+### 装饰(DECORATOR)
+
 简介:动态地给一个**对象**而不是**整个类**添加一些额外的功能
 
 用途:
@@ -481,7 +483,8 @@ public:
 
 int main()
 {
-    //客户直接调用computer生产函数，无需关心具体部件的生产过程。也可直接单独生产部件
+    // 客户直接调用computer生产函数，
+  	// 无需关心具体部件的生产过程。也可直接单独生产部件
     Computer computer;   
     computer.productComputer();
     Cpu cpu;
@@ -569,7 +572,8 @@ public:
         {
         case Coin:
         {
-            if(m_coin == nullptr)  //内存中存在标识码所标识的对象，则直接调用，不再创建
+          	//内存中存在标识码所标识的对象，则直接调用，不再创建
+            if(m_coin == nullptr)  
             {
                 m_coin = new MoneyCoin(Coin);
             }
