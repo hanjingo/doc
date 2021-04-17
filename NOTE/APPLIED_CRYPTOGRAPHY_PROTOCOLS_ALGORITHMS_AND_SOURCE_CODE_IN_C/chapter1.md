@@ -15,8 +15,13 @@
 ### 对称算法(symmetric algo-rithm):
 有时又叫做传统密码算法，就是加密秘钥能从解密秘钥中推算出来，反过来也成立；  
 对称算法分类:  
-* 序列算法(stream algorithm)或序列密码(stream cipher):一次只对明文中的单个位（有时对字节）运算的算法；
-* 分组算法(block algorithm)或分组密码(biock cipher):对明文的一组位进行运算；
+* 序列算法(stream algorithm)或序列密码(stream cipher)
+
+  一次只对明文中的单个位（有时对字节）运算的算法；
+
+* 分组算法(block algorithm)或分组密码(biock cipher)
+
+  对明文的一组位进行运算；
 
 ### 非对称算法/公开秘钥算法(public-key algorithm)：
 用作加密的秘钥不同于用作解密的秘钥，而且解密秘钥不能根据加密秘钥计算出来；加密秘钥叫做公开密钥(public-key, 简称公钥)，解密秘钥叫做私人秘钥(private key, 简称私钥)

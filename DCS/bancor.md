@@ -10,15 +10,29 @@ bancor算法(bancor_protocol)
 
 ## 详情
 ### 知识点
-* Supply: token供应量
-* Price: token价格 = Balance(储备金余额) / (  Supply(token供应量) * CW(储备金固定比率) )
-* TotalValue: token总市值 = Price(token价格) * Supply(token供应量)
-* Balance: 储备金余额
-* CW: 储备金固定比率 = Balance(储备金余额) / TotalValue(token总市值)
+* Supply
+
+  token供应量
+
+* Price
+
+  token价格 = Balance(储备金余额) / (  Supply(token供应量) * CW(储备金固定比率) )
+
+* TotalValue
+
+  token总市值 = Price(token价格) * Supply(token供应量)
+
+* Balance
+
+  储备金余额
+
+* CW
   
+  储备金固定比率 = Balance(储备金余额) / TotalValue(token总市值)
 ### token买入
 token = Token供应量 * (  (1 + EOS支付金额 / 储备金余额)^储备金固定比率 - 1 )  
 例子:  
+
 ```
 Token供应量:1000
 储备金余额:250
@@ -28,6 +42,7 @@ Token供应量:1000
 ### token卖出
 EOS= 储备金余额 * (1 - (1 - 出售的Token / Token供应量) ^ (1 / 储备金固定比率) )  
 例子:  
+
 ```
 Token供应量:1000+1000 = 2000
 储备金余额:250 + 750 = 1000

@@ -6,7 +6,7 @@
 
 # A
 
-[ab](#ab)--[ac](#)--[ad](#ad)--[al](#al)--[ai](#ai)--[am](#am)--[ap](#ap)--[as](#as)--[at](#at)--[回到顶部](#英汉词典)
+[ab](#ab)--[ac](#)--[ad](#ad)--[al](#al)--[ai](#ai)--[am](#am)--[ap](#ap)--[ar](#ar)--[as](#as)--[at](#at)--[回到顶部](#英汉词典)
 
 ### ab
 
@@ -371,6 +371,8 @@ outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔
 
 particular `/pəˈtɪkjʊlə/` 特别的，特指
+
+parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 ### pe
 
