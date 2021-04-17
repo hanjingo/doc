@@ -2,8 +2,6 @@
 
 [返回目录](README.md)
 
-序列式容器分类
-
 - [vector](#vector)
   - [vector数据结构](#vector数据结构)
   - [vector的指针Random_Access_Iterators](#vector的指针Random_Access_Iterators)
@@ -86,14 +84,14 @@ protected:
 
   1. 备用空间 > 新增元素个数
 
-  >  1.1. 插入点之后的现有元素个数 > 新增元素个数
-  >  ![](res/vector_insert1.1.png)
-
-  >  1.2. 插入点之后的现有元素个数 ≤ 新增元素个数
-  >  ![](res/vector_insert1.2.png)
-
+  	> 1.1. 插入点之后的现有元素个数 > 新增元素个数
+  	> ![](res/vector_insert1.1.png)
+  	> 1.2. 插入点之后的现有元素个数 ≤ 新增元素个数
+  	>	![](res/vector_insert1.2.png)
+  
   2. 备用空间 < 新增元素个数
-  >  ![](res/vector_insert2.1.png)
+  	
+  	> ![](res/vector_insert2.1.png)
 
 ### 适用场景
 
