@@ -3,11 +3,11 @@
 [返回目录](README.md)
 
 - [具备次配置力的SGI空间配置器](#具备次配置力的SGI空间配置器)
-  - [SGI标准的空间配置器std::allocator](#SGI标准的空间配置器std::allocator)
-  - [SGI特殊的空间配置器std::alloc](#SGI特殊的空间配置器std::alloc)
+  - [SGI标准的空间配置器std::allocator](#SGI标准的空间配置器allocator)
+  - [SGI特殊的空间配置器std::alloc](#SGI特殊的空间配置器alloc)
   - [构造和析构基本工具construct和destroy](#构造和析构基本工具construct和destroy)
   
-- [空间的配置与释放std::alloc](#空间的配置与释放std::alloc)
+- [空间的配置与释放std::alloc](#空间的配置与释放alloc)
   - [空间配置函数allocate](#空间配置函数allocate)
   - [空间释放函数deallocate](#空间释放函数deallocate)
   - [内存池](#内存池)
@@ -41,22 +41,22 @@ template <class T, class Alloc = alloc>
 class vector {...};
 ```
 
-### SGI标准的空间配置器std::allocator
+### SGI标准的空间配置器allocator
 
-<defalloc.h>中包含了一个符合标准的配置器，但是不建议使用，原因：**效率较差**；
+`<defalloc.h>`中包含了一个符合标准的配置器，但是不建议使用，原因：**效率较差**；
 
-### SGI特殊的空间配置器std::alloc
+### SGI特殊的空间配置器alloc
 
 STL定义在<emmory>中与空间配置相关的三部分：
-* < stl_construct.h >
+* `< stl_construct.h >`
 
     > 定义全局函数construct()和destroy()，负责对象的构造和析构
 
-* < stl_alloc.h >
+* `< stl_alloc.h >`
 
     > 定义一，二级allocator;配置器名为alloc，负责内存空间的配置与释放
 
-* < stl_uninitialized.h >
+* `< stl_uninitialized.h >`
   
     > 定义了一些全局函数用来填充和复制大块内存数据，实现STL标准规范：
     > un_initialized_copy()
@@ -67,7 +67,7 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
 ### 构造和析构基本工具construct和destroy
 
-<stl_construct.h>
+头文件`<stl_construct.h>`
 
 - construct()
 
@@ -86,7 +86,7 @@ STL定义在<emmory>中与空间配置相关的三部分：
   > template <class T>
   > inline void destroy(T* pointer) {
   >   // 调用dtor ~T()
-  > 	pointer->~T();
+  >   pointer->~T();
   > }
   > 
   > // destroy()第二个版本，接收两个迭代器。
@@ -98,9 +98,9 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
 
 
-## 空间的配置与释放std::alloc
+## 空间的配置与释放alloc
 
-<stl_alloc.h>
+头文件`<stl_alloc.h>`
 
 - 向system heap要求空间。
 - 考虑多线程(multi-threads)状态。
@@ -109,10 +109,10 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
 一二级分配机制：
 * 一级allocator: 
-
+  > ```c++
   > template <int inst>
-  >
-  > class __mlloc_alloc_template {...};
+  > class __mlloc_alloc_template { ... };
+  > ```
   >
   > 其中：
   >
@@ -120,15 +120,15 @@ STL定义在<emmory>中与空间配置相关的三部分：
   > 2. 模拟c++的set_new_handler()用来处理内存不足；
   
 * 二级allocator:
-
-> template <bool threads, int inst>
->
-> class __default_alloc_template {...};
->
-> 其中:
->
-> 1. 如果需求区块<128bytes,使用内存池管理；维护16中**自由链表**,负责16种小型区块(8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128)bytes的配置能力;
-> 2. 如果需求区块>128bytes,转而调用第一级配置器；  
+	> ```c++
+	> template <bool threads, int inst>
+	> class __default_alloc_template {...};
+	> ```
+	>
+	> 其中:
+	>
+	> 1. 如果需求区块<128bytes,使用内存池管理；维护16中**自由链表**,负责16种小型区块(8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128)bytes的配置能力;
+	> 2. 如果需求区块>128bytes,转而调用第一级配置器；  
 
 自由链表:
 
@@ -158,7 +158,7 @@ static _Obj*__STL_VOLATILE _S_free_list[_NFREELISTS];
 
 ### 空间配置函数allocate
 
-<stl_alloc.h>
+头文件`<stl_alloc.h>`
 
 ```c++
 static void* allocate(size_t n)
@@ -168,10 +168,10 @@ static void* allocate(size_t n)
 
 ### 空间释放函数deallocate
 
-<stl_alloc.h>
+头文件`<stl_alloc.h>`
 
 ```c++
-  static void deallocate(void* __p, size_t __n)
+static void deallocate(void* __p, size_t __n)
 ```
 
 
@@ -180,7 +180,7 @@ static void* allocate(size_t n)
 
 ### 内存池
 
-<stl_alloc.h>
+头文件`<stl_alloc.h>`
 
 ```c++
 template <bool __threads, int __inst>

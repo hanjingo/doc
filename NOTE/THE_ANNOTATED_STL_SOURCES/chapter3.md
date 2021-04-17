@@ -12,7 +12,7 @@
   - [迭代器相应型别之三reference_type](#迭代器相应型别之三reference_type)
   - [迭代器相应型别之四pointer_type](#迭代器相应型别之四pointer_type)
   - [迭代器相应型别之五iterator_category](#迭代器相应型别之五iterator_category)
-- [std::iterator的保证](#std::iterator的保证)
+- [std::iterator的保证](#iterator的保证)
 - [总结](#总结)
 
 
@@ -27,7 +27,7 @@
 
 迭代器是一种行为类似指针的对象，而指针的各种行为中最常见的用途是 dereference 和 member access。迭代器最重要的就是对 `operator*` 和 `operator->`进行重载工作。
 
-auto_ptr：用来包装原生指针(native pointer)的对象，在头文件 中定义。
+auto_ptr：用来包装原生指针(native pointer)的对象，在头文件中定义。
 
 为什么每一种 STL 容器都提供有专属迭代器的缘故。
 
@@ -39,7 +39,7 @@ auto_ptr：用来包装原生指针(native pointer)的对象，在头文件 中�
 
 迭代器所指对象的类型。
 
-利用 function template 的参数推导机制，只能推导出参数的类型，无法推导出函数返回值类型。
+利用`function template`的参数推导机制，只能推导出参数的类型，无法推导出函数返回值类型。
 
 迭代器常用类型有五种：
 
@@ -123,7 +123,7 @@ Output Iterator--->Forward Iterator...
 
 
 
-## std::iterator的保证
+## iterator的保证
 
 为了符合规范，任何迭代器都应该提供五个内嵌相应型别，以利于traits萃取。
 

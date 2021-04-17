@@ -4,14 +4,43 @@
 
 序列式容器分类
 
-- vector
-- list
+- [vector](#vector)
+  - [vector数据结构](#vector数据结构)
+  - [vector的指针Random_Access_Iterators](#vector的指针Random_Access_Iterators)
+  - [扩容算法](#扩容算法)
+  - [元素操作](#元素操作)
+  - [适用场景](#适用场景)
+- [list](#list)
+  - [list_node结构](#list_node结构)
+  - [list的迭代器Bidirectional_Iterators](#list的迭代器Bidirectional_Iterators)
+  - [list本身的结构](#list本身的结构)
+  - [元素操作](#元素操作)
+- [deque](#deque)
+  - [deque概述](#deque概述)
+  - [deque的中控器](#deque的中控器)
+  - [deque的迭代器](#deque的迭代器)
+  - [deque的构造与内存管理](#deque的构造与内存管理)
+  - [deque的元素操作](#deque的元素操作)
+- [stack](#stack)
+- [queue](#queue)
+- [heap](#heap)
+  - [heap算法](#heap算法)
+  - [push_heap](#push_heap)
+  - [pop_heap](#pop_heap)
+  - [sort_heap](#sort_heap)
+  - [make_heap](#make_heap)
+  - [heap没有迭代器](#heap没有迭代器)
+- [priority_queue](#priority_queue)
+- [slist](#slist)
+  - [slist的节点](#slist的节点)
+  - [slist的迭代器](#slist的迭代器)
+  - [slist的迭代器](#slist的迭代器)
 
 
 
 ## vector
 
-### vector数据结构:
+### vector数据结构
 
 ```c++
 template <class T, class Alloc *alloc>
@@ -25,7 +54,7 @@ protected:
 }
 ```
 
-### vector的指针(Random Access Iterators)
+### vector的指针Random_Access_Iterators
 
 支持随机存取,支持以下操作:`operator*, operator->, operator++, operator--, operator+, operator-, operator+=, operator-=`
 
@@ -80,7 +109,7 @@ STL list是一个环状双向链表(double linked-list), 插入(insert)和拼接
 
 遵循STL的前闭后开原则，默认有一个node指针可以置于尾部的一个空白节点。
 
-### list node结构
+### list_node结构
 
 ```c++
 // stl_list.h
@@ -96,7 +125,7 @@ struct _List_node : public _List_node_base {
 }
 ```
 
-### list的迭代器(Bidirectional Iterators)
+### list的迭代器Bidirectional_Iterators
 
 具备:递增，递减，取值，成员取用，前移，后移等功能
 
@@ -104,8 +133,9 @@ struct _List_node : public _List_node_base {
 // stl_list.h
 // list迭代器基类
 struct _List_iterator_base {
-  typedef size_t		size_type;
+  typedef size_t	size_type;
   typedef ptrdiff_t	difference_type;
+  
   // 双向移动迭代器
   typedef bidirectional_iterator_tag iterator_category;
   
@@ -146,7 +176,8 @@ class _List_base
 public:
   typedef _Alloc allocator_type;
   allocator_type get_allocator() const { 
-        return allocator_type(); }
+    return allocator_type(); 
+  }
   
   _List_base(const allocator_type&) {
     _M_node = _M_get_node();
@@ -162,14 +193,16 @@ public:
   
 protected:
   // 专属空间配置器，每次配置一个节点大小
-  typedef simple_alloc<_List_node<_Tp>, _Alloc> 
-    				    _Alloc_type;
+  typedef simple_alloc<_List_node<_Tp>, _Alloc> _Alloc_type;
+  
   // 配置一个节点并返回
-  _List_node<_Tp>* _M_get_node() { 
-        return _Alloc_type::allocate(1); }
+  _List_node<_Tp>* _M_get_node() {
+    return _Alloc_type::allocate(1); 
+  }
   //  释放一个节点
-  void _M_put_node(_List_node<_Tp>* __p) { 
-        _Alloc_type::deallocate(__p, 1); }
+  void _M_put_node(_List_node<_Tp>* __p) {
+    _Alloc_type::deallocate(__p, 1); 
+  }
   
 protected:
   // 只要一个指针，便可表示整个环状双向链表，空白节点  
@@ -204,8 +237,8 @@ protected:
 
   ```c++
   void push_front(const T& x) { 
-      insert(begin(), __x)
-  ; }
+      insert(begin(), __x);
+  }
   ```
 
 - push_back
@@ -214,8 +247,8 @@ protected:
 
   ```c++
   void push_back(const T& x) { 
-      insert(end(), x)
-  ; }
+      insert(end(), x);
+  }
   ```
 
 - erase
@@ -228,6 +261,7 @@ protected:
           __position._M_node->_M_next;
     _List_node_base* __prev_node = 
           __position._M_node->_M_prev;
+    
     _Node* __n = (_Node*) __position._M_node;
     __prev_node->_M_next = __next_node;
     __next_node->_M_prev = __prev_node;
@@ -264,9 +298,11 @@ protected:
   template <class _Tp, class _Alloc>
   void _List_base<_Tp, _Alloc>::clear()
   {
+    // 头节点
     _List_node<_Tp>* __cur = 
-          (_List_node<_Tp>*) _M_node->_M_next; // 头节点
-    while (__cur != _M_node) {	// 遍历环链表
+      (_List_node<_Tp>*) _M_node->_M_next;
+    // 遍历环链表
+    while (__cur != _M_node) {
       _List_node<_Tp>* __tmp = __cur;
       __cur = (_List_node<_Tp>*) __cur->_M_next;
       _Destroy(&__tmp->_M_data);
@@ -292,7 +328,7 @@ protected:
       ++__next;
       // 符合条件就删除    
       if (*__first == __value) 
-              erase(__first);	
+        erase(__first);	
       __first = __next;
     }
   }
@@ -310,6 +346,7 @@ protected:
     iterator __last = end();
     if (__first == __last) return;
     iterator __next = __first;
+    
     while (++__next != __last) {
       if (*__first == *__next)
         erase(__next);
@@ -414,8 +451,8 @@ protected:
   template <class _Tp, class _Alloc>
   void list<_Tp, _Alloc>::sort()
   {
-    if (_M_node->_M_next != _M_node && 
-              _M_node->_M_next->_M_next != _M_node) {
+    if (_M_node->_M_next != _M_node &&
+        _M_node->_M_next->_M_next != _M_node) {
       list<_Tp, _Alloc> __carry;
       list<_Tp, _Alloc> __counter[64];
       int __file = 0;
@@ -441,10 +478,10 @@ protected:
 
 
 
-## deque(double-ended queue, 双端队列)
+## deque
 
 ### deque概述
-deque是一种双向进出的连续线性空间。它是动态地分段连续空间组合而成，随时可以增加一段新的空间并连接起来。
+`deque(double-ended queue)双端队列`是一种双向进出的连续线性空间。它是动态地分段连续空间组合而成，随时可以增加一段新的空间并连接起来。
 
 特点:
 - deque时有下表顺序容器，它允许在其首尾两端快速插入及删除
@@ -523,7 +560,7 @@ void push_back(const value_type& __t) {
 
 template <class _Tp, class _Alloc>
 void deque<_Tp,_Alloc>::_M_push_back_aux(
-  	  const value_type& __t)
+  const value_type& __t)
 {
   value_type __t_copy = __t;
   // 如果符合条件，重换一个map  
@@ -571,7 +608,7 @@ void deque<_Tp,_Alloc>::_M_push_front_aux(const value_type& __t)
     construct(_M_start._M_cur, __t_copy);
   }
   __STL_UNWIND(++_M_start,
-		_M_deallocate_node( *(_M_star._M_node - 1))));
+               _M_deallocate_node( *(_M_star._M_node - 1))));
 }
 ```
 ### deque的元素操作
@@ -630,7 +667,7 @@ template <class _Tp, class _Alloc>
 void deque<_Tp,_Alloc>::clear()
 {
   for (_Map_pointer __node = _M_start._M_node + 1;
-      	__node < _M_finish._M_node; ++__node>) {
+       __node < _M_finish._M_node; ++__node>) {
     // 释放节点的所有元素    
     destroy(*__node, *__node + _S_buffer_size());
   }
@@ -667,15 +704,13 @@ deque<_Tp,_Alloc>::erase(iterator __first, iterator __last)
     // 计算离start的距离    
     difference_type __elems_before = __first - _M_start;
      // 如果前面的元素较少
-    if (__elems_before < 
-        	        difference_type((this->size() - __n)
-      // 向后移动前方元素（覆盖清除区间）       / 2)) {
+    if (__elems_before < difference_type((this->size() - __n) / 2)) {
+      // 向后移动前方元素（覆盖清除区间）
       copy_backward(_M_start, __first, __last);
       // 重设新起点      
       iterator __new_start = _M_start + __n;
       destroy(_M_start, __new_start);
-      _M_destroy_nodes(__new_start._M_node, 
-                                              _M_start._M_node);
+      _M_destroy_nodes(__new_start._M_node, _M_start._M_node);
       _M_start = __new_start;
     }
     else {
@@ -684,7 +719,7 @@ deque<_Tp,_Alloc>::erase(iterator __first, iterator __last)
       iterator __new_finish = _M_finish - __n;
       destroy(__new_finish, _M_finish);
       _M_destroy_nodes(__new_finish._M_node + 1, 
-                                              _M_finish._M_node + 1);
+                       _M_finish._M_node + 1);
       _M_finish = __new_finish;
     }
     return _M_start + __elems_before;
@@ -713,8 +748,7 @@ deque<_Tp, _Alloc>::insert(iterator __pos,
   }
   // 如果插入点是最后端  
   else if (__pos._M_cur == _M_finish._M_cur) {  
-    iterator __new_finish = 
-      _M_reserve_elements_at_back(__n);
+    iterator __new_finish = _M_reserve_elements_at_back(__n);
     __STL_TRY {
       uninitialized_copy(__first, __last, _M_finish);
       _M_finish = __new_finish;
@@ -778,17 +812,11 @@ deque<_Tp,_Alloc>::_M_insert_aux(iterator __pos,
       // 如果要插入的数据长度<插入点后面的元素长度      
       if (__elemsafter > difference_type(__n)) {
         iterator __finish_n = _M_finish - difference_type(__n);
-        uninitialized copy(__finish_n, 
-                           _M_finish, 
-                           _M_finish);
+        uninitialized copy(__finish_n, _M_finish, _M_finish);
         _M_finish = __new_finish;
-        copy_backward(__pos, 
-                      __finish_n, 
-                      __old_finish);
+        copy_backward(__pos, __finish_n, __old_finish);
         _M_finish = __new_finish;
-        copy_backward(__pos, 
-                      _finish_n, 
-                      __old_finish);
+        copy_backward(__pos, _finish_n, __old_finish);
         copy(__first, __last, __pos);
       }
       else {
@@ -810,7 +838,7 @@ deque<_Tp,_Alloc>::_M_insert_aux(iterator __pos,
 
 
 
-## stack(栈)
+## stack
 
 stack数据结构的特点是先进后出（一端进出），不允许遍历。
 
@@ -827,7 +855,7 @@ stack没有迭代器。
 
 
 
-## queue(队列)
+## queue
 
 queue的数据结构特点是FIFO（先进先出），尾端进，首段出；所以queue也是不允许遍历。
 
@@ -842,7 +870,7 @@ queue有2中实现方式：
 
 
 
-## heap(堆)
+## heap
 
 heap的数据结构就是二叉堆（完全二叉树）
 
@@ -900,7 +928,8 @@ __push_heap(_RandomAccessIterator __first,
   _Distance __parent = (__holeIndex - 1) / 2;	
   // 当尚未到达顶端，且插入的节点大于其父节点            
   while (__holeIndex > __topIndex && 
-         *(__first + __parent) < __value) {
+         *(__first + __parent) < __value) 
+  {
     // 将插入节点的父节点的值赋予插入节点    
     *(__first + __holeIndex) = *(__first + __parent); 
     // 索引位置改变，插入值的索引为父节点索引    
@@ -963,8 +992,7 @@ __pop_heap(_RandomAccessIterator __first,
                 _Distance(__last - __first), __value);
 }
 
-template <class _RandomAccessIterator, 
-					class _Distance, class _Tp>
+template <class _RandomAccessIterator, class _Distance, class _Tp>
 void
 __adjust_heap(_RandomAccessIterator __first,
               _Distance _holeIndex,
@@ -975,7 +1003,8 @@ __adjust_heap(_RandomAccessIterator __first,
   _Distance __topIndex = __holeIndex;
   // 根节点的右节点的索引            
   _Distance __secondChild = 2 * __holeIndex + 2;
-  while (__secondChild < __len) {
+  while (__secondChild < __len) 
+  {
     // 比较根节点的左右节点值
     if (*(__first + __secondChild) < 
         *(__first + (__secondChild - 1)))
@@ -983,6 +1012,7 @@ __adjust_heap(_RandomAccessIterator __first,
         
     *(__first + __holeIndex) = 
       *(__first + __secondChild); // shift down
+    
     __holeIndex = __secondChild;
     __secondChild = 2 * (__secondChild + 1);
   }
@@ -990,6 +1020,7 @@ __adjust_heap(_RandomAccessIterator __first,
   if (__secondChild == __len) {	
     *(__first + __holeIndex) = 
       *(__first + (__secondChild - 1));
+    
     _holeIndex = __secondChild - 1;
   }
   // 找到真正的位置，插入            
@@ -1069,7 +1100,9 @@ void __make_heap(_RandomAccessIterator __first,
 
 
 
-## priority_queue(优先级队列)
+## priority_queue
+
+优先级队列
 
 默认以vector为底层容器，加上heap（默认max-heap）处理规则：权值高这先出
 
@@ -1079,7 +1112,9 @@ void __make_heap(_RandomAccessIterator __first,
 
 
 
-## slist(单向链表)
+## slist
+
+单向链表
 
 slist(single linked list), 不提供push_back()，只提供push_front()。
 
@@ -1101,8 +1136,8 @@ struct _Slist_node_base
 template <class _Tp, class _Alloc>
 struct _Slist_base {
 protected:
-  // 头部，不是指针，不是链表实际节点，哑节点    
-	_Slist_node_base* _M_head;
+  // 头部，不是指针，不是链表实际节点，哑节点
+  _Slist_node_base* _M_head;
   ...
 };
 
