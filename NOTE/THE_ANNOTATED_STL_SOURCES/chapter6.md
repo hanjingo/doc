@@ -12,7 +12,25 @@
 
 - [数值算法](#数值算法)
 
+  - [accumulate](#accumulate)
+  - [adjacent_difference](#adjacent_difference)
+  - [inner_product](#inner_product)
+  - [partial_sum](#partial_sum)
+  - [power](#power)
+  - [iota](#iota)
+
 - [基本算法](#基本算法)
+
+  - [equal](#equal)
+  - [fill](#fill)
+  - [fill_n](#fill_n)
+  - [iter_swap](#iter_swap)
+  - [lexicographical_compare](#lexicographical_compare)
+  - [max](#max)
+  - [min](#min)
+  - [mismatch](#mismatch)
+  - [copy](#copy)
+  - [copy_backward](#copy_backward)
 
 - [set相关算法](#set相关算法)
 
@@ -23,8 +41,46 @@
 
 - [heap算法](#heap算法)
 
+  - [make_heap](#make_heap)
+  - [pop_heap](#pop_heap)
+  - [push_heap](#push_heap)
+  - [sort_heap](#sort_heap)
+
 - [其它算法](#其它算法)
 
+  - [adjacent_find](#adjacent_find)
+  - [count](#count)
+  - [count_if](#count_if)
+  - [find](#find)
+  - [find_if](#find_if)
+  - [find_end](#find_end)
+  - [find_first_of](#find_first_of)
+  - [for_each](#for_each)
+  - [generate](#generate)
+  - [generate_n](#generate_n)
+  - [includes](#includes)
+  - [max_element](#max_element)
+  - [merge](#merge)
+  - [min_element](#min_element)
+  - [partition](#partition)
+  - [remove](#remove)
+  - [remove_copy](#remove_copy)
+  - [remove_if](#remove_if)
+  - [remove_copy_if](#remove_copy_if)
+  - [replace](#replace)
+  - [replace_copy](#replace_copy)
+  - [replace_if](#replace_if)
+  - [replace_copy_if](#replace_copy_if)
+  - [reverse](#reverse)
+  - [reverse_copy](#reverse_copy)
+  - [rotate](#rotate)
+  - [rotate_copy](#rotate_copy)
+  - [search](#search)
+  - [search_n](search_n)
+  - [swap_ranges](#swap_ranges)
+  - [transform](#transform)
+  - [unique](#unique)
+  - [unique_copy](#unique_copy)
   - [lower_bound](#lower_bound)
 
   - [upper_bound](#upper_bound)
@@ -177,7 +233,7 @@ mutating: 质变，会改变其操作对象之内容
 
 STL 将数值算法的内部实现放在 <stl_numeric.h> 中，用户调用数值算法的接口，需要包含 <numeric> 头文件。
 
-- accumulate
+#### accumulate
 
 计算 init 和 `[first, last)`内所有元素的总和。
 
@@ -194,7 +250,7 @@ _Tp accumulate(_InputIterator __first,
 }
 ```
 
-- adjacent_difference
+#### adjacent_difference
 
 计算`[first, last)`中相邻元素的差值，将 `*first` 赋值给 `*result` 并针对`[first+1, last)`内的每个迭代器i，将`*i-*(i-1)`之值赋值给`*(result+(i-first))`。
 
@@ -216,7 +272,7 @@ __adjacent_difference(_InputIterator __first,
 }
 ```
 
-- inner_product
+#### inner_product
 
 计算`[first1, last1)`和`[first2, first2 + (last1 - first1))`的一般内积。
 
@@ -235,7 +291,7 @@ _Tp inner_product(_InputIterator1 __first1,
 }
 ```
 
-- partial_sum
+#### partial_sum
 
 计算局部总和，将`*first`赋值给`*result`，将`*first`和`*(first+1)`之和赋值给`*(result+1)`。
 
@@ -256,7 +312,7 @@ __partial_sum(_InputIterator __first,
 }
 ```
 
-- power
+#### power
 
 SGI专属，并不在STL标准之列。计算某数的n幂次方。
 
@@ -299,7 +355,7 @@ inline _Tp power(_Tp __x, _Integer __n)
 }
 ```
 
-- iota
+#### iota
 
 SGI专属，并不在STL标准之列。用来设定某个区间的内容，使其内的每个元素从指定的value值开始，呈现递增状态。
 
@@ -327,7 +383,7 @@ void iota (_ForwardIter __first,
 
 基本算法位于头文件`<stl_algobase.h>` 中
 
-- equal
+#### equal
 
 如果两个序列在`[first,last)`区间内相等，`equal()`返回true。
 
@@ -354,7 +410,7 @@ inline bool equal(_InputIter1 __first1,
 }
 ```
 
-- fill
+#### fill
 
 将`[first, last)`内的所有元素改填新值。
 
@@ -369,7 +425,7 @@ void fill(_ForwardIter __first, _ForwardIter __last,
 }
 ```
 
-- fill_n
+#### fill_n
 
 将`[first, last)`内的前n个元素改填新值，返回的迭代器指向被填入的最后一个元素的下一个位置。
 
@@ -386,7 +442,7 @@ _OutputIter fill_n(_OutputIter __first,
 }
 ```
 
-- iter_swap
+#### iter_swap
 
 将两个 ForwardIterators 所指的对象对调，如图：
 
@@ -418,7 +474,7 @@ inline void iter_swap(_ForwardIter1 __a,
 }
 ```
 
-- lexicographical_compare
+#### lexicographical_compare
 
 以“字典排列方式”对两个序列`[first1,last1)`和`[first2,last2)`进行比较。
 
@@ -448,7 +504,7 @@ bool lexicographical_compare(_InputIter1 __first1,
 }
 ```
 
-- max
+#### max
 
 取两个对象中的较大值。
 
@@ -461,7 +517,7 @@ inline const _Tp& max(const _Tp& __a, const _Tp& __b)
 }
 ```
 
-- min
+#### min
 
 取两个对象中的较小值。
 
@@ -474,7 +530,7 @@ inline const _Tp& min(const _Tp& __a, const _Tp& __b)
 }
 ```
 
-- mismatch
+#### mismatch
 
 用来平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点，如图：
 
@@ -503,7 +559,7 @@ msimatch(_InputIter1 __first1,
 }
 ```
 
-- copy
+#### copy
 
 将输入区间[first,last)内的元素复制到输出区间[result,result+(last-first))内.
 
@@ -550,7 +606,7 @@ inline _OutputIter copy(_InputIter __first,
 }
 ```
 
-- copy_backward
+#### copy_backward
 
 将`[first,last)`区间内的每一个元素，以逆行的方向复制到以`result-1`为起点，方向亦为逆行的区间上。
 
@@ -808,7 +864,7 @@ __adjust_heap(_RandomAccessIterator __first,
 }
 ```
 
-- make_heap 
+#### make_heap 
 
 建堆
 
@@ -846,7 +902,7 @@ make_heap(_RandomAccessIterator __first,
 }
 ```
 
-- pop_heap
+#### pop_heap
 
 从堆中取出一个元素
 
@@ -885,8 +941,7 @@ inline void pop_heap(_RandomAccessIterator __first,
 }
 ```
 
-- push_heap
-  
+#### push_heap
 
 将一个元素推进堆内
 
@@ -933,7 +988,7 @@ push_heap(_RandomAccessIterator __first,
 }
 ```
 
-- sort_heap
+#### sort_heap
 
 对堆排序
 
@@ -962,7 +1017,7 @@ void sort_heap(_RandomAccessIterator __first,
 
 位于头文件 `<stl_algo.h>`
 
-- adjacent_find
+#### adjacent_find
 
 找出第一组满足条件的相邻元素。
 
@@ -987,7 +1042,7 @@ _ForwardIter adjacent_find(_ForwardIter __first,
 }
 ```
 
-- count
+#### count
 
 运用equality操作符，将[first,last)区间内的每一个元素拿来和指定值value比较，并返回与value相等的元素个数。
 
@@ -1007,7 +1062,7 @@ void count(_InputIter __first, _InputIter __last,
 }
 ```
 
-- count_if
+#### count_if
 
 将指定操作（一个仿函数）pred实施于`[first,last)`区间内的每一个元素身上，并将使pred的计算结果为true的所有元素的个数返回。
 
@@ -1025,7 +1080,7 @@ void count_if(_InputIter __first, _InputIter __last,
 }
 ```
 
-- find
+#### find
 
 根据equality操作符，循序查找`[first,last)`内的所有元素，找出第一个匹配"等同(equality)条件"者。如果找到，就返回一个InputIterator指向该元素，否则返回迭代器last。
 
@@ -1051,7 +1106,7 @@ inline _InputIter find(_InputIter __first, _InputIter __last,
 }
 ```
 
-- find_if
+#### find_if
 
 根据指定的pred运算条件(以仿函数表示)，循序查找`[first,last)`内的所有元素，找出第一个令pred运算结果为true者。如果找到就返回一个InputIterator指向该元素，否则返回迭代器last。
 
@@ -1080,7 +1135,7 @@ inline _InputIter find_if(_InputIter __first,
 }
 ```
 
-- find_end
+#### find_end
 
 在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的最后一次出现点。如果序列一之内不存在“完全匹配序列二”的子序列，便返回迭代器last1。
 
@@ -1131,7 +1186,7 @@ find_end(_ForwardIter1 __first1,
 }
 ```
 
-- find_first_of
+#### find_first_of
 
 以`[first2,last2)`区间内的某些元素作为查找目标，寻找它们在`[first1,last1)`区间内的第一次出现地点。
 
@@ -1157,7 +1212,7 @@ _InputIter find_first_of(_InputIter __first1,
 }
 ```
 
-- for_each
+#### for_each
 
 将仿函数f施行与`[first,last)`区间内的每一个元素身上。f不可以改变元素内容，因为first和last都是InputIterators，不保证接受赋值行为(assignment)。
 
@@ -1174,7 +1229,7 @@ _Function for_each(_InputIter __first,
 }
 ```
 
-- generate
+#### generate
 
 将仿函数gen的运算结果填写在`[first,alst)`区间内的所有元素身上。所谓填写，用的是迭代器所指元素之assignment操作符。
 
@@ -1192,7 +1247,7 @@ void generate(_ForwardIter __first,
 }
 ```
 
-- generate_n
+#### generate_n
 
 将仿函数gen的运算结果填写在从迭代器first开始的n个元素身上。所谓填写，用的是迭代器所指元素的assignment操作符。
 
@@ -1209,7 +1264,7 @@ _OutputIter generate_n(_OutputIter __first,
 }
 ```
 
-- includes
+#### includes
 
 判断序列二s2是否包含于序列一s1。s1和s2都必须是有序集合，其中的元素都可以重复（不必唯一）。
 
@@ -1241,7 +1296,7 @@ bool includes(_InputIter1 __first1, _InputIter1 __last1,
 }
 ```
 
-- max_element
+#### max_element
 
 返回一个迭代器，指向序列中数值最大的元素。
 
@@ -1264,7 +1319,9 @@ _ForwardIter max_element(_ForwardIter __first,
 }
 ```
 
-- merge(应用于有序区间)
+#### merge
+
+**注意：应用于有序区间。**
 
 将两个经过排序的集合s1和s2，合并起来置于另一段空间。所得结果也是一个有序(sorted)序列。返回一个迭代器，指向最后结果序列的最后一个元素的的下一个位置。
 
@@ -1303,7 +1360,7 @@ _OutputIter merge(_InputIter1 __first1,
 }
 ```
 
-- min_element
+#### min_element
 
 返回一个迭代器，指向序列之中数值最小的元素。
 
@@ -1325,7 +1382,7 @@ _ForwardIter min_element(_ForwardIter __first,
 }
 ```
 
-- partition
+#### partition
 
 将区间`[first,last)`中的元素重新排列。所有被一元条件运算pred判定为true的元素，都会被放在区间的前段，被判定为false的元素，都会被放在区间的后段。
 
@@ -1367,7 +1424,7 @@ inline _ForwardIter partition(_ForwardIter __first,
 }
 ```
 
-- remove
+#### remove
 
 移除`[first,last)`之中所有与value相等的元素。
 
@@ -1395,7 +1452,7 @@ _ForwardIter remove(_ForwardIter __first,
 }
 ```
 
-- remove_copy
+#### remove_copy
 
 移除`[frist,last)`区间内所有与value相等的元素。
 
@@ -1421,13 +1478,13 @@ _OutputIter remove_copy(_InputIter __first,
 }
 ```
 
-- remove_if
+#### remove_if
 
 移除`[first,last)`区间内所有被仿函数pred确定为true的元素。
 
 ![6-6f](res/6-6f.png)
 
-- remove_copy_if
+#### remove_copy_if
 
 移除`[first,last)`区间内所有被仿函数pred评估为true的元素。
 
@@ -1453,7 +1510,7 @@ _OutputIter remove_copy_if(_InputIter __first,
 }
 ```
 
-- replace
+#### replace
 
 将`[first,last)`区间内的所有old_value都以new_value取代。
 
@@ -1475,7 +1532,7 @@ void replace(_ForwardIter __first,
 }
 ```
 
-- replace_copy
+#### replace_copy
 
 行为与replace()类似，唯一不同的是新序列会被复制到result所指的容器中。返回值OutputIterator指向被复制的最后一个元素的下一位置。原序列没有任何改变
 
@@ -1498,7 +1555,7 @@ _OutputIter replace_copy(_InputIter __first,
 }
 ```
 
-- replace_if
+#### replace_if
 
 将`[first,last)`区间内所有被pred评估为true的元素，都以new_value取而代之。
 
@@ -1520,7 +1577,7 @@ void replace_if(_ForwardIter __first,
 }
 ```
 
-- replace_copy_if
+#### replace_copy_if
 
 行为与replace_if()类似，但是新序列会被复制到result所指的区间内。返回值OutputIterator指向被复制的最后一个元素的下一个位置。
 
@@ -1542,7 +1599,7 @@ _OutputIter replace_copy_if(_InputIter __first,
 }
 ```
 
-- reverse
+#### reverse
 
 将序列`[first,last)`的元素在原容器中颠倒重排。
 
@@ -1594,7 +1651,7 @@ inline void reverse(_BindirectionalIter __first,
 }
 ```
 
-- reverse_copy
+#### reverse_copy
 
 行为类似reverse()，但产生出来的新序列会被置于以result指出的容器中。返回值OutputIterator指向新产生的最后元素的下一个位置。原序列没有任何改变。
 
@@ -1616,7 +1673,9 @@ _OutputIter reverse_copy(_BidirectionalIter __first,
 }
 ```
 
-- rotate
+#### rotate
+
+[返回顶部](#算法)
 
 将`[first,middle)`内的元素和`[middle,last)`内的元素互换。middle所指的元素会成为容器的一个元素。
 
@@ -1703,7 +1762,7 @@ inline _ForwardIter rotate(_ForwardIter __first,
 }
 ```
 
-- rotate_copy
+#### rotate_copy
 
 行为类似rotate(),但产生出来的新序列会被置于result所指出的容器中。返回值OutputIterator所指向新产生的最后元素的下一个位置。原序列没有任何改变。
 
@@ -1721,7 +1780,9 @@ _OutputIter rotate_copy(_ForwardIter __first,
 }
 ```
 
-- search
+#### search
+
+[返回顶部](#算法)
 
 在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的首次出现点。如果序列一内不存在与序列二完全匹配的子序列，便返回迭代器last1。
 
@@ -1732,11 +1793,50 @@ _ForwardIter1 search(_ForwardIter1 __first1,
                      _ForwardIter2 __first2,
                      _ForwardIter2 __last2)
 {
+  __STL_REQUIRES(_ForwardIter1, _ForwardIterator);
+  __STL_REQUIRES(_ForwardIter2, _ForwardIterator);
+  __STL_REQUIRES_BINARY_OP(_OP_EQUAL, bool,
+		typename iterator_traits<_ForwardIter1>::value_type,
+    typename iterator_traits<_ForwardIter2>::value_type);
   
+  if (__first1 == __last1 || __first2 == __last2)
+    return __first1;
+  
+  _ForwardIter2 __tmp(__first2);
+  ++__tmp;
+  if (__tmp == __last2)
+    return find(__first1, *__first2);
+  
+  _ForwardIter2 __p1, __p;
+  
+  __p1 = __first2; ++__p1;
+  
+  _ForwardIter1 __current = __first1;
+  
+  while (__first1 != __last1) {	// 遍历序列一
+    __first1 = find(__first1, __last1, *__first2);
+    if (__first1 == __last1)
+      return __last1;
+    
+    __p = __p1;
+    __current = __first1;
+    if (++__current == __last1)
+      return __last1;
+    
+    while (*__current == *__p) {	// 遍历序列二
+      if (++__p = __last2)
+        return __first1;
+      if (++__current == __last1)
+        return __last1;
+    }
+    
+    ++__first1;
+  }
+  return __first1;
 }
 ```
 
-- search_n
+#### search_n
 
 在序列`[first,last)`所涵盖的区间中，查找“连续count个符合条件之元素”所形成的子序列，并返回一个迭代器指向该子序列起始处。
 
@@ -1744,15 +1844,15 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-6k](res/6-6k.png)
 
-- swap_ranges
+#### swap_ranges
 
 将`[first1,last1)`区间内的元素与“从first2开始，个数相同”的元素相互交换。这两个序列可位于同一容器中，也可位于不同的容器中。如果第二序列的长度小于第一序列，或是两序列在同一容器中且彼此重叠，执行结果未可预期。此算法返回一个迭代器，指向第二序列中的最后一个被交换元素的下一位置。
 
-- transform
+#### transform
 
 产生一个新序列
 
-- unique
+#### unique
 
 移除(remove)重复的元素。
 
@@ -1762,7 +1862,7 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-6l](res/6-6l.png)
 
-- unique_copy
+#### unique_copy
 
 算法unique_copy可从`[first,last)`中将元素复制到以result开头的区间上；如果面对相邻重复元素群，只会复制其中第一个元素。返回的迭代器指向以result开头的区间的尾端。
 

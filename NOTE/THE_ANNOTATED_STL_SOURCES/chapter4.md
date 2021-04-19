@@ -38,17 +38,24 @@
 
 ## vector
 
+头文件`<stl_vector.h>`
+
 ### vector数据结构
 
 ```c++
-template <class T, class Alloc *alloc>
-class vector {
+template <class _Tp, class _Alloc>
+class _Vector_base {
 ...
-protected:  
-  iterator start;	// 表示目前使用空间的头
-  iterator finish;	// 表示目前使用空间的尾
-  iterator end_of_storage;	// 表示目前可用空间的尾
-  ...
+protected:
+  _Tp* _M_start;
+  _Tp* _M_finish;
+  _Tp* _M_end_of_storage;
+}
+
+template <class _Tp, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Tp)>
+class vector : protected _Vector_base<_Tp, _Alloc>
+{
+...
 }
 ```
 
@@ -68,32 +75,110 @@ protected:
 
   丢掉尾部元素
 
+  ```c++
+  void pop_back() {
+    --_M_finish;
+    destroy(_M_finish);
+  }
+  ```
+
 - erase
 
   删除指定范围的元素，后面的元素全部前移
 
   ![](res/vector_erase.png)
 
+  ```c++
+  iterator erase(iterator __first, iterator __last) {
+    iterator __i = copy(__last, _M_finish, __first);
+    destroy(__i, _M_finish);
+    _M_finish = _M_finish - (__last - __first);
+    return __first;
+  }
+  ```
+
 - clear
 
   删除某个位置的元素，后面的元素全部前移
 
+  ```c++
+  void clear() { earse(begin(), end()); }
+  ```
+
 - insert
 
-  插入元素
+  插入元素，有以下几种情况：
 
   1. 备用空间 > 新增元素个数
 
-    - 插入点之后的现有元素个数 > 新增元素个数
-  
-      ![](res/vector_insert1.1.png)
-    - 插入点之后的现有元素个数 ≤ 新增元素个数
-  
-      ![](res/vector_insert1.2.png)
-  
+     - 插入点之后的现有元素个数 > 新增元素个数
+
+       ![](res/vector_insert1.1.png)
+
+     - 插入点之后的现有元素个数 ≤ 新增元素个数
+
+       ![](res/vector_insert1.2.png)
+
   2. 备用空间 < 新增元素个数
   	
   	![](res/vector_insert2.1.png)
+  	
+```c++
+template <class _Tp, class _Alloc>
+void
+vector<_Tp, _Alloc>::_M_insert_aux(iterator __position
+                                   const _Tp& __x)
+{
+  // 空间够
+  if (_M_finish != _M_end_of_storage) {
+    construct(_M_finish, *(_M_finish - 1));
+    ++_M_finish;
+    _Tp __x_copy = __x;
+    // 向后折断复制
+    copy_backward(__position, _M_finish - 2, 
+                  _M_finish - 1);
+    *__position = __x_copy;
+  }
+  else {
+    const size_type __old_size = size();
+    // 容量翻倍策略
+    const size_type __len = 
+      __old_size != 0 ? 2 * __old_size : 1;
+    iterator __new_start = _M_allocate(__len);
+    iterator __new_finish = __new_start;
+    __STL_TRY {
+      __new_finish = uninitialized_copy(_M_start, 
+                                        __position, 
+                                        __new_start);
+      construct(__new_finish, __x);
+      ++__new_finish;
+      __new_finish = uninitialized_copy(__position, 
+                                        _M_finish, 
+                                        __new_finish);
+    }
+    __STL_UNWIND((destroy(__new_start,__new_finish),
+                 _M_deallocate(__new_start, __len)));
+    destroy(begin(), end());
+    _M_deallocate(_M_start, _M_end_of_storage - _M_start);
+    _M_start = __new_start;
+    _M_finish = __new_finish;
+    _M_end_of_storage = __new_start + __len;
+  }
+}
+
+iterator insert(iterator __position, 
+                const _Tp& __x) {
+  size_type __n = __position - begin();
+  if (_M_finish != _M_end_of_storage && 
+      __position == end()) {
+    construct(_M_finish, __x);
+    ++_M_finish;
+  }
+  else
+    _M_insert_aux(__position, __x);
+  return begin() + __n;
+}
+```
 
 ### 适用场景
 
@@ -115,8 +200,8 @@ STL list是一个环状双向链表(double linked-list), 插入(insert)和拼接
 // stl_list.h
 // 双向链表
 struct _List_node_base {
-  _List_node_base* _M_next;
-  _List_node_base* _M_prev;
+  _List_node_base* _M_next; // 指向下个节点
+  _List_node_base* _M_prev;	// 指向上个节点
 };
 // list节点
 template <class _Tp>
@@ -1102,11 +1187,47 @@ void __make_heap(_RandomAccessIterator __first,
 
 ## priority_queue
 
+头文件`<stl_queue>`
+
 优先级队列
 
 默认以vector为底层容器，加上heap（默认max-heap）处理规则：权值高这先出
 
 被归纳为container adapter
+
+![4-24](res/4-24.png)
+
+### priority_queue定义完整列表
+
+```c++
+template <class _Tp, class _Sequenct __STL_DEPENDENT_DEFAULT_TMPL(vector<_Tp>), class _Compare __STL_DEPENDENT_DEFAULT_TMPL(less<typename _Sequence::value_type>) >
+class priority_queue {
+...
+protected:
+  _Sequence c;		// 容器类
+  _Compare comp;	// 比较类
+public:
+  void push(const value_type* __x) {
+    __STL_TRY {
+      c.push_back(__x);										// 入堆
+      push_heap(c.begin(), c.end(), comp)
+    }
+    __STL_UNWIND(c.clear());
+  }
+  void pop() {
+    __STL_TRY {
+      pop_heap(c.begin(), c.end(), comp);	// 出堆
+      c.pop_back();
+    }
+    __STL_UNWIND(c.clear());
+  }
+...
+};
+```
+
+### priority_queue没有迭代器
+
+priority_queue的所有元素，进出都有一定的规则，只有queue顶端的元素才有机会被外界取用。priority_queue不提供便利功能，也不提供迭代器。
 
 ---
 
@@ -1114,13 +1235,15 @@ void __make_heap(_RandomAccessIterator __first,
 
 ## slist
 
+头文件`<stl_slist.h>`
+
 单向链表
 
-slist(single linked list), 不提供push_back()，只提供push_front()。
+`slist(single linked list)`, 不提供`push_back()`，只提供`push_front()`。
 
-c++11提供的`std::forward_list`(正向链表)，与slist功能类似。
+c++11提供的`std::forward_list(正向链表)`，与slist功能类似。
 
-forward_list没有想slist提供size()成员函数，以为forward_list类模板是专门为极度考虑性能的程序设计的。
+forward_list没有向slist提供`size()`成员函数，以为forward_list类模板是专门为极度考虑性能的程序设计的。
 
 ### slist的节点
 
@@ -1132,23 +1255,11 @@ struct _Slist_node_base
   // 指向下一个节点  
   _Slist_node_base* _M_next;
 };
-
-template <class _Tp, class _Alloc>
-struct _Slist_base {
-protected:
-  // 头部，不是指针，不是链表实际节点，哑节点
-  _Slist_node_base* _M_head;
-  ...
-};
-
-template <class _Tp, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Tp) >
-class slist : private _Slist_base<_Tp,_Alloc>
-{
-  ...
-}
 ```
 
 ### slist的迭代器
+
+![slist_iterator](res/SLIST_ITERATOR.png)
 
 ```c++
 // slist 节点结构体
@@ -1174,3 +1285,20 @@ struct _Slist_iterator : public _Slist_iterator_base
 ```
 
 ### slist的数据结构
+
+```c++
+template <class _Tp, class _Alloc>
+struct _Slist_base {
+protected:
+  // 头部，不是指针，不是链表实际节点，哑节点
+  _Slist_node_base* _M_head;
+  ...
+};
+
+template <class _Tp, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Tp) >
+class slist : private _Slist_base<_Tp, _Alloc>
+{
+...
+}
+```
+
