@@ -420,6 +420,8 @@ remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
 
 respective `/rɪˈspek.tɪv/`  各自的，分别的
 
+retrieve `/rɪˈtriːv/` 取回，检索，挽救
+
 
 
 # S

@@ -1,3 +1,2 @@
-- [mdns(multicast dns) 协议](mdns.md)
-- [dns 协议](dns.md)
+- [mdns(multicast dns) 多播域名解析协议](mdns.md)
 

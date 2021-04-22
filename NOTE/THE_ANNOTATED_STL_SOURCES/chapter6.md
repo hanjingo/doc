@@ -76,7 +76,7 @@
   - [rotate](#rotate)
   - [rotate_copy](#rotate_copy)
   - [search](#search)
-  - [search_n](search_n)
+  - [search_n](#search_n)
   - [swap_ranges](#swap_ranges)
   - [transform](#transform)
   - [unique](#unique)
@@ -1613,21 +1613,6 @@ inline void __iter_swap(_ForwardIter1 __a,
   *__b = __tmp;
 }
 
-template <class _ForwardIter1, class _ForwardIter2>
-inline void iter_swap(_ForwardIter1 __a, _ForwardIter2 __b)
-{
-  __STL_REQUIRES(_ForwardIter1, 
-                 _Mutable_ForwardIterator);
-  __STL_REQUIRES(_ForwardIter2, _Mutable_ForwardIterator);
-  __STL_CONVERTIBLE(
-  	typename iterator_traits<_ForwardIter1>::value_type,
-  	typename iterator_traits<_ForwardIter2>::vaue_type);
-  __STL_CONVERTIBLE(
-  	typename iterator_traits<_ForwardIter2>::value_type,
-  	typename iterator_traits<_ForwardIter1>::value_type);
-  __iter_swap(__a, __b, __VALUE_TYPE(__a));
-}
-
 template <class _BidirectionalIter>
 void __reverse(_BidirectionalIter __first, 
                _BidirectionalIter __last, 
@@ -1844,13 +1829,85 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-6k](res/6-6k.png)
 
+```c++
+template <class _ForwardIter, class _Integer, class _Tp>
+_ForwardIter 
+search_n(_ForwardIter __first, 
+         _ForwardIter __last,
+         _Integer __count,
+         const _Tp& __val)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_ForwardIter>::value_type,
+  	_EqualityComparable);
+  __STL_REQUIRES(_Tp, _EqualityComparable);
+  
+  if (__count <= 0)
+    return __first;
+  else {
+    __first = find(__first, __last, __val);
+    while (__first != __last) {
+      _Integer __n = __count - 1;
+      _ForwardIter __i = __first;
+      ++__i;
+      while (__i != __last && __n != 0 && *__i == __val) {
+        ++__i;
+        --__n;
+      }
+      if (__n == 0)
+        return __first;
+      else
+        __first = find(__i, __last, __val);
+    }
+    return __last;
+  }
+}
+```
+
 #### swap_ranges
 
-将`[first1,last1)`区间内的元素与“从first2开始，个数相同”的元素相互交换。这两个序列可位于同一容器中，也可位于不同的容器中。如果第二序列的长度小于第一序列，或是两序列在同一容器中且彼此重叠，执行结果未可预期。此算法返回一个迭代器，指向第二序列中的最后一个被交换元素的下一位置。
+将`[first1,last1)`区间内的元素与`“从first2开始，个数相同”`的元素相互交换。这两个序列可位于同一容器中，也可位于不同的容器中。如果第二序列的长度小于第一序列，或是两序列在同一容器中且彼此重叠，执行结果未可预期。此算法返回一个迭代器，指向第二序列中的最后一个被交换元素的下一位置。
+
+```c++
+template <class _ForwardIter1, class _ForwardIter2>
+_ForwardIter2 swap_range(_ForwardIter1 __first1,
+                         _ForwardIter1 __last1,
+                         _ForwardIter2 __first2)
+{
+  __STL_REQUIRES(_ForwardIter1, _Mutable_ForwardIterator);
+  __STL_REQUIRES(_ForwardIter2, _Mutable_ForwardIterator);
+  __STL_CONVERTIBLE(
+  	typename iterator_traits<_ForwardIter1>::value_type,
+  	typename iterator_traits<_ForwardIter2>::value_type);
+  __STL_CONVERTIBLE(
+  	typename iterator_traits<_ForwardIter2>::value_type,
+  	typename iterator_traits<_ForwardIter1>::value_type);
+  for (; __first1 != __last1; ++__first1, ++__first2)
+    iter_swap(__first1, __first2);
+  return __first2;
+}
+```
 
 #### transform
 
 产生一个新序列
+
+```c++
+template <class _InputIter, class _OutputIter, class _UnaryOperation>
+_OutputIter transform(_InputIter __first,
+                      _InputIter __last,
+                      _OutputIter __result,
+                      _UnaryOperation __op)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  
+  for (; __first != __last; ++__first, ++__result)
+    *__result = __opr(*__first);
+  return __result;
+}
+```
 
 #### unique
 
@@ -1862,9 +1919,56 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-6l](res/6-6l.png)
 
+```c++
+template <class _ForwardIter>
+_ForwardIter unique(_ForwardIter __first, 
+                    _ForwardIter __last)
+{
+  __STL_REQUIRES(_ForwardIter, _Mutable_ForwardIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_ForwardIter>::value_type,
+  	_EqualityComparable);
+  __first = adjacent_find(__first, __last);
+  return unique_copy(__first, __last, __first);
+}
+```
+
 #### unique_copy
 
 算法unique_copy可从`[first,last)`中将元素复制到以result开头的区间上；如果面对相邻重复元素群，只会复制其中第一个元素。返回的迭代器指向以result开头的区间的尾端。
+
+```c++
+template <class _InputIter, class _OutputIter, class _Tp>
+_OutputIter __unique_copy(_InputIter __first,
+                          _InputIter __last,
+                          _OutputIter __result,
+                          _Tp*)
+{
+  _Tp __value = *__first;
+  *__result = __value;
+  while (++__first != __last)
+    if (!(__value == *__first)) {
+      __value = *__first;
+      *++__result = __value;
+    }
+  return ++__result;
+}
+
+template <class _InputIter, class _OutputIter>
+inline _OutputIter unique_copy(_InputIter __first, 
+                               _InputIter __last, 
+                               __OutputIter __result)
+{
+  __STL_REQUIRES(_InputIter, _InputIterator);
+  __STL_REQUIRES(_OutputIter, _OutputIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_InputIter>::value_type,
+  	_EqualityComparable);
+  if (__first == __last) return __result;
+  return __unique_copy(__first, __last, __result,
+                       _ITERATOR_CATEGORY(__result));
+}
+```
 
 ### lower_bound
 
@@ -1874,17 +1978,114 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-7](res/6-7.png)
 
+```c++
+template <class _ForwardIter, class _Tp, class _Distance>
+_ForwardIter __lower_bound(_ForwardIter __first,
+                           _ForwardIter __last,
+                           const _Tp& __val,
+                           _Distance*)
+{
+  _Distance __len = 0;
+  distance(__first, __last, __len);
+  _Distance __half;
+  _ForwardIter __middle;
+  
+  while (__len > 0) {
+    __half = __len >> 1;
+    __middle = __first;
+    advance(__middle, __half);
+    if (*__middle < __val) {
+      __first = __middle;
+      ++__first;
+      __len = __len - __half - 1;
+    }
+    else
+      __len = __half;
+  }
+  return __first;
+}
+
+template <class _ForwardIter, class _Tp>
+inline _ForwardIter lower_bound(_ForwardIter __first, 
+                                _ForwardIter __last, 
+                                const _Tp& __val)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES_SAME_TYPE(_Tp,
+  	typename iterator_traits<_ForwardIter>::value_type);
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  return __lower_bound(__first, __last, __val,
+                       __DISTANCE_TYPE(__first));
+}
+```
+
 ### upper_bound
 
 应用于有序区间
 
 二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置”。
 
+```c++
+template <class _ForwardIter, class _Ip, class _Distance>
+_ForwardIter __upper_bound(_ForwardIter __first,
+                           _ForwardIter __last,
+                           const _Tp& __val,
+                           _Distance*)
+{
+  _Distance __len = 0;
+  distance(__first, __last, __len);
+  _Distance __half;
+  _ForwardIter __middle;
+  
+  while (__len > 0) {
+    __half = __len >> 1;
+    __middle = __first;
+    advance(__middle, __half);
+    if (__val < *__middle)
+      __len = __half;
+    else {
+      __first = __middle;
+      ++__first;
+      __len = __len - __half - 1;
+    }
+  }
+  return __first;
+}
+  
+template <class _ForwardIter, class _Tp>
+inline _ForwardIter upper_bound(_ForwardIter __first, 
+                                _ForwardIter __last, 
+                                const _Tp& __val)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES_SAME_TYPE(_Tp,
+		typename iterator_traits<_ForwardIter>::value_type);
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  return __upper_bound(__first, __last, __val,
+                       __DISTANCE_TYPE(__first));
+}
+```
+
 ### binary_search
 
 应用于有序区间
 
 算法binary_search是一种二分查找法，试图在已排序的`[first,last)`中寻找元素value。如果`[first,last)`内有等同于value的元素，便返回true，否则返回false。
+
+```c++
+template <class _ForwardIter, class _Tp>
+bool binary_search(_ForwardIter __first,
+                   _ForwardIter __last,
+                   const _Tp& __val)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES_SAME_TYPE(_Tp,
+		typename iterator_traits<_ForwardIter>::value_type);
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  _ForwardIter __i = lower_bound(__first, __last, __val);
+  return __i != __last && !(__val < *__i);
+}
+```
 
 ### next_permutation
 
@@ -1894,9 +2095,85 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-9](res/6-9.png)
 
+```c++
+template <class _BidirectionalIter>
+bool next_permulation(_BidirectionalIter __first, 
+                      _BidirectionalIter __last)
+{
+  __STL_REQUIRES(_BidirectionalIter, _BidirectionalIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_BidirectionalIter>::value_type,
+  	_LessThanComparable);
+  if (__first == __last)
+    return false;
+  _BidirectionalIter __i = __first;
+  ++__i;
+  if (__i == __last)
+    return false;
+  __i = __last;
+  --__i;
+  
+  for(;;) {
+    _BidirectionalIter __ii = __i;
+    --__i;
+    if (*__i < *__ii) {
+      _BidirectionalIter __j = __last;
+      while (!(*__i < *--__j))
+      {}
+      iter_swap(__i, __j);
+      reverse(__ii, __last);
+      return true;
+    }
+    if (__i == __first) {
+      reverse(__first, __last);
+      return false;
+    }
+  }
+}
+```
+
 ### prev_permutation
 
+取得`[first,last)`所标识之序列的上一个排列组合。如果没有上一个排列组合，便会返回false；否则返回true。
+
 ![6-10](res/6-10.png)
+
+```c++
+template <class _BidirectionalIter>
+bool prev_permutation(_BidirectionalIter __first,
+                      _BidirectionalIter __last)
+{
+  __STL_REQUIRES(_BidirectionalIter, _BidirectionalIterator);
+  __STL_REQUIRES(
+		typename iterator_traits<_BidirectionalIter>::value_type,
+  	_LessThanComparable);
+  if (__first == __last)
+    return false;
+  _BidirectionalIter __i = __first;
+  ++__i;
+  if (__i == __last)
+    return false;
+  __i = __last;
+  --__i;
+  
+  for(;;) {
+    _BidirectionalIter __ii = __i;
+    --__i;
+    if (*__ii < *__i) {
+      _BidirectionalIter __j = __last;
+      while (!(*--__j < *__i))
+      	{}
+      iter_swap(__i, __j);
+      reverse(__ii, __last);
+      return true;
+    }
+    if (__i == __first) {
+      reverse(__first, __last);
+      return false;
+    }
+  }
+}
+```
 
 ### random_shuffle
 
@@ -1905,7 +2182,33 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 - 版本一: 使用内部随机数产生器
 
 - 版本二: 使用一个会产生随机数的仿函数
-> 注意，该仿函数的传递方式是by reference而非一般的by value，这是因为随机数产生器有一个重要特质：它拥有局部状态(local state)，每次被调用时都会有所改变，并因此保障产生出来的随机数能偶随机
+	
+	> 注意，该仿函数的传递方式是by reference而非一般的by value，这是因为随机数产生器有一个重要特质：它拥有局部状态(local state)，每次被调用时都会有所改变，并因此保障产生出来的随机数能够随机
+
+```c++
+// 版本一
+template <class _RandomAccessIter>
+inline void random_shuffle(_RandomAccessIter __first,
+                           _RandomAccessIter __last)
+{
+  __STL_REQUIRES(_RandomAccessIter, _Mutable_RandomAccessIterator);
+  if (__first == __last) return;
+  for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)
+    iter_swap(__i, __first + __random_number((__i - __first) + 1));
+}
+
+// 版本二
+template <class _RandomAccessIter, class _RandomNumberGenerator>
+void random_shuffle(_RandomAccessIter __first, 
+                    _RandomAccessIter __last, 
+                    _RandomNumberGenerator& __rand)
+{
+  __STL_REQUIRES(_RandomAccessIter, _Mutable_RandomAccessIterator);
+  if (__first == __last) return;
+  for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)
+    iter_swap(__i, __first + __rand((__i - __first) + 1));
+}
+```
 
 ### partial_sort&&partial_sort_copy
 
@@ -1915,34 +2218,149 @@ _ForwardIter1 search(_ForwardIter1 __first1,
 
 ![6-11](res/6-11.png)
 
+```c++
+template <class _RandomAccessIter, class _Tp>
+void __partial_sort(_RandomAccessIter __first,
+                    _RandomAccessIter __middle,
+                    _RandomAccessIter __last,
+                    _Tp*)
+{
+  make_heap(__first, __middle);
+  for (_RandomAccessIter __i = __middle; __i < __last; ++__i)
+    if (*__i < *__first)
+      __pop_heap(__first, __middle, __i, _Tp(*__i),
+                 __DISTANCE_TYPE(__first));
+  sort_heap(__first, __middle);
+}
+
+template <class _RandomAccessIter>
+inline void partial_sort(_RandomAccessIter __first,
+                         _RandomAccessIter __middle,
+                         _RandomAccessIter __last)
+{
+  __STL_REQUIRES(_RandomAccessIter, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIter>::value_type,
+  	_LessThanComparable);
+  __partical_sort(__first, __middle, __last, __VALUE_TYPE(__first));
+}
+```
+
 ### sort
 
 接受两个RandomAccessIterators(随机存取迭代器)，然后将区间内的所有元素以渐增方式由小到大重新排列。
 
 STL的sort算法，数据量大时采用Quick Sort，分段式递归排序。一旦分段后的数据量小于某个门槛，为避免Quick Sort的递归调用带来过大的额外负担，就改用Insertion Sort。如果递归层次过深，还会改用Heap Sort
 
-- Insertion Sort 插排
-> ![6-12](res/6-12.png)
+```c++
+template <class _RandomAccessIter, class _Tp>
+void __unguarded_linear_insert(_RandomAccessIter __last, 
+                               _Tp __val) 
+{
+  _RandomAccessIter __next = __last;
+  --__next;
+  while (__val < *__next) {
+    *__last = *__next;
+    __last = __next;
+    --__next;
+  }
+  *__last = __val;
+}
 
-- Quick Sort
-> 将大区间分给为小区间，对每个小区间排序后，串接起来形成大区间。
-> Quick Sort时目前已知最快的排序法，平均复杂度为O(N log N)，最坏情况下将达$O(N^2)$。不过IntroSort可以将最坏情况推进到$O(N log N)$。早期的STL sort算法都采用Quick Sort, SGI STL 已改用 IntroSort。 
+template <class _RandomAccessIter, class _Tp>
+inline void __linear_insert(_RandomAccessIter __first,
+                            _RandomAccessIter __last,
+                            _Tp*)
+{
+  _Tp __val = *__last;
+  if (__val < *__first) {
+    copy_backward(__first, __last, __last + 1);
+    *__first = __val;
+  }
+  else
+    __unguarded_linear_insert(__last, __val);
+}
+```
 
-- Median-of-Three(三点中值)
-> 取整个序列的头，尾，中间三个位置的元素，以其中值（media）作为枢轴。这种做法称为median-of-three partitioning或称为mediun-of-three-QuickSort。
-> **注意：迭代器必须能够随机定位，即必须是个RandomAccessIterators。**
+#### InsertionSort
 
-- Partitioining(分割)
-> ![6-14a](res/6-14a.png)
-> ![6-14b](res/6-14b.png)
+插排
 
-- threshold(阈值)
+![6-12](res/6-12.png)
 
-- final insertion sort
+```c++
+template <class _RandomAccessIter>
+void __insertion_sort(_RandomAccessIter __first, 
+                   		_RandomAccessIter __last)
+{
+if (__first == __last) return;
+for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)
+	__linear_insert(__first, __i, __VALUE_TYPE(__first));
+}
+```
+
+#### QuickSort
+
+将大区间分给为小区间，对每个小区间排序后，串接起来形成大区间。
+Quick Sort时目前已知最快的排序法，平均复杂度为$O(N log N)$，最坏情况下将达$O(N^2)$。不过IntroSort可以将最坏情况推进到$O(N log N)$。早期的STL sort算法都采用Quick Sort, SGI STL 已改用 IntroSort。 
+
+![6-13](res/6-13.png)
+
+```c++
+todo
+```
+
+#### Median
+
+三点中值
+
+取整个序列的头，尾，中间三个位置的元素，以其中值`（media）`作为枢轴。这种做法称为`median-of-three partitioning`或称为`mediun-of-three-QuickSort`。
+**注意：迭代器必须能够随机定位，即必须是个RandomAccessIterators。**
+
+```c++
+template <class _Tp>
+inline const _Tp& __median(const _Tp& __a, 
+                           const _Tp& __b, 
+                           const _Tp& __c)
+{
+  __STL_REQUIRES(_Tp, _LessThanComparable);
+  if (__a < __b)
+    if (__b < __c)
+      return __b;
+  	else if (__a < __c)
+      return __c;
+  	else
+      return __a;
+  else if (__a < __c)
+    return __a;
+  else if (__b < __c)
+    return __c;
+  else
+    return __b;
+}
+```
+
+#### Partitioining
+
+令头端迭代器`first`向尾部移动，尾部迭代器`last`向头部移动。当`*first`大于或等于枢轴时就停下来，当`*last`小雨或等于枢轴时也停下来，然后检验两个迭代器是否交错。如果`first`仍然在左而`last`仍然在右，就将两者元素互换，然后各自调整一个位置（向中央逼近），在继续进行相同的行为。如果发现两个迭代器交错了（即!(first < last)），表示整个序列已经调整完毕，以此时的`first`为轴，将序列分为左右两半，左半部所有元素值都小于或等于枢轴，右半部所有元素值都大于或等于枢轴。
+
+![6-14a](res/6-14a.png)
+![6-14b](res/6-14b.png)
+
+```c++
+template <class _RandomAccessIter, class _Tp>
+_RandomAccessIter __unguarded_
+```
+
+#### threshold
+
+阈值
+
+#### final_insertion_sort
 
 Insertion Sort在面对“几近排序”的序列时，有很好的表现。
 
-- introsort
+#### introsort
 
 当分割行为(partitioning)有恶化为二次行为的倾向时，能够自我侦测，转而改用Heap Sort
 

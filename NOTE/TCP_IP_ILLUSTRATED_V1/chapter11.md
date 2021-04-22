@@ -161,11 +161,11 @@ DNS消息通常封装在UDP/IPv4数据报中，并且其长度限制为512字节
 
 ![11-8](res/11-8.png)
 
-- 名称: 拥有者
-- 类型: PR类型
-- 类: 1: 互联网...
-- TTL: RR可以被缓存的秒数
-- RDLENGTH: 资源数据长度；指定了`RDATA`字段中包含的字节数
+- 名称（Name）: 拥有者
+- 类型（Type）: 资源记录类型（RR）
+- 类（Class）: 1: 互联网数据...
+- TTL（Time to live）: RR可以被缓存的秒数
+- RDLENGTH（Data length）: 资源数据长度；指定`RDATA`字段的字节数
 - RDATA: 资源数据
 
 ### 资源记录类型

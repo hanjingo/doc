@@ -1204,12 +1204,12 @@ template <class _Tp, class _Sequenct __STL_DEPENDENT_DEFAULT_TMPL(vector<_Tp>), 
 class priority_queue {
 ...
 protected:
-  _Sequence c;		// 容器类
+  _Sequence c;	// 容器类
   _Compare comp;	// 比较类
 public:
   void push(const value_type* __x) {
     __STL_TRY {
-      c.push_back(__x);										// 入堆
+      c.push_back(__x);	// 入堆
       push_heap(c.begin(), c.end(), comp)
     }
     __STL_UNWIND(c.clear());
