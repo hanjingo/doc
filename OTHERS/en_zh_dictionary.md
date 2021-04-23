@@ -20,6 +20,10 @@ abide `/əˈbʌɪd/` 服从，遵守，忍受
 
 accomplish `/əˈkʌmplɪʃ/` 达到，完成，结束
 
+accommodated `/əˈkɒmədeɪtɪd/` 容纳，向..提供，使..适应
+
+acquaint `/əˈkweɪnt/` 告知，与...相识，开始了解
+
 ### ad
 
  [回到A](#A)--[回到顶部](#英汉词典)
@@ -92,7 +96,13 @@ Bully `/bʊli/` 威吓，霸道
 
 # C
 
-[ch](#ch)--[ci](#ci)--[co](#co)--[回到顶部](#英汉词典)
+[ca](#ca)--[ch](#ch)--[ci](#ci)--[co](#co)--[回到顶部](#英汉词典)
+
+#### ca
+
+ [回到C](#C)--[回到顶部](#英汉词典)
+
+capable `/ˈkeɪpəbl/` 有能力的
 
 ### ch
 
@@ -114,7 +124,7 @@ circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
-cumbersome `/ˈkʌmbəs(ə)m/` 笨重的，累赘的
+combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
 
 convenient `/kənˈviːnɪənt/` 实用的，方便的
 
@@ -128,9 +138,17 @@ confront `/kənˈfrʌnt/` 面对
 
 contiguous `/kənˈtɪɡjʊəs/` 毗邻的，相邻的
 
+consequently `/ˈkɒnsɪkwəntli/` 所以，因此
+
 coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
 
 correspond `/kɒrɪˈspɒnd/` 通信，相符
+
+#### cu
+
+ [回到C](#C)--[回到顶部](#英汉词典)
+
+cumbersome `/ˈkʌmbəs(ə)m/` 笨重的，累赘的
 
 
 
@@ -154,7 +172,7 @@ delimiter `/dɪˈlɪmɪt/` 界定
 
 dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
 
-destined `//` 命中注定的，命运
+destined `/ˈdestɪnd/` 命中注定的，命运
 
 ### di
 
@@ -167,6 +185,8 @@ divide `/dɪˈvʌɪd/` 分配，划分，分开，除以
 dictate `/dɪkˈteɪt/` 命令，决定，规定
 
 distinguish `/dɪˈstɪŋ.ɡwɪʃ/` 区分，分辨
+
+distinct `/dɪˈstɪŋ(k)t/` 独特的，明显的，不同寻常的
 
 ### do
 
@@ -184,7 +204,7 @@ duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
 # E
 
-[eg](#eg)--[el](#el)--[em](#em)--[eq](#eq)--[回到顶部](#英汉词典)
+[eg](#eg)--[el](#el)--[em](#em)--[eq](#eq)--[ex](#ex)--[回到顶部](#英汉词典)
 
 ### eg
 
@@ -210,6 +230,12 @@ embed `/ɪmˈbɛd/` 嵌入
 
 equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于
 
+#### ex
+
+ [回到E](#E)--[回到顶部](#英汉词典)
+
+exert `/ɪɡˈzɜːt/` 发挥，运用，尽力
+
 
 
 # F
@@ -234,11 +260,19 @@ furhter `/ˈfɜː.ðər/` 更多
 
 # G
 
-[gl](#gl)--[回到顶部](#英汉词典)
+[gl](#gl)--[gr](#gr)--[回到顶部](#英汉词典)
 
 ### gl
 
+ [回到G](#G)--[回到顶部](#英汉词典)
+
 glitch `/ɡlɪtʃ/` 失灵，小故障
+
+### gr
+
+ [回到G](#G)--[回到顶部](#英汉词典)
+
+grind `/ɡraɪnd/` 磨，使..光滑
 
 
 
@@ -298,6 +332,8 @@ interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
 interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
 
+invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
+
 
 
 # J
@@ -318,7 +354,15 @@ interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
 
 ### le
 
+[回到L](#L)--[回到顶部](#英汉词典)
+
 league `/liːɡ/` 联盟
+
+#### li
+
+[回到L](#L)--[回到顶部](#英汉词典)
+
+likewise `/ˈlaɪkwaɪz/` 同样的，类似的
 
 
 
@@ -348,13 +392,23 @@ notations `/nəʊˈteɪʃ(ə)n/` 标记，表示法，记号
 
 # O
 
-[ob](#ob)--[om](#om)--[op](#op)--[or](#or)--[ou](#ou)--[回到顶部](#英汉词典)
+[ob](#ob)--[oc](#oc)--[om](#om)--[op](#op)--[or](#or)--[ou](#ou)--[回到顶部](#英汉词典)
 
 ### ob
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
 obsessed `/əbˈsest/` 心神不宁的，着迷的，困扰的
+
+obvious `/ˈɒbviəs/`  显而易见的，公认的，当然的
+
+observed `/əbˈzɜːvd/` 注意到，看到，观察
+
+### oc
+
+[回到O](#O)--[回到顶部](#英汉词典)
+
+occasion `/əˈkeɪʒ(ə)n/` 场合，时刻，特殊事件，时机
 
 ### om
 
@@ -400,6 +454,8 @@ parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 [回到P](#P)--[回到顶部](#英汉词典)
 
+performed `/pəˈfɔːmd/` 演出，扮演，完成，履行
+
 preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
 
 ### po
@@ -419,6 +475,8 @@ predicate `/ˈprɛdɪkeɪt/` 断言
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
 procedure `/prəˈsiːdʒə/` 程序
+
+proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 
 
 
@@ -450,6 +508,8 @@ respective `/rɪˈspek.tɪv/`  各自的，分别的
 
 retrieve `/rɪˈtriːv/` 取回，检索，挽救
 
+rendered `/ˈrɛndə/` 使得，提供，送交，表现，描绘
+
 
 
 # S
@@ -460,7 +520,9 @@ retrieve `/rɪˈtriːv/` 取回，检索，挽救
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
-scaling problem `//` 尺度问题
+scaling problem `/ˈskeɪlɪŋ ˈprɒbləm/` 尺度问题
+
+scarce `/skɛːs/` 缺乏，不足，稀有的，罕见的
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
@@ -491,6 +553,8 @@ slim `/slɪm/` 苗条的
 [回到S](#S)--[回到顶部](#英汉词典)
 
 spectrum `/spɛktrəm/` 光谱，派别
+
+spectator `/spɛkˈteɪtə/` 观众
 
 ### st
 
@@ -549,6 +613,12 @@ unicast `//` 单播
 [回到U](#U)--[回到顶部](#英汉词典)
 
 uproar `/ˈʌprɔ/` 喧嚣，骚动
+
+#### ut
+
+[回到U](#U)--[回到顶部](#英汉词典)
+
+utmost `//` 极度，极端，最...
 
 
 
