@@ -4,6 +4,7 @@
 
 ## 参考
 
+- [开源项目 mDNSResponder](https://blog.csdn.net/wirelessdisplay/article/details/78088992)
 - [开源项目 avahi](https://github.com/lathiat/avahi)
 - [开源项目 zeroconf](https://github.com/grandcat/zeroconf)
 - [hashicorp/mdns 介绍与源代码分析](https://blog.csdn.net/u013272009/article/details/97546884)
@@ -13,6 +14,8 @@
 - [利用 mDNS 协议来定位局域网主机](https://blog.beanbang.cn/2019/08/07/locate-hosts-using-mdns/)
 - [(原创)Bonjour协议分析](https://liuweiqiang.win/2016/09/16/Bonjour%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/)
 - [手册页部分 1M： 系统管理命令 dns-sd](https://docs.oracle.com/cd/E56344_01/html/E54077/dns-sd-1m.html)
+- [mDNSResponder介绍与移植](https://blog.csdn.net/yuangc/article/details/101676976?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&dist_request_id=1332036.8429.16191622781102443&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control)
+- [avahi官网介绍](https://www.avahi.org/)
 
 
 

@@ -4,6 +4,7 @@
 - [C++](C++/README.md)
 - [数据库](DB/README.md)
 - [分布式](DCS/README.md)
+- [经济](ECONOMIC/README.md)
 - [经验大全](EXPERIENCE/README.md)
 - [Go](GO/README.md)
 - [多媒体](MEDIA/README.md)

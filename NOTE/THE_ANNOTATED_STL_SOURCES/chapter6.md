@@ -2342,45 +2342,215 @@ inline const _Tp& __median(const _Tp& __a,
 
 #### Partitioining
 
-令头端迭代器`first`向尾部移动，尾部迭代器`last`向头部移动。当`*first`大于或等于枢轴时就停下来，当`*last`小雨或等于枢轴时也停下来，然后检验两个迭代器是否交错。如果`first`仍然在左而`last`仍然在右，就将两者元素互换，然后各自调整一个位置（向中央逼近），在继续进行相同的行为。如果发现两个迭代器交错了（即!(first < last)），表示整个序列已经调整完毕，以此时的`first`为轴，将序列分为左右两半，左半部所有元素值都小于或等于枢轴，右半部所有元素值都大于或等于枢轴。
+分割；
+
+令头端迭代器`first`向尾部移动，尾部迭代器`last`向头部移动。当`*first`大于或等于枢轴时就停下来，当`*last`小于或等于枢轴时也停下来，然后检验两个迭代器是否交错。如果`first`仍然在左而`last`仍然在右，就将两者元素互换，然后各自调整一个位置（向中央逼近），在继续进行相同的行为。如果发现两个迭代器交错了（即!(first < last)），表示整个序列已经调整完毕，以此时的`first`为轴，将序列分为左右两半，左半部所有元素值都小于或等于枢轴，右半部所有元素值都大于或等于枢轴。
 
 ![6-14a](res/6-14a.png)
 ![6-14b](res/6-14b.png)
 
 ```c++
 template <class _RandomAccessIter, class _Tp>
-_RandomAccessIter __unguarded_
+_RandomAccessIter __unguarded_partition(_RandomAccessIter __first,
+                                        _RandomAccessIter __last,
+                                        _Tp __pivot)
+{
+  while (true) {
+    while (*__first < __pivot)
+      ++__first;
+    --__last;
+    while (__pivot < *__last)
+      --__last;
+    if (!(__first < __last))
+      return __first
+    iter_swap(__first, __last);
+    ++__first;
+  }
+}
 ```
 
 #### threshold
 
-阈值
+阈值；用来评估序列的大小，来决定使用Quick Sort还是Insertion Sort算法。
+
+```c++
+const int __stl_threshold = 16;
+```
 
 #### final_insertion_sort
 
-Insertion Sort在面对“几近排序”的序列时，有很好的表现。
+最终插入排序；Insertion Sort在面对“几近排序”的序列时，有很好的表现。
+
+```c++
+template <class _RandomAccessIter>
+void __insertion_sort(_RandomAccessIter __first, 
+                      _RandomAccessIter __last)
+{
+  if (__first == __last) return;
+  for (_RandomAccessIter __i = __first + 1; __i != __last; ++__i)
+    __linear_insert(__first, __i, __VALUE_TYPE(__first));
+}
+
+template <class _RandomAccessIter>
+void __final_insertion_sort(_RandomAccessIter __first,
+                            _RandomAccessIter __last)
+{
+  if (__last - __first > __stl_threshold){
+    __insertion_sort(__first, __first + __stl_threshold);
+    __unguarded_insertion_sort(__first + __stl_threshold, __last);
+  }
+  else
+    __insertion_sort(__first, __last);
+}
+```
 
 #### introsort
 
 当分割行为(partitioning)有恶化为二次行为的倾向时，能够自我侦测，转而改用Heap Sort
 
+```c++
+template <class _RandomAccessIter, class _Tp, class _Size>
+void __introsort_loop(_RandomAccessIter __first,
+                      _RandomAccessIter __last,
+                      _Tp*,
+                      _Size __depth_limit)
+{
+  while (__last - __first > __stl_threshold) {
+    if (__depth_limit == 0) {
+      partial_sort(__first, __last, __last);
+      return;
+    }
+    --__depth_limit;
+    _RandomAccessIter __cut = 
+      __unguarded_partition(__first, __last, 
+                            _Tp(__median(*__first,
+                                         *(__first + (__last - __first)/2),
+                                         *(__last - 1))));
+    __introsort_loop(__cut, __last, (_Tp*) 0, __depth_limit);
+    __last = __cut;
+  }
+}
+```
+
 ### equal_range
 
-应用于有序区间
+**应用于有序区间**
 
 算法equal_range是二分查找法的一个版本，试图在已排序的`[first,last)`中寻找value。它返回一对迭代器i和j，其中i是在不破坏次序的前提下，value可插入的第一个位置（即lower_bound），j则是在不破坏次序的前提下，value可插入的最后一个位置（即upper_bound）。因此`[i,j)`内的每个元素都等同于value，而且`[i,j)`是`[first,last)`之中符合此一性质的最大子区间。
 
 ![6-15](res/6-15.png)
 
+```c++
+template <class _ForwardIter, class _Tp, class _Distance>
+pair<_ForwardIter, _ForwardIter>
+__equal_range(_ForwardIter __first, 
+              _ForwardIter __last, 
+              const _Tp& __val, 
+              _Distance*)
+{
+  _Distance __len = 0;
+  distance(__first, __last, __len);
+  _Distance __half;
+  _ForwardIter __middle, __left, __right;
+  
+  while (__len > 0) {
+    __half = __len >> 1;
+    __middle = __first;
+    advance(__middle, __half);
+    if (*__middle < __val) {
+      __first = __middle;
+      ++__first;
+      __len = __len - __half - 1;
+    }
+    else if (__val < *__middle)
+      __len = _half;
+    else {
+      __left = lower_bound(__first, __middle, __val);
+      advance(__first, __len);
+      __right = upper_bound(++__middle, __first, __val);
+      return pair<_ForwardIter, _ForwardIter>(__left, __right);
+    }
+  }
+  return pair<_ForwardIter, _ForwardIter>(__first, __first);
+}
+
+template <class _ForwardIter, class _Tp>
+inline pair<_ForwardIter, _ForwardIter>
+equal_range(_ForwardIter __first, 
+            _ForwardIter __last, 
+            const _Tp& __val)
+{
+  __STL_REQUIRES(_ForwardIter, _ForwardIterator);
+  __STL_REQUIRES_SAME_TYPE(_Tp,
+  	typename iterator_traits<_ForwardIter>::value_type);
+  __STL_REQUIRES(__first, __last, __val,
+                 __DISTANCE_TYPE(__first));
+}
+```
+
 ### inplace_merge
 
-应用于有序区间
+**应用于有序区间**
 
 如果两个连接在一起的序列`[first,middle)`和`[middle,last)`都已排序，那么inplace_merge可将它们结合成单一一个序列，并仍保有序性(sorted)。如果原先两个序列是递增排序，执行结果也会是递增排序，如果原先两个序列是递减排序，执行结果也会是递减排序。
 
 ![6-16a](res/6-16a.png)
 
 ![6-16b](res/6-16b.png)
+
+```c++
+template <class _BidirectionalIter, class _Distance>
+void __merge_without_buffer(_BidirectionalIter __first,
+                            _BidirectionalIter __middle,
+                            _BidirectionalIter __last,
+                            _Distance __len1, 
+                            _Distance __len2)
+{
+  if (__len1 == 0 || __len2 == 0)
+    return;
+  if (__len1 + __len2 == 2) {
+    if (*__middle < *__first)
+    TODO
+  }
+}
+
+template <class _BidirectionalIter, class _Tp, class _Distance>
+inline void __inplace_merge_aux(_BidirectionalIter __first,
+                                _BidirectionalIter __middle,
+                                _BidirectionalIter __last,
+                                _Tp*,
+                                _Distance*)
+{
+	_Distance __len1 = 0;
+  distance(__first, __middle, __len1);
+  _Distance __len2 = 0;
+  distance(__middle, __last, __len2);
+  
+  _Temporary_buffer<_BidirectionalIter, _Tp> __buf(__first, __last);
+  if (__buf.begin() == 0)
+    __merge_without_buffer(__first, __middle, __last, __len1, __len2);
+  else
+    __merge_adaptive(__first, __middle, __last, __len1, __len2,
+                     __buf.begin(), _Distance(__buf.size()));
+}
+
+template <class _BidirectionalIter>
+inline void inplace_merge(_BidirectionalIter __first,
+                          _BidirectionalIter __middle,
+                          _BidirectionalIter __last)
+{
+  __STL_REQUIRES(_BidirectionalIter, 
+                 _Mutable_BidirectionalIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_BidirectionalIter>::value_type,
+  	_LessThanComparable);
+  if (__first == __middle || __middle == __last)
+    return;
+  __inplace_merge_aux(__first, __middle, __last
+                      __VALUE_TYPE(__first), 
+                      __DISTANCE_TYPE(__first));
+}
+```
 
 ### nth_element
 
