@@ -2510,8 +2510,31 @@ void __merge_without_buffer(_BidirectionalIter __first,
     return;
   if (__len1 + __len2 == 2) {
     if (*__middle < *__first)
-    TODO
+    	iter_swap(__first, __middle);
+    return;
   }
+  _BidirectionalIter __first_cut = __first;
+  _BidirectionalIter __second_cut = __middle;
+  _Distance __len11 = 0;
+  _Distance __len22 = 0;
+  if (__len1 > __len2) {
+    __len11 = __len1 / 2;
+    advance(__first_cut, __len11);
+    __second_cut = lower_bound(__middle, __last, *__first_cut);
+    distance(__middle, __second_cut, __len22);
+  }
+  else {
+    __len22 = __len2 / 2;
+    advance(__second_cut, __len22);
+    __first_cut = upper_bound(__first, __middle, *__second_cut);
+    distance(__first, __first_cut, __len11);
+  }
+  _BidirectionalIter __new_middle
+    = rotate(__first_cut, __middle, __second_cut);
+  __merge_without_buffer(__first, __first_cut, __new_middle,
+                         __len11, __len22);
+  __merge_without_buffer(__new_middle, __second_cut, __last, 
+                         __len1 - __len11, __len2 - __len22);
 }
 
 template <class _BidirectionalIter, class _Tp, class _Distance>
@@ -2554,17 +2577,105 @@ inline void inplace_merge(_BidirectionalIter __first,
 
 ### nth_element
 
-不断以median-of-3 partitioning(以首，尾，中间三点中值为枢轴之分割法)将整个序列分割为更小的左，右子序列。如果nth迭代器落于左子序列，就再对左子序列进行分割，否则就再对右子序列进行分割。以此类推，知道分割后的子序列长度不大于3，便对最后这个待分割的子序列做Insertion Sort。
+不断以`median-of-3 partitioning(以首，尾，中间三点中值为枢轴之分割法)`将整个序列分割为更小的左，右子序列。如果nth迭代器落于左子序列，就再对左子序列进行分割，否则就再对右子序列进行分割。以此类推，知道分割后的子序列长度不大于3，便对最后这个待分割的子序列做Insertion Sort。
 
-重新排列`[first,last)`，使迭代器nth所指的元素，与“整个`[first,last)`完整排序后，同一位置的元素”同值。此外并保证`[nth,last)`内没有任何一个元素小于（更精确的说是不大于）`[first,nth)`内的元素，但对于`[first,nth)`和`[nth,last)`两个子区间内的元素次序则无任何保证-这一点也是它与partial_sort很大的不同处。比较近似partition而非sort或partial_sort。
+重新排列`[first,last)`，使迭代器nth所指的元素，与`“整个[first,last)完整排序后，同一位置的元素”`同值。此外并保证`[nth,last)`内没有任何一个元素小于（更精确的说是不大于）`[first,nth)`内的元素，但对于`[first,nth)`和`[nth,last)`两个子区间内的元素次序则无任何保证-这一点也是它与partial_sort很大的不同处。比较近似partition而非sort或partial_sort。
 
 ![6-17](res/6-17.png)
+
+```c++
+template <class _RandomAccessIter, class _Tp>
+void __nth_element(_RandomAccessIter __first,
+                   _RandomAccessIter __nth,
+                   _RandomAccessIter __last,
+                   _Tp*)
+{
+  while (__last - __first > 3) {
+    _RandomAccessIter __cut =
+      __unguarded_partition(__first, __last, 
+                            _Tp(__median(*__first,
+                                         *(__first + (__last - __first)/2),
+                                         *(__last - 1))));
+    if (__cut <= __nth)
+      __first = __cut;
+    else
+      __last = __cut;
+  }
+  __insertion_sort(__first, __last);
+}
+
+template <class _RandomAccessIter>
+inline void nth_element(_RandomAccessIter __first,
+                        _RandomAccessIter __nth,
+                        _RandomAccessIter __last)
+{
+  __STL_REQUIRES(_RandomAccessIter, _Mutable_RandomAccessIterator);
+  __STL_REQUIRES(
+  	typename iterator_traits<_RandomAccessIter>::value_type,
+  	_LessThanComparable);
+  __nth_element(__first, __nth, __last, __VALUE_TYPE(__first));
+}
+```
 
 ### merge_sort
 
 将区间对半分割，左右两段各自排序，再利用inplace_merge重新组合为一个完整的有序序列。
 
 复杂度为$O(N log N)$。虽然这和Quick Sort是一样的，但因为Merge Sort需要借用额外的内存，而且在内存之间移动（复制）数据也会耗费不少时间，所以Merge Sort的效率比不上Quick Sort。
+
+```c++
+template <class _RandomAccessIter1, class _RandomAccessIter2, class _Distance>
+void __merge_sort_loop(_RandomAccessIter1 __first,
+                       _RandomAccessIter1 __last,
+                       _RandomAccessIter2 __result,
+                       _Distance __step_size)
+{
+  _Distance __two_step = 2 * __step_size;
+  
+  while (__last - __first >= __two_step) {
+    __result = merge(__first, __first, + __step_size,
+                     __first + __step_size, __first + __two_step,
+                     __result);
+    __first += __two_step;
+  }
+  
+  __step_size = min(_Distance(__last - __first), __step_size);
+  merge(__first, __first + __step_size, 
+        __first + __step_size, __last, __result);
+}
+
+template <class _RandomAccessIter, class _Distance>
+void __chunk_insertion_sort(_RandomAccessIter __first,
+                            _RandomAccessIter __last,
+                            _Distance __chunk_size)
+{
+  while (__last - __first >= __chunk_size) {
+    __insertion_sort(__first, __first + __chunk_size);
+    __first += __chunk_size;
+  }
+  __insertion_sort(__first, __last);
+}
+
+template <class _RandomAccessIter, class _pointer, class _Distance>
+void __merge_sort_with_buffer(_RandomAccessIter __first,
+                              _RandomAccessIter __last,
+                              _Pointer __buffer,
+                              _Distance*)
+{
+  _Distance __len = __last - __first;
+  _Pointer __buffer_last = __buffer + __len;
+  
+  _Distance __step_size = __stl_chunk_size;
+  __chunk_insertion_sort(__first, __last, __step_size);
+  
+  while (__step_size < __len) {
+    __merge_sort_loop(__first, __last, __buffer, __step_size);
+    __step_size *= 2;
+    __merge_sort_loop(__buffer, __buffer_last, __first, __step_size);
+    __step_size *= 2;
+  }
+}
+```
 
 ---
 

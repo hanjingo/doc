@@ -6,7 +6,6 @@
 - [分布式](DCS/README.md)
 - [经济](ECONOMIC/README.md)
 - [经验大全](EXPERIENCE/README.md)
-- [健康](HEALTH/README.md)
 
 - [多媒体](MEDIA/README.md)
 - [网络](NET/README.md)
