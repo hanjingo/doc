@@ -23,12 +23,16 @@
 
 ```c
 struct in_addr {
-    in_addr_t s_addr;           // 至少32位无符号整数类型
+  	// 至少32位无符号整数类型
+    in_addr_t s_addr;
 };
 struct sockaddr_in {
-    uint8_t         sin_len;    // 长度字段
-    sa_family_t     sin_family; // 地址族; 任何无符号整数类型
-    in_port_t       sin_port;   // TCP或UDP端口; 至少16位的无符号整数类型
+  	// 长度字段
+    uint8_t         sin_len;
+  	// 地址族; 任何无符号整数类型
+    sa_family_t     sin_family;
+  	// TCP或UDP端口; 至少16位的无符号整数类型
+    in_port_t       sin_port;
 
     struct in_addr  sin_addr;
 

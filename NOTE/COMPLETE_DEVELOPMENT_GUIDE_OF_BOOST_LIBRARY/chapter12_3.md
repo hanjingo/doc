@@ -127,7 +127,7 @@ asio库使用system库的error_code和system_error来表示程序运行时的错
 异步代码的执行是非线性的，运行异步代码时的流程很难调试。asio库为此特别提供了handler跟踪机制，只要头文件<boost/asio.hpp>前定义宏BOOST_ASIO_ENABLE_HANDLER_TRACKING,它就会向标准流cerr输出运行日志，使用操作系统的重定向功能也可以写入指定的日志文件。
 
 跟踪日志以"|"分为4个字段，格式如下:
-```c++
+```txt
 tag|timestamp|action|description
 ```
 第一个字段是标记字符串，目前总是"@asio"。第二个字段是UNIX时间戳，精确到毫秒分辨率。最后2个字段很重要，他们记录了异步代码的具体动作，具体含义如下。

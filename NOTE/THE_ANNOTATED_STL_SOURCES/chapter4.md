@@ -99,7 +99,7 @@ class vector : protected _Vector_base<_Tp, _Alloc>
 
 - clear
 
-  删除某个位置的元素，后面的元素全部前移
+  清空数据
 
   ```c++
   void clear() { earse(begin(), end()); }
@@ -662,7 +662,7 @@ void deque<_Tp,_Alloc>::_M_push_back_aux(
   __STL_UNWIND(_M_deallocate_node(*(_M_finish._M_node + 1)));
 }
 ```
-- puth_front
+- push_front
 ```c++
 void push_front() {
   // 第一节点还有备用空间  

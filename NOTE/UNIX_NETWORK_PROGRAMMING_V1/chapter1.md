@@ -86,7 +86,8 @@ main(int argc, char **argv)
     Listen(listenfd, LISTENQ); // 监听套接字
     
     for ( ; ; ) {
-        connfd = Accept(listenfd, (SA *) NULL, NULL); // 接受并创建套接字（阻塞），返回套接字描述符
+      	// 接受并创建套接字（阻塞），返回套接字描述符
+        connfd = Accept(listenfd, (SA *) NULL, NULL); 
 
         ticks = time(NULL);
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));

@@ -120,7 +120,7 @@
 |binary_search|二分查找|N|<stl_algo.h>|
 |Copy|复制|Y if in-place|<stl_algobase.h>|
 |Copy_backward|逆向复制|Y if in-place|<stl_algobase.h>|
-|Copy_n *|复制n个元素|Y if in-place|<stl_algobase.h>|
+|`Copy_n *`|复制n个元素|Y if in-place|<stl_algobase.h>|
 |count|计数|N|<stl_algo.h>|
 |count_if|在特定条件下计数|N|<stl_algo.h>|
 |equal|判断两个区间相等与否|N|<stl_alogbase.h>|
@@ -137,9 +137,9 @@
 |includes|是否涵盖于某序列之中|N|<stl_algo.h>|
 |inner_product|内积|N|<stl_numeric.h>|
 |inplace_merge|合并并就地替换(覆写上去)|Y|<stl_algo.h>|
-|Iota*|在某区间填入某指定值的递增序列|Y|<stl_numeric.h>|
-|is_heap*|判断某区间是否为一个heap|N|<stl_algo.h>|
-|is_sorted*|判断某区间是否已排序|N|<stl_algo.h>|
+|`Iota*`|在某区间填入某指定值的递增序列|Y|<stl_numeric.h>|
+|`is_heap*`|判断某区间是否为一个heap|N|<stl_algo.h>|
+|`is_sorted*`|判断某区间是否已排序|N|<stl_algo.h>|
 |iter_swap|元素互换|Y|<stl_algobase.h>|
 |lexicographical_compare|以字典顺序进行比较|N|<stl_numeric.h>|
 |lower_bound|将指定元素插入区间之内而不影响区间之原本排序的最低位置|N|<stl_algo.h>|
@@ -156,10 +156,10 @@
 |partial_sum|局部求和|Y if in-place|<stl_numeric.h>|
 |partition|分割|Y|<stl_algo.h>|
 |prev_permutation|获得前一个排列组合|Y|<stl_algo.h>|
-|power*|幂次方。表达式可指定|N|<stl_numeric.h>|
+|`power*`|幂次方。表达式可指定|N|<stl_numeric.h>|
 |random_shuffle|随机重排元素|Y|<stl_algo.h>|
-|random_sample*|随机取样|Y if in-place|<stl_algo.h>|
-|random_sample_n*|随机取样|Y if in-place|<stl_algo.h>|
+|`random_sample*`|随机取样|Y if in-place|<stl_algo.h>|
+|`random_sample_n*`|随机取样|Y if in-place|<stl_algo.h>|
 |remove|删除某类元素|Y|<stl_algo.h>|
 |remove_copy|删除某类元素并将结果复制到另一个容器|Y|<stl_algo.h>|
 |remove_if|有条件地删除某类元素|Y|<stl_algo.h>|
