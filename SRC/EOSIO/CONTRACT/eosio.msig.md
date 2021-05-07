@@ -5,13 +5,13 @@
 ## 定义action
 |接口|参数|注释|
 |:---|:---|:---|
-|propose|ignore<name> 提名人, ignore<name> 被提名名字, ignore<std::vector<permission_level>> 权限等级, ignore<transaction> 传输块|提名|
-|approve|name proposer, name proposal_name, permission_level level, const eosio::bnary_extension<eosio::checksum256>& proposal_hash|批准|
-|unapprove|name proposer, name proposal_name, permission_level level|不批准|
-|cancel|name proposer, name proposal_name, nmae canceler|取消|
-|exec|name proposer, name proposal_name, name executer|执行提名|
+|propose|`ignore<name>` 提名人<br>`ignore<name>` 被提名名字<br>`ignore<std::vector<permission_level>>` 权限等级<br>`ignore<transaction>` 传输块|提名|
+|approve|name proposer<br>name proposal_name<br>permission_level level<br>`const eosio::bnary_extension<eosio::checksum256>&` proposal_hash|批准|
+|unapprove|name proposer<br>name proposal_name<br>permission_level level|不批准|
+|cancel|name proposer<br>name proposal_name<br>nmae canceler|取消|
+|exec|name proposer<br>name proposal_name<br>name executer|执行提名|
 |invalidate|name account|让账号失效|
-  
+
 ## 定义表
 #### proposal
 |类型|名称|注释|
@@ -25,7 +25,7 @@
 |name|proposal_name|?|
 |std::vector<permission_level>|requested_approvals|?|
 |std::vector<permission_level>|provided_approvals|?|
-  
+
 #### approval 
 |类型|名称|注释|
 |:---|:---|:---|

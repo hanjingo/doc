@@ -13,13 +13,19 @@
 >> * no：让操作系统决定何时同步；
 
 > 2.auto-aof-rewrite-percentage
->> * 在AOF文件大于指定百分比时将数据同步到硬盘；
+>
+> > * 在AOF文件大于指定百分比时将数据同步到硬盘；
 
 > 3.auto-aof-rewrite-min-size:
->> * 在AOF文件大于指定大小时将数据同步到硬盘；
+>
+> > * 在AOF文件大于指定大小时将数据同步到硬盘；
 
 ## redis复制
 主从服务器；
-  
+
 ## 验证和修复快照文件
-redis在修复时通过计算快照文件的SHA1散列值和SHA256散列值来对内容进行验证;如果文件有错，目前暂无方法对其进行修正；检查AOF文件使用redis-check-aof程序，检查快照文件使用redis-check-dump程序;
+redis在修复时，通过计算快照文件的SHA1散列值和SHA256散列值来对内容进行验证；如果文件有错，目前暂无方法对其进行修正；
+
+检查AOF文件使用redis-check-aof程序。
+
+检查快照文件使用redis-check-dump程序。

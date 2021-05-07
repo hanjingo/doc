@@ -448,9 +448,7 @@ protected:
 
   ```c++
   void transfer(iterator __position, 
-                              iter
-                              ato
-  r __first, iterator __last) {
+                iterator __first, iterator __last) {
     if (__position != __last) {
       // 从__position位置移除[first, last)
       __last._M_node->_M_prev->_M_next = 
@@ -577,7 +575,7 @@ deque和vector的差异:
 - deque允许常数时间内对起头端进行元素的插入或移除操作
 - deque没有所谓容量(capacity)观念，因为它是动态地以分段连续空间组合而成，随时可以增加一段新的空间并连接起来
 
-除非必要我们应尽可能使用vector二飞deque。在对deque进行的排序操作时，为了最高效率，可将deque先完整复制到一个vector身上，将vector排序后(利用STL sort算法)，再复制回deque。
+除非必要我们应尽可能使用vector而非deque。在对deque进行的排序操作时，为了最高效率，可将deque先完整复制到一个vector身上，将vector排序后(利用STL sort算法)，再复制回deque。
 
 ### deque的中控器
 ```c++

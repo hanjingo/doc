@@ -10,17 +10,17 @@
 
 ### 知识点
 1. malloc，calloc，realloc的区别:
->> malloc需要手动计算需要分配的空间大小，分配后不做初始化
 
->> calloc不需要手动计算，分配后初始化为0
+   malloc需要手动计算需要分配的空间大小，分配后不做初始化
 
->> realloc重新分配已申请的空间，用来缩/扩容
+   calloc不需要手动计算，分配后初始化为0
 
+   realloc重新分配已申请的空间，用来缩/扩容
 2. ssize_t和size_t的区别
->> ssize_t:有符号
 
->> size_t:无符号
+   ssize_t:有符号
 
+   size_t:无符号
 ### 定义全局变量
 ```c++
 
