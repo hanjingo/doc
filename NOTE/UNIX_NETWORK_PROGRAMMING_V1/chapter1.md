@@ -14,9 +14,9 @@
 
 ## 概述
 
-![1-3](RES/1-3.png)
+![1-3](res/1-3.png)
 
-![1-4](RES/1-4.png)
+![1-4](res/1-4.png)
 
 
 
@@ -38,12 +38,12 @@ main(int argc, char **argv)
     if ( (sockfd = socket(AF_INET6, SOCK_STREAM, 0)) < 0 ) 
         err_sys("socket error");
 
-    bzero(&servaddr, sizeof(servaddr)); // 将servaddr清零
-    servaddr.sin6_family = AF_INET6; 		// 设置地址族
-    servaddr.sin6_port = htons(13); 		// 设置端口，htons转换成二进制形式
+    bzero(&servaddr, sizeof(servaddr)); 													// 将servaddr清零
+    servaddr.sin6_family = AF_INET6; 														 // 设置地址族
+    servaddr.sin6_port = htons(13); 															// 设置端口，htons转换成二进制形式
     if (inet_pton(AF_INET6, argv[1], &servaddr.sin6_addr) <= 0) 	// 设置ip
         err_quit("inet_pton error for %s", argv[1]);
-    if (connect(sockfd, (SA *) &servaddr, sizeof(servaddr)) < 0>)	// 建立连接
+    if (connect(sockfd, (SA *) &servaddr, sizeof(servaddr)) < 0>)		// 建立连接
         err_sys("connect error");
 		// 读一段MAXLINE大小的数据
     while ( (n = read(sockfd, recvline, MAXLINE)) > 0 ) {
@@ -94,7 +94,7 @@ main(int argc, char **argv)
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
         Write(connfd, buff, strlen(buff));
 
-        Close(connfd); 				// 关闭套接字
+        Close(connfd); 					// 关闭套接字
     }
 }
 ```
@@ -132,20 +132,20 @@ Pthread_mutex_lock(pthread_mutex_t *mptr)
 
 ## OSI模型
 
-![1-14](RES/1-14.png)
+![1-14](res/1-14.png)
 
 
 
 
 ## BSD网络支持历史
 
-![1-15](RES/1-15.png)
+![1-15](res/1-15.png)
 
 
 
 ## 测试用网络及主机
 
-![1-16](RES/1-16.png)
+![1-16](res/1-16.png)
 
 
 

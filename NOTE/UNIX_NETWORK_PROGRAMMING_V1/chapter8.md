@@ -19,7 +19,7 @@
 
 ## 概述
 
-![8-1](RES/8-1.png)
+![8-1](res/8-1.png)
 
 
 
@@ -45,7 +45,7 @@
 
 ## UDP回射服务器程序
 
-![8-2](RES/8-2.png)
+![8-2](res/8-2.png)
 
 main函数
 
@@ -85,7 +85,7 @@ dg_echo(int sockfd, SA *pcliaddr, socklen_t clilen)
 }
 ```
 
-![8-6](RES/8-6.png)
+![8-6](res/8-6.png)
 
 
 
@@ -154,9 +154,9 @@ recvfrom需要设置超时选项，否则会一直阻塞下去
 
 ## UDP程序例子小结
 
-![8-11](RES/8-11.png)
+![8-11](res/8-11.png)
 
-![8-13](RES/8-13.png)
+![8-13](res/8-13.png)
 
 
 
@@ -170,9 +170,9 @@ POSIX规范指出，在未连接UDP套接字上不指定目的地址的输出操
 | UDP套接字，已连接 | 可以         | 可以                   | EISCONN              |
 | UDP套接字，未连接 | EDESTADDRREQ | EDESTADDRREQ           | 可以                 |
 
-![8-15](RES/8-15.png)
+![8-15](res/8-15.png)
 
-![8-16](RES/8-16.png)
+![8-16](res/8-16.png)
 
 ### 给一个UDP套接字多次调用connect
 

@@ -1,2 +1,0 @@
-# STL
-- [api](api.md)

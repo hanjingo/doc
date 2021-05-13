@@ -22,7 +22,7 @@ eos无法启动
 
 
 
-## Error 3090003:
+## Error 3090003
 
 创建账户时报错:Provided keys, permissions, and delays do not satisfy declared authorizations  
 
@@ -113,7 +113,11 @@ let actions = {
 
 
 
-## Error 3080004: Transaction exceeded the current CPU usage limit imposed on the transaction
+## Error 3080004
+
+```sh
+Transaction exceeded the current CPU usage limit imposed on the transaction
+```
 
 命令执行超时了，在命令行后面加上 +x n(任意<=3600的正数，表示秒数) 就可以了,例: 
 

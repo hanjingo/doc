@@ -39,7 +39,7 @@
 
 ## 总图
 
-![2-1](RES/2-1.png)
+![2-1](res/2-1.png)
 
 
 
@@ -56,7 +56,7 @@ UDP提供无连接(connectionless)的服务。
 ## TCP
 
 ### 三次握手
-![三次握手](RES/2_2.png)
+![三次握手](res/2_2.png)
 
 ### tcp选项
 每一个SYN可以含有多个TCP选项。下面是常用的TCP选项:
@@ -65,13 +65,13 @@ UDP提供无连接(connectionless)的服务。
 - 时间戳选项。这个选项对于高速网络连接是必要的，它可以防止由失而复得的分组可能造成的数据损坏。
 
 ### tcp连接终止
-![tcp连接终止](RES/2_3.png)
+![tcp连接终止](res/2_3.png)
 
 ### tcp状态转移图
-![tcp状态转移图](RES/2_4.png)
+![tcp状态转移图](res/2_4.png)
 
 ### 观察分组
-![观察分组](RES/2_5.png)
+![观察分组](res/2_5.png)
 
 
 
@@ -86,16 +86,16 @@ TIME_WAIT状态有2个存在的理由:
 ## SCTP
 
 ### 四路握手
-![四路握手](RES/2_6.png)
+![四路握手](res/2_6.png)
 
 ### 关联终止
-![关联终止](RES/2_7.png)
+![关联终止](res/2_7.png)
 
 ### SCTP状态转移图
-![SCTP状态转移图](RES/2_8.png)
+![SCTP状态转移图](res/2_8.png)
 
 ### 观察分组
-![观察分组](RES/2_9.png)
+![观察分组](res/2_9.png)
 
 
 
@@ -115,7 +115,7 @@ IANA(the Internet Assigned Numbers Authority, 因特网已分配数值权威机�
 
 ## TCP端口号与并发服务器
 
-![2-14](RES/2-14.png)
+![2-14](res/2-14.png)
 
 
 
@@ -133,13 +133,13 @@ IANA(the Internet Assigned Numbers Authority, 因特网已分配数值权威机�
 - SCTP基于到对端所有地址发现的最小路径MTU保持一个分片点。这个最小MTU大小用于把较大的用户消息分割成较小的能够以单个IP数据报发送的若干片段。SCTP_MAXSEG套接字选项可以影响该值，使得用户能够请求一个更小的分片点。
 
 ### TCP输出
-![2-15](RES/2-15.png)
+![2-15](res/2-15.png)
 
 ### UDP输出
-![2-16](RES/2-16.png)
+![2-16](res/2-16.png)
 
 ### SCTP输出
-![2-17](RES/2-17.png)
+![2-17](res/2-17.png)
 
 
 

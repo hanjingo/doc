@@ -48,9 +48,9 @@ POSIX规范要求的数据类型
 
 ```c
 struct sockaddr {
-    uint8_t     sa_len;
-    sa_family_t sa_family;
-    char        sa_data[14];
+    uint8_t     	 sa_len;
+    sa_family_t	sa_family;
+    char        		sa_data[14];
 };
 ```
 
@@ -64,12 +64,12 @@ struct in6_addr {
 };
 #defie SIN6_LEN
 struct sockaddr_in6 {
-    uint8_t         sin6_len;
-    sa_family_t     sin6_family;
-    in_port_t       sin6_port;
-    uint32_t        sin6_flowinfo;
-    struct in6_addr sin6_addr;
-    uint32_t        sin6_scope_id;
+    uint8_t         		 sin6_len;
+    sa_family_t         sin6_family;
+    in_port_t      	 	   sin6_port;
+    uint32_t        		sin6_flowinfo;
+    struct in6_addr  sin6_addr;
+    uint32_t        		sin6_scope_id;
 }
 ```
 
@@ -87,13 +87,13 @@ struct sockaddr_in6 {
 
 ```c
 struct sockaddr_storage { // 存储套接字地址结构
-    uint8_t     ss_len;
+    uint8_t     	 ss_len;
     sa_family_t ss_family;
 };
 ```
 
 ### 套接字地址结构的比较
-![3-6](RES/3-6.png)
+![3-6](res/3-6.png)
 
 
 
@@ -101,26 +101,39 @@ struct sockaddr_storage { // 存储套接字地址结构
 
 从进程到内核传递套接字地址结构的函数:
 
+```c
+struct sockaddr_in serv;
+connect (sockfd, (SA *) &serv, sizeof(serv));
+```
+
 - bind
 - connect
 - sendto
 
-![3-7](RES/3-7.png)
+![3-7](res/3-7.png)
 
 从内核到进程传递套接字地址结构的函数:
+
+```c
+struct sockaddr_un cli;
+socklen_t len;
+
+len = sizeof(cli);
+getpeername(unixfd, (SA *) &cli, &len);
+```
 
 - accept
 - recvfrom
 - getsockname
 - getpeername
 
-![3-8](RES/3-8.png)
+![3-8](res/3-8.png)
 
 
 
 ## 字节排序函数
 
-![3-9](RES/3-9.png)
+![3-9](res/3-9.png)
 
 ### 确定主机字节序的程序
 ```c
@@ -151,7 +164,7 @@ main (int argc, char **argv)
 
 头文件 `netinet/in.h`
 
-```c++
+```c
 /*主机字节序转网络字节序*/
 uint16_t htons(uint16_t host16bitvalue);
 uint32_t htonl(uint32_t host32bitvalue);
@@ -253,7 +266,7 @@ uint32_t ntohl(uint32_t net32bitvalue);
     - INET_ADDRSTRLEN 16: IPv4地址
     - INET6_ADDRSTRLEN 46: IPv6地址
 
-![3-11](RES/3-11.png)
+![3-11](res/3-11.png)
 
 IPv4版本的inet_pton实现
 
@@ -274,7 +287,7 @@ inet_pton(int family, const char *strptr, void *addrptr)
 
 IPv4版本的int_ntop实现
 
-```c++
+```c
 const char *
 inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
 {
@@ -293,4 +306,207 @@ inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
   return (NULL);
 }
 ```
+
+
+
+## sock_ntop和相关函数
+
+**非标准库**
+
+头文件`unp.h`
+
+- `char *sock_ntop(const struct sockaddr *sockaddr, socklen_t addrlen)` 网络地址转表达式格式
+
+    - sockaddr 指向一个长度为addrlen的套接字地址结构
+    - addrlen 地址长度
+
+    ```c
+    char *
+     sock_ntop(const struct sockaddr *sa, socklen_t salen)
+    {
+        char portstr[8];
+        static char str[128];
+        
+        switch (sa->sa_family) {
+            case AF_INET: {
+                struct sockaddr_in *sin = (struct sockaddr_in *) sa;
+                if (inet_ntop(AF_INET, &sin->sin_addr, str, sizeof(str)) == NULL)
+                    return (NULL);
+                if (ntohs(sin->sin_port) != 0) {
+                    snprintf(portstr, sizeof(portstr), ":%d",
+                            		  ntohs(sin->sin_port));
+                    strcat(str, portstr);
+                }
+                return (str);
+            }
+        }
+    }
+    ```
+
+- `int sock_bind_wild(int sockfd, int family)` 将通配地址和一个临时端口绑定到一个套接字
+
+- `int sock_cmp_addr(const struct sockaddr *sockaddr1, const struct sockaddr *sockaddr2, socklen_t addrlen)` 比较两个套接字地址结构的地址部分
+
+- `int sock_cmp_port(const struct sockaddr *sockaddr1, const struct sockaddr *sockaddr2, socklen_t addrlen)` 比较两个套接字地址结构的端口部分
+
+- `int sock_get_port(const struct sockaddr *sockaddr, socklen_t addrlen)` 返回端口号
+
+- `char *sock_ntop_host(const struct sockaddr *sockaddr, socklen_t addrlen)` 把一个套接字地址结构中的主机部分转换成字符格式
+
+- `void sock_set_addr(const struct sockaddr *sockaddr, socklen_t addrlen, void *ptr)` 把一个套接字地址结构中的地址部分设置为ptr指针所指的值
+
+- `void sock_set_port(const struct sockaddr *sockaddr, socklen_t addrlen, int port)` 只设置一个套接字地址结构的端口号部分
+
+- `void sock_set_wild(struct sockaddr *sockaddr, socklen_t addrlen)` 把一个套接字地址结构中的地址部分设置为通配地址
+
+
+
+## readn和writen和readline函数
+
+**非标准库**
+
+头文件`unp.h`
+
+- `ssize_t readn(int filedes, void *buff, size_t nbytes)` 从一个描述符读n字节
+
+    ```c
+    #include "unp.h"
+    ssize_t
+    readn(int fd, void *vptr, size_t n)
+    {
+        size_t nleft;
+        ssize_t nread;
+        char *ptr;
+        ptr = vptr;
+        nleft = n;
+        while (nleft > 0) {
+            if ( (nread = read(fd, ptr, nleft)) < 0 ) {
+                if (errno == EINTR)
+                    nread = 0;
+                else
+                    return (-1);
+            } else if (nread == 0)
+                break;
+            nleft -= nread;
+            ptr += nread;
+        }
+        return (n - nleft);
+    }
+    ```
+
+- `ssize_t written(int filedes, const void *buff, size_t nbytes)` 往一个描述符写n字节
+
+    ```c
+    #include "unp.h"
+    ssize_t
+    writen(int fd, const void *vptr, size_t n)
+    {
+        size_t nleft;
+        ssize_t nwritten;
+        const char *ptr;
+        ptr = vptr;
+        nleft = n;
+        while (nleft > 0) {
+            if ( (nwritten = write(fd, ptr, nleft)) <= 0 ) {
+                if (nwritten < 0 && errno == EINTR)
+                    nwritten = 0;
+                else
+                    return (-1);
+            }
+            nleft -= nwritten;
+            ptr += nwritten;
+        }
+        return (n);
+    }
+    ```
+
+- `ssize_t readline(int filedes, void *buff, size_t maxlen)` 从一个描述符读文本行，一次一字节(极慢)
+
+    ```c
+    #include "unp.h"
+    ssize_t
+    readline(int fd, void *vptr, size_t maxlen)
+    {
+        ssize_t n, rc;
+        char c, *ptr;
+        ptr = vptr;
+        for (n = 1; n < maxlen; n++) {
+        again:
+            if ( (rc = read(fd, &c, 1)) == 1 ) {
+                *ptr++ = c;
+                if (c == '\n')
+                    break;
+            } else if (rc == 0) {
+                *ptr = 0;
+                return (n - 1);
+            } else {
+                if (errno == EINTER)
+                    goto again;
+                return (-1);
+            }
+        }
+        *ptr = 0;
+        return (n);
+    }
+    ```
+
+readline函数改进版:
+
+```c
+#include "unp.h"
+static int read_cnt;
+static char *read_ptr;
+static char read_buf[MAXLINE];
+
+static ssize_t
+my_read(int fd, char *ptr)
+{
+    if (read_cnt <= 0) {
+        again:
+        if ( (read_cnt = read(fd, read_buf, sizeof(read_buf))) < 0 ) {
+            if (errno == EINTR)
+                goto again;
+            return (-1);
+        } else if (read_cnt == 0)
+            return (0);
+        return _ptr = read_buf;
+    }
+    
+    read_cnt--;
+    *ptr = *read_ptr++;
+    return (1);
+}
+
+ssize_t
+readline(int fd, void *vptr, size_t maxlen)
+{
+    ssize_t n, rc;
+    char c, *ptr;
+    
+    ptr = vptr;
+    for (n = 1; n < maxlen; n++) {
+        if ( (rc = my_read(fd, &c)) == 1 ) {
+            *ptr++ = c;
+            if (c == '\n')
+                break;
+        } else if (rc == 0) {
+            *ptr = 0;
+            return (n - 1);
+        } else 
+            return (-1);
+    }
+    *ptr = 0;
+    return (n);
+}
+
+ssize_t
+readlinebuf(void **vptrptr)
+{
+    if (read_cnt)
+        *vptrptr = read_ptr;
+    
+}
+```
+
+
 
