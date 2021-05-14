@@ -6,21 +6,21 @@
 
 - cmake_minimum_require
 
-> 指定运行此配置文件所需的 CMake 的最低版本
+    指定运行此配置文件所需的 CMake 的最低版本
 
 - project
 
-> 指定项目名
+    指定项目名
 
 - aux_source_directory
 
-> 搜集所有在指定路径下的源文件的文件名，将输出结果列表储存在指定的变量中
->
-> ```sh
-> aux_source_directory(< dir > < variable >)
-> ```
+    搜集所有在指定路径下的源文件的文件名，将输出结果列表储存在指定的变量中
 
+    ```cmake
+    aux_source_directory(< dir > < variable >)
+    ```
 
+    
 
 ## 从cmake命令行传入参数
 
@@ -28,7 +28,7 @@
 
 然后把这个参数传给c++文件
 
-```sh
+```cmake
 # 定义option
 option(LOG_TABLE "select to use log table" OFF)
 
@@ -40,7 +40,7 @@ endif(LOG_TABLE)
 
 命令行修改为
 
-```sh
+```cmake
 cmake -DLOG_TABLE=ON ..
 ```
 

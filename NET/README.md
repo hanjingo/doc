@@ -19,7 +19,7 @@
   - htonl
   - ntohs
   - nthol
-- [netdb.h](POSIX/netdb.md)
+- [`netdb.h`](POSIX/netdb.md)
     - getnameinfo
 - [`arpa/inet.h`](POSIX/arpa_inet.md)
     - inet_aton
