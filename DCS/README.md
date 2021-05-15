@@ -15,3 +15,8 @@
   - [pos(权益证明)](pos.md)
   - [pow(工作量证明)](pow.md)
   - [零知识证明](zkp.md)
+- **Google分布式系统三大论文**
+    - TheGoogleFileSystem
+    - MapReduce
+    - Bigtable
+

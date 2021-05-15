@@ -1,12 +1,18 @@
 # 第六章 I/O复用：select和pool函数
 
 - [概述](#概述)
-- [`I/O模型`](#`I/O模型`)
-- [同步`I/O`和异步`I/O`对比](#同步`I/O`和异步`I/O`对比)
+- [`I/O模型`](#)
+    - [同步`I/O`和异步`I/O`对比](#同步`I/O`和异步`I/O`对比)
 - [select函数](#select函数)
-- [`str_cli函数（修订版）`](#`str_cli函数（修订版）`)
+    - [描述符就绪条件](#描述符就绪条件)
+    - [select的最大描述符数](# select的最大描述符数)
+- [`str_cli函数（修订版）`](#)
 - [shutdown函数](#shutdown函数)
-- [`str_cli函数（再修订版）`](#`str_cli函数（再修订版）`)
+- [`str_cli函数（再修订版）`](#)
+- [`TCP回射服务器程序（修订版）`](#)
+- [pselect函数](#pselect函数)
+- [poll函数](#poll函数)
+- [`TCP回射服务器程序（再修订版）`](#`TCP回射服务器程序（再修订版）`)
 
 
 
@@ -62,18 +68,18 @@ Unix下可用的5种I/O模型：
 
 `int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout)`
 
-- maxfdp1：指定待测试的描述符个数
+- maxfdp1：指定待测试的描述符最大值+1
 - readset：让内核测试读描述符
 - writeset：让内核测试写描述符
 - exceptset：让内核测试异常描述符
 - timeout：超时时间（精确度10ms左右）
-    - 永远等待下去：值为空
-    - 等待一段固定时间：值非空
-    - 根本不等待：值为0
+    - 空：永远等待下去
+    - 非空：等待一段固定时间
+    - 0：根本不等待
 - return
-    - 有就绪描述符：返回描述符数量
-    - 超时：0
-    - 出错：-1
+    - 描述符数量：有就绪描述符
+    - 0：超时
+    - -1：出错
 
 允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。
 
@@ -236,6 +242,247 @@ str_cli(FILE *fp, int sockfd)
                 continue;
             }
             Writen(sockfd, buf, n);
+        }
+    }
+}
+```
+
+
+
+## `TCP回射服务器程序（修订版）`
+
+![6-14](res/6-14.png)
+
+![6-15](res/6-15.png)
+
+![6-16](res/6-16.png)
+
+![6-17](res/6-17.png)
+
+![6-18](res/6-18.png)
+
+![6-19](res/6-19.png)
+
+![6-20](res/6-20.png)
+
+使用单进程和select的TCP服务器程序：
+
+```c
+#include "unp.h"
+int
+main(int argc, char **argv)
+{
+    // 初始化
+    int i, maxi, maxfd, listenfd, connfd, sockfd;
+    int nready, client[FD_SETSIZE];
+    ssize_t n;
+    fd_set rset, allset;
+    char buf[MAXLINE];
+    socklen_t clilen;
+    struct sockaddr_in cliaddr, servaddr;
+    listenfd = Socket(AF_INET, OSCK_STREAM, 0);
+    bzero(&servaddr, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(SERV_PORT);
+    Bind(listenfd, (SA *)&servaddr, sizeof(servaddr));
+    Listen(listenfd, LISTENQ);
+    maxfd = listenfd;
+    maxi = -1;
+    for (i = 0; i < FD_SETSIZE; i++)
+        client[i] = -1;
+    FD_ZERO(&allset);
+    FD_SET(listenfd, &allset);
+    
+    // 循环
+    for ( ; ; ) {
+        rset = allset;
+        nready = Select(maxfd+1, &rset, NULL, NULL, NULL);
+        if (FD_ISSET(listenfd, &rset)) {
+            clilen = sizeof(cliaddr);
+            connfd = Accept(listenfd, (SA *)&cliaddr, &clilen);
+            for (i = 0; i < FD_SETSIZE; i++)
+                if (cllient[i] < 0) {
+                    client[i] = connfd;
+                    break;
+                }
+            if (i == FD_SETSIZE)
+                err_quit("too many clients");
+            FD_SET(connfd, &allset);
+            if (connfd > maxfd)
+                maxfd = connfd;
+            if (i > maxi)
+                maxi = i;
+            if (--nready <= 0)
+                continue;
+        }
+        for (i = 0; i <= maxi; i++) {
+            if ( (sockfd = client[i]) < 0 )
+                continue;
+            if (FD_ISSET(sockfd, &rset)) {
+                if ( (n = Read(sockfd, buf, MAXLINE)) == 0 ) {
+                    Close(sockfd);
+                    FD_CLR(sockfd, &allset);
+                    client[i] = -1;
+                } else 
+                    Writen(sockfd, buf, n);
+                if (--nready <= 0)
+                    break;
+            }
+        }
+    }
+}
+```
+
+
+
+## pselect函数
+
+头文件`sys/select.h`
+
+`int pselect(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timespec *timeout, const sigset_t *sigmask)`
+
+- maxfdp1
+
+- readset
+
+- writeset
+
+- exceptset
+
+- timeout：超时
+
+    pselect使用timespec结构，而不使用tiemval。
+
+    ```c
+    struct timespec {
+        time_t 	 tv_sec;
+        long		tv_nsec;
+    }
+    ```
+
+- sigmask：一个指向信号掩码的指针，用于select阻塞期间时处理信号。
+
+- return
+
+    - -1：出错
+    - 0：超时
+    - `>0`：有描述符就绪
+
+
+
+## poll函数
+
+头文件`pool.h`
+
+`int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)`
+
+- fdarray：指向一个poolfd数组
+
+    ```
+    struct pollfd {
+    	int 		fd;
+    	short 	events;		// 要测试的描述符
+    	short 	revents;	// 返回的描述符的状态
+    }
+    ```
+
+    poll函数的输入events和返回revents：
+
+    | 常值                                          | 作为events的输入吗？ | 作为revents的结果吗？ | 说明                                                         |
+    | --------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------------------ |
+    | POLLIN<br>POLLRDNORM<br>POLLRDBAND<br>POLLPRI | Y<br>Y<br>Y<br>Y     | Y<br>Y<br>Y<br>Y      | 普通或优先级带数据可读<br>普通数据可读<br>优先级带数据可读<br>高优先级数据可读 |
+    | POLLOUT<br>POLLWRNORM<br>POLLWRBAND           | Y<br>Y<br>Y          | Y<br>Y<br>Y           | 普通数据可写<br>普通数据可写<br>优先级带数据可写             |
+    | POLLERR<br>POLLHUP<br>POLLNVAL                |                      | Y<br>Y<br>Y           | 发生错误<br>发生挂起<br>描述符不是一个打开的文件             |
+
+    就TCP和UDP套接字而言，以下条件引起poll返回特定的revent:
+
+    - 所有正规TCP数据和所有UDP数据都被认为是普通数据
+    - TCP的带外数据被认为是优先级带数据
+    - 当TCP连接的读半部关闭时，也被认为是普通数据，随后的读操作将返回0
+    - TCP连接存在错误即可认为是普通数据，也可认为是错误（POLLERR）。无论哪种情况，随后的读操作将返回-1，并把errno设置成合适的值。这可用于处理诸如接收到RST或发生超时等条件。
+    - 在监听套接字上有新的连接可用即可认为是普通数据，也可认为是优先级数据。大多数实现视之为普通数据。
+    - 非阻塞式connect的完成被认为是使相应套接字可写。
+
+- nfds
+
+- timeout
+
+    - INFTIM：永远等待（POSIX规范要求在头文件`<poll.h>`中定义INFTIM，不过许多系统仍然把它定义在头文件`<sys/stropts.h>`中）
+    - 0：立即返回，不阻塞进程
+    - `>0`：等待指定数目的毫秒数
+
+- return
+
+    - -1：发生错误
+    - 0：定时器到时之前没有任何描述符就绪
+    - 就绪描述符个数：成功
+
+## `TCP回射服务器程序（再修订版）`
+
+```c
+#include "unp.h"
+#include <limits.h>
+int
+main(int argc, char **argv)
+{
+    int i, maxi, listenfd, connfd, sockfd;
+    int nready;
+    ssize_t n;
+    char buf[MAXLINE];
+    socklen_t clilen;
+    struct pollfd client[OPEN_MAX];
+    struct sockaddr_in cliaddr, servaddr;
+    listenfd = Socket(AF_INET, SOCK_STREAM, 0);
+    bzero(&servaddr, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(SERV_PORT);
+    Bind(listenfd, (SA *)&servaddr, sizeof(servaddr));
+    Listen(listenfd, LISTENQ);
+    client[0].fd = listenfd;
+    client[0].events = POLLRDNORM;
+    for (i = 1; i < OPEN_MAX; i++)
+        client[i].fd = -1;
+    maxi = 0;
+    
+    // 循环
+    for ( ; ; ) {
+        nready = Poll(client, maxi + 1, INFTIM);
+        if (client[0].revents & POLLRDNORM) {
+            clilen = sizeof(cliaddr);
+            connfd = Accept(listenfd, (SA *)&cliaddr, &clilen);
+            for (i = 1; i < OPEN_MAX; i++)
+                if (client[i].fd < 0) {
+                    client[i].fd = connfd;
+                    break;
+                }
+            if (i == OPEN_MAX)
+                err_quit("too many clients");
+            client[i].events = POLLRDNORM;
+            if (i > maxi)
+                maxi = i;
+            if (--nready <= 0)
+                continue;
+        }
+        for (i = 1; i <= maxi;  i++) {
+            if ( (sockfd = client[i].fd) < 0 )
+                continue;
+            if (client[i].revents & (POLLRDNORM | POLLERR)) {
+                if ( (n = read(sockfd, buf, MAXLINE)) < 0 ) {
+                    if (errno == ECONNRESET) {
+                        Close(sockfd);
+                        client[i].fd = -1;
+                    } else
+                        err_sys("read error");
+                } else if (n == 0) {
+                    Close(sockfd);
+                    client[i].fd = -1;
+                } else
+                    Writen(sockfd, buf, n);
+                if (--nready <= 0)
+                    break;
+            }
         }
     }
 }

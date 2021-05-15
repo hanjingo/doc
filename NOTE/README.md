@@ -21,6 +21,7 @@
 - [Boost程序库完全开发指南-深入c++"准"标准库](COMPLETE_DEVELOPMENT_GUIDE_OF_BOOST_LIBRARY/README.md)
 - [国富论(英文版)](THE_WEALTH_OF_NATIONS/README.md)
 - [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
+- [谷歌分布式系统相关论文](GOOGLE_DCS_DOC/README.md)
 
 ## 计划阅读
 
