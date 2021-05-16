@@ -6,13 +6,13 @@
 - [select函数](#select函数)
     - [描述符就绪条件](#描述符就绪条件)
     - [select的最大描述符数](# select的最大描述符数)
-- [str_cli函数(修订版)](#str_cli函数(修订版))
+- [str_cli函数(修订版)](#str_cli函数_修订版)
 - [shutdown函数](#shutdown函数)
-- [str_cli函数(再修订版)](#str_cli函数(再修订版))
-- [TCP回射服务器程序(修订版)](#TCP回射服务器程序(修订版))
+- [str_cli函数(再修订版)](#str_cli函数_再修订版)
+- [TCP回射服务器程序(修订版)](#TCP回射服务器程序_修订版)
 - [pselect函数](#pselect函数)
 - [poll函数](#poll函数)
-- [TCP回射服务器程序(再修订版)](#TCP回射服务器程序(再修订版))
+- [TCP回射服务器程序(再修订版)](#TCP回射服务器程序_再修订版)
 
 
 
@@ -140,7 +140,7 @@ select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 
 
 
-## str_cli函数(修订版)
+## str_cli函数_修订版
 
 ![6-8](res/6-8.png)
 
@@ -206,7 +206,7 @@ str_cli(FILE *fp, int sockfd)
 
 
 
-## str_cli函数(再修订版)
+## str_cli函数_再修订版
 
 ```c
 #include "unp.h"
@@ -249,7 +249,7 @@ str_cli(FILE *fp, int sockfd)
 
 
 
-## TCP回射服务器程序(修订版)
+## TCP回射服务器程序_修订版
 
 ![6-14](res/6-14.png)
 
@@ -418,7 +418,7 @@ main(int argc, char **argv)
     - 0：定时器到时之前没有任何描述符就绪
     - 就绪描述符个数：成功
 
-## TCP回射服务器程序(再修订版)
+## TCP回射服务器程序_再修订版
 
 ```c
 #include "unp.h"

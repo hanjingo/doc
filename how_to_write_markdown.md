@@ -170,6 +170,7 @@ $$公式内容$$
 |`$\frac{\partial x}{\partial y}$`|$\frac{\partial x}{\partial y}$|
 |`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|
 |`$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
+|`$\lfloor x \rfloor$`，`$\lceil x \rceil$`|$\lfloor x \rfloor$，$\lceil x \rceil$|
 
 **矩阵的表示1:**
 
