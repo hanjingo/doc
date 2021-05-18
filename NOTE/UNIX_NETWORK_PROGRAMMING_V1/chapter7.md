@@ -50,7 +50,7 @@
 | level（级别） | optname（选项名）                                            | get                                                          | set                                                          | 说明                                                         | 标志                                                         | 数据类型                                                     |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | IPPROTO_TCP   | TCP_MAXSEG<br>TCP_NODELAY                                    | Y<br>Y                                                       | Y<br>Y                                                       | - TCP最大分节大小<br>- 禁止Nagle算法                         | <br>Y                                                        | int<br>int                                                   |
-| IPPROTO_SCTP  | SCTP_ADAPTION_LAYER<br>SCTP_ASSOCINFO<br>SCTP_AUTOCLOSE<br>SCTP_DEFAULT_SEND_PARAM<br>SCTP_DISABLE_FRAGMENTS<br>SCTP_EVENTS<br>SCTP_GET_PEER_ADDR_INFO<br>SCTP_I_WANT_MAPPED_V4_ADDR<br>SCTP_INITMSG<br>SCTP_MAXBURST<br>SCTP_MAXSEG<br>SCTP_NODELAY<br>SCTP_PEER_ADDR_PARAMS<br>SCTP_PRIMARY_ADDR<br>SCTP_RTOINFO<br>SCTP_SET_PEER_PRIMARY_ADDR<br>SCTP_STATUS | Y<br>t<br>Y<br>Y<br>Y<br>Y<br>t<br>Y<br>Y<br>Y<br>Y<br>Y<br>t<br>t<br>t<br><br>t | Y<br>Y<br>Y<br>Y<br>Y<br>Y<br><br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br><br/> | - 适配层指示<br>- 检查并设置关联信息<br>- 自动关闭操作<br>- 默认发送参数<br>- SCTP分片<br>- 感兴趣事件的通知<br>- 获取对端地址状态<br>- 映射对端地址状态<br>- 映射的v4地址<br>- 默认的INIT参数<br>- 最大猝发大小<br>- 最大分片大小<br>- 禁止Nagle算法<br>- 对端地址参数<br>- 主目的地址<br>- RTO信息<br>- 对端的主目的地址<br>- 获取关联状态 | <br><br><br><br>Y<br><br><br>Y<br><br><br><br>Y<br><br><br><br><br><br/> | sctp_setadaption{}<br>sctp_assocparams{}<br>int<br>sctp_sndrcvinfo{}<br>int<br>sctp_event_subscribe{}<br>sctp_paddrinfo{}<br>int<br>sctp_initmsg{}<br>int<br>int<br>int<br>sctp_paddrparams{}<br>sctp_setprim{}<br>sctp_rtoinfo{}<br>sctp_setpeerprim{}<br>sctp_status{} |
+| IPPROTO_SCTP  | SCTP_ADAPTION_LAYER<br>SCTP_ASSOCINFO<br>SCTP_AUTOCLOSE<br>SCTP_DEFAULT_SEND_PARAM<br>SCTP_DISABLE_FRAGMENTS<br>SCTP_EVENTS<br>SCTP_GET_PEER_ADDR_INFO<br>SCTP_I_WANT_MAPPED_V4_ADDR<br>SCTP_INITMSG<br>SCTP_MAXBURST<br>SCTP_MAXSEG<br>SCTP_NODELAY<br>SCTP_PEER_ADDR_PARAMS<br>SCTP_PRIMARY_ADDR<br>SCTP_RTOINFO<br>SCTP_SET_PEER_PRIMARY_ADDR<br>SCTP_STATUS | Y<br>t<br>Y<br>Y<br>Y<br>Y<br>t<br>Y<br>Y<br>Y<br>Y<br>Y<br>t<br>t<br>t<br><br>t | Y<br>Y<br>Y<br>Y<br>Y<br>Y<br><br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br>Y<br><br/> | - 适配层指示<br>- 检查并设置关联信息<br>- 自动关闭操作<br>- 默认发送参数<br>- SCTP分片<br>- 感兴趣事件的通知<br>- 获取对端地址状态<br>- 映射的v4地址<br>- 默认的INIT参数<br>- 最大猝发大小<br>- 最大分片大小<br>- 禁止Nagle算法<br>- 对端地址参数<br>- 主目的地址<br>- RTO信息<br>- 对端的主目的地址<br>- 获取关联状态 | <br><br><br><br>Y<br><br><br>Y<br><br><br><br>Y<br><br><br><br><br><br/> | sctp_setadaption{}<br>sctp_assocparams{}<br>int<br>sctp_sndrcvinfo{}<br>int<br>sctp_event_subscribe{}<br>sctp_paddrinfo{}<br>int<br>sctp_initmsg{}<br>int<br>int<br>int<br>sctp_paddrparams{}<br>sctp_setprim{}<br>sctp_rtoinfo{}<br>sctp_setpeerprim{}<br>sctp_status{} |
 
 
 
@@ -246,7 +246,180 @@ shutdown和SO_LINGER各种情况的总结：
 | --------------------------------- | ------------------------------------------------------------ |
 | shutdown, SHUT_RD                 | 在套接字上不能再发出接收请求；进程仍可往套接字发送数据；套接字接收缓冲区中所有数据被丢弃；再接收到的任何数据由TCP丢弃；对套接字发送缓冲区没有任何影响。 |
 | shutdown, SHUT_WR                 | 在套接字上不能再发出发送请求；进程仍可从套接诶子接收数据；套接字发送缓冲区中的内容被发送到对端，后跟正常的TCP连接终止序列（即发送FIN）；对套接字接收缓冲区无任何影响。 |
-| close, l_onoff = 0（默认情况）    |                                                              |
-| close, l_onoff = 1, l_linger = 0  |                                                              |
-| close, l_onoff = 1, l_linger != 0 |                                                              |
+| close, l_onoff = 0（默认情况）    | 在套接字上不能再发出发送或接收请求：套接字发送缓冲区中的内容被发送到对端。如果描述符应用计数变为0，在发送完发送缓冲区中的数据后，跟以正常的TCP连接终止序列（即发送FIN）；套接字接收缓冲区中内容被丢弃。 |
+| close, l_onoff = 1, l_linger = 0  | 在套接字上不能再发出发送或接收请求。如果描述符引用计数变为0：RST被发送到对端；连接的状态被设置为CLOSED（没有TIME_WAIT状态）；套接字发送缓冲区和套接字接收缓冲区中的数据被丢弃。 |
+| close, l_onoff = 1, l_linger != 0 | 在套接字上不能再发出发送或接收请求；套接字发送缓冲区中的数据被发送到对端。如果描述符引用计数变为0：在发送完发送缓冲区中的数据后，跟以正常的TCP连接终止序列（即发送FIN）；套接字接收缓冲区中数据被丢弃；如果在连接变为CLOSED状态前延滞时间到，那么close返回EWOULDBLOCK错误。 |
+
+### SO_OOBINLINE套接字选项
+
+### SO_RCVBUF和SO_SNFBUF套接字选项
+
+这两个套接字选项允许我们改变这两个缓冲区的默认大小。
+
+根据TCP快速恢复算法的工作机制，TCP套接字缓冲区的大小至少为MSS值的4倍。
+
+![7-13](res/7-13.png)
+
+管道的容量称为带宽-延迟积（bandwidth-delay product），它通过将带宽（bit/s）和RTT（秒）相乘，再将结果由位转换为字节计算得到。
+
+带宽是相应于两个端点之间最慢链路的值，是已知的。
+
+例：RTT为60ms的一条T1链路（1536000 bit/s）的带宽-延迟积为11520字节，如果套接字缓冲区小于该值，管道将不会处于满状态。
+
+### SO_RCVLOWAT和SO_SNDLOWAT套接字选项
+
+接收低水位和发送低水位，由select函数使用；
+
+### SO_RCVTIMEO和SO_SNDTIMEO套接字选项
+
+接收超时和发送超时。
+
+分别影响到5个输入函数：
+
+- read
+- readv
+- recv
+- recvfrom
+- recvmsg
+
+和5个输出函数：
+
+- write
+- writev
+- send
+- sendto
+- sendmsg
+
+### SO_REUSEADDR和SO_REUSEPORT套接字选项
+
+SO_REUSEADDR套接字选项的4个用途：
+
+- SO_REUSEADDR允许启动一个监听服务器并捆绑其众所周知的端口，即使以前建立的将该端口用作他们的本地端口的连接仍然存在。这个条件通常是这样碰到的：
+    1. 启动一个监听服务器
+    2. 连接请求到达，派生一个子进程来处理这个客户
+    3. 监听服务器终止，但子进程继续为现有连接上的客户提供服务
+    4. 重启监听服务器
+    5. 重新绑定端口
+- SO_REUSEADDR允许在同一端口上启动同一服务器的多个实例，只要每个实例捆绑一个不同的本地IP地址即可。
+- SO_REUSEADDR允许单个进程捆绑同一个端口到多个套接字上，值啊摇每次捆绑指定不同的本地IP地址即可。
+- SO_REUSEADDR允许完全重复的捆绑：当一个IP地址和端口已绑定到某个套接字上时，如果传输协议支持，同样的IP地址和端口还可以捆绑到另一个套接字上。一般来说本特性仅支持UDP套接字。
+
+SO_REUSEPORT套接字选项的2个用途：
+
+- 本选项允许完全重复的捆绑，不过只有在想要捆绑同一IP地址和端口的每个套接字都指定了本套接诶子选项才行。
+- 如果被捆绑的IP地址是一个多播地址，那么SO_REUSEADDR和SO_REUSEPORT被认为是等效的。
+
+### SO_TYPE套接字选项
+
+本选项返回套接字的类型，返回的整数值是一个诸如SOCK_STREAM或SOCK_DGRAM之类的值。本选项通常由启动时继承了套接字的进程使用。
+
+### SO_USELOOPBACK套接字选项
+
+仅用于路由域（AF_ROUTE）的套接字，默认设置为打开。当打开时，相应套接诶子将接收在其上发送的任何数据报的一个副本。
+
+
+
+## IPv4套接字选项
+
+### IP_HDRINCL
+
+### IP_OPTIONS
+
+### IP_RECVDSTADDR
+
+### IP_RECVIF
+
+### IP_TOS
+
+### IP_TTL
+
+
+
+## ICMPv6套接字选项
+
+### IVMP6_FILTER
+
+
+
+## IPv6套接字选项
+
+### IPV6_CHECKSUM
+
+### IPV6_DONTFRAG
+
+### IPV6_NEXTHOP
+
+### IPV6_PATHMTU
+
+### IPV6_RECVDSTOPTS
+
+### IPV6_RECVHOPLIMIT
+
+### IPV6_RECVHOPOPTS
+
+### IPV6_RECVPATHMTU
+
+### IPV6_RECVPKTINFO
+
+### IPV6_RECVRTHDR
+
+### IPV6_RECVTCLASS
+
+### IPV6_UNICAST_HOPS
+
+### IPV6_USE_MIN_MTU
+
+### IPV6_V6ONLY
+
+### IPV6_XXX
+
+
+
+## TCP套接字选项
+
+### TCP_MAXSEG
+
+### TCP_NODELAY
+
+
+
+## SCTP套接字选项
+
+### SCTP_ADAPTION_LAYER
+
+### SCTP_ASSOCINFO
+
+### SCTP_AUTOCLOSE
+
+### SCTP_DEFAULT_SEND_PARAM
+
+### SCTP_DISABLE_FRAGMENTS
+
+### SCTP_EVENTS
+
+### SCTP_GET_PEER_ADDR_INFO
+
+### SCTP_I_WANT_MAPPED_V4_ADDR
+
+### SCTP_INITMSG
+
+### SCTP_MAXBURST
+
+### SCTP_MAXSEG
+
+### SCTP_NODELAY
+
+### SCTP_PEER_ADDR_PARAMS
+
+### SCTP_PRIMARY_ADDR
+
+### SCTP_RTOINFO
+
+### SCTP_SET_PEER_PRIMARY_ADDR
+
+### SCTP_STATUS
+
+
+
+## fcntl函数
 
