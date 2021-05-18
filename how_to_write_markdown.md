@@ -154,7 +154,7 @@ $$公式内容$$
 |写法|效果|
 |:--|:--|
 |`$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$`|$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$|
-|`$\forall$, $\exists$, $\because$, $\therefore$`|$\forall$, $\exists$, $\because$, $\therefore$|
+|`$\forall$, $\exists$, $\because$, $\therefore$`, `$\neg$`|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|
 |`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|
 |`$x \cup y$, $x \cap y$, $x \setminus y$`|$x \cup y$, $x \cap y$, $x \setminus y$|
 |`$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$`|$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$|

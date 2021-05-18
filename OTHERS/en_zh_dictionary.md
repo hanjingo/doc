@@ -88,6 +88,8 @@ ambiguity `/ambɪˈɡjuːɪti/` 歧义
 
 anticipate `/ænˈtɪsɪpeɪt/` 预期，期盼
 
+annum `/ˈænəm/`  年
+
 ### ap
 
  [回到A](#A)`__`[回到顶部](#英汉词典)
@@ -267,6 +269,8 @@ ego `/ˈiː.ɡəʊ/` 自我评价，自负，自尊心
 ### el
 
  [回到E](#E)`__`[回到顶部](#英汉词典)
+
+elapse `/əˈlaps/` 过去
 
 election `/ɪˈlɛkʃ(ə)n/` 选举
 
@@ -468,9 +472,15 @@ motivation `/ˌməʊtɪˈveɪʃn/`  动机，意志
 
 # N
 
- [na](#na)`__`[no](#no)`__`[回到顶部](#英汉词典)
+ [na](#na)`__`[ne](#ne)`__`[no](#no)`__`[回到顶部](#英汉词典)
+
+### na
 
 narrow `/ˈnarəʊ/` 狭窄的，变窄，有限的，差距小的
+
+### ne
+
+newbie `/ˈnjuːbi/` 新手
 
 ### no
 
@@ -656,6 +666,8 @@ significantly `/sɪɡˈnɪf.ɪ.kənt.li/` 显著的，相当数量地
 
 simplification `/ˌsɪmplɪfɪˈkeɪʃ(ə)n/` 简化
 
+simulation `/ˌsimyəˈlāSH(ə)n/` 模拟，仿真
+
 ### sl
 
 [回到S](#S)`__`[回到顶部](#英汉词典)
@@ -744,7 +756,15 @@ utmost `//` 极度，极端，最...
 
 # V
 
- [回到顶部](#英汉词典)
+ [va](#va)`__`[ve](#ve)`__`[回到顶部](#英汉词典)
+
+### va
+
+valuation `/ˌvæljuˈeɪʃn/` 估价，评估
+
+### ve
+
+verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 
 ---
 
