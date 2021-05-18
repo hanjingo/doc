@@ -11,6 +11,8 @@
 - [维基百科-Ethash](https://zh.wikipedia.org/wiki/Ethash)
 - [以太坊Ethash算法源码分析](https://blog.csdn.net/TurkeyCock/article/details/81364008)
 - [ETH挖矿软件排行榜2021【NVIDIA/AMD】](https://zhuanlan.zhihu.com/p/350626020)
+- [挖矿网](https://www.wk588.com/forum-80-1.html)
+- [“挖矿”劝退篇：我来给你算算到底划算不，还有市场行情分析](https://www.163.com/dy/article/G374888A0550VSCB.html)
 
 
 
@@ -23,7 +25,7 @@
 | 操作系统         | windows, linux                                               |
 | 虚拟内存         | 1张显卡(GPU)需要配置6G虚拟内存（2张GPU需要12G）。            |
 | GPU              | NVDIA或AMD，显存不低于5G                                     |
-| 软件（任选一个） | [ethminer-开源](https://github.com/ethereum-mining/ethminer)<br>[xmrig-开源](https://github.com/xmrig/xmrig)<br>[cpuminer-开源](https://github.com/pooler/cpuminer)<br>Bminer<br>lolMiner<br>NBMiner<br>minerOS<br>轻松矿工<br>开源矿工<br>PhoenixMiner |
+| 软件（任选一个） | - [ethminer-开源](https://github.com/ethereum-mining/ethminer)<br>- [Gminer](https://github.com/develsoftware/GMinerRelease)<br>- [T-Rex](https://trex-miner.com/)<br>- [lolMiner](https://github.com/Lolliedieb/lolMiner-releases)<br>- [PhoenixMiner](https://phoenixminer.org/)<br>- [xmrig-开源](https://github.com/xmrig/xmrig)<br>- [cpuminer-开源](https://github.com/pooler/cpuminer)<br>- Bminer<br>- NBMiner<br>- minerOS<br>- 轻松矿工<br>- 开源矿工 |
 
 
 
@@ -88,4 +90,36 @@ Ethash算法主要分为以下几个步骤：
 ### 挖矿流程
 
 ![miner2](res/miner2.png)
+
+
+
+## 挖矿软件选择
+
+[参考自](https://zhuanlan.zhihu.com/p/350626020)
+
+Nidia显卡：
+
+| 算力排名 | 软件          | 版本   | 是否开源 | 费用  |
+| -------- | ------------- | ------ | -------- | ----- |
+| 1        | Gminer        | 2.43   | 否       | 0.65% |
+| 2        | T-Rex         | 0.19.9 | 否       | 1%    |
+| 3        | ethminer      | 0.19.0 | 是       | 免费  |
+| 4        | lolMiner      | 1.20   | 否       | ？    |
+| 5        | Phoenix Miner | 5.5c   | 否       | 1%    |
+
+Amd显卡：todo
+
+| 算力排名 | 软件 | 版本 | 是否开源 | 费用 | 硬件要求 |
+| -------- | ---- | ---- | -------- | ---- | -------- |
+| 1        |      |      |          |      |          |
+| 2        |      |      |          |      |          |
+| 3        |      |      |          |      |          |
+| 4        |      |      |          |      |          |
+| 5        |      |      |          |      |          |
+
+
+
+## 矿池选择
+
+todo
 

@@ -7,6 +7,7 @@
 - [make教程](make.md)
 - [代理设置](proxy.md)
 - [重新绑定键](rebind_key.md)
+- [shell指南](shell.md)
 - [测试报告模板](test.md)
 - [vim快捷键](vim_shortcut.md)
 - [vimium快捷键](vimium_shortcut.md)

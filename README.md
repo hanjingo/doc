@@ -5,13 +5,13 @@
 - [数据库](DB/README.md)
 - [分布式](DCS/README.md)
 - [经济](ECONOMIC/README.md)
-- [经验大全](EXPERIENCE/README.md)
-
+- [生存经验](LIFE/README.md)
 - [多媒体](MEDIA/README.md)
 - [网络](NET/README.md)
 - [读书笔记](NOTE/README.md)
 - [杂文](OTHERS/README.md)
 - [源码分析](SRC/README.md)
+- [架构](STRUCT/README.md)
 
 # 快捷导航
 - [英汉词典](OTHERS/en_zh_dictionary.md)
@@ -20,6 +20,7 @@
 - [vim常用快捷键](OTHERS/vim_shortcut.md)
 - [linux常用命令](OTHERS/linux_cmd.md)
 - [git指南](OTHERS/git.md)
+- [shell指南](OTHERS/sh.md)
 - [chrome插件vimium常用快捷键](OTHERS/vimium_shortcut.md)
 - [STL速查手册](C++/STL/api.md)
 - [BOOST速查手册](C++/BOOST/api.md)
