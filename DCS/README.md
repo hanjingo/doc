@@ -14,7 +14,6 @@
   - [dpos(股份授权证明)](ALGO/dpos.md)
   - [pos(权益证明)](ALGO/pos.md)
   - [pow(工作量证明)](ALGO/pow.md)
-  - [零知识证明](ALGO/zkp.md)
 - EOS
     - [eos环境搭建](EOS/INSTALL/README.md)
     - [eos启动脚本](EOS/RUN/README.md)

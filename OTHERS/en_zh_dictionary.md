@@ -164,6 +164,8 @@ circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
  [回到C](#C)`__`[回到顶部](#英汉词典)
 
+collision `/kəˈlɪʒn/` 碰撞，冲突
+
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
 combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
@@ -667,6 +669,8 @@ slim `/slɪm/` 苗条的
 spectrum `/spɛktrəm/` 光谱，派别
 
 spectator `/spɛkˈteɪtə/` 观众
+
+spray `/spreɪ/` 喷洒，浪花，喷剂
 
 ### st
 

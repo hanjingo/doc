@@ -1,5 +1,5 @@
 # 目录
-- [算法](ALGORITHMS)
+- [算法](ALGORITHMS/README.md)
 - [编码之坑](BUG/README.md)
 - [C++](C++/README.md)
 - [数据库](DB/README.md)
@@ -10,8 +10,8 @@
 - [网络](NET/README.md)
 - [读书笔记](NOTE/README.md)
 - [杂文](OTHERS/README.md)
+- [项目](PROJ/README.md)
 - [源码分析](SRC/README.md)
-- [架构](STRUCT/README.md)
 
 # 快捷导航
 - [英汉词典](OTHERS/en_zh_dictionary.md)
