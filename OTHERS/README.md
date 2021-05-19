@@ -1,4 +1,3 @@
-- [在树莓派安装ipfs教程](build_raspberry_pi_ipfs_image.md)
 - [cmake教程](./cmake.md)
 - [emacs快捷键](emacs_shortcut.md)
 - [GIT](git.md)
@@ -11,4 +10,5 @@
 - [测试报告模板](test.md)
 - [vim快捷键](vim_shortcut.md)
 - [vimium快捷键](vimium_shortcut.md)
+- [wiki 模板](wiki_tmpl.md)
 
