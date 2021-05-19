@@ -365,31 +365,63 @@ SO_REUSEPORT套接字选项的2个用途：
 
 ### IPV6_CHECKSUM
 
+本选项指定用户数据中校验和所处位置的字节偏移，默认值（-1）。
+
 ### IPV6_DONTFRAG
+
+本选项禁止为UDP套接字或原始套接字自动插入分片首部，外出分组中大小超过发送接口MTU的那些分组将被丢弃。
 
 ### IPV6_NEXTHOP
 
+本选项不能设置，只能获取。获取本选项时，返回值为由路径MTU发现功能确定的当前MTU。
+
 ### IPV6_PATHMTU
+
+本选项不能设置，只能获取。获取本选项时，返回值为由路径MTU发祥功能确定的当前MTU。
 
 ### IPV6_RECVDSTOPTS
 
+开启本选项表明，任何接收到的IP6目的地址选项都将由recvmsg作为辅助数据返回，默认关闭。
+
 ### IPV6_RECVHOPLIMIT
+
+开启本选项表明，任何接收到的跳限字段都将由recvmsg作为辅助数据返回，默认关闭。
 
 ### IPV6_RECVHOPOPTS
 
+开启本选项表明，任何接收到的IPv6步跳选项都将由recvmsg作为辅助数据返回，默认关闭。
+
 ### IPV6_RECVPATHMTU
+
+开启本选项表明，某条路径的路径MTU在发生变化时将由recvmsg作为辅助数据返回（不伴随任何数据）。
 
 ### IPV6_RECVPKTINFO
 
+开启本选项表明，接收到的IPv6数据报的以下两条信息将由recvmsg作为辅助数据返回：目的IP6地址和到达接口索引。
+
 ### IPV6_RECVRTHDR
+
+开启本选项表明，接收到的IPv6路由首部将由recvmsg作为辅助数据返回，默认关闭。
 
 ### IPV6_RECVTCLASS
 
+开启本选项表明，接收到的流通类别（包含DSCP和ECN字段）将由recvmsg作为辅助数据返回，默认关闭。
+
 ### IPV6_UNICAST_HOPS
+
+设置本选项会给在相应套接字上发送的外出数据报指定默认跳限，获取本选项会返回内核用于相应套接字的跳限值。
 
 ### IPV6_USE_MIN_MTU
 
+默认-1
+
+- 1：路径MTU发现功能不必执行，为避免分片，分组就使用IPv6的最小MTU发送。
+- 0：路径MTU发现功能对于所有目的地都得执行。
+- -1：路径MTU发现功能仅对单播目的地执行，对于多播目的地就使用最小MTU。
+
 ### IPV6_V6ONLY
+
+开启本选项将限制它只执行IP6通信，默认关闭。
 
 ### IPV6_XXX
 
@@ -399,7 +431,13 @@ SO_REUSEPORT套接字选项的2个用途：
 
 ### TCP_MAXSEG
 
+本选项允许我们获取或设置TCP连接的最大分节大小（MSS）。
+
 ### TCP_NODELAY
+
+开启本选项将禁止TCP的Nagle算法，默认开启。
+
+![7-14/15](res/7-14.png)
 
 
 
@@ -407,11 +445,77 @@ SO_REUSEPORT套接字选项的2个用途：
 
 ### SCTP_ADAPTION_LAYER
 
+本选项允许调用者获取或设置将由本端提供给对端的适配层指示（adaption layer indication），获取本选项的值时，调用者得到的是本地套接字将提供给所有未来对端的值；要获取对端的适配层指示，应用进程必须预定适配层事件。
+
 ### SCTP_ASSOCINFO
+
+本套接字用于以下目的：
+
+- 获取关于某个现有关联的信息
+- 改变某个已有关联的参数
+- 为未来的关联设置默认信息
+
+应该使用`sctp_opt_info`函数来获取关联信息，输入`sctp_assocparams`作为参数：
+
+```c
+struct sctp_assocparams {
+    sctp_assoc_t sasoc_assoc_id;
+    u_int16_t sasoc_asocmaxrxt;
+    u_int16_t sasoc_number_peer_destinations;
+    u_int32_t sasoc_peer_rwnd;
+    u_int32_t sasoc_local_rwnd;
+};
+```
+
+- `sasoc_assoc_id`：存放待访问关联的标识（即关联ID）
+- `sasoc_asocmaxrxt`：存放某个关联在已发送数据没有得到确认的情况下尝试重传的最大次数。
+- `sasoc_number_peer_destinations`：存放对端目的地址数，不能设置，只能获取
+- `sasoc_peer_rwnd`：存放对端的当前接收窗口，表示还能发送给对端的数据子节
+- `sasoc_local_rwnd`：存放本地SCTP协议栈当前通告对端的接收窗口，本字段是动态的，受SO_SNDBUF套接字选项影响；它不能设置，只能获取
+- `sosoc_cookie_life`：存放送给对端的状态cookie以毫秒为单位的有效期
 
 ### SCTP_AUTOCLOSE
 
+本选项允许我们获取或设置一个SCTP端点的自动关闭时间（一个SCTP关联在空闲时保持打开的秒数）
+
 ### SCTP_DEFAULT_SEND_PARAM
+
+在发送大量消息时，使用此选项可以让所有消息具有相同的发送参数。本选项接收`sctp_sndrcvinfo`结构作为输入。
+
+```c
+struct sctp_sndrcvinfo {
+    u_int16_t sinfo_stream;
+    u_int16_t sinfo_ssn;
+    u_int16_t sinfo_flags;
+    u_int32_t sinfo_ppid;
+    u_int32_t sinfo_context;
+    u_int32_t sinfo_timetolive;
+    u_int32_t sinfo_tsn;
+    u_int32_t sinfo_cumtsn;
+    sctp_assoc_t sinfo_assoc_id;
+};
+```
+
+- sinfo_stream：指定新的默认流，所有外出消息将被发送到该流中
+
+- sinfo_ssn：在设置默认发送参数时被忽略。当使用recvmsg或sctp_recvmsg函数接收消息时，本字段将存放由对端置于SCTP DATA块的流序号（stream sequence number， SSN）字段中的值
+
+- sinfo_flags：指定新的默认标志，他们将应用于所有消息发送
+
+    sinfo_flags字段允许的SCTP标志值：
+
+    | 常值          | 说明 |
+    | ------------- | ---- |
+    | MSG_ABORT     |      |
+    | MSG_ADDR_OVER |      |
+    | MSG_EOF       |      |
+    | MSG_PR_BUFFER |      |
+    | MSG_PR_SCTP   |      |
+    | MSG_UNORDERED |      |
+
+- sinfo_ppid：指定将置于所有外出消息中的SCTP净荷协议标识(payload protocol identifier)字段的默认值
+
+- sinfo_context：指定新的默认上下文。本字段是个本地标志，用于检索无法发送到对端的消息
 
 ### SCTP_DISABLE_FRAGMENTS
 
