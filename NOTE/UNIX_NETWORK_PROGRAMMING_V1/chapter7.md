@@ -1,5 +1,72 @@
 # 第七章 套接字选项
 
+- [第七章 套接字选项](#第七章-套接字选项)
+  - [概述](#概述)
+  - [getsockopt和setsockopt函数](#getsockopt和setsockopt函数)
+  - [检查选项是否受支持并获取默认值](#检查选项是否受支持并获取默认值)
+  - [套接字状态](#套接字状态)
+  - [通用套接字选项](#通用套接字选项)
+    - [SO_BROADCAST](#so_broadcast)
+    - [SO_DEBUG](#so_debug)
+    - [SO_DONTROUTE](#so_dontroute)
+    - [SO_ERROR](#so_error)
+    - [SO_KEEPALIVE](#so_keepalive)
+    - [SO_LINGER](#so_linger)
+    - [SO_OOBINLINE](#so_oobinline)
+    - [SO_RCVBUF和SO_SNFBUF](#so_rcvbuf和so_snfbuf)
+    - [SO_RCVLOWAT和SO_SNDLOWAT](#so_rcvlowat和so_sndlowat)
+    - [SO_RCVTIMEO和SO_SNDTIMEO](#so_rcvtimeo和so_sndtimeo)
+    - [SO_REUSEADDR和SO_REUSEPORT](#so_reuseaddr和so_reuseport)
+    - [SO_TYPE](#so_type)
+    - [SO_USELOOPBACK](#so_useloopback)
+  - [IPv4套接字选项](#ipv4套接字选项)
+    - [IP_HDRINCL](#ip_hdrincl)
+    - [IP_OPTIONS](#ip_options)
+    - [IP_RECVDSTADDR](#ip_recvdstaddr)
+    - [IP_RECVIF](#ip_recvif)
+    - [IP_TOS](#ip_tos)
+    - [IP_TTL](#ip_ttl)
+  - [ICMPv6套接字选项](#icmpv6套接字选项)
+    - [IVMP6_FILTER](#ivmp6_filter)
+  - [IPv6套接字选项](#ipv6套接字选项)
+    - [IPV6_CHECKSUM](#ipv6_checksum)
+    - [IPV6_DONTFRAG](#ipv6_dontfrag)
+    - [IPV6_NEXTHOP](#ipv6_nexthop)
+    - [IPV6_PATHMTU](#ipv6_pathmtu)
+    - [IPV6_RECVDSTOPTS](#ipv6_recvdstopts)
+    - [IPV6_RECVHOPLIMIT](#ipv6_recvhoplimit)
+    - [IPV6_RECVHOPOPTS](#ipv6_recvhopopts)
+    - [IPV6_RECVPATHMTU](#ipv6_recvpathmtu)
+    - [IPV6_RECVPKTINFO](#ipv6_recvpktinfo)
+    - [IPV6_RECVRTHDR](#ipv6_recvrthdr)
+    - [IPV6_RECVTCLASS](#ipv6_recvtclass)
+    - [IPV6_UNICAST_HOPS](#ipv6_unicast_hops)
+    - [IPV6_USE_MIN_MTU](#ipv6_use_min_mtu)
+    - [IPV6_V6ONLY](#ipv6_v6only)
+    - [IPV6_XXX](#ipv6_xxx)
+  - [TCP套接字选项](#tcp套接字选项)
+    - [TCP_MAXSEG](#tcp_maxseg)
+    - [TCP_NODELAY](#tcp_nodelay)
+  - [SCTP套接字选项](#sctp套接字选项)
+    - [SCTP_ADAPTION_LAYER](#sctp_adaption_layer)
+    - [SCTP_ASSOCINFO](#sctp_associnfo)
+    - [SCTP_AUTOCLOSE](#sctp_autoclose)
+    - [SCTP_DEFAULT_SEND_PARAM](#sctp_default_send_param)
+    - [SCTP_DISABLE_FRAGMENTS](#sctp_disable_fragments)
+    - [SCTP_EVENTS](#sctp_events)
+    - [SCTP_GET_PEER_ADDR_INFO](#sctp_get_peer_addr_info)
+    - [SCTP_I_WANT_MAPPED_V4_ADDR](#sctp_i_want_mapped_v4_addr)
+    - [SCTP_INITMSG](#sctp_initmsg)
+    - [SCTP_MAXBURST](#sctp_maxburst)
+    - [SCTP_MAXSEG](#sctp_maxseg)
+    - [SCTP_NODELAY](#sctp_nodelay)
+    - [SCTP_PEER_ADDR_PARAMS](#sctp_peer_addr_params)
+    - [SCTP_PRIMARY_ADDR](#sctp_primary_addr)
+    - [SCTP_RTOINFO](#sctp_rtoinfo)
+    - [SCTP_SET_PEER_PRIMARY_ADDR](#sctp_set_peer_primary_addr)
+    - [SCTP_STATUS](#sctp_status)
+  - [fcntl函数](#fcntl函数)
+
 
 
 ## 概述
@@ -175,26 +242,26 @@ main(int argc, char **argv)
 
 ## 通用套接字选项
 
-### SO_BROADCAST套接字选项
+### SO_BROADCAST
 
 本选项开启或禁止进程发送广播信息的能力，应用进程在发送广播数据报之前必须设置本套接字选项。
 
-### SO_DEBUG套接字选项
+### SO_DEBUG
 
 **仅由TCP支持**。当给一个TCP套接字开启本选项时，内核将为TCP在该套接字发送和接收的所有分组保留详细跟踪信息。
 
-### SO_DONTROUTE套接字选项
+### SO_DONTROUTE
 
 外出的分组将绕过底层协议的正常路由机制，外出分组将被定向到适当的本地接口。
 
-### SO_ERROR套接字选项
+### SO_ERROR
 
 当一个套接字发生错误时，内核会将套接字的so_error（待处理错误， pending error）设置为格式`Exxx`的样式。内核以下面的方式之一立即通知进程这个错误：
 
 - 如果进程阻塞在对该套接字的select调用上，那么无论是检查可读条件还是可写条件，select均返回并设置其中一个或所有两个条件。
 - 如果进程使用信号驱动式`I/O`模型，那就给进程或进程组产生一个SIGIO信号。
 
-### SO_KEEPALIVE套接字选项
+### SO_KEEPALIVE
 
 给一个TCP套接字设置保持存活（keep-alive）选项后，如果2小时内在该套接字的任一方向上都没有数据交换，TCP就自动给对端发送一个保持存活探测分节（keep-alive probe）。它会导致以下三种情况之一：
 
@@ -202,7 +269,7 @@ main(int argc, char **argv)
 - 对端以RST响应，它告知本端TCP：对端已崩溃且已重新启动；该套接字的待处理错误被设置为ECONNRESET，套接字本身被关闭。
 - 对端对保持存活探测分节没有任何响应，该套接字的待处理错误就被设置为ETIMEOUT，套接字被关闭。
 
-### SO_LINGER套接字选项
+### SO_LINGER
 
 指定close函数对面向连接的协议如何操作，要求在用户进程与内核间传递如下结构：
 
@@ -250,9 +317,9 @@ shutdown和SO_LINGER各种情况的总结：
 | close, l_onoff = 1, l_linger = 0  | 在套接字上不能再发出发送或接收请求。如果描述符引用计数变为0：RST被发送到对端；连接的状态被设置为CLOSED（没有TIME_WAIT状态）；套接字发送缓冲区和套接字接收缓冲区中的数据被丢弃。 |
 | close, l_onoff = 1, l_linger != 0 | 在套接字上不能再发出发送或接收请求；套接字发送缓冲区中的数据被发送到对端。如果描述符引用计数变为0：在发送完发送缓冲区中的数据后，跟以正常的TCP连接终止序列（即发送FIN）；套接字接收缓冲区中数据被丢弃；如果在连接变为CLOSED状态前延滞时间到，那么close返回EWOULDBLOCK错误。 |
 
-### SO_OOBINLINE套接字选项
+### SO_OOBINLINE
 
-### SO_RCVBUF和SO_SNFBUF套接字选项
+### SO_RCVBUF和SO_SNFBUF
 
 这两个套接字选项允许我们改变这两个缓冲区的默认大小。
 
@@ -266,11 +333,11 @@ shutdown和SO_LINGER各种情况的总结：
 
 例：RTT为60ms的一条T1链路（1536000 bit/s）的带宽-延迟积为11520字节，如果套接字缓冲区小于该值，管道将不会处于满状态。
 
-### SO_RCVLOWAT和SO_SNDLOWAT套接字选项
+### SO_RCVLOWAT和SO_SNDLOWAT
 
 接收低水位和发送低水位，由select函数使用；
 
-### SO_RCVTIMEO和SO_SNDTIMEO套接字选项
+### SO_RCVTIMEO和SO_SNDTIMEO
 
 接收超时和发送超时。
 
@@ -290,7 +357,7 @@ shutdown和SO_LINGER各种情况的总结：
 - sendto
 - sendmsg
 
-### SO_REUSEADDR和SO_REUSEPORT套接字选项
+### SO_REUSEADDR和SO_REUSEPORT
 
 SO_REUSEADDR套接字选项的4个用途：
 
@@ -309,11 +376,11 @@ SO_REUSEPORT套接字选项的2个用途：
 - 本选项允许完全重复的捆绑，不过只有在想要捆绑同一IP地址和端口的每个套接字都指定了本套接诶子选项才行。
 - 如果被捆绑的IP地址是一个多播地址，那么SO_REUSEADDR和SO_REUSEPORT被认为是等效的。
 
-### SO_TYPE套接字选项
+### SO_TYPE
 
 本选项返回套接字的类型，返回的整数值是一个诸如SOCK_STREAM或SOCK_DGRAM之类的值。本选项通常由启动时继承了套接字的进程使用。
 
-### SO_USELOOPBACK套接字选项
+### SO_USELOOPBACK
 
 仅用于路由域（AF_ROUTE）的套接字，默认设置为打开。当打开时，相应套接诶子将接收在其上发送的任何数据报的一个副本。
 
@@ -504,46 +571,291 @@ struct sctp_sndrcvinfo {
 
     sinfo_flags字段允许的SCTP标志值：
 
-    | 常值          | 说明 |
-    | ------------- | ---- |
-    | MSG_ABORT     |      |
-    | MSG_ADDR_OVER |      |
-    | MSG_EOF       |      |
-    | MSG_PR_BUFFER |      |
-    | MSG_PR_SCTP   |      |
-    | MSG_UNORDERED |      |
+    | 常值          | 说明                                                         |
+    | ------------- | ------------------------------------------------------------ |
+    | MSG_ABORT     | 启动中止性的关联终止过程                                     |
+    | MSG_ADDR_OVER | 指定SCTP不顾主目的地址而改用给定的地址                       |
+    | MSG_EOF       | 发送完本消息后启动雅致的关联终止过程                         |
+    | MSG_PR_BUFFER | 开启部分可靠性特性（如果可用的话）基于缓冲区的层面（profile） |
+    | MSG_PR_SCTP   | 针对本消息开启部分可靠性特性（如果可用的话）                 |
+    | MSG_UNORDERED | 指定本消息使用无序的消息传递服务                             |
 
 - sinfo_ppid：指定将置于所有外出消息中的SCTP净荷协议标识(payload protocol identifier)字段的默认值
 
 - sinfo_context：指定新的默认上下文。本字段是个本地标志，用于检索无法发送到对端的消息
 
+- sinfo_timetolive：指定新的默认生命期，它将应用于所有消息发送
+
+- sinfo_tsn：在设置默认发送参数时被忽略。当使用recvmsg或sctp_recvmsg函数接收消息时，本字段将存放由对端置于SCTP DATA块的传输序号（transport sequence number, TSN）字段中的值
+
+- sinfo_cumtsn：在设置默认发送参数时被忽略。当使用recvmsg或sctp_recvmsg函数接收消息时，本字段将存放本地SCTP协议栈已与对端挂钩的当前累积TSN。
+
+- sinfo_assoc_id：指定请求者希望对其设置默认参数的关联标识。对于一到一式套接字，本字段被忽略。
+
 ### SCTP_DISABLE_FRAGMENTS
+
+禁止发送端的SCTP把太大而不适合置于单个SCTP分组中的用于消息分割成多个DATA块。
 
 ### SCTP_EVENTS
 
+本套接字选项允许调用者获取，开启或禁止各种SCTP通知。
+
+使用本选项传递一个`sctp_event_subscribe`结构就可以预定8类事件的通知，格式如下：
+
+```c
+struct sctp_event_subscribe {
+    u_int8_t sctp_data_io_event;
+    u_int8_t sctp_association_event;
+    u_int8_t sctp_address_event;
+    u_int8_t sctp_send_failure_event;
+    u_int8_t sctp_peer_error_event;
+    u_int8_t sctp_shutdown_event;
+    u_int8_t sctp_partial_delivery_event;
+    u_int8_t sctp_adaption_layer_event;
+};
+```
+
+- sctp_data_io_event：开启/禁止每次recvmsg调用返回sctp_sndrcvinfo
+- sctp_association_event：开启/禁止关联建立事件通知
+- sctp_address_event：开启/禁止地址事件通知
+- sctp_send_failure_event：开启/禁止消息发送故障事件通知
+- sctp_peer_error_event：开启/禁止对端协议出错事件通知
+- sctp_shutdown_event：开启/禁止关联终止事件通知
+- sctp_partial_delivery_event：开启/禁止部分递送API事件通知
+- sctp_adaption_layer_event：开启/禁止适配层事件通知
+
 ### SCTP_GET_PEER_ADDR_INFO
+
+本选项仅用于获取某个给定对端地址的相关信息，包括拥塞窗口，平滑化后的RTT和MTU等。
+
+本选项输入的是sctp_paddrinfo结构：
+
+```c
+struct sctp_paddrinfo {
+    sctp_assoc_t spinfo_assoc_id;
+    struct sockaddr_storage spinfo_address;
+    int32_t spinfo_state;
+    u_int32_t spinfo_cwd;
+    u_int32_t spinfo_srtt;
+    u_int32_t spinfo_rto;
+    u_int32_t spinfo_mtu;
+};
+```
+
+- spinfo_assoc_id：存放关联标识，它和"communication up"（通信开始）即SCTP_COMM_UP通知中提供的信息一致。几乎所有SCTP操作都可以使用这个唯一的值作为相应关联的简明标识。
+
+- spinfo_address：由调用者设置，用于告知SCTP套接字想要获取哪一个对端地址的信息。调用返回时其值不应该改变。
+
+- spinfo_state：
+
+    SCTP对端地址状态：
+
+    | 常值                  | 说明                         |
+    | --------------------- | ---------------------------- |
+    | SCTP_ACTIVE           | 地址活跃且可达               |
+    | SCTP_INACTIVE         | 地址当前不可达               |
+    | SCTP_ADDR_UNCONFIRMED | 地址尚未由心搏或用户数据证实 |
+
+- spinfo_cwnd：表示为所指定对端地址维护的当前拥塞窗口
+
+- spinfo_srtt：表示就所指定对端地址而言的平滑化后RTT的当前估计值
+
+- spinfo_rto：表示用于所指定对端地址的当前重传超时值
+
+- spinfo_mtu：表示由路径MTU发现功能发现的通往所指定对端地址的路径MTU的当前值
 
 ### SCTP_I_WANT_MAPPED_V4_ADDR
 
+这个标志套接字选项用于为AF_INET6类型的套接字开启或禁止IPv4映射地址，其默认状态为开启。
+
 ### SCTP_INITMSG
+
+本套接字选项用于获取或设置某个SCTP套接字在发送INIT消息时所用的默认初始参数。
+
+作为本选项的输入的是sctp_initmsg结构如下：
+
+```c
+struct sctp_initmsg {
+    uint16_t sinit_num_ostreams;
+    uint16_t sinit_max_instreams;
+    uint16_t sinit_max_attempts;
+    uint16_t sinit_max_init_timeo;
+};
+```
+
+- sinit_num_ostreams：表示应用进程想要请求的外出SCTP流的数目。该值要等到相应关联完成初始握手后才得到确认，而且可能因为对端的限制而向下协调。
+- sinit_max_instreams：表示应用进程准备允许的外来SCTP流的最大数目。如果该值大于SCTP协议栈所支持的最大允许流数，那么它将被改为这个最大数。
+- sinit_max_attempts：表示SCTP协议栈应该重传多少次初始INIT消息才认为对端不可达。
+- sinit_max_init_timeo：表示用于INIT定时器的最大RTO值。在初始定时器进行指数退避期间，该值将替代RTO.max作为重传RTO极限。该值以毫秒为单位。
 
 ### SCTP_MAXBURST
 
+本套接字选项允许应用进程获取或设置用于分组发送的最大猝发大小（maximum burst size），当SCTP向对端发送数据时，一次不能发送多于这个数目的分组，以免网络被分组淹没。
+
 ### SCTP_MAXSEG
+
+本套接字选项允许应用进程获取或设置用于SCTP分片的最大片段大小(maximum fragment size)。
 
 ### SCTP_NODELAY
 
+本选项开启将禁止SCTP的Nagle算法，本选项默认关闭，即Nagle算法默认开启。
+
 ### SCTP_PEER_ADDR_PARAMS
+
+本套接字选项允许应用进程获取或设置关于某个关联的对端地址的各种参数。
+
+作为本选项的输入的是sctp_paddrparams结构：
+
+```c
+struct sctp_paddrparams {
+    sctp_assoc_t spp_assoc_id;
+    struct sockaddr_storage spp_address;
+    u_int32_t spp_hbinterval;
+    u_int16_t spp_pathmaxrxt;
+};
+```
+
+- spp_assoc_id：存放在其上获取或设置参数信息的关联标识。
+    - 0：所访问的是端点默认参数，而不是特定于关联的参数。
+- spp_address：指定其参数待获取或待设置的对端IP地址。如果spp_assoc_id字段值为0，那么本字段被忽略。
+- spp_hbinterval：表示心搏间隔时间。
+    - SCTP_NO_HB：禁止心搏
+    - SCTP_ISSUE_HB：按请求心搏
+    - 其它：把心搏间隔重置为以毫秒为单位的新值
+- spp_pathmaxrxt：标识在声明所指定对端地址为不活跃之前将尝试的重传次数。当主目的地址被声明为不活跃时，另外一个对端地址将被选为主目的地址
 
 ### SCTP_PRIMARY_ADDR
 
+本选项用于获取或设置本地端点所用的主目的地址，主目的地址是本端发送给对端的所有消息的默认目的地址。使用sctp_setprim结构：
+
+```c
+struct sctp_setprim {
+    sctp_assoc_t ssp_assoc_id;
+    struct sockaddr_storage ssp_addr;
+};
+```
+
+- ssp_assoc_id：存放在其上获取或设置当前主目的地址的关联标识
+- ssp_addr：指定主目的地址（主目的地址必须是一个属于对端的地址）
+
 ### SCTP_RTOINFO
+
+本套接字选项用于获取或设置各种RTO信息。
+
+输入`sctp_rtoinfo`结构
+
+```c
+struct sctp_rtoinfo {
+    sctp_assoc_t srto_assoc_id;
+    uint32_t srto_initial;
+    uint32_t srto_max;
+    uint32_t srto_min;
+};
+```
+
+- srto_assoc_id：存放感兴趣关联的标识或0。若值为0，当前函数调用会对系统的默认参数产生影响。
+- srto_initial：存放用于对端地址的初始RTO值。初始RTO值在向对端发送INIT块时使用。该值以毫秒为单位且默认值为3000。
+- srto_max：存放在更新重传定时器时使用的最大RTO值。
+- srto_min：存放在启动重传定时器时使用的最小RTO值。
 
 ### SCTP_SET_PEER_PRIMARY_ADDR
 
+**可选**，设置本套接字选项导致发送一个消息：请求对端把所指定的本地地址作为它的主目的地址。
+
+使用一个`sctp_setpeerprim`作为输入，结构如下：
+
+```c
+struct sctp_setpeerprim {
+    sctp_assoc_t sspp_assoc_id;
+    struct sockaddr_storage sspp_addr;
+};
+```
+
+- sspp_assoc_id：指定在其上想要设置主目的地址的关联标识。
+- sspp_addr：存放想要对端设置为主目的地址的本地地址。
+
 ### SCTP_STATUS
+
+本套接字选项用于获取某个SCTP关联的状态。
+
+输入`sctp_status`结构如下：
+
+```c
+struct sctp_status {
+    sctp_assoc_t sstat_assoc_id;
+    int32_t sstat_state;
+    u_int32_t sstat_rwnd;
+    u_int16_t sstat_unackdata;
+    u_int16_t sstat_penddata;
+    u_int16_t sstat_instrms;
+    u_int16_t sstat_outstrms;
+    u_int32_t sstat_fragmentation_point;
+    struct sctp_paddrinfo sstat_primary;
+};
+```
+
+- sstat_assoc_id：存放关联标识
+
+- sstat_state：存放SCTP状态之一，指出关联的总体状态
+
+    SCTP状态：
+
+    | 常值                   | 说明                        |
+    | ---------------------- | --------------------------- |
+    | SCTP_CLOSED            | 关联已关闭                  |
+    | SCTP_COOKIE_WAIT       | 关联已发送INIT              |
+    | SCTP_COOKIE_ECHOED     | 关联已回射COOKIE            |
+    | SCTP_ESTABLISHED       | 关联已建立                  |
+    | SCTP_SHUTDOWN_PENDING  | 关联期待发送SHUTDOWN        |
+    | SCTP_SHUTDOWN_SENT     | 关联已发送SHUTDOWN          |
+    | SCTP_SHUTDOWN_RECEIVED | 关联已收到SHUTDOWN          |
+    | SCTP_SHUTDOWN_ACT_SENT | 关联在等待SHUTDOWN-COMPLETE |
+
+- sstat_rwnd：存放本地端点对于对端接收窗口的当前估计
+
+- sstat_unackdata：存放等着对端处理的未确认DATA块数目
+
+- sstat_penddata：存放本地端点暂存并等着应用进程读取的未读DATA块数据
+
+- sstat_instrms：存放对端用于向本端发送数据的流的数目
+
+- sstat_outstrms：存放本端可用于向对端发送数据的流的数目
+
+- sstat_fragmentation_point：存放本地SCTP端点将其用作用户消息分割点的当前值
+
+- sstat_primary：存放当前主目的地址，主目的地址是向对端发送数据时使用的默认目的地址
 
 
 
 ## fcntl函数
 
+头文件`fcntl.h`
+
+`int fcntl(int fd, int cmd, ...)`
+
+- return:
+    - 成功：取决于cmd
+    - 出错：-1
+
+执行各种描述符控制操作。
+
+fcntl，ioctl和路由套接字操作小结：
+
+| 操作                           | fcntl               | ioctl                | 路由套接字 | POSIX      |
+| ------------------------------ | ------------------- | -------------------- | ---------- | ---------- |
+| 设置套接字为非阻塞式`I/O`型    | F_SETFL, O_NONBLOCK | FIONBIO              |            | fcntl      |
+| 设置套接字为信号驱动式`I/O`型  | F_SETFL, O_ASYNC    | FIOASYNC             |            | fcntl      |
+| 设置套接字属主                 | F_SETOWN            | SIOCSPGRP或FIOSETOWN |            | fcntl      |
+| 获取套接字属主                 | F_GETOWN            | SIOCGPGRP或FIOGETOWN |            | fcntl      |
+| 获取套接字接收缓冲区中的字节数 |                     | FIONREAD             |            |            |
+| 测试套接字是否处于带外标志     |                     | SIOCATMARK           |            | sockatmark |
+| 获取接口列表                   |                     | SIOCGIFCONF          | sysctl     |            |
+| 接口操作                       |                     | `SIOC[GS]IFxxx`      |            |            |
+| ARP告诉缓存操作                |                     | SIOCxARP             | RTM_xxx    |            |
+| 路由表操作                     |                     | SIOCxxxRT            | RTM_xxx    |            |
+
+fcntl函数提供了与网络编程相关的如下特性：
+
+- 非阻塞式`I/O`：通过使用F_SETFL命令设置O_NONBLOCK文件状态标志，我们可以把一个套接字设置为非阻塞型
+- 信号驱动式`I/O`：通过使用F_SETFL命令设置O_ASYNC文件状态标志，我们可以把一个套接字设置成一旦其状态发生变化，内核就产生了一个SIGIO信号。
+- F_SETOWN：命令允许我们指定用于接收SIGIO和SIGURG信号的套接字属主。其中SIGIO信号是套接字被设置为信号驱动式I/O型后产生的，SIGURG信号是在新的带外数据到达套接字时产生的。F_GETOWN命令返回套接字的当前属主。

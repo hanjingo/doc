@@ -132,7 +132,9 @@ bracket `/ˈbrakɪt/` 在括号中，支架，等级
 
 ### bu
 
-Bully `/bʊli/` 威吓，霸道
+bully `/bʊli/` 威吓，霸道
+
+burst `/bɜːst/`  爆裂，胀开，暴涨
 
 ---
 
@@ -552,6 +554,8 @@ outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
 
+partial `/ˈpɑːʃl/` 部分，不完全的，偏爱
+
 partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔
 
 particular `/pəˈtɪkjʊlə/` 特别的，特指
@@ -589,6 +593,8 @@ profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 procedure `/prəˈsiːdʒə/` 程序
 
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
+
+proteins `/ˈprəʊtiːnz/` 蛋白质
 
 ---
 
@@ -781,6 +787,8 @@ utmost `//` 极度，极端，最...
 # V
 
 ### va
+
+vaccinated `/ˈvæksɪneɪt/`  给...接种疫苗
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
