@@ -1,6 +1,16 @@
 # raft算法
 
-摘要
+
+
+## 参考
+
+- [维基百科-raft](https://zh.wikipedia.org/wiki/Raft)
+
+
+
+## 摘要
+
+raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可冗余，可容错算法)
 
 一种相对paxos更简单的算法;具体流程:raft会先选举出leader，leader完全负责replicated log的管
 理。leader负责接受所有客户端更新请求，然后复制到follower节点，并在“安全”的时候执行这些

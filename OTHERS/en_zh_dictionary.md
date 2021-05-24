@@ -302,6 +302,8 @@ equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
+eviction `/ɪˈvɪkʃn/` 驱逐，驱赶
+
 evolved `/iˈvɒlvd/` 逐渐形成，进化
 
 ### ex
