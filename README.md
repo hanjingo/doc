@@ -1,5 +1,5 @@
 # 目录
-- [算法](ALGORITHMS/README.md)
+- [算法](ALGO/README.md)
 - [编码之坑](BUG/README.md)
 - [C++](C++/README.md)
 - [数据库](DB/README.md)

@@ -321,3 +321,158 @@ public:
 
 **注意：std::unique_lock占用更多空间且使用起来比std::lock_guard略慢**
 
+### 在作用域之间转移锁的所有权
+
+如果源为右值，则所有权转移是自动的，而对于左值，所有权转移必须是显式完成，以避免从变量中意外的转移了所有权。
+
+例：
+
+```c++
+std::unique_lock<std::mutex> get_lock()
+{
+  extern std::mutex some_mutex;
+  std::unique_lock<std::mutex> lk(some_mutex);
+  prepare_data();
+  return lk;	// 函数内声明的变量可以直接返回，而无需调用std::move()
+}
+void process_data()
+{
+  std::unique_lock<std::mutex> lk(get_lock());
+  do_something();
+}
+```
+
+### 锁定在恰当的粒度
+
+```c++
+void get_and_process_data()
+{
+  std::unique_lock<std::mutex> my_lock(the_mutex);
+  some_class data_to_process=get_next_data_chunk();
+  my_lock.unlock();	// 在对process()的调用中不需要锁定互斥元
+  result_type result=process(data_to_process);
+  my_lock.lock();	// 重新锁定互斥元以回写结果
+  write_result(data_to_process, result);
+}
+```
+
+**一般情况下，只应该以执行要求的操作所需的最小可能时间而去持有锁**
+
+在比较运算符中每次锁定一个互斥元:
+
+```c++
+class Y
+{
+private:
+  int some_detail;
+  mutable std::mutex m;
+  int get_detail() const
+  {
+    std::lock_guard<std::mutex> lock_a(m);
+    return some_detail;
+  }
+public:
+  Y(int sd):some_detail(sd){}
+  friend bool operator==(Y const& lhs, Y const& rhs)
+  {
+    if (&lhs==&rhs)
+      return true;
+    int const lhs_value=lhs.get_detail();
+    int const rhs_value=rhs.get_detail();
+    return lhs_value==rhs_value;
+  }
+};
+```
+
+**如果你不能在操作的整个持续时间中持有所需的锁，你就把自己暴露在竞争条件中。**
+
+
+
+## 用于共享数据保护的替代工具
+
+### 在初始化时保护共享数据
+
+使用互斥元进行线程安全的延迟初始化：
+
+```c++
+std::shared_ptr<some_resource> resource_ptr;
+std::mutex resource_mutex;
+void foo()
+{
+  std::unique_lock<std::mutex> lk(resource_mutex);	// 所有的线程在这里被序列化
+  if (!resource_ptr)
+  {
+    resource_ptr.reset(new some_resource);	// 只有初始化需要被保护
+  }
+  lk.unlock();
+  resource_ptr->do_something();
+}
+```
+
+使用std::call_once的线程安全的类成员延迟初始化：
+
+```c++
+class x
+{
+private:
+  connection_info connection_details;
+  connection_handle connection;
+  std::once_flag connection_init_flag;
+  void open_connection()
+  {
+    connection=connection_manager.open(connection_details);
+  }
+public:
+  x(connection_info const& connection_details_):
+  	connection_details(connection_details_)
+  {}
+  void send_data(data_packet const& data) // 初始化
+  {
+    std::call_once(connection_init_flag, &x::open_connection, this);
+    connection.send_data(data);
+  }
+  data_packet receive_data()
+  {
+    std::call_once(connection_init_flag, &x::open_connection, this);
+    return connection.receive_data();
+  }
+};
+```
+
+### 保护很少更新的数据结构
+
+使用boost::share_mutex保护数据结构：
+
+```c++
+#include <map>
+#include <string>
+#include <mutex>
+#include <boost/thread/shared_mutex.hpp>
+class dns_entry;
+class dns_cache
+{
+  std::map<std::string, dns_entry> entries;
+  mutable boost::shared_mutex entry_mutex;
+public:
+  dns_entry find_entry(std::string const& domain) const
+  {
+    boost::shared_lock<boost::shared_mutex> lk(entry_mutex); // 使用boost::share_lock<>来提供共享，只读访问
+    std::map<std::string,dns_entry>::const_iterator const it=
+      entries.find(domain);
+    return (it==entries.end())?dns_entry():it->second;
+  }
+  void update_or_add_entry(std::string const& domain,
+                           dns_entry const& dns_details)
+  {
+    std::lock_guard<boost::shared_mutex> lk(entry_mutex); // 表被更新时提供独占访问
+    entries[domain]=dns_details;
+  }
+}
+```
+
+### 递归锁
+
+在使用std::mutex的情况下，一个线程试图锁定其已经拥有的互斥元是错误的，将导致**未定义行为(undefined behavior)。**
+
+**不推荐使用递归锁。**
+

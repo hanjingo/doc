@@ -4,6 +4,7 @@
   - MapReduce
   - Bigtable
 - **共识算法**
+	- [零知识证明](CONSENSUS/zk-SNARK.md)
 	- [raft-可靠，可复制，可冗余，可容错算法](CONSENSUS/raft.md)
 	- [paxos](CONSENSUS/paxos.md)
 	- [pool-pool验证池](CONSENSUS/pool.md)
@@ -39,5 +40,4 @@
   - [总结](FILECOIN/summary.md)
 - 其它
   - [bancor协议](OTHER/bancor.md)
-  - [kad算法](OTHER/kad.md)
 

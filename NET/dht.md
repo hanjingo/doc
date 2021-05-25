@@ -16,7 +16,7 @@
 
 - 节点id
 
-  全局唯一标识(节点id)，从160位的infohashes中随机产生，即节点id的范围为$[0,2^{160}]$。一个活跃的节点就是能在15分钟之内响应过请求或者在15分钟之内发送过请求的节点。15分钟之内没有活动的话，这个节点变成问题节点，活跃节点比问题节点优先级要高。
+  全局唯一标识(节点id)，一个活跃的节点就是能在15分钟之内响应过请求或者在15分钟之内发送过请求的节点。15分钟之内没有活动的话，这个节点变成问题节点，活跃节点比问题节点优先级要高。
 
 - 度量距离(distance metric)
 
@@ -32,7 +32,7 @@
 
   当一个节点想找到种子文件的peer节点信息时，使用kad算法将种子文件的infohash字段和路由表中的节点id比较，找到距离最近的节点进行通信。
 
-**以上概念属于kad算法范畴，详情请参考[Kademlia算法](kad.md)**
+**以上概念属于kad算法范畴，详情请参考[Kademlia算法]**
 
 
 
@@ -84,26 +84,6 @@ classDiagram
 ## DHT
 
 ### 路由表
-
-路由表被划分为buckets(桶)，每个新建的表包含一个bucket；每个bucket最多存放k个节点，目前k=8。当一个bucket放满了节点之后，将不再允许新的节点加入，此时这个桶分裂为2个桶。
-
-桶结构如下：
-
-![dht1.png](res/dht1.png)
-
-bucket插入节点示意图如下：
-
-```flow
-st=>start: 新的路由表
-insert=>operation: 插入一个新的节点
-is_full=>condition: 是否已满
-input_bucket=>operation: 将节点放入桶
-splict_bucket=>operation: 将桶分割为2个桶，第一个桶范围[0,2^159], 第二个桶范围[2^159,2^160]
-
-st->insert->is_full
-is_full(no)->input_bucket
-is_full(yes)->splict_bucket->input_bucket
-```
 
 bucket管理问题节点示意图如下：
 

@@ -27,7 +27,7 @@
 
 - [编译原理(英文版)](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [深度探索c++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md)
-- [经济学原理(英文版)](THE_PRINCIPLE_OF_ECONOMICS/README.md)
+- [经济学原理-曼昆](THE_PRINCIPLE_OF_ECONOMICS/README.md)
 - [深度探索c++对象模型]
 - [Ceph源码分析]
 

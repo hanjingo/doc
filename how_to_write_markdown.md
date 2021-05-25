@@ -162,6 +162,7 @@ $$公式内容$$
 |`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$`|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$|
 |`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$`|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$|
 |`$\frac{7x+5}{1+y^2}$`|$\frac{7x+5}{1+y^2}$|
+|`$\ln15$, $\log_2 10$, $\lg7$`|$\ln15$, $\log_2 10$, $\lg7$|
 |`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|
 |`$\vec{a} \cdot \vec{b}=0$`|$\vec{a} \cdot \vec{b}=0$|
 |`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|
