@@ -1,5 +1,5 @@
 # 经济
 
-- [金融](FINANCE/README.md)
-- [房地产经济](REAL_ESTATE/README.md)
+- [金融]
+- [房地产经济]
 

@@ -1,4 +1,4 @@
-# Torrent网络
+# BitTorrent协议
 
 
 
@@ -18,4 +18,5 @@
  * [ANT-Downloader](https://github.com/anatasluo/ant)
  * [Go-PeersToHTTP](https://github.com/WinPooh32/peerstohttp)
  * [CortexFoundation/torrentfs](https://github.com/CortexFoundation/torrentfs): P2P file system of cortex full node
+ * [BitTorrent协议](https://github.com/xipfs/IPFS-Internals/blob/master/ebook/03.5.md)
 

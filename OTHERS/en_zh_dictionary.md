@@ -224,6 +224,8 @@ dawn `/dɔːn/` 黎明，破晓
 
 decentralize `/ˌdiːˈsentrəlaɪz/` 分散，下放权力
 
+decouple `/diːˈkʌpl/` 分离，隔断
+
 demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 
 delimiter `/dɪˈlɪmɪt/` 界定
@@ -259,6 +261,8 @@ dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 ### du
 
 [回到D](#D)&ensp;[回到顶部](#英汉词典)
+
+dual `/ˈdjuːəl/` 两部分，双重的
 
 duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
@@ -592,7 +596,7 @@ patent `/ˈpætnt/` 专利权，专利证书
 
 performed `/pəˈfɔːmd/` 演出，扮演，完成，履行
 
-preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
+persist `/pəˈsɪst/`  坚持，维持
 
 ### po
 
@@ -608,6 +612,8 @@ portion `/ˈpɔːʃ(ə)n/` 一部分
 
 predicate `/ˈprɛdɪkeɪt/` 断言
 
+preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
+
 previous `/ˈpriːviəs/` 先前的
 
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
@@ -617,6 +623,8 @@ procedure `/prəˈsiːdʒə/` 程序
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 
 proteins `/ˈprəʊtiːnz/` 蛋白质
+
+prune `/pruːn/` 修剪树干，削减
 
 ---
 
@@ -774,9 +782,11 @@ terabyte `/ˈterəbaɪt/` 万亿字节，太字节
 
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
 
-toned `/təʊnd/` 结实强壮的
+toggle `/ˈtɒɡl/` 切换，转换
 
 tolerance `/ˈtɒlərəns/`  忍受，容忍，公差，容量
+
+toned `/təʊnd/` 结实强壮的
 
 ### tr
 

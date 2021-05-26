@@ -7,7 +7,7 @@
 - [ffmpeg](FFMPEG/READMD.md)
 - [filecoin](FILECOIN/README.md)
 - [ipfs](IPFS/README.md)
-- [libp2p](LIBP2P/README.md)
+- [go-libp2p](GO_LIBP2P/README.md)
 - [redis](REDIS/README.md)
 - [skynet](SKYNET/README.md)
 

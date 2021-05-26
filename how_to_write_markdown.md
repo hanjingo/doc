@@ -495,52 +495,80 @@ gantt
 
 ## 绘制类图
 
-```markdown
-classDiagram
-      Animal <|-- Duck
-      Animal <|-- Fish
-      Animal <|-- Zebra
-      Animal : +int age
-      Animal : +String gender
-      Animal: +isMammal()
-      Animal: +mate()
-      class Duck{
-          +String beakColor
-          +swim()
-          +quack()
-      }
-      class Fish{
-          -int sizeInFeet
-          -canEat()
-      }
-      class Zebra{
-          +bool is_wild
-          +run()
-      }
-```
+- `<|--` 继承
+- `*__` 组合
+- `o--` 聚合
+- `-->`
+- `--`
+- `..>`
+- `..|>`
+- `..`
+- `<<interface>>` 接口
+- `<<abstract>>` 抽象类
+- `<<service>>` 服务类
+- `<<enumeration>>` 枚举
+- `class` 普通类
+- `+` public
+- `-` private
+- `#` protected
+- `$` 静态
+- 不带符号表示 default
+- `～` 包/内部类
+- 类图的画法
+  1. 抽象类的类名以及抽象方法的名字都用斜体字表示
+  2. 接口在类图中的第一层顶端用构造型 `<<interface>>`表示，下面是接口的名字，第二层是方法
 
 ```mermaid
 classDiagram
-      Animal <|-- Duck
-      Animal <|-- Fish
-      Animal <|-- Zebra
-      Animal : +int age
-      Animal : +String gender
-      Animal: +isMammal()
-      Animal: +mate()
-      class Duck{
-          +String beakColor
-          +swim()
-          +quack()
-      }
-      class Fish{
-          -int sizeInFeet
-          -canEat()
-      }
-      class Zebra{
-          +bool is_wild
-          +run()
-      }
+	class 具体类{
+		~ package ~
+		+bool public_value
+		#int protected_value
+		-string private_value
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
+```mermaid
+classDiagram
+	class 抽象类{
+		<<abstract>>
+		~ package ~
+		+bool public_value
+		#int protected_value
+		-string private_value
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
+```mermaid
+classDiagram
+	class 接口{
+		<<interface>>
+		~ package ~
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
+```mermaid
+classDiagram
+	class 枚举{
+		<<enumeration>>
+		ELEM1
+		ELEM2
+		ELEM3
+	}
+```
+```mermaid
+classDiagram
+	class 模版类~T~{
+		+List~T~ public_value
+	}
+	模版类 : -List~T~ private_value
+	模版类 : +public_func(List~T~ messages)
 ```
 
 
