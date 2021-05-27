@@ -662,17 +662,19 @@ recall `/rɪˈkɔːl/` 回忆起，记得
 
 recipients `/rɪˈsɪpɪənts/` 接受者
 
-regulation `/ˌreɡjuˈleɪʃn/` 条例，规章
-
 reflect `/rɪˈflekt/` 反映，反射，表明
 
+regulation `/ˌreɡjuˈleɪʃn/` 条例，规章
+
+replication `/ˌreplɪ'keɪʃ(ə)n/`  复制，拷贝，重复（实验），回答
+
 remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
+
+rendered `/ˈrɛndə/` 使得，提供，送交，表现，描绘
 
 respective `/rɪˈspek.tɪv/`  各自的，分别的
 
 retrieve `/rɪˈtriːv/` 取回，检索，挽救
-
-rendered `/ˈrɛndə/` 使得，提供，送交，表现，描绘
 
 ### ri
 

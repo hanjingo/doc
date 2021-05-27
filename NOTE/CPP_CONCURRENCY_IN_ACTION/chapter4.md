@@ -305,3 +305,146 @@ void process_connections(connection_set& connections)
 
 ## 有时间限制的等待
 
+有2类可供指定的超时：
+
+1. 基于时间段的超时，即等待一个指定的时间长度
+2. 绝对超时，即等到一个指定的时间点
+
+### 时间
+
+时钟提供4个不同部分信息的类：
+
+- 现在（now）时间
+- 用来表示从时钟获取到的时间值的类型
+- 时钟的节拍周期
+- 时钟是否以均匀的速率进行计时，决定其是否为匀速（steady）时钟
+
+**匀速（steady）时钟：**以均匀速率计时且不能被调整的时钟
+
+### 时间段
+
+标准库在std::chrono命名空间中为各种时间段提供了一组预定义的typedef：
+
+- nanoseconds
+- microseconds
+- milliseconds
+- seconds
+- minutes
+- hours
+
+在无需截断值的场合，时间段之间的转换是隐式的（因此将小时转换成秒是可以的，但将秒转换成小时则不然）。显式转换可以通过`std::chrono::duration_cast<>`实现，例：
+
+```c++
+std::chrono::milliseconds ms(54802);
+std::chrono::seconds s=std::chrono::duration_cast<std::chrono::seconds>(ms);
+```
+
+时间段中单位数量的计数可以通过`count()`成员函数获取，因此`std::chrono::milliseconds(1234).cunt()`为1234。
+
+基于时间段的等待是通过`std::chrono::duration<>`实例完成的，例：
+
+```c++
+std::future<int> f=std::async(some_task);
+if(f.wait_for(std::chrono::milliseconds(35))==std::future_status::ready)
+  do_something_with(f.get());
+```
+
+当等待一个future时：
+
+- 如果等待超时，返回`std::future_status::timeout`
+- 若future就绪，返回`std::future_status::ready`
+- 如果future任务推迟，返回`std::future_status::deferred`
+
+### 时间点
+
+等待一个具有超时的条件变量：
+
+```c++
+#include <condition_variable>
+#include <mutex>
+#include <chrono>
+std::condtion_variable cv;
+bool done;
+std::mutex m;
+bool wait_loop()
+{
+  auto const timeout=std::chrono::steady_clock::now()+std::chrono::milliseconds(500);
+  std::unique_lock<std::mutex> lk(m);
+  while(!done)
+  {
+    if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
+      break;
+  }
+  return done;
+}
+```
+
+### 接受超时的函数
+
+| 类/命名空间                                                  | 函数                                                         | 返回值                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `std::this_thread`命名空间                                   | - `sleep_for(duration)`<br>- `sleep_until(time_point)`       | 不可用                                                       |
+| `std::condition_variable`或<br> `std::condition_variable_any` | - `wait_for(lock, duration)`<br>- `wait_until(lock, time_point)` | - `std::cv_status::timeout`或<br>- `std::cv_status::no_timeout` |
+|                                                              | - `wait_for(lock, duration, predicate)`<br>- `wait_until(lock, time_point, predicate)` | bool-当唤醒时predicate的返回值                               |
+| `std::timed_mutex`或<br>`std::recursive_timed_mutex`         | - `try_lock_for(duration)`<br>- `try_lock_until(time_point)` | bool-true如果获得了锁，否则false                             |
+| `std::unique_lock<TimedLockable>`                            | - `unique_lock(lockable, duration)`<br>- `unique_lock(lockable, time_point)` | 不可用-owns_lock()在新构造的对象上；如果获得了锁返回true，否则false |
+|                                                              | - `try_lock_for(duration)`<br>- `try_lock_until(time_point)` | bool-true如果获得了锁，否则false                             |
+| `std::future<ValueType>`或<br>`std::shared_future<ValueType>` | - `wait_for(duration)`<br>- `wait_until(time_point)`         | `std::future_status::timeout`如果等待超时，<br>`std::future_status::ready`如果future就绪或<br>`std::future_status::deferred`如果future持有的延迟函数还没有开始 |
+
+
+
+## 使用操作同步来简化代码
+
+### 带有future的函数式编程
+
+**函数式编程（functional programming, FP）**指的是一种编程风格，函数调用的结果仅单纯依赖于该函数的参数而不依赖于任何外部状态。
+
+![4-2](res/4-2.png)
+
+快速排序的顺序实现：
+
+```c++
+template<typename T>
+std::list<T> sequential_quick_sort(std::list<T> input)
+{
+  if(input.empty())
+  {
+    return input;
+  }
+  std::list<T> result;
+  result.splice(result.begin(), input, input.begin());
+  T const& pivot=*result.begin();
+  auto divide_point=std::partition(input.begin(), input.end(), [&](T const& t){return t<pivot;});
+  std::list<T> lower_part;
+  lower_part.splice(lower_part.end(), input, input.begin(), divide_point);
+  auto new_lower(sequential_quick_sort(std::move(lower_part)));
+  auto new_higher(sequential_quick_sort(std::move(input)));
+  result.splice(result.begin(), new_lower);
+  return result;
+}
+```
+
+使用future的并行快速排序：
+
+```c++
+template<typename T>
+std::list<T> parallel_quick_sort(std::list<T> input)
+{
+  if(input.empty())
+  {
+    return input;
+  }
+  std::list<T> result;
+  result.splice(result.begin(), input, input.begin());
+  T const& pivot=*result.begin();
+  auto divide_point=std::partition(input.begin(), input.end(), [&](T const& t){return t<pivot;});
+  std::list<T> lower_part;
+  lower_part.splice(lower_part.end(), input, input.begin(), divide_point);
+  std::future<std::list<T> > new_lower(std::async(&parallel_quick_sort<T>, std::move(lower_part)));
+  auto new_higher(parallel_quick_sort(std::move(input)));
+  result.splice(result.end(), new_higher);
+  result.splice(result.begin(), new_lower.get());
+  return result;
+}
+```
+
