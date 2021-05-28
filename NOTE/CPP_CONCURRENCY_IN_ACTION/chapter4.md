@@ -448,3 +448,100 @@ std::list<T> parallel_quick_sort(std::list<T> input)
 }
 ```
 
+一个简单的spawn_task的实现：
+
+```c++
+template<typename F, typename A>
+std::future<std::result_of<F(A&&)>::type>
+  spawn_task(F&& f, A&& a)
+{
+  typedef std::result_of<F(A&&)>::type result_type;
+  std::packaged_task<result_type(A&&)>
+    task(std::move(f));
+  std::future<result_type> res(task.get_future());
+  std::thread t(std::move(task), std::move(a));
+  t.detach();
+  return res;
+}
+```
+
+### 具有消息传递的同步操作
+
+**CSP(Communicating Sequential Process, 通信顺序处理)：**如果没有共享数据，则每一个线程可以完全独立地推理得到，只需基于它对所接收到的消息如何进行反应。因此每个线程实际上可以等效为一个状态机：当它接收到消息时，它会根据初始状态进行操作，并以某种方式更新其状态，并可能像其他线程发送一个或多个消息。
+
+**角色模型(actor model)：**系统中有多个离散的角色（均运行在独立线程上），用来相互发送消息以完成手头任务，除了直接通过消息传递的状态外，没有任何共享状态。
+
+ATM逻辑类的简单实现：
+
+```c++
+struct card_inserted
+{
+  std::string account;
+};
+class atm
+{
+  messaging::receiver incoming;
+  messaging::sender bank;
+  messaging::sender interface_hardware;
+  void (atm::*state)();
+  std::string account;
+  std::string pin;
+  void waiting_for_card()
+  {
+    interface_hardware.send(display_enter_card());
+    incoming.wait()
+      .handle<card_inserted>(
+    		[&](card_inserted const& msg)
+      	{
+        	account=msg.account;
+          pin="";
+          interface_hardware.send(display_enter_pin());
+          state=&atm::getting_pin;
+        });
+  }
+  void getting_pin();
+public:
+  state=&atm::waiting_for_card;
+  try
+  {
+    for(;;)
+    {
+      (this->*state)();
+    }
+  }
+  catch(messaging::close_queue const&)
+  {
+  }
+}
+
+// 简单ATM实现的getting_pin状态函数
+void atm::getting_pin()
+{
+  incoming.wait()
+    .handle<digit_pressed>(
+    	[&](digit_pressed const& msg)
+    	{
+        unsigned const pin_length=4;
+        pin+=msg.digit;
+        if(pin.length()==pin_length)
+        {
+          bank.send(verify_pin(account, pin, incoming));
+          state=&atm::verifying_pin;
+        }
+      })
+    .handle<clear_last_pressed>(
+  		[&](clear_last_pressed const& msg)
+    	{
+        if(!pin.empty())
+        {
+          pin.resize(pin.length()-1);
+        }
+      })
+    .handle<cancel_pressed>(
+  		[&](cancel_pressed const& msg)
+    	{
+        state=&atm::done_processing;
+      });
+}
+```
+
