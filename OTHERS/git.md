@@ -6,6 +6,7 @@
   - [设置邮箱](#设置邮箱)
 - [commit规范](#commit规范)
   - [angular规范](#angular规范)
+- [如何给开源项目提交代码](#如何给开源项目提交代码)
 - [常用命令](#常用命令)
   - [添加子模块](#添加子模块)
   - [拉取子模块更新](#拉取子模块更新)
@@ -113,7 +114,45 @@ Footer只用于2种情况：
 
 ---
 
+## 如何给开源项目提交代码
 
+1. 克隆代码到本地
+
+   ```sh
+   git clone 项目地址
+   ```
+
+2. 切换到远程库的分支（这里使用master）
+
+   ```sh
+   git checkout master
+   ```
+
+3. 基于远程分支新建自己的分支
+
+   ```sh
+   git checkout -b 我们的分支名
+   ```
+
+4. 在github上fork下这个项目（按fork按钮）
+
+5. 提交我们的更改到我们fork的项目地址
+
+   ```sh
+   git remote add upstream 我们fork到的地址
+   ```
+
+6. 推送
+
+   ```sh
+   git fetch origin
+   git merge 我们的分支名
+   git push upstream 我们的分支名
+   ```
+
+7. 在github上点击`create pull request`
+
+---
 
 ## 常用命令
 
