@@ -334,7 +334,7 @@ facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-fence `//` 
+fence `/fens/` 栅栏，篱笆 
 
 ### fl
 
@@ -673,8 +673,6 @@ reflect `/rɪˈflekt/` 反映，反射，表明
 regulation `/ˌreɡjuˈleɪʃn/` 条例，规章
 
 replication `/ˌreplɪ'keɪʃ(ə)n/`  复制，拷贝，重复（实验），回答
-
-relax `//`
 
 remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
 

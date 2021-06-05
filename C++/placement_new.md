@@ -38,35 +38,28 @@ placement new是operator new的一个重载版本，只是我们很少用到它�
 使用方法如下：
 
 1. 缓冲区提前分配
-
-> 可以使用堆的空间，也可以使用栈的空间，所以分配方式有如下两种：
->
-> ```c++
-> class MyClass {…};
-> char *buf=new char[N*sizeof(MyClass)+ sizeof(int) ] ; 或者char buf[N*sizeof(MyClass)+ sizeof(int) ];
-> ```
-
+	```c++
+	// 可以使用堆的空间，也可以使用栈的空间，所以分配方式有如下两种：
+ 	class MyClass {…};
+ 	char *buf=new char[N*sizeof(MyClass)+ sizeof(int) ] ; 或者char buf[N*sizeof(MyClass)+ sizeof(int) ];
+	```
 2. 对象的构造
-
-   > ```c++
-   > MyClass * pClass=new(buf) MyClass;
-   > ```
+   ```c++
+   MyClass * pClass=new(buf) MyClass;
+   ```
 
 3. 对象的销毁
-
-   > 一旦这个对象使用完毕，你必须显式的调用类的析构函数进行销毁对象。但此时内存空间不会被释放，以便其他的对象的构造。
-   >
-   > ```c++
-   > pClass->~MyClass();
-   > ```
+   一旦这个对象使用完毕，你必须显式的调用类的析构函数进行销毁对象。但此时内存空间不会被释放，以便其他的对象的构造。
+   ```c++
+   pClass->~MyClass();
+   ```
 
 4. 内存的释放
-
-   > 如果缓冲区在堆中，那么调用delete[] buf;进行内存的释放；如果在栈中，那么在其作用域内有效，跳出作用域，内存自动释放。
+   如果缓冲区在堆中，那么调用delete[] buf;进行内存的释放；如果在栈中，那么在其作用域内有效，跳出作用域，内存自动释放。
 
 **注意：**
 
-- 在C++标准中，对于placement operator new []有如下的说明： placement operator new[] needs implementation-defined amount of additional storage to save a size of array. 所以我们必须申请比原始对象大小多出sizeof(int)个字节来存放对象的个数，或者说数组的大小。
+- 在C++标准中，对于`placement operator new []`有如下的说明：` placement operator new[] needs implementation-defined amount of additional storage to save a size of array.` 所以我们必须申请比原始对象大小多出`sizeof(int)`个字节来存放对象的个数，或者说数组的大小。
 - 使用方法第二步中的new才是placement new，其实是没有申请内存的，只是调用了构造函数，返回一个指向已经分配好的内存的一个指针，所以对象销毁的时候不需要调用delete释放空间，但必须调用析构函数销毁对象。
-- 使用placement new之前需要包含文件 new.h
+- 使用placement new之前需要包含文件` new.h`
 

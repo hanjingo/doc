@@ -8,6 +8,7 @@
 - [重新绑定键](rebind_key.md)
 - [shell指南](shell.md)
 - [测试报告模板](test.md)
+- [vim配置](vim_cfg.md)
 - [vim快捷键](vim_shortcut.md)
 - [vimium快捷键](vimium_shortcut.md)
 - [wiki 模板](wiki_tmpl.md)

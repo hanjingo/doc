@@ -33,8 +33,9 @@ func ask(ctx context.Context, api *eos.API, privKey string) {
 }
 ```
 
-此处： Account: eos.AccountName("b3")； 把部署者写成了b3，实际是b;  
+此处：` Account: eos.AccountName("b3")`； 把部署者写成了b3，实际是b;  
 导致提交的是ipfs权限，但是找到的却是默认的权限 active；报错！
+
 ```
 Internal Service Error: Irrelevant authority included: action declares irrelevant authority '{"actor":"b3","permission":"ipfs"}'; minimum authority is {"actor":"b3","permission":"active"}
 ```
@@ -147,6 +148,7 @@ void
       }
    }
 ```
+
 2. check_authorization函数调用: lookup_minimum_permission拿到最小权限
 
 ```c++
@@ -180,7 +182,9 @@ optional<permission_name> authorization_manager::lookup_minimum_permission( acco
       } FC_CAPTURE_AND_RETHROW((authorizer_account)(scope)(act_name))
    }
 ```
+
 3. 根据验证者账号,scope和部署者账号找到link在action上的权限
+
 ```c++
 optional<permission_name> authorization_manager::lookup_linked_permission( account_name authorizer_account,
                                                                               account_name scope,

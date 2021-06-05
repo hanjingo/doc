@@ -43,9 +43,9 @@ Note right of 验证者: Verify
 
 ### Setup
 
-​	通过密封操作生成一个副本，一个副本的树根和证明$\pi_{seal}$
+通过密封操作生成一个副本，一个副本的树根和证明$\pi_{seal}$
 
- - 输入
+- 输入
    - 证明者密钥对$(pk_p, sk_p)$
    - 证明者seal密钥$pk_{SEAL}$
    - 数据$D$
@@ -56,19 +56,19 @@ Note right of 验证者: Verify
   - 证明$\pi_{SEAL}$
   
 
-​	流程：
+流程：
 
-	1. 计算 $h_D := CRH(D)$
- 	2. 计算 $R := Seal^{\tau}(D, sk_p)$
- 	3. 计算 $rt := MerkleCRH(R)$
- 	4. 设定 $\vec{x} := (pk_p, h_D, rt)$
- 	5. 设定 $\vec{w} := (sk_p, D)$
- 	6. 计算 $\pi_{SEAL} := SCIP.Prove(pk_{SEAL}, \vec{x}, \vec{w})$
- 	7. 输出 $R, rt, \pi_{SEAL}$
+1. 计算 $h_D := CRH(D)$
+2. 计算 $R := Seal^{\tau}(D, sk_p)$
+3. 计算 $rt := MerkleCRH(R)$
+4. 设定 $\vec{x} := (pk_p, h_D, rt)$
+5. 设定 $\vec{w} := (sk_p, D)$
+6. 计算 $\pi_{SEAL} := SCIP.Prove(pk_{SEAL}, \vec{x}, \vec{w})$
+7. 输出 $R, rt, \pi_{SEAL}$
 
 ### Prove
 
-​	证明者受到来自验证者的随机挑战c，要求在以$rt$为树根的副本文件R的Merkle树中确认特定的叶子$R$； 证明者生成关于$R$的Merkle路径通往$rt$。
+证明者受到来自验证者的随机挑战c，要求在以$rt$为树根的副本文件R的Merkle树中确认特定的叶子$R$； 证明者生成关于$R$的Merkle路径通往$rt$。
 
 - 输入
   - 证明者存储证明密钥$pk_{POS}$
@@ -78,14 +78,14 @@ Note right of 验证者: Verify
   - 证明$\pi_{POS}$
   
 
-​	流程：
+流程：
 
-	1. 计算 $rt := MerkleCRH(R)$
- 	2. 计算路径 $path := 从rt到叶子R_c的Merkle路径$
- 	3. 设定 $\vec{x} := (rt, c)$
- 	4. 设定 $\vec{w} := (path, R_c)$
- 	5. 计算 $\pi_{POS} := SCIP.Prove(pk_{POS}, \vec{x}, \vec{w})$
- 	6. 输出 $\pi_{POS}$
+1. 计算 $rt := MerkleCRH(R)$
+2. 计算路径 $path := 从rt到叶子R_c的Merkle路径$
+3. 设定 $\vec{x} := (rt, c)$
+4. 设定 $\vec{w} := (path, R_c)$
+5. 计算 $\pi_{POS} := SCIP.Prove(pk_{POS}, \vec{x}, \vec{w})$
+6. 输出 $\pi_{POS}$
 
 ### Verify
 
@@ -102,13 +102,13 @@ Note right of 验证者: Verify
 
   比特b，在证明有效时为true
 
-​	流程：
+流程：
 
-	1. 设定 $\vec{x_1} := (pk_p, h_D, rt)$
- 	2. 计算 $b_1 := SCIP.Verify(vk_{SEAL}, \vec{x_1}, \pi_{SEAL})$
- 	3. 设定 $\vec{x_2} := (rt, c)$
- 	4. 计算 $b_2 := SCIP.Verify(vk_{POS}, \vec{x_2}, \pi_{POS})$
- 	5. 输出 $b_1 \bigwedge b_2$
+1. 设定 $\vec{x_1} := (pk_p, h_D, rt)$
+2. 计算 $b_1 := SCIP.Verify(vk_{SEAL}, \vec{x_1}, \pi_{SEAL})$
+3. 设定 $\vec{x_2} := (rt, c)$
+4. 计算 $b_2 := SCIP.Verify(vk_{POS}, \vec{x_2}, \pi_{POS})$
+5. 输出 $b_1 \bigwedge b_2$
 
 注释：
 

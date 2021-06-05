@@ -78,7 +78,7 @@ struct Some
 Some s;
 std::optional<Some> opt = s;
 ```
-- 使用 std::make_optional构造,类似std::make_shared可以传递参数原地构造optional包含的对象
+- 使用` std::make_optional`构造,类似`std::make_shared`可以传递参数原地构造optional包含的对象
 ```c++
 struct Some
 {
@@ -94,6 +94,7 @@ optional<Some> opt = make_optional<Some>(1, "1");
 auto opt = make_optional(1); // optional<int>
 ```
 - 使用std::in_place构造：
+
 其实使用std::in_place和使用std::make_optional 用法相近，都是原地构造对象，避免使用对象初始化进行的一次拷贝等。std::in_place只是一个tag，用来表示我们使用std::optional的那个构造函数。
 optional的构造函数是这样：
 ```c++
@@ -115,6 +116,7 @@ optional(in_place_t, initializer_list<_Up> __il, _Args&&... __args)
 ## 和指针比较
 - 如果我们和普通的指针相比，即用指针指向对象，如果为空的时候使用nullptr来代替，对于我们第一个例子可以达到相似的效果，因为我们的vector的生命周期时在使用指针之后销毁，因为指针只是简单指向，对于指向已经析构的对象，无疑是一场灾难。
 - 如果和我们智能指针比较，例如第一个例子中，第一种实现我们需要vector存放shared_ptr才能进行拷贝：
+
 ```c++
 shared_ptr<Some> getSome(
     const vector<shared_ptr<Some>>& svec, 

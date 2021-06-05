@@ -1,9 +1,13 @@
 # qt速查手册
+
 ## Q_CLASSINFO
+
 类信息，姓名表格化
 
 ## Q_PROPERTY
+
 用来说明属性继承自QObject
+
 ```c++
 	Q_PROPERTY(type name
              (READ getFunction [WRITE setFunction] |

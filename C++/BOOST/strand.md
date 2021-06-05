@@ -1,8 +1,10 @@
 # strand
 ### 摘要
+
 定义了事件处理程序的严格顺序调用,实现类似于管道的功能；
 
 ### 用法
+
 ```c++
 #include <iostream>
 #include <thread>

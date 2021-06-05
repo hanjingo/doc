@@ -4,11 +4,13 @@
 
 ## 脏数据问题  
 
+```sh
 database dirty flag set (likely due to unclean shutdown) replay or resync required  
+```
 
 解决方法:
 
-在nodeos启动时添加选项--hard-replay-blockchain或者--delete-all-blocks参数  
+在nodeos启动时添加选项`--hard-replay-blockchain`或者`--delete-all-blocks`参数  
 
 
 
@@ -18,7 +20,7 @@ eos无法启动
 
 解决方法:
 
-把启动选项--producer-name eosio的eosio改成自己账号名，不然会启动不了  
+把启动选项`--producer-name eosio`的`eosio`改成自己账号名，不然会启动不了  
 
 
 
@@ -30,17 +32,17 @@ eos无法启动
 
 系统私钥在 2个位置都可以找到：
 
-> 1. 启动选项: --signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 这里 =KEY:的后面那一段
->
-> 2. 在nodeos的配置文件（ubuntu默认路径：~/.local/share/eosio/nodeos/config/config.ini）=KEY:的后面那一段   
+1. 启动选项: `--signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3` 这里 =KEY:的后面那一段
 
-找到后将私钥导入钱包：cleos wallet import -n 钱包名  --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+2. 在nodeos的配置文件`（ubuntu默认路径：~/.local/share/eosio/nodeos/config/config.ini）=KEY:`的后面那一段   
+
+找到后将私钥导入钱包：`cleos wallet import -n 钱包名  --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3`
 
 
 
 ## fetching abi for undefined: unknown key (eosio::chain::name):
 
-```shell
+```sh
 6|app  | 11-24 11:25:31: Error: fetching abi for undefined: unknown key (eosio::chain::name):
 6|app  | 11-24 11:25:31:     at new RpcError (/data/api_server/node_modules/eosjs/dist/eosjs-rpcerror.js:26:28)
 6|app  | 11-24 11:25:31:     at JsonRpc.<anonymous> (/data/api_server/node_modules/eosjs/dist/eosjs-jsonrpc.js:118:35)
@@ -53,6 +55,7 @@ eos无法启动
 eosjs调用接口时，报错;因为多打了一个 } 囧
 
 原来的代码:
+
 ```typescript
 let actions = {
             actions: [{
@@ -82,6 +85,7 @@ let actions = {
 ```
 
 修改后:
+
 ```typescript
 let actions = {
             actions: [{

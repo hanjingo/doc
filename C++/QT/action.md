@@ -1,9 +1,11 @@
 # 添加动作
+
 Qt 使用QAction类作为动作。顾名思义，这个类就是代表了窗口的一个“动作”，这个动作可能显示在菜单，作为一个菜单项，当用户点击该菜单项，对用户的点击做出响应；也可能在工具栏，作为一个工具栏按钮，用户点击这个按钮就可以执行相应的操作。有一点值得注意：无论是出现在菜单栏还是工具栏，用户选择之后，所执行的动作应该都是一样的。因此，Qt 并没有专门的菜单项类，只是使用一个QAction类，抽象出公共的动作。当我们把QAction对象添加到菜单，就显示成一个菜单项，添加到工具栏，就显示成一个工具按钮。用户可以通过点击菜单项、点击工具栏按钮、点击快捷键来激活这个动作。
 
 QAction包含了图标、菜单文字、快捷键、状态栏文字、浮动帮助等信息。当把一个QAction对象添加到程序中时，Qt 自己选择使用哪个属性来显示，无需我们关心。同时，Qt 能够保证把QAction对象添加到不同的菜单、工具栏时，显示内容是同步的。也就是说，如果我们在菜单中修改了QAction的图标，那么在工具栏上面这个QAction所对应的按钮的图标也会同步修改。
 
 下面我们来看看如何在QMainWindow中使用QAction：
+
 ```c++
 // !!! Qt 5
 // ========== mainwindow.h
@@ -64,7 +66,9 @@ void MainWindow::open()
     QMessageBox::information(this, tr("Information"), tr("Open"));
 }
 ```
+
 上面的代码分别属于两个文件：mainwindow.h 和 mainwindow.cpp。为了让 MainWindow 运行起来，我们还需要修改 main() 函数如下：
+
 ```c++
 int main(int argc, char *argv[])
 {
@@ -76,6 +80,7 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 ```
+
 当我们编辑好文件，点击运行，可以看到MainWindow的运行结果：
 
 ![](RES/action1.jpg)
@@ -85,6 +90,7 @@ int main(int argc, char *argv[])
 然后，我们在堆上创建了openAction对象。在QAction构造函数，我们传入了一个图标、一个文本和 this 指针。我们将在后面的文章中解释 this 指针的含义。
 
 图标我们使用了QIcon，传入值是一个字符串，这个字符串对应于 Qt 资源文件中的一段路径。Qt 资源文件的后缀名是 qrc。如果我们使用 Qt Creator，我们可以在新建文件中看到 Qt 资源文件。Qt 资源文件其实是一个 XML 描述的文件，表示 Qt 应用程序所需要的各个资源。我们可以使用普通文本编辑器打开这个文件：
+
 ```html
 <RCC>
     <qresource prefix="/images">
@@ -92,6 +98,7 @@ int main(int argc, char *argv[])
     </qresource>
 </RCC>
 ```
+
 我们会在后面的章节中详细介绍 Qt 资源文件（注意，资源文件需要在 pro 文件中使用 RESOURCES 引入。）。这里只需要了解，QIcon的参数，以 : 开始，意味着从资源文件中查找资源。:/images/doc-open就是找到了这里的 document-open.png 这个文件。（我们使用的是 png 格式的图片，这是 Qt 内置支持的图片格式。其他格式的图片，比如 jpg、gif 则需要插件支持。这些插件实际已经随着 Qt 一同发布。）
 
 QAction第二个参数中，文本值前面有一个 &，意味着这将成为一个快捷键。注意看截图中 File 的 F 有一个下划线。
@@ -107,6 +114,7 @@ setStatusTip()则实现了当用户鼠标滑过这个 action 时，会在主窗�
 至于open()函数中的内容，我们会在后文介绍。这里可以运行一下，你会看到，触发这个动作，程序会弹出一个提示框。
 
 下面是 Qt 4 版本的程序，具体非常类似，这里不再赘述。
+
 ```c++
 // !!! Qt 4
 // ========== mainwindow.h

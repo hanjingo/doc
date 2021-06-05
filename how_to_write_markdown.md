@@ -151,7 +151,8 @@
 ```
 $$公式内容$$
 ```
-一些常用的数学公式：  
+一些常用的数学公式： 
+
 |写法|效果|
 |:--|:--|
 |`$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$`|$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$|
