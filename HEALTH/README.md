@@ -4,6 +4,10 @@
 
   - [口腔溃疡](MOUTH/aphthous_stomatitis.md)
 
+- 药物
+
+  - [家庭常备药物](MEDICINE/home_stocked_medicine.md)
+
 - 传染病
   
   - [疫苗](IMMUNITY/vaccine.md)

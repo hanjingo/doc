@@ -6,5 +6,6 @@
 - [第四章 同步并发操作](chapter4.md)
 - [第五章 c++内存模型和原子类型上操作](chapter5.md)
 - [第六章 基于锁的并发数据结构设计](chapter6.md)
-- [第七章 ](chapter7.md)
+- [第七章 设计无锁的并发数据结构](chapter7.md)
+- [第八章 设计并发代码](chapter8.md)
 

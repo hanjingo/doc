@@ -70,6 +70,7 @@
         sudo update-alternatives --set vi /usr/bin/vim
         ```
 
+
 报错分析:
 
 如果报这个错:
