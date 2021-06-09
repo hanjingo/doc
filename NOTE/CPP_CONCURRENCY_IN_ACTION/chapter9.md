@@ -120,15 +120,82 @@ class thread_pool
     }
 public:
     template<typename FunctionType>
-    std::future<typename std::result_of<FunctionType()>::type> submit(FunctionType f) // 1
+    std::future<typename std::result_of<FunctionType()>::type> submit(FunctionType f) // 返回一个std::future<>保存任务的返回值
     {
-        typedef typename std::result_of<FunctionType()>::type result_type; // 2
+        typedef typename std::result_of<FunctionType()>::type result_type; 
         
-        std::packaged_task<result_type()> task(std::move(f)); // 3
-        std::future<result_type> res(task.get_future()); // 4
-        work_queue.push(std::move(task)); // 5
-        return res; // 6
+        std::packaged_task<result_type()> task(std::move(f)); // 包装函数f
+        std::future<result_type> res(task.get_future());      // 异步获取future
+        work_queue.push(std::move(task));                     // 任务入队 
+        return res;                                           // 返回
     }
+}
+
+template<typename Iterator, typename T>
+T parallel_accumulate(Iterator first, Iterator last, T init)
+{
+	unsigned long const length = std::distance(first, last);
+
+	if (!length)
+			return init;
+
+	unsigned long const block_size = 25;
+	unsigned long const num_blocks = (length+block_size - 1)/block_size;
+	
+	std::vector<std::future<T> > futures(num_blocks - 1);
+	thread_pool pool;
+
+	Iterator block_start = frist;
+	for (unsigned long i = 0; i < (num_blocks - 1); ++i)
+	{
+		Iterator block_end = block_start;
+		std::advance(block_end, block_size);
+		futures[i] = pool.submit(accumulate_block<Iterator, T>());
+		block_start = block_end;
+	}
+	T last_result = accumulate_block<Iterator, T>()(block_start, last);
+	T result = init;
+	for (unsigned long i = 0; i < (num_blocks - 1); ++i)
+	{
+			result += futures[i].get();
+	}
+	result += last_result;
+	return result;
 }
 ```
 
+### 等待依赖任务
+
+例，基于线程池的快速排序的实现：
+
+```c++
+tempalte <typename T>
+struct sorter // 1
+{
+	thread_pool pool; // 2
+
+	std::lsit<T> do_sort(std::list<T>& chunk_data)
+	{
+		if(chunk_data.empty())
+		{
+			return chunk_data;
+		}
+
+		std::list<T> result;
+		result.splice(result.begin(), chunk_data, chunk_data.begin());
+		T const& partition_value = *result.begin();
+
+		typename std::list<T>::iterator divide_point = std::partition(
+						chunk_data.begin(), chunk_data.end(),
+						[&](T const& val){return val<partition_val>;});
+
+		std::list<T> new_lower_chunk;
+		new_lower_chunk.splice(new_lower_chunk.end(),
+						       chunk_data, chunk_data.begin(),
+							   divide_point);
+
+		std::future<std::list<T> > new_lower = pool.submit(
+						std::bind())
+	}
+}
+```

@@ -1,22 +1,10 @@
 # merkle_dag
 
-
-
 merkle data（有向无环图），是ipfs在Merkle tree的基础上开发的一个数据结构；支持：内容寻址，防篡改，防重复等功能。
-
-
-
-## 参考
-
-- [IPFS - 内容寻址的版本化点对点文件系统(草稿3) 翻译](https://www.jianshu.com/p/24f989ec2aab)
-- [IPFS协议层深入分析10---MerkleDAG](https://www.jianshu.com/p/26f2d5282552)
-
-
 
 ## 源码
 
 - [go-merkledag](https://github.com/hanjingo/go-merkledag/tree/he)
-
 
 
 ## 结构定义
@@ -65,7 +53,36 @@ type ProgressTracker struct { // 协程追踪器，标识有多少个协程
 
 ### ipfs文件的添加
 
-ipfs使用命令：`ipfs add -参数 文件/文件夹`来添加数据；其添加流程如下：
+```txt
+USAGE
+  ipfs add <path>... - 添加目录或文件
+
+可选参数
+  ipfs add [--recursive | -r] [--quiet | -q] [--quieter | -Q] [--silent] [--progress | -p] [--trickle | -t] [--only-hash | -n] [--wrap-with-directory | -w] [--hidden | -H] [--chunker=<chunker> | -s] [--pin=false] [--raw-leaves] [--nocopy] [--fscache] [--] <path>...
+
+ARGUMENTS
+
+  <path>... - 文件路径
+
+OPTION
+
+  -r,         --recursive           bool   - 递归添加目录内容 Default: false.
+  -q,         --quiet               bool   - 安静模式，执行过程中输出显示尽可能少的信息
+  -Q,         --quieter             bool   - 更安静模式，仅输出最终的结果哈希值
+  --silent                          bool   - 静默模式，不输出任何信息.
+  -p,         --progress            bool   - 流式输出过程数据.
+  -t,         --trickle             bool   - 使用trickle-dag格式进行有向图生成.
+  -n,         --only-hash           bool   - 只计算hash，不写入内容到ipfs
+  -w,         --wrap-with-directory bool   - 使用目录对象包装文件
+  -H,         --hidden              bool   - 包含隐藏文件，仅在进行递归添加时有效
+  -s,         --chunker             string - 使用的分块算法.
+  --pin                             bool   - 添加时固定对象，默认值：true
+  --raw-leaves                      bool   - 叶节点使用裸块. (experimental).
+  --nocopy                          bool   - 使用filestore添加文件. (experimental).
+  --fscache                         bool   - 为已有块检查filestore. (experimental).
+```
+
+其添加流程如下：
 
 1. 将文件分割成多个block，每个block大小默认为256KB(可以通过配置调整)，数据块下面允许链接sub-block
 
@@ -98,13 +115,7 @@ ipfs使用命令：`ipfs add -参数 文件/文件夹`来添加数据；其添�
    	return &BasicBlock{data: data, cid: c}, nil
    }
    ```
-
-   cid的生成规则如下：
-
-   ```go
-   ```
-
-   
+ 
 
 2. 将block组合起来，构建成一个merkle dag，其root节点就是该文件的hash唯一标识
 
@@ -312,3 +323,10 @@ func parallelWalkDepth(ctx context.Context, getLinks GetLinks, root cid.Cid, vis
 	}
 }
 ```
+
+## 参考
+
+- [IPFS - 内容寻址的版本化点对点文件系统(草稿3) 翻译](https://www.jianshu.com/p/24f989ec2aab)
+- [IPFS协议层深入分析10---MerkleDAG](https://www.jianshu.com/p/26f2d5282552)
+- [IPFS-For-Chinese](https://github.com/ChainBook/IPFS-For-Chinese)
+

@@ -128,9 +128,13 @@ attachment `/əˈtætʃ.mənt/` 附件，附加设备
 
 ### br
 
+[回到B](#B)&ensp;[回到顶部](#英汉词典)
+
 bracket `/ˈbrakɪt/` 在括号中，支架，等级
 
 ### bu
+
+[回到B](#B)&ensp;[回到顶部](#英汉词典)
 
 bully `/bʊli/` 威吓，霸道
 
@@ -846,11 +850,15 @@ utmost `//` 极度，极端，最...
 
 ### va
 
+[回到V](#V)&ensp;[回到顶部](#英汉词典)
+
 vaccinated `/ˈvæksɪneɪt/`  给...接种疫苗
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
 ### ve
+
+[回到V](#V)&ensp;[回到顶部](#英汉词典)
 
 verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 
@@ -859,6 +867,8 @@ verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 # W
 
 ### wo
+
+[回到W](#W)&ensp;[回到顶部](#英汉词典)
 
 workload `/ˈwɜːkləʊd/` 工作量
 
