@@ -5,7 +5,7 @@ merkle data（有向无环图），是ipfs在Merkle tree的基础上开发的一
 ## 源码
 
 - [go-merkledag](https://github.com/hanjingo/go-merkledag/tree/he)
-
+- [go-ipfs-blockstore](https://github.com/hanjingo/go-ipfs-blockstore)
 
 ## 结构定义
 
@@ -36,20 +36,54 @@ type Block interface { // block接口
 }
 ```
 
+### Blockstore定义
+定义了一个块存储接口，用来封装不同的缓存策略
+
+```go
+
+// 块存储器接口
+type Blockstore interface {
+	DeleteBlock(cid.Cid) error
+	Has(cid.Cid) (bool, error)
+	Get(cid.Cid) (blocks.Block, error)
+	GetSize(cid.Cid) (int, error) // 返回cid指向的块的大小
+	Put(blocks.Block) error
+	PutMany([]blocks.Block) error
+	AllKeysChan(ctx context.Context) (<-chan cid.Cid, error)
+	HashOnRead(enabled bool)
+}
+```
+
 ### 协程追踪器
 
 ```go
-type ProgressTracker struct { // 协程追踪器，标识有多少个协程
+// 协程追踪器，标识有多少个协程
+type ProgressTracker struct { 
 	Total int        // 协程数量
 	lk    sync.Mutex // 互斥锁
 }
 ```
 
+### 基本数据存储器
+存储了
+```go
+// ipfsObject的key
+type Key struct {
+	string
+}
+
+// ipfsObject数据容器,map结构
+type MapDatastore struct {
+	values map[Key][]byte // key:对象的唯一id, value:
+}
+```
 
 
 ## 内容寻址
 
 每个父节点保存了子结点的一些信息（包含hash, name, size... ,具体见上面对于IpfsObject的定义），通过root节点，层层遍历下去，最终遍历到叶子，这样就可以把所有的节点和叶子遍历出来；而一旦某个叶子节点改变，就会造成root节点的改变。
+
+所有的内容都通过它俄multihash校验和唯一标识，包括links。
 
 ### ipfs文件的添加
 
@@ -122,43 +156,14 @@ OPTION
 ### ipfs查询操作
 
 ipfs使用以下命令来查询：
+- `ipfs block get`：读取IPFS裸块
+- `ipfs block put`：将输入数据存入IPFS块
+- `ipfs block rm`：移除指定的IPFS块
 - `ipfs block stat`：查询block的数据大小，不包含子块。
 - `ipfs refs`：列出子块信息。
 - `ipfs ls or ipfs object links`：显示所有的子块和块的大小。
 
-ipfs遍历merkle dag的源码：
-
-```c++
-
-```
-
-### ipfs拼接操作
-
-ipfs可以子块拼接起来，组成一个完整的文件。其命令如下：
-
-`ipfs cat hash1 hash2 ... > 文件名`
-
-### ipfs修改操作
-
-### 
-
-## 防篡改
-
-
-
-## 去重
-
-
-
-
-
-
-
-## 遍历
-
-### 遍历方式
-
-节点的遍历的方式由`walkOption`决定,其源码如下：
+ipfs的遍历的方式由`walkOption`决定,其源码如下：
 ```c++
 type wlkOptions struct struct {
     SkipRoot 	 bool					       	 // 是否跳过root将
@@ -323,6 +328,24 @@ func parallelWalkDepth(ctx context.Context, getLinks GetLinks, root cid.Cid, vis
 	}
 }
 ```
+
+### ipfs拼接操作
+
+ipfs可以把子块拼接起来，组成一个完整的文件。其命令如下：
+
+`ipfs cat hash1 hash2 ... > 文件名`
+
+
+
+### ipfs修改操作
+
+## 防篡改
+
+
+
+## 去重
+
+
 
 ## 参考
 
