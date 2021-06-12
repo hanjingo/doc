@@ -441,7 +441,7 @@ public:
 
 ### 保护很少更新的数据结构
 
-使用boost::share_mutex保护数据结构：
+使用`boost::share_mutex`保护数据结构：
 
 ```c++
 #include <map>
@@ -472,7 +472,7 @@ public:
 
 ### 递归锁
 
-在使用std::mutex的情况下，一个线程试图锁定其已经拥有的互斥元是错误的，将导致**未定义行为(undefined behavior)。**
+在使用`std::mutex`的情况下，一个线程试图锁定其已经拥有的互斥元是错误的，将导致**未定义行为(undefined behavior)。**
 
 **不推荐使用递归锁。**
 

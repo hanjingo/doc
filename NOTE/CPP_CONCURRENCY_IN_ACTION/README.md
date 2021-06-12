@@ -10,3 +10,7 @@
 - [第八章 设计并发代码](chapter8.md)
 - [第九章 高级线程管理](chapter9.md)
 - [第十章 高级线程管理](chapter10.md)
+- [附录B 并发库的简单比较](appendix_b.md)
+- [附录C 消息传递框架与完整的ATM示例](appendix_c.md)
+- [附录D C++线程库参考](appendix_d.md)
+
