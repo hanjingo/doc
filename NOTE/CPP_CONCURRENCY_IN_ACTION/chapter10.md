@@ -85,7 +85,39 @@
 ```c++
 void test_concurrent_push_and_pop_on_empty_queue()
 {
-	threadsafe_queue<int> q; // 1
-	std::promise<>
+	threadsafe_queue<int> q; // 创建空队列
+	std::promise<void>go, push_ready, ppop_ready; // 为准备状态创建promise对象
+	std::shared_future<void> ready(go.get_future()); // 为go信号获取一个std::shared_future
+	std::future<void> push_done; // 用来标识线程是否结束
+	std::future<int> pop_done;
+
+	try
+	{
+		push_done = std::async(std::launch::async, // 保证每个任务在自己的线程上完成
+						       []&q, ready, &push_ready)()
+		{
+            push_ready.set_value();
+			ready.wait();
+			q.push(42);
+		});
+        push_done=std::async(std::launch::async, // 保证每个任务在字节的线程上完成
+                             [&q, ready, &pop_ready]()
+        {
+            pop_ready.set_value();
+            ready.wait();
+            return q.pop(); 
+        });
+        push_ready.get_future().wait(); // 等待信号
+        pop_ready.get_guture().wait();
+        go.set_value(); // 提示所有线程可以开始进行测试
+
+        push_done.get(); // 异步调用等待线程完成
+        assert(pop_done.get == 42); 
+        assert(q.empty());
+	}
+    catch(...)
+    {
+        go.set_value(); // 12
+    }
 }
 ```
