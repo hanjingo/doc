@@ -59,7 +59,10 @@ int main()
 }
 ```
 
+
+
 ## 创建optinal
+
 有几种方式创建optional，我们具体看下例子：
 - 直接创建或者用nullopt赋值
 ```c++
@@ -113,7 +116,10 @@ optional(in_place_t, initializer_list<_Up> __il, _Args&&... __args)
       : __base(in_place, __il, _VSTD::forward<_Args>(__args)...) {}
 ```
 
+
+
 ## 和指针比较
+
 - 如果我们和普通的指针相比，即用指针指向对象，如果为空的时候使用nullptr来代替，对于我们第一个例子可以达到相似的效果，因为我们的vector的生命周期时在使用指针之后销毁，因为指针只是简单指向，对于指向已经析构的对象，无疑是一场灾难。
 - 如果和我们智能指针比较，例如第一个例子中，第一种实现我们需要vector存放shared_ptr才能进行拷贝：
 

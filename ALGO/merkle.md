@@ -2,17 +2,6 @@
 
 
 
-## 参考
-
-- [Merkle Tree 专利文档（英文）](res/US4309569.pdf)
-- [`Merkle Tree（默克尔树）算法解析`](https://blog.csdn.net/wo541075754/article/details/54632929)
-- [`区块链技术架构分析（3）-默克尔树（merkle tree）`](https://zhuanlan.zhihu.com/p/39271872)
-- [百度百科-梅克尔树](https://baike.baidu.com/item/%E6%A2%85%E5%85%8B%E5%B0%94%E6%A0%91)
-- [零知识证明 - 一种新型的Merkle树（Shrubs）](https://learnblockchain.cn/2019/10/15/Shrubs)
-- [Merkle Tree and Zero Knowledge Proof](https://www.codenong.com/cs110403770/)
-
-
-
 ## 概述
 
 Merkle Tree，通常也被称作Hash Tree 哈希树，顾名思义，就是存储hash值的一棵树。Merkle树的叶子是数据块(例如，文件或者文件的集合)的hash值。非叶节点是其对应子节点串联字符串的hash。
@@ -53,10 +42,23 @@ ipfs团队基于Merkle树构建了一种新的数据结构:Merkle DAG; 其与Mer
 源码如下：
 ```C++
 
-``` 
+```
 
 
 ## 应用
 
 ### 零知识证明
+
+
+
+
+
+## 外部链接
+
+- [Merkle Tree 专利文档（英文）](res/US4309569.pdf)
+- [`Merkle Tree（默克尔树）算法解析`](https://blog.csdn.net/wo541075754/article/details/54632929)
+- [`区块链技术架构分析（3）-默克尔树（merkle tree）`](https://zhuanlan.zhihu.com/p/39271872)
+- [百度百科-梅克尔树](https://baike.baidu.com/item/%E6%A2%85%E5%85%8B%E5%B0%94%E6%A0%91)
+- [零知识证明 - 一种新型的Merkle树（Shrubs）](https://learnblockchain.cn/2019/10/15/Shrubs)
+- [Merkle Tree and Zero Knowledge Proof](https://www.codenong.com/cs110403770/)
 

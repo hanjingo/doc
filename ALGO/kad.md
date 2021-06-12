@@ -2,14 +2,6 @@
 
 
 
-## 参考
-
-- [维基百科-Kademlia算法](https://zh.wikipedia.org/wiki/Kademlia)
-- [P2P 网络核心技术：Kademlia 协议](https://zhuanlan.zhihu.com/p/40286711)
-- [KADEMLIA算法学习](https://shuwoom.com/?p=813)
-
-
-
 ## 概述
 
 Kademlia基于两个节点之间的距离计算，该距离是两个网络节点ID号的异或 XOR distance，计算的结果最终作为整型数值返回。异或距离跟实际上的地理位置没有任何关系，只与ID相关。
@@ -235,4 +227,14 @@ Note right of 节点A:离开网络，弃用节点ID
 对一个 m 位的前缀来说，可对应 $2𝑚−12m−1$ 个K桶（m位的前缀本来可以对应 2𝑚2m 个K桶）另外的那个 K 桶可以进一步扩展为包含该节点本身 ID 的路由树。
 
 一个 b 位的前缀可以把查询的最大次数从$\log n$减少到$log (\frac{n}{b})$. 这只是查询次数的最大值，因为自己 K 桶可能比前缀有更多的位与目标键相同。
+
+
+
+
+
+## 外部链接
+
+- [维基百科-Kademlia算法](https://zh.wikipedia.org/wiki/Kademlia)
+- [P2P 网络核心技术：Kademlia 协议](https://zhuanlan.zhihu.com/p/40286711)
+- [KADEMLIA算法学习](https://shuwoom.com/?p=813)
 

@@ -1,7 +1,10 @@
 # CONST用法
 const主要是为了程序的健壮型,减少程序出错.
 
+
+
 ## 最基本的用法:
+
 ```c++
 const int a=100; b的内容不变,b只能是100也就是声明一个int类型的常量(#define b =100)
 int const b=100; //和上面作用一样 
@@ -72,7 +75,9 @@ cout << i << endl; 
 目前我就遇到这些问题，那位还有补充的吗 
 
 
+
 ## Thinking again in C++（一）常量性原理 cphj（原作） 
+
 有些地方很受启发:
 ### 1.不能将const修饰的任何对象、引用和指针作为赋值表达式的左值。
 ```c++
@@ -226,7 +231,10 @@ const_a.GetData();//调用const int & GetData()const {return data;}
 ```
 常函数只能调常函数，也是由于这个原因
 
+
+
 ## 补充
+
 ### 一、const 和引用联合使用的时候要注意 
 ```c++
 const int a = 1; 

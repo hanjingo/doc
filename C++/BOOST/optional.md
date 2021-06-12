@@ -1,8 +1,12 @@
 # optional
 
+
+
 ## 摘要
 
 类似于NULL，表示无效值
+
+
 
 ## 用法
 
@@ -15,3 +19,4 @@ using namespace boost;
 optional<int> n;
 optional<int> n1(none)
 ```
+

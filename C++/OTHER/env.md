@@ -12,8 +12,6 @@ sudo apt-get install -y make bzip2 automake libbz2-dev libssl-dev doxygen graphv
     libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq
 ```
 
-
-
 ### clang
 
 #### clang10
@@ -50,8 +48,6 @@ update-alternatives --display clang
 # 如果其它版本的优先级更高，可以手工切换版本： sudo update-alternatives --config clang
 ```
 
-
-
 ### cmake
 
 #### cmake-3.19.2
@@ -64,8 +60,6 @@ export PATH=${CMAKE_DIR}/bin:$PATH
 cmake --version
 echo -e '\nCMAKE_DIR="/usr/local/cmake-3.19.2-Linux-x86_64"\nexport PATH=${CMAKE_DIR}/bin:$PATH' >> ~/.bashrc
 ```
-
-
 
 ### boost
 

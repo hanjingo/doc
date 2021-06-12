@@ -2,7 +2,6 @@
   - [安卓c++开发](ANDROID/dev.md)
   - [安卓c++特性](ANDROID/feature.md)
 - boost程序库
-  - [安装](BOOST/install.md)
   - [optional](BOOST/optional.md)
   - [strand](BOOST/strand.md)
   - [asio](BOOST/asio.md)
