@@ -1,0 +1,9 @@
+# vim
+*.swp
+*.swo
+
+# Macos
+.DS_Store
+
+# Vscode
+.vscode
