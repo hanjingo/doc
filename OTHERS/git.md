@@ -3,6 +3,7 @@
 [TOC]
 
 
+
 ## 环境配置
 
 ### 生成ssh_key
@@ -23,7 +24,34 @@ git config --global user.name "xxx"
 git config --global user.email "xxx@xxx"
 ```
 
+---
 
+
+
+## git日志
+
+`git log`
+
+| 参数          | 说明              | 示例 |
+| ------------- | ----------------- | ---- |
+| `-n`          | 显示前n条         |      |
+| `--stat -n`   | 显示前n条简要统计 |      |
+| `--author`    | 指定作者          |      |
+| `--grep`      | 指定关键字        |      |
+| `--committer` | 指定提交者        |      |
+| `--since`     | 指定时间          |      |
+
+---
+
+
+
+## git比对
+
+`git diff`
+
+| 参数 | 说明 | 示例 |
+| ---- | ---- | ---- |
+|      |      |      |
 
 ---
 
@@ -92,6 +120,8 @@ Footer只用于2种情况：
 
 ---
 
+
+
 ## 如何给开源项目提交代码
 
 1. 克隆代码到本地
@@ -131,6 +161,8 @@ Footer只用于2种情况：
 7. 在github上点击`create pull request`
 
 ---
+
+
 
 ## 常用命令
 
@@ -250,13 +282,9 @@ git branch -d 分支名
 git push origin --delete 分支名
 ```
 
-### 比对分支
-
-```sh
-git diff 目录
-```
-
 ---
+
+
 
 ## 常见bug
 

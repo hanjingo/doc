@@ -125,5 +125,5 @@ VDF(Verifiable Time-Delay Encoding Function)本质是一个加密时间长，解
 
 ## 参考
 
-<div id="ref-1"></div>
-[1] Protocol Labs. Filecoin: A Decentralized Storage Network. pages 10-14 . 2017.
+<div id="1"></div>
+1. Protocol Labs. Filecoin: A Decentralized Storage Network. pages 10-14 . 2017.

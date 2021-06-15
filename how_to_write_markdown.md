@@ -124,21 +124,23 @@
 ![图片标题](图片地址)
 ```
 
+
+
 ## 锚定
 
 ```markdown
-这是正文,在这里引用锚点[<sup>1</sup>](#refer-anchor-1)
+这是正文,在这里引用锚点[<sup>[序号]</sup>](#锚点)
 ```
 
-这是正文,在这里引用锚点[<sup>1</sup>](#refer-anchor-1)
+这是正文,在这里引用锚点[<sup>[1]</sup>](#refer-anchor-1)
 
 ```markdown
-<div id="refer-anchor-1"></div>
-- [1][锚点1](地址)
+<div id="锚点"></div>
+序号. 作者. 文献名. 页码 起始-结束. 年份
 ```
 
 <div id="refer-anchor-1"></div>
-- [1][锚点1](地址)
+ 1. 作者. 文献名. 页码 起始-结束. 年份
 
 
 
