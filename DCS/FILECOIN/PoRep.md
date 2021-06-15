@@ -61,6 +61,22 @@ VDF(Verifiable Time-Delay Encoding Function)本质是一个加密时间长，解
 6. 计算 $\pi_{SEAL} := SCIP.Prove(pk_{SEAL}, \vec{x}, \vec{w})$
 7. 输出 $R, rt, \pi_{SEAL}$
 
+源码如下:
+
+```rust
+fn setup(sp: &Self::SetupParams) -> Result<Self::PublicParams> {
+        let graph = G::new(
+            sp.drg.nodes,
+            sp.drg.degree,
+            sp.drg.expansion_degree,
+            sp.drg.porep_id,
+            sp.api_version,
+        )?;
+
+        Ok(PublicParams::new(graph, sp.private, sp.challenges_count))
+    }
+```
+
 ### Prove
 
 证明者受到来自验证者的随机挑战c，要求在以$rt$为树根的副本文件R的Merkle树中确认特定的叶子$R$； 证明者生成关于$R$的Merkle路径通往$rt$。
@@ -80,6 +96,10 @@ VDF(Verifiable Time-Delay Encoding Function)本质是一个加密时间长，解
 4. 设定 $\vec{w} := (path, R_c)$
 5. 计算 $\pi_{POS} := SCIP.Prove(pk_{POS}, \vec{x}, \vec{w})$
 6. 输出 $\pi_{POS}$
+
+```rust
+ 
+```
 
 ### Verify
 
