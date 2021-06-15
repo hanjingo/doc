@@ -2,14 +2,6 @@
 
 
 
-## 参考
-
-- [维基百科-以太坊介绍](https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A)
-- [以太坊挖矿难度调整算法详解](https://zhuanlan.zhihu.com/p/344237325)
-- [挖矿收益计算网站-whattomine](https://whattomine.com/)
-
-
-
 ## 前提
 
 ### 以太坊介绍
@@ -247,3 +239,12 @@ $(30 \times (1 - 0.01) - 0.35 \times 0.6) \times 24 \times 30 = $ ? 元
 ## 结论
 
 可以先在个人电脑进行测试，确认无误在谨慎投入。
+
+
+
+## 链接
+
+- [维基百科-以太坊介绍](https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E5%9D%8A)
+- [以太坊挖矿难度调整算法详解](https://zhuanlan.zhihu.com/p/344237325)
+- [挖矿收益计算网站-whattomine](https://whattomine.com/)
+

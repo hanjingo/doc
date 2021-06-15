@@ -1,4 +1,9 @@
 # eos命令行
+
+[TOC]
+
+
+
 ## 查询
 |用途|实现|
 |:--|:--|
@@ -9,14 +14,20 @@
 |查看节点调度信息|cleos get schedule -j|
 |查看账号token信息|cleos get currency balance eosio.token 账号名|
 
+
+
 ## 合约部署&执行
+
 |用途|实现|
 |:--|:--|
 |发布合约|cleos set contract 账号 dapp地址 -p 账号@active|
 |清除合约|cleos set contract 合约部署者账号 -c|
 |抵押net,cpu,内存|cli-baz system delegatebw 给钱的人 受益人 "用来买net而抵押的钱" "用来买cpu而抵押的钱" --transfer --buyram "要买的内存"|
 
+
+
 ## 钱包&账号
+
 |用途|实现|
 |:--|:--|
 |创建钱包|cleos wallet create --to-console -n 钱包名字|

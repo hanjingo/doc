@@ -2,12 +2,6 @@
 
 
 
-## 参考
-
-- [Lotus: install and setup](https://docs.filecoin.io/get-started/lotus/installation/#minimal-requirements)
-
-
-
 ## 最小硬件要求
 
 | 条目     | 要求                                                         |
@@ -208,4 +202,10 @@ sudo lotus daemon stop
 ```sh
 sudo systemctl stop lotus-daemon
 ```
+
+
+
+## 链接
+
+- [Lotus: install and setup](https://docs.filecoin.io/get-started/lotus/installation/#minimal-requirements)
 

@@ -4,18 +4,11 @@ PoRep (复制证明, Proof of Replication)，一种新型的存储证明；可�
 
 
 
-## 参考
-
-- [Filecoin白皮书分析](https://www.jianshu.com/p/745d5d9be2d3)
-- [Filecoin源码分析(2)--Filecoin的共识和出块原理解析](https://juejin.cn/post/6864831562882646024)
-
-
-
 ## 定义
 
-复制证明：使得一个有效证明者P说服验证者V，数据D的一个独立物理副本R已经被存储在P上，且R专属于P。
+复制证明(PoRep)[<sup>[1]</sup>](#ref-1)：使得一个有效证明者P说服验证者V，数据D的一个独立物理副本R已经被存储在P上，且R专属于P。
 
-PoRep协议的特征是多项式时间算法的元组：
+PoRep协议的特征是多项式时间算法的元组:
 
 $(Setup, Prove, Verify)$
 
@@ -25,20 +18,23 @@ $(Setup, Prove, Verify)$
 
 
 
+## 可验证时延加密函数(VDF)
+VDF(Verifiable Time-Delay Encoding Function)本质是一个加密时间长，解密时间短且证明与验证过程高效的算法。
+
+![vdf](res/vdf.png)
+
+
+
 ## 步骤
 
-```sequence
-Title: 复制证明流程
-Note left of 证明者: Setup
-证明者->验证者: Prov
-Note right of 验证者: Verify
-```
+![PoRep过程](res/porep1.png)
 
 ### Seal操作
 
 选用Seal操作(slow sequential computation)，的理由如下：
 
 1. 使用伪随机排列PRP(pseudo-random permutation)算法生成原始数据D的一个唯一乱序副本R，每次存储商存储的都是一份唯一的R而不是原始数据D，解决了*女巫攻击*的问题；
+
 2. Seal操作专门设计成非常耗时的顺序计算(sequential operation)，这个过程要比verify过程中的challenge-response通信要耗时很多，通常在10x~100x倍率(可以调整时间难度系数$\tau$)，使得Seal操作必须放在$PoRep.Setup()$中，而无法放在$PoRep.Prove()$操作中，如果存储商没有实际存储数据R而在$PoRep.Prove()$中使用$Seal$操作生成R，就会因为证明生成时间太长而很容易被验证为超时失败，这同时解决了*外包攻击*和*生成攻击*。
 
 ### Setup
@@ -54,7 +50,6 @@ Note right of 验证者: Verify
   - 副本$R$
   - R的Merkle树根$rt$
   - 证明$\pi_{SEAL}$
-  
 
 流程：
 
@@ -76,7 +71,6 @@ Note right of 验证者: Verify
   - 随机挑战$c$
 - 输出
   - 证明$\pi_{POS}$
-  
 
 流程：
 
@@ -115,3 +109,21 @@ Note right of 验证者: Verify
 - $CRH$：防碰撞的哈希
 - $\vec{x}$：等待证明的NP声明
 - $\vec{w}$：证人
+
+
+
+## 链接
+
+- [Filecoin白皮书-英文版](res/filecoin.pdf)
+- [Filecoin白皮书-中文版](res/filecoin_zh.pdf)
+- [Filecoin白皮书分析](https://www.jianshu.com/p/745d5d9be2d3)
+- [Filecoin源码分析(2)--Filecoin的共识和出块原理解析](https://juejin.cn/post/6864831562882646024)
+- [FileCoin Lotus复制证明PoRep源码梳理](https://www.cnblogs.com/nirao/p/12172846.html)
+- [【Filecoin源码仓库全解析】第七章：了解PoRep与PoSt并参与复制证明游戏](https://blog.csdn.net/u012357002/article/details/89484431)
+
+
+
+## 参考
+
+<div id="ref-1"></div>
+[1] Protocol Labs. Filecoin: A Decentralized Storage Network. pages 10-14 . 2017.

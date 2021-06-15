@@ -124,6 +124,22 @@
 ![图片标题](图片地址)
 ```
 
+## 锚定
+
+```markdown
+这是正文,在这里引用锚点[<sup>1</sup>](#refer-anchor-1)
+```
+
+这是正文,在这里引用锚点[<sup>1</sup>](#refer-anchor-1)
+
+```markdown
+<div id="refer-anchor-1"></div>
+- [1][锚点1](地址)
+```
+
+<div id="refer-anchor-1"></div>
+- [1][锚点1](地址)
+
 
 
 ## 表格

@@ -7,3 +7,4 @@ grep -n -B 1 unlock-timeout ~/eosio-wallet/config.ini
 ```shell
 echo -e "\nunlock-timeout = 864000" >> ~/eosio-wallet/config.ini
 ```
+

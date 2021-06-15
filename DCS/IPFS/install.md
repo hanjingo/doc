@@ -1,6 +1,6 @@
 # ipfs安装教程
-## 参考
-- [ipfs官网](https://docs.ipfs.io/install/command-line/#official-distributions)
+
+
 
 ## 安装
 ### linux
@@ -39,6 +39,8 @@ ipfs --version
 
 todo
 
+
+
 ## 运行
 ```shell
 # 初始化
@@ -49,6 +51,8 @@ ipfs daemon
 
 # ipfs swarm peers
 ```
+
+
 
 ## 开机启动
 ```shell
@@ -70,3 +74,10 @@ KillSignal=SIGINT
 [Install]
 WantedBy=default.target
 ```
+
+
+
+## 链接 
+- [ipfs官网](https://docs.ipfs.io/install/command-line/#official-distributions)
+
+

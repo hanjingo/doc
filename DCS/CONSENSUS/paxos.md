@@ -1,10 +1,6 @@
 # paxos
 
-
-
-## 参考
-
-- [维基百科-Paxos算法](https://zh.wikipedia.org/wiki/Paxos%E7%AE%97%E6%B3%95)
+[TOC]
 
 
 
@@ -14,9 +10,7 @@ Paxos算法运行在允许宕机故障的异步系统中，它利用大多数 (M
 
 
 
-## 详情
-
-### 知识点
+## 知识点
 1. 角色分类(每个节点都同时具有3种角色)::
 	- 提议者(proposer):提出提案
 	- 决策者(acceptor):参与决策
@@ -27,11 +21,17 @@ Paxos算法运行在允许宕机故障的异步系统中，它利用大多数 (M
 	- Promise:允诺
 	- Choose:批准
 
-### 前提 
+
+
+## 前提 
+
 1. 每个提案都有一个唯一id,大的优先级高;
 2. id结构:序列号+服务id;
 
-### 流程
+
+
+## 流程
+
 paxos算法通过分为3阶段:
 - 阶段一:proposer向acceptor发出一个id=n的提案准备(prepare)请求，acceptor收到请求后，如果acceptor收到过比n更大的id,回复这个id更大的提案给proposer；S否则采取承诺动作（Promise）:不再接收id<=n的请求;
 - 阶段二:如果proposer没有收到比n更大的提案回复，向acceptor发出提案接受请求(Accept)动作;
@@ -39,8 +39,14 @@ paxos算法通过分为3阶段:
 
 
 
-## paxos算法的进化版:multi_paxos:
+## `paxos算法的进化版-multi_paxos:`
 
 由于paxos效率较低且当有多个proposer时容易产生冲突和活锁(livelock)；所以在一般的工程项目里，
 一开始会选举一个leader proposer,只有leader proposer可以提问,防止多个proposer锁死问题;
 同时省略prepare阶段,只有一个proposer时无法锁死,由prepare保存一个全局最大提案id;
+
+
+
+## 链接
+
+- [维基百科-Paxos算法](https://zh.wikipedia.org/wiki/Paxos%E7%AE%97%E6%B3%95)

@@ -22,30 +22,30 @@
 `int socket(int family, int type, int protocol)` 创建套接字，返回套接字描述符
 
 - family 协议族
-   | family   | 说明       |
-   | -------- | ---------- |
-   | AF_INET  | IPv4协议   |
-   | AF_INET6 | IPv6协议   |
-   | AF_LOCAL | Unix域协议 |
-   | AF_ROUTE | 路由套接字 |
-   | AF_KEY   | 密钥套接字 |
+| family   | 说明       |
+| -------- | ---------- |
+| AF_INET  | IPv4协议   |
+| AF_INET6 | IPv6协议   |
+| AF_LOCAL | Unix域协议 |
+| AF_ROUTE | 路由套接字 |
+| AF_KEY   | 密钥套接字 |
 
 - type 
 
-    | type           | 说明           |
-    | -------------- | -------------- |
-    | SOCK_STREAM    | 字节流套接字   |
-    | SOCK_DGRAM     | 数据报套接字   |
-    | SOCK_SEQPACKET | 有序分组套接字 |
-    | SOCK_RAW       | 原始套接字     |
+| type           | 说明           |
+| -------------- | -------------- |
+| SOCK_STREAM    | 字节流套接字   |
+| SOCK_DGRAM     | 数据报套接字   |
+| SOCK_SEQPACKET | 有序分组套接字 |
+| SOCK_RAW       | 原始套接字     |
 
 - protocol
 
-    | protocol     | 说明         |
-    | ------------ | ------------ |
-    | IPPROTO_TCP  | TCP传输协议  |
-    | IPPROTO_UDP  | UDP传输协议  |
-    | IPPROTO_SCTP | SCTP传输协议 |
+| protocol     | 说明         |
+| ------------ | ------------ |
+| IPPROTO_TCP  | TCP传输协议  |
+| IPPROTO_UDP  | UDP传输协议  |
+| IPPROTO_SCTP | SCTP传输协议 |
 
  - return
 
@@ -55,7 +55,7 @@ socket函数中family和type参数的组合：
 
 |                | AF_INET   | AF_INET6  | AF_LOCAL | AF_ROUTE | AF_KEY |
 | -------------- | --------- | --------- | -------- | -------- | ------ |
-| SOCK_STREAM    | TCP\|SCTP | TCP\|SCTP | 是       |          |        |
+| SOCK_STREAM    | `TCP/SCTP`|`TCP/SCTP` | 是       |          |        |
 | SOCK_DGRAM     | UDP       | UDP       | 是       |          |        |
 | SOCK_SEQPACKET | SCTP      | SCTP      | 是       |          |        |
 | SOCK_RAW       | IPv4      | IPv6      |          | 是       | 是     |

@@ -2,16 +2,6 @@
 
 
 
-## 参考
-
-- [DHT协议官方文档](http://www.bittorrent.org/beps/bep_0005.html)
-- [wiki Distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table)
-- [百度百科-DHT](https://baike.baidu.com/item/DHT/1007999?fr=aladdin)
-- [DHT爬虫](https://www.jianshu.com/p/4175b27b6758)
-- [Kademlia、DHT、KRPC、BitTorrent 协议、DHT Sniffer](https://www.cnblogs.com/LittleHann/p/6180296.html)
-
-
-
 ## 前提
 
 - 节点id
@@ -113,5 +103,13 @@ end
 Note right of 节点A:标记节点D为问题节点
 ```
 
+
+## 链接
+
+- [DHT协议官方文档](http://www.bittorrent.org/beps/bep_0005.html)
+- [wiki Distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table)
+- [百度百科-DHT](https://baike.baidu.com/item/DHT/1007999?fr=aladdin)
+- [DHT爬虫](https://www.jianshu.com/p/4175b27b6758)
+- [Kademlia、DHT、KRPC、BitTorrent 协议、DHT Sniffer](https://www.cnblogs.com/LittleHann/p/6180296.html)
 
 

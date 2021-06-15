@@ -2,20 +2,6 @@
 
 
 
-## 参考
-
-- [数字货币网站-f2pool](https://www.f2pool.com/)
-- [以太坊挖矿教程-知乎](https://zhuanlan.zhihu.com/p/32830672)
-- [2021以太坊（ETH）显卡原版挖矿教程步骤及交易所](https://www.163.com/dy/article/G52R11NQ053726TS.html)
-- [什么是挖矿和Ethash算法？](https://wiki.jikexueyuan.com/project/ethereum/what-dig.html)
-- [维基百科-Ethash](https://zh.wikipedia.org/wiki/Ethash)
-- [以太坊Ethash算法源码分析](https://blog.csdn.net/TurkeyCock/article/details/81364008)
-- [ETH挖矿软件排行榜2021【NVIDIA/AMD】](https://zhuanlan.zhihu.com/p/350626020)
-- [挖矿网](https://www.wk588.com/forum-80-1.html)
-- [“挖矿”劝退篇：我来给你算算到底划算不，还有市场行情分析](https://www.163.com/dy/article/G374888A0550VSCB.html)
-
-
-
 ## 环境
 
 **注意：配置挖矿环境需要先配置以太坊钱包，不然无法进行交易**
@@ -122,4 +108,18 @@ Amd显卡：todo
 ## 矿池选择
 
 todo
+
+
+
+## 链接
+
+- [数字货币网站-f2pool](https://www.f2pool.com/)
+- [以太坊挖矿教程-知乎](https://zhuanlan.zhihu.com/p/32830672)
+- [2021以太坊（ETH）显卡原版挖矿教程步骤及交易所](https://www.163.com/dy/article/G52R11NQ053726TS.html)
+- [什么是挖矿和Ethash算法？](https://wiki.jikexueyuan.com/project/ethereum/what-dig.html)
+- [维基百科-Ethash](https://zh.wikipedia.org/wiki/Ethash)
+- [以太坊Ethash算法源码分析](https://blog.csdn.net/TurkeyCock/article/details/81364008)
+- [ETH挖矿软件排行榜2021【NVIDIA/AMD】](https://zhuanlan.zhihu.com/p/350626020)
+- [挖矿网](https://www.wk588.com/forum-80-1.html)
+- [“挖矿”劝退篇：我来给你算算到底划算不，还有市场行情分析](https://www.163.com/dy/article/G374888A0550VSCB.html)
 

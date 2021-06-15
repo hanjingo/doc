@@ -23,14 +23,14 @@
 
 ```c
 struct in_addr {
-    in_addr_t s_addr; // 至少32位无符号整数类型
+    in_addr_t s_addr;           // 至少32位无符号整数类型
 };
 struct sockaddr_in {
-    uint8_t         sin_len; 		// 长度字段
+    uint8_t         sin_len;    // 长度字段
     sa_family_t     sin_family; // 地址族; 任何无符号整数类型
-    in_port_t       sin_port; 	// TCP或UDP端口; 至少16位的无符号整数类型
+    in_port_t       sin_port;   // TCP或UDP端口; 至少16位的无符号整数类型 
     struct in_addr  sin_addr;
-    char 						sin_zero[8];
+    char			sin_zero[8];
 };
 ```
 
@@ -48,9 +48,9 @@ POSIX规范要求的数据类型
 
 ```c
 struct sockaddr {
-    uint8_t     	 sa_len;
-    sa_family_t	sa_family;
-    char        		sa_data[14];
+    uint8_t     sa_len;
+    sa_family_t sa_family;
+    char        sa_data[14];
 };
 ```
 
@@ -73,10 +73,10 @@ struct sockaddr_in6 {
 }
 ```
 
-- 如果系统支持套接字地址结构中的长度字段，那么SIN6_LEN常值必须定义
-- IPv6的地址族是AF_INET6，而IPv4的地址族是AF_INET
-- 结构中字段的先后顺序做过编排，使得如果sockaddr_in6结构本身是64位对齐的，那么128位的sin6_addr字段也是64位对齐的。在一些64位处理器上，如果64位数据存储在某个64位边界位置，那么对它的访问将得到优化处理。
-- Sin6_flowinfo字段分成2个字段:
+- 如果系统支持套接字地址结构中的长度字段，那么`SIN6_LEN`常值必须定义
+- IPv6的地址族是`AF_INET6`，而IPv4的地址族是`AF_INET`
+- 结构中字段的先后顺序做过编排，使得如果`sockaddr_in6`结构本身是64位对齐的，那么128位的`sin6_addr`字段也是64位对齐的。在一些64位处理器上，如果64位数据存储在某个64位边界位置，那么对它的访问将得到优化处理。
+- `Sin6_flowinfo`字段分成2个字段:
   - 低序20位是流标(flow label)
   - 高序12位保留
 - 对于具备范围的地址(scoped address), sin6_scope_id字段标识其范围(scope)，最常见的是链路局部地址(link-local address)的接口索引(interface index)
@@ -87,7 +87,7 @@ struct sockaddr_in6 {
 
 ```c
 struct sockaddr_storage { // 存储套接字地址结构
-    uint8_t     	 ss_len;
+    uint8_t     ss_len;
     sa_family_t ss_family;
 };
 ```
@@ -231,9 +231,9 @@ uint32_t ntohl(uint32_t net32bitvalue);
 
   **注意:**
 
-  **1. 地址255.255.255.255不能由该函数处理; **
+  **1. 地址255.255.255.255不能由该函数处理;**
 
-  **2. 函数出错时返回-1,其它函数一般返回无符号值**
+  **2. 函数出错时返回-1,其它函数一般返回无符号值;**
 
 - `char *inet_ntoa(struct in_addr inaddr)` 将32位的网络字节序二进制IPv4地址转换成相应的点分十进制字符串。
 

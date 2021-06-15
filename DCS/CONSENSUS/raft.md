@@ -2,12 +2,6 @@
 
 
 
-## 参考
-
-- [维基百科-raft](https://zh.wikipedia.org/wiki/Raft)
-
-
-
 ## 摘要
 
 raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可冗余，可容错算法)
@@ -18,16 +12,18 @@ raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可�
 
 
 
-## 详情
 
-### 知识点
+## 知识点
 1. 节点的三个状态(同一时间只能由一个状态):
 * leader(领导)
 * fllower(跟随者)
 * condidate(领导候选人)
 **最大容错节点数量:(n-1)/2**
 
-### 领导竞选
+
+
+## 领导竞选
+
 系统一启动，所有节点都是follower状态;如果一段时间没有收到leader的心跳,发起选举;  
 1. 增加节点本地的current term, 切换到candidate状态
 2. 投自己一票
@@ -43,3 +39,10 @@ raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可�
 3. leader只能追加记录，无法覆盖删除记录
 
 log replication:
+
+
+
+## 链接
+
+- [维基百科-raft](https://zh.wikipedia.org/wiki/Raft)
+

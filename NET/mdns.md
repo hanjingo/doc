@@ -2,23 +2,6 @@
 
 
 
-## 参考
-
-- [开源项目 mDNSResponder](https://blog.csdn.net/wirelessdisplay/article/details/78088992)
-- [开源项目 avahi](https://github.com/lathiat/avahi)
-- [开源项目 zeroconf](https://github.com/grandcat/zeroconf)
-- [hashicorp/mdns 介绍与源代码分析](https://blog.csdn.net/u013272009/article/details/97546884)
-- [mdns协议官方文档-rfc6762](res/rfc6762.txt)
-- [网络协议之mDNS20170217](https://www.cnblogs.com/yuweifeng/p/6409182.html)
-- [mdns 百度百科](https://baike.baidu.com/item/mdns)
-- [利用 mDNS 协议来定位局域网主机](https://blog.beanbang.cn/2019/08/07/locate-hosts-using-mdns/)
-- [(原创)Bonjour协议分析](https://liuweiqiang.win/2016/09/16/Bonjour%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/)
-- [手册页部分 1M： 系统管理命令 dns-sd](https://docs.oracle.com/cd/E56344_01/html/E54077/dns-sd-1m.html)
-- [mDNSResponder介绍与移植](https://blog.csdn.net/yuangc/article/details/101676976?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&dist_request_id=1332036.8429.16191622781102443&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control)
-- [avahi官网介绍](https://www.avahi.org/)
-
-
-
 ## 概述
 
 mdns用于本地网络服务和主机发现，基于UDP协议，域名以`.local`结尾，使用组播：IPv4地址`224.0.0.251`或IPv6地址`ff02::fb`，端口5353。
@@ -97,50 +80,50 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 - 报文
 
   - 查询段
-  
-    | 变量名 | 描述                   | 长度（bit） |
-    | ------ | ---------------------- | ----------- |
-    | QNAME  | 查询的域名             | 变长        |
-    | QTYPE  | 查询资源记录类型（RR） | 16          |
-    | QCLASS | 查询类 1.表示互联网... | 16          |
 
-		**例：**
+| 变量名 | 描述                   | 长度（bit） |
+| ------ | ---------------------- | ----------- |
+| QNAME  | 查询的域名             | 变长        |
+| QTYPE  | 查询资源记录类型（RR） | 16          |
+| QCLASS | 查询类 1.表示互联网... | 16          |
 
-		![mdns查询请求](res/mdns_query_req.png)
+**例：**
 
-	- 应答段
+![mdns查询请求](res/mdns_query_req.png)
+
+  - 应答段
 	
-	  | 变量名             | 描述                   | 长度（bit）    |
-	  | ------------------ | ---------------------- | -------------- |
-	  | Name               | 查询的域名             | 变长           |
-	  | Type               | 查询资源记录类型（RR） | 16             |
-	  | Class              | 查询类 1.表示互联网... | 16             |
-	  | Time to live (TTL) | RR可以被缓存的秒数     | 32             |
-	  | RDLength           | DATA字段的字节数       | 16             |
-	  | RDATA<br>  Address | 数据字段<br>  地址     | 变长<br>  变长 |
+| 变量名             | 描述                   | 长度（bit）    |
+| ------------------ | ---------------------- | -------------- |
+| Name               | 查询的域名             | 变长           |
+| Type               | 查询资源记录类型（RR） | 16             |
+| Class              | 查询类 1.表示互联网... | 16             |
+| Time to live (TTL) | RR可以被缓存的秒数     | 32             |
+| RDLength           | DATA字段的字节数       | 16             |
+| RDATA<br>  Address | 数据字段<br>  地址     | 变长<br>  变长 |
 
-		**例：**
+**例：**
 
-		![mdns查询返回](res/mdns_query_rsp.png)
+![mdns查询返回](res/mdns_query_rsp.png)
 		
-	- 授权段
+  - 授权段
 	
-	  | 变量名                                                | 描述                                                | 长度（bit）                             |
-	  | ----------------------------------------------------- | --------------------------------------------------- | --------------------------------------- |
-	  | Name                                                  | 域名:<br>  Service<br>  Protocol<br>  Name          | 变长                                    |
-	  | Type                                                  | 查询资源记录类型（RR）                              | 16                                      |
-	  | Class                                                 | 查询类 1.表示互联网...                              | 16                                      |
-	  | Time to live (TTL)                                    | RR可以被缓存的秒数                                  | 32                                      |
-	  | Data length                                           | DATA字段的字节数                                    | 16                                      |
-	  | Data:<br>  Priority<br>  Weight<br>  Port<br>  Target | DATA字段:<br>  优先级<br>  权重<br>  端口<br>  目标 | 变长:<br>  16<br>  16<br>  16<br>  变长 |
+| 变量名                                                | 描述                                                | 长度（bit）                             |
+| ----------------------------------------------------- | --------------------------------------------------- | --------------------------------------- |
+| Name                                                  | 域名:<br>  Service<br>  Protocol<br>  Name          | 变长                                    |
+| Type                                                  | 查询资源记录类型（RR）                              | 16                                      |
+| Class                                                 | 查询类 1.表示互联网...                              | 16                                      |
+| Time to live (TTL)                                    | RR可以被缓存的秒数                                  | 32                                      |
+| Data length                                           | DATA字段的字节数                                    | 16                                      |
+| Data:<br>  Priority<br>  Weight<br>  Port<br>  Target | DATA字段:<br>  优先级<br>  权重<br>  端口<br>  目标 | 变长:<br>  16<br>  16<br>  16<br>  变长 |
 	
-	  ![授权段示例](res/mdns_query_auth.png)
+![授权段示例](res/mdns_query_auth.png)
 	
-	- 附加段
+- 附加段
 	
-	  结构同应答段一致。
+结构同应答段一致。
 	
-	  ![附加段示例](res/mdns_query_additional.png)
+![附加段示例](res/mdns_query_additional.png)
 
 
 
@@ -238,4 +221,25 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
     ```
   
   - ...
+
+
+
+## 链接
+
+- [开源项目 mDNSResponder](https://blog.csdn.net/wirelessdisplay/article/details/78088992)
+- [开源项目 avahi](https://github.com/lathiat/avahi)
+- [开源项目 zeroconf](https://github.com/grandcat/zeroconf)
+- [hashicorp/mdns 介绍与源代码分析](https://blog.csdn.net/u013272009/article/details/97546884)
+- [mdns协议官方文档-rfc6762](res/rfc6762.txt)
+- [网络协议之mDNS20170217](https://www.cnblogs.com/yuweifeng/p/6409182.html)
+- [mdns 百度百科](https://baike.baidu.com/item/mdns)
+- [利用 mDNS 协议来定位局域网主机](https://blog.beanbang.cn/2019/08/07/locate-hosts-using-mdns/)
+- [(原创)Bonjour协议分析](https://liuweiqiang.win/2016/09/16/Bonjour%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/)
+- [手册页部分 1M： 系统管理命令 dns-sd](https://docs.oracle.com/cd/E56344_01/html/E54077/dns-sd-1m.html)
+- [mDNSResponder介绍与移植](https://blog.csdn.net/yuangc/article/details/101676976?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&dist_request_id=1332036.8429.16191622781102443&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control)
+- [avahi官网介绍](https://www.avahi.org/)
+
+
+
+## 参考
 

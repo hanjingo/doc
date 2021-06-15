@@ -107,7 +107,7 @@ dg_cli(FILE *fp, int sockfd, const SA *pservaddr, socklen_t servlen)
   Setsockopt(sockfd, SOL_SOCK, SO_BROADCAST, &on, sizeof(on));
   Sigemptyset(&sigset_alrm);
   Sigaddset(&sigset_alrm, SIGALRM);
-  Signal(SIGALRM, recvfrom_alarm);	// 解阻塞信号
+  Signal(SIGALRM, recvfrom_alarm);	              // 解阻塞信号
   while (Fgets(sendline, MAXLINE, fp) != NULL) {
     Sendto(sockfd, sendline, strlen(sendline), 0, pservaddr, servlen);
     alarm(5);
@@ -204,7 +204,7 @@ dg_cli(FILE *fp, int sockfd, const SA *pservaddr, socklen_t servlen)
   struct sockaddr *preply_addr;
   preply_addr = Malloc(servlen);
   Setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &on, sizeof(on));
-  Signal(SIGALRM, recvfrom_alarm); // 处理SIGALRM并调用siglongjmp
+  Signal(SIGALRM, recvfrom_alarm);      // 处理SIGALRM并调用siglongjmp
   while (Fgets(sendline, MAXLINE, fp) != NULL) {
     Sendto(sockfd, sendline, strlen(sendline), 0, pservaddr, servlen);
     alarm(5);
@@ -244,7 +244,7 @@ dg_cli(FILE *fp, int sockfd, const SA *pservaddr, socklen_t servlen)
   struct sockaddr *preply_addr;
   preply_addr = Malloc(servlen);
   Setsockop(sockfd, SOL_SOCKET, SO_BROADCAST, &on, sizeof(on));
-  Pipe(pipefd); // 创建一个普通的Unix管道，返回2个描述符
+  Pipe(pipefd);     // 创建一个普通的Unix管道，返回2个描述符
   maxfdp1 = max(sockfd, pipefd[0]) + 1;
   FD_ZERO(&rset);
   Signal(SIGALRM, recvfrom_alarm);

@@ -347,9 +347,11 @@ ipfs可以把子块拼接起来，组成一个完整的文件。其命令如下�
 
 
 
-## 参考
+## 链接
 
 - [IPFS - 内容寻址的版本化点对点文件系统(草稿3) 翻译](https://www.jianshu.com/p/24f989ec2aab)
 - [IPFS协议层深入分析10---MerkleDAG](https://www.jianshu.com/p/26f2d5282552)
 - [IPFS-For-Chinese](https://github.com/ChainBook/IPFS-For-Chinese)
+
+## 参考
 

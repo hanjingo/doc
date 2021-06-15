@@ -1,7 +1,6 @@
 # 第22章 高级UDP套接字编程
 
-- [概述](#概述)
-
+[TOC]
 
 
 ## 概述
@@ -16,7 +15,7 @@
 
 struct unp_in_pktinfo {
   struct in_addr ipi_addr;
-  int		 				 ipi_ifindex;
+  int	 ipi_ifindex;
 };
 
 ssize_t

@@ -4,7 +4,7 @@
 
 
 
-## 参考
+## 链接
 
 * [Zcash是这样用零知识证明的](https://blog.csdn.net/hongtaq156136/article/details/89001342?utm_source=distribute.pc_relevant.none-task-blog-baidujs-6)
 * [零知识证明中的超级新星：zk-SNARKs](https://www.jianshu.com/p/1df33c10fd22)

@@ -574,16 +574,16 @@ struct sctp_sndrcvinfo {
 
 - sinfo_flags：指定新的默认标志，他们将应用于所有消息发送
 
-    sinfo_flags字段允许的SCTP标志值：
+sinfo_flags字段允许的SCTP标志值：
 
-    | 常值          | 说明                                                         |
-    | ------------- | ------------------------------------------------------------ |
-    | MSG_ABORT     | 启动中止性的关联终止过程                                     |
-    | MSG_ADDR_OVER | 指定SCTP不顾主目的地址而改用给定的地址                       |
-    | MSG_EOF       | 发送完本消息后启动雅致的关联终止过程                         |
-    | MSG_PR_BUFFER | 开启部分可靠性特性（如果可用的话）基于缓冲区的层面（profile） |
-    | MSG_PR_SCTP   | 针对本消息开启部分可靠性特性（如果可用的话）                 |
-    | MSG_UNORDERED | 指定本消息使用无序的消息传递服务                             |
+| 常值          | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| MSG_ABORT     | 启动中止性的关联终止过程                                     |
+| MSG_ADDR_OVER | 指定SCTP不顾主目的地址而改用给定的地址                       |
+| MSG_EOF       | 发送完本消息后启动雅致的关联终止过程                         |
+| MSG_PR_BUFFER | 开启部分可靠性特性（如果可用的话）基于缓冲区的层面（profile） |
+| MSG_PR_SCTP   | 针对本消息开启部分可靠性特性（如果可用的话）                 |
+| MSG_UNORDERED | 指定本消息使用无序的消息传递服务                             |
 
 - sinfo_ppid：指定将置于所有外出消息中的SCTP净荷协议标识(payload protocol identifier)字段的默认值
 
@@ -653,13 +653,14 @@ struct sctp_paddrinfo {
 
 - spinfo_state：
 
-    SCTP对端地址状态：
+SCTP对端地址状态：
 
-    | 常值                  | 说明                         |
-    | --------------------- | ---------------------------- |
-    | SCTP_ACTIVE           | 地址活跃且可达               |
-    | SCTP_INACTIVE         | 地址当前不可达               |
-    | SCTP_ADDR_UNCONFIRMED | 地址尚未由心搏或用户数据证实 |
+| 常值                  | 说明                         |
+| --------------------- | ---------------------------- |
+| SCTP_ACTIVE           | 地址活跃且可达               |
+| SCTP_INACTIVE         | 地址当前不可达               |
+| SCTP_ADDR_UNCONFIRMED | 地址尚未由心搏或用户数据证实 |
+
 
 - spinfo_cwnd：表示为所指定对端地址维护的当前拥塞窗口
 
@@ -803,18 +804,19 @@ struct sctp_status {
 
 - sstat_state：存放SCTP状态之一，指出关联的总体状态
 
-    SCTP状态：
+SCTP状态：
 
-    | 常值                   | 说明                        |
-    | ---------------------- | --------------------------- |
-    | SCTP_CLOSED            | 关联已关闭                  |
-    | SCTP_COOKIE_WAIT       | 关联已发送INIT              |
-    | SCTP_COOKIE_ECHOED     | 关联已回射COOKIE            |
-    | SCTP_ESTABLISHED       | 关联已建立                  |
-    | SCTP_SHUTDOWN_PENDING  | 关联期待发送SHUTDOWN        |
-    | SCTP_SHUTDOWN_SENT     | 关联已发送SHUTDOWN          |
-    | SCTP_SHUTDOWN_RECEIVED | 关联已收到SHUTDOWN          |
-    | SCTP_SHUTDOWN_ACT_SENT | 关联在等待SHUTDOWN-COMPLETE |
+| 常值                   | 说明                        |
+| ---------------------- | --------------------------- |
+| SCTP_CLOSED            | 关联已关闭                  |
+| SCTP_COOKIE_WAIT       | 关联已发送INIT              |
+| SCTP_COOKIE_ECHOED     | 关联已回射COOKIE            |
+| SCTP_ESTABLISHED       | 关联已建立                  |
+| SCTP_SHUTDOWN_PENDING  | 关联期待发送SHUTDOWN        |
+| SCTP_SHUTDOWN_SENT     | 关联已发送SHUTDOWN          |
+| SCTP_SHUTDOWN_RECEIVED | 关联已收到SHUTDOWN          |
+| SCTP_SHUTDOWN_ACT_SENT | 关联在等待SHUTDOWN-COMPLETE |
+
 
 - sstat_rwnd：存放本地端点对于对端接收窗口的当前估计
 
