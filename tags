@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Box	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^    explicit Box(size_t l = 1, size_t w = 1, size_t h = 1) : length {1}, width {w}, height {h} {}$/;"	f	class:Box
+Box	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^class Box$/;"	c	file:
+Checkout	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^class Checkout$/;"	c	file:
+Customer	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    explicit Customer(size_t st = 10) : service_t {st}{}$/;"	f	class:Customer
+Customer	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^class Customer$/;"	c	file:
+Hash_Name	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^class Hash_Name$/;"	c	file:
+List_Course	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^class List_Course$/;"	c	file:
+Name	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^    Name(const std::string& name1, const std::string& name2) : first (name1),second (name2) {}$/;"	f	class:Name
+Name	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^class Name$/;"	c	file:
+Name	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    Name(const string& name1, const string& name2) : first(name1), second(name2){}$/;"	f	class:Name
+Name	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^class Name$/;"	c	file:
+Student	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    Student() {}$/;"	f	class:Student
+Student	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    Student(Student&& student) : first(std::move(student.first)),$/;"	f	class:Student
+Student	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    Student(const Student& student) : $/;"	f	class:Student
+Student	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    Student(const std::string& name1, const std::string& name2) : first(name1), second(name2) {}$/;"	f	class:Student
+Student	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^class Student$/;"	c	file:
+add	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    void add(PCustomer&& customer) { customers.push(std::move(customer)); }$/;"	f	class:Checkout
+create_students	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^Students create_students()$/;"	f
+customers	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    std::queue<PCustomer> customers;$/;"	m	class:Checkout	file:
+done	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    bool done() const { return service_t == 0; }$/;"	f	class:Customer
+execute	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/stack.cpp	/^double execute(std::stack<char>& ops, std::stack<double>& operands)$/;"	f
+gen_value	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^static std::default_random_engine gen_value;$/;"	v	file:
+get_entry	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^Entry get_entry()$/;"	f
+get_first	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    const string& get_first() const { return first; }$/;"	f	class:Name
+get_length	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    size_t get_length() const { return first.length() + second.length() + 1; }$/;"	f	class:Name
+get_people	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/tuple_pair.cpp	/^void get_people(People& people)$/;"	f
+get_second	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    const string& get_second() const { return second; }$/;"	f	class:Name
+hash	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    size_t hash() const { return std::hash<std::string>()(first+second); }$/;"	f	class:Name
+histogram	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^void histogram(const std::vector<int>& v, int min)$/;"	f
+list_DOB_Job	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/tuple_pair.cpp	/^void list_DOB_Job(const People& people)$/;"	f
+list_bucket_counts	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_map.cpp	/^void list_bucket_counts(const std::vector<size_t>& counts)$/;"	f
+list_buckets	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^void list_buckets(const Names& names)$/;"	f
+list_elements	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^void list_elements(Iter begin, Iter end)$/;"	f
+list_entries	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^void list_entries(const map<Name, size_t>& people)$/;"	f
+list_pq	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/priority_queue.cpp	/^void list_pq(std::priority_queue<T> pq, size_t count = 5)$/;"	f
+list_sorted_people	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/tuple_pair.cpp	/^void list_sorted_people(const People& people, Compare comp)$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/array.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/deque.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/heap.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map2.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/multi_set.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/multimap.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/priority_queue.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/stack.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/tuple_pair.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_map.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^int main()$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/vector1.cpp	/^int main() {$/;"	f
+main	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/vector2.cpp	/^int main()$/;"	f
+make_friends	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^void make_friends(Names& names) {$/;"	f
+operator ()	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    void operator()(const Course& course)$/;"	f	class:List_Course
+operator ()	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    size_t operator()(const Name& name) { return name.hash(); }$/;"	f	class:Hash_Name
+operator <	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^    bool operator<(const Box& box) { return volume() < box.volume(); }$/;"	f	class:Box
+operator <	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^    bool operator<(const Name& name) const$/;"	f	class:Name
+operator <	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^    bool operator<(const Student& student) const $/;"	f	class:Student
+operator <	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    bool operator<(const Checkout& other) const { return qlength() < other.qlength(); }$/;"	f	class:Checkout
+operator <	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    bool operator<(const Name& name) const$/;"	f	class:Name
+operator <<	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^inline std::ostream& operator<<(std::ostream& out, const Box& box)$/;"	f
+operator <<	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^inline std::ostream& operator<<(std::ostream& out, const Name& name)$/;"	f
+operator <<	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/set.cpp	/^inline std::ostream& operator<<(std::ostream& out, const Student& student)$/;"	f
+operator <<	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^inline std::ostream& operator<<(std::ostream& out, const Name& name)$/;"	f
+operator ==	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^    bool operator==(const Box& box) { return length == box.length && width == box.width && height == box.height; }$/;"	f	class:Box
+operator ==	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^    bool operator==(const Name& name) const$/;"	f	class:Name
+operator >	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    bool operator>(const Checkout& other) const { return qlength() < other.qlength(); }$/;"	f	class:Checkout
+operator >>	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^inline std::istream& operator>>(std::istream& in, Box& box)$/;"	f
+operator >>	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/map1.cpp	/^inline std::istream& operator>>(std::istream& in, Name& name)$/;"	f
+operator >>	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/unordered_multiset.cpp	/^inline std::istream& operator>>(std::istream& in, Name& name)$/;"	f
+precedence	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/stack.cpp	/^inline size_t precedence(const char op)$/;"	f
+qlength	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    size_t qlength() const { return customers.size(); }$/;"	f	class:Checkout
+show	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/heap.cpp	/^void show(const std::deque<string>& words, size_t count = 5)$/;"	f
+time_decrement	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    Customer& time_decrement()$/;"	f	class:Customer
+time_increment	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/smart_point.cpp	/^    void time_increment()$/;"	f	class:Checkout
+volume	NOTE/USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/demo/forward_list.cpp	/^    double volume() const { return length * width * height; }$/;"	f	class:Box

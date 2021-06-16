@@ -12,16 +12,16 @@ merkle data（有向无环图），是ipfs在Merkle tree的基础上开发的一
 ### ipfs对象定义
 
 ```go
-// ipfs对象
+// ipfs对象(对象可以是文件，也可以是目录)
 type IpfsObject struct {
-	Links []ObjectLink  // 对象引用
-	Data  string		// 数据
+	Links []ObjectLink  // link集合
+	Data  string		// 二进制数据，大小小于256kb
 }
 
 // ipfs对象引用
 type ObjectLink struct {
 	Name, Hash string // 对象名， hash
-	Size       uint64 // 对象大小
+	Size       uint64 // 对象大小总和（所有子节点和自己的数据大小的和）
 }
 ```
 
@@ -120,23 +120,23 @@ OPTION
 
 1. 将文件分割成多个block，每个block大小默认为256KB(可以通过配置调整)，数据块下面允许链接sub-block
 
-   下面是block生成代码：
+下面是block生成代码：
 
-   ```go
-   type BasicBlock struct {
-   	cid  cid.Cid
-   	data []byte
-   }
+```go
+type BasicBlock struct {
+ 	cid  cid.Cid
+    data []byte
+}
    
-   // 根据数据创建block
-   func NewBlock(data []byte) *BasicBlock {
-   	// TODO: fix assumptions
-   	return &BasicBlock{data: data, cid: cid.NewCidV0(u.Hash(data))}
-   }
+// 根据数据创建block
+func NewBlock(data []byte) *BasicBlock {
+// TODO: fix assumptions
+return &BasicBlock{data: data, cid: cid.NewCidV0(u.Hash(data))}
+}
    
-   // 根据cid创建block
-   func NewBlockWithCid(data []byte, c cid.Cid) (*BasicBlock, error) {
-   	if u.Debug {
+// 根据cid创建block
+func NewBlockWithCid(data []byte, c cid.Cid) (*BasicBlock, error) {
+    if u.Debug {
    		chkc, err := c.Prefix().Sum(data)
    		if err != nil {
    			return nil, err
@@ -147,11 +147,18 @@ OPTION
    		}
    	}
    	return &BasicBlock{data: data, cid: c}, nil
-   }
-   ```
- 
+}
+```
 
 2. 将block组合起来，构建成一个merkle dag，其root节点就是该文件的hash唯一标识
+
+结构如图所示例:
+
+![merkle_link1](res/merkle_link1.png)
+
+生成的Merkle dag(有向无环图)如图所示:
+
+![merkle_dag](res/merkle_dag.png)
 
 ### ipfs查询操作
 
@@ -166,7 +173,7 @@ ipfs使用以下命令来查询：
 ipfs的遍历的方式由`walkOption`决定,其源码如下：
 ```c++
 type wlkOptions struct struct {
-    SkipRoot 	 bool					       	 // 是否跳过root将
+    SkipRoot     bool                             // 是否跳过root将
     Concurrency  int							  // 遍历协程数量
     ErrorHandler func(c cid.Cid, err error) error // 错误回调
 }
@@ -178,7 +185,7 @@ type wlkOptions struct struct {
 遍历的过程中使用`ProgressTracker`来标记启动的协程个数，防止启动过多的协程；
 
 - 串行遍历
-```c++
+```go
 // 串行遍历; getLinks:获得link的函数， root:root节点, depth:最大深度, visit:访问函数
 func sequentialWalkDepth(ctx context.Context, getLinks GetLinks, root cid.Cid, depth int, visit func(cid.Cid, int) bool, options *walkOptions) error {
 	if !(options.SkipRoot && depth == 0) {
@@ -205,7 +212,7 @@ func sequentialWalkDepth(ctx context.Context, getLinks GetLinks, root cid.Cid, d
 ```
 
 - 并行遍历
-```c++
+```go
 func parallelWalkDepth(ctx context.Context, getLinks GetLinks, root cid.Cid, visit func(cid.Cid, int) bool, options *walkOptions) error { // 并发遍历深度
 	type cidDepth struct { // 标记cid深度
 		cid   cid.Cid
@@ -338,6 +345,7 @@ ipfs可以把子块拼接起来，组成一个完整的文件。其命令如下�
 
 
 ### ipfs修改操作
+ipfs插入/删除节点会影响root节点的hash
 
 ## 防篡改
 
@@ -352,6 +360,8 @@ ipfs可以把子块拼接起来，组成一个完整的文件。其命令如下�
 - [IPFS - 内容寻址的版本化点对点文件系统(草稿3) 翻译](https://www.jianshu.com/p/24f989ec2aab)
 - [IPFS协议层深入分析10---MerkleDAG](https://www.jianshu.com/p/26f2d5282552)
 - [IPFS-For-Chinese](https://github.com/ChainBook/IPFS-For-Chinese)
+- [Merkle Tree（默克尔树）算法解析](https://blog.csdn.net/pansaky/article/details/90239992)
+- [Amazon's Dynamo](https://www.allthingsdistributed.com/2007/10/amazons_dynamo.html)
 
 ## 参考
 

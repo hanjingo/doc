@@ -69,4 +69,60 @@ void foo()
 
 ### Default Memberwise Initialization
 
+当`class object`以"相同class的另一个object"作为初始值,其内部是以所谓的`default memberwise initialization`手法完成的,也就是把每一个内建的或派生的`data member`(例如一个指针或数组)的值,从某个`object`拷贝一份到另一个object身上.不过它并不会拷贝其中的`member class object`,而是以递归的方式施行`memberwise initialization`.例:
+
+```cpp
+class String {
+public:
+    // ...没有explicit copy constructor
+private:
+    char *str;
+    int len;
+};
+```
+
+一个`String object`的`default memberwise initialization`发生在以下情况:
+
+```cpp
+String noun("book");
+String verb = noun;
+```
+
+其完成方式就好像个别设定每一个members一样:
+
+```cpp
+// 语意相同
+verb.str = noun.str;
+verb.len = noun.len;
+```
+
+如果一个`String object`被声明为另一个`class`的member,如下所示:
+
+```cpp
+class Word {
+public:
+   // ...没有explicit copy constructor
+private:
+    int _occurs;
+    String _word;
+};
+```
+
+那么一个`Word object`的`default memberwise initialization`会拷贝其内建的member`_occurs`,然后再于String member object `_word`身上递归实施`memberwise initialization`.
+
+具体实际操作如下:
+
+1. 概念上而言,对于一个`class X`,这个操作时被一个`copy constructor`实现出来的...
+
+2. 一个良好的编译器可以为大部分`class objects`产生`bitwise copies`,因为它们有`bitwise copy semantics`...
+
+3. `Default constructors`和`copy constructors`在必要的时候才由编译器产生出来.
+
+4. 一个`class object`可用两种方式复制得到,一种是被初始化(也就是我们这里锁关心的),另一种是被指定(assignment).从概念上而言,这两个操作分别是以`copy constructor`和`copy assignment operator`完成的.
+
+如果class没有声明一个`copy constructor`,就会有隐式的声明(implicitly declared)或隐式的定义(implicitly defined)出现.
+
+c++ Standard把`copy constructor`区分为`trival`和`notrivial`两种.只有`notrivial`的实例才会被合成于程序之中.决定一个`copy constructor`是否为`trivial`的标准在于class是否展现出所谓的"bitwise copy semantics".
+
+### Bitwise Copy Semantics(位逐次拷贝)
 

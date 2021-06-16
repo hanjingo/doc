@@ -170,6 +170,8 @@ chunk `/tʃʌŋk/` 块
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
 
+cipher /ˈsaɪfə(r)/ 密码，暗号，无关紧要的 
+
 circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
 ### cl

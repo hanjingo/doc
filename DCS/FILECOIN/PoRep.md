@@ -23,6 +23,27 @@ VDF(Verifiable Time-Delay Encoding Function)本质是一个加密时间长，解
 
 ![vdf](res/vdf.png)
 
+## 基于merkle tree的挑战机制
+
+### 加密
+filecoin的`ZigZagDRG算法`(ZigZag-Depth Robust Graphs)是在`CBC加密算法`的基础上，构造的一种新型加密算法。原理如图所示：
+
+![zig_zag_drg](res/zig_zag_drg.png)
+
+1. 将原始数据依次分成多个小数据块并计算每个小数据的hash值
+2. 将数据块按照DRG（Depth Robust Graph）的方式建立关系，构成Merkle Tree
+
+### DRG
+DRG（Depth Robust Graph）
+
+源码如下:
+
+```rust
+
+```
+
+### 校验
+计算一个随机的节点到root的路径 
 
 
 ## 步骤
@@ -139,8 +160,8 @@ fn setup(sp: &Self::SetupParams) -> Result<Self::PublicParams> {
 - [Filecoin白皮书分析](https://www.jianshu.com/p/745d5d9be2d3)
 - [Filecoin源码分析(2)--Filecoin的共识和出块原理解析](https://juejin.cn/post/6864831562882646024)
 - [FileCoin Lotus复制证明PoRep源码梳理](https://www.cnblogs.com/nirao/p/12172846.html)
-- [【Filecoin源码仓库全解析】第七章：了解PoRep与PoSt并参与复制证明游戏](https://blog.csdn.net/u012357002/article/details/89484431)
-
+- [Filecoin源码仓库全解析 第七章：了解PoRep与PoSt并参与复制证明游戏](https://blog.csdn.net/u012357002/article/details/89484431)
+- [Filecoin - 深入理解SDR算法](https://blog.csdn.net/StarLi2020/article/details/107576768)
 
 
 ## 参考
