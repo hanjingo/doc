@@ -3,5 +3,4 @@
 - [hash碰撞](hash_collision.md)
 - [Kad算法](kad.md)
 - [八大排序算法总结](sort.md)
-- [Merkle树](merkle.md)
 
