@@ -1,50 +1,122 @@
 # 第二章 构造函数语意学(The Semantics of Constructors)
 
-**explicit**能够制止"单一参数的constructor"被当做一个conversion运算符。
+**explicit**(显式)能够制止"单一参数的constructor"被当做一个conversion运算符。
 
 ## Deafult Constructor的构造操作
 
-1. 对于`class X`，如果没有任何`user-declared constructor`，那么会有一个`default constructor`被隐式（implicitly）声明出来...一个被隐式声明出来的`default constructor`将是一个`trivial（无效的） constructor`
+例:
 
-2. 把合成的`default constructor, copy constructor, destructor, assignment copy operator`都以`inline`方式完成。一个`inline`函数有静态链接`(static linkage)`，不会被文件以外者看到。如果函数太复杂，不适合做成`inline`，就会合成出一个`explicit non-inline static`实例。
+```c++
+class Foo { public: int val; Foo *pnext; };
 
-3. 如果`class A`内含一个或一个以上的`member class objects`，那么`class A`的每一个`constructor`必须调用每一个`member classes`的`default constructor`。会扩张已存在的`constructors`，在其中安插一些代码，使得用户代码被执行之前，先调用必要的`default constructors`。
+void foo_bar()
+{
+    Foo bar;
+    if ( bar.val || bar.pnext )
+        // ... do something
+    // ...
+}
+```
 
-### 带有一个Virtual Function的Class
-有2种情况需要合成出`default constructor`:
+c++标准规定合成默认构造函数的规则如下：
 
-1. class声明（或继承）一个`virtual function`。
+没有任何user-declaerd constructor的类，那么会有一个default constructor被隐式(implicitly)声明出来，称之为trivial(没有什么作用的) constructor.
 
-2. class派生自一个继承串链，其中有一个或更多的`virtual base classes`。
+注意：
 
-扩张行动，例：
+1. 任何类如果没有定义默认的构造函数，编译器**不一定**会合成默认构造函数，只有当它认为你需要时，才给你合成；
+
+2. 编译器合成出来的默认构造函数**不一定**会显式设置每一个数据成员的默认值；
+
+### 四种需要合成notrivial constructor的情况:
+
+- 类成员中有成员是类对象，并且该成员的类含有默认构造函数。
+
+```c++
+class Foo { public: Foo(), Foo( int ) ... };
+class Bar { public: Foo foo; char *str; };
+
+void foo_bar()
+{
+    Bar bar; // Bar::foo必须在此处初始化
+    if (str) {}
+    ...
+}
+```
+
+在类`Bar`中有一个成员`foo`，带有默认构造函数，因此编译器会为类`Bar`生成一个默认的构造函数如下：
+
+```c++
+inline
+Bar::Bar()
+{
+    foo.Foo::Foo();
+}
+```
+
+编译器不会对其它成员变量做初始化，我们需要手动来为它做初始化：
+
+```c++
+Bar::Bar() { str = 0; }
+```
+
+编译器会将之扩张为：
+
+```c++
+Bar::Bar()
+{
+    foo.Foo::Foo();
+    str = 0;
+}
+```
+
+**注意：编译器不会初始化当前类中所含的其他值（这是程序员的责任）。**
+
+如果多个类成员对象都要求构造函数初始化操作，构造的顺序和声明的顺序一致。
+
+例，如果`Bar`中还有一个成员`foo2`且声明顺序在成员`str`后，那么编译器扩张构造函数如下：
+
+```c++
+Bar::Bar() {
+    foo.Foo::Foo();
+    foo2.Foo2::Foo2();
+    str = 0;
+}
+```
+
+- 基类有默认构造函数。 
+
+- 带有虚函数的类。
+
+例：class声明或者继承了一个`virtual function`：
 
 ```c++
 class Widget {
-    public:
-        virtual void flip()b = 0;
-        // ...
+public:
+    virtual void flip() = 0;
+    // ...
 };
 
-void flip( const Widget& widget) { widget.flip(); }
+void flip( const Widget& widget ) { widget.flip(); }
 
-// 假设Bell和Whistle都派生自Widget
+class Bell : public Widget{};
+class Whistle : public Widget{};
+
 void foo()
 {
     Bell b;
     Whistle w;
-
-    flip(b);
-    flip(w);
+    
+    flip( b );
+    flip( w );
 }
 ```
 
 下面的扩张行动会在编译期发生：
 
-1. 一个`virtual function table`（在cfront中被称为vtbl）会被编译器产生出来，内放class的`virtual functions`地址。
+1. 一个vtblL(`virtual function table`, 虚函数表)会被编译器产生出来，内放class的`virtual functions`地址。
 
-2. 在每一个`class object`中，一个额外的`pointer member`（也就是vptr）会被编译器合成出来，内含相关之`class vtbl`的地址。
-
+2. 在每一个`class object`中，一个vptr(`point to vtbl`)会被编译器合成出来。
 此外，`widget.flip()`的虚拟调用操作(`virtual invocation`)会被重新改写，以使用`widget`的`vptr`和`vtbl`中的`flip()`条目：
 
 ```c++
@@ -52,100 +124,155 @@ void foo()
 (*widget.vptr[ 1 ])( &widget )
 ```
 
-- 1表示`flip()`在`virtual table`中的固定索引；
-- `&widget`代表要交给“被调用的某个flip()函数实例”的**this**指针；
+`1` 表示`flip()`在`virtual table`中的固定索引；
+`&widget`代表要交给“被调用的某个flip()函数实例”的**this**指针；
 
-`__vbcX`（或编译器所做出的某个什么东西）是在class object构造期间被完成的。对于class所定义的每一个`constructor`，编译期会安插那些“允许每一个virtual base class的执行期存取操作"的代码。如果class没有声明任何constructors，编译器必须为它合成一个default constructor。
+- 存在虚基类（有直接虚拟基类或继承链上有虚基类）
 
-有4种情况，会造成“编译器必须为未声明constructor的classes合成一个default constructor”。`implicit nontrivial default constructors`。被合成出来的`constructor`只能满足编译器（而非程序）的需要。
+例，必须使得`virtual base class`在其每一个`derived class object`中的位置在执行期转被妥当：
 
-没有存在那4种情况而又没有声明任何`constructor`的`classes`，我们说它们拥有的是`implicit trivial default constructors`，它们实际上并不会被合成出来。
+```c++
+class X { public: int i; }
+class A : public virtual X { public: int j; };
+class B : public virtual X { public: double d; };
+class C : public A, public B { public: int k; };
 
-在合成的`default constructor`中，只有`base class subobjects`和`member class objects`会被初始化。所有其他的`nonstatic data member（如整数，整数指针，整数数组等等）都不会被初始化`。
+// 无法在编译期决定(resolve)出pa->X::i的位置
+void foo( const A* pa ) { pa->i = 1024; }
 
-
+main()
+{
+    foo( new A );
+    foo( new C );
+    // ...
+}
+```
 
 ## Copy Constructor的构造操作
 
-### Default Memberwise Initialization
+以下情况会出现默认构造函数：
 
-当`class object`以"相同class的另一个object"作为初始值,其内部是以所谓的`default memberwise initialization`手法完成的,也就是把每一个内建的或派生的`data member`(例如一个指针或数组)的值,从某个`object`拷贝一份到另一个object身上.不过它并不会拷贝其中的`member class object`,而是以递归的方式施行`memberwise initialization`.例:
+1. 显式对对象进行初始化
+2. 当对象被当作参数交给某个函数
+3. 当函数返回一个非引用的类对象
 
-```cpp
-class String {
-public:
-    // ...没有explicit copy constructor
-private:
-    char *str;
-    int len;
-};
-```
+### Default Memberwise Initialization(默认成员逐一初始化)
 
-一个`String object`的`default memberwise initialization`发生在以下情况:
-
-```cpp
-String noun("book");
-String verb = noun;
-```
-
-其完成方式就好像个别设定每一个members一样:
-
-```cpp
-// 语意相同
-verb.str = noun.str;
-verb.len = noun.len;
-```
-
-如果一个`String object`被声明为另一个`class`的member,如下所示:
+如果一个类没有提供任何的复制构造函数，那么该类内部以`default memberwise initialization`的方法来复制构造；实际上就是`bitwise copies(位逐次拷贝)`，即把类对象中的所有数据成员按顺序拷贝到另一个对象身上；如果有`data members`是类类型，那么就会递归地施行`bitwise copies`，例：
 
 ```cpp
 class Word {
 public:
-   // ...没有explicit copy constructor
+    // ...没有explicit copy constructor
 private:
     int _occurs;
     String _word;
 };
+Word word(2, "word");
+Word word2 = word1;
 ```
 
-那么一个`Word object`的`default memberwise initialization`会拷贝其内建的member`_occurs`,然后再于String member object `_word`身上递归实施`memberwise initialization`.
+最后一句的赋值操作可能是这样的：
 
-具体实际操作如下:
-
-1. 概念上而言,对于一个`class X`,这个操作时被一个`copy constructor`实现出来的...
-
-2. 一个良好的编译器可以为大部分`class objects`产生`bitwise copies`,因为它们有`bitwise copy semantics`...
-
-3. `Default constructors`和`copy constructors`在必要的时候才由编译器产生出来.
-
-4. 一个`class object`可用两种方式复制得到,一种是被初始化(也就是我们这里锁关心的),另一种是被指定(assignment).从概念上而言,这两个操作分别是以`copy constructor`和`copy assignment operator`完成的.
-
-如果class没有声明一个`copy constructor`,就会有隐式的声明(implicitly declared)或隐式的定义(implicitly defined)出现.
-
-c++ Standard把`copy constructor`区分为`trival`和`notrivial`两种.只有`notrivial`的实例才会被合成于程序之中.决定一个`copy constructor`是否为`trivial`的标准在于class是否展现出所谓的"bitwise copy semantics".
-
-### Bitwise Copy Semantics(位逐次拷贝)
+```c++
+word2._occurs = word1._occurs;
+word2._word = word1._word;
+```
 
 ### 不要Bitwise Copy Semantics
 
 有以下4种情况不展现出`bitwise copy semantics`:
 
-1. 当class内含一个`member object`而后者的class声明有一个`copy constructor`时。
-2. 当class继承自一个`base class`而后者存在一个`copy constructor`时。
-3. 当class声明了一个或多个`virtual functions`时。
-4. 当class派生自一个继承串链，其中有一个或多个`virtual base classes`时。
+1. 类中含有成员类对象，并且此类对象含有默认构造函数。
+2. 基类带有拷贝构造函数。
+3. 类中存在虚函数。
+4. 存在虚基类（有直接虚拟基类或继承链上有虚基类）。
 
 ### 重新设定Virtual Table的指针
 
 一个class声明了一个或多个`virtual functions`会产生以下扩张操作：
+
 - 增加一个`virtual function table(vtbl)`，内含每一个有作用的`virtual function`的地址。
 - 一个指向`virtual function table`的指针（vptr），安插在每一个`class object`内。
+
+例，
+
+```c++
+class ZooAnimal {
+public:
+    ZooAnimal();
+    virtual ~ZooAnimal();
+
+    virtual void animate();
+    virtual void draw();
+    // ...
+private:
+    // ZooAnimal的animate()和draw()
+    // 所需要的数据
+};
+
+class Bear : public ZooAnimal {
+public:
+    Bear();
+    void animate();
+    void draw();
+    virtual void dance();
+    // ...
+private:
+    // Bear的animate(),draw()和dance()
+    // 所需要的数据
+};
+Bear yogo; // 用Bear的默认构造函数初始化yogi
+Bear winnie = yogi; // 将yogi的vptr值拷贝给winnie的vptr，安全
+```
 
 ### 处理Virtual Base Class Subobject
 
 一个`virtual base class`的存在会使`bitwise copy semantics`无效。
 
 `default copy constructor`如果未被声明的话，会被视为`nontrivial`。
+
+例，假设有这样的继承关系：
+
+![2_1.png](res/2_1.png)
+
+```c++
+class Raccoon : public virtual ZooAnimal {
+public:
+    Raccoon() {}
+    Raccoon( int val ) {}
+    // ...
+private:
+    // 所有必要的数据
+};
+
+class RedPanda : public Raccoon {
+public:
+    RedPanda() {}
+    RedPanda( int val ) {}
+    // ...
+private:
+    // 所有必要的数据
+};
+```
+
+如果只是一个`Raccoon object`作为另一个`Raccoon object`的初值，"bitwise copy"就足够了。
+
+```c++
+Raccoon rocky;
+Raccoon little_cirtter = rocky;
+```
+
+但是如果以`RedPanda object`作为`Raccoon object`的初值，编译器必须判断"能否正常执行存取ZooAnimal的subobject的动作"
+
+```c++
+RedPanda little_red;
+Raccoon little_cirtter = little_red;
+```
+
+为了正确完成`little_critter`的初值设定，编译器必须合成一个`copy constructor`，安插一些代码以设定`virtual base class pointer/offset`的初值。
+
+![2_2](res/2_2.png)
 
 
 
@@ -155,15 +282,55 @@ c++ Standard把`copy constructor`区分为`trival`和`notrivial`两种.只有`no
 
 必要的程序转化有两个阶段：
 
-1. 重写每一个定义，其中的初始化操作会被剥除以。
+1. 重写每一个定义。
 2. class的`copy constructor`调用操作会被安插进去。
+
+例：
+
+```c++
+X x0;
+void foo_bar() {
+    X x1( x0 );
+    X x2 = x0;
+    X x3 = X( x0 );
+    // ...
+}
+```
+
+转化为：
+
+```c++
+void foo_bar() {
+    X x1;
+    X x2;
+    X x3;
+
+    // 编译器安插 X copy construction的调用操作
+    x1.X::X( x0 );
+    x2.X::X( x0 );
+    x3.X::X( x0 );
+    // ...
+}
+```
 
 ### 参数的初始化(Argument Initialization)
 
-将一个`class object`当做参数传给一个函数时，有2种策略：
+将一个`class object`当做参数传给一个函数或者作为一个函数的返回值，相当于以下形式的初始化：
 
-1. 导入所谓的临时性`object`，并调用`copy constructor`将它初始化，然后将此临时性object交给函数。
-2. 以“拷贝构造(copy construct)”的方式把实际参数直接构建在其应该的位置上，此位置视函数活动范围的不同，记录于程序堆栈中。在函数返回之前，局部对象`(local object)`的`destructor`(如果有定义的话)会被执行。
+已知函数：`void foo(X x0);`有以下调用：
+
+```c++
+X xx;
+foo(xx);
+```
+
+由于是传值或者返回值（而非引用），策略是导入临时性的对象，并且调用`copy constructor`将其初始化，然后将临时性对象交给函数。
+
+```c++
+X __temp0;
+__temp0.X::X( xx );
+foo( __temp0 );
+```
 
 ### 返回值的初始化(Return Value Initialization)
 
@@ -199,12 +366,14 @@ bar(X& __result)
 }
 ```
 
-函数的转化流程：
+上面的转化流程如下：
 
-1. 首先加上一个额外参数，类型是`class object`的一个reference。这个将用来放置被“拷贝构建(copy constructed)”而得的返回值。
-2. 在`return`指令之前安插一个`copy constructor`调用操作，以便将欲传回之object的内容当作上述新增参数的初值。
+1. 增加一个返回值的引用类型的额外参数，用来防止返回值；
+2. 在return之前安插一个`copy constructor`调用操作，来初始化那个额外参数；
 
 ### 在使用者层面做优化(Optimization at the User Level)
+
+直接返回构造的临时对象即可
 
 ### 在编译器层面做优化(Optimization at the Compiler Level)
 
@@ -234,25 +403,15 @@ bar( X &__result )
 }
 ```
 
-虽然`NRV优化`提供了重要的效率改善，但其依然饱受批评，原因如下：
-
-1. 优化由编译器默默完成，而它是否真的被完成，并不十分清楚（因为很少有编译器会说明其实现程度，或是否实现）
-2. 一旦函数变得比较复杂，优化也就变得比较难以施行。
-3. 优化会打破程序的对称性。
-
 ### Copy Constructor: 要还是不要?
 
-不管使用`memcpy()`还是`memset()`，都只有在"classes不含任何由编译器产生的内部members"时才能有效运行。如果声明一个或一个以上的`virtual functions`，或内含一个`virtual base class`，那么使用上述函数将会导致那些“被编译器产生的内部members”的初值被改写。
-
-### 摘要
-
-`copy constructor`的应用，迫使编译器多多少少对你的代码做部分转化。尤其是当一个函数以传值(by value)的方式传回一个`class object`，而该class有一个`copy constructor(不论是显式定义出来的，或是合成的)`时。这将导致深奥的程序转化-不论在函数的定义上还是在使用上。此外，编译器也将`copy constructor`的调用操作优化，以一个额外的第一参数（数值被直接存放于其中）取代`NRV`。程序员如果了解那些转换，以及`copy constructor`优化后的可能状态，就比较能控制其程序的执行效率。
+假如class需要大量的`memberwise`初始化操作，例如以传值(by value)的方式传回object，那么提供一个`copy constructor`的`explicit inline`函数实例就非常合理。
 
 
 
 ## 成员们的初始化队伍(Member Initialization List)
 
-在下列情况下，为了让你的程序能够被顺利编译，你必须使用`member initialization list`：
+下列4种情况必须使用成员初始化列表：
 
 1. 当初始化一个`reference member`时；
 2. 当初始化一个`const member`时；
