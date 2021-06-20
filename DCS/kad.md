@@ -2,7 +2,7 @@
 
 
 
-## 概述
+## 摘要
 
 Kademlia基于两个节点之间的距离计算，该距离是两个网络节点ID号的异或 XOR distance，计算的结果最终作为整型数值返回。异或距离跟实际上的地理位置没有任何关系，只与ID相关。
 
@@ -232,7 +232,7 @@ Note right of 节点A:离开网络，弃用节点ID
 
 
 
-## 外部链接
+## 参考
 
 - [维基百科-Kademlia算法](https://zh.wikipedia.org/wiki/Kademlia)
 - [P2P 网络核心技术：Kademlia 协议](https://zhuanlan.zhihu.com/p/40286711)

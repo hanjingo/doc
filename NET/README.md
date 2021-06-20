@@ -1,10 +1,8 @@
 - [POSIX接口](POSIX/README.md)
 
-- [BitTorrent协议](bittorrent.md)
-
 - [Chord协议]
 
-- [dht(Distributed Hash Table) 分布式哈希表](dht.md)
+- [DNS协议]
 
 - [KRPC协议](krpc.md)
 

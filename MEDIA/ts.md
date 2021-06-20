@@ -1,12 +1,6 @@
 # Ts
-参考:
-- [hls之m3u8、ts流格式详解](https://my.oschina.net/u/727148/blog/666824)
-- [多媒体文件格式之TS](https://www.cnblogs.com/tocy/p/media_container_6-mpegts.html)
-- [TS流PAT/PMT详解](https://www.cnblogs.com/shakin/p/3714848.html)
-- [TS协议解析第一部分](https://blog.csdn.net/u013354805/article/details/51578457)
-- [TS协议解析第二部分（PMT）](https://blog.csdn.net/u013354805/article/details/51586086)
-
 ts为传输流文件，视频编码主要格式为H264/MPEG4, 音频为AAC/MP3; ts文件分为3层:
+
 - ts 层：Transport Stream，是在 pes 层的基础上加入数据流的识别和传输必须的信息。
 - pes 层：Packet Elemental Stream，是在音视频数据上加了时间戳等对数据帧的说明信息。
 - es 层：Elementary Stream，即音视频数据
@@ -208,3 +202,14 @@ h.264的数据是由slice组成的，slice的内容包括：视频、sps、pps�
 
 ## 总结
 ![总结](RES/ts_summary.jpg)
+
+
+
+## 链接
+
+- [hls之m3u8、ts流格式详解](https://my.oschina.net/u/727148/blog/666824)
+- [多媒体文件格式之TS](https://www.cnblogs.com/tocy/p/media_container_6-mpegts.html)
+- [TS流PAT/PMT详解](https://www.cnblogs.com/shakin/p/3714848.html)
+- [TS协议解析第一部分](https://blog.csdn.net/u013354805/article/details/51578457)
+- [TS协议解析第二部分（PMT）](https://blog.csdn.net/u013354805/article/details/51586086)
+
