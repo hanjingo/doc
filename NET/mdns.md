@@ -92,7 +92,6 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 ![mdns查询请求](res/mdns_query_req.png)
 
   - 应答段
-	
 | 变量名             | 描述                   | 长度（bit）    |
 | ------------------ | ---------------------- | -------------- |
 | Name               | 查询的域名             | 变长           |
@@ -107,7 +106,6 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 ![mdns查询返回](res/mdns_query_rsp.png)
 		
   - 授权段
-	
 | 变量名                                                | 描述                                                | 长度（bit）                             |
 | ----------------------------------------------------- | --------------------------------------------------- | --------------------------------------- |
 | Name                                                  | 域名:<br>  Service<br>  Protocol<br>  Name          | 变长                                    |
@@ -116,11 +114,11 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 | Time to live (TTL)                                    | RR可以被缓存的秒数                                  | 32                                      |
 | Data length                                           | DATA字段的字节数                                    | 16                                      |
 | Data:<br>  Priority<br>  Weight<br>  Port<br>  Target | DATA字段:<br>  优先级<br>  权重<br>  端口<br>  目标 | 变长:<br>  16<br>  16<br>  16<br>  变长 |
-	
+
 ![授权段示例](res/mdns_query_auth.png)
 	
 - 附加段
-	
+
 结构同应答段一致。
 	
 ![附加段示例](res/mdns_query_additional.png)
@@ -152,75 +150,75 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 
 ### 相关命令
 
-- `dns-sd`
+#### dns-sd
 
-  - `dns-sd -A`
+- `-A`
 
-    测试使用多播 DNS 注册服务，并测试使用多播 DNS 的 DNS 记录的添加、更新和删除操作。
-    
-  - `dns-sd -U`
+  测试使用多播 DNS 注册服务，并测试使用多播 DNS 的 DNS 记录的添加、更新和删除操作。
   
-    测试使用多播 DNS 注册服务，并测试为使用多播 DNS 注册的服务更新 DNS TXT 记录。
-  
-  - `dns-sd -N`
-  
-    测试为使用多播 DNS 注册的服务添加大型 NULL 记录。
-  
-  - `dns-sd -T`
-  
-    测试为使用多播 DNS 注册的服务添加大型 TXT 记录。
-  
-  - `dns-sd -M`
-  
-    测试创建具有多个 TXT 记录的注册。
-  
-  - `dns-sd -I`
-  
-    测试注册并立即更新 TXT 记录。
-  
-  - `dns-sd -R`
-  
-    在给定name和type的指定域中注册（通告）服务，在当前计算机的指定port上侦听。
-  
-    格式：`dns-sd -R name type domain port <TXT>...`
-  
-    - name
-  
-      服务名，合法 `unicode 字符串（包括没有任何限制的点、空格、斜杠、冒号等）`，其最大长度是 63 个 UTF-8 字节。
-  
-    - type
-  
-      格式必须为 `应用程序协议名称._tcp` 或 `应用程序协议名称._udp`类型。
-  
-    - domain
-  
-      要注册服务的域名，以`.local`结尾
-  
-    - port
-  
-      服务侦听的端口号
-  
-    - <TXT>
-  
-      文本内容，key-value类型
-  
-    例：
-  
-    ```sh
-    dns-sd -R "my test" _http._tcp han.local 10086 path=/main.html
-    ```
-  
-  - `dns-sd -B`
-  
-    浏览 domain 中 type 服务的实例。
-  
-    例：
-  
-    ```sh
-    dns-sd -B _http.tcp
-    ```
-  
-  - ...
+- `-U`
+
+  测试使用多播 DNS 注册服务，并测试为使用多播 DNS 注册的服务更新 DNS TXT 记录。
+
+- `-N`
+
+  测试为使用多播 DNS 注册的服务添加大型 NULL 记录。
+
+- `-T`
+
+  测试为使用多播 DNS 注册的服务添加大型 TXT 记录。
+
+- `-M`
+
+  测试创建具有多个 TXT 记录的注册。
+
+- `-I`
+
+  测试注册并立即更新 TXT 记录。
+
+- `-R`
+
+  在给定name和type的指定域中注册（通告）服务，在当前计算机的指定port上侦听。
+
+  格式：`dns-sd -R name type domain port <TXT>...`
+
+  - name
+
+    服务名，合法 `unicode 字符串（包括没有任何限制的点、空格、斜杠、冒号等）`，其最大长度是 63 个 UTF-8 字节。
+
+  - type
+
+    格式必须为 `应用程序协议名称._tcp` 或 `应用程序协议名称._udp`类型。
+
+  - domain
+
+    要注册服务的域名，以`.local`结尾
+
+  - port
+
+    服务侦听的端口号
+
+  - <TXT>
+
+    文本内容，key-value类型
+
+  例：
+
+  ```sh
+  dns-sd -R "my test" _http._tcp han.local 10086 path=/main.html
+  ```
+
+- `-B`
+
+  浏览 domain 中 type 服务的实例。
+
+  例：
+
+  ```sh
+  dns-sd -B _http.tcp
+  ```
+
+- ...
 
 
 
