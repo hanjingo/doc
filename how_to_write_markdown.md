@@ -246,11 +246,13 @@ $公式内容$
 
 **矩阵的表示1:**
 
-`$$ \begin{bmatrix}
+```markdown
+$$ \begin{bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{bmatrix} $$`
+\end{bmatrix} $$
+```
 
 $$ \begin{bmatrix}
 1 & 2 & 3 \\
@@ -260,11 +262,13 @@ $$ \begin{bmatrix}
 
 **矩阵的表示2:**
 
-`$$ \begin{Bmatrix}
+```markdown
+$$ \begin{Bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{Bmatrix} $$`
+\end{Bmatrix} $$
+```
 
 $$ \begin{Bmatrix}
 1 & 2 & 3 \\

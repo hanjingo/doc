@@ -391,3 +391,63 @@ _z += rhs._z;
 ```c++
 Point2d *p2d = pv3d ? pv3d->__vptr__Point3d[-1];
 ```
+
+
+
+## 对象成员的效率
+
+单一继承不会影响测试效率，多重继承也不会，但是虚拟继承的效率令人失望。
+
+
+
+## 指向Data Members的指针
+
+考虑下面的class Point3d声明：
+
+```c++
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+class Point3d {
+public:
+    virtual ~Point3d(){}
+    void print1() {
+        cout << "&Point3d::x = " << &Point3d::x << endl;
+        cout << "&Point3d::y = " << &Point3d::y << endl;
+        cout << "&Point3d::z = " << &Point3d::z << endl;
+    }
+
+    void print2() {
+        printf("&Point3d::x = %d\n", &Point3d::x);
+        printf("&Point3d::y = %d\n", &Point3d::y);
+        printf("&Point3d::z = %d\n", &Point3d::z);
+    }
+
+private:
+    static Point3d origin;
+    float x;
+    float y;
+    float z;
+};
+
+int main()
+{
+    Point3d p;
+    p.print1();
+    p.print2();
+    return 0;
+}
+
+```
+
+C++允许vptr放在对象的任何位置，但是实际情况大多数不是放在头部，就是放在尾部。
+取一个坐标成员的地址代表了什么？例如：
+
+```c++
+&Point3d::z;
+```
+代表了z在class object中的偏移量(offset).
+

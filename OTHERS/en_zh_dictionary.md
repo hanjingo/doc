@@ -29,6 +29,13 @@
 | **Y** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |      |           |           |      |
 | **Z** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |      |           |           |      |
 
+## 高频词汇
+
+intensive[^1]    assign[^2]
+
+---
+
+
 
 # A
 
@@ -108,7 +115,7 @@ architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
 
 aspect `/ˈæspekt/`  方面，层面，外观，方位
 
-assign `/əˈsʌɪn/` 分配，指派
+[^2]: **assign** `/əˈsʌɪn/` 分配，指派
 
 assume `/əˈsjuːm/` 假定，假设
 
@@ -466,7 +473,7 @@ interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
 interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
 
-intensive `/ɪnˈtensɪv/`  密集的，加强器
+[^1]:  **intensive** `/ɪnˈtensɪv/`  密集的，加强器
 
 invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
