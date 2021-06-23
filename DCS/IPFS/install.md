@@ -118,7 +118,9 @@ ipfs bootstrap rm --all
 添加我们自己的节点
 
 ```sh
-ipfs bootstrap add "ip4/ip地址/tcp/4001/ipfs/root节点id"
+ipfs bootstrap add "/ip4/ip地址/tcp/4001/ipfs/root节点id"
+# 例
+ipfs bootstrap add "/ip4/139.198.126.182/tcp/4001/ipfs/12D3KooWHbWEFVVmf7ca3PNxq9bNisXMugExLTLd1HgRCFmyJHqk"
 ```
 
 将生成的swarm.key放入ipfs的目录中
