@@ -55,7 +55,7 @@ ipfs daemon
 
 
 ## 开机启动
-```shell
+```sh
 # 创建ipfs.service文件并放入 /etc/systemd/system
 vim /etc/systemd/system/ipfs.service
 # ipfs.service内容
@@ -77,7 +77,64 @@ WantedBy=default.target
 
 
 
-## 链接 
-- [ipfs官网](https://docs.ipfs.io/install/command-line/#official-distributions)
+## 搭建私有网络
 
+### 生成swarm.key
+
+下载ipfs的swarm.key生成工具
+
+```sh
+git clone git@github.com:hanjingo/go-ipfs-swarm-key-gen.git
+```
+
+编译swarm.key生成工具
+
+```sh
+go build -o swarm-key-gen main.go
+```
+
+生成一个swarm-key
+
+```sh
+./swarm-key-gen > ${PWD}/swarm.key
+```
+
+## 初始化ipfs
+
+初始化ipfs
+
+```sh
+ipfs init
+# 对于内存小于4G的设备，用以下命令
+ipfs init --profile=lowpower
+```
+
+删除默认的启动节点
+
+```sh
+ipfs bootstrap rm --all
+```
+
+添加我们自己的节点
+
+```sh
+ipfs bootstrap add "ip4/ip地址/tcp/4001/ipfs/root节点id"
+```
+
+将生成的swarm.key放入ipfs的目录中
+
+```sh
+cp swarm.key ~/.ipfs/
+```
+
+启动ipfs
+
+```sh
+ipfs daemon
+```
+
+
+
+## 参考
+- [ipfs官网](https://docs.ipfs.io/install/command-line/#official-distributions)
 
