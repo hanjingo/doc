@@ -122,3 +122,43 @@ Point3D的内存布局如下:
 
 ![4_4](res/4_4.png)
 
+声明如下：
+
+```c++
+class Base1 {
+public:
+    Base1();
+    virtual ~Base1();
+    virtual void speakClearly();
+    virtual Base1 *clone() const;
+protected:
+    float data_Base1;
+};
+
+class Base2 {
+public:
+    Base2();
+    virtual ~Base2();
+    virtual void mumble();
+    virtual Base2 *clone() const;
+protected:
+    float data_Base2;
+};
+
+class Derived : public Base1, public Base2 {
+public:
+    Derived();
+    virtual ~Derived();
+    virtual Derived *clone() const;
+protected:
+    float data_Derived;
+};
+```
+
+多重继承的内存布局如下：
+
+![4_5](res/4_5.png)
+
+对于多重继承的派生类，一个`derived class`内含`n-1`个额外的虚表，其中n标识上一层继承的`base class`的个数，因此对于该继承体系中的`Derived`，会产生2个虚表，分别对应于`Base1`和`Base2`。
+
+假设有这样的代码：`Base2 *pbase2 = new Derived;`新的`Derived`对象的地址就必须指向`Base2 subobject`，因此会产生一个`Base1`大小的偏移两0

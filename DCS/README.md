@@ -1,6 +1,5 @@
 - [Kad算法](kad.md)
 - [Merkle tree](merkle.md)
-- [Bitswap协议](bitswap.md)
 - [Git协议](git_protocol.md)
 - [BitTorrent协议](bittorrent.md)
 - [PeerWire协议](peer_wire.md)
