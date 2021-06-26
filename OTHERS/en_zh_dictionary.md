@@ -277,6 +277,8 @@ demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 
 departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
 
+derived /dɪˈraɪvd/ 取得，产生
+
 despite /dɪˈspaɪt/ 尽管，即使
 
 destined `/ˈdestɪnd/` 命中注定的，命运
