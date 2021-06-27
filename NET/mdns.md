@@ -222,7 +222,7 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 
 
 
-## 链接
+## 参考
 
 - [开源项目 mDNSResponder](https://blog.csdn.net/wirelessdisplay/article/details/78088992)
 - [开源项目 avahi](https://github.com/lathiat/avahi)
@@ -236,8 +236,4 @@ mdns基于dns，协议结构包含`报头`和`报文`2部分；
 - [手册页部分 1M： 系统管理命令 dns-sd](https://docs.oracle.com/cd/E56344_01/html/E54077/dns-sd-1m.html)
 - [mDNSResponder介绍与移植](https://blog.csdn.net/yuangc/article/details/101676976?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&dist_request_id=1332036.8429.16191622781102443&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control)
 - [avahi官网介绍](https://www.avahi.org/)
-
-
-
-## 参考
 
