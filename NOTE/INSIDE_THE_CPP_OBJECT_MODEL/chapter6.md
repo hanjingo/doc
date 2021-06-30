@@ -153,4 +153,28 @@ delete操作符：
 
 ```c++
 delete pi; // 下面是编译器的实现
+if(pi != 0) __delete(pi);
 ```
+
+如果不是内置类型(int)，而是一个class呢？例：
+
+```c++
+Point3d *origin = new Point3d;
+```
+
+转换为：
+
+```c++
+Point3d *origin;
+if(origin = __new(sizeof(Point3d)))
+  origin->Point3d::Point3d(origin);
+```
+
+再加上异常处理：
+
+```c++
+Point3d *origin;
+if(origin = __new(sizeof(Point3d)))
+  origin->Point3d::Point3d(origin);
+```
+
