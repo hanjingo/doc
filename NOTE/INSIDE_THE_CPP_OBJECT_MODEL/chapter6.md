@@ -175,6 +175,79 @@ if(origin = __new(sizeof(Point3d)))
 ```c++
 Point3d *origin;
 if(origin = __new(sizeof(Point3d)))
-  origin->Point3d::Point3d(origin);
+    try {
+        origin->Point3d::Point3d(origin);
+    }
+    catch(...) {
+        __delete(origin)
+        throw;
+    }
+}
 ```
+
+在这里，如果constructor抛出异常，配置的内存就会释放掉，然后异常被抛上去。
+
+Destructor的应用也是类似的：
+
+```c++
+delete origin; // 下面是编译器的实现
+if(origin != 0) {
+    Point3d::~Point3d(origin);
+    __delete(origin);
+}
+```
+
+总结：
+
+1. 操作符new的过程就是：先配置内存，再调用构造函数（内置类型直接赋值）。（如果配置内存失败，内存还是需要释放的）
+2. 操作符delete的过程就是：先调用析构函数（内置类型没有这一步），再释放内存（）。
+
+下面给出不考虑异常的new的实现（实际是以malloc()函数完成）：
+
+```c++
+extern void*
+operator new(size_t size) {
+    if(size == 0) size = 1;
+    void *last_alloc;
+    while(!(last_alloc = malloc(size))) {
+        if(_new_handler) (*_new_handler) ();
+        else return 0;
+    }
+    return last_alloc;
+}
+```
+
+令size = 1的原因是每一次对new的调用都必须传回一个独一无二的指针，传回一个指针指向默认为1byte的内存区块。
+
+delete函数也是以free()函数为基础完成的：
+
+```c++
+extern void
+operator delete(void* ptr) {
+    if(ptr)
+        free((char*) ptr);
+}
+```
+
+针对数组的new语意
+
+当我们这么写`int* p_array = new int[5];`时，由于int是内置类型，并没有默认构造函数，所以`vec_new()`不会被调用，倒是new运算符函数会被调用：
+
+```c++
+int* p_array = (int *) __new(5 * sizeof(int));
+```
+
+同样的，当我们写下：
+
+```c++
+simple_aggr* p_aggr = new simple_aggr[5];
+```
+
+`vec_new()`也不会被调用，因为simple_aggr没有定义构造函数或者析构函数。
+
+针对数组的delete,通常的写法是`delete []p_array;`或者`delete [5] p_array;`第一种是最常见的。但是如果使用这样的写法：`delete p_array;`那么只有第一个元素被析构，其他的元素依然存在，虽然相关的内存已经被归还了。
+
+### Placement Operator new的语意
+
+Placement Operator new是一个预先定义好的重载的new运算符
 

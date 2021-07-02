@@ -39,7 +39,7 @@ paxos算法通过分为3阶段:
 
 
 
-## `paxos算法的进化版-multi_paxos:`
+## paxos算法的进化版-multi_paxos:
 
 由于paxos效率较低且当有多个proposer时容易产生冲突和活锁(livelock)；所以在一般的工程项目里，
 一开始会选举一个leader proposer,只有leader proposer可以提问,防止多个proposer锁死问题;
