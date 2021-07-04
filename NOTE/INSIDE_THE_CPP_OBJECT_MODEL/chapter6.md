@@ -2,18 +2,20 @@
 
 c++在执行期的一些变化
 
+
+
 ## 对象的构造和析构
 
 一般而言，我们将object尽可能放置在使用它的那个程序区段附近，这样可以节省非必要的对象的构造和析构成本。
 
 ### 全局对象
 
-已经初始化全局对象均存储在data segment(数据段)，未初始化的全局变量存储在BSS(block started by symbol)，但是c++中差异不大，如果全局对象没有显式初始化，那么该对象所配置到的内存内容为0.
+已经初始化全局对象均存储在`data segment`(数据段)，未初始化的全局变量存储在BSS(block started by symbol)，但是c++中差异不大，如果全局对象没有显式初始化，那么该对象所配置到的内存内容为0.
 
 munch方法：全局变量静态初始化方法。
 
-1. 为每一个需要静态初始化的文件产生一个`__sti()`函数(sti: static initialization)，内含必要的constructor调用操作或者inline expansions。
-2. 为每一个需要静态的内存释放操作产生`__std()`函数（std: static deallocation），内含必要的constructor调用操作或者inline expansions。
+1. 为每一个需要静态初始化的文件产生一个`__sti()`函数(`sti: static initialization`)，内含必要的constructor调用操作或者inline expansions。
+2. 为每一个需要静态的内存释放操作产生`__std()`函数（`std: static deallocation`），内含必要的constructor调用操作或者inline expansions。
 3. 提供一组running library munch函数：调用所有的`__sti()`一个`_main()`函数以及一个调用`__std()`函数的`exit()`函数。
 
 例：
@@ -41,7 +43,7 @@ main() {
 }
 ```
 
-局部静态对象
+#### 局部静态对象
 
 静态对象存储在全局区/静态区，例如：
 
@@ -59,7 +61,7 @@ identity() {
 
 编译器的策略是无条件在程序起始处构造对象，这会导致所有的静态对象在程序起始时都初始化，即使调用他们的函数从来没有被调用过。新的规则要求编译单位中的局部静态对象必须被摧毁，以构造相反的顺序摧毁。
 
-对象数组
+#### 对象数组
 
 例：
 
@@ -71,10 +73,10 @@ Point knots[10];
 
 ```c++
 void vec_new(
-    void* array, // 数组的起始地址
-    size_t elem_size, // 数组中每一个元素的大小
-    int elem_count, // 数组中的元素个数
-    void (*constructor)(void*), // 形参个数为0的默认构造函数指针
+    void* array,                    // 数组的起始地址
+    size_t elem_size,               // 数组中每一个元素的大小
+    int elem_count,                 // 数组中的元素个数
+    void (*constructor)(void*),     // 形参个数为0的默认构造函数指针
     void (*destructor)(void*, char) // 析构函数指针
 )
 ```
@@ -90,9 +92,9 @@ vec_new(&knots, sizeof(Point), 10, Point:Point, 0);
 
 ```c++
 void vec_new(
-    void* array, // 数组的起始地址
-    size_t elem_size, // 数组中每一个元素大小
-    int elem_count, // 数组中元素的个数
+    void* array,                    // 数组的起始地址
+    size_t elem_size,               // 数组中每一个元素大小
+    int elem_count,                 // 数组中元素的个数
     void (*destructor)(void*, char) // 析构函数指针
 )
 ```
@@ -121,7 +123,9 @@ complex::complex() {
 }
 ```
 
-### new和delete运算符
+
+
+## new和delete运算符
 
 ```c++
 int *pi = new int(5);
@@ -199,8 +203,8 @@ if(origin != 0) {
 
 总结：
 
-1. 操作符new的过程就是：先配置内存，再调用构造函数（内置类型直接赋值）。（如果配置内存失败，内存还是需要释放的）
-2. 操作符delete的过程就是：先调用析构函数（内置类型没有这一步），再释放内存（）。
+1. **操作符new的过程就是：先配置内存，再调用构造函数（内置类型直接赋值）。（如果配置内存失败，内存还是需要释放的）**
+2. **操作符delete的过程就是：先调用析构函数（内置类型没有这一步），再释放内存（）。**
 
 下面给出不考虑异常的new的实现（实际是以malloc()函数完成）：
 
@@ -229,7 +233,7 @@ operator delete(void* ptr) {
 }
 ```
 
-针对数组的new语意
+#### 针对数组的new语意
 
 当我们这么写`int* p_array = new int[5];`时，由于int是内置类型，并没有默认构造函数，所以`vec_new()`不会被调用，倒是new运算符函数会被调用：
 
@@ -249,5 +253,144 @@ simple_aggr* p_aggr = new simple_aggr[5];
 
 ### Placement Operator new的语意
 
-Placement Operator new是一个预先定义好的重载的new运算符
+Placement Operator new是一个预先定义好的重载的new运算符，原型如下：
 
+```c++
+void* operator new(size_t, void* p) { return p; }
+```
+
+Placement Operator new的用法：
+
+```c++
+Point2w* ptw2 = new(arena) Point2w;
+```
+
+其中arena是指向内存中的一个区块，用来放置新产生的Point2w object。那么上述和这句有什么区别呢？
+
+```c++
+Point2w* ptw1 = (Point2w*) arena;
+```
+
+这句只是做了强制隐式类型转换，而Placement Operator new还**将Point2w的constructor自动施行于arena的地址上**，Placement Operator new的语句等价于：
+
+```c++
+Point2w* ptw2 = (Point2w*) arena;
+ptw2->~Point2w();
+if(ptw2 != 0) ptw2->Point2w::Point2w();
+```
+
+编译系统保证了constructor会施行。
+
+一般而言，Placement Operator new不支持多态，如果derived class比base class大的多，那么derived class的构造函数将会导致严重的破坏：
+
+```c++
+Point2w *p2w = new(arena)Point3w; // Point3w继承自Point2w
+```
+
+
+
+## 临时性对象
+
+加入有一个函数，形式如下：
+
+```c++
+T operator+(const T&, const T&);
+T a, b;
+T c = a + b;
+```
+
+最后一行a+b的调用，编译器会产生一个临时性对象来放置a+b的结果，然后再使用T的`copy constructor`把临时性对象当作c的初值，或者以拷贝构造的方式将a+b的值放到c中。如果考虑NRV优化，则避免了copy constructor以及临时对象的destructor。
+
+但是，如果是assignment statement，如下：
+
+```c++
+T c;
+c = a + b;
+```
+
+则不能忽略临时对象，实际结果如下：
+
+```c++
+T c;
+T temp;
+temp.operator+(a, b);
+c.operator=(temp);
+temp.T::~T();
+```
+
+因此`T c = a + b;`总比`T c; c = a + b;`更有效率。
+
+第三种运算形式：`a + b;`没有出现目标对象，也有必要产生一个临时对象存储运算后的结果。
+
+#### 临时对象的生命周期
+
+临时对象被摧毁，应该是**对完整表达式（full-expression）求值过程中的最后一个步骤。**
+
+什么是完整表达式？例：
+
+```c++
+((objA > 1024) && (objB > 1024))
+    ? objA + objB : foo(objA, objB);
+```
+
+一共五个式子:
+- `objA > 1024`
+- `objB > 1024`
+- `(objA > 1024) && (objB > 1024)`
+- `objA + objB`
+- `foo(objA, objB)`
+
+包含在`?:`完整表达式中，每一个公式的临时对象都应该在这个完整表达式被求值之后才能销毁。
+
+临时对象的生命规则有两个意外：
+
+1. 凡事有表达式执行结果的临时性对象，应该保存到object的初始化操作完成为止。
+
+```c++
+string proNameVersion = !verbose ? 0 : proName + progVersion;
+//proName和progVersion均是string类型
+```
+
+`proName + progVersion`产生的临时对象本应该在`?:`表达式求值之后立即销毁，但是`proNameVersion` objecrt初始化需要用到该临时对象，因此应该保存到object的初始化操作完成为止。
+
+2. 如果**一个临时性对象绑定于一个reference**，对象将残留，直到被初始化之reference的生命结束，或者知道临时对象的生命范畴结束，视哪种情况先到达。
+
+```c++
+const String& space = " ";
+```
+
+会产生这样的代码：
+
+```c++
+string temp;
+temp.String::String(" ");
+const String& space = temp;
+```
+
+如果临时对象现在就被销毁，那么引用也就没有什么用处了。
+
+#### 临时对象的迷思
+
+例如，复数类complex定义了如下操作符重载：
+
+```c++
+friend complex operator+(complex, complex);
+```
+
+测试程序是这样的：
+
+```c++
+void func(complex* a, const complex* b, const complex* c, int N) {
+    for(int i = 0; i < N; ++i) {
+        a[i] = b[i] + c[i] - b[i] * c[i];
+    }
+}
+```
+
+上述测试程序会产生5个临时对象：
+
+1. 一个临时对象，放置`b[i] + c[i]`;
+2. 一个临时对象，放置`b[i] * c[i]`;
+3. 一个临时对象，放置上述两个临时对象的相减的结果；
+4. 两个临时对象，为了放置上述第一个和第二个临时对象，为的是完成第三个临时对象。
+ 

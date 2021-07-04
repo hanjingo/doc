@@ -1,4 +1,4 @@
-# 构造析构拷贝语意学
+# 第五章 构造析构拷贝语意学
 
 对于`abstract base class(抽象基类)`,class中的data member应该被初始化，并且**只在constructor中或者在其它member functions中指定初值。**
 
@@ -227,7 +227,7 @@ void foobar(Point& __result) {
     - 如果class是最底层的class，其constructors可能被调用。
 
 2. 如果有base class,基类的构造函数必须背调用;
-    
+   
     - 如果class位于成员初值列，有任何显示指定的参数都应该传递过去。
     - 如果没有位于初值列，而class含有一个默认构造（拷贝）函数，也应该调用。
     - 如果class是多重继承下的第二或者后继的base class,那么this指针应该有所调整。

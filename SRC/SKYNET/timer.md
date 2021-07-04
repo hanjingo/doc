@@ -10,18 +10,18 @@
 ```c++
 
 #define TIME_NEAR_SHIFT 8
-#define TIME_NEAR (1 << TIME_NEAR_SHIFT) 	//256
+#define TIME_NEAR (1 << TIME_NEAR_SHIFT) 		//256
 #define TIME_LEVEL_SHIFT 6
 #define TIME_LEVEL (1 << TIME_LEVEL_SHIFT) 	//64
-#define TIME_NEAR_MASK (TIME_NEAR-1) 		//255
-#define TIME_LEVEL_MASK (TIME_LEVEL-1) 		//63
+#define TIME_NEAR_MASK (TIME_NEAR-1) 				//255
+#define TIME_LEVEL_MASK (TIME_LEVEL-1) 			//63
  
 //全局计时器单例
 static struct timer * TI = NULL;
  
 #define NANOSEC 1000000000 	//纳秒
 
-#define MICROSEC 1000000	//毫秒
+#define MICROSEC 1000000		//毫秒
 ```
 
 ### 定义全局函数

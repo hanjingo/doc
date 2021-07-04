@@ -681,15 +681,17 @@ outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
+parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
+
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
+
+parliament `/ˈpɑː.lɪ.mənt/` 议会
 
 partial `/ˈpɑːʃl/` 部分，不完全的，偏爱
 
 partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔
 
 particular `/pəˈtɪkjʊlə/` 特别的，特指
-
-parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 passage `/ˈpæsɪdʒ/` 通道，走廊，章节，段落
 

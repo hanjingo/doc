@@ -38,6 +38,7 @@
 
 <div id="1"></div>
 [1]  Benjamin Wesolowski. [Efficient verifiable delay functions](res/efficient_verifiable_delay_functions.pdf). 页码 起始-结束
+
 <div id="2"></div>
 [2]  Krzysztof Pietrzak \*. [Simple Verifiable Delay Functions](res/simple_verifiable_delay_functions.pdf). 页码 起始-结束. 年份
 <div id="3"></div>
