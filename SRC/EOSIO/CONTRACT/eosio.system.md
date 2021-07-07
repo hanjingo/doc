@@ -1,46 +1,52 @@
+# eosin.system合约
+
+
+
 # 摘要
-eos的投票以及资产购买,抵押,竞拍,出租,等等;  
-购买机制使用的[bancor算法](../../DCS/bancor_protocol.md);   
-执行action需要ram,cpu和net，cpu和net需要抵押获得，ram需要购买;用来抵押的物品为eos token;  
-ram会消耗;cpu和net用完会退押金;  
+
+eos的投票以及资产购买,抵押,竞拍,出租,等等; 
+购买机制使用的[bancor算法](../../DCS/bancor_protocol.md); 
+执行action需要ram,cpu和net，cpu和net需要抵押获得，ram需要购买;用来抵押的物品为eos token; 
+ram会消耗;cpu和net用完会退押金; 
+
+
 
 # 详情
-[eosio.system.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/eosio.system.hpp)  
-[exchange_state.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/exchange_state.hpp)  
-[native.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/native.hpp)  
-[rex.results.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/rex.results.hpp)  
-[delegate_bandwidth.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/delegate_bandwidth.cpp)  
-[eosio.system.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/eosio.system.cpp)  
-[exchange_state.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/exchange_state.cpp)  
-[name_bindding.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/name_bidding.cpp)  
-[native.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/native.cpp)  
-[producer_pay.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/producer_pay.cpp)  
-[rex.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/rex.cpp)  
-[rex.results.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/rex.results.cpp)  
+
+[eosio.system.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/eosio.system.hpp) 
+[exchange_state.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/exchange_state.hpp) 
+[native.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/native.hpp) 
+[rex.results.hpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/include/eosio.system/rex.results.hpp) 
+[delegate_bandwidth.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/delegate_bandwidth.cpp) 
+[eosio.system.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/eosio.system.cpp) 
+[exchange_state.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/exchange_state.cpp) 
+[name_bindding.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/name_bidding.cpp) 
+[native.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/native.cpp) 
+[producer_pay.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/producer_pay.cpp) 
+[rex.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/rex.cpp) 
+[rex.results.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/rex.results.cpp) 
 [voting.cpp](https://github.com/hanjingo/eosio.contracts/blob/master/contracts/eosio.system/src/voting.cpp)  
 
 ## 知识点
-* std::enable_if是c++15支持的写法，c++11为std::enable_if;当enable_if的条件为true时,优先匹配enable_if后面的模板;enable_if_t是enable_if的type;
-* std::optional类似于智能指针接口,可以显示转化为bool类标识std::optional是否有一个值;
-* std::is_same 判断类型是否一致，位于头文件<type_traits>中，两个一样的类型会返回true;
-* 1000'000ll 表示把int型的1000000转为long long型;
-  
+* `std::enable_if_t`是c++14支持的写法，c++11为`std::enable_if`；当`enable_if`的条件为true时，优先匹配`enable_if`后面的模板；`enable_if_t`是`enable_if`的type；
+* `std::optional`类似于智能指针接口,可以显示转化为bool类标识`std::optional`是否有一个值;
+* `std::is_same` 判断类型是否一致，位于头文件`<type_traits>`中，两个一样的类型会返回true;
+* `1000'000ll` 表示把int型的1000000转为`long long`型;
 ## 投票
-1. 投票前需要抵押eos换取cpu和net,调用delegatebw抵押eos;
-2. 账号需要调用regproducer注册成为生产者节点候选人,别的账号才能给他投票;
-3. 账号可以调用voteproducer给其他账号投票；
-4. 如果不想投票，调用undelegatebw取消抵押,但是要3天才能到帐；
-5. 投票计分,账号的投票权重与抵押的eos数量正相关;具体的规则看代码;    
+1. 投票前需要抵押eos换取cpu和net,调用`delegatebw`抵押eos;
+2. 账号需要调用`regproducer`注册成为生产者节点候选人，别的账号才能给他投票;
+3. 账号可以调用`voteproducer`给其他账号投票；
+4. 如果不想投票，调用`undelegatebw`取消抵押，但是要3天才能到帐；
+5. 投票计分,账号的投票权重与抵押的eos数量正相关；具体的规则看代码; 
 ***抵押与投票权重转换规则***:$$权重=抵押的资金\times(2^{(自2000年来的周数)\div52})$$
 
 ## 购买/出售资源
-1. 内存无法抵押获得，只能获得;
+1. 内存无法抵押获得，只能购买获得;
 2. 购买(buyram)或出售(sellram)内存需要收取:0.5%的小费，也就是说完成一次交易需要买卖双方总共需要支付1%的小费;
 
 ## 交易所规则
 * 外部转交易所: $$实际可购买数量=预定数量\times[(1+支付金额\div供应量)^{小费} -1]$$
 * 交易所转外部: $$实际可购买数量=预定数量\times[\sqrt[小费]{1+支付金额\div供应量}-1]$$
-  
 ## 名字竞拍
 竞拍规则:
 1. 如果没人抢，直接给竞拍者;
@@ -48,7 +54,7 @@ ram会消耗;cpu和net用完会退押金;
 
 ## 生产块
 1. 每分钟更新块生产者一次;
-2. 在生产区块时，出现冲突,先找到eosio_global_state全局变量表的last_producer_schedule_update(最后一个块生成时间)做比对;
+2. 在生产区块时，如果出现冲突，先找到全局变量表`eosio_global_state`的`last_producer_schedule_update`(最后一个块生成时间)做比对;
 
 ## 领奖
 1. 出块有奖励，限制一天只能领取一次；
@@ -56,11 +62,11 @@ ram会消耗;cpu和net用完会退押金;
 3. 具体规则看代码
 
 ## 名字规则
-1. 账号格式:12个字符长,包含:".", 1到9, a到z;
-2. 如果名字中间含有"."",则".”后面必须为创建者名字;比如 abc.def 的创建者是 def
+1. 账号格式:12个字符长,包含:`.`， `1到9`， `a到z`。
+2. 如果名字中间含有`.`，则`.`后面必须为创建者名字；比如 abc.def 的创建者是 def。
 
 ## 定义内联函数
-```cpp
+```c++
 //域是否存在, 如果标记F是无符号整型 且 域E是枚举无符号整型
 template<typename ER, typename F>
 static inline auto has_field( F flag, E field ) -> std::enable_if_t< std::is_integral_v<F> && std::is_unsigned_v<F> &&
@@ -103,25 +109,25 @@ static inline auto set_field( F flags, E field, bool value = true ) -> std::enab
 ## 定义action
 |接口|参数|说明|
 |:-----|:------|:----|
-|init|`unsigned_init` 版本<br>`const symbol&` 系统货币|初始化|
+|init|- `unsigned_init` 版本<br>- `const symbol&` 系统货币|初始化|
 |onblock|`ignore<block_header>` 块头|更新块|
-|setalimits|`const name&` 账号<br>int64_t 内存字节大小<br>int64_t 网络资源<br>int64_t cpu资源|设置账号资源限制|
-|setacctram|`const name&` 账号<br>`const std::optional<int64_t>&` 内存限制|设置内存限制|
-|setacctnet|`const name&` 账号<br>`const std::optional<int64_t>&` 网络限制|设置网络限制|
-|setacctcpu|`const name&` 账号<br>`const std::optional<int64_t>&` cpu限制|设置cpu限制|
+|setalimits|- `const name&` 账号<br>- int64_t 内存字节大小<br>- int64_t 网络资源<br>- int64_t cpu资源|设置账号资源限制|
+|setacctram|- `const name&` 账号<br>- `const std::optional<int64_t>&` 内存限制|设置内存限制|
+|setacctnet|- `const name&` 账号<br>- `const std::optional<int64_t>&` 网络限制|设置网络限制|
+|setacctcpu|- `const name&` 账号<br>- `const std::optional<int64_t>&` cpu限制|设置cpu限制|
 |activate|`const eosio::checksum256&` 特征摘要|激活协议|
-|delegatebw|`const name&` 抵押者<br>`const name&:token` 接收者<br>`const asset&` 获得的网络<br>`const asset&` 获得的cpu<br>bool 是否发生交易|抵押token,获取net和cpu|
+|delegatebw|- `const name&` 抵押者<br>- `const name&:token` 接收者<br>- `const asset&` 获得的网络<br>- `const asset&` 获得的cpu<br>- `bool` 是否发生交易|抵押token，获取net和cpu|
 |setrex|`const asset&` 数量|设置资源代币数量|
-|deposit|`const name&` 用户<br>`const asset&` 数量|交定金|
-|withdraw|`const name&` 资金拥有者<br>`const asset&` 资金数量|从资金池撤回资产|
-|buyrex|`const name&` 购买者<br>`const asset&` 资金数量|购买资源代币|
-|unstaketorex|`const name&` 退货人<br>`const name&` 接受者<br>`const asset&` 网络<br>`const asset&` cpu|取消抵押资源代币并退钱|
-|sellrex|const name& 出售者, const asset& 资金数量|出售资源代币|
-|cnclrexorder|const name& 调用人|取消资源代币订单|
-|rentcpu|const name& 出租者, const name& 接收者, const asset& 出租花费, const asset& 出租退费|出租cpu|
-|rentnet|const name& 出租者, const name& 接收者, const asset& 出租花费, const asset& 出租退费|出租网络|
-|fundcpuloan|const name& 出租者, uint64_t 出租数量, const asset& 花费|cpu出租打钱|
-|fundnetloan|const name& 出租者, uint64_t 出租数量, const asset& 花费|net出租打钱|
+|deposit|- `const name&` 用户<br>- `const asset&` 数量|交定金|
+|withdraw|- `const name&` 资金拥有者<br>- `const asset&` 资金数量|从资金池撤回资产|
+|buyrex|- `const name&` 购买者<br>- `const asset&` 资金数量|购买资源代币|
+|unstaketorex|- `const name&` 退货人<br>- `const name&` 接受者<br>- `const asset&` 网络<br>- `const asset&` cpu|取消抵押资源代币并退钱|
+|sellrex|- `const name&` 出售者<br>- `const asset&` 资金数量|出售资源代币|
+|cnclrexorder|`const name&` 调用人|取消资源代币订单|
+|rentcpu|- `const name&` 出租者<br>- `const name&` 接收者<br>- `const asset&` 出租花费<br>- `const asset&` 出租退费|出租cpu|
+|rentnet|- `const name&` 出租者<br>- `const name&` 接收者<br>- `const asset&` 出租花费<br>- `const asset&` 出租退费|出租网络|
+|fundcpuloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 花费|cpu出租打钱|
+|fundnetloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 花费|net出租打钱|
 |defcpuloan|const name& 出租者, uint64_t 出租数量, const asset& 价格|定义cpu出租价格|
 |defnetloan|const name& 出租者, uint64_t 出租数量, const asset& 价格|定义net出租价格|
 |updaterex|const name& 用户|更新用户资源代币|
