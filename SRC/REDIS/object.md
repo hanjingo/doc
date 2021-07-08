@@ -239,8 +239,110 @@ if (len > server.set_max_intset_entries) {
 
   使用压缩列表作为底层实现，每个集合元素使用两个紧靠着的压缩列表节点来保存，第一个节点保存元素的成员，第二个节点保存元素的分值。并且压缩列表内的集合元素按分值从小到大的顺序进行排列，小的放在靠近表头的位置，大的放置在靠近表尾的位置
 
+  ![redis_zset_ziplist](res/redis_zset_ziplist.png)
+
   
 
 - skiplist
 
+  ![redis_zset_skiplist](res/redis_zset_skiplist.png)
+
+  ```c++
+  /* 跳表节点 */
+  typedef struct zskiplistNode {
+      robj *obj;                          // 成员对象
+      double score;                       // 分值
+      struct zskiplistNode *backward;     // 后退指针BW（方向表头，指向上一个节点）
+      struct zskiplistLevel {
+          struct zskiplistNode *forward;  // 前进指针（方向表尾）
+          unsigned int span;              // 前进指针和当前节点的距离
+      } level[]; 													// 层高，随机[1,32]
+  } zskiplistNode;
   
+  typedef struct zskiplist { // 跳表
+      struct zskiplistNode *header, *tail; // 表头，表尾
+      unsigned long length;                // 节点数量（不算表头）
+      int level;                           // 最大层级
+  } zskiplist;
+  
+  typedef struct zset {
+      dict *dict;     // 字典
+      zskiplist *zsl; // 跳表
+  } zset;
+  ```
+
+  zset使用字典和跳表一起来实现，字典用来查找和去重，跳表用来快速搜索和排序（以空间换时间）；
+
+  跳表的查找：
+
+  ![redis_zset_skiplist_search](res/redis_zset_skiplist_search.png)
+
+  跳表的插入：
+
+  ![redis_zset_skiplist_insert](res/redis_zset_skiplist_insert.png)
+
+  ```c++
+  zskiplistNode *zslInsert(zskiplist *zsl, double score, robj *obj) { // 插入节点
+      zskiplistNode *update[ZSKIPLIST_MAXLEVEL], *x;
+      unsigned int rank[ZSKIPLIST_MAXLEVEL];
+      int i, level;
+  
+      redisAssert(!isnan(score));
+      x = zsl->header;
+      for (i = zsl->level-1; i >= 0; i--) {
+          /* 向表尾移动（如果下一个分数小于插入的分数｜｜（下一个分数等于插入的分数&&字符串长度<插入的字符串长度）） */
+          rank[i] = i == (zsl->level-1) ? 0 : rank[i+1];
+          while (x->level[i].forward &&
+              (x->level[i].forward->score < score ||
+                  (x->level[i].forward->score == score &&
+                  compareStringObjects(x->level[i].forward->obj,obj) < 0))) {
+              rank[i] += x->level[i].span;
+              x = x->level[i].forward;
+          }
+          update[i] = x;
+      }
+      /* 
+       * 随机一个层级level，在[1,level]的每一层插入元素，
+       * 
+       */
+      level = zslRandomLevel(); // 真随机一个要占据的层数
+      if (level > zsl->level) { // 层级不够，扩充层级
+          for (i = zsl->level; i < level; i++) {
+              rank[i] = 0;
+              update[i] = zsl->header;
+              update[i]->level[i].span = zsl->length;
+          }
+          zsl->level = level;
+      }
+      x = zslCreateNode(level,score,obj);
+      for (i = 0; i < level; i++) {
+          x->level[i].forward = update[i]->level[i].forward;
+          update[i]->level[i].forward = x; // 记录位置
+  
+          /* update span covered by update[i] as x is inserted here */
+          x->level[i].span = update[i]->level[i].span - (rank[0] - rank[i]);
+          update[i]->level[i].span = (rank[0] - rank[i]) + 1;
+      }
+  
+      /* 增加距离 */
+      for (i = level; i < zsl->level; i++) {
+          update[i]->level[i].span++;
+      }
+  
+      x->backward = (update[0] == zsl->header) ? NULL : update[0];
+      if (x->level[0].forward)
+          x->level[0].forward->backward = x; // 插入元素
+      else
+          zsl->tail = x;
+      zsl->length++;
+      return x;
+  }
+  ```
+
+  默认使用`跳表+字典`的方式，当满足以下条件时，使用`ziplist`:
+
+  1. 保存的元素数量小于`REDIS_ZSET_MAX_ZIPLIST_ENTRIES`
+  2. 保存的所有元素长度都小于`REDIS_ZSET_MAX_ZIPLIST_VALUE`字节
+
+  
+
