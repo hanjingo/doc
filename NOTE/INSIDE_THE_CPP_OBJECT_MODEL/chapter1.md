@@ -39,7 +39,7 @@ c++在布局以及存取时间上主要的额外负担是由virtual引起的，�
 
 只有`nonstatic data member`是存在object内部的，其余全部存在外部，并且对于virtual的函数，两个步骤重要：
 
-1. 每一个class产生出一堆指向virtual functions的指针，放在`virtual table`(虚表, vtbl)中。
+1. 每一个class产生出一堆指向`virtual functions`的指针，放在`virtual table`(虚表, vtbl)中。
 
 2. 每一个`class object`被安插一个指针，指向相关的`virtual table`，通常这个指针被称为**vptr**。vptr的设定（setting）和重置（resetting）都由每一个class的`constructor`,`destructor`和`copy assignment`运算符自动完成。每一个class所关联的`type_info object`（用以支持runtime type identification, RTTI）也经由virtual table被指出来，通常放在表格的第一个slot。
 
@@ -121,8 +121,7 @@ void foobar( X &_result )
 |关键字|默认访问权限|默认继承模型|
 |--|--|--|
 |struct|public|public|
-|class|private|private
-
+|class|private|private|
 
 
 ## 对象的差异(An Object Distinction)
@@ -143,7 +142,7 @@ c++以下列方法支持多态：
 
 - 其`nonstatic data members`的总和大小。
 - 加上任何由于`alignment`的需求而填补(`padding`)上去的空间(可能存在于`members`之间，也可能存在于集合体边界)。
-    
+  
     > alignment就是将数值调整到某数的倍数。在32位计算机上，通常alignment为4bytes(32位)，以使`bus`的“运输量”达到最高效率。
 - 加上为了支持`virtual`而由内部产生的任何额外负担(`overhead`)。
 

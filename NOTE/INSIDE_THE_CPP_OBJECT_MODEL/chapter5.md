@@ -8,7 +8,7 @@
 
 纯虚函数不能经由虚拟机制调用，但是可以被静态调用`(invoked statically, AbsractClassName::pureFunction())`。
 
-唯一的例外在于：对于`pure vitual destructor`，一定要定义它，因为每一个`derived class destructor`会被编译器加以扩张，**以静态调用的方式调用其“每一个virtual base class”以及"上一层base class"的destructor**，因此只要缺乏任何一个`base class destrctor`以及"上一层base class"的destructor，因此只要缺乏任何一个base class destructor的定义，就会导致链接失败。一个较好的替代方案就是：**不要把virtual destructor声明成pure。**
+唯一的例外在于：对于`pure vitual destructor`，一定要定义它，因为每一个`derived class destructor`会被编译器加以扩张，**以静态调用的方式调用其“每一个virtual base class”以及"上一层base class"的destructor**，因此只要缺乏任何一个`base class destrctor`以及"上一层base class"的destructor，就会导致链接失败。一个较好的替代方案就是：**不要把virtual destructor声明成pure。**
 
 ## 纯虚函数的规格
 
@@ -132,7 +132,7 @@ private:
 Point global;
 ```
 
-现在有了默认构造函数作用在其身上，由于global定义在全局范畴，其初始化操作会延迟到程序启动（startup）时才开始。（统一构造一个_main()函数，该函数内调用所有global对象的默认构造函数）
+现在有了默认构造函数作用在其身上，由于global定义在全局范畴，其初始化操作会延迟到程序启动（startup）时才开始。（统一构造一个`_main()`函数，该函数内调用所有global对象的默认构造函数）
 
 例：
 
@@ -226,7 +226,7 @@ void foobar(Point& __result) {
     - class中的每一个virtual base class subobject的偏移量必须在执行期可存取。
     - 如果class是最底层的class，其constructors可能被调用。
 
-2. 如果有base class,基类的构造函数必须背调用;
+2. 如果有base class,基类的构造函数必须被调用;
    
     - 如果class位于成员初值列，有任何显示指定的参数都应该传递过去。
     - 如果没有位于初值列，而class含有一个默认构造（拷贝）函数，也应该调用。
@@ -234,7 +234,7 @@ void foobar(Point& __result) {
 
 3. 如果有虚函数，必须设定vptr指向适当的虚表；
 
-4. 如果一个member没有出现在成员初值列表中，但是该member又一个默认构造函数，那么这个默认构造函数必须被调用；
+4. 如果一个member没有出现在成员初值列表中，但是该member又有一个默认构造函数，那么这个默认构造函数必须被调用；
 
 5. 成员初值列表中的member初始化操作放在constructor的函数体内，且顺序和声明顺序一致。
 
@@ -452,7 +452,7 @@ PVertex::Pvertex(PVertex* this, bool __most_derived,
 当我们指定一个class object给另一个class object时，通常有三种选择：
 
 1. 什么都不做，实施默认的行为。
-2. 提供一个explicit copy assignment operator。
+2. 提供一个`explicit copy assignment operator`。
 3. 显式拒绝指定一个class object给另一个class object，声明为private或者采用继承的方法
 
 利用Point class来帮助讨论：
@@ -466,7 +466,7 @@ private:
 };
 ```
 
-直邮默认行为所导致的语意不安全或者不正确时，才需要设计一个copy assignment operator。例：
+只有默认行为所导致的语意不安全或者不正确时，才需要设计一个`copy assignment operator`。例：
 
 ```c++
 Point a, b;

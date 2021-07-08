@@ -39,7 +39,7 @@ void setPoint_crefpoint(const Point* this, const Point& point, Point& __result);
 - 一个指针(vptr)指向持有程序的虚函数的执行期地址的表格（虚表）.
 
 `virtual table`中的`active virtual function`包括:
-- class本省定义的函数实例,重写了(overriding)了`base class virtual functions`;
+- class本身定义的函数实例,重写了(overriding)了`base class virtual functions`;
 - 继承自`base class`的函数实例
 - `pure_virtual_called()`纯虚函数实例
 

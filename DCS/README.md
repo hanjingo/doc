@@ -1,9 +1,10 @@
+- [BitTorrent协议](bittorrent.md)
+- [CAP理论](cap.md)
+- [DHT(Distributed Hash Table, 分布式哈希表)](dht.md)
+- [Git协议](git_protocol.md)
 - [Kad算法](kad.md)
 - [Merkle tree](merkle.md)
-- [Git协议](git_protocol.md)
-- [BitTorrent协议](bittorrent.md)
 - [PeerWire协议](peer_wire.md)
-- [DHT(Distributed Hash Table, 分布式哈希表)](dht.md)
 
 
 

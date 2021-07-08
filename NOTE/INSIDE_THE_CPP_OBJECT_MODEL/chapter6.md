@@ -101,7 +101,7 @@ void vec_new(
 
 ### Default Constructor和数组
 
-如果一个类的构造函数有一个活一个以上的默认参数值，例：
+如果一个类的构造函数有一个或一个以上的默认参数值，例：
 
 ```c++
 class complex {
@@ -393,4 +393,4 @@ void func(complex* a, const complex* b, const complex* c, int N) {
 2. 一个临时对象，放置`b[i] * c[i]`;
 3. 一个临时对象，放置上述两个临时对象的相减的结果；
 4. 两个临时对象，为了放置上述第一个和第二个临时对象，为的是完成第三个临时对象。
- 
+

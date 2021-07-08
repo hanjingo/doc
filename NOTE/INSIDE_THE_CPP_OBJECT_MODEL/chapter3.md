@@ -224,7 +224,7 @@ public:
 
 1. 导入虚表，用来存放声明的每一个虚函数，再加上首位的一个slots(为了支持RTTI)。
 2. 每个class object导入一个vptr, 提供执行期的链接，使得每一个class object都能找到虚函数表。
-3. 加强constructor，使之能够位vptr设定初值，让其指向虚表。
+3. 加强constructor，使之能够为vptr设定初值，让其指向虚表。
 4. 加强destructor，使之能够抹掉指向虚表的指针。
 
 这个时后，operator+=就能作用在一个Point3d和一个Point2d身上:
