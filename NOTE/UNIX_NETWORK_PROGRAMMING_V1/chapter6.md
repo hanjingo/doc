@@ -94,7 +94,7 @@ Unix下可用的5种I/O模型：
 void FD_ZERO(fd_set *fdset);
 void FD_SET(int fd, fd_set *fdset);
 void FD_CLR(int fd, fd_set *fdset);
-int	   FD_ISSET(int fd, fd_set *fdset);
+int	 FD_ISSET(int fd, fd_set *fdset);
 ```
 
 ### 描述符就绪条件
