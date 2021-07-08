@@ -6,6 +6,7 @@
 - [数据库](DB/README.md)
 - [分布式](DCS/README.md)
 - [经济](ECONOMIC/README.md)
+- [GO](GO/README.md)
 - [健康](HEALTH/README.md)
 - [生存经验](LIFE/README.md)
 - [多媒体](MEDIA/README.md)
