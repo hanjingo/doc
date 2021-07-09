@@ -158,12 +158,12 @@ auto c = Color::white;  // 没问题
 
     ```c++
     enum Color { black, white, red }; // 不限定范围的枚举型别
-
+    
     std::vector<std::size_t>          // 函数，返回x的质因数
         primeFactors(std::size_t x);
-
+    
     Color c = red;
-
+    
     if(c < 14.5) {
         auto factors = primeFactors(c);
     }
@@ -173,9 +173,9 @@ auto c = Color::white;  // 没问题
 
     ```c++
     enum class Color { black, white, red }; // 限定范围的枚举型别
-
+    
     Color c = Color::red;
-
+    
     if (c < 14.5) {                     // 错误！不能将Color型别和double型别比较
         auto factors = primeFactors(c); // 错误！不能讲Color型别传入
     }
@@ -377,16 +377,139 @@ constexpr auto arraySize2 = 10;    // 没问题，10是个编译期常量
 std::array<int, arraySize2> data2; // 没问题，arraySize2是个constexpr
 
 // const并未提供和constexpr同样的保证，因为const对象不一定经由编译期已知值来初始化
+int sz; 						 // 仍然是非constexpr变量
+const auto arraySize = sz; 	     // 没问题，arraySize是sz的一个const副本
+std::array<int, arraySize> data; // 错误！arraySize
+```
 
+对constexpr的正确理解：
+
+- constexpr函数可以用在要求编译期常量的语境中。在这样的语境中，若你传给一个constexpr函数的实参值是在编译期已知的，则结果也会在编译期间计算出来。如果任何一个实参值在编译期未知，则你的代码将无法通过编译。
+- 在调用constexpr函数时，若传入的值有一个或多个在编译期未知，则它的运作方式和普通函数无异，亦即它也是在运行期执行结果的计算。这意味着，如果函数执行的是同样的操作，仅仅应用的语境一个是要求编译期敞亮的，一个是用于所有其他值的话，那就不必写两个函数。constexpr函数就可以同时满足所有需求。
+
+constexpr的限制：
+
+- c++11中，constexpr函数不得包含多于一个可执行语句，即一条return语句；例：
+
+```c++
+constexpr int pow(int base, int exp) noexcept
+{
+    return (exp == 0 ? 1 : base * pow(base, exp - 1));
+}
+```
+- c++14中，constexpr函数放宽了限制
+
+```c++
+constexpr int pow(int base, int exp) noexcept
+{
+    auto result = 1;
+    for (int i = 0; i < exp; ++i) result *= base;
+    return result;
+}
+```
+
+c++11中，用户自定义型别的构造函数和其他成员函数也可以是`constexpr`函数；例：
+
+```c++
+class Point {
+public:
+    constexpr Point(double xVal = 0, double yVal = 0) noexcept : x(xVal), y(yVal) {}
+
+    constexpr double xValue() const noexcept { return x; }
+    constexpr double yValue() const noexcept { return y; }
+    
+    void setX(double newX) noexcept { x = newX; }
+    void setY(double newY) noexcept { y = newY; }
+private:
+    double x, y;
+};
+
+constexpr Point p1(9.4, 27.7); // 没问题，在编译期“运行”constexpr构造函数
+constexpr Point p2(28.8, 5.3); // 没问题
+
+constexpr
+Point midpoint(const Point& p1, const Point& p2) noexcept
+{
+    return { (p1.xValue() + p2.xValue()) / 2,   // 调用constexpr
+             (p1.yValue() + p2.yValue()) / 2};  // 成员函数
+}
+
+constexpr auto mid = midpoint(p1, p2); // 使用constexpr函数的结果来初始化constexpr对象
+```
+
+c++14中，设置器也可以声明为constexpr，例：
+
+```c++
+class Point {
+public:
+    ...
+    constexpr void setX(double newX) noexcept
+    { x = newX; }
+    constexpr void setY(double newY) noexcept
+    { y = newY; }
+    ...
+};
 ```
 
 
 
-
-
 ## 条款16:保证const成员函数的线程安全性
-* 保证const成员函数的线程安全性，除非可以确信它们不会用在并发语境中。
-* 运用std::atomic 型别的变量会比运用互斥量提供更好的性能，但前者仅适用对单个变量或内存区域的操作。
+- 保证const成员函数的线程安全性，除非可以确信它们不会用在并发语境中。
+- 运用std::atomic 型别的变量会比运用互斥量提供更好的性能，但前者仅适用对单个变量或内存区域的操作。
+
+保证const成员函数的线程安全性，例：
+
+```c++
+class Polynomial {
+public:
+  using RootType = std::vector<double>;
+  
+  RootsType roots() const
+  {
+    std::locak_guard<std::mutex> g(m); // 加上互斥量
+    if (!rootsAreValid) {
+      ...
+      rootsAreValid = true;
+    }
+    return rootVals;
+  }	// 解除互斥量
+  
+private:
+  mutable std::mutex m;
+  mutable bool rootsAreValid{ false };
+  mutable RootsType rootVals{};
+};
+```
+
+使用atomic来取代mutex，例：
+
+```c++
+class Widget {
+public:
+    ...
+    int magicValue()n const
+    {
+        if(cacheValid) return cachedValue;
+        else {
+            auto val1 = expensiveComputation1();
+            auto val2 = expensiveComputation2();
+            cachedValue = val1 + val2;
+            cacheValid = true;
+            return cachedValue;
+        }
+    }
+private:
+    mutable std::atomic<bool> cacheValid{ false };
+    mutable std::atomic<int> cachedValue;
+};
+```
+
+
+
+## 条款17：理解特种成员函数的生成机制
+- 特种成员函数是指那些c++会自行生成的成员函数：默认构造函数，析构函数，复制操作，以及移动操作。- 移动操作仅当类中未包含用户显式声明的复制操作，移动操作和析构函数时才生成。
+- 复制构造函数仅当类中不包含用户显式声明的复制构造函数时才生成，如果该类声明了移动操作则复制构造函数将被删除。复制赋值运算符仅当类中不包含用户显式声明的复制赋值运算符才生成，如果该类声明了移动操作则复制赋值运算符被删除。在已经存在显式声明的析构函数的条件下，生成复制操作已经成为了被废弃的行为。
+- 成员函数模版在任何情况下都不会抑制特种成员函数的生成。
 
 c++11中，支持特种成员函数的机制如下:
 * 默认构造函数: 与c++98的机制相同。仅当类中不包含用户声明的构造函数时才生成。
@@ -394,3 +517,32 @@ c++11中，支持特种成员函数的机制如下:
 * 复制构造函数: 运行期行为与c++98相同：按成员进行非静态数据成员的复制构造。仅当类中不包含用户声明的复制构造函数时才生成。如果该类声明了移动操作，则复制构造函数将被删除。在已经存在复制赋值运算符或析构函数的条件下，仍然生成复制构造函数已经成为了被废弃的行为。
 * 复制赋值运算符: 运行期行为与c++98相同: 按成员进行非静态数据成员的复制赋值。仅当类中不包含用户声明的复制赋值运算符时才生成。如果该类声明了移动操作，则复制构造函数将被删除。在已经存在复制构造函数或析构函数的条件下，仍然生成复制赋值运算符已经成为了被废弃的行为。
 * 移动构造函数和移动赋值运算符: 都按成员进行非静态数据成员的移动操作。仅当类中不包含用户声明的复制操作，移动操作和析构函数时才生成。
+
+大三律（Rule of Three）：如果声明了复制构造函数，复制赋值运算符，析构函数中的任何一个，就得同时声明这三个。
+
+通过使用“=default”来默认复制构造函数的行为是正确的，例：
+
+```c++
+class Widget {
+public:
+    ...
+    ~Widget(); // 用户定义的析构函数
+    ...
+    Widget(const Widget&) = default;            // 默认复制构造函数的行为是正确的
+    Widget& operator=(const Widget&) = default; // 默认复制赋值运算符的行为是正确的
+};
+```
+
+通过使用"=default"来声明移动操作又不丧失可复制性，例：
+
+```c++
+class Base {
+public:
+    virtual ~Base() = default; // 使析构函数称为虚的
+    Base(Base&&) = default;    // 提供移动操作的支持
+    Base& operator=(Base&&) = default;
+
+    Base(const Base&) = default;            // 提供复制操作的支持
+    Base& operator=(const Base&) = default;
+}
+```

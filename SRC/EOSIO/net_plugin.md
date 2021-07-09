@@ -4,8 +4,8 @@
 2. 请求块，验证块，处理块；
 
 # 详情
-[net_plugin.hpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/include/eosio/net_plugin/net_plugin.hpp)  
-[net_plugin.cpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/net_plugin.cpp)  
+[net_plugin.hpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/include/eosio/net_plugin/net_plugin.hpp)
+[net_plugin.cpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/net_plugin.cpp)
 [protocol.hpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/include/eosio/net_plugin/protocol.hpp)  
 
 ## 定义类
@@ -46,7 +46,7 @@
 |func|void rejected_block( const block_id_type& id )|拒绝块|
 |func|void recv_block( const connection_ptr& conn, const block_id_type& msg, uint32_t bnum )|接受块|
 |func|void expire_blocks( uint32_t bnum )|传输过期块(删掉到目前为止已过期的传输块)|
-  
+
 #### net_plugin_impl 网络插件实现类
 |类型|名称|注释|
 |:---|:---|:---|
@@ -67,7 +67,7 @@
 |func|chain::signature_type sign_compact( const chain::public_key_type& signer, const fc::sha256& digest ) const|合约签名(签名器，签名摘要)|
 |func|constexpr uint16_t to_protocol_version( uint16_t v )|
 |func|connection_ptr find_connection( const string& host ) const|根据host找到连接|
-  
+
 ## 定义协议 net_message
 |协议名|注释|
 |:----_|:---|

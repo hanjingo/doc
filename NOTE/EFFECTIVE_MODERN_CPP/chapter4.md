@@ -9,9 +9,13 @@
 6. 没有什么正规的方式能检测出指针是否空悬(dangle),也就是说，它指涉的内存是否已经不再持有指针本应该指涉的对象。如果一个对象已经被析构了，而某些指针仍然指涉到它，就会产生空悬指针。
 
 # 条款18: 使用std::unique_ptr管理具备专属所有权的资源
-* std::unique_ptr是小巧，高速的，具备只移型别的智能指针，对托管资源实施专属所有权语义。
-* 默认地，资源析构采用delete运算符来实现，但可以指定自定义删除器。有状态的删除器和采用函数指针实现的删除器会增加std::unique_ptr型别的对象尺寸。
-* 将std::unique_ptr转换成std::shared_ptr是容易实现的。
+* `std::unique_ptr`是小巧，高速的，具备只移型别的智能指针，对托管资源实施专属所有权语义。
+* 默认地，资源析构采用delete运算符来实现，但可以指定自定义删除器。有状态的删除器和采用函数指针实现的删除器会增加`std::unique_ptr`型别的对象尺寸。
+* 将`std::unique_ptr`转换成`std::shared_ptr`是容易实现的。
+
+
+
+
 
 # 条款19: 使用std::shared_ptr管理具备共享所有权的资源
 引用计数:
@@ -23,20 +27,28 @@
 * std::make_shared总是创建一个控制块。
 * 从具备专属所有权的指针(即std::unique_ptr或std::auto_ptr指针) 出发构造一个std::shared_ptr时，会创建一个控制块。
 * 当std::shared_ptr构造函数使用裸指针作为实参来调用时，他会创建一个控制块。
-
 * std::shared_ptr 提供方便的手段，实现了任意资源在共享所有权语义下进行生命周期管理的垃圾回收。
 * 与std::unique_ptr 相比, std::shared_ptr的尺寸通常是裸指针尺寸的2倍，它还会带来控制块的开销，并要求原子化的引用计数操作。
 * 默认的资源析构通过delete运算符进行，但同时也支持定制删除器。删除器的型别对std::shared_ptr的型别没有影响。
 * 避免使用裸指针型别的变量来创建std::shared_ptr指针。
 
+
+
+
 # 条款20: 对于类似std::shared_ptr但有可能空悬的指针使用std::weak_ptr
 * 使用std::weak_ptr来代替可能空悬的std::shared_ptr。
 * std::weak_ptr可能的用武之地包括缓存，观察者列表，以及避免std::shared_ptr指针环路
+
+
+
 
 # 条款21: 优先选用std::make_unique和std::make_shared,而非直接使用new
 * 相比于直接使用new表达式，make系列函数消除了重复代码，改进了异常安全性，并且对于std::make_shared和std::allocated_shared而言，生成的目标代码会尺寸更小，速度更快。
 * 不适于使用make系列函数的场景包括需要定制删除器，以及期望直接传递大括号初始物。
 * 对于std::shared_ptr,不建议使用make系列函数的额外场景包括:1.自定义内存管理的类；2.内存紧张的系统，非常大的对象，以及存在比指涉到相同对象的std::shared_ptr生存期更久的std::weak_ptr.
+
+
+
 
 # 条款22: 使用Pimpl习惯用法时，将特殊成员函数的定义放到实现文件中
 * Pimpl惯用法通过降低类的客户和类实现者之间的依赖性，减少了构建遍数。

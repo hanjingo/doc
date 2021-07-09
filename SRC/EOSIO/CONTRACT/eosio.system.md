@@ -128,88 +128,88 @@ static inline auto set_field( F flags, E field, bool value = true ) -> std::enab
 |rentnet|- `const name&` 出租者<br>- `const name&` 接收者<br>- `const asset&` 出租花费<br>- `const asset&` 出租退费|出租网络|
 |fundcpuloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 花费|cpu出租打钱|
 |fundnetloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 花费|net出租打钱|
-|defcpuloan|const name& 出租者, uint64_t 出租数量, const asset& 价格|定义cpu出租价格|
-|defnetloan|const name& 出租者, uint64_t 出租数量, const asset& 价格|定义net出租价格|
-|updaterex|const name& 用户|更新用户资源代币|
-|rexexec|const name& 用户, uint16_t 最大订单数|处理cpu,net,rex出租订单|
-|consolidate|const name& 收款人|应付款到期合并|
-|mvtosavings|const name& 收款人, const asset& 金额|删除应付款|
-|mvfrsavings|const name& 收款人, const asset& 金额|添加应付款|
-|closerex|const name& 持有人|删除代币|
-|undelegatebw|const name& 押金持有人, const name& 押金抵押者, const asset& 抵押的net, const asset& 抵押的cpu|取消抵押|
-|buyram|const name& 买家, const name& 卖家, const asset& 内存数量|购买内存|
-|buyrambytes|const name& 买家, const name& 卖家, uint32_t 字节数|购买指定大小内存,使用的bancor算法,内存与资金的兑换比率浮动变化;收0.5%的小费|
-|sellram|const name& 卖家, int64_t 内存大小|出售内存,需要0.5%的小费|
-|refund|const name& 收款人|退款,有3天的延时|
-|regproducer|const name& 节点, const public_key& 节点公钥, const std::string& 节点地址, uint16_t 所属国家	|注册节点|
-|regproducer2|const name& 节点, const eosio::block_signing_authority& 权限, const std::string& 地址, uint16_t 所属国家|注册节点2|
-|unregprod|const name& 生产者名字|取消注册生产者|
-|setram|uint64_t 内存大小|设置提供的内存大小|
-|setramrate|uint16_t 每个块的内存大小|设置每个块内存增长速率,影响内存供应|
-|voteproducer|const name& 投票人, const name& 账户代理人, const std::vector<name>& 节点集合|投票生产者节点，可以投给多人|
-|regproxy|const name& 代理人, bool 是否使用了代理|注册代理人，已经使用了代理的投票者不能注册未投票代理|
-|setparams|const eosio::blockchain_parameters& 参数|设置系统参数|
-|claimrewards|const name& 节点|节点领奖|
-|setpriv|const name& 账号, uint8_t 是否开启特权|设置特权开启,0不开,>0开启|
-|rmvproducer|const name& 节点|让一节点失效|
-|updtrevision|uint8_t 新的版本|更新版本|
-|bidname|const name& 竞拍者, const name& 新名字, const asset& 竞拍资金|竞拍抢名字|
-|bidrefund|const name& 竞拍者, const name& 新名字|竞拍退款|
-|newaccount|const name& 创建者, const name& 要创建的名字, ignore<authority> owner权限, ignore<authority> active权限|新建账号；1.账号格式:12个字符长,不包含"."; 2.新账号创建时必须购买一个最小单位的内存|
-|updateauth|ignore<name> 账号, ignore<name> 权限, ignore<name> 账号的父账号，调用次action的人, ignore<authorith> 此action的调用权限|更新账号的权限|
-|deleteauth|ignore<name> 账号, ignore<name> 权限|删除权限|
-|linkauth|ignore<name> 调用者账号, ignore<name> 被授权人, ignore<name> 被赋值的action, ignore<name>权限|给一个action赋予权限,有5个action: updateauth, deleteauth, linkauth, unlinkauth, canceldelay;不能被赋权|
-|unlinkauth|ignore<name> 调用者账号, ignore<name> 被授权人, ignore<name>|被取消的action	取消授权|
-|canceldelay|ignore<permission_level> 权限, ignore<checksum256> 传输id|取消延时传输|
-|onerror|ignore<uint128_t> 发送者, ignore<std::vector<char>> 传输id|报错|
-|setabi|const name& 账号, const std::vector<char>& abi|设置合约abi|
-|setcode|const name& 部署者, uint8_t 虚拟机类型, uint8_t 虚拟机版本, const std::vector<char>& 合约内容|设置合约|
-|setinflation|int64_t 年率, int64_t 通胀系数, int64_t 投票系数|设置通胀率|
+|defcpuloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 价格|定义cpu出租价格|
+|defnetloan|- `const name&` 出租者<br>- `uint64_t` 出租数量<br>- `const asset&` 价格|定义net出租价格|
+|updaterex|`const name&` 用户|更新用户资源代币|
+|rexexec|- `const name&` 用户<br>- `uint16_t` 最大订单数|处理cpu,net,rex出租订单|
+|consolidate|`const name&` 收款人|应付款到期合并|
+|mvtosavings|- `const name&` 收款人<br>- `const asset&` 金额|删除应付款|
+|mvfrsavings|- `const name&` 收款人<br>- `const asset&` 金额|添加应付款|
+|closerex|`const name&` 持有人|删除代币|
+|undelegatebw|- `const name&` 押金持有人<br>- `const name&` 押金抵押者<br>- `const asset&` 抵押的net<br>- `const asset&` 抵押的cpu|取消抵押|
+|buyram|- `const name&` 买家<br>- `const name&` 卖家<br>- `const asset&` 内存数量|购买内存|
+|buyrambytes|- `const name&` 买家<br>- `const name&` 卖家<br>- `uint32_t` 字节数|购买指定大小内存,使用的bancor算法,内存与资金的兑换比率浮动变化;收0.5%的小费|
+|sellram|- `const name&` 卖家<br>- `int64_t` 内存大小|出售内存,需要0.5%的小费|
+|refund|`const name&` 收款人|退款,有3天的延时|
+|regproducer|- `const name&` 节点<br>- `const public_key&` 节点公钥<br>- `const std::string&` 节点地址<br>- `uint16_t` 所属国家	|注册节点|
+|regproducer2|- `const name&` 节点<br>- `const eosio::block_signing_authority&` 权限<br>- `const std::string&` 地址<br>- `uint16_t` 所属国家|注册节点2|
+|unregprod|`const name&` 生产者名字|取消注册生产者|
+|setram|`uint64_t` 内存大小|设置提供的内存大小|
+|setramrate|`uint16_t` 每个块的内存大小|设置每个块内存增长速率,影响内存供应|
+|voteproducer|- `const name&` 投票人<br>- `const name&` 账户代理人<br>- `const std::vector<name>&` 节点集合|投票生产者节点，可以投给多人|
+|regproxy|- `const name&` 代理人<br>- `bool` 是否使用了代理|注册代理人，已经使用了代理的投票者不能注册未投票代理|
+|setparams|`const eosio::blockchain_parameters&` 参数|设置系统参数|
+|claimrewards|`const name&` 节点|节点领奖|
+|setpriv|- `const name&` 账号<br>- `uint8_t` 是否开启特权|设置特权开启,0不开,>0开启|
+|rmvproducer|`const name&` 节点|让一节点失效|
+|updtrevision|`uint8_t` 新的版本|更新版本|
+|bidname|- `const name&` 竞拍者<br>- `const name&` 新名字<br>- `const asset&` 竞拍资金|竞拍抢名字|
+|bidrefund|- `const name&` 竞拍者<br>- `const name&` 新名字|竞拍退款|
+|newaccount|- `const name&` 创建者<br>- `const name&` 要创建的名字<br>- `ignore<authority>` owner权限<br>- `ignore<authority>` active权限|新建账号；1.账号格式:12个字符长,不包含"."; 2.新账号创建时必须购买一个最小单位的内存|
+|updateauth|- `ignore<name>` 账号<br>- `ignore<name>` 权限<br>- `ignore<name>` 账号的父账号，调用次action的人<br>- `ignore<authorith>` 此action的调用权限|更新账号的权限|
+|deleteauth|- `ignore<name>` 账号<br>- `ignore<name>` 权限|删除权限|
+|linkauth|- `ignore<name>` 调用者账号<br>- `ignore<name>` 被授权人<br>- `ignore<name>` 被赋值的action<br>- `ignore<name>`权限|给一个action赋予权限,有5个action: updateauth, deleteauth, linkauth, unlinkauth, canceldelay;不能被赋权|
+|unlinkauth|- `ignore<name>`调用者账号<br>- `ignore<name>` 被授权人<br>- `ignore<name>`|被取消的action	取消授权|
+|canceldelay|- `ignore<permission_level>` 权限<br>- `ignore<checksum256>` 传输id|取消延时传输|
+|onerror|- `ignore<uint128_t>` 发送者<br>- `ignore<std::vector<char>>` 传输id|报错|
+|setabi|- `const name&` 账号<br>- `const std::vector<char>&` abi|设置合约abi|
+|setcode|- `const name&` 部署者<br>- `uint8_t` 虚拟机类型<br>- `uint8_t` 虚拟机版本<br>- `const std::vector<char>&` 合约内容|设置合约|
+|setinflation|- `int64_t` 年率<br>- `int64_t` 通胀系数<br>- `int64_t` 投票系数|设置通胀率|
 
 ## 定义私有函数
 |函数|参数|说明|
 |:-----|:---|:---|
-|static symbol **get_core_symbol**|const rammarket& rm:交易所|返回ram交易所的货币类型|
+|static symbol **get_core_symbol**|`const rammarket&` 交易所|返回ram交易所的货币类型|
 |static eosio_global_state **get_default_parameters**|-|返回默认的全局变量表|
 |static eosio_blobal_state4 **get_default_inflation_parameters**|-|返回默认的全局变量表4的信息|
 |symbol **core_symbol**()const|-|返回货币类型|
 |void **update_ram_supply**|-|更新ram供应量|
-|void **runrex**|uint16_t max:3种资源的最大数量(net, cpu, 代币出售订单|执行代币动作(买net,买cpu,出售代币...)|
+|void **runrex**|- `uint16_t` 3种资源的最大数量(net, cpu, 代币出售订单)|执行代币动作(买net,买cpu,出售代币...)|
 |void **update_rex_pool**|-|更新代币池|
-|void **update_resource_limits**|const name& from: 记账人, const name& receiver:需要变更者, int64_t delta_net:net资源, int64_t delta_cpu:cpu资源 |更新账号资源限制|
-|void **check_voting_requirement**|const name& owner:代币持有者, const char* error_msg:返回错误|是否可以买代币,只有生产者大于21个或它是一个代理才可以买代币; |
-|rex_order_outcome **fill_rex_order**|const rex_balance_table::const_iterator& bitr:迭代器, const asset& rex:代币|撮合代币订单|
-|asset **update_rex_account**|const name& owner:账号, const asset& proceeds:转到个人代币表的数量, const asset& delta_stake 抵押的数目(用来增加权重), bool force_vote_update:是否强制更新投票权)|更新账号代币|
-|void **channel_to_rex**|const name& from:转账者, const asset& amount 数量|代币渠道转账|
-|void **channel_namebid_to_rex**|const int64_t highest_bid:最高出价|账号竞拍代币转账|
-|template <typename T> int64_t **rent_rex**|T& table 记录表, const name& from 出租人, const name& receiver 购买者, const asset& loan_payment 小费, const asset& loan_fund 出租的代币资产|出租代币|
-|template <typename T> void **fund_rex_loan**|T& table 记录表, const name& from 借出人, uint64_t loan_num 借出数目, const asset& payment 小费|出借代币|
-|void **defund_rex_loan**|T& table 记录表, const name& from 借款人, uint64_t loan_num 借出资金数目, const asset& amount 借出的资金|收回借出的代币|
-|void **transfer_from_fund**|const name& owner 拥有者, const asset& amount 资金|从代币资金表转资金出来|
-|void **transfer_to_fund**| const name& owner 拥有者, const asset& amount 资金|将资金转入代币资金表|
+|void **update_resource_limits**|- `const name&` 记账人<br>- `const name&` 需要变更者<br>- `int64_t` net资源<br>- `int64_t` cpu资源 |更新账号资源限制|
+|void **check_voting_requirement**|- `const name&` 代币持有者<br>- `const char*` 返回错误|是否可以买代币,只有生产者大于21个或它是一个代理才可以买代币; |
+|rex_order_outcome **fill_rex_order**|- `const rex_balance_table::const_iterator&` 迭代器<br>- `const asset&` 代币|撮合代币订单|
+|asset **update_rex_account**|- `const name&` 账号<br>- ``const asset&` 转到个人代币表的数量,<br>- `const asset&` 抵押的数目(用来增加权重)<br>- `bool` 是否强制更新投票权|更新账号代币|
+|void **channel_to_rex**|- `const name&` 转账者<br>- `const asset&` 数量|代币渠道转账|
+|void **channel_namebid_to_rex**|- `const int64_t` 最高出价|账号竞拍代币转账|
+|template <typename T> int64_t **rent_rex**|- `T&` 记录表<br>- `const name&` 出租人<br>- `const name&` 购买者<br>- `const asset&` 小费<br>- `const asset&` 出租的代币资产|出租代币|
+|template <typename T> void **fund_rex_loan**|- `T&` 记录表<br>- `const name&` 借出人<br>- `uint64_t` 借出数目<br>- `const asset&` 小费|出借代币|
+|void **defund_rex_loan**|- `T&` 记录表<br>- `const name&` 借款人<br>- `uint64_t` 借出资金数目<br>- `const asset&` 借出的资金|收回借出的代币|
+|void **transfer_from_fund**|- `const name&` 拥有者<br>- `const asset&` 资金|从代币资金表转资金出来|
+|void **transfer_to_fund**| - `const name&` 拥有者<br>- `const asset&` 资金 |将资金转入代币资金表|
 |bool **rex_loans_available**()const|-|是否可以借贷代币,如果代币池有效且没有订单或订单已结束，返回true|
-|bool **rex_system_initialized**()const { return _rexpool.begin() != _rexpool.end(); }|-|代币系统是否已经初始化|
-|bool **rex_available**()const { return rex_system_initialized() && _rexpool.begin()->total_rex.amount > 0; }|-|代币池是否有代币|
+|`bool rex_system_initialized()const { return _rexpool.begin() != _rexpool.end(); }`|-|代币系统是否已经初始化|
+|`bool rex_available()const { return rex_system_initialized() && _rexpool.begin()->total_rex.amount > 0; }`|-|代币池是否有代币|
 |static time_point_sec **get_rex_maturity**|-|计算购买代币4天后到期时间的秒数|
-|asset **add_to_rex_balance**|const name& owner 代币所有者, const asset& payment 小费, const asset& rex_received 购买的代币|添加代币到代币现金表,返回所有抵押的代币数量|
-|asset **add_to_rex_pool**|const asset& payment 代币|添加代币到代币池,比率:10000, 代币池代币总额为:200000000|
-|void **add_to_rex_return_pool**|const asset& fee 代币|添加代币到代币返还表|
-|void **process_rex_maturities**|const rex_balance_table::const_iterator& bitr 迭代器|更新代币已到期的桶|
-|void **consolidate_rex_balance**|`const rex_balance_table::const_iterator& bitr` 桶迭代器<br>const asset& rex_in_sell_order 正在出售的代币订单|把所有代币到期桶合并到一个桶(排除掉正在出售的代币)|
-|int64_t **read_rex_savings**|`const rex_balance_table::const_iterator& bitr` 代币桶迭代器|取一个正在存储的桶|
-|void **put_rex_savings**|`const rex_balance_table::const_iterator& bitr` 迭代器<br>int64_t rex 待添加的代币数量|放一个详细的代币数量到过期桶里面去|
+|asset **add_to_rex_balance**|- `const name&` 代币所有者<br>- `const asset&` 小费<br>- `const asset&` 购买的代币|添加代币到代币现金表,返回所有抵押的代币数量|
+|asset **add_to_rex_pool**|`const asset&` 代币|添加代币到代币池,比率:10000, 代币池代币总额为:200000000|
+|void **add_to_rex_return_pool**|`const asset&` 代币|添加代币到代币返还表|
+|void **process_rex_maturities**|`const rex_balance_table::const_iterator&` 迭代器|更新代币已到期的桶|
+|void **consolidate_rex_balance**|- `const rex_balance_table::const_iterator& bitr` 桶迭代器<br>- `const asset&` 正在出售的代币订单|把所有代币到期桶合并到一个桶(排除掉正在出售的代币)|
+|int64_t **read_rex_savings**|`const rex_balance_table::const_iterator&` 代币桶迭代器|取一个正在存储的桶|
+|void **put_rex_savings**|- `const rex_balance_table::const_iterator&` 迭代器<br>- `int64_t` 待添加的代币数量|放一个详细的代币数量到过期桶里面去|
 |void **update_rex_stake**|`const name& voter` 投票人|更新投票人代币抵押|
-|void **add_loan_to_rex_pool**|`const asset& payment` 本次借贷的小费<br>`int64_t rented_tokens` 借贷人抵押的token<br>`bool new_loan` 是否是新的订单|创建新的借贷或激活旧的订单|
-|void **remove_loan_from_rex_pool**| `const rex_loan& loan` 借贷记录 |从代币池表移除指定借贷记录|
-|template <typename Index, typename Iterator> int64_t **update_renewed_loan**|`Index& idx` 索引<br>`const Iterator&` itr 迭代器<br>`int64_t rented_tokens` 出租的token|更新订单|
-|void **changebw**|`name from` 变更者<br>`const name& receiver` 接收者<br>`const asset& stake_net_quantity` 抵押的net数量<br>`const asset& stake_cpu_quantity` 抵押的cpu数量<br>`bool transfer` |变更带宽|
-|void **update_voting_power**|`const name& voter` 投票人<br>`const asset& total_update` 投票权变更值|更新投票权|
-|void **register_producer**|`const name& producer` 生产者<br>`const eosio::block_signing_authority& producer_authority` 生产者签名验证<br>`const std::string& url` 生产者地址<br>uint16_t location 生产者所属国家|注册成为生产者|
-|void **update_elected_producers**|`const block_timestamp& timestamp `更新的时间|更新生产者选举|
-|void **update_votes**|`const name& voter` 投票人<br>`const name& proxy` 代理人<br>`const std::vector<name>& producers` 生产者<br>bool voting 是否在投票中|更新投票信息|
+|void **add_loan_to_rex_pool**|- `const asset&` 本次借贷的小费<br>- `int64_t` 借贷人抵押的token<br>- `bool` 是否是新的订单|创建新的借贷或激活旧的订单|
+|void **remove_loan_from_rex_pool**| `const rex_loan&` 借贷记录 |从代币池表移除指定借贷记录|
+|template <typename Index, typename Iterator> int64_t **update_renewed_loan**|- `Index&` 索引<br>- `const Iterator&` 迭代器<br>- `int64_t` 出租的token|更新订单|
+|void **changebw**|- `name` 变更者<br>- `const name&` 接收者<br>- `const asset&` 抵押的net数量<br>- `const asset&` 抵押的cpu数量<br>- `bool` ? |变更带宽|
+|void **update_voting_power**|- `const name&` 投票人<br>- `const asset&` 投票权变更值|更新投票权|
+|void **register_producer**|- `const name&` 生产者<br>- `const eosio::block_signing_authority&` 生产者签名验证<br>- `const std::string&` 生产者地址<br>- `uint16_t` 生产者所属国家|注册成为生产者|
+|void **update_elected_producers**|`const block_timestamp& `更新的时间|更新生产者选举|
+|void **update_votes**|- `const name&` 投票人<br>- `const name&` 代理人<br>- `const std::vector<name>&` 生产者<br>- `bool` 是否在投票中|更新投票信息|
 |void **propagate_weight_change**|`const voter_info& voter` 投票人|传播投票变更|
-|double **update_producer_votepay_share**|`const producers_table2::const_iterator& prod_itr , const time_point& ct , double shares_rate , bool reset_to_zero` |更新生产者投票股份|
-|double **update_total_votepay_share**|`const time_point& ct, double additional_shares_delta , double shares_rate_delta` |更新总投票股份|
+|double **update_producer_votepay_share**|- `const producers_table2::const_iterator&` ? <br>- `const time_point&` ?<br>- `double` ? <br>- `bool` ? |更新生产者投票股份|
+|double **update_total_votepay_share**|- `const time_point&` ?<br>- `double` ?<br>- `double` ? |更新总投票股份|
 
 ## 定义table
 #### name_bid 名字竞拍表
@@ -353,8 +353,8 @@ static inline auto set_field( F flags, E field, bool value = true ) -> std::enab
 |int64_t|pending_bucket_proceeds|0,等待处理的桶子数|
 |int64_t|current_rate_of_increase|0, 过期速率|
 |int64_t|proceeds|0, 已处理|
-|static constexpr uint32_t|total_intervals|30 * 144 = 30天，最大时长|
-|static constexpr uint32_t|dist_interval|10 * 60, 10分钟|
+|static constexpr uint32_t|total_intervals|$30 \times 144 = 30天$，最大时长|
+|static constexpr uint32_t|dist_interval|$10 \times 60$, 10分钟|
 |static constexpr uint8_t|hours_per_bucket|12, 每个桶子的时长|
 
 #### rex_fund 代币资金表

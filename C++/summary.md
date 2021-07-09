@@ -4,7 +4,7 @@
 
 ## 对象模型
 
-1. new函数：先分配内存，再调用构造函数；delete函数：先调用析构函数，再分配内存；
+1. new函数：先分配内存，再调用构造函数；delete函数：先调用析构函数，再释放内存；
 2. 只有`nonstatic data member`是在object内部的，其他的都在外面
 3. 每个类只要声明了`virtual function`就会存在一个虚表（多重继承和虚继承可能会有多个虚表），虚表保存了这个类`virtual function`的地址，这个类的每一个对象都有一个指向该虚表的指针(vptr)，vptr在`constructor`时被赋值。
 4. 继承关系也可以被指定为virtual（共享），例：`class istream : virtual public ios { ... };`；在此情况下，基类不管在继承链中被派生多少次，它都永远只存在一个实例。
@@ -41,4 +41,55 @@
 
 
 ## stl
+
+
+
+## 并发编程
+
+1. 用`join()`来加入线程（等待），用`detach()`来分离线程（不等）。
+
+2. 要确保`std::thread`对象被销毁前已经调用`join()`或`detach()`，如果在线程开始之后在调用`join()`之前引发一场，对`join()`的调用就容易被跳过。
+
+3. 可以使用以下方法来给线程函数传递参数：
+
+   - 使用`std::ref`包装
+   - 使用`std::move`来转移所有权
+
+4. 通过一下方法来获取线程标识符`std::thread::id`:
+
+   - 通过从与之相关联的`std::thread`对象中调用`get_id()`获得。
+   - 线程构建时返回。
+
+5. 互斥元用法：`std::lock_guard<std::mutex> guard(mutex_obj)`
+
+6. 可以通过以下方法来等待其他线程完成：
+
+   - 使用条件变量`std::condition_variable`和`std::condition_variable_any`
+
+7. 使用`std::future`来从线程中返回参数
+
+8. 常用的原子操作：
+
+   - load
+   - store
+   - exchange
+   - compare
+   - exchange
+
+9. 无锁编程准则：
+
+   - 使用`std::memory_order_seq_cst`作为原型
+   - 使用无锁内存回收模式
+   - 当心ABA问题
+   - 识别忙于等待的循环以及辅助其它线程
+   
+10. **阿姆达尔定律(Amdahl's law)：**$P=\frac{1}{f_s + \frac{1 - f_s}{N}}$
+
+    - $P$: 性能
+    - $f_s$: "串行部分"
+    - $N$: 处理器个数
+
+    ### 
+
+   
 
