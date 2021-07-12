@@ -1,5 +1,7 @@
 # c++
 
+- [总结](summary.md)
+
 - [const关键字](const.md)
 
 - [常量指针和指针常量](const_ptr.md)
@@ -13,6 +15,8 @@
 - [override关键字](override.md)
 
 - [placement new操作符](placement_new.md)
+
+- [智能指针](smart_ptr.md)
 
 - [volatile关键字](volatile.md)
 

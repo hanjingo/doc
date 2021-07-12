@@ -14,6 +14,10 @@
 
 
 
+## 多线程
+
+
+
 ## 任务调度
 
 ![job_dispatch](res/job_dispatch.jpg)
@@ -27,16 +31,20 @@
 
 
 
-## 消息结构
+## 消息
 
 ```c
 ```
 
 
 
+## 集群
+
 
 
 ## 参考
 
 - [skynet的总体架构以及任务调度分析](https://zhuanlan.zhihu.com/p/339599579)
+- [skynet简介](https://blog.csdn.net/o8413897/article/details/79044437)
+- [Skynet 设计综述](https://blog.codingnow.com/2012/09/the_design_of_skynet.html)
 
