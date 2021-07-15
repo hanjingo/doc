@@ -1,5 +1,13 @@
 # BUG
-- [内存泄漏检测工具-valgrind](valgrind.md)
+
+## 工具
+
+- [内存泄漏检测工具-valgrind](TOOL/valgrind.md)
+
+  
+
+## BUG明细
+
 - [c++](cpp.md)
 	- c++不允许内部类前置声明
 	- 动态链接库链接不上

@@ -1,7 +1,6 @@
 # 职业生涯
 
-- [c++软件工程师面试笔记](cpp_interview.md)
-- [go软件工程师面试笔记](go_interview.md)
+- [面试笔记](interview.md)
 - [谈判技巧](negotiate.md)
 - [裁员避坑](cut_job.md)
 

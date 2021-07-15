@@ -3,7 +3,6 @@
 - [android-ndk](ANDROID_NDK/README.md)
 - [ceph](CEPH/README.md)
 - [eosio](EOSIO/README.md)
-- [EthMiner](ETH_MINER/README.md)
 - [ffmpeg](FFMPEG/READMD.md)
 - [filecoin](FILECOIN/README.md)
 - [ipfs](IPFS/README.md)
