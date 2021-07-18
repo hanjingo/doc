@@ -137,12 +137,12 @@ public:
 
 c++标准库中有两类future，是由`<future>`库的头文件中声明的两个类模板实现的：
 
-- 唯一future(unique futures, std::future<>)
-- 共享future(shared futures, std::shared_future<>)
+- 唯一future(unique futures, `std::future<>`)
+- 共享future(shared futures, `std::shared_future<>`)
 
 ### 从后台任务中返回值
 
-使用std::future获取异步任务的返回值：
+使用`std::future`获取异步任务的返回值：
 
 ```c++
 #include <future>
@@ -157,7 +157,7 @@ int main()
 }
 ```
 
-使用std::async来将参数传递给函数：
+使用`std::async`来将参数传递给函数：
 
 ```c++
 #include <string>
@@ -195,9 +195,9 @@ auto f5=std::async(move_only()); // 调用tmp(),其中tmp是从std::move(move_on
 
 ### 将任务与future相关联
 
-std::packaged_task<>将一个future绑定到一个函数或可调用对象上。当std::packaged_task<>对象被调用时，他就调用相关联的函数或可调用对象，并且让future就绪，将返回值作为关联数据存储。
+`std::packaged_task<>`将一个future绑定到一个函数或可调用对象上。当`std::packaged_task<>`对象被调用时，他就调用相关联的函数或可调用对象，并且让future就绪，将返回值作为关联数据存储。
 
-std::packaged_task<>特化的部分类定义：
+`std::packaged_task<>`特化的部分类定义：
 
 ```c++
 template<>
@@ -286,9 +286,9 @@ void process_connections(connection_set& connections)
 
 ### 为future保存异常
 
-如果作为std::async一部分的函数调用引发了异常，该异常会被存储在future中，代替所存储的值，future变成就绪，并且对get()的调用会重新引发所存储的异常。
+如果作为`std::async`一部分的函数调用引发了异常，该异常会被存储在`future`中，代替所存储的值，`future`变成就绪，并且对`get()`的调用会重新引发所存储的异常。
 
-将异常存储置future的方式：
+将异常存储置`future`的方式：
 
 - 将函数封装入`std::packaged_task`的时候，当任务被调用时，如果封装的函数引发异常，该异常代替结果存入future，准备在调用get()时引发。
 - 销毁与future关联的std::promise或std::packaged_task,而无需在promise上调用设置函数或是调用打包任务。在任何一种情况下，如果future尚未就绪，`std::promise`或`std::packaged_task`的析构函数会将具有`std::future_errc::broken_promise`错误代码的`std::future_error`异常存储在相关联的状态中。
@@ -299,7 +299,7 @@ void process_connections(connection_set& connections)
 
 `std::shared_future`实例是**可复制的**，因此可以有多个对象引用同一个相关状态。
 
-![4-1]()
+![4-1](res/4_1.png)
 
 
 
@@ -323,7 +323,7 @@ void process_connections(connection_set& connections)
 
 ### 时间段
 
-标准库在std::chrono命名空间中为各种时间段提供了一组预定义的typedef：
+标准库在`std::chrono`命名空间中为各种时间段提供了一组预定义的typedef：
 
 - nanoseconds
 - microseconds

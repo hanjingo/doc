@@ -1,6 +1,6 @@
+[TOC]
+
 # MurmurHash算法
-
-
 
 ## 摘要
 

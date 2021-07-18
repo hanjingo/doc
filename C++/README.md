@@ -10,6 +10,8 @@
 
 - [final关键字](final.md)
 
+- [c++多线程](multi_thread.md)
+
 - [optional关键字](optional.md)
 
 - [override关键字](override.md)

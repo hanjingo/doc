@@ -18,7 +18,7 @@
 
 ![5-1](res/5-1.png)
 
-### 
+
 
 ## c++中的原子操作及类型
 
@@ -92,9 +92,9 @@
   - memory_order_acq_rel
   - memory_order_seq_cst
 
-### std::atomic_flag上的操作
+### `std::atomic_flag`上的操作
 
-类型为`std::atomic_flag`的对象必须用ATOMIC_FLAG_INIT初始化。这会将该标志初始化为清除状态。在这里没有其他的选择，此标志总是以清除开始。
+类型为`std::atomic_flag`的对象必须用`ATOMIC_FLAG_INIT`初始化。这会将该标志初始化为清除状态。在这里没有其他的选择，此标志总是以清除开始。
 
 ```c++
 std::atomic_flag f=ATOMIC_FLAG_INIT;
@@ -123,7 +123,7 @@ public:
 };
 ```
 
-### 基于std::atomic的相关操作
+### 基于`std::atomic`的相关操作
 
 不能拷贝构造和拷贝赋值，但是可以使用一个非原子的bool类型构造它；例：
 
@@ -146,9 +146,9 @@ while(!b.compare_exchange_weak(expected, true) && !expected);
 
 - compare_exchange_strong
 
-### std::atomic指针运算
+### `std::atomic`指针运算
 
-`std::atomic<T*>`提供fetch_add()和fetch_sub()操作，它们都是读-改-写操作，它们可以拥有任意的内存顺序标签，以及加入到一个释放序列中。指定的语序不可能是操作符的形式，因为没办法提供必要的信息：这些形式都具有memory_order_seq_cst语义。
+`std::atomic<T*>`提供`fetch_add()`和`fetch_sub()`操作，它们都是读-改-写操作，它们可以拥有任意的内存顺序标签，以及加入到一个释放序列中。指定的语序不可能是操作符的形式，因为没办法提供必要的信息：这些形式都具有memory_order_seq_cst语义。
 
 ```c++
 class Foo{};
@@ -181,12 +181,12 @@ p.fetch_add(3, std::memory_order_release);
 | store                                      |             | *              | *            | *                       | *                    |
 | exchange                                   |             | *              | *            | *                       | *                    |
 | compare_exchange_weak,<br>compare_exchange |             | *              | *            | *                       | *                    |
-| fetch_add, +=                              |             |                | *            | *                       | *                    |
-| fetch_sub, -=                              |             |                | *            | *                       |                      |
-| fetch_or, \|=                              |             |                |              | *                       |                      |
-| fetch_and, &=                              |             |                |              | *                       |                      |
-| fetch_xor, ^=                              |             |                |              | *                       |                      |
-| ++, --                                     |             |                | *            | *                       |                      |
+| fetch_add, `+=`                            |             |                | *            | *                       | *                    |
+| fetch_sub, `-=`                            |             |                | *            | *                       |                      |
+| fetch_or, `|=`                             |             |                |              | *                       |                      |
+| fetch_and, `&=`                            |             |                |              | *                       |                      |
+| fetch_xor, `^=`                            |             |                |              | *                       |                      |
+| `++`, `--`                                 |             |                | *            | *                       |                      |
 
 ### 原子操作的释放函数
 

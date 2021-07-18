@@ -333,7 +333,7 @@ std::unique_lock<std::mutex> get_lock()
   extern std::mutex some_mutex;
   std::unique_lock<std::mutex> lk(some_mutex);
   prepare_data();
-  return lk;	// 函数内声明的变量可以直接返回，而无需调用std::move()
+  return lk;	// 函数内声明的变量可以直接返回，而无需调用
 }
 void process_data()
 {
@@ -409,7 +409,7 @@ void foo()
 }
 ```
 
-使用std::call_once的线程安全的类成员延迟初始化：
+使用`std::call_once`的线程安全的类成员延迟初始化：
 
 ```c++
 class x

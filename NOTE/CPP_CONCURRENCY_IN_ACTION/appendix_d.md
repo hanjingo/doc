@@ -97,7 +97,7 @@ template <class Rep1, class>
 ```c++
 typedef Rep rep;
 ```
- 
+
 `rep`类型用来记录`duration`对象内部的表示
 
 ### `std::chrono::duration::Period`类型
@@ -219,3 +219,12 @@ constexpr duration operator-() const;
 返回`duration(--this->count());`
 
 ### `std::chrono::duration::operator++` 前置自加操作符
+
+增加内部计数
+
+声明`duration& operator++();`
+
+返回`*this`
+
+### `std::chrono::duration::operator++`后置自增运算符
+

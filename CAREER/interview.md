@@ -1,10 +1,14 @@
+[TOC]
+
 # 面试笔记
 
 
 
 ## 算法
 
+1. 如何判断链表是否有环
 
+   
 
 ## 系统
 
@@ -36,13 +40,79 @@
 
 2. epoll详解
 
-3. linux内存管理机制
+   ```c
+   int epoll_create(int size); // 创建epoll对象
+   int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event); // 添加套接字
+   int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout); // 收集发生事件的连接
+   ```
 
-4. 文件系统
+   调用`epoll_create`时:
 
-5. 程序的结构
+   1. 在内核cache里建立了一个红黑树用于存储`epoll_ctl`传来的`socket`
+   2. 在内核cache建立一个rdllist双向链表（就序列表），用于存储准备就绪的事件
 
-6. 堆和栈的区别
+   调用`epoll_wait`时：
+
+   1. 检测rdllist里面有没有数据，有数据就返回，没有数据就sleep，等到timeout时间到后即使链表没有数据也返回
+
+      ![epoll_wait](res/epoll_wait.png)
+
+   epoll触发模式
+
+   - LT（水平触发，默认模式）
+
+     **只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。
+
+   - ET（边缘触发，高速模式）
+
+     **只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回
+
+3. 可执行程序的结构
+
+   - 文件头
+
+     保存了程序的各个段的信息，操作系统加载程序的时候，首先要读取这个文件头，计算出各个段的大小
+
+   - 堆
+
+   - 栈
+
+   - 代码段
+
+     只读，编译结束后，大小就确定了，运行过程中不会被改变，可以包含常量数据
+
+   - 数据段
+
+     用于存放源代码中具有全局声明周期的变量
+
+     - `.bss`
+
+       存储未初始化的变量
+
+     - `.data`
+
+       存储具有非0初始值的变量
+
+     - `.rodata`
+
+       存储const修饰的变量
+
+4. 如何提升memcpy的效率
+
+   memcpy是c/c++的一个标准函数，原型为：`void *memcpy(void *dest, const void *src, szie_t n)`，用于从src拷贝n个字节到dest指向的内存起始位置
+
+   有以下方法可以提升memcpy的效率：
+
+   - 使用`neon`指令（仅限ARM Cortex-A系列处理器）
+   - TODO
+
+5. TCP状态转移图
+
+   ![tcp_stat](res/tcp_stat.png)
+
+6. 进程状态图
+
+   ![progress_stat_transform](res/progress_stat_transform.png)
 
 
 
@@ -68,11 +138,34 @@
 ## 项目
 
 1. 游戏服务器的架构是怎样的
+
+   ```sequence
+   Title:游戏时序图
+   客户端->登陆服务器: 账号，加密密码
+   登陆服务器->客户端: TOKEN
+   客户端->网关: TOKEN
+   网关->客户端: 验证通过，建立连接
+   客户端->网关: MSG1
+   网关->逻辑服务器1: 分发MSG1
+   逻辑服务器1->DB服务器: 保存记录
+   逻辑服务器1->网关: RSP1
+   网关->客户端: RSP1
+   客户端->网关: MSG2
+   网关->逻辑服务器2: 分发MSG2
+   逻辑服务器2->DB服务器: 保存记录
+   逻辑服务器2->网关: RSP2
+   网关->客户端: RSP2
+   ```
+
+   
+
 2. 热更新的用途
    1. 上线需求（审核）
    2. 快节奏的版本迭代
    3. 节约网络资源
+
 3. protobuf的底层实现
+
 4. 使用UDP的理由
    1. 低延迟
 
@@ -123,11 +216,62 @@
 
 3. 哪些函数不能是虚函数？
 
+   - 构造函数：构造时，基类指针无法知道子类的具体类型
+   - 内联成员函数：内联函数是在编译期展开，虚函数式运行时绑定
+   - 静态成员函数：静态成员函数是编译期确定的，不支持多态
+   - 友元函数：不属于类成员函数，不能被继承
+   - 普通函数：普通函数无法被继承
+
 4. 指针和引用的用途和区别
 
-5. memcpy怎么实现让它效率更高
+   - 指针是一个指向地址的变量，引用是地址的别名
+   - 引用使用时无需解引用`(*)`，指针需要解引用
+   - 引用只能在定义时被初始化一次，之后不可变；指针可以改变指向的地址
+   - 引用不能为空，指针可以为空
+   - `sizeof(引用)`：所指向对象的大小；`sizeof(指针)`：指针本身的大小
+   - 指针可以有多级`(**指针)`，引用只能是一级
+   - 指针需要分配内存区域，引用不需要
+   - `++`,`--`等操作的意义不一样
 
-6. malloc/free，new/delete的原理和区别
+5. `malloc/free`，`new/delete`的原理和区别
+
+   - malloc
+
+     ```c
+     int* p = (int*)malloc(sizeof(int));
+     ```
+
+     从堆里面获得空间，实际占用的内存比申请的大，超出的空间用来记录对这块内存的管理信息。
+
+   - free
+
+     ```c
+     free(p);
+     ```
+
+     释放空间时，先读取内存的管理信息，得到内存的实际大小，再释放它。
+
+   - new
+
+     ```c++
+     int* p = new int(1);
+     ```
+
+     流程：`operator new()->malloc()->constructor function->ptr`
+
+   - delete
+
+     ```c++
+     delete p;
+     ```
+
+     流程：`destructor function->operator delete()->free()`
+
+   区别：
+
+   1. malloc开辟空间类型大小需要手动计算，new由编译器自己计算
+   2. malloc返回`void*`，需要强转为对应类型指针；new直接返回对应类型指针
+   3. free和delete都不需要指定空间大小
 
 
 
