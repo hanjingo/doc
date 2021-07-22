@@ -8,6 +8,20 @@
 
 ### 如何判断链表是否有环
 
+TODO
+
+### B+树的应用场景与实用特点
+
+TODO
+
+### LRU缓存实现
+
+TODO
+
+### 求二叉树最远叶子结点的距离
+
+TODO
+
 [返回顶部](#面试笔记)
 
 
@@ -18,10 +32,6 @@
 
 具体见：[进程，线程和协程#区别](OS/progress_thread_coroutine.md)
 
-### epoll详解
-
-具体见：[epoll](NET/epoll.md)
-
 ### 可执行程序的结构
 
 具体见：[可执行程序](OS/exe.md)
@@ -30,13 +40,45 @@
 
 具体见：[POSIX接口#memcpy](OS/posix.md)
 
+### 进程状态图
+
+具体见：[进程，线程和协程#进程状态转移图](OS/progress_thread_coroutine.md)
+
+[返回顶部](#面试笔记)
+
+
+
+## 分布式
+
+### 描述下Raft协议和Paxos协议，以及它们的区别
+
+具体见：[Raft协议](DCS/CONSENSUS/raft.md)， [Paxos协议](DCS/CONSENSUS/paxos.md)
+
+### 如何实现分布式锁
+
+具体见：[利用redis实现分布式锁](DB/REDIS/dcs_lock.md)
+
+[返回顶部](#面试笔记)
+
+
+
+## 网络
+
 ### TCP状态转移图
 
 具体见：[TCP](NET/tcp.md)
 
-### 进程状态图
+### epoll详解
 
-具体见：[进程，线程和协程#进程状态转移图](OS/progress_thread_coroutine.md)
+具体见：[epoll](NET/epoll.md)
+
+### DNS原理
+
+TODO
+
+### 讲述下RESTFUL API，以及PUT和GET的区别
+
+TODO
 
 [返回顶部](#面试笔记)
 
@@ -60,35 +102,17 @@ TODO
 
 TODO
 
-### 缓存穿透
+### 如何避免缓存穿透，缓存击穿和缓存雪崩
 
-缓存和数据库中都没有的数据，用户还是源源不断的发起请求，导致每次请求都会到数据库，从而压垮数据库
+具体见：[缓存系统](PROJ/cache.md)
 
-解决方案：
+### 描述下Cookie以及Session
 
-1. 业务层校验
-2. 对于查找不到的数据，在redis中将其值设置为NULL，并设置较短的过期时间
-3. 布隆过滤器
+TODO
 
-### 缓存击穿
+### 如何对API接口限流
 
-redis中一个热点key在失效的同时，大量的请求过来，这些请求全部到达数据库，压垮数据库
-
-解决方案：
-
-1. 设置热点数据永不过期
-2. 定时更新过期时间（续命）
-3. 分布式锁
-
-### 缓存雪崩
-
-redis中混存的数据大面积失效或者redis宕机，导致大量请求直接到数据库，压垮数据库。
-
-解决方案：
-
-1. 数据过期时间不要太密集
-2. 数据预热
-3. 做集群
+TODO
 
 [返回顶部](#面试笔记)
 
@@ -98,46 +122,43 @@ redis中混存的数据大面积失效或者redis宕机，导致大量请求直�
 
 ### 描述下c++中四种`cast`以及他们的使用场景
 
-具体见：[c++转换函数](C++/cast.md)
+具体见：[c++转换函数](LANG/C++/cast.md)
 
 ### 为什么要用`virtual destructor`？为什么没有`virtual constructor`?
 
-具体见：[c++的虚函数](C++/vfunc.md)
+具体见：[c++的虚函数](LANG/C++/vfunc.md)
 
 ### 哪些函数不能是虚函数？
 
-具体见：[c++的虚函数](C++/vfunc.md)
+具体见：[c++的虚函数](LANG/C++/vfunc.md)
 
 ### 指针和引用的用途和区别
 
-具体见：[指针和引用](C++/ptr_ref.md)
+具体见：[指针和引用](LANG/C++/ptr_ref.md)
 
 ### `malloc/free`，`new/delete`的区别
 
 具体见：[内存管理函数](OS/mem_mgr.md)
 
-[返回顶部](#面试笔记)
+### 谈谈`std::move`
 
-
-
-## lua
-
-### lua有哪些数据类型
-
-- number
-- string
-- boolean
-- function
-- table
-- userdata
-- thread
-- nil
+TODO
 
 [返回顶部](#面试笔记)
 
 
 
-## skynet
+## Lua
+
+### Lua有哪些数据类型
+
+具体见：[LUA数据类型](LANG/LUA/data_type.md)
+
+[返回顶部](#面试笔记)
+
+
+
+## Skynet
 
 ### 定时器
 
@@ -155,39 +176,62 @@ redis中混存的数据大面积失效或者redis宕机，导致大量请求直�
 
 
 
-## redis
+## Redis
 
-### 同步机制
+### 为什么Redis用跳表不用RBtree
 
-### 为什么redis用跳表不用rbtree
+具体见：[redis跳表](DB/REDIS/skip_list.md)
 
-1. skiplist比较简单
-2. rbtree的rebalance需要消耗比较多的性能，skiplist不需要
+### Redis如何实现延时队列
 
-### redis如何实现延时队列
+具体见：[利用redis实现延时队列](DB/REDIS/delay_queue.md)
 
-利用`zset`，用时间戳做score，消息内容做key；生产者使用zadd产生消息，消费者使用`zrangebyscore`轮询消息。
+### Redis持久化
 
-### redis持久化
+具体见：[Redis持久化](DB/REDIS/persistence.md)
 
-- 追加（增量持久化）
-- 快照
+### Redis线程模型
+
+TODO
 
 [返回顶部](#面试笔记)
 
 
 
-## mysql
+## Mysql
 
 ### innedb的底层数据结构
 
+TODO
+
+### 磁盘结构分析与数据存储原理
+
+TODO
+
+### 说说数据库索引的使用及其原理
+
+TODO
+
 [返回顶部](#面试笔记)
 
 
 
-## kafka
-
-### kafka原理
+## ZeroMQ
 
 [返回顶部](#面试笔记)
 
+
+
+## HBase
+
+[返回顶部](#面试笔记)
+
+
+
+## NGINX
+
+### Nginx线程模型
+
+TODO
+
+[返回顶部](#面试笔记)

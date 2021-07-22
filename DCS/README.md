@@ -19,8 +19,8 @@
 ## 共识算法
 
   - [零知识证明](CONSENSUS/zk-SNARK.md)
-  - [raft-可靠，可复制，可冗余，可容错算法](CONSENSUS/raft.md)
-  - [paxos](CONSENSUS/paxos.md)
+  - [Raft-可靠，可复制，可冗余，可容错算法](CONSENSUS/raft.md)
+  - [Paxos](CONSENSUS/paxos.md)
   - [pool-pool验证池](CONSENSUS/pool.md)
   - [dbft-授权拜占庭容错](CONSENSUS/dbft.md)
   - [pbft-实用拜占庭容错](CONSENSUS/pbft.md)

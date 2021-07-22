@@ -1,6 +1,6 @@
 [TOC]
 
-# raft算法
+# Raft
 
 `raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可冗余，可容错算法)`；一种相对paxos更简单的算法。
 
