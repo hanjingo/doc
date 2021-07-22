@@ -38,3 +38,49 @@ typedef struct intset {
 #define INTSET_ENC_INT64 (sizeof(int64_t)) // 编码方式int64_t，[-9223372036854775808，9223372036854775807]
 ```
 
+
+
+## 升级
+
+当添加元素时，新的元素超出了当前编码方式的元素最大值，整数集合需要先进行升级(upgrade)，然后才能将新元素添加到整数集合里面
+
+升级并添加新元素分为以下步骤：
+
+1. 根据新元素的类型，扩展整数集合底层数组的空间大小，并为新元素分配空间
+2. 将底层数组现有的所有元素都转换成与新元素相同的类型，并将类型转换后的元素放置到正确位上，而且在放置元素的过程中，需要继续维持底层数组的有序性质不变
+3. 将新元素添加到底层数组里面
+
+例，将int32_t类型的整数65535添加到`INTSET_ENC_INT16`编码的整数集合
+
+![redis_intset_upgrade1](res/redis_intset_upgrade1.png)
+
+![redis_intset_upgrade2](res/redis_intset_upgrade2.png)
+
+![redis_intset_upgrade3](res/redis_intset_upgrade3.png)
+
+![redis_intset_upgrade4](res/redis_intset_upgrade4.png)
+
+![redis_intset_upgrade5](res/redis_intset_upgrade5.png)
+
+![redis_intset_upgrade6](res/redis_intset_upgrade6.png)
+
+升级之后的新元素摆放位置：
+
+- 在新元素小于所有元素的情况下，新元素放在最开头
+- 在新元素大于所有元素的情况下，新元素放在最末尾
+
+添加前的整数集合：
+
+![redis_intset_upgrade_before](res/redis_intset_upgrade_before.png)
+
+添加后的整数集合：
+
+![redis_intset_upgrade_after](res/redis_intset_upgrade_after.png)
+
+### 升级的优点
+
+1. 提升灵活性
+
+   整数集合可以通过自动升级底层数组来适应新元素，所以我们可以随意地将int16_t，int32_t或者int64_t类型的整数添加到集合中，而不必担心出现类型错误。
+
+2. 节约内存

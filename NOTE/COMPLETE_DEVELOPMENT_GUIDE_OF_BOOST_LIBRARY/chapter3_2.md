@@ -34,7 +34,8 @@ public:
 ```
 
 ## 操作函数
-get()函数可以得到原始指针，并且没有提供指针算术操作，也不能管理new[]产生的动态数组指针。例:
+`get()`函数可以得到原始指针，并且没有提供指针算术操作，也不能管理`new[]`产生的动态数组指针。例:
+
 ```c++
 shared_ptr<int> spi(new int);                // 一个int的shared_ptr
 assert(spi);                                 // 在bool语境中转换为bool值
@@ -46,12 +47,12 @@ assert(sps->size() == 5);                    // 使用箭头操作符->
 shared_ptr<int> dont_do_this(new int[10]);   // 危险！不能正确释放内存
 ```
 shared_ptr有多种形式的构造函数，可以应用于各种可能的情形，示例如下:
-- 无参的shared_ptr(): 创建一个持有空指针的shared_ptr。
-- shared_ptr(Y * p): 获得指向类型T的指针p的管理权，同时将引用计数量为1，这个构造函数要求Y类型必须能够转换为T类型。
-- shared_ptr(shared_ptr const & r): 从另外一个shared_ptr获得指针的管理权，同时引用计数加1，结果是两个shared_ptr共享一个指针的管理权。
-- operator=: 赋值操作符，可以从另外一个shared_ptr获得指针的管理权，其行为同拷贝构造函数。
-- shared_ptr(Y * p, D d): 其行为类似shared_ptr(Y * p)，但它使用参数d指定了析构时的定制删除器，而不是简单的delete。
-- aliasing: 别名构造函数是不增加引用计数的特殊用法
+- 无参的`shared_ptr()`: 创建一个持有空指针的`shared_ptr`。
+- `shared_ptr(Y * p)`: 获得指向类型T的指针p的管理权，同时将引用计数量为1，这个构造函数要求Y类型必须能够转换为T类型。
+- `shared_ptr(shared_ptr const & r)`: 从另外一个`shared_ptr`获得指针的管理权，同时引用计数加1，结果是两个`shared_ptr`共享一个指针的管理权。
+- `operator=`: 赋值操作符，可以从另外一个`shared_ptr`获得指针的管理权，其行为同拷贝构造函数。
+- `shared_ptr(Y * p, D d)`: 其行为类似`shared_ptr(Y * p)`，但它使用参数d指定了析构时的定制删除器，而不是简单的`delete`。
+- `aliasing`: 别名构造函数是不增加引用计数的特殊用法
 
 ## 用法
 例1:

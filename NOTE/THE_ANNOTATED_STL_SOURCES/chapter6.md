@@ -33,19 +33,17 @@
   - [copy_backward](#copy_backward)
 
 - [set相关算法](#set相关算法)
-
   - [set_union](#set_union)
   - [set_intersection](#set_intersection)
   - [set_difference](#set_difference)
   - [set_symmetric_difference](#set_symmetric_difference)
-
+  
 - [heap算法](#heap算法)
-
   - [make_heap](#make_heap)
   - [pop_heap](#pop_heap)
   - [push_heap](#push_heap)
   - [sort_heap](#sort_heap)
-
+  
 - [其它算法](#其它算法)
 
   - [adjacent_find](#adjacent_find)
@@ -561,7 +559,7 @@ msimatch(_InputIter1 __first1,
 
 #### copy
 
-将输入区间[first,last)内的元素复制到输出区间[result,result+(last-first))内.
+将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内.
 
 ![6-2](res/6-2.png)
 

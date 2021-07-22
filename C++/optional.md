@@ -1,5 +1,5 @@
 # optional
-std::optional可以接受对象或者nullopt(表示为空值)
+`std::optional`可以接受对象或者`nullopt`(表示为空值)
 
 例:
 ```c++
@@ -96,10 +96,11 @@ using namespace std;
 optional<Some> opt = make_optional<Some>(1, "1");
 auto opt = make_optional(1); // optional<int>
 ```
-- 使用std::in_place构造：
+- 使用`std::in_place`构造：
 
-其实使用std::in_place和使用std::make_optional 用法相近，都是原地构造对象，避免使用对象初始化进行的一次拷贝等。std::in_place只是一个tag，用来表示我们使用std::optional的那个构造函数。
-optional的构造函数是这样：
+其实使用`std::in_place`和使用`std::make_optional`用法相近，都是原地构造对象，避免使用对象初始化进行的一次拷贝等。`std::in_place`只是一个tag，用来表示我们使用`std::optional`的那个构造函数。
+`optional`的构造函数是这样：
+
 ```c++
 //
 template <class... _Args, class = enable_if_t<

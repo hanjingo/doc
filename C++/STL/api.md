@@ -1,7 +1,5 @@
-# STL 常用函数
 [TOC]
-
-
+# STL速查手册
 
 ## vector(向量容器)
 
@@ -93,15 +91,6 @@
 
 
 
-## vector,list和deque三者比较
-
-1. vector是一段连续的内存块，而deque是多个连续的内存块，list是所有数据元素分开保存，可以是任何两个元素没有连续。
-2. vector的查询性能最好，并且在末端增加数据也很好，除非它重新申请内存段；适合高效地随机存储。
-3. list是一个链表，任何一个元素都可以是不连续的，但它都有2个指向上一元素和下一元素的指针。所以它对插入，删除元素性能是最好的，而查询性能非常差；适合大量地插入和删除操作而不关心随机存取的需求。
-4. deque是介于两者之间，它坚固了数组和链表的优点，他是分块的链表和多个数组的联合。所以他有比list好的查询性能，有比vector好的插入，删除性能。如果你需要随机存取又关心两端数据的插入和删除，那么deque是最佳之选。
-
-
-
 ## set & multisets
 
 |函数|描述|
@@ -154,12 +143,6 @@
 
 
 
-## 容器适配器
-
-stl中包含三种适配器:stack,queue,priority_queue,适配器是容器的接口，他本身不能直接保存元素，它保存元素的机制是调用另一种顺序容器去实现；stack,queue默认基于deque,priority_queue默认基于vector;
-
-
-
 ## stack
 
 |函数|描述|
@@ -199,8 +182,24 @@ stl中包含三种适配器:stack,queue,priority_queue,适配器是容器的接�
 
 ## 算法
 
-### 非修改性序列操作
 |函数|描述|
 |:--|:--|
+|binary_search|二分查找法，应用于有序区间；试图在已排序的`[first,last)`中寻找元素value。如果`[first,last)`内有等同于value的元素，便返回true，否则返回false|
+|copy|将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内|
 |for_each |对序列中每个元素执行操作 |
 |find |在序列中找某个值的第一个出现 |
+|lower_bound |二分查找(binary search)的一种版本，应用于有序区间；他会返回一个迭代器，指向第一个“不小于value”的元素。如果value大于`[first,last)`内的任何一个元素，则返回last |
+|max |取两个对象中的较大值 |
+|min |取两个对象中的较小值 |
+|mismatch |用来平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点 |
+| merge          | 将两个有序的集合合并起来，放置于另一段空间                   |
+| random_shuffle | 将`[first,last)`的元素次序随机重排                           |
+|reverse |将序列`[first,last)`的元素在原容器中颠倒重排 |
+|remove |移除`[first,last)`之中所有与value相等的元素 |
+|replace |将`[first,last)`区间内的所有old_value都以new_value取代 |
+|rotate |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。middle所指的元素会成为容器的一个元素 |
+|search |在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的首次出现点。如果序列一内不存在与序列二完全匹配的子序列，便返回迭代器last1 |
+|sort |排序；数据量大时采用Quick Sort，分段式递归排序；数据量小于某个门槛时，为避免Quick Sort的递归调用带来过大的额外负担，就改用Insertion Sort；如果递归层次过深，还会改用Heap Sort。 |
+|unique |移除(remove)重复的元素，事实上unique并不会改变`[first,last)`的元素个数，有一些残余数据会留下来 |
+|upper_bound |二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” |
+

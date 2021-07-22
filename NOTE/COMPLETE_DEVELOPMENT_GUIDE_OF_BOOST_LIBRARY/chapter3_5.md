@@ -54,6 +54,7 @@ if (p != nullptr) {...}
 ## object_pool
 object_pool是用于类实例(对象)的内存池，他的功能与pool类似，但它会在析构时对所有已经分配的内存块调用析构函数，从而正确地释放资源。
 object_pool位于名字空间boost,需要包含的头文件如下:
+
 ```c++
 #include <boost/pool/object_pool.hpp>
 using namespace boost;
@@ -111,8 +112,9 @@ int main()
 ```
 
 ## singleton_pool
-singleton_pool与pool的接口完全一致，可以用它分配简单数据类型(POD)的内存指针，但它是一个“单件”。
-singleton_pool位于名字空间boost,需要包含的头文件如下:
+`singleton_pool`与`pool`的接口完全一致，可以用它分配简单数据类型(POD)的内存指针，但它是一个“单件”。
+`singleton_pool`位于名字空间`boost`,需要包含的头文件如下:
+
 ```c++
 #include <boost/pool/singleton_pool.hpp>
 using namespace boost;
