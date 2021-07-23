@@ -34,8 +34,8 @@
 
 ### [go语言](golang.md)
 
-    - waitgroup的坑
-    - `time.Parse`时间转换的坑
+- waitgroup的坑
+- `time.Parse`时间转换的坑
 
 ### [linux](linux.md)
 

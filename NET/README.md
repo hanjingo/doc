@@ -6,13 +6,13 @@
 
 - [epoll](epoll.md)
 
-- [io](io.md)
+- [io复用](io.md)
 
 - [Internet协议](ip.md)
 
 - [KRPC协议](krpc.md)
 
-- [mdns(multicast dns) 多播域名解析协议](mdns.md)
+- [MDNS协议](mdns.md)
 
 - [TCP](tcp.md)
 
