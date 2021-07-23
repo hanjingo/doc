@@ -1,5 +1,6 @@
 # 源码刨析
 
+- [linux内核](KERNAL/README.md)
 - [android-ndk](ANDROID_NDK/README.md)
 - [ceph](CEPH/README.md)
 - [eosio](EOSIO/README.md)

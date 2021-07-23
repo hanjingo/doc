@@ -12,15 +12,19 @@ TODO
 
 ### B+树的应用场景与实用特点
 
-TODO
+具体见：[B/B+树](ALGO/balance_tree.md)
 
 ### LRU缓存实现
 
-TODO
+一般用双向链表，具体见：[LRU算法](ALGO/lru.md)
 
 ### 求二叉树最远叶子结点的距离
 
 TODO
+
+### 层级遍历二叉树并计算每一层节点之和
+
+T
 
 [返回顶部](#面试笔记)
 
@@ -74,7 +78,7 @@ TODO
 
 ### DNS原理
 
-TODO
+具体见：[DNS协议](NET/dns.md)
 
 ### 讲述下RESTFUL API，以及PUT和GET的区别
 
@@ -94,7 +98,7 @@ TODO
 
 具体见：[热更新](PROJ/hot_patch.md)
 
-### protobuf的底层实现
+### Protobuf的底层实现
 
 TODO
 
@@ -114,11 +118,27 @@ TODO
 
 TODO
 
+### linux如何开启系统日志
+
+TODO
+
+### CPU100%的调试方法
+
+TODO
+
+### CoreDump的调试方法
+
+TODO
+
 [返回顶部](#面试笔记)
 
 
 
 ## c++
+
+### 实现运行时多态有哪些方式
+
+1.接口；2.虚函数；3.抽象类；具体见：
 
 ### 描述下c++中四种`cast`以及他们的使用场景
 
@@ -126,11 +146,19 @@ TODO
 
 ### 为什么要用`virtual destructor`？为什么没有`virtual constructor`?
 
-具体见：[c++的虚函数](LANG/C++/vfunc.md)
+具体见：[c++的虚函数#虚析构函数](LANG/C++/vfunc.md)
 
 ### 哪些函数不能是虚函数？
 
-具体见：[c++的虚函数](LANG/C++/vfunc.md)
+具体见：[c++的虚函数#哪些函数不能是虚函数](LANG/C++/vfunc.md)
+
+### 谈谈虚函数和纯虚函数的区别
+
+具体见：[c++的虚函数#纯虚函数](LANG/C++/vfunc.md)
+
+### 构造函数和析构函数可以调用虚函数吗？
+
+可以但是不建议，具体见：[c++的虚函数#纯虚函数](LANG/C++/vfunc.md)
 
 ### 指针和引用的用途和区别
 
@@ -142,7 +170,7 @@ TODO
 
 ### 谈谈`std::move`
 
-TODO
+具体见：[std::move和std::forward](LANG/C++/STL/move_forward.md)
 
 [返回顶部](#面试笔记)
 
