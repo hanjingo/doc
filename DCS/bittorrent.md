@@ -31,8 +31,6 @@ Tracker：收集下载者信息的服务器，并将此信息提供给其他下�
 <div id="1"></div>
 [1] [维基百科BitTorrent协议](https://zh.wikipedia.org/wiki/BitTorrent_(%E5%8D%8F%E8%AE%AE))
 
-
-
  * [Torrent.Express](https://torrent.express/)
  * [Confluence](https://github.com/anacrolix/confluence)
  * [Trickl](https://github.com/arranlomas/Trickl)
@@ -47,3 +45,4 @@ Tracker：收集下载者信息的服务器，并将此信息提供给其他下�
  * [Go-PeersToHTTP](https://github.com/WinPooh32/peerstohttp)
  * [CortexFoundation/torrentfs](https://github.com/CortexFoundation/torrentfs): P2P file system of cortex full node
  * [BitTorrent协议](https://github.com/xipfs/IPFS-Internals/blob/master/ebook/03.5.md)
+

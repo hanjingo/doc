@@ -13,7 +13,7 @@
 | **I** |           |           |           | [id](#id) |           |      |           |           |           |      |      | [il](#il) | [im](#im) | [in](#in) |           |           |           |           |           |           |           |           |           |           |           |      |
 | **J** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **K** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
-| **L** |           |           |           |           | [le](#le) |      |           |           | [li](#li) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
+| **L** |           |           |           |           | [le](#le) |      |           |           | [li](#li) |      |      |           |           |           | [lo](#lo) |           |           |           |           |           |           |           |           |           |           |      |
 | **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |      |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |      |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
 | **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           |           |           |           |      |
@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]
+intensive[^1]    assign[^2]    suppress[^3]   sequential[^4]   scratch[^5]
 
 ---
 
@@ -109,7 +109,7 @@ applicant `/ˈaplɪk(ə)nt/` 申请人
 
 architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
 
-arrest /əˈrest/ 拘捕，阻止
+arrest `/əˈrest/` 拘捕，阻止
 
 ### as
 
@@ -117,7 +117,7 @@ arrest /əˈrest/ 拘捕，阻止
 
 aspect `/ˈæspekt/`  方面，层面，外观，方位
 
-[^2]: **assign** `/əˈsʌɪn/` 分配，指派
+[^2]: **assign `/əˈsʌɪn/` 分配，指派**
 
 assume `/əˈsjuːm/` 假定，假设
 
@@ -135,7 +135,7 @@ attachment `/əˈtætʃ.mənt/` 附件，附加设备
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
-auditor /ˈɔːdɪtə(r)/ 审计员，旁听生
+auditor `/ˈɔːdɪtə(r)/` 审计员，旁听生
 
 ### av
 
@@ -151,7 +151,7 @@ avalanche `/ˈævəlɑːnʃ/` 雪崩，山崩
 
 [回到B](#B)&ensp;[回到顶部](#英汉词典)
 
-batch /bætʃ/ 一批，批处理
+batch `/bætʃ/` 一批，批处理
 
 ### br
 
@@ -169,7 +169,7 @@ bullish `/ˈbʊlɪʃ/` 对未来有信心的，牛市的
 
 burst `/bɜːst/`  爆裂，胀开，暴涨
 
-bustling /ˈbʌslɪŋ/ 繁忙的，熙熙攘攘的
+bustling `/ˈbʌslɪŋ/` 繁忙的，熙熙攘攘的
 
 ---
 
@@ -181,13 +181,13 @@ bustling /ˈbʌslɪŋ/ 繁忙的，熙熙攘攘的
 
 capable `/ˈkeɪpəbl/` 有能力的
 
-caustic /ˈkɔːstɪk/ 尖酸刻薄的，挖苦的，腐蚀性的
+caustic `/ˈkɔːstɪk/` 尖酸刻薄的，挖苦的，腐蚀性的
 
 ### ch
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
 
-chanted /ˈtʃɑːntɪd/ 反复唱，重复地唱
+chanted `/ˈtʃɑːntɪd/` 反复唱，重复地唱
 
 chubby `/ˈtʃʌb.i/` 胖乎乎的
 
@@ -197,7 +197,9 @@ chunk `/tʃʌŋk/` 块
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
 
-cipher /ˈsaɪfə(r)/ 密码，暗号，无关紧要的 
+cipher `/ˈsaɪfə(r)/` 密码，暗号，无关紧要的 
+
+circulate `/ˈsɜːkjəleɪt/` 循环，环流，传递，散布
 
 circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
@@ -217,9 +219,9 @@ combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
 
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
-complicated /ˈkɒmplɪkeɪtɪd/ 复杂的，难懂的
+complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
 
-comment /ˈkɒment/ 评论，批评，指责 
+comment `/ˈkɒment/` 评论，批评，指责 
 
 commodity `/kəˈmɒdəti/` 商品，有用的东西
 
@@ -228,6 +230,12 @@ concern `/kənˈsəːn/` 关注，担心
 concurrent `/kənˈkʌrənt/` 并发，同时发生
 
 confront `/kənˈfrʌnt/` 面对
+
+confuse `/kənˈfjuːz/` 困惑，混淆
+
+consequently `/ˈkɒnsɪkwəntli/` 所以，因此
+
+consistent `/kənˈsɪstənt/` 一致的，复合的，连续的
 
 constant `/ˈkɒnstənt/` 持续的，重复的，固定的
 
@@ -239,8 +247,6 @@ convenient `/kənˈviːnɪənt/` 实用的，方便的
 
 contiguous `/kənˈtɪɡjʊəs/` 毗邻的，相邻的
 
-consequently `/ˈkɒnsɪkwəntli/` 所以，因此
-
 coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
 
 correspond `/kɒrɪˈspɒnd/` 通信，相符
@@ -249,7 +255,7 @@ correspond `/kɒrɪˈspɒnd/` 通信，相符
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
 
-critical /ˈkrɪtɪkl/ 关键的，严重的，致命的 
+critical `/ˈkrɪtɪkl/` 关键的，严重的，致命的 
 
 ### cu
 
@@ -273,7 +279,7 @@ dawn `/dɔːn/` 黎明，破晓
 
 decentralize `/ˌdiːˈsentrəlaɪz/` 分散，下放权力
 
-decline /dɪˈklaɪn/ 下降，减少
+decline `/dɪˈklaɪn/` 下降，减少
 
 decouple `/diːˈkʌpl/` 分离，隔断
 
@@ -283,9 +289,9 @@ demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 
 departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
 
-derived /dɪˈraɪvd/ 取得，产生
+derived `/dɪˈraɪvd/` 取得，产生
 
-despite /dɪˈspaɪt/ 尽管，即使
+despite `/dɪˈspaɪt/` 尽管，即使
 
 destined `/ˈdestɪnd/` 命中注定的，命运
 
@@ -303,7 +309,7 @@ differential `/ˌdɪfəˈrɛnʃəlz/` 差别，差价，差动齿轮
 
 disappointment `/ˌdɪs.əˈpɔɪnt.mənt/` 失望，沮丧
 
-dissent /dɪˈsent/ 异议，不同意见
+dissent `/dɪˈsent/` 异议，不同意见
 
 distinguish `/dɪˈstɪŋ.ɡwɪʃ/` 区分，分辨
 
@@ -347,7 +353,7 @@ election `/ɪˈlɛkʃ(ə)n/` 选举
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
-embattle /ɪmˈbætld/ 处境艰难的，被困扰的，列阵，严阵以待
+embattle `/ɪmˈbætld/` 处境艰难的，被困扰的，列阵，严阵以待
 
 embed `/ɪmˈbɛd/` 嵌入
 
@@ -367,7 +373,7 @@ equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
-estate // 遗产，庄园，个人财产
+estate `/ɪˈsteɪt/` 遗产，庄园，个人财产
 
 ### ev
 
@@ -395,7 +401,7 @@ examine `/ɪɡˈzæmɪn/` 审查，考察
 
 facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
-farewell /ˌfeəˈwel/ 告别，辞行
+farewell `/ˌfeəˈwel/` 告别，辞行
 
 favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
@@ -421,13 +427,15 @@ forest `/ˈfɒrɪst/` 森林
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-freeze /friːz/ 冻结，停止 
+freeze `/friːz/` 冻结，停止 
 
 ### fu
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-funeral /ˈfjuːnərəl/ 葬礼，出殡
+fundamental `/ˌfʌndəˈmentl/` 根本的，重大的，基础的，不能再分的
+
+funeral `/ˈfjuːnərəl/` 葬礼，出殡
 
 furhter `/ˈfɜː.ðər/` 更多
 
@@ -439,7 +447,7 @@ furhter `/ˈfɜː.ðər/` 更多
 
 [回到G](#G)&ensp;[回到顶部](#英汉词典)
 
-gaggle /ˈɡæɡl/ 一群（吵闹的人），一群（鹅） 
+gaggle `/ˈɡæɡl/` 一群（吵闹的人），一群（鹅） 
 
 gain `/ɡeɪn/` 获得，增加，增长
 
@@ -471,7 +479,7 @@ grind `/ɡraɪnd/` 磨，使..光滑
 
 hailed `/heɪld/` 赞扬，招手，跟...打招呼，向...喊话
 
-harried /ˈhærid/ 折磨，反复攻击
+harried `/ˈhærid/` 折磨，反复攻击
 
 ### hi
 
@@ -507,6 +515,10 @@ illustrate `/ˈɪləstreɪt/` 说明，详解，配图说明
 
 [回到I](#I)&ensp;[回到顶部](#英汉词典)
 
+implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
+
+imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，使必要
+
 impose `/ɪmˈpəʊz/` 强制执行，利用
 
 improvement `/ɪmˈpruːvm(ə)nt/` 改善，进步
@@ -527,7 +539,7 @@ individual `/ɪndɪˈvɪdʒʊ(ə)l/` 单独的，独特的
 
 indiscriminate `/ˌɪndɪˈskrɪmɪnət/` 随意的，不加选择的
 
-institution /ˌɪnstɪˈtjuːʃn/ 机构，制度，风俗习惯
+institution `/ˌɪnstɪˈtjuːʃn/` 机构，制度，风俗习惯
 
 intact `/ɪnˈtakt/` 完整的
 
@@ -537,9 +549,11 @@ interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
 interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
 
-[^1]:  **intensive** `/ɪnˈtensɪv/`  密集的，加强器
+[^1]:  **intensive `/ɪnˈtensɪv/`  密集的，加强器**
 
-intrusive /ɪnˈtruːsɪv/ 侵入的，插入的，添加的
+intrusive `/ɪnˈtruːsɪv/` 侵入的，插入的，添加的
+
+invariants `/ɪnˈveərɪənts/` 不变量，不变关系
 
 invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
@@ -565,11 +579,19 @@ invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
 league `/liːɡ/` 联盟
 
+legal `/ˈliːɡl/`  法律的，合法的
+
 ### li
 
 [回到L](#L)&ensp;[回到顶部](#英汉词典)
 
 likewise `/ˈlaɪkwaɪz/` 同样的，类似的
+
+### lo
+
+[回到L](#L)&ensp;[回到顶部](#英汉词典)
+
+logarithmic `/ˌlɒgəˈrɪðmɪk/` 对数(log)
 
 ---
 
@@ -595,7 +617,7 @@ measurement `/ˈmeʒəmənt/` 测量，尺寸，长度，数量
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
 
-mindset /ˈmaɪndset/ 观念模式，思维倾向
+mindset `/ˈmaɪndset/` 观念模式，思维倾向
 
 ### mo
 
@@ -625,7 +647,7 @@ narrow `/ˈnarəʊ/` 狭窄的，变窄，有限的，差距小的
 
 newbie `/ˈnjuːbi/` 新手
 
-newsroom /ˈnjuːzruːm/ 新闻编辑部
+newsroom `/ˈnjuːzruːm/` 新闻编辑部
 
 ### no
 
@@ -667,7 +689,7 @@ omit `/ə(ʊ)ˈmɪt/` 删掉，漏掉
 
 opposed `/əˈpəʊzd/` 完全不同的，相反的
 
-optimism /ˈɒptɪmɪzəm/ 乐观，乐观主义 
+optimism `/ˈɒptɪmɪzəm/` 乐观，乐观主义 
 
 ### or
 
@@ -711,6 +733,8 @@ patent `/ˈpætnt/` 专利权，专利证书
 
 performance `/pəˈfɔːməns/` 演出，扮演，完成，履行
 
+permit `/pəˈmɪt/` 允许，许可证，特许证
+
 persist `/pəˈsɪst/`  坚持，维持
 
 ### po
@@ -725,9 +749,13 @@ portion `/ˈpɔːʃ(ə)n/` 一部分
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
+practice `/ˈpræktɪs/` 习惯，习俗，实践，练习，实习
+
 predicate `/ˈprɛdɪkeɪt/` 断言
 
 preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
+
+preserve `/prɪˈzɜːv/` 保护，维护，保存，保养，保鲜
 
 previous `/ˈpriːviəs/` 先前的
 
@@ -746,6 +774,8 @@ prune `/pruːn/` 修剪树干，削减
 # Q
 
 ### qu
+
+[回到Q](#Q)&ensp;[回到顶部](#英汉词典)
 
 quality `/ˈkwɒləti/` 质量，品质
 
@@ -791,7 +821,7 @@ respective `/rɪˈspek.tɪv/`  各自的，分别的
 
 retrieve `/rɪˈtriːv/` 取回，检索，挽救
 
-reunion /ˌriːˈjuːniən/ 重逢，团聚，重聚
+reunion `/ˌriːˈjuːniən/` 重逢，团聚，重聚
 
 ### ri
 
@@ -799,7 +829,7 @@ reunion /ˌriːˈjuːniən/ 重逢，团聚，重聚
 
 rite `/raɪt/`  仪式，典礼
 
-rival /ˈraɪvl/ 竞争对手，竞争的，与...匹配，比得上
+rival `/ˈraɪvl/` 竞争对手，竞争的，与...匹配，比得上
 
 ### ro
 
@@ -829,7 +859,7 @@ scarce `/skɛːs/` 缺乏，不足，稀有的，罕见的
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
-scratch `/skrætʃ/` 划痕
+[^5]: **scratch `/skrætʃ/` 划痕*
 
 scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
@@ -839,7 +869,7 @@ scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
 sentiment `/ˈsentɪmənt/` 观点，看法，哀伤 
 
-sequential `/sɪˈkwenʃl/` 串行的，顺序的
+[^4]: **sequential `/sɪˈkwenʃl/` 串行的，顺序的**
 
 ### sh
 
@@ -849,13 +879,15 @@ shattered `/ˈʃætəd/` 非常惊愕难过的，遭受极大打击的
 
 shield `/ʃiːld/` 盾牌，保护，掩藏
 
-shone /ʃɒn/ 发光，照耀，反光
+shone `/ʃɒn/` 发光，照耀，反光
 
 ### si
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
 significantly `/sɪɡˈnɪf.ɪ.kənt.li/` 显著的，相当数量地
+
+simplicity `/sɪmˈplɪsəti/` 简单性，质朴，淳朴
 
 simplification `/ˌsɪmplɪfɪˈkeɪʃ(ə)n/` 简化
 
@@ -867,9 +899,9 @@ simulation `/ˌsimyəˈlāSH(ə)n/` 模拟，仿真
 
 slim `/slɪm/` 苗条的
 
-slogan /ˈsləʊɡən/ 标语，口号
+slogan `/ˈsləʊɡən/` 标语，口号
 
-sloppy /ˈslɒpi/ 马虎的，凌乱的，草率的
+sloppy `/ˈslɒpi/` 马虎的，凌乱的，草率的
 
 ### sn
 
@@ -887,7 +919,7 @@ spectrum `/spɛktrəm/` 光谱，派别
 
 spectator `/spɛkˈteɪtə/` 观众
 
-spirit /ˈspɪrɪt/ 精神，心灵，情绪，心境
+spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
 
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
@@ -897,21 +929,21 @@ spray `/spreɪ/` 喷洒，浪花，喷剂
 
 statement `/ˈsteɪt.mənt/` 说明，声明，表态
 
-steadily /stedɪlɪ/ 稳定地，坚定地，坚固地
+steadily `/stedɪlɪ/` 稳定地，坚定地，坚固地
 
 ### su
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
-[^3]: **suppress** `/səˈprɛs/` 压制，镇压，封锁，组织，抑制
+[^3]: **suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制**
 
-surname /ˈsɜːneɪm/ 姓，给...加姓
+surname `/ˈsɜːneɪm/` 姓，给...加姓
 
 ### sw
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
-swarm /swɔːm/ 群，组
+swarm `/swɔːm/` 群，组
 
 ---
 
@@ -921,9 +953,9 @@ swarm /swɔːm/ 群，组
 
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
 
-tabloid /ˈtæblɔɪd/ 通俗小报，摘要
+tabloid `/ˈtæblɔɪd/` 通俗小报，摘要
 
-tawdry /ˈtɔːdri/ 下流的，粗俗的，卑鄙的
+tawdry `/ˈtɔːdri/` 下流的，粗俗的，卑鄙的
 
 ### te
 
@@ -934,6 +966,8 @@ technique `/tɛkˈniːk/` 方法，技巧
 tend `/tend/` 趋势
 
 terabyte `/ˈterəbaɪt/` 万亿字节，太字节
+
+terminology `/ˌtɜːmɪˈnɒlədʒi/` 术语，专门用语
 
 ### to
 
@@ -967,7 +1001,7 @@ turnover `/ˈtərnˌōvər/` 周转，进出
 
 [回到U](#U)&ensp;[回到顶部](#英汉词典)
 
-unicast `//` 单播
+unicast `/'juːnɪkɑːst/` 单播
 
 ### up
 
@@ -979,7 +1013,7 @@ uproar `/ˈʌprɔ/` 喧嚣，骚动
 
 [回到U](#U)&ensp;[回到顶部](#英汉词典)
 
-utmost `//` 极度，极端，最...
+utmost `/'ʌtməʊst/` 极度，极端，最...
 
 ---
 
@@ -1003,9 +1037,9 @@ verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 
 [回到V](#V)&ensp;[回到顶部](#英汉词典)
 
-vigil /ˈvɪdʒɪl/ 值夜，不眠时间，守夜
+vigil `/ˈvɪdʒɪl/` 值夜，不眠时间，守夜
 
-violent /ˈvaɪələnt/ 暴力的，猛烈的
+violent `/ˈvaɪələnt/` 暴力的，猛烈的
 
 ---
 
@@ -1015,15 +1049,15 @@ violent /ˈvaɪələnt/ 暴力的，猛烈的
 
 [回到W](#W)&ensp;[回到顶部](#英汉词典)
 
-watershed /ˈwɔːtəʃed/ 转折点，分界线，分水岭
+watershed `/ˈwɔːtəʃed/` 转折点，分界线，分水岭
 
 ### we
 
 [回到W](#W)&ensp;[回到顶部](#英汉词典)
 
-wept /wept/ 哭泣，流泪，流出
+wept `/wept/` 哭泣，流泪，流出
 
-willingness /ˈwɪlɪŋnɪs/ 乐意，愿意
+willingness `/ˈwɪlɪŋnɪs/` 乐意，愿意
 
 ### wo
 

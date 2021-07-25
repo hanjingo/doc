@@ -1,5 +1,6 @@
 # 算法
 
+- [A星寻路算法](a_star.md)
 - [B/B+树](balance_tree.md.md)
 - [二叉树](binary_tree.md)
 - [布隆过滤器](bloom.md)

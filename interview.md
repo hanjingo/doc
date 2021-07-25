@@ -120,7 +120,7 @@ TODO
 
 ### linux如何开启系统日志
 
-TODO
+具体见：[linux系统日志](BUG/linux_sys_log.md)
 
 ### CPU100%的调试方法
 
