@@ -1,6 +1,14 @@
+[TOC]
+
 # 跳表
 
-[TOC]
+
+
+## 摘要
+
+Redis使用`skiplist`来作为zset等数据结构的底层实现。
+
+
 
 ## API
 
@@ -22,7 +30,7 @@
 
 ## 实现
 
-### 跳表节点
+### 结构
 
 ```c
 /* 跳表节点 */
@@ -35,6 +43,13 @@ typedef struct zskiplistNode {
         unsigned int span;              // 前进指针和当前节点的距离
     } level[];                          // 层高，随机[1,32]
 } zskiplistNode;
+
+/* 跳表 */
+typedef struct zskiplist {
+    struct zskiplistNode *header, *tail; // 表头，表尾
+    unsigned long length;                // 节点数量（不算表头）
+    int level;                           // 最大层级
+} zskiplist;
 ```
 
 ### 遍历跳表
@@ -130,6 +145,23 @@ unsigned long zslGetRank(zskiplist *zsl, double score, robj *o) {
         }
     }
     return 0;
+}
+```
+
+### 随机算法
+
+随机出一个属于`[1, 32]`的层级。
+
+```c
+/**
+ * @brief 随机出一个层级
+ * 
+ **/
+int zslRandomLevel(void) {
+    int level = 1;
+    while ((random()&0xFFFF) < (ZSKIPLIST_P * 0xFFFF)) // while(rand < 0.25) { lvl++; }
+        level += 1;
+    return (level<ZSKIPLIST_MAXLEVEL) ? level : ZSKIPLIST_MAXLEVEL; // level : 32
 }
 ```
 

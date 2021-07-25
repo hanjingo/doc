@@ -1,8 +1,8 @@
-# redis源码分析
+# Redis源码分析
 
 - [总结](summary.md)
-- [数据库实现](db.md)
-- [内存回收](gc.md)
+- [Redis数据库实现](db.md)
+- [Redis内存回收](gc.md)
 - [整数集合-intset](intset.md)
 - [链表](linklist.md)
 - [字典](map.md)

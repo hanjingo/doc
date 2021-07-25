@@ -142,7 +142,7 @@ TODO
 
 ### 实现运行时多态有哪些方式
 
-1.接口；2.虚函数；3.抽象类；具体见：
+1.接口；2.虚函数；3.抽象类；具体见：[c++的虚函数#纯虚函数](LANG/C++/vfunc.md)
 
 ### 描述下c++中四种`cast`以及他们的使用场景
 
@@ -210,7 +210,7 @@ TODO
 
 ### 为什么Redis用跳表不用RBtree
 
-具体见：[redis跳表](DB/REDIS/skip_list.md)
+1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](DB/REDIS/skip_list.md)
 
 ### Redis如何实现延时队列
 
@@ -230,7 +230,7 @@ TODO
 
 ## Mysql
 
-### innedb的底层数据结构
+### InnoDb的底层数据结构
 
 TODO
 
@@ -252,7 +252,15 @@ TODO
 
 
 
-## HBase
+## Ceph
+
+### 谈谈Ceph的整体架构
+
+TODO
+
+### 谈谈Ceph的纠删码原理
+
+TODO
 
 [返回顶部](#面试笔记)
 

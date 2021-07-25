@@ -1,6 +1,6 @@
 [TOC]
 
-# redis数据类型
+# Redis数据类型
 
 ## object
 
