@@ -1,5 +1,6 @@
 # 操作系统
 
+- [linux常用命令](linux_cmd.md)
 - [设备管理](device_mgr.md)
 - [可执行程序](exe.md)
 - [文件](file.md)

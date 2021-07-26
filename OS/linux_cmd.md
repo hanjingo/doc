@@ -57,7 +57,16 @@
 |:--|:--|:--|:--|
 |ldd|查看程序的依赖路径||`ldd cmake`: 列出cmake的所有依赖|
 |which|查看命令的可执行文件路径|`- n+数字`: 指定文件名最小长度<br>`- p+数字`: 指定文件完全路径最小长度<br>- w: 指定输出时栏位宽度<br>- V: 显示版本信息|`which bash`: 显示bash可执行程序的绝对路径|
-|tail|查看日志|- f|tail -f 007.log:查看007.log这个文件最新的内容|
+|tail|查看日志|- f|`tail -f 007.log`:查看007.log这个文件最新的内容|
+|file||||
+|nm||||
+|strings||||
+|size||||
+|readelf||||
+|objdump||||
+|netstat||||
+|ulimit||||
+|addr2line||||
 
 
 

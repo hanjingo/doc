@@ -1,7 +1,6 @@
 - [cmake教程](./cmake.md)
 - [emacs快捷键](emacs_shortcut.md)
 - [GIT](git.md)
-- [linux常用命令](linux_cmd.md)
 - [make教程](make.md)
 - [代理设置](proxy.md)
 - [重新绑定键](rebind_key.md)

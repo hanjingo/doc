@@ -17,7 +17,7 @@
 | **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |      |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |      |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
 | **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           |           |           |           |      |
-| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           |           |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) |           |           |           |           |           |           |           |      |
+| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) |           |           |           |           |           |           |           |      |
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           |           |      |
@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequential[^4]   scratch[^5]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]
 
 ---
 
@@ -83,6 +83,8 @@ aid `/eɪd/` 帮助
 
 alter `/ˈɔːltə/` 改变，更改
 
+alternative `/ɔːlˈtɜːnətɪv/`  可替代的，非传统的，另类的
+
 ### am
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
@@ -108,6 +110,8 @@ applicant `/ˈaplɪk(ə)nt/` 申请人
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
 architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
+
+arrangement `/əˈreɪndʒmənt/`  安排，筹备
 
 arrest `/əˈrest/` 拘捕，阻止
 
@@ -239,6 +243,8 @@ consistent `/kənˈsɪstənt/` 一致的，复合的，连续的
 
 constant `/ˈkɒnstənt/` 持续的，重复的，固定的
 
+consult `/kənˈsʌlt/` 咨询
+
 conventional `/kənˈvɛnʃ(ə)n(ə)l/` 传统的，常规的
 
 convert `/kənˈvəːt/` 转换
@@ -290,6 +296,8 @@ demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
 
 derived `/dɪˈraɪvd/` 取得，产生
+
+desired `/dɪˈzaɪə(r)/` 渴望，期望
 
 despite `/dɪˈspaɪt/` 尽管，即使
 
@@ -387,9 +395,11 @@ evolved `/iˈvɒlvd/` 逐渐形成，进化
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
+[^6]:**examine `/ɪɡˈzæmɪn/` 审查，考察**
+
 exert `/ɪɡˈzɜːt/` 发挥，运用，尽力
 
-examine `/ɪɡˈzæmɪn/` 审查，考察
+explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
 ---
 
@@ -423,7 +433,7 @@ flexibility `/ˌflɛksɪˈbɪlɪti/` 灵活性，柔韧性
 
 forest `/ˈfɒrɪst/` 森林
 
-### fo
+### fr
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
@@ -515,6 +525,8 @@ illustrate `/ˈɪləstreɪt/` 说明，详解，配图说明
 
 [回到I](#I)&ensp;[回到顶部](#英汉词典)
 
+impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的 
+
 implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
 
 imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，使必要
@@ -548,6 +560,8 @@ integral `/ˈɪntɪɡrəl/` 必须的，不可或缺的，完整的
 interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
 interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
+
+intermediate `/ˌɪntəˈmiːdiət/` 中间的，中级的，中等的
 
 [^1]:  **intensive `/ɪnˈtensɪv/`  密集的，加强器**
 
@@ -731,11 +745,19 @@ patent `/ˈpætnt/` 专利权，专利证书
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
-performance `/pəˈfɔːməns/` 演出，扮演，完成，履行
+perform `/pəˈfɔːm/` 做，履行，执行，表演
 
 permit `/pəˈmɪt/` 允许，许可证，特许证
 
+permut `/pə'mjuːt/` 排列，交换，变更
+
 persist `/pəˈsɪst/`  坚持，维持
+
+### pi
+
+[回到P](#P)&ensp;[回到顶部](#英汉词典)
+
+pivot `/ˈpɪvət/` 支点，枢轴，中心，核心
 
 ### po
 
@@ -755,9 +777,13 @@ predicate `/ˈprɛdɪkeɪt/` 断言
 
 preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
 
+present `/ˈpreznt/` 目前，提出，出席
+
 preserve `/prɪˈzɜːv/` 保护，维护，保存，保养，保鲜
 
 previous `/ˈpriːviəs/` 先前的
+
+probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
 
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
@@ -794,6 +820,8 @@ quirky `/ˈkwəːki/` 古怪的
 radically `/'rædɪkli/` 根本的，彻底的
 
 rapidly `/'ræpɪdlɪ/` 迅速的，急促的
+
+rare `/reə(r)/` 半，半熟的，稀少的，珍贵的
 
 ratio `/ˈreɪʃiəʊ/` 比率，比例
 
@@ -859,7 +887,7 @@ scarce `/skɛːs/` 缺乏，不足，稀有的，罕见的
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
-[^5]: **scratch `/skrætʃ/` 划痕*
+[^5]: **scratch `/skrætʃ/` 划痕**
 
 scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
@@ -869,7 +897,7 @@ scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
 sentiment `/ˈsentɪmənt/` 观点，看法，哀伤 
 
-[^4]: **sequential `/sɪˈkwenʃl/` 串行的，顺序的**
+[^4]: **sequence `/ˈsiːkwəns/` 串行，顺序，测序**
 
 ### sh
 
@@ -885,7 +913,7 @@ shone `/ʃɒn/` 发光，照耀，反光
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
-significantly `/sɪɡˈnɪf.ɪ.kənt.li/` 显著的，相当数量地
+significant `/sɪɡˈnɪfɪkənt/` 显著的，相当数量地
 
 simplicity `/sɪmˈplɪsəti/` 简单性，质朴，淳朴
 
@@ -931,6 +959,8 @@ statement `/ˈsteɪt.mənt/` 说明，声明，表态
 
 steadily `/stedɪlɪ/` 稳定地，坚定地，坚固地
 
+strict `/strɪkt/` 严格的，严厉的
+
 ### su
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
@@ -973,6 +1003,8 @@ terminology `/ˌtɜːmɪˈnɒlədʒi/` 术语，专门用语
 
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
 
+toes `/təʊz/` 脚趾，足尖
+
 toggle `/ˈtɒɡl/` 切换，转换
 
 tolerance `/ˈtɒlərəns/`  忍受，容忍，公差，容量
@@ -1009,7 +1041,7 @@ unicast `/'juːnɪkɑːst/` 单播
 
 uproar `/ˈʌprɔ/` 喧嚣，骚动
 
-#### ut
+### ut
 
 [回到U](#U)&ensp;[回到顶部](#英汉词典)
 

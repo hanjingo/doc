@@ -122,6 +122,10 @@ TODO
 
 具体见：[linux系统日志](BUG/linux_sys_log.md)
 
+### linux如何开启core文件生成
+
+具体见：[如何定位Core Dump问题](BUG/core_dump.md)
+
 ### CPU100%的调试方法
 
 TODO
