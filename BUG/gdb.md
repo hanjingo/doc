@@ -32,19 +32,54 @@
 | `print`               | p    | 打印值以及地址                                               |
 | `x`                   | -    | 查看内存                                                     |
 
-更具体的内容使用GDB的`help`命令查看；
+更多的信息使用GDB的`help`命令查看；
 
 
 
-## 生成GDB调试文件
-
-### gcc
+## 生成调试文件
 
 ### CMAKE
+
+```cmake
+SET(CMAKE_BUILD_TYPE "Debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$EN{CXXFLAGS} -O3 -Wall")
+```
+
+### MAKE
+
+TODO
+
+
+
+## 调试可执行文件
+
+TODO
+
+
+
+## 调试进程
+
+使用以下命令来调试正在运行的进程：
+
+```sh
+gdb pfile PID #pfile为进程文件，PID为进程ID
+```
+
+
+
+## 调试core文件
+
+使用以下命令来调试core文件：
+
+```sh
+gdb core #core为core文件绝对路径
+```
 
 
 
 ## 参考
 
 - [Debugging Under Unix: `gdb` Tutorial](https://www.cs.cmu.edu/~gilpin/tutorial/)
+- [CMake生成可用gdb调试的可执行文件](https://blog.csdn.net/lemonaha/article/details/72837561)
 

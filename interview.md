@@ -10,9 +10,13 @@
 
 TODO
 
+### 如何逆转链表
+
+从头到尾遍历并插入前面，例：`|1|2|3|`->`|2|1|3|`->`|3|2|1|`
+
 ### B+树的应用场景与实用特点
 
-具体见：[B/B+树](ALGO/balance_tree.md)
+具体见：[平衡树](ALGO/balance_tree.md)
 
 ### LRU缓存实现
 
@@ -39,6 +43,10 @@ TODO
 ### 可执行程序的结构
 
 具体见：[可执行程序](OS/exe.md)
+
+### 不同线程之间是否可以共享套接字
+
+TODO
 
 ### 如何提升memcpy的效率
 
@@ -68,13 +76,17 @@ TODO
 
 ## 网络
 
+### 说说TCP的三次握手和四次挥手
+
+TODO
+
 ### TCP状态转移图
 
 具体见：[TCP](NET/tcp.md)
 
-### epoll详解
+### 说说Epoll的原理以及它的用法
 
-具体见：[epoll](NET/epoll.md)
+具体见：[Epoll](NET/epoll.md)
 
 ### DNS原理
 
@@ -120,11 +132,11 @@ TODO
 
 ### linux如何开启系统日志
 
-具体见：[linux系统日志](BUG/linux_sys_log.md)
+命令`systemctl restart rsyslog`，具体见：[linux系统日志](BUG/linux_sys_log.md)
 
 ### linux如何开启core文件生成
 
-具体见：[如何定位Core Dump问题](BUG/core_dump.md)
+命令`ulimit -c unlimited`，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
 
 ### CPU100%的调试方法
 
@@ -132,11 +144,11 @@ TODO
 
 ### CoreDump的调试方法
 
-TODO
+用GDB，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
 
 ### 怎么处理粘包问题
 
-具体见：[粘包处理](PROJ/anti_sticky.md)
+在包头标记包长，具体见：[粘包处理](PROJ/anti_sticky.md)
 
 [返回顶部](#面试笔记)
 
@@ -150,11 +162,11 @@ TODO
 
 ### 描述下c++中四种`cast`以及他们的使用场景
 
-具体见：[c++转换函数](LANG/C++/cast.md)
+`static_cast`,`dynamic_cast`,`reinterprent_cast`,`const_cast`具体见：[c++转换函数](LANG/C++/cast.md)
 
 ### 为什么要用`virtual destructor`？为什么没有`virtual constructor`?
 
-具体见：[c++的虚函数#虚析构函数](LANG/C++/vfunc.md)
+放置内存泄漏，具体见：[c++的虚函数#虚析构函数](LANG/C++/vfunc.md)
 
 ### 哪些函数不能是虚函数？
 
@@ -180,6 +192,14 @@ TODO
 
 具体见：[std::move和std::forward](LANG/C++/STL/move_forward.md)
 
+### 迭代器失效怎么解决
+
+失效操作后返回一个有效的迭代器
+
+### 如何在两个线程之间共享套接字
+
+TODO
+
 [返回顶部](#面试笔记)
 
 
@@ -194,9 +214,23 @@ TODO
 
 
 
+## GO
+
+### GO的不足
+
+具体见：[Golang总结#优缺点](LANG/GO/summary.md)
+
+### GO的协程原理
+
+TODO
+
+[返回顶部](#面试笔记)
+
+
+
 ## Skynet
 
-### 定时器
+### 谈谈Skynet的定时器
 
 ### actor模型
 
@@ -243,6 +277,10 @@ TODO
 TODO
 
 ### 说说数据库索引的使用及其原理
+
+TODO
+
+### mysql事物
 
 TODO
 

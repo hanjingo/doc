@@ -5,6 +5,7 @@
 - [锁](lock.md)
 - [内存分配](memory.md)
 - [日志](log.md)
+- [LUA虚拟机](lua_vm.md)
 - [计时器](timer.md)
 - [模块机制](model.md)
 - [消息队列](mq.md)

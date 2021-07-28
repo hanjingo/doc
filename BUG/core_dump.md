@@ -2,13 +2,30 @@
 
 # 如何定位Core Dump问题
 
+（coredump，核心转存），实际为进程运行过程中的一个内存快照；当进程crash时，操作系统接收到异常指令后，在进程crash之前，把进程做一个内存快照，保存进程的地址，寄存器，堆栈调用等信息，这个文件就叫coredump。
+
 
 
 ## core文件产生原因
 
+| 信号    | 说明 |
+| ------- | ---- |
+| SIGABRT |      |
+| SIGBUS  |      |
+| SIGEMT  |      |
+| SIGFPE  |      |
+| SIGILL  |      |
+| SIGIOT  |      |
+| SIGQUIT |      |
+| SIGSEGV |      |
+| SIGSYS  |      |
+| SIGTRAP |      |
+| SIGXCPU |      |
+| SIGXFSZ |      |
 
 
-## core文件
+
+## 配置
 
 ### 开启功能
 
@@ -30,7 +47,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
    ...
    ```
 
-### 配置
+### 文件大小
 
 使用以下命令来配置core文件属性：
 
@@ -43,7 +60,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
 - 限制core文件大小
 
   ```sh
-  ulimit -c 文件大小 #(单位：kbyte)
+  ulimit -c fsize #fsize文件大小(单位：kbyte)
   ```
 
 - 取消core文件大小限制
@@ -52,11 +69,21 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
   ulimit -c unlimited
   ```
 
+### 命名
+
 使用以下命令来设置core文件的生成目录和命名：
 
-```sh
-echo /路径/core.%e.%p> /proc/sys/kernel/core_pattern
-```
+- linux
+
+  ```sh
+  echo /path/core.%e.%p> /proc/sys/kernel/core_pattern #path路径
+  ```
+
+- macos
+
+  ```sh
+  echo /path/core.%e.%p> /core/core.pid #path路径
+  ```
 
 `core.%e.%p`是core文件的命名规则，各参数说明如下：
 
@@ -79,4 +106,5 @@ echo /路径/core.%e.%p> /proc/sys/kernel/core_pattern
 ## 参考
 
 - [core文件生成及使用gdb调试](https://blog.csdn.net/zhang_han666/article/details/80668002)
+- [gdb调试coredump(原理篇)](https://blog.csdn.net/sunlin972913894/article/details/113001810)
 

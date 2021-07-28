@@ -31,3 +31,7 @@ source /etc/profile && go env
 
 ## 配置国内代理
 
+```sh
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+
