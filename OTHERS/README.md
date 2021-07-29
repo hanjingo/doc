@@ -1,3 +1,5 @@
+# 杂项
+
 - [cmake教程](./cmake.md)
 - [emacs快捷键](emacs_shortcut.md)
 - [GIT](git.md)
