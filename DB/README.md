@@ -2,5 +2,4 @@
 
 - [Mysql](MYSQL/README.md)
 - [Redis](REDIS/README.md)
-- [Postgres](PG/README.md)
 

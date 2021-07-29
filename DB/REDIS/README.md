@@ -7,6 +7,7 @@
 - [配置参数](config.md)
 - [利用redis实现分布式锁](dcs_lock.md)
 - [利用redis实现延时队列](delay_queue.md)
+- [集群]
 - [持久化](persistence.md)
 - [管道](pipeline.md)
 - [跳表](skip_list.md)
