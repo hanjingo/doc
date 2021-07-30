@@ -79,14 +79,14 @@
 
 `int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen)`
 
-- sockfd：套接字
-- level：级别，指定系统中解释选项的代码或为通用套接字代码，或为某个特定于协议的代码
-- optname：opt名字
-- optval：指向一个变量
-- optlen：指定optval的大小
-- return
-    - 0：成功
-    - -1：出错
+- `sockfd`：套接字
+- `level`：级别，指定系统中解释选项的代码或为通用套接字代码，或为某个特定于协议的代码
+- `optname`：opt名字
+- `optval`：指向一个变量
+- `optlen`：指定optval的大小
+- 返回值
+    - 成功：0
+    - 出错：-1
 
 获得套接字选项
 
@@ -94,14 +94,14 @@
 
 `int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen)`
 
-- sockfd：套接字
-- level：级别，指定系统中解释选项的代码或为通用套接字代码，或为某个特定于协议的代码
-- optname：opt名字
-- optval：指向一个opt变量
-- optlen：指定optval的大小
-- return
-    - 0：成功
-    - -1：出错
+- `sockfd`：套接字
+- `level`：级别，指定系统中解释选项的代码或为通用套接字代码，或为某个特定于协议的代码
+- `optname`：opt名字
+- `optval`：指向一个opt变量
+- `optlen`：指定optval的大小
+- 返回值
+    - 成功：0
+    - 出错：-1
 
 设置套接字选项
 

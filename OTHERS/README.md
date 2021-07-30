@@ -2,7 +2,8 @@
 
 - [cmake教程](./cmake.md)
 - [emacs快捷键](emacs_shortcut.md)
-- [GIT](git.md)
+- [git教程](git.md)
+- [如何写markdown](how_to_write_markdown.md)
 - [make教程](make.md)
 - [代理设置](proxy.md)
 - [重新绑定键](rebind_key.md)

@@ -106,9 +106,9 @@ struct sockaddr_in serv;
 connect (sockfd, (SA *) &serv, sizeof(serv));
 ```
 
-- bind
-- connect
-- sendto
+- `bind`
+- `connect`
+- `sendto`
 
 ![3-7](res/3-7.png)
 
@@ -122,10 +122,10 @@ len = sizeof(cli);
 getpeername(unixfd, (SA *) &cli, &len);
 ```
 
-- accept
-- recvfrom
-- getsockname
-- getpeername
+- `accept`
+- `recvfrom`
+- `getsockname`
+- `getpeername`
 
 ![3-8](res/3-8.png)
 
@@ -237,7 +237,7 @@ uint32_t ntohl(uint32_t net32bitvalue);
 
 - `char *inet_ntoa(struct in_addr inaddr)` 将32位的网络字节序二进制IPv4地址转换成相应的点分十进制字符串。
 
-  - inaddr:
+  - inaddr：32位网络字节序二进制IPV4地址
 
   **返回值所指向的字符串驻留在静态内存中，该函数不可重入！！！**
 

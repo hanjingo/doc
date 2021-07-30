@@ -7,7 +7,6 @@
 - [可执行程序](exe.md)
 - [文件](file.md)
 - [内存管理函数](mem_mgr.md)
-- [POSIX接口](posix.md)
 - [进程，线程和协程](progress_thread_coroutine.md)
 - [存储器](storage.md)
 - [unix系统API](unix_api.md)

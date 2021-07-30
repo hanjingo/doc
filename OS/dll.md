@@ -1,46 +1,122 @@
+[TOC]
+
 # 动态链接库
+
+动态链接库（Dynamic Link Library，DLL），是一个目标文件，包含代码和数据，它可以在程序运行时动态的加载并链接。
+
+
+
+## 动态链接器
+
+### LINUX/UNIX
+
+动态链接器主要用来加载动态链接库文件，可执行文件的程序头表中包含`.interp段`，其中包含了动态链接器路径。
+
+程序的结构头如下图所示：
+
+![dll_program_head](res/dll_program_head.png)
+
+1. 加载器加载动态链接器
+
+2. 动态链接器完成相应的重定位工作
+
+3. 将控制权交给可执行文件
+
+动态链接器有以下分类：
+
+- `ld.so` 针对a.out格式的二进制可执行文件
+- `ld-linux.so` 针对ELF格式的二进制可执行文件
+
+
+
+## 生成
+
+在编译时要加入以下选项：
+
+- `-ldl` 指定dl库
+- `-rdynamic` 通知链接器将所有符号添加到动态符号表中，使能够通过dlopen来实现向后跟踪
+
+例：
+
+```sh
+gcc -rdynamic -o test.c test -ldl
+```
+
+
+
+## 加载
+
+### LINUX/UNIX
+
+搜索动态链接库文件的顺序：
+
+1. 搜索`DT_RPATH`标记**(仅限ELF)**
+
+   如果调用程序的可执行文件包含`DT_RPATH`标记，并且不包含`DT_RUNPATH`标记，则会搜索`DT_RPATH`标记中列出的目录。
+
+2. 搜索环境变量：
+
+   - `LD_AOUT_LIBRARY_PATH` a.out格式
+
+   - `LD_LIBRARY_PATH` ELF格式
+
+   **在linux中`LD_PRELOAD`指定的目录具有最高优先权。**
+
+3. 搜索`DT_RUNPATH`标记**(仅限ELF)**
+
+   如果调用程序的可执行文件包含`DT_RUNPATH`标记，则搜索该标记中列出的目录。
+
+4. 搜索缓存文件`/etc/ld.so.cache`
+
+5. 搜索默认目录
+
+   先在`/lib`中寻找，再到`/usr/lib`中寻找。
+
+
+
+## API
+
+类unix系统提供`dlopen`，`dlmopen`，`dlsym`，`dlclose`等函数来操作动态共享库文件，这些函数都位于头文件`<dlfcn.h>`中
 
 ### dlopen
 
 ```c
-#include <dlfcn.h>
 void *dlopen(const char *filename, int flags)
 ```
 
-这个函数加载由以null结尾的字符串文件名命名的动态共享对象（共享库）文件，并为加载的对象返回不透明的“句柄”。
-此句柄与 dlopen API 中的其他函数一起使用，例如dlsym()，dladdr()，dlinfo()和dlclose()。
-如果 filename 为 NULL，则返回的句柄用于主程序。如果 filename 包含斜杠（“/”），则它被解释为（相对或绝对）路径名。否则，动态链接器将按如下方式搜索对象:
+- `filename` 动态共享库文件路径（绝对路径/相对路径）+文件名
 
-  - (仅限ELF)如果调用程序的可执行文件包含 DT_RPATH 标记，并且不包含 DT_RUNPATH 标记，则会搜索 DT_RPATH 标记中列出的目录
-  - 如果在程序启动时，环境变量 LD_LIBRARY_PATH 被定义为包含以冒号分隔的目录列表，则会搜索这些目录。 （作为安全措施，set-user-ID 和 set-group-ID程序将忽略此变量。）
-  - （仅限ELF）如果调用程序的可执行文件包含　DT_RUNPATH　标记，则搜索该标记中列出的目录
-  - 检查缓存文件/etc/ld.so.cache（由ldconfig（8）维护）以查看它是否包含filename的条目
-  - 搜索目录 /lib和 /usr/lib（按此顺序）
-    如果 filename 指定的对象依赖于其他共享对象，则动态链接器也会使用相同的规则自动加载这些对象,
-    如果这些对象依次具有依赖性，则此过程可以递归地发生）;flags 参数必须包括以下两个值中的一个:
-  - RTLD_LAZY: 执行延迟绑定。仅在执行引用它们的代码时解析符号。如果从未引用该符号，则永远不会解析它（只对函数引用执行延迟绑定;在加载共享对象时，对变量的引用总是立即绑定）。自 glibc 2.1.1，此标志被LD_BIND_NOW环境变量的效果覆盖。
-  - RTLD_NOW:如果指定了此值，或者环境变量LD_BIND_NOW设置为非空字符串，则在dlopen()返回之前，将解析共享对象中的所有未定义符号。如果无法执行此操作，则会返回错误。
-    flags 也可以通过以下零或多个值进行或运算设置:
-  - RTLD_GLOBAL: 此共享对象定义的符号将可用于后续加载的共享对象的符号解析。
-  - RTLD_LOCAL: 这与RTLD_GLOBAL相反，如果未指定任何标志，则为默认值。此共享对象中定义的符号不可用于解析后续加载的共享对象中的引用。
-  - RTLD_NODELETE (since glibc 2.2): 在dlclose()期间不要卸载共享对象。因此，如果稍后使用dlopen()重新加载对象，则不会重新初始化对象的静态变量。
-  - RTLD_NOLOAD (since glibc 2.2): 不要加载共享对象。这可用于测试对象是否已经驻留（如果不是，则dlopen()返回 NULL，如果是驻留则返回对象的句柄）。此标志还可用于提升已加载的共享对象上的标志。例如，以前使用RTLD_LOCAL加载的共享对象可以使用RTLD_NOLOAD | RTLD_GLOBAL重新打开。
-  - RTLD_DEEPBIND (since glibc 2.3.4): 将符号的查找范围放在此共享对象的全局范围之前。这意味着自包含对象将优先使用自己的符号，而不是全局符号，这些符号包含在已加载的对象中。
+- `flags` 标记
+
+  必选：
+
+  - `RTLD_LAZY` 延迟绑定，仅在执行引用他们的代码时解析符号。
+  - `RTLD_NOW` 立即绑定，解析所有未定义符号；如果设置了环境变量**LD_BIND_NOW**也可以起到同样的效果。
+
+  可选：
+
+  - `RTLD_GLOBAL` 此共享对象的符号将可用于后续加载的共享对象的符号解析。
+  - `RTLD_LOCAL` 与RTLD_GLOBAL相反，如果位置定任何标志，则为默认值；此共享对象中定义的符号不可用于解析后续加载的共享对象中的引用。
+  - `RTLD_NODELETE` 在dlclose()期间不要写在共享对象，如果稍后使用dlopen()重新加载对象，则不会重新初始化对象的静态变量。
+  - `RTLD_NOLOAD` 不要加载共享对象。
+  - `RTLD_DEEPBIND` 将符号的查找范围放在此共享对象的全局范围之前。这意味着自包含对象将优先使用自己的符号，而不是全局符号，这些符号包含在已加载的对象中。
+
+- 返回值
+
+  - 成功：动态链接库句柄
+  - 失败：NULL
+
+加载动态共享库文件，其[文件搜索流程在此](#加载)；如果`filename`为NULL，则返回的句柄用于主程序。如果`filename`指定的对象依赖于其它共享对象，动态链接器也会自动加载这些对象。
+
+用例：
+
+```c++
+dlopen("./libsd.so", RTLD_LAZY);
+```
 
 ### dlmopen
 
-这个函数除了以下几点与dlopen()有所不同外，都执行同样的任务。dlmopen()与dlopen()的主要不同之处主要在于它接受另一个参数 lmid，它指定应该被加载的共享对象的链接映射列表（也称为命名空间）。对于命名空间，Lmid_t 是个不透明的句柄。lmid 参数要么是已经存在的命名空间的ID（这个命名空间可以通过dlinfo RTLD_DI_LMID请求获得）或者是以下几个特殊值中的其中一个：
-
-  - LM_ID_BASE:在初始命名空间中加载共享对象（即应用程序的命名空间）
-
-  - LM_ID_NEWLM:创建新的命名空间并在该命名空间中加载共享对象。该对象必须已正确链接到引用 所有其他需要的共享对象，因为新的命名空间最初为空。
-    如果 filename 是 NULL，那么 lmid 的值只能是LM_ID_BASE。
-
-### dlclose
-
-dlclose()减少指定句柄 handle 引用的动态加载共享对象的引用计数。如果引用计数减少为０，那么这个动态加载共享对象将被真正卸载。所有在dlopen()被调用的时候自动加载的共享对象将以相同的方式递归关闭。
-
-  dlclose()成功返回并不保证与句柄相关的符号将从调用方的地址空间中删除。除了显式通过dlopen()调用产生的引用之外，一些共享对象作为依赖项可能已被隐式加载（和引用计数）。只有当所有引用都已被释放才可以从地址空间中删除共享对象。
+TODO
 
 ### dlsym
 
@@ -48,12 +124,53 @@ dlclose()减少指定句柄 handle 引用的动态加载共享对象的引用计
 void *dlsym(void *handle, const char *symbol)
 ```
 
-dlsym()接受由dlopen()返回的动态加载的共享对象的“句柄”，并返回该符号加载到内存中的地址。如果未找到符号，则在加载该对象时，在指定对象或dlopen()自动加载的任何共享对象中，dlsym()将返回NULL。（dlsym()通过这些共享对象的依赖关系树进行宽度优先搜索。）
-因为符号本身可能是 NULL（所以dlsym()返回 NULL 并不意味着错误），因此判断是否错误的正确做法是调用dlerror()清除任何旧的错误条件，然后调用dlsym()，并且再次调用dlerror()，保存其返回值，判断这个保存的值是否是 NULL。
+- `handle` 动态链接库句柄
+- `symbol` 要求获取的函数或全局变量的名称
+- 返回值
+  - 成功：指向函数/变量的地址
+  - 失败：NULL
 
-  可以在句柄中指定两个特殊的伪句柄：
+解析动态链接库符号，返回符号对应的地址；
 
-  - RTLD_DEFAULT: 使用默认共享对象搜索顺序查找所需符号的第一个匹配项。搜索将包括可执行文件中的全局符号及其依赖项，以及使用RTLD_GLOBAL 标志动态加载的共享对象中的符号。
-  - RTLD_NEXT:在当前对象之后的搜索顺序中查找下一个所需符号。这允许人们在另一个共享对象中提供一个函数的包装器，因此，例如，预加载的共享对象中的函数定义（参见ld.so（8）中的LD_PRELOAD）可以找到并调用在另一个共享对象中提供的“真实”函数（或者就此而言，在存在多个预加载层的情况下，函数的“下一个”定义）。
+用例：
 
-  dlvsym()除了比dlsym()多提供了一个额外的参数外，其余与dlsym()相同。
+```c++
+void(*pMyFun)();
+auto handle = dlopen("./my.so", RTLD_LAZY);
+pMyFun = (vodi(*))dlsym(handle, "MyFun");
+pMyFun();
+```
+
+### dlclose
+
+```c
+int dlclose(void *handle)
+```
+
+- `handle` 动态链接库句柄
+- 返回值
+  - 成功：0
+  - 失败：非0
+
+关闭指定句柄的动态链接库；**注意：只有当此动态链接库的使用计数为0时，才会真正被系统卸载。**
+
+用例：
+
+```c++
+auto handle = dlopen("./my.so", RTLD_LAZY);
+dlclose(handle);
+```
+
+
+
+## 参考
+
+- [维基百科-动态链接库](https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93)
+- [维基百科-动态链接器](https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%BF%9E%E6%8E%A5%E5%99%A8)
+- [加载动态链接库——dlopen dlsym dlclose](https://www.cnblogs.com/ZhaoxiCheung/p/9424930.html)
+- [百度百科-dlopen](https://baike.baidu.com/item/dlopen/1967576)
+- [百度百科-dlsym](https://baike.baidu.com/item/dlsym)
+- [Linux动态链接库的使用](https://www.cnblogs.com/Anker/p/3527677.html)
+- [Linux 链接详解----动态链接库](https://blog.csdn.net/zdy0_2004/article/details/78747382)
+- [采用dlopen、dlsym、dlclose加载动态链接库](https://www.jianshu.com/p/72cc08405a5a)
+

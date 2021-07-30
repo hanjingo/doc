@@ -165,6 +165,8 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
   - 成功：已写的字节数==要写入的字节数
   - 失败：-1或已写的字节数<要写入的字节数
 
+写数据到文件
+
 
 
 ## I/O效率
@@ -275,4 +277,101 @@ delayed write，传统的UNIX系统实现在内核中设有缓冲区高速缓存
 
 
 ## 函数fcntl
+
+```c
+#include<fcntl.h>
+int fcntl(int fd, int cmd, ...);
+```
+
+- `fd` 文件描述符
+- `cmd` 命令
+  - `F_DUPFD` 复制文件描述符，新文件描述符作为函数值返回。
+  - `F_DUPFD_CLOEXEC` 复制文件描述符，设置与新描述符关联的FD_CLOEXEC文件描述符标志的值，返回新文件描述符。
+  - `F_GETFD` 对应于fd的文件描述符标志作为函数值返回。
+  - `F_SETFD` 对于fd设置文件描述符标志。
+  - `F_GETFL` 对应于fd的文件状态标志作为函数值返回。
+  - `F_SETFL` 将文件状态标志设置为第3个参数的值（取为整型值），此参数可以为：O_APPEND,O_NONBLOCK,O_SYNC,O_DSYNC,O_RSYNC,O_FSYNC,O_ASYNC。
+  - `F_GETOWN` 获取当前接受SIGIO和SIGURG信号的进程ID或进程组ID。
+  - `F_SETOWN` 设置接收SIGIO和SIGURG信号的进程ID或进程组ID。
+- 返回值
+  - 成功：取决于cmd的值
+  - 失败：-1
+
+fcntl有5种功能：
+
+1. 复制一个已有的描述符（cmd=F_DUPFD或F_DUPFD_CLOEXEC）
+2. 获取/设置文件描述符标志（cmd=F_GETFD或F_SETFD）
+3. 获取/设置文件状态标志（cmd=F_DETFL或F_SETFL）
+4. 获取/设置异步I/O所有权（cmd=F_GETOWN或F_SETOWN）
+5. 获取/设置记录锁（cmd=F_GETLK，F_SETLK或F_SETLKW）
+
+对于fcntl的文件状态标志：
+
+| 文件状态标志 | 说明                              |
+| ------------ | --------------------------------- |
+| O_RDONLY     | 只读打开                          |
+| O_WRONLY     | 只写打开                          |
+| O_RDWR       | 读，写打开                        |
+| O_EXEC       | 只执行打开                        |
+| O_SEARCH     | 只搜索打开目录                    |
+| O_APPEND     | 追加写                            |
+| O_NONBLOCK   | 非阻塞模式                        |
+| O_SYNC       | 等待写完成（数据和属性）          |
+| O_DSYNC      | 等待写完成（仅数据）              |
+| O_RSYNC      | 同步读和写                        |
+| O_FSYNC      | 等待写完成（仅FreeBSD和Mac OS X） |
+| O_ASYNC      | 异步I/O（仅FreeBSD和Mac OS X）    |
+
+### 用例
+
+```c
+#include <fcntl.h>
+fcntl(fd, F_GETFL, O_SYNC);
+```
+
+### 同步写
+
+```c
+set_fl(STDOUT_FILENO, O_SYNC);
+```
+
+使每次write都要等待，直至数据已写到磁盘上再返回，设置`O_SYNC`标志回增加系统时间和时钟时间。
+
+
+
+## 函数ioctl
+
+```c
+#include <unistd.h>
+#include <sys/ioctl.h>
+int ioctl(int fd, int request, ...);
+```
+
+- `fd` 文件描述符
+- `request` 
+- 返回值
+  - 成功：其它值
+  - 失败：-1
+
+UNIX系统实现用它进行很多杂项设备操作，有些实现甚至将它扩展到用于普通文件。
+
+FreeBSD中通用的ioctl操作：
+
+| 类别      | 常量名  | 头文件              | ioctl数 |
+| --------- | ------- | ------------------- | ------- |
+| 盘标号    | DIOxxx  | `<sys/disklable.h>` | 4       |
+| 文件I/O   | FIOxxx  | `<sys/filio.h>`     | 14      |
+| 磁带I/O   | MTIOxxx | `<sys/mtio.h>`      | 11      |
+| 套接字I/O | SIOxxx  | `<sys/sockio.h>`    | 73      |
+| 终端I/O   | TIOxxx  | `<sys/ttycom.h>`    | 43      |
+
+
+
+## `/dev/fd`
+
+```c
+fd=open("/dev/fd/0", O_RDWR);
+```
+
+**注意：Linux把文件描述符映射成指向底层物理文件的符号链接，在/dev/fd文件上使用creat会导致底层文件被截断。**
 
