@@ -8,46 +8,46 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 #### 必需
 
-| 头文件               | 说明                 |
-| -------------------- | -------------------- |
-| `<aio.h>`            | 异步I/O              |
-| `<cpio.h>`           | cpio归档值           |
-| `<dirent.h>`         | 目录项               |
-| `<dlfcn.h>`          | 动态链接             |
-| `<fcntl.h>`          | 文件控制             |
-| `<fnmatch.h>`        | 文件名匹配类型       |
-| `<glob.h>`           | 路径名模式匹配与生成 |
-| `<grp.h>`            | 组代码               |
-| `<iconv.h>`          | 代码集变换实用程序   |
-| `<langinfo.h>`       | 语言信息常量         |
-| `<monetary.h>`       | 货币类型与函数       |
-| `<netdb.h>`          | 网络数据库操作       |
-| `<nl_types.h>`       | 消息类               |
-| `<poll.h>`           | 投票函数             |
-| `<pthread.h>`        | 线程                 |
-| `<pwd.h>`            | 口令文件             |
-| `<regex.h>`          | 正则表达式           |
-| `<sched.h>`          | 执行调度             |
-| `<semaphore.h>`      | 信号量               |
-| `<strings.h>`        | 字符串操作           |
-| `<tar.h>`            | tar归档值            |
-| `<termios.h>`        | 终端I/O              |
-| `<unistd.h>`         | 符号常量             |
-| `<wordexp.h>`        | 字扩充类型           |
-| [<arpa/inet.h>](#``) | 因特网定义           |
-| `<net/if.h>`         | 套接字本地接口       |
-| `<netinet/in.h>`     | 因特网地址族         |
-| `<netinet/tcp.h>`    | 传输控制协议定义     |
-| `<sys/mman.h>`       | 存储管理声明         |
-| `<sys/select.h>`     | select函数           |
-| `<sys/socket.h>`     | 套接字接口           |
-| `<sys/stat.h>`       | 文件状态             |
-| `<sys/statvfs.h>`    | 文件系统信息         |
-| `<sys/times.h>`      | 进程时间             |
-| `<sys/types.h>`      | 基本系统数据类型     |
-| `<sys/un.h>`         | UNIX域套接字定义     |
-| `<sys/utsname.h>`    | 系统名               |
-| `<sys/wait.h>`       | 进程控制             |
+| 头文件                            | 说明                 |
+| --------------------------------- | -------------------- |
+| `<aio.h>`                         | 异步I/O              |
+| `<cpio.h>`                        | cpio归档值           |
+| `<dirent.h>`                      | 目录项               |
+| [`<dlfcn.h>`](#dlfcn.h)           | 动态链接             |
+| `<fcntl.h>`                       | 文件控制             |
+| `<fnmatch.h>`                     | 文件名匹配类型       |
+| `<glob.h>`                        | 路径名模式匹配与生成 |
+| `<grp.h>`                         | 组代码               |
+| `<iconv.h>`                       | 代码集变换实用程序   |
+| `<langinfo.h>`                    | 语言信息常量         |
+| `<monetary.h>`                    | 货币类型与函数       |
+| [`<netdb.h>`](#netdb.h)           | 网络数据库操作       |
+| `<nl_types.h>`                    | 消息类               |
+| `<poll.h>`                        | 投票函数             |
+| `<pthread.h>`                     | 线程                 |
+| `<pwd.h>`                         | 口令文件             |
+| `<regex.h>`                       | 正则表达式           |
+| `<sched.h>`                       | 执行调度             |
+| `<semaphore.h>`                   | 信号量               |
+| [`<strings.h>`](#strings.h)       | 字符串操作           |
+| `<tar.h>`                         | tar归档值            |
+| `<termios.h>`                     | 终端I/O              |
+| [`<unistd.h>`](#unistd.h)         | 符号常量             |
+| `<wordexp.h>`                     | 字扩充类型           |
+| [`<arpa/inet.h>`](#arpa/inet.h)   | 因特网定义           |
+| `<net/if.h>`                      | 套接字本地接口       |
+| [`<netinet/in.h>`](#netinet/in.h) | 因特网地址族         |
+| `<netinet/tcp.h>`                 | 传输控制协议定义     |
+| `<sys/mman.h>`                    | 存储管理声明         |
+| `<sys/select.h>`                  | select函数           |
+| [`<sys/socket.h>`](#sys/socket.h) | 套接字接口           |
+| `<sys/stat.h>`                    | 文件状态             |
+| `<sys/statvfs.h>`                 | 文件系统信息         |
+| `<sys/times.h>`                   | 进程时间             |
+| `<sys/types.h>`                   | 基本系统数据类型     |
+| `<sys/un.h>`                      | UNIX域套接字定义     |
+| `<sys/utsname.h>`                 | 系统名               |
+| `<sys/wait.h>`                    | 进程控制             |
 
 #### 可选
 
@@ -110,7 +110,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 ---
 
-## `arpa/inet.h`
+## arpa/inet.h
 
 ### inet_aton 
 
@@ -154,7 +154,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `dlfcn.h`
+## dlfcn.h
 
 ### dlopen
 
@@ -195,7 +195,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `netdb.h`
+## netdb.h
 
 ### getnameinfo
 
@@ -207,7 +207,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `netinet/in.h`
+## netinet/in.h
 
 ### htons
 
@@ -245,7 +245,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `string.h`
+## string.h
 
 ### memset
 
@@ -281,7 +281,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `strings.h`
+## strings.h
 
 ### bzero
 
@@ -348,7 +348,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `sys/socket.h`
+## sys/socket.h
 
 ### connect
 
@@ -399,7 +399,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 
 
-## `unistd.h`
+## unistd.h
 
 
 

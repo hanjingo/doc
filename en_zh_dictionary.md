@@ -495,6 +495,8 @@ grind `/ɡraɪnd/` 磨，使..光滑
 
 hailed `/heɪld/` 赞扬，招手，跟...打招呼，向...喊话
 
+harbor `/ˈhɑːbə/` 海港，海湾，避难所
+
 harried `/ˈhærid/` 折磨，反复攻击
 
 ### hi
