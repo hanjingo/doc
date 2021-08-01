@@ -5,7 +5,7 @@
 
 ## 读写锁
 
-源码中用到了 __sync_synchronize() 内存屏障，主要为了解决gcc的一个乱序执行bug，
+源码中用到了`__sync_synchronize()`内存屏障，主要为了解决gcc的一个乱序执行bug，
 （此bug存在于低版本的gcc，高版本已修复）
 
 2种实现锁的方式

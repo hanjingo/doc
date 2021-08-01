@@ -21,7 +21,7 @@
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           |           |      |
-| **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           |           |           |           | [tu](#tu) |           |           |           |           |      |
+| **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           |           |      |
 | **U** |           |           |           |           |           |      |           |           |           |      |      |           |           | [un](#un) |           | [up](#up) |           |           |           | [ut](#ut) |           |           |           |           |           |      |
 | **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **W** | [wa](#wa) |           |           |           | [we](#we) |      |           |           | [wi](#wi) |      |      |           |           |           | [wo](#wo) |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]
 
 ---
 
@@ -533,13 +533,15 @@ illustrate `/ˈɪləstreɪt/` 说明，详解，配图说明
 
 [回到I](#I)&ensp;[回到顶部](#英汉词典)
 
-impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的 
+immigrant `/ˈɪmɪɡrənt/` 移民，外侨
 
 implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
 
 imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，使必要
 
 impose `/ɪmˈpəʊz/` 强制执行，利用
+
+impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的 
 
 improvement `/ɪmˈpruːvm(ə)nt/` 改善，进步
 
@@ -549,7 +551,7 @@ improvement `/ɪmˈpruːvm(ə)nt/` 改善，进步
 
 inception `/ɪnˈsepʃn/` 开端，创始
 
-incentive `/ɪnˈsentɪv/` 刺激激励
+[^8]:**incentive `/ɪnˈsentɪv/` 刺激，激励**
 
 inconvenient `/inconvenient/` 不方便的
 
@@ -641,6 +643,8 @@ measurement `/ˈmeʒəmənt/` 测量，尺寸，长度，数量
 
 mindset `/ˈmaɪndset/` 观念模式，思维倾向
 
+mislead `/ˌmɪsˈliːd/` 误导，引入歧途
+
 ### mo
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
@@ -708,6 +712,8 @@ omit `/ə(ʊ)ˈmɪt/` 删掉，漏掉
 ### op
 
 [回到O](#O)&ensp;[回到顶部](#英汉词典)
+
+opaque `/əʊˈpeɪk/` 不透明的，浑浊的，难懂，模糊，隐晦
 
 opposed `/əˈpəʊzd/` 完全不同的，相反的
 
@@ -1027,6 +1033,8 @@ treat `/triːt/` 对待
 
 trifle `/ˈtrʌɪf(ə)l/` 少量，琐事
 
+troops `/truːps/` 军队，士兵，连队
+
 ### tu
 
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
@@ -1063,7 +1071,7 @@ utmost `/'ʌtməʊst/` 极度，极端，最...
 
 [回到V](#V)&ensp;[回到顶部](#英汉词典)
 
-vaccinated `/ˈvæksɪneɪt/`  给...接种疫苗
+vaccine `/ˈvæksiːn/` 疫苗
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 

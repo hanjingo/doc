@@ -377,9 +377,9 @@ main(int argc, char **argv)
 
 `int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)`
 
-- fdarray：指向一个poolfd数组
+- fdarray：指向一个pollfd数组
 
-    ```
+    ```c
     struct pollfd {
     	int 		fd;
     	short 	events;		// 要测试的描述符

@@ -4,9 +4,9 @@
 
 POSIX(Portable Operating System Interface， 可移植操作系统接口)是一个由IEEE(电气和电子工程师学会)制订的标准族。
 
-## 头文件
+## 头文件与可选项
 
-#### 必需
+### 必需
 
 | 头文件                            | 说明                 |
 | --------------------------------- | -------------------- |
@@ -14,7 +14,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 | `<cpio.h>`                        | cpio归档值           |
 | `<dirent.h>`                      | 目录项               |
 | [`<dlfcn.h>`](#dlfcn.h)           | 动态链接             |
-| `<fcntl.h>`                       | 文件控制             |
+| [`<fcntl.h>`](#fcntl.h)           | 文件控制             |
 | `<fnmatch.h>`                     | 文件名匹配类型       |
 | `<glob.h>`                        | 路径名模式匹配与生成 |
 | `<grp.h>`                         | 组代码               |
@@ -39,7 +39,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 | [`<netinet/in.h>`](#netinet/in.h) | 因特网地址族         |
 | `<netinet/tcp.h>`                 | 传输控制协议定义     |
 | `<sys/mman.h>`                    | 存储管理声明         |
-| `<sys/select.h>`                  | select函数           |
+| [`<sys/select.h>`](#sys/select.h) | select函数           |
 | [`<sys/socket.h>`](#sys/socket.h) | 套接字接口           |
 | `<sys/stat.h>`                    | 文件状态             |
 | `<sys/statvfs.h>`                 | 文件系统信息         |
@@ -49,14 +49,14 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 | `<sys/utsname.h>`                 | 系统名               |
 | `<sys/wait.h>`                    | 进程控制             |
 
-#### 可选
+### 可选
 
 | 头文件       | 说明          |
 | ------------ | ------------- |
 | `<mqueue.h>` | 消息队列      |
 | `<spawn.h>`  | 实时spawn接口 |
 
-#### XSI可选
+### XSI可选
 
 | 头文件             | 说明             |
 | ------------------ | ---------------- |
@@ -75,7 +75,7 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 | `<sys/time.h>`     | 时间类型         |
 | `<sys/uio.h>`      | 矢量I/O操作      |
 
-#### 可选项
+### 可选项
 
 | 选项码 | 符号常量                            | 说明                             |
 | ------ | ----------------------------------- | -------------------------------- |
@@ -116,16 +116,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int inet_aton(const char *strptr, struct in_addr *addrptr)`
 
-  - `strptr`: 需要转换的c字符串
-  - `addrptr`: 用来存储网络字节序二进制值的指针
-
 将c字符串转换成一个32位的网络字节序二进制值
 
 ### inet_ntoa
 
 `char *inet_ntoa(struct in_addr inaddr)` 
-
-  - `inaddr`：32位网络字节序二进制IPV4地址
 
 将32位的网络字节序二进制IPv4地址转换成相应的点分十进制字符串。**注意：返回值所指向的字符串驻留在静态内存中，该函数不可重入！！！**
 
@@ -133,20 +128,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int inet_pton(int family, const char *strptr, void *addrptr)`
 
-- `family`: 地址族，AF_INET或AF_INET6
-- `strptr`: 字符串格式
-- `addrptr`: 二进制格式
-
 将字符串格式转换到二进制格式
 
 ### net_ntop
 
 `const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)` 
-
-- `family`: 地址族，AF_INET或AF_INET6
-- `addrptr`: 二进制格式
-- `strptr`: 字符串格式，不允许为空
-- `len`: 表达式长度
 
 将二进制格式转换到字符串格式
 
@@ -160,23 +146,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `void *dlopen(const char *filename, int flags)`
 
-- `filename` 动态共享库文件路径（绝对路径/相对路径）+文件名
-- `flags` 标记
-- 返回值
-  - 成功：动态链接库句柄
-  - 失败：NULL
-
 加载动态共享库文件；如果`filename`为NULL，则返回的句柄用于主程序。如果`filename`指定的对象依赖于其它共享对象，动态链接器也会自动加载这些对象。具体见：[动态链接库#dlopen](OS/dll.md)
 
 ### dlsym
 
 `void *dlsym(void *handle, const char *symbol)`
-
-- `handle` 动态链接库句柄
-- `symbol` 要求获取的函数或全局变量的名称
-- 返回值
-  - 成功：指向函数/变量的地址
-  - 失败：NULL
 
 解析动态链接库符号，返回符号对应的地址；具体见：[动态链接库#dlsym](OS/dll.md)
 
@@ -184,12 +158,41 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int dlclose(void *handle)`
 
-- `handle` 动态链接库句柄
-- 返回值
-  - 成功：0
-  - 失败：非0
-
 关闭指定句柄的动态链接库；具体见：[动态链接库#dlclose](OS/dll.md)
+
+---
+
+
+
+## fcntl.h
+
+### fcntl
+
+`int fcntl(int fd, int cmd, ...)`
+
+fcntl有5种功能，具体功能取决于cmd的值：
+
+1. 复制一个已有的描述符
+2. 获取/设置文件描述符标志
+3. 获取/设置文件状态标志
+4. 获取/设置异步I/O所有权
+5. 获取/设置记录锁
+
+具体见：[I/O#fcntl](OS/io.md)
+
+### open/openat
+
+`int open(const char* path, int oflag, ...)`
+
+`int openat(int fd, const char* path, int oflag, ...)`
+
+打开文件/目录；具体见：[I/O#open/openat](OS/io.md)
+
+### create
+
+`int create(const char* path, mode_t mode)`
+
+创建一个新文件；具体见：[I/O#create](OS/io.md)
 
 ---
 
@@ -213,15 +216,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `uint16_t htons(uint16_t host16bitvalue)` 
 
-- `host16bitvalue`
-
 主机字节序转网络字节序(16位)
 
 ### htonl
 
 `uint32_t htonl(uint32_t host32bitvalue)` 
-
-- `host32bitvalue`
 
 主机字节序转网络字节序(32位)
 
@@ -229,17 +228,25 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `uint16_t ntohs(uint16_t net16bitvalue)` 
 
-- `net16bitvalue`
-
 网络字节序转主机字节序(16位)
 
 ### nthol
 
 `uint32_t ntohl(uint32_t net32bitvalue)` 
 
-- `net32bitvalue`
-
 网络字节序转主机字节序(32位)
+
+---
+
+
+
+## sys/select.h
+
+### select
+
+`int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout)`
+
+允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。具体见：[I/O#select](NET/io.md)
 
 ---
 
@@ -251,29 +258,17 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `void *memset(void *dest, int c, size_t len)`
 
-- dest: 被设置的字符串
-- c: 要设置的值
-- len: 要设置的字节数
-
 设置字符串为指定值
 
 ### memcpy
 
 `void *memcpy(void *dest, const void *src, size_t nbytes)`
 
-- dest: 目标字符串
-- src: 源字符串
-- nbytes: 要复制的字节数
-
 复制字符串
 
 ### memcmp
 
 `int memcmp(const void *ptr1, const void *ptr2, size_t nbytes)`
-
-- ptr1: 字符串1
-- ptr2: 字符串2
-- nbytes: 要比较的字符串长度
 
 比较字符串
 
@@ -287,18 +282,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `void bzero(void *dest, size_t nbytes)` 
 
-- `dest`: 被设置的字符串
-- `nbytes`: 要设置的字节数
-
  设置字符串的值为0
 
 ### bcopy
 
 `void bcopy(const void *src, void *dest, size_t nbytes)` 
-
-- `src`: 源字符串
-- `dest`: 目标字符串
-- `nbytes`: 要复制的数量
 
 复制字符串
 
@@ -306,21 +294,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int bcmp(const void *ptr1, const void *ptr2, size_t nbytes)` 
 
-- `ptr1`: 字符串1
-
-- `ptr2`: 字符串2
-
-- `nbytes`: 要比较的字符长度
-
 比较字符串
 
 ### memset
 
 `void *memset(void *dest, int c, size_t len)`
-
-- `dest`: 被设置的字符串
-- `c`: 要设置的值
-- `len`: 要设置的字节数
 
 设置字符串为指定值
 
@@ -328,19 +306,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `void *memcpy(void *dest, const void *src, size_t nbytes)`
 
-- `dest`: 目标字符串
-- `src`: 源字符串
-- `nbytes`: 要复制的字节数
-
 复制字符串；**注意：当dest和src重叠时，memcpy操作结果无法预料**
 
 ### memcmp
 
 `int memcmp(const void *ptr1, const void *ptr2, size_t nbytes)` 
-
-- `ptr1`: 字符串1
-- `ptr2`: 字符串2
-- `nbytes`: 要比较的字符串长度
 
 比较字符串
 
@@ -354,21 +324,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen)`
 
-- `sockfd`: 套接字描述符
-- `servaddr`: 指向套接字的地址
-- `addrlen`: 套接字地址长度
-- 返回值
-
 建立与TCP服务器的连接；具体见[unix网络编程-卷一#第四章#connect函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)
 
 ### bind
 
 `int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen)`
-
-- `sockfd`: 套接字
-- `myaddr`: 指向特定于协议的地址结构的指针
-- `addrlen`: 该地址结构的长度
-- 返回值
 
 把一个本地协议地址赋予一个套接字；具体见[unix网络编程-卷一#第四章#bind函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
 
@@ -376,22 +336,11 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 `int listen(int sockfd, int backlog)` 
 
-- `sockfd`: 套接字
-- `backlog`: 待处理的套接字队列的最大长度
-- 返回值
-
 把一个未连接的套接字转化为一个被动套接字，指示内核应接受指向该套接字的连接请求，同时设定排队的套接字队列的最大长度。**注意：此函数仅由TCP服务器调用**；具体见[unix网络编程-卷一#第四章#listen函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
 
 ### accept
 
 `int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)`
-
-- `sockfd` 监听套接字
-- `cliaddr` 返回已连接的协议地址
-- `addrlen` 返回已连接的协议地址长度
-- 返回值
-  - 成功: 一个全新的描述符
-  - 失败: 错误码
 
 从已完成连接队列头返回下一个已完成连接，如果已完成连接队列为空，那么进程被投入睡眠；具体见[unix网络编程-卷一#第四章#accept函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
 
@@ -401,7 +350,54 @@ POSIX(Portable Operating System Interface， 可移植操作系统接口)是一�
 
 ## unistd.h
 
+### close
 
+`int close(int fd)`
+
+关闭文件；具体见：[I/O#close](OS/io.md)
+
+### lseek
+
+`off_t lseek(int fd, off_t offset, int whence)`
+
+为一个打开的文件设置偏移量；具体见：[I/O#lseek](OS/io.md)
+
+### read
+
+`ssize_t read(int fd, void *buf, size_t nbytes)`
+
+从文件中读数据；具体见：[I/O#read](OS/io.md)
+
+### write
+
+`ssize_t write(int fd, const void* buf, size_t nbytes)`
+
+写数据到文件；具体见：[I/O#write](OS/io.md)
+
+### dup/dup2
+
+`int dup(int fd)`
+`int dup2(int fd, int fd2)`
+
+复制一个现有的文件描述符；具体见：[I/O#dup/dup2](OS/io.md)
+
+### sync
+
+`void sync(void)`
+
+`sync`只是将所有修改过的块缓冲区排入写队列，然后就返回，**它并不等实际写磁盘操作结束。**具体见：[I/O#sync](OS/io.md)
+
+### fsync
+
+`int fsync(int fd)`
+
+`fsync`只对由文件描述符fd指定的一个文件起作用，并且等待写磁盘操作结束才返回。具体见：[I/O#fsync](OS/io.md)
+
+### fdatasync
+
+`int fdatasync(int fd)`
+
+`fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。具体见：[I/O#fdatasync](OS/io.md)
 
 ---
 

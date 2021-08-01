@@ -6,6 +6,8 @@
 
 ## 消息定义
 
+skynet消息的定义如下：
+
 ```c
 // 消息
 struct skynet_message {
@@ -15,6 +17,10 @@ struct skynet_message {
 	size_t sz;      // 消息大小
 };
 ```
+
+### 消息分类
+
+TODO
 
 
 
@@ -58,19 +64,14 @@ expand_queue(struct message_queue *q) {
 	skynet_free(q->queue);
 	q->queue = new_queue;
 }
-
-void 
-skynet_mq_push(struct message_queue *q, struct skynet_message *message) {
-  ...
-	if (q->head == q->tail) {
-		expand_queue(q);
-	}
-	...
-}
 ```
 
-1. 队列扩充2倍
+1. 队列cap扩充2倍
 2. 从头到尾重新赋值
+
+
+
+## 消息转发
 
 
 
@@ -79,27 +80,45 @@ skynet_mq_push(struct message_queue *q, struct skynet_message *message) {
 ```mermaid
 graph TD
 subgraph 进入socket线程处理流程
-skynet_socket_poll(skynet_socket_poll)-->socket_server_poll(socket_server_poll)-->a1
+thread_socket(skynet_socket_poll)--循环调用-->
+thread_socket-->
+socket_server_poll(socket_server_poll<br>处理socket事件,建立/监听/接收消息<br><br>forward_message<br>读一个消息)-->
+skynet_context_push(skynet_context_push<br>将上下文推入消息队列)-->
+skynet_mq_push(skynet_mq_push<br>将消息推入消息队列)
+==> is_mq_full{消息队列是否已满}
+is_mq_full -.yes<br>.-> expand_queue(expand_queue<br>扩充队列)-->skynet_globalmq_push
+is_mq_full -.no.->
+skynet_globalmq_push(skynet_globalmq_push<br>消息推入全局消息队列)
 end
 
 subgraph 进入全局消息队列处理流程
-a1(1)-->a2(2)-->b1
-end
+skynet_globalmq_push-->
+thread_worker(thread_worker<br>循环工作线程)-->
+skynet_context_message_dispatch(skynet_context_message_dispatch<br>分派消息上下文)-->
+skynet_globalmq_pop(skynet_globalmq_pop<br>从全局消息队列pop出一个次级消息队列)
+==> is_null{次级消息队列是否为NULL}
+is_null -.yes.->
+exit(退出工作线程)
 
-subgraph 进入worker线程处理流程
-b1(1)-->b2(2)-->c1
+is_null -.no.->
+skynet_mq_handle(skynet_mq_handle<br>从次级消息队列获取回调器id)-->
+skynet_handle_grab(skynet_handle_grab<br>根据回调器id拿上下文)
+
+==> is_ctx_null{上下文是否为NULL}
+is_ctx_null -.yes.->
+drop_message(drop_message<br>丢掉消息)--继续循环-->
+skynet_context_message_dispatch
+
+is_ctx_null -.no.->
+skynet_monitor_trigger(skynet_monitor_trigger<br>触发监视器)-->
+dispatch_message(dispatch_message<br>派发消息传递给lua虚拟机)-->
+lua_callback(进入回调)
 end
 
 subgraph 进入lua虚拟机处理流程
-c1(1)-->c2(2)-->d1
-end
-
-subgraph socket发送消息
-d1(1)-->d2(2)
+lua_callback-->lua_logic(业务逻辑)
 end
 ```
-
-
 
 ## 参考
 

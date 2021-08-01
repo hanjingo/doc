@@ -2,7 +2,8 @@
 
 - [总结](summary.md)
 - [buffer]
-- [锁]
+- [配置](config.md)
+- [锁](lock.md)
 - [内存分配]
 - [日志]
 - [LUA虚拟机]
@@ -10,14 +11,7 @@
 - [计时器]
 - [模块机制](modules.md)
 - [消息机制](msg.md)
+- [网络模块](net.md)
 - [服务]
 - [监视器]
-- [socket_server]
-- [epoll]
-- [hash]
-- [网关]
-- [harbor]
-- [snlua]
-- [lua的c语言依赖库]
-- [lua_bootstrap]
 

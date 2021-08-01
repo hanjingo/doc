@@ -14,3 +14,6 @@
 
   - [核辐射](ENV/nuclear_radiation.md)
 
+## 消化系统
+
+- [肠胃炎](DIGESTIVE_SYSTEM/gastroenteritis.md)

@@ -7,7 +7,7 @@
 ## 目录结构
 
 - `3rd`
-    
+  
     第三方库，包括：
     
     - `lua` 语言支持
@@ -96,6 +96,14 @@ bempty(no)->pop->callback->pushback(right)->sleep
 - `w>0`
 
   一个线程一次消费w条消息
+
+### 线程安全
+
+skynet使用以下特性保证线程安全：
+
+1. 依附于skynet核心模块的c服务，包括：
+2. global_mq和次级消息队列在push/pop时都有加`spinlock`
+3. 通过handle从handle_storage的slot里获取`skynet_context`时，加上了`rowlock`。
 
 
 
