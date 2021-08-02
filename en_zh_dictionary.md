@@ -343,6 +343,8 @@ dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 
 dual `/ˈdjuːəl/` 两部分，双重的
 
+dummy `/ˈdʌmi/` 假的，仿制品，笨蛋
+
 duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
 ---

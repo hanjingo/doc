@@ -59,18 +59,20 @@
 
   
 
-## 初始化
+## 建立连接
 
 ```mermaid
 graph TD
 socket_server_create(socket_server_create<br>创建一个全局的socket_server)-->
 socket_server_poll(socket_server_poll<br>处理连接动作:建立连接/监听连接/接收消息...)-->
-ctrl_cmd(ctrl_cmd<br>)==>
-is_cmd_open_socket(cmd命令是否为'open_socket')
+ctrl_cmd(ctrl_cmd<br>监听其它线程发过来的消息)
+
+==>is_cmd_open_socket{cmd命令是否为'open_socket'?}
 is_cmd_open_socket -.no.-> other(其他流程)
 is_cmd_open_socket -.yes.-> open_socket(open_socket<br>新建并设置:套接字地址/保活/非阻塞等选项)-->
 new_fd(new_fd<br>将新建的套接字放入socket_server)-->
 socket_server_poll
+
 ```
 
 1. 通过`socket_server_create`函数创建一个全局的`socket_server`
@@ -89,7 +91,14 @@ socket_server_poll
 
 ## 监听和绑定端口
 
+1. 新建gate服务。
+2. 绑定端口并监听。
+3. gate向socket线程发送一个请求，要求向socket slot里添加一个专门用于监听端口的socket，并在epoll中添加这个socket的监听事件。
+4. 当新连接请求到来时，建立连接，并向gate发送一条消息，通知gate服务新建立连接socket的slot id，让gate自己处理。
 
 
-## 建立连接
+
+## 参考
+
+- [skynet源码赏析](https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/)
 

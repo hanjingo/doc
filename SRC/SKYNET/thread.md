@@ -4,7 +4,18 @@
 
 
 
-## 创建多线程
+## 分类
+
+skynet有4种线程：
+
+- `monitor` 监视器线程（1条）
+- `timer` 计时器线程（1条）
+- `socket` 套接字线程（1条）
+- `worker` 工作线程（多条，具体取决于skynet_config.thread的配置）
+
+
+
+## 创建线程
 
 ```flow
 start=>start: skynet启动
