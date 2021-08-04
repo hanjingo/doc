@@ -314,7 +314,7 @@ $$ \begin{Bmatrix}
 
 例:
 ```markdown
-​```mermaid
+```mermaid
 graph LR
     A(开始) -->B(起床)
     B --天气不好--- C>干活]
@@ -363,7 +363,7 @@ graph LR
 例:
 
 ```markdown
-​```flow
+```flow
 st=>start: 开始框
 op=>operation: 处理框
 cond=>condition: 判断框（是或否?）
@@ -419,7 +419,7 @@ cond(no)->sub1(right)->op
 例：
 
 ```markdown
-​```sequence
+```sequence
 Title:时序图示例
 客户端->服务端: 我想找你拿下数据 SYN
 服务端-->客户端: 我收到你的请求啦 ACK+SYN
@@ -574,11 +574,11 @@ gantt
 - `<|--` 继承
 - `*__` 组合
 - `o--` 聚合
-- `-->`
-- `--`
-- `..>`
-- `..|>`
-- `..`
+- `-->` 关联
+- `--` 连接（实线）
+- `..>` 依赖
+- `..|>` 实现
+- `..` 链接（虚线）
 - `<<interface>>` 接口
 - `<<abstract>>` 抽象类
 - `<<service>>` 服务类
@@ -596,6 +596,12 @@ gantt
 
 ```mermaid
 classDiagram
+	父类 <|-- 具体类
+
+	class 父类{
+		+public_func() bool
+	}
+	
 	class 具体类{
 		~ package ~
 		+bool public_value
@@ -647,6 +653,31 @@ classDiagram
 	模版类 : +public_func(List~T~ messages)
 ```
 
+```mermaid
+classDiagram
+classA --|> classB : Inheritance
+classC --* classD : Composition
+classE --o classF : Aggregation
+classG --> classH : Association
+classI -- classJ : Link(Solid)
+classK ..> classL : Dependency
+classM ..|> classN : Realization
+classO .. classP : Link(Dashed)
+```
+
+```mermaid
+classDiagram
+    Customer "1" --> "*" Ticket
+    Student "1" --> "1..*" Course
+    Galaxy --> "many" Star : Contains
+```
+
+```mermaid
+classDiagram
+class Shape
+<<interface>> Shape
+```
+
 
 
 ## 绘制饼图
@@ -678,5 +709,8 @@ pie
 ## 参考
 
 - [markdown 绘制流程图、时序图、甘特图](https://www.jianshu.com/p/6dbcc3aff98b)
+
 - [使用 Typora 画图（类图、流程图、时序图）](https://zhuanlan.zhihu.com/p/172635547)
+
+- [Class diagrams](https://mermaid-js.github.io/mermaid/#/classDiagram?id=class-diagrams)
 

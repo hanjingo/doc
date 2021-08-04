@@ -1,18 +1,56 @@
 [TOC]
 
-# TCP协议
+# 第十二章 TCP 传输控制协议
+
+
+
+## ARQ和重传
 
 ARQ(Automatic Repeat Request，自动重复请求)
 
 ACK(acknowledgment， 确认)
 
+### 分组窗口和滑动窗口
+
+滑动窗口协议（sliding window protocol）示意：
+
+![12-1](res/12-1.png)
+
+### 变量窗口：流量控制和拥塞控制
+
+流量控制（flow control）：在接收方跟不上时会强迫发送方慢下来，一共有2种方法：
+
+- 基于速率（rate-based）流量控制
+
+  给发送方指定某个速率，同时确保数据永远不能超过这个速率发送，适用于流应用程序。
+
+- 基于窗口（windows-based）流量控制
+
+  使用滑动窗口，窗口大小不是固定的，而是允许随时间而变动的；发送方使用**窗口通告(window advertisement)或窗口更新(window update)**调整窗口大小。
+
+### 设置重传超时
+
 RTT(round-trip-time estimation， 往返时间估计)
 
 
 
-## 头部
+## TCP的引入
 
-![tcp_head](res/tcp_head.png)
+### TCP服务模型
+
+TCP提供了一种*面向连接的(connection-oriented)，可靠的*字节流服务。
+
+### 
+
+## TCP头部和封装
+
+TCP在IP数据报中的封装：
+
+![12-2](res/12-2.png)
+
+TCP头部结构：
+
+![12-3](res/12-3.png)
 
 - `源端口` (16bit)
 
@@ -73,43 +111,3 @@ RTT(round-trip-time estimation， 往返时间估计)
   Urgent Pointer，只有当`URG`字段被设置时生效；
 
 - `选项`(变长)
-
-
-
-## 滑动窗口
-
-![tcp_sliding_window](res/tcp_sliding_window.png)
-
-
-
-## 连接的建立与终止
-
-TODO
-
-### 半关闭
-
-TODO
-
-### 同时打开与关闭
-
-TODO
-
-
-
-## 状态转移
-
-![tcp_stat](res/tcp_stat.png)
-
-### TIME_WAIT状态
-
-TIME_WAIT状态有2个存在的理由:
-
-- 可靠地实现TCP全双工连接的终止；
-- 允许老的重复分节在网络中消逝；
-
-TIME_WAIT过多怎么处理？
-
-
-
-## 用例
-

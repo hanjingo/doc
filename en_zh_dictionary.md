@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]
 
 ---
 
@@ -227,9 +227,13 @@ collision `/kəˈlɪʒn/` 碰撞，冲突
 
 combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
 
+compact `/ˈkɑːmpækt/` 紧凑的，紧密的，合约，协定
+
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
 complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
+
+composite `/ˈkɒmpəzɪt/` 合成的，合成物，混合物
 
 comment `/ˈkɒment/` 评论，批评，指责 
 
@@ -447,6 +451,8 @@ forest `/ˈfɒrɪst/` 森林
 
 freeze `/friːz/` 冻结，停止 
 
+frequent `/ˈfriːkwənt/` 频繁的，常去
+
 ### fu
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
@@ -563,7 +569,15 @@ individual `/ɪndɪˈvɪdʒʊ(ə)l/` 单独的，独特的
 
 indiscriminate `/ˌɪndɪˈskrɪmɪnət/` 随意的，不加选择的
 
+infrastructure `/ˈɪnfrəstrʌktʃə(r)/` 基础设施
+
+ingest `/ɪnˈdʒest/` 摄入，食入，咽下
+
+instant `/ˈɪnstənt/` 立即，立刻
+
 institution `/ˌɪnstɪˈtjuːʃn/` 机构，制度，风俗习惯
+
+instrument `/ˈɪnstrəmənt/` 仪器，器械，手段
 
 intact `/ɪnˈtakt/` 完整的
 
@@ -695,7 +709,7 @@ obsessed `/əbˈsest/` 心神不宁的，着迷的，困扰的
 
 obvious `/ˈɒbviəs/`  显而易见的，公认的，当然的
 
-observed `/əbˈzɜːvd/` 注意到，看到，观察
+observe `/əbˈzɜːv/` 注意到，看到，观察
 
 ### oc
 
@@ -761,7 +775,7 @@ patent `/ˈpætnt/` 专利权，专利证书
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
-perform `/pəˈfɔːm/` 做，履行，执行，表演
+[^10]:**perform `/pəˈfɔːm/` 做，履行，执行，表演**
 
 permit `/pəˈmɪt/` 允许，许可证，特许证
 
@@ -895,7 +909,7 @@ sanity `/ˈsænəti/` 精神健全的，明智，理智
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
-scaling problem `/ˈskeɪlɪŋ ˈprɒbləm/` 尺度问题
+scalar `/ˈskeɪlər/` 数量，标量，无向量的 
 
 scar `/skɑː(r)/` 伤疤，疤痕
 
@@ -959,11 +973,13 @@ snoop `/snuːp/` 窥探，探听
 
 sparked `/spɑːkt/` 引发，触发，电火花
 
+specify `/ˈspesɪfaɪ/` 具体说明，明确规定，详述
+
 spectrum `/spɛktrəm/` 光谱，派别
 
 spectator `/spɛkˈteɪtə/` 观众
 
-spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
+[^9]:**spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境**
 
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
@@ -1009,6 +1025,8 @@ tawdry `/ˈtɔːdri/` 下流的，粗俗的，卑鄙的
 
 technique `/tɛkˈniːk/` 方法，技巧
 
+telemetry `/təˈlemətri/` 遥测术，远距离测量术
+
 tend `/tend/` 趋势
 
 terabyte `/ˈterəbaɪt/` 万亿字节，太字节
@@ -1052,6 +1070,8 @@ turnover `/ˈtərnˌōvər/` 周转，进出
 [回到U](#U)&ensp;[回到顶部](#英汉词典)
 
 unicast `/'juːnɪkɑːst/` 单播
+
+unify `/ˈjuːnɪfaɪ/` 统一
 
 ### up
 
@@ -1109,6 +1129,10 @@ wept `/wept/` 哭泣，流泪，流出
 
 willingness `/ˈwɪlɪŋnɪs/` 乐意，愿意
 
+### wi
+
+willing `/ˈwɪlɪŋ/` 愿意，乐意，想要，决心
+
 ### wo
 
 [回到W](#W)&ensp;[回到顶部](#英汉词典)
@@ -1134,3 +1158,4 @@ workload `/ˈwɜːkləʊd/` 工作量
 [回到顶部](#英汉词典)
 
 ---
+
