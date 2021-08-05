@@ -17,3 +17,4 @@
 ## 消化系统
 
 - [肠胃炎](DIGESTIVE_SYSTEM/gastroenteritis.md)
+
