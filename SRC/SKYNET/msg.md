@@ -88,6 +88,8 @@ TODO
 
 用于进程内部的消息通信，其结构为：
 
+`|消息头|消息内容|空白区|`
+
 ```c
 // 进程内部的请求消息
 struct request_package {
@@ -109,18 +111,144 @@ struct request_package {
 };
 ```
 
-该请求消息包括以下类型：
+- `header` 消息头
 
-- `request_open`
-- `request_send`
-- `request_send_udp`
-- `request_close`
-- `request_listen`
-- `request_bind`
-- `request_resumepause`
-- `request_setopt`
-- `request_udp`
-- `request_setudp`
+  header的长度为8bit，结构为：`|0|0|0|0|0|0|TYPE|LENGTH|`
+
+  TYPE包括以下类型：
+
+  | 值   | 说明                                                         |
+  | ---- | ------------------------------------------------------------ |
+  | `S`  | 开启套接字（Start socket）                                   |
+  | `B`  | 绑定套接字（Bind socket）                                    |
+  | `L`  | 监听套接字（Listen socket）                                  |
+  | `K`  | 关闭套接字（Close socket）                                   |
+  | `O`  | 连接套接字（Connect to (Open)）                              |
+  | `X`  | 关闭套接字（Exit）                                           |
+  | `D`  | 发送消息包（高优先级）（Send package (high)）                |
+  | `P`  | 发送消息包（低优先级）（Send package (low)）                 |
+  | `A`  | 发送UDP包（Send UDP package）                                |
+  | `T`  | 设置选项（Set opt）                                          |
+  | `U`  | 创建UDP套接字（Create UDP socket）                           |
+  | `C`  | 设置UDP地址（set udp address）                               |
+  | `Q`  | 查询信息（query info）                                       |
+  | `R`  | （Resume Pause）                                             |
+  | `W`  | 让本地线程开启写事件（let socket thread enable write event） |
+
+- `u` 消息内容
+
+  该请求消息内容包括以下类型：
+
+  - `request_open` 请求打开套接字
+
+    ```c
+    // 请求打开套接字
+    struct request_open {
+    	int id; 					// id
+    	int port; 				// 端口
+    	uintptr_t opaque;	// 
+    	char host[1]; 		// 主机名；IPV4:点分十进制，IPV6:16进制串
+    };
+
+  - `request_send` 请求发送
+
+    ```c
+    // 请求发送
+    struct request_send {
+    	int id;								// id
+    	size_t sz;						// 缓冲区尺寸
+    	const void * buffer;	// 缓冲区地址
+    };
+    ```
+
+  - `request_send_udp` 请求发送udp
+
+    ```c
+    // 请求发送udp
+    struct request_send_udp {
+    	struct request_send send; 					// 请求发送消息
+    	uint8_t address[UDP_ADDRESS_SIZE]; 	// UDP地址
+    };
+    ```
+
+  - `request_close` 请求关闭套接字
+
+    ```c
+    // 请求关闭套接字
+    struct request_close {
+    	int id;						// id
+    	int shutdown;			// 是否强制关闭
+    	uintptr_t opaque;	// 
+    };
+    ```
+
+  - `request_listen` 请求监听套接字
+
+    ```c
+    // 请求监听套接字
+    struct request_listen {
+    	int id;				// id
+    	int fd;				// 文件描述符
+    	uintptr_t opaque;	//  
+    	char host[1];		// 主机地址；IPV4:点分十进制，IPV6:16进制串
+    };
+    ```
+
+  - `request_bind` 请求绑定套接字
+
+    ```c
+    // 请求绑定套接字
+    struct request_bind {
+    	int id;				// id
+    	int fd;				// 文件描述符
+    	uintptr_t opaque;	// 
+    };
+    ```
+
+  - `request_resumepause` 请求重置暂停
+
+    ```c
+    // 请求重置暂停
+    struct request_resumepause {
+    	int id;				// id
+    	uintptr_t opaque;	// 
+    };
+    ```
+
+  - `request_setopt` 请求设置套接字选项
+
+    ```c
+    // 请求设置套接字选项
+    struct request_setopt {
+    	int id;			// id
+    	int what;		// 键
+    	int value;	// 值
+    };
+    ```
+
+  - `request_udp` 请求UDP
+
+    ```c
+    // 请求UDP
+    struct request_udp {
+    	int id;				// id
+    	int fd;				// 文件描述符
+    	int family;			// 地址族
+    	uintptr_t opaque;	//  
+    };
+    ```
+
+  - `request_setudp` 请求设置udp
+
+    ```c
+    // 请求设置udp
+    struct request_setudp {
+    	int id;								// id
+    	uint8_t address[UDP_ADDRESS_SIZE]; 	// 地址 19*8=152bit: ipv6 128bit + port 16bit + 1 byte type
+    };
+    ```
+
+- `dummy` 空白区
 
 ### 跨进程消息
 
@@ -135,16 +263,16 @@ TODO
 ```c
 // 消息队列
 struct message_queue {
-	struct spinlock lock; // 自旋锁
-	uint32_t handle; 				// 回调器ID
-	int cap; 						// 容量
-	int head; 						// 管道头索引
-	int tail; 						// 管道尾索引
-	int release; 					// 是否能释放消息
-	int in_global; 					// 是否在全局消息队列；0:不在全局消息队列,1:在全局队列或在递送中
-	int overload; 					// 过载数量
+	struct spinlock lock;           // 自旋锁
+	uint32_t handle;                // 回调器ID
+	int cap;                        // 容量
+	int head;                       // 管道头索引
+	int tail;                       // 管道尾索引
+	int release;                    // 是否能释放消息
+	int in_global;                  // 是否在全局消息队列；0:不在全局消息队列,1:在全局队列或在递送中
+	int overload;                   // 过载数量
 	int overload_threshold; 		// 过载阀值
-	struct skynet_message *queue; 	// 消息队列
+	struct skynet_message *queue;   // 消息队列
 	struct message_queue *next; 	// 指向下一个消息队列
 };
 ```

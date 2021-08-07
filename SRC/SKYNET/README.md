@@ -1,7 +1,7 @@
 # skynet源码分析
 
 - [总结](summary.md)
-- [buffer]
+- [buffer](buffer.md)
 - [配置](config.md)
 - [锁](lock.md)
 - [内存分配]
