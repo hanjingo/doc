@@ -66,23 +66,11 @@ ipfs团队基于Merkle树构建了一种新的数据结构:Merkle DAG; 其与Mer
 
 
 ## 参考
-<div id="1"></div>
-[1] [Merkle Tree 专利文档（英文）](res/US4309569.pdf)
+[^1]: [Merkle Tree 专利文档（英文）](res/US4309569.pdf)
+[^2]: [`Merkle Tree（默克尔树）算法解析`](https://blog.csdn.net/wo541075754/article/details/54632929)
+[^3]: [`区块链技术架构分析（3）-默克尔树（merkle tree）`](https://zhuanlan.zhihu.com/p/39271872)
+[^4]: [百度百科-梅克尔树](https://baike.baidu.com/item/%E6%A2%85%E5%85%8B%E5%B0%94%E6%A0%91)
+[^5]: [零知识证明-一种新型的Merkle树（Shrubs）](https://learnblockchain.cn/2019/10/15/Shrubs)
+[^6]: [Merkle Tree and Zero Knowledge Proof](https://www.codenong.com/cs110403770/)
+[^7]: [以太坊MPT原理，你最值得看的一篇](https://blog.csdn.net/ITleaks/article/details/79992072)
 
-<div id="2"></div>
-[2] [`Merkle Tree（默克尔树）算法解析`](https://blog.csdn.net/wo541075754/article/details/54632929)
-
-<div id="3"></div>
-[3] [`区块链技术架构分析（3）-默克尔树（merkle tree）`](https://zhuanlan.zhihu.com/p/39271872)
-
-<div id="4"></div>
-[4] [百度百科-梅克尔树](https://baike.baidu.com/item/%E6%A2%85%E5%85%8B%E5%B0%94%E6%A0%91)
-
-<div id="5"></div>
-[5] [零知识证明-一种新型的Merkle树（Shrubs）](https://learnblockchain.cn/2019/10/15/Shrubs)
-
-<div id="6"></div>
-[6] [Merkle Tree and Zero Knowledge Proof](https://www.codenong.com/cs110403770/)
-
-<div id="7"></div>
-[7] [以太坊MPT原理，你最值得看的一篇](https://blog.csdn.net/ITleaks/article/details/79992072)

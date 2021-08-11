@@ -46,11 +46,7 @@ Kademlia 中，根据当前节点的 Node ID 与它保存的其他 peer 节点 N
 
 例：
 
-当前节点 ID 是 0011，那么它可以划分为 LCP = 0, 1, 2, 3 一共 4 个子树，如下：
-
-![lcp.png](res/lcp.png)
-
-对于一个 160 bit 空间的 Node ID 来说，一共会有 160 个子树，也就是 160 个 buckets。每个 bucket 可以通过 XOR 的结果来索引
+当前节点 ID 是 0011，那么它可以划分为 LCP = 0, 1, 2, 3 一共 4 个子树;对于一个 160 bit 空间的 Node ID 来说，一共会有 160 个子树，也就是 160 个 buckets。每个 bucket 可以通过 XOR 的结果来索引
 
 
 

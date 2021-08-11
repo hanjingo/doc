@@ -22,6 +22,8 @@ struct skynet_message {
 
 ## 消息协议
 
+请求消息的session id为负数，响应包的session id为正数。
+
 ### 请求协议(待确定)
 
 协议规定超过32kbyte的数据包需要分成小包传输，小包依赖session来区隔；
@@ -88,7 +90,11 @@ TODO
 
 用于进程内部的消息通信，其结构为：
 
-`|消息头|消息内容|空白区|`
+| 消息头 | 消息内容 | 空白区  |
+| ------ | -------- | ------- |
+| 8byte  | 256byte  | 256byte |
+
+#### 请求消息
 
 ```c
 // 进程内部的请求消息
@@ -250,9 +256,28 @@ struct request_package {
 
 - `dummy` 空白区
 
+#### 响应消息
+
+
+
 ### 跨进程消息
 
-TODO
+### 定义
+
+```c
+// 远程节点名字
+struct remote_name {
+	char name[GLOBALNAME_LENGTH]; 	// 名字（最长16字节）
+	uint32_t handle;								// harbor ID
+};
+// 远程节点信息
+struct remote_message {
+	struct remote_name destination;	// 目的地
+	const void * message;						// 消息
+	size_t sz;											// 大小
+	int type;												// 类型
+};
+```
 
 
 
@@ -271,9 +296,9 @@ struct message_queue {
 	int release;                    // 是否能释放消息
 	int in_global;                  // 是否在全局消息队列；0:不在全局消息队列,1:在全局队列或在递送中
 	int overload;                   // 过载数量
-	int overload_threshold; 		// 过载阀值
+	int overload_threshold; 				// 过载阀值
 	struct skynet_message *queue;   // 消息队列
-	struct message_queue *next; 	// 指向下一个消息队列
+	struct message_queue *next; 		// 指向下一个消息队列
 };
 ```
 

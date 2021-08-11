@@ -1,6 +1,6 @@
 # BitTorrent协议
 
-**摘要**    BitTorrent(简称BT)[<sup>[1]</sup>](#1)是用在对等网络中文件分享的协议。它以p2p(peer-to-peer)的形式来分享文件，下载同一文件的人越多，下载该文件的速度越快。BitTorrent协议是架构于TCP/IP协议之上的一个P2P文件传输通信协议，处于TCP/IP结构的应用层。根据BitTorrent协议，文件发布者会根据要发布的文件生成提供一个.torrent文件，即种子文件，也简称为“种子”。种子文件本质上是文本文件，包含Tracker信息和文件信息两部分。
+**摘要**    BitTorrent(简称BT)[^1]是用在对等网络中文件分享的协议。它以p2p(peer-to-peer)的形式来分享文件，下载同一文件的人越多，下载该文件的速度越快。BitTorrent协议是架构于TCP/IP协议之上的一个P2P文件传输通信协议，处于TCP/IP结构的应用层。根据BitTorrent协议，文件发布者会根据要发布的文件生成提供一个.torrent文件，即种子文件，也简称为“种子”。种子文件本质上是文本文件，包含Tracker信息和文件信息两部分。
 
 关键词    **种子** **p2p**
 
@@ -28,8 +28,7 @@ Tracker：收集下载者信息的服务器，并将此信息提供给其他下�
 
 ## 参考
 
-<div id="1"></div>
-[1] [维基百科BitTorrent协议](https://zh.wikipedia.org/wiki/BitTorrent_(%E5%8D%8F%E8%AE%AE))
+[^1]: [维基百科BitTorrent协议](https://zh.wikipedia.org/wiki/BitTorrent_(%E5%8D%8F%E8%AE%AE))
 
  * [Torrent.Express](https://torrent.express/)
  * [Confluence](https://github.com/anacrolix/confluence)

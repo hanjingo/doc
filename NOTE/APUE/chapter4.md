@@ -12,9 +12,12 @@ int lstat(const char *restrict pathname, struct stat *restrict buf);
 int fstatat(int fd, const char *restrict pathname, struct stat *restrict buf, int flag);
 ```
 
-- pathname
-- buf
-- 
+- `fd` 文件描述符
+- `pathname` 文件路径
+- `buf` 
+- `flag`
+
+获取文件信息
 
 
 

@@ -80,6 +80,12 @@
 
 
 
+## skynet
+
+
+
+
+
 ## 其它
 
 #### [eos-go报`action declares irrelevant authority`错误](eos-go.md)

@@ -14,3 +14,11 @@
 - ssize_t 有符号
 - size_t 无符号
 
+
+
+## jemalloc
+
+
+
+## 参考
+
