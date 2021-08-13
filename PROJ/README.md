@@ -10,7 +10,7 @@
 
 ## SKYNET
 
-- [skynet集群环境搭建](SKYNET/cluster.md)
+- [skynet环境搭建](SKYNET/env.md)
 
 ## EOS
 

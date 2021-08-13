@@ -101,4 +101,5 @@ socket_server_poll
 ## 参考
 
 - [skynet源码赏析](https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/)
+- [skynet网络机制]
 

@@ -11,12 +11,12 @@
 ```c
 // skynet模块
 struct skynet_module {
-	const char * name;			// 模块名字
-	void * module;				// 模块的句柄，通过dlopen函数获得
-	skynet_dl_create create;	// 创建函数
-	skynet_dl_init init;		// 初始化函数
+	const char * name;					// 模块名字
+	void * module;							// 模块的句柄，通过dlopen函数获得
+	skynet_dl_create create;		// 创建函数
+	skynet_dl_init init;				// 初始化函数
 	skynet_dl_release release;	// 释放函数
-	skynet_dl_signal signal;	// 处理信号函数
+	skynet_dl_signal signal;		// 处理信号函数
 };
 ```
 
@@ -114,34 +114,55 @@ skynet在创建完`module`实例并初始化后，同时创建了一个`skynet_c
 ```c
 // skynet模块上下文
 struct skynet_context {
-	void * instance; 				// 由模块的create函数创建的实例指针
+	void * instance; 							// 由模块的create函数创建的实例指针
 	struct skynet_module * mod; 	// module对象指针
-	void * cb_ud;					// 传递给消息回调函数的userdata
-	skynet_cb cb;					// 消息回调函数，由模块的init函数来指定
+	void * cb_ud;									// 传递给消息回调函数的userdata
+	skynet_cb cb;									// 消息回调函数，由模块的init函数来指定
 	struct message_queue *queue;	// 内部消息队列
-	ATOM_POINTER logfile;			// 日志
-	uint64_t cpu_cost;				// cpu耗费事件（ms）
-	uint64_t cpu_start;				// cpu开始时间（ms）
-	char result[32];				// 返回值
-	uint32_t handle;				// 当前上下文的ID
-	int session_id;					// 标识对应的请求
-	ATOM_INT ref;					// 引用计数变量，为0表示可以背释放
-	int message_count;				// 消息数量统计
-	bool init;						// 是否已初始化
-	bool endless;					// 消息是否堵住
-	bool profile;
+	ATOM_POINTER logfile;					// 日志
+	uint64_t cpu_cost;						// cpu回调耗费事件（ms）
+	uint64_t cpu_start;						// cpu回调开始时间（ms）
+	char result[32];							// 返回值
+	uint32_t handle;							// 当前上下文的ID
+	int session_id;								// 标识对应的请求
+	ATOM_INT ref;									// 引用计数变量，为0表示可以背释放
+	int message_count;						// 消息数量统计
+	bool init;										// 是否已初始化
+	bool endless;									// 消息是否堵住
+	bool profile;									// 是否做信息统计（cpu consume ...）
 
 	CHECKCALLING_DECL
 };
 ```
 
-### 对消息的处理
 
-1. 当消息到达`skynet_context`时，会调用`callback`
-2. 在调用`callback`时传入以下参数：
-   - `userdata` 一般是instance指针
-   - `source` 发送方的服务id
+
+## 回调
+
+### C服务回调
+
+```c
+typedef int (*skynet_cb)(struct skynet_context * context, void *ud, int type, int session, uint32_t source , const void * msg, size_t sz)
+```
+
+1. 当消息到达`skynet_context`时，会调用`skynet_cb`，其定义如下：
+2. 在调用`skynet_cb`时传入以下参数：
+   - `context` 上下文
+   - `ud` 一般是instance指针
    - `type` 消息类型
+   - `session` 凭证
+   - `source` 发送方的服务id
    - `msg` 数据
    - `sz` 数据大小
+
+### LUA服务回调
+
+TODO
+
+
+
+## 参考
+
+- [skynet源码分析（10）--消息机制之注册和回调](https://blog.csdn.net/119365374/article/details/77460685)
+- [Skynet服务器框架（八） 任务和消息调度机制](https://blog.csdn.net/linshuhe1/article/details/73854411)
 

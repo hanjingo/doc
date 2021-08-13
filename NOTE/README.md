@@ -15,6 +15,7 @@
 ## 阅读中
 
 - [UNIX环境高级编程](APUE/README.md)
+- [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [Ceph源码分析](CEPH_SOURCE_CODE_ANALYSIS/README.md)
 - [c++ Templates](CPP_TEMPLATES/README.md)
 - [深度探索c++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md)
@@ -34,5 +35,4 @@
 - [unix网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
 - [linux多线程服务端编程](MUDUO/README.md)
 - [effective c++](EFFECTIVE_CPP/README.md)
-- [深入理解计算机系统](COMPUTER_SYSTEMS_A_PROGRAMMER_PERSPECTIVE/README.md)
 

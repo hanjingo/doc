@@ -103,26 +103,30 @@
 - `SIGPROF` 这个信号在SUSv4中已被标记为弃用，将来的标准可能会将此信号移除。
 - `SIGPWR` 这是一种依赖于系统的信号；它主要用于具有不间断电源（UPS）的系统，如果电源失效，则UPS起作用，而且通常软件会接到通知。
 - `SIGQUIT` 当用户在终端上按退出键（一般采用Ctrl+\）时，中断驱动程序产生此信号，并发送给前台进程组中的所有进程；此信号不仅终止前台进程组（如SIGINT所做的那样），同时产生一个core文件。
-- `SIGSEGV`
-- `SIGSTKFLT`
-- `SIGSTOP`
-- `SIGSYS`
-- `SIGTERM`
-- `SIGTHAW`
-- `SIGTHR`
-- `SIGTRAP`
-- `SIGTSTP`
-- `SIGTTIN`
-- `SIGTTOU`
-- `SIGURG`
-- `SIGUSR1`
-- `SIGUSR2`
-- `SIGVTALRM`
-- `SIGWAITING`
-- `SIGWINCH`
-- `SIGXCPU`
-- `SIGXFSZ`
-- `SIGXRES`
+- `SIGSEGV` 指示进程进行了一次无效的内存引用，SEGV(segmentation violation, 段违例)。
+- `SIGSTKFLT` 此信号仅由Linux定义。
+- `SIGSTOP` 这是一个作业控制信号，它停止一个进程。它类似于交互停止信号（SIGTSTP），但是SIGSTOP不能被捕捉或忽略。
+- `SIGSYS` 该信号指示一个无效的系统调用。由于某种未知原因，进程执行了一条机器指令，内核认为这是一条系统调用，但该指令指示系统调用类型的参数却是无效的。
+- `SIGTERM` 这是由kill(1)命令发送的系统默认终止信号。由于该信号是由应用程序捕获的，使用SIGTERM也让程序有机会在退出之前做好清理工作，从而优雅地终止（相对于SIGKILL而言。SIGKILL不能被捕捉或忽略）。
+- `SIGTHAW` 此信号仅由Solaris定义。在被挂起的系统恢复时，该信号用于通知相关进程，他们需要采取特定动作。
+- `SIGTHR` FreeBSD线程库预留的信号，它的值定义或与SIGLWP相同。
+- `SIGTRAP` 指示一个实现定义的硬件故障。
+- `SIGTSTP` 交互停止信号，当用户在终端上按挂起键（一般采用Ctrl+Z）时，终端驱动程序产生此信号。该信号发送至前台进程组中的所有进程。
+- `SIGTTIN` 当一个后台进程组进程试图读其控制终端时，终端驱动程序产生此信号。下列例外情况不产生此信号：
+  - 读进程忽略或阻塞此信号
+  - 读取进程所属的进程组是孤儿进程组，此时读操作返回出错，errno设置为EIO
+- `SIGTTOU` 当一个后台进程组进程试图写其控制终端时，终端驱动程序产生此信号。与`SIGTTIN`信号不同，一个进程可以选择允许后台进程写控制终端。如果不允许后台进程写，则也有两种情况不产生信号：
+  - 写进程忽略或阻塞此信号
+  - 写进程所属进程组是孤儿进程组
+- `SIGURG`  此信号通知进程已经发生一个紧急情况。在网络连接上接到带外的数据时，可选择地产生此信号。
+- `SIGUSR1` 这是一个用户定义的信号，可用于应用程序。
+- `SIGUSR2` 这是另一个用户定义的信号，与SIGUSR1相似，可用于应用程序。
+- `SIGVTALRM` 当一个由setitimer(2)函数设置的虚拟间隔时间已经超时时，产生此信号。
+- `SIGWAITING` 此信号由Solaris线程库内部使用，不做他用。
+- `SIGWINCH` 内核维持与每个终端或伪终端相关良窗口的大小。进程可以用ioctl函数得到或设置窗口的大小。如果进程用ioctl的设置窗口大小命令更改了窗口大小，则内核将SIGWINCH信号发送至前台进程组。
+- `SIGXCPU` Single UNIX Specification的XSI扩展支持资源限制的概念；如果进程超过了其软CPU时间限制，则产生此信号。
+- `SIGXFSZ` 如果进程超过了其软文件长度限制，则产生此信号。
+- `SIGXRES` 此信号仅由Solaris定义。可选择地使用此信号以通知进程超过了预配置的资源值。Solaris资源限制机制是一种通用设施，用于控制在独立应用集之间共享资源的使用。
 
 ### 不产生core文件的情况
 
@@ -131,3 +135,53 @@
 - 用户没有写当前工作目录的权限。
 - 文件已存在且用户对该文件设有写权限。
 - 文件太大超过了`RLIMIT_CORE`限制。
+
+
+
+## 函数signal
+
+```c
+#include <signal.h>
+void(*signal(int signo, void(*func)(int)))(int);
+```
+
+- `signo` 信号量
+- `func` 信号处理动作，默认SIG_IGN
+- 返回值
+  - 成功：返回以前的信号处理配置
+  - 出错：返回SIG_ERR
+
+例，捕捉SIGUSR1和SIGUSR2的简单程序：
+
+```c
+#include "apue.h"
+
+static void sig_usr(int);
+
+int 
+main(void)
+{
+  if (signal(SIGUSR1, sig_usr) == SIG_ERR)
+    err_sys("can't catch SIGUSR1");
+  if (signal(SIGUSR2, sig_usr) == SIG_ERR)
+    err_sys("can't catch SIGUSR2");
+  for (;;)
+    pause();
+}
+
+static void
+sig_usr(int signo)
+{
+  if (signo == SIGUSR1)
+    printf("received SIGUSR1\n");
+  else if (signo == SIGUSR2)
+    printf("received SIGUSR2\n");
+  else
+    err_dump("received signal %d\n", signo);
+}
+```
+
+
+
+## 不可靠的信号
+
