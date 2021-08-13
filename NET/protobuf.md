@@ -320,17 +320,16 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 
 ## 参考
 
+### 文献
+
+[1] 陈硕.Linux多线程服务端编程-使用muduo c++网络库.
+
+### 外链
+
 - [Protocol Buffers](https://developers.google.com/protocol-buffers)
-
 - [github protobuf](https://github.com/protocolbuffers/protobuf)
-
 - [维基百科-Protocol Buffers](https://zh.wikipedia.org/wiki/Protocol_Buffers)
-
 - [Google Protocol Buffers 实用技术： 解析.proto文件和任意数据文件](https://cxwangyi.blogspot.com/2010/06/google-protocol-buffers-proto.html)
-
 - [深入 ProtoBuf - 简介](https://www.jianshu.com/p/a24c88c0526a)
-
 - [Protobuf编码](https://www.cnblogs.com/jialin0x7c9/p/12418487.html)
-
-- <<Linux多线程服务端编程-使用muduo c++网络库>>.陈硕
 

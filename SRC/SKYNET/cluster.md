@@ -4,7 +4,7 @@
 
 
 
-## ID
+## harbor ID
 
 skynet使用32bit的id（harbor id）来作为skynet上节点的唯一标识，其结构如下：
 
@@ -12,9 +12,9 @@ skynet使用32bit的id（harbor id）来作为skynet上节点的唯一标识，�
 | -------- | ---------- |
 | 8bit     | 24bit      |
 
-- 同一进程的“机器标识”是一致的，只需要比较“机器标识”就可以知道是同一进程内。
-- 每个skynet进程与其它进程通讯的部件称为harbor。
-- 机器标识的取值范围为`[1, 255]`(0留给系统内部用)。
+- 每个skynet进程与其它进程通讯的部件称为harbor
+- 同一进程的“机器标识”是一致的，通过比较“机器标识”就可以判断是本机节点还是远程节点
+- 机器标识一般的取值范围为`[1, 255]`(取0表示单进程)
 - 由于机器标识为8bit，所以集群中最多只可能有255个harbor
 
 ### 消息投递
@@ -26,29 +26,22 @@ skynet使用32bit的id（harbor id）来作为skynet上节点的唯一标识，�
 
 
 
-## master/slave模式
+## `master/slave`模式
 
 `master/slave`模式下节点的harbor之间通过master来建立网络，master既可以是一个单独的进程也可以依附于某个进程（默认）。
 
 master其实就是一个简单的内存key-value数据库；key表示节点的名字/ID，value存储节点harbor的地址信息。
 
-节点网络示意图：
+一个5节点网络示意图：
 
-```txt
-				master
-			/		|		\
-		 /		|			\
-	slave1--|----- slave2
-				\	|			/
-				 slave3
-```
+![cluster_sample1](res\cluster_sample1.png)
 
 - master连接所有slave节点
 - slave节点的新增/减少/服务变更都是先通知master，再由master转发
 
 ### API
 
-```lua
+```
 local harbor = require "skynet.harbor"
 ```
 
@@ -60,10 +53,14 @@ local harbor = require "skynet.harbor"
 
 **注意：`harbor.link(id)`和`barbor.linkmaster()`有一定开销，慎用！**
 
-### 开启
+参考源码：
+
+- `lualib/skynet/harbor.lua`
+- `service/cslave.lua`
+
+### 开启集群
 
 1. 当选项`harbor`不为0时，意味着采用`master/slave`模式进行组网；此时必须配置选项：`address`，`master`等选项，启动slave服务；slave会根据`master`选项地址去连接master节点。
-
 2. 当选项`standalone`不为NULL时，意味着启用master服务；master会监听`standalone`地址。
 
 ### 组网
@@ -82,7 +79,7 @@ slave2->slave3: 连接
 slave3-->slave2: 接受连接
 ```
 
-源码：
+参考源码：
 
 - `service/cslave.lua`
 - `service/cmaster.lua`
@@ -91,20 +88,21 @@ slave3-->slave2: 接受连接
 
 组网完成后，slave之间主要通过`harbor服务`来进行消息通讯；其流程如下：
 
-```txt
-	 slave1															  slave2
-	/				\						 socket连接	     /	    		\
-A服务----->harbor服务--------------->harbor服务----->B服务
+```sequence
+Title:进程间harbor服务示意图
+slave1的A服务-->slave1的harbor服务:进程内通讯
+slave1的harbor服务-->slave2的harbor服务:跨进程通讯
+slave2的harbor服务-->slave2的B服务:进程内通讯
 ```
 
-harbor服务功能包括以下：
+harbor服务的功能包括以下：
 
 - 主动/被动连接其他slave
 - 注册新的服务名称
 - 接管新到的套接字文件描述符
 - ...
 
-源码:
+参考源码：
 
 - `service/cslave.lua`
 - `service-src/service_harbor.c`
@@ -115,9 +113,19 @@ harbor服务功能包括以下：
 2. 弹性不够，如果一个slave意外退出，这个harbor id就被废弃；如果这时一个新的进程以相同的harbor id接入，无法保证新旧地址不重复；需要自己解决harbor id复用问题。
 3. `master/slave`机制建立在：节点之间是可靠连接，节点之间不会断开。的前提上，这个前提很多时候不一定成立。
 
-### 示例
+### 操作示例
 
-TODO
+1. 设置master的配置文件和slave的配置文件，参考`examples/config`，`examples/config_log`这两个文件
+
+2. 启动两个lua进程
+
+   ```sh
+   # 启动master
+   ./skynet examples/config
+   
+   # 启动slave
+   ./skynet examples/config_log
+   ```
 
 
 
@@ -154,9 +162,21 @@ cluster模式兼容`master/slave`模式，cluster模式其实就是用更上层�
 
 ### 示例
 
-参考自：`examples/config.c1`，`examples/config.c2`
+方法一：
 
-TODO
+1. 编写配置文件，参考：`examples/config.c1`，`examples/config.c2`这2个文件
+
+2. 启动一个节点，并注册服务信息
+
+   ```sh
+   ./skynet examples/config.c1
+   ```
+
+3. 启动另一个节点
+
+   ```sh
+   ./skynet examples/config.c2
+   ```
 
 
 

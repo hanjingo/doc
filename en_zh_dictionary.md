@@ -13,14 +13,14 @@
 | **I** |           |           |           | [id](#id) |           |      |           |           |           |      |      | [il](#il) | [im](#im) | [in](#in) |           |           |           |           |           |           |           |           |           |           |           |      |
 | **J** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **K** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
-| **L** |           |           |           |           | [le](#le) |      |           |           | [li](#li) |      |      |           |           |           | [lo](#lo) |           |           |           |           |           |           |           |           |           |           |      |
+| **L** | [la](#la) |           |           |           | [le](#le) |      |           |           | [li](#li) |      |      |           |           |           | [lo](#lo) |           |           |           |           |           |           |           |           |           |           |      |
 | **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |      |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |      |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
 | **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           |           |           |           |      |
-| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) |           |           |           |           |           |           |           |      |
+| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           |           |           |           |           |           |      |
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
-| **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           |           |      |
+| **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           | [sy](#sy) |      |
 | **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           |           |      |
 | **U** |           |           |           |           |           |      |           |           |           |      |      |           |           | [un](#un) |           | [up](#up) |           |           |           | [ut](#ut) |           |           |           |           |           |      |
 | **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]
 
 ---
 
@@ -108,6 +108,8 @@ applicant `/ˈaplɪk(ə)nt/` 申请人
 ### ar
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
+
+arbitrary `/ˈɑːbɪtrəri/` 任意的，武断的，随心所欲的，专制的
 
 architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
 
@@ -219,6 +221,8 @@ circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
 clampdown `/ˈklæmpdaʊn/` 严禁，制止，取缔
 
+closure `/ˈkləʊʒə(r)/` 停业，关闭，倒闭，终止
+
 ### co
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
@@ -233,11 +237,15 @@ compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
 complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
 
+compose`/kəmˈpəʊz/` 组成，构成，作曲，撰写
+
 composite `/ˈkɒmpəzɪt/` 合成的，合成物，混合物
 
 comment `/ˈkɒment/` 评论，批评，指责 
 
 commodity `/kəˈmɒdəti/` 商品，有用的东西
+
+concept `/ˈkɒnsept/` 观念，概念
 
 concern `/kənˈsəːn/` 关注，担心
 
@@ -265,7 +273,7 @@ contiguous `/kənˈtɪɡjʊəs/` 毗邻的，相邻的
 
 coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
 
-correspond `/kɒrɪˈspɒnd/` 通信，相符
+[^11]:**correspond `/kɒrɪˈspɒnd/` 通信，相符，符合**
 
 ### cr
 
@@ -312,6 +320,8 @@ desired `/dɪˈzaɪə(r)/` 渴望，期望
 despite `/dɪˈspaɪt/` 尽管，即使
 
 destined `/ˈdestɪnd/` 命中注定的，命运
+
+detect `/dɪˈtekt/` 发现，查明，探测
 
 deter `/dɪˈtɜː(r)/` 阻止，威慑
 
@@ -408,6 +418,8 @@ evolved `/iˈvɒlvd/` 逐渐形成，进化
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
 [^6]:**examine `/ɪɡˈzæmɪn/` 审查，考察**
+
+exclusive `/ɪkˈskluːsɪv/` 专有的，独占的，专有的，排外的，独家
 
 exert `/ɪɡˈzɜːt/` 发挥，运用，尽力
 
@@ -585,7 +597,7 @@ integral `/ˈɪntɪɡrəl/` 必须的，不可或缺的，完整的
 
 interact `/ˌɪn.təˈrækt/` 交流，交往，相互作用
 
-interchangeably `/ˌɪntəˈtʃeɪn(d)ʒəbli/` 可替换的
+interchange `/ˈɪntətʃeɪndʒ /` 互换，交换，替换
 
 intermediate `/ˌɪntəˈmiːdiət/` 中间的，中级的，中等的
 
@@ -613,6 +625,12 @@ invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
 # L
 
+### la
+
+[回到L](#L)&ensp;[回到顶部](#英汉词典)
+
+later `/ˈleɪtər/`  后来，以后，随后
+
 ### le
 
 [回到L](#L)&ensp;[回到顶部](#英汉词典)
@@ -633,6 +651,8 @@ likewise `/ˈlaɪkwaɪz/` 同样的，类似的
 
 logarithmic `/ˌlɒgəˈrɪðmɪk/` 对数(log)
 
+loosely `/loosely/` 宽松的，松散的，不精确的
+
 ---
 
 # M
@@ -641,7 +661,7 @@ logarithmic `/ˌlɒgəˈrɪðmɪk/` 对数(log)
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
 
-manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改
+[^12]:**manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改**
 
 manner `/ˈmanə/` 方式，举止，风俗，礼仪
 
@@ -686,6 +706,8 @@ narrow `/ˈnarəʊ/` 狭窄的，变窄，有限的，差距小的
 ### ne
 
 [回到N](#N)&ensp;[回到顶部](#英汉词典)
+
+nesting `/ˈnestɪŋ/` 筑巢，嵌套
 
 newbie `/ˈnjuːbi/` 新手
 
@@ -825,6 +847,12 @@ proteins `/ˈprəʊtiːnz/` 蛋白质
 
 prune `/pruːn/` 修剪树干，削减
 
+### ps
+
+[回到P](#P)&ensp;[回到顶部](#英汉词典)
+
+pseudo `/ˈsjuːdəʊ/` 假的，冒充的
+
 ---
 
 # Q
@@ -874,6 +902,8 @@ remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
 rendered `/ˈrɛndə/` 使得，提供，送交，表现，描绘
 
 replication `/ˌreplɪ'keɪʃ(ə)n/`  复制，拷贝，重复（实验），回答
+
+reserve `/rɪˈzɜːv/` 预定，预留，保留，保有
 
 respective `/rɪˈspek.tɪv/`  各自的，分别的
 
@@ -1006,6 +1036,12 @@ surname `/ˈsɜːneɪm/` 姓，给...加姓
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
 swarm `/swɔːm/` 群，组
+
+### sy
+
+[回到S](#S)&ensp;[回到顶部](#英汉词典)
+
+syntax `/ˈsɪntæks/` 语法，句法
 
 ---
 

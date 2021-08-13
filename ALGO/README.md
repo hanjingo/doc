@@ -10,7 +10,7 @@
 - [延时队列]
 - [八皇后问题](eight_queen.md)
 - [hash碰撞](hash_collision.md)
-- [堆]
+- [堆](heap.md)
 - [KMP算法]
 - [LRU算法](lru.md)
 - [链表]

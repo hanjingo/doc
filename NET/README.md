@@ -14,6 +14,8 @@
 
 - [Protobuf编码](protobuf.md)
 
+- [MessagePack编码](msgpack.md)
+
 - [TCP协议](tcp.md)
 
 - [UDP协议](udp.md)

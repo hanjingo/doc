@@ -158,7 +158,22 @@ skynet使用以下特性保证线程安全：
 
 ## 集群
 
-skynet是一个单进程多线程的异步消息传递框架，当多个skynet服务器一起构成分布式结构时，每个skynet服务器就是一个节点，每个节点只有一个进程。
+### `master/slave`模式
+
+`master/slave`模式下节点的harbor之间通过master来建立网络，master既可以是一个单独的进程也可以依附于某个进程（默认）。
+
+master其实就是一个简单的内存key-value数据库；key表示节点的名字/ID，value存储节点harbor的地址信息。
+
+一个5节点网络示意图：
+
+![cluster_sample1](res\cluster_sample1.png)
+
+- master连接所有slave节点
+- slave节点的新增/减少/服务变更都是先通知master，再由master转发
+
+### cluster模式
+
+cluster模式兼容`master/slave`模式，cluster模式其实就是用更上层的api来实现一个节点信息查询系统；通过查询注册的节点以及对应的服务信息来远程调用，从而实现消息路由。
 
 
 
