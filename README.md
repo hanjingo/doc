@@ -1,14 +1,23 @@
 # 目录
 - [算法](ALGO/README.md)
+
 - [编码之坑](BUG/README.md)
+
 - [职场](CAREER/README.md)
+
 - [数据库](DB/README.md)
+
 - [分布式](DCS/README.md)
+
 - [经济](ECONOMIC/README.md)
+
 - [编程语言](LANG/README.md)
+
 - [法律](LAW/README.md)
 
 - [生存经验](LIFE/README.md)
+
+- [数学](MATH/README.md)
 
 - [多媒体](MEDIA/README.md)
 
