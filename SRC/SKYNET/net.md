@@ -101,5 +101,6 @@ socket_server_poll
 ## 参考
 
 - [skynet源码赏析](https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/)
-- [skynet网络机制]
+- [skynet网络机制](https://manistein.github.io/blog/post/server/skynet/skynet%E7%BD%91%E7%BB%9C%E6%9C%BA%E5%88%B6/)
+- [在skynet中处理TCP的分包](https://blog.codingnow.com/2016/03/skynet_tcp_package.html)
 
