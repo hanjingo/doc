@@ -4,7 +4,80 @@
 
 
 
-## 使用
+## API
+
+- `gateserver.openclient(fd)`
+
+  允许fd接收消息，给消息放行
+
+- `gateserver.closeclient(fd)`
+
+  关闭fd，踢掉一个连接
+
+- `gateserver.start(handler)`
+
+  入口
+
+
+
+## 原理
+
+gate服务通过函数`gateserver.start(handler)`启动，用户需要自己实现回调器接口，其接口定义如下：
+
+- `handler.connect(fd, ipaddr)`
+
+  - `fd` socket句柄
+  - `ipaddr` 客户端地址
+
+  当一个新客户端被accept后，connect被回调；
+
+  **注意：当connect被调用后，一定要记得调用`gateserver.openclient(fd)`给套接字放行。**
+
+- `handler.disconnect(fd)`
+
+  - `fd` socket句柄
+
+  当连接被断开，disconnect被回调；
+
+- `handler.open(source, conf)`
+
+  - `source` 请求来源地址
+  - `conf` 开启gate服务的参数表
+
+  当监听的端口被打开时，open被调用
+
+- `handler.message(fd, msg, sz)`
+
+  - `fd` socket句柄
+  - `msg` C指针（用完之后记得用skynet_free释放）
+  - `sz` 包长度
+
+  当一个完整的消息包被切分好后，message被调用；
+
+- `handler.error(fd, msg)`
+
+  - `fd` socket句柄
+  - `msg` 错误消息
+
+  当一个连接异常（通常意味着断开），error被调用
+
+- `handler.warning(fd, size)`
+
+  - `fd` socket句柄
+  - `size` 待发送的数据大小（单位：字节）
+
+  当fd上**待发送**的数据累积超过1M字节后，warning被调用
+
+- `handler.command(cmd, source, ...)`
+
+  - `cmd` 内部消息指令(字符串，open和close系统保留)
+  - `source` 消息来源
+
+  当收到skynet内部消息时，如果有注册command方法，command被调用
+
+
+
+## 示例
 
 
 
