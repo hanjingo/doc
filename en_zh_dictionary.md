@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]
 
 ---
 
@@ -221,7 +221,7 @@ circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
 clampdown `/ˈklæmpdaʊn/` 严禁，制止，取缔
 
-closure `/ˈkləʊʒə(r)/` 停业，关闭，倒闭，终止
+[^14]:**closure `/ˈkləʊʒə(r)/` 闭包，停业，关闭，倒闭，终止**
 
 ### co
 
@@ -272,6 +272,8 @@ convenient `/kənˈviːnɪənt/` 实用的，方便的
 contiguous `/kənˈtɪɡjʊəs/` 毗邻的，相邻的
 
 coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
+
+corporate `/ˈkɔːpərət/`  公司的，全体的，共同的
 
 [^11]:**correspond `/kɒrɪˈspɒnd/` 通信，相符，符合**
 
@@ -637,6 +639,8 @@ later `/ˈleɪtər/`  后来，以后，随后
 
 league `/liːɡ/` 联盟
 
+leak `/liːk/` 泄露，渗透，裂缝
+
 legal `/ˈliːɡl/`  法律的，合法的
 
 ### li
@@ -817,7 +821,7 @@ pivot `/ˈpɪvət/` 支点，枢轴，中心，核心
 
 potential `/pəˈten.ʃə/` 潜在的，可能的
 
-portion `/ˈpɔːʃ(ə)n/` 一部分
+[^13]:**portion `/ˈpɔːʃ(ə)n/` 一部分**
 
 ### pr
 

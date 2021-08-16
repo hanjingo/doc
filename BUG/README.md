@@ -26,6 +26,8 @@
 
 #### [WireShark](wire_shark.md)
 
+#### [telnet](telnet.md)
+
 #### [linux系统日志](linux_sys_log.md)
 
 #### [linux调试命令](linux_debug_cmd.md)

@@ -10,8 +10,6 @@
 
 ## SKYNET
 
-- [skynet环境搭建](SKYNET/env.md)
-
 ## EOS
 
   - [eos环境搭建](EOS/INSTALL/README.md)
@@ -30,6 +28,10 @@
   - [以太坊挖矿教程](ETH/miner.md)
   - [solidity项目](ETH/solidity.md)
   - [总结](ETH/summary.md)
+
+## IM
+
+- [im系统调研报告](IM/im_report.md)
 
 ## IPFS
 

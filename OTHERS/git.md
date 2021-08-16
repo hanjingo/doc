@@ -7,7 +7,7 @@
 | 命令            | 参数                                                         | 例子                                                         |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `add`           |                                                              | `git add file1`添加文件file1                                 |
-| `branch`        | `-a`所有分支<br>`-d`删除分支<br>`-D`删除分支（强制）<br>`-m`重命名分支<br>`-M`重命名分支（强制） | `git branch`列出所有**本地**分支<br>`git branch -a`列出所有分支<br>`git branch -d branchName`删除分支branchName，如果分支没有被合并会删除失败<br>`git branch -D branchName`删除分支branchName，即使分支没有被合并也删除<br>`git branch -m oldName newName`重命名分支oldName为newName，如果newName已存在，跳过 |
+| `branch`        | `-a`所有分支<br>`-d`删除分支<br>`-D`删除分支（强制）<br>`-m`重命名分支<br>`-M`重命名分支（强制）<br>--set-upstream-to 本地关联远程分支<br> | `git branch`列出所有**本地**分支<br>`git branch -a`列出所有分支<br>`git branch -d branchName`删除分支branchName，如果分支没有被合并会删除失败<br>`git branch -D branchName`删除分支branchName，即使分支没有被合并也删除<br>`git branch -m oldName newName`重命名分支oldName为newName，如果newName已存在，跳过<br>`git branch --set-upstream-to=origin/dev dev` 将本地分支dev与远程分支dev关联 |
 | `checkout`      | `-b` 创建新分支                                              | `git checkout master`切换到master分支<br>`git checkout -b mybranch`创建一个名叫mybranch<br>`git checkout -b branchName tagName`基于标签"tagName"创建一个名叫"branchName"的分支<br>`git checkout -- file`撤销**未提交的**文件file1的修改 |
 | `clone`         |                                                              | `git clone xxx.git`克隆`xxx`项目                             |
 | `commit`        | `-m` 提交注释                                                | `git commit -m "memo"`提交注释memo<br>`git commit -C head -a --amend`增补提交，不会产生新的提交记录 |

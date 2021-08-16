@@ -4,6 +4,7 @@
 - [buffer](buffer.md)
 - [集群](cluster.md)
 - [配置](config.md)
+- [环境搭建](env.md)
 - [网关](gateway.md)
 - [锁](lock.md)
 - [登录](login.md)

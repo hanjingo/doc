@@ -26,20 +26,20 @@ struct skynet_config {
 
 | 键         | 默认值            | 说明                                                         |
 | ---------- | ----------------- | ------------------------------------------------------------ |
-| thread     | `8`               | 启动多少个工作线程，通常不要将它配置超过实际拥有的cpu核心数  |
-| cpath      | `./cservice/?.so` | 用c编写的服务模块的位置，以`;`作为分割。                     |
+| address    | -                 | （可选）当前节点的ip和端口                                   |
 | bootstrap  | `snlua bootstrap` | 启动的第一个服务以及其启动参数                               |
+| cpath      | `./cservice/?.so` | 用c编写的服务模块的位置，以`;`作为分割。                     |
+| enablessl  | NULL              | 如果需要通过ltls模块支持https，设置为true                    |
+| harbor     | `1`               | 当前节点id，取值范围[1,255]；（0表示这是一个单节点，此时`master`, `address`和`standalone`都不必设置）。 |
 | logger     | `NULL`            | 函数`skynet_error`输出到的文件路径                           |
 | logservice | `logger`          | log定制参数（时间戳...）                                     |
 | logpanth   | -                 | ？                                                           |
-| standalone | -                 | （可选）当前节点的master服务监听的地址，用于协调slave组网；配置格式为：`ip:端口` |
 | master     | -                 | （可选）当前集群中的master节点的ip和端口                     |
-| address    | -                 | （可选）当前节点的ip和端口                                   |
-| harbor     | `1`               | 当前节点id，取值范围[1,255]；（0表示这是一个单节点，此时`master`, `address`和`standalone`都不必设置）。 |
-| start      | `main`            | 指定要启动的skynet主程序，默认main.lua                       |
-| enablessl  | NULL              | 如果需要通过ltls模块支持https，设置为true                    |
-| -- daemon  | `NULL`            | 后台模式，如果配置成`daemon="./skynet.pid"`就可以以后台模式启动 |
 | profile    | `1`               | 是否启用统计模式（对性能有点影响）                           |
+| standalone | -                 | （可选）当前节点的master服务监听的地址，用于协调slave组网；配置格式为：`ip:端口` |
+| start      | `main`            | 指定要启动的skynet主程序，默认main.lua                       |
+| thread     | `8`               | 启动多少个工作线程，通常不要将它配置超过实际拥有的cpu核心数  |
+| -- daemon  | `NULL`            | 后台模式，如果配置成`daemon="./skynet.pid"`就可以以后台模式启动 |
 
 ### lua配置
 
@@ -48,6 +48,9 @@ struct skynet_config {
 | lualoader  | `lualib/loader.lua` | 指定用哪个lua文件来加载lua服务     |
 | luaservice | -                   | lua服务代码所在的位置，以`;`分割。 |
 | snax       |                     | 用snax框架编写的服务的查找路径     |
+| lua_cpath  |                     |                                    |
+| lua_path   |                     |                                    |
+| preload    |                     |                                    |
 
 ### 集群
 
