@@ -4,8 +4,8 @@
 
 skynet实现热更新的两种方式：
 
-- clearcache
-- inject
+- [clearcache](#clearcache)
+- [inject](#inject)
 
 
 
@@ -192,61 +192,103 @@ function COMMAND.clearcache()
 end
 ```
 
+**注意：clearcache只能用于新服务的热更新，对已有服务不能更新；新服务用新代码，旧服务用旧代码。**
+
 ### 用例
 
-1. 修改lua启动文件`examples/main.lua`，开启console(如果已有就忽略)
+1. 新建热更新代码文件`examples/hot.lua`和`examples/main_hot.lua`
 
    ```lua
+   -- main_hot.lua
+   package.path = "./examples/?.lua;" .. package.path
+   local skynet = require "skynet"
    skynet.start(function()
-   	...
-   	skynet.newservice("debug_console",8000)
-   	...
+       skynet.newservice("debug_console",8000)
+       print("test hotpatch...")
+       while true do
+           skynet.newservice("hot")
+           skynet.sleep(300)
+       end
    end)
    ```
 
-2. 启动skynet（配置文件使用`examples/config`）
-
-   ```sh
-   ./skynet examples/config
+   ```lua
+   -- hot.lua
+   local skynet = require "skynet"
+   skynet.start(function()
+       print("hello")
+   end)
    ```
 
-3. 使用telnet登录控制台
+2. 新建配置文件`examples/config.hot`
+
+   ```txt
+   thread = 8
+   logger = nil
+   harbor = 0
+   start = "main_hot"
+   luaservice ="./service/?.lua;./test/?.lua;./examples/?.lua"
+   ```
+
+3. 启动skynet
 
    ```sh
-   he@SD-20210816HMLO:~$ telnet 127.0.0.1 8000
+   he@SD-20210816HMLO:/mnt/e/skynet$ ./skynet examples/config.hot
+   [:00000002] LAUNCH snlua bootstrap
+   [:00000003] LAUNCH snlua launcher
+   [:00000004] LAUNCH snlua cdummy
+   [:00000005] LAUNCH harbor 0 4
+   [:00000006] LAUNCH snlua datacenterd
+   [:00000007] LAUNCH snlua service_mgr
+   [:00000008] LAUNCH snlua main_hot
+   [:00000009] LAUNCH snlua debug_console 8000
+   [:00000009] Start debug console at 127.0.0.1:8000
+   test hotpatch...
+   [:0000000a] LAUNCH snlua hot
+   hello
+   ```
+
+4. 修改lua文件`examples/hot.lua`为以下内容
+
+   ```lua
+   -- hot.lua
+   local skynet = require "skynet"
+   skynet.start(function()
+       print("world")
+   end)
+   ```
+
+5. 使用telnet登录控制台
+
+   ```sh
+   he@SD-20210816HMLO:/mnt/e/skynet$ telnet 127.0.0.1 8000
    Trying 127.0.0.1...
    Connected to 127.0.0.1.
    Escape character is '^]'.
    Welcome to skynet console
-   list
-   :01000004       snlua cmaster
-   :01000005       snlua cslave
-   :01000007       snlua datacenterd
-   :01000008       snlua service_mgr
-   :0100000a       snlua protoloader
-   :0100000b       snlua console
-   :0100000c       snlua debug_console 8000
-   :0100000d       snlua simpledb
-   :0100000e       snlua watchdog
-   :0100000f       snlua gate
    ```
 
-4. 在控制台输入`clearcache`
+6. 在控制台输入`clearcache`
 
    ```sh
    clearcache
    <CMD OK>
    ```
 
-5. 修改lua文件
+7. 控制台输出如下
 
-**注意：clearcache只能用于新服务的热更新，对已有服务不能更新；**
+   ```sh
+   [:00000015] LAUNCH snlua hot
+   hello
+   [:00000016] LAUNCH snlua hot
+   world
+   ```
 
 
 
 ## inject
 
-inject(注入更新)，将新代码注入到已有的服务里，让服务执行新的代码，**可以热更已开启的服务**
+inject(注入更新)，将新代码注入到已有的服务里，让服务执行新的代码，**可以热更旧服务**
 
 ### 源码：
 
@@ -254,8 +296,7 @@ inject(注入更新)，将新代码注入到已有的服务里，让服务执行
 
 ### 用例
 
-1. 启动控制台
-2. 在控制台输入`inject 3 examples/injectlaunch.lua`
+TODO
 
 
 

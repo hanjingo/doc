@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]
+intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]   dexterity[^15]
 
 ---
 
@@ -327,7 +327,7 @@ detect `/dɪˈtekt/` 发现，查明，探测
 
 deter `/dɪˈtɜː(r)/` 阻止，威慑
 
-dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
+[^15]:dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
 
 ### di
 
@@ -458,6 +458,8 @@ flexibility `/ˌflɛksɪˈbɪlɪti/` 灵活性，柔韧性
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
 forest `/ˈfɒrɪst/` 森林
+
+forge `/fɔːdʒ/` 锻造，制作，艰苦干成
 
 ### fr
 
@@ -731,11 +733,13 @@ notations `/nəʊˈteɪʃ(ə)n/` 标记，表示法，记号
 
 [回到O](#O)&ensp;[回到顶部](#英汉词典)
 
+oblige `/əˈblaɪdʒ/` 强迫，迫使，帮助，效劳
+
 obsessed `/əbˈsest/` 心神不宁的，着迷的，困扰的
 
-obvious `/ˈɒbviəs/`  显而易见的，公认的，当然的
-
 observe `/əbˈzɜːv/` 注意到，看到，观察
+
+obvious `/ˈɒbviəs/`  显而易见的，公认的，当然的
 
 ### oc
 

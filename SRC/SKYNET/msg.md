@@ -373,6 +373,16 @@ lua_callback-->lua_logic(业务逻辑)
 end
 ```
 
+说明
+
+TODO
+
+### 消息派发机制
+
+TODO
+
+
+
 ## 参考
 
 - [skynet源码赏析](https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/)

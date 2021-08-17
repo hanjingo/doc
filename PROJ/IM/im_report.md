@@ -140,12 +140,10 @@
 ### 外链
 
 - [github-im_service](https://github.com/GoBelieveIO/im_service)
-
 - [github-gochat](https://github.com/LockGit/gochat)
-
 - [IM服务器架构实现](https://blog.csdn.net/cluzax/article/details/42584921)
-
 - [网易云信周梁伟专访：亿级架构 IM 平台的技术难点解析](https://www.infoq.cn/article/2018/09/netease-im-techpoint-annalysis)
-
 - [网易云信流媒体首席架构师：新一代音视频技术架构如何构建？](https://www.cnblogs.com/wangyiyunxin/p/14133785.html)
+- [阿里钉钉技术分享：企业级IM王者——钉钉在后端架构上的过人之处](https://zhuanlan.zhihu.com/p/93770352)
+- [零基础IM开发入门(三)：什么是IM系统的可靠性](https://www.163.com/dy/article/FQ432TM00511X1MK.html)
 

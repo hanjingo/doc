@@ -11,12 +11,12 @@
 ```c
 // skynet模块
 struct skynet_module {
-	const char * name;					// 模块名字
-	void * module;							// 模块的句柄，通过dlopen函数获得
-	skynet_dl_create create;		// 创建函数
-	skynet_dl_init init;				// 初始化函数
+	const char * name;			// 模块名字
+	void * module;				// 模块的句柄，通过dlopen函数获得
+	skynet_dl_create create;	// 创建函数
+	skynet_dl_init init;		// 初始化函数
 	skynet_dl_release release;	// 释放函数
-	skynet_dl_signal signal;		// 处理信号函数
+	skynet_dl_signal signal;	// 处理信号函数
 };
 ```
 

@@ -16,7 +16,7 @@ TODO
 
 ### B+树的应用场景与实用特点
 
-具体见：[平衡树](ALGO/balance_tree.md)
+Mysql的INNODB引擎，具体见：[平衡树](ALGO/balance_tree.md)
 
 ### LRU缓存实现
 
@@ -86,7 +86,7 @@ TODO
 
 ### 说说Epoll的原理以及它的用法
 
-具体见：[Epoll](NET/epoll.md)
+具体见：[NET#IO#Epoll](net/io.md)
 
 ### DNS原理
 
@@ -112,7 +112,7 @@ TODO
 
 ### Protobuf的底层实现
 
-TODO
+具体见：[Protobuf编码](NET/protobuf.md)
 
 ### 使用UDP的理由
 
@@ -120,7 +120,7 @@ TODO
 
 ### 如何避免缓存穿透，缓存击穿和缓存雪崩
 
-具体见：[缓存系统](PROJ/cache.md)
+varint+zigzag，具体见：[缓存系统](PROJ/cache.md)
 
 ### 描述下Cookie以及Session
 
