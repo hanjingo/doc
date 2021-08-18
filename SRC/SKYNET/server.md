@@ -134,8 +134,7 @@ end
 
 1. 当前服务通过`skynet.newservice`向launcher服务发送`LAUNCH`命令，请求创建服务；
 2. launcher服务调用`skynet_context_new`创建新服务并返回新服务的地址；
-
-其最终还是到了`skynet_context_new`这里
+3. 其最终还是到了`skynet_context_new`这里
 
 
 
@@ -179,15 +178,15 @@ end
 
 
 
-## 销毁
+## 消息分派
+
+skynet.register_protocol/skynet.dispatch 
 
 TODO
 
 
 
-## 消息分派
-
-skynet.register_protocol/skynet.dispatch 
+## 销毁
 
 TODO
 

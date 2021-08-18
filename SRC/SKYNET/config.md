@@ -7,13 +7,13 @@
 ```c
 // skynet配置
 struct skynet_config {
-	int thread;								// 可创建的最大线程数量(key:thread)
-	int harbor;								// 节点id(key:harbor)
-	int profile;							// 是否做简略的消息统计(key:profile)
-	const char * daemon;			// 记录进程id的文件路径(key:daemon)
+	int thread;					// 可创建的最大线程数量(key:thread)
+	int harbor;					// 节点id(key:harbor)
+	int profile;				// 是否做简略的消息统计(key:profile)
+	const char * daemon;		// 记录进程id的文件路径(key:daemon)
 	const char * module_path;	// 模块路径(key:cpath)
 	const char * bootstrap;		// 初始化参数(key:bootstrap)
-	const char * logger;			// 日志路径(key:logger)
+	const char * logger;		// 日志路径(key:logger)
 	const char * logservice;	// 日志模块名(key:logservice)
 };
 ```
@@ -47,10 +47,10 @@ struct skynet_config {
 | ---------- | ------------------- | ---------------------------------- |
 | lualoader  | `lualib/loader.lua` | 指定用哪个lua文件来加载lua服务     |
 | luaservice | -                   | lua服务代码所在的位置，以`;`分割。 |
-| snax       |                     | 用snax框架编写的服务的查找路径     |
-| lua_cpath  |                     |                                    |
-| lua_path   |                     |                                    |
-| preload    |                     |                                    |
+| snax       | -                   | 用snax框架编写的服务的查找路径     |
+| lua_cpath  | -                   | TODO                               |
+| lua_path   | -                   | TODO                               |
+| preload    | -                   | TODO                               |
 
 ### 集群
 

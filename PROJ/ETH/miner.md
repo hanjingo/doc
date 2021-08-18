@@ -107,7 +107,7 @@ Amd显卡：todo
 
 ## 矿池选择
 
-todo
+TODO
 
 
 

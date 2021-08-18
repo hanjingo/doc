@@ -2,31 +2,43 @@
 
 # skynet热更新
 
-skynet实现热更新的两种方式：
+首先提出个人观点：热更新不应该作为常规的版本更新手段，只应该作为bug fix的一种临时措施。
 
-- [clearcache](#clearcache)
-- [inject](#inject)
+skynet实现热更新有以下方式：
 
-
-
-## skynet控制台
-
-控制台是skynet提供的一个控制工具，需要启动debug_console服务`skynet.newservice("debug_console", ip, port)`，指定一个地址；
-
-skynet启动后，用telnet或nc命令就可以进入控制台发送控制命令；
-
-### 源码
-
-- `service/debug_console.lua`
-- `service/debug_console.lua`
+- [控制台clearcache命令](#clearcache)
+- [控制台inject命令](#inject)
+- [云峰制作的热更新工具-skynet-reload](#skynet-reload)
+- [snax框架的hotfix](#snax.hotfix)
+- ...
 
 
 
-## skynet缓存机制
+## 前提
 
-skynet修改了Lua的官方实现（可选），让多个Lua VM共享相同的函数原型；
+### 1. upvalue
 
-skynet改写了lua的辅助API（`luaL_loadfilex`），代码缓存采用永久保存机制；即一旦加载过一份脚本，那么到进程结束前，它占据的内存永远不会释放（也不会被加载多次）。
+upvalue其实是lua中的一种隐式类型，例：
+
+```lua
+local a = {}
+function foo()
+    return a
+end
+```
+
+a是foo的一个upvalue，（个人理解，upvalue更像是一个get函数指向的instance）。
+
+lua提供了以下函数来修改upvalue:
+
+- `debug.upvalueid`
+- `debug.upvaluejoin`
+
+### 2. skynet缓存机制
+
+skynet改写了lua的辅助API（`luaL_loadfilex`），代码缓存改为永久保存机制：
+
+一旦加载过一份脚本，那么到进程结束前，它占据的内存永远不会释放（也不会被加载多次）。
 
 skynet提供了以下lua接口用来处理缓存：
 
@@ -37,7 +49,7 @@ skynet提供了以下lua接口用来处理缓存：
   cache.clear()
   ```
 
-  新建一个新的缓存，不会释放旧的缓存（**注意：所以它的内存是不断增长的，慎用这个函数**）。
+  新建一个新的缓存，不会释放旧的缓存（**注意：它的内存是不断增长的，因为没有释放老的内存，慎用这个函数**）。
 
 - `mode`
 
@@ -45,7 +57,7 @@ skynet提供了以下lua接口用来处理缓存：
   cache.mode(mode)
   ```
 
-  - `mode` 当mode为空时，返回当前的mode，默认为"ON
+  - `mode` 当mode为空时，返回当前的mode，默认为"ON"
 
     | mode  | 说明                                                         |
     | ----- | ------------------------------------------------------------ |
@@ -55,7 +67,7 @@ skynet提供了以下lua接口用来处理缓存：
 
   修改缓存模式
 
-### 源码
+#### 源码实现
 
 - `3rd/lua/lauxlib.c`
 
@@ -173,12 +185,14 @@ LUAMOD_API int luaopen_cache(lua_State *L) {
 
 skynet对此做了优化，每个lua文件只加载一次到内存，保存`lua文件--内存映射表`，下一个服务加载的时候copy一份内存即可，提高了VM的启动速度。
 
-### 源码
+**注意：clearcache只能用于新服务的更新，对已有服务不能更新；新服务用新代码，旧服务用旧代码。**
+
+### clearcache源码实现
 
 - `service/debug_console.lua`
 
 ```c
--- debug命令
+-- 控制台命令函数
 function COMMAND.help()
 	return {
     	 ...
@@ -192,9 +206,9 @@ function COMMAND.clearcache()
 end
 ```
 
-**注意：clearcache只能用于新服务的热更新，对已有服务不能更新；新服务用新代码，旧服务用旧代码。**
-
 ### 用例
+
+下面介绍如何利用`clearcache`命令来更新服务：
 
 1. 新建热更新代码文件`examples/hot.lua`和`examples/main_hot.lua`
 
@@ -254,7 +268,7 @@ end
    -- hot.lua
    local skynet = require "skynet"
    skynet.start(function()
-       print("world")
+       print("world") -- 修改了这里
    end)
    ```
 
@@ -288,13 +302,148 @@ end
 
 ## inject
 
-inject(注入更新)，将新代码注入到已有的服务里，让服务执行新的代码，**可以热更旧服务**
+inject(注入更新)，将新代码注入到已有的服务里，让老服务执行新的代码，**可以更新旧服务**。
 
-### 源码：
+由于skynet修改了lua的缓存机制，所以lua的`require`热更新方法不再适用。
+
+inject的实现原理（个人理解）：其实就是把老代码片段和新代码片段合并在一起，从而替换掉**一部分代码**，让老的get函数去关联新的upvalue。
+
+lua代码中与inject相关的全局变量：
+
+| LUA全局变量 | 说明           |
+| ----------- | -------------- |
+| `_P`        | 消息分发函数   |
+| `_U`        | 自定义接口函数 |
+
+### 热更代码编写规范
+
+热更的代码至少需要自己手动实现消息派发功能，模板如下：
+
+```lua
+skynet.start(function()
+	...
+    skynet.dispatch("lua", function(session, address, cmd, ...)
+       -- 消息派发逻辑
+       .
+    end)
+end)
+```
+
+### inject源码实现：
+
+- `service/debug_console.lua`
+
+  ```lua
+  -- debug命令
+  function COMMAND.help()
+  	return {
+  		...
+  		inject = "inject address luascript.lua", -- 注入新代码
+  		...
+  	}
+  end -- 跳到COMMAND.inject
+  
+  -- 注入新代码的命令
+  function COMMAND.inject(address, filename, ...)
+  	address = adjust_address(address)
+  	local f = io.open(filename, "rb")
+  	if not f then
+  		return "Can't open " .. filename
+  	end
+  	local source = f:read "*a"
+  	f:close()
+  	local ok, output = skynet.call(address, "debug", "RUN", source, filename, ...)
+  	if ok == false then
+  		error(output)
+  	end
+  	return output
+  end -- 跳到lualib/skynet/debug.lua/dbgcmd.RUN
+  ```
+
+- `lualib/skynet/debug.lua`
+
+  ```lua
+  		-- 注入代码
+  		function dbgcmd.RUN(source, filename, ...)
+  			local inject = require "skynet.inject"
+  			local args = table.pack(...)
+  			local ok, output = inject(skynet, source, filename, args, export.dispatch, skynet.register_protocol) -- 跳到 lualib/skynet/inject.lua/inject函数
+  			collectgarbage "collect"
+  			skynet.ret(skynet.pack(ok, table.concat(output, "\n")))
+  		end
+  ```
 
 - `lualib/skynet/inject.lua`
 
+  ```lua
+  -- inject函数，加载新的lua代码并注入; skynet:skynet库, source:代码块, filename:lua文件地址, args:参数
+  return function(skynet, source, filename, args, ...)
+  	if filename then
+  		filename = "@" .. filename
+  	else
+  		filename = "=(load)"
+  	end
+  	local output = {}
+  
+  	local function print(...)
+  		local value = { ... }
+  		for k,v in ipairs(value) do
+  			value[k] = tostring(v)
+  		end
+  		table.insert(output, table.concat(value, "\t"))
+  	end
+  	local u = {}
+  	local unique = {}
+  	local funcs = { ... }
+  	for k, func in ipairs(funcs) do -- 获取接口的函数原型
+  		getupvaluetable(u, func, unique)
+  	end
+  	local p = {}
+  	local proto = u.proto -- 遍历所有的消息分发函数
+  	if proto then
+  		for k,v in pairs(proto) do
+  			local name, dispatch = v.name, v.dispatch
+  			if name and dispatch and not p[name] then
+  				local pp = {}
+  				p[name] = pp
+  				getupvaluetable(pp, dispatch, unique)
+  			end
+  		end
+  	end
+  	local env = setmetatable( { print = print , _U = u, _P = p}, { __index = _ENV })
+  	local func, err = load(source, filename, "bt", env) -- 加载新的lua代码
+  	if not func then
+  		return false, { err }
+  	end
+  	local ok, err = skynet.pcall(func, table.unpack(args, 1, args.n))
+  	if not ok then
+  		table.insert(output, err)
+  		return false, output
+  	end
+  
+  	return true, output
+  end
+  
+  ```
+
+1. 通过控制台输入`inject`命令，触发`COMMAND.inject`函数
+2. `COMMAND.inject`调用`dbgcmd.RUN`函数跳转到lua脚本`lualib/skynet/inject.lua`里面
+
 ### 用例
+
+```sh
+inject 8 ./examples/hot_inject.lua
+```
+
+
+
+## snax.hotfix
+
+TODO
+
+
+
+## skynet-reload
 
 TODO
 
@@ -302,8 +451,13 @@ TODO
 
 ## 参考
 
+- [云风-如何让 lua 做尽量正确的热更新](https://blog.codingnow.com/2016/11/lua_update.html)
 - [云风-DebugConsole](https://github.com/cloudwu/skynet/wiki/DebugConsole)
 - [云风-在不同的 lua vm 间共享 Proto](https://blog.codingnow.com/2014/03/lua_shared_proto.html)
 - [云风-CodeCache](https://github.com/cloudwu/skynet/wiki/CodeCache)
+- [云风-重载一个 skynet 中的 lua 服务](https://blog.codingnow.com/2016/03/skynet_reload.html)
+- [github-热更工具](https://github.com/cloudwu/skynet-reload)
 - [skynet源码分析之热更新](https://www.cnblogs.com/RainRill/p/8940673.html)
+- [skynet 热更新 lua 代码](https://blog.csdn.net/mycwq/article/details/53943890)
+- [snax](https://github.com/cloudwu/skynet/wiki/Snax)
 

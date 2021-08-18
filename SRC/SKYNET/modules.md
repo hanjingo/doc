@@ -65,10 +65,10 @@ skynet 通过modules来管理模块，其定义如下：
 ```c
 // 模块集合
 struct modules {
-	int count; // 模块类型id
-	struct spinlock lock; // 自旋锁
-	const char * path; // 模块集合的共有路径
-	struct skynet_module m[MAX_MODULE_TYPE]; // 模块集合
+	int count; 									// 模块类型id
+	struct spinlock lock; 						// 自旋锁
+	const char * path; 							// 模块集合的共有路径
+	struct skynet_module m[MAX_MODULE_TYPE]; 	// 模块集合
 };
 static struct modules * M = NULL; // 模块集合单例
 ```
@@ -105,35 +105,11 @@ int dlclose(void *handle)
 
 
 
-## 上下文
+## 服务上下文
 
 skynet在创建完`module`实例并初始化后，同时创建了一个`skynet_context`，并将`module`实例和`skynet_context`关联起来，最后放置于`handle_storage`的`slot`里面，这样一个个独立的沙盒环境就这样被创建出来了。
 
-`skynet_context`的定义如下：
-
-```c
-// skynet模块上下文
-struct skynet_context {
-	void * instance; 							// 由模块的create函数创建的实例指针
-	struct skynet_module * mod; 	// module对象指针
-	void * cb_ud;									// 传递给消息回调函数的userdata
-	skynet_cb cb;									// 消息回调函数，由模块的init函数来指定
-	struct message_queue *queue;	// 内部消息队列
-	ATOM_POINTER logfile;					// 日志
-	uint64_t cpu_cost;						// cpu回调耗费事件（ms）
-	uint64_t cpu_start;						// cpu回调开始时间（ms）
-	char result[32];							// 返回值
-	uint32_t handle;							// 当前上下文的ID
-	int session_id;								// 标识对应的请求
-	ATOM_INT ref;									// 引用计数变量，为0表示可以背释放
-	int message_count;						// 消息数量统计
-	bool init;										// 是否已初始化
-	bool endless;									// 消息是否堵住
-	bool profile;									// 是否做信息统计（cpu consume ...）
-
-	CHECKCALLING_DECL
-};
-```
+详情请看:[skynet服务](server.md)
 
 
 
@@ -145,15 +121,15 @@ struct skynet_context {
 typedef int (*skynet_cb)(struct skynet_context * context, void *ud, int type, int session, uint32_t source , const void * msg, size_t sz)
 ```
 
-1. 当消息到达`skynet_context`时，会调用`skynet_cb`，其定义如下：
-2. 在调用`skynet_cb`时传入以下参数：
-   - `context` 上下文
-   - `ud` 一般是instance指针
-   - `type` 消息类型
-   - `session` 凭证
-   - `source` 发送方的服务id
-   - `msg` 数据
-   - `sz` 数据大小
+- `context` 上下文
+- `ud` 一般是instance指针
+- `type` 消息类型
+- `session` 凭证
+- `source` 发送方的服务id
+- `msg` 数据
+- `sz` 数据大小
+
+当消息到达`skynet_context`时，会调用`skynet_cb`
 
 ### LUA服务回调
 

@@ -4,6 +4,37 @@
 
 
 
+## skynet
+
+### call
+
+`skynet.call(addr, typename, ...)`
+
+- `addr` 服务地址
+- `typename` 服务类型
+
+向服务发送消息(阻塞)
+
+### send
+
+`skynet.send(addr, typename, ...)`
+
+- `addr` 服务地址
+- `typename` 服务类型
+
+向服务发送消息
+
+### dispatch
+
+`skynet.dispatch(typename, func)`
+
+- `typename` 服务名
+- `func` 回调函数
+
+把回调函数注册到服务
+
+
+
 ## cluster
 
 ### call
