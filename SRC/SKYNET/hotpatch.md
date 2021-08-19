@@ -2,7 +2,7 @@
 
 # skynet热更新
 
-首先提出个人观点：热更新不应该作为常规的版本更新手段，只应该作为bug fix的一种临时措施。
+**首先提出个人观点：热更新不应该作为常规的版本更新手段，只应该作为bug fix的一种临时措施。**
 
 skynet实现热更新有以下方式：
 
@@ -10,6 +10,7 @@ skynet实现热更新有以下方式：
 - [控制台inject命令](#inject)
 - [云峰制作的热更新工具-skynet-reload](#skynet-reload)
 - [snax框架的hotfix](#snax.hotfix)
+- [利用lua的require机制](#lua-require)
 - ...
 
 
@@ -187,7 +188,7 @@ skynet对此做了优化，每个lua文件只加载一次到内存，保存`lua�
 
 **注意：clearcache只能用于新服务的更新，对已有服务不能更新；新服务用新代码，旧服务用旧代码。**
 
-### clearcache源码实现
+### 源码实现
 
 - `service/debug_console.lua`
 
@@ -310,26 +311,28 @@ inject的实现原理（个人理解）：其实就是把老代码片段和新�
 
 lua代码中与inject相关的全局变量：
 
-| LUA全局变量 | 说明           |
-| ----------- | -------------- |
-| `_P`        | 消息分发函数   |
-| `_U`        | 自定义接口函数 |
+| LUA全局变量 | 说明                     |
+| ----------- | ------------------------ |
+| `_P`        | 消息分发函数             |
+| `_U`        | 自定义接口函数和全局变量 |
 
 ### 热更代码编写规范
 
-热更的代码至少需要自己手动实现消息派发功能，模板如下：
+1. 如果要使用全局变量`_P`，热更的代码至少需要自己手动实现消息派发功能，模板如下：
 
-```lua
-skynet.start(function()
-	...
-    skynet.dispatch("lua", function(session, address, cmd, ...)
-       -- 消息派发逻辑
-       .
-    end)
-end)
-```
+   ```lua
+   skynet.start(function()
+   	...
+       skynet.dispatch("lua", function(session, address, cmd, ...)
+          -- 消息派发逻辑
+          ...
+       end)
+   end)
+   ```
 
-### inject源码实现：
+2. 如果要使用全变量`_U`，则把需要热更的函数定义为全局函数；
+
+### 源码实现
 
 - `service/debug_console.lua`
 
@@ -431,11 +434,225 @@ end)
 
 ### 用例
 
-```sh
-inject 8 ./examples/hot_inject.lua
-```
+- **通过dispatch函数热更**
 
+  1. 新建热更新文件`examples/main_hot_inject.lua`和`examples/hot_inject.lua`
 
+     ```lua
+     -- examples/main_hot_inject.lua
+     package.path = "./examples/?.lua;" .. package.path
+     
+     local skynet = require "skynet"
+     local myclass = {}
+     local function hello()
+         print("hello")
+     end
+     
+     function myclass.dispatch()
+         -- todo
+     end
+     function myclass.say()
+         hello()
+     end
+     
+     skynet.start(function()
+         skynet.newservice("debug_console",8000)
+         skynet.dispatch("lua", function(session, address, cmd, ...)
+             myclass.dispatch()
+         end)
+     
+         while true do
+             myclass.say()
+             skynet.sleep(100)
+         end
+     end)
+     ```
+
+     ```lua
+     -- examples/hot_inject.lua
+     print ("hot inject start")
+     
+     if not _P then
+         print("hotfix fail, no _P define")
+         return
+     end
+     
+     local function get_up(f)
+         local u = {}
+         if not f then
+             return u
+         end
+         local i = 1
+         while true do
+             local name, value = debug.getupvalue(f, i)
+             if name == nil then
+                 return u
+             end
+             u[name] = value
+             i = i + 1
+         end
+         return u
+     end
+     
+     local myclass = _P.lua.myclass
+     local up = get_up(myclass.say)
+     local hello = up.hello
+     
+     myclass.say = function()
+         print("world")
+     end
+     
+     print ("hot inject end")
+     ```
+
+   2. 新建配置文件`examples/config.hot_inject`
+  
+     ```txt
+     thread = 8
+     logger = nil
+     harbor = 0
+     start = "main_hot_inject"
+     luaservice ="./service/?.lua;./test/?.lua;./examples/?.lua"
+     ```
+
+   3. 启动skynet
+  
+     ```sh
+     he@SD-20210816HMLO:/mnt/e/skynet$ ./skynet examples/config.hot_inject
+     [:00000002] LAUNCH snlua bootstrap
+     [:00000003] LAUNCH snlua launcher
+     [:00000004] LAUNCH snlua cdummy
+     [:00000005] LAUNCH harbor 0 4
+     [:00000006] LAUNCH snlua datacenterd
+     [:00000007] LAUNCH snlua service_mgr
+     [:00000008] LAUNCH snlua main_hot_inject
+     [:00000009] LAUNCH snlua debug_console 8000
+     [:00000009] Start debug console at 127.0.0.1:8000
+     hello
+     ```
+  
+  4. 启动控制台并注入lua脚本
+  
+     ```sh
+     he@SD-20210816HMLO:/mnt/e/skynet$ telnet 127.0.0.1 8000
+     Trying 127.0.0.1...
+     Connected to 127.0.0.1.
+     Escape character is '^]'.
+     Welcome to skynet console
+     list
+     :00000004       snlua cdummy
+     :00000006       snlua datacenterd
+     :00000007       snlua service_mgr
+     :00000008       snlua main_hot_inject
+     :00000009       snlua debug_console 8000
+     <CMD OK>
+     inject 8 ./examples/hot_inject.lua
+     hot inject start
+     hot inject end
+     <CMD OK>
+     ```
+
+  5. 观察主服务窗口
+
+     ```sh
+     [:00000009] 127.0.0.1:65254 connected
+     world
+     ```
+  
+- **通过全局函数**
+
+  1. 新建热更新文件`examples/main_hot_inject.lua`和`examples/hot_inject.lua`
+
+     ```lua
+     -- examples/main_hot_inject.lua
+     package.path = "./examples/?.lua;" .. package.path
+     
+     local skynet = require "skynet"
+     local myclass = {}
+     function hello() -- 注意这里是全局变量，不是local
+         print("hello")
+     end
+     
+     function myclass.dispatch()
+         -- todo
+     end
+     function myclass.say()
+         hello()
+     end
+     
+     skynet.start(function ()
+         skynet.newservice("debug_console",8000)
+         while true do
+             myclass.say()
+             skynet.sleep(100)
+         end
+     end)
+     ```
+
+     ```lua
+     -- examples/hot_inject.lua
+     print ("hot inject start")
+     
+     if not _U then
+         return
+     end
+     
+     _U._ENV.hello = function ()
+         _G.print("u world")
+     end
+     print ("hot inject end")
+     ```
+  
+  2. 新建配置文件`examples/config.hot_inject`
+  
+     ```lua
+     thread = 8
+     logger = nil
+     harbor = 0
+     start = "main_hot_inject"
+     luaservice ="./service/?.lua;./test/?.lua;./examples/?.lua"
+     ```
+  
+  3. 启动skynet
+
+     ```sh
+     he@SD-20210816HMLO:/mnt/e/skynet$ ./skynet examples/config.hot_inject
+     [:00000002] LAUNCH snlua bootstrap
+     [:00000003] LAUNCH snlua launcher
+     [:00000004] LAUNCH snlua cdummy
+     [:00000005] LAUNCH harbor 0 4
+     [:00000006] LAUNCH snlua datacenterd
+     [:00000007] LAUNCH snlua service_mgr
+     [:00000008] LAUNCH snlua main_hot_inject
+     [:00000009] LAUNCH snlua debug_console 8000
+     [:00000009] Start debug console at 127.0.0.1:8000
+     hello
+     ```
+
+  4. 启动控制台并注入lua脚本
+
+     ```sh
+     he@SD-20210816HMLO:/mnt/e/skynet$ telnet 127.0.0.1 8000
+     Trying 127.0.0.1...
+     Connected to 127.0.0.1.
+     Escape character is '^]'.
+     Welcome to skynet console
+     inject 8 ./examples/hot_inject.lua
+     hot inject start
+     hot inject end
+     <CMD OK>
+     ```
+  
+  5. 观察主服务窗口
+  
+     ```sh
+     [:00000009] 127.0.0.1:52042 connected
+     hello
+     hello
+     u world
+     ```
+  
+     
 
 ## snax.hotfix
 
@@ -444,6 +661,18 @@ TODO
 
 
 ## skynet-reload
+
+TODO
+
+
+
+## lua-require
+
+skynet的缓存机制是可以关闭的，当关闭skynet缓存机制之后，就可以利用lua本身的特性来实现热更新。
+
+**注意：关闭skynet缓存机制意味着性能可能会下降，慎重选择**
+
+### 原理
 
 TODO
 

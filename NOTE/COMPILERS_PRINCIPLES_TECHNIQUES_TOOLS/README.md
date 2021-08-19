@@ -1,4 +1,4 @@
-# 编译原理-英文版
+# 编译原理
 
 - [Introduction(简介)](chapter1.md)
 - A Simple Syntax-Directed Translator

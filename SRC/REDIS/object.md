@@ -256,7 +256,7 @@ if (len > server.set_max_intset_entries) {
       struct zskiplistLevel {
           struct zskiplistNode *forward;  // 前进指针（方向表尾）
           unsigned int span;              // 前进指针和当前节点的距离
-      } level[]; 													// 层高，随机[1,32]
+      } level[]; 						 // 层高，随机[1,32]
   } zskiplistNode;
   
   typedef struct zskiplist { // 跳表

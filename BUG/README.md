@@ -84,7 +84,17 @@
 
 ## skynet
 
+#### [lua模块引用时找不到文件](skynet.md)
 
+关键字：**模块**，**require.lua**
+
+用skynet调用模块时，报` lua loader error : ./lualib/skynet/require.lua:31: module 'xxx' not found:`错误...
+
+#### [热更新时print函数无法打印](skynet.md)
+
+关键字：**热更新**，**print**
+
+热更新时，print函数失效...
 
 
 

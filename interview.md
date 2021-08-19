@@ -6,29 +6,43 @@
 
 ## 算法
 
-### 如何判断链表是否有环
+### 树
 
-TODO
+#### B树的应用场景与特点
 
-### 如何逆转链表
+具体见：[平衡树](ALGO/balance_tree.md)
 
-从头到尾遍历并插入前面，例：`|1|2|3|`->`|2|1|3|`->`|3|2|1|`
-
-### B+树的应用场景与实用特点
+#### B+树的应用场景与特点
 
 Mysql的INNODB引擎，具体见：[平衡树](ALGO/balance_tree.md)
 
-### LRU缓存实现
+#### B树与B+树的区别
+
+TODO
+
+#### 求二叉树最远叶子结点的距离
+
+TODO
+
+#### 层级遍历二叉树并计算每一层节点之和
+
+TODO
+
+### 链表
+
+#### 如何判断链表是否有环
+
+TODO
+
+#### 如何逆转链表
+
+从头到尾遍历并插入前面，例：`|1|2|3|`->`|2|1|3|`->`|3|2|1|`
+
+### 其他
+
+#### LRU缓存实现
 
 一般用双向链表，具体见：[LRU算法](ALGO/lru.md)
-
-### 求二叉树最远叶子结点的距离
-
-TODO
-
-### 层级遍历二叉树并计算每一层节点之和
-
-TODO
 
 [返回顶部](#面试笔记)
 
@@ -102,53 +116,71 @@ TODO
 
 ## 项目
 
-### 游戏服务器的架构
+### 架构
+
+#### 游戏服务器的架构
 
 具体见：[游戏服务器架构](PROJ/game_server_construct.md)
 
-### 热更新的用途
+#### 热更新的用途
 
 具体见：[热更新](PROJ/hot_patch.md)
 
-### Protobuf的底层实现
+### 消息协议
 
-具体见：[Protobuf编码](NET/protobuf.md)
+#### Protobuf的底层实现
 
-### 使用UDP的理由
+varint+zigzag，具体见：[Protobuf编码](NET/protobuf.md)
 
-TODO
-
-### 如何避免缓存穿透，缓存击穿和缓存雪崩
-
-varint+zigzag，具体见：[缓存系统](PROJ/cache.md)
-
-### 描述下Cookie以及Session
+#### 使用UDP的理由
 
 TODO
 
-### 如何对API接口限流
+#### 怎么处理粘包问题
+
+在包头标记包长，具体见：[粘包处理](PROJ/anti_sticky.md)
+
+### 数据库
+
+#### 如何解决缓存与数据库的数据一致性问题
 
 TODO
 
-### linux如何开启系统日志
+#### 如何避免缓存穿透，缓存击穿和缓存雪崩
+
+- 缓存穿透：缓存和数据库中都没有数据，直接压跨数据库
+- 缓存击穿：缓存中一个热点key失效，同时大量请求过来，压垮数据库
+- 缓存雪崩：缓存中的大量key同时失效，同时大量请求过来，压垮数据库
+
+具体见：[缓存系统](PROJ/cache.md)
+
+### 信息安全
+
+#### 描述下Cookie以及Session
+
+TODO
+
+#### 如何对API接口限流
+
+TODO
+
+### 调试
+
+#### linux如何开启系统日志
 
 命令`systemctl restart rsyslog`，具体见：[linux系统日志](BUG/linux_sys_log.md)
 
-### linux如何开启core文件生成
+#### linux如何开启core文件生成
 
 命令`ulimit -c unlimited`，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
 
-### CPU100%的调试方法
+#### CPU100%的调试方法
 
 TODO
 
-### CoreDump的调试方法
+#### CoreDump的调试方法
 
 用GDB，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
-
-### 怎么处理粘包问题
-
-在包头标记包长，具体见：[粘包处理](PROJ/anti_sticky.md)
 
 [返回顶部](#面试笔记)
 
@@ -230,15 +262,21 @@ TODO
 
 ## Skynet
 
-### 谈谈Skynet的定时器
+#### 谈谈Skynet的定时器
 
-### actor模型
+TODO
 
-### 集群
+#### 谈谈Skynet的actor模型
 
-### lua虚拟机
+TODO
 
-### 负载均衡
+#### Skynet的集群方案
+
+TODO
+
+#### Skynet热更新方案
+
+TODO
 
 [返回顶部](#面试笔记)
 
@@ -246,19 +284,67 @@ TODO
 
 ## Redis
 
-### 为什么Redis用跳表不用RBtree
+### 使用
+
+#### Redis为什么是单线程的
+
+TODO
+
+#### Redis的性能为什么这么高
+
+TODO
+
+#### 客户端是怎么接入Redis哨兵系统的
+
+TODO
+
+### 实现
+
+#### 为什么Redis用跳表不用RBtree
 
 1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](DB/REDIS/skip_list.md)
 
-### Redis如何实现延时队列
+#### Redis如何实现延时队列
 
 具体见：[利用redis实现延时队列](DB/REDIS/delay_queue.md)
 
-### Redis持久化
+#### Redis持久化
 
 具体见：[Redis持久化](DB/REDIS/persistence.md)
 
-### Redis线程模型
+#### Redis线程模型
+
+TODO
+
+#### Redis的过期机制
+
+TODO
+
+#### 谈谈Redis的布隆过滤器
+
+TODO
+
+#### 谈谈Redis的持久化机制
+
+TODO
+
+#### Redis的主从同步是怎么实现的
+
+TODO
+
+#### Redis哨兵的实现
+
+TODO
+
+#### Redis哨兵系统是怎么实现自动故障转移的
+
+TODO
+
+#### Redis集群是怎么实现数据分片的
+
+TODO
+
+#### Redis集群是怎么做故障转移和发现的
 
 TODO
 
@@ -268,19 +354,67 @@ TODO
 
 ## Mysql
 
-### InnoDb的底层数据结构
+### 使用
+
+#### Mysql有哪些优化措施
 
 TODO
 
-### 磁盘结构分析与数据存储原理
+#### 说说数据库索引的使用及其原理
 
 TODO
 
-### 说说数据库索引的使用及其原理
+#### mysql事物
 
 TODO
 
-### mysql事物
+#### 脏页是什么
+
+TODO
+
+#### Mysql的隔离级别是怎么样的
+
+TODO
+
+#### Mysql中由哪些锁
+
+TODO
+
+#### Mysql如何解决幻读问题
+
+TODO
+
+#### 主键，唯一性索引，普通索引的区别是什么
+
+TODO
+
+#### 什么是分表分库
+
+TODO
+
+#### 如何实现跨库分页查询
+
+TODO
+
+#### Checkpoint是什么
+
+TODO
+
+#### undo log, redo log, bin log是什么
+
+TODO
+
+### 实现
+
+#### InnoDb的底层数据结构
+
+TODO
+
+#### 磁盘结构分析与数据存储原理
+
+TODO
+
+#### 一条MySql更新语句的执行过程是怎么样的
 
 TODO
 
@@ -315,3 +449,10 @@ TODO
 TODO
 
 [返回顶部](#面试笔记)
+
+
+
+## 参考
+
+- [Github-interviewGuide](https://github.com/NotFound9/interviewGuide)
+

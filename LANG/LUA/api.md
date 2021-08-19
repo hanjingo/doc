@@ -35,6 +35,14 @@
 
 TODO
 
+### lua_getglobal
+
+TODO
+
+### lua_setfield
+
+TODO
+
 
 
 ## debug

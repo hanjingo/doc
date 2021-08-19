@@ -16,7 +16,7 @@
 | **L** | [la](#la) |           |           |           | [le](#le) |      |           |           | [li](#li) |      |      |           |           |           | [lo](#lo) |           |           |           |           |           |           |           |           |           |           |      |
 | **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |      |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |      |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
-| **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           |           |           |           |      |
+| **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           | [ow](#ow) |           |           |      |
 | **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           |           |           |           |           |           |      |
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,7 +31,7 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   examine[^6]   robust[^7]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]   dexterity[^15]
+intensive[^1]    assign[^2]    facilitate[^3]   scratch[^5]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]   dexterity[^15]
 
 ---
 
@@ -45,6 +45,8 @@ intensive[^1]    assign[^2]    suppress[^3]   sequence[^4]   scratch[^5]   exami
 
 abide `/əˈbʌɪd/` 服从，遵守，忍受
 
+abridge `/əˈbrɪdʒ/` 删节，节略
+
 ### ac
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
@@ -54,6 +56,8 @@ accomplish `/əˈkʌmplɪʃ/` 达到，完成，结束
 accommodated `/əˈkɒmədeɪtɪd/` 容纳，向..提供，使..适应
 
 accurate `/ˈækjərət/`  准确的，正确无误的
+
+accustom `/əˈkʌstəm/` 习惯，适应
 
 acquaint `/əˈkweɪnt/` 告知，与...相识，开始了解
 
@@ -66,6 +70,8 @@ acquire `/əˈkwaɪə(r)/`  获得，得到，购得
 addict `/ˈæd.ɪkt/` 有瘾的人，入迷的人
 
 adjacent `/əˈdʒeɪs(ə)nt/` 附近的，相邻的
+
+admit `/ədˈmɪt/` 承认，招供，准许
 
 ### ag
 
@@ -257,7 +263,7 @@ confront `/kənˈfrʌnt/` 面对
 
 confuse `/kənˈfjuːz/` 困惑，混淆
 
-consequently `/ˈkɒnsɪkwəntli/` 所以，因此
+consequence `/ˈkɒnsɪkwəns/` 结果，后果，所以
 
 consistent `/kənˈsɪstənt/` 一致的，复合的，连续的
 
@@ -315,6 +321,8 @@ delimiter `/dɪˈlɪmɪt/` 界定
 
 demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 
+demonstrate `/ˈdemənstreɪt/` 证明，证实，说明，表露，演示，示威，游行
+
 departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
 
 derived `/dɪˈraɪvd/` 取得，产生
@@ -341,7 +349,11 @@ differential `/ˌdɪfəˈrɛnʃəlz/` 差别，差价，差动齿轮
 
 disappointment `/ˌdɪs.əˈpɔɪnt.mənt/` 失望，沮丧
 
+disperse `/dɪˈspɜːs/` 疏散，驱散，散开，传播
+
 dissent `/dɪˈsent/` 异议，不同意见
+
+dissipate `/ˈdɪsɪpeɪt/` 消散，挥霍，消磨（时间，金钱）
 
 distinguish `/dɪˈstɪŋ.ɡwɪʃ/` 区分，分辨
 
@@ -421,7 +433,7 @@ evolved `/iˈvɒlvd/` 逐渐形成，进化
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
-[^6]:**examine `/ɪɡˈzæmɪn/` 审查，考察**
+examine `/ɪɡˈzæmɪn/` 审查，考察
 
 exclusive `/ɪkˈskluːsɪv/` 专有的，独占的，专有的，排外的，独家
 
@@ -437,7 +449,7 @@ explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
+[^3]:facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
 farewell `/ˌfeəˈwel/` 告别，辞行
 
@@ -521,6 +533,8 @@ grind `/ɡraɪnd/` 磨，使..光滑
 
 hailed `/heɪld/` 赞扬，招手，跟...打招呼，向...喊话
 
+hamper `/ˈhæmpə(r)/` 阻碍，阻止
+
 harbor `/ˈhɑːbə/` 海港，海湾，避难所
 
 harried `/ˈhærid/` 折磨，反复攻击
@@ -580,6 +594,8 @@ improvement `/ɪmˈpruːvm(ə)nt/` 改善，进步
 ### in
 
 [回到I](#I)&ensp;[回到顶部](#英汉词典)
+
+incapable `/ɪnˈkeɪpəbl/` 不能克制的，没有能力的
 
 inception `/ɪnˈsepʃn/` 开端，创始
 
@@ -793,6 +809,12 @@ oriented  `/ˈɔːrɪɛnt,ˈɒrɪɛnt/` 导向
 
 outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
+### ow
+
+[回到O](#O)&ensp;[回到顶部](#英汉词典)
+
+owing `/ˈəʊɪŋ/` 拖欠，未付，欠账
+
 ---
 
 # P
@@ -923,7 +945,7 @@ regulation `/ˌreɡjuˈleɪʃn/` 条例，规章
 
 remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
 
-rendered `/ˈrɛndə/` 使得，提供，送交，表现，描绘
+render`/ˈrendə(r)/` 使得，提供，送交，表现，描绘
 
 replication `/ˌreplɪ'keɪʃ(ə)n/`  复制，拷贝，重复（实验），回答
 
@@ -947,7 +969,7 @@ rival `/ˈraɪvl/` 竞争对手，竞争的，与...匹配，比得上
 
 [回到R](#R)&ensp;[回到顶部](#英汉词典)
 
-[^7]:**robust `/rəʊˈbʌst/` 健壮的，耐用的**
+robust `/rəʊˈbʌst/` 健壮的，耐用的
 
 ---
 
@@ -981,9 +1003,11 @@ scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
+sensible `/ˈsensəbl/` 明智的，合理的，理智的，意识到
+
 sentiment `/ˈsentɪmənt/` 观点，看法，哀伤 
 
-[^4]: **sequence `/ˈsiːkwəns/` 串行，顺序，测序**
+sequence `/ˈsiːkwəns/` 串行，顺序，测序
 
 ### sh
 
@@ -1016,6 +1040,8 @@ slim `/slɪm/` 苗条的
 slogan `/ˈsləʊɡən/` 标语，口号
 
 sloppy `/ˈslɒpi/` 马虎的，凌乱的，草率的
+
+sloth `/sləʊθ/` 懒惰，倦怠，树懒
 
 ### sn
 
@@ -1053,7 +1079,7 @@ strict `/strɪkt/` 严格的，严厉的
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
-[^3]: **suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制**
+suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制
 
 surname `/ˈsɜːneɪm/` 姓，给...加姓
 
@@ -1159,6 +1185,8 @@ vaccine `/ˈvæksiːn/` 疫苗
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
+variety `/vəˈraɪəti/` 不同种类的，多种多样的，变化，多样性
+
 ### ve
 
 [回到V](#V)&ensp;[回到顶部](#英汉词典)
@@ -1170,6 +1198,8 @@ verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 [回到V](#V)&ensp;[回到顶部](#英汉词典)
 
 vigil `/ˈvɪdʒɪl/` 值夜，不眠时间，守夜
+
+vigorous `/ˈvɪɡərəs/` 充满活力的，果断地，精力充沛的，强壮的
 
 violent `/ˈvaɪələnt/` 暴力的，猛烈的
 

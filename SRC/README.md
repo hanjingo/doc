@@ -7,7 +7,7 @@
 - [filecoin](FILECOIN/README.md)
 - [ipfs](IPFS/README.md)
 - [linux内核](KERNAL/README.md)
-- [LUA虚拟机](LUA/README.md)
+- [lua](LUA/README.md)
 - [nginx](NGINX/README.md)
 - [go-libp2p](GO_LIBP2P/README.md)
 - [redis](REDIS/README.md)
