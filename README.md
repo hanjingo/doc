@@ -11,6 +11,8 @@
 
 - [经济](ECONOMIC/README.md)
 
+- [健康手册](HEALTH/README.md)
+
 - [编程语言](LANG/README.md)
 
 - [法律](LAW/README.md)
