@@ -1,5 +1,8 @@
+[TOC]
+
 # 健康手册
 
+- [医学专科分类](medical_college.md)
 - [生育](bear.md)
 - 口腔
 - [口腔溃疡](MOUTH/aphthous_stomatitis.md)
@@ -17,4 +20,8 @@
 ## 消化系统
 
 - [肠胃炎](DIGESTIVE_SYSTEM/gastroenteritis.md)
+
+## 皮肤病学
+
+- [痤疮](acne.md)
 
