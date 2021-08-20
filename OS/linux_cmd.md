@@ -10,7 +10,6 @@
 |:--|:--|:--|:--|
 |tree|查看文件夹树形结构|-|`tree`:列出树状文件结构|
 | ls   | 列出当前目录下的文件和文件夹 | - a 显示所有文件及目录（包括隐藏文件）<br>- l 除文件名外，文件类型，权限，大小等信息也列出来<br>- R 如果目录下面有文件，也列出来 | `ls -al`:列出所有的文件和文件夹(包括隐藏的); |
-| lsof |  |  |  |
 |find|查找文件|- name 查找指定名称的文件<br>- depth 先找当前目录的文件，再找子目录<br>- user 按照文件所属人来查找<br>- group 按照文件所属组来查找<br>- mtime -n +n 按照文件的更改时间来查找，-n表示距离现在n天以内的文件，+n表示距离现在n天以前的文件<br>- size n[c] 查找文件长度为n块(1块=512字节)的文件，带c时文件长度以字节计<br>- mount 查找时不跨越文件系统的挂载点<br>- exec 找到文件后执行shell命令<br>- ok 更安全版本的exec命令，每步都要确认|`find ~/tmp -name 1.txt` :在`~/tmp`目录下查找名为1.txt的文件<br>`find ~/tmp -mtime -3 +15 *.txt` :在`~/tmp`中查找3天内或15天前的txt文件<br>`find ~/tmp -size +1M` :查找`~/tmp`中大于1M的文件<br>`find ~/tmp -size +1M -a -size -1G` :查找`~/tmp`中大于1M小于1G的文件<br>`find ~/tmp -name 1.txt -exec rm {} \;` :查找`~/tmp`中名为1.txt的文件并删除|
 |grep|查找文件内容|- ? 同时显示匹配行的上下?行<br>- c 只打印匹配的行数，不现实匹配的内容<br>- e 正则匹配<br>- h 不显示匹配的文件名前缀<br>- i 不区分大小写<br>- l 列出匹配到的文件清单<br>- n 在匹配的行前面打印行号|`grep -2 "hello" *.txt` :查找所有包含hello的txt文件，同时显示匹配行的上下2行<br>`grep -l "hello" *.txt` :查找所有包含hello的txt文件，并把他们的名字列出来|
 |df|查看磁盘分区使用情况|- h 使用人类可读格式列出信息|`df -h`:显示磁盘使用情况;|
@@ -30,11 +29,11 @@
 
 | 命令  | 说明                    | 选项                                                         | 常用                                                         |
 | ----- | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| tar   | `压缩/解压文件或文件夹` | - c 建立新的备份<br/>- z 以gzip命令处理文件<br/>- x 从备份文件中还原文件<br/>- v 显示执行的过程<br/>- f 指定备份文件<br>- t 列出备份文件的内容 | `tar -czvf 1.tar.gz 1.txt`: 将1.txt压缩为1.tar.gz<br>`tar -tzvf 1.tar.gz`: 列出压缩文件1.tar.gz的内容<br>`tar -xzvf 1.tar.gz`: 解压文件1.tar.gz |
+| tar   | `压缩/解压文件或文件夹` | - c 建立新的备份<br/>- z 以gzip命令处理文件<br/>- x 从备份文件中还原文件<br/>- v 显示执行的过程<br/>- f 指定备份文件<br>- t 列出备份文件的内容 | `tar -czvf 1.tar.gz 1.txt`: 将1.txt压缩为1.tar.gz<br>`tar -tzvf 1.tar.gz`: 列出压缩文件1.tar.gz的内容<br>`tar -xzvf 1.tar.gz`: 解压文件1.tar.gz<br>`tar -xvf 1.tar.xz`: 解压文件1.tar.xz |
 | zip   | 压缩成zip文件           | - q 表现时指令执行过程<br>- r 递归处理<br>- d 从压缩文件内删除指定的文件<br>- v 显示指令执行过程 | `zip -qr test.zip ~/test`: 将test目录压缩成test.zip文件<br>`zip -dv test.zip /home/he/test/1.txt`:  删除test.zip文件中的1.txt文件 |
 | unzip | 解压缩zip文件           | - l 显示压缩文件内所包含的文件                               | `unzip -l test.zip`: 查看压缩文件test.zip中包含的文件<br>    |
-| rar   | 压缩成rar文件           |                                                              |                                                              |
-| urar  | 解压缩rar文件           |                                                              |                                                              |
+| rar   | 压缩成rar文件           |                                                              | TODO                                                         |
+| urar  | 解压缩rar文件           |                                                              | TODO                                                         |
 
 
 
@@ -42,7 +41,7 @@
 
 |命令|说明|选项|其它|常用|
 |:--|:--|:--|:--|---|
-|lsof|查看当前系统文件|- a 列出打开文件存在的进程<br>- c 里处指定进程所打开的文件<br>- g 列出GID好进程详情<br>|||
+|lsof|查看当前系统文件|- a 列出打开文件存在的进程<br>- c 里处指定进程所打开的文件<br>- g 列出GID好进程详情<br>||TODO|
 |ps|查看进程快照信息|- a 显示同一终端下的所有程序<br>-  A 显示所有进程<br>- e 等同于"-A"<br>- f 显示程序间的关系<br>- u 指定用户的所有进程<br>- H 显示树状结构<br>- au 显示较为详细的资讯<br>- aux 显示所有包含其它使用者的行程|**二级选项:**<br>--lines 行数: 每页显示的行数<br>--width 字符数: 每页显示的字符数|`ps -aux | grep he`: 查看用户he的所有进程<br>`ps -ef`: 显示所有进程信息，包括进程的命令行<br>`ps -axjf`: 列出程序树信息<br>`ps -aux|egrep '(vim|chrome)'`: 列出与vim或chrome相关的进程|
 |top|查看进程持续信息|- c 切换显示模式<br>- q 无延迟显示<br>- i 不显示闲置和僵尸进程<br>- n 设置更新次数<br>- d 设置更新时间<br>- p 指定进程id|**行内命令:**<br>`空格键`: 立即刷新<br>`P`: 以占据CPU百分比排序<br>`M`:以占据内存百分比排序<br>`T`: 以累积占用CPU时间排序<br>`t`: 显示或隐藏进程和cpu状态信息<br>`s+秒数`: 修改刷新时间间隔<br>`k+进程id+enter+信号`:杀死指定id的进程|`top -d 2`: 2秒刷新一次信息<br>`top -p 2444`: 只显示进程2444的信息<br>`top\n k 2444\n enter\n 15`: 杀死id为2444的进程|
 |nohup|后台运行程序|||`nohup chrome &`: 后台运行chrome并在当前目录生成一个默认名为nohup.out的日志文件<br>`nohup chrome &>/dev/null &`: 后运行chrome，同时不生成日志文件<br>`nohup chrome >test.log 2>&1 &`: 后台运行chrome，同时输出到日志文件test.log|
@@ -60,10 +59,10 @@
 |tail|查看日志|-||`tail -f 007.log`:查看007.log这个文件最新的内容|
 |file|查看文件类型|- b: 不显示文件名<br>- c: 显示指令执行过程<br>- f: 指定文件名<br>- L: 直接显示符号链接所指向的文件类型<br>- m: 指定魔法数字文件<br>- v: 显示版本信息<br>- z: 解读压缩文件的信息||`file /usr/local/bin/lua`: 显示文件`/usr/local/bin/lua`的文件类型<br>`file -L /bin/dd`: 显示链接`/bin/dd`指向的文件类型|
 |nm|查看文件的符号信息|- a: 显示所有符号<br>- D: 显示动态符号(对动态链接库有效)<br>- g: 只显示外部符号<br>- l: 使用debug信息找到文件名和行号<br>- n: 按符号对应地址的顺序排序<br>- p: 按照目标文件中遇到的符号顺序显示，不排序<br>- P: 按照POSIX2.0标准格式输出<br>- r: 反转排序<br>- s: 当列出库中成员的符号时，包含索引<br>- u: 只显示未定义符号|`--defined-only`: 只显示定义的符号<br>`--no-demangle`: 默认选项，不将低级符号名解析成用户级名字|`nm /bin/dd|grep copy`: 查看程序`/bin/dd`是否包含`copy函数`|
-|strings|||||
-|size|查看文件各段和总和大小||||
+|strings||||TODO|
+|size|查看文件各段和总和大小|||TODO|
 |readelf|查看ELF格式的文件信息|- h: 显示文件开始的文件头信息<br>- l: 显示程序头信息<br>- S: 显示节头信息<br>- g: 显示节组信息<br>- t: 显示节点的详细信息<br>- s: 显示符号表段中的项<br>- e: 显示全部头信息<br>- n: 显示内核注释信息<br>- r: 显示可重定位段的信息<br>- u: 显示unwind段信息<br>- d: 显示动态段信息<br>- V: 显示版本段信息<br>- A: 显示CPU架构信息<br>- l: 显示`bucket list`长度的柱状图<br>- x: 以16进制方式显示指定段内内容<br>- D: 使用动态段中的符号表显示符号，而不是使用符号段<br>- a: 显示全部信息<br>- v: 显示readelf的版本信息<br>- H: 显示帮助信息||`readelf -x 1 hello.so`: 以16进制方式显示文件`hello.so`中段索引为1的内容|
-|objdump|反汇编程序||||
+|objdump|反汇编程序|||TODO|
 |ulimit|开启core文件生成功能|- c||`ulimit -c`: 查看core文件配置，0表示未开启；<br>`ulimit -c unlimited`: 不限制core文件大小；<br>`ulimit -c 1024`: 限制core文件最大为1024kb|
 |addr2line|翻译出错信息，定位出错的代码位置|-e||`addr2line -e hello 40053b`: 翻译hello的报错信息`40053b`，定位到源码位置|
 
@@ -92,7 +91,7 @@
 | 命令  | 说明                                                 | 选项                                                         | 补充 | 常用                                                         |
 | :---- | :--------------------------------------------------- | :----------------------------------------------------------- | ---- | :----------------------------------------------------------- |
 | uname | 查看内核/操作系统                                    | - a 显示全部信息<br>- m 显示电脑类型<br>- n 显示网络上主机名称<br>- r 显示操作系统的发行编号<br>- s 显示操作系统名称 |      | `uname -a`: 显示系统信息<br>`uname -s`: 显示操作系统信息<br> |
-| lscpu | 查看cpu信息(更详细的信息用命令: `cat /proc/cpuinfo`) |                                                              |      |                                                              |
+| lscpu | 查看cpu信息(更详细的信息用命令: `cat /proc/cpuinfo`) |                                                              |      | TODO                                                         |
 | free  | 查看内存信息(更详细的信息用命令:`cat /proc/meminfo`) | - m 以MB为单位<br>- k 以KB为单位<br>- g 以GB为单位<br>- t 显示内存总量 |      | `free -m`: 查看内存情况(MB)<br>`free -g`: 查看内存情况(GB)   |
 | fdisk | 查看磁盘信息                                         | - l 列出所有分区表<br>- u 显示区分数目<br>- s 指定分区       |      | `fdisk -l`: 查看磁盘信息                                     |
 | lspci | 查看PCI总线信息（包括显卡，网络，usb，SATA控制器等） | - n 以数字方式显示PCI厂商和设备代码<br>- t 以树桩形式显示PCI设备的层次关系<br>- b 以总线为中心的视图<br>- s 仅显示指定总线插槽的设备和功能块信息<br>- i 指定PCI编号列表文件，不使用默认文件<br>- m 以机器可读方式显示PCI设备信息 |      | `lspci|grep -i 'eth'`: 查看网卡硬件信息                      |

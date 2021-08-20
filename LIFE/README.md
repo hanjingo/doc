@@ -1,4 +1,4 @@
-# 生存经验
+# 生活经验
 
 - [电动车自行车选购指南](select_electrombile.md)
 - [房产选购指南](select_house.md)

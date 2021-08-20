@@ -3,7 +3,7 @@
 |       | a         | b         | c         | d         | e         | f    | g         | h         | i         | j    | k    | l         | m         | n         | o         | p         | q         | r         | s         | t         | u         | v         | w         | x         | y         | z    |
 | ----- | --------- | --------- | --------- | --------- | --------- | ---- | --------- | --------- | --------- | ---- | ---- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | ---- |
 | **A** |           | [ab](#ab) | [ac](#ac) | [ad](#ad) |           |      |           |           | [ai](#ai) |      |      | [al](#al) | [am](#am) | [an](#an) |           | [ap](#ap) |           | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) |           |           |           |      |
-| **B** | [ba](#ba) |           |           |           |           |      |           |           |           |      |      | [bl](#bl) |           |           |           |           |           | [br](#br) |           |           | [bu](#bu) |           |           |           |           |      |
+| **B** | [ba](#ba) |           |           |           | [be](#be) |      |           |           |           |      |      | [bl](#bl) |           |           |           |           |           | [br](#br) |           |           | [bu](#bu) |           |           |           |           |      |
 | **C** |           |           | [ca](#ca) |           |           |      |           | [ch](#ch) | [ci](#ci) |      |      | [cl](#cl) |           |           | [co](#co) |           |           | [cr](#cr) |           |           | [cu](#cu) |           |           |           |           |      |
 | **D** | [da](#da) |           |           |           | [de](#de) |      |           |           | [di](#di) |      |      |           |           |           | [do](#do) |           |           |           |           |           | [du](#du) |           |           |           |           |      |
 | **E** |           |           |           |           |           |      | [eg](#eg) |           |           |      |      | [el](#el) | [em](#em) | [en](#en) |           |           | [eq](#eq) |           | [es](#es) |           |           | [ev](#ev) |           | [ex](#ex) |           |      |
@@ -21,7 +21,7 @@
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           | [sy](#sy) |      |
-| **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           |           |      |
+| **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           | [ty](#ty) |      |
 | **U** |           |           |           |           |           |      |           |           |           |      |      |           |           | [un](#un) |           | [up](#up) |           |           |           | [ut](#ut) |           |           |           |           |           |      |
 | **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **W** | [wa](#wa) |           |           |           | [we](#we) |      |           |           | [wi](#wi) |      |      |           |           |           | [wo](#wo) |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,7 +31,12 @@
 
 ## 高频词汇
 
-intensive[^1]    assign[^2]    facilitate[^3]   scratch[^5]   incentive[^8]    spirit[^9]    perform[^10]    correspond[^11]    manipulation [^12]   portion [^13]   closure[^14]   dexterity[^15]
+| -               | -         | -             | -            | -            |
+| --------------- | --------- | ------------- | ------------ | ------------ |
+| incentive[^1]   | dummy[^2] |               |              | scratch[^5]  |
+|                 |           | incentive[^8] | spirit[^9]   | perform[^10] |
+| correspond[^11] |           |               | closure[^14] |              |
+|                 |           |               |              |              |
 
 ---
 
@@ -89,6 +94,8 @@ aid `/eɪd/` 帮助
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
+allegations `/ˌælɪˈgeɪʃ(ə)nz/` 说法，指控
+
 alter `/ˈɔːltə/` 改变，更改
 
 alternative `/ɔːlˈtɜːnətɪv/`  可替代的，非传统的，另类的
@@ -120,6 +127,8 @@ applicant `/ˈaplɪk(ə)nt/` 申请人
 arbitrary `/ˈɑːbɪtrəri/` 任意的，武断的，随心所欲的，专制的
 
 architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
+
+arithmetic `/əˈrɪθmətɪk/` 算术，算术运算
 
 arrangement `/əˈreɪndʒmənt/`  安排，筹备
 
@@ -166,6 +175,12 @@ avalanche `/ˈævəlɑːnʃ/` 雪崩，山崩
 [回到B](#B)&ensp;[回到顶部](#英汉词典)
 
 batch `/bætʃ/` 一批，批处理
+
+### be
+
+[回到B](#B)&ensp;[回到顶部](#英汉词典)
+
+beware`/bɪˈweə(r)/` 小心，提防，当心
 
 ### bl
 
@@ -285,11 +300,15 @@ corporate `/ˈkɔːpərət/`  公司的，全体的，共同的
 
 [^11]:**correspond `/kɒrɪˈspɒnd/` 通信，相符，符合**
 
+corrupt `/kəˈrʌpt/` 贪污，腐败，不道德的，破坏，损坏
+
 ### cr
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
 
 critical `/ˈkrɪtɪkl/` 关键的，严重的，致命的 
+
+criticize `/ˈkrɪtɪsaɪz/` 批评，批判，挑剔，指责，评论，评价
 
 ### cu
 
@@ -373,7 +392,7 @@ dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 
 dual `/ˈdjuːəl/` 两部分，双重的
 
-dummy `/ˈdʌmi/` 假的，仿制品，笨蛋
+[^2]:dummy `/ˈdʌmi/` 假的，仿制品，笨蛋
 
 duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
@@ -438,6 +457,8 @@ examine `/ɪɡˈzæmɪn/` 审查，考察
 exclusive `/ɪkˈskluːsɪv/` 专有的，独占的，专有的，排外的，独家
 
 exert `/ɪɡˈzɜːt/` 发挥，运用，尽力
+
+expell `/ɪkˈspel/` 排除
 
 explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
@@ -795,6 +816,8 @@ opaque `/əʊˈpeɪk/` 不透明的，浑浊的，难懂，模糊，隐晦
 
 opposed `/əˈpəʊzd/` 完全不同的，相反的
 
+optimal `/ˈɒptɪməl/` 最优的，最佳的
+
 optimism `/ˈɒptɪmɪzəm/` 乐观，乐观主义 
 
 ### or
@@ -823,6 +846,8 @@ owing `/ˈəʊɪŋ/` 拖欠，未付，欠账
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
+pandemic `/pænˈdemɪk/` 流行病，大流行的，普遍的，全世界的
+
 parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
@@ -838,6 +863,8 @@ particular `/pəˈtɪkjʊlə/` 特别的，特指
 passage `/ˈpæsɪdʒ/` 通道，走廊，章节，段落
 
 patent `/ˈpætnt/` 专利权，专利证书
+
+pave `/peɪv/` 铺（地），铺垫
 
 ### pe
 
@@ -888,6 +915,8 @@ profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 procedure `/prəˈsiːdʒə/` 程序
 
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
+
+prosecute `/ˈprɒsɪkjuːt/` 起诉，控告，检举
 
 proteins `/ˈprəʊtiːnz/` 蛋白质
 
@@ -1004,6 +1033,8 @@ scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
 sensible `/ˈsensəbl/` 明智的，合理的，理智的，意识到
+
+sentence `/ˈsentəns/` 句子，句号，判决，宣判，判刑
 
 sentiment `/ˈsentɪmənt/` 观点，看法，哀伤 
 
@@ -1148,6 +1179,12 @@ troops `/truːps/` 军队，士兵，连队
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
 
 turnover `/ˈtərnˌōvər/` 周转，进出
+
+### ty
+
+[回到T](#T)&ensp;[回到顶部](#英汉词典)
+
+tycoon `/taɪˈkuːn/` 大亨，巨头，巨子
 
 ---
 

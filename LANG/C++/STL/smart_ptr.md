@@ -6,7 +6,7 @@ c++11开始提供三大智能指针：`scoped_ptr`，`shared_ptr`，`weak_ptr`
 
 ## scoped_ptr
 
-
+TODO
 
 ## shared_ptr
 
@@ -59,7 +59,8 @@ shared_ptr<int> dont_do_this(new int[10]); // 危险！不能正确释放内存
 
 ### reset函数
 
-
+TODO
 
 ## weak_ptr
 
+TODO
