@@ -10,55 +10,7 @@
 
 ```c
 typedef struct redisClient {
-    uint64_t id;            /* Client incremental unique ID. */
-    int fd;
-    redisDb *db;
-    int dictid;
-    robj *name;             /* As set by CLIENT SETNAME */
-    sds querybuf;
-    size_t querybuf_peak;   /* Recent (100ms or more) peak of querybuf size */
-    int argc;
-    robj **argv;
-    struct redisCommand *cmd, *lastcmd;
-    int reqtype;
-    int multibulklen;       /* number of multi bulk arguments left to read */
-    long bulklen;           /* length of bulk argument in multi bulk request */
-    list *reply;
-    unsigned long reply_bytes; /* Tot bytes of objects in reply list */
-    int sentlen;            /* Amount of bytes already sent in the current
-                               buffer or object being sent. */
-    time_t ctime;           /* Client creation time */
-    time_t lastinteraction; /* time of the last interaction, used for timeout */
-    time_t obuf_soft_limit_reached_time;
-    int flags;              /* REDIS_SLAVE | REDIS_MONITOR | REDIS_MULTI ... */
-    int authenticated;      /* when requirepass is non-NULL */
-    int replstate;          /* replication state if this is a slave */
-    int repl_put_online_on_ack; /* Install slave write handler on ACK. */
-    int repldbfd;           /* replication DB file descriptor */
-    off_t repldboff;        /* replication DB file offset */
-    off_t repldbsize;       /* replication DB file size */
-    sds replpreamble;       /* replication DB preamble. */
-    long long reploff;      /* replication offset if this is our master */
-    long long repl_ack_off; /* replication ack offset, if this is a slave */
-    long long repl_ack_time;/* replication ack time, if this is a slave */
-    long long psync_initial_offset; /* FULLRESYNC reply offset other slaves
-                                       copying this slave output buffer
-                                       should use. */
-    char replrunid[REDIS_RUN_ID_SIZE+1]; /* master run id if this is a master */
-    int slave_listening_port; /* As configured with: SLAVECONF listening-port */
-    int slave_capa;         /* Slave capabilities: SLAVE_CAPA_* bitwise OR. */
-    multiState mstate;      /* MULTI/EXEC state */
-    int btype;              /* Type of blocking op if REDIS_BLOCKED. */
-    blockingState bpop;     /* blocking state */
-    long long woff;         /* Last write global replication offset. */
-    list *watched_keys;     /* Keys WATCHED for MULTI/EXEC CAS */
-    dict *pubsub_channels;  /* channels a client is interested in (SUBSCRIBE) */
-    list *pubsub_patterns;  /* patterns a client is interested in (SUBSCRIBE) */
-    sds peerid;             /* Cached peer ID. */
-
-    /* Response buffer */
-    int bufpos;
-    char buf[REDIS_REPLY_CHUNK_BYTES];
+	...
 } redisClient;
 ```
 
@@ -307,8 +259,9 @@ PUBLISH 频道名 消息
 #### 实现
 
 ```c
-
+TODO
 ```
 
 ### 发送消息给模式订阅者
 
+TODO

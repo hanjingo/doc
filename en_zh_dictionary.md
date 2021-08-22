@@ -17,7 +17,7 @@
 | **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |      |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |      |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
 | **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |      |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           | [ow](#ow) |           |           |      |
-| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           |           | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           |           |           |           |           |           |      |
+| **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           | [ph](#ph) | [pi](#pi) |      |      |           |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           |           |           |           |           |           |      |
 | **Q** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           | [sy](#sy) |      |
@@ -31,12 +31,11 @@
 
 ## 高频词汇
 
-| -               | -         | -             | -            | -            |
-| --------------- | --------- | ------------- | ------------ | ------------ |
-| incentive[^1]   | dummy[^2] |               |              | scratch[^5]  |
-|                 |           | incentive[^8] | spirit[^9]   | perform[^10] |
-| correspond[^11] |           |               | closure[^14] |              |
-|                 |           |               |              |              |
+| closure |      |      |      |      |
+| ------- | ---- | ---- | ---- | ---- |
+|         |      |      |      |      |
+|         |      |      |      |      |
+|         |      |      |      |      |
 
 ---
 
@@ -120,6 +119,8 @@ annum `/ˈænəm/`  年
 
 applicant `/ˈaplɪk(ə)nt/` 申请人
 
+appropriate `/əˈprəʊpriət/`  合适的，恰当的，盗用，占用，侵吞
+
 ### ar
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
@@ -140,7 +141,7 @@ arrest `/əˈrest/` 拘捕，阻止
 
 aspect `/ˈæspekt/`  方面，层面，外观，方位
 
-[^2]: **assign `/əˈsʌɪn/` 分配，指派**
+assign `/əˈsʌɪn/` 分配，指派
 
 assume `/əˈsjuːm/` 假定，假设
 
@@ -244,7 +245,7 @@ circumstances `/ˈsəːkəmstans/` 情况，环境，条件
 
 clampdown `/ˈklæmpdaʊn/` 严禁，制止，取缔
 
-[^14]:**closure `/ˈkləʊʒə(r)/` 闭包，停业，关闭，倒闭，终止**
+closure `/ˈkləʊʒə(r)/` 闭包，停业，关闭，倒闭，终止
 
 ### co
 
@@ -257,6 +258,8 @@ combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
 compact `/ˈkɑːmpækt/` 紧凑的，紧密的，合约，协定
 
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
+
+compensate `/ˈkɒmpenseɪt/` 补偿，弥补，赔偿
 
 complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
 
@@ -298,13 +301,15 @@ coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
 
 corporate `/ˈkɔːpərət/`  公司的，全体的，共同的
 
-[^11]:**correspond `/kɒrɪˈspɒnd/` 通信，相符，符合**
+correspond `/kɒrɪˈspɒnd/` 通信，相符，符合
 
 corrupt `/kəˈrʌpt/` 贪污，腐败，不道德的，破坏，损坏
 
 ### cr
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
+
+crawl `/krɔːl/` 爬，爬行，自由泳
 
 critical `/ˈkrɪtɪkl/` 关键的，严重的，致命的 
 
@@ -356,7 +361,7 @@ detect `/dɪˈtekt/` 发现，查明，探测
 
 deter `/dɪˈtɜː(r)/` 阻止，威慑
 
-[^15]:dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
+dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
 
 ### di
 
@@ -392,7 +397,7 @@ dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 
 dual `/ˈdjuːəl/` 两部分，双重的
 
-[^2]:dummy `/ˈdʌmi/` 假的，仿制品，笨蛋
+dummy `/ˈdʌmi/` 假的，仿制品，笨蛋
 
 duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
@@ -414,9 +419,13 @@ elapse `/əˈlaps/` 过去
 
 election `/ɪˈlɛkʃ(ə)n/` 选举
 
+elf `/elf/` 精灵，二进制程序的可执行部分
+
 ### em
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
+
+embassy `/ˈembəsi/` 大使馆
 
 embattle `/ɪmˈbætld/` 处境艰难的，被困扰的，列阵，严阵以待
 
@@ -470,7 +479,7 @@ explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-[^3]:facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
+facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
 farewell `/ˌfeəˈwel/` 告别，辞行
 
@@ -620,7 +629,7 @@ incapable `/ɪnˈkeɪpəbl/` 不能克制的，没有能力的
 
 inception `/ɪnˈsepʃn/` 开端，创始
 
-[^8]:**incentive `/ɪnˈsentɪv/` 刺激，激励**
+incentive `/ɪnˈsentɪv/` 刺激，激励
 
 inconvenient `/inconvenient/` 不方便的
 
@@ -652,7 +661,7 @@ interchange `/ˈɪntətʃeɪndʒ /` 互换，交换，替换
 
 intermediate `/ˌɪntəˈmiːdiət/` 中间的，中级的，中等的
 
-[^1]:  **intensive `/ɪnˈtensɪv/`  密集的，加强器**
+intensive `/ɪnˈtensɪv/`  密集的，加强器
 
 intrusive `/ɪnˈtruːsɪv/` 侵入的，插入的，添加的
 
@@ -720,7 +729,7 @@ loosely `/loosely/` 宽松的，松散的，不精确的
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
 
-[^12]:**manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改**
+manipulation `/məˌnɪpjʊˈleɪʃ(ə)n/` 操作，操纵，篡改
 
 manner `/ˈmanə/` 方式，举止，风俗，礼仪
 
@@ -730,7 +739,7 @@ mansion `/ˈmænʃn/` 公寓，公馆
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
 
-measurement `/ˈmeʒəmənt/` 测量，尺寸，长度，数量
+measure `/ˈmeʒə(r)/` 测量，估量，尺寸，长度，数量
 
 ### mi
 
@@ -870,13 +879,19 @@ pave `/peɪv/` 铺（地），铺垫
 
 [回到P](#P)&ensp;[回到顶部](#英汉词典)
 
-[^10]:**perform `/pəˈfɔːm/` 做，履行，执行，表演**
+perform `/pəˈfɔːm/` 做，履行，执行，表演
 
 permit `/pəˈmɪt/` 允许，许可证，特许证
 
 permut `/pə'mjuːt/` 排列，交换，变更
 
 persist `/pəˈsɪst/`  坚持，维持
+
+### ph
+
+[回到P](#P)&ensp;[回到顶部](#英汉词典)
+
+phase `/feɪz/` 阶段，时期，逐步做
 
 ### pi
 
@@ -890,7 +905,7 @@ pivot `/ˈpɪvət/` 支点，枢轴，中心，核心
 
 potential `/pəˈten.ʃə/` 潜在的，可能的
 
-[^13]:**portion `/ˈpɔːʃ(ə)n/` 一部分**
+portion `/ˈpɔːʃ(ə)n/` 一部分
 
 ### pr
 
@@ -1024,7 +1039,7 @@ scarce `/skɛːs/` 缺乏，不足，稀有的，罕见的
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
-[^5]: **scratch `/skrætʃ/` 划痕**
+scratch `/skrætʃ/` 划痕
 
 scramble `/ˈskræmbl/` 攀爬，争夺，抢占
 
@@ -1092,7 +1107,7 @@ spectrum `/spɛktrəm/` 光谱，派别
 
 spectator `/spɛkˈteɪtə/` 观众
 
-[^9]:**spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境**
+spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
 
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
@@ -1167,6 +1182,8 @@ toned `/təʊnd/` 结实强壮的
 ### tr
 
 [回到T](#T)&ensp;[回到顶部](#英汉词典)
+
+traverse `/trəˈvɜːs/` 横过，穿过，横渡
 
 treat `/triːt/` 对待
 

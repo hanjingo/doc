@@ -23,5 +23,5 @@
 
 ## 皮肤病学
 
-- [痤疮](acne.md)
+- [痤疮](DERMATOLOGY/acne.md)
 
