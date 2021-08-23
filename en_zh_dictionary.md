@@ -5,10 +5,10 @@
 | **A** |           | [ab](#ab) | [ac](#ac) | [ad](#ad) |           |      |           |           | [ai](#ai) |      |      | [al](#al) | [am](#am) | [an](#an) |           | [ap](#ap) |           | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) |           |           |           |      |
 | **B** | [ba](#ba) |           |           |           | [be](#be) |      |           |           |           |      |      | [bl](#bl) |           |           |           |           |           | [br](#br) |           |           | [bu](#bu) |           |           |           |           |      |
 | **C** |           |           | [ca](#ca) |           |           |      |           | [ch](#ch) | [ci](#ci) |      |      | [cl](#cl) |           |           | [co](#co) |           |           | [cr](#cr) |           |           | [cu](#cu) |           |           |           |           |      |
-| **D** | [da](#da) |           |           |           | [de](#de) |      |           |           | [di](#di) |      |      |           |           |           | [do](#do) |           |           |           |           |           | [du](#du) |           |           |           |           |      |
+| **D** | [da](#da) |           |           |           | [de](#de) |      |           |           | [di](#di) |      |      |           |           |           | [do](#do) |           |           | [dr](#dr) |           |           | [du](#du) |           |           |           |           |      |
 | **E** |           |           |           |           |           |      | [eg](#eg) |           |           |      |      | [el](#el) | [em](#em) | [en](#en) |           |           | [eq](#eq) |           | [es](#es) |           |           | [ev](#ev) |           | [ex](#ex) |           |      |
-| **F** | [fa](#fa) |           |           |           | [fe](#fe) |      |           |           |           |      |      | [fl](#fl) |           |           | [fo](#fo) |           |           | [fr](#fr) |           |           | [fu](#fu) |           |           |           |           |      |
-| **G** | [ga](#ga) |           |           |           | [ge](#ge) |      |           |           |           |      |      | [gl](#gl) |           |           |           |           |           | [gr](#gr) |           |           |           |           |           |           |           |      |
+| **F** | [fa](#fa) |           |           |           | [fe](#fe) |      |           |           | [fi](#fi) |      |      | [fl](#fl) |           |           | [fo](#fo) |           |           | [fr](#fr) |           |           | [fu](#fu) |           |           |           |           |      |
+| **G** | [ga](#ga) |           |           |           | [ge](#ge) |      |           |           |           |      |      | [gl](#gl) |           |           | [go](#go) |           |           | [gr](#gr) |           |           |           |           |           |           |           |      |
 | **H** | [ha](#ha) |           |           |           | [he](#he) |      |           |           | [hi](#hi) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           | [hy](#hy) |      |
 | **I** |           |           |           | [id](#id) |           |      |           |           |           |      |      | [il](#il) | [im](#im) | [in](#in) |           |           |           |           |           |           |           |           |           |           |           |      |
 | **J** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,11 +31,11 @@
 
 ## 高频词汇
 
-| closure |      |      |      |      |
-| ------- | ---- | ---- | ---- | ---- |
-|         |      |      |      |      |
-|         |      |      |      |      |
-|         |      |      |      |      |
+| closure | potential | pseudo | impose |      |
+| ------- | --------- | ------ | ------ | ---- |
+|         |           |        |        |      |
+|         |           |        |        |      |
+|         |           |        |        |      |
 
 ---
 
@@ -66,6 +66,8 @@ accustom `/əˈkʌstəm/` 习惯，适应
 acquaint `/əˈkweɪnt/` 告知，与...相识，开始了解
 
 acquire `/əˈkwaɪə(r)/`  获得，得到，购得
+
+acute `/əˈkjuːt/` 十分严重的，急性的，灵敏的
 
 ### ad
 
@@ -105,6 +107,8 @@ alternative `/ɔːlˈtɜːnətɪv/`  可替代的，非传统的，另类的
 
 ambiguity `/ambɪˈɡjuːɪti/` 歧义
 
+among `/əˈmʌŋ/` 在...之内，在...之中
+
 ### an
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
@@ -112,6 +116,8 @@ ambiguity `/ambɪˈɡjuːɪti/` 歧义
 anticipate `/ænˈtɪsɪpeɪt/` 预期，期盼
 
 annum `/ˈænəm/`  年
+
+anxiety `/æŋˈzaɪəti/` 焦虑，担忧，害怕
 
 ### ap
 
@@ -174,6 +180,8 @@ avalanche `/ˈævəlɑːnʃ/` 雪崩，山崩
 ### ba
 
 [回到B](#B)&ensp;[回到顶部](#英汉词典)
+
+bastion `/ˈbæstiən/` 堡垒，捍卫者，防御工事
 
 batch `/bætʃ/` 一批，批处理
 
@@ -281,6 +289,8 @@ confront `/kənˈfrʌnt/` 面对
 
 confuse `/kənˈfjuːz/` 困惑，混淆
 
+conserve `/kənˈsɜːv/` 保护，保藏，节约，果酱，蜜饯
+
 consequence `/ˈkɒnsɪkwəns/` 结果，后果，所以
 
 consistent `/kənˈsɪstənt/` 一致的，复合的，连续的
@@ -383,6 +393,8 @@ distinguish `/dɪˈstɪŋ.ɡwɪʃ/` 区分，分辨
 
 distinct `/dɪˈstɪŋ(k)t/` 独特的，明显的，不同寻常的
 
+district `/ˈdɪstrɪkt/` 地区，区域，行政区
+
 divide `/dɪˈvʌɪd/` 分配，划分，分开，除以
 
 ### do
@@ -390,6 +402,12 @@ divide `/dɪˈvʌɪd/` 分配，划分，分开，除以
 [回到D](#D)&ensp;[回到顶部](#英汉词典)
 
 dotted-quad `/ˈdɒtɪd kwɒd/` 点分
+
+### dr
+
+[回到D](#D)&ensp;[回到顶部](#英汉词典)
+
+drama `/ˈdrɑːmə/` 戏，戏剧，演戏，戏剧性
 
 ### du
 
@@ -491,6 +509,12 @@ favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
 fence `/fens/` 栅栏，篱笆 
 
+### fi
+
+[回到F](#F)&ensp;[回到顶部](#英汉词典)
+
+fierce`/fɪəs/` 凶猛的，凶残的，狂热的
+
 ### fl
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
@@ -547,6 +571,12 @@ general `/ˈdʒenrəl/` 一般的，总体的，大体的
 
 glitch `/ɡlɪtʃ/` 失灵，小故障
 
+### go
+
+[回到G](#G)&ensp;[回到顶部](#英汉词典)
+
+gown `/ɡaʊn/` 女裙，长袍，外罩
+
 ### gr
 
 [回到G](#G)&ensp;[回到顶部](#英汉词典)
@@ -572,6 +602,8 @@ harried `/ˈhærid/` 折磨，反复攻击
 ### he
 
 [回到H](#H)&ensp;[回到顶部](#英汉词典)
+
+headscarf `/ˈhedskɑːf/` 方头巾（女用）
 
 hearty `/ˈhɑːti/`  亲切的，友好的，丰盛的，喧闹
 
@@ -615,7 +647,7 @@ implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
 
 imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，使必要
 
-impose `/ɪmˈpəʊz/` 强制执行，利用
+impose `/ɪmˈpəʊz/` 强制执行，推行，强迫，利用
 
 impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的 
 
@@ -752,6 +784,8 @@ mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 ### mo
 
 [回到M](#M)&ensp;[回到顶部](#英汉词典)
+
+mobilize `/ˈməʊbəlaɪz/` 组织，鼓动，动员，调动
 
 motivation `/ˌməʊtɪˈveɪʃn/`  动机，意志
 
@@ -921,6 +955,8 @@ present `/ˈpreznt/` 目前，提出，出席
 
 preserve `/prɪˈzɜːv/` 保护，维护，保存，保养，保鲜
 
+prevent `/prɪˈvent/` 阻止，阻挠，阻碍
+
 previous `/ˈpriːviəs/` 先前的
 
 probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
@@ -928,6 +964,8 @@ probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
 procedure `/prəˈsiːdʒə/` 程序
+
+prominent `/ˈprɒmɪnənt/`  重要的，杰出的，著名的，突出的
 
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 
@@ -991,9 +1029,13 @@ remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
 
 render`/ˈrendə(r)/` 使得，提供，送交，表现，描绘
 
+repel `/rɪˈpel/` 击退，驱逐，推开，驱除
+
 replication `/ˌreplɪ'keɪʃ(ə)n/`  复制，拷贝，重复（实验），回答
 
 reserve `/rɪˈzɜːv/` 预定，预留，保留，保有
+
+resist `/rɪˈzɪst/` 抵制，反抗，回击，抵挡
 
 respective `/rɪˈspek.tɪv/`  各自的，分别的
 
@@ -1025,6 +1067,8 @@ robust `/rəʊˈbʌst/` 健壮的，耐用的
 
 sanity `/ˈsænəti/` 精神健全的，明智，理智
 
+satisfaction `/ˌsætɪsˈfækʃn/` 满足，满意，欣慰，清偿，赔偿
+
 saunter `/ˈsɔːntə(r)/` 漫步，闲逛，混日子，浪子
 
 ### sc
@@ -1036,6 +1080,8 @@ scalar `/ˈskeɪlər/` 数量，标量，无向量的
 scar `/skɑː(r)/` 伤疤，疤痕
 
 scarce `/skɛːs/` 缺乏，不足，稀有的，罕见的
+
+scatter `/ˈskætə(r)/` 散开，驱散，分散
 
 scenario `/sɪˈnɑː.ri.əʊ/` 可能发生的事态，设想
 
@@ -1128,6 +1174,8 @@ strict `/strɪkt/` 严格的，严厉的
 suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制
 
 surname `/ˈsɜːneɪm/` 姓，给...加姓
+
+suspicion `/səˈspɪʃn/` 怀疑，嫌疑，猜疑，不放心
 
 ### sw
 
@@ -1237,6 +1285,8 @@ utmost `/'ʌtməʊst/` 极度，极端，最...
 
 vaccine `/ˈvæksiːn/` 疫苗
 
+vague `/veɪɡ/` 含糊的，模糊的，不明确的
+
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
 variety `/vəˈraɪəti/` 不同种类的，多种多样的，变化，多样性
@@ -1256,6 +1306,8 @@ vigil `/ˈvɪdʒɪl/` 值夜，不眠时间，守夜
 vigorous `/ˈvɪɡərəs/` 充满活力的，果断地，精力充沛的，强壮的
 
 violent `/ˈvaɪələnt/` 暴力的，猛烈的
+
+vital `/ˈvaɪtl/` 必不可少的，极其重要的，生机勃勃的
 
 ---
 
@@ -1278,6 +1330,8 @@ willingness `/ˈwɪlɪŋnɪs/` 乐意，愿意
 ### wi
 
 willing `/ˈwɪlɪŋ/` 愿意，乐意，想要，决心
+
+withdrawal `/wɪðˈdrɔːəl/` 撤走，收回，退出，取款
 
 ### wo
 
