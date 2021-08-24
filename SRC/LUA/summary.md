@@ -55,22 +55,30 @@
 
 ### _ENV
 
-每个被编译的Lua代码块都会有一个外部的局部变量叫`_ENV`，被`_ENV`用于值的表被称为**环境**。
+每个被编译的Lua代码块都会绑定一个单独的环境叫做`_ENV`，`_ENV`默认指向`_G`；
+
+（个人理解）`_ENV`在闭包被调用用时提供环境信息，它位于闭包的第1个upvalue位置。
 
 ### _G
 
-Lua保有一个被称为**全局环境**的特殊`_ENV`，叫做`_G`。
+Lua保有一个被称为**全局环境**的特殊环境，叫做`_G`，用来存储一些全局变量；
+
+~~修改`_G`会影响Lua的其他服务（不建议使用全局环境，会污染命名空间）。~~
 
 
 
-## lua优化技巧
+## LUA优化技巧
 
 1. 在Lua中，应该尽量少地使用字符串连接操作符，因为每一次都会生成一个新的字符串。
 2. 创建表时可以采用“预分配技术”，防止表散列操作长度小的表时造成的性能不佳。
 3. 尽量不要将一个表混用数组和散列桶，即一个表最好只存放一类数据。
+4. 命名要规范，并且尽量使用local；不规范的非local变量可能会污染程序命名。
 
 
 
 ## 参考
 
+- [Environments Tutorial](http://lua-users.org/cgi-bin/wiki.pl?action=search&string=EnvironmentsTutorial&body=1)
 - [Lua 5.3 参考手册](https://www.runoob.com/manual/lua53doc/manual.html#4)
+- [lua 5.2 的 _ENV](https://blog.codingnow.com/2011/12/lua_52_env.html)
+

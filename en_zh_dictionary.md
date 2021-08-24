@@ -22,7 +22,7 @@
 | **R** | [ra](#ra) |           |           |           | [re](#re) |      |           |           | [ri](#ri) |      |      |           |           |           | [ro](#ro) |           |           |           |           |           |           |           |           |           |           |      |
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      |      | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           | [sy](#sy) |      |
 | **T** | [ta](#ta) |           |           |           | [te](#te) |      |           |           |           |      |      |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           | [ty](#ty) |      |
-| **U** |           |           |           |           |           |      |           |           |           |      |      |           |           | [un](#un) |           | [up](#up) |           |           |           | [ut](#ut) |           |           |           |           |           |      |
+| **U** |           |           |           |           |           |      |           |           |           |      |      |           |           | [un](#un) |           | [up](#up) |           | [ur](#ur) |           | [ut](#ut) |           |           |           |           |           |      |
 | **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **W** | [wa](#wa) |           |           |           | [we](#we) |      |           |           | [wi](#wi) |      |      |           |           |           | [wo](#wo) |           |           |           |           |           |           |           |           |           |           |      |
 | **X** |           |           |           |           |           |      |           |           |           |      |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
@@ -31,11 +31,11 @@
 
 ## 高频词汇
 
-| closure | potential | pseudo | impose |      |
-| ------- | --------- | ------ | ------ | ---- |
-|         |           |        |        |      |
-|         |           |        |        |      |
-|         |           |        |        |      |
+| regulation | potential | pseudo | impose | convenient |
+| ---------- | --------- | ------ | ------ | ---------- |
+|            |           |        |        |            |
+|            |           |        |        |            |
+|            |           |        |        |            |
 
 ---
 
@@ -90,6 +90,8 @@ aggregate `/ˈæɡrɪɡət /`  总数，合计
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
 aid `/eɪd/` 帮助
+
+aide `/eɪd/` 助手
 
 ### al
 
@@ -148,6 +150,8 @@ arrest `/əˈrest/` 拘捕，阻止
 aspect `/ˈæspekt/`  方面，层面，外观，方位
 
 assign `/əˈsʌɪn/` 分配，指派
+
+assistance `/əˈsɪstəns/` 帮助，援助，支持
 
 assume `/əˈsjuːm/` 假定，假设
 
@@ -282,6 +286,8 @@ commodity `/kəˈmɒdəti/` 商品，有用的东西
 concept `/ˈkɒnsept/` 观念，概念
 
 concern `/kənˈsəːn/` 关注，担心
+
+concession `/kənˈseʃn/` 让步，拖鞋，承认，给与，许可
 
 concurrent `/kənˈkʌrənt/` 并发，同时发生
 
@@ -737,6 +743,8 @@ leak `/liːk/` 泄露，渗透，裂缝
 
 legal `/ˈliːɡl/`  法律的，合法的
 
+leverage `/ˈliːvərɪdʒ/` 影响力，杠杆作用，杠杆效力
+
 ### li
 
 [回到L](#L)&ensp;[回到顶部](#英汉词典)
@@ -891,6 +899,8 @@ owing `/ˈəʊɪŋ/` 拖欠，未付，欠账
 
 pandemic `/pænˈdemɪk/` 流行病，大流行的，普遍的，全世界的
 
+panned `/pænd/` 严厉批评，抨击，淘金
+
 parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
@@ -960,6 +970,8 @@ prevent `/prɪˈvent/` 阻止，阻挠，阻碍
 previous `/ˈpriːviəs/` 先前的
 
 probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
+
+probe `/prəʊb/` 盘问，追问，探查
 
 profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
 
@@ -1165,6 +1177,8 @@ statement `/ˈsteɪt.mənt/` 说明，声明，表态
 
 steadily `/stedɪlɪ/` 稳定地，坚定地，坚固地
 
+steer `/stɪə(r)/` 驾驶，操控，控制，引导
+
 strict `/strɪkt/` 严格的，严厉的
 
 ### su
@@ -1269,6 +1283,12 @@ unify `/ˈjuːnɪfaɪ/` 统一
 
 uproar `/ˈʌprɔ/` 喧嚣，骚动
 
+### ur
+
+[回到U](#U)&ensp;[回到顶部](#英汉词典)
+
+urban `/ˈɜːbən/` 城市的，城镇的，都市的
+
 ### ut
 
 [回到U](#U)&ensp;[回到顶部](#英汉词典)
@@ -1296,6 +1316,8 @@ variety `/vəˈraɪəti/` 不同种类的，多种多样的，变化，多样性
 [回到V](#V)&ensp;[回到顶部](#英汉词典)
 
 verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
+
+vehicle `/ˈviːəkl/` 交通工具，车辆，手段，工具
 
 ### vi
 

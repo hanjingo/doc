@@ -1,6 +1,6 @@
 # LUA数据类型
 
-
+[TOC]
 
 ## 内化
 
@@ -122,10 +122,6 @@ typedef union UTString {
   TString tsv;        /* lus string类型 */
 } UTString;
 ```
-
-### API
-
-TODO
 
 ### 创建
 
@@ -292,10 +288,6 @@ typedef struct Table {
 
 ```
 
-### API
-
-TODO
-
 ### 查找元素
 
 在表中查找一个数据的流程如下：
@@ -394,14 +386,6 @@ he@he test % lua lua_prefill_test2.lua
 1. 如果迭代过程中发生垃圾收集，对键值赋值为空的操作就有可能导致垃圾收集过程中把这个键值对标记为死键；所以对遍历时需要用`findindex`检索一个死键。
 2. 迭代时先检索数组，再来检索哈希表。
 
-- pairs
-
-  TODO
-
-- ipairs
-
-  TODO
-
 ### 取长度
 
 对Lua中的表进行长度操作时，如果没有提供该表的元方法`_len`，那么该操作只针对该表的序列（sequence）部分进行。
@@ -434,6 +418,227 @@ lua_Unsigned luaH_getn (Table *t) {
 
 
 
+## Metatable
+
+Lua中的每个值都可以有一个元表(Metatable，默认是没有元表的，字符串值例外)，可以用来改变值在特定操作下的行为，每个行为关联了对应的元方法。
+
+### 元方法事件表
+
+| 元方法             | 事件         | 说明                                 |
+| ------------------ | ------------ | ------------------------------------ |
+| `table[key]`       | `__index`    | 根据索引访问表（已存在的键不受影响） |
+| `table[key]=value` | `__nexindex` | 对表索引更新（已存在的键不受影响）   |
+| `func(args)`       | `__call`     | 调用同名函数                         |
+| `print(table)`     | `__tostring` | 自定义对象转字符串函数               |
+| `+`                | `__add`      | 加                                   |
+| `-`                | `__sub`      | 减                                   |
+| `*`                | `__mul`      | 乘                                   |
+| `/`                | `__div`      | 除                                   |
+| `%`                | `__mod`      | 取余                                 |
+| `^`                | `__pow`      | 次方                                 |
+| `-`                | `__unm`      | 取负                                 |
+| `//`               | `__idiv`     | 向下取整除法                         |
+| `&`                | `__band`     | 按位与                               |
+| `|`                | `__bor`      | 按位或                               |
+| `~`                | `__bxor`     | 按位异或                             |
+| `~`                | `__bnot`     | 按位非                               |
+| `<<`               | `__shl`      | 左移                                 |
+| `>>`               | `__shr`      | 右移                                 |
+| `..`               | `__concat`   | 连接                                 |
+| `#`                | `__len`      | 取长度                               |
+| `==`               | `__eq`       | 等于                                 |
+| `<`                | `__lt`       | 小于                                 |
+| `<=`               | `__le`       | 小于等于                             |
+
+### 例
+
+例1.测试`__index`
+
+```c
+print("\ntest __index >>")
+local t = {}
+print("before set __index metatable!")
+print("t[\"f\"]=", t["f"])
+setmetatable(t, {__index = {f = "hello"} })
+print("after set __index metatable!")
+print("getmetatable(t).__index.f=", getmetatable(t).__index.f)
+print("t[\"f\"]=", t["f"])
+```
+
+例2.测试`__newindex`
+
+```c
+print("\ntest __newindex >>")
+local t1 = {world = "world"}
+print("t1.world=", t1.world)
+setmetatable(t1, {__newindex = function(src, k, v)
+    rawset(src, k, "@"..v.."@")
+end})
+t1.world = 123
+t1.hello = 456
+print("after set __newindex metatable!")
+print("t1.world=", t1.world, "|", "t1.hello=", t1.hello)
+```
+
+例3.测试`__add`
+
+```lua
+local function t_max_idx(t)
+    local max = 0
+    for k, v in pairs(t) do
+        if max < k then
+            max = k
+        end
+    end
+    return max
+end
+
+print("\ntest __add >>")
+local t2 = setmetatable({1, 2, 3}, {
+    __add = function (dst, src)
+        for i = 1, t_max_idx(src) do
+            table.insert(dst, t_max_idx(dst)+1, src[i]) -- 遍历src添加到dst
+        end
+        return dst
+    end
+})
+local t3 = {4, 5, 6}
+t2 = t2 + t3
+print("t2 + t3 = ")
+for k, v in ipairs(t2) do
+    print(k, v)
+end
+```
+
+例4.测试`__call`
+
+```lua
+local function t_max_idx(t)
+    local max = 0
+    for k, v in pairs(t) do
+        if max < k then
+            max = k
+        end
+    end
+    return max
+end
+
+print("\ntest __call >>")
+local t4 = {1, 2, 3}
+setmetatable(t4, {
+    __call = function(dst, src)
+        local sum = 0
+        for i = 1, t_max_idx(dst) do
+            sum = sum + dst[i]
+        end
+        for i = 1, t_max_idx(src) do
+            sum = sum + src[i]
+        end
+        return sum
+    end
+})
+print("t4({4, 5, 6}) = ", t4({4, 5, 6}))
+```
+
+例5.测试`__tostring`
+
+```lua
+local function t_max_idx(t)
+    local max = 0
+    for k, v in pairs(t) do
+        if max < k then
+            max = k
+        end
+    end
+    return max
+end
+
+print("\ntest __tostring >>")
+local t5 = {a=1, b=2}
+print("set __tostring before!")
+print(t5)
+setmetatable(t5, {
+    __tostring = function (dst)
+        local back = ""
+        for k, v in pairs(t5) do
+            back = back .. "key=" .. k .. ", value=" .. v .. "\n"
+        end
+        return "tostring:\n" .. back
+    end
+})
+print("set __tostring after!")
+print(t5)
+```
+
+
+
+## 迭代器
+
+### 无状态迭代器
+
+无状态的迭代器指不保留任何状态的迭代器，每次迭代，迭代函数都是用两个变量（状态变量和控制变量）的值作为参数被调用，一个无状态的迭代器只利用这两个值就可以获取下一个元素。
+
+可以利用无状态迭代器的特性来避免创建闭包时花费额外的代价。
+
+例1：使用无状态迭代器ipairs来遍历table
+
+```lua
+print("test ipairs>>")
+local t = {1, 2, 3}
+for k, v in ipairs(t) do
+    print("k=", k, "v=", v)
+end
+```
+
+例2：手动实现`ipairs`
+
+```lua
+print("\ntest mypairs>>")
+local t1 = {4, 5, 6}
+local function iter(a, i)
+    i = i + 1
+    local v = a[i]
+    if v then
+        return i, v
+    end
+end
+local function mypairs(a)
+    return iter, a, 0
+end
+for k, v in mypairs(t1) do
+    print("k=", k, "v=", v)
+end
+```
+
+### 多状态迭代器
+
+如果迭代器需要保存多个状态信息，而不止是状态变量和控制变量，此时需要使用闭包来访问；
+
+例1：手动实现多状态迭代器
+
+```lua
+print("\ntest multistat iterator")
+local t2 = {"hello", "work"}
+local function miter(src)
+    local idx = 0
+    local count = #src
+    -- 创建闭包
+    return function()
+        idx = idx + 1
+        if idx <= count
+        then
+            return src[idx]
+        end
+    end
+end
+
+for e in miter(t2) do
+    print(e)
+end
+```
+
+
+
 ## 参考
 
 ### 文献
@@ -443,4 +648,5 @@ lua_Unsigned luaH_getn (Table *t) {
 ### 外链
 
 - [Lua字符串库(整理)](https://www.cnblogs.com/jadeboy/p/4077459.html)
+- [Lua 5.3 参考手册](https://www.runoob.com/manual/lua53doc/manual.html#lua_pcall)
 

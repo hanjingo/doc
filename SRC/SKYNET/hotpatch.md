@@ -8,7 +8,7 @@ skynet实现热更新有以下方式：
 
 - [控制台clearcache命令](#clearcache)
 - [控制台inject命令](#inject)
-- [云峰制作的热更新工具-skynet-reload](#skynet-reload)
+- [云风制作的热更新工具-skynet-reload](#skynet-reload)
 - [snax框架的hotfix](#snax.hotfix)
 - [利用lua的require机制](#lua-require)
 - ...

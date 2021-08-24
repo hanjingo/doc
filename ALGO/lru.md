@@ -30,8 +30,6 @@
 ## GO的LRU Cache
 
 ```go
-type Cache struct {
-  
-}
+T
 ```
 

@@ -64,7 +64,7 @@ TODO
 
 ### 如何提升memcpy的效率
 
-具体见：[POSIX接口#memcpy](OS/posix.md)
+具体见：[POSIX接口#memcpy](posix.md)
 
 ### 进程状态图
 
@@ -100,7 +100,7 @@ TODO
 
 ### 说说Epoll的原理以及它的用法
 
-具体见：[NET#IO#Epoll](net/io.md)
+红黑树+链表；具体见：[NET#IO#Epoll](net/io.md)
 
 ### DNS原理
 
@@ -198,7 +198,7 @@ TODO
 
 ### 为什么要用`virtual destructor`？为什么没有`virtual constructor`?
 
-放置内存泄漏，具体见：[c++的虚函数#虚析构函数](LANG/C++/vfunc.md)
+防止内存泄漏，具体见：[c++的虚函数#虚析构函数](LANG/C++/vfunc.md)
 
 ### 哪些函数不能是虚函数？
 
@@ -242,6 +242,14 @@ TODO
 
 具体见：[LUA数据类型](LANG/LUA/data_type.md)
 
+### 谈谈Lua的GC
+
+具体见：[Lua GC](SRC/LUA/gc.md)
+
+### 谈谈Lua的元表
+
+具体见：[Lua数据类型](SRC/LUA/data_type.md)
+
 [返回顶部](#面试笔记)
 
 
@@ -264,19 +272,19 @@ TODO
 
 #### 谈谈Skynet的定时器
 
-TODO
+具体见：[skynet计时器](SRC/SKYNET/timer.md)
 
 #### 谈谈Skynet的actor模型
 
 TODO
 
-#### Skynet的集群方案
+#### Skynet的集群方案有哪些
 
-TODO
+`master/slaver`模式，`cluster`模式；具体见：[skynet集群](SRC/SKYNET/cluster.md)
 
-#### Skynet热更新方案
+#### Skynet有哪些热更新方案
 
-TODO
+`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](SRC/SKYNET/hotpatch.md)
 
 [返回顶部](#面试笔记)
 
