@@ -98,6 +98,16 @@
 
 
 
+## Mysql
+
+#### [修改密码时提示不合法](mysql.md)
+
+关键字：mysql，密码，不合法
+
+修改MySQL的用户名和密码时，报`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;`错误...
+
+
+
 ## 其它
 
 #### [eos-go报`action declares irrelevant authority`错误](eos-go.md)

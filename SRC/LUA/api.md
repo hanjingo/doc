@@ -4,6 +4,20 @@
 
 ## Lua库
 
+type
+
+tonumber
+
+string.sub
+
+ipairs
+
+pairs
+
+tostring
+
+
+
 ### 基础库
 
 #### assert
@@ -13,7 +27,7 @@
 - `v` 需要断言的语句
 - `message` 输出yu ju
 
-断言
+断言语句
 
 #### collectgrabage
 

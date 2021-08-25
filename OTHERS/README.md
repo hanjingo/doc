@@ -1,5 +1,6 @@
 # 杂项
 
+- [ASSIC码表](assic_table.md)
 - [cmake教程](./cmake.md)
 - [emacs快捷键](emacs_shortcut.md)
 - [git教程](git.md)

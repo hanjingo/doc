@@ -152,3 +152,52 @@ TODO
 - `name` 服务名
 
 返回同一进程内，用register注册的具名服务的地址
+
+
+
+## redis
+
+使用redis模块需要先引用`require "skynet.db.redis"`
+
+### connect
+
+`redis.connect(db_conf)`
+
+- `db_conf` redis连接配置
+
+与Redis服务器建立连接
+
+例：
+
+```lua
+local db = redis.connect({
+        host="127.0.0.1",
+        port=6379,
+        db=0,
+        --auth="xxx"
+    })
+```
+
+### disconnect
+
+`command:disconnect()`
+
+断开与Redis服务器的连接
+
+例：
+
+```lua
+local db = redis.connect({
+        host="127.0.0.1",
+        port=6379,
+        db=0,
+        --auth="xxx"
+    })
+db:disconnect()
+```
+
+
+
+
+
+  

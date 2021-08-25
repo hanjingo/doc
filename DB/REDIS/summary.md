@@ -1,6 +1,11 @@
-# redis总结
+[TOC]
+
+# Redis总结
+
+
 
 ## 数据结构
+
 - string
 - hash
 - list

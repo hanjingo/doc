@@ -33,7 +33,7 @@
 
 | regulation | potential | pseudo | impose | convenient |
 | ---------- | --------- | ------ | ------ | ---------- |
-|            |           |        |        |            |
+| compose    |           |        |        |            |
 |            |           |        |        |            |
 |            |           |        |        |            |
 
@@ -214,6 +214,8 @@ bracket `/ˈbrakɪt/` 在括号中，支架，等级
 bully `/bʊli/` 威吓，霸道
 
 bullish `/ˈbʊlɪʃ/` 对未来有信心的，牛市的 
+
+bulk `/bʌlk/` 主体，大部分，大量，增大，毛估
 
 burst `/bɜːst/`  爆裂，胀开，暴涨
 

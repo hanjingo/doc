@@ -6,7 +6,7 @@
 
 ### ubuntu
 
-- 源安装
+- 命令安装
 
   ```sh
   sudo apt-get update 
@@ -40,11 +40,10 @@ use mysql;
 update mysql.user set authentication_string=password('Ya123456') where user='root' and Host='localhost';
 # 开启mysql_native_password插件
 update user set plugin="mysql_native_password";
-
 flush privileges;
 ```
 
-如果报错“密码过于简单”
+如果报错“密码不合法”
 
 ```sh
 ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;
@@ -65,6 +64,8 @@ ERROR 1819 (HY000): Your password does not satisfy the current policy requiremen
    - `validate_password_number_count` 数字的最小个数
    - `validate_password_policy` 安全级别
    - `validate_password_special_char_count` 特殊字符的最小个数
+   
+2. 按照安全变量值要求来修改密码
 
 
 
