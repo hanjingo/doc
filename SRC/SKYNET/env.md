@@ -40,5 +40,34 @@ cd skynet && sudo make linux
 
 ### 集群
 
-TODO
+### master/slave模式
+
+```sh
+# 启动master
+./skynet examples/config
+
+# 启动slave
+./skynet examples/config_log
+```
+
+### cluster模式
+
+```sh
+# 启动节点1
+./skynet examples/config.c1
+# 启动节点2
+./skynet examples/config.c2
+```
+
+
+
+## 退出
+
+目前skynet并没有提供合适的退出工具，需要服务自己实现监听事件退出；
+
+
+
+## 参考
+
+- [云风-如何安全的退出 skynet](https://blog.codingnow.com/2013/08/exit_skynet.html)
 
