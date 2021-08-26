@@ -11,6 +11,7 @@
 - [override关键字](override.md)
 - [placement new操作符](placement_new.md)
 - [指针和引用](ptr_ref.md)
+- [静态变量](static.md)
 - [c++的虚函数](vfunc.md)
 - [volatile关键字](volatile.md)
 

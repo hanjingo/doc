@@ -96,11 +96,11 @@ TODO
 
 ### TCP状态转移图
 
-具体见：[TCP](NET/tcp.md)
+具体见：[TCP#状态转移](NET/tcp.md)
 
 ### 说说Epoll的原理以及它的用法
 
-红黑树+链表；具体见：[NET#IO#Epoll](net/io.md)
+红黑树+链表；具体见：[网络I/O#Epoll](net/io.md)
 
 ### DNS原理
 

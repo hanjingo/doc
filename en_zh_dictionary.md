@@ -975,11 +975,13 @@ probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
 
 probe `/prəʊb/` 盘问，追问，探查
 
-profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
-
 procedure `/prəˈsiːdʒə/` 程序
 
+profoundly `/prəˈfaʊnd.li/` 深刻的，极度的
+
 prominent `/ˈprɒmɪnənt/`  重要的，杰出的，著名的，突出的
+
+propagate `/ˈprɒpəɡeɪt/` 传播，宣传，繁殖，增值
 
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 

@@ -656,9 +656,97 @@ lua代码中与inject相关的全局变量：
 
 ## snax.hotfix
 
-TODO
+`snax.hotfix`可以用于热更新（被热更的对象只能是全局变量）
 
+例，热更新函数：
 
+1. 创建配置文件`examples/config.snax`，内容如下：
+
+   ```txt
+   thread = 8
+   logger = nil
+   harbor = 0
+   start = "main_snax"
+   bootstrap = "snlua bootstrap"	-- The service for bootstrap
+   luaservice = "./service/?.lua;./test/?.lua;./examples/?.lua"
+   lualoader = "lualib/loader.lua"
+   cpath = "./cservice/?.so"
+   snax = "./examples/?.lua"
+   ```
+
+ 2. 创建入口文件`examples/main_snax.lua`，内容如下：
+
+    ```lua
+    local skynet = require "skynet"
+    local snax = require "skynet.snax"
+    
+    skynet.start(function ()
+        local s = snax.newservice("snhello", "hello")
+        if not s then
+            print("create snax server fail")
+            return
+        end
+        s.post.hello("hello") -- 无响应请求
+        print("post hello")
+    
+        local r = s.req.work("coding") -- 有响应请求
+        print("req work with result:", r)
+    
+        -- 热更新
+        snax.hotfix(s, [[ 
+            function response.work(arg) -- 响应obj.req.work
+                return "finish "..arg
+            end
+        ]])
+        local r = s.req.work("watch movie")
+        print("req work with hotfix result:", r)
+    end)
+    ```
+
+3. 实现snax服务文件`examples/snhello.lua`，内容如下：
+
+   ```lua
+   local skynet = require "skynet"
+   local snax = require "skynet.snax"
+   
+   function init(...) -- 初始化函数
+       print("snax start with arg:", ...)
+   end
+   
+   function exit(...) -- 退出函数
+       print("snax exit with arg:", ...)
+   end
+   
+   function accept.hello(...) -- 响应obj.post.hello
+       print("how are you")
+   end
+   
+   function response.work(arg) -- 响应obj.req.work
+       return "do "..arg
+   end
+   ```
+
+4. 启动控制台并注入lua脚本
+
+   ```sh
+   he@SD-20210816HMLO:/mnt/e/skynet$ ./skynet ./examples/config.snax
+   [:00000002] LAUNCH snlua bootstrap
+   [:00000003] LAUNCH snlua launcher
+   [:00000004] LAUNCH snlua cdummy
+   [:00000005] LAUNCH harbor 0 4
+   [:00000006] LAUNCH snlua datacenterd
+   [:00000007] LAUNCH snlua service_mgr
+   [:00000008] LAUNCH snlua main_snax
+   [:00000009] LAUNCH snlua snaxd snhello
+   snax start with arg:    hello
+   post hello
+   how are you
+   req work with result:   do coding
+   req work with hotfix result:    finish watch movie
+   [:00000002] KILL self
+   ```
+
+   
 
 ## skynet-reload
 
@@ -685,6 +773,7 @@ TODO
 - [云风-在不同的 lua vm 间共享 Proto](https://blog.codingnow.com/2014/03/lua_shared_proto.html)
 - [云风-CodeCache](https://github.com/cloudwu/skynet/wiki/CodeCache)
 - [云风-重载一个 skynet 中的 lua 服务](https://blog.codingnow.com/2016/03/skynet_reload.html)
+- [云风-skynet 的 snax 框架及热更新方案](https://blog.codingnow.com/2014/04/skynet_snax.html)
 - [github-热更工具](https://github.com/cloudwu/skynet-reload)
 - [skynet源码分析之热更新](https://www.cnblogs.com/RainRill/p/8940673.html)
 - [skynet 热更新 lua 代码](https://blog.csdn.net/mycwq/article/details/53943890)

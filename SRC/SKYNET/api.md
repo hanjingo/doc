@@ -33,6 +33,10 @@
 
 把回调函数注册到服务
 
+### response
+
+TODO
+
 
 
 ## cluster
@@ -197,6 +201,75 @@ db:disconnect()
 ```
 
 
+
+## snax
+
+### newservice
+
+`snax.newservice(name, ...)`
+
+- `name` 服务名
+
+启动一个服务（同名服务可以同时启动多个，各自独立）
+
+### uniqueservice
+
+`snax.uniqueservice(name, ...)`
+
+- `name` 服务名
+
+启动一个唯一服务（同一个节点只能有一个同名服务，多次调用返回相同的对象）
+
+### globalservice
+
+`snax.globalservice(name, ...)`
+
+- `name` 服务名
+
+启动一个全局唯一服务（整个skynet网络中都只能有一个同名服务）
+
+### queryservice
+
+`snax.queryservice(name)`
+
+- `name` 服务名
+
+查询当前节点的服务（如果服务未启动，阻塞）
+
+### queryglobal
+
+`snax.queryglobal(name)`
+
+- `name` 服务名
+
+查询一个全局的服务（如果服务未启动，阻塞）
+
+### self
+
+`snax.self()`
+
+获取当前的服务(注意是当前)
+
+### exit
+
+`snax.exit(...)`
+
+退出当前服务
+
+### kill
+
+`snax.kill(obj, ...)`
+
+- `obj` 服务对象
+
+### hotfix
+
+`snax.hotfix(obj, source, ...)`
+
+- `obj` 服务对象
+- `source` 代码块
+
+热更新代码
 
 
 
