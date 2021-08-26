@@ -10,11 +10,11 @@
 
 ## 影响因子
 
-### 资金
+### 区位
 
 TODO
 
-### 区位
+### 产权
 
 TODO
 
@@ -124,7 +124,7 @@ TODO
 
 ## 房产价值估算
 
-TODO
+TODO[<sup>[1]</sup>](#1)
 
 ---
 
@@ -220,6 +220,12 @@ TODO
 
 
 ## 参考
+
+### 参考文献
+
+<div id="1">[1] 房地产估价规范.2015</div>
+
+### 外部链接
 
 - [房地产估价规范](http://download.mohurd.gov.cn/bzgg/gjbz/GBT%2050291-2015%20%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BC%B0%E4%BB%B7%E8%A7%84%E8%8C%83.pdf)
 - [中华人民共和国住房和城乡建设部](http://www.mohurd.gov.cn/wjfb/201508/t20150827_224052.html)
