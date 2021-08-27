@@ -4,20 +4,6 @@
 
 ## Lua库
 
-type
-
-tonumber
-
-string.sub
-
-ipairs
-
-pairs
-
-tostring
-
-
-
 ### 基础库
 
 #### assert
@@ -33,59 +19,113 @@ tostring
 
 `collectgarbage([opt [, arg]])`
 
-- `opt`
-  - `collect`
-  - `stop`
+- `opt` 选项
+  - `collect` 做一次完整的垃圾收集循环（默认）；
+  - `stop` 停止垃圾收集器的运行，在调用重启前，收集器只会因显式的调用运行；
+  - `restart` 重启垃圾收集器的自动运行；
+  - `count` 以K字节数为单位返回Lua使用的总内存数；
+  - `step` 单步运行垃圾收集器，步长由arg定义；结束一个循环返回true；
+  - `setpause` 将arg设置为收集器的间歇率，返回间歇率的前一个值；
+  - `setstepmul` 将arg设置为收集器的步进倍率，返回步进倍率的前一个值；
+  - `isrunning` 返回收集器是否在工作。
+- `arg` 参数
 
 启动垃圾收集
+
+#### ipairs
+
+`ipairs (t)`
+
+- `t` table
+
+返回key，value
+
+#### pairs
+
+`pairs (t)`
+
+- `t` table
+
+迭代table，如果 `t` 有元方法 `__pairs`， 以 `t` 为参数调用它
+
+#### tonumber
+
+`tonumber (e [, base])`
+
+- `e` 字符串
+- `base` 要转换的进制
+
+把参数转换为一个数字
+
+#### tostring
+
+`tostring (v)`
+
+- `v` 值
+
+转为字符串（`如果实现有"__tostring"，调用"__string"`）
+
+#### type
+
+`type(v)`
+
+- `v` 值
+
+将参数的类型编码为一个字符串返回
 
 ### 协程库
 
 TODO
 
-
-
 ### 包管理库
 
 TODO
 
-
-
 ### 字符串控制
 
-TODO
+#### string.sub
 
+`string.sub (s, i [, j])`
 
+- `s` 字符串
+- `i` 开始位置（可负）
+- `j` 结束位置（可负）
+
+返回s的子字符串
 
 ### 基础UTF-8支持
 
 TODO
 
-
-
 ### 表控制
 
-TODO
+#### table.unpack
 
+`table.unpack (list [, i [, j]])`
 
+- `list` lua table
+- `i` 起始位置（默认 1）
+- `j` 结束位置（默认 #list）
+
+返回列表中的元素，等价于`return list[i], ..., list[j]`
+
+#### table.pack
+
+`table.pack (···)`
+
+返回用所有参数以键 1,2, 等填充的新表， 并将 "`n`" 这个域设为参数的总数。
 
 ### 数学函数
 
 TODO
 
-
-
 ### 输入输出
 
 TODO
 
-
-
 ### 操作系统库
 
 TODO
-
-
 
 ### 调试库
 
@@ -429,6 +469,8 @@ LUA_API int lua_pcallk (lua_State *L, int nargs, int nresults, int errfunc, lua_
 把一张表弹出栈，并将其设为给定索引objidex处的值的元表
 
 ---
+
+
 
 ## 参考
 

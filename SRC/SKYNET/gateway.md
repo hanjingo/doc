@@ -4,25 +4,60 @@
 
 
 
-## API
+## msgserver
 
-- `gateserver.openclient(fd)`
+msgserver指逻辑服务器，只要实现指定的接口，就可以满足不同的功能；
 
-  允许fd接收消息，给消息放行
+### 编码规范
 
-- `gateserver.closeclient(fd)`
+要使用msgserver需要实现以下接口：
 
-  关闭fd，踢掉一个连接
+- `register_handler(name)`
 
-- `gateserver.start(handler)`
+  - `name` 当前登陆点的名字
 
-  入口
+  监听成功回调
+
+- `login_handler(uid, secret)`
+
+  - `uid`
+  - `secret`
+
+  登录回调
+
+- `logout_handler(uid, subid)`
+
+  - `uid`
+  - `subid`
+
+  注销回调
+
+- `kick_handler(uid, subid)`
+
+  - `uid`
+  - `subid`
+
+  关闭连接回调
+
+- `disconnect_handler(username)`
+
+  - `username`
+
+  断开连接回调
+
+- `request_handler(username, msg, sz)`
+
+  - `username`
+  - `msg`
+  - `sz`
+
+  客户端请求回调
 
 
 
 ## 原理
 
-gate服务通过函数`gateserver.start(handler)`启动，用户需要自己实现回调器接口，其接口定义如下：
+gate其实就是一个msgserver，gate服务通过函数`gateserver.start(handler)`启动，用户需要自己实现回调器接口，其接口定义如下：
 
 - `handler.connect(fd, ipaddr)`
 
@@ -81,7 +116,10 @@ gate服务通过函数`gateserver.start(handler)`启动，用户需要自己实�
 
 TODO
 
+
+
 ## 参考
 
 - [GateServer](https://github.com/cloudwu/skynet/wiki/GateServer)
+- [skynet框架应用 (十四) 登录服务](https://blog.csdn.net/qq769651718/article/details/79435251)
 
