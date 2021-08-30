@@ -1,8 +1,10 @@
 # 生活经验
 
+- [如何消灭臭虫](kill_bedbug.md)
+- [治安](safe.md)
+- [电脑选购指南](select_computer.md)
 - [电动车自行车选购指南](select_electrombile.md)
 - [房产选购指南](select_house.md)
-- [如何消灭臭虫](kill_bedbug.md)
 - [学车笔记](study_drive.md)
 - [税收](tax.md)
 - [租房指南]
