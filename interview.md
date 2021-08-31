@@ -110,6 +110,12 @@ TODO
 
 TODO
 
+### 为什么不建议使用TCP自带的`keepalive`选项来做心跳
+
+1. `keepalive`对服务区负载压力大
+2. socks代理不支持`keepalive`
+3. 复杂情况下`keepalive`会失效（如：网线被拔掉，路由器挂掉...）
+
 [返回顶部](#面试笔记)
 
 

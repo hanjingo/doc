@@ -295,7 +295,7 @@ struct message_queue {
 	int tail;                       // 管道尾索引
 	int release;                    // 是否能释放消息
 	int in_global;                  // 是否在全局消息队列；0:不在全局消息队列,1:在全局队列或在递送中
-	int overload;				 // 过载数量
+	int overload;				  // 过载数量
 	int overload_threshold; 	    // 过载阀值
 	struct skynet_message *queue;	// 消息队列
 	struct message_queue *next;		// 指向下一个消息队列

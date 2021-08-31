@@ -78,9 +78,31 @@ Redis使用函数`int rdbLoad(char *filename)`来载入RDB文件。
 ```c
 /** @brief 载入RDB文件 @param filename 文件路径 */
 int rdbLoad(char *filename) {
-	...   
+	...
+    fp = fopen(tmpfile,"w"); /* 创建临时文件 temp-进程ID.rdb */
+    ...
+    if (rdbSaveRio(&rdb,&error) == REDIS_ERR) { /* 复制一份RDB副本并保存到临时文件 */
+    ...
+    if (rename(tmpfile,filename) == -1) { /* 重命名临时文件 */
+    ...
 }
 ```
+
+服务器载入文件时的判断流程：
+
+```flow
+a=>operation: 服务器启动
+load=>operation: 执行载入程序
+isAOFEnable=>condition: 已开启AOF持久化功能？
+loadAOF=>operation: 载入AOF文件
+loadRDB=>operation: 载入RDB文件
+
+a->load->isAOFEnable
+isAOFEnable(yes)->loadAOF
+isAOFEnable(no)->loadRDB
+```
+
+
 
 
 
@@ -117,5 +139,120 @@ struct redisServer {
 
 `serverCron`默认每隔100ms执行一次，用于检查`save`选项所设置的保存条件是否已经满足。
 
+源码如下：
+
+```c
 TODO
+```
+
+
+
+## RDB文件结构
+
+一个完整的RDB文件结构：
+
+| REDIS | db_version | databases | EOF   | check_sum |
+| ----- | ---------- | --------- | ----- | --------- |
+| 5byte | 4byte      | 变长      | 1byte | 8字节     |
+
+- `REDIS`：即'R''E''D''I''S'这五个字符，用于标识这是一个Redis的RDB文件。
+
+- `db_version`：字符串形式的整数，记录了RDB文件的版本号。
+
+- `databases`：包含着0或任意多个数据库以及各数据库中间的键值对数据；结构如下：
+
+  | SELECTDB | db_number | key_value_pairs |
+  | -------- | --------- | --------------- |
+  | 1byte    | 1/2/5byte | 变长            |
+
+  - `SELECTDB`：标识接下来要读的是一个数据库的ID；
+
+  - `db_number`：数据库ID，根据ID的大小可以为1/2/5字节；
+
+  - `key_value_pairs`：键值对数据；可以分为以下几类：
+
+    - 不带过期时间的键值对
+
+      | TYPE  | key  | value |
+      | ----- | ---- | ----- |
+      | 1byte | 变长 | 变长  |
+
+      - `TYPE`：记录了value的类型，格式为REDIS_RDB_TYPE_XXX；
+      - `key`：键值对的键，字符串类型；
+      - `value`：键值对的值，它的编码方式说明[在这里](#value的编码)
+
+    - 带过期时间的键值对
+
+      | EXPIRETIME_MS | ms    | TYPE  | key  | value |
+      | ------------- | ----- | ----- | ---- | ----- |
+      | 1byte         | 8byte | 1byte | 变长 | 变长  |
+
+      - `EXPIRETIME_MS`：告知读入程序，接下来要读入的是一个以毫秒为单位的过期时间；
+      - `ms`：带符号整数，记录键值对的过期时间(ms)；
+      - `TYPE`：同上
+      - `key`：同上
+      - `value`：同上
+
+- `EOF`：标志着RDB文件正文内容已结束；
+
+- `check_sum`：无符号整数，保存一个校验和（通过计算REDIS, db_version, databases, EOF得出）。
+
+### value的编码
+
+RDB文件中键值对的value可以为以下任何类型：
+
+- 字符串对象
+
+  字符串对象的编码方式有以下2种：
+
+  - `REDIS_ENCODING_INT`
+  - `REDIS_ENCODING_RAW`
+
+  对于不同长度的字符串，**开启文件压缩功能时**，其保存方式不一样
+
+  - 如果字符串的长度小于等于20字节，这个字符串会直接被原样保存；
+  - 如果字符串的长度大于20字节，这个字符串会被压缩(LZF压缩算法)之后再保存。
+
+  如果关闭文件压缩功能，那么不管字符串长度，都是原样保存；
+
+- 列表对象
+
+  列表对象采用`REDIS_ENCODING_LINKEDLIST`编码，其格式如下：
+
+  `|list_length|item1|item2|...|itemN|`
+
+  例：
+
+  `|3|5|"hello"|5|"world"|1|"!"|`
+
+- 集合对象
+
+  集合对象采用`REDIS_ENCODING_HT`编码，其格式如下：
+
+  `|set_size|elem1|elem2|...|elemN|`
+
+  例：
+
+  `|4|5|"apple"|6|"banana"|3|"cat"|3|"dog"|`
+
+- 哈希表对象
+
+  哈希表对象采用`REDIS_ENCODING_HT`编码，其格式如下：
+
+  `|hash_size|key_value_pair1|key_value_pair2|...|key_value_pairN|`
+
+  - `hash_size` 记录了哈希表的大小，即这个哈希表保存了多少键值对；
+  - `key_value_pairXXX` 代表了哈希表中的键值对，键值对的键和值都是字符串对象，所以程序会以处理字符串对象的方式来保存和读入键值对。 
+
+  例：
+
+  `|2|1|"a"|5|"apple"|1|"b"|6|"banana"|`
+
+- 有序集合对象
+
+  有序集合对象采用`REDIS_ENCODING_SKIPLIST`编码，格式如下：
+
+  TODO
+
+  
 
