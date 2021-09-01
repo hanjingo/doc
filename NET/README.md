@@ -16,6 +16,8 @@
 
 - [Protobuf编码](protobuf.md)
 
+- [QoS服务质量控制](qos.md)
+
 - [MessagePack编码](msgpack.md)
 
 - [TCP协议](tcp.md)

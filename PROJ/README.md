@@ -26,10 +26,6 @@
   - [solidity项目](ETH/solidity.md)
   - [总结](ETH/summary.md)
 
-## IM
-
-- 
-
 ## IPFS
 
   - [总结](IPFS/summary.md)
@@ -41,4 +37,3 @@
   - [安装](FILECOIN/INSTALL/README.md)
   - [fil](FILECOIN/fil.md)
   - [总结](FILECOIN/summary.md)
-

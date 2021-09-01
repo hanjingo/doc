@@ -38,7 +38,8 @@ typedef struct pubsubPattern {
 
 struct redisServer {
   ...
-  list *pubsub_patterns;  /* 订阅关系列表 */
+  dict *pubsub_channels;      /* 订阅的客户端字典：key:频道，value:客户端列表 */
+  list *pubsub_patterns;      /* 订阅关系列表 */
   ...
 }
 ```
@@ -259,15 +260,146 @@ PUBLISH 频道名 消息
 #### 实现
 
 ```c
-TODO
+/** @brief 发布消息 @param channel 频道名 @param message 消息 */
+int pubsubPublishMessage(robj *channel, robj *message) {
+    int receivers = 0;
+    dictEntry *de;
+    listNode *ln;
+    listIter li;
+
+    /* 根据频道找到客户端list */
+    de = dictFind(server.pubsub_channels,channel);
+    if (de) {
+        list *list = dictGetVal(de);
+        listNode *ln;
+        listIter li;
+
+        listRewind(list,&li);
+        while ((ln = listNext(&li)) != NULL) { /* 遍历链表，发送消息 */
+            redisClient *c = ln->value;
+
+            addReply(c,shared.mbulkhdr[3]);
+            addReply(c,shared.messagebulk);
+            addReplyBulk(c,channel);
+            addReplyBulk(c,message);
+            receivers++;
+        }
+    }
+    /* Send to clients listening to matching channels */
+    if (listLength(server.pubsub_patterns)) {
+        listRewind(server.pubsub_patterns,&li);
+        channel = getDecodedObject(channel);
+        while ((ln = listNext(&li)) != NULL) {
+            pubsubPattern *pat = ln->value;
+
+            if (stringmatchlen((char*)pat->pattern->ptr,
+                                sdslen(pat->pattern->ptr),
+                                (char*)channel->ptr,
+                                sdslen(channel->ptr),0)) {
+                addReply(pat->client,shared.mbulkhdr[4]);
+                addReply(pat->client,shared.pmessagebulk);
+                addReplyBulk(pat->client,pat->pattern);
+                addReplyBulk(pat->client,channel);
+                addReplyBulk(pat->client,message);
+                receivers++;
+            }
+        }
+        decrRefCount(channel);
+    }
+    return receivers;
+}
 ```
 
 ### 发送消息给模式订阅者
 
-TODO
+1. 根据订阅模式找到匹配的频道
+2. 然后把消息发送给订阅这些频道的客户端
+
+### 消息积压
+
+PUB/SUB有一个特性，Redis会为每一个消费者创建一个输出缓冲区，当消息积压导致Redis缓冲区超过配置`client-output-buffer-limit`的阈值时，Redis会把消费者踢下线。
+
+```c
+void asyncCloseClientOnOutputBufferLimitReached(redisClient *c) {
+    ...
+    if (checkClientOutputBufferLimits(c)) { /* 超出了输出缓冲区容量限制 */
+        sds client = catClientInfoString(sdsempty(),c);
+        freeClientAsync(c);
+        redisLog(REDIS_WARNING,"Client %s scheduled to be closed ASAP for overcoming of output buffer limits.", client);
+        sdsfree(client); /* 把redis客户端踢下线 */
+    }
+}
+
+/**
+ * @brief 检测客户端输出缓冲区内存是否超出限制；
+ * 
+ *
+ * @return 未超出：0，超出：1
+ **/
+int checkClientOutputBufferLimits(redisClient *c) {
+    int soft = 0, hard = 0, class;
+    unsigned long used_mem = getClientOutputBufferMemoryUsage(c);
+
+    class = getClientType(c);
+    if (server.client_obuf_limits[class].hard_limit_bytes &&
+        used_mem >= server.client_obuf_limits[class].hard_limit_bytes)
+        hard = 1;
+    if (server.client_obuf_limits[class].soft_limit_bytes &&
+        used_mem >= server.client_obuf_limits[class].soft_limit_bytes)
+        soft = 1;
+
+    /* We need to check if the soft limit is reached continuously for the
+     * specified amount of seconds. */
+    if (soft) {
+        if (c->obuf_soft_limit_reached_time == 0) {
+            c->obuf_soft_limit_reached_time = server.unixtime;
+            soft = 0; /* First time we see the soft limit reached */
+        } else {
+            time_t elapsed = server.unixtime - c->obuf_soft_limit_reached_time;
+
+            if (elapsed <=
+                server.client_obuf_limits[class].soft_limit_seconds) {
+                soft = 0; /* The client still did not reached the max number of
+                             seconds for the soft limit to be considered
+                             reached. */
+            }
+        }
+    } else {
+        c->obuf_soft_limit_reached_time = 0;
+    }
+    return soft || hard;
+}
+```
 
 
 
-## 消息积压
 
-TODO
+
+## 查看订阅消息
+
+### 查看匹配频道
+
+```sh
+PUBSUB CHANNELS [pattern]
+```
+
+- 如果不给定pattern参数，那么命令返回服务器当前被订阅的所有频道。
+- 如果给定pattern参数，那么命令返回服务器当前被订阅的频道中那些与pattern模式相匹配的频道。
+
+查看匹配的频道。
+
+### 查看订阅者数量
+
+```sh
+PUBSUB NUMSUB [Channel1 ... ChannelN]
+```
+
+查看指定频道的订阅者数量。
+
+### 查看被订阅模式的数量
+
+```sh
+PUBSUB NUMPAT
+```
+
+查看服务器当前被订阅的模式的数量

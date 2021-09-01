@@ -50,7 +50,7 @@
 
 3. 消息堆积
 
-   PUB/SUB有一个特性，当消息积压导致Redis内存超过配置`client-output-buffer-limit pubsub`的阈值时，Redis会把消费者踢下线。
+   PUB/SUB有一个特性，Redis会为每一个消费者创建一个缓冲区，当消息积压导致Redis缓冲区超过配置`client-output-buffer-limit`的阈值时，Redis会把消费者踢下线。
 
 
 

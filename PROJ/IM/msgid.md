@@ -62,7 +62,7 @@ sequence是一个递增的64bit整型变量；由于全局唯一的sequence会�
 
 小明，小红，小白每个人申请一个sequence的时候，小白突破了`max_seq`，导致`max_seq`升级；
 
-### 总架构
+### seqsvr总架构
 
 ![seqsvr_constructor](res/seqsvr_constructor.png)
 
