@@ -203,7 +203,7 @@ RDB文件中键值对的value可以为以下任何类型：
 
 - 字符串对象
 
-  字符串对象的编码方式有以下2种：
+  字符串对象(REDIS_RDB_TYPE_STRING)的编码方式有以下2种：
 
   - `REDIS_ENCODING_INT`
   - `REDIS_ENCODING_RAW`
@@ -217,7 +217,7 @@ RDB文件中键值对的value可以为以下任何类型：
 
 - 列表对象
 
-  列表对象采用`REDIS_ENCODING_LINKEDLIST`编码，其格式如下：
+  列表对象(REDIS_RDB_TYPE_LIST)采用`REDIS_ENCODING_LINKEDLIST`编码，其格式如下：
 
   `|list_length|item1|item2|...|itemN|`
 
@@ -227,7 +227,7 @@ RDB文件中键值对的value可以为以下任何类型：
 
 - 集合对象
 
-  集合对象采用`REDIS_ENCODING_HT`编码，其格式如下：
+  集合对象(REDIS_RDB_TYPE_SET)采用`REDIS_ENCODING_HT`编码，其格式如下：
 
   `|set_size|elem1|elem2|...|elemN|`
 
@@ -237,7 +237,7 @@ RDB文件中键值对的value可以为以下任何类型：
 
 - 哈希表对象
 
-  哈希表对象采用`REDIS_ENCODING_HT`编码，其格式如下：
+  哈希表对象(REDIS_RDB_TYPE_HASH)采用`REDIS_ENCODING_HT`编码，其格式如下：
 
   `|hash_size|key_value_pair1|key_value_pair2|...|key_value_pairN|`
 
@@ -250,9 +250,22 @@ RDB文件中键值对的value可以为以下任何类型：
 
 - 有序集合对象
 
-  有序集合对象采用`REDIS_ENCODING_SKIPLIST`编码，格式如下：
+  有序集合对象(REDIS_RDB_TYPE_ZSET)采用`REDIS_ENCODING_SKIPLIST`编码，格式如下：
 
-  TODO
+  `|sorted_set_size|element1|element2|...|elementN|`
 
+  - `sorted_set_size` 有序集合大小
+  - `elementxxx`
+    - `member` 成员
+    - `score` 分值
+  
+  例：`|2|2|"pi"|4|"3.14"|1|"e"|3|"2.7"|`
+  
+  第1格标识集合有2个元素，第2格表示"pi"的长度为2，第3格表示"pi"，第4格表示"3.14"的长度为4，第5格表示"e"的长度为1，第6格表示"e"，第7格表示"2.7"的长度为3，第8格表示"2.7"。
+  
+- 整数集合对象
+  
+  整数集合对象(REDIS_RDB_TYPE_SET_INTSET)
+  
   
 
