@@ -109,8 +109,9 @@
 
 ### 2.4 开源项目
 
-1. [im_service (golang)](https://github.com/GoBelieveIO/im_service)
-2. [gochat (golang)](https://github.com/LockGit/gochat)
+1. [gowebsocket(golang)](https://github.com/link1st/gowebsocket.git)
+2. [im_service (golang)](https://github.com/GoBelieveIO/im_service)
+3. [gochat (golang)](https://github.com/LockGit/gochat)
 
 ### 2.5 测试方法
 
@@ -238,7 +239,7 @@ MQTT协议是一种消息列队传输协议，采用订阅、发布机制，订�
 XMPP是一种基于XML的协议，它继承了在XML环境中灵活的发展性；同时具有超强的可扩展性。
 
 优点：协议开源，可拓展性强，在各个端(包括服务器)有各种语言的实现，开发者接入方便；
-缺点：缺点也是不少，XML表现力弱、有太多冗余信息、流量大，实际使用时有大量天坑。
+缺点：缺点也是不少，XML表现力弱、有太多冗余信息、流量大。
 
 #### 3.3.4 小结
 
