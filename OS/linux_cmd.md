@@ -62,7 +62,7 @@
 |strings||||TODO|
 |size|查看文件各段和总和大小|||TODO|
 |readelf|查看ELF格式的文件信息|- h: 显示文件开始的文件头信息<br>- l: 显示程序头信息<br>- S: 显示节头信息<br>- g: 显示节组信息<br>- t: 显示节点的详细信息<br>- s: 显示符号表段中的项<br>- e: 显示全部头信息<br>- n: 显示内核注释信息<br>- r: 显示可重定位段的信息<br>- u: 显示unwind段信息<br>- d: 显示动态段信息<br>- V: 显示版本段信息<br>- A: 显示CPU架构信息<br>- l: 显示`bucket list`长度的柱状图<br>- x: 以16进制方式显示指定段内内容<br>- D: 使用动态段中的符号表显示符号，而不是使用符号段<br>- a: 显示全部信息<br>- v: 显示readelf的版本信息<br>- H: 显示帮助信息||`readelf -x 1 hello.so`: 以16进制方式显示文件`hello.so`中段索引为1的内容|
-|objdump|反汇编程序|||TODO|
+|objdump|反汇编程序|- c<br>- x||TODO|
 |ulimit|开启core文件生成功能|- c||`ulimit -c`: 查看core文件配置，0表示未开启；<br>`ulimit -c unlimited`: 不限制core文件大小；<br>`ulimit -c 1024`: 限制core文件最大为1024kb|
 |addr2line|翻译出错信息，定位出错的代码位置|-e||`addr2line -e hello 40053b`: 翻译hello的报错信息`40053b`，定位到源码位置|
 
