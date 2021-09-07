@@ -1,0 +1,16 @@
+# Redis命令
+
+| 主题        | 命令                                                         | 格式                                                         |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Key         | - DEL<br>- DUMP<br>- EXISTS<br>- EXPIRE<br>- KEYS<br>- MIGRATE<br>- MOVE<br>- OBJECT<br>- PERSIST<br>- PEXPIRE<br>- PEXPIREAT<br>- PTTL<br>- RANDOMKEY<br>- RENAME<br>- RESTORE<br>- SORT<br>- TTL<br>- TYPE<br>- SCAN |                                                              |
+| String      | - APPEND<br>- BITCOUNT<br>- BITOP<br>- DECR<br>- DECRBY<br>- GET<br>- GETBIT<br>- GETRANGE<br>- GETSET<br>- INCR<br>- INCRBY<br>- INCRBYFLOAT<br>- MGET<br>- MSET<br>- MSETNX<br>- PSETEX<br>- SET<br>- SETBIT<br>- SETEX<br>- SETNX<br>- SETRANGE<br>- STRLEN |                                                              |
+| Hash        | - HDEL<br>- HEXISTS<br>- HGET<br>- HGETALL<br>- HINCRBY<br>- HINCRBYFLOAT<br>- HKEYS<br>- HLEN<br>- HMGET<br>- HSET<br>- HSETNX<br>- HVALS<br>- HSCAN |                                                              |
+| List        | - BLPOP<br>- BRPOP<br>- BRPOPLPUSH<br>- LINDEX<br>- LINSERT<br>- LLEN<br>- LPOP<br>- LPUSH<br>- LPUSHX<br>- LRANGE<br>- LREM<br>- LSET<br>- LTRIM<br>- RPOP<br>- RPOPLPUSH<br>- RPUSH<br>- RPUSHX |                                                              |
+| Set         | - SADD<br>- SCARD<br>- SDIFF<br>- SDIFFSTORE<br>- SINTER<br>- SINTERSTORE<br>- SISMEMBER<br>- SMEMERS<br>- SMOVE<br>- SPOP<br>- SRANDMEMBER<br>- SREM<br>- SUNION<br>- SUNIONSTORE<br>- SSCAN |                                                              |
+| SortSet     | - ZADD<br>- ZCARD<br>- ZCOUNT<br>- ZINCRBY<br>- ZRANGE<br>- ZRANGEBYSCORE<br>- ZRANK<br>- ZREM<br>- ZREMRANGEBYRANK<br>- ZREMRANGEBYSCORE<br>- ZREVRANGE<br>- ZREVRANGEBYSCORE<br>- ZREVRANK<br>- ZSCORE<br>- ZUNIONSTORE<br>- ZINTERSTORE<br>- ZSCAN |                                                              |
+| Pub/Sub     | - PSUBSCRIBE 模糊匹配订阅频道<br>- PUBLISH 向频道发布消息<br>- PUBSUB<br>  + CHANNELS 查看匹配频道<br>  + NUMSUB 查看订阅者数量<br>  + NUMPAT 查看订阅模式的数量<br>- PUNSUBSCRIBE 取消模糊匹配订阅频道<br>- SUBSCRIBE 订阅频道<br>- UNSUBSCRIBE 取消订阅 | - PSUBSCRIBE <模式名><br>- PUBLISH <频道名> <消息><br>-  PUBSUB<br>  + PUBSUB CHANNELS [pattern]<br>  + PUBSUB NUMSUB [ch1 ... chN]<br>  + PUBSUB NUMPAT<br>- PUNSUBSCRIBE <模式名><br>- SUBSCRIBE <频道名> <客户端ID><br>- UNSUBSCRIBE <频道> <客户端ID> |
+| Transaction | - DISCARD<br>- EXEC<br>- MULTI<br>- UNWATCH<br>- WATCH       |                                                              |
+| Script      | - EVAL<br>- EVALSHA<br>- SCRIPT EXISTS<br>- SCRIPT FLUSH<br>- SCRIPT KILL<br>- SCRIPT LOAD |                                                              |
+| Connection  | - AUTH<br>- ECHO<br>- PING<br>- QUIT<br>- SELECT             |                                                              |
+| Server      | - BGREWRITEAOF<br>- BGSAVE<br>- CLIENT GETNAME<br>- CLIENT KILL<br>- CLIENT LIST<br>- CLIENT SETNAME<br>- CONFIG GET<br>- CONFIG REWRITE<br>- CONFIG SET<br>- DBSIZE<br>- DEBUG OBJECT<br>- DEBUG SEGFAULT<br>- FLUSHALL<br>- FLUSHDB<br>- INFO<br>- LASTSAVE<br>- MONITOR<br>- PSYNC<br>- SAVE<br>- SHUTDOWN<br>- SLAVEOF<br>- SLOWLOG<br>- SYNC<br>- TIME |                                                              |
+
