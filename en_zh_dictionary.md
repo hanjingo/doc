@@ -31,11 +31,11 @@
 
 ## 高频词汇
 
-| regulation | potential | pseudo | impose | convenient |
-| ---------- | --------- | ------ | ------ | ---------- |
-| compose    |           |        |        |            |
-|            |           |        |        |            |
-|            |           |        |        |            |
+| regulation | potential | pseudo     | impose    | convenient |
+| ---------- | --------- | ---------- | --------- | ---------- |
+| compose    | district  | allegation | tolerance | identify   |
+| syntax     |           |            |           |            |
+|            |           |            |           |            |
 
 ---
 
@@ -97,7 +97,7 @@ aide `/eɪd/` 助手
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
-allegations `/ˌælɪˈgeɪʃ(ə)nz/` 说法，指控
+allegation `/ˌæləˈɡeɪʃn/` 说法，指控
 
 alter `/ˈɔːltə/` 改变，更改
 
@@ -127,6 +127,8 @@ anxiety `/æŋˈzaɪəti/` 焦虑，担忧，害怕
 
 applicant `/ˈaplɪk(ə)nt/` 申请人
 
+approach `/əˈprəʊtʃ/` 方法，方式，建议
+
 appropriate `/əˈprəʊpriət/`  合适的，恰当的，盗用，占用，侵吞
 
 ### ar
@@ -148,6 +150,8 @@ arrest `/əˈrest/` 拘捕，阻止
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
 
 aspect `/ˈæspekt/`  方面，层面，外观，方位
+
+assault `/əˈsɔːlt/` 侵犯，袭击
 
 assign `/əˈsʌɪn/` 分配，指派
 
@@ -323,6 +327,8 @@ correspond `/kɒrɪˈspɒnd/` 通信，相符，符合
 
 corrupt `/kəˈrʌpt/` 贪污，腐败，不道德的，破坏，损坏
 
+court `/kɔːt/` 法院，法庭，争取
+
 ### cr
 
 [回到C](#C)&ensp;[回到顶部](#英汉词典)
@@ -376,6 +382,8 @@ despite `/dɪˈspaɪt/` 尽管，即使
 destined `/ˈdestɪnd/` 命中注定的，命运
 
 detect `/dɪˈtekt/` 发现，查明，探测
+
+detention `/dɪˈtenʃn/` 拘留，扣押，监禁
 
 deter `/dɪˈtɜː(r)/` 阻止，威慑
 
@@ -507,6 +515,8 @@ explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
 facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
+facility `/fəˈsɪləti/` 特色，设备，设施，天才，天赋
+
 farewell `/ˌfeəˈwel/` 告别，辞行
 
 favored `/ˈfeɪvərd/` 优先的，受到偏爱的
@@ -527,11 +537,13 @@ fierce`/fɪəs/` 凶猛的，凶残的，狂热的
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
 
-flexibility `/ˌflɛksɪˈbɪlɪti/` 灵活性，柔韧性
+flexible `/ˈfleksəbl/` 灵活的，可变的，柔性的
 
 ### fo
 
 [回到F](#F)&ensp;[回到顶部](#英汉词典)
+
+force `/fɔːs/` 武力，暴力，强迫
 
 forest `/ˈfɒrɪst/` 森林
 
@@ -673,6 +685,8 @@ incentive `/ɪnˈsentɪv/` 刺激，激励
 
 inconvenient `/inconvenient/` 不方便的
 
+indecency `/ɪnˈdiːsnsi/` 下流的，卑鄙的
+
 indicate `/ˈɪndɪkeɪt/` 指示，说明
 
 individual `/ɪndɪˈvɪdʒʊ(ə)l/` 单独的，独特的
@@ -790,6 +804,8 @@ measure `/ˈmeʒə(r)/` 测量，估量，尺寸，长度，数量
 midwife `/ˈmɪdwaɪf/` 产婆，接生员
 
 mindset `/ˈmaɪndset/` 观念模式，思维倾向
+
+misconduct `/ˌmɪsˈkɒndʌkt/`  行为失当，行为不端，失职
 
 mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 

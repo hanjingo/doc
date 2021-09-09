@@ -13,4 +13,5 @@
 | Script      | - EVAL<br>- EVALSHA<br>- SCRIPT EXISTS<br>- SCRIPT FLUSH<br>- SCRIPT KILL<br>- SCRIPT LOAD |                                                              |
 | Connection  | - AUTH<br>- ECHO<br>- PING<br>- QUIT<br>- SELECT             |                                                              |
 | Server      | - BGREWRITEAOF<br>- BGSAVE<br>- CLIENT GETNAME<br>- CLIENT KILL<br>- CLIENT LIST<br>- CLIENT SETNAME<br>- CONFIG GET<br>- CONFIG REWRITE<br>- CONFIG SET<br>- DBSIZE<br>- DEBUG OBJECT<br>- DEBUG SEGFAULT<br>- FLUSHALL<br>- FLUSHDB<br>- INFO<br>- LASTSAVE<br>- MONITOR<br>- PSYNC<br>- SAVE<br>- SHUTDOWN<br>- SLAVEOF<br>- SLOWLOG<br>- SYNC<br>- TIME |                                                              |
+| Client      | - list 列出客户端信息<br>                                    |                                                              |
 

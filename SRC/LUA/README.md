@@ -1,7 +1,6 @@
 # LUA源码分析
 
 - [总结](summary.md)
-- [API](api.md)
 - [协程](coroutine.md)
 - [数据类型](data_type.md)
 - [Debug](debug.md)

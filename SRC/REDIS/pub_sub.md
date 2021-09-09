@@ -50,6 +50,14 @@ struct redisServer {
 
 
 
+## 持久化
+
+通常情况下，Redis只会将哪些对数据库进行了修改的命令写入到AOF文件，并复制到各个从服务器；如果一个命令没有对数据库进行任何修改，那么它就会被认为是只读命令，这个命令不会被写入到AOF文件，也不会被复制到从服务器。
+
+**但是：PUBSUB命令是个例外；PUBSUB命令虽然没有修改数据库，但PUBSUB命令向频道所有订阅者发送消息这一行为带有副作用，接收到消息的所有客户端的状态都会因此而改变；因此，服务器会使用`REDIS_FORCE_AOF`标志，强制将PUBSUB命令写入AOF文件。**
+
+
+
 ## 订阅
 
 ```sh
@@ -370,8 +378,6 @@ int checkClientOutputBufferLimits(redisClient *c) {
     return soft || hard;
 }
 ```
-
-
 
 
 

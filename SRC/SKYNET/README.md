@@ -1,7 +1,7 @@
 # skynet源码分析
 
 - [总结](summary.md)
-- [actor模型]
+- [actor模型](actor.md)
 - [API](api.md)
 - [集群](cluster.md)
 - [配置](config.md)

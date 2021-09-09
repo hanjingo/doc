@@ -14,6 +14,7 @@
 - [数据类型](object.md)
 - [持久化](persistence.md)
 - [发布订阅](pub_sub.md)
+- [复制](replication.md)
 - [字符串](sds.md)
 - [服务端](server.md)
 - [跳表](skiplist.md)

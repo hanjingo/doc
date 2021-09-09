@@ -57,7 +57,12 @@ typedef struct redisObject { // redis基本数据对象
   | REDIS_SET    | - REDIS_ENCODING_INTSET<br>- REDIS_ENCODING_HT               |
   | REDIS_ZSET   | - REDIS_ENCODING_ZIPLIST<br>- REDIS_ENCODING_SKIPLIST        |
 
-  
+
+### LRU算法
+
+TODO
+
+
 
 ## string
 
@@ -364,3 +369,9 @@ Redis在自己的对象系统中构建了一个引用计数（reference counting
 - 当对象被一个新程序使用时，引用计数-1
 - 当对象不再被一个程序使用时，引用计数-1
 - 当对象的引用计数变为0时，对象所占的内存会被释放
+
+
+
+## 参考
+
+- [【Redis源码分析】Redis中的LRU算法实现](https://segmentfault.com/a/1190000017555834)
