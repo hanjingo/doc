@@ -1,6 +1,5 @@
 # 职业生涯
 
-- [公司法](company_law.md)
 - [裁员避坑](cut_job.md)
 - [谈判技巧](negotiate.md)
 - [需求模板](require.md)
