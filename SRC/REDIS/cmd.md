@@ -1,17 +1,17 @@
 # Redis命令
 
-| 主题        | 命令                                                         | 格式                                                         |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Key         | - DEL<br>- DUMP<br>- EXISTS<br>- EXPIRE<br>- KEYS<br>- MIGRATE<br>- MOVE<br>- OBJECT<br>- PERSIST<br>- PEXPIRE<br>- PEXPIREAT<br>- PTTL<br>- RANDOMKEY<br>- RENAME<br>- RESTORE<br>- SORT<br>- TTL<br>- TYPE<br>- SCAN |                                                              |
-| String      | - APPEND<br>- BITCOUNT<br>- BITOP<br>- DECR<br>- DECRBY<br>- GET<br>- GETBIT<br>- GETRANGE<br>- GETSET<br>- INCR<br>- INCRBY<br>- INCRBYFLOAT<br>- MGET<br>- MSET<br>- MSETNX<br>- PSETEX<br>- SET<br>- SETBIT<br>- SETEX<br>- SETNX<br>- SETRANGE<br>- STRLEN |                                                              |
-| Hash        | - HDEL<br>- HEXISTS<br>- HGET<br>- HGETALL<br>- HINCRBY<br>- HINCRBYFLOAT<br>- HKEYS<br>- HLEN<br>- HMGET<br>- HSET<br>- HSETNX<br>- HVALS<br>- HSCAN |                                                              |
-| List        | - BLPOP<br>- BRPOP<br>- BRPOPLPUSH<br>- LINDEX<br>- LINSERT<br>- LLEN<br>- LPOP<br>- LPUSH<br>- LPUSHX<br>- LRANGE<br>- LREM<br>- LSET<br>- LTRIM<br>- RPOP<br>- RPOPLPUSH<br>- RPUSH<br>- RPUSHX |                                                              |
-| Set         | - SADD<br>- SCARD<br>- SDIFF<br>- SDIFFSTORE<br>- SINTER<br>- SINTERSTORE<br>- SISMEMBER<br>- SMEMERS<br>- SMOVE<br>- SPOP<br>- SRANDMEMBER<br>- SREM<br>- SUNION<br>- SUNIONSTORE<br>- SSCAN |                                                              |
-| SortSet     | - ZADD<br>- ZCARD<br>- ZCOUNT<br>- ZINCRBY<br>- ZRANGE<br>- ZRANGEBYSCORE<br>- ZRANK<br>- ZREM<br>- ZREMRANGEBYRANK<br>- ZREMRANGEBYSCORE<br>- ZREVRANGE<br>- ZREVRANGEBYSCORE<br>- ZREVRANK<br>- ZSCORE<br>- ZUNIONSTORE<br>- ZINTERSTORE<br>- ZSCAN |                                                              |
-| Pub/Sub     | - PSUBSCRIBE 模糊匹配订阅频道<br>- PUBLISH 向频道发布消息<br>- PUBSUB<br>  + CHANNELS 查看匹配频道<br>  + NUMSUB 查看订阅者数量<br>  + NUMPAT 查看订阅模式的数量<br>- PUNSUBSCRIBE 取消模糊匹配订阅频道<br>- SUBSCRIBE 订阅频道<br>- UNSUBSCRIBE 取消订阅 | - PSUBSCRIBE <模式名><br>- PUBLISH <频道名> <消息><br>-  PUBSUB<br>  + PUBSUB CHANNELS [pattern]<br>  + PUBSUB NUMSUB [ch1 ... chN]<br>  + PUBSUB NUMPAT<br>- PUNSUBSCRIBE <模式名><br>- SUBSCRIBE <频道名> <客户端ID><br>- UNSUBSCRIBE <频道> <客户端ID> |
-| Transaction | - DISCARD<br>- EXEC<br>- MULTI<br>- UNWATCH<br>- WATCH       |                                                              |
-| Script      | - EVAL<br>- EVALSHA<br>- SCRIPT EXISTS<br>- SCRIPT FLUSH<br>- SCRIPT KILL<br>- SCRIPT LOAD |                                                              |
-| Connection  | - AUTH<br>- ECHO<br>- PING<br>- QUIT<br>- SELECT             |                                                              |
-| Server      | - BGREWRITEAOF<br>- BGSAVE<br>- CLIENT GETNAME<br>- CLIENT KILL<br>- CLIENT LIST<br>- CLIENT SETNAME<br>- CONFIG GET<br>- CONFIG REWRITE<br>- CONFIG SET<br>- DBSIZE<br>- DEBUG OBJECT<br>- DEBUG SEGFAULT<br>- FLUSHALL<br>- FLUSHDB<br>- INFO<br>- LASTSAVE<br>- MONITOR<br>- PSYNC<br>- SAVE<br>- SHUTDOWN<br>- SLAVEOF<br>- SLOWLOG<br>- SYNC<br>- TIME |                                                              |
-| Client      | - list 列出客户端信息<br>                                    |                                                              |
+| 命令         | 说明                                                         | 参数                           | 示例                                                         |
+| ------------ | ------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
+| AUTH         | 检测给定的密码是否和配置文件中的密码一致                     | - 密码值                       | - `AUTH hello` 检测配置的密码是不是hello                     |
+| INFO         | - `server`<br>- `clients`<br>- ` memory`<br>- `persistence`<br>- `stats`<br>- `replication`<br>- `cpu`<br>- `commandstats`<br>- `cluster`<br>- `keyspace` |                                | - `INFO server` 服务器信息<br>- `INFO clients` 已连接客户端信息<br>- `INFO memory` 内存信息<br>- `INFO persistence` RDB和AOF相关信息<br>- `INFO stats` 一般统计信息<br>- `INFO replication` 主从复制信息<br>- `INFO cpu` CPU统计信息<br>- `INFO commandstats` 命令统计信息<br>- `INFO cluster` 集群信息<br>- `INFO keyspace` 数据库相关的统计信息 |
+| PSUBSCRIBE   | 模糊匹配订阅频道                                             | - 模式名                       | - `PSUBSCRIBE AB*` 模糊匹配订阅以AB开头的频道                |
+| PUNSUBSCRIBE | 取消模糊匹配订阅频道                                         | - 模式名                       | - `PUNSUBSCRIBE AB*` 取消模糊匹配以AB开头的频道              |
+| PSYNC        | 部分重同步数据（新版）                                       | - 服务器运行ID<br>- 复制偏移量 | - `PSYNC ? -1` 主动请求主服务器进行完整重同步<br>- `PSYNC 53b9b28df8042fdc9ab5e3fcbbbabff1d5dce2b3 20000` 主动请求主服务器同步偏移量2000之后的数据 |
+| PUBLISH      | 向频道发布消息                                               | - 频道/模式名<br>- 消息        | - `PUBLISH ch hello` 向频道ch发送消息hello                   |
+| PUBSUB       | - `CHANNELS [pattern]`<br>- `NUMSUB [ch1 ... chN]`<br>- `NUMPAT` |                                | - `PUBSUB CHANNELS *.abc` 查看匹配频道<br>- `PUBSUB NUMSUM ch1 ch2` 查看ch1和ch2的订阅者数量<br>- `PUBSUB NUMPAT` 查看订阅模式的数量 |
+| REPLCONF     | - `ACK <replication_offset>`                                 |                                |                                                              |
+| SUBSCRIBE    | 订阅频道                                                     | - 频道名                       | - `SUBSCRIBE AB` 订阅频道AB                                  |
+| UNSUBSCRIBE  | 取消订阅                                                     | - 频道名                       | - `UNSUBSCRIBE AB` 取消订阅频道AB                            |
+| SYNC         | 重同步数据（效率不佳）                                       |                                |                                                              |
+| SLAVEOF      | 设置当前服务器的主服务器                                     | - IP<br>- 端口                 | - `SLAVEOF 127.0.0.1 6379` 设置当前服务器的主服务器为127.0.0.1:6379 |
 

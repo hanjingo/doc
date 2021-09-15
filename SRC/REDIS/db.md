@@ -390,8 +390,6 @@ void notifyKeyspaceEvent(int type, char *event, robj *key, int dbid) {
 
 
 
-
-
 ## 优化技巧
 
 - key不要过大，key过期删除时可能会造成比较严重的延迟

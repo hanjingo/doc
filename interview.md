@@ -146,7 +146,7 @@ TODO
 
 在包头标记包长，具体见：[粘包处理](PROJ/anti_sticky.md)
 
-### 数据库
+### 缓存系统
 
 #### 如何解决缓存与数据库的数据一致性问题
 
@@ -300,65 +300,65 @@ TODO
 
 ### 使用
 
-#### Redis为什么是单线程的
+#### 1 Redis为什么是单线程的
 
 TODO
 
-#### Redis的性能为什么这么高
+#### 2 Redis的性能为什么这么高
 
 TODO
 
-#### 客户端是怎么接入Redis哨兵系统的
+#### 3 客户端是怎么接入Redis哨兵系统的
 
 TODO
 
 ### 实现
 
-#### 为什么Redis用跳表不用RBtree
+#### 1 为什么Redis用跳表不用RBtree
 
 1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](PROJ/REDIS/skip_list.md)
 
-#### Redis如何实现延时队列
+#### 2 Redis如何实现延时队列
 
 具体见：[利用redis实现延时队列](PROJ/REDIS/delay_queue.md)
 
-#### Redis持久化
+#### 3 Redis持久化
 
 具体见：[Redis持久化](PROJ/REDIS/persistence.md)
 
-#### Redis线程模型
+#### 4 Redis线程模型
 
 TODO
 
-#### Redis的过期机制
+#### 5 Redis的过期机制
 
 TODO
 
-#### 谈谈Redis的布隆过滤器
+#### 6 谈谈Redis的布隆过滤器
 
 TODO
 
-#### 谈谈Redis的持久化机制
+#### 7 谈谈Redis的持久化机制
 
 TODO
 
-#### Redis的主从同步是怎么实现的
+#### 8 Redis的主从同步是怎么实现的
 
 TODO
 
-#### Redis哨兵的实现
+#### 9 Redis哨兵的实现
 
 TODO
 
-#### Redis哨兵系统是怎么实现自动故障转移的
+#### 10 Redis哨兵系统是怎么实现自动故障转移的
 
 TODO
 
-#### Redis集群是怎么实现数据分片的
+#### 11 Redis集群是怎么实现数据分片的
 
 TODO
 
-#### Redis集群是怎么做故障转移和发现的
+#### 12 Redis集群是怎么做故障转移和发现的
 
 TODO
 
@@ -370,65 +370,65 @@ TODO
 
 ### 使用
 
-#### Mysql有哪些优化措施
+#### 1 Mysql有哪些优化措施
 
 TODO
 
-#### 说说数据库索引的使用及其原理
+#### 2 说说数据库索引的使用及其原理
 
 TODO
 
-#### mysql事物
+#### 3 mysql事物
 
 TODO
 
-#### 脏页是什么
+#### 4 脏页是什么
 
 TODO
 
-#### Mysql的隔离级别是怎么样的
+#### 5 Mysql的隔离级别是怎么样的
 
 TODO
 
-#### Mysql中由哪些锁
+#### 6 Mysql中由哪些锁
 
 TODO
 
-#### Mysql如何解决幻读问题
+#### 7 Mysql如何解决幻读问题
 
 TODO
 
-#### 主键，唯一性索引，普通索引的区别是什么
+#### 8 主键，唯一性索引，普通索引的区别是什么
 
 TODO
 
-#### 什么是分表分库
+#### 9 什么是分表分库
 
 TODO
 
-#### 如何实现跨库分页查询
+#### 10 如何实现跨库分页查询
 
 TODO
 
-#### Checkpoint是什么
+#### 11 Checkpoint是什么
 
 TODO
 
-#### undo log, redo log, bin log是什么
+#### 12 undo log, redo log, bin log是什么
 
 TODO
 
 ### 实现
 
-#### InnoDb的底层数据结构
+#### 1 InnoDb的底层数据结构
 
 TODO
 
-#### 磁盘结构分析与数据存储原理
+#### 2 磁盘结构分析与数据存储原理
 
 TODO
 
-#### 一条MySql更新语句的执行过程是怎么样的
+#### 3 一条MySql更新语句的执行过程是怎么样的
 
 TODO
 

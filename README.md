@@ -5,8 +5,6 @@
 
 - [职场](CAREER/README.md)
 
-- [数据库](DB/README.md)
-
 - [分布式](DCS/README.md)
 
 - [经济](ECONOMIC/README.md)

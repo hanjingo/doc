@@ -977,6 +977,8 @@ portion `/ˈpɔːʃ(ə)n/` 一部分
 
 practice `/ˈpræktɪs/` 习惯，习俗，实践，练习，实习
 
+preamble `/ˈpriːæmbl/` 序言，导言，前言，开场白
+
 predicate `/ˈprɛdɪkeɪt/` 断言
 
 preferably `/ˈpref.ər.ə.bli/` 更好的，更可取的，可能的话
