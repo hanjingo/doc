@@ -82,7 +82,7 @@ TODO
 
 ### 如何实现分布式锁
 
-具体见：[利用redis实现分布式锁](DB/REDIS/dcs_lock.md)
+具体见：[利用redis实现分布式锁](PROJ/REDIS/dcs_lock.md)
 
 [返回顶部](#面试笔记)
 
@@ -316,15 +316,15 @@ TODO
 
 #### 为什么Redis用跳表不用RBtree
 
-1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](DB/REDIS/skip_list.md)
+1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](PROJ/REDIS/skip_list.md)
 
 #### Redis如何实现延时队列
 
-具体见：[利用redis实现延时队列](DB/REDIS/delay_queue.md)
+具体见：[利用redis实现延时队列](PROJ/REDIS/delay_queue.md)
 
 #### Redis持久化
 
-具体见：[Redis持久化](DB/REDIS/persistence.md)
+具体见：[Redis持久化](PROJ/REDIS/persistence.md)
 
 #### Redis线程模型
 

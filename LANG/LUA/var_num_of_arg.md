@@ -67,6 +67,24 @@ end
 
 
 
+## 修改
+
+### 将可变参数集合转化为table
+
+```lua
+local t = {...}
+```
+
+### 将集合拆分为可变参数
+
+```lua
+table.unpack(t)
+```
+
+
+
+
+
 ## 参考
 
 - [Lua-几种可变长参数的遍历方式](https://blog.csdn.net/u014078887/article/details/116568626)

@@ -33,8 +33,8 @@
 
 | regulation | potential | pseudo     | impose    | convenient |
 | ---------- | --------- | ---------- | --------- | ---------- |
-| compose    | district  | allegation | tolerance | identify   |
-| syntax     |           |            |           |            |
+|            | district  | allegation | tolerance |            |
+|            |           |            |           |            |
 |            |           |            |           |            |
 
 ---

@@ -1,15 +1,11 @@
 # eosin.system合约
 
-
-
 # 摘要
 
 eos的投票以及资产购买,抵押,竞拍,出租,等等; 
 购买机制使用的[bancor算法](../../DCS/bancor_protocol.md); 
 执行action需要ram,cpu和net，cpu和net需要抵押获得，ram需要购买;用来抵押的物品为eos token; 
 ram会消耗;cpu和net用完会退押金; 
-
-
 
 # 详情
 
@@ -495,3 +491,4 @@ void orderresult( const name& owner, const asset& proceeds )
 //出租结果
 void rentresult( const asset& rented_tokens )
 ```
+
