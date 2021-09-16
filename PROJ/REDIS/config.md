@@ -10,25 +10,33 @@ Redis的配置文件在不同系统下有不同的路径，以下为以下常用
 
   
 
-## 详细配置
+## 配置说明
 
-| 配置                   | 参数1                                                        | 参数2 | 说明                                                         |
-| ---------------------- | ------------------------------------------------------------ | ----- | ------------------------------------------------------------ |
-| daemonize              | - yes 是<br>- no 否                                          |       | 是否为守护模式                                               |
-| pidfile                | 路径                                                         |       | 设置进程锁文件                                               |
-| port                   | 默认6379                                                     |       | 端口                                                         |
-| timeout                |                                                              |       | 客户端超时时间（s）                                          |
-| loglevel               | - debug<br>-                                                 |       | 日志等级                                                     |
-| logfile                | 路径                                                         |       | 日志文件位置                                                 |
-| databases              | 默认0                                                        |       | 数据库的数量                                                 |
-| save                   | 秒数                                                         | 次数  | 在多长时间内，有所少次更新操作，就将数据同步到数据文件，可以多个条件配合 |
-| rdbcompression         | - yes<br>- no                                                |       |                                                              |
-| dbfilename             | 数据库文件名                                                 |       | 本地数据库文件名                                             |
-| dir                    | 路径                                                         |       | 本地数据库路径                                               |
-| appendonly             | - yes<br>- no                                                |       | 是否每次更新操作后进行日志记录                               |
-| appendfsync            | - no 等操作系统进行数据缓存同步到磁盘（快）<br>- always 每次更新操作后手动调到fsync()将数据写到磁盘（慢，安全）<br>-`everysec` 每秒同步一次（默认） |       | 更新日志条件                                                 |
-| notify-keyspace-events | -`K` 键空间通知，所有通知以 `__keyspace@<db>__` 为前缀<br>-`E` 键事件通知，所有通知以 `__keyevent@<db>__` 为前缀<br>-`g` 类型无关的通用命令的通知<br>-`$` 字符串命令通知<br>-`l` 列表命令通知<br>-`s` 集合命令通知<br>-`h` 哈希命令通知<br>-`z` 有序集合命令通知<br>-`X` 过期事件（每当有过期键被删除时发送）<br>-`e` 驱逐(evict)事件（每当有键因为 `maxmemory` 政策而被删除时发送）<br>-`A` 参数 `g$lshzxe` 的别名<br>-`AKE` 发送所有类型的键空间和键事件通知 |       | 服务器所发送通知的类型                                       |
-| repl-backlog-size      | ??                                                           |       |                                                              |
+| 配置                                   | 说明                                                         |
+| -------------------------------------- | ------------------------------------------------------------ |
+| `daemonize <yes/no>`                   | 是否为后台守护模式                                           |
+| `down-after-milliseconds <ms>`         | 哨兵判断实例进入主观下线所需的时间长度（单位：ms）           |
+| `pidfile <file_path>`                  | 设置进程ID保存文件                                           |
+| `port <num>`                           | 设置端口                                                     |
+| `timeout <second>`                     | 客户端空闲超时时长（单位：s）                                |
+| `loglevel <lvl>`                       | 设置日志等级；<br>  - debug<br>  - verbose<br>  - notice<br>  - warning |
+| `logfile <file_path_name>`             | 设置日志文件                                                 |
+| `databases <db_num>`                   | 设置数据库数量(默认0)                                        |
+| `save <second> <mod_time>`             | 在多长时间(second)内，有所少次更新操作(mod_time)，就将数据同步到数据文件，可以多个条件配合 |
+| `stop-write-on-bgsave-error <yes/no>`  | 最近一次save操作失败则停止写操作                             |
+| `rdbcompression <yes/no>`              | RDB文件压缩                                                  |
+| `rdbchecksum <yes/no>`                 | RDB文件启用CRC64校验码（对性能有影响）                       |
+| `dbfilename <db_file_name>`            | 设置本地数据库文件名                                         |
+| `dir <path>`                           | 设置本地数据库路径                                           |
+| `requirepass <passwd>`                 | 有slave连接时需要提供的密码                                  |
+| `appendonly <yes/no>`                  | 是否每次更新操作后进行日志记录                               |
+| `appendfsync <no/always/everyusec>`    | 更新日志条件；<br>  - no 等操作系统进行数据缓存同步到磁盘（快）<br>  - always 每次更新操作后手动调到fsync()将数据写到磁盘（慢，安全）<br>  -`everysec` 每秒同步一次（默认） |
+| `notify-keyspace-events <KEg$lshzXeA>` | 设置服务器所发送通知的类型；<br>  -`K` 键空间通知，所有通知以 `__keyspace@<db>__` 为前缀<br>  -`E` 键事件通知，所有通知以 `__keyevent@<db>__` 为前缀<br>  -`g` 类型无关的通用命令的通知<br>  -`$` 字符串命令通知<br>  -`l` 列表命令通知<br>  -`s` 集合命令通知<br>  -`h` 哈希命令通知<br>  -`z` 有序集合命令通知<br>  -`X` 过期事件（每当有过期键被删除时发送）<br>  -`e` 驱逐(evict)事件（每当有键因为 `maxmemory` 政策而被删除时发送）<br>  -`A` 参数 `g$lshzxe` 的别名<br>  -`AKE` 发送所有类型的键空间和键事件通知 |
+| `repl-backlog-size`                    | 设置复制积压缓冲区大小；<br>（可不带单位，但同时支持单位：b, k, kb, m, mb, g, gb；单位不区分大小写，其中k, m, g的计算倍数是1000，而kb, mb和gb的计算倍数是1024） |
+| `repl-backlog-ttl`                     | 复制积压缓冲区存活时长（当所有slaves不可用时，保留多长时间，单位：s） |
+| `maxclients <cli_num>`                 | 同一时间内的最大clients连接数量                              |
+| `maxmemory <bytes>`                    | 设置内存最大使用量；0：表示不限制；                          |
+| `maxmemory-policy`                     | 设置内存置换策略；<br>  - `noeviction` 不要淘汰任何数据，大部分写操作会返回错误；<br>  - `allkeys-lru` 使用近似的LRU算法淘汰长时间没有使用的键<br>  - `volatile-lru` 使用近似的LRU淘汰数据，仅设置过期的键；<br>  - `allkeys-random` 删除随机键，任何键；<br>  - `volatile-random` 随机删除设置了过期时间的键；<br>  - `volatile-ttl` 删除最接近到期时间（较小的TTL）的键；<br>  -  `volatile-lfu` 在设置了过期时间的键中，使用近似的LFU算法淘汰使用频率比较低的键；<br>  - `allkeys-lfu` 使用近似的LFU算法淘汰整个数据库的键。 |
 
 例：
 

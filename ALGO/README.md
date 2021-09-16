@@ -16,7 +16,7 @@
 - [链表]
 - [MurmurHash算法](murmur_hash.md)
 - [红黑树]
-- [ring buffer]
+- [环形队列](ring_buffer.md)
 - [跳表](skiplist.md)
 - [排序算法总结](sort.md)
 
