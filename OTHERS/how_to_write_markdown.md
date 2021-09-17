@@ -405,7 +405,7 @@ cond(no)->sub1(right)->op
 
 - `participant 对象` ：创建一个对象
 
-- `loop...end` ：创建一个循环体
+- ~~`loop...end` ：创建一个循环体~~
 
 - `对象A->对象B:描述` ： 绘制A与B之间的对话，以实线连接
 

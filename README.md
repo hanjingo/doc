@@ -1,6 +1,4 @@
 # 目录
-- [算法](ALGO/README.md)
-
 - [编码之坑](BUG/README.md)
 
 - [职场](CAREER/README.md)
@@ -34,10 +32,6 @@
 - [项目](PROJ/README.md)
 
 - [源码分析](SRC/README.md)
-
-  
-
-
 
 # 快捷导航
 

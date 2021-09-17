@@ -10,11 +10,11 @@
 
 #### B树的应用场景与特点
 
-具体见：[平衡树](ALGO/balance_tree.md)
+具体见：[平衡树](MATH/ALGO/balance_tree.md)
 
 #### B+树的应用场景与特点
 
-Mysql的INNODB引擎，具体见：[平衡树](ALGO/balance_tree.md)
+Mysql的INNODB引擎，具体见：[平衡树](MATH/ALGO/balance_tree.md)
 
 #### B树与B+树的区别
 

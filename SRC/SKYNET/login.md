@@ -13,44 +13,47 @@
 
 ```sequence
 Title:snax loginserver登录协议
-Note right of 服务端: 产生随机数challenge(8byte)
+Note right of 服务端: >>> 产生随机数challenge(8byte)
 服务端->客户端: base64(challenge)
 
-Note right of 客户端: 产生随机数clientkey(8byte)
+Note left of 客户端: 产生随机数clientkey(8byte) <<<
 客户端->服务端: base64(clientkey)
 
-Note right of 服务端: 产生随机数serverkey(8byte)
+Note right of 服务端: >>> 产生随机数serverkey(8byte)
 服务端->客户端: base64(DH-Exchange(serverkey))
 
-Note right of 客户端: 使用clientkey与serverkey，通过dhsecret算法得到安全密钥secret
-Note right of 服务端: 使用clientkey与serverkey，通过dhsecret算法得到安全密钥secret
+Note left of 客户端: 使用clientkey与serverkey，通过dhsecret算法得到安全密钥secret <<<
+Note right of 服务端: >>> 使用clientkey与serverkey，通过dhsecret算法得到安全密钥secret
 
-Note right of 客户端: 使用密钥secret通过hmac64加密challenge得到chmac
+Note left of 客户端: 使用密钥secret通过hmac64加密challenge得到chmac <<<
 客户端->服务端: base64(chmac)
-Note right of 服务端: 使用密钥secret通过hmac64加密challenge得到shmac
-Note right of 服务端: 比对shmac和chamc：如果相等，密钥交换成功；不相等，断开连接
+Note right of 服务端: >>> 使用密钥secret通过hmac64加密challenge得到shmac
+Note right of 服务端: >>> 比对shmac和chamc：如果相等，密钥交换成功；不相等，断开连接
 
-Note right of 客户端: 组合base64 user @ base64 server:base64 passwd
-Note right of 客户端: 使用secret通过DES加密，得到etoken
+Note left of 客户端: 组合base64 user @ base64 server:base64 passwd <<<
+Note left of 客户端: 使用secret通过DES加密，得到etoken <<<
 客户端->服务端: base64(etoken)
 
-Note right of 服务端: 使用secret通过DES解密etoken得到token
-Note right of 服务端: 使用token调用auth_handler得到server和uid(用户自定义事件)
-Note right of 服务端: 使用uid和secret调用login_handler得到subid
+Note right of 服务端: >>> 使用secret通过DES解密etoken得到token
+Note right of 服务端: >>> 使用token调用auth_handler得到server和uid(用户自定义事件)
+Note right of 服务端: >>> 使用uid和secret调用login_handler得到subid
 服务端->客户端: base64(subid)
+
+Note left of 客户端: 用subid去登陆 <<<
+Note left of 客户端: 断开与login服务的连接 <<<
 
 Note over 服务端,客户端: 通信使用的是行协议
 ```
 
-- `DHexchange` 密钥交换算法，主要用来协商一个服务器与客户端的密钥
+- `DHexchange` 密钥交换算法，主要用来协商一个服务器与客户端的密钥；
 
-- `hmac64` 以一个密钥secret和一个消息challenge为输入，生成一个消息摘要hmac作为输出。
+- `hmac64` 以一个密钥secret和一个消息challenge为输入，生成一个消息摘要hmac作为输出；
 
-- `base64`
+- `base64` 基于64个可打印字符来表示二进制数据的编码算法；
 
-- `DES`
+- `DES` 密钥加密的块算法(Data Encryption Standard)；
 
-- `hashkey`
+- `hashkey` 云风自实现的hash算法（只能哈希小于8字节的数据，返回8字节数据的hash）
 
 
 
@@ -64,8 +67,6 @@ Title:snax loginserver 登录流程
 客户端->服务端: request session
 服务端->客户端: response ok session
 ```
-
-
 
 - `400 Bad Request`：握手失败
 - `401 Unauthorized`：自定义的auth_handler不认可token
@@ -92,7 +93,7 @@ Title:snax loginserver 登录流程
 
   - `server` 登陆点
   - `uid` 用户名
-  - `secret` ？
+  - `secret` 登录协议中，通过dhsecret算法得到安全密钥secret
 
   登陆后的处理逻辑。
 
@@ -107,3 +108,4 @@ Title:snax loginserver 登录流程
 ## 参考
 
 - [云风-LoginServer](https://github.com/cloudwu/skynet/wiki/LoginServer)
+- [skynet框架应用 (十四) 登录服务](https://blog.csdn.net/qq769651718/article/details/79435251)
