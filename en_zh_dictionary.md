@@ -6,7 +6,7 @@
 | **B** | [ba](#ba) |           |           |           | [be](#be) |      |           |           |           |      |           | [bl](#bl) |           |           |           |           |           | [br](#br) |           |           | [bu](#bu) |           |           |           |           |      |
 | **C** |           |           | [ca](#ca) |           |           |      |           | [ch](#ch) | [ci](#ci) |      |           | [cl](#cl) |           |           | [co](#co) |           |           | [cr](#cr) |           |           | [cu](#cu) |           |           |           |           |      |
 | **D** | [da](#da) |           |           |           | [de](#de) |      |           |           | [di](#di) |      |           |           |           |           | [do](#do) |           |           | [dr](#dr) |           |           | [du](#du) |           |           |           |           |      |
-| **E** |           |           |           |           |           |      | [eg](#eg) |           |           |      |           | [el](#el) | [em](#em) | [en](#en) |           |           | [eq](#eq) |           | [es](#es) |           |           | [ev](#ev) |           | [ex](#ex) |           |      |
+| **E** |           |           | [ec](#ec) |           |           |      | [eg](#eg) |           |           |      |           | [el](#el) | [em](#em) | [en](#en) |           |           | [eq](#eq) |           | [es](#es) |           |           | [ev](#ev) |           | [ex](#ex) |           |      |
 | **F** | [fa](#fa) |           |           |           | [fe](#fe) |      |           |           | [fi](#fi) |      |           | [fl](#fl) |           |           | [fo](#fo) |           |           | [fr](#fr) |           |           | [fu](#fu) |           |           |           |           |      |
 | **G** | [ga](#ga) |           |           |           | [ge](#ge) |      |           |           |           |      |           | [gl](#gl) |           |           | [go](#go) |           |           | [gr](#gr) |           |           |           |           |           |           |           |      |
 | **H** | [ha](#ha) |           |           |           | [he](#he) |      |           |           | [hi](#hi) |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           | [hy](#hy) |      |
@@ -14,7 +14,7 @@
 | **J** |           |           |           |           |           |      |           |           |           |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **K** |           |           |           |           | [ke](#ke) |      |           |           |           |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **L** | [la](#la) |           |           |           | [le](#le) |      |           |           | [li](#li) |      |           |           |           |           | [lo](#lo) |           |           |           |           |           |           |           |           |           |           |      |
-| **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |           |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           |           |      |
+| **M** | [ma](#ma) |           |           |           | [me](#me) |      |           |           | [mi](#mi) |      |           |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           | [my](#my) |      |
 | **N** | [na](#na) |           |           |           | [ne](#ne) |      |           |           |           |      |           |           |           |           | [no](#no) |           |           |           |           |           |           |           |           |           |           |      |
 | **O** |           | [ob](#ob) | [oc](#oc) |           |           |      |           |           |           |      |           |           | [om](#om) |           |           | [op](#op) |           | [or](#or) |           |           | [ou](#ou) |           | [ow](#ow) |           |           |      |
 | **P** | [pa](#pa) |           |           |           | [pe](#pe) |      |           | [ph](#ph) | [pi](#pi) |      |           |           |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           |           |           |           |           |           |      |
@@ -23,7 +23,7 @@
 | **S** | [sa](#sa) |           | [sc](#sc) |           | [se](#se) |      |           | [sh](#sh) | [si](#si) |      | [sk](#sk) | [sl](#sl) |           | [sn](#sn) |           | [sp](#sp) |           |           |           | [st](#st) | [su](#su) |           | [sw](#sw) |           | [sy](#sy) |      |
 | **T** | [ta](#ta) |           |           |           | [te](#te) |      |           | [th](#th) |           |      |           |           |           |           | [to](#to) |           |           | [tr](#tr) |           |           | [tu](#tu) |           |           |           | [ty](#ty) |      |
 | **U** |           |           |           |           |           |      |           |           |           |      |           |           |           | [un](#un) |           | [up](#up) |           | [ur](#ur) | [us](#us) | [ut](#ut) |           |           |           |           |           |      |
-| **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
+| **V** | [va](#va) |           |           |           | [ve](#ve) |      |           |           | [vi](#vi) |      |           |           |           |           | [vo](#vo) |           |           |           |           |           |           |           |           |           |           |      |
 | **W** | [wa](#wa) |           |           |           | [we](#we) |      |           |           | [wi](#wi) |      |           |           |           |           | [wo](#wo) |           |           |           |           |           |           |           |           |           |           |      |
 | **X** |           |           |           |           |           |      |           |           |           |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
 | **Y** |           |           |           |           |           |      |           |           |           |      |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |      |
@@ -126,6 +126,8 @@ anxiety `/æŋˈzaɪəti/` 焦虑，担忧，害怕
 ### ap
 
 [回到A](#A)&ensp;[回到顶部](#英汉词典)
+
+apologetic `/əˌpɒləˈdʒetɪk/` 道歉的，谢罪的，愧疚的
 
 applicant `/ˈaplɪk(ə)nt/` 申请人
 
@@ -339,6 +341,8 @@ court `/kɔːt/` 法院，法庭，争取
 
 crawl `/krɔːl/` 爬，爬行，自由泳
 
+crayon `/ˈkreɪən/` 蜡笔，彩色铅笔，彩色粉笔
+
 critical `/ˈkrɪtɪkl/` 关键的，严重的，致命的 
 
 criticize `/ˈkrɪtɪsaɪz/` 批评，批判，挑剔，指责，评论，评价
@@ -376,6 +380,8 @@ demand `/dɪˈmɑːnd/` 坚决请求，强烈要求
 demonstrate `/ˈdemənstreɪt/` 证明，证实，说明，表露，演示，示威，游行
 
 departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
+
+depress `/dɪˈpres/` 使...沮丧，使...萧条，减少(工资)
 
 derived `/dɪˈraɪvd/` 取得，产生
 
@@ -443,6 +449,12 @@ duplicate `/ˈdjuːplɪkeɪt/` 复制，副本
 
 # E
 
+### ec
+
+[回到E](#E)&ensp;[回到顶部](#英汉词典)
+
+ecosystem `/ˈiːkəʊsɪstəm/` 生态系统
+
 ### eg
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
@@ -473,7 +485,9 @@ embed `/ɪmˈbɛd/` 嵌入
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
-influential `/ˌɪnfluˈenʃl/` 有很大影响力的，有支配力的
+endanger `/ɪnˈdeɪndʒə(r/` 危害，危及
+
+entitle `/ɪnˈtaɪtl/` 赋予权力，享有权利，冠名
 
 ### eq
 
@@ -701,6 +715,8 @@ indiscriminate `/ˌɪndɪˈskrɪmɪnət/` 随意的，不加选择的
 
 indolent `/ˈɪndələnt/` 懒散的，懒惰的
 
+influential `/ˌɪnfluˈenʃl/` 有很大影响力的，有支配力的
+
 infrastructure `/ˈɪnfrəstrʌktʃə(r)/` 基础设施
 
 ingest `/ɪnˈdʒest/` 摄入，食入，咽下
@@ -724,6 +740,8 @@ intermediate `/ˌɪntəˈmiːdiət/` 中间的，中级的，中等的
 intensive `/ɪnˈtensɪv/`  密集的，加强器
 
 intrusive `/ɪnˈtruːsɪv/` 侵入的，插入的，添加的
+
+invade `/ɪnˈveɪd/` 入侵，侵犯
 
 invariants `/ɪnˈveərɪənts/` 不变量，不变关系
 
@@ -823,6 +841,8 @@ mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 
 mobilize `/ˈməʊbəlaɪz/` 组织，鼓动，动员，调动
 
+mockingbird `/ˈmɒkɪŋbɜːd/` 嘲鸫(一种鸟)，模仿鸟
+
 motivation `/ˌməʊtɪˈveɪʃn/`  动机，意志
 
 ### mu
@@ -832,6 +852,12 @@ motivation `/ˌməʊtɪˈveɪʃn/`  动机，意志
 multilateral `/ˌmʌltiˈlætərəl/` 多边的，多国的，多个部分的
 
 munch `/mʌntʃ/`  用力咀嚼
+
+### my
+
+[回到M](#M)&ensp;[回到顶部](#英汉词典)
+
+myth `/mɪθ/` 神话，虚构的东西
 
 ---
 
@@ -1163,9 +1189,13 @@ shield `/ʃiːld/` 盾牌，保护，掩藏
 
 shone `/ʃɒn/` 发光，照耀，反光
 
+shortcut `/ˈʃɔːtkʌt/` 捷径，近路
+
 ### si
 
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
+
+signify `/ˈsɪɡnɪfaɪ/` 表示，说明，预示，要紧
 
 significant `/sɪɡˈnɪfɪkənt/` 显著的，相当数量地
 
@@ -1213,6 +1243,8 @@ spectator `/spɛkˈteɪtə/` 观众
 
 spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
 
+spotless `/ˈspɒtləs/` 极其清洁的，非常干净的
+
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
 ### st
@@ -1236,6 +1268,8 @@ stuck `/stʌk/` 卡住，刺入，困住
 [回到S](#S)&ensp;[回到顶部](#英汉词典)
 
 submarine `/ˌsʌbməˈriːn/` 潜艇，长卷三明治，水下的，海地的
+
+suite `/swiːt/` 一套，一组
 
 suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制
 
@@ -1310,6 +1344,8 @@ treat `/triːt/` 对待
 trifle `/ˈtrʌɪf(ə)l/` 少量，琐事
 
 troops `/truːps/` 军队，士兵，连队
+
+trustworthy `/ˈtrʌstwɜːði/` 值得信赖的，可靠的
 
 ### tu
 
@@ -1391,9 +1427,17 @@ vigil `/ˈvɪdʒɪl/` 值夜，不眠时间，守夜
 
 vigorous `/ˈvɪɡərəs/` 充满活力的，果断地，精力充沛的，强壮的
 
+vine `/vaɪn/` 藤曼，藤
+
 violent `/ˈvaɪələnt/` 暴力的，猛烈的
 
 vital `/ˈvaɪtl/` 必不可少的，极其重要的，生机勃勃的
+
+### vo
+
+[回到V](#V)&ensp;[回到顶部](#英汉词典)
+
+volunteer `/ˌvɒlənˈtɪə(r)/` 志愿者，自愿做
 
 ---
 
@@ -1404,6 +1448,8 @@ vital `/ˈvaɪtl/` 必不可少的，极其重要的，生机勃勃的
 [回到W](#W)&ensp;[回到顶部](#英汉词典)
 
 watershed `/ˈwɔːtəʃed/` 转折点，分界线，分水岭
+
+wavy `/ˈweɪvi/` 起伏不平的，波浪形的
 
 ### we
 
