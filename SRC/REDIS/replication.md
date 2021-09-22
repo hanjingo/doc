@@ -170,7 +170,19 @@ is_bak_continue --yes--> return_part(执行部分重同步)
 
 Redis 2.8版本以前没有检测命令丢失功能，2.8以后才有这功能；原理如下：
 
-如果master给slave的写命令半路丢失，当slave向master发送REPLCONF ACK命令时，slave的复制偏移量将少于master的复制偏移量，master从复制积压缓冲区找到缺少的数据，重新发送给slave；
+如果master给slave的写命令半路丢失，当slave向master发送REPLCONF ACK命令时，slave的复制偏移量将少于master的复制偏移量，master从复制积压缓冲区找到缺少的数据，重新发送给slave；例：
+
+1. 主从服务器处于一致状态：
+
+   ![redis_replication_check_cmd1](res/redis_replication_check_cmd1.png)
+
+2. 主从服务器处于不一致状态：
+
+   ![redis_replication_check_cmd2](res/redis_replication_check_cmd2.png)
+
+3. 主服务器向从服务器补发缺失的数据：
+
+   ![redis_replication_check_cmd3](res/redis_replication_check_cmd3.png)
 
 
 

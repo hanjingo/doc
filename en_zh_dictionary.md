@@ -485,6 +485,8 @@ embed `/ɪmˈbɛd/` 嵌入
 
 [回到E](#E)&ensp;[回到顶部](#英汉词典)
 
+encapsulate `/ɪnˈkæpsjuleɪt/` 概括，压缩，简述
+
 endanger `/ɪnˈdeɪndʒə(r/` 危害，危及
 
 entitle `/ɪnˈtaɪtl/` 赋予权力，享有权利，冠名
