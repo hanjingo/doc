@@ -50,6 +50,12 @@
 
 如果使用TCP但不关闭Nagle算法(NoDelay选项)，TCP会把一些小的包汇聚到一起再发送，对于一些低延迟的程序来说，这一特性可能会造成一些不良影响...
 
+#### [Time wait问题](net.md)
+
+关键词：TCP，Timewait
+
+主动发起方频繁建立/断开连接，会导致系统之存在大量的timewait连接，从而导致没法建立新的连接...
+
 
 
 ## skynet
@@ -78,7 +84,7 @@
 
 #### [修改密码时提示不合法](mysql.md)
 
-关键词：mysql，密码，不合法
+关键词：**mysql**，**密码**，**不合法**
 
 修改MySQL的用户名和密码时，报`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;`...
 
@@ -89,3 +95,4 @@
 #### [eos-go报`action declares irrelevant authority`错误](eos-go.md)
 
 #### [在执行sh文件时报`Syntax error: "(" unexpected`错误](linux.md)
+

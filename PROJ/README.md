@@ -33,7 +33,7 @@
 - [如何定位Core Dump问题](TEST/core_dump.md)
 - [如何定位丢包问题](TEST/package_lost.md)
 - [如何定位高并发问题](TEST/high_concurrency.md)
-- [压测文档模版](TEST/tmpl_benchmark_report.md)
+- [游戏服务器压测文档模版](TEST/tmpl_game_server_benchmark_report.md)
 
 ---
 

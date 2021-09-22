@@ -30,3 +30,5 @@ ERROR 1819 (HY000): Your password does not satisfy the current policy requiremen
 
 2. 按照安全变量值要求来修改密码
 
+   略...
+

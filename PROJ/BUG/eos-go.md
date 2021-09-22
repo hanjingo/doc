@@ -1,6 +1,6 @@
 [TOC]
 
-# eos-go报错
+# eos-go开发常见错误
 
 
 
