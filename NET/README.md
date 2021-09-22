@@ -8,7 +8,7 @@
 
 - [网络I/O](io.md)
 
-- [Internet协议](ip.md)
+- [IP](ip.md)
 
 - [KRPC协议]
 

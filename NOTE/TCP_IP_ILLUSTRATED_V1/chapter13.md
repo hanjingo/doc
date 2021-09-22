@@ -127,8 +127,13 @@ TIME_WAIT状态也称为`2MSL等待状态`或`加倍等待`，TCP将会等待两
 
 2MSL的值可以被修改，其值的保存位置如下：
 
-- `linux`（单位：秒） net.ipv4.tcp_fin_timeout。
-- `windows` HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\TcpTimeWaitDelay。
+- `linux`
+
+  （单位：秒） `net.ipv4.tcp_fin_timeout`。
+
+- `windows` 
+
+  `HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\TcpTimeWaitDelay`。
 
 影响2MSL等待状态的因素：
 

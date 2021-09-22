@@ -40,7 +40,7 @@ RTT(round-trip-time estimation， 往返时间估计)
 
 TCP提供了一种*面向连接的(connection-oriented)，可靠的*字节流服务。
 
-### 
+
 
 ## TCP头部和封装
 
