@@ -1,6 +1,6 @@
 [TOC]
 
-# linux调试命令
+# 调试工具-linux调试命令
 
 
 
@@ -20,43 +20,45 @@ lua: Mach-O 64-bit executable x86_64
 
 ## ldd
 
-
+TODO
 
 ## nm
 
-
+TODO
 
 ## strings
 
-
+TODO
 
 ## size
 
-
+TODO
 
 ## readelf
 
-
+TODO
 
 ## objdump
 
-
+TODO
 
 ## netstat
 
-
+TODO
 
 ## ps
 
-
+TODO
 
 ## top
 
-
+TODO
 
 ## ulimit
 
-
+TODO
 
 ## addr2line
+
+TODO
 

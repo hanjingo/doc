@@ -1,15 +1,70 @@
+[TOC]
+
 # Lua面向对象
 
 
 
-```lua
--- 基类
-ObjBase = {}
+## Class类
 
--- 构造方法
-function ObjBase:new(obj, ...)
-    
-   end
+```lua
+local _class = {}
+
+function Class(super)
+    local class_type = {}
+    class_type.ctor = false 		-- 构造函数
+    class_type.super = super 		-- 父类
+    class_type.new = function(...)
+        local obj = {}
+        do 
+            local create
+            create = function (c, ...)
+                if c.super then
+                    create(c.super, ...)
+                end
+                if c.ctor then
+                    c.ctor(obj, ...)
+                end
+            end
+            create(class_type, ...)
+        end
+        setmetatable(obj, {__index = _class[class_type]}) -- 递归
+        return obj
+    end
+
+    local vtbl={}
+    _class[class_type] = vtbl
+
+    setmetatable(class_type, {__newindex = 
+        function (t, k, v)
+            vtbl[k] = v
+        end
+    })
+
+    if super then
+        setmetatable(vtbl, {__index=
+            function (t, k)
+                local ret = _class[super][k]
+                vtbl[k] = ret
+                return ret
+            end
+        })
+    end
+
+    return class_type
+end
+```
+
+
+
+## 示例
+
+### 1 lua实现继承
+
+```lua
+local child = Class(parent)
+function child:ctor()
+    self.xxx = xxx
+end
 ```
 
 

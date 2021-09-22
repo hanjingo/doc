@@ -1,6 +1,4 @@
 # 目录
-- [编码之坑](BUG/README.md)
-
 - [职场](CAREER/README.md)
 
 - [分布式](DCS/README.md)
@@ -35,5 +33,5 @@
 
 # 快捷导航
 
-**[生存经验](live.md)**&nbsp;&nbsp;&nbsp;**[英汉词典](en_zh_dictionary.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[posix接口](posix.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[面试笔记](interview.md)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[Bug速查](BUG/README.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[vim常用快捷键](OTHERS/vim_shortcut.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[linux常用命令](OS/linux_cmd.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[git指南](OTHERS/git.md)**&nbsp;&nbsp;&nbsp;&nbsp;[健康手册](LIFE/HEALTH/README.md)&nbsp;&nbsp;&nbsp;&nbsp;[如何写markdown](OTHERS/how_to_write_markdown.md)&nbsp;&nbsp;&nbsp;&nbsp;**[skynet api手册](SRC/SKYNET/api.md)**&nbsp;&nbsp;&nbsp;&nbsp;[vimium(chrome插件)常用快捷键](OTHERS/vimium_shortcut.md)&nbsp;&nbsp;&nbsp;&nbsp;[STL速查手册](LANG/C++/STL/api.md)&nbsp;&nbsp;&nbsp;&nbsp;[BOOST速查手册](LANG/C++/BOOST/api.md)&nbsp;&nbsp;&nbsp;&nbsp;[redis速查命令](DB/REDIS/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[eos速查命令](DCS/EOS/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[读书笔记](NOTE/README.md)&nbsp;&nbsp;&nbsp;&nbsp;[eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)&nbsp;&nbsp;&nbsp;&nbsp;[I帧,P帧和B帧](MEDIA/frame.md)&nbsp;&nbsp;&nbsp;&nbsp;[cmake教程](OTHERS/cmake.md)&nbsp;&nbsp;&nbsp;&nbsp;[FFmpeg速查手册](MEDIA/FFMPEG/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[论文模板](OTHERS/paper_tmpl.md)&nbsp;&nbsp;&nbsp;&nbsp;[工作日志模版](CAREER/work_note.md)
+**[生存经验](live.md)**&nbsp;&nbsp;&nbsp;**[英汉词典](en_zh_dictionary.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[posix接口](posix.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[面试笔记](interview.md)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[Bug速查](PROJ/BUG/README.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[vim常用快捷键](OTHERS/vim_shortcut.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[linux常用命令](OS/linux_cmd.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[git指南](OTHERS/git.md)**&nbsp;&nbsp;&nbsp;&nbsp;[健康手册](LIFE/HEALTH/README.md)&nbsp;&nbsp;&nbsp;&nbsp;[如何写markdown](OTHERS/how_to_write_markdown.md)&nbsp;&nbsp;&nbsp;&nbsp;**[skynet api手册](SRC/SKYNET/api.md)**&nbsp;&nbsp;&nbsp;&nbsp;[vimium(chrome插件)常用快捷键](OTHERS/vimium_shortcut.md)&nbsp;&nbsp;&nbsp;&nbsp;[STL速查手册](LANG/C++/STL/api.md)&nbsp;&nbsp;&nbsp;&nbsp;[BOOST速查手册](LANG/C++/BOOST/api.md)&nbsp;&nbsp;&nbsp;&nbsp;[redis速查命令](DB/REDIS/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[eos速查命令](DCS/EOS/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[读书笔记](NOTE/README.md)&nbsp;&nbsp;&nbsp;&nbsp;[eosio.system合约](SRC/EOSIO/CONTRACT/eosio.system.md)&nbsp;&nbsp;&nbsp;&nbsp;[I帧,P帧和B帧](MEDIA/frame.md)&nbsp;&nbsp;&nbsp;&nbsp;[cmake教程](OTHERS/cmake.md)&nbsp;&nbsp;&nbsp;&nbsp;[FFmpeg速查手册](MEDIA/FFMPEG/cmd.md)&nbsp;&nbsp;&nbsp;&nbsp;[论文模板](OTHERS/paper_tmpl.md)&nbsp;&nbsp;&nbsp;&nbsp;[工作日志模版](CAREER/work_note.md)
 

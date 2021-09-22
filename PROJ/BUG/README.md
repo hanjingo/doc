@@ -1,36 +1,6 @@
 [TOC]
 
-# 编码之坑
-
-
-
-## 调试方法
-
-#### [如何定位内存问题](mem_bug.md)
-
-#### [如何定位CPU跑满问题](cpu_full.md)
-
-#### [如何定位Core Dump问题](core_dump.md)
-
-#### [如何定位丢包问题](package_lost.md)
-
-#### [如何定位高并发问题](high_concurrency.md)
-
-
-
-## 调试工具
-
-#### [valgrind](valgrind.md)
-
-#### [GDB](gdb.md)
-
-#### [WireShark](wire_shark.md)
-
-#### [telnet](telnet.md)
-
-#### [linux系统日志](linux_sys_log.md)
-
-#### [linux调试命令](linux_debug_cmd.md)
+# BUG速览
 
 
 

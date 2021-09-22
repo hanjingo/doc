@@ -1,5 +1,5 @@
 # SKYNET
 
-- [DB](db.md)
 - [环境搭建](env.md)
+- [序列化](serialize.md)
 

@@ -15,7 +15,6 @@
 - [模块机制](modules.md)
 - [消息机制](msg.md)
 - [网络模块](net.md)
-- [序列化](serialize.md)
 - [服务](server.md)
 - [snax框架](snax.md)
 - [线程模型](thread.md)
