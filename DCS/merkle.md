@@ -28,7 +28,7 @@ Merkle Tree，通常也被称作Hash Tree 哈希树，顾名思义，就是存�
 
 ### 更新，插入和删除
 
-todo
+TODO
 
 ### 节点校验
 
@@ -53,7 +53,7 @@ ipfs团队基于Merkle树构建了一种新的数据结构:Merkle DAG; 其与Mer
 源码如下：
 
 ```C++
-
+TODO
 ```
 
 
@@ -61,7 +61,7 @@ ipfs团队基于Merkle树构建了一种新的数据结构:Merkle DAG; 其与Mer
 
 ### 零知识证明
 
-
+TODO
 
 
 

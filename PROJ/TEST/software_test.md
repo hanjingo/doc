@@ -10,13 +10,11 @@
 
 | 指标         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| `并发数`     | 系统同时能处理的请求数量，反应了系统的负载能力；             |
-| `每秒查询率` | （QPS, Queries Per Second）在单位时间内响应的请求次数（单位：请求/秒）； |
-| `吞吐量`     | （TPS, Transactions Per Second）在单位时间内处理事务的数量（单位：事务/秒）；<br>吞吐量分为以下几类：<br>  - `平均吞吐量` 一段时间内吞吐量的平均值（无法体现吞吐量的瞬间变化）；<br>  - `峰值吞吐量` 一段时间内吞吐量的最大值，是用来评估系统容量的重要指标之一；<br>  - `最低吞吐量` 一段时间内吞吐量的最小值（如果接近于0，说明系统有卡顿现象）；<br>  - `70%的吞吐集中区间` 通过统计15%和85%的吞吐量边界值，计算出70%的吞吐量集中区间；区间越集中，吞吐量越稳定； |
+| `并发数`     | 系统同时能处理的请求数量，反应了系统的负载能力；<br>并发数的计算公式[<sup>[1]</sup>](#ref1)为：<br>$C=\frac{nL}{T}$​<br>  - `C` 并发数<br>  - `n` 压测时间段内所有的请求数<br>  - `L` 平均响应时间<br>  - `T`​ 压测总时长 |
+| `每秒查询率` | （QPS, Queries Per Second）在单位时间内响应的请求次数（单位：请求/秒）；<br>QPS的计算公式为：<br>$QPS = \frac{C}{L}$​​​​<br>  - `C` 并发数<br>  - `L` 平均响应时间 |
+| `吞吐量`     | （TPS, Transactions Per Second）在单位时间内处理事务的数量（单位：事务/秒）；<br>吞吐量分为以下几类：<br>  - `平均吞吐量` 一段时间内吞吐量的平均值（无法体现吞吐量的瞬间变化）；<br>  - `峰值吞吐量` 一段时间内吞吐量的最大值，是用来评估系统容量的重要指标之一；<br>  - `最低吞吐量` 一段时间内吞吐量的最小值（如果接近于0，说明系统有卡顿现象）；<br>  - `70%的吞吐集中区间` 通过统计15%和85%的吞吐量边界值，计算出70%的吞吐量集中区间；区间越集中，吞吐量越稳定；<br>吞吐量的计算公式为：<br>公式一：$TPS = \frac{C}{L}$ <br>  - `C` 并发数<br>  - `L` 平均响应时间<br>公式二：$TPS = \frac{n}{T}$<br>  - `n` 压测时间段内所有的请求数<br>  - `T` 压测总时长 |
 | `响应时间`   | （RT）对请求作出响应的时间，通常指从一个请求发出，到服务器进行处理后返回，再到接收完毕应答数据的时间间隔（单位：ms）；<br>响应时间分为以下几类：<br>  - `平均响应时间` 一段时间内响应时间的平均值（无法体现响应时间的波动情况）；<br>  - `中间响应时间` 一段时间内响应时间的中间值，50%响应时间，有一半的服务器响应时间低于该值而另一半高于该值；<br>  - `90%响应时间` 一段时间内90%的事务响应时间比此数值要小。反应总体响应速度，和高于该值的10%超时率，是用来评估系统容量的重要指标之一；<br>  - `最小响应时间` 响应时间的最小值，反映服务最快处理能力；<br>  - `最大响应时间` 响应时间的最大值，反映服务器最慢处理能力； |
-| `CPU占用率`  | 表示CPU被使用情况，反映了系统资源利用情况（计算公式为：1 - CPU空闲率）； |
-
-`QPS(TPS) = 并发数/平均响应时间`；
+| `CPU占用率`  | 表示CPU被使用情况，反映了系统资源利用情况；<br>CPU占用率的计算公式为：<br>$U = 1 - F$<br>  - `U` CPU占用率<br>  - `F` CPU空闲率 |
 
 ### 运营指标
 
@@ -28,46 +26,9 @@
 | `日活跃用户数`   | （DAU，Daily Active Users）一个统计日内登录或使用了某个产品的用户数（去重）； |
 | `周活跃用户数`   | （WAU，Weak Active Users）一个统计周内登录或使用了某个产品的用户数（去重）； |
 | `月活跃用户数`   | （MAU，Month Active Users）一个统计月内登录或使用了某个产品的用户数（去重）； |
+| `用户活跃度指数` | （AUI, Active Users Index）用于描述新增用户占比；<br>用户活跃度指数的计算公式为：<br>$AUI = \frac{DNU}{DAU}$<br>  - `AUI` ​​​用户活跃度指数<br>  - `DNU` 日新增用户数<br>  - `DAU` 日活跃用户数 |
 | `最高同时在线数` | （PCU, Peak Concurrent Users）最高同时在线玩家人数；         |
 | `平均同时在线数` | （Average Concurrent Users）平均同时在线玩家人数；           |
-
-活跃度指数：用于描述新增用户占比，计算公式为：`DNU/DAU`；
-
-
-
-## 专业术语
-
-- 集成测试（Integration Testing）
-- 验收测试（Acceptance Testing）
-- α测试（Alpha Testing）
-- β测试（Beta Testing）
-- 自动化测试（Automated Testing）
-
-按是否需要运行程序分类：
-
-- 静态测试（Static Testing）
-- 动态测试（Dynamic Testing）
-
-按是否需要源码分类：
-
-- 黑盒测试（Black Box Testing）
-
-  测试时不需要源代码。
-
-- 白盒测试（White Box Testing）
-
-  测试时需要源代码。
-
-- 灰盒测试（Gray Box Testing）
-
-  通过其他软件制品或者反编译手段获得了部分软件结构信息进而进行测试。
-
-按测试层次分类：
-
-- 单元测试（Unit Testing）
-- （Module Testing）
-- （Integration Testing）
-- （System Testing）
 
 
 
@@ -79,12 +40,6 @@
 | HTTP压测  | - [Jemeter]                                            |
 | core dump | - [GDB](gdb.md)<br>- [linux系统日志](linux_sys_log.md) |
 | 抓包      | - [Wireshark](wire_shark.md)                           |
-
-
-
-## 功能测试
-
-TODO
 
 
 
@@ -161,6 +116,7 @@ TODO
 | 性能     | - 平均响应时间<br>- TPS      |      |
 | 收发包率 | - 平均收包率<br>- 平均发包率 |      |
 | 网络流量 | - 发送流量<br>- 接收流量     |      |
+| 内存     | - 内存占用                   |      |
 | 错误统计 | - `4xx/5xx`<br>- 错误数      |      |
 | 并发数   | - 同时在线数量               |      |
 
@@ -197,10 +153,54 @@ TODO
 
 
 
+## 专业术语
+
+- 集成测试（Integration Testing）
+- 验收测试（Acceptance Testing）
+- α测试（Alpha Testing）
+- β测试（Beta Testing）
+- 自动化测试（Automated Testing）
+
+按是否需要运行程序分类：
+
+- 静态测试（Static Testing）
+- 动态测试（Dynamic Testing）
+
+按是否需要源码分类：
+
+- 黑盒测试（Black Box Testing）
+
+  测试时不需要源代码。
+
+- 白盒测试（White Box Testing）
+
+  测试时需要源代码。
+
+- 灰盒测试（Gray Box Testing）
+
+  通过其他软件制品或者反编译手段获得了部分软件结构信息进而进行测试。
+
+按测试层次分类：
+
+- 单元测试（Unit Testing）
+- 模块测试（Module Testing）
+- 集成测试（Integration Testing）
+- 系统测试（System Testing）
+
+
+
 ## 参考
+
+### 外链
 
 - [当压测遇见奥运 ——游戏服务器如何在上线时面对用户的洪荒之力](https://wetest.qq.com/lab/view/144.html)
 - [日新进用户 200W+，解密《龙之谷》手游背后的压测故事](https://testerhome.com/topics/8092)
+- [早知道早幸福——从压测工具谈并发、压力、吞吐量](https://wetest.qq.com/lab/view/177.html)
+- [用户并发数量的估算方法](https://blog.csdn.net/darling_8868/article/details/101379370)
 - [游戏压力测试总结](https://blog.csdn.net/erbozhao/article/details/80749609)
 - [百度百科-游戏压力测试](https://baike.baidu.com/item/%E6%B8%B8%E6%88%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/10013568?fr=aladdin)
+
+### 文献
+
+<div id="ref1">[1] Eric Man Wong . Method for Estimating the Number of Concurrent Users . p-p . 2004</div>
 
