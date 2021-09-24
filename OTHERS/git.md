@@ -2,7 +2,7 @@
 
 [TOC]
 
-## API
+## CMD
 
 | 命令            | 参数                                                         | 例子                                                         |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -48,6 +48,13 @@ git config --global user.email "xxx@xxx" # 设置git邮箱为"xxx@xxx"
 git init
 ```
 
+### 设置代理
+
+```shell
+git config --global http.proxy 'socks5:x.x.x.x:x'
+git config --global https.proxy 'socks5:x.x.x.x:x'
+```
+
 
 
 ---
@@ -70,17 +77,19 @@ git init
 
 包括3个字段：type(必需), scope(可选)， subject(必需)
 
-1. type：用于说明commit类别,只允许使用下面7个标识
+1. type
 
-- 添加新特性(feat)
-- 修复bug(fix)
-- 文档(docs)
-- 格式(style)
-- 重构(refactor)
-- 增加测试(test)
-- 构建过程或辅助工具的变动(chore)
+   用于说明commit类别,只允许使用下面7个标识
 
-如果type为feat和fix，则该commit将肯定出现在Change log之中。其他情况(docs, chore, style, refactor, test)由用户决定
+   - **feat**         添加新特性
+   - **fix**            修复bug
+   - **docs**        文档
+   - **style**       格式
+   - **refactor** 重构
+   - **test**         增加测试
+   - **chore**      构建过程或辅助工具的变动
+
+   如果type为feat和fix，则该commit将肯定出现在Change log之中；其他情况(docs, chore, style, refactor, test)由用户决定。
 
 2. scope
 
