@@ -2,7 +2,6 @@
 
 - [总结](summary.md)
 - [actor模型](actor.md)
-- [API](api.md)
 - [集群](cluster.md)
 - [控制台](console.md)
 - [数据库](db.md)

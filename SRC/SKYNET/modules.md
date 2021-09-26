@@ -65,9 +65,9 @@ skynet 通过modules来管理模块，其定义如下：
 ```c
 // 模块集合
 struct modules {
-	int count; 									// 模块类型id
-	struct spinlock lock; 						// 自旋锁
-	const char * path; 							// 模块集合的共有路径
+	int count; 								 // 模块类型id
+	struct spinlock lock; 					  // 自旋锁
+	const char * path; 						  // 模块集合的共有路径
 	struct skynet_module m[MAX_MODULE_TYPE]; 	// 模块集合
 };
 static struct modules * M = NULL; // 模块集合单例

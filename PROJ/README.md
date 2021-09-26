@@ -9,6 +9,7 @@
 - [游戏服务器架构](game_server_construct.md)
 - [热更新](hot_patch.md)
 - [唯一ID的生成](id.md)
+- [内存管理](mem_mgr.md)
 - [分表分库](sharding.md)
 
 ---
