@@ -131,4 +131,5 @@ Resource Server/SP-->Client: Protected Resource
 - [不要用JWT替代session管理（上）：全面了解Token,JWT,OAuth,SAML,SSO](https://zhuanlan.zhihu.com/p/38942172)
 - [Oauth2详解-介绍(一)](https://www.jianshu.com/p/84a4b4a1e833)
 - [理解OAuth2](https://zhuanlan.zhihu.com/p/84670338)
+- [游戏开发中的ECS架构实用性如何？](https://www.zhihu.com/question/455479955/answer/2143570061)
 

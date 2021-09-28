@@ -1,6 +1,5 @@
 # 操作系统
 
-- [linux常用命令](linux_cmd.md)
 - [动态链接库](dll.md)
 - [设备管理](device_mgr.md)
 - [可执行程序](exe.md)

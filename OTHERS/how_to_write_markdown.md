@@ -701,13 +701,53 @@ pie
 
 
 
+## 绘制折线图
+
+(需要安装vidtor)
+
+```echarts
+{
+
+ "title" : {  
+ "text": "简单的折线图",  
+ "subtext": "纯属虚构"  
+ },  
+ "tooltip" : {  
+ "trigger": "axis"  
+ },  
+ "toolbox": {  
+ "show" : true,  
+ "feature" : {  
+ "mark" : {"show": true},  
+ "dataView" : {"show": true, "readOnly": false},  
+ "magicType" : {"show": true, "type": ["line", "bar"]},  
+ "restore" : {"show": true},  
+ "saveAsImage" : {"show": true}  
+ }  
+ },  
+ "calculable" : true,  
+    "xAxis": {
+        "type": "category",
+            "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    },
+    "yAxis": {
+        "type": "value"
+    },
+    "series": [{
+        "data": [820, 932, 901, 934, 1290, 1330, 1320],
+        "type": "line"
+    }]
+}
+```
+
+
+
 
 
 ## 参考
 
 - [markdown 绘制流程图、时序图、甘特图](https://www.jianshu.com/p/6dbcc3aff98b)
-
 - [使用 Typora 画图（类图、流程图、时序图）](https://zhuanlan.zhihu.com/p/172635547)
-
 - [Class diagrams](https://mermaid-js.github.io/mermaid/#/classDiagram?id=class-diagrams)
+- [markdown 由简入繁，上手跟我做（十）echarts 图表 - 折线（面积）图](https://qiankunpingtai.cn/article/1566371244169)
 
