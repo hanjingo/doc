@@ -77,6 +77,15 @@
 
 向服务发送消息
 
+### timeout
+
+`skynet.timeout(ti, func)`
+
+- `ti` 时长（单位：0.01秒）
+- `func` 回调函数
+
+创建一个计时器，并设置回调
+
 ### uniqueservice
 
 `skynet.uniqueservice(name, ...)`
