@@ -12,7 +12,9 @@ end
 
 
 
-## select
+## 获取长度
+
+### select
 
 `select (index, ...)`
 
@@ -26,17 +28,17 @@ end
 
 ### 直接遍历
 
-利用`in ipairs`直接遍历
+利用`in ipairs`/`in pairs`直接遍历
 
 ```lua
 function f(...)
-    for _, a in ipairs(...) do
+    for _, a in ipairs({...) do
         -- DO SOMETHING WITH arg
     end
 end
 ```
 
-**注意：使用`in ipairs`时会自动跳过nil值**
+**注意：使用`in pairs`时会自动跳过nil值，使用`in ipairs`时会在遇到nil时终止**
 
 ### 打包成一个数组
 
@@ -80,6 +82,8 @@ local t = {...}
 ```lua
 table.unpack(t)
 ```
+
+
 
 
 
