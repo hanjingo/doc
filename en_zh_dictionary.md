@@ -1001,9 +1001,9 @@ despite `/dɪˈspaɪt/` 尽管，即使
 
 despoil `/dɪˈspɔɪl/` 抢劫，掠夺，蹂躏，破坏
 
-destine `/destɪn/` 注定，命运，指定，预定
+destabilise `/diː'steɪbɪlaɪz/` 动摇，使...不稳定
 
-destined `/ˈdestɪnd/` 命中注定的，命运
+destine `/destɪn/` 注定，命运，指定，预定
 
 detect `/dɪˈtekt/` 发现，查明，探测
 
@@ -1287,7 +1287,7 @@ endowment `/ɪnˈdaʊmənt/` 捐款，资助，天资，才能
 
 endure `/ɪnˈdjʊə(r)/` 忍耐，忍受，持续，持久
 
-engage `/ɪnˈɡeɪdʒ/` 吸引，从事，聘用
+engage `/ɪnˈɡeɪdʒ/` 吸引，从事，聘用，约定，订婚
 
 enormous `/ɪˈnɔːməs/` 巨大的，庞大的，极大的
 
@@ -2111,7 +2111,7 @@ linger `/ˈlɪŋɡə(r)/` 逗留，留恋，流连，徘徊
 
 linguistic `/lɪŋˈɡwɪstɪk/` 语言的，语言学的
 
-literary `/ˈlɪtərəri/` 文学的，书面的
+literary `/ˈlɪtərəri/` 文学的，书面的，字面上的
 
 livestock `/ˈlaɪvstɒk/` 家畜
 
@@ -3271,6 +3271,8 @@ sophistication `/səˌfɪstɪˈkeɪʃn/` 世故，老练，复杂度
 
 souvenir `/ˌsuːvəˈnɪə(r)/` 纪念品，纪念物
 
+sovereign `/ˈsɒvrɪn/` 有主权的，完全独立的
+
 soy `/sɔɪ/` 大豆，酱油
 
 ### sp
@@ -3302,6 +3304,8 @@ spine `/spaɪn/` 脊椎，脊柱，刺毛
 spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
 
 spoilage `/ˈspɔɪlɪdʒ/` 变质，腐败
+
+sponsor `/ˈspɒnsə(r)/` 赞助，主办，义捐，赞助商
 
 spontaneous `/spɒnˈteɪniəs/` 自发的，自然发生的
 
@@ -3358,6 +3362,8 @@ stimulus `/ˈstɪmjələs/` 刺激，刺激物，促进因素，鼓励
 stitch `/stɪtʃ/` 缝，绣，缝合
 
 strain `/streɪn/` 负担，压力，拉紧，拉伤
+
+strait `/streɪt/` 海峡，水道
 
 strap `/stræp/` 捆扎，打绷带，带子
 
