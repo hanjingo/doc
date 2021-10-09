@@ -11,9 +11,9 @@
 `assert(v[, message])`
 
 - `v` 需要断言的语句
-- `message` 输出yu ju
+- `message` 输出语句
 
-断言语句
+断言语句，遇到不满足的语句时，抛出错误
 
 #### collectgrabage
 
@@ -289,7 +289,21 @@ TODO
 
 ### 数学函数
 
-TODO
+#### math.ceil
+
+`math.ceil (x)`
+
+- `x` number类型值
+
+返回不小于x的最小整数值
+
+#### math.floor
+
+`math.floor (x)`
+
+- `x` number类型值
+
+返回不大于x的最大整形值
 
 ### 输入输出
 

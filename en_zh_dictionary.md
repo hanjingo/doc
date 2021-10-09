@@ -851,6 +851,8 @@ counterfeit `/ˈkaʊntəfɪt/` 仿制品，肖像，伪造，仿冒的
 
 counterpart `/ˈkaʊntəpɑːt/` 对手，副本
 
+course `/kɔːs/` 课程
+
 court `/kɔːt/` 法院，法庭，争取
 
 courteous `/ˈkɜːtiəs/` 礼貌的，客气的，恭敬的
