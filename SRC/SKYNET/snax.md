@@ -35,20 +35,20 @@
 
  2. 创建入口文件`examples/main_snax.lua`，内容如下：
 
-   ```lua
-   local skynet = require "skynet"
-   local snax = require "skynet.snax"
-   
-   skynet.start(function ()
-       local s = snax.newservice("snhello", "hello")
-       if not s then
-           print("create snax server fail")
-           return
-       end
-       snax.kill(s, "world")
-   end)
-   ```
-   
+    ```lua
+    local skynet = require "skynet"
+    local snax = require "skynet.snax"
+    
+    skynet.start(function ()
+        local s = snax.newservice("snhello", "hello")
+        if not s then
+            print("create snax server fail")
+            return
+        end
+        snax.kill(s, "world")
+    end)
+    ```
+
 3. 实现snax服务文件`examples/snhello.lua`，内容如下：
 
    ```lua

@@ -94,7 +94,7 @@
 
 启动一个唯一服务（单例），如果该服务已经启动，则返回已启动的服务地址
 
-
+---
 
 ## cluster
 
@@ -150,7 +150,7 @@
 
 TODO
 
-
+---
 
 ## gateway
 
@@ -178,7 +178,7 @@ TODO
 
 服务入口
 
-
+---
 
 ## redis
 
@@ -221,7 +221,7 @@ local db = redis.connect({
 db:disconnect()
 ```
 
-
+---
 
 ## snax
 
@@ -292,6 +292,22 @@ db:disconnect()
 
 热更新代码
 
+---
 
+  ## socket
 
-  
+### listen
+
+### start
+
+### read
+
+从socket读数据（阻塞）
+
+### write
+
+### close
+
+关闭socket（阻塞）
+
+---

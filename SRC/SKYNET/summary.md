@@ -83,7 +83,7 @@ bempty(yes)->sleep
 bempty(no)->pop->callback->pushback(right)->sleep
 ```
 
-线程从次级消息队列`pop`出消息时，消息的条数取决于线程的权重w：
+线程从次级消息队列`pop`出消息时，消息的条数取决于线程的权重`w`：
 
 - `w<0`
 
@@ -101,8 +101,8 @@ bempty(no)->pop->callback->pushback(right)->sleep
 
 skynet使用以下特性保证线程安全：
 
-1. 依附于skynet核心模块的c服务，包括：
-2. global_mq和次级消息队列在push/pop时都有加`spinlock`
+1. 依附于skynet核心模块的c服务；
+2. global_mq和次级消息队列在push/pop时都有加`spinlock`；
 3. 通过handle从handle_storage的slot里获取`skynet_context`时，加上了`rowlock`。
 
 
