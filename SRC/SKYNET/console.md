@@ -18,11 +18,11 @@ skynet启动后，用telnet或nc命令就可以进入控制台发送控制命令
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | help       |                                                              |                                                              |
 | list       | 列出所有服务，以及启动服务的命令参数                         | 格式：`list`<br>- `list` 列出所有服务                        |
-| stat       | 列出所有lua服务的信息，包括：<br>- 消息队列的长度<br>- 被挂起的请求数量<br>- 处理的消息总数<br>- cpu时间(需要config的profile设置为true) |                                                              |
-| info       | 让一个lua服务汇报自己的内部信息                              | 格式：`info 服务地址/ID`<br>- `info 0`                       |
+| stat       | 列出所有lua服务的信息，包括：<br>- `mqlen` 消息队列的长度<br>- `task` 被挂起的请求数量<br>- `message` 处理的消息总数<br>- `cpu` CPU时间(需要config的profile设置为true) | 格式：`stat`<br>- `stat` 列出所有lua服务的信息               |
+| info       | 让一个lua服务汇报自己的内部信息                              | 格式：`info 服务地址/ID`<br>- `info 0` 汇报服务0的内部信息   |
 | exit       | 退出一个lua服务                                              | 格式：`exit 服务地址/ID`<br>- `exit 0` 退出id为0的服务       |
 | kill       | 强行终止一个lua服务                                          | 格式：`kill 服务地址/ID`<br>- `kill 0` 强行终止id为0的服务   |
-| mem        | 让所有lua服务汇报自己占用的内存                              |                                                              |
+| mem        | 让所有lua服务汇报自己占用的内存                              | 格式：`mem`<br>- `mem` 列出所有服务站用的内存                |
 | gc         | 强制让所有lua服务都执行一次垃圾回收，并报告回收后的内存      |                                                              |
 | start      | 用`skynet.newservice`启动一个新的lua服务                     | 格式：`start 服务名`<br>-`start hot` 启动一个新的服务，服务名为hot |
 | snax       | 用`snax.newservice` 启动一个新的snax服务                     | 格式：`snax 服务名`<br>- `snax hot`                          |

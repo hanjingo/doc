@@ -28,13 +28,13 @@
 - `typename` 服务名
 - `func` 回调函数
 
-把回调函数注册到服务
+把回调函数注册到服务；
 
 ### exit
 
 `skynet.exit()`
 
-结束服务
+结束当前服务
 
 ### localname
 
@@ -50,7 +50,7 @@
 
 - `name` 服务名
 
-启动一个名为name的新服务（可以在一个进程其启动多个服务）
+启动一个名为name的新服务（可以在一个进程其启动多个服务），返回新服务的地址；
 
 ### queryservice
 
@@ -68,6 +68,12 @@
 
 包装消息打包函数到闭包
 
+### self
+
+`skynet.self()`
+
+返回当前服务的地址
+
 ### send
 
 `skynet.send(addr, typename, ...)`
@@ -75,7 +81,15 @@
 - `addr` 服务地址
 - `typename` 服务类型
 
-向服务发送消息
+向服务发送消息，接收方使用`skynet.dispatch`接收消息；
+
+### start
+
+`skynet.start(start_func)`
+
+- `start_func` 初始化服务函数
+
+用函数`start_func`初始化
 
 ### timeout
 
@@ -102,19 +116,28 @@
 
 `cluster.call(node, address, ...)` 
 
-向一个节点上的一个服务提起一个请求，等待回应。
+- `node` 节点名
+- `address` 请求地址
+- `...`
+
+向一个节点上的一个服务提起一个请求，等待回应(阻塞)。
 
 ### open
 
-`cluster.open(port)` 
+`cluster.open(port)`
+
+- `port` 端口
 
 让当前节点监听一个端口。
 
 ### proxy
 
-`cluster.proxy(node, address)` 
+`cluster.proxy(node, address)`
 
-为远程节点上的服务创建一个本地代理服务。
+- `node` 节点
+- `address` 代理名
+
+为远程节点上的服务创建一个本地代理服务，返回代理对象。
 
 ### query
 
@@ -124,13 +147,18 @@
 
 ### reload
 
-`cluster.reload([config])` 
+`cluster.reload(config)`
 
-重新加载当前节点的网络配置，通过config表来取代文件配置。
+- `config` 节点配置表
+
+重新加载其他节点的配置
 
 ### register
 
-`cluster.register(name, address)` 
+`cluster.register(name, address)`
+
+- `name` 字符串名字
+- `address` 服务地址
 
 在当前节点上为一个服务起一个字符串名字，之后可以用这个名字取代地址。
 
@@ -138,7 +166,11 @@
 
 `cluster.send(node, address, ...)`
 
-向一个节点上的一个服务推送一条消息。
+- `node` 节点名
+- `address` 请求地址
+- `...`
+
+向一个节点上的一个服务发送一条消息(非阻塞)。
 
 ### snax
 
@@ -177,6 +209,46 @@ TODO
 - `handler`
 
 服务入口
+
+---
+
+## mysql
+
+使用mysql模块需要先引用`require "skynet.db.mysql"`
+
+### connect
+
+`mysql.connect(opts)`
+
+- `opts` 连接参数
+
+连接mysql数据库
+
+例:
+
+```lua
+local mysql = require "skynet.db.mysql"
+
+skynet.start(function ()
+    local db = mysql.connect({
+        host="localhost",
+        port=3306,
+        user="root",
+        password="abc",
+        database = "test",
+        charset = "utf8mb4",
+        max_packet_size = 1024 * 1024,
+    })
+
+    if not db then
+        print("connect redis fail")
+        return
+    end
+
+    db:query("SELECT id, name FROM tb WHERE id = 1 LIMIT 1")
+    ...
+end)
+```
 
 ---
 
@@ -283,6 +355,8 @@ db:disconnect()
 
 - `obj` 服务对象
 
+终止服务
+
 ### hotfix
 
 `snax.hotfix(obj, source, ...)`
@@ -298,15 +372,37 @@ db:disconnect()
 
 ### listen
 
+`socket.listen(host, port, backlog)`
+
+- `host` IP地址
+- `port` 端口
+- `backlog` ？
+
+监听套接字
+
 ### start
+
+socket.start(id, func)
+
+- `id` 套接字
+- `func` 接收回调函数
+
+让套接字开始接收数据
 
 ### read
 
+`socket.read(id, sz)`
+
+- `id` 套接字
+- `sz` 需要读取的数据长度
+
 从socket读数据（阻塞）
 
-### write
-
 ### close
+
+`socket.close(id)`
+
+- `id` 套接字
 
 关闭socket（阻塞）
 
