@@ -149,4 +149,19 @@ void clusterCommand(redisClient *c) {
 
 ## 槽指派
 
-TODO
+Redis集群通过分片的方式来保存数据库中的键值对：集群的整个数据库被分为16384个槽（slot），数据库中的每个键都属于这16384个槽中的一个，集群中的每个节点可以处理0或最多16384个槽。
+
+将一个或多个槽指派给节点负责：
+
+```sh
+CLUSTER ADDSLOTS <slot> [slot ...]
+```
+
+例，将槽0至槽5000指派给节点7000负责：
+
+```sh
+CLUSTER ADDSLOTS 0 1 2 3 4 ... 5000
+# 查看
+CLUSTER INFO
+```
+
