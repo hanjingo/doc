@@ -1585,6 +1585,8 @@ flexible `/ˈfleksəbl/` 灵活的，可变的，柔性的
 
 flicker `/ˈflɪkər/` 闪烁，闪现，摇曳，抖动
 
+fling `/flɪŋ/` 投掷，放纵，抛，丢	
+
 flint `/flɪnt/` 燧石，打火石
 
 flora `/ˈflɔːrə/` 植物群
@@ -2401,6 +2403,8 @@ misconduct `/ˌmɪsˈkɒndʌkt/`  行为失当，行为不端，失职
 
 mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 
+missionary `/ˈmɪʃənri/` 传教士，传教士体位
+
 mitigate `/ˈmɪtɪɡeɪt/` 减轻，缓和
 
 ### mo
@@ -2412,6 +2416,8 @@ mobility `/məʊˈbɪləti/` 流动性，灵活性
 mobilize `/ˈməʊbəlaɪz/` 组织，鼓动，动员，调动
 
 mockingbird `/ˈmɒkɪŋbɜːd/` 嘲鸫(一种鸟)，模仿鸟
+
+moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理中客
 
 moist `/mɔɪst/` 潮湿的，湿润的
 
@@ -2911,6 +2917,8 @@ preeminent `/prɪ'emɪnənt/` 卓越的，优秀的
 
 preferable `/ˈprefrəbl/` 更好的，较合适的，更可取的
 
+prejudice `/ˈpredʒudɪs/` 偏见，成见
+
 preliminary `/prɪˈlɪmɪnəri/` 初步的，预备的，开始的
 
 prerequisite `/ˌpriːˈrekwəzɪt/` 前提，必要条件
@@ -3114,6 +3122,8 @@ recount `/rɪˈkaʊnt/` 叙述，讲述，重新计算
 recreation `/ˌriːkriˈeɪʃn/` 娱乐，消遣，游戏
 
 reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
+
+reek `/riːk/` 恶臭，难闻的气味
 
 reflect `/rɪˈflekt/` 反映，反射，表明
 

@@ -92,3 +92,61 @@ stack traceback:
 
 将`snax.exit()`修改为`snax.kill(s)`
 
+
+
+### 使用第三方库pbc时，报`module 'protobuf.c' not found`错误
+
+**问题**
+
+```sh
+lua: ./protobuf.lua:1: module 'protobuf.c' not found:
+        no field package.preload['protobuf.c']
+        no file '/usr/local/share/lua/5.3/protobuf/c.lua'
+        no file '/usr/local/share/lua/5.3/protobuf/c/init.lua'
+        no file '/usr/local/lib/lua/5.3/protobuf/c.lua'
+        no file '/usr/local/lib/lua/5.3/protobuf/c/init.lua'
+        no file './protobuf/c.lua'
+        no file './protobuf/c/init.lua'
+        no file '/usr/local/lib/lua/5.3/protobuf/c.so'
+        no file '/usr/local/lib/lua/5.3/loadall.so'
+        no file './protobuf/c.so'
+        no file '/usr/local/lib/lua/5.3/protobuf.so'
+        no file '/usr/local/lib/lua/5.3/loadall.so'
+        no file './protobuf.so'
+stack traceback:
+        [C]: in function 'require'
+        ./protobuf.lua:1: in main chunk
+        [C]: in function 'require'
+        PB_001A_TEST.lua:1: in main chunk
+        [C]: in ?
+```
+
+**原因**
+
+skynet的lua版本与pbc的lua版本不一致，skynet当前(20211011)的版本为v5.4.3，需要编译安装最新的lua版本；
+
+**解决**
+
+1. 下载安装最新版lua
+
+   - 到[lua官网](https://www.lua.org/ftp/)下载最新版lua代码
+
+     ```sh
+     wget https://www.lua.org/ftp/lua-5.4.3.tar.gz
+     ```
+
+   - 解压文件
+
+     ```sh
+     tar -zxvf lua-5.4.3.tar.gz
+     ```
+
+   - 编译安装
+
+     ```sh
+     cd lua-5.4.3.tar.gz
+     make
+     make install
+     ```
+
+     

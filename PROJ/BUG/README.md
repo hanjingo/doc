@@ -78,6 +78,12 @@
 
 当调用`snax.exit()`时，报`[:00000008] init service failed: ./lualib/snax/interface.lua:82:`...
 
+[使用第三方库pbc时报错，提示` module 'protobuf.c' not found`](skynet.md)
+
+关键词：**pbc**, **protobuf**, "protobuf.c"
+
+当调用第三方库`pbc`时，报`lua: ./protobuf.lua:1: module 'protobuf.c' not found:`...
+
 
 
 ## Mysql
