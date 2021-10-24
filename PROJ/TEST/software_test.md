@@ -6,18 +6,21 @@
 
 ## 专业术语
 
-- Availability 事务成功率
-- Elapsed time 测试耗时
-- Data transferred 数据吞吐量
-- Response time 平均响应时间
-- Transaction rate 每秒事务数
-- Throughput 吞吐量
-- Concurrency 并发用户数
-- Successful Transaction 成功事务次数
-- Failed Transactions 失败事务次数
-- Longest transaction 事务最长耗时
-- Shortest transaction 事务最短耗时
-- concurrent 并发
+- `事务成功率(Availability)`
+- `平均响应时间(ART, Average Response Time)` 在一次事务中，发出请求到指令系统响应的平均时间
+- `并发(Concurrency)` 同时处理多个任务的能力（逻辑上处理能力）
+- `并发用户数(Concurrency User)` 现实系统中操作业务的用户，也叫虚拟用户数(Virtual User)
+- `数据吞吐量(Data transferred)`
+- `测试耗时(Elapsed time)` 整个测试过程持续的时长
+- `错误率(ER, Error Rate)` 请求成功的数量与请求失败数量的比率
+- `最大响应时间(MaxRT, Max Response Time)` 在一次事务中，从发出请求到指令系统响应的最大时间
+- `最小响应时间(MinRT, Mininum Response Time)` 在一次事务中，从发出请求到指令系统响应的最小时间
+- `并行(Parallel)` 多个处理器或多核处理器同时处理多个不同任务的能力（物理上处理能力）
+- `每秒查询数(QPS, Query Per Second)` 服务器每秒能处理请求的数量
+- `请求成功数(RSN, Request Success Number)` 请求成功的总数量
+- `请求失败数(RFN, Request Filures Number)` 请求失败的总数量
+- `事务(Transactions)` 用户一次或几次请求的集合
+- `每秒事务数(TR, Transaction rate)` 每秒处理事务的数量
 
 
 
@@ -55,6 +58,20 @@
 - 集成测试（Integration Testing）
 - 系统测试（System Testing）
 
+压力测试分类：
+
+- 压力测试 (Stress Testing)
+
+  也称之为强度测试，测试一个系统的最大抗压能力，在强负载（大数据，高并发）的情况下，测试系统所能承受的最大压力，预估系统的瓶颈。
+
+- 并发测试 (Concurrency Testing)
+
+  通过模拟很多用户同一时刻访问系统或对系统某一功能进行操作，来测试系统的性能，从中发现问题（并发读写，线程控制，资源争抢）。
+
+- 耐久性测试 (Configuration Testing)
+
+  通过对系统在大负荷的条件下长时间运行，测试系统，机器的长时间运行下的状况，从中发现问题（内存泄漏，数据库连接池不释放，资源不回收）。
+
 
 
 ## 测试指标
@@ -88,15 +105,18 @@ TODO
 
 ### 其他指标
 
-| 指标        | 说明                                                         |
-| ----------- | ------------------------------------------------------------ |
-| `CPU占用率` | （CPUU, Cpu Utility）表示CPU被使用情况，反映了系统资源利用情况；<br>CPU占用率的计算公式为：<br>$U = 1 - F$<br>  - `U` CPU占用率<br>  - `F` CPU空闲率 |
+| 指标         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| `CPU使用率`  | （CPUU, Cpu Usage）表示CPU被使用情况，CPU执行非系统空闲进程的时间与CPU总执行时间的比率，反映了系统资源利用情况；<br>CPU占用率的计算公式为：<br>$U = 1 - F$<br>  - `U` CPU占用率<br>  - `F` CPU空闲率 |
+| `内存使用率` | （MU, Memory Usage）表示此进程所开销的内存                   |
+| `IO`         | （IO, Disk Input/Output）磁盘的读写包速率                    |
+| `网卡负载`   | （NL, Network Load）网卡的进出带宽，消息包数量               |
 
 
 
 ## 测试/调试/监控工具
 
-| 测试点     | 工具                                                   |
+| 测试项     | 工具                                                   |
 | ---------- | ------------------------------------------------------ |
 | CPU占用    | - Nmon<br>- top命令                                    |
 | 内存占用   | - [Valgrind](valgrind.md)<br>- Nmon<br>- top命令       |
@@ -174,23 +194,25 @@ TODO
 
 由于游戏服务器的特殊性，压测指标要比普通的性能测试指标复杂一些，一些常用的指标如下：
 
-| 指标                | 参考值                                                       |
-| ------------------- | ------------------------------------------------------------ |
-| CPU使用率(CPUU， %) | - `<70%`      优秀<br>- `70%~85%` 一般<br>- `>85%`      差   |
-| 内存使用率(MU， %)  | - `<70%`      优秀<br/>- `70%~85%` 一般<br/>- `>85%`      差 |
-| 磁盘I/O             | 建议`<80%`                                                   |
-| 网络带宽使用(NU)    |                                                              |
-| 用户并发数          |                                                              |
-| 在线用户数          |                                                              |
-| 平均响应时间        |                                                              |
-| 吞吐量              |                                                              |
-| 总事务数            |                                                              |
-| 事务成功率          | - `99.5%` 优秀<br>- `98.6%` 轻微隐患<br>- `98.0%` 轻微隐患<br>- `97.5%` 严重隐患 |
-| 超时错误率          |                                                              |
-| 平均收包率(个/s)    |                                                              |
-| 平均发包率(个/s)    |                                                              |
-| 发送流量(kb)        |                                                              |
-| 接收流量(kb)        |                                                              |
+| 指标                    | 参考值                                                       |
+| ----------------------- | ------------------------------------------------------------ |
+| CPU使用率(CPUU, %)      | - `<70%`      优秀<br>- `70%~85%` 一般<br>- `>85%`      差   |
+| 内存使用率(MU, %)       | - `<70%`      优秀<br/>- `70%~85%` 一般<br/>- `>85%`      差 |
+| 磁盘I/O(%)              | 建议`<80%`                                                   |
+| 网络带宽使用(NU, %)     |                                                              |
+| 用户并发数(CU)          | - `大型系统`    分配5000基本够了<br>- `中小型系统` 分配1000基本够了 |
+| 在线用户数(OU)          |                                                              |
+| 平均响应时间(ART, ms)   |                                                              |
+| 最大响应时间(MaxRT, ms) |                                                              |
+| 最小响应时间(MinRT, ms) |                                                              |
+| 吞吐量(TPS, t/s)        |                                                              |
+| 总事务数(TTN)           |                                                              |
+| 事务成功率(TSP, %)      | - `99.5%` 优秀<br>- `98.6%` 轻微隐患<br>- `98.0%` 轻微隐患<br>- `97.5%` 严重隐患 |
+| 超时错误率(TEP)         |                                                              |
+| 平均收包率(个/s)        |                                                              |
+| 平均发包率(个/s)        |                                                              |
+| 发送流量(kb)            |                                                              |
+| 接收流量(kb)            |                                                              |
 
 这里是[游戏服务器压测文档模板](tmpl_game_server_benchmark_report.md)，仅供参考；
 
@@ -223,6 +245,81 @@ TODO
   1. 协议的开发：包括协议的实现，协议的解包等；
   2.  业务逻辑的组织：主要对上述游戏模型进行实现；
 
+### 压测细节
+
+1. 区分内外网络
+
+   内网与外网的延时，价格都不一样，内外网流量在游戏正式运行时是完全分开的；
+
+
+
+## 内核优化
+
+### 修改程序的最大文件打开数量
+
+文件最大打开数量，限制了建立套接字的数量，通过以下方法可以解除限制：
+
+- 方法一 ulimit命令
+
+  ```sh
+  # 查看系统默认的值
+  ulimit -n
+  # 设置最大文件打开数量
+  ulimit -n 1040000
+  ```
+
+- 方法二 手动修改配置文件
+
+  修改`limits.conf`文件：
+
+  ```sh
+  vim /etc/security/limits.conf
+  
+  # 添加以下参数
+  root soft nofile 1040000
+  root hard nofile 1040000
+  
+  root soft nofile 1040000
+  root hard nproc 1040000
+  
+  root soft core unlimited
+  root hard core unlimited
+  
+  * soft nofile 1040000
+  * hard nofile 1040000
+  
+  * soft nofile 1040000
+  * hard nproc 1040000
+  
+  * soft core unlimited
+  * hard core unlimited
+  ```
+
+  修改`file-max`文件（file-max表示系统级别的能够打开的文件句柄的数量，不能小于limits中设置的值，如果file-max的值小于limits设置的值会导致系统重启以后无法登陆）
+
+  ```sh
+  vim /proc/sys/fs/file-max
+  
+  # 添加以下参数
+  root soft nofile 1040000
+  root hard nofile 1040000
+  
+  root soft nofile 1040000
+  root hard nproc 1040000
+  
+  root soft core unlimited
+  root hard core unlimited
+  
+  * soft nofile 1040000
+  * hard nofile 1040000
+  
+  * soft nofile 1040000
+  * hard nproc 1040000
+  
+  * soft core unlimited
+  * hard core unlimited
+  ```
+
 
 
 ## 参考
@@ -237,6 +334,10 @@ TODO
 - [游戏压力测试总结](https://blog.csdn.net/erbozhao/article/details/80749609)
 - [百度百科-游戏压力测试](https://baike.baidu.com/item/%E6%B8%B8%E6%88%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/10013568?fr=aladdin)
 - [完整的性能测试报告模板](https://www.testwo.com/blog/8290)
+- [go实现压测工具【单台机器100w连接压测实战】](https://studygolang.com/articles/23218)
+- [[性能测试工具] wrk,ab,locust,Jmeter 压测结果比较](https://testerhome.com/topics/17068)
+- [性能测试常见名词解释](https://blog.csdn.net/r455678/article/details/53063989)
+- [游戏服务器性能测试](https://blog.csdn.net/FlyPigYe/article/details/91872979)
 
 ### 文献
 

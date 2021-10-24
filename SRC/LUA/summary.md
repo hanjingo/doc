@@ -73,15 +73,6 @@ Lua保有一个被称为**全局环境**的特殊环境，叫做`_G`，用来存
 
 
 
-## LUA优化技巧
-
-1. 在Lua中，应该尽量少地使用字符串连接操作符，因为每一次都会生成一个新的字符串。
-2. 创建表时可以采用“预分配技术”，防止表散列操作长度小的表时造成的性能不佳。
-3. 尽量不要将一个表混用数组和散列桶，即一个表最好只存放一类数据。
-4. 命名要规范，并且尽量使用local；不规范的非local变量可能会污染程序命名。
-
-
-
 ## 参考
 
 - [Environments Tutorial](http://lua-users.org/cgi-bin/wiki.pl?action=search&string=EnvironmentsTutorial&body=1)

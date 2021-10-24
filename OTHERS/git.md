@@ -19,7 +19,7 @@
 | `merge`         |                                                              | `git merge branchName`合并分支branchName到当前分支<br>`git checkout xxx && git merge master` 将master更新合并到分支xxx |
 | `push`          |                                                              | `git push origin xxx`把分支xxx推送到远程分支<br>`git push --delete origin xxx`删除远程仓库的xxx分支 |
 | `pull`          |                                                              |                                                              |
-| `remote`        |                                                              | `git remote add name xxx.git`为远程版本库xxx.git添加别名name<br>`git remote rm name`删除别名name |
+| `remote`        | `-v` 查看远程仓库信息                                        | `git remote add name xxx.git`为远程版本库xxx.git添加别名name<br>`git remote rm name`删除别名name<br>`git remote -v` 查看远程仓库信息 |
 | `reflog`        | `--date`                                                     | `git reflog --date=local | grep branchName`查看分支branchName是从哪里切过来的 |
 | `reset`         |                                                              | `git reset HEAD file1`取消文件file1的暂存<br>`git reset --hard HEAD`同时取消工作区与暂存区的修改（慎用） |
 | `revert`        |                                                              |                                                              |

@@ -1,5 +1,9 @@
 # 优秀项目集合
 
+## 操作系统
+
+- [linux](https://github.com/torvalds/linux)
+
 ## 网络库
 
 - [UDP协议封装 KCP](https://github.com/skywind3000/kcp)
@@ -67,4 +71,6 @@
 - [远程登录程序 frp](https://github.com/fatedier/frp)
 - [chromium](https://github.com/chromium/chromium)
 - [谷歌内存回收库 tcmalloc](https://github.com/google/tcmalloc)
+- qt5开源库: `git://code.qt.io/qt/qt5.git`
+- [vim的升级版本neovim](https://github.com/neovim/neovim)
 
