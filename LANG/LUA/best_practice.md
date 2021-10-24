@@ -44,6 +44,36 @@
 
 3. 创建表时可以采用“预分配技术”，防止表散列操作长度小的表时造成的性能不佳。
 
+   例：
+
+   ```lua
+   local max = 10000000
+   
+   start = os.clock()
+   for i = 1,max do
+       local a = {}
+       a[1] = 1; a[2] = 2; a[3] = 3
+   end
+   finish = os.clock()
+   local dur = finish - start
+   print("no prefill ", max, "times, cost:", dur * 1000, " ms")
+   
+   start1 = os.clock()
+   for i = 1,max do
+       local b = {1,2,3}
+       b[1] = 1; b[2] = 2; b[3] = 3
+   end
+   finish1 = os.clock()
+   local dur1 = finish1 - start1
+   print("prefill ", max, "times, cost:", dur1 * 1000, " ms")
+   ```
+
+   | max      | 未使用预分配技术耗时(ms) | 使用预分配技术耗时(ms) |
+   | -------- | ------------------------ | ---------------------- |
+   | 100000   | 60.239                   | 22.527                 |
+   | 1000000  | 485.455                  | 225.483                |
+   | 10000000 | 4624.277                 | 2178.074               |
+
 4. 尽量不要将一个表混用数组和散列桶，即一个表最好只存放一类数据(array/map)。
 
 5. 命名要规范，并且尽量使用local；不规范的非local变量可能会污染程序命名。
