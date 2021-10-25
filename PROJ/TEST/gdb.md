@@ -73,7 +73,7 @@ gdb pfile PID #pfile为进程文件，PID为进程ID
 使用以下命令来调试core文件：
 
 ```sh
-gdb core #core为core文件绝对路径
+gdb core #core:core文件绝对路径
 ```
 
 

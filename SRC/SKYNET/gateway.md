@@ -61,7 +61,7 @@ gate其实就是一个msgserver，gate服务通过函数`gateserver.start(handle
 
 - `handler.connect(fd, ipaddr)`
 
-  - `fd` socket句柄
+  - `fd`        socket句柄
   - `ipaddr` 客户端地址
 
   当一个新客户端被accept后，connect被回调；
@@ -77,13 +77,13 @@ gate其实就是一个msgserver，gate服务通过函数`gateserver.start(handle
 - `handler.open(source, conf)`
 
   - `source` 请求来源地址
-  - `conf` 开启gate服务的参数表
+  - `conf`     开启gate服务的参数表
 
   当监听的端口被打开时，open被调用
 
 - `handler.message(fd, msg, sz)`
 
-  - `fd` socket句柄
+  - `fd`   socket句柄
   - `msg` C指针（用完之后记得用skynet_free释放）
   - `sz` 包长度
 
@@ -91,21 +91,21 @@ gate其实就是一个msgserver，gate服务通过函数`gateserver.start(handle
 
 - `handler.error(fd, msg)`
 
-  - `fd` socket句柄
+  - `fd`   socket句柄
   - `msg` 错误消息
 
   当一个连接异常（通常意味着断开），error被调用
 
 - `handler.warning(fd, size)`
 
-  - `fd` socket句柄
+  - `fd`     socket句柄
   - `size` 待发送的数据大小（单位：字节）
 
   当fd上**待发送**的数据累积超过1M字节后，warning被调用
 
 - `handler.command(cmd, source, ...)`
 
-  - `cmd` 内部消息指令(字符串，open和close系统保留)
+  - `cmd`      内部消息指令(字符串，open和close系统保留)
   - `source` 消息来源
 
   当收到skynet内部消息时，如果有注册command方法，command被调用
@@ -122,4 +122,5 @@ TODO
 
 - [GateServer](https://github.com/cloudwu/skynet/wiki/GateServer)
 - [skynet框架应用 (十四) 登录服务](https://blog.csdn.net/qq769651718/article/details/79435251)
+- [SKYNET 网关服务与封包/解包](https://www.freesion.com/article/4940552218/)
 

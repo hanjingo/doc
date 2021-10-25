@@ -210,7 +210,7 @@ he@SD-20210816HMLO:/mnt/e/skynet$ ./skynet examples/config.reentry
 
 ### 注意
 
-`skynet.queue`会对性能造成影响，例：
+`skynet.queue`对性能造成的影响不大，例：
 
 - 加lock版本：
 

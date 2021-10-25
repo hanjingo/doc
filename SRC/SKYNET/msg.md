@@ -328,7 +328,20 @@ expand_queue(struct message_queue *q) {
 
 
 
-## 消息流向
+## 消息发送
+
+1. `skynet.call/skynet.send/skynet.rawcall/skynet.rawsend`调用`lsend`发送消息；
+2. `lsend`调用`skynet_socket_sendbuffer`；
+3. `skynet_socket_sendbuffer`调用`socket_server_send`;
+4. `socket_server_send`调用`send_request`使用高优先级权限发送消息
+
+### session的意义
+
+session的目的是为了标识该消息对应的响应，当一个服务开了多个协程去call消息时，回来一个应答，通过该应答的session来判断应该唤醒哪个协程。
+
+
+
+## 消息接收
 
 ```mermaid
 graph TD
@@ -372,8 +385,6 @@ subgraph 进入lua虚拟机处理流程
 lua_callback-->lua_logic(业务逻辑)
 end
 ```
-
-TODO
 
 ### 消息分派
 
@@ -444,9 +455,59 @@ end
 5. 追踪调用信息；
 6. 执行协程；
 
+### 消息转发
+
+当客户端向功能服务发起请求时，会先将消息发送到代理服务中，由这个代理服务转发给功能服务；功能服务的回应消息也会被代理服务转发回去。
+
+在做代理服务时，我们往往不需要解消息包，只需要做消息转发；但是lua消息已经注册了无法更改，那么我们可以使用`skynet.forward_type`进行协议转换。
+
+例：
+
+```lua
+-- clusterproxy.lua
+local skynet = require "skynet"
+local cluster = require "skynet.cluster"
+require "skynet.manager"	-- inject skynet.forward_type
+
+local node, address = ...
+
+skynet.register_protocol { -- 注册system消息
+	name = "system",
+	id = skynet.PTYPE_SYSTEM,
+	unpack = function (...) return ... end, -- 跳过消息解包步骤
+}
+
+local forward_map = {
+	[skynet.PTYPE_SNAX] = skynet.PTYPE_SYSTEM,
+
+	--发送到代理服务的lua消息全部转成system消息,不改变原先LUA的消息协议处理方式
+	[skynet.PTYPE_LUA] = skynet.PTYPE_SYSTEM,
+
+	--如果接收到应答消息，不释放msg,sz（默认会释放掉msg,sz）
+	[skynet.PTYPE_RESPONSE] = skynet.PTYPE_RESPONSE,	-- don't free response message
+}
+
+skynet.forward_type( forward_map ,function() -- 注册消息处理函数
+	local clusterd = skynet.uniqueservice("clusterd")
+	local n = tonumber(address)
+	if n then
+		address = n
+	end
+	local sender = skynet.call(clusterd, "lua", "sender", node)
+	skynet.dispatch("system", function (session, source, msg, sz)
+		if session == 0 then
+			skynet.send(sender, "lua", "push", address, msg, sz) -- 打包
+		else
+			skynet.ret(skynet.rawcall(sender, "lua", skynet.pack("req", address, msg, sz))) -- 不打包
+		end
+	end)
+end)
+```
+
 
 
 ## 参考
 
 - [skynet源码赏析](https://manistein.github.io/blog/post/server/skynet/skynet%E6%BA%90%E7%A0%81%E8%B5%8F%E6%9E%90/)
 - [云风的BLOG - skynet cluster 模块的设计与编码协议](https://blog.codingnow.com/2017/03/skynet_cluster.html)
+- [skynet框架应用 (七) 本地服务间消息通信](https://blog.csdn.net/qq769651718/article/details/79432897?spm=1001.2014.3001.5501)

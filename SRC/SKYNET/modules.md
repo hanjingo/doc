@@ -81,8 +81,6 @@ void *dlopen(const char *filename, int flags)
 
 类unix系统提供了函数`dlopen`来加载动态链接库文件，它会按照相应的逻辑来搜索文件。
 
-具体参考本项目的：操作系统#动态链接库
-
 ### 模块文件解析
 
 ```c
@@ -91,8 +89,6 @@ void *dlsym(void *handle, const char *symbol)
 
 类unix系统提供了函数`dlsym`来解析动态链接库符号，返回符号对应的地址。
 
-具体参考本项目的：操作系统#动态链接库
-
 ### 模块文件释放
 
 ```c
@@ -100,8 +96,6 @@ int dlclose(void *handle)
 ```
 
 类unix系统提供了函数`dlclose`来关闭指定句柄的动态链接库；**注意：只有当此动态链接库的使用计数为0时，才会真正被系统卸载。**
-
-具体参考本项目的：操作系统#动态链接库
 
 
 
@@ -121,13 +115,13 @@ skynet在创建完`module`实例并初始化后，同时创建了一个`skynet_c
 typedef int (*skynet_cb)(struct skynet_context * context, void *ud, int type, int session, uint32_t source , const void * msg, size_t sz)
 ```
 
-- `context` 上下文
-- `ud` 一般是instance指针
-- `type` 消息类型
-- `session` 凭证
-- `source` 发送方的服务id
-- `msg` 数据
-- `sz` 数据大小
+- `context`  上下文
+- `ud`           一般是instance指针
+- `type`       消息类型
+- `session`  凭证
+- `source`    发送方的服务id
+- `msg`         数据
+- `sz`           数据大小
 
 当消息到达`skynet_context`时，会调用`skynet_cb`
 
@@ -141,4 +135,5 @@ TODO
 
 - [skynet源码分析（10）--消息机制之注册和回调](https://blog.csdn.net/119365374/article/details/77460685)
 - [Skynet服务器框架（八） 任务和消息调度机制](https://blog.csdn.net/linshuhe1/article/details/73854411)
+- [前端 skynet](https://www.dazhuanlan.com/jincai/topics/989856)
 

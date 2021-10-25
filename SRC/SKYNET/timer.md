@@ -8,7 +8,7 @@ skynet提供了一个简单的计时器实现，可以设置一个超时时间�
 
 skynet计时器设计思想参考自**Linux内核动态定时器机制**；
 
-skynet没有使用signal信号的方式来实现计时器，而是程序自身进行计时并处理计时器事件。skynet中将时间由近到远划分为5个level，时间精度是0.01秒（1滴答=0.01秒），每个定时器设置一个到期的滴答数，与当前系统的滴答数比较差值。
+skynet没有使用signal信号的方式来实现计时器，而是程序自身进行计时并处理计时器事件。skynet中将时间由近到远划分为5个level，时间精度是**0.01**秒（1滴答=0.01秒），每个定时器设置一个到期的滴答数，与当前系统的滴答数比较差值。
 
 ### 定义
 
@@ -21,8 +21,8 @@ skynet没有使用signal信号的方式来实现计时器，而是程序自身�
 #define TIME_LEVEL_MASK (TIME_LEVEL-1)
 // 计时器事件
 struct timer_event {
-	uint32_t handle;// 回调句柄
-	int session;	// 连接
+	uint32_t handle; // 回调句柄
+	int session;     // 连接
 };
 // 计时器节点
 struct timer_node {
@@ -39,7 +39,7 @@ struct timer {
 	struct link_list near[TIME_NEAR];	// 快到期的计时器集合（最大256条）
 	struct link_list t[4][TIME_LEVEL];  // 根据到期事件等级组成计时器集合（最大64级）
 	struct spinlock lock;			   // 自旋锁
-	uint32_t time; // 计时器初始化之后计时器触发的次数(每百分之一秒更新一次)
+	uint32_t time;                      // 计时器初始化之后计时器触发的次数(每百分之一秒更新一次)
 	uint32_t starttime;				   // 开始时间
 	uint64_t current;                   // 当前时间
 	uint64_t current_point;             // b

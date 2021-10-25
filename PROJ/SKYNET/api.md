@@ -19,7 +19,7 @@
 - `addr` 服务地址
 - `typename` 服务类型
 
-向服务发送消息(阻塞)
+向服务发送消息（并等待对方响应）
 
 ### dispatch
 
@@ -35,6 +35,15 @@
 `skynet.exit()`
 
 结束当前服务
+
+### forward_type
+
+`skynet.forward_type(map, start_func)`
+
+- `map`
+- `start_func`
+
+转换消息
 
 ### localname
 
@@ -84,6 +93,38 @@ end
 skynet.start(.)
 ```
 
+### rawcall
+
+`function skynet.rawcall(addr, typename, msg, sz)`
+
+- `addr`        地址
+- `typename` 消息类型
+- `msg`          消息
+- `sz`            消息长度
+
+向addr发送已经打包好的消息并等待响应
+
+### rawsend
+
+`function skynet.rawsend(addr, typename, msg, sz)`
+
+- `addr`        地址
+- `typename` 消息类型
+- `msg`          消息
+- `sz`            消息长度
+
+向addr发送一个打包好的消息（对方无需响应）
+
+### redirect
+
+`skynet.redirect = function(dest,source,typename,...)`
+
+- `dest`        目的地址
+- `source`     发送地址
+- `typename` 消息类型
+
+与`skynet.send`类似，但是可以指定发送地址`source`和发送的`session`；可以用来伪造其他服务的消息。
+
 ### response
 
 `skynet.response(pack)`
@@ -102,10 +143,10 @@ skynet.start(.)
 
 `skynet.send(addr, typename, ...)`
 
-- `addr` 服务地址
-- `typename` 服务类型
+- `addr`        服务地址
+- `typename` 消息类型
 
-向服务发送消息，接收方使用`skynet.dispatch`接收消息；
+向addr发送一个未打包好的消息（对方无需响应），该函数自动将`...`打包并发送；
 
 ### start
 
@@ -119,7 +160,7 @@ skynet.start(.)
 
 `skynet.timeout(ti, func)`
 
-- `ti` 时长（单位：0.01秒）
+- `ti`     时长（单位：0.01秒）
 - `func` 回调函数
 
 创建一个计时器，并设置回调（注意：此计时器只会调用一次，如果需要定期调用函数，需要将回调函数递归，在回调函数运行结束后重新设置skynet.timeout）；
@@ -133,7 +174,25 @@ local function f()
 end
 ```
 
+### tostring
 
+c语言提供的字符串转换函数
+
+例：
+
+```lua
+skynet.tostring(msg, sz)
+```
+
+### trash
+
+c语言提供的内存释放函数；
+
+例：
+
+```lua
+skynet.trash(msg,sz)
+```
 
 ### uniqueservice
 
@@ -151,7 +210,7 @@ end
 
 `cluster.call(node, address, ...)` 
 
-- `node` 节点名
+- `node`      节点名
 - `address` 请求地址
 - `...`
 
@@ -169,7 +228,7 @@ end
 
 `cluster.proxy(node, address)`
 
-- `node` 节点
+- `node`      节点
 - `address` 代理名
 
 为远程节点上的服务创建一个本地代理服务，返回代理对象。
@@ -192,7 +251,7 @@ end
 
 `cluster.register(name, address)`
 
-- `name` 字符串名字
+- `name`      字符串名字
 - `address` 服务地址
 
 在当前节点上为一个服务起一个字符串名字，之后可以用这个名字取代地址。
@@ -201,7 +260,7 @@ end
 
 `cluster.send(node, address, ...)`
 
-- `node` 节点名
+- `node`      节点名
 - `address` 请求地址
 - `...`
 
@@ -396,7 +455,7 @@ db:disconnect()
 
 `snax.hotfix(obj, source, ...)`
 
-- `obj` 服务对象
+- `obj`      服务对象
 - `source` 代码块
 
 热更新代码
@@ -419,7 +478,7 @@ db:disconnect()
 
 socket.start(id, func)
 
-- `id` 套接字
+- `id`    套接字
 - `func` 接收回调函数
 
 让套接字开始接收数据

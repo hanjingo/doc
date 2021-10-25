@@ -11,7 +11,7 @@
   ```sh
   sudo apt-get install redis-server
   # 检查下
-  service redis- start
+  service redis-s start
   ps -aux | grep redis
   ```
 

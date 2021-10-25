@@ -342,6 +342,10 @@ TODO
 
 ### 操作系统库
 
+#### clock
+
+TODO
+
 #### date
 
 `os.date ([format [, time]])`
