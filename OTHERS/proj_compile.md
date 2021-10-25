@@ -1,5 +1,9 @@
 # 优秀项目集合
 
+## 数学库
+
+- [Isomorphism -- Mathematics of Programming](https://github.com/liuxinyu95/unplugged)
+
 ## 网络库
 
 - [UDP协议封装 KCP](https://github.com/skywind3000/kcp)
@@ -21,14 +25,15 @@
 - [skynet的protobuf协议支持 pbc](https://github.com/cloudwu/pbc)
 - [cocos2d-x](https://github.com/cocos2d/cocos2d-x)
 - [<<百万在线-大型游戏服务端开发>>资源](https://github.com/luopeiyu/million_game_server)
-- [云游戏平台 liuguang](https://github.com/ksyun-kenc/liuguang)
+- [云游戏平台-liuguang](https://github.com/ksyun-kenc/liuguang)
 - [红警1源码](https://github.com/electronicarts/CnC_Remastered_Collection)
-- [房卡麻将服务器 mj_server](https://github.com/qipaiprojects/mj_server)
-- [房卡麻将服务器 mj_client](https://github.com/qipaiprojects/mj_client)
+- [房卡麻将服务器-mj_server](https://github.com/qipaiprojects/mj_server)
+- [房卡麻将服务器-mj_client](https://github.com/qipaiprojects/mj_client)
 
 ## 即时通讯
 
 - [Telegram的Qt版本](https://github.com/telegramdesktop/tdesktop)
+- [基于Qt和Xmpp的通讯工具-nowe](https://github.com/WHUCSLASD2017/nowe)
 
 ## 区块链
 

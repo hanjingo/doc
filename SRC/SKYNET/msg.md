@@ -150,10 +150,10 @@ struct request_package {
     ```c
     // 请求打开套接字
     struct request_open {
-    	int id; 					// id
-    	int port; 				// 端口
-    	uintptr_t opaque;	// 
-    	char host[1]; 		// 主机名；IPV4:点分十进制，IPV6:16进制串
+    	int id;			 // id
+    	int port;         // 端口
+    	uintptr_t opaque; // socket关联的skynet服务的地址
+    	char host[1];     // 主机名；IPV4:点分十进制，IPV6:16进制串
     };
 
   - `request_send` 请求发送
@@ -161,9 +161,9 @@ struct request_package {
     ```c
     // 请求发送
     struct request_send {
-    	int id;								// id
-    	size_t sz;						// 缓冲区尺寸
-    	const void * buffer;	// 缓冲区地址
+    	int id;				// id
+    	size_t sz;			// 缓冲区尺寸
+    	const void * buffer; // 缓冲区地址
     };
     ```
 
@@ -172,8 +172,8 @@ struct request_package {
     ```c
     // 请求发送udp
     struct request_send_udp {
-    	struct request_send send; 					// 请求发送消息
-    	uint8_t address[UDP_ADDRESS_SIZE]; 	// UDP地址
+    	struct request_send send;		  // 请求发送消息
+    	uint8_t address[UDP_ADDRESS_SIZE]; // UDP地址
     };
     ```
 
@@ -182,9 +182,9 @@ struct request_package {
     ```c
     // 请求关闭套接字
     struct request_close {
-    	int id;						// id
-    	int shutdown;			// 是否强制关闭
-    	uintptr_t opaque;	// 
+    	int id;           // id
+    	int shutdown;     // 是否强制关闭
+    	uintptr_t opaque; // socket关联的skynet服务的地址
     };
     ```
 
@@ -193,10 +193,10 @@ struct request_package {
     ```c
     // 请求监听套接字
     struct request_listen {
-    	int id;				// id
-    	int fd;				// 文件描述符
-    	uintptr_t opaque;	//  
-    	char host[1];		// 主机地址；IPV4:点分十进制，IPV6:16进制串
+    	int id;           // id
+    	int fd;           // 文件描述符
+    	uintptr_t opaque; // socket关联的skynet服务的地址
+    	char host[1];     // 主机地址；IPV4:点分十进制，IPV6:16进制串
     };
     ```
 
@@ -205,9 +205,9 @@ struct request_package {
     ```c
     // 请求绑定套接字
     struct request_bind {
-    	int id;				// id
-    	int fd;				// 文件描述符
-    	uintptr_t opaque;	// 
+    	int id;           // id
+    	int fd;           // 文件描述符
+    	uintptr_t opaque; // socket关联的skynet服务的地址
     };
     ```
 
@@ -216,8 +216,8 @@ struct request_package {
     ```c
     // 请求重置暂停
     struct request_resumepause {
-    	int id;				// id
-    	uintptr_t opaque;	// 
+    	int id;           // id
+    	uintptr_t opaque; // socket关联的skynet服务的地址
     };
     ```
 
@@ -226,9 +226,9 @@ struct request_package {
     ```c
     // 请求设置套接字选项
     struct request_setopt {
-    	int id;			// id
-    	int what;		// 键
-    	int value;	// 值
+    	int id;    // id
+    	int what;  // 键
+    	int value; // 值
     };
     ```
 
@@ -237,10 +237,10 @@ struct request_package {
     ```c
     // 请求UDP
     struct request_udp {
-    	int id;				// id
-    	int fd;				// 文件描述符
-    	int family;			// 地址族
-    	uintptr_t opaque;	//  
+    	int id;           // id
+    	int fd;           // 文件描述符
+    	int family;       // 地址族
+    	uintptr_t opaque; // socket关联的skynet服务的地址
     };
     ```
 
@@ -249,8 +249,8 @@ struct request_package {
     ```c
     // 请求设置udp
     struct request_setudp {
-    	int id;								// id
-    	uint8_t address[UDP_ADDRESS_SIZE]; 	// 地址 19*8=152bit: ipv6 128bit + port 16bit + 1 byte type
+    	int id;                            // id
+    	uint8_t address[UDP_ADDRESS_SIZE]; // 地址 19*8=152bit: ipv6 128bit + port 16bit + 1 byte type
     };
     ```
 
@@ -258,24 +258,24 @@ struct request_package {
 
 #### 响应消息
 
-
+TODO
 
 ### 跨进程消息
 
-### 定义
+跨进程消息定义如下：
 
 ```c
 // 远程节点名字
 struct remote_name {
-	char name[GLOBALNAME_LENGTH]; 	// 名字（最长16字节）
-	uint32_t handle;								// harbor ID
+	char name[GLOBALNAME_LENGTH]; // 名字（最长16字节）
+	uint32_t handle;              // harbor ID
 };
 // 远程节点信息
 struct remote_message {
-	struct remote_name destination;	// 目的地
-	const void * message;						// 消息
-	size_t sz;											// 大小
-	int type;												// 类型
+	struct remote_name destination; // 目的地
+	const void * message;           // 消息
+	size_t sz;                      // 大小
+	int type;                       // 类型
 };
 ```
 
@@ -295,10 +295,10 @@ struct message_queue {
 	int tail;                       // 管道尾索引
 	int release;                    // 是否能释放消息
 	int in_global;                  // 是否在全局消息队列；0:不在全局消息队列,1:在全局队列或在递送中
-	int overload;				  // 过载数量
-	int overload_threshold; 	    // 过载阀值
-	struct skynet_message *queue;	// 消息队列
-	struct message_queue *next;		// 指向下一个消息队列
+	int overload;                   // 过载数量
+	int overload_threshold;         // 过载阀值
+	struct skynet_message *queue;   // 消息队列
+	struct message_queue *next;     // 指向下一个消息队列
 };
 ```
 
@@ -373,13 +373,76 @@ lua_callback-->lua_logic(业务逻辑)
 end
 ```
 
-说明
-
 TODO
 
-### 消息派发机制
+### 消息分派
 
-TODO
+```lua
+-- 真正的dispatch_message逻辑；
+local function raw_dispatch_message(prototype, msg, sz, session, source)
+		...
+
+		local f = p.dispatch -- skynet.dispatch注册的消息回调函数
+		if f then
+			local co = co_create(f)                -- 创建协程
+			session_coroutine_id[co] = session     -- 绑定session到协程
+			session_coroutine_address[co] = source -- 绑定source到协程
+			local traceflag = p.trace			  -- 是否追踪调用
+			if traceflag == false then
+				-- force off
+				trace_source[source] = nil
+				session_coroutine_tracetag[co] = false
+			else
+				local tag = trace_source[source]
+				if tag then
+					trace_source[source] = nil
+					c.trace(tag, "request")
+					session_coroutine_tracetag[co] = tag
+				elseif traceflag then
+					-- set running_thread for trace
+					running_thread = co
+					skynet.trace()
+				end
+			end
+			suspend(co, coroutine_resume(co, session,source, p.unpack(msg,sz))) -- 执行协程
+        ...
+		end
+	end
+end
+
+-- 消息分派函数
+function skynet.dispatch_message(...)
+	local succ, err = pcall(raw_dispatch_message,...) -- 以安全模式调用
+	...
+end
+
+-- lua服务入口
+function skynet.start(start_func)
+	c.callback(skynet.dispatch_message) -- 调用了skynet.dispatch_message
+	init_thread = skynet.timeout(0, function()
+		skynet.init_service(start_func)
+		init_thread = nil
+	end)
+end
+```
+
+```mermaid
+graph TD
+subgraph 消息分派流程
+skynet.start-->skynet.dispatch_message-->logic
+subgraph skynet.raw_dispatch_message
+logic(创建协程<br>绑定相关信息到协程<br>追踪调用信息<br>执行协程)
+end
+end
+
+```
+
+1. 注册消息分派函数`skynet.dispatch_message`到`skynet.start`（skynet.start以0.01s一次的频率被调用，当有消息到来时`skynet.dispatch_message`被调用）；
+2. 消息分派函数`skynet.dispatch_message`以安全模式调用真正的分派逻辑函数`skynet.raw_dispatch_message`；
+3. 创建协程；
+4. 绑定相关信息(session, source, ...)到协程；
+5. 追踪调用信息；
+6. 执行协程；
 
 
 

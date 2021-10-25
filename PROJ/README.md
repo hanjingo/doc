@@ -12,6 +12,16 @@
 - [唯一ID的生成](id.md)
 - [内存管理](mem_mgr.md)
 - [分表分库](sharding.md)
+- [计时系统的实现](timer.md)
+- [Token机制](token.md)
+
+---
+
+## IM系统的构建
+
+- [IM-ID的生成](im_id.md)
+- [IM-用户状态](im_user_stat.md)
+- [IM-消息可靠性](im_reliability.md)
 
 ---
 
@@ -39,30 +49,16 @@
 
 ---
 
-## IM系统的构建
-
-- [IM-ID的生成](IM/msgid.md)
-- [用户状态](IM/user_stat.md)
-- [消息可靠性](IM/reliability.md)
-
----
-
-## 信息安全
-
-- [Token机制](INFO_SECURITY/TOKEN.md)
-
----
-
 ## 第三方软件
 
-- [EOS](APP/EOS/README.md)
-- [ETH](APP/ETH/README.md)
-- [FABRIC](APP/FABRIC/README.md)
-- [FILECOIN](APP/FILECOIN/README.md)
-- [IPFS](APP/IPFS/README.md)
-- [SKYNET](APP/SKYNET/README.md)
-- [TELEGRAM](APP/TELEGRAM/README.md)
-- [U3D](APP/U3D/README.md)
+- [EOS](EOS/README.md)
+- [ETH](ETH/README.md)
+- [FABRIC](FABRIC/README.md)
+- [FILECOIN](FILECOIN/README.md)
+- [IPFS](IPFS/README.md)
+- [SKYNET](SKYNET/README.md)
+- [TELEGRAM](TELEGRAM/README.md)
+- [U3D](U3D/README.md)
 - [Mysql](MYSQL/README.md)
 - [Redis](REDIS/README.md)
 

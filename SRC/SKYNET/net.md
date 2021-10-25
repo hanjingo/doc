@@ -9,29 +9,29 @@
   ```c
   // 套接字
   struct socket {
-  	uintptr_t opaque;		// 和socket关联的skynet服务的地址
-  	struct wb_list high;	// 高优先级发送队列
-  	struct wb_list low;		// 低优先级发送队列
-  	int64_t wb_size;		// 未发送字节大小
+  	uintptr_t opaque;        // 和socket关联的skynet服务的地址
+  	struct wb_list high;     // 高优先级发送队列
+  	struct wb_list low;      // 低优先级发送队列
+  	int64_t wb_size;         // 未发送字节大小
   	struct socket_stat stat; // socket状态信息
-  	ATOM_ULONG sending;		 // 标记是否有worker线程正在通过管道发送数据包给socket线程
-  	int fd;					// socket文件描述符
-  	int id;				    // socket_server中的slot列表的位置
-  	ATOM_INT type;			// 事件类型
-  	uint8_t protocol;		// 使用的协议TCP/UDP
-  	bool reading;			// 是否正在读
+  	ATOM_ULONG sending;      // 标记是否有worker线程正在通过管道发送数据包给socket线程
+  	int fd;                  // socket文件描述符
+  	int id;                  // socket_server中的slot列表的位置
+  	ATOM_INT type;           // 事件类型
+  	uint8_t protocol;        // 使用的协议TCP/UDP
+  	bool reading;            // 是否正在读
   	bool writing;			// 是否正在写
-  	bool closing;			// 是否正在关闭
-  	ATOM_INT udpconnecting;	 // 
-  	int64_t warn_size;		 // 报警阀值(发送字节数超过此值报警)
+  	bool closing;            // 是否正在关闭
+  	ATOM_INT udpconnecting;  // 
+  	int64_t warn_size;       // 报警阀值(发送字节数超过此值报警)
   	union {
   		int size;
   		uint8_t udp_address[UDP_ADDRESS_SIZE];
   	} p;
-  	struct spinlock dw_lock;// 自旋锁
-  	int dw_offset;			// dw_buffer已经写了的字节数
-  	const void * dw_buffer;	// 上次没有写完的缓冲区
-  	size_t dw_size;			// dw_buffer缓冲区的大小
+  	struct spinlock dw_lock; // 自旋锁
+  	int dw_offset;           // dw_buffer已经写了的字节数
+  	const void * dw_buffer;  // 上次没有写完的缓冲区
+  	size_t dw_size;          // dw_buffer缓冲区的大小
   };
   ```
 
@@ -40,20 +40,20 @@
   ```c
   // 套接字服务器
   struct socket_server {
-  	volatile uint64_t time;				// 当前时间值，(2.5ms更新一次)
-  	int recvctrl_fd;					// 接收管道消息的文件描述
-  	int sendctrl_fd;					// 发送管道消息的文件描述
-  	int checkctrl;						// 判断是否有其他线程通过管道发送消息到socket线程; 1:有
-  	poll_fd event_fd;					// epoll实例id
-  	ATOM_INT alloc_id;					// 已经分配的socket slot列表id
-  	int event_n;						// 标记本次epoll事件的数量
-  	int event_index;					// 下一个未处理的epoll事件索引
-  	struct socket_object_interface soi;	// 套接字对象接口
-  	struct event ev[MAX_EVENT]; 		// epoll事件列表
-  	struct socket slot[MAX_SOCKET]; 	// socket列表
-  	char buffer[MAX_INFO]; 				// 地址信息转成字符串以后，存在这里
+  	volatile uint64_t time; // 当前时间值，(2.5ms更新一次)
+  	int recvctrl_fd;                    // 接收管道消息的文件描述
+  	int sendctrl_fd;                    // 发送管道消息的文件描述
+  	int checkctrl;                      // 判断是否有其他线程通过管道发送消息到socket线程; 1:有
+  	poll_fd event_fd;                   // epoll实例id
+  	ATOM_INT alloc_id;                  // 已经分配的socket slot列表id
+  	int event_n;                        // 标记本次epoll事件的数量
+  	int event_index;                    // 下一个未处理的epoll事件索引
+  	struct socket_object_interface soi; // 套接字对象接口
+  	struct event ev[MAX_EVENT];         // epoll事件列表
+  	struct socket slot[MAX_SOCKET];     // socket列表
+  	char buffer[MAX_INFO];              // 地址信息转成字符串以后，存在这里
   	uint8_t udpbuffer[MAX_UDP_PACKAGE];	// UDP缓冲区
-  	fd_set rfds;						// 传给select函数的参数（用于检查worker线程是否有消息发送给socket线程）
+  	fd_set rfds;                        // 传给select函数的参数（用于检查worker线程是否有消息发送给socket线程）
   };
   ```
 
@@ -85,7 +85,7 @@ socket_server_poll
 
 5. 将新建的套接字放入`socket_server`
 
-6. 重复
+6. 重复上述动作
 
    
 

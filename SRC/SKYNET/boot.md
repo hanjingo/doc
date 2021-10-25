@@ -1,10 +1,11 @@
 # Skynet启动
 
+[TOC]
 
-
-## 读取配置
+## 1 读取配置
 
 ```c
+// skynet main函数，所有服务的入口
 int
 main(int argc, char *argv[]) {
 	const char * config_file = NULL ;
@@ -53,13 +54,12 @@ main(int argc, char *argv[]) {
 	config.profile = optboolean("profile", 1);
 
 	lua_close(L);
-    
+
 	skynet_start(&config); // 进入start方法，开始启动start
 	skynet_globalexit();
 
 	return 0;
 }
-
 ```
 
 1. 新建虚拟机
@@ -68,10 +68,15 @@ main(int argc, char *argv[]) {
 
 
 
-## 启动skynet
+## 2 启动skynet
+
+`skynet_start.c`
 
 ```c
-// register SIGHUP for log file reopen
+// 启动skynet节点
+void 
+skynet_start(struct skynet_config * config) {
+	// register SIGHUP for log file reopen
 	struct sigaction sa;
 	sa.sa_handler = &handle_hup;
 	sa.sa_flags = SA_RESTART;
@@ -109,7 +114,7 @@ main(int argc, char *argv[]) {
 	if (config->daemon) {
 		daemon_exit(config->daemon);
 	}
-
+}
 ```
 
 1. 启动日志服务

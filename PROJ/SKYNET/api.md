@@ -60,6 +60,30 @@
 
 查询一个由uniqueservice启动的唯一服务的地址，若该服务尚未启动则等待
 
+### queue
+
+`skynet.queue()`
+
+创建一个队列（锁），用于规避skynet服务重入问题；
+
+例：
+
+```lua
+local skynet = require "skynet"
+local queue  = require "skynet.queue"
+require "skynet.manager"
+
+local lock = queue() -- lock函数
+local CMD  = {}
+
+function CMD.work()
+lock(function () -- 锁住
+    skynet.error("work")
+end)
+end
+skynet.start(.)
+```
+
 ### response
 
 `skynet.response(pack)`
@@ -98,7 +122,18 @@
 - `ti` 时长（单位：0.01秒）
 - `func` 回调函数
 
-创建一个计时器，并设置回调
+创建一个计时器，并设置回调（注意：此计时器只会调用一次，如果需要定期调用函数，需要将回调函数递归，在回调函数运行结束后重新设置skynet.timeout）；
+
+例：
+
+```sh
+local function f()
+	print("hello")
+	skyent.timeout(1, f)
+end
+```
+
+
 
 ### uniqueservice
 

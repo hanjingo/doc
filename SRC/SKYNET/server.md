@@ -1,36 +1,8 @@
-[TOC]
-
 # skynet服务
 
 服务是由消息驱动的，没有消息时服务处于挂起状态，每个服务都有一个属于自己的消息队列，用于内部通信。
 
-
-
-## API
-
-- `skynet.newservice(name, ...)`
-
-  - `name` 服务名
-
-  启动一个名为name的新服务（可以在一个进程其启动多个服务）
-
-- `skynet.uniqueservice(name, ...)`
-
-  - `name` 服务名
-
-  启动一个唯一服务（单例），如果该服务已经启动，则返回已启动的服务地址
-
-- `skynet.queryservice(name)`
-
-  - `name` 服务名
-
-  查询一个由uniqueservice启动的唯一服务的地址，若该服务尚未启动则等待
-
-- `skynet.localname(name)`
-
-  - `name` 服务名
-
-  返回同一进程内，用register注册的具名服务的地址
+[TOC]
 
 
 
@@ -43,22 +15,22 @@ C服务的定义如下：
 ```c
 // skynet服务上下文
 struct skynet_context {
-	void * instance; 				// 由模块的create函数创建的实例指针
-	struct skynet_module * mod; 	// module对象指针
-	void * cb_ud;					// 传递给消息回调函数的userdata
-	skynet_cb cb;					// 消息回调函数，由模块的init函数来指定
-	struct message_queue *queue;	// 内部消息队列
-	ATOM_POINTER logfile;			// 日志
-	uint64_t cpu_cost;				// cpu回调耗费事件（ms）
-	uint64_t cpu_start;				// cpu回调开始时间（ms）
-	char result[32];				// 返回值
-	uint32_t handle;				// 当前上下文的ID
-	int session_id;					// 标识对应的请求
-	ATOM_INT ref;					// 引用计数变量，为0表示可以背释放
-	int message_count;				// 消息数量统计
-	bool init;						// 是否已初始化
-	bool endless;					// 消息是否堵住
-	bool profile;					// 是否做信息统计（cpu consume ...）
+	void * instance;             // 由模块的create函数创建的实例指针
+	struct skynet_module * mod;  // module对象指针
+	void * cb_ud;                // 传递给消息回调函数的userdata
+	skynet_cb cb;                // 消息回调函数，由模块的init函数来指定
+	struct message_queue *queue; // 内部消息队列
+	ATOM_POINTER logfile;        // 日志
+	uint64_t cpu_cost;           // cpu回调耗费事件（ms）
+	uint64_t cpu_start;          // cpu回调开始时间（ms）
+	char result[32];             // 返回值
+	uint32_t handle;             // 当前上下文的ID
+	int session_id;              // 标识对应的请求
+	ATOM_INT ref;                // 引用计数变量，为0表示可以背释放
+	int message_count;           // 消息数量统计
+	bool init;                   // 是否已初始化
+	bool endless;                // 消息是否堵住
+	bool profile;                // 是否做信息统计（cpu consume ...）
 
 	CHECKCALLING_DECL
 };
@@ -73,13 +45,13 @@ snlua服务也是一个特殊的C服务，其定义如下：
 #define MEMORY_WARNING_REPORT (1024 * 1024 * 32)
 // lua型别的c服务
 struct snlua {
-	lua_State * L; 					// lua状态机
-	struct skynet_context * ctx; 	 // 服务上下文
-	size_t mem; 					// 当前占用的内存
-	size_t mem_report; 				// 内存报警阈值
-	size_t mem_limit; 				// 内存限制
-	lua_State * activeL; 			// 当前活跃的lua虚拟机
-	ATOM_INT trap; 					// 触发器
+	lua_State * L;               // lua状态机
+	struct skynet_context * ctx; // 服务上下文
+	size_t mem;                  // 当前占用的内存
+	size_t mem_report;           // 内存报警阈值
+	size_t mem_limit;            // 内存限制
+	lua_State * activeL;         // 当前活跃的lua虚拟机
+	ATOM_INT trap;               // 触发器
 };
 ```
 
@@ -259,7 +231,7 @@ TODO
   launch_cb(struct skynet_context * context, void *ud, int type, int session, uint32_t source , const void * msg, size_t sz) {
   	assert(type == 0 && session == 0);
   	struct snlua *l = ud;
-  	skynet_callback(context, NULL, NULL); // 清空回调字段
+  	skynet_callback(context, NULL, NULL);  // 清空回调字段
   	int err = init_cb(l, context, msg, sz); // 这里才是真正的注册和初始化
   	if (err) {
   		skynet_command(context, "EXIT", NULL);
@@ -383,14 +355,6 @@ end
 6. 执行`skynet_command`注册snlua服务并获得服务ID
 
 **注意：init_cb全程是关闭lua gc的，完成后才开启**
-
-
-
-## 消息分派
-
-skynet.register_protocol/skynet.dispatch 
-
-TODO
 
 
 

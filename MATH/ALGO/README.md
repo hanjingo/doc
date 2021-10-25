@@ -4,6 +4,7 @@
 
 - [A星寻路算法]
 - [平衡树](balance_tree.md)
+- [行为树](behavior_tree.md)
 - [二叉树]
 - [布隆过滤器]
 - [crc校验算法]
