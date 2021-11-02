@@ -155,6 +155,7 @@ int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)
   }
   ```
 
+
   poll函数的输入events和返回revents：
 
   | 常值                                          | 作为events的输入吗？ | 作为revents的结果吗？ | 说明                                                         |
@@ -232,6 +233,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 - `fd` 套接字
 
 - `event` 事件
+
 
   | 事件         | 说明                                          |
   | ------------ | --------------------------------------------- |

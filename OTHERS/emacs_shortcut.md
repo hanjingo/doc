@@ -1,5 +1,5 @@
 [进入Emacs]
-- C-z 挂起Emacs：
+- C-z 挂起Emacs
 - C-x C-c 永久离开Emacs
 
 [用方向键]

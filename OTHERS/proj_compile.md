@@ -7,6 +7,7 @@
 ## 操作系统
 
 - [linux](https://github.com/torvalds/linux)
+- [如何自制操作系统](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System)
 
 ## 网络库
 
@@ -16,6 +17,7 @@
 - [MDNS协议实现 avahi](https://github.com/lathiat/avahi)
 - [P2P网络的C++实现 cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
 - [P2p节点发现库 nearby-connections](https://github.com/google/nearby-connections)
+- [protobuf库](https://github.com/protocolbuffers/protobuf)
 
 ## 数据库
 
@@ -28,7 +30,6 @@
 - [lua的MessagePack协议支持](https://github.com/antirez/lua-cmsgpack)
 - [skynet的protobuf协议支持 pbc](https://github.com/cloudwu/pbc)
 - [cocos2d-x](https://github.com/cocos2d/cocos2d-x)
-- [<<百万在线-大型游戏服务端开发>>资源](https://github.com/luopeiyu/million_game_server)
 - [云游戏平台-liuguang](https://github.com/ksyun-kenc/liuguang)
 - [红警1源码](https://github.com/electronicarts/CnC_Remastered_Collection)
 - [房卡麻将服务器-mj_server](https://github.com/qipaiprojects/mj_server)
@@ -46,7 +47,6 @@
 - [零知识证明库 bellman](https://github.com/zkcrypto/bellman)
 - [IPFS的GO语言实现 goipfs](https://github.com/ipfs/go-ipfs)
 - [以太坊挖矿程序 ethminer](https://github.com/ethereum-mining/ethminer)
-- [<<IPFS与Filecoin 从入门到精通>>](https://github.com/xipfs/IPFS-Internals)
 - [bitcoin](https://github.com/bitcoin/bitcoin)
 - [eos](https://github.com/EOSIO/eos)
 - [go-ipfs-swarm-key-gen](https://github.com/Kubuxu/go-ipfs-swarm-key-gen)
@@ -58,6 +58,11 @@
 ## 安全
 
 - [openssl](https://github.com/openssl/openssl)
+
+## 书籍
+
+- [IPFS与Filecoin 从入门到精通](https://github.com/xipfs/IPFS-Internals)
+- [<<百万在线-大型游戏服务端开发>>资源](https://github.com/luopeiyu/million_game_server)
 
 ## 其他
 
@@ -78,4 +83,5 @@
 - [谷歌内存回收库 tcmalloc](https://github.com/google/tcmalloc)
 - qt5开源库: `git://code.qt.io/qt/qt5.git`
 - [vim的升级版本neovim](https://github.com/neovim/neovim)
+- [rust版本的v8引擎](https://github.com/denoland/deno)
 

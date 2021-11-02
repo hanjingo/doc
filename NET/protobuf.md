@@ -87,27 +87,27 @@ classDiagram
 
 | .proto Type | C++    | Java       | Python   | Go       |
 | ----------- | ------ | ---------- | -------- | -------- |
-| double      | double | double     | float    | *float64 |
-| float       | float  | float      | float    | *float32 |
-| int32       | int32  | int        | int      | *int32   |
-| int64       | int64  | long       | int/long | *int64   |
-| uint32      | uint32 | int        | int/long | *uint32  |
-| uint64      | uint64 | long       | int/long | *uint64  |
-| sint32      | int32  | int        | int      | *int32   |
-| sint64      | int64  | long       | int/long | *int64   |
-| fixed32     | uint32 | int        | int/long | *uint64  |
-| fixed64     | uint64 | long       | int/long | *uint64  |
-| sfixed32    | int32  | int        | int      | *int32   |
-| sfixed64    | int64  | long       | bool     | *bool    |
-| bool        | bool   | boolean    | bool     | *bool    |
-| string      | string | String     | unicode  | *string  |
+| double      | double | double     | float    | `*float64` |
+| float       | float  | float      | float    | `*float32` |
+| int32       | int32  | int        | int      | `*int32`   |
+| int64       | int64  | long       | int/long | `*int64`   |
+| uint32      | uint32 | int        | int/long | `*uint32`  |
+| uint64      | uint64 | long       | int/long | `*uint64`  |
+| sint32      | int32  | int        | int      | `*int32`   |
+| sint64      | int64  | long       | int/long | `*int64`   |
+| fixed32     | uint32 | int        | int/long | `*uint64`  |
+| fixed64     | uint64 | long       | int/long | `*uint64`  |
+| sfixed32    | int32  | int        | int      | `*int32`   |
+| sfixed64    | int64  | long       | bool     | `*bool`    |
+| bool        | bool   | boolean    | bool     | `*bool`    |
+| string      | string | String     | unicode  | `*string`  |
 | bytes       | string | ByteString | bytes    | []byte   |
 
 ## 关键字
 
-- ~~`required`:~~
-- `optional`:
-- `repeated`:
+- ~~`required`: 必选的~~
+- `optional`: 可选的
+- `repeated`: 重复的
 
 ### 生成命令
 
@@ -224,6 +224,7 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 
   ![protobuf_tag_varint](res/protobuf_tag_varint.png)
 
+
   wire_type由三位bit构成，能表示8种类型
 
   | Type | Meaning          | Used For                                                 |
@@ -256,6 +257,21 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 - `Value`(varint编码)
 
 
+## 安装
+
+1. 下载protobuf源码
+
+```sh
+git clone git@github.com:protocolbuffers/protobuf.git
+
+cd protobuf && ./autogen.sh
+
+./configure --prefix=/usr/local/protobuf
+
+make && make check
+
+make install && ldconfig
+```
 
 ## 用例
 

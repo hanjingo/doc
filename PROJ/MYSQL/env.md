@@ -65,7 +65,12 @@ ERROR 1819 (HY000): Your password does not satisfy the current policy requiremen
    - `validate_password_policy` 安全级别
    - `validate_password_special_char_count` 特殊字符的最小个数
    
-2. 按照安全变量值要求来修改密码
+2. 修改安全密码等级
+
+    ```sh
+    set global validate_password_policy = LOW;
+    ...
+    ```
 
 
 
