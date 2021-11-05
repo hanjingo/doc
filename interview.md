@@ -42,7 +42,7 @@ TODO
 
 #### LRU缓存实现
 
-一般用双向链表，具体见：[LRU算法](ALGO/lru.md)
+一般用双向链表，具体见：[LRU算法](MATH/ALGO/lru.md)
 
 [返回顶部](#面试笔记)
 
@@ -100,7 +100,7 @@ TODO
 
 ### 说说Epoll的原理以及它的用法
 
-红黑树+链表；具体见：[网络I/O#Epoll](net/io.md)
+红黑树+链表；具体见：[网络I/O#Epoll](NET/io.md)
 
 ### DNS原理
 
@@ -126,11 +126,11 @@ TODO
 
 #### 游戏服务器的架构
 
-具体见：[游戏服务器架构](PROJ/game_server_construct.md)
+具体见：[游戏服务器开发#总体架构](PROJ/game_server_develop.md)
 
 #### 热更新的用途
 
-具体见：[热更新](PROJ/hot_patch.md)
+具体见：[游戏服务器开发#热更新](PROJ/game_server_develop.md)
 
 ### 消息协议
 
@@ -150,7 +150,7 @@ TODO
 
 #### 如何解决缓存与数据库的数据一致性问题
 
-TODO
+具体见：[数据库设计](PROJ/db.md)
 
 #### 如何避免缓存穿透，缓存击穿和缓存雪崩
 
@@ -158,7 +158,7 @@ TODO
 - 缓存击穿：缓存中一个热点key失效，同时大量请求过来，压垮数据库
 - 缓存雪崩：缓存中的大量key同时失效，同时大量请求过来，压垮数据库
 
-具体见：[缓存系统](PROJ/cache.md)
+具体见：[数据库设计#通用缓存系统](PROJ/db.md)
 
 ### 信息安全
 
@@ -170,7 +170,7 @@ TODO
 
 TODO
 
-### Token机制应该怎么设计
+#### Token机制应该怎么设计
 
 TODO
 
@@ -178,19 +178,19 @@ TODO
 
 #### linux如何开启系统日志
 
-命令`systemctl restart rsyslog`，具体见：[linux系统日志](BUG/linux_sys_log.md)
+命令`systemctl restart rsyslog`，具体见：[调试工具#linux系统日志](PROJ/test_tool.md)
 
 #### linux如何开启core文件生成
 
-命令`ulimit -c unlimited`，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
+命令`ulimit -c unlimited`，具体见：[软件调试方法#如何定位Core Dump问题](PROJ/testway.md)
 
 #### CPU100%的调试方法
 
-TODO
+具体见：[软件调试方法#如何定位CPU跑满问题](PROJ/testway.md)
 
 #### CoreDump的调试方法
 
-用GDB，具体见：[如何定位Core Dump问题](BUG/core_dump.md)
+用GDB，具体见：[软件调试方法#如何定位CoreDump问题](PROJ/testway.md)
 
 [返回顶部](#面试笔记)
 
@@ -320,7 +320,7 @@ TODO
 
 #### 1 为什么Redis用跳表不用RBtree
 
-1.简单，2.并发效率，3.范围查找效率；具体见：[redis跳表](PROJ/REDIS/skip_list.md)
+1.简单，2.并发效率，3.范围查找效率；
 
 #### 2 Redis如何实现延时队列
 
@@ -328,7 +328,7 @@ TODO
 
 #### 3 Redis持久化
 
-具体见：[Redis持久化](PROJ/REDIS/persistence.md)
+具体见：[Redis持久化](SRC/REDIS/persistence.md)
 
 #### 4 Redis线程模型
 

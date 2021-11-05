@@ -1,3 +1,5 @@
+[TOC]
+
 # golang常见错误
 
 
@@ -46,7 +48,7 @@ func main() {
 
 ## 时间转换的坑
 
-使用`time.Parse`转换字符串为时间时，是utc时间;要再转local才行;
+使用`time.Parse`转换字符串为时间时，是utc时间，要再转local才行;
 
 ```go
 if t, err := time.Parse(StdTimeFmt, str); err == nil {

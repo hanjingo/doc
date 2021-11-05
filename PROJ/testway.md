@@ -1,12 +1,24 @@
+# 软件调试方法
+
 [TOC]
 
-# 如何定位Core Dump问题
+## 1如何定位内存问题
+
+TODO
+
+
+
+## 2如何定位CPU跑满问题
+
+TODO
+
+
+
+## 3如何定位Core Dump问题
 
 核心转存（coredump），实际为进程运行过程中的一个内存快照；当进程crash时，操作系统接收到异常指令后，在进程crash之前，把进程做一个内存快照，保存进程的地址，寄存器，堆栈调用等信息，这个文件就叫coredump。
 
-
-
-## Core文件产生原因
+### 3.1Core文件产生原因
 
 Core文件经由以下信号产生：
 
@@ -35,11 +47,9 @@ Core文件经由以下信号产生：
    - 非法指针转换
 5. 堆栈溢出
 
+### 3.2配置CoreDump
 
-
-## 配置CoreDump
-
-### 开启功能
+#### 3.2.1开启功能
 
 linux默认不生成core文件，开启core文件生成功能有以下3种方法：
 
@@ -59,7 +69,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
    ...
    ```
 
-### 文件大小
+#### 3.2.2文件大小
 
 使用以下命令来配置core文件属性：
 
@@ -81,7 +91,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
   ulimit -c unlimited
   ```
 
-### 命名
+#### 3.2.3命名
 
 使用以下命令来设置core文件的生成目录和命名：
 
@@ -112,7 +122,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
 | `%h` | 添加主机名                 |
 | `%e` | 添加命令名                 |
 
-### 测试
+#### 3.2.4测试
 
 ```sh
 sleep 15
@@ -120,9 +130,7 @@ sleep 15
 # 按下Ctrl + \
 ```
 
-
-
-## Core格式
+### 3.3Core格式
 
 使用以下命令判断一个文件是否是core文件：
 
@@ -134,9 +142,7 @@ sleep 15
   TODO
   ```
 
-
-
-## GDB调试
+### 3.4使用GDB调试CoreDump
 
 ```sh
 # 使用gdb打开
@@ -151,8 +157,20 @@ f(xx) # xx:堆栈层数(1:一般是main函数, ...)
 
 
 
+## 4如何定位丢包问题
+
+TODO
+
+
+
+## 5如何定位高并发问题
+
+TODO
+
+
+
 ## 参考
 
 - [core文件生成及使用gdb调试](https://blog.csdn.net/zhang_han666/article/details/80668002)
 - [gdb调试coredump(原理篇)](https://blog.csdn.net/sunlin972913894/article/details/113001810)
-
+- [性能测试入门——LoadRunner使用初探](https://www.admin5.com/article/20161114/695706.shtml)

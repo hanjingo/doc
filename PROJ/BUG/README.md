@@ -16,15 +16,39 @@
 
 #### [脏数据问题](eos.md)
 
+关键词：**eos**，**脏数据**
+
+通过错误的方式关闭正在运行的eos系统，在eos下次启动时会报错...
+
 #### [eos无法启动](eos.md)
 
-#### [报`Error 3090003`错误](eos.md)
+关键词：**eos**，**无法启动**
 
-#### [报`fetching abi for undefined: unknown key (eosio::chain::name)`错误](eos.md)
+eos无法启动...
 
-#### [报`Error 3080004: Transaction exceeded the current CPU usage limit imposed on the transaction`错误](eos.md)
+#### [没有导入系统私钥](eos.md)
+
+关键词：**eos**，**系统私钥**, **Error 3090003**
+
+创建账户时报Error 3090003错误：`Provided keys, permissions, and delays do not satisfy declared authorizations...`
+
+#### [abi错误](eos.md)
+
+关键词：**eos**，**abi**
+
+调用接口时报错：`Error: fetching abi for undefined: unknown key...`
+
+#### [执行命令超时](eos.md)
+
+关键词：**eos**，**Error 3080004**, **超时**
+
+由于eos系统的限制，执行时间过长的的命令会报错：`Transaction exceeded the current CPU usage limit imposed on the transaction...`
 
 #### [eos合约被冲掉的问题](eos.md)
+
+关键词：**eos**，**合约**
+
+一个eos账号只能部署一个合约...
 
 
 
@@ -32,7 +56,15 @@
 
 #### [waitgroup的坑](golang.md)
 
-#### [`time.Parse`时间转换的坑](golang.md)
+关键词：**go**，**golang**, **waitgroup**
+
+因为WaitGroup作用范围导致的Add操作失效...
+
+#### [time.Parse时间转换的坑](golang.md)
+
+关键词：**go**，**golang**, **time.Parse**
+
+使用`time.Parse`转换字符串为utc时间...
 
 
 
@@ -64,7 +96,7 @@
 
 关键词：**模块**，**require.lua**
 
-用skynet调用模块时，报` lua loader error : ./lualib/skynet/require.lua:31: module 'xxx' not found:`...
+用skynet调用模块时，报` lua loader error : ./lualib/skynet/require.lua:31: module 'xxx' not found:...`
 
 #### [热更新时print函数无法打印](skynet.md)
 
@@ -72,17 +104,17 @@
 
 热更新时，print函数失效...
 
-[调用`snax.exit()`时报错，提示对象为空](skynet.md)
+#### [调用snax.exit时报错，提示对象为空](skynet.md)
 
-关键词：**snax.exit()**
+关键词：**skynet**, **snax.exit()**
 
-当调用`snax.exit()`时，报`[:00000008] init service failed: ./lualib/snax/interface.lua:82:`...
+当调用`snax.exit()`时，报`[:00000008] init service failed: ./lualib/snax/interface.lua:82:...`
 
-[使用第三方库pbc时报错，提示` module 'protobuf.c' not found`](skynet.md)
+#### [pbc的lua版本不对](skynet.md)
 
-关键词：**pbc**, **protobuf**, "protobuf.c"
+关键词：**pbc**, **protobuf**, **protobuf.c**, **lua**
 
-当调用第三方库`pbc`时，报`lua: ./protobuf.lua:1: module 'protobuf.c' not found:`...
+当调用第三方库`pbc`时，报`lua: ./protobuf.lua:1: module 'protobuf.c' not found:...`
 
 
 
@@ -92,7 +124,7 @@
 
 关键词：**mysql**，**密码**，**不合法**
 
-修改MySQL的用户名和密码时，报`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;`...
+修改MySQL的用户名和密码时，报`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;...`
 
 
 

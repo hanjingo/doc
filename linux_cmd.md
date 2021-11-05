@@ -41,7 +41,7 @@
 
 |命令|说明|选项|其它|常用|
 |:--|:--|:--|:--|---|
-|lsof|查看当前系统文件|- `a` 列出打开文件存在的进程<br>- `c` 里处指定进程所打开的文件<br>- `g` 列出GID好进程详情<br>||TODO|
+|lsof|查看当前系统文件|- `a` 列出打开文件存在的进程<br>- `c` 里处指定进程所打开的文件<br>- `g` 列出GID好进程详情<br>||`lsof | wc -l` 查看当前系统打开的文件数量<br>`lsof -p xx | wc -l` 查看当前进程xx打开的文件数量|
 |ps|查看进程快照信息|- `a` 显示同一终端下的所有程序<br>- `A` 显示所有进程<br>- `e` 等同于"-A"<br>- `f` 显示程序间的关系<br>- `u` 指定用户的所有进程<br>- `H` 显示树状结构<br>- `au` 显示较为详细的资讯<br>- `aux` 显示所有包含其它使用者的行程|**二级选项:**<br>-- `lines 行数` 每页显示的行数<br>-- `width 字符数`  每页显示的字符数|`ps -aux | grep he` 查看用户he的所有进程<br>`ps -ef` 显示所有进程信息，包括进程的命令行<br>`ps -axjf` 列出程序树信息<br>`ps -aux|egrep '(vim|chrome)'` 列出与vim或chrome相关的进程|
 |top|查看进程持续信息|- `c` 切换显示模式<br>- `q` 无延迟显示<br>- `i` 不显示闲置和僵尸进程<br>- `n` 设置更新次数<br>- `d` 设置更新时间<br>- `p` 指定进程id|**行内命令:**<br>`空格键` 立即刷新<br>`P` 以占据CPU百分比排序<br>`M` 以占据内存百分比排序<br>`T` 以累积占用CPU时间排序<br>`t` 显示或隐藏进程和cpu状态信息<br>`s <秒数>` 修改刷新时间间隔<br>`k <进程id> <enter> <信号>` 杀死指定id的进程|`top -d 2`: 2秒刷新一次信息<br>`top -p 2444`: 只显示进程2444的信息<br>`top\n k 2444\n enter\n 15`: 杀死id为2444的进程|
 |nohup|后台运行程序|||`nohup chrome &` 后台运行chrome并在当前目录生成一个默认名为nohup.out的日志文件<br>`nohup chrome &>/dev/null &` 后运行chrome，同时不生成日志文件<br>`nohup chrome >test.log 2>&1 &` 后台运行chrome，同时输出到日志文件test.log|
@@ -63,7 +63,6 @@
 |size|查看文件各段和总和大小|||TODO|
 |readelf|查看ELF格式的文件信息|- `h`  显示文件开始的文件头信息<br>- `l`  显示程序头信息<br>- `S`  显示节头信息<br>- `g`  显示节组信息<br>- `t`  显示节点的详细信息<br>- `s`  显示符号表段中的项<br>- `e`  显示全部头信息<br>- `n`  显示内核注释信息<br>- `r`  显示可重定位段的信息<br>- `u`  显示unwind段信息<br>- `d`  显示动态段信息<br>- `V`  显示版本段信息<br>- `A`  显示CPU架构信息<br>- `l`  显示bucket list长度的柱状图<br>- `x`  以16进制方式显示指定段内内容<br>- `D`  使用动态段中的符号表显示符号，而不是使用符号段<br>- `a`  显示全部信息<br>- `v`  显示readelf的版本信息<br>- `H`  显示帮助信息||`readelf -x 1 hello.so` 以16进制方式显示文件`hello.so`中段索引为1的内容|
 |objdump|反汇编程序|- `c`<br>- `x`||TODO|
-|ulimit|开启core文件生成功能|- `c`||`ulimit -c` 查看core文件配置，0表示未开启；<br>`ulimit -c unlimited` 不限制core文件大小；<br>`ulimit -c 1024` 限制core文件最大为1024kb|
 |addr2line|翻译出错信息，定位出错的代码位置|- `e`||`addr2line -e hello 40053b` 翻译hello的报错信息40053b，定位到源码位置|
 
 
@@ -74,6 +73,7 @@
 |:--|:--|:--|:--|
 |ifconfig|查看,设置网络接口属性|- `a` 所有网络接口<br>- `down` 关闭指定的网络设备<br>- `up` 开启指定的网络设备|`ifconfig eth0 down` 禁用网卡eth0<br>`ifconfig eth0 up` 启用网卡eth0<br>`ifconfig -a` 查看系统的所有网络接口|
 |netstat|查看网络使用情况|- `a` 列出所有连线中的socket<br>- `c` 持续列出网络状态<br>- `e` 显示网络其它相关信息<br>- `F` 显示路由缓存<br>- `i` 显示网络界面信息表单<br>- `l` 显示监控中的服务器的socket<br>- `n` 直接使用IP地址,不通过域名服务器<br>- `o` 显示计时器<br>- `p` 显示正在使用socket的程序识别码和程序名称<br>- `t` 显示tcp的连线状况<br/>- `u` 显示udp的连线状况|`netstat -tunlp | grep 10086` 查看端口10086占用情况;<br>`netstat -i` 显示网卡列表<br>`netstat -nu` 显示udp连接情况<br>`netstat -apu` 显示udp端口使用情况<br>|
+|ufw|防火墙设置|- status 查看端口开放情况<br>- allow 开放端口<br>-`enable` 开启防火墙<br>-`reload` 重启防火墙|`ufw allow 8080` 开放8080端口<br>`ufw enable` 开启防火墙<br>`ufw reload` 重启防火墙|
 
 
 
@@ -83,7 +83,7 @@
 |:--|:--|:--|:--|
 |source|使设置生效||`source /etc/profile` 让profile配置生效|
 |su|切换账户||`su he` 切换到账户he|
-|ulimit||||
+|ulimit|资源限制||`ulimit -c` 查看core文件配置，0表示未开启；<br/>`ulimit -c unlimited` 不限制core文件大小；<br/>`ulimit -c 1024` 限制core文件最大为1024kb|
 
 
 

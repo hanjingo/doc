@@ -8,11 +8,6 @@
 
 - IM
 - Robot
-- Login
-- Gateway
-- Cache
-- Db
-- Payment
 - Log
 - ...
 

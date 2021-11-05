@@ -10,17 +10,17 @@
 database dirty flag set (likely due to unclean shutdown) replay or resync required  
 ```
 
-解决方法:
+**解决方法:**
 
 在nodeos启动时添加选项`--hard-replay-blockchain`或者`--delete-all-blocks`参数  
 
 
 
-## eos无法启动:  
+## eos无法启动
 
 eos无法启动
 
-解决方法:
+**解决方法:**
 
 把启动选项`--producer-name eosio`的`eosio`改成自己账号名，不然会启动不了  
 
@@ -42,7 +42,7 @@ eos无法启动
 
 
 
-## fetching abi for undefined: unknown key (eosio::chain::name):
+## fetching abi for undefined: unknown key (eosio::chain::name)
 
 ```sh
 6|app  | 11-24 11:25:31: Error: fetching abi for undefined: unknown key (eosio::chain::name):
@@ -136,3 +136,4 @@ cleos push action eosio fuck '' -p eosio +x 100
 ## eos合约被冲掉的问题
 
 一个eos账号只能部署一个合约，先部署合约a，再部署合约b；会导致合约a被合约b替换掉,嗦嗨!!!
+

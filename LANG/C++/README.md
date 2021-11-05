@@ -4,6 +4,7 @@
 - [c++转换函数](cast.md)
 - [const关键字](const.md)
 - [常量指针和指针常量](const_ptr.md)
+- [c++11新特性](cpp11.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)
 - [c++多线程](multi_thread.md)

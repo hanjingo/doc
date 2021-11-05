@@ -1,6 +1,6 @@
 [TOC]
 
-# 整数集合-intset
+# Redis整数集合-intset
 
 ## API
 

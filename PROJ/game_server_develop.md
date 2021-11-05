@@ -1,21 +1,19 @@
+# 游戏服务器开发
+
 [TOC]
 
-# 游戏服务器架构
+## 1总体架构
 
-
-
-## 总体架构图
-
-### 房间类游戏
+### 1.1房间类游戏
 
 ```mermaid
 graph LR
 client1 --> loginServer --> matchServer --> dbServer
 loginServer --> chatServer --> dbServer
-clientB --> roomServer --> dbServer
+client2 --> roomServer --> dbServer
 ```
 
-### 弱交互游戏
+### 1.2弱交互游戏
 
 ```mermaid
 graph LR
@@ -24,7 +22,7 @@ client --HTTP/HTTPS--> webServer --> applicationServer --> cacheServer
 applicationServer --> dbServer
 ```
 
-### 简单的分区分服游戏
+### 1.3简单的分区分服游戏
 
 ```mermaid
 graph LR
@@ -33,7 +31,7 @@ client2 --socket--> gameServer2
 client3 --socket--> gameServer3
 ```
 
-### 数据共享游戏服务器
+### 1.4数据共享游戏服务器
 
 ```mermaid
 graph LR
@@ -48,14 +46,14 @@ loginServer --> dbServer
 
 
 
-## 登录系统
+## 2登录系统
 
-### 认证与授权
+### 2.1认证与授权
 
 - `认证(Authentication)` 用于鉴别访问者是否为合法用户；
 - `授权(Authorisation)` 用于决定访问者有访问哪些资源的权限；
 
-### 单点登录
+### 2.2单点登录
 
 单点登录（Single sign-on, SSO），当用户登录时，就可以获取所有系统的访问权限，不用对每个单一系统都逐一登录；
 
@@ -64,7 +62,7 @@ SSO有以下2种协议：
 1. SAML 2.0
 2. OAuth 2.0
 
-#### SAML 2.0
+#### 2.2.1SAML 2.0
 
 SAML 2.0时序图如下：
 
@@ -91,7 +89,7 @@ Note right of Resource Server/SP: >>> 解析[SAML token]
 6. IdP将SAML token发送给SP；
 7. SP解析SAML token，得到账号，密码，权限...等信息。
 
-#### OAuth 2.0
+#### 2.2.2OAuth 2.0
 
 OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0是OAuth协议的延续版本，但不向后兼容OAuth 1.0即完全废止了OAuth1.0。
 
@@ -122,6 +120,78 @@ Resource Server/SP-->Client: Protected Resource
 
 
 
+## 3存储系统
+
+TODO
+
+
+
+## 4帧同步机制
+
+TODO
+
+
+
+## 5热更新机制
+
+### 5.1作用
+
+1. 上线需求（审核）
+2. 快节奏的版本迭代
+3. 节约网络资源
+
+### 5.2Lua方案
+
+TODO
+
+### 5.3动态链接库方案
+
+TODO
+
+### 5.4RPC
+
+TODO
+
+
+
+## 6断线重连
+
+TODO
+
+
+
+## 7日志系统
+
+TODO
+
+
+
+## 8全球同服
+
+### 8.1难点
+
+- 网络延迟
+
+  需要解决因为网路传输的延迟造成不同国家的玩家公平性问题，以及由于延迟造成不同国家的客户体验不一致的问题，同时由于国际网络运营商(ISP)之间的互通性问题；
+
+- 数据读写
+
+  需要保持不同地区的数据一致性；
+
+- 资源管理
+
+  如何统一，高效的进行游戏运维与资源管理；
+
+### 8.2设计方案
+
+TODO
+
+### 8.3游戏加速
+
+TODO
+
+
+
 ## 参考
 
 - [云风-LoginServer](https://github.com/cloudwu/skynet/wiki/LoginServer)
@@ -132,4 +202,6 @@ Resource Server/SP-->Client: Protected Resource
 - [Oauth2详解-介绍(一)](https://www.jianshu.com/p/84a4b4a1e833)
 - [理解OAuth2](https://zhuanlan.zhihu.com/p/84670338)
 - [游戏开发中的ECS架构实用性如何？](https://www.zhihu.com/question/455479955/answer/2143570061)
+- [阿里云-全球同服手游解决方案](https://help.aliyun.com/document_detail/63554.html?utm_content=g_1000230851&spm=5176.20966629.toubu.3.f2991ddcpxxvD1#title-gv4-rr3-pf2)
+- [网络游戏-断线重连](https://blog.csdn.net/qq_28098067/article/details/86712592)
 

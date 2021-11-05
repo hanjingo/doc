@@ -338,6 +338,7 @@ TODO
 - [[性能测试工具] wrk,ab,locust,Jmeter 压测结果比较](https://testerhome.com/topics/17068)
 - [性能测试常见名词解释](https://blog.csdn.net/r455678/article/details/53063989)
 - [游戏服务器性能测试](https://blog.csdn.net/FlyPigYe/article/details/91872979)
+- [性能测试入门——LoadRunner使用初探](https://www.admin5.com/article/20161114/695706.shtml)
 
 ### 文献
 
