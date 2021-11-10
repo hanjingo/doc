@@ -140,7 +140,13 @@ mv vim82 vim80
 
 ## 配置YouCompleteMe
 
-1. 安装ctags
+1. 编译YouCompleteMe
+
+   ```sh
+   cd YouCompleteMe && ./install.py --omnisharp-completer --go-completer --clangd-completer
+   ```
+
+2. 安装ctags
 
    ```sh
    sudo apt-get install ctags
@@ -148,7 +154,7 @@ mv vim82 vim80
 
    
 
-2. 在想要打开的源码目录生成tag文件
+3. 在想要打开的源码目录生成tag文件
 
    ```sh
    ctags -R *

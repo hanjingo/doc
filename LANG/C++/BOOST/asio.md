@@ -281,48 +281,77 @@ public:
 #### 服务端
 
 ```c++
-int main()
-try
-{
-    typedef ip::tcp::acceptor   acceptor_type;
-    typedef ip::tcp::endpoint   endpoint_type;
-    typedef ip::tcp::socket     socket_type;
-
+int main() {
+	try{
+		typedef ip::tcp::acceptor acc_typ;
+  	typedef ip::tcp::endpoint ep_typ;
+  	typedef ip::tcp::socket   sock_typ;
+    
     cout << "server start." << endl;
-    io_service io;                              // asio程序必需的io_service对象
-
-    acceptor_type acceptor(io,                  // 创建acceptor对象，ipv4
-        endpoint_type(ip::tcp::v4(), 6688));    // 接收6688端口，开始监听
-
-    cout << acceptor.local_endpoint().address() << endl;
-
-    for(;;) // 循环执行服务
+    io_service io;
+    acc_typ acceptor(io, ep_typ(ip::tcp::v4(), 6688)); // 创建监听器
+    for(;;)
     {
-        socket_type sock(io);                   // 一个socket对象
-
-        acceptor.accept(sock);                  // 阻塞等待socket连接
-
-        cout << "client:";
-        cout << sock.remote_endpoint().address() << endl;
-
-        sock.send(buffer("hello asio"));        // 发送数据，使用buffer()
+    	sock_typ sock(io);            // 创建套接字
+      acceptor.accept(sock);           // 阻塞等待socket连接
+      sock.send(buffer("hello asio")); // 发送数据
     }
-}
-catch (std::exception& e)                       // 捕获可能发生的异常
-{
-    cout << e.what() << endl;
+	} catch (std::exception& e) {
+  	cout << e.what() << endl;
+  }
 }
 ```
 
 #### 客户端
 
 ```c++
-
+int main() {
+	try {
+  	typedef ip::tcp::endpoint ep_typ;
+    typedef ip::tcp::socket   sock_typ;
+    typedef ip::address       addr_typ;
+    
+    cout << "client start." << endl;
+    io_service io;
+    sock_typ sock(io);
+    ep_typ ep(addr_typ::from_string("127.0.0.1"), 6688);
+    sock.connect(ep);
+    vector<char> str(sock.available() + 1, 0);
+    sock.receive(buffer(str));
+    cout << &str[0] << endl;
+  } catch (std::exception& e) {
+  	cout << e.what() << endl;
+  }
+}
 ```
 
 ### 异步通信
 
-TODO
+#### 服务端
+
+```c++
+class server {
+	typedef server this_type;
+  typedef ip::tcp::acceptor acceptor_type;
+  typedef ip::tcp::endpoint endpoint_type;
+  typedef ip::tcp::socket   socket_type;
+  typedef shared_ptr<socket_type> sock_ptr;
+  
+private:
+  io_service m_io;
+  acceptor_type m_acceptor;
+  
+public:
+  server() : m_acceptor(m_io, endpoint_type(ip::tcp::v4(), 6688)) { accept(); }
+  void run() { m_io.run(); }
+  void accept() {
+  	sock_ptr sock(new socket_type(m_io));
+    acceptor.async_accept(*sock, bind)
+  }
+}
+```
+
+
 
 # 参考
 

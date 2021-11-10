@@ -1,19 +1,20 @@
 # c++
 
 - [总结](summary.md)
-- [c++转换函数](cast.md)
+- [最佳实践](best_practice.md)
+- [转换函数](cast.md)
 - [const关键字](const.md)
 - [常量指针和指针常量](const_ptr.md)
-- [c++11新特性](cpp11.md)
+- [新特性](cpp_new_feature.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)
-- [c++多线程](multi_thread.md)
+- [多线程](multi_thread.md)
 - [optional关键字](optional.md)
 - [override关键字](override.md)
 - [placement new操作符](placement_new.md)
 - [指针和引用](ptr_ref.md)
 - [静态变量](static.md)
-- [c++的虚函数](vfunc.md)
+- [虚函数](vfunc.md)
 - [volatile关键字](volatile.md)
 
 ## STL
