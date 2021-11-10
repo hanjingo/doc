@@ -13,5 +13,16 @@ Windows Registry Editor Version 5.00
 
 ### ubuntu
 
-TODO
+```sh
+# 查看键位映射
+xmodmap -pke > /tmp/map && cat /tmp/map
+# 找到对应的键并修改
+xmodmap -e "keycode 66 = Escape"
+# 保存到 ~/.Xmodmap
+xmodmap -pke >> ~/.Xmodmap
+# 激活
+xmapmap ~/.Xmodmap
+```
+
+
 

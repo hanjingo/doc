@@ -45,12 +45,14 @@ class signal : public boost::signals2::signal_base
 
 - 第一个模板参数Signature的含义与function的含义相同，它也是一个函数类型，表示可被signal调用的函数（插槽，事件处理handler）。例：
 
-  > ```c++
-  > signal<void(int, double)>
-  > ```
+  ```c++
+  signal<void(int, double)>
+  ```
 
 - 第二个模板参数Combiner是一个函数对象，它被称为“合并器”，用来组合所有插槽的调用结果，默认是optional_last_value<R>，它使用optional库返回最后一个被调用的插槽的返回值。
+
 - 第三个模板参数Group是插槽编组的类型，默认使用int来记组号，也可以改为std::string等类型，但通常没有必要。
+
 - 第四个模板参数GroupCompare与Group配合使用，用来确定编组的排序准则，默认是升序(std::less<Group>)，因此要求Group必须定义operator<。
 
 signal是不可拷贝的。如果把signal作为自定义类的成员变量，那么自定义类也将是不可拷贝的，除非使用shared_ptr/ref来间接持有它。
@@ -69,7 +71,7 @@ signal是不可拷贝的。如果把signal作为自定义类的成员变量，�
    
    sig.connect(&slots1);	// 连接插槽1
    sig.connect(&slots2);	// 连接插槽2
-   sig();								// 调用operator()，产生信号(事件)，触发插槽调用
+   sig();                  // 调用operator()，产生信号(事件)，触发插槽调用
    ```
 
 2. 使用组号
@@ -89,16 +91,16 @@ signal是不可拷贝的。如果把signal作为自定义类的成员变量，�
      { cout << "slot" << N << " called" << endl; }
    };
    
-   sig.connect(slots<1>(), at_back);				// 最后被调用
-   sig.connect(slots<100>(), at_front);		// 第一个被调用
+   sig.connect(slots<1>(), at_back);       // 最后被调用
+   sig.connect(slots<100>(), at_front);    // 第一个被调用
    
-   sig.connect(5, slots<51>(), at_back);		// 组号5，该组最后一个
+   sig.connect(5, slots<51>(), at_back);   // 组号5，该组最后一个
    sig.connect(5, slots<55>(), at_front); 	// 组号5，该组第一个
    
    sig.connect(3, slots<30>(), at_front);	// 组号3，该组第一个
-   sig.connect(3, slots<33>(), at_back);		// 组号3，该组最后一个
+   sig.connect(3, slots<33>(), at_back);   // 组号3，该组最后一个
    
-   sig.connect(10, slots<10>());						// 组号10，该组仅有的一个
+   sig.connect(10, slots<10>());           // 组号10，该组仅有的一个
    ```
 
 ## 返回值
@@ -119,7 +121,7 @@ sig.connect(slots<10>());
 sig.connect(slots<20>());
 sig.connect(slots<50>());
 // signal将返回插槽链表末尾slots<50>()的计算结果，它是一个optional对向，必须用解引用操作符“*”来获得值
-cout << *sig(2);			// 输出100
+cout << *sig(2); // 输出100
 ```
 
 ## 合并器
@@ -128,10 +130,10 @@ signal允许用户自定义合并器来处理插槽的返回值，把多个插�
 
 ```c++
 template<typename T>
-class combiner							// 自定义合并器
+class combiner // 自定义合并器
 {
   public:
-  	typedef T result_type;	// 返回值类型定义
+  	typedef T result_type; // 返回值类型定义
   	template<typename InputIterator>
   	result_type operator()(InputIterator, InputIterator) const;
 };
@@ -146,15 +148,15 @@ class combiner
   T v;
 public:
   typedef std::pair<T, T> result_type;
-  combiner(T t = T()):v(t){}				// 构造函数
+  combiner(T t = T()):v(t){}   // 构造函数
   
   template<typename InputIterator>
   result_type operator()(InputIterator begin, InputIterator end) const
   {
-    if (begin == end)								// 如果返回值链表为空，则返回0
+    if (begin == end)          // 如果返回值链表为空，则返回0
     { return result_type(); }
     
-    vector<T> vec(begin, end);			// 使用容器保存插槽调用结果
+    vector<T> vec(begin, end); // 使用容器保存插槽调用结果
     
     T sum = std::accumulate(vec.begin(), vec.end(), v);
     T max = *std::max_element(vec.begin(), vec.end());
@@ -167,9 +169,9 @@ signal<int(int), combiner<int> > sig(combiner<int>());
 
 sig.connect(slots<10>());
 sig.connect(slots<20>());
-sig.connect(slots<30>, at_front);		// 最大值，第一个调用
+sig.connect(slots<30>, at_front);   // 最大值，第一个调用
 
-auto x = sig(2);										// 用auto获得信号的返回值
+auto x = sig(2);                    // 用auto获得信号的返回值
 cout << x.first << "," << x.second; // 输出"120,60"
 ```
 
@@ -181,17 +183,17 @@ signal可以用成员函数disconnect()断开一个或一组插槽，或者使�
 
 ```c++
 signal<int(int)> sig;
-assert(sig.empty());					// 刚开始没有连接任何插槽
+assert(sig.empty());            // 刚开始没有连接任何插槽
 
 sig.connect(0, slots<10>());	// 连接2个组号为0的插槽
 sig.connect(0, slots<20>());
 sig.connect(1, slots<30>());	// 连接组号为1的插槽
 
 assert(sig.num_slots() == 3);	// 目前有3个插槽
-sig.disconnect(0);						// 断开组号为0的插槽，共两个
+sig.disconnect(0);              // 断开组号为0的插槽，共两个
 assert(sig.num_slots() == 1);
 sig.disconnect(slots<30>());	// 断开一个插槽
-assert(sig.empty());					// 信号不再连接任何插槽
+assert(sig.empty());            // 信号不再连接任何插槽
 ```
 
 ## 更灵活地管理信号连接
@@ -201,15 +203,15 @@ assert(sig.empty());					// 信号不再连接任何插槽
 ```c++
 class connection {
 public:
-  connection();									// 构造函数与析构函数
+  connection();                              // 构造函数与析构函数
   connection(const connection&);
   connection& operator=(const connection&);
   
-  void disconnect() const;			// 插槽连接管理
+  void disconnect() const;                  // 插槽连接管理
   bool connected() const;
   
-  bool blocked() const;					// 插槽是否被阻塞
-  void swap(const connection&);	// 交换
+  bool blocked() const;                     // 插槽是否被阻塞
+  void swap(const connection&);             // 交换
   
   bool operator==(const connection&) const;	// 比较操作
   bool operator!=(const connection&) const;
@@ -226,10 +228,10 @@ connection c1 = sig.connect(0, slots<10>());
 connection c2 = sig.connect(0, slots<20>());
 connection c3 = sig.connect(1, slots<30>());
 
-c1.disconnect();							// 断开第一个连接
-assert(sig.num_slots() == 2);	// sig现在连接两个插槽
-assert(!c1.connected());			// c1不再连接信号
-assert(c2.connected());				// c2仍然连接信号
+c1.disconnect();              // 断开第一个连接
+assert(sig.num_slots() == 2); // sig现在连接两个插槽
+assert(!c1.connected());      // c1不再连接信号
+assert(c2.connected());       // c2仍然连接信号
 ```
 
 scoped_connection，提供类似scoped_ptr的RAII功能：插槽与信号的连接仅在作用域内生效，当离开作用域时连接就会自动断开。
@@ -255,20 +257,20 @@ signal<int(int) > sig;
 
 connection c1 = sig.connect(0, slots<10>());
 connection c2 = sig.connect(0, slots<20>());
-assert(sig.num_slots() == 2);					// 有两个插槽连接
-sig(2);																// 调用两个插槽
+assert(sig.num_slots() == 2); // 有两个插槽连接
+sig(2);                       // 调用两个插槽
 
 cout << "begin blocking..." << endl;
 {
-  shared_connection_block block(c1);	// 阻塞c1连接
-  assert(sig.num_slots() == 2);				// 仍然有两个连接
-  assert(c1.blocked());								// c1被阻塞
-  sig(2);															// 只有一个插槽会被调用
-}																			// 离开作用与，阻塞自动解除
+  shared_connection_block block(c1); // 阻塞c1连接
+  assert(sig.num_slots() == 2);      // 仍然有两个连接
+  assert(c1.blocked());              // c1被阻塞
+  sig(2);                            // 只有一个插槽会被调用
+}                                    // 离开作用与，阻塞自动解除
 
 cout << "end blocking..." << endl;
 assert(!c1.blocked());
-sig(2);																// 可以调用两个插槽
+sig(2); // 可以调用两个插槽
 ```
 
 ## 自动管理连接
@@ -278,13 +280,13 @@ sig(2);																// 可以调用两个插槽
 ```c++
 signal<int(int) > sig;
 
-sig.connect(slots<10>());		// 正常连接
+sig.connect(slots<10>()); // 正常连接
 
-auto p = new slots<20>;			// 创建一个指针对象
-sig.connect(ref(*p));				// 用ref包装，连接到引用
+auto p = new slots<20>;   // 创建一个指针对象
+sig.connect(ref(*p));     // 用ref包装，连接到引用
 
-delete p;										// 指针被销毁
-sig(1);											// 信号调用将发生未定义行为
+delete p; // 指针被销毁
+sig(1);   // 信号调用将发生未定义行为
 ```
 
 slot的类摘要如下：
@@ -310,17 +312,17 @@ public:
 示范boost.weak_ptr：
 
 ```c++
-typedef signal<int(int) >signal_t;				// typedef用于简化类型声明
+typedef signal<int(int) >signal_t; // typedef用于简化类型声明
 signal_t sig;
 
-sig.connect(slots<10>());									// 连接一个普通的slot
-auto p = boost::make_shared<slots<20>>();	// 用boost::shared_ptr管理资源
+sig.connect(slots<10>());                 // 连接一个普通的slot
+auto p = boost::make_shared<slots<20>>(); // 用boost::shared_ptr管理资源
 
 // 注意slot_type的用法
 sig.connect(signal_t::slot_type(ref(*p)).track(p));
-p.reset();																// 销毁插槽
-assert(sig.num_slots() == 1);							// 一个插槽被自动断开
-sig(1);																		// 只有一个插槽被调用
+p.reset();                    // 销毁插槽
+assert(sig.num_slots() == 1); // 一个插槽被自动断开
+sig(1);                       // 只有一个插槽被调用
 ```
 
 示范slot用于bind和function的代码：
@@ -340,10 +342,10 @@ sig.connect(slot_t(func).track(p1));	// 直接跟踪function
 // 使用bind语法，直接绑定
 sig.connect(slot_t(&slots<20>::operator(), p2.get(), _1).track(p2));
 
-p1.reset();														// 销毁两个指针对象
+p1.reset();                   // 销毁两个指针对象
 p2.reset();
-assert(sig.num_slots() == 0);					// 此时已经自动断开了所有连接
-sig(1);																// 不发生任何插槽调用
+assert(sig.num_slots() == 0); // 此时已经自动断开了所有连接
+sig(1);                       // 不发生任何插槽调用
 ```
 
 ## 应用于观察者模式
@@ -359,10 +361,10 @@ public:
   void press()
   {
     cout << "Ring alarms..." << endl;
-    alarm();													// 调用signal，发出信号，引发插槽调用
+    alarm();                            // 调用signal，发出信号，引发插槽调用
   }
 private:
-  signal_t alarm;											// 信号对象
+  signal_t alarm;                       // 信号对象
 }
 
 typedef variate_generator<rand48, uniform_smallint<> > bool_rand;
@@ -376,15 +378,15 @@ template<char const *name>
 class nurse
 {
 private:
-  bool_rand &rand;									// 随机数发生器
+  bool_rand &rand;       // 随机数发生器
 public:
-  nurse():rand(g_rand){}						// 构造函数
+  nurse():rand(g_rand){} // 构造函数
   void action()
   {
     cout << name;
-    if (rand() > 30)								// 70%的概率惊醒
+    if (rand() > 30) // 70%的概率惊醒
     { cout << " wakeup and open the door." << endl; }
-    else														// 30%的概率继续睡觉
+    else // 30%的概率继续睡觉
     { cout << "is sleeping..." << endl; }
   }
 };
@@ -404,9 +406,9 @@ public:
   void action()
   {
     cout << "Baby " << name;
-    if (rand() > 50)								// 50%的概率惊醒并哭闹
+    if (rand() > 50) // 50%的概率惊醒并哭闹
     { cout << " wakeup and crying loudly..." << endl; }
-    else														// 50%的概率继续睡觉
+    else // 50%的概率继续睡觉
     { cout << " is sleeping sweetly..." << endl; }
   }
 };
@@ -448,25 +450,25 @@ g.press(r);
    class demo_class
    {
    public:
-     typedef signal<void()> signal_t;				// 类型定义方便使用
-     shared_ptr<signal_t> sig;								// shared_ptr of signal
+     typedef signal<void()> signal_t; // 类型定义方便使用
+     shared_ptr<signal_t> sig;        // shared_ptr of signal
      
      int x;
      demo_class():sig(new signal_t), x(10){} // 构造函数
    };
    
-   void print()															// 一个插槽函数
+   void print() // 一个插槽函数
    { cout << "hello sig." << endl; }
    
    int main()
    {
      demo_class obj;
      assert(obj.sig.use_count() == 1);
-     demo_class obj2(obj);										// 拷贝构造
+     demo_class obj2(obj); // 拷贝构造
      assert(obj.sig.use_count() == 2);
      
-     obj.sig->connect(&print);								// obj链接插槽
-     (*obj2.sig)();													// obj2可以调用共享的信号
+     obj.sig->connect(&print); // obj链接插槽
+     (*obj2.sig)();            // obj2可以调用共享的信号
    }
    ```
 
@@ -539,12 +541,12 @@ g.press(r);
    
    // 下面的两种function和signal的调用代码在功能上是等价的
    function<void()> func;	// function对象
-   func = f;								// 存储一个可调用物
-   func();									// 调用函数
+   func = f; // 存储一个可调用物
+   func();   // 调用函数
    
-   signal<void()> sig;			// signal对象
-   sig.connect(&f);				// 连接一个插槽
-   sig();									// 触发事件，产生信号，调用插槽
+   signal<void()> sig; // signal对象
+   sig.connect(&f);    // 连接一个插槽
+   sig();              // 触发事件，产生信号，调用插槽
    ```
 
 **需要注意它们的返回值，function对象直接返回被包装函数的返回值，而signal则使用optional对象作为返回值，signal真正的返回值需要使用解引用操作符 "星号"才能取得**
@@ -561,24 +563,24 @@ signal用于回调的灵活性比function强，但也使得signal的用法比较
      typedef signal<Signature> 							signal_type;
      typedef typename signal_type::slot_type slot_type;
      
-     connection connect(const slot_type& s)				// 连接插槽
+     connection connect(const slot_type& s)    // 连接插槽
      { return sig.connect(s); }
-     connection operator++(const slot_type& s)			// 操作符+=重载连接
+     connection operator++(const slot_type& s) // 操作符+=重载连接
      { return connect(s); }
      
-     template<typename... Args>										// c++11可变参数模板
+     template<typename... Args> // c++11可变参数模板
      typename signal_type::result_type
      operator()(Args&&... args)
-     { return sig(std::forward<Args>(args)...); }	// 完美转发
+     { return sig(std::forward<Args>(args)...); } // 完美转发
      
    private:
      signal_type sig;
    };
    
-   sig_ex<int(int)> sig;		// 使用类似c#的语法连接插槽
+   sig_ex<int(int)> sig; // 使用类似c#的语法连接插槽
    sig += slots<10>();
    sig += slots<5>();
-   sig(2);									// 信号调用
+   sig(2);               // 信号调用
    ```
 
    

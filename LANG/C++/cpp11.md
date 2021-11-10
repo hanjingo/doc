@@ -33,6 +33,18 @@ int main()
 
 ---
 
+## 列表初始化
+
+TODO
+
+---
+
+## std::function
+
+TODO
+
+---
+
 
 
 ## 参考

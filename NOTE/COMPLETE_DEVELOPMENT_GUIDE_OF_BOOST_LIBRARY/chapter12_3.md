@@ -23,7 +23,7 @@ void handler(const error_code& ec,          // 操作的错误码
             std::size_t bytes_transferred); // 传输的字节数
 ```
 可以使用bind把任意函数适配为asio要求的handler形式，asio库在子名字空间boost::asio::placeholders里定义了几个新的占位符，这些新占位符比bind自己的_1,_2等占位符的含义更清晰。
-- error             :表示error_code值。
+- error                     :表示error_code值。
 - signal_number     :表示UNIX信号值。
 - bytes_transferred :表示可读写的字节数。
 
@@ -152,9 +152,7 @@ public:
     void add(int signal_number);            // 添加信号量
     void remove(int signal_number);         // 删除信号量
     void clear();                           // 清空信号量集合
-
     void cancel();                          // 取消所有异步操作
-
     void async_wait(SignalHandler handler); // 添加处理handler,非阻塞
 };
 ```
