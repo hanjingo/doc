@@ -129,7 +129,7 @@ int main()
 
 初始化类成员有2种方式：
 
-- 初始化列表
+- 初始化列表(list-initialization)
 - 构造函数赋值
   1. 初始化阶段
   2. 计算阶段
@@ -224,7 +224,40 @@ struct foo
 
 `std::move`
 
+`std::move`实施的是无条件的向右值型别的强制型别转换。把对象的所有权从一个对象转移到另一个对象，只转移所有权而没有内存移动或拷贝。
+
 c++使用`std::move`把左值转换为右值，配合`&&`可以进行高效的参数传递；
+
+用途：
+
+- 避免复制入参数据成员的过程产生的复制操作成本
+- 有条件的进行强制类型转换
+
+实现：
+
+- c++11
+
+```c++
+template<typename T>
+typename remove_reference<T>::type&& move(T&& param)
+{
+    using ReturnType = typename remove_reference<T>::type&&; // 别名
+    
+    return static_cast<ReturnType>(param);
+}
+```
+
+- c++14
+
+```c++
+template<typename T>
+decltype(auto) move(T&& param)
+{
+    using ReturnType = remove_reference_t<T>&&;
+    
+    return static_cast<ReturnType>(param);
+}
+```
 
 在左值被转移之后，其值为空；例：
 
@@ -235,6 +268,89 @@ cout << "before:" << "\"" << str << "\"" << endl; // 输出"hello"
 v.push_bak(std::move(str));
 cout << "after:" << "\"" << str << "\"" << endl; // 输出""
 ```
+
+---
+
+## optional
+
+`std::optional`可以接受对象或者`nullopt`(表示为空值)
+
+有以下几种方式创建optional：
+
+- 直接创建或者用nullopt赋值
+
+  ```c++
+  std::optional<int> empty;
+  std::optional<int> opt = std::nullopt;
+  ```
+
+- 使用对象初始化
+
+  ```c++
+  std::optional<int> opt = 1;
+  Some s;
+  std::optional<Some> opt = s;
+  ```
+
+- 使用`std::make_optional`构造（类似于`std::make_shared`），可以传递参数
+
+  ```c++
+  optional<Some> opt = std::make_optional<Some>(1);
+  ```
+
+- 使用`std::in_place`构造
+
+  ```c++
+  optional<Some> opt = std::in_place<Some>(1);
+  ```
+
+示例：
+
+```c++
+#include <iostream>
+#include <optional>
+using namespace std;
+
+int main()
+{
+	std::optional<int> pp = 1;
+  if (pp) { cout << *pp << endl; } // 1
+  pp = nullopt;
+  if (pp) { cout << *pp << endl; } // 不输出
+}
+```
+
+---
+
+## override
+
+如果派生类在虚函数声明时使用了`override`描述符，那么该函数必须重载其基类中的同名函数，否则代码将无法通过编译，提高了编译器检查的安全性。
+
+示例：
+
+```c++
+struct Base 
+{
+    virtual void VNeumann(int g) = 0;
+    virtual void DKnuth() const;
+    void Print();
+};
+struct DerivedMid: public Base 
+{
+};
+struct DerivedTop : public DerivedMid 
+{
+    void VNeumann(double g) override; // 无法通过编译，参数不一致，并非重载    
+		void DKnuth() override;           // 无法通过编译，常量性不一致，并非重载
+		void Print() override;            // 无法通过编译，非虚函数重载
+};
+```
+
+---
+
+## std::forwrd
+
+仅当传入的实参被绑定到右值时，`std::forward`才针对该实参实施向右值型别的强制型别转换。
 
 ---
 

@@ -1,3 +1,378 @@
-# c++最佳实践
+# C++最佳实践
 
-TODO
+[TOC]
+
+## 1正确使用模版类型推导
+
+- 在模板型别推导过程中，具有引用型别的实参会被当成非引用型别来处理，其引用性会被忽略；
+
+  ```c++
+  template<typename T>
+  void f(T& param);
+  int x = 27;
+  const int cx = x;
+  const int& rx = x;
+  // 在各次调用中，对param和T的型别推导结果如下:
+  f(x);   //T的型别是 int, param的型别是 int&
+  f(cx);  //T的型别是 const int, param的型别是 const int&
+  f(rx);  //T的型别是 const int, param的型别是 const int&
+  ```
+
+- 对万能引用形参进行推导时，左值实参会进行特殊处理；
+
+  ```c++
+  template<typename T>
+  void f(T&& param);
+  int x = 27;
+  const int cx = x;
+  const int& rx = x;
+  f(x);   //x是个左值，所以T的型别是int&, param的型别也是int&
+  f(cx);  //cx是个左值，所以T的型别是const int&, param的型别也是 const int&
+  f(rx);  //rx是个左值，所以T的型别是const int&, param的型别也是 const int&
+  f(27);  //27是个右值，所以T的型别是int，这么一来，param的型别就成了 int&&
+  ```
+
+- 对按值传递的形参进行推导时，若实参型别中带有const或volatile，则他们还是会被当作不带const或volatile的型别来处理；
+
+  ```c++
+  template<typename T>
+  void f(T param);
+  const char* const ptr = "abc";  //ptr是个指向const对象的const指针
+  f(ptr);                         //传递型别为const char* const的实参
+  ```
+
+- 在模板型别推导过程中，数组或函数型别的实参会退化成对应的指针，除非他们被用来初始化引用；
+
+  ```c++
+  void someFunc(int, double);
+  template<typename T>
+  void f1(T param);
+  f1(someFunc);   //param被推导为函数指针，具体型别是 void(*)(int, double)
+  
+  template<typename T>
+  vid f2(T& param);
+  f2(someFunc);   //param被推导为函数引用，具体型别是 void(&)(int, double)
+  ```
+
+---
+
+## 2正确进行型别推导
+
+- 在一般情况下，auto型别推导和模版型别推导是一模一样的，但是auto型别推导会假定用大括号括起来的初始化表达式代表一个`std::initializer_list`(初始化列表)，但模版型别推导却不会；
+
+  ```c++
+  auto x = { 11, 23, 9 }; // x的型别是 std::initializer_list<int>
+  
+  template<typename T>    // 带有形参的模版
+  void f(T param);        // 与x的声明等价的声明式
+  f({ 11, 23, 9 });       // 错误！无法推导T的型别
+  ```
+
+- 在函数返回值或lambda式的形参中使用auto，意思是使用模版型别推导而非auto型别推导；
+
+  ```c++
+  std::vector<int> v;
+  ...
+  auto resetV = [&v](const auto& newValue) { v = newValue; }; // c++14
+  ...
+  resetV({ 1, 2, 3 });    // 错误！无法为{ 1, 2, 3 }完成型别推导
+  ```
+
+---
+
+## 3正确使用decltype
+
+- 绝大多数情况下，`decltype`会得出变量或表达式的型别而不做任何修改；
+
+- 对于型别为T的左值表达式，除非该表达式仅有一个名字，`decltype`总是得出型别`T&`；
+
+- c++14支持`decltype(auto)`，和auto一样，它会从其初始化表达式出发来推导型别，但是它的型别推导使用的是`decltype`的规则；
+
+  ```c++
+  Widget w;
+  const Widget& cw = w;
+  decltype(auto) myWidget2 = cw; // decltype型别推导：const Widget&
+  ```
+
+---
+
+## 4优先使用auto
+
+* auto变量必须初始化，避免致兼容性和效率问题的型别不匹配现象，还可以简化重构流程，简化代码；
+
+  ```c++
+  int x1;      // 有潜在的未初始化风险
+  auto x2;     // 编译错误！必须有初始化物
+  auto x3 = 0; // 没问题
+  auto derefLess = [](const auto& p1, const auto& p2) { return *p1 < *p2; }; // 使用auto表示lambda
+  ```
+
+* 隐形代理型别可以导致auto类型推导错误；
+
+  ```c++
+  std::vector<bool> features(const Widget& w);
+  Widget w;
+  auto highPriority = features(w)[5]; // highPriority是std::vector<bool>::reference型别
+  ```
+
+* 带显式型别的初始化物习惯用法强制auto推导出你想要的型别；
+
+  ```c++
+  std::vector<bool> features(const Widget& w);
+  Widget w;
+  auto highPriority = static_cast<bool>(features(w)[5]); // highPriority被强制初始化为bool
+  ```
+
+---
+
+## 5优先使用初始化列表
+
+* 大括号初始化可以应用的语境最为广泛，可以阻止隐式窄化型别转换；
+
+  ```c++
+  std::vector<int> v{ 1, 3, 5 }; // v的初始内容为1, 3, 5
+  class Widget {
+  private:
+      int x{ 0 }; // 推荐
+      int y = 0;  // 可行
+      int z(0);   // 不可行
+  };
+  ```
+
+* 在构造函数重载决议期间，只要有任何可能，大括号初始化物就会与带有std::initializer_list型别的形参相匹配，即使其他重载版本有着貌似更加匹配的形参表；
+
+  ```c++
+  class Widget {
+  pubic:
+      Widget(int i, bool b);
+      Widget(int i, double d);
+      Widget(std::initializer_list<long double> il);
+  };
+  Widget w1(10, true); // 调用第一个构造函数
+  Widget w2{10, true}; // 调用第三个构造函数；使用大括号，调用的是带有std::initializer_list型别形参的构造函数(10和true被强制转换为long double)
+  Widget w3(10, 5.0);  // 调用第二个构造函数
+  Widget w4{10, 5.0};  // 调用第三个构造函数；使用大括号，调用的是带有std::initializer_list型别形参的构造函数(10和5.0倍强制转换为long double)
+  ```
+
+---
+
+## 6优先选用nullptr
+
+* 相对于0或NULL，优先选用nullptr；
+
+* 避免在整型和指针型别之间重载；
+
+  ```c++
+  void f(int);
+  void f(bool);
+  void f(void*);
+  f(0);       // 调用的是f(int)，而不是f(void*)
+  f(NULL);    // 可能通不过编译，但一般会调用f(int)，从来不会调用f(void*) 
+  f(nullptr); // 调用的是f(void*)
+  ```
+
+---
+
+## 7优先选用using而非typedef
+
+* `typedef`和`using`的作用基本是一致的;
+
+  ```c++
+  typedef void (*FP)(int, const std::string&);  // 使用typedef
+  using FP = void (*)(int, const std::string&); // 使用别名
+  ```
+
+* typedef不支持模板化，但别名声明支持；
+
+  ```c++
+  // 使用typedef
+  template<typename T>
+  struct MyAllocList {
+      typedef std::list<T, MyAlloc<T>> type;   // MyAllocList<T>::type是std::list<T, MyAlloc<T>>的同义词
+  };
+  MyAllocList<Widget>::type lw;
+  ```
+  
+  ```c++
+  // 使用别名
+  template<typename T>
+  using MyAllocList = std::list<T, MyAlloc<T>>; // std::list<T, MyAlloc<T>>的同义词
+  MyAllocList<Widget> lw;
+  ```
+
+---
+
+## 8优先选用enum class
+
+* 限定作用域枚举类型降低了名字空间污染；
+
+  ```c++
+  enum class Color { black, white, red }; // black,white,red所在作用域被限定在Color内
+  auto white = false;     // 没问题，范围内并无其它“white”
+  Color c = white;        // 错误！范围内并无名为“white”的枚举量
+  Color c = Color::white; // 没问题
+  auto c = Color::white;  // 没问题
+  ```
+
+* 限定作用域的枚举型别仅在枚举型别内可见，只能通过强制型别转换以转换至其他型别，不限范围的枚举型别中的枚举量可以隐式转换到整数型别；
+
+  ```c++
+  // 不限定范围枚举型别
+  enum Color { black, white, red }; 
+  std::vector<std::size_t> primeFactors(std::size_t x);
+  Color c = red;
+  if(c < 14.5) {
+      auto factors = primeFactors(c);
+  }
+  ```
+
+  ```c++
+  // 限定范围枚举型别
+  enum class Color { black, white, red };
+  Color c = Color::red;
+  if (c < 14.5) {                     // 错误！不能将Color型别和double型别比较
+      auto factors = primeFactors(c); // 错误！不能将Color型别传入
+  }
+  ```
+
+* 限定作用域的枚举型别和不限定范围的枚举型别都支持底层型别指定，限定作用域的枚举型别的默认底层型别是int，而不限范围的枚举型别没有默认底层型别；
+
+* 限定作用域的枚举型别总是可以进行前置声明，而不限范围的枚举型别却只有在指定了默认底层型别的前提下才可以进行前置声明；
+
+  ```c++
+  enum Color;       // 错误
+  enum class Color; // 没问题
+  ```
+
+---
+
+## 9优先选用delete
+
+* 优先选用删除函数(delete)，而非private未定义函数；
+
+  ```c++
+  // private未定义函数
+  template <class charT, class traits = char_traits<charT> >
+  class basic_ios : public ios_base {
+  public:
+  		...
+  private:
+      basic_ios(const basic_ios&);            // 未定义
+      basic_ios& operator=(const basic_ios&); // 未定义
+  };
+  ```
+
+  ```c++
+  // 删除函数delete
+  template <class charT, class traits = char_traits<charT> >
+  class basic_ios : public ios_base {
+  public: // 习惯把delete函数声明为public
+      basic_ios(const basic_ios&) = delete;
+      basic_ios& operator=(const basic_ios&) = delete;
+  }
+  ```
+
+* 任何函数都可以删除(delete)，包括非成员函数和模板实现；
+
+  ```c++
+  // c++11 删除函数delete
+  class Widget {
+  public:
+      template<typename T>
+      void processPointer(T* ptr) { ... }
+  };
+  template<>
+  void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问权限，但被删除了
+  ```
+  
+  ```c++
+  // c++98 private未定义函数
+  class Widget {
+  public:
+      template<typename T>
+      void processPointer(T* ptr) { ... }
+  private:
+      template<> // 可能编译不过
+      void processPointer<void>(void*);
+  };
+  ```
+  
+
+---
+
+## 10 优先使用override
+
+- override让编译器在想要改的函数实际上并未修改时提醒你；
+
+- 评估改写函数造成的影响；
+
+- 支持重写的基本条件：
+
+  - 基类中的函数必须是虚函数
+  - 基类和派生类中的函数名字必须完全相同（析构函数例外）
+  - 基类和派生类中的函数形参型别必须完全相同
+  - 基类和派生类中的函数常量性（constness）必须完全相同
+  - 基类和派生类中的函数返回值和异常规格必须兼容
+  - (c++11新增)基类和派生类中的函数引用饰词（reference qualifier，`&`, `&&` ...）必须完全相同
+
+  ```c++
+  class Base {
+  public:
+      virtual void mf1() const;
+      virtual void mf2(int x);
+      virtual void mf3() &;
+      virtual void mf4() const;
+  };
+  
+  class Derived : public Base {
+  public:
+      virtual void mf1() const override;
+      virtual void mf2(int x) override;
+      virtual void mf3() & override;
+      void mf4() const override;
+  };
+  ```
+
+---
+
+## 11优先选用cost_iterator
+
+- 当迭代器指向的内容不需要修改时，优先选用const_iterator，而非iterator；
+
+  ```c++
+  std::vector<int> values;
+  // 容器的成员函数`cbegin`,`cend`等都返回`const_iterator`型别
+  auto it = std::find(values.cbegin(), values.cend(), 1983);
+  values.insert(it, 1998);
+  ```
+
+
+---
+
+## 12只要函数不会发射异常就加上noexcept声明
+
+* 相对于不带noexcept声明的函数，带有noexcept声明的函数有更多机会得到优化；
+
+  `noexcept`对函数的优化：优化器不需要在异常传出函数的前提下，将执行期栈保持在可开解状态；也不需要在异常逸出函数的前提下，保证所有其中的对象以其被构造顺序的逆序完成析构。
+
+  ```c++
+  RetType function(params) noexcept; // 最优化
+  RetType function(params) trow();   // 优化不够
+  RetType function(params);          // 优化不够
+  ```
+
+---
+
+## 13尽可能使用constexpr
+
+- constexpr具备const的所有属性，并且由编译期已知的值完成初始化；
+- constexpr函数在调用时若传入的实参值是编译期已知的，则会产出编译期结果；
+- 比起非constexpr对象或constexpr函数而言，constexpr对象或是constexpr函数可以用在一个作用域更广的语境中；
+
+---
+
+
+
+## 参考
+
+[1] Effective Modern C++.Scott Meyers

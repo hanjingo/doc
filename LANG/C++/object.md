@@ -1,12 +1,4 @@
-[TOC]
-
-# c++总结
-
-## 智能指针
-
-
-
-## 对象模型
+# C++对象
 
 1. new函数：先分配内存，再调用构造函数；delete函数：先调用析构函数，再释放内存；
 2. 只有`nonstatic data member`是在object内部的，其他的都在外面
@@ -25,14 +17,53 @@
 15. 一般越晚声明的`member`就在`class object`中越后（高）的位置，为了兼容c，`vptr`一般放在`class object`的后面。
 16. `static member`放在`data segment`而**不在**`class object`中。
 17. `virtual destructor`的作用是将基类的析构函数作为共享，防止内存泄漏。**不要把`virtual destructor`声明为`pure virtual destructor`。**
-19. 在以下3种情况，编译器会调用复制构造函数：
+18. 在以下3种情况，编译器会调用复制构造函数：
     - 一个对象以值传递的方式传入函数体
     - 一个对象以值传递的方式从函数返回
     - 一个对象需要通过另一个对象进行初始化
 
 
 
-## 继承关系
+## 类型转换
+
+### static_cast
+
+静态转换，用于各种隐式转化；在编译期间处理，无运行时类型检查来保证安全性。
+
+#### 用途
+
+- 基类与子类的指针或引用的上行转换(安全)和下行转换(不安全)
+- 基本数据类型之间的转换
+- 空指针转换为目标类型的空指针
+- 任何类型的表达式转化成void类型
+
+### dynamic_cast
+
+动态转换，只能用于含有虚函数的类；在运行期处理，带类型检查。
+
+#### 用途
+
+- 基类与子类的指针或引用的上行转换(安全)和下行转换(安全，带类型检查功能)
+- 交叉转换(`B:A, D:A; dynamic_cast<D>(B)`)
+
+### reinterpret_cast
+
+#### 用途
+
+- 指针与整数之间的转换
+
+### const_cast
+
+修改`const`和`volatile`属性
+
+#### 用途
+
+- 常量指针转非常量指针
+- 常量引用转非常量引用
+
+
+
+## 总结
 
 1. `protected`继承会将`public`的member转化为`protected`
 2. `private`继承会将public和protected的member转化为private
@@ -40,57 +71,3 @@
 4. 多态：同一操作作用于不同的对象，产生不同的结果。有以下分类：
    	- 编译时多态（重载）
    	- 运行时多态（虚函数）
-
-
-
-## stl
-
-
-
-## 并发编程
-
-1. 用`join()`来加入线程（等待），用`detach()`来分离线程（不等）。
-
-2. 要确保`std::thread`对象被销毁前已经调用`join()`或`detach()`，如果在线程开始之后在调用`join()`之前引发一场，对`join()`的调用就容易被跳过。
-
-3. 可以使用以下方法来给线程函数传递参数：
-
-   - 使用`std::ref`包装
-   - 使用`std::move`来转移所有权
-
-4. 通过一下方法来获取线程标识符`std::thread::id`:
-
-   - 通过从与之相关联的`std::thread`对象中调用`get_id()`获得。
-   - 线程构建时返回。
-
-5. 互斥元用法：`std::lock_guard<std::mutex> guard(mutex_obj)`
-
-6. 可以通过以下方法来等待其他线程完成：
-
-   - 使用条件变量`std::condition_variable`和`std::condition_variable_any`
-
-7. 使用`std::future`来从线程中返回参数
-
-8. 常用的原子操作：
-
-   - load
-   - store
-   - exchange
-   - compare
-   - exchange
-
-9. 无锁编程准则：
-
-   - 使用`std::memory_order_seq_cst`作为原型
-   - 使用无锁内存回收模式
-   - 当心ABA问题
-   - 识别忙于等待的循环以及辅助其它线程
-   
-10. **阿姆达尔定律(Amdahl's law)：**$P=\frac{1}{f_s + \frac{1 - f_s}{N}}$
-
-    - $P$: 性能
-    - $f_s$: "串行部分"
-    - $N$: 处理器个数
-
-
-

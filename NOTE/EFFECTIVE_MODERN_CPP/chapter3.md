@@ -220,7 +220,7 @@ auto val = std::get<static_cast<std::size_t>(UserInfoFields::uiEmail)>(uInfo); /
 template <class charT, class traits = char_traits<charT> >
 class basic_ios : public ios_base {
 public:
-
+		...
 private:
     basic_ios(const basic_ios&);            // 未定义
     basic_ios& operator=(const basic_ios&); // 未定义

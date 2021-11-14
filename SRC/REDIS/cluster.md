@@ -160,8 +160,86 @@ CLUSTER ADDSLOTS <slot> [slot ...]
 例，将槽0至槽5000指派给节点7000负责：
 
 ```sh
-CLUSTER ADDSLOTS 0 1 2 3 4 ... 5000
-# 查看
-CLUSTER INFO
+CLUSTER ADDSLOTS 1 2
 ```
+
+执行上面的命令之前，节点的clusterState结构如下：
+
+![redis_cluster_addslots_example1](res/redis_cluster_addslots_example1.png)
+
+执行上面的命令之后，节点的clusterState结构如下：
+
+![redis_cluster_addslots_example2](res/redis_cluster_addslots_example2.png)
+
+### 在集群中执行命令
+
+```mermaid
+graph TD
+  send(客户端向节点发送数据库键命令) --> 节点计算键属于哪个槽 --> is_curr_node{当前节点就是负责处理键所在槽的节点?}
+  is_curr_node --是--> 节点执行命令
+  is_curr_node --不是--> 节点向客户端返回一个MOVED错误 --> 客户端根据MOVED错误提供的信息转向至正确的节点 --重试--> send 
+```
+
+1. 客户端想节点发送命令；
+2. 节点计算键属于哪个槽（CRC16算法）；
+3. 如果所在的槽正好在当前节点，就指派给当前节点，直接执行这个命令；
+4. 如果键所在的槽并没有指派给当前节点，那么节点会向客户端返回一个MOVED错误，指引客户端转向（redirect）至正确的节点，并再次发送之前想要执行的命令；
+
+使用以下语句计算键属于哪个槽：
+
+```c++
+CLUSTER KEYSLOT "xx"
+```
+
+MOVED错误的格式为：
+
+```sh
+MOVED <slot> <ip>:<port> # slot:键所在的槽，ip:port:负责处理槽slot的节点的IP地址和端口号
+```
+
+使用以下命令返回属于槽slot的数据库键：
+
+```sh
+CLUSTER GETKEYSINSLOT <slot> <count> # count:键最多个数，slot:槽
+```
+
+
+
+## 重新分片
+
+Redis集群的重新分片操作可以将任意数量已经指派给某个节点（源节点）的槽改为指派给另一个节点（目标节点），并且相关槽所属的键值对也会从源节点被移动到目标节点。
+
+重新分片操作可以在线（online）进行，在重新分片的过程中，集群不需要下线，并且源节点和目标节点都可以继续处理命令请求。
+
+### 实现原理
+
+Redis集群的重新分片操作是由Redis的集群管理软件redis-trib负责执行的，Redis提供了进行重新分片所需要的所有命令，而redis-trib则通过向源节点和目标节点发送命令来进行重新分片操作。
+
+迁移键的过程：
+
+```sequence
+Title:迁移键的过程
+redis_trib->源节点: 1.发送命令 CLUSTER GETKEYSINSLOT <slot> <count>
+源节点-->redis_trib: 2.返回最多count个属于槽slot的键
+redis_trib->源节点: 3.对于每个返回键，向源节点发送一个MIGRATE命令
+源节点->目标节点: 4.根据MIGRATE命令的指示将键迁移至目标节点
+```
+
+对槽slot进行重新分片的整个过程：
+
+```mermaid
+graph TD
+开始对槽slot进行重新分片 --> 目标节点准备导入槽slot的键值对 --> 源节点准备迁移槽slot的键值对 --> is_save{源节点是否保存了属于槽slot的键?}
+is_save --否--> dispatch(将槽slot指派给目标节点)
+is_save --是--> 将这些键全部迁移至目标节点 -->dispatch --> 完成对槽slot的重新分片
+```
+
+1. redis-trib对目标节点发送`CLUSTER SETSLOT <slot> IMPORTING <source_id>`命令，让目标节点准备好从源节点导入（import）属于槽slot的键值对。
+2. redis-trib对源节点发送`CLUSTER SETSLOT <slot> MIGRATING <target_id>`命令，让源节点准备好将属于槽slot的键值对迁移（migrate）至目标节点。
+3. redis-trib向源节点发送`CLUSTER GETKEYSINSLOT <slot> <count>`命令，获得最多count个属于槽slot的键值对的键名（key name）。
+4. 对于步骤3获得的每个键名，redis-trib都向源节点发送一个`MIGRATE <target_ip> <target_port> <key_name> 0 <timeout>`命令，将被选中的键原子地从源节点迁移至目标节点。
+5. 重复执行步骤3和步骤4，直到源节点保存的所有属于槽slot的键值对都被迁移至目标节点为止。
+6. redis-trib向集群中的任意一个节点发送`CLUSTER SETSLOT <slot> NODE <target_id>`命令，将槽slot指派给目标节点，这一指派信息会通过消息发送至整个集群，最终集群中的所有节点都会知道槽slot已经指派给目标节点。
+
+## ASK错误
 

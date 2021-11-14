@@ -1,23 +1,27 @@
-# placement new 关键字
+# new关键字
 
 
 
 ## new
 
-new operator就是new操作符，不能被重载，假如A是一个类，那么A * a=new A;实际上执行如下3个过程。 
-（1）调用operator new分配内存，operator new (sizeof(A)) 
-（2）调用构造函数生成类对象，A::A() 
+new operator就是new操作符，不能被重载，假如A是一个类，那么`A * a=new A`;实际上执行如下3个过程。 
+（1）调用operator new分配内存，`operator new (sizeof(A)) `
+（2）调用构造函数生成类对象，`A::A() `
 （3）返回相应指针 
-事实上，分配内存这一操作就是由operator new(size_t)来完成的，如果类A重载了operator new，那么将调用A::operator new(size_t )，否则调用全局::operator new(size_t )，后者由C++默认提供。 
+事实上，分配内存这一操作就是由`operator new(size_t)`来完成的，如果类A重载了operator new，那么将调用`A::operator new(size_t )`，否则调用全局`::operator new(size_t )`，后者由C++默认提供。 
 
 
 
 ## operator new
 
 operator new是函数，分为三种形式（前2种不调用构造函数，这点区别于new operator）： 
+
+```c++
 void* operator new (std::size_t size) throw (std::bad_alloc); 
 void* operator new (std::size_t size, const std::nothrow_t& nothrow_constant) throw(); 
 void* operator new (std::size_t size, void* ptr) throw(); 
+```
+
 第一种分配size个字节的存储空间，并将对象类型进行内存对齐。如果成功，返回一个非空的指针指向首地址。失败抛出bad_alloc异常。 
 第二种在分配失败时不抛出异常，它返回一个NULL指针。 
 第三种是placement new版本，它本质上是对operator new的重载，定义于#include <new>中。它不分配内存，调用合适的构造函数在ptr所指的地方构造一个对象，之后返回实参指针ptr。 
@@ -46,12 +50,12 @@ placement new是operator new的一个重载版本，只是我们很少用到它�
 使用方法如下：
 
 1. 缓冲区提前分配
-	```c++
+	````c++
 	// 可以使用堆的空间，也可以使用栈的空间，所以分配方式有如下两种：
+	class MyClass {…};
+	char *buf=new char[N*sizeof(MyClass)+ sizeof(int) ] ; 或者char buf[N*sizeof(MyClass)+ sizeof(int) ];
+	```
 
- 	class MyClass {…};
- 	char *buf=new char[N*sizeof(MyClass)+ sizeof(int) ] ; 或者char buf[N*sizeof(MyClass)+ sizeof(int) ];
- 	```
 2. 对象的构造
    ```c++
    MyClass * pClass=new(buf) MyClass;

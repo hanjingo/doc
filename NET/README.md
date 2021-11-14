@@ -4,6 +4,8 @@
 
 - [DNS协议](dns.md)
 
+- [游戏服务器学习路线](game_server_study_path.md)
+
 - [HTTP协议](http.md)
 
 - [网络I/O](io.md)

@@ -11,6 +11,7 @@
 - [唯一ID](id.md)
 - [IM系统构建](im.md)
 - [内存管理](mem_mgr.md)
+- [捏脸系统设计](pinch_face.md)
 - [软件测试](software_test.md)
 - [软件调试工具](test_tool.md)
 - [软件调试方法](testway.md)
@@ -29,7 +30,6 @@
 - [IPFS](IPFS/README.md)
 - [SKYNET](SKYNET/README.md)
 - [TELEGRAM](TELEGRAM/README.md)
-- [U3D](U3D/README.md)
 - [Mysql](MYSQL/README.md)
 - [Redis](REDIS/README.md)
 

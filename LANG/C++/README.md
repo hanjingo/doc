@@ -1,27 +1,18 @@
 # c++
 
-- [总结](summary.md)
+- [STL速查手册](stl_api.md)
 - [最佳实践](best_practice.md)
-- [转换函数](cast.md)
 - [const关键字](const.md)
-- [常量指针和指针常量](const_ptr.md)
 - [新特性](cpp_new_feature.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)
 - [多线程](multi_thread.md)
-- [optional关键字](optional.md)
-- [override关键字](override.md)
-- [placement new操作符](placement_new.md)
-- [指针和引用](ptr_ref.md)
+- [new操作符](new.md)
+- [对象模型](object.md)
+- [指针](pointer.md)
 - [静态变量](static.md)
 - [虚函数](vfunc.md)
 - [volatile关键字](volatile.md)
-
-## STL
-
-- [STL速查手册](STL/api.md)
-- [std::move和std::forward](STL/move_forward.md)
-- [智能指针](smart_ptr.md)
 
 ## boost程序库
 
