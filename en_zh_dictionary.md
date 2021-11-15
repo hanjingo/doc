@@ -16,7 +16,7 @@
 | [**L**](#L) | [la](#la) |           |           |           | [le](#le) |           |           |           | [li](#li) |           |           |           |           |           | [lo](#lo) |           |           |           |           |           | [lu](#lu) |           |           |           |           |      |
 | [**M**](#M) | [ma](#ma) |           |           |           | [me](#me) |           |           |           | [mi](#mi) |           |           |           |           |           | [mo](#mo) |           |           |           |           |           | [mu](#mu) |           |           |           | [my](#my) |      |
 | [**N**](#N) | [na](#na) |           |           |           | [ne](#ne) |           |           |           | [ni](#ni) |           |           |           |           |           | [no](#no) |           |           |           |           |           | [nu](#nu) |           |           |           |           |      |
-| [**O**](#O) |           | [ob](#ob) | [oc](#oc) | [od](#od) |           | [of](#of) |           |           |           |           |           | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |           | [or](#or) |           |           | [ou](#ou) | [ov](#ov) | [ow](#ow) |           | [oy](#oy) |      |
+| [**O**](#O) |           | [ob](#ob) | [oc](#oc) | [od](#od) |           | [of](#of) |           |           |           |           |           | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |           | [or](#or) | [os](#os) |           | [ou](#ou) | [ov](#ov) | [ow](#ow) |           | [oy](#oy) |      |
 | [**P**](#P) | [pa](#pa) |           |           |           | [pe](#pe) |           |           | [ph](#ph) | [pi](#pi) |           |           | [pl](#pl) |           |           | [po](#po) |           |           | [pr](#pr) | [ps](#ps) |           | [pu](#pu) |           |           |           | [py](#py) |      |
 | [**Q**](#Q) |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           |           | [qu](#qu) |           |           |           |           |      |
 | [**R**](#R) | [ra](#ra) |           |           |           | [re](#re) |           |           | [rh](#rh) | [ri](#ri) |           |           |           |           |           | [ro](#ro) |           |           |           |           |           | [ru](#ru) |           |           |           |           |      |
@@ -771,6 +771,8 @@ contender `/kənˈtendə(r)/` 竞争者，角逐者，钻机，打孔装置
 
 contour `/ˈkɒntʊə(r)/` 外形，轮廓，等高线
 
+contradictory `/ˌkɒntrəˈdɪktəri/` 矛盾的，对立的，不一致的
+
 controversial `/ˌkɒntrəˈvɜːʃl/` 有争议的
 
 convincing `/kən'vɪnsɪŋ/` 有说服力的，令人信服的
@@ -782,6 +784,8 @@ cohesion `/kəʊˈhiːʒn/` 凝聚，凝聚力，结合
 coinage `/ˈkɔɪnɪdʒ/` 货币，货币制度，铸币权
 
 coincide `/ˌkəʊɪnˈsaɪd/` 巧合，一致，相符，重叠
+
+collaborate `/kəˈlæbəreɪt/` 合作，协作
 
 collapse `/kəˈlæps/` 崩溃，崩塌，垮掉
 
@@ -1201,6 +1205,8 @@ dismember `/dɪsˈmembə(r)/` 肢解，瓜分，分割
 
 dismiss `/dɪsˈmɪs/` 解雇，开除，不考虑，免职
 
+disorganize `/dɪsˈɔːɡənaɪzd/` 破坏组织，扰乱秩序，计划不周的
+
 dispensable `/dɪˈspensəbl/` 不必要，不重要，可有可无
 
 disperse `/dɪˈspɜːs/` 疏散，驱散，散开，传播
@@ -1364,6 +1370,8 @@ elasticity `/ˌiːlæ'stɪsəti/` 弹性，弹力，灵活性，伸缩性
 election `/ɪˈlɛkʃ(ə)n/` 选举
 
 elegance `/ˈɛlɪgəns/` 优雅，优美
+
+elevate `/ˈelɪveɪt/` 提升，提高，提拔，举起
 
 elf `/elf/` 精灵，二进制程序的可执行部分
 
@@ -1611,6 +1619,8 @@ favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
 [回到F](#F)--[回到顶部](#英汉词典)
 
+feudal `/ˈfjuːdl/` 封建制度的，领地的
+
 feminist `/ˈfemənɪst/` 女权主义者，女权运动者
 
 fence `/fens/` 栅栏，篱笆 
@@ -1640,6 +1650,8 @@ fitness `/ˈfɪtnəs/` 健身，健康，健壮
 ### fl
 
 [回到F](#F)--[回到顶部](#英汉词典)
+
+flagella `/flə'dʒelə/` 鞭毛，鞭状体
 
 flake `/fleɪk/` 薄片，脱落，剥落
 
@@ -2403,6 +2415,8 @@ lumber `/ˈlʌmbər/` 木材，废旧家具，拖累，缓慢移动
 
 lustrous `/ˈlʌstrəs/` 有光泽的，光辉的
 
+luxurious `/lʌɡˈʒʊəriəs/` 奢侈的，豪华的
+
 ---
 
 # M
@@ -2414,6 +2428,8 @@ lustrous `/ˈlʌstrəs/` 有光泽的，光辉的
 magician `/məˈdʒɪʃn/` 魔术师，巫师
 
 magnetosphere `/mæg'ni:təsfiə/` 磁气圈
+
+magnify `/ˈmæɡnɪfaɪ/` 放大，扩大，夸大
 
 magnificent `/mæɡˈnɪfɪsnt/` 宏伟的，壮丽的
 
@@ -2766,6 +2782,12 @@ oriental `/ˌɔːriˈentl/` 东方的，东方人
 oriented  `/ˈɔːrɪɛnt/` 导向
 
 ornament `/ˈɔːnəmənt/` 装饰，首饰，点缀
+
+### os
+
+[回到O](#O)--[回到顶部](#英汉词典)
+
+osprey `/ˈɒspreɪ/`  鱼鹰
 
 ### ou
 

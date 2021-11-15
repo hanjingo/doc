@@ -300,7 +300,7 @@
 
 ---
 
-## 10 优先使用override
+## 10优先使用override
 
 - override让编译器在想要改的函数实际上并未修改时提醒你；
 
@@ -366,12 +366,172 @@
 ## 13尽可能使用constexpr
 
 - constexpr具备const的所有属性，并且由编译期已知的值完成初始化；
+
+  ```c++
+  constexpr auto arraySize2 = 10;    // 没问题，10是个编译期常量
+  ```
+
 - constexpr函数在调用时若传入的实参值是编译期已知的，则会产出编译期结果；
-- 比起非constexpr对象或constexpr函数而言，constexpr对象或是constexpr函数可以用在一个作用域更广的语境中；
+
+  ```c++
+  int sz; // 非constexpr变量
+  
+  constexpr auto arraySize1 = sz;    // 错误！sz的值在编译期未知
+  std::array<int, sz> data1;         // 错误！一样的问题
+  constexpr auto arraySize2 = 10;    // 没问题，10是个编译期常量
+  std::array<int, arraySize2> data2; // 没问题，arraySize2是个constexpr
+  
+  // const并未提供和constexpr同样的保证，因为const对象不一定经由编译期已知值来初始化
+  int sz; 						             // 仍然是非constexpr变量
+  const auto arraySize = sz; 	     // 没问题，arraySize是sz的一个const副本
+  std::array<int, arraySize> data; // 错误！arraySize
+  ```
+
+- c++11中，constexpr函数不得包含多于一个可执行语句，即一条return语句；
+
+  ```c++
+  constexpr int pow(int base, int exp) noexcept
+  {
+      return (exp == 0 ? 1 : base * pow(base, exp - 1));
+  }
+  ```
 
 ---
 
+## 14保证const成员函数的线程安全性
 
+- 保证const成员函数的线程安全性，除非可以确信它们不会用在并发语境中；
+
+  ```c++
+  class Polynomial {
+  public:
+    using RootType = std::vector<double>;
+    
+    RootsType roots() const
+    {
+      std::locak_guard<std::mutex> g(m); // 加上互斥量
+      if (!rootsAreValid) {
+        ...
+        rootsAreValid = true;
+      }
+      return rootVals;
+    }	// 解除互斥量
+    
+  private:
+    mutable std::mutex m;
+    mutable bool rootsAreValid{ false };
+    mutable RootsType rootVals{};
+  };
+  ```
+
+- 运用`std::atomic`型别的变量会比运用互斥量提供更好的性能；
+
+  ```c++
+  class Widget {
+  public:
+      ...
+      int magicValue()n const
+      {
+          if(cacheValid) return cachedValue;
+          else {
+              auto val1 = expensiveComputation1();
+              auto val2 = expensiveComputation2();
+              cachedValue = val1 + val2;
+              cacheValid = true;
+              return cachedValue;
+          }
+      }
+  private:
+      mutable std::atomic<bool> cacheValid{ false };
+      mutable std::atomic<int> cachedValue;
+  };
+  ```
+
+---
+
+## 15正确使用三大智能指针
+
+* 使用`std::unique_ptr`管理具备专属所有权的资源;
+
+  ```c++
+  class Investment { ... };
+  template<typename... Ts> makeInvestment(Ts&&... params);
+  ```
+
+* 有状态的删除器和采用函数指针实现的删除器会增加`std::unique_ptr`型别的对象尺寸；
+
+  ```c++
+  auto delInvmt1 = [](Investment* pInvestment) // 使用无状态lambda表达式
+                   {
+                      makeLogEntry(PInvestment);
+                      delete pInvestment;
+                   };
+  template<typename... Ts>
+  std::unique_ptr<Investmet, decltype(delInvmt1)> // 与Investment*相同
+  makeInvestment(Ts&&... args);
+  
+  void delInvmt2(Investment* pInvestment) // 使用函数
+  {                                       // 使用自定义析构器
+      makeLogEntry(pInvestmenbt);         
+      delete pInvestment;
+  }
+  template<typename... Ts>                // 返回值尺寸等于
+  std::unique_ptr<Investment,             // Investment*的尺寸
+                  void (*)(Investment*)>  // 加上至少函数指针的尺寸！
+  makeInvestment(Ts&&... params);
+  ```
+
+* 使用`std::shared_ptr`管理具备共享所有权的资源；
+
+  ```c++
+  auto customDeleter1 = [](Widget *pw){...};
+  auto customDeleter2 = [](Widget *pw){...};
+  std::shared_ptr<Widget> pw1(new Widget, customDeleter1);
+  std::shared_ptr<Widget> pw2(new Widget, customDeleter2);
+  ```
+
+* 避免使用裸指针型别的变量来创建`std::shard_ptr`指针；
+
+  ```c++
+  class Widget {
+  public:
+    void process();
+    ...
+  };
+  std::vector<std::shared_ptr<Widget> > processedWidgets;
+  void Widget::process()
+  {
+  	processedWidgets.emplace_back(this); // 将裸指针(this)传入，并套上一层std::shared_ptr，可能会引发未定义行为；
+  }
+  ```
+
+  对于上述情况可以采用以下方法避免：
+
+  ```c++
+  class Widget : public std::enable_shared_from_this<Widget> {
+  public:
+    void process();
+    ...
+  };
+  void Widget::process()
+  {
+  	processedWidgets.emplace_back(shared_from_this());
+  }
+  ```
+
+* 引用计数会对以下性能造成影响：
+
+  - `std::shared_ptr`的尺寸是裸指针的两倍；
+  - 引用计数的内存必须动态分配；
+  - 引用计数的递增和递减必须是原子操作；
+  
+* 对于功能类似于`std::shared_ptr`，但是可能有空悬指针的情况使用`std::weak_ptr`；
+
+  ```c++
+  TODO
+  ```
+
+---
 
 ## 参考
 
