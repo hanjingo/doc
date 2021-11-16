@@ -528,10 +528,139 @@
 * 对于功能类似于`std::shared_ptr`，但是可能有空悬指针的情况使用`std::weak_ptr`；
 
   ```c++
-  TODO
+  auto spw = std::make_shared<Widget>(); // spw构造完成后，指涉到Widget的引用计数设置为1
+  std::weak_ptr<Widget> wpw(spw) // wpw和spw指涉到同一个Widget。引用计数保持为1
+  spw = nullptr; // 引用计数变为0，Widget对象被析构。wpw空悬（expired）
   ```
 
 ---
+
+## 16优先使用make系列函数而非直接使用new
+
+- make系列函数消除了重复代码，改进了异常安全性，生成的目标代码会尺寸更小，速度更快；
+
+  ```c++
+  auto upw1(std::make_unique<Widget>());    // 使用make_unique，简洁
+  std::unique_ptr<Widget> upw2(new Widget); // 不使用make_unique，重复
+  auto spw1(std::make_shared<Widget>());    // 使用make_shared，简洁
+  std::shared_ptr<Widget> spw2(new Widget); // 不使用make_shared，重复
+  
+  void processWidget(std::shared_ptr<Widget> spw, int priority);
+  int computePriority();
+  processWidget(std::shared_ptr<Widget>(new Widget), computePriority()); // 潜在的资源泄漏风险
+  processWidget(std::make_shared<Widget>(), computePriority());          // 避免发生潜在的资源泄漏风险
+  
+  std::shared_ptr<Widget> spw(new Widget); // 引发2次内存分配
+  auto spw = std::make_shared<Widget>();   // 1次内存分配
+  ```
+
+- 对于`std::shared_ptr`，不建议使用make系列函数的额外场景包括：
+
+  1. 自定义内存管理的类；
+
+     ```c++
+     std::unique_ptr<Widget, decltype(widgetDeleter)> upw(new Widget, widgetDeleter);
+     std::shared_ptr<Widget> spw(new Widget, widgetDeleter);
+     ```
+
+  2. 内存紧张的系统，非常大的对象，以及存在比指涉到相同对象的`std::shared_ptr`生存期更久的`std::weak_ptr`；
+
+---
+
+## 17推荐使用Pimpl用法
+
+pimpl（pointer to implementation，指涉到实现的指针）：把某类的数据成员用一个指涉到某实现类（或结构体）的指针替代，然后把原来在主类中的数据成员放置到实现类中，并通过指针间接访问这些数据成员
+
+- Pimpl惯用法通过降低类的客户和类实现者之间的依赖性，减少了构建遍数；
+
+  ```c++
+  // Widget.h
+  class Widget {
+  public:
+      Widget();
+      ...
+      Widget(const Widget& rhs);
+      Widget& operator=(const Widget& rhs);
+  private:
+      struct Impl;
+      std::shared_ptr<Impl> pImpl; // 使用智能指针
+  };
+  ```
+
+  ```c++
+  // Widget.cpp
+  #include "widget.h"
+  
+  struct Widget::Impl { ... };
+  Widget::~Widget() = delete;
+  Widget::Widget(const Widget& rhs) : pImpl(std::make_unique<Impl>(*rhs.pImpl)) {}// 复制构造函数
+  Widget& Widget::operator=(const Widget& rhs) // 复制赋值运算符
+  {
+      *pImpl = *rhs.pImpl;
+      return *this;
+  }
+  ```
+
+---
+
+## 18正确使用std::move和std::forward
+
+- `std::move`实施的是无条件的向右值型别的强制型别转换（不会执行移动操作），`std::forward`实施的是有条件的强制类型转换（仅当传入的实参被绑定到右值时，`std::forward`才针对该实参实施向右值型别的强制型别转换）；
+
+  ```c++
+  void process(const Widget& lvalArg); // 处理左值
+  void process(Widget&& rvalArg);      // 处理右值
+  
+  template<typename T> // 把param传递给process的函数模版
+  void logAndProcess(T&& param)
+  {
+      process(std::forward<T>(param)); // 强制类型转换
+  }
+  ```
+
+- 使用`std::move`可以避免复制入参数据成员的过程产生的复制操作成本；
+
+  ```c++
+  class Annotation {
+  public:
+      // 将text移动入value
+      explicit Annotation(const std::string text) : value(std::move(text)) 
+      { ... }
+  private:
+      std::string value;
+  };
+  ```
+
+---
+
+## 19区分万能引用和右值引用
+
+- 如果函数模板形参具备`T&&`型别，并且T的型别系推导而来，或如果对象使用`auto&&`声明型别，则该形参或对象就是个万能引用；
+
+  ```c++
+  template<typename T>
+  void f(T&& param);  // 万能引用
+  std::vector<int> v;
+  f(v); // 错误！不能给一个右值引用绑定一个左值
+  
+  Widget&& var1 = Widget();
+  auto&& var2 = var1; // 万能引用
+  ```
+
+- 如果型别声明并不精确的具备`type&&`的形式，或者型别推导并未发生，则`type&&`就代表右值引用；
+
+  ```c++
+  void f(Widget&& param);         // 右值引用
+  Widget&& var1 = Widget();       // 右值引用
+  template<typename T>
+  void f(std::vector<T>&& param); // 右值引用
+  ```
+
+- 若采用右值来初始化万能引用，就会得到一个右值引用；若采用左值来初始化万能引用，就会得到一个左值引用；
+
+---
+
+
 
 ## 参考
 
