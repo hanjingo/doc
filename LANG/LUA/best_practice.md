@@ -9,10 +9,10 @@
    ```lua
    local max = 10000
    local str_concat = function()
-       local str1 = "abc"
+       local str1 = ""
        local str2 = "def"
        local start = os.clock()
-       for i = 0, max do
+       for i = 1, max + 1 do
            str1 = str1 .. str2
        end
        local finish = os.clock()
@@ -20,11 +20,11 @@
        print("str concat ", max, " times, cost:", dur * 1000, " ms")
    end
    local tbl_concat = function()
-       local str1 = "abc"
+       local str1 = ""
        local str2 = "def"
        local start = os.clock()
        local tbl = {str1}
-       for i = 2, max + 2 do
+       for i = 1, max + 1 do
            tbl[i] = str2
        end
        str1 = table.concat(tbl)
@@ -60,7 +60,7 @@
    print("no prefill ", max, "times, cost:", dur * 1000, " ms")
    start1 = os.clock()
    for i = 1,max do
-       local b = {1,2,3}
+       local b = {0,0,0}
        b[1] = 1; b[2] = 2; b[3] = 3
    end
    finish1 = os.clock()
@@ -127,11 +127,15 @@
 
 7. 尽量不要将一个表混用数组和散列桶，即一个表最好只存放一类数据(array/map)。
 
-6. 命名要规范，并且尽量使用local；不规范的非local变量可能会污染程序命名。
+6. 命名要规范，并且尽量使用local；不规范的非local变量可能会污染命名空间。
 
 7. 不要在for循环中创建表和闭包。
 
 8. 尽量避免使用loadstring函数。
+
+9. 避免使用`table.insert(...)`给数组尾部添加元素。
+
+   避免使用`table.insert(...)`，因为它不够直观；可以用`xx[#xx + 1] = ...`代替。
 
     
 

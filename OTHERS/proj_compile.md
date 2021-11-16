@@ -22,6 +22,7 @@
 
 ## 网络库
 
+- [大名鼎鼎的 libevent库](https://github.com/libevent/libevent)
 - [UDP协议封装库-KCP](https://github.com/skywind3000/kcp)
 - [远程调用库-GRPC](https://github.com/grpc/grpc)
 - [Curl](https://github.com/curl/curl)
@@ -36,6 +37,10 @@
 
 ## 游戏
 
+- [重型mmorpg框架 kbengine/kbengine](https://github.com/kbengine/kbengine)
+- [我的世界服务端 cuberite/cuberite](https://github.com/cuberite/cuberite)
+- [cuberite的lua核心库 cubrite/Core](https://github.com/cuberite/Core)
+- [基于libevent的游戏服务器框架 ketoo/NoahGameFrame](https://github.com/ketoo/NoahGameFrame)
 - [skynet热更新工具 skynet-reload](https://github.com/cloudwu/skynet-reload)
 - [腾讯基于C#的LUA绑定 xLua](https://github.com/Tencent/xLua)
 - [lua的MessagePack协议支持](https://github.com/antirez/lua-cmsgpack)

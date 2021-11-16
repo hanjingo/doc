@@ -4,8 +4,10 @@
 - [最佳实践](best_practice.md)
 - [const关键字](const.md)
 - [新特性](cpp_new_feature.md)
+- [环境搭建](env.md)
 - [explicit关键字](explicit.md)
 - [final关键字](final.md)
+- [谷歌c++编程规范](google_cpp_std.md)
 - [多线程](multi_thread.md)
 - [new操作符](new.md)
 - [对象模型](object.md)
@@ -13,6 +15,7 @@
 - [静态变量](static.md)
 - [虚函数](vfunc.md)
 - [volatile关键字](volatile.md)
+- [c++ .gitignore模板](res/.gitignore)
 
 ## boost程序库
 

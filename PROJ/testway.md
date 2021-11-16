@@ -98,7 +98,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
 - linux
 
   ```sh
-  echo /xx/core.%e.%p> /proc/sys/kernel/core_pattern #xx:core文件生成路径
+  echo "/xx/core.%e.%p" > /proc/sys/kernel/core_pattern #xx:core文件生成路径
   
   # 如果echo无效,使用以下命令
   sysctl -w "kernel.core_pattern=/xx/core.%e.%p" > /dev/null #xx:core文件生成路径
@@ -107,7 +107,7 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
 - macos
 
   ```sh
-  echo /path/core.%e.%p> /core/core.pid #path:core文件生成路径
+  echo "/path/core.%e.%p" >> /core/core.pid #path:core文件生成路径
   ```
 
 `core.%e.%p`是core文件的命名规则，各参数说明如下：
