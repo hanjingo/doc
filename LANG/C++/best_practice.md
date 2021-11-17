@@ -123,6 +123,14 @@
   auto highPriority = static_cast<bool>(features(w)[5]); // highPriority被强制初始化为bool
   ```
 
+- 对`auto&&`型别的形参使用`decltype`和`std::forward`；
+
+  ```c++
+  auto f = [](auto&& param) { 
+      return func(normalize(std::forward<decltype(param)>(param)));
+  };
+  ```
+
 ---
 
 ## 5优先使用初始化列表
@@ -603,7 +611,88 @@ pimpl（pointer to implementation，指涉到实现的指针）：把某类的�
 
 ---
 
-## 18正确使用std::move和std::forward
+## 18正确使用万能引用和右值引用
+
+- 如果函数模板形参具备`T&&`型别，并且T的型别系推导而来，或如果对象使用`auto&&`声明型别，则该形参或对象就是个万能引用；
+
+  ```c++
+  template<typename T>
+  void f(T&& param);  // 万能引用
+  std::vector<int> v;
+  f(v); // 错误！不能给一个右值引用绑定一个左值
+  
+  Widget&& var1 = Widget();
+  auto&& var2 = var1; // 万能引用
+  ```
+
+- 如果型别声明并不精确的具备`type&&`的形式，或者型别推导并未发生，则`type&&`就代表右值引用；
+
+  ```c++
+  void f(Widget&& param);         // 右值引用
+  Widget&& var1 = Widget();       // 右值引用
+  template<typename T>
+  void f(std::vector<T>&& param); // 右值引用
+  ```
+
+- 若采用右值来初始化万能引用，就会得到一个右值引用；若采用左值来初始化万能引用，就会得到一个左值引用；
+
+- 禁止把万能引用作为重载函数的形参，如果一定要这么用，可以使用`std::enable_if`对模板施加限制；
+
+  ```c++
+  // 错误示例
+  template<typename T>
+  void logAndAdd(T&& name)
+  {
+      auto now = std::chrono::system_clock::now();
+      log(now, "logAndAdd");
+      names.emplace(std::forward<T>(name));
+  }
+  std::string nameFromIdx(int idx);
+  void logAndAdd(int idx)
+  {
+      auto now = std::chrono::system_clock::now();
+      log(now, "logAndAdd");
+      names.emplace(nameFromIdx(idx));
+  }
+  std::string petName("Darla");
+  logAndAdd(petName);
+  logAndAdd(std::string("Persephone")); // 对右值实施移动而非复制
+  logAndAdd("Patty Dog"); // 在multiset中直接构造一个std::string对象，而非复制一个std::string型别的临时对象
+  short nameIdx = 0;
+  logAndAdd(nameIdx); // 错误，这里优先匹配的是万能引用
+  ```
+
+  ```c++
+  // 使用std::enable_if
+  class Person {
+  public:
+    template<
+    	typename T,
+    	typename = std::enable_if_t<
+        !std::is_base_of<Person, std::decay_t<T>>::value
+        &&
+        !std::is_integral<std::remove_reference_t<T>>::value
+      >
+    >
+    // 接受std::string型别以及可以强制转型到std::string的实参型别的构造函数
+    explicit Person(T&& n) : name(std::forward<T>(n)) {
+    	// 断言可以从T型别的对象构造一个std::string型别的对象
+      static_assert(std::is_constructible<std::string, T>::value,
+                  		"Parameter n can't be used to construct a std::string")
+    }
+    // 接受整型实参的构造函数
+    explicit Person(int idx) : name(nameFromIdx(idx)) {...}
+    ...
+  private:
+    std::string name;
+  };
+  ```
+
+- 万能引用形参通常在性能方面具备优势，但在易用性方面一般会有劣势，使用时要权衡利弊；
+
+---
+
+## 19正确使用std::move和std::forward
 
 - `std::move`实施的是无条件的向右值型别的强制型别转换（不会执行移动操作），`std::forward`实施的是有条件的强制类型转换（仅当传入的实参被绑定到右值时，`std::forward`才针对该实参实施向右值型别的强制型别转换）；
 
@@ -630,33 +719,251 @@ pimpl（pointer to implementation，指涉到实现的指针）：把某类的�
       std::string value;
   };
   ```
+  
+- 针对右值引用实施`std::move`，针对万能引用实施`std::forward`；
+
+  ```c++
+  class Widget {
+  public:
+    // 右值引用
+    Widget(Widget&& rhs) : name(std::move(rhs.name)), p(std::move(rhs.p)) {...}
+  	...
+  private:
+    std::string name;
+    std::shared_ptr<SomeDataStructure> p;
+  };
+  ```
+
+  ```c++
+  class Widget {
+  public:
+    // 万能引用
+    template<typename T>
+    void setName(T&& newName) { name = std::forward<T>(newName); }
+  }
+  ```
+
+- 若局部对象可能适用于返回值优化(RVO, return value optimization)，禁止对其进行`std::move`或`std::forward`；
+
+  ```c++
+  Widget makeWidget()
+  {
+  	Widget w;
+    ...
+    return std::move(w); // 禁止操作，这样会导致跳过RVO优化
+  }
+  ```
+
+- 移动操作在以下场景无效：
+
+  1. 没有移动操作
+
+     待移动的对象未能提供移动操作，因此，移动请求就变成了复制请求；
+
+  2. 移动未能更快
+
+     待移动的对象虽然有移动操作，但并不比其复制操作更快；
+
+  3. 移动不可用
+
+     移动本可以发生的语境下，要求移动操作不可发射异常，但该操作未加上noexcept声明；
+  
+- 对于可复制的，在移动成本低廉的并且一定会被复制的形参而言，按值传递可能会和按引用传递的具备相近的效率，并可能生成更少量的目标代码；
+
+- 经由构造复制形参的成本可能比经由赋值复制形参高出很多；
+
+- 按值传递肯定会导致切片问题，所以基类型别特别不适用于按值传递；
+---
+
+## 20完美转发的失败场景
+
+完美转发的失败情形，是源于模板型别推到失败或推导结果是错误的类型；
+
+完美转发失败的情形：
+
+- 大括号初始化物
+
+  ```c++
+  void f(const std::vector<int>& v);
+  f({1, 2, 3});   // 没问题，“{1, 2, 3}”会隐式转换为std::vector<int>
+  fwd({1, 2, 3}); // 错误！无法通过编译
+  ```
+
+- 0和NULL用作空指针
+
+  如果把0和NULL以空指针之名传递给模版，型别推导就会发生行为扭曲，推导结果会是整型而非所传递实参的指针型别（修正方案：用nullptr）;
+
+- 仅有声明的整形`static const`成员变量
+
+  ```c++
+  class Widget {
+  public:
+      static const std::size_t MinVals = 28; // 给出了MinVals的声明
+      ...
+  };
+  ...
+  std::vector<int> widgetData;
+  widgetData.reserve(Widget::MinVals) // 此处用到了MinVals
+  void f(std::size_t val);
+  f(Widget::MinVals);   // 没问题，当“f(28)”处理
+  fwd(Widget::MinVals); // 错误！可能无法链接
+  ```
+
+- 重载的函数名字和模版名字
+
+  ```c++
+  void f(int (*pf)(int));
+  void f(int pf(int));
+  int processVal(int value);
+  int processVal(int value, int priority);
+  
+  f(processVal);       // 没问题
+  fwd(processVal);     // 错误
+  
+  template<typename T>
+  T workOnVal(T param) // 处理值的模版
+  { ... }
+  
+  fwd(workOnVal);                               // 错误！workOnVal的哪个实例？
+  using ProcessFuncType = int (*)(int);         // 相当于创建一个typedef；
+  ProcessFuncType processValPtr = processVal;   // 指定了需要的processVal签名
+  fwd(processValPtr);                           // 没问题
+  fwd(static_cast<ProcessFuncType>(workOnVal)); // 没问题
+  ```
+
+- 位域被用作函数实参
+
+  ```c++
+  struct IPv4Header {
+      std::uint32_t version:4,
+                    IHL:4,
+                    DSCP:6,
+                    ECH:2,
+                    totalLength:16;
+      ...
+  };
+  
+  void f(std::size_t sz); // 待调用的函数
+  IPv4Header h;
+  ...
+  f(h.totalLength); // 没问题
+  fwd(h.totalLength); // 错误!
+  ```
 
 ---
 
-## 19区分万能引用和右值引用
+## 21正确使用lambda
 
-- 如果函数模板形参具备`T&&`型别，并且T的型别系推导而来，或如果对象使用`auto&&`声明型别，则该形参或对象就是个万能引用；
+- 避免默认捕获模式；
 
-  ```c++
-  template<typename T>
-  void f(T&& param);  // 万能引用
-  std::vector<int> v;
-  f(v); // 错误！不能给一个右值引用绑定一个左值
-  
-  Widget&& var1 = Widget();
-  auto&& var2 = var1; // 万能引用
-  ```
-
-- 如果型别声明并不精确的具备`type&&`的形式，或者型别推导并未发生，则`type&&`就代表右值引用；
+  按引用的默认捕获会导致空悬指针问题，按值的默认捕获极易受空悬指针影响(尤其是this),并会误导人们认为lambda式是自洽的；
 
   ```c++
-  void f(Widget&& param);         // 右值引用
-  Widget&& var1 = Widget();       // 右值引用
-  template<typename T>
-  void f(std::vector<T>&& param); // 右值引用
+  // 引用默认捕获空悬指针
+  auto divisor = computeDivisor(calc1, calc2);
+  filters.emplace_back([&](int value) { return value % divisor == 0; }); // 对divisor的指涉可能空悬
   ```
 
-- 若采用右值来初始化万能引用，就会得到一个右值引用；若采用左值来初始化万能引用，就会得到一个左值引用；
+  ```c++
+  // 值默认捕获收到外部影响
+  static auto divisor = computeDivisor(calc1, calc2);
+  filter.emplace_back([=](int value) { return value % divisor == 0; }); // 未捕获任何东西
+  ++divisor; // 意外修改了divisor
+  ```
+
+- 使用初始化捕获将对象移入闭包；
+
+  ```c++
+  auto func = [pw = std::move(pw)] {...}               // 采用std::move(pw)初始化闭包类的数据成员
+  auto func1 = [pw = std::make_unique<Widget>()] {...} // 以make_unique的调用结果初始化闭包类的成员
+  auto func2 = std::bind( // c++11中针对可变lambda式的模拟初始化捕获
+    [](std::vector<double>& data) mutable { ... }, 
+    std::move(data) );
+  ```
+
+- lambda式比起使用`std::bind`而言，可读性更好，表达力更强，可能运行效率也更高；
+
+  ```c++
+  using setAlarm = void(*)(Time t, Sound s, Duration d);
+  auto setSoundL = [](Sound s) {
+  	setAlarm(steady_clock::now() + 1h, s, 30s);
+  };
+  auto setSoundB = std::bind(static_cast<SetAlarm3ParamType>(setAlarm),
+                						 std::bind(std::plus<>(), steady_clock::now(), 1h),
+                             _1,
+                             30s);
+  ```
+
+---
+
+## 22正确的并发操作
+
+- 如果异步是必要的，则使用`std::async`，`std::launch::async`和`std::luanch::deferred`相配合；
+
+  ```c++
+  auto f = std::async(std::launch::async | std::launch::deferred, // 采用异步或推迟的方式
+                      f);
+  ```
+
+- 在析构时调用join可能导致难以调试的性能异常，在析构时调用detach可能导致难以调试的未定义行为；
+
+  ```c++
+  class ThreadRAII {
+  public:
+    enum class DtorAction { join, detach }; // 枚举类
+    ThreadRAII(std::thread&& t, DtorAction a) : action(a), t(std::move(t)) {};
+    
+    ~ThreadRAII() {
+    	if(t.joinable()) {
+      	if (action == DtorAction::join)
+          t.json();
+        else
+          t.detach();
+      }
+    };
+    
+    std::thread& get() { return t; }
+  private:
+    DtorAction action;
+    std::thread t;
+  };
+  ```
+
+- 在成员列表的最后再声明`std::thread`型别对象；
+
+- 考虑针对一次性事件通信使用以void为模板型别实参的期值；
+
+  ```c++
+  std::promise<void> p;
+  void detect()                               // 现在可以处理多个反应任务了
+  {
+      auto sf = p.get_future().share();       // sf的型别是std::shared_future<void>
+      std::vector<std::thread> vt;            // 反应任务的容器
+      for (int i = 0; i < threadsToRun; ++i ) {
+          vt.emplace_back([sf]{ sf.wait(); react(); }); // sf局部副本之上的wait
+      }
+      ...                                     // 若此处抛出异常，则detect会失去响应
+      p.set_value();                          // 让所有线程取消暂停
+      ...
+      for (auto& t : vt)                      // 把所有线程设置为不可联结状态
+          t.join();
+  }
+  ```
+
+- `std::atomic`用于多线程访问的数据，且不用互斥量；
+
+- volatile用于读写操作不可以被优化掉的内存；
+
+---
+
+## 23正确使用容器
+
+- 从原理上说，置入函数应该有时比对应的插入函数高效，而且不应该有更低效的可能；
+- 从实践上说，置入函数在以下几个前提成立时，极有可能会运行的更快：
+  1. 待添加的值是以构造h而非赋值方式加入容器；
+  2. 传递的实参型别与容器持有之物的型别不同；
+  3. 容器不会由于存在重复值而拒绝待添加的值；
+- 置入函数可能会执行在插入函数中会被拒绝的型别转换；
 
 ---
 
