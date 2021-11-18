@@ -2,6 +2,34 @@
 
 [TOC]
 
+## 对象模型
+
+```mermaid
+graph LR
+	subgraph object
+		subgraph in side
+			pt
+		end
+		
+		subgraph out side
+		
+		end
+	end
+	
+	subgraph Member Data Table
+		pt --> data1
+	end
+	
+	subgraph Function Member Table
+	  pt --> function1 --> ..
+		pt --> function2 --> ...
+	end
+```
+
+
+
+
+
 ## 类型转换
 
 ### static_cast

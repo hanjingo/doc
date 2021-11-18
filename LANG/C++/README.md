@@ -14,7 +14,6 @@
 - [静态变量](static.md)
 - [虚函数](vfunc.md)
 - [volatile关键字](volatile.md)
-- [c++ .gitignore模板](res/.gitignore)
 
 ## boost程序库
 
@@ -44,4 +43,5 @@
 - [c++环境部署](OTHER/env.md)
 - [谷歌c++编程规范](OTHER/google_cpp_std.md)
 - [F35战斗机c++编程规范](res/JSF-AV-rules.pdf)
+- [c++ .gitignore模板](res/.gitignore)
 

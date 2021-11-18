@@ -972,3 +972,5 @@ pimpl（pointer to implementation，指涉到实现的指针）：把某类的�
 ## 参考
 
 [1] Effective Modern C++.Scott Meyers
+
+[2] C++ Coding Standard-101Rule Guideline And Best Practices.Herb Sutter, Andrei Alexandrescu.2016
