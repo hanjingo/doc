@@ -290,6 +290,14 @@ hello_hello_hello_hello
 
 返回s的子字符串`s[i, j]`
 
+#### string.byte
+
+TODO
+
+#### string.char
+
+TODO
+
 ### 基础UTF-8支持
 
 TODO
