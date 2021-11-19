@@ -81,7 +81,7 @@ Bear *pb = &b;
 Bear &rb = *pb;
 ```
 
-
+![Bear](res/Bear.png)
 
 ### 继承
 
