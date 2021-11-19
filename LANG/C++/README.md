@@ -2,18 +2,13 @@
 
 - [STL速查手册](stl_api.md)
 - [最佳实践](best_practice.md)
-- [const关键字](const.md)
 - [环境搭建](env.md)
-- [explicit关键字](explicit.md)
 - [谷歌c++编程规范](google_cpp_std.md)
 - [多线程](multi_thread.md)
-- [new操作符](new.md)
-- [新特性](new_feature.md)
+- [c++特性](feature.md)
+- [c++新特性](new_feature.md)
 - [对象模型](object.md)
 - [指针](pointer.md)
-- [静态变量](static.md)
-- [虚函数](vfunc.md)
-- [volatile关键字](volatile.md)
 
 ## boost程序库
 
