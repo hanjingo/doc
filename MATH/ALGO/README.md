@@ -9,7 +9,6 @@
 - [布隆过滤器]
 - [crc校验算法]
 - [延时队列]
-- [八皇后问题](eight_queen.md)
 - [hash碰撞](hash_collision.md)
 - [堆](heap.md)
 - [KMP算法]
@@ -20,8 +19,13 @@
 - [环形队列](ring_buffer.md)
 - [跳表](skiplist.md)
 - [排序算法总结](sort.md)
+- [树](tree.md)
 
 ## LeetCode
 
 - [链表相关问题](LEETCODE/link_list.md)
+
+## 问题描述
+
+- [八皇后问题](eight_queen.md)
 

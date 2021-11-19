@@ -6,25 +6,168 @@
 
 ```mermaid
 graph LR
-	subgraph object
-		subgraph in side
-			pt
+	subgraph Object
+		subgraph Object Inside
+			O1(data1<br>data2<br>...)
 		end
 		
-		subgraph out side
-		
+		subgraph Object Outside
+			ptr
+			vptr
 		end
 	end
-	
-	subgraph Member Data Table
-		pt --> data1
+			
+	subgraph Class
+		C1(static xx)
+		C2(virtual xx)
 	end
 	
 	subgraph Function Member Table
-	  pt --> function1 --> ..
-		pt --> function2 --> ...
+		ptr --> F(function1<br>function2<br>...)
+	end
+	
+	subgraph Data Member Table
+		ptr --> D1(object1<br>object2<br>...)
+	end
+	
+	subgraph Virtual Table
+	    vptr --> V(type_info for Point<br>virtual function1<br>virtual function2<br>...) --> F
+	    C2 --生成--> V
 	end
 ```
+
+- `type_info for Point` 定义类型，用来支持RTTI(Runtime Type Identification)；
+
+### 对象空间
+
+`class object`的内存大小计算公式为：$N + P + V$
+
+- N `nonstatic data members`的内存大小；
+- P  为内存对齐(alignment，将数值调整到某数的倍数；在32位计算机上，通常alignment为4bytes(32位)，以使`bus`的“运输量”达到最高效率)而填充的空间；
+- V  为支持`virtual`而由内部产生的任何额外负担(`overhead`)
+
+例：
+
+```c++
+class ZooAnimal {
+public:
+    ZooAnimal();
+    virtual ~ZooAnimal();
+    // ...
+    virtual void rotate();
+
+protected:
+    int loc;
+    String name;
+};
+
+class Bear : public ZooAnimal {
+public:
+    Bear();
+    ~Bear();
+    // ...
+    void rotate();
+    virtual void dance();
+    // ...
+protected:
+    enum Dances { ... };
+
+    Dances dances_known;
+    int cell_block;
+};
+
+Bear b( "Yogi" );
+Bear *pb = &b;
+Bear &rb = *pb;
+```
+
+
+
+### 继承
+
+派生类和基类的类型转换关系：
+
+```mermaid
+graph LR
+基类   --非法转换/赋值--> 派生类
+派生类 --合法转换/赋值--> 基类
+```
+
+### 多态
+
+c++以下列方法支持多态：
+
+1. 经由一组隐式的转化操作。
+2. 经由`virtual function`机制。
+3. 经由`dynamic_cast`和`typeid`运算符
+
+
+
+## 构造与析构
+
+### 默认构造函数
+
+1. 任何类如果没有定义默认的构造函数，编译器**不一定**会合成默认构造函数，只有当它认为你需要时，才给你合成；
+2. 编译器合成出来的默认构造函数**不一定**会显式设置每一个数据成员的默认值；
+
+以下为需要合成默认构造函数的情况：
+
+1. 类成员中有成员是类对象，并且该成员的类含有默认构造函数；
+
+   ```c++
+   class Foo { public: Foo(), Foo( int ) ... };
+   class Bar { public: Foo foo; char *str; };
+   
+   void foo_bar()
+   {
+       Bar bar; // Bar::foo必须在此处初始化
+       if (str) {}
+       ...
+   }
+   ```
+
+2. 基类带有默认构造函数；
+
+   ```c++
+   TODO
+   ```
+
+3. 带有虚函数的类；
+
+   ```c++
+   class Widget {
+   public:
+       virtual void flip() = 0;
+       ...
+   };
+   void flip( const Widget& widget ) { widget.flip(); }
+   class Bell : public Widget{};
+   class Whistle : public Widget{};
+   void foo()
+   {
+       Bell b;
+       Whistle w;
+       flip( b );
+       flip( w );
+   }
+   ```
+
+4. 存在虚基类(有直接虚拟基类或继承链上有虚基类)；
+
+   ```c++
+   class X { public: int i; }
+   class A : public virtual X { public: int j; };
+   class B : public virtual X { public: double d; };
+   class C : public A, public B { public: int k; };
+   void foo( const A* pa ) { pa->i = 1024; }
+   main()
+   {
+       foo( new A );
+       foo( new C );
+   }
+   ```
+
+### 复制构造函数
 
 
 
