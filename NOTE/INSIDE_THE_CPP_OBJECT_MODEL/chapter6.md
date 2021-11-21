@@ -1,8 +1,8 @@
 # 第六章 执行期语意学
 
+[TOC]
+
 c++在执行期的一些变化
-
-
 
 ## 对象的构造和析构
 
@@ -115,7 +115,7 @@ class complex {
 vec_nex(&array, sizeof(complex), 10, &complex::complex, 0);
 ```
 
-这里的&complex::complex需要是无参的构造函数，那么应该怎么做？做法是：在`&complex::complex`中调用我们自己提供的constructor，并将default参数值显式指定过去，例：
+这里的`&complex::complex`需要是无参的构造函数，那么应该怎么做？做法是：在`&complex::complex`中调用我们自己提供的constructor，并将default参数值显式指定过去，例：
 
 ```c++
 complex::complex() {

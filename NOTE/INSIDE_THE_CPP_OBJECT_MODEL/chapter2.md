@@ -1,5 +1,7 @@
 # 第二章 构造函数语意学(The Semantics of Constructors)
 
+[TOC]
+
 **explicit**(显式)能够制止"单一参数的constructor"被当做一个conversion运算符。
 
 ## Deafult Constructor的构造操作

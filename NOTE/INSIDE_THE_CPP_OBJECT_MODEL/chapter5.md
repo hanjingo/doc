@@ -1,5 +1,7 @@
 # 第五章 构造析构拷贝语意学
 
+[TOC]
+
 对于`abstract base class(抽象基类)`,class中的data member应该被初始化，并且**只在constructor中或者在其它member functions中指定初值。**
 
 ## 纯虚函数的存在
@@ -31,21 +33,6 @@ public:
     virtual void interface() const = 0;
     virtual const char* mumble() const { return _mumble; }
 private:
-    char* _mumble;
-}
-```
-
-重新声明如下：
-
-```c++
-class Abastract_base {
-public:
-    virtual ~Abstract_base(); // 不再是纯虚函数
-    virtual void interface() = 0; // 不再是cosnt
-    const char* //不再是虚函数
-        mumble() const { return _mumble; }
-private:
-    Abstact_base(char *pc = 0); // 新增一个带有唯一参数的constructor
     char* _mumble;
 }
 ```

@@ -1,5 +1,7 @@
 # 第四章 function语意学
 
+[TOC]
+
 ## Nonstatic Member Functions(非静态成员函数)
 
 准则：非静态成员函数至少和一般的非成员函数有相同的效率。编译器内部已经将成员函数转化为非成员函数。
@@ -40,8 +42,8 @@ void setPoint_crefpoint(const Point* this, const Point& point, Point& __result);
 
 `virtual table`中的`active virtual function`包括:
 - class本身定义的函数实例,重写了(overriding)了`base class virtual functions`;
-- 继承自`base class`的函数实例
-- `pure_virtual_called()`纯虚函数实例
+- 继承自`base class`的函数实例；
+- `pure_virtual_called()`纯虚函数实例；
 
 ### 单一继承的情况:
 

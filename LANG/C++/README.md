@@ -2,13 +2,12 @@
 
 - [STL速查手册](stl_api.md)
 - [最佳实践](best_practice.md)
-- [环境搭建](env.md)
-- [谷歌c++编程规范](google_cpp_std.md)
 - [多线程](multi_thread.md)
 - [c++特性](feature.md)
 - [c++新特性](new_feature.md)
 - [对象模型](object.md)
 - [指针](pointer.md)
+- [模版](template.md)
 
 ## boost程序库
 
@@ -39,4 +38,6 @@
 - [谷歌c++编程规范](OTHER/google_cpp_std.md)
 - [F35战斗机c++编程规范](res/JSF-AV-rules.pdf)
 - [c++ .gitignore模板](res/.gitignore)
+- [环境搭建](env.md)
+- [谷歌c++编程规范](google_cpp_std.md)
 
