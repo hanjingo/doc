@@ -6,4 +6,5 @@
 - [第四章 function语意学](chapter4.md)
 - [第五章 构造析构拷贝语意学](chapter5.md)
 - [第六章 执行期语意学](chapter6.md)
+- [第七章 站在对象模型的尖端（On the Cusp of the ObjectModel）](chapter7.md)
 

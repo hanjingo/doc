@@ -116,14 +116,14 @@ TODO
 
 ## 测试/调试/监控工具
 
-| 测试项     | 工具                                                   |
-| ---------- | ------------------------------------------------------ |
-| CPU占用    | - Nmon<br>- top命令                                    |
-| 内存占用   | - [Valgrind](valgrind.md)<br>- Nmon<br>- top命令       |
-| HTTP压测   | - [Jemeter]                                            |
-| core dump  | - [GDB](gdb.md)<br>- [linux系统日志](linux_sys_log.md) |
-| 抓包       | - [Wireshark](wire_shark.md)                           |
-| 长连接压测 | - 自行编写测试脚本                                     |
+| 测试项     | 工具                                                     |
+| ---------- | -------------------------------------------------------- |
+| CPU占用    | - Nmon<br>- top命令                                      |
+| 内存占用   | - [Valgrind](test_tool.md)<br>- Nmon<br>- top命令        |
+| HTTP压测   | - [Jemeter]                                              |
+| core dump  | - [GDB](test_tool.md)<br>- [linux系统日志](test_tool.md) |
+| 抓包       | - [Wireshark](test_tool.md)                              |
+| 长连接压测 | - 自行编写测试脚本                                       |
 
 
 

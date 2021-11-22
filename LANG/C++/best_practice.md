@@ -6,6 +6,8 @@
 
 TODO
 
+
+
 ## 现代C++
 
 ### 1正确使用模版类型推导
@@ -973,8 +975,19 @@ pimpl（pointer to implementation，指涉到实现的指针）：把某类的�
 
 ---
 
+
+
+## 工具
+
+TODO
+
+
+
 ## 参考
 
 [1] Effective Modern C++.Scott Meyers
 
 [2] C++ Coding Standard-101Rule Guideline And Best Practices.Herb Sutter, Andrei Alexandrescu.2016
+
+[3] C++ Best Practices.Sutter, Herb·萨特.2005
+

@@ -93,7 +93,7 @@ TODO
 
 #### 3.2.1方案一 先删缓存再更新数据库
 
-![cache_proj1](/usr/local/src/doc/PROJ/res/cache_proj1.png)
+![cache_proj1](res/cache_proj1.png)
 
 - 写操作
 
@@ -163,7 +163,7 @@ TODO
 
 #### 3.2.2方案二 先删缓存再更新数据库同时引入binlog机制
 
-![cache_proj2](/usr/local/src/doc/PROJ/res/cache_proj2.png)
+![cache_proj2](res/cache_proj2.png)
 
 - 写操作
   1. 删除缓存数据
@@ -203,7 +203,7 @@ binlog用来刷新缓存，由于其天然的顺序性，做同步操作很有�
 
 #### 3.2.3方案三 在方案二的基础上引入MQ串行化机制
 
-![cache_proj3](/usr/local/src/doc/PROJ/res/cache_proj3.png)
+![cache_proj3](res/cache_proj3.png)
 
 - 写操作
   1. 先删除缓存
@@ -238,7 +238,7 @@ binlog用来刷新缓存，由于其天然的顺序性，做同步操作很有�
 
 #### 3.2.4方案四 在方案三的基础上添加标记
 
-![cache_proj4](/usr/local/src/doc/PROJ/res/cache_proj4.png)
+![cache_proj4](res/cache_proj4.png)
 
 - 写操作
   1. 把要修改的数据做个标记，标识“正在被修改”，同时设定标记的有效时间；如果标记失败，放弃本次修改。

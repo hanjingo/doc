@@ -1,14 +1,14 @@
 # 树
 
+[TOC]
 
+## 遍历
 
-## DFS
+### DFS
 
 TODO
 
-
-
-## BFS
+### BFS
 
 TODO
 

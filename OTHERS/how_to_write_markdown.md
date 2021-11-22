@@ -220,28 +220,30 @@ $公式内容$
 
 |写法|效果|
 |:--|:--|
-|`$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$`|$\infty$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$|
-|`$\leftarrow$, $\rightarrow$`|$\leftarrow$, $\rightarrow$|
+|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$`|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$|
+|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|
 |`$\forall$, $\exists$, $\because$, $\therefore$`, `$\neg$`|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|
 |`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|
 |`$x \cup y$, $x \cap y$, $x \setminus y$,  $x \bigvee y$, $x \bigwedge y$`|$x \cup y$, $x \cap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|
+|`$\bigcup$, $\bigcap$, `|$\bigcup$, $\bigcap$,|
 |`$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$`|$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$|
+|`$\oplus$`|$\oplus$|
 |`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$`|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$|
 |`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$`|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$|
-|`$\frac{7x+5}{1+y^2}$`|$\frac{7x+5}{1+y^2}$|
+|`$\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\dot x$, $\ddot x$, $\dot {\dot x}$`|$\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\dot x$, $\ddot x$, $\dot {\dot x}$|
+|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$`|$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$|
+|`$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$`|$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$|
 |`$\ln15$, $\log_2 10$, $\lg7$`|$\ln15$, $\log_2 10$, $\lg7$|
 |`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|
 |`$\vec{a} \cdot \vec{b}=0$`|$\vec{a} \cdot \vec{b}=0$|
 |`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|
-|`$\sum \frac{1}{i^2}$`|$\sum \frac{1}{i^2}$|
-|`$\prod \frac{1}{i^2}$`|$\prod \frac{1}{i^2}$|
-|`$\int^{\infty}_{0}{xdx}$`|$\int^{\infty}_{0}{xdx}$|
-|`$\frac{\partial x}{\partial y}$`|$\frac{\partial x}{\partial y}$|
+|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
+|`$\prod \frac{1}{i^2}$, $\prod_{i=1}^{K}$`|$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|
+|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\iiiint$`|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\iiiint$|
 |`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|
-|`$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
 |`$\lfloor x \rfloor$`，`$\lceil x \rceil$`|$\lfloor x \rfloor$，$\lceil x \rceil$|
 
-**矩阵的表示1:**
+**矩阵(bmatrix)的表示1:**
 
 ```markdown
 $$ \begin{bmatrix}
@@ -257,7 +259,7 @@ $$ \begin{bmatrix}
 7 & 8 & 9
 \end{bmatrix} $$
 
-**矩阵的表示2:**
+**矩阵(Bmatrix)的表示2:**
 
 ```markdown
 $$ \begin{Bmatrix}
@@ -272,6 +274,140 @@ $$ \begin{Bmatrix}
 4 & 5 & 6 \\
 7 & 8 & 9
 \end{Bmatrix} $$
+
+**矩阵(pmatrix)的表示3:**
+
+```markdown
+$\begin{pmatrix}1 & 2 \\ 3 & 4\\ \end{pmatrix}$
+```
+
+$\begin{pmatrix}1 & 2 \\ 3 & 4\\ \end{pmatrix}$
+
+**矩阵(vmatrix)的表示4:**
+
+```markdown
+$\begin{vmatrix}1 & 2 \\ 3 & 4\\ \end{vmatrix}$
+```
+
+$\begin{vmatrix}1 & 2 \\ 3 & 4\\ \end{vmatrix}$
+
+**矩阵(Vmatrix)的表示5:**
+
+```markdown
+$\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
+```
+
+$\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
+
+**分类表达式1:**
+
+```markdown
+$$
+f(n)
+\begin{cases}
+\cfrac n2, &if\ n\ is\ even\\
+3n + 1, &if\  n\ is\ odd
+\end{cases}
+$$
+```
+
+$$
+f(n)
+\begin{cases}
+\cfrac n2, &if\ n\ is\ even\\
+3n + 1, &if\  n\ is\ odd
+\end{cases}
+$$
+
+**分类表达式2:**
+
+```markdown
+$$
+L(Y,f(X)) =
+\begin{cases}
+0, & \text{Y = f(X)}  \\
+1, & \text{Y $\neq$ f(X)}
+\end{cases}
+$$
+```
+
+$$
+L(Y,f(X)) =
+\begin{cases}
+0, & \text{Y = f(X)}  \\
+1, & \text{Y $\neq$ f(X)}
+\end{cases}
+$$
+
+**多行表达式:**
+
+```markdown
+$$
+\begin{equation}\begin{split} 
+a&=b+c-d \\ 
+&\quad +e-f\\ 
+&=g+h\\ 
+& =i 
+\end{split}\end{equation}
+$$
+```
+
+$$
+\begin{equation}\begin{split} 
+a&=b+c-d \\ 
+&\quad +e-f\\ 
+&=g+h\\ 
+& =i 
+\end{split}\end{equation}
+$$
+
+**方程组:**
+
+```markdown
+$$
+\left \{ 
+\begin{array}{c}
+a_1x+b_1y+c_1z=d_1 \\ 
+a_2x+b_2y+c_2z=d_2 \\ 
+a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$
+```
+
+$$
+\left \{ 
+\begin{array}{c}
+a_1x+b_1y+c_1z=d_1 \\ 
+a_2x+b_2y+c_2z=d_2 \\ 
+a_3x+b_3y+c_3z=d_3
+\end{array}
+\right.
+$$
+
+**表格:**
+
+```markdown
+$$
+\begin{array}{c|lcr}
+n & \text{Left} & \text{Center} & \text{Right} \\
+\hline
+1 & 0.24 & 1 & 125 \\
+2 & -1 & 189 & -8 \\
+3 & -20 & 2000 & 1+10i \\
+\end{array}
+$$
+```
+
+$$
+\begin{array}{c|lcr}
+n & \text{Left} & \text{Center} & \text{Right} \\
+\hline
+1 & 0.24 & 1 & 125 \\
+2 & -1 & 189 & -8 \\
+3 & -20 & 2000 & 1+10i \\
+\end{array}
+$$
 
 
 

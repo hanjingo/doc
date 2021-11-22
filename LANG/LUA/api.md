@@ -4,6 +4,8 @@
 
 ## Lua库
 
+[返回顶部](#LUA API)
+
 ### 基础库
 
 #### assert
@@ -101,6 +103,8 @@ TODO
 ### 包管理库
 
 TODO
+
+[返回顶部](#LUA API)
 
 ### 字符串控制
 
@@ -292,15 +296,44 @@ hello_hello_hello_hello
 
 #### string.byte
 
-TODO
+`string.byte (s [, i [, j]])`
+
+- `s` 字符串
+- `i` 索引开始位置（默认1）
+- `j` 索引结束位置（默认1）
+
+将某一段字符转化为二进制格式；例：
+
+```lua
+local s = "abcdefg"
+print(string.byte(s))
+print(string.byte(s, 2))
+print(string.byte(s, 2, 3))
+```
+
+```sh
+he@ya:~$ lua t.lua
+97
+98
+98	99
+```
 
 #### string.char
 
-TODO
+`string.char (···)`
+
+将number转为char；例：
+
+```sh
+> print(string.char(98))
+b
+```
 
 ### 基础UTF-8支持
 
 TODO
+
+[返回顶部](#LUA API)
 
 ### 表控制
 
@@ -407,6 +440,8 @@ TODO
 ---
 
 ## C库
+
+[返回顶部](#LUA API)
 
 #### luaL_openlibs
 

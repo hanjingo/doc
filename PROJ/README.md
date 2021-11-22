@@ -17,7 +17,6 @@
 - [软件调试方法](testway.md)
 - [计时系统](timer.md)
 - [Token机制](token.md)
-- [系统可靠性](system_reliability.md)
 
 ---
 
