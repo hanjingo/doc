@@ -2,15 +2,33 @@
 
 [TOC]
 
+## 术语
+
+- Application Server 应用服务器
+- Cache Server 缓存服务器
+- Chat Server 聊天服务器
+- Client 客户端
+- DB Server 数据服务器
+- Game Server 游戏服务器
+- Gate Server 网关服务器
+- Scene Server 场景服务器
+- Login Server 登录服务器
+- Match Server 匹配服务器
+- Room Server 房间服务器
+- Web Server 网页服务器
+- World Server 世界服务器
+
+
+
 ## 1总体架构
 
 ### 1.1房间类游戏
 
 ```mermaid
 graph LR
-client1 --> loginServer --> matchServer --> dbServer
-loginServer --> chatServer --> dbServer
-client2 --> roomServer --> dbServer
+Client1 --> LoginServer --> MatchServer --> DBServer
+LoginServer --> ChatServer --> DBServer
+Client2 --> RoomServer --> DBServer
 ```
 
 ### 1.2弱交互游戏
@@ -18,30 +36,30 @@ client2 --> roomServer --> dbServer
 ```mermaid
 graph LR
 
-client --HTTP/HTTPS--> webServer --> applicationServer --> cacheServer
-applicationServer --> dbServer
+Client --HTTP/HTTPS--> WebServer --> ApplicationServer --> CacheServer
+ApplicationServer --> DBServer
 ```
 
 ### 1.3简单的分区分服游戏
 
 ```mermaid
 graph LR
-client1 --socket--> gameServer1
-client2 --socket--> gameServer2
-client3 --socket--> gameServer3
+Client1 --socket--> GameServer1
+Client2 --socket--> GameServer2
+Client3 --socket--> GameServer3
 ```
 
 ### 1.4数据共享游戏服务器
 
 ```mermaid
 graph LR
-client --socket--> gateServer --> gameServer --> dbServer
-gateServer --> loginServer
-loginServer --> gameServer
-gameServer --> worldServer --> dbServer
-gameServer --> chatServer --> dbServer
-gameServer --> scenceServer --> dbServer
-loginServer --> dbServer
+Client --socket--> GateServer --> GameServer --> DBServer
+GateServer --> LoginServer
+LoginServer --> GameServer
+GameServer --> WorldServer --> DBServer
+GameServer --> ChatServer --> DBServer
+GameServer --> ScenceServer --> DBServer
+LoginServer --> DBServer
 ```
 
 
@@ -204,4 +222,8 @@ TODO
 - [游戏开发中的ECS架构实用性如何？](https://www.zhihu.com/question/455479955/answer/2143570061)
 - [阿里云-全球同服手游解决方案](https://help.aliyun.com/document_detail/63554.html?utm_content=g_1000230851&spm=5176.20966629.toubu.3.f2991ddcpxxvD1#title-gv4-rr3-pf2)
 - [网络游戏-断线重连](https://blog.csdn.net/qq_28098067/article/details/86712592)
+- [MMORPG游戏开发入门（转）](https://www.cnblogs.com/faeriesoft/p/4156070.html)
+- [MMORPG大型游戏设计与开发（构架](https://blog.csdn.net/erlib/article/details/40949227)
+- [MMORPG大型游戏设计与开发（服务器 游戏场景 地图和区域）](https://www.shuzhiduo.com/A/gVdnej85Wl/)
+- [MMORPG大型游戏设计与开发（服务器 AI 概述）](https://www.shuzhiduo.com/A/x9J2N9gJ6o/)
 

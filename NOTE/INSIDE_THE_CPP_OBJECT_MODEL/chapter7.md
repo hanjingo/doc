@@ -82,17 +82,27 @@ template function的实例化(instantiation)提供了以下策略：
 
 在C++种，一个具备多态性质的class，就是指内含virtual functions的类（直接声明或着继承而来的）。
 
+欲支持type-safe downcast，在object空间和执行时间上都需要一些额外负担：
+
+- 需要额外的空间以存储类型信息(type information)，通常是一个指针，指向某个类型信息节点；
+- 需要额外的时间以决定执行期的类型（runtime type）。
+
 ### Type-Safe Dynamic Cast(保证安全的动态转换)
+
+`dynamic_cast`运算符可以在执行期决定真正的类型
 
 ### References并不是Pointers
 
+程序执行中对一个class指针类型施以`dynamic_cast`运算符，会得到以下结果：
+
+- 如果传回真正的地址，则表示这一object的动态类型被确认了，一些与类型有关的操作现在可以施行于其上；
+- 如果传会0，则表示没有指向任何object，意味着应该以另一种逻辑施行于这个动态类型未确定的object身上。
+
+当`dynamic_cast`运算符施行与一个reference时，会得到以下结果：
+
+- 如果reference真正参考到适当的derived class(包括其下的所有层)，downcast会被执行而程序可以继续进行；
+- 如果reference并不真正是某种derived class，那么，由于不能够传回9，因此抛出一个`bad_cast exception`。
+
 ### Typeid运算符
 
-
-
-## 7.4 效率有了，弹性呢
-
-### 动态共享函数库(Dynamic Shared Libraries)
-
-### 共享内存(Shared Memory)
-
+RTTI只适用于多态类（polymorphic classes）；

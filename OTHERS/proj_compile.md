@@ -52,6 +52,12 @@
 - [房卡麻将服务器-mj_client](https://github.com/qipaiprojects/mj_client)
 - [UnrealEngine](https://github.com/EpicGames/UnrealEngine)
 
+## 图形库
+
+- [点云数据处理 PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
+
+- [Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
+
 ## 即时通讯
 
 - [Telegram的Qt版本](https://github.com/telegramdesktop/tdesktop)
