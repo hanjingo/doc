@@ -1,7 +1,7 @@
 # Effective C++
 
 - [1 Accustoming Yourself to C++](chapter1.md)
-- [2 Constructors,Destructors,and Assignment Operators]
+- [2 Constructors,Destructors,and Assignment Operators](chapter2.md)
 - [3 Resource Management]
 - [4 Designs and Declarations]
 - [5 Implementations]

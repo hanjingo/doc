@@ -153,3 +153,58 @@ C++规定：对象的成员变量的初始化动作发生在进入构造函数�
 
 由于C++赋值前，会先进行一次默认构造操作；所以推荐使用成员初始化列表(member initialization list)的方式来构造，可以避免一次多余的默认构造操作；
 
+成员初始化顺序为：基类早于派生类被初始化，同一class内的成员变量总是以其声明次序被初始化；
+
+C++对定义于不同编译单元内的`non-local static`对象的初始化次序并无明确定义，多个编译单元内的`non-local static`对象经由“模版隐式具现化(implicit template instantiations)”形成；例：
+
+```c++
+class FileSystem {
+public:
+  std::size_t numDisks() const;
+};
+extern FileSystem tfs;
+```
+
+```c++
+class Directory {
+public:
+  Directory(params);
+};
+Directory::Directory( params )
+{
+	std::size_t disks = tfs.numDisks(); // 使用tfs对象
+};
+Directory tempDir( params );
+```
+
+优化为：
+
+```c++
+class FileSystem { ... };
+FileSystem& tfs()
+{
+  static FileSystem fs;
+  return fs;
+}
+```
+
+```c++
+class Directory { ... };
+Directory::Directory( params )
+{
+	std::size_t disks = tfs().numDisks();
+}
+Directory& tempDir()
+{
+	static Directory td;
+  return td;
+}
+```
+
+在程序的单线程启动阶段（single-threaded startup portion）手工调用所有`reference-returning`函数，这可消除与初始化有关的“竞速形势(race conditions)”。
+
+总结：
+
+- 为内置型别对象进行手工初始化，因为C++不保证初始化它们；
+- 构造函数最好使用成员初值列（member initialization list），而不要在构造函数本体内使用赋值操作（assignment）；初值列列出的成员变量，其排列次序应该和它们在class中的声明次序相同；
+- 为免除“跨编译单元之初始化次序”问题，请以`local static`对象替换`non-local static`对象。
