@@ -389,6 +389,41 @@ struct DerivedTop : public DerivedMid
 
 ---
 
+## =default和=delete
+
+如果在一个类中自己定义了一个构造函数，那么编译器将不会再给你一个默认构造函数；如果强制加上`=default`，就可以重新获得默认构造函数。
+
+`=delete`的用途：
+
+1. 显式的禁用某个函数；
+2. 禁用类的转换构造函数，避免不期望的类型转换；
+3. 禁用用户的自定义类的new操作符，避免在自由存储区创建类的对象。
+
+从任何函数都可以`=delete`，包括非成员函数和模板实现；例：
+
+```c++
+// 删除函数delete
+template <class charT, class traits = char_traits<charT> >
+class basic_ios : public ios_base {
+public: // 习惯把delete函数声明为public
+    basic_ios(const basic_ios&) = delete;
+    basic_ios& operator=(const basic_ios&) = delete;
+}
+```
+
+```c++
+// c++11 删除函数delete
+class Widget {
+public:
+    template<typename T>
+    void processPointer(T* ptr) { ... }
+};
+template<>
+void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问权限，但被删除了
+```
+
+---
+
 
 
 ## 参考

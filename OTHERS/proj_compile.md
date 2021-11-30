@@ -2,10 +2,12 @@
 
 ## c++
 
-- [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
+- C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
 - [llvm-project](https://github.com/llvm/llvm-project)
-- [腾讯c++库 libco](https://github.com/Tencent/libco)
-- [chromium](https://github.com/chromium/chromium)
+- 腾讯c++库 [libco](https://github.com/Tencent/libco)
+- [chromium浏览器](https://github.com/chromium/chromium)
+- C++字符串格式化库 [fmtlib](https://github.com/fmtlib)/**[fmt](https://github.com/fmtlib/fmt)**
+- [qt开源库](https://download.qt.io/archive/qt/)
 
 ## 算法库
 
@@ -18,18 +20,23 @@
 ## 操作系统
 
 - [linux](https://github.com/torvalds/linux)
-- [如何自制操作系统](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System)
+
+- 自制操作系统 [SamyPesse](https://github.com/SamyPesse)/**[How-to-Make-a-Computer-Operating-System](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System)**
+
+- C++实现的操作系统 [SerenityOS](https://github.com/SerenityOS)/**[serenity](https://github.com/SerenityOS/serenity)**
 
 ## 网络库
 
-- [大名鼎鼎的 libevent库](https://github.com/libevent/libevent)
-- [UDP协议封装库-KCP](https://github.com/skywind3000/kcp)
-- [远程调用库-GRPC](https://github.com/grpc/grpc)
-- [Curl](https://github.com/curl/curl)
-- [MDNS协议实现-avahi](https://github.com/lathiat/avahi)
-- [P2P网络的C++实现-cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
-- [P2P节点发现库-nearby-connections](https://github.com/google/nearby-connections)
-- [protobuf库](https://github.com/protocolbuffers/protobuf)
+- 大名鼎鼎的 [libevent库](https://github.com/libevent/libevent)
+- UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
+- 远程调用库 [GRPC](https://github.com/grpc/grpc)
+- [官方Curl库](https://github.com/curl/curl)
+- MDNS协议实现 [avahi](https://github.com/lathiat/avahi)
+- P2P网络的C++实现 [cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
+- P2P节点发现库 [nearby-connections](https://github.com/google/nearby-connections)
+- [官方Protobuf库](https://github.com/protocolbuffers/protobuf)
+- C语言版的ProtoBuf库 [protobuf-c](https://github.com/protobuf-c)/**[protobuf-c](https://github.com/protobuf-c/protobuf-c)**
+- C语言版的ProtoBuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[upb](https://github.com/protocolbuffers/upb)**
 
 ## 数据库
 
@@ -37,20 +44,25 @@
 
 ## 游戏
 
-- [重型mmorpg框架 kbengine/kbengine](https://github.com/kbengine/kbengine)
-- [我的世界服务端 cuberite/cuberite](https://github.com/cuberite/cuberite)
-- [cuberite的lua核心库 cubrite/Core](https://github.com/cuberite/Core)
-- [基于libevent的游戏服务器框架 ketoo/NoahGameFrame](https://github.com/ketoo/NoahGameFrame)
-- [skynet热更新工具 skynet-reload](https://github.com/cloudwu/skynet-reload)
-- [腾讯基于C#的LUA绑定 xLua](https://github.com/Tencent/xLua)
-- [lua的MessagePack协议支持](https://github.com/antirez/lua-cmsgpack)
-- [skynet的protobuf协议支持 pbc](https://github.com/cloudwu/pbc)
+- 加勒比海盗引擎 [storm-devs](https://github.com/storm-devs)/**[storm-engine](https://github.com/storm-devs/storm-engine)**
+- 魔兽世界服务端 [TrinityCore](https://github.com/TrinityCore)/**[TrinityCore](https://github.com/TrinityCore/TrinityCore)**
+- C语言版的MineCraft [fogleman](https://github.com/fogleman)/**[Craft](https://github.com/fogleman/Craft)**
+- 重型mmorpg框架 [kbengine/kbengine](https://github.com/kbengine/kbengine)
+- 开源游戏引擎 [godotengine](https://github.com/godotengine)/**[godot](https://github.com/godotengine/godot)**
+- MineCraft服务端 [cuberite/cuberite](https://github.com/cuberite/cuberite)
+- cuberite的lua核心库 [cubrite/Core](https://github.com/cuberite/Core)
+- 基于libevent的游戏服务器框架 [ketoo/NoahGameFrame](https://github.com/ketoo/NoahGameFrame)
+- skynet热更新工具 [skynet-reload](https://github.com/cloudwu/skynet-reload)
+- 腾讯基于C#的LUA绑定 [xLua](https://github.com/Tencent/xLua)
+- lua的MessagePack协议支持 [lua-cmsgpack]](https://github.com/antirez/lua-cmsgpack)
+- skynet的protobuf协议支持 [pbc](https://github.com/cloudwu/pbc)
 - [cocos2d-x](https://github.com/cocos2d/cocos2d-x)
-- [云游戏平台-liuguang](https://github.com/ksyun-kenc/liuguang)
+- 云游戏平台 [liuguang](https://github.com/ksyun-kenc/liuguang)
 - [红警1源码](https://github.com/electronicarts/CnC_Remastered_Collection)
-- [房卡麻将服务器-mj_server](https://github.com/qipaiprojects/mj_server)
-- [房卡麻将服务器-mj_client](https://github.com/qipaiprojects/mj_client)
+- 房卡麻将服务器 [mj_server](https://github.com/qipaiprojects/mj_server)
+- 房卡麻将服务器 [mj_client](https://github.com/qipaiprojects/mj_client)
 - [UnrealEngine](https://github.com/EpicGames/UnrealEngine)
+- 跨平台渲染引擎 [bkaradzic](https://github.com/bkaradzic)/**[bgfx](https://github.com/bkaradzic/bgfx)**
 
 ## 图形库
 
@@ -102,7 +114,6 @@
 - [局域网鼠标，键盘共享工具 barrier](https://github.com/debauchee/barrier)
 - [远程登录程序 frp](https://github.com/fatedier/frp)
 - [谷歌内存回收库 tcmalloc](https://github.com/google/tcmalloc)
-- qt5开源库: `git://code.qt.io/qt/qt5.git`
 - [vim的升级版本neovim](https://github.com/neovim/neovim)
 - [rust版本的v8引擎](https://github.com/denoland/deno)
 

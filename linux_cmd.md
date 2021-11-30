@@ -13,7 +13,7 @@
 |find|查找文件|- `name` 查找指定名称的文件<br>- `depth` 先找当前目录的文件，再找子目录<br>- `user` 按照文件所属人来查找<br>- `group` 按照文件所属组来查找<br>- `mtime -n +n` 按照文件的更改时间来查找，-n表示距离现在n天以内的文件，+n表示距离现在n天以前的文件<br>- `size n[c]` 查找文件长度为n块(1块=512字节)的文件，带c时文件长度以字节计<br>- `mount` 查找时不跨越文件系统的挂载点<br>- `exec` 找到文件后执行shell命令<br>- `ok` 更安全版本的exec命令，每步都要确认<br>- TODO|`find ~/tmp -name 1.txt`  在`~/tmp`目录下查找名为1.txt的文件<br>`find ~/tmp -mtime -3 +15 *.txt`  在`~/tmp`中查找3天内或15天前的txt文件<br>`find ~/tmp -size +1M`  查找`~/tmp`中大于1M的文件<br>`find ~/tmp -size +1M -a -size -1G`  查找`~/tmp`中大于1M小于1G的文件<br>`find ~/tmp -name 1.txt -exec rm {} \`  查找`~/tmp`中名为1.txt的文件并删除|
 |grep|查找文件内容|- `?` 同时显示匹配行的上下?行<br>- `c` 只打印匹配的行数，不现实匹配的内容<br>- `e` 正则匹配<br>- `h` 不显示匹配的文件名前缀<br>- `i` 不区分大小写<br>- `l` 列出匹配到的文件清单<br>- `n` 在匹配的行前面打印行号<br>- TODO|`grep -2 "hello" *.txt`  查找所有包含hello的txt文件，同时显示匹配行的上下2行<br>`grep -l "hello" *.txt`  查找所有包含hello的txt文件，并把他们的名字列出来<br>`grep -r "hello" ./` 递归搜索当前目录下的包含"hello"的文件|
 |df|查看磁盘分区使用情况|- `h` 使用人类可读格式列出信息|`df -h` 显示磁盘使用情况|
-|du|查看目录/文件大小|- `h` 以高可读性列出信息<br>- `s` 仅列出总计<br>- `D` 列出符号链接指向的文件大小<br>- `k` 以kb为单位列出信息|`du -sh tmp` 以人类可读的方式显示tmp文件夹大小|
+|du|查看目录/文件大小|- `h` 以高可读性列出信息<br>- `s` 仅列出总计<br>- `D` 列出符号链接指向的文件大小<br>- `k` 以kb为单位列出信息|`du -sh tmp` 以人类可读的方式显示tmp文件夹大小<br>`du -sh *` 查看当前文件夹下目录大小|
 
 
 

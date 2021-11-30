@@ -1,6 +1,8 @@
-[TOC]
+
 
 # Protobuf编码
+
+[TOC]
 
 Google Protocol Buffers（简称Protobuf）是一款非常优秀的库，它定义了一种紧凑（compact，相对于XML和JSON而言）的可扩展二进制消息格式，特别适合网络数据传输。
 
@@ -101,7 +103,7 @@ classDiagram
 | sfixed64    | int64  | long       | bool     | `*bool`    |
 | bool        | bool   | boolean    | bool     | `*bool`    |
 | string      | string | String     | unicode  | `*string`  |
-| bytes       | string | ByteString | bytes    | []byte   |
+| bytes       | string | ByteString | bytes    | `[]byte` |
 
 ## 关键字
 
@@ -111,17 +113,60 @@ classDiagram
 
 ### 生成命令
 
-`protoc [OPTION] PROTO_FILES`
+`protoc -I [OPTION] PROTO_FILES`
 
-- `-I`
-- `--cpp_out`
-- `--java_out`
-- `--python_out`
+- `-I` proto文件路径
+- `OPTION` 输出格式
+  - `--cpp_out`
+  - `--java_out`
+  - `--python_out`
 
 ```sh
 # 生成c++代码
 protoc -I=xxx.proto --cpp_out=cpp_dir# xxx.proto:proto文件路径, cpp_dir:生成的c++路径
 ```
+
+### 缺失值与默认值
+
+在 Protobuf 2 中，消息的字段可以加 required 和 optional 修饰符，也支持 default 修饰符指定默认值；默认配置下，一个 optional 字段如果没有设置，或者显式设置成了默认值，在序列化成二进制格式时，这个字段会被去掉。
+
+在 Protobuf 3 中，更进一步，直接去掉了 required 和 optional 修饰符，所有字段都是 optional 的， 而且对于**原始数据类型**字段，压根不提供 hasXxx() 方法。
+
+那么怎么知道一个值到底是空值(NULL, nil)，还是默认值(`0/0.0/“”`)呢？，有以下方法：
+
+1. 用特殊值区分，避免使用null；
+
+2. 显式定义boolean字段；
+
+   ```protobuf
+   message Account {
+   	string name = 1;
+   	double profit_rate = 2;
+   	bool has_profit_rate = 3;
+   };
+   ```
+
+3. 使用oneof黑科技；
+
+   ```protobuf
+   message Account {
+   	string name = 1;
+   	oneof profit_rate {
+   		double profit_rate = 2;
+   	}
+   };
+   ```
+
+4. 使用warpper类型（推荐）
+
+   ```protobuf
+   import "google/protobuf/wrappers.proto"
+   
+   message Account {
+   	string name = 1;
+   	google.protobuf.DoubleValue profit_rate = 2;
+   }
+   ```
 
 
 
@@ -256,6 +301,14 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 
 - `Value`(varint编码)
 
+### 优化
+
+（待确认）
+
+对于Protocol Buffer而言，标签值为1到15的字段在编码时可以得到优化，即标签值和类型信息仅占有一个byte，标签范围是16到2047的将占有两个bytes，
+而Protocol Buffer可以支持的字段数量则为2的29次方减一。有鉴于此，我们在设计消息结构时，可以尽可能考虑让repeated类型的字段标签位于1到15之间，这样便可以有效的节省编码后的字节数量；
+
+
 
 ## 安装
 
@@ -348,4 +401,6 @@ make install && ldconfig
 - [Google Protocol Buffers 实用技术： 解析.proto文件和任意数据文件](https://cxwangyi.blogspot.com/2010/06/google-protocol-buffers-proto.html)
 - [深入 ProtoBuf - 简介](https://www.jianshu.com/p/a24c88c0526a)
 - [Protobuf编码](https://www.cnblogs.com/jialin0x7c9/p/12418487.html)
+- [区分 Protobuf 中缺失值和默认值](https://zhuanlan.zhihu.com/p/46603988)
+- [pbc实现分析](https://www.zhyingkun.com/markdown/pbcanalysis/)
 

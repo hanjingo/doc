@@ -746,6 +746,12 @@ virtual func() = 0;
 
 ## static关键字
 
+TODO
+
+---
+
+## namespace关键字
+
 
 
 ---
