@@ -105,6 +105,8 @@ classDiagram
 | string      | string | String     | unicode  | `*string`  |
 | bytes       | string | ByteString | bytes    | `[]byte` |
 
+
+
 ## 关键字
 
 - ~~`required`: 必选的~~
@@ -125,6 +127,14 @@ classDiagram
 # 生成c++代码
 protoc -I=xxx.proto --cpp_out=cpp_dir# xxx.proto:proto文件路径, cpp_dir:生成的c++路径
 ```
+
+### oneof
+
+TODO
+
+### map
+
+TODO
 
 ### 缺失值与默认值
 
@@ -300,6 +310,20 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
   可选，需要根据`Tag`的最后三位wire_type来决定。
 
 - `Value`(varint编码)
+
+### 编码后数据大小
+
+| 大小(字节)       | 类型                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| 1                | + bool                                                       |
+| 4                | + float<br>+ fixed32<br>+ sfixed32                           |
+| 8                | + double<br>+ fixed64<br>+ sfixed64                          |
+| 可变长度         | + int64<br>+ uint64<br>+ int32<br>+ uint32<br>+ enum<br>+ sint32<br>+ sint64 |
+| 带长度值和数据块 | + string<br>+ message<br>+ bytes                             |
+
+- int类型针对正数的编码长度与数值大小成正比，针对负数的编码长度固定为最大值（int32和int64都是10字节）
+- uint类型编码长度与int类型的正数部分完全一样，支持更大的数值范围
+- sint类型编码长度与数值的绝对值大小成正比
 
 ### 优化
 

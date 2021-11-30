@@ -55,9 +55,8 @@ TODO
 
 ## 源码路径
 
-- `alloc.h/.c`
-- `array.h/.c`
-- 
+- `alloc.h/.c` 统一管理内存分配，支持堆内分配优化
+- `array.h/.c` 
 
 
 
@@ -73,3 +72,4 @@ TODO
 ### 外链
 
 - [云风的 BLOG](https://blog.codingnow.com/)
+- [pbc实现分析](https://www.zhyingkun.com/markdown/pbcanalysis/)
