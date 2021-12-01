@@ -1,4 +1,7 @@
 # chrono
+
+[TOC]
+
 chrono库提供宏BOOST_CHRONO_HEADER_ONLY,可以把chrono库完全头文件化，不需要编译或链接。
 
 chrono库位于名字空间boost::chrono,使用标准之外的扩展功能需要定义宏BOOST_CHRONO_EXTENSIONS,包含的头文件如下:

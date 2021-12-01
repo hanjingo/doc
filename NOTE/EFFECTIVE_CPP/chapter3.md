@@ -60,3 +60,46 @@ private:
 
 ## 条款15 在资源管理类中提供对原始资源的访问
 
+总结：
+
+- APIs往往要求访问原始资源（raw resources），所以每一个RAII class应该提供一个“取得其所管理之资源”的办法；
+- 对原始资源的访问可能经由显式转换或隐式转换，一般而言显式转换比较安全，但隐式转换对客户比较方便。
+
+
+
+## 条款16 成对使用new和delete时要采取相同形式
+
+使用typedef时必须要说清楚，当以new创建该种typedef类型对象时，应该以哪种delete方式删除；例：
+
+```c++
+typedef std::string AddressLines[4];
+std::string* pal = new AddressLines;
+
+delete pal; // 行为未定义
+delete [ ] pal; // 很好
+```
+
+**最好不要对数组形式做typedefs动作；**
+
+总结：
+
+- 如果你在new表达式中使用`[]`，必须要在相应的delete表达式中使用`[]`；如果你在new表达式中不使用`[]`，一定不要在相应的delete表达式中使用`[]`；
+
+
+
+## 条款17 以独立语句将newed对象置入智能指针
+
+```c++
+processWidget(std::shared_ptr<Widget>(new Widget), priorty());
+```
+
+由于C++的函数参数计算不是有序的，有可能`priorty()`先运行，此时可能会对赋值产生影响；最好是分离语句如下：
+
+```c++
+std::shared_ptr<Widget> pw(new Widget);
+processWidget(pw, priority());
+```
+
+总结：
+
+- 以独立语句将newed对象存储于（置入）智能指针内，如果不这样做，一旦异常被抛出，有可能导致难以察觉的资源泄漏。

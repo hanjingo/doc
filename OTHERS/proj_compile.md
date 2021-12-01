@@ -63,6 +63,8 @@
 - 房卡麻将服务器 [mj_client](https://github.com/qipaiprojects/mj_client)
 - [UnrealEngine](https://github.com/EpicGames/UnrealEngine)
 - 跨平台渲染引擎 [bkaradzic](https://github.com/bkaradzic)/**[bgfx](https://github.com/bkaradzic/bgfx)**
+- 开源版红警 [OpenRA](https://github.com/OpenRA)/**[OpenRA](https://github.com/OpenRA/OpenRA)**
+- 开源版暗黑破坏神2 [OpenDiablo2](https://github.com/OpenDiablo2)/**[OpenDiablo2](https://github.com/OpenDiablo2/OpenDiablo2)**
 
 ## 图形库
 

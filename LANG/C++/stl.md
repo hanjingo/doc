@@ -1,7 +1,12 @@
-[TOC]
 # STL速查手册
 
-## vector(向量容器)
+[TOC]
+
+
+
+## 容器
+
+### vector(向量容器)
 
 |函数|描述|
 |:--|:--|
@@ -29,7 +34,7 @@
 
 
 
-## list(双向链表)
+### list(双向链表)
 
 |函数|描述|
 |:--|:--|
@@ -63,7 +68,7 @@
 
 
 
-## deque(双向队列)
+### deque(双向队列)
 
 |函数|描述|
 |:--|:--|
@@ -91,7 +96,7 @@
 
 
 
-## set & multisets
+### set & multisets
 
 |函数|描述|
 |:--|:--|
@@ -117,7 +122,7 @@
 
 
 
-## maps & multimaps
+### maps & multimaps
 
 |函数|描述|
 |:--|:--|
@@ -143,7 +148,7 @@
 
 
 
-## stack
+### stack
 
 |函数|描述|
 |:--|:--|
@@ -155,7 +160,7 @@
 
 
 
-## queue
+### queue
 
 |函数|描述|
 |:--|:--|
@@ -168,7 +173,7 @@
 
 
 
-## priority queues
+### priority queues
 
 |函数|描述|
 |:--|:--|
@@ -202,4 +207,105 @@
 |sort |排序；数据量大时采用Quick Sort，分段式递归排序；数据量小于某个门槛时，为避免Quick Sort的递归调用带来过大的额外负担，就改用Insertion Sort；如果递归层次过深，还会改用Heap Sort。 |
 |unique |移除(remove)重复的元素，事实上unique并不会改变`[first,last)`的元素个数，有一些残余数据会留下来 |
 |upper_bound |二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” |
+
+
+
+## Chrono
+
+### Duration
+
+#### 类型
+
+```c++
+typedef duration<boost::int_least64_t, nano> nanoseconds;
+typedef duration<boost::int_least64_t, micro> microseconds;
+typedef duration<boost::int_least64_t, milli> milliseconds;
+typedef duration<boost::int_least64_t       > seconds;
+typedef duration< boost::int_least32_t, ratio<60> > minutes;
+typedef duration< boost::int_least32_t, ratio<3600> > hours;
+```
+
+#### 类型转换
+
+- duration_cast
+
+  转换不同类型的时间单位；例：
+
+  ```c++
+  seconds s(30);
+  auto m = duration_cast<minutes>(s);
+  ```
+
+- floor
+
+  与duration_cast相同，取下界，做截断处理；例:
+
+  ```c++
+  seconds s(3600 + 50);
+  audo m = floor<minutes>(s);
+  ```
+
+- ceil
+
+  与duration_cast相同，取下界，做截断处理；例:
+
+  ```c++
+  seconds s(3600 + 50);
+  audo m = ceil<minutes>(s);
+  ```
+
+- round
+
+  四舍五入操作；例子：
+
+  ```c++
+  seconds s(3600 + 50);
+  audo m = round<minutes>(s);
+  ```
+
+### Clock
+
+- system_clock
+
+  如实反映计算机世界里的实际时间的时钟
+
+- steady_clock
+
+  稳定的时钟，不会因为系统时间调整而变化
+
+- high_resolution_clock
+
+  高分辨率的时钟，但通常是前2者的typedef
+
+- process_real_cpu_clock
+
+  进程执行的实际时间
+
+- process_user_cpu_clock
+
+  用户cpu时间
+
+- process_system_cpu_clock
+
+  系统cpu时间
+
+- thread_clock
+
+  线程执行的实际时间
+
+### TimePoint
+
+例：
+
+```c++
+auto tp1 = system_clock::now();
+cout << tp1 << endl;
+
+auto d = tp1.time_since_epoch();            // 获取自时间起点以来的时间长度
+cout << duration_cast<hours>(d) << endl;    // 转换为小时
+cout << duration_cast<day>(d) << endl;      // 转换为自定义的天
+
+auto tp2 = tp1 + minutes(1);
+cout << tp1 << endl;
+```
 
