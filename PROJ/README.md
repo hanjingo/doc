@@ -14,6 +14,7 @@
 - [捏脸系统设计](pinch_face.md)
 - [服务端图形引擎](server_graphic_engine.md)
 - [软件测试](software_test.md)
+- [同步算法](sync_algo.md)
 - [软件调试工具](test_tool.md)
 - [软件调试方法](testway.md)
 - [计时系统](timer.md)

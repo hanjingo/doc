@@ -156,7 +156,7 @@ TODO
    };
    ```
 
-3. 使用oneof黑科技；
+3. 使用oneof黑科技（skynet-pbc不支持）；
 
    ```protobuf
    message Account {
@@ -311,7 +311,7 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 
 - `Value`(varint编码)
 
-### 编码后数据大小
+### 编码数据大小
 
 | 大小(字节)       | 类型                                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -334,9 +334,23 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 
 
 
+## 实现
+
+### 协议自举
+
+Protobuf协议自身支持自举，使得实现起来比较简洁！其中涉及多个协议之间的关系如下：
+
+![protobuf_bootstrap](res/protobuf_bootstrap.png)
+
+### 源码分析
+
+TODO
+
+
+
 ## 安装
 
-1. 下载protobuf源码
+1. 下载protobuf源码，编译安装
 
 ```sh
 git clone git@github.com:protocolbuffers/protobuf.git
@@ -349,6 +363,8 @@ make && make check
 
 make install && ldconfig
 ```
+
+
 
 ## 用例
 
