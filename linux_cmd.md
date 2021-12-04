@@ -41,8 +41,8 @@
 
 |命令|说明|选项|其它|常用|
 |:--|:--|:--|:--|---|
-|lsof|查看当前系统文件|- `a` 列出打开文件存在的进程<br>- `c` 里处指定进程所打开的文件<br>- `g` 列出GID好进程详情<br>||`lsof | wc -l` 查看当前系统打开的文件数量<br>`lsof -p xx | wc -l` 查看当前进程xx打开的文件数量|
-|ps|查看进程快照信息|- `a` 显示同一终端下的所有程序<br>- `A` 显示所有进程<br>- `e` 等同于"-A"<br>- `f` 显示程序间的关系<br>- `u` 指定用户的所有进程<br>- `H` 显示树状结构<br>- `au` 显示较为详细的资讯<br>- `aux` 显示所有包含其它使用者的行程|**二级选项:**<br>-- `lines 行数` 每页显示的行数<br>-- `width 字符数`  每页显示的字符数|`ps -aux | grep he` 查看用户he的所有进程<br>`ps -ef` 显示所有进程信息，包括进程的命令行<br>`ps -axjf` 列出程序树信息<br>`ps -aux|egrep '(vim|chrome)'` 列出与vim或chrome相关的进程|
+|lsof|查看当前系统文件|- `a` 列出打开文件存在的进程<br>- `c` 里处指定进程所打开的文件<br>- `g` 列出GID好进程详情<br>||`lsof \| wc -l` 查看当前系统打开的文件数量<br>`lsof -p xx \| wc -l` 查看当前进程xx打开的文件数量|
+|ps|查看进程快照信息|- `a` 显示同一终端下的所有程序<br>- `A` 显示所有进程<br>- `e` 等同于"-A"<br>- `f` 显示程序间的关系<br>- `u` 指定用户的所有进程<br>- `H` 显示树状结构<br>- `au` 显示较为详细的资讯<br>- `aux` 显示所有包含其它使用者的行程|**二级选项:**<br>-- `lines 行数` 每页显示的行数<br>-- `width 字符数`  每页显示的字符数|`ps -aux \| grep he` 查看用户he的所有进程<br>`ps -ef` 显示所有进程信息，包括进程的命令行<br>`ps -axjf` 列出程序树信息<br>`ps -aux\|egrep '(vim\|chrome)'` 列出与vim或chrome相关的进程|
 |top|查看进程持续信息|- `c` 切换显示模式<br>- `q` 无延迟显示<br>- `i` 不显示闲置和僵尸进程<br>- `n` 设置更新次数<br>- `d` 设置更新时间<br>- `p` 指定进程id|**行内命令:**<br>`空格键` 立即刷新<br>`P` 以占据CPU百分比排序<br>`M` 以占据内存百分比排序<br>`T` 以累积占用CPU时间排序<br>`t` 显示或隐藏进程和cpu状态信息<br>`s <秒数>` 修改刷新时间间隔<br>`k <进程id> <enter> <信号>` 杀死指定id的进程|`top -d 2`: 2秒刷新一次信息<br>`top -p 2444`: 只显示进程2444的信息<br>`top\n k 2444\n enter\n 15`: 杀死id为2444的进程|
 |nohup|后台运行程序|||`nohup chrome &` 后台运行chrome并在当前目录生成一个默认名为nohup.out的日志文件<br>`nohup chrome &>/dev/null &` 后运行chrome，同时不生成日志文件<br>`nohup chrome >test.log 2>&1 &` 后台运行chrome，同时输出到日志文件test.log|
 |screen|`分屏/共享屏`|- `A` 将所有的视窗都调整为目前终端机的大小<br>- `d` 将指定的screen作业离线<br>- `h` 指定视窗缓冲区行数<br>- `r` 恢复指定的离线screen作业<br>- `x` 恢复之前离线的screen作业<br>- `S` 指定screen作业名称<br>- `ls` 显示目前所有的screen作业||`screen` 创建screen作业<br>`screen -S he` 创建一个名叫he的screen作业<br>`<Ctrl+a+d>` 离开当前screen作业(注意：此作业会继续保留)<br>`exit` 直接退出当前作业，不保留<br>`screen -ls` 列出所有的作业<br>`screen -x he` 恢复一个名叫he的screen作业|
@@ -58,7 +58,7 @@
 |which|查看命令的可执行文件路径|- `n <数字>` 指定文件名最小长度<br>- `p+数字` 指定文件完全路径最小长度<br>- `w`  指定输出时栏位宽度<br>- `V`  显示版本信息||`which bash` 显示bash可执行程序的绝对路径|
 |tail|查看日志|||`tail -f 007.log` 查看007.log这个文件最新的内容|
 |file|查看文件类型|- `b`  不显示文件名<br>- `c` 显示指令执行过程<br>- `f` 指定文件名<br>- `L` 直接显示符号链接所指向的文件类型<br>- `m` 指定魔法数字文件<br>- `v` 显示版本信息<br>- `z` 解读压缩文件的信息||`file /usr/local/bin/lua` 显示文件的文件类型<br>`file -L /bin/dd`: 显示链接指向的文件类型|
-|nm|查看文件的符号信息|- `a`  显示所有符号<br>- `D`  显示动态符号(对动态链接库有效)<br>- `g`  只显示外部符号<br>- `l`  使用debug信息找到文件名和行号<br>- `n`  按符号对应地址的顺序排序<br>- `p`  按照目标文件中遇到的符号顺序显示，不排序<br>- `P`  按照POSIX2.0标准格式输出<br>- `r`  反转排序<br>- `s`  当列出库中成员的符号时，包含索引<br>- `u`  只显示未定义符号|`--defined-only` 只显示定义的符号<br>`--no-demangle` 默认选项，不将低级符号名解析成用户级名字|`nm /bin/dd|grep copy` 查看程序是否包含copy函数|
+|nm|查看文件的符号信息|- `a`  显示所有符号<br>- `D`  显示动态符号(对动态链接库有效)<br>- `g`  只显示外部符号<br>- `l`  使用debug信息找到文件名和行号<br>- `n`  按符号对应地址的顺序排序<br>- `p`  按照目标文件中遇到的符号顺序显示，不排序<br>- `P`  按照POSIX2.0标准格式输出<br>- `r`  反转排序<br>- `s`  当列出库中成员的符号时，包含索引<br>- `u`  只显示未定义符号|`--defined-only` 只显示定义的符号<br>`--no-demangle` 默认选项，不将低级符号名解析成用户级名字|`nm /bin/dd\|grep copy` 查看程序是否包含copy函数|
 |strings||||TODO|
 |size|查看文件各段和总和大小|||TODO|
 |readelf|查看ELF格式的文件信息|- `h`  显示文件开始的文件头信息<br>- `l`  显示程序头信息<br>- `S`  显示节头信息<br>- `g`  显示节组信息<br>- `t`  显示节点的详细信息<br>- `s`  显示符号表段中的项<br>- `e`  显示全部头信息<br>- `n`  显示内核注释信息<br>- `r`  显示可重定位段的信息<br>- `u`  显示unwind段信息<br>- `d`  显示动态段信息<br>- `V`  显示版本段信息<br>- `A`  显示CPU架构信息<br>- `l`  显示bucket list长度的柱状图<br>- `x`  以16进制方式显示指定段内内容<br>- `D`  使用动态段中的符号表显示符号，而不是使用符号段<br>- `a`  显示全部信息<br>- `v`  显示readelf的版本信息<br>- `H`  显示帮助信息||`readelf -x 1 hello.so` 以16进制方式显示文件`hello.so`中段索引为1的内容|
@@ -72,7 +72,7 @@
 |命令|说明|选项|常用|
 |:--|:--|:--|:--|
 |ifconfig|查看,设置网络接口属性|- `a` 所有网络接口<br>- `down` 关闭指定的网络设备<br>- `up` 开启指定的网络设备|`ifconfig eth0 down` 禁用网卡eth0<br>`ifconfig eth0 up` 启用网卡eth0<br>`ifconfig -a` 查看系统的所有网络接口|
-|netstat|查看网络使用情况|- `a` 列出所有连线中的socket<br>- `c` 持续列出网络状态<br>- `e` 显示网络其它相关信息<br>- `F` 显示路由缓存<br>- `i` 显示网络界面信息表单<br>- `l` 显示监控中的服务器的socket<br>- `n` 直接使用IP地址,不通过域名服务器<br>- `o` 显示计时器<br>- `p` 显示正在使用socket的程序识别码和程序名称<br>- `t` 显示tcp的连线状况<br/>- `u` 显示udp的连线状况|`netstat -tunlp | grep 10086` 查看端口10086占用情况;<br>`netstat -i` 显示网卡列表<br>`netstat -nu` 显示udp连接情况<br>`netstat -apu` 显示udp端口使用情况<br>|
+|netstat|查看网络使用情况|- `a` 列出所有连线中的socket<br>- `c` 持续列出网络状态<br>- `e` 显示网络其它相关信息<br>- `F` 显示路由缓存<br>- `i` 显示网络界面信息表单<br>- `l` 显示监控中的服务器的socket<br>- `n` 直接使用IP地址,不通过域名服务器<br>- `o` 显示计时器<br>- `p` 显示正在使用socket的程序识别码和程序名称<br>- `t` 显示tcp的连线状况<br/>- `u` 显示udp的连线状况|`netstat -tunlp \| grep 10086` 查看端口10086占用情况;<br>`netstat -i` 显示网卡列表<br>`netstat -nu` 显示udp连接情况<br>`netstat -apu` 显示udp端口使用情况<br>|
 |ufw|防火墙设置|- status 查看端口开放情况<br>- allow 开放端口<br>-`enable` 开启防火墙<br>-`reload` 重启防火墙|`ufw allow 8080` 开放8080端口<br>`ufw enable` 开启防火墙<br>`ufw reload` 重启防火墙|
 
 
@@ -95,5 +95,5 @@
 | lscpu | 查看cpu信息(更详细的信息用命令: `cat /proc/cpuinfo`) |                                                              |      | TODO                                                       |
 | free  | 查看内存信息(更详细的信息用命令:`cat /proc/meminfo`) | - `m` 以MB为单位<br>- `k` 以KB为单位<br>- `g` 以GB为单位<br>- `t` 显示内存总量 |      | `free -m` 查看内存情况(MB)<br>`free -g` 查看内存情况(GB)   |
 | fdisk | 查看磁盘信息                                         | - `l` 列出所有分区表<br>- `u` 显示区分数目<br>- `s` 指定分区 |      | `fdisk -l` 查看磁盘信息                                    |
-| lspci | 查看PCI总线信息（包括显卡，网络，usb，SATA控制器等） | - `n` 以数字方式显示PCI厂商和设备代码<br>- `t` 以树桩形式显示PCI设备的层次关系<br>- `b` 以总线为中心的视图<br>- `s` 仅显示指定总线插槽的设备和功能块信息<br>- `i` 指定PCI编号列表文件，不使用默认文件<br>- `m` 以机器可读方式显示PCI设备信息 |      | `lspci|grep -i 'eth'` 查看网卡硬件信息                     |
+| lspci | 查看PCI总线信息（包括显卡，网络，usb，SATA控制器等） | - `n` 以数字方式显示PCI厂商和设备代码<br>- `t` 以树桩形式显示PCI设备的层次关系<br>- `b` 以总线为中心的视图<br>- `s` 仅显示指定总线插槽的设备和功能块信息<br>- `i` 指定PCI编号列表文件，不使用默认文件<br>- `m` 以机器可读方式显示PCI设备信息 |      | `lspci\|grep -i 'eth'` 查看网卡硬件信息                    |
 

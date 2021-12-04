@@ -239,7 +239,7 @@ $公式内容$
 |`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|
 |`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
 |`$\prod \frac{1}{i^2}$, $\prod_{i=1}^{K}$`|$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|
-|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\iiiint$`|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\iiiint$|
+|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$`|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$|
 |`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|
 |`$\lfloor x \rfloor$`，`$\lceil x \rceil$`|$\lfloor x \rfloor$，$\lceil x \rceil$|
 
@@ -352,14 +352,7 @@ a&=b+c-d \\
 $$
 ```
 
-$$
-\begin{equation}\begin{split} 
-a&=b+c-d \\ 
-&\quad +e-f\\ 
-&=g+h\\ 
-& =i 
-\end{split}\end{equation}
-$$
+略
 
 **方程组:**
 
@@ -472,7 +465,6 @@ graph LR
 	F(吃饭)-->G(吃菜)-->H(夹菜)
 	end
 ```
-
 ### 标准流程图
 基本语法：
 
