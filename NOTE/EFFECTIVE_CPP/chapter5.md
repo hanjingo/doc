@@ -270,4 +270,107 @@ void PrettyMenu::changeBackground(std::istream& imgSrc)
 
 ## 条款30 透彻了解inlining的里里外外
 
-TODO
+过度使用inline函数会增加目标码（object code）大小，inline造成的代码膨胀会导致额外的换页行为（paging），降低指令高速缓存装置的命中率（instruction cache hit rate），以及伴随这些而来的效率损失；
+
+inline的2种申请方式：
+
+1. 隐喻方式：
+
+```c++
+class Person {
+public:
+    int age() const { return theAge; } // 隐喻的inline
+}
+```
+
+2. 明确申明：
+
+```c++
+template<typename T>
+inline const T& std::max(const T& a, const T& b) { return a < b ? b : a; } // 明确申请inline
+```
+
+大部分编译器拒绝将太过复杂（例如带有循环或递归）的函数inlining，而所有对virtual函数的调用也会使inline落空（一个inline函数是否真inline取决于编译器）；
+
+编译器通常不对“通过函数指针而进行的调用”实施inlining，这意味着对inline函数的调用可能被inlined，也可能不被inlined，取决于该调用的实施方式；例：
+
+```c++
+inline void f() {...}
+void (*pf)() = f; // 指向f
+f();  // 这个调用将被inlined，因为它是一个正常调用
+pf(); // 这个调用或许不被inlined，因为它通过函数指针达成
+```
+
+总结：
+
+- 将大多数inlining限制在小型，被频繁调用的函数身上，这可使日后的调试过程和二进制升级（binary upgradability）更容易，也可使潜在的代码膨胀问题最小化，使程序的速度提升机会最大化；
+- 不要只因为function templates出现在头文件，就将它们声明为inline；
+
+
+## 条款31 将文件间的编译依存关系降至最低
+
+pimpl idiom（pointer to implementation idiom）：实现与定义分离；例：
+
+```c++
+#include <string>
+#include <memory>
+
+class PersonImpl; // Person实现类的前置声明
+class Date;       // Person接口用到的classes的前置声明
+class Address;
+class Person {
+public:
+    Person(const std::string& name, 
+           const Date& birthday,
+           const Address& addr);
+    std::string name() const;
+    std::string birthDate() const;
+    std::string address() const;
+    ...
+private:
+    std::shared_ptr<PersonImpl> pImpl; // 指向实现的指针
+}
+```
+
+1. 如果使用object references或object pointers可以完成任务，就不要使用objects；
+2. 如果能够，尽量以class声明式替换class定义式；
+3. 为声明式和定义式提供不同的头文件；
+
+从Interface class继承接口规格，然后实现出接口所覆盖的函数；例：
+
+```c++
+class Person {
+public:
+    virtual ~Person();
+    virtual std::string name() const = 0;
+    virtual std::string birthDate() const = 0;
+    virtual std::string address() const = 0;
+    static std::shared_ptr<Person> create(const std::string& name, 
+                                          const Date& birthday,
+                                          const Address& addr);
+};
+
+class RealPerson : public Person {
+public:
+    RealPerson(const std::string& name, const Date& birthday, const Address& addr)
+        : theName(name), theBirthDate(birthday), theAddress(addr) {}
+    virtual ~RealPerson() {}
+    std::string name() const;
+    std::string birthDate() const;
+    std::string address() const;
+private:
+    std::string theName;
+    Date theBirthDate;
+    Address theAddress;
+};
+
+std::shared_ptr<Person> Person::create(const std::string& name, const Date& birthday, const Address& addr)
+{
+    return std::shared_ptr<Person>(new RealPerson(name, birthday, addr));
+}
+```
+
+总结：
+
+- 支持“编译依存性最小化”的一般构想是：相依于声明式，不要相依于定义式，基于此构想的两个手段是Handle classes和Interface classes；
+- 程序库头文件应该以“完全且仅有声明式”（full and declaration-only forms）的形式存在，这种做法不论是否涉及templates都适用；
