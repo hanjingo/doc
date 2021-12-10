@@ -196,10 +196,79 @@ private:
 
 ## 条款45 运用成员函数模板接受所有兼容类型
 
+成员函数模板（member function templates）构造模板；例：
+
+```c++
+template<typename T>
+class SmartPtr {
+public:
+    template<typename U>
+    SmartPtr(const SmartPtr<U>& other) : heldPtr(other.get()) { ... } // 以other的heldPtr，初始化this的heldPtr
+    T* get() const { return heldPtr; }
+private:
+    T* heldPtr; // 这个SmartPtr持有的内置（原始）指针
+};
+```
+
+成员函数赋值操作；例：
+
+```c++
+template<class T>
+class shared_ptr {
+public:
+    template<class Y>
+    explicit shared_ptr(Y * p); // 构造，来自任何兼容的内置指针
+    
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const& r);
+
+    template<class Y>
+    explicit shared_ptr(weak_ptr<Y> const& r);
+
+    template<class Y>
+    explicit shared_ptr(auto_ptr<Y>& r);
+
+    template<class Y>
+    shared_ptr& operator=(shared_ptr<Y> const& r); // 赋值，来自任何兼容的shared_ptr或auto_ptr
+
+    template<class Y>
+    shared_ptr& operator=(auto_ptr<Y>& r);
+}
+```
+
+总结：
+
+- 请使用member function templates（成员函数模板）生成“可接受所有兼容类型”的函数；
+- 如果你声明member templates用于“泛化copy构造”或“泛化assignment操作”，你还是需要声明正常的copy构造函数和copy assignment操作符；
 
 
-## 条款46 
+## 条款46 需要类型转换时请为模板定义非成员函数
 
-## 条款47
+利用template class内的friend声明式可以指涉某个特定函数；例：
+
+```c++
+template<typename T> class Rational;
+
+template<typename T>
+const Rational<T doMultiply(const Rational<T>& lhs, const Rational<T>& rhs);
+
+template<tyename T>
+class Pational {
+public:
+    friend Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs)
+    { return doMultiply(lhs, rhs); } // 令friend调用helper
+};
+```
+
+总结：
+
+- 当我们编写一个class template，而它所提供之“与此template相关的”函数支持“所有参数之隐式类型转换”时，请将那些函数定义为“class template 内部的friend函数”；
+
+
+## 条款47 请使用traits classes表现类型信息
+
+
+
+
 
 ## 条款48
