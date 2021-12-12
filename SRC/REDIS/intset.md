@@ -1,6 +1,8 @@
+# Redis整数集合-intset
+
 [TOC]
 
-# Redis整数集合-intset
+
 
 ## API
 
@@ -52,17 +54,33 @@ typedef struct intset {
 
 例，将int32_t类型的整数65535添加到`INTSET_ENC_INT16`编码的整数集合
 
-![redis_intset_upgrade1](res/redis_intset_upgrade1.png)
+| 位   | 0至15位 | 16至31位 | 32至47位 |
+| ---- | ------- | -------- | -------- |
+| 元素 | 1       | 2        | 3        |
 
-![redis_intset_upgrade2](res/redis_intset_upgrade2.png)
+| 位   | 0至15位 | 16至31位 | 32至47位 | 48至127位      |
+| ---- | ------- | -------- | -------- | -------------- |
+| 元素 | 1       | 2        | 3        | （新分配空间） |
 
-![redis_intset_upgrade3](res/redis_intset_upgrade3.png)
+| 位   | 0至15位 | 16至31位 | 32至47位              | 48至63位                 | 64至95位 | 96至127位      |
+| ---- | ------- | -------- | --------------------- | ------------------------ | -------- | -------------- |
+| 元素 | 1       | 2        | 3                     | （新分配空间）           | 3        | （新分配空间） |
+|      |         |          | ⬇<br>⬇--从int16_t类型 | <br>转换为int32_t类型--> | ⬆<br>⬆   |                |
 
-![redis_intset_upgrade4](res/redis_intset_upgrade4.png)
+| 位   | 0至15位 | 16至31位                                  | 32至63位 | 64至95位 | 96至127位      |
+| ---- | ------- | ----------------------------------------- | -------- | -------- | -------------- |
+| 元素 | 1       | 2                                         | 2        | 3        | （新分配空间） |
+|      |         | ⬇<br>⬇--从int16_t类型转换为int32_t类型--> | ⬆<br>⬆   |          |                |
 
-![redis_intset_upgrade5](res/redis_intset_upgrade5.png)
+| 位   | 0至31位                                                      | 32至63位 | 64至95位 | 96至127位      |
+| ---- | ------------------------------------------------------------ | -------- | -------- | -------------- |
+| 元素 | 1                                                            | 2        | 2        | （新分配空间） |
+|      | ⬆                                                          ⬇<br>⬆<--从int16_t类型转换为int32_t类型--⬇ |          |          |                |
 
-![redis_intset_upgrade6](res/redis_intset_upgrade6.png)
+| 位   | 0至31位 | 32至63位 | 64至95位 | 96至127位       |
+| ---- | ------- | -------- | -------- | --------------- |
+| 元素 | 1       | 2        | 2        | 65535           |
+|      |         |          |          | ⬆<br>添加新元素 |
 
 升级之后的新元素摆放位置：
 
@@ -71,11 +89,15 @@ typedef struct intset {
 
 添加前的整数集合：
 
-![redis_intset_upgrade_before](res/redis_intset_upgrade_before.png)
+| intset | encoding         | length | contents  |
+| ------ | ---------------- | ------ | --------- |
+|        | INTSET_ENC_INT16 | 3      | `|1|2|3|` |
 
 添加后的整数集合：
 
-![redis_intset_upgrade_after](res/redis_intset_upgrade_after.png)
+| intset | encoding         | length | contents        |
+| ------ | ---------------- | ------ | --------------- |
+|        | INTSET_ENC_INT32 | 4      | `|1|2|3|65535|` |
 
 ### 升级的优点
 

@@ -412,10 +412,57 @@ else if (!strcasecmp(c->argv[1]->ptr,"replicate") && c->argc == 3) {
 一个PING-PONG消息通信示例：
 
 ```mermaid
-graph TD
-TODO
+graph LR
+节点A --发送包含节点B和节点C信息的PING消息--> 节点D
+节点D --返回包含节点E和节点F信息的PONG消息--> 节点A
 ```
 
 ### FAIL消息的实现
 
-TODO
+```c
+typedef struct {
+    char nodename[REDIS_CLUSTER_NAMELEN]; /* 已下线节点的名字 */
+} clusterMsgDataFail;
+```
+
+发送和接收FAIL消息示例：
+
+```mermaid
+graph LR
+subgraph 集群
+7001 --1标记为已下线--> 7000
+7001 --2发送FAIL消息--> 7002
+7001 --3发送FAIL消息--> 7003
+7002 --4标记为已下线--> 7000
+7003 --5标记为已下线--> 7000
+end
+```
+
+### PUBLISH消息的实现
+
+```c
+typedef struct {
+    uint32_t channel_len; /* channel参数的长度 */
+    uint32_t message_len; /* message参数的长度 */
+    /* （定义为8字节，只是为了对其其它消息结构，实际的长度由保存的内容决定） */
+    /* bulk_data[0, channel_len - 1]：channel参数 */
+    /* bulk_data[channel_len, channel_len+message_len - 1]：message参数 */
+    unsigned char bulk_data[8]; /* 客户端通过PUBLISH发送给节点的channel参数和message参数 */
+} clusterMsgDataPublish;
+```
+
+接收到PUBLISH命令的节点向集群广播PUBLISH消息示例：
+
+```mermaid
+graph LR
+客户端 --发送PUBLISH命令--> 7000
+subgraph 集群
+7000 --发送PUBLISH消息--> 7001
+7000 --发送PUBLISH消息--> 7002
+7000 --发送PUBLISH消息--> 7003
+end
+```
+
+clusterMsgDataPublish结构示例：
+
+![redis_cluster_clusterMsgDataPublish](res/redis_cluster_clusterMsgDataPublish.png)

@@ -18,5 +18,6 @@
 - [哨兵](sentinel.md)
 - [服务端](server.md)
 - [跳表](skiplist.md)
+- [事务](transaction.md)
 - [压缩列表](ziplist.md)
 

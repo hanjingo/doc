@@ -121,6 +121,8 @@ robj *createStringObjectFromLongLong(long long value) { // 创建整数型字符
 
 - ziplist编码
 
+  
+
   ![redis_list_ziplist](res/redis_list_ziplist.png)
 
   ```c++

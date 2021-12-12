@@ -1,6 +1,6 @@
-[TOC]
-
 # Redis发布订阅
+
+[TOC]
 
 
 
@@ -26,7 +26,18 @@ struct redisServer {
 
 例，pubsub_channels结构：
 
-![redis_pubsub_channels](res/redis_pubsub_channels.png)
+```mermaid
+graph LR
+subgraph -
+pubsub_channels
+b("news.it")
+c("news.sport")
+d("news.business")
+end
+b-->client-1-->client-2-->client-3
+c-->client-4
+d-->client-5-->client-6
+```
 
 ### 模式订阅关系
 
@@ -180,7 +191,31 @@ PSUBSCRIBE 模式名
 
 例，`tweet.shop.*`模式匹配了`tweet.shop.kindle`和`tweet.shop.ipad`，当有`message`发布到`tweet.shop.kindle`时，`client123`和`client256`也会收到：
 
-![redis_psubscribe_pattern](res/redis_psubscribe_pattern.png)
+```mermaid
+graph TD
+a(PUBLISH tweet.shop.kindle message)
+b1(tweet.shop.kindle)
+b2(tweet.shop.ipad)
+c1(clientY)
+c2(clientX)
+c3(tweet.shop.*)
+c4(client4444)
+c5(client3333)
+c6(client5555)
+d1(client256)
+d2(client123)
+
+a-->b1
+b1--message-->c1
+b1--message-->c2
+b1-->c3
+c3--message-->d1
+c3--message-->d2
+c3--match-->b2
+c4--subscribe-->b2
+c5--subscribe-->b2
+c6--subscribe-->b2
+```
 
 ### 实现
 

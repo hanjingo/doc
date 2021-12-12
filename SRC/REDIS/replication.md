@@ -150,7 +150,7 @@ is_bak_continue --yes--> return_part(执行部分重同步)
 7. 命令传播。
 
   
-  
+
 ## 心跳检测
 
   在命令传播阶段，slave默认以1次/s的频率，向master发送命令`REPLCONF ACK <slave当前的复制偏移量>`，有以下三个作用：
@@ -174,15 +174,30 @@ Redis 2.8版本以前没有检测命令丢失功能，2.8以后才有这功能�
 
 1. 主从服务器处于一致状态：
 
-   ![redis_replication_check_cmd1](res/redis_replication_check_cmd1.png)
+   ```mermaid
+   graph TD
+   a(主服务器<br>复制偏移量为200)
+   b(从服务器<br>复制偏移量为200)
+   ```
 
 2. 主从服务器处于不一致状态：
 
-   ![redis_replication_check_cmd2](res/redis_replication_check_cmd2.png)
+   ```mermaid
+   graph LR
+   a(主服务器<br>复制偏移量为233)
+   b(从服务器<br>复制偏移量为200)
+   a-.SET key value.->b
+   ```
 
 3. 主服务器向从服务器补发缺失的数据：
 
-   ![redis_replication_check_cmd3](res/redis_replication_check_cmd3.png)
+   ```mermaid
+   graph LR
+   a(主服务器<br>复制偏移量为233)
+   b(从服务器<br>复制偏移量为233)
+   a--SET key value-->b
+   b--REPLCONF ACK 200-->a
+   ```
 
 
 

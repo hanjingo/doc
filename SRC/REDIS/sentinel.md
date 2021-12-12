@@ -61,9 +61,9 @@
   - Sentinel使用`sentinel.c/REDIS_SENTINEL_PORT`作为服务器端口，而不是普通服务器的`redis.h/REDIS_SERVERPORT`；
   - Sentinel使用`sentinel.c/sentinelcmds`作为服务器的命令表，而不是普通服务器的`redis.c/redisCommandTable`作为服务器的命令表；
   - Sentinel的INFO命令使用`sentinel.c/sentinelInfoCommand`函数，而不是普通服务器的`redis.c/infoCommand`函数
-  
+
   客户端可以对Sentinel执行的命令：
-  
+
   1. PING
   2. SENTINEL
   3. INFO
@@ -109,12 +109,12 @@
 6. 创建连向主服务器的网络连接
 
   对于每个被Sentinel监视的主服务器来说，Sentinel会创建两个连向主服务器的异步网络连接：
-  
+
   - 一个是命令连接，这个连接专门用于向主服务器发送命令，并接收命令回复；
   - 另一个是订阅连接，这个连接专门用于订阅主服务器的`__sentinel__:hello`频道。
+
   
-  
-  
+
 ## 获取主服务器信息
 
 Sentinel默认以1次/10s的频率，通过命令连接向被监视的master发送INFO命令，并通过分析INFO命令的回复来获取主服务器的当前信息；示意如下：
@@ -177,7 +177,19 @@ Sentinel默认以1次/2s的频率，通过命令连接向所有被监视的maste
 
 当Sentinel与一个master/slave建立起订阅连接之后，Sentinel通过订阅连接向服务器发送以下命令`SUBSCRIBE __sentinel__:hello`；订阅一直持续到Sentinel与服务器的连接断开为止；
 
-![sentinel_send_subscribe](res/sentinel_send_subscribe.png)
+```mermaid
+graph LR
+subgraph sentinel
+a(sentinel1) 
+b(sentinel2)
+c(sentinel3)
+end
+
+a --发送信息:命令连接--> serv(服务器)
+serv --接收信息:订阅连接--> a
+serv --接收信息:订阅链接--> b
+serv --接收信息:订阅连接--> c
+```
 
 对于监视同一个服务器的多个Sentinel来说，一个Sentinel发送的信息会被其它Sentinel接收到，这些信息会被用于更新其他Sentinel对发送信息Sentinel的认知，也会被用于更新其他Sentinel对被监视服务器的认知；当一个Sentinel从`__sentinel__:hello`频道收到一条消息时，进行以下处理：
 
@@ -304,11 +316,11 @@ Sentinel使用命令`SENTINEL is-master-down-by-addr <ip> <port> <current_epoch>
 4. 让剩下的slave成为新master的slave
 
   ![sentinel_failover_example4](res/sentinel_failover_example4.png)
-  
+
 5. 将旧master设置为新master的slave
-  
+
   ![sentinel_failover_example5](res/sentinel_failover_example5.png)
-  
+
 6. 旧master重新上线成为slave
 
    ![sentinel_failover_example6](res/sentinel_failover_example6.png)

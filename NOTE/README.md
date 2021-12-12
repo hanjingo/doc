@@ -50,4 +50,5 @@
 - [C++覆辙录]
 - [Unix网络编程 卷二]
 - [Effective STL]
+- [Linux命令行与shell脚本编程大全](LINUX_COMMAND_LINE_AND_SHELL_SCRIPTING_BIBLE/README.md)
 

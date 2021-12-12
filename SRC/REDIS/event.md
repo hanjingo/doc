@@ -1,6 +1,6 @@
-[TOC]
-
 # Redis事件
+
+[TOC]
 
 
 
@@ -84,25 +84,48 @@ Redis会在编译时自动选择系统中性能最高的I/O多路复用函数库
 
 - `acceptTcpHandler` 连接应答处理器函数
 
-  用于对连接服务器监听套接字的客户端进行应答；
+  用于对连接服务器监听套接字的客户端进行应答示例：
 
-  ![redis_acceptTcpHandler](res/redis_acceptTcpHandler.png)
+  ```mermaid
+  graph LR
+  客户端 --连接监听套接字--> serv
+  subgraph 服务器
+  serv(服务器监听套接字产生AE_READABLE事件<br>执行连接应答处理器)
+  end
+  ```
 
 - `readQueryFromClient` Redis命令请求处理器函数
 
-  用于从套接字中读入客户端发送的命令请求内容；
+  用于从套接字中读入客户端发送的命令请求内容示例：
 
-  ![redis_readQueryFromClient](res/redis_readQueryFromClient.png)
+  ```mermaid
+  graph LR
+  客户端 --发送命令请求--> serv
+  subgraph 服务器
+  serv(客户端套接字产生AE_READABLE事件,<br>执行命令请求处理器)
+  end
+  ```
 
 - `sendReplyToClient` Redis命令回复处理器
 
-  用于将服务器执行命令后得到的命令回复通过套接字返回给客户端；
+  用于将服务器执行命令后得到的命令回复通过套接字返回给客户端示例：
 
-  ![redis_sendReplyToClient](res/redis_sendReplyToClient.png)
+  ```mermaid
+  graph LR
+  subgraph 服务器
+  serv(客户端套接字产生AE_WRITABLE事件,<br>执行命令回复处理器)
+  end
+  serv --发送命令回复--> 客户端
+  ```
 
 一次完整的客户端与服务器连接事件示例：
 
-![redis_cli_serv_connect_example](res/redis_cli_serv_connect_example.png)
+```mermaid
+graph LR
+客户端 --客户端向服务器发送连接请求<br>服务器执行连接应答处理器--> 服务器
+客户端 --客户端向服务器发送命令请求<br>服务器执行命令请求处理器--> 服务器
+服务器 --服务器向客户端发送命令回复<br>服务器执行命令回复处理器--> 客户端
+```
 
 
 
@@ -173,7 +196,12 @@ Redis的时间事件分为以下类别：
 
 事件处理角度下的服务器运行流程：
 
-![redis_event_handler](res/redis_event_handler.png)
+```mermaid
+graph TD
+启动服务器 --> is_close{是否关闭服务器?}
+is_close --是--> 关闭服务器
+is_close --否--> 等待文件事件产生 --> 处理已产生的文件事件 --> 处理已到达的时间事件 --开始新的循环--> is_close
+```
 
 事件的调度和执行规则：
 
