@@ -49,4 +49,6 @@
 - [C专家编程](EXPERT_C_PROGRAMMING_DEEP_C_SECRETS/README.md)
 - [C陷阱与缺陷](C_TRAPS_AND_PITFALLS/README.md)
 - [C和指针](POINTERS_ON_C/README.md)
+- [C++覆辙录]
+- [Unix网络编程 卷二]
 
