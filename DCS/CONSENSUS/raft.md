@@ -1,6 +1,6 @@
-[TOC]
-
 # Raft
+
+[TOC]
 
 `raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可冗余，可容错算法)`；一种相对paxos更简单的算法。
 
@@ -78,6 +78,12 @@
 - 状态安全性
 
   `State Machine Safety`，所有状态机运行的是同一条指令，`相同的初始状态+相同的输入=相同的结束状态`
+
+
+
+## 应用实例
+
+1. Redis的主节点选举和Sentinel选举；
 
 
 

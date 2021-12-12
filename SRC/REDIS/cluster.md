@@ -1,6 +1,6 @@
-[TOC]
-
 # Redis集群
+
+[TOC]
 
 
 
@@ -89,7 +89,7 @@ redisClient结构和clusterLink结构都有自己的套接字描述符和输入�
 
 ### 启动节点
 
-一个节点就是一个运行在集群模式下的Redis服务器，Redis服务器在启动时会根据配置`cluster-enabled`是否为yes来决定是否开启服务器的集群模式；流程如下：
+一个节点就是一个运行在集群模式下的Redis服务器，Redis服务器在启动时会根据配置 `cluster-enabled`是否为yes来决定是否开启服务器的集群模式；流程如下：
 
 ```mermaid
 graph TD
@@ -104,7 +104,7 @@ is_master_slave_setauth -- no --> do_stand_alone(开启服务器的单机模式�
 CLUSTER MEET <ip> <port>
 ```
 
-该命令可以让node节点与`<ip>:<port>`所指定的节点进行握手（handshake）；当握手成功时，node节点就会将ip和port所指定的节点添加到node节点当前所在的集群中；
+该命令可以让node节点与 `<ip>:<port>`所指定的节点进行握手（handshake）；当握手成功时，node节点就会将ip和port所指定的节点添加到node节点当前所在的集群中；
 
 ```sequence
 Title:节点的握手过程
@@ -144,8 +144,6 @@ void clusterCommand(redisClient *c) {
     ...
 }
 ```
-
-
 
 ## 槽指派
 
@@ -203,8 +201,6 @@ MOVED <slot> <ip>:<port> # slot:键所在的槽，ip:port:负责处理槽slot的
 CLUSTER GETKEYSINSLOT <slot> <count> # count:键最多个数，slot:槽
 ```
 
-
-
 ## 重新分片
 
 Redis集群的重新分片操作可以将任意数量已经指派给某个节点（源节点）的槽改为指派给另一个节点（目标节点），并且相关槽所属的键值对也会从源节点被移动到目标节点。
@@ -234,12 +230,192 @@ is_save --否--> dispatch(将槽slot指派给目标节点)
 is_save --是--> 将这些键全部迁移至目标节点 -->dispatch --> 完成对槽slot的重新分片
 ```
 
-1. redis-trib对目标节点发送`CLUSTER SETSLOT <slot> IMPORTING <source_id>`命令，让目标节点准备好从源节点导入（import）属于槽slot的键值对。
-2. redis-trib对源节点发送`CLUSTER SETSLOT <slot> MIGRATING <target_id>`命令，让源节点准备好将属于槽slot的键值对迁移（migrate）至目标节点。
-3. redis-trib向源节点发送`CLUSTER GETKEYSINSLOT <slot> <count>`命令，获得最多count个属于槽slot的键值对的键名（key name）。
-4. 对于步骤3获得的每个键名，redis-trib都向源节点发送一个`MIGRATE <target_ip> <target_port> <key_name> 0 <timeout>`命令，将被选中的键原子地从源节点迁移至目标节点。
+1. redis-trib对目标节点发送 `CLUSTER SETSLOT <slot> IMPORTING <source_id>`命令，让目标节点准备好从源节点导入（import）属于槽slot的键值对。
+2. redis-trib对源节点发送 `CLUSTER SETSLOT <slot> MIGRATING <target_id>`命令，让源节点准备好将属于槽slot的键值对迁移（migrate）至目标节点。
+3. redis-trib向源节点发送 `CLUSTER GETKEYSINSLOT <slot> <count>`命令，获得最多count个属于槽slot的键值对的键名（key name）。
+4. 对于步骤3获得的每个键名，redis-trib都向源节点发送一个 `MIGRATE <target_ip> <target_port> <key_name> 0 <timeout>`命令，将被选中的键原子地从源节点迁移至目标节点。
 5. 重复执行步骤3和步骤4，直到源节点保存的所有属于槽slot的键值对都被迁移至目标节点为止。
-6. redis-trib向集群中的任意一个节点发送`CLUSTER SETSLOT <slot> NODE <target_id>`命令，将槽slot指派给目标节点，这一指派信息会通过消息发送至整个集群，最终集群中的所有节点都会知道槽slot已经指派给目标节点。
+6. redis-trib向集群中的任意一个节点发送 `CLUSTER SETSLOT <slot> NODE <target_id>`命令，将槽slot指派给目标节点，这一指派信息会通过消息发送至整个集群，最终集群中的所有节点都会知道槽slot已经指派给目标节点。
 
 ## ASK错误
 
+源节点判断是否需要向客户端发送ASK错误的整个过程：
+
+```mermaid
+graph TD
+客户端向源节点发送关于键key的命令 --> is_in_db{键key是否存在于源节点的数据库?}
+is_in_db --是--> send(源节点执行客户端发送的命令)
+is_in_db --否--> is_moving_slot{源节点正在迁移槽?}
+is_moving_slot --否, 键key不存在--> send
+is_moving_slot --是, 键key有可能在目标节点--> 向客户端返回ASK错误
+```
+
+### CLUSTER SETSLOT IMPORTING命令的实现
+
+在对集群进行重新分片的时候，向目标节点发送命令：
+
+```sh
+CLUSTER SETSLOT <i> IMPORTING <source_id>
+```
+
+可以将目标节点`clusterState.importing_slots_from[i]`的值设置为`source_id`所代表节点的`clusterNode`结构；例：
+
+```sh
+CLUSTER SETSLOT 16198 IMPORTING 9dfb4c4e016e627d9769e4c9bb0d4fa208e6
+```
+
+节点的importing_slots_from数组结构如下：
+
+![redis_cluster_importing_slots_from](res/redis_cluster_importing_slots_from.png)
+
+### CLUSTER SETSLOT MIGRATING命令的实现
+
+在对集群进行重新分片的时候，向源节点发送命令：
+
+```sh
+CLUSTER SETSLOT <i> MIGRATING <target_id>
+```
+
+可以将源节点`clusterState.migrating_slots_to[i]`的值设置为`target_id`所代表节点的`clusterNode`结构；例：
+
+```sh
+CLUSTER SETSLOT 16198 MIGRATING 04579925484ce537d3410d7ce97bd2e260c4
+```
+
+节点的clusterState.migrating_slots_to数组结构如下：
+
+![redis_cluster_migrating_slots_to](res/redis_cluster_migrating_slots_to.png)
+
+### ASK错误
+
+#### ASKING命令
+
+如果客户端向节点发送一个关于槽i的命令，而槽i又没有指派给这个节点的话，那么节点将向客户端返回一个MOVED错误；
+
+节点判断是否执行客户端命令的过程：
+
+```mermaid
+graph TD
+客户端向节点发送关于槽i的命令 --> is_dispatch_node{槽i是否指派给了节点?}
+is_dispatch_node --是--> exec_cmd(节点执行客户端发送的命令)
+is_dispatch_node --否--> is_importing_slot{节点是否正在导入槽i?}
+is_importing_slot --是--> is_asking{客户端是否带有ASKING标识?}
+is_importing_slot --否--> rtn_move(节点向客户端返回MOVED命令)
+is_asking --是--> exec_cmd
+is_asking --否--> rtn_move
+```
+
+#### ASK错误和MOVED错误的区别
+
+- MOVED错误代表槽的负责权已经从一个节点转移到另一个节点；
+- ASK错误只是两个节点在前一槽的过程中使用的一种临时措施；
+
+
+
+## 复制与故障转移
+
+Redis集群中的节点分为主节点（master）和从节点（slave），其中主节点用于处理槽，而从节点则用于复制某个主节点，并在被复制的主节点下线时，代替下线主节点继续处理命令请求；
+
+### 设置从节点
+
+```sh
+CLUSTER REPLICATE <node_id>
+```
+
+可以让接收到此命令的节点成为`node_id`所指定节点的从节点，并开始对主节点进行复制；此命令的执行过车过如下：
+
+```c
+// cluster.c
+/* 命令 CLUSTER REPLICATE <NODE ID> 的实现（让当前节点成为NODE ID的从节点，并开始对主节点进行复制） */
+else if (!strcasecmp(c->argv[1]->ptr,"replicate") && c->argc == 3) {
+       /* 在自己的clusterState.nodes字典中查找 NODE ID对应的节点 */
+        clusterNode *n = clusterLookupNode(c->argv[2]->ptr);
+        if (!n) {
+            addReplyErrorFormat(c,"Unknown node %s", (char*)c->argv[2]->ptr);
+            return;
+        }
+        /* 不能复制自己 */
+        if (n == myself) {
+            addReplyError(c,"Can't replicate myself");
+            return;
+        }
+        /* 不能复制一个从节点 */
+        if (nodeIsSlave(n)) {
+            addReplyError(c,"I can only replicate a master, not a slave.");
+            return;
+        }
+        /*  */
+        if (nodeIsMaster(myself) &&
+            (myself->numslots != 0 || dictSize(server.db[0].dict) != 0)) {
+            addReplyError(c,
+                "To set a master the node must be empty and "
+                "without assigned slots.");
+            return;
+        }
+        /* 设置主节点 */
+        clusterSetMaster(n);
+        /* 设置休眠前要做的工作(更新状态|保存配置) */ 
+        clusterDoBeforeSleep(CLUSTER_TODO_UPDATE_STATE|CLUSTER_TODO_SAVE_CONFIG);
+        addReply(c,shared.ok);
+    }
+```
+
+### 故障检测
+
+集群中的每个节点都会定期地向集群中的其它节点发送PING消息，以此来检测对象是否在线，如果接收PING消息的节点没有在规定的时间内，向发送PING消息的节点返回PONG消息，那么发送PING消息的节点就会将接收PING消息的节点标记为疑似下线（probable fail, PFAIL）；
+
+如果在一个集群里面，半数以上负责处理槽的主节点都将某个主节点x报告为疑似下线，那么这个主节点x将被标记为已下线（FAIL），将主节点x标记为已下线的节点会向集群广播一条关于主节点x的FAIL消息，所有收到这条FAIL消息的节点都会立即将主节点x标记为已下线；
+
+### 故障转移
+
+当一个从节点发现自己正在复制的主节点进入了已下线状态时，从节点将开始对下线主节点进行故障转移，以下是故障转移的执行步骤：
+
+1. 复制下线主节点的所有从节点里面，会有一个从节点被选中；
+2. 被选中的从节点会执行SLAVEOF no one命令，成为新的主节点；
+3. 新的主节点会撤销所有对已下线主节点的槽指派，并将这些槽全部指派给自己；
+4. 新的主节点向集群广播一条PONG消息，这条PONG消息可以让集群中的其它节点立即知道这个节点已经由从节点变成了主节点，并且这个主节点已经接管了原本由已下线节点负责处理的槽；
+5. 新的主节点开始接收和自己负责处理的槽有关的命令请求，故障转移完成；
+
+### 选举新的主节点
+
+集群选举新的主节点方法（Raft算法选举）：
+
+1. 集群的配置纪元是一个自增计数器，它的初始值为0；
+2. 当集群里的某个节点开始一次故障转移操作时，集群配置纪元的值会被增一；
+3. 对于每个配置纪元，集群里每个负责处理槽的主节点都有一次投票机会，而第一个向主节点要求投票的从节点将获得主节点的投票；
+4. 当从节点发现自己正在复制的主节点进入已下线状态时，从节点会想集群广播一条`CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST`消息，要求所有收到这条消息，并且具有投票权的主节点向这个从节点投票；
+5. 如果一个主节点具有投票权（它正在负责处理槽），并且这个主节点上位投票给其它从节点，那么主节点将向要求投票的从节点返回一条`CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK`消息，表示这个主节点支持从节点成为新的主节点；
+6. 每个参与选举的从节点都会接收`CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK`消息，并根据自己收到了多少条这种消息来统计自己获得了多少主节点的支持；
+7. 如果集群里有N个具有投票权的主节点，那么当一个从节点收集到大于等于`N/2+1`张支持票时，这个从节点就会当选为新的主节点；
+8. 因为在每一个配置纪元里面，每个具有投票权的主节点只能投一次票，所以如果有N个主节点进行投票，那么具有大于等于N/2+1张支持票的从节点只会有一个，这确保了新的主节点只会有一个；
+9. 如果在一个配置纪元里面没有从节点能收集到足够多的支持票，那么集群进入一个新的配置纪元，并再次进行选举，知道选出新的主节点为止；
+
+
+
+## 消息
+
+节点发送的消息主要为以下几种：
+
+1. MEET
+2. PING
+3. PONG
+4. FAIL
+5. PUBLISH
+
+### 消息头
+
+当接收者收到MEET，PING，PONG消息时，接受者会访问消息正文中的两个`clusterMsgDataGossip`结构，并根据自己是否认识clusterMsgDataGossip结构中记录的被选中节点来选择进行哪种操作：
+
+- 如果被选中节点不存在于接受者的已知节点列表，那么说明接收者是第一次接触到被选中节点，接收者将根据结构中记录的IP地址和端口号等信息，与被选中节点进行握手；
+- 如果被选中节点已经存在于接受者的已知节点列表，那么说明接收者之前已经被选中节点进行过接触，接收者将根据`clusterMsgDataGossip`结构记录的信息，对被选中节点所对应的`clusterNode`结构进行更新；
+
+一个PING-PONG消息通信示例：
+
+```mermaid
+graph TD
+TODO
+```
+
+### FAIL消息的实现
+
+TODO

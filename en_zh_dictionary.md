@@ -1593,6 +1593,8 @@ faculty `/ˈfæklti/` 院系，能力，教职工
 
 fade `/feɪd/` 褪色，变淡，逐渐消失
 
+failover `/ˈfālˌōvər/` 故障转移
+
 faint `/feɪnt/` 昏倒，昏厥
 
 faithful `/ˈfeɪθfl/` 忠诚的，信徒
