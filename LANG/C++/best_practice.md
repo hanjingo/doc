@@ -2,9 +2,9 @@
 
 [TOC]
 
-## C++98
+## Old C++
 
-### 1尽量以const, enum, inline替换`#define`
+### 尽量以const, enum, inline替换`#define`
 
 - 对于单纯常量，最好以const对象或enums替换`#define`；因为预处理的名称可能并为进入记号表(symbol table)，会给调试带来困难;
 
@@ -22,20 +22,20 @@
 
 
 
-## 2尽可能使用const
+### 尽可能使用const
 
 - const可被施加于任何作用域内的对象，函数参数，函数返回类型，成员函数；
 
 
 
-### 3确定对象被使用前已先被初始化
+### 确定对象被使用前已先被初始化
 
 - C++对象的成员变量的初始化动作发生在进入构造函数本体之前，C++不保证初始化内置类型对象；
 - 构造对象时推荐使用成员初始化列表；
 
 
 
-### 4了解C++编译器的小动作
+### 了解C++编译器的小动作
 
 - C++编译器私自为class创建default构造函数，copy构造函数，copy assignment操作符，以及析构函数；
 
@@ -68,9 +68,11 @@
   }
   ```
 
+- 避免隐式转换；
 
 
-### 5为多态基类声明virtual析构函数
+
+### 正确定义析构函数
 
 - 如果class带有任何virtual函数，最好给他一个virtual析构函数；
 
@@ -87,17 +89,11 @@
   delete ptk;
   ```
 
+- 禁止在析构函数中抛出异常；
 
+- 禁止在构造和析构过程中调用virtual函数；
 
-### 6禁止在析构函数中抛出异常
-
-TODO
-
-
-
-### 7禁止在构造和析构过程中调用virtual函数
-
-- 由于基类构造函数的执行早于派生类构造函数，当基类构造函数执行时派生类的成员变量尚未初始化；
+  由于基类构造函数的执行早于派生类构造函数，当基类构造函数执行时派生类的成员变量尚未初始化；
 
   ```c++
   class Transaction {
@@ -115,55 +111,31 @@ TODO
 
 
 
-### 8赋值操作必须返回一个指向操作符的左侧实参引用
+### 正确定义operator=
 
-```c++
-class Widget {
-public:
-  Widget& operator=(const Widget& rhs) // 返回类型是个reference，指向当前对象
+- 避免operator=的自我赋值
+
+  自我赋值的情况：
+
+  ```c++
+  w = w; // 自我赋值
+  a[i] = a[j]; // 当i==j时，自我赋值
+  *px = *py; // 当px和py指向同一个对象时，自我赋值
+  ```
+
+  处理方法：
+
+  ```c++
+  // 比较安全
+  Widget& Widget::operator=(const Widget& rhs)
   {
-  	return* this; // 返回左侧对象
+  	Widget temp(rhs); // 制作副本
+    swap(temp);       // 交换数据
+    return *this;
   }
-  Widget& operator+=(const Widget& rhs) // 适用于+=, -=, *=等等
-  {
-  	return *this;
-  }
-  Widget& operator=(int rhs)
-  {
-  	return *this;
-  }
-};
-```
+  ```
 
-
-
-### 9避免operator=的自我赋值
-
-自我赋值的情况：
-
-```c++
-w = w; // 自我赋值
-a[i] = a[j]; // 当i==j时，自我赋值
-*px = *py; // 当px和py指向同一个对象时，自我赋值
-```
-
-处理方法：
-
-```c++
-// 比较安全
-Widget& Widget::operator=(const Widget& rhs)
-{
-	Widget temp(rhs); // 制作副本
-  swap(temp);       // 交换数据
-  return *this;
-}
-```
-
-
-
-### 10给class添加成员变量时，必须同时修改复制函数
-
-- Copying函数应该确保复制对象内的所有成员变量及所有基类成员；
+- Copying函数应该确保复制对象内的所有成员变量及所有基类成员
 
   ```c++
   class PriorityCustomer : public Customer {
@@ -188,11 +160,425 @@ Widget& Widget::operator=(const Widget& rhs)
   }
   ```
 
+- 赋值操作必须返回一个指向操作符的左侧实参引用
+
+  ```c++
+  class Widget {
+  public:
+    Widget& operator=(const Widget& rhs) // 返回类型是个reference，指向当前对象
+    {
+    	return* this; // 返回左侧对象
+    }
+    Widget& operator+=(const Widget& rhs) // 适用于+=, -=, *=等等
+    {
+    	return *this;
+    }
+    Widget& operator=(int rhs)
+    {
+    	return *this;
+    }
+  };
+  ```
+
+- 禁止RAII对象被复制;
+
+- 对底层资源使用“引用计数法”(reference-count)，抑制copying；
+
+
+
+### 正确定义成员变量
+
+- 将成员变量声明为private，这可赋予客户访问数据的一致性，可细微划分访问控制，允诺约束条件获得保证，并提供class作者以充分的实现弹性；
+
+- 尽量以非成员函数替换成员函数，这样做可以增加封装性，类弹性和扩充性；
+
+  ```c++
+  class WebBrowser {
+  public:
+      void clearEverything();
+  }
+  ```
+
+  优化为：
+
+  ```c++
+  namespace WebBrowserStuff {
+      class WebBrowser { ... };
+      void clearBrowser(WebBrowser& wb);
+  };
+  ```
+
+- 无论何时如果可以避免friend函数就该避免；
+
+- 若所有参数皆需类型转换，最好采用非成员函数；
+
+  ```c++
+  class Rational {
+      ...
+  };
+  const Rational operator*(const Rational& lhs,
+                           const Rational& rhs)
+  {
+      return Rational(lhs.numerator() * rhs.numerator(),
+                      lhs.denominator() * rhs.denominator());
+  }
+  Rational oneFourth(1, 4);
+  Rational result;
+  result = oneFourth * 2;
+  result = 2 * oneFourth;
+  ```
+
+
+
+### 防止资源泄漏
+
+- 推荐自定义new和delete来替换编译器的operator new和operator delete；
+
+- 使用RAII对象：资源在构造期间获得，在析构期间释放（Resource Acquisition Is Initialization, RAII）；
+
+- 成对使用new和delete；
+
+  使用typedef时必须要说清楚，当以new创建该种typedef类型对象时，应该以哪种delete方式删除；
+
+  ```c++
+  typedef std::string AddressLines[4];
+  std::string* pal = new AddressLines;
+  
+  delete pal; // 行为未定义
+  delete [ ] pal; // 很好
+  ```
+
+- 成对实现placement operator new和placement operator delete，防止内存泄漏；
+
+- 最好不要对数组形式做typedefs动作；
+
+  - 如果你在new表达式中使用`[]`，必须要在相应的delete表达式中使用`[]`；
+  - 如果你在new表达式中不使用`[]`，一定不要在相应的delete表达式中使用`[]`；
+  
+- C++需要保证删除null指针永远安全，即operator delete应该在收到null指针时不做任何事;
+
+
+
+### 提升参数传递效率
+
+- 尽量以传引用替换传值，前者通常比较高效，并且可避免切割问题（slicing problem）；
+
+  （此规则不适用于：内置类型，以及STL的迭代器和函数对象）
+
+  ```c++
+  void printNameAndDisplay(Window w) // 传值
+  {
+      std::cout << w.name();
+      w.display();
+  }
+  WindowWithScrollBars wwsb;
+  printNameAndDisplay(wwsb);
+  
+  void printNameAndDisplay(const Window& w) // 传引用
+  {
+      std::cout << w.name();
+      w.display();
+  }
+  ```
+
+- 必须返回对象时，别妄想返回其reference；
+
+  一个必须返回新对象的正确写法；例：
+
+  ```c++
+  inline const Rational operator * (const Rational& lhs, const Rational& rhs)
+  {
+      return Rational(lhs.n * rhs.n, lhs.d * rhs.d);
+  }
+  ```
+
+- 返回指针，引用，迭代器时（最好不要这么返回，使用传引用的方式替代它们），加上const;
+
+  ```c++
+  struct RectData {
+      Point ulhc;
+      Point lrhc;
+  };
+  
+  class Rectangle {
+  private:
+      std::shared_ptr<RectData> pData;
+  public:
+      ...
+      const Point& upperLeft() const { return pData->ulhc; }
+      const Point& lowerRight() const { return pData->lrhc; }
+      ...
+  };
+  ```
+
+
+
+
+### 尽量避免类型转换
+
+- 类型转换对效率有较大的影响；
+
+- 如果一定要进行类型转换，最好使用新式转换函数；
+
+  旧式转换函数：
+
+  - `(T)expression`
+  - `T(expression)`
+
+  新式转换函数:
+
+  - `const_cast`
+  - `dynamic_cast`
+  - `reinterpret_cast`
+  - `static_cast`
+
+
+
+### 谨慎使用inline函数
+
+- 过度使用inline函数会造成代码膨胀；
+- 将大多数inlining行为限制在小型，被频繁调用的函数身上；
+- 一个inline函数是否真inline取决于编译器；
+  - 有些编译器拒绝将太过复杂（例如带有循环或递归）的函数inlining;
+  - 如果函数里调用了virtual函数，也会使inline失效；
+- 不要仅仅因为函数定义在头文件，就将它们声明为inline；
+
+
+
+### 降低文件间的编译依赖关系
+
+- 使用PIMPL(pointer to implementation)将实现与定义分离；
+
+  ```c++
+  #include <string>
+  #include <memory>
+  
+  class PersonImpl; // Person实现类的前置声明
+  class Date;       // Person接口用到的classes的前置声明
+  class Address;
+  class Person {
+  public:
+      Person(const std::string& name, 
+             const Date& birthday,
+             const Address& addr);
+      std::string name() const;
+      std::string birthDate() const;
+      std::string address() const;
+      ...
+  private:
+      std::shared_ptr<PersonImpl> pImpl; // 指向实现的指针
+  }
+  ```
+
+- 为了将实现与定义分离，尽量不要在头文件中定义函数；
+
+
+
+### 使用继承的一些注意点
+
+- 派生类中定义的成员会遮盖基类中的同名成员；
+
+  ```c++
+  class Base {
+  public:
+  	virtual void mf1() = 0;
+  	virtual void mf1(int);
+  };
+  class Derived: private Base {
+  public:
+  	virtual void mf1() { Base::mf1(); } // 转交函数，暗自成为inline
+  };
+  Derived d;
+  int x;
+  d.mf1();  // 正确，调用的事Derived::mf1
+  d.mf1(x); // 错误，Base::mf1()被遮掩了
+  ```
+
+- 区分接口继承和实现继承；
+
+  - 接口继承：声明纯虚函数，让派生类只继承函数接口；
+
+    ```c++
+    class Shape{
+    public:
+        virtual void draw() const = 0;
+    }
+    ```
+
+  - 实现继承：声明非纯虚函数，让派生类继承该函数的接口和缺省实现；
+
+    ```c++
+    class Shape{
+    public:
+        virtual void error(const std::string& msg);
+    }
+    ```
+	
+- 禁止重新定义继承的非虚函数；（待确认）
+
+- 禁止重新定义继承的缺省参数值，因为缺省参数值都是静态绑定的；
+
+  ```c++
+  TODO
+  ```
+
+- 尽可能使用复合，必要时才使用private继承；
+
+- 不推荐使用多重继承，因为他会导致歧义；
+
+- 虚继承会带来一些成本（类尺寸变大，运行效率降低，加大初始化（及赋值）的复杂度），尽量避免使用虚继承；如果一定要使用，避免在虚基类中定义no-virtual成员；
+
+  ```c++
+  TODO
+  ```
+
+  
+
+
+### 谨慎使用virtual函数
+
+- 动态绑定的一些替代方法：
+
+  - non-virtual interface(NVI)
+
+    TemplateMethod设计模式的一种特殊形式，令客户通过public non-virtual成员函数间接调用private virtual函数；例：
+
+    ```c++
+    class GameCharacter {
+    public:
+        int healthValue() const
+        {
+            int retVal = doHealthValue();
+            return retVal;
+        }
+    private:
+        virtual int doHealthValue() const { ... } // derived classes可重新定义它
+    };
+    ```
+
+  - Strategy设计模式
+
+    以`std::function`成员变量替换virtual函数，例：
+
+    ```c++
+    class GameCharacter;
+    int defaultHealthCalc(const GameCharacter& gc);
+    
+    class GameCharacter {
+    public:
+        typedef std::function<int (const GameCharacter&)> HealthCalcFunc;
+        explicit GameCharacter(HealthCalcFunc hcf = defaultHealthCalc) : healthFunc(hcf) {}
+        int healthValue() const { return healthFunc(*this); }
+    private:
+        HealthCalcFunc healthFunc;
+    };
+    ```
+
+
+
+### typename与class的区别
+
+- 大部分情况下，关键字class或typename意义完全相同；
+
+  ```c++
+  template<class T> class Widget;    // 等价
+  template<typename T> class Widget; // 等价
+  ```
+
+- 当需要在template中声明一个嵌套从属类型名称时，使用typename；
+
+  ```c++
+  template<typename C>                // 允许使用typename或class
+  void f(const C& container,          // C并不是嵌套从属类型名称，不需要使用typename
+         typename C::iterator iter);  // C::iterator是个嵌套从属类型名称，必须使用typename
+  ```
+
+- typename不能出现在成员初始化列表中；
+
+  ```c++
+  template<typename T>
+  class Derived: public Base<T>::Nested { // 不允许typename
+  public: 
+      explicit Derived(int x) : Base<T>::Nested(x) // 成员初始化列表不允许typename
+      {
+          typename Base<T>::Nested temp; // 这里可以
+          ...
+      }
+  }
+  ```
+
+
+
+### 模版使用心得
+
+- 处理模版化基类名称的三种方法：
+
+  1. 在基类函数调用之前加上`this->`
+
+     ```c++
+     template<typename Company>
+     class LoggingMsgSender: public MsgSender<Company> {
+     public:
+         ...
+         void sendClearMsg(const MsgInfo& info)
+         {
+             this->sendClear(info);
+         }
+     };
+     ```
+
+  2. 使用using
+
+     ```c++
+     template<typename Company>
+     class LoggingMsgSender: public MsgSender<Company> {
+     public:
+         using MsgSender<Company>::sendClear; // 告诉编译器，请它假设sendClear位于base class内
+         void sendClearMsg(cosnt MsgInfo& info)
+         {
+             sendClear(info);
+         }
+     };
+     ```
+
+  3. 明确指出被调用的函数属于基类
+
+     ```c++
+     template<typename Company>
+     class LoggingMsgSender: public MsgSender<Company> {
+     public:
+         void sendClearMsg(const MsgInfo& info)
+         {
+             MsgSender<Company>::sendClear(info); // 假设sendClear将被继承下来
+         }
+     }
+     ```
+
+- 非类型模板参数会造成代码膨胀
+
+  ```c++
+  teplate<typename T, std::size_t n>
+  class SquareMatrix {
+  public:
+      void invert();
+  };
+  
+  SquareMatrix<double, 5> sm1;  // 实现一份invert
+  sm1.invert();
+  
+  SquareMatrix<double, 10> sm2; // 再实现一份invert
+  sm2.invert();
+  ```
+
+- 使用成员函数模版生成可接受所有兼容类型的函数
+
+- 需要类型转换时，为模版定义非成员函数
+
 
 
 ---
 
-## C++11
+## New C++
 
 ### 1正确使用模版类型推导
 
@@ -1158,7 +1544,7 @@ pimpl（pointer to implementation，指涉到实现的指针）：把某类的�
 - 从原理上说，置入函数应该有时比对应的插入函数高效，而且不应该有更低效的可能；
 - 从实践上说，置入函数在以下几个前提成立时，极有可能会运行的更快：
   1. 待添加的值是以构造h而非赋值方式加入容器；
-  2. 传递的实参型别与容器持有之物的型别不同；
+  2. 传递的实参类型与容器持有之物的型别不同；
   3. 容器不会由于存在重复值而拒绝待添加的值；
 - 置入函数可能会执行在插入函数中会被拒绝的型别转换；
 
