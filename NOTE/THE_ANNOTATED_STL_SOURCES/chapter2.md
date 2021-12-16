@@ -50,20 +50,21 @@ class vector {...};
 STL定义在<emmory>中与空间配置相关的三部分：
 * `< stl_construct.h >`
 
-    > 定义全局函数construct()和destroy()，负责对象的构造和析构
+    定义全局函数construct()和destroy()，负责对象的构造和析构
 
 * `< stl_alloc.h >`
 
-    > 定义一，二级allocator;配置器名为alloc，负责内存空间的配置与释放
+    定义一，二级allocator;配置器名为alloc，负责内存空间的配置与释放
 
 * `< stl_uninitialized.h >`
   
-    > 定义了一些全局函数用来填充和复制大块内存数据，实现STL标准规范：
-    > un_initialized_copy()
-    >
-    > un_initialized_fill()
-    >
-    > un_initialized_fill_n()
+    定义了一些全局函数用来填充和复制大块内存数据，实现STL标准规范：
+    
+    - un_initialized_copy()
+    
+    - un_initialized_fill()
+    
+    - un_initialized_fill_n()
 
 ### 构造和析构基本工具construct和destroy
 
@@ -71,30 +72,30 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
 - construct()
 
-  > ```c++
-  > template <class T1, class T2>
-  > inline void construct(T1 *p, const T2& value) {
-  >   // placement new; 调用T1::T1(value);
-  >   new (p) T1(value);
-  > }
-  > ```
-
+  ```c++
+  template <class T1, class T2>
+  inline void construct(T1 *p, const T2& value) {
+     // placement new; 调用T1::T1(value);
+    new (p) T1(value);
+  }
+  ```
+  
 - destroy()
 
-  > ```c++
-  > // destroy()第一个版本，接受一个指针
-  > template <class T>
-  > inline void destroy(T* pointer) {
-  >   // 调用dtor ~T()
-  >   pointer->~T();
-  > }
-  > 
-  > // destroy()第二个版本，接收两个迭代器。
-  > // 此函数设法找出元素的数值型别，
-  > // 进而利用 __type_traits<>求取最适当措施
-  > template <class ForwardIterator>
-  > inline void destroy()
-  > ```
+  ```c++
+   // destroy()第一个版本，接受一个指针
+   template <class T>
+   inline void destroy(T* pointer) {
+     // 调用dtor ~T()
+     pointer->~T();
+   }
+   
+   // destroy()第二个版本，接收两个迭代器。
+   // 此函数设法找出元素的数值型别，
+   // 进而利用 __type_traits<>求取最适当措施
+   template <class ForwardIterator>
+   inline void destroy()
+  ```
 
 
 
@@ -109,26 +110,26 @@ STL定义在<emmory>中与空间配置相关的三部分：
 
 一二级分配机制：
 * 一级allocator: 
-  > ```c++
-  > template <int inst>
-  > class __mlloc_alloc_template { ... };
-  > ```
-  >
-  > 其中：
-  >
-  > 1. allocate()直接使用malloc(), dealloc()直接使用free()。
-  > 2. 模拟c++的set_new_handler()用来处理内存不足；
+  ```c++
+   template <int inst>
+   class __mlloc_alloc_template { ... };
+  ```
+  
+  其中：
+  
+  1. allocate()直接使用malloc(), dealloc()直接使用free()。
+  2. 模拟c++的set_new_handler()用来处理内存不足；
   
 * 二级allocator:
-	> ```c++
-	> template <bool threads, int inst>
-	> class __default_alloc_template {...};
-	> ```
-	>
-	> 其中:
-	>
-	> 1. 如果需求区块<128bytes,使用内存池管理；维护16中**自由链表**,负责16种小型区块(8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128)bytes的配置能力;
-	> 2. 如果需求区块>128bytes,转而调用第一级配置器；  
+	```c++
+	template <bool threads, int inst>
+	class __default_alloc_template {...};
+	```
+	
+	其中:
+	
+	1. 如果需求区块<128bytes,使用内存池管理；维护16中**自由链表**,负责16种小型区块(8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128)bytes的配置能力;
+	2. 如果需求区块>128bytes,转而调用第一级配置器；  
 
 自由链表:
 

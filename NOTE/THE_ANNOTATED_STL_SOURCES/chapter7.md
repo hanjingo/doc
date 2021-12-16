@@ -58,7 +58,7 @@
 - 等于: equal_to<T>
 - 不等于: not_equal_to<T>
 - 大于: greater<T>
-- 大于或等于： greater_equal<T>
+- 大于或等于:  greater_equal<T>
 - 小于: less<T>
 - 小于或等于： less_equal<T>
 

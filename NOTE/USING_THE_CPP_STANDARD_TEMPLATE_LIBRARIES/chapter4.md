@@ -1,14 +1,22 @@
 # 第四章 map容器
+
+[TOC]
+
+
+
 ## 摘要
 
+
+
 ## 详情
+
 map容器的比较函数在相等时不能返回true
 
 ### map类型
-* map<K, T>容器保存的是pair<const K, T>类型的元素。
-* multimap<K, T>容器和map<K, T>容器类似，允许使用重复的键。
-* unordered_map<K, T>中pair<const K, T>元素的顺序并不是直接由键值确定的，而是由键值的哈希值决定的。
-* unordered_multimap<K, T>也可以通过键值生成的哈希值来确定对象的位置，但它允许有重复的键。
+* `map<K, T>`容器保存的是`pair<const K, T>`类型的元素。
+* `multimap<K, T>`容器和`map<K, T>`容器类似，允许使用重复的键。
+* `unordered_map<K, T>`中`pair<const K, T>`元素的顺序并不是直接由键值确定的，而是由键值的哈希值决定的。
+* `unordered_multimap<K, T>`也可以通过键值生成的哈希值来确定对象的位置，但它允许有重复的键。
 
 ### pair
 pair的成员变量second也是一个迭代器，它指向键值大于参数的第一个参数
@@ -35,7 +43,10 @@ pair的成员变量second也是一个迭代器，它指向键值大于参数的�
 |bucket_count()|返回格子个数|
 |bucket_size()|返回指定格子中元素的个数|
 
+
+
 ## 总结
+
 * pair<T1, T2>对象封装了一个任意类型的对象
 * tuple<>模板类型的实例可以封装任意个数不同类型的对象
 * map容器是以pair<const K, T>对象的形式来保存键/对像对元素的

@@ -15,16 +15,18 @@
 ### 应用于迭代器,iterator adapters
 
 - Insert Iterators
-> 将一般迭代器的赋值操作转变为插入操作。
-> - back_insert_iterator
-> - front_insert_iterator
-> - insert_iterator
+
+  将一般迭代器的赋值操作转变为插入操作。
+
+- back_insert_iterator
+- front_insert_iterator
+- insert_iterator
 
 |辅助函数(helper function)|实际产生的对象|
 |:--|:--|
-|back_inserter(Container& x)|back_insert_iterator<Container>(x)|
-|front_inserter(Container& x)|front_insert_iterator<Container>(x)|
-|inserter(Container& x, Iterator i)|insert_iterator<Container>(x, Container::iterator(i))|
+|`back_inserter(Container& x)`|`back_insert_iterator<Container>(x)`|
+|`front_inserter(Container& x)`|`front_insert_iterator<Container>(x)`|
+|`inserter(Container& x, Iterator i)`|`insert_iterator<Container>(x, Container::iterator(i))`|
 
 - Reverse Iterators
 
@@ -38,7 +40,7 @@
 
 是所有配接器中数量最庞大的一个族群。
 
-这些配接操作包括:绑定，否定，组合以及对一般函数或成员函数的修饰；这些配接器的几口在<functional>。
+这些配接操作包括:绑定，否定，组合以及对一般函数或成员函数的修饰；这些配接器的几口在`<functional>`。
 
 通过它们之间的绑定，组合，修饰能力，几乎可以无限制地创造出各种可能的表达式。
 

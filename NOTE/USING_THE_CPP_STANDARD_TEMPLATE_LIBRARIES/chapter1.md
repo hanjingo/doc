@@ -1,6 +1,13 @@
 # 第一章 STL介绍
+
+[TOC]
+
+
+
 ## 摘要
 stl库介绍
+
+
 
 ## 详情
 ### stl概念库
@@ -27,44 +34,76 @@ stl库介绍
 * 随机访问迭代器（random access iterators）:提供了和双向迭代器同样的功能，但是支持对元素的随机访问
 
 ### 迭代器适配器
-> 1.反向迭代器（reverse iterators）：
+1. 反向迭代器（reverse iterators）：
 
-> 2.插入迭代器（insert iterators）：
->> 后向插入迭代器（back_insert_iterator）:vector, list, deque都有push_back(),将一个新的元素添加到容器尾部  
->> 向前插入迭代器(front_insert_iterator：list, forward_list, deque都有push_front(),将一个新的元素添加到容器的头部  
->> 插入迭代器（insert_iterator）:用insert()插入新的元素  
+2. 插入迭代器（insert iterators）：
 
-> 3.移动迭代器（move iterators）：指向一定范围内的元素，将某个范围内的类对象移动到目标范围，而不需要通过拷贝去移动
+   - 后向插入迭代器（back_insert_iterator）
+
+     vector, list, deque都有push_back(),将一个新的元素添加到容器尾部 
+
+   - 向前插入迭代器(front_insert_iterator）
+
+     list, forward_list, deque都有push_front(),将一个新的元素添加到容器的头部 
+
+   - 插入迭代器（insert_iterator）
+
+     用insert()插入新的元素  
+
+3. 移动迭代器（move iterators）
+
+   指向一定范围内的元素，将某个范围内的类对象移动到目标范围，而不需要通过拷贝去移动
 
 ### 迭代器运算
-* advance():将迭代器移动n个位置，例：std::advance(iter, 3)
-* distance():返回迭代器之间的距离, 例：std::distance(iter1, iter2)
-* next():获得距离迭代器n个位置的迭代器,例：std::next(iter, 3)
-* prev():获得迭代器反向偏移n个位置之后所指向的迭代器，例：std::prev(iter, 3)
+* advance()
+
+  将迭代器移动n个位置，例：std::advance(iter, 3)
+
+* distance()
+
+  返回迭代器之间的距离, 例：std::distance(iter1, iter2)
+
+* next()
+
+  获得距离迭代器n个位置的迭代器,例：std::next(iter, 3)
+
+* prev()
+
+  获得迭代器反向偏移n个位置之后所指向的迭代器，例：std::prev(iter, 3)
 
 ### 智能指针
-智能指针只能用来保存堆上分配的内存的地址  
+智能指针只能用来保存堆上分配的内存的地址 
 不能像对原生指针那样，对智能指针进行一些自增或自减这样的操作  
-> 1.unique_ptr<T>:唯一指针
->> 1_1.不可能有其他的unique_ptr<T>指向同一地址;  
->> 1_2.不能以传值的方式将一个unique_ptr<T>对象传入函数中，因为他们不支持拷贝，必须使用引用的方式；  
->> 1_3.可以通过交换2个unique_ptr<T>指针的方式来交换2个对象;  
 
-> 2.shared_ptr<T>:共享指针
->> 2_1.允许共享一个对象的所有权；
->> 2_2.只能通过拷贝构造函数或赋值运算符去赋值一个shared_ptr<T>对象;
+1. `unique_ptr<T>`:唯一指针
 
-> 3.weak_ptr<T>:弱引用指针
->> 3_1.只能从shared_ptr<T>对象创建;
->> 3_2.不会增加shared_ptr<T>对象的引用机制，当最后一个shared_ptr<T>引用被释放或指向一个不同的地址时，他们所指向的对象的内存被释放，即使相关的weak_ptr<T>可能仍然存在
+   - 不可能有其他的`unique_ptr<T>`指向同一地址; 
+   - 不能以传值的方式将一个`unique_ptr<T>`对象传入函数中，因为他们不支持拷贝，必须使用引用的方式；
+   - 可以通过交换2个`unique_ptr<T>`指针的方式来交换2个对象;  
+2. `shared_ptr<T>`:共享指针
+
+   - 允许共享一个对象的所有权；
+   - 只能通过拷贝构造函数或赋值运算符去赋值一个shared_ptr<T>对象;
+3. `weak_ptr<T>`:弱引用指针
+   - 只能从`shared_ptr<T>`对象创建;
+   - 不会增加`shared_ptr<T>`对象的引用机制，当最后一个`shared_ptr<T>`引用被释放或指向一个不同的地址时，他们所指向的对象的内存被释放，即使相关的`weak_ptr<T>`可能仍然存在
 
 ### 算法
-* 非变化序列运算（不改变值）: find(), count(), mismatch(), search(), equal()
-* 可变序列运算（改变值）: swap(), copy(), transform(), replace(), remove(), reverse(), rotate(), fill(), shuffle()
-* 改变顺序运算（改变顺序）: sort(), stable_sort(), binry_search(), merge(), min(), max()
+* 非变化序列运算（不改变值）
+
+  find(), count(), mismatch(), search(), equal()
+
+* 可变序列运算（改变值）
+
+  swap(), copy(), transform(), replace(), remove(), reverse(), rotate(), fill(), shuffle()
+
+* 改变顺序运算（改变顺序）
+
+  sort(), stable_sort(), binry_search(), merge(), min(), max()
 
 ### lambda表达式
-【捕获列表】（参数列表）mutable -> 返回类型 { 主体 }  
+`【捕获列表】（参数列表）mutable -> 返回类型 { 主体 }  `
+
 ```
 捕获列表：列出了在闭合区域不活的变量，变量可以通过值引用或引用的方式捕获  
 参数列表：确定在lambda被调用时，传给它的值得类型和个数。可以指定默认参数值，参数列表可以为空  
