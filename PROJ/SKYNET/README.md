@@ -9,6 +9,7 @@
 - [环境搭建](env.md)
 - [GM工具](gm.md)
 - [热更新](hotpatch.md)
+- [日志](log.md)
 - [登录](login.md)
 - [过载保护](overload_protection.md)
 - [服务重入](reentry.md)

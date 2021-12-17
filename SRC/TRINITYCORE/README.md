@@ -1,4 +1,4 @@
-# WOW服务端-TrinityCore源码刨析
+# TrinityCore源码刨析
 
-
+- [环境搭建](env.md)
 

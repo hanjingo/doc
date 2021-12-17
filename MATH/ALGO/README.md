@@ -4,6 +4,7 @@
 
 - [A星寻路算法]
 - [平衡树](balance_tree.md)
+- [大O计数法](big_o_notation.md)
 - [行为树](behavior_tree.md)
 - [二叉树]
 - [布隆过滤器]

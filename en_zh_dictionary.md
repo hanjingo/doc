@@ -2591,6 +2591,8 @@ mundane `/mʌnˈdeɪn/` 单调的，平凡的
 
 mural `/ˈmjʊərəl/` 壁画，墙壁的
 
+mutate `/mjuːˈteɪt/` 变异，转换，转变
+
 ### my
 
 [回到M](#M)--[回到顶部](#英汉词典)
@@ -2825,6 +2827,8 @@ oversee `/ˌəʊvəˈsiː/` 监督，监视，偷看到
 
 overtime `/ˈəʊvətaɪm/` 加班，加班费
 
+overwhelm `/ˌəʊvəˈwelm/` 压倒，征服，压垮，感情充溢
+
 ### ow
 
 [回到O](#O)--[回到顶部](#英汉词典)
@@ -2928,6 +2932,8 @@ percolate `/ˈpɜːkəleɪt/` 渗入，渗透，传开
 percussion `/pəˈkʌʃn/` 撞击，打击乐器
 
 perform `/pəˈfɔːm/` 做，履行，执行，表演
+
+peril `/ˈperəl/` 危险，险情，危及
 
 perishable `/ˈperɪʃəbl/` 易坏的，易变质的，易腐烂的
 
@@ -3956,6 +3962,8 @@ synthesis `/ˈsɪnθəsɪs/` 合成，结合，综合体
 tableware `/ˈteɪblwer/` 餐具
 
 tabloid `/ˈtæblɔɪd/` 通俗小报，摘要
+
+tackle `/ˈtækl/` 解决，应付，处理，阻断，阻截，渔具
 
 tactics `/ˈtæktɪks/` 战术，战略，兵法，手段
 

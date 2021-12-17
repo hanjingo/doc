@@ -359,6 +359,36 @@ TODO
 
 返回以键 1,2... 等填充的新表， 并将 "`n`" 这个域设为参数的总数。
 
+#### table.remove
+
+`table.remove (list [, pos])`
+
+移除list中pos位置上的元素，并返回这个被移除的量；当pos位于1到#list之间时，它向前移动元素list[pos+1], list[pos+2], ..., list[#list]并删除元素list[#list]；
+
+pos 默认为 #list， 因此调用 table.remove(l) 将移除表 l 的最后一个元素；
+
+例：
+
+```lua
+Lua 5.3.3  Copyright (C) 1994-2016 Lua.org, PUC-Rio
+> a = {"a", "b", "c", "d"}
+> print(table.remove(a, 2))
+b
+> for i = 1, #a do print(a[i]) end
+a
+c
+d
+> print(table.remove(a, #a))
+d
+> for i = 1, #a do print(a[i]) end
+a
+c
+> print(table.remove(a))
+c
+>  for i = 1, #a do print(a[i]) end
+a
+```
+
 ### 数学函数
 
 #### math.ceil

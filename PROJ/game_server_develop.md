@@ -210,10 +210,32 @@ TODO
 
 
 
+## 9交易系统
+
+### 9.1交易日志
+
+TODO
+
+### 9.2回收站
+
+TODO
+
+
+
+## 10通讯协议的设计
+
+### 10.1错误码
+
+游戏协议错误码与分协议， TODO...
+
+
+
 ## 参考
 
 - [云风-LoginServer](https://github.com/cloudwu/skynet/wiki/LoginServer)
 - [云风-MsgServer](https://github.com/cloudwu/skynet/wiki/MsgServer)
+- [云风-开发笔记(20) : 交易系统](https://blog.codingnow.com/2012/06/dev_note_20.html)
+- [云风-网络游戏物品校验系统的设计](https://blog.codingnow.com/2011/01/virtual_goods_verify.html)
 - [游戏服务器架构设计](https://www.cnblogs.com/panchanggui/p/9841768.html)
 - [游戏服务器的常用架构](https://blog.csdn.net/u011308294/article/details/78627540)
 - [不要用JWT替代session管理（上）：全面了解Token,JWT,OAuth,SAML,SSO](https://zhuanlan.zhihu.com/p/38942172)
