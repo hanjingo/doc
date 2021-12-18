@@ -34,10 +34,8 @@
         sudo dpkg -P vim
         ```
 
-        
-
      3. 编译安装vim
-     
+
         ```sh
         cd vim
         
@@ -58,11 +56,9 @@
         make VIMRUNTIMEDIR=/usr/share/vim/vim80
         sudo make install
         ```
-
-        
      
      4. 设置默认编辑器
-     
+
         ```sh
         sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
         sudo update-alternatives --set editor /usr/bin/vim
@@ -108,8 +104,6 @@ mv vim82 vim80
    ```sh
    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
    ```
-
-   
 
 2. 安装插件
 

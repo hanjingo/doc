@@ -1,4 +1,4 @@
-# c++
+# c/c++
 
 - [STL速查手册](stl.md)
 - [最佳实践](best_practice.md)

@@ -8,6 +8,7 @@
 - [内存回收](gc.md)
 - [整数集合-intset](intset.md)
 - [链表](linklist.md)
+- [Lua脚本](lua.md)
 - [字典](map.md)
 - [监控指标](monitor_index.md)
 - [数据类型](object.md)
