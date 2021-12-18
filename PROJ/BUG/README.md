@@ -52,7 +52,7 @@ eos无法启动...
 
 
 
-## go
+## Golang
 
 #### [waitgroup的坑](golang.md)
 
@@ -84,9 +84,15 @@ eos无法启动...
 
 #### [Time wait问题](net.md)
 
-关键词：TCP，Timewait
+关键词：**TCP**，**Timewait**
 
 主动发起方频繁建立/断开连接，会导致系统之存在大量的timewait连接，从而导致没法建立新的连接...
+
+#### [linux端口访问不了](net.md)
+
+关键词：**telnet**， **ufw**， **防火墙**
+
+telnet端口不通，但是防火墙已关闭，可能是由于linux默认禁止端口访问...
 
 
 
