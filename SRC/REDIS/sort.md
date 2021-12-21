@@ -139,3 +139,165 @@ SORT fruits BY *-id ALPHA
 4. 将各个数组项的`u.cmpobj`指针分别指向相应的权重键；
 5. 以各个数组项的权重键的值为权重，对数组执行字符串排序；
 6. 遍历数组，依次将数组项的obj指针所指向的集合元素返回给客户端；
+
+
+
+## LIMIT选项的实现
+
+LIMIT选项让SORT命令只返回其中一部分已排序的元素；LIMIT选项的格式为：
+
+```sh
+LIMIT <offset> <count>
+```
+
+- `offset` 要跳过的已排序元素数量；
+- `count` 跳过给定数量的已排序元素之后，要返回的已排序元素数量；
+
+例：
+
+```sh
+SADD alphabet a b c d e f
+SORT alphabet ALPHA LIMIT 2 3
+```
+
+服务器执行`SORT xx ALPHA LIMIT m n`命令的步骤如下：
+
+```mermaid
+
+```
+
+1. 创建一个`redisSortObject`结构数组，数组的长度等于`xx`集合的大小；
+2. 遍历数组，将各个数组项的obj指针分别指向alphabet集合的各个元素；
+3. 根据obj指针所指向的集合元素，对数组进行字符串排序；
+4. 根据选项`LIMIT m n`，将指针移动到数组的索引m上面，然后依次访问`xx[m]`，`xx[m+1]`，...，`xx[n]`，并将数组项的obj指针所指向的元素返回给客户端；
+
+
+
+## GET选项的实现
+
+GET选项让SORT命令在对键进行排序之后，根据被排序的元素以及GET选项所指定的模式，查找并返回某些键的值；GET选项的格式为：
+
+```sh
+SORT xx ALPHA GET xxx
+```
+
+服务器执行`SORT xx ALPHA GET xxx`命令的步骤如下：
+
+```mermaid
+```
+
+1. 创建一个`redisSortObject`结构数组，数组的长度等于xx集合的大小；
+2. 遍历数组，将各个数组项的obj指针分别指向xx集合的各个元素；
+3. 根据obj指针所指向的集合元素，对数组进行字符串排序；
+4. 遍历数组，根据数组项obj指针所指向的集合元素，以及GET选项所给定的XXX模式，查找相应的键；
+5. 遍历查找程序返回的三个键，并向客户端返回它们的值；
+
+
+
+## STORE选项的实现
+
+STORE选项将排序结果保存在指定的键里面，并在有需要时重用这个排序结果；STORE选项的格式为：
+
+```sh
+SORT xx ALPHA STORE xxx
+```
+
+服务器执行`SORT xx ALPHA STORE xxx`命令的步骤如下：
+
+1. 创建一个`redisSortObject`结构数组，数组的长度等于xx集合的大小；
+2. 遍历数组，将各个数组的obj指针分别指向xx集合的各个元素；
+3. 根据obj指针所指向的集合元素，对数组进行字符串排序；
+4. 检查xxx键是否存在，如果存在的话，删除该键；
+5. 设置xxx为空白的列表键；
+6. 遍历数组，将排序后的元素依次推入xxx列表的末尾；
+7. 遍历数组，向客户端返回元素；
+
+
+
+## 多个选项的执行顺序
+
+### 选项的执行顺序
+
+一个SORT命令的执行过程分为以下几步：
+
+1. 排序
+
+   命令使用ALPHA，ASC或DESC，BY这几个选项，对输入键进行排序，并得到一个排序结果集；
+
+2. 限制排序结果集的长度
+
+   命令使用LIMIT选项，对排序结果集的长度进行限制，只有LIMIT选项指定的元素会被保留在排序结果集中；
+
+3. 获取外部键
+
+   命令使用GET选项，根据排序结果集中的元素，以及GET选项指定的模式，查找并获取指定键的值，并用这些值来作为新的排序结果集；
+
+4. 保存排序结果集
+
+   命令使用STORE选项，将排序结果集保存到指定键上面；
+
+5. 向客户端返回排序结果集
+
+   命令遍历排序结果集并依次向客户端返回排序结果集中的元素；
+
+例：
+
+```sh
+SORT <key> ALPHA DESC BY <by-pattern> LIMIT <offset> <count> GET <get-pattern> STORE <store_key>
+```
+
+执行1：
+
+```sh
+SORT <key> ALPHA DESC BY <by-pattern>
+```
+
+执行2:
+
+```sh
+LIMIT <offset> <count>
+```
+
+执行3:
+
+```sh
+GET <get-pattern>
+```
+
+执行4:
+
+```sh
+STORE <store_key>
+```
+
+### 选项的摆放顺序
+
+调用SORT命令时，除了GET选项之外，改变选项的摆放顺序并不影响SORT命令执行这些选项的顺序；
+
+例：
+
+```sh
+SORT <key> ALPHA DESC BY <by-pattern> LIMIT <offset> <count> GET <get-pattern> STORE <store_key>
+```
+
+等价于
+
+```sh
+SORT <key> LIMIT <offset> <count> BY <by-pattern> ALPHA GET <get-pattern> STORE <store_key> DESC
+```
+
+如果命令包含了多个GET选项，那么在调整选项的位置时，必须保证多个GET选项的摆放顺序不变，这样才可以让排序结果集保持不变；
+
+例：
+
+```sh
+SORT <key> GET <pattern-a> GET <pattern-b> STORE <store_key>
+```
+
+与
+
+```sh
+SORT <key> STORE <store_key> GET <pattern-b> GET <pattern-a>
+```
+
+产生的排序结果集不同；

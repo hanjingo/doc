@@ -1,6 +1,7 @@
 # Redis源码分析
 
 - [总结](summary.md)
+- [位数组](bit_array.md)
 - [客户端](cli.md)
 - [集群](cluster.md)
 - [数据库实现](db.md)
