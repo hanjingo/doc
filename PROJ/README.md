@@ -5,6 +5,7 @@
 - [BUG速查](BUG/README.md)
 - [加密与解密](crypto.md)
 - [数据库设计](db.md)
+- [软件调试](debug.md)
 - [运维技巧](dev_ops.md)
 - [游戏客户端开发](game_client_develop.md)
 - [游戏开发最佳实践](game_develop_best_practice.md)
@@ -16,8 +17,6 @@
 - [服务端图形引擎](server_graphic_engine.md)
 - [软件测试](software_test.md)
 - [同步算法](sync.md)
-- [软件调试工具](test_tool.md)
-- [软件调试方法](testway.md)
 - [计时系统](timer.md)
 - [Token机制](token.md)
 

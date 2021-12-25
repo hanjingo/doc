@@ -214,7 +214,7 @@ TODO
 | 发送流量(kb)            |                                                              |
 | 接收流量(kb)            |                                                              |
 
-这里是[游戏服务器压测文档模板](tmpl_game_server_benchmark_report.md)，仅供参考；
+这里是[游戏服务器压测文档模板](res/tmpl_game_server_benchmark_report.md)，仅供参考；
 
 ### 压测流程
 
