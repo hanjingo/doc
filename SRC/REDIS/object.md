@@ -1,6 +1,8 @@
+# Redis源码分析-数据类型
+
 [TOC]
 
-# Redis数据类型
+
 
 ## object
 
@@ -375,5 +377,11 @@ Redis在自己的对象系统中构建了一个引用计数（reference counting
 
 
 ## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
+
+### 外链
 
 - [【Redis源码分析】Redis中的LRU算法实现](https://segmentfault.com/a/1190000017555834)

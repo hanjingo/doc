@@ -1,4 +1,6 @@
-# Redis客户端
+# Redis源码分析-客户端
+
+[TOC]
 
 
 
@@ -95,5 +97,11 @@ TODO
 
 
 ## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
+
+### 外链
 
 - [redis源码分析（3）——请求处理](https://blog.csdn.net/chosen0ne/article/details/43053915?utm_source=blogkpcl14)

@@ -1,4 +1,4 @@
-# Redis字典
+# Redis源码分析-字典
 
 [TOC]
 
@@ -157,3 +157,10 @@ redis的哈希表使用分离链接法(separate chaining)来解决键冲突。
 
 ![redis_dict_sbs_rehash6](res/redis_dict_sbs_rehash6.png)
 
+
+
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现

@@ -301,3 +301,11 @@ SORT <key> STORE <store_key> GET <pattern-b> GET <pattern-a>
 ```
 
 产生的排序结果集不同；
+
+
+
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现

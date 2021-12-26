@@ -1,4 +1,4 @@
-# Redis集群
+# Redis源码分析-集群
 
 [TOC]
 
@@ -466,3 +466,11 @@ end
 clusterMsgDataPublish结构示例：
 
 ![redis_cluster_clusterMsgDataPublish](res/redis_cluster_clusterMsgDataPublish.png)
+
+
+
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现

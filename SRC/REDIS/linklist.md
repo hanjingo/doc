@@ -1,4 +1,4 @@
-# Redis链表
+# Redis源码分析-链表
 
 [TOC]
 
@@ -71,4 +71,10 @@ typedef struct list { // 链表
 ```
 
 
+
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
 

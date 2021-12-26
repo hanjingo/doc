@@ -1,4 +1,6 @@
-# Redis的数据库实现
+# Redis源码分析-数据库实现
+
+[TOC]
 
 
 
@@ -397,6 +399,12 @@ void notifyKeyspaceEvent(int type, char *event, robj *key, int dbid) {
   
 
 ## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
+
+### 外链
 
 - [键空间通知（keyspace notification）](http://redisdoc.com/topic/notification.html)
 - [redis过期数据删除策略](https://blog.csdn.net/qq_26417067/article/details/107753597)

@@ -1,4 +1,6 @@
-# Redis服务端
+# Redis源码分析-服务端
+
+[TOC]
 
 
 
@@ -137,6 +139,12 @@ is_aofrewrite(yes)->do_nothing
 
 
 ## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
+
+### 外链
 
 - [Redis5设计与源码分析 (第9章　命令处理生命周期)](https://www.cnblogs.com/coloz/p/13812842.html)
 

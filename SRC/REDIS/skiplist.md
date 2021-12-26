@@ -1,6 +1,6 @@
-[TOC]
+# Redis源码分析-跳表
 
-# Redis跳表
+[TOC]
 
 
 
@@ -167,3 +167,8 @@ int zslRandomLevel(void) {
 
 
 
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现

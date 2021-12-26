@@ -1,5 +1,9 @@
 # Redis源码总结
 
+[TOC]
+
+
+
 ## 数据结构
 - 内存分配
     - zmalloc.h

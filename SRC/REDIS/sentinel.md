@@ -1,4 +1,6 @@
-# Redis哨兵
+# Redis源码分析-哨兵
+
+[TOC]
 
 哨兵(Sentinel)是Redis的高可用性(high availability)解决方案；Sentinel本质上只是一个运行在特殊模式下的Redis服务器；
 
@@ -327,3 +329,10 @@ Sentinel使用命令`SENTINEL is-master-down-by-addr <ip> <port> <current_epoch>
 
     
 
+
+
+## 参考
+
+### 文献
+
+[1] 黄健宏.Redis设计与实现
