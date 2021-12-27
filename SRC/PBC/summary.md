@@ -28,7 +28,7 @@
 
 | API                  | 功能                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| pbc_rmessage_new     |                                                              |
+| pbc_rmessage_new     | 构建pbc_rmessage结构                                         |
 | pbc_rmessage_delete  |                                                              |
 | pbc_rmessage_integer |                                                              |
 | pbc_rmessage_real    |                                                              |

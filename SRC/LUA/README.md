@@ -6,6 +6,7 @@
 - [Debug](debug.md)
 - [GC](gc.md)
 - [内置库](lib.md)
+- [内存管理](mem.md)
 - [模块](module.md)
 - [Lua虚拟机](vm.md)
 

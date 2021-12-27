@@ -18,13 +18,13 @@
 
 ### 编程
 
-| 书名 | 作者 | 版次 | 备注 |
-| ---- | ---- | ---- | ---- |
-|      |      |      |      |
-|      |      |      |      |
-|      |      |      |      |
-|      |      |      |      |
-|      |      |      |      |
+| 书名                                                  | 作者                                                         | 版次 | 备注           |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ---- | -------------- |
+| 编译原理<br>Compilers Principles, Techniques, & Tools | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2ED  | 学底层原理必看 |
+|                                                       |                                                              |      |                |
+|                                                       |                                                              |      |                |
+|                                                       |                                                              |      |                |
+|                                                       |                                                              |      |                |
 
 ### 经济学
 
@@ -57,9 +57,6 @@
 |                                                              |      |      |                                                              |
 |                                                              |      |      |                                                              |
 
-- [CMake教程 CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)
-- 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
-
 
 
 ## 开源库
@@ -72,6 +69,8 @@
 - C++字符串格式化库 [fmtlib](https://github.com/fmtlib)/**[fmt](https://github.com/fmtlib/fmt)**
 - [qt开源库](https://download.qt.io/archive/qt/)
 - [微软的STL库实现](https://github.com/microsoft/STL)
+- [CMake教程 CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)
+- 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
 
 ### 算法库
 
