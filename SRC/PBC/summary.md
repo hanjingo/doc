@@ -8,9 +8,10 @@
 
 ### 分类
 
-- `integer`
-- `string`
-- `real`
+- `integer` 整型值
+- `string` 字符串
+- `real` 浮点数
+- `wire type`
 
 
 
@@ -19,10 +20,14 @@
 ### 分类
 
 - `pbc_rmessage_xxx` 编码类API
+
 - `pbc_wmessage_xxx` 解码类API
-  1. optional的字段判断与默认值一致时啥都不写（字段是 repeated 或者 packed 都不会被省略，即使是存放数据为默认值）；
-- `pbc_pattern_xxx`   适配类API
-  1. 将序列化内容通过顺序标号与 C 语言结构体的字段一一对应起来；
+  
+  optional的字段判断与默认值一致时啥都不写（字段是 repeated 或者 packed 都不会被省略，即使是存放数据为默认值）；
+  
+- `pbc_pattern_xxx`   适配类API（高性能API）
+  
+  将序列化内容通过顺序标号与 C 语言结构体的字段一一对应起来；
 
 ### 常用API
 
@@ -51,9 +56,28 @@
 
 ## 架构
 
+```mermaid
+graph TD
+  flow(1创建pbc_env<br>2注册pb文件<br>3解析并生成二进制数据<br>4清理message和env)
+	开始 --编写protobuf文件--> xx.proto --使用protoc编译--> xx.pb --注册到pbc开始编解码--> flow
+```
+
 ### 创建pbc_env
 
-TODO
+```mermaid
+graph TD
+  a(desc_simple.pbcbin)
+  b(enum<br>message)
+  c(pbc_env)
+  init(初始化完成)
+  
+  a--根据pbc.file解析-->b--注入-->c--索引好message和enum-->init
+```
+
+1. 根据pbc.file格式解析desc_simple.pbcbin；
+2. 根据解析结果将enum, message注入pbc_env；
+3. 索引好message, enum之间的嵌套引用；
+4. 初始化过程字符都不需要深复制；
 
 ### 注册PB文件
 
@@ -67,7 +91,12 @@ graph TD
 	xx.pb --将二进制数据解析成一棵树--> xx.tree --根据树节点信息构造新的message--> message --检查依赖--> string_pool
 ```
 
-- pbc仅在register的时候检查了dependency，register之后并没有保存dependency，因此，想要检查某个Message是否依赖其他Message，或者某个Message是否被其他Message依赖，则需要额外的实现来支持
+1. 创建rmessage并使用FileDescriptorSet解析pb内容，创建时已经递归解析ok了；
+2. 根据解析结果将多个pb文件的enum，message，extension注入pbc_env；
+3. 索引好message，enum之间的嵌套引用；
+4. 注册过程需要的字符串都进行深度复制；
+
+**注意：pbc仅在register的时候检查了dependency，register之后并没有保存dependency，因此，想要检查某个Message是否依赖其他Message，或者某个Message是否被其他Message依赖，则需要额外的实现来支持；**
 
 ### 解析message协议消息
 
@@ -78,14 +107,16 @@ graph TD
 	rmessage3
 	map
 	tree
+	bin(二进制数据)
 	
-	rmessage1 --单个message转化--> map
-	rmessage2 --多个message转化--> tree
+	rmessage1 --单个message转化--> map --> bin
+	rmessage2 --多个message转化--> tree --> bin
 	rmessage3 --多个message转化--> tree
 ```
 
-- pbc在加载Message的时候，并没有判断该Message当前是否存在；
-- bc中实现的哈希表并没有进行唯一性的判断，插入一个键值对总会占用一个新槽，这就导致可能两个键值对的键字符串内容一致！(pbc不支持多次加载同一个Message，用户如果这么做可能出现异常)；
+1. 指定协议并通过`decode/rmessage/wmessage`进行读写，多层嵌套解析二进制数据或者生成二进制数据；
+
+**注意：pbc在加载Message的时候，并没有判断该Message当前是否存在；**
 
 
 
@@ -107,6 +138,8 @@ graph TD
 
 ## 源码
 
+### 分类
+
 - `alloc` 统一管理内存分配，支持堆内分配优化；
 - `array`  实现由联合体pbc_var组成的可变长度数组pbc_array；
 - `map` 哈希表的实现；
@@ -125,12 +158,18 @@ graph TD
 - `rmessage` 实现pbc_rmessage_xx相关接口；
 - `wmessage` 实现pbc_wmessage相关接口；
 
+### 风格
+
+- C 语言结构体类型定义成只有一个元素的数组：直接定义成只有一个元素的数组，使用的时候能够直接用指针操作，不需要再定义一个对应的指针类型去操作，而且，作为参数的话，数组也是传递指针，不会误用未值拷贝传递整个结构体；
+
 
 
 ## 最佳实践
 
 1. 建议所有的 string 都在末尾加上 \0 。因为，这样在解码的时候，可以将字符串指针直接指向数据包内，而不需要额外复制一份出来。
 2. Pattern API 可以得到更高的性能。更快的速度和更少的内存占用量。更重要的是，对于比较小的消息包，如果你使用得当，使用 pattern api 甚至不会触发哪怕一次堆上的内存分配操作。api 工作时的所有的临时内存都在栈上。
+2. pbc在加载Message的时候，并没有判断该Message当前是否存在。并且，pbc中实现的哈希表并没有进行唯一性的判断，插入一个键值对总会占用一个新槽，这就导致可能两个键值对的键字符串内容一致！因此，整体上来说，pbc不支持多次加载同一个Message，用户如果这么做可能出现异常；
+2. pbc中实现的哈希表并没有进行唯一性的判断，插入一个键值对总会占用一个新槽，这就导致可能两个键值对的键字符串内容一致！
 
 
 

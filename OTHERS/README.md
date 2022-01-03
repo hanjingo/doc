@@ -6,6 +6,7 @@
 - [如何写markdown](how_to_write_markdown.md)
 - [代理设置](proxy.md)
 - [重新绑定键](rebind_key.md)
+- [正则表达式](regular_expression.md)
 - [优秀资源集合](resource_compile.md)
 - [vim配置](vim_cfg.md)
 - [vim快捷键](vim_shortcut.md)

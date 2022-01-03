@@ -1,5 +1,7 @@
 # skynet GM工具
 
+[TOC]
+
 
 
 TODO

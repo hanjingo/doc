@@ -1,6 +1,6 @@
-[TOC]
-
 # skynet的snax框架
+
+[TOC]
 
 `snax`是对 skynet API 的部分封装（主要是请求/回调这一块）而产生的一个框架。
 

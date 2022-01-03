@@ -90,7 +90,7 @@
 
 ### 网络库
 
-- 大名鼎鼎的 [libevent库](https://github.com/libevent/libevent)
+- 大名鼎鼎的libevent库 [libevent](https://github.com/libevent)/**[libevent](https://github.com/libevent/libevent)**
 - UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
 - 远程调用库 [GRPC](https://github.com/grpc/grpc)
 - [官方Curl库](https://github.com/curl/curl)
@@ -100,6 +100,7 @@
 - [官方Protobuf库](https://github.com/protocolbuffers/protobuf)
 - C语言版的ProtoBuf库 [protobuf-c](https://github.com/protobuf-c)/**[protobuf-c](https://github.com/protobuf-c/protobuf-c)**
 - C语言版的ProtoBuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[upb](https://github.com/protocolbuffers/upb)**
+- C语言版skynet的protobuf协议支持(已停止维护) [cloudwu](https://github.com/cloudwu)/**[pbc](https://github.com/cloudwu/pbc)**
 
 ### 数据库
 
@@ -107,6 +108,8 @@
 
 ### 游戏
 
+- 大名鼎鼎的skynet引擎 [cloudwu](https://github.com/cloudwu)/**[skynet](https://github.com/cloudwu/skynet)**
+- skynet热更新工具 [cloudwu](https://github.com/cloudwu)/**[skynet-reload](https://github.com/cloudwu/skynet-reload)**
 - 加勒比海盗引擎 [storm-devs](https://github.com/storm-devs)/**[storm-engine](https://github.com/storm-devs/storm-engine)**
 - 魔兽世界服务端 [TrinityCore](https://github.com/TrinityCore)/**[TrinityCore](https://github.com/TrinityCore/TrinityCore)**
 - C语言版的MineCraft [fogleman](https://github.com/fogleman)/**[Craft](https://github.com/fogleman/Craft)**
@@ -115,10 +118,8 @@
 - MineCraft服务端 [cuberite/cuberite](https://github.com/cuberite/cuberite)
 - cuberite的lua核心库 [cubrite/Core](https://github.com/cuberite/Core)
 - 基于libevent的游戏服务器框架 [ketoo/NoahGameFrame](https://github.com/ketoo/NoahGameFrame)
-- skynet热更新工具 [skynet-reload](https://github.com/cloudwu/skynet-reload)
 - 腾讯基于C#的LUA绑定 [xLua](https://github.com/Tencent/xLua)
 - lua的MessagePack协议支持 [lua-cmsgpack](https://github.com/antirez/lua-cmsgpack)
-- skynet的protobuf协议支持 [pbc](https://github.com/cloudwu/pbc)
 - [cocos2d-x](https://github.com/cocos2d/cocos2d-x)
 - 金山出的云游戏平台 [liuguang](https://github.com/ksyun-kenc/liuguang)
 - [红警1源码](https://github.com/electronicarts/CnC_Remastered_Collection)
@@ -128,6 +129,7 @@
 - 跨平台渲染引擎 [bkaradzic](https://github.com/bkaradzic)/**[bgfx](https://github.com/bkaradzic/bgfx)**
 - 开源版红警 [OpenRA](https://github.com/OpenRA)/**[OpenRA](https://github.com/OpenRA/OpenRA)**
 - 开源版暗黑破坏神2 [OpenDiablo2](https://github.com/OpenDiablo2)/**[OpenDiablo2](https://github.com/OpenDiablo2/OpenDiablo2)**
+- unity3d反编译神器 [dnSpy](https://github.com/dnSpy)/**[dnSpy](https://github.com/dnSpy/dnSpy)**
 
 ### 图形库
 

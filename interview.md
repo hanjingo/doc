@@ -481,11 +481,11 @@ TODO
 
 #### Skynet的集群方案有哪些
 
-`master/slaver`模式，`cluster`模式；具体见：[skynet集群](SRC/SKYNET/cluster.md)
+`master/slaver`模式，`cluster`模式；具体见：[skynet集群](PROJ/SKYNET/cluster.md)
 
 #### Skynet有哪些热更新方案
 
-`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](SRC/SKYNET/hotpatch.md)
+`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](PROJ/SKYNET/hotpatch.md)
 
 [返回顶部](#面试笔记)
 

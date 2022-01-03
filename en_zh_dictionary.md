@@ -349,6 +349,8 @@ attract `/əˈtrækt/` 吸引，引起，招引
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
+auction `/ˈɔːkʃn/` 拍卖
+
 audible `/ˈɔːdəbl/` 听得见的
 
 audience `/ˈɔːdiəns/` 观众，听众，读者
@@ -1135,6 +1137,8 @@ detriment `/ˈdetrɪmənt/` 伤害，损害
 
 devastate `/ˈdevəsteɪt/` 毁灭，摧毁，彻底破坏，震惊
 
+devote `/dɪˈvəʊt/` 致力于，奉献，投入时间，专注于
+
 dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
 
 ### di
@@ -1785,6 +1789,8 @@ garb `/ɡɑːb/` 装束，装饰，打扮，外表
 
 gasoline `/ˈɡæsəliːn/` 汽油
 
+gathered `/ˈɡæðəd/` 聚合，归拢，收集
+
 gauge `/ɡeɪdʒ/` 测量仪，测量，判定，厚度，宽度
 
 ### ge
@@ -2219,6 +2225,8 @@ invasion `/ɪnˈveɪʒn/` 侵略，入侵，侵犯
 
 invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
+inventory `/ˈɪnvəntri/` 库存，财产清单
+
 invertebrate `/ɪnˈvɜːtɪbrət/` 无脊椎动物
 
 ### io
@@ -2404,6 +2412,8 @@ loom `/luːm/` 织布机，逼近，耸然出现
 loon `/luːn/` 鱼鹰
 
 loosely `/loosely/` 宽松的，松散的，不精确的
+
+loot `/luːt/` 抢劫，劫掠，战利品，赃物
 
 ### lu
 
@@ -2786,6 +2796,8 @@ oriental `/ˌɔːriˈentl/` 东方的，东方人
 oriented  `/ˈɔːrɪɛnt/` 导向
 
 ornament `/ˈɔːnəmənt/` 装饰，首饰，点缀
+
+orphan `/ˈɔːfn/` 孤儿
 
 ### os
 
@@ -3312,6 +3324,8 @@ rehearse `/rɪ'hɜːs/` 预演，排练，复述
 reign `/reɪn/` 统治，当政，任期
 
 reinforce `/ˌriːɪnˈfɔːs/` 加强，加固，增援，支持
+
+regardless `/rɪˈɡɑːdləs/` 不管，不顾，毫无价值的
 
 regime `/reɪˈʒiːm/` 政体，政治制度，严密组织
 
@@ -4268,6 +4282,8 @@ vacation `/veɪˈkeɪʃn/` 假期，休假，度假
 vaccine `/ˈvæksiːn/` 疫苗
 
 vague `/veɪɡ/` 含糊的，模糊的，不明确的
+
+valentine `/ˈvæləntaɪn/` 情人节
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
