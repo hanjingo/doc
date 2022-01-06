@@ -105,13 +105,35 @@ classDiagram
 | string      | string | String     | unicode  | `*string`  |
 | bytes       | string | ByteString | bytes    | `[]byte` |
 
+### 关键字
+
+#### ~~`required`~~
+
+必选的
+
+#### optional
+
+可选的
+
+#### repeated
+
+重复的
+
+#### enum
+
+枚举
+
+#### extensions
+
+预留Tag Number给其它模块使用，用于解决字段扩展；
+
+例：
+
+TODO
+
+#### extend 
 
 
-## 关键字
-
-- ~~`required`: 必选的~~
-- `optional`: 可选的
-- `repeated`: 重复的
 
 ### 生成命令
 
@@ -325,13 +347,6 @@ field结构：`|Tag|Length|Value|`或`|Tag|Value|`
 - uint类型编码长度与int类型的正数部分完全一样，支持更大的数值范围
 - sint类型编码长度与数值的绝对值大小成正比
 
-### 优化
-
-（待确认）
-
-对于Protocol Buffer而言，标签值为1到15的字段在编码时可以得到优化，即标签值和类型信息仅占有一个byte，标签范围是16到2047的将占有两个bytes，
-而Protocol Buffer可以支持的字段数量则为2的29次方减一。有鉴于此，我们在设计消息结构时，可以尽可能考虑让repeated类型的字段标签位于1到15之间，这样便可以有效的节省编码后的字节数量；
-
 
 
 ## 实现
@@ -367,6 +382,8 @@ make install && ldconfig
 
 
 ## 用例
+
+### 用例1
 
 1. 定义proto文件`xxx.proto`
 
@@ -427,6 +444,17 @@ make install && ldconfig
 
 
 
+## 最佳实践
+
+### 1 protobuf的优化策略
+
+（待确认）
+
+对于Protocol Buffer而言，标签值为1到15的字段在编码时可以得到优化，即标签值和类型信息仅占有一个byte，标签范围是16到2047的将占有两个bytes；
+而Protocol Buffer可以支持的字段数量则为2的29次方减一。有鉴于此，我们在设计消息结构时，可以尽可能考虑让repeated类型的字段标签位于1到15之间，这样便可以有效的节省编码后的字节数量；
+
+
+
 ## 参考
 
 ### 文献
@@ -437,6 +465,7 @@ make install && ldconfig
 
 - [Protocol Buffers](https://developers.google.com/protocol-buffers)
 - [github protobuf](https://github.com/protocolbuffers/protobuf)
+- [Protocol Buffers#extensions](https://developers.google.com/protocol-buffers/docs/proto#extensions)
 - [维基百科-Protocol Buffers](https://zh.wikipedia.org/wiki/Protocol_Buffers)
 - [Google Protocol Buffers 实用技术： 解析.proto文件和任意数据文件](https://cxwangyi.blogspot.com/2010/06/google-protocol-buffers-proto.html)
 - [深入 ProtoBuf - 简介](https://www.jianshu.com/p/a24c88c0526a)
