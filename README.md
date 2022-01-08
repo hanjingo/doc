@@ -20,4 +20,4 @@
 
 # 快捷导航
 
-**[生存经验](live.md)**&nbsp;&nbsp;&nbsp;**[英汉词典](en_zh_dictionary.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[posix接口](posix.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[面试笔记](interview.md)**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[Bug速查](PROJ/BUG/README.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[vim常用快捷键](OTHERS/vim_shortcut.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[linux常用命令](linux_cmd.md)**&nbsp;&nbsp;&nbsp;&nbsp;**[git指南](OTHERS/git.md)**&nbsp;&nbsp;&nbsp;[如何写markdown](OTHERS/how_to_write_markdown.md)
+**[生存经验](live.md)** **[英汉词典](en_zh_dictionary.md)** **[posix接口](posix.md)** **[面试笔记](interview.md)** **[Bug速查](PROJ/BUG/README.md)** **[vim常用快捷键](OTHERS/vim_shortcut.md)** **[linux常用命令](linux_cmd.md)** **[git指南](OTHERS/git.md)** **[redis命令](PROJ/REDIS/cmd.md)** [如何写markdown](OTHERS/how_to_write_markdown.md)
