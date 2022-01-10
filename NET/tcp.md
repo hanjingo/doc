@@ -108,6 +108,8 @@ TODO
 
 ![tcp_stat](res/tcp_stat.png)
 
+
+
 ### TIME_WAIT状态
 
 TIME_WAIT状态有2个存在的理由:
