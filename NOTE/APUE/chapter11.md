@@ -602,7 +602,394 @@ int pthread_rwlock_destroy(pthread_rwlock_t *rwlock);
   - 0：成功
   - 错误码：失败
 
-读写锁通过调用函数`pthread_rwlock_rdlock`
+通过调用函数`pthread_rwlock_rdlock`在读模式下锁定读写锁，通过调用函数`pthread_rwlock_wrlock`在写模式下锁定读写锁，通过调用`pthread_rwlock_unlock`进行解锁：
+
+```c
+#include <pthread.h>
+int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock);
+int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock);
+int pthread_rwlock_unlock(pthread_rwlock_t *rwlock);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+```c
+#include <pthread.h>
+int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
+int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+例，使用读写锁：
+
+```c
+#include <stdlib.h>
+#include <pthread.h>
+
+struct job {
+	struct job *j_next;
+  struct job *j_prev;
+  pthread_t j_id;
+};
+
+struct queue {
+	struct job *q_head;
+  struct job *q_tail;
+  pthread_rwlock q_lock;
+};
+
+int 
+queue_init(struct queue *qp)
+{
+	int err;
+  
+  qp->q_head = NULL;
+  qp->q_tail = NULL;
+  err = pthread_rwlock_init(&qp->q_lock, NULL);
+  if (err != 0)
+    return (err);
+  return (0);
+}
+
+void 
+job_insert(struct queue *qp, struct job *jp)
+{
+	pthread_rwlock_wrlock(&qp->q_lock);
+  jp->j_next = qp->q_head;
+  jp->j_prev = NULL;
+  if (qp->q_head != NULL)
+    qp->q_head->j_prev = jp;
+  else
+    qp->q_tail = jp;
+  qp->q_head = jp;
+  pthread_rwlock_unlock(&qp->q_lock);
+}
+
+void 
+job_append(struct queue *qp, struct job *jp)
+{
+	pthread_rwlock_wrlock(&qp->q_lock);
+  jp->j_next = NULL;
+  jp->j_prev = NULL;
+  if (qp->q_head != NULL)
+    qp->q_tail->j_next = jp;
+  else
+    qp->q_head = jp;
+  qp->q_tail = jp;
+  pthread_rwlock_unlock(&qp->q_lock);
+}
+
+void 
+job_remove(struct queue *qp, struct job *jp)
+{
+	pthread_rwlock_wrlock(&qp->q_lock);
+  if(jp == qp->q_head) {
+  	qp->q_head = jp->j_next;
+    if (qp->q_tail == jp)
+      qp->q_tail = NULL;
+    else
+      jp->j_next->j_prev = jp->j_prev;
+  } else if (jp == qp->q_tail) {
+  	qp->q_tail = jp->j_prev;
+    jp->j_prev->j_next = jp->j_next;
+  } else {
+  	jp->j_prev->j_next = jp->j_next;
+    jp->j_next->j_prev = jp->j_prev;
+  }
+  pthread_rwlock_unlock(&qp->q_lock);
+}
+
+struct job * 
+job_find(struct queue *qp, pthrad_t id)
+{
+	struct jpb *jp;
+  if (pthread_rwlock_rdlock(&qp->q_lock) != 0)
+    return (NULL);
+  for (jp = qp->q_head; jp != NULL; jp = jp->j_next)
+    if (pthread_equal(jp->id, id))
+      break;
+  
+  pthread_rwlock_unlock(&qp->q_lock);
+  return (jp);
+}
+```
+
+### 带有超时的读写锁
+
+Single UNIX Specification提供了带有超时的读写锁加锁函数，使应用程序在获取读写锁时避免陷入永久阻塞状态：
+
+```c
+#include <pthread.h>
+#include <time.h>
+int pthread_rwlock_timedrdlock(pthread_rwlock_t *restrict rwlock, 
+                               const struct timespec *restrict tsptr);
+int pthread_rwlock_timedwrlock(pthread_rwlock_t *restrict rwlock,
+                               const struct timespec *restrict tsptr);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+### 条件变量
+
+由pthread_cond_t数据类型表示的条件变量可以用两种方式进行初始化，可以把常量PTHREAD_COND_INITIALIZER赋给静态分配的条件变量，但是如果条件变量是动态分配的，则需要使用`pthread_cond_init`函数对它进行初始化；
+
+在释放条件变量底层的内存空间之前，可以使用`pthread_cond_destroy`函数对条件变量进行反初始化（deinitialize）：
+
+```c
+#include <pthread.h>
+int pthread_cond_init(pthread_cond_t *restrict cond,
+                      const pthread_condattr_t *restrict attr);
+int pthread_cond_destroy(pthread_cond_t *cond);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+```c
+#include <pthread.h>
+int pthread_cond_wait(pthread_cond_t *restrict cond, 
+                      pthread_mutex_t *restrict mutex);
+int pthread_cond_timewait(pthread_cond_t *restrict cond,
+                          pthread_mutex_t *restrict mutex,
+                          const struct timespec *restrict tsptr);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+有两个函数可以用于通知线程条件已经满足，`pthread_cond_signal`函数至少能唤醒一个等待该条件的线程，而`pthread_cond_braodcast`函数则能唤醒等待该条件的所有线程：
+
+```c
+#include <pthread.h>
+int pthread_cond_signal(pthread_cond_t *cond);
+int pthread_cond_broadcast(pthread_cond_t *cond);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+例，使用条件变量和互斥量对线程进行同步：
+
+```c
+#include <pthread.h>
+
+struct msg {
+	struct msg *m_next;
+};
+
+struct msg *workq;
+
+pthread_cond_t qready = PTHREAD_COND_INITIALIZER;
+pthread_mutex_t qlock = PTHREAD_MUTEX_INITIALIZER;
+
+void 
+process_msg(void)
+{
+	struct msg *mp;
+  for (;;) {
+  	pthread_mutex_lock(&qlock);
+    while(work1 = NULL)
+      pthread_cond_wait(&qready, &qlock);
+    
+    mp = workq;
+    workq = mp->m_next;
+    pthread_mutex_unlock(&qlock);
+  }
+}
+
+void 
+enqueue_msg(struct msg *mp)
+{
+	pthread_mutex_lock(&qlock);
+  mp->m_next = workq;
+  workq = mp;
+  pthread_mutex_unlock(&qlock);
+  pthread_cond_signal(&qready);
+}
+```
+
+### 自旋锁
+
+自旋锁在获取锁之前一直处于自旋（忙等）阻塞状态，此时CPU不能做其他的事情；自旋锁适用于以下特定情况：锁被持有的时间短，而且线程并不希望在重新调度上花费太多的成本；
+
+当自旋锁用在非抢占式内核中是非常有用的：除了提供互斥机制以外，它们会阻塞中断，这样中断处理程序就不会让系统陷入死锁状态，因为它需要获取已被加锁的自旋锁（把中断想成是另一种抢占）；在这种类型的内核中，中断处理程序不能休眠，因此它们能用的同步原语只能是自旋锁；
+
+运行在分时调度类中的用户层线程在2种情况下可以背取消调度：当它们的时间片到期时，或者具有更高调度优先级的线程就绪变成可运行时；在这些情况下，如果线程拥有自旋锁，他就会进入休眠状态，阻塞在锁上的其它线程自旋的时间可能会比预期的时间更长；
+
+调用`pthread_spin_init`函数对自旋锁进行初始化，调用`pthread_spin_destroy`函数进行自旋锁的反初始化：
+
+```c
+#include <pthread.h>
+int pthread_spin_init(pthread_spinlock_t *lock, int pshared);
+int pthread_spin_destroy(pthread_spinlock_t *lock);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+调用`pthred_spin_lock`或`pthread_spin_trylock`（无法自旋）对自旋锁进行加锁，调用`pthread_spin_unlock`解锁：
+
+```c
+#include <pthread.h>
+int pthread_spin_lock(pthread_spinlock_t *lock);
+int pthread_spin_trylock(pthread_spinlock_t *lock);
+int pthread_spin_unlock(pthread_spinlock_t *lock);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+**注意：不要调用在持有自旋锁情况下可能会进入休眠状态的函数，如果调用了这些函数，会浪费CPU资源，因为其它线程需要获取自旋锁需要等待的时间就延长了。**
+
+### 屏障
+
+屏障（barrier）是用户协调多个线程并行工作的同步机制，屏障允许每个线程等待，直到所有的合作线程都到达某一点，然后从该点继续执行；
+
+调用`pthread_barrier_init`函数对屏障进行初始化，调用`thread_barrier_destroy`函数反初始化：
+
+```c
+#include <pthread.h>
+int pthread_barrier_init(pthread_barrier_t *restrict barrier,
+                         const pthread_barrierattr_t *restrict attr,
+                         unsigned int count);
+int pthread_barrier_destroy(pthread_barrier_t *barrier);
+```
+
+- 返回值
+  - 0：成功
+  - 错误码：失败
+
+初始化屏障时，可以使用count参数指定，在允许所有线程继续运行之前，必须到达屏障的线程数目；
+
+调用`pthread_barrier_wait`函数来表明线程已完成工作：
+
+```c
+#include <pthread.h>
+int pthread_barrier_wait(pthread_barrier_t *barrier);
+```
+
+- 返回值
+  - 0或PTHREAD_BARRIER_SERIAL_THREAD：成功
+  - 错误码：失败
+
+对于一个任意线程，`pthread_barrier_wait`函数返回了`PTHREAD_BARRIER_SERIAL_THREAD`；剩下的线程看到的返回值是0，这使得一个线程可以作为主线程，它可以工作在其它所有线程已完成的工作结果上；
+
+一旦达到屏障计数值，而且线程处于非阻塞状态，屏障就可以被重用；但是除非在调用了`pthread_barrier_destroy`函数之后，又调用了`pthread_barrier_init`函数对计数用另外的数进行初始化，否则屏障计数不会改变；
+
+例，在一个任务上合作的多个线程之间如何用屏障进行同步；
+
+```c
+#include "apue.h"
+#include <pthread.h>
+#include <limits.h>
+#include <sys/time.h>
+
+#define NTHR 8
+#define NUMNUM 8000000L
+#define TNUM (NUMNUM/NTHR)
+
+long nums[NUMNUM];
+long snums[NUMNUM];
+
+pthread_barrier_t b;
+
+#ifdef SOLARIS
+#define heapsort qsort
+#else
+extern int heapsort(void *, size_t, size_t,
+                    int (*)(const void *, const void *));
+#endif
+
+int 
+complong(const void *arg1, const void *args)
+{
+	long l1 = *(long *)arg1;
+  long l2 = *(long *)arg2;
+  
+  if (l1 == l2)
+    return 0;
+  else if (l1 < l2)
+    return -1;
+  else
+    return 1;
+}
+
+void * 
+thr_fn(void *arg)
+{
+	long idx = (long)arg;
+  heapsort(&nums[idx], TNUM, sizeof(long), complong);
+  pthread_barrier_wait(&b);
+  return ((void *)0);
+}
+
+void 
+merge()
+{
+	long idx[NTHR];
+  long i, minidx, sidx, num;
+  
+  for (i = 0; i < NTHR; i++)
+    idx[i] = i * TNUM;
+  for (sidx = 0; sidx < NUMNUM; sidx++) {
+  	num = LONG_MAX;
+    for (i = 0; i < NTHR; i++) {
+    	if ((idx[i] < (i+1)*TNUM) && (nums[idx[i]] < num)) {
+      	num = nums[idx[i]];
+        minidx = i;
+      }
+    }
+    snums[sidx] = nums[idx[minidx]];
+    idx[minidx]++;
+  }
+}
+
+int 
+main()
+{
+	unsigned long i;
+  struct timeval start, end;
+  long long startusec, endusec;
+  double elapsed;
+  int err;
+  pthread_t tid;
+  
+  srandom(1);
+  for (i = 0; i < NUMNUM; i++)
+    nums[i] = random();
+  
+  gettimeofday(&start, NULL);
+  pthread_barrier_init(&b, NULL, NTHR + 1);
+  for (i = 0; i < NTHR; i++) {
+  	err = pthread_create(&tid, NULL, thr_fn, (void *)(i * TNUM));
+    if (err != 0)
+      err_exit(err, "can't create thread");
+  }
+  pthread_barrier_wait(&b);
+  merge();
+  gettimeofday(&end, NULL);
+  
+  startusec = start.tv_sec * 1000000 + start.tv_usec;
+  endusec = end.tv_sec * 1000000 + end.tv_usec;
+  elapsed = (double)(endusec - startusec) / 1000000.0;
+  printf("sort took %.4f seconds\n", elapsed);
+  for (i = 0; i < NUMNUM; i++)
+    printf("%1d\n", snums[i]);
+  exit(0);
+}
+```
 
 
 
