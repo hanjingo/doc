@@ -7,7 +7,6 @@
 - [数据库设计](db.md)
 - [软件调试](debug.md)
 - [运维技巧](dev_ops.md)
-- [游戏客户端开发](game_client_develop.md)
 - [游戏开发最佳实践](game_develop_best_practice.md)
 - [游戏服务器开发](game_server_develop.md)
 - [唯一ID](id.md)

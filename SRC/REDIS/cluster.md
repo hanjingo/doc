@@ -147,12 +147,27 @@ void clusterCommand(redisClient *c) {
 
 ## 槽指派
 
-Redis集群通过分片的方式来保存数据库中的键值对：集群的整个数据库被分为16384个槽（slot），数据库中的每个键都属于这16384个槽中的一个，集群中的每个节点可以处理0或最多16384个槽。
+Redis集群通过分片的方式来保存数据库中的键值对：集群的整个数据库被分为16384个槽（这个值由`REDIS_CLUSTER_SLOTS`定义），数据库中的每个键都属于这16384个槽中的一个，集群中的每个节点可以处理0或最多16384个槽。
 
 将一个或多个槽指派给节点负责：
 
 ```sh
 CLUSTER ADDSLOTS <slot> [slot ...]
+```
+
+### 源码分析
+
+```c
+/**
+ * @brief 添加节点到槽位;
+ * @param n 节点
+ * @param slot 槽位id */
+int clusterAddSlot(clusterNode *n, int slot) {
+    if (server.cluster->slots[slot]) return REDIS_ERR;
+    clusterNodeSetSlotBit(n,slot); /* 设置槽位值 */
+    server.cluster->slots[slot] = n;
+    return REDIS_OK;
+}
 ```
 
 例，将槽0至槽5000指派给节点7000负责：
@@ -189,10 +204,30 @@ graph TD
 CLUSTER KEYSLOT "xx"
 ```
 
-MOVED错误的格式为：
+源码如下：
+
+```c
+else if (!strcasecmp(c->argv[1]->ptr,"keyslot") && c->argc == 3) {
+        /* CLUSTER KEYSLOT <key> */
+        sds key = c->argv[2]->ptr;
+
+        addReplyLongLong(c,keyHashSlot(key,sdslen(key))); /* 计算key的hash值并返回 */
+}
+```
+
+返回MOVED错误的格式为：
 
 ```sh
 MOVED <slot> <ip>:<port> # slot:键所在的槽，ip:port:负责处理槽slot的节点的IP地址和端口号
+```
+
+源码如下：
+
+```c
+addReplySds(c,sdscatprintf(sdsempty(),
+            "-%s %d %s:%d\r\n",
+            (error_code == REDIS_CLUSTER_REDIR_ASK) ? "ASK" : "MOVED", /* 返回MOVED <slot> <ip>:<port> 或 ASK <slot> <ip>:<port>*/
+            hashslot,n->ip,n->port));
 ```
 
 使用以下命令返回属于槽slot的数据库键：
@@ -200,6 +235,35 @@ MOVED <slot> <ip>:<port> # slot:键所在的槽，ip:port:负责处理槽slot的
 ```sh
 CLUSTER GETKEYSINSLOT <slot> <count> # count:键最多个数，slot:槽
 ```
+
+源码如下：
+
+```c
+else if (!strcasecmp(c->argv[1]->ptr,"getkeysinslot") && c->argc == 4) {
+        /* CLUSTER GETKEYSINSLOT <slot> <count> */
+        long long maxkeys, slot;
+        unsigned int numkeys, j;
+        robj **keys;
+
+        if (getLongLongFromObjectOrReply(c,c->argv[2],&slot,NULL) != REDIS_OK)
+            return;
+        if (getLongLongFromObjectOrReply(c,c->argv[3],&maxkeys,NULL)
+            != REDIS_OK)
+            return;
+        if (slot < 0 || slot >= REDIS_CLUSTER_SLOTS || maxkeys < 0) {
+            addReplyError(c,"Invalid slot or number of keys");
+            return;
+        }
+
+        keys = zmalloc(sizeof(robj*)*maxkeys);
+        numkeys = getKeysInSlot(slot, keys, maxkeys); /* 根据slot找keys */
+        addReplyMultiBulkLen(c,numkeys);
+        for (j = 0; j < numkeys; j++) addReplyBulk(c,keys[j]);
+        zfree(keys);
+} 
+```
+
+
 
 ## 重新分片
 
@@ -237,6 +301,62 @@ is_save --是--> 将这些键全部迁移至目标节点 -->dispatch --> 完成�
 5. 重复执行步骤3和步骤4，直到源节点保存的所有属于槽slot的键值对都被迁移至目标节点为止。
 6. redis-trib向集群中的任意一个节点发送 `CLUSTER SETSLOT <slot> NODE <target_id>`命令，将槽slot指派给目标节点，这一指派信息会通过消息发送至整个集群，最终集群中的所有节点都会知道槽slot已经指派给目标节点。
 
+```ruby
+    def move_slot(source,target,slot,o={})
+        o = {:pipeline => MigrateDefaultPipeline}.merge(o)
+
+        # We start marking the slot as importing in the destination node,
+        # and the slot as migrating in the target host. Note that the order of
+        # the operations is important, as otherwise a client may be redirected
+        # to the target node that does not yet know it is importing this slot.
+        if !o[:quiet]
+            print "Moving slot #{slot} from #{source} to #{target}: "
+            STDOUT.flush
+        end
+
+        if !o[:cold]
+            target.r.cluster("setslot",slot,"importing",source.info[:name]) # 让目标节点准备好从源节点导入属于槽slot的键值对
+            source.r.cluster("setslot",slot,"migrating",target.info[:name]) # 让源节点准备好将属于槽slot的键值对迁移到目标节点
+        end
+        # Migrate all the keys from source to target using the MIGRATE command
+        while true
+            keys = source.r.cluster("getkeysinslot",slot,o[:pipeline]) # 获得属于槽slot的键值对的键名
+            break if keys.length == 0
+            begin
+                source.r.client.call(["migrate",target.info[:host],target.info[:port],"",0,@timeout,:keys,*keys]) # 将被选中的键原子地从源节点迁移至目标节点
+            rescue => e
+                if o[:fix] && e.to_s =~ /BUSYKEY/
+                    xputs "*** Target key exists. Replacing it for FIX."
+                    source.r.client.call(["migrate",target.info[:host],target.info[:port],"",0,@timeout,:replace,:keys,*keys])
+                else
+                    puts ""
+                    xputs "[ERR] #{e}"
+                    exit 1
+                end
+            end
+            print "."*keys.length if o[:dots]
+            STDOUT.flush
+        end
+
+        puts if !o[:quiet]
+        # Set the new node as the owner of the slot in all the known nodes.
+        if !o[:cold]
+            @nodes.each{|n|
+                next if n.has_flag?("slave")
+                n.r.cluster("setslot",slot,"node",target.info[:name]) # 将槽slot指派给目标节点并广播到整个集群
+            }
+        end
+
+        # Update the node logical config
+        if o[:update] then
+            source.info[:slots].delete(slot)
+            target.info[:slots][slot] = true
+        end
+    end
+```
+
+
+
 ## ASK错误
 
 源节点判断是否需要向客户端发送ASK错误的整个过程：
@@ -268,6 +388,24 @@ CLUSTER SETSLOT 16198 IMPORTING 9dfb4c4e016e627d9769e4c9bb0d4fa208e6
 
 ![redis_cluster_importing_slots_from](res/redis_cluster_importing_slots_from.png)
 
+源码如下：
+
+```c
+else if (!strcasecmp(c->argv[3]->ptr,"importing") && c->argc == 5) { /*CLUSTER SETSLOT <i> IMPORTING <source_id> */ /* 将目标节点的值设置为source_id所代表节点的clusterNode结构 */
+            if (server.cluster->slots[slot] == myself) {
+                addReplyErrorFormat(c,
+                    "I'm already the owner of hash slot %u",slot);
+                return;
+            }
+            if ((n = clusterLookupNode(c->argv[4]->ptr)) == NULL) {
+                addReplyErrorFormat(c,"I don't know about node %s",
+                    (char*)c->argv[3]->ptr);
+                return;
+            }
+            server.cluster->importing_slots_from[slot] = n;
+}
+```
+
 ### CLUSTER SETSLOT MIGRATING命令的实现
 
 在对集群进行重新分片的时候，向源节点发送命令：
@@ -285,6 +423,24 @@ CLUSTER SETSLOT 16198 MIGRATING 04579925484ce537d3410d7ce97bd2e260c4
 节点的clusterState.migrating_slots_to数组结构如下：
 
 ![redis_cluster_migrating_slots_to](res/redis_cluster_migrating_slots_to.png)
+
+源码如下：
+
+```c
+        /* CLUSTER SETSLOT <i> MIGRATING <target_id> */ /* 将源节点的值设置为target_id所代表节点的clusterNode结构 */
+        if (!strcasecmp(c->argv[3]->ptr,"migrating") && c->argc == 5) {
+            if (server.cluster->slots[slot] != myself) {
+                addReplyErrorFormat(c,"I'm not the owner of hash slot %u",slot);
+                return;
+            }
+            if ((n = clusterLookupNode(c->argv[4]->ptr)) == NULL) {
+                addReplyErrorFormat(c,"I don't know about node %s",
+                    (char*)c->argv[4]->ptr);
+                return;
+            }
+            server.cluster->migrating_slots_to[slot] = n;
+        }
+```
 
 ### ASK错误
 
@@ -308,7 +464,7 @@ is_asking --否--> rtn_move
 #### ASK错误和MOVED错误的区别
 
 - MOVED错误代表槽的负责权已经从一个节点转移到另一个节点；
-- ASK错误只是两个节点在前一槽的过程中使用的一种临时措施；
+- ASK错误只是两个节点在迁移槽的过程中使用的一种临时措施；
 
 
 
@@ -322,10 +478,9 @@ Redis集群中的节点分为主节点（master）和从节点（slave），其�
 CLUSTER REPLICATE <node_id>
 ```
 
-可以让接收到此命令的节点成为`node_id`所指定节点的从节点，并开始对主节点进行复制；此命令的执行过车过如下：
+可以让接收到此命令的节点成为`node_id`所指定节点的从节点，并开始对主节点进行复制；此命令的执行过程如下：
 
 ```c
-// cluster.c
 /* 命令 CLUSTER REPLICATE <NODE ID> 的实现（让当前节点成为NODE ID的从节点，并开始对主节点进行复制） */
 else if (!strcasecmp(c->argv[1]->ptr,"replicate") && c->argc == 3) {
        /* 在自己的clusterState.nodes字典中查找 NODE ID对应的节点 */
@@ -362,9 +517,13 @@ else if (!strcasecmp(c->argv[1]->ptr,"replicate") && c->argc == 3) {
 
 ### 故障检测
 
-集群中的每个节点都会定期地向集群中的其它节点发送PING消息，以此来检测对象是否在线，如果接收PING消息的节点没有在规定的时间内，向发送PING消息的节点返回PONG消息，那么发送PING消息的节点就会将接收PING消息的节点标记为疑似下线（probable fail, PFAIL）；
+集群中的每个节点都会定期地向集群中的其它节点发送`PING`消息，以此来检测对象是否在线，如果接收`PING`消息的节点没有在规定的时间内，向发送`PING`消息的节点返回`PONG`消息，那么发送`PING`消息的节点就会将接收`PING`消息的节点标记为疑似下线（probable fail, PFAIL）；
 
-如果在一个集群里面，半数以上负责处理槽的主节点都将某个主节点x报告为疑似下线，那么这个主节点x将被标记为已下线（FAIL），将主节点x标记为已下线的节点会向集群广播一条关于主节点x的FAIL消息，所有收到这条FAIL消息的节点都会立即将主节点x标记为已下线；
+如果在一个集群里面，半数以上负责处理槽的主节点都将某个主节点x报告为疑似下线，那么这个主节点x将被标记为已下线（FAIL），将主节点x标记为已下线的节点会向集群广播一条关于主节点x的`FAIL`消息，所有收到这条`FAIL`消息的节点都会立即将主节点x标记为已下线；
+
+```c
+
+```
 
 ### 故障转移
 

@@ -2,11 +2,13 @@
 
 - [BitTorrent协议](bittorrent.md)
 - [CAP理论](cap.md)
+- [Ceph Crush算法](ceph_crush.md)
 - [DHT(Distributed Hash Table, 分布式哈希表)](dht.md)
 - [Git协议](git_protocol.md)
 - [Kad算法](kad.md)
 - [Merkle tree](merkle.md)
 - [PeerWire协议](peer_wire.md)
+- [Quorum协议](quorum.md)
 
 
 
