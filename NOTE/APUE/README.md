@@ -1,4 +1,6 @@
-# UNIX环境高级编程-第3版
+# UNIX环境高级编程
+
+[美]W.Richard Stevens; [美]Stephen A.Rago. 第3版
 
 - [第一章 UNIX基础知识]
 - [第二章 UNIX标准及实现]
@@ -11,7 +13,7 @@
 - [第九章 进程关系]
 - [第十章 信号](chapter10.md)
 - [第十一章 线程](chapter11.md)
-- [第十二章 线程控制]
+- [第十二章 线程控制](chapter12.md)
 - [第十三章 守护进程]
 - [第十四章 高级I/O](chapter14.md)
 - [第十五章 进程间通信]

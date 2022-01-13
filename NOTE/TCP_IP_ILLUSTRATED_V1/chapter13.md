@@ -6,9 +6,24 @@
 
 ## TCP连接的建立与终止
 
-![13-1](res/13-1.png)
+```sequence
+Title:一个普通TCP连接的建立与终止
+Note over 客户端,服务端: 连接建立（三次握手）
+客户端->服务端: SYN,Seq=ISN(c)(选项)
+服务端-->客户端: SYN+ACK,Seq=ISN(s),ACK=ISN(c)+1(选项)
+客户端->服务端: ACK,Seq=ISN(c)+1,ACK=ISN(s)+1(选项)
+
+Note over 客户端,服务端: 连接关闭（修改的三次握手）
+客户端->服务端: FIN+ACK,Seq=K,ACK=L(选项)
+服务端-->客户端: ACK,Seq=L,ACK=K+1(选项)
+服务端-->客户端: FIN+ACK,Seq=L,ACK=K+1(选项)
+客户端->服务端: ACK,Seq=K,ACK=L+1(选项)
+
+```
 
 - `ISN` (Initial Sequence Number, 初始序列号)
+
+一个普通TCP连接的建立和终止，通常由客户端负责发起一个三次握手过程；在该过程中，客户端与服务器利用SYN豹纹端交换彼此的初始序列号（包括客户端的初始序列号和服务器的初始序列号）；在通信双方都发送了一个FIN数据包并收到来自对方的相应的确认数据包后，该连接终止；
 
 ### 建立连接
 
@@ -25,7 +40,22 @@
 
 ### TCP半关闭
 
-![13-2](res/13-2.png)
+```sequence
+Title:TCP半关闭操作
+Note over 客户端,服务端: 客户端发起关闭
+客户端->服务端: FIN+ACK,Seq=K,ACK=L(选项)
+服务端-->客户端: ACK,Seq=L,ACK=K+1(选项)
+
+Note over 客户端,服务端: 连接处于半关闭状态
+服务端-->客户端: [发送更多数据]
+客户端->服务端: [数据确认]
+
+Note over 客户端,服务端: 关闭连接的“另一半”
+服务端-->客户端: FIN,Seq=L,ACK=K+1(选项)
+客户端->服务端: ACK,Seq=K,ACK=L+1(选项)
+```
+
+在TCP半关闭操作中，连接的一个方向被关闭，而另一个方向仍在传输数据直到它被关闭为止；（很少有应用程序使用这一特性）
 
 ### 同时打开与关闭
 
@@ -160,4 +190,83 @@ TIME_WAIT状态也称为`2MSL等待状态`或`加倍等待`，TCP将会等待两
 ### 同时打开与关闭的转换
 
 TODO
+
+
+
+## 重置报文段
+
+### 针对不存在端口的连接请求
+
+- UDP协议
+
+  当一个数据报到达一个不能使用的的目的端口时就会生成一个ICMP目的地不可达（端口不可达）的消息；
+
+- TCP协议
+
+  使用重置报文段；
+
+### 终止一条连接
+
+- 有序释放
+
+  由通信一方发送一个FIN，因为FIN是在之前所有排队数据都已发送后才被发送出去，通常不会出现丢失数据的情况；
+
+- 终止释放
+
+  通过发送一个重置报文段替代FIN来终止一条连接；
+
+终止一条连接可以为应用程序提供以下特性：
+
+- 任何排队的数据都将被抛弃，一个重置报文段会被立即发送出去；
+- 重置报文段的接收方会说明通信另一端采用了终止的方式而不是一次正常关闭；
+
+套接字API通过将套接字选项（SO_LINGER）的数值设置为0来实现以上特性；
+
+例，使用重置报文段（RST）代替FIN报文段来终止一条连接：
+
+```sh
+he@hes-MacBook-Air ~ % sudo tcpdump -vvv -s 1500 tcp
+Password:
+tcpdump: data link type PKTAP
+tcpdump: listening on pktap, link-type PKTAP (Apple DLT_PKTAP), capture size 1500 bytes
+00:14:23.419721 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51009 > 5.28.195.141.https: Flags [S], cksum 0x3610 (correct), seq 1633944638, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1354362333 ecr 0,sackOK,eol], length 0
+00:14:24.420380 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51009 > 5.28.195.141.https: Flags [S], cksum 0x3228 (correct), seq 1633944638, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1354363333 ecr 0,sackOK,eol], length 0
+00:14:25.420698 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51009 > 5.28.195.141.https: Flags [S], cksum 0x2e3f (correct), seq 1633944638, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1354364334 ecr 0,sackOK,eol], length 0
+00:14:25.971861 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x629c (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940260642 ecr 0,sackOK,eol], length 0
+00:14:26.421465 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51009 > 5.28.195.141.https: Flags [S], cksum 0x2a56 (correct), seq 1633944638, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1354365335 ecr 0,sackOK,eol], length 0
+00:14:26.972734 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x5eb3 (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940261643 ecr 0,sackOK,eol], length 0
+00:14:27.973930 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x5aca (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940262644 ecr 0,sackOK,eol], length 0
+00:14:28.422258 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51009 > 5.28.195.141.https: Flags [S], cksum 0x2286 (correct), seq 1633944638, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1354367335 ecr 0,sackOK,eol], length 0
+00:14:28.975535 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x56e0 (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940263646 ecr 0,sackOK,eol], length 0
+00:14:29.976491 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x52f7 (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940264647 ecr 0,sackOK,eol], length 0
+00:14:30.977489 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 64)
+    192.168.10.102.51010 > 5.28.195.141.https: Flags [S], cksum 0x4f0e (correct), seq 1954842719, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 1940265648 ecr 0,sackOK,eol], length 0
+00:14:31.382322 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 779)
+```
+
+**注意：重置报文段不会令通信另一端作出任何响应（它不会被确认）；接收重置报文段的一端会终止连接并通知应用程序当前连接已被重置，这样会造成“连接被另一端重置”的错误提示或类似信息；**
+
+### 半开连接
+
+如果在未告知另一端的情况下通信的一端关闭或终止连接，那么就认为该条TCP连接处于`半开状态`；
+
+### 时间等待错误
+
+设计`TIME_WAIT`状态的目的是允许任何受制于一条关闭连接的数据报被丢弃；
+
+时间等待错误（TIME-WAIT Assassination, TWA）：如果在`TIME_WAIT`状态下接收到来自于这条连接的一些报文段，或是更加特殊的重置报文段，它将会被破坏；
+
+![13-10](res/13-10.png)
+
+
 
