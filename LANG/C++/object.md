@@ -325,7 +325,7 @@ if(origin != 0) {
 }
 ```
 
-### Placement Operator new
+### placement new
 
 Placement Operator new是一个预先定义好的重载的new运算符，原型如下：
 

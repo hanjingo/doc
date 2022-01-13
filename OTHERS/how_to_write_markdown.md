@@ -694,30 +694,70 @@ gantt
 
 
 
-## 绘制类图
+## 绘制UML图
+
+### 类图
 
 - `<|--` 继承
+
 - `*__` 组合
+
 - `o--` 聚合
+
 - `-->` 关联
+
 - `--` 连接（实线）
+
 - `..>` 依赖
+
 - `..|>` 实现
+
 - `..` 链接（虚线）
+
 - `<<interface>>` 接口
+
 - `<<abstract>>` 抽象类
+
 - `<<service>>` 服务类
+
 - `<<enumeration>>` 枚举
+
 - `class` 普通类
+
 - `+` public
+
 - `-` private
+
 - `#` protected
+
 - `$` 静态
+
 - 不带符号表示 default
+
 - `～` 包/内部类
+
 - 类图的画法
   1. 抽象类的类名以及抽象方法的名字都用斜体字表示
   2. 接口在类图中的第一层顶端用构造型 `<<interface>>`表示，下面是接口的名字，第二层是方法
+  
+```markdown
+classDiagram
+	父类 <|-- 具体类
+
+	class 父类{
+		+public_func() bool
+	}
+	
+	class 具体类{
+		~ package ~
+		+bool public_value
+		#int protected_value
+		-string private_value
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
 
 ```mermaid
 classDiagram
@@ -737,6 +777,21 @@ classDiagram
 		-private_func(str) string
 	}
 ```
+
+```markdown
+classDiagram
+	class 抽象类{
+		<<abstract>>
+		~ package ~
+		+bool public_value
+		#int protected_value
+		-string private_value
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
+
 ```mermaid
 classDiagram
 	class 抽象类{
@@ -750,6 +805,18 @@ classDiagram
 		-private_func(str) string
 	}
 ```
+
+```markdown
+classDiagram
+	class 接口{
+		<<interface>>
+		~ package ~
+		+public_func() bool
+		#protected_func(num) int
+		-private_func(str) string
+	}
+```
+
 ```mermaid
 classDiagram
 	class 接口{
@@ -760,6 +827,17 @@ classDiagram
 		-private_func(str) string
 	}
 ```
+
+```markdown
+classDiagram
+	class 枚举{
+		<<enumeration>>
+		ELEM1
+		ELEM2
+		ELEM3
+	}
+```
+
 ```mermaid
 classDiagram
 	class 枚举{
@@ -769,6 +847,16 @@ classDiagram
 		ELEM3
 	}
 ```
+
+```markdown
+classDiagram
+	class 模版类~T~{
+		+List~T~ public_value
+	}
+	模版类 : -List~T~ private_value
+	模版类 : +public_func(List~T~ messages)
+```
+
 ```mermaid
 classDiagram
 	class 模版类~T~{
@@ -776,6 +864,18 @@ classDiagram
 	}
 	模版类 : -List~T~ private_value
 	模版类 : +public_func(List~T~ messages)
+```
+
+```markdown
+classDiagram
+classA --|> classB : Inheritance
+classC --* classD : Composition
+classE --o classF : Aggregation
+classG --> classH : Association
+classI -- classJ : Link(Solid)
+classK ..> classL : Dependency
+classM ..|> classN : Realization
+classO .. classP : Link(Dashed)
 ```
 
 ```mermaid
@@ -790,11 +890,24 @@ classM ..|> classN : Realization
 classO .. classP : Link(Dashed)
 ```
 
+```markdown
+classDiagram
+    Customer "1" --> "*" Ticket
+    Student "1" --> "1..*" Course
+    Galaxy --> "many" Star : Contains
+```
+
 ```mermaid
 classDiagram
     Customer "1" --> "*" Ticket
     Student "1" --> "1..*" Course
     Galaxy --> "many" Star : Contains
+```
+
+```markdown
+classDiagram
+class Shape
+<<interface>> Shape
 ```
 
 ```mermaid
@@ -869,6 +982,12 @@ pie
 ```
 
 
+
+## 绘制状态图
+
+```mermaid
+
+```
 
 
 
