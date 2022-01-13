@@ -1,7 +1,10 @@
 # 摘要
 eos的二进制流工具类,负责数据缓存，打/解包;
 
+
+
 # 详情
+
 * [datastream.hpp](https://github.com/hanjingo/eosio.cdt/blob/master/libraries/eosiolib/core/eosio/datastream.hpp)
 
 ## 重载运算符
@@ -21,5 +24,5 @@ eos的二进制流工具类,负责数据缓存，打/解包;
 |func|inline bool get(char& c)|?|
 |func|T pos() const {return _pos;} inline bool valid()const{ return _pos <= _end && _pos >= _start; }|?|
 |func|inline bool seekp(size_t p){_pos = start+p; return _pos <= _end;}|?|
-  
+
 ..todo

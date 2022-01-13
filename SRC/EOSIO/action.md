@@ -1,14 +1,17 @@
 # 摘要
 负责action的收发，鉴权
 
+
+
 # 详情
+
 * [action.hpp](https://github.com/hanjingo/eosio.cdt/blob/master/libraries/eosiolib/contracts/eosio/action.hpp)
 
-## 知识点:
+## 知识点
 1. std:tie: 1.用于解构std::tuple中的元素，2.用来将多个变量构造成std::tuple;
 2. std::tuple: 元组,使用它可以把多个不同类型的变量组合成一个对象;
 
-## action数据拆包:
+## action数据拆包
 默认包缓冲区尺寸:512byte,如果超过就malloc;具体的拆包代码在datastream.hpp里;
 
 ## 定义导出c函数
@@ -24,7 +27,7 @@
 |void send_context_free_inline( char* serialized_action, size_t size )|?|
 |uint64_t publication_time()|?|
 |uint64_t current_receiver()|?|
-  
+
 ## 定义类
 #### permission_level 权限等级
 |类型|名称|注释|
@@ -35,7 +38,7 @@
 |name|permission|权限名|
 |-|==|判断是否相等|
 |-|<|判断是否小于|
-  
+
 #### action_wrapper action封装类
 |类型|名称|注释|
 |:---|:---|:---|

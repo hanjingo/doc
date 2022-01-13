@@ -4,9 +4,9 @@
 2. 过滤/添加/记录/响应/追踪/应用 action；
 
 # 详情
-[account_control_history_object.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/account_control_history_object.hpp)  
-[history_plugin.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/history_plugin.hpp)  
-[public_key_history_object.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/public_key_history_object.hpp)  
+[account_control_history_object.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/account_control_history_object.hpp) 
+[history_plugin.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/history_plugin.hpp) 
+[public_key_history_object.hpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/include/eosio/history_plugin/public_key_history_object.hpp) 
 [history_plugin.cpp](https://github.com/hanjingo/eos/blob/master/plugins/history_plugin/history_plugin.cpp)  
 
 ## 定义表
@@ -23,4 +23,4 @@ appbase::abstract_plugin
 
 ## 定义类
 
-todo...
+TODO...

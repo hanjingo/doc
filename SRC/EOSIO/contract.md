@@ -1,10 +1,13 @@
 # 摘要
 获得合约的名字，部署者等;
 
+
+
 # 详情
+
 * [contract.hpp](https://github.com/hanjingo/eosio.cdt/blob/master/libraries/eosiolib/contracts/eosio/contract.hpp)
 
-## 知识点:
+## 知识点
  deprecated:主要用于标记过时的函数、接口、类等;
 ## 定义类:
 #### contract

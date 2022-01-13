@@ -1,5 +1,7 @@
 # cmake 教程
 
+[TOC]
+
 
 
 ## cmake关键字

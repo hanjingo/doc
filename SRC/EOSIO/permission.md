@@ -1,7 +1,10 @@
 # 摘要
 对一些权限操作的封装
 
+
+
 # 详情
+
 [permission.hpp]()
 
 ## 导出c函数 具体看eos的wasm_interface.cpp

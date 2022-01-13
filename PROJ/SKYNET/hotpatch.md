@@ -180,7 +180,7 @@ LUAMOD_API int luaopen_cache(lua_State *L) {
 
 
 
-## clearcache
+## 方法一 clearcache
 
 每个snlua服务会启动一个单独的lua VM，对于同一份lua文件，N个服务就要加载N次到内存。
 
@@ -301,7 +301,7 @@ end
 
 
 
-## inject
+## 方法二 inject
 
 inject(注入更新)，将新代码注入到已有的服务里，让老服务执行新的代码，**可以更新旧服务**。
 
@@ -654,7 +654,7 @@ lua代码中与inject相关的全局变量：
   
      
 
-## snax.hotfix
+## 方法三 snax.hotfix
 
 `snax.hotfix`可以用于热更新（被热更的对象只能是全局变量）
 
@@ -748,13 +748,13 @@ lua代码中与inject相关的全局变量：
 
    
 
-## skynet-reload
+## 方法四 使用skynet-reload
 
 TODO
 
 
 
-## lua-require
+## 方法五 利用lua-require
 
 skynet的缓存机制是可以关闭的，当关闭skynet缓存机制之后，就可以利用lua本身的特性来实现热更新。
 

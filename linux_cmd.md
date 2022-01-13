@@ -116,6 +116,18 @@
 | `*`  | 含有所有命令行参数（以单个文本值的形式） |
 | `@`  | 含有所有命令行参数（以多个文本值的形式） |
 
+### 修改用户默认目录
+
+1. 在`/etc/passwd`中找到当前用户的目录配置并修改
+
+   ```sh
+   vim /etc/passwd
+   
+   # 修改目录：smy:x:1000:1000:Shelming.Song:/home/smy:/bin/bash -> smy:x:1000:1000:Shelming.Song:/root:/bin/bash
+   ```
+
+2. 保存并重启
+
 ---
 
 ## Shell脚本

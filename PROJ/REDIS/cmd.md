@@ -32,51 +32,51 @@
 
 ## String
 
-| 命令        | 说明                                                         | 参数 | 示例                                      |
-| ----------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
-| APPEND      | 将value追加到key对应的值的末尾，如果key不存在，直接将key的值设置为value |      | - `APPEND k ext` 在k对应的值后面添加ext； |
-| BITCOUNT    | 计算给定字符串中，被设置为1的比特位的数量                    |      |                                           |
-| BITOP       |                                                              |      |                                           |
-| DECR        |                                                              |      |                                           |
-| DECRBY      |                                                              |      |                                           |
-| GET         |                                                              |      |                                           |
-| GETBIT      |                                                              |      |                                           |
-| GETRANGE    |                                                              |      |                                           |
-| GETSET      |                                                              |      |                                           |
-| INCR        |                                                              |      |                                           |
-| INCRBY      |                                                              |      |                                           |
-| INCRBYFLOAT |                                                              |      |                                           |
-| MGET        |                                                              |      |                                           |
-| MSET        |                                                              |      |                                           |
-| MSETNX      |                                                              |      |                                           |
-| PSETEX      |                                                              |      |                                           |
-| SET         |                                                              |      |                                           |
-| SETBIT      |                                                              |      |                                           |
-| SETEX       |                                                              |      |                                           |
-| SETNX       |                                                              |      |                                           |
-| SETRANGE    |                                                              |      |                                           |
-| STRLEN      |                                                              |      |                                           |
+| 命令        | 说明                                                         | 参数                                                         | 示例                                                         |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| APPEND      | 将value追加到key对应的值的末尾，如果key不存在，直接将key的值设置为value |                                                              | - `APPEND k ext` 在k对应的值后面添加ext；                    |
+| BITCOUNT    | 统计给定字符串中，被设置为1的比特位的数量                    | - `start` 起始位置；<br>- `end` 终点位置                     | - `BITCOUNT b` 统计b中被设置为1的位的数量；<br><br>一些常见用途：<br>1. 统计第100~101天时用户xx的上线频率<br>- `SETBIT xx 100 1` 设置起始位置为100的字符串的比特位为1<br>- `SETBIT xx 101 1` 设置起始位置为101的字符串的比特位为1<br/>- `BITCOUNT xx` 返回xx上线的总天数 |
+| BITOP       | 对一个或多个保存二进制位的字符串key进行位元操作，保存操作结果 | - `AND` 并操作<br>- `OR` 或操作<br>- `XOR` 异或<br>- `NOT` 非 | - `BITOP dst k1 k2` 对k1, k2进行位操作并保存到dst            |
+| DECR        | 将key中存储的数字值-1<br>- 如果key不存在，先将key的值初始化为0再执行-1操作；<br>- 如果key中存储的不是数值，直接报错； |                                                              | - `DECR k` 将k中存储的数字值-1                               |
+| DECRBY      | 将key所存储的值减去指定的值                                  |                                                              | - `DECRBY k 100 ` 将k中存储的数字减去100                     |
+| GET         |                                                              |                                                              |                                                              |
+| GETBIT      |                                                              |                                                              |                                                              |
+| GETRANGE    |                                                              |                                                              |                                                              |
+| GETSET      |                                                              |                                                              |                                                              |
+| INCR        |                                                              |                                                              |                                                              |
+| INCRBY      |                                                              |                                                              |                                                              |
+| INCRBYFLOAT |                                                              |                                                              |                                                              |
+| MGET        |                                                              |                                                              |                                                              |
+| MSET        |                                                              |                                                              |                                                              |
+| MSETNX      |                                                              |                                                              |                                                              |
+| PSETEX      |                                                              |                                                              |                                                              |
+| SET         |                                                              |                                                              |                                                              |
+| SETBIT      |                                                              |                                                              |                                                              |
+| SETEX       |                                                              |                                                              |                                                              |
+| SETNX       |                                                              |                                                              |                                                              |
+| SETRANGE    |                                                              |                                                              |                                                              |
+| STRLEN      |                                                              |                                                              |                                                              |
 
 
 
 ## Hash
 
-| 命令         | 说明     | 参数 | 示例 |
-| ------------ | -------- | ---- | ---- |
-| HDEL         | 删除     |      |      |
-| HEXISTS      |          |      |      |
-| HGET         | 获取     |      |      |
-| HGETALL      | 获取所有 |      |      |
-| HINCRBY      |          |      |      |
-| HINCRBYFLOAT |          |      |      |
-| HKEYS        |          |      |      |
-| HLEN         |          |      |      |
-| HMGET        |          |      |      |
-| HMSET        |          |      |      |
-| HSET         | 设置     |      |      |
-| HSETNX       |          |      |      |
-| HVALS        |          |      |      |
-| HSCAN        |          |      |      |
+| 命令         | 说明                                                         | 参数 | 示例                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| HDEL         | 删除哈希表中的一个或多个指定域，不存在的域将被忽略           |      | - `HDEL h a b` 删除哈希表h中的域a和域b                       |
+| HEXISTS      | 查看哈希表中给定域field是否存在                              |      | - `HEXISTS h a` 查看哈希表h中域a是否存在                     |
+| HGET         | 返回哈希表中给定域的值                                       |      | - `HGET h a` 返回哈希表h中域a的值                            |
+| HGETALL      | 以列表形式返回哈希表中所有的域和值                           |      | - `HGETALL h` 返回哈希表h中所有的域和值                      |
+| HINCRBY      | 为哈希表中指定域的值+指定的值（<64bit）                      |      | - `HINCRBY h a 200` 对h.a = h.a + 200<br>- `HINCRBY h a -200` 对h.a = h.a - 200 |
+| HINCRBYFLOAT | 为哈希表中指定域的值+指定的浮点值；<br>注意：<br>**field的值必须为字符串类型；**<br>**field的字符串值必须可以被解析为双精度浮点数（double precision floating point number）；** |      | - `HINCRBYFLOAT `                                            |
+| HKEYS        |                                                              |      |                                                              |
+| HLEN         |                                                              |      |                                                              |
+| HMGET        |                                                              |      |                                                              |
+| HMSET        |                                                              |      |                                                              |
+| HSET         |                                                              |      |                                                              |
+| HSETNX       |                                                              |      |                                                              |
+| HVALS        |                                                              |      |                                                              |
+| HSCAN        |                                                              |      |                                                              |
 
 
 

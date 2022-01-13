@@ -3,7 +3,10 @@
 1. 负责端点的连接与断开，状态管理；
 2. 请求块，验证块，处理块；
 
+
+
 # 详情
+
 [net_plugin.hpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/include/eosio/net_plugin/net_plugin.hpp)
 [net_plugin.cpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/net_plugin.cpp)
 [protocol.hpp](https://github.com/hanjingo/eos/blob/master/plugins/net_plugin/include/eosio/net_plugin/protocol.hpp)  
@@ -69,17 +72,19 @@
 |func|connection_ptr find_connection( const string& host ) const|根据host找到连接|
 
 ## 定义协议 net_message
-|协议名|注释|
-|:----_|:---|
-|handshake_message|握手信息|
-|chain_size_message|链大小信息|
-|go_away_message|离开消息|
-|time_message|时间信息|
-|notice_message|通知消息|
-|request_message|请求消息|
-|sync_request_message|同步请求消息|
-|signed_block|已签名块消息|
-|packed_transaction|已打包的传输消息|
+| 协议名               | 注释             |
+| :------------------- | ---------------- |
+| handshake_message    | 握手信息         |
+| chain_size_message   | 链大小信息       |
+| go_away_message      | 离开消息         |
+| time_message         | 时间信息         |
+| notice_message       | 通知消息         |
+| request_message      | 请求消息         |
+| sync_request_message | 同步请求消息     |
+| signed_block         | 已签名块消息     |
+| packed_transaction   | 已打包的传输消息 |
+
+
 
 ## 定义表
 #### node_transaction_index 传输表

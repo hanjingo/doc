@@ -10,7 +10,6 @@
 - [nginx](NGINX/README.md)
 - [pbc](PBC/README.md)
 - [protobuf](PROTOBUF/README.md)
-- [godot](GODOT/README.md)
 - [redis](REDIS/README.md)
 - [skynet](SKYNET/README.md)
 

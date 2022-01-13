@@ -1,7 +1,10 @@
 # 摘要
 eos的名字系统，包括名字和uint64_t的转换，名字合法性判断
 
+
+
 # 详情
+
 * [name.hpp](https://github.com/hanjingo/eosio.cdt/blob/master/libraries/eosiolib/core/eosio/name.hpp)
 
 ## 知识点:
@@ -23,5 +26,5 @@ inline constexpr eosio::name operator""_n() {
 	return x;
 }
 #pragma clang diagnostic pop
-用_n来代替name构造函数
+// 用_n来代替name构造函数
 ```

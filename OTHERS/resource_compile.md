@@ -90,6 +90,7 @@
 
 ### 网络库
 
+- 抓包神器[wireshark](https://gitlab.com/wireshark/wireshark)
 - 大名鼎鼎的libevent库 [libevent](https://github.com/libevent)/**[libevent](https://github.com/libevent/libevent)**
 - UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
 - 远程调用库 [GRPC](https://github.com/grpc/grpc)
@@ -182,6 +183,8 @@
 - [安卓NDK示例 ndk-samples](https://github.com/android/ndk-samples)
 - 开源项目汇总，强力推荐 [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
 - 电子书目录汇总，强力推荐 [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
+- [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)
+- [性能优化相关专题](https://github.com/XINCGer/Unity3DTraining/tree/master/PerformanceOptimization)
 
 
 
