@@ -62,10 +62,10 @@ int chinese_remainder (size_t r, int *m, int *u)
 如果p是素数，且a < p,如果:$x^2 \equiv a(mod \quad p)$对某些x成立，那么称a是对模p的二次剩余。
 
 ### 勒让德符号(Legendre symbol)
-写作L(a, p), 当a为任意整数且p是一个大于2的素数时，它等于0， 1 或 -1。  
-L(a, p) = 0,如果a被p整除  
-L(a, p) = 1,如果a是二次剩余  
-L(a, p) = -1,如果a是非二次剩余  
+写作L(a, p), 当a为任意整数且p是一个大于2的素数时，它等于0， 1 或 -1。 
+L(a, p) = 0,如果a被p整除 
+L(a, p) = 1,如果a是二次剩余 
+L(a, p) = -1,如果a是非二次剩余 
 一种计算L(a, p)的方法是:$L(a, p)=a^{(p-1)/2} mod \quad p$
 
 ### 雅克比符号(Jacobi symbol)

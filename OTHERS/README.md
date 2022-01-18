@@ -16,10 +16,11 @@
 
 ## 模板文件
 
-- [需求文档模板](res/tmpl_requirements.md)
-- [工作日志模版](res/tmpl_work_note.md)
 - [论文模板](res/paper_tmpl.md)
 - [软件测试文档模板](res/test_tmpl.md)
+- [需求文档模板](res/tmpl_requirements.md)
+- [简历模版](res/tmpl_resume.md)
+- [工作日志模版](res/tmpl_work_note.md)
 - [vim配置文件模板](res/.vimrc)
 - [别名配置文件](res/.aliases)
 

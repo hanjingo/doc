@@ -220,7 +220,7 @@ $公式内容$
 
 |写法|效果|
 |:--|:--|
-|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$`|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $|
+|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$`|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$|
 |`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|
 |`$\forall$, $\exists$, $\because$, $\therefore$`, `$\neg$`|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|
 |`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|
@@ -997,4 +997,5 @@ pie
 - [使用 Typora 画图（类图、流程图、时序图）](https://zhuanlan.zhihu.com/p/172635547)
 - [Class diagrams](https://mermaid-js.github.io/mermaid/#/classDiagram?id=class-diagrams)
 - [markdown 由简入繁，上手跟我做（十）echarts 图表 - 折线（面积）图](https://qiankunpingtai.cn/article/1566371244169)
+- [Markdown 中 LaTex 数学公式命令](https://www.jianshu.com/p/0ea47ae02262)
 

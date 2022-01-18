@@ -1,8 +1,12 @@
 # Unix网络编程 卷一:套接字联网api
+
+[美]W.Richard Stevens, [美]Bill Fenner, [美]Andrew M. Rudoff 著.第三版
+
 - [第一章 简介和TCP/IP](chapter1.md)
 - [第二章 传输层：TCP,UDP和SCTP](chapter2.md)
 - [第三章 套接字编程简介](chapter3.md)
 - [第四章 基本TCP套接字编程](chapter4.md)
+- [第五章 TCP客户/服务器程序示例]
 - [第六章 I/O复用：select和pool函数](chapter6.md)
 - [第七章 套接字选项](chapter7.md)
 - [第八章 基本UDP套接字编程](chapter8.md)
