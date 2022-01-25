@@ -1,8 +1,8 @@
-# 环境配置
+# C++环境配置
 
+[TOC]
 
-
-## ubuntu18.04
+## ubuntu/debain
 
 ### 依赖包
 ```sh

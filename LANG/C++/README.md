@@ -9,6 +9,8 @@
 - [指针](pointer.md)
 - [模版](template.md)
 
+
+
 ## boost程序库
 
 - [api](BOOST/api.md)
@@ -17,19 +19,24 @@
 - [内存池](BOOST/pool.md)
 - [strand](BOOST/strand.md)
 
+
+
 ## qt
 
-- [qt速查手册](QT/fast_query.md)
+- [速查手册](QT/fast_query.md)
 - [信号槽](QT/signals_slots.md)
-- [qt模块简介](QT/module.md)
+- [模块简介](QT/module.md)
 - [MainWindow简介](QT/mainwindow.md)
-- [添加动作](QT/action.md)
+- [动作](QT/action.md)
 - [资源文件](QT/res.md)
+
+
 
 ## android c++开发
 
 - [安卓c++开发](ANDROID/dev.md)
-- [安卓c++特性](ANDROID/feature.md)
+
+
 
 ## 其他
 

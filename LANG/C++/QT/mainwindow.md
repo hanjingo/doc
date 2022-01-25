@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 ```
 在 openSUSE 上运行结果如下：
 
-![](RES/mainwindow1.jpg)
+![](res/mainwindow1.jpg)
 
 我们仔细看看这个窗口。虽然不太明显，但它实际上分成了几个部分：
 

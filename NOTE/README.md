@@ -50,5 +50,4 @@
 - [Linux系统编程](LINUX_SYSTEM_PROGRAMMING/README.md)
 - [C++覆辙录]
 - [Unix网络编程 卷二]
-- [Effective STL]
 

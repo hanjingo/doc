@@ -15,24 +15,44 @@
 ###### 六级标题
 ```
 
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
 
 
 ## 段落
 
 ```markdown
-段落换行:2个空格+回车
-重新开始段落:使用一个空行
+a  
+
+b
 ```
+
+a  
+
+b
 
 
 
 ## 字体
 
 ``` markdown
-斜体:*字体*或_字体_
-粗体:**字体*或__字体__
-粗斜体:___字体___
+*斜体*
+_斜体_
+**粗体**
+__粗体__
+___粗斜体___
 ```
+
+*斜体*
+_斜体_
+**粗体**
+__粗体__
+___粗斜体___
 
 
 
@@ -46,6 +66,12 @@
 ----------
 ```
 
+***
+* * *
+******
+- - -
+----------
+
 
 
 ## 删除线
@@ -53,6 +79,8 @@
 ``` markdown
 ~~删除线~~ 
 ```
+
+~~删除线~~ 
 
 
 
@@ -62,40 +90,82 @@
 <u>下划线<u>
 ```
 
+<u>下划线<u>
+
 
 
 ## 脚注
 
 ``` markdown
-[^文字] -- 注释
+[^文字]
 ```
+
+[^文字]
 
 
 
 ## 列表
 
 ```markdown
-无序列表：*第一项 *第二项 *第三项 （*, +， - 都可以）
-有序列表：1.第一项 2.第二项 3.第三项
-列表嵌套：1.第一项：-嵌套 2.第二项：-嵌套
+* 无序列表1
+
++ 无序列表2
+
+- 无序列表3
+
+1. 有序列表
+
+1. 列表嵌套
+   -  嵌套
 ```
+
+* 无序列表1
+
++ 无序列表2
+
+- 无序列表3
+
+1. 有序列表
+
+1. 列表嵌套
+   -  嵌套
 
 
 
 ## 区块
 
 ```markdown
-普通区块：>区块1 >区块2
-嵌套区块：>第一层 >>第二层
+> 普通区块
+
+> 嵌套区块1层
+>
+> > 嵌套区块2层
 ```
+
+> 普通区块
+
+> 嵌套区块1层
+>
+> > 嵌套区块2层
 
 
 
 ## 代码
 
-```markdown
-方法一：用4个空格或一个制表符
-方法二：用```编程语言(go, c++/cpp, ...)
+````markdown
+```c++
+#inclue <iostream>
+int main(void) {
+	std::cout << "hello world" << std::endl;
+}
+```
+````
+
+```c++
+#inclue <iostream>
+int main(void) {
+	std::cout << "hello world" << std::endl;
+}
 ```
 
 
@@ -103,37 +173,42 @@
 ## 链接
 
 ```markdown
-方法1：[链接名称](链接地址)
-方法2：<链接地址>
-高级用法：
-	这个链接用 1 作为网址变量 [Google][1]
-	这个链接用 runoob 作为网址变量 [Runoob][runoob]
-	然后在文档的结尾为变量赋值（网址）
-  		[1]: http://www.google.com/
-    	[runoob]: http://www.runoob.com/
+这个链接用 1 作为网址变量 [Google][1]
+
+这个链接用 runoob 作为网址变量 [Runoob][runoob]
+
+[1]: http://www.google.com/
+[runoob]: http://www.runoob.com/
 ```
+
+这个链接用 1 作为网址变量 [Google][1]
+
+这个链接用 runoob 作为网址变量 [Runoob][runoob]
+
+[1]: http://www.google.com/
+[runoob]: http://www.runoob.com/
 
 
 
 ## 图片
 
 ```markdown
-![图片标题](图片地址)
+![百度图标](https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png)
 ```
+
+![百度图标](https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png)
 
 
 
 ## 锚定
 
 ```markdown
-这是正文,在这里引用锚点[<sup>[序号]</sup>](#锚点)
+这是正文,在这里引用锚点[<sup>[1]</sup>](#refer-anchor-1)
+
+<div id="refer-anchor-1">[1] 作者. 文献名. 页码 起始-结束. 年份</div>
 ```
 
 这是正文,在这里引用锚点[<sup>[1]</sup>](#refer-anchor-1)
-
-```markdown
-<div id="锚点">[序号]. 作者. 文献名. 页码 起始-结束. 年份</div>
-```
 
 <div id="refer-anchor-1">[1] 作者. 文献名. 页码 起始-结束. 年份</div>
 
@@ -141,19 +216,15 @@
 
 ## 脚注
 
-注意：非标准语法，typora支持
+**注意：非标准语法，但typora支持**
 
 ```markdown
 这里添加脚注[^1]
-```
 
-这里添加脚注[^1]
-
-
-
-```markdown
 [^1]: 这里是脚注说明
 ```
+
+这里添加脚注[^1]
 
 [^1]: 这里是脚注说明
 
@@ -161,11 +232,9 @@
 
 ## 样式
 
-markdown支持一些html的语法样式
+html语法样式
 
 ### 颜色
-
-添加颜色的格式为:`<span style='background-color:颜色'>文本内容</span>`
 
 ```markdown
 <span style='background-color:yellow'>黄色</span>
@@ -193,57 +262,72 @@ markdown支持一些html的语法样式
 
 **对齐方式:**
 
-- `-: `右对齐
-- `:-` 左对齐
-- `:-:` 居中
-
 ```markdown
-| 表头   |   表头 |
-| :----- | -----: |
-| 单元格 | 单元格 |
-| 单元格 | 单元格 |
+| 左对齐 |  居中  | 右对齐 |
+| :----- | :----: | -----: |
+| 单元格 | 单元格 | 单元格 |
+| 单元格 | 单元格 | 单元格 |
 ```
 
-| 表头   |   表头 |
-| :----- | -----: |
-| 单元格 | 单元格 |
-| 单元格 | 单元格 |
+| 左对齐 |  居中  | 右对齐 |
+| :----- | :----: | -----: |
+| 单元格 | 单元格 | 单元格 |
+| 单元格 | 单元格 | 单元格 |
 
 
 
 ## 公式
 
+### 一些常用的数学公式
+
+|效果|源码|
+|:--|---|
+|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$`|
+|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
+|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
+|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
+|$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|`$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$`|
+|$\mathbb{ABCdef}$|`$\mathbb{ABCdef}$`|
+|$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$|`$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$`|
+|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$|`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$`|
+|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$|`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$`|
+|$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$|`$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$`|
+|$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$`|
+|$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$|`$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$`|
+|$\ln15$, $\log_2 10$, $\lg7$|`$\ln15$, $\log_2 10$, $\lg7$`|
+|$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|
+|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
+|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|
+|$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|`$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`|
+|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
+|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
+|$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
+
+### 矩阵
+
+**矩阵(matrix)的表示:**
+
 ```markdown
-$公式内容$
+$$
+\begin{matrix}
+x_{_{11} } & x_{_{12} } & \dots & x_{_{1n} } \\
+x_{_{21} } & x_{_{22} } & \dots & x_{_{2n} } \\
+\vdots & \vdots & \ddots  & \vdots  \\
+x_{_{m1} } & x_{_{m2} } & \dots & x_{_{mn} } \\
+\end{matrix}
+$$
 ```
-一些常用的数学公式： 
 
-|写法|效果|
-|:--|:--|
-|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$`|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$|
-|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|
-|`$\forall$, $\exists$, $\because$, $\therefore$`, `$\neg$`|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|
-|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|
-|`$x \cup y$, $x \cap y$, $x \setminus y$,  $x \bigvee y$, $x \bigwedge y$`|$x \cup y$, $x \cap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|
-|`$\bigcup$, $\bigcap$, `|$\bigcup$, $\bigcap$,|
-|`$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$`|$\mathbb{R}$, $\mathbb{Z}$, $\emptyset$|
-|`$\oplus$`|$\oplus$|
-|`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$`|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$, $\oint$|
-|`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$`|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$|
-|`$\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\dot x$, $\ddot x$, $\dot {\dot x}$`|$\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\dot x$, $\ddot x$, $\dot {\dot x}$|
-|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$`|$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$|
-|`$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$`|$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$|
-|`$\ln15$, $\log_2 10$, $\lg7$`|$\ln15$, $\log_2 10$, $\lg7$|
-|`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|
-|`$\vec{a} \cdot \vec{b}=0$`|$\vec{a} \cdot \vec{b}=0$|
-|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|
-|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|
-|`$\prod \frac{1}{i^2}$, $\prod_{i=1}^{K}$`|$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|
-|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$`|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$|
-|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|
-|`$\lfloor x \rfloor$`，`$\lceil x \rceil$`|$\lfloor x \rfloor$，$\lceil x \rceil$|
+$$
+\begin{matrix}
+x_{_{11} } & x_{_{12} } & \dots & x_{_{1n} } \\
+x_{_{21} } & x_{_{22} } & \dots & x_{_{2n} } \\
+\vdots & \vdots & \ddots  & \vdots  \\
+x_{_{m1} } & x_{_{m2} } & \dots & x_{_{mn} } \\
+\end{matrix}
+$$
 
-**矩阵(bmatrix)的表示1:**
+**矩阵(bmatrix)的表示:**
 
 ```markdown
 $$ \begin{bmatrix}
@@ -259,7 +343,7 @@ $$ \begin{bmatrix}
 7 & 8 & 9
 \end{bmatrix} $$
 
-**矩阵(Bmatrix)的表示2:**
+**矩阵(Bmatrix)的表示:**
 
 ```markdown
 $$ \begin{Bmatrix}
@@ -275,7 +359,7 @@ $$ \begin{Bmatrix}
 7 & 8 & 9
 \end{Bmatrix} $$
 
-**矩阵(pmatrix)的表示3:**
+**矩阵(pmatrix)的表示:**
 
 ```markdown
 $\begin{pmatrix}1 & 2 \\ 3 & 4\\ \end{pmatrix}$
@@ -283,7 +367,7 @@ $\begin{pmatrix}1 & 2 \\ 3 & 4\\ \end{pmatrix}$
 
 $\begin{pmatrix}1 & 2 \\ 3 & 4\\ \end{pmatrix}$
 
-**矩阵(vmatrix)的表示4:**
+**矩阵(vmatrix)的表示:**
 
 ```markdown
 $\begin{vmatrix}1 & 2 \\ 3 & 4\\ \end{vmatrix}$
@@ -291,13 +375,15 @@ $\begin{vmatrix}1 & 2 \\ 3 & 4\\ \end{vmatrix}$
 
 $\begin{vmatrix}1 & 2 \\ 3 & 4\\ \end{vmatrix}$
 
-**矩阵(Vmatrix)的表示5:**
+**矩阵(Vmatrix)的表示:**
 
 ```markdown
 $\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
 ```
 
 $\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
+
+### 分类表达式
 
 **分类表达式1:**
 
@@ -339,7 +425,7 @@ L(Y,f(X)) =
 \end{cases}
 $$
 
-**多行表达式:**
+###多行表达式
 
 ```markdown
 $$
@@ -352,9 +438,16 @@ a&=b+c-d \\
 $$
 ```
 
-略
+$$
+\begin{equation}\begin{split} 
+a&=b+c-d \\ 
+&\quad +e-f\\ 
+&=g+h\\ 
+& =i 
+\end{split}\end{equation}
+$$
 
-**方程组:**
+### 方程组
 
 ```markdown
 $$
@@ -378,7 +471,7 @@ a_3x+b_3y+c_3z=d_3
 \right.
 $$
 
-**表格:**
+### 表格
 
 ```markdown
 $$
@@ -400,6 +493,49 @@ n & \text{Left} & \text{Center} & \text{Right} \\
 2 & -1 & 189 & -8 \\
 3 & -20 & 2000 & 1+10i \\
 \end{array}
+$$
+
+### 交换图表
+
+**交换图表1:**
+
+```markdown
+$\require{AMScd}$
+$$
+\begin{CD}
+    A @>a>> B\\
+    @V b V V\# @VV c V\\
+    C @>>d> D
+\end{CD}
+$$
+```
+
+$$
+\begin{CD}
+    A @>a>> B\\
+    @V b V V\# @VV c V\\
+    C @>>d> D
+\end{CD}
+$$
+
+**交换图表2:**
+
+```markdown
+$$
+\begin{CD}
+    A @>>> B @>{\text{very long label}}>> C \\
+    @. @AAA @| \\
+    D @= E @<<< F
+\end{CD}
+$$
+```
+
+$$
+\begin{CD}
+    A @>>> B @>{\text{very long label}}>> C \\
+    @. @AAA @| \\
+    D @= E @<<< F
+\end{CD}
 $$
 
 
