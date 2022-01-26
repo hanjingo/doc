@@ -282,7 +282,7 @@ html语法样式
 
 |效果|源码|
 |:--|---|
-|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$`|
+|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$`|
 |$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
 |$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
 |$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
