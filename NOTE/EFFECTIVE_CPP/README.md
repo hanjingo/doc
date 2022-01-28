@@ -6,7 +6,7 @@
 - [4 Designs and Declarations](chapter4.md)
 - [5 Implementations](chapter5.md)
 - [6 Inheritance and Object-Oriented Design](chapter6.md)
-- [7 Templates and Generic Programming]
-- [8 Customizing new and delete]
-- [9 Miscellany]
+- [7 Templates and Generic Programming](chapter7.md)
+- [8 Customizing new and delete](chapter8.md)
+- [9 Miscellany](chapter9.md)
 

@@ -46,4 +46,6 @@ class A {
 
 - 方法一
 
-  用命令`ldconfig`来更新环境依赖；
+  在linux下用命令`ldconfig`来更新环境依赖；
+  
+  在macos下用命令`update_dyld_shared_cache`来更新环境以来

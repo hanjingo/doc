@@ -1,7 +1,7 @@
 # 目录
 
 - [职场](CAREER/README.md)
-- [分布式](DCS/README.md)
+- [分布式系统](DCS/README.md)
 - [经济](ECONOMIC/README.md)
 - [图形学](GRAPHICS/README.md)
 - [健康手册](HEALTH/README.md)
@@ -20,3 +20,4 @@
 # 快捷导航
 
 **[生存经验](live.md)** **[英汉词典](en_zh_dictionary.md)** **[posix接口](posix.md)** **[面试笔记](interview.md)** **[Bug速查](PROJ/BUG/README.md)** **[vim常用快捷键](OTHERS/vim_shortcut.md)** **[linux常用命令](linux_cmd.md)** **[git指南](OTHERS/git.md)** **[redis命令](PROJ/REDIS/cmd.md)** **[软件调试](PROJ/debug.md)** [如何写markdown](OTHERS/how_to_write_markdown.md)
+

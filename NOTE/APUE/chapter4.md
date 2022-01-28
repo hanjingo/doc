@@ -1,5 +1,7 @@
 # 第四章 文件和目录
 
+[TOC]
+
 
 
 ## 函数stat, fstat, fstatat和lstat

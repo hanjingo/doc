@@ -1,4 +1,4 @@
-# 算法导论-第三版
+# 算法导论
 
 Name: Introduction to Algorithms
 

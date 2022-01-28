@@ -1,6 +1,6 @@
 # c/c++
 
-- [STL速查手册](stl.md)
+- [STL](stl.md)
 - [最佳实践](best_practice.md)
 - [多线程](multi_thread.md)
 - [c++特性](feature.md)
@@ -23,11 +23,10 @@
 
 ## qt
 
-- [速查手册](QT/fast_query.md)
+- [环境搭建](QT/env.md)
 - [信号槽](QT/signals_slots.md)
 - [模块简介](QT/module.md)
-- [MainWindow简介](QT/mainwindow.md)
-- [动作](QT/action.md)
+- [Qt对象](QT/obj.md)
 - [资源文件](QT/res.md)
 
 

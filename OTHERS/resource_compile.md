@@ -18,13 +18,13 @@
 
 ### 编程
 
-| 书名                                                  | 作者                                                         | 版次 | 备注           |
-| ----------------------------------------------------- | ------------------------------------------------------------ | ---- | -------------- |
-| 编译原理<br>Compilers Principles, Techniques, & Tools | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2ED  | 学底层原理必看 |
-|                                                       |                                                              |      |                |
-|                                                       |                                                              |      |                |
-|                                                       |                                                              |      |                |
-|                                                       |                                                              |      |                |
+| 书名                                          | 作者                                                         | 版次 | 备注           |
+| --------------------------------------------- | ------------------------------------------------------------ | ---- | -------------- |
+| Compilers Principles, Techniques, & Tools     | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2ED  | 学底层原理必看 |
+| TCP/IP Illustrated<br>Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2ED  | 学网络协议必看 |
+|                                               |                                                              |      |                |
+|                                               |                                                              |      |                |
+|                                               |                                                              |      |                |
 
 ### 经济学
 
@@ -71,6 +71,7 @@
 - [微软的STL库实现](https://github.com/microsoft/STL)
 - [CMake教程 CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)
 - 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
+- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
 
 ### 算法库
 
@@ -173,6 +174,7 @@
 
 ### 其他
 
+- 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
 - [文档系统 DocumentServer](https://github.com/ONLYOFFICE/DocumentServer)
 - [Zeromq依赖库 libzmq](https://github.com/zeromq/libzmq)
 - [分布式存储 minio](https://github.com/minio/minio)
