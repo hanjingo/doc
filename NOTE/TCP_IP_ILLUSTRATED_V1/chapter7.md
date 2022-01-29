@@ -242,3 +242,110 @@ NAT能够配置为和防火墙一起工作；在Windows系统中，NAT被称为`
 
 `互联网网关设备发现和控制（Internet Gateway Device Discovery and Control，IGDDC）` 用户可能决定允许别的用户来控制或者关闭共享网络连接。
 
+例，Linux将伪装功能和防火墙实现结合：
+
+```sh
+EXITIF="ext0"
+echo "Default FOWRARD policy: DROP"
+iptables -P FORWARD DROP
+
+echo "Enabling NAT ON $EXTIF for hosts 192.168.0.0/24"
+iptables -t nat -A POSTROUTING -o $EXTIF -s 192.168.0.0/24 -j MASQUERADE
+
+echo "FORWARD policy: DROP unknown traffic"
+iptables -A INPUT -i $EXITIF -m state --state NEW,INVALID -j DROP
+iptables -A FORWARD -i $EXTIF -m state --state NEW,INVALID -j DROP
+```
+
+### 与NAT和防火墙的直接交互：UPnP，NAT-PMP和PCP
+
+`通用即插即用（Universal Plug and Play，UPnP）`
+
+`NAT端口映射协议（NAT Port Mapping Protocol，NAT-PMP）`
+
+`简单服务发现协议（Simple Service Discovery Protocol，SSDP）`
+
+`通用事件通知架构（General Event Notification Architecture，GENA）`
+
+`简单对象访问协议（Simple Object Access Protocol，SOAP）`
+
+`远程过程调用（Simple Procedure Call，RPC）`
+
+`可扩展标记语言（eXtensible Markup Language，XML）`
+
+`互联网网关设备（Internet Gateway Device，IGD）`
+
+`端口控制协议（Port Control Protocol，PCP）`
+
+
+
+## IPv4/IPv6共存和过渡中的NAT
+
+### 双协议栈精简版
+
+`DS-Lite（Dual Stack Lite，双协议栈精简版）[RFC6333]` 是一种希望在内部运行IPv6的服务器提供者更容易过渡到IPv6（同时支持传统的IPv4用户）的方法。
+
+![7_16](res/7_16.png) 
+
+*DS-Lite通过使用一个只有IPv6的架构使服务提供者能够支持IPv4和IPv6客户网络。通过在服务提供者边缘使用SPNAT，能够最大限度地减少IPv4的使用*
+
+### 使用NAT和ALG的IPv4/IPv6转换
+
+#### 已转换的IPv4地址和可转换的IPv4地址
+
+`已转换的IPv4地址（IPv4-converted address）`
+
+`可转换的IPv4地址（IPv4-translatable address）`
+
+#### 无状态转换
+
+`无状态的IP/ICMP转换（Stateless IP/ICMP Translation，SIIT）` 不采用状态表格进行IPv4和IPv6数据包转换的方法[RFC6145]；转换中无须查找表格，只需要使用一个可转换的IPv4地址以及一个预定义的用于转换IP头部的计划。
+
+从IPv4转换到IPv6时创建一个IPv6头部的方法：
+
+| IPv6字段                             | 分配方法                                                     |
+| ------------------------------------ | ------------------------------------------------------------ |
+| 版本（Version）                      | 设置为6                                                      |
+| DS字段/ECN（DS Field/ECN）           | 拷贝自IPv4头部中的相同值                                     |
+| 流标志（Flow Label）                 | 设置为0                                                      |
+| 负载长度（Payload Length）           | 设置为IPv4的总长度减去IPv4头部长度（包含选项）               |
+| 下一个头部（Next Header）            | 设置为IPv4协议字段（或者58，如果协议字段值为1）<br>设置为44来表示是一个分片头部，如果创建的IPv6数据报是一个分片或者DF位没有被设置 |
+| 跳数限制（Hop Limit）                | 设置为IPv4 TTL字段减去1（如果这个值为0，则该报文将被丢弃，同时产生一个ICMP超时报文） |
+| 源IP地址（Source IP Address）        | 设置为6（IPv4源IP地址，P）                                   |
+| 目的IP地址（Destination IP Address） | 设置为6（IPv4目的IP地址，P）                                 |
+
+从IPv4到IPv6转换时为分片头部中字段赋值的方法：
+
+| 分片头部字段                    | 分配方法                                      |
+| ------------------------------- | --------------------------------------------- |
+| 下一个头部（Next Header）       | 设置为IPv4中的协议字段                        |
+| 分片偏移（Fragment Offset）     | 拷贝自IPv4分片偏移字段                        |
+| 更多分片位（More Fragment Bit） | 拷贝自IPv4中的更多分片（M）位字段             |
+| 标识（Identification）          | 低16位根据IPv4中的标识字段设置。高16位设置为0 |
+
+将一个未分片的IPv6数据报转换为IPv4时用于创建IPv4头部的方法：
+
+| IPv4头部字段                         | 分配方法                                                     |
+| ------------------------------------ | ------------------------------------------------------------ |
+| 版本（Version）                      | 设置为4                                                      |
+| IHL                                  | 设置为5（没有IPv4选项）                                      |
+| DS字段/ECN（DS Field/ECN）           | 拷贝自IPv6头部中的相同值                                     |
+| 总长度（Total Length）               | IPv6中负载长度字段值加上20                                   |
+| 标识（Identification）               | 设置为0（可以选择设置为其它一些预设的值）                    |
+| 标志（Flags）                        | 更多分片（M）设置为0；不分片（Don't Fragment，DF）设置为1    |
+| 分片偏移（Fragment Offset）          | 设置为0                                                      |
+| TTL                                  | IPv6中跳数限制字段减去1                                      |
+| 协议（Protocol）                     | 拷贝自IPv6的第一个下一个头部字段，不涉及分片头部，HOPOPT，IPv6-Route或者IPv6-Opts。将值58改变为1来支持ICMP |
+| 头部校验和（Header Checksum）        | 为新创建的IPv4头部而计算                                     |
+| 源IP地址（Source IP Address）        | To4（IPv6源IP地址，P）                                       |
+| 目的IP地址（Destination IP Address） | To4（IPv6目的IP地址，P）                                     |
+
+当转换一个分片的IPv6到IPv4时用于创建IPv4头部的方法：
+
+| IPv4头部字段                | 分配方法                                                     |
+| --------------------------- | ------------------------------------------------------------ |
+| 总长度（Total Length）      | IPv6负载长度字段值减去8加上20                                |
+| 标识（Identification）      | 拷贝自IPv6分片头部标识字段中的低16位                         |
+| 标志（Flags）               | 更多分片（M）拷贝自IPv6分片头部中的M位字段。不分片（DF）设置为0以便允许IPv4网络中的分片 |
+| 分片偏移（Fragment Offset） | 拷贝自IPv6分片头部中的分片偏移字段                           |
+
