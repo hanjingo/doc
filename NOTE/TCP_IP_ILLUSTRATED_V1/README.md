@@ -4,7 +4,7 @@
 
 - [第一章 概述](chapter1.md)
 - [第二章 Internet地址结构](chapter2.md)
-- [第三章 链路层]
+- [第三章 链路层](chapter3.md)
 - [第四章 ARP: 地址解析协议](chapter4.md)
 - [第五章 Internet协议](chapter5.md)
 - [第六章 系统配置：DHCP和自动配置](chapter6.md)
