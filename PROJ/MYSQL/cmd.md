@@ -1,6 +1,6 @@
-[TOC]
-
 # Mysql命令
+
+[TOC]
 
 
 

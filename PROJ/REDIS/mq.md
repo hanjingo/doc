@@ -1,5 +1,7 @@
 # 利用redis实现消息队列
 
+[TOC]
+
 
 
 ## 发布订阅
@@ -54,7 +56,7 @@
 
 
 
-## stream
+## stream模式
 
 TODO
 

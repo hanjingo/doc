@@ -9,7 +9,7 @@
 - [第五章 Internet协议](chapter5.md)
 - [第六章 系统配置：DHCP和自动配置](chapter6.md)
 - [第七章 防火墙和网络地址转换](chapter7.md)
-- [第八章 ICMPv4和ICMPv6：Internet控制报文协议]
+- [第八章 ICMPv4和ICMPv6：Internet控制报文协议](chapter8.md)
 - [第九章 广播和本地组播(IGMP和MLD)](chapter9.md)
 - [第十章 用户数据报协议和IP分片](chapter10.md)
 - [第十一章 名称解析和域名系统](chapter11.md)
