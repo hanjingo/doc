@@ -297,7 +297,7 @@ html语法样式
 |$\ln15$, $\log_2 10$, $\lg7$|`$\ln15$, $\log_2 10$, $\lg7$`|
 |$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|
 |$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
-|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|
+|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|
 |$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|`$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`|
 |$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
 |${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
