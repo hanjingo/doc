@@ -4051,6 +4051,8 @@ thesis `/ˈθiːsɪs/` 论文，命题，论题
 
 thorn `/θɔːn/` 荆棘，刺
 
+thrash `/θræʃ/` 抖动，鞭打，抽打，翻来覆去
+
 threadlike `/θredˌlaɪk/` 丝状的，线状的
 
 threatening `/ˈθretnɪŋ/` 威胁的，恐吓的，扬言
