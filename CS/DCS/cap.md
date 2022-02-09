@@ -6,8 +6,8 @@
 
 分布式系统在以下三个特性中：
 
-- Consistency             一致性
-- Availability               可用性
+- Consistency 一致性
+- Availability 可用性
 - PartitionTolerance 分区容错性
 
 最多满足两个特性，无法通知满足三个。
