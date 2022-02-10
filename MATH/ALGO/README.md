@@ -22,9 +22,11 @@
 - [排序算法总结](sort.md)
 - [树](tree.md)
 
+
+
 ## LeetCode
 
-- [链表相关问题](LEETCODE/link_list.md)
+
 
 ## 问题描述
 

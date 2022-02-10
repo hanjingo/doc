@@ -23,7 +23,10 @@
 - 日志
     - hyperloglog.c
 
+
+
 ## 数据类型
+
 - 对象系统
     - object.c
 - string
@@ -37,7 +40,10 @@
 - zset
     - t_zset.c
 
+
+
 ## 编码
+
 - 整数集合数据结构
     - intset.h
     - intset.c
@@ -45,7 +51,10 @@
     - ziplist.h
     - ziplist.c
 
+
+
 ## 数据库功能实现
+
 - 基本数据库功能
     - redis.h
     - db.c
@@ -62,7 +71,10 @@
     - redis.h
     - multi.c
 
+
+
 ## 客户端和服务端
+
 - 事件处理
     - ae.c
     - ae_epoll.c
@@ -77,19 +89,27 @@
 - 客户端
     - redis-cli.c
 
+
+
 ## 集群
+
 - 复制功能
     - replication.c
 - 集群
     - cluster.c
 
+
+
 ## 独立模块
+
 - lua
     - scripting.c
 - 慢查询
     - slowlog.c
 - 监视
     - monitor.c
+
+
 
 ## 其他
 

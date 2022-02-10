@@ -1,11 +1,17 @@
 # eosin.system合约
 
+[TOC]
+
+
+
 # 摘要
 
 eos的投票以及资产购买,抵押,竞拍,出租,等等; 
-购买机制使用的[bancor算法](../../DCS/bancor_protocol.md); 
+购买机制使用的bancor算法; 
 执行action需要ram,cpu和net，cpu和net需要抵押获得，ram需要购买;用来抵押的物品为eos token; 
 ram会消耗;cpu和net用完会退押金; 
+
+
 
 # 详情
 
@@ -438,7 +444,7 @@ struct connector {
 |func|`asset convert_to_exchange( connector& reserve, const asset& payment)`|reserve:预定量，payment:支付金额,; 转成交易所价格; $$实际可购买数量=预定数量\times[(1+支付金额\div供应量)^{小费} -1]$$|
 |func|`asset convert_from_exchange(  connector& reserve, const asset& tokens )`|reserve:预定量，payment:支付金额；从交易所价格转回实际价格  $$实际可购买数量=预定数量\times[\sqrt[小费]{1+支付金额\div供应量}-1]$$|
 |func|`asset covert(  const asset& from, const symbol& to )`|汇率转换,流程:1.convert_to_exchange到交易所，2.convert_from_exchange从交易所转回来|
-|func|`asset direct_convert( const asset& from, const symbol& to )`|用 [bancor算法](https://blog.csdn.net/qq_27304213/article/details/107299373) 计算价格，并设置实时价格|
+|func|`asset direct_convert( const asset& from, const symbol& to )`|用bancor算法计算价格，并设置实时价格|
 |func|`static int64_t get_bancor_output( int64_t inp_reserve, int64_t out_reserve, int64_t inp)`|获得bancor输出|
 |func|`static int64_t get_bancor_input(int64_t out_reserve, int64_t inp_reserve, int64_t out)`|获得bancor输入|
 

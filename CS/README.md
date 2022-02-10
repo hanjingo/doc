@@ -1,5 +1,25 @@
 # 计算机科学
 
+## 子类
+
+- [分布式系统](DCS/README.md)
+- [图形学](GRAPHICS/README.md)
+- [编程语言](LANG/README.md)
+- [计算机网络](NET/README.md)
+- [操作系统](OS/README.md)
+
+
+
+## 其它
+
+- [BUG速查](BUG/README.md)
+- [源码分析](SRC/README.md)
+- [第三方软件](3RD/README.md)
+
+
+
+## 杂文
+
 - [数据库设计](db.md)
 - [软件调试](debug.md)
 - [运维技巧](dev_ops.md)
@@ -14,17 +34,4 @@
 - [服务端图形引擎](server_graphic_engine.md)
 - [软件测试](software_test.md)
 - [Token机制](token.md)
-
-
-
-## 子项
-
-- [BUG速查](BUG/README.md)
-- [分布式系统](DCS/README.md)
-- [图形学](GRAPHICS/README.md)
-- [编程语言](LANG/README.md)
-- [计算机网络](NET/README.md)
-- [操作系统](OS/README.md)
-- [源码分析](SRC/README.md)
-- [第三方软件](3RD/README.md)
 
