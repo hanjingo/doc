@@ -2,7 +2,7 @@
 
 Frank R.Giordano; Williamn P.Fox; Steven B. Horton
 
-- [第一章 对变化进行建模](chapter1.md)
+- [第一章 对变化进行建模]
 - [第二章 建模过程，比例性和集合相似性]
 - [第三章 模型拟合]
 - [第四章 实验建模]
@@ -12,7 +12,7 @@ Frank R.Giordano; Williamn P.Fox; Steven B. Horton
 - [第八章 图论建模]
 - [第九章 决策论建模]
 - [第十章 博弈论]
-- [第十一章 用唯粉方程建模]
+- [第十一章 用微分方程建模]
 - [第十二章 用微分方程组建模]
 
 

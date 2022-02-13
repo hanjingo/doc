@@ -6,6 +6,4 @@
 - [FILECOIN](FILECOIN/README.md)
 - [IPFS](IPFS/README.md)
 - [SKYNET](SKYNET/README.md)
-- [Mysql](MYSQL/README.md)
-- [Redis](REDIS/README.md)
 

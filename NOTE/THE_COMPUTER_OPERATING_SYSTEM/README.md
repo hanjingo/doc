@@ -7,4 +7,7 @@
 * [第三章 处理机调度与死锁](chapter3.md)
 * [第四章 存储器管理](chapter4.md)
 * [第五章 虚拟存储器](chapter5.md)
+* [第六章 输入输出系统](chapter6.md)
+
+
 

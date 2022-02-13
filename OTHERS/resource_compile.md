@@ -95,14 +95,15 @@
 - 大名鼎鼎的libevent库 [libevent](https://github.com/libevent)/**[libevent](https://github.com/libevent/libevent)**
 - UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
 - 远程调用库 [GRPC](https://github.com/grpc/grpc)
-- [官方Curl库](https://github.com/curl/curl)
+- 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
 - MDNS协议实现 [avahi](https://github.com/lathiat/avahi)
 - P2P网络的C++实现 [cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
 - P2P节点发现库 [nearby-connections](https://github.com/google/nearby-connections)
-- [官方Protobuf库](https://github.com/protocolbuffers/protobuf)
+- 官方Protobuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[protobuf](https://github.com/protocolbuffers/protobuf)**
 - C语言版的ProtoBuf库 [protobuf-c](https://github.com/protobuf-c)/**[protobuf-c](https://github.com/protobuf-c/protobuf-c)**
 - C语言版的ProtoBuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[upb](https://github.com/protocolbuffers/upb)**
 - C语言版skynet的protobuf协议支持(已停止维护) [cloudwu](https://github.com/cloudwu)/**[pbc](https://github.com/cloudwu/pbc)**
+- 使用现代C++编写的的JSON库 [nlohmann](https://github.com/nlohmann)/**[json](https://github.com/nlohmann/json)**
 
 ### 数据库
 

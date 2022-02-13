@@ -10,11 +10,5 @@
 
 ## 参考
 
-### 文献
-
 [1] Introduction to Algorithms.Thomas H Cormen, Charles E Leiserson, Ronald L Rivest, Clifford Stein.Third Edition.2013
-
-### 外链
-
-- 
 
