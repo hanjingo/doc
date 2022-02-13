@@ -13,7 +13,7 @@ Baron Schwartz, Peter Zaitsev, adim Tkachenko  第三版
 - [第九章 操作系统和硬件优化]
 - [第十章 复制]
 - [第十一章 可扩展的MySQL]
-- [第十二章 高可用性]
+- [第十二章 高可用性](chapter12.md)
 - [第十三章 云端的MySQL]
 - [第十四章 应用层优化]
 - [第十五章 备份与恢复]
