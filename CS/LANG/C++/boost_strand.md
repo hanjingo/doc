@@ -1,4 +1,4 @@
-# strand
+# boost.strand
 
 [TOC]
 

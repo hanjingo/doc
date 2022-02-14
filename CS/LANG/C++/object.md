@@ -238,8 +238,8 @@ int minval = (__min_lv_minval_00 = val1 < val2 ? val1 : val2),
 `class object`的内存大小计算公式为：$N + P + V$
 
 - N `nonstatic data members`的内存大小；
-- P  为内存对齐(alignment，将数值调整到某数的倍数；在32位计算机上，通常alignment为4bytes(32位)，以使`bus`的“运输量”达到最高效率)而填充的空间；
-- V  为支持`virtual`而由内部产生的任何额外负担(`overhead`)。
+- P 内存对齐(alignment，将数值调整到某数的倍数；在32位计算机上，通常alignment为4bytes(32位)，以使`bus`的“运输量”达到最高效率)而填充的空间；
+- V 支持`virtual`而由内部产生的任何额外负担(`overhead`)。
 
 一个空类的大小通常为1，是因为编译器为其安插了一个char，以便这个类的任意两个object能够在内存中配置独一无二的地址。
 
@@ -418,9 +418,9 @@ if(ptw2 != 0) ptw2->Point2w::Point2w();
 2. 当对象被当作参数交给某个函数;
 3. 当函数返回一个非引用的类对象;
 
-如果一个类没有提供任何的复制构造函数，那么该类内部以默认成员逐一初始化(default memberwise initialization)的方法来复制构造；
+如果一个类没有提供任何的复制构造函数，那么该类内部以`默认成员逐一初始化(default memberwise initialization)`的方法来复制构造；
 
-有以下几种情况不展现位逐次拷贝(bitwise copy semantics)：
+有以下几种情况不展现`位逐次拷贝(bitwise copy semantics)`：
 
 1. 类中含有成员类对象，并且此类对象含有默认构造函数;
 2. 基类带有拷贝构造函数;
@@ -447,10 +447,10 @@ vec_nex(&array, sizeof(complex), 10, &complex::complex, 0);
 
 以下几种情况必须使用成员初始化列表(initialization list)：
 
-1. 当初始化一个`reference member`时；
-2. 当初始化一个`const member`时；
-3. 当调用一个base class的`constructor`，而它拥有一组参数时；
-4. 当调用一个member class的`constructor`，而它拥有一组参数时。
+1. 当初始化一个reference member时；
+2. 当初始化一个const member时；
+3. 当调用一个base class的constructor，而它拥有一组参数时；
+4. 当调用一个member class的constructor，而它拥有一组参数时。
 
 **注意：list中的项目顺序是由class中的members声明顺序决定的，不是由`initialization list`中的排序顺序决定的。**
 
@@ -533,8 +533,8 @@ protected:
 c++以下列方法支持多态：
 
 1. 经由一组隐式的转化操作；
-2. 经由`virtual function`机制；
-3. 经由`dynamic_cast`和`typeid`运算符。
+2. 经由virtual function机制；
+3. 经由dynamic_cast和typeid运算符。
 
 
 
@@ -566,7 +566,7 @@ TODO
 
 ### NRV优化
 
-编译器NRV(Named Return Value)优化：将按值返回函数转化为按引用返回的函数；
+`NRV(Named Return Value)优化` 将按值返回函数转化为按引用返回的函数；
 
 例：
 
@@ -649,11 +649,3 @@ TODO
 
 
 ## 参考
-
-### 文献
-
-TODO
-
-### 外链
-
-TODO

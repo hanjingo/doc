@@ -10,11 +10,11 @@
 
 #### B树的应用场景与特点
 
-具体见：[平衡树](MATH/ALGO/balance_tree.md)
+具体见：[平衡树](CS/ALGO/balance_tree.md)
 
 #### B+树的应用场景与特点
 
-Mysql的INNODB引擎，具体见：[平衡树](MATH/ALGO/balance_tree.md)
+Mysql的INNODB引擎，具体见：[平衡树](CS/ALGO/balance_tree.md)
 
 #### B树与B+树的区别
 
@@ -42,7 +42,7 @@ TODO
 
 #### LRU缓存实现
 
-一般用双向链表，具体见：[LRU算法](MATH/ALGO/lru.md)
+一般用双向链表，具体见：[LRU算法](CS/ALGO/lru.md)
 
 [返回顶部](#面试笔记)
 
@@ -54,11 +54,11 @@ TODO
 
 ### 简述进程，线程和协程以及它们的区别
 
-具体见：[进程，线程和协程#区别](OS/progress_thread_coroutine.md)
+具体见：[进程，线程和协程#区别](CS/OS/progress_thread_coroutine.md)
 
 ### 可执行程序的结构
 
-具体见：[可执行程序](OS/exe.md)
+具体见：[可执行程序](CS/OS/exe.md)
 
 ### 不同线程之间是否可以共享套接字
 
@@ -66,11 +66,11 @@ TODO
 
 ### 如何提升memcpy的效率
 
-具体见：[POSIX接口#memcpy](posix.md)
+具体见：[POSIX接口#memcpy](CS/posix.md)
 
 ### 进程状态图
 
-具体见：[进程，线程和协程#进程状态转移图](OS/progress_thread_coroutine.md)
+具体见：[进程，线程和协程#进程状态转移图](CS/OS/progress_thread_coroutine.md)
 
 [返回顶部](#面试笔记)
 
@@ -78,15 +78,15 @@ TODO
 
 
 
-## 分布式
+## 分布式系统
 
 ### 描述下Raft协议和Paxos协议，以及它们的区别
 
-具体见：[Raft协议](DCS/CONSENSUS/raft.md)， [Paxos协议](DCS/CONSENSUS/paxos.md)
+具体见：[Raft协议](CS/DCS/CONSENSUS/raft.md)， [Paxos协议](CS/DCS/CONSENSUS/paxos.md)
 
 ### 如何实现分布式锁
 
-具体见：[利用redis实现分布式锁](PROJ/REDIS/dcs_lock.md)
+具体见：[利用redis实现分布式锁](CS/DB/REDIS/dcs_lock.md)
 
 [返回顶部](#面试笔记)
 
@@ -98,19 +98,19 @@ TODO
 
 ### 说说TCP的三次握手和四次挥手
 
-具体见：[TCP](NET/tcp.md)
+具体见：[TCP](CS/NET/tcp.md)
 
 ### TCP状态转移图
 
-具体见：[TCP#状态转移](NET/tcp.md)
+具体见：[TCP#状态转移](CS/NET/tcp.md)
 
 ### 说说Epoll的原理以及它的用法
 
-红黑树+链表；具体见：[网络I/O#Epoll](NET/io.md)
+红黑树+链表；具体见：[网络I/O#Epoll](CS/NET/io.md)
 
 ### DNS原理
 
-具体见：[DNS协议](NET/dns.md)
+具体见：[DNS协议](CS/NET/dns.md)
 
 ### 讲述下RESTFUL API，以及PUT和GET的区别
 
@@ -118,9 +118,9 @@ TODO
 
 ### 为什么不建议使用TCP自带的`keepalive`选项来做心跳
 
-1. `keepalive`对服务区负载压力大
-2. socks代理不支持`keepalive`
-3. 复杂情况下`keepalive`会失效（如：网线被拔掉，路由器挂掉...）
+1. `keepalive`对服务区负载压力大；
+2. socks代理不支持`keepalive`；
+3. 复杂情况下`keepalive`会失效（如：网线被拔掉，路由器挂掉...）。
 
 [返回顶部](#面试笔记)
 
@@ -134,17 +134,17 @@ TODO
 
 #### 游戏服务器的架构
 
-具体见：[游戏服务器开发#总体架构](PROJ/game_server_develop.md)
+具体见：[游戏服务器开发#总体架构](CS/GAME/game_server_develop.md)
 
 #### 热更新的用途
 
-具体见：[游戏服务器开发#热更新](PROJ/game_server_develop.md)
+具体见：[游戏服务器开发#热更新](CS/GAME/game_server_develop.md)
 
 ### 消息协议
 
 #### Protobuf的底层实现
 
-varint+zigzag，具体见：[Protobuf编码](NET/protobuf.md)
+varint+zigzag，具体见：[Protobuf编码](CS/NET/protobuf.md)
 
 #### 使用UDP的理由
 
@@ -158,7 +158,7 @@ TODO
 
 #### 如何解决缓存与数据库的数据一致性问题
 
-具体见：[数据库设计](PROJ/db.md)
+具体见：[数据库设计](CS/DB/design.md)
 
 #### 如何避免缓存穿透，缓存击穿和缓存雪崩
 
@@ -166,7 +166,7 @@ TODO
 - 缓存击穿：缓存中一个热点key失效，同时大量请求过来，压垮数据库
 - 缓存雪崩：缓存中的大量key同时失效，同时大量请求过来，压垮数据库
 
-具体见：[数据库设计#通用缓存系统](PROJ/db.md)
+具体见：[数据库设计#通用缓存系统](CS/DB/design.md)
 
 ### 信息安全
 
@@ -186,19 +186,19 @@ TODO
 
 #### linux如何开启系统日志
 
-命令`systemctl restart rsyslog`，具体见：[调试工具#linux系统日志](PROJ/test_tool.md)
+命令`systemctl restart rsyslog`，具体见：[软件调试方法#linux系统日志](CS/debug.md)
 
 #### linux如何开启core文件生成
 
-命令`ulimit -c unlimited`，具体见：[软件调试方法#如何定位Core Dump问题](PROJ/testway.md)
+命令`ulimit -c unlimited`，具体见：[软件调试方法#如何定位Core Dump问题](CS/debug.md)
 
 #### CPU100%的调试方法
 
-具体见：[软件调试方法#如何定位CPU跑满问题](PROJ/testway.md)
+具体见：[软件调试方法#如何定位CPU跑满问题](CS/debug.md)
 
 #### CoreDump的调试方法
 
-用GDB，具体见：[软件调试方法#如何定位CoreDump问题](PROJ/testway.md)
+用GDB，具体见：[软件调试方法#如何定位CoreDump问题](CS/debug.md)
 
 [返回顶部](#面试笔记)
 
@@ -210,13 +210,13 @@ TODO
 
 ### 基本语法
 
-#### 1 指针和数组的区别
+#### 1 指针和数组
 
 - 数组要么在全局数据区被创建，要么在栈上被创建；指针可以随时指向任意类型的内存块；
 - 在对数组赋值时使用`[]`；
 - 对数组变量做sizeof运算得到的是数组占用内存的总大小（如果数组变量被传入函数中做sizeof运算，则结果与对指针做sizeof运算一致）；
 
-#### 2 指针和引用的用途和区别
+#### 2 指针和引用
 
 区别如下：
 
@@ -231,69 +231,99 @@ TODO
 
 从右到左，栈是向下生长的，从高地址向低地址方向分配内存；
 
-#### 4 重载和覆盖的区别
+#### 4 重载和覆盖
 
-重载（overriding）的特征：
+区别：
 
-- 方法名必须相同；
-- 参数列表必须不相同，与参数列表的顺序无关；
-- 返回值类型可以不相同；
+- `重载（overriding）`
 
-覆盖（overloading）的特征：
+  - 方法名必须相同；
 
-- 只有虚方法和抽象方法才能够被覆写；
-- 相同的函数名；
-- 相同的参数列表；
-- 相同的返回值类型；
+  - 参数列表必须不相同，与参数列表的顺序无关；
 
-#### 5 C++中四种`cast`以及他们的使用场景
+  - 返回值类型可以不相同；
+- `覆盖（overloading）`
+  - 只有虚方法和抽象方法才能够被覆写；
+  - 相同的函数名；
+  - 相同的参数列表；
+  - 相同的返回值类型；
 
-`static_cast`,`dynamic_cast`,`reinterprent_cast`,`const_cast`具体见：TODO
+#### 5 C++中的四种`cast`
 
-#### 6 static的作用
+`static_cast`,`dynamic_cast`,`reinterprent_cast`,`const_cast`
 
-- 在函数内，static变量在函数被调用的过程中维持其值不变；
-- 在函数外模块内，static变量可以被模块内的所有函数访问，但不能被模块外的其他函数访问，它是一个本地变量；
-- 在模块内，static函数只能被模块内的其他函数调用；
+具体见：[C++对象#类型转换](CS/LANG/C++/object.md)
 
-#### 7 const的作用
+#### 6 static
 
-- 定义常量：编译器可以对其进行数据静态类型安全检查；
-- 修饰函数行参：限制形参的可修改性；
-- 修饰函数返回值：给函数返回值加const，则返回值不能被直接修改，且该返回值只能被赋值给const修饰的同类型指针；
-- 修饰类成员函数：不会修改数据成员的函数都应该用const修饰，当不小心修改了数据成员或调用非const成员函数时，编译器会报错；
+作用：
+
+- `修饰普通变量` 修改变量的存储区域和生命周期，使变量存储在静态区；
+- `修饰普通函数` 限制函数的作用范围，仅在定义该函数的文件内才能使用；
+- `定义在函数外模块内` static变量可以被模块内的所有函数访问，但不能被模块外的其他函数访问；
+- `定义在模块内` static函数只能被模块内的其他函数调用；
+
+#### 7 const
+
+作用：
+
+- `定义常量 `编译器可以对其进行数据静态类型安全检查；
+- `修饰变量` 说明该变量不可以被改变；
+- `修饰函数行参` 限制形参的可修改性；
+- `修饰函数返回值` 让返回值不能被直接修改，该返回值只能被赋值给const修饰的同类型指针；
+- `修饰类成员函数` 说明成员函数内不能修改成员变量。
 
 #### 8 空指针和悬垂指针的区别
 
 TODO
 
+#### 9 inline函数
+
+优缺点：
+
+| 优点                                                         | 缺点                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| - 提高运行速度；<br>- 可调式性比宏定义强；<br>- 会自动做安全检查和自动类型转换； | - 代码膨胀；<br>- 无法随着函数库升级而升级，需要重新编译；<br>- 编译器行为不可控； |
+
+具体见：[C++对象#内联函数](CS/LANG/C++/object.md)
+
 ### 面向对象
 
 #### 1 实现运行时多态有哪些方式
 
-1.接口；2.虚函数；3.抽象类；具体见：TODO
+1.接口；2.虚函数；3.抽象类；
+
+具体见：TODO
 
 #### 2 为什么要用`virtual destructor`？为什么没有`virtual constructor`?
 
 - 防止内存泄漏
 
-具体见：TODO
+具体见：[C++特性#虚析构函数](CS/LANG/C++/feature.md)
 
 #### 3 哪些函数不能是虚函数？
 
-具体见：TODO
+- 构造函数：构造时，基类指针无法知道子类的具体类型；
+- 内联成员函数：内联函数是在编译期展开，虚函数式运行时绑定**（内联可以修饰虚函数，但是当虚函数表现多态性的时候不能内联）**；
+- 静态成员函数：静态成员函数是编译期确定的，不支持多态；
+- 友元函数：不属于类成员函数，不能被继承；
+- 普通函数：普通函数无法被继承。
+
+具体见：[C++特性#virtual关键字](CS/LANG/C++/feature.md)
 
 #### 4 虚函数和纯虚函数的区别
 
 - 虚函数是实现的，纯虚函数只是一个接口（函数声明）；
 - 虚函数在子类可以不重载，纯虚函数必须在子类中实现；
-- 带纯虚函数的类叫做虚基类（抽象类），不能直接生成对象，只能被继承；
+- 带纯虚函数的类叫做虚基类（抽象类），不能直接生成对象，只能被继承。
 
-具体见：TODO
+具体见：[C++特性#虚函数#纯虚函数](CS/LANG/C++/feature.md)
 
 #### 5 构造函数和析构函数可以调用虚函数吗？
 
-可以但是不建议，具体见：TODO
+可以但是不建议。
+
+具体见：TODO
 
 #### 6 什么是私有继承
 
@@ -306,19 +336,28 @@ TODO
 
 #### 7 C++中空类默认产生哪些成员函数/变量
 
-TODO
+一个空类的大小通常为1字节，编译器为object配置能够在内存中唯一区分的地址。
+
+具体见：[C++对象#对象空间大小](CS/LANG/C++/object.md)
 
 #### 8 explicit构造函数的作用
 
-- explicit构造函数只能被显式调用，普通构造函数能够被隐式调用；
+- 防止类构造函数的隐式自动转换。
+
+具体见：[C++特性#explicit关键字](CS/LANG/C++/feature.md)
 
 #### 9 虚析构函数的作用
 
-只有当一个类被用来作为基类的时候，才会把析构函数写成虚函数；
+- 只有当一个类被用来作为基类的时候，才会把析构函数写成虚函数；
+- 防止内存泄漏
+
+具体见：[C++特性#虚析构函数](CS/LANG/C++/feature.md)
 
 #### 10 复制构造函数的作用，与赋值函数的区别是什么
 
 TODO
+
+具体见：[C++对象#复制构造函数](CS/LANG/C++/object.md)
 
 #### 11 抽象基类与纯虚函数的作用
 
@@ -330,6 +369,10 @@ TODO
 - const和#define都可以定义常量，但是const用途更广；
 - const常量有数据类型，#define没有；
 - #define不方便调试；
+
+#### 13 虚函数可以是内联函数吗
+
+
 
 ### STL
 
@@ -371,7 +414,7 @@ TODO
 - malloc返回`void*`，需要强转为对应类型指针；new直接返回对应类型指针
 - free和delete都不需要指定空间大小
 
-具体见：[内存管理函数](OS/mem_mgr.md)
+具体见：[内存管理函数](CS/OS/mem_mgr.md)
 
 #### 2 字节对齐的规则
 
@@ -427,6 +470,12 @@ TODO
 
 TODO
 
+### SDK
+
+#### 1如何保证SDK的类导出时，修改类结构不影响调用者
+
+用vartual封装一层接口；
+
 [返回顶部](#面试笔记)
 
 ---
@@ -437,15 +486,15 @@ TODO
 
 ### Lua有哪些数据类型
 
-具体见：[LUA数据类型](LANG/LUA/data_type.md)
+具体见：[LUA源码分析-数据类型](CS/LANG/LUA/ansys_data_type.md)
 
 ### 谈谈Lua的GC
 
-具体见：[Lua GC](SRC/LUA/gc.md)
+具体见：[Lua源码分析-GC](CS/LANG/LUA/ansys_gc.md)
 
 ### 谈谈Lua的元表
 
-具体见：[Lua数据类型](SRC/LUA/data_type.md)
+具体见：[LUA源码分析-数据类型#Metatable](CS/LANG/LUA/ansys_data_type.md)
 
 [返回顶部](#面试笔记)
 
@@ -457,7 +506,7 @@ TODO
 
 ### GO的不足
 
-具体见：[Golang总结#优缺点](LANG/GO/summary.md)
+具体见：[Golang总结#优缺点](CS/LANG/GO/summary.md)
 
 ### GO的协程原理
 
@@ -473,7 +522,7 @@ TODO
 
 #### 谈谈Skynet的定时器
 
-具体见：[skynet计时器](SRC/SKYNET/timer.md)
+具体见：[skynet计时器](CS/GAME/SKYNET/ansys_timer.md)
 
 #### 谈谈Skynet的actor模型
 
@@ -481,11 +530,11 @@ TODO
 
 #### Skynet的集群方案有哪些
 
-`master/slaver`模式，`cluster`模式；具体见：[skynet集群](PROJ/SKYNET/cluster.md)
+`master/slaver`模式，`cluster`模式；具体见：[skynet集群](CS/GAME/SKYNET/cluster.md)
 
 #### Skynet有哪些热更新方案
 
-`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](PROJ/SKYNET/hotpatch.md)
+`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](CS/GAME/SKYNET/hotpatch.md)
 
 [返回顶部](#面试笔记)
 
@@ -517,11 +566,11 @@ TODO
 
 #### 2 Redis如何实现延时队列
 
-具体见：[利用redis实现延时队列](PROJ/REDIS/delay_queue.md)
+具体见：[利用redis实现延时队列](CS/DB/REDIS/delay_queue.md)
 
 #### 3 Redis持久化
 
-具体见：[Redis持久化](SRC/REDIS/persistence.md)
+具体见：[Redis源码分析-持久化](CS/DB/REDIS/ansys_persistence.md)
 
 #### 4 Redis线程模型
 

@@ -33,6 +33,8 @@ int main()
 
 ---
 
+
+
 ## lambda
 
 C++11的一大亮点就是引入了Lambda表达式，利用Lambda表达式，可以方便的定义和创建匿名函数；Lambda表达式完整的声明格式如下：
@@ -125,6 +127,8 @@ int main()
 
 ---
 
+
+
 ## list-initialization
 
 初始化类成员有2种方式：
@@ -159,13 +163,15 @@ struct foo
 
 ---
 
+
+
 ## std::bind和std::function
 
-`std::function`
+### std::function
 
 可调用对象包装器，通过`std::function`对c++中各种可调用实体的封装，形成一个新的可调用对象；因为它可以延迟执行函数，所以比普通函数指针更加灵活和便利。
 
-`std::bind`
+### std::bind
 
 把参数绑定到可调用对象，绑定后的结果以`std::function`保存。
 
@@ -216,13 +222,15 @@ struct foo
 
 ---
 
+
+
 ## std::move和&&
 
-`&&`
+### &&
 
 `&&`叫万能引用(或引用折叠)，右值经过`&&`传递之后，保持不变，依然为右值；
 
-`std::move`
+### std::move
 
 `std::move`实施的是无条件的向右值型别的强制型别转换。把对象的所有权从一个对象转移到另一个对象，只转移所有权而没有内存移动或拷贝。
 
@@ -270,6 +278,8 @@ cout << "after:" << "\"" << str << "\"" << endl; // 输出""
 ```
 
 ---
+
+
 
 ## optional
 
@@ -322,6 +332,8 @@ int main()
 
 ---
 
+
+
 ## override
 
 如果派生类在虚函数声明时使用了`override`描述符，那么该函数必须重载其基类中的同名函数，否则代码将无法通过编译，提高了编译器检查的安全性。
@@ -348,11 +360,15 @@ struct DerivedTop : public DerivedMid
 
 ---
 
-## std::forwrd
+
+
+## forwrd
 
 仅当传入的实参被绑定到右值时，`std::forward`才针对该实参实施向右值型别的强制型别转换。
 
 ---
+
+
 
 ## final
 
@@ -388,6 +404,8 @@ struct DerivedTop : public DerivedMid
    ```
 
 ---
+
+
 
 ## =default和=delete
 

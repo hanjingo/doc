@@ -76,7 +76,7 @@
 
 ### 4了解C++编译器的小动作
 
-- C++编译器私自为class创建default构造函数，copy构造函数，copy assignment操作符，以及析构函数；
+- C++编译器私自为class创建default constructor函数，copy constructor函数，copy assignment操作符，以及析构函数；
 
   ```c++
   class Empty {};
@@ -241,7 +241,7 @@
 
 - 禁止RAII对象被复制;
 
-- 对底层资源使用“引用计数法”(reference-count)，抑制copying；
+- 对底层资源使用`引用计数法(reference-count)`，抑制copying；
 
 
 
@@ -291,7 +291,7 @@
 
 ### 9小心重载
 
-- 禁止重载`&&`,`||`或`,`
+- 禁止重载`&&`, `||`或`,`
 
 
 
@@ -317,16 +317,15 @@
 
 - 成对实现placement operator new和placement operator delete，防止内存泄漏；
 
-- 最好不要对数组形式做typedefs动作；
+- 最好不要对数组形式做typedef；
 
-  - 如果你在new表达式中使用`[]`，必须要在相应的delete表达式中使用`[]`；
-  - 如果你在new表达式中不使用`[]`，一定不要在相应的delete表达式中使用`[]`；
+  - 如果在new表达式中使用`[]`，必须要在相应的delete表达式中使用`[]`；
+  - 如果在new表达式中不使用`[]`，一定不要在相应的delete表达式中使用`[]`；
   
 - C++需要保证删除null指针永远安全，即operator delete应该在收到null指针时不做任何事;
 
 - 使用智能指针来保存动态分配的资源；
 
-  TODO
 
 
 
@@ -437,7 +436,7 @@
 
 ### 14降低文件间的编译依赖关系
 
-- 使用PIMPL(pointer to implementation, 指向实现的指针)将实现与定义分离；
+- 使用`PIMPL(pointer to implementation, 指向实现的指针)`将实现与定义分离；
 
   ```c++
   // Widget.h
@@ -1662,7 +1661,7 @@
 
 
 
-### 2使用置入函数(push_xx)来代替插入函数(insert_xx)
+### 2使用置入函数(`push_xx`)来代替插入函数(`insert_xx`)
 
 - 从原理上说，置入函数(`push_xx`)应该有时比对应的插入函数(`insert_xx`)高效，而且不应该有更低效的可能；
 - 从实践上说，置入函数在以下几个前提成立时，极有可能会运行的更快：
