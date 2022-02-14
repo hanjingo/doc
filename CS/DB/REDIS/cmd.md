@@ -244,10 +244,6 @@
 
 ## 参考
 
-### 参考文献
-
 [1] 黄健宏.Redis设计与实现
 
-### 外部链接
-
-- [Redis 命令参考](http://doc.redisfans.com/)
+[2] [Redis 命令参考](http://doc.redisfans.com/)

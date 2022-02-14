@@ -6,6 +6,4 @@
 - [面试笔记](interview.md)
 - [谈判技巧](negotiate.md)
 - [软件需求分析](software_requirements_analysis.md)
-- [团队协作](team_work.md)
-- [工作报告的编写](work_report.md)
 

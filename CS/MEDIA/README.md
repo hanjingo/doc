@@ -1,6 +1,6 @@
 # 多媒体
 
-- [FFMPEG](FFMPEG/README.md)
+- [FFmpeg](FFMPEG/README.md)
 - [DTS和PTS](dts_pts.md)
 - [flv协议](flv.md)
 - [I帧 P帧 B帧](frame.md)

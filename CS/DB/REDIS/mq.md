@@ -64,5 +64,5 @@ TODO
 
 ## 参考
 
-- [Redis真的合适做消息队列吗？](https://mp.weixin.qq.com/s/KQcydvhkHMjuIekJ-DxIZw)
+[1] [Redis真的合适做消息队列吗？](https://mp.weixin.qq.com/s/KQcydvhkHMjuIekJ-DxIZw)
 
