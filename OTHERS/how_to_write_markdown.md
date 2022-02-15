@@ -242,6 +242,20 @@ html语法样式
 
 <span style='background-color:yellow'>黄色</span>
 
+### 代码块
+
+```markdown
+<pre>
+#include <iostream>
+int main
+</pre>
+```
+
+<pre>
+#include <iostream>
+int main
+</pre>
+
 
 
 ## 表格

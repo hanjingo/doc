@@ -175,8 +175,6 @@ static void* allocate(size_t n)
 static void deallocate(void* __p, size_t __n)
 ```
 
-
-
 ![](./res/freelist_recovery.jpg)
 
 ### 内存池
