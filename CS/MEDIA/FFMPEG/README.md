@@ -7,7 +7,7 @@
 
 ## 源码分析
 
-源码地址:https://github.com/hanjingo/FFmpeg
+源码地址：https://github.com/hanjingo/FFmpeg
 
 - [常用的数据结构](ansys_data_struct.md)
 - [init系列函数](ansys_init.md)

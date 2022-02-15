@@ -227,36 +227,28 @@ typedef duration< boost::int_least32_t, ratio<3600> > hours;
 
 #### 类型转换
 
-- duration_cast
-
-  转换不同类型的时间单位；例：
+- `duration_cast` 转换不同类型的时间单位；例：
 
   ```c++
   seconds s(30);
   auto m = duration_cast<minutes>(s);
   ```
-
-- floor
-
-  与duration_cast相同，取下界，做截断处理；例:
+  
+- `floor` 与duration_cast相同，取下界，做截断处理；例:
 
   ```c++
   seconds s(3600 + 50);
   audo m = floor<minutes>(s);
   ```
-
-- ceil
-
-  与duration_cast相同，取下界，做截断处理；例:
+  
+- `ceil` 与duration_cast相同，取下界，做截断处理；例:
 
   ```c++
   seconds s(3600 + 50);
   audo m = ceil<minutes>(s);
   ```
-
-- round
-
-  四舍五入操作；例子：
+  
+- `round` 四舍五入操作；例子：
 
   ```c++
   seconds s(3600 + 50);
@@ -265,37 +257,21 @@ typedef duration< boost::int_least32_t, ratio<3600> > hours;
 
 ### Clock
 
-- system_clock
+- `system_clock` 如实反映计算机世界里的实际时间的时钟
 
-  如实反映计算机世界里的实际时间的时钟
+- `steady_clock` 稳定的时钟，不会因为系统时间调整而变化
 
-- steady_clock
+- `high_resolution_clock` 高分辨率的时钟，但通常是前2者的typedef
 
-  稳定的时钟，不会因为系统时间调整而变化
+- `process_real_cpu_clock` 进程执行的实际时间
 
-- high_resolution_clock
+- `process_user_cpu_clock` 用户cpu时间
 
-  高分辨率的时钟，但通常是前2者的typedef
+- `process_system_cpu_clock` 系统cpu时间
 
-- process_real_cpu_clock
-
-  进程执行的实际时间
-
-- process_user_cpu_clock
-
-  用户cpu时间
-
-- process_system_cpu_clock
-
-  系统cpu时间
-
-- thread_clock
-
-  线程执行的实际时间
+- `thread_clock` 线程执行的实际时间
 
 ### TimePoint
-
-例：
 
 ```c++
 auto tp1 = system_clock::now();

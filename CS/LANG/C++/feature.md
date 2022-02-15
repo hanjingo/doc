@@ -5,7 +5,7 @@
 
 
 
-## C++ new关键字
+## new
 
 ### new operator
 
@@ -90,7 +90,7 @@ placement new的好处：
 
 
 
-## explicit关键字
+## explicit
 
 C++中的explicit关键字只能用于修饰只有一个参数的类构造函数, 它的作用是表明该构造函数是显示的, 而非隐式的, 跟它相对应的另一个关键字是implicit, 意思是隐藏的,类构造函数默认情况下即声明为implicit(隐式).
 
@@ -152,7 +152,7 @@ Error:不存在用户定义的从"std::string"到"const BOOK"的适当转换
 
 现在用户只能进行显示类型转换，显式地创建临时对象。
 
-### 显示声明的构造函数和隐式声明的有什么区别
+### 显示和隐式声明的构造函数
 
 ```c++
 class CxString  // 没有使用explicit关键字的类声明, 即默认为隐式声明  
@@ -300,7 +300,7 @@ public:  
 
 
 
-## const关键字
+## const
 
 const主要是为了程序的健壮型,减少程序出错.
 
@@ -641,7 +641,7 @@ return 0;
 
 
 
-## volatile关键字
+## volatile
 
 volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。
 
@@ -718,7 +718,7 @@ for(;  nMyCounter<100;nMyCounter++)
 
 
 
-## virtual关键字
+## virtual
 
 ### 虚函数
 
@@ -758,7 +758,7 @@ virtual func() = 0;
 
 
 
-## static关键字
+## static
 
 TODO
 
@@ -766,7 +766,7 @@ TODO
 
 
 
-## namespace关键字
+## namespace
 
 TODO
 
