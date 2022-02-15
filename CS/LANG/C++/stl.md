@@ -75,8 +75,6 @@ protected:
 }
 ```
 
-STL list是一个环状双向链表(double linked-list), 插入(insert)和拼接(splice)都不会造成原有list迭代器失效。
-
 ### API
 
 |函数|描述|示意图/代码|
@@ -108,6 +106,11 @@ STL list是一个环状双向链表(double linked-list), 插入(insert)和拼接
 |splice |拆分 | |
 |swap |交换2个list | |
 |unique |移除数值相同的连续元素，保持每个元素的唯一性 | |
+
+### 适用场景
+
+- 插入和删除比较多。
+
 
 ---
 
@@ -335,104 +338,28 @@ map & multimap底层机制为RB-tree。
 |:--|:--|---|
 |binary_search|在已排序的范围内中二分查找元素value。|![](res/stl/algo_binary_search.png)|
 |copy|将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。|![algo_copy](res/stl/algo_copy.png)|
-|for_each |遍历并操作指定范围内的元素 |![algo_foreach](res/stl/algo_foreach.png) |
-|find |在序列中找某个值的第一个出现 | |
-|lower_bound |二分查找(binary search)的一种版本，应用于有序区间；他会返回一个迭代器，指向第一个“不小于value”的元素。如果value大于`[first,last)`内的任何一个元素，则返回last | |
+|for_each |遍历并操作指定范围内的元素。 |![algo_foreach](res/stl/algo_foreach.png) |
+|find |找到指定范围内的第一个匹配值。 | |
+|lower_bound |找到指定范围内的第一个不小于指定值的元素。 |![lower_bound](res/stl/algo_lower_bound.png) |
 |max |取两个对象中的较大值 | |
 |min |取两个对象中的较小值 | |
-|mismatch |用来平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点 | |
-| merge          | 将两个有序的集合合并起来，放置于另一段空间                   |                    |
-| random_shuffle | 将`[first,last)`的元素次序随机重排                           |                            |
-|reverse |将序列`[first,last)`的元素在原容器中颠倒重排 | |
-|remove |移除`[first,last)`之中所有与value相等的元素 | |
-|replace |将`[first,last)`区间内的所有old_value都以new_value取代 | |
-|rotate |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。middle所指的元素会成为容器的一个元素 | |
-|search |在序列一`[first1,last1)`所涵盖的区间中，查找序列二`[first2,last2)`的首次出现点。如果序列一内不存在与序列二完全匹配的子序列，便返回迭代器last1 | |
-|sort |排序；数据量大时采用Quick Sort，分段式递归排序；数据量小于某个门槛时，为避免Quick Sort的递归调用带来过大的额外负担，就改用Insertion Sort；如果递归层次过深，还会改用Heap Sort。 | |
-|unique |移除(remove)重复的元素，事实上unique并不会改变`[first,last)`的元素个数，有一些残余数据会留下来 | |
+|mismatch |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点 |![algo_mismatch](res/stl/algo_mismatch.png) |
+| merge          | 将两个**有序**的集合合并起来，放置于另一段空间。              | ![](res/stl/algo_merge.png) |
+| random_shuffle | 将指定范围内的元素次序随机重排                    |                            |
+|reverse |将序列中的元素在原容器中翻转 | |
+|remove |移除指定范围内所有与value相等的元素 |![algo_remove](res/stl/algo_remove.png) |
+|replace |将指定范围内的所有old_value都以new_value取代 | |
+|rotate |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。 |![algo_rotate](res/stl/algo_rotate.png) |
+|search |在序列一中查找与序列二完全匹配的子序列 | |
+|search_n |在指定的序列区间中查找连续n个符合条件的元素形成的子序列，返回指向该子序列起始处的迭代器。 |![algo_search_n](res/stl/algo_search_n.png) |
+|sort |排序；<br>- 数据量大时采用Quick Sort，分段式递归排序；<br>- 数据量小于某个门槛时，改用Insertion Sort；<br>如果递归层次过深，还会改用Heap Sort。 |- Quick Sort![algo_sort](res/stl/algo_quick_sort.png) |
+|unique |移除重复的元素 |![algo_unique](res/stl/algo_unique.png) |
 |upper_bound |二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” | |
-
----
-
-
-
-## Chrono
-
-### Duration
-
-#### 类型
-
-```c++
-typedef duration<boost::int_least64_t, nano> nanoseconds;
-typedef duration<boost::int_least64_t, micro> microseconds;
-typedef duration<boost::int_least64_t, milli> milliseconds;
-typedef duration<boost::int_least64_t       > seconds;
-typedef duration< boost::int_least32_t, ratio<60> > minutes;
-typedef duration< boost::int_least32_t, ratio<3600> > hours;
-```
-
-#### 类型转换
-
-- `duration_cast` 转换不同类型的时间单位；例：
-
-  ```c++
-  seconds s(30);
-  auto m = duration_cast<minutes>(s);
-  ```
-  
-- `floor` 与duration_cast相同，取下界，做截断处理；例:
-
-  ```c++
-  seconds s(3600 + 50);
-  audo m = floor<minutes>(s);
-  ```
-  
-- `ceil` 与duration_cast相同，取下界，做截断处理；例:
-
-  ```c++
-  seconds s(3600 + 50);
-  audo m = ceil<minutes>(s);
-  ```
-  
-- `round` 四舍五入操作；例子：
-
-  ```c++
-  seconds s(3600 + 50);
-  audo m = round<minutes>(s);
-  ```
-
-### Clock
-
-- `system_clock` 如实反映计算机世界里的实际时间的时钟
-
-- `steady_clock` 稳定的时钟，不会因为系统时间调整而变化
-
-- `high_resolution_clock` 高分辨率的时钟，但通常是前2者的typedef
-
-- `process_real_cpu_clock` 进程执行的实际时间
-
-- `process_user_cpu_clock` 用户cpu时间
-
-- `process_system_cpu_clock` 系统cpu时间
-
-- `thread_clock` 线程执行的实际时间
-
-### TimePoint
-
-```c++
-auto tp1 = system_clock::now();
-cout << tp1 << endl;
-
-auto d = tp1.time_since_epoch();            // 获取自时间起点以来的时间长度
-cout << duration_cast<hours>(d) << endl;    // 转换为小时
-cout << duration_cast<day>(d) << endl;      // 转换为自定义的天
-
-auto tp2 = tp1 + minutes(1);
-cout << tp1 << endl;
-```
 
 
 
 ## 参考
 
-[1] [C++参考手册](https://zh.cppreference.com/w/%e9%a6%96%e9%a1%b5)
+[1] 侯捷.STL源码剖析.第一版
+
+[2] [C++参考手册](https://zh.cppreference.com/w/%e9%a6%96%e9%a1%b5)
