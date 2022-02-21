@@ -296,7 +296,7 @@ int main
 
 |效果|源码|
 |:--|---|
-|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$`|
+|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$`|
 |$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
 |$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
 |$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
@@ -316,6 +316,7 @@ int main
 |$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
 |${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
 |$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
+|$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $|`$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $`|
 
 ### 矩阵
 

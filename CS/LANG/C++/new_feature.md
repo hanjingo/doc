@@ -165,15 +165,9 @@ struct foo
 
 
 
-## std::function
+## function和bind
 
 可调用对象包装器，通过`std::function`对c++中各种可调用实体的封装，形成一个新的可调用对象；因为它可以延迟执行函数，所以比普通函数指针更加灵活和便利。
-
----
-
-
-
-## std::bind
 
 把参数绑定到可调用对象，绑定后的结果以`std::function`保存。
 
@@ -226,19 +220,13 @@ struct foo
 
 
 
-## &&
+## &&和move
 
-`&&`叫万能引用(或引用折叠)，右值经过`&&`传递之后，保持不变，依然为右值；
-
----
-
-
-
-## std::move
+`&&`叫万能引用(或引用折叠)，右值经过`&&`传递之后，保持不变，依然为右值。
 
 `std::move`实施的是无条件的向右值型别的强制型别转换。把对象的所有权从一个对象转移到另一个对象，只转移所有权而没有内存移动或拷贝。
 
-c++使用`std::move`把左值转换为右值，配合`&&`可以进行高效的参数传递；
+c++使用`std::move`把左值转换为右值，配合`&&`可以进行高效的参数传递。
 
 用途：
 
@@ -450,9 +438,15 @@ void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问�
 
 ## 参考
 
-- [C++11新特性之十：enable_shared_from_this](https://blog.csdn.net/caoshangpa/article/details/79392878)
-- [C++ 11 Lambda表达式](https://www.cnblogs.com/DswCnblog/p/5629165.html)
-- [C++11新特性之六：list-initialization](https://blog.csdn.net/caoshangpa/article/details/79169930)
-- [C++11新特性之七：bind和function](https://blog.csdn.net/caoshangpa/article/details/79173351)
-- [cppreference.com-std::move](https://en.cppreference.com/w/cpp/utility/move)
+[1] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
+
+[2] [C++11新特性之十：enable_shared_from_this](https://blog.csdn.net/caoshangpa/article/details/79392878)
+
+[3] [C++ 11 Lambda表达式](https://www.cnblogs.com/DswCnblog/p/5629165.html)
+
+[4] [C++11新特性之六：list-initialization](https://blog.csdn.net/caoshangpa/article/details/79169930)
+
+[5] [C++11新特性之七：bind和function](https://blog.csdn.net/caoshangpa/article/details/79173351)
+
+[6] [cppreference.com-std::move](https://en.cppreference.com/w/cpp/utility/move)
 

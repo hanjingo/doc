@@ -63,13 +63,13 @@
 
 ### c++
 
+- 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - [llvm-project](https://github.com/llvm/llvm-project)
 - 腾讯c++库 [libco](https://github.com/Tencent/libco)
 - [chromium浏览器](https://github.com/chromium/chromium)
 - C++字符串格式化库 [fmtlib](https://github.com/fmtlib)/**[fmt](https://github.com/fmtlib/fmt)**
 - [qt开源库](https://download.qt.io/archive/qt/)
 - [微软的STL库实现](https://github.com/microsoft/STL)
-- [CMake教程 CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)
 - 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
 - Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
 
@@ -176,6 +176,8 @@
 ### 其他
 
 - 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
+- cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
+- makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
 - [文档系统 DocumentServer](https://github.com/ONLYOFFICE/DocumentServer)
 - [Zeromq依赖库 libzmq](https://github.com/zeromq/libzmq)
 - [分布式存储 minio](https://github.com/minio/minio)

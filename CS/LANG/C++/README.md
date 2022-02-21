@@ -23,9 +23,10 @@
 
 - [环境搭建](qt_env.md)
 - [信号槽](qt_signals_slots.md)
-- [Qt模块](qt_module.md)
-- [Qt对象](qt_obj.md)
+- [模块](qt_module.md)
+- [元对象系统](qt_obj.md)
 - [资源文件](qt_res.md)
+- [事件](qt_event.md)
 
 
 

@@ -506,6 +506,22 @@ job与thread分离
 
 
 
+## Qt多线程
+
+### QMutex
+
+TODO
+
+### QReadWriteMutex
+
+TODO
+
+### QSemaphore
+
+TODO
+
+
+
 ## 总结
 
 1. 用`join()`来加入线程（等待），用`detach()`来分离线程（不等）。

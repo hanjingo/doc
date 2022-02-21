@@ -6,6 +6,12 @@
 
 ## 算法
 
+### 排序
+
+#### 1 快排算法及其时间复杂度分析
+
+TODO
+
 ### 树
 
 #### 1 B树
@@ -29,9 +35,13 @@ TODO
 
 TODO
 
+#### 5 最小生成树
+
+TODO
+
 ### 链表
 
-#### 1 如何判断链表是否有环
+#### 1 如何判断链表是否有环5th
 
 TODO
 
@@ -53,25 +63,44 @@ TODO
 
 ## 系统
 
-### 简述进程，线程和协程以及它们的区别
+#### 简述进程，线程和协程以及它们的区别
 
 具体见：[进程，线程和协程#区别](CS/OS/progress_thread_coroutine.md)
 
-### 可执行程序的结构
+#### 可执行程序的结构
 
 具体见：[可执行程序](CS/OS/exe.md)
 
-### 不同线程之间是否可以共享套接字
+#### 不同线程之间是否可以共享套接字
 
-TODO
+- UDP 可以，多线程同时读写一个socket不用加锁
+- TCP 可以但是不建议（需要加锁，但是会降低效率）
 
-### 如何提升memcpy的效率
+#### 如何提升memcpy的效率
 
 具体见：[POSIX接口#memcpy](CS/posix.md)
 
-### 进程状态图
+#### 进程状态图
 
 具体见：[进程，线程和协程#进程状态转移图](CS/OS/progress_thread_coroutine.md)
+
+#### 多线程不安全的原因是什么
+
+多线程共享同一份资源，临界问题；
+
+具体见：TODO
+
+#### 线程调度机制
+
+TODO
+
+#### 生产与消费者模式下的线程安全
+
+TODO
+
+#### 单例模式下的线程安全
+
+TODO
 
 [返回顶部](#面试笔记)
 
@@ -81,11 +110,11 @@ TODO
 
 ## 分布式系统
 
-### 描述下Raft协议和Paxos协议，以及它们的区别
+#### 描述下Raft协议和Paxos协议，以及它们的区别
 
 具体见：[Raft协议](CS/DCS/CONSENSUS/raft.md)， [Paxos协议](CS/DCS/CONSENSUS/paxos.md)
 
-### 如何实现分布式锁
+#### 如何实现分布式锁
 
 具体见：[利用redis实现分布式锁](CS/DB/REDIS/dcs_lock.md)
 
@@ -97,31 +126,65 @@ TODO
 
 ## 网络
 
-### 说说TCP的三次握手和四次挥手
+### TCP
 
-具体见：[TCP](CS/NET/tcp.md)
+#### TCP的三次握手过程与作用
 
-### TCP状态转移图
+为了确认双方的接受能力和发送能力是否正常，指定自己的`初始化序列号(Init Sequense Number, ISN)`为后面的可靠性传输做准备。
 
-具体见：[TCP#状态转移](CS/NET/tcp.md)
-
-### 说说Epoll的原理以及它的用法
-
-红黑树+链表；具体见：[网络I/O#Epoll](CS/NET/io.md)
-
-### DNS原理
-
-具体见：[DNS协议](CS/NET/dns.md)
-
-### 讲述下RESTFUL API，以及PUT和GET的区别
+#### ISN是固定的吗
 
 TODO
 
-### 为什么不建议使用TCP自带的`keepalive`选项来做心跳
+#### 三次握手过程中可以携带数据吗
+
+第三次握手的时候可以
+
+具体见：[TCP](CS/NET/tcp.md)
+
+#### 半连接队列
+
+TODO
+
+#### SYN洪泛攻击
+
+TODO
+
+#### 如果第三次握手丢失了，客户端服务端会如何处理
+
+TODO
+
+#### 四次挥手的作用及过程
+
+因为TCP的班关闭（half-close）特性，TCP提供了连接的一段在结束它的发送后还能接受来自另一端数据的能力。
+
+任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入半关闭状态。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。
+
+#### TCP状态转移图
+
+具体见：[TCP#状态转移](CS/NET/tcp.md)
+
+#### 为什么不建议使用TCP自带的keepalive选项来做心跳
 
 1. `keepalive`对服务区负载压力大；
 2. socks代理不支持`keepalive`；
 3. 复杂情况下`keepalive`会失效（如：网线被拔掉，路由器挂掉...）。
+
+#### Epoll的原理以及用法
+
+红黑树+链表；具体见：[网络I/O#Epoll](CS/NET/io.md)
+
+#### DNS原理
+
+具体见：[DNS协议](CS/NET/dns.md)
+
+#### RESTFUL API，以及PUT和GET的区别
+
+TODO
+
+#### protobuf介绍
+
+TODO
 
 [返回顶部](#面试笔记)
 
@@ -405,6 +468,10 @@ TODO
 
 TODO
 
+#### 8 std::vector存储指针的情况
+
+TODO
+
 ### 编译原理
 
 #### 1 `malloc/free`，`new/delete`的区别
@@ -485,15 +552,19 @@ TODO
 
 ## Lua
 
-### Lua有哪些数据类型
+#### Lua的优点
+
+TODO
+
+#### Lua数据类型
 
 具体见：[LUA源码分析-数据类型](CS/LANG/LUA/ansys_data_type.md)
 
-### 谈谈Lua的GC
+#### 谈谈Lua的GC
 
 具体见：[Lua源码分析-GC](CS/LANG/LUA/ansys_gc.md)
 
-### 谈谈Lua的元表
+#### 谈谈Lua的元表
 
 具体见：[LUA源码分析-数据类型#Metatable](CS/LANG/LUA/ansys_data_type.md)
 
@@ -505,11 +576,23 @@ TODO
 
 ## GO
 
-### GO的不足
+#### 1 GO的不足
 
 具体见：[Golang总结#优缺点](CS/LANG/GO/summary.md)
 
-### GO的协程原理
+#### 2 GO的协程原理
+
+TODO
+
+#### 3 Go的GMP模型
+
+TODO
+
+#### 4 Select机制
+
+TODO
+
+#### 5 GC优化与内存逃逸
 
 TODO
 
@@ -671,7 +754,7 @@ TODO
 
 #### 1 InnoDb的底层数据结构
 
-TODO
+B+树
 
 #### 2 磁盘结构分析与数据存储原理
 
@@ -689,11 +772,11 @@ TODO
 
 ## Ceph
 
-### 谈谈Ceph的整体架构
+#### Ceph的整体架构
 
 TODO
 
-### 谈谈Ceph的纠删码原理
+#### Ceph的纠删码原理
 
 TODO
 
@@ -705,9 +788,49 @@ TODO
 
 ## NGINX
 
-### 谈谈Nginx线程模型
+#### Nginx线程模型
 
 TODO
+
+[返回顶部](#面试笔记)
+
+---
+
+
+
+## Qt
+
+### Qt基础
+
+#### 1 Qt文件流(QTextStream)和数据流(QDataStream)的区别与用途
+
+- `QTextStream` 用于操作轻量级数据（int, double, QString），数据写入文件中后以文本的方式呈现。
+- `QDataStream` 用于操作各种类型的数据（包括类对象），存储到文件中的数据可以还原到内存。
+
+#### 2 Qt的MVD
+
+- `Model（模型）` 保存数据
+- `View（视图）` 展示数据
+- `Delegate（代理）` Item样式绘制或处理输入
+
+这三部分通过信号槽通信
+
+### Qt多线程
+
+#### 1 Qt多线程同步的实现方式：
+
+- 重写QThread类的run方法；
+- 调用MoveToThread方法；
+- 继承QRunnable并实现run方法，由QThreadPool启动业务类；
+- 调用`QtConcurrent::run()`直接将任务丢进子线程执行。
+
+具体见：[C++多线程#Qt多线程](CS/LANG/C++/multi_thread.md)
+
+#### 2 如何把一个继承于QObject的类转移到Thread里
+
+通过`moveToThread(QThread* targetThread)`
+
+具体见：TODO
 
 [返回顶部](#面试笔记)
 

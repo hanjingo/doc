@@ -1,12 +1,22 @@
-# Qt对象
+# Qt元对象系统
 
 [TOC]
 
 
 
-## Q_OBJECT
+## 元对象系统
 
-### 定义
+Qt`元对象系统（MOC）`处理流程如下：当编译工程时，遍历所有C++文件，当发现某个类的私有部分声明`Q_OBJECT`宏的时候，自动生成一个`moc_*.cpp`文件，这个文件会生成信号的实现函数，`Q_OBJECT`宏里面定义的函数也会在这个文件中实现，并生成与类相关的元对象。
+
+
+
+## MOC使用方法
+
+### 继承QObject
+
+TODO
+
+### 添加Q_OBJECT宏
 
 ```c++
 /* qmake ignore Q_OBJECT */
@@ -26,10 +36,6 @@ private: \
     struct QPrivateSignal {}; \
     QT_ANNOTATE_CLASS(qt_qobject, "")
 ```
-
-### 作用
-
-宏`Q_OBJECT`主要与元对象系统有关，Qt元对象系统处理流程如下：当编译工程时，遍历所有C++文件，当发现某个类的私有部分声明`Q_OBJECT`宏的时候，自动生成一个`moc_*.cpp`文件，这个文件会生成信号的实现函数，`Q_OBJECT`宏里面定义的函数也会在这个文件中实现，并生成与类相关的元对象。
 
 
 

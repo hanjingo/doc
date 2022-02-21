@@ -261,7 +261,7 @@ public:  
     string3 = string1;        // 这样也是不行的, 因为取消了隐式转换, 除非类实现操作符"="的重载 
 ```
 
-### 总结
+### 注意事项
 
 1. 可以使用一个实参进行调用，不是指构造函数只能有一个形参。
 2. 隐式类类型转换容易引起错误，除非你有明确理由使用隐式类类型转换，否则，将可以用一个实参进行调用的构造函数都声明为explicit。
@@ -485,7 +485,7 @@ pHeap = NULL; 
 
 volatile关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。
 
-当要求使用 volatile 声明的变量的值的时候，系统总是重新从它所在的内存读取数据，即使它前面的指令刚刚从该处读取过数据。而且读取的数据立刻被保存。例如：
+当要求使用volatile声明的变量的值的时候，系统总是**重新从它所在的内存读取数据**，即使它前面的指令刚刚从该处读取过数据，而且读取的数据立刻被保存。例如：
 
 ```c++
 volatile int i=10;
@@ -495,64 +495,48 @@ int a = i;
 int b = i;
 ```
 
-volatile 指出 i 是随时可能发生变化的，每次使用它的时候必须从 i的地址中读取，因而编译器生成的汇编代码会重新从i的地址读取数据放在 b 中。
+volatile指出i是随时可能发生变化的，每次使用它的时候必须从i的地址中读取，因而编译器生成的汇编代码会重新从i的地址读取数据放在b中。
 
-### volatile指针
-
-和 const 修饰词类似，const 有常量指针和指针常量的说法，volatile 也有相应的概念：
-修饰由指针指向的对象、数据是 const 或 volatile 的：
+可以使用const或volatile修饰由指针指向的对象：
 
 ```c++
 const char* cpch;
 volatile char* vpch;
 ```
 
-注意:
-
-- 可以把一个非volatile int赋给volatile int，但是不能把非volatile对象赋给一个volatile对象。
-- 除了基本类型外，对用户定义类型也可以用volatile类型进行修饰。
-- C++中一个有volatile标识符的类只能访问它接口的子集，一个由类的实现者控制的子集。用户只能用const_cast来获得对类型接口的完全访问。此外，volatile向const一样会从类传递到它的成员。
-
 ### 多线程下的volatile
 
-有些变量是用 volatile 关键字声明的。当两个线程都要用到某一个变量且该变量的值会被改变时，应该用 volatile 声明，该关键字的作用是防止优化编译器把变量从内存装入 CPU 寄存器中。
+当两个线程都要用到某一个变量且该变量的值会被改变时，应该用 volatile 声明，该关键字的作用是防止优化编译器把变量从内存装入 CPU 寄存器中。
 
-如果变量被装入寄存器，那么两个线程有可能一个使用内存中的变量，一个使用寄存器中的变量，这会造成程序的错误执行。
-
-volatile 的意思是让编译器每次操作该变量时一定要从内存中真正取出，而不是使用已经存在寄存器中的值，如下：
+如果变量被装入寄存器，那么两个线程有可能一个使用内存中的变量，一个使用寄存器中的变量，这会造成程序的错误执行；volatile 的意思是让编译器每次操作该变量时一定要从内存中真正取出，而不是使用已经存在寄存器中的值；如下：
 
 ```c++
-volatile  BOOL  bStop  =  FALSE;
+volatile BOOL bStop = FALSE;
 ```
 
 在一个线程中：
 
 ```c++
-while(  !bStop  )  {  ...  }  
-bStop  =  FALSE;  
-return;    
+while(!bStop) {  ...  }
+bStop = FALSE;
+return;
 ```
 
 在另外一个线程中，要终止上面的线程循环：
 
 ```c++
-bStop  =  TRUE;  
-while(  bStop  );  //等待上面的线程终止，如果bStop不使用volatile申明，那么这个循环将是一个死循环，因为bStop已经读取到了寄存器中，寄存器中bStop的值永远不会变成FALSE，加上volatile，程序在执行时，每次均从内存中读出bStop的值，就不会死循环了。
+bStop = TRUE;
+// 等待上面的线程终止，如果bStop不使用volatile申明，那么这个循环将是一个死循环，因为bStop已经读取到了寄存器中，寄存器中bStop的值永远不会变成FALSE，加上volatile，程序在执行时，每次均从内存中读出bStop的值，就不会死循环了。
+while(bStop);
 ```
 
-这个关键字是用来设定某个对象的存储位置在内存中，而不是寄存器中。因为一般的对象编译器可能会将其的拷贝放在寄存器中用以加快指令的执行速度,再举个例子:
+这个关键字是用来设定某个对象的存储位置在内存中，而不是寄存器中（一般的对象编译器可能会将其的拷贝放在寄存器中，用以加快指令的执行速度）。
 
-```c++
-...  
-int  nMyCounter  =  0;  
-for(;  nMyCounter<100;nMyCounter++)  
-{  
-...  
-}  
-...
-```
+### 注意事项
 
-在此段代码中，nMyCounter 的拷贝可能存放到某个寄存器中（循环中，对 nMyCounter 的测试及操作总是对此寄存器中的值进行），但是另外又有段代码执行了这样的操作：nMyCounter -= 1; 这个操作中，对 nMyCounter 的改变是对内存中的 nMyCounter 进行操作，于是出现了这样一个现象：nMyCounter 的改变不同步。
+1. 可以把一个**非volatile int**赋给**volatile int**，但是不能把**非volatile对象**赋给一个**volatile对象**。
+2. 除了基本类型外，对用户定义类型也可以用volatile类型进行修饰。
+3. C++中一个有volatile标识符的类只能访问它接口的子集，一个由类的实现者控制的子集；用户只能用const_cast来获得对类型接口的完全访问；此外，volatile向const一样会从类传递到它的成员。
 
 ---
 
@@ -562,28 +546,40 @@ for(;  nMyCounter<100;nMyCounter++)
 
 ### 虚函数
 
-从语法上讲，构造函数和析构函数都可以调用虚函数，但是`<<effective c++>>`**不建议**，因为往往达不到目的。
+虚函数的默认参数：
 
-1. 如果构造函数中有虚函数，此时子类还没有构造，所以此时的对象还是父类，不会触发多态。
-2. 子类先进行析构，如果有虚函数的话，由于子类已经被析构了，所以会执行父类的虚函数。
+```c++
+#include <iostream>
+using namespace std;
+class Base
+{
+public:
+  // 默认参数不包含在函数签名内
+  virtual void fun(int x = 0){cout << "Base::fun(), x = " << x << endl; }
+};
+class Derived : public Base
+{
+public:
+  // 这里virtual可以省略，因为只要函数在基类被声明位虚函数，子类就默认是虚函数
+  virtual void fun(int x){cout << "Derived::fun(), x = " << x << endl;}
+};
+int main(void) {
+  Derived d1;
+  Base* bp = &d1;
+  bp->fun();
+  return 0;
+}
+```
 
-哪些函数不能是虚函数:
+运行结果：
 
-- 构造函数：构造时，基类指针无法知道子类的具体类型；
-- 内联成员函数：内联函数是在编译期展开，虚函数式运行时绑定**（内联可以修饰虚函数，但是当虚函数表现多态性的时候不能内联）**；
-- 静态成员函数：静态成员函数是编译期确定的，不支持多态；
-- 友元函数：不属于类成员函数，不能被继承；
-- 普通函数：普通函数无法被继承；
-
-### 虚析构函数
-
-用途：
-
-- 防止内存泄漏
+```sh
+Derived::fun(), x = 0
+```
 
 ### 纯虚函数
 
-纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。
+纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法：
 
 ```c++
 virtual func() = 0;
@@ -591,8 +587,126 @@ virtual func() = 0;
 
 用途：
 
-1. 方便多态
-2. 不允许基类生成对象
+1. 必须在继承中重新声明该函数，否则编译无法通过，使用纯虚函数可以规范接口形式。
+1. 声明纯虚函数的基类无法实例化对象，方便多态。
+
+### 抽象类
+
+含有纯虚函数的类被称为抽象类，抽象类可以拥有构造函数；例：
+
+```c++
+class Base {
+protected:
+    int x;
+public:
+    virtual void fun() = 0;
+    Base(int i) { x = i; } // 抽象类也可以拥有构造函数
+    virtual ~Base() = 0;   // 纯虚析构函数
+};
+Base::~Base() { cout << "~Base()" << endl; }
+
+// 继承并重写基类声明的纯虚函数，如果没有重写，则该继承类也为抽象类
+class Derived : public Base {
+    int y;
+public:
+    Derived(int i, int j) : Base(i) { y = j; }
+    ~Derived() { cout << "~Derived()" << endl; }
+    void fun() { cout << "x = " << x << ", y = " << y << endl; }
+};
+
+int main(void) {
+    Derived d(4, 5);
+    d.fun();
+    return 0;
+}
+```
+
+运行结果：
+
+```sh
+x = 4, y = 5
+~Derived()
+~Base()
+```
+
+### 注意事项
+
+1. 从语法上讲，构造函数和析构函数都可以调用虚函数，但是**不建议**，原因如下：
+
+   - 如果构造函数中有虚函数，此时子类还没有构造，所以此时的对象还是父类，不会触发多态。
+   - 子类先进行析构，如果有虚函数的话，由于子类已经被析构了，所以会执行父类的虚函数。
+
+2. 以下函数不能是虚函数：
+
+   - `构造函数` 构造时，基类指针无法知道子类的具体类型。
+   - `内联成员函数` 内联函数是在编译期展开，虚函数是运行时绑定**（内联可以修饰虚函数，但是当虚函数表现多态性的时候不能内联）**。
+   - `静态成员函数` 静态成员函数不属于任何实例，加上virtual没有意义；静态成员函数是编译期确定的，不支持多态。
+   - `友元函数` 不属于类成员函数，不能被继承。
+   - `普通函数` 普通函数无法被继承。
+
+3. 当一个类有可能被其他类所继承，需要删除一个指向派生类的基类指针（用来防止内存泄漏）时，就应该声明虚析构函数。
+
+   ```c++
+   class base {
+   public:
+       base() { cout << "Constructing base \n"; }
+       virtual ~base() { cout << "Destructing base \n"; }
+   };
+   class derived : public base {
+   public:
+       derived() { cout << "Constructing drvived \n"; }
+       ~derived() { cout << "Destructing derived \n"; }
+   };
+   
+   int main(void) {
+       derived *d = new derived();
+       base *b = d;
+       delete b;
+       return 0;
+   }
+   ```
+
+   运行结构如下：
+
+   ```sh
+   Constructing base 
+   Constructing drvived 
+   Destructing base
+   ```
+
+4. 虚函数可以被私有化，但是main函数必须声明为基类的friend，否则编译失败。
+
+   ```c++
+   // 编译失败
+   class Derived;
+   class Base {
+   private:
+       virtual void fun() { cout << "Base Fun" << endl; }
+   };
+   class Derived : public Base {
+   private:
+       void fun() { cout << "Derived Fun" << endl; }
+   };
+   
+   int main() {
+       Base *ptr = new Derived;
+       ptr->fun();
+       return 0;
+   }
+   ```
+
+   声明Base类的main函数：
+
+   ```c++
+   // 编译成功
+   class Base {
+   private:
+       virtual void fun() { cout << "Base Fun" << endl; }
+   		friend int main(); // 注意这里，声明main为friend
+   };
+   ...
+   ```
+
 
 ---
 
@@ -600,7 +714,90 @@ virtual func() = 0;
 
 ## static
 
-TODO
+static 是 C/C++ 中很常用的修饰符，它被用来控制变量的存储方式和可见性。
+
+static 被引入以告知编译器，将变量存储在程序的静态存储区而非栈上空间，静态数据成员按定义出现的先后顺序依次初始化（消除时的顺序是初始化的反顺序），注意静态成员嵌套时，要保证所嵌套的成员已经初始化了。
+
+在 C++ 中 static 的内部实现机制：静态数据成员要在程序一开始运行时就必须存在；因为函数在程序运行中被调用，所以静态数据成员不能在任何函数内分配空间和初始化。
+
+如果 static 要修饰一个类，说明这个类是一个静态内部类（注意static只能修饰一个内部类），也就是匿名内部类。
+
+### 作用
+
+- `修饰变量` static修饰的静态局部变量只执行初始化一次（节省内存），而且延长了局部变量的生命周期，直到程序运行结束以后才释放。
+- `修饰全局变量` 这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是 extern 外部声明也不可以（保障数据安全性）。
+- `修饰函数` 则这个函数的只能在本文件中调用，不能被其他文件调用。
+
+### 注意事项
+
+- **不能在类声明中定义静态数据成员**，类声明不进行实际的内存分配，静态数据成员要实际地分配空间。
+
+- **不能在头文件中类声明的外部定义静态数据成员**，因为那会造成在多个使用该类的源文件中，对其重复定义。
+
+- **不能通过类名来调用类的非静态成员函数**。
+
+  ```c++
+  class Point
+  {
+  public:
+      void init() {}
+      static void output(){}
+  };
+  
+  int main()
+  {
+      Point::init();   // 错误；不能通过类名调用类的非静态成员函数
+      Point::output(); // 正确；
+  
+      Point pt;
+      pt.init();       // 正确；
+      pt.output();     // 正确；
+  }
+  ```
+
+- **不能在静态成员函数中引用非静态成员**，但是可以在类的非静态成员函数中调用静态成员函数。
+
+  ```C++
+  class Point
+  {
+  public:
+      void init() { output(); }          // 正确；可以在类的非静态成员函数中调用静态成员函数
+      static void output() { 
+          std::cout << m_x << std::endl; // 错误；静态成员函数属于整个类，在实例化之前就已经分配空间了
+      } 
+  private:
+      int m_x;
+  };
+  
+  void main() {
+      Point pt;
+      pt.output();
+  }
+  ```
+
+- 类的静态成员变量必须先初始化再使用
+
+  ```c++
+  class Point
+  {
+  public:
+      static void output() { 
+          std::cout << m_x << std::endl; // 错误；必须要初始化m_x才能使用
+      } 
+  private:
+      static int m_x;
+  };
+  
+  // int Point::m_x = 0; // 初始化m_x（类的静态成员变量必须先初始化再使用）
+  int main() {
+      Point pt;
+      pt.output();
+  }
+  ```
+
+  
+
+  
 
 ---
 
@@ -608,7 +805,90 @@ TODO
 
 ## namespace
 
-TODO
+命名空间提供了一种在大项目中避免名字冲突的方法：在命名空间块内声明的符号被放入一个具名的作用域中，避免这些符号被误认为其他作用域中的同名符号。
+
+### 用法
+
+1. 具名命名空间
+
+   ```c++
+   namespace Q {
+   	...
+   }
+   ```
+
+2. 内联命名空间（C++11）
+
+   ```c++
+   inline namespace Q {
+   	...
+   }
+   ```
+
+   命名空间内的声明将在它的外围命名空间可见。
+
+3. 无名命名空间
+
+   ```c++
+   namespace { int i; } // ::(独有)::i
+   void f() { i++; }
+   namespace A 
+   {
+       namespace { int i; int j; } // ::(独有)::i, ::(独有)::j
+       void g() { i++; }
+   }
+   using namespace A; // 从A引入所有名称到全局命名空间
+   void h() 
+   {
+       i++;    // 错误；::(独有)::i 与 ::A::(独有)::i 均在作用域中
+       A::i++; // 成功
+       j++;    // 成功
+   }
+   ```
+
+4. 命名空间别名
+
+   ```c++
+   namespace foo {
+       namespace bar {
+           namespace baz {
+               int qux = 42;
+           }
+       }
+   }
+   namespace fbz = foo::bar::baz; // 定义别名
+   ```
+   
+4. 定义不同命名空间的同名类
+
+   ```c++
+   #include <vector>
+   namespace vec
+   {
+       template<typename T>
+       class vector {};
+   }
+   int main()
+   {
+       std::vector<int> v1; // std库的vector
+       vec::vector<int> v2; // 用户自定义vector
+       v1 = v2; // 错误；v1和v2是不同类型的对象
+       {
+           using namespace std;
+           vector<int> v3;  // std::vector
+           v1 = v3;         // 正确
+       }
+       {
+           using vec::vector;
+           vector<int> v4; // vec::vector
+           v2 = v4;        // 正确
+       }
+   }
+   ```
+
+### 注意事项
+
+1. 不要在头文件的全局作用域中写`using namespace`，这可能导致不合预期的名字冲突。
 
 ---
 
@@ -617,3 +897,9 @@ TODO
 ## 参考
 
 [1] [局部静态变量Static详解](https://blog.csdn.net/zkangaroo/article/details/61202533)
+
+[2] [C++ virtual关键字](https://blog.csdn.net/shuzfan/article/details/77165474)
+
+[3] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
+
+[4] [C/C++ 中 static 的用法全局变量与局部变量](https://www.runoob.com/w3cnote/cpp-static-usage.html)

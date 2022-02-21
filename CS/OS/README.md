@@ -8,6 +8,5 @@
 - [内存管理函数](mem_mgr.md)
 - [进程，线程和协程](progress_thread_coroutine.md)
 - [存储器](storage.md)
-- [unix系统API](unix_api.md)
 - [unix系统内核结构](unix_core.md)
 
