@@ -3,7 +3,6 @@
 ## 已阅读
 
 - [必然](CERTAIN/README.md)
-- [设计模式](DESIGN_PATTERN/README.md)
 - [Effective C++](EFFECTIVE_CPP/README.md)
 - [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)
 - [FFmpeg从入门到精通](FFMPEG_FROM_BEGINNER_TO_MASTER/README.md)
@@ -15,6 +14,7 @@
 
 ## 阅读中
 
+- [设计模式](DESIGN_PATTERN/README.md)
 - [TCP/IP详解 卷一](TCP_IP_ILLUSTRATED_V1/README.md)
 - [Effective STL](EFFECTIVE_STL/README.md)
 - [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)

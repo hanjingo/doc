@@ -47,7 +47,7 @@
      - Macos（Arm架构）
 
        ```sh
-       ./configure -release -prefix /Users/he/qt/5.15.2 -nomake examples -nomake tests QMAKE_APPLE_DEVICE_ARCHS=arm64 -opensource -confirm-license -skip qt3d -skip qtwebengine # 安装到/Users/he/qt/5.15.2，根据实际情况设置
+       ./configure -release -prefix /Users/he/qt/5.15.2 -nomake examples -nomake tests QMAKE_APPLE_DEVICE_ARCHS=arm64 -opensource -confirm-license -skip qt3d -skip qtwebengine -skip virtualkeyboard # 安装到/Users/he/qt/5.15.2，根据实际情况设置
        
 	    make -j 8 # 这里8指CPU核心，根据机器的实际情况设置
 	    

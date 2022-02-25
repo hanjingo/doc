@@ -87,20 +87,10 @@ ___粗斜体___
 ## 下划线
 
 ``` markdown
-<u>下划线<u>
+<u>下划线</u>
 ```
 
-<u>下划线<u>
-
-
-
-## 脚注
-
-``` markdown
-[^文字]
-```
-
-[^文字]
+<u>下划线</u>
 
 
 
@@ -230,33 +220,6 @@ int main(void) {
 
 
 
-## 样式
-
-html语法样式
-
-### 颜色
-
-```markdown
-<span style='background-color:yellow'>黄色</span>
-```
-
-<span style='background-color:yellow'>黄色</span>
-
-### 代码块
-
-```markdown
-<pre>
-#include <iostream>
-int main
-</pre>
-```
-
-<pre>
-#include <iostream>
-int main
-</pre>
-
-
 
 ## 表格
 
@@ -290,6 +253,32 @@ int main
 
 
 
+## html语法样式
+
+### 颜色
+
+```markdown
+<span style='background-color:yellow'>黄色</span>
+```
+
+<span style='background-color:yellow'>黄色</span>
+
+### 代码块
+
+```markdown
+<pre>
+#include <iostream>
+int main
+</pre>
+```
+
+<pre>
+#include <iostream>
+int main
+</pre>
+
+
+
 ## 公式
 
 ### 一些常用的数学公式
@@ -297,22 +286,24 @@ int main
 |效果|源码|
 |:--|---|
 |$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$`|
-|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
+|$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$|`$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$`|
 |$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
 |$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
 |$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|`$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$`|
 |$\mathbb{ABCdef}$|`$\mathbb{ABCdef}$`|
-|$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$|`$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$`|
 |$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$|`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$`|
 |$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$|`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$`|
+|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
 |$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$|`$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$`|
+|$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$|`$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$`|
 |$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$`|
 |$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$|`$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$`|
+|$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$|`$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$`|
 |$\ln15$, $\log_2 10$, $\lg7$|`$\ln15$, $\log_2 10$, $\lg7$`|
 |$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$|`$a^b$, $z=z_l$, $\cdots$, $\sqrt{2}+\sqrt[n]{3}$`|
-|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
 |$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|
 |$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|`$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`|
+|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
 |$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
 |${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
 |$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
@@ -409,6 +400,7 @@ f(n)
 \cfrac n2, &if\ n\ is\ even\\
 3n + 1, &if\  n\ is\ odd
 \end{cases}
+\qquad (1)
 $$
 ```
 
@@ -418,6 +410,7 @@ f(n)
 \cfrac n2, &if\ n\ is\ even\\
 3n + 1, &if\  n\ is\ odd
 \end{cases}
+\qquad (1)
 $$
 
 **分类表达式2:**
@@ -450,6 +443,7 @@ a&=b+c-d \\
 &=g+h\\ 
 & =i 
 \end{split}\end{equation}
+\qquad (1)
 $$
 ```
 
@@ -460,6 +454,7 @@ a&=b+c-d \\
 &=g+h\\ 
 & =i 
 \end{split}\end{equation}
+\qquad (1)
 $$
 
 ### 方程组
@@ -1136,9 +1131,7 @@ pie
 
 ## 绘制状态图
 
-```mermaid
-
-```
+TODO
 
 
 
@@ -1149,4 +1142,5 @@ pie
 - [Class diagrams](https://mermaid-js.github.io/mermaid/#/classDiagram?id=class-diagrams)
 - [markdown 由简入繁，上手跟我做（十）echarts 图表 - 折线（面积）图](https://qiankunpingtai.cn/article/1566371244169)
 - [Markdown 中 LaTex 数学公式命令](https://www.jianshu.com/p/0ea47ae02262)
+- [Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962)
 
