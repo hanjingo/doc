@@ -654,4 +654,5 @@
 
 3. NStepSCAN和FSCAN调度算法
 
-   
+   - NStepSCAN算法
+   - FSCAN算法
