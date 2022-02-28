@@ -4,6 +4,22 @@
 
 
 
+## linux
+
+#### [ubuntu的dash问题](linux.md)
+
+关键词：**ubuntu**, **dash**
+
+在执行sh文件时报`Syntax error: "(" unexpected`错误...
+
+#### [wsl环境下git clone报错](linux.md)
+
+关键词：**wsl**, **git**, **config.lock**
+
+在wsl环境下的windows文件夹中执行`git clone xx`报错：`xx/.git/config.lock failed: Operation not permitted`...
+
+
+
 ## C++
 
 #### [c++不允许内部类前置声明](cpp.md)
