@@ -4,7 +4,30 @@
 
 ## 第十九条：理解相等（equality）和等价（equivalence）的区别
 
-TODO
+1. 相等的概念是基于`operator==`的；
+
+2. 等价的关系是以“在已排序的区间中对象值的相对顺序”为基础的；
+
+   例：
+
+   ```c++
+   // 不区分大小写的字符串比较累
+   struct CIStringCompare : public binary_function<string, string, bool>
+   {
+       bool operator()(const string& lhs, const string& rhs) const
+       {
+           return ciStringCompare(lhs, rhs);
+       }
+   };
+   
+   set<string, CIStringCompare> ciss;
+   ciss.insert("Persephone"); // 一个新元素被插入到集合中
+   ciss.insert("persephone"); // 没有新元素被插入到集合中
+   if (ciss.find("persephone") != ciss.end()) // 判断true
+       ...
+   if (find(ciss.begin(), ciss.end(), "persephone") != ciss.end()) // 判断false
+       ...
+   ```
 
 
 
@@ -280,4 +303,6 @@ TODO
 
 ## 第二十五条：熟悉非标准的哈希容器
 
-TODO
+1. SGI和Dinkumware的实现采取了各自不同的方式；
+2. SGI使用的是传统的开放式哈希策略（open hashing scheme），把表的元素放在一个单项链表中，提供前向遍历的能力。
+3. Dinkumware同样使用了开放式哈希策略，把表的元素放在一个双向链表中，提供双向遍历的能力。

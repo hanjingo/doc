@@ -223,18 +223,20 @@ nth_element(widgets.begin(), widgets.begin() + widgets.begin() + widgets.size() 
 
 ## 第三十六条：理解copy_if算法的正确实现
 
-```c++
-template<typename InputIterator, typename OutputIterator, typename Predicate>
-OutputIterator copy_if(InputIterator begin, InputIterator end, OutputIterator destBegin, Predicate p)
-{
-    while (begin != end)
-    {
-        if (p(*begin)) *destBegin++ = *begin;
-        ++begin;
-    }
-    return destBegin;
-}
-```
+1. STL不提供`copy_if`算法，需要自己手动实现；
+
+   ```c++
+   template<typename InputIterator, typename OutputIterator, typename Predicate>
+   OutputIterator copy_if(InputIterator begin, InputIterator end, OutputIterator destBegin, Predicate p)
+   {
+       while (begin != end)
+       {
+           if (p(*begin)) *destBegin++ = *begin;
+           ++begin;
+       }
+       return destBegin;
+   }
+   ```
 
 
 

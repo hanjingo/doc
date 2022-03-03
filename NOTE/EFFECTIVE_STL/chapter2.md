@@ -39,6 +39,9 @@
 
 ## 第十六条：了解如何把vector和string数据传给旧的API
 
+1. 当你需要一个指向vector中的数据的指针时，永远不应该使用`begin()`，因为`begin()`返回的是迭代器；
+2. 如果你想用来自C API中的元素初始化一个vector，那么你可以利用vector和数组的内存布局兼容性，向API传入该矢量中元素的存储区域；
+
 ```c++
 size_t fillArray(double* pArray, size_t arraySize);
 vector<double> vd(maxNumDoubles);
@@ -60,6 +63,8 @@ set<double> s(vd.begin(), vd.end());
 
 
 ## 第十七条：使用“swap技巧”除去多余的容量
+
+1. 为了避免矢量占用不再需要的内存，使用shrink-to-fit可以把它的容量从以前的最大值缩减到当前需要的数量。
 
 ```c++
 class Contestant {...}
