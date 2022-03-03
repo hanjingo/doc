@@ -147,3 +147,170 @@ nth_element(widgets.begin(), widgets.begin() + widgets.begin() + widgets.size() 
 
    
 
+## 第三十四条：了解哪些算法要求使用排序的区间作为参数
+
+1. 要求排序区间的算法：
+   - binary_search
+   - lower_bound
+   - upper_bound
+   - equal_range
+   - set_union
+   - set_intersection
+   - set_difference
+   - set_symmetric_difference
+   - merge
+   - inplace_merge
+   - includes
+2. 不一定要求排序区间，但通常情况下会与排序区间一起使用的算法：
+   - unique
+   - unique_copy
+
+
+
+## 第三十五条：通过mismatch或lexicographical_compare实现简单的忽略大小写的字符串比较
+
+1. 通过mismatch进行忽略大小写的比较；
+
+   ```c++
+   int ciCharCompare(char c1, char c2)
+   {
+       int lc1 = tolower(static_cast<unsigned char>(c1));
+       int lc2 = tolower(static_cast<unsigned char>(c2));
+       
+       if (lc1 < lc2) return -1;
+       if (lc1 > lc2) return 1;
+       return 0;
+   }
+   
+   int ciStringCompareImpl(const string &s1, const string& s2)
+   {
+       typedef pair<string::const_iterator, string::const_iterator> PSCI;
+       PSCI p = mismatch(s1.begin(), s1.end(), s2.begin(), not2(ptr_fun(ciCharCompare))); // not2(xx)：在匹配时返回true
+       if (p.first == s1.end()) 
+       {
+           if (p.second == s2.end()) // 相等
+               return 0;
+           else
+               return -1;
+       }
+       return ciCharCompair(*p.first, *p.second);
+   }
+   
+   int ciStringCompare(const string& s1, const string& s2)
+   {
+       if (s1.size() <= s2.size())
+           return ciStringCompareImpl(s1, s2);
+       else
+           return -ciStringCompareImpl(s2, s2);
+   }
+   ```
+
+2. 通过lexicographical_compare；
+
+   ```c++
+   bool ciCharLess(char c1, char c2)
+   {
+       return tolower(static_cast<unsigned char>(c1)) < tolower(static_cast<unsigned char>(c2));
+   }
+   
+   bool ciStringCompare(const string &s1, const string &s2)
+   {
+       return lexicographical_compare(s1.begin(), s1.end(), s2.begin(), s2.end(), ciCharLess);
+   }
+   ```
+
+
+
+## 第三十六条：理解copy_if算法的正确实现
+
+```c++
+template<typename InputIterator, typename OutputIterator, typename Predicate>
+OutputIterator copy_if(InputIterator begin, InputIterator end, OutputIterator destBegin, Predicate p)
+{
+    while (begin != end)
+    {
+        if (p(*begin)) *destBegin++ = *begin;
+        ++begin;
+    }
+    return destBegin;
+}
+```
+
+
+
+## 第三十七条：使用accumulate或者for_each进行区间统计
+
+1. 使用for_each进行区间统计；
+
+   ```c++
+   struct Point {
+       Point(double initX, double initY) : x(initX), y(initY) {}
+       double x, y;
+   };
+   class PointAverage : public unary_function<Point, void> {
+   public:
+       PointAverage() : xSum(0), ySum(0), numPoints(0) {}
+       void operator()(const Point& p)
+       {
+           ++numPoints;
+           xSum += p.x;
+           ySum += p.y;
+       }
+       Point result() const
+       {
+           return Point(xSum/numPoints, ySum/numPoints);
+       }
+       
+   private:
+       size_t numPoints;
+       double xSum;
+       double ySum;
+   };
+   list<Point> lp;
+   Point avg = for_each(lp.begin(), lp.end(), PointAverage()).result(); // for_each允许对元素进行修改，推荐
+   ```
+
+2. 使用accumulate进行区间统计；
+
+   ```c++
+   string::size_type stringLengthSum(string::size_type sumSoFar, const string& s)
+   {
+       return sumSoFar + s.size();
+   }
+   
+   // 统计set中字符串长度之和
+   set<string> ss;
+   string::size_type lengthSum = accumulate(ss.begin(), ss.end(), static_cast<string::size_type>(0), stringLengthSum); 
+   
+   // 统计vector中数值的乘积
+   vector<float> vf;
+   float product = accumulate(vf.begin(), vf.end(), 1.0f, multiplies<float>());
+   
+   // 计算区间中所有点的平均值
+   struct Point {
+       Point(double initX, double initY) : x(initX), y(initY) {}
+       double x, y;
+   };
+   class PointAverage : public binary_function<Point, Point, Point> {
+   public:
+       PointAverage() : xSum(0), ySum(0), numPoints(0) {}
+       
+       const Point operator()(const Point& avgSoFar, const Point& p)
+       {
+           ++numPoints;
+           xSum += p.x;
+           ySum += p.y;
+           return Point(xSum/numPoints, ySum/numPoints)
+       }
+       
+   private:
+       size_t numPoints;
+       double xSum;
+       double ySum;
+   }
+   list<Point> lp;
+   Point avg = accumulate(lp.begin(), lp.end(), Point(0, 0), PointAverage()); // 一个良好的编程习惯是：accumulate不允许修改元素值，所以这不是一个值得推荐的做法
+   ```
+
+   
+
