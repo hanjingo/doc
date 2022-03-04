@@ -8,13 +8,25 @@
 
 * `array<T, N>(数组容器)` 一个长度固定的序列；
 
+  ![2_1_array](res/2_1_array.png)
+
 * `vector<T>(向量容器)` 一个长度可变的序列；
+
+  ![2_1_vector](res/2_1_vector.png)
 
 * `deque<T>(双向队列容器)` 一个长度可变的，可以自动增长的序列；
 
+  ![2_1_deque](res/2_1_deque.png)
+
 * `list<T>(链表容器)` 一个长度可变的，由T类型对象组成的序列；
 
+  ![2_1_list](res/2_1_list.png)
+
 * `forward_list<T>(正向链表容器)` 一个长度可变的，由T类型对象组成的序列。
+
+  ![2_1_forward_list](res/2_1_forward_list.png)
+
+  
 
 array, vector, deque容器的函数成员：
 
@@ -99,7 +111,33 @@ list, forward_list容器的函数成员：
 
 ## 2.2使用array<T,N>容器
 
+如果使用`at()`，当用一个非法的索引访问数组元素时，能够被检测到。
+
+例，创建具有100个double型元素的`array<>`：
+
+```c++
+std::array<double, 100> data;
+```
+
+例，定义一个array，并将所有元素初始化为默认值：
+
+```c++
+std::array<double, 100> data{};
+```
+
+例，创建array并对用指定值进行初始化：
+
+```c++
+std::array<double, 10> values{0.5, 1.0, 1.5, 2.0};
+```
+
+![2_2](res/2_2.png)
+
+*生成一个`array<T, N>`容器*
+
 ### 2.2.1访问元素
+
+完整示例：
 
 ```c++
 #include <iostream>
@@ -167,9 +205,41 @@ int main()
 
 ### 2.2.2使用数组容器的迭代器
 
-不要忘记算法是独立于容器类型的，对于任何具有指定类型迭代器的容器来说，算法都可以应用到它们的元素上。generate()和iota()函数模版只需要正向迭代器，所以用来指定任何容器的元素范围的迭代器都能发挥作用。
+数组模板定义了成员函数`begin()`和`end()`，分别返回指向第一个元素和最后一个元素的下一个位置的随机访问迭代器。
+
+例，自增设置所有元素：
+
+```c++
+std::array<double, 10> values;
+std::iota(std::begin(values), std::end(values), 10.0); // 10.0 ~ 19.0
+```
+
+**注意：不要忘记算法是独立于容器类型的，对于任何具有指定类型迭代器的容器来说，算法都可以应用到它们的元素上。generate()和iota()函数模版只需要正向迭代器，所以用来指定任何容器的元素范围的迭代器都能发挥作用。**
+
+容器定义了成员函数`cbegin()`和`cend()`，它们可以返回const迭代器；函数`crbegin()`和`crend()`可以返回const反向迭代器。
+
+例，用反向迭代器以逆序方式处理元素：
+
+```c++
+std::array<double, 5> these{1.0, 2.0, 3.0, 4.0, 5.0};
+double sum{};
+auto start = std::rbegin(these);
+auto finish = std::rend(these);
+
+// 使用while遍历
+while (start != finish)
+    sum += *(start++);
+
+// 使用for遍历
+for (auto iter = std::rbegin(these); iter != std::rend(these); ++iter)
+    sum += *iter;
+
+std::cout << "The sum of elements in reverse order is " << sum << std::endl;
+```
 
 ### 2.2.3比较数组容器
+
+例：
 
 ```c++
 std::array<double, 4> these{1.0, 2.0, 3.0, 4.0};
@@ -188,20 +258,70 @@ if (them > those) std::cout << "xx" << std::endl;
 
 ### 2.3.1创建vector<T>容器
 
+例：
+
 ```c++
-std::vector<double> values(20); // 初始化20个元素
-std::vector<double> values{20}; // 初始化1个元素，其值为20
+std::vector<double> values(20);    // 初始化20个元素，其值为默认值
+std::vector<double> values{20};    // 初始化1个元素，其值为20
+std::vector<long> values(20, 99L); // 初始化20个元素，其值为99
+
+// 用一个容器来初始化另一个容器
+std::array<std::string, 5> words{"one", "two", "three", "four", "five"};
+std::vector<std::string> words_copy{std::begin(words), std::end(words)};
+
+// 将一个容器的元素移动到另一个容器
+std::vector<std::string> words_copy{std::make_move_iterator(std::begin(words)),
+                                    std::make_move_iterator(std::end(words))};
 ```
 
 ### 2.3.2vector的容量和大小
 
+![2_3](res/2_3.png)
+
+*vector的容量和大小*
+
 通过调用reserve()来增加容器的容量，而不改变当前元素的个数。
+
+例：
+
+```c++
+std::vector<double> values;
+values.reserve(20);
+```
 
 通过调用resize()来改变容器大小，有可能会导致容量的增加。
 
+例：
+
+```c++
+std::vector<int> values{1, 2, 3};
+values.resize(5);     // 1, 2, 3, 0, 0
+values.resize(7, 99); // 1, 2, 3, 0, 0, 99, 99
+values.resize(6);     // 1, 2, 3, 0, 0, 99
+```
+
 ### 2.3.3访问元素
 
+例，通过方括号使用索引：
+
+```c++
+std::vector<double> values(20);
+values[0] = 3.14159;
+values[1] = 5.0;
+values[2] = 2.0 * values[0] * values[1];
+```
+
+例，使用`front()`和`back()`：
+
+```c++
+std::cout << values.front() << std::endl;
+values.front() = 2.71828;   // front()和back()返回的是引用，可以直接赋值
+auto pData = values.data(); // data()返回的的是指针
+```
+
 ### 2.3.4使用vector容器的迭代器
+
+完整示例：
 
 ```c++
 #include <iostream>
@@ -255,27 +375,53 @@ int main() {
 }
 ```
 
+例，自定义函数模板，对能够排序的任意类型进行排序：
+
+```c++
+template<typename RandomIter>
+void bubble_sort(RandomIter start, RandomIter last)
+{
+    std::cout << "Starting sort." << std::endl;
+    bool out_of_order{false};
+    while (true)
+    {
+        for (auto first = start + 1; frist != last; ++first)
+        {
+            if (*(first - 1) > *first)
+            {
+                std::swap(*first, *(first - 1));
+                out_of_order = true;
+            }
+        }
+        if (!out_of_order)
+            break;
+        out_of_order = false;
+    }
+}
+
+bubble_sort(std::begin(words), std::end(words));
+```
+
 ### 2.3.5向vector容器中添加元素
 
 1. 增加元素
 
    ```c++
-   std::vector<double> values;
-   values.push_back(3.1415926);
-   
    std::vector<std::string> words;
    words.push_back(string("adiabatic"));
    words.push_back("adiabatic");
    ```
-
-   emplace_back比push_back更有效率。例：
-
+   
+   `emplace_back`比`push_back`更有效率。
+   
+   例：
+   
    ```c++
    std::vector<std::string> words;
    words.push_back(std::string("facetious"));
    words.emplace_back("abstemious");
    ```
-
+   
 2. 插入元素
 
    ```c++
@@ -299,6 +445,51 @@ int main() {
 
 3. 删除元素
 
+   例，通过`clear`来清空元素，保持容量不变：
+   
+   ```c++
+   std::vector<int> data(100, 99);
+   data.clear(); // 清空元素，容量保持100
+   ```
+   
+   例，通过`pop_back`来删除最后一个元素，保持容量不变：
+   
+   ```c++
+   std::vector<int> data(100, 99);
+   data.pop_back(); // 删除最后一个元素，容量保持100
+   ```
+   
+   例，通过`shrink_to_fit`去掉容器中多余的容量：
+   
+   ```c++
+   data.shrink_to_fit(); // 去掉多余的容量，使迭代器失效
+   ```
+   
+   例，通过`erase`移除元素：
+   
+   ```c++
+   auto iter = data.erase(std::begin(data)+1, std::begin(data)+3); // 移除data[1], data[3]
+   ```
+   
+   例，通过`remove`删除特定值（非真正删除）：
+   
+   ```c++
+   std::vector<std::string> words{"one", "none", "some", "all", "none", "most", "many"};
+   auto iter = std::remove(std::begin(words), std::end(words), "none"); // 删除值为none的元素（并没有真正删除，只是把它们挪到尾部去了）
+   ```
+   
+   ![2_4](res/2_4.png)
+   
+   *remove()算法的工作原理*
+   
+   例，通过erase-remove真正删除元素：
+   
+   ```c++
+   words.erase(std::remove(std::begin(words), std::end(words), "none"), std::end(words));
+   ```
+   
+   完整示例：
+   
    ```c++
    #include <iostream>
    #include <vector>
@@ -342,13 +533,21 @@ int main() {
 
 ### 2.3.7vector<bool>容器
 
-vector<bool>是vector<T>模版的特例化，为bool类型的元素提供了更有效的内存使用方式，以类似位域的方式存放vector<bool>。
+`vector<bool>`是`vector<T>`模版的特例化，为bool类型的元素提供了更有效的内存使用方式，以类似**位域**而非vector的方式存放`vector<bool>`；
+
+**建议不要使用`vector<bool>`。**
 
 
 
 ## 2.4使用deque<T>容器
 
 ### 2.4.1生成deque容器
+
+![2_5](res/2_5.png)
+
+*一个deque容器示例*
+
+例：
 
 ```c++
 // 生成不带元素的deque容器
@@ -371,13 +570,17 @@ std::deque<std::string> words_part{std::begin(words), std::begin(words)+5};
 
 deque容器中组织元素的方式导致容器的大小总是和容量相等。
 
-可以用下标运算符来访问元素，但是索引并没有进行边界检查。例：
+可以用下标运算符来访问元素，但是索引并没有进行边界检查，函数`at()`提供了边界检查。
+
+例：
 
 ```c++
-std::cout << words.at(2) << std::endl;
+std::cout << words.at(2) << std::endl; // 使用边界检查，安全！
 ```
 
 ### 2.4.3添加和移除元素
+
+例：
 
 ```c++
 std::deque<int> numbers{2, 3, 4};
@@ -389,6 +592,20 @@ numbers.pop_front();    //  2, 3, 4, 12
 ### 2.4.4替换deque容器中的内容
 
 deque的成员函数assign()可以替换现有的所有元素。
+
+例，使用初始化列表来替换deque容器中的内容：
+
+```c++
+std::deque<std::string> words{"one", "two", "three", "four"};
+auto init_list = {std::string{"seven"}, std::string{"eight"}, std::string{"nine"}}; // 不能直接这样写：auto init_list = {...}; 这样的话，init_list会被推导为initializer_list<const char*>
+
+words.assign(init_list);
+words.assign({"seven", "eight", "nine"}); // 效果同上
+
+words.assign(8, "eight"); // 用8个"eight"来初始化words
+```
+
+完整示例：
 
 ```c++
 #include <iostream>
@@ -414,7 +631,13 @@ int main()
 
 ## 2.5使用list<T>容器
 
+![2_6](res/2_6.png)
+
+*list<T>容器中元素的组织*
+
 ### 2.5.1生成list容器
+
+例：
 
 ```c++
 // 生成一个空的list容器
@@ -435,28 +658,32 @@ std::list<double> samples{++cbegin(values), --cend(values)};
 
 ### 2.5.2添加元素
 
+例：
+
 ```c++
-// 放置
+// 以放置的方式添加元素
 std::list<std::string> names{"Jane", "Jim", "Jules", "Janet"};
 names.push_front("Ian");
 names.push_back("Kitty");
 names.emplace_front("Ian");
 names.emplace_back("Kitty");
 
-// 插入
+// 以插入的方式添加元素
 std::list<int> data(10, 55);
-data.insert(++begin(data), 66);
+data.insert(++begin(data), 66); // 55 66 55 55 55 55 55 55 55 55 55
 
-// 将一段元素插入data
+// 以插入的方式添加一段元素
 std::vector<int> numbers(10, 5);
 data.insert(--(--end(data)), cbegin(numbers), cend(numbers));
 ```
 
 ### 2.5.3移除元素
 
+例：
+
 ```c++
 std::list<int> numbers{2, 5, 2, 3, 6, 7, 8, 2, 9};
-numbers.remove(2); // 5, 3, 6, 7, 8, 9
+numbers.remove(2);                              // 5, 3, 6, 7, 8, 9
 numbers.remove_if([](int n){return n%2 == 0;}); // 5, 3, 7, 9
 
 std::list<std::string> words{"one", "two", "two", "two", "three", "four", "four"};
@@ -464,6 +691,8 @@ words.unique(); // "one", "two", "three", "four"
 ```
 
 ### 2.5.4排序和合并元素
+
+例：
 
 ```c++
 // 排序
@@ -514,6 +743,8 @@ my_words.splice(++std::begin(my_words), your_words, ++std::begin(your_words));
 
 ### 2.5.5访问元素
 
+完整示例：
+
 ```c++
 #include <iostream>
 #include <list>
@@ -543,19 +774,311 @@ int main()
 
 
 
+## 2.6使用forward_list<T>容器
+
+例，使用distance获得元素个数：
+
+```c++
+std::forward_list<std::string> my_words{"three", "six", "eight"};
+auto count = std::distance(std::begin(my_words), std::end(my_words)); // count == 3
+```
+
+例，使用advance移动迭代器：
+
+```c++
+std::forward_list<int> data{10, 21, 43, 87, 175, 351};
+auto iter = std::begin(data);
+size_t n{3};
+std::advance(iter, n);
+std::cout << "The " << n + 1 << "th element is " << *iter << std::endl; // 87
+```
+
+例，使用splice_after在开始位置插入或粘接元素：
+
+```c++
+std::forward_list<std::string> my_words{"three", "six", "eight"};
+std::forward_lsit<std::string> you_words{"seven", "four", "nine"};
+my_words.splice_after(my_words.before_begin(), your_words, ++std::begin(your_words));
+```
+
+例，使用splice_after()将一段元素粘接到另一个容器中：
+
+```c++
+my_words.splice_after(my_words.before_begin(), your_words, 
+                      ++std::begin(your_words), std::end(your_words));
+```
+
+例，使用splice_after()将全部元素粘接到另一个容器中：
+
+```c++
+my_words.splice_after(my_words.before_begin(), your_words);
+```
+
+完整示例：
+
+```c++
+#include <algorithm>
+#include <iostream>
+#include <forward_list>
+#include <iterator>
+#include <utility>
+
+using namespace std::rel_ops;
+
+class Box
+{
+private:
+    size_t length {};
+    size_t width {};
+    size_t height {};
+public:
+    explicit Box(size_t l = 1, size_t w = 1, size_t h = 1) : length {1}, width {w}, height {h} {}
+    double volume() const { return length * width * height; }
+    bool operator<(const Box& box) { return volume() < box.volume(); }
+    bool operator==(const Box& box) { return length == box.length && width == box.width && height == box.height; }
+
+    friend std::istream& operator>>(std::istream& in, Box& box);
+    friend std::ostream& operator<<(std::ostream& out, const Box& box);
+};
+
+inline std::istream& operator>>(std::istream& in, Box& box)
+{
+    std::cout << "Enter box length, width, & height separated by spaces - Ctrl+Z to end: ";
+    size_t value;
+    in >> value;
+    if (in.eof()) return in;
+
+    box.length = value;
+    in >> value;
+    box.width = value;
+    in >> value;
+    box.height = value;
+    return in;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const Box& box)
+{
+    out << "Box(" << box.length << "," << box.width << "," << box.height << ") ";
+    return out;
+}
+
+template<typename Iter>
+void list_elements(Iter begin, Iter end)
+{
+    size_t perline {6};
+    size_t count {};
+    while(begin != end)
+    {
+        std::cout << *begin++;
+        if(++count % perline == 0)
+        {
+            std::cout << "\n";
+        }
+    }
+    std::cout << std::endl;
+}
+
+int main()
+{
+    std::forward_list<Box> boxes;
+    std::copy(std::istream_iterator<Box>(std::cin), std::istream_iterator<Box>(), std::front_inserter(boxes));
+
+    boxes.sort();
+    std::cout << "\nAfter sorting the sequence is:\n";
+    std::copy(std::begin(boxes), std::end(boxes), std::ostream_iterator<Box>(std::cout, " "));
+    std::cout << std::endl;
+
+    std::forward_list<Box> more_boxes {Box {3, 3, 3}, Box {5, 5, 5}, Box {4, 4, 4}, Box {2, 2, 2}};
+    boxes.insert_after(boxes.before_begin(), std::begin(more_boxes), std::end(more_boxes));
+    std::cout << "After inserting more boxes the sequence is:\n";
+    list_elements(std::begin(boxes), std::end(boxes));
+    boxes.sort();
+    std::cout << std::endl;
+    std::cout << "The sorted sequence is now:\n";
+    list_elements(std::begin(boxes), std::end(boxes));
+
+    more_boxes.sort();
+    boxes.merge(more_boxes);
+    std::cout << "After merging more_boxes the sequence is:\n";
+    list_elements(std::begin(boxes), std::end(boxes));
+
+    boxes.unique();
+    std::cout << "After removing successive duplicates the sequence is:\n";
+    list_elements(std::begin(boxes), std::end(boxes));
+
+    const double max_v {30.0};
+    boxes.remove_if([max_v](const Box& box){return box.volume() < max_v;});
+    std::cout << "After removing those with volume less than 30 the sorted sequence is:\n";
+    list_elements(std::begin(boxes), std::end(boxes));
+}
+```
+
+
+
+## 2.7自定义迭代器
+
+### 2.7.1STL迭代器的要求
+
+用迭代器作为参数的交换函数，使用模板类型参数指定迭代器类型：
+
+```c++
+template <typename Iter>
+void my_swap(Iter a, Iter b)
+{
+    typename Iter::value_type tmp = *a; // 通过value_type的别名来指定tmp类型
+    *a = *b;
+    *b = tmp;
+}
+```
+
+### 2.7.2走进STL
+
+一个满足STL要求的迭代器必须全部定义以下别名：
+
+- `difference_type` 两个同类型的迭代器之间差别值的类型；
+- `value_type` 迭代器所指向值的类型；
+- `pointer` 迭代器所表示的指针类型；
+- `reference` 来自于迭代器的引用类型；
+- `iterator_category` 迭代器类别的标签类类型
+  - `input_iterator_tag`
+  - `output_iterator_tag`
+  - `forward_iterator_tag`
+  - `bidirectional_iterator_tag`
+  - `random_access_iterator_tag`
+
+自定义迭代器完整示例：
+
+```c++
+#include <algorithm>
+#include <numeric>
+#include <iostream>
+#include <vector>
+
+#include <exception>
+#include <iterator>
+#include <type_traits>
+#include <utility>
+using namespace std::rel_ops;
+
+template <typename T> 
+class Numeric_Iterator; // 自定义迭代器
+
+template<typename T>
+class Numeric_Range
+{
+    static_assert(std::is_integral<T>::value || std::is_floating_point<T>::value,
+                  "Numeric_Range type argument must be numeric.");
+    friend class Numeric_Iterator <T>;
+
+private:
+    T start;
+    T step;
+    size_t count;
+
+public:
+    explicit Numeric_Range(T first = 0, T incr = 1, size_t n = 2) : start{first}, step{incr}, count{n} {}
+    Numeric_Iterator<T> begin() { return Numeric_Iterator<T>(*this); }
+    Numeric_Iterator<T> end()
+    {
+        Numeric_Iterator<T> end_iter(*this);
+        end_iter.value = start + count * step;
+        return end_iter;
+    }
+};
+
+template<typename T>
+class Numeric_Iterator : public std::iterator<std::forward_iterator_tag, T>
+{
+    friend class Numeric_Range <T>;
+private:
+    Numeric_Range<T>& range;
+    T value;
+
+public:
+    explicit Numeric_Iterator(Numeric_Range<T>& a_range) : range{a_range}, value{a_range.start} {}
+
+    Numeric_Iterator& operator=(const Numeric_Iterator& src)
+    {
+        range = src.range;
+        value = src.value;
+    }
+
+    T& operator* ()
+    {
+        if (value == static_cast<T>(range.start + range.count * range.step))
+            throw std::logic_error("Cannot dereference an end iterator.");
+        return value;
+    }
+
+    Numeric_Iterator& operator++()
+    {
+        if (value == static_cast<T>(range.start + range.count * range.step))
+        {
+            throw std::logic_error("Cannot increment an end iterator.");
+        }
+        value += range.step;
+        return *this;
+    }
+
+    Numeric_Iterator operator++(int)
+    {
+        if (value == static_cast<T>(range.start + range.count * range.step))
+        {
+            throw std::logic_error("Cannot increment an end iterator.");
+        }
+        auto temp = *this;
+        value += range.step;
+        return temp;
+    }
+
+    bool operator<(const Numeric_Iterator& iter) const { return value < iter.value; }
+    bool operator==(const Numeric_Iterator& iter) const { return value == iter.value; }
+    bool operator!=(const Numeric_Iterator& iter) const { return value != iter.value; }
+    bool operator>(const Numeric_Iterator& iter) const { return value > iter.value; }
+    bool operator<=(const Numeric_Iterator& iter) const { *this < iter || *this == iter; }
+    bool operator>=(const Numeric_Iterator& iter) const { *this > iter || *this == iter; }
+};
+
+int main()
+{
+    Numeric_Range<double> range{1.5, 0.5, 5};
+    auto first = range.begin();
+    auto last = range.end();
+    std::copy(first, last, std::ostream_iterator<double>(std::cout, " "));
+    std::cout << "\nSum = " << std::accumulate(std::begin(range), std::end(range), 0.0) << std::endl;
+
+    // 初始化
+    Numeric_Range<long> numbers{15L, 4L, 10};
+    std::vector<long> data{std::begin(numbers), std::end(numbers)};
+    std::cout << "\nValues in vector are:\n";
+    std::copy(std::begin(data), std::end(data), std::ostream_iterator<long>(std::cout, " "));
+    std::cout << std::endl;
+
+    // 列出range中的元素
+    std::cout << "\nThe values in the numbers range are:\n";
+    for (auto n : numbers)
+        std::cout << n << " ";
+    std::cout << std::endl;
+}
+```
+
 
 
 ## 2.8小结
 
-* array<T, N>容器可以存放N个类型为T的元素
-* vector<T>容器可以存储任意个数的T类型元素
-* 可以在vector的末尾高效地添加或删除元素；但在序列内部添加或删除元素会变慢，因为需要移动元素
-* 可以使用索引来访问vector中的元素，或者调用会检查索引的成员函数at()
-* deque<T>是一个双端队列，可以存储任意个数的T类型元素
-* 可以在deque容器的头部和尾部高效地添加或删除元素
-* array, vector, deque容器提供了const和non-const随机访问迭代器和反向迭代器
-* list<T>是一个存储T类型元素的双向链表
-* 只能以从序列头部或尾部遍历元素的方式访问list容器中的元素
-* list容器提供双向迭代器
-* forward_list<T>容器以单链表的形式存储T类型的元素，但是比list容器更快，更简单
-* forward_list容器提供正向迭代器
+* `array<T, N>`容器可以存放N个类型为T的元素；
+* `vector<T>`容器可以存储任意个数的T类型元素；
+* 可以在vector的末尾高效地添加或删除元素；但在序列内部添加或删除元素会变慢，因为需要移动元素；
+* 可以使用索引来访问vector中的元素，或者调用会检查索引的成员函数`at()`；
+* `deque<T>`是一个双端队列，可以存储任意个数的T类型元素；
+* 可以在deque容器的头部和尾部高效地添加或删除元素；
+* array, vector, deque容器提供了const和non-const随机访问迭代器和反向迭代器；
+* `list<T>`是一个存储T类型元素的双向链表；
+* 只能以从序列头部或尾部遍历元素的方式访问list容器中的元素；
+* list容器提供双向迭代器；
+* `forward_list<T>`容器以单链表的形式存储T类型的元素，但是比list容器更快，更简单；
+* forward_list容器提供正向迭代器；
+* 头文件alogrithm中定义的`copy()`算法可以将一段元素复制到另一个爹嗲气指定的位置；
+* 可以将`copy()`算法和流迭代器一起使用，用来从输入流读取数据，然后把它们复制到容器中，或者在从容器读取数据后将它们输出到流中；
+* 函数模板`sort()`定义在头文件algorithm中，可以对随机访问迭代器指定的元素进行排序。元素默认会被排为升序，也可以用自定义的二元断言作为sort()参数去决定元素的排列顺序；
+* list和forward_list容器都有成员函数`sort()`，可以对元素进行排序。

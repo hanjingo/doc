@@ -35,6 +35,10 @@
 
 ### 1.4.1获取迭代器
 
+![1_1](res/1_1.png)
+
+*迭代器的操作*
+
 ### 1.4.2迭代器的类别
 
 * `输入迭代器（input iterators）` 提供对对象的只读访问，没有减量运算；
@@ -42,6 +46,8 @@
 * `正向迭代器（forward iterators）` 结合输入输出迭代器功能，可以随意多次用它进行读或写操作；
 * `双向迭代器（bidirectional iterators）` 具有和正向迭代器同样的功能，但允许进行前向和后向遍历；
 * `随机访问迭代器（random access iterators）` 提供了和双向迭代器同样的功能，但是支持对元素的随机访问。
+
+例，迭代器对一个数组进行操作：
 
 ```c++
 #include <numeric>
@@ -61,6 +67,8 @@ int main()
 
 ### 1.4.3流迭代器
 
+例，使用输入流迭代器：
+
 ```c++
 #include <numeric>
 #include <iostream>
@@ -79,10 +87,20 @@ int main()
 ### 1.4.4迭代器适配器
 
 1. `反向迭代器（reverse iterators）`
+
+   ![1_2](res/1_2.png)
+
+   *反向迭代器的操作*
+
+   ![1_3](res/1_3.png)
+
+   *标准迭代器和方向迭代器是如何和容器关联的*
+
 2. `插入迭代器（insert iterators）`
    - `后向插入迭代器（back_insert_iterator）` vector, list, deque都有push_back(),将一个新的元素添加到容器尾部;
    - `向前插入迭代器(front_insert_iterator）` list, forward_list, deque都有push_front(),将一个新的元素添加到容器的头部;
    - `插入迭代器（insert_iterator）` 用insert()插入新的元素；
+   
 3. `移动迭代器（move iterators）` 指向一定范围内的元素，将某个范围内的类对象移动到目标范围，而不需要通过拷贝去移动。
 
 
@@ -96,7 +114,7 @@ int main()
   例：
 
   ```c++
-  std::advance(iter, 3);
+  std::advance(iter, 3); // 移动3个位置
   ```
 
 * `distance()` 返回迭代器之间的距离；
@@ -104,7 +122,7 @@ int main()
   例：
 
   ```c++
-  std::distance(iter1, iter2);
+  std::distance(iter1, iter2); // 返回两个迭代器之间距离
   ```
 
 * `next()` 获得距离迭代器n个位置的迭代器
@@ -112,7 +130,7 @@ int main()
   例：
 
   ```c++
-  std::next(iter, 3);
+  std::next(iter, 3); // 返回离当前迭代器距离为3的迭代器
   ```
 
 * `prev()` 获得迭代器反向偏移n个位置之后所指向的迭代器
@@ -151,7 +169,9 @@ std命名空间中定义了三种不同类型的智能指针模版：
 
 1. 重置`unique_ptr<T>`对象
 
-   当智能指针析构时，`unique_ptr<T>`对象所指向的对象也会被析构。调用一个无参`unique_ptr<T>`对象的reset()函数可以析构它所指向的对象，`unique_ptr<T>`对象中的原生指针将会被替换为空指针，这使你能够在任何时候析构智能指针所指向的对象。例：
+   当智能指针析构时，`unique_ptr<T>`对象所指向的对象也会被析构。调用一个无参`unique_ptr<T>`对象的reset()函数可以析构它所指向的对象，`unique_ptr<T>`对象中的原生指针将会被替换为空指针，这使你能够在任何时候析构智能指针所指向的对象。
+
+   例：
 
    ```c++
    auto pname = std::make_unique<std::string>("Algernon");
@@ -159,14 +179,14 @@ std命名空间中定义了三种不同类型的智能指针模版：
    pname.reset(new std::string{"Fred"}); // 生成新的对象，替换旧对象
    ```
 
-   在不释放对象内存的情况下，将指向它的unique_ptr<T>内部的原生指针设为空指针。例：
+   例，在不释放对象内存的情况下，将指向它的unique_ptr<T>内部的原生指针设为空指针：
 
    ```c++
    auto up_name = std::make_unique<std::string>("Algernon");
    std::unique_ptr<std::string> up_new_name{up_name.release()};
    ```
 
-   通过交换两个`unique_ptr<T>`指针的方式来交换两个对象。例：
+   例，通过交换两个`unique_ptr<T>`指针的方式来交换两个对象：
 
    ```c++
    auto pn1 = std::make_unique<std::string>("Jack");
@@ -176,8 +196,10 @@ std命名空间中定义了三种不同类型的智能指针模版：
 
 2. 比较和检查`unique_ptr<T>`对象
 
-   `unique_ptr<T>`可以隐式地转换为布尔值。如果一个对象包含一个空指针，将会被转换为false；否则转换为true。这就意味着可以使用if语句来检查一个非空的`unique_ptr<T>`对象。例：
+   `unique_ptr<T>`可以隐式地转换为布尔值。如果一个对象包含一个空指针，将会被转换为false；否则转换为true。这就意味着可以使用if语句来检查一个非空的`unique_ptr<T>`对象。
 
+   例：
+   
    ```c++
    auto up_name = std::make_unique<std::string>("Algernon");
    std::unique_ptr<std::string> up_new{up_name.release()};
@@ -187,34 +209,40 @@ std命名空间中定义了三种不同类型的智能指针模版：
      std::cout << "The unique pointer is nullptr" << std::endl;
    ```
 
-**警告：不要将其它unique_ptr<T>所指向的一个对象的地址值传给reset()，或者去生成一个新的unique_ptr<T>对象，这种代码也许能通过编译，但是肯定会让程序崩溃。第一个unique_ptr<T>的析构会释放它所指向的对象的内存；第二个智能指针析构时，将会试图再次释放已经释放的内存。**
+**警告：不要将其它`unique_ptr<T>`所指向的一个对象的地址值传给reset()，或者去生成一个新的`unique_ptr<T>`对象，这种代码也许能通过编译，但是肯定会让程序崩溃。第一个`unique_ptr<T>`的析构会释放它所指向的对象的内存；第二个智能指针析构时，将会试图再次释放已经释放的内存。**
 
 ### 1.6.2使用`shared_ptr<T>`指针
 
-1. 重置shared_ptr<T>对象
+1. 重置`shared_ptr<T>`对象
 
-   将一个空指针赋给一个shared_ptr<T>对象，那么它的地址值将会变为空，同样也会使指针所指向对象的引用计数-1。例：
+   将一个空指针赋给一个`shared_ptr<T>`对象，那么它的地址值将会变为空，同样也会使指针所指向对象的引用计数-1。
+
+   例：
 
    ```c++
    auto pname = std::make_shared<std::string>("Charles Dickens");
    pname = nullptr;
    ```
 
-   通过调用shared_ptr<T>对象的无参reset()函数，可以得到同样的效果。例：
+   通过调用`shared_ptr<T>`对象的无参reset()函数，可以得到同样的效果。
+
+   例：
 
    ```c++
    pname.reset();
    ```
 
-   也可以通过为reset()函数传入一个原生指针来改变共享指针指向的对象。例：
+   也可以通过为reset()函数传入一个原生指针来改变共享指针指向的对象。
+
+   例：
 
    ```c++
    pname.reset(name std::string{"Jane Austen"});
    ```
 
-2. 比较和检查shared_ptr<T>对象
+2. 比较和检查`shared_ptr<T>`对象
 
-   检查shared_ptr<T>对象是否有副本。例：
+   例，检查`shared_ptr<T>`对象是否有副本：
 
    ```c++
    auto pname = std::make_shared<std::string>("Charles Dickens");
@@ -224,13 +252,17 @@ std命名空间中定义了三种不同类型的智能指针模版：
      std::cout << "there is more than one..." << std::endl;
    ```
 
-**警告：只能通过拷贝构造函数或赋值运算符去复制一个shared_ptr<T>对象。通过一个由其它指针的get()函数返回的原生指针，来生成一个shared_ptr<T>指针。这可能会导致一些意想不到的问题，大多数情况也就意味着程序的崩溃。**
+**警告：只能通过拷贝构造函数或赋值运算符去复制一个`shared_ptr<T>`对象。通过一个由其它指针的get()函数返回的原生指针，来生成一个`shared_ptr<T>`指针。这可能会导致一些意想不到的问题，大多数情况也就意味着程序的崩溃。**
 
 ### 1.6.3weak_ptr<T>指针
 
-weak_ptr<T>对象只能从shared_ptr<T>对象创建。
+`weak_ptr<T>`对象只能从`shared_ptr<T>`对象创建。
 
-创建一个weak_ptr<T>对象。例：
+![1_4](res/1_4.png)
+
+*循环引用是如何阻止对象被删除的*
+
+例，创建一个`weak_ptr<T>`对象：
 
 ```c++
 auto pData = std::make_shared<X>();
@@ -238,14 +270,14 @@ std::weak_ptr<X> pwData{pData};
 std::weak_ptr<X> pwData2{pwData};
 ```
 
-使用weak_ptr<T>指针判断它所指向的对象是否存在。例：
+例，使用`weak_ptr<T>`指针判断它所指向的对象是否存在：
 
 ```c++
 if (pwData.expired())
   std::cout << "Object no longer exists.\n";
 ```
 
-从一个weak_ptr<T>对象得到一个shared_ptr<T>对象。例：
+例，从一个`weak_ptr<T>`对象得到一个`shared_ptr<T>`对象：
 
 ```c++
 std::shared_ptr<X> pNew{pwData.lock()};
@@ -253,8 +285,8 @@ std::shared_ptr<X> pNew{pwData.lock()};
 
 可以使用`weak_ptr<T>`对象去做下面的事：
 
-- 可以判断它所指向的对戏那个是否仍然存在，这也就意味着仍然有shared_ptr<T>对象指向它；
-- 可以从一个weak_ptr<T>对象创建一个shared_ptr<T>对象。
+- 可以判断它所指向的对戏那个是否仍然存在，这也就意味着仍然有`shared_ptr<T>`对象指向它；
+- 可以从一个`weak_ptr<T>`对象创建一个`shared_ptr<T>`对象。
 
 
 
@@ -262,15 +294,15 @@ std::shared_ptr<X> pNew{pwData.lock()};
 
 * 非变化序列运算（不改变值）
 
-  find(), count(), mismatch(), search(), equal()。
+  `find()`, `count()`,` mismatch()`, `search()`, `equal()`。
 
 * 可变序列运算（改变值）
 
-  swap(), copy(), transform(), replace(), remove(), reverse(), rotate(), fill(), shuffle()。
+  `swap()`, `copy()`, `transform()`, `replace()`, `remove()`, `reverse()`, `rotate()`, `fill()`, `shuffle()`。
 
 * 改变顺序运算（改变顺序）
 
-  sort(), stable_sort(), binry_search(), merge(), min(), max()。
+  `sort()`, `stable_sort()`, `binry_search()`, `merge()`, `min()`, `max()`。
 
 
 
@@ -284,6 +316,23 @@ std::shared_ptr<X> pNew{pwData.lock()};
 
 ### 1.8.1函数对象
 
+函数对象也被称为仿函数，这是一种重载了函数调用运算符`operator()()`的类对象。它们提供了一种比使用原生指针更加高效的，将函数作为实参传入另一个函数的方式。
+
+例：
+
+```c++
+class Volume
+{
+public:
+    double operator()(double x, double y, double z) { rturn x * y * z; }
+    double operator()(const Box& box)
+    { return box.getLength() * box.getWidth() * box.getHeight(); }
+};
+
+Box box{1.0, 2.0, 3.0};
+std::cout << "The volume of the box is " << volume(box) << std::endl;
+```
+
 ### 1.8.2lambda表达式
 
 `[捕获列表](参数列表)mutable -> 返回类型{主体}`
@@ -294,7 +343,9 @@ std::shared_ptr<X> pNew{pwData.lock()};
 - `返回类型` 可选，当省略时，默认是返回值得类型。如果没有任何返回值，返回类型是void；
 - `主体` 函数实现。
 
-如果想用引用的方式捕获，需要在每一个名字的前面加上一个 & 前缀；
+如果想用引用的方式捕获，需要在每一个名字的前面加上一个 & 前缀。
+
+**注意：以值引用的方式捕获封闭范围内的所有变量会增加很多开销。因为不管是否使用了它们，都为它们中的每一个创建了副本，只捕获那些需要使用的变量才是明智的。**
 
 例：
 
@@ -350,4 +401,4 @@ int main()
 * stl定义了一些实现了算法的函数模板，可以运用到由迭代器指定的一段元素上；
 * 智能指针是一种表现有些像指针的对象；
 * lambda表达式定义了一个匿名函数；
-* 能够用定义在functional头文件中的std::function<>模板类型，去指定任意种类的，有给定函数签名的可调用实体。
+* 能够用定义在functional头文件中的`std::function<>`模板类型，去指定任意种类的，有给定函数签名的可调用实体。
