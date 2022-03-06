@@ -31,7 +31,7 @@ int main()
     size_t per_line {4}, count {};
     for(const auto& w : words)
     {
-        std::cout << std::left << std::setw(max_len + 1) < w.first 
+        std::cout << std::left << std::setw(max_len + 1) << w.first 
             << std::setw(3) << std::right << w.second << " ";
         if(++count % per_line == 0) std::cout << std::endl;
     }

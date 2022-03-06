@@ -17,6 +17,10 @@ protected:
 }
 ```
 
+### 适用场景
+
+- 随机访问的情况，不适宜插入，删除等操作频繁的操作。
+
 ### API
 
 |函数|描述|示意图/代码|
@@ -32,7 +36,7 @@ protected:
 |erase |删除指定范围内的元素 |![vector_erase](res/stl/vector_erase.png) |
 |front |返回第一个元素的引用 | |
 |get_allocator |返回vector的内存分配器 | |
-|insert |插入元素 |- `备用空间>新增元素个数`<br>+ `插入点后方元素个数>新增元素个数`![vector_insert1](res/stl/vector_insert1.png)<br>+ `插入点后方元素个数 ≤ 新增元素个数`![vector_insert2](res/stl/vector_insert2.png)<br>- `备用空间 < 新增元素个数`![vector_insert3](res/stl/vector_insert3.png) |
+|insert |插入元素 |- `备用空间>新增元素个数`<br>  + `插入点后方元素个数>新增元素个数`![vector_insert1](res/stl/vector_insert1.png)<br>  + `插入点后方元素个数 ≤ 新增元素个数`![vector_insert2](res/stl/vector_insert2.png)<br>- `备用空间 < 新增元素个数`![vector_insert3](res/stl/vector_insert3.png) |
 |max_size |返回vector所能容纳元素的最大数量(上限) | |
 |pop_back |移除尾部元素 | |
 |push_back |在尾部添加元素 | |
@@ -42,10 +46,6 @@ protected:
 |resize |改变vector元素数量的大小 | |
 |size |返回vector元素数量的大小 | |
 |swap |交换两个vector | |
-
-### 适用场景
-
-- 随机访问的情况，不适宜插入，删除等操作频繁的操作。
 
 ---
 
@@ -74,6 +74,10 @@ protected:
   _List_node<_Tp>* _M_node;	
 }
 ```
+
+### 适用场景
+
+- 插入和删除比较多。
 
 ### API
 
@@ -107,10 +111,6 @@ protected:
 |swap |交换2个list | |
 |unique |移除数值相同的连续元素，保持每个元素的唯一性 | |
 
-### 适用场景
-
-- 插入和删除比较多。
-
 
 ---
 
@@ -143,6 +143,11 @@ protected:
 };
 ```
 
+### 适用场景
+
+- 对vector的插入和删除功能的补充。
+- 不建议使用。
+
 ### API
 
 |函数|描述|示意图/代码|
@@ -168,11 +173,6 @@ protected:
 |resize |改变双向队列的大小 | |
 |size |返回双向队列中元素的个数 | |
 |swap |和另一个双向队列交换元素 | |
-
-### 适用场景
-
-- 对vector的插入和删除功能的补充。
-- 不建议使用。
 
 
 
