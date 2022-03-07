@@ -373,13 +373,313 @@ int main()
     
     std::cout << "\nThe people and their pets are:\n";
     for (const auto & pr : peoples_pets)
-        
+        list_pets(pr);
 }
 ```
 
 
 
+## 5.4unordered_set<T>容器
 
+![5_5](res/5_5.png)
+
+*unordered_set容器组织数据的方式*
+
+```c++
+// 创建unordered_set
+std::unordered_set<string> things{16};
+std::unordered_set<string> words{"one", "two", "three", "four"};
+std::unordered_set<string> some_words{++std::begin(words), std::end(words)};
+std::unordered_set<string> copy_words{words};
+std::unordered_set<Name, Hash_Name> names{8, Hash_Name()}; // 提供哈希函数
+
+// 设置载入因子
+names.max_load_factor(8.0);
+```
+
+### 5.4.1添加元素
+
+```c++
+// 插入元素
+auto pr = words.insert("ninety");               // 返回pair
+auto iter = words.insert(pr.first, "nine");     // 返回迭代器
+words.insert({"ten", "seven", "six"});          // 插入初始化列表
+words.insert(std::begin(more), std::end(more)); // 当插入一段元素时，无返回
+
+// 置入元素
+std::unordered_set<std::pair<string, string>, Hash_pair> names;
+auto pr = names.emplace("Jack", "Jones");
+auto iter = names.emplace_hint(pr.first, "John", "Smith"); // 指定置入位置
+```
+
+### 5.4.2检查元素
+
+```c++
+std::pair<string, string> person{"John", "Smith"};
+if (names.find(person) != std::end(names))
+    std::cout << "We found " << person.first << " " << person.second << std::endl;
+else
+    std::cout << "There's no " << person.first << " " << person.second << std::endl;
+```
+
+### 5.4.3删除元素
+
+```c++
+// 使用erase删除指定元素
+std::pair<string, string> person{"John", "Smith"};
+auto iter = names.find(person);
+size_t n = 0;
+if (iter != std::end(names))
+    n += names.erase(iter); // erase返回删除的个数
+
+// 使用erase删除所有为'S'的元素
+whie (true)
+{
+    auto iter = std::find_if(std::begin(names), std::end(names),
+                             [](const std::pair<string, string>& pr){return pr.second[0] == 'S';});
+    if (iter == std::end(names))
+        break;
+    names.erase(iter);
+}
+
+// 使用erase移除一段元素
+auto iter = names.erase(++std::begin(names), --std::end(names)); // 返回一个迭代器
+```
+
+### 5.4.4创建格子列表
+
+```c++
+// 通过for循环列出每个格子中的元素
+for (size_t bucket_index{}; bucket_index < names.bucket_count(); ++bucket_index) // 遍历格子索引
+{
+    std::cout << "Bucket " << bucket_index << ":\n";
+    for (auto iter = names.begin(bucket_index); iter != names.end(bucket_index); ++iter) // 便利格子中的元素
+    {
+        std::cout << " " << iter->first << " " << iter->second;
+    }
+    std::cout << std::endl;
+}
+
+// 通过names返回结果遍历格子中的元素
+for (const auto& pr : names)
+    std::cout << pr.first << " " << pr.second << " is in bucket " << names.bucket(pr) << std::endl;
+```
+
+
+
+## 5.5使用unordered_multiset<T>容器
+
+```c++
+// Name.h
+#ifndef NAME_H
+#define NAME_H
+#include <string>
+#include <ostream>
+#include <istream>
+using std::string;
+
+class Name
+{
+private:
+    string first {};
+    string second {};
+
+public:
+    Name(const string& name1, const string& name2) : first(name1), second(name2){}
+    Name() = default;
+
+    const string& get_first() const { return first; }
+    const string& get_second() const { return second; }
+
+    size_t get_length() const { return first.length() + second.length() + 1; }
+    bool operator<(const Name& name) const
+    {
+        return second < name.second || (second == name.second && first < name.first);
+    }
+
+    bool operator==(const Name& name) const
+    {
+        return (second == name.second) && (first == name.first);
+    }
+
+    size_t hash() const { return std::hash<std::string>()(first+second); }
+
+    friend std::istream& operator>>(std::istream& in, Name& name);
+    friend std::ostream& operator<<(std::ostream& out, const Name& name);
+};
+
+inline std::istream& operator>>(std::istream& in, Name& name)
+{
+    in >> name.first >> name.second;
+    return in;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const Name& name)
+{
+    out << name.first + " " + name.second;
+    return out;
+}
+#endif
+```
+
+```c++
+// Ex5_06.cpp
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <unordered_set>
+#include <algorithm>
+#include "Name.h"
+#include "Hash_Name.h"
+
+using std::string;
+using Names = std::unordered_multiset<Name, Hash_Name>;
+
+int main()
+{
+    Names pals {8};
+    pals.max_load_factor(8.0);
+    make_friends(pals);
+    list_buckets(pals);
+
+    Name js {"John", "Smith"};
+    std::cout << "\nThere are " << pals.count(js) << " " << js << "'s.\n" << std::endl;
+
+    pals.erase(Name{"John", "Jones"});
+
+    while(true)
+    {
+        auto iter = std::find_if(std::begin(pals), std::end(pals),
+            [](const Name& name){return name.get_second() == "Hackenbush"; });
+
+        if(iter == std::end(pals))
+            break;
+        pals.erase(iter);
+    }
+
+    size_t max_length{};
+    std::for_each(std::begin(pals), std::end(pals),
+        [&max_length](const Name name){max_length = std::max(max_length, name.get_length()); });
+
+    size_t count {};
+    size_t perline {6};
+    for(const auto& pal : pals)
+    {
+        std::cout << std::setw(max_length+2) << std::left << pal;
+        if((++count % perline) == 0) std::count << "\n";
+    }
+    std::cout << std::endl;
+}
+```
+
+
+
+## 5.6集合运算
+
+![5_6](res/5_6.png)
+
+*集合运算*
+
+### 5.6.1set_union()算法
+
+```c++
+// 使用set_union实现并集运算
+std::vector<int> set1{1, 2, 3, 4, 5, 6}; // 升序
+std::vector<int> set2{4, 5, 6, 7, 8, 9}; // 升序
+std::vector<int> result;
+// 结果保存到result
+std::set_union(std::begin(set1), std::end(set1), // 集合set1
+               std::begin(set2), std::end(set2), // 集合set2
+               std::back_inserter(result));      // 1, 2, 3, 4, 5, 6, 7, 8, 9
+// 结果输出
+std::set_union(std::begin(set1), std::end(set1),
+               std::begin(set2), std::end(set2),
+               std::ostream_iterator<int>{std::cout, " "});
+// 使用函数进行比较，并进行并集运算
+std::set_union(std::begin(set1), std::end(set1), 
+               std::begin(set2), std::end(set2),
+               std::inserter(result, std::begin(result)), 
+               std::greater<int>()); // 比较函数
+```
+
+### 5.6.2 set_intersection()算法
+
+```c++
+// 使用set_intersection实现交集运算
+std::set<string> words1{"one", "two", "three", "four", "five", "six"};
+std::set<string> words2{"four", "five", "six", "seven", "eight", "nine"};
+std::set<string> result;
+std::set_intersection(std::begin(words1), std::end(words2),
+                      std::begin(words2), std::end(words2),
+                      std::inserter(result, std::begin(result))); // "five", "four", "fix"
+```
+
+### 5.6.3set_difference()算法
+
+```c++
+// 使用set_difference实现差集运算
+std::set<string> words1{"one", "two", "three", "four", "five", "six"};
+std::set<string> words2{"four", "five", "six", "seven", "eight", "nine"};
+std::set<string> result;
+std::set_difference(std::begin(words1), std::end(words1),
+                    std::begin(words2), std::end(words2),
+                    std::inserter(result, std::begin(result)),
+                    std::greater<string>());
+```
+
+### 5.6.4set_symmetric_difference()算法
+
+```c++
+// 使用set_symmetric_difference实现差集运算
+std::set<string> words1{"one", "two", "three", "four", "five", "six"};
+std::set<string> words2{"four", "five", "six", "seven", "eight", "nine"};
+std::set_symmetric_difference(std::begin(words1), std::end(words1), 
+                              std::begin(words2), std::end(words2),
+                              std::ostream_iterator<string>{std::cout, " "});
+```
+
+### 5.6.5includes()算法
+
+```c++
+// 使用includes判断一个集合是否是另一个集合的子集
+std::set<string> words1{"one", "two", "three", "four", "five", "six"};
+std::set<string> words2{"four", "two", "seven"};
+std::multiset<string> words3;
+std::cout << std::boolalpha
+          << std::includes(std::begin(words1), std::end(words1),
+                           std::begin(words2), std::end(words2))
+          << std::endl; // 输出false
+std::cout << std::boolalpha
+          << std::includes(std::begin(words1), std::end(words1),
+                           std::begin(words2), std::begin(words2)) // 第二个集合是空集合，也返回true
+          << std::endl; // 输出true
+// 先做并集，再判断子集
+std::set_union(std::begin(words1), std::end(words1), 
+               std::begin(words2), std::end(words2), 
+               std::inserter(words3, std::begin(words3)));
+std::cout << std::boolalpha
+          << std::includes(std::begin(words3), std::end(words3),
+                           std::begin(words2), std::end(words2))
+          << std::endl; // 输出true
+```
+
+### 5.6.6集合运算的运用
+
+
+
+## 5.7本章小结
+
+* set容器保存的对象用他们自己作为键。
+* set容器存储的T类型对象是有序的，默认使用less<T>对对象排序。
+* multiset<T>容器保存对象的方式和set相同，但对象并不是唯一的。
+* 如果两个对象是相等的，那么他们在set或multiset中会被看成同一个元素。
+* unordered_set<T>容器保存T类型的对象，并且他们是唯一的，他们的位置由对象的哈希值确定。
+* unordered_multiset<T>容器中的对象位置也是由对象的哈希值确定的，但对象不需要是唯一的。
+* 无序set容器用==operator来决定两个对象是否相等，因而T类型必须支持这个运算符
+* 无序set容器中的对象通常保存在哈希表的格子中，用对象的哈希值可以确定对象在容器中的位置。
+* 无序set容器的装载因子是每个格子平均的元素个数。
+* 无序set容器在初始时会分配一些格子。当超过最大装载因子时，格子的个数会自动增加。
+* STL定义了一些集合运算的算法。二元集合运算是交，并，差，对称，包含。
 
 
 
