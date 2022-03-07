@@ -556,6 +556,8 @@ if (iter != std::end(numbers))
 
 在序列中分区元素会重新对元素进行排列，所有使给定谓词返回true的元素会被放在所有使谓词返回false的元素的前面。这就是`partition()`算法做的事。
 
+`paritition()`算法并不保证原始元素序列的相对顺序。
+
 ```c++
 // 使用partition()来重新排列序列中的值，所有大于平均值的元素会被放在所有小于平均值的元素的后面
 std::vector<double> temperatures{65, 75, 56, 48, 31, 28, 32, 29, 40, 41, 44, 50};
@@ -596,7 +598,154 @@ for (const auto& name : names)
     std::cout << std::get<0>(name) 
 ```
 
+### 6.4.1paritiion_copy()算法
 
+`partition_copy()`算法以和`stable_partition()`相同的方式对序列进行分区，但那些使谓词返回true的元素会被复制到一个单独的序列中，使谓词返回false的那些元素会被复制到第三个序列中。
+
+完整示例：
+
+```c++
+// Ex6_04.cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+#include <iterator>
+
+int main()
+{
+	std::vector<double> temperatures{65, 75, 56, 48, 31, 28, 32, 29, 40, 41, 44, 50};
+  std::vector<double> low_t;
+  std::vector<double> high_t;
+  auto average = std::accumulate(std::begin(temperatures), std::end(temperatures), 0.0) /
+    temperatures.size();
+  std::partition_copy(std::begin(temperatures), std::end(temperatures), 
+                      std::back_inserter(low_t), std::back_inserter(high_t),
+                      [average](double t){ return t < average; });
+  
+  std::copy(std::begin(low_t), std::end(low_t), std::ostream_iterator<double>{std::cout, " "});
+  std::cout << std::endl;
+  
+  std::copy(std::begin(high_t), std::end(high_t), std::ostream_iterator<double>{std::cout, " "});
+  std::cout << std::endl;
+}
+```
+
+### 6.4.2partition_point()算法
+
+`partition_point()`算法来获取分区序列中第一个分区的结束迭代器。
+
+```c++
+// 使用protition_point
+std::vector<double> temperatures{65, 75, 56, 48, 31, 28, 32, 29, 40, 41, 44, 50};
+auto average = std::accumulate(std::begin(temperatures), std::end(temperatures), 0.0) /
+  temperatures.size();
+auto predicate = [average](double t){ return t < average; };
+std::stable_partition(std::begin(temperatures), std::end(temperatures), predicate);
+auto iter = std::partition_point(std::begin(temperatures), std::end(temperatures), predicate);
+
+std::cout << "Elements in the first partition: ";
+std::copy(std::begin(temperatures), iter, std::ostream_iterator<double>{std::cout, " "});
+std::cout << "\nElements in the second partition: ";
+std::copy(iter, std::end(temperatures), std::ostream_iterator<double>{std::cout, " "});
+std::cout << std::endl;
+```
+
+
+
+## 6.5二分查找算法
+
+![TODO](res/6_6.png)
+
+*二分查找*
+
+### 6.5.1binary_search()算法
+
+`binary_search()`实现了一个二分查找算法。
+
+```c++
+// 使用binary_search二分查找22
+std::list<int> values{17, 11, 40, 36, 22, 54, 48, 70, 61, 82, 78, 89, 99, 92, 43};
+values.sort();
+int wanted{22};
+if (std::binary_search(std::begin(values), std::end(values), wanted))
+  std::cout << wanted << " is definitely in there-somewhere..." << std::endl;
+else
+  std::cout << wanted << " cannot be found - maybe you got it wrong..." << std::endl;
+```
+
+```c++
+// 使用binary_search和自定义函数对象二分查找22
+std::list<int> values{17, 11, 40, 36, 22, 54, 48, 70, 61, 82, 78, 89, 99, 92, 43};
+auto predicate = [](int a, int b){ return a > b; };
+values.sort(predicate);
+int wanted{22};
+if (std::binary_search(std::begin(values), std::end(values), wanted, predicate))
+  std::cout << wanted << " is difinitely in there - somewhere..." << std::endl;
+else
+  std::cout << wanted << " cannot be found - maybe you got it wrong..." << std::endl;
+```
+
+### 6.5.2lower_bound()算法
+
+`lower_bound()`算法可以在前两个参数指定的范围内查找不小于第三个参数的第一个元素--也就是说，大于等于第三个参数的第一个元素。
+
+```c++
+std::list<int> values{17, 11, 40, 36, 22, 54, 48, 70, 61, 82, 78, 89, 99, 92, 43};
+values.sort();
+int wanted{22};
+std::cout << "The lower bound for " << wanted << " is " 
+          << *std::lower_bound(std::begin(values), std::end(values), wanted) << std::endl;
+std::cout << "The upper bound for " << wanted << " is " 
+          << *std::upper_bound(std::begin(values), std::end(values), wanted) << std::endl;
+```
+
+### 6.5.3equal_range()算法
+
+`equal_range()`可以找出有序序列中所有和给定元素相等的元素。
+
+```c++
+std::list<int> values{17, 11, 40, 36, 22, 54, 48, 70, 61, 82, 78, 89, 99, 92, 43};
+int wanted{22};
+auto pr = std::equal_range(std::begin(values), std::end(values), wanted);
+std::cout << "the lower bound for " << wanted << " is " << *pr.first << std::endl;
+std::cout << "the upper bound for " << wanted << " is " << *pr.second << std::endl;
+```
+
+完整示例：
+
+```c++
+// Ex 6_05.cpp
+#include <iostream>
+#include <list>
+#include <algorithm>
+#include <iterator>
+
+int main()
+{
+	std::list<int> values{17, 11, 40, 36, 22, 54, 48, 70, 61, 82, 78, 89, 99, 92, 43};
+  std::cout << "The elements in the original sequence are:\n";
+  std::copy(std::begin(value), std::end(values), std::ostream_iterator<int>{std::cout, " "});
+  std::cout << std::endl;
+  int wanted{22};
+  std::partition(std::begin(values), std::end(values),
+                 [wanted](double value){ return value < wanted; });
+  std::partition(std::begin(values), std::end(values),
+                 [wanted](double value){ return !(wanted < value); });
+  
+  std::cout << "The elements after partitioning are:\n";
+  std::copy(std::begin(values), std::end(values), std::ostream_iterator<int>{std::cout, " "});
+  std::cout << std::endl;
+  
+  auto pr = std::enqual_range(std::begin(values), std::end(values), wanted);
+  std::cout << "The lower bound for " << wanted << " is " << *pr.first << std::endl;
+  std::cout << "The upper bound for " << wanted << " is " << *pr.second << std::endl;
+  
+  std::cout << "\nThe elements found by equal_range() are:\n";
+  std::copy(pr.first, pr.second, std::ostream_iterator<int>{std::cout, " "});
+  std::cout << std::endl;
+}
+```
 
 
 
