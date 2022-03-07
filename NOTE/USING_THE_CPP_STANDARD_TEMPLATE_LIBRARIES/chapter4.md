@@ -1065,9 +1065,27 @@ unordered_multimap是一个允许有重复键的无序map。
        std::cout << key << " is " << people.find(key)->second << std::endl;
    else if (n > 1)
    {
-       
+       auto pr = people.equal_range(key);
+       while (pr.first != pr.second)
+       {
+           std::cout << key << " is " << pr.first->second << std::endl;
+           ++pr.first;
+       }
    }
    ```
 
-   
+
+
+## 4.9本章小结
+
+- `pair<T1, T2>`对象封装了一个任意类型的对象；
+- `tuple<>`模板类型的实例可以封装任意个数不同类型的对象；
+- map容器是以`pair<const K, T>`对象的形式来保存键/对像对元素的；
+- `map<K,T>`容器保存的元素有唯一的键值，默认使用`<`运算符来对键进行排序，所以键类型必须支持`<`运算，除非自己提供一个比较函数；
+- `multimap<K,T>`包含的元素和map一样，都是有序的，但允许有重复的键；
+- 有序关联容器用等价来决定两个键什么时候是相同的。通常只用`<`或`>`来比较键，生成比较结果。当键相等时，比较函数会返回true，从而阻止容器正常工作；
+- 哈希是从对象生成名为哈希值的相对唯一整数的过程；
+- 使用键生成的哈希值将元素保存在`unordered_map<K,T>`容器中；
+- unordered_multimap容器和unordered_map相似；
+- 无序map容器默认使用`equal_to<K>`来比较键是否相等，所以键类型必须支持`==`比较和键对象的哈希。
 
