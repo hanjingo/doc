@@ -160,6 +160,7 @@
 
 - [openssl](https://github.com/openssl/openssl)
 - [json web token-libjwt](https://github.com/benmcollins/libjwt)
+- Qt版本的沙箱软件 [sandboxie-plus](https://github.com/sandboxie-plus)/**[Sandboxie](https://github.com/sandboxie-plus/Sandboxie)**
 
 ### 实用工具
 

@@ -655,7 +655,7 @@ std::cout << std::endl;
 
 ## 6.5二分查找算法
 
-![TODO](res/6_6.png)
+![6_6](res/6_6.png)
 
 *二分查找*
 
