@@ -4,7 +4,6 @@
 - [最佳实践](best_practice.md)
 - [多线程](multi_thread.md)
 - [c++特性](feature.md)
-- [c++新特性](new_feature.md)
 - [对象模型](object.md)
 - [指针](pointer.md)
 
