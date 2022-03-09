@@ -2,55 +2,34 @@
 
 [TOC]
 
+
+
 ## 最佳实践
 
-### 1.不要试图编写独立于容器类型的代码
+### 1.选择合适的算法
 
-- 尽量使用封装（encapsulation）技术来将一种容器类型转换到另一种;
+排序算法：
 
-  ```c++
-  class Widget {...};
-  typedef vector<Widget> WidgetContainer;
-  typedef WidgetContainer::iterator WCIterator; // 封装
-  WidgetContainer cw;
-  Widget bestWidget;
-  ...
-  WCIterator i = find(cw.begin(), cw.end(), bestWidget);
-  ```
+| 需求                                                         | sort | stable_sort | partial | stable_partition | nth_element |
+| ------------------------------------------------------------ | ---- | ----------- | ------- | ---------------- | ----------- |
+| 需要对vector，string，deque或者数组中的元素执行一次完全排序  | *    | *           |         |                  |             |
+| 有一个vector，string，deque或者数组，并且只需对等价性最前面的n个元素进行排序 |      |             | *       |                  |             |
+| 有一个vector，string，deque或者数组，并且需要找到第n个位置上的元素，或者，需要找到等价性最前面的n个元素但又不必对这n个元素进行排序 |      |             |         |                  | *           |
+| 需要将一个标准序列容器中的元素按照是否满足某个特定的条件区分开来 |      |             | *       | *                |             |
+| 需要对list中的数据排序                                       |      |             | *       | *                |             |
 
-- 把容器隐藏在一个类中，并尽量减少那些通过类接口（而使外部）可见的，与容器相关的信息，来减少在替换容器类型时所需要修改的代码；
+### 2.选择合适的容器
 
-  ```c++
-  class CustomerList {
-  private:
-    typedef list<Customer> CustomerContainer;
-    typedef CustumorContainer::iterator CCIterator;
-    
-    CustomerContainer customers; // 隐藏容器，通过对外接口访问
-  public:
-    ...
-  };
-  ```
-
-### 2.确保容器中的对象拷贝正确而高效
-
-- 向容器中填充对象，而对象的拷贝又很费时时，这一操作会成为程序的性能瓶颈；
-
-- 当存在继承关系时，向基类容器的拷贝动作会剥离派生类的信息（拷贝指针时可以避免这个问题）；
-
-  ```c++
-  vector<Widget> vw;
-  class SpecialWidget : public Widget{...};
-  SpecialWidget sw;
-  vw.push_back(sw); // 派生类特有的部分在拷贝时被丢弃了
-  ```
-
-- 尽量避免不必要的拷贝；
-
-  ```c++
-  Widget w[n]; // 创建有n个Widget对象的数组，每个对象都使用默认构造函数来创建（浪费）
-  vector<Widget> vw; // 创建了包含0个Widget对象的vector，当需要时它会增长（避免了拷贝）
-  ```
+| 需求                                                         | vector | list | deque | set<br>multiset | map<br>multimap | stack | queue<br>priority queues |
+| ------------------------------------------------------------ | ------ | ---- | ----- | --------------- | --------------- | ----- | ------------------------ |
+| 在容器的任意位置插入新元素                                   | *      | *    | *     |                 |                 |       |                          |
+| 不关心容器中的元素是如何排序的                               |        |      |       |                 |                 |       |                          |
+| 随机访问迭代器                                               | *      |      | *     |                 |                 |       |                          |
+| 当发生元素的插入或删除操作时，避免移动容器中原来的元素       |        | *    |       | *               | *               |       |                          |
+| 数据的布局需要和C兼容                                        | *      |      |       |                 |                 |       |                          |
+| 对元素的查找速度敏感                                         | *      |      |       | *               | *               |       |                          |
+| 使迭代器，指针或引用变为无效的次数最少                       |        | *    |       |                 |                 |       |                          |
+| 使用随机访问迭代器，没有删除操作，且插入操作只发生在容器尾部 |        |      | *     |                 |                 |       |                          |
 
 ### 3.尽量使用empty函数判空而不是检查size()==0
 
@@ -145,7 +124,7 @@ list<int> data(dataBegin, dataEnd);
 
 ### 8.STL容器的线程安全性不够
 
-- **多个线程读是安全的**，多个线程可以同时读同一个容器的内容，并且保证是正确的；在度的过程中，不能对容器有任何写入操作；
+- **多个线程读是安全的**，多个线程可以同时读同一个容器的内容，并且保证是正确的；在读的过程中，不能对容器有任何写入操作；
 
 - **多个线程对不同的容器做写入操作是安全的**，多个线程可以同时对不同的容器做写入操作；
 
@@ -155,7 +134,7 @@ list<int> data(dataBegin, dataEnd);
   TODO
   ```
 
-### 9.vector和string优先于动态分配的数组
+### 9.推荐使用vector和string而不是动态分配的数组
 
 - 大多数情况下，推荐使用vector和string替换动态分配的数组；
 - 在多线程环境中，推荐使用内置数组代替含有引用计数的string；多线程下，为保证string的引用计数的安全性而采取的措施，会影响效率；
@@ -236,7 +215,7 @@ list<int> data(dataBegin, dataEnd);
 
 - 对于set和multiset，修改元素的值这一行为具有不可移植性；
 
-### 14.当效率至关重要时，请在map::operator[]与map::insert之间谨慎做出选择
+### 14.当效率至关重要时，根据不同情况选择map::operator[]或map::insert
 
 - 当向映射表中添加元素时，要优先选用insert，而不是operator[]；
 
@@ -296,13 +275,33 @@ list<int> data(dataBegin, dataEnd);
   string fileData((istreambuf_iterator<char>(inputFile)), istreambuf_iterator<char>()); // istreambuf_iterator不会跳过任何字符（包括空格）
   ```
 
-### 17.正确选择排序算法
+### 17.尽量使用封装技术
 
-- 如果需要对vector，string，deque或者数组中的元素执行一次完全排序，那么可以使用sort或者stable_sort；
-- 如果有一个vector，string，deque或者数组，并且只需对等价性最前面的n个元素进行排序，那么可以使用partial_sort；
-- 如果有一个vector，string，deque或者数组，并且需要找到第n个位置上的元素，或者，需要找到等价性最前面的n个元素但又不必对这n个元素进行排序，那么nth_element正是你所需要的函数；
-- 如果需要将一个标准序列容器中的元素按照是否满足某个特定的条件区分开来，那么，partition和stable_partition可能正是你所需要的；
-- 如果你的数据在一个list中，那么你仍然可以直接调用partition和stable_partition算法；你可以用list::sort来替代sort和stable_sort算法。但是，如果你需要获得partial_sort或nth_element算法的效果，有一些间接的途径来完成这项任务。
+- 尽量使用封装（encapsulation）技术来将一种容器类型转换到另一种;
+
+  ```c++
+  class Widget {...};
+  typedef vector<Widget> WidgetContainer;
+  typedef WidgetContainer::iterator WCIterator; // 封装
+  WidgetContainer cw;
+  Widget bestWidget;
+  ...
+  WCIterator i = find(cw.begin(), cw.end(), bestWidget);
+  ```
+
+- 把容器隐藏在一个类中，并尽量减少那些通过类接口（而使外部）可见的，与容器相关的信息，来减少在替换容器类型时所需要修改的代码；
+
+  ```c++
+  class CustomerList {
+  private:
+    typedef list<Customer> CustomerContainer;
+    typedef CustumorContainer::iterator CCIterator;
+    
+    CustomerContainer customers; // 隐藏容器，通过对外接口访问
+  public:
+    ...
+  };
+  ```
 
 ### 18.使用erase-remove方法完全删除元素
 
@@ -380,7 +379,7 @@ list<int> data(dataBegin, dataEnd);
 
 - 使用函数对象做参数有助于避免一些语言本身的缺陷;
 
-  用函数做参数在语法上没问题，但是STL不支持：
+  用函数做参数在语法上没问题，但是有些情况下STL不支持：
 
   ```c++
   template<typename FPType>
@@ -430,9 +429,25 @@ if (i != s.end())
     ...
 ```
 
+### 21.确保容器中的对象拷贝正确而高效
 
+- 向容器中填充对象，而对象的拷贝又很费时时，这一操作会成为程序的性能瓶颈；
 
-  
+- 当存在继承关系时，向基类容器的拷贝动作会剥离派生类的信息（拷贝指针时可以避免这个问题）；
+
+  ```c++
+  vector<Widget> vw;
+  class SpecialWidget : public Widget{...};
+  SpecialWidget sw;
+  vw.push_back(sw); // 派生类特有的部分在拷贝时被丢弃了
+  ```
+
+- 尽量避免不必要的拷贝；
+
+  ```c++
+  Widget w[n]; // 创建有n个Widget对象的数组，每个对象都使用默认构造函数来创建（浪费）
+  vector<Widget> vw; // 创建了包含0个Widget对象的vector，当需要时它会增长（避免了拷贝）
+  ```
 
 ---
 
@@ -440,28 +455,39 @@ if (i != s.end())
 
 ## 容器
 
-### 容器选择依据
-
-| 需求                                                         | vector | list | deque | set<br>multiset | map<br>multimap | stack | queue<br>priority queues |
-| ------------------------------------------------------------ | ------ | ---- | ----- | --------------- | --------------- | ----- | ------------------------ |
-| 在容器的任意位置插入新元素                                   | *      | *    | *     |                 |                 |       |                          |
-| 不关心容器中的元素是如何排序的                               |        |      |       |                 |                 |       |                          |
-| 随机访问迭代器                                               | *      |      | *     |                 |                 |       |                          |
-| 当发生元素的插入或删除操作时，避免移动容器中原来的元素       |        | *    |       | *               | *               |       |                          |
-| 数据的布局需要和C兼容                                        | *      |      |       |                 |                 |       |                          |
-| 对元素的查找速度敏感                                         | *      |      |       | *               | *               |       |                          |
-| 使迭代器，指针或引用变为无效的次数最少                       |        | *    |       |                 |                 |       |                          |
-| 使用随机访问迭代器，没有删除操作，且插入操作只发生在容器尾部 |        |      | *     |                 |                 |       |                          |
-
 ### array
 
 ```c++
-TODO
+// GCC-4.4 /libstdc++-v3/include/tr1_impl/array
+template<typename _Tp, std::size_t _Nm>
+    struct array
+    {
+      typedef _Tp 	    			      value_type;
+      // Support for zero-sized arrays mandatory.
+      value_type _M_instance[_Nm ? _Nm : 1]; // array数组
+    };
 ```
 
-| 成员函数 | 描述 | 示意图/代码 |
-| :------- | :--- | ----------- |
-|          |      |             |
+| 函数成员   | 复杂度 | 描述                                                         |
+| :--------- | ------ | :----------------------------------------------------------- |
+| begin      | $O(1)$ | 返回第一个元素的随机访问迭代器，若容器为空，则返回的迭代器等于end()。<br>![array_begin](res/stl/array_begin.png) |
+| end        | $O(1)$ | 返回最后一个元素**下一个位置**的随机访问迭代器。<br>![array_end](res/stl/array_end.png) |
+| rbegin     | $O(1)$ | 返回指向逆向 `array` 首元素的逆向迭代器。若容器为空，返回的迭代器等于`rend()`。<br>![array_rbegin](res/stl/array_rbegin.png) |
+| rend       | $O(1)$ | 返回指向逆向 `array` 末元素后一元素的逆向迭代器。它对应非逆向 `array` 首元素的前一元素。此元素表现为占位符，试图访问它导致未定义行为。<br>![array_rend](res/stl/array_rend.png) |
+| cbegin     | $O(1)$ | 类似于`begin`，不过返回的是const类型的迭代器。               |
+| cend       | $O(1)$ | 类似于`end`，不过返回的是const类型的迭代器。                 |
+| crbegin    | $O(1)$ | 类似于`rbegin`，不过返回的是const类型的迭代器。              |
+| crend      | $O(1)$ | 类似于`rend`，不过返回的是const类型的迭代器。                |
+| operator=  | $O(1)$ | 复制同类型容器的元素，或者用初始化列表替换现有内容。         |
+| size       | $O(1)$ | 返回元素的实际数量。                                         |
+| max_size   | $O(1)$ | 返回元素个数的最大值（因为array是固定大小，所以max_size()==size()）。 |
+| empty      | $O(1)$ | 判断容器是否为空。                                           |
+| front      | $O(1)$ | 返回第一个元素的引用，如果容器是空，其结果未定义。           |
+| back       | $O(1)$ | 返回最后一个元素的引用，如果容器是空，其结果未定义。         |
+| operator[] | $O(1)$ | 访问指定位置的元素（不进行边界检查）。                       |
+| at         | $O(1)$ | 访问指定位置的元素（进行边界检查）。                         |
+| swap       | $O(n)$ | 与另一个长度相同的容器交换元素。                             |
+| data       | $O(1)$ | 返回包含元素的内部数组的指针。                               |
 
 ### vector
 
@@ -470,35 +496,38 @@ template <class _Tp, class _Alloc>
 class _Vector_base {
 ...
 protected:
-  _Tp* _M_start;          // 头指针
-  _Tp* _M_finish;					// 尾指针
-  _Tp* _M_end_of_storage; // 分配的存储空间的尾部
+  _Tp* _M_start;           // 头指针
+  _Tp* _M_finish;		  // 尾指针
+  _Tp* _M_end_of_storage;  // 分配的存储空间的尾部
 }
 ```
 
-|成员函数|描述|示意图/代码|
-|:--|:--|---|
-|assign |对vector中的元素赋值 | |
-|at |返回指定位置的元素 | |
-|back |返回最后一个元素 | |
-|begin |返回第一个元素的迭代器 | |
-|capacity |返回vector所能容纳的元素数量(再不重新分配内存的情况下) | |
-|clear |清空所有元素 | |
-|empty |判断vector是否为空 | |
-|end |返回最后一个元素的迭代器,此迭代器指向最后一个元素的下一个位置 | |
-|erase |删除指定范围内的元素 |![vector_erase](res/stl/vector_erase.png) |
-|front |返回第一个元素的引用 | |
-|get_allocator |返回vector的内存分配器 | |
-|insert |插入元素 |- `备用空间>新增元素个数`<br>  + `插入点后方元素个数>新增元素个数`![vector_insert1](res/stl/vector_insert1.png)<br>  + `插入点后方元素个数 ≤ 新增元素个数`![vector_insert2](res/stl/vector_insert2.png)<br>- `备用空间 < 新增元素个数`![vector_insert3](res/stl/vector_insert3.png) |
-|max_size |返回vector所能容纳元素的最大数量(上限) | |
-|pop_back |移除尾部元素 | |
-|push_back |在尾部添加元素 | |
-|rbegin |返回vector尾部的逆迭代器 | |
-|rend |返回vector起始的逆迭代器 | |
-|reserve |增加容器容量，不改变当前元素的个数 | |
-|resize |改变元素数量 | |
-|size |返回vector元素数量的大小 | |
-|swap |交换两个vector | |
+|成员函数|复杂度|说明/示意图/代码|
+|:--|---|---|
+|assign |$O(n)$ | 对元素赋值。 |
+|at |$O(1)$ | 返回指定位置的元素的引用（进行边界检查）。 |
+|back |$O(1)$ | 返回最后一个元素的引用。 |
+|begin |$O(1)$ | 返回一个指向第一个元素的迭代器。<br>![vector_begin](res/stl/vector_begin.png) |
+|capacity |$O(1)$ | 返回vector所能容纳的元素数量（不重新分配内存的情况下）。 |
+|clear |$O(n)$ | 擦除所有元素。 |
+|emplace |$O(n)$ | （C++11）构造元素，并在指定位置之前插入。 |
+|emplace_back |$O(1)$ | （C++11）构造元素，并添加到容器尾部。 |
+|empty |$O(1)$ | 判断容器是否为空。 |
+|end |$O(1)$ | 返回指向最后一个元素的下一个位置的迭代器。<br>![vector_end](res/stl/vector_end.png) |
+|erase |$O(n)$ |擦除指定范围内的元素。<br>![vector_erase](res/stl/vector_erase.png) |
+|front |$O(1)$ | 返回第一个元素的引用。 |
+|get_allocator |$O(1)$ | 返回容器的内存分配器。 |
+|insert |$O(n)$ |插入元素：<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 > 新增元素个数`<br>![vector_insert1](res/stl/vector_insert1.png)<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 ≤ 新增元素个数`![vector_insert2](res/stl/vector_insert2.png)<br>+ `备用空间 < 新增元素个数`![vector_insert3](res/stl/vector_insert3.png) |
+|max_size |$O(1)$ | 返回根据系统或库实现限制的容器可保有的元素最大数量（限制条件上限）。 |
+|pop_back |$O(1)$ | 移除尾部元素。 |
+|push_back |$O(1)$ | 向尾部添加元素。 |
+|rbegin |$O(1)$ | 返回指向逆向`vector`首元素的逆向迭代器。它对应非逆向`vector`的末元素。若`vector`为空，则返回的迭代器等于`rend()`。<br>![vector_rbegin](res/stl/vector_rbegin.png) |
+|rend |$O(1)$ | 返回指向逆向 `vector` 末元素后一元素的逆向迭代器。它对应非逆向 `vector` 首元素的前一元素。此元素表现为占位符，试图访问它导致未定义行为。<br>![vector_rend](res/stl/vector_rend.png) |
+|reserve |$O(n)$ | 增加容器容量，不改变当前元素的个数。<br>![vector_reserve](res/stl/vector_reserve.png) |
+|resize |$O(n)$ | 改变元素数量。 |
+|shrink_to_fit |$O(n)$ | 建议（非强制性）移除未使用的容量。 |
+|size |$O(1)$ | 返回元素数量。 |
+|swap |$O(1)$ | 交换两个vector（其实就是交换迭代器，不会移动元素）。 |
 
 ### list
 
@@ -605,7 +634,7 @@ protected:
 |size |返回双向队列中元素的个数 | |
 |swap |和另一个双向队列交换元素 | |
 
-### set & multiset & unordered_set
+### set
 
 ```c++
 // set & multiset底层机制为RB-tree。
@@ -673,29 +702,107 @@ protected:
 |upper_bound |返回大于某个值元素的迭代器 |
 |value_comp |返回一个用于比较元素间的值的函数 |
 
-### map & multimap & unordered_map & unordered_multimap
+### map
 
-|成员函数|描述|
-|:--|:--|
-|begin |返回指向map头部的迭代器 |
-|clear |删除所有元素 |
-|count |返回指定元素出现的次数 |
-|empty |如果map为空则返回true |
-|end |返回指向map末尾的迭代器 |
-|equal_range |返回特殊条目的迭代器对 |
-|erase |删除一个元素 |
-|find |查找一个元素 |
-|get_allocator |返回map的配置器 |
-|insert |插入元素 |
-|key_comp |返回比较元素key的函数 |
-|lower_bound |返回键值>=给定元素的第一个位置 |
-|max_size |返回可以容纳的最大元素个数 |
-|rbegin |返回一个指向map尾部的逆向迭代器 |
-|rend |返回一个指向map头部的逆向迭代器 |
-|size |返回map中元素的个数 |
-|swap |交换2个map |
-|upper_bound |返回键值>给定元素的第一个位置 |
-|value_comp |返回比较元素value的函数 |
+|成员函数|复杂度|说明/示意图/代码|
+|:--|:--|---|
+|at|$O(log n)$|返回拥有等于`key`的关键的元素被映射值的引用，若无这种元素，则抛出`std::out_of_range`类型异常。|
+|begin | $O(1)$ |返回指向首元素的迭代器。 |
+|clear | $O(n)$ |删除所有元素。 |
+|count | $O(log n)$ |返回指定元素出现的次数（因为map不允许重复，所以返回值只可能为0或1）。 |
+|emplace | $O(log n)$ |（C++11）构造元素，如果容器中不存在该键，插入之；并返回元素的迭代器和是否插入成功bool值（用std::pair包裹）。 |
+|emplace_hint | $O(1)$ |（C++11）构造元素，并插入到指定位置。 |
+|empty | $O(log n)$ |判断容器是否为空。 |
+|end | $O(1)$ |返回指向末元素**后一位置**的迭代器，试图访问`end()`返回的值会导致未定义行为。 |
+|equal_range | $O(log n)$ |返回2个迭代器（包裹在std::pair中）；一个迭代器指向的值>=参数值，另一个迭代器指向的值>参数值。 |
+|erase | $O(log n)$ |擦除指定值/范围的元素，并返回删除的元素个数。 |
+|find | $O(log n)$ |查找键值与指定值相等/等价的元素，返回该元素的迭代器。 |
+|get_allocator | $O(1)$ |返回容器的配置器。 |
+|insert | $O(log n)$ |插入元素，并返回元素的迭代器和是否插入成功bool值（用std::pair包裹）。 |
+|key_comp | $O(1)$ |返回容器用来对比key的函数对象。 |
+|lower_bound | $O(log n)$ |返回首个键>=给定值的元素的迭代器。 |
+|max_size | |返回可以容纳的最大元素个数 |
+|operator[] | $O(log n)$ | 返回键等于指定值的元素的引用，如果不存在，先插入，再返回。 |
+|rbegin | $O(1)$ |返回指向逆向 `map` 首元素的逆向迭代器。它对应非逆向 `map` 的末元素。若 `map` 为空，则返回的迭代器等于`rend()`。 |
+|rend | $O(1)$ |返回指向逆向 `map` 末元素后一元素的逆向迭代器。它对应非逆向 `map` 首元素的前一元素。此元素表现为占位符，试图访问它导致未定义行为。 |
+|size | $O(1)$ |返回容器中元素的个数。 |
+|swap | $O(1)$ |交换2个容器的内容。 |
+|upper_bound | $O(log n)$ |返回首个键>给定值的元素的迭代器。 |
+|value_comp | $O(1)$ | |
+
+#### 示例
+
+```c++
+#include <iostream>
+#include <map>
+#include <string>
+
+int main()
+{
+	// 创建容器
+	std::map<int, std::string> m1{ {1, "one"}, {2, "two"} };
+	std::map<int, std::string> m2{ std::make_pair(1, "one"), std::make_pair(2, "two")};
+	std::map<int, std::string> m3{ m1 };
+	std::map<int, std::string> m4{ std::begin(m1), std::end(m1) };
+
+	// at
+	m1.at(1);
+	
+	// begin
+	auto iter = m1.begin();
+
+	// clear
+	m3.clear();
+
+	// count
+	m1.count(1);
+
+	// emplace
+	auto pr1 = m1.emplace(3, "three"); // 返回 pair<iterator, bool>
+
+	// emplace_hint
+	m1.emplace_hint(pr1.first, 4, "four");
+
+	// empty
+	m3.empty();
+	
+	// end
+	iter = m1.end();
+
+	// equal_range
+	auto pr2 = m1.equal_range(1); // 返回 pair<iterator, iterator>
+	
+	// erase
+	auto sz = m1.erase(4);
+
+	// find
+	iter = m1.find(1);
+	
+	// get_allocator
+	auto alloc = m1.get_allocator();
+	
+	// insert
+	pr1 = m1.insert(std::make_pair(4, "four"));  // 插入单个元素，返回迭代器
+	m2.insert(std::begin(m1), std::end(m1));     // 插入一段元素，无返回
+
+	// key_comp
+	auto cmp = m1.key_comp(); // 返回用于比较的函数对象
+
+	// lower_bound
+	
+
+	// max_size
+	// operator[]
+	// rbegin
+	// rend
+	// size
+	//m1.size();
+	
+	// swap
+	// upper_bound
+	// value_comp
+}
+```
 
 ### stack
 
@@ -734,27 +841,90 @@ protected:
 
 ## 算法
 
-|函数|描述|示意图/代码|
-|:--|:--|---|
-|binary_search|在已排序的范围内中二分查找元素value。|![](res/stl/algo_binary_search.png)|
-|copy|将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。|![algo_copy](res/stl/algo_copy.png)|
-|for_each |遍历并操作指定范围内的元素。 |![algo_foreach](res/stl/algo_foreach.png) |
-|find |找到指定范围内的第一个匹配值。 | |
-|lower_bound |找到指定范围内的第一个不小于指定值的元素。 |![lower_bound](res/stl/algo_lower_bound.png) |
-|max |取两个对象中的较大值 | |
-|min |取两个对象中的较小值 | |
-|mismatch |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点 |![algo_mismatch](res/stl/algo_mismatch.png) |
-| merge          | 将两个**有序**的集合合并起来，放置于另一段空间。              | ![](res/stl/algo_merge.png) |
-| random_shuffle | 将指定范围内的元素次序随机重排                    |                            |
-|reverse |将序列中的元素在原容器中翻转 | |
-|remove |移除指定范围内所有与value相等的元素 |![algo_remove](res/stl/algo_remove.png) |
-|replace |将指定范围内的所有old_value都以new_value取代 | |
-|rotate |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。 |![algo_rotate](res/stl/algo_rotate.png) |
-|search |在序列一中查找与序列二完全匹配的子序列 | |
-|search_n |在指定的序列区间中查找连续n个符合条件的元素形成的子序列，返回指向该子序列起始处的迭代器。 |![algo_search_n](res/stl/algo_search_n.png) |
-|sort |排序；<br>- 数据量大时采用Quick Sort，分段式递归排序；<br>- 数据量小于某个门槛时，改用Insertion Sort；<br>如果递归层次过深，还会改用Heap Sort。 |- Quick Sort![algo_sort](res/stl/algo_quick_sort.png) |
-|unique |移除重复的元素 |![algo_unique](res/stl/algo_unique.png) |
-|upper_bound |二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” | |
+|算法|复杂度|所在头文件|描述/示意图/代码|
+|:--|---|---|---|
+|accumulate||stl_numeric|元素累计。|
+|adjacent_difference||stl_numeric|计算相邻元素的差。|
+|adjacent_find||stl_algo|查找相邻而重复（或符合某条件）的元素。|
+|binary_search||stl_algo|在已排序的范围内二分查找元素。<br>![](res/stl/algo_binary_search.png)|
+|copy||stl_algobase|将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。<br>![algo_copy](res/stl/algo_copy.png)|
+|copy_backward||stl_algobase|逆向复制|
+|copy_n||stl_algobase|复制n个元素|
+|count||stl_algo|计数|
+|count_if||stl_algo|在特定条件下计数|
+|equal||stl_algobase|判断两个区间相等与否|
+|equal_range||stl_algo|试图在有序区间中寻找某值(返回一个上下限区间)|
+|fill||stl_algobase|填充元素|
+|fill_n||stl_algobase|填充元素，n次|
+|find||stl_algo|循序查找|
+|find_if||stl_algo|循序查找符合特定条件者|
+|find_end||stl_algo|查找某个子序列的最后一次出现点|
+|find_first_of||stl_algo|查找某些元素的首次出现点|
+|for_each | |stl_algo |遍历并操作指定范围内的元素。<br>![algo_foreach](res/stl/algo_foreach.png) |
+|generate | |stl_algo |以特定操作之运算结果填充特定区间内的元素 |
+|generate_n | |stl_algo |以特定操作之运算结果填充特n个元素内容 |
+|includes | |stl_algo |是否涵盖于某序列之中 |
+|inner_product | |stl_numeric |计算内积 |
+|inplace_merge | |stl_algo |合并并就地替换(覆写上去) |
+|iota | |stl_numeric |在某区间填入某指定值的递增序列 |
+|is_heap | | |判断某区间是否为一个heap |
+|is_sorted | | |判断某区间是否已排序 |
+|iter_swap | |stl_algobase |元素互换 |
+|lexicographical_compare | |stl_numeric |以字典顺序进行比较 |
+|lower_bound | |stl_algo |找到指定范围内的第一个不小于指定值的元素。<br>![lower_bound](res/stl/algo_lower_bound.png) |
+|make_heap | | | |
+|max | |stl_algobase | 取两个对象中的较大值 |
+|max_element | |stl_algo | 取最大值所在位置 |
+|merge | |stl_algo | 合并两个序列 |
+|min | |stl_algobase | 取两个对象中的较小值 |
+|min_element | |stl_algo | 取最小值所在位置 |
+|mismatch | |stl_algobase |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点。<br>![algo_mismatch](res/stl/algo_mismatch.png) |
+| merge          |           | stl_algo  | 将两个**有序**的集合合并起来，放置于另一段空间。<br>![](res/stl/algo_merge.png) |
+| next_permutation |  | std_algo | 获得的下一个排列组合 |
+| nth_element |  | stl_algo | 重新安排序列中的第n个元素的左右两端 |
+| partial_sort |  | stl_algo | 局部排序 |
+| partial_sort_copy |  | stl_algo | 局部排序并复制到他处 |
+| partial_sum |  | stl_numeric | 局部求和 |
+| partition |  | stl_algo.h | 分割 |
+| prev_permutation |  | stl_algo.h | 获得前一个排列组合 |
+| pop_heap |  |  |  |
+| power |  | stl_numeric | 幂次方 |
+| push_heap |  |  |  |
+| random_shuffle |  |  | 将指定范围内的元素次序随机重排 |
+| random_sample |  |  |  |
+| random_sample_n |  |  |  |
+|remove | | |移除指定范围内所有与value相等的元素<br>![algo_remove](res/stl/algo_remove.png) |
+|remove_copy | | | |
+|remove_if | | | |
+|remove_copy_if | | | |
+|replace | | | 将指定范围内的所有old_value都以new_value取代 |
+|replace_copy | | |  |
+|replace_copy_if | | |  |
+|replace_if | | |  |
+|reverse | | | 将序列中的元素在原容器中翻转 |
+|reverse_copy | | |  |
+|rotate | | |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。<br>![algo_rotate](res/stl/algo_rotate.png) |
+|rotate_copy | | | |
+|search | | | 在序列一中查找与序列二完全匹配的子序列 |
+|search_n | | |在指定的序列区间中查找连续n个符合条件的元素形成的子序列，返回指向该子序列起始处的迭代器。<br>![algo_search_n](res/stl/algo_search_n.png) |
+|set_difference | | | |
+|set_intersection | | | |
+|set_symmetric_difference | | | |
+|set_union | | | |
+|sort | | |排序；<br/>- 数据量大时采用Quick Sort，分段式递归排序；<br/>![algo_sort](res/stl/algo_quick_sort.png)- 数据量小于某个门槛时，改用Insertion Sort；<br/>- 如果递归层次过深，还会改用Heap Sort。 |
+|sort_heap | | | |
+|stable_partition | | | |
+|stable_sort | | | |
+|swap | | | |
+|swap_range | | | |
+|transform | | | |
+|unique | | |移除重复的元素<br>![algo_unique](res/stl/algo_unique.png) |
+|unique_copy | | | |
+|upper_bound | | | 二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” |
+|make_heap | | |  |
+|pop_heap | | |  |
+|push_heap | | |  |
+|sort_heap | | |  |
 
 
 

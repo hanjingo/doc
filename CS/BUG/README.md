@@ -10,13 +10,19 @@
 
 关键词：**ubuntu**, **dash**
 
-在执行sh文件时报`Syntax error: "(" unexpected`错误...
+在执行sh文件时报错：`Syntax error: "(" unexpected`...
 
 #### [wsl环境下git clone报错](linux.md)
 
 关键词：**wsl**, **git**, **config.lock**
 
 在wsl环境下的windows文件夹中执行`git clone xx`报错：`xx/.git/config.lock failed: Operation not permitted`...
+
+#### [shell脚本文件编码格式问题](linux.md)
+
+关键词：**shell脚本**，**编码格式**
+
+在linux下执行shell脚本时报错：`Syntax error: "elif" unexpected (expecting "then")`...
 
 
 
@@ -157,6 +163,4 @@ telnet端口不通，但是防火墙已关闭，可能是由于linux默认禁止
 ## 其它
 
 #### [eos-go报`action declares irrelevant authority`错误](eos-go.md)
-
-#### [在执行sh文件时报`Syntax error: "(" unexpected`错误](linux.md)
 

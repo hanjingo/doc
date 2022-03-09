@@ -46,3 +46,25 @@ options = \"metadata,umask=22,fmask=11\"\
 mountFsTab = false" >> /etc/wsl.conf
 ```
 
+
+
+### shell脚本文件编码格式问题
+
+**问题**
+
+在linux下执行shell脚本时报错：
+
+```sh
+Syntax error: "elif" unexpected (expecting "then")
+```
+
+**原因**
+
+window与linux/unix环境的问价编码格式不一致。
+
+**解决**
+
+```sh
+sed -i 's/\r//' xx  # xx shell脚本
+```
+
