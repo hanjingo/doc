@@ -489,6 +489,55 @@ template<typename _Tp, std::size_t _Nm>
 | swap       | $O(n)$ | 与另一个长度相同的容器交换元素。                             |
 | data       | $O(1)$ | 返回包含元素的内部数组的指针。                               |
 
+#### 示例
+
+```c++
+#include <iostream>
+#include <array>
+
+int main()
+{
+	std::array<int, 10> a1; // 创建具有10个int的array
+	std::array<int, 10> a2{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+	std::array<int, 10>::iterator ret1 = a1.begin();
+
+	std::array<int, 10>::iterator ret2 = a1.end();
+
+	std::array<int, 10>::reverse_iterator ret3 = a1.rbegin();
+
+	std::array<int, 10>::reverse_iterator ret4 = a1.rend();
+
+	std::array<int, 10>::const_iterator ret5 = a1.cbegin();
+
+	std::array<int, 10>::const_iterator ret6 = a1.cend();
+
+	std::array<int, 10>::const_reverse_iterator ret7 = a1.crbegin();
+
+	std::array<int, 10>::const_reverse_iterator ret8 = a1.crend();
+
+	a1 = a2;
+
+	size_t ret9 = a1.size();
+
+	size_t ret10 = a1.max_size();
+
+	bool ret11 = a1.empty();
+
+	int ret12 = a1.front();
+
+	int ret13 = a1.back();
+
+	a1[0] = 2;
+
+	a1.at(1) = 3;
+
+	a1.swap(a2);
+
+	int* ret14 = a1.data();
+}
+```
+
 ### vector
 
 ```c++
@@ -529,6 +578,76 @@ protected:
 |size |$O(1)$ | 返回元素数量。 |
 |swap |$O(1)$ | 交换两个vector（其实就是交换迭代器，不会移动元素）。 |
 
+#### 示例
+
+```c++
+#include <iostream>
+#include <vector>
+
+int main()
+{
+	std::vector<int> v1(10);                                      // 初始化10个元素，其值为默认值
+	std::vector<int> v2{ 10 };                                    // 初始化1个元素，其值为10
+	std::vector<int> v3(10, 1);                                   // 初始化10个元素，其值都为1
+	std::vector<int> v4{ std::begin(v3), std::end(v3) };          // 复制一个容器的片段来初始化另一个容器
+	std::vector<int> v5{ std::make_move_iterator(std::begin(v4)),
+						 std::make_move_iterator(std::end(v4)) }; // 移动一个容器的片段来初始化另一个容器
+
+	
+
+	v1.assign({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+
+	int ret1 = v1.at(0);
+
+	int ret2 = v1.back();
+
+	std::vector<int>::iterator ret3 = v1.begin();
+
+	size_t ret4 = v1.capacity();
+
+	v1.clear();
+
+	std::vector<int>::iterator ret5 = v1.emplace(v1.end(), 11);
+
+	v1.emplace_back(12);
+
+	bool ret6 = v1.empty();
+
+	std::vector<int>::iterator ret7 = v1.end();
+
+	std::vector<int>::iterator ret8 = v1.erase(v1.begin(), v1.begin() + 1);
+
+	int ret9 = v1.front();
+
+	std::vector<int>::allocator_type ret10 = v1.get_allocator();
+
+	std::vector<int>::iterator ret11 = v1.insert(++v1.begin(), 8);
+	std::vector<int>::iterator ret12 = v1.insert(++v1.begin(), v2.begin(), v2.end());
+	std::vector<int>::iterator ret13 = v1.insert(v1.cend() - 1, 2, 100); // 插入2个100
+	std::vector<int>::iterator ret14 = v1.insert(v1.end(), { 1, 2, 3 });
+
+	size_t ret15 = v1.max_size();
+
+	v1.pop_back();
+
+	v1.push_back(1);
+
+	std::vector<int>::reverse_iterator ret16 = v1.rbegin();
+
+	std::vector<int>::reverse_iterator ret17 = v1.rend();
+
+	v1.reserve(20);
+
+	v1.resize(10);
+
+	v1.shrink_to_fit();
+
+	size_t ret18 = v1.size();
+
+	v1.swap(v2);
+}
+```
+
 ### list
 
 ```c++
@@ -553,35 +672,125 @@ protected:
 }
 ```
 
-|成员函数|描述|示意图/代码|
+|成员函数|复杂度|描述/示意图/代码|
 |:--|:--|---|
-|assign |给list赋值 | |
-|back |返回最后一个元素的引用 | |
-|begin |返回指向第一个元素的迭代器 | |
-|clear |清空链表 | |
-|empty |如果list是空的则返回true | |
-|end |返回末尾的迭代器 | |
-|erase |删除迭代器所指向的节点 | |
-|front |返回第一个元素的引用 | |
-|get_allocator |返回list的配置器 | |
-|insert |插入一个元素 |![list_insert](res/stl/list_insert.png) |
-|max_size |返回list能容纳的最大元素数量 | |
-|merge |合并 | |
-|pop_back |移除尾节点 | |
-|pop_front |移除头节点 | |
-|push_back |插入一个元素，作为尾节点 | |
-|push_front |插入一个元素，作为头节点 | |
-|rbegin |返回指向第一个元素的逆向迭代器 | |
-|remove |删除所有与指定值相等的元素 | |
-|remove_if |按指定条件删除元素 | |
-|rend |指向list末尾的逆向迭代器 | |
-|resize |改变list的大小 | |
-|reverse |翻转 | |
-|size |返回list中的元素个数 | |
-|sort |使用list自己的sort算法排序（STL的sort算法只接受`RamdonAccessIterator`） | |
-|splice |拆分 | |
-|swap |交换2个list | |
-|unique |移除数值相同的连续元素，保持每个元素的唯一性 | |
+|assign |$O(n)$ |替换容器的内容。 |
+|back |$O(1)$ |返回容器中最后一个元素的引用。 |
+|begin |$O(1)$ |返回指向 `list` 首元素的迭代器，若 `list` 为空，则返回的迭代器将等于`end()`。<br>![list_begin](res/stl/list_begin.png) |
+|clear |$O(n)$ |从容器擦除所有元素。 |
+|emplace |$O(1)$ |构造元素并在指定位置前插入。 |
+|emplace_back |$O(1)$ |构造元素并在容器尾部插入。 |
+|emplace_front |$O(1)$ |构造元素并在容器头部插入。 |
+|empty |$O(1)$ |检查容器是否为空。 |
+|end |$O(1)$ |返回指向 `list` 末元素后一元素的迭代器，此元素表现为占位符；试图访问它导致未定义行为。<br>![list_end](res/stl/list_end.png) |
+|erase |$O(n)$ |从容器擦除指定的元素/区间。 |
+|front |$O(1)$ |返回容器首元素的引用，在空容器上对 `front` 的调用是未定义的。 |
+|get_allocator |$O(1)$ |返回与容器关联的分配器。 |
+|insert |$O(n)$ |插入元素到指定位置，返回插入位置的迭代器。<br>![list_insert](res/stl/list_insert.png) |
+|max_size |$O(1)$ |返回根据系统或库实现限制的容器可保有的元素最大数量，即对于最大容器的`std::distance(begin(), end())`。 |
+|merge |$O(n)$ |归并二个已排序链表为一个，链表以升序排序，操作后，被合并的链表（即参数）变为空。 |
+|pop_back |$O(1)$ |移除容器的末元素，在空容器上调用 `pop_back` 导致未定义行为。 |
+|pop_front |$O(1)$ |移除容器首元素。若容器中无元素，则行为未定义。 |
+|push_back |$O(1)$ |添加一个元素到容器尾。 |
+|push_front |$O(1)$ |添加一个元素到容器头。 |
+|rbegin |$O(1)$ |返回指向逆向 `list` 首元素的逆向迭代器。它对应非逆向 `list` 的末元素。若 `list` 为空，则返回的迭代器等于`rend()`。<br>![list_rbegin](res/stl/list_rbegin.png) |
+|remove |$O(n)$ |移除所有等于指定值的元素。 |
+|remove_if |$O(n)$ |移除所有满足指定条件的元素。 |
+|rend |$O(1)$ |返回指向逆向 `list` 末元素后一元素的逆向迭代器。它对应非逆向 `list` 首元素的前一元素。此元素表现为占位符，试图访问它导致未定义行为。<br>![list_rend](res/stl/list_rend.png) |
+|resize |$O(n)$ |重设容器大小以容纳 `count` 个元素：<br>+ 若当前大小 > `count` ，则减小容器为其首 `count` 个元素；<br>+ 若当前大小 <  `count` ，插入`(count - 当前大小)`个默认值/指定值的元素。 |
+|reverse |$O(n)$ |翻转容器中的元素。 |
+|size |$O(n)$ |容器中的元素数量。 |
+|sort |$O(n log n)$ |使用list自己的sort算法排序（STL的sort算法只接受`RamdonAccessIterator`），升序排序元素，保持相等元素的顺序。 |
+|splice |$O(n)$ |将一个容器中的元素拆分出来，放到另一个容器（不复制或移动元素，仅重定向链表节点的内部指针）。 |
+|swap |$O(1)$ |交换2个容器的内容（不在单独的元素上调用任何移动、复制或交换操作）。 |
+|unique |$O(n)$ |从容器移除所有*相继*的重复元素。只留下相等元素组中的第一个元素。若选择的比较器不建立等价关系则行为未定义。 |
+
+#### 示例
+
+```c++
+#include <iostream>
+#include <list>
+
+int main()
+{
+	std::list<int> L1;                               // 创建空的容器
+	std::list<int> L2{ 10 };                         // 创建带有10个默认元素的容器
+	std::list<int> L3(10, 1);                        // 创建包含10个1的容器
+	std::list<int> L4{ L3 };                         // 创建L3的副本
+	std::list<int> L5{ ++L3.cbegin(), --L3.cend() }; // 用一段元素来初始化容器
+
+	L1.assign(10, 1);
+	L1.assign({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+	L1.assign(L3.cbegin(), L3.cend());
+
+	int ret1 = L1.back();
+
+	std::list<int>::iterator ret2 = L1.begin();
+
+	L1.clear();
+
+	std::list<int>::iterator ret13 = L1.emplace(L1.end(), 2);
+
+	L1.emplace_back(2);
+
+	L1.emplace_front(2);
+
+	bool ret3 = L1.empty();
+
+	std::list<int>::iterator ret4 = L1.end();
+
+	L1.erase(L1.begin());
+	L1.erase(L1.begin(), L1.begin()++);
+
+	int ret5 = L1.front();
+
+	std::list<int>::allocator_type ret6 = L1.get_allocator();
+
+	std::list<int>::iterator ret7 = L1.insert(L1.cbegin(), 1);
+	std::list<int>::iterator ret8 = L1.insert(L1.cbegin(), 5, 1);
+	std::list<int>::iterator ret9 = L1.insert(L1.cbegin(), { 1, 2, 3 });
+	std::list<int>::iterator ret10 = L1.insert(L1.cbegin(), L2.begin(), L2.end());
+
+	size_t ret11 = L1.max_size();
+
+	L1.sort(); L2.sort(); L1.merge(L2);
+
+	L1.pop_back();
+
+	L1.pop_front();
+
+	L1.push_back(2);
+
+	L1.push_front(3);
+
+	std::list<int>::reverse_iterator ret12 = L1.rbegin();
+
+	L1.remove(2);
+
+	L1.remove_if([](int n) { return n % 2 == 0; });
+
+	L1.resize(20);
+	L1.resize(20, 1);
+
+	L1.reverse();
+
+	size_t ret13 = L1.size();
+
+	L1.sort();
+	L1.sort(std::greater<int>());
+    class my_greater { public: bool operator()(const int a, const int b) { return a > b; }; }; 
+	L1.sort(my_greater());
+
+	L1.splice(L1.begin(), L2);
+	L1.splice(L1.begin(), L2, L2.begin());
+	L1.splice(L1.begin(), L2, L2.begin(), L2.end());
+
+	L1.swap(L2);
+
+	L1.unique();
+	L1.unique([](int x, int y) { return (x % 2) && (y % 2); });
+}
+```
 
 ### deque
 
@@ -610,29 +819,29 @@ protected:
 };
 ```
 
-|成员函数|描述|示意图/代码|
-|:--|:--|---|
-|assign |设置双向队列的值 | |
-|at |返回指定的元素 | |
-|back |返回最后一个元素 | |
-|begin |返回指向第一个元素的迭代器 | |
-|clear |删除所有元素 | |
-|empty |双向队列是否为空 | |
-|end |返回指向尾部的迭代器 | |
-|erase |删除指定范围的元素 | |
-|front |返回第一个元素的引用 | |
-|get_allocator |返回配置器 | |
-|insert |插入元素 | |
-|max_size |返回双向队列能容纳的最大元素个数 | |
-|pop_back |移除尾部的元素 | |
-|pop_front |移除头部的元素 | |
-|push_back |在尾部加入元素 | |
-|push_front |在头部加入元素 | |
-|rbegin |返回指向尾部的逆向迭代器 | |
-|rend |返回指向头部的逆向迭代器 | |
-|resize |改变双向队列的大小 | |
-|size |返回双向队列中元素的个数 | |
-|swap |和另一个双向队列交换元素 | |
+|成员函数|描述/示意图/代码|
+|:--|:--|
+|assign |设置双向队列的值 |
+|at |返回指定的元素 |
+|back |返回最后一个元素 |
+|begin |返回指向第一个元素的迭代器 |
+|clear |删除所有元素 |
+|empty |双向队列是否为空 |
+|end |返回指向尾部的迭代器 |
+|erase |删除指定范围的元素 |
+|front |返回第一个元素的引用 |
+|get_allocator |返回配置器 |
+|insert |插入元素 |
+|max_size |返回双向队列能容纳的最大元素个数 |
+|pop_back |移除尾部的元素 |
+|pop_front |移除头部的元素 |
+|push_back |在尾部加入元素 |
+|push_front |在头部加入元素 |
+|rbegin |返回指向尾部的逆向迭代器 |
+|rend |返回指向头部的逆向迭代器 |
+|resize |改变双向队列的大小 |
+|size |返回双向队列中元素的个数 |
+|swap |和另一个双向队列交换元素 |
 
 ### set
 
@@ -711,7 +920,7 @@ protected:
 |clear | $O(n)$ |删除所有元素。 |
 |count | $O(log n)$ |返回指定元素出现的次数（因为map不允许重复，所以返回值只可能为0或1）。 |
 |emplace | $O(log n)$ |（C++11）构造元素，如果容器中不存在该键，插入之；并返回元素的迭代器和是否插入成功bool值（用std::pair包裹）。 |
-|emplace_hint | $O(1)$ |（C++11）构造元素，并插入到指定位置。 |
+|emplace_hint | $O(1)$ |（C++11）构造元素，并插入到指定位置；并返回元素的迭代器。 |
 |empty | $O(log n)$ |判断容器是否为空。 |
 |end | $O(1)$ |返回指向末元素**后一位置**的迭代器，试图访问`end()`返回的值会导致未定义行为。 |
 |equal_range | $O(log n)$ |返回2个迭代器（包裹在std::pair中）；一个迭代器指向的值>=参数值，另一个迭代器指向的值>参数值。 |
@@ -721,14 +930,14 @@ protected:
 |insert | $O(log n)$ |插入元素，并返回元素的迭代器和是否插入成功bool值（用std::pair包裹）。 |
 |key_comp | $O(1)$ |返回容器用来对比key的函数对象。 |
 |lower_bound | $O(log n)$ |返回首个键>=给定值的元素的迭代器。 |
-|max_size | |返回可以容纳的最大元素个数 |
+|max_size | $O(1)$ |返回根据系统或库实现限制的容器可保有的元素最大数量，即对于最大容器的`std::distance(begin(), end())`。 |
 |operator[] | $O(log n)$ | 返回键等于指定值的元素的引用，如果不存在，先插入，再返回。 |
 |rbegin | $O(1)$ |返回指向逆向 `map` 首元素的逆向迭代器。它对应非逆向 `map` 的末元素。若 `map` 为空，则返回的迭代器等于`rend()`。 |
 |rend | $O(1)$ |返回指向逆向 `map` 末元素后一元素的逆向迭代器。它对应非逆向 `map` 首元素的前一元素。此元素表现为占位符，试图访问它导致未定义行为。 |
 |size | $O(1)$ |返回容器中元素的个数。 |
 |swap | $O(1)$ |交换2个容器的内容。 |
 |upper_bound | $O(log n)$ |返回首个键>给定值的元素的迭代器。 |
-|value_comp | $O(1)$ | |
+|value_comp | $O(1)$ |返回容器用来对比value的函数对象。 |
 
 #### 示例
 
@@ -739,80 +948,81 @@ protected:
 
 int main()
 {
-	// 创建容器
 	std::map<int, std::string> m1{ {1, "one"}, {2, "two"} };
 	std::map<int, std::string> m2{ std::make_pair(1, "one"), std::make_pair(2, "two")};
 	std::map<int, std::string> m3{ m1 };
 	std::map<int, std::string> m4{ std::begin(m1), std::end(m1) };
 
-	// at
-	m1.at(1);
+	std::string ret1 = m1.at(1);
 	
-	// begin
-	auto iter = m1.begin();
+	std::map<int, std::string>::iterator ret2 = m1.begin();
 
-	// clear
 	m3.clear();
 
-	// count
-	m1.count(1);
+	size_t ret3 = m1.count(1);
 
-	// emplace
-	auto pr1 = m1.emplace(3, "three"); // 返回 pair<iterator, bool>
+	std::pair<std::map<int, std::string>::iterator, bool> ret4 = m1.emplace(3, "three");
 
-	// emplace_hint
-	m1.emplace_hint(pr1.first, 4, "four");
+	std::map<int, std::string>::iterator ret5 = m1.emplace_hint(m1.begin(), 4, "four");
 
-	// empty
-	m3.empty();
+	bool ret6 = m3.empty();
 	
-	// end
-	iter = m1.end();
+	std::map<int, std::string>::iterator ret7 = m1.end();
 
-	// equal_range
-	auto pr2 = m1.equal_range(1); // 返回 pair<iterator, iterator>
+	std::pair<std::map<int, std::string>::iterator, std::map<int, std::string>::iterator> ret8 
+        = m1.equal_range(1);
 	
-	// erase
-	auto sz = m1.erase(4);
+	size_t ret9 = m1.erase(4);
 
-	// find
-	iter = m1.find(1);
+	std::map<int, std::string>::iterator ret10 = m1.find(1);
 	
-	// get_allocator
-	auto alloc = m1.get_allocator();
+	auto ret11 = m1.get_allocator();
 	
-	// insert
-	pr1 = m1.insert(std::make_pair(4, "four"));  // 插入单个元素，返回迭代器
+	std::pair<std::map<int, std::string>::iterator, bool> ret12 
+        = m1.insert(std::make_pair(4, "four"));  // 插入单个元素，返回迭代器
 	m2.insert(std::begin(m1), std::end(m1));     // 插入一段元素，无返回
 
-	// key_comp
-	auto cmp = m1.key_comp(); // 返回用于比较的函数对象
+	std::map<int, std::string>::key_compare ret13 = m1.key_comp(); // 返回用于比较的函数对象
+	ret13(1, 2);
 
-	// lower_bound
-	
+	std::map<int, std::string>::iterator ret14 = m1.lower_bound(2);
 
-	// max_size
-	// operator[]
-	// rbegin
-	// rend
-	// size
-	//m1.size();
+	size_t ret15 = m1.max_size();
+
+	std::string ret16 = m1[1];
+
+	std::map<int, std::string>::reverse_iterator ret17 = m1.rbegin();
+
+	std::map<int, std::string>::reverse_iterator ret18 = m1.rend();
 	
-	// swap
-	// upper_bound
-	// value_comp
+	size_t n = m1.size();
+	
+	m1.swap(m2);
+
+	std::map<int, std::string>::iterator ret19 = m1.upper_bound(3);
+
+	std::map<int, std::string>::value_compare cmp = m1.value_comp();
+	cmp({ 1, "one" }, {2, "tow"});
 }
 ```
 
 ### stack
 
-|成员函数|描述|
-|:--|:--|
-|empty |堆栈是否为空 |
-|pop |移除栈顶元素 |
-|push |在栈顶增加元素 |
-|size |返回栈中元素数目 |
-|top |返回栈顶元素 |
+|成员函数|复杂度|描述/示意图/代码|
+|:--|:--|---|
+|emplace|$O(1)$|（C++11）构造元素并推入到栈顶。|
+|empty |$O(1)$ |检查容器是否为空。 |
+|pop |$O(1)$ |从栈顶移除元素。 |
+|push |$O(1)$ |推入元素到栈顶。 |
+|size | |返回栈中元素数目 |
+|swap | |（C++11） |
+|top | |返回栈顶元素 |
+
+#### 示例
+
+```c++
+
+```
 
 ### queue
 

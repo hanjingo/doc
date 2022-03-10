@@ -5,7 +5,6 @@
 - [多线程](multi_thread.md)
 - [c++特性](feature.md)
 - [对象模型](object.md)
-- [指针](pointer.md)
 
 
 
