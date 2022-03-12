@@ -4,7 +4,7 @@
 
 
 
-## 性能
+## 性能指标
 
 三种对流水线工作的影响：
 
@@ -18,40 +18,99 @@
 
   *条件转移对指令流水操作的影响*
 
-### 吞吐率（Throughput Rate）
+### 吞吐率（Through Put Rate）
 
 `吞吐率` 单位时间内流水线所完成指令或输出结果的数量，吞吐率又有最大吞吐率和实际吞吐率之分。
 
-`最大吞吐率` 流水线在连续流动达到稳定状态（流水线中各段都处于工作状态）后所获得的吞吐率；计算公式为：
+`最大吞吐率` 流水线在连续流动达到稳定状态（流水线中各段都处于工作状态）后所获得的吞吐率。
 
-$T_{pmax} = \frac{1}{\Delta t}$
+`实际吞吐率` 流水线完成$n$条指令的实际吞吐率。
 
-- $m$ 流水段数量；
-- $\Delta t$ 流水段平均执行时间；
+#### 吞吐率计算公式
 
-`实际吞吐率` 流水线完成$n$条指令的实际吞吐率；计算公式为：
+1. 流水线各段执行时间相等时：
 
-$T_p = \frac{n}{m \Delta t + (n - 1) \Delta t} = \frac{1}{\Delta t[1 + (m - 1) / n]} = \frac{T_{pmax}}{1 + (m - 1) / n}$
+   ![through_put_rate_average](res/through_put_rate_average.jpg)
 
-- $n$ 指令数量；
-- $m$ 流水段数量；
-- $\Delta t$ 流水段平均执行时间；
+   实际吞吐率：$TP = \frac{n}{(k + n - 1)\Delta t}$
 
-仅当$n \gg m$时，才会有$T_p \approx T_{pmax}$。
+   - $n$ 任务数量；
+   - $k$ 流水段数；
+   - $\Delta t$ 流水段平均执行时间；
+
+   最大吞吐率：$TP_{max} = \lim_{n \to\infty} \frac{n}{(k + n - 1)\Delta t} = \frac{1}{\Delta t}$
+
+   - $n$ 任务数量；
+   - $k$ 流水段数；
+   - $\Delta t$ 流水段平均执行时间；
+
+   最大吞吐率与实际吞吐率的关系是：$TP = \frac{n}{k + n - 1} TP_{max}$。流水线的实际吞吐率要小于最大吞吐率，它除了与时钟周期有关之外，还与流水线的段数$m$，输入到流水线中的任务数$n$有关；仅当$n \gg m$时，才会有$T_p \approx T_{pmax}$。
+
+2. 流水线各段执行时间不相等时：
+
+   实际吞吐率：$TP = \frac{n}{\sum^{k}_{i = 1} \Delta t_i + (n - 1)max(\Delta t1, \Delta t2, ..., \Delta tk)}$
+
+   - $n$ 任务数量；
+   - $k$ 流水段数；
+   - $\Delta ti$ 流水段执行时间；
+
+   最大吞吐率：$TP_{max} = \frac{1}{max(\Delta t1, \Delta t2, ..., \Delta tk)}$
+
+   - $\Delta ti$ 流水段执行时间；
+
+#### 优化
+
+为了加快指令流水的速度，可对流水线进行以下方式优化处理：
+
+1. 将“瓶颈”流水段细分：
+
+   ![through_put_rate_optimize1](res/through_put_rate_optimize1.jpg)
+
+   其中的21，22，23为第2个子过程的细分。
+
+2. 将“瓶颈”流水段重复设置：
+
+   ![through_put_rate_optimize2](res/through_put_rate_optimize2.jpg)
+
+   其中的s2-1，s2-2，s2-3位重复设置的流水段。
 
 ### 加速比（Speedup Ratio）
 
-`加速比` $m$段流水线的速度与等功能的非流水线的速度之比。如果流水线各段时间均为$\Delta t$，则完成$n$条指令在$m$段流水线上共需$T = m \times \Delta t + (n - 1)\Delta t$时间。而在等效的非流水线上所需时间为$T' = nm\Delta t$。故加速比$S_p$为：
+`加速比` 完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。
 
-$S_p = \frac{nm\Delta t}{m\Delta t + (n - 1)\Delta t} = \frac{nm}{m + n - 1} = \frac{m}{1 + (m - 1)/n}$
+1. 各段执行时间相等的情况：
 
-可以看出，在$n \gg m$时，$S_p$接近于$m$，即当流水线各段时间相等时，其最大加速比等于流水线段数。
+   如果流水线各段时间均为$\Delta t$，完成$n$条指令在$k$段流水线上共需$T = k \Delta t + (n - 1)\Delta t$时间；完成$n$条指令在等效的非流水线上共需$nk\Delta t$时间。
+
+   加速比$S_p$为：$S_p = \frac{nk\Delta t}{k\Delta t + (n - 1)\Delta t} = \frac{nk}{k + n - 1}$。
+
+   - $n$ 任务数量；
+   - $k$ 流水段数；
+   - $\Delta t$ 流水段平均执行时间；
+
+   可以看出，在$n \gg m$时，$S_p$接近于$m$，即当流水线各段时间相等时，其最大加速比等于流水线段数
+
+2. 各段执行时间不等的情况：
+
+   完成$n$条指令在$k$段流水线上共需$\sum_{i=1}^{k}\Delta ti + (n - 1) \times max(\Delta t1, \Delta t2, ..., \Delta tk)$时间；在等效的非流水线上共需$n \sum_{i = 1}^{k}\Delta ti$。
+
+   加速比$S_p$为：$S_p = \frac{n \sum_{i = 1}^{k}\Delta ti}{\sum_{i=1}^{k}\Delta ti + (n - 1) \times max(\Delta t1, \Delta t2, ..., \Delta tk)}$
+
+   - $n$ 任务数量；
+   - $k$ 流水段数；
+   - $\Delta ti$ 流水段执行时间；
 
 ### 效率（Efficiency）
 
 `效率` 流水线中各功能段的利用率，通常用流水线各段处于工作时间的时空区与流水线中各段总的时空区之比来衡量流水线的效率。用公式表示为：
 
-$E = \frac{mn\Delta t}{m(m + n - 1)\Delta t} = \frac{n}{m + n - 1} = \frac{S_p}{m} = T_p\Delta t$
+$E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{k} = TP\Delta t$
+
+- $n$ 任务数量；
+- $k$ 流水段数；
+- $\Delta t$ 流水段平均执行时间；
+- $S_p$ 各段执行时间相等的情况下的加速比；
+- $TP$ 各段执行时间相等的情况下的实际吞吐率；
 
 
 
@@ -94,3 +153,7 @@ $E = \frac{mn\Delta t}{m(m + n - 1)\Delta t} = \frac{n}{m + n - 1} = \frac{S_p}{
 ## 参考
 
 [1] 唐朔飞.计算机组成原理
+
+[2] [计算机组成与结构](http://staff.ustc.edu.cn/~hdrq/jsjzcyl/text/chapter8/sec3/part1/index1.htm)
+
+[3] [5.2.2 吞吐率、加速比](http://kjwy.5any.com/jsjxtjg/content/cl/jsjxtjg-kcjj-050202.htm)
