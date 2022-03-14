@@ -1,4 +1,4 @@
-# make教程
+# make
 
 [TOC]
 

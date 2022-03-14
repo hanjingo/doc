@@ -1,4 +1,4 @@
-# cmake 教程
+# cmake
 
 [TOC]
 
@@ -12,6 +12,10 @@
     ADD_EXECUTABLE(hello main.c)
     ```
 
+- `ADD_LIBRARY(TARGETS [STATIC|SHARED] ...)` 生成必要的构建指令，将指定的源码编译到库中。
+
+    - `TARGETS` 生成的目标名。
+    
 - `ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])` 向当前工程中添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置。
 
     - `source_dir` 在源文件的子目录；
@@ -68,6 +72,11 @@
     
 - `SUBDIRS(dir1 dir2 ...)` 一次添加多个子目录（不推荐使用）。
 
+- `TARGET_LINK_LIBRARIES[TARGETS SOURCE]` 将目标库链接到可执行目标。
+
+    - `TARGETS` 要链接到的可执行目标；
+    - `SOURCE` 目标库。
+
 
 
 ## 变量
@@ -89,7 +98,17 @@
 
 
 
+## 静/动态链接库
+
+TODO
+
+
+
 ## 编译步骤
+
+### 内部编译过程
+
+TODO
 
 ### 外部编译过程
 
@@ -127,4 +146,6 @@ cmake -DLOG_TABLE=ON ..
 ## 参考
 
 [1] CMAKE教程
+
+[2] Eric Noulard, Roberto Di Remigio.CMake-Cookbook
 
