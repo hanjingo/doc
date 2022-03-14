@@ -1,0 +1,20 @@
+# 目录
+
+- [算法](ALGO/README.md)
+- [BUG速查](BUG/README.md)
+- [数据库](DB/README.md)
+- [分布式系统](DCS/README.md)
+- [图形学](GRAPHICS/README.md)
+- [编程语言](LANG/README.md)
+- [数学](MATH/README.md)
+- [多媒体](MEDIA/README.md)
+- [计算机网络](NET/README.md)
+- [读书笔记](NOTE/README.md)
+- [操作系统](OS/README.md)
+- [杂项](OTHERS/README.md)
+- [工程实践](PROJ/README.md)
+
+# 快捷导航
+
+[英汉词典](en_zh_dictionary.md) [面试笔记](interview.md) [Bug速查](BUG/README.md) [linux常用命令](OTHERS/linux_cmd.md) [git指南](OTHERS/git.md) [redis命令](DB/REDIS/cmd.md) [如何写markdown](OTHERS/how_to_write_markdown.md)
+
