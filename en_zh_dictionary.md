@@ -183,6 +183,8 @@ altitude `/ˈæltɪtjuːd/` 海拔，高地
 
 amass `/əˈmæs/` 积累，积聚
 
+amateur `/ˈæmətə(r)/` 业余，外行
+
 amazement `/əˈmeɪzmənt/` 惊愕，惊奇
 
 ambience `/ˈæmbiəns/` 环境，氛围，气氛
@@ -764,6 +766,8 @@ considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
 conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
 
 constrict `/kənˈstrɪkt/` 收缩，限制，约束，限定
+
+consult `/kənˈsʌlt/` 咨询，商量
 
 contagion `/kənˈteɪdʒən/` 传染病，解除传染，传播，蔓延，扩散
 
@@ -1819,7 +1823,7 @@ girder `/ˈɡɜːdə(r)/` 大梁，纵梁，撑住
 
 [回到G](#G)--[回到顶部](#英汉词典)
 
-glandular `/ˈɡlændʒələr/` 腺体
+gland `/ɡlænd/` 密封压盖，腺体
 
 glaze `/ɡleɪz/` 糖浆，蛋浆，釉，（眼睛）变呆滞，使光亮
 
@@ -1844,6 +1848,8 @@ gown `/ɡaʊn/` 女裙，长袍，外罩
 ### gr
 
 [回到G](#G)--[回到顶部](#英汉词典)
+
+grab `/ɡræb/` 抓取，抢夺，抓住（机会）
 
 graceful `/ˈɡreɪsfl/` 优雅的，优美的，得体的
 
@@ -2148,6 +2154,8 @@ injustice `/ɪnˈdʒʌstɪs/` 不公正的，不公平
 innocent `/ˈɪnəsnt/` 天真的，无辜的，单纯的
 
 innumerable `/ɪˈnjuːmərəbl/` 无数的，多的数不清的
+
+insight `/ˈɪnsaɪt/` 洞察力，领悟，了解
 
 insistence `/ɪnˈsɪstəns/` 坚持，强调，固执
 
@@ -3297,6 +3305,8 @@ recital `/rɪˈsaɪtl/` 独奏，吟诵，朗诵
 
 reclaim `/rɪˈkleɪm/` 开拓，拿回，要求归还，沙漠化
 
+recognition `/ˌrekəɡˈnɪʃn/` 认识，识别，承认，赞赏
+
 recollection `/ˌrekəˈlekʃn/` 回忆，记忆，记忆力
 
 recommend `/ˌrekəˈmend/` 推荐，介绍，举荐
@@ -3334,6 +3344,8 @@ regulate `/ˈreɡjuleɪt/` 规定，管理，控制
 rejuvenate `/rɪˈdʒuːvəneɪt/` 返老还童，恢复活力，复原
 
 rekindle `/ˌriːˈkɪndl/` 重新点燃，振作精神
+
+relevant `/ˈreləvənt/` 相关的，合适的，有意义的
 
 reliance `/rɪˈlaɪəns/` 依靠，信任
 
@@ -3398,6 +3410,8 @@ revitalization `/ˌri:ˌvaɪtəlaɪ'zeɪʃn/` 复兴，复苏，新生
 revive `/rɪˈvaɪv/` 苏醒，复苏，进步，振作，再兴
 
 revolt `/rɪˈvəʊlt/` 反抗，起义，叛乱
+
+revoke `/rɪˈvəʊk/` 撤销，废除
 
 ### rh
 
@@ -3598,6 +3612,8 @@ shattered `/ˈʃætəd/` 非常惊愕难过的，遭受极大打击的
 shed `/ʃed/` 屋棚，流出，蜕皮，脱落
 
 sheer `/ʃɪə(r)/` 垂直的，陡峭的，纯粹的，完全的
+
+shelf `/ʃelf/` 架子，隔板，突出的岩石
 
 shepherd `/ˈʃepəd/` 牧羊人，领头，护送
 
@@ -3984,6 +4000,8 @@ tactics `/ˈtæktɪks/` 战术，战略，兵法，手段
 tadpole `/ˈtædpəʊl/` 蝌蚪
 
 tailor `/ˈteɪlə(r)/` 裁缝，订做
+
+tain `/teɪn/` 锡箔，薄锡板
 
 tame `/teɪm/` 驯服，驯化，温顺的
 
