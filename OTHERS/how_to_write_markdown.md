@@ -253,6 +253,7 @@ int main(void) {
 
 
 
+
 ## html语法样式
 
 ### 颜色
@@ -276,6 +277,46 @@ int main
 #include <iostream>
 int main
 </pre>
+### 单元格
+
+```markdown
+<table>
+    <caption> 标题 </caption>
+    <tr align = "left">
+        <th> 表头1 </th>
+        <th> 表头2 </th>
+    </tr>
+    <tr align = "left">
+        <td rowspan = "2"> 单元格1 </td>
+        <td align = "left"> 单元格2 </td>
+    </tr>
+    <tr>
+        <td align = "center"> 单元格3 </td>
+    </tr>
+    <tr align = "right">
+        <td colspan = "2"> 单元格4 </td>
+    </tr>
+</table>
+```
+
+<table>
+    <caption> 标题 </caption>
+    <tr align = "left">
+        <th> 表头1 </th>
+        <th> 表头2 </th>
+    </tr>
+    <tr align = "left">
+        <td rowspan = "2"> 单元格1 </td>
+        <td align = "left"> 单元格2 </td>
+    </tr>
+    <tr>
+        <td align = "center"> 单元格3 </td>
+    </tr>
+    <tr align = "right">
+        <td colspan = "2"> 单元格4 </td>
+    </tr>
+</table>
+
 
 
 
@@ -285,7 +326,8 @@ int main
 
 |效果|源码|
 |:--|---|
-|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$, $\omega$, $\lambda$, $\pi$, $\tau$, $\beta$, $\gamma$, $\varphi$, $\phi$, $\zeta$, $\Omega$`|
+|$\alpha$, $\beta$, $\gamma$, $\delta$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$|`$\alpha$, $\beta$, $\gamma$, $\delta$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$`|
+|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$`|
 |$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$|`$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$`|
 |$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
 |$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
@@ -1015,6 +1057,7 @@ classDiagram
 ```markdown
 classDiagram
 classA --|> classB : Inheritance
+classA1 o--|> classB1
 classC --* classD : Composition
 classE --o classF : Aggregation
 classG --> classH : Association
@@ -1027,6 +1070,7 @@ classO .. classP : Link(Dashed)
 ```mermaid
 classDiagram
 classA --|> classB : Inheritance
+classA1 o--|> classB1
 classC --* classD : Composition
 classE --o classF : Aggregation
 classG --> classH : Association
@@ -1131,7 +1175,119 @@ pie
 
 ## 绘制状态图
 
-TODO
+```markdown
+stateDiagram-v2
+%% 注释
+
+%% 状态
+s1: 状态
+s1 --> s2: 状态转换
+
+%% 状态转换
+[*] --> s3: 初始状态转换到其它
+
+%% 合成状态
+合成状态1 --> 合成状态2
+合成状态1 --> 合成状态3
+state 合成状态1 {
+	[*] --> fir
+	fir --> [*]
+}
+state 合成状态2 {
+	[*] --> sec
+	sec --> [*]
+}
+state 合成状态3 {
+	[*] --> thi
+	thi --> [*]
+}
+
+%% 分支与组合
+state 分支状态 <<fork>>
+分支状态 --> stat2: 分支
+分支状态 --> stat3: 分支
+state 组合状态 <<join>>
+stat2 --> 组合状态: 组合
+stat3 --> 组合状态: 组合
+
+%% 标记状态
+stat5: 状态标记
+note left of stat5: 标记在左边
+
+%% 并发
+state 多线程 {
+	[*] --> unlock1
+	unlock1 --> lock1
+	lock1 --> unlock1
+	--
+	[*] --> unlock2
+	unlock2 --> lock2
+	lock2 --> unlock2
+	--
+	[*] --> unlock3
+	unlock3 --> lock3
+	lock3 --> unlock3
+}
+```
+
+```mermaid
+stateDiagram-v2
+%% 注释
+
+%% 状态
+s1: 状态
+s1 --> s2: 状态转换
+
+%% 状态转换
+[*] --> s3: 初始状态转换到其它
+
+%% 合成状态
+合成状态1 --> 合成状态2
+合成状态1 --> 合成状态3
+state 合成状态1 {
+	[*] --> fir
+	fir --> [*]
+}
+state 合成状态2 {
+	[*] --> sec
+	sec --> [*]
+}
+state 合成状态3 {
+	[*] --> thi
+	thi --> [*]
+}
+
+%% 分支与组合
+state 分支状态 <<fork>>
+分支状态 --> stat2: 分支
+分支状态 --> stat3: 分支
+state 组合状态 <<join>>
+stat2 --> 组合状态: 组合
+stat3 --> 组合状态: 组合
+
+%% 标记状态
+stat5: 状态标记
+note left of stat5: 标记在左边
+
+%% 并发
+state 多线程 {
+	[*] --> unlock1
+	unlock1 --> lock1
+	lock1 --> unlock1
+	--
+	[*] --> unlock2
+	unlock2 --> lock2
+	lock2 --> unlock2
+	--
+	[*] --> unlock3
+	unlock3 --> lock3
+	lock3 --> unlock3
+}
+```
+
+   
+
+
 
 
 
