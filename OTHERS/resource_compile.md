@@ -22,7 +22,7 @@
 | --------------------------------------------- | ------------------------------------------------------------ | ---- | -------------- |
 | Compilers Principles, Techniques, & Tools     | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2ED  | 学底层原理必看 |
 | TCP/IP Illustrated<br>Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2ED  | 学网络协议必看 |
-|                                               |                                                              |      |                |
+| Design Pattern                                | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1ED  | 学设计模式必看 |
 |                                               |                                                              |      |                |
 |                                               |                                                              |      |                |
 
@@ -63,18 +63,17 @@
 
 ### c++
 
-- 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - [llvm-project](https://github.com/llvm/llvm-project)
 - 腾讯c++库 [libco](https://github.com/Tencent/libco)
-- [chromium浏览器](https://github.com/chromium/chromium)
 - C++字符串格式化库 [fmtlib](https://github.com/fmtlib)/**[fmt](https://github.com/fmtlib/fmt)**
-- [qt开源库](https://download.qt.io/archive/qt/)
 - [微软的STL库实现](https://github.com/microsoft/STL)
 - 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
-- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
+- 谷歌内存回收库 [tcmalloc](https://github.com/google/tcmalloc)
+- Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
 
 ### 算法库
 
+- 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - C++算法库 [C-Plus-Plus](https://github.com/TheAlgorithms/C-Plus-Plus)
 
 ### 数学库
@@ -91,6 +90,7 @@
 
 ### 网络库
 
+- [chromium浏览器](https://github.com/chromium/chromium)
 - 抓包神器[wireshark](https://gitlab.com/wireshark/wireshark)
 - 大名鼎鼎的libevent库 [libevent](https://github.com/libevent)/**[libevent](https://github.com/libevent/libevent)**
 - UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
@@ -105,9 +105,10 @@
 - C语言版skynet的protobuf协议支持(已停止维护) [cloudwu](https://github.com/cloudwu)/**[pbc](https://github.com/cloudwu/pbc)**
 - 使用现代C++编写的的JSON库 [nlohmann](https://github.com/nlohmann)/**[json](https://github.com/nlohmann/json)**
 
-### 数据库
+### 数据库/存储
 
 - Redis存盘工具 [ssdb](https://github.com/ideawu/ssdb)
+- 分布式存储 [minio](https://github.com/minio/minio)
 
 ### 游戏
 
@@ -136,9 +137,9 @@
 
 ### 图形库
 
+- 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
 - 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
-
-- [Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
+- 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
 
 ### 即时通讯
 
@@ -179,18 +180,16 @@
 - 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
 - cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
 - makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
-- [文档系统 DocumentServer](https://github.com/ONLYOFFICE/DocumentServer)
-- [Zeromq依赖库 libzmq](https://github.com/zeromq/libzmq)
-- [分布式存储 minio](https://github.com/minio/minio)
-- [WASM实现库 emscripten](https://github.com/emscripten-core/emscripten)
-- [谷歌内存回收库 tcmalloc](https://github.com/google/tcmalloc)
-- [vim的升级版本neovim](https://github.com/neovim/neovim)
+- 文档系统 [DocumentServer](https://github.com/ONLYOFFICE/DocumentServer)
+- WASM实现库 [emscripten](https://github.com/emscripten-core/emscripten)
+- vim的升级版本 [neovim](https://github.com/neovim/neovim)
 - [rust版本的v8引擎](https://github.com/denoland/deno)
-- [安卓NDK示例 ndk-samples](https://github.com/android/ndk-samples)
-- 开源项目汇总，强力推荐 [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
-- 电子书目录汇总，强力推荐 [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
+- 安卓NDK示例 [ndk-samples](https://github.com/android/ndk-samples)
+- 开源项目汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
+- 电子书目录汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
 - [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)
 - [性能优化相关专题](https://github.com/XINCGer/Unity3DTraining/tree/master/PerformanceOptimization)
+- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
 
 
 

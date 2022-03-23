@@ -1,5 +1,6 @@
 # c/c++
 
+- [c++环境搭建](env.md)
 - [STL](stl.md)
 - [最佳实践](best_practice.md)
 - [多线程](multi_thread.md)
@@ -30,12 +31,9 @@
 
 ## 其他
 
-- [c++ gitignore模板](OTHER/cpp_gitignore.md)
-- [c++环境部署](OTHER/env.md)
 - [谷歌c++编程规范](OTHER/google_cpp_std.md)
 - [F35战斗机c++编程规范](res/JSF-AV-rules.pdf)
 - [c++ .gitignore模板](res/.gitignore)
-- [环境搭建](env.md)
 - [谷歌c++编程规范](google_cpp_std.md)
 - [安卓c++开发](android_dev.md)
 

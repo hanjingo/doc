@@ -50,11 +50,14 @@ git config --global user.email "xxx@xxx" # 设置git邮箱为"xxx@xxx"
 git init
 ```
 
-### 设置代理
+### 设置代理与取消
 
 ```shell
-git config --global http.proxy 'socks5:x.x.x.x:x'
-git config --global https.proxy 'socks5:x.x.x.x:x'
+git config --global http.proxy 'x.x.x.x:x'
+git config --global https.proxy 'x.x.x.x:x'
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 

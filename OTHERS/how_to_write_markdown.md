@@ -336,6 +336,7 @@ int main
 |$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$|`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$`|
 |$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$, $x \ll y$, $x \gg y$|`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$, $x \ll y$, $x \gg y$`|
 |$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
+|$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
 |$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$|`$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$`|
 |$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$|`$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$`|
 |$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$`|
@@ -348,7 +349,6 @@ int main
 |$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
 |$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
 |${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
-|$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
 |$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $|`$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $`|
 
 ### 矩阵
@@ -1065,6 +1065,7 @@ classI -- classJ : Link(Solid)
 classK ..> classL : Dependency
 classM ..|> classN : Realization
 classO .. classP : Link(Dashed)
+
 ```
 
 ```mermaid
@@ -1287,6 +1288,50 @@ state 多线程 {
 
    
 
+## 绘制树状图
+
+(typora等其他不支持graphviz的工具，可以使用这个网站：https://g.gravizo.com/svg 作为图床)
+
+```markdown
+![graphviz](https://g.gravizo.com/svg?
+	digraph demo {
+    	bgcolor="beige"
+    	node [shape="record", height=.1]
+    	node0[label="<f0> | <f1> G | <f2>"]
+    	node1[label="<f0> | <f1> E | <f2>"]
+    	node2[label="<f0> | <f1> B | <f2>"]
+    	node0:f0 -> node1:f1
+    	node0:f2 -> node2:f1
+    	a [label="{a | b | c}"]
+    }
+)
+```
+
+![graphviz](https://g.gravizo.com/svg?
+	digraph demo {
+    	bgcolor="beige"
+    	node [shape="record", height=.1]
+    	node0[label="<f0> | <f1> G | <f2>"]
+    	node1[label="<f0> | <f1> E | <f2>"]
+    	node2[label="<f0> | <f1> B | <f2>"]
+    	node0:f0 -> node1:f1
+    	node0:f2 -> node2:f1
+    	a [label="{a | b | c}"]
+    }
+)
+
+（如果工具如vnote等，支持graphviz，直接使用dot语法）
+
+​	digraph demo {
+​    	bgcolor="beige"
+​    	node [shape="record", height=.1]
+​    	node0[label="<f0> | <f1> G | <f2>"]
+​    	node1[label="<f0> | <f1> E | <f2>"]
+​    	node2[label="<f0> | <f1> B | <f2>"]
+​    	node0:f0 -> node1:f1
+​    	node0:f2 -> node2:f1
+​    	a [label="{a | b | c}"]
+​    }
 
 
 
