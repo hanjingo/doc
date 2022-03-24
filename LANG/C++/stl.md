@@ -49,41 +49,47 @@ int main()
 	std::array<int, 10> a1{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::array<int, 10> a2; // 创建具有10个0的array
 
-	std::array<int, 10>::iterator ret1 = a1.begin();                 // *ret1: 1
+	std::array<int, 10>::iterator ret1 = a1.begin();   // *ret1: 1
 
-	std::array<int, 10>::iterator ret2 = a1.end();                   // *ret2: 未知变量
+	std::array<int, 10>::iterator ret2 = a1.end();     // *ret2: 未知变量
 
-	std::array<int, 10>::reverse_iterator ret3 = a1.rbegin();        // *ret3: 10
+	std::array<int, 10>::reverse_iterator ret3 =       // *ret3: 10
+        a1.rbegin();
 
-	std::array<int, 10>::reverse_iterator ret4 = a1.rend();          // *ret4: 未知变量
+	std::array<int, 10>::reverse_iterator ret4 =       // *ret4: 未知变量
+        a1.rend();
 
-	std::array<int, 10>::const_iterator ret5 = a1.cbegin();          // *ret5: 1
+	std::array<int, 10>::const_iterator ret5 =         // *ret5: 1
+        a1.cbegin();
 
-	std::array<int, 10>::const_iterator ret6 = a1.cend();            // *ret6: 未知变量
+	std::array<int, 10>::const_iterator ret6 =         // *ret6: 未知变量
+        a1.cend();
 
-	std::array<int, 10>::const_reverse_iterator ret7 = a1.crbegin(); // *ret7: 10
+	std::array<int, 10>::const_reverse_iterator ret7 = // *ret7: 10
+        a1.crbegin();
 
-	std::array<int, 10>::const_reverse_iterator ret8 = a1.crend();   // *ret8: 未知变量
+	std::array<int, 10>::const_reverse_iterator ret8 = // *ret8: 未知变量
+        a1.crend();
 
-	a2 = a1; // a2: [1,2,3,4,5,6,7,8,9,10]
+	a2 = a1;                      // a2: [1,2,3,4,5,6,7,8,9,10]
 
-	size_t ret9 = a1.size();                                         // ret9: 10
+	size_t ret9 = a1.size();      // ret9: 10
 
-	size_t ret10 = a1.max_size();                                    // ret10: 10
+	size_t ret10 = a1.max_size(); // ret10: 10
 
-	bool ret11 = a1.empty();                                         // ret11: false
+	bool ret11 = a1.empty();      // ret11: false
 
-	int ret12 = a1.front();                                          // ret12: 1
+	int ret12 = a1.front();       // ret12: 1
 
-	int ret13 = a1.back();                                           // ret13: 10
+	int ret13 = a1.back();        // ret13: 10
 
-	a1[0] = 2;    // a1: [2,2,3,4,5,6,7,8,9,10]
+	a1[0] = 2;                    // a1: [2,2,3,4,5,6,7,8,9,10]
 
-	a1.at(1) = 3; // a1: [2,3,3,4,5,6,7,8,9,10]
+	a1.at(1) = 3;                 // a1: [2,3,3,4,5,6,7,8,9,10]
 
-	a1.swap(a2);  // a1: [1,2,3,4,5,6,7,8,9,10]
+	a1.swap(a2);                  // a1: [1,2,3,4,5,6,7,8,9,10]
 
-	int* ret14 = a1.data(); // ret14: [1,2,3,4,5,6,7,8,9,10]
+	int* ret14 = a1.data();       // ret14: [1,2,3,4,5,6,7,8,9,10]
 }
 ```
 
@@ -94,9 +100,9 @@ template <class _Tp, class _Alloc>
 class _Vector_base {
 ...
 protected:
-  _Tp* _M_start;           // 头指针
-  _Tp* _M_finish;		  // 尾指针
-  _Tp* _M_end_of_storage;  // 分配的存储空间的尾部
+  _Tp* _M_start;          // 头指针
+  _Tp* _M_finish;         // 尾指针
+  _Tp* _M_end_of_storage; // 分配的存储空间的尾部
 }
 ```
 
@@ -133,16 +139,17 @@ protected:
 
 int main()
 {
-	std::vector<int> v1(5);                                       // 初始化5个元素，其值为默认值
-	std::vector<int> v2{ 5 };                                     // 初始化1个元素，其值为5
-	std::vector<int> v3(5, 1);                                    // 初始化5个元素，其值都为1
-	std::vector<int> v4{ std::begin(v3), std::end(v3) };          // 复制一个容器的片段来初始化另一个容器
-	std::vector<int> v5{ std::make_move_iterator(std::begin(v4)),
-						 std::make_move_iterator(std::end(v4)) }; // 移动一个容器的片段来初始化另一个容器
+	std::vector<int> v1(5);    // 初始化5个元素，其值为默认值
+	std::vector<int> v2{ 5 };  // 初始化1个元素，其值为5
+	std::vector<int> v3(5, 1); // 初始化5个元素，其值都为1
+	std::vector<int> v4{       // 复制一个容器的片段来初始化另一个容器
+        std::begin(v3), 
+        std::end(v3) }; 
+	std::vector<int> v5{       // 移动一个容器的片段来初始化另一个容器
+        std::make_move_iterator(std::begin(v4)),
+        std::make_move_iterator(std::end(v4)) }; 
 
-	
-
-	v1.assign({1, 2, 3, 4, 5});                    // v1: [1,2,3,4,5]
+	v1.assign({1, 2, 3, 4, 5});       // v1: [1,2,3,4,5]
 
 	int ret1 = v1.at(0);                          // ret1: 1
 
@@ -152,53 +159,54 @@ int main()
 
 	size_t ret4 = v1.capacity();                  // ret4: 5
 
-	v1.clear();                   // v1: []
+	v1.clear();                       // v1: []
 
-	std::vector<int>::iterator ret5 =             // *ret5: 11
-        v1.emplace(v1.end(), 11); // v1: [11]
+	std::vector<int>::iterator ret5 = 
+        v1.emplace(v1.end(), 11);     // v1: [11], *ret5: 11
 
-	v1.emplace_back(12);          // v1: [11,12]
+	v1.emplace_back(12);              // v1: [11,12]
 
-	bool ret6 = v1.empty();                      // ret6: false
+	bool ret6 = v1.empty();                       // ret6: false
 
-	std::vector<int>::iterator ret7 = v1.end();  // *ret7: 3
+	std::vector<int>::iterator ret7 = v1.end();   // *ret7: 3
 
-	std::vector<int>::iterator ret8 =            // *ret8: 12
-        v1.erase(v1.begin(), v1.begin() + 1);          // v1: [12]
+	std::vector<int>::iterator ret8 = // v1: [12], *ret8: 12
+        v1.erase(v1.begin(), v1.begin() + 1);
 
-	int ret9 = v1.front();                       // ret9: 12
+	int ret9 = v1.front();                        // ret9: 12
 
-	std::vector<int>::allocator_type ret10 =     // ret10.max_size(): 4611686018427387903
-        v1.get_allocator(); 
+	std::vector<int>::allocator_type ret10 = 
+        v1.get_allocator(); // ret10.max_size(): 4611686018427387903
 
-	std::vector<int>::iterator ret11 =           // *ret11: 8
-        v1.insert(++v1.begin(), 8);                    // v1: [12,8]
-	std::vector<int>::iterator ret12 =           // *ret12: 5
-        v1.insert(++v1.begin(), v2.begin(), v2.end()); // v1: [12,5,8]
-	std::vector<int>::iterator ret13 =           // *ret13: 10
-        v1.insert(v1.cend() - 1, 2, 10);               // v1: [12,5,10,10,8]
-	std::vector<int>::iterator ret14 =           // *ret14: 1
-        v1.insert(v1.end(), { 1, 2, 3 });              // v1: [12,5,10,10,8,1,2,3]
+	std::vector<int>::iterator ret11 = // v1: [12,8], *ret11: 8
+        v1.insert(++v1.begin(), 8);
+	std::vector<int>::iterator ret12 = // v1: [12,5,8], *ret12: 5
+        v1.insert(++v1.begin(), v2.begin(), 
+                  v2.end());
+	std::vector<int>::iterator ret13 = // v1: [12,5,10,10,8], *ret13: 10
+        v1.insert(v1.cend() - 1, 2, 10);
+	std::vector<int>::iterator ret14 = // v1: [12,5,10,10,8,1,2,3], *ret14: 1
+        v1.insert(v1.end(), { 1, 2, 3 });
 
-	size_t ret15 = v1.max_size();                // ret15: 4611686018427387903
+	size_t ret15 = v1.max_size(); // ret15: 4611686018427387903
 
-	v1.pop_back();                                     // v1: [12,5,10,10,8,1,2]
+	v1.pop_back();   // v1: [12,5,10,10,8,1,2]
 
-	v1.push_back(1);                                   // v1: [12,5,10,10,8,1,2,1]
+	v1.push_back(1); // v1: [12,5,10,10,8,1,2,1]
 
 	std::vector<int>::reverse_iterator ret16 = v1.rbegin(); // *ret16: 1
 
 	std::vector<int>::reverse_iterator ret17 = v1.rend();   // *ret17: 0
 
-	v1.reserve(10);           // v1: [12,5,10,10,8,1,2,1]
+	v1.reserve(10);  // v1: [12,5,10,10,8,1,2,1]
 
-	v1.resize(3);             // v1: [12,5,10]
+	v1.resize(3);    // v1: [12,5,10]
 
-	v1.shrink_to_fit();       // 调用前, v1.capacity(): 10, 调用后: v1.capacity(): 3
+	v1.shrink_to_fit(); // 调用前, v1.capacity(): 10, 调用后: v1.capacity(): 3
 
 	size_t ret18 = v1.size(); // ret18: 3
 
-	v1.swap(v2);              // v1: [5], v2:[12,5,10]
+	v1.swap(v2);     // v1: [5], v2:[12,5,10]
 }
 ```
 
@@ -254,7 +262,7 @@ protected:
 |resize |$O(n)$ |重设容器大小以容纳 `count` 个元素：<br>+ 若当前大小 > `count` ，则减小容器为其首 `count` 个元素；<br>+ 若当前大小 <  `count` ，插入`(count - 当前大小)`个默认值/指定值的元素。 |
 |reverse |$O(n)$ |翻转容器中的元素。 |
 |size |$O(n)$ |容器中的元素数量。 |
-|sort |$O(n log n)$ |使用list自己的sort算法排序（STL的sort算法只接受`RamdonAccessIterator`），升序排序元素，保持相等元素的顺序。 |
+|sort |$O(n\ log\ n)$ |使用list自己的sort算法排序（STL的sort算法只接受`RamdonAccessIterator`），升序排序元素，保持相等元素的顺序。 |
 |splice |$O(n)$ |将一个容器中的元素拆分出来，放到另一个容器（不复制或移动元素，仅重定向链表节点的内部指针）。 |
 |swap |$O(1)$ |交换2个容器的内容（不在单独的元素上调用任何移动、复制或交换操作）。 |
 |unique |$O(n)$ |从容器移除所有*相继*的重复元素。只留下相等元素组中的第一个元素。若选择的比较器不建立等价关系则行为未定义。 |
@@ -298,10 +306,14 @@ int main()
 
 	std::list<int>::allocator_type ret6 = L1.get_allocator();
 
-	std::list<int>::iterator ret7 = L1.insert(L1.cbegin(), 1);
-	std::list<int>::iterator ret8 = L1.insert(L1.cbegin(), 5, 1);
-	std::list<int>::iterator ret9 = L1.insert(L1.cbegin(), { 1, 2, 3 });
-	std::list<int>::iterator ret10 = L1.insert(L1.cbegin(), L2.begin(), L2.end());
+	std::list<int>::iterator ret7 = 
+        L1.insert(L1.cbegin(), 1);
+	std::list<int>::iterator ret8 = 
+        L1.insert(L1.cbegin(), 5, 1);
+	std::list<int>::iterator ret9 = 
+        L1.insert(L1.cbegin(), { 1, 2, 3 });
+	std::list<int>::iterator ret10 = 
+        L1.insert(L1.cbegin(), L2.begin(), L2.end());
 
 	size_t ret11 = L1.max_size();
 
@@ -330,7 +342,9 @@ int main()
 
 	L1.sort();
 	L1.sort(std::greater<int>());
-    class my_greater { public: bool operator()(const int a, const int b) { return a > b; }; }; 
+    class my_greater { 
+        public: 
+        bool operator()(const int a, const int b) { return a > b; }; }; 
 	L1.sort(my_greater());
 
 	L1.splice(L1.begin(), L2);
@@ -340,7 +354,8 @@ int main()
 	L1.swap(L2);
 
 	L1.unique();
-	L1.unique([](int x, int y) { return (x % 2) && (y % 2); });
+	L1.unique(
+        [](int x, int y) { return (x % 2) && (y % 2); });
 }
 ```
 
@@ -415,73 +430,78 @@ int main()
     std::deque<int> d4{d3};                   // 生成容器的副本
     std::deque<int> d5{d3.begin(), d3.end()}; // 使用迭代器来初始化容器
 
-    d1.assign(5, 1);
-    d1.assign(d3.begin(), d3.end());
-    d1.assign({1, 2, 3, 4, 5});
+    d1.assign(5, 1);                 // d1: [1,1,1,1,1]
+    d1.assign(d3.begin(), d3.end()); // d1: [1,2,3,4,5]
+    d1.assign({1, 2, 3, 4, 5});      // d1: [1,2,3,4,5]
 
-    int& ret1 = d1.at(1); 
+    int& ret1 = d1.at(1);  // ret1: 2
 
-    int& ret2 = d1.back();
+    int& ret2 = d1.back(); // ret2: 5
 
-    std::deque<int>::iterator ret3 = d1.begin();
+    std::deque<int>::iterator ret3 = d1.begin();        // ret3: 1
 
-    std::deque<int>::const_iterator ret4 = d1.cbegin();
+    std::deque<int>::const_iterator ret4 = d1.cbegin(); // ret4: 1
 
-    d1.clear();
+    d1.clear();                       // d1: []
 
-    std::deque<int>::const_reverse_iterator ret5 = d1.crbegin();
+    std::deque<int>::const_reverse_iterator ret5 = 
+        d1.crbegin();                 // *ret5: 0
 
-    std::deque<int>::const_reverse_iterator ret6 = d1.crend();
+    std::deque<int>::const_reverse_iterator ret6 = 
+        d1.crend();                   // *ret6: 0
 
-    std::deque<int>::iterator ret7 = d1.emplace(d1.begin(), 6);
+    std::deque<int>::iterator ret7 =  // *ret7: 6
+        d1.emplace(d1.begin(), 6);    // d1: [6]
 
-    d1.emplace_back(7);
+    d1.emplace_back(7);               // d1: [6,7]
 
-    d1.emplace_front(8);
+    d1.emplace_front(8);              // d1: [8,6,7]
 
-    bool ret8 = d1.empty();
+    bool ret8 = d1.empty();           // ret8: false
 
-    std::deque<int>::iterator ret9 = d1.end();
+    std::deque<int>::iterator ret9 =  // *ret9: 2
+        d1.end();
 
-    std::deque<int>::const_iterator ret10 = d1.cend();
+    std::deque<int>::const_iterator ret10 = // *ret10: 2
+        d1.cend();
 
-    std::deque<int>::iterator ret11 = d1.erase(d1.begin());
+    std::deque<int>::iterator ret11 = // d1: [6, 7], *ret11: 6
+        d1.erase(d1.begin());
 
-    int& ret12 = d1.front();
+    int& ret12 = d1.front();          // ret12: 6
 
-    std::deque<int>::allocator_type ret13 = d1.get_allocator();
+    std::deque<int>::allocator_type ret13 = 
+        d1.get_allocator(); // ret13.max_size() = 4611686018427387903
 
-    std::deque<int>::iterator ret14_1 = 
-        d1.insert(d1.begin(), 9);
-    std::deque<int>::iterator ret14_2 = 
-        d1.insert(d1.begin(), 2, 10);
-    std::deque<int>::iterator ret14_3 = 
+    std::deque<int>::iterator ret14;
+    ret14 = d1.insert(d1.begin(), 9);     // d1: [9,6,7], ret14: 9
+    ret14 = d1.insert(d1.begin(), 2, 10); // d1: [10,10,9,6,7], ret14: 10
+    ret14 =                               // d1: [1,10,10,9,6,7], ret14: 1 
         d1.insert(d1.begin(), d3.begin(), d3.begin() + 1);
-    std::deque<int>::iterator ret14_4 = 
-        d1.insert(d1.begin(), {1, 2});
+    ret14 = d1.insert(d1.begin(), {1, 2});// d1: [1,2,1,10,10,9,6,7], ret14: 1
 
-    size_t ret15 = d1.max_size();
+    size_t ret15 = d1.max_size(); // ret15: 4611686018427387903
 
-    d1.pop_back();
+    d1.pop_back();      // d1: [1,2,1,10,10,9,6]
 
-    d1.pop_front();
+    d1.pop_front();     // d1: [2,1,10,10,9,6]
 
-    d1.push_back(11);
+    d1.push_back(11);   // d1: [2,1,10,10,9,6,11]
 
-    d1.push_front(12);
+    d1.push_front(12);  // d1: [12,2,1,10,10,9,6,11]
 
-    std::deque<int>::reverse_iterator ret16 = d1.rbegin();
+    std::deque<int>::reverse_iterator ret16 = d1.rbegin(); // *ret16: 11
 
-    std::deque<int>::reverse_iterator ret17 = d1.rend();
+    std::deque<int>::reverse_iterator ret17 = d1.rend();   // *ret17: 0
 
-    d1.resize(5);
-    d1.resize(5, 1);
+    d1.resize(5);       // d1: [12,2,1,10,10]
+    d1.resize(7, 1);    // d1: [12,2,1,10,10,1,1]
 
-    d1.shrink_to_fit();
+    d1.shrink_to_fit(); // d1: [12,2,1,10,10,1,1]
 
-    size_t ret18 = d1.size();
+    size_t ret18 = d1.size(); // ret18: 7
 
-    d1.swap(d3);
+    d1.swap(d3);        // d1: [1,2,3,4,5], d3: [12,2,1,10,10,1,1]
 }
 ```
 
@@ -495,8 +515,8 @@ struct _Rb_tree_node_base
   ...
   _Color_type _M_color;	// 节点颜色，非红即黑
   _Base_ptr _M_parent;	// 父节点
-  _Base_ptr _M_left;	  // 左节点（小）
-  _Base_ptr _M_right;	  // 右节点（大）
+  _Base_ptr _M_left;    // 左节点（小）
+  _Base_ptr _M_right;   // 右节点（大）
 };
 
 // RB-tree迭代器
@@ -511,14 +531,14 @@ struct _Rb_tree_base_iterator
 template <class _Value>
 struct _Rb_tree_node : public _Rb_tree_node_base
 {
-  _Value _M_value_field;					// 节点的值
+  _Value _M_value_field;          // 节点的值
 };
 
 template <class _Tp, class _Alloc>
 struct _Rb_tree_base
 {
 protected:
-  _Rb_tree_node<_Tp>* _M_header; 	// 头节点
+  _Rb_tree_node<_Tp>* _M_header; // 头节点
   ...
 }
 
@@ -526,32 +546,106 @@ template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Al
 class _Rb_tree : protected _Rb_tree_base<_Value, _Alloc> {
 protected:
   size_type _M_node_count; // 节点数量
-  _Compare _M_key_compare; // 节点的键值比较函数
+  _Compare _M_key_compare; // 节点的键比较函数
   ...
 }
 ```
 
-|成员函数|描述|
-|:--|:--|
-|begin |返回指向第一个元素的迭代器 |
-|clear |清除所有元素 |
-|count |返回某个值元素的个数 |
-|empty |如果集合为空，返回true |
-|end |返回指向最后一个元素的迭代器 |
-|equal_range |返回第一个>=关键字的迭代器和>关键字的迭代器 |
-|erase |删除集合中的元素 |
-|find |返回一个指向被查找到元素的迭代器 |
-|get_allocator |返回集合的分配器 |
-|insert |插入元素 |
-|lower_bound |返回指向大于或等于某个值的第一个元素的迭代器 |
-|key_comp |返回一个用于元素间比较的函数 |
-|max_size |返回集合能容纳的元素的最大数 |
-|rbegin |返回指向集合中最后一个元素的方向迭代器 |
-|rend |返回指向集合中第一个元素有的反向迭代器 |
-|size |集合中元素的数目 |
-|swap |交换两个集合变量 |
-|upper_bound |返回大于某个值元素的迭代器 |
-|value_comp |返回一个用于比较元素间的值的函数 |
+|成员函数|复杂度|描述|
+|:--|:--|---|
+|begin |$O(1)$ |返回指向第一个元素的迭代器。<br>![set_begin](res/stl/set_begin.png) |
+|cbegin |$O(1)$ |（C++11）返回指向第一个元素的const类型的迭代器。<br/>![set_cbegin](res/stl/set_cbegin.png) |
+|cend |$O(1)$ |（C++11）返回指向容器末元素后一元素的const类型的迭代器。<br/>![set_cend](res/stl/set_cend.png) |
+|clear |$O(n)$ |从容器擦除所有元素。 |
+|count |$O(log\ n)$ |返回某个值元素的个数（因为set不允许重复，所以返回值只可能为1或0）。 |
+|crbegin |$O(1)$ |（C++11）返回指向逆向容器首元素的逆向迭代器。<br>![set_crbegin](res/stl/set_crbegin.png) |
+|crend |$O(1)$ |（C++11）返回指向逆向容器末元素后一元素的逆向迭代器（即非逆向容器第一个元素的前一个位置）。<br>![set_crend](res/stl/set_crend.png) |
+|emplace |$O(log\ n)$ |（C++11）置入元素到容器。 |
+|emplace_hint |$O(log\ n)$ |（C++11）尽可能置入元素到指定位置之前。 |
+|empty |$O(1)$ |如果容器是否为空。 |
+|end |$O(1)$ |返回指向容器末元素后一元素的迭代器。<br>![set_end](res/stl/set_end.png) |
+|equal_range |$O(log\ n)$ |返回容器中所有拥有给定范围的元素。 |
+|erase |$O(log\ n) + O(n)$ |从容器移除指定的元素。 |
+|find |$O(log\ n)$ |查找key与指定值相等的元素。 |
+|get_allocator |$O(1)$ |返回与容器关联的分配器。 |
+|insert |$O(log\ n)$ |如果容器中**不存在**该元素，则插入之，并返回插入元素的迭代器。 |
+|lower_bound |$O(log\ n)$ |返回>=指定值的元素的迭代器。 |
+|key_comp |$O(1)$ |返回用于比较元素key的函数。 |
+|max_size |$O(1)$ |返回根据系统或库实现限制的容器可保有的元素最大数量（该值由`std::distance(begin(), end())`计算得出）。 |
+|rbegin |$O(1)$ |返回指向逆向首元素的逆向迭代器（即，非逆向容器的最后一个元素）。<br>![set_rbegin](res/stl/set_rbegin.png) |
+|rend |$O(1)$ |返回指向逆向容器末元素后一元素的逆向迭代器（即非逆向容器的第一个元素的前一位）。<br>![set_rend](res/stl/set_rend.png) |
+|size |$O(1)$ |容器中的元素数量。 |
+|swap |$O(1)$ |交换两个容器的所有元素（不移动元素，只交换存储元素的底层容器的指针）。 |
+|upper_bound |$O(log\ n)$ |返回大于指定值的元素的迭代器。 |
+|value_comp |$O(1)$ |返回用于比较元素value的函数。 |
+
+```c++
+#include <iostream>
+#include <set>
+
+int main()
+{
+    std::set<int> s1{1, 2, 3};              // 使用初始化列表创建容器
+    std::set<int> s2{s1.begin(), s1.end()}; // 使用迭代器创建容器
+    std::set<int, std::greater<int> > s3{   // 使用迭代器和降序排序创建容器
+        s1.begin(), s1.end() }; 
+
+    std::set<int>::iterator ret1 = s1.begin();
+
+    std::set<int>::const_iterator ret2 = s1.cbegin();
+
+    std::set<int>::const_iterator ret3 = s1.cend();
+
+    s1.clear();
+
+    size_t ret4 = s1.count(1);
+
+    std::set<int>::const_reverse_iterator ret5 = s1.crbegin();
+
+    std::set<int>::const_reverse_iterator ret6 = s1.crend();
+
+    std::pair<std::set<int>::iterator, bool> ret7 = s1.emplace(1);
+
+    std::set<int>::iterator ret8 = s1.emplace_hint(s1.begin(), 2);
+
+    bool ret9 = s1.empty();
+
+    std::set<int>::iterator ret10 = s1.end();
+
+    std::pair<std::set<int>::iterator, 
+                std::set<int>::iterator> ret11 = s1.equal_range(1);
+
+    std::set<int>::iterator ret12 = s1.erase(s1.begin());
+    ret12 = s1.erase(s1.begin(), s1.end());
+    size_t ret12_1 = s1.erase(2);
+
+    std::set<int>::iterator ret13 = s1.find(1);
+
+    std::set<int>::allocator_type ret14 = s1.get_allocator();
+
+    std::pair<std::set<int>::iterator, bool> ret15 = s1.insert(4);
+    std::set<int>::iterator ret15_1 = s1.insert(s1.begin(), 5);
+    s1.insert(s2.begin(), s2.end());
+
+    std::set<int>::iterator ret16 = s1.lower_bound(4);
+
+    std::set<int>::key_compare ret17 = s1.key_comp();
+
+    size_t ret18 = s1.max_size();
+
+    std::set<int>::reverse_iterator ret19 = s1.rbegin();
+
+    std::set<int>::reverse_iterator ret20 = s1.rend();
+
+    size_t ret21 = s1.size();
+
+    s1.swap(s2);
+
+    s1.upper_bound(2);
+
+    std::set<int>::value_compare ret22 = s1.value_comp();
+}
+```
 
 ### map
 
@@ -654,34 +748,103 @@ int main()
 |empty |$O(1)$ |检查容器是否为空。 |
 |pop |$O(1)$ |从栈顶移除元素。 |
 |push |$O(1)$ |推入元素到栈顶。 |
-|size | |返回栈中元素数目 |
-|swap | |（C++11） |
-|top | |返回栈顶元素 |
+|size | $O(1)$ |返回容器中元素数目。 |
+|swap | $O(1)$ |（C++11）交换两个容器的内容。 |
+|top | $O(1)$ |返回栈顶元素的引用。 |
 
 ```c++
-TODO
+#include <iostream>
+#include <stack>
+#include <list>
+
+int main()
+{
+    std::list<int> values{1, 2, 3};
+
+    std::stack<int> s1;                          // 创建容器
+    std::stack<int> s2(s1);                      // 使用另一个容器来初始化
+    std::stack<int, std::list<int> > s3(values); // 指定底层容器，用来初始化
+    std::stack<int, std::list<int> > s4{values}; // 指定底层容器，用初始化列表来初始化
+
+    s1.emplace(4);           // s1: [4]
+
+    bool ret1 = s1.empty();  // ret1: false
+
+    s1.pop();                // s1: []
+
+    s1.push(5);              // s1: [5]
+
+    size_t ret2 = s1.size(); // ret2: 1
+
+    s1.swap(s2);             // s1: [], s2: [5]
+
+    int& ret3 = s1.top();    // s1: [], ret3: 未定义值
+}
 ```
 
 ### queue
 
-|成员函数|描述|
-|:--|:--|
-|back |返回一个引用，指向最后一个元素 |
-|empty |如果队列空则返回真 |
-|front |返回第一个元素 |
-|pop |删除第一个元素 |
-|push |在末尾加入一个元素 |
-|size |返回队列中元素的个数 |
+|成员函数|复杂度|描述|
+|:--|:--|---|
+|back |$O(1)$ |返回容器中最后一个元素的引用。 |
+|emplace |$O(1)$ |（C++11）置入元素到容器尾部。 |
+|empty |$O(1)$ |判断容器是否为空。 |
+|front |$O(1)$ |返回第一个元素的引用。 |
+|pop |$O(1)$ |移除第一个元素。 |
+|push |$O(1)$ |添加元素到容器尾部。 |
+|size |$O(1)$ |返回容器中元素的个数。 |
+|swap |$O(1)$ |（C++11）交换两个容器的所有元素（不移动元素，只交换底层容器的指针）。 |
+
+```c++
+#include <iostream>
+#include <queue>
+#include <deque>
+
+int main()
+{
+    std::deque<int> values{1, 2, 3};
+    std::queue<int> q1(values);                 // 使用构造容器初始化
+    std::queue<int> q2(q1);                     // 复制构造初始化
+    std::queue<int> q3(std::move(q2));          // 移动构造初始化
+    std::queue<int> q4(values.get_allocator()); // 使用底层容器初始化
+    std::queue<int> q5(values, 
+        values.get_allocator()); // 使用指定的容器和内存分配器初始化
+    std::queue<int> q6(std::move(values), 
+        values.get_allocator()); // 移动指定的容器和内存分配器初始化
+    std::queue<int> q7(q5, 
+        values.get_allocator()); // 使用另一个容器和内存分配器初始化
+
+    int& ret1 = q1.back();  // ret1: 3
+
+    q1.emplace(4);          // q1: [1,2,3,4]
+
+    bool ret2 = q1.empty(); // ret2: false
+
+    int& ret3 = q1.front(); // ret3: 1
+
+    q1.pop();               // q1: [2,3,4]
+
+    q1.push(5);             // q1: [2,3,4,5]
+
+    size_t ret4 = q1.size();// ret4: 4
+
+    q1.swap(q2);            // q1: [], q2: [2,3,4,5]
+}
+```
 
 ### priority queues
 
-|成员函数|描述|
-|:--|:--|
-|empty |判断优先队列是否为空 |
-|pop |删除第一个元素 |
-|push |加入一个元素 |
-|size |返回优先队列中拥有的元素个数 |
-|top |返回优先队列中有最高优先级的元素 |
+|成员函数|复杂度|描述|
+|:--|:--|---|
+|empty | |判断优先队列是否为空 |
+|pop | |删除第一个元素 |
+|push | |加入一个元素 |
+|size | |返回优先队列中拥有的元素个数 |
+|top | |返回优先队列中有最高优先级的元素 |
+
+```c++
+
+```
 
 ---
 
@@ -689,54 +852,54 @@ TODO
 
 ## 算法
 
-|算法|复杂度|头文件|描述/示意图/代码|
+|算法|头文件|复杂度|描述/示意图/代码|
 |:--|---|---|---|
-|accumulate||stl_numeric|元素累计。|
-|adjacent_difference||stl_numeric|计算相邻元素的差。|
-|adjacent_find||stl_algo|查找相邻而重复（或符合某条件）的元素。|
-|binary_search||stl_algo|在已排序的范围内二分查找元素。<br>![](res/stl/algo_binary_search.png)|
-|copy||stl_algobase|将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。<br>![algo_copy](res/stl/algo_copy.png)|
-|copy_backward||stl_algobase|逆向复制|
-|copy_n||stl_algobase|复制n个元素|
-|count||stl_algo|计数|
-|count_if||stl_algo|在特定条件下计数|
-|equal||stl_algobase|判断两个区间相等与否|
-|equal_range||stl_algo|试图在有序区间中寻找某值(返回一个上下限区间)|
-|fill||stl_algobase|填充元素|
-|fill_n||stl_algobase|填充元素，n次|
-|find||stl_algo|循序查找|
-|find_if||stl_algo|循序查找符合特定条件者|
-|find_end||stl_algo|查找某个子序列的最后一次出现点|
-|find_first_of||stl_algo|查找某些元素的首次出现点|
-|for_each | |stl_algo |遍历并操作指定范围内的元素。<br>![algo_foreach](res/stl/algo_foreach.png) |
-|generate | |stl_algo |以特定操作之运算结果填充特定区间内的元素 |
-|generate_n | |stl_algo |以特定操作之运算结果填充特n个元素内容 |
-|includes | |stl_algo |是否涵盖于某序列之中 |
-|inner_product | |stl_numeric |计算内积 |
-|inplace_merge | |stl_algo |合并并就地替换(覆写上去) |
-|iota | |stl_numeric |在某区间填入某指定值的递增序列 |
+|accumulate|||元素累计。|
+|adjacent_difference|||计算相邻元素的差。|
+|adjacent_find|||查找相邻而重复（或符合某条件）的元素。|
+|binary_search|||在已排序的范围内二分查找元素。<br>![](res/stl/algo_binary_search.png)|
+|copy|||将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。<br>![algo_copy](res/stl/algo_copy.png)|
+|copy_backward|||逆向复制|
+|copy_n|||复制n个元素|
+|count|||计数|
+|count_if|||在特定条件下计数|
+|equal|||判断两个区间相等与否|
+|equal_range|||试图在有序区间中寻找某值(返回一个上下限区间)|
+|fill|||填充元素|
+|fill_n|||填充元素，n次|
+|find|||循序查找|
+|find_if|||循序查找符合特定条件者|
+|find_end|||查找某个子序列的最后一次出现点|
+|find_first_of|||查找某些元素的首次出现点|
+|for_each | | |遍历并操作指定范围内的元素。<br>![algo_foreach](res/stl/algo_foreach.png) |
+|generate | | |以特定操作之运算结果填充特定区间内的元素 |
+|generate_n | | |以特定操作之运算结果填充特n个元素内容 |
+|includes | | |是否涵盖于某序列之中 |
+|inner_product | | |计算内积 |
+|inplace_merge | | |合并并就地替换(覆写上去) |
+|iota | | |在某区间填入某指定值的递增序列 |
 |is_heap | | |判断某区间是否为一个heap |
 |is_sorted | | |判断某区间是否已排序 |
-|iter_swap | |stl_algobase |元素互换 |
-|lexicographical_compare | |stl_numeric |以字典顺序进行比较 |
-|lower_bound | |stl_algo |找到指定范围内的第一个不小于指定值的元素。<br>![lower_bound](res/stl/algo_lower_bound.png) |
+|iter_swap | | |元素互换 |
+|lexicographical_compare | | |以字典顺序进行比较 |
+|lower_bound | | |找到指定范围内的第一个不小于指定值的元素。<br>![lower_bound](res/stl/algo_lower_bound.png) |
 |make_heap | | | |
-|max | |stl_algobase | 取两个对象中的较大值 |
-|max_element | |stl_algo | 取最大值所在位置 |
-|merge | |stl_algo | 合并两个序列 |
-|min | |stl_algobase | 取两个对象中的较小值 |
-|min_element | |stl_algo | 取最小值所在位置 |
-|mismatch | |stl_algobase |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点。<br>![algo_mismatch](res/stl/algo_mismatch.png) |
-| merge          |           | stl_algo  | 将两个**有序**的集合合并起来，放置于另一段空间。<br>![](res/stl/algo_merge.png) |
-| next_permutation |  | std_algo | 获得的下一个排列组合 |
-| nth_element |  | stl_algo | 重新安排序列中的第n个元素的左右两端 |
-| partial_sort |  | stl_algo | 局部排序 |
-| partial_sort_copy |  | stl_algo | 局部排序并复制到他处 |
-| partial_sum |  | stl_numeric | 局部求和 |
-| partition |  | stl_algo.h | 分割 |
-| prev_permutation |  | stl_algo.h | 获得前一个排列组合 |
+|max | | | 取两个对象中的较大值 |
+|max_element | | | 取最大值所在位置 |
+|merge | | | 合并两个序列 |
+|min | | | 取两个对象中的较小值 |
+|min_element | | | 取最小值所在位置 |
+|mismatch | | |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点。<br>![algo_mismatch](res/stl/algo_mismatch.png) |
+| merge          |           |           | 将两个**有序**的集合合并起来，放置于另一段空间。<br>![](res/stl/algo_merge.png) |
+| next_permutation |  |  | 获得的下一个排列组合 |
+| nth_element |  |  | 重新安排序列中的第n个元素的左右两端 |
+| partial_sort |  |  | 局部排序 |
+| partial_sort_copy |  |  | 局部排序并复制到他处 |
+| partial_sum |  |  | 局部求和 |
+| partition |  |  | 分割 |
+| prev_permutation |  |  | 获得前一个排列组合 |
 | pop_heap |  |  |  |
-| power |  | stl_numeric | 幂次方 |
+| power |  |  | 幂次方 |
 | push_heap |  |  |  |
 | random_shuffle |  |  | 将指定范围内的元素次序随机重排 |
 | random_sample |  |  |  |

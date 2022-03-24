@@ -602,7 +602,7 @@ std::set_union(std::begin(set1), std::end(set1),
                std::greater<int>()); // 比较函数
 ```
 
-### 5.6.2 set_intersection()算法
+### 5.6.2set_intersection()算法
 
 ```c++
 // 使用set_intersection实现交集运算
