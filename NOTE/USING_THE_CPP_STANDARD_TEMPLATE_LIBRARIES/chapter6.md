@@ -33,6 +33,67 @@ std::copy(std::begin(words), std::end(words),
           std::ostream_iterator<string>{std::cout, " "}); // 输出 six four two one nine nine one three five
 ```
 
+```c++
+// Name.h
+#ifndef NAME_H
+#define NAME_H
+#include <string>
+class Name
+{
+private:
+    std::string first{};
+    std::string second{};
+    
+public:
+    Name(const std::string& name1, const std::string& name2) : first(name1), second(name2) {}
+    Name() = default;
+    std::string get_first() const { return first; }
+    std::string get_second() const { return second; }
+    
+    friend std::istream& operator>>(std::istream& in, Name& name);
+    friend std::ostream& operator<<(std::ostream& out, const Name& name);
+};
+
+inline std::istream& operator>>(std::istream& in, Name& name)
+{
+    return in >> name.first >> name.second;
+}
+
+inline std::ostream& operator<<(std::ostream& out, const Name& name)
+{
+    return out << name.first << " " << name.second;
+}
+#endif
+```
+
+```c++
+// Ex6_01.cpp
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+#include "Name.h"
+
+int main()
+{
+    std::vector<Name> names;
+    std::cout << "Enter names as first name followed by second name.Enter Ctrl+Z to end:";
+    std::copy(std::istream_iterator<Name>(std::cin), std::istream_iterator<Name>(), 
+              std::back_insert_iterator<std::vector<Name>>(names));
+    
+    std::cout << names.size() << " names read. Sorting in ascending sequence... \n";
+    std::sort(std::begin(names), std::end(names), 
+              [](const Name& name1, const Name& name2){
+                  return name1.get_second() < name2.get_second();
+              });
+    
+    std::cout << "\nThe names in ascending sequence are:\n";
+    std::copy(std::begin(names), std::end(names),
+              std::ostream_iterator<Name>(std::cout, "\n"));
+}
+```
+
 ### 6.1.1排序以及相等元素的顺序
 
 ```c++
@@ -427,7 +488,7 @@ if (iter != std::end(numbers))
 
 ### 6.3.3在序列中查找多个元素
 
-1. adjacent_find()算法
+1. `adjacent_find()`算法
 
    ```c++
    // 用adjacent_find搜索序列中两个连续相等的元素
@@ -457,7 +518,7 @@ if (iter != std::end(numbers))
                  << *iter << " and " << *(iter + 1) << std::endl; // 输出 The first pair of odd numbers is 121 and 17
    ```
 
-2. find_end()算法
+2. `find_end()`算法
 
    ```c++
    // 使用find_end搜索序列中最后一个和另一个序列匹配的项
@@ -516,7 +577,7 @@ if (iter != std::end(numbers))
    std::cout << "\n\"" << phrase << "\" was found " << count << " times." << std::endl; // 输出 "had had" was found 5 times.
    ```
 
-3. search()算法
+3. `search()`算法
 
    ```c++
    // 使用search搜索字符串
@@ -537,7 +598,7 @@ if (iter != std::end(numbers))
    std::cout << "\n\"" << phrase << "\" was found " << count << " times." << std::endl;
    ```
 
-4. search_n()算法
+4. `search_n()`算法
 
    ```c++
    std::vector<double> values{2.7, 2.7, 2.7, 3.14, 3.14, 3.14, 2.7, 2.7};
@@ -598,7 +659,7 @@ for (const auto& name : names)
     std::cout << std::get<0>(name) 
 ```
 
-### 6.4.1paritiion_copy()算法
+### 6.4.1 paritiion_copy()算法
 
 `partition_copy()`算法以和`stable_partition()`相同的方式对序列进行分区，但那些使谓词返回true的元素会被复制到一个单独的序列中，使谓词返回false的那些元素会被复制到第三个序列中。
 
@@ -631,7 +692,7 @@ int main()
 }
 ```
 
-### 6.4.2partition_point()算法
+### 6.4.2 partition_point()算法
 
 `partition_point()`算法来获取分区序列中第一个分区的结束迭代器。
 
@@ -659,7 +720,7 @@ std::cout << std::endl;
 
 *二分查找*
 
-### 6.5.1binary_search()算法
+### 6.5.1 binary_search()算法
 
 `binary_search()`实现了一个二分查找算法。
 
@@ -686,7 +747,7 @@ else
   std::cout << wanted << " cannot be found - maybe you got it wrong..." << std::endl;
 ```
 
-### 6.5.2lower_bound()算法
+### 6.5.2 lower_bound()算法
 
 `lower_bound()`算法可以在前两个参数指定的范围内查找不小于第三个参数的第一个元素--也就是说，大于等于第三个参数的第一个元素。
 
@@ -700,7 +761,7 @@ std::cout << "The upper bound for " << wanted << " is "
           << *std::upper_bound(std::begin(values), std::end(values), wanted) << std::endl;
 ```
 
-### 6.5.3equal_range()算法
+### 6.5.3 equal_range()算法
 
 `equal_range()`可以找出有序序列中所有和给定元素相等的元素。
 

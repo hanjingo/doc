@@ -713,11 +713,10 @@ int main()
 	auto ret11 = m1.get_allocator();
 	
 	std::pair<std::map<int, std::string>::iterator, bool> ret12 
-        = m1.insert(std::make_pair(4, "four"));  // 插入单个元素，返回迭代器
-	m2.insert(std::begin(m1), std::end(m1));     // 插入一段元素，无返回
+        = m1.insert(std::make_pair(4, "four"));
+	m2.insert(std::begin(m1), std::end(m1));
 
-	std::map<int, std::string>::key_compare ret13 = m1.key_comp(); // 返回用于比较的函数对象
-	ret13(1, 2);
+	std::map<int, std::string>::key_compare ret13 = m1.key_comp(); 
 
 	std::map<int, std::string>::iterator ret14 = m1.lower_bound(2);
 
@@ -765,6 +764,10 @@ int main()
     std::stack<int> s2(s1);                      // 使用另一个容器来初始化
     std::stack<int, std::list<int> > s3(values); // 指定底层容器，用来初始化
     std::stack<int, std::list<int> > s4{values}; // 指定底层容器，用初始化列表来初始化
+    std::stack<int, std::list<int> > s5(values, 
+                        values.get_allocator()); // 指定底层容器和内存分配器来初始化
+    std::stack<int, std::list<int> > s6(s3, 
+                        values.get_allocator()); // 指定容器和内存分配器来初始化
 
     s1.emplace(4);           // s1: [4]
 
@@ -796,12 +799,9 @@ int main()
 |swap |$O(1)$ |（C++11）交换两个容器的所有元素（不移动元素，只交换底层容器的指针）。 |
 
 ```c++
-#include <iostream>
-#include <queue>
-#include <deque>
-
 int main()
 {
+    int a[]{1, 2, 3};
     std::deque<int> values{1, 2, 3};
     std::queue<int> q1(values);                 // 使用构造容器初始化
     std::queue<int> q2(q1);                     // 复制构造初始化
@@ -813,6 +813,11 @@ int main()
         values.get_allocator()); // 移动指定的容器和内存分配器初始化
     std::queue<int> q7(q5, 
         values.get_allocator()); // 使用另一个容器和内存分配器初始化
+    std::queue<int> q8(std::begin(a), 
+        std::end(a));            // 使用迭代器初始化
+    std::queue<int> q9(std::begin(a), std::end(a), 
+        values.get_allocator()); // 使用迭代器和内存分配器初始化
+    
 
     int& ret1 = q1.back();  // ret1: 3
 
@@ -832,18 +837,47 @@ int main()
 }
 ```
 
-### priority queues
+### priority queue
 
 |成员函数|复杂度|描述|
 |:--|:--|---|
-|empty | |判断优先队列是否为空 |
-|pop | |删除第一个元素 |
-|push | |加入一个元素 |
-|size | |返回优先队列中拥有的元素个数 |
-|top | |返回优先队列中有最高优先级的元素 |
+|emplace|$O(log\ n)$|（C++11）置入新元素到容器。|
+|empty |$O(1)$ |判断容器是否为空。 |
+|pop |$O(log\ n)$ |移除第一个元素。 |
+|push |$O(log\ n)$ |推入一个元素。 |
+|size |$O(1)$ |返回容器中元素的个数。 |
+|swap |$O(1)$ |（C++11）交换2个容器的元素。 |
+|top |$O(1)$ |返回容器中第一个元素。 |
 
 ```c++
+#include <iostream>
+#include <queue>
+#include <vector>
 
+int main()
+{
+    int values[]{1, 2, 3};
+    std::priority_queue<int> p1{                 // 使用迭代器初始化
+        std::begin(values), std::end(values)};
+    std::priority_queue<int> p2{p1};             // 使用另一个容器初始化
+    std::priority_queue<int, std::vector<int>, 
+                        std::greater<int> > p3 {
+        std::begin(values), std::end(values)};   // 使用迭代器和指定底层容器及比较函数初始化
+
+    p1.emplace(4);           // p1: [4,3,2,1]
+
+    bool ret1 = p1.empty();  // ret1: false
+
+    p1.pop();                // p1: [3,2,1]
+
+    p1.push(5);              // p1: [5,3,2,1]
+
+    size_t ret2 = p1.size(); // ret2: 4
+
+    p1.swap(p2);             // p1: [3,2,1], p2: [5,3,2,1]
+
+    int ret3 = p1.top();     // ret3: 3
+}
 ```
 
 ---
