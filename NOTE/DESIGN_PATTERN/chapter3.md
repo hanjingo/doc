@@ -649,4 +649,57 @@
 
 8. 实现
 
-   TODO
+   使用Singleton模式时所要考虑的实现问题：
+   
+   1. 保证一个唯一的实例：
+      - 我们不能保证静态对象只有一个实例被声明。
+      - 我们可能没有足够的信息在静态初始化时实例化每一个单件。单件可能需要在程序执行中稍后被计算出来的值。
+      - C++没有定义转换单元（translation unit）上全局对象的构造器的调用顺序。这就意味着单件之间不存在依赖关系；如果有，那么错误将是不可避免的。
+   2. 创建Singleton类的子类。
+   
+9. 代码示例
+
+   ```c++
+   class MazeFactory {
+   public:
+       static MazeFactory* Instance();
+       
+   protected:
+       MazeFactory();
+       
+   private:
+       static MazeFactory* _instance;
+   };
+   
+   MazeFactory* MazeFactory::_instance = 0;
+   
+   MazeFactory* MazeFactory::Instance() {
+       if (_instance == 0) {
+           const char* mazeStyle = getenv("MAZESTYLE");
+           
+           if (strcmp(mazeStyle, "bombed") == 0) {
+               _instance = new EnchantedMazeFactory;
+               
+               // ...
+           } else {
+           	_instance = new MazeFactory;
+           }
+       }
+       return _instance;
+   }
+   ```
+
+10. 已知应用
+
+11. 相关模式
+
+    Abstract Factory
+
+    Builder
+
+    Prototype
+
+
+
+## 3.6 创建型模式的讨论
+

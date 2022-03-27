@@ -1011,6 +1011,8 @@ cumbersome `/ˈkʌmbəs(ə)m/` 笨重的，累赘的
 
 curriculum `/kəˈrɪkjələm/` 课程，全部课程
 
+curve `/kɜːv/` 曲线，曲面，弯曲
+
 cushion `/ˈkʊʃn/` 坐垫，缓冲，减轻
 
 custom `/ˈkʌstəm/` 海关，关税，风俗，习惯，惠顾，订做
@@ -1070,6 +1072,8 @@ deficit `/ˈdefɪsɪt/` 赤字，亏损
 definite `/ˈdefɪnət/` 明确的，可靠的，权威的，决定性的
 
 defrost `/ˌdiːˈfrɒst/` 解冻，除霜
+
+defunct `/dɪˈfʌŋkt/` 不复存在的，失效的，死亡的，解散的
 
 degrade `/dɪˈɡreɪd/` 贬低，降级，恶化，分解，侮辱，削弱
 
@@ -2493,6 +2497,8 @@ mate `/meɪt/` 朋友，伙伴，同事，配偶，交配
 
 matchless `/ˈmætʃləs/` 无敌的，无可匹敌的
 
+maze `/meɪz/` 迷宫，错综复杂
+
 ### me
 
 [回到M](#M)--[回到顶部](#英汉词典)
@@ -2586,6 +2592,8 @@ monotonous `/məˈnɒtənəs/` 单调的，无聊的
 monument `/ˈmɒnjumənt/` 纪念碑，遗迹
 
 morale `/məˈrɑːl/` 士气，斗志
+
+motif `/məʊˈtiːf/` 主题，动机
 
 motion `/ˈməʊʃn/` 运动，移动，手势，提议
 
@@ -2888,6 +2896,8 @@ parachute `/ˈpærəʃuːt/` 降落伞，跳伞
 parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
 paramount `/ˈpærəmaʊnt/` 元首，至尊的，权力最大的
+
+paranoid `/ˈpærənɔɪd/` 偏执狂，妄想症患者
 
 paraphrase `/ˈpærəfreɪz/` 解释，释义
 
@@ -3720,6 +3730,8 @@ snug `/snʌɡ/` 舒适的，温暖的，合身的
 ### so
 
 [回到S](#S)--[回到顶部](#英汉词典)
+
+soar `/sɔːr/` 骤增，猛升
 
 sole `/səʊl/` 唯一的，独占，鞋底，脚掌
 

@@ -173,7 +173,7 @@
 
 ### 生物信息学
 
-- 生信入门神器 [bwapi](https://github.com/bwapi)/**[bwapi](https://github.com/bwapi/bwapi)**
+- DNA比对 [lh3](https://github.com/lh3)/**[bwa](https://github.com/lh3/bwa)**
 
 ### 其他
 

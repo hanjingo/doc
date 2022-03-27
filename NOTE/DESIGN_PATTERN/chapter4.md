@@ -1,297 +1,148 @@
-# 可复用面向对象软件的基础 创建型模式
-特别说明:本文件中部分代码来自:
-1. https://www.cnblogs.com/chengjundu/p/8473564.html
-2. <设计模式：可复用面向对象软件的基础>
+# 第四章 结构型模式
 
-## 创建型模式
-简介:在创建对象时使用方法or类而不使用new运算符的方式
+[TOC]
 
-### 生成器(BUILDER)
-简介:将一个复杂对象的构建与他的表示分离,使得同样的构建过程可以创建不同的表示
+## 4.1 ADAPTER（适配器） - 类对象结构型模式
 
-用途:
-> 1. 当创建复杂对象的算法应该独立于该对象的组成部分以及他们的装配方式时
-> 2. 当构造过程必须允许被构造的对象有不同的表示时
+1. 意图
 
-- - -
-### 工厂方法(FACTORY METHOD)
-简介:定义一个创建对象的接口，让子类决定实例化哪一个类，Factory Method使一个类的实例化延迟到其子类。
+   将一个类的接口转换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
 
-用途:
-> 1. 我们明确地计划不同条件下创建不同实例的时候
-> 2. 当一个类希望由它的子类来制定它所创建的对象的时候
+2. 别名
 
-示例:
-```c++
-class Tank
-{
-public:
-    virtual void message() = 0;
-};
+   包装器Wrapper。
 
-class Tank80:public Tank
-{
-public:
-    void message()
-    {
-        cout << "Tank80" << endl;
-    }
-};
+3. 动机
 
-class Tank99:public Tank
-{
-public:
-    void message()
-    {
-        cout << "Tank99" << endl;
-    }
-};
+4. 适用性
 
-class TankFactory
-{
-public:
-    virtual Tank* createTank() = 0;
-};
+   以下情况使用Adapter模式：
 
-class Tank80Factory:public TankFactory
-{
-public:
-    Tank* createTank()
-    {
-        return new Tank80();
-    }
-};
+   - 你想使用一个已经存在的类，而它的接口不符合你的需求。
+   - 你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。
+   - （仅适用于对象Adapter）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。
 
-class Tank99Factory:public TankFactory
-{
-public:
-    Tank* createTank()
-    {
-        return new Tank99();
-    }
-};
-```
+5. 结构
 
-- - -
-### 抽象工厂(ABSTACT FACTORY)
-简介:提供一个创建一系列相关或相互依赖的对象接口，无需指定他们的具体类.
+   ![4_1a](res/4_1a.png)
 
-用途:
-> 在一个产品族里面，定义多个产品,而系统只消费其中某一族的产品
+   *类适配器使用多重继承对一个接口与另一个接口进行匹配*
 
-示例:
-```c++
-class Tank
-{
-public:
-    virtual void message() = 0;
-};
+   ![4_1b](res/4_1b.png)
 
-class Tank80:public Tank
-{
-public:
-    void message()
-    {
-        cout << "Tank80" << endl;
-    }
-};
+   *对象匹配器依赖于对象的组合*
 
-class Tank99:public Tank
-{
-public:
-    void message()
-    {
-        cout << "Tank99" << endl;
-    }
-};
+6. 参与者
 
-class Plain
-{
-public:
-    virtual void message() = 0;
-};
+   - `Target(Shape)` 定义Client使用的与特定领域相关的接口。
+   - `Client(DrawingEditor)` 与符合Target接口的对象协同。
+   - `Adaptee(TextView)` 定义一个已经存在的接口，这个接口需要适配。
+   - `Adapter(TextShape)` 对Adaptee的接口与Target接口进行适配。
 
-class Plain80: public Plain
-{
-public:
-    void message()
-    {
-        cout << "Plain80" << endl;
-    }
-};
+7. 协作
 
-class Plain99: public Plain
-{
-public:
-    void message()
-    {
-        cout << "Plain99" << endl;
-    }
-};
+   - Client在Adapter实例上调用一些操作。接着适配器调用Adaptee的操作实现这个请求。
 
-class Factory
-{
-public:
-    virtual Tank* createTank() = 0;
-    virtual Plain* createPlain() = 0;
-};
+8. 效果
 
-class Factory80:public Factory
-{
-public:
-    Tank* createTank()
-    {
-        return new Tank80();
-    }
+   对类适配器的权衡：
 
-    Plain* createPlain()
-    {
-        return new Plain80();
-    }
-};
+   - 用一个具体的Adapter类对Adaptee和Target进行匹配。结果是当我们想要匹配一个类以及所有它的子类时，类Adapter将不能胜任工作。
+   - 使得Adapter可以重定义Adaptee的部分行为，因为Adapter是Adaptee的一个子类。
+   - 仅仅引入了一个对象，并不需要额外的指针以间接得到adaptee。
 
-class Factory99:public Factory
-{
-public:
-    Tank* createTank()
-    {
-        return new Tank99();
-    }
+   对对象适配器的权衡：
 
-    Plain* createPlain()
-    {
-        return new Plain99();
-    }
-};
-```
+   - 允许一个Adapter与多个Adaptee，即Adaptee本身以及它的所有子类（如果有子类的话）同时工作。Adapter也可以一次给所有的Adaptee添加功能。
+   - 使得重定义Adaptee的行为比较困难。这就需要生成Adaptee的子类并使得Adapter引用这个子类而不是引用Adaptee本身。
+   
+   使用Adapter模式时需要考虑的其他一些因素：
+   
+   1. Adapter的匹配程度。
+   2. 可插入的Adapter。
+   3. 使用双向适配器提供透明操作。
+   
+9. 实现
 
-- - -
-###　原型(PROTOTYPE)
-简介:用原型实例指定创建对象的种类,并且通过拷贝这些原型创建新的对象
+   使用Adapter模式需要注意以下问题：
 
-用途:一般用在一开始不确定对象的类型,需要在程序运行期间创建新的对象
+   1. 使用C++实现适配器类。
+   2. 可插入的适配器。
 
-示例:
-```c++
-class Clone
-{
-public:
-    Clone()
-    {
-    }
-    virtual ~Clone()
-    {
-    }
-    virtual Clone* clone() = 0;
-    virtual void show() = 0;
-};
+10. 代码示例
 
-class Sheep:public Clone
-{
-public:
-    Sheep(int id, string name):Clone(),m_id(id),m_name(name)
-    {
-        cout << "Sheep() id add:" << &m_id << endl;
-        cout << "Sheep() name add:" << &m_name << endl;
-    }
+   ```c++
+   class Shape {
+   public:
+       Shape();
+       virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
+       virtual Manipulator* CreateManipulator() const;
+   };
+   
+   class TextView {
+   public:
+       TextView();
+       void GetOrigin(Coord& x, Coord& y) const;
+       void GetExtent(Coord& width, Coord& height) const;
+       virtual bool IsEmpty() const;
+   };
+   
+   class TextShape : public Shape {
+   public:
+       TextShape(TextView*);
+       
+       virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
+       virtual bool IsEmpty() const;
+       virtual Manipulator* CreateManipulator() const;
+   private:
+       TextView* _text;
+   };
+   
+   TextShape::TextShape(TextView* t) {
+       _text = t;
+   }
+   
+   void TextShape::BoundingBox(Point& bottomLeft, Point& topRight) const {
+       Coord bottom, left, width, height;
+       
+       GetOrigin(bottom, left);
+       GetExtent(width, height);
+       
+       bottomLeft = Point(bottom, left);
+       topRight = Point(bottom + height, left + width);
+   }
+   
+   bool TextShape::IsEmpty() const {
+       return TextView::IsEmpty();
+   }
+   
+   Manipulator* TextShape::CreateManipulator() const {
+       return new TextManipulator(this);
+   }
+   ```
 
-    ~Sheep()
-    {
-    }
+11. 已知应用
 
-    Sheep(const Sheep& obj)
-    {
-        this->m_id = obj.m_id;
-        this->m_name = obj.m_name;
-        cout << "Sheep(const Sheep& obj) id add:" << &m_id << endl;
-        cout << "Sheep(const Sheep& obj) name add:" << &m_name << endl;
-    }
+12. 相关模式
 
-    Clone* clone()
-    {
-        return new Sheep(*this);
-    }
+    Bridge
 
-    void show()
-    {
-        cout << "id  :" << m_id << endl;
-        cout << "name:" << m_name.data() << endl;
-    }
+    Decorator
 
-private:
-    int m_id;
-    string m_name;
-};
+    Proxy
 
-int main()
-{
-    Clone* s1 = new Sheep(1, "abs");
-    s1->show();
-    Clone* s2 = s1->clone();
-    s2->show();
-    delete s1;
-    delete s2;
-    return 0;
-}
-```
 
-- - -
-###　单例(SINGLETON)
-简介:保证一个类只有一个实例,并提供一个访问他的全局访问点
 
-单例大约有两种实现方法：懒汉与饿汉。
->　懒汉：在第一次用到类实例的时候才会去实例化
->　饿汉：在单例类定义的时候就进行实例化
+## 4.2 BRIDGE（桥接） - 对象结构型模式
 
-特点与选择：
-- 由于要进行线程同步，所以在访问量比较大，或者可能访问的线程比较多时，采用饿汉实现，可以实现更好的性能。这是以空间换时间
-- 在访问量较小时，采用懒汉实现。这是以时间换空间
+1. 意图
 
-示例:
-```c++
-//懒汉式：加lock，线程安全
-std::mutex mt;
-class Singleton
-{
-public:
-    static Singleton* getInstance();
+   将抽象部分与它的实现部分分离，使它们都可以独立地变化。
 
-private:
-    Singleton(){}
-    Singleton(const Singleton&) = delete;  //明确拒绝
-    Singleton& operator=(const Singleton&) = delete; //明确拒绝
-    static Singleton* m_pSingleton;
-};
+2. 别名
 
-Singleton* Singleton::m_pSingleton = NULL;
-Singleton* Singleton::getInstance()
-{
-    if(m_pSingleton == NULL)
-    {
-        mt.lock();
-        m_pSingleton = new Singleton();
-        mt.unlock();
-    }
-    return m_pSingleton;
-}
-//END
+   Handle/Body
 
-//饿汉式：线程安全，注意delete
-class Singleton
-{
-public:
-    static Singleton* getInstance();
-private:
-    Singleton(){}
-    Singleton(const Singleton&) = delete;  //明确拒绝
-    Singleton& operator=(const Singleton&) = delete; //明确拒绝
-    static Singleton* m_pSingleton;
-};
+3. 动机
 
-Singleton* Singleton::m_pSingleton = new Singleton();
-Singleton* Singleton::getInstance()
-{
-    return m_pSingleton;
-}
-//END
-```
+   TODO
