@@ -18,13 +18,13 @@
 
 ### 编程
 
-| 书名                                          | 作者                                                         | 版次 | 备注           |
-| --------------------------------------------- | ------------------------------------------------------------ | ---- | -------------- |
-| Compilers Principles, Techniques, & Tools     | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2ED  | 学底层原理必看 |
-| TCP/IP Illustrated<br>Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2ED  | 学网络协议必看 |
-| Design Pattern                                | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1ED  | 学设计模式必看 |
-|                                               |                                                              |      |                |
-|                                               |                                                              |      |                |
+| 书名                                                         | 作者                                                         | 版次 | 备注                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ------------------- |
+| 编译原理<br>Compilers Principles, Techniques, & Tools        | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2th  | 学底层原理必看      |
+| TCP/IP详解-卷一<br>TCP/IP Illustrated - Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2th  | 网络编程方面的圣经  |
+| 设计模式<br>Design Pattern                                   | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1th  | 学设计模式必看      |
+| STL源码刨析<br>The Annotated STL Sources(using SGI STL)      | + 侯捷                                                       | 1th  | 对stl讲解的比较详细 |
+|                                                              |                                                              |      |                     |
 
 ### 经济学
 
@@ -36,7 +36,7 @@
 |      |      |      |      |
 |      |      |      |      |
 
-### 医学
+### 生物学
 
 | 书名 | 作者 | 版次 | 备注 |
 | ---- | ---- | ---- | ---- |
@@ -50,7 +50,7 @@
 | 书名                                                         | 作者 | 版次 | 备注                                                         |
 | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | IPFS与Filecoin 从入门到精通<br>IPFS-Internals                |      |      | GitHub地址 [xipfs](https://github.com/xipfs)/**[IPFS-Internals](https://github.com/xipfs/IPFS-Internals)** |
-| 百万在线-大型游戏服务端开发<br>the book of million online game server development |      |      | GitHub资源 [luopeiyu](https://github.com/luopeiyu)/**[million_game_server](https://github.com/luopeiyu/million_game_server)** |
+| 百万在线-大型游戏服务端开发<br>the book of million online game server development |      |      | 随书资源的GitHub地址 [luopeiyu](https://github.com/luopeiyu)/**[million_game_server](https://github.com/luopeiyu/million_game_server)** |
 |                                                              |      |      |                                                              |
 |                                                              |      |      |                                                              |
 |                                                              |      |      |                                                              |
@@ -70,11 +70,13 @@
 - 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
 - 谷歌内存回收库 [tcmalloc](https://github.com/google/tcmalloc)
 - Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
+- C++日志库 [log4cpp](http://log4cpp.sourceforge.net/)
 
 ### 算法库
 
 - 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - C++算法库 [C-Plus-Plus](https://github.com/TheAlgorithms/C-Plus-Plus)
+- 压缩算法库 [madler](https://github.com/madler)/**[zlib](https://github.com/madler/zlib)**
 
 ### 数学库
 
@@ -140,6 +142,7 @@
 - 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
 - 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
 - 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
+- C语言版png图片处理库 [glennrp](https://github.com/glennrp)/**[libpng](https://github.com/glennrp/libpng)**
 
 ### 即时通讯
 
@@ -159,7 +162,7 @@
 
 ### 安全
 
-- [openssl](https://github.com/openssl/openssl)
+- 加密库 [openssl](https://github.com/openssl)/**[openssl](https://github.com/openssl/openssl)**
 - [json web token-libjwt](https://github.com/benmcollins/libjwt)
 - Qt版本的沙箱软件 [sandboxie-plus](https://github.com/sandboxie-plus)/**[Sandboxie](https://github.com/sandboxie-plus/Sandboxie)**
 
@@ -170,6 +173,8 @@
 - GO预言实现的视频下载工具 [annie](https://github.com/iawia002/annie)
 - mac系统的安装程序 [HomeBrew](https://github.com/Homebrew/brew)
 - 远程登录程序 [frp](https://github.com/fatedier/frp)
+- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
+- Qt写的Markdown编辑器，支持graphviz语法 [vnotex](https://github.com/vnotex)/**[vnote](https://github.com/vnotex/vnote)**
 
 ### 生物信息学
 
@@ -189,7 +194,7 @@
 - 电子书目录汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
 - [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)
 - [性能优化相关专题](https://github.com/XINCGer/Unity3DTraining/tree/master/PerformanceOptimization)
-- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
+- PDF处理库 [libharu](https://github.com/libharu)/**[libharu](https://github.com/libharu/libharu)**
 
 
 

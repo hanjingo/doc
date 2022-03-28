@@ -47,7 +47,7 @@
   - [侧链与搭建](EOSIO/side_chain.md)
   - [EOS钱包](EOSIO/wallet.md)
 
-### EOS源码分析
+### 源码分析
 
 * [action](EOSIO/ansys_action.md)
 * [contract](EOSIO/ansys_contract.md)
@@ -95,7 +95,7 @@
 - [命令](IPFS/cmd.md)
 - [环境配置](IPFS/env.md)
 
-### IPFS源码分析
+### 源码分析
 
 - [assets](IPFS/ansys_assets.md)
 - [blocks](IPFS/ansys_blocks.md)

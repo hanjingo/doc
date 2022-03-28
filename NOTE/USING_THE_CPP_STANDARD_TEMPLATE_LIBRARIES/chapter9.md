@@ -454,4 +454,123 @@ std::istreambuf_iterator<char> in{std::cin};
 
 - `operator*()` 返回的是流中当前字符的副本。流的位置不会被提前，因此可以反复的获取当前字符。
 - `opertor->()` 可以访问当前字符的成员 - 如果它有成员的话。
-- `operator++()`和`operator++(int)`都 TODO
+- `operator++()`和`operator++(int)`都会将流的位置移到下一个字符。`operator++()`在移动位置后才返回流迭代器，`operator++(int)`在被移动位置之前返回流迭代器的一个代理。前缀++运算符很少使用。
+- `equal()` 接受另一个输入流缓冲区迭代器为参数，并返回true，前提是当前迭代器和参数都不是流结束迭代器，或者都是流结束迭代器。如果它们之中只有一个流结束迭代器，会返回false。
+
+### 9.5.2 输出流缓冲区迭代器
+
+```c++
+// 生成ostreambuf_iterator对象将给定类型的字符写到流中
+string file_name{"007.txt"};
+std::ofstream junk_out{file_name};
+std::ostreambuf_iterator<char> out{junk_out};
+```
+
+ostreambuf_iterator对象有下面这些成员函数：
+
+- `operator=()` 会将参数字符写到流缓冲区中。如果识别到EOF，就说明流缓冲区是满的，这个写操作失败。
+- 当上一次写缓冲区失败时，failed()返回true。当识别到EOF时，会发生这种情况，因为输出流缓冲区是满的。
+- `operator*()` 不做任何事。之所以定义它，是因为它需要的`ostreambuf_iterator`对象是一个输出迭代器。
+- `operator++()`和`operator++(int)`不做任何事。之所以定义它们，是因为它们需要的`ostreambuf_iterator`对象是一个输出迭代器。
+
+### 9.5.3 对文件流使用输出流缓冲区迭代器
+
+```c++
+// Ex9_09.cpp
+#include <iostream>
+#include <iterator>
+#include <fstream>
+#include <string>
+using std::string;
+
+int main()
+{
+    string file_name{"007.txt"};
+    std::ifstream file_in{file_name};
+    if (!file_in)
+    {
+        std::cerr << file_name << " not open." << std::endl;
+        exit(1);
+    }
+    string file_copy("007.txt");
+    std::ofstream file_out{file_copy, std::ios_base::out | std::ios_base::trunc};
+    
+    std::istreambuf_iterator<char> in{file_in};
+    std::istreambuf_iterator<char> end_in;
+    std::ostreambuf_iterator<char> out{file_out};
+    while (in != end_in)
+        out = *in++;
+    
+    std::cout << "File copy completed." << std::endl;
+    
+    file_in.close();
+    file_out.close();
+}
+```
+
+
+
+## 9.6 string流，流，以及缓冲区迭代器
+
+string流是表示内存中字符缓冲区中的I/O对象，是定义在sstream头文件中的3个模板中的一个模板的实例：
+
+- `basic_istringstream` 支持从内存中的字符缓冲区读取数据。
+- `basic_ostringstream` 支持写数据到内存中的字符缓冲区。
+- `basic_stringstream` 支持字符缓冲区上的输入和输出操作。
+
+![9_2](res/9_2.png)
+
+*string流类型的继承层次*
+
+```c++
+// Ex9_10.cpp
+#include <iostream>
+#include <fstream>
+#include <iterator>
+#include <string>
+#include <set>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+using std::string;
+
+int main()
+{
+    string file_in{"007.txt"};
+    std::ifstream in{file_in};
+    if (!in)
+    {
+        std::cerr << file_in << " not open." << std::endl;
+        exit(1);
+    }
+    std::stringstream instr;
+    std::copy(std::istreambuf_iterator<char>{in},
+              std::istreambuf_iterator<char>(),
+              std::ostreambuf_iterator<char>{nstr});
+    in.close();
+    
+    std::vector<string> words;
+    string word;
+    auto end_iter = std::istream_iterator<string>{};
+    while (true)
+    {
+        std::cout << "\nEnter a word, or Ctrl+Z to end: ";
+        if ((std::cin >> word).eof()) break;
+        
+        string word_copy{word};
+        do
+        {
+            instr.clear();
+            instr.seekg(0);
+            if (std::find(std::istream_iterator<string>(instr), end_iter, word) != end_iter)
+                words.push_back(word);
+            std::next_permutation(std::begin(word), std::end(word));
+        } while(word != word_copy);
+        
+        std::copy(std::begin(words), std::end(words), std::ostream_iterator<string>{std::cout, " "});
+        std::cout << std::endl;
+        words.clear();
+    }
+}
+```
+
