@@ -1093,6 +1093,8 @@ demolish `/dɪˈmɒlɪʃ/` 拆除，毁坏
 
 demonstrate `/ˈdemənstreɪt/` 证明，证实，说明，表露，演示，示威，游行
 
+denature `/diːˈneɪ.tʃɚ/` 变性，使...失去自然属性
+
 denomination `/dɪˌnɒmɪˈneɪʃn/` 面额，面值，名目
 
 dense `/dens/` 稠密的，密集的，浓密的，笨拙的

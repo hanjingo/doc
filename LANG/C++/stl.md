@@ -4,6 +4,14 @@
 
 
 
+## 智能指针
+
+TODO
+
+---
+
+
+
 ## 容器
 
 ### array
@@ -149,34 +157,36 @@ int main()
         std::make_move_iterator(std::begin(v4)),
         std::make_move_iterator(std::end(v4)) }; 
 
-	v1.assign({1, 2, 3, 4, 5});       // v1: [1,2,3,4,5]
+	v1.assign({1, 2, 3, 4, 5});            // v1: [1,2,3,4,5]
 
-	int ret1 = v1.at(0);                          // ret1: 1
+	int ret1 = v1.at(0);                   // ret1: 1
 
-	int ret2 = v1.back();                         // ret2: 5
+	int ret2 = v1.back();                  // ret2: 5
 
-	std::vector<int>::iterator ret3 = v1.begin(); // *ret3: 1
+	std::vector<int>::iterator ret3 = 
+        v1.begin();                        // *ret3: 1
 
-	size_t ret4 = v1.capacity();                  // ret4: 5
+	size_t ret4 = v1.capacity();          // ret4: 5
 
-	v1.clear();                       // v1: []
+	v1.clear();                           // v1: []
 
 	std::vector<int>::iterator ret5 = 
-        v1.emplace(v1.end(), 11);     // v1: [11], *ret5: 11
+        v1.emplace(v1.end(), 11);         // v1: [11], *ret5: 11
 
-	v1.emplace_back(12);              // v1: [11,12]
+	v1.emplace_back(12);                 // v1: [11,12]
 
-	bool ret6 = v1.empty();                       // ret6: false
+	bool ret6 = v1.empty();              // ret6: false
 
-	std::vector<int>::iterator ret7 = v1.end();   // *ret7: 3
+	std::vector<int>::iterator ret7 = 
+        v1.end();                        // *ret7: 3
 
-	std::vector<int>::iterator ret8 = // v1: [12], *ret8: 12
+	std::vector<int>::iterator ret8 =   // v1: [12], *ret8: 12
         v1.erase(v1.begin(), v1.begin() + 1);
 
-	int ret9 = v1.front();                        // ret9: 12
+	int ret9 = v1.front();              // ret9: 12
 
 	std::vector<int>::allocator_type ret10 = 
-        v1.get_allocator(); // ret10.max_size(): 4611686018427387903
+        v1.get_allocator();             // ret10.max_size(): 4611686018427387903
 
 	std::vector<int>::iterator ret11 = // v1: [12,8], *ret11: 8
         v1.insert(++v1.begin(), 8);
@@ -188,25 +198,27 @@ int main()
 	std::vector<int>::iterator ret14 = // v1: [12,5,10,10,8,1,2,3], *ret14: 1
         v1.insert(v1.end(), { 1, 2, 3 });
 
-	size_t ret15 = v1.max_size(); // ret15: 4611686018427387903
+	size_t ret15 = v1.max_size();      // ret15: 4611686018427387903
 
-	v1.pop_back();   // v1: [12,5,10,10,8,1,2]
+	v1.pop_back();                     // v1: [12,5,10,10,8,1,2]
 
-	v1.push_back(1); // v1: [12,5,10,10,8,1,2,1]
+	v1.push_back(1);                   // v1: [12,5,10,10,8,1,2,1]
 
-	std::vector<int>::reverse_iterator ret16 = v1.rbegin(); // *ret16: 1
+	std::vector<int>::reverse_iterator ret16 = 
+        v1.rbegin();                   // *ret16: 1
 
-	std::vector<int>::reverse_iterator ret17 = v1.rend();   // *ret17: 0
+	std::vector<int>::reverse_iterator ret17 = 
+        v1.rend();                     // *ret17: 0
 
-	v1.reserve(10);  // v1: [12,5,10,10,8,1,2,1]
+	v1.reserve(10);                   // v1: [12,5,10,10,8,1,2,1]
 
-	v1.resize(3);    // v1: [12,5,10]
+	v1.resize(3);                     // v1: [12,5,10]
 
-	v1.shrink_to_fit(); // 调用前, v1.capacity(): 10, 调用后: v1.capacity(): 3
+	v1.shrink_to_fit();               // 调用前, v1.capacity(): 10, 调用后: v1.capacity(): 3
 
-	size_t ret18 = v1.size(); // ret18: 3
+	size_t ret18 = v1.size();         // ret18: 3
 
-	v1.swap(v2);     // v1: [5], v2:[12,5,10]
+	v1.swap(v2);                      // v1: [5], v2:[12,5,10]
 }
 ```
 
@@ -808,15 +820,15 @@ int main()
     std::queue<int> q3(std::move(q2));          // 移动构造初始化
     std::queue<int> q4(values.get_allocator()); // 使用底层容器初始化
     std::queue<int> q5(values, 
-        values.get_allocator()); // 使用指定的容器和内存分配器初始化
+        values.get_allocator());                // 使用指定的容器和内存分配器初始化
     std::queue<int> q6(std::move(values), 
-        values.get_allocator()); // 移动指定的容器和内存分配器初始化
+        values.get_allocator());                // 移动指定的容器和内存分配器初始化
     std::queue<int> q7(q5, 
-        values.get_allocator()); // 使用另一个容器和内存分配器初始化
+        values.get_allocator());                // 使用另一个容器和内存分配器初始化
     std::queue<int> q8(std::begin(a), 
-        std::end(a));            // 使用迭代器初始化
+        std::end(a));                           // 使用迭代器初始化
     std::queue<int> q9(std::begin(a), std::end(a), 
-        values.get_allocator()); // 使用迭代器和内存分配器初始化
+        values.get_allocator());                // 使用迭代器和内存分配器初始化
     
 
     int& ret1 = q1.back();  // ret1: 3
@@ -860,8 +872,7 @@ int main()
     std::priority_queue<int> p1{                 // 使用迭代器初始化
         std::begin(values), std::end(values)};
     std::priority_queue<int> p2{p1};             // 使用另一个容器初始化
-    std::priority_queue<int, std::vector<int>, 
-                        std::greater<int> > p3 {
+    std::priority_queue<int, std::vector<int>, std::greater<int> > p3 { 
         std::begin(values), std::end(values)};   // 使用迭代器和指定底层容器及比较函数初始化
 
     p1.emplace(4);           // p1: [4,3,2,1]
@@ -886,539 +897,378 @@ int main()
 
 ## 算法
 
-|算法|头文件|复杂度|描述/示意图/代码|
-|:--|---|---|---|
-|accumulate|||元素累计。|
-|adjacent_difference|||计算相邻元素的差。|
-|adjacent_find|||查找相邻而重复（或符合某条件）的元素。|
-|binary_search|||在已排序的范围内二分查找元素。<br>![](res/stl/algo_binary_search.png)|
-|copy|||将输入区间`[first,last)`内的元素复制到输出区间`[result,result+(last-first))`内。<br>![algo_copy](res/stl/algo_copy.png)|
-|copy_backward|||逆向复制|
-|copy_n|||复制n个元素|
-|count|||计数|
-|count_if|||在特定条件下计数|
-|equal|||判断两个区间相等与否|
-|equal_range|||试图在有序区间中寻找某值(返回一个上下限区间)|
-|fill|||填充元素|
-|fill_n|||填充元素，n次|
-|find|||循序查找|
-|find_if|||循序查找符合特定条件者|
-|find_end|||查找某个子序列的最后一次出现点|
-|find_first_of|||查找某些元素的首次出现点|
-|for_each | | |遍历并操作指定范围内的元素。<br>![algo_foreach](res/stl/algo_foreach.png) |
-|generate | | |以特定操作之运算结果填充特定区间内的元素 |
-|generate_n | | |以特定操作之运算结果填充特n个元素内容 |
-|includes | | |是否涵盖于某序列之中 |
-|inner_product | | |计算内积 |
-|inplace_merge | | |合并并就地替换(覆写上去) |
-|iota | | |在某区间填入某指定值的递增序列 |
-|is_heap | | |判断某区间是否为一个heap |
-|is_sorted | | |判断某区间是否已排序 |
-|iter_swap | | |元素互换 |
-|lexicographical_compare | | |以字典顺序进行比较 |
-|lower_bound | | |找到指定范围内的第一个不小于指定值的元素。<br>![lower_bound](res/stl/algo_lower_bound.png) |
-|make_heap | | | |
-|max | | | 取两个对象中的较大值 |
-|max_element | | | 取最大值所在位置 |
-|merge | | | 合并两个序列 |
-|min | | | 取两个对象中的较小值 |
-|min_element | | | 取最小值所在位置 |
-|mismatch | | |平行比较两个序列，指出两者之间的第一个不匹配点，返回一对迭代器，分别指向两个序列中的不匹配点。<br>![algo_mismatch](res/stl/algo_mismatch.png) |
-| merge          |           |           | 将两个**有序**的集合合并起来，放置于另一段空间。<br>![](res/stl/algo_merge.png) |
-| next_permutation |  |  | 获得的下一个排列组合 |
-| nth_element |  |  | 重新安排序列中的第n个元素的左右两端 |
-| partial_sort |  |  | 局部排序 |
-| partial_sort_copy |  |  | 局部排序并复制到他处 |
-| partial_sum |  |  | 局部求和 |
-| partition |  |  | 分割 |
-| prev_permutation |  |  | 获得前一个排列组合 |
-| pop_heap |  |  |  |
-| power |  |  | 幂次方 |
-| push_heap |  |  |  |
-| random_shuffle |  |  | 将指定范围内的元素次序随机重排 |
-| random_sample |  |  |  |
-| random_sample_n |  |  |  |
-|remove | | |移除指定范围内所有与value相等的元素<br>![algo_remove](res/stl/algo_remove.png) |
-|remove_copy | | | |
-|remove_if | | | |
-|remove_copy_if | | | |
-|replace | | | 将指定范围内的所有old_value都以new_value取代 |
-|replace_copy | | |  |
-|replace_copy_if | | |  |
-|replace_if | | |  |
-|reverse | | | 将序列中的元素在原容器中翻转 |
-|reverse_copy | | |  |
-|rotate | | |将`[first,middle)`内的元素和`[middle,last)`内的元素互换。<br>![algo_rotate](res/stl/algo_rotate.png) |
-|rotate_copy | | | |
-|search | | | 在序列一中查找与序列二完全匹配的子序列 |
-|search_n | | |在指定的序列区间中查找连续n个符合条件的元素形成的子序列，返回指向该子序列起始处的迭代器。<br>![algo_search_n](res/stl/algo_search_n.png) |
-|set_difference | | | |
-|set_intersection | | | |
-|set_symmetric_difference | | | |
-|set_union | | | |
-|sort | | |排序；<br/>- 数据量大时采用Quick Sort，分段式递归排序；<br/>![algo_sort](res/stl/algo_quick_sort.png)- 数据量小于某个门槛时，改用Insertion Sort；<br/>- 如果递归层次过深，还会改用Heap Sort。 |
-|sort_heap | | | |
-|stable_partition | | | |
-|stable_sort | | | |
-|swap | | | |
-|swap_range | | | |
-|transform | | | |
-|unique | | |移除重复的元素<br>![algo_unique](res/stl/algo_unique.png) |
-|unique_copy | | | |
-|upper_bound | | | 二分查找(binary search)法的一个版本，“查找可插入value的最后一个合适位置” |
-|make_heap | | |  |
-|pop_heap | | |  |
-|push_heap | | |  |
-|sort_heap | | |  |
+### 生成与填充
+
+| 算法             | 头文件    | 复杂度   | 描述/示意图/代码                                             |
+| ---------------- | --------- | -------- | ------------------------------------------------------------ |
+| fill             | algorithm | $O(n)$   | 将指定值保存到序列中的每一个元素。                           |
+| fill_n           | algorithm | $O(n)$   | 将指定值保存到序列中的前n个元素。                            |
+| is_permutation   | algorithm | $O(n^2)$ | 判断一个序列是否是另一个序列的一个排列。                     |
+| generate         | algorithm | $O(n)$   | 将指定函数生成的值保存到序列中的每一个元素。                 |
+| generate_n       | algorithm | $O(n)$   | 将指定函数生成的值保存到序列中的前n个元素。                  |
+| next_permutation | algorithm | $O(n)$   | 按字典序的升序来生成元素的下一个排列，如果下一个排列存在，返回true；否则，元素被排为序列的第一排列，返回false。 |
+| prev_permutation | algorithm | $O(n)$   | 按字典序的升序来生成元素的前一个排列，如果前一个排列存在，返回true；否则，元素被排为序列中的最后一个排列，返回false。 |
+
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> f{1, 2, 3, 4, 5};
+    std::fill(f.begin(), f.end(), 2); // f:  [2,2,2,2,2]
+
+    std::vector<int> fn{1, 2, 3, 4, 5};
+    std::fill_n(fn.begin(), 3, 2);    // fn: [2,2,2,4,5]
+
+    std::vector<int> ip1{1, 2, 3, 4, 5};
+    std::vector<int> ip2{3, 5, 4, 1, 2};
+    std::vector<int> ip3{3, 5, 4, 1, 1};
+    bool ret_ip;
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin());   // ret_ip: true
+    ret_ip = std::is_permutation(ip1.begin(), ip2.end(), ip2.begin(), 
+                                 ip2.begin() + 3);                       // ret_ip: false
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin(), 
+                                 [](int n1, int n2){ return n1 < n2; }); // ret_ip: false
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin(), 
+                                 ip2.begin() + 3, 
+                                 [](int n1, int n2){ return n1 < n2; }); // ret_ip: false
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip3.begin());   // ret_ip: false
+
+    std::vector<int> g1{1, 2, 3, 4, 5};
+    int n = 1;
+    std::generate(g1.begin(), g1.end(), [&n](){ return n * 2; });        // g1: [2,2,2,2,2]
+
+    std::vector<int> gn1{1, 2, 3, 4, 5};
+    std::generate_n(gn1.begin(), gn1.size() / 2, [&n](){ return ++n; }); // gn1: [2,3,3,4,5]
+
+    std::vector<int> np{1, 2, 3, 3, 6, 5, 4};
+    bool ret_np;
+    ret_np = std::next_permutation(np.begin(), np.end());                // ret_np: true
+    ret_np = std::next_permutation(np.begin(), np.end(), 
+        [](int n1, int n2){ return n1 < n2; });                          // ret_np: true
+
+    std::vector<int> pp{1, 2, 3, 4, 6, 5, 4};
+    bool ret_pp;
+    ret_pp = std::prev_permutation(pp.begin(), pp.end());                // ret_pp: true
+    ret_pp = std::prev_permutation(pp.begin(), pp.end(), 
+        [](int n1, int n2){ return n1 < n2; });                          // ret_pp: true
+}
+```
+
+### 排序
+
+| 算法            | 头文件    | 复杂度                             | 描述/示意图/代码                                             |
+| --------------- | --------- | ---------------------------------- | ------------------------------------------------------------ |
+| is_sorted       | algorithm | $O(n)$                             | 判断指定范围内的元素是否以不降序的方式排列。                 |
+| is_sorted_until | algorithm | $O(n)$                             | 判断指定范围内的元素是否有序，并返回一个指向这段元素中升序序列上边界元素的迭代器。 |
+| nth_element     | algorithm | $O(n)$                             | 提供指定值对指定范围的元素进行分区排序，并使得指定值左边的所有元素 <= 指定值右边的所有元素；<br>![algo_nth_element](res/stl/algo_nth_element.png) |
+| partial_sort    | algorithm | $O((last-first)log(middle-first))$ | 对指定范围内的元素进行部分排序；<br>![algo_partial_sort](res/stl/algo_partial_sort.png) |
+| sort            | algorithm | $O(n \times log(n))$               | 以不降序的方式排序指定范围内的元素，不保证维持相等元素的顺序。 |
+| stable_sort     | algorithm | $O(n \times log(n))$               | 以不降序的方式排序指定范围内的元素。                         |
+
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> is1{1, 2, 3, 3, 4};
+    bool ret_is;
+    ret_is = std::is_sorted(is1.begin(), is1.end());                // ret_is: true
+    ret_is = std::is_sorted(is1.begin(), is1.end(), 
+                            std::greater<>());                      // ret_is: false
+    ret_is = std::is_sorted(is1.begin(), is1.end(), 
+                            [](int n1, int n2){ return n1 < n2; }); // ret_is: true
+
+    std::vector<int> isu1{1, 2, 3, 3, 6, 5, 4};
+    std::vector<int>::iterator ret_isu;
+    ret_isu = std::is_sorted_until(isu1.begin(), isu1.end()); // *ret_isu: 5
+    ret_isu = std::is_sorted_until(isu1.begin(), isu1.end(), 
+                                   std::greater<>());         // *ret_isu: 2
+    ret_isu = std::is_sorted_until(isu1.begin(), isu1.end(), 
+               [](int n1, int n2){ return n1 < n2; });        // *ret_isu: 5
+
+    std::vector<int> ne{4, 3, 2, 1, 5, 7, 6, 8};
+    std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end()); // ne: [3,1,2,4,5,7,6,8]
+    std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end(), 
+                     std::greater<>());                                 // ne: [5,8,6,7,4,3,2,1]
+    std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end(), 
+                     [](int n1, int n2){ return n1 < n2; });            // ne: [4,1,2,3,5,6,7,8]
+
+    std::vector<int> ps1{3, 4, 2, 1, 5};
+    std::partial_sort(ps1.begin(), ps1.begin() + 3, ps1.end()); // ps1: [1,2,3,4,5]
+    std::partial_sort(ps1.begin(), ps1.begin() + 3, ps1.end(), 
+        [](int n1, int n2){ return n1 < n2; });                 // ps1: [1,2,3,4,5]
+
+    std::vector<int> s1{3, 4, 2, 1, 5};
+    std::vector<int> s2{s1};
+    std::vector<int> s3{s1};
+    std::sort(s1.begin(), s1.end());                                 // s1: [1,2,3,4,5]
+    std::sort(s2.begin(), s2.end(), 
+              [](int n1, int n2){ return n1 < n2 && n2 % 2 != 0; }); // s2: [2,3,4,1,5]
+    std::sort(s3.begin(), s3.end(), std::greater<>());               // s3: [5,4,3,2,1]
+
+    std::vector<int> ss1{3, 4, 2, 1, 5};
+    std::vector<int> ss2{ss1};
+    std::vector<int> ss3{ss1};
+    std::stable_sort(ss1.begin(), ss1.end());                               // ss1: [1,2,3,4,5]
+    std::stable_sort(ss2.begin(), ss2.end(), 
+                     [](int n1, int n2){ return n2 % 2 == 0 && n1 < n2; }); // ss2: [3,1,2,4,5]
+    std::stable_sort(ss3.begin(), ss3.end(), std::greater<>());             // ss3: [5,4,3,2,1]
+}
+```
+
+### 合并
+
+| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ------------- | ------ | ------ | ---------------- |
+| implace_merge |        |        |                  |
+| merge         |        |        |                  |
+
+```c++
+TODO
+```
+
+### 搜索
+
+| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ------------- | ------ | ------ | ---------------- |
+| adjacent_find |        |        |                  |
+| binary_search |        |        |                  |
+| find          |        |        |                  |
+| find_end      |        |        |                  |
+| find_first_of |        |        |                  |
+| find_if       |        |        |                  |
+| find_if_not   |        |        |                  |
+| lower_bound   |        |        |                  |
+| search        |        |        |                  |
+| search_n      |        |        |                  |
+
+```c++
+TODO
+```
+
+### 分区
+
+| 算法            | 头文件 | 复杂度 | 描述/示意图/代码 |
+| --------------- | ------ | ------ | ---------------- |
+| partition       |        |        |                  |
+| partition_point |        |        |                  |
+
+```c++
+TODO
+```
+
+### 比较
+
+| 算法                    | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ----------------------- | ------ | ------ | ---------------- |
+| equal                   |        |        |                  |
+| equal_range             |        |        |                  |
+| mismatch                |        |        |                  |
+| lexicographical_compare |        |        |                  |
+
+```c++
+TODO
+```
+
+### 复制
+
+| 算法            | 头文件 | 复杂度 | 描述/示意图/代码 |
+| --------------- | ------ | ------ | ---------------- |
+| copy            |        |        |                  |
+| copy_n          |        |        |                  |
+| copy_if         |        |        |                  |
+| copy_backward   |        |        |                  |
+| partition_copy  |        |        |                  |
+| remove_copy     |        |        |                  |
+| remove_copy_if  |        |        |                  |
+| replace_copy    |        |        |                  |
+| replace_copy_if |        |        |                  |
+| reverse_copy    |        |        |                  |
+| rotate_copy     |        |        |                  |
+| unique_copy     |        |        |                  |
+
+```c++
+TODO
+```
+
+### 去重
+
+| 算法   | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ------ | ------ | ------ | ---------------- |
+| unique |        |        |                  |
+
+```c++
+TODO
+```
+
+### 转换
+
+| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ------------- | ------ | ------ | ---------------- |
+| iter_swap     |        |        |                  |
+| replace       |        |        |                  |
+| replace_if    |        |        |                  |
+| reverse       |        |        |                  |
+| rotate        |        |        |                  |
+| swap          |        |        |                  |
+| swap_ranges   |        |        |                  |
+| transform     |        |        |                  |
+| move          |        |        |                  |
+| move_backward |        |        |                  |
+
+```c++
+TODO
+```
+
+### 修改
+
+| 算法      | 头文件 | 复杂度 | 描述/示意图/代码 |
+| --------- | ------ | ------ | ---------------- |
+| remove    |        |        |                  |
+| remove_if |        |        |                  |
+
+```c++
+TODO
+```
+
+### 数值计算
+
+| 算法                | 头文件 | 复杂度 | 描述/示意图/代码 |
+| ------------------- | ------ | ------ | ---------------- |
+| accumulate          |        |        |                  |
+| adjacent_difference |        |        |                  |
+| inner_product       |        |        |                  |
+| iota                |        |        |                  |
+| min                 |        |        |                  |
+| min_element         |        |        |                  |
+| minmax              |        |        |                  |
+| max_element         |        |        |                  |
+| partial_sum         |        |        |                  |
 
 ---
 
 
 
-## 最佳实践
+## 随机数
 
-### 1.选择合适的算法
+TODO
 
-排序算法：
+---
 
-| 需求                                                         | sort | stable_sort | partial | stable_partition | nth_element |
-| ------------------------------------------------------------ | ---- | ----------- | ------- | ---------------- | ----------- |
-| 需要对vector，string，deque或者数组中的元素执行一次完全排序  | *    | *           |         |                  |             |
-| 有一个vector，string，deque或者数组，并且只需对等价性最前面的n个元素进行排序 |      |             | *       |                  |             |
-| 有一个vector，string，deque或者数组，并且需要找到第n个位置上的元素，或者，需要找到等价性最前面的n个元素但又不必对这n个元素进行排序 |      |             |         |                  | *           |
-| 需要将一个标准序列容器中的元素按照是否满足某个特定的条件区分开来 |      |             | *       | *                |             |
-| 需要对list中的数据排序                                       |      |             | *       | *                |             |
 
-### 2.选择合适的容器
 
-| 需求                                                         | vector | list | deque | set<br>multiset | map<br>multimap | stack | queue<br>priority queues |
-| ------------------------------------------------------------ | ------ | ---- | ----- | --------------- | --------------- | ----- | ------------------------ |
-| 在容器的任意位置插入新元素                                   | *      | *    | *     |                 |                 |       |                          |
-| 不关心容器中的元素是如何排序的                               |        |      |       |                 |                 |       |                          |
-| 随机访问迭代器                                               | *      |      | *     |                 |                 |       |                          |
-| 当发生元素的插入或删除操作时，避免移动容器中原来的元素       |        | *    |       | *               | *               |       |                          |
-| 数据的布局需要和C兼容                                        | *      |      |       |                 |                 |       |                          |
-| 对元素的查找速度敏感                                         | *      |      |       | *               | *               |       |                          |
-| 使迭代器，指针或引用变为无效的次数最少                       |        | *    |       |                 |                 |       |                          |
-| 使用随机访问迭代器，没有删除操作，且插入操作只发生在容器尾部 |        |      | *     |                 |                 |       |                          |
+## I/O流
 
-### 3.尽量使用empty函数判空而不是检查size()==0
+### 流迭代器
 
-- empty对所有的标准容器的操作都是**常数时间**，且empty函数常常会被内联，而size对于一些list的操作是**线性时间**；
+![io_inheritance](res/stl/io_inheritance.png)
 
-### 4.区间成员函数优先于与之对应的单元素成员函数
-
-- 通过使用区间成员函数，通常可以少写一些代码；
-- 使用区间成员函数通常会得到意图清晰和更加直接的代码；
-- 使用单元素的成员函数比使用区间成员函数需要更多地调用内存分配子，更频繁地拷贝对象，且做了冗余操作；
-- 当需要给容器一组全新的值时，使用assign而不是operator=；
-
-使用单元素成员函数进行插入：
-
-```c++
-int data[numValues];
-vector<int> v;
-vector<int>::iterator insertLoc(v.begin());
-for (int i = 0; i < numValues; ++i) {
-    insertLoc = v.insert(insertLoc, data[i]);
-    ++insertLoc;
-}
-```
-
-使用区间成员函数进行插入：
-
-```c++
-int data[numValues];
-vector<int> v;
-v.insert(v.begin(), data, data + numValues); // 使用区间插入效率比单元素插入高得多
-```
-
-### 5.小心C++编译器的分析机制-尽可能地将代码解释为函数声明
-
-错误的做法：
-
-```c++
-list<int> data(istream_iterator<int>(dataFile), 
-               istream_iterator<int>()); // 参数没有名称，类型是指向不带参数的函数的指针，该函数返回一个istream_iterator<int>
-```
-
-正确的做法：
-
-```c++
-istream_iterator<int> dataBegin(dataFile);
-istream_iterator<int> dataEnd;
-list<int> data(dataBegin, dataEnd);
-```
-
-### 6.如果容器中包含了通过new操作创建的指针，切记在容器对象析构前将指针delete掉
-
-- 指针容器在自己被析构时会析构所包含的每个元素，但对指针的析构函数不做处理，也不会调用delete；
-
-  错误的做法：
+- `istream_iterator`输入流迭代器
 
   ```c++
-  void doSomething()
+  #include <iostream>
+  #include <iterator>
+  
+  int main()
   {
-      vector<Widget*> vwp;
-      for (int i = 0; i < SOME_MAGIC_NUMBER; ++i)
-          vwp.push_back(new Widget); // 使用了new创建指针
-  }
-  ... // 发生内存泄漏！！！当vwp的作用域结束时，它的元素全部被析构，但是通过new创建的对象没有被删除；
-  ```
-
-  正确的做法：
-
-  ```c++
-  void doSomething()
-  {
-      vector<Widget*> vwp;
-      for (int i = 0; i < SOME_MAGIC_NUMBER; ++i)
-          vwp.push_back(new Widget); // 使用了new创建指针
+      std::cout << "Enter some integers - enter Ctrl+Z to end.\n";
+      std::istream_iterator<int> iter{std::cin};
       
-      // 手动释放
-      for (vector<Widget*>::iterator i = vwp.begin(); i != vwp.end(); ++i)
-          delete *i;
-  }
-  ```
-
-### 7.禁止创建包含auto_ptr的容器对象
-
-- COAP（auto_ptr的容器）不可移植；
-
-- 拷贝一个auto_ptr意味着改变它的值；
-
-  ```c++
-  auto_ptr<Widget> pw1(new Widget); // pw1指向一个Widget。
-  auto_ptr<Widget> pw2(pw1);        // pw2指向pw1的Widget；pw1被置为NULL（Widget的所有权从pw1转移到了pw2）。
-  pw1 = pw2;                        // pw1指向Widget，pw2被置为NULL。
-  ```
-
-### 8.STL容器的线程安全性不够
-
-- **多个线程读是安全的**，多个线程可以同时读同一个容器的内容，并且保证是正确的；在读的过程中，不能对容器有任何写入操作；
-
-- **多个线程对不同的容器做写入操作是安全的**，多个线程可以同时对不同的容器做写入操作；
-
-- 建议使用RAII（Resource Acquisition Is Initialization）的方式来手动控制同步；
-
-  ```c++
-  TODO
-  ```
-
-### 9.推荐使用vector和string而不是动态分配的数组
-
-- 大多数情况下，推荐使用vector和string替换动态分配的数组；
-- 在多线程环境中，推荐使用内置数组代替含有引用计数的string；多线程下，为保证string的引用计数的安全性而采取的措施，会影响效率；
-
-### 10.使用reserve来避免不必要的重新分配
-
-- 尽早使用reserve，把容器的容量设置为足够大，以避免重新分配；
-
-  ```c++
-  vector<int> v;
-  v.reserve(1000); // 预先分配容量，防止push_back的过程中进行扩容
-  for (int i = 1; i <= 1000; ++i)
-      v.push_back(i);
-  ```
-
-### 11.避免使用`vector<bool>`
-
-- `vector<bool>`是一个假的容器，为了节省空间，它并不真的存储bool，而是使用类似1个字节存储8个bool的位域（bitfield）方式来存放；
-
-### 12.包含指针的关联容器指定比较类型
-
-- 当创建包含指针的关联容器时，容器会按照**指针的值**而不是**指针指向的内容**进行排序；
-
-- 每当创建包含指针的关联容器时，同时也要指定容器的比较类型；
-
-  创建比较函数通用模版：
-
-  ```c++
-  struct DereferenceLess // 定义一个比较函数的通用模板
-  {
-      template<typename PtrType>
-      bool operator()(PtrType pT1, PtrType pT2) const 
+      std::istream_iterator<int> copy_iter{iter};
+      std::istream_iterator<int> end_iter;
+      
+      // Read some integers to sum
+      int sum{};
+      while (iter != end_iter)
       {
-          return *pT1 < *pT2;
+          sum += *iter++;
       }
-  }
-  
-  set<string*, DereferenceLess> ssp;
-  
-  // 普通方法打印
-  for (StringPtrSet::const_iterator i = ssp.begin(); i != ssp.end(); ++i)
-      cout << i << endl;
-  
-  // 使用for_each算法打印
-  void print(const string *ps)
-  {
-      cout << *ps << endl;
-  }
-  for_each(ssp.begin(), ssp.end(), print);
-  ```
-
-- `>=`对于关联容器来说不是一个合法的比较函数，相等的值从来不会有前后顺序关系；
-
-  ```c++
-  set<int, less_equal<int> > s;
-  s.insert(10);
-  
-  struct StringPtrGreater : public binary_function<const string*, const string*, bool> 
-  {
-      bool operator()(const string *ps1, const string *ps2) const
+      std::cout << "Total is " << sum << std::endl;
+      
+      std::cin.clear();
+      std::cin.ignore();
+      
+      // Read integers using the copy of the iterator
+      std::cout << "Enter some more integers - enter Ctrl+Z to end.\n";
+      int product{1};
+      while (true)
       {
-          return !(*ps1 < *ps2); // !(<)等价于>=；不能直接把比较结果取反来改变排列顺序，这对于关联容器不是一个合法的比较函数
+          if (copy_iter == end_iter) break;
+          product *= *copy_iter++;
       }
-  };
+      std::cout << "product is " << product << std::endl;
+  }
   ```
 
-### 13.禁止直接修改set或multiset中的键
-
-- 对于map和multimap，键的类型是const，如果有程序试图修改容器中的键，会影响到容器的排序性，它将无法通过编译；
+- `ostream_iterator` 输出迭代器
 
   ```c++
-  map<int, string> m;
-  m.begin()->first = 10; // 错误；map的键不能被修改
+  #include <iostream>
+  #include <iterator>
+  #include <vector>
+  #include <algorithm>
+  #include <string>
+  using std::string;
   
-  multimap<int, string> mm;
-  mm.begin()->first = 20; // 错误；multimap的键不能被修改
-  ```
-
-- 对于set和multiset，修改元素的值这一行为具有不可移植性；
-
-### 14.当效率至关重要时，根据不同情况选择map::operator[]或map::insert
-
-- 当向映射表中添加元素时，要优先选用insert，而不是operator[]；
-
-  ```c++
-  class Widget {
-  public:
-      Widget();
-      Widget(double weight);
-      Widget& operator=(double weight);
-      ...
-  };
-  
-  map<int, Widget> m;
-  // 低效
-  m[1] = 1.50; // 效率低，先判断存不存在，存在就更新，不存在就插入（空的map，键1肯定不存在）
-  // 高效
-  m.insert(IntWidgetMap::value_type(1, 1.50)); // 效率高，不判断直接插入
-  ```
-
-- 当更新已经在映射表中的元素的值时，要优先选择operator[]；
-
-### 15.避免混用不同类型的迭代器，优先使用iterator而不是其它类型的迭代器
-
-- 尽量使用iterator而不是const或reverse型的迭代器，可以使容器的使用更为简单而有效，并且可以避免潜在的问题，原因如下：
-
-  - 有些版本的insert和erase函数要求使用iterator。如果你需要调用这些函数，那你就必须使用iterator。const和reverse型的迭代器不能满足这些函数的要求。
-  - 要想隐式地将一个const_iterator转换成iterator是不可能的。
-  - 从reverse_iterator转换而来的iterator在使用之前可能需要相应的调整。
-
-- 避免混用不同类型的迭代器；
-
-  ```c++
-  typedef deque<int> IntDeque;
-  typedef IntDeque::iterator Iter;
-  typedef IntDeque::const_iterator ConstIter;
-  Iter i;
-  ConstIter ci;
-  ...
-  if (i == ci) // 比较一个iterator和一个const_iterator（iterator在比较前会被隐式转化为const_iterator）
-      ...
-  ```
-
-### 16.对于逐个字符的输入考虑使用istreambuf_iterator
-
-- istream_iterator内部执行了格式化输入（构造析构对象，流标志检查，错误检查，...），导致其效率不佳；
-
-  ```c++
-  ifstream inputFile("interestingData.txt");
-  inputFile.unsetf(ios::skipws); // 禁止忽略空格
-  string fileData((istream_iterator<char>(inputFile)), istream_iterator<char>()); // 将inputFile读入fileData
-  ```
-
-- istreambuf_iterator从流读取单个字符，从流的缓冲区读取下一个字符，效率更佳；
-
-  ```c++
-  ifstream inputFile("interestingData.txt");
-  string fileData((istreambuf_iterator<char>(inputFile)), istreambuf_iterator<char>()); // istreambuf_iterator不会跳过任何字符（包括空格）
-  ```
-
-### 17.尽量使用封装技术
-
-- 尽量使用封装（encapsulation）技术来将一种容器类型转换到另一种;
-
-  ```c++
-  class Widget {...};
-  typedef vector<Widget> WidgetContainer;
-  typedef WidgetContainer::iterator WCIterator; // 封装
-  WidgetContainer cw;
-  Widget bestWidget;
-  ...
-  WCIterator i = find(cw.begin(), cw.end(), bestWidget);
-  ```
-
-- 把容器隐藏在一个类中，并尽量减少那些通过类接口（而使外部）可见的，与容器相关的信息，来减少在替换容器类型时所需要修改的代码；
-
-  ```c++
-  class CustomerList {
-  private:
-    typedef list<Customer> CustomerContainer;
-    typedef CustumorContainer::iterator CCIterator;
-    
-    CustomerContainer customers; // 隐藏容器，通过对外接口访问
-  public:
-    ...
-  };
-  ```
-
-### 18.使用erase-remove方法完全删除元素
-
-- remove不是真正意义上的删除，用remove删除元素，它只是移动被删除的元素到容器**尾部**，而容器中的元素数目并不会减少；
-
-  ```c++
-  vector<int> v;
-  v.reserve(10);
-  for (int i = 1; i <= 10; ++i)
-      v.push_back(i);
-  
-  cout << v.size();               // 输出10
-  v[3] = v[5] = v[9] = 99;
-  remove(v.begin(), v.end(), 99); // 删除所有值等于99的元素
-  cout << v.size();               // 依然输出10
-  ```
-
-- 当容器中存放的是指向动态分配的对象的指针的时候，应该避免使用remove和类似的算法（remove_if，unique），因为这样会造成内存泄漏；
-
-  ```c++
-  class Widget {
-  public:
-      bool isCertified() const;
-  };
-  vector<Widget*> v;
-  v.push_back(new Widget);
-  
-  v.erase(remove_if(v.begin(), v.end(), fun(&Widget::isCertified)), v.end()); // 内存泄漏
-  ```
-
-- 推荐使用erase与remove合作（erase-remove）来真正删除元素；
-
-  ```c++
-  vector<int> v;
-  v.reserve(10);
-  for (int i = 1; i <= 10; ++i)
-      v.push_back(i);
-  
-  cout << v.size();                        // 输出10
-  v[3] = v[5] = v[9] = 99;
-  v.erase(remove(v.begin(), v.end(), 99)); // 删除remove函数返回的迭代器所指向的元素
-  cout << v.size();                        // 输出7
-  ```
-
-### 19.使用函数对象而不是函数作为STL算法的参数
-
-- 将函数对象（即可以被伪装成函数的对象）传递给STL算法往往比传递实际的函数更加高效；
-
-  ```c++
-  vector<double> v;
-  
-  sort(v.begin(), v.end(), greater<double>()); // 使用函数对象做参数（高效）
-  
-  inline bool doubleGreater(double d1, double d2) { return d1 > d2; }
-  sort(v.begin(), v.end(), doubleGreater); // 使用函数做参数（低效）
-  ```
-
-- 由于编译器或STL的问题，有时候用函数做参数可能会编译不过；
-
-  ```c++
-  set<string> s;
-  
-  // 用函数做参数，可能无法通过编译
-  transform(s.begin(), s.end(), ostream_iterator<string::size_type>(count, "\n"), mem_fun_ref(&string::size));
-  
-  // 用函数对象做参数
-  struct StringSize : public unary_function<string, string::size_type> {
-      string::size_type operator()(const string& s) const
+  int main()
+  {
+      std::vector<string> words{"The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"};
+      
+      // Write the words container using conventional iterator notation
+      std::ostream_iterator<string> out_iter1{std::cout};
+      
+      for (const auto& word : words)
       {
-          return s.size();
+          *out_iter1++ = word;
+          *out_iter1++ = " ";
       }
-  };
-  transform(s.begin(), s.end(), ostream_iterator<string::size_type>(count, "\n"), StringSize());
-  ```
-
-- 使用函数对象做参数有助于避免一些语言本身的缺陷;
-
-  用函数做参数在语法上没问题，但是有些情况下STL不支持：
-
-  ```c++
-  template<typename FPType>
-  FPType average(FPType val1, FPType val2)
-  {
-      return (val1 + val2) / 2;
-  }
-  template<typename InputIter1, typename InputIter2>
-  void writeAverages(InputIter1 begin1, InputIter1 end1, InputIter2 begin2, ostream& s)
-  {
-      transform(begin1, end1, begin2, 
-                ostream_iterator<typename iterator_traits<InputIter1>::value_type(s, "\n")>,
-                average<typename iterator_traits<InputIter1>::value_type>); // STL标准不支持，因为它觉得有二义性
+      *out_iter1++ = "\n";
+      
+      for (const auto& word : words)
+      {
+          (out_iter1 = word) = " ";
+      }
+      out_iter1 = "\n";
+      
+      // Write the words container using copy()
+      std::ostream_iterator<string> out_iter2{std::cout, " "};
+      std::copy(std::begin(words), std::end(words), out_iter2);
+      out_iter2 = "\n";
   }
   ```
 
-- 函数指针和函数对象在函数之间按值传递（用class/struct包裹的函数例外）；
+### 运算符重载
 
-  ```c++
-  // 将函数用class包裹时，强制按引用传递
-  class DoSomething : public unary_function<int, void> {
-  public:
-      void operator()(int x) {...}
-  };
-  
-  typedef deque<int>::iterator DequeIntIter;
-  deque<int> di;
-  DoSomething d; // 创建一个函数对象
-  // 用类型参数DequeIntIter和DoSomething&来调用for_each，这将强制d按引用传递并返回
-  for_each<DequeIntIter, DoSomething&>(di.begin(), di.end(), d); 
-  ```
+TODO
 
-### 20.容器的成员函数优先于同名的算法
+### 文件流
 
-- 成员函数往往速度快；
-- 成员函数通常与容器（特别是关联容器）结合得更加紧密。
+TODO
 
-```c++
-set<int> s;
+### 流缓冲迭代器
 
-set<int>::iterator i = s.find(727); // 使用find成员函数，速度更快
-if (i != s.end())
-    ...
-    
-set<int>::iterator i = find(s.begin(), s.end(), 727); // 使用find算法，速度慢
-if (i != s.end())
-    ...
-```
+TODO
 
-### 21.确保容器中的对象拷贝正确而高效
+---
 
-- 向容器中填充对象，而对象的拷贝又很费时时，这一操作会成为程序的性能瓶颈；
 
-- 当存在继承关系时，向基类容器的拷贝动作会剥离派生类的信息（拷贝指针时可以避免这个问题）；
 
-  ```c++
-  vector<Widget> vw;
-  class SpecialWidget : public Widget{...};
-  SpecialWidget sw;
-  vw.push_back(sw); // 派生类特有的部分在拷贝时被丢弃了
-  ```
+## 时间
 
-- 尽量避免不必要的拷贝；
+TODO
 
-  ```c++
-  Widget w[n]; // 创建有n个Widget对象的数组，每个对象都使用默认构造函数来创建（浪费）
-  vector<Widget> vw; // 创建了包含0个Widget对象的vector，当需要时它会增长（避免了拷贝）
-  ```
+---
+
+
+
+## 多线程
+
+TODO
 
 ---
 

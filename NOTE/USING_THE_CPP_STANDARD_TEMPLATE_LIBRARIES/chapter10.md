@@ -237,4 +237,67 @@ std::cout << std::endl; // 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
 ### 10.2.5 部分和
 
-TODO
+```c++
+// 使用partial_sum计算输入序列中元素的部分和
+std::vector<int> data{2, 3, 5, 7, 11, 13, 17, 19};
+std::cout << "Partial sums: ";
+std::partial_sum(std::begin(data), std::end(data), 
+                 std::ostream_iterator<int>{std::cout, " "});
+std::cout << std::endl;
+```
+
+```c++
+// 使用partial_sum和minus计算部分减法和
+std::vector<int> data{2, 3, 5, 7, 11, 13, 17, 19};
+std::cout << "Partial sums: ";
+std::partial_sum(std::begin(data), std::end(data),
+                 std::ostream_iterator<int>{std::cout, " "}, std::minus<int>());
+std::cout << std::endl; // 2 -1 -6 -13 -24 -37 -54 -73
+```
+
+### 10.2.6 极大值和极小值
+
+```c++
+// 使用min_element返回最小元素的迭代器
+// 使用max_element返回最大元素的迭代器
+// 使用minmax_element返回最小，最大元素的迭代器
+std::vector<int> data{2, 12, 3, 5, 17, -11, 113, 117, 19};
+std::cout << "From values ";
+std::copy(std::begin(data), std::end(data), std::ostream_iterator<int>{std::cout, " "});
+std::cout << "\n Min = " << *std::min_element(std::begin(data), std::end(data))
+          << " Max = " << *std::max_element(std::begin(data), std::end(data))
+          << std::endl;
+
+auto start_iter = std::begin(data) + 2;
+auto end_iter = std::end(data) - 2;
+auto pr = std::minmax_element(start_iter, end_iter);
+
+std::cout << "From values ";
+std::copy(start_iter, end_iter, std::ostream_iterator<int>{std::cout, " "});
+std::cout << "\n Min = " << *pr.first << " Max = " << *pr.second << std::endl;
+```
+
+```c++
+// 将min, max, minmax用于初始化列表
+auto words = {string{"one"}, string{"two"}, string{"three"}, string{"four"}, string{"five"},
+              string{"six"}, string{"seven"}, string{"eight"}};
+std::cout << "Min = " << std::min(words) << std::endl;
+auto pr = std::minmax(words, [](const string& s1, const string& s2){
+    return s1.back() < s2.back(); });
+std::cout << "Min = " << pr.first << " Max = " << pr.second << std::endl;
+```
+
+
+
+## 10.3 保存和处理数值
+
+valarray类模板定义了保存和操作数值序列的对象的类型，用来处理整数和浮点数，保存类类型的对象，需要满足以下条件：
+
+- 类不能是抽象的。
+- public构造函数必须包含默认的构造函数和拷贝构造函数。
+- 析构函数必须是public。
+- 类必须定义赋值运算符，而且必须是public。
+- 类不能重载operator&()。
+- 成员函数不能抛出异常。
+
+不能保存引用或valarray中用const, volatile修饰的对象。
