@@ -301,3 +301,163 @@ valarray类模板定义了保存和操作数值序列的对象的类型，用来
 - 成员函数不能抛出异常。
 
 不能保存引用或valarray中用const, volatile修饰的对象。
+
+```c++
+// 生成一个valarray对象
+std::valarray<int> numbers(15);
+std::valarray<size_t> sizes{1, 2, 3};
+std::valarray<size_t> copy_sizes{sizes};
+std::valarray<double> values;
+std::valarray<double> data(3.14, 10);
+```
+
+```c++
+// 从普通数组得到的一定个数的值来初始化valarray对象
+int vals[]{2, 4, 6, 8, 10, 12, 14};
+std::valarray<int> vals1{vals, 5};     // 2 4 6 8 10
+std::valarray<int> vals2{vals + 1, 4}; // 4 6 8 10
+```
+
+### 10.3.1 valarray对象的基本操作
+
+```c++
+// 改变valarray容器中元素个数
+data.resize(50, 1.5);
+```
+
+```c++
+// 交换两个valarray对象的元素
+std::valarray<size_t> sizes_3{1, 2, 3};
+std::valarray<size_t> sizes_4{2, 3, 4, 5};
+sizes_3.swap(sizes_4);
+
+std::swap(sizes_3, sizes_4); // 另一种方式
+```
+
+```c++
+// 调用min和max来查找元素的的最小值和最大值
+std::cout << "The elements are from " << sizes_4.min() << " to " << sizes_4.max() << '\n';
+```
+
+```c++
+// 移位操作
+std::valarray<int> d1{1, 2, 3, 4, 5, 6, 7, 8, 9};
+auto d2 = d1.shift(2);
+for (int n : d2) std::cout << n << ' ';
+std::cout << '\n';      // 3 4 5 6 7 8 9 0 0
+auto d3 = d1.shift(-3);
+std::copy(std::begin(d3), std::end(d3), 
+          std::ostream_iterator<int>{ std::cout, " " });
+std::cout << std::endl; // 0 0 0 1 2 3 4 5 6
+```
+
+```c++
+// 使用 = 为valarray对象赋值
+d1 =d1.shift(2);
+```
+
+```c++
+// 将元素序列循环移动
+std::valarray<int> d1{1, 2, 3, 4, 5, 6, 7, 8, 9};
+auto d2 = d1.cshift(2);  // 3 4 5 6 7 8 9 1 2
+auto d3 = d1.cshift(-3); // 7 8 9 1 2 3 4 5 6 
+```
+
+apply()函数可以将一个函数应用到每个元素上，并返回一个新的valarray对象。valarray类模板中定义了两个函数模板：
+
+```c++
+valarray<T> apply(T func(T)) const;
+valarray<T> apply(T func(const T&)) const;
+```
+
+**使用apply注意事项:**
+
+1. 所有版本都是const，所以函数不能修改原始元素。
+2. 参数是一个有特定形式的函数，这个函数以T类型或T的const引用为参数，并返回T类型的值；如果apply()使用的参数不符合这些条件，将无法通过编译。
+3. 返回值是`valarray<T>`类型，因此返回值总是一个和原序列相同类型和大小的数组。
+
+```c++
+// apply示例
+std::valarray<double> time{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+auto distances = time.apply([](double t){
+  const static double g{32.0};
+  return 0.5 * g * t * t;
+}); // 0 16 64 144 256 400 576 784 1024 1296
+```
+
+```c++
+// Ex10_02.cpp
+#include <numeric>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
+#include <valarray>
+const static double g{32.0};
+
+int main()
+{
+	double height{};
+  std::cout << "Enter the approximate height of the building in feet: ";
+  std::cin >> height;
+  // Calculate brick flight time in seconds
+  double end_time{std::sqrt(2 * height / g)};
+  size_t max_time{1 + static_cast<size_t>(end_time + 0.5)};
+  
+  std::valarray<double> times(max_time + 1);
+  std::iota(std::begin(times), std::end(times), 0);
+  *(std::end(times) - 1) = end_time;
+  
+  // Calculate distances each second
+  auto distances = times.apply([](double t){ return 0.5 * g * t * t; });
+  
+  // Calculate speed each second
+  auto v_fps = sqrt(distances.apply([](double d){ return 2 * g * d; }));
+  
+  // Lambda expression to output results
+  auto print = [](double v){ std::cout << std::setw(6) << static_cast<int>(std::round(v)); };
+  
+  // Output the times - the last is a special case...
+  std::cout << "Time (seconds): ";
+  std::for_each(std::begin(times), std::end(times) - 1, print);
+  std::cout << std::setw(6) << std::fixed << std::setprecision(2) << *(std::end(times) - 1);
+  std::cout << "\nDistances(feet):";
+  std::for_each(std::begin(distances), std::end(distances), print);
+  
+  std::cout << "\nVelocity(fps): ";
+  std::for_each(std::begin(v_fps), std::end(v_fps), print);
+  
+  // Get velocities in mph and output them
+  auto v_mph = v_fps.apply([](double v){ return v * 60 / 88; });
+  std::cout << "\nVelocity(mph): ";
+  std::for_each(std::begin(v_mph), std::end(v_mph), print);
+  std::cout << std::endl;
+}
+```
+
+### 10.3.2 一元运算符
+
+```c++
+// !运算符
+std::valarray<int> data{2, 0, -2, 4, -4};
+auto result = !data;
+std::copy(std::begin(result), std::end(result), 
+          std::ostream_iterator<bool>{ std::cout << std::boolalpha, " "});
+std::cout << std::endl; // false true false false false
+```
+
+```c++
+// ~运算符
+std::valarray<int> data{2, 0, -2, 4, -4};
+auto result = ~data;
+std::copy(std::begin(result), std::end(result), std::ostream_iterator<int>{std::cout, " "});
+std::cout << std::endl; // -3 -1 1 -5 3
+```
+
+```c++
+// +运算符
+std::valarray<int> data{2, 0, -2, 4, -4};
+auto result = -data;
+std::copy(std::begin(result), std::end(result), std::ostream_iterator<int>{std::cout, " "});
+std::cout << std::endl; // -2 0 2 -4 4
+```
+

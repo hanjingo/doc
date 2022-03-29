@@ -192,5 +192,34 @@ openssl x509 -in digicert.pem -text # 查看服务器证书
 
 `认证业务规则(Certification Practice Statement, CPS)`
 
+### 18.5.2 验证与撤销证书
 
+证书撤销的方法：
+
+- 证书撤销列表（CRL）
+- 在线证书状态协议（Online Certificate Status Protocol, OCSP）
+
+```sh
+wget http://cr13.digicert.com/ev2009a.crl # 检索CRL对应的证书
+```
+
+### 18.5.3 属性证书
+
+`属性证书（Attribute Certificate，AC）`在结构上与公钥证书类似，但缺少公钥。
+
+
+
+## 18.6 TCP/IP安全协议与分层
+
+![18_4](res/18_4.png)
+
+*存在于OSI协议栈中各层次以及一些“中间”层的安全协议。值得注意的是需要根据不同的安全威胁选择合适的协议*
+
+
+
+## 18.7 网络访问控制：802.1X, 802.1AE, EAP, PANA
+
+`网络访问控制（NAC）`指对于特定系统或用户而言用于授权或拒绝网络通信的方法。
+
+`可扩展身份认证协议（EAP）`可与多种链路层技术一同使用，并提供多种方法来实现*身份验证*，*授权*以及*计费（AAA）*。
 
