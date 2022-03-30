@@ -430,7 +430,7 @@ int main()
   ```c++
   std::vector<int> numbers{5, 46, -5, -6, 23, 17, 5, 9, 6, 5};
   int value{23};
-  auto ier = std::find(std::begin(numbers), std::end(numbers), value);
+  auto iter = std::find(std::begin(numbers), std::end(numbers), value);
   if (iter != std::end(numbers))
       std::cout << value << " was found.\n";
   ```

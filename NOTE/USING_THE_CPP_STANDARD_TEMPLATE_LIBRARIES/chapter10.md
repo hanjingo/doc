@@ -461,3 +461,36 @@ std::copy(std::begin(result), std::end(result), std::ostream_iterator<int>{std::
 std::cout << std::endl; // -2 0 2 -4 4
 ```
 
+### 10.3.3 用于valarray对象的复合赋值运算符
+
+- 复合算术赋值运算符`+=`, `-=`, `*=`, `/=`, `%=`
+
+  ```c++
+  valarray<int> v1{1, 2, 3, 4};
+  valarray<int> v2{3, 4, 3, 4};
+  v1 += 3;  // v1: 4 5 6 7
+  v1 -= v2; // v1: 1 1 3 3
+  ```
+
+- 符合位操作赋值运算符`&=`, `|=`, `^=`
+
+  ```c++
+  valarray<int> v1{1, 2, 4, 8};
+  valarray<int> v2{4, 8, 16, 32};
+  v1 |= 4;  // v1: 5 6 4 12
+  v1 &= v2; // v1: 4 0 0 0
+  v1 ^= v2; // v1: 0 8 16 32
+  ```
+
+- 符合移位赋值运算符`>>=`, `<<=`
+
+  ```c++
+  valarray<int> v1{1, 2, 3, 4};
+  valarray<int> v2{4, 8, 16, 32};
+  v2 <<= v1; // v2: 8 32 128 512
+  v2 >>= 2;  // v2: 2 8  32  128
+  ```
+
+### 10.3.4 valarray对象的二元运算
+
+TODO

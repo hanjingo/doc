@@ -39,6 +39,8 @@ abbreviation `/əˌbriːviˈeɪʃn/` 缩写，缩略，省略号
 
 abide `/əˈbʌɪd/` 服从，遵守，忍受
 
+abiding `/əˈbaɪdɪŋ/` 持久的，永久的，由来已久的
+
 ablaze `/əˈbleɪz/` 着火，燃烧，闪耀
 
 abolish `/əˈbɒlɪʃ/` 废除，废止
@@ -201,6 +203,8 @@ amenity `/əˈmiːnəti/` 舒适，适意，便利设施
 
 amid `/əˈmɪd/` 在...中，被...围绕
 
+amino `/ə'miːnəʊ/` 氨基的
+
 among `/əˈmʌŋ/` 在...之内，在...之中
 
 ample `/ˈæmpl/` 充足的，硕大的
@@ -227,7 +231,7 @@ anomaly `/əˈnɒməli/` 异常，反常
 
 anthem `/ˈænθəm/` 国歌，赞美诗
 
-anticipate `/ænˈtɪsɪpeɪt/` 预期，期盼
+anticipate `/ænˈtɪsɪpeɪt/` 预期，期盼，预料
 
 antique `/ænˈtiːk/` 古董，古物，古迹，古代
 
@@ -401,6 +405,8 @@ awkwardly `/ɔːkwədli/` 笨拙的，别扭的，拘谨的
 
 baboon `/bəˈbuːn/` 狒狒
 
+bacteriophage `/bæk'tɪrɪə,feɪdʒ/` 噬菌体
+
 balloon `/bəˈluːn/` 气球，热气球
 
 balmy `/ˈbɑːmi/` （气候）温和的，温暖惬意的
@@ -484,6 +490,8 @@ bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 boost `/buːst/` 促进，提高，帮助，激励
 
 bounce `/baʊns/` 反弹，弹跳，蹦跳
+
+bound `/baʊnd/` 约束，捆绑，界限，必然的，注定的，跳跃
 
 bowl `/bəʊl/` 碗，钵
 
@@ -709,11 +717,15 @@ coax `/kəʊks/` 哄，劝诱
 
 codify `/ˈkəʊdɪfaɪ/` 编纂，把...编成法典
 
+codon `/'koʊdɒn/` 密码子，基础码
+
 coexist `/ˌkəʊɪɡˈzɪst/` 共存，和平共处
 
 cognitive `/ˈkɒɡnətɪv/` 认知的，感知的
 
 coil `/kɔɪl/` 线圈，（一）圈，（一）卷
+
+coined `/kɔind/` 创造，制造硬币
 
 cometary `/ˈkɑməˌtɛri/` 彗星的，彗星似的
 
@@ -910,6 +922,8 @@ convert `/kənˈvəːt/` 转换
 converse `/ˈkɒnvɜːs/` 交谈，谈话，相反的事物
 
 convex `/ˈkɒnveks/` 凸面，凸状，凸函数
+
+conviction `/[kənˈvɪkʃn/` 坚信，判罪
 
 convivial `/kən'vɪviəl/` 欢乐的，联欢的，好交际的
 
@@ -1199,6 +1213,8 @@ disapproval `/ˌdɪsəˈpruːvl/` 不赞成，反对
 
 discern `/dɪˈsɜːn/` 辨别，识别，看出
 
+discipline `/ˈdɪsəplɪn/` 训练，行为准则，纪律，学科
+
 discourage `/dɪsˈkʌrɪdʒ/` 阻止，阻拦，使...泄气
 
 discourse `/dɪsˈkɔːs/` 交谈，演讲，论述，著述，论文
@@ -1365,6 +1381,8 @@ edible `/ˈedəbl/` 可食用的，食物
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
+efficient `/ɪˈfɪʃnt/` 高效的，有能力的
+
 effluent `/ˈefluənt/` 污水，流出物
 
 ### eg
@@ -1529,7 +1547,7 @@ eviction `/ɪˈvɪkʃn/` 驱逐，驱赶
 
 evidence `/ˈevɪdəns/` 证据，证明，根据
 
-evolved `/iˈvɒlvd/` 逐渐形成，进化
+evolve `/iˈvɑːlv/` 演变，进化
 
 eviscerate `/ɪˈvɪsəreɪt/` 切除内脏，取出内脏
 
@@ -2065,7 +2083,7 @@ imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，�
 
 impose `/ɪmˈpəʊz/` 强制执行，推行，强迫，利用
 
-impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的 
+impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的，无用的
 
 improvement `/ɪmˈpruːvm(ə)nt/` 改善，进步
 
@@ -2199,6 +2217,8 @@ intelligence `/ɪnˈtelɪdʒəns/` 智力，才智，情报，理解力
 
 intermittent `/ˌɪntəˈmɪtənt/` 断断续续的，间歇的
 
+interpretation `/ɪnˌtɜːrprəˈteɪʃn/` 解释，说明，翻译，表演，理解
+
 intense `/ɪnˈtens/` 强烈的，激烈的，尖锐的
 
 intensify `/ɪnˈtensɪfaɪ/` 强化，加固，增强，加剧
@@ -2246,6 +2266,8 @@ invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 inventory `/ˈɪnvəntri/` 库存，财产清单
 
 invertebrate `/ɪnˈvɜːtɪbrət/` 无脊椎动物
+
+involve `/ɪnˈvɑːlv/` 包含，涉及，卷入
 
 ### io
 
@@ -2388,6 +2410,8 @@ leopard `/ˈlepəd/` 豹子
 lettuce `/ˈletɪs/` 生菜
 
 leverage `/ˈliːvərɪdʒ/` 影响力，杠杆作用，杠杆效力
+
+lexicographical `/leksɪkə'græfɪkl/` 字典编篡的，字典序
 
 ### li
 
@@ -2586,6 +2610,8 @@ moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理�
 moist `/mɔɪst/` 潮湿的，湿润的
 
 mold `/məʊld/` 模具，模子，塑造，真菌，发霉
+
+molecular `/məˈlekjələr/` 分子的，由分子组成的
 
 monetary `/ˈmʌnɪtri/` 货币的，金融的，金钱的
 
@@ -3113,7 +3139,7 @@ precipitate `/prɪˈsɪpɪteɪt/` 加速，促成，沉淀物，鲁莽的，草�
 
 precursor `/priˈkɜːsə(r)/` 先驱，先锋，前身
 
-predicate `/ˈprɛdɪkeɪt/` 断言
+predicate `/ˈprɛdɪkeɪt/` 断言，断定，宣布，谓词
 
 predominant `/prɪˈdɒmɪnənt/` 主要的，主导的，明显的，显著的
 
@@ -3203,7 +3229,7 @@ prosperity `/prɒˈsperəti/` 兴旺，繁荣，昌盛，发达
 
 protest `/ˈprəʊtest/` 抗议，反对，申辩
 
-proteins `/ˈprəʊtiːnz/` 蛋白质
+protein `/ˈproʊtiːn/` 蛋白质
 
 prune `/pruːn/` 修剪树干，削减
 
@@ -4174,6 +4200,8 @@ tributary `/ˈtrɪbjətri/` 支流，附属国，附庸的
 trickle `/ˈtrɪkl/` 涓涓细流，流淌，滴水
 
 trifle `/ˈtrʌɪf(ə)l/` 少量，琐事
+
+triplet `ˈtrɪplət` 三个，三联体，三胞胎
 
 triumph `/ˈtraɪʌmf/` 狂喜，胜利，凯旋
 

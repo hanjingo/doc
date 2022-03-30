@@ -897,17 +897,23 @@ int main()
 
 ## 算法
 
-### 生成与填充
+### 通用
 
-| 算法             | 头文件    | 复杂度   | 描述/示意图/代码                                             |
-| ---------------- | --------- | -------- | ------------------------------------------------------------ |
-| fill             | algorithm | $O(n)$   | 将指定值保存到序列中的每一个元素。                           |
-| fill_n           | algorithm | $O(n)$   | 将指定值保存到序列中的前n个元素。                            |
-| is_permutation   | algorithm | $O(n^2)$ | 判断一个序列是否是另一个序列的一个排列。                     |
-| generate         | algorithm | $O(n)$   | 将指定函数生成的值保存到序列中的每一个元素。                 |
-| generate_n       | algorithm | $O(n)$   | 将指定函数生成的值保存到序列中的前n个元素。                  |
-| next_permutation | algorithm | $O(n)$   | 按字典序的升序来生成元素的下一个排列，如果下一个排列存在，返回true；否则，元素被排为序列的第一排列，返回false。 |
-| prev_permutation | algorithm | $O(n)$   | 按字典序的升序来生成元素的前一个排列，如果前一个排列存在，返回true；否则，元素被排为序列中的最后一个排列，返回false。 |
+| 算法 | 复杂度 | 描述/示意图/代码 |
+| ---- | ------ | ---------------- |
+|      |        |                  |
+
+### 生成/填充
+
+| 算法             | 复杂度   | 描述/示意图/代码                                             |
+| ---------------- | -------- | ------------------------------------------------------------ |
+| fill             | $O(n)$   | 将指定值保存到序列中的每一个元素。                           |
+| fill_n           | $O(n)$   | 将指定值保存到序列中的前n个元素。                            |
+| is_permutation   | $O(n^2)$ | 判断一个序列是否是另一个序列的一个排列。                     |
+| generate         | $O(n)$   | 将指定函数生成的值保存到序列中的每一个元素。                 |
+| generate_n       | $O(n)$   | 将指定函数生成的值保存到序列中的前n个元素。                  |
+| next_permutation | $O(n)$   | 按字典序的升序来生成元素的下一个排列，如果下一个排列存在，返回true；否则，元素被排为序列的第一排列，返回false；<br>![algo_next_permutation](res/stl/algo_next_permutation.png) |
+| prev_permutation | $O(n)$   | 按字典序的升序来生成元素的前一个排列，如果前一个排列存在，返回true；否则，元素被排为序列中的最后一个排列，返回false。 |
 
 ```c++
 #include <iostream>
@@ -959,14 +965,14 @@ int main()
 
 ### 排序
 
-| 算法            | 头文件    | 复杂度                             | 描述/示意图/代码                                             |
-| --------------- | --------- | ---------------------------------- | ------------------------------------------------------------ |
-| is_sorted       | algorithm | $O(n)$                             | 判断指定范围内的元素是否以不降序的方式排列。                 |
-| is_sorted_until | algorithm | $O(n)$                             | 判断指定范围内的元素是否有序，并返回一个指向这段元素中升序序列上边界元素的迭代器。 |
-| nth_element     | algorithm | $O(n)$                             | 提供指定值对指定范围的元素进行分区排序，并使得指定值左边的所有元素 <= 指定值右边的所有元素；<br>![algo_nth_element](res/stl/algo_nth_element.png) |
-| partial_sort    | algorithm | $O((last-first)log(middle-first))$ | 对指定范围内的元素进行部分排序；<br>![algo_partial_sort](res/stl/algo_partial_sort.png) |
-| sort            | algorithm | $O(n \times log(n))$               | 以不降序的方式排序指定范围内的元素，不保证维持相等元素的顺序。 |
-| stable_sort     | algorithm | $O(n \times log(n))$               | 以不降序的方式排序指定范围内的元素。                         |
+| 算法            | 复杂度               | 描述/示意图/代码                                             |
+| --------------- | -------------------- | ------------------------------------------------------------ |
+| is_sorted       | $O(n)$               | 判断指定范围内的元素是否以不降序的方式排列。                 |
+| is_sorted_until | $O(n)$               | 判断指定范围内的元素是否有序，并返回一个指向这段元素中升序序列上边界元素的迭代器。 |
+| nth_element     | $O(n)$               | 提供指定值对指定范围的元素进行分区排序，并使得指定值左边的所有元素 <= 指定值右边的所有元素；<br>![algo_nth_element](res/stl/algo_nth_element.png) |
+| partial_sort    | $O(n \times log(m))$ | 对指定范围内的元素进行部分排序；<br>![algo_partial_sort](res/stl/algo_partial_sort.png) |
+| sort            | $O(n \times log(n))$ | 以不降序的方式排序指定范围内的元素，不保证维持相等元素的顺序。 |
+| stable_sort     | $O(n \times log(n))$ | 以不降序的方式排序指定范围内的元素。                         |
 
 ```c++
 #include <iostream>
@@ -1023,32 +1029,147 @@ int main()
 
 ### 合并
 
-| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ------------- | ------ | ------ | ---------------- |
-| implace_merge |        |        |                  |
-| merge         |        |        |                  |
+| 算法          | 复杂度               | 描述/示意图/代码                                             |
+| ------------- | -------------------- | ------------------------------------------------------------ |
+| inplace_merge | $O(n \times log(n))$ | 合并同一个序列中两个**连续有序**的元素序列;<br>![inplace_merge](res/stl/inplace_merge.png) |
+| merge         | $O(n + m)$           | 合并两个**有序**的容器到一个新的容器；<br>![algo_merge](res/stl/algo_merge.png) |
 
 ```c++
-TODO
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v1{1, 2, 3};
+    std::vector<int> v2{7, 8, 9};
+
+    std::merge(v1.begin(), v1.end(), v2.begin(), 
+               v2.end(), v1.begin());                          // v1: [1, 2, 3]
+
+    std::vector<int> v3(6);
+    std::merge(v1.begin(), v1.end(), v2.begin(), 
+               v2.end(), v3.begin());                          // v3: [1,2,3,7,8,9]
+
+    std::vector<int> v4(6);
+    std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), 
+               v4.begin(), std::greater<>());                  // v4: [7,8,9,1,2,3]
+
+    std::vector<int> v5(6);
+    std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v5.begin(), 
+               [](int n1, int n2){ return n1 < n2; });         // v5: [1,2,3,7,8,9]
+
+    
+    std::vector<int> v6{5, 17, 19, 20, 24, 30, 9, 13, 19, 25, 29, 31, 40, 41};
+    std::inplace_merge(v6.begin(), v6.begin() + 6, v6.end());  // v6: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
+
+    std::vector<int> v7{5, 17, 19, 20, 24, 30, 9, 13, 19, 25, 29, 31, 40, 41};
+    std::inplace_merge(v7.begin(), v7.begin() + 6, v7.end(),
+                       [](int n1, int n2){ return n1 < n2; }); // v7: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
+}
 ```
 
 ### 搜索
 
-| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ------------- | ------ | ------ | ---------------- |
-| adjacent_find |        |        |                  |
-| binary_search |        |        |                  |
-| find          |        |        |                  |
-| find_end      |        |        |                  |
-| find_first_of |        |        |                  |
-| find_if       |        |        |                  |
-| find_if_not   |        |        |                  |
-| lower_bound   |        |        |                  |
-| search        |        |        |                  |
-| search_n      |        |        |                  |
+| 算法          | 复杂度                    | 描述/示意图/代码                                             |
+| ------------- | ------------------------- | ------------------------------------------------------------ |
+| adjacent_find | $O(n)$                    | 搜索序列中两个连续相等的元素。                               |
+| binary_search | $O(log_2{n})$             | 二分查找指定值，如果找到就返回true。                         |
+| find          | $O(n)$                    | 在指定范围内搜索指定值，并返回该值的迭代器。                 |
+| find_end      | $O(s \times (n - s + 1))$ | 在指定范围内搜索最后一个和其他序列匹配的项；<br>![algo_find_end](res/stl/algo_find_end.png) |
+| find_first_of | $O(s \times n)$           | 在指定范围内搜索第一个和其他序列匹配的项目；<br>![algo_find_first_of](res/stl/algo_find_first_of.png) |
+| find_if       | $O(n)$                    | 在指定范围内搜索满足条件的元素。                             |
+| find_if_not   | $O(n)$                    | 在指定范围内搜索**不满足**条件的元素。                       |
+| lower_bound   | $O(log_2n)$               | 在指定范围内搜索>=指定值的元素；<br>![algo_lower_bound](res/stl/algo_lower_bound.png) |
+| search        | $O(s \times n)$           | 在指定范围内搜索第一个和其他序列匹配的项目。                 |
+| search_n      | $O(n)$                    | 在指定范围内搜索连续出现n次的序列。                          |
 
 ```c++
-TODO
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> af{1, 2, 3, 4, 5, 5, 6, 7, 8};
+    std::vector<int>::iterator ret_af;
+    ret_af = std::adjacent_find(af.begin(), af.end());    // *ret_af: 5
+    ret_af = std::adjacent_find(af.begin(), af.end(),
+        std::greater<int>());                             // *ret_af: 0
+    ret_af = std::adjacent_find(af.begin(), af.end(), 
+        [](int n1, int n2){ return n1 == n2; });          // *ret_af: 5
+
+    std::vector<int> bs{1, 2, 3, 3, 4};
+    bool ret_bs;
+    ret_bs = std::binary_search(bs.begin(), bs.end(), 3); // ret_bs: true
+    ret_bs = std::binary_search(bs.begin(), bs.end(), 3,
+        [](int n1, int n2){ return n1 == n2; });          // ret_bs: true
+
+    std::vector<int> f{1, 2, 3, 3, 4};
+    std::vector<int>::iterator ret_f;
+    ret_f = std::find(f.begin(), f.end(), 3);             // *ret_f: 3
+
+    std::vector<int> fe1{1, 2, 3, 1, 2, 4};
+    std::vector<int> fe2{1, 2};
+    std::vector<int>::iterator ret_fe;
+    ret_fe = std::find_end(fe1.begin(), fe1.end(), 
+        fe2.begin(), fe2.end());                          // *ret_fe: 1
+    ret_fe = std::find_end(fe1.begin(), fe1.end(), 
+        fe2.begin(), fe2.end(), 
+        [](int n1, int n2){ return n1 == n2; });          // *ret_fe: 1
+
+    std::vector<int> ffo1{1, 2, 3, 4, 2, 3, 5};
+    std::vector<int> ffo2{2, 3};
+    std::vector<int>::iterator ret_ffo;
+    ret_ffo = std::find_first_of(ffo1.begin(), ffo1.end(), 
+        ffo2.begin(), ffo2.end());                        // *ret_ffo: 2
+    ret_ffo = std::find_first_of(ffo1.begin(), ffo1.end(), 
+        ffo2.begin(), ffo2.end(), 
+        [](int n1, int n2){ return n1 == n2; });          // *ret_ffo: 2
+
+    std::vector<int> fi{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_fi;
+    ret_fi = std::find_if(fi.begin(), fi.end(), 
+        [](int n){ return n % 2 == 0; });                 // *ret_fi: 2
+
+    std::vector<int> fin{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_fin;
+    ret_fin = std::find_if_not(fin.begin(), fin.end(),
+        [](int n){ return n % 2 == 0; });                 // *ret_fin: 1
+
+    std::vector<int> lb{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_lb;
+    ret_lb = std::lower_bound(lb.begin(), lb.end(), 3);   // *ret_lb: 3
+    ret_lb = std::lower_bound(lb.begin(), lb.end(), 3, 
+        [](int n1, int n2){ return n1 < n2; });           // *ret_lb: 3
+
+    std::vector<int> mm1{1, 2, 3, 4, 5};
+    std::vector<int> mm2{1, 2, 4, 5};
+    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_mm;
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), 
+        mm2.begin());                            // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
+        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
+        mm2.end());                              // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), mm2.end(), 
+        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+
+    std::vector<int> s1{1, 2, 3, 4, 5};
+    std::vector<int> s2{2, 3};
+    std::vector<int>::iterator ret_s;
+    ret_s = std::search(s1.begin(), s1.end(), 
+        s2.begin(), s2.end());                            // *ret_s: 2
+    ret_s = std::search(s1.begin(), s1.end(), 
+        s2.begin(), s2.end(), 
+        [](int n1, int n2){ return n1 < n2; });           // *ret_s: 1
+
+    std::vector<int> sn1{1, 2, 3, 3, 4, 5};
+    std::vector<int>::iterator ret_sn;
+    ret_sn = std::search_n(sn1.begin(), sn1.end(), 2, 3); // *ret_sn: 3
+    ret_sn = std::search_n(sn1.begin(), sn1.end(), 2, 3, 
+        [](int n1, int n2){ return n1 == n2; });          // *ret_sn: 3
+}
 ```
 
 ### 分区
@@ -1064,73 +1185,106 @@ TODO
 
 ### 比较
 
-| 算法                    | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ----------------------- | ------ | ------ | ---------------- |
-| equal                   |        |        |                  |
-| equal_range             |        |        |                  |
-| mismatch                |        |        |                  |
-| lexicographical_compare |        |        |                  |
+| 算法                    | 复杂度         | 描述/示意图/代码                                             |
+| ----------------------- | -------------- | ------------------------------------------------------------ |
+| equal                   | $O(min(m, n))$ | 判断两个序列的所有元素是否相等；**此算法对于以下容器不可用：**<br>- `std::unordered_set`<br>- `std::unordered_multiset`<br>- `std::unordered_map`<br>- `std::unordered_multimap` |
+| equal_range             | $O(log_2(n))$  | 查找序列中所有元素都与指定值相等的片段；<br>![algo_equal_range](res/stl/algo_equal_range.png) |
+| lexicographical_compare | $O(min(m, n))$ | 判断一个序列是否按字典序小于第二个序列。                     |
+| mismatch                | $O(min(m, n))$ | 搜索两个序列中，不匹配对出现的位置，并返回不匹配位置的迭代器对；<br>![algo_mismatch](res/stl/algo_mismatch.png) |
 
 ```c++
-TODO
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> e1{1, 2, 3, 4, 5};
+    std::vector<int> e2{1, 2, 3, 4};
+    bool ret_e;
+    ret_e = std::equal(e1.begin(), e1.end(), e2.begin());  // ret_e: false
+    ret_e = std::equal(e1.begin(), e1.end(), e2.begin(), 
+        [](int n1, int n2){ return n1 == n2; });           // ret_e: false
+    ret_e = std::equal(e1.begin(), e1.end(), e2.begin(), 
+        e2.end());                                         // ret_e: false
+    ret_e = std::equal(e1.begin(), e1.end(), e2.begin(), 
+        e2.end(), [](int n1, int n2){ return n1 == n2; }); // ret_e: false
+
+    std::vector<int> er{1, 2, 3, 3, 5};
+    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_er;
+    ret_er = std::equal_range(er.begin(), er.end(), 3);    // <*ret_er.first, *ret_er.second>: <3, 5>
+    ret_er = std::equal_range(er.begin(), er.end(), 3, 
+        [](int n1, int n2){ return n1 == n2; });           // <*ret_er.first, *ret_er.second>: <5, 0>
+
+    std::vector<int> lc1{1, 2, 3, 4};
+    std::vector<int> lc2{2, 3, 4, 5};
+    bool ret_lc;
+    ret_lc = std::lexicographical_compare(lc1.begin(), lc1.end(), 
+        lc2.begin(), lc2.end());                           // ret_lc: true
+    ret_lc = std::lexicographical_compare(lc1.begin(), lc1.end(), lc2.begin(), 
+        lc2.end(), [](int n1, int n2){ return n1 < n2; }); // ret_lc: true
+
+    std::vector<int> mm1{1, 2, 3, 4, 5};
+    std::vector<int> mm2{1, 2, 4, 5};
+    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_mm;
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), 
+        mm2.begin());                            // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
+        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
+        mm2.end());                              // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+    ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), mm2.end(), 
+        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+}
 ```
 
 ### 复制
 
-| 算法            | 头文件 | 复杂度 | 描述/示意图/代码 |
-| --------------- | ------ | ------ | ---------------- |
-| copy            |        |        |                  |
-| copy_n          |        |        |                  |
-| copy_if         |        |        |                  |
-| copy_backward   |        |        |                  |
-| partition_copy  |        |        |                  |
-| remove_copy     |        |        |                  |
-| remove_copy_if  |        |        |                  |
-| replace_copy    |        |        |                  |
-| replace_copy_if |        |        |                  |
-| reverse_copy    |        |        |                  |
-| rotate_copy     |        |        |                  |
-| unique_copy     |        |        |                  |
+| 算法            | 复杂度 | 描述/示意图/代码 |
+| --------------- | ------ | ---------------- |
+| copy            |        |                  |
+| copy_n          |        |                  |
+| copy_if         |        |                  |
+| copy_backward   |        |                  |
+| partition_copy  |        |                  |
+| remove_copy     |        |                  |
+| remove_copy_if  |        |                  |
+| replace_copy    |        |                  |
+| replace_copy_if |        |                  |
+| reverse_copy    |        |                  |
+| rotate_copy     |        |                  |
+| unique_copy     |        |                  |
 
 ```c++
 TODO
 ```
 
-### 去重
+### 交换/转换
 
-| 算法   | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ------ | ------ | ------ | ---------------- |
-| unique |        |        |                  |
-
-```c++
-TODO
-```
-
-### 转换
-
-| 算法          | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ------------- | ------ | ------ | ---------------- |
-| iter_swap     |        |        |                  |
-| replace       |        |        |                  |
-| replace_if    |        |        |                  |
-| reverse       |        |        |                  |
-| rotate        |        |        |                  |
-| swap          |        |        |                  |
-| swap_ranges   |        |        |                  |
-| transform     |        |        |                  |
-| move          |        |        |                  |
-| move_backward |        |        |                  |
+| 算法        | 复杂度 | 描述/示意图/代码 |
+| ----------- | ------ | ---------------- |
+| iter_swap   |        |                  |
+| reverse     |        |                  |
+| rotate      |        |                  |
+| swap        |        |                  |
+| swap_ranges |        |                  |
+| transform   |        |                  |
 
 ```c++
 TODO
 ```
 
-### 修改
+### 删除/替换/移动/去重
 
-| 算法      | 头文件 | 复杂度 | 描述/示意图/代码 |
-| --------- | ------ | ------ | ---------------- |
-| remove    |        |        |                  |
-| remove_if |        |        |                  |
+| 算法          | 复杂度 | 描述/示意图/代码 |
+| ------------- | ------ | ---------------- |
+| remove        |        |                  |
+| remove_if     |        |                  |
+| replace       |        |                  |
+| replace_if    |        |                  |
+| move          |        |                  |
+| move_backward |        |                  |
+| unique        |        |                  |
 
 ```c++
 TODO
@@ -1138,17 +1292,17 @@ TODO
 
 ### 数值计算
 
-| 算法                | 头文件 | 复杂度 | 描述/示意图/代码 |
-| ------------------- | ------ | ------ | ---------------- |
-| accumulate          |        |        |                  |
-| adjacent_difference |        |        |                  |
-| inner_product       |        |        |                  |
-| iota                |        |        |                  |
-| min                 |        |        |                  |
-| min_element         |        |        |                  |
-| minmax              |        |        |                  |
-| max_element         |        |        |                  |
-| partial_sum         |        |        |                  |
+| 算法                | 复杂度 | 描述/示意图/代码 |
+| ------------------- | ------ | ---------------- |
+| accumulate          |        |                  |
+| adjacent_difference |        |                  |
+| inner_product       |        |                  |
+| iota                |        |                  |
+| min                 |        |                  |
+| min_element         |        |                  |
+| minmax              |        |                  |
+| max_element         |        |                  |
+| partial_sum         |        |                  |
 
 ---
 
@@ -1244,15 +1398,105 @@ TODO
 
 ### 运算符重载
 
-TODO
+```c++
+class Name
+{
+private:
+    std::string first_name{};
+    std::string second_name{};
+public:
+    Name() = default;
+    Name(const std::string& first, const std::string& second) : 
+        first_name{first}, second_name{second} {}
+    friend std::istream& operator>>(std::istream& in, Name& name);
+    friend std::ostream& operator<<(std::ostream& out, const Name& name);
+};
+
+inline std::istream& operator>>(std::istream& in, Name& name)
+{ return in >> name.first_name >> name.second_name; }
+
+inline std::ostream& operator<<(std::ostream& out, const Name& name)
+{ return out << name.first_name << ' ' << name.second_name; }
+
+// 使用运算符重载
+std::vector<Name> names{std::istream_iterator<Name>{std:cin},
+                        std::istream_iterator<Name>{}};
+std::copy(std::begin(names), std::end(names), std::ostream_iterator<Name>{std::cout, " "});
+```
 
 ### 文件流
 
-TODO
+```c++
+// 使用流迭代器对文件进行输入输出
+#include <iostream>
+#include <fstream>
+#include <iterator>
+#include <string>
+
+int main()
+{
+    // 读
+    string file_in{"007.txt"};
+    std::ifstream in{file_in};
+    if (!in)
+    {
+        std::cerr << file_in << " not open." << std::endl;
+        exit(1);
+    }
+    auto end_iter = std::istream_iterator<string>{};
+
+    string word;
+    std::cin >> word;
+    if (std::find(std::istream_iterator<string>(in), end_iter, word) != end_iter)
+        std::cout << "Read: " << std::endl;
+    words.clear();
+    
+    // 写
+    string file_out{"007.txt"};
+    std::ofstream out{file_out, std::ios_base::out | std::ios_base::trunc};
+    std::copy(std::istream_iterator<string>{in}, std::istream_iterator<string>{},
+              std::ostream_iterator<string>{out, " "});
+    
+    in.clear();
+    in.close();
+    out.close();
+}
+```
 
 ### 流缓冲迭代器
 
-TODO
+```c++
+// 对文件流使用输出流缓冲区迭代器
+#include <iostream>
+#include <iterator>
+#include <fstream>
+#include <string>
+using std::string;
+
+int main()
+{
+    string file_name{"007.txt"};
+    std::ifstream file_in{file_name};
+    if (!file_in)
+    {
+        std::cerr << file_name << " not open." << std::endl;
+        exit(1);
+    }
+    string file_copy("007.txt");
+    std::ofstream file_out{file_copy, std::ios_base::out | std::ios_base::trunc};
+    
+    std::istreambuf_iterator<char> in{file_in};
+    std::istreambuf_iterator<char> end_in;
+    std::ostreambuf_iterator<char> out{file_out};
+    while (in != end_in)
+        out = *in++;
+    
+    std::cout << "File copy completed." << std::endl;
+    
+    file_in.close();
+    file_out.close();
+}
+```
 
 ---
 
