@@ -897,12 +897,6 @@ int main()
 
 ## 算法
 
-### 通用
-
-| 算法 | 复杂度 | 描述/示意图/代码 |
-| ---- | ------ | ---------------- |
-|      |        |                  |
-
 ### 生成/填充
 
 | 算法             | 复杂度   | 描述/示意图/代码                                             |
@@ -923,43 +917,49 @@ int main()
 int main()
 {
     std::vector<int> f{1, 2, 3, 4, 5};
-    std::fill(f.begin(), f.end(), 2); // f:  [2,2,2,2,2]
+    std::fill(f.begin(), f.end(), 2);                     // f:  [2,2,2,2,2]
 
     std::vector<int> fn{1, 2, 3, 4, 5};
-    std::fill_n(fn.begin(), 3, 2);    // fn: [2,2,2,4,5]
+    std::fill_n(fn.begin(), 3, 2);                        // fn: [2,2,2,4,5]
 
     std::vector<int> ip1{1, 2, 3, 4, 5};
     std::vector<int> ip2{3, 5, 4, 1, 2};
     std::vector<int> ip3{3, 5, 4, 1, 1};
     bool ret_ip;
-    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin());   // ret_ip: true
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), 
+                                 ip2.begin());            // ret_ip: true
     ret_ip = std::is_permutation(ip1.begin(), ip2.end(), ip2.begin(), 
-                                 ip2.begin() + 3);                       // ret_ip: false
+                                 ip2.begin() + 3);        // ret_ip: false
     ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin(), 
-                                 [](int n1, int n2){ return n1 < n2; }); // ret_ip: false
+        [](int n1, int n2){ return n1 < n2; });           // ret_ip: false
     ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip2.begin(), 
-                                 ip2.begin() + 3, 
-                                 [](int n1, int n2){ return n1 < n2; }); // ret_ip: false
-    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), ip3.begin());   // ret_ip: false
+        ip2.begin() + 3, 
+        [](int n1, int n2){
+            return n1 < n2; 
+        });                                               // ret_ip: false
+    ret_ip = std::is_permutation(ip1.begin(), ip1.end(), 
+                                 ip3.begin());            // ret_ip: false
 
     std::vector<int> g1{1, 2, 3, 4, 5};
     int n = 1;
-    std::generate(g1.begin(), g1.end(), [&n](){ return n * 2; });        // g1: [2,2,2,2,2]
+    std::generate(g1.begin(), g1.end(), 
+                  [&n](){ return n * 2; });               // g1: [2,2,2,2,2]
 
     std::vector<int> gn1{1, 2, 3, 4, 5};
-    std::generate_n(gn1.begin(), gn1.size() / 2, [&n](){ return ++n; }); // gn1: [2,3,3,4,5]
+    std::generate_n(gn1.begin(), gn1.size() / 2, 
+                    [&n](){ return ++n; });               // gn1: [2,3,3,4,5]
 
     std::vector<int> np{1, 2, 3, 3, 6, 5, 4};
     bool ret_np;
-    ret_np = std::next_permutation(np.begin(), np.end());                // ret_np: true
+    ret_np = std::next_permutation(np.begin(), np.end()); // ret_np: true
     ret_np = std::next_permutation(np.begin(), np.end(), 
-        [](int n1, int n2){ return n1 < n2; });                          // ret_np: true
+        [](int n1, int n2){ return n1 < n2; });           // ret_np: true
 
     std::vector<int> pp{1, 2, 3, 4, 6, 5, 4};
     bool ret_pp;
-    ret_pp = std::prev_permutation(pp.begin(), pp.end());                // ret_pp: true
+    ret_pp = std::prev_permutation(pp.begin(), pp.end()); // ret_pp: true
     ret_pp = std::prev_permutation(pp.begin(), pp.end(), 
-        [](int n1, int n2){ return n1 < n2; });                          // ret_pp: true
+        [](int n1, int n2){ return n1 < n2; });           // ret_pp: true
 }
 ```
 
@@ -983,47 +983,60 @@ int main()
 {
     std::vector<int> is1{1, 2, 3, 3, 4};
     bool ret_is;
-    ret_is = std::is_sorted(is1.begin(), is1.end());                // ret_is: true
+    ret_is = std::is_sorted(is1.begin(), is1.end()); // ret_is: true
     ret_is = std::is_sorted(is1.begin(), is1.end(), 
-                            std::greater<>());                      // ret_is: false
+        std::greater<>());                           // ret_is: false
     ret_is = std::is_sorted(is1.begin(), is1.end(), 
-                            [](int n1, int n2){ return n1 < n2; }); // ret_is: true
+        [](int n1, int n2){ 
+            return n1 < n2; 
+        });                                          // ret_is: true
 
     std::vector<int> isu1{1, 2, 3, 3, 6, 5, 4};
     std::vector<int>::iterator ret_isu;
-    ret_isu = std::is_sorted_until(isu1.begin(), isu1.end()); // *ret_isu: 5
+    ret_isu = std::is_sorted_until(isu1.begin(), 
+        isu1.end());                                 // *ret_isu: 5
     ret_isu = std::is_sorted_until(isu1.begin(), isu1.end(), 
-                                   std::greater<>());         // *ret_isu: 2
+        std::greater<>());                           // *ret_isu: 2
     ret_isu = std::is_sorted_until(isu1.begin(), isu1.end(), 
-               [](int n1, int n2){ return n1 < n2; });        // *ret_isu: 5
+        [](int n1, int n2){ return n1 < n2; });      // *ret_isu: 5
 
     std::vector<int> ne{4, 3, 2, 1, 5, 7, 6, 8};
-    std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end()); // ne: [3,1,2,4,5,7,6,8]
+    std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, 
+        ne.end());                                   // ne: [3,1,2,4,5,7,6,8]
     std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end(), 
-                     std::greater<>());                                 // ne: [5,8,6,7,4,3,2,1]
+        std::greater<>());                           // ne: [5,8,6,7,4,3,2,1]
     std::nth_element(ne.begin(), ne.begin() + ne.size() / 2, ne.end(), 
-                     [](int n1, int n2){ return n1 < n2; });            // ne: [4,1,2,3,5,6,7,8]
+        [](int n1, int n2){ return n1 < n2; });      // ne: [4,1,2,3,5,6,7,8]
 
     std::vector<int> ps1{3, 4, 2, 1, 5};
-    std::partial_sort(ps1.begin(), ps1.begin() + 3, ps1.end()); // ps1: [1,2,3,4,5]
+    std::partial_sort(ps1.begin(), ps1.begin() + 3, 
+        ps1.end());                                  // ps1: [1,2,3,4,5]
     std::partial_sort(ps1.begin(), ps1.begin() + 3, ps1.end(), 
-        [](int n1, int n2){ return n1 < n2; });                 // ps1: [1,2,3,4,5]
+        [](int n1, int n2){ 
+            return n1 < n2; 
+        });                                          // ps1: [1,2,3,4,5]
 
     std::vector<int> s1{3, 4, 2, 1, 5};
     std::vector<int> s2{s1};
     std::vector<int> s3{s1};
-    std::sort(s1.begin(), s1.end());                                 // s1: [1,2,3,4,5]
+    std::sort(s1.begin(), s1.end());                 // s1: [1,2,3,4,5]
     std::sort(s2.begin(), s2.end(), 
-              [](int n1, int n2){ return n1 < n2 && n2 % 2 != 0; }); // s2: [2,3,4,1,5]
-    std::sort(s3.begin(), s3.end(), std::greater<>());               // s3: [5,4,3,2,1]
+        [](int n1, int n2){ 
+            return n1 < n2 && n2 % 2 != 0; 
+        });                                          // s2: [2,3,4,1,5]
+    std::sort(s3.begin(), s3.end(), 
+        std::greater<>());                           // s3: [5,4,3,2,1]
 
     std::vector<int> ss1{3, 4, 2, 1, 5};
     std::vector<int> ss2{ss1};
     std::vector<int> ss3{ss1};
-    std::stable_sort(ss1.begin(), ss1.end());                               // ss1: [1,2,3,4,5]
+    std::stable_sort(ss1.begin(), ss1.end());        // ss1: [1,2,3,4,5]
     std::stable_sort(ss2.begin(), ss2.end(), 
-                     [](int n1, int n2){ return n2 % 2 == 0 && n1 < n2; }); // ss2: [3,1,2,4,5]
-    std::stable_sort(ss3.begin(), ss3.end(), std::greater<>());             // ss3: [5,4,3,2,1]
+        [](int n1, int n2){ 
+            return n2 % 2 == 0 && n1 < n2; 
+        });                                         // ss2: [3,1,2,4,5]
+    std::stable_sort(ss3.begin(), ss3.end(), 
+        std::greater<>());                          // ss3: [5,4,3,2,1]
 }
 ```
 
@@ -1045,27 +1058,30 @@ int main()
     std::vector<int> v2{7, 8, 9};
 
     std::merge(v1.begin(), v1.end(), v2.begin(), 
-               v2.end(), v1.begin());                          // v1: [1, 2, 3]
+               v2.end(), v1.begin());                  // v1: [1, 2, 3]
 
     std::vector<int> v3(6);
     std::merge(v1.begin(), v1.end(), v2.begin(), 
-               v2.end(), v3.begin());                          // v3: [1,2,3,7,8,9]
+               v2.end(), v3.begin());                  // v3: [1,2,3,7,8,9]
 
     std::vector<int> v4(6);
     std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), 
-               v4.begin(), std::greater<>());                  // v4: [7,8,9,1,2,3]
+               v4.begin(), std::greater<>());          // v4: [7,8,9,1,2,3]
 
     std::vector<int> v5(6);
     std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v5.begin(), 
-               [](int n1, int n2){ return n1 < n2; });         // v5: [1,2,3,7,8,9]
+               [](int n1, int n2){ return n1 < n2; }); // v5: [1,2,3,7,8,9]
 
     
     std::vector<int> v6{5, 17, 19, 20, 24, 30, 9, 13, 19, 25, 29, 31, 40, 41};
-    std::inplace_merge(v6.begin(), v6.begin() + 6, v6.end());  // v6: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
+    std::inplace_merge(v6.begin(), v6.begin() + 6, 
+        v6.end()); // v6: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
 
     std::vector<int> v7{5, 17, 19, 20, 24, 30, 9, 13, 19, 25, 29, 31, 40, 41};
     std::inplace_merge(v7.begin(), v7.begin() + 6, v7.end(),
-                       [](int n1, int n2){ return n1 < n2; }); // v7: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
+        [](int n1, int n2){ 
+            return n1 < n2; 
+        });        // v7: [5,9,13,17,19,19,20,24,25,29,30,31,40,41]
 }
 ```
 
@@ -1074,7 +1090,7 @@ int main()
 | 算法          | 复杂度                    | 描述/示意图/代码                                             |
 | ------------- | ------------------------- | ------------------------------------------------------------ |
 | adjacent_find | $O(n)$                    | 搜索序列中两个连续相等的元素。                               |
-| binary_search | $O(log_2{n})$             | 二分查找指定值，如果找到就返回true。                         |
+| binary_search | $O(log_2{n})$             | 二分查找指定值，如果找到就返回true；<br>![algo_binary_search](res/stl/algo_binary_search.png) |
 | find          | $O(n)$                    | 在指定范围内搜索指定值，并返回该值的迭代器。                 |
 | find_end      | $O(s \times (n - s + 1))$ | 在指定范围内搜索最后一个和其他序列匹配的项；<br>![algo_find_end](res/stl/algo_find_end.png) |
 | find_first_of | $O(s \times n)$           | 在指定范围内搜索第一个和其他序列匹配的项目；<br>![algo_find_first_of](res/stl/algo_find_first_of.png) |
@@ -1083,6 +1099,7 @@ int main()
 | lower_bound   | $O(log_2n)$               | 在指定范围内搜索>=指定值的元素；<br>![algo_lower_bound](res/stl/algo_lower_bound.png) |
 | search        | $O(s \times n)$           | 在指定范围内搜索第一个和其他序列匹配的项目。                 |
 | search_n      | $O(n)$                    | 在指定范围内搜索连续出现n次的序列。                          |
+| upper_bound   |                           |                                                              |
 
 ```c++
 #include <iostream>
@@ -1147,13 +1164,17 @@ int main()
     std::vector<int> mm2{1, 2, 4, 5};
     std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_mm;
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), 
-        mm2.begin());                            // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        mm2.begin());   // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
-        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
+        [](int n1, int n2){ 
+            return n1 == n2; 
+        });             // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
-        mm2.end());                              // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        mm2.end());     // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), mm2.end(), 
-        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        [](int n1, int n2){ 
+            return n1 == n2; 
+        });             // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
 
     std::vector<int> s1{1, 2, 3, 4, 5};
     std::vector<int> s2{2, 3};
@@ -1174,20 +1195,47 @@ int main()
 
 ### 分区
 
-| 算法            | 头文件 | 复杂度 | 描述/示意图/代码 |
-| --------------- | ------ | ------ | ---------------- |
-| partition       |        |        |                  |
-| partition_point |        |        |                  |
+| 算法             | 复杂度       | 描述/示意图/代码                                             |
+| ---------------- | ------------ | ------------------------------------------------------------ |
+| is_partitioned   | $O(n)$       | 判断序列是否分区完毕。                                       |
+| partition        | $O(nlog(n))$ | 根据条件对序列进行分区（**不保证**原始元素序列的相对顺序），并返回**第二个分区的首元素迭代器**。 |
+| partition_point  | $O(n)$       | 返回已分区序列中，**第一个分区的结束迭代器**。               |
+| stable_partition | $O(nlog(n))$ | 根据条件对序列进行分区（**保证**原始元素序列的相对顺序），并返回**第二个分区的首元素迭代器**。 |
 
 ```c++
-TODO
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> ip1{1, 4, 6, 4, 5, 3};
+    bool ret_ip;
+    ret_ip = std::is_partitioned(ip1.begin(), ip1.end(), 
+        [](int n){ return n <= 4; }); // ret_ip: false
+
+    std::vector<int> p1{1, 4, 6, 4, 5, 3};
+    std::vector<int>::iterator ret_p;
+    ret_p = std::partition(p1.begin(), p1.end(), 
+        [](int n){ return n < 4; }); // *ret_p: 6, p1:[1,3,6,4,5,4]
+
+    std::vector<int> pp1{1, 4, 6, 4, 5, 3};
+    std::vector<int>::iterator ret_pp;
+    ret_pp = std::partition_point(pp1.begin(), pp1.end(), 
+        [](int n){ return n < 4; }); // *ret_pp:4 pp1:[1,4,6,4,5,3]
+
+    std::vector<int> sp1{1, 4, 6, 4, 5, 3};
+    std::vector<int>::iterator ret_sp;
+    ret_sp = std::stable_partition(sp1.begin(), sp1.end(),
+        [](int n){ return n < 4; }); // *ret_sp:4 sp1:[1,3,4,6,4,5]
+}
 ```
 
 ### 比较
 
 | 算法                    | 复杂度         | 描述/示意图/代码                                             |
 | ----------------------- | -------------- | ------------------------------------------------------------ |
-| equal                   | $O(min(m, n))$ | 判断两个序列的所有元素是否相等；**此算法对于以下容器不可用：**<br>- `std::unordered_set`<br>- `std::unordered_multiset`<br>- `std::unordered_map`<br>- `std::unordered_multimap` |
+| equal                   | $O(min(m, n))$ | 判断两个序列的所有元素是否相等；<br>**此算法对于以下容器不可用：**<br>- `std::unordered_set`<br>- `std::unordered_multiset`<br>- `std::unordered_map`<br>- `std::unordered_multimap` |
 | equal_range             | $O(log_2(n))$  | 查找序列中所有元素都与指定值相等的片段；<br>![algo_equal_range](res/stl/algo_equal_range.png) |
 | lexicographical_compare | $O(min(m, n))$ | 判断一个序列是否按字典序小于第二个序列。                     |
 | mismatch                | $O(min(m, n))$ | 搜索两个序列中，不匹配对出现的位置，并返回不匹配位置的迭代器对；<br>![algo_mismatch](res/stl/algo_mismatch.png) |
@@ -1212,9 +1260,12 @@ int main()
 
     std::vector<int> er{1, 2, 3, 3, 5};
     std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_er;
-    ret_er = std::equal_range(er.begin(), er.end(), 3);    // <*ret_er.first, *ret_er.second>: <3, 5>
+    ret_er = std::equal_range(er.begin(), 
+        er.end(), 3);           // <*ret_er.first, *ret_er.second>: <3, 5>
     ret_er = std::equal_range(er.begin(), er.end(), 3, 
-        [](int n1, int n2){ return n1 == n2; });           // <*ret_er.first, *ret_er.second>: <5, 0>
+        [](int n1, int n2){ 
+            return n1 == n2; 
+        });                     // <*ret_er.first, *ret_er.second>: <5, 0>
 
     std::vector<int> lc1{1, 2, 3, 4};
     std::vector<int> lc2{2, 3, 4, 5};
@@ -1228,63 +1279,252 @@ int main()
     std::vector<int> mm2{1, 2, 4, 5};
     std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_mm;
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), 
-        mm2.begin());                            // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        mm2.begin());        // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
-        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
+        [](int n1, int n2){ 
+            return n1 == n2; 
+        });                  // <*(ret_mm.first), *(ret_mm.second)>: <3, 4> 
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), 
-        mm2.end());                              // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        mm2.end());          // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
     ret_mm = std::mismatch(mm1.begin(), mm1.end(), mm2.begin(), mm2.end(), 
-        [](int n1, int n2){ return n1 == n2; }); // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
+        [](int n1, int n2){ 
+            return n1 == n2; 
+        });                  // <*(ret_mm.first), *(ret_mm.second)>: <3, 4>
 }
 ```
 
 ### 复制
 
-| 算法            | 复杂度 | 描述/示意图/代码 |
-| --------------- | ------ | ---------------- |
-| copy            |        |                  |
-| copy_n          |        |                  |
-| copy_if         |        |                  |
-| copy_backward   |        |                  |
-| partition_copy  |        |                  |
-| remove_copy     |        |                  |
-| remove_copy_if  |        |                  |
-| replace_copy    |        |                  |
-| replace_copy_if |        |                  |
-| reverse_copy    |        |                  |
-| rotate_copy     |        |                  |
-| unique_copy     |        |                  |
+| 算法            | 复杂度 | 描述/示意图/代码                                             |
+| --------------- | ------ | ------------------------------------------------------------ |
+| copy            | $O(n)$ | 将序列指定范围内元素复制到另一个序列的指定位置，返回最后复制元素的下一个位置；<br>![algo_copy](res/stl/algo_copy.png) |
+| copy_backward   | $O(n)$ | 将序列复制到另一个序列的末尾，返回最后复制元素的迭代器；<br>![algo_copy_backward](res/stl/algo_copy_backward.png) |
+| copy_if         | $O(n)$ | 将序列指定范围内符合条件的元素，复制到另一个序列的指定位置，返回最后复制元素的下一个位置的迭代器。 |
+| copy_n          | $O(n)$ | 将指定范围内的元素，复制前n个元素到另一个序列的指定位置，返回最后复制元素的下一个位置的迭代器。 |
+| partition_copy  | $O(n)$ | 将序列分区的结果复制到另两个序列（不改变原序列的内容），并返回这两个序列最后复制元素的迭代器pair。 |
+| remove_copy     | $O(n)$ | 将指定范围内的元素复制到指定位置，并跳过等于指定值的元素，返回最后被复制元素的迭代器。 |
+| remove_copy_if  | $O(n)$ | 将指定范围内的元素复制到指定位置，并跳过符合条件的元素，返回最后被复制元素的迭代器。 |
+| replace_copy    | $O(n)$ | 将指定范围内的元素复制到指定位置，并用新元素替换等于指定值的旧元素，返回最后一个元素的下一个位置的迭代器。 |
+| replace_copy_if | $O(n)$ | 将指定范围内的元素复制到指定位置，并用新元素替换符合条件的旧元素，返回最后一个元素的下一个位置的迭代器。 |
+| reverse_copy    | $O(n)$ | 反向的将指定范围内的元素复制到指定位置，并返回指向被复制到目的位置的最后一个元素的下一个位置的迭代器。 |
+| rotate_copy     | $O(n)$ | 将序列中指定范围的元素按照指定位置翻转，并将结果复制到指定位置，返回目的序列中的最后一个元素的下一个位置的迭代器。 |
+| unique_copy     | $O(n)$ | 将指定范围内的元素复制到指定位置，忽略重复的元素，并返回被复制到目的位置的最后一个元素的下一个位置的迭代器。 |
+
+```c++
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main()
+{
+    std::vector<int> c1{1, 2, 3, 4, 5};
+    std::vector<int> c2(5);
+    std::vector<int>::iterator ret_c;
+    ret_c = std::copy(c1.begin(), c1.end(), 
+        c2.begin());     // *ret_c: 0, c1:[1,2,3,4,5], c2:[1,2,3,4,5]
+
+    std::vector<int> cb1{1, 2, 3, 4, 5};
+    std::vector<int> cb2(5);
+    std::vector<int>::iterator ret_cb;
+    ret_cb = std::copy_backward(cb1.begin(), cb1.end(), 
+        cb2.end());      // *ret_cb:1, cb1:[1,2,3,4,5], cb2:[1,2,3,4,5]
+
+    std::vector<int> ci1{1, 2, 3, 4, 5};
+    std::vector<int> ci2(2);
+    std::vector<int>::iterator ret_ci;
+    ret_ci = std::copy_if(ci1.begin(), ci1.end(), ci2.begin(), 
+        [](int n){ return n % 2 == 0; }); 
+                         // *ret_ci:0, ci1:[1,2,3,4,5], ci2:[2,4]
+
+    std::vector<int> cn1{1, 2, 3, 4, 5};
+    std::vector<int> cn2(2);
+    std::vector<int>::iterator ret_cn;
+    ret_cn = std::copy_n(cn1.begin(), 2, 
+        cn2.begin());    // ret_cn:0, cn1:[1,2,3,4,5], cn2:[1,2]
+
+    std::vector<int> pc1{1, 2, 3, 4, 5};
+    std::vector<int> pc2(3);
+    std::vector<int> pc3(3);
+    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_pc;
+    ret_pc = std::partition_copy(pc1.begin(), pc1.end(), pc2.begin(), pc3.begin(), 
+        [](int n){ return n < 5; }); 
+                         // <*ret_pc.first, *ret_pc.second>: <0, 0>
+                         // pc2:[1,2,3,4,5], pc3:[1,2,3]
+
+    std::vector<int> rc1{1, 2, 3, 4, 5};
+    std::vector<int> rc2(4);
+    std::vector<int>::iterator ret_rc;
+    ret_rc = std::remove_copy(rc1.begin(), rc1.end(), 
+        rc2.begin(), 3); // *ret_rc:0, rc1:[1,2,3,4,5], rc2:[1,2,4,5]
+
+    std::vector<int> rci1{1, 2, 3, 4, 5};
+    std::vector<int> rci2(4);
+    std::vector<int>::iterator ret_rci;
+    ret_rci = std::remove_copy_if(rci1.begin(), rci2.end(), rci2.begin(), 
+        [](int n){ return n == 3; }); 
+                         // *ret_rci:0, rci1:[1,2,3,4,5], rci2:[1,2,4,5]
+
+    std::vector<int> rpc1{1, 2, 3, 4, 5};
+    std::vector<int> rpc2{6, 7, 8};
+    std::vector<int>::iterator ret_rpc;
+    ret_rpc = std::replace_copy(rpc1.begin(), rpc1.end(), 
+        rpc2.begin(), 2, 9); 
+                         // *ret_rpc:0, rpc1:[1,2,3,4,5], rpc2:[1,9,3]
+
+    std::vector<int> rpci1{1, 2, 3, 4, 5};
+    std::vector<int> rpci2{6, 7, 8};
+    std::vector<int>::iterator ret_rpci;
+    ret_rpci = std::replace_copy_if(rpci1.begin(), rpci1.end(), rpci2.begin(), 
+        [](int n){ return n == 2; }, 9); 
+                         // *ret_rpci:0, rpci1:[1,2,3,4,5], rpci2:[1,9,3]
+
+    std::vector<int> rvc1{1, 2, 3, 4, 5};
+    std::vector<int> rvc2(5);
+    std::vector<int>::iterator ret_rvc;
+    ret_rvc = std::reverse_copy(rvc1.begin(), rvc1.end(), 
+        rvc2.begin());   // *ret_rvc:0, rvc1:[1,2,3,4,5], rvc2:[5,4,3,2,1]
+
+    std::vector<int> rtc1{1, 2, 3, 4, 5};
+    std::vector<int> rtc2(5);
+    std::vector<int>::iterator ret_rtc;
+    ret_rtc = std::rotate_copy(rtc1.begin(), rtc1.begin() + 3, rtc1.end(), 
+        rtc2.begin());   // *ret_rtc:0, rtc1:[1,2,3,4,5], rtc2:[4,5,1,2,3]
+
+    std::vector<int> uc1{1, 2, 2, 3, 4, 5};
+    std::vector<int> uc2(6);
+    std::vector<int>::iterator ret_uc;
+    ret_uc = std::unique_copy(uc1.begin(), uc1.end(), 
+        uc2.begin());   // *ret_uc:0, uc1:[1,2,2,3,4,5], uc2:[1,2,3,4,5,0]
+    ret_uc = std::unique_copy(uc1.begin(), uc1.end(), uc2.begin(), 
+        [](int n1, int n2){ return n1 == n2; });
+                        // *ret_uc:0, uc1:[1,2,2,3,4,5], uc2:[1,2,3,4,5,0]
+}
+```
+
+### 交换/反转/删除/替换/旋转/移动/转换/去重
+
+| 算法          | 复杂度   | 描述/示意图/代码                                             |
+| ------------- | -------- | ------------------------------------------------------------ |
+| iter_swap     | $O(1)$   | 交换两个迭代器指向的元素。                                   |
+| reverse       | $O(n/2)$ | 逆转指定范围中的元素。                                       |
+| remove        | $O(n)$   | 移除指定范围中，等于指定值的元素，并返回最后一个移除元素的下一个位置的迭代器；<br>![algo_remove](res/stl/algo_remove.png) |
+| remove_if     | $O(n)$   | 移除指定范围中，符合指定条件的元素，并返回最后一个移除元素的下一个位置的迭代器。 |
+| replace       | $O(n)$   | 用新元素替换指定范围中，等于指定值的元素。                   |
+| replace_if    | $O(n)$   | 用新元素替换指定范围中，符合指定条件的元素。                 |
+| rotate        | $O(n)$   | 按照逆时针方向旋转指定范围中的元素，并返回**原始序列**中首元素的迭代器；<br>![algo_rotate](res/stl/algo_rotate.png) |
+| move          | $O(n)$   | 移动序列元素到指定位置，并返回最后移动元素的下一位置的迭代器。 |
+| move_backward | $O(n)$   | 将序列元素以逆序移动（保持元素之间仍然保持原有的顺序）到另一个序列的尾部，并返回最后被移动元素的迭代器。 |
+| swap          | $O(n)$   | 交换两个相同长度的序列。                                     |
+| swap_ranges   | $O(n)$   | 将指定范围内的元素与另一个序列的指定位置开始的片段，进行交换，并返回第二个序列中最后被交换位置的下一位置的迭代器。 |
+| transform     | $O(n)$   | 将指定范围内的元素传递给函数对象，并将操作结果保存到指定位置。 |
+| unique        | $O(n)$   | 对指定范围内的元素去重，并返回去重后新范围的最后一个元素的迭代器；<br>![algo_unique](res/stl/algo_unique.png) |
+
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> is1{1, 2, 3, 4, 5};
+    std::iter_swap(is1.begin(), 
+                   is1.end() - 1);             // is1: [5,2,3,4,1]
+
+    std::vector<int> r1{1, 2, 3, 4, 5};
+    std::reverse(r1.begin(), r1.end());        // r1:  [5,4,3,2,1]
+    
+    std::vector<int> rm1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_rm;
+    ret_rm = std::remove(rm1.begin(), rm1.end(), 
+                         3);                   // *ret_rm: 5
+                                               // rm1: [1,2,4,5,5]
+    
+    std::vector<int> rmi1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_rmi;
+    ret_rmi = std::remove_if(rmi1.begin(), rmi1.end(), 
+        [](int n){ return n == 3; });         // *ret_rmi: 5
+                                              // rmi1: [1,2,4,5,5]
+    
+    std::vector<int> rp1{1, 2, 3, 4, 5};
+    std::replace(rp1.begin(), rp1.end(), 
+                 3, 6);                       // rp1: [1,2,6,4,5]
+    
+    std::vector<int> rpi1{1, 2, 3, 4, 5};
+    std::replace_if(rpi1.begin(), rpi1.end(), 
+        [](int n){ return n == 3; }, 6);      // rpi1: [1,2,6,4,5]
+
+    std::vector<int> rt1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_rt;
+    ret_rt = std::rotate(rt1.begin(), rt1.begin() + 3, 
+                         rt1.end());          // *ret_rt:1
+                                              // rt1: [4,5,1,2,3]
+    
+    std::vector<int> mv1{1, 2, 3, 4, 5};
+    std::vector<int> mv2(5);
+    std::vector<int>::iterator ret_mv;
+    ret_mv = std::move(mv1.begin(), mv1.end(), 
+                       mv2.begin());          // *ret_mv:0
+                                              // mv1: [1,2,3,4,5]
+                                              // mv2: [1,2,3,4,5]
+
+    std::vector<int> mvb1{1, 2, 3, 4, 5};
+    std::vector<int> mvb2(5);
+    std::vector<int>::iterator ret_mvb;
+    ret_mvb = std::move_backward(mvb1.begin(), mvb1.end(), 
+                                 mvb2.end()); // *ret_mvb:1
+                                              // mvb2: [1,2,3,4,5]
+
+    std::vector<int> sw1{1, 2, 3, 4, 5};
+    std::vector<int> sw2{6, 7, 8, 9, 10};
+    std::swap(sw1, sw2);                      // sw1: [6,7,8,9,10]
+                                              // sw2: [1,2,3,4,5]
+    
+    std::vector<int> swr1{1, 2, 3, 4, 5};
+    std::vector<int> swr2{6, 7, 8, 9, 10};
+    std::vector<int>::iterator ret_swr;
+    ret_swr = std::swap_ranges(swr1.begin(), swr1.begin() + 2, 
+                               swr2.begin()); // *ret_swr:8
+                                              // swr1: [6,7,3,4,5]
+                                              // swr2: [1,2,8,9,10]
+    
+    std::vector<int> tsf1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_tsf;
+    ret_tsf = std::transform(tsf1.begin(), tsf1.begin() + 2, tsf1.begin(),
+                             [](int n){ 
+                                 return ++n; 
+                             });               // ret_tsf:3
+                                               // tsf1: [2,3,3,4,5]
+
+    std::vector<int> u1{1, 2, 2, 3};
+    std::vector<int>::iterator ret_u;
+    ret_u = std::unique(u1.begin(), u1.end()); // *ret_u:3
+                                               // u1: [1,2,3,3]
+}
+```
+
+### 集合
+
+| 算法                      | 复杂度 | 描述/示意图/代码 |
+| ------------------------- | ------ | ---------------- |
+| includes                  |        |                  |
+| set_difference            |        |                  |
+| set_intersection          |        |                  |
+| set_symmetric_differrence |        |                  |
+| set_union                 |        |                  |
 
 ```c++
 TODO
 ```
 
-### 交换/转换
+### 堆操作
 
-| 算法        | 复杂度 | 描述/示意图/代码 |
-| ----------- | ------ | ---------------- |
-| iter_swap   |        |                  |
-| reverse     |        |                  |
-| rotate      |        |                  |
-| swap        |        |                  |
-| swap_ranges |        |                  |
-| transform   |        |                  |
-
-```c++
-TODO
-```
-
-### 删除/替换/移动/去重
-
-| 算法          | 复杂度 | 描述/示意图/代码 |
-| ------------- | ------ | ---------------- |
-| remove        |        |                  |
-| remove_if     |        |                  |
-| replace       |        |                  |
-| replace_if    |        |                  |
-| move          |        |                  |
-| move_backward |        |                  |
-| unique        |        |                  |
+| 算法      | 复杂度 | 描述/示意图/代码 |
+| --------- | ------ | ---------------- |
+| is_heap   |        |                  |
+| make_heap |        |                  |
+| push_heap |        |                  |
+| pop_heap  |        |                  |
+| sort_heap |        |                  |
 
 ```c++
 TODO
@@ -1298,11 +1538,49 @@ TODO
 | adjacent_difference |        |                  |
 | inner_product       |        |                  |
 | iota                |        |                  |
+| max                 |        |                  |
+| max_element         |        |                  |
 | min                 |        |                  |
 | min_element         |        |                  |
 | minmax              |        |                  |
-| max_element         |        |                  |
+| minmax_element      |        |                  |
 | partial_sum         |        |                  |
+
+```c++
+TODO
+```
+
+### 其它
+
+| 算法     | 复杂度 | 描述/示意图/代码                               |
+| -------- | ------ | ---------------------------------------------- |
+| for_each | $O(n)$ | 使用函数遍历指定范围内的元素。                 |
+| count    | $O(n)$ | 统计指定范围内与指定值相等的元素的个数并返回。 |
+| count_if | $O(n)$ | 统计指定范围内满足要求的元素个数并返回。       |
+
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> fe1{1, 2, 3, 4, 5};
+    std::for_each(fe1.begin(), fe1.end(), 
+                  [](int &n){ n++; }); // fe1: [2,3,4,5,6]
+    
+    std::vector<int> ct1{1, 2, 3, 4, 5};
+    size_t ret_ct = std::count(ct1.begin(), ct1.end(), 
+                               3);     // ret_ct: 1
+    
+    std::vector<int> cti1{1, 2, 3, 4, 5};
+    size_t ret_cti = std::count_if(cti1.begin(), cti1.end(), 
+                                   [](int n){ 
+                                       return n % 2 == 0; 
+                                   }); // ret_cti: 2
+}
+```
+
 
 ---
 
@@ -1371,7 +1649,8 @@ TODO
   
   int main()
   {
-      std::vector<string> words{"The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"};
+      std::vector<string> words{"The", "quick", "brown", "fox", 
+                                "jumped", "over", "the", "lazy", "dog"};
       
       // Write the words container using conventional iterator notation
       std::ostream_iterator<string> out_iter1{std::cout};
@@ -1421,7 +1700,8 @@ inline std::ostream& operator<<(std::ostream& out, const Name& name)
 // 使用运算符重载
 std::vector<Name> names{std::istream_iterator<Name>{std:cin},
                         std::istream_iterator<Name>{}};
-std::copy(std::begin(names), std::end(names), std::ostream_iterator<Name>{std::cout, " "});
+std::copy(std::begin(names), std::end(names), 
+          std::ostream_iterator<Name>{std::cout, " "});
 ```
 
 ### 文件流
@@ -1447,7 +1727,8 @@ int main()
 
     string word;
     std::cin >> word;
-    if (std::find(std::istream_iterator<string>(in), end_iter, word) != end_iter)
+    if (std::find(std::istream_iterator<string>(in), 
+                  end_iter, word) != end_iter)
         std::cout << "Read: " << std::endl;
     words.clear();
     

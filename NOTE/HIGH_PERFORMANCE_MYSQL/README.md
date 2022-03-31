@@ -1,6 +1,6 @@
 # 高性能MySQL
 
-Baron Schwartz, Peter Zaitsev, adim Tkachenko  第三版
+Baron Schwartz, Peter Zaitsev, adim Tkachenko .3ED
 
 - [第一章 MySQL架构与历史](chapter1.md)
 - [第二章 MySQL基准测试]

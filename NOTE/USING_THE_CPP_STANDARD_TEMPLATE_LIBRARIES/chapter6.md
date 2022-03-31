@@ -675,7 +675,7 @@ for (const auto& name : names)
 
 int main()
 {
-	std::vector<double> temperatures{65, 75, 56, 48, 31, 28, 32, 29, 40, 41, 44, 50};
+ std::vector<double> temperatures{65, 75, 56, 48, 31, 28, 32, 29, 40, 41, 44, 50};
   std::vector<double> low_t;
   std::vector<double> high_t;
   auto average = std::accumulate(std::begin(temperatures), std::end(temperatures), 0.0) /

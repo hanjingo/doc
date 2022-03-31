@@ -4,31 +4,35 @@
 
 
 
-## 已阅读
+## 已读
 
-#### [必然](CERTAIN/README.md)
+### C++
 
-#### [Effective C++](EFFECTIVE_CPP/README.md)
+| 书名                                                         | 版次 | 作者            | 摘要/评价                                                    |
+| ------------------------------------------------------------ | ---- | --------------- | ------------------------------------------------------------ |
+| [Effective C++](EFFECTIVE_CPP/README.md)                     |      |                 |                                                              |
+| [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       |      |                 |                                                              |
+| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           |      |                 |                                                              |
+| [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       |      |                 |                                                              |
+| [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) |      |                 |                                                              |
+| [Effective STL](EFFECTIVE_STL/README.md)                     |      |                 |                                                              |
 
-#### [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)
+### 音视频
 
-#### [FFmpeg从入门到精通](FFMPEG_FROM_BEGINNER_TO_MASTER/README.md)
+- [FFmpeg从入门到精通](FFMPEG_FROM_BEGINNER_TO_MASTER/README.md)
 
-#### [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)
+### 网络编程
 
-#### [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md)
+- [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md)
 
-#### [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md)
+### 社科
 
-#### [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)
-
-#### [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md)
-
-#### [Effective STL](EFFECTIVE_STL/README.md)
+- [必然](CERTAIN/README.md)
 
 
 
-## 阅读中
+## 在读
 
 - [COM技术内幕](INSIDE_COM/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
@@ -52,7 +56,7 @@
 
 
 
-## 计划阅读
+## 计划读
 
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [计算几何](COMPUTATIONAL_GEOMETRY/README.md)
@@ -64,4 +68,6 @@
 - [POSIX多线程程序设计](PROGRAMMING_WITH_POSIX_THREADS/README.md)
 - [Linux系统编程](LINUX_SYSTEM_PROGRAMMING/README.md)
 - [C++覆辙录]
+- [Window核心编程]
+- []
 
