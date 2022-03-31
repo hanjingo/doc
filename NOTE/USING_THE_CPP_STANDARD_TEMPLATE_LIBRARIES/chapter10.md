@@ -493,4 +493,381 @@ std::cout << std::endl; // -2 0 2 -4 4
 
 ### 10.3.4 valarray对象的二元运算
 
-TODO
+在valarray头文件中定义了下面这些二元运算符的非成员操作符函数：
+
+- 算术运算符`+`, `-`, `*`, `/`, `%`
+- 位操作运算符 `&`, `|`, `^`
+- 位移运算符 `>>`, `<<`
+- 逻辑运算符 `&&`, `||`
+
+```c++
+// 将二元算术运算符
+valarray<int> even{2, 4, 6, 8};
+valarray<int> odd{3, 5, 7, 9};
+auto r1 = even + 2;
+print(r1, 4, 3); // r1: 4   6   8   10
+auto r2 = 2 * r1 + odd;
+print(r2, 4, 3); // r2: 11  17  23  29
+r1 += 2 * odd - 4 * (r2 - even);
+print(r1, 4, 3); // r1: -26 -36 -46 -56
+```
+
+```c++
+// 使用非成员函数比较valarray对象
+valarray<int> even{2, 4, 6, 8};
+valarray<int> odd{3, 5, 7, 9};
+std::cout << std::boolalpha;
+print(even + 1 == odd, 4, 6); // true true  true  true
+auto result = (odd < 5) && (even + 3 != odd);
+print(result);                // true false false false
+```
+
+### 10.3.5 访问valarray对象中的元素
+
+valarray对象以序列的方式保存其中的元素。通过使用下标运算符来使用索引可以得到任何元素的引用，并能够获取或设置值。
+
+```c++
+std::valarray<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9};
+data[1] = data[2] + data[3];   // data[1]: 7
+data[3] *= 2;                  // data[3]: 8
+data[4] = ++data[5] - data[2]; // data[4]: 4, data[5]: 7
+```
+
+**1.创建切片**
+
+`std::slice`类定义在valarray头文件中。由传给valarray对象的下标运算符的slice对象定义的slice就像索引。可以用slice对象作为valarray对象的下标来选择两个或更多个元素。被选择的元素不需要时数组中的连续元素。slice选择的数组元素可以作为引用，因此可以访问或改变这些元素的值。
+
+slice对象为从valarray选择的元素封装了一系列索引：
+
+- `valarray` 对象中的start index（起始索引）指定了子集的第一个元素。
+- `size` 是子集中元素个数。
+- `stride` 是为从子集中得到下一个元素的valarray索引的增量。
+
+![10_3](res/10_3.png)
+
+*slice对象选择的valarray中的元素子集*
+
+- 选择行
+
+  ![10_4](res/10_4.png)
+
+  *选择二维数组的单行*
+
+- 选择列
+
+  ![10_5](res/10_5.png)
+
+  *从二维数组中选择单列*
+
+- 使用切片
+
+  ```c++
+  valarray<int> data(15);
+  std::iota(std::begin(data), std::end(data), 1);
+  size_t start{2}, size{3}, stride{5};
+  auto d_slice = data[slice{start, size, stride}]; // data[2], data[7], data[12]
+  slice_array<int> copy_slice{d_slice}; // 重复d_slice
+  ```
+
+  ```c++
+  valarray<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  valarray<int> more{2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6};
+  data[slice{0, 5, 1}] = 99;
+  data[slice{10, 5, 1}] = more;
+  std::cout << "data:\n";
+  print(data, 5, 4);
+  ```
+
+  ```c++
+  valarray<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  auto d_slice = data[slice{2, 3, 5}];
+  d_slice += valarray<int>{10, 20, 30};
+  std::cout << "data:\n";
+  print(data, 5, 4);
+  ```
+
+  ```c++
+  // 在分片中和元素相乘
+  valarray<int> factors{22, 17, 10};
+  data[slice{0, 3, 5}] *= factors; // 22 102 110
+  ```
+
+  ```c++
+  valarray<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  slice row3{10, 5, 1};
+  data[row3] *= valarray<int>(3, row3.size());
+  ```
+
+  ```c++
+  // 将data中的第5列元素加到第2，4列上
+  valarray<int> data{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  valarray<int> col5{data[slice{4, 3, 5}]};
+  data[slice{1, 3, 5}] += col5; // 加到第2列
+  data[slice{3, 3, 5}] += col5; // 加到第4列
+  print(data, 5, 4);
+  ```
+
+**2.应用切片来解等式**
+
+可以使用一个slice对象和valarray对象解一组线性等式的程序。
+
+例：
+$$
+\left \{ 
+\begin{array}{c}
+2x_1 - 2x_2 - 3x_3 + x_4 = 23 \\ 
+5x_1 - 3x_2 - x_3 + 2x_4 = 77 \\ 
+x_1 - x_2 - 2x_3 + x_4 = 14 \\ 
+3x_1 - 4x_2 - 5x_3 + 6x_4 =23
+\end{array}
+\right.
+$$
+使用valarray来保存上面的等式：
+
+```c++
+valarray<double> equations{2, -2, -3,  1, 23,
+                           5,  3,  1,  2, 77, 
+                           1,  1, -2, -1, 14,
+                           3,  4,  5,  6, 23 };
+```
+
+- 高斯消元法
+
+  ![10_6](res/10_6.png)
+
+  *高斯消元法的作用*
+
+  ![10_7](res/10_7.png)
+
+  *将线性等式变换为行阶梯矩阵*
+
+  ![10_8](res/10_8.png)
+
+  *选择最佳pivot*
+
+  ![10_9](res/10_9.png)
+
+  *确定要寻找pivot的列的slice对象*
+
+  ![10_10](res/10_10.png)
+
+  *回代*
+
+  ```c++
+  // Gaussion.cpp
+  #include <valarray>
+  #include <vector>
+  #include <iterator>
+  #include <algorithm>
+  #include <utility>
+  #include <iostream>
+  #include <iomanip>
+  using std::valarray;
+  using std::slice;
+  
+  valarray<double> get_data(size_t n)
+  {
+  	valarray<double> equations(n * (n + 1));
+    std::cout << "Enter " << n + 1 
+      << " values for each of " << n << " equations.\n"
+      << "(i.e.including coefficients that are zero and the rhs):\n";
+    for (auto& coeff: equations) std::cin >> coeff;
+    return equations;
+  }
+  
+  // 为任意行设置最佳pivot的函数
+  void set_pivot(const valarray<double>& equations, std::vector<slice>& row_slices, size_t n)
+  {
+  	size_t n_rows{ row_slices.size() };
+    size_t row_len{ n_rows + 1 };
+    
+    // Create an object containing the elements in column n, starting row n
+    valarray<double> column{equations[slice{n * row_len + n, n_rows - n, row_len}]};
+    column = std::abs(column); // Absolute values
+    
+    size_t max_index{}; // Index to best pivot in column
+    for (size_t i{1}; i < column.size(); ++i) // Find index for max value
+    {
+    	if (column[max_index] < column[i]) max_index = i;
+    }
+    if (max_index > 0)
+      std::swap(row_slices[n], row_slices[n + max_index]);
+    else if(!column[0]) // Check for zero pivot
+    {
+    	std::cerr << "No solution. Ending program." << std::endl;
+      std::exit(1);
+    }
+  }
+  
+  // 形成行阶梯形式
+  void reduce_matrix(valarray<double>& equations, std::vector<slice>& row_slices)
+  {
+  	size_t n_rows{ row_slices.size() };
+    size_t row_len{ n_rows + 1 };
+    for (size_t row{}; row < n_rows - 1; ++row)
+    {
+    	set_pivot(equations, row_slices, row);
+      
+      valarray<double> pivot_row{equations[row_slices[row]]};
+      auto pivot = pivot_row[row];
+      pivot_row /= pivot;
+      
+      for (size_t next_row{row + 1}; next_row < n_rows; ++next_row)
+        equations[row_slices[next_row]] -= 
+        	equations[row_slices[next_row].start() + row] * pivot_row;
+    }
+  }
+  
+  valarray<double> back_substitution(valarray<double>& equations,
+                                     const std::vector<slice>& row_slices)
+  {
+    size_t n_rows{ row_slices.size() };
+    size_t row_len{ n_rows + 1 };
+    
+    valarray<double> results(n_rows);
+    for (int row{static_cast<int>(n_rows - 1)}; row >= 0; --row)
+    {
+    	equations[row_slices[row]] /= 
+        valarray<double>(equations[row_slices[row].start() + row], row_len);
+      valarray<double> last_row{equations[row_slices[row]]};
+      results[row] = last_row[n_rows];
+      for (int i{}; i < row; ++i)
+      	equations[row_slices[i]] -= equations[row_slices[i].start() + row] * last_row;
+    }
+    return results;
+  }
+  ```
+
+  ```c++
+  // Ex10_03.cpp
+  #include <valarray>
+  #include <vector>
+  #include <iterator>
+  #include <algorithm>
+  #include <utility>
+  #include <iostream>
+  #include <iomanip>
+  #include <string>
+  using std::string;
+  using std::valarray;
+  using std::slice;
+  
+  // Function prototypes
+  valarray<double> get_data(size_t n);
+  void reduce_matrix(valarray<double>& equations, std::vector<slice>& row_slices);
+  valarray<double> back_substitution(valarray<double>& equation, 
+                                    const std::vector<slice>& row_slices);
+  int main()
+  {
+  	size_t n_rows{};
+    std::cout << "Enter the number of variables: ";
+    std::cin >> n_rows;
+    auto equations = get_data(n_rows);
+    // Generate slice objects for rows in row order
+    std::vector<slice> row_slices;
+    size_t row_len{n_rows + 1};
+    std::generate_n(std::back_inserter(row_slices), n_rows, 
+                   [row_len](){
+                     static size_t index{};
+                     return slice{row_len * index++, row_len, 1};
+                   });
+    reduce_matrix(equations, row_slices);
+    auto solution = back_substitution(equations, row_slices);
+    // Output the solution
+    size_t count{}, perline{8};
+    std::cout << "\nSolution:\n";
+    string x{"x"};
+    for (const auto& v : solution)
+    {
+    	std::cout << std::setw(3) << x + std::to_string(count + 1)
+                << " = " << std::fixed << std::setprecision(2) 
+                << std::setw(10) << v;
+      if (++count % perline) std::cout << '\n';
+    }
+    std::cout << std::endl;
+  }
+  ```
+
+### 10.3.6 多个切片
+
+valarray头文件中定义了gslice类，gslice对象从起始索引生成索引值。
+
+![10_11](res/10_11.png)
+
+*gslice对象如何从valarray中选择元素*
+
+### 10.3.7 选择多行或多列
+
+![10_12](res/10_12.png)
+
+*从二维数组中选择多列*
+
+### 10.3.8 使用gslice对象
+
+```c++
+valarray<int> data{2,  4,  6,  8,
+                   10, 12, 14, 16,
+                   18, 20, 22, 24,
+                   26, 28, 30, 32};
+valarray<size_t> r23_sizes{2, 4};
+valarray<size_t> r23_strides{4, 1};
+gslice row23{4, r23_sizes, r23_strides};
+print(valarray<int>(data[row23]), 4); // 10 12 14 16/18 20 22 24
+```
+
+```c++
+std::valarray<size_t> sizes2{2, 4};
+
+std::valarray<size_t> strides2{1, 4};
+gslice col23{1, sizes2, strides2};
+print(valarray<int>(data[col23]), 4); // 4 12 20 28/6 14 22 30
+```
+
+### 10.3.9 选择元素的任意子集
+
+```c++
+// 从valarray中选择任意组元素
+valarray<double> data{2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32};
+std::valarray<size_t> choices{3, 5, 7, 11};
+print(valarray<double>(data[choices])); // Values selected: 8 12 16 24
+data[choices] *= data[choices];
+print(valarray<double>(data[choices])); // Result: 64 144 256 576
+```
+
+### 10.3.10 有条件地选择元素
+
+```c++
+std::uniform_int_distribution<int> dist{0, 25};
+std::random_device rd;
+std::default_random_engine rng{rd()};
+std::valarray<char> letters(52);
+
+for (auto& ch : letters)
+  ch = 'a' + dist(rng);
+print(letters, 26, 2);
+
+auto vowels = letters == 'a' || letters == 'e' || letters == 'i' ||
+              letters == 'o' || letters == 'u';
+valarray<char> chosen{letters[vowels]};
+
+size_t count{chosen.size()};
+std::cout << count << " vowels were generated:\n";
+print(chosen, 26, 2);
+
+letters[vowels] -= valarray<char>('a'-'A', count);
+print(letters, 26, 2);
+```
+
+### 10.3.11 有理数算法
+
+表示有理数之间算术运算的其他模板类型：
+
+- `ratio_subtract<T1, T2>` 类型的实例是ratio类型，表示的是T2类型所表示的值减去T1类型所表示的值的结果。
+- `ratio_multiply<T1, T2>` 类型的实例是ratio类型，表示的是T2类型和T1类型所表示的值的乘积。
+- `ratio_divide<T1, T2>` 类型的实例是ratio类型，表示的是T1类型所表示的的值除以T2类型所表示的值的结果。
+
+```c++
+using result = std::ratio_multiply<std::ratio_add<ratio<2, 3>, ratio<3, 7>>, ratio<15>>;
+std::cout << result::num << "/" << result::den << std::endl; // 115/7
+```
+

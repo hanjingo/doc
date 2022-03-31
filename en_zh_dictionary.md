@@ -719,6 +719,8 @@ codify `/ˈkəʊdɪfaɪ/` 编纂，把...编成法典
 
 codon `/'koʊdɒn/` 密码子，基础码
 
+coefficient `/ˌkoʊɪˈfɪʃnt]/` 系数
+
 coexist `/ˌkəʊɪɡˈzɪst/` 共存，和平共处
 
 cognitive `/ˈkɒɡnətɪv/` 认知的，感知的
@@ -3359,6 +3361,8 @@ recreation `/ˌriːkriˈeɪʃn/` 娱乐，消遣，游戏
 
 recur `/rɪˈkɜː(r)/` 重现，再次发生，反复出现
 
+reduce `/rɪˈdjuːs/` 减少，缩小，节食，蒸发
+
 reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
 
 reek `/riːk/` 恶臭，难闻的气味
@@ -3948,6 +3952,8 @@ subsist `/səbˈsɪst/` 生存，存活，生活，度日
 subspecies `/'sʌbˌspiːʃiːz/` 亚种
 
 substantially `/səbˈstænʃəli/` 大体上，基本上，总的来说
+
+substitution `/ˌsʌbstɪ'tjuːʃ(ə)n/` 置换，取代，代入
 
 subtract `/səbˈtrækt/` 减少，减去
 
