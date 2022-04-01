@@ -51,11 +51,13 @@ template<typename _Tp, std::size_t _Nm>
 ```c++
 #include <iostream>
 #include <array>
+#include <experimental/array>
 
 int main()
 {
 	std::array<int, 10> a1{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::array<int, 10> a2; // 创建具有10个0的array
+	std::array<int, 5>  a3 = std::experimental::make_array(1, 2, 3, 4, 5);
 
 	std::array<int, 10>::iterator ret1 = a1.begin();   // *ret1: 1
 
@@ -147,31 +149,46 @@ protected:
 
 int main()
 {
-	std::vector<int> v1(5);    // 初始化5个元素，其值为默认值
-	std::vector<int> v2{ 5 };  // 初始化1个元素，其值为5
-	std::vector<int> v3(5, 1); // 初始化5个元素，其值都为1
-	std::vector<int> v4{       // 复制一个容器的片段来初始化另一个容器
+	std::vector<int> v1(5);          // 初始化5个元素，其值为默认值
+	std::vector<int> v2{ 5 };        // 初始化1个元素，其值为5
+	std::vector<int> v3(5, 1);       // 初始化5个元素，其值都为1
+	std::vector<int> v4{       
         std::begin(v3), 
-        std::end(v3) }; 
-	std::vector<int> v5{       // 移动一个容器的片段来初始化另一个容器
+        std::end(v3) 
+	};                               // 复制一个容器的片段来初始化
+	std::vector<int> v5(
+		v1.get_allocator());         // 构造拥有给定分配器 alloc 的空容器
+	std::vector<int> v6{
+		std::begin(v3),
+		std::end(v3),
+		v3.get_allocator(),
+	};                               // 复制一个容器的片段并提供分配器来初始化
+	std::vector<int> v7{       
         std::make_move_iterator(std::begin(v4)),
-        std::make_move_iterator(std::end(v4)) }; 
+        std::make_move_iterator(std::end(v4)) 
+	};                               // 移动一个容器的片段来初始化
+	std::vector<int> v8(v5);         // 用另一个容器来初始化
+	std::vector<int> v9(v5, 
+	    v6.get_allocator());         // 用另一个容器和分配器来初始化
+	std::vector<int> v10({1, 2, 3}); // 用初始化列表来初始化
+	std::vector<int> v11({1, 2, 3}, 
+	    v6.get_allocator());         // 用初始化列表和分配器来初始化
 
-	v1.assign({1, 2, 3, 4, 5});            // v1: [1,2,3,4,5]
+	v1.assign({1, 2, 3, 4, 5});          // v1: [1,2,3,4,5]
 
-	int ret1 = v1.at(0);                   // ret1: 1
+	int ret1 = v1.at(0);                 // ret1: 1
 
-	int ret2 = v1.back();                  // ret2: 5
+	int ret2 = v1.back();                // ret2: 5
 
 	std::vector<int>::iterator ret3 = 
-        v1.begin();                        // *ret3: 1
+        v1.begin();                      // *ret3: 1
 
-	size_t ret4 = v1.capacity();          // ret4: 5
+	size_t ret4 = v1.capacity();         // ret4: 5
 
-	v1.clear();                           // v1: []
+	v1.clear();                          // v1: []
 
 	std::vector<int>::iterator ret5 = 
-        v1.emplace(v1.end(), 11);         // v1: [11], *ret5: 11
+        v1.emplace(v1.end(), 11);        // v1: [11], *ret5: 11
 
 	v1.emplace_back(12);                 // v1: [11,12]
 
@@ -186,13 +203,13 @@ int main()
 	int ret9 = v1.front();              // ret9: 12
 
 	std::vector<int>::allocator_type ret10 = 
-        v1.get_allocator();             // ret10.max_size(): 4611686018427387903
+        v1.get_allocator(); // ret10.max_size(): 4611686018427387903
 
-	std::vector<int>::iterator ret11 = // v1: [12,8], *ret11: 8
-        v1.insert(++v1.begin(), 8);
-	std::vector<int>::iterator ret12 = // v1: [12,5,8], *ret12: 5
+	std::vector<int>::iterator ret11 = 
+        v1.insert(++v1.begin(), 8);     // v1: [12,8], *ret11: 8
+	std::vector<int>::iterator ret12 = 
         v1.insert(++v1.begin(), v2.begin(), 
-                  v2.end());
+                  v2.end());           // v1: [12,5,8], *ret12: 5
 	std::vector<int>::iterator ret13 = // v1: [12,5,10,10,8], *ret13: 10
         v1.insert(v1.cend() - 1, 2, 10);
 	std::vector<int>::iterator ret14 = // v1: [12,5,10,10,8,1,2,3], *ret14: 1
@@ -214,7 +231,8 @@ int main()
 
 	v1.resize(3);                     // v1: [12,5,10]
 
-	v1.shrink_to_fit();               // 调用前, v1.capacity(): 10, 调用后: v1.capacity(): 3
+	v1.shrink_to_fit();               // 调用前, v1.capacity(): 10
+                                      // 调用后: v1.capacity(): 3
 
 	size_t ret18 = v1.size();         // ret18: 3
 
@@ -252,17 +270,17 @@ protected:
 |back |$O(1)$ |返回容器中最后一个元素的引用。 |
 |begin |$O(1)$ |返回指向 `list` 首元素的迭代器，若 `list` 为空，则返回的迭代器将等于`end()`。<br>![list_begin](res/stl/list_begin.png) |
 |clear |$O(n)$ |从容器擦除所有元素。 |
-|emplace |$O(1)$ |构造元素并在指定位置前插入。 |
+|emplace |$O(1)$ |构造元素并在指定位置前插入，并返回插入元素的迭代器。 |
 |emplace_back |$O(1)$ |构造元素并在容器尾部插入。 |
 |emplace_front |$O(1)$ |构造元素并在容器头部插入。 |
 |empty |$O(1)$ |检查容器是否为空。 |
 |end |$O(1)$ |返回指向 `list` 末元素后一元素的迭代器，此元素表现为占位符；试图访问它导致未定义行为。<br>![list_end](res/stl/list_end.png) |
-|erase |$O(n)$ |从容器擦除指定的元素/区间。 |
+|erase |$O(n)$ |从容器擦除指定的元素/区间，并返回最后被移除元素的迭代器。 |
 |front |$O(1)$ |返回容器首元素的引用，在空容器上对 `front` 的调用是未定义的。 |
 |get_allocator |$O(1)$ |返回与容器关联的分配器。 |
 |insert |$O(n)$ |插入元素到指定位置，返回插入位置的迭代器。<br>![list_insert](res/stl/list_insert.png) |
 |max_size |$O(1)$ |返回根据系统或库实现限制的容器可保有的元素最大数量，即对于最大容器的`std::distance(begin(), end())`。 |
-|merge |$O(n)$ |归并二个已排序链表为一个，链表以升序排序，操作后，被合并的链表（即参数）变为空。 |
+|merge |$O(n)$ |归并二个已排序链表为一个，链表以升序排序；操作后，第二个链表变为空。 |
 |pop_back |$O(1)$ |移除容器的末元素，在空容器上调用 `pop_back` 导致未定义行为。 |
 |pop_front |$O(1)$ |移除容器首元素。若容器中无元素，则行为未定义。 |
 |push_back |$O(1)$ |添加一个元素到容器尾。 |
@@ -275,7 +293,7 @@ protected:
 |reverse |$O(n)$ |翻转容器中的元素。 |
 |size |$O(n)$ |容器中的元素数量。 |
 |sort |$O(n\ log\ n)$ |使用list自己的sort算法排序（STL的sort算法只接受`RamdonAccessIterator`），升序排序元素，保持相等元素的顺序。 |
-|splice |$O(n)$ |将一个容器中的元素拆分出来，放到另一个容器（不复制或移动元素，仅重定向链表节点的内部指针）。 |
+|splice |$O(n)$ |将一个容器中的元素拆分出来，放到另一个容器（不复制或移动元素，仅移动链表节点的内部指针）。 |
 |swap |$O(1)$ |交换2个容器的内容（不在单独的元素上调用任何移动、复制或交换操作）。 |
 |unique |$O(n)$ |从容器移除所有*相继*的重复元素。只留下相等元素组中的第一个元素。若选择的比较器不建立等价关系则行为未定义。 |
 
@@ -285,89 +303,119 @@ protected:
 
 int main()
 {
-	std::list<int> L1;                               // 创建空的容器
-	std::list<int> L2{ 10 };                         // 创建带有10个默认元素的容器
-	std::list<int> L3(10, 1);                        // 创建包含10个1的容器
-	std::list<int> L4{ L3 };                         // 创建L3的副本
-	std::list<int> L5{ ++L3.cbegin(), --L3.cend() }; // 用一段元素来初始化容器
+	std::list<int> L1;                        // 创建空的容器
+	std::list<int> L2{ 10 };                  // 构造包含1个元素(值为10)的容器
+	std::list<int> L3(10, 1);                 // 构造包含10个元素(值为1)的容器
+	std::list<int> L4{ L3 };                  // 创建L3的副本
+    std::list<int> L5{ L3, 
+                      L2.get_allocator() };   // 用另一个list和分配器来构造
+	std::list<int> L6{ ++L3.cbegin(), 
+                      --L3.cend() };          // 用一段元素来构造
+    std::list<int> L7(L2.get_allocator());    // 提供分配器
+    std::list<int> L8{ 
+        std::make_move_iterator(L4.begin()), 
+        std::make_move_iterator(L4.end())};   // 移动迭代器构造
+    std::list<int> L9{
+        std::make_move_iterator(L4.begin()), 
+        std::make_move_iterator(L4.end()),
+        L8.get_allocator()
+    };                                        // 移动迭代器和提供分配器构造
+    std::list<int> L10({1, 2, 3});            // 用初始化列表构造
 
-	L1.assign(10, 1);
-	L1.assign({1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-	L1.assign(L3.cbegin(), L3.cend());
 
-	int ret1 = L1.back();
+	L1.assign(10, 1);                         // L1: [1,1,1,1,1,1,1,1,1,1]
+	L1.assign(
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});     // L1: [1,2,3,4,5,6,7,8,9,10]
+	L1.assign(L3.cbegin(), L3.cend());        // L1: [1,1,1,1,1,1,1,1,1,1]
 
-	std::list<int>::iterator ret2 = L1.begin();
+	int ret1 = L1.back();                     // ret1: 1
 
-	L1.clear();
+	std::list<int>::iterator ret2 = 
+        L1.begin();                           // *ret2: 1
 
-	std::list<int>::iterator ret13 = L1.emplace(L1.end(), 2);
+	L1.clear();                               // L1: []
 
-	L1.emplace_back(2);
+	std::list<int>::iterator ret3 = 
+        L1.emplace(L1.end(), 2);              // L1: [2], *ret3: 2
 
-	L1.emplace_front(2);
+	L1.emplace_back(3);                       // L1: [2,3]
 
-	bool ret3 = L1.empty();
+	L1.emplace_front(4);                      // L1: [4,2,3]
 
-	std::list<int>::iterator ret4 = L1.end();
+	bool ret4 = L1.empty();                   // ret4: false
 
-	L1.erase(L1.begin());
-	L1.erase(L1.begin(), L1.begin()++);
+	std::list<int>::iterator ret5 = L1.end(); // *ret5: 3
 
-	int ret5 = L1.front();
+    std::list<int>::iterator ret6;
+	ret6 = L1.erase(L1.begin());              // L1: [2,3], *ret6: 2
+	ret6 = L1.erase(L1.begin(), L1.begin()++);// L1: [2,3], *ret6: 2
 
-	std::list<int>::allocator_type ret6 = L1.get_allocator();
+	int ret7 = L1.front();                    // ret7: 2
 
-	std::list<int>::iterator ret7 = 
-        L1.insert(L1.cbegin(), 1);
-	std::list<int>::iterator ret8 = 
-        L1.insert(L1.cbegin(), 5, 1);
-	std::list<int>::iterator ret9 = 
-        L1.insert(L1.cbegin(), { 1, 2, 3 });
-	std::list<int>::iterator ret10 = 
-        L1.insert(L1.cbegin(), L2.begin(), L2.end());
+	std::list<int>::allocator_type ret8 = 
+        L1.get_allocator();
 
-	size_t ret11 = L1.max_size();
+	std::list<int>::iterator ret9;
+    ret9 = L1.insert(L1.cbegin(), 1); // L1: [1,2,3], *ret9: 1
+	ret9 = L1.insert(L1.cbegin(), 
+                     2, 1);           // L1: [1,1,1,2,3], *ret9: 1
+	ret9 = L1.insert(L1.cbegin(), 
+                     { 2, 3 });       // L1: [2,3,1,1,1,2,3], *ret9: 2
+	ret9 = L1.insert(L1.cbegin(), L2.begin(), 
+        L2.end());                    // L1: [10,2,3,1,1,1,2,3], *ret9: 10
 
-	L1.sort(); L2.sort(); L1.merge(L2);
+	size_t ret10 = L1.max_size();             // ret10: 76861433...
 
-	L1.pop_back();
+	L1.sort(); L2.sort(); L1.merge(L2);       // L1: [1,1,1,2,2,3,3,10,10]
+                                              // L2: []
 
-	L1.pop_front();
+	L1.pop_back();                            // L1: [1,1,1,2,2,3,3,10]
 
-	L1.push_back(2);
+	L1.pop_front();                           // L1: [1,1,2,2,3,3,10]
 
-	L1.push_front(3);
+	L1.push_back(2);                          // L1: [1,1,2,2,3,3,10,2]
 
-	std::list<int>::reverse_iterator ret12 = L1.rbegin();
+	L1.push_front(3);                         // L1: [3,1,1,2,2,3,3,10,2]
 
-	L1.remove(2);
+	std::list<int>::reverse_iterator ret11 = 
+        L1.rbegin();                          // *ret10: 2
 
-	L1.remove_if([](int n) { return n % 2 == 0; });
+	L1.remove(1);                             // L1: [3,2,2,3,3,10,2]
 
-	L1.resize(20);
-	L1.resize(20, 1);
+	L1.remove_if([](int n) { 
+        return n % 2 == 0; 
+    });                                       // L1: [3,3,3]
 
-	L1.reverse();
+	L1.resize(5);                             // L1: [3,3,3,0,0]
+	L1.resize(7, 1);                          // L1: [3,3,3,0,0,1,1]
 
-	size_t ret13 = L1.size();
+	L1.reverse();                             // L1: [1,1,0,0,3,3,3]
 
-	L1.sort();
-	L1.sort(std::greater<int>());
+	size_t ret12 = L1.size();                 // ret12: 7
+
+	L1.sort();                                // L1: [0,0,1,1,3,3,3]
+	L1.sort(std::greater<int>());             // L1: [3,3,3,1,1,0,0]
     class my_greater { 
         public: 
         bool operator()(const int a, const int b) { return a > b; }; }; 
-	L1.sort(my_greater());
+	L1.sort(my_greater());                    // L1: [3,3,3,1,1,0,0]
 
-	L1.splice(L1.begin(), L2);
-	L1.splice(L1.begin(), L2, L2.begin());
-	L1.splice(L1.begin(), L2, L2.begin(), L2.end());
+	L1.splice(L2.begin(), L1);                // L1: []
+                                              // L2: [3,3,3,1,1,0,0]
+	L1.splice(L1.begin(), L2, L2.begin());    // L1: [3]
+                                              // L2: [3,3,1,1,0,0]        
+	L1.splice(L1.begin()++, L2, L2.begin(), 
+        L2.end());                            // L1: [3,3,1,1,0,0,3]
+                                              // L2: []
 
-	L1.swap(L2);
+	L1.swap(L2);                              // L1: []
+                                              // L2: [3,3,1,1,0,0,3]
 
-	L1.unique();
-	L1.unique(
-        [](int x, int y) { return (x % 2) && (y % 2); });
+	L2.unique();                              // L2: [3,1,0,3]
+	L2.unique(
+        [](int x, int y) { 
+            return x == y; 
+        });                                   // L2: [3,1,0,3]
 }
 ```
 
@@ -436,23 +484,35 @@ protected:
 
 int main()
 {
-    std::deque<int> d1;                       // 生成不带元素的容器
-    std::deque<int> d2(10);                   // 生成带10个默认值元素的容器
-    std::deque<int> d3{1, 2, 3, 4, 5};        // 使用初始化列表生成deque容器
-    std::deque<int> d4{d3};                   // 生成容器的副本
-    std::deque<int> d5{d3.begin(), d3.end()}; // 使用迭代器来初始化容器
+    std::deque<int> d1;               // 构造空容器
+    std::deque<int> d2(5);            // 构造带5个元素（默认值）的容器
+    std::deque<int> d3(5, 1);         // 构造带5个元素（值为1）的容器
+    std::deque<int> d4(5, 
+        d2.get_allocator());          // 使用分配器构造带5个元素（默认值）的容器
+    std::deque<int> d5(5, 1, 
+        d3.get_allocator());          // 使用分配器构造带5个元素（值为1）的容器
+    std::deque<int> d6{d3.begin(), 
+        d3.end()};                    // 使用迭代器来构造容器
+    std::deque<int> d7(d3);           // 使用容器的副本构造容器
+    std::deque<int> d8(d3, 
+        d2.get_allocator());          // 使用分配器和容器的副本构造容器
+    std::deque<int> d9{1, 2, 3};      // 使用初始化列表构造容器
+    std::deque<int> d10({1, 2, 3}, 
+        d3.get_allocator());          // 使用初始化列表和分配器来构造容器
 
-    d1.assign(5, 1);                 // d1: [1,1,1,1,1]
-    d1.assign(d3.begin(), d3.end()); // d1: [1,2,3,4,5]
-    d1.assign({1, 2, 3, 4, 5});      // d1: [1,2,3,4,5]
+    d1.assign(5, 2);                  // d1: [2,2,2,2,2]
+    d1.assign(d3.begin(), d3.end());  // d1: [1,1,1,1,1]
+    d1.assign({1, 2, 3, 4, 5});       // d1: [1,2,3,4,5]
 
-    int& ret1 = d1.at(1);  // ret1: 2
+    int& ret1 = d1.at(1);             // ret1: 2
 
-    int& ret2 = d1.back(); // ret2: 5
+    int& ret2 = d1.back();            // ret2: 5
 
-    std::deque<int>::iterator ret3 = d1.begin();        // ret3: 1
+    std::deque<int>::iterator ret3 = 
+        d1.begin();                   // *ret3: 1
 
-    std::deque<int>::const_iterator ret4 = d1.cbegin(); // ret4: 1
+    std::deque<int>::const_iterator ret4 = 
+        d1.cbegin();                  // *ret4: 1
 
     d1.clear();                       // d1: []
 
@@ -462,8 +522,8 @@ int main()
     std::deque<int>::const_reverse_iterator ret6 = 
         d1.crend();                   // *ret6: 0
 
-    std::deque<int>::iterator ret7 =  // *ret7: 6
-        d1.emplace(d1.begin(), 6);    // d1: [6]
+    std::deque<int>::iterator ret7 = 
+        d1.emplace(d1.begin(), 6);    // d1: [6], *ret7: 6
 
     d1.emplace_back(7);               // d1: [6,7]
 
@@ -471,49 +531,53 @@ int main()
 
     bool ret8 = d1.empty();           // ret8: false
 
-    std::deque<int>::iterator ret9 =  // *ret9: 2
-        d1.end();
+    std::deque<int>::iterator ret9 = 
+        d1.end();                     // *ret9: 2
 
-    std::deque<int>::const_iterator ret10 = // *ret10: 2
-        d1.cend();
+    std::deque<int>::const_iterator ret10 = 
+        d1.cend();                    // *ret10: 2
 
-    std::deque<int>::iterator ret11 = // d1: [6, 7], *ret11: 6
-        d1.erase(d1.begin());
+    std::deque<int>::iterator ret11 = 
+        d1.erase(d1.begin());         // d1: [6, 7], *ret11: 6
 
     int& ret12 = d1.front();          // ret12: 6
 
-    std::deque<int>::allocator_type ret13 = 
-        d1.get_allocator(); // ret13.max_size() = 4611686018427387903
+    std::deque<int>::allocator_type ret13 = d1.get_allocator();
 
     std::deque<int>::iterator ret14;
-    ret14 = d1.insert(d1.begin(), 9);     // d1: [9,6,7], ret14: 9
-    ret14 = d1.insert(d1.begin(), 2, 10); // d1: [10,10,9,6,7], ret14: 10
-    ret14 =                               // d1: [1,10,10,9,6,7], ret14: 1 
-        d1.insert(d1.begin(), d3.begin(), d3.begin() + 1);
-    ret14 = d1.insert(d1.begin(), {1, 2});// d1: [1,2,1,10,10,9,6,7], ret14: 1
+    ret14 = d1.insert(d1.begin(), 9); // d1: [9,6,7], *ret14: 9
+    ret14 = d1.insert(d1.begin(), 2, 
+        10);                          // d1: [10,10,9,6,7], *ret14: 10
+    ret14 = d1.insert(d1.begin(), d3.begin(), 
+        d3.begin() + 1);              // d1: [1,10,10,9,6,7], *ret14: 1 
+    ret14 = d1.insert(d1.begin(), 
+                      {1, 2});        // d1: [1,2,1,10,10,9,6,7], *ret14: 1
 
-    size_t ret15 = d1.max_size(); // ret15: 4611686018427387903
+    size_t ret15 = d1.max_size();     // ret15: 4611686...
 
-    d1.pop_back();      // d1: [1,2,1,10,10,9,6]
+    d1.pop_back();                    // d1: [1,2,1,10,10,9,6]
 
-    d1.pop_front();     // d1: [2,1,10,10,9,6]
+    d1.pop_front();                   // d1: [2,1,10,10,9,6]
 
-    d1.push_back(11);   // d1: [2,1,10,10,9,6,11]
+    d1.push_back(11);                 // d1: [2,1,10,10,9,6,11]
 
-    d1.push_front(12);  // d1: [12,2,1,10,10,9,6,11]
+    d1.push_front(12);                // d1: [12,2,1,10,10,9,6,11]
 
-    std::deque<int>::reverse_iterator ret16 = d1.rbegin(); // *ret16: 11
+    std::deque<int>::reverse_iterator ret16 = 
+        d1.rbegin();                  // *ret16: 11
 
-    std::deque<int>::reverse_iterator ret17 = d1.rend();   // *ret17: 0
+    std::deque<int>::reverse_iterator ret17 = 
+        d1.rend();                    // *ret17: 0
 
-    d1.resize(5);       // d1: [12,2,1,10,10]
-    d1.resize(7, 1);    // d1: [12,2,1,10,10,1,1]
+    d1.resize(5);                     // d1: [12,2,1,10,10]
+    d1.resize(7, 1);                  // d1: [12,2,1,10,10,1,1]
 
-    d1.shrink_to_fit(); // d1: [12,2,1,10,10,1,1]
+    d1.shrink_to_fit();               // d1: [12,2,1,10,10,1,1]
 
-    size_t ret18 = d1.size(); // ret18: 7
+    size_t ret18 = d1.size();         // ret18: 7
 
-    d1.swap(d3);        // d1: [1,2,3,4,5], d3: [12,2,1,10,10,1,1]
+    d1.swap(d3);                      // d1: [1,2,3,4,5]
+                                      // d3: [12,2,1,10,10,1,1]
 }
 ```
 
@@ -597,63 +661,97 @@ protected:
 
 int main()
 {
-    std::set<int> s1{1, 2, 3};              // 使用初始化列表创建容器
-    std::set<int> s2{s1.begin(), s1.end()}; // 使用迭代器创建容器
-    std::set<int, std::greater<int> > s3{   // 使用迭代器和降序排序创建容器
-        s1.begin(), s1.end() }; 
+    std::set<int> s1{1, 2, 3};              // 使用初始化列表构造
+    std::set<int> s2({1, 2, 3});            // 通过初始化列表构造
+    std::set<int> s3(s1.begin(), s1.end()); // 使用迭代器范围构造
+    std::set<int> s4(s1.begin(), s1.end(), 
+        s1.get_allocator());                // 使用迭代器范围和分配器构造
+    std::set<int, std::greater<int> > s5{
+        s1.begin(), s1.end() };             // 使用迭代器范围和函数对象构造
+    std::set<int> s6(s1);                   // 使用另一个容器的副本构造
+    std::set<int> s7(std::move(s6));        // 通过移动另一个容器来构造
+    std::set<int> s8(s1.get_allocator());   // 使用分配器构造容器
+    std::set<int> s9(s1, 
+        s1.get_allocator());                // 使用另一个容器的副本和分配器构造
+    std::set<int> s10({1, 2, 3}, 
+        s2.get_allocator());                // 使用初始化列表和分配器构造
 
-    std::set<int>::iterator ret1 = s1.begin();
+    std::set<int>::iterator ret1 = 
+        s1.begin();               // s1:[1,2,3], *ret1:1
 
-    std::set<int>::const_iterator ret2 = s1.cbegin();
+    std::set<int>::const_iterator ret2 = 
+        s1.cbegin();              // s1:[1,2,3], *ret1:1
 
-    std::set<int>::const_iterator ret3 = s1.cend();
+    std::set<int>::const_iterator ret3 = 
+        s1.cend();                // s1:[1,2,3], *ret1:3
 
-    s1.clear();
+    s1.clear();                   // s1:[]
 
-    size_t ret4 = s1.count(1);
+    s1 = s2; size_t ret4 = 
+        s1.count(1);              // ret4:1
 
-    std::set<int>::const_reverse_iterator ret5 = s1.crbegin();
+    std::set<int>::const_reverse_iterator ret5 = 
+        s1.crbegin();             // *ret5:3 
 
-    std::set<int>::const_reverse_iterator ret6 = s1.crend();
+    std::set<int>::const_reverse_iterator ret6 = 
+        s1.crend();               // *ret6:3
 
-    std::pair<std::set<int>::iterator, bool> ret7 = s1.emplace(1);
+    std::pair<std::set<int>::iterator, bool> ret7 = 
+        s1.emplace(1);            // s1:[1,2,3]
+                                  // <*ret7.first,ret7.second>:<1,false>
 
-    std::set<int>::iterator ret8 = s1.emplace_hint(s1.begin(), 2);
+    std::set<int>::iterator ret8 = 
+        s1.emplace_hint(
+            s1.begin(), 2);       // s1:[1,2,3], *ret8:2
 
-    bool ret9 = s1.empty();
+    bool ret9 = s1.empty();       // ret9:false
 
-    std::set<int>::iterator ret10 = s1.end();
+    std::set<int>::iterator ret10 = s1.end(); // *ret10: 3
 
-    std::pair<std::set<int>::iterator, 
-                std::set<int>::iterator> ret11 = s1.equal_range(1);
+    std::pair<std::set<int>::iterator, std::set<int>::iterator> ret11 = 
+        s1.equal_range(1);        // <*ret11.first,*ret11.second>:<1,2>
 
-    std::set<int>::iterator ret12 = s1.erase(s1.begin());
-    ret12 = s1.erase(s1.begin(), s1.end());
-    size_t ret12_1 = s1.erase(2);
+    std::set<int>::iterator ret12;
+    ret12 = s1.erase(
+        s1.begin());              // s1:[2,3], *ret12:2
+    ret12 = s1.erase(s1.begin(), 
+        s1.end());                // s1:[], *ret12:0
+    size_t ret12_1 = s2.erase(2); // s2:[1,3], ret12_1:1
 
-    std::set<int>::iterator ret13 = s1.find(1);
+    std::set<int>::iterator ret13 = 
+        s1.find(1);               // *ret13:0
 
     std::set<int>::allocator_type ret14 = s1.get_allocator();
 
-    std::pair<std::set<int>::iterator, bool> ret15 = s1.insert(4);
-    std::set<int>::iterator ret15_1 = s1.insert(s1.begin(), 5);
-    s1.insert(s2.begin(), s2.end());
+    std::pair<std::set<int>::iterator, bool> ret15 = 
+        s1.insert(4);             // s1:[4]
+                                  // <*ret15.first,ret15.second>:<4,1>
+    std::set<int>::iterator ret15_1 = s1.insert(
+        s1.begin(), 5);           // s1:[4,5], *ret15_1: 5
+    s1.insert(s2.begin(), 
+        s2.end());                // s1:[1,3,4,5]
+    s1.insert({5, 6});            // s1:[1,3,4,5,6]
 
-    std::set<int>::iterator ret16 = s1.lower_bound(4);
+    std::set<int>::iterator ret16 = 
+        s1.lower_bound(4);        // *ret16:4
 
     std::set<int>::key_compare ret17 = s1.key_comp();
 
-    size_t ret18 = s1.max_size();
+    size_t ret18 = s1.max_size(); // ret18:461168...
 
-    std::set<int>::reverse_iterator ret19 = s1.rbegin();
+    std::set<int>::reverse_iterator ret19 = 
+        s1.rbegin();              // *ret19:6
 
-    std::set<int>::reverse_iterator ret20 = s1.rend();
+    std::set<int>::reverse_iterator ret20 = 
+        s1.rend();                // *ret20:5
 
-    size_t ret21 = s1.size();
+    size_t ret21 = s1.size();     // ret21:5
 
-    s1.swap(s2);
+    s1.swap(s2);                  // s1:[1,3]
+                                  // s2:[1,3,4,5,6]
 
-    s1.upper_bound(2);
+    std::set<int>::iterator ret22 = 
+        s1.upper_bound(2);        // *ret22:3
 
     std::set<int>::value_compare ret22 = s1.value_comp();
 }
@@ -1502,20 +1600,6 @@ int main()
 }
 ```
 
-### 集合
-
-| 算法                      | 复杂度 | 描述/示意图/代码 |
-| ------------------------- | ------ | ---------------- |
-| includes                  |        |                  |
-| set_difference            |        |                  |
-| set_intersection          |        |                  |
-| set_symmetric_differrence |        |                  |
-| set_union                 |        |                  |
-
-```c++
-TODO
-```
-
 ### 堆操作
 
 | 算法      | 复杂度 | 描述/示意图/代码 |
@@ -1532,22 +1616,235 @@ TODO
 
 ### 数值计算
 
-| 算法                | 复杂度 | 描述/示意图/代码 |
-| ------------------- | ------ | ---------------- |
-| accumulate          |        |                  |
-| adjacent_difference |        |                  |
-| inner_product       |        |                  |
-| iota                |        |                  |
-| max                 |        |                  |
-| max_element         |        |                  |
-| min                 |        |                  |
-| min_element         |        |                  |
-| minmax              |        |                  |
-| minmax_element      |        |                  |
-| partial_sum         |        |                  |
+| 算法                | 头文件    | 复杂度            | 描述/示意图/代码                                             |
+| ------------------- | --------- | ----------------- | ------------------------------------------------------------ |
+| accumulate          | numeric   | $O(n)$            | 根据提供的和的初始值，计算指定范围内元素之和并返回。         |
+| adjacent_difference | numeric   | $O(n)$            | 计算指定范围内，相邻元素的差，保存到指定位置，并返回最后被写入元素后一位置的迭代器。 |
+| inner_product       | numeric   | ？                | 根据提供的内积的初始值，计算两个序列的内积并返回；<br>![algo_inner_product](res/stl/algo_inner_product.png) |
+| iota                | numeric   | $O(n)$            | 根据提供的初始值，生成一个连续递增的序列，并存放到指定位置。 |
+| max                 | algorithm | $O(n)$            | 返回给定值中的最大值。                                       |
+| max_element         | algorithm | $O(n)$            | 返回给定值中的最大值的迭代器。                               |
+| min                 | algorithm | $O(n)$            | 返回给定值中的最小值。                                       |
+| min_element         | algorithm | $O(n)$            | 返回给定值中的最小值的迭代器。                               |
+| minmax              | algorithm | $O(\frac{3n}{2})$ | 返回给定值中的最小值和最大值的pair。                         |
+| minmax_element      | algorithm | $O(\frac{3n}{2})$ | 返回给定值中的最小值和最大值的迭代器pair。                   |
+| partial_sum         | numeric   | $O(n)$            | 对指定范围中的元素部分求和，将结果保存到指定位置，并返回最后被写入元素的后一位置的迭代器。 |
 
 ```c++
-TODO
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> a1{1, 2, 3, 4};
+    int ret_a = 0;
+    ret_a = std::accumulate(a1.begin(), a1.end(), 
+                            1);                 // ret_a: 11
+    ret_a = std::accumulate(a1.begin(), a1.end(), 1, 
+        [](int n1, int n2){ return n2 - n1; }); // ret_a: 3
+    
+    std::vector<int> ad1{1, 2, 3, 4};
+    std::vector<int> ad2(2);
+    std::vector<int>::iterator ret_ad;
+    ret_ad = std::adjacent_difference(ad1.begin(), ad1.end(), 
+        ad2.begin());                           // *ret_ad: 0, ad2: [1,1]
+    ret_ad = std::adjacent_difference(ad1.begin(), ad1.end(), ad2.begin(), 
+        [](int n1, int n2){ return n1 + n2; }); // *ret_ad: 0, ad2: [1,3]
+
+    std::vector<int> ip1{0, 1, 2, 3, 4};
+    std::vector<int> ip2{5, 4, 2, 3, 1};
+    int ret_ip = 0;
+    ret_ip = std::inner_product(ip1.begin(), ip1.end(), ip2.begin(), 
+                                0);             // *ret_ip: 21
+    ret_ip = std::inner_product(ip1.begin(), ip1.end(), ip2.begin(), 0, 
+      std::plus<>(),
+      std::equal_to<>());                       // *ret_ip: 2
+
+    std::vector<int> i1(5);
+    std::iota(i1.begin(), i1.end(), 2);         // i1: [2,3,4,5,6]
+    
+    int ret_max = 0;
+    ret_max = std::max(1, 2);                   // ret_max: 2
+    ret_max = std::max(1, 2, 
+        [](int n1, int n2){ return n1 > n2; }); // ret_max: 1
+    ret_max = std::max({1, 2, 3, 4, 5});        // ret_max: 5
+    ret_max = std::max({1, 2, 3, 4, 5}, [](int n1, int n2){ 
+        return n1 < n2 && n2 % 2 == 0; 
+    });                                         // ret_max: 4
+    
+    std::vector<int> max_e1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_max_e;
+    ret_max_e = std::max_element(max_e1.begin(), 
+                                 max_e1.end()); // *ret_max_e: 5
+    ret_max_e = std::max_element(max_e1.begin(), max_e1.end(), 
+                                 [](int n1, int n2){ 
+                                     return n1 < n2; 
+                                 });            // *ret_max_e: 5
+    
+    int ret_min = 0;
+    ret_min = std::min(1, 2);                   // ret_min: 1
+    ret_min = std::min(1, 2, [](int n1, int n2){ 
+        return n1 > n2; 
+    });                                         // ret_min: 2
+    ret_min = std::min({5, 4, 3, 2, 1});        // ret_min: 1
+    ret_min = std::min({5, 4, 3, 2, 1}, [](int n1, int n2){ 
+        return n1 < n2 && n1 % 2 == 0; 
+    });                                         // ret_min: 2
+
+    std::vector<int> min_e1{1, 2, 3, 4, 5};
+    std::vector<int>::iterator ret_min_e;
+    ret_min_e = std::min_element(min_e1.begin(), 
+                                 min_e1.end()); // *ret_min_e: 1
+    ret_min_e = std::min_element(min_e1.begin(), min_e1.end(), 
+                                 [](int n1, int n2){ 
+                                     return n1 < n2; 
+                                 });            // *ret_min_e: 1
+    
+    std::pair<int, int> ret_mm;
+    ret_mm = std::minmax(1, 2); // <ret_mm.first, ret_mm.second>: <1, 2>
+    ret_mm = std::minmax(1, 2, [](int n1, int n2){ 
+        return n1 < n2; 
+    });                         // <ret_mm.first, ret_mm.second>: <1, 2>
+    ret_mm = std::minmax(
+        {1, 2, 3, 4, 5}
+    );                          // <ret_mm.first, ret_mm.second>: <1, 5>
+    ret_mm = std::minmax({1, 2, 3, 4, 5}, [](int n1, int n2){ 
+        return n1 < n2; 
+    });                         // <ret_mm.first, ret_mm.second>: <1, 5>
+
+    std::vector<int> mme1{1, 2, 3, 4, 5};
+    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> ret_mme;
+    ret_mme = std::minmax_element(mme1.begin(), 
+        mme1.end());           // <*ret_mme.first, *ret_mme.second>: <1, 5>
+    ret_mme = std::minmax_element(mme1.begin(), mme1.end(), 
+        [](int n1, int n2){ 
+            return n1 < n2; 
+        });                    // <*ret_mme.first, *ret_mme.second>: <1, 5>
+
+    std::vector<int> ps1{1, 2, 3, 4, 5};
+    std::vector<int> ps2(5);
+    std::vector<int>::iterator ret_ps;
+    ret_ps = std::partial_sum(ps1.begin(), ps1.end(), 
+        ps2.begin());            // *ret_ps: 0, ps2: [1,3,6,10,15]
+    ret_ps = std::partial_sum(ps1.begin(), ps1.end(), ps2.begin(), 
+        std::multiplies<int>()); // *ret_ps: 0, ps2: [1,2,6,24,120]
+}
+```
+
+### 函数对象
+
+| 算法          | 头文件     | 描述/示意图/代码 |
+| ------------- | ---------- | ---------------- |
+| bit_and       | functional | `x & y`          |
+| bit_not       | functional | `~x`             |
+| bit_or        | functional | `x | y`          |
+| bit_xor       | functional | `x ^ y`          |
+| divides       | functional | `x / y`          |
+| equal_to      | functional | `x == y`         |
+| greater       | functional | `x > y`          |
+| greater_equal | functional | `x >= y`         |
+| less          | functional | `x < y`          |
+| less_equal    | functional | `x <= y`         |
+| logical_and   | functional | `x && y`         |
+| logical_not   | functional | `!x`             |
+| logical_or    | functional | `x || y`         |
+| minus         | functional | `x - y`          |
+| modulus       | functional | `x % y`          |
+| multiplies    | functional | `x * y`          |
+| negate        | functional | `-x`             |
+| not_equal_to  | functional | `x != y`         |
+| plus          | functional | `x + y`          |
+
+```c++
+#include <iostream>
+#include <functional>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v1{0x1, 0x0, 0x0};
+    std::vector<int> v2{0x1, 0x1, 0x1};
+    std::vector<int> v3(3);
+    
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::bit_and<int>());  // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v3), 
+                   std::bit_not<int>());                  // v3: [-2,-1,-1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::bit_or<int>());   // v3: [1,1,1]
+    
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::bit_xor<int>());  // v3: [0,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::divides<int>());  // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::equal_to<int>()); // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::greater<int>());  // v3: [0,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::greater_equal<int>());       // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::less<int>());     // v3: [0,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::less_equal<int>());          // v3: [1,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::logical_and<int>());         // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v3), 
+                   std::logical_not<int>());              // v3: [0,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::logical_or<int>());          // v3: [1,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::minus<int>());    // v3: [0,-1,-1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::modulus<int>());  // v3: [0,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::multiplies<int>());          // v3: [1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v3), 
+                   std::negate<int>());                   // v3: [-1,0,0]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+        std::begin(v3), std::not_equal_to<int>());        // v3: [0,1,1]
+
+    std::fill(v3.begin(), v3.end(), 0);
+    std::transform(std::begin(v1), std::end(v1), std::begin(v2), 
+                   std::begin(v3), std::plus<int>());     // v3: [2,1,1]
+}
 ```
 
 ### 其它
