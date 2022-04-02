@@ -2,6 +2,14 @@
 
 [TOC]
 
+
+
+## 术语
+
+- `time complexity` 时间复杂度
+
+
+
 ## 定义
 
 如果有任何正值常数c和$N_0$时，使得当$N \geq N_0$时，$T(N) \leq cF(N)$，那么我们便可将T(N)的复杂度表示为$O(F(N))^3$
@@ -27,4 +35,5 @@
 
 - [维基百科-大O符号](https://en.wikipedia.org/wiki/Big_O_notation)
 - [大O计数法](https://blog.csdn.net/weixin_44560088/article/details/108052225)
+- Introduction to Algorithms.Thomas H Cormen, Charles E Leiserson, Ronald L Rivest, Clifford Stein.Third Edition.2013
 

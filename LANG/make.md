@@ -178,4 +178,5 @@ install:editor
 ## 参考
 
 - [维基百科-make](https://zh.wikipedia.org/wiki/Make)
+- [GNU make](https://www.gnu.org/software/make/manual/make.html)
 

@@ -145,7 +145,7 @@ cmake -DLOG_TABLE=ON ..
 
 ## 参考
 
-[1] CMAKE教程
+[1] [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
 [2] Eric Noulard, Roberto Di Remigio.CMake-Cookbook
 
