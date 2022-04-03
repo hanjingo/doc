@@ -2431,7 +2431,7 @@ linger `/ˈlɪŋɡə(r)/` 逗留，留恋，流连，徘徊
 
 linguistic `/lɪŋˈɡwɪstɪk/` 语言的，语言学的
 
-literary `/ˈlɪtərəri/` 文学的，书面的，字面上的
+literal `/ˈlɪtərəl/` 文学的，书面的，字面上的
 
 livestock `/ˈlaɪvstɒk/` 家畜
 
@@ -3138,6 +3138,8 @@ precedent `/ˈpresɪdənt/` 先例，范例，惯例
 precious `/ˈpreʃəs/` 宝贝，宝贵的，珍贵的
 
 precipitate `/prɪˈsɪpɪteɪt/` 加速，促成，沉淀物，鲁莽的，草率的，仓促的
+
+precision `/prɪˈsɪʒn/` 精确，准确，细致
 
 precursor `/priˈkɜːsə(r)/` 先驱，先锋，前身
 

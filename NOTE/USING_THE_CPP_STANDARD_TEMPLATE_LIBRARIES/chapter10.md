@@ -871,3 +871,439 @@ using result = std::ratio_multiply<std::ratio_add<ratio<2, 3>, ratio<3, 7>>, rat
 std::cout << result::num << "/" << result::den << std::endl; // 115/7
 ```
 
+
+
+## 10.4 时序模板
+
+- `duration(持续时间)` 定义为时间刻度数的时间间隔，可以指定一个时间刻度是多少秒。
+- `clock(时钟)` 记录的是从给定的时间开始的时间流逝-被称作时期。时期是固定的时间点。
+- `time_point(时间点)` 时间的实例。时间点是相对于开始时间的时间长度。
+
+### 10.4.1 定义duration
+
+头文件chrono中的`std::chrono::duration<T, P>`模板表示duration。模板参数T是值的类型，一般是基本的算术类型，并且参数P对应的值是时间刻度所表示的秒数，它所对应的值为1s。必须用ratio类型指定P的值，默认为`ratio<1>`。
+
+```c++
+std::chrono::duration<int, std::milli> IBM650_divide{15};
+std::chrono::duration<int> minute{60};
+std::chrono::duration<double, ratio<60> > hour{60};
+std::chrono::duration<long, std::micro> millisec{1000L};
+std::chrono::duration<double, ratio<1, 5> > tiny{5.5};
+```
+
+1. duration之间的算术运算
+
+   ```c++
+   // 自增，自减
+   std::chrono::duration<double, ratio<1, 5> >tiny{5.5};
+   std::chrono::microseconds very_tiny{100};
+   ++tiny;
+   very_tiny--;
+   std::cout << "tiny = " << tiny.count() << " very_tiny = " 
+             << very_tiny.count() << std::endl;
+   ```
+
+   ```c++
+   // +, - *, /, %
+   std::chrono::duration<double, ratio<1, 5> > tiny{5.5};
+   std::chrono::duration<double, ratio<1, 5> > small{7.5};
+   auto total = tiny + small;
+   std::cout << "total = " << total.count() << std::endl; // total = 13
+   ```
+
+   ```c++
+   // 不同类型的std::chrono::duration<T,P>模板实例作为操作数
+   std::chrono::milliseconds ten_minutes{600000};
+   std::chrono::minutes half_hour{30};
+   auto total = ten_minutes + half_hour;
+   std::cout << "total = " << total.count() << std::endl; // total = 2400000
+   ```
+
+   ```c++
+   // 尽量避免对混合的duration类型进行算术运算，因为很容易不知道时间刻度是什么
+   std::chrono::minutes ten_minutes{10}; // 10 minutes
+   std::chrono::duration<double, std::ratio<1, 5> > interval{4500.0}; // 15 minutes
+   auto total_minutes = ten_minutes + interval;
+   std::cout << "total minutes = " << total_minutes.count() << std::endl; // total minutes = 7500
+   ```
+
+   ```c++
+   // +=示例
+   std::chrono::minutes short_time{20};
+   std::chrono::minutes shorter_time{10};
+   short_time += shorter_time; // 30 minutes
+   std::chrono::hours long_time{3}; // 3hrs = 180 minutes
+   short_time += long_time;
+   std::cout << "short_time = " << short_time.count() << std::endl; // short_time = 210
+   ```
+
+2. duration类型之间的转换
+
+   ```c++
+   std::chrono::duration<int, std::ratio<1, 5> > d1{50}; // 10 seconds
+   std::chrono::duration<int, std::ratio<1, 10> > d2{50}; // 5 seconds
+   std::chrono::duration<int, std::ratio<1, 3> > d3{45}; // 15 seconds
+   std::chrono::duration<int, std::ratio<1, 6> > d4{60}; // 10 seconds
+   d2 += d1;
+   d1 += d2;
+   d1 += d3;
+   d4 += d3;
+   ```
+
+   ```c++
+   // 使用duration_cast进行强制转换
+   std::chrono::duration<int, std::ratio<1, 5> > d1{50}; // 10 sec
+   std::chrono::duration<int, std::ratio<1, 10> > d2{53}; // 5.3 sec
+   d1 += std::chrono::duration_cast<std::chrono::duration<int, std::ratio<1, 5>> >(d2);
+   std::cout << d1.count() << std::endl; // 76 - i.e 15.2 sec
+   ```
+
+   ```c++
+   // 两个duration的赋值
+   std::chrono::duration<int, std::ratio<1, 5>> d1{50}; // 10 sec
+   std::chrono::duration<int, std::ratio<1, 10>> d2{53}; // 5.3 sec
+   d2 = d1;
+   ```
+
+3. 比较duration
+
+   ```c++
+   // 比较不同的duration
+   std::chrono::duration<int, std::ratio<1, 5>> d1{50}; // 10 sec
+   std::chrono::duration<int, std::ratio<1, 10>> d2{50}; // 5 sec
+   std::chrono::duration<int, std::ratio<1, 3>> d3{45}; // 15 sec
+   if ((d1 - d2) == (d3 - d1))
+     std::cout << "both duration are " 
+       << std::chrono::duration_cast<std::chrono::seconds>(d1-d2).count()
+       << " seconds" << std::endl;
+   ```
+
+4. duration常量
+
+   chrono头文件在命名空间`std::literals::chrono_literals`中定义了常量运算符。可以将duration常量指定为整数或浮点值，后缀指定时钟周期，以下为可以使用的后缀：
+
+   - `h` 小时
+   - `min` 分钟
+   - `s` 秒
+   - `ms` 毫秒
+   - `us` 微秒
+   - `ns` 纳秒
+
+   例：
+
+   ```c++
+   using namespace std::literals::chrono_literals;
+   std::chrono::seconds elapsed{10}; // 10 sec
+   elapsed += 2min; // 130 sec
+   elapsed -= 15s; // 115 sec
+   
+   elapsed += 100ns; // 无法通过编译
+   ```
+
+   **注意：为了能够进行算术运算，作为右操作数的时钟周期必须是作为左操作数的时钟周期的整数倍。**
+
+### 10.4.2 时钟和时间点
+
+命名空间`std::chrono`定义了3种时钟：
+
+- `system_clock` 当前真实时钟时间。
+- `steady_clock` 适合记录时间间隔的时钟。
+- `high_resolution_clock` 具有当前系统所能使用的最小时钟周期的时钟。
+
+每个时钟类都定义了如下类型的别名作为成员：
+
+- `rep` 用来记录时间刻度的算术类型的别名。
+- `period` 以秒为单位的ratio模板类型的别名。
+- `duration` 是`std::chrono::duration<rep, period>`的别名。
+- `time_point` 是时钟表示瞬时时间的时间点类型的别名。
+
+1. 生成时间点
+
+   ```c++
+   // 将时钟类型指定为模板参数值
+   std::chrono::system_clock::time_point tp_sys1;
+   std::chrono::time_point<std::chrono::system_clock> tp_sys2;
+   ```
+
+   ```c++
+   // 使用duration作为time_point的构造参数
+   using Clock = std::chrono::steady_clock;
+   using TimePoint = std::chrono::time_point<Clock>;
+   TimePoint tp1{std::chrono::duration<int>(20)};
+   TimePoint tp2{3min};
+   TimePoint tp3{2h};
+   TimePoint tp4{5500us};
+   ```
+
+2. 时间点的持续时间
+
+   ```c++
+   // 使用time_since_epoch来获得从某一时刻到现在已流逝的时间的duration对象
+   using Clock = std::chrono::steady_clock;
+   using TimePoint = Clock::time_point;
+   TimePoint tp1{std::chrono::duration<int>(20)};
+   auto elapsed = tp1.time_since_epoch();
+   ```
+
+   ```c++
+   // 使用time_since_epoch以秒为单位显示任何time_point表示的时间间隔
+   template<typename TimePoint>
+   void print_timepoint(const TimePoint& tp, size_t places = 0)
+   {
+   	auto elapsed = tp.time_since_epoch();
+     auto seconds = std::chrono::duration_cast<std::chrono::duration<double> >(elapsed).count();
+     std::cout << std::fixed << std::setprecision(places) << seconds << " seconds\n";
+   }
+   ```
+
+3. 时间点的算术运算
+
+   ```c++
+   // Ex10_04.cpp
+   #include <iostream>
+   #include <iomanip>
+   #include <chrono>
+   #include <ratio>
+   using namespace std::chrono;
+   
+   int main()
+   {
+   	using TimePoint = time_point<steady_clock>;
+     time_point<steady_clock> tp1{duration<int>(20)};
+     time_point<system_clock> tp2{3min};
+     time_point<high_resolution_clock> tp3{2h};
+     std::cout << "tp1 is ";
+     print_timepoint(tp1);
+     std::cout << "tp2 is ";
+     print_timepoint(tp2);
+     std::cout << "tp3 is ";
+     print_timepoint(tp3);
+     auto tp4 = tp2 + tp3.time_since_epoch();
+     std::cout << "tp4 is tp2 with tp3 added: ";
+     print_timepoint(tp4);
+     std::cout << "tp1 + tp2 is ";
+     print_timepoint(tp1 + tp2.time_since_epoch());
+     tp2 += duration<time_point<system_clock>::rep, std::milli>{20'000};
+     print_timepoint(tp2);
+   }
+   ```
+
+   ```c++
+   // 使用time_point_cast对不同精度的duration做转换
+   using TimePoint = std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds>;
+   TimePoint tp_sec{75s};   // 75 sec
+   auto tp_min = std::chrono::time_point_cast<std::chrono::minutes>(tp_sec);
+   print_timepoint(tp_min); // 60 sec
+   ```
+
+4. 比较时间点
+
+   ```c++
+   using TimePoint1 = std::chrono::time_point<std::chrono::system_clock>;
+   using TimePoint2 = std::chrono::time_point<std::chrono::system_clock, std::chrono::minutes>;
+   TimePoint1 tp1{120s};
+   TimePoint2 tp2{2min};
+   std::cout << "tp1 ticks: " << tp1.time_since_epoch().count()
+             << "tp2 ticks: " << tp2.time_since_epoch().count()
+             << std::endl;
+   std::cout << "tp1 is " << ((tp1 == tp2) ? "equal":"not equal")
+             << " to tp2" << std::endl;
+   ```
+
+5. 时钟的操作
+
+   ```c++
+   // 获取时间，天，日期的字符串
+   using Clock = std::chrono::system_clock;
+   auto instant = Clock::now();
+   std::time_t the_time = Clock::to_time_t(instant);
+   std::cout << std::put_time(std::localtime(&the_time), 
+       "The time now is: %R.%nToday is %A %e %B %Y. The time zone is %Z.%n");
+   ```
+
+   tm对象是一个包含下面这些int类型成员的结构体：
+
+   - `tm_sec(0~60)`, `tm_min(0~59)`, `tm_hour(0~23)`分别用来指定时间的秒，分，小时。
+   - `tm_mday(1~31)`, `tm_mon(0~11)`, tm_year分别指定日期的日，月，年。
+   - `tm_wday(0~6)`和`tm_yday(0~365)`分别指定一周或一年中的日期。
+   - `tm_isdst` 是正值，如果夏令时有效的话；如果夏令时无效，它会是0；如果信息不可用，它是一个负值。
+
+   ```c++
+   // 通过local_time返回的指针来访问上面的值
+   std::time_t t = Clock::to_time_t(Clock::now());
+   auto p_tm = std::localtime(&t);
+   std::cout << "Time: " << p_tm->tm_hour << ':'
+             << std::setfill('0') << std::setw(2) << p_tm->tm_min
+             << std::endl; // Time: 15:06
+   ```
+
+6. 定时执行
+
+   ```c++
+   // Ex10_05.cpp
+   #include <valarray>
+   #include <vector>
+   #include <iterator>
+   #include <algorithm>
+   #include <utility>
+   #include <iostream>
+   #include <iomanip>
+   #include <string>
+   #include <chrono>
+   using std::string;
+   using std::valarray;
+   using std::slice;
+   using namespace std::chrono;
+   
+   // Function prototypes
+   valarray<double> get_data(size_t n);
+   void reduce_matrix(valarray<double>& equations, std::vector<slice>& row_slices);
+   valarray<double> back_substitution(valarray<double>& equations, const std::vector<slice>& row_slices);
+   
+   int main()
+   {
+   	auto start_time = steady_clock::now();
+     auto end_time = steady_clock::now();
+     auto elapsed = end_time - start_time.time_since_epoch();
+     std::cout << "Time to solve " << n_rows << " equations is ";
+     print_timepoint(elapsed);
+   }
+   ```
+
+
+
+## 10.5 复数
+
+complex头文件定义了用于处理复数的功能。
+
+### 10.5.1 生成表示复数的对象
+
+```c++
+// complex<double>的构造函数
+std::complex<double> z; // 0 + 0i
+std::complex<double> z1{2, 5}; // 2 + 5i
+std::complex<double> z2{z1}; // 2 + 5i
+```
+
+```c++
+// 使用real和image访问对象的实部和虚部
+complex<double> z{1.5, -2.5}; // z: 1.5 - 2.5i
+z.image(99); // z: 1.5 + 99.0i
+z.real(-4.5); // -4.5 + 99.0i
+std::cout << "Real part: " << z.real() << " Imaginary part: "
+          << z.image() << std::endl;
+```
+
+### 10.5.2 复数的运算
+
+```c++
+// +=, -=, *=, /=运算
+complex<double> z{1, 2}; // 1 + 2i
+auto z1 = z + 3.0; // 4 + 2i
+auto z2 = z * z + (2.0 + 4i); // -1 + 8i
+auto z3 = z1 - z2; // 5 - 6i
+z3 /= z2; // -0.815385 - 0.523007i
+```
+
+### 10.5.3 复数上的比较和其他运算
+
+复数相等，则所有的部分都必须相等；如果复数的实部或虚部不想等，则复数不想等。
+
+```c++
+complex<double> z1{3, 4}; // 3 + 4i
+complex<double> z2{4, -3}; // 4 - 3i
+std::cout << std::boolalpha 
+          << (z1 == z2) << " " // false
+          << (z1 != (3.0 + 4i)) << " " // false
+          << (z2 == 4.0 - 3i) << '\n'; // true
+```
+
+### 10.5.4 一个使用复数的简单示例
+
+```c++
+// Ex10_06.cpp
+#include <iostream>
+#include <iomanip>
+#include <complex>
+#include <chrono>
+using std::complex;
+using namespace std::chrono;
+using namespace std::literals;
+
+int main()
+{
+	const int width{100}, height{100};
+  size_t count{100};
+  char image[width][height];
+  auto start_time = steady_clock::now();
+  complex<double> c{-0.7, 0.27015};
+  
+  for (int i{}; i < width; ++i)
+  {
+  	for (int j{}; j < height; ++j)
+    {
+    	auto re = 1.5 * (i - width / 2) / (0.5 * width);
+      auto im = (j - height / 2) / (0.5 * height);
+      complex<double> z{re, im};
+      image[i][j] = ' ';
+      // Iterate z = z * z + c count times
+      for (size_t k{}; k < count; ++k)
+      {
+      	z = z * z + c;
+      }
+      if (std::abs(z) < 2.0)
+        image[i][j] = '*';
+    }
+  }
+  auto end_time = std::chrono::steady_clock::now();
+  // time_point object for end
+  auto elapsed = end_time - start_time.time_since_epoch();
+  std::cout << "Time to generate a Julia set with " << with
+            << "x" << height << " pixels is ";
+  print_timepoint(elapsed, 9);
+  std::cout << "The Julia set looks like this:\n";
+  for (size_t i{}; i < width; ++i)
+  {
+  	auto re = 1.5 * (i - width / 2) / (0.5 * width);
+    auto im = (j - height / 2) / (0.5 * height);
+    complex<double> z{re, im};
+    image[i][j] = ' ';
+    for (size_t k{}; k < count; ++k)
+    {
+    	z = z * z + c;
+    }
+    if (std::abs(z) < 2.0)
+      image[i][j] = '*';
+  }
+}
+
+auto end_time = std::chrono::steady_clock::now();
+// time_point object for end
+auto elapsed = end_time - start_time.time_since_epoch();
+std::cout << "Time to generate a Julia set with " << width
+          << "x" << height << " pixels is ";
+print_timepoint(elapsed, 9);
+std::cout << "The Julia set looks like this:\n";
+for (size_t i{}; i < width; ++i)
+{
+	for (size_t j{}; j < height; ++j)
+  {
+  	std::cout << image[i][j];
+    std::cout << '\n';
+  }
+}
+```
+
+
+
+## 10.6 本章小结
+
+1. 定义在valarray头文件中的valarray类模板旨在使编译器的数值计算比其他有潜力进行并行运算的数组或容器更有效率。
+2. slice类型的对象表示的是一维元素序列，它们以指定间隔分布在valarray所保存的数据中，使我们能够在数组的整行或整列中表示操作。
+3. gslice对象是slice的泛化，表示均匀分隔的slice对象；gslice使我们能够将操作表示到它所定义的所有行或列上。
+4. ratio头文件定义了ratio类模板，并且每个ratio类型都定义了有理数，因此不再需要去定义ratio对象。
+5. chrono头文件定义了作为硬件时钟的接口的类：
+   - system_clock 表示的是挂钟时间，可以用来确定时间和日期。
+   - steady_clock 是无变化的时钟，一般涌来测量时间间隔。
+   - high_resolution_clock 是为时间测量提供最高精度的时钟。这个类型的时钟可能是另外两个类型时钟中的某个时钟的别名。
+6. `complex<T>`类模板定义在complex头文件中。这个模板的实例是表示复数的实部和虚部都为T类型值的类型。
