@@ -20,9 +20,10 @@
 
 ### 网络编程
 
-| 书名                                                         | 版次 | 作者 | 摘要/评价 |
-| ------------------------------------------------------------ | ---- | ---- | --------- |
-| [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md) |      |      |           |
+| 书名                                                         | 版次 | 作者                                          | 摘要/评价            |
+| ------------------------------------------------------------ | ---- | --------------------------------------------- | -------------------- |
+| [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md) |      |                                               |                      |
+| [TCP/IP详解-卷一](TCP_IP_ILLUSTRATED_V1/README.md)           | 3ED  | [美] Kevin R. Fall<br>[美] W. Richard Stevens | 网络编程领域的圣经。 |
 
 ### C++
 
@@ -55,7 +56,6 @@
 - [COM技术内幕](INSIDE_COM/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [设计模式](DESIGN_PATTERN/README.md)
-- [TCP/IP详解 卷一](TCP_IP_ILLUSTRATED_V1/README.md)
 - [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)
 - [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)

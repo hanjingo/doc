@@ -4183,6 +4183,8 @@ tranquil `/ˈtræŋkwɪl/` 宁静的，平静的，安静的
 
 transformation `/ˌtrænsfəˈmeɪʃn/` 变化，转变，转型
 
+transient `/ˈtrænʃnt/` 短暂的，临时的，过往的
+
 transmitter `/trænzˈmɪtə(r)/` 发射台，发报台，传输者
 
 transmute `/trænzˈmjuːt/` 变形，变化

@@ -1,6 +1,6 @@
 # TCP/IP详解 卷1:协议
 
-[美] Kevin R. Fall, [美] W. Richard Stevens  第三版
+[美] Kevin R. Fall, [美] W. Richard Stevens. 3th Edition
 
 - [第一章 概述](chapter1.md)
 - [第二章 Internet地址结构](chapter2.md)
