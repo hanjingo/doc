@@ -2,7 +2,9 @@
 
 [TOC]
 
-## 编译安装
+
+
+## 1 编译安装
 
 拉取项目：
 
@@ -10,31 +12,31 @@
 
 ```
 
-### windows
+### 1.1 windows
 
-#### 环境要求
+#### 1.1.1 环境要求
 
 - VisualStudio 2015
 - Perl-5.32.1.1
 - nasm-2.15.05
 - openssl-1.1.0
 
-#### 安装perl
+#### 1.1.2 安装perl
 
 1. 去https://strawberryperl.com/下载perl-5.32.1.1（或其它版本）并安装。
 2. 安装完成后自动注册了perl环境。
 
-#### 安装nasm
+#### 1.1.3 安装nasm
 
 1. 去https://www.nasm.us/pub/nasm/releasebuilds下载nasm-2.15.05（或其他版本）安装。
 2. 安装完成后，在环境变量中加入nasm的安装路径（尽量避免中文）。
 
-#### 配置nmake
+#### 1.1.4 配置nmake
 
 1. 找到nmake.exe的路径（一般在`...\Microsoft Visual Studio x\VC\bin`目录下）。
 2. 添加到环境变量中。
 
-#### 编译项目
+#### 1.1.5 编译项目
 
 1. 配置环境
 
@@ -89,7 +91,7 @@
    nmake install
    ```
 
-#### 报错处理
+#### 1.1.6 报错处理
 
 - 提示无法打开包括文件`c1.EXE`；
 
@@ -179,30 +181,40 @@
       install Text::Template
       ```
 
-### linux
+### 2 linux
 
-#### 环境要求
+#### 2.1 环境要求
 
 - gcc
 - openssl-1.1.0
 
-#### 安装gcc
+#### 2.2 安装gcc
 
 TODO
 
-#### 编译安装
+#### 2.3 编译安装
 
-1. 
+TODO
 
-### macos
+### 3 macos
+
+#### 3.1 环境要求
+
+TODO
+
+#### 3.2 安装gcc
+
+TODO
+
+#### 3.3 编译安装
 
 TODO
 
 
 
-## 项目引用
+## 2 项目引用
 
-### Visual Studio
+### 2.1 Visual Studio
 
 TODO
 

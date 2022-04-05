@@ -4,9 +4,9 @@
 
 
 
-## 编译安装
+## 1 编译安装
 
-### 设置编译环境
+### 1.1 设置编译环境
 
 - Macos
 
@@ -20,7 +20,7 @@
   TODO
   ```
 
-### 安装Qt环境
+### 1.2 安装Qt环境
 
 1. 拉取源码
 
@@ -81,7 +81,7 @@
      source ~/.zshrc
      ```
 
-### 安装QtCreator
+### 1.3 安装QtCreator
 
 1. 拉取源码
    - 通过git下载
@@ -90,41 +90,91 @@
    - Qt5
    - Qt6
 
+### 1.4 报错解决
+
+1. 模块`QtWebEngine`, `QtPdf`等无法被配置；
+
+   **问题**
+
+   ```sh
+   Note: No wayland-egl support detected. Cross-toolkit compatibility disabled.
+   
+   Note: The following modules are not being compiled in this configuration:
+       webenginecore
+       webengine
+       webenginewidgets
+       pdf
+       pdfwidgets
+   
+   WARNING: QtWebEngine requires at least version 10.0.0, but using Xcode version .
+   
+   WARNING: QtPdf requires at least version 10.0.0, but using Xcode version .
+   
+   WARNING: QtWebEngine will not be built.
+   
+   WARNING: QtPdf will not be built.
+   ```
+
+   **原因**
+
+   1. 相关模块需要手动安装；
+
+   **解决**
+
+   ```sh
+   TODO
+   ```
+   
+1. clip2tri，clipper, poly2tri的依赖缺失
+
+   **问题**
+
+   ```sh
+   qt library not found for -lqt_clip2tri
+   ```
+   
+   **原因**
+   
+   1. 需要单独编译clip2tri，clipper, poly2tri
+   
+   **解决**
+   
+   ```sh
+   cd ./qtlocation/src/3rdparty/clip2tri && make && cd -
+   cd ./qtlocation/src/3rdparty/clipper && make && cd -
+   cd ./qtlocation/src/3rdparty/poly2tri && make && cd -
+   ```
+   
+1. lqmapboxgl依赖缺失
+
+   **问题**
+
+   ```sh
+   ld: library not found for -lqmapboxgl
+   
+   clang: error: linker command failed with exit code 1 (use -v to see invocation)
+   ```
+   
+   **原因**
+   
+   1. 需要单独编译lqmapboxgl
+   
+   **解决**
+   
+   ```sh
+   cd ./qtlocation/src/3rdparty/mapbox-gl-native && make && cd -
+   ```
 
 
-## 二进制安装
+
+## 2 二进制安装
 
 1. 去网址`https://www.qt.io/download-qt-installer?hsCtaTracking=99d9dd4f-5681-48d2-b096-470725510d34%7C074ddad0-fdef-4e53-8aa8-5e8a876d6ab4`下载在线安装程序
 2. 点击安装
 
 
 
-## 报错解决
+## 参考
 
-1. 
-
-```sh
-qt library not found for -lqt_clip2tri
-```
-
-需要单独编译clip2tri，clipper, poly2tri
-
-```sh
-cd ./qtlocation/src/3rdparty/clip2tri && make && cd -
-cd ./qtlocation/src/3rdparty/clipper && make && cd -
-cd ./qtlocation/src/3rdparty/poly2tri && make && cd -
-```
-
-2. 
-
-```sh
-ld: library not found for -lqmapboxgl
-
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-```
-
-需要单独编译lqmapboxgl
-
-```sh
-cd ./qtlocation/src/3rdparty/mapbox-gl-native && make && cd -
-```
+- [Qt Documentation/Qt WebEngine Platform Notes](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html)
+- [QtPDF Build Instructions](https://wiki.qt.io/QtPDF_Build_Instructions)
