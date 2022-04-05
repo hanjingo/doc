@@ -3365,6 +3365,8 @@ recur `/rɪˈkɜː(r)/` 重现，再次发生，反复出现
 
 reduce `/rɪˈdjuːs/` 减少，缩小，节食，蒸发
 
+redundant `/rɪˈdʌndənt/` 冗余的，多余的，不需要的
+
 reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
 
 reek `/riːk/` 恶臭，难闻的气味
@@ -4216,6 +4218,8 @@ triplet `ˈtrɪplət` 三个，三联体，三胞胎
 triumph `/ˈtraɪʌmf/` 狂喜，胜利，凯旋
 
 troops `/truːps/` 军队，士兵，连队
+
+trophy `/ˈtroʊfi/` 奖杯，奖品，战利品，炫耀的，招摇的
 
 tropical `/ˈtrɒpɪkl/` 热带的，来自热带的
 
