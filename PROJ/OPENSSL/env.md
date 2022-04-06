@@ -22,7 +22,7 @@
 git clone git@github.com:openssl/openssl.git
 
 # 切换分支
-git checkout OpenSSL_1_1_1
+git checkout remotes/origin/OpenSSL_1_1_1-stable # 你可以选择其他分支，注意不同分支的区别
 
 # 拉取子模块
 git submodule update --init --recursive
@@ -63,7 +63,7 @@ TODO
 
 #### 1.3.1 执行Configure程序
 
-windows下打开 "VS2015 开发人员命令提示（32位系统）" 或 "VS2015 x64 x86 兼容工具命令提示符"（64位系统），进入到openssl代码目录，执行Configure命令：
+windows下打开 "VS201x 开发人员命令提示（32位系统）" 或 "VS201x x64 x86 兼容工具命令提示符"（64位系统），进入到openssl代码目录，执行Configure命令：
 
 ```sh
 perl Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-dso] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]
@@ -85,14 +85,11 @@ macos/linux下打开终端，进入到openssl代码目录，执行Configure命�
 
 - `[no-]threads` 是否启用多线程
 
-- `[no-]shared` 编译动态/静态库
-
-  - no-shared 静态库
-  - shared 动态库
+- `[no-]shared` 编译静态/动态库
 
 - `[no-]zlib|zlib-dynamic`
 
-- `no-asm`
+- `no-asm` 不使用汇编代码
 
 - `no-dso`
 
@@ -111,7 +108,7 @@ macos/linux下打开终端，进入到openssl代码目录，执行Configure命�
   主要的windows目标平台有以下几种：
 
   - `VC-WIN64A` 适用于amd x64处理器Release版。
-  - `debug-VC-WIN64A` 适用于amd x64处理器Release版。
+  - `debug-VC-WIN64A` 适用于amd x64处理器Debug版。
   - `VC-WIN64I` 适用于intel x64处理器Release版。
   - `VC-WIN64-ARM` 适用于arm 64处理器Release版。
   - `VC-WIN32` 适用于x86架构处理器Release版。
@@ -128,67 +125,53 @@ macos/linux下打开终端，进入到openssl代码目录，执行Configure命�
 例1，编译window 下32位程序：
 
 ```c++
-perl Configure VC-WIN32 --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+perl Configure VC-WIN32 --prefix="C:\Program Files\openssl" --openssldir="C:\Program Files\openssl"
 ```
 
 例2，让安装程序自动选择合适的平台：
 
 ```sh
-perl Configure --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+perl Configure
 ```
 
 例3，编译ubuntu18.04下64位程序：
 
 ```sh
-./configure linux-x86_64 --prefix=/usr/local/ssl
+./configure linux-x86_64 --prefix="C:\Program Files\openssl" --openssldir="C:\Program Files\openssl"
 ```
 
 #### 1.3.2 编译
 
 - Window
 
-  用VC自带的构建程序构建一遍：
+  openssl版本<=1.1.0：
 
   ```sh
+  # 用VC自带的构建程序构建一遍
   ms\do_nasm
-  ```
-
-  切换到VC目录`...\Microsoft Visual Studio x\VC\bin`并执行脚本：
-
-  ```sh
+  
+  # 切换到VC目录`...\Microsoft Visual Studio x\VC\bin`并执行脚本
   vcvars32.bat
+  
+  # 切回openssl目录，使用nmake进行编译
+  nmake -f ms\ntdll.mak # 生成动态库
+  nmake -f ms\nt.mak # 生成静态库
+  
+  # 测试是否编译成功; 显示：`passed all tests`则表示编译成功
+  nmake -f ms\ntdll.mak test # 动态库
+  nmake -f ms\nt.mak test # 静态库
+  
+  # 安装
+  nmake -f ms\ntdll.mak install # 动态库
+  nmake -f ms\nt.mak install # 静态库
   ```
 
-  再切回openssl目录，使用nmake进行编译：
+  openssl版本>1.1.0:
 
   ```sh
-  # 生成动态库
-  nmake -f ms\ntdll.mak
-  
-  # 生成静态库
-  nmake -f ms\nt.mak
-  ```
-
-  编译完成之后，测试是否编译成功：
-
-  ```sh
-  # 动态库
-  nmake -f ms\ntdll.mak test
-  
-  # 静态库
-  nmake -f ms\nt.mak test
-  ```
-
-  显示：`passed all tests`则表示编译成功。
-
-  编译安装：
-
-  ```sh
-  # 动态库
-  nmake -f ms\ntdll.mak install
-  
-  # 静态库
-  nmake -f ms\nt.mak 
+  nmake
+  nmake test
+  nmake install
   ```
 
 - Linux
@@ -322,27 +305,51 @@ perl Configure --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Fil
 
   **原因**
 
-  1. 以前执行过Configure程序；
-
+  1. 中文字符的问题；
+  1. 路径没有打双引号。
+  
   **解决**
-
-  1. 在Configure命令中加入`no-asm`：
-
+  
+  1. 去掉中文字符；
+  
+  1. 路径加上双引号
+  
      ```sh
-     perl Configure no-asm VC-WIN32 --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+     # 错误做法
+     perl Configure VC-WIN32 --prefix=C:\Program Files\openssl --openssldir=C:\Program Files\openssl
+     
+     # 正确做法
+     perl Configure VC-WIN32 --prefix="C:\Program Files\openssl" --openssldir="C:\Program Files\openssl"
      ```
-
      
-
      
-
-
+     
+     
+     
+     
+     
 
 ## 2 项目引用
 
 ### 2.1 Visual Studio
 
-TODO
+- 添加目录
+
+  项目-属性-VC++目录-包含目录 添加：`openssl安装目录\include`。
+
+  项目-属性-VC++目录-包含目录 添加：`openssl安装目录\lib`。
+
+- 复制动态/静态链接库文件
+
+  复制静态文件：`openssl安装目录\lib\libssl.lib`到VS项目根目录。
+
+- 在代码中引用
+
+  ```sh
+  ...
+  #pragma comment(lib, "libssl.lib")
+  ...
+  ```
 
 
 
@@ -350,6 +357,8 @@ TODO
 
 - [OpenSSL 中文手册](https://www.openssl.net.cn/)
 - [Windows 下编译 OpenSSL](https://blog.csdn.net/liang19890820/article/details/51658574)
+- [Visual Studio 2015 中使用 OpenSSL](https://fenying.net/post/2015/12/02/using-openssl-with-vs2015/)
+- [OpenSSL/GmSSL+VS2015环境配置](https://blog.csdn.net/apianmuse/article/details/107353574)
 - [ActivePerl、dmake、nasm、nmake编译OpenSSL(1.1.0系列)](https://blog.csdn.net/ayang1986/article/details/77917297?locationNum=5&fps=1)
 - [nmake下一些错误的解决办法](https://blog.csdn.net/hongqiang200/article/details/39210767)
 - [VS2015编译Openssl-1.1.0f](https://blog.csdn.net/ljttianqin/article/details/72978612)
