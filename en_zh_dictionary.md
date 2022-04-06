@@ -603,6 +603,8 @@ caterpillar `/ˈkætəpɪlə(r)/` 毛毛虫
 
 caustic `/ˈkɔːstɪk/` 尖酸刻薄的，挖苦的，腐蚀性的
 
+caveat `/ˈkæviæt/` 警告，告诫
+
 ### ce
 
 [回到C](#C)--[回到顶部](#英汉词典)
@@ -775,6 +777,8 @@ connoisseur `/ˌkɑːnəˈsɜːr/` 行家，鉴赏家，鉴定家
 
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
+conserve `/kənˈsɜːrv /` 保存，节约，保护，节省
+
 considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
 
 conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
@@ -944,6 +948,8 @@ cornet `/ˈkɔːnɪt/` （乐器）短号，圆锥形蛋糕
 corporate `/ˈkɔːpərət/`  公司的，全体的，共同的
 
 corps `/kɔː(r)/` 军团，一群人，特别小组
+
+correct `/kəˈrekt/` 准确的，正确的，合适的
 
 correspond `/kɒrɪˈspɒnd/` 通信，相符，符合
 
@@ -3156,6 +3162,8 @@ prejudice `/ˈpredʒudɪs/` 偏见，成见
 preliminary `/prɪˈlɪmɪnəri/` 初步的，预备的，开始的
 
 premature `/ˈpremətʃə(r)/` 早产的，早熟的，仓促的
+
+preprocessor `/priː'proʊsesə(r)/` 预处理器
 
 prerequisite `/ˌpriːˈrekwəzɪt/` 前提，必要条件
 

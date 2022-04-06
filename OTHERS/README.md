@@ -19,6 +19,7 @@
 
 - [测试计划模版](tmpl/benchmark_plan.md)
 - [游戏服务器压测报告模版](res/game_server_benchmark_report.md)
+- [调研报告模板](tmpl/investigation_research.md)
 - [论文模板](tmpl/paper.md)
 - [需求文档模板](tmpl/requirements.md)
 - [简历模版](tmpl/resume.md)

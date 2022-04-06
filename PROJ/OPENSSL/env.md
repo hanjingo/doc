@@ -6,92 +6,219 @@
 
 ## 1 编译安装
 
+### 1.1 环境要求
+
+| 操作系统 | 环境                                    | 版本要求（最低）                     |
+| -------- | --------------------------------------- | ------------------------------------ |
+| Window   | VisualStudio<br>Perl<br>nasm<br>openssl | 2015<br>5.32.1.1<br>2.15.05<br>1.1.1 |
+| linux    | gcc<br>openssl                          | 7.1<br>1.1.1                         |
+| macos    |                                         |                                      |
+
+### 1.2 配置环境
+
 拉取项目：
 
 ```sh
+git clone git@github.com:openssl/openssl.git
 
+# 切换分支
+git checkout OpenSSL_1_1_1
+
+# 拉取子模块
+git submodule update --init --recursive
 ```
 
-### 1.1 windows
+#### 1.2.1 windows
 
-#### 1.1.1 环境要求
+- 安装Perl
+  1. 去https://strawberryperl.com/下载perl-5.32.1.1（或其它版本）并安装。
 
-- VisualStudio 2015
-- Perl-5.32.1.1
-- nasm-2.15.05
-- openssl-1.1.0
+  2. 安装完成后自动注册了perl环境。
+- 安装nasm（根据环境要求安装）
+  1. 去https://www.nasm.us/pub/nasm/releasebuilds下载nasm-2.15.05（或其他版本）安装。
+  2. 安装完成后，在环境变量中加入nasm的安装路径（尽量避免中文）。
+- 配置nmake（根据环境要求配置）
 
-#### 1.1.2 安装perl
+  1. 找到nmake.exe的路径（一般在`...\Microsoft Visual Studio x\VC\bin`目录下）。
 
-1. 去https://strawberryperl.com/下载perl-5.32.1.1（或其它版本）并安装。
-2. 安装完成后自动注册了perl环境。
+  2. 添加到环境变量中。
 
-#### 1.1.3 安装nasm
+#### 1.2.2 Linux
 
-1. 去https://www.nasm.us/pub/nasm/releasebuilds下载nasm-2.15.05（或其他版本）安装。
-2. 安装完成后，在环境变量中加入nasm的安装路径（尽量避免中文）。
+- 配置编译环境
 
-#### 1.1.4 配置nmake
+  ubuntu/debain
 
-1. 找到nmake.exe的路径（一般在`...\Microsoft Visual Studio x\VC\bin`目录下）。
-2. 添加到环境变量中。
+  ```sh
+  sudo apt update
+  sudo apt upgrade
+  sudo apt install build-essential checkinstall zlib1g-dev
+  ```
 
-#### 1.1.5 编译项目
+#### 1.2.3 MacOS
 
-1. 配置环境
+TODO
 
-   打开 "VS2015 开发人员命令提示"（64位打开 "VS2015 x64 x86 兼容工具命令提示符"），进入到openssl代码目录，执行Configure命令：
-   
-   ```sh
-   perl Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-dso] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]
-   ```
-   
-   - `--prefix` 编译完成后的安装路径
-   
-   - `--openssldir` 编译完后的生成的配置文件的安装路径
-   
-   - `[no-]shared` 编译动态/静态库
-   
-     - no-shared 静态库
-     - shared 动态库
+### 1.3 编译项目
 
-   - `os/compiler[:flags]` 目标平台
+#### 1.3.1 执行Configure程序
 
-     主要的windows目标平台有以下几种：
-   
-     - `VC-WIN64A` 适用于64位下的amd处理器。
-     - `VC-WIN64I` 适用于64位下的intel处理器。
-     - `VC-WIN64-ARM` 适用于64位下的arm处理器。
-     - `VC-WIN32` 适用于32位下x86架构处理器。
-   
-   例1，编译window 下amd x64程序：
-   
-   ```c++
-   perl Configure VC-WIN64A
-   ```
-   
-   例2，让安装程序自动选择合适的平台：
-   
-   ```sh
-   perl Configure
-   ```
-   
-2. nmake编译
+windows下打开 "VS2015 开发人员命令提示（32位系统）" 或 "VS2015 x64 x86 兼容工具命令提示符"（64位系统），进入到openssl代码目录，执行Configure命令：
 
-   ```sh
-   nmake
-   
-   # 确认编译成功
-   nmake test
-   ```
-   
-3. 编译安装
+```sh
+perl Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-dso] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]
+```
 
-   ```sh
-   nmake install
-   ```
+macos/linux下打开终端，进入到openssl代码目录，执行Configure命令：
 
-#### 1.1.6 报错处理
+```sh
+[sudo] ./config [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-dso] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]
+```
+
+- `no-<cipher>` 停用某些加密算法(bf, cast, des, dh, dsa,hmac, md2, md5, mdc2, rc2, rc4, rc5, rsa, sha)
+
+- `enable-<cipher>` 启用某些加密算法
+
+- `[-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx]` 预处理器参数设置
+
+- `no-hw-xxx|no-hw`
+
+- `[no-]threads` 是否启用多线程
+
+- `[no-]shared` 编译动态/静态库
+
+  - no-shared 静态库
+  - shared 动态库
+
+- `[no-]zlib|zlib-dynamic`
+
+- `no-asm`
+
+- `no-dso`
+
+- `no-egd`
+
+- `sctp`
+
+- `386`
+
+- `--prefix` 编译完成后的安装路径
+
+- `--openssldir` 编译完后的生成的配置文件的安装路径
+
+- `os/compiler[:flags]` 目标平台
+
+  主要的windows目标平台有以下几种：
+
+  - `VC-WIN64A` 适用于amd x64处理器Release版。
+  - `debug-VC-WIN64A` 适用于amd x64处理器Release版。
+  - `VC-WIN64I` 适用于intel x64处理器Release版。
+  - `VC-WIN64-ARM` 适用于arm 64处理器Release版。
+  - `VC-WIN32` 适用于x86架构处理器Release版。
+  - ...
+
+  主要的linux目标平台：
+
+  TODO
+
+  主要的macos目标平台：
+
+  TODO
+
+例1，编译window 下32位程序：
+
+```c++
+perl Configure VC-WIN32 --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+```
+
+例2，让安装程序自动选择合适的平台：
+
+```sh
+perl Configure --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+```
+
+例3，编译ubuntu18.04下64位程序：
+
+```sh
+./configure linux-x86_64 --prefix=/usr/local/ssl
+```
+
+#### 1.3.2 编译
+
+- Window
+
+  用VC自带的构建程序构建一遍：
+
+  ```sh
+  ms\do_nasm
+  ```
+
+  切换到VC目录`...\Microsoft Visual Studio x\VC\bin`并执行脚本：
+
+  ```sh
+  vcvars32.bat
+  ```
+
+  再切回openssl目录，使用nmake进行编译：
+
+  ```sh
+  # 生成动态库
+  nmake -f ms\ntdll.mak
+  
+  # 生成静态库
+  nmake -f ms\nt.mak
+  ```
+
+  编译完成之后，测试是否编译成功：
+
+  ```sh
+  # 动态库
+  nmake -f ms\ntdll.mak test
+  
+  # 静态库
+  nmake -f ms\nt.mak test
+  ```
+
+  显示：`passed all tests`则表示编译成功。
+
+  编译安装：
+
+  ```sh
+  # 动态库
+  nmake -f ms\ntdll.mak install
+  
+  # 静态库
+  nmake -f ms\nt.mak 
+  ```
+
+- Linux
+
+  编译：
+
+  ```sh
+  sudo make
+  sudo make test
+  ```
+  
+  编译安装：
+  
+  ```sh
+  sudo make install
+  ```
+  
+  建立链接：
+  
+  ```sh
+  echo "/usr/local/ssl/lib" >> /etc/ld.so.conf.d/
+  sudo ldconfig -v
+  echo ":/usr/local/ssl/bin" >> /etc/environment
+  source /etc/environment
+  
+  # 确认
+  openssl version
+  ```
+
+### 1.4 报错处理
 
 - 提示无法打开包括文件`c1.EXE`；
 
@@ -155,7 +282,7 @@
 
    **原因**
 
-   1. perl的相关模块与NOTES.PERL要求的对不上。
+   1. perl的相关模块与文件NOTES.PERL要求的对不上。
 
    **解决**
 
@@ -181,34 +308,33 @@
       install Text::Template
       ```
 
-### 2 linux
+- 执行Configure时，提示生成目标已经定义
 
-#### 2.1 环境要求
+  **问题**
 
-- gcc
-- openssl-1.1.0
+  ```sh
+  Failure!  build file wasn't produced.
+  Please read INSTALL.md and associated NOTES-* files.  You may also have to
+  look over your available compiler tool chain or change your configuration.
+  
+  target already defined - VC-WIN32 (offending arg: Files\openssl\bin)
+  ```
 
-#### 2.2 安装gcc
+  **原因**
 
-TODO
+  1. 以前执行过Configure程序；
 
-#### 2.3 编译安装
+  **解决**
 
-TODO
+  1. 在Configure命令中加入`no-asm`：
 
-### 3 macos
+     ```sh
+     perl Configure no-asm VC-WIN32 --prefix=C:\Program Files\openssl\bin --openssldir=C:\Program Files\openssl\config
+     ```
 
-#### 3.1 环境要求
+     
 
-TODO
-
-#### 3.2 安装gcc
-
-TODO
-
-#### 3.3 编译安装
-
-TODO
+     
 
 
 
@@ -223,6 +349,7 @@ TODO
 ## 参考
 
 - [OpenSSL 中文手册](https://www.openssl.net.cn/)
+- [Windows 下编译 OpenSSL](https://blog.csdn.net/liang19890820/article/details/51658574)
 - [ActivePerl、dmake、nasm、nmake编译OpenSSL(1.1.0系列)](https://blog.csdn.net/ayang1986/article/details/77917297?locationNum=5&fps=1)
 - [nmake下一些错误的解决办法](https://blog.csdn.net/hongqiang200/article/details/39210767)
 - [VS2015编译Openssl-1.1.0f](https://blog.csdn.net/ljttianqin/article/details/72978612)
