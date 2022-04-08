@@ -1,6 +1,6 @@
 # 应用密码学-协议,算法与c源程序
 
-[美]Bruce Schneier.2th Edition
+[美]Bruce Schneier . 2th Edition
 
 - [第一章 基础知识](chapter1.md)
 - [第二章 协议结构模块](chapter2.md)
