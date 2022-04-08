@@ -6,5 +6,4 @@
 - [cmake](cmake.md)
 - [dot](dot.md)
 - [make](make.md)
-- [sql](sql.md)
 

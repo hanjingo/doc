@@ -1477,6 +1477,14 @@ void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问�
 
 
 
+### pragma
+
+TODO
+
+---
+
+
+
 ## 参考
 
 [1] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
@@ -1496,3 +1504,5 @@ void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问�
 [8] [C++ virtual关键字](https://blog.csdn.net/shuzfan/article/details/77165474)
 
 [9] [C/C++ 中 static 的用法全局变量与局部变量](https://www.runoob.com/w3cnote/cpp-static-usage.html)
+
+[10] [cppreference.com/Implementation defined behavior control](https://en.cppreference.com/w/cpp/preprocessor/impl)

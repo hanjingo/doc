@@ -324,10 +324,6 @@ perl Configure
      
      
      
-     
-     
-     
-     
 
 ## 2 项目引用
 
@@ -347,6 +343,7 @@ perl Configure
 
   ```sh
   ...
+  #pragma comment(lib, "libcrypto.lib")
   #pragma comment(lib, "libssl.lib")
   ...
   ```
@@ -357,6 +354,7 @@ perl Configure
 
 - [OpenSSL 中文手册](https://www.openssl.net.cn/)
 - [Windows 下编译 OpenSSL](https://blog.csdn.net/liang19890820/article/details/51658574)
+- [C/C++使用openssl进行摘要和加密解密（md5, sha256, des, rsa）](https://blog.csdn.net/u012234115/article/details/72762045)
 - [Visual Studio 2015 中使用 OpenSSL](https://fenying.net/post/2015/12/02/using-openssl-with-vs2015/)
 - [OpenSSL/GmSSL+VS2015环境配置](https://blog.csdn.net/apianmuse/article/details/107353574)
 - [ActivePerl、dmake、nasm、nmake编译OpenSSL(1.1.0系列)](https://blog.csdn.net/ayang1986/article/details/77917297?locationNum=5&fps=1)

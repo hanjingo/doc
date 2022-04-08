@@ -1,6 +1,7 @@
 # 数据库
 
 - [数据库设计](design.md)
+- [sql手册](sql.md)
 
 
 

@@ -25,12 +25,6 @@
 
 
 
-## 密码学
-
-- [DES算法](CRYPTO/des.md)
-
-
-
 ## 题目
 
 - [八皇后问题](eight_queen.md)
