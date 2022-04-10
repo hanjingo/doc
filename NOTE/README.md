@@ -8,9 +8,9 @@
 
 ### 操作系统
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
+| 书名                                                      | 版次 | 作者                                 | 摘要/评价                                            |
+| --------------------------------------------------------- | ---- | ------------------------------------ | ---------------------------------------------------- |
+| [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md) | 3ED  | 汤小丹<br>梁红兵<br>哲凤屏<br>汤子瀛 | 里面一些英文的拼写错误较多，讲的比较宽泛，不太推荐！ |
 
 ### 数据库
 
@@ -58,7 +58,6 @@
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [设计模式](DESIGN_PATTERN/README.md)
 - [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)
-- [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
