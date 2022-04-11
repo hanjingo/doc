@@ -8,11 +8,13 @@
 
 ### 1.1 环境要求
 
+（本文档在以下环境中测试通过，其它环境未经测试）
+
 | 操作系统 | 环境                                    | 版本要求（最低）                     |
 | -------- | --------------------------------------- | ------------------------------------ |
 | Window   | VisualStudio<br>Perl<br>nasm<br>openssl | 2015<br>5.32.1.1<br>2.15.05<br>1.1.1 |
 | linux    | gcc<br>openssl                          | 7.1<br>1.1.1                         |
-| macos    |                                         |                                      |
+| macos    | -                                       | -                                    |
 
 ### 1.2 配置环境
 
@@ -116,10 +118,11 @@ macos/linux下打开终端，进入到openssl代码目录，执行Configure命�
 
   主要的linux目标平台：
 
-  TODO
-
+  - `linux-x86_64` 使用于64位linux。
+  - ...
+  
   主要的macos目标平台：
-
+  
   TODO
 
 例1，编译window 下32位程序：
@@ -137,7 +140,7 @@ perl Configure
 例3，编译ubuntu18.04下64位程序：
 
 ```sh
-./configure linux-x86_64 --prefix="C:\Program Files\openssl" --openssldir="C:\Program Files\openssl"
+./config linux-x86_64 --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
 ```
 
 #### 1.3.2 编译
@@ -192,10 +195,10 @@ perl Configure
   建立链接：
   
   ```sh
-  echo "/usr/local/ssl/lib" >> /etc/ld.so.conf.d/
-  sudo ldconfig -v
-  echo ":/usr/local/ssl/bin" >> /etc/environment
-  source /etc/environment
+  export OPENSSL_DIR="/usr/local/openssl" # 可以换成你想要安装的目录
+  sudo ln -s ${OPENSSL_DIR}/bin/openssl /usr/bin/openssl
+  sudo ln -s ${OPENSSL_DIR}/lib/libssl.so.1.1 /usr/lib/libssl.so.1.1
+  sudo ln -s ${OPENSSL_DIR}/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.1
   
   # 确认
   openssl version
@@ -337,15 +340,38 @@ perl Configure
 
 - 复制动态/静态链接库文件
 
+  复制静态文件：`openssl安装目录\lib\libcrypto.lib`到VS项目根目录。
+
   复制静态文件：`openssl安装目录\lib\libssl.lib`到VS项目根目录。
 
 - 在代码中引用
 
-  ```sh
-  ...
+  ```c++
+  // 静态引用
+  
   #pragma comment(lib, "libcrypto.lib")
   #pragma comment(lib, "libssl.lib")
-  ...
+      
+  // 动态引用
+  ```
+
+### 2.2 CMake
+
+- 集成CMakeLists.txt
+
+  ```cmake
+  find_package(OpenSSL REQUIRED)
+  
+  # 设置openssl头文件
+  set(OPENSSL_INCLUDE_DIRS ${OPENSSL_DIR}/include)
+  # 设置openssl依赖库
+  set(OPENSSL_SSL_LIBRARY ${OPENSSL_DIR}/lib/libssl.so.1.1)
+  # 设置openssl工具库
+  set(OPENSSL_CRYPTO_LIBRARY ${OPENSSL_DIR}/lib/libcrypto.so.1.1)
+  # 设置openssl生成路径
+  set(OPENSSL_INSTALL_PREFIX ${OPENSSL_DIR}/lib/libcrypto.so.1.1)
+  
+  target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
   ```
 
 

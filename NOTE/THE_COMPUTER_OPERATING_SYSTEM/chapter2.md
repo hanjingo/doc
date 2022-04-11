@@ -496,6 +496,26 @@
 
    *管程的示意图*
 
+   管程的语法描述：
+
+   ```c
+   Monitor monitor_name { // 管程名
+       share variable declarations; // 共享变量说明
+       cond declarations;           // 条件变量说明
+       public:                      // 能被进程调用的过程
+       	void P1(...)             // 对数据结构操作的过程
+           {...}
+       	void P2(...)
+           {...}
+       	void(...)
+           {...}
+       	{                        // 管程主体
+               initialization code; // 初始化代码
+               ...
+           }
+   }
+   ```
+
    管程由四部分组成：
 
    - 管程的名称
@@ -523,42 +543,253 @@
    利用管程实现进程同步时，必须设置同步工具；管程中对每个条件变量都必须予以说明，其形式为：`condition x, y`；同时提供两个对条件变量的操作：
 
    - `x.wait` 正在调用管程的进程因x条件需要被阻塞或挂起，则调用x.wait将自己插入到x条件的等待队列上，并释放管程，直到x条件变化。此时其他进程可以使用该管程。
-   - `x.signal` 正在调用管程的进程发现x条件发生了变化，则调用x.signal，重新启动一个因x条件而阻塞或挂起的进程，如果存在多个这样的进程，则TODO
+   - `x.signal` 正在调用管程的进程发现x条件发生了变化，则调用x.signal，重新启动一个因x条件而阻塞或挂起的进程，如果存在多个这样的进程，则选择其中一个实施唤醒操作；如果队列为空，则无操作而返回。
+   
+   
 
+## 2.5 经典进程的同步问题
 
-
-## 经典进程的同步问题
-
-### 生产者-消费者问题(The proceducer-consumer problem)
+### 2.5.1 生产者-消费者问题(The proceducer-consumer problem)
 
 1. 利用记录型信号量解决生产者-消费者问题
+
+   ```c
+   int in = 0, out = 0;
+   item buffer[n];
+   semaphore mutex=1, empty=n, full=0;
+   void proceducer() {
+       do {
+           producer an item nextp;
+           ...
+           wait(empty);
+           wait(mutex);
+           buffer[in] = nextp;
+           in := (in+1) % n;
+           signal(mutex);
+           signal(full);
+       } while(TRUE);
+   }
+   void consumer() {
+       do {
+           wait(full);
+           wait(mutex);
+           nextc=buffer[out];
+           out = (out + 1) % n;
+           signal(mutex);
+           signal(empty);
+           consumer the item in nextc;
+           ...
+       } while(TRUE)
+   }
+   void main() {
+       cobegin
+           proceducer(); consumer();
+       coend
+   }
+   ```
+
 2. 利用AND信号量解决生产者-消费者问题
+
+   ```c
+   int in = 0, out = 0;
+   item buffer[n];
+   semaphore mutex = 1, empty = n, full = 0;
+   void proceducer() {
+       do {
+           producer an item nextp;
+           ...
+           Swait(empty, mutex);
+           buffer[in] = nextp;
+           in := (in + 1) % n;
+           Ssignal(mutex, full);
+       } while(TRUE);
+   }
+   void consumer() {
+       do {
+           Swait(full, mutex);
+           nextc = buffer[out];
+           out = (out + 1) % n;
+           Ssignal(mutex, empty);
+           consumer the item in nextc;
+           ...
+       } while(TRUE);
+   }
+   ```
+
 3. 利用管程解决生产者-消费者问题
 
-### 哲学家进餐问题
+   对于条件变量notfull和notempty，分别有两个过程cwait和csignal对它们进行操作：
+
+   - `cwait(condition)`过程：当管程被一个进程占用时，其他进程调用该过程时阻塞，并挂在条件condition的队列上。
+   - `csignal(condition)`过程：唤醒在cwait执行后阻塞条件condition队列上的进程，如果这样的进程不止一个，则选择其中一个实施唤醒操作；如果队列为空，则误操作而返回。
+
+   PC管程的描述：
+
+   ```c
+   Monitor procducerconsumer {
+       item buffer[N];
+       int in, out;
+       condition notfull, notempty;
+       int count;
+       public:
+       void put(item x) {
+           if (count >= N) cwait(notfull);
+           buffer[in] = x;
+           in = (in + 1) % N;
+           count++;
+           csignal(notempty);
+       }
+       void get(item x) {
+           if (count <= 0) cwait(notempty);
+           x = buffer[out];
+           out = (out + 1) % N;
+           count--;
+           csignal(notfull);
+       }
+       { in = 0; out = 0; count = 0; }
+   }PC:
+   ```
+
+   生产者和消费者描述：
+
+   ```c
+   void producer() {
+       item x;
+       while(TRUE) {
+           ...
+           produce an item in nextp;
+           PC.put(x);
+       }
+   }
+   void consumer() {
+       item x;
+       while(TRUE) {
+           PC.get(x);
+           consume the item in nextc;
+           ...
+       }
+   }
+   void main() {
+       cobegin
+       proceducer(); consumer();
+       coend
+   }
+   ```
+
+### 2.5.2 哲学家进餐问题
 
 1. 利用记录型信号量解决哲学家进餐问题
+
+   ```c
+   do {
+       wait(chopstick[i]);
+       wait(chopstick[(i+1)%5]);
+       ...
+       // eat
+       ...
+       signal(chopstick[i]);
+       signal(chopstick[(i+1)%5]);
+       ...
+       // think
+       ...
+   } while[TRUE];
+   ```
+
 2. 利用AND信号量机制解决哲学家进餐问题
 
-### 读者-写者问题
+   ```c
+   semaphore chopstick chopstick[5]={1, 1, 1, 1, 1};
+   do {
+       ...
+       // think
+       ...
+       Sswait(chopstick[(i+1)%5], chopstick[i]);
+       ...
+       // eat
+       ...
+       Ssignal(chopstick[(i+1)%5], chopstick[i]);
+   } while[TRUE];
+   ```
+
+### 2.5.3 读者 - 写者问题
 
 1. 利用记录型信号量解决读者-写者问题
+
+   ```c
+   semaphore rmutex=1, wmutex=1;
+   int readcount=0;
+   void reader() {
+       do {
+           wait(rmutex);
+           if (readcount == 0) wait(wmutex);
+           readcount++;
+           signal(rmutex);
+           ...
+           perform read operation;
+           ...
+           wait(rmutex);
+           readcount--;
+           if (readcount == 0) signal(wmutex);
+           signal(rmutex);
+       } while(TRUE);
+   }
+   void writer() {
+       do {
+           wait(wmutex);
+           perform write operation;
+           signal(wmutex);
+       } while(TRUE);
+   }
+   void main() {
+       cobegin
+           reader(); writer();
+       coend
+   }
+   ```
+
 2. 利用信号量集机制解决读者-写者问题
 
+   ```c
+   int RN;
+   semaphore L=RN, mx=1;
+   void reader() {
+       do {
+           Swait(L, 1, 1);
+           Swait(mx, 1, 0);
+           ...
+           perform read operation;
+           ...
+           Ssignal(L, 1);
+       } while(TRUE);
+   }
+   void writer() {
+       do {
+           Swait(mx, 1, 1; L, RN, 0);
+           perform write operation;
+           Ssignal(mx, 1);
+       } while(TRUE);
+   }
+   void main() {
+       cobegin
+           reader(); writer();
+       coend
+   }
+   ```
 
 
-## 进程通信
 
-### 进程通信的类型
+## 2.6 进程通信
+
+### 2.6.1 进程通信的类型
 
 1. 共享存储器系统(Shared-Memory System)
 
-   - 基于共享数据结构的通信方式
-   - 基于共享存储区的通信方式
+   - 基于共享数据结构的通信方式；公用数据结构，以实现进程间信息交换；仅适用于传递相对少量的数据，通信效率低下，属于低级通信；
+   - 基于共享存储区的通信方式；通过对内存共享存储区的读写交换信息，实现通信，术语高级通信。
 
 2. 管道(pipe)通信系统
 
-   管道机制必须提供以下三方面的协调能力：
+   建立一个连接读进程和写进程的管道以实现通信，管道机制必须提供以下三方面的协调能力：
 
    - `互斥` 当一个进程正在对pipe执行读/写操作时，其它进程必须等待；
    - `同步` 当写进程把一定数量的数据写入pipe，便去睡眠等待，知道读进程取走数据后再把它唤醒；
@@ -574,18 +805,22 @@
 4. 客户机-服务器系统(Client-Server system)
 
    - 套接字(Socket)
+     - 基于文件：通信双方进程都运行在同一台机器上，将套接字关联到文件，通信双方通过对这个特殊文件的读写实现通信。
+     - 基于网络：通信双方进程运行在不同主机上，将套接字关联到网络，通信双方通过网络传输实现通信。
    - 远程过程调用和远程方法调用(Remote Procedure Call, RPC)
 
-### 消息传递通信的实现方式
+### 2.6.2 消息传递通信的实现方式
 
 1. 直接消息传递系统
 
    - 直接通信原语
-     1. 对称寻址方式
-     2. 非对称寻址方式
+     1. 对称寻址方式：要求发送进程和接收进程都必须以显式方式提供对方的标识符，一旦改变进程的名称，可能需要检查所有其它进程的定义，这样不利于实现进程定义的模块化；
+     2. 非对称寻址方式：接收进程不需要命名发送进程，发送进程需要命名接收进程。
    - 消息的格式
    - 进程的同步方式
    - 通信链路
+     1. 单向通信链路：只允许发送进程想接收进程发送消息，或相反；
+     2. 双向通信链路：允许双向收发消息。
 
 2. 信箱通信
 
@@ -610,22 +845,22 @@
      - 公用邮箱
      - 共享邮箱
 
-### 直接消息传递系统实例
+### 2.6.3 直接消息传递系统实例
 
 1. 消息缓冲队列通信机制中的数据结构
 
    ```c
    type struct message_buffer {
-   	int sender;									 // 发送者进程标识符
-     int size;									   // 消息长度
-     char *text;									 // 消息正文
+   	int sender;               // 发送者进程标识符
+     int size;                    // 消息长度
+     char *text;                  // 消息正文
      struct message_buffer *next; // 指向下一个消息缓冲区的指针
    }
    type struct processcontrol_block {
    	...
-     struct message_buffer *mq;	// 消息队列队首指针
-     semaphore mutex;						// 消息队列互斥信号量
-     semaphore sm;								// 消息队列资源信号量
+     struct message_buffer *mq;   // 消息队列队首指针
+     semaphore mutex;             // 消息队列互斥信号量
+     semaphore sm;                // 消息队列资源信号量
      ...
    }PCB;
    ```
@@ -634,8 +869,12 @@
 
    ![2_17](res/2_17.png)
 
+   *消息缓冲通信*
+
+   发送原语描述：
+
    ```c
-   void send(receiver, a) {
+   void send(receiver, a) { // receiver为接收进程标识符，a为发送区首址；
    	getbuf(a.size, i);
      copy(i.sender, a.sender);
      i.size = a.size;
