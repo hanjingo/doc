@@ -333,8 +333,9 @@ int main
 |$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
 |$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|`$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$`|
 |$\mathbb{ABCdef}$|`$\mathbb{ABCdef}$`|
-|$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$|`$x \pm y=z$, $x \mp y=z$, $x \times y=z$, $x \cdot y=z$, $x \ast y=z$, $x \div y=z$, $x/y=z$, $x \quad y$`|
-|$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$, $x \ll y$, $x \gg y$|`$x+y \geq z$, $x+y \leq z$, $x+y \neq z$, $x+y \approx z$, $x+y \equiv z$, $x \leqslant y$, $x \geqslant y$, $x + y < z$, $x + y > z$, $x \ll y$, $x \gg y$`|
+|Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ|`Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ`|
+|$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$|`$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$`|
+|$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$|`$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$`|
 |$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
 |$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
 |$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$|`$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$`|
@@ -528,7 +529,7 @@ $$
 ```markdown
 $$
 \begin{array}{c|lcr}
-n & \text{Left} & \text{Center} & \text{Right} \\
+n & \text{左对齐} & \text{居中对齐} & \text{右对齐} \\
 \hline
 1 & 0.24 & 1 & 125 \\
 2 & -1 & 189 & -8 \\
@@ -539,7 +540,7 @@ $$
 
 $$
 \begin{array}{c|lcr}
-n & \text{Left} & \text{Center} & \text{Right} \\
+n & \text{左对齐} & \text{居中对齐} & \text{右对齐} \\
 \hline
 1 & 0.24 & 1 & 125 \\
 2 & -1 & 189 & -8 \\
