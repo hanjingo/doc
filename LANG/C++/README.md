@@ -20,7 +20,6 @@
 
 ## Qt
 
-- [环境搭建](qt_env.md)
 - [信号槽](qt_signals_slots.md)
 - [模块](qt_module.md)
 - [元对象系统](qt_obj.md)
