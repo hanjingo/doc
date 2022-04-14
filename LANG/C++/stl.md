@@ -763,6 +763,16 @@ int main()
 
 ### map
 
+```c++
+template <class _Key, class _Tp, class _Compare, class _Alloc>
+class map {
+private:
+  typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
+  _Rep_type _M_t;	// 底层实现为 RB-tree
+  ...
+}
+```
+
 |成员函数|复杂度|说明/示意图/代码|
 |:--|:--|---|
 |at|$O(log n)$|返回拥有等于`key`的关键的元素被映射值的引用，若无这种元素，则抛出`std::out_of_range`类型异常。|
@@ -796,60 +806,96 @@ int main()
 
 int main()
 {
-	std::map<int, std::string> m1{ {1, "one"}, {2, "two"} };
-	std::map<int, std::string> m2{ std::make_pair(1, "one"), std::make_pair(2, "two")};
-	std::map<int, std::string> m3{ m1 };
-	std::map<int, std::string> m4{ std::begin(m1), std::end(m1) };
+	std::map<int, std::string> m1{ {1, "one"}, 
+                                  {2, "two"} };    // 根据初始化列表构造
+	std::map<int, std::string> m2{ 
+        std::make_pair(1, "one"), 
+        std::make_pair(2, "two")};                 // 根据初始化列表构造
+	std::map<int, std::string> m3{ m1 };           // 构造一个map的副本
+	std::map<int, std::string> m4{ std::begin(m1), 
+                                   std::end(m1) }; // 构造指定范围的map
 
-	std::string ret1 = m1.at(1);
-	
-	std::map<int, std::string>::iterator ret2 = m1.begin();
+	std::string ret1 = m1.at(1);// ret1: one
 
-	m3.clear();
+	std::map<int, std::string>::iterator ret2 = 
+        m1.begin();             // {ret2->first, ret2->second}: {1, one}
 
-	size_t ret3 = m1.count(1);
+	m3.clear();                 // m3: {}
 
-	std::pair<std::map<int, std::string>::iterator, bool> ret4 = m1.emplace(3, "three");
+	size_t ret3 = m1.count(1);  // ret3: 1
 
-	std::map<int, std::string>::iterator ret5 = m1.emplace_hint(m1.begin(), 4, "four");
+	std::pair<std::map<int, std::string>::iterator, bool> ret4 = 
+     m1.emplace(3, "three");    // {
+                                //   {
+                                //     (ret4.first)->first, : 3
+                                //     (ret4.first)->second : three
+                                //   },
+                                //   ret4.second : true
+                                // }
 
-	bool ret6 = m3.empty();
-	
-	std::map<int, std::string>::iterator ret7 = m1.end();
+	std::map<int, std::string>::iterator ret5 = m1.emplace_hint(
+        m1.begin(), 4, "four"); // {ret5->first, ret5->second}: {4, four}
 
-	std::pair<std::map<int, std::string>::iterator, std::map<int, std::string>::iterator> ret8 
-        = m1.equal_range(1);
-	
-	size_t ret9 = m1.erase(4);
+	bool ret6 = m3.empty();     // ret6: true
 
-	std::map<int, std::string>::iterator ret10 = m1.find(1);
+	std::map<int, std::string>::iterator ret7 = m1.end(); // ret7: NULL
+
+	std::pair<std::map<int, std::string>::iterator, 
+        std::map<int, std::string>::iterator> ret8 =
+        m1.equal_range(1);       // {
+                                 //   {ret8.first->first, 
+                                 //    ret8.first->second},  : {1, one}
+                                 //   {ret8.second->first, 
+                                 //    ret8.second->second} : {2, two}
+                                 // }
+
+	size_t ret9 = m1.erase(4);   // ret9: 1
+
+	std::map<int, std::string>::iterator ret10 = 
+        m1.find(1);              // {ret10->first, ret10->second}: {1, one}
 	
 	auto ret11 = m1.get_allocator();
 	
-	std::pair<std::map<int, std::string>::iterator, bool> ret12 
-        = m1.insert(std::make_pair(4, "four"));
-	m2.insert(std::begin(m1), std::end(m1));
+	std::pair<std::map<int, std::string>::iterator, bool> ret12 = 
+        m1.insert(std::make_pair(4, "four")); // m1: {
+                                              //       {1,one}, 
+                                              //       {2,two}, 
+                                              //       {3,three}, 
+                                              //       {4,four}
+                                              //     }
+	m2.insert(std::begin(m1), std::end(m1)); // m2: {
+                                              //       {1,one}, 
+                                              //       {2,two}, 
+                                              //       {3,three}, 
+                                              //       {4,four}
+                                              //     }
 
-	std::map<int, std::string>::key_compare ret13 = m1.key_comp(); 
+	std::map<int, std::string>::key_compare ret13 = 
+        m1.key_comp();            // ret13(1, 2): true
 
-	std::map<int, std::string>::iterator ret14 = m1.lower_bound(2);
+	std::map<int, std::string>::iterator ret14 = 
+        m1.lower_bound(2);        // {ret14->first, ret14->second}: {2, two}
 
-	size_t ret15 = m1.max_size();
+	size_t ret15 = m1.max_size(); // ret15: 25620...
 
-	std::string ret16 = m1[1];
+	std::string ret16 = m1[1];    // ret16: one
 
-	std::map<int, std::string>::reverse_iterator ret17 = m1.rbegin();
+	std::map<int, std::string>::reverse_iterator ret17 = 
+        m1.rbegin();              // {ret17->first, ret17->second}: {4, four}
 
-	std::map<int, std::string>::reverse_iterator ret18 = m1.rend();
+	std::map<int, std::string>::reverse_iterator ret18 = 
+        m1.rend();                // {ret18->first, ret18->second}: {4, }
+
+	size_t n = m1.size();         // n: 4
 	
-	size_t n = m1.size();
-	
-	m1.swap(m2);
+	m1.swap(m2); // m1: {{1,one}, {2,two}, {3,three}, {4,four}}
+                 // m2: {{1,one}, {2,two}, {3,three}, {4,four}}
 
-	std::map<int, std::string>::iterator ret19 = m1.upper_bound(3);
+	std::map<int, std::string>::iterator ret19 = 
+        m1.upper_bound(3);        // {ret19->first, ret19->second}: {4, four}
 
-	std::map<int, std::string>::value_compare cmp = m1.value_comp();
-	cmp({ 1, "one" }, {2, "tow"});
+	std::map<int, std::string>::value_compare ret20 = 
+        m1.value_comp();          // ret20({1, "one" }, {2, "tow"}): true
 }
 ```
 
@@ -1606,16 +1652,45 @@ int main()
 
 ### 堆操作
 
-| 算法      | 复杂度 | 描述/示意图/代码 |
-| --------- | ------ | ---------------- |
-| is_heap   |        |                  |
-| make_heap |        |                  |
-| push_heap |        |                  |
-| pop_heap  |        |                  |
-| sort_heap |        |                  |
+| 算法          | 复杂度       | 描述/示意图/代码                                         |
+| ------------- | ------------ | -------------------------------------------------------- |
+| is_heap       | $O(n)$       | 检查范围中的元素是否为最大堆。                           |
+| is_heap_until | $O(n)$       | 查找能成为最大堆的最大子范围，并返回最大堆的最末迭代器。 |
+| make_heap     | $O(log\ n)$  | 在范围中构造最大堆。                                     |
+| push_heap     | $O(log\ n)$  | 将一个元素加入到一个最大堆。                             |
+| pop_heap      | $O(2log\ n)$ | 从最大堆中移除最大元素。                                 |
+| sort_heap     | $O(2log\ n)$ | 将一个最大堆变成一个按升序排序的元素范围。               |
 
 ```c++
-TODO
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v{1, 2, 3, 4};
+
+    bool ret_ih = std::is_heap(v.begin(), v.end());    // ret_ih: 0
+
+    std::vector<int>::iterator ret_ihu = 
+        std::is_heap_until(v.begin(), v.end());        // *ret_ihu: 2
+
+    std::make_heap(v.begin(), v.end());                // v: [4,2,3,1]
+    std::make_heap(v.begin(), v.end(), 
+                   [](int a, int b){ return a > b; }); // v: [1,2,3,4]
+
+    std::push_heap(v.begin(), v.end());                // v: [4,1,3,2]
+    std::push_heap(v.begin(), v.end(), 
+                   [](int a, int b){ return a > b; }); // v: [4,1,3,2]
+
+    std::pop_heap(v.begin(), v.end());                 // v: [3,1,2,4]
+    std::pop_heap(v.begin(), v.end(), 
+                  [](int a, int b){ return a > b; });  // v: [1,4,2,3]
+
+    std::sort_heap(v.begin(), v.end());                // v: [2,3,4,1]
+    std::sort_heap(v.begin(), v.end(), 
+                   [](int a, int b){ return a < b; }); // v: [1,3,4,2]
+}
 ```
 
 ### 数值计算
@@ -1882,6 +1957,371 @@ int main()
 }
 ```
 
+---
+
+
+
+## I/O流
+
+![io_inheritance](res/stl/io_inheritance.png)
+
+### ios_base
+
+| 成员函数          | 描述                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| flags             | 设置当前格式化标志，并返回前一个格式化标志；<br>  - `std::ios_base::dec` 为整数I/O使用十进制底；<br>  - `std::ios_base::oct` 为整数I/O使用八进制底；<br>  - `std::ios_base::hex` 为整数I/O使用十六进制底；<br>  - `std::ios_base::basefield` 用于掩码运算（`dec|oct|hex`）；<br>  - `std::ios_base::left` 左校正（添加填充字符到右）；<br>  - `std::ios_base::right` 右校正（添加填充字符到左）；<br>  - `std::ios_base::internal` 内部校正（添加填充字符到内部选定点）<br>  - `std::ios_base::adjustfield` 用于掩码运算（`left|right|internal`）；<br>  - `std::ios_base::scientific` 用科学记数法生成浮点类型，若与fixed组合则用十六进制记法；<br>  - `std::ios_base::fixed` 用定点生成浮点类型，若与scientific组合则用十六进制记法；<br>  - `std::ios_base::floatfield` 用于掩码运算（`scientific|fixed`）；<br>  - `std::ios_base::boolalpha` 以字符数字格式插入并释出bool类型；<br>  - `std::ios_base::showbase` 生成为整数输出指示数字基底的前缀，货币I/O中要求现金指示器；<br>  - `std::ios_base::showpoint` 无条件为浮点数输出生成小数点字符；<br>  - `std::ios_base::showpos` 为非负数值输出生成+字符；<br>  - `std::ios_base::skipws` 在具体输入操作前跳过前导空白符；<br>  - `std::ios_base::unitbuf` 在每次输出操作后冲入输出；<br>  - `std::ios_base::uppercase` 在具体输出的输出操作中以大写等价替换小写字符。 |
+| getloc            | 返回当前与流关联的 locale。                                  |
+| imbue             | 设置本地环境。                                               |
+| init              | 初始化标准流对象。                                           |
+| iword             | 尽可能地分配或重置私有存储，并访问指定的下标的**long**类型元素。 |
+| precision         | 设置/返回当前浮点数精度。                                    |
+| pword             | 尽可能地分配或重置私有存储，并访问指定的下标的**void * **类型元素。 |
+| register_callback | 注册事件回调函数（调用时以注册顺序的逆序回调，类似于栈）；<br>回调函数格式：`(*void)(std::ios_base::event, std::ios_base&, int)` |
+| setf              | 设置特定格式标志及组合（同flags）。                          |
+| sync_with_stdio   | 设置C++和C的IO库是否可以互操作。                             |
+| unsetf            | 清除特定格式的标志。                                         |
+| width             | 管理/返回当前域的宽度。                                      |
+| xalloc            | 返回能安全用作 pword() 和 iword() 下标的程序范围内独有的整数。 |
+
+### basic_ios
+
+| 成员函数   | 描述                                                         |
+| ---------- | ------------------------------------------------------------ |
+| good       | 检查是否**未发生**错误。                                     |
+| eof        | 判断是否到达了文件末尾。                                     |
+| fail       | 判断是否发生了可恢复的错误。                                 |
+| bad        | 判断是否已发生不可恢复的错误。                               |
+| rdstate    | 返回当前错误状态。                                           |
+| setstate   | 设置错误状态标志；<br>  - `std::ios_base::goodbit`无错误；<br>  - `std::ios_base::badbit`不可恢复的流错误；<br>  - `std::ios_base::failbit`输入/输出操作失败（格式化或提取错误）；<br>  - `std::ios_base::eofbit`关联的输出序列已抵达文件尾； |
+| clear      | 修改状态标志。                                               |
+| copyfmt    | 复制另一个流的格式化信息（除rdstate和rdbuf外的所有内容）。   |
+| fill       | 设置填充字符，并返回前一个填充字符。                         |
+| exceptions | 获取和设置流的异常掩码（参考错误状态标识）。                 |
+| rdbuf      | 设置/返回关联的流缓冲。                                      |
+| tie        | 设置/返回绑定的联系流（输出流）。                            |
+| narrow     | 窄化指定字符（将其从`char_type`转换到`char`），成功即返回窄化后的值，若窄化失败则返回指定值。 |
+| widen      | 拓宽字符，转换字符到其在当前本地环境的等价物，并返回。       |
+| set_rdbuf  | 替换 `rdbuf` 而不清除其错误状态。                            |
+
+### istream
+
+| 成员函数 | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| gcount   | 最近的无格式输入操作所提取的字符数。                         |
+| get      | 从流中读并取走一个字符。                                     |
+| getline  | 一直读并取走字符，直到找到给定字符。                         |
+| ignore   | 读并取走并舍弃指定数量的字符，直至发现给定值（默认eof）。    |
+| read     | 读并取走指定数量的字符块。                                   |
+| readsome | 读并取走指定数量的已经可用的字符块。                         |
+| peek     | 仅读出但不取走1个字符。                                      |
+| putback  | 往输入流中退回一个字符。                                     |
+| seekg    | 设置输入位置指示器；<br>- `std::istream::beg`流的开始；<br>- `std::istream::end`流的结尾；<br>- `std::istream::cur`流位置指示器的当前位置； |
+| sync     | 同步数据到底层设备。                                         |
+| tellg    | 返回当前输入位置指示器。                                     |
+| unget    | 插销get操作。                                                |
+
+```c++
+#include <iostream>
+#include <sstream>
+
+void cb(std::ios_base::event evt, std::ios_base& str, int idx) {str.pword(idx);}
+
+int main()
+{
+    std::istringstream ss1{
+        "1234567\n"
+        "abcdefg\n"
+        "ABCDEFG"
+    };
+    std::istringstream ss2{"1234567"};
+    std::istream i1{ss1.rdbuf()};         // i1: [
+                                          //   1234567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+    std::istream i2{ss2.rdbuf()};         // i2: [1234567]
+
+    bool ret_b = i1.bad();                // ret_b: false
+
+    i1.clear();                           // i1: [
+                                          //   1234567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+
+    i1.copyfmt(i2);                       // i1: [
+                                          //   1234567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+
+    bool ret_eof = i1.eof();              // ret_eof: false
+
+    std::ios_base::iostate ret_exp = 
+        i1.exceptions();                  // ret_exp: NULL
+    i1.exceptions(ret_exp);               // ret_exp: NULL
+
+    bool ret_f = i1.fail();               // ret_f: false
+
+    char ret_fill = i1.fill();            // ret_fill: 
+    ret_fill = i1.fill('0');              // ret_fill: 
+    
+    std::ios_base::fmtflags ret_flg = 
+        i1.flags();                       // ret_flg(二进制): 1000000000010
+    ret_flg = 
+        i1.flags(std::ios_base::hex);     // ret_flg(二进制): 1000000000010
+    ret_flg = 
+        i1.flags(std::ios_base::skipws);  // ret_flg(二进制): 0000000001000
+
+    std::streamsize ret_gc = i1.gcount(); // ret_gc: 0
+
+    char ret_g1;
+    char ret_g2[2];
+    std::istringstream ret_g3{};
+    i1.get(ret_g1);                       // i1: [
+                                          //   234567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+    i1.get(ret_g2, 2);                    // i1: [
+                                          //   34567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+    i1.get(ret_g2, 3, '5');               // i1: [
+                                          //   567
+                                          //   abcdefg
+                                          //   ABCDEFG
+                                          // ]
+    i1.get(*ret_g3.rdbuf(), '6');         // i1: []
+    i1.get(*ret_g3.rdbuf());              // i1: []
+
+    char ret_gl[10];
+    i2.getline(ret_gl, 10);               // i2: []， ret_gl: [123456]
+    i2.getline(ret_gl, 10, 'C');          // i2: []， ret_gl: []
+
+    std::locale ret_lc = i1.getloc();
+
+    bool ret_g = i1.good();               // ret_g: false
+
+    i1.ignore(1);                         // i1: []
+    i1.ignore(2, 'E');                    // i1: []
+
+    i1.imbue(ret_lc);
+
+    long ret_iw = i1.iword(1);            // ret_iw: 0
+
+    char ret_c = i1.narrow('G', 'N');     // ret_c: G
+
+    char ret_r[7];
+    i1.read(ret_r, 1);                    // ret_r: 
+
+    char ret_rs[7];
+    i1.readsome(ret_rs, 7);               // ret_rs: 
+
+    i1.register_callback(cb, 1);
+
+    std::streambuf *ret_rd;
+    ret_rd = i1.rdbuf();
+    ret_rd = i1.rdbuf(ret_g3.rdbuf());
+
+    std::ios_base::iostate ret_rds = 
+        i1.rdstate();                     // ret_rds: 0
+
+    char ret_p = i1.peek();               // ret_p: 
+
+    std::streamsize ret_pr = i1.precision();
+    i1.precision(2);
+
+    i1.putback('G');                      // i1: []
+
+    void* ret_pw = i1.pword(1);
+
+    i1.seekg(0);
+    i1.seekg(1, std::istream::beg);
+
+    i2.setf(std::ios_base::dec);
+    i2.setf(std::ios_base::dec, std::ios_base::showpos);
+
+    // i2.set_rdbuf(i1.rdbuf());
+
+    i2.setstate(std::ios_base::goodbit);
+
+    i1.sync();
+
+    i1.sync_with_stdio(true);
+
+    std::streampos ret_tg = i1.tellg();
+
+    std::ostream *ret_tie;
+    ret_tie = i1.tie();
+    ret_tie = i1.tie(&std::cout);
+
+    i1.unget();
+
+    i1.unsetf(std::ios_base::dec);
+
+    char ret_wd = i1.widen('c');
+
+    std::streamsize ret_w;
+    ret_w = i1.width();
+    ret_w = i1.width(8);
+
+    int ret_x = i1.xalloc();
+}
+```
+
+### ostream
+
+| 成员函数 | 描述                     |
+| -------- | ------------------------ |
+| flush    | 与底层存储设备同步。     |
+| put      | 插入字符。               |
+| seekp    | 设置输出位置指示器。     |
+| tellp    | 返回当前输出位置指示器。 |
+| write    | 插入字符块。             |
+
+```c++
+#include <iostream>
+#include <sstream>
+
+void cb(std::ios_base::event evt, std::ios_base& str, int idx) {str.pword(idx);}
+
+int main()
+{
+    std::istringstream ss1{
+        "1234567\n"
+        "abcdefg\n"
+        "ABCDEFG"
+    };
+    std::ostream os1{ss1.rdbuf()};
+
+    bool ret_b = os1.bad(); // ret_b:
+
+    os1.clear(); // os1: 
+
+    os1.copyfmt(os1);
+
+    bool ret_eof = os1.eof();
+
+    std::ios_base::iostate ret_exp = os1.exceptions(); // ret_exp: NULL
+    os1.exceptions(ret_exp);                           // ret_exp: NULL
+
+    bool ret_f = os1.fail(); // ret_f: 
+
+    char ret_fill = os1.fill(); // ret_fill: 
+    ret_fill = os1.fill('0'); // ret_fill: 
+
+    std::ios_base::fmtflags ret_flg = os1.flags();
+    ret_flg = os1.flags(std::ios_base::hex);
+    ret_flg = os1.flags(std::ios_base::skipws);
+
+    os1.flush();
+
+    std::locale ret_lc = os1.getloc();
+
+    bool ret_g = os1.good();
+
+    os1.imbue(ret_lc);
+
+    long ret_iw = os1.iword(1);
+
+    char ret_n = os1.narrow('G', 'N'); // ret_n: 
+
+    std::streamsize ret_pr = os1.precision();
+    os1.precision(2);
+
+    void* ret_pw = os1.pword(1);
+
+    os1.register_callback(cb, 1);
+
+    std::streambuf *ret_rd;
+    ret_rd = os1.rdbuf();
+    ret_rd = os1.rdbuf(ss1.rdbuf());
+
+    std::ios_base::iostate ret_rds = os1.rdstate(); // ret_rds:
+
+    os1.seekp(1);
+    os1.seekp(0, std::ios_base::beg);
+
+    os1.setf(std::ios_base::dec);
+    os1.setf(std::ios_base::dec, std::ios_base::showpos);
+
+    // os1.set_rdbuf(os1.rdbuf());
+
+    os1.setstate(std::ios_base::goodbit);
+
+    os1.sync_with_stdio(true);
+
+    std::streampos ret_tp = os1.tellp();
+
+    std::ostream *ret_tie;
+    ret_tie = os1.tie();
+    ret_tie = os1.tie(&std::cout);
+
+    os1.unsetf(std::ios_base::dec);
+
+    char ret_wd = os1.widen('c');
+
+    std::streamsize ret_w;
+    ret_w = os1.width();
+    ret_w = os1.width(8);
+
+    char cs[5] = {'h', 'e', 'l', 'l', 'o'};
+    os1.write(cs, 5);
+
+    int ret_x = os1.xalloc();
+}
+```
+
+### ifstream
+
+| 成员函数 | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| close    | 关闭关联文件。                                               |
+| is_open  | 检查流是否有关联文件。                                       |
+| open     | 打开文件，并将它与流关联；<br>打开模式：<br>  - `std::ios::app` 每次写入前寻位到流结尾；<br>  - `std::ios::binary` 以二进制模式打开；<br>  - `std::ios::in` 以读打开；<br>  - `std::ios::out` 为写打开；<br>  - `std::ios::trunc` 在打开时舍弃流的内容；<br>  - `std::ios::ate` 打开后立即寻位到流结尾； |
+
+```c++
+#include <fstream>
+#include <iostream>
+
+int main()
+{
+    std::ifstream f1;
+    std::ifstream f2{std::move(f1)};
+
+    f1.open("007.txt", std::ios_base::in);
+    
+    bool ret_iop = f1.is_open();
+
+    f1.close();
+}
+```
+
+### ofstream
+
+| 成员函数 | 描述                       |
+| -------- | -------------------------- |
+| close    | 关闭关联文件。             |
+| is_open  | 检查流是否有关联文件。     |
+| open     | 打开文件，并将它与流关联。 |
+
+```c++
+#include <fstream>
+
+int main()
+{
+    std::ofstream of1{};
+    std::ofstream of2{std::move(of1)};
+
+    of1.open("/mnt/c/Work/src/test/007.txt", std::ios::out);
+
+    bool ret_iop = of1.is_open();
+
+    of1.close();
+}
+```
 
 ---
 
@@ -1895,198 +2335,52 @@ TODO
 
 
 
-## I/O流
-
-### 流迭代器
-
-![io_inheritance](res/stl/io_inheritance.png)
-
-- `istream_iterator`输入流迭代器
-
-  ```c++
-  #include <iostream>
-  #include <iterator>
-  
-  int main()
-  {
-      std::cout << "Enter some integers - enter Ctrl+Z to end.\n";
-      std::istream_iterator<int> iter{std::cin};
-      
-      std::istream_iterator<int> copy_iter{iter};
-      std::istream_iterator<int> end_iter;
-      
-      // Read some integers to sum
-      int sum{};
-      while (iter != end_iter)
-      {
-          sum += *iter++;
-      }
-      std::cout << "Total is " << sum << std::endl;
-      
-      std::cin.clear();
-      std::cin.ignore();
-      
-      // Read integers using the copy of the iterator
-      std::cout << "Enter some more integers - enter Ctrl+Z to end.\n";
-      int product{1};
-      while (true)
-      {
-          if (copy_iter == end_iter) break;
-          product *= *copy_iter++;
-      }
-      std::cout << "product is " << product << std::endl;
-  }
-  ```
-
-- `ostream_iterator` 输出迭代器
-
-  ```c++
-  #include <iostream>
-  #include <iterator>
-  #include <vector>
-  #include <algorithm>
-  #include <string>
-  using std::string;
-  
-  int main()
-  {
-      std::vector<string> words{"The", "quick", "brown", "fox", 
-                                "jumped", "over", "the", "lazy", "dog"};
-      
-      // Write the words container using conventional iterator notation
-      std::ostream_iterator<string> out_iter1{std::cout};
-      
-      for (const auto& word : words)
-      {
-          *out_iter1++ = word;
-          *out_iter1++ = " ";
-      }
-      *out_iter1++ = "\n";
-      
-      for (const auto& word : words)
-      {
-          (out_iter1 = word) = " ";
-      }
-      out_iter1 = "\n";
-      
-      // Write the words container using copy()
-      std::ostream_iterator<string> out_iter2{std::cout, " "};
-      std::copy(std::begin(words), std::end(words), out_iter2);
-      out_iter2 = "\n";
-  }
-  ```
-
-### 运算符重载
-
-```c++
-class Name
-{
-private:
-    std::string first_name{};
-    std::string second_name{};
-public:
-    Name() = default;
-    Name(const std::string& first, const std::string& second) : 
-        first_name{first}, second_name{second} {}
-    friend std::istream& operator>>(std::istream& in, Name& name);
-    friend std::ostream& operator<<(std::ostream& out, const Name& name);
-};
-
-inline std::istream& operator>>(std::istream& in, Name& name)
-{ return in >> name.first_name >> name.second_name; }
-
-inline std::ostream& operator<<(std::ostream& out, const Name& name)
-{ return out << name.first_name << ' ' << name.second_name; }
-
-// 使用运算符重载
-std::vector<Name> names{std::istream_iterator<Name>{std:cin},
-                        std::istream_iterator<Name>{}};
-std::copy(std::begin(names), std::end(names), 
-          std::ostream_iterator<Name>{std::cout, " "});
-```
-
-### 文件流
-
-```c++
-// 使用流迭代器对文件进行输入输出
-#include <iostream>
-#include <fstream>
-#include <iterator>
-#include <string>
-
-int main()
-{
-    // 读
-    string file_in{"007.txt"};
-    std::ifstream in{file_in};
-    if (!in)
-    {
-        std::cerr << file_in << " not open." << std::endl;
-        exit(1);
-    }
-    auto end_iter = std::istream_iterator<string>{};
-
-    string word;
-    std::cin >> word;
-    if (std::find(std::istream_iterator<string>(in), 
-                  end_iter, word) != end_iter)
-        std::cout << "Read: " << std::endl;
-    words.clear();
-    
-    // 写
-    string file_out{"007.txt"};
-    std::ofstream out{file_out, std::ios_base::out | std::ios_base::trunc};
-    std::copy(std::istream_iterator<string>{in}, std::istream_iterator<string>{},
-              std::ostream_iterator<string>{out, " "});
-    
-    in.clear();
-    in.close();
-    out.close();
-}
-```
-
-### 流缓冲迭代器
-
-```c++
-// 对文件流使用输出流缓冲区迭代器
-#include <iostream>
-#include <iterator>
-#include <fstream>
-#include <string>
-using std::string;
-
-int main()
-{
-    string file_name{"007.txt"};
-    std::ifstream file_in{file_name};
-    if (!file_in)
-    {
-        std::cerr << file_name << " not open." << std::endl;
-        exit(1);
-    }
-    string file_copy("007.txt");
-    std::ofstream file_out{file_copy, std::ios_base::out | std::ios_base::trunc};
-    
-    std::istreambuf_iterator<char> in{file_in};
-    std::istreambuf_iterator<char> end_in;
-    std::ostreambuf_iterator<char> out{file_out};
-    while (in != end_in)
-        out = *in++;
-    
-    std::cout << "File copy completed." << std::endl;
-    
-    file_in.close();
-    file_out.close();
-}
-```
-
----
-
-
-
 ## 时间
 
-TODO
+### clock
+
+命名空间`std::chrono`定义了3种时钟：
+
+- `system_clock` 当前真实时钟时间。
+- `steady_clock` 适合记录时间间隔的时钟。
+- `high_resolution_clock` 具有当前系统所能使用的最小时钟周期的时钟。
+
+```c++
+
+```
+
+### duration
+
+| 成员函数 | 描述                       |
+| -------- | -------------------------- |
+| count    | 返回计次的计数。           |
+| min      | 返回拥有最低可能值的时长。 |
+| max      | 返回拥有最大可能值的时长。 |
+| zero     | （静态）返回零长度时长。   |
+
+```c++
+#include <chrono>
+
+int main()
+{
+    std::chrono::duration<int> d1{60};
+    std::chrono::duration<int, std::milli> d2{15};
+    std::chrono::duration<double, std::ratio<60> > d3{60};
+    std::chrono::duration<double, std::ratio<1, 30> > d4{3.5};
+    std::chrono::milliseconds d5{1000}; 
+
+    int ret_ct = d1.count(); // ret_ct: 60
+
+    std::chrono::duration<int, std::milli> ret_zero = 
+        std::chrono::duration<int, std::milli>::zero(); // ret_zero.count: 0 
+
+    std::chrono::duration<int, std::milli> ret_min = 
+        d2.min(); // ret_min.count: -21474...
+
+    std::chrono::duration<int, std::milli> ret_max = 
+        d2.max(); // ret_max.count: 21474...
+}
+```
 
 ---
 

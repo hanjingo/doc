@@ -1,6 +1,6 @@
 # c++标准模板库编程实战
 
-[美]Ivor Horton.1ED
+[美]Ivor Horton .1ED
 
 * [第一章 STL介绍](chapter1.md)
 * [第二章 使用序列容器](chapter2.md)
