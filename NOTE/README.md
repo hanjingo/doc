@@ -31,7 +31,7 @@
 | ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
 | [Effective C++](EFFECTIVE_CPP/README.md)                     |      |                  | 想写好c++必读之作                                            |
 | [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers     | 想写好modern c++必读之作                                     |
-| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷             | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>gcc: git://gcc.gnu.org/git/gcc.git<br>mscv STL: https://github.com/microsoft/STL |
+| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷             | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
 | [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton  | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
 | [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       |      |                  |                                                              |
 | [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) |      |                  |                                                              |
@@ -54,7 +54,6 @@
 ## 在读
 
 - [CISSP官方学习指南](CISSP_CERTIFIED_INFORMATION_SYSTEMS_SECURITY_PROFESSIONAL_OFFICIAL_STUDY_GUIDE/README.md)
-- [COM技术内幕](INSIDE_COM/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [设计模式](DESIGN_PATTERN/README.md)
 - [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)

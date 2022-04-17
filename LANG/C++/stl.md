@@ -6,7 +6,96 @@
 
 ## 智能指针
 
-TODO
+### shared_ptr
+
+| 成员函数                  | 描述                                                 |
+| ------------------------- | ---------------------------------------------------- |
+| get                       | 返回存储的指针。                                     |
+| reset                     | 替换所管理的对象。                                   |
+| swap                      | 交换所管理的对象。                                   |
+| owner_before              | 提供基于拥有者的共享指针排序。                       |
+| operator =                | 对 `shared_ptr` 赋值。                               |
+| operator *<br>operator -> | 解引用存储的指针。                                   |
+| use_count                 | 返回 `shared_ptr` 所指对象的引用计数。               |
+| unique                    | 检查所管理对象是否仅由当前 `shared_ptr` 的实例管理。 |
+
+```c++
+#include <memory>
+#include <string>
+
+int main()
+{
+    std::shared_ptr<std::string> sp1;
+    std::shared_ptr<std::string> sp2{NULL};
+    std::shared_ptr<std::string> sp3{new std::string};
+    std::shared_ptr<std::string> sp4{new std::string, [](auto ptr){ delete ptr; }};
+    std::shared_ptr<std::string> sp5{sp3};
+    std::shared_ptr<std::string> sp6{sp3, new std::string};
+    std::shared_ptr<std::string> sp7{std::move(sp3), new std::string};
+    std::shared_ptr<std::string> sp8{std::move(new std::string)};
+    std::shared_ptr<std::string> sp9{std::move(sp6)};
+    
+    sp1 = std::make_shared<std::string>("abc");
+
+    std::string *ret_get = sp1.get();        // *ret_get: abc
+
+    sp1.reset();                             // *sp1: 
+    sp1.reset(new std::string("def"), 
+              [](auto p){ delete p; });      // *sp1: def
+
+    sp1.swap(sp3);                           // *sp1: , *sp3: def
+
+    bool ret_ob = sp1.owner_before(sp3);     // ret_ob: true
+    ret_ob = sp1.owner_before(std::weak_ptr<std::string>(
+        std::make_shared<std::string>()));   // ret_ob: true
+
+    std::shared_ptr<std::string> sp10 = sp3; // *sp10: def
+
+    std::string ret_op1 = *sp3;             // ret_op1: def
+    std::string ret_op2 = sp3->c_str();     // ret_op2: def
+
+    long ret_uc = sp1.use_count();          // ret_uc: 4
+
+    bool ret_u = sp1.unique();              // ret_u: false
+}
+```
+
+### weak_ptr
+
+| 成员函数     | 描述                                     |
+| ------------ | ---------------------------------------- |
+| expired      | 检查被引用的对象是否已删除。             |
+| lock         | 创建管理被引用的对象的`shared_ptr`。     |
+| owner_before | 提供弱指针的基于拥有者顺序。             |
+| reset        | 释放被管理对象的所有权。                 |
+| swap         | 交换被管理对象。                         |
+| use_count    | 返回管理该对象的 `shared_ptr` 对象数量。 |
+
+```c++
+#include <memory>
+#include <string>
+
+int main()
+{
+    std::weak_ptr<std::string> wp1{std::make_shared<std::string>("")};
+    std::weak_ptr<std::string> wp2;
+    std::weak_ptr<std::string> wp3{wp1};
+    std::weak_ptr<std::string> wp4(std::move(wp3));
+
+    bool ret_exp = wp1.expired();                     // ret_exp: true
+
+    std::shared_ptr<std::string> ret_lk = wp1.lock(); // ret_lk: 0
+
+    bool ret_ob = wp1.owner_before(wp2);              // ret_ob: false
+    ret_ob = wp1.owner_before(wp3.lock());            // ret_ob: false
+
+    wp1.reset();
+
+    wp1.swap(wp3);
+
+    long ret_uc = wp1.use_count();                    // ret_uc: 0
+}
+```
 
 ---
 
@@ -2327,27 +2416,7 @@ int main()
 
 
 
-## 随机数
-
-TODO
-
----
-
-
-
 ## 时间
-
-### clock
-
-命名空间`std::chrono`定义了3种时钟：
-
-- `system_clock` 当前真实时钟时间。
-- `steady_clock` 适合记录时间间隔的时钟。
-- `high_resolution_clock` 具有当前系统所能使用的最小时钟周期的时钟。
-
-```c++
-
-```
 
 ### duration
 
@@ -2361,24 +2430,93 @@ TODO
 ```c++
 #include <chrono>
 
+std::chrono::hours operator"" _h(unsigned long long n) { 
+    return std::chrono::hours(n); };
+std::chrono::seconds operator"" _s(unsigned long long n) { 
+    return std::chrono::seconds(n); };
+
 int main()
 {
     std::chrono::duration<int> d1{60};
-    std::chrono::duration<int, std::milli> d2{15};
+    std::chrono::duration<int, std::milli> d2{1500};
     std::chrono::duration<double, std::ratio<60> > d3{60};
     std::chrono::duration<double, std::ratio<1, 30> > d4{3.5};
     std::chrono::milliseconds d5{1000}; 
 
-    int ret_ct = d1.count(); // ret_ct: 60
+    int ret_ct = d1.count();                            // ret_ct: 60
 
     std::chrono::duration<int, std::milli> ret_zero = 
         std::chrono::duration<int, std::milli>::zero(); // ret_zero.count: 0 
 
     std::chrono::duration<int, std::milli> ret_min = 
-        d2.min(); // ret_min.count: -21474...
+        d2.min();                                       // ret_min.count: -21474...
 
     std::chrono::duration<int, std::milli> ret_max = 
-        d2.max(); // ret_max.count: 21474...
+        d2.max();                                       // ret_max.count: 21474...
+
+    std::chrono::seconds ret_sec = std::chrono::duration_cast<
+        std::chrono::seconds>(d2);                      // ret_sec.count(): 1
+
+    std::chrono::hours h = 5_h;                         // h.count(): 5
+    std::chrono::seconds s = 30_s;                      // s.count(): 30
+}
+```
+
+### time_point
+
+- `system_clock` 当前真实时钟时间。
+- `steady_clock` 适合记录时间间隔的时钟。
+- `high_resolution_clock` 具有当前系统所能使用的最小时钟周期的时钟。
+
+| 成员函数/变量     | 描述                                |
+| ----------------- | ----------------------------------- |
+| from_time_t       | （静态）转换`std::time_t`位时间点。 |
+| max               | 返回对应最小时长的时间点。          |
+| min               | 返回对应最大时长的时间点。          |
+| now               | （静态）返回当前时间点。            |
+| time_point_cast   | （静态）时间点转换。                |
+| time_sinc_epoch() | 从其时钟起点开始的时间点。          |
+| to_time_t         | （静态）转换时间点为`std::time_t`   |
+
+```c++
+#include <chrono>
+
+using SysTimePoint = std::chrono::time_point<std::chrono::system_clock>;
+using SteadyTimePoint = std::chrono::time_point<std::chrono::steady_clock>;
+using HTimePoint = std::chrono::time_point<std::chrono::high_resolution_clock>;
+
+int main()
+{
+    SysTimePoint tp1{std::chrono::minutes(1)};
+    SysTimePoint tp2{std::chrono::duration<int>(20)};
+    SteadyTimePoint tp3{std::chrono::minutes(1)};
+    SteadyTimePoint tp4{std::chrono::duration<int>(20)};
+    HTimePoint tp5{std::chrono::minutes(1)};
+    HTimePoint tp6{std::chrono::duration<int>(20)};
+
+    std::chrono::system_clock::duration ret_tse1 = tp1.time_since_epoch();
+    std::chrono::steady_clock::duration ret_tse2 = tp3.time_since_epoch();
+    std::chrono::high_resolution_clock::duration ret_tse3 = tp5.time_since_epoch();
+
+    std::chrono::duration<double> ret_dc1 = 
+        std::chrono::duration_cast<std::chrono::duration<double> >(
+            std::chrono::duration<int>(20)
+    );
+
+    std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds> tp_sec = 
+        std::chrono::time_point_cast<std::chrono::seconds>(tp1);
+
+    std::chrono::system_clock::time_point ret_now1 = 
+        std::chrono::system_clock::now();
+    std::chrono::steady_clock::time_point ret_now2 = 
+        std::chrono::steady_clock::now();
+    std::chrono::high_resolution_clock::time_point ret_now3 = 
+        std::chrono::high_resolution_clock::now();
+
+    std::time_t t1 = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::time_t t3 = std::chrono::high_resolution_clock::to_time_t(std::chrono::high_resolution_clock::now());
+
+    tm *tm4 = std::localtime(&t1);
 }
 ```
 

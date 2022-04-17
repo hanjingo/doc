@@ -140,6 +140,7 @@
 ### 图形库
 
 - 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
+- QT使用总结 [feiyangqingyun](https://github.com/feiyangqingyun)/**[qtkaifajingyan](https://github.com/feiyangqingyun/qtkaifajingyan)**
 - 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
 - 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
 - C语言版png图片处理库 [glennrp](https://github.com/glennrp)/**[libpng](https://github.com/glennrp/libpng)**

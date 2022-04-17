@@ -1081,7 +1081,7 @@ decompose `/ˌdiːkəmˈpəʊz/` 分解，腐烂
 
 decorate `/ˈdekəreɪt/` 装饰，粉刷，油漆，点缀
 
-decouple `/diːˈkʌpl/` 分离，隔断
+decouple `/diːˈkʌpl/` 分离，隔断，解耦
 
 debris `/ˈdebriː/` 残骸，碎片，废墟
 
@@ -3725,7 +3725,7 @@ sinuous `/ˈsɪnjuəs/` 弯曲的，蜿蜒的
 
 skeptic `/ˈskeptɪk/` 怀疑，怀疑者
 
-sketch `/sketʃ/` 素描，速写
+sketch `/sketʃ/` 素描，速写，框架
 
 skimp `/skɪmp/` 克扣，节省
 
@@ -4002,6 +4002,8 @@ surname `/ˈsɜːneɪm/` 姓，给...加姓
 surpass `/səˈpɑːs/` 超越，超过，胜过
 
 surplus `/ˈsɜːpləs/` 盈余，过剩，顺差
+
+surrogate `/ˈsɜːrəɡət/` 代理，代孕，代表，替代
 
 susceptible `/səˈseptəbl/` 易受感染的，过敏，敏感，易受影响的
 

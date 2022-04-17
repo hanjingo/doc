@@ -1068,7 +1068,7 @@ std::chrono::duration<double, ratio<1, 5> > tiny{5.5};
    
    int main()
    {
-   	using TimePoint = time_point<steady_clock>;
+     using TimePoint = time_point<steady_clock>;
      time_point<steady_clock> tp1{duration<int>(20)};
      time_point<system_clock> tp2{3min};
      time_point<high_resolution_clock> tp3{2h};
@@ -1162,7 +1162,7 @@ std::chrono::duration<double, ratio<1, 5> > tiny{5.5};
    
    int main()
    {
-   	auto start_time = steady_clock::now();
+    auto start_time = steady_clock::now();
      auto end_time = steady_clock::now();
      auto elapsed = end_time - start_time.time_since_epoch();
      std::cout << "Time to solve " << n_rows << " equations is ";
