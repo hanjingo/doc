@@ -6,6 +6,12 @@
 
 ## 已读
 
+### 数据结构与算法
+
+| 书名 | 版次 | 作者 | 摘要/评价 |
+| ---- | ---- | ---- | --------- |
+|      |      |      |           |
+
 ### 操作系统
 
 | 书名                                                      | 版次 | 作者                                 | 摘要/评价                                                |
@@ -43,6 +49,12 @@
 | ------------------------------------------------------------ | ---- | -------------- | ------------ |
 | [FFmpeg从入门到精通](FFMPEG_FROM_BEGINNER_TO_MASTER/README.md) | 1ED  | 刘岐<br>赵文杰 | FFmpeg入门书 |
 
+### 软件工程
+
+| 书名 | 版次 | 作者 | 摘要/评价 |
+| ---- | ---- | ---- | --------- |
+|      |      |      |           |
+
 ### 社科
 
 | 书名                      | 版次 | 作者 | 摘要/评价 |
@@ -53,6 +65,7 @@
 
 ## 在读
 
+- [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [CISSP官方学习指南](CISSP_CERTIFIED_INFORMATION_SYSTEMS_SECURITY_PROFESSIONAL_OFFICIAL_STUDY_GUIDE/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [设计模式](DESIGN_PATTERN/README.md)
@@ -75,15 +88,7 @@
 
 ## 计划读
 
-- [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
-- [计算几何](COMPUTATIONAL_GEOMETRY/README.md)
-- [unix网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
-- [linux多线程服务端编程](MUDUO/README.md)
-- [深入理解LINUX网络技术内幕](UNDERSTANDING_LINUX_NETWORK_INTERNALS/README.md)
-- [Tcp/IP详解 卷二](TCP_IP_ILLUSTRATED_V2/README.md)
-- [Tcp/IP详解 卷三](TCP_IP_ILLUSTRATED_V3/README.md)
-- [POSIX多线程程序设计](PROGRAMMING_WITH_POSIX_THREADS/README.md)
-- [Linux系统编程](LINUX_SYSTEM_PROGRAMMING/README.md)
 - [C++覆辙录]
 - [Window核心编程]
+- [C++Templates]
 
