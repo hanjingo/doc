@@ -853,7 +853,95 @@
 9. 代码示例
 
    ```c++
-   TODO
+   class DialogDirector {
+   public:
+       virtual ~DialogDirector();
+       virtual void ShowDialog();
+       virtual void WidgetChanged(Widget*) = 0;
+       
+   protected:
+       DialogDirector();
+       virtual void CreateWidgets() = 0;
+   };
+   
+   class Widget {
+   public:
+       Widget(DialogDirector*);
+       virtual void Changed();
+       virtual void HandleMouse(MouseEvent& event);
+       // ...
+       
+   private:
+       DialogDirector* _director;
+   };
+   
+   void Widget::Changed() {
+       _director->WidgetChanged(this);
+   }
+   
+   class ListBox : public Widget {
+   public:
+       ListBox(DialogDirector*);
+       virtual const char* GetSelection();
+       virtual void SetL:ist(List<char*>* listItems);
+       virtual void HandleMouse(MouseEvent& event);
+       // ...
+   };
+   
+   class EntryField : public Widget {
+   public:
+       EntryField(DialogDirector*);
+       virtual void SetText(const char* text);
+       virtual const char* GetText();
+       virtual void HandleMouse(MouseEvent& event);
+       // ...
+   };
+   
+   class Button : public Widget {
+   public:
+       Button(DialogDirector*);
+       virtual void SetText(const char* text);
+       virtual void HandleMouse(MouseEvent& event);
+       // ...
+   };
+   void Button::HandleMouse(MouseEvent& event) {
+       // ...
+       Changed();
+   }
+   
+   class FontDialogDirector : public DialogDirector {
+   public:
+       FontDialogDirector();
+       virtual ~FontDialogDirector();
+       virtual void WidgetChanged(Widget*);
+       
+   protected:
+       virtual void CreateWidgets();
+       
+   private:
+       Button* _ok;
+       Button* _cancel;
+       ListBox* _fontList;
+       EntryField* _fontName;
+   };
+   void FontDialogDirector::CreateWidgets() {
+       _ok = new Button(this);
+       _cancel = new Button(this);
+       _fontList = new ListBox(this);
+       _fontName = new EntryField(this);
+       // fill the listBox with the available font names
+       // assemble the widgets in the dialog
+   }
+   void FontDialogDirector::WidgetChanged(Widget* theChangedWidget) {
+       if (theChangedWidget == _fontList) {
+           _fontName->SetText(_fontList->GetSelection());
+       } else if (theChangedWidget == _ok) {
+           // apply font change and dismiss dialog
+           // ...
+       } else if (theChangedWidget == _cancel) {
+           // dismiss dialog
+       }
+   }
    ```
 
 10. 已知应用
@@ -922,7 +1010,77 @@
 10. 代码示例
 
     ```c++
-    TODO
+    class State;
+    
+    class Originator {
+    public:
+        Memento* CreateMemento();
+        void SetMemento(const Memento*);
+        // ...
+    private:
+        State* _state; // internal data structures
+        // ...
+    };
+    
+    class Memento {
+    public:
+        // narrow public interface
+        virtual ~Memento();
+    private:
+        // private members accessible only to Originator
+        friend class Originator;
+        Memento();
+        void SetState(State*);
+        State* GetState();
+        // ...
+    private:
+        State* _state;
+        // ...
+    };
+    
+    class Graphic;
+    // base class for graphical objects in the graphical editor
+    
+    class MoveCommand {
+    public:
+        MoveCommand(Graphic* target, const Point& delta);
+        void Execute();
+        void Unexecute();
+    private:
+        ConstraintSolverMemento* _state;
+        Point _delta;
+        Graphic* _target;
+    };
+    void MoveCommand::Unexecute() {
+        ConstraintSolver* solver = ConstraintSolver::Instance();
+        _target->Move(-_delta);
+        solver->SetMemento(_state); // restore solver state
+        solver->Solve();
+    }
+    
+    class ConstraintSolver {
+    public:
+        static ConstraintSolver* Instance();
+        
+        void Solve();
+        void AddConstraint(Graphic* startConnection, Graphic* endConnection);
+        void RemoveConstraint(Graphic* startConnection, Graphic* endConnection);
+        ConstraintSolverMemento* CreateMemeto();
+        void SetMemento(ConstraintSolverMemento*);
+    private:
+        // nontrivial state and operations for enforcing
+        // connectivity semantics
+    };
+    
+    class ConstraintSolverMemento {
+    public:
+        virtual ~ConstraintSolverMemento();
+    private:
+        friend class ConstraintSolver;
+        ConstraintSolverMemento();
+        
+        // private constraint solver state
+    };
     ```
 
 11. 已知应用
@@ -999,7 +1157,103 @@
 10. 代码示例
 
     ```c++
-    TODO
+    class Subject;
+    
+    class Observer {
+    public:
+        virtual ~Observer();
+        virtual void Update(Subject* theChangedSubject) = 0;
+    protected:
+        Observer();
+    };
+    
+    class Subject {
+    public:
+        virtual ~Subject();
+        
+        virtual void Attach(Observer*);
+        virtual void Detach(Observer*);
+        virtual void Notify();
+    protected:
+        Subject();
+    private:
+        List<Observer*> *_observers;
+    };
+    void Subject::Attach(Observer* o) {
+        _observers->Append(0);
+    }
+    void Subject::Detach(Observer* o) {
+        _observers->Remove(0);
+    }
+    void Subject::Notify() {
+        ListIterator<Observer*> i(_observers);
+        for (i.First(); !i.IsDone(); i.Next()) {
+            i.CurrentItem()->Update(this);
+        }
+    }
+    
+    class ClockTimer : public Subject {
+    public:
+        ClockTimer();
+        
+        virtual int GetHour();
+        virtual int GetMinute();
+        virtual int GetSecond();
+        
+        void Tick();
+    };
+    void ClockTimer::Tick() {
+        // update internal time-keeping state
+        // ...
+        Notify();
+    }
+    
+    class DigitalClock : public Widget, public Observer {
+    public:
+        DigitalClock(ClockTimer*);
+        virtual ~DigitalClock();
+        virtual void Update(Subject*);
+        // overrides Observer operation
+        
+        virtual void Draw();
+        // overrides Widget operation;
+        // defines how to draw the digital clock
+    private:
+        ClockTimer* _subject;
+    };
+    DigitalClock::DigitalClock(ClockTimer* s) {
+        _subject = s;
+        _subject->Attach(this);
+    }
+    DigitalClock::~DigitalClock() {
+        _subject->Detach(this);
+    }
+    void DigitalClock::Update(Subject* theChangedSubject) {
+        if (theChangedSubject == _subject) {
+            Draw();
+        }
+    }
+    void DigitalClock::Draw() {
+        // get the new values from the subject
+        
+        int hour = _subject->GetHour();
+        int minute = _subject->GetMinute();
+        // etc.
+        
+        // draw the digital clock
+    }
+    
+    class AnalogClock : public Widget, public Observer {
+    public:
+        AnalogClock(ClockTimer*);
+        virtual void Update(Subject*);
+        virtual void Draw();
+        // ...
+    };
+    
+    ClockTimer* timer = new ClockTimer;
+    AnalogClock* analogClock = new AnalogClock(timer);
+    DigitalClock* digitalClock = new DigitalClock(timer);
     ```
 
 11. 已知应用
@@ -1249,6 +1503,73 @@
 10. 代码示例
 
     ```c++
+    class Composition {
+    public:
+        Composition(Compositor*);
+        void Repair();
+    private:
+        Compositor* _compositor;
+        Component* _components;
+        int _componentCount;
+        int _lineWidth;
+        int* _lineBreaks;
+        int _lineCount;
+    };
+    
+    class Compositor {
+    public:
+        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[], 
+                            int componentCount, int lineWidth, int breaks[]) = 0;
+    protected:
+        Compositor();
+    };
+    void Composition::Repair() {
+        Coord* natural;
+        Coord* stretchability;
+        Coord* shrinkability;
+        int componentCount;
+        int* breaks;
+        
+        // prepare the arrays with the desired component sizes
+        // ...
+        
+        // determine where the breaks are:
+        int breakCount;
+        breakCount = _compositor->Compose(
+        	natural, stretchability, shrinkability,
+            componentCount, _lineWidth, breaks);
+        
+        // lay out components according to breaks
+        // ...
+    }
+    
+    class SimpleCompositor : public Compositor {
+    public:
+        SimpleCompositor();
+        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
+                            int componentCount, int lineWidth, int breaks[]);
+        // ...
+    };
+    
+    class TeXCompositor : public Compositor {
+    public:
+        TeXCompositor();
+        virtual int COmpose(Coord natural[], Coord stretch[], Coord shrink[], 
+                            int componentCount, int lineWidth, int breaks[]);
+        // ...
+    };
+    
+    class ArrayCompositor : public Compositor {
+    public:
+        ArrayCompositor(int interval);
+        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
+                            int componentCount, int lineWidth, int breaks[]);
+        // ...
+    };
+    
+    Composition* quick = new Composition(new SimpleCompositor);
+    Composition* slick = new Composition(new TeXCompositor);
+    Composition* iconic = new Composition(new ArrayCompositor(100));
     ```
 
 11. 已知应用
@@ -1376,7 +1697,77 @@
 9. 代码示例
 
    ```c++
-   TODO
+   class Equipment {
+   public:
+       virtual ~Equipment();
+       const char* Name() { return _name; }
+       virtual Watt Power();
+       virtual Currency NetPrice();
+       virtual Currency DiscountPrice();
+       virtual void Accept(EquipmentVisitor&);
+   protected:
+       Equipment(const char*);
+   private:
+       const char* _name;
+   };
+   
+   class EquipmentVisitor {
+   public:
+       virtual ~EquipmentVisitor();
+       virtual void VisitFloppyDisk(FloppyDisk*);
+       virtual void VisitCard(Card*);
+       virtual void VisitChassis(Chassis*);
+       virtual void VIsitBus(Bus*);
+       
+       // and so on for other concrete subclasses of Equipment
+   protected:
+       EquipmentVisitor();
+   };
+   
+   class PricingVisitor : public EquipmentVisitor {
+   public:
+       PricingVisitor();
+       Currency& GetTotalPrice();
+       virtual void VisitFloppyDisk(FloppyDisk*);
+       virtual void VisitCard(Card*);
+       virtual void VisitChassis(Chassis*);
+       virtual void VisitBus(Bus*);
+       // ...
+   private:
+       Currency _total;
+   };
+   void PricingVisitor::VisitFloppyDisk(FloppyDisk* e) {
+       _total += e->NetPrice();
+   }
+   void PricingVisitor::VisitChassis(Chassis* e) {
+       _total += e->DiscountPrice();
+   }
+   
+   class InventoryVisitor : public EquipmentVisitor {
+   public:
+       InventoryVisitor();
+       Inventory& GetInventory();
+       virtual void VisitFloppyDisk(FloppyDisk*);
+       virtual void VisitCard(Card*);
+       virtual void VisitChassis(Chassis*);
+       virtual void VisitBus(Bus*);
+       // ...
+   private:
+       Inventory _inventory;
+   };
+   
+   void InventoryVisitor::VisitFloppyDisk(FloppyDisk* e) {
+       _inventory.Accumulate(e);
+   }
+   
+   void InventoryVisitor::VisitChassis(Chassis* e) {
+       _inventory.Accumulate(e);
+   }
+   
+   Equipment* component;
+   InventoryVisitor visitor;
+   component->Accept(visitor);
+   cout << "Inventory " << component->Name() << visitor.GetInventory();
    ```
 
 10. 已知应用

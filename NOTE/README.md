@@ -51,9 +51,9 @@
 
 ### 软件工程
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
+| 书名                                 | 版次 | 作者                                                         | 摘要/评价                      |
+| ------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------ |
+| [设计模式](DESIGN_PATTERN/README.md) | 1ED  | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides | 设计模式领域地圣经，推荐！！！ |
 
 ### 社科
 
@@ -68,7 +68,6 @@
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [CISSP官方学习指南](CISSP_CERTIFIED_INFORMATION_SYSTEMS_SECURITY_PROFESSIONAL_OFFICIAL_STUDY_GUIDE/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
-- [设计模式](DESIGN_PATTERN/README.md)
 - [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
