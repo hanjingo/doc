@@ -4,7 +4,6 @@
 - [BUG速查](BUG/README.md)
 - [数据库](DB/README.md)
 - [分布式系统](DCS/README.md)
-- [图形学](GRAPHICS/README.md)
 - [编程语言](LANG/README.md)
 - [数学](MATH/README.md)
 - [多媒体](MEDIA/README.md)
