@@ -1,6 +1,6 @@
 # Unix网络编程 卷一:套接字联网api
 
-[美]W.Richard Stevens, [美]Bill Fenner, [美]Andrew M. Rudoff  第三版
+[美]W.Richard Stevens, [美]Bill Fenner, [美]Andrew M Rudoff . 3th Edition
 
 - [第一章 简介和TCP/IP](chapter1.md)
 - [第二章 传输层：TCP,UDP和SCTP](chapter2.md)
