@@ -7,7 +7,7 @@
 - [第3章 表，栈和队列](chapter3.md)
 - [第4章 树](chapter4.md)
 - [第5章 散列](chapter5.md)
-- [第6章 优先队列(堆)]
+- [第6章 优先队列(堆)](chapter6.md)
 - [第7章 排序](chapter7.md)
 - [第8章 不相交集类]
 - [第9章 图论算法](chapter9.md)

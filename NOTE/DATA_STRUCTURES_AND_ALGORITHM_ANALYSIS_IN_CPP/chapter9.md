@@ -470,5 +470,231 @@ vector<string> getChainFromPrevMap(const map<string, string>& previous, const st
 
 *在每一步之后的Prim算法*
 
+![9_50](res/9_50.png)
+
+*在Prim算法中使用的表的初始状态*
+
+![9_51](res/9_51.png)
+
+*在$v_1$声明为已知（known）后的表*
+
+![9_52](res/9_52.png)
+
+*在$v_4$声明为已知后的表*
+
+![9_53](res/9_53.png)
+
+*在$v_2$和$v_3$先后声明为已知后的表*
+
+![9_54](res/9_54.png)
+
+*在$v_7$声明为已知后的表*
+
+![9_55](res/9_55.png)
+
+*在$v_6$和$v_5$选取后的表（Prim算法终止）*
+
+### 9.5.2 Kruskal算法
+
+连续地按照最小的权选择边，并且当所选的边不产生回路时就把它作为取定的边。
+
+![9_56](res/9_56.png)
+
+*Kruskal算法施于图G的过程*
+
+![9_57](res/9_57.png)
+
+*Kruskal算法是在处理一个森林 - 树的集合。开始的时候，存在$|V|$棵单节点树，而添加一边则将两棵树合并成一棵树。当算法终止的时候，就只有一棵树了，这棵树就是最小生成树。*
+
+Kruskal算法伪代码：
+
+```c++
+void Graph::kruskal()
+{
+    int edgesAccepted = 0;
+    DisjSet ds(NUM_VERTICES);
+    PriorityQueue<Edge> pq(getEdges());
+    Edge e;
+    Vertex u, v;
+    
+    while (edgesAccepted < NUM_VERTICES - 1)
+    {
+        pq.deleteMin(e);  // Edge e = (u, v)
+        SetType uset = ds.find(u);
+        SetType vset = ds.find(v);
+        if (uset != vset)
+        {
+            // Accept the edge
+            edgesAccepted++;
+            ds.unionSets(uset, vset);
+        }
+    }
+}
+```
+
+该算法的最坏情形运行时间为$O(|E|log|E|)$，它受堆操作控制。注意，由于$|E|=O(|V|^2)$，因此这个运行时间实际上是$O(|E|log|V|)$。在实践中，该算法要比这个时间界指示的时间快得多。
+
+
+
+## 9.6 深度优先搜索的应用
+
+深度优先搜索模板（伪代码）：
+
+```c++
+void Graph::dfs(Vertex v)
+{
+    v.visited = true;
+    for each Vertex w adjacent to v
+        if (!w.visited)
+            dfs(w);
+}
+```
+
+### 9.6.1 无向图
+
+![9_60](res/9_60.png)
+
+*一个无向图*
+
+![9_61](res/9_61.png)
+
+*`深度优先生成树（depth-first spanning tree）`步骤：树的根是A，是第一个被访问到的顶点。图中的每一条边(v, w)都出现在树上。如果处理(v, w)时发现w已被标记，并且处理(w, v)时发现v也被标记，那么我们就画一条虚线，并称之为`后向边(back edge)`，标识这条“边”实际上不是树的一部分。*
+
+### 9.6.2 双连通性
+
+一个连通的无向图中的任一顶点删除之后，剩下的图仍然连通，那么这样的无向连通图就称为`双连通的（biconnected）`。
+
+如果图不是双连通的，那么，将其删除后图不再连通的那些顶点叫做`割点(articulation point)`。
+
+![9_62](res/9_62.png)
+
+*具有割点C和D的图*
+
+![9_63](res/9_63.png)
+
+*深度优先搜索提供了一种找出连通图中所有割点的线性时间算法：从图中任一顶点开始，执行深度优先搜索并在顶点被访问时给它们编号。对于每一个顶点$v$，我们称其前序编号为$Num(v)$。然后，对于深度优先搜索生成树上的每一个顶点$v$，计算编号最低的顶点，我们称之为$Low(v)$，该点可从$v$开始通过树的零边或多条边，且可能还有一条后向边（以该序）达到。*
+
+![9_64](res/9_64.png)
+
+*从C开始深度优先搜索所得到的深度优先树*
+
+通过对深度优先生成树执行一次后序遍历有效地算出$Low$，根据$Low$地定义可知，$Low(v)$是以下三者中的最小者：
+
+- $Num(v)$；
+- 所有向右边$(v, w)$中地最低$Num(w)$；
+- 树地所有边$(v, w)$中地最低$Low(w)$。
+
+例，计算割点：
+
+```c++
+// 对顶点的Num赋值
+void Graph::assignNum(Vertex v)
+{
+    v.num = counter++;
+    v.visited = true;
+    for each Vertex w adjacent to v
+        if (!w.visited)
+        {
+            w.parent = v;
+            assignNum(w);
+        }
+}
+
+// 计算Low并检验其是否为割点的伪代码（忽略对根的检验）
+void Graph::assignLow(Vertex v)
+{
+    v.low = v.num;
+    for each Vertex w adjacent to v
+    {
+        if (w.num > v.num)
+        {
+            assignLow(w);
+            if (w.low >= v.num)
+                cout << v << " is an articulation point" << endl;
+            v.low = min(v.low, w.low);
+        }
+        else
+            if (v.parent != w)
+                v.low = min(v.low, w.num);
+    }
+}
+```
+
+### 9.6.3 欧拉回路
+
+![9_68](res/9_68.png)
+
+*三个图*
+
+例，使用“一笔画完”的方法，画上面的图：
+
+```++
+void Graph::findArt(Vertex v)
+{
+	v.visited = true;
+	v.low = v.num = counter++; // Rule 1
+	for each Vertex w adjacent to v
+	{
+		if (!w.visited) // Forward edge
+		{
+			w.parent = v;
+			findArt(w);
+			if (w.low >= v.num)
+				cout << v << " is an articulation point" << endl;
+			v.low = min(v.low, w.low); // Rule 3
+		}
+		else
+			if (v.parent != w) // Back edge
+				v.low = min(v.low, w.num); // Rule 2
+	}
+}
+```
+
+### 9.6.4 有向图
+
+![9_74](res/9_74.png)
+
+*一个有向图*
+
+![9_75](res/9_75.png)
+
+*对上图进行深度优先搜索*
+
+### 查找强分支
+
+![9_76](res/9_76.png)
+
+*通过对上面的有向图的后续遍历所编号的$G_r$*
+
+![9_77](res/9_77.png)
+
+*$G_r$的深度优先搜索 - 强分支为{G}, {H, I, J}, {B, A, C, F}, {D}, {E}*
+
+
+
+## 9.7 NP完全性介绍
+
+### 9.7.1 难与易
+
+计算基不可能解决碰巧发生的每一个问题，这些”不可能“解出的问题称为`不可判定问题(undecidable problem)`。
+
+### 9.7.2 NP类
+
+`NP(非确定型多项式时间, nondeterministic polynomial-time)`
+
+### 9.7.3 NP完全问题
+
+`NP完全(NP-complete)`问题有一个性质，即NP中的任一问题都能够`多项式地归约(polynomially reduced)`成NP完全问题。
+
+**旅行商问题** 给定一完全图$G=(V, E)$，其边的值以及整数$K$，是否存在一个访问所有顶点并且总值小于等于$K$的简单回路？
+
+![9_78](res/9_78.png)
+
+*哈密尔顿回路问题变换成旅行商问题*
+
+
+
+
+
 
 

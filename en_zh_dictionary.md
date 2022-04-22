@@ -3727,6 +3727,8 @@ skeptic `/ˈskeptɪk/` 怀疑，怀疑者
 
 sketch `/sketʃ/` 素描，速写，框架
 
+skew `/skjuː/` 歪曲，曲解，倾斜，扭曲
+
 skimp `/skɪmp/` 克扣，节省
 
 skyscraper `/ˈskaɪskreɪpə(r)/` 摩天大楼

@@ -112,6 +112,13 @@
 - Redis存盘工具 [ssdb](https://github.com/ideawu/ssdb)
 - 分布式存储 [minio](https://github.com/minio/minio)
 
+### 多媒体
+
+- 大名鼎鼎的 [FFmpeg](https://github.com/FFmpeg)/**[FFmpeg](https://github.com/FFmpeg/FFmpeg)**
+- 推流神器 [obsproject](https://github.com/obsproject)/**[obs-studio](https://github.com/obsproject/obs-studio)**
+- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
+- GO预言实现的视频下载工具 [annie](https://github.com/iawia002/annie)
+
 ### 游戏
 
 - 大名鼎鼎的skynet引擎 [cloudwu](https://github.com/cloudwu)/**[skynet](https://github.com/cloudwu/skynet)**
@@ -171,10 +178,8 @@
 
 - 局域网鼠标，键盘共享工具 [barrier](https://github.com/debauchee/barrier)
 - 翻墙工具 [V2ray](https://github.com/yanue/V2rayU)
-- GO预言实现的视频下载工具 [annie](https://github.com/iawia002/annie)
 - mac系统的安装程序 [HomeBrew](https://github.com/Homebrew/brew)
 - 远程登录程序 [frp](https://github.com/fatedier/frp)
-- Qt+FFmpeg实现的播放器 [wang-bin](https://github.com/wang-bin)/**[QtAV](https://github.com/wang-bin/QtAV)**
 - Qt写的Markdown编辑器，支持graphviz语法 [vnotex](https://github.com/vnotex)/**[vnote](https://github.com/vnotex/vnote)**
 
 ### 生物信息学
