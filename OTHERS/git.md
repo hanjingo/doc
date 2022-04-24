@@ -53,14 +53,17 @@ git init
 ### 设置代理与取消
 
 ```shell
-git config --global http.proxy 'x.x.x.x:x'
-git config --global https.proxy 'x.x.x.x:x'
+# 设置http/https代理
+git config --global http.proxy 'x.x.x.x:x' # x.x.x.x:x 这里填提供代理的 IP:port
+git config --global https.proxy 'x.x.x.x:x' # x.x.x.x:x 这里填提供代理的 IP:port
 
+# 取消http/https代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
+# 设置ssh代理（需要安装nc工具）
+echo -e 'Host github.com\n    User git\n    ProxyCommand nc -v -x 127.0.0.1:7890 %h %p\n' >> ~/.ssh/config # 127.0.0.1:7890这里修改为提供代理服务的IP:port
 ```
-
-
 
 ---
 
