@@ -15,6 +15,9 @@
   sudo apt-get install mysql-server mysql-client
   # 确认下
   ps -ef | grep mysql*
+  
+  # 安装开发环境
+  sudo apt-get install libmysqlclient-dev emma
   ```
 
 - 源码安装
@@ -81,8 +84,3 @@ ERROR 1819 (HY000): Your password does not satisfy the current policy requiremen
 ```sh
 service mysql start
 ```
-
-
-
-  
-

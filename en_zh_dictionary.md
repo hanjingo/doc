@@ -309,6 +309,8 @@ ascent `/əˈsent/` 上升，登高，上坡，提高，进步
 
 aspect `/ˈæspekt/`  外表，面貌，方面，层面，方位
 
+aspiration `/ˌæspəˈreɪʃn/` 抱负，渴望，志向，送气，吸液
+
 assault `/əˈsɔːlt/` 侵犯，袭击
 
 assessment `/əˈsesmənt/` 评估，估价，看法
