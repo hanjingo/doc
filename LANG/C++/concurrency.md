@@ -1,4 +1,4 @@
-# C++多线程
+# C++并发编程
 
 [TOC]
 
@@ -571,3 +571,8 @@ TODO
 
 
 
+## 参考
+
+[1] Anthony Williams . C++并发编程实战
+
+[2] [C++ Concurrency In Action](http://shouce.jb51.net/cpp_concurrency_in_action/)

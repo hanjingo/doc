@@ -573,6 +573,8 @@ cabinet `/ˈkæbɪnət/` 内阁，陈列柜
 
 cacti `/ˈkæktaɪ/` 仙人掌
 
+calibration `/ˌkælɪˈbreɪʃn/` 校准，刻度，标定
+
 calm `/kɑːm/` 平静，镇静，沉着
 
 campaign `/kæmˈpeɪn/` 政治运动，战役，领导运动
@@ -3115,15 +3117,15 @@ popcorn `/ˈpɒpkɔːn/` 爆米花
 
 porous `/ˈpɔːrəs/` 多孔的，透气的，可渗透的
 
+portend `/pɔːˈtend/` 预兆，预示，潜在，可能，电势，电位
+
 portion `/ˈpɔːʃ(ə)n/` 一部分
 
-portend `/pɔːˈtend/` 预兆，预示
+portrayal `/pɔːˈtreɪəl/` 画像，描写，描绘
 
 postage `/ˈpəʊstɪdʒ/` 邮费，邮资
 
 postoperative `/ˌpəʊst ˈɒpərətɪv/` 术后的
-
-portrayal `/pɔːˈtreɪəl/` 画像，描写，描绘
 
 postwar `/ˌpəʊstˈwɔː/` 战后的
 
