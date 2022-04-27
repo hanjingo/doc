@@ -535,5 +535,250 @@ double eval(int n)
 
 ### 10.3.2 矩阵乘法的顺序安排
 
+设给定4个矩阵$A, B, C和D$，$A$的大小$=50 \times 10$，$B$的大小$=10 \times 40$，$C$的大小$=40 \times 30$，$D$的大小$=30 \times 5$。在4个矩阵的情况下，通过穷举搜索求解这个问题，我们对每种情况计算如下：
 
+- $(A((BC)D))：$需要$16000$次乘法。
+- $(A(B(CD)))：$需要$10500$次乘法。
+- $((AB)(CD))：$需要$36000$次乘法。
+- $(((AB)C)D)：$需要$87500$次乘法。
+- $((A(BC))D)：$需要$34500$次乘法。
+
+假设定义$T(N)$是顺序的个数，此时，$T(1) = T(2) = 1, T(3) = 2, T(4) = 5$。一般地：$T(N) = \sum_{i=1}^{N-1} T(i)T(N-i)$。
+
+如果定义$M_{Left, Right}$为最优排列顺序下所需要的乘法次数，若$Left < Right$，则：$M_{Left, Right} = \underset{Left \leqslant i < Right}{min} \{M_{Left, i} + M_{i+1, Right} + C_{Left - 1} C_i C_{Right} \}$
+
+这个方程意味着，如果有乘法$A_{Left} ... A_{Right}$的最优的乘法排列顺序，那么子问题$A_{Left} ... A_i$和$A_{i+1} ... A_{Right}$就不能次最优地执行。
+
+```c++
+// 找出矩阵乘法最优顺序的程序
+void optMatrix(const vector<int> &c, matrix<long> &m, matrix<int> &lastChange)
+{
+    int n = c.size() - 1;
+    for (int left = 1; left <= n; left++)
+        m[left][left] = 0;
+    for (int k = 1; k < n; k++) // k is right - left
+        for (int left = 1; left <= n - k; left++)
+        {
+            // For each position
+            int right = left + k;
+            m[left][right] = INFINITY;
+            for (int i = left; i < right; i++)
+            {
+                long thisCost = m[lseft][i] + m[i + 1][right] + 
+                                    c[left - 1] * c[i] * c[right];
+                if (thisCost < m[left][right]) // Update min
+                {
+                    m[left][right] = thisCost;
+                    lastChange[left][right] = i;
+                }
+            }
+        }
+}
+```
+
+### 10.3.3 最优二叉查找树
+
+![10_47](res/10_47.png)
+
+*最优二叉查找树问题的样本输入*
+
+![10_48](res/10_48.png)
+
+*对于上表中数据的3棵可能的二叉查找树*
+
+![10_49](res/10_49.png)
+
+*3棵二叉查找树的比较*
+
+![10_50](res/10_50.png)
+
+*最优二叉查找树的构造*
+
+两棵子树的每个结点从$w_i$开始都比从它们对应的根开始深一层，于是得到公式：
+$$
+\begin{equation}\begin{split} 
+C_{Left, Right} &= \underset{Left \leqslant i \leqslant Right}{min}\{P_i + C_{Left, i-1} + C_{i+1, Right} + \sum_{j=Left}^{i-1} P_j + \sum_{j=i+1}^{Right} P_j\} \\ 
+& = \underset{Left \leqslant i \leqslant Right}{min} \{C_{Left, i-1} + C_{i+1, Right} + \sum_{j=Left}^{Right} P_j\}
+\end{split}\end{equation}
+$$
+
+从这个公式可以直接编写一个程序来计算最优二叉查找树的开销。
+
+![10_51](res/10_51.png)
+
+*对于样本输入的最优二叉查找树的计算*
+
+![10_52](res/10_52.png)
+
+*对$am..if$的表项$(1.21, and)$的计算*
+
+### 10.3.4 所有点对最短路径
+
+Dijkstra算法提供了动态规划算法的想法：依序选择这些顶点。将$D_{k, i, j}$定义为从$v_i$到$v_j$只使用$v_, v_2, ..., v_k$作为中间顶点的最短路径的权。根据这个定义，$D_{0, i, j} = c_{i, j}$，其中若$(v_i, v_j)$不是该图的边则$c_{i, j}$是$\infty$。再有，根据定义，$D_{|V|, i, j}$是图中从$v_i$到$v_j$的最短路径。
+
+```c++
+// 所有点对最短路径
+void allPairs(const matrix<int> &a, matrix<int> &d, matrix<int> &path)
+{
+    int n = a.numrows();
+    
+    // Initialize d and path
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            d[i][j] = a[i][j];
+            path[i][j] = NOT_A_VERTEX;
+        }
+    
+    for (int k = 0; k < n; k++)
+        // Consider each vertex as an intermediate
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (d[i][k] + d[k][j] < d[i][j])
+                {
+                    // Update shortest path
+                    d[i][j] = d[i][k] + d[k][j];
+                    path[i][j] = k;
+                }
+}
+```
+
+当$k > 0$时可以给$D_{k, i, j}$写一个简单公式。从$v_i$到$v_j$只使用$v_1, v_2, ..., v_k$作为中间顶点的最短路径或者是根本不使用$v_k$作为中间顶点的最短路径，或者是由两条路径$v_i \rightarrow v_k$和$v_k \rightarrow v_j$合并而成的最短路径，其中每条路径只使用前$k-1$个顶点作为中间顶点。于是有公式：$D_{k, i, j} = min\{D_{k-1, i, j}, D_{k-1, i, k} + D_{k-1, k, j}\}$。时间需求还是$O(|V|^3)$。
+
+```c++
+// 所有点对最短路径
+void allPairs(const matrix<int> &a, matrix<int> &d, matrix<int> &path)
+{
+    int n = a.numrows();
+    
+    // Initialize d and path
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+        {
+            d[i][j] = a[i][j];
+            path[i][j] = NOT_A_VERTEX;
+        }
+    
+    for (int k = 0; k < n; k++)
+        // Consider each vertex as an intermediate
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (d[i][k] + d[k][j] < d[i][j])
+                {
+                    // Update shortest path
+                    d[i][j] = d[i][k] + d[k][j];
+                    path[i][j] = k;
+                }
+}
+```
+
+
+
+## 10.4 随机化算法
+
+### 10.4.1 随机数生成器
+
+`线性同余生成器`数$x_1, x_2, ...$的生成满足$x_{i+1} = Ax_i\ mod\ M$。
+
+```c++
+// 不能正常工作的随机数生成器
+static const int A = 48271;
+static const int M = 2147483647;
+
+class Random
+{
+public:
+    explicit Random(int initialValue = 1);
+    int randomInt();
+    double random0_1();
+    int randomInt(int low, int high);
+    
+private:
+    int state;
+};
+
+Random::Random(int initialValue)
+{
+    if (initialValue < 0)
+        initialValue += M;
+    
+    state = initialValue;
+    if (state == 0)
+        state = 1;
+}
+
+int Random::randomInt()
+{
+    return state = (A * state) % M;
+}
+
+double Random::random)_1()
+{
+    return (double)randomInt() / M;
+}
+```
+
+定义$Q$和$R$分别为$M/A$的商和余数，有：
+$$
+\begin{equation}\begin{split}
+x_{i+1} &= Ax_i mod\ M = Ax_i - M \lfloor \frac{Ax_i}{M} \rfloor\\
+&= Ax_i - M\lfloor \frac{x_i}{Q} \rfloor + M \lfloor \frac{x_i}{Q} \rfloor - M\lfloor \frac{Ax_i}{M} \rfloor\\
+&= Ax_i - M\lfloor \frac{x_i}{Q} \rfloor + M(\lfloor \frac{x_i}{Q} \rfloor - \lfloor \frac{Ax_i}{M} \rfloor)
+\end{split}\end{equation}
+$$
+
+由于$x_i = Q\lfloor \frac{x_i}{Q} \rfloor + x_i\ mod\ Q$，因此可以代入到右边的第一项$Ax_i$并得到：
+$$
+\begin{equation}\begin{split}
+x_{i+1} &= A(Q\lfloor \frac{x_i}{Q} \rfloor + x_i\ mod\ Q) - M\lfloor \frac{x_i}{Q} \rfloor + M(\lfloor \frac{x_i}{Q} \rfloor - \lfloor \frac{Ax_i}{M} \rfloor)\\
+&= (AQ-M)\lfloor \frac{x_i}{Q} \rfloor + A(x_i\ mod\ Q) + M(\lfloor \frac{x_i}{Q} \rfloor - \lfloor \frac{Ax_i}{M} \rfloor)
+\end{split}\end{equation}
+$$
+
+由于$M = AQ + R$，因此$AQ - M = -R$。于是得到：
+
+$x_{i+1} = A(x_i\ mod\ Q) - R\lfloor \frac{x_i}{Q} \rfloor + M(\lfloor \frac{x_i}{Q} \rfloor - \lfloor \frac{Ax_i}{M} \rfloor)$
+
+项$\delta(x_i) = \lfloor \frac{x_i}{Q} \rfloor - \lfloor \frac{Ax_i}{M} \rfloor$或者是0，或者是1，因为两项都是整数而它们的差在0和1之间。因此：$x_{i+1} = A(x_i\ mod\ Q) - R\lfloor \frac{x_i}{Q} \rfloor + M\delta(x_i)$。
+
+```c++
+// 不溢出的随机数生成器
+static const int A = 48271;
+static const int M = 2147483647;
+static const int Q = M / A;
+static const int R = M % A;
+
+int Random::randomInt()
+{
+    int tmpState = A * (state % Q) - R * (state / Q);
+    if (tmpState >= 0)
+        state = tmpState;
+    else
+        state = tmpState + M;
+    
+    return state;
+}
+```
+
+### 10.4.2 跳跃表
+
+![10_56](res/10_56.png)
+
+*简单链表*
+
+![10_57](res/10_57.png)
+
+*带有到前面两个表元素的链的链表*
+
+![10_58](res/10_58.png)
+
+*带有到前面四个表元素的链的链表*
+
+![10_59](res/10_59.png)
+
+*带有到前面$2^i$个表元素的链的链表*
+
+![10_60](res/10_60.png)
+
+*一个跳跃表*
 
