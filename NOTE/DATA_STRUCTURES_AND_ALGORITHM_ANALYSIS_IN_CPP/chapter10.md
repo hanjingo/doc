@@ -782,3 +782,80 @@ int Random::randomInt()
 
 *一个跳跃表*
 
+![10_61](res/10_61.png)
+
+*插入前和插入后的跳跃表*
+
+### 10.4.3 素性测试
+
+**定理10.10(费马小定理)** 如果$P$是素数，且$0<A<P$，那么$A^{P-1} \equiv 1(mod P)$。
+
+**证明** 这个定理的证明可以在任一本有关数论的教科书中找到。
+
+**定理10.11** 如果$P$是素数且$0 < X < P$，那么$x^2 \equiv 1 (mod\ P)$仅有的解为$x = 1, p - 1$。
+
+**证明** $X^2 \equiv 1(mod\ P)$意味着$X^2 - 1 \equiv 0(mod\ P)$。这就是说，$(X - 1)(X + 1) \equiv 0(mod\ P)$。由于$P$是素数，$0 < X < P$，因此$P$必然整除$(X-1)$或者$(X + 1)$，由此推出定理。
+
+```c++
+// 一种概率素性测试算法（伪代码）
+HugeInt witness(const HugeInt &a, const HugeInt &i, const HugeInt &n)
+{
+    if (i == 0)
+        return 1;
+    
+    HugeInt x = witness(a, i / 2, n);
+    if (x == 0)
+        return 0;
+    
+    HugeInt y = (x * x) % n;
+    if (y == 1 && x != 1 && x != n - 1)
+        return 0;
+    
+    if (i % 2 != 0)
+        y = (a * y) % n;
+    
+    return y;
+}
+
+const int TRIALS = 5;
+
+bool isPrime(const HugeInt &n)
+{
+    Random r;
+    for (int counter = 0; counter < TRAILS; counter++)
+        if (witness(r.randomInt(2, (int)n - 2), n - 1, n) != 1)
+            return false;
+    return true;
+}
+```
+
+
+
+## 10.5 回溯算法
+
+### 10.5.1 公路收费点重建问题
+
+![10_63](res/10_63.png)
+
+*公路收费点重建问题的决策树*
+
+```c++
+// 公路收费点重建算法：驱动例程（伪代码）
+bool turnpike(vector<int> &x, DistSet d, int n)
+{
+    x[1] = 0;
+    d.deleteMax(x[n]);
+    d.deleteMax(x[n - 1]);
+    if (x[n] - x[n - 1] in d)
+    {
+        d.remove(x[n] - x[n - 1]);
+        return place(x, d, n, 2, n - 2);
+    }
+    else
+        return false;
+}
+```
+
+### 10.5.2 博弈
+
+TODO

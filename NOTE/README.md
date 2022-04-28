@@ -8,9 +8,9 @@
 
 ### 数据结构与算法
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
+| 书名                                                         | 版次 | 作者                 | 摘要/评价                      |
+| ------------------------------------------------------------ | ---- | -------------------- | ------------------------------ |
+| [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 3ED  | [美]Mark Allen Weiss | 可以作为<<算法导论>>的配套书。 |
 
 ### 操作系统
 
@@ -65,8 +65,7 @@
 
 ## 在读
 
-- [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md)
-- [unix网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)
+- [UNIX网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)
 - [UNIX环境高级编程](APUE/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
@@ -82,7 +81,7 @@
 - [国富论](THE_WEALTH_OF_NATIONS/README.md)
 - [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
 - [谷歌分布式系统相关论文](GOOGLE_DCS_DOC/README.md)
-- [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/READM.md)
+- [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/README.md)
 
 
 
