@@ -1,4 +1,4 @@
-# 如何写markdown
+# markdown手册
 
 [TOC]
 
@@ -16,10 +16,15 @@
 ```
 
 # 一级标题
+
 ## 二级标题
+
 ### 三级标题
+
 #### 四级标题
+
 ##### 五级标题
+
 ###### 六级标题
 
 
@@ -67,9 +72,13 @@ ___粗斜体___
 ```
 
 ***
+
 * * *
+
 ******
+
 - - -
+
 ----------
 
 
@@ -277,6 +286,7 @@ int main
 #include <iostream>
 int main
 </pre>
+
 ### 单元格
 
 ```markdown
@@ -320,37 +330,38 @@ int main
 
 
 
+
 ## 公式
 
 ### 一些常用的数学公式
 
-|效果|源码|
-|:--|---|
-|$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$|`$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$`|
-|$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$|`$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$`|
-|$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$|`$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$`|
-|$\forall$, $\exists$, $\because$, $\therefore$, $\neg$|`$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`|
-|$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$|`$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$`|
-|$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$|`$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$`|
-|$\mathbb{ABCdef}$|`$\mathbb{ABCdef}$`|
-|Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ|`Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ`|
-|$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$|`$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$`|
-|$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$|`$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$`|
-|$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$|`$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$`|
-|$\lfloor x \rfloor$，$\lceil x \rceil$|`$\lfloor x \rfloor$，$\lceil x \rceil$`|
-|$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$|`$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$`|
-|$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$|`$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$`|
-|$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$|`$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$`|
-|$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$|`$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$`|
-|$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$|`$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$`|
-|$\ln15$, $\log_2 10$, $\lg7$|`$\ln15$, $\log_2 10$, $\lg7$`|
-|$a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$|`$a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$`|
-|$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$|`$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$`|
-|$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$|`$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`|
-|$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$|`$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`|
-|$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$|`$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`|
-|${n+1 \choose k}={n \choose k}+{n \choose k-1}$|`${n+1 \choose k}={n \choose k}+{n \choose k-1}$`|
-|$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $|`$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $`|
+| 效果                                                         | 源码                                                         |
+| :----------------------------------------------------------- | ------------------------------------------------------------ |
+| $\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$ | `$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$` |
+| $\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$ | `$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$` |
+| $\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$ | `$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$` |
+| $\forall$, $\exists$, $\because$, $\therefore$, $\neg$       | `$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`     |
+| $x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$ | `$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$` |
+| $x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$ | `$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$` |
+| $\mathbb{ABCdef}$                                            | `$\mathbb{ABCdef}$`                                          |
+| Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ | `Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ` |
+| $x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$ | `$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$` |
+| $x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$ | `$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$` |
+| $\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$ | `$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$` |
+| $\lfloor x \rfloor$，$\lceil x \rceil$                       | `$\lfloor x \rfloor$，$\lceil x \rceil$`                     |
+| $\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$ | `$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$` |
+| $\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$ | `$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$` |
+| $\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$ | `$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$` |
+| $x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$ | `$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$` |
+| $\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$                 | `$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$`               |
+| $\ln15$, $\log_2 10$, $\lg7$                                 | `$\ln15$, $\log_2 10$, $\lg7$`                               |
+| $a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$   | `$a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$` |
+| $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$ | `$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$` |
+| $\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$                    | `$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`                  |
+| $\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$                | `$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`              |
+| $\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$         | `$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`       |
+| ${n+1 \choose k}={n \choose k}+{n \choose k-1}$              | `${n+1 \choose k}={n \choose k}+{n \choose k-1}$`            |
+| $ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $ | `$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $` |
 
 ### 矩阵
 
@@ -600,34 +611,42 @@ $$
 基本语法:
 
 - graph 指定流程图方向：
+
   - `graph LR` 从左到右(left right)
   - `graph TD` 从上到下(top bottom)
   - `graph RL` 从右到左(right left)
   - `graph BT` 从下到上(bottom top)
+
 - 元素的形状定义
+
   - `id[描述]` 以直角矩形绘制
   - `id(描述)` 以圆角矩形绘制
   - `id{描述}` 以菱形绘制
   - `id>描述]` 以不对称矩形绘制
   - `id((描述))` 以圆形绘制
+
 - 线条定义
-	- `A-->B` 带箭头指向
-	- `A---B` 不带箭头连接
-	- `A-.-B` 虚线连接
-	- `A-.->B` 虚线指向
-	- `A==>B` 加粗箭头指向
-	- `A--描述---B` 不带箭头指向并在线段中间添加描述
-	- `A--描述-->B` 带描述的箭头指向
-	- `A-.描述.->B` 带描述的虚线连指向
-	- `A==描述==>B` 带描述的加粗箭头指向
+
+  - `A-->B` 带箭头指向
+  - `A---B` 不带箭头连接
+  - `A-.-B` 虚线连接
+  - `A-.->B` 虚线指向
+  - `A==>B` 加粗箭头指向
+  - `A--描述---B` 不带箭头指向并在线段中间添加描述
+  - `A--描述-->B` 带描述的箭头指向
+  - `A-.描述.->B` 带描述的虚线连指向
+  - `A==描述==>B` 带描述的加粗箭头指向
+
 - 子流程图定义
-	```sh
-	subgraph title
-		graph direction
-	end
-	```
+
+  ```sh
+  subgraph title
+  	graph direction
+  end
+  ```
 
 例:
+
 ```markdown
 ```mermaid
 graph LR
@@ -654,7 +673,9 @@ graph LR
 	F(吃饭)-->G(吃菜)-->H(夹菜)
 	end
 ```
+
 ### 标准流程图
+
 基本语法：
 
 - 定义模块 
@@ -667,7 +688,7 @@ graph LR
   - subroutine 子流程，以左右带空白框的矩形绘制
   - inputoutput 输入输出，以平行四边形绘制
   - end 流程结束，以圆角矩形绘制
-  
+
 - 定义模块间的流向：
 
   - `模块1 id->模块2 id` ：一般的箭头指向
@@ -928,7 +949,7 @@ gantt
 - 类图的画法
   1. 抽象类的类名以及抽象方法的名字都用斜体字表示
   2. 接口在类图中的第一层顶端用构造型 `<<interface>>`表示，下面是接口的名字，第二层是方法
-  
+
 ```markdown
 classDiagram
 	父类 <|-- 具体类

@@ -264,9 +264,303 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
   详细说明：
 
   - `MSG_BCAST` 返回条件是本数据报作为链路层广播收取或者其目的IP地址是一个广播地址。与IP_RECVD_STADDR套接字选项相比，本标志是用于判定一个UDP数据报是否发往某个广播地址的更好方法。
-  - `MSG_MCAST`本标志随BSD
-  - `MG_TRUNC`
-  - `MSG_CTRUNC`
-  - `MSG_EOR`
-  - `MSG_OOB`
-  - `MSG_NOTIFICATION`
+  - `MSG_MCAST`本标志随BSD/OS引入，相对较新。它的返回条件是本数据报作为链路层多播收取。
+  - `MG_TRUNC`本标志的返回条件是本数据报被截断，也就是说，内核预备返回的数据超过进程事先分配的空间（所有iov_len成员之和）。
+  - `MSG_CTRUNC`本标志的返回条件是本数据报的辅助数据被截断，也就是说，内核预备返回的辅助数据超过进程事先分配的空间（msg_controllen）。
+  - `MSG_EOR`本标志的返回条件数据结束一个逻辑记录。TCP不使用本标志，因为它是一个字节流协议。
+  - `MSG_OOB`本标志绝不为TCP带外数据返回。它用于其它协议族。
+  - `MSG_NOTIFICATION`本标志由SCTP接收者返回，指示读入的消息是一个事件通知，而不是数据消息。
+
+![14_8](res/14_8.png)
+
+*对一个UDP套接字调用recvmsg时的数据结构*
+
+![14_9](res/14_9.png)
+
+*recvmsg返回时对上图的更新*
+
+5组I/O函数的比较：
+
+| 函数             | 任何描述符 | 仅套接字描述符 | 单个读/写缓冲区 | 分散/集中 读/写 | 可选标志 | 可选对端地址 | 可选控制信息 |
+| ---------------- | ---------- | -------------- | --------------- | --------------- | -------- | ------------ | ------------ |
+| read, write      | Y          |                | Y               |                 |          |              |              |
+| readv, writev    | Y          |                |                 | Y               |          |              |              |
+| recv, send       |            | Y              | Y               |                 | Y        |              |              |
+| recvfrom, sendto |            | Y              | Y               |                 | Y        | Y            |              |
+| recvmsg, sendmsg |            | Y              |                 | Y               | Y        | Y            | Y            |
+
+
+
+## 14.6 辅助数据
+
+辅助数据用途的总结：
+
+| 协议   | cmsg_level   | cmsg_type                                                    | 说明                                                         |
+| ------ | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| IPv4   | IPPROTO_IP   | IP_RECVDSTADDR<br>IP_RECVIF                                  | 随UDP数据报接收目的地址<br>随UDP数据报接收接口索引           |
+| IPv6   | IPPROTO_IPv6 | IPV6_DSTOPTS<br>IPV6_HOPLIMIT<br>IPV6_HOPOPTS<br>IPV6_NEXTHOP<br>IPV6_PRTINFO<br>IPV6_RTHDR<br>IPV6_TCLASS | 指定/接收目的地选项<br>指定/接收跳限<br>接收/接收步跳选项<br>指定下一跳地址<br>指定/接收分组信息<br>指定/接收路由首部<br>指定/接收分组流通类别 |
+| Unix域 | SOL_SOCKET   | SCM_RIGHTS<br>SCM_CREDS                                      | 发送/接收描述符<br>发送/接收用户凭证                         |
+
+辅助数据由一个或多个辅助数据对象（ancillary data object）构成，每个对象以一个定义在头文件`<sys/socket.h>`中的`cmsghdr`结构开头：
+
+```c++
+struct cmsghdr {
+    socklen_t cmsg_len;
+    int       cmsg_level;
+    int       cmsg_type;
+};
+```
+
+![14_12](res/14_12.png)
+
+*包含两个辅助数据对象的辅助数据*
+
+![14_13](res/14_13.png)
+
+*用在Unix域套接字上的cmsghdr结构*
+
+头文件`<sys/socket.h>`中定义了以下5个宏，以简化对辅助数据的处理：
+
+```c++
+#include <sys/socket.h>
+#include <sys/param.h>
+// 返回：指向第一个cmsghdr结构的指针，若无辅助数据则为NULL
+struct cmsghdr *CMSG_FIRSTHDR(struct msghdr *mhdrptr);
+// 返回：指向下一个cmsghdr结构的指针，若不再有辅助数据对象则为NULL
+struct cmsghdr *CMSG_NXTHDR(struct msghdr *mhdrptr, struct cmsghdr *cmsgptr);
+// 返回：指向与cmsghdr结构关联的数据的第一个字节的指针
+unsigned char *CMSG_DATA(struct cmsghdr *cmsgptr);
+// 返回：给定数据量下存放到cmsg_len中的值
+unsigned int CMSG_LEN(unsigned int length);
+// 返回：给定数据量下一个辅助数据对象总的大小
+unsigned int CMSG_SPACE(unsigned int length);
+```
+
+
+
+## 14.7 排队的数据量
+
+获悉一个套接字上已排队的数据量的技术：
+
+- 如果获悉已排队数据量的目的在于避免读操作阻塞在内核中（因为没有数据可读时我们还有其它事情可做），那么可以使用非阻塞式I/O。
+- 如果我们既想查看数据，又想数据仍然留在接收队列中以供本进程其他部分稍后读取，那么可以使用`MSG_PEEK`标志。
+- 一些实现支持ioctl的FIONREAD命令。该命令的第三个ioctl参数是指向某个整数的一个指针，内核通过该整数返回的值就是套接字接收队列的当前字节数。该值是已排队字节的总和，对于UDP套接字而言包括所有已排队的数据报。
+
+
+
+## 14.8 套接字和标准I/O
+
+```c++
+#include "unp.h"
+void 
+str_echo(int sockfd)
+{
+    char line[MAXLINE];
+    FILE *fpin, *fpout;
+    fpin = Fdopen(sockfd, "r");  // 输入流
+    fpout = Fdopen(sockfd, "w"); // 输出流
+    while (Fgets(line, MAXLINE, fpin) != NULL)
+        Fputs(line, fpout);
+}
+```
+
+*重写成改用标准I/O的str_echo函数*
+
+标准I/O函数库执行以下三类缓冲：
+
+- `完全缓冲（fully buffering）`意味着只在出现下列情况时才发生I/O：
+
+  1. 缓冲区满；
+  2. 进程显式调用fflush；
+  3. 进程调用exit终止自身；
+
+  标准I/O缓冲区的通常大小为8192字节。
+
+- `行缓冲（line buffering）`意味着只在出现下列情况时才发生I/O：
+
+  1. 碰到一个换行符；
+  2. 进程调用fflush；
+  3. 进程调用exit种植自身。
+
+- `不缓冲（unbuffering）`意味着每次调用标准I/O输出函数都发生I/O。
+
+标准I/O函数库的大多数Unix实现如下规则：
+
+- 标准错误输出总是不缓冲；
+- 标准输入和标准输出完全缓冲，除非它们指代终端设备（这种情况下它们行缓冲）；
+- 所有其它I/O流都是完全缓冲，除非他们指代终端设备（这种情况下它们行缓冲）。
+
+**避免在套接字上使用标准I/O函数库！！！**
+
+
+
+## 14.9 高级轮询技术
+
+### 14.9.1 /dev/poll接口
+
+```c++
+struct dvpoll {
+    struct pollfd* dp_fds;     // 缓冲区
+    int            dp_nfds;    // 缓冲区大小
+    int            dp_timeout; // 超时时长（ms）
+}
+```
+
+```c++
+#include "unp.h"
+#include <sys/devpoll.h>
+void 
+str_cli(FILE *fp, int sockfd)
+{
+    int stdineof;
+    char buf[MAXLINE];
+    int n;
+    int wfd;
+    struct pollfd pollfd[2];
+    struct dvpoll dopoll;
+    int i;
+    int result;
+    wfd = Open("/dev/pool", O_RDWR, 0);
+    pollfd[0].fd = fileno(fp);
+    pollfd[0].events = POLLIN;
+    pollfd[0].revents = 0;
+    pollfd[1].fd = sockfd;
+    pollfd[1].events = POLLIN;
+    pollfd[1].revents = 0;
+    Write(wfd, pollfd, sizeof(struct pollfd) * 2);
+    stdineof = 0;
+    for (;;) {
+        // block until /dev/poll says something is ready
+        dopoll.dp_timeout = -1;
+        dopoll.dp_nfds = 2;
+        dopoll.dp_fds = pollfd;
+        result = Ioctl(wfd, DP_POLL, &dopoll);
+        // loop through ready file descriptors
+        for (i = 0; i < result; i++) {
+            if (dopoll.dp_fds[i].fd == sockfd) {
+                // socket is readable
+                if ((n = Read(sockfd, buf, MAXLINE)) == 0) {
+                    if (stdineof == 1)
+                        return;
+                    else
+                        err_quit("str_cli: server terminated prematurely");
+                }
+                Write(fileno(stdout), buf, n);
+            } else {
+                // input is readable
+                if ((n = Read(fileno(fp), buf, MAXLINE)) == 0) {
+                    stdineof = 1;
+                    Shutdown(sockfd, SHUT_WR);
+                    continue;
+                }
+                Writen(sockfd, buf, n);
+            }
+        }
+    }
+}
+```
+
+*使用/dev/poll的str_cli函数*
+
+### 14.9.2 kqueue接口
+
+```c++
+#include <sys/types.h>
+#include <sys/event.h>
+#include <sys/time.h>
+int kqueue(void);
+int kevent(int kq, const struct kevent *changelist, int nchanges,
+           struct kevent *evenlist, int nevents,
+           const struct timespec *timeout);
+void EV_SET(struct kevent *kev, uintptr_t ident, short filter,
+            u_short flags, u_int fflags, intptr_t data, vlid *udata);
+```
+
+```c++
+struct kevent {
+    uintptr_t ident;
+    short     filter;
+    u_short   flags;
+    u_int     fflags;
+    intptr_t  data;
+    void     *udata;
+};
+```
+
+| flags                                                        | 说明                                                         | 更改                       | 返回   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------- | ------ |
+| EV_ADD<br>EV_CLEAR<br>EV_DELETE<br>EV_DISABLE<br>EV_ENABLE<br>EV_ONESHOT | 增设事件；自动启用，除非同时指定EV_DISABLE<br>用户获取后复位事件状态<br>删除事件<br>禁用事件但不删除<br>重新启用先前禁用的事件<br>触发一次后删除事件 | Y<br>Y<br>Y<br>Y<br>Y<br>Y |        |
+| EV_EOF<br>EV_ERROR                                           | 发生EOF条件<br>发生错误：errno值在data成员中                 |                            | Y<br>Y |
+
+| filter        | 说明                     |
+| ------------- | ------------------------ |
+| EVFILT_AIO    | 异步I/O事件              |
+| EVFILT_PROC   | 进程exit，fork或exec事件 |
+| EVFILT_READ   | 描述符可读，类似select   |
+| EVFILT_SIGNAL | 收到信号                 |
+| EVFILT_TIMER  | 周期性或一次性的定时器   |
+| EVFILT_VNODE  | 文件修改和删除事件       |
+| EVFILT_WRITE  | 描述符可写，类似select   |
+
+```c++
+#include "unp.h"
+void 
+str_cli(FILE *fp, int sockfd)
+{
+    int kq, i, n, nev, stdineof = 0, isfile;
+    char buf[MAXLINE];
+    struct kevent kev[2];
+    struct timespec ts;
+    struct stat st;
+    isfile = ((fstat(fileno(fp), &st) == 0) &&
+              (st.st_mode & S_IFMT) == S_IFREG); // 判定文件指针是否指向文件
+    EV_SET(&key[0], fileno(fp), EVFILT_READ, EV_ADD, 0, 0, NULL); // 设置kevent
+    EV_SET(&kev[1], sockfd, EVFILT_READ, EV_ADD, 0, 0, NULL);
+    kq = Kqueue();
+    ts.tv_sec = ts.tv_nsec = 0;
+    kevent(kq, kev, 2, NULL, 0, &ts); // 设置过滤器
+    for (;;) {
+        nev = kevent(kq, NULL, 0, kev, 2, NULL); // 阻塞
+        for (i = 0; i < nev; i++) { // 遍历事件
+            if (kev[i].ident == sockfd) { // 可读
+                if ((n = Read(sockfd, buf, MAXLINE)) == 0) {
+                    if (stdineof == 1)
+                        return;
+                    else
+                        err_quit("str_cli: server terminated prematurely");
+                }
+                Write(fileno(stdout), buf, n);
+            }
+            if (kev[i].ident == fileno(fp)) {
+                n = Read(fileno(fp), buf, MAXLINE);
+                if (n > 0)
+                    Writen(sockfd, buf, n);
+                if (n == 0 || (isfile && n == key[i].data)) {
+                    stdineof = 1;
+                    Shutdown(sockfd, SHUT_WR);
+                    kev[i].flags = EV_DELETE;
+                    kevent(kq, &kev[i], 1, NULL, 0, &ts);
+                    continue;
+                }
+            }
+        }
+    }
+}
+```
+
+*使用kqueue的str_cli函数*
+
+### 14.9.3 建议
+
+
+
+## 14.10 T/TCP: 事务目的TCP
+
+![14_19](res/14_19.png)
+
+*最小T/TCP事务的时间戳*
+
+
+
+## 14.11 小结
+

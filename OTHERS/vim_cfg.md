@@ -14,7 +14,7 @@
    git clone https://github.com/vim/vim.git
    ```
 
-2. 编译
+2. 设置环境
 
    - ubuntu
 
@@ -36,37 +36,39 @@
         sudo dpkg -P vim
         ```
 
-     3. 编译安装vim
+   - macos
 
-        ```sh
-        cd vim
-        
-        # 配置源码
-        # 参数说明：
-        # 		--enable-pythoninterp		 使用python2+
-        # 		--enable-python3interp 		使用python3+
-        ./configure --with-features=huge \
-                    --enable-multibyte \
-                    --enable-rubyinterp \
-                    --enable-python3interp \
-                    --with-python-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
-                    --enable-perlinterp \
-                    --enable-luainterp \
-                    --enable-gui=gtk2 --enable-cscope --prefix=/usr
-                    
-        # 编译安装
-        make VIMRUNTIMEDIR=/usr/share/vim/vim80
-        sudo make install
-        ```
+3. 编译安装vim
+
+   ```sh
+   cd vim
      
-     4. 设置默认编辑器
-
-        ```sh
-        sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
-        sudo update-alternatives --set editor /usr/bin/vim
-        sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
-        sudo update-alternatives --set vi /usr/bin/vim
-        ```
+   # 配置源码
+   # 参数说明：
+   # 		--enable-pythoninterp		使用python2+
+   # 		--enable-python3interp 		使用python3+
+   ./configure --with-features=huge \
+               --enable-multibyte \
+               --enable-rubyinterp \
+               --enable-python3interp \
+               --enable-perlinterp \
+               --enable-luainterp \
+               --enable-gui=gtk2 --enable-cscope --prefix=/usr
+                 
+   # 编译安装
+   make VIMRUNTIMEDIR=/usr/share/vim/vim80
+   sudo make install
+   ```
+   
+4. 设置默认编辑器
+   
+   ```sh
+   sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
+   sudo update-alternatives --set editor /usr/bin/vim
+   sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
+   sudo update-alternatives --set vi /usr/bin/vim
+   ```
+   
 
 
 报错分析:

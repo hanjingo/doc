@@ -1,6 +1,6 @@
 # UNIX环境高级编程
 
-[美]W.Richard Stevens [美]Stephen A.Rago 第3版
+[美]W.Richard Stevens [美]Stephen A.Rago . 3ED
 
 - [第一章 UNIX基础知识]
 - [第二章 UNIX标准及实现]

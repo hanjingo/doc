@@ -6,4 +6,6 @@
 - [cmake](cmake.md)
 - [dot](dot.md)
 - [make](make.md)
+- [markdown](markdown.md)
+- [shell](shell.md)
 
