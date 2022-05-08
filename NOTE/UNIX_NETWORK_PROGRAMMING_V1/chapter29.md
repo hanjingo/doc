@@ -73,7 +73,12 @@ libnet函数库提供构造任意协议的分组并将其输出到网络中的�
 *从分组捕获函数库读入分组的相关函数调用*
 
 ```c++
-TODO
+#include "unp.h"
+#include <pcap.h>
+#include <netinet/in_system.h>
+#include <netinet/in.h>
+#include <netinet/ip_var.h>
+#include <netinet/udp.h>
 ```
 
 *udpcksum/udpcksum.h*
