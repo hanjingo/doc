@@ -18,13 +18,13 @@
 
 ### 编程
 
-| 书名                                                         | 作者                                                         | 版次 | 备注                |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ------------------- |
-| 编译原理<br>Compilers Principles, Techniques, & Tools        | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2th  | 学底层原理必看      |
-| TCP/IP详解-卷一<br>TCP/IP Illustrated - Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2th  | 网络编程方面的圣经  |
-| 设计模式<br>Design Pattern                                   | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1th  | 学设计模式必看      |
-| STL源码刨析<br>The Annotated STL Sources(using SGI STL)      | + 侯捷                                                       | 1th  | 对stl讲解的比较详细 |
-|                                                              |                                                              |      |                     |
+| 书名                                                         | 作者                                                         | 版次 | 备注                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ---------------------------- |
+| 编译原理<br>Compilers Principles, Techniques, & Tools        | + Alfred V.Aho<br>+ Monica S.Lam<br>+ Ravi Sethi<br>+ Jeffrey D.UILman | 2th  | 学底层原理必看               |
+| TCP/IP详解-卷一<br>TCP/IP Illustrated - Volume 1: The Protocols | + Kevin R.Fall<br>+ W.Richard S                              | 2th  | 网络编程方面的圣经           |
+| 设计模式<br>Design Pattern                                   | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1th  | 学设计模式必看               |
+| STL源码刨析<br>The Annotated STL Sources(using SGI STL)      | + 侯捷                                                       | 1th  | 对stl讲解的比较详细          |
+| Unix环境高级编程<br>Advanced Programming in the UNIX Environment | + [美]W.Richard Stevens<br>+ [美]Stephen A.Rago              | 3th  | 讲解*nix系统编程领域的”圣经“ |
 
 ### 经济学
 
@@ -57,60 +57,123 @@
 |                                                              |      |      |                                                              |
 |                                                              |      |      |                                                              |
 
+---
 
 
-## 开源库
 
-### c++
+## c++库
 
-- [llvm-project](https://github.com/llvm/llvm-project)
+### 综合库
+
+- [boost](https://www.boost.org/)
 - 腾讯c++库 [libco](https://github.com/Tencent/libco)
+- 微软的STL库实现 [STL](https://github.com/microsoft/STL)
+
+### 插件库
+
+- [rhcad/x3c](https://github.com/rhcad/x3c)
+- 基于Qt Plugin封装的插件库 [commontk/CTK](https://github.com/commontk/CTK)
+- CTK插件库示例方案 [Waleon/CTK-examples](https://github.com/Waleon/CTK-examples)
+- [CppMicroServices](https://github.com/CppMicroServices)/**[CppMicroServices](https://github.com/CppMicroServices/CppMicroServices)**
+
+### 字符串库
+
 - C++字符串格式化库 [fmtlib](https://github.com/fmtlib)/**[fmt](https://github.com/fmtlib/fmt)**
-- [微软的STL库实现](https://github.com/microsoft/STL)
-- 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
-- 谷歌内存回收库 [tcmalloc](https://github.com/google/tcmalloc)
-- Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
-- C++日志库 [log4cpp](http://log4cpp.sourceforge.net/)
 
 ### 算法库
 
-- 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
+- 图像识别算法库 [opencv/opencv](https://github.com/opencv/opencv)
 - C++算法库 [C-Plus-Plus](https://github.com/TheAlgorithms/C-Plus-Plus)
 - 压缩算法库 [madler](https://github.com/madler)/**[zlib](https://github.com/madler/zlib)**
+- C++行为树 [BehaviorTree/BehaviorTree.CPP](https://github.com/BehaviorTree/BehaviorTree.CPP)
 
 ### 数学库
 
 - [Isomorphism -- Mathematics of Programming](https://github.com/liuxinyu95/unplugged)
 
-### 操作系统
-
-- linux内核 [linux](https://github.com/torvalds/linux)
-
-- 自制操作系统 [SamyPesse](https://github.com/SamyPesse)/**[How-to-Make-a-Computer-Operating-System](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System)**
-
-- C++实现的操作系统 [SerenityOS](https://github.com/SerenityOS)/**[serenity](https://github.com/SerenityOS/serenity)**
-
 ### 网络库
 
-- [chromium浏览器](https://github.com/chromium/chromium)
-- 抓包神器[wireshark](https://gitlab.com/wireshark/wireshark)
+- [ldcsaa/HP-Socket](https://github.com/ldcsaa/HP-Socket)
 - 大名鼎鼎的libevent库 [libevent](https://github.com/libevent)/**[libevent](https://github.com/libevent/libevent)**
 - UDP协议封装库 [KCP](https://github.com/skywind3000/kcp)
 - 远程调用库 [GRPC](https://github.com/grpc/grpc)
-- 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
 - MDNS协议实现 [avahi](https://github.com/lathiat/avahi)
 - P2P网络的C++实现 [cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
 - P2P节点发现库 [nearby-connections](https://github.com/google/nearby-connections)
+- Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
+
+### 数据库/存储
+
+- Redis存盘工具 [ssdb](https://github.com/ideawu/ssdb)
+- 分布式存储 [minio](https://github.com/minio/minio)
+
+### 图形库
+
+- 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
+- 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
+- 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
+- C语言版png图片处理库 [glennrp](https://github.com/glennrp)/**[libpng](https://github.com/glennrp/libpng)**
+
+### 日志库
+
+- C++日志库 [log4cpp](http://log4cpp.sourceforge.net/)
+
+### 内存管理库
+
+- 谷歌内存回收库 [tcmalloc](https://github.com/google/tcmalloc)
+
+### 格式转换
+
+- PDF处理库 [libharu](https://github.com/libharu)/**[libharu](https://github.com/libharu/libharu)**
 - 官方Protobuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[protobuf](https://github.com/protocolbuffers/protobuf)**
 - C语言版的ProtoBuf库 [protobuf-c](https://github.com/protobuf-c)/**[protobuf-c](https://github.com/protobuf-c/protobuf-c)**
 - C语言版的ProtoBuf库 [protocolbuffers](https://github.com/protocolbuffers)/**[upb](https://github.com/protocolbuffers/upb)**
 - C语言版skynet的protobuf协议支持(已停止维护) [cloudwu](https://github.com/cloudwu)/**[pbc](https://github.com/cloudwu/pbc)**
 - 使用现代C++编写的的JSON库 [nlohmann](https://github.com/nlohmann)/**[json](https://github.com/nlohmann/json)**
 
-### 数据库/存储
+### 加解密
 
-- Redis存盘工具 [ssdb](https://github.com/ideawu/ssdb)
-- 分布式存储 [minio](https://github.com/minio/minio)
+- 通用的加/解密库 [openssl](https://github.com/openssl)/**[openssl](https://github.com/openssl/openssl)**
+
+---
+
+
+
+## 第三方项目
+
+### 编译器
+
+- [llvm-project](https://github.com/llvm/llvm-project)
+
+### 浏览器和网络工具
+
+- Telegram的Qt版本 [telegramdesktop](https://github.com/telegramdesktop)/**[tdesktop](https://github.com/telegramdesktop/tdesktop)**
+- 基于Qt和Xmpp的通讯工具 [WHUCSLASD2017](https://github.com/WHUCSLASD2017)/**[nowe](https://github.com/WHUCSLASD2017/nowe)**
+- 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
+- [chromium浏览器](https://github.com/chromium/chromium)
+- 抓包神器[wireshark](https://gitlab.com/wireshark/wireshark)
+- 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
+
+### AI
+
+- 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
+
+### 区块链
+
+- [filecoin证明机制(Rust) rust-fil-proofs](https://github.com/filecoin-project/rust-fil-proofs)
+- [ipfs的块处理库 go-ipfs-blockstore](https://github.com/ipfs/go-ipfs-blockstore)
+- [零知识证明库 bellman](https://github.com/zkcrypto/bellman)
+- [IPFS的GO语言实现 goipfs](https://github.com/ipfs/go-ipfs)
+- [以太坊挖矿程序 ethminer](https://github.com/ethereum-mining/ethminer)
+- [bitcoin](https://github.com/bitcoin/bitcoin)
+- [eos](https://github.com/EOSIO/eos)
+- [go-ipfs-swarm-key-gen](https://github.com/Kubuxu/go-ipfs-swarm-key-gen)
+
+### 操作系统
+
+- linux内核 [linux](https://github.com/torvalds/linux)
+- 自制操作系统 [SamyPesse](https://github.com/SamyPesse)/**[How-to-Make-a-Computer-Operating-System](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System)**
+- C++实现的操作系统 [SerenityOS](https://github.com/SerenityOS)/**[serenity](https://github.com/SerenityOS/serenity)**
 
 ### 多媒体
 
@@ -144,33 +207,8 @@
 - 开源版暗黑破坏神2 [OpenDiablo2](https://github.com/OpenDiablo2)/**[OpenDiablo2](https://github.com/OpenDiablo2/OpenDiablo2)**
 - unity3d反编译神器 [dnSpy](https://github.com/dnSpy)/**[dnSpy](https://github.com/dnSpy/dnSpy)**
 
-### 图形库
-
-- 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
-- QT使用总结 [feiyangqingyun](https://github.com/feiyangqingyun)/**[qtkaifajingyan](https://github.com/feiyangqingyun/qtkaifajingyan)**
-- 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
-- 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
-- C语言版png图片处理库 [glennrp](https://github.com/glennrp)/**[libpng](https://github.com/glennrp/libpng)**
-
-### 即时通讯
-
-- Telegram的Qt版本 [telegramdesktop](https://github.com/telegramdesktop)/**[tdesktop](https://github.com/telegramdesktop/tdesktop)**
-- 基于Qt和Xmpp的通讯工具 [WHUCSLASD2017](https://github.com/WHUCSLASD2017)/**[nowe](https://github.com/WHUCSLASD2017/nowe)**
-
-### 区块链
-
-- [filecoin证明机制(Rust) rust-fil-proofs](https://github.com/filecoin-project/rust-fil-proofs)
-- [ipfs的块处理库 go-ipfs-blockstore](https://github.com/ipfs/go-ipfs-blockstore)
-- [零知识证明库 bellman](https://github.com/zkcrypto/bellman)
-- [IPFS的GO语言实现 goipfs](https://github.com/ipfs/go-ipfs)
-- [以太坊挖矿程序 ethminer](https://github.com/ethereum-mining/ethminer)
-- [bitcoin](https://github.com/bitcoin/bitcoin)
-- [eos](https://github.com/EOSIO/eos)
-- [go-ipfs-swarm-key-gen](https://github.com/Kubuxu/go-ipfs-swarm-key-gen)
-
 ### 安全
 
-- 加密库 [openssl](https://github.com/openssl)/**[openssl](https://github.com/openssl/openssl)**
 - [json web token-libjwt](https://github.com/benmcollins/libjwt)
 - Qt版本的沙箱软件 [sandboxie-plus](https://github.com/sandboxie-plus)/**[Sandboxie](https://github.com/sandboxie-plus/Sandboxie)**
 
@@ -188,22 +226,25 @@
 
 ### 其他
 
-- 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
-- cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
-- makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
 - 文档系统 [DocumentServer](https://github.com/ONLYOFFICE/DocumentServer)
 - WASM实现库 [emscripten](https://github.com/emscripten-core/emscripten)
 - vim的升级版本 [neovim](https://github.com/neovim/neovim)
 - [rust版本的v8引擎](https://github.com/denoland/deno)
 - 安卓NDK示例 [ndk-samples](https://github.com/android/ndk-samples)
-- 开源项目汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
-- 电子书目录汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
-- [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)
-- [性能优化相关专题](https://github.com/XINCGer/Unity3DTraining/tree/master/PerformanceOptimization)
-- PDF处理库 [libharu](https://github.com/libharu)/**[libharu](https://github.com/libharu/libharu)**
+
+---
 
 
 
 ## 博客/网站
 
+- 开源项目汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
+- 电子书目录汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
+- QT使用总结 [feiyangqingyun](https://github.com/feiyangqingyun)/**[qtkaifajingyan](https://github.com/feiyangqingyun/qtkaifajingyan)**
+- 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
+- [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)
+- [性能优化相关专题](https://github.com/XINCGer/Unity3DTraining/tree/master/PerformanceOptimization)
+- 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
+- cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
+- makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
 - [实名质疑同行医生再发长文：请求国家设立红线，遏制肿瘤医疗不良行为](https://web.archive.org/web/20210419135414/https://www.sohu.com/a/461615247_296660)

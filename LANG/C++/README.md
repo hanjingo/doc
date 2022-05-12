@@ -37,4 +37,5 @@
 - [谷歌c++编程规范](google_cpp_std.md)
 - [安卓c++开发](android_dev.md)
 - [MFC](mfc.md)
+- [C++插件系统](res/plugin.md)
 

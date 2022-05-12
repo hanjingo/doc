@@ -1779,7 +1779,7 @@ frenetic `/frəˈnetɪk/` 狂热的，疯子，狂人
 
 frenzy `/ˈfrenzi/` 狂热，狂乱，疯狂
 
-frequent `/ˈfriːkwənt/` 频繁的，常去
+frequent `/ˈfriːkwənt/` 频繁的，常去，急促的
 
 fresco `/ˈfreskəʊ/` 壁画
 

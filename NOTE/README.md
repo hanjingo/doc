@@ -31,6 +31,12 @@
 | [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md) |      |                                               |                      |
 | [TCP/IP详解-卷一](TCP_IP_ILLUSTRATED_V1/README.md)           | 3ED  | [美] Kevin R. Fall<br>[美] W. Richard Stevens | 网络编程领域的圣经。 |
 
+### 并行编程
+
+| 书名 | 版次 | 作者 | 摘要/评价 |
+| ---- | ---- | ---- | --------- |
+|      |      |      |           |
+
 ### C++
 
 | 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
@@ -66,11 +72,13 @@
 ## 在读
 
 - [UNIX网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)
-- [UNIX环境高级编程](APUE/README.md)
+- [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
+- [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
+- [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [CISSP官方学习指南](CISSP_CERTIFIED_INFORMATION_SYSTEMS_SECURITY_PROFESSIONAL_OFFICIAL_STUDY_GUIDE/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)

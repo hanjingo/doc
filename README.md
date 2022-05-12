@@ -1,7 +1,7 @@
 # 目录
 
 - [算法](ALGO/README.md)
-- [BUG速查](BUG/README.md)
+- [BUG速览](BUG/README.md)
 - [数据库](DB/README.md)
 - [分布式系统](DCS/README.md)
 - [编程语言](LANG/README.md)

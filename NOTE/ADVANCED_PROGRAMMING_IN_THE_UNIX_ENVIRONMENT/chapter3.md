@@ -4,20 +4,27 @@
 
 
 
-## 文件描述符
-
-- 文件描述符是一个非负整数
-- 一些常用关联：
-  - 0 标准输入
-  - 1 标准输出
-  - 2 标准错误
-- Linux 3.2.0/FreeBSD 8.0/Mac OS X 10.6.8/Solaris 10以后的操作系统，文件描述符的变化范围几乎是**无限的**，它只受到系统配置的存储器数量，整型的字长以及系统管理员所配置的软限制和硬限制的约束
+## 3.1 引言
 
 
 
-## 函数open和openat
+## 3.2 文件描述符
 
-```c
+文件描述符是一个非负整数。
+
+一些常用关联：
+
+- 0 标准输入
+- 1 标准输出
+- 2 标准错误
+
+Linux 3.2.0/FreeBSD 8.0/Mac OS X 10.6.8/Solaris 10以后的操作系统，文件描述符的变化范围几乎是**无限的**，它只受到系统配置的存储器数量，整型的字长以及系统管理员所配置的软限制和硬限制的约束。
+
+
+
+## 3.3 函数open和openat
+
+```c++
 #include <fcntl>
 int open(const char* path, int oflag, ...);
 int openat(int fd, const char* path, int oflag, ...);
@@ -58,17 +65,15 @@ int openat(int fd, const char* path, int oflag, ...);
   - 成功：文件描述符
   - 失败：-1
 
-打开文件/目录。
+*打开文件/目录。*
 
-### TOCTTOU错误
-
-time-of-check-to-time-of-use，如果有两个基于文件的函数调用，其中第二个调用依赖于第一个调用的结果，那么程序是脆弱的；因为两个调用并不是原子操作，在两个函数调用之间文件可能改变了，这样也就造成了第一个调用的结果就不在有效，使得程序最终的结果是错误的。
+`TOCTTOU错误（time-of-check-to-time-of-use）`如果有两个基于文件的函数调用，其中第二个调用依赖于第一个调用的结果，那么程序是脆弱的；因为两个调用并不是原子操作，在两个函数调用之间文件可能改变了，这样也就造成了第一个调用的结果就不在有效，使得程序最终的结果是错误的。
 
 
 
-## 函数creat
+## 3.4 函数creat
 
-```c
+```c++
 #include <fcntl.h>
 int create(const char* path, mode_t mode);
 ```
@@ -79,17 +84,13 @@ int create(const char* path, mode_t mode);
   - 成功：只写文件描述符
   - 失败：-1
 
-创建一个新文件，等效于：
-
-```c
-open(path, O_RDWR|O_CREAT|O_TRUNC, mode);
-```
+*创建一个新文件，等效于：`open(path, O_RDWR|O_CREAT|O_TRUNC, mode);`。*
 
 
 
-## 函数close
+## 3.5 函数close
 
-```c
+```c++
 #include <unistd.h>
 int close(int fd);
 ```
@@ -99,13 +100,13 @@ int close(int fd);
   - 成功：0
   - 失败：-1
 
-关闭文件
+*关闭文件。*
 
 
 
-## 函数lseek
+## 3.6 函数lseek
 
-```c
+```c++
 #include <unistd.h>
 off_t lseek(int fd, off_t offset, int whence);
 ```
@@ -120,13 +121,44 @@ off_t lseek(int fd, off_t offset, int whence);
   - 成功：新的文件偏移量
   - 失败：-1
 
-为一个打开的文件设置偏移量
+*为一个打开的文件设置偏移量。*
+
+Single UNIX Specification向应用程序提供了一种方法，使其通过sysconf函数确定支持何种环境：
+
+![3_3](res/3_3.png)
+
+*sysconf的数据大小选项和name参数*
+
+例1：
+
+```c++
+#include "apue.h"
+int 
+main(void)
+{
+    if (lseek(STDIN_FILENO, 0, SEEK_CUR) == -1)
+        printf("cannot seek\n");
+    else
+        printf("seek OK\n");
+    exit(0);
+}
+```
+
+*测试标准输入能够被设置偏移量*
+
+例2：
+
+```c++
+TODO
+```
+
+*创建一个具有空洞的文件*
 
 
 
-## 函数read
+## 3.7 函数read
 
-```c
+```c++
 #include <unistd.h>
 ssize_t read(int fd, void *buf, size_t nbytes);
 ```
@@ -139,7 +171,7 @@ ssize_t read(int fd, void *buf, size_t nbytes);
   - 已到文件尾：0
   - 失败：-1
 
-从文件中读数据
+*从文件中读数据。*
 
 以下这些情况会导致实际读到的字节数少于要求读的字节数：
 
@@ -151,9 +183,9 @@ ssize_t read(int fd, void *buf, size_t nbytes);
 
 
 
-## 函数write
+## 3.8 函数write
 
-```c
+```c++
 #include <unistd.h>
 ssize_t write(int fd, const void* buf, size_t nbytes);
 ```
@@ -165,17 +197,23 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
   - 成功：已写的字节数==要写入的字节数
   - 失败：-1或已写的字节数<要写入的字节数
 
-写数据到文件
+*写数据到文件。*
 
 
 
-## I/O效率
+## 3.9 I/O的效率
+
+```c++
+TODO
+```
+
+*将标注输入复制到标准输出*
 
 大多数文件系统为改善性能都采用某种预读（read ahead）技术，当检测到正进行顺序读取时，系统就试图读入比应用所要求的更多数据，并假想应用很快就会读这些数据。
 
 
 
-## 文件共享
+## 3.10 文件共享
 
 内核使用3种数据结构表示打开文件，他们之间的关系决定了在文件共享方面一个进程对另一个进程可能产生的影响：
 
@@ -192,13 +230,13 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
 
 例，打开文件的内核数据结构：
 
-![3_7](res/3_7.png)
+![3_7](D:\doc\NOTE\ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT\res\3_7.png)
 
 例，两个独立进程各自打开同一个文件：
 
-![3_8](res/3_8.png)
+![3_8](D:\doc\NOTE\ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT\res\3_8.png)
 
-### 不同操作对文件数据结构的影响
+不同操作对文件数据结构的影响：
 
 - 在完成每个`write`后，在文件表项中的当前文件偏移量即增加所写入的字节数。如果这导致当前文件偏移量超出当前文件长度，则将i节点表项中的当前文件长度设置为当前文件偏移量（也就是该文件加长了）。
 - 如果用`O_APPEND`标志打开一个文件，则相应标志也被设置到文件表项的文件状态标志中。每次对这种具有追加写标志的文件执行写操作时，文件表项中的当前文件偏移量首先会被设置为i节点表项中的文件长度。这就使得每次写入的数据都追加到文件的当前尾端处。
@@ -207,11 +245,13 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
 
 
 
-## 原子操作
+## 3.11 原子操作
 
-多个进程对同一个文件同时进行读写操作时，会产生问题；它的解决方法是使用原子操作。
+多个进程对同一个文件同时进行读写操作时，会产生问题，它的解决方法是使用原子操作。
 
-原子操作（atomic operation）指的是由多步组成的一个操作。如果该操作原子性的执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集；以下为原子操作的方法：
+原子操作（atomic operation）指的是由多步组成的一个操作。如果该操作原子性的执行，则要么执行完所有步骤，要么一步也不执行，不可能只执行所有步骤的一个子集。
+
+以下为原子操作的方法：
 
 1. 在打开文件时设置`O_APPEND`标志
 
@@ -223,11 +263,12 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
    ssize_t pwrite(int fd, const void* buf, size_t nbytes, off_t offset);
    ```
 
-   
 
-## 函数dup和dup2
 
-```c
+
+## 3.12 函数dup和dup2
+
+```c++
 #include <unistd.h>
 int dup(int fd);
 int dup2(int fd, int fd2);
@@ -242,7 +283,7 @@ int dup2(int fd, int fd2);
   - 成功：新的文件描述符
   - 失败：-1
 
-复制一个现有的文件描述符
+*复制一个现有的文件描述符。*
 
 例，返回的新描述符与参数fd共性同一个文件表项时的结构：
 
@@ -250,9 +291,9 @@ int dup2(int fd, int fd2);
 
 
 
-## 函数sync，fsync和fdatasync
+## 3.13 函数sync, fsync和fdatasync
 
-```c
+```c++
 #include <unistd.h>
 int fsync(int fd);
 int fdatasync(int fd);
@@ -270,15 +311,13 @@ void sync(void);
 
 `fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。
 
-### 延迟写
-
-delayed write，传统的UNIX系统实现在内核中设有缓冲区高速缓存或页高速缓存，大多数磁盘I/O都通过缓冲区进行。当我们向文件写入数据时，内核通常先将数据复制到缓冲区中，然后排入队列，晚些时候再写入磁盘
+延迟写（delayed write）：传统的UNIX系统实现在内核中设有缓冲区高速缓存或页高速缓存，大多数磁盘I/O都通过缓冲区进行。当我们向文件写入数据时，内核通常先将数据复制到缓冲区中，然后排入队列，晚些时候再写入磁盘。
 
 
 
-## 函数fcntl
+## 3.14 函数fcntl
 
-```c
+```c++
 #include<fcntl.h>
 int fcntl(int fd, int cmd, ...);
 ```
@@ -337,11 +376,27 @@ set_fl(STDOUT_FILENO, O_SYNC);
 
 使每次write都要等待，直至数据已写到磁盘上再返回，设置`O_SYNC`标志回增加系统时间和时钟时间。
 
+例1：
+
+```c++
+TODO
+```
+
+*对于指定的描述符打印文件标志*
+
+例2：
+
+```c++
+TODO
+```
+
+*对一个文件描述符开启一个或多个文件状态标志*
 
 
-## 函数ioctl
 
-```c
+## 3.15 函数ioctl
+
+```c++
 #include <unistd.h>
 #include <sys/ioctl.h>
 int ioctl(int fd, int request, ...);
@@ -367,11 +422,15 @@ FreeBSD中通用的ioctl操作：
 
 
 
-## `/dev/fd`
+## 3.16 /dev/fd
 
-```c
+```c++
 fd=open("/dev/fd/0", O_RDWR);
 ```
 
 **注意：Linux把文件描述符映射成指向底层物理文件的符号链接，在/dev/fd文件上使用creat会导致底层文件被截断。**
+
+
+
+## 3.17 小结
 
