@@ -68,6 +68,7 @@
 - [boost](https://www.boost.org/)
 - 腾讯c++库 [libco](https://github.com/Tencent/libco)
 - 微软的STL库实现 [STL](https://github.com/microsoft/STL)
+- 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
 
 ### 插件库
 
@@ -109,7 +110,6 @@
 
 ### 图形库
 
-- 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
 - 点云数据处理 [PointCloudLibrary/pcl](https://github.com/PointCloudLibrary/pcl)
 - 医疗软件图形库（收费）[Kitware](https://github.com/Kitware)/**[VTK](https://github.com/Kitware/VTK)**
 - C语言版png图片处理库 [glennrp](https://github.com/glennrp)/**[libpng](https://github.com/glennrp/libpng)**
@@ -247,4 +247,3 @@
 - 20多k的面试文档 [huihut](https://github.com/huihut)/**[interview](https://github.com/huihut/interview)**
 - cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
 - makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
-- [实名质疑同行医生再发长文：请求国家设立红线，遏制肿瘤医疗不良行为](https://web.archive.org/web/20210419135414/https://www.sohu.com/a/461615247_296660)

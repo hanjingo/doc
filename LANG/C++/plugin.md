@@ -6,28 +6,42 @@
 
 C++由于其语言本身及历史问题，缺乏标准的ABI规范，其二进制兼容性较差（比C还要烂），用C++做插件化开发比较痛苦。
 
-然而插件化开发具有以下优点：
+由于插件化开发具有以下优点：
 
 - 优化了团队协作，方便进行任务划分；
 - 对大型项目进行解耦，降低项目复杂度；
 - 提高代码重用度；
 - 简化开发，发布及维护流程。
 
-本文主要用于讨论市面上已有的C++插件方案及自定义插件框架的实现，仅供参考。
+因此，本文主要用于讨论市面上已有的C++插件方案及自定义插件框架的实现，仅供参考。
 
 
 
 ## 总结
 
-### 插件方案对比
+### 对比
 
 | 方案            | 开源协议            | 优点                                                        | 缺点                                                         |
 | --------------- | ------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| [x3py](#x3py)   | Apache License V2.0 | + 使用简单，容易上手。<br>+ 使用标准C++，与其它平台依赖少。 | - 文档非常少（真的少）。<br>- 项目长期未更新（最近一次更新是5年前）。<br>- 官方支持的vs版本比较低（vs2008，可以升级到vs2015）。<br>- 自定义插件后缀`.pln`的方式比较非主流。<br>- 状态的插件数量有限制（<40）。 |
-| CTK             |                     | + 基于OSGI协议<br>+ 项目更新频繁                            | - 与Qt平台深度绑定。                                         |
+| [x3py](#x3py)   | Apache License V2.0 | + 使用简单，容易上手。<br>+ 使用标准C++，与其它平台依赖少。 | - 文档非常少（真的少）。<br>- 项目长期未更新（最近一次更新是5年前）。<br>- 官方支持的vs版本比较低（vs2008，可以升级到vs2015）。<br>- 自定义插件后缀`.pln`的方式比较非主流。<br>- 装载的插件数量有限制（<40）。 |
+| CTK             |                     | + 基于开放的OSGI协议。<br>+ 项目非常活跃。                  | - 与Qt平台深度绑定。                                         |
 | CppMicroService |                     | +                                                           | -                                                            |
 | COM             |                     | + 功能齐全                                                  | - 仅限于Windows平台，难以跨平台。                            |
 | 自定义插件框架  |                     | + 可定制性强                                                | - 需要手动实现关于插件管理的几乎所有的功能，费事费力。       |
+
+对各方案的加法函数（add函数，具体见示例代码）进行调用，其耗时结果如下：
+
+| 方案            | 调用1,000,000次 | 调用10,000,000次 | 调用100,000,000次 |
+| --------------- | --------------- | ---------------- | ----------------- |
+| x3py            | 21ms            | 204ms            | 2104ms            |
+| CTK             |                 |                  |                   |
+| CppMicroService |                 |                  |                   |
+| COM             |                 |                  |                   |
+| 自定义插件框架  |                 |                  |                   |
+
+- CPU：11th Gen Intel(R) Core(TM) i5-11500 @ 2.70GHz   
+- 内存：16.0 GB
+- 操作系统：Windows 10 专业版 19044.1645
 
 ### 插件通信机制
 
@@ -96,22 +110,20 @@ x3py是一款国人出品的C++插件式框架，支持Windows，Linux及Macos�
 
 x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
 
-### 例1：静态依赖型插件示例
-
-（使用VS2015）
+### 例1：vs编写插件示例
 
 1. 编译core/x3manager项目，得到x3manager.pln（这个是核心插件，其它所有插件都依赖于它）
 
-2. 新建WIN32项目空项目`libtest`，并设置”应用程序类型“为静态库，同时对项目进行以下配置：
+2. 新建WIN32项目libtest`，并设置”应用程序类型“为静态库/动态库，同时对项目进行以下配置：
 
-   在 `配置属性\常规\输出目录` 设置值：`..\..\build\$(Configuration)\plugins\`。
+   在 `配置属性\常规\输出目录` 设置值：`你的输出目录\$(Configuration)\plugins\`。
 
-   在 `配置属性\常规\中间目录` 设置值：`..\..\build\$(Configuration)\obj\$(ProjectName)\`。
+   在 `配置属性\常规\中间目录` 设置值：`你的输出目录\$(Configuration)\obj\$(ProjectName)\`。
 
    在 `配置属性\c/c++\常规\附加包含目录` 中添加以下值：
 
-   - `..\..\source\public`
-   - `..\..\interface\core`
+   - `x3py源码目录\source\public`
+   - `x3py源码目录\interface\core`
 
    在 `配置属性\C/C++\所有选项\预编译头` 中选择`不使用预编译头`。
 
@@ -170,6 +182,7 @@ x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
    - `module.cpp`
 
      ```c++
+     // lib版本
      #include <module/plugininc.h>
      #include <module/pluginimpl.h>
      #include <module/modulemacro.h>
@@ -179,22 +192,41 @@ x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
      XDEFINE_CLASSMAP_ENTRY(CTestA)
      XEND_DEFINE_MODULE_LIB(libtest)
      ```
-
+     
+     ```c++
+     // pln版本
+     #include <module/plugininc.h>
+     #include <module/pluginimpl.h>
+     #include <module/modulemacro.h>
+     #include "libtest.h"
+     
+     XBEGIN_DEFINE_MODULE()
+     XDEFINE_CLASSMAP_ENTRY(CTestA)
+     XEND_DEFINE_MODULE_DLL()
+     
+     OUTAPI bool x3InitializePlugin() { return true; }
+     OUTAPI void x3UninitializePlugin() {}
+     ```
+   
 4. 新建Win32控制台应用程序空项目`test`，同时对项目进行以下配置：
 
-   在 `配置属性\常规\输出目录` 设置值：`..\..\build\$(Configuration)\`。
+   在 `配置属性\常规\输出目录` 设置值：`你的输出目录\$(Configuration)\`。
 
-   在 `配置属性\常规\中间目录` 设置值：`..\..\build\$(Configuration)\obj\$(ProjectName)\`。
+   在 `配置属性\常规\中间目录` 设置值：`你的输出目录\$(Configuration)\obj\$(ProjectName)\`。
 
    在 `配置属性\c/c++\常规\附加包含目录` 中添加以下值：
 
-   - `..\..\source\public`
-   - `..\..\interface\core`
-   - `D:\src\x3py\projects\libtest`
+   - `x3py源码目录\source\public`
+   - `x3py源码目录\interface\core`
+   - `libtest目录`
 
    在 `配置属性\C/C++\所有选项\预编译头` 中选择`不使用预编译头`。
 
-5. 引入静态依赖库`libtest.lib`到当前项目。
+   （如果要生成指定后缀`.pln`的插件，需要额外做以下几步）：
+
+   在 `配置属性\链接器\常规\输出文件` 中设置值：`$(OutDir)$(ProjectName).pln`。
+
+5. 在VS中引入静态依赖库`libtest.lib`到当前项目（如果是动态类型的插件，如`xx.pln`的可跳过这步）。
 
 6. 在`test`中新建以下文件：
 
@@ -209,7 +241,10 @@ x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
      
      #include <iostream>
      #include "itest.h"
+         
+     #include <chrono>
      
+     /* 加载lib类型插件 */
      #ifdef _MSC_VER
      #pragma comment(lib, "libtest.lib")
      #endif
@@ -222,6 +257,10 @@ x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
      
      int main()
      {
+         /* 自动加载pln类型插件 */
+     	//const char* plugins[] = { "x3manager.pln", "libtest.pln", NULL};
+     	//x3::AutoLoadPlugins autoload(plugins, "plugins");
+         
      	x3::Object<ITest> p(clsidSimple);
      	if (p)
      		std::cout << "plugin:" << p->getInterfaceName() << " is loaded in:" << p->getClassName() << std::endl;
@@ -233,22 +272,51 @@ x3py最多支持装载40个插件（具体看 `PLUGINS_MAXCOUNT` 相关定义）
      
      	int sum = p->add(1, 2);
      	std::cout << "p->add(1, 2) = " << sum << std::endl;
+         
+         // 运行100000000次调用
+     	auto times = 100000000;
+     	auto start = std::chrono::system_clock::now();
+     	std::cout << "bench start" << std::endl;
+     	for (auto i = 0; i < times; i++)
+     		p->add(1, 2);
+     	auto dur = std::chrono::system_clock::now() - start;
+     	std::cout << "bench end:" << times
+     		<< " times cost: " << std::chrono::duration_cast<std::chrono::milliseconds>(dur).count() << "ms"
+     		<< std::endl;
+         
      	std::cin >> sum;
      	return 0;
      }
      ```
-
      
 
 
 
 ## CTK
 
-TODO
+CTK 为支持生物医学图像计算的公共开发包，其全称为 Common Toolkit，基于OSGi规范和Qt框架，主要包括以下功能：
+
+- `DICOM` 用于从PACS和本地数据库中查询和检索。
+- `DICOM Application Hosting` 用于创建主机和托管应用程序的基础设施。
+- `Widgets` 用于生物医学成像应用的 Qt Widgets 集合。
+- `Plugin Framework` **用于 C++ 的动态组件系统**。
+- `Command Line Interfaces` 一种允许将算法编写为自包含可执行程序的技术，可以在多个终端用户应用程序环境中使用，而无需修改。
+
+其地址为：https://github.com/commontk/CTK。
+
+### 编译
+
+1. 下载安装以下工具：
+
+   - CMake：
+   - QT 5.14.2：
+   - 
+
+   
 
 
 
-## CppMicroService
+## CppMicroServices
 
 TODO
 
@@ -263,6 +331,8 @@ TODO
 ## 自定义插件框架
 
 基于pimpl与dll技术。
+
+插件管理，版本管理。
 
 ### 延伸 - 基于微服务实现
 

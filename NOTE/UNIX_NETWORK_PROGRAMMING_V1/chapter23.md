@@ -13,6 +13,13 @@
 自动关闭允许SCTP端点指定某个关联可以保持空闲的最大秒钟数。关联在任何方向上都没有用户数据在传输时就认为它是空闲的。如果关联的控件事件超过它的最大允许事件，该关联就由SCTP实现自动关闭。
 
 ```c++
+if (argc == 2)
+    stream_increment = atoi(argv[1]);
+	sock_fd = Socket(AF_INET, SOCK_SEQPACKET, IPPROTO_SCTP);
+close_time = 120;
+Setsockopt(sock_fd, IPPROTO_SCTP, SCTP_AUTOCLOSE,
+           &close_time, sizeof(close_time));
+bzero(&servaddr, sizeof(servaddr));
 TODO
 ```
 

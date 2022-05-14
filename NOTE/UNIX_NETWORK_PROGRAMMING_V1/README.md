@@ -10,17 +10,17 @@
 - [第六章 I/O复用：select和pool函数](chapter6.md)
 - [第七章 套接字选项](chapter7.md)
 - [第八章 基本UDP套接字编程](chapter8.md)
-- [第九章 基本SCTP套接字编程]
-- [第十章 SCTP客户/服务器程序例子]
+- [第九章 基本SCTP套接字编程](chapter9.md)
+- [第十章 SCTP客户/服务器程序例子](chapter10.md)
 - [第十一章 名字与地址转换](chapter11.md)
 - [第十二章 IPv4与IPv6的互操作性](chapter12.md)
 - [第十三章 守护进程和inetd超级服务器](chapter13.md)
 - [第十四章 高级I/O函数](chapter14.md)
-- [第十五章 Unix域协议]
+- [第十五章 Unix域协议](chapter15.md)
 - [第十六章 非阻塞式I/O](chapter16.md)
 - [第十七章 ioctl操作](chapter17.md)
 - [第十八章 路由套接字](chapter18.md)
-- [第十九章 密钥管理套接字]
+- [第十九章 密钥管理套接字](chapter19.md)
 - [第二十章 广播](chapter20.md)
 - [第二十一章 多播](chapter21.md)
 - [第二十二章 高级UDP套接字编程](chapter22.md)
@@ -31,6 +31,6 @@
 - [第二十七章 IP选项](chapter27.md)
 - [第二十八章 原始套接字](chapter28.md)
 - [第二十九章 数据链路访问](chapter29.md)
-- [第三十章 客户/服务器程序设计范式]
-- [第三十一章 流]
+- [第三十章 客户/服务器程序设计范式](chapter30.md)
+- [第三十一章 流](chapter31.md)
 

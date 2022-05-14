@@ -233,6 +233,16 @@ open_pcap(void)
     if (verbose)
         printf("datalink = %d\n", datalink);
 }
+char * 
+next_pcap(int *len)
+{
+    char *ptr;
+    struct pcap_pkthdr hdr;
+    /* keep looping until packet ready */
+    while ((ptr = (char *)pcap_next(pd, &hdr)) == NULL); // 返回下一个分组或超时返回NULL
+    *len = hdr.caplen;
+    return(ptr);
+}
 ```
 
 *udpcksum/pcap.c*
@@ -328,25 +338,145 @@ open_output(void)
 {
     int on = 1;
     /*
-     *
-     *
-     *
+     * Need a raw socket to write our own IP datagrams to.
+     * Process must have superuser privileges to create this socket.
+     * Also must set IP_HDRINCL so we can write our own IP heaers.
      */
     rawfd = Socket(dest->fa_family, SOCK_RAW, 0);
-    Setsockopt(rawfd, IPPROTO_IP, IP_HDRINCL, &on, sizeof(on));
+    Setsockopt(rawfd, IPPROTO_IP, IP_HDRINCL, &on, sizeof(on)); // 允许向套接字写完整IP数据报
+}
+
+
+
+
+void 
+udp_write(char *buf, int userlen)
+{
+    struct udpiphdr *ui;
+    struct ip *ip;
+    /* fill in and checksum UDP header */
+    ip = (struct ip *)buf;
+    ui = (struct udpiphdr *)buf;
+    bzero(ui, sizeof(*ui));
+    /* add 8 to userlen for pseudoheader length */
+    ui->ui_len = htons((uint16_t)(sizeof(struct udphdr) + userlen));
+    /* then add 28 for IP datagram length */
+    userlen += sizeof(struct udpiphdr); // 更新长度
+    ui->ui_pr = IPPROTO_UDP;
+    ui->ui_src.s_addr = ((struct sockaddr_in *)local)->sin_addr.s_addr;
+    ui->ui_dst.s_addr = ((struct sockaddr_in *)dest)->sin_addr.s_addr;
+    ui->ui_sport = ((struct sockaddr_in *)local)->sin_port;
+    ui->ui_dport = ((struct sockaddr_in *)dest)->sin_port;
+    ui->ui_ulen = ui->ui_len;
+    if (zerosum == 0) {
+#if 1
+        if ((ui->ui_sum = in_cksum((u_int16_t *)ui, userlen)) == 0) // 计算校验和
+            ui->ui_sum = 0xffff;
+#else
+        ui->ui_sum = ui->ui_len;
+#endif
+    }
+    /* fill in rest of IP header; */
+    /* ip_output() calcuates & stores IP header checksum */
+    ip->ip_v = IPVERSION;
+    ip->ip_hl = sizeof(struct ip) >> 2;
+    ip->ip_tos = 0;
+#if defined(linux) || defined(__OpenBSD__)
+    ip->ip_len = htons(userlen);
+#else
+    ip->ip_len = userlen;
+#endif
+    ip->ip_id = 0;
+    ip->ip_off = 0;
+    ip->ip_ttl = TTL_OUT;
+    Sendto(rawfd, buf, userlen, 0, dest, destlen);
 }
 ```
 
 *udpcksum/udpwrite.c*
 
 ```c++
-TODO
+
+
+
+
+
+
+struct udpiphdr * 
+udp_read(void)
+{
+    int len;
+    char *ptr;
+    struct ether_header *eptr;
+    for (;;) {
+        ptr = next_pcap(&len); // 从分组捕获设备获取下一个分组
+        switch(datalink) {
+            case DLT_NULL:
+                return(udp_check(ptr+4, len-4));
+            case DLT_EN10MB:
+                eptr = (struct ether_header *)ptr;
+                if (ntohs(eptr->ether_type) != ETHERTYPE_IP)
+                    err_quit("Ethernet type %x not IP", ntohs(eptr->ether_type));
+                return(udp_check(ptr+14, len-14));
+            case DLT_SLIP:
+                return(udp_check(ptr+24, len-24));
+            case DLT_ppp:
+                return(udp_check(ptr+24, len-24));
+            default:
+                err_quit("unsupported datalink (%d)", datalink);
+        }
+    }
+}
+
+
+
+
+
+
+struct udpiphdr * 
+udp_check(char *ptr, int len)
+{
+    int hlen;
+    struct ip *ip;
+    struct udpiphdr *ui;
+    if (len < sizeof(struct ip) + sizeof(struct udphdr))
+        err_quit("len = %d", len);
+    /* minimal verification of IP header */
+    ip = (struct ip *)ptr;
+    if (ip->ip_v != IPVERSION)
+        err_quit("ip_v = %d", ip->ip_v);
+    hlen = ip->ip_hl << 2;
+    if (hlen < sizeof(struct ip))
+        err_quit("ip_hl = %d", ip->ip_hl);
+    if (len < hlen + sizeof(struct udphdr))
+        err_quit("len = %d, hlen = %d", len, hlen);
+    if ((ip->ip_sum = in_cksum((uint16_t *)ip, hlen)) != 0)
+        err_quit("ip checksum error");
+    if (ip->ip_p == IPPROTO_UDP) {
+        ui = (struct udpiphdr *)ip;
+        return(ui);
+    } else
+        err_quit("not a UDP packet");
+}
 ```
 
 *udpcksum/udpread.c*
 
 ```c++
-TODO
+
+void 
+cleanup(int signo)
+{
+    struct pcap_stat stat;
+    putc('\n', stdout);
+    if (verbose) {
+        if (pcap_stats(pd, &stat) < 0)
+            err_quit("pcap_stats: %s\n", pcap_geterr(pd));
+        printf("%d packets received by filter\n", stat.ps_recv);
+        printf("%d packets dropped by kernel\n", stat.ps_drop);
+    }
+    exit(0);
+}
 ```
 
 *udpcksum/cleanup.c*
@@ -356,7 +486,73 @@ TODO
 ### 29.7.2 libnet输出函数
 
 ```c++
-TODO
+
+
+
+
+
+
+static libnet_t *l; // 声明libnet描述符
+void 
+open_output(void)
+{
+    char errbuf[LIBNET_ERRBUF_SIZE];
+    /* Initialize libnet with an IPv4 raw socket */
+    l = libnet_init(LIBNET_RAW4, NULL, errbuf); // 初始化libnet
+    if (l == NULL) {
+        err_quit("Can't initialize libnet: %s", errbuf);
+    }
+}
+void 
+send_dns_query(void)
+{
+    char qbuf[24], *ptr;
+    u_int16_t one;
+    int packet_size = LIBNET_UDP_H + LIBNET_DNSV4_H = 24;
+    static libnet_ptag_t ip_tag, udp_tag, dns_tag;
+    /* build query portion of DNS packet */
+    ptr = qbuf;
+    memcpy(ptr, "\001a\014root-servers\003net\000", 20);
+    ptr += 20;
+    one = htons(1);
+    memcpy(ptr, &one, 2);
+    ptr ++ 2;
+    memcpy(ptr, &one, 2);
+    /* buidl DNS packet */
+    dns_tag = libnet_build_dnsv4(1234,
+                                 0x0100,
+                                 1, 0,
+                                 0,
+                                 0,
+                                 qbuf,
+                                 24, 1, dns_tag);
+    /* build UDP header */
+    udp_tag = libnet_build_udp(((struct sockaddr_in *)local)->
+                               sin_port,
+                               ((struct sockaddr_in *)dest)->
+                               sin_port,
+                               packet_size, 0, 
+                               NULL, 0, 
+                               1, udp_tag);
+    /* Since we specified the checksum as 0, libnet will automatically */
+    /* calculate the UDP checksum. Turn it off if the user doesn't want it. */
+    if (zerosum)
+        if (libnet_toggle_checksum(1, udp_tag, LIBNET_OFF) < 0)
+            err_quit("turning off checksums: %s\n", libnet_geterror(1));
+    /* build IP header */
+    ip_tag = libnet_build_ipv4(packet_size + LIBNET_IPV4_H,
+                               0, 0, 0,
+                               TTL_OUT, IPPROTO_UDP, 
+                               0,
+                               ((struct sockaddr_in *)local)->sin_addr.s_addr,
+                               ((struct sockaddr_in *)dest)->sin_addr.s_addr,
+                               NULL, 0, 1, ip_tag);
+    if (libnet_write(1) < 0) {
+        err_quit("libnet_write: %s\n", libnet_geterror(1));
+    }
+    if (verbose)
+        printf("sent: %d bytes of data\n", packet_size);
+}
 ```
 
 *udpcksum/senddnsquery-libnet.c*

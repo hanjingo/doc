@@ -377,16 +377,110 @@ int rename(const char *oldname, const char *newname);
 int renameat(int oldfd, const char *oldname, int newfd, const char *newname);
 ```
 
-- `oldname` 
+- `oldname` 旧名字
   1. 如果oldname指的是一个文件，那么为该文件或符号链接重命名。
   2. 如果oldname指的是一个目录，那么为该目录重命名。
   3. 如果oldname或newname引用符号链接，则处理链接本身，而不是它所引用的文件。
   4. 不能对`.`和`..`重命名。
   4. 如果oldname和newname引用同一文件，则函数不做任何更改而成功返回。
-- `newname`
-- `oldfd`
-- `newfd`
+- `newname` 新名字
+- `oldfd` 旧文件描述符
+- `newfd` 新文件描述符
 
 *对文件/目录进行重命名*
+
+
+
+## 4.17 符号链接
+
+![4_17](res/4_17.png)
+
+*各个函数对符号链接的处理*
+
+![4_18](res/4_18.png)
+
+*构成循环的符号链接testdir*
+
+
+
+## 4.18 创建和读取符号链接
+
+```c++
+#include <unistd.h>
+int symlink(const char *actualpath, const char *sympath);
+int symlinkat(const char *actualpath, int fd, const char *sympath);
+```
+
+- `actualpath` 真实地址
+- `sympath` 符号链接
+- `fd` 文件描述符
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*创建一个符号链接*
+
+```c++
+#include <unistd.h>
+ssize_t readlink(const char *restrict pathname, char *restrict buf, size_t bufsize);
+ssize_t readlinkat(int fd, const char *restrict pathanme, char *restrict buf, size_t bufsize);
+```
+
+- `pathname` 链接文件路径
+- `buf` 缓冲区
+- `bufsize` 缓冲区长度
+- `fd` 文件描述符
+- `返回值`
+  - 成功：读取的字节数
+  - 失败：-1
+
+*打开链接并读连接中的名字*
+
+
+
+## 4.19 文件的时间
+
+![4_19](res/4_19.png)
+
+*与每个文件相关的3个时间值*
+
+![4_20](res/4_20.png)
+
+*各种函数对访问，修改和状态更改时间的作用*
+
+
+
+## 4.20 函数futimens, utimenstat和utimes
+
+```c++
+#include <sys/stat.h>
+int futimens(int fd, const struct timespec times[2]);
+int utimensat(int fd, const char *path, const struct timespec times[2], int flag);
+```
+
+- `fd` 文件套接字
+
+- `times` 时间值
+
+  - [0]：访问时间
+  - [1]：修改时间
+
+  时间戳可以按以下方式指定：
+
+  1. 如果times参数是一个空指针，则访问时间和修改时间两者都设置为当前时间；
+  2. 如果times参数指向两个timespec结构的数组，任一数组元素的tv_nsec字段的值为UTIME_NOW，相应的时间戳就设置为当前时间，忽略相应的tv_sec字段。
+  3. 如果times参数指向两个timespec结构的数组，任一数组元素的tv_nsec字段的值为UTIME_ONIT，相应的时间戳保持不变，忽略相应的tv_sec字段。
+  4. 如果times参数指向两个timespec结构的数组，且tv_nsec字段的值为既不是UTIME_NOW也不是UTIME_OMIT，在这种情况下，相应的时间戳设置为相应的tv_sec和tv_nsec字段的值。
+
+- `path` 文件路径
+
+- `flag` 标记
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*修改文件的时间（精度：ns）*
 
 TODO
