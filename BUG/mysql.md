@@ -27,3 +27,23 @@ ERROR 1819 (HY000): Your password does not satisfy the current policy requiremen
 
    略...
 
+
+
+### Windows下QT5连接MYSQL报错
+
+**问题**
+
+在windows环境下，使用qt连接mysql时报以下错误：
+
+```sh
+QSqlDatabase: QMYSQL driver not loaded
+```
+
+**原因**
+
+安装qt时没有安装`Mysql Connector C`或者qt目录缺少`libmysql.dll`和`libmysql.lib`这两个文件。
+
+**解决**
+
+复制`Mysql Connector C安装目录/lib`目录下的`libmysql.dll`和`libmysql.lib`到`qt安装目录下/qt版本/编译平台目录`中。
+

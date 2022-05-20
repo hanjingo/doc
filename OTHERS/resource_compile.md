@@ -152,7 +152,6 @@
 - 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
 - [chromium浏览器](https://github.com/chromium/chromium)
 - 抓包神器[wireshark](https://gitlab.com/wireshark/wireshark)
-- 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
 
 ### AI
 

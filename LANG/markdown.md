@@ -805,6 +805,19 @@ sequenceDiagram
 loop 思考
     对象A->对象A: 努力搜索
 end
+alt 选择1
+	对象A->>对象B: 选择1
+else 选择2
+	对象A->>对象C: 选择2
+end
+opt 可选
+	对象A->>对象C: 可选项
+end
+par 并发
+	对象A->>对象A: 并发1
+and
+	对象A->>对象B: 并发2
+end
 对象A-->>对象B: 火锅？
 对象B->>对象A: 可以
 Note left of 对象A: 我是一个对象A
@@ -819,6 +832,19 @@ sequenceDiagram
 对象B->>对象A: 随便
 loop 思考
     对象A->对象A: 努力搜索
+end
+alt 选择1
+	对象A->>对象B: 选择1
+else 选择2
+	对象A->>对象C: 选择2
+end
+opt 可选
+	对象A->>对象C: 可选项
+end
+par 并发
+	对象A->>对象A: 并发1
+and
+	对象A->>对象B: 并发2
 end
 对象A-->>对象B: 火锅？
 对象B->>对象A: 可以

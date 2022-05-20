@@ -2524,6 +2524,129 @@ int main()
 
 
 
+## 其它
+
+### function,bind和ref
+
+（C++11）`std::function`可调用对象包装器，通过对c++中各种可调用实体的封装，同时通过`std::bind`把参数绑定到可调用对象，形成一个新的可调用对象。
+
+```c++
+#include <iostream>
+#include <functional>
+
+int f1(int x, int &y, int z = 1) { 
+    std::cout << "x:" << x << ",y:" << y << ",z:" << z << std::endl; };
+struct Foo { 
+    int f2(int x, int &y, int z = 1) { 
+        std::cout << "x:" << x << ",y:" << y << ",z:" << z << std::endl; }; 
+};
+auto f3 = [](int x, int &y, int z = 1) { 
+    std::cout << "x:" << x << ",y:" << y << ",z:" << z << std::endl; };
+
+int main()
+{
+    int y = 2;
+    // 绑定普通函数
+    auto fun1 = std::bind(f1, 
+                          std::placeholders::_1,  // 占用第1个参数位
+                          std::ref(y),            // 给第  2个参数传引用
+                          std::placeholders::_2); // 占用第3个参数位
+    fun1(1, 3); // x:1,y:2,z:3
+
+    // 绑定类函数
+    Foo foo{};
+    auto fun2 = std::bind(&Foo::f2, &foo, 
+                          std::placeholders::_1, 
+                          std::ref(y), 
+                          std::placeholders::_2); 
+    fun2(1, 3); // x:1,y:2,z:3
+
+    // 绑定lambda
+    auto fun3 = std::bind(f3, 
+                          std::placeholders::_1, 
+                          std::ref(y), 
+                          std::placeholders::_2);
+    fun3(1, 3); // x:1,y:2,z:3
+}
+```
+
+### optional
+
+(C++17)`std::optional`可以接受对象或者`nullopt`(表示为空值)
+
+有以下几种方式创建optional：
+
+- 直接创建或者用nullopt赋值
+
+  ```c++
+  std::optional<int> empty;
+  std::optional<int> opt = std::nullopt;
+  ```
+
+- 使用对象初始化
+
+  ```c++
+  std::optional<int> opt = 1;
+  Some s;
+  std::optional<Some> opt = s;
+  ```
+
+- 使用`std::make_optional`构造（类似于`std::make_shared`），可以传递参数
+
+  ```c++
+  optional<Some> opt = std::make_optional<Some>(1);
+  ```
+
+- 使用`std::in_place`构造
+
+  ```c++
+  optional<Some> opt = std::in_place<Some>(1);
+  ```
+
+```c++
+#include <iostream>
+#include <optional>
+using namespace std;
+
+int main()
+{
+  std::optional<int> pp = 1;
+  if (pp) { cout << *pp << endl; } // 1
+  pp = nullopt;
+  if (pp) { cout << *pp << endl; } // 不输出
+}
+```
+
+### &&和move
+
+`&&`叫万能引用(或引用折叠)，右值经过`&&`传递之后，保持不变，依然为右值。
+
+（C++11）`std::move`实施的是无条件的向右值型别的强制型别转换；把对象的所有权从一个对象转移到另一个对象，只转移所有权而没有内存移动或拷贝。
+
+c++使用`std::move`把左值转换为右值，配合`&&`可以进行高效的参数传递。
+
+用途：
+
+- 避免复制入参数据成员的过程产生的复制操作成本；
+- 有条件的进行强制类型转换。
+
+```c++
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string x{"hello"};
+    std::string y{};
+    y = std::move(x);
+    std::cout << "x:" << x << ", y:" << y << std::endl; // x:, y:hello
+}
+```
+
+---
+
+
+
 ## 并发编程
 
 TODO

@@ -310,8 +310,50 @@ CTK 为支持生物医学图像计算的公共开发包，其全称为 Common To
 
    - CMake：
    - QT 5.14.2：
-   - 
-
+   
+2. 配置
+   
+   下载CTKData项目，其地址为：https://github.com/commontk/CTKData。
+   
+   - Windows + Cmake
+   
+     配置CTKData项目：
+   
+     ```cmake
+     # CTK/CMakeExternals/CTKData.cmake
+     set(CTKData_DIR "C:\\Work\\src\\CTKData") # 填CTKData项目地址
+     ```
+   
+     开启PluginFramework编译：
+   
+     ```cmake
+     # /CTK/CMakeLists.txt
+     ctk_lib_option(PluginFramework
+                    "Build the Plugin Framework" ON
+                    CTK_ENABLE_PluginFramework)
+     ```
+   
+     修改安装选项：
+   
+     ```cmake
+     # /CTK/SuperBuild.cmake
+     if(WIN32)
+       set(_INSTALL_CMD nmake install)
+     else()
+       set(_INSTALL_CMD make install)
+     endif()
+     
+     INSTALL_COMMAND ${_INSTALL_CMD}
+     ```
+   
+     以管理员模式启动QtCreator，并打开`CTK/CMakeLists.txt`，构建项目。
+   
+     报错：
+   
+     1. 
+   
+   - linux
+   
    
 
 
@@ -355,3 +397,5 @@ TODO
 [] [有哪些成熟的C++跨平台插件管理系统实现?](https://www.zhihu.com/question/402162303)
 
 [] [插件式可扩展架构设计心得](https://segmentfault.com/a/1190000040002834)
+
+[] [CTK框架使用简明教程](http://www.uml.org.cn/c++/202103251.asp?artid=23787)

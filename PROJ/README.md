@@ -20,6 +20,5 @@
 ## 第三方项目
 
 - [DOCKER](DOCKER/README.md)
-- [Grpc](GRPC/README.md)
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)

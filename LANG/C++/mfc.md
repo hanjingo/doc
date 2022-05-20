@@ -1,6 +1,0 @@
-# MFC
-
-[TOC]
-
-TODO
-
