@@ -156,6 +156,7 @@
 ### AI
 
 - 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
+- ai神库 [tensorflow](https://github.com/tensorflow)/**[tensorflow](https://github.com/tensorflow/tensorflow)**
 
 ### 区块链
 
@@ -239,6 +240,7 @@
 
 - 开源项目汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[opensource](https://github.com/programthink/opensource)**
 - 电子书目录汇总**(强力推荐)** [programthink](https://github.com/programthink)/**[books](https://github.com/programthink/books)**
+- 电子书下载 [EbookFoundation](https://github.com/EbookFoundation)/**[free-programming-books](https://github.com/EbookFoundation/free-programming-books)**
 - QT使用总结 [feiyangqingyun](https://github.com/feiyangqingyun)/**[qtkaifajingyan](https://github.com/feiyangqingyun/qtkaifajingyan)**
 - 关于C++新特性教材 [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial)
 - [SDK接入研究文档](https://github.com/XINCGer/Unity3DTraining/tree/master/SDK)

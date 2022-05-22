@@ -15,5 +15,5 @@
 
 # 快捷导航
 
-[英汉词典](en_zh_dictionary.md) [面试笔记](interview.md) [Bug速查](BUG/README.md) [shell手册](LANG/shell.md) [git指南](OTHERS/git.md) [redis命令](DB/REDIS/cmd.md) [markdown手册](LANG/markdown.md) [sql语法手册](LANG/sql.md) [STL](LANG/C++/stl.md) [vim快捷键](OTHERS/vim_shortcut.md)
+[英汉词典](en_zh_dictionary.md) [面试笔记](interview.md) [Bug速查](BUG/README.md) [shell手册](LANG/shell.md) [git指南](OTHERS/git.md) [redis命令](DB/REDIS/cmd.md) [markdown手册](LANG/markdown.md) [sql语法手册](DB/sql.md) [STL](LANG/C++/stl.md) [vim快捷键](OTHERS/vim_shortcut.md)
 

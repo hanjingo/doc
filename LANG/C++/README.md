@@ -20,12 +20,10 @@
 
 ## Qt
 
-- [数据库](qt_db.md)
+- [操作数据库](qt_db.md)
 - [信号槽](qt_signals_slots.md)
-- [模块](qt_module.md)
 - [元对象系统](qt_obj.md)
-- [资源文件](qt_res.md)
-- [事件](qt_event.md)
+- [多线程](qt_multi_thread.md)
 
 ---
 
@@ -36,5 +34,5 @@
 - [c++ .gitignore模板](res/.gitignore)
 - [谷歌c++编程规范](google_cpp_std.md)
 - [安卓c++开发](android_dev.md)
-- [C++插件系统](res/plugin.md)
+- [C++插件系统](plugin.md)
 

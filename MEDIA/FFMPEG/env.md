@@ -42,8 +42,6 @@
   sudo apt-get install yasm
   ```
 
-  
-
 - 安装libx264,libx265和libnuma
 
   ```sh
