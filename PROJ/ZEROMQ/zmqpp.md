@@ -49,7 +49,7 @@
 
    - 新建qt console项目；
 
-   - 在项目下新建lib目录并添加静态链接库文件`libzmq-v140-mt-4_3_4.lib`，`zmqpp.lib`；
+   - 在项目下新建lib目录并添加静态链接库文件`libzmq-v140-mt-4_3_4.lib`，`zmqpp.lib`（动态链接库分别对应`*.dll`或`*.so`文件）；
 
    - 在项目下新建3rd目录并复制zmqpp项目代码到3rd下面；
 
@@ -638,8 +638,20 @@ dealer1 ->> dealer1: 自动去掉消息msg1前的1帧
 
 
 
+## 高级发布订阅(xpub-xsub)模式
+
+TODO
+
+**注意事项**
+
+1. 一个pub套接字无法接收xsub的订阅请求，需要使用poller将他们关联起来；
+
+
+
 ## 参考
 
+- [XPub / XSub](https://netmq.readthedocs.io/en/latest/xpub-xsub/)
+- [跟我一起学习ZeroMQ（8）：带broker的发布订阅模式：ZMQ_PUB、broker(ZMQ_XPUB和ZMQ_XSUB)、ZMQ_SUB](https://lianshaohua.blog.csdn.net/article/details/109574363)
 - [（一）zeromq 学习之请求应答模型](https://my.oschina.net/u/3312209/blog/4833661)
 - [（二）zeromq 学习之推送拉取模式](https://my.oschina.net/u/3312209/blog/4867760)
 - [（三）zeromq 学习之发布订阅模型](https://my.oschina.net/u/3312209/blog/4867792)

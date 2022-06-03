@@ -823,7 +823,7 @@ end
 Note left of 对象A: 我是一个对象A
 Note right of 对象B: 我是一个对象B
 participant 对象C
-Note over 对象C: 我自己说了算
+Note over 对象A,对象C: 汇总
 ~~~
 
 ```mermaid
@@ -851,7 +851,7 @@ end
 Note left of 对象A: 我是一个对象A
 Note right of 对象B: 我是一个对象B
 participant 对象C
-Note over 对象C: 我自己说了算
+Note over 对象A,对象C: 汇总
 ```
 
 
@@ -1392,4 +1392,5 @@ state 多线程 {
 - [markdown 由简入繁，上手跟我做（十）echarts 图表 - 折线（面积）图](https://qiankunpingtai.cn/article/1566371244169)
 - [Markdown 中 LaTex 数学公式命令](https://www.jianshu.com/p/0ea47ae02262)
 - [Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962)
+- [Markdown 文件中绘制甘特图](https://www.marapython.com/posts/gantt-chart/#%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E8%8A%82%E7%82%B9Milestone)
 

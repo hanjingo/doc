@@ -1,6 +1,7 @@
 # 杂项
 
 - [ASSIC码表](assic_table.md)
+- [astyle代码格式化工具](astyle.md)
 - [emacs快捷键](emacs_shortcut.md)
 - [git教程](git.md)
 - [代理设置](proxy.md)
