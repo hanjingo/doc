@@ -2228,3 +2228,5 @@ TODO
 
 [6] [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers)
 
+[7] [Modern C++中lambda表达式的陷阱](https://blog.csdn.net/czyt1988/article/details/80149695)
+

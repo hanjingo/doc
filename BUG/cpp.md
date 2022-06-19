@@ -49,3 +49,36 @@ class A {
   在linux下用命令`ldconfig`来更新环境依赖；
   
   在macos下用命令`update_dyld_shared_cache`来更新环境以来
+
+
+
+## Lambda引用捕获的悬挂引用问题
+
+### 问题描述
+
+Lambda引用捕获局部变量时，由于离开作用域导致局部变量释放，从而导致“悬挂引用”问题。
+
+```c++
+std::function<void()> f()
+{
+    int a = 1;
+    auto bak = [&](){
+        a++;
+        std::cout << a << std::endl;
+    };
+    return bak;
+}
+int main()
+{
+    auto bak = f();
+    bak();
+}
+```
+
+### 解决方法
+
+- 方法一
+
+  禁用引用捕获局部变量。
+
+  
