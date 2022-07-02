@@ -1318,7 +1318,7 @@ TODO
 
 ## decltype
 
-
+TODO
 
 ---
 
@@ -1345,3 +1345,5 @@ TODO
 [9] [C/C++ 中 static 的用法全局变量与局部变量](https://www.runoob.com/w3cnote/cpp-static-usage.html)
 
 [10] [cppreference.com/Implementation defined behavior control](https://en.cppreference.com/w/cpp/preprocessor/impl)
+
+[11] [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers)

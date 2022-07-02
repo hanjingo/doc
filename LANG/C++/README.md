@@ -26,6 +26,7 @@
 - [元对象系统](qt_obj.md)
 - [多线程](qt_multi_thread.md)
 - [进程](qt_progress.md)
+- [套接字](qt_socket.md)
 - [单元测试](qt_test.md)
 
 ---

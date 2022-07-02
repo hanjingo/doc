@@ -9,4 +9,5 @@
 
 - [Mysql](MYSQL/README.md)
 - [Redis](REDIS/README.md)
+- [Sqlite](SQLITE/README.md)
 

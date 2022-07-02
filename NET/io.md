@@ -579,4 +579,5 @@ int main(int argc, char** argv)
 - [select、poll、epoll之间的区别总结[整理]](https://www.cnblogs.com/Anker/p/3265058.html)
 - [IO多路复用的三种机制Select，Poll，Epoll](https://www.jianshu.com/p/397449cadc9a)
 - [作为C++程序员，应该彻底搞懂epoll高效运行的原理](https://zhuanlan.zhihu.com/p/159135478)
+- [IO多路复用到底是不是异步的？](https://www.zhihu.com/question/59975081/answer/1932776593?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968&utm_content=group3_Answer&utm_campaign=shareopn)
 
