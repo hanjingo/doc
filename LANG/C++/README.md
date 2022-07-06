@@ -6,6 +6,7 @@
 - [并发编程](concurrency.md)
 - [c++特性](feature.md)
 - [对象模型](object.md)
+- [c++日志库](log.md)
 
 ---
 

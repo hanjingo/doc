@@ -117,6 +117,7 @@
 ### 日志库
 
 - C++日志库 [log4cpp](http://log4cpp.sourceforge.net/)
+- C++日志库 [log4cplus](https://github.com/log4cplus)/**[log4cplus](https://github.com/log4cplus/log4cplus)**
 
 ### 内存管理库
 
