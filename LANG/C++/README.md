@@ -6,7 +6,6 @@
 - [并发编程](concurrency.md)
 - [c++特性](feature.md)
 - [对象模型](object.md)
-- [c++日志库](log.md)
 
 ---
 
@@ -40,4 +39,6 @@
 - [谷歌c++编程规范](google_cpp_std.md)
 - [安卓c++开发](android_dev.md)
 - [C++插件系统](plugin.md)
+- [c++日志库](log.md)
+- [c++单元测试](test.md)
 

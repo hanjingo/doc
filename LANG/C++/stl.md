@@ -224,7 +224,7 @@ protected:
 |erase |$O(n)$ |擦除指定范围内的元素。<br>![vector_erase](res/stl/vector_erase.png) |
 |front |$O(1)$ | 返回第一个元素的引用。 |
 |get_allocator |$O(1)$ | 返回容器的内存分配器。 |
-|insert |$O(n)$ |插入元素：<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 > 新增元素个数`<br>![vector_insert1](res/stl/vector_insert1.png)<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 ≤ 新增元素个数`![vector_insert2](res/stl/vector_insert2.png)<br>+ `备用空间 < 新增元素个数`![vector_insert3](res/stl/vector_insert3.png) |
+|insert |$O(n)$ |插入元素：<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 > 新增元素个数`<br>![vector_insert1](res/stl/vector_insert1.png)<br>+ `备用空间 > 新增元素个数 且 插入点后方元素个数 ≤ 新增元素个数`<br>![vector_insert2](res/stl/vector_insert2.png)<br>+ `备用空间 < 新增元素个数`<br>![vector_insert3](res/stl/vector_insert3.png) |
 |max_size |$O(1)$ | 返回根据系统或库实现限制的容器可保有的元素最大数量（限制条件上限）。 |
 |pop_back |$O(1)$ | 移除尾部元素。 |
 |push_back |$O(1)$ | 向尾部添加元素。 |

@@ -1,8 +1,18 @@
-[TOC]
-
 # 跳表
 
+[TOC]
+
+
+
 跳表是一种有序的数据结构，使得包含n个元素的有序序列的查找和插入操作的平均时间复杂度都是$O(\log n)$，优于数组的$O(n)$复杂度。
+
+
+
+## 定义
+
+**定义1** 两个元素称为是`链接的（linked）`，如果至少存在一个链从一个元素指向另一个元素。
+
+**定义2** 两个在高度$h$链接的元素间的`间隙容量（gap size）`等于它们之间高度为$h - 1$的元素的个数。
 
 
 
@@ -16,6 +26,59 @@
 - 节点：图中的列，保存着元素值（黄色部分）以及多个层
 - 层：保存指向其他元素的指针，程序总是先从高层(最上面)开始访问，然后到底层（接近黄色部分）。
 - 表尾：全部为NULL，表示跳表结束
+
+```c++
+template <typename Comparable>
+class DSL
+{
+public:
+    explicit DSL(const Comparable &inf) : INFINITY(inf)
+    {
+        bottom = new SkipNode();
+        bottom->right = bottom->down = bottom;
+        tail = new SkipNode(INFINITY);
+        tail->right = tail;
+        header = new SkipNode(INFINITY, tail, bottom);
+    }
+
+    bool contains(const Comparable &x) const;
+    void insert(const Comparable &x);
+
+private:
+    struct SkipNode
+    {
+        Comparable element;
+        SkipNode   *right;
+        SkipNode   *down;
+
+        SkipNode(const Comparable &theElement = Comparable(),
+                 SkipNode *rt = NULL, SkipNode *dt = NULL)
+            : element(theElement), right(rt), down(dt) {}
+    };
+
+    Comparable INFINITY;
+    SkipNode   *header;
+    SkipNode   *bottom;
+    SkipNode   *tail;
+};
+
+template <typename Comparable>
+bool DSL<Comparable>::contains(const Comparable &x) const
+{
+    SkipNode *current = header;
+
+    bottom->element = x;
+    for (; ;)
+        if (x < current->element)
+            current = current->down;
+        else if (current->element < x)
+            current = current->right;
+        else
+            return current != bottom;
+}
+
+
+```
 
 
 
@@ -44,29 +107,30 @@
 - 申请新节点并插入
 - 调整层级（随机算法）
 
-伪代码：
+```c++
+template <typename Comparable>
+void DSL<Comparable>::insert(const Comparable &x)
+{
+    SkipNode *current = header;
+    bottom->element = x;
+    while (current != bottom)
+    {
+        while (current->element < x)
+            current = current->right;
 
-```txt
-Insert(list, searchKey, newValue)
-	local update[1..MaxLevel]
-	x := list→header
-	for i := list→level downto 1 do
-		while x→forward[i]→key < searchKey do
-			x := x→forward[i]
-		-- x→key < searchKey ≤ x→forward[i]→key
-		update[i] := x
-	x := x→forward[1]
-	if x→key = searchKey then x→value := newValue
-	else
-		lvl := randomLevel()
-		if lvl > list→level then
-			for i := list→level + 1 to lvl do
-				update[i] := list→header
-			list→level := lvl
-		x := makeNode(lvl, searchKey, value)
-		for i := 1 to level do
-			x→forward[i] := update[i]→forward[i]
-			update[i]→forward[i] := x
+        if (current->down->right->right->element < current->element)
+        {
+            current->right = new SkipNode(current->element, current->right, 
+                currernt->down->right->right);
+            current->element = current->down->right->element;
+        }
+        else
+            current = current->down;
+    }
+
+    if (header->right != tail)
+        header = new SkipNode(INFINITY, tail, header);
+}
 ```
 
 例，插入17:

@@ -207,6 +207,16 @@ git submodule deinit 子模块名
 git rm --cached 子模块名
 ```
 
+### 移除错误缓存
+
+```sh
+git rm --cached "文件"
+git rm --cached -r "文件夹"
+
+```
+
+
+
 ---
 
 ### 分支
@@ -347,6 +357,15 @@ TODO
 ```sh
 git pull origin master --allow-unrelated-histories
 ```
+
+`this exceeds GitHub's file size limit of 100.00 MB`
+
+Github禁止上传超过100MB的文件，对于大文件可以用lfs来上传
+
+```sh
+git lfs track "文件名"
+```
+
 
 ---
 
