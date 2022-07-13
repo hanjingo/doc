@@ -19,6 +19,7 @@
 - [Protobuf编码](protobuf.md)
 - [QoS服务质量控制](qos.md)
 - [MessagePack编码](msgpack.md)
+- [组播](multicast.md)
 - [NAT网络地址转换](nat.md)
 - [P2P协议](res/p2p.md)
 - [TCP协议](tcp.md)

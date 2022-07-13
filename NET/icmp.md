@@ -10,6 +10,10 @@
 
 - 多协议标签交换（Multiprotocol Label Switching，MPLS）
 - 路由器发现（Router Discovery）
+- 最大响应时间（Maximum Response Time）
+- 最大响应代码（Maximum Response Code）
+- 查询器鲁棒性变量(Querier Robustness Variable，QRV)
+- 查询器查询间隔代码(Querier's Query Interval Code，QQIC)
 
 
 
@@ -183,3 +187,64 @@ ICMP报文可分为两大类：
 ![icmp_message_ping](res/icmp_message_ping.png)
 
 *ICMPv4和ICMPv6回显请求和回显应答报文格式。请求中的任何可选数据都必须包含在应答中。NAT使用其中的标识符字段来匹配请求和应答*
+
+### 路由器发现报文
+
+![icmp_message_router_found](res/icmp_message_router_found.png)
+
+*ICMPv4路由器通告报文包含了一个IPv4地址列表可用作下一跳的默认路由。优先水平允许网络操作人员为这个列表安排不同的的优先级（越高优先级越大）。移动IPv4[RFC5944]通过扩展增强了RA报文，目的是为了通告MIPv4移动代理以及被通告的路由器地址的前缀长度*
+
+- `地址数（Number of Address）` 报文中路由地址块的个数
+- `优先水平（preference level）` 
+- `地址条目大小（Address Entry Size）` 每个块的32位字数
+- `生命周期（Lifetime）` 地址列表被认为是有效的秒数
+
+### 移动前缀请求/通告报文
+
+![icmp_message_move_prefix1](res/icmp_message_move_prefix1.png)
+
+*当一个移动节点离开去请求一个本地代理提供一个移动前缀通告时，便发送MIPv6移动前缀请求报文*
+
+![icmp_message_move_prefix2](res/icmp_message_move_prefix2.png)
+
+*MIPv6移动前缀通告报文。标识符字段值和请求中对应字段的值一致。M标志指示地址是由一个有状态配置机制提供的。O标志表示除了地址之外的其它信息是由有状态的机制提供的*
+
+### 移动IPv6快速切换报文
+
+![icmpv6_message_fast_switch](res/icmpv6_message_fast_switch.png)
+
+*用于FMIPv6报文的通用ICMPv6报文类型。代码（Code）和子类型（Subtupe）字段给出了更深入的信息。请求报文使用代码0和子类型2，可能包含发送者的链路层地址和首选的下一个接入点链路层地址（如果知道的话）作为选项。通告使用代码0～5和子类型3。不同的代码值表示存在不同的选项，通告是否被请求了，前缀和路由消息是否已经改变，DHCP是否需要处理*
+
+### 组播侦听查询/报告/完成
+
+![icmpv6_message_groupcast](res/icmpv6_message_groupcast.png)
+
+*ICMPv6 MLD版本1报文都是这种形式。查询（类型130）都是通用或者特定组播地址的。一般查询要求主机报告它们正在使用哪个组播地址，特定于地址的查询用于确定一个特定的地址是否（仍然）在使用。最大的响应时间是主机可能延迟发送响应查询报文的最大毫秒数。对于一般的查询和针对特定报告查询的组播地址，其目的组播地址为0。对于报告（类型131）和完成报文（类型132），它将分别包含和报告相关的地址或者不再感兴趣的地址*
+
+### 版本2组播侦听发现报文
+
+![icmpv6_message_mldv2](res/icmpv6_message_mldv2.png)
+
+*MLDv2查询报文格式，它与MLD版本1报文通用格式兼容，最大的区别是能够从主机感兴趣列表中限制或者剔除特定的组播源*
+
+### 组播路由器发现报文
+
+![icmp_message_group_router_found](res/icmp_message_group_router_found.png)
+
+*MRD的通告报文（ICMPv6类型151；IGMP类型48）包含说明多长时间发送主动通告的通告时间间隔（秒），发送者的查询间隔（QQI）和MLD定义的鲁棒性变量。发送者的IP地址就是用来指示接收者能够转发组播流量的路由器。该报文被发送到所有侦听者的组播地址（IPv4,224.0.0.106;IPv6,ff02::6a）*
+
+![icmpv6_message_group_router_found](res/icmpv6_message_group_router_found.png)
+
+*ICMPv6 MRD请求（ICMPv6类型152；IGMP类型49）和终止（ICMPv6类型153；IGMP类型50）报文使用相同的格式。MRD报文将IPv6跳数限制字段或者IPv4TTL字段值设置为1，并包含路由器警告选项。请求被发送到所有路由器的组播地址（IPv4, 224.0.0.2; IPv6, ff02::2）*
+
+
+
+## IPv6中的邻居发现
+
+TODO
+
+
+
+## 参考
+
+[1] [美] Kevin R. Fall, [美] W. Richard Stevens.Tcp/ip详解.3ED
