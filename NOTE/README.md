@@ -26,16 +26,17 @@
 
 ### 网络编程
 
-| 书名                                                         | 版次 | 作者                                          | 摘要/评价            |
-| ------------------------------------------------------------ | ---- | --------------------------------------------- | -------------------- |
-| [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md) |      |                                               |                      |
-| [TCP/IP详解-卷一](TCP_IP_ILLUSTRATED_V1/README.md)           | 3ED  | [美] Kevin R. Fall<br>[美] W. Richard Stevens | 网络编程领域的圣经。 |
+| 书名                                                         | 版次 | 作者                                                         | 摘要/评价                |
+| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------ |
+| [websocket权威指南](THE_DEFINITIVE_GUIDE_TO_HTML5_WEBSOCKET/README.md) |      |                                                              |                          |
+| [TCP/IP详解-卷一](TCP_IP_ILLUSTRATED_V1/README.md)           | 3ED  | [美] Kevin R. Fall<br>[美] W. Richard Stevens                | 讲解网络协议的标准教材。 |
+| [UNIX网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)   | 3ED  | [美]W.Richard Stevens<br>[美]Bill Fenner<br>[美]Andrew M Rudoff | 网络编程领域的圣经。     |
 
 ### 并行编程
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
+| 书名                                                   | 版次 | 作者 | 摘要/评价 |
+| ------------------------------------------------------ | ---- | ---- | --------- |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) |      |      |           |
 
 ### C++
 
@@ -45,7 +46,6 @@
 | [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers     | 想写好modern c++必读之作                                     |
 | [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷             | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
 | [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton  | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       |      |                  |                                                              |
 | [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) |      |                  |                                                              |
 | [Effective STL](EFFECTIVE_STL/README.md)                     | 1ED  | [美]Scott Meyers | 建议在初步了解STL后再配合使用此书，里面的很多条款需要对STL比较熟悉才能领悟到其意图。 |
 
@@ -71,7 +71,7 @@
 
 ## 在读
 
-- [UNIX网络编程 卷一](UNIX_NETWORK_PROGRAMMING_V1/README.md)
+- [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
 - [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)

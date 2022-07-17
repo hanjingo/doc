@@ -66,6 +66,22 @@
    
 6. 完成。
 
+### linux
+
+1. 新建build文件夹，并构建cmake
+
+   ```sh
+   mkdir build
+   cd build
+   cmake .. -DZMQ_BUILD_TESTS=OFF -DBUILD_STATIC=ON -DBUILD_SHARED=ON
+   ```
+
+2. make构建
+
+   ```sh
+   make
+   ```
+
 
 
 ## 测试

@@ -24,8 +24,8 @@
 - [第二十章 广播](chapter20.md)
 - [第二十一章 多播](chapter21.md)
 - [第二十二章 高级UDP套接字编程](chapter22.md)
-- [第二十三章 高级SCTP套接字编程]
-- [第二十四章 带外数据]
+- [第二十三章 高级SCTP套接字编程](chapter23.md)
+- [第二十四章 带外数据](chapter24.md)
 - [第二十五章 信号驱动式I/O](cha)
 - [第二十六章 线程](chapter26.md)
 - [第二十七章 IP选项](chapter27.md)
