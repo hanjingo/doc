@@ -1,5 +1,9 @@
 # 附录D C++线程类库参考
 
+[TOC]
+
+
+
 ## D.1<chrono>头文件
 <chrono>头文件作为time_point的提供者，具有代表时间点的类，duration类和时钟类。每个时钟都有一个`is_steady`静态数据成员，这个成员用来表示该时钟是否是一个稳定的时钟（以匀速计时的时钟，且不可调节）。`std::chrono::steady_clock`是唯一能保证稳定的时钟类。
 

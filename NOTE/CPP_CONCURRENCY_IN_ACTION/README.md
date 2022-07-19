@@ -1,5 +1,7 @@
 # c++并发编程实战
 
+Anthony Williams . 1ED
+
 - [第一章 你好，c++并发世界](chapter1.md)
 - [第二章 管理线程](chapter2.md)
 - [第三章 在线程间共享数据](chapter3.md)

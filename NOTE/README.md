@@ -34,15 +34,15 @@
 
 ### 并行编程
 
-| 书名                                                   | 版次 | 作者 | 摘要/评价 |
-| ------------------------------------------------------ | ---- | ---- | --------- |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) |      |      |           |
+| 书名                                                   | 版次 | 作者             | 摘要/评价                    |
+| ------------------------------------------------------ | ---- | ---------------- | ---------------------------- |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛 |
 
 ### C++
 
 | 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
 | ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
-| [Effective C++](EFFECTIVE_CPP/README.md)                     |      |                  | 想写好c++必读之作                                            |
+| [Effective C++](EFFECTIVE_CPP/README.md)                     | 3ED  | [美]Scott Meyers | 想写好c++必读之作                                            |
 | [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers     | 想写好modern c++必读之作                                     |
 | [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷             | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
 | [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton  | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |

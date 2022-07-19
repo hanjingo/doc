@@ -1,5 +1,7 @@
 # Effective C++
 
+[美]Scott Meyers . 3th Edition
+
 - [1 Accustoming Yourself to C++](chapter1.md)
 - [2 Constructors,Destructors,and Assignment Operators](chapter2.md)
 - [3 Resource Management](chapter3.md)
