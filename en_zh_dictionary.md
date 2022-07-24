@@ -113,11 +113,15 @@ adjoin `/əˈdʒɔɪn/` 毗邻，贴近，紧挨
 
 adjunct `/ˈædʒʌŋkt/` 附属物，辅助，附加语
 
+administer `/ədˈmɪnɪstər/` 管理，掌管，治理
+
 admiration `/ˌædməˈreɪʃn/` 钦佩，仰慕，羡慕
 
 admit `/ədˈmɪt/` 承认，招供，准许
 
 adorn `/əˈdɔːn/` 装饰，装扮
+
+advance `/ədˈvɑːns/` 前进，推进
 
 ### ae
 
@@ -170,6 +174,8 @@ alchemy `/ˈælkəmi/` 炼金术，神秘力量，魔力
 algae `/'ældʒiː/` 藻类，水藻，海藻
 
 allegation `/ˌæləˈɡeɪʃn/` 断言，说法，指控，主张，辩解
+
+alleviate `/əˈliːvieɪt/` 减轻，缓和，缓解
 
 aloft `/əˈlɒft/` 在空中，在高处
 
@@ -228,6 +234,8 @@ anesthetic `/ˌænəˈsθɛtɪk/` 麻醉药，麻醉剂
 angular `/'æŋɡjələ(r)/` 有角的，消瘦的，笨拙的
 
 anomaly `/əˈnɒməli/` 异常，反常
+
+anonymous `/əˈnɑnɪməs/` 匿名的，无名的
 
 anthem `/ˈænθəm/` 国歌，赞美诗
 
@@ -639,7 +647,7 @@ chanted `/ˈtʃɑːntɪd/` 反复唱，重复地唱
 
 chapel `/ˈtʃæpl/` 小教堂
 
-characterize `/ˈkærəktəraɪz/` 描述...特征，刻画
+character `/ˈkærəktər/` 性格，品质，特征，描述...特征，刻画
 
 cherish `/ˈtʃerɪʃ/` 珍爱，珍惜，怀念
 
@@ -713,6 +721,8 @@ clergy `/ˈklɜːdʒi/` 牧师，神职人员
 
 closure `/ˈkləʊʒə(r)/` 闭包，停业，关闭，倒闭，终止
 
+clutch `/klʌtʃ/` 抓住，抱紧，离合器
+
 ### co
 
 [回到C](#C)--[回到顶部](#英汉词典)
@@ -741,6 +751,8 @@ commercialize `/kə'mɜːʃəlaɪz/` 商业化，利用...牟利
 
 commute `/kəˈmjuːt/` 通勤，上下班往返，减刑
 
+compass `/ˈkʌmpəs/` 罗盘，指南针，圆规
+
 compelling `/kəmˈpelɪŋ/` 引人入胜的，强迫，迫使，不可抗拒的
 
 compete `/kəmˈpiːt/` 竞争，对抗，竞赛
@@ -748,6 +760,8 @@ compete `/kəmˈpiːt/` 竞争，对抗，竞赛
 compile `/kəmˈpaɪl/` 汇编，收集，编撰
 
 complimentary `/ˌkɒmplɪˈmentri/` 免费的，赠送的，赞美的
+
+component `/kəmˈpəʊnənt/` 组成，成分，组合的
 
 comprehensive `/ˌkɒmprɪ'hensɪv/` 可理解的，全面的，综合的，广泛的
 
@@ -1157,6 +1171,8 @@ despite `/dɪˈspaɪt/` 尽管，即使
 
 despoil `/dɪˈspɔɪl/` 抢劫，掠夺，蹂躏，破坏
 
+dessert `/dɪˈzɜːt/` 甜点
+
 destabilise `/diː'steɪbɪlaɪz/` 动摇，使...不稳定
 
 destine `/destɪn/` 注定，命运，指定，预定
@@ -1305,6 +1321,8 @@ doll `/dɒl/` 玩偶，玩具娃娃
 
 dominate `/ˈdɒmɪneɪt/` 支配，控制
 
+dorm `/dɔːm/` 宿舍
+
 dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 
 ### dr
@@ -1376,6 +1394,8 @@ earthenware `/ˈɜːrθnwer/` 陶器，陶制的
 ### ec
 
 [回到E](#E)--[回到顶部](#英汉词典)
+
+eccentric `/ɪkˈsentrɪk/` 古怪的，异乎寻常的
 
 ecologic `/ekə'lɒdʒɪk/` 生态的，生态学的
 
@@ -1643,6 +1663,8 @@ failover `/ˈfālˌōvər/` 故障转移
 
 faint `/feɪnt/` 昏倒，昏厥
 
+fairly `/ˈfeəli/` 公平的
+
 faithful `/ˈfeɪθfl/` 忠诚的，信徒
 
 falcon `/ˈfɔːlkən/` 猎鹰，猎隼
@@ -1659,9 +1681,13 @@ fasten `/ˈfɑːsn/` 系，扎牢，扣住，固定
 
 fateful `/ˈfeɪtfl/` 重大的，决定性的，宿命的
 
+fatigue `/fəˈtiːɡ/` 疲劳，劳累，厌倦
+
 faucet `/ˈfɔːsɪt/` 水龙头，龙头
 
 favored `/ˈfeɪvərd/` 优先的，受到偏爱的
+
+favorite `/ˈfeɪvərɪt/` 喜爱的，喜欢的
 
 ### fe
 
@@ -1756,6 +1782,8 @@ forest `/ˈfɒrɪst/` 森林
 forestall `/fɔːˈstɔːl/` 领先，先发制人
 
 forge `/fɔːdʒ/` 锻造，制作，艰苦干成
+
+fork `/fɔːk/` 叉，耙
 
 fort `/fɔːt/` 要塞，堡垒，城堡，军营
 
@@ -1870,6 +1898,8 @@ glean `/ɡliːn/` 收集
 glide `/ɡlaɪd/` 滑翔，滑动
 
 glitch `/ɡlɪtʃ/` 失灵，小故障
+
+gloomy `/'ɡluːmi/` 阴暗的，阴沉的，令人沮丧的
 
 ### go
 
@@ -2228,6 +2258,8 @@ integrity `/ɪnˈteɡrəti/` 正直，诚实，完整，完好
 intellectual `/ˌɪntəˈlektʃuəl/` 知识分子，智力的，理智的
 
 intelligence `/ɪnˈtelɪdʒəns/` 智力，才智，情报，理解力
+
+interest `/ˈɪntrəst/` 兴趣，重要性，利益
 
 intermittent `/ˌɪntəˈmɪtənt/` 断断续续的，间歇的
 
@@ -2597,6 +2629,8 @@ miniature `/ˈmɪnətʃər/` 微小的，微型的
 
 minimalist `/ˈmɪnɪməlɪst/` 极简主义者，简约主义者
 
+minister `/ˈmɪnɪstər/`
+
 minuscule `/ˈmɪnəskjuːl/` 极小的，极微的
 
 miracle `/ˈmɪrəkl/` 奇迹，神迹，精品
@@ -2645,6 +2679,8 @@ motion `/ˈməʊʃn/` 运动，移动，手势，提议
 
 motivate `/ˈməʊtɪveɪt/` 动机，激励，激发，原因
 
+mountain `/ˈmaʊntən/` 山，山脉
+
 mournful `/ˈmɔːnfl/` 悲哀的，忧伤的
 
 ### mu
@@ -2687,6 +2723,8 @@ narrow `/ˈnarəʊ/` 狭窄的，变窄，有限的，差距小的
 
 naturalist `/ˈnætʃrəlɪst/` 自然主义者，博物学家
 
+naughty `/ˈnɔːti/` 顽皮的，淘气的
+
 ### ne
 
 [回到N](#N)--[回到顶部](#英汉词典)
@@ -2702,6 +2740,8 @@ neutral `/ˈnjuːtrəl/` 中立的，中性的，中和色
 neuron `/ˈnjʊərɒn/` 神经元
 
 neutron `/ˈnjuːtrɒn/` 中子
+
+nevertheless `/ˌnevəðəˈles/` 然而，不过，尽管
 
 newbie `/ˈnjuːbi/` 新手
 
@@ -2746,6 +2786,8 @@ noxious `/ˈnɒkʃəs/` 有害的，有毒的
 [回到N](#N)--[回到顶部](#英汉词典)
 
 nuclei `/ˈnjuːklɪaɪ/` 核心，原子核，细胞核
+
+nutrition `/nuˈtrɪʃ(ə)n/` 营养，营养学
 
 nutritious `/nutritious/` 有营养的，营养丰富的，滋润的
 
@@ -2877,6 +2919,8 @@ outcry `/ˈaʊtkraɪ/` 大声喊叫，呐喊，怒吼，强烈抗议
 
 outgrow `/ˌaʊtˈɡrəʊ/` 长大，长的比...大
 
+outlet `/ˈaʊtlet/` 出口，出路，销路，电源插座，宣泄口
+
 outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
 outspoken `/aʊtˈspəʊkən/` 直率，坦诚，直言不讳
@@ -2949,6 +2993,8 @@ paraphrase `/ˈpærəfreɪz/` 解释，释义
 
 parapsychology `/ˌpærəsaɪˈkɒlədʒi/` 灵学，超心理学
 
+parasite `/ˈpærəsaɪt/` 寄生虫，食客
+
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
 
 parliament `/ˈpɑː.lɪ.mənt/` 议会
@@ -2974,6 +3020,8 @@ passive `/ˈpæsɪv/` 消极的，被动的
 pastel `/ˈpæstl/` 柔和的，粉蜡笔，淡的
 
 pasture `/ˈpɑːstʃə(r)/` 牧场，草地，生活状况
+
+pat `/pæt/` 轻拍，抚摸，适合的
 
 patent `/ˈpætnt/` 专利权，专利证书
 
@@ -3056,6 +3104,8 @@ photosphere `/photosphere/` 光球，光球层
 ### pi
 
 [回到P](#P)--[回到顶部](#英汉词典)
+
+piece `/piːs/` 块，片，件，碎片
 
 pigment `/ˈpɪɡmənt/` 颜料，天然色素
 
@@ -3341,6 +3391,8 @@ raven `/ˈreɪvn/` 乌鸦，渡鸦，掠夺，狼吞虎咽地吃
 
 [回到R](#R)--[回到顶部](#英汉词典)
 
+realistic `/ˌriːəˈlɪstɪk/` 现实的，实际的，逼真的
+
 realization `/riːəlʌɪˈzeɪʃn/` 认识，体会
 
 realm `/relm/` 王国，领域，国土
@@ -3380,6 +3432,8 @@ recur `/rɪˈkɜː(r)/` 重现，再次发生，反复出现
 reduce `/rɪˈdjuːs/` 减少，缩小，节食，蒸发
 
 redundant `/rɪˈdʌndənt/` 冗余的，多余的，不需要的
+
+reed `/riːd/` 簧片，芦苇
 
 reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
 
@@ -3603,6 +3657,8 @@ scholarly `/ˈskɒləli/` 学者气质的，有学问的，学术的
 
 scissors `/ˈsɪzəz/` 剪刀，剪断，删除
 
+scold `/skəʊld/` 责骂，训斥
+
 scour `/ˈskaʊər/` 冲刷，搜查，刷洗
 
 scout `/skaʊt/` 童子军，侦查，物色
@@ -3799,6 +3855,8 @@ solidarity `/ˌsɒlɪˈdærəti/` 团结，齐心协力
 
 solitude `/ˈsɒlətjuːd/` 孤独，独居
 
+solomon `/ˈsɒləmən/` 智者，聪明人
+
 somewhat `/ˈsʌmwɒt/` 有点，稍微，有几分
 
 soothe `/suːð/` 安抚，安慰，缓解
@@ -3867,6 +3925,8 @@ sprawl `/sprɔːl/` 伸展四肢，蔓延，爬行
 
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
+spur `/spɜːr/` 马刺，刺激，激励
+
 ### sq
 
 [回到S](#S)--[回到顶部](#英汉词典)
@@ -3928,6 +3988,8 @@ strait `/streɪt/` 海峡，水道
 strap `/stræp/` 捆扎，打绷带，带子
 
 stratum `/ˈstrɑːtəm/` 层，地层，岩层，阶层
+
+straw `/strɔː/` 稻草，吸管，麦秆
 
 strenuous `/ˈstrenjuəs/` 费力的，奋力的，顽强的
 
@@ -4155,6 +4217,8 @@ thrust `/θrʌst/` 猛冲，刺，戳
 
 [回到T](#T)--[回到顶部](#英汉词典)
 
+tile `/taɪl/` 瓦片，瓷砖，铺砖
+
 tilt `/tɪlt/` 倾斜，偏向
 
 timber `/ˈtɪmbə(r)/` 木材，树木，木质骨架
@@ -4234,6 +4298,8 @@ trifle `/ˈtrʌɪf(ə)l/` 少量，琐事
 triplet `ˈtrɪplət` 三个，三联体，三胞胎
 
 triumph `/ˈtraɪʌmf/` 狂喜，胜利，凯旋
+
+trolley `/ˈtrɒli/` 手推车，有轨/无轨电车
 
 troops `/truːps/` 军队，士兵，连队
 
@@ -4437,6 +4503,8 @@ veil `/veɪl/` 面纱，面罩，掩盖，掩饰
 
 vibration `/vaɪˈbreɪʃn/` 振动，颤动，犹豫
 
+vicious `/ˈvɪʃəs/` 恶毒的，凶残的，邪恶的
+
 videocassette `/ˌvɪdɪoʊkə'set/` 录像带
 
 vigil `/ˈvɪdʒɪl/` 值夜，不眠时间，守夜
@@ -4530,6 +4598,8 @@ wildlife `/ˈwaɪldlaɪf/` 野生动物
 willing `/ˈwɪlɪŋ/` 愿意，乐意，想要，决心
 
 wingspan `/ˈwɪŋspæn/` 翼展，翼幅
+
+wipe `/waɪp/` 擦，抹除
 
 wit `/wɪt/` 机智，风趣，智力，才思敏捷，理解力
 

@@ -14,6 +14,7 @@
 - [asio](boost_asio.md)
 - [optional](boost_optional.md)
 - [pool](boost_pool.md)
+- [statechart](boost_statechart.md)
 - [strand](boost_strand.md)
 
 ---

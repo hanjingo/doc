@@ -126,7 +126,15 @@ my_exit2(void)
 例：
 
 ```c++
-TODO
+#include "apue.h"
+int
+main(int argc, char *argv[])
+{
+    int i;
+    for (i = 0; i < argc; i++)
+        printf("argv[%d]:%s\n", i, argv[i]);
+    exit(0);
+}
 ```
 
 *将所有命令行参数回显到标准输出*
@@ -313,7 +321,48 @@ int unsetenv(const char *name);
 *调用cmd_add后的各个栈帧*
 
 ```c++
-TODO
+#include "apue.h"
+#define TOK_ADD 5
+void do_line(char *);
+void cmd_add(void);
+int  get_token(void);
+int 
+main(void)
+{
+    char line[MAXLINE];
+    while (fgets(line, MAXLINE, stdin) != NULL)
+        do_line(line);
+    exit(0);
+}
+char *tok_ptr;
+
+void 
+do_line(char *ptr)
+{
+    int cmd;
+    tok_ptr = ptr;
+    while ((cmd = get_token()) > 0) {
+        switch (cmd) {
+            case TOK_ADD:
+                cmd_add();
+                break;
+        }
+    }
+}
+
+void 
+cmd_add(void)
+{
+    int token;
+    token = get_token();
+    /* reset of processing for this command */
+}
+
+int 
+get_token(void)
+{
+    /* fetch next token from line pointed to by tok_ptr */
+}
 ```
 
 *进行命令处理程序的典型骨架部分*
@@ -377,7 +426,46 @@ cmd_add(void)
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <setjmp.h>
+static void f1(int, int, int, int);
+static void f2(void);
+static jmp_buf jmpbuffer;
+static int globval;
+int 
+main(void)
+{
+    int autoval;
+    register int regival;
+    volatile int volaval;
+    static int statval;
+    globval = 1; autoval = 2; regival = 3; volaval = 4; statval = 5;
+    if (setjmp(jmpbuffer) != 0) {
+        printf("after longjmp:\n");
+        printf("globval = %d, autoval = %d, regival = %d,"
+               " volaval = %d, statval = %d\n",
+               globval, autoval, regival, volaval, statval);
+        exit(0);
+    }
+    globval = 95; autoval = 96; regival = 97; volaval = 98;
+    statval = 99;
+    f1(autoval, regival, volaval, statval);
+    exit(0);
+}
+static void
+f1(int i, int j, int k, int l)
+{
+    printf("in f1():\n");
+    printf("globval = %d, autoval = %d, regival = %d,"
+           " volaval = %d, statval = %d\n", globval, i, j, k, l);
+    f2();
+}
+
+static void 
+f2(void)
+{
+    longjmp(jmpbuffer, 1);
+}
 ```
 
 *longjmp对各类变量的影响*
@@ -385,7 +473,18 @@ TODO
 例：
 
 ```c++
-TODO
+#include <stdio.h>
+FILE * 
+open_data(void)
+{
+    FILE *fp;
+    char databuf[BUFSIZE];
+    if ((fp = fopen("datafile", "r")) == NULL)
+        return (NULL);
+    if (setvbuf(fp, databuf, _IOLBF, BUFSIZ) != 0)
+        return (NULL);
+    return(fp);
+}
 ```
 
 *自动变量的不正确使用*
@@ -449,7 +548,74 @@ int setrlimit(int resource, const struct rlimit *rlptr);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/resource.h>
+#define doit(name) pr_limit(#name, name)
+static void pr_limits(char *, int);
+int 
+main(void)
+{
+#ifdef RLIMIT_AS
+	doit(RLIMIT_AS);
+#endif
+    doit(RLIMIT_CORE);
+    doit(RLIMIT_CPU);
+    doit(RLIMIT_DATA);
+    doit(RLIMIT_FSIZE);
+#ifdef RLIMIT_MEMLOCK
+    doit(RLIMIT_MEMLOCK);
+#endif
+#ifdef RLIMIT_MSGQUEUE
+    doit(RLIMIT_MSGQUEUE);
+#endif
+#ifdef RLIMIT_NICE
+    doit(RLIMIT_NICE);
+#endif
+#ifdef RLIMIT_NPROC
+    doit(RLIMIT_NPROC);
+#endif
+#ifdef RLIMIT_NPTS
+    doit(RLIMIT_NPTS);
+#endif
+#ifdef RLIMIT_RSS
+    doit(RLIMIT_RSS);
+#endif
+#ifdef RLIMIT_SBSIZE
+    doit(RLIMIT_SBSIZE);
+#endif
+#ifdef RLIMIT_SIGPENDING
+    doit(RLIMIT_SIGPENDING);
+#endif
+#ifdef RLIMIT_SWAP
+    doit(RLIMIT_SWAP);
+#endif
+#ifdef RLIMIT_VMEM
+    doit(RLIMIT_VMEM);
+#endif
+    exit(0);
+}
+static void 
+pri_limits(char *name, int resource)
+{
+    struct rlimit limit;
+    unsigned long long lim;
+    if (getrlimit(resource, &limit) < 0)
+        err_sys("getrlimit error for %s", name);
+    printf("%-14s ", name);
+    if (limit.rlim_cur == RLIM_INFINITY) {
+        printf("(infinite) ");
+    } else {
+        lim = limit.rlim_cur;
+        printf("%1011d ", lim);
+    }
+    if (limit.rlim_max = RLIM_INFINITY) {
+        printf("(infinite)");
+    } else {
+        lim = limit.rlim_max;
+        printf("%1011d", lim);
+    }
+    putchar((int)'\n');
+}
 ```
 
 *打印当前资源限制*

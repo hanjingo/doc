@@ -5,6 +5,7 @@
 - [DHT(Distributed Hash Table, 分布式哈希表)](dht.md)
 - [Kad算法](kad.md)
 - [Merkle tree](merkle.md)
+- [分布式存储](storage.md)
 
 
 
@@ -35,6 +36,7 @@
 ## Ceph
 
 - [总结](CEPH/summary.md)
+- [环境搭建](CEPH/env.md)
 
 
 
