@@ -6,7 +6,7 @@
 | [**B**](#B) | [ba](#ba) |           |           |           | [be](#be) |           |           |           | [bi](#bi) |           |           | [bl](#bl) |           |           | [bo](#bo) |           |           | [br](#br) |           |           | [bu](#bu) |           |           |           |           |      |
 | [**C**](#C) | [ca](#ca) |           |           |           | [ce](#ce) |           |           | [ch](#ch) | [ci](#ci) |           |           | [cl](#cl) |           |           | [co](#co) |           |           | [cr](#cr) |           |           | [cu](#cu) |           |           |           | [cy](#cy) |      |
 | [**D**](#D) | [da](#da) |           |           |           | [de](#de) |           |           |           | [di](#di) |           |           |           |           |           | [do](#do) |           |           | [dr](#dr) |           |           | [du](#du) |           | [dw](#dw) |           | [dy](#dy) |      |
-| [**E**](#E) | [ea](#ea) |           | [ec](#ec) | [ed](#ed) |           | [ef](#ef) | [eg](#eg) |           |           |           |           | [el](#el) | [em](#em) | [en](#en) |           | [ep](#ep) | [eq](#eq) | [er](#er) | [es](#es) |           |           | [ev](#ev) |           | [ex](#ex) |           |      |
+| [**E**](#E) | [ea](#ea) |           | [ec](#ec) | [ed](#ed) |           | [ef](#ef) | [eg](#eg) |           |           |           |           | [el](#el) | [em](#em) | [en](#en) |           | [ep](#ep) | [eq](#eq) | [er](#er) | [es](#es) | [et](#et) |           | [ev](#ev) |           | [ex](#ex) |           |      |
 | [**F**](#F) | [fa](#fa) |           |           |           | [fe](#fe) |           |           |           | [fi](#fi) |           |           | [fl](#fl) |           |           | [fo](#fo) |           |           | [fr](#fr) |           |           | [fu](#fu) |           |           |           |           |      |
 | [**G**](#G) | [ga](#ga) |           |           |           | [ge](#ge) |           |           |           | [gi](#gi) |           |           | [gl](#gl) |           |           | [go](#go) |           |           | [gr](#gr) |           |           | [gu](#gu) |           |           |           | [gy](#gy) |      |
 | [**H**](#H) | [ha](#ha) |           |           |           | [he](#he) |           |           |           | [hi](#hi) |           |           |           |           |           | [ho](#ho) |           |           |           |           |           | [hu](#hu) |           |           |           | [hy](#hy) |      |
@@ -178,6 +178,8 @@ allegation `/ˌæləˈɡeɪʃn/` 断言，说法，指控，主张，辩解
 alleviate `/əˈliːvieɪt/` 减轻，缓和，缓解
 
 aloft `/əˈlɒft/` 在空中，在高处
+
+along `/əˈlɒŋ/` 沿着，向前，靠着
 
 alter `/ˈɔːltə/` 改变，更改
 
@@ -403,6 +405,8 @@ avoidance `/əˈvɔɪdəns/` 避免，回避，防止，避开
 
 aware `/əˈweə(r)/` 意识到，知道，明白，发觉
 
+awe `/ɔː/` 敬畏，惊惧
+
 awkwardly `/ɔːkwədli/` 笨拙的，别扭的，拘谨的
 
 ---
@@ -442,6 +446,8 @@ batch `/bætʃ/` 一批，批处理
 ### be
 
 [回到B](#B)--[回到顶部](#英汉词典)
+
+beast `/biːst/` 野兽，行为粗暴的人
 
 bedrock `/ˈbedrɒk/` 地基，基岩，基本原则
 
@@ -580,6 +586,8 @@ buzz `/bʌz/` 嗡嗡声，蜂鸣声
 cabinet `/ˈkæbɪnət/` 内阁，陈列柜
 
 cacti `/ˈkæktaɪ/` 仙人掌
+
+cage `/keɪdʒ/` 笼子
 
 calibration `/ˌkælɪˈbreɪʃn/` 校准，刻度，标定
 
@@ -793,11 +801,15 @@ congenital `/kənˈdʒenɪtl/` 先天性的，天生的
 
 connoisseur `/ˌkɑːnəˈsɜːr/` 行家，鉴赏家，鉴定家
 
+conscious `/ˈkɒnʃəs/` 意识到，自觉地，神智清醒的
+
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
 conserve `/kənˈsɜːrv /` 保存，节约，保护，节省
 
 considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
+
+consolidate `/kənˈsɒlɪdeɪt/` 合并，巩固，加固
 
 conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
 
@@ -1021,6 +1033,8 @@ craze `/kreɪz/` 狂热，发狂
 
 creditor `/ˈkredɪtə(r)/` 债主，债权人
 
+creep `/kriːp/` 爬，爬行，蔓延
+
 crew `/kruː/` 全体工作人员，专业团队
 
 cripple `/ˈkrɪpl/` 瘸子，残疾人，使...变残疾
@@ -1157,6 +1171,8 @@ depress `/dɪˈpres/` 使...沮丧，使...萧条，减少(工资)
 
 deprive `/dɪˈpraɪv/` 剥夺，免去，免职，匮乏，贫困
 
+depth `/depθ/` 深度，深奥
+
 derived `/dɪˈraɪvd/` 取得，产生
 
 descend `/dɪˈsend/` 下降，走下，降临
@@ -1174,6 +1190,8 @@ despoil `/dɪˈspɔɪl/` 抢劫，掠夺，蹂躏，破坏
 dessert `/dɪˈzɜːt/` 甜点
 
 destabilise `/diː'steɪbɪlaɪz/` 动摇，使...不稳定
+
+destination `/ˌdestɪˈneɪʃn/` 目的地
 
 destine `/destɪn/` 注定，命运，指定，预定
 
@@ -1481,6 +1499,8 @@ eminence `/ˈemɪnəns/` 卓越，显赫
 
 emotion `/ɪˈməʊʃn/` 情绪，情感，激情
 
+emperor `/ˈempərər/` 皇帝
+
 emphasis `/ˈemfəsɪs/` 强调，重视，加强，重读
 
 ### en
@@ -1561,9 +1581,17 @@ escalate `/ˈeskəleɪt/` 加剧，逐步升高，不断恶化
 
 eschew `/ɪsˈtʃuː/` 回避，避开，避免
 
+escort `/ˈeskɔːrt /` 护送，陪同，警卫，仪仗兵
+
 estate `/ɪˈsteɪt/` 遗产，庄园，个人财产
 
 essential `/ɪˈsenʃl/` 本质的，要素，必需品
+
+### et
+
+[回到E](#E)--[回到顶部](#英汉词典)
+
+ethnic `/ˈeθnɪk/` 种族的，民族的，人种学的
 
 ### ev
 
@@ -1623,6 +1651,8 @@ expedition `/ˌekspəˈdɪʃn/` 远征，探险，考察
 
 expell `/ɪkˈspel/` 排除
 
+expire `/ɪkˈspaɪə(r)/` 过期，失效，断气
+
 explicit `/ɪkˈsplɪsɪt/` 显式的，清楚明白的，清晰的
 
 exploit `/ɪkˈsplɔɪt/` 剥削，压榨，利用，开发
@@ -1646,6 +1676,8 @@ exuberant `/ɪɡˈzjuːbərənt/` 旺盛的，茂盛的
 ### fa
 
 [回到F](#F)--[回到顶部](#英汉词典)
+
+fabulous `/ˈfæbjələs/` 极好的，寓言中的，传说中的
 
 facilitate `/ fəˈsɪlɪteɪt/` 促进，加快
 
@@ -1685,6 +1717,8 @@ fatigue `/fəˈtiːɡ/` 疲劳，劳累，厌倦
 
 faucet `/ˈfɔːsɪt/` 水龙头，龙头
 
+fault `/fɔːlt/` 过失，错误
+
 favored `/ˈfeɪvərd/` 优先的，受到偏爱的
 
 favorite `/ˈfeɪvərɪt/` 喜爱的，喜欢的
@@ -1718,6 +1752,8 @@ finch `/fɪntʃ/` 雀类
 fir `/fɜːr/` 杉木
 
 firm `/fɜːm/` 商号，公司，事务所，坚定的，稳固的，坚固的，稳步上涨
+
+fist `/fɪst/` 拳头，拳打，紧握
 
 fitness `/ˈfɪtnəs/` 健身，健康，健壮
 
@@ -1812,6 +1848,8 @@ frequent `/ˈfriːkwənt/` 频繁的，常去，急促的
 fresco `/ˈfreskəʊ/` 壁画
 
 friction `/ˈfrɪkʃn/` 摩擦，摩擦力，争执，分歧
+
+fridge `/frɪdʒ/` 冰箱
 
 frigid `/ˈfrɪdʒɪd/` 性冷淡的，高冷的，寒冷的
 
@@ -2233,6 +2271,8 @@ insistence `/ɪnˈsɪstəns/` 坚持，强调，固执
 
 inspect `/ɪnˈspekt/` 检查，审查，查看，视察
 
+inspire `/ɪnˈspaɪər/` 激励，鼓舞，产生灵感
+
 installment `/ɪnˈstɔːlmənt/` 分期的，安装，安置
 
 instant `/ˈɪnstənt/` 立即，立刻
@@ -2439,6 +2479,8 @@ leap `/liːp/` 跳跃，跃过，暴涨
 
 lease `/liːs/` 出租，租约
 
+lecture `/ˈlektʃər/` 演讲，讲课
+
 legacy `/ˈleɡəsi/` 遗产，遗留，后遗症
 
 legal `/ˈliːɡl/`  法律的，合法的
@@ -2641,6 +2683,8 @@ mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 
 missionary `/ˈmɪʃənri/` 传教士，传教士体位
 
+mistress `/ˈmɪstrəs/` 主妇，情妇，女主人
+
 mitigate `/ˈmɪtɪɡeɪt/` 减轻，缓和
 
 ### mo
@@ -2672,6 +2716,8 @@ monotonous `/məˈnɒtənəs/` 单调的，无聊的
 monument `/ˈmɒnjumənt/` 纪念碑，遗迹
 
 morale `/məˈrɑːl/` 士气，斗志
+
+mostly `/ˈməʊstli/` 主要的，大部分的，基本上
 
 motif `/məʊˈtiːf/` 主题，动机
 
@@ -2768,6 +2814,8 @@ nonconformity `/ˌnɒnkənˈfɔːməti/` 不墨守成规的，不认同主流思
 nonfiction `/ˌnɒnˈfɪkʃən/` 非小说性写实文学
 
 nonverbal `/ˌnɒn'vɜːbl/` 非言辞的，不使用语言的，手语的
+
+normalization `/ˌnɔːməlaɪˈzeɪʃən/` 正常化，标准化
 
 notations `/nəʊˈteɪʃ(ə)n/` 标记，表示法，记号
 
@@ -3007,6 +3055,8 @@ partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔
 
 particular `/pəˈtɪkjʊlə/` 特别的，特指
 
+patriotic `/ˌpeɪtriˈɑːtɪk/` 爱国的
+
 patrol `/pəˈtrəʊl/` 巡逻，巡查，闲逛
 
 patronize `/ˈpætrənaɪz/` 屈就，屈尊，光顾，资助
@@ -3075,6 +3125,8 @@ perspiration `/ˌpɜːspəˈreɪʃn/` 汗水，出汗，排汗
 
 persuade `/pəˈsweɪd/` 说服，劝说
 
+pessimistic `/ˌpesɪˈmɪstɪk/` 悲观的
+
 pestilence `/ˈpestɪləns/` 瘟疫
 
 petal `/ˈpetl/` 花瓣
@@ -3108,6 +3160,8 @@ photosphere `/photosphere/` 光球，光球层
 piece `/piːs/` 块，片，件，碎片
 
 pigment `/ˈpɪɡmənt/` 颜料，天然色素
+
+pill `/pɪl/` 药丸，药片，避孕药，讨厌的人
 
 pillar `/ˈpɪlə(r)/` 支柱，台柱，桥墩
 
@@ -3153,7 +3207,11 @@ plunge `/plʌndʒ/` 跳进，猛冲，暴跌，骤降
 
 [回到P](#P)--[回到顶部](#英汉词典)
 
+poem `/ˈpəʊɪm/` 诗
+
 pole `/pəʊl/` 电线杆，电极，磁极，（行星的）极
+
+polish `/ˈpɒlɪʃ/` 磨光，擦亮，润饰
 
 poll `/pəʊl/` 投票，民意调查
 
@@ -3238,6 +3296,8 @@ prevail `/prɪˈveɪl/` 流行，盛行，战胜，普遍，压倒，挫败
 prevent `/prɪˈvent/` 阻止，阻挠，阻碍
 
 previous `/ˈpriːviəs/` 先前的
+
+privacy `/ˈprɪvəsi/` 隐私，自由，独处，私生活
 
 probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
 
@@ -3375,6 +3435,8 @@ rampant `/ˈræmpənt/` 猖獗的，泛滥的，疯长的
 
 ranch `/rɑːntʃ/` 牧场，大牧场，大农场
 
+rape `/reɪp/` 掠夺，强奸
+
 rapidly `/'ræpɪdlɪ/` 迅速的，急促的
 
 rare `/reə(r)/` 半，半熟的，稀少的，珍贵的，难得
@@ -3396,6 +3458,8 @@ realistic `/ˌriːəˈlɪstɪk/` 现实的，实际的，逼真的
 realization `/riːəlʌɪˈzeɪʃn/` 认识，体会
 
 realm `/relm/` 王国，领域，国土
+
+reassure `/ˌriːəˈʃʊr/` 安抚，打消...的疑虑
 
 reap `/riːp/` 收割，获得，收获
 
@@ -3444,6 +3508,8 @@ reflect `/rɪˈflekt/` 反映，反射，表明
 refraction `/rɪˈfrækʃn/` 折射，折射角
 
 refrigerant `/rɪˈfrɪdʒərənt/` 冷藏，冷冻，制冷，制冷剂，冷冻剂
+
+register `/ˈredʒɪstər/` 等级注册，指示，挂号
 
 rehabilitation `/ˌri:əˌbɪlɪ'teɪʃn/` 康复，恢复，善后，平反
 
@@ -3571,6 +3637,8 @@ roast `/rəʊst/` 烘，烤，炒
 
 robust `/rəʊˈbʌst/` 健壮的，耐用的
 
+romantic `/rəʊˈmæntɪk/` 浪漫的，爱情的
+
 roost `/ruːst/` 栖息，鸟巢
 
 rote `/rəʊt/` 死记硬背，生搬硬套
@@ -3653,7 +3721,7 @@ scenery `/ˈsiːnəri/` 风景，景色，风光
 
 scenic `/ˈsiːnɪk/` 风景名胜，景色优美的
 
-scholarly `/ˈskɒləli/` 学者气质的，有学问的，学术的
+scholar `/ˈskɑːlər/` 学者，学术
 
 scissors `/ˈsɪzəz/` 剪刀，剪断，删除
 
@@ -3726,6 +3794,8 @@ shade `/ʃeɪd/` 灯罩，阴凉处，遮蔽，阴影
 sham `/ʃæm/` 伪装，假象，冒充
 
 shame `/ʃeɪm/` 羞耻，羞愧，丢脸
+
+sharp `/ʃɑːp/` 锋利的，轮廓分明的
 
 shattered `/ˈʃætəd/` 非常惊愕难过的，遭受极大打击的
 
@@ -3875,6 +3945,8 @@ soybean `/sɔɪˌbiːn/` 黄豆，大豆
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
+spaceship `/ˈspeɪsʃɪp/` 宇宙飞船
+
 spacious `/ˈspeɪʃəs/` 宽敞的，广阔的
 
 spare `/speə(r)/` 备用的，闲置的，多余的，空闲的
@@ -3902,6 +3974,8 @@ spine `/spaɪn/` 脊椎，脊柱，刺毛
 spiny `/'spaɪni/` 多刺的，长刺的，刺状的
 
 spirit `/ˈspɪrɪt/` 精神，心灵，情绪，心境
+
+spite `/spaɪt/` 恶意，怨恨
 
 splendor `/'splendə(r)/` 壮丽，辉煌，华丽，显赫
 
@@ -3968,6 +4042,8 @@ stature `/ˈstætʃər/` 身高，身材
 steadily `/stedɪlɪ/` 稳定地，坚定地，坚固地
 
 steady `/ˈstedi/` 稳定的，平稳的，稳步的
+
+steep `/stiːp/` 陡峭，险峻的，急剧的，浸泡，沉浸
 
 steer `/stɪə(r)/` 驾驶，操控，控制，引导
 
@@ -4139,6 +4215,8 @@ tain `/teɪn/` 锡箔，薄锡板
 
 tame `/teɪm/` 驯服，驯化，温顺的
 
+tangle `/ˈtæŋɡl/` 纠缠，缠绕，乱糟糟一团
+
 tapeworm `/ˈteɪpwɜːm/` 绦虫（寄生虫）
 
 tardiness `/tɑ:dɪnəs/` 拖拉，迟到
@@ -4160,6 +4238,8 @@ tectonic `/tekˈtɒnɪk/` 地壳构造的，构造学
 tedious `/ˈtiːdiəs/` 沉闷的，乏味的，冗长的
 
 telemetry `/təˈlemətri/` 遥测术，远距离测量术
+
+temperament `/ˈtemprəmənt/` 气质，性格，性情，资质
 
 temperance `/ˈtempərəns/` 自制，节制，节欲
 
@@ -4197,6 +4277,8 @@ thatch `/θætʃ/` 茅草，茅草屋顶，浓密的头发
 
 theater `/ˈθɪətə(r)/` 剧院，剧场，戏剧，战场
 
+theme `/θiːm/` 主题，题目，主旋律，基调
+
 thermodynamics `/ˌθɜːməʊdaɪˈnæmɪks/` 热力学
 
 thesis `/ˈθiːsɪs/` 论文，命题，论题
@@ -4230,6 +4312,8 @@ tissue `/ˈtɪʃuː/` 纸巾，手巾纸，（人，动植物）组织
 ### to
 
 [回到T](#T)--[回到顶部](#英汉词典)
+
+tobacco `/təˈbækəʊ/` 烟草，烟叶
 
 toes `/təʊz/` 脚趾，足尖
 
@@ -4427,6 +4511,8 @@ usher`/ˈʌʃə(r)/` 引导，引领，门卫
 
 [回到U](#U)--[回到顶部](#英汉词典)
 
+utilize `/ˈjuːtəlaɪz/` 利用
+
 utmost `/'ʌtməʊst/` 极度，极端，最...
 
 utopian `/juːˈtəʊpiən/` 乌托邦的，空想的，空想家
@@ -4563,6 +4649,8 @@ warrant `/ˈwɒrənt/` 保证，凭据，许可证，执行令
 
 wary `/ˈweəri/` 谨慎的，小心的，提防的
 
+waterfall `/ˈwɔːtəfɔːl/` 瀑布
+
 watershed `/ˈwɔːtəʃed/` 转折点，分界线，分水岭
 
 wavy `/ˈweɪvi/` 起伏不平的，波浪形的
@@ -4596,6 +4684,8 @@ widespread `/ˈwaɪdspred/` 广泛的，普遍的
 wildlife `/ˈwaɪldlaɪf/` 野生动物
 
 willing `/ˈwɪlɪŋ/` 愿意，乐意，想要，决心
+
+wind `/wɪnd /` 风，气息，转动，上发条，缠绕
 
 wingspan `/ˈwɪŋspæn/` 翼展，翼幅
 

@@ -41,7 +41,29 @@ pid_t fork(void);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+int glob = 6;
+char buf[] = "a write to stdout\n";
+int 
+main(void)
+{
+    int var;
+    pid_t pid;
+    var = 88;
+    if (write(STDOUT_FILENO, buf, sizeof(buf) - 1) != sizeof(buf) - 1)
+        err_sys("write error");
+    printf("before fork\n");
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        glob++;
+        var++;
+    } else {
+        sleep(2);
+    }
+    printf("pid = %d, glob = %d, var = %d\n", getpid(), glob, var);
+    exit(0);
+}
 ```
 
 *fork函数实例*
@@ -96,7 +118,25 @@ fork失败的原因：
 例：
 
 ```c++
-TODO
+#include "apue.h"
+int glob = 6;
+int 
+main(void)
+{
+    int var;
+    pid_t pid;
+    var = 88;
+    printf("before vfork\n");
+    if ((pid = vfork()) < 0) {
+        err_sys("vfork error");
+    } else if (pid == 0) {
+        glob++;
+        var++;
+        _exit(0);
+    }
+    printf("pid = %d, glob = %d, var = %d\n", getpid(), glob, var);
+    exit(0);
+}
 ```
 
 *vfork函数实例*
@@ -164,7 +204,23 @@ pid_t waitpid(pid_t pid, int *statloc, int options);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+void
+pr_exit(int status)
+{
+    if (WIFEXITED(status))
+        printf("normal termination, exit status = %d\n", WEXITSTATUS(status));
+    else if (WIFSIGNALED(status))
+        printf("abnormal termination, signal number = %d%s\n", WTERMSIG(status),
+               #ifdef WCOREDUMP
+               	   WCOREDUMP(status) ? "（core file generated）" : "");
+               #else
+    			"");
+    		  #endif
+    			else if (WIFSTOPPED(status))
+                    printf("child stopped, signal number = %d\n", WSTOPSIG(status));
+}
 ```
 
 *打印exit状态的说明*
@@ -172,7 +228,36 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+int 
+main(void)
+{
+    pid_t pid;
+    int status;
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid == 0)
+        exit(7);
+    if (wait(&status) != pid)
+        err_sys("wait error");
+    pr_exit(status);
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid == 0)
+        abort();
+    if (wait(&status) != pid)
+        err_sys("wait error");
+    pr_exit(status);
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid == 0)
+        status /= 0;
+    if (wait(&status) != pid)
+        err_sys("wait error");
+    pr_exit(status);
+    exit(0);
+}
 ```
 
 *演示不同的exit值*
@@ -180,7 +265,27 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+int 
+main(void)
+{
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        if ((pid = fork()) < 0)
+            err_sys("fork error");
+        else if (pid > 0)
+            exit(0);
+        sleep(2);
+        printf("second child, parent pid = %d\n", getppid());
+        exit(0);
+    }
+    if (waitpid(pid, NULL, 0) != pid)
+        err_sys("waitpid error");
+    exit(0);
+}
 ```
 
 *fork两次以避免僵死进程*
@@ -249,7 +354,11 @@ pid_t wait4(pid_t pid, int *statloc, int options, struct rusage *rusage);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+TELL_WAIT();
+if ((pid = fork()) < 0) {
+    
+}
 ```
 
 *带有竞争条件的程序*
