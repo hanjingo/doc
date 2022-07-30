@@ -871,4 +871,5 @@ TODO
 
 - [Github-interviewGuide](https://github.com/NotFound9/interviewGuide)
 - [《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#zeromq)
+- [分布式面试题](https://zhuanlan.zhihu.com/p/433793240?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968&utm_campaign=shareopn)
 

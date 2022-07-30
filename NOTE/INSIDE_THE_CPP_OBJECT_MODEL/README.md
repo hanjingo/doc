@@ -1,5 +1,7 @@
 # 深度探索c++对象模型
 
+Stanley B.Lippman . 1 ED
+
 - [第一章 关于对象(Object Lessons)](chapter1.md)
 - [第二章 构造函数语意学(The Semantics of Constructors)](chapter2.md)
 - [第三章 Data语意学](chapter3.md)

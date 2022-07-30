@@ -7,11 +7,6 @@
 - [服务端图形引擎](server_graphic_engine.md)
 - [软件测试](software_test.md)
 - [Token机制](token.md)
-
-
-
-## 子类
-
 - [生物科技](BIOTECH/README.md)
 - [游戏开发](GAME/README.md)
 
@@ -19,7 +14,14 @@
 
 ## 第三方项目
 
-- [DOCKER](DOCKER/README.md)
+- [Ceph](CEPH/READE.md)
+- [Docker](DOCKER/README.md)
+- [EOS](EOSIO/README.md)
+- [Ethereum](ETH/README.md)
+- [Filecoin](FILECOIN/README.md)
+- [Grpc](GRPC/README.md)
+- [IPFS](IPFS/README.md)
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)
-- [Grpc](GRPC/README.md)
+- [skynet](SKYNET/README.md)
+- [pbc](PBC/README.md)

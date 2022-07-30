@@ -85,6 +85,16 @@ eos无法启动...
 
 
 
+## Eos-GO
+
+[权限异常](eos-go.md)
+
+关键词：**eos-go**
+
+权限异常导致报错`action declares irrelevant authority...`
+
+
+
 ## Golang
 
 #### [waitgroup的坑](golang.md)

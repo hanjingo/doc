@@ -52,7 +52,7 @@
 
 ## 转码
 
-### 将input.mp4的视频像素改变为1920x1080,将码率改变为2000kbit/s,输出为output.mp4
+将input.mp4的视频像素改变为1920x1080,将码率改变为2000kbit/s,输出为output.mp4：
 
 ```sh
 ffmpeg -hwaccel cuvid -vcodec h264_cuvid -i input.mp4 -vf scale_npp=1920:1080 -vcodec h264_nvenc -acodec copy -f mp4 -y output.mp4
@@ -60,33 +60,33 @@ ffmpeg -hwaccel cuvid -vcodec h264_cuvid -i input.mp4 -vf scale_npp=1920:1080 -v
 
 
 
-## 流媒体
+## 流媒体录制与输出
 
-### TCP方式录制RTSP直播流
+TCP方式录制RTSP直播流
 
 ```sh
 ffmpeg -rtsp_transport tcp -i rtsp://47.90.47.25/test.ts -c copy -f mp4 output.mp4
 ```
 
-### 拉取FLV直播流录制为FLV
+拉取FLV直播流录制为FLV
 
 ```sh
 ffmpeg -i http://bbs.chinaffmpeg.com/live.flv -c copy -f flv output.flv
 ```
 
-### 拉取TS直播流录制为FLV
+拉取TS直播流录制为FLV
 
 ```sh
 ffmpeg -i http://bbs.chinaffmpeg.com/live.ts -c copy -f flv output.flv
 ```
 
-### 拉取HLS直播流录制为FLV
+拉取HLS直播流录制为FLV
 
 ```sh
 ffmpeg -i http://bbs.chinaffmpeg.com/live.m3u8 -c copy -f flv output.flv
 ```
 
-### 一次转码多次输出RTMP流
+一次转码多次输出RTMP流
 
 ```sh
 ffmpeg -i input.mp4 -vcodec libx264 -acodec aac -f flv - | ffmpeg -f flv -i - -c copy -f flv rtmp://publish.chinaffmpeg.com/live/stream1 -c copy -f flv rtmp://publish.chinaffmpeg.com/live/stream2

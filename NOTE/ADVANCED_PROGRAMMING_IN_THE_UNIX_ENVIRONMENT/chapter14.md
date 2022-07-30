@@ -408,11 +408,27 @@ FD_SET(4, &readset, &writeset, NULL, NULL);
 int poll(struct pollfd fdarray[], nfds_t nfds, int timeout);
 ```
 
-- `fdarray`
+- `fdarray` 描述符信息数组
 
-- `nfds`
+  ```c++
+  struct pollfd {
+      int fd;
+      short events;
+      short revents;
+  };
+  ```
 
-- `timeout`
+  ![14_6](res/t14_6.png)
+
+  *poll的events和revents标志*
+
+- `nfds` 数组长度
+
+- `timeout` 超时时间
+
+  - `-1` 永远等待；
+  - `0` 不等待；
+  - `> 0` 等待timeout毫秒；
 
 - `返回值`
 
@@ -421,3 +437,203 @@ int poll(struct pollfd fdarray[], nfds_t nfds, int timeout);
   出错：-1
 
   成功：准备就绪的描述符数
+
+*多路转接*
+
+
+
+## 14.6 异步I/O
+
+### 14.6.1 系统V异步I/O
+
+![t14_7](res/t14_7.png)
+
+*产生SIGPOLL信号的条件*
+
+### 14.6.2 BSD异步I/O
+
+为了接收SIGIO信号，需执行以下步骤：
+
+1. 调用`signal`或`sigaction`为SIGIO信号家里信号处理程序；
+2. 以命令`F_SETOWN`调用fcntl来设置进程ID和进程组ID，他们将接受对于该描述符的信号；
+3. 以命令`F_SETFL`调用fcntl设置`O_ASYNC`文件状态标志，使在该描述符上可以进行异步I/O。
+
+
+
+## 14.7 readv和writev函数
+
+```c++
+#include <sys/uio.h>
+ssize_t readv(int filedes, const struct iovec *iov, int iovcnt);
+ssize_t writev(int filedes, const struct iovec *iov, int iovcnt);
+```
+
+- `filedes` 描述符
+
+- `iov` iovec数组（最大长度为`IOV_MAX`）
+
+  ```c++
+  struct iovec {
+      void *iov_base;
+      size_t iov_len;
+  };
+  ```
+
+- `iovcnt` iovec数组长度
+
+- `返回值`
+
+*散布读/聚集写*
+
+![14_10](res/14_10.png)
+
+*readv和writev的iovec结构*
+
+例：
+
+![t14_8](res/t14_8.png)
+
+*比较writev和其它技术所得的时间结果*
+
+
+
+## 14.8 readn和writen函数
+
+```c++
+#include "apue.h"
+ssize_t readn(int filedes, void *buf, size_t nbytes);
+ssize_t writen(int filedes, void *buf, size_t nbytes);
+```
+
+- `filedes` 描述符
+
+- `buf` 缓冲区
+
+- `nbytes` 字节数
+
+- `返回值`
+
+  成功：已读/写字节数
+
+  失败：-1
+
+*读/写指定的N个字节*
+
+例：
+
+```c++
+TODO
+```
+
+*readn和writen函数*
+
+
+
+## 14.9 存储映射I/O
+
+`存储映射（Memory-mapped I/O）`是一个磁盘文件与存储空间中的一个缓冲区相映射（对应），读写缓冲区中的数据相当于读写磁盘数据。
+
+```c++
+#include <sys/mman.h>
+void *mmap(void *addr, size_t len, int prot, int flag, int fields, off_t off);
+```
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `prot` 对映射存储区的保护要求
+
+  ![t14_9](res/t14_9.png)
+
+  *映射存储区的保护要求*
+
+- `flag` 映射存储区的属性
+
+  - `MAP_FIXED` 返回值必须等于addr（不利于可移植性，不推荐使用此标志）；
+  - `MAP_SHARED` 指定存储操作修改映射文件；
+  - `MAP_PRIVATE` 对映射区的存储操作导致创建该映射文件的一个私有副本；
+
+- `fields` 被映射文件的描述符
+
+- `off` 要映射字节在文件中的起始偏移量
+
+- `返回值`
+
+  成功：映射区的起始地址
+
+  失败：MAP_FAILED
+
+*告诉内核将一个文件映射到指定存储区域*
+
+![14_11](res/14_11.png)
+
+*存储映射文件的例子*
+
+```c++
+#include <sys/mman.h>
+int mprotect(void *addr, size_t len, int prot);
+```
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `prot` 对映射存储区的保护要求
+
+  ![t14_9](res/t14_9.png)
+
+  *映射存储区的保护要求*
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*更改一个现存映射存储区的权限*
+
+```c++
+#include <sys/mman.h>
+int msync(void *addr, size_t len, int flags);
+```
+
+- `addr` 映射存储区的起始地址
+- `len` 映射的字节数
+- `flags` 控制冲洗存储区
+
+*存储映射区*
+
+```c++
+#include <sys/mman.h>
+int munmap(caddr_t addr, size_t len);
+```
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*解除存储映射*
+
+例：
+
+```c++
+TODO
+```
+
+*用存储映射I/O复制文件*
+
+![t14_10](res/t14_10.png)
+
+*read/write与mmap/memcpy比较的时间结果*
+
+
+
+## 14.10 小结
+

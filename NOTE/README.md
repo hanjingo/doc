@@ -40,14 +40,14 @@
 
 ### C++
 
-| 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
-| ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
-| [Effective C++](EFFECTIVE_CPP/README.md)                     | 3ED  | [美]Scott Meyers | 想写好c++必读之作                                            |
-| [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers     | 想写好modern c++必读之作                                     |
-| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷             | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
-| [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton  | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
-| [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) |      |                  |                                                              |
-| [Effective STL](EFFECTIVE_STL/README.md)                     | 1ED  | [美]Scott Meyers | 建议在初步了解STL后再配合使用此书，里面的很多条款需要对STL比较熟悉才能领悟到其意图。 |
+| 书名                                                         | 版次 | 作者              | 摘要/评价                                                    |
+| ------------------------------------------------------------ | ---- | ----------------- | ------------------------------------------------------------ |
+| [Effective C++](EFFECTIVE_CPP/README.md)                     | 3ED  | [美]Scott Meyers  | 想写好c++必读之作                                            |
+| [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers      | 想写好modern c++必读之作                                     |
+| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷              | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
+| [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton   | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
+| [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) | 1ED  | Stanley B.Lippman | 学习C++面向对象的经典著作。                                  |
+| [Effective STL](EFFECTIVE_STL/README.md)                     | 1ED  | [美]Scott Meyers  | 建议在初步了解STL后再配合使用此书，里面的很多条款需要对STL比较熟悉才能领悟到其意图。 |
 
 ### 音视频
 
@@ -72,7 +72,8 @@
 ## 在读
 
 - [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
-- [MySql技术内幕-InnoDB存储引擎]
+- [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
+- [MySql技术内幕-InnoDB存储引擎](INSIDE_MYSQL_INNODB_STORAGE_ENGINE/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
 - [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
@@ -81,7 +82,6 @@
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
 - [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
-- [CISSP官方学习指南](CISSP_CERTIFIED_INFORMATION_SYSTEMS_SECURITY_PROFESSIONAL_OFFICIAL_STUDY_GUIDE/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
 - [经济学原理](THE_PRINCIPLE_OF_ECONOMICS/README.md)
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
@@ -97,4 +97,5 @@
 ## 计划读
 
 - [C++覆辙录]
+- [C++ Templates]
 

@@ -8,4 +8,5 @@
 - [make](make.md)
 - [markdown](markdown.md)
 - [shell](shell.md)
+- [solidity](solidity.md)
 

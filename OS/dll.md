@@ -163,6 +163,14 @@ dlclose(handle);
 
 
 
+## 工程经验
+
+### 导出接口类
+
+定义一个抽象类（都是纯虚函数），调用者跟dll共用一个抽象类的头文件，dll中实现此抽象类的派生类，dll最少只需要提供一个用于获取抽象类对象指针的接口。
+
+
+
 ## 参考
 
 - [维基百科-动态链接库](https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93)
@@ -173,4 +181,5 @@ dlclose(handle);
 - [Linux动态链接库的使用](https://www.cnblogs.com/Anker/p/3527677.html)
 - [Linux 链接详解----动态链接库](https://blog.csdn.net/zdy0_2004/article/details/78747382)
 - [采用dlopen、dlsym、dlclose加载动态链接库](https://www.jianshu.com/p/72cc08405a5a)
+- [C++-导出类-导出宏-纯虚函数-DllMain函数-调用约定与参数命名](https://blog.csdn.net/m0_67316550/article/details/124977756)
 

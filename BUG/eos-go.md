@@ -1,6 +1,6 @@
-[TOC]
+# EOS-GO开发常见错误
 
-# eos-go开发常见错误
+[TOC]
 
 
 
@@ -35,7 +35,7 @@ func ask(ctx context.Context, api *eos.API, privKey string) {
 }
 ```
 
-此处：` Account: eos.AccountName("b3")`； 把部署者写成了b3，实际是b;  
+此处：` Account: eos.AccountName("b3")`； 把部署者写成了b3，实际是b; 
 导致提交的是ipfs权限，但是找到的却是默认的权限 active；报错！
 
 ```

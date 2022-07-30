@@ -4,10 +4,3 @@
 - [游戏服务器开发](game_server_develop.md)
 - [捏脸系统设计](pinch_face.md)
 
-
-
-## 第三方库
-
-- [SKYNET](SKYNET/README.md)
-- [pbc](PBC/README.md)
-
