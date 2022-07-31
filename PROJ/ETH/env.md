@@ -61,7 +61,7 @@
 2. 验证
 
    ```sh
-   solcjs -version
+   solcjs --version
    ```
 
 ### 安装truffle
@@ -75,7 +75,7 @@
 2. 验证
 
    ```sh
-   truffle.cmd version
+   truffle version
    ```
 
 ### 安装ETH
