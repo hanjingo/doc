@@ -225,6 +225,8 @@ amplify `/ˈæmplɪfaɪ/` 放大，增强，充实
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
+analogously `/ə'næləgəslɪ/` 类似的，近似的
+
 anarchist `/ˈænəkɪst/` 无政府主义者
 
 anatomy `/əˈnætəmi/` 解刨，解刨学，人体
@@ -2989,6 +2991,8 @@ operand `/ˈɒpərænd/` 操作数，运算数
 
 opposed `/əˈpəʊzd/` 完全不同的，相反的
 
+opposite `/ˈɒpəzɪt/` 对立的，相反的，反面
+
 optimal `/ˈɒptɪməl/` 最优的，最佳的
 
 optimism `/ˈɒptɪmɪzəm/` 乐观，乐观主义 
@@ -4406,6 +4410,8 @@ thrust `/θrʌst/` 猛冲，刺，戳
 ### ti
 
 [回到T](#T)--[回到顶部](#英汉词典)
+
+tight `/taɪt/` 牢固的，紧的，严密的
 
 tile `/taɪl/` 瓦片，瓷砖，铺砖
 
