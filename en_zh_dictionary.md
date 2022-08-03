@@ -581,9 +581,11 @@ butterfly `/ˈbʌtəflaɪ/` 蝴蝶
 
 buzz `/bʌz/` 嗡嗡声，蜂鸣声
 
-### bu
+### by
 
 [回到B](#B)--[回到顶部](#英汉词典)
+
+bypass `/ˈbaɪpɑːs/` 旁路，绕过，避开
 
 byzantium `/bɪˈzæntɪəm/` 拜占庭
 
@@ -632,6 +634,8 @@ cast `/kɑːst/` 铸造，铸件，投射，抛，投
 catalyze `/kætəlaɪz/` 催化，刺激，促进
 
 caterpillar `/ˈkætəpɪlə(r)/` 毛毛虫
+
+caught `/kɔːt/` 接住，拦截，抓住，握住
 
 caustic `/ˈkɔːstɪk/` 尖酸刻薄的，挖苦的，腐蚀性的
 
@@ -946,6 +950,8 @@ conservative `/kənˈsɜːvətɪv/` 保守的，守旧的，保守党
 conserve `/kənˈsɜːv/` 保护，保藏，节约，果酱，蜜饯
 
 consequent `/ˈkɒnsɪkwənt/` 结果，随之而来的
+
+consist `/kənˈsɪst/` 包括，组成，存在于
 
 consistent `/kənˈsɪstənt/` 一致的，复合的，连续的
 
@@ -1693,6 +1699,8 @@ expressive `/ɪkˈspresɪv/` 有表现力的，表现
 
 extensive `/ɪkˈstensɪv/` 广阔的，广泛的
 
+external `/ɪkˈstɜːnl/` 外部，外界，外来的
+
 extinction `/ɪkˈstɪŋkʃn/` 灭绝，消失
 
 extol `/ɪkˈstəʊl/` 赞美，称赞，歌颂
@@ -1800,6 +1808,8 @@ flagella `/flə'dʒelə/` 鞭毛，鞭状体
 flake `/fleɪk/` 薄片，脱落，剥落
 
 flamboyant `/flæmˈbɔɪənt/` 华丽的，艳丽的，炫耀的
+
+flatten `/ˈflætn/` 压平，弄平，推倒，摧毁，击倒
 
 flavor `/ˈfleɪvə/` 风味，调味，特色
 
@@ -2004,6 +2014,8 @@ grade `/ɡreɪd/`  等级，品级，级别，评级，年级，给...评分
 grand `/ɡrænd/` 壮丽的，堂皇的，宏伟的
 
 granite `/ˈɡrænɪt/` 花岗岩，花岗石
+
+graph `/ɡræf/` 图，图表
 
 graphite `/ˈɡræfaɪt/` 石墨
 
@@ -2299,6 +2311,8 @@ inhabitant `/ɪnˈhæbɪtənt/` 居民
 
 inherit `/ɪnˈherɪt/` 继承，沿袭，接替
 
+inheritance `/ɪnˈherɪtəns/` 遗产，继承物，遗传特征
+
 inhibit `/ɪnˈhɪbɪt/` 阻止，阻碍，抑制
 
 initiate `/ɪˈnɪʃieɪt/` 开始，发动，发起，接纳，吸收
@@ -2371,7 +2385,7 @@ interlock `/ˌɪntəˈlɒk/` 扣紧，连锁，紧密连接
 
 intermediate `/ˌɪntəˈmiːdiət/` 中间的，中级的，中等的，中学生
 
-internally `/ɪn'tɜːnəli/` 永恒的，永久的，内部的
+internal `/ɪnˈtɜːnl/` 内部，本质，永久的，永恒的
 
 interpretation `/ɪnˌtɜːrprəˈteɪʃn/` 理解，解释，说明
 
@@ -2929,6 +2943,8 @@ obstruct `/əbˈstrʌkt/` 阻碍，组懂，阻塞，阻挠
 
 obtain `/əbˈteɪn/` 获得，赢得，存在，沿袭
 
+obverse `/ˈɒbvɜːs/` 正面，对立面，表面的
+
 obvious `/ˈɒbviəs/`  显而易见的，公认的，当然的
 
 ### oc
@@ -3016,6 +3032,8 @@ orchid `/ˈɔːkɪd/` 兰花
 ordeal `/ɔːˈdiːl/` 严酷的考验，磨难，煎熬
 
 ordinance `/ˈɔːdɪnəns/` 法令，条例，指示，训令
+
+ordinary `/ˈɔːdnri/` 法官，普通的，一般的，平常的
 
 ore `/ɔː(r)/` 矿石，矿砂
 
@@ -3301,6 +3319,8 @@ polyester `/ˌpɒliˈestə(r)/` 聚酯纤维，涤纶
 
 polygon `/ˈpɒlɪɡən/` 多边形，多角形
 
+polymorphism `/ˌpɒlɪˈmɔːfɪzm/` 多态（计算机），多样性
+
 popcorn `/ˈpɒpkɔːn/` 爆米花
 
 porous `/ˈpɔːrəs/` 多孔的，透气的，可渗透的
@@ -3388,6 +3408,8 @@ privacy `/ˈprɪvəsi/` 隐私，自由，独处，私生活
 probability `/ˌprɒbəˈbɪləti/` 可能性，概率，几率
 
 probe `/prəʊb/` 盘问，追问，探查
+
+problematic `/ˌprɒbləˈmætɪk/` 有问题的，造成困难的
 
 procedure `/prəˈsiːdʒə/` 程序
 
@@ -3528,6 +3550,8 @@ rape `/reɪp/` 掠夺，强奸
 rapidly `/'ræpɪdlɪ/` 迅速的，急促的
 
 rare `/reə(r)/` 半，半熟的，稀少的，珍贵的，难得
+
+rather `/ˈræðər/` 相当，反而，而是
 
 ratify `/ˈrætɪfaɪ/` 批准，认可，生效
 
@@ -3685,6 +3709,8 @@ reveal `/rɪˈviːl/` 揭示，显示，透露
 
 revere `/rɪˈvɪə(r)/` 尊敬，敬畏，崇敬
 
+reverse `/rɪˈvɜːs/` 反面，背面，颠倒，反转，废除
+
 revert `/rɪˈvɜːt/` 恢复，还原，归还
 
 revitalization `/ˌri:ˌvaɪtəlaɪ'zeɪʃn/` 复兴，复苏，新生
@@ -3825,6 +3851,8 @@ scissors `/ˈsɪzəz/` 剪刀，剪断，删除
 
 scold `/skəʊld/` 责骂，训斥
 
+scope `/skəʊp/` （考试，活动）范围，机会，能力，仔细看，彻底检查
+
 scour `/ˈskaʊər/` 冲刷，搜查，刷洗
 
 scout `/skaʊt/` 童子军，侦查，物色
@@ -3856,6 +3884,8 @@ seed `/siːd/` 种子，起源，起因
 segregate `/ˈseɡrɪɡeɪt/` 分开，隔离，区别对待
 
 seismology `/saɪz'mɒlədʒi/` 地震学
+
+selector `/sɪˈlektər/` 选择器，转换器，换挡器
 
 semantic `/sɪˈmæntɪk/` 语义的
 
@@ -3890,6 +3920,8 @@ sewerage `/ˈsuːərɪdʒ/` 排水系统，污水处理系统
 [回到S](#S)--[回到顶部](#英汉词典)
 
 shade `/ʃeɪd/` 灯罩，阴凉处，遮蔽，阴影
+
+shadow `/ˈʃædəʊ/` 阴影，影子，背光处，些许
 
 sham `/ʃæm/` 伪装，假象，冒充
 
@@ -3944,6 +3976,8 @@ silversmith `/ˈsɪlvəsmɪθ/` 银匠
 simplicity `/sɪmˈplɪsəti/` 简单性，质朴，淳朴
 
 simplification `/ˌsɪmplɪfɪˈkeɪʃ(ə)n/` 简化
+
+simply `/ˈsɪmpli/` 简单地，仅仅，只是
 
 simulate `/ˈsɪmjuleɪt/` 模拟，仿真，冒充，假装
 
@@ -4665,6 +4699,8 @@ vapor `/ˈveɪpə(r)/` 蒸汽，水蒸气
 
 variance `/ˈveəriəns/` 方差，变化幅度，差额
 
+variety `/vəˈraɪəti/` 变种，不同种类，变化，多样化
+
 various `/ˈveəriəs/` 各种各样的，多种多样的，变化，多样性
 
 varnish `/ˈvɑːnɪʃ/` 清漆，指甲油，给...上漆
@@ -4732,6 +4768,8 @@ vine `/vaɪn/` 藤曼，藤
 violence `/ˈvaɪələns/` 暴力，暴行，狂热
 
 viscous `/ˈvɪskəs/` 粘稠的，粘性的
+
+visible `/ˈvɪzəbl/` 可见的，明显的
 
 vital `/ˈvaɪtl/` 必不可少的，极其重要的，生机勃勃的
 

@@ -132,7 +132,34 @@ contract c {
 bytes4 arr1 = bytes4(s[:4]);
 ```
 
-#### 单位
+#### 映射
+
+映射（Mapping）类似于其它语言的map或dictionary，Solidity语法不提供对映射进行迭代（可以通过自定义数据类型来避免这个问题）。
+
+例，将地址映射到uint：
+
+```solidity
+mapping (address => uint) public balance;
+```
+
+例，通过自定义数据结构来迭代映射：
+
+```solidity
+struct pair{ uint keyIndex; uint value; }
+struct s {
+	mapping(uint => pair) data;
+	uint[] keys; // 存储所有的key
+}
+type Iterator is uint;
+
+function range(s storage self, uint n) internal view returns (Iterator) {
+	while(n < self.keys.length && self.keys[n].deleted)
+		n++;
+	return Iterator.wrap(n);
+}
+```
+
+#### 基本单位
 
 以太单位：
 
@@ -385,6 +412,21 @@ contract c {
 }
 ```
 
+#### 函数修饰符
+
+函数修饰符可用于以声明方式更改函数的行为；修饰符是合约的可继承属性，可以被派生合约覆盖（仅限于被标记为virtual的修饰符）。
+
+例：
+
+```solidity
+constract father {
+	modifier fn1 {...}
+}
+constract son is father {
+	function fn2() public fn1 {...}
+}
+```
+
 #### 返回值
 
 TODO
@@ -401,33 +443,6 @@ contract c {
 	function fn2() public payable {
 		emit fn1(...); // 触发事件
 	}
-}
-```
-
-### 映射
-
-映射类似于其它语言的map或dictionary，Solidity语法不提供对映射进行迭代（可以通过自定义数据类型来避免这个问题）。
-
-例，将地址映射到uint：
-
-```solidity
-mapping (address => uint) public balance;
-```
-
-例，通过自定义数据结构来迭代映射：
-
-```solidity
-struct pair{ uint keyIndex; uint value; }
-struct s {
-	mapping(uint => pair) data;
-	uint[] keys; // 存储所有的key
-}
-type Iterator is uint;
-
-function range(s storage self, uint n) internal view returns (Iterator) {
-	while(n < self.keys.length && self.keys[n].deleted)
-		n++;
-	return Iterator.wrap(n);
 }
 ```
 
@@ -546,26 +561,26 @@ struct info { // 定义结构体
 | internal   | 内部函数；只能从当前合约或派生的合约中访问，不能被外部访问。 |
 | private    | 私有函数；类似于`internal`，但是在派生合约中不可见。         |
 
-#### 函数修饰符
+#### 构造函数
 
-函数修饰符可用于以声明方式更改函数的行为；修饰符是合约的可继承属性，可以被派生合约覆盖（仅限于被标记为virtual的修饰符）。
+构造函数用于在创建合约时执行一些初始化动作；构造函数是可选的，并且不支持重载；如果没有构造函数，合约将假定默认的构造函数`constructor(){}`。
+
+可以在构造函数中使用内部参数（如：存储指针），在这种情况下，必须将合约标记为`abstract`；因为这些参数不能从外部分配有效值，只能通过派生合约的构造函数分配。
 
 例：
 
 ```solidity
-constract father {
-	modifier fn1 {...}
+abstract contract father {
+	uint public a;
+	constractor(uint a_) { a = a_; }
 }
-constract son is father {
-	function fn2() public fn1 {...}
+contract son1 is father {
+	constructor(uint a_) father(a_) {}
+}
+contract son2 is father(2) {
+	constructor(){}
 }
 ```
-
-
-
-#### 构造函数
-
-当一个合约被创建时，他的构造函数就会被执行一次；构造函数是可选的，并且不支持重载。
 
 #### 创建
 
@@ -590,15 +605,84 @@ C c3 = new C{salt: "xx..."}(1); // 创建合约时加盐
 
 ### 继承
 
-TODO
+Solidity 支持多重继承，包括多态性。
+
+注意事项：
+
+1. 覆盖父类的函数时，使用`override`关键字显式说明（0.8.8版以后可以不用显式说明）；
+2. 对于需要被覆盖的函数，使用`virtual`关键字显式说明；
+3. 在多重基层的情况下，必须明确指定所有直接基础合约。
+
+例，多继承：
+
+```solidity
+contract father {
+	address payable addr;
+	function fn1() virtual public {...}
+	modifier fn2() virtual {_;}
+}
+contract son is fater {
+	function fn1() virtual public override {...}
+	modifier fn2() virtual {_;}
+}
+contract grandson is father, son {
+	modifier fn2() override(father, son) {_;}
+}
+```
+
+例，修改器覆盖：
+
+```solidity
+contract father {
+	modifier fn() virtual{_;}
+}
+contract son is father {
+	modifier fn() override {_;}
+}
+```
 
 ### 抽象
 
-TODO
+当合约有至少一个功能未实现时，需要将合约标记为抽象（类似于C++的虚类）；抽象合约使用`abstract`关键字声明。
+
+注意：
+
+1. 抽象合约不能直接实例化；
+2. 如果合约继承自抽象合约，并且没有通过股改实现所有未实现的功能，则也需要将其标记为抽象。
+
+例：
+
+```solidity
+abstract contract v { // 抽象合约
+	function fn() public virtual returns(bytes32);
+}
+abstract contract subv is interf{ // 继承抽象合约
+}
+contract impl is v { // 继承抽象合约
+	function fn() public pure override returns(bytes32){...}
+}
+```
 
 ### 接口
 
-TODO
+接口（类似于C++的纯虚类）与抽象类相似，使用`interface`关键字声明，并且有以下限制：
+
+1. 不能从其它合约继承，但可以从其它接口继承；
+2. 所有声明的函数在接口中必须是外部的，即使它们在合约中是公共的；
+3. 不能声明构造函数；
+4. 不能声明状态变量；
+5. 不能声明修饰符；
+6. 不能实现任何功能。
+
+例：
+
+```solidity
+interface intf {
+	enum e{One, Two}
+	struct Coin{string obverse; string reverse; }
+	function transfer(address recipient, uint amount) external;
+}
+```
 
 ### 内存布局
 
@@ -703,3 +787,7 @@ TODO
 [1] [Solidity](https://www.osgeo.cn/solidity/index.html)
 
 [2] [Solidity 教程](https://www.w3cschool.cn/solidity/)
+
+[3] [Gitbook Solidity](https://solidity-cn.readthedocs.io/zh/develop/)
+
+[4] [solidity官网](https://docs.soliditylang.org/en/latest/contracts.html#interfaces)
