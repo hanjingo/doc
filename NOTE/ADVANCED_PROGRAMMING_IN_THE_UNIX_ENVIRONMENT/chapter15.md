@@ -51,7 +51,30 @@ int pipe(int fd[2]);
 例1：
 
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(void)
+{
+    int n;
+    int fd[2];
+    pid_t pid;
+    char line[MAXLINE];
+    
+    if (pipe(fd) < 0)
+        err_sys("pipe error");
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid > 0) {
+        close(fd[0]);
+        write(fd[1], "hello world\n", 12);
+    } else {
+        close(fd[1]);
+        n = read(fd[0], line, MAXLINE);
+        write(STDOUT_FILENO, line, n);
+    }
+    exit(0);
+}
 ```
 
 *经由管道从父进程向子进程传送数据*
@@ -59,14 +82,112 @@ TODO
 例2：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+#define DEF_PAGER "/bin/more"
+
+int 
+main(int argc, char *argv[])
+{
+    int n;
+    int fd[2];
+    pid_t pid;
+    char *paper, *argv0;
+    char line[MAXLINE];
+    FILE *fp;
+    
+    if (argc != 2)
+        err_quit("usage: a.out <pathname>");
+    if ((fp = fopen(argv[1], "r")) == NULL)
+        err_sys("can't open %s", argv[1]);
+    if (pipe(fd) < 0)
+        err_sys("pipe error");
+    
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid > 0) {
+        close(fd[0]);
+        while (fgets(line, MAXLINE, fp) != NULL) {
+            n = strlen(line);
+            if (write(fd[1], line, n) != n)
+                err_sys("write error to pipe");
+        }
+        if (ferror(fp))
+            err_sys("fgets error");
+        close(fd[1]);
+        if (waitpid(pid, NULL, 0) < 0)
+            err_sys("waitpid error");
+        exit(0);
+    } else {
+        close(fd[1]);
+        if (fd[0] != STDIN_FILENO) {
+            if (dup2(fd[0], STDIN_FILENO) != STDIN_FILENO)
+                err_sys("dup2 error to stdin");
+            close(fd[0]);
+        }
+        if ((pager = getenv("PAGER")) == NULL)
+            pager = DEF_PAGER;
+        if ((argv = strrchr(pager, '/')) != NULL)
+            argv0++;
+        else
+            argv0 = pager;
+        if (execl(pager, argv0, (char *)0) < 0)
+            err_sys("execl error for %s", pager);
+    }
+    exit(0);
+}
 ```
 
 *将文件复制到分页程序*
 
 例3：
 
-```
+```c++
+#include "apue.h"
+
+static int pfd1[2], pfd2[2];
+
+void 
+TELL_WAIT(void)
+{
+    if (pipe(pfd1) < 0 || pipe(pfd2) < 0) // 使用管道
+        err_sys("pipe error");
+}
+
+void 
+TELL_PARENT(pid_t pid)
+{
+    if (write(pfd2[1], "c", 1) != 1)
+        err_sys("write error");
+}
+
+void 
+WAIT_PARENT(void)
+{
+    char c;
+    if (read(pfd1[0], &c, 1) != 1)
+        err_sys("read error");
+    if (c != 'p')
+        err_quit("WAIT_PARENT: incorrect data");
+}
+
+void 
+TELL_CHILD(pid_t pid)
+{
+    if (write(pfd1[1], "p", 1) != 1)
+        err_sys("write error");
+}
+
+void 
+WAIT_CHILD(void)
+{
+    char c;
+    if (read(pfd2[0], &c, 1) != 1)
+        err_sys("read error");
+    if (c != 'c')
+        err_quit("WAIT_CHILD: incorrect data");
+}
 ```
 
 *让父进程和子进程同步的例程*
@@ -104,7 +225,32 @@ int pclose(FILE *fp); // 关闭标准I/O流，返回cmdstring的终止状态
 例1：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+#define PAGER "${PAGER:-more}"
+
+int 
+main(int argc, char *argv[])
+{
+    char line[MAXLINE];
+    FILE *fpin, *fpout;
+    if (argc != 2)
+        err_quit("usage: a.out <pathname>");
+    if ((fpin = fopen(argv[1], "r")) == NULL)
+        err_sys("can't open %s", argv[1]);
+    if ((fpout = popen(PAGER, "w")) == NULL)
+        err_sys("popen error");
+    while (fgets(line, MAXLINE, fpin) != NULL) {
+        if (fputs(line, fpout) == EOF)
+            err_sys("fputs error to pipe");
+    }
+    if (ferror(fpin))
+        err_sys("fgets error");
+    if (pclose(fpout) == -1)
+        err_sys("pclose error");
+    exit(0);
+}
 ```
 
 *用popen向分页程序传递文件*
@@ -112,7 +258,106 @@ TODO
 例2：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+
+static pid_t *childpid = NULL;
+
+static int maxfd;
+
+FILE *
+popen(const char *cmdstring, const char *type)
+{
+    int i;
+    int pfd[2];
+    pid_t pid;
+    FILE *fp;
+    if ((type[0] != 'r' && type[0] != 'w') || type[1] != 0) {
+        errno = EINVAL;
+        return(NULL);
+    }
+    if (childpid == NULL) {
+        maxfd = open_max();
+        if ((childpid = calloc(maxfd, sizeof(pid_t))) == NULL)
+            return(NULL);
+    }
+    if (pipe(pfd) < 0)
+        return(NULL);
+    if (pfd[0] >= maxfd || pfd[1] >= maxfd) {
+        close(pfd[0]);
+        close(pfd[1]);
+        errno = EMFILE;
+        return(NULL);
+    }
+    
+    if ((pid = fork()) < 0) {
+        return(NULL);
+    } else if (pid == 0) {
+        if (*type == 'r') {
+            close(pfd[0]);
+            if (pfd[1] != STDOUT_FILENO) {
+                dup2(pfd[1], STDOUT_FILENO);
+                close(pfd[1]);
+            }
+        } else {
+            close(pfd[1]);
+            if (pfd[0] != STDIN_FILENO) {
+                dup2(pfd[0], STDIN_FILENO);
+                close(pfd[0]);
+            }
+        }
+        for (i = 0; i < maxfd; i++)
+            if (childpid[i] > 0)
+                close(i);
+        execl("/bin/sh", "sh", "-c", cmdstring, (char *)0);
+        _exit(127);
+    }
+    
+    if (*type == 'r') {
+        close(pfd[1]);
+        if ((fp = fdopen(pfd[0], type)) == NULL)
+            return(NULL);
+    } else {
+        close(pfd[0]);
+        if ((fp = fdopen(pfd[1], type)) == NULL)
+            return(NULL);
+    }
+    childpid[fileno(fp)] = pid;
+    return(fp);
+}
+
+int 
+pclose(FILE *fp)
+{
+    int fd, stat;
+    pid_t pid;
+    if (childpid == NULL) {
+        errno = EINVAL;
+        return(-1);
+    }
+    
+    fd = fileno(fp);
+    if (fd >= maxfd) {
+        errno = EINVAL;
+        return(-1);
+    }
+    if ((pid = childpid[fd]) == 0) {
+        errno = EINVAL;
+        return(-1);
+    }
+    
+    childpid[fd] = 0;
+    if (fclose(fp) == EOF)
+        return(-1);
+    
+    while(waitpid(pid, &stat, 0) < 0)
+        if (errno != EINTR)
+            return(-1);
+    
+    return(stat);
+}
 ```
 
 *popen函数和pclose函数*
@@ -120,13 +365,51 @@ TODO
 例3：
 
 ```c++
-TODO
+#include "apue.h"
+#include <ctype.h>
+
+int 
+main(void)
+{
+    int c;
+    while((c = getchar()) != EOF) {
+        if (isupper(c))
+            c = tolower(c);
+        if (putchar(c) == EOF)
+            err_sys("output error");
+        if (c == '\n')
+            fflush(stdout);
+    }
+    exit(0);
+}
 ```
 
 *将大写字符变换成小写字符的过滤程序*
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+int 
+main(void)
+{
+    char line[MAXLINE];
+    FILE *fpin;
+    if ((fpin = popen("myuclc", "r")) == NULL)
+        err_sys("popen error");
+    for(;;) {
+        fputs("prompt> ", stdout);
+        fflush(stdout);
+        if (fgets(line, MAXLINE, fpin) == NULL)
+            break;
+        if (fputs(line, stdout) == EOF)
+            err_sys("fputs error to pipe");
+    }
+    if (pclose(fpin) == -1)
+        err_sys("pclose error");
+    putchar('\n');
+    exit(0);
+}
 ```
 
 *调用大写/小写过滤程序读取命令*
@@ -142,13 +425,93 @@ TODO
 例1：
 
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(void)
+{
+    int n, int1, int2;
+    char line[MAXLINE];
+    while ((n = read(STDIN_FILENO, line, MAXLINE)) > 0) {
+        line[n] = 0;
+        if (sscanf(line, "%d%d", &int1, &int2) == 2) {
+            sprintf(line, "%d\n", int1 + int2);
+            n = strlen(line);
+            if (write(STDOUT_FILENO, line, n) != n)
+                err_sys("write error");
+        } else {
+            if (write(STDOUT_FILENO, "invalid args\n", 13) != 13)
+                err_sys("write error");
+        }
+    }
+    exit(0);
+}
 ```
 
 *将两个数相加的简单过滤程序*
 
 ```c++
-TODO
+#include "apue.h"
+
+static void sig_pipe(int);
+
+int 
+main(void)
+{
+    int n, fd1[2], fd2[2];
+    pid_t pid;
+    char line[MAXLINE];
+    if (signal(SIGPIPE, sig_pipe) == SIG_ERR)
+        err_sys("signal error");
+    if (pipe(fd1) < 0 || pipe(fd2) < 0)
+        err_sys("pipe error");
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid > 0) {
+        close(fd1[0]);
+        close(fd2[1]);
+        while (fgets(line, MAXLINE, stdin) != NULL) {
+            n = strlen(line);
+            if (write(fd1[1], line, n) != n)
+                err_sys("write error to pipe");
+            if ((n = read(fd2[0], line, MAXLINE)) < 0)
+                err_sys("read error from pipe");
+            if (n == 0) {
+                err_msg("child closed pipe");
+                break;
+            }
+            line[n] = 0;
+            if (fputs(line, stdout) == EOF)
+                err_sys("fputs error");
+        }
+        if (ferror(stdin))
+            err_sys("fgets error on stdin");
+        exit(0);
+    } else {
+        close(fd1[1]);
+        close(fd2[0]);
+        if (fd1[0] != STDIN_FILENO) {
+            if (dup2(fd1[0], STDIN_FILENO) != STDIN_FILENO)
+                err_sys("dup2 error to stdin");
+            close(fd1[0]);
+        }
+        if (fd2[1] != STDOUT_FILENO) {
+            if (dup2(fd2[1], STDOUT_FILENO) != STDOUT_FILENO)
+                err_sys("dup2 error to stdout");
+            close(fd2[1]);
+        }
+        if (execl("./add2", "add2", (char *)0), 0)
+            err_sys("execl error");
+    }
+    exit(0);
+}
+
+static void 
+sig_pipe(int signo)
+{
+    printf("SIGPIPE caught\n");
+    exit(1);
+}
 ```
 
 *驱动add2过滤程序的程序*
@@ -156,7 +519,24 @@ TODO
 例2：
 
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(void)
+{
+    int int1, int2;
+    char line[MAXLINE];
+    while (fgets(line, MAXLINE, stdin) != NULL) {
+        if (sscanf(line, "%d%d", &int1, &int2) == 2) {
+            if (printf("%d\n", int1 + int2) == EOF)
+                err_sys("printf error");
+        } else {
+            if (printf("invalid args\n") == EOF)
+                err_sys("printf error");
+        }
+    }
+    exit(0);
+}
 ```
 
 *将两个数相加的过滤程序，使用标准I/O*
@@ -585,7 +965,43 @@ int shmdt(const void *addr);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/shm.h>
+
+#define ARRAY_SIZE  40000
+#define MALLOC_SIZE 100000
+#define SHM_SIZE    100000
+#define SHM_MODE    0600
+
+char array[ARRAY_SIZE];
+
+int 
+main(void)
+{
+    int shmid;
+    char *ptr, *shmptr;
+    
+    printf("array[] from %p to %p\n", (void *)&array[0],
+           (void *)&array[ARRAY_SIZE]);
+    printf("stack around %p\n", (void *)&shmid);
+    
+    if ((ptr = malloc(MALLOC_SIZE)) == NULL)
+        err_sys("malloc error");
+    printf("malloced from %p to %p\n", (void *)ptr,
+           (void *)ptr + MALLOC_SIZE);
+    
+    if ((shmid = shmget(IPC_PRIVATE, SHM_SIZE, SHM_MODE)) < 0)
+        err_sys("shmget error");
+    if ((shmptr = shmat(shmid, 0, 0)) == (void *)-1)
+        err_sys("shmat error");
+    printf("shared memory attached from %p to %p\n", (void *)shmptr,
+           (void *)shmptr + SHM_SIZE);
+    
+    if (shmctl(shmid, IPC_RMID, 0) < 0)
+        err_sys("shmctl error");
+    
+    exit(0);
+}
 ```
 
 *打印各种类型的数据存放的位置*
@@ -599,7 +1015,53 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+#include <sys/mman.h>
+
+#define NLOOPS 1000
+#define SIZE   sizeof(long)
+
+static int 
+update(long *ptr)
+{
+    return((*ptr)++);
+}
+
+int 
+main(void)
+{
+    int fd, i, counter;
+    pid_t pid;
+    void *area;
+    
+    if ((fd = open("/dev/zero", O_RDWR)) < 0)
+        err_sys("open error");
+    if ((area = mmap(0, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)) == MAP_FAILED)
+        err_sys("mmap error");
+    close(fd);
+    
+    TELL_WAIT();
+    
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid > 0) {
+        for (i = 0; i < NLOOPS; i+= 2) {
+            if ((counter = update((long *)area)) != i)
+                err_quit("parent: expected %d, got %d", i, counter);
+            TELL_CHILD(pid);
+            WAIT_CHILD();
+        }
+    } else {
+        for (i = 1; i < NLOOPS + 1; i += 2) {
+            WAIT_PARENT();
+            if ((counter = update((long *)area)) != i)
+                err_quit("child: expected %d, got %d", i, counter);
+            TELL_PARENT(getppid());
+        }
+    }
+    exit(0);
+}
 ```
 
 *在父进程，子进程之间使用/dev/zero的存储映射I/O的IPC*
@@ -748,7 +1210,57 @@ int sem_getvalue(sem_t *restrict sem, int *restrict valp);
 例：
 
 ```c++
-TODO
+#include "slock.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <errno.h>
+
+struct slock *
+s_alloc()
+{
+    struct slock *sp;
+    static int cnt;
+    
+    if ((sp = malloc(sizeof(struct slock))) == NULL)
+        return(NULL);
+    do {
+        snprintf(sp->name, sizeof(sp->name), "/%1d.%d", 
+                 (long)getpid(), cnt++);
+        sp->semp = sem_open(sp->name, O_CREAT|O_EXCL, S_IRWXU, 1);
+    } while((sp->semp == SEM_FAILED) && (errno == EEXIST));
+    if (sp->semp == SEM_FAILED) {
+        free(sp);
+        return(NULL);
+    }
+    sem_unlink(sp->name);
+    return(sp);
+}
+
+void 
+s_free(struct slock *sp)
+{
+    sem_close(sp->semp);
+    free(sp);
+}
+
+int 
+s_lock(struct slock *sp)
+{
+    return (sem_wait(sp->semp));
+}
+
+int 
+s_trylock(struct slock *sp)
+{
+    return(sem_trywait(sp->semp));
+}
+
+int 
+s_unlock(struct slock *sp)
+{
+    return(sem_post(sp->semp));
+}
 ```
 
 *使用POSIX信号量的互斥*

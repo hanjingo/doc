@@ -391,6 +391,8 @@ auxiliary `/ɔːɡˈzɪliəri/` 辅助的，备用的
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
+availability `/əˌveɪlə'bɪləti/` 可用性，有效性，利用率
+
 avalanche `/ˈævəlɑːnʃ/` 雪崩，山崩
 
 avant `/ˈævɒŋ/` 激进的，先锋的
@@ -829,6 +831,8 @@ conserve `/kənˈsɜːrv /` 保存，节约，保护，节省
 
 considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
 
+consistency `/kənˈsɪstənsi/` 一致性，连贯性，平滑度，坚实度，粘稠度
+
 consolidate `/kənˈsɒlɪdeɪt/` 合并，巩固，加固
 
 conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
@@ -845,7 +849,7 @@ contender `/kənˈtendə(r)/` 竞争者，角逐者，钻机，打孔装置
 
 contour `/ˈkɒntʊə(r)/` 外形，轮廓，等高线
 
-contradictory `/ˌkɒntrəˈdɪktəri/` 矛盾的，对立的，不一致的
+contradiction `/ˌkɒntrəˈdɪkʃn/` 矛盾，对立，不一致
 
 controversial `/ˌkɒntrəˈvɜːʃl/` 有争议的
 
@@ -1192,6 +1196,8 @@ deplete `/dɪˈpliːt/` 耗尽，用尽
 deposit `/dɪˈpɒzɪt/` 订金，押金，存款，存放，沉淀
 
 depot `/ˈdepəʊ/` 仓库，停车场，航空站，贮藏处
+
+deprecate `/ˈdeprəkeɪt/` 强烈反对，不赞成
 
 depreciation `/dɪˌpriːʃɪˈeɪʃən/` 贬值，折旧，轻视，低估
 
@@ -1593,7 +1599,7 @@ equestrian `/ɪˈkwestriən/` 骑马，骑术的，骑手
 
 equitable `/ˈekwɪtəbl/` 公平的，公正的
 
-equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于，等量
+equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于，等量，等价于
 
 ### er
 
@@ -2417,6 +2423,8 @@ inventory `/ˈɪnvəntri/` 库存，财产清单
 
 invertebrate `/ɪnˈvɜːtɪbrət/` 无脊椎动物
 
+invoke `/ɪnˈvəʊk/` 引用，调用，提起，唤起
+
 involve `/ɪnˈvɑːlv/` 包含，涉及，卷入
 
 ### io
@@ -2580,6 +2588,10 @@ lie `/laɪ/` 躺平，平放，说谎，谎言
 likewise `/ˈlaɪkwaɪz/` 同样的，类似的
 
 limestone `/ˈlaɪmstəʊn/` 石灰石，石灰岩
+
+linear `/ˈlɪniə(r)/` 线性的，直线的，线状的
+
+linearization `/lɪnɪəraɪ'zeɪʃən/` 线性化
 
 linger `/ˈlɪŋɡə(r)/` 逗留，留恋，流连，徘徊
 
@@ -2773,6 +2785,8 @@ mockingbird `/ˈmɒkɪŋbɜːd/` 嘲鸫(一种鸟)，模仿鸟
 
 moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理中客
 
+modifier `/ˈmɒdɪfaɪə(r)/` 修饰语
+
 modulo `/mɒdjəˌloʊ/` 求模（数学运算），系数，模数
 
 moist `/mɔɪst/` 潮湿的，湿润的
@@ -2786,6 +2800,8 @@ monetary `/ˈmʌnɪtri/` 货币的，金融的，金钱的
 monitor `/ˈmɒnɪtə(r)/` 显示器，监视器，班长，监视，检查，监听
 
 monopolize `/məˈnɒpəlaɪz/` 垄断，独占，包办
+
+monotonicity `/ˌmɔnətə'nisəti/` 单调性（数学），单一性
 
 monotonous `/məˈnɒtənəs/` 单调的，无聊的
 
@@ -3065,6 +3081,8 @@ outlet `/ˈaʊtlet/` 出口，出路，销路，电源插座，宣泄口
 
 outrange `/aʊt.reɪdʒ/` 愤慨，义愤
 
+outside `/ˌaʊtˈsaɪd /` 外部，外表，外面
+
 outspoken `/aʊtˈspəʊkən/` 直率，坦诚，直言不讳
 
 outweigh `/ˌaʊtˈweɪ/` 胜过，超过，重于，比...有价值
@@ -3147,7 +3165,7 @@ partial `/ˈpɑːʃl/` 部分，不完全的，偏爱
 
 particle `/ˈpɑːtɪkl/` 微粒，粒子，颗粒
 
-partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔
+partition `/pɑːˈtɪʃ(ə)n/` 隔离，分隔，部分，分区
 
 particular `/pəˈtɪkjʊlə/` 特别的，特指
 
@@ -3202,6 +3220,8 @@ percolate `/ˈpɜːkəleɪt/` 渗入，渗透，传开
 percussion `/pəˈkʌʃn/` 撞击，打击乐器
 
 perform `/pəˈfɔːm/` 做，履行，执行，表演
+
+perhaps `/pəˈhæps/` 可能，大概，也许
 
 peril `/ˈperəl/` 危险，险情，危及
 
@@ -4041,6 +4061,8 @@ smuggle `/ˈsmʌɡl/` 走私，偷运
 
 snap `/snæp/` 快照，仓促的，突然的，吧嗒声，断裂
 
+snippet `/ˈsnɪpɪt/` 一则（新闻），一小段（谈话），一小条（消息）
+
 snoop `/snuːp/` 窥探，探听
 
 snug `/snʌɡ/` 舒适的，温暖的，合身的
@@ -4091,7 +4113,7 @@ sparked `/spɑːkt/` 引发，触发，电火花
 
 sparrow `/'spærəʊ/` 麻雀
 
-specify `/ˈspesɪfaɪ/` 具体说明，明确规定，详述
+specify `/ˈspesɪfaɪ/` 具体说明，明确规定，详述，标志语，指示符
 
 specimen `/ˈspesɪmən/` 样品，标本，样本，抽样
 
@@ -4467,7 +4489,7 @@ toes `/təʊz/` 脚趾，足尖
 
 toggle `/ˈtɒɡl/` 切换，转换
 
-tolerance `/ˈtɒlərəns/`  忍受，容忍，公差，容量
+tolerance `/ˈtɒlərəns/`  容错，公差，容量
 
 toned `/təʊnd/` 结实强壮的
 

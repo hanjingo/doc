@@ -355,9 +355,31 @@ pid_t wait4(pid_t pid, int *statloc, int options, struct rusage *rusage);
 
 ```c++
 #include "apue.h"
-TELL_WAIT();
-if ((pid = fork()) < 0) {
-    
+
+static void charatatime(char *);
+
+int 
+main(void)
+{
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        charatatime("output from child\n");
+    } else {
+        charatatime("output from parent\n");
+    }
+    exit(0);
+}
+
+static void 
+charatatime(char *str)
+{
+    char *ptr;
+    int c;
+    setbuf(stdout, NULL);
+    for (ptr = str; (c = *ptr++) != 0; )
+        putc(c, stdout);
 }
 ```
 
@@ -399,7 +421,32 @@ int fexecve(int fd, char *const argv[], char *const envp[]);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+char *env_init[] = {"USER=unknown", "PATH=/tmp", NULL};
+
+int 
+main(void)
+{
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        if (execle("/home/sar/bin/echoall", "echoall", "myarg1",
+                   "MY ARG2", (char *)0, env_init) < 0)
+            err_sys("execle error");
+    }
+    if (waitpid(pid, NULL, 0) < 0)
+        err_sys("wait error");
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        if (execlp("echoall", "echoall", "only 1 arg", (char *)0) < 0)
+            err_sys("execlp error");
+    }
+    exit(0);
+}
 ```
 
 *exec函数实例*
@@ -407,7 +454,19 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+int 
+main(int argc, char *argv[])
+{
+    int i;
+    char **ptr;
+    extern char **environ;
+    for (i = 0; i < argc; i++)
+        printf("argv[%d]: %s\n", i, argv[i]);
+    for (ptr = environ; *ptr != 0; ptr++)
+        printf("%s\n", *ptr);
+    exit(0);
+}
 ```
 
 *回显所有命令行参数和所有环境字符串*
@@ -509,7 +568,24 @@ int setegid(gid_t gid);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+int 
+main(void)
+{
+    pid_t pid;
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        if (execl("/home/sar/bin/testinterp",
+                  "testinterp", "myarg1", "MY ARG2", (char *)0) < 0)
+            err_sys("execl error");
+    }
+    if (waitpid(pid, NULL, 0) < 0)
+        err_sys("waitpid error");
+    exit(0);
+}
 ```
 
 *执行一个解释器文件的程序*
@@ -517,7 +593,13 @@ TODO
 例：
 
 ```c++
-TODO
+#!/usr/bin/awk -f
+# Note: on Solaris, use nawk instead
+BEGIN {
+    for (i = 0; i < ARGC; i++)
+        printf "ARGV[%d] = %s\n", i, ARGV[i]
+    exit
+}
 ```
 
 *作为解释器文件的awk程序*
@@ -540,7 +622,32 @@ int system(const char *cmdstring);
 *执行命令；相对于直接使用fork和exec，system进行了所需的各种出错处理以及各种信号处理，更为安全。*
 
 ```c++
-TODO
+#include <sys/wait.h>
+#include <errno.h>
+#include <unistd.h>
+int 
+system(const char *cmdstring)
+{
+    pid_t pid;
+    int status;
+    if (cmdstring == NULL)
+        return(1);
+    if ((pid = fork()) < 0) {
+        status = -1;
+    } else if (pid == 0) {
+        execl("/bin/sh", "sh", "-c", cmdstring, (char *)0);
+        _exit(127);
+    } else {
+        while (waitpid(pid, &status, 0) < 0) {
+            if (errno != EINTR) {
+                status = -1;
+                break;
+            }
+        }
+    }
+    
+    return(status);
+}
 ```
 
 *system函数的实现（没有对信号进行处理）*
@@ -548,7 +655,24 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/wait.h>
+
+int 
+main(void)
+{
+	int status;
+    if ((status = system("date")) < 0)
+        err_sys("system() error");
+    pr_exit(status);
+    if ((status = system("nosuchcommand")) < 0)
+        err_sys("system() error");
+    pr_exit(status);
+    if ((status = system("who; exit 44")) < 0)
+        err_sys("system() error");
+    pr_exit(status);
+    exit(0);
+}
 ```
 
 *调用system函数*
@@ -556,7 +680,19 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(int argc, char *argv[])
+{
+    int status;
+    if (argc < 2)
+        err_quit("command-line argument required");
+    if ((status = system(argv[1])) < 0)
+        err_sys("system() error");
+    pr_exit(status);
+    exit(0);
+}
 ```
 
 *用system执行命令行参数*
@@ -564,7 +700,14 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(void)
+{
+    printf("real uid = %d, effective uid = %d\n", getuid(), geteuid());
+    exit(0);
+}
 ```
 
 *打印实际用户ID和有效用户ID*
@@ -601,14 +744,119 @@ struct acct
 
 ![8_27](res/8_27.png)
 
+*会计处理实例的进程结构*
+
 ```c++
-TODO
+#include "apue.h"
+
+int 
+main(void)
+{
+    pid_t pid;
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid != 0) {
+        sleep(2);
+        exit(2);
+    }
+    
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid != 0) {
+        sleep(4);
+        abort();
+    }
+    
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid != 0) {
+        execl("/bin/dd", "dd", "if=/etc/passwd", "of=/dev/null", NULL);
+        exit(7);
+    }
+    
+    if ((pid = fork()) < 0)
+        err_sys("fork error");
+    else if (pid != 0) {
+        sleep(8);
+        exit(0);
+    }
+    
+    sleep(6);
+    kill(getpid(), SIGKILL);
+    exit(6);
+}
 ```
 
 *产生会计数据的程序*
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/acct.h>
+
+#if defined(BSD)
+#define acct acctv2
+#define ac_flag ac_trailer.ac_flag
+#define FMT "%-*,*s e = %.0f, chars = %.0f, %c %c %c %c\n"
+#elif defined(HAS_AC_STAT)
+#define FMT "%-*,*s e = %61d, chars = %71d, stat = %3u: %c %c %c %c\n"
+#else
+#define FMT "%-*,*s e = %61d, chars = %71d, %c %c %c %c\n"
+#endif
+#if defined(LINUX)
+#define acct acct_v3
+#endif
+
+#if !defined(HAS_ACORE)
+#define ACORE 0
+#endif
+#if !defined(HAS_AXSIG)
+#define AXSIG 0
+#endif
+
+#if !defined(BSD)
+static unsigned long
+compt2ulong(comp_t comptime)
+{
+    unsigned long val;
+    int exp;
+    val = comptime & 0x1fff;
+    exp = (comptime >> 13) & 7;
+    while (exp-- > 0)
+        val *= 8;
+    return(val);
+}
+#endif
+
+int 
+main(int argc, char *argv[])
+{
+    struct acct acdata;
+    FILE *fp;
+    
+    if (argc != 2)
+        err_quit("usage: pracct filename");
+    if ((fp = fopen(argv[1], "r")) == NULL)
+        err_sys("can't open %s", argv[1]);
+    while (fread(&acdata, sizeof(acdata), 1, fp) == 1) {
+        printf(FMT, (int)sizeof(acdata.ac_comm),
+               (int)sizeof(acdata.ac_comm), acdata.ac_comm,
+#if defined(BSD)
+               acdata.ac_etime, acdata.ac_io,
+#else
+              compt2ulong(acdata.ac_etime), compt2ulong(acdata.ac_io),
+#endif
+#if defined(HAS_AC_STAT)
+               (unsigned char)acdata.ac_stat,
+#endif
+               acdata.ac_flag & ACORE ? 'D' : ' ',
+               acdata.ac_flag & AXSIG ? 'X' : ' ',
+               acdata.ac_flag & AFORK ? 'F' : ' ',
+               acdata.ac_flag & ASU   ? 'S' : ' ');
+    }
+    if (ferror(fp))
+        err_sys("read error");
+    exit(0);
+}
 ```
 
 *打印从系统会计文件中选出的字段*
@@ -660,8 +908,6 @@ int getpriority(int which, id_t who);
 
 *返回指定对象的nice值（调度优先级）*
 
-*
-
 ```c++
 #include <sys/resource.h>
 int setpriority(int which, id_t who, int value);
@@ -682,7 +928,73 @@ int setpriority(int which, id_t who, int value);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <sys/time.h>
+
+#if defined(MACOS)
+#include <sys/syslimits.h>
+#elif defined(SOLARIS)
+#include <limits.h>
+#elif defined(BSD)
+#include <sys/param.h>
+#endif
+
+unsigned long long count;
+struct timeval end;
+
+void 
+checktime(char *str)
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    if (tv.tv_sec >= end.tv_sec && tv.tv_usec >= end.tv_usec) {
+        printf("%s count = %11d\n", str, count);
+        exit(0);
+    }
+}
+
+int 
+main(int argc, char *argv[])
+{
+    pid_t pid;
+    char *s;
+    int nzero, ret;
+    int adj = 0;
+    
+    setbuf(stdout, NULL);
+#if defined(NZERO)
+    nzero = NZERO;
+#elif defined(_SC_NZERO)
+    nzero = sysconf(_SC_NZERO);
+#else
+#error NZERO undefined
+#endif
+    printf("NZERO = %d\n", nzero);
+    if (argc == 2)
+        adj = strtol(argv[1], NULL, 10);
+    gettimeofday(&end, NULL);
+    end.tv_sec += 10;
+    if ((pid = fork()) < 0) {
+        err_sys("fork failed");
+    } else if(pid == 0) {
+        s = "child";
+        printf("current nice value in child is %d, adjusting by %d\n",
+               nice(0) + nzero, adj);
+        errno = 0;
+        if ((ret = nice(adj)) == -1 && errno != 0)
+            err_sys("child set scheduling priority");
+        printf("now child nice value is %d\n", ret + nzero);
+    } else {
+        s = "parent";
+        printf("current nice value in parent is %d\n", nice(0) + nzero);
+    }
+    for(;;) {
+        if (++count == 0)
+            err_quit("%s counter wrap", s);
+        checktime(s);
+    }
+}
 ```
 
 *更改nice值的效果*
@@ -717,7 +1029,57 @@ clock_t times(struct tms *buf);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <sys/times.h>
+
+static void pr_times(clock_t, struct tms *);
+static void do_cmd(char *);
+
+int 
+main(int argc, char *argv[])
+{
+    int i;
+    setbuf(stdout, NULL);
+    for (i = 1; i < argc; i++)
+        do_cmd(argv[i]);
+    exit(0);
+}
+
+static void 
+do_cmd(char *cmd)
+{
+    struct tms tmsstart, tmsend;
+    clock_t start, end;
+    int status;
+    printf("\ncommand: %s\n", cmd);
+    if ((start = times(&tmsstart)) == -1)
+        err_sys("time error");
+    if ((status = system(cmd)) < 0)
+        err_sys("system() error");
+    if ((end = times(&tmsend)) == -1)
+        err_sys("time error");
+    pr_times(end - start, &tmsstart, &tmsend);
+    pr_exit(status);
+}
+
+static void 
+pr_times(clock_t real, struct tms *tmsstart, struct tms *tmsend)
+{
+    static long clktck = 0;
+    if (clktck == 0)
+        if ((clktck = sysconf(_SC_CLK_TCK)) < 0)
+            err_sys("sysconf error");
+    
+    printf(" real: %7.2f\n", real / (double)clktck);
+    printf(" user: %7.2f\n", 
+           (tmsend->tms_utime - tmsstart->tms_utime) / (double)clktck);
+    printf(" sys: %7.2f\n", 
+           (tmsend->tms_stime - tmsstart->tms_stime) / (double)clktck);
+    printf(" child user: %7.2f\n", 
+           (tmsend->tms_cutime - tmsstart->tms_cutime) / (double)clktck);
+    printf(" child sys: %7.2f\n", 
+           (tmsend->tms_cstime - tmsstart->tms_cstime) / (double)clktck);
+}
 ```
 
 *计时并执行所有命令行参数*

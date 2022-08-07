@@ -18,7 +18,33 @@
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <fcntl.h>
+
+char buf[500000];
+
+int 
+main(void)
+{
+    int ntowrite, nwrite;
+    char *ptr;
+    ntowrite = read(STDIN_FILENO, buf, sizeof(buf));
+    fprintf(stderr, "read %d bytes\n", ntowrite);
+    set_fl(STDOUT_FILENO, O_NONBLOCK);
+    ptr = buf;
+    while (ntowrite > 0) {
+        errno = 0;
+        nwrite = write(STDOUT_FILENO, ptr, ntowrite);
+        fprintf(stderr, "nwrite = %d, errno = %d\n", nwrite, errno);
+        if (nwrite > 0) {
+            ptr += nwrite;
+            ntowrite -= nwrite;
+        }
+    }
+    clr_fl(STDOUT_FILENO, O_NONBLOCK);
+    exit(0);
+}
 ```
 
 *长的非阻塞write*
@@ -84,7 +110,19 @@ int fcntl(int filedes, int cmd, ... /* struct flock *flockptr */ );
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+int 
+lock_reg(int fd, int cmd, int type, off_t offset, int whence, off_t len)
+{
+    struct flock lock;
+    lock.l_type = type;
+    lock.l_start = offset;
+    lock.l_whence = whence;
+    lock.l_len = len;
+    
+    return(fcntl(fd, cmd, &lock));
+}
 ```
 
 *加锁和解锁一个文件区域的函数*
@@ -92,7 +130,27 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+
+pid_t 
+lock_test(int fd, int type, off_t offset, int whence, off_t len)
+{
+    struct flock lock;
+    
+    lock.l_type = type;
+    lock.l_start = offset;
+    lock.l_whence = whence;
+    lock.l_len = len;
+    
+    if (fcntl(fd, F_GETLK, &lock) < 0)
+        err_sys("fcntl error");
+    
+    if (lock.l_type == F_UNLCK)
+        return(0);
+    
+    return(lock.l_pid);
+}
 ```
 
 *测试一个锁状态的函数*
@@ -100,7 +158,43 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+
+static void 
+lockabyte(const char *name, int fd, off_t offset)
+{
+    if (writew_lock(fd, offset, SEEK_SET, 1) < 0)
+        err_sys("%s: writew_lock error", name);
+    printf("%s: got the lock, byte %11d\n", name, (long long)offset);
+}
+
+int 
+main(void)
+{
+    int fd;
+    pid_t pid;
+    if ((fd = creat("templock", FILE_MODE)) < 0)
+        err_sys("creat error");
+    if (write(fd, "ab", 2) != 2)
+        err_sys("write error");
+    
+    TELL_WAIT();
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid == 0) {
+        lockabyte("child", fd, 0);
+        TELL_PARENT(getppid());
+        WAIT_PARENT();
+        lockabyte("child", fd, 1);
+    } else {
+        lockabyte("parent", fd, 1);
+        TELL_CHILD(pid);
+        WAIT_CHILD();
+        lockabyte("parent", fd, 0);
+    }
+    exit(0);
+}
 ```
 
 *死锁检测实例*
@@ -145,7 +239,59 @@ lockfile(int fd)
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+
+int 
+main(int argc, char *argv[])
+{
+    int fd;
+    pid_t pid;
+    char buf[5];
+    struct stat statbuf;
+    
+    if (argc != 2) {
+        fprintf(stderr, "usage: %s filename\n", argv[0]);
+        exit(1);
+    }
+    if ((fd = open(argv[1], O_RDWR | O_CREAT | O_TRUNC, FILE_MODE)) < 0)
+        err_sys("open error");
+    if (write(fd, "abcdef", 6) != 6)
+        err_sys("write error");
+    
+    if (fstat(fd, &statbuf) < 0)
+        err_sys("fstat error");
+    if (fchmod(fd, (statbuf.st_mode & ~S_IXGRP) | S_ISGID) < 0)
+        err_sys("fchmod error");
+    
+    TELL_WAIT();
+    
+    if ((pid = fork()) < 0) {
+        err_sys("fork error");
+    } else if (pid > 0) {
+        if (write_lock(fd, 0, SEEK_SET, 0) < 0)
+            err_sys("write_lock error");
+        TELL_CHILD(pid);
+        if (waitpid(pid, NULL, 0) < 0)
+            err_sys("waitpid error");
+    } else {
+        WAIT_PARENT();
+        set_fl(fd, O_NONBLOCK);
+        if (read_lock(fd, 0, SEEK_SET, 0) != -1)
+            err_sys("child: read_lock succeeded");
+        printf("read_lock of already-locked region returns %d\n", errno);
+        
+        if (lseek(fd, 0, SEEK_SET) == -1)
+            err_sys("lseek error");
+        if (read(fd, buf, 2) < 0)
+            err_ret("read failed (mandatory locking works)");
+        else
+            printf("read OK (no mandatory locking), buf = %2.2s\n", buf);
+    }
+    exit(0);
+}
 ```
 
 *确定是否支持强制性锁*

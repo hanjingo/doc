@@ -61,7 +61,23 @@ int pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <pthread.h>
+int 
+makethread(void *(*fn)(void *), void *arg)
+{
+    int err;
+    pthread_t tid;
+    pthread_attr_t attr;
+    err = pthread_attr_init(&attr);
+    if (err != 0)
+        return(err);
+    err = pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    if (err == 0)
+        err = pthread_create(&tid, &attr, fn, arg);
+    pthread_attr_destroy(&attr);
+    return(err);
+}
 ```
 
 *以分离状态创建的线程*
@@ -207,7 +223,108 @@ int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <pthread.h>
+#include <time.h>
+#include <sys/time.h>
+extern int makethread(void *(*)(void *), void *);
+struct to_info{
+    void (*to_fn)(void *);
+    void *to_arg;
+    struct timespec to_wait;
+};
+
+#define SECTONSEC 1000000000
+
+#if !defined(CLOCK_REALTIME) || define(BSD)
+#define clock_nanosleep(ID, FL, REQ, REM) nanosleep((REQ), (REM))
+#endif
+
+#ifndef CLOCK_REALTIME
+#define CLOCK_REALTIME 0
+#define USECTONSEC 1000
+
+void 
+clock_getttime(itn id, struct timespec *tsp)
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    tsp->tv_sec = tv.tv_sec;
+    tsp->tv_nsec = tv.tv_usec * USECTONSEC;
+}
+#endif
+
+void * 
+timeout_helper(void *arg)
+{
+    struct to_info *tip;
+    tip = (struct to_info *)arg;
+    clock_nanosleep(CLOCK_REALTIME, 0, &tip->to_wait, NULL);
+    (*tip->to_fn)(tip->to_arg);
+    free(arg);
+    return(0);
+}
+
+void 
+timeout(const struct timespec *when, void (*func)(void *), void *arg)
+{
+    struct timespec now;
+    struct to_info *tip;
+    int err;
+    
+    clock_gettime(CLOCK_REALTIME, &now);
+    if ((when->tv_sec > now.tv_sec) ||
+        (when->tv_sec == now.tv_sec && when->tv_nsec > now.tv_nsec)) {
+        tip = malloc(sizeof(struct to_info));
+        if (tip != NULL) {
+            tip->to_fn = func;
+            tip->to_arg = arg;
+            tip->to_wait.tv_sec = when->tv_sec - now.tv_sec;
+            if (when->tv_nsec >= now.tv_nsec) {
+                tip->to_wait.tv_nsec = when->tv_nsec - now.tv_nsec;
+            } else {
+                tip->to_wait.tv_sec--;
+                tip->to_wait.tv_nsec = SECTONSEC - now.tv_nsec + when->tv_nsec;
+            }
+            err = makethread(timeout_helper, (void *)tip);
+            if (err == 0)
+                return;
+            else
+                free(tip);
+        }
+    }
+    (*func)(arg);
+}
+
+pthread_mutexattr_t attr;
+pthread_mutex_t mutex;
+
+void 
+retry(void *arg)
+{
+    pthread_mutex_lock(&mutex);
+    pthread_mutex_unlock(&mutex);
+}
+
+int 
+main(void)
+{
+    int err, condition, arg;
+    struct timespec when;
+    if ((err = pthread_mutexattr_init(&attr)) != 0)
+        err_exit(err, "pthread_mutexattr_init failed");
+    if ((err = pthread_mutex_init(&mutex, &attr)) != 0)
+        err_exit(err, "can't create recursive mutex");
+    pthread_mutex_lock(&mutex);
+    
+    if(condition) {
+        clock_gettime(CLOCK_REALTIME, &when);
+        when.tv_sec += 10;
+        timeout(&when, retry, (void *)((unsigned long)arg));
+    }
+    pthread_mutex_unlock(&mutex);
+    exit(0);
+}
 ```
 
 *使用递归互斥量*
@@ -339,7 +456,27 @@ int putc_unlocked(int c, FILE *fp);
 例：
 
 ```c++
-TODO
+#include <limits.h>
+#include <string.h>
+
+#define MAXSTRINGSZ 4096
+static char envbuf[MAXSTRINGSZ];
+extern char **environ;
+
+char * 
+getenv(const char *name)
+{
+    int i, len;
+    len = strlen(name);
+    if (i = 0; environ[i] != NULL; i++) {
+        if ((strncmp(name, environ[i], len) == 0) && 
+            (environ[i][len] == '=')) {
+            	strncpy(envbuf, &environ[i][len+1], MAXSTRINGSZ - 1);
+            	return(envbuf);
+        }
+    }
+    return(NULL);
+}
 ```
 
 *getenv的非可重入版本*
@@ -347,7 +484,48 @@ TODO
 例：
 
 ```c++
-TODO
+#include <string.h>
+#include <errno.h>
+#include <pthread.h>
+#include <stdlib.h>
+
+extern char **environ;
+pthread_mutex_t env_mutex;
+static pthread_once_t init_done = PTHREAD_ONCE_INIT;
+
+static void 
+thread_init(void)
+{
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_init(&attr);
+    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+    pthread_mutex_init(&env_mutex, &attr);
+    pthread_mutexattr_destroy(&attr);
+}
+
+int 
+getenv_r(const char *name, char *buf, int buflen)
+{
+    int i, len, olen;
+    pthread_once(&init_done, thread_init);
+    len = strlen(name);
+    pthread_mutex_lock(&env_mutex);
+    for (i = 0; environ[i] != NULL; i++) {
+        if ((strncmp(name, environ[i], len) == 0) &&
+            (environ[i][len] == '=')) {
+            olen = strlen(&environ[i][len+1]);
+            if (olen >= buflen) {
+                pthread_mutex_unlock(&env_mutex);
+                return(ENOSEC);
+            }
+            strcpy(buf, &environ[i][len + 1]);
+            pthread_mutex_unlock(&env_mutex);
+            return(0);
+        }
+    }
+    pthread_mutex_unlock(&env_mutex);
+    return(ENOENT);
+}
 ```
 
 *getenv的可重入（线程安全）版本*
@@ -462,7 +640,53 @@ int pthread_setspecific(pthread_key_t key, const void *value);
 例：
 
 ```c++
-TODO
+#include <limits.h>
+#include <string.h>
+#include <pthread.h>
+#include <stdlib.h>
+
+#define MAXSTRINGSZ 4096
+static pthread_key_t key;
+static pthread_once_t init_done = PTHREAD_ONCE_INIT;
+pthread_mutex_t env_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+extern char **environ;
+
+static void 
+thread_init(void)
+{
+    pthread_key_create(&key, free);
+}
+
+char * 
+getenv(const char *name)
+{
+    int i, len;
+    char *envbuf;
+    
+    pthread_once(&init_done, thread_init);
+    pthread_mutex_lock(&env_mutex);
+    envbuf = (char *)pthread_getspecific(key);
+    if (envbuf == NULL) {
+        envbuf = malloc(MAXSTRINGSZ);
+        if (envbuf == NULL) {
+            pthread_mutex_unlock(&env_mutex);
+            return(NULL);
+        }
+        pthread_setspecific(key, envbuf);
+    }
+    len = strlen(name);
+    for (i = 0; environ[i] != NULL; i++) {
+        if ((strncmp(name, environ[i], len) == 0) &&
+            (environ[i][len] == '=')) {
+            strncpy(envbuf, &environ[i][len+1], MAXSTRINGSZ-1);
+            pthread_mutex_unlock(&env_mutex);
+            return(envbuf);
+        }
+    }
+    pthread_mutex_unlock(&env_mutex);
+    return(NULL);
+}
 ```
 
 *线程安全的getenv的兼容版本*
@@ -580,7 +804,69 @@ int pthread_kill(pthread_t thread, int signo);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <pthread.h>
+
+int quitflag;
+sigset_t mask;
+
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t waitloc = PTHREAD_COND_INITIALIZER;
+
+void *
+thr_fn(void *arg)
+{
+    int err, signo;
+    for (;;) {
+        err = sigwait(&mask, &signo);
+        if (err != 0)
+            err_exit(err, "sigwait failed");
+        switch(signo) {
+            case SIGINT:
+                printf("\ninterrupt\n");
+                break;
+                
+            case SIGQUIT:
+                pthread_mutex_lock(&lock);
+                quitflag = 1;
+                pthread_mutex_unlock(&lock);
+                pthread_cond_signal(&waitloc);
+                return(0);
+                
+            default:
+                printf("unexpected signal %d\n", signo);
+                exit(1);
+        }
+    }
+}
+
+int 
+main(void)
+{
+    int err;
+    sigset_t oldmask;
+    pthread_t tid;
+    
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGINT);
+    sigaddset(&mask, SIGQUIT);
+    if ((err = pthread_sigmask(SIG_BLOCK, &mask, &oldmask)) != 0)
+        err_exit(err, "SIG_BLOCK error");
+    
+    err = pthread_create(&tid, NULL, thr_fn, 0);
+    if (err != 0)
+        err_exit(err, "can't create thread");
+    
+    pthread_mutex_lock(&lock);
+    while (quitflag == 0)
+        pthread_cond_wait(&waitloc, &lock);
+    pthread_mutex_unlock(&lock);
+    
+    quitflag = 0;
+    if (sigprocmask(SIG_SETMASK, &oldmask, NULL) < 0)
+        err_sys("SIG_SETMASK error");
+    exit(0);
+}
 ```
 
 *同步信号处理*
@@ -609,7 +895,75 @@ int pthread_atfork(void (*prepare)(void), void (*parernt)(void), void (*child)(v
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <pthread.h>
+
+pthread_mutex_t lock1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t lock2 = PTHREAD_MUTEX_INITIALIZER;
+
+void 
+prepare(void)
+{
+    int err;
+    printf("preparing locks...\n");
+    if ((err = pthread_mutex_lock(&lock1)) != 0)
+        err_cont(err, "can't lock lock1 in prepare handler");
+    if ((err = pthread_mutex_lock(&lock2)) != 0)
+        err_cont(err, "can't lock lock2 in prepare handler");
+}
+
+void 
+parent(void)
+{
+    int err;
+    printf("parent unlocking locks...\n");
+    if ((err = pthread_mutex_lunlock(&lock1)) != 0)
+        err_cont(err, "can't unlock lock1 in parent handler");
+    if ((err = pthread_mutex_unlock(&lock2)) != 0)
+        err_cont(err, "can't unlock lock2 in parent handler");
+}
+
+void 
+child(void)
+{
+    int err;
+    printf("child unlocking locks...\n");
+    if ((err = pthread_mutex_unlock(&lock1)) != 0)
+        err_cont(err, "can't unlock lock1 in child handler");
+    if ((err = pthread_mutex_unlock(&lock2)) != 0)
+        err_cont(err, "can't unlock lock2 in child handler");
+}
+
+void *
+thr_fn(void *arg)
+{
+    printf("thread started...\n");
+    pause();
+    return(0);
+}
+
+int 
+main(void)
+{
+    int err;
+    pid_t pid;
+    pthread_t tid;
+    
+    if ((err = pthread_atfork(prepare, parent, child)) != 0)
+        err_exit(err, "can't install fork handlers");
+    if ((err = pthread_create(&tid, NULL, thr_fn, 0)) != 0)
+        err_exit(err, "can't create thread");
+    
+    sleep(2);
+    printf("parent about to fork...\n");
+    if ((pid = fork()) < 0)
+        err_quit("fork failed");
+    else if (pid == 0)
+        printf("child returned from fork\n");
+    else
+        printf("parent returned from fork\n");
+    exit(0);
+}
 ```
 
 *pthread_atfork实例*
