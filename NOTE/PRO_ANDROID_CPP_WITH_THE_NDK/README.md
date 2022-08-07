@@ -1,5 +1,7 @@
 # Android c++高级编程-使用NDK
 
+[美] Onur Cinar . 1ED
+
 - [第一章 Android平台上的C++入门]
 - [第二章 深入了解 Android NDK]
 - [第三章 用JNI实现与原生代码通信](chapter3.md)
