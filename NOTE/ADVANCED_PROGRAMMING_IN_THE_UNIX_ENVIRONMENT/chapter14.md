@@ -387,7 +387,41 @@ main(int argc, cahr *argv[])
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+#include <stropts.h>
+#include <sys/conf.h>
+
+int 
+main(int argc, char *argv[])
+{
+    int fd, i, nmods;
+    struct str_list list;
+    
+    if (argc != 2)
+        err_quit("usage: %s <pathname>", argv[0]);
+    if ((fd = open(argv[1], O_RDONLY)) < 0)
+        err_sys("can't open %s", argv[1]);
+    if (isastream(fd) == 0)
+        err_quit("%s is not a stream", argv[1]);
+    
+    if ((nmods = ioctl(fd, I_LIST, (void *)0)) < 0)
+        err_sys("I_LIST error for nmods");
+    printf("#modules = %d\n", nmods);
+    
+    list.sl_modlist = calloc(nmods, sizeof(struct str_mlist));
+    if (list.sl_modlist == NULL)
+        err_sys("calloc error");
+    list.sl_nmods = nmods;
+    
+    if (ioctl(fd, I_LIST, &list) < 0)
+        err_sys("I_LIST error for list");
+    
+    for (i = 1; i <= nmods; i++)
+        printf("%s:%s\n", (i == nmods) ? "driver" : "module", 
+               list.sl_modlist++->l_name);
+    exit(0);
+}
 ```
 
 *列表流中的模块名*
@@ -406,18 +440,46 @@ int getpmsg(int filedes, struct strbuf *restrict ctlptr,
             int *restrict flagptr);
 ```
 
-- `filedes` 
-- `ctlptr`
-- `dataptr`
-- `flagptr` 
-- `bandptr`
+- `filedes` 描述符
+- `ctlptr` 控制部分
+- `dataptr` 数据部分
+- `flagptr` 标志
+- `bandptr` 消息类型
 
 *从流首读STREAMS消息*
 
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <stropts.h>
+
+#define BUFFSIZE 4096
+
+int 
+main(void)
+{
+    int n, flag;
+    char ctlbuf[BUFFSIZE], datbuf[BUFFSIZE];
+    struct strbuf ctl, dat;
+    
+    ctl.buf = ctlbuf;
+    ctl.maxlen = BUFFSIZE;
+    dat.buf = datbuf;
+    dat.maxlen = BUFFSIZE;
+    for (;;) {
+        flag = 0;
+        if ((n = getmsg(STDIN_FILENO, &ctl, &dat, &flag)) < 0)
+            err_sys("getmsg error");
+        fprintf(stderr, "flag = %d, ctl.len = %d, dat.len = %d\n",
+                flag, ctl.len, dat.len);
+        if (dat.len == 0)
+            exit(0);
+        else if (dat.len > 0)
+            if (write(STDOUT_FILENO, dat.buf, dat.len) != dat.len)
+                err_sys("write error");
+    }
+}
 ```
 
 *用getmsg将标准输入复制到标准输出*
@@ -668,7 +730,50 @@ ssize_t writen(int filedes, void *buf, size_t nbytes);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+
+ssize_t 
+readn(int fd, void *ptr, size_t n)
+{
+    size_t nleft;
+    ssize_t nread;
+    
+    nleft = n;
+    while (nleft > 0) {
+        if ((nread = read(fd, ptr, nleft)) < 0) {
+            if (nleft == n)
+                return(-1);
+            else
+                break;
+        } else if (nread == 0) {
+            break;
+        }
+        nleft -= nread;
+        ptr   += nread;
+    }
+}
+
+ssize_t 
+writen(int fd, const void *ptr, size_t n)
+{
+    size_t nleft;
+    ssize_t nwritten;
+    
+    nleft = n;
+    while (nleft > 0) {
+        if ((nwritten = write(fd, ptr, nleft)) < 0) {
+            if (nleft == n)
+                return(-1);
+            else
+                break;
+        } else if (nwritten == 0) {
+            break;
+        }
+        nleft -= nwritten;
+        ptr   += nwritten;
+    }
+    return(n - nleft);
+}
 ```
 
 *readn和writen函数*
@@ -770,7 +875,34 @@ int munmap(caddr_t addr, size_t len);
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+#include <sys/mman.h>
+
+int 
+main(int argc, char *argv[])
+{
+    int fdin, fdout;
+    void *src, *dst;
+    struct stat statbuf;
+    
+    if (argc != 3)
+        err_quit("usage: %s <fromfile> <tofile>", argv[0]);
+    if ((fdin = open(argv[1], O_RDONLY)) < 0)
+        err_sys("can't open %s for reading", argv[1]);
+    if ((fdout = open(argv[2], O_RDWR | O_CREAT | O-TRUNC, FILE_MODE)) < 0)
+        err_sys("can't creat %s for writing", argv[2]);
+    if (fstat(fdin, &statbuf) < 0)
+        err_sys("fstat error");
+    if (lseek(fdout, statbuf.st_size - 1, SEEK_SET) == -1)
+        err_sys("lseek error");
+    if (write(fdout, "", 1) != 1)
+        err_sys("write error");
+    if ((src = mmap(0, statbuf.st_size, PROT_READ, MAP_SHARED, fdin, 0)) == MAP_FAILED)
+        err_sys("mmap error for output");
+    memcpy(dst, src, statbuf.st_size);
+    exit(0);
+}
 ```
 
 *用存储映射I/O复制文件*

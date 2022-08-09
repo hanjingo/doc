@@ -42,6 +42,18 @@ zmq_connect (requester, "tcp://localhost:5555");
 
 
 
+## 性能测试
+
+![性能测试案例](https://img-blog.csdn.net/20140224112638562?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ3lhbmd5ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+## 最佳实践
+
+1. 线程间通信推荐使用`pair`类型socket，而不是mutex这一类传统的线程通信方法；
+
+
+
 ## 参考
 
 - [zeromq源码分析笔记之架构（1） ](https://www.cnblogs.com/zengzy/p/5122634.html)

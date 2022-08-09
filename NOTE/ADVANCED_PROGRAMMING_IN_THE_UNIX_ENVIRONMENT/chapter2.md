@@ -44,7 +44,11 @@
 
 ### 2.3.1 SVR4
 
+SVR4（UNIX System V Release）
+
 ### 2.3.2 4.4BSD
+
+BSD（Berkeley Software Distribution）
 
 ### 2.3.3 FreeBSD
 
@@ -136,7 +140,79 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <limits.h>
+
+static void pr_sysconf(char *, int);
+static void pr_pathconf(char *, char *, int);
+
+int 
+main(int argc, char *argv[])
+{
+    if (argc != 2)
+        err_quit("usage: a.out <dirname>");
+#ifdef ARG_MAX
+    printf("ARG_MAX defined to be %d\n", ARG_MAX + 0);
+#else
+    printf("no symbol for ARG_MAX\n");
+#endif
+#ifdef _SC_ARG_MAX
+    pr_sysconf("ARG_MAX = ", _SC_ARG_MAX);
+#else
+    printf("no symbol for _SC_ARG_MAX");
+#endif
+    
+#ifdef MAX_CANON
+    printf("MAX_CANON defined to be %d\n", MAX_CANON+0);
+#else
+    printf("no symbol for MAX_CANON\n");
+#endif
+#ifdef _PC_MAX_CANON
+    pr_pathconf("MAX_CANON = ", argv[1], _PC_MAX_CANON);
+#else
+    printf("no symbol for _PC_MAX_CANON\n");
+#endif
+    exit(0);
+}
+
+static void 
+pr_sysconf(char *mesg, int name)
+{
+    long val;
+    fputs(mesg, stdout);
+    errno = 0;
+    if ((val = sysconf(name)) < 0) {
+        if (errno != 0) {
+            if (errno == EINVAL)
+                fputs("(not supported)\n", stdout);
+            else
+                err_sys("sysconf error");
+        } else {
+            fputs(" %1d\n", val);
+        }
+    }
+}
+
+static void 
+pr_pathconf(char *mesg, char *path, int name)
+{
+    long val;
+    fputs(mesg, stdout);
+    errno = 0;
+    if ((val = pathconf(path, name)) < 0) {
+        if (errno != 0) {
+            if (errno == EINVAL)
+                fputs("(not supported)\n", stdout);
+            else
+                err_sys("pathconf error, path = %s", path);
+        } else {
+            fputs("(no limit)\n", stdout);
+        }
+    } else {
+        printf("%1d\n", val);
+    }
+}
 ```
 
 *打印所有可能的sysconf和pathconf值*
@@ -150,7 +226,53 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <limits.h>
+
+#ifdef PATH_MAX
+static int pathmax = PATH_MAX;
+#else
+static int pathmax = 0;
+#endif
+
+#define SUSV3 200112L
+
+static long posix_version = 0;
+
+#define PATH_MAX_GUESS 1024
+
+char *
+path_alloc(int *sizep)
+{
+    char *ptr;
+    int size;
+    
+    if (posix_version == 0)
+        posix_version = sysconf(_SC_VERSION);
+    if (pathmax == 0)
+        errno = 0;
+    if ((pathmax = pathconf("/", _PC_PATH_MAX)) < 0) {
+        if (errno == 0)
+            pathmax = PATH_MAX_GUESS;
+        else
+            err_sys("pathconf error for _PC_PATH_MAX");
+    } else {
+        pathmax++;
+    }
+}
+
+if (posix_version < SUSV3)
+    size = pathmax + 1;
+else
+    size = pathmax;
+
+if ((ptr = malloc(size)) == NULL)
+    err_sys("malloc error for pathname");
+if (sizep != NULL)
+    *sizep = size;
+
+return(ptr);
 ```
 
 *为路径名动态地分配空间*
@@ -158,7 +280,32 @@ TODO
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <limits.h>
+
+#ifdef OPEN_MAX
+static long openmax = OPEN_MAX;
+#else
+static long openmax = 0;
+#endif
+
+#define OPEN_MAX_GUESS 256
+
+long 
+open_max(void)
+{
+    if (openmax == 0) {
+        errno = 0;
+        if ((openmax = sysconf(_SC_OPEN_MAX)) < 0) {
+            if (errno == 0)
+                openmax = OPEN_MAX_GUESS;
+            else
+                err_sys("sysconf error for _SC_OPEN_MAX");
+        }
+    }
+    return(openmax);
+}
 ```
 
 *确定文件描述符数*

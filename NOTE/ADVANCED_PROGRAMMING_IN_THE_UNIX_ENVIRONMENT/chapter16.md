@@ -105,4 +105,143 @@ uint16_t ntohs(uint16_t netint16);  // 网络字节序转主机字节序
 
 ### 16.3.2 地址格式
 
-TODO
+```c++
+#include <arpa/inet.h>
+const char *inet_ntop(int domain, const void *restrict addr, 
+                      char *restrict str, socklen_t size);
+```
+
+- `domain` 域（仅支持`AF_INET`和`AF_INET6`）
+
+- `addr` 网络字节序地址
+
+- `str` 文本字符串地址
+
+- `size` 文本字符串长度；
+
+- `返回值`
+
+  成功：地址字符串指针
+
+  失败：NULL
+
+*将网络字节序的二进制地址转换为文本字符串地址*
+
+```c++
+#include <arpa/inet.h>
+int inet_pton(int domain, const char *restrict str, void *restrict addr);
+```
+
+- `domain 域（仅支持`AF_INET`和`AF_INET6`）`
+
+- `str` 文本字符串地址
+
+- `addr` 网络字节序地址
+
+- `返回值`
+
+  成功：1
+
+  格式无效：0
+
+  出错：-1
+
+*将文本字符串地址转换为网络字节序的二进制地址*
+
+### 16.3.3 地址查询
+
+```c++
+#include <netdb.h>
+struct hostent *gethostent(void);
+void sethostent(int stayopen);
+void endhostent(void)
+```
+
+- `stayopen` 
+
+- `返回值`
+
+  成功：指针
+
+  失败：NULL
+
+*返回/设置/关闭 主机数据文件信息*
+
+```c++
+#include <netdb.h>
+struct netent *getnetbyaddr(uint32_t net, int type);
+struct netent *getnetbyname(const char *name);
+struct netent *getnetent(void);
+void setnetent(int stayopen);
+void endnetent(void);
+```
+
+- `net`
+
+- `type` 地址类型（地址族常量）
+
+- `name` 
+
+- `返回值`
+
+  成功：netent指针
+
+  失败：NULL
+
+*获得/设置/关闭 网络名字和网络号文件信息*
+
+```c++
+#include <netdb.h>
+struct protoent *getprotobyname(const char *name);
+struct protoent *getprotobynumber(int proto);
+struct protoent *getprotoent(void);
+void setprotoent(int stayopen);
+void endprotoent(void);
+```
+
+- `name` 协议名字
+
+- `proto` 协议号
+
+- `返回值`
+
+  成功：protoent指针
+
+  失败：NULL
+
+*映射协议名字和协议号*
+
+```c++
+#include <netdb.h>
+struct servent *getservbyname(const char *name, const char *proto);
+struct servent *getservbyport(int port, const char *proto);
+struct servent *getservent(void);
+void setservent(int stayopen);
+void endservent(void);
+```
+
+- `name` 协议名字
+
+- `proto` 协议号
+
+- `port` 端口号
+
+- `返回值`
+
+  成功：指针
+
+  失败：NULL
+
+*映射端口到服务名*
+
+```c++
+#include <sys/socket.h>
+#include <netdb.h>
+int getaddrinfo(const char *restrict host,
+                const char *restrict service,
+                const struct addrinfo *restrict hint,
+                struct addrinfo **restrict res);
+```
+
+
+
