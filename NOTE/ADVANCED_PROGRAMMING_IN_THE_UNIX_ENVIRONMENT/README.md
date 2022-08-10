@@ -7,7 +7,7 @@
 - [第三章 文件I/O](chapter3.md)
 - [第四章 文件和目录](chapter4.md)
 - [第五章 标准I/O库](chapter5.md)
-- [第六章 系统数据文件和信息]
+- [第六章 系统数据文件和信息](cjhapter6.md)
 - [第七章 进程环境](res/chapter7.md)
 - [第八章 进程控制](chapter8.md)
 - [第九章 进程关系](chapter9.md)
