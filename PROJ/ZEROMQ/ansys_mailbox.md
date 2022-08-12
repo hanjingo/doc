@@ -46,9 +46,34 @@ template <typename T> class atomic_ptr_t
 信号机（signaler_t）用于在两个线程之间传递信号，容量为1（即同一时间信号机内最多只能有1个信号）.
 
 ```c++
+class signaler_t // 信号机
+{
+  public:
+    signaler_t ();
+    ~signaler_t ();
+
+    fd_t get_fd () const;          // 获得read标识符
+    void send ();                  // 发送信号
+    int wait (int timeout_) const; // 等待信号（阻塞）
+    void recv ();                  // 接收信号（出错退出）
+    int recv_failable ();          // 接收信号（出错不退出）
+    bool valid () const;           // 信号机是否可用
+
+#ifdef HAVE_FORK
+    void forked ();
+#endif
+
+  private:
+    fd_t _w;
+    fd_t _r;
+
+#ifdef HAVE_FORK
+    pid_t pid;
+    void close_internal ();
+#endif
+    ZMQ_NON_COPYABLE_NOR_MOVABLE (signaler_t)
+};
 ```
-
-
 
 
 
@@ -175,8 +200,6 @@ class i_mailbox // 邮箱接口类
 #endif
 };
 ```
-
-
 
 
 

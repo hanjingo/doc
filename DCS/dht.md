@@ -105,8 +105,17 @@ end
 Note right of 节点A:标记节点D为问题节点
 ```
 
-
 ## 参考
+
+### 文献
+
+[1] Chord——A Scalable Peer-to-peer Lookup Service for Internet Applications
+
+[2] Kademlia——A Peer-to-peer Information System Based on the XOR Metric
+
+[3] A Survey of DHT Security Techniques
+
+### 外链
 
 - [DHT协议官方文档](http://www.bittorrent.org/beps/bep_0005.html)
 - [wiki Distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table)

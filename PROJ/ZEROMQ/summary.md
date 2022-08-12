@@ -54,6 +54,12 @@ zmq_connect (requester, "tcp://localhost:5555");
 
 
 
+## 查错指南
+
+![err_flow](res/err_flow.png)
+
+
+
 ## 参考
 
 - [zeromq源码分析笔记之架构（1） ](https://www.cnblogs.com/zengzy/p/5122634.html)
