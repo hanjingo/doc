@@ -14,9 +14,10 @@
 
 ### 操作系统
 
-| 书名                                                      | 版次 | 作者                                 | 摘要/评价                                                |
-| --------------------------------------------------------- | ---- | ------------------------------------ | -------------------------------------------------------- |
-| [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md) | 3ED  | 汤小丹<br>梁红兵<br>哲凤屏<br>汤子瀛 | 里面一些专业词汇的拼写错误较多，讲的比较宽泛，不太推荐！ |
+| 书名                                                         | 版次 | 作者                                         | 摘要/评价                                                |
+| ------------------------------------------------------------ | ---- | -------------------------------------------- | -------------------------------------------------------- |
+| [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)    | 3ED  | 汤小丹<br>梁红兵<br>哲凤屏<br>汤子瀛         | 里面一些专业词汇的拼写错误较多，讲的比较宽泛，不太推荐！ |
+| [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md) | 2ED  | [美]W.Richard Stevens <br>[美]Stephen A.Rago | 可以当*nix系统的API字典用。                              |
 
 ### 数据库
 
@@ -75,7 +76,6 @@
 - [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 - [MySql技术内幕-InnoDB存储引擎](INSIDE_MYSQL_INNODB_STORAGE_ENGINE/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
-- [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
