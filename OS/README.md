@@ -1,8 +1,9 @@
 # 操作系统
 
 - [COM技术](com.md)
-- [动态链接库](dll.md)
+- [编译与链接](compile_and_link.md)
 - [驱动](drive.md)
+- [动态链接](dynamic_link.md)
 - [可执行程序](exe.md)
 - [文件系统](file_system.md)
 - [中断](interrupt.md)
@@ -13,6 +14,7 @@
 - [posix接口](posix.md)
 - [进程，线程和协程](progress_thread_coroutine.md)
 - [系统安全](safe.md)
+- [静态链接](static_link.md)
 - [存储器](storage.md)
 - [unix系统内核结构](unix_core.md)
 - [Window API](winapi.md)
