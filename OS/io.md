@@ -87,7 +87,36 @@ delayed write，传统的UNIX系统实现在内核中设有缓冲区高速缓存
 
 
 
-## API
+## 相关API
+
+### access/faccessat
+
+```c++
+#include <unistd.h>
+int access(const char *pathname, int mode);
+int faccessat(int fd, const char *pathname, int mode, int flag);
+```
+
+- `fd` 文件描述符
+
+- `pathname` 绝对/相对路径
+
+- `mode` 模式
+
+  | mode | 说明         |
+  | ---- | ------------ |
+  | R_OK | 测试读权限   |
+  | W_OK | 测试写权限   |
+  | X_OK | 测试执行权限 |
+
+- `flags` 标志
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*进行访问权限测试。*
 
 ### fcntl
 

@@ -59,7 +59,7 @@ _WIN32          Defined on Windows
 | `<sys/mman.h>`                    | 存储管理声明         |
 | [`<sys/select.h>`](#sys/select.h) | select函数           |
 | [`<sys/socket.h>`](#sys/socket.h) | 套接字接口           |
-| `<sys/stat.h>`                    | 文件状态             |
+| [`<sys/stat.h>`](#sys/stat.h)     | 文件状态             |
 | `<sys/statvfs.h>`                 | 文件系统信息         |
 | `<sys/times.h>`                   | 进程时间             |
 | `<sys/types.h>`                   | 基本系统数据类型     |
@@ -128,6 +128,8 @@ _WIN32          Defined on Windows
 
 ---
 
+
+
 ## arpa/inet.h
 
 ### inet_aton 
@@ -154,6 +156,85 @@ _WIN32          Defined on Windows
 
 将二进制格式转换到字符串格式
 
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## dirent.h
+
+### closedir
+
+`int closedir(DIR *dp)`
+
+- `dp` 目录指针
+
+- `返回值`
+
+  成功：0；
+
+  失败：-1；
+
+*关闭目录流*
+
+### opendir/fdopendir
+
+`DIR *opendir(const char *pathname)`
+`DIR *fdopendir(int fd)`
+
+- `pathname` 路径名
+
+- `fd` 文件描述符
+
+- `返回值`
+
+  成功：目录指针；
+
+  失败：NULL；
+
+*把文件/文件描述符转换成目录。*
+
+### readdir
+
+`struct dirent *readdir(DIR *dp)`
+
+- `dp` 目录指针
+- `返回值`
+  - 成功：目录指针；
+  - 在目录尾或失败：NULL；
+
+*读目录流并返回第一个目录项。*
+
+### rewinddir
+
+`void rewinddir(DIR *dp)`
+
+- dp` 目录指针
+- `返回值`
+  - 成功：o；
+  - 失败：-1；
+
+*设置目录流读取位置为原来开头的读取位置*
+
+### seekdir
+
+`void seekdir(DIR *dp, long loc)`
+
+- `dp` 目录指针
+- `loc` 偏移量
+
+*设置目录流目前的读取位置*
+
+### telldir
+
+`long telldir(DIR *dp)`
+
+- dp` 目录指针
+- `返回值` 偏移量
+
+*返回目录流目前的读取位置*
+
 ---
 
 
@@ -164,19 +245,21 @@ _WIN32          Defined on Windows
 
 `void *dlopen(const char *filename, int flags)`
 
-加载动态共享库文件；如果`filename`为NULL，则返回的句柄用于主程序。如果`filename`指定的对象依赖于其它共享对象，动态链接器也会自动加载这些对象。具体见：[动态链接库#dlopen](OS/dll.md)
+加载动态共享库文件；如果`filename`为NULL，则返回的句柄用于主程序。如果`filename`指定的对象依赖于其它共享对象，动态链接器也会自动加载这些对象。具体见：[动态链接库#dlopen](dll.md)
 
 ### dlsym
 
 `void *dlsym(void *handle, const char *symbol)`
 
-解析动态链接库符号，返回符号对应的地址；具体见：[动态链接库#dlsym](OS/dll.md)
+解析动态链接库符号，返回符号对应的地址；具体见：[动态链接库#dlsym](dll.md)
 
 ### dlclose
 
 `int dlclose(void *handle)`
 
-关闭指定句柄的动态链接库；具体见：[动态链接库#dlclose](OS/dll.md)
+关闭指定句柄的动态链接库；具体见：[动态链接库#dlclose](dll.md)
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -188,6 +271,20 @@ _WIN32          Defined on Windows
 
 `int fcntl(int fd, int cmd, ...)`
 
+- `fd` 文件描述符
+- `cmd` 命令
+  - `F_DUPFD` 复制文件描述符，新文件描述符作为函数值返回。
+  - `F_DUPFD_CLOEXEC` 复制文件描述符，设置与新描述符关联的FD_CLOEXEC文件描述符标志的值，返回新文件描述符。
+  - `F_GETFD` 对应于fd的文件描述符标志作为函数值返回。
+  - `F_SETFD` 对于fd设置文件描述符标志。
+  - `F_GETFL` 对应于fd的文件状态标志作为函数值返回。
+  - `F_SETFL` 将文件状态标志设置为第3个参数的值（取为整型值），此参数可以为：O_APPEND,O_NONBLOCK,O_SYNC,O_DSYNC,O_RSYNC,O_FSYNC,O_ASYNC。
+  - `F_GETOWN` 获取当前接受SIGIO和SIGURG信号的进程ID或进程组ID。
+  - `F_SETOWN` 设置接收SIGIO和SIGURG信号的进程ID或进程组ID。
+- 返回值
+  - 成功：取决于cmd的值
+  - 失败：-1
+
 fcntl有5种功能，具体功能取决于cmd的值：
 
 1. 复制一个已有的描述符
@@ -196,7 +293,7 @@ fcntl有5种功能，具体功能取决于cmd的值：
 4. 获取/设置异步I/O所有权
 5. 获取/设置记录锁
 
-具体见：[I/O#fcntl](OS/io.md)
+具体见：[I/O#fcntl](io.md)
 
 ### open/openat
 
@@ -204,13 +301,26 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 `int openat(int fd, const char* path, int oflag, ...)`
 
-打开文件/目录；具体见：[I/O#open/openat](OS/io.md)
+打开文件/目录；具体见：[I/O#open/openat](io.md)
+
+### close
+
+`int close(int fd)`
+
+- `fd` 文件描述符
+- 返回值
+  - 成功：0
+  - 失败：-1
+
+*关闭文件。*
 
 ### create
 
 `int create(const char* path, mode_t mode)`
 
-创建一个新文件；具体见：[I/O#create](OS/io.md)
+创建一个新文件；具体见：[I/O#create](io.md)
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -223,6 +333,8 @@ fcntl有5种功能，具体功能取决于cmd的值：
 `int getnameinfo(const struct sockaddr *sockaddr, socklen_t addrlen, char *host, size_t hostlen, char *service, size_t servlen, int flags )`
 
 返回描述套接字主机的字符串和服务字符串
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -254,6 +366,8 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 网络字节序转主机字节序(32位)
 
+[返回顶部](#POSIX接口)
+
 ---
 
 
@@ -265,6 +379,143 @@ fcntl有5种功能，具体功能取决于cmd的值：
 `int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout)`
 
 允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。具体见：[I/O#select](NET/io.md)
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## stdio
+
+### fflush
+
+`int fflush(FILE *fp)`
+
+- `fp` 文件流
+
+- `返回值`
+
+  成功：0
+
+  失败：EOF
+
+*强制刷出一个流*
+
+### fopen/freopen/fdopen
+
+`FILE *fopen(const char *restrict pathname, const char *restrict type)`
+`FILE *freopen(const char *restrict pathname, const char *restrict type, FILE *restrict fp)`
+`FILE *fdopen(int fd, const char *type)`
+
+- `pathname` 路径
+
+- `type` 打开模式
+
+  | type         | 说明                                     | open(2)标志                     |
+  | ------------ | ---------------------------------------- | ------------------------------- |
+  | r或rb        | 为读而打开。                             | O_RDONLY                        |
+  | w或wb        | 把文件截断至0长，或为写而创建。          | O_WRONLY \| O_CREAT \| O_TRUNC  |
+  | a或ab        | 追加：为在文件尾写而打开，或为写而创建。 | O_WRONLY \| O_CREAT \| O_APPEND |
+  | r+或r+b或rb+ | 为读和写而打开。                         | O_RDWR                          |
+  | w+或w+b或wb+ | 把文件截断至0长，或为读和写而打开。      | O_RDWR \| O_CREAT \| O_TRUNC    |
+  | a+或a+b或ab+ | 为在文件尾读和写而打开或创建。           | O_RDWR \| O_CREAT \| O_APPEND   |
+
+- `fd` 文件描述符
+
+- `返回值`
+
+  成功：文件指针
+
+  失败：NULL
+
+*fopen：打开一个标准I/O流*
+
+*freopen：重新打开一个标准I/O流*
+
+*fdopen：使一个标准的I/O流与已有的文件描述符结合*
+
+### fwide
+
+`int fwide(FILE *fp, int mode)`
+
+- `fp` 文件流
+
+- `mode` 模式
+
+  - `< 0` 试图使指定的流是字节定向的；
+  - `= 0` 将不试图设置流的定向，但返回标识该流定向的值；
+  - `> 0` 试图使指定的流是宽定向的。
+
+- `返回值`
+
+  流是宽定向的：`> 0`
+
+  流是未定向的：`0`
+
+  流是字节定向的：`< 0`
+
+*设置流的定向*
+
+### rename/renameat
+
+`int rename(const char *oldname, const char *newname)`
+`int renameat(int oldfd, const char *oldname, int newfd, const char *newname)`
+
+- `oldname` 旧名字
+
+- `newname` 新名字
+
+- `oldfd` 旧文件描述符
+
+- `newfd` 新文件描述符
+
+- `返回值` 
+
+  成功：0
+
+  失败：-1
+
+*对文件/目录进行重命名*
+
+### remove
+
+`int remove(const char *pathname)`
+
+- `pathname` 路径
+
+- `返回值` 
+
+  成功：0
+
+  失败：-1
+
+*解除对一个文件或目录的链接（对于文件，等同于unlink；对于目录，等同于rmdir）。*
+
+### setbuf/setvbuf
+
+`void setbuf(FILE *restrict fp, char *restrict buf)`
+`int setvbuf(FILE *restrict fp, char *restrict buf, int mode, size_t size)`
+
+- `fp` 文件流
+
+- `buf` 缓冲区（长度为BUFSIZ）
+
+- `mode` 缓冲类型
+
+  - `_IOFBF` 全缓冲
+  - `_IOLBF` 行缓冲
+  - `_IONBF` 不带缓冲
+
+- `size` 缓冲区长度
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*设置缓冲区属性*
 
 ---
 
@@ -289,6 +540,25 @@ fcntl有5种功能，具体功能取决于cmd的值：
 `int memcmp(const void *ptr1, const void *ptr2, size_t nbytes)`
 
 比较字符串
+
+### perror
+
+`void perror(const char *msg)`
+
+- `msg` 返回的错误信息
+
+*根据当前错误码输出错误信息*
+
+### strerror
+
+`char *strerror(int errnum)`
+
+- `errnum` 错误码
+- `返回值` 指向消息字符串的指针
+
+*将错误码映射为错误信息字符串*
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -332,6 +602,8 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 比较字符串
 
+[返回顶部](#POSIX接口)
+
 ---
 
 
@@ -362,60 +634,470 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 从已完成连接队列头返回下一个已完成连接，如果已完成连接队列为空，那么进程被投入睡眠；具体见[unix网络编程-卷一#第四章#accept函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
 
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/stat.h
+
+### chmod/fchmod/fchmodat
+
+`int chmod(const char *pathname, mode_t mode)`
+
+`int fchmod(int fd, mode_t mode)`
+
+`int fchmodat(int fd, const char *pathname, mode_t mode, int flag)`
+
+- `fd`文件描述符
+- `pathname` 路径
+- `mode` 访问权限
+- `flag` 用于改变fchmodat的行为
+
+*chmod：更改指定路径上文件的访问权限*
+
+*fchmod：更改已打开文件的访问权限*
+
+*fchmodat：以指定行为来更改绝对/相对路径的文件的访问权限*
+
+### fstat
+
+`int fstat(int fd, struct stat *buf)`
+
+- `fd` 文件描述符
+- `buf` 用于返回文件信息
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*获取文件描述符指向的文件的信息*
+
+### fstatat
+
+`int fstatat(int fd, const char *restrict pathname, struct stat *restrict buf, int flag)`
+
+- `fd` 文件描述符
+
+- `pathname` 文件路径
+
+- `buf` 用于返回文件信息
+
+- `flag` 标志
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*获取目录的文件统计信息*
+
+### lstat
+
+`int lstat(const char *restrict pathname, struct stat *restrict buf)`
+
+- `pathname` 文件路径
+- `buf` 用于返回文件信息
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*获取符号链接的有关信息*
+
+### mkdir/mkdirat
+
+`int mkdir(const char *pathname, mode_t mode)`
+`int mkdirat(int fd, const char *pathname, mode_t mode)`
+
+- `pathname` 路径
+
+- `mode` 文件访问权限
+
+- `fd` 文件描述符
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个新的空目录*
+
+### stat
+
+`int stat(const char *restrict pathname, struct stat *restrict buf)`
+
+- `pathname` 文件路径
+- `buf` 用于返回文件信息
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*获取指定路径上文件的信息*
+
+### umask
+
+`mode_t umask(mode_t cmask)`
+
+- `cmask` 访问权限位（见上面“9个访问权限位，取自<sys/stat.h>”）
+- `返回值` 由之前的文件模式所创建的屏蔽字
+
+*为进程设置文件模式创建屏蔽字*
+
+### utimestat/futimens
+
+`int utimensat(int fd, const char *path, const struct timespec times[2], int flag)`
+
+`int futimens(int fd, const struct timespec times[2])`
+
+- `fd` 文件套接字
+
+- `times` 时间值
+
+  - [0]：访问时间
+  - [1]：修改时间
+
+- `path` 文件路径
+
+- `flag` 标记
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*修改文件的时间（精度：ns）*
+
+---
+
+
+
+## sys/time.h
+
+### utimes
+
+`int utimes(const char *pathname, const struct timeval times[2])`
+
+- `pathname` 路径名
+
+- `times` 时间值
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*修改路径的时间*
+
 ---
 
 
 
 ## unistd.h
 
+### access/faccessat
+
+`int access(const char *pathname, int mode)`
+
+`int faccessat(int fd, const char *pathname, int mode, int flag)`
+
+- `fd` 文件描述符
+
+- `pathname` 绝对/相对路径
+
+- `mode` 模式
+
+- `flags` 标志
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*进行访问权限测试*。具体见：[I/O#access/faccessat](io.md)
+
+### chdir/fchdir
+
+`int chdir(const char *pathname)`
+
+`int fchdir(int fd)`
+
+- `pathname` 路径名
+- `fd` 文件描述符
+- `返回值`
+  - 成功：0；
+  - 失败：-1；
+
+*更改当前工作目录。
+
+### chown/fchown/fchownat/lchown
+
+`int chown(const char *pathname, uid_t owner, gid_t group)`
+
+`int fchown(int fd, uid_t owner, git_t group)`
+
+`int fchownat(int fd, const char *pathname, uid_t owner, gid_t group, int flag)`
+
+`int lchown(const char *pathname, uid_t owner, gid_t group)`
+
+- `pathname` 路径
+- `fd` 文件描述符
+- `owner` 用户ID
+- `group` 组ID
+- `flag` 标志
+
+*更改文件/链接的用户ID和组ID*
+
 ### close
 
 `int close(int fd)`
 
-关闭文件；具体见：[I/O#close](OS/io.md)
-
-### lseek
-
-`off_t lseek(int fd, off_t offset, int whence)`
-
-为一个打开的文件设置偏移量；具体见：[I/O#lseek](OS/io.md)
-
-### read
-
-`ssize_t read(int fd, void *buf, size_t nbytes)`
-
-从文件中读数据；具体见：[I/O#read](OS/io.md)
-
-### write
-
-`ssize_t write(int fd, const void* buf, size_t nbytes)`
-
-写数据到文件；具体见：[I/O#write](OS/io.md)
+关闭文件；具体见：[I/O#close](io.md)
 
 ### dup/dup2
 
 `int dup(int fd)`
 `int dup2(int fd, int fd2)`
 
-复制一个现有的文件描述符；具体见：[I/O#dup/dup2](OS/io.md)
+- `fd` 待复制的文件描述符
+- `fd2` 用来指定返回的文件描述符的值
+  - 如果`fd2`已经打开，先关闭它
+  - 如果`fd`等于`fd2`，则`dup2`返回`fd2`而不关闭它
+  - 其它情况，`fd2`的`FD_CLOEXEC`文件描述符标志被清除，`fd2`在进程调用exec时是打开状态
+- 返回值
+  
+  成功：新的文件描述符
+  
+  失败：-1
 
-### sync
-
-`void sync(void)`
-
-`sync`只是将所有修改过的块缓冲区排入写队列，然后就返回，**它并不等实际写磁盘操作结束。**具体见：[I/O#sync](OS/io.md)
-
-### fsync
-
-`int fsync(int fd)`
-
-`fsync`只对由文件描述符fd指定的一个文件起作用，并且等待写磁盘操作结束才返回。具体见：[I/O#fsync](OS/io.md)
+复制一个现有的文件描述符；具体见：[I/O#dup/dup2](io.md)
 
 ### fdatasync
 
 `int fdatasync(int fd)`
 
-`fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。具体见：[I/O#fdatasync](OS/io.md)
+`fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。具体见：[I/O#fdatasync](io.md)
+
+### fpathconf
+
+`long fpathconf(int filedes, int name)`
+
+- `name` 限制名
+
+- `filedes` 文件描述符
+
+- `返回值`
+
+  成功：运行时限制
+
+  失败：-1
+
+*获得运行时限制*
+
+### getcwd
+
+`char *getcwd(char *buf, size_t size)`
+
+- `buf` 缓冲区
+- `size` 缓冲区长度（字节，路径名+null）
+- `返回值`
+  - 成功：buf
+  - 失败：NULL
+
+*返回当前目录的完整绝对路径。*
+
+### link/linkat
+
+`int link(const char *existingpath, const char *newpath)`
+`int linkat(int efd, const char *existingpath, int nfd, const char *newpath, int flag)`
+
+- `existingpath` 现有文件路径
+
+- `newpath` 链接文件路径（需要保证此路径不存在）
+
+- `efd` 现有文件的文件描述符
+
+- `nfd` 链接文件的文件描述符
+
+- `newpath` 链接文件路径
+
+- `flag` 标志，标识创建链接的链接or文件的链接
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个指向现有文件的链接*
+
+### lseek
+
+`off_t lseek(int fd, off_t offset, int whence)`
+
+- `fd` 文件描述符
+- `offset` 偏移量
+- `whence` 位置
+  - `SEEK_SET` 将文件的偏移量设置为距文件开始处offset个字节
+  - `SEEK_CUR` 将文件偏移量设置为其当前值加offset，offset可正可负
+  - `SEEK_END` 将文件的偏移量设置为文件长度加offset，offset可正可负
+- 返回值
+  - 成功：新的文件偏移量
+  - 失败：-1
+
+为一个打开的文件设置偏移量；具体见：[I/O#lseek](io.md)
+
+### pathconf
+
+`long pathconf(const char *pathname, int name)`
+
+- `name` 限制名
+- `pathname` 文件路径
+
+*获得运行时限制*
+
+### pread
+
+`ssize_t pread(int fd, void *buf, size_t nbytes, off_t offset)`
+
+*以原子方式读文件*
+
+### pwrite
+
+`ssize_t pwrite(int fd, const void* buf, size_t nbytes, off_t offset)`
+
+*以原子方式写文件*
+
+### read/readlink/readlinkat
+
+`ssize_t read(int fd, void *buf, size_t nbytes)`
+
+`ssize_t readlink(const char *restrict pathname, char *restrict buf, size_t bufsize)`
+
+- `fd` 文件描述符
+- `buf` 缓冲区
+- `nbytes` 要求读的长度
+- `bufsize` 缓冲区长度
+- 返回值
+  - 成功：读到的字节数
+  - 已到文件尾：0
+  - 失败：-1
+
+*从文件中读数据；*具体见：[I/O#read](io.md)
+
+### rmdir
+
+`int rmdir(const char *pathname)`
+
+- `pathname` 路径
+- `返回值`
+  - 如果没有其它进程打开此目录，释放由此目录占用的空间；
+  - 如果有1个或多个进程打开此目录，在函数返回前删除最后一个连接及`.`和`..`项；
+
+*将目录的链接计数设置为0。*
+
+### symlink/symlinkat
+
+`int symlink(const char *actualpath, const char *sympath)`
+`int symlinkat(const char *actualpath, int fd, const char *sympath)`
+
+- `actualpath` 真实地址
+
+- `sympath` 符号链接
+
+- `fd` 文件描述符
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个符号链接*
+
+### sync/fsync/fdatasync
+
+`void sync(void)`
+
+`int fsync(int fd)`
+
+`int fdatasync(int fd)`
+
+- `fd` 文件描述符
+- 返回值
+  - 成功：0
+  - 失败：-1
+
+`sync`只是将所有修改过的块缓冲区排入写队列，然后就返回，**它并不等实际写磁盘操作结束。**具体见：[I/O#sync](io.md)
+
+`fsync`只对由文件描述符fd指定的一个文件起作用，并且等待写磁盘操作结束才返回。具体见：[I/O#fsync](io.md)
+
+`fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。具体见：[I/O#fdatasync](io.md)
+
+### sysconf
+
+`long sysconf(int name)`
+
+- `name` 限制名
+
+- `返回值`
+
+  成功：运行时限制
+
+  失败：-1
+
+*获得运行时限制*
+
+### truncate/ftruncate
+
+`int truncate(const char *pathname, off_t length)`
+
+`int ftruncate(int fd, off_t length)`
+
+- `fd` 文件描述符
+- `pathname` 路径
+- `length` 截断后的长度
+
+*根据文件路径/描述符来截断文件；如果截断前文件长度>length，则length以外的数据将无法访问；如果截断前文件长度<length，文件尾端到length之间的数据读作0。*
+
+### unlink/unlinkat
+
+`int unlink(const char *pathname)`
+`int unlinkat(int fd, const char *pathname, int flag)`
+
+- `pathname` 路径
+
+- `fd` 文件描述符
+
+- `flag` 标志
+
+- `返回值`
+
+  成功：0
+
+  出错：-1
+
+*删除目录项（只有当链接计数达到0时，该文件的内容才可被删除！！！）*
+
+### write
+
+`ssize_t write(int fd, const void* buf, size_t nbytes)`
+
+- `fd` 文件描述符
+- `buf` 缓冲区
+- `nbytes` 要写入的字节数
+- 返回值
+  - 成功：已写的字节数==要写入的字节数
+  - 失败：-1或已写的字节数<要写入的字节数
+
+写数据到文件；具体见：[I/O#write](io.md)
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -426,6 +1108,8 @@ fcntl有5种功能，具体功能取决于cmd的值：
 ### memcpy
 
 TODO
+
+[返回顶部](#POSIX接口)
 
 ---
 

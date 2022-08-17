@@ -99,7 +99,7 @@ int fflush(FILE *fp);
 
   失败：EOF
 
-*强制冲洗一个流*
+*强制刷出一个流*
 
 
 
@@ -116,7 +116,14 @@ FILE *fdopen(int fd, const char *type);
 
 - `type` 打开模式
 
-  ![5_2](res/5_2.png)
+  | type         | 说明                                     | open(2)标志                     |
+  | ------------ | ---------------------------------------- | ------------------------------- |
+  | r或rb        | 为读而打开。                             | O_RDONLY                        |
+  | w或wb        | 把文件截断至0长，或为写而创建。          | O_WRONLY \| O_CREAT \| O_TRUNC  |
+  | a或ab        | 追加：为在文件尾写而打开，或为写而创建。 | O_WRONLY \| O_CREAT \| O_APPEND |
+  | r+或r+b或rb+ | 为读和写而打开。                         | O_RDWR                          |
+  | w+或w+b或wb+ | 把文件截断至0长，或为读和写而打开。      | O_RDWR \| O_CREAT \| O_TRUNC    |
+  | a+或a+b或ab+ | 为在文件尾读和写而打开或创建。           | O_RDWR \| O_CREAT \| O_APPEND   |
 
   *打开标准I/O流的type参数*
 
@@ -124,7 +131,15 @@ FILE *fdopen(int fd, const char *type);
 
 - `返回值`
 
-*打开/重新打开一个标准I/O流*
+  成功：文件指针
+
+  失败：NULL
+
+*fopen：打开一个标准I/O流*
+
+*freopen：重新打开一个标准I/O流*
+
+*fdopen：使一个标准的I/O流与已有的文件描述符结合*
 
 ![5_3](res/5_3.png)
 

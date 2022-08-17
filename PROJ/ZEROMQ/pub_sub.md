@@ -19,3 +19,5 @@
 ## 参考
 
 - [第二章 ZeroMQ进阶](https://wizardforcel.gitbooks.io/zmq-guide/content/chapter2.html)
+
+- [重头戏！ZeroMQ的发布-订阅模式详解：ZMQ_PUB、ZMQ_SUB](https://blog.51cto.com/u_15346415/3673854)

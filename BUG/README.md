@@ -87,7 +87,7 @@ eos无法启动...
 
 ## Eos-GO
 
-[权限异常](eos-go.md)
+#### [权限异常](eos-go.md)
 
 关键词：**eos-go**
 
@@ -174,6 +174,22 @@ telnet端口不通，但是防火墙已关闭，可能是由于linux默认禁止
 关键词：**mysql**，**密码**，**不合法**
 
 修改MySQL的用户名和密码时，报`ERROR 1819 (HY000): Your password does not satisfy the current policy requirements;...`
+
+
+
+## ZeroMQ
+
+#### [慢启动问题](zeromq.md)
+
+关键词：**ZeroMQ**，**pub/sub**
+
+TODO
+
+#### [高水位问题](zeromq.md)
+
+关键词：**ZeroMQ**，**HWN**，**高水位**
+
+TODO
 
 
 

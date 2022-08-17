@@ -139,6 +139,8 @@ aesthetic `/iːsˈθetɪk/` 审美观，美感
 
 affective `/əˈfektɪv/` 感情的，情感的
 
+affinity `/əˈfɪn.ə.ti/` 姻亲，近似，密切关系，吸引力
+
 affluent `/ˈæfluənt/` 富裕的，丰富的
 
 ### ag

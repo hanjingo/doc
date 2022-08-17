@@ -193,3 +193,5 @@ int zmq::msg_t::close ()
 
 - [ZeroMQ源码阅读阶段性总结](https://www.icode9.com/content-1-120408.html#mailbox_tmutex_t_75)
 - [Linux架构师源码分析---ZeroMQ源码](https://zhuanlan.zhihu.com/p/357533714)
+- [全网仅此一篇！万字详解ZeroMQ的zmq_msg_t消息处理、多部分消息、及消息接口](https://blog.51cto.com/u_15346415/3673855)
+- [ZeroMQ文档白嫖：一文带你全面了解ZeroMQ的套接字处理](https://blog.51cto.com/u_15346415/3673856)

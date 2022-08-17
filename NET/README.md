@@ -11,7 +11,6 @@
 - [HTTP协议](http.md)
 - [HTTP-FLV协议](http_flv.md)
 - [ICMP协议](icmp.md)
-- [网络I/O](io.md)
 - [IP](ip.md)
 - [KRPC协议]
 - [MDNS协议](mdns.md)
@@ -27,7 +26,6 @@
 - [RTMP协议]
 - [RTSP协议]
 - [WIFI](wifi.md)
-- [windows网络编程](winsock.md)
 
 
 

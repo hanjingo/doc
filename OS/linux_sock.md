@@ -1,4 +1,4 @@
-# 网络I/O
+# Linux网络编程
 
 [TOC]
 
@@ -8,35 +8,25 @@
 
 Unix下可用的5种I/O模型：
 
-- 阻塞式I/O
+- `阻塞式I/O（blocking I/O）`在I/O执行的两个阶段都被阻塞了
 
-    blocking I/O，在I/O执行的两个阶段都被阻塞了
+    ![linux_sock1](res/linux_sock1.png)
 
-    ![io1](res/io1.png)
+- `非阻塞式I/O（nonblocking I/O）`用户进程不断的主动询问kernel数据是否准备好
 
-- 非阻塞式I/O
+    ![linux_sock2](res/linux_sock2.png)
 
-    nonblocking I/O，用户进程不断的主动询问kernel数据是否准备好
+- `I/O复用（I/O multiplexing，select和poll）`内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。
 
-    ![io2](res/io2.png)
+    ![linux_sock3](res/linux_sock3.png)
 
-- I/O复用（select和poll）
+- `信号驱动式I/O（signal driven I/O，SIGIO）`信号驱动用户进程读写，不需要用户不断轮询kernel。
 
-    I/O multiplexing，内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。
+    ![linux_sock4](res/linux_sock4.png)
 
-    ![io3](res/io3.png)
+- `异步I/O（asynchronous I/O）`
 
-- 信号驱动式I/O（SIGIO）
-
-    signal driven I/O，信号驱动用户进程读写，不需要用户不断轮询kernel。
-
-    ![io4](res/io4.png)
-
-- 异步I/O
-
-    asynchronous I/O，
-    
-    ![io5](res/io5.png)
+    ![linux_sock5](res/linux_sock5.png)
 
 前4种模型的主要区别在于第一阶段，因为他们的第二阶段是一样的：在数据从内核复制到调用者的缓冲区期间，进程阻塞于recvfrom调用。相反，异步`I/O`模型在这两个阶段都要处理，从而不同于其他4种模型。
 
@@ -45,7 +35,7 @@ Unix下可用的5种I/O模型：
 - 同步`I/O`操作（synchronous I/O opetation）导致请求进程阻塞，直到`I/O`操作完成。
 - 异步`I/O`操作（asynchronous I/O opetation）不导致请求进程阻塞。
 
-![io6](res/io6.png)
+![linux_sock6](res/linux_sock6.png)
 
 
 
@@ -234,7 +224,6 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 
 - `event` 事件
 
-
   | 事件         | 说明                                          |
   | ------------ | --------------------------------------------- |
   | EPOLLIN      | 描述符处于可读状态                            |
@@ -269,20 +258,11 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 
 #### 触发模式
 
-- LT（`Level Triggered`，水平触发）
+- `LT（Level Triggered，水平触发）`默认模式，**只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。
 
-  默认模式，**只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。
-
-- ET（`Edge Triggered`，边缘触发）
-
-  高速模式，**只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回；Nginx用的ET。
-
-  在以下情况推荐使用：
-
-  - `read`或`write`系统调用返回`EAGAIN`
-  - 非阻塞的文件描述符
-
-
+- `ET（Edge Triggered，边缘触发）` 高速模式，**只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回。Nginx用的ET，在以下情况推荐使用ET：
+- `read`或`write`系统调用返回`EAGAIN`
+- 非阻塞的文件描述符
 
 相对于`select`和`poll`来说，`epoll`没有描述符限制。`epoll`使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。
 

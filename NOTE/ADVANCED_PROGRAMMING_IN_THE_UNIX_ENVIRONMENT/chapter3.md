@@ -363,14 +363,14 @@ fcntl有5种功能：
 
 ### 用例
 
-```c
+```c++
 #include <fcntl.h>
 fcntl(fd, F_GETFL, O_SYNC);
 ```
 
 ### 同步写
 
-```c
+```c++
 set_fl(STDOUT_FILENO, O_SYNC);
 ```
 
