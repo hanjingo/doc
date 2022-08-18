@@ -26,46 +26,46 @@ _WIN32          Defined on Windows
 
 ### 必需
 
-| 头文件                            | 说明                 |
-| --------------------------------- | -------------------- |
-| `<aio.h>`                         | 异步I/O              |
-| `<cpio.h>`                        | cpio归档值           |
-| `<dirent.h>`                      | 目录项               |
-| [`<dlfcn.h>`](#dlfcn.h)           | 动态链接             |
-| [`<fcntl.h>`](#fcntl.h)           | 文件控制             |
-| `<fnmatch.h>`                     | 文件名匹配类型       |
-| `<glob.h>`                        | 路径名模式匹配与生成 |
-| `<grp.h>`                         | 组代码               |
-| `<iconv.h>`                       | 代码集变换实用程序   |
-| `<langinfo.h>`                    | 语言信息常量         |
-| `<monetary.h>`                    | 货币类型与函数       |
-| [`<netdb.h>`](#netdb.h)           | 网络数据库操作       |
-| `<nl_types.h>`                    | 消息类               |
-| `<poll.h>`                        | 投票函数             |
-| `<pthread.h>`                     | 线程                 |
-| `<pwd.h>`                         | 口令文件             |
-| `<regex.h>`                       | 正则表达式           |
-| `<sched.h>`                       | 执行调度             |
-| `<semaphore.h>`                   | 信号量               |
-| [`<strings.h>`](#strings.h)       | 字符串操作           |
-| `<tar.h>`                         | tar归档值            |
-| `<termios.h>`                     | 终端I/O              |
-| [`<unistd.h>`](#unistd.h)         | 符号常量             |
-| `<wordexp.h>`                     | 字扩充类型           |
-| [`<arpa/inet.h>`](#arpa/inet.h)   | 因特网定义           |
-| `<net/if.h>`                      | 套接字本地接口       |
-| [`<netinet/in.h>`](#netinet/in.h) | 因特网地址族         |
-| `<netinet/tcp.h>`                 | 传输控制协议定义     |
-| `<sys/mman.h>`                    | 存储管理声明         |
-| [`<sys/select.h>`](#sys/select.h) | select函数           |
-| [`<sys/socket.h>`](#sys/socket.h) | 套接字接口           |
-| [`<sys/stat.h>`](#sys/stat.h)     | 文件状态             |
-| `<sys/statvfs.h>`                 | 文件系统信息         |
-| `<sys/times.h>`                   | 进程时间             |
-| `<sys/types.h>`                   | 基本系统数据类型     |
-| `<sys/un.h>`                      | UNIX域套接字定义     |
-| `<sys/utsname.h>`                 | 系统名               |
-| `<sys/wait.h>`                    | 进程控制             |
+| 头文件                              | 说明                 |
+| ----------------------------------- | -------------------- |
+| `<aio.h>`                           | 异步I/O              |
+| `<cpio.h>`                          | cpio归档值           |
+| [`<dirent.h>`](#dirent.h)           | 目录项               |
+| [`<dlfcn.h>`](#dlfcn.h)             | 动态链接             |
+| [`<fcntl.h>`](#fcntl.h)             | 文件控制             |
+| `<fnmatch.h>`                       | 文件名匹配类型       |
+| `<glob.h>`                          | 路径名模式匹配与生成 |
+| [`<grp.h>`](#grp.h)                 | 组代码               |
+| `<iconv.h>`                         | 代码集变换实用程序   |
+| `<langinfo.h>`                      | 语言信息常量         |
+| `<monetary.h>`                      | 货币类型与函数       |
+| [`<netdb.h>`](#netdb.h)             | 网络数据库操作       |
+| `<nl_types.h>`                      | 消息类               |
+| `<poll.h>`                          | 投票函数             |
+| `<pthread.h>`                       | 线程                 |
+| `<pwd.h>`                           | 口令文件             |
+| `<regex.h>`                         | 正则表达式           |
+| `<sched.h>`                         | 执行调度             |
+| `<semaphore.h>`                     | 信号量               |
+| [`<strings.h>`](#strings.h)         | 字符串操作           |
+| `<tar.h>`                           | tar归档值            |
+| `<termios.h>`                       | 终端I/O              |
+| [`<unistd.h>`](#unistd.h)           | 符号常量             |
+| `<wordexp.h>`                       | 字扩充类型           |
+| [`<arpa/inet.h>`](#arpa/inet.h)     | 因特网定义           |
+| `<net/if.h>`                        | 套接字本地接口       |
+| [`<netinet/in.h>`](#netinet/in.h)   | 因特网地址族         |
+| `<netinet/tcp.h>`                   | 传输控制协议定义     |
+| `<sys/mman.h>`                      | 存储管理声明         |
+| [`<sys/select.h>`](#sys/select.h)   | select函数           |
+| [`<sys/socket.h>`](#sys/socket.h)   | 套接字接口           |
+| [`<sys/stat.h>`](#sys/stat.h)       | 文件状态             |
+| `<sys/statvfs.h>`                   | 文件系统信息         |
+| `<sys/times.h>`                     | 进程时间             |
+| `<sys/types.h>`                     | 基本系统数据类型     |
+| `<sys/un.h>`                        | UNIX域套接字定义     |
+| [`<sys/utsname.h>`](#sys/utsname.h) | 系统名               |
+| `<sys/wait.h>`                      | 进程控制             |
 
 ### 可选
 
@@ -326,6 +326,55 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
+## grp.h
+
+### endgrent
+
+`void endgrent(void)`
+
+`关闭组文件文件中的条目`
+
+### getgrent
+
+`struct group *getgrent(void)`
+
+- `返回值`
+
+  成功：group指针
+
+  失败/到达文件结尾：NULL
+
+*搜索组文件中的条目*
+
+### getgrgid/getgrnam
+
+`struct group *getgrgid(gid_t gid)`
+`struct group *getgrnam(const char *name)`
+
+- `gid` 组ID
+
+- `name` 组名
+
+- `返回值`
+
+  成功：group指针
+
+  失败：NULL
+
+*根据组名/数值组ID查看组信息*
+
+### setgrent
+
+`void setgrent(void)`
+
+*打开组文件文件中的条目*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
 ## netdb.h
 
 ### getnameinfo
@@ -372,6 +421,169 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
+## pwd.h
+
+### endpwent
+
+`void endpwent(void)`
+
+- `返回值`
+
+  成功：passwd指针
+
+  失败或到达文件结尾：NULL
+
+*关闭口令文件内容*
+
+### getpwent
+
+`struct passwd *getpwent(void)`
+
+- `返回值`
+
+  成功：passwd指针
+
+  失败或到达文件结尾：NULL
+
+*获得口令文件内容*
+
+### getpwuid/getpwnam
+
+`struct passwd *getpwuid(uid_t uid)`
+`struct passwd *getpwnam(const char *name)`
+
+- `uid` 用户ID
+
+- `name` 用户登陆名
+
+- `返回值`
+
+  成功：passwd指针
+
+  失败：NULL
+
+*获取口令文件项*
+
+### setpwent
+
+`void setpwent(void)`
+
+- `返回值`
+
+  成功：passwd指针
+
+  失败或到达文件结尾：NULL
+
+*设置口令文件内容*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## setjmp.h
+
+### longjmp
+
+`void longjmp(jmp_buf env, int val)`
+
+- `env` 保存恢复栈状态的所有信息
+- `val` 从setjmp处返回的值
+
+*进行非局部跳转（全局的goto）*
+
+### setjmp
+
+`int setjmp(jmp_buf env)`
+
+- `env` 保存恢复栈状态的所有信息
+
+- `返回值`
+
+  直接调用：0
+
+  从longjmp返回：非0
+
+**设置非局部跳转信息（全局的goto）**
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## shadow
+
+### endspent
+
+`void endspent(void)`
+
+*关闭口令文件*
+
+### getspnam/getspent
+
+`struct spwd *getspnam(const char *name)`
+`struct spwd *getspent(void)`
+
+- `name` 口令文件
+
+- `返回值`
+
+  成功：spwd指针
+
+  出错：NULL
+
+*访问口令文件*
+
+### setspent
+
+`void setspent(void)`
+
+*打开口令文件*
+
+---
+
+
+
+## sys/resource.h
+
+### getrlimit
+
+`int getrlimit(int resource, struct rlimit *rlptr)`
+
+- `resource` 资源
+
+- `rlptr` 限制值
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*设置进程的资源限制*
+
+### setrlimit
+
+`int setrlimit(int resource, const struct rlimit *rlptr)`
+
+- `resource` 资源
+
+- `rlptr` 限制值
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*更新进程的资源限制*
+
+---
+
+
+
 ## sys/select.h
 
 ### select
@@ -388,6 +600,43 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 ## stdio
 
+### clearerr
+
+`void clearerr(FILE *fp)`
+
+- `fp` 流
+
+*清空错误标记*
+
+### fclose
+
+`int fclose(FILE *fp)`
+
+- `fp` 流
+
+- `返回值`
+
+  成功：0
+
+  失败：EOF
+
+*关闭流*
+
+### ferror/feof
+
+`int ferror(FILE *fp)`
+`int feof(FILE *fp)`
+
+- `fp` 流
+
+- `返回值`
+
+  条件为真：非0
+
+  条件为假：0
+
+*判断错误类型/文件结束*
+
 ### fflush
 
 `int fflush(FILE *fp)`
@@ -402,6 +651,32 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *强制刷出一个流*
 
+### fgetpos/fsetpos
+
+`int fgetpos(FILE *restrict fp, fpos_t *restrict pos)`
+`int fsetpos(FILE *fp, const fpos_t *pos)`
+
+- `fp` 流
+
+- `pos` 当前位置
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*获取/设置流的当前位置*
+
+### fileno
+
+`int fileno(FILE *fp)`
+
+- `fp` 流
+- `返回值` 与流相关联的文件描述符
+
+*获得流的描述符*
+
 ### fopen/freopen/fdopen
 
 `FILE *fopen(const char *restrict pathname, const char *restrict type)`
@@ -411,15 +686,6 @@ fcntl有5种功能，具体功能取决于cmd的值：
 - `pathname` 路径
 
 - `type` 打开模式
-
-  | type         | 说明                                     | open(2)标志                     |
-  | ------------ | ---------------------------------------- | ------------------------------- |
-  | r或rb        | 为读而打开。                             | O_RDONLY                        |
-  | w或wb        | 把文件截断至0长，或为写而创建。          | O_WRONLY \| O_CREAT \| O_TRUNC  |
-  | a或ab        | 追加：为在文件尾写而打开，或为写而创建。 | O_WRONLY \| O_CREAT \| O_APPEND |
-  | r+或r+b或rb+ | 为读和写而打开。                         | O_RDWR                          |
-  | w+或w+b或wb+ | 把文件截断至0长，或为读和写而打开。      | O_RDWR \| O_CREAT \| O_TRUNC    |
-  | a+或a+b或ab+ | 为在文件尾读和写而打开或创建。           | O_RDWR \| O_CREAT \| O_APPEND   |
 
 - `fd` 文件描述符
 
@@ -434,6 +700,58 @@ fcntl有5种功能，具体功能取决于cmd的值：
 *freopen：重新打开一个标准I/O流*
 
 *fdopen：使一个标准的I/O流与已有的文件描述符结合*
+
+### fread
+
+`size_t fread(void *restrict ptr, size_t size, size_t nobj, FILE *restrict fp)`
+
+- `ptr` 缓冲区
+- `size` 缓冲区长度
+- `nobj` 要读/写的数据长度
+- `fp` 流
+- `返回值`对象数
+
+*读二进制数据*
+
+### fseek/fseeko
+
+`int fseek(FILE *fp, long offset, int whence)`
+
+`int fseeko(FILE *fp, off_t offset, int whence)`
+
+- `fp` 流
+
+- `offset` 偏移量
+
+- `whence` 位置
+
+  - `SEEK_SET` 将文件的偏移量设置为距文件开始处offset个字节
+  - `SEEK_CUR` 将文件偏移量设置为其当前值加offset，offset可正可负
+  - `SEEK_END` 将文件的偏移量设置为文件长度加offset，offset可正可负
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*定位标准I/O流*
+
+### ftell/ftello
+
+`long ftell(FILE *fp)`
+
+`off_t ftello(FILE *fp);`
+
+- `fp` 流
+
+- `返回值`
+
+  成功：当前文件位置
+
+  失败：(off_t)-1
+
+*定位标准I/O流*
 
 ### fwide
 
@@ -456,6 +774,121 @@ fcntl有5种功能，具体功能取决于cmd的值：
   流是字节定向的：`< 0`
 
 *设置流的定向*
+
+### fwrite
+
+`size_t fwrite(const void *restrict ptr, size_t size, size_t nobj, FILE *restrict fp)`
+
+- `ptr` 缓冲区
+- `size` 缓冲区长度
+- `nobj` 要读/写的数据长度
+- `fp` 流
+- `返回值`对象数
+
+*写二进制数据*
+
+### getc/getchar/fgetc
+
+`int getc(FILE *fp)`
+`int fgetc(FILE *fp)`
+`int getchar(void)`
+
+- `fp` 流
+
+- `返回值`
+
+  成功：下一个字符
+
+  到达文件尾或出错：EOF
+
+*一次读一个字符*
+
+### gets/fgets
+
+`char *fgets(char *restrict buf, int n, FILE *restrict fp)`
+`char *gets(char *buf)`
+
+- `buf` 缓冲区
+
+- `n` 缓冲区长度
+
+- `fp` 流
+
+- `返回值`
+
+  成功：buf
+
+  到达文件尾或出错：NULL
+
+*从流中读一行字符串*
+
+### mkstemp
+
+`int mkstemp(char *template)`
+
+- `template` 字符串模板
+
+- `返回值`
+
+  成功：文件描述符
+
+  失败：-1
+
+*创建临时文件*
+
+### printf/vprintf/fprintf/vprintf
+
+`int printf(const char *restrict format, ...)`
+`int vprintf(const char *restrict format, va_list arg)`
+`int fprintf(FILE *restrict fp, const char *restrict format, ...)`
+`int vfprintf(FILE *restrict fp, const char *restrict format, va_list arg)`
+
+- `format` 格式化字符串
+
+- `fp` 流
+
+- `返回值`
+
+  成功：字符数
+
+  失败：负数
+
+*格式化输出字符到流*
+
+### putc/putchar/fputc
+
+`int putc(int c, FILE *fp)`
+`int fputc(int c, FILE *fp)`
+`int putchar(int c)`
+
+- `c` 字符
+
+- `fp` 流
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写单个字符到流中*
+
+### puts/fputs
+
+`int fputs(const char *restrict str, FILE *restrict fp)`
+`int puts(const char *str)`
+
+- `str` 字符串
+
+- `fp` 流
+
+- `返回值`
+
+  成功：非负值
+
+  失败：EOF
+
+*将一行字符串（null结尾）写入到流*
 
 ### rename/renameat
 
@@ -492,6 +925,37 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *解除对一个文件或目录的链接（对于文件，等同于unlink；对于目录，等同于rmdir）。*
 
+### rewind
+
+`void rewind(FILE *fp)`
+
+- `fp` 流
+
+*将流设置到文件的起始位置*
+
+### scanf/fscanf/sscanf/vscanf/vfscanf/vsscanf
+
+`int scanf(const char *restrict format, ...)`
+`int vscanf(const char *restrict format, va_list arg)`
+`int fscanf(FILE *restrict fp, const char *restrict format, ...)`
+`int vfscanf(FIEL *restrict fp, const char *restrict format, va_list arg)`
+`int sscanf(const char *restrict buf, const char *restrict format, ...)`
+`int vsscanf(const char *restrict buf, const char *restrict format, va_list arg)`
+
+- `format` 格式化字符串
+
+- `fp` 流
+
+- `buf` 缓冲区
+
+- `返回值`
+
+  成功：输入的项数
+
+  出错或再任意变换前已到达文件结尾：EOF
+
+*格式化输入*
+
 ### setbuf/setvbuf
 
 `void setbuf(FILE *restrict fp, char *restrict buf)`
@@ -516,6 +980,201 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：非0
 
 *设置缓冲区属性*
+
+### sprintf/vsprintf/snprintf/vsnprintf
+
+`int sprintf(char *restrict buf, const char *restrict format, ...)`
+`int vsprintf(char *restrict buf, const char *restrict format, va_list arg)`
+`int snprintf(char *restrict buf, size_t n, const char *restrict format, ...)`
+`int vsnprintf(char *restrict buf, size_t n, const char *restruct format, va_list arg)`
+
+- `buf` 缓冲区
+
+- `format` 格式化字符串
+
+- `n` 缓冲区长度
+
+- `返回值`
+
+  成功：存入数组的字符数
+
+  失败：负数
+
+*格式化输出字符串到缓冲区*
+
+### tmpfile
+
+`FILE *tmpfile(void)`
+
+- `返回值`
+
+  成功：文件指针
+
+  失败：NULL
+
+*创建临时文件*
+
+### tmpnam
+
+`char *tmpnam(char *ptr)`
+
+- `ptr` 文件路径
+- `返回值` 创建的临时文件路径
+
+*创建一个与现有文件名不同的临时文件路径（此函数最多调用`TMP_MAX`次）*
+
+### ungetc
+
+`int ungetc(int c, FILE *fp)`
+
+- `c` 字符
+
+- `fp` 流
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*将从流中读取的字符再退回流中*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## stdlib.h
+
+### atexit
+
+`int atexit(void (*func)(void))`
+
+- `func` 终止处理回调函数
+- `返回值`
+  - 成功：0
+  - 失败：非0
+
+*注册`终止处理程序（exit handler）`，最多32个且不做去重。*
+
+### calloc
+
+`void *calloc(size_t mobj, size_t size)`
+
+- `mobj` 对象个数
+- `size` 长度（字节数）
+- `返回值`
+  - 成功：非空指针
+  - 失败：NULL
+
+*为指定数量指定长度的对象分配存储空间，该空间中的每bit都初始化为0。*
+
+### exit
+
+`void exit(int status)`
+
+- `status` 终止状态
+
+*执行完清理操作：对于所有打开流调用fclose函数，冲刷输出缓冲中的所有数据；然后返回内核。*
+
+### free
+
+`void free(void *ptr)`
+
+- `ptr` 分配区指针
+
+*释放存储空间。*
+
+### getenv
+
+`char *getenv(const char *name)`
+
+- `name` 键
+- `返回值`
+  - 成功：与name关联的指针
+  - 失败：NULL
+
+*获取环境变量值。*
+
+### malloc
+
+`void *malloc(size_t size)`
+
+- `size` 长度（字节数）
+
+- `返回值`
+
+  成功：非空指针
+
+  失败：NULL
+
+*分配指定字节数的存储区，此存储区中的初始值不确定。*
+
+### putenv
+
+`int putenv(char *str)`
+
+- `str` 格式为`name=value的`键值对
+- `返回值`
+  - 成功：0
+  - 失败：非0
+
+*取形式为`name=value`的字符串，将其放到环境表中；如果name已经存在，则先删除其原来的定义。*
+
+### realloc
+
+`void *realloc(void *ptr, size_t newsize)`
+
+- `ptr` 旧的分配区指针
+- `newsize` 长度（字节数）
+- `返回值`
+  - 成功：非空指针
+  - 失败：NULL
+
+*增加或减少以前分配区的长度；当增加长度时，可能需将以前分配区的内容移到另一个足够大的区域，以便在尾端提供增加的存储区，而新增区域内的初始值则不确定。*
+
+### setenv
+
+`int setenv(const char *name, const char *value, int rewrite)`
+
+- `name` 键
+- `value` 值
+- `rewrite` 是否重写该值（0：保留现有定义，非0：删除现有定义）
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*将name设置为value；如果name已经存在：1.如果rewrite非0，则首先删除其现有的定义；2.如果rewrite为0，则不删除其现有定义。
+
+### unsetenv
+
+`int unsetenv(const char *name)`
+
+- `name` 键
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*删除指定key的环境变量。*
+
+### _exit
+
+`void _exit(int status)`
+
+- `status` 终止状态
+
+*立即返回内核，不做清理。*
+
+### _Exit
+
+`void _Exit(int status)`
+
+- `status` 终止状态
+
+*立即返回内核，不做清理。*
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -772,11 +1431,25 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *修改文件的时间（精度：ns）*
 
+[返回顶部](#POSIX接口)
+
 ---
 
 
 
 ## sys/time.h
+
+### gettimeofday
+
+`int gettimeofday(struct timeval *restrict tp, void *restrict tzp)`
+
+- `tp` 时间信息
+
+- `tzp` 时区（唯一合法值是NULL）
+
+- `返回值` 总是0
+
+*返回（更高分辨率级别，ms）的当前时间和日期*
 
 ### utimes
 
@@ -793,6 +1466,212 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：-1
 
 *修改路径的时间*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/utsname.h
+
+### uname
+
+`int uname(struct utsname *name)`
+
+- `name` 操作系统信息
+
+- `返回值`
+
+  成功：非0值
+
+  失败：-1
+
+*返回与当前主机和操作系统有关的信息*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/wait.h
+
+### wait
+
+`pid_t wait(int *statloc)`
+
+- `statloc`
+
+  - 空指针：不关心终止状态
+  - 非空指针：存放子进程的终止状态
+
+- `返回值`
+
+  成功：进程ID
+
+  失败：0或-1
+
+*查找终结的子进程（阻塞）*
+
+### waitid
+
+`int waitid(idtype_t idtype, id_t id, siginfo_t *infop, int options)`
+
+- `idtype` ID类型
+
+  | 常量   | 说明                                                         |
+  | ------ | ------------------------------------------------------------ |
+  | P_PID  | 等待一特定进程：`id`包含要等待子进程的进程ID                 |
+  | P_PGID | 等待一特定进程组中的任一子进程：`id`包含要等待子进程的进程组ID |
+  | P_ALL  | 等待任一子进程：忽略`id`                                     |
+
+- `id` 进程ID
+
+- `infop` 指向造成子进程状态改变有关信号的信息
+
+- `options` 选项
+
+  | 常量       | 说明                                                         |
+  | ---------- | ------------------------------------------------------------ |
+  | WCONTINUED | 等待一进程，它以前曾被停止，此后又已继续，但其状态尚未报告   |
+  | WEXITED    | 等待已退出的进程                                             |
+  | WNOHANG    | 如无可用的子进程退出状态，立即返回而非阻塞                   |
+  | WNOWAIT    | 不破坏子进程退出状态。该子进程退出状态可由后续的`wait`, `waitid`或`waitpid`调用取得 |
+  | WSTOPPED   | 等待一进程，它已经停止，但其状态尚未报告                     |
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*获得进程终止状态*
+
+### waitpid
+
+`pid_t waitpid(pid_t pid, int *statloc, int options)`
+
+- `pid` 指定子进程ID
+
+  - `-1` 等待任一子进程；
+  - `>0` 等待进程ID与pid相等的子进程；
+  - `0` 等待组ID等于调用进程组ID的任一子进程；
+  - `<-1` 等待组ID等于pid绝对值的任一子进程。
+
+- `statloc`
+
+  - 空指针：不关心终止状态
+  - 非空指针：存放子进程的终止状态
+
+- `options` 选项参数
+
+  | 常量       | 说明                                                         |
+  | ---------- | ------------------------------------------------------------ |
+  | WCONTINUED | 若实现支持作业控制，那么由`pid`指定的任一子进程在停止后已经继续，但其状态尚未报告，则返回其状态（POSIX.1的XSI扩展） |
+  | WNOHANG    | 若由`pid`指定的子进程并不是立即可用的，则`waitpid`不阻塞，此时其返回值为0 |
+  | WUNTRACED  | 若某实现支持作业控制，而由`pid`指定的任一子进程已处于停止状态，并且其状态自停止以来还未报告过，则返回其状态，WIFSTOPPED宏确定返回值是否对应于一个停止的子进程 |
+
+- `返回值`
+
+  成功：进程ID
+
+  失败：0或-1
+
+*查找终结的子进程（阻塞/非阻塞）*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## time.h
+
+### asctime
+
+`char *asctime(const struct tm *tmptr)`
+
+- `tmptr` 本地时间
+- `返回值` 指向以null结尾的字符串的指针
+
+*将本地时间转换成字符串*
+
+### ctime
+
+`char *ctime(const time_t *ctlptr)`
+
+- `ctlptr` 日历时间
+- `返回值` 指向以null结尾的字符串的指针
+
+*将日历时间转换成字符串*
+
+### gmtime
+
+`struct tm *gmtime(const time_t *calptr)`
+
+- calptr` 日历时间
+- `返回值` 指向tm结构的指针
+
+*将日历时间转换为国际标准时间*
+
+### localtime
+
+`struct tm *localtime(const time_t *calptr)`
+
+- alptr` 日历时间
+- `返回值` 指向tm结构的指针
+
+*将日历时间转换为本地时间*
+
+### mktime
+
+`time_t mktime(struct tm *tmptr)`
+
+- `tmptr` 本地时间
+
+- `返回值`
+
+  成功：日历时间
+
+  失败：-1
+
+*将本地时间转换成日历时间*
+
+### strftime
+
+`size_t strftime(char *restrict buf, size_t maxsize, const char *restrict format, const struct tm *restrict tmptr)`
+
+- `buf` 字符串数组
+
+- `maxsize` 数组容量
+
+- `format` 字符串格式
+
+- `tmptr` 要格式化的时间值
+
+- `返回值`
+
+  成功：返回存入数组的字符数
+
+  失败：0
+
+*格式化时间*
+
+### time
+
+`time_t time(time_t *calptr)`
+
+- `calptr` 
+
+- `返回值`
+
+  成功：时间值
+
+  失败：-1
+
+*返回当前时间和日期*
+
+[返回顶部](#POSIX接口)
 
 ---
 
@@ -883,6 +1762,20 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 `fdatasync`类似于`fsync`，但它只影响文件的数据部分。而除数据外，fsync还会同步更新文件的属性。具体见：[I/O#fdatasync](io.md)
 
+### fork
+
+`pid_t fork(void)`
+
+- `子进程返回值` 0
+
+- `父进程返回值`
+
+  成功：子进程ID
+
+  失败：-1
+
+*创建子进程*
+
 ### fpathconf
 
 `long fpathconf(int filedes, int name)`
@@ -910,6 +1803,83 @@ fcntl有5种功能，具体功能取决于cmd的值：
   - 失败：NULL
 
 *返回当前目录的完整绝对路径。*
+
+### getgroups
+
+`int getgroups(int gidsetsize, gid_t grouplist[])`
+
+- `gidsetsize` 数组容量
+
+- `grouplist` 数组
+
+- `返回值`
+
+  成功：附加组ID
+
+  失败：-1
+
+*将附加组ID添加到grouplist数组中*
+
+### gethostname
+
+`int gethostname(char *name, int namelen)`
+
+- `name` 返回的主机名字符串
+
+- `namelen` 主机名字符串长度
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*返回主机名*
+
+### getgid/getegid
+
+`gid_t getgid(void)`
+`gid_t getegid(void)`
+
+- `返回值` 组ID
+
+*返回进程的实际组ID/有效组ID*
+
+### getpid/getppid
+
+`pid_t getpid(void)`
+
+`pid_t getppid(void)`
+
+- `返回值` 进程ID
+
+*返回进程的ID/父进程ID*
+
+### getuid/geteuid
+
+`uid_t getuid(void)`
+
+`uid_t geteuid(void)`
+
+- `返回值` 用户ID
+
+*返回实际用户ID/有效用户ID*
+
+### initgroups
+
+`int initgroups(const char *username, gid_t basegid)`
+
+- `usrname` 用户名
+
+- `basegid` 组ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置组文件中用户名的映射关系*
 
 ### link/linkat
 
@@ -1000,6 +1970,22 @@ fcntl有5种功能，具体功能取决于cmd的值：
   - 如果有1个或多个进程打开此目录，在函数返回前删除最后一个连接及`.`和`..`项；
 
 *将目录的链接计数设置为0。*
+
+### setgroups
+
+`int setgroups(int ngroups, const gid_t grouplist[])`
+
+- `ngroups` ID数组容量
+
+- `grouplist` ID数组
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置附加组ID表*
 
 ### symlink/symlinkat
 

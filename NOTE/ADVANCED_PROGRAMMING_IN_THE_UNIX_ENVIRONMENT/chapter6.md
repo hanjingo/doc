@@ -72,7 +72,17 @@ struct passwd *getpwnam(const char *name)
 
 ## 6.3 阴影口令
 
-![t6_2](res/t6_2.png)
+| 说明                       | struct spwd成员        |
+| -------------------------- | ---------------------- |
+| 用户登录名                 | `char *sp_namp`        |
+| 加密口令                   | `char *sp_pwdp`        |
+| 上次更改口令以来经过的时间 | `int sp_lstchg`        |
+| 经过多少天后允许更改       | `int sp_min`           |
+| 要求更改尚余天数           | `int sp_max`           |
+| 到期警告天数               | `int sp_warn`          |
+| 账户不活动之前尚余天数     | `int sp_inact`         |
+| 账户到期天数               | `int sp_expire`        |
+| 保留                       | `unsigned int sp_flag` |
 
 */etc/shadow文件中的字段*
 
@@ -92,7 +102,7 @@ void endspent(void);
 
   出错：NULL
 
-*访问口令文件*
+*访问/打开/关闭 口令文件*
 
 
 
@@ -133,7 +143,7 @@ void endgrent(void);
 
   失败/到达文件结尾：NULL
 
-*搜索整个组文件*
+*搜索/打开/关闭 组文件文件中的条目*
 
 
 

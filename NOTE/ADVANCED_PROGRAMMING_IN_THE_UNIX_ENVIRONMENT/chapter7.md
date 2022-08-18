@@ -74,7 +74,7 @@ main()
 int atexit(void (*func)(void));
 ```
 
-- `func`
+- `func` 终止处理回调函数
 - `返回值`
   - 成功：0
   - 失败：非0
@@ -208,8 +208,10 @@ void *malloc(size_t size);
 
 - `size` 长度（字节数）
 - `返回值`
-  - 成功：非空指针
-  - 失败：NULL
+  
+  成功：非空指针
+  
+  失败：NULL
 
 *分配指定字节数的存储区，此存储区中的初始值不确定。*
 
@@ -218,7 +220,7 @@ void *malloc(size_t size);
 void *calloc(size_t mobj, size_t size);
 ```
 
-- `mobj`
+- `mobj` 对象个数
 - `size` 长度（字节数）
 - `返回值`
   - 成功：非空指针
@@ -303,7 +305,7 @@ int setenv(const char *name, const char *value, int rewrite);
 int unsetenv(const char *name);
 ```
 
-- `str` 键
+- `name` 键
 - `返回值`
   - 成功：0
   - 失败：-1
@@ -387,7 +389,7 @@ void longjmp(jmp_buf env, int val);
 - `env` 保存恢复栈状态的所有信息
 - `val` 从setjmp处返回的值
 
-*非局部跳转*
+*进行非局部跳转（全局的goto）*
 
 例：
 
