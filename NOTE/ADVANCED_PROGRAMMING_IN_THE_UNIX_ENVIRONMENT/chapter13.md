@@ -109,9 +109,7 @@ void openlog(const char *ident, int option, int facility);
 
   ![t13_2](res/t13_2.png)
 
-- `返回值`
-
-  前日志记录优先级屏蔽值
+- `返回值` 前日志记录优先级屏蔽值
 
 *打开日志（可选）*
 
@@ -122,13 +120,20 @@ void syslog(int priority, const char *format, ...);
 
 - `priority` 优先级，由`facility`和`level`组合而成；
 
-  ![t13_3](res/t13_3.png)
+  | level       | 说明                                   |
+  | ----------- | -------------------------------------- |
+  | LOG_EMERG   | 紧急状态（系统不可使用）（最高优先级） |
+  | LOG_ALERT   | 必须立即修复的状态                     |
+  | LOG_CRIT    | 严重状态（例如，硬设备出错）           |
+  | LOG_ERR     | 出错状态                               |
+  | LOG_WARNING | 警告状态                               |
+  | LOG_NOTICE  | 正常，但重要的状态                     |
+  | LOG_INFO    | 信息性消息                             |
+  | LOG_DEBUG   | 调试消息（最低优先级）                 |
 
 - `format` 格式化字符串
 
-- `返回值`
-
-  前日志记录优先级屏蔽值
+- `返回值` 前日志记录优先级屏蔽值
 
 *写日志*
 
@@ -137,9 +142,7 @@ void syslog(int priority, const char *format, ...);
 void closelog(void);
 ```
 
-- `返回值`
-
-  前日志记录优先级屏蔽值
+- `返回值` 前日志记录优先级屏蔽值
 
 *关闭日志*
 
@@ -150,9 +153,7 @@ int setlogmask(int maskpri);
 
 - `maskpri` 屏蔽字
 
-- `返回值`
-
-  前日志记录优先级屏蔽值
+- `返回值` 前日志记录优先级屏蔽值
 
 *设置进程的记录优先级屏蔽字*
 
@@ -387,6 +388,23 @@ main(int argc, char *argv[])
 
 
 ## 13.7 客户进程-服务器进程模型
+
+```c++
+#include "apue.h"
+#include <fcntl.h>
+
+int 
+set_cloexec(int fd)
+{
+    int val;
+    if ((val = fcntl(fd, F_GETFD, 0)) < 0)
+        return(-1);
+    val != FD_CLOEXEC;
+    return (fcntl(fd, F_SETFD, val));
+}
+```
+
+*设置执行时关闭标志*
 
 
 

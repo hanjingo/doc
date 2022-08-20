@@ -42,7 +42,7 @@ _WIN32          Defined on Windows
 | [`<netdb.h>`](#netdb.h)             | 网络数据库操作       |
 | `<nl_types.h>`                      | 消息类               |
 | `<poll.h>`                          | 投票函数             |
-| `<pthread.h>`                       | 线程                 |
+| [`<pthread.h>`](#pthread.h)         | 线程                 |
 | `<pwd.h>`                           | 口令文件             |
 | `<regex.h>`                         | 正则表达式           |
 | `<sched.h>`                         | 执行调度             |
@@ -61,7 +61,7 @@ _WIN32          Defined on Windows
 | [`<sys/socket.h>`](#sys/socket.h)   | 套接字接口           |
 | [`<sys/stat.h>`](#sys/stat.h)       | 文件状态             |
 | `<sys/statvfs.h>`                   | 文件系统信息         |
-| `<sys/times.h>`                     | 进程时间             |
+| [`<sys/times.h>`](#sys/times.h)     | 进程时间             |
 | `<sys/types.h>`                     | 基本系统数据类型     |
 | `<sys/un.h>`                        | UNIX域套接字定义     |
 | [`<sys/utsname.h>`](#sys/utsname.h) | 系统名               |
@@ -76,22 +76,22 @@ _WIN32          Defined on Windows
 
 ### XSI可选
 
-| 头文件             | 说明             |
-| ------------------ | ---------------- |
-| `<fmtmsg.h>`       | 消息显示结构     |
-| `<ftw.h>`          | 文件树漫游       |
-| `<libgen.h>`       | 路径名管理函数   |
-| `<ndbm.h>`         | 数据库操作       |
-| `<search.h>`       | 搜索表           |
-| `<syslog.h>`       | 系统出错日志记录 |
-| `<utmpx.h>`        | 用户账户数据库   |
-| `<sys/ipc.h>`      | IPC              |
-| `<sys/msg.h>`      | XSI消息队列      |
-| `<sys/resource.h>` | 资源操作         |
-| `<sys/sem.h>`      | XSI信号量        |
-| `<sys/shm.h>`      | XSI共享存储      |
-| `<sys/time.h>`     | 时间类型         |
-| `<sys/uio.h>`      | 矢量I/O操作      |
+| 头文件                    | 说明             |
+| ------------------------- | ---------------- |
+| `<fmtmsg.h>`              | 消息显示结构     |
+| `<ftw.h>`                 | 文件树漫游       |
+| `<libgen.h>`              | 路径名管理函数   |
+| `<ndbm.h>`                | 数据库操作       |
+| `<search.h>`              | 搜索表           |
+| [`<syslog.h>`](#syslog.h) | 系统出错日志记录 |
+| `<utmpx.h>`               | 用户账户数据库   |
+| `<sys/ipc.h>`             | IPC              |
+| `<sys/msg.h>`             | XSI消息队列      |
+| `<sys/resource.h>`        | 资源操作         |
+| `<sys/sem.h>`             | XSI信号量        |
+| `<sys/shm.h>`             | XSI共享存储      |
+| `<sys/time.h>`            | 时间类型         |
+| `<sys/uio.h>`             | 矢量I/O操作      |
 
 ### 可选项
 
@@ -132,29 +132,89 @@ _WIN32          Defined on Windows
 
 ## arpa/inet.h
 
+### htonl
+
+`uint32_t htonl(uint32_t hostint32)`
+
+- `hsotint32` 主机字节序
+- `返回值` 以网络字节序表示的32位整型数
+
+*主机字节序转网络字节序*
+
+### htons
+
+`uint16_t htons(uint16_t hostint16)`
+
+- `hostint16` 主机字节序
+- `返回值` 以网络字节序表示的16位整型数
+
+*主机字节序转网络字节序*
+
 ### inet_aton 
 
-`int inet_aton(const char *strptr, struct in_addr *addrptr)`
-
-将c字符串转换成一个32位的网络字节序二进制值
+TODO
 
 ### inet_ntoa
 
-`char *inet_ntoa(struct in_addr inaddr)` 
+TODO
 
-将32位的网络字节序二进制IPv4地址转换成相应的点分十进制字符串。**注意：返回值所指向的字符串驻留在静态内存中，该函数不可重入！！！**
+### inet_ntop
+
+`const char *inet_ntop(int domain, const void *restrict addr, char *restrict str, socklen_t size)` 
+
+- `domain` 域（仅支持`AF_INET`和`AF_INET6`）
+
+- `addr` 网络字节序地址
+
+- `str` 文本字符串地址
+
+- `size` 文本字符串长度；
+
+- `返回值`
+
+  成功：地址字符串指针
+
+  失败：NULL
+
+*将网络字节序的二进制地址转换为文本字符串地址*
 
 ### inet_pton
 
-`int inet_pton(int family, const char *strptr, void *addrptr)`
+`int inet_pton(int domain, const char *restrict str, void *restrict addr)`
 
-将字符串格式转换到二进制格式
+- `domain 域（仅支持`AF_INET`和`AF_INET6`）`
 
-### net_ntop
+- `str` 文本字符串地址
 
-`const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)` 
+- `addr` 网络字节序地址
 
-将二进制格式转换到字符串格式
+- `返回值`
+
+  成功：1
+
+  格式无效：0
+
+  出错：-1
+
+*将文本字符串地址转换为网络字节序的二进制地址*
+
+### ntohl
+
+`uint32_t ntohl(uint32_t netint32)`
+
+- `netint32` 网络字节序
+- `返回值` 以主机字节序表示的32位整型数
+
+*网络字节序转主机字节序*
+
+### ntohs
+
+`uint16_t ntohs(uint16_t netint16)`
+
+- `netint16` 网络字节序
+- `返回值` 以主机字节序表示的16位整型数
+
+*网络字节序转主机字节序*
 
 [返回顶部](#POSIX接口)
 
@@ -295,9 +355,31 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 具体见：[I/O#fcntl](io.md)
 
-### open/openat
+### getopt
+
+`int getopt(int argc, const *const argv[], const char *options)`
+
+- `argc` 参数数量
+
+- `argv` 参数数组
+
+- `options` 命令支持的选项字符
+
+- `返回值`
+
+  成功：下一个选项字符
+
+  全部选项处理完毕：-1
+
+*按照一致的方式来处理命令行选项*
+
+### open
 
 `int open(const char* path, int oflag, ...)`
+
+打开文件/目录；具体见：
+
+### openat
 
 `int openat(int fd, const char* path, int oflag, ...)`
 
@@ -377,11 +459,246 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 ## netdb.h
 
+### endhostent
+
+`void endhostent(void)`
+
+`关闭主机数据文件信息`
+
+### endservent
+
+`void endservent(void)`
+
+*关闭服务数据库*
+
+### endnetent
+
+`void endnetent(void)`
+
+*关闭网络名字和网络号文件信息*
+
+### endprotoent
+
+`void endprotoent(void)`
+
+*关闭`/etc/protocols`文件*
+
+### freeaddrinfo
+
+`void freeaddrinfo(struct addrinfo *ai)`
+
+- `ai` 地址
+
+*释放地址结构*
+
+### gai_strerror
+
+`const char *gai_strerror(int error)`
+
+- `error` 错误码
+- `返回值` 指向描述错误的支付穿指针
+
+*将错误码转换成错误消息*
+
+### getaddrinfo
+
+`int getaddrinfo(const char *restrict host, const char *restrict service, const struct addrinfo *restrict hint, struct addrinfo **restrict res)`
+
+- `host` 主机名
+
+- `service` 服务名
+
+- `hint` 地址过滤模板
+
+- `res` 地址链表
+
+- `ai`
+
+- `返回值`
+
+  成功：0
+
+  失败：非0错误码
+
+*将主机名和服务名映射到一个地址*
+
+### gethostent
+
+`struct hostent *gethostent(void)`
+
+- `返回值`
+
+  成功：指针
+
+  失败：NULL
+
+*返回主机数据文件信息*
+
 ### getnameinfo
 
-`int getnameinfo(const struct sockaddr *sockaddr, socklen_t addrlen, char *host, size_t hostlen, char *service, size_t servlen, int flags )`
+`int getnameinfo(const struct sockaddr *restrict addr, socklen_t alen, char *restrict host, socklen_t hostlen, char *restrict service, socklen_t servlen, unsigned int flags)`
 
-返回描述套接字主机的字符串和服务字符串
+- `addr` 套接字地址
+
+- `alen` 套接字地址长度
+
+- `host` 返回的主机名
+
+- `hostlen` host字符串长度
+
+- `service` 返回的服务名
+
+- `servlen` service字符串长度
+
+- `flags` 标志
+
+  | 标志           | 描述                                           |
+  | -------------- | ---------------------------------------------- |
+  | NI_DGRAM       | 服务基于数据报而非基于流                       |
+  | NI_NAMEREQD    | 如果找不到主机名字，将其作为一个错误对待       |
+  | NI_NOFQDN      | 对于本地主机，仅返回完全限定域名的节点名字部分 |
+  | NI_NUMERICHOST | 以数字形式而非名字返回主机地址                 |
+  | NI_NUMERICSERV | 以数字形式而非名字返回服务地址（即端口号）     |
+
+- `返回值`
+
+  成功：0
+
+  失败：非0值
+
+*将地址转换成主机名或服务名*
+
+### getnetbyaddr
+
+TODO
+
+### getnetbyname
+
+TODO
+
+### getprotobyname
+
+`struct protoent *getprotobyname(const char *name)`
+
+- `name` 协议名字
+
+- `返回值`
+
+  成功：protoent指针
+
+  失败：NULL
+
+*根据协议名字返回协议信息*
+
+### getprotobynumber
+
+`struct protoent *getprotobynumber(int proto)`
+
+- `proto` 协议号
+
+- `返回值`
+
+  成功：protoent指针
+
+  失败：NULL
+
+*根据协议号返回协议信息*
+
+### getprotoent
+
+`struct protoent *getprotoent(void)`
+
+- `返回值`
+
+  成功：protoent指针
+
+  失败：NULL
+
+*打开协议文件`/etc/protocols`*
+
+### getservbyname
+
+`struct servent *getservbyname(const char *name, const char *proto)`
+
+- `name` 协议名字
+
+- `proto` 协议号
+
+- `返回值`
+
+  成功：服务的信息指针
+
+  失败：NULL
+
+*服务名来获取服务的信息*
+
+### getservbyport
+
+`struct servent *getservbyport(int port, const char *proto)`
+
+- `proto` 协议号
+
+- `port` 端口号
+
+- `返回值`
+
+  成功：服务的信息指针
+
+  失败：NULL
+
+*通过服务的端口来获取服务的信息*
+
+### getservent
+
+`struct servent *getservent(void)`
+
+- `返回值`
+
+  成功：服务的信息指针
+
+  失败：NULL
+
+*从服务数据库中读取下一个条目*
+
+### setservent
+
+`void setservent(int stayopen)`
+
+- `stayopen` 是否保持打开
+
+  1：持续打开
+
+  0：自动关闭
+
+*打开与服务数据库的连接*
+
+### sethostent
+
+`void sethostent(int stayopen)`
+
+- `stayopen` 输入参数
+
+  非0：使用TCP/IP
+
+  0：使用UDP
+
+*设置主机数据文件信息*
+
+### setnetent
+
+TODO
+
+### setprotoent
+
+`void setprotoent(int stayopen)`
+
+- `stayopen` 是否保持打开
+
+  1：保持打开
+
+  0：自动关闭
+
+*设置打开`/etc/protocols`*后是否自动关闭
 
 [返回顶部](#POSIX接口)
 
@@ -414,6 +731,1144 @@ fcntl有5种功能，具体功能取决于cmd的值：
 `uint32_t ntohl(uint32_t net32bitvalue)` 
 
 网络字节序转主机字节序(32位)
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## poll.h
+
+### poll
+
+`int poll(struct pollfd fdarray[], nfds_t nfds, int timeout)`
+
+- `fdarray` 描述符信息数组
+
+- `nfds` 数组长度
+
+- `timeout` 超时时间
+
+  - `-1` 永远等待；
+  - `0` 不等待；
+  - `> 0` 等待timeout毫秒；
+
+- `返回值`
+
+  超时：0
+
+  出错：-1
+
+  成功：准备就绪的描述符数
+
+*多路转接*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## pthread.h
+
+### pthread_atfork
+
+`int pthread_atfork(void (*prepare)(void), void (*parernt)(void), void (*child)(void))`
+
+- `prepare` 获取父进程定义的所有锁（在创建子进程前调用）
+
+- `parent` 对prepare获得的所有锁进行解锁（在创建子进程后，fork返回之前的父进程调用）
+
+- `child` 释放prepare获得的所有锁（在fork返回之前调用，fork返回之前的子进程调用）
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*清除锁状态*
+
+### pthread_attr_getdetachstate/pthread_attr_setdetachstate
+
+`int pthread_attr_getdetachstate(const pthread_attr_t *restrict attr, int *detachstate)`
+`int pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate)`
+
+- `attr` 属性
+
+- `detachstate` 分离状态
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置线程分离状态*
+
+### pthread_attr_getstack/pthread_attr_setstack
+
+`int pthread_attr_getstack(const pthread_attr_t *restrict attr, void **restrict stackaddr, size_t *restrict stacksize)`
+
+`int pthread_attr_setstack(const pthread_attr_t *attr, void *stackaddr, size_t *stacksize)`
+
+- `attr` 属性
+
+- `stackaddr` 栈地址指针
+
+- `stacksize` 栈默认大小
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置线程属性stackaddr（栈地址）和stacksize（栈默认大小）*
+
+### pthread_attr_getstacksize/pthread_attr_setstackszie
+
+`int pthread_attr_getstacksize(const pthread_attr_t *restrict attr, size_t *restrict stacksize)`
+`int pthread_attr_setstackszie(pthread_attr_t *attr, size_t stacksize)`
+
+- `attr` 属性
+
+- `stacksize` 值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置线程属性stacksize（栈默认大小）*
+
+### pthread_attr_getguardsize/pthread_attr_setguardsize
+
+`int pthread_attr_getguardsize(const pthread_attr_t *restrict attr, size_t *restrict guardsize)`
+`int pthread_attr_setguardsize(pthread_attr_t *attr, size_t guardsize)`
+
+- `attr` 属性
+
+- `guardsize` 栈指针警戒线
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置线程属性guardsize（栈指针警戒线，栈溢出时可以通过信号接受到出错信息）*
+
+### pthread_attr_init/pthread_attr_destroy
+
+`int pthread_attr_init(pthread_attr_t *attr)`
+`int pthread_attr_destroy(pthread_attr_t *attr)`
+
+- `attr` 线程属性
+
+  | 名称        | 描述                                 |
+  | ----------- | ------------------------------------ |
+  | detachstate | 线程的分离状态属性                   |
+  | guardsize   | 线程栈末尾的警戒缓冲区大小（字节数） |
+  | stackaddr   | 线程栈的最低地址                     |
+  | stacksize   | 线程栈的最小长度（字节数）           |
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化/反初始化线程*
+
+### pthread_barrier_destroy
+
+`int pthread_barrier_destroy(pthread_barrier_t *barrier)`
+
+- `barrier` 屏障
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*反初始化屏障*
+
+### pthread_barrier_init
+
+`int pthread_barrier_init(pthread_barrier_t *restrict barrier, const pthread_barrierattr_t *restrict attr, unsigned int count)`
+
+- `barrier` 屏障
+
+- `attr` 屏障对象属性
+
+- `count` 线程数目
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化屏障*
+
+### pthread_barrier_wait
+
+`int pthread_barrier_wait(pthread_barrier_t *barrier)`
+
+- `barrier` 屏障
+
+- `返回值`
+
+  成功：0或`PTHREAD_BARRIER_SERIAL_THREAD`
+
+  失败：错误码
+
+*等待唤醒*
+
+### pthread_barrierattr_destroy
+
+`int pthread_barrierattr_destroy(pthread_barrierattr_t *attr)`
+
+- `attr` 屏障属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*反初始化 屏障属性*
+
+### pthread_barrierattr_getpshared
+
+`int pthread_barrierattr_getpshared(const pthread_barrierattr_t *restrict attr, int *restrict pshared)`
+
+- attr` 屏障属性
+
+- `pshared` 进程共享属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取屏障属性*
+
+### pthread_barrierattr_setpshared
+
+`int pthread_barrierattr_setpshared(pthread_barrierattr_t *attr, int pshared)`
+
+- `attr` 屏障属性
+
+- `pshared` 进程共享属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置屏障属性*
+
+### pthread_barrierattr_init
+
+`int pthread_barrierattr_init(pthread_barrierattr_t *attr)`
+
+- `attr` 屏障属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化屏障属性*
+
+### pthread_cancel
+
+`int pthread_cancel(pthread_t tid)`
+
+- `tid` 线程ID
+
+- 返回值
+
+  成功：0
+
+  失败：错误码
+
+*发送终止信号，请求取消同一进程中的其它线程*
+
+### pthread_cond_broadcast
+
+`int pthread_cond_broadcast(pthread_cond_t *cond)`
+
+- `cond` 条件变量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*唤醒所有等待条件的线程*
+
+### pthread_cond_destroy
+
+`int pthread_cond_destroy(pthread_cond_t *cond)`
+
+- `cond` 条件变量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化条件变量*
+
+### pthread_cond_init
+
+`int pthread_cond_init(pthread_cond_t *restrict cond, const pthread_condattr_t *restrict attr)`
+
+- `cond` 条件变量
+
+- `attr` 条件变量属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化条件变量*
+
+### pthread_cond_signal
+
+`int pthread_cond_signal(pthread_cond_t *cond)`
+
+- `cond` 条件变量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*唤醒一个等待条件的线程*
+
+### pthread_cond_timewait
+
+`int pthread_cond_timewait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex, const struct timespec *restrict tsptr)`
+
+- `cond` 条件变量
+
+- `mutex` 互斥量
+
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*超时等待条件成立（等待唤醒）*
+
+### pthread_cond_wait
+
+`int pthread_cond_wait(pthread_cond_t *restrict cond, pthread_mutex_t *restrict mutex)`
+
+- `cond` 条件变量
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*等待条件成立（等待唤醒）*
+
+### pthread_condattr_destroy
+
+`int pthread_condattr_destroy(pthread_condattr_t *attr)`
+
+- `attr` 条件变量属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*回收条件变量属性*
+
+### pthread_condattr_getclock
+
+`int pthread_condattr_getclock(const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id)`
+
+- `attr` 条件变量属性
+
+- `clock_id` 时钟id
+
+- `返回值`
+
+  成功：0
+
+  失败：错误编号
+
+*获取条件变量时钟*
+
+### pthread_condattr_getpshared
+
+`int pthread_condattr_getpshared(const pthread_condattr_t *restrict attr, int *restrict pshared)`
+
+- `attr` 线程条件属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取进程共享属性*
+
+### pthread_condattr_init
+
+`int pthread_condattr_init(pthread_condattr_t *attr)`
+
+- attr` 条件变量属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化条件变量属性*
+
+### pthread_cleanup_pop
+
+`void pthread_cleanup_pop(int execute)`
+
+- `execute` （非0）执行参数
+
+*删除上次执行的线程退出时需要执行的操作*
+
+### pthread_cleanup_push
+
+`void pthread_cleanup_push(void(*rtn)(void *), void *arg)`
+
+- `rtn` 要执行的函数
+- `arg` 要执行的函数参数
+
+*指定线程退出时需要执行的操作*
+
+### pthread_condattr_setclock
+
+`int pthread_condattr_setclock(pthread_condattr_t *attr, clockid_t clock_id)`
+
+- `attr` 条件变量属性
+
+- `clock_id` 时钟id
+
+- `返回值`
+
+  成功：0
+
+  失败：错误编号
+
+*设置条件变量时钟*
+
+### pthread_condattr_setpshared
+
+`int pthread_condattr_setpshared(pthread_condattr_t *attr, int pshared)`
+
+- `attr` 线程条件属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置进程共享属性*
+
+### pthread_create
+
+`int pthread_create(pthread_t *restrict tidp, const pthread_attr_t *restrict attr, void *(*start_rtn)(void *), void *restrict arg)`
+
+- `tidp` 指向线程标识符的指针
+
+- `attr` 线程属性
+
+- `start_rtn` 线程函数起始地址
+
+- `arg` 线程函数参数
+
+- 返回值
+
+  成功：0
+
+  失败：错误码
+
+*创建一条线程（注意：线程创建时并不能保证哪个线程会先运行）*
+
+### pthread_detach
+
+`int pthread_detach(pthread_t tid)`
+
+- `tid` 线程ID
+
+- 返回值
+
+  成功：0
+
+  失败：错误码
+
+*分离线程*
+
+### pthread_equal
+
+`int pthread_equal(pthread_t tid1, pthread_t tid2)`
+
+- `tid1` 线程1
+
+- `tid2` 线程2
+
+- 返回值
+
+  非0：相等
+
+  0：不相等
+
+*对两个线程ID进行比较*
+
+### pthread_exit
+
+`void pthread_exit(void *rval_ptr)`
+
+- `rval_ptr` 一个无类型指针，与传给启动例程的单个参数类似；
+
+*退出线程*
+
+### pthread_getconcurrency
+
+`int pthread_getconcurrency(void)`
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取线程并发度（影响性能）*
+
+### pthread_getspecific
+
+`void *pthread_getspecific(pthread_key_t key)`
+
+- `key` 键
+
+- `返回值`
+
+  成功：线程私有数据
+
+  失败：NULL
+
+*返回与键关联的线程私有数据*
+
+### pthread_join
+
+`int pthread_join(pthread_t thread, void **rval_ptr)`
+
+- `thread` 线程标识符
+
+- `rval_ptr` 指向线程返回值
+
+- 返回值
+
+  成功：0
+
+  失败：错误码
+
+*以**阻塞**的方式等待线程结束*
+
+### pthread_key_create
+
+`int pthread_key_create(pthread_key_t *keyp, void (*destructor)(void *))`
+
+- `keyp` 键
+
+- `destructor` 析构函数
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*创建与线程数据关联的键（用于获取对线程私有数据的访问权）*
+
+### pthread_key_delete
+
+`int pthread_key_delete(pthread_key_t *key)`
+
+- `key` 键
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*取消键与线程数据的关联*
+
+### pthread_mutex_destroy
+
+`int pthread_mutex_destroy(pthread_mutex_t *mutex)`
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*销毁互斥锁*
+
+### pthread_mutex_init
+
+`int pthread_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr)`
+
+- `mutex` 互斥量
+
+- `attr` 互斥量属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*创建互斥锁*
+
+### pthread_mutex_lock
+
+`int pthread_mutex_lock(pthread_mutex_t *mutex)`
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*对互斥量进行加锁*
+
+### pthread_mutex_timedlock
+
+`int pthread_mutex_timedlock(pthread_mutex_t *restrict mutex, const struct timespec *restrict tsptr)`
+
+- `mutex` 互斥量
+
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*绑定线程阻塞时间（在达到超时时间时不会对互斥量进行加锁，而是返回错误码`ETIMEDOUT`）*
+
+### pthread_mutex_trylock
+
+`int pthread_mutex_trylock(pthread_mutex_t *mutex)`
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*尝试对互斥量进行加锁*
+
+### pthread_mutex_unlock
+
+`int pthread_mutex_unlock(pthread_mutex_t *mutex)`
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*对互斥量进行解锁*
+
+### pthread_mutexattr_destroy
+
+`int pthread_mutexattr_destroy(pthread_mutexattr_t *attr)`
+
+- `attr` 属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*回收互斥量属性*
+
+### pthread_mutexattr_getpshared
+
+`int pthread_mutexattr_getpshared(const pthread_mutexattr_t *restrict attr, int *restrict pshared)`
+
+- `attr` 互斥量属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取进程共享属性*
+
+### pthread_mutexattr_gettype
+
+`int pthread_mutexattr_gettype(const pthread_mutexattr_t *restrict attr, int *restrict type)`
+
+- attr` 互斥量属性
+
+- `type` 互斥量类型
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取互斥量类型*
+
+### pthread_mutexattr_init
+
+`int pthread_mutexattr_init(pthread_mutexattr_t *attr)`
+
+- `attr` 属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化互斥量属性*
+
+### pthread_mutexattr_setpshared
+
+`int pthread_mutexattr_setpshared(pthread_mutexattr_t *attr, int pshared)`
+
+- `attr` 互斥量属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置进程共享属性*
+
+### pthread_mutexattr_settype
+
+`int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type)`
+
+- attr` 互斥量属性
+
+- `type` 互斥量类型
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置互斥量类型*
+
+### pthread_once
+
+`int pthread_once(pthread_once_t *initflag, void (*initfn)(void))`
+
+- `initflag` 标志（全局变量或静态变量）
+
+- `initfn` 只执行一次的函数
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*让函数只执行一次*
+
+### pthread_rwlock_destroy
+
+`int pthread_rwlock_destroy(pthread_rwlock_t *rwlock)`
+
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*销毁读写锁*
+
+### pthread_rwlock_init
+
+`int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock, const pthread_rwlockattr_t *restrict attr)`
+
+- `rwlock` 读写锁
+
+- `attr` 读写锁属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*创建读写锁*
+
+### pthread_rwlock_rdlock
+
+`int pthread_rwlock_rdlock(pthread_rwlock_t *rwlock)`
+
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*加读锁*
+
+### pthread_rwlock_timedrdlock
+
+`int pthread_rwlock_timedrdlock(pthread_rwlock_t *restrict rwlock, const struct timespec *restrict tsptr)`
+
+- `rwlock` 读写锁
+
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*以超时模式加读锁*
+
+### pthread_rwlock_timedwrlock
+
+`int pthread_rwlock_timedwrlock(pthread_rwlock_t *restrict rwlock, const struct timespec *restrict tsptr)`
+
+- `rwlock` 读写锁
+
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*以超时模式加写锁*
+
+### pthread_rwlock_tryrdlock
+
+`int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock)`
+
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*尝试加读锁*
+
+### pthread_rwlock_trywrlock
+
+`int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock)`
+
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*尝试加写锁*
+
+### pthread_rwlock_wrlock
+
+`int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock)`
+
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*加写锁*
+
+### pthread_rwlock_unlock
+
+`int pthread_rwlock_unlock(pthread_rwlock_t *rwlock)`
+
+- rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*解读写锁*
+
+### pthread_rwlockattr_destroy
+
+`int pthread_rwlockattr_destroy(pthread_rwlockattr_t *attr)`
+
+- `attr` 读写锁属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*回收读写锁属性*
+
+### pthread_rwlockattr_getpshared
+
+`int pthread_rwlockattr_getpshared(const pthread_rwlockattr_t *restrict attr, int *rstrict pshared)`
+
+- `attr`读写锁属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取读写锁进程共享属性*
+
+### pthread_rwlockattr_init
+
+`int pthread_rwlockattr_init(pthread_rwlockattr_t *attr)`
+
+- `attr` 读写锁属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化读写锁属性*
+
+### pthread_rwlockattr_setpshared
+
+`int pthread_rwlockattr_setpshared(pthread_rwlockattr_t *attr, int pshared)`
+
+- `attr`读写锁属性
+
+- `pshared` 进程共享属性值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置读写锁进程共享属性*
+
+### pthread_self
+
+`pthread_t pthread_self(void)`
+
+- `返回值` 调用线程的线程ID
+
+*获得自身的线程ID*
+
+### pthread_setcancelstate
+
+`int pthread_setcancelstate(int state, int *oldstate)`
+
+- `state` 可取消状态
+
+- `oldstate` 旧状态
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置可取消状态（线程启动时默认为PTHREAD_CANCEL_ENABLE）*
+
+### pthread_setcanceltype
+
+`int pthread_setcanceltype(int type, int *oldtype)`
+
+- `type` 新取消类型
+
+- `oldtype` 旧取消类型
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*修改取消类型*
+
+### pthread_setconcurrency
+
+`int pthread_setconcurrency(int level)`
+
+- `level` 并发度
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置线程并发度（影响性能）*
+
+### pthread_setspecific
+
+`int pthread_setspecific(pthread_key_t key, const void *value)`
+
+- `key` 键
+
+- `value` 值
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置键与关联的线程私有数据*
+
+### pthread_spin_destroy
+
+`int pthread_spin_destroy(pthread_spinlock_t *lock)`
+
+- `lock` 自旋锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*反初始化自旋锁*
+
+### pthread_spin_init
+
+`int pthread_spin_init(pthread_spinlock_t *lock, int pshared)`
+
+- `lock` 自旋锁
+
+- `pshared` 进程共享属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化自旋锁*
+
+### pthread_spin_lock
+
+`int pthread_spin_lock(pthread_spinlock_t *lock)`
+
+- `lock` 自旋锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*对自旋锁进行加锁*
+
+### pthread_spin_trylock
+
+`int pthread_spin_trylock(pthread_spinlock_t *lock)`
+
+- `lock` 自旋锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*尝试对自旋锁进行加锁*
+
+### pthread_spin_unlock
+
+`int pthread_spin_unlock(pthread_spinlock_t *lock)`
+
+- `lock` 自旋锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*对自旋锁进行解锁*
+
+### pthread_testcancel
+
+`void pthread_testcancel(void)`
+
+*添加自定义取消点*
 
 [返回顶部](#POSIX接口)
 
@@ -482,6 +1937,165 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
+## semaphore.h
+
+### sem_close
+
+`int sem_close(sem_t *sem)`
+
+- `sem` 信号量
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*释放信号量的资源*
+
+### sem_destroy
+
+`int sem_destroy(sem_t *sem)`
+
+- `sem` 信号量
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*丢弃未命名信号量*
+
+### sem_getvalue
+
+`int sem_getvalue(sem_t *restrict sem, int *restrict valp)`
+
+- `sem` 信号量
+
+- `valp` 信号量值指针
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*检索信号量值*
+
+### sem_init
+
+`int sem_init(sem_t *sem, int pshared, unsigned int value)`
+
+- `sem` 信号量
+
+- `pshared` 是否在多个进程中使用信号量（是：非0）
+
+- `value` 信号量的初始值
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个未命名的信号量并初始化*
+
+### sem_open
+
+`sem_t *sem_open(const char *name, int oflag, ...)`
+
+- `name` 信号量名字
+
+- `oflag` 标志
+
+  | oflag值 | 说明                                                         |
+  | ------- | ------------------------------------------------------------ |
+  | O_CREAT | 如果信号量不存在，创建一个新的；如果已存在，直接使用而不做初始化。<br>当使用此标志时，需要提供两个额外的参数：<br>- mode：权限位（与文件权限位规则相同）；<br>- value：信号量的初始值（取值范围：[0, SEM_VALUE_MAX]）。 |
+  | O_EXCL  | 如果信号量已存在，将导致`sem_open`失败。                     |
+
+- `...` 变参，取决于oflag的值
+
+*创建一个新的命名信号量或使用一个现有信号量*
+
+### sem_post
+
+`int sem_post(sem_t *sem)`
+
+- `sem` 信号量
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对信号量进行 +1 操作（如果进程在sem_wait时被阻塞，将唤醒进程，并先执行 +1 ，后执行 -1 操作）*
+
+### sem_timedwait
+
+`int sem_timedwait(sem_t *restrict sem, const struct timespec *restrict tsptr)`
+
+- `sem` 信号量
+
+- `tsptr` 绝对时间
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*以超时方式对信号量进行 -1 操作*
+
+### sem_trywait
+
+`int sem_trywait(sem_t *sem)`
+
+- `sem` 信号量
+
+- `返回值` 
+
+  成功：0
+
+  失败：-1
+
+*对信号量进行 -1 操作（非阻塞）*
+
+### sem_unlink
+
+`int sem_unlink(const char *name)`
+
+- `name` 信号量名字
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*销毁一个命名信号量*
+
+### sem_wait
+
+`int sem_wait(sem_t *sem)`
+
+- `sem` 信号量
+
+- `返回值` 
+
+  成功：0
+
+  失败：-1
+
+*对信号量进行 -1 操作（阻塞）*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
 ## setjmp.h
 
 ### longjmp
@@ -513,7 +2127,7 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
-## shadow
+## shadow.h
 
 ### endspent
 
@@ -542,55 +2156,241 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *打开口令文件*
 
----
-
-
-
-## sys/resource.h
-
-### getrlimit
-
-`int getrlimit(int resource, struct rlimit *rlptr)`
-
-- `resource` 资源
-
-- `rlptr` 限制值
-
-- `返回值`
-
-  成功：0
-
-  失败：非0
-
-*设置进程的资源限制*
-
-### setrlimit
-
-`int setrlimit(int resource, const struct rlimit *rlptr)`
-
-- `resource` 资源
-
-- `rlptr` 限制值
-
-- `返回值`
-
-  成功：0
-
-  失败：非0
-
-*更新进程的资源限制*
+[返回顶部](#POSIX接口)
 
 ---
 
 
 
-## sys/select.h
+## signal.h
 
-### select
+### kill
 
-`int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout)`
+`int kill(pid_t pid, int signo)`
 
-允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。具体见：[I/O#select](NET/io.md)
+- `pid` 进程ID
+
+- `signo` 信号
+
+- 返回值
+
+  成功：0
+
+  失败：-1
+
+*将信号发送给进程或进程组*
+
+### pthread_kill
+
+`int pthread_kill(pthread_t thread, int signo)`
+
+- `thread` 线程
+
+- `signo` 信号
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*把信号发送到线程*
+
+### pthread_sigmask
+
+`int pthread_sigmask(int how, const sigset_t *restrict set, sigset_t *restrict oset)`
+
+- `how` 动作
+
+  SIG_BLOCK：把信号添加到线程信号屏蔽字中
+
+  SIG_SETMASK：用信号集替换线程的信号屏蔽字
+
+  SIG_UNBLOCK：从线程信号屏蔽字中移除信号集
+
+- `set` 新信号集
+
+- `oset` 旧信号集
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*阻止信号发送*
+
+### raise
+
+`int raise(int signo)`
+
+- `signo` 信号
+
+- 返回值
+
+  成功：0
+
+  失败：-1
+
+*允许进程向自身发送信号*
+
+### sigaction
+
+`int sigaction(int signo, const struct sigaction *restrict act, struct sigaction *restrict oact)`
+
+- `signo` 要检查/修改的信号编号
+
+- `act` 非空，则修改其动作
+
+- `oact` 非空，则返回该信号的上一个动作
+
+- 返回值
+
+  成功：0
+
+  失败：-1
+
+*检查/修改指定信号相关联的处理动作。*
+
+### sigaddset
+
+`int sigaddset(sigset_t *set, int signo)`
+
+- `set` 信号集
+
+- `signo` 信号
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*添加信号*
+
+### sigdelset
+
+`int sigdelset(sigset_t *set, int signo)`
+
+- `set` 信号集
+
+- `signo` 信号
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*删除信号*
+
+### sigemptyset
+
+`int sigemptyset(sigset_t *set)`
+
+- `set` 信号集
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*初始化信号集，清除其中所有信号*
+
+### sigfillset
+
+`int sigfillset(sigset_t *set)`
+
+- `set` 信号集
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*初始化由set指向的信号集，使其包括所有信号*
+
+### sigismember
+
+`int sigismember(const sigset_t *set, int signo)`
+
+- `set` 信号集
+
+- `signo` 信号
+
+- `返回值`
+
+  真：0
+
+  假：-1
+
+*判断信号是否是信号集中的成员*
+
+### signal
+
+`void(*signal(int signo, void(*func)(int)))(int)`
+
+- `signo` 信号量
+
+- `func` 信号处理动作，默认SIG_IGN
+
+- 返回值
+
+  成功：返回以前的信号处理配置
+
+  出错：返回SIG_ERR
+
+*信号处理程序*
+
+### sigpending
+
+`int sigpending(sigset_t *set)`
+
+- `set` 返回的信号集
+
+- 返回值
+
+  成功：0
+
+  失败：-1
+
+*返回当前进程的阻塞且不可递送的信号集合*
+
+### sigprocmask
+
+`int sigprocmask(int how, const sigset_t *restrict set, sigset_t *restrict oset)`
+
+- `how` 操作
+
+- `set` 如果非空，则指示需要修改修改的当前信号屏蔽字
+
+- `oset` 如果非空，用来返回进程的当前信号屏蔽字
+
+- 返回值：
+
+  成功：0
+
+  失败：-1
+
+*检测/更改进程的信号屏蔽字*
+
+### sigwait
+
+`int sigwait(const sigset_t *restrict set, int *restrict signop)`
+
+- `set` 信号集
+
+- `signop` 返回发送信号的数量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*等待一个或多个信号发生*
 
 [返回顶部](#POSIX接口)
 
@@ -598,7 +2398,7 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
-## stdio
+## stdio.h
 
 ### clearerr
 
@@ -607,6 +2407,20 @@ fcntl有5种功能，具体功能取决于cmd的值：
 - `fp` 流
 
 *清空错误标记*
+
+### ctermid
+
+`char *ctermid(char *ptr)`
+
+- `ptr` 控制终端名
+
+- `返回值`
+
+  成功：返回指向控制终端名的指针
+
+  失败：返回指向空字符串的指针
+
+*设置控制终端名*
 
 ### fclose
 
@@ -622,9 +2436,8 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *关闭流*
 
-### ferror/feof
+### feof
 
-`int ferror(FILE *fp)`
 `int feof(FILE *fp)`
 
 - `fp` 流
@@ -635,7 +2448,21 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
   条件为假：0
 
-*判断错误类型/文件结束*
+*判断文件结束*
+
+### ferror
+
+`int ferror(FILE *fp)`
+
+- `fp` 流
+
+- `返回值`
+
+  条件为真：非0
+
+  条件为假：0
+
+*判断错误类型*
 
 ### fflush
 
@@ -651,10 +2478,23 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *强制刷出一个流*
 
-### fgetpos/fsetpos
+### fgetc
+
+`int fgetc(FILE *fp)`
+
+- `fp` 流
+
+- `返回值`
+
+  成功：下一个字符
+
+  到达文件尾或出错：EOF
+
+*一次读一个字符*
+
+### fgetpos
 
 `int fgetpos(FILE *restrict fp, fpos_t *restrict pos)`
-`int fsetpos(FILE *fp, const fpos_t *pos)`
 
 - `fp` 流
 
@@ -666,7 +2506,25 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
   失败：非0
 
-*获取/设置流的当前位置*
+*获取流的当前位置*
+
+### fgets
+
+`char *fgets(char *restrict buf, int n, FILE *restrict fp)`
+
+- `buf` 缓冲区
+
+- `n` 缓冲区长度
+
+- `fp` 流
+
+- `返回值`
+
+  成功：buf
+
+  到达文件尾或出错：NULL
+
+*从流中读一行字符串*
 
 ### fileno
 
@@ -676,6 +2534,14 @@ fcntl有5种功能，具体功能取决于cmd的值：
 - `返回值` 与流相关联的文件描述符
 
 *获得流的描述符*
+
+### flockfile
+
+`void flockfile(FILE *fp)`
+
+- `fp` 文件描述符
+
+*对文件对象加锁（线程安全）*
 
 ### fopen/freopen/fdopen
 
@@ -701,6 +2567,22 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *fdopen：使一个标准的I/O流与已有的文件描述符结合*
 
+### fputc
+
+`int fputc(int c, FILE *fp)`
+
+- `c` 字符
+
+- `fp` 文件流
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写单个字符到文件流中*
+
 ### fread
 
 `size_t fread(void *restrict ptr, size_t size, size_t nobj, FILE *restrict fp)`
@@ -713,9 +2595,29 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *读二进制数据*
 
-### fseek/fseeko
+### fseek
 
 `int fseek(FILE *fp, long offset, int whence)`
+
+- `fp` 流
+
+- `offset` 偏移量
+
+- `whence` 位置
+
+  - `SEEK_SET` 将文件的偏移量设置为距文件开始处offset个字节
+  - `SEEK_CUR` 将文件偏移量设置为其当前值加offset，offset可正可负
+  - `SEEK_END` 将文件的偏移量设置为文件长度加offset，offset可正可负
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*定位标准I/O流*
+
+### fseeko
 
 `int fseeko(FILE *fp, off_t offset, int whence)`
 
@@ -737,6 +2639,22 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *定位标准I/O流*
 
+### fsetpos
+
+`int fsetpos(FILE *fp, const fpos_t *pos)`
+
+- `fp` 流
+
+- `pos` 当前位置
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*设置流的当前位置*
+
 ### ftell/ftello
 
 `long ftell(FILE *fp)`
@@ -752,6 +2670,28 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：(off_t)-1
 
 *定位标准I/O流*
+
+### ftrylockfile
+
+`int ftrylockfile(FILE *fp)`
+
+- `fp` 文件描述符
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*尝试对文件对象加锁（线程安全）*
+
+### funlockfile
+
+`void funlockfile(FILE *fp)`
+
+- `fp` 文件描述符
+
+*解锁文件对象（线程安全）*
 
 ### fwide
 
@@ -787,11 +2727,9 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *写二进制数据*
 
-### getc/getchar/fgetc
+### getc
 
 `int getc(FILE *fp)`
-`int fgetc(FILE *fp)`
-`int getchar(void)`
 
 - `fp` 流
 
@@ -803,16 +2741,49 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *一次读一个字符*
 
-### gets/fgets
+### getc_unlocked
 
-`char *fgets(char *restrict buf, int n, FILE *restrict fp)`
+`int getc_unlocked(FILE *fp)`
+
+- `fp` 文件描述符
+
+- `返回值`
+
+  成功：下一个字符
+
+  已到达文件尾或出错：EOF
+
+*读一个字符（不加锁，不建议使用）*
+
+### getchar
+
+`int getchar(void)`
+
+- `返回值`
+
+  成功：下一个字符
+
+  到达文件尾或出错：EOF
+
+*一次读一个字符*
+
+### getchar_unlocked
+
+`int getchar_unlocked(void)`
+
+- `返回值`
+
+  成功：下一个字符
+
+  已到达文件尾或出错：EOF
+
+*读一个字符（不加锁，不建议使用）*
+
+### gets
+
 `char *gets(char *buf)`
 
 - `buf` 缓冲区
-
-- `n` 缓冲区长度
-
-- `fp` 流
 
 - `返回值`
 
@@ -820,7 +2791,22 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
   到达文件尾或出错：NULL
 
+
 *从流中读一行字符串*
+
+### isatty
+
+`int isatty(int filedes)`
+
+- `filedes` 终端
+
+- `返回值`
+
+  是终端设备：1
+
+  不是终端设备：0
+
+*判断是否为终端设备*
 
 ### mkstemp
 
@@ -835,6 +2821,36 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：-1
 
 *创建临时文件*
+
+### pclose
+
+`int pclose(FILE *fp)`
+
+- `fp` 文件描述符
+
+- `返回值`
+
+  成功：cmdstring的终止状态
+
+  失败：-1
+
+*关闭标准I/O流*
+
+### popen
+
+`FILE *popen(const char *cmdstring, const char *type)`
+
+- cmdstring` 命令行
+
+- `type` 创建模式
+
+- `返回值` 
+
+  成功：标准I/O文件指针
+
+  失败：NULL
+
+*创建管道*
 
 ### printf/vprintf/fprintf/vprintf
 
@@ -855,10 +2871,40 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *格式化输出字符到流*
 
-### putc/putchar/fputc
+### putc
 
 `int putc(int c, FILE *fp)`
-`int fputc(int c, FILE *fp)`
+
+- `c` 字符
+
+- `fp` 流
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写单个字符到流中*
+
+### putc_unlocked
+
+`int putc_unlocked(int c, FILE *fp)`
+
+- `c` 字符
+
+- `fp` 文件描述符
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写单个字符到流中（不加锁，不建议使用）*
+
+### putchar
+
 `int putchar(int c)`
 
 - `c` 字符
@@ -872,6 +2918,22 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：EOF
 
 *写单个字符到流中*
+
+### putchar_unlocked
+
+`int putchar_unlocked(int c)`
+
+- `c` 字符
+
+- `fp` 流
+
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写一个字符到流（不加锁，不建议使用）*
 
 ### puts/fputs
 
@@ -1097,6 +3159,20 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *获取环境变量值。*
 
+### grantpt
+
+`int grantpt(int filedes)`
+
+- `filedes` 终端
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置伪终端从设备权限*
+
 ### malloc
 
 `void *malloc(size_t size)`
@@ -1110,6 +3186,34 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：NULL
 
 *分配指定字节数的存储区，此存储区中的初始值不确定。*
+
+### posix_openpt
+
+`int posix_openpt(int oflag)`
+
+- `oflag` 位屏蔽字
+
+- `返回值`
+
+  成功：下一个可用的PTY主设备的文件描述符
+
+  失败：-1
+
+*打开下一个可用的伪终端主设备*
+
+### ptsname
+
+`char *ptsname(int filedes)`
+
+- `filedes` 终端
+
+- `返回值`
+
+  成功：指向PTY从设备名的指针
+
+  失败：NULL
+
+*找到从伪终端设备的路径名*
 
 ### putenv
 
@@ -1146,6 +3250,20 @@ fcntl有5种功能，具体功能取决于cmd的值：
   - 失败：-1
 
 *将name设置为value；如果name已经存在：1.如果rewrite非0，则首先删除其现有的定义；2.如果rewrite为0，则不删除其现有定义。
+
+### unlockpt
+
+`int unlockpt(int filedes)`
+
+- filedes` 终端
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*允许对伪终端从设备的访问*
 
 ### unsetenv
 
@@ -1267,31 +3385,1004 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
+## stropts.h
+
+### isastream
+
+`int isastream(int filedes)`
+
+- `filedes` 描述符
+
+- `返回值`
+
+  STREAMS设备：1
+
+  失败：0
+
+*判断一个描述符是否引用一个流*
+
+### putmsg
+
+`int putmsg(int fields, const struct strbuf *ctlptr, const struct strbuf *dataptr, int flag)`
+
+- `filedes` 描述符
+
+- `ctlptr` 控制指针
+
+- `dataptr` 数据流
+
+- `flag` 标志
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*将STREAMS消息写入到流中*
+
+### putpmsg
+
+`int putpmsg(int fields, const struct strbuf *ctlptr, const struct strbuf *dataptr, int band, int flag)`
+
+- `filedes` 描述符
+
+- `ctlptr` 控制指针
+
+- `dataptr` 数据流
+
+- `band` 优先级波段
+
+- `flag` 标志
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*将STREAMS消息写入到流中*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/ipc.h
+
+### ftok
+
+`key_t ftok(const char *path, int id)`
+
+- `path` 现有文件的路径
+- `id` 项目ID
+- `返回值`
+  - 成功：返回键
+  - 失败：返回(key_t) - 1
+
+*将路径名和项目ID变换为一个键。*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/mman.h
+
+### mmap
+
+`void *mmap(void *addr, size_t len, int prot, int flag, int fields, off_t off)`
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `prot` 对映射存储区的保护要求
+
+- `flag` 映射存储区的属性
+
+  - `MAP_FIXED` 返回值必须等于addr（不利于可移植性，不推荐使用此标志）；
+  - `MAP_SHARED` 指定存储操作修改映射文件；
+  - `MAP_PRIVATE` 对映射区的存储操作导致创建该映射文件的一个私有副本；
+
+- `fields` 被映射文件的描述符
+
+- `off` 要映射字节在文件中的起始偏移量
+
+- `返回值`
+
+  成功：映射区的起始地址
+
+  失败：MAP_FAILED
+
+*告诉内核将一个文件映射到指定存储区域*
+
+### mprotect
+
+`int mprotect(void *addr, size_t len, int prot)`
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `prot` 对映射存储区的保护要求
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*更改一个现存映射存储区的权限*
+
+### msync
+
+`int msync(void *addr, size_t len, int flags)`
+
+- `addr` 映射存储区的起始地址
+- `len` 映射的字节数
+- `flags` 控制冲洗存储区
+
+*存储映射区*
+
+### munmap
+
+`int munmap(caddr_t addr, size_t len)`
+
+- `addr` 映射存储区的起始地址
+
+- `len` 映射的字节数
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*解除存储映射*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/msg.h
+
+### msgctl
+
+`int msgctl(int msqid, int cmd, struct msqid_ds *buf)`
+
+- `msqid` 消息队列id
+
+- `cmd` 指定对msqid指定的队列要执行的命令
+
+- `buf` 缓冲区
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对队列执行操作*
+
+### msgget
+
+`int msgget(key_t key, int flag)`
+
+- `key` 键
+- `flag` 标志
+- `返回值`
+  - 成功：消息队列ID（非负）
+  - 失败：-1
+
+*打开/创建一个队列*
+
+### msgrcv
+
+`ssize_t msgrcv(int msqid, void *ptr, size_t bytes, long type, int flag)`
+
+- `msqid` 消息队列ID
+
+- `ptr` 数据指针
+
+- `bytes` 数据大小
+
+- `type` 消息类型
+
+- `flag` 标志
+
+- `返回值`
+
+  - 成功：消息数据长度
+  - 失败：-1
+
+*从队列中取用消息*
+
+### msgsnd
+
+`int msgsnd(int msqid, const void *ptr, size_t nbytes, int flag)`
+
+- `msqid` 消息队列ID
+
+- `ptr` 指向数据的指针
+
+- `nbytes` 数据大小
+
+- `flag` 标志
+
+  | flag值     | 说明   |
+  | ---------- | ------ |
+  | IPC_NOWAIT | 非阻塞 |
+
+- `返回值`
+
+  - 成功：0
+  - 失败：-1
+
+*将数据放到消息队列中*
+
+
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/resource.h
+
+### getpriority
+
+`int getpriority(int which, id_t who)`
+
+- `which` 类别
+  - `PRIO_PROCESS` 进程
+  - `PRIO_PGRP` 进程组
+  - `PRIO_USER` 用户ID
+- `who` 进程/进程组/用户ID
+- `返回值`
+  - 成功：返回[-NZERO, NZERO-1]之间的值
+  - 失败：-1
+
+*返回指定对象的nice值（调度优先级）*
+
+### getrlimit
+
+`int getrlimit(int resource, struct rlimit *rlptr)`
+
+- `resource` 资源
+
+- `rlptr` 限制值
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*设置进程的资源限制*
+
+### setpriority
+
+`int setpriority(int which, id_t who, int value)`
+
+- `which` 类别
+  - `PRIO_PROCESS` 进程
+  - `PRIO_PGRP` 进程组
+  - `PRIO_USER` 用户ID
+- `who` 进程/进程组/用户ID
+- `value` 值
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*设置指定对象的nice值（调度优先级）*
+
+### setrlimit
+
+`int setrlimit(int resource, const struct rlimit *rlptr)`
+
+- `resource` 资源
+
+- `rlptr` 限制值
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+*更新进程的资源限制*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/select.h
+
+### pselect
+
+`int pselect(int maxfdp1, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict exceptfds, const struct timespec *restrict tsptr, cosnt sigset_t *restrict sigmask)`
+
+- `maxfdp1 ` 最大描述符数 + 1
+
+- `readfds` 可读描述符
+
+- `writefds` 可写描述符
+
+- `exceptfds` 异常描述符
+
+- `tvptr` 超时时间
+
+- sptr` 超时时间（更精确的时间，参考`tvptr`）
+
+- `sigmask` 信号屏蔽字
+
+- `返回值`
+
+  超时：0
+
+  出错：-1
+
+  成功：准备就绪的描述符数
+
+*多路转接（允许禁止某些信号）*
+
+### select
+
+`int select(int maxfdp1, fd_set *restrict readfds, fd_set *restrict writefds, fd_set *restrict exceptfds, struct timeval *restrict tvptr)`
+
+- `maxfdp1 ` 最大描述符数 + 1
+
+- `readfds` 可读描述符
+
+- `writefds` 可写描述符
+
+- `exceptfds` 异常描述符
+
+- `tvptr` 超时时间
+
+- sptr` 超时时间（更精确的时间，参考`tvptr`）
+
+- `sigmask` 信号屏蔽字
+
+- `返回值`
+
+  超时：0
+
+  出错：-1
+
+  成功：准备就绪的描述符数
+
+*多路转接*
+
+### FD_CLR
+
+`void FD_CLR(int fd, fd_set *fdset)`
+
+- `fd` 文件描述符
+- `fdset` 文件描述符集
+
+*将fdset变量的所有位设置为0*
+
+### FD_ISSET
+
+`int FD_ISSET(int fd, fd_set *fdset)`
+
+- `fd` 文件描述符
+- `fdset` 文件描述符集
+- `返回值` fd在描述符集里：非0；否则：0
+
+*文件描述符是否在文件描述符集里*
+
+### FD_SET
+
+`void FD_SET(int fd, fd_set *fdset)`
+
+- `fd` 文件描述符
+- `fdset` 文件描述符集
+
+*设置fdset变量的指定位*
+
+### FD_ZERO
+
+`void FD_ZERO(fd_set *fdset)`
+
+- `fdset` 文件描述符集
+
+*清除fdset的所有位*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/sem.h
+
+### semctl
+
+`int semctl(int semid, int semnum, int cmd, ...)`
+
+- `semid` 信号量ID
+
+- `semnum` 指定该信号量集合中的一个成员
+
+- `cmd` 命令
+
+- `...` （变参）多个命令特定参数的union，是否使用取决于cmd的值
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对信号量操作*
+
+### semget
+
+`int semget(key_t key, int nsems, int flag)`
+
+- `key` 键
+- `nsems` 集合中的信号量数（如果是创建新集合，必须指定nsems；如果是引用现有集合，指定nsems为0）
+- `flag` 标志
+- `返回值`
+  - 成功：信号量ID
+  - 失败：-1
+
+*获得一个信号量ID*
+
+### semop
+
+`int semop(int semid, struct sembuf semoparray[], size_t nops)`
+
+- semid` 信号量ID
+
+- `semoparray` 信号量操作数组
+
+- `nops` 信号量操作数组中元素数量
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*自动执行信号量集合上的操作数组*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/shm.h
+
+### shmat
+
+`void *shmat(int shmid, const void *addr, int flag)`
+
+- `shmid`  共享存储段ID
+- `addr` 地址空间
+- `flag` 标志
+  - SHM_RND 配合addr使用；
+  - SHM_RDONLY 以只读方式连接此段（默认读写方式）。
+
+*将共享存储段连接到它的地址空间中*
+
+### shmctl
+
+`int shmctl(int shmid, int cmd, struct shmid_ds *buf)`
+
+- `shmid` 共享存储段ID
+
+- `cmd` 命令行
+
+- `buf` 缓冲区
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对共享存储段执行多种操作*
+
+### shmdt
+
+`int shmdt(const void *addr)`
+
+- `addr` 地址空间
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*分离地址空间上的共享存储段*
+
+### shmget
+
+`int shmget(key_t key, size_t size, int flag)`
+
+- `key` 键
+
+- `size` 共享存储段长度（单位：字节）
+
+- `flag` 标志
+
+- `返回值`
+
+  成功：共享存储ID
+
+  失败：-1
+
+*获得一个共享存储标识符*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
 ## sys/socket.h
-
-### connect
-
-`int connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen)`
-
-建立与TCP服务器的连接；具体见[unix网络编程-卷一#第四章#connect函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)
-
-### bind
-
-`int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen)`
-
-把一个本地协议地址赋予一个套接字；具体见[unix网络编程-卷一#第四章#bind函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
-
-### listen
-
-`int listen(int sockfd, int backlog)` 
-
-把一个未连接的套接字转化为一个被动套接字，指示内核应接受指向该套接字的连接请求，同时设定排队的套接字队列的最大长度。**注意：此函数仅由TCP服务器调用**；具体见[unix网络编程-卷一#第四章#listen函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
 
 ### accept
 
-`int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)`
+`int accept(int sockfd, struct sockaddr *restrict addr, socklen_t *restrict len)`
 
-从已完成连接队列头返回下一个已完成连接，如果已完成连接队列为空，那么进程被投入睡眠；具体见[unix网络编程-卷一#第四章#accept函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
+- `sockfd` 套接字
+
+- `addr` 地址
+
+- `len` 地址长度
+
+- `返回值`
+
+  成功：文件描述符
+
+  失败：-1
+
+*获得连接请求并建立连接（阻塞）*；具体见[unix网络编程-卷一#第四章#accept函数](../NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
+
+### bind
+
+`int bind(int sockfd, const struct sockaddr *addr, socklen_t len)`
+
+- `sockfd` 套接字描述符
+
+- `addr` 地址
+
+- `len` 地址长度
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*将地址绑定到一个套接字*；具体见[unix网络编程-卷一#第四章#bind函数](../NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
+
+### connect
+
+`int connect(int sockfd, const struct sockaddr *addr, socklen_t len)`
+
+- `sockfd` 套接字
+
+- `addr` 地址
+
+- `len` 地址长度
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*建立连接*；具体见[unix网络编程-卷一#第四章#connect函数](../NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)
+
+### getpeername
+
+`int getpeername(int sockfd, struct sockaddr *restrict addr, socklen_t *restrict alenp)`
+
+- `sockfd` 套接字
+
+- `addr` 对方地址
+
+- `alenp` 对方地址长度
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*查找与套接字连接的对方地址*
+
+### getsockname
+
+`int getsockname(int sockfd, struct sockaddr *restrict addr, socklen_t *restrict alenp)`
+
+- `sockfd` 套接字
+
+- `addr` 地址
+
+- `alenp` 地址长度
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*查找绑定到套接字的地址*
+
+### getsockopt
+
+`int getsockopt(int sockfd, int level, int option void *restrict val, socklen_t *restrict lenp)`
+
+- `sockfd` 套接字描述符
+
+- `level` 选项应用的协议号
+
+- `option` 选项
+
+- `val` 参数
+
+- `lenp` 复制缓冲区大小（根据选项值的实际尺寸更新）
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*返回套接字选项值*
+
+### listen
+
+`int listen(int sockfd, int backlog)`
+
+- `sockfd` 套接字
+
+- `backlog` 数量
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*监听套接字*；具体见[unix网络编程-卷一#第四章#listen函数](NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)。
+
+### recv
+
+`ssize_t recv(int sockfd, void *buf, size_t nbytes, int flags)`
+
+- `sockfd` 套接字
+
+- `buf` 接收缓冲区
+
+- `nbytes` 接收数据长度
+
+- `flags` 标志
+
+  | 标志        | 描述                                       |
+  | ----------- | ------------------------------------------ |
+  | MSG_OOB     | 如果协议支持，接收带外数据                 |
+  | MSG_PEEK    | 返回报文内容而不真正取走报文               |
+  | MSG_TRUNC   | 即使报文被截断，要求返回的是报文的实际长度 |
+  | MSG_WAITALL | 等待直到所有的数据可用（仅SOCK_STREAM）    |
+
+- `返回值`
+
+  成功：消息长度（字节）
+
+  无可用消息或对方已经按序结束：0
+
+  失败：-1
+
+*接收数据*
+
+### recvfrom
+
+`ssize_t recvfrom(int sockfd, void *restrict buf, size_t len, int flags, struct sockaddr *restrict addr, socklen_t *restrict addrlen)`
+
+- `sockfd` 套接字
+
+- `buf` 缓冲区
+
+- `len` 接收数据长度
+
+- `flags` 标志
+
+- `addr` 地址
+
+- `addrlen` 地址长度
+
+- `返回值`
+
+  成功：消息长度（字节）
+
+  无可用消息或对方已经按序结束：0
+
+  失败：-1
+
+*接收数据（用于无连接套接字）*
+
+### recvmsg
+
+`ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags)`
+
+- `sockfd` 套接字
+
+- `msg` 消息
+
+- `flags` 标志
+
+  | 标志         | 描述                  |
+  | ------------ | --------------------- |
+  | MSG_CTRUNC   | 控制数据被截断        |
+  | MSG_DONTWAIT | recvmsg处于非阻塞模式 |
+  | MSG_EOR      | 接收到记录结束符      |
+  | MSG_OOB      | 接收到带外数据        |
+  | MSG_TRUNC    | 一般数据被截断        |
+
+- `返回值`
+
+  成功：消息长度（字节）
+
+  无可用消息或对方已经按序结束：0
+
+  失败：-1
+
+*接收数据并放入多个缓冲区*
+
+### send
+
+`ssize_t send(int sockfd, const void *buf, size_t nbytes, int flags)`
+
+- `sockfd` 套接字
+
+- `buf` 缓冲区
+
+- `nbytes` 数据长度
+
+- `flags` 标志
+
+  | 标志          | 描述                                   |
+  | ------------- | -------------------------------------- |
+  | MSG_DONTROUTE | 勿将数据路由出本地网络                 |
+  | MSG_DONTWAIT  | 允许非阻塞操作（等价于使用O_NONBLOCK） |
+  | MSG_EOR       | 如果协议支持，此为记录结束             |
+  | MSG_OOB       | 如果协议支持，发送带外数据             |
+
+- `返回值`
+
+  成功：发送的字节数
+
+  失败：-1
+
+*发送数据*
+
+### sendmsg
+
+`ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags)`
+
+- `sockfd` 套接字
+
+- `msg` 数据
+
+- `flags` 标志
+
+- `返回值`
+
+  成功：发送的字节数
+
+  失败：-1
+
+*发送数据（使用多重缓冲区）*
+
+### sendto
+
+`ssize_t sendto(int sockfd, const void *buf, size_t nbytes, int flags, const struct sockaddr *destaddr, socklen_t destlen)`
+
+- `sockfd` 套接字
+
+- `buf` 缓冲区
+
+- `nbytes` 字节数
+
+- `flags` 标志
+
+- `destaddr` 目标地址
+
+- `destlen` 目标地址长度
+
+- `返回值`
+
+  成功：发送的字节数
+
+  失败：-1
+
+*发送数据（在无连接的套接字上指定地址）*
+
+### setsockopt
+
+`int setsockopt(int sockfd, int level, int option, const void *val, socklen_t len)`
+
+- `sockfd` 套接字
+
+- `level` 选项应用的协议
+
+- `option` 选项
+
+- `val` 指向option对应的数据结构或整数
+
+- `len` val指向的对象大小
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置套接字选项*
+
+### shutdown
+
+`int shutdown(int sockfd, int how)`
+
+- `sockfd` 套接字
+
+- `how` 动作
+
+  | how值     | 说明     |
+  | --------- | -------- |
+  | SHUT_RD   | 关闭读   |
+  | SHUT_WR   | 关闭写   |
+  | SHUT_RDWR | 关闭读写 |
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*关闭一个套接字的I/O*
+
+### socket
+
+`int socket(int domain, int type, int protocol)`
+
+- `domain` 域
+
+  | 域        | 描述           |
+  | --------- | -------------- |
+  | AF_INET   | IPv4因特网域。 |
+  | AF_INET6  | IPv6因特网域。 |
+  | AF_UNIX   | UNIX域。       |
+  | AF_UPSPEC | 未指定。       |
+
+- `type` 套接字类型
+
+  | 类型           | 描述                                             |
+  | -------------- | ------------------------------------------------ |
+  | SOCK_DGRAM     | 固定长度的，无连接的，不可靠的报文传递。         |
+  | SOCK_RAW       | IP协议的数据报接口。                             |
+  | SOCK_SEQPACKET | 固定长度的，有序的，可靠的，面向连接的报文传递。 |
+  | SOCK_STREAM    | 有序的，可靠的，双向的，面向连接的字节流。       |
+
+- `protocol` 协议
+
+  | 协议         | 描述                                     |
+  | ------------ | ---------------------------------------- |
+  | IPPROTO_IP   | IPv4网际协议                             |
+  | IPPROTO_IPV6 | IPv6网际协议                             |
+  | IPPROTO_ICMP | 因特网控制报文协议                       |
+  | IPPROTO_RAW  | 原始IP数据包协议                         |
+  | IPPROTO_TCP  | 传输控制协议                             |
+  | IPPROTO_UDP  | 用户数据报协议（User Datagram Protocol） |
+
+- `返回值`
+
+  成功：文件描述符
+
+  失败：-1
+
+*创建一个套接字*
+
+### sockatmark
+
+`int sockatmark(int sockfd)`
+
+- `sockfd` 套接字
+
+- `返回值`
+
+  在标记处：1
+
+  没有在标记处：0
+
+  出错：-1
+
+*设置是否接收到紧急标记*
+
+### socketpair
+
+`int socketpair(int domain, int type, int protocol, int sockfd[2])`
+
+- `domain` 域
+
+- `type` 套接字类型
+
+- `protocol` 协议
+
+- `sockfd` 套接字描述符
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一对无命名的，相互连接的UNIX域套接字*
+
+### CMSG_DATA
+
+`unsigned char *CMSG_DATA(struct cmsghdr *cp)`
+
+- `cp` cmsghdr指针
+- `返回值` 指向与`cmsghdr`结构相关联的数据
+
+*返回指向与cmsghdr结构相关联的数据指针*
+
+### CMSG_FIRSTHDR
+
+`struct cmsghdr *CMSG_FIRSTHDR(struct msghdr *mp)`
+
+- `mp` msghdr指针
+
+- `返回值`
+
+  成功：指向与`msghdr`结构相关联的第一个`cmsghdr`结构
+
+  失败：NULL
+
+*返回与`msghdr`结构相关联的第一个`cmsghdr`结构*
+
+### CMSG_NXTHDR
+
+`struct cmsghdr *CMSG_NXTHDR(struct msghdr *mp, struct cmsghdr *cp)`
+
+- `mp` msghdr指针
+
+- `cp` cmsghdr指针
+
+- `返回值`
+
+  成功：指向与`msghdr`结构相关联的下一个`cmsghdr`结构，该`msghdr`结构给出了当前的`cmsghdr`结构
+
+  当前`cmsghdr`结构是最后一个：NULL
+
+*返回与`msghdr`结构相关联的下一个`cmsghdr`结构*
+
+### CMSG_LEN
+
+`unsigned int CMSG_LEN(unsigned int bytes)`
+
+- `nbytes` 数据长度
+- `返回值` 存储数据对象所需长度
+
+*返回存储nbytes长的数据对象所需的字节数*
 
 [返回顶部](#POSIX接口)
 
@@ -1365,9 +4456,24 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *获取符号链接的有关信息*
 
-### mkdir/mkdirat
+### mkdir
 
 `int mkdir(const char *pathname, mode_t mode)`
+
+- `pathname` 路径
+
+- `mode` 文件访问权限
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个新的空目录*
+
+### mkdirat
+
 `int mkdirat(int fd, const char *pathname, mode_t mode)`
 
 - `pathname` 路径
@@ -1382,7 +4488,41 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
   失败：-1
 
-*创建一个新的空目录*
+*创建一个新的空目录，并返回文件描述符*
+
+### mkfifo
+
+`int mkfifo(const char *path, mode_t mode)`
+
+- `path` 绝对/相对路径
+
+- `mode` 操作模式
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建FIFO*
+
+### mkfifoat
+
+`int mkfifoat(int fd, const char *path, mode_t mode)`
+
+- `path` 绝对/相对路径
+
+- `mode` 操作模式
+
+- `fd` 文件套接字
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建FIFO*
 
 ### stat
 
@@ -1473,6 +4613,72 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 
 
+## sys/times.h
+
+### times
+
+`clock_t times(struct tms *buf)`
+
+- buf` 时间
+
+- `返回值`
+
+  成功：流逝的墙上时钟时间（以时钟滴答数为单位）
+
+  失败：-1
+
+*获得墙上时钟时间*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## sys/uio.h
+
+### readv
+
+`ssize_t readv(int filedes, const struct iovec *iov, int iovcnt)`
+
+- `filedes` 描述符
+
+- `iov` iovec数组（最大长度为`IOV_MAX`）
+
+- `iovcnt` iovec数组长度
+
+- `返回值`
+
+  成功：已读/写的字节数
+
+  失败：-1
+
+*散布读（读多个非连续缓冲区）*
+
+### writev
+
+`ssize_t writev(int filedes, const struct iovec *iov, int iovcnt)`
+
+- `filedes` 描述符
+
+- `iov` iovec数组（最大长度为`IOV_MAX`）
+
+- `iovcnt` iovec数组长度
+
+- `返回值`
+
+  成功：已读/写的字节数
+
+  失败：-1
+
+*聚集写（写多个非连续缓冲区）*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
 ## sys/utsname.h
 
 ### uname
@@ -1513,6 +4719,24 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：0或-1
 
 *查找终结的子进程（阻塞）*
+
+### wait3/wait4
+
+`pid_t wait3(int *statloc, int options, struct rusage *rusage)`
+
+`pid_t wait4(pid_t pid, int *statloc, int options, struct rusage *rusage)`
+
+- `statloc`
+  - 空指针：不关心终止状态
+  - 非空指针：存放子进程的终止状态
+- `options`  选项
+- `rusage` 资源概况信息
+- `pid` 进程ID
+- `返回值`
+  - 成功：进程ID
+  - 失败：-1
+
+*通过内核返回由终止进程及其所有子进程使用的资源概况*
 
 ### waitid
 
@@ -1578,6 +4802,225 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：0或-1
 
 *查找终结的子进程（阻塞/非阻塞）*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## syslog.h
+
+### closelog
+
+`void closelog(void)`
+
+- `返回值` 前日志记录优先级屏蔽值
+
+*关闭日志*
+
+### openlog
+
+`void openlog(const char *ident, int option, int facility)`
+
+- `ident` 认证信息，一般为程序名
+
+- `option` 选项
+
+- `facility` 设施
+
+- `返回值` 前日志记录优先级屏蔽值
+
+*打开日志（可选）*
+
+### setlogmask
+
+`int setlogmask(int maskpri)`
+
+- `maskpri` 屏蔽字
+
+- `返回值` 前日志记录优先级屏蔽值
+
+*设置进程的记录优先级屏蔽字*
+
+### syslog
+
+`void syslog(int priority, const char *format, ...)`
+
+- `priority` 优先级，由`facility`和`level`组合而成；
+- `format` 格式化字符串
+- `返回值` 前日志记录优先级屏蔽值
+
+*写日志*
+
+[返回顶部](#POSIX接口)
+
+---
+
+
+
+## termios.h
+
+### cfgetispeed
+
+`speed_t cfgetispeed(const struct termios *termptr)`
+
+- `termptr` 终端
+- `返回值` 波特率
+
+*获取波特率*
+
+### cfgetospeed
+
+`speed_t cfgetospeed(const struct termios *termptr)`
+
+- `termptr` 终端
+- `返回值` 波特率
+
+*获取波特率*
+
+### cfsetispeed
+
+`int cfsetispeed(struct termios *termptr, speed_t speed)`
+
+- `termptr` 终端
+
+- `speed` 波特率
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置波特率*
+
+### cfsetospeed
+
+`int cfsetospeed(struct termios *termptr, speed_t speed)`
+
+- `termptr` 终端
+
+- `speed` 波特率
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置波特率*
+
+### tcdrain
+
+`int tcdrain(int filedes)`
+
+- `filedes` 终端设备
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*等待所有输出都被发送*
+
+### tcflow
+
+`int tcflow(int filedes, int action)`
+
+- `filedes` 终端设备
+
+- `action` 控制动作
+
+  - TCOOFF 输出被挂起；
+  - TCOON 重新启动以前被挂起的输出；
+  - TCIOFF 系统发送一个STOP字符（这将使终端设备暂停发送数据）；
+  - TCION 系统发送一个START字符（这将使终端恢复发送数据）。
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对输入和输出流的控制命令进行控制*
+
+### tcflush
+
+`int tcflush(int filedes, int queue)`
+
+- `filedes` 终端设备
+
+- `queue` 控制动作
+
+  - TCIFLUSH 刷清输入队列
+  - TCOFLUSH 刷清输出队列
+  - TCIOFLUSH 刷清输入，输出队列
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*刷清（抛弃）输入/输出缓冲区*
+
+### tcgetattr
+
+`int tcgetattr(int filedes, struct termios *termptr)`
+
+- `filedes` 终端设备
+
+- `termptr` 返回的终端属性指针
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*获得终端属性*
+
+### tcsendbreak
+
+`int tcsendbreak(int filedes, int duration)`
+
+- `filedes` 终端设备
+
+- `duration` 时长（值为0时，此种发送延续0.25至0.5之间）
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*在一个指定的时间区间内发送连续的0位流*
+
+### tcsetattr
+
+`int tcsetattr(int filedes, int opt, const struct termios *termptr)`
+
+- `filedes` 终端设备
+
+- `termptr` 返回的终端属性指针
+
+- `opt` 选项
+
+  TCSANOW：更改立即发生；
+
+  TCSADRAIN：发送了所有输出后更改才发生（若更改输出参数则应使用此选项）；
+
+  TCSAFLUSH：发送了所有输出后更改才发生（更进一步，在更改发生时未读的所有输入数据都被删除（刷清））；
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置终端属性*
 
 [返回顶部](#POSIX接口)
 
@@ -1700,6 +5143,15 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *进行访问权限测试*。具体见：[I/O#access/faccessat](io.md)
 
+### alarm
+
+`unsigned int alarm(unsigned int seconds)`
+
+- `seconds` 时长（秒）
+- 返回值：0或以前设置的闹钟时间的余留秒数
+
+*设置一个定时器，当定时器超时时，产生SIGALRM信号*
+
 ### chdir/fchdir
 
 `int chdir(const char *pathname)`
@@ -1755,6 +5207,26 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：-1
 
 复制一个现有的文件描述符；具体见：[I/O#dup/dup2](io.md)
+
+### execl/execv/execle/execve/execlp/execvp/fexecve
+
+`int execl(const char *pathname, const char *arg0, ...)`
+`int execv(const char *pathname, char *const argv[])`
+`int execle(const char *pathname, const char *arg0, ...)`
+`int execve(const char *pathname, char *const argv[], char *const envp[])`
+`int execlp(const char *filename, const char *arg0, ...)`
+`int execvp(const char *filename, char *const argv[])`
+`int fexecve(int fd, char *const argv[], char *const envp[])`
+
+- `pathname` 路径名
+  - 如果包含`/`，则将其视为路径名；
+  - 否则按PATH环境变量，在它所指定的各目录中搜寻可执行文件。
+- `argx` 各种参数
+- `返回值`
+  - 成功：不返回
+  - 失败：-1
+
+*执行程序*
 
 ### fdatasync
 
@@ -1845,15 +5317,87 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *返回进程的实际组ID/有效组ID*
 
-### getpid/getppid
+### getlogin
+
+`char *getlogin(void)`
+
+- `返回值`
+
+  成功：指向登录名字字符串的指针
+
+  失败：NULL
+
+*获得登录名*
+
+### getopt
+
+`int getopt(int argc, char *const argv[], const char *options)`
+
+- `argc` 参数数组长度
+
+- `argv` 参数数组
+
+- `options` 包含该命令支持的选项字符的字符串
+
+- `返回值`
+
+  所有选项被处理完：-1
+
+  所有选项未被处理完：下一个选项字符
+
+*获得命令行参数*
+
+### getpgid
+
+`pid_t getpgid(pid_t pid)`
+
+- `pid` 当前进程ID，为0时等价于`getpgrp()`
+
+- `返回值`
+
+  成功：进程组ID
+
+  失败：-1
+
+*返回调用进程的进程组ID*
+
+### getpgrp
+
+`pid_t getpgrp(void)`
+
+- `返回值` 调用进程的进程组ID
+
+*返回调用进程的进程组ID*
+
+### getpid
 
 `pid_t getpid(void)`
+
+- `返回值` 进程ID
+
+*返回进程的ID*
+
+### getppid
 
 `pid_t getppid(void)`
 
 - `返回值` 进程ID
 
-*返回进程的ID/父进程ID*
+*返回父进程ID*
+
+### getsid
+
+`pid_t getsid(pid_t pid)`
+
+- `pid` 进程ID
+
+- `返回值`
+
+  成功：会话首进程的进程组ID
+
+  失败：-1
+
+*返回会话首进程的进程组ID（如果pid不属于调用者所在的会话，那么调用进程不能得到该会话首进程的进程组ID*
 
 ### getuid/geteuid
 
@@ -1881,9 +5425,38 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *设置组文件中用户名的映射关系*
 
-### link/linkat
+### isatty
+
+`int isatty(int filedes)`
+
+- `filedes` 终端
+
+- `返回值`
+
+  是终端设备：1
+
+  不是终端设备：0
+
+*判断是否为终端设备*
+
+### link
 
 `int link(const char *existingpath, const char *newpath)`
+
+- `existingpath` 现有文件路径
+
+- `newpath` 链接文件路径（需要保证此路径不存在）
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建一个指向现有文件的链接*
+
+### linkat
+
 `int linkat(int efd, const char *existingpath, int nfd, const char *newpath, int flag)`
 
 - `existingpath` 现有文件路径
@@ -1893,8 +5466,6 @@ fcntl有5种功能，具体功能取决于cmd的值：
 - `efd` 现有文件的文件描述符
 
 - `nfd` 链接文件的文件描述符
-
-- `newpath` 链接文件路径
 
 - `flag` 标志，标识创建链接的链接or文件的链接
 
@@ -1922,6 +5493,20 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 为一个打开的文件设置偏移量；具体见：[I/O#lseek](io.md)
 
+### mice
+
+`int mice(int incr)`
+
+- `incr` 增量
+
+- `返回值`
+
+  成功：新的nice值
+
+  失败：-1
+
+*设置当前进程的nice值（调度优先级）*
+
 ### pathconf
 
 `long pathconf(const char *pathname, int name)`
@@ -1930,6 +5515,25 @@ fcntl有5种功能，具体功能取决于cmd的值：
 - `pathname` 文件路径
 
 *获得运行时限制*
+
+### pause
+
+`int pause(void)`
+
+- 返回值：-1，errno设置为EINTR
+
+*使进程挂起直至捕捉到一个信号（阻塞）*
+
+### pipe
+
+`int pipe(int fd[2])`
+
+- `fd` 用于返回两个文件描述符，fd[0]为读而打开，fd[1]为写而打开；fd[1]输出的是fd[0]的输入；
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*创建管道*
 
 ### pread
 
@@ -1971,6 +5575,64 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *将目录的链接计数设置为0。*
 
+### setegid
+
+`int setegid(gid_t gid)`
+
+- `gid` 有效组ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*更改有效组ID*
+
+### seteuid
+
+`int seteuid(uid_t uid)`
+
+- `uid` 有效用户ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*更改有效用户ID*
+
+### setgid
+
+`int setgid(gid_t gid)`
+
+- `gid` 组ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置实际组ID和有效组ID*
+
+### setpgid
+
+`int setpgid(pid_t pid, pid_t pgid)`
+
+- `pid` 当前进程ID
+
+- `pgid` 进程组ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*创建/加入一个进程组*
+
 ### setgroups
 
 `int setgroups(int ngroups, const gid_t grouplist[])`
@@ -1986,6 +5648,56 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：-1
 
 *设置附加组ID表*
+
+### setregid
+
+`int setregid(gid_t rgid, gid_t egid)`
+
+- `rgid` 实际组ID和有效组ID
+- `egid` 实际组ID和有效组ID
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*交换实际用户ID和有效用户ID*
+
+### setsid
+
+`pid_t setsid(void)`
+
+- `返回值`
+
+  成功：进程组ID
+
+  失败：-1
+
+*建立一个新会话（如果调用此函数的进程已经是一个进程组的组长，则此函数返回错误）*
+
+### setreuid
+
+`int setreuid(uid_t ruid, uid_t euid)`
+
+- `ruid` 实际用户ID和有效用户ID
+- `euid` 实际用户ID和有效用户ID
+- `返回值`
+  - 成功：0
+  - 失败：-1
+
+*交换实际用户ID和有效用户ID*
+
+### setuid
+
+`int setuid(uid_t uid)`
+
+- `uid` 用户ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置实际用户ID和有效用户ID*
 
 ### symlink/symlinkat
 
@@ -2038,6 +5750,62 @@ fcntl有5种功能，具体功能取决于cmd的值：
   失败：-1
 
 *获得运行时限制*
+
+### system
+
+`int system(const char *cmdstring)`
+
+- `cmdstring` 命令
+- `返回值`
+  - `fork`失败或者`waitpid`返回除`EINTR`之外的出错：返回-1，并设置errno以指示错误类型；
+  - `exec`失败：如同`shell`执行了`exit(127)`一样；
+  - `fork`，`exec`和`waitpid`都执行成功：返回shell的终止状态。
+
+*执行命令*
+
+### tcgetpgrp
+
+`pid_t tcgetpgrp(int fd)`
+
+- `fd`文件描述符
+
+- `返回值`
+
+  成功：返回前台进程组ID
+
+  失败：-1
+
+*返回前台进程组ID（与fd上打开的终端相关联）*
+
+### tcgetsid
+
+`pid_t tcgetsid(int fd)`
+
+- `fd`文件描述符
+
+- `返回值`
+
+  成功：会话首进程的进程组ID
+
+  失败：-1
+
+*返回会话首进程的进程组ID*
+
+### tcsetpgrp
+
+`int tcsetpgrp(int fd, pid_t pgrpid)`
+
+- `fd`文件描述符
+
+- `pgrpid`前台进程组ID
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*设置前台进程组ID*
 
 ### truncate/ftruncate
 

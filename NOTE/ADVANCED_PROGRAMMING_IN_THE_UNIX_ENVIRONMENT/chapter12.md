@@ -30,7 +30,12 @@ int pthread_attr_destroy(pthread_attr_t *attr);
 
 - `attr` 线程属性
 
-  ![t12_3](res/t12_3.png)
+  | 名称        | 描述                                 | FreeBSD 5.2.1 | Linux 2.4.22 | Mac OS X 10.3 | Solaris 9 |
+  | ----------- | ------------------------------------ | ------------- | ------------ | ------------- | --------- |
+  | detachstate | 线程的分离状态属性                   | *             | *            | *             | *         |
+  | guardsize   | 线程栈末尾的警戒缓冲区大小（字节数） |               | *            | *             | *         |
+  | stackaddr   | 线程栈的最低地址                     | ob            | *            | *             | ob        |
+  | stacksize   | 线程栈的最小长度（字节数）           | *             | *            | *             | *         |
 
 - `返回值`
 
@@ -90,9 +95,9 @@ int pthread_attr_setstack(const pthread_attr_t *attr, void *stackaddr, size_t *s
 
 - `attr` 属性
 
-- `stackaddr` 值
+- `stackaddr` 栈地址指针
 
-- `stacksize` 值
+- `stacksize` 栈默认大小
 
 - `返回值`
 
@@ -128,7 +133,7 @@ int pthread_attr_setguardsize(pthread_attr_t *attr, size_t guardsize);
 
 - `attr` 属性
 
-- `guardsize` 值
+- `guardsize` 栈指针警戒线
 
 - `返回值`
 
@@ -157,6 +162,8 @@ int pthread_setconcurrency(int level);
 
 
 ## 12.4 同步属性
+
+### 12.4.1 互斥量属性
 
 ```c++
 #include <pthread.h>
@@ -194,6 +201,39 @@ int pthread_mutexattr_setpshared(pthread_mutexattr_t *attr, int pshared);
 
 ```c++
 #include <pthread.h>
+int pthread_mutexattr_getrobust(const pthread_mutexattr_t *restrict attr, int *restrict robust);
+int pthread_mutexattr_setrobust(pthread_mutexattr_t *attr, int robust);
+```
+
+- `attr` 互斥量属性
+
+- `robust` 健壮属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置 健壮的互斥量属性*
+
+```c++
+#include <pthread.h>
+int pthread_mutex_consistent(pthread_mutex_t *mutex);
+```
+
+- `mutex` 互斥量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*设置互斥量一致（解除`ENOTRECOVERABLE`状态）*
+
+```c++
+#include <pthread.h>
 int pthread_mutexattr_gettype(const pthread_mutexattr_t *restrict attr, int *restrict type);
 int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type);
 ```
@@ -202,7 +242,12 @@ int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int type);
 
 - `type` 互斥量类型
 
-  ![t12_4](res/t12_4.png)
+  | 互斥量类型                 | 没有解锁时再次加锁？ | 不占用时解锁？ | 在已解锁时解锁 |
+  | -------------------------- | -------------------- | -------------- | -------------- |
+  | `PTHREAD_MUTEX_NORMAL`     | 死锁                 | 未定义         | 未定义         |
+  | `PTHREAD_MUTEX_ERRORCHECK` | 返回错误             | 返回错误       | 返回错误       |
+  | `PTHREAD_MUTEX_RECURSIVE`  | 允许                 | 返回错误       | 返回错误       |
+  | `PTHREAD_MUTEX_DEFAULT`    | 未定义               | 未定义         | 未定义         |
 
 - `返回值`
 
@@ -329,6 +374,8 @@ main(void)
 
 *使用递归互斥量*
 
+### 12.4.2 读写锁属性
+
 ```c++
 #include <pthread.h>
 int pthread_rwlockattr_init(pthread_rwlockattr_t *attr);
@@ -363,6 +410,8 @@ int pthread_rwlockattr_setpshared(pthread_rwlockattr_t *attr, int pshared);
 
 *获取/设置读写锁进程共享属性*
 
+### 12.4.3 条件变量属性
+
 ```c++
 #include <pthread.h>
 int pthread_condattr_init(pthread_condattr_t *attr);
@@ -385,9 +434,9 @@ int pthread_condattr_getpshared(const pthread_condattr_t *restrict attr, int *re
 int pthread_condattr_setpshared(pthread_condattr_t *attr, int pshared);
 ```
 
-- `attr`
+- `attr` 线程条件属性
 
-- `pshared`
+- `pshared` 进程共享属性值
 
 - `返回值`
 
@@ -396,6 +445,60 @@ int pthread_condattr_setpshared(pthread_condattr_t *attr, int pshared);
   失败：错误码
 
 *获取/设置进程共享属性*
+
+```c++
+#include <pthread.h>
+int pthread_condattr_getclock(const pthread_condattr_t *restrict attr, clockid_t *restrict clock_id);
+int pthread_condattr_setclock(pthread_condattr_t *attr, clockid_t clock_id);
+```
+
+- `attr` 条件变量属性
+
+- `clock_id` 时钟id
+
+- `返回值`
+
+  成功：0
+
+  失败：错误编号
+
+*获取/设置 条件变量时钟*
+
+### 12.4.4 屏障属性
+
+```c++
+#include <pthread.h>
+int pthread_barrierattr_init(pthread_barrierattr_t *attr);
+int pthread_barrierattr_destroy(pthread_barrierattr_t *attr);
+```
+
+- `attr` 屏障属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化/反初始化 屏障属性*
+
+```c++
+#include <pthread.h>
+int pthread_barrierattr_getpshared(const pthread_barrierattr_t *restrict attr, int *restrict pshared);
+int pthread_barrierattr_setpshared(pthread_barrierattr_t *attr, int pshared);
+```
+
+- `attr` 屏障属性
+
+- `pshared` 进程共享属性
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*获取/设置 屏障属性*
 
 
 
@@ -438,9 +541,9 @@ int getc_unlocked(FILE *fp);
 
   成功：下一个字符
 
-  已到达稳健尾或出错：EOF
+  已到达文件尾或出错：EOF
 
-*读一个字符*
+*读一个字符（不加锁，不建议使用）*
 
 ```c++
 #include <stdio.h>
@@ -449,9 +552,16 @@ int putc_unlocked(int c, FILE *fp);
 ```
 
 - `c` 字符
+
 - `fp` 文件描述符
 
-*写一个字符*
+- `返回值`
+
+  成功：c
+
+  失败：EOF
+
+*写一个字符（不加锁，不建议使用）*
 
 例：
 
@@ -616,7 +726,7 @@ void *pthread_getspecific(pthread_key_t key);
 
   失败：NULL
 
-*返回与键关联的线程私有数据*、
+*返回与键关联的线程私有数据*
 
 ```c++
 #include <pthread.h>
@@ -629,13 +739,11 @@ int pthread_setspecific(pthread_key_t key, const void *value);
 
 - `返回值`
 
-- `返回值`
-
   成功：0
 
   失败：错误码
 
-*设置键与关联的线程私有数据*、
+*设置键与关联的线程私有数据*
 
 例：
 
@@ -721,7 +829,7 @@ int pthread_setcancelstate(int state, int *oldstate);
 void pthread_testcancel(void);
 ```
 
-*添加取消点*
+*添加自定义取消点*
 
 ```c++
 #include <pthread.h>
@@ -753,7 +861,13 @@ int pthread_setcanceltype(int type, int *oldtype);
 int pthread_sigmask(int how, const sigset_t *restrict set, sigset_t *restrict oset);
 ```
 
-- `how` 
+- `how` 动作
+
+  SIG_BLOCK：把信号添加到线程信号屏蔽字中
+
+  SIG_SETMASK：用信号集替换线程的信号屏蔽字
+
+  SIG_UNBLOCK：从线程信号屏蔽字中移除信号集
 
 - `set` 新信号集
 
@@ -870,6 +984,8 @@ main(void)
 ```
 
 *同步信号处理*
+
+
 
 ## 12.9 线程和fork
 

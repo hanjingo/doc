@@ -4,7 +4,11 @@
 
 
 
-## 信号概念
+## 10.1 引言
+
+
+
+## 10.2 信号概念
 
 每个信号名字都以`SIG`开头，定义在内核头文件`<signal.h>`中，用户级头文件若要使用这些信号，需要包含以下头文件：
 
@@ -138,7 +142,7 @@
 
 
 
-## 函数signal
+## 10.3 函数signal
 
 ```c
 #include <signal.h>
@@ -183,13 +187,13 @@ sig_usr(int signo)
 
 
 
-## 不可靠的信号
+## 10.4 不可靠的信号
 
 4.2BSD对信号机制进行了更改，提供了被称为可靠信号的机制。然后，SVR3也修改了信号机制，提供了System V可靠信号机制。POSIX.1选择了BSD模型作为其标准化的基础。
 
 
 
-## 中断的系统调用
+## 10.5 中断的系统调用
 
 如果进程在执行一个低速系统调用而阻塞期间捕捉到一个信号，则该系统调用就被中断不再继续执行。
 
@@ -208,7 +212,7 @@ sig_usr(int signo)
 
 
 
-## 可重入函数
+## 10.6 可重入函数
 
 信号处理程序可以调用的可重入函数：
 
@@ -249,7 +253,7 @@ main(void)
 
 
 
-## SIGCLD语义
+## 10.7 SIGCLD语义
 
 例，不能正常工作的System V SIGCLD处理程序：
 
@@ -295,7 +299,7 @@ sig_cld(int signo)
 
 
 
-## 可靠信号术语和语义
+## 10.8 可靠信号术语和语义
 
 信号排队：多次递送该信号。
 
@@ -303,7 +307,7 @@ sig_cld(int signo)
 
 
 
-## 函数kill和raise
+## 10.9 函数kill和raise
 
 ```c
 #include <signal.h>
@@ -334,7 +338,7 @@ int raise(int signo);
 
 
 
-## 函数alarm和pause
+## 10.10 函数alarm和pause
 
 ```c
 #include <unistd.h>
@@ -353,7 +357,7 @@ int pause(void);
 
 - 返回值：-1，errno设置为EINTR
 
-使进程挂起直至捕捉到一个信号（阻塞）
+*使进程挂起直至捕捉到一个信号（阻塞）*
 
 例，sleep函数的实现：
 
@@ -391,14 +395,44 @@ sleep2(unsigned int seconds)
 #include <signal.h>
 int sigemptyset(sigset_t *set);
 int sigfillset(sigset_t *set);
-int sigfillset(sigset_t *set, int signo);
+int sigaddset(sigset_t *set, int signo);
 int sigdelset(sigset_t *set, int signo);
+```
+
+- `set` 信号集
+
+- `signo` 信号
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*sigemptyset：初始化信号集，清除其中所有信号*
+
+*sigfillset：初始化由set指向的信号集，使其包括所有信号*
+
+*sigaddset：添加信号*
+
+*sigdelset：删除信号*
+
+```c++
+#include <signal.h>
 int sigismember(const sigset_t *set, int signo);
 ```
 
 - `set` 信号集
 
-初始化信号集，清除其中所有信号
+- `signo` 信号
+
+- `返回值`
+
+  真：0
+
+  假：-1
+
+*判断信号是否是信号集中的成员*
 
 
 
@@ -475,7 +509,7 @@ int sigpending(sigset_t *set);
   - 成功：0
   - 失败：-1
 
-返回当前进程的阻塞且不可递送的信号集合
+*返回当前进程的阻塞且不可递送的信号集合*
 
 例，信号设置和sigprocmask实例：
 
@@ -542,7 +576,7 @@ int sigaction(int signo, const struct sigaction *restrict act, struct sigaction 
   - 成功：0
   - 失败：-1
 
-检查/修改指定信号相关联的处理动作。
+*检查/修改指定信号相关联的处理动作。*
 
 **注意：一旦对给定的信号设置了一个动作，那么在调用sigaction显式地改变它之前，该设置就一直有效。**
 

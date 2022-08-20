@@ -4,31 +4,39 @@
 
 
 
-## 线程概念
+## 11.1 引言
 
-- 通过为美中事件类型分配单独的处理线程，可以简化处理异步事件的代码；
+
+
+## 11.2 线程概念
+
+- 通过为每种事件类型分配单独的处理线程，可以简化处理异步事件的代码；
 - 多个进程必须使用操作系统提供的复杂机制才能实现内存和文件描述符的共享，而多个线程自动地可以访问相同的存储地址空间和文件描述符；
 - 对问题进行分解可以提高整个程序的吞吐量；
 - 交互的程序同样可以通过使用多线程来改善响应时间，多线程可以把程序中处理用户输入输出的部分与其他部分分开；
 
 
 
-## 线程标识
+## 11.3 线程标识
 
 进程ID在整个系统中是唯一的，线程ID只有在它所属进程上下文中才有意义；
-
-使用`pthread_equal`函数对两个线程ID进行比较：
 
 ```c
 #include <pthread.h>
 int pthread_equal(pthread_t tid1, pthread_t tid2);
 ```
 
-- 返回值
-  - 非0：相等
-  - 0：不相等
+- `tid1` 线程1
 
-使用`pthread_self`函数获得自身的线程ID：
+- `tid2` 线程2
+
+- 返回值
+  
+  非0：相等
+  
+  0：不相等
+
+*对两个线程ID进行比较*
 
 ```c
 #include <pthread.h>
@@ -38,11 +46,17 @@ pthread_t pthread_self(void);
 - 返回值
   - 调用线程的线程ID
 
+*获得自身的线程ID*
+
+![11_1](res/11_1.png)
+
+*工作队列实例*
 
 
-## 线程创建
 
-使用`pthread_create`函数创建一条线程：
+## 11.4 线程创建
+
+使用`pthread_create`函数：
 
 ```c
 #include <pthread.h>
@@ -52,11 +66,21 @@ int pthread_create(pthread_t *restrict tidp,
                    void *restrict arg);
 ```
 
+- `tidp` 指向线程标识符的指针
+  
+- `attr` 线程属性
+  
+- `start_rtn` 线程函数起始地址
+  
+- `arg` 线程函数参数
+  
 - 返回值
-  - 0：成功
-  - 错误码：失败
+  
+  成功：0
+  
+  失败：错误码
 
-注意：线程创建时并不能保证哪个线程会先运行；
+*创建一条线程（注意：线程创建时并不能保证哪个线程会先运行）*
 
 例，打印进程，新线程以及初始线程ID：
 
@@ -99,15 +123,13 @@ main(void)
 
 
 
-## 线程终止
+## 11.5 线程终止
 
 单个线程可以通过以下方式退出：
 
 - 线程可以简单地从启动例程中返回，返回值是线程的退出码；
 - 线程可以被同一进程中的其它线程取消；
 - 线程调用`pthread_exit`函数；
-
-调用`pthread_exit`函数退出线程：
 
 ```c
 #include <pthread.h>
@@ -116,16 +138,24 @@ void pthread_exit(void *rval_ptr);
 
 - `rval_ptr` 一个无类型指针，与传给启动例程的单个参数类似；
 
-调用`pthread_join`函数分离线程，恢复资源：
+*退出线程*
 
 ```c
 #include <pthread.h>
 int pthread_join(pthread_t thread, void **rval_ptr);
 ```
 
+- `thread` 线程标识符
+  
+- `rval_ptr` 指向线程返回值
+  
 - 返回值
-  - 0：成功
-  - 错误码：失败
+  
+  成功：0
+  
+  失败：错误码
+
+*以**阻塞**的方式等待线程结束*
 
 例，获取已终止的线程的退出码：
 
@@ -229,18 +259,20 @@ int main(void)
 }
 ```
 
-线程可以通过调用`pthread_cancel`函数来请求取消同一进程中的其它线程：
-
 ```c
 #include <pthread.h>
 int pthread_cancel(pthread_t tid);
 ```
 
+- `tid` 线程ID
+  
 - 返回值
-  - 0：成功
-  - 错误码：失败
+  
+  成功：0
+  
+  失败：错误码
 
-线程可以通过调用`thread_cleanup_xx`函数来指定退出时需要执行的操作：
+*发送终止信号，请求取消同一进程中的其它线程*
 
 ```c
 #include <pthread.h>
@@ -248,13 +280,11 @@ void pthread_cleanup_push(void(*rtn)(void *), void *arg);
 void pthread_cleanup_pop(int execute);
 ```
 
-当线程执行以下动作：
+- `rtn` 要执行的函数
+- `arg` 要执行的函数参数
+- `execute` （非0）执行参数
 
-- 调用pthread_exit时；
-- 响应取消请求时；
-- 用非零execute参数调用pthread_cleanup_pop时；
-
-清理函数rtn是由`pthread_cleanup_push`函数调度的，调用时只有一个参数arg；
+*指定/删除线程退出时需要执行的操作*
 
 例，使用线程清理处理程序：
 
@@ -339,19 +369,23 @@ main(void)
 int pthread_detach(pthread_t tid);
 ```
 
+- `tid` 线程ID
+
 - 返回值
-  - 0：成功
-  - 错误码：失败
+  
+  成功：0
+  
+  失败：错误码
+
+*分离线程*
 
 
 
-## 线程同步
+## 11.6 线程同步
 
-### 互斥量
+### 11.6.1 互斥量
 
-互斥量（mutex）从本质上说是一把锁，在访问共享资源前对互斥量进行加锁，在访问完成后解锁；
-
-线程通过`pthread_mutex_init`进行初始化，通过`pthread_mutex_destroy`释放内存：
+互斥量（mutex）从本质上说是一把锁，在访问共享资源前对互斥量进行加锁，在访问完成后解锁。
 
 ```c
 #include <pthread.h>
@@ -360,11 +394,17 @@ int pthread_mutex_init(pthread_mutex_t *restrict mutex,
 int pthread_mutex_destroy(pthread_mutex_t *mutex);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `mutex` 互斥量
+  
+- `attr` 互斥量属性
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
 
-线程通过`pthread_mutex_lock`对互斥量进行加锁，通过`pthread_mutex_unlock`对互斥量进行解锁，通过`pthread_mutex_trylock`尝试对互斥量进行加锁：
+*创建/销毁互斥锁*
 
 ```c
 #include <pthread.h>
@@ -373,9 +413,19 @@ int pthread_mutex_trylock(pthread_mutex_t *mutex);
 int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `mutex` 互斥量
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*pthread_mutex_lock：对互斥量进行加锁*
+
+*pthread_mutex_unlock：对互斥量进行解锁*
+
+*pthread_mutex_trylock：尝试对互斥量进行加锁*
 
 例，使用互斥量保护数据结构：
 
@@ -522,9 +572,7 @@ foo_rele(struct foo *fp)
 
 **注意：如果锁的粒度太粗，就会出现很多线程阻塞等待相同的锁，这可能并不能改善并发性；如果锁的粒度太细，那么过多的锁开销会使系统性能收到影响，而且代码变得复杂；**
 
-### 函数pthread_mutex_timelock
-
-线程使用`pthread_mutex_timelock`互斥量绑定线程阻塞时间，在达到超时时间时不会对互斥量进行加锁，而是返回错误码`ETIMEDOUT`；
+### 11.6.3 函数pthread_mutex_timelock
 
 ```c
 #include <pthread.h>
@@ -533,10 +581,17 @@ int pthread_mutex_timedlock(pthread_mutex_t *restrict mutex,
                             const struct timespec *restrict tsptr);
 ```
 
-- 返回值
+- `mutex` 互斥量
 
-  - 0：成功
-  - 错误码：失败
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+  
+  失败：错误码
+
+*绑定线程阻塞时间（在达到超时时间时不会对互斥量进行加锁，而是返回错误码`ETIMEDOUT`）*
 
 例，用`pthread_mutex_timedlock`避免永久阻塞：
 
@@ -573,7 +628,7 @@ main(void)
 }
 ```
 
-### 读写锁
+### 11.6.4 读写锁
 
 读写锁（共享互斥锁，shared-exclusive lock）非常适合于读的次数远大于写的情况，读写锁的3种状态：
 
@@ -589,8 +644,6 @@ main(void)
 
 - 不加锁
 
-读写锁通过调用函数`pthread_rwlock_init`进行初始化，通过调用函数`pthread_rwlock_destroy`做清理工作：
-
 ```c
 #include <pthread.h>
 int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock,
@@ -598,9 +651,17 @@ int pthread_rwlock_init(pthread_rwlock_t *restrict rwlock,
 int pthread_rwlock_destroy(pthread_rwlock_t *rwlock);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `rwlock` 读写锁
+  
+- `attr` 读写锁属性
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*创建/销毁读写锁*
 
 通过调用函数`pthread_rwlock_rdlock`在读模式下锁定读写锁，通过调用函数`pthread_rwlock_wrlock`在写模式下锁定读写锁，通过调用`pthread_rwlock_unlock`进行解锁：
 
@@ -611,9 +672,15 @@ int pthread_rwlock_wrlock(pthread_rwlock_t *rwlock);
 int pthread_rwlock_unlock(pthread_rwlock_t *rwlock);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `rwlock` 读写锁
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*加读锁/加写锁/解读写锁*
 
 ```c
 #include <pthread.h>
@@ -621,9 +688,15 @@ int pthread_rwlock_tryrdlock(pthread_rwlock_t *rwlock);
 int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `rwlock` 读写锁
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*尝试加读锁/尝试加写锁*
 
 例，使用读写锁：
 
@@ -719,7 +792,7 @@ job_find(struct queue *qp, pthrad_t id)
 }
 ```
 
-### 带有超时的读写锁
+### 11.6.5 带有超时的读写锁
 
 Single UNIX Specification提供了带有超时的读写锁加锁函数，使应用程序在获取读写锁时避免陷入永久阻塞状态：
 
@@ -732,13 +805,21 @@ int pthread_rwlock_timedwrlock(pthread_rwlock_t *restrict rwlock,
                                const struct timespec *restrict tsptr);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `rwlock` 读写锁
 
-### 条件变量
+- `tsptr` 超时时间
 
-由pthread_cond_t数据类型表示的条件变量可以用两种方式进行初始化，可以把常量PTHREAD_COND_INITIALIZER赋给静态分配的条件变量，但是如果条件变量是动态分配的，则需要使用`pthread_cond_init`函数对它进行初始化；
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*以超时模式加读锁/以超时模式加写锁*
+
+### 11.6.6 条件变量
+
+由`pthread_cond_t`数据类型表示的条件变量可以用两种方式进行初始化，可以把常量`PTHREAD_COND_INITIALIZER`赋给静态分配的条件变量，但是如果条件变量是动态分配的，则需要使用`pthread_cond_init`函数对它进行初始化。
 
 在释放条件变量底层的内存空间之前，可以使用`pthread_cond_destroy`函数对条件变量进行反初始化（deinitialize）：
 
@@ -749,9 +830,17 @@ int pthread_cond_init(pthread_cond_t *restrict cond,
 int pthread_cond_destroy(pthread_cond_t *cond);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `cond` 条件变量
+  
+- `attr` 条件变量属性
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*初始化/反初始化条件变量*
 
 ```c
 #include <pthread.h>
@@ -762,11 +851,19 @@ int pthread_cond_timewait(pthread_cond_t *restrict cond,
                           const struct timespec *restrict tsptr);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `cond` 条件变量
 
-有两个函数可以用于通知线程条件已经满足，`pthread_cond_signal`函数至少能唤醒一个等待该条件的线程，而`pthread_cond_braodcast`函数则能唤醒等待该条件的所有线程：
+- `mutex` 互斥量
+
+- `tsptr` 超时时间
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*等待/超时等待 条件成立（等待唤醒）*
 
 ```c
 #include <pthread.h>
@@ -774,9 +871,15 @@ int pthread_cond_signal(pthread_cond_t *cond);
 int pthread_cond_broadcast(pthread_cond_t *cond);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `cond` 条件变量
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*唤醒一个/所有 等待条件的线程*
 
 例，使用条件变量和互斥量对线程进行同步：
 
@@ -818,7 +921,7 @@ enqueue_msg(struct msg *mp)
 }
 ```
 
-### 自旋锁
+### 11.6.7 自旋锁
 
 自旋锁在获取锁之前一直处于自旋（忙等）阻塞状态，此时CPU不能做其他的事情；自旋锁适用于以下特定情况：锁被持有的时间短，而且线程并不希望在重新调度上花费太多的成本；
 
@@ -826,17 +929,27 @@ enqueue_msg(struct msg *mp)
 
 运行在分时调度类中的用户层线程在2种情况下可以背取消调度：当它们的时间片到期时，或者具有更高调度优先级的线程就绪变成可运行时；在这些情况下，如果线程拥有自旋锁，他就会进入休眠状态，阻塞在锁上的其它线程自旋的时间可能会比预期的时间更长；
 
-调用`pthread_spin_init`函数对自旋锁进行初始化，调用`pthread_spin_destroy`函数进行自旋锁的反初始化：
-
 ```c
 #include <pthread.h>
 int pthread_spin_init(pthread_spinlock_t *lock, int pshared);
 int pthread_spin_destroy(pthread_spinlock_t *lock);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `lock` 自旋锁
+
+- `pshared` 进程共享属性
+
+  PTHREAD_PROCESS_SHARED：自旋锁能被可以访问锁底层内存的线程所获取（即使属于不同进程）；
+
+  PTHREAD_PROCESS_PRIVATE：自旋锁只能被初始化该锁的进程内部的线程所访问。
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
+*初始化/反初始化 自旋锁*
 
 调用`pthred_spin_lock`或`pthread_spin_trylock`（无法自旋）对自旋锁进行加锁，调用`pthread_spin_unlock`解锁：
 
@@ -847,17 +960,21 @@ int pthread_spin_trylock(pthread_spinlock_t *lock);
 int pthread_spin_unlock(pthread_spinlock_t *lock);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `lock` 自旋锁
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
+
+*对自旋锁进行加/解锁*
 
 **注意：不要调用在持有自旋锁情况下可能会进入休眠状态的函数，如果调用了这些函数，会浪费CPU资源，因为其它线程需要获取自旋锁需要等待的时间就延长了。**
 
-### 屏障
+### 11.6.8 屏障
 
 屏障（barrier）是用户协调多个线程并行工作的同步机制，屏障允许每个线程等待，直到所有的合作线程都到达某一点，然后从该点继续执行；
-
-调用`pthread_barrier_init`函数对屏障进行初始化，调用`thread_barrier_destroy`函数反初始化：
 
 ```c
 #include <pthread.h>
@@ -867,22 +984,34 @@ int pthread_barrier_init(pthread_barrier_t *restrict barrier,
 int pthread_barrier_destroy(pthread_barrier_t *barrier);
 ```
 
-- 返回值
-  - 0：成功
-  - 错误码：失败
+- `barrier` 屏障
+  
+- `attr` 屏障对象属性
+  
+- `count` 线程数目
+  
+- `返回值`
+  
+  成功：0
+  
+  失败：错误码
 
-初始化屏障时，可以使用count参数指定，在允许所有线程继续运行之前，必须到达屏障的线程数目；
-
-调用`pthread_barrier_wait`函数来表明线程已完成工作：
+*初始化/反初始化 屏障*
 
 ```c
 #include <pthread.h>
 int pthread_barrier_wait(pthread_barrier_t *barrier);
 ```
 
-- 返回值
-  - 0或PTHREAD_BARRIER_SERIAL_THREAD：成功
-  - 错误码：失败
+- `barrier` 屏障
+
+- `返回值`
+  
+  成功：0或`PTHREAD_BARRIER_SERIAL_THREAD
+  
+  失败：错误码
+
+*等待唤醒*
 
 对于一个任意线程，`pthread_barrier_wait`函数返回了`PTHREAD_BARRIER_SERIAL_THREAD`；剩下的线程看到的返回值是0，这使得一个线程可以作为主线程，它可以工作在其它所有线程已完成的工作结果上；
 

@@ -20,8 +20,9 @@ int socketpair(int domain, int type, int protocol, int sockfd[2]);
 - `protocol` 协议
 - `sockfd` 套接字描述符
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  成功：0
+  
+  失败：-1
 
 *创建一对无命名的，相互连接的UNIX域套接字*
 

@@ -72,8 +72,9 @@ int shutdown(int sockfd, int how);
 
 - `返回值`
 
-  - 成功：0
-  - 失败：-1
+  成功：0
+  
+  失败：-1
 
 *关闭一个套接字的I/O*
 
@@ -95,10 +96,10 @@ int shutdown(int sockfd, int how);
 
 ```c++
 #include <arpa/inet.h>
-uint32_t htonl(uint32_t hostint32); // 主机字节序转网络字节序
-uint16_t htons(uint16_t hostint16); // 主机字节序转网络字节序
-uint32_t ntohl(uint32_t netint32);  // 网络字节序转主机字节序
-uint16_t ntohs(uint16_t netint16);  // 网络字节序转主机字节序
+uint32_t htonl(uint32_t hostint32); // 主机字节序转网络字节序；返回值：以网络字节序表示的32位整型数
+uint16_t htons(uint16_t hostint16); // 主机字节序转网络字节序；返回值：以网络字节序表示的16位整型数
+uint32_t ntohl(uint32_t netint32);  // 网络字节序转主机字节序；返回值：以主机字节序表示的32位整型数
+uint16_t ntohs(uint16_t netint16);  // 网络字节序转主机字节序；返回值：以主机字节序表示的16位整型数
 ```
 
 *字节序转换函数*
@@ -157,7 +158,10 @@ void sethostent(int stayopen);
 void endhostent(void)
 ```
 
-- `stayopen` 
+- `stayopen` 输入参数
+
+  - 非0：使用TCP/IP
+  - 0：使用UDP
 
 - `返回值`
 
@@ -176,11 +180,13 @@ void setnetent(int stayopen);
 void endnetent(void);
 ```
 
-- `net`
+- `net` 网络号
 
 - `type` 地址类型（地址族常量）
 
-- `name` 
+- `name` 网络名
+
+- `stayopen` 
 
 - `返回值`
 
@@ -203,13 +209,19 @@ void endprotoent(void);
 
 - `proto` 协议号
 
+- `stayopen` 是否保持打开
+
+  1：保持打开
+
+  0：自动关闭
+
 - `返回值`
 
   成功：protoent指针
 
   失败：NULL
 
-*映射协议名字和协议号*
+*映射/打开 协议名字和协议号文件*
 
 ```c++
 #include <netdb.h>
@@ -225,6 +237,12 @@ void endservent(void);
 - `proto` 协议号
 
 - `port` 端口号
+
+- `stayopen` 是否保持打开
+
+  1：持续打开
+
+  0：自动关闭
 
 - `返回值`
 
@@ -322,7 +340,13 @@ int getnameinfo(const struct sockaddr *restrict addr,
 
 - `flags` 标志
 
-  ![t16_6](res/t16_6.png)
+  | 标志           | 描述                                           |
+  | -------------- | ---------------------------------------------- |
+  | NI_DGRAM       | 服务基于数据报而非基于流                       |
+  | NI_NAMEREQD    | 如果找不到主机名字，将其作为一个错误对待       |
+  | NI_NOFQDN      | 对于本地主机，仅返回完全限定域名的节点名字部分 |
+  | NI_NUMERICHOST | 以数字形式而非名字返回主机地址                 |
+  | NI_NUMERICSERV | 以数字形式而非名字返回服务地址（即端口号）     |
 
 - `返回值`
 
@@ -671,9 +695,12 @@ ssize_t send(int sockfd, const void *buf, size_t nbytes, int flags);
 
 - `flags` 标志
 
-  ![t16_7](res/t16_7.png)
-
-  *send套接字调用标志*
+  | 标志          | 描述                                   | POSIX.1 | FreeBSD 5.2.1 | Linux 2.4.22 | Mac OS X 10.3 | Solaris 9 |
+  | ------------- | -------------------------------------- | ------- | ------------- | ------------ | ------------- | --------- |
+  | MSG_DONTROUTE | 勿将数据路由出本地网络                 |         | *             | *            | *             | *         |
+  | MSG_DONTWAIT  | 允许非阻塞操作（等价于使用O_NONBLOCK） |         | *             | *            | *             |           |
+  | MSG_EOR       | 如果协议支持，此为记录结束             | *       | *             | *            | *             |           |
+  | MSG_OOB       | 如果协议支持，发送带外数据             | *       | *             | *            | *             | *         |
 
 - `返回值`
 
@@ -754,7 +781,12 @@ ssize_t recv(int sockfd, void *buf, size_t nbytes, int flags);
 
 - `flags` 标志
 
-  ![t16_8](res/t16_8.png)
+  | 标志        | 描述                                       | POSIX.1 | FreeBSD 5.2.1 | Linux 2.4.22 | Mac OS X 10.3 | Solaris 9 |
+  | ----------- | ------------------------------------------ | ------- | ------------- | ------------ | ------------- | --------- |
+  | MSG_OOB     | 如果协议支持，接收带外数据                 | *       | *             | *            | *             | *         |
+  | MSG_PEEK    | 返回报文内容而不真正取走报文               | *       | *             | *            | *             | *         |
+  | MSG_TRUNC   | 即使报文被截断，要求返回的是报文的实际长度 |         |               | *            |               |           |
+  | MSG_WAITALL | 等待直到所有的数据可用（仅SOCK_STREAM）    | *       | *             | *            | *             | *         |
 
 - `返回值`
 
@@ -805,7 +837,13 @@ ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);
 
 - `flags` 标志
 
-  ![t16_9](res/t16_9.png)
+  | 标志         | 描述                  | POSIX.1 | FreeBSD 5.2.1 | Linux 2.4.22 | Mac OS X 10.3 | Solaris 9 |
+  | ------------ | --------------------- | ------- | ------------- | ------------ | ------------- | --------- |
+  | MSG_CTRUNC   | 控制数据被截断        | *       | *             | *            | *             | *         |
+  | MSG_DONTWAIT | recvmsg处于非阻塞模式 |         |               | *            |               | *         |
+  | MSG_EOR      | 接收到记录结束符      | *       | *             | *            | *             | *         |
+  | MSG_OOB      | 接收到带外数据        | *       | *             | *            | *             | *         |
+  | MSG_TRUNC    | 一般数据被截断        | *       | *             | *            | *             | *         |
 
 - `返回值`
 
@@ -1286,7 +1324,37 @@ int getsockopt(int sockfd, int level, int option void *restrict val, socklen_t *
 例：
 
 ```c++
-TODO
+#include "apue.h"
+#include <errno.h>
+#include <sys/socket.h>
+
+int 
+initserver(int type, const struct sockaddr *addr, socklen_t alen, int qlen)
+{
+    int fd, err;
+    int reuse = 1;
+    if ((fd = socket(addr->sa_family, type, 0)) < 0)
+        return(-1);
+    if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(int)) < 0) {
+        err = errno;
+        goto errout;
+    }
+    if (bind(fd, addr, alen) < 0) {
+        err = errno;
+        goto errout;
+    }
+    if (type == SOCK_STREAM || type == SOCK_SEQPACKET) {
+        if (listen(fd, qlen) < 0) {
+            err = errno;
+            goto errout;
+        }
+    }
+    return (fd);
+errout:
+    close(fd);
+    errno = err;
+    return(-1);
+}
 ```
 
 *采用地址复用初始化套接字端点*

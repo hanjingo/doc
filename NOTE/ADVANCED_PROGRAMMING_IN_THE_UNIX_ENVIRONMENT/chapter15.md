@@ -202,8 +202,8 @@ WAIT_CHILD(void)
 
 ```c++
 #include <stdio.h>
-FILE *popen(const char *cmdstring, const char *type); // 创建管道，返回标准I/O文件指针
-int pclose(FILE *fp); // 关闭标准I/O流，返回cmdstring的终止状态
+FILE *popen(const char *cmdstring, const char *type); // 创建管道；成功：返回标准I/O文件指针，失败：NULL
+int pclose(FILE *fp); // 关闭标准I/O流；成功：返回cmdstring的终止状态，失败：-1
 ```
 
 - `cmdstring` 命令行
@@ -554,8 +554,16 @@ int mkfifoat(int fd, const char *path, mode_t mode);
 ```
 
 - `path` 绝对/相对路径
+
 - `mode` 操作模式
+
 - `fd` 文件套接字
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
 
 *创建FIFO*
 
@@ -671,7 +679,7 @@ struct msqid_ds {
 int msgget(key_t key, int flag);
 ```
 
-- `key` 
+- `key` 键
 - `flag` 标志
 - `返回值`
   - 成功：消息队列ID（非负）
@@ -694,9 +702,15 @@ int msgctl(int msqid, int cmd, struct msqid_ds *buf);
   | IPC_SET  | 将字段msg_perm.uid, msg_perm.gid, msg_perm.mod和msg_qbytes从buf指向的结构复制到与这个队列相关的msqid_ds结构中。 |
   | IPC_RMID | 从系统中删除该消息队列以及仍在该队列中的所有数据，并立即生效。 |
 
-- `buf`
+- `buf` 缓冲区
 
-*对队列执行多种操作*
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+*对队列执行操作*
 
 ```c++
 #include <sys/msg.h>
@@ -885,7 +899,7 @@ struct shmid_ds {
 }
 ```
 
-![15_30](res/15_30)
+![15_30](res/15_30.png)
 
 *影响共享存储的系统限制*
 
@@ -898,8 +912,10 @@ int shmget(key_t key, size_t size, int flag);
 - `size` 共享存储段长度（单位：字节）
 - `flag` 标志
 - `返回值`
-  - 成功：共享存储ID
-  - 失败：-1
+  
+  成功：共享存储ID
+  
+  失败：-1
 
 *获得一个共享存储标识符*
 
@@ -957,8 +973,10 @@ int shmdt(const void *addr);
 
 - `addr` 地址空间
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *分离地址空间上的共享存储段*
 
@@ -1107,8 +1125,10 @@ int sem_close(sem_t *sem);
 
 - `sem` 信号量
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *释放信号量的资源*
 
@@ -1119,8 +1139,10 @@ int sem_unlink(const char *name);
 
 - `name` 信号量名字
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *销毁一个命名信号量*
 
@@ -1132,8 +1154,10 @@ int sem_trywait(sem_t *sem); // 非阻塞式
 
 - `sem` 信号量
 - `返回值` 
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *对信号量进行 -1 操作*
 
@@ -1147,8 +1171,10 @@ int sem_timedwait(sem_t *restrict sem,
 - `sem` 信号量
 - `tsptr` 绝对时间
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *以超时方式对信号量进行 -1 操作*
 
@@ -1159,8 +1185,10 @@ int sem_post(sem_t *sem);
 
 - `sem` 信号量
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *对信号量进行 +1 操作（如果进程在sem_wait时被阻塞，将唤醒进程，并先执行 +1 ，后执行 -1 操作）*
 
@@ -1173,8 +1201,10 @@ int sem_init(sem_t *sem, int pshared, unsigned int value);
 - `pshared` 是否在多个进程中使用信号量（是：非0）
 - `value` 信号量的初始值
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *创建一个未命名的信号量并初始化*
 
@@ -1185,8 +1215,10 @@ int sem_destroy(sem_t *sem);
 
 - `sem` 信号量
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *丢弃未命名信号量*
 
@@ -1198,12 +1230,14 @@ int sem_getvalue(sem_t *restrict sem, int *restrict valp);
 - `sem` 信号量
 - `valp` 信号量值指针
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 *检索信号量值*
 
-![15_34](15_34.png)
+![15_34](res/15_34.png)
 
 *信号量实现的时间比较*
 

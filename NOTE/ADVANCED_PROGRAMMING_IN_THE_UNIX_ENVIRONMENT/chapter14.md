@@ -322,9 +322,9 @@ int putpmsg(int fields, const struct strbuf *ctlptr,
 
 - `filedes` 描述符
 
-- `ctlptr`
+- `ctlptr` 控制指针
 
-- `dataptr`
+- `dataptr` 数据流
 
 - `band` 优先级波段
 
@@ -691,7 +691,11 @@ ssize_t writev(int filedes, const struct iovec *iov, int iovcnt);
 
 - `返回值`
 
-*散布读/聚集写*
+  成功：已读/写的字节数
+
+  失败：-1
+
+*散布读/聚集写（读/写多个非连续缓冲区）*
 
 ![14_10](res/14_10.png)
 
