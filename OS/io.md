@@ -222,11 +222,7 @@ int create(const char* path, mode_t mode);
   - 成功：只写文件描述符
   - 失败：-1
 
-创建一个新文件，等效于：
-
-```c
-open(path, O_RDWR|O_CREAT|O_TRUNC, mode);
-```
+创建一个新文件，等效于：`open(path, O_RDWR|O_CREAT|O_TRUNC, mode);`
 
 ### close
 

@@ -30,7 +30,7 @@ struct sockaddr_in {
     sa_family_t     sin_family; // 地址族; 任何无符号整数类型
     in_port_t       sin_port;   // TCP或UDP端口; 至少16位的无符号整数类型 
     struct in_addr  sin_addr;
-    char			sin_zero[8];
+    char		   sin_zero[8];
 };
 ```
 
@@ -99,12 +99,7 @@ struct sockaddr_storage { // 存储套接字地址结构
 
 ## 值结果参数
 
-从进程到内核传递套接字地址结构的函数:
-
-```c
-struct sockaddr_in serv;
-connect (sockfd, (SA *) &serv, sizeof(serv));
-```
+从进程到内核传递套接字地址结构的函数：
 
 - `bind`
 - `connect`
@@ -112,15 +107,7 @@ connect (sockfd, (SA *) &serv, sizeof(serv));
 
 ![3-7](res/3-7.png)
 
-从内核到进程传递套接字地址结构的函数:
-
-```c
-struct sockaddr_un cli;
-socklen_t len;
-
-len = sizeof(cli);
-getpeername(unixfd, (SA *) &cli, &len);
-```
+从内核到进程传递套接字地址结构的函数：
 
 - `accept`
 - `recvfrom`

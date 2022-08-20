@@ -149,7 +149,26 @@ main(void)
 例2：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+
+char buf1[] = "abcdefghij";
+char buf2[] = "ABCDEFGHIJ";
+
+int 
+main(void)
+{
+    int fd;
+    if ((fd = creat("file.hole", FILE_MODE)) < 0)
+        err_sys("creat error");
+    if (write(fd, buf1, 10) != 10)
+        err_sys("buf1 write error");
+    if (lseek(fd, 16384, SEEK_SET) == -1)
+        err_sys("lseek error");
+    if (write(fd, buf2, 10) != 10)
+        err_sys("buf2 write error");
+    exit(0);
+}
 ```
 
 *创建一个具有空洞的文件*
@@ -204,7 +223,23 @@ ssize_t write(int fd, const void* buf, size_t nbytes);
 ## 3.9 I/O的效率
 
 ```c++
-TODO
+#include "apue.h"
+
+#define BUFFSIZE 4096
+
+int 
+main(void)
+{
+    int n;
+    char buf[BUFFSIZE];
+    
+    while ((n = read(STDIN_FILENO, buf, BUFFSIZE)) > 0)
+        if (write(STDOUT_FILENO, buf, n) != n)
+            err_sys("write error");
+    if (n < 0)
+        err_sys("read error");
+    exit(0);
+}
 ```
 
 *将标注输入复制到标准输出*
@@ -379,7 +414,44 @@ set_fl(STDOUT_FILENO, O_SYNC);
 例1：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+
+int 
+main(int argc, char *argv[])
+{
+    int val;
+    if (argc != 2)
+        err_quit("usage: a.out <descriptor#>");
+    if ((val = fcntl(atoi(argv[1]), F_GETFL, 0) < 0)
+        err_sys("fcntl error for fd %d", atoi(argv[1]));
+    switch (val & O_ACCMODE) {
+    	case O_RDONLY:
+        	printf("read only");
+        break;
+        case O_WRONLY:
+        	printf("write only");
+        break;
+        case O_RDWR:
+        	printf("read write");
+        break;
+        default:
+        	err_dump("unknown access mode");
+    }
+    if (val & O_APPEND)
+        printf(", append");
+    if (val & O_NONBLOCK)
+        printf(", nonblocking");
+    if (val & O_SYNC)
+        printf(", synchronous writes");
+
+#if !defined(_POSIX_C_SOURCE) && defined(O_FSYNC) && (O_FSYNC != O_SYNC)
+    if (val & O_FSYNC)
+        printf(", synchronous writes");
+#endif
+        putchar('\n');
+        exit(0);
+}
 ```
 
 *对于指定的描述符打印文件标志*
@@ -387,7 +459,19 @@ TODO
 例2：
 
 ```c++
-TODO
+#include "apue.h"
+#include <fcntl.h>
+
+void 
+set_fl(int fd, int flags)
+{
+    int val;
+    if ((val = fcntl(fd, F_GETFL, 0)) < 0)
+        err_sys("fcntl F_GETFL error");
+    val != flags;
+    if (fcntl(fd, F_SETFL, val) < 0)
+        err_sys("fcntl F_SETFL error");
+}
 ```
 
 *对一个文件描述符开启一个或多个文件状态标志*

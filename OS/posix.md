@@ -238,9 +238,8 @@ TODO
 
 *关闭目录流*
 
-### opendir/fdopendir
+### fdopendir
 
-`DIR *opendir(const char *pathname)`
 `DIR *fdopendir(int fd)`
 
 - `pathname` 路径名
@@ -253,7 +252,23 @@ TODO
 
   失败：NULL；
 
-*把文件/文件描述符转换成目录。*
+*把文件描述符转换成目录。*
+
+### opendir
+
+`DIR *opendir(const char *pathname)`
+
+- `pathname` 路径名
+
+- `fd` 文件描述符
+
+- `返回值`
+
+  成功：目录指针；
+
+  失败：NULL；
+
+*把文件转换成目录。*
 
 ### readdir
 
@@ -428,12 +443,9 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 *搜索组文件中的条目*
 
-### getgrgid/getgrnam
+### getgrnam
 
-`struct group *getgrgid(gid_t gid)`
 `struct group *getgrnam(const char *name)`
-
-- `gid` 组ID
 
 - `name` 组名
 
@@ -443,7 +455,21 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
   失败：NULL
 
-*根据组名/数值组ID查看组信息*
+*根据组名查看组信息*
+
+### getgrgid
+
+`struct group *getgrgid(gid_t gid)`
+
+- `gid` 组ID
+
+- `返回值`
+
+  成功：group指针
+
+  失败：NULL
+
+*根据数值组ID查看组信息*
 
 ### setgrent
 
