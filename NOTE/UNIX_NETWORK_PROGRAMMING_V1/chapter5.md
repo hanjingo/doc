@@ -169,7 +169,7 @@ void sig_chld(int signo)
 {
     pid_t pid;
     int stat;
-    pid = wai(&stat);
+    pid = wait(&stat);
     printf("child %d terminated\n", pid);
     return;
 }
@@ -188,7 +188,13 @@ pid_t wait(int *statloc);
 
 - `statloc`用于返回子进程的终止状态（一个整数）
 
-处理已终止的子进程，并返回其进程ID；如果没有已终止的子进程，但是有一个或多个子进程仍在执行，那么阻塞到现有子进程第一个终止为止。
+- `返回值`
+
+  成功：进程ID
+
+  失败：0或-1
+
+*处理已终止的子进程，并返回其进程ID；如果没有已终止的子进程，但是有一个或多个子进程仍在执行，那么阻塞到现有子进程第一个终止为止。（阻塞）*
 
 ```c++
 #include <sys/wait.h>
@@ -198,6 +204,11 @@ pid_t waitpid(pid_t pid, int *statloc, int options);
 - `pid` 想要等待的进程ID（-1表示等待第一个终止的子进程）
 - `statloc`用于返回子进程的终止状态（一个整数）
 - `options` 附加选项
+- `返回值`
+
+  成功：进程ID
+
+  失败：0或-1
 
 处理已终止的子进程，并返回其进程ID。
 
@@ -290,7 +301,7 @@ int main(int argc, char **argv)
 #include "unp.h"
 void str_cli(FILE *fp, int sockfd)
 {
-    char sendline[MAXLINE], recvl;ine[MAXLINE];
+    char sendline[MAXLINE], recvline[MAXLINE];
     while (Fgets(sendline, MAXLINE, fp) != NULL) {
         Writen(sockfd, sendline, 1);
         sleep(1);

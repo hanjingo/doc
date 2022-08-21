@@ -1,4 +1,4 @@
-# Linux网络编程
+# 网络I/O
 
 [TOC]
 
@@ -6,27 +6,35 @@
 
 ## I/O模型
 
-Unix下可用的5种I/O模型：
+### 阻塞式I/O
 
-- `阻塞式I/O（blocking I/O）`在I/O执行的两个阶段都被阻塞了
+`阻塞式I/O（blocking I/O）`在I/O执行的两个阶段都被阻塞了
 
-    ![linux_sock1](res/linux_sock1.png)
+![linux_sock1](res/linux_sock1.png)
 
-- `非阻塞式I/O（nonblocking I/O）`用户进程不断的主动询问kernel数据是否准备好
+### 非阻塞式I/O
 
-    ![linux_sock2](res/linux_sock2.png)
+`非阻塞式I/O（nonblocking I/O）`用户进程不断的主动询问kernel数据是否准备好
 
-- `I/O复用（I/O multiplexing，select和poll）`内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。
+![linux_sock2](res/linux_sock2.png)
 
-    ![linux_sock3](res/linux_sock3.png)
+### I/O复用
 
-- `信号驱动式I/O（signal driven I/O，SIGIO）`信号驱动用户进程读写，不需要用户不断轮询kernel。
+`I/O复用（I/O multiplexing，select和poll）`内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程。
 
-    ![linux_sock4](res/linux_sock4.png)
+![linux_sock3](res/linux_sock3.png)
 
-- `异步I/O（asynchronous I/O）`
+### 信号驱动式I/O
 
-    ![linux_sock5](res/linux_sock5.png)
+`信号驱动式I/O（signal driven I/O，SIGIO）`信号驱动用户进程读写，不需要用户不断轮询kernel。
+
+![linux_sock4](res/linux_sock4.png)
+
+### 异步I/O
+
+`异步I/O（asynchronous I/O）`
+
+![linux_sock5](res/linux_sock5.png)
 
 前4种模型的主要区别在于第一阶段，因为他们的第二阶段是一样的：在数据从内核复制到调用者的缓冲区期间，进程阻塞于recvfrom调用。相反，异步`I/O`模型在这两个阶段都要处理，从而不同于其他4种模型。
 
@@ -37,27 +45,41 @@ Unix下可用的5种I/O模型：
 
 ![linux_sock6](res/linux_sock6.png)
 
+### I/O模型对比
+
+TODO
+
+---
 
 
-## select
+
+## 多路复用
+
+### select
 
 ```c
 #include <sys/select.h>
 int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout)
 ```
 
-- maxfdp1：指定待测试的描述符最大值+1
-- readset：让内核测试读描述符
-- writeset：让内核测试写描述符
-- exceptset：让内核测试异常描述符
-- timeout：超时时间（精确度10ms左右）
-  - 空：永远等待下去
-  - 非空：等待一段固定时间
-  - 0：根本不等待
-- return
-  - 描述符数量：有就绪描述符
-  - 0：超时
-  - -1：出错
+- `maxfdp1`指定待测试的描述符最大值+1
+- `readset` 让内核测试读描述符
+- `writeset`让内核测试写描述符
+- `exceptset`让内核测试异常描述符
+- `timeout`：超时时间（精确度10ms左右）
+  
+  `空` 永远等待下去
+  
+  `非空`等待一段固定时间
+  
+  `0` 根本不等待
+- `返回值`
+  
+  描述符数量：有就绪描述符
+  
+  0：超时
+  
+  -1：出错
 
 允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。
 
@@ -75,7 +97,7 @@ void FD_CLR(int fd, fd_set *fdset);
 int	 FD_ISSET(int fd, fd_set *fdset);
 ```
 
-### 描述符就绪条件
+#### 描述符就绪条件
 
 套接字准备好读的条件（满足其一即可）：
 
@@ -106,7 +128,7 @@ select返回某个套接字就绪的条件：
 | 待处理错误                                                 | Y           | Y      |        |
 | TCP带外数据                                                |             |        | Y      |
 
-### select的最大描述符数
+#### select的最大描述符数
 
 select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 
@@ -116,11 +138,11 @@ select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 #endif
 ```
 
-### 运行机制
+#### 运行机制
 
 ![select](res/select.png)
 
-### 缺点
+#### 缺点
 
 - 每次调用`select`都需要把`fd_set`从用户态拷贝到内核，开销大
 - 同时每次调用`select`都需要在内核遍历传递进来的所有`fd_set`，开销大
@@ -128,7 +150,7 @@ select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 
 
 
-## poll
+### poll
 
 ```c
 #include <poll.h>
@@ -180,18 +202,18 @@ poll改变了文件描述符集合的描述方式，使用了`pollfd`结构而�
 - 在监听套接字上有新的连接可用即可认为是普通数据，也可认为是优先级数据。大多数实现视之为普通数据。
 - 非阻塞式connect的完成被认为是使相应套接字可写。
 
-### 缺点
+#### 缺点
 
 - 每次调用`pool`都需要把`pollfd`从用户态拷贝到内核，开销大
 - 同时每次调用`pool`都需要在内核遍历传递进来的所有`pollfd`，开销大
 
 
 
-## epoll
+### epoll
 
 epoll是linux内核的可扩展`I/O`事件通知机制，于linux 2.5.44首次登场，基于**事件驱动的I/O方式**，是之前的`select`和`poll`的增强版本。
 
-### epoll_create
+#### epoll_create
 
 ```c
 #include <sys/epoll.h>
@@ -205,7 +227,7 @@ int epoll_create(int size);
 1. 在内核cache里建立了一个红黑树用于存储`epoll_ctl`传来的`socket`；
 2. 在内核cache建立一个`rdllist`双向链表（就序列表），用于存储准备就绪的事件。
 
-### poll_ctl
+#### poll_ctl
 
 ```c
 #include <sys/epoll.h>
@@ -237,7 +259,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 
 向epfd对应的内核`epoll`实例添加，修改或删除对fd上事件event的监听。
 
-### epoll_wait
+#### epoll_wait
 
 ```c++
 #include <sys/epoll.h>
@@ -256,19 +278,16 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 
 ![epoll_wait](res/epoll_wait.png)
 
-#### 触发模式
-
-- `LT（Level Triggered，水平触发）`默认模式，**只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。
-
-- `ET（Edge Triggered，边缘触发）` 高速模式，**只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回。Nginx用的ET，在以下情况推荐使用ET：
-- `read`或`write`系统调用返回`EAGAIN`
-- 非阻塞的文件描述符
+| 触发模式 | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| LT       | `（Level Triggered，水平触发）`默认模式，**只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。 |
+| ET       | `（Edge Triggered，边缘触发）` 高速模式，**只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回。Nginx用的ET，在以下情况推荐使用ET：<br>  1.`read`或`write`系统调用返回`EAGAIN`<br>  2.非阻塞的文件描述符 |
 
 相对于`select`和`poll`来说，`epoll`没有描述符限制。`epoll`使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。
 
-### 用例
+#### 用例
 
-#### 服务端
+服务端：
 
 ```c
 #include <stdio.h>
@@ -413,7 +432,7 @@ int main(int argc, char** argv)
 }
 ```
 
-#### 客户端
+客户端：
 
 ```c
 #include <stdio.h>
@@ -539,9 +558,13 @@ int main(int argc, char** argv)
 }
 ```
 
+---
+
 
 
 ## 总结
+
+### 多路复用对比
 
 |            |                       select                       |                       poll                       |                            epoll                             |
 | :--------- | :------------------------------------------------: | :----------------------------------------------: | :----------------------------------------------------------: |
@@ -550,6 +573,8 @@ int main(int argc, char** argv)
 | IO效率     |      每次调用都进行线性遍历，时间复杂度为O(n)      |     每次调用都进行线性遍历，时间复杂度为O(n)     | 事件通知方式，每当fd就绪，系统注册的回调函数就会被调用，将就绪fd放到readyList里面，时间复杂度O(1) |
 | 最大连接数 |              1024（x86）或2048（x64）              |                      无上限                      |                            无上限                            |
 | fd拷贝     | 每次调用select，都需要把fd集合从用户态拷贝到内核态 | 每次调用poll，都需要把fd集合从用户态拷贝到内核态 |  调用epoll_ctl时拷贝进内核并保存，之后每次epoll_wait不拷贝   |
+
+---
 
 
 

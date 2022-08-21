@@ -191,7 +191,7 @@ int listen(int sockfd, int backlog);
 
 ```c++
 #include <sys/socket.h>
-int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)
+int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen);
 ```
 
 - `sockfd` 监听套接字
@@ -270,25 +270,20 @@ fork有2个典型用法：
 
 - 一个进程想要执行另一个程序。既然创建新进程的唯一办法是调用fork，该进程于是首先调用fork创建一个自身的副本，然后其中一个副本（通常为子进程）调用exec把自身替换成新的程序。这是诸如shell之类程序的典型用法。
 
-  6个exec函数，成功则不返回，出错返回`-1`：
-
-  ![4-12](res/4-12.png)
+![4-12](res/4-12.png)
 
   ```c++
   int execl(const char *pathname, const char *arg0, .../* (char *) 0 */)
-  
   int execv(const char *pathname, char *const *argv[])
-  
   int execle(const char *pathname, const char *arg0, ... /* (char *) 0, char *const envp[] */ )
-  
   int execve(const char *pathname, char *const argv[], char *const envp[])
-  
   int execlp(const char *filename, const char *arg0, ... /* (char *) 0 */ )
-  
   int execvp(const char *filename, char *const argv[])
   ```
 
-​	
+*6个exec函数，成功则不返回，出错返回`-1`*
+
+
 
 ## 并发服务器
 
@@ -332,7 +327,7 @@ int close(int sockfd);
 - `sockfd` 套接字文件描述符
 
 - `返回值`
-    
+  
     成功：0
     
     出错：-1

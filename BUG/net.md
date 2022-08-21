@@ -17,9 +17,13 @@
 
   前后端统一使用大端，收到数据后不管大小端都转成大端;
 
+
+
 ### Nagle算法的坑
 
 TODO
+
+
 
 ### Tcp timewait问题
 
@@ -39,6 +43,8 @@ TODO
   - `net.ipv4.tcp_tw_reuse`
 
     - `1` 让time wait四元组可以快速用于新连接；
+
+
 
 ### linux端口访问不了
 
@@ -85,3 +91,29 @@ sudo apt-get install iptables-persistent
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
 ```
+
+
+
+### SIGPIPE问题
+
+**问题**
+
+进程写套接字时自动终止。
+
+**原因**
+
+1. 当服务器close一个连接时，若client端接着发数据。根据TCP协议的规定，会收到一个RST响应。当进程向某个已收到RST的套接字执行写操作时，内核向该进程发送一个SIGPIPE信号。该信号的默认行为是终止进程，因此进程必须捕获它以免不情愿地被终止。不论该进程是捕获了该信号并从其信号处理函数返回，还是简单地忽略该信号，写操作都将返回EPIPE错误。
+
+**解决**
+
+1. 捕获SIGPIPE信号
+
+   ```c++
+   TODO
+   ```
+
+2. 忽略SIGPIPE信号
+
+   ```c++
+   signal(SIGPIPE, SIG_IGN);
+   ```

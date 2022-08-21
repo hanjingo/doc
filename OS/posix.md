@@ -152,11 +152,20 @@ _WIN32          Defined on Windows
 
 ### inet_aton 
 
-TODO
+`int inet_aton(const char *strptr, struct in_addr *addrptr)`
+
+- `strptr` 需要转换的c字符串
+- `addrptr` 用来存储网络字节序二进制值的指针
+
+*将c字符串转换成一个32位的网络字节序二进制值*
 
 ### inet_ntoa
 
-TODO
+`char *inet_ntoa(struct in_addr inaddr)`
+
+- `inaddr`32位网络字节序二进制IPV4地址
+
+*将32位的网络字节序二进制IPv4地址转换成相应的点分十进制字符串*
 
 ### inet_ntop
 
@@ -182,7 +191,7 @@ TODO
 
 `int inet_pton(int domain, const char *restrict str, void *restrict addr)`
 
-- `domain 域（仅支持`AF_INET`和`AF_INET6`）`
+- `domain` 地址族（仅支持`AF_INET`和`AF_INET6`）`
 
 - `str` 文本字符串地址
 
@@ -392,13 +401,13 @@ fcntl有5种功能，具体功能取决于cmd的值：
 
 `int open(const char* path, int oflag, ...)`
 
-打开文件/目录；具体见：
+打开文件/目录；具体见：[I/O#open](io.md)
 
 ### openat
 
 `int openat(int fd, const char* path, int oflag, ...)`
 
-打开文件/目录；具体见：[I/O#open/openat](io.md)
+打开文件/目录；具体见：[I/O#openat](io.md)
 
 ### close
 
@@ -2204,7 +2213,7 @@ TODO
 
   失败：-1
 
-*将信号发送给进程或进程组*
+*将信号发送给进程或进程组*；具体见[unix环境高级编程#第十章#函数kill和raise](../NOTE/ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/chapter10.md)。
 
 ### pthread_kill
 
@@ -3330,17 +3339,29 @@ TODO
 
 `void *memset(void *dest, int c, size_t len)`
 
+- `dest` 被设置的字符串
+- `c` 要设置的值
+- `len` 要设置的字节数
+
 设置字符串为指定值
 
 ### memcpy
 
 `void *memcpy(void *dest, const void *src, size_t nbytes)`
 
+- `dest` 目标字符串
+- `src` 源字符串
+- `nbytes` 要复制的字节数
+
 复制字符串
 
 ### memcmp
 
 `int memcmp(const void *ptr1, const void *ptr2, size_t nbytes)`
+
+- `ptr1` 字符串1
+- `ptr2` 字符串2
+- `nbytes` 要比较的字符串长度
 
 比较字符串
 
@@ -3373,17 +3394,28 @@ TODO
 
 `void bzero(void *dest, size_t nbytes)` 
 
- 设置字符串的值为0
+- `dest` 被设置的字符串
+- `nbytes` 要设置的字节数
+
+ *设置字符串的值为0*
 
 ### bcopy
 
 `void bcopy(const void *src, void *dest, size_t nbytes)` 
 
-复制字符串
+- `src` 源字符串
+- `dest` 目标字符串
+- `nbytes` 要复制的数量
+
+*复制字符串*
 
 ### bcmp
 
 `int bcmp(const void *ptr1, const void *ptr2, size_t nbytes)` 
+
+- `ptr1` 字符串1
+- `ptr2` 字符串2
+- `nbytes` 要比较的字符长度
 
 比较字符串
 
@@ -4031,7 +4063,7 @@ TODO
 
   失败：-1
 
-*查找与套接字连接的对方地址*
+*查找与套接字连接的对方地址*；；具体见：[unix网络编程-卷一#第四章#getpeername函数](../NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)
 
 ### getsockname
 
@@ -4049,7 +4081,7 @@ TODO
 
   失败：-1
 
-*查找绑定到套接字的地址*
+*查找绑定到套接字的地址*；具体见：[unix网络编程-卷一#第四章#getsockname函数](../NOTE/UNIX_NETWORK_PROGRAMMING_V1/chapter4.md)
 
 ### getsockopt
 
@@ -5214,7 +5246,14 @@ TODO
 
 `int close(int fd)`
 
-关闭文件；具体见：[I/O#close](io.md)
+- `fd` 文件描述符
+- 返回值
+  - 成功：0
+  - 失败：-1
+
+关闭文件
+
+；具体见：[I/O#close](io.md)
 
 ### dup/dup2
 

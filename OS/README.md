@@ -8,7 +8,6 @@
 - [文件系统](file_system.md)
 - [中断](interrupt.md)
 - [文件I/O](io.md)
-- [Linux网络编程](linux_sock.md)
 - [内存管理函数](mem_mgr.md)
 - [多处理机系统](multi_processor.md)
 - [流水线模型](pipeline.md)
