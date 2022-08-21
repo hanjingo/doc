@@ -633,18 +633,16 @@ TODO
 17. `virtual destructor`的作用是将基类的析构函数作为共享，防止内存泄漏。**不要把`virtual destructor`声明为`pure virtual destructor`。**
 18. 在以下3种情况，编译器会调用复制构造函数：
     - 一个对象以值传递的方式传入函数体
-    
-    - 一个对象以值传递的方式从函数返回
-    
-    - 一个对象需要通过另一个对象进行初始化
-    
-19. `protected`继承会将`public`的member转化为`protected`
 
-2. `private`继承会将public和protected的member转化为private
-3. 面向对象的三大特征：多态(Polymorphism), 封装(Encapsulation)和继承(Inheritance)
-4. 多态：同一操作作用于不同的对象，产生不同的结果。有以下分类：
-   	- 编译时多态（重载）
-   	- 运行时多态（虚函数）
+    - 一个对象以值传递的方式从函数返回
+
+    - 一个对象需要通过另一个对象进行初始化
+19. `protected`继承会将`public`的member转化为`protected`
+20. `private`继承会将public和protected的member转化为private
+21. 面向对象的三大特征：多态(Polymorphism), 封装(Encapsulation)和继承(Inheritance)
+22. 多态：同一操作作用于不同的对象，产生不同的结果。有以下分类：
+    - 编译时多态（重载）
+    - 运行时多态（虚函数）
 
 
 

@@ -68,11 +68,9 @@ int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, co
 - `exceptset`让内核测试异常描述符
 - `timeout`：超时时间（精确度10ms左右）
   
-  `空` 永远等待下去
-  
-  `非空`等待一段固定时间
-  
-  `0` 根本不等待
+  - `空` 永远等待下去
+  - `非空`等待一段固定时间
+  - `0` 根本不等待
 - `返回值`
   
   描述符数量：有就绪描述符
@@ -81,21 +79,12 @@ int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, co
   
   -1：出错
 
-允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它。
+*多路复用*（允许进程指示内核等待多个事件中的任何一个发生，并只在有一个或多个时间发生或经历一段指定的时间后才唤醒它）。
 
-目前支持的异常条件只有两个：
+select支持的异常条件：
 
-- 某个套接字的带外数据的到达
-- 某个已置为分组模式的伪终端存在可从其主端读取的控制状态信息
-
-设置fd的常用函数：
-
-```c
-void FD_ZERO(fd_set *fdset);
-void FD_SET(int fd, fd_set *fdset);
-void FD_CLR(int fd, fd_set *fdset);
-int	 FD_ISSET(int fd, fd_set *fdset);
-```
+- 某个套接字的带外数据的到达；
+- 某个已置为分组模式的伪终端存在可从其主端读取的控制状态信息。
 
 #### 描述符就绪条件
 
@@ -112,8 +101,6 @@ int	 FD_ISSET(int fd, fd_set *fdset);
 - 该连接的写半部关闭
 - 使用非阻塞connect的套接字已建立连接，或者connect已经以失败告终
 - 其上有一个套接字错误待处理
-
-如果一个套接字春在带外数据或者仍处于带外标记，那么它有异常条件待处理。
 
 **注意：当某个套接字上发生错误时，它将由select标记为即可读又可写。**
 
@@ -142,7 +129,7 @@ select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 
 ![select](res/select.png)
 
-#### 缺点
+#### select的缺点
 
 - 每次调用`select`都需要把`fd_set`从用户态拷贝到内核，开销大
 - 同时每次调用`select`都需要在内核遍历传递进来的所有`fd_set`，开销大
@@ -150,14 +137,60 @@ select的最大描述符数定义在`<sys/types.h>`或`<sys/select.h>`中:
 
 
 
-### poll
+### pselect
 
-```c
-#include <poll.h>
-int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)
+```c++
+#include <sys/select.h>
+#include <signal.h>
+#include <time.h>
+int pselect(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timespec *timeout, const sigset_t *sigmask);
 ```
 
-- `fdarray`指向一个pollfd数组
+- maxfdp1` 最大描述符数 + 1
+
+- `readset` 可读描述符
+
+- `writeset` 可写描述符
+
+- `exceptset` 异常描述符
+
+- `timeout` 超时
+
+  pselect使用timespec结构，而不使用tiemval。
+
+  ```c
+  struct timespec {
+      time_t 	 tv_sec;
+      long	 tv_nsec;
+  }
+  ```
+
+- `sigmask`一个指向信号掩码的指针，用于select阻塞期间时处理信号。
+
+- `返回值`
+
+  有描述符就绪：n
+
+  超时：0
+
+  失败：-1
+
+*多路转接（允许禁止某些信号）*
+
+
+
+### poll
+
+poll的机制与select类似，与select在本质上没有多大差别，管理多个描述符也是进行轮询，根据描述符的状态进行处理，但是poll没有最大文件描述符数量的限制。
+
+poll改变了文件描述符集合的描述方式，使用了`pollfd`结构而不是select的`fd_set`结构，使得poll支持的文件描述符集合限制远大于select的1024。
+
+```c++
+#include <poll.h>
+int poll(struct pollfd *fdarray, unsigned long nfds, int timeout);
+```
+
+- `fdarray` pollfd数组
 
   ```c
   struct pollfd {
@@ -167,31 +200,35 @@ int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)
   }
   ```
 
-
   poll函数的输入events和返回revents：
 
-  | 常值                                          | 作为events的输入吗？ | 作为revents的结果吗？ | 说明                                                         |
-  | --------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------------------ |
-  | POLLIN<br>POLLRDNORM<br>POLLRDBAND<br>POLLPRI | Y<br>Y<br>Y<br>Y     | Y<br>Y<br>Y<br>Y      | 普通或优先级带数据可读<br>普通数据可读<br>优先级带数据可读<br>高优先级数据可读 |
-  | POLLOUT<br>POLLWRNORM<br>POLLWRBAND           | Y<br>Y<br>Y          | Y<br>Y<br>Y           | 普通数据可写<br>普通数据可写<br>优先级带数据可写             |
-  | POLLERR<br>POLLHUP<br>POLLNVAL                |                      | Y<br>Y<br>Y           | 发生错误<br>发生挂起<br>描述符不是一个打开的文件             |
+  | 常值                                          | 说明                                                         |
+  | --------------------------------------------- | ------------------------------------------------------------ |
+  | POLLIN<br>POLLRDNORM<br>POLLRDBAND<br>POLLPRI | 普通或优先级带数据可读<br>普通数据可读<br>优先级带数据可读<br>高优先级数据可读 |
+  | POLLOUT<br>POLLWRNORM<br>POLLWRBAND           | 普通数据可写<br>普通数据可写<br>优先级带数据可写             |
+  | POLLERR<br>POLLHUP<br>POLLNVAL                | 发生错误<br>发生挂起<br>描述符不是一个打开的文件             |
 
-- `nfds`
+- `nfds` pollfd数组长度
 
-- `timeout`
-  - `INFTIM` 永远等待（POSIX规范要求在头文件`<poll.h>`中定义INFTIM，不过许多系统仍然把它定义在头文件`<sys/stropts.h>`中）
-  - `0` 立即返回，不阻塞进程
-  - `>0` 等待指定数目的毫秒数
+- `timeout` 超时时长
 
-- 返回值
+  | 超时值 | 说明                                                         |
+  | ------ | ------------------------------------------------------------ |
+  | INFTIM | 永远等待（POSIX规范要求在头文件`<poll.h>`中定义INFTIM，不过许多系统仍然把它定义在头文件`<sys/stropts.h>`中）。 |
+  | 0      | 立即返回，不阻塞进程。                                       |
+  | >0     | 等待指定数目的毫秒数。                                       |
 
-  - `-1` 发生错误
-  - `0` 定时器到时之前没有任何描述符就绪
-  - `就绪描述符个数` 成功
+- `返回值`
 
-poll的机制与select类似，与select在本质上没有多大差别，管理多个描述符也是进行轮询，根据描述符的状态进行处理，但是poll没有最大文件描述符数量的限制。
+  成功：就绪描述符个数
 
-poll改变了文件描述符集合的描述方式，使用了`pollfd`结构而不是select的`fd_set`结构，使得poll支持的文件描述符集合限制远大于select的1024
+  定时器到时之前没有任何描述符就绪：0
+
+  失败：-1
+
+*多路复用*
+
+#### 触发条件
 
 就TCP和UDP套接字而言，以下条件引起poll返回特定的revent:
 
@@ -204,14 +241,16 @@ poll改变了文件描述符集合的描述方式，使用了`pollfd`结构而�
 
 #### 缺点
 
-- 每次调用`pool`都需要把`pollfd`从用户态拷贝到内核，开销大
-- 同时每次调用`pool`都需要在内核遍历传递进来的所有`pollfd`，开销大
+- 每次调用`poll`都需要把`pollfd`从用户态拷贝到内核，开销大
+- 同时每次调用`poll`都需要在内核遍历传递进来的所有`pollfd`，开销大
 
 
 
 ### epoll
 
 epoll是linux内核的可扩展`I/O`事件通知机制，于linux 2.5.44首次登场，基于**事件驱动的I/O方式**，是之前的`select`和`poll`的增强版本。
+
+相对于`select`和`poll`来说，`epoll`没有描述符限制。`epoll`使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。
 
 #### epoll_create
 
@@ -220,9 +259,10 @@ epoll是linux内核的可扩展`I/O`事件通知机制，于linux 2.5.44首次�
 int epoll_create(int size);
 ```
 
-- size 无意义，兼容以前的代码
+- `size` 无意义，兼容以前的代码
+- `返回值` epoll句柄
 
-创建epoll对象，流程如下：
+*创建epoll句柄*；流程如下：
 
 1. 在内核cache里建立了一个红黑树用于存储`epoll_ctl`传来的`socket`；
 2. 在内核cache建立一个`rdllist`双向链表（就序列表），用于存储准备就绪的事件。
@@ -238,9 +278,11 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 
 - `op` 操作
 
-  - `EPOLL_CTL_ADD` 添加事件
-  - `EPOLL_CTL_MOD` 修改监听的事件
-  - `EPOLL_CTL_DEL` 删除监听的事件
+  | op值          | 说明           |
+  | ------------- | -------------- |
+  | EPOLL_CTL_ADD | 添加事件       |
+  | EPOLL_CTL_MOD | 修改监听的事件 |
+  | EPOLL_CTL_DEL | 删除监听的事件 |
 
 - `fd` 套接字
 
@@ -256,8 +298,14 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
   | EPOLLRDHUP   | 对端描述符产生一个挂断事件                    |
   | EPOLLPRI     | 由带外数据触发                                |
   | EPOLLERR     | 描述符产生错误时触发，默认监测事件            |
+  
+- `返回值`
 
-向epfd对应的内核`epoll`实例添加，修改或删除对fd上事件event的监听。
+  成功：0
+
+  失败：-1
+
+*向epfd对应的内核`epoll`实例添加，修改或删除对fd上事件event的监听*。
 
 #### epoll_wait
 
@@ -267,14 +315,20 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 ```
 
 - `epfd` epoll句柄
-- `events` 用来记录被触发的events，其大小应该和maxevents一致
-- `maxevents` 返回的events的最大个数
-- `timeout` 超时时间（ms）
-  - `0`  立即返回
-  - `-1` 一直阻塞到已注册的事件变为就绪
-  - `>0` 阻塞直到时间结束或已注册的时间变为就绪
 
-检测有没有数据，有数据就返回，没有数据就`sleep`，等到`timeout`时间到后返回，示意图如下：
+- `events` 用来记录被触发的events，其大小应该和maxevents一致
+
+- `maxevents` 返回的events的最大个数
+
+- `timeout` 超时时间（ms）
+  
+  | timeout值 | 说明                                     |
+  | --------- | ---------------------------------------- |
+  | 0         | 立即返回。                               |
+  | -1        | 一直阻塞到已注册的事件变为就绪。         |
+  | >0        | 阻塞直到时间结束或已注册的时间变为就绪。 |
+
+*检测有没有数据，有数据就返回，没有数据就`sleep`，等到`timeout`时间到后返回*；示意图如下：
 
 ![epoll_wait](res/epoll_wait.png)
 
@@ -282,8 +336,6 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 | -------- | ------------------------------------------------------------ |
 | LT       | `（Level Triggered，水平触发）`默认模式，**只要有数据都会触发**，缓冲区剩余未读尽的数据会导致epoll_wait返回。 |
 | ET       | `（Edge Triggered，边缘触发）` 高速模式，**只有数据到来才触发**，**不管缓存区中是否还有数据**，缓冲区剩余未读尽的数据不会导致epoll_wait返回。Nginx用的ET，在以下情况推荐使用ET：<br>  1.`read`或`write`系统调用返回`EAGAIN`<br>  2.非阻塞的文件描述符 |
-
-相对于`select`和`poll`来说，`epoll`没有描述符限制。`epoll`使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。
 
 #### 用例
 

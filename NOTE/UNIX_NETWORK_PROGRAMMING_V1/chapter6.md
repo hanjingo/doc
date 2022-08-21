@@ -185,16 +185,6 @@ str_cli(FILE *fp, int sockfd)
 
 ## shutdown函数
 
-头文件`sys/socket.h`
-
-`int shutdown(int sockfd, int howto)`
-
-- sockfd
-- howto
-    - SHUT_RD：关闭连接的读，丢弃接收缓冲区的数据
-    - SHUT_WR：关闭连接的写，丢弃发送缓冲区的数据
-    - SHUT_RDWR：关闭连接的读和写，类似于调用1次SHUT_RD，又调用1次SHUT——WR
-
 使用close函数来终止网络连接时有两个限制：
 
 1. close把描述符的引用计数减1，仅在该计数变为0时才关闭套接字
@@ -203,6 +193,29 @@ str_cli(FILE *fp, int sockfd)
 可以使用shutdown来避免上述限制，调用shutdown关闭一半TCP连接：
 
 ![6-12](res/6-12.png)
+
+```c++
+#include <sys/socket.h>
+int shutdown(int sockfd, int howto);
+```
+
+- `sockfd`套接字文件描述符
+
+- `howto`动作
+    
+    | 动作      | 说明                                                         |
+    | --------- | ------------------------------------------------------------ |
+    | SHUT_RD   | 关闭连接的读，丢弃接收缓冲区的数据。                         |
+    | SHUT_WR   | 关闭连接的写，丢弃发送缓冲区的数据。                         |
+    | SHUT_RDWR | 关闭连接的读和写，类似于调用1次`SHUT_RD`，又调用1次`SHUT_WR`。 |
+    
+- `返回值`
+
+    成功：0
+
+    失败：-1
+
+*关闭连接*
 
 
 
@@ -338,46 +351,54 @@ main(int argc, char **argv)
 
 ## pselect函数
 
-头文件`sys/select.h`
+```c++
+#include <sys/select.h>
+#include <signal.h>
+#include <time.h>
+int pselect(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timespec *timeout, const sigset_t *sigmask);
+```
 
-`int pselect(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timespec *timeout, const sigset_t *sigmask)`
+- `maxfdp1` 最大描述符数 + 1
 
-- maxfdp1
+- `readset` 可读描述符
 
-- readset
+- `writeset` 可写描述符
 
-- writeset
+- `exceptset` 异常描述符
 
-- exceptset
-
-- timeout：超时
+- `timeout` 超时
 
     pselect使用timespec结构，而不使用tiemval。
 
     ```c
     struct timespec {
         time_t 	 tv_sec;
-        long		tv_nsec;
+        long	 tv_nsec;
     }
     ```
 
-- sigmask：一个指向信号掩码的指针，用于select阻塞期间时处理信号。
+- `sigmask`一个指向信号掩码的指针，用于select阻塞期间时处理信号。
 
-- return
+- `返回值`
 
-    - -1：出错
-    - 0：超时
-    - `>0`：有描述符就绪
+    有描述符就绪：n
+    
+    超时：0
+    
+    失败：-1
+
+*多路转接（允许禁止某些信号）*
 
 
 
 ## poll函数
 
-头文件`pool.h`
+```c++
+#include <poll.h>
+int poll(struct pollfd *fdarray, unsigned long nfds, int timeout);
+```
 
-`int poll(struct pollfd *fdarray, unsigned long nfds, int timeout)`
-
-- fdarray：指向一个pollfd数组
+- `fdarray` pollfd数组
 
     ```c
     struct pollfd {
@@ -388,28 +409,34 @@ main(int argc, char **argv)
     ```
 
     poll函数的输入events和返回revents：
+    
+    | 常值                                          | 作为events的输入吗？ | 作为revents的结果吗？ | 说明                                                         |
+    | --------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------------------ |
+    | POLLIN<br>POLLRDNORM<br>POLLRDBAND<br>POLLPRI | Y<br>Y<br>Y<br>Y     | Y<br>Y<br>Y<br>Y      | 普通或优先级带数据可读<br>普通数据可读<br>优先级带数据可读<br>高优先级数据可读 |
+    | POLLOUT<br>POLLWRNORM<br>POLLWRBAND           | Y<br>Y<br>Y          | Y<br>Y<br>Y           | 普通数据可写<br>普通数据可写<br>优先级带数据可写             |
+    | POLLERR<br>POLLHUP<br>POLLNVAL                |                      | Y<br>Y<br>Y           | 发生错误<br>发生挂起<br>描述符不是一个打开的文件             |
 
-| 常值                                          | 作为events的输入吗？ | 作为revents的结果吗？ | 说明                                                         |
-| --------------------------------------------- | -------------------- | --------------------- | ------------------------------------------------------------ |
-| POLLIN<br>POLLRDNORM<br>POLLRDBAND<br>POLLPRI | Y<br>Y<br>Y<br>Y     | Y<br>Y<br>Y<br>Y      | 普通或优先级带数据可读<br>普通数据可读<br>优先级带数据可读<br>高优先级数据可读 |
-| POLLOUT<br>POLLWRNORM<br>POLLWRBAND           | Y<br>Y<br>Y          | Y<br>Y<br>Y           | 普通数据可写<br>普通数据可写<br>优先级带数据可写             |
-| POLLERR<br>POLLHUP<br>POLLNVAL                |                      | Y<br>Y<br>Y           | 发生错误<br>发生挂起<br>描述符不是一个打开的文件             |
+- `nfds` pollfd数组长度
 
-- nfds
+- `timeout` 超时时长
 
-- timeout
+    | 超时值 | 说明                                                         |
+    | ------ | ------------------------------------------------------------ |
+    | INFTIM | 永远等待（POSIX规范要求在头文件`<poll.h>`中定义INFTIM，不过许多系统仍然把它定义在头文件`<sys/stropts.h>`中）。 |
+    | 0      | 立即返回，不阻塞进程。                                       |
+    | >0     | 等待指定数目的毫秒数。                                       |
 
-    - INFTIM：永远等待（POSIX规范要求在头文件`<poll.h>`中定义INFTIM，不过许多系统仍然把它定义在头文件`<sys/stropts.h>`中）
-    - 0：立即返回，不阻塞进程
-    - `>0`：等待指定数目的毫秒数
+- `返回值`
 
-- return
+    成功：就绪描述符个数
+    
+    定时器到时之前没有任何描述符就绪：0
+    
+    失败：-1
 
-    - -1：发生错误
-    - 0：定时器到时之前没有任何描述符就绪
-    - 就绪描述符个数：成功
+*多路复用*
 
-就TCP和UDP套接字而言，以下条件引起poll返回特定的revent:
+就TCP和UDP套接字而言，以下条件引起poll返回特定的revent：
 
 - 所有正规TCP数据和所有UDP数据都被认为是普通数据
 - TCP的带外数据被认为是优先级带数据

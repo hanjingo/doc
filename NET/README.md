@@ -22,7 +22,7 @@
 - [Groupcast组播](multicast.md)
 - [NAT网络地址转换](nat.md)
 - [P2P协议](res/p2p.md)
-- [Socket套接字](socket.md)
+- [套接字](socket.md)
 - [TCP协议](tcp.md)
 - [UDP协议](udp.md)
 - [RTMP协议]

@@ -2,13 +2,15 @@
 
 [TOC]
 
-asio不需要编译，但它依赖一些其他Boost库组件，最基本的是boost.system库，用来提供系统错误支持。与thread库不同的是asio默认使用标准库<chrono>提供的时间功能，如果要强制使用boost.chrono，可以定义宏BOOST_ASIO_DISABLE_STD_CHRONO。
+asio不需要编译，但它依赖一些其他Boost库组件，最基本的是`boost.system`库，用来提供系统错误支持。与thread库不同的是asio默认使用标准库`<chrono>`提供的时间功能，如果要强制使用`boost.chrono`，可以定义宏`BOOST_ASIO_DISABLE_STD_CHRONO`。
 
 asio使用之前需要包含以下头文件：
 
 ```c++
 #include <boost/asio.hpp>
 ```
+
+
 
 ## API
 
@@ -708,7 +710,7 @@ int main()
 ```c++
 void resolve_connect(io_service &io, ip::tcp::socket &sock, const char* name, int port)
 {
-	ip::tcp::resolver r(io);
+  ip::tcp::resolver r(io);
   ip::tcp::resolver::query q(name, lexical_cast<string>(port));
   auto iter = r.resolve(q); // 使用resolver()迭代端点
   decltype(iter) end;       // 尾部迭代器
@@ -742,7 +744,7 @@ int main()
 // 服务端
 int main()
 {
-	io_service io;
+  io_service io;
   ip::udp::socket sock(io, ip::udp::endpoint(ip::udp::v4(), 6699));
   for (;;)
   {

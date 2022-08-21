@@ -3778,7 +3778,7 @@ TODO
 
 - `tvptr` 超时时间
 
-- sptr` 超时时间（更精确的时间，参考`tvptr`）
+- `sptr` 超时时间（更精确的时间，参考`tvptr`）
 
 - `sigmask` 信号屏蔽字
 

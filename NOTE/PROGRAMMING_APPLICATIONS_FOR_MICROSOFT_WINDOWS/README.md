@@ -1,6 +1,6 @@
 # Windows核心编程
 
-5th Edition
+Jeffrey Richter . 5th Edition
 
 - [第1章 错误处理]
 - [第2章 字符和字符串处理]
