@@ -5,6 +5,7 @@
 - [唯一ID的生成](id.md)
 - [IM系统构建](im.md)
 - [服务端图形引擎](server_graphic_engine.md)
+- [软件开发管理](software_dev_flow)
 - [软件测试](software_test.md)
 - [Token机制](token.md)
 - [生物科技](BIOTECH/README.md)

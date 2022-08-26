@@ -63,9 +63,11 @@ int socketpair(int family, int type, int protocol, int sockfd[2]);
 - `type`类型（为SOCK_STREAM或SOCK_DGRAM中的一个）
 - `protocol`协议（必须为0）
 - `sockfd`用于返回新创建的套接字描述符
-- 返回值
-  - 成功：非0
-  - 失败：-1
+- `返回值`
+  
+  成功：非0
+  
+  失败：-1
 
 *创建两个随后连接起来的套接字*
 

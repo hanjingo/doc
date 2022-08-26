@@ -102,6 +102,7 @@
 - P2P网络的C++实现 [cpp-libp2p](https://github.com/libp2p/cpp-libp2p)
 - P2P节点发现库 [nearby-connections](https://github.com/google/nearby-connections)
 - Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
+- C++ HTTP项目 [qinguoyi](https://github.com/qinguoyi)/**[TinyWebServer](https://github.com/qinguoyi/TinyWebServer)**
 
 ### 数据库/存储
 

@@ -12,10 +12,10 @@
 
 IPv4选项字段最长为40字节，定义了10种不同的选项：
 
-- `NOP` no-operation。单字节选项。
-- `EOL` end-of-list。单字节选项，终止选项的处理。
-- `LSSR` loose source and record route。
-- `SSRR` strict source and record route。
+- `NOP(no-operation)`。单字节选项。
+- `EOL(end-of-list)` 单字节选项，终止选项的处理。
+- `LSSR(loose source and record route)`。
+- `SSRR(strict source and record route)` 。
 - `Timestamp`
 - `Record route`
 - `Basic security` （已作废）
@@ -215,11 +215,11 @@ IPv6首部可以后跟如下几种可选的扩展首部（extention header）：
 
 ```c++
 #include <netinet/in.h>
-int inet6_opt_init(void *extbuf, socklen_t extlen); // 返回容纳一个空扩展首部所需的字节数
+int inet6_opt_init(void *extbuf, socklen_t extlen); // 返回容纳一个空扩展首部所需的字节数，若出错则为-1
 int inet6_opt_append(void *extbuf, socklen_t extlen, 
                      int offset, uint8_t type, socklen_t len,
-                     uint8_t align, void **databufp); // 返回添加指定的个体选项后更新的扩展首部总长度
-int inet6_opt_finish(void *extbuf, socklen_t extlen, int offset); // 结束一个扩展首部的设置，添加填充使得总长度为8的倍数
+                     uint8_t align, void **databufp); // 返回添加指定的个体选项后更新的扩展首部总长度，若出错则为-1
+int inet6_opt_finish(void *extbuf, socklen_t extlen, int offset); // 结束一个扩展首部的设置，添加填充使得总长度为8的倍数，若出错则为-1
 int inet6_opt_set_val(void *databuf, int offset,
                       const void *val, socklen_t vallen); // 把给定的选项值复制到由inet6_opt_append返回的数据缓冲区中
 ```
@@ -273,8 +273,10 @@ socklen_t inet6_rth_space(int type, int segments);
 - `type`类型
 - `segments`网段总数
 - `返回值`
-  - 成功：字节数（正数）
-  - 失败：0
+  
+  成功：字节数（正数）
+  
+  失败：0
 
 返回容纳一个指定类型和网段总数的路由首部所需的字节数。
 
@@ -289,8 +291,10 @@ void *inet6_rth_init(void *rthbuf, socklen_t rthlen,
 - `type`类型
 - `segments`网段总数
 - `返回值`
-  - 成功：指向缓冲区的指针
-  - 失败：NULL
+  
+  成功：指向缓冲区的指针
+  
+  失败：NULL
 
 初始化指定的缓冲区，以容纳一个类型为type值且网段总数为segments值的路由首部。
 
@@ -302,8 +306,10 @@ int inet6_rth_add(void *rthbuf, const struct in6_addr *addr);
 - `rthbuf`缓冲区
 - `addr`地址
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 把由addr指向的IPv6地址加到构建中的路由首部的末尾。
 
@@ -315,8 +321,10 @@ int inet6_rth_reverse(const void *in, void *out);
 - `in`传入缓冲区
 - `out`返回缓冲区
 - `返回值`
-  - 成功：0
-  - 失败：-1
+  
+  成功：0
+  
+  失败：-1
 
 根据in中存放的接收路由首部创建一个新的路由首部，并放入out中（in和out可以为同一个缓冲区）。
 
@@ -327,8 +335,10 @@ int inet6_rth_seqments(const void *rthbuf);
 
 - `rthbuf`存放路由首部的缓冲区
 - `返回值`
-  - 成功：网段数目
-  - 失败：-1
+  
+  成功：网段数目
+  
+  失败：-1
 
 返回路由首部中的网段数目。
 
@@ -340,8 +350,10 @@ struct in6_addr *inet6_rth_getaddr(const void *rthbuf, int index);
 - `rthbuf`缓冲区
 - `index`索引
 - `返回值`
-  - 成功：指向IPv6地址的指针
-  - 失败：NULL
+  
+  成功：指向IPv6地址的指针
+  
+  失败：NULL
 
 返回由rthbuf所指路由首部中索引号为index的那个IPv6地址。
 

@@ -34,7 +34,7 @@ int connect_timeo(int sockfd, const SA *saptr, socklen_t salen, int nsec)
         if (errno == EINTR)
             errno = ETIMEDOUT;
     }
-    alarm(0); // 关闭本进程的报警时钟
+    alarm(0);                 // 关闭本进程的报警时钟
     Signal(SIGALRM, sigfunc); // 恢复原来的信号处理函数不
     return (n);
 }
@@ -161,6 +161,12 @@ ssize_t recv(int sockfd, void *buff, size_t nbytes, int flags);
 ssize_t send(int sockfd, const void *buff, size_t nbytes, int flags);
 ```
 
+- `sockfd` 套接字
+
+- `buff` 缓冲区
+
+- `nbytes` 字节数
+
 - `flags`标志
 
   | flags         | 说明               | recv | send |
@@ -170,8 +176,6 @@ ssize_t send(int sockfd, const void *buff, size_t nbytes, int flags);
   | MSG_OOB       | 发送或接收带外数据 | Y    | Y    |
   | MSG_PEEK      | 窥看外来消息       | Y    |      |
   | MSG_WAITALL   | 等待所有数据       | Y    |      |
-
-  详细说明：
 
   - `MSG_DONTROUTE`告知内核目的主机在某个直接连接的本地网络上，因而无需执行路由表查找。
 
@@ -186,12 +190,20 @@ ssize_t send(int sockfd, const void *buff, size_t nbytes, int flags);
     ```c++
     #define readn(fd, ptr, n) recv(fd, ptr, n, MSG_WAITALL)
     ```
-
+  
     即使指定了MSG_WAITALL，如果发生下列情况之一：
 
     1. 捕获一个信号；
     2. 连接被终止；
     3. 套接字发生一个错误，相应的读函数仍有可能返回比所请求字节数要少的数据。
+  
+- `返回值`
+
+  成功：读/写的字节数
+
+  失败：-1
+
+*读/写 套接字*
 
 
 
@@ -239,7 +251,7 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
 
 - `sockfd`套接字
 
-- `msg`
+- `msg` 消息结构
 
   ```c++
   struct msghdr {
@@ -270,6 +282,14 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
   - `MSG_EOR`本标志的返回条件数据结束一个逻辑记录。TCP不使用本标志，因为它是一个字节流协议。
   - `MSG_OOB`本标志绝不为TCP带外数据返回。它用于其它协议族。
   - `MSG_NOTIFICATION`本标志由SCTP接收者返回，指示读入的消息是一个事件通知，而不是数据消息。
+  
+- `返回值`
+
+  成功：读/写字节数
+
+  失败：-1
+
+*读/写 套接字*
 
 ![14_8](res/14_8.png)
 
@@ -281,13 +301,13 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
 
 5组I/O函数的比较：
 
-| 函数             | 任何描述符 | 仅套接字描述符 | 单个读/写缓冲区 | 分散/集中 读/写 | 可选标志 | 可选对端地址 | 可选控制信息 |
-| ---------------- | ---------- | -------------- | --------------- | --------------- | -------- | ------------ | ------------ |
-| read, write      | Y          |                | Y               |                 |          |              |              |
-| readv, writev    | Y          |                |                 | Y               |          |              |              |
-| recv, send       |            | Y              | Y               |                 | Y        |              |              |
-| recvfrom, sendto |            | Y              | Y               |                 | Y        | Y            |              |
-| recvmsg, sendmsg |            | Y              |                 | Y               | Y        | Y            | Y            |
+| 函数            | 任何描述符 | 仅套接字描述符 | 单个读/写缓冲区 | 分散/集中 读/写 | 可选标志 | 可选对端地址 | 可选控制信息 |
+| --------------- | ---------- | -------------- | --------------- | --------------- | -------- | ------------ | ------------ |
+| read/write      | Y          |                | Y               |                 |          |              |              |
+| readv/writev    | Y          |                |                 | Y               |          |              |              |
+| recv/send       |            | Y              | Y               |                 | Y        |              |              |
+| recvfrom/sendto |            | Y              | Y               |                 | Y        | Y            |              |
+| recvmsg/sendmsg |            | Y              |                 | Y               | Y        | Y            | Y            |
 
 
 

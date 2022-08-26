@@ -179,6 +179,46 @@ int pselect(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, c
 
 
 
+### kqueue
+
+```c++
+#include <sys/types.h>
+#include <sys/event.h>
+#include <sys/time.h>
+int kqueue(void);
+int kevent(int kq, const struct kevent *changelist, int nchanges,
+           struct kevent *evenlist, int nevents,
+           const struct timespec *timeout);
+void EV_SET(struct kevent *kev, uintptr_t ident, short filter,
+            u_short flags, u_int fflags, intptr_t data, vlid *udata);
+
+struct kevent {
+    uintptr_t ident;
+    short     filter;
+    u_short   flags;
+    u_int     fflags;
+    intptr_t  data;
+    void     *udata;
+};
+```
+
+| flags                                                        | 说明                                                         | 更改                       | 返回   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------- | ------ |
+| EV_ADD<br>EV_CLEAR<br>EV_DELETE<br>EV_DISABLE<br>EV_ENABLE<br>EV_ONESHOT | 增设事件；自动启用，除非同时指定EV_DISABLE<br>用户获取后复位事件状态<br>删除事件<br>禁用事件但不删除<br>重新启用先前禁用的事件<br>触发一次后删除事件 | Y<br>Y<br>Y<br>Y<br>Y<br>Y |        |
+| EV_EOF<br>EV_ERROR                                           | 发生EOF条件<br>发生错误：errno值在data成员中                 |                            | Y<br>Y |
+
+| filter        | 说明                     |
+| ------------- | ------------------------ |
+| EVFILT_AIO    | 异步I/O事件              |
+| EVFILT_PROC   | 进程exit，fork或exec事件 |
+| EVFILT_READ   | 描述符可读，类似select   |
+| EVFILT_SIGNAL | 收到信号                 |
+| EVFILT_TIMER  | 周期性或一次性的定时器   |
+| EVFILT_VNODE  | 文件修改和删除事件       |
+| EVFILT_WRITE  | 描述符可写，类似select   |
+
+
+
 ### poll
 
 poll的机制与select类似，与select在本质上没有多大差别，管理多个描述符也是进行轮询，根据描述符的状态进行处理，但是poll没有最大文件描述符数量的限制。
@@ -614,6 +654,138 @@ int main(int argc, char** argv)
 
 
 
+## 流操作
+
+### recv/send
+
+```c++
+#include <sys/socket.h>
+ssize_t recv(int sockfd, void *buff, size_t nbytes, int flags);
+ssize_t send(int sockfd, const void *buff, size_t nbytes, int flags);
+```
+
+- `sockfd` 套接字
+
+- `buff` 缓冲区
+
+- `nbytes` 字节数
+
+- `flags`标志
+
+  | flags         | 说明               | recv | send |
+  | ------------- | ------------------ | ---- | ---- |
+  | MSG_DONTROUTE | 绕过路由表查找     |      | Y    |
+  | MSG_DONTWAIT  | 仅本操作非阻塞     | Y    | Y    |
+  | MSG_OOB       | 发送或接收带外数据 | Y    | Y    |
+  | MSG_PEEK      | 窥看外来消息       | Y    |      |
+  | MSG_WAITALL   | 等待所有数据       | Y    |      |
+
+  - `MSG_DONTROUTE`告知内核目的主机在某个直接连接的本地网络上，因而无需执行路由表查找。
+
+  - `MSG_DONTWAIT`在无需打开相应套接字的非阻塞标志的前提下，把单个I/O操作临时指定为非阻塞，接着执行I/O操作，然后关闭非阻塞标志。
+
+  - `MSG_OOB`对于send，本标志指明即将发送带外数据；对于recv，本标志指明即将读入的是带外数据而不是普通数据。
+
+  - `MSG_PEEK`适用于recv和recvfrom，它允许我们查看已可读取的数据，而且系统不在recv或recvfrom返回后丢弃这些数据。
+
+  - `MSG_WAITALL`告知内核不要再尚未读入请求数目的字节之前让一个读操作返回。如果系统支持本标志，我们就可以省掉readn函数，替之以宏：
+
+    ```c++
+    #define readn(fd, ptr, n) recv(fd, ptr, n, MSG_WAITALL)
+    ```
+
+    即使指定了MSG_WAITALL，如果发生下列情况之一：
+
+    1. 捕获一个信号；
+    2. 连接被终止；
+    3. 套接字发生一个错误，相应的读函数仍有可能返回比所请求字节数要少的数据。
+
+- `返回值`
+
+  成功：读/写的字节数
+
+  失败：-1
+
+*读/写 套接字*
+
+### readv/writev
+
+```c++
+#include <sys/uio.h>
+ssize_t readv(int filedes, const struct iovec *iov, int iovcnt);
+ssize_t writev(int filedes, const struct iovec *iov, int iovcnt);
+```
+
+- `filedes` 文件描述符
+
+- `iov`指向iovec结构数组的指针
+
+  POSIX要求在头文件`<sys/uio.h>`中定义`IOV_MAX`常值来标识结构数组的容量，至少要为16；但是其实际值取决于具体实现：4.3BSD和Linux最多允许1024个，HP-UX最多允许2100个。
+
+  iovec的定义如下：
+
+  ```c++
+  struct iovec {
+      void *iov_base;
+      size_t iov_len;
+  }
+  ```
+
+- `iovcnt` iovec结构数组的元素数量
+
+- `返回值`
+
+  - 成功：读入/写出的字节数；
+  - 失败：-1。
+
+*读入/写出一个或多个缓冲区，这些操作分别称为`分散读（scatter read）`和`集中写（gather write）`，因为来自读操作的输入数据被分散到多个应用缓冲区中，而来自多个应用缓冲区的输出数据则被集中提供给单个写操作。*
+
+### recvmsg/sendmsg
+
+```c++
+#include <sys/socket.h>
+ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);
+ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
+```
+
+- `sockfd`套接字
+
+- `msg` 消息结构
+
+  ```c++
+  struct msghdr {
+      void         *msg_name;       // 接收者/发送者的协议地址
+      socklen_t     msg_namelen;    // 协议地址长度
+      struct iovec *msg_iov;        // 输入/输出缓冲区数组
+      int           msg_iovlen;     // 缓冲区数组长度
+      void         *msg_control;    // 辅助数据的位置（可选）
+      socklen_t     msg_controllen; // 辅助数据的大小（可选）
+      int           msg_flags;      // 消息标志
+  };
+  ```
+
+- `flags`标志
+
+  | 标志                                                         | 由内核检查send, sendto或sendmsg函数的flags参数 | 由内核检查recv, recvfrom或recvmsg函数的flags参数 | 由内核通过recvmsg函数的msg_flags结构参数成员返回 |
+  | ------------------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------ | ------------------------------------------------ |
+  | MSG_DONTROUTE<br>MSG_DONTWAIT<br>MSG_PEEK<br>MSG_WAITALL     | Y<br>Y                                         | <br>Y<br>Y<br>Y                                  |                                                  |
+  | MSG_EOR<br>MSG_OOB                                           | Y<br>Y                                         | <br>Y                                            | Y<br>Y                                           |
+  | MSG_BCAST<br>MSG_MCAST<br>MSG_TRUNC<br>MSG_CTRUNC<br>MSG_NOTIFICATION |                                                |                                                  | Y<br>Y<br>Y<br>Y<br>Y                            |
+
+- `返回值`
+
+  成功：读/写字节数
+
+  失败：-1
+
+*读/写 套接字*
+
+  
+
+---
+
+
+
 ## 总结
 
 ### 多路复用对比
@@ -625,6 +797,16 @@ int main(int argc, char** argv)
 | IO效率     |      每次调用都进行线性遍历，时间复杂度为O(n)      |     每次调用都进行线性遍历，时间复杂度为O(n)     | 事件通知方式，每当fd就绪，系统注册的回调函数就会被调用，将就绪fd放到readyList里面，时间复杂度O(1) |
 | 最大连接数 |              1024（x86）或2048（x64）              |                      无上限                      |                            无上限                            |
 | fd拷贝     | 每次调用select，都需要把fd集合从用户态拷贝到内核态 | 每次调用poll，都需要把fd集合从用户态拷贝到内核态 |  调用epoll_ctl时拷贝进内核并保存，之后每次epoll_wait不拷贝   |
+
+### I/O操作函数比较
+
+| 函数            | 任何描述符 | 仅套接字描述符 | 单个读/写缓冲区 | 分散/集中 读/写 | 可选标志 | 可选对端地址 | 可选控制信息 |
+| --------------- | ---------- | -------------- | --------------- | --------------- | -------- | ------------ | ------------ |
+| read/write      | Y          |                | Y               |                 |          |              |              |
+| readv/writev    | Y          |                |                 | Y               |          |              |              |
+| recv/send       |            | Y              | Y               |                 | Y        |              |              |
+| recvfrom/sendto |            | Y              | Y               |                 | Y        | Y            |              |
+| recvmsg/sendmsg |            | Y              |                 | Y               | Y        | Y            | Y            |
 
 ---
 

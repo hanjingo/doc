@@ -87,7 +87,7 @@ delayed write，传统的UNIX系统实现在内核中设有缓冲区高速缓存
 
 
 
-## 相关API
+## Posix API
 
 ### access/faccessat
 

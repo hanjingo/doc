@@ -273,8 +273,9 @@ int sysctl(int *name, u_int namelen, void *oldp, size_t *oldlenp,
 
 - `返回值`
 
-  - 成功：0
-  - 失败：-1
+  成功：0
+  
+  失败：-1
 
 检查路由表和接口列表，创建路由套接字。
 

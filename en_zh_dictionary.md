@@ -235,6 +235,8 @@ anatomy `/əˈnætəmi/` 解刨，解刨学，人体
 
 ancestor `/ˈænsestə(r)/` 祖先，祖宗
 
+ancillary `/ænˈsɪləri/` 辅助的，附属的，补充的，附加的，助手，随从
+
 anecdote `/ˈænɪkdəʊt/` 趣闻，轶事
 
 anesthetic `/ˌænəˈsθɛtɪk/` 麻醉药，麻醉剂

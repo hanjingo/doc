@@ -87,15 +87,10 @@ ipv6的简化表示方法标准：
 
 ![ipv6_head_struct](res/ipv6_head_struct.png)
 
-- `版本`
+- `版本` IP协议版本，值为6；
+- `DS字段` 服务字段，详情见[DS字段](#DS字段)；
+- `ECN` 显式拥塞通知，标记网络拥堵情况，用于滑动窗口；
 
-  IP协议版本，值为6；
-- `DS字段`
-
-  服务字段，详情见[DS字段](#DS字段)；
-- `ECN`
-
-  显式拥塞通知，标记网络拥堵情况，用于滑动窗口；
 - `流标签`
 - `负载长度`
 - `下一个头部`
@@ -188,6 +183,123 @@ IPv6数据报控制机制，以控制（至少部分控制）数据报通过网�
 ![ipv6_RH0](res/ipv6_RH0.png)
 
 *通过一个IPv6路由头部（RH0），发送方（S）可指定数据报经过中间节点$R_2$和$R_3$。经过的其他节点由正常IPv6路由来确定。注意，在经过路由头部指定的每个跳步时，IPv6头部中的目的地址将会更新*
+
+#### inet6_rth_space
+
+```c++
+#include <netinet/in.h>
+socklen_t inet6_rth_space(int type, int segments);
+```
+
+- `type`类型
+
+- `segments`网段总数
+
+- `返回值`
+
+  成功：字节数（正数）
+
+  失败：0
+
+返回容纳一个指定类型和网段总数的路由首部所需的字节数。
+
+#### inet6_rth_init
+
+```c++
+#include <netinet/in.h>
+void *inet6_rth_init(void *rthbuf, socklen_t rthlen, 
+                     int type, int segments);
+```
+
+- `rthbuf`缓冲区
+
+- `rthlen`缓冲区长度
+
+- `type`类型
+
+- `segments`网段总数
+
+- `返回值`
+
+  成功：指向缓冲区的指针
+
+  失败：NULL
+
+初始化指定的缓冲区，以容纳一个类型为type值且网段总数为segments值的路由首部。
+
+#### inet6_rth_add
+
+```c++
+#include <netinet/in.h>
+int inet6_rth_add(void *rthbuf, const struct in6_addr *addr);
+```
+
+- `rthbuf`缓冲区
+
+- `addr`地址
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+把由addr指向的IPv6地址加到构建中的路由首部的末尾。
+
+#### inet6_rth_reverse
+
+```c++
+#include <netinet/in.h>
+int inet6_rth_reverse(const void *in, void *out);
+```
+
+- `in`传入缓冲区
+
+- `out`返回缓冲区
+
+- `返回值`
+
+  成功：0
+
+  失败：-1
+
+根据in中存放的接收路由首部创建一个新的路由首部，并放入out中（in和out可以为同一个缓冲区）。
+
+#### inet6_rth_seqments
+
+```c++
+#include <netinet/in.h>
+int inet6_rth_seqments(const void *rthbuf);
+```
+
+- `rthbuf`存放路由首部的缓冲区
+
+- `返回值`
+
+  成功：网段数目
+
+  失败：-1
+
+返回路由首部中的网段数目。
+
+#### inet6_rth_getaddr
+
+```c++
+#include <netinet/in.h>
+struct in6_addr *inet6_rth_getaddr(const void *rthbuf, int index);
+```
+
+- `rthbuf`缓冲区
+
+- `index`索引
+
+- `返回值`
+
+  成功：指向IPv6地址的指针
+
+  失败：NULL
+
+返回由rthbuf所指路由首部中索引号为index的那个IPv6地址。
 
 ### 分片头部
 
@@ -452,14 +564,454 @@ A, B, C类用于单播
 
 
 
-
 ## 地址转换
+
+### IPv4与IPv6地址转换
 
 ![ip_transform](res/ip_transform.png)
 
-*IPv4地址可以嵌入IPv6地址中，形成一个嵌入IPv4的IPv6地址。有6种不同的格式可用，这取决于使用的IPv6前缀长度。众所周知的前缀64:ff9b::/96可用于IPv4和IPv6单播地址之间的自动转换*
+*IPv4地址可以嵌入IPv6地址中，形成一个嵌入IPv4的IPv6地址。有6种不同的格式可用，这取决于使用的IPv6前缀长度。众所周知的前缀64:ff9b::/96可用于IPv4和IPv6单播地址之间的自动转换。*
+
+### gethostbyname 根据域名查找主机地址
+
+```c++
+#include <netdb.h>
+struct hostend *gethostbyname(const char *hostname);
+```
+
+- `hostname`域名
+
+- `返回值`
+
+  成功：返回hostent指针
+
+  ```c++
+  struct hostent {
+      char  *h_name;
+      char **h_aliases;
+      int    h_addrtype;
+      int    h_length;
+      char **h_addr_list;
+  }
+  ```
+
+  失败：返回NULL，并设置`<netdb.h>`中的全局变量`h_errno`为以下值之一：
+
+  - HOST_NOT_FOUND；
+  - TRY_AGAIN；
+  - NO_RECOVERY；
+  - NO_DATA。
+
+根据域名查找主机地址，它执行的是对A记录的查询，所以只能返回IPv4地址。
+
+### gethostbyaddr 根据二进制IP地址查询主机名
+
+```c++
+#include <netdb.h>
+struct hostent *gethostbyaddr(const char *addr, socklen_t len, int family);
+```
+
+- `addr`指向存放IPv4地址的某个in_addr结构的指针
+
+- `len`结构的大小
+
+- `family`地址类型，IPv4：AF_INET
+
+- `返回值`
+
+  成功：非空指针
+
+  失败：NULL
+
+根据二进制IP地址查询主机名。
+
+### getservbyname 根据名字查找服务
+
+```c++
+#include <netdb.h>
+struct servent *getservbyname(const char *servname, const char *protoname);
+```
+
+- `servname`服务名
+
+- `protoname`协议名
+
+- `返回值`
+
+  成功：
+
+  ```c++
+  struct servent {
+      char  *s_name;
+      char **s_aliases;
+      int    s_port;
+      char  *s_proto;
+  };
+  ```
+
+  失败：NULL
+
+根据给定名字查找相应服务。
+
+### getservbyport 根据端口号和可选协议查找服务
+
+```c++
+#include <netdb.h>
+struct servent *getservbyport(int port, const char *protoname);
+```
+
+- `port`端口号
+
+- `protoname`协议名
+
+- `返回值`
+
+  成功：非空指针；
+
+  失败：NULL。
+
+根据给定端口号和可选协议查找相应服务。
+
+### getaddrinfo  根据主机名和端口查找地址信息
+
+```c++
+#include <netdb.h>
+int getaddrinfo(const char *hostname, const char *service, 
+                const struct addrinfo *hints, struct addrinfo **result);
+```
+
+- `hostname`主机名或地址串（IPv4：点分十进制；IPv6：十六进制数串）
+
+- `service`服务名或十进制端口数串
+
+- `hints` 指向addrinfo结构的指针（可选），结构体中的以下成员可以被设置：
+
+  - `ai_flags`
+
+    | ai_flags值     | 含义                                                         |
+    | -------------- | ------------------------------------------------------------ |
+    | AI_PASSIVE     | 套接字将用于被动打开。                                       |
+    | AI_CANONNAME   | 告知getaddrinfo函数返回主机的规范名字。                      |
+    | AI_NUMERICHOST | 防止任何类型的名字到地址映射，hostname参数必须是一个地址串。 |
+    | AI_NUMERICSERV | 防止任何类型的名字到服务映射，service参数必须是一个十进制端口号数串。 |
+    | AI_V4MAPPED    | 如果同时指定ai_family成员的值为AF_INET6，那么如果没有可用的`AAAA`记录，就返回与`A`记录对应的IPv4映射的IPv6地址。 |
+    | AI_ALL         | 如果同时指定AI_V4MAPPED标志，那么除了返回与AAAA记录对应的IPv6地址外，还返回与A记录对应的IPv4映射的IPv6地址。 |
+    | AI_ADDRCONFIG  | 按照所在主机的配置选择返回地址类型，也就是只查找与所在主机回馈接口以外的网络接口配置的IP地址版本一致的地址。 |
+
+  - `ai_family`
+
+  - `ai_socktype`
+
+  - `ai_protocol`
+
+- `result` 指向成员为addrinfo的链表，在以下情况下，该链表的成员个数大于1个：
+
+  - 如果与`hostname`参数关联的地址有多个，那么适用于所请求地址族（可通过hints结构的ai_family成员设置）的每个地址都返回一个对应的结构；
+  - 如果`service`参数指定的服务支持多个套接字类型，那么每个套接字类型都可能返回一个对应的结构，具体取决于`hints`结构的`ai_socktype`成员。
+
+- `返回值`
+
+  - 成功：0
+  - 失败：非0
+
+根据主机名和端口返回一个指向addrinfo结构链表的指针。
+
+### gai_strerror 查找非0错误的字符串描述符
+
+```c++
+#include <netdb.h>
+const char *gai_strerror(int error);
+```
+
+- `error`错误ID
+
+- `返回值`错误消息字符串描述符
+
+  | 常值         | 说明                                        |
+  | ------------ | ------------------------------------------- |
+  | EAI_AGAIN    | 名字解析中临时失败                          |
+  | EAI_BADFLAGS | ai_flags的值无效                            |
+  | EAI_FAIL     | 名字解析中不可恢复地失败                    |
+  | EAI_FAMILY   | 不支持ai_family                             |
+  | EAI_MEMORY   | 内存分配失败                                |
+  | EAI_NONAME   | hostname或service未提供，或者不可知         |
+  | EAI_OVERFLOW | 用户参数缓冲区溢出（仅限getnameinfo()函数） |
+  | EAI_SERVICE  | 不支持ai_socktype类型的service              |
+  | EAI_SOCKTYPE | 不支持ai_socktype                           |
+  | EAI_SYSTEM   | 在errno变量中由系统错误返回                 |
+
+返回非0错误的字符串描述符。
+
+### freeaddrinfo 释放地址空间
+
+```c++
+#include <netdb.h>
+void freeaddrinfo(struct addrinfo *ai);
+```
+
+- `ai`一个指向addrinfo链表的指针
+
+释放由getaddrinfo返回的存储空间。
+
+### getnameinfo 查找主机和服务
+
+```c++
+#include <netdb.h>
+int getnameinfo(const struct sockaddr *sockaddr, socklen_t addrlen,
+                char *host, socklen_t hostlen,
+                char *serv, socklen_t servlen, int flags);
+```
+
+- `sockaddr`套接字地址
+
+- `addrlen`套接字地址长度
+
+- `host`用于返回的主机字符串
+
+- `hostlen`主机字符串长度
+
+- `serv`用于返回的服务字符串
+
+- `servlen`服务字符串长度
+
+- `flags`标志信息
+
+  | 标志            | 说明                             |
+  | --------------- | -------------------------------- |
+  | NI_DGRAM        | 数据报服务                       |
+  | NI_NAMEREQD     | 若不能从地址解析出名字则返回错误 |
+  | NI_NOFQDN       | 只返回FQDN的主机名部分           |
+  | NI_NUMERICHOST  | 以数串格式返回主机字符串         |
+  | NI_NUMERICSCOPE | 以数串格式返回范围标识字符串     |
+  | NI_NUMERICSERV  | 以数串格式返回服务字符串         |
+
+- `返回值`
+
+  成功：0
+
+  失败：非0
+
+返回套接字地址的主机（字符串）和服务（字符串）。
 
 
+
+## IP选项
+
+### IPv4选项
+
+`源路径（source route）`是由IP数据报的发送者指定的一个IP地址列表。
+
+IPv4源路径称为`源和记录路径（source and record routes，SSR，其中LSSR表示宽松的选项，SSRR表示严格的选项）`。
+
+![ipv4_source_route](res/ipv4_source_route.png)
+
+*向内核传递的源路径*
+
+![ipv4_getsockopt](res/ipv4_getsockopt.png)
+
+*getsockopt返回的源路径选项格式*
+
+### IPv6选项
+
+IPv6首部可以后跟如下几种可选的扩展首部（extention header）：
+
+- 步跳选项（hop_by_hop options）
+- 目的地选项（destination options）
+- 路径首部（routing header）
+- 分片首部（fragmentation header）
+- 认证首部（authentication header, AH）
+- 安全净荷封装（encapsulating security payload, ESP）
+
+#### 步跳选项
+
+![ipv6_hop_by_hop_options1](res/ipv6_hop_by_hop_options1.png)
+
+*步跳选项和目的地选项的格式*
+
+![ipv6_hop_by_hop_options2](res/ipv6_hop_by_hop_options2.png)
+
+*个体步跳选项或目的地选项的格式*
+
+- `类型（type）` 8bit，用于指定选项值类型
+
+  | 高序前2位                                                    | 高序第3位                                                  | 低序5位                                 |
+  | ------------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------- |
+  | - 00 跳过本选项，继续处理本首部。<br>- 01 丢弃本分组。<br>- 00 丢弃本分组，并且不论本分组的目的地址是否为一个多播地址，均发送一个ICMP参数问题类型2错误给发送者。<br>- 00 丢弃本分组，并且只在本分组的目的地址不是一个多播地址的前期下，发送一个ICMP参数问题类型2错误给发送者 | - 0 选项数据在途中无变化。<br>- 1 选项数据在途中可能变化。 | 指定选项本身，需要与高序前3位共同标识。 |
+
+- `长度（length）`指定选项值的长度（不包括`类型`和`长度`字段长）
+
+- `选项值（value）`
+
+  ![ipv6_hop_by_hop_options2_value](res/ipv6_hop_by_hop_options2_value.png)
+
+#### inet6_opt_init
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_init(void *extbuf, socklen_t extlen);
+```
+
+- `extbuf`扩展缓冲区
+
+- `extlen`扩展缓冲区长（8的倍数）
+
+- `返回值`
+
+  成功：容纳一个空扩展首部所需的字节数
+
+  失败：-1
+
+*返回容纳一个空扩展首部所需的字节数*
+
+#### inet6_opt_append
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_append(void *extbuf, socklen_t extlen, 
+                     int offset, uint8_t type, socklen_t len,
+                     uint8_t align, void **databufp);
+```
+
+- `extbuf`扩展缓冲区
+
+- `extlen`扩展缓冲区长（8的倍数）
+
+- `offset`缓冲区偏移量，必须是某个inet6_opt_init或inet6_opt_append调用的返回值
+
+- `type`选项类型
+
+- `len`选项长度
+
+- `align`对齐要求（不需要显式指定）
+
+- `databufp`用于返回指向所添加选项值的填写位置的一个指针
+
+- `返回值`
+
+  成功：添加指定的个体选项后更新的扩展首部总长度
+
+  失败：-1
+
+*返回添加指定的个体选项后更新的扩展首部总长度*
+
+#### inet6_opt_finish
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_finish(void *extbuf, socklen_t extlen, int offset);
+```
+
+- `extbuf`扩展缓冲区
+
+- `extlen`扩展缓冲区长（8的倍数）
+
+- `offset`缓冲区偏移量，必须是某个inet6_opt_init或inet6_opt_append调用的返回值
+
+- `返回值`
+
+  成功：完成设置后更新的扩展首部总长度
+
+  失败：-1
+
+*结束一个扩展首部的设置，添加填充使得总长度为8的倍数*
+
+#### inet6_opt_set_val
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_set_val(void *databuf, int offset,
+                      const void *val, socklen_t vallen);
+```
+
+- `databuf` 缓冲区
+- `offset`缓冲区偏移量，必须是某个inet6_opt_init或inet6_opt_append调用的返回值
+- `val`复制到选项值缓冲区中的值
+- `vallen`复制到选项值缓冲区中的值长度
+- `返回值` date_buf中新的偏移
+
+*把给定的选项值复制到由inet6_opt_append返回的数据缓冲区中*
+
+#### inet6_opt_next
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_next(const void *extbuf, socklen_t extlen, int offset,
+                   uint8_t *typep, socklen_t *lenp, void **databuf);
+```
+
+- `extbuf`缓冲区
+
+- `extlen`缓冲区长度
+
+- `offset`缓冲区的偏移量
+
+- `typep`游动选项的类型
+
+- `lenp`游动选项的长度
+
+- `databuf`游动选项的值
+
+- `返回值`
+
+  成功：选项偏移量
+
+  失败：-1
+
+*处理缓冲区中的下一个选项*
+
+#### inet6_opt_find
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_find(const void *extbuf, socklen_t extlen, int offset,
+                   uint8_t type, socklen_t *lenp, void **databufp);
+```
+
+- `extbuf`缓冲区
+
+- `extlen`缓冲区长度
+
+- `offset`缓冲区的偏移量
+
+- `typep`游动选项的类型
+
+- `lenp`游动选项的长度
+
+- `databuf`游动选项的值
+
+- `返回值`
+
+  成功：选项偏移量
+
+  失败：-1
+
+*处理缓冲区中的指定的选项*
+
+#### inet6_opt_get_val
+
+```c++
+#include <netinet/in.h>
+int inet6_opt_get_val(const void *databuf, int offset, 
+                      void *val, socklen_t vallen);
+```
+
+- `databuf`游动选项的值
+
+- `offset`缓冲区的偏移量
+
+- `val`复制到选项值缓冲区中的值
+
+- `vallen`复制到选项值缓冲区中的值长度
+
+- `返回值`
+
+  成功：databuf中新的偏移
+
+  失败：-1
+
+*从选项值中抽取数据*
+
+  
 
 ## IP转发
 

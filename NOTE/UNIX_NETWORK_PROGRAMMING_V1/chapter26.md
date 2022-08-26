@@ -27,8 +27,9 @@ int pthread_create(pthread_t *tid, const pthread_attr_t *attr, void *(*func)(voi
 
 - `返回值`
 
-  - 成功：0
-  - 失败：错误码
+  成功：0
+  
+  失败：错误码
 
 创建线程。
 
@@ -42,8 +43,10 @@ int pthread_join(pthread_t *tid, void **status);
 - `tid`线程ID
 - `status`线程返回值
 - `返回值`
-  - 成功：0
-  - 失败：错误码
+  
+  成功：0
+  
+  失败：错误码
 
 等待线程终止。
 
@@ -65,8 +68,10 @@ int pthread_detach(pthread_t tid);
 
 - `tid`线程ID
 - `返回值`
-  - 成功：0
-  - 失败：错误码
+  
+  成功：0
+  
+  失败：错误码
 
 把指定的线程转变为脱离状态。
 
@@ -77,7 +82,7 @@ int pthread_detach(pthread_t tid);
 void pthread_exit(void *status);
 ```
 
-- `status`
+- `status` 线程退出状态
 
 让线程终止。
 
@@ -227,7 +232,14 @@ int pthread_once(pthread_once_t *onceptr, void (*init)(void));
 ```
 
 - `onceptr`调用记录指针
+
 - `init`初始化函数
+
+- `返回值`
+
+  成功：0
+
+  失败：错误码
 
 确保init函数只被调用一次。
 
@@ -238,8 +250,13 @@ int pthread_key_create(pthread_key_t *keyptr, void (*destructor)(void *value));
 
 - `keyptr`返回创建的键
 - `destructor`键析构器
+- `返回值`
 
-创建一个key。
+  成功：0
+
+  失败：错误码
+
+分配用于标识进程中线程特定数据的键。
 
 ```c++
 #include <pthread.h>
@@ -455,6 +472,12 @@ int pthread_mutex_unlock(pthread_mutex_t *mptr);
 
 - `mptr`互斥量
 
+- `返回值`
+
+  成功：0
+
+  失败：错误码
+
 给互斥量加/解锁。
 
 ```c++
@@ -508,10 +531,12 @@ int pthread_cond_signal(pthread_cond_t *cptr);
 - `cptr`条件变量（信号）
 - `mptr`互斥量
 - `返回值`
-  - 成功：0
-  - 失败：错误码
+  
+  成功：0
+  
+  失败：错误码
 
-等待/唤醒条件变量上**单个线程**。
+等待/唤醒条件变量上的**单个线程**。
 
 ```c++
 #include <pthread.h>
@@ -524,10 +549,12 @@ int pthread_cond_broadcast(pthread_cond_t *cptr);
 - `mptr`互斥量
 - `abstime`等待时间（绝对时间，即1970.01.01UTC事件以来的秒数和纳秒数）
 - `返回值`
-  - 成功：0
-  - 失败：错误码
+  
+  成功：0
+  
+  失败：错误码
 
-等待/唤醒条件变量上**所有线程**。
+超时等待/唤醒条件变量上的**所有线程**。
 
 
 

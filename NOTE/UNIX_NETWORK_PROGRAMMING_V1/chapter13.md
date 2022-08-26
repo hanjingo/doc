@@ -117,7 +117,7 @@ daemon_init(const char *pname, int facility)
         _exit(0);
     // child 2 continues...
     daemon_proc = 1; // 为错误处理函数设置标识
-    chdir("/"); // 变更工作目录到根目录
+    chdir("/");      // 变更工作目录到根目录
     // 关闭所有打开的描述符
     for (i = 0; i < MAXFD; i++)
         close(i);
@@ -171,7 +171,7 @@ main(int argc, char **argv)
 
 | 字段                     | 说明                                     |
 | ------------------------ | ---------------------------------------- |
-| service-name             | 必须在/etc/services文件中定义            |
+| service-name             | 必须在`/etc/services`文件中定义          |
 | socket-type              | stream（TCP）或dgram（UDP）              |
 | protocol                 | 必须在/etc/protocols文件中定义：tcp或udp |
 | wait-flag                | 对于TCP一般为nowait，对于UDP一般为wait   |

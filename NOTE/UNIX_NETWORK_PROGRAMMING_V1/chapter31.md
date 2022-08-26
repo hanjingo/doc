@@ -92,6 +92,8 @@ int putpmsg(int fd, const struct strbuf *ctlptr, const struct strbuf *dataptr, i
 int ioctl(int fd, int request, ...);
 ```
 
+*流控制函数*
+
 
 
 ## 31.6 TPI：传输提供者接口
@@ -319,9 +321,4 @@ tpi_close(int fd)
 
 
 ## 31.7 小结
-
-1. 雨水多，影响小麦生长
-2. 小麦播种受疫情印象，错过了最佳播种时间
-3. 疫情管理导致农民耕种活动受影响
-4. 交通运输受阻，饲料价格上涨
 

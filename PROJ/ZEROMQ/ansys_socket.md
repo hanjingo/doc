@@ -31,24 +31,42 @@ classDiagram
 
 
 
+## 通讯协议
+
+zmq支持以下通讯方式：
+
+- `tcp` 使用TCP的单播传输。
+- `inpro` **线程间**通信。
+- `ipc` 本地**进程间**通信。
+- `pgm` 基于IP网络协议的可靠多路广播（只可用于pub和sub类型套接字）。
+- `epgm` 基于IP网络协议的可靠多路广播（只可用于pub和sub类型套接字）。
+- `vmci` 虚拟机通信接口。
+
+
+
 ## socket分类
 
-| socket类别             | 说明 |
-| ---------------------- | ---- |
-| ZMQ_PAIR               |      |
-| ZMQ_PUB                |      |
-| ZMQ_SUB                |      |
-| ZMQ_REQ                |      |
-| ZMQ_XREQ（ZMQ_DEALER） |      |
-| ZMQ_REP                |      |
-| ZMQ_XREP（ZMQ_ROUTER） |      |
-| ZMQ_DEALER             |      |
-| ZMQ_ROUTER             |      |
-| ZMQ_PULL               |      |
-| ZMQ_PUSH               |      |
-| ZMQ_XPUB               |      |
-| ZMQ_XSUB               |      |
-| ZMQ_STREAM             |      |
+| socket      | 组合                                                         | 说明                                       |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------ |
+| ZMQ_PAIR    | `ZMQ_PAIR + ZMQ_PAIR`：线程间通信                            | 套接字对                                   |
+| ZMQ_PUB     | `ZMQ_PUB + ZMQ_SUB`：经典发布订阅模型<br>`ZMQ_PUB + ZMQ_XSUB`：高级发布模型 | 发布套接字                                 |
+| ZMQ_SUB     | `ZMQ_SUB + ZMQ_PUB`：经典发布订阅模型<br>`ZMQ_SUB + ZMQ_XPUB`：高级订阅模型 | 订阅套接字                                 |
+| ZMQ_XPUB    | `ZMQ_XPUB + ZMQ_XSUB`：高级发布订阅模型<br>`ZMQ_SUB + ZMQ_XPUB`：高级订阅模型 | 高级订阅套接字（用于转发套接字发布的消息） |
+| ZMQ_XSUB    | `ZMQ_XPUB + ZMQ_XSUB`：高级发布订阅模型<br>`ZMQ_PUB + ZMQ_XSUB`：高级发布模型 | 高级发布套接字（用于接收套接字发布的消息） |
+| ZMQ_REQ     | `ZMQ_REQ + ZMQ_REP`：经典请求响应模型                        | 请求套接字（一问一答）                     |
+| ZMQ_REP     | `ZMQ_REQ + ZMQ_REP`：经典请求响应模型                        | 响应套接字（一问一答）                     |
+| ZMQ_XREQ    | `ZMQ_XREQ + ZMQ_XREP`：高级请求响应模型                      |                                            |
+| ZMQ_XREP    | `ZMQ_XREQ + ZMQ_XREP`：高级请求响应模型                      |                                            |
+| ZMQ_PUSH    | `ZMQ_PUSH + ZMQ_PULL`：经典推/拉模型                         | 推送套接字                                 |
+| ZMQ_PULL    | `ZMQ_PUSH + ZMQ_PULL`：经典推/拉模型                         | 拉取套接字                                 |
+| ZMQ_STREAM  |                                                              |                                            |
+| ZMQ_SERVER  |                                                              |                                            |
+| ZMQ_CLIENT  |                                                              |                                            |
+| ZMQ_GATHER  |                                                              |                                            |
+| ZMQ_SCATTER |                                                              |                                            |
+| ZMQ_DGRAM   |                                                              |                                            |
+| ZMQ_PEER    |                                                              |                                            |
+| ZMQ_CHANNEL |                                                              |                                            |
 
 
 
@@ -56,28 +74,17 @@ classDiagram
 
 ### 建立连接
 
-```c++
-int zmq::socket_base_t::connect (const char *endpoint_uri_) -> 
-    
-    int zmq::socket_base_t::connect_internal (const char *endpoint_uri_) -> 
-    
-    zmq::session_base_t *zmq::session_base_t::create (class io_thread_t *io_thread_,
-                                                  bool active_,
-                                                  class socket_base_t *socket_,
-                                                  const options_t &options_,
-                                                  address_t *addr_) ->
-    
-    
-    
+```mermaid
+graph TD
+	zmq::socket_base_t::connect --> zmq::socket_base_t::connect_internal --> zmq::session_base_t::create    
 ```
 
-```c++
-void zmq::stream_connecter_base_t::timer_event (int id_) ->
-void zmq::session_base_t::start_connecting (bool wait_) -> 
-fd_t connect ()
+触发连接事件：
+
+```mermaid
+graph TD
+	zmq::poller_base_t::execute_timers --> zmq::stream_connecter_base_t::timer_event --> zmq::session_base_t::start_connecting --> connect   
 ```
-
-
 
 ### 断线重连
 
@@ -87,121 +94,17 @@ TODO
 
 TODO
 
+### 释放与销毁
 
+TODO
 
-## 选项
+### 发送多帧
 
-### socket option
+TODO
 
-- ZMQ_AFFINITY
-- ZMQ_ROUTING_ID
-- ZMQ_SUBSCRIBE
-- ZMQ_UNSUBSCRIBE
-- ZMQ_RATE
-- ZMQ_RECOVERY_IVL
-- ZMQ_SNDBUF
-- ZMQ_RCVBUF
-- ZMQ_RCVMORE
-- ZMQ_FD
-- ZMQ_EVENTS
-- ZMQ_TYPE
-- ZMQ_LINGER
-- ZMQ_RECONNECT_IVL
-- ZMQ_BACKLOG
-- ZMQ_RECONNECT_IVL_MAX
-- ZMQ_MAXMSGSIZE
-- ZMQ_SNDHWM 发送消息高水位（最大缓存量）
-- ZMQ_RCVHWM
-- ZMQ_MULTICAST_HOPS
-- ZMQ_RCVTIMEO
-- ZMQ_SNDTIMEO
-- ZMQ_LAST_ENDPOINT
-- ZMQ_ROUTER_MANDATORY
-- ZMQ_TCP_KEEPALIVE
-- ZMQ_TCP_KEEPALIVE_CNT
-- ZMQ_TCP_KEEPALIVE_INTVL
-- ZMQ_IMMEDIATE
-- ZMQ_XPUB_VERBOSE
-- ZMQ_ROUTER_RAW
-- ZMQ_IPV6
-- ZMQ_MECHANISM
-- ZMQ_PLAIN_SERVER
-- ZMQ_PLAIN_USERNAME
-- ZMQ_PLAIN_PASSWORD
-- ZMQ_CURVE_SERVER
-- ZMQ_CURVE_PUBLICKEY
-- ZMQ_CURVE_SECRETKEY
-- ZMQ_CURVE_SERVERKEY
-- ZMQ_PROBE_ROUTER
-- ZMQ_REQ_CORRELATE
-- ZMQ_REQ_RELAXED
-- ZMQ_CONFLATE
-- ZMQ_ZAP_DOMAIN
-- ZMQ_ROUTER_HANDOVER
-- ZMQ_TOS
-- ZMQ_CONNECT_ROUTING_ID
-- ZMQ_GSSAPI_SERVER
-- ZMQ_GSSAPI_PRINCIPAL
-- ZMQ_GSSAPI_SERVICE_PRINCIPAL
-- ZMQ_GSSAPI_PLAINTEXT
-- ZMQ_HANDSHAKE_IVL
-- ZMQ_SOCKS_PROXY
-- ZMQ_XPUB_NODROP
-- ZMQ_BLOCKY
-- ZMQ_XPUB_MANUAL
-- ZMQ_XPUB_WELCOME_MSG
-- ZMQ_STREAM_NOTIFY
-- ZMQ_INVERT_MATCHING
-- ZMQ_HEARTBEAT_IVL
-- ZMQ_HEARTBEAT_TTL
-- ZMQ_HEARTBEAT_TIMEOUT
-- ZMQ_XPUB_VERBOSER
-- ZMQ_CONNECT_TIMEOUT
-- ZMQ_TCP_MAXRT
-- ZMQ_THREAD_SAFE
-- ZMQ_MULTICAST_MAXTPDU
-- ZMQ_VMCI_BUFFER_SIZE
-- ZMQ_VMCI_BUFFER_MIN_SIZE
-- ZMQ_VMCI_BUFFER_MAX_SIZE
-- ZMQ_VMCI_CONNECT_TIMEOUT
-- ZMQ_USE_FD
-- ZMQ_GSSAPI_PRINCIPAL_NAMETYPE
-- ZMQ_GSSAPI_SERVICE_PRINCIPAL_NAMETYPE
-- ZMQ_BINDTODEVICE
+### 多次发送
 
-### message options
-
-- ZMQ_MORE
-- ZMQ_SHARED
-
-### send/recv options
-
-- ZMQ_DONTWAIT
-- ZMQ_SNDMORE
-
-### security mechainsms
-
-- ZMQ_NULL
-- ZMQ_PLAIN
-- ZMQ_CURVE
-- ZMQ_GSSAPI
-
-### RDDIO-DISH protocol
-
-- ZMQ_GROUP_MAX_LENGTH 255
-
-
-
-## 通讯协议
-
-zmq支持以下通讯方式：
-
-- `tcp` 使用TCP的单播传输。
-- `inpro` 本地**进程内（线程间）**通信。
-- `ipc` 本地**进程间**通信。
-- `pgm` 基于IP网络协议的可靠多路广播（只可用于pub和sub类型套接字）。
-- `epgm` 基于IP网络协议的可靠多路广播（只可用于pub和sub类型套接字）。
-- `vmci` 虚拟机通信接口。
+TODO
 
 
 

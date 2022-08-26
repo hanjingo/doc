@@ -28,18 +28,41 @@
 所属头文件 `sys/socket.h`
 
 - `size_t recvfrom(int sockfd, void *buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t *addrlen)` 收消息
-  - sockfd: 描述符
-  - buff: 缓冲区指针
-  - nbytes: 读/写字节数
-  - from: 发送者地址
-  - addrlen: 地址长度
+  
+  - `sockfd` 描述符
+  - `buff` 缓冲区指针
+  
+  - `nbytes` 读字节数
+  
+  - `flags` 参数
+  
+  - `from` 发送者地址
+  
+  - `addrlen` 地址长度
+  
+  - `返回值`
+  
+    成功：读字节数
+  
+    失败：-1
 - `ssize_t sendto(int sockfd, const void *buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t *addrlen)` 发消息
-  - sockfd: 描述符
-  - buff: 缓冲区指针
-  - nbytes: 读/写字节数
-  - flags: 
-  - to: 接收者地址
-  - addrlen: 地址长度
+  
+  - `sockfd` 描述符
+  - `buff` 缓冲区指针
+  
+  - `nbytes` 读/写字节数
+  
+  - `flags` 参数
+  
+  - `to` 接收者地址
+  
+  - `addrlen` 地址长度
+  
+  - `返回值`
+  
+    成功：写字节数
+  
+    失败：-1
 
 
 

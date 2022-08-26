@@ -2,6 +2,7 @@
 
 - [COM技术](com.md)
 - [编译与链接](compile_and_link.md)
+- [守护进程](daemon.md)
 - [驱动](drive.md)
 - [动态链接](dynamic_link.md)
 - [可执行程序](exe.md)
@@ -19,5 +20,4 @@
 - [存储器](storage.md)
 - [unix系统内核结构](unix_core.md)
 - [Windows API](winapi.md)
-- [Windows网络编程](winsock.md)
 

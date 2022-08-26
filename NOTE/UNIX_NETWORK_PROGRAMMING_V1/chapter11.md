@@ -121,8 +121,16 @@ struct hostent *gethostbyaddr(const char *addr, socklen_t len, int family);
 ```
 
 - `addr`指向存放IPv4地址的某个in_addr结构的指针
+
 - `len`结构的大小
+
 - `family`地址类型，IPv4：AF_INET
+
+- `返回值`
+
+  成功：非空指针
+
+  失败：NULL
 
 根据二进制IP地址查询主机名。
 
@@ -141,6 +149,8 @@ struct servent *getservbyname(const char *servname, const char *protoname);
 
 - `返回值`
 
+  成功：
+  
   ```c++
   struct servent {
       char  *s_name;
@@ -149,6 +159,8 @@ struct servent *getservbyname(const char *servname, const char *protoname);
       char  *s_proto;
   };
   ```
+  
+  失败：NULL
 
 根据给定名字查找相应服务。
 
@@ -158,7 +170,14 @@ struct servent *getservbyport(int port, const char *protoname);
 ```
 
 - `port`端口号
+
 - `protoname`协议名
+
+- `返回值`
+
+  成功：非空指针；
+
+  失败：NULL。
 
 根据给定端口号和可选协议查找相应服务。
 
@@ -228,22 +247,18 @@ int getaddrinfo(const char *hostname, const char *service,
 
 - `service`服务名或十进制端口数串
 
-- `hints`
-
-  指向addrinfo结构的指针（可选），结构体中的以下成员可以被设置：
+- `hints` 指向addrinfo结构的指针（可选），结构体中的以下成员可以被设置：
 
   - `ai_flags`
   - `ai_family`
   - `ai_socktype`
   - `ai_protocol`
-
-- `result`
-
-  指向成员为addrinfo的链表，在以下情况下，该链表的成员个数大于1个：
+  
+- `result` 指向成员为addrinfo的链表，在以下情况下，该链表的成员个数大于1个：
 
   - 如果与`hostname`参数关联的地址有多个，那么适用于所请求地址族（可通过hints结构的ai_family成员设置）的每个地址都返回一个对应的结构；
   - 如果`service`参数指定的服务支持多个套接字类型，那么每个套接字类型都可能返回一个对应的结构，具体取决于`hints`结构的`ai_socktype`成员。
-
+  
   如果在`hints`结构中设置了AI_CANONNAME标志，那么本函数返回的第一个addrinfo结构的ai_canonname成员指向所查找主机的规范名字（通常是FQDN）。
 
   addrinfo定义：
@@ -261,7 +276,7 @@ int getaddrinfo(const char *hostname, const char *service,
       struct addrinfo *ai_next;
   };
   ```
-
+  
   `ai_flags`可用的标志值及其含义：
 
   | ai_flags值     | 含义                                                         |
@@ -273,11 +288,11 @@ int getaddrinfo(const char *hostname, const char *service,
   | AI_V4MAPPED    | 如果同时指定ai_family成员的值为AF_INET6，那么如果没有可用的`AAAA`记录，就返回与`A`记录对应的IPv4映射的IPv6地址。 |
   | AI_ALL         | 如果同时指定AI_V4MAPPED标志，那么除了返回与AAAA记录对应的IPv6地址外，还返回与A记录对应的IPv4映射的IPv6地址。 |
   | AI_ADDRCONFIG  | 按照所在主机的配置选择返回地址类型，也就是只查找与所在主机回馈接口以外的网络接口配置的IP地址版本一致的地址。 |
-
+  
 - `返回值`
 
   - 成功：0
-  - 失败
+  - 失败：非0
 
 根据主机名和端口返回一个指向addrinfo结构链表的指针。
 
@@ -733,6 +748,12 @@ int getnameinfo(const struct sockaddr *sockaddr, socklen_t addrlen,
   | NI_NUMERICHOST  | 以数串格式返回主机字符串         |
   | NI_NUMERICSCOPE | 以数串格式返回范围标识字符串     |
   | NI_NUMERICSERV  | 以数串格式返回服务字符串         |
+  
+- `返回值`
+
+  成功：0
+
+  失败：非0
 
 返回套接字地址的主机（字符串）和服务（字符串）。
 

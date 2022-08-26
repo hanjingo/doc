@@ -43,7 +43,7 @@ template <typename T> class atomic_ptr_t
 
 ## signaler_t
 
-信号机（signaler_t）用于在两个线程之间传递信号，容量为1（即同一时间信号机内最多只能有1个信号）.
+`信号机（signaler_t）`用于在两个线程之间传递信号，容量为1（即同一时间信号机内最多只能有1个信号）。
 
 ```c++
 class signaler_t // 信号机

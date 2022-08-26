@@ -35,7 +35,12 @@ zmq对于不同的消息类型有不同的处理方式：
 
 ### 创建
 
-init -> init_size -> init_external_storage -> init_data
+```mermaid
+graph TD
+init --> init_size
+init_size --> init_external_storage
+init_external_storage --> init_data
+```
 
 ```c++
 // 初始化消息长度
@@ -178,7 +183,7 @@ int zmq::msg_t::close ()
 
 ### 多帧
 
-特性：
+zmq支持多帧特性：
 
 - 在发送多帧消息时，只有当最后一帧提交发送了，整个消息才会发送；
 - 多帧消息是整体传输的，不会只收到一部分；

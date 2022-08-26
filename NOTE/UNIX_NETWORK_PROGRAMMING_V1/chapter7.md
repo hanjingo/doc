@@ -85,7 +85,7 @@
 - `optval`：指向一个变量
 - `optlen`：指定optval的大小
 - 返回值
-    
+  
     成功：0
     
     出错：-1
@@ -135,10 +135,10 @@
 #include <netinet/tcp.h>
 
 union val {
-    int 						   i_val;
-    long 						l_val;
-    struct linger 		 linger_val;
-    struct timeval    timeval_val;
+    int            i_val;
+    long           l_val;
+    struct linger  linger_val;
+    struct timeval timeval_val;
 } val;
 static char *sock_str_flag(union val *, int);
 static char *sock_str_int(union val *, int);
@@ -498,7 +498,7 @@ SO_REUSEPORT套接字选项的2个用途：
 
 ### IPV6_XXX
 
-TODO
+套接字选项。
 
 
 
@@ -844,11 +844,11 @@ SCTP状态：
 `int fcntl(int fd, int cmd, ...)`
 
 - `fd` 文件描述符
-    
+  
 - `cmd` 命令
-    
+  
 - `返回值`
-    
+  
     成功：取决于cmd
     
     出错：-1
