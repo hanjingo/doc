@@ -406,12 +406,17 @@ int main(int argc, char* argv[])
     std::thread t1(std::bind([](std::promise<int>& p) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         p.set_value(1);
+        //        p.set_value(2); // 报错，std::promise只能用一次
     }, std::move(p)));
 
     // 接收值
     std::thread t2(std::bind([](std::future<int>& f) {
         std::cout << "recv :" << f.get();
+        //        std::cout << "recv :" << f.get(); // 报错，std::promise只能用一次
     }, std::move(f)));
+
+    t1.join();
+    t2.join();
 
     t1.join();
     t2.join();
