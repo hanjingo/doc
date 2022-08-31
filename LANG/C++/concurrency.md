@@ -4,7 +4,7 @@
 
 
 
-## `std::thread`
+## std::thread
 
 ### 创建线程
 
@@ -115,7 +115,7 @@ unsigned long const hardware_threads = std::thread::hardware_concurrency();
 
 
 
-## `std::mutex`
+## std::mutex
 
 ```c++
 #include <mutext>
@@ -169,26 +169,13 @@ boost::shared_lock<boost::shared_mutex> lk(sm); // 提供共享，只读访问
 
 
 
-## `std::atomic`
+## std::atomic
 
-### 类型
-
-- 存储（store）操作
-  - memory_order_relaxed
-  - memory_order_release
-  - memory_order_seq_cst
-- 载入（load）操作
-  - memory_order_relaxed
-  - memory_order_consume
-  - memory_order_acquire
-  - memory_order_seq_cst
-- 读-修改-写（read-modify-write）操作
-  - memory_order_relaxed
-  - memory_order_consume
-  - memory_order_acquire
-  - memory_order_release
-  - memory_order_acq_rel
-  - memory_order_seq_cst
+| 操作类型                            | 分类                                                         |
+| ----------------------------------- | ------------------------------------------------------------ |
+| 存储（store）操作                   | memory_order_relaxed<br>memory_order_release<br>memory_order_seq_cst |
+| 载入（load）操作                    | memory_order_relaxed<br>memory_order_consume<br>memory_order_acquire<br>memory_order_seq_cst |
+| 读-修改-写（read-modify-write）操作 | memory_order_relaxed<br>memory_order_consume<br>memory_order_acquire<br>memory_order_release<br>memory_order_acq_rel<br>memory_order_seq_cst |
 
 ### `std::atomic_flag`
 
@@ -297,49 +284,236 @@ int main()
 
 
 
-## 返回结果
+## std::future
 
-### 等待条件
+类模板`std::future`提供访问异步操作结果的机制，所引用的共享状态不能与任何其它异步返回的对象共享：
 
-- `std::condition_variable`
-
-  仅限于和`std::mutex`一起工作
-
-  ```c++
-  #include <mutex>
-  #include <condition_variable>
-  
-  // 由于锁定互斥元是一种可变的操作，故互斥元对象必须标记为mutable
-  mutable std::mutex m;
-  std::condition_variable cond;
-  void f1()
-  {
-    std::lock_guard<std::mutex> lk(m);
-    ...
-    cond.notify_one();
-  }
-  void f2()
-  {
-    std::lock_guard<std::mutex> lk(m);
-    ...
-    cond.wait(lk, []{ ... });
-  }
-  ```
-
-- `std::condition_variable_any`
-
-  可以与复合成为类似互斥元的最低标准的任何东西一起工作，此函数更加普遍，但是有性能代价；除非必要，应该首选`std::condition_variable`
-
-### 等待一次性事件
+1. 通过异步操作（`std::async`, `std::packaged_task`或`std::promise`）返回一个`std::future`对象。
+2. 当异步操作完成后，通过`std::future`获取异步操作返回的值。
 
 ```c++
+#include <iostream>
 #include <future>
+#include <thread>
 
-int f(...)
-std::future<...> result = std::async(f);
+int main(int argc, char* argv[])
+{
+    // 通过promise-future通道，返回future
+    std::promise<int> p;
+    std::future<int> f1 = p.get_future();
+    std::thread([&p] {p.set_value_at_thread_exit(1);}).detach();
+    f1.wait();
+    std::cout << "wait for promise:" << f1.get() << std::endl;
+
+    // 通过async返回future
+    std::future<int> f2 = std::async(std::launch::async, []() {
+        return 2;
+    });
+    f2.wait();
+    std::cout << "wait for async:" << f2.get() << std::endl;
+
+    // 通过package_task返回future
+    std::packaged_task<int()> task([]() {
+        return 3;
+    }); // 包装
+    std::future<int> f3 = task.get_future();
+    std::thread(std::move(task)).detach();
+    f3.wait();
+    std::cout << "wait for packaged_task:" << f3.get() << std::endl;
+}
+
 ```
 
-### 将任务与future相关联
+### std::async
+
+函数模板`std::async`异步运行函数，并返回最终保有该函数调用结果的`std::future`。
+
+若使用`std::async`需要引用头文件`#include <future>`。
+
+#### 调用策略
+
+`std::launch`提供`std::async`的函数调用策略：
+
+| std::launch             | 说明                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| `std::launch::asnyc`    | 异步求值，启动一个新的线程调用函数，该函数由新线程异步调用，并且将其返回值与共享状态的访问点同步。 |
+| `std::launch::deferred` | 延迟求值，在访问共享状态时该函数才被调用，对函数的调用将推迟到返回的`std::future`的共享状态被访问时触发。 |
+
+例：
+
+```c++
+#include <iostream>
+#include <future>
+
+int main(int argc, char* argv[])
+{
+    int i = 1;
+    auto f1 = std::async([](int& n)->int {
+        std::cout << "n = " << n << std::endl;
+        return n * 2; // n = 2
+    }, std::ref(i));
+    i++;
+    f1.wait();
+    i++;
+    std::cout << "i:" << i << ", f1:" << f1.get() << std::endl;
+
+    i = 1;
+    auto f2 = std::async(std::launch::deferred, [](int& n)->int{
+        std::cout << "n = " << n << std::endl;
+        return n * 2; // n = 3
+    }, std::ref(i));
+    i++;
+    f2.wait();
+    i++;
+    std::cout << "i:" << i << ", f2:" << f2.get() << std::endl;
+
+    i = 1;
+    auto f3 = std::async(std::launch::async, [](int& n)->int{
+        std::cout << "n = " << n << std::endl;
+        return n * 2; // n = 2
+    }, std::ref(i));
+    i++;
+    f3.wait();
+    i++;
+    std::cout << "i:" << i << ", f3:" << f3.get() << std::endl;
+}
+```
+
+### std::promise
+
+C++11中的模板类`std::promise`提供对值或异常的存储，通过与`std::future`配合，在线程之间传递值。
+
+每个promise与共享状态关联，共享状态含有一些状态信息和可能仍未求值的结果，promise可以对共享状态做以下事情：
+
+- 使就绪：promise存储结果或异常于共享状态。标记共享状态为就绪，并解除阻塞任何等待于该共享状态关联的future上的线程。
+- 释放：promise放弃其对共享状态的引用。
+- 抛弃：promise存储以`std::future_errc::broken_promise`为`error_code`的`std::future_error`类型异常，令共享状态为就绪，然后释放它。
+
+**注意1：`std::promise`只应当使用一次。**
+
+例：
+
+```c++
+#include <iostream>
+#include <future>
+#include <chrono>
+
+int main(int argc, char* argv[])
+{
+    // 产生值
+    std::promise<int> p;
+    std::future<int> f = p.get_future();
+    std::thread t1(std::bind([](std::promise<int>& p) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        p.set_value(1);
+    }, std::move(p)));
+
+    // 接收值
+    std::thread t2(std::bind([](std::future<int>& f) {
+        std::cout << "recv :" << f.get();
+    }, std::move(f)));
+
+    t1.join();
+    t2.join();
+}
+```
+
+### std::packaged_task
+
+类模板`std::packaged_task`包装任何可调用目标（函数，lambda，bind表达式或其它函数对象），使能异步调用它。其返回值或所抛异常被存储于能通过`std::future`对象访问的共享状态中。
+
+`std::packaged_task`将一个`future`绑定到一个函数或可调用对象上。当`std::packaged_task`对象被调用时，他就调用相关联的函数或可调用对象，并且让`future`就绪，将返回值作为关联数据存储。
+
+**注意：如果需要开启异步任务，推荐使用async而不是package_task。**
+
+例：
+
+```c++
+#include <iostream>
+#include <future>
+
+int fn(int a)
+{
+    return a + 2;
+}
+
+int main(int argc, char* argv[])
+{
+    // lambda
+    std::packaged_task<int(int)>task1([](int a)->int {
+        return a + 1;
+    });
+    auto f1 = task1.get_future();
+    task1(1);
+    std::cout << "lambda :" << f1.get() << std::endl;
+
+    // bind
+    std::packaged_task<int(int)>task2(std::bind(fn, std::placeholders::_1));
+    auto f2 = task2.get_future();
+    task2(1);
+    std::cout << "bind :" << f2.get() << std::endl;
+
+    // thread
+    std::packaged_task<int(int)>task3(fn);
+    auto f3 = task3.get_future();
+    std::thread t(std::move(task3), 2);
+    t.join();
+    std::cout << "thread :" << f3.get() << std::endl;
+
+    return a.exec();
+}
+```
+
+
+
+## std::condition_variable
+
+### 与`std::mutex`合作
+
+```c++
+#include <mutex>
+#include <condition_variable>
+
+// 由于锁定互斥元是一种可变的操作，故互斥元对象必须标记为mutable
+mutable std::mutex m;
+std::condition_variable cond;
+void f1()
+{
+  std::lock_guard<std::mutex> lk(m);
+  ...
+  cond.notify_one();
+}
+void f2()
+{
+  std::lock_guard<std::mutex> lk(m);
+  ...
+  cond.wait(lk, []{ ... });
+}
+```
+
+### 超时条件变量
+
+```c++
+#include <condition_variable>
+#include <mutex>
+#include <chrono>
+
+std::condtion_variable cv;
+std::mutex m;
+
+auto const timeout=std::chrono::steady_clock::now()+std::chrono::milliseconds(500);
+std::unique_lock<std::mutex> lk(m);
+if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
+	break;
+```
+
+### 与std::future合作
+
+```c++
+TODO
+```
+
+### 与std::packaged_task合作
 
 `std::packaged_task<>`将一个`future`绑定到一个函数或可调用对象上。当`std::packaged_task<>`对象被调用时，他就调用相关联的函数或可调用对象，并且让`future`就绪，将返回值作为关联数据存储。
 
@@ -374,71 +548,9 @@ std::future<void> f2(Func f)
 }
 ```
 
-### 使用`std::promise`来设置值
+### std::condition_variable_any
 
-`std::promise<T>`提供一种设置值（类型T）方式，它可以在这之后通过相关联的`std::future<T>`对象进行读取。等待中的线程可以阻塞future，同时提供数据的线程可以使用配对中的promise项，来设置相关的值并使future就绪。
-
-`std::promise<T>`用途：
-
-- 线程间传递信号；
-
-```c++
-#include <vector>
-#include <thread>
-#include <future>
-#include <numeric>
-#include <iostream>
-#include <chrono>
-
-int main()
-{
-    // 累加线程
-    std::vector<int> nums = {1, 2, 3};
-    std::promise<int> promise;
-    std::future<int> future = promise.get_future();
-    std::thread t1{
-        [](
-            std::vector<int>::iterator first,
-            std::vector<int>::iterator last,
-            std::promise<int> promise){
-                int sum = std::accumulate(first, last, 0);
-                promise.set_value(sum); // -> future -> 接收线程
-        }, 
-        nums.begin(), 
-        nums.end(), 
-        std::move(promise)};
-    future.get(); // 阻塞等待
-    t1.join();
-
-    // 接收线程
-    std::promise<void> barrier;
-    std::future<void> bf = barrier.get_future();
-    std::thread t2{
-        [](std::promise<void> barrier){
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            barrier.set_value();
-        },
-        std::move(barrier)};
-    bf.wait();
-    t2.join();
-}
-```
-
-### 超时条件变量
-
-```c++
-#include <condition_variable>
-#include <mutex>
-#include <chrono>
-
-std::condtion_variable cv;
-std::mutex m;
-
-auto const timeout=std::chrono::steady_clock::now()+std::chrono::milliseconds(500);
-std::unique_lock<std::mutex> lk(m);
-if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
-	break;
-```
+可以与复合成为类似互斥元的最低标准的任何东西一起工作，此函数更加普遍，但是有性能代价；除非必要，应该首选`std::condition_variable`。
 
 
 
