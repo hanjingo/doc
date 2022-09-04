@@ -1,5 +1,7 @@
 # 第七章 设计无锁的并发数据结构
 
+[TOC]
+
 
 
 ## 定义和结果
@@ -416,6 +418,7 @@ public:
     counted_node_ptr new_next;
     new_next.ptr = new node;
     new_next.external_count = 1;
+    counted_node_ptr old_tail = tail.load();
     for (;;)
     {
       increase_external_count(tail, old_tail);
@@ -436,7 +439,8 @@ public:
       else
       {
         counted_node_ptr old_next={0};
-        if (old_tail.ptr->next.compare_exchange_strong(old_next, new_next)) {
+        if (
+            old_tail.ptr->next.compare_exchange_strong(old_next, new_next)) {
           old_next = new_next;
           new_next.ptr = new node;
         }

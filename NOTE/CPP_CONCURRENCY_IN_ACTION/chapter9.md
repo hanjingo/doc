@@ -1,5 +1,7 @@
 # 第九章 高级线程管理
 
+[TOC]
+
 
 
 ## 线程池
@@ -86,7 +88,6 @@ public:
     template<typename F>
     function_wrapper(F&& f) : impl(new impl_type<F>(std::move(f))) {}
     void operator()() { impl->call(); }
-    function_wrapper() = default;
     function_wrapper() = default;
     function_wrapper(function_wrapper&& other) : impl(std::move(other.impl)) {}
     function_wrapper& operator=(function_wrapper&& other)
@@ -270,7 +271,7 @@ public:
 		{
 			task = std::move(local_work_queue->front());
 			local_work_queue->pop();
-			task();_
+			task();
 		}
 		else if (pool_work_queue.try_pop(task)) // 从全局工作列表中获取任务
 		{
@@ -301,7 +302,7 @@ public:
 		work_stealing_queue(const work_stealing_queue& other) = delete;
 		work_stealing_queue& operator=(const work_stealing_queue& other)=delete;
 
-		void push(data_type data)
+		bool push(data_type data)
 		{
 			std::lock_guard<std::mutex> lock(the_mutex);
 			return the_queue.empty();
@@ -436,7 +437,7 @@ public:
 			}
 		}
 };
-```	
+```
 
 ## 中断线程
 interrupt()函数,例：

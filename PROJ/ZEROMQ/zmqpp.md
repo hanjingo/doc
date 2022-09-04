@@ -42,7 +42,7 @@
    例：
 
    ```sh
-   cmake .. -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF -DZMQPP_BUILD_STATIC=OFF
+   cmake .. -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF
    ```
 
 3. 使用vs2015打开`zmqpp.sln`进行构建。

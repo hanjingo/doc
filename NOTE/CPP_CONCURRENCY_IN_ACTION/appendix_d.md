@@ -210,7 +210,7 @@ constexpr duration operator+() const;
 
 返回`*this`
 
-### std::chrono::duration::operator-减法操作符
+### `std::chrono::duration::operator-`减法操作符
 
 返回将内部值只为负数的`*this`副本。
 

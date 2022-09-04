@@ -8,7 +8,7 @@
 
 ### 创建线程
 
-创建线程时，所提供的函数对象被复制（copied）到属于新创建的执行线程的存储器中，并从那里调用
+创建线程时，所提供的函数对象被复制（copied）到属于新创建的执行线程的存储器中，并从那里调用。
 
 ```c++
 // 老式的方法
@@ -117,15 +117,36 @@ unsigned long const hardware_threads = std::thread::hardware_concurrency();
 
 ## std::mutex
 
+用例：
+
 ```c++
 #include <mutext>
 std::mutex m;
 void f()
 {
-  std::lock_guard<std::mutex> guard(m);
+  m.lock();
   ...
+  m.unlock();
 }
 ```
+
+### RAII
+
+`std::lock_guard`是基于RAII机制的mutex包装器，在作用域中创建`lock_guard`对象，当离开作用域时自动释放mutex，从而防止因忘记解锁的而产生问题。
+
+用例：
+
+```c++
+#include <mutext>
+std::mutex mu;
+void f()
+{
+    std::lock_guard<std::mutex> lock(mu);
+    ...
+}
+```
+
+**注意：`std::lock_guard`类不可复制**
 
 ### 如何避免死锁
 
@@ -171,19 +192,87 @@ boost::shared_lock<boost::shared_mutex> lk(sm); // 提供共享，只读访问
 
 ## std::atomic
 
+### std::atomic
+
+`std::atomic`原子操作，保证不会导致"数据竞争"，可以通过`std::memory_order`决定不同线程之间同步内存访问顺序。
+
 | 操作类型                            | 分类                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
-| 存储（store）操作                   | memory_order_relaxed<br>memory_order_release<br>memory_order_seq_cst |
-| 载入（load）操作                    | memory_order_relaxed<br>memory_order_consume<br>memory_order_acquire<br>memory_order_seq_cst |
-| 读-修改-写（read-modify-write）操作 | memory_order_relaxed<br>memory_order_consume<br>memory_order_acquire<br>memory_order_release<br>memory_order_acq_rel<br>memory_order_seq_cst |
+| 存储（store）操作                   | `memory_order_relaxed`<br>`memory_order_release`<br>`memory_order_seq_cst` |
+| 载入（load）操作                    | `memory_order_relaxed`<br>`memory_order_consume`<br>`memory_order_acquire`<br>`memory_order_seq_cst` |
+| 读-修改-写（read-modify-write）操作 | `memory_order_relaxed`<br>`memory_order_consume`<br>`memory_order_acquire`<br>`memory_order_release`<br>`memory_order_acq_rel`<br>`memory_order_seq_cst` |
 
-### `std::atomic_flag`
+| 支持的C数据类型    | 对应的atomic数据类型 |
+| ------------------ | -------------------- |
+| bool               | atomic_bool          |
+| char               | atomic_char          |
+| signed char        | atomic_schar         |
+| unsigned char      | atomic_uchar         |
+| short              | atomic_short         |
+| unsigned long      | atomic_ulong         |
+| long long          | atomic_llong         |
+| unsigned long long | atomic_ullong        |
+| wchar_t            | atomic_wchar_t       |
+| char16_t           | atomic_char16_t      |
+| char32_t           | atomic_char32_t      |
+| intmax_t           | atomic_intmax_t      |
+| uintmax_t          | atomic_uintmax_t     |
+| int_leastN_t       | atomic_int_leastN_t  |
+| uint_leastN_t      | atomic_uint_leastN_t |
+| int_fastN_t        | atomic_int_fastN_t   |
+| uint_fastN_t       | atomic_uint_fastN_t  |
+| intptr_t           | atomic_uint_fastN_t  |
+| uintptr_t          | atomic_intptr_t      |
+| size_t             | atomic_size_t        |
+| ptrdiff_t          | atomic_ptrdiff_t     |
 
-`std::atomic_flag`的对象类型必须用`ATOMIC_FLAG_INIT`初始化，一旦标识初始化完成，你只能对它做三件事：
+| 成员函数                                             | 说明                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------ |
+| `operator=`                                          | 将值存储于原子对象。                                         |
+| `is_lock_free`                                       | 检查原子对象是否免锁。                                       |
+| `store`                                              | 原子地以非原子对象替换原子对象的值。                         |
+| `load`                                               | 原子地获得原子对象的值。                                     |
+| `operator T`                                         | 从原子对象加载值。                                           |
+| `exchange`                                           | 原子地替换原子对象的值并获得它先前持有的值。                 |
+| `compare_exchange_weak`<br>`compare_exchange_strong` | 原子地比较原子对象与非原子参数的值，若相等则进行交换，不相等则进行加载。 |
+
+**注意：**
+
+1. `std::atomic`不能拷贝构造和拷贝赋值。
+
+#### CAS
+
+`CAS(compare and swap)`，原子地比较原子对象与非原子参数的值。若相等则进行交换，不相等则进行加载。
+
+- `compare_excahge_weak` 弱CAS操作（允许偶然出乎意料的返回，性能更高）。
+
+- `compare_exchange_strong` 强CAS操作。
+
+例：
+
+```c++
+TODO
+```
+
+#### 指针运算
+
+`std::atomic<T*>`提供`fetch_add()`和`fetch_sub()`操作，它们都是读-改-写操作，它们可以拥有任意的内存顺序标签，以及加入到一个释放序列中。指定的语序不可能是操作符的形式，因为没办法提供必要的信息：这些形式都具有memory_order_seq_cst语义。
+
+```c++
+class F{};
+F f[5];
+std::atomic<F*> p(f);
+F* x=p.fetch_add(2); // p加2，并返回原始值
+assert(p.load()==&f[2]);
+```
+
+### std::atomic_flag
+
+`std::atomic_flag`(无锁布尔原子类型)。对象类型必须用`ATOMIC_FLAG_INIT`初始化，一旦标识初始化完成，你只能对它做三件事：
 
 - 销毁
 - 清除（clear）
-- 设置并查询其先前的值（test_and_set）
+- 设置并查询其先前的值（`test_and_set`）
 
 ```c++
 // 使用std::atomic_flag的自旋锁互斥实现：
@@ -205,50 +294,152 @@ public:
 };
 ```
 
-### `std::atomic`
+### std::memory_order
 
-`std::atomic`不能拷贝构造和拷贝赋值。
+`std::memory_order`用于指定内存访问顺序，需要包含头文件`<atomic>`。
 
-#### CAS
+| std::memory_order      | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| `memory_order_relaxed` | 宽松操作：没有同步或顺序制约，进对此操作要求原子性。         |
+| `memory_order_consume` | 消费操作：有此内存顺序的加载操作，在其影响的内存位置进行消费操作，当前线程中依赖于当前加载的该值的读或写不能被重排到此加载前。其它释放同一原子变量的线程的对数据依赖变量的写入，为当前线程所可见。在大多数平台上，这只影响到编译器优化。 |
+| `memory_order_acquire` | 获得操作：有此内存顺序的加载操作，在其影响的内存位置进行获得操作；当前线程中读/写不能被重排到此加载前。其它释放同一原子变量的线程的所有写入，能为当前线程所见。 |
+| `memory_order_release` | 释放操作：有此内存顺序的存储操作进行释放操作；当前线程中的读/写不能被重排到此存储后。当前线程的所有写入，可见于获得该同一原子变量的其它线程，并且对该原子变量的带依赖写入变得对于其它消费同一原子对象的线程可见。 |
+| `memory_order_acq_rel` | 请求中继操作：带此内存顺序的读修改写操作即是获得操作又是释放操作。当前线程的读或写内存不能被重排到此存储前或后。所有释放同一原子变量的线程的写入可见于修改之前，而且修改可见于其它获得同一原子变量de |
+| `memory_order_seq_cst` | 序列一致操作：有此内存顺序的加载操作进行获得操作，存储操作进行释放操作，而读修改写操作进行获得操作和释放操作，再加上存在一个单独全序，其中所有线程以同一顺序观测到所有修改。 |
 
-compare and swap，当前值与预期值一致时，存储新值，否则返回false
-
-- compare_excahge_weak
-
-  能更好的避免一个双重循环的执行
-
-  ```c++
-  bool expected=false;
-  extern atomic<bool> b;
-  auto result = b.compare_exchange_weak(expected, true)
-  ```
-
-- compare_exchange_strong
-
-#### 指针运算
-
-`std::atomic<T*>`提供`fetch_add()`和`fetch_sub()`操作，它们都是读-改-写操作，它们可以拥有任意的内存顺序标签，以及加入到一个释放序列中。指定的语序不可能是操作符的形式，因为没办法提供必要的信息：这些形式都具有memory_order_seq_cst语义。
+例：
 
 ```c++
-class F{};
-F f[5];
-std::atomic<F*> p(f);
-F* x=p.fetch_add(2); // p加2，并返回原始值
-assert(p.load()==&f[2]);
+#include <atomic>
+#include <thread>
+#include <functional>
+#include <iostream>
+
+int main(int argc, char* argv[])
+{
+    // std::memory_order_relaxed 宽松
+    std::atomic<int>x = {0};
+    std::atomic<int>y = {0};
+    auto fn1 = std::bind([&]() {
+        auto tmp1 = x.load(std::memory_order_relaxed);
+        if (tmp1 == 42) {
+            y.store(tmp1, std::memory_order_relaxed);
+        }
+
+        auto tmp2 = y.load(std::memory_order_relaxed);
+        if (tmp2 == 42) {
+            x.store(42, std::memory_order_relaxed);
+        }
+    });
+    std::vector<std::thread> pool;
+    for (auto i = 0; i < 100; ++i) {
+        pool.emplace_back(fn1);
+    }
+    for (auto& t : pool) {
+        t.join();
+    }
+    std::cout << "x = " << x << std::endl; // x = 0
+    std::cout << "y = " << y << std::endl; // y = 0
+
+    // std::memory_order_release--std::memory_order_acquire 释放--获得
+    std::atomic<int>z = {0};
+    auto fn2_1 = std::bind([&]() {
+        z.store(1, std::memory_order_release);
+    });
+    auto fn2_2 = std::bind([&]() {
+        while (!(z.load(std::memory_order_acquire))) {
+            continue;
+        }
+        z.store(2);
+    });
+    std::thread t2_2(fn2_2);
+    std::thread t2_1(fn2_1);
+    std::cout << "z = " << z << std::endl; // z = 2
+
+    // std::memory_order_release--std::memory_order_acq_rel--std::memory_order_acquire
+    // 释放--中继--获得
+    std::atomic<int>m = {0};
+    auto fn3_1 = std::bind([&]() {
+        m.store(1, std::memory_order_release);
+    });
+    auto fn3_2 = std::bind([&]() {
+        int expected = 1;
+        while (!m.compare_exchange_strong(expected, 2, std::memory_order_acq_rel)) {
+            continue;
+        }
+    });
+    auto fn3_3 = std::bind([&]() {
+        while (m.load(std::memory_order_acquire) != 2) {
+            continue;
+        }
+        m.store(3);
+    });
+    std::thread t3_3(fn3_3);
+    std::thread t3_1(fn3_1);
+    std::thread t3_2(fn3_2);
+    t3_3.join();
+    t3_1.join();
+    t3_2.join();
+    std::cout << "m = " << m << std::endl; // m = 3
+
+    // std::memory_order_release -- std::memory_order_consume 释放 -- 消费
+    std::atomic<int>n = {0};
+    auto fn4_1 = std::bind([&]() {
+        n.store(1, std::memory_order_release);
+    });
+    auto fn4_2 = std::bind([&]() {
+        int tmp = 0;
+        while (!(tmp = n.load(std::memory_order_consume))) {
+            continue;
+        }
+        std::cout << "n = " << tmp << std::endl; // n = 1
+    });
+    std::thread t4_1(fn4_1);
+    std::thread t4_2(fn4_2);
+    t4_1.join();
+    t4_2.join();
+
+    // std::memory_order_seq_cst 序列一致
+    std::atomic<bool>c1 = {false};
+    std::atomic<bool>c2 = {false};
+    std::atomic<int>c3 = {0};
+    auto fn5_1 = std::bind([&]() {
+        c1.store(1, std::memory_order_seq_cst);
+    });
+    auto fn5_2 = std::bind([&]() {
+        c2.store(1, std::memory_order_seq_cst);
+    });
+    auto fn5_3 = std::bind([&]() {
+        while (!c1.load(std::memory_order_seq_cst)) {
+            continue;
+        }
+        if (c2.load(std::memory_order_seq_cst)) {
+            ++c3;
+        }
+    });
+    auto fn5_4 = std::bind([&]() {
+        while (!c2.load(std::memory_order_seq_cst)) {
+            continue;
+        }
+        if (c1.load(std::memory_order_seq_cst)) {
+            ++c3;
+        }
+    });
+    std::thread t5_1(fn5_1);
+    std::thread t5_2(fn5_2);
+    std::thread t5_3(fn5_3);
+    std::thread t5_4(fn5_4);
+    t5_1.join();
+    t5_2.join();
+    t5_3.join();
+    t5_4.join();
+    std::cout << "c3 = " << c3 << std::endl; // c3 = 2
+}
 ```
 
-### 原子操作的内存顺序
+### std::atomic_thread_fence
 
-- memory_order_seq_cst
-- memory_order_consume
-- memory_order_acquire
-- memory_order_release（获得-释放顺序）
-- memory_order_acq_rel
-- memory_order_relaxed（松散顺序）
-
-### 栅栏
-
-栅栏可以让自由操作变得有序
+std::atomic_thread_fence（栅栏）可以让自由操作变得有序，例：
 
 ```c++
 #include <atomic>
@@ -330,7 +521,7 @@ int main(int argc, char* argv[])
 
 若使用`std::async`需要引用头文件`#include <future>`。
 
-#### 调用策略
+### std::launch
 
 `std::launch`提供`std::async`的函数调用策略：
 
@@ -381,15 +572,9 @@ int main(int argc, char* argv[])
 
 ### std::promise
 
-C++11中的模板类`std::promise`提供对值或异常的存储，通过与`std::future`配合，在线程之间传递值。
+C++11中的模板类`std::promise`提供对值或异常的存储，通过与`std::future`配合，在线程之间传递值（**一次性**）。
 
-每个promise与共享状态关联，共享状态含有一些状态信息和可能仍未求值的结果，promise可以对共享状态做以下事情：
-
-- 使就绪：promise存储结果或异常于共享状态。标记共享状态为就绪，并解除阻塞任何等待于该共享状态关联的future上的线程。
-- 释放：promise放弃其对共享状态的引用。
-- 抛弃：promise存储以`std::future_errc::broken_promise`为`error_code`的`std::future_error`类型异常，令共享状态为就绪，然后释放它。
-
-**注意1：`std::promise`只应当使用一次。**
+**注意：`std::promise`只应当使用一次。**
 
 例：
 
@@ -473,7 +658,40 @@ int main(int argc, char* argv[])
 
 ## std::condition_variable
 
-### 与`std::mutex`合作
+`std::condition_variable`用于同步线程，通过阻塞一个或多个线程，直到另一个线程通知`condition_variable`时解除阻塞（最常见的应用场景：消息队列）。
+
+| 函数            | 说明                                                     |
+| --------------- | -------------------------------------------------------- |
+| `wait`          | 阻塞当前线程，直到条件变量被唤醒。                       |
+| `wait_for`      | 阻塞当前线程，直到条件变量被唤醒，或到指定时限时长后。   |
+| `wait_until`    | 阻塞当前线程，直到条件变量被唤醒，或直到抵达执行时间点。 |
+| `notify_one`    | 通知一个等待的线程。                                     |
+| `notify_all`    | 通知所有等待的线程。                                     |
+| `native_handle` | 返回原生句柄。                                           |
+
+**注意：**
+
+1. `std::condition_variable`和`std::condition_variable_any`对象本身均不可拷贝和赋值。
+2. `std::condition_variable`和`std::condition_variable_any`只负责条件变量，加锁需要通过mutex/atomic。
+3. 调用`wait()`，`wait_for()`，`wait_until()`函数后，内部会阻止当前线程运行，**并解锁互斥量**。
+
+例，超时条件变量：
+
+```c++
+#include <condition_variable>
+#include <mutex>
+#include <chrono>
+
+std::condtion_variable cv;
+std::mutex m;
+
+auto const timeout=std::chrono::steady_clock::now()+std::chrono::milliseconds(500);
+std::unique_lock<std::mutex> lk(m);
+if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
+	break;
+```
+
+### std::mutex
 
 ```c++
 #include <mutex>
@@ -496,29 +714,7 @@ void f2()
 }
 ```
 
-### 超时条件变量
-
-```c++
-#include <condition_variable>
-#include <mutex>
-#include <chrono>
-
-std::condtion_variable cv;
-std::mutex m;
-
-auto const timeout=std::chrono::steady_clock::now()+std::chrono::milliseconds(500);
-std::unique_lock<std::mutex> lk(m);
-if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
-	break;
-```
-
-### 与std::future合作
-
-```c++
-TODO
-```
-
-### 与std::packaged_task合作
+### std::packaged_task
 
 `std::packaged_task<>`将一个`future`绑定到一个函数或可调用对象上。当`std::packaged_task<>`对象被调用时，他就调用相关联的函数或可调用对象，并且让`future`就绪，将返回值作为关联数据存储。
 
@@ -559,14 +755,16 @@ std::future<void> f2(Func f)
 
 
 
-## 有锁并发
+## 并发方式
 
-### 意义
+### 有锁并发
+
+#### 意义
 
 - 多个线程可以并发的访问这个数据结构，线程可以对这个数据结构做相同或不同的操作，并且每一个线程都能在自己的自治域中看到该数据结构。
 - 在多线程环境下，无数据丢失和损毁，所有的数据需要维持原样，且无条件竞争。
 
-### 准则
+#### 准则
 
 在设计数据结构时，需要自行考虑以下问题：
 
@@ -582,31 +780,29 @@ std::future<void> f2(Func f)
 - 注意数据结构的行为是否会产生异常，从而确保“不变量”的状态稳定。
 - 将死锁的概率降到最低。使用数据结构时，需要限制锁的范围，且避免嵌套锁的存在。
 
+### 无锁并发
 
-
-## 无锁并发
-
-### 意义
+#### 意义
 
 - 为了实现最大程度的并发
 - 健壮性
 
-### 准则
+#### 准则
 
 - 使用`std::memory_order_seq_cst`作为原型
 - 使用无锁内存回收模式
 - 当心ABA问题
 - 识别忙于等待的循环以及辅助其它线程
 
-
-
-## 并发代码性能分析
+### 并发代码性能分析
 
 - 处理器数量
 
-  linux下可以使用`std::thread::hardwarre_concurrency()`来获取硬件支持的最大同时运行的线程数量
+  处理器数量会影响到并发代码的性能，在linux下可以使用函数`std::thread::hardwarre_concurrency()`来获取硬件支持的最大同时运行的线程数量。
 
 - 数据竞争
+
+  处理器发生数据竞争会显著的影响到并发的性能，数据竞争分为以下几种：
 
   - **高竞争(high contention)：**一个处理器已经准备好更新这个值，但是另一个处理器已经在做了，这就要等待另一个处理器更新，并且这个改动已经传播完成。
   - **低竞争(low contention)：**处理器很少需要互相等待。
@@ -622,46 +818,589 @@ std::future<void> f2(Func f)
 
   频繁地切换任务会导致性能损失
 
+### 定位并发错误
+
+```mermaid
+graph TD
+	start(开始)
+	finish(结束)
+	subgraph 阅读源码
+		r1{有多个线程同时访问这段代码?} 
+		r2{访问的数据受到了保护?} 
+		r3{是否进行了加锁?} 
+		r4{是否进行了解锁?}
+		r5{是否抛出了异常?}
+	end
+	
+	subgraph 测试
+		t1{在单线程情况下是否正常?}
+		t2{硬件是否支持多线程操作?}
+	end
+	
+	start --> r1
+	r1 -.是.-> r2
+	r1 -.否.-> finish
+	r2 -.是.-> r3
+	r2 -.否.-> finish
+	r3 -.是.-> r4
+	r3 -.否.-> finish
+	r4 -.是.-> r5
+	r4 -.否.-> finish
+	r5 -.否.-> t1
+	r5 -.是.-> finish
+	
+	t1 -.是.->t2
+	t1 -.否.->finish
+	t2 -.否.->finish
+```
 
 
-## 定位并发错误
 
-### 阅读源码
+## 无锁数据结构
 
-- 并发访问时，那些数据需要保护？
-- 如何确定访问数据受到了保护？
-- 是否会有多个线程同时访问这段代码？
-- 这个线程获取了哪个互斥量？
-- 其他线程可能获取哪些互斥量?
-- 两个线程间的操作是否有依赖关系？如何满足这种关系？
-- 这个线程加载的数据还是合法数据吗？数据是否被其他线程修改过？
-- 当假设其他线程可以对数据进行修改，这将意味着什么？并且，怎么确保这样的事情不会发生？
+### 优缺点
 
-### 测试
+| 优点                                                   | 缺点 |
+| ------------------------------------------------------ | ---- |
+| 1.可以实现最大程度的并发。<br>2.可以增强程序的健壮性。 |      |
 
-- 使用单线程调用`push()`或`pop()`，来去顶在一般情况下队列是否正常工作
-- 其他线程调用`pop()`时，使用另一线程在空队列上调用`push()`
-- 在空队列上，以多线程的方式调用`push()`
-- 在满载队列上，以多线程的方式调用`push()`
-- 在空队列上，以多个线程的方式调用`pop()`
-- 在满载队列上，以多线程的方式调用`pop()`
-- 在非满载队列上（任务数量小于线程数量），以多线程的方式调用`pop()`
-- 当一线程在空队列上调用`pop()`的同时，以多线程的方式调用`push()`
-- 当一线程在满载队列上调用`pop()`的同时，以多线程的方式调用`push()`
-- 当多线程在空队列上调用`pop()`的同时，以多线程方式调用`push()`
-- 当多线程在满载队列上调用`pop()`的同时，以多线程方式调用`push()`
-- “多线程”是有多少线程（3个，4个，还是1024个？）
-- 系统中是否有足够的处理器，能让每个线程运行在属于自己的处理器上
-- 测试需要运行在哪种处理器架构上
-- 在测试中如何对“同时”进行合理的安排
+### 设计准则
+
+1. 使用`std::memory_order_seq_cst`作为原型。
+
+2. 使用无锁内存回收模式：
+
+   无锁代码最大的问题之一就是管理内存，当别的线程引用对象的时候就不能删除它们。以下三种方法来确保可以安全回收内存：
+
+   - 等待知道没有线程访问该数据结构，并且删除所有等待删除的对象。
+   - 使用风险指针来确定线程正在访问一个特定的对象。
+   - 引用计数对象，只有直到没有显著的引用时才删除它们。
+
+   另一个方法就是回收节点，并且当数据结构被销毁的时候才完全释放它们。因为节点是重复使用的，内存永远不会失效，这样避免未定义行为的困难就不存在了。但是会引来`ABA问题`。
+
+3. 当心ABA问题
+
+   ABA问题是任何基于比较/交换的算法都必须提防的问题，它是这样的：
+
+   1. 线程1读取一个原子变量x，并且发现它的值为A。
+   2. 线程1基于这个值执行了一些操作，例如解引用它（如果它是指针的话）或者做一些查找操作。
+   3. 线程1被操作系统阻塞了。
+   4. 另一个线程在x上执行了一些操作，将它的值改为B。
+   5. 第三个线程更改了与值A相关的值，因此线程1持有的数值就不再有效了。这个变化有可能很大，如释放它所指向的内存或者改变相关的值一样。
+   6. 第三个线程基于新值将x的值改回A。如果这是一个指针，那么就可能是一个新的对象，此对象刚好与先前的对象使用了相同的地址。
+   7. 线程1重新取得x，并在x上执行比较/交换操作，与A进行比较。比较/交换操作成功了（因为值确实是A），但是这个A的值是错误的。第二步中读取的值不再有效，但是线程1并不知道，并且将破坏数据机构。
+
+4. 识别忙于等待的循环以及辅助其它线程。
+
+### 无锁线程安全队列
+
+```c++
+template<typename T>
+class lock_free_queue
+{
+private:
+  struct node;
+  struct counted_node_ptr
+  {
+    int external_count;
+    node* ptr;
+  }
+  std::atomic<counted_node_ptr> head;
+  std::atomic<counted_node_ptr> tail;
+  struct node_counter
+  {
+    unsigned internal_count=30;
+    unsigned external_counters=2;
+  };
+  struct node
+  {
+    std::atomic<T*> data;
+    std::atomic<node_counter> count;
+    std::atomic<counted_node_ptr> next;
+    
+    void release_ref()
+    {
+    	node_counter old_counter = count.load(std::memory_order_relaxed);
+      node_counter new_counter;
+      do
+      {
+        new_counter = old_counter;
+        --new_counter.internal_count;
+      }
+      while (!count.compare_exchange_strong(old_counter, new_counter,
+                                            std::memory_order_acquire,
+                                            std::memory_order_relaxed));
+      if (!new_counter.internal_count && 
+          !new_counter.external_counters)
+      {
+        delete this;
+      }
+    };
+    
+    node()
+    {
+      node_counter new_count;
+      new_count.internal_count = 0;
+      new_count.external_counters = 2;
+      count.store(new_count);
+      
+      next.ptr = nullptr;
+      next.external_count = 0;
+    }
+  };
+  
+  node* pop_head()
+  {
+    node* const old_head = head.load();
+    if (old_head == tail.load())
+    {
+      return nullptr;
+    }
+    head.store(old_head->next);
+    return old_head;
+  };
+  
+  static void increase_external_count(std::atomic<counted_node_ptr>& counter,
+                                      counted_node_ptr& old_counter)
+  {
+    counted_node_ptr new_counter;
+    do
+    {
+      new_counter = old_counter;
+      ++new_counter.external_count;
+    }
+    while (!counter.compare_exchange_strong(old_counter, new_counter, 
+           	std::memory_order_acquire, std::memory_order_relaxed));
+    old_counter.external_count = new_counter.external_count;
+  };
+  
+  static void free_external_counter(counted_node_ptr &old_node_ptr)
+  {
+    node* const ptr = old_node_ptr.ptr;
+    int const count_increase = old_node_ptr.external_count - 2;
+    node_counter old_counter = ptr->count.load(std::memory_order_relaxed);
+    node_counter new_counter;
+    do
+    {
+      new_counter = old_counter;
+      --new_counter.external_counters;
+      new_counter.internal_count += count_increase; // 更新值
+    }
+    while (!ptr->count.compare_exchange_strong(
+    			 old_counter, new_counter,
+    		   std::memory_order_acquire, std::memory_order_relaxed));
+    if (!new_counter.internal_count && !new_counter.external_counters) // 此节点没有引用，删除
+    {
+      delete ptr;
+    }
+  };
+  
+  void set_new_tail(counted_node_ptr &old_tail,
+                    counted_node_ptr const &new_tail)
+  {
+  	node* const current_tail_ptr = old_tail.ptr;
+    while (!tail.compare_exchange_weak(old_tail, new_tail) &&
+           old_tail.ptr == current_tail_ptr);
+    if (old_tail.ptr == current_tail_ptr)
+      free_external_counter(old_tail);
+    else
+      current_tail_ptr->release_ref();
+  }
+  
+public:
+  lodk_free_queue() : head(new node), tail(head.load()) {}
+  lock_free_queue(const lock_free_queue& other) = delete;
+  lock_free_queue& operator=(const lock_free_queue& other) = delete;
+  ~lock_free_queue()
+  {
+    while(node* const old_head = head.load())
+    {
+      head.store(old_head->next);
+      delete old_head;
+    }
+  }
+  std::unique_ptr<T> pop()
+  {
+    counted_node_ptr old_head = head.load(std::memory_order_relaxed);
+    for (;;)
+    {
+      increase_external_count(head, old_head);
+      node* const ptr = old_head.ptr;
+      if (ptr == tail.load().ptr)
+      {
+        return std::unique_ptr<T>();
+      }
+      counted_node_ptr next = ptr->next.load();
+      if (head.compare_exchange_strong(old_head, ptr->next))
+      {
+        T* const res = ptr->data.exchange(nullptr);
+        free_external_counter(old_head);
+        return std::unique_ptr<T>(res);
+      }
+      ptr->release_ref();
+    }
+  }
+  void push(T new_value)
+  {
+    std::unique_ptr<T> new_data(new T(new_value));
+    counted_node_ptr new_next;
+    new_next.ptr = new node;
+    new_next.external_count = 1;
+    for (;;)
+    {
+      increase_external_count(tail, old_tail);
+      T* old_data = nullptr;
+      if (old_tail.ptr->data.compare_exchange_strong(
+      			old_data, new_data.get())) // 解引用原子指针
+      {
+        couted_node_ptr old_next = {0};
+        if (!old_tail.ptr->next.compare_exchange_strong(old_next, new_next))
+        {
+          delete new_next.ptr;
+          new_next = old_next;
+        }
+        set_new_tail(old_tail, new_next);
+        new_data.release();
+        break;
+      }
+      else
+      {
+        counted_node_ptr old_next={0};
+        if (old_tail.ptr->next.compare_exchange_strong(old_next, new_next)) {
+          old_next = new_next;
+          new_next.ptr = new node;
+        }
+        set_new_tail(old_tail, old_next); // 真正的更新
+      }
+    }
+  }
+};
+```
+
+### 无锁线程安全栈
+
+```c++
+unsigned const max_hazard_pointers=100;
+struct hazard_pointer
+{
+  std::atomic<std::thread::id> id;
+  std::atomic<void*> pointer;
+};
+hazard_pointer hazard_pointers[max_hazard_pointers];
+
+class hp_owner
+{
+  hazard_pointer* hp;
+public:
+  hp_owner(hp_owner const&)=delete;
+  hp_owner operator=(hp_owner const&)=delete;
+  hp_owner() : hp(nullptr)
+  {
+    for (unsigned i = 0; i < max_hazard_pointers; ++i)
+    {
+      std::thread::id old_id;
+      if(hazard_pointers[i].id.compare_exchange_strong( // 试着获取风险指针的所有权
+        old_id, std::this_thread::get_id())){
+        hp = &hazard_pointers[i];
+        break;
+      }
+    }
+    if (!hp)
+    {
+      throw std::runtime_error("No hazard pointers available");
+    }
+  }
+  std::atomic<void*>& get_pointer()
+  {
+    return hp->pointer;
+  }
+  ~hp_owner()
+  {
+    hp->pointer.store(nullptr);
+    hp->id.store(std::thread::id());
+  }
+}
+
+template<typename T>
+class lock_free_stack
+{
+private:
+  struct node;
+  struct counted_node_ptr
+  {
+    int external_count;
+    node* ptr;
+  };
+  struct node
+  {
+    std::shared_ptr<T> data;
+    node* next;
+    
+    node(T const& data_) : data(std::make_shared<T>(data_)) {}
+  };
+  
+  std::atomic<counted_node_ptr> head;
+  std::atomic<unsigned> thread_in_pop;
+  std::atomic<node*> to_be_deleted;
+  std::atomic<data_to_reclaim*> nodes_to_reclaim;
+  
+  void try_reclaim(node* old_head);
+  static void delete_nodes(node* nodes)
+  {
+    while(nodes)
+    {
+      node* next = nodes->next;
+      delte nodes;
+      nodes = next;
+    }
+  }
+  void increase_head_count(counted_node_ptr& old_counter)
+  {
+    counted_node_ptr new_counter;
+    do
+    {
+      new_counter = old_counter;
+      ++new_counter.external_count;
+    }
+    while (!head.compare_exchange_strong(old_counter, new_counter, 
+                                         std::memory_order_acquire,
+                                         std::memory_order_relaxed));
+    old_counter.external_count = new_counter.external_count;
+  }
+  void try_reclaim(node* old_head)
+  {
+    if (threads_in_pop == 1)
+    {
+      node* nodes_to_delete = to_be_deleted.exchange(nullptr); // 列出将要被删除的节点清单
+      if (!--threads_in_pop)
+      {
+        delete_nodes(nodes_to_delete);
+      }
+      else if (nodes_to_delete)
+      {
+        chain_pending_nodes(nodes_to_delete);
+      }
+      delete old_head;
+    }
+    else
+    {
+      chain_pending_node(old_head);
+      --threads_in_pop;
+    }
+  }
+  void chain_pending_nodes(node* nodes)
+  {
+    node* last = nodes;
+    while (node* const next = last->next) // 跟随下一个指针，链至末尾
+    {
+      last = next;
+    }
+    chain_pending_nodes(nodes, last);
+  }
+  void chain_pending_nodes(node* first, node* last)
+  {
+    last->next = to_be_deleted;
+    while (!to_be_deleted.compare_exchange_weak(last->next, first)); // 循环以保证last->next正确
+  }
+  void chain_pending_node(node* n)
+  {
+    chain_pending_nodes(n, n);
+  }
+  std::atomic<void*>& get_hazard_pointer_for_current_thread()
+  {
+    thread_local static hp_owner hazard; // 每个线程都有自己的风险指针
+    return hazard.get_pointer();
+  }
+  bool outstanding_hazard_pointers_for(void* p)
+  {
+    for(unsigned i=0; i<maz_hazard_pointers; ++i)
+    {
+      if(hazard_pointers[i].pointer.load() == p)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+  void add_to_reclaim_list(data_to_reclaim* node)
+	{
+  	node->next = nodes_to_reclaim.load();
+  	while (!nodes_to_reclaim.compare_exchange_weak(node->next, node));
+	}
+	template<typename T>
+	void reclaim_later(T* data)
+	{
+  	add_to_reclaim_list(new data_to_reclaim(data));
+	}
+	void delete_nodes_with_no_hazards()
+	{
+  	data_to_reclaim* current=nodes_to_reclaim.exchange(nullptr);
+  	while(current)
+    {
+    	data_to_reclaim* const next = current->next;
+    	if (!outstanding_hazard_pointers_for(current->data))
+    	{
+      	delete current;
+    	}
+    	else
+    	{
+      	add_to_reclaim_list(current);
+    	}
+    	current = next;
+  	}
+	}
+  template<typename T>
+	void do_delete(void* p)
+	{
+  	delete static_cast<T*>(p);
+	}
+  
+	struct data_to_reclaim
+	{
+  	void* data;
+  	std::function<void(void*)> deleter;
+  	data_to_reclaim* next;
+  
+  	template<typename T>
+  	data_to_reclaim(T* p) : data(p), deleter(&do_delete<T>), next(0) {}
+  	~data_to_reclaim()
+  	{
+    	deleter(data);
+  	}
+	};
+public:
+  ~lock_free_stack()
+  {
+    while(pop());
+  }
+  void push(T const& data)
+  {
+    counted_node_ptr new_node; // 创建节点
+    new_node.ptr = new node(data);
+    new_node.external_count = 1;
+    new_node.ptr->next = head.load(std::memory_order_relaxed); // 将next指针指向head
+    while(!head.compare_exchange_weak(new_node->next, new_node,
+                                      std::memory_order_release,
+                                      std::memory_order_relaxed)); // 将head指向新节点
+  }
+  std::shared_ptr<T> pop()
+  {
+    counted_node_ptr old_head = head.load(std::memory_order_relaxed);
+    for (;;)
+    {
+      increase_head_count(old_head);
+      node* const ptr = old_head.ptr;
+      if (!ptr)
+      {
+        return std::shared_ptr<T>();
+      }
+      if (head.compare_exchange_strong(old_head, ptr->next, std::memory_order_relaxed))
+      {
+        std::shared_ptr<T> res;
+        res.swap(ptr->data);
+        int const count_increase = old_head.external_count - 2;
+        if (ptr->internal_count.fetch_add(count_increase,
+                                         std::memory_order_release)==-count_increase)
+        {
+          delete ptr;
+        }
+        return res;
+      }
+      else if(ptr->internal_count.fetch_add(-1, std::memory_order_relaxed) == 1)
+      {
+        ptr->internal_count.load(std::memory_order_acquire);
+        delete ptr;
+      }
+    }
+  }
+};
+```
 
 
 
-## 线程池的设计
+## 并发库比较
 
-job与thread分离
+| 功能                       | Java                                                         | POSIX C                                                      | Boost threads                                                | C++11                                                        |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 启动线程                   | `java.lang.thread`类                                         | `pthread_t`类型和相关`API`函数:<br>- `pthread_create()`<br>- `pthread_detach()`<br>- `pthread_join()` | `boost::thread`类与成员函数                                  | `std::thread`类与成员函数                                    |
+| 互斥                       | synchronized块                                               | `pthread_mutex_t`类型和相关`API`函数:<br>- `pthread_mutex_lock()`<br>- `pthread_mutex_unlock()` | `boost::mutex`类与成员函数:<br>- `boost::locak_guard<>`<br>- `boost::unique_lock<>`模板 | `std::mutex`类与成员函数，<br>`std::lock_guard<>`和<br>`std::unique_lock<>`模板 |
+| 监控/等待预期              | `java.lang.Object`类的`wait()`和`notify()`方法，在synchronized块内使用 | `pthread_cond_t`类型与相关`API`函数：<br>-`pthread_wait()`<br>-`pthread_cond_timed_wait()` | `boost::condition_variable`和<br>`boost::condition_variable_any`<br>类与成员函数 | `std::condition_variable`<br>`std::condition_variable_any`类与成员函数 |
+| 原子操作与并发感知内存模型 | volatile变量，位于`java.util.concurrent.atomic`包中          | 不可用                                                       | 不可用                                                       | `std::atomic_xxx`类型<br>`std::atomic<>`类模板<br>`std::atomic_thread_fence()`函数 |
+| 线程安全容器               | `java.util.concurrent`包中的容器                             | 不可用                                                       | 不可用                                                       | 不可用                                                       |
+| future                     | `java.util.concurrent.future`接口及相关类                    | 不可用                                                       | - `boost::unique_future<>`<br>- `boost::shared_future<>`类模板 | `std::future<>`,<br>`std::shared future<>`和<br>`std::atomic future<>`类模板 |
+| 线程池                     | `java.util.concurrent.ThreadPoolExecutor`类                  | 不可用                                                       | 不可用                                                       | 不可用                                                       |
+| 线程中断                   | `java.lang.Thread`的`interrupt()`方法                        | `pthread_cancel()`                                           | `boost::thread`类的`interrupt()`成员函数                     | 不可用                                                       |
 
+
+
+## 示例
+
+### 并发版本的std::for_each
+
+```c++
+template <typename Iterator, typename Func>
+void parallel_for_each(Iterator first, Iterator last, Func f)
+{
+    unsigned long const length = std::distance(first, last);
+    if (!length) {
+        return;
+    }
+    unsigned long const min_per_threads = 25;
+    if (length < (2 * min_per_threads)) {
+        std::for_each(first, last, f);
+    } else {
+        Iterator const mid_point = first + length / 2;
+        std::future<void> first_half = std::async(&parallel_for_each<Iterator, Func>,
+                                       first, mid_point, f);
+        parallel_for_each(mid_point, last, f);
+        first_half.get();
+    }
+}
+```
+
+### std::find
+
+```c++
+template<typename Iterator, typename MatchType>
+Iterator parallel_find_impl(Iterator first, Iterator last, MatchType match,
+                            std::atomic<bool>& done)
+{
+    try {
+        unsigned long const length = std::distance(first, last);
+        unsigned long const min_per_thread = 25;
+        if (length < (2 * min_per_thread)) {
+            for (; (first != last) && !done.load(); ++first) {
+                if (*first == match) {
+                    done = true;
+                    return first;
+                }
+            }
+            return last;
+        } else {
+            Iterator const mid_point = first + (length / 2);
+            std::future<Iterator> async_result =
+                std::async(&parallel_find_impl<Iterator, MatchType>, mid_point, last, match, std::ref(done));
+            Iterator const direct_result = parallel_find_impl(first, mid_point, match, done);
+            return (direct_result == mid_point) ? async_result.get() : direct_result;
+        }
+    } catch (_exception e) {
+        done = true;
+        throw;
+    }
+}
+template <typename Iterator, typename MatchType>
+Iterator parallel_find(Iterator first, Iterator last, MatchType match)
+{
+    std::atomic<bool> done{false};
+    return parallel_find_impl(first, last, match, done);
+}
+```
+
+### 线程池的实现
+
+```c++
 TODO
+```
 
 
 
@@ -685,9 +1424,9 @@ TODO
 
 6. 可以通过以下方法来等待其他线程完成：
 
-   - 使用条件变量`std::condition_variable`和`std::condition_variable_any`
+   - 使用条件变量`std::condition_variable`和`std::condition_variable_any`。
 
-7. 使用`std::future`来从线程中返回参数
+7. 使用`std::future`来从线程中返回参数。
 
 8. 常用的原子操作：
 
@@ -705,7 +1444,6 @@ TODO
    - 识别忙于等待的循环以及辅助其它线程
 
 10. **阿姆达尔定律(Amdahl's law)：**$P=\frac{1}{f_s + \frac{1 - f_s}{N}}$
-
     - $P$: 性能
     - $f_s$: "串行部分"
     - $N$: 处理器个数
