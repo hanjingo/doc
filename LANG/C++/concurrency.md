@@ -8,7 +8,9 @@
 
 ### 创建线程
 
-创建线程时，所提供的函数对象被复制（copied）到属于新创建的执行线程的存储器中，并从那里调用。
+使用`std::thread`创建线程对象，创建时所提供的函数对象被复制（copied）到属于新创建的执行线程的存储器中，并从那里调用。
+
+用例：
 
 ```c++
 // 老式的方法
@@ -19,11 +21,11 @@ std::thread my_thread{background_task()};
 
 ### 等待线程完成
 
-调用`join()`等待线程完成，只能对一个给定的线程调用一次`join()`，一旦调用`join()`，此`std::thread`对象不再是可连接的，并且`joinable()`将返回`false`。
+通过调用`join()`来等待线程完成，只能对一个给定的线程调用一次`join()`，一旦调用`join()`，此`std::thread`对象不再是可连接的，并且`joinable()`将返回`false`。
 
 **注意：为了防止`std::thread`对象在线程开始之后，在调用`join()`之前引发异常，有2种方法预防这个问题：**
 
-1. `try/catch`处理异常
+1. 用`try/catch`捕获异常
 
    ```c++
    std::thread t(my_func);
@@ -62,7 +64,9 @@ std::thread my_thread{background_task()};
 
 ### 线程分离
 
-在`std::thread`对象上调用`detach()`会把线程丢在后台运行，也没有直接的方法与之通信。
+在`std::thread`对象上调用`detach()`会把线程丢在后台运行（后台运行后，没有直接的方法与之通信）。
+
+用例：
 
 ```c++
 std::thread t(...);
@@ -73,14 +77,18 @@ t.detach();
 
 参数会以默认的方式被复制（copied）到内部存储空间；当传递引用来作为参数时，会自行复制引用指向的值，有以下2个办法来避免：
 
-1. 使用`std::ref`来包装被引用的参数
+1. 使用`std::ref`来包装被引用的参数。
+
+   用例：
 
    ```c++
    void f(...);
    std::thread t(f, std::ref(...))
    ```
 
-2. 使用智能指针`std::unique_ptr`来限制所有权，使用`std::move`来转移所有权
+2. 使用智能指针`std::unique_ptr`来限制所有权，使用`std::move`来转移所有权。
+
+   用例：
 
    ```c++
    void f(std::unique_ptr<...>);
@@ -90,7 +98,9 @@ t.detach();
 
 ### 转移线程函数所有权
 
-`std::thread`支持移动。意味着线程的所有权可以很容易的从一个函数中被转移出来。
+`std::thread`支持移动，调用`std::move`可以将线程的所有权从一个函数中被转移出来。
+
+用例：
 
 ```c++
 void f(std::thread t);
@@ -101,6 +111,8 @@ f(std::move(t));
 ### 在运行时选择线程数量
 
 `std::thread::hardware_currency()`用来计算给定程序执行时能够真正并发运行的线程数量
+
+用例：
 
 ```c++
 unsigned long const hardware_threads = std::thread::hardware_concurrency();
@@ -117,6 +129,8 @@ unsigned long const hardware_threads = std::thread::hardware_concurrency();
 
 ## std::mutex
 
+`std::mutex`用于提供对多线程共享数据的保护。
+
 用例：
 
 ```c++
@@ -130,9 +144,9 @@ void f()
 }
 ```
 
-### RAII
+### RAII机制
 
-`std::lock_guard`是基于RAII机制的mutex包装器，在作用域中创建`lock_guard`对象，当离开作用域时自动释放mutex，从而防止因忘记解锁的而产生问题。
+`std::lock_guard`是基于RAII机制的`mutex`包装器，通过在作用域中创建`lock_guard`对象，当离开作用域时自动释放mutex，从而防止因忘记解锁的而产生问题。
 
 用例：
 
@@ -150,10 +164,10 @@ void f()
 
 ### 如何避免死锁
 
-- 使用相同的顺序锁定和解锁
-- 尽量避免嵌套锁
-- 使用锁层次
-- 在持有锁时，避免调用用户提供的代码
+- 使用相同的顺序锁定和解锁。
+- 尽量避免嵌套锁。
+- 使用锁层次。
+- 在持有锁时，避免调用用户提供的代码。
 
 ### 转移锁的所有权
 
@@ -192,9 +206,9 @@ boost::shared_lock<boost::shared_mutex> lk(sm); // 提供共享，只读访问
 
 ## std::atomic
 
-### std::atomic
+### 原子操作
 
-`std::atomic`原子操作，保证不会导致"数据竞争"，可以通过`std::memory_order`决定不同线程之间同步内存访问顺序。
+`std::atomic`原子操作，用于保证并发访问数据时不会发生"数据竞争"，可以通过`std::memory_order`决定不同线程之间同步内存访问顺序：
 
 | 操作类型                            | 分类                                                         |
 | ----------------------------------- | ------------------------------------------------------------ |
@@ -266,9 +280,9 @@ F* x=p.fetch_add(2); // p加2，并返回原始值
 assert(p.load()==&f[2]);
 ```
 
-### std::atomic_flag
+### 无锁布尔原子类型
 
-`std::atomic_flag`(无锁布尔原子类型)。对象类型必须用`ATOMIC_FLAG_INIT`初始化，一旦标识初始化完成，你只能对它做三件事：
+对于`std::atomic_flag`(无锁布尔原子类型)，对象类型必须用`ATOMIC_FLAG_INIT`初始化，一旦标识初始化完成，你只能对它做三件事：
 
 - 销毁
 - 清除（clear）
@@ -294,7 +308,7 @@ public:
 };
 ```
 
-### std::memory_order
+### 指定内存访问顺序
 
 `std::memory_order`用于指定内存访问顺序，需要包含头文件`<atomic>`。
 
@@ -437,9 +451,9 @@ int main(int argc, char* argv[])
 }
 ```
 
-### std::atomic_thread_fence
+### 栅栏
 
-std::atomic_thread_fence（栅栏）可以让自由操作变得有序，例：
+`std::atomic_thread_fence（栅栏）`可以让自由操作变得有序。例：
 
 ```c++
 #include <atomic>
@@ -515,15 +529,11 @@ int main(int argc, char* argv[])
 
 ```
 
-### std::async
+### 异步运行
 
-函数模板`std::async`异步运行函数，并返回最终保有该函数调用结果的`std::future`。
+`std::async`(异步运行函数）用于实现异步操作，并返回最终保有该函数调用结果的`std::future`，若使用`std::async`需要引用头文件`#include <future>`。
 
-若使用`std::async`需要引用头文件`#include <future>`。
-
-### std::launch
-
-`std::launch`提供`std::async`的函数调用策略：
+`std::launch`为`std::async`提供调用策略：
 
 | std::launch             | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ |
@@ -570,9 +580,9 @@ int main(int argc, char* argv[])
 }
 ```
 
-### std::promise
+### 线程间一次性值传递
 
-C++11中的模板类`std::promise`提供对值或异常的存储，通过与`std::future`配合，在线程之间传递值（**一次性**）。
+C++11中的模板类`std::promise`提供对值或异常的存储，通过与`std::future`配合，用于在线程之间传递值（**一次性**）。
 
 **注意：`std::promise`只应当使用一次。**
 
@@ -608,7 +618,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-### std::packaged_task
+### 异步函数封装
 
 类模板`std::packaged_task`包装任何可调用目标（函数，lambda，bind表达式或其它函数对象），使能异步调用它。其返回值或所抛异常被存储于能通过`std::future`对象访问的共享状态中。
 
@@ -658,7 +668,7 @@ int main(int argc, char* argv[])
 
 ## std::condition_variable
 
-`std::condition_variable`用于同步线程，通过阻塞一个或多个线程，直到另一个线程通知`condition_variable`时解除阻塞（最常见的应用场景：消息队列）。
+`std::condition_variable`（条件变量）用于同步线程，通过阻塞一个或多个线程，直到另一个线程通知`condition_variable`时解除阻塞（最常见的应用场景：消息队列）。
 
 | 函数            | 说明                                                     |
 | --------------- | -------------------------------------------------------- |
@@ -691,7 +701,7 @@ if(cv.wait_until(lk, timeout)==std::cv_status::timeout)
 	break;
 ```
 
-### std::mutex
+### 与std::mutex配合
 
 ```c++
 #include <mutex>
@@ -714,7 +724,7 @@ void f2()
 }
 ```
 
-### std::packaged_task
+### 与std::packaged_task配合
 
 `std::packaged_task<>`将一个`future`绑定到一个函数或可调用对象上。当`std::packaged_task<>`对象被调用时，他就调用相关联的函数或可调用对象，并且让`future`就绪，将返回值作为关联数据存储。
 
@@ -755,114 +765,15 @@ std::future<void> f2(Func f)
 
 
 
-## 并发方式
+## 无锁并发
 
-### 有锁并发
-
-#### 意义
-
-- 多个线程可以并发的访问这个数据结构，线程可以对这个数据结构做相同或不同的操作，并且每一个线程都能在自己的自治域中看到该数据结构。
-- 在多线程环境下，无数据丢失和损毁，所有的数据需要维持原样，且无条件竞争。
-
-#### 准则
-
-在设计数据结构时，需要自行考虑以下问题：
-
-- 锁的范围中的操作，是否允许在锁外执行
-- 数据结构中不同的区域是否能被不同的互斥量所保护
-- 所有操作都需要同级互斥量保护
-- 能否对数据结构进行简单的修改，以增加并发访问的概率，且不影响操作语义
-
-如何保证数据结构是线程安全的：
-
-- 确保无线程能够看到，数据结构的“不变量”破坏时的状态。
-- 小心那些会引起条件竞争的接口，提供完整操作的函数，而非操作步骤。
-- 注意数据结构的行为是否会产生异常，从而确保“不变量”的状态稳定。
-- 将死锁的概率降到最低。使用数据结构时，需要限制锁的范围，且避免嵌套锁的存在。
-
-### 无锁并发
-
-#### 意义
-
-- 为了实现最大程度的并发
-- 健壮性
-
-#### 准则
-
-- 使用`std::memory_order_seq_cst`作为原型
-- 使用无锁内存回收模式
-- 当心ABA问题
-- 识别忙于等待的循环以及辅助其它线程
-
-### 并发代码性能分析
-
-- 处理器数量
-
-  处理器数量会影响到并发代码的性能，在linux下可以使用函数`std::thread::hardwarre_concurrency()`来获取硬件支持的最大同时运行的线程数量。
-
-- 数据竞争
-
-  处理器发生数据竞争会显著的影响到并发的性能，数据竞争分为以下几种：
-
-  - **高竞争(high contention)：**一个处理器已经准备好更新这个值，但是另一个处理器已经在做了，这就要等待另一个处理器更新，并且这个改动已经传播完成。
-  - **低竞争(low contention)：**处理器很少需要互相等待。
-  - **乒乓缓存(cacheping-pong)：**数据在各处理器的缓存间来回传递，如果处理器因为需要等待缓存而被挂起，在这个时间里处理器无法工作，严重影响程序的性能。
-
-- 假共享
-
-  处理器缓存的最小单位通常不是一个内存地址，而是一小块称为**缓存线(cacheline)**的内存。这些内存块一般大小为`32~64`字节，取决于具体的处理器。缓存只能处理缓存线大小的内存块，相邻地址的数据会被载入同一个缓存线。有时这是好事，线程访问的数据在同一个缓存线比分布在多个缓存线更好。但是如果缓存线内有不相关但需要被别的线程访问的数据，会导致严重的性能问题。
-
-  **假共享(false sharing)：**一个线程在更改其访问的数据时，缓存线的所有权需要转移到其所在的处理器，而另一个线程所需的数据可能也在这个缓存线上，当它访问时缓存线又要再次转移。这个缓存线是两者共享的，然而其中的数据并不共享。通俗地说就是是一个线程访问的数据与另一个线程的靠的太近而导致的问题。
-
-- 过度订阅和过多的任务切换
-
-  频繁地切换任务会导致性能损失
-
-### 定位并发错误
-
-```mermaid
-graph TD
-	start(开始)
-	finish(结束)
-	subgraph 阅读源码
-		r1{有多个线程同时访问这段代码?} 
-		r2{访问的数据受到了保护?} 
-		r3{是否进行了加锁?} 
-		r4{是否进行了解锁?}
-		r5{是否抛出了异常?}
-	end
-	
-	subgraph 测试
-		t1{在单线程情况下是否正常?}
-		t2{硬件是否支持多线程操作?}
-	end
-	
-	start --> r1
-	r1 -.是.-> r2
-	r1 -.否.-> finish
-	r2 -.是.-> r3
-	r2 -.否.-> finish
-	r3 -.是.-> r4
-	r3 -.否.-> finish
-	r4 -.是.-> r5
-	r4 -.否.-> finish
-	r5 -.否.-> t1
-	r5 -.是.-> finish
-	
-	t1 -.是.->t2
-	t1 -.否.->finish
-	t2 -.否.->finish
-```
-
-
-
-## 无锁数据结构
+通过使用`std::atomic`（原子操作）实现无锁并发，实现了代码最大程度的并发。
 
 ### 优缺点
 
-| 优点                                                   | 缺点 |
-| ------------------------------------------------------ | ---- |
-| 1.可以实现最大程度的并发。<br>2.可以增强程序的健壮性。 |      |
+| 优点                                                   | 缺点                                                         |
+| ------------------------------------------------------ | ------------------------------------------------------------ |
+| 1.可以实现最大程度的并发。<br>2.可以增强程序的健壮性。 | 1.代码编写比较复杂，尤其是涉及到内存访问顺序。<br>2.需要硬件支持。 |
 
 ### 设计准则
 
@@ -876,21 +787,41 @@ graph TD
    - 使用风险指针来确定线程正在访问一个特定的对象。
    - 引用计数对象，只有直到没有显著的引用时才删除它们。
 
-   另一个方法就是回收节点，并且当数据结构被销毁的时候才完全释放它们。因为节点是重复使用的，内存永远不会失效，这样避免未定义行为的困难就不存在了。但是会引来`ABA问题`。
+   另一个方法就是回收节点，并且当数据结构被销毁的时候才完全释放它们。因为节点是重复使用的，内存永远不会失效，这样避免未定义行为的困难就不存在了，但是会引来[ABA问题](#ABA问题)。
 
 3. 当心ABA问题
 
-   ABA问题是任何基于比较/交换的算法都必须提防的问题，它是这样的：
-
-   1. 线程1读取一个原子变量x，并且发现它的值为A。
-   2. 线程1基于这个值执行了一些操作，例如解引用它（如果它是指针的话）或者做一些查找操作。
-   3. 线程1被操作系统阻塞了。
-   4. 另一个线程在x上执行了一些操作，将它的值改为B。
-   5. 第三个线程更改了与值A相关的值，因此线程1持有的数值就不再有效了。这个变化有可能很大，如释放它所指向的内存或者改变相关的值一样。
-   6. 第三个线程基于新值将x的值改回A。如果这是一个指针，那么就可能是一个新的对象，此对象刚好与先前的对象使用了相同的地址。
-   7. 线程1重新取得x，并在x上执行比较/交换操作，与A进行比较。比较/交换操作成功了（因为值确实是A），但是这个A的值是错误的。第二步中读取的值不再有效，但是线程1并不知道，并且将破坏数据机构。
+   [ABA问题](#ABA问题)是任何基于`比较/交换`的算法都必须提防的问题，使用时需注意。
 
 4. 识别忙于等待的循环以及辅助其它线程。
+
+### ABA问题
+
+```mermaid
+sequenceDiagram
+线程1->>原子变量X:读取地址
+原子变量X-->>线程1:地址
+线程2->>原子变量X:设置B
+
+loop 操作1
+线程1->>线程1:基于读取的地址，找到其指向的值A
+end
+
+线程3->>原子变量X:创建并指向新的内存，同时释放原始内存
+线程3->>原子变量X:设置指向的内存的值为A
+
+线程1->>原子变量X:进行比较/交换操作（CAS）
+原子变量X-->>线程1:成功
+Note left of 线程1:操作1获取的地址失效（被释放）
+```
+
+1. 线程1读取一个原子变量x，并且发现它的值为A。
+2. 线程1基于这个值执行了一些操作，例如解引用它（如果它是指针的话）或者做一些查找操作。
+3. 线程1被操作系统阻塞了。
+4. 线程2在x上执行了一些操作，将它的值改为B。
+5. 线程3更改了与值A相关的值，因此线程1持有的数值就不再有效了。这个变化有可能很大，如释放它所指向的内存或者改变相关的值一样。
+6. 线程3基于新值将x的值改回A。如果这是一个指针，那么就可能是一个新的对象，此对象刚好与先前的对象使用了相同的地址。
+7. 线程1重新取得x，并在x上执行比较/交换操作，与A进行比较。比较/交换操作成功了（因为值确实是A），但是这个A的值是错误的。第二步中读取的值不再有效，但是线程1并不知道，并且将破坏数据机构。
 
 ### 无锁线程安全队列
 
@@ -1318,18 +1249,83 @@ public:
 
 
 
-## 并发库比较
+## 并发经验
+
+### 并发库比较
 
 | 功能                       | Java                                                         | POSIX C                                                      | Boost threads                                                | C++11                                                        |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 启动线程                   | `java.lang.thread`类                                         | `pthread_t`类型和相关`API`函数:<br>- `pthread_create()`<br>- `pthread_detach()`<br>- `pthread_join()` | `boost::thread`类与成员函数                                  | `std::thread`类与成员函数                                    |
-| 互斥                       | synchronized块                                               | `pthread_mutex_t`类型和相关`API`函数:<br>- `pthread_mutex_lock()`<br>- `pthread_mutex_unlock()` | `boost::mutex`类与成员函数:<br>- `boost::locak_guard<>`<br>- `boost::unique_lock<>`模板 | `std::mutex`类与成员函数，<br>`std::lock_guard<>`和<br>`std::unique_lock<>`模板 |
-| 监控/等待预期              | `java.lang.Object`类的`wait()`和`notify()`方法，在synchronized块内使用 | `pthread_cond_t`类型与相关`API`函数：<br>-`pthread_wait()`<br>-`pthread_cond_timed_wait()` | `boost::condition_variable`和<br>`boost::condition_variable_any`<br>类与成员函数 | `std::condition_variable`<br>`std::condition_variable_any`类与成员函数 |
+| 启动线程                   | `java.lang.thread`类                                         | `pthread_t`类型和相关`API`函数：<br>  - `pthread_create()`<br>  - `pthread_detach()`<br>  - `pthread_join()` | `boost::thread`类与成员函数                                  | `std::thread`类与成员函数                                    |
+| 互斥                       | synchronized块                                               | `pthread_mutex_t`类型和相关`API`函数：<br>  - `pthread_mutex_lock()`<br>  - `pthread_mutex_unlock()` | `boost::mutex`类与成员函数：<br>  - `boost::locak_guard<>`<br>  - `boost::unique_lock<>`模板 | `std::mutex`类与成员函数，<br>`std::lock_guard<>`和<br>`std::unique_lock<>`模板 |
+| 监控/等待预期              | `java.lang.Object`类的`wait()`和`notify()`方法，在synchronized块内使用 | `pthread_cond_t`类型与相关`API`函数：<br>  -`pthread_wait()`<br>  -`pthread_cond_timed_wait()` | `boost::condition_variable`和<br>`boost::condition_variable_any`<br>类与成员函数 | `std::condition_variable`<br>`std::condition_variable_any`类与成员函数 |
 | 原子操作与并发感知内存模型 | volatile变量，位于`java.util.concurrent.atomic`包中          | 不可用                                                       | 不可用                                                       | `std::atomic_xxx`类型<br>`std::atomic<>`类模板<br>`std::atomic_thread_fence()`函数 |
 | 线程安全容器               | `java.util.concurrent`包中的容器                             | 不可用                                                       | 不可用                                                       | 不可用                                                       |
 | future                     | `java.util.concurrent.future`接口及相关类                    | 不可用                                                       | - `boost::unique_future<>`<br>- `boost::shared_future<>`类模板 | `std::future<>`,<br>`std::shared future<>`和<br>`std::atomic future<>`类模板 |
 | 线程池                     | `java.util.concurrent.ThreadPoolExecutor`类                  | 不可用                                                       | 不可用                                                       | 不可用                                                       |
 | 线程中断                   | `java.lang.Thread`的`interrupt()`方法                        | `pthread_cancel()`                                           | `boost::thread`类的`interrupt()`成员函数                     | 不可用                                                       |
+
+### 性能分析
+
+影响代码并发性能的原因：
+
+- 处理器数量
+
+  处理器数量会影响到并发代码的性能，在linux下可以使用函数`std::thread::hardwarre_concurrency()`来获取硬件支持的最大同时运行的线程数量。
+
+- 数据竞争
+
+  处理器发生数据竞争会显著的影响到并发的性能，数据竞争分为以下几种：
+
+  - **高竞争(high contention)：**一个处理器已经准备好更新这个值，但是另一个处理器已经在做了，这就要等待另一个处理器更新，并且这个改动已经传播完成。
+  - **低竞争(low contention)：**处理器很少需要互相等待。
+  - **乒乓缓存(cacheping-pong)：**数据在各处理器的缓存间来回传递，如果处理器因为需要等待缓存而被挂起，在这个时间里处理器无法工作，严重影响程序的性能。
+
+- 假共享
+
+  **假共享(false sharing)：**一个线程在更改其访问的数据时，缓存线的所有权需要转移到其所在的处理器，而另一个线程所需的数据可能也在这个缓存线上，当它访问时缓存线又要再次转移。这个缓存线是两者共享的，然而其中的数据并不共享。通俗地说就是是一个线程访问的数据与另一个线程的靠的太近而导致的问题。
+
+- 过度订阅和过多的任务切换
+
+  频繁地切换任务会导致性能损失。
+
+### 定位并发错误
+
+```mermaid
+graph TD
+	start(开始)
+	finish(结束)
+	subgraph 阅读源码
+		r1{有多个线程同时访问这段代码?} 
+		r2{访问的数据受到了保护?} 
+		r3{是否进行了加锁?} 
+		r4{是否进行了解锁?}
+		r5{是否使用相同的顺序层次进行加解锁?<br>1.有没有嵌套锁?<br>2.加解的是同一把锁?}
+		r6{是否未抛出异常?}
+	end
+	
+	subgraph 测试
+		t1{在单线程情况下是否正常?}
+		t2{硬件是否支持多线程操作?}
+	end
+	
+	start --> r1
+	r1 -.是.-> r2
+	r1 -.否.-> finish
+	r2 -.是.-> r3
+	r2 -.否.-> finish
+	r3 -.是.-> r4
+	r3 -.否.-> finish
+	r4 -.是.-> r5
+	r4 -.否.-> finish
+	r5 -.是.-> r6
+	r5 -.否.-> finish
+	r6 -.是.-> t1
+	r6 -.否.-> finish
+	
+	t1 -.是.->t2
+	t1 -.否.->finish
+	t2 -.否.->finish
+```
 
 
 
@@ -1358,7 +1354,7 @@ void parallel_for_each(Iterator first, Iterator last, Func f)
 }
 ```
 
-### std::find
+### 并发版本的std::find
 
 ```c++
 template<typename Iterator, typename MatchType>
@@ -1412,36 +1408,30 @@ TODO
 
 3. 可以使用以下方法来给线程函数传递参数：
 
-   - 使用`std::ref`包装
-   - 使用`std::move`来转移所有权
+   - 使用`std::ref`包装。
+   - 使用`std::move`来转移所有权。
 
 4. 通过一下方法来获取线程标识符`std::thread::id`:
 
    - 通过从与之相关联的`std::thread`对象中调用`get_id()`获得。
    - 线程构建时返回。
 
-5. 互斥元用法：`std::lock_guard<std::mutex> guard(mutex_obj)`
+5. 基于RAII机制的互斥元用法：`std::lock_guard<std::mutex> guard(mutex_obj)`
 
 6. 可以通过以下方法来等待其他线程完成：
 
    - 使用条件变量`std::condition_variable`和`std::condition_variable_any`。
 
-7. 使用`std::future`来从线程中返回参数。
+7. 使用`std::future`来一次性地从线程中返回参数。
 
-8. 常用的原子操作：
-
-   - load
-   - store
-   - exchange
-   - compare
-   - exchange
+8. 使用`std::atomic`（原子操作）以提升并发代码的效率。
 
 9. 无锁编程准则：
 
-   - 使用`std::memory_order_seq_cst`作为原型
-   - 使用无锁内存回收模式
-   - 当心ABA问题
-   - 识别忙于等待的循环以及辅助其它线程
+   - 使用`std::memory_order_seq_cst`作为原型。
+   - 使用无锁内存回收模式。
+   - 当心ABA问题。
+   - 识别忙于等待的循环以及辅助其它线程。
 
 10. **阿姆达尔定律(Amdahl's law)：**$P=\frac{1}{f_s + \frac{1 - f_s}{N}}$
     - $P$: 性能
@@ -1452,7 +1442,7 @@ TODO
 
 ## 参考
 
-[1] Anthony Williams.C++并发编程实战
+[1] Anthony Williams.C++并发编程实战.1ED
 
 [2] [C++ Concurrency In Action](http://shouce.jb51.net/cpp_concurrency_in_action/)
 

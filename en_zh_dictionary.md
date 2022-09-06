@@ -833,6 +833,8 @@ conscious `/ˈkɒnʃəs/` 意识到，自觉地，神智清醒的
 
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
+consequence `/'kɒnsɪkwəns/` 结果，后果，重要性
+
 conserve `/kənˈsɜːrv /` 保存，节约，保护，节省
 
 considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
@@ -1035,6 +1037,8 @@ counterfeit `/ˈkaʊntəfɪt/` 仿制品，肖像，伪造，仿冒的
 
 counterpart `/ˈkaʊntəpɑːt/` 对手，副本
 
+couple `/'kʌpl/` 连接，交配，配对
+
 course `/kɔːs/` 课程
 
 court `/kɔːt/` 法院，法庭，争取
@@ -1046,6 +1050,8 @@ courthouse `/ˈkɔːthaʊs/` 法院，县政府大楼
 counsel `/ˈkaʊnsl/` 忠告，劝告，律师，法律顾问
 
 counterclockwise `/ˌkaʊntəˈklɒkwaɪz/` 逆时针地
+
+covers `/'kʌvə(r)/` 封面，覆盖，含盖
 
 cozy `/ˈkəʊzi/` 舒适的，安逸的，抚慰，取悦，保温罩
 
@@ -1717,6 +1723,8 @@ extinction `/ɪkˈstɪŋkʃn/` 灭绝，消失
 
 extol `/ɪkˈstəʊl/` 赞美，称赞，歌颂
 
+extreme `/ɪk'striːm/` 极端，极度
+
 extremity `/ɪkˈstreməti/` 末端，尽头，极端，绝境，四肢，手足
 
 exuberant `/ɪɡˈzjuːbərənt/` 旺盛的，茂盛的
@@ -2029,6 +2037,8 @@ grand `/ɡrænd/` 壮丽的，堂皇的，宏伟的
 
 granite `/ˈɡrænɪt/` 花岗岩，花岗石
 
+granularity `/grænjʊ'lærɪtɪ/` 颗粒度，粒度
+
 graph `/ɡræf/` 图，图表
 
 graphite `/ˈɡræfaɪt/` 石墨
@@ -2268,6 +2278,8 @@ inclined `/ɪnˈklaɪnd/` 倾斜，倾向，趋势
 inconvenient `/inconvenient/` 不方便的
 
 incorporation `/ɪnˌkɔːpəˈreɪʃən/` 公司，法人，合并，并入
+
+incorrect `/ˌɪnkə'rekt/` 不正确的，错误的
 
 incur `/ɪnˈkɜːr/` 招致，引起，遭受，带来
 
@@ -2715,6 +2727,8 @@ maze `/meɪz/` 迷宫，错综复杂
 
 meager `/ˈmiːgə/` 瘦的，贫瘠的，贫乏的
 
+meantime `/'miːntaɪm/` 与此同时
+
 measure `/ˈmeʒə(r)/` 测量，估量，尺寸，长度，数量
 
 medieval `/ˌmediˈiːvl/` 中世纪，中古时代的
@@ -2746,6 +2760,8 @@ methodology `/ˌmeθəˈdɒlədʒi/` 方法论，方法学
 microbe `/ˈmaɪkrəʊb/` 微生物
 
 microcosm `/ˈmaɪkrəʊkɒzəm/` 缩影，微观世界
+
+midway `/ˌmɪd'weɪ/` 中间，中途的
 
 midwife `/ˈmɪdwaɪf/` 产婆，接生员
 
@@ -3941,6 +3957,8 @@ sequester `/sɪˈkwestər/` 隔离
 
 serrated `/səˈreɪtɪd/` 锯齿状的
 
+several `/'sevrəl/` 少数的，若干的
+
 sewerage `/ˈsuːərɪdʒ/` 排水系统，污水处理系统
 
 ### sh
@@ -3964,6 +3982,8 @@ shed `/ʃed/` 屋棚，流出，蜕皮，脱落
 sheer `/ʃɪə(r)/` 垂直的，陡峭的，纯粹的，完全的
 
 shelf `/ʃelf/` 架子，隔板，突出的岩石
+
+shelter `/'ʃeltə(r)/` 避难所，保护，庇护
 
 shepherd `/ˈʃepəd/` 牧羊人，领头，护送
 
@@ -4225,6 +4245,8 @@ stimulus `/ˈstɪmjələs/` 刺激，刺激物，促进因素，鼓励
 
 stitch `/stɪtʃ/` 缝，绣，缝合
 
+straightforward `/ˌstreɪt'fɔːwəd/` 笔直的，易懂的，坦率的
+
 strain `/streɪn/` 负担，压力，拉紧，拉伤
 
 strait `/streɪt/` 海峡，水道
@@ -4323,6 +4345,8 @@ surrogate `/ˈsɜːrəɡət/` 代理，代孕，代表，替代
 
 susceptible `/səˈseptəbl/` 易受感染的，过敏，敏感，易受影响的
 
+suspend `/sə'spend/` 暂停，中止，悬浮
+
 suspender `/səˈspendər/` 背带，吊袜带
 
 suspicion `/səˈspɪʃn/` 怀疑，嫌疑，猜疑，不放心
@@ -4358,6 +4382,8 @@ sympathize `/ˈsɪmpəθaɪz/` 同情，共鸣，赞同
 symphony `/ˈsɪmfəni/` 交响乐，交响曲
 
 symptom `/ˈsɪmptəm/` 症状，征兆
+
+synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 
 syntax `/ˈsɪntæks/` 语法，句法
 
