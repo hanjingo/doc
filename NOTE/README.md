@@ -35,9 +35,9 @@
 
 ### 并行编程
 
-| 书名                                                   | 版次 | 作者             | 摘要/评价                    |
-| ------------------------------------------------------ | ---- | ---------------- | ---------------------------- |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛 |
+| 书名                                                   | 版次 | 作者             | 摘要/评价                                                    |
+| ------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
 
 ### C++
 
@@ -72,11 +72,14 @@
 
 ## 在读
 
-- [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
+- [C++ Templates]
+- [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
+- [Boost程序库完全开发指南-深入C++"准"标准库](PROFESSIONAL_BOOST_GUIDE/README.md)
+- [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
+- [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/README.md)
 - [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 - [MySql技术内幕-InnoDB存储引擎](INSIDE_MYSQL_INNODB_STORAGE_ENGINE/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
-- [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
@@ -86,16 +89,13 @@
 - [经济学原理](THE_PRINCIPLE_OF_ECONOMICS/README.md)
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 - [IPFS原理与实践](PRINCIPLES_AND_PRACTICES_OF_IPFS/README.md)
-- [Boost程序库完全开发指南-深入C++"准"标准库](PROFESSIONAL_BOOST_GUIDE/README.md)
 - [国富论](THE_WEALTH_OF_NATIONS/README.md)
-- [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
 - [谷歌分布式系统相关论文](GOOGLE_DCS_DOC/README.md)
-- [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/README.md)
+- [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
 
 
 
 ## 计划读
 
 - [C++覆辙录]
-- [C++ Templates]
 
