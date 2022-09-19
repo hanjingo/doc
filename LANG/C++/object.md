@@ -456,6 +456,10 @@ vec_nex(&array, sizeof(complex), 10, &complex::complex, 0);
 
 ### 内存对齐
 
+`#pragma pack(push)` TODO
+
+`#pragma pack(pop)` TODO
+
 TODO
 
 ### 继承
@@ -647,3 +651,5 @@ TODO
 
 
 ## 参考
+
+- [`#pragma pack(push) 和#pragma pack(pop) 以及#pragma pack()`](https://blog.csdn.net/myyllove/article/details/84560893/)

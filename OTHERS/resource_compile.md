@@ -66,7 +66,9 @@
 ### 综合库
 
 - [boost](https://www.boost.org/)
-- 腾讯c++库 [libco](https://github.com/Tencent/libco)
+- 微软的异步调用库 Parallel Patterns Library
+- 搜狗的异步调用框架 [sogou](https://github.com/sogou)/**[workflow](https://github.com/sogou/workflow)**
+- 腾讯c++协程库 [libco](https://github.com/Tencent/libco)
 - 微软的STL库实现 [STL](https://github.com/microsoft/STL)
 - 大名鼎鼎的 [QT](https://download.qt.io/archive/qt/)
 

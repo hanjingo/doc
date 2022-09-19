@@ -1,5 +1,9 @@
 # progress_timer
 
+[TOC]
+
+
+
 `progress_timer`继承自`timer`，会在析构时自动输出时间，不需要手动调用`elapsed()`。
 
 添加以下语句以使用`progress_timer`：

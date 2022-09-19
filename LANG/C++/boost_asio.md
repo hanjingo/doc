@@ -30,7 +30,7 @@ asio使用之前需要包含以下头文件：
 
 ### timer
 
-steady_timer, system_timer和high_resulution_timer是basic_waitable_timer的模板特化，其函数如下：
+`steady_timer`, `system_timer`和`high_resulution_timer`是`basic_waitable_timer`的模板特化，其函数如下：
 
 | API                                                         | 参数                       | 说明             |
 | ----------------------------------------------------------- | -------------------------- | ---------------- |
@@ -163,7 +163,7 @@ void handler(const error_code& ec,          // 操作的错误码
             std::size_t bytes_transferred); // 传输的字节数
 ```
 
-可以使用bind把任意函数适配为asio要求的handler形式，asio库在子名字空间boost::asio::placeholders里定义了几个新的占位符，这些新占位符比bind自己的_1,_2等占位符的含义更清晰。
+可以使用bind把任意函数适配为asio要求的handler形式，asio库在子名字空间`boost::asio::placeholders`里定义了几个新的占位符，这些新占位符比bind自己的_1,_2等占位符的含义更清晰。
 
 - error                     :表示error_code值。
 - signal_number     :表示UNIX信号值。
@@ -171,7 +171,7 @@ void handler(const error_code& ec,          // 操作的错误码
 
 ### error_code
 
-asio库使用system库的error_code和system_error来表示程序运行时的错误。
+asio库使用system库的`error_code`和`system_error`来表示程序运行时的错误。
 
 ### io_service
 
@@ -249,13 +249,13 @@ public:
 
 asio库提供了4个定时器，分别是：
 
-- deadline_timer
+- `deadline_timer`
 
-- steady_timer
+- `steady_timer`
 
-- system_timer
+- `system_timer`
 
-- high_resolution_timer
+- `high_resolution_timer`
 
   其所在头文件如下：
 
@@ -351,7 +351,7 @@ timer_with_func t1(io, 5, []{cout << "hello timer1" << endl;});
 
 ### ip::tcp
 
-ip::tcp位于头文件<boost/asio/ip/tcp.hpp>，其摘要如下：
+ip::tcp位于头文件`<boost/asio/ip/tcp.hpp>`，其摘要如下：
 
 ```c++
 class tcp
@@ -552,7 +552,7 @@ void handler(const error_code& ec,          // 操作的错误码
 ```c++
 // 服务端
 int main() {
-		typedef ip::tcp::acceptor acc_typ;
+	typedef ip::tcp::acceptor acc_typ;
   	typedef ip::tcp::endpoint ep_typ;
   	typedef ip::tcp::socket   sock_typ;
     
@@ -567,6 +567,8 @@ int main() {
     }
 }
 ```
+
+
 
 ```c++
 // 客户端
@@ -591,7 +593,7 @@ int main() {
 ```c++
 // 服务端
 class server {
-	typedef server this_type;
+  typedef server this_type;
   typedef ip::tcp::acceptor acceptor_type;
   typedef ip::tcp::endpoint endpoint_type;
   typedef ip::tcp::socket   socket_type;
@@ -606,7 +608,7 @@ public:
   void run() { m_io.run(); }
   void accept() {
   	sock_ptr sock(new socket_type(m_io));
-    acceptor.async_accept(*sock, [this, sock](const error_code& ec){
+    m_acceptor.async_accept(*sock, [this, sock](const error_code& ec){
     	if (ec) { return; }
       sock->async_send(
       	buffer("hello asio"),
@@ -627,7 +629,7 @@ public:
 }
 
 int main() {
-	server src;
+  server src;
   serv.run();
 }
 ```
@@ -636,7 +638,7 @@ int main() {
 // 客户端
 class client
 {
-	typedef client                  this_type;
+  typedef client                  this_type;
   typedef ip::tcp::endpoint       endpoint_type;
   typedef ip::address             address_type;
   typedef ip::tcp::socket         socket_type;
@@ -699,13 +701,13 @@ private:
 
 int main() 
 {
-	cout << "client start." << endl;
+  cout << "client start." << endl;
   client c1;
   c1.run();
 }
 ```
 
-### 域名解析
+### 3. 域名解析
 
 ```c++
 void resolve_connect(io_service &io, ip::tcp::socket &sock, const char* name, int port)
@@ -738,7 +740,7 @@ int main()
 }
 ```
 
-### UDP协议通信
+### 4. UDP协议通信
 
 ```c++
 // 服务端
@@ -783,4 +785,6 @@ int main()
 # 参考
 
 [1] 罗剑锋.Boost程序库完全开发指南-深入c++"准"标准库
+
+[2] [同步VS异步](https://mmoaay.gitbooks.io/boost-asio-cpp-network-programming-chinese/content/Chapter5.html)
 

@@ -1,5 +1,7 @@
 # date_time
 
+[TOC]
+
 
 
 ## 编译与使用
@@ -499,7 +501,7 @@ int main()
 
 
 
-## 处理时间
+## 2.7 处理时间
 
 `date_time`提供微秒级别的时间系统，如果需要，最高可达到纳秒级别的精度。
 
@@ -510,22 +512,11 @@ int main()
 using namespace boost::posix_time;
 ```
 
-### 时间长度
+### 2.7.1 时间长度
 
-date_time库使用`time_duration`度量时间长度，如果定义了宏`BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG`，那么它可以精确到纳秒级，其类摘要如下：
+date_time库使用`time_duration`度量时间长度，如果定义了宏`BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG`，那么它可以精确到纳秒级。
 
-```c++
-class time_duration
-{
-public:
-    time_duration();
-    time_duration(hour_type, min_type, sec_type = 0,
-                  fractional_seconds_type = 0);
-    time_duration(special_values);
-    
-    hour_type hours() const;
-    min_type minutes() const;
-    TODO
-}
-```
+### 2.7.2 操作时间长度
+
+
 

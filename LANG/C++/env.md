@@ -4,6 +4,33 @@
 
 
 
+## 第三方库对比
+
+| 组件             | boost | folly                          |
+| ---------------- | ----- | ------------------------------ |
+| 内存管理         |       | Arena.h<br>ThreadCachedArena.h |
+| 线程管理         |       |                                |
+| 线程安全数据结构 |       | AtomicHashMap                  |
+| 压测工具         |       | Benchmark                      |
+| 文件管理         |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+|                  |       |                                |
+
+
+
 ## 依赖环境
 
 ### ubuntu/debain
@@ -30,6 +57,18 @@
   ```sh
   brew install pcre2 harfbuzz freetype cmake ninja python llvm
   ```
+
+### windows
+
+#### vcpkg
+
+1. clone vcpkg项目
+
+   ```sh
+   git clone git@github.com:microsoft/vcpkg.git
+   ```
+
+2. 设置环境变量
 
 
 
@@ -119,22 +158,24 @@ cmake --version
 
    - Qt5
 
-     - Macos（Arm架构）
+     Macos（Arm架构）：
 
-       ```sh
-       ./configure -release -prefix /Users/he/qt/5.15.2 -nomake examples -nomake tests QMAKE_APPLE_DEVICE_ARCHS=arm64 -opensource -confirm-license -skip qt3d -skip qtwebengine -skip virtualkeyboard # 安装到/Users/he/qt/5.15.2，根据实际情况设置
-       
-       make -j 8 # 这里8指CPU核心，根据机器的实际情况设置
-       
-       sudo make install
-       ```
+     ```sh
+     ./configure -release -prefix /Users/he/qt/5.15.2 -nomake examples -nomake tests QMAKE_APPLE_DEVICE_ARCHS=arm64 -opensource -confirm-license -skip qt3d -skip qtwebengine -skip virtualkeyboard # 安装到/Users/he/qt/5.15.2，根据实际情况设置
+     
+     make -j 8 # 这里8指CPU核心，根据机器的实际情况设置
+     
+     sudo make install
+     ```
 
    - Qt6
 
-     - Macos（Arm架构）
+     Macos（Arm架构）：
+     
+     TODO
 
    configure参数说明:
-
+   
    | 参数                     | 说明               |
    | ------------------------ | ------------------ |
    | release                  | 编译release版本    |
@@ -238,11 +279,13 @@ cmake --version
 ### 编译安装
 
 1. 拉取源码
-   - 通过git下载
-   - 通过http下载
+   
+   ```sh
+   TODO
+   ```
 2. 编译
-   - Qt5
-   - Qt6
+   
+   TODO
 
 
 
@@ -250,7 +293,7 @@ cmake --version
 
 ### 命令安装
 
-- 10
+- Clang10
 
   ```sh
   # 安装clang10
@@ -264,7 +307,7 @@ cmake --version
   # 如果其它版本的优先级更高，可以手工切换版本： sudo update-alternatives --config clang
   ```
 
-- 11
+- Clang11
 
   ```sh
   # 修改/etc/apt/sources.list添加源
@@ -295,7 +338,9 @@ TODO
 
 ## Boost
 
-### 1.75.0
+### Linux/Unix
+
+编译安装：
 
 ```sh
 export BOOST_ROOT="/usr/local/boost-1.75"
@@ -310,9 +355,58 @@ cd boost_1_75_0
 sudo ./b2 --without-graph_parallel --without-mpi -q -j $(nproc) install
 ```
 
+### Windows
+
+编译安装：
+
+1. 下载boost源码并解压。
+
+2. 打开`VS2015开发人员命令提示`，执行`bootstrap.bat`，生成`b2.exe`/`bjam.exe`。
+
+   ```sh
+   bootstrap.bat
+   ```
+
+3. 执行`b2.exe`/`bjm.exe`执行编译。
+
+   ```sh
+   .\b2
+   ```
+
+使用vcpkg：
+
+TODO
+
+
+
+## folly
+
+### 使用vcpkg
+
+- macos
+
+  ```sh
+  vcpkg install folly:x64-osx
+  ```
+
+- linux
+
+  ```sh
+  vcpkg install folly:x64-linux
+  ```
+
+- windows
+
+  ```sh
+  vcpkg install folly:x64-windows
+  ```
+
 
 
 ## 参考
 
 - [Qt Documentation/Qt WebEngine Platform Notes](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html)
 - [QtPDF Build Instructions](https://wiki.qt.io/QtPDF_Build_Instructions)
+- [vcpkg](http://blog.fpliu.com/it/software/vcpkg)
+- [folly](http://blog.fpliu.com/it/software/development/language/C++/library/folly)
+- [github/facebook/folly/docs/Overview.md](https://github.com/facebook/folly/blob/main/folly/docs/Overview.md)
