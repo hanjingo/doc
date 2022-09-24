@@ -17,6 +17,7 @@
 - [pool](boost_pool.md)
 - [statechart](boost_statechart.md)
 - [strand](boost_strand.md)
+- [test](boost_test.md)
 
 ---
 
