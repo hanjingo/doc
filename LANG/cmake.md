@@ -62,6 +62,7 @@ endif()
 - `cmake_install.cmake` 处理安装规则的CMake脚本，在项目安装时使用；
 - `CMakeCache.txt` CMake缓存，在重新运行配置时使用这个文件。
 
+---
 
 
 
@@ -88,6 +89,8 @@ add_custom_command(OUTPUT output1 [output2 ...]
 
 执行命令。
 
+例：
+
 ```cmake
 add_custom_command(
     Setup ALL hello.exe /V1 hello.nsi
@@ -98,7 +101,26 @@ add_custom_command(
 
 ### ADD_EXECUTABLE
 
+```cmake
+add_executable(<name> [WIN32] [MACOSX_BUNDLE]
+               [EXCLUDE_FROM_ALL]
+               [source1] [source2 ...]) 
+```
+
 生成可执行文件。
+
+```cmake
+add_executable(<name> IMPORTED [GLOBAL])
+```
+导入可执行文件
+
+```cmake
+add_executable(<name> ALIAS <target>)
+```
+为可执行文件命别名
+
+
+例：
 
 ```cmake
 add_executable(hello 
@@ -108,7 +130,11 @@ add_executable(hello
 
 ### ADD_LIBRARY
 
-`add_library(TARGETS [STATIC|SHARED] ...)`
+```cmake
+add_library(<name> [STATIC | SHARED | MODULE]
+            [EXCLUDE_FROM_ALL]
+            [<source>...])
+```
 
 - STATIC 静态库；
 - SHARED 动态库；
@@ -425,6 +451,8 @@ target_include_directories(hello
 
 生成的目标名。
 
+---
+
 
 
 ## 变量
@@ -435,6 +463,7 @@ target_include_directories(hello
 - `WIN32`
 - `MINGW`
 - `APPLE`
+- `CMAKE_SYSTEM_NAME`
 
 ### 编译变量
 
@@ -504,6 +533,8 @@ endif(LOG_TABLE)
 cmake -DLOG_TABLE=ON ..
 ```
 
+---
+
 
 
 ## 依赖处理
@@ -571,6 +602,7 @@ TODO
 ### git submodule
 TODO
 
+---
 
 
 
@@ -627,9 +659,122 @@ TODO
 
 ### 打包
 
-#### 集成NSIS
+CPack用于生成包程序包，在CMakeCPack.cmake中列出了CPack指令，用于生成`CPackConfig.cmake`，当运行以`package`或`package_source`目标的CMake命令时，CPack会自动调用。
 
-TODO
+#### 变量
+
+- CPACK_PACKAGE_NAME 名称
+- CPACK_PACKAGE_VENDOR 供应商
+- CPACK_PACKAGE_DESCRIPTION_FILE 描述文件
+- CPACK_PACKAGE_DESCRIPTION_SUMMARY 包描述
+- CPACK_RESOURCE_FILE_LICENSE 许可证文件
+- CPACK_PACKAGING_INSTALL_PREFIX 安装路径
+- CPACK_PACKAGE_VERSION_MAJOR 主要版本
+- CPACK_PACKAGE_VERSION_MINOR 次要版本
+- CPACK_PACKAGE_VERSION_PATCH 布丁版本
+- CPACK_SOURCE_IGNORE_FILES 忽略文件/目录
+- CPACK_SOURCE_GENERATOR 归档格式
+- CPACK_GENERATOR 打包工具
+- CPACK_DEBIAN_PACKAGE_MAINTAINER
+- CPACK_DEBIAN_PACKAGE_SECTION
+- CPACK_NSIS_CONTACT
+- CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL 是否在安装之前先卸载
+- CPACK_BUNDLE_NAME bundle打包名
+- CPACK_BUNDLE_PLIST `*.plist`文件
+- CPACK_BUNDLE_ICON 图标
+
+#### 工具
+
+- linux
+
+    TODO
+
+- macos
+
+    macos使用以下工具打包`.dmg`文件：
+    
+    1. Bundle
+
+- windows
+
+    windows提供以下工具打包`.exe`文件：
+
+    1. NSIS
+
+#### 示例
+
+```cmake
+# 声明包的名称
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+
+# 声明包的供应商
+set(CPACK_PACKAGE_VENDOR "hello")
+
+# 打包描述文件
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${PROJECT_SOURCE_DIR}/INSTALL.md")
+
+# 添加包描述
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "hello")
+
+# 添加许可证文件
+set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE")
+
+# 设置文件安装路径到 /usr/local/hello
+set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local/${PROJECT_NAME}")
+
+# 设置 主要，次要和补丁版本
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+
+# 设置在包装时需要忽略的文件列表和目录
+set(CPACK_SOURCE_IGNORE_FILES "${PROJECT_BINARY_DIR};/.git/;.gitignore")
+
+# 设置归档格式
+set(CPACK_SOURCE_GENERATOR "ZIP;TGZ")
+
+# 设置二进制存档生成器
+set(CPACK_GENERATOR "ZIP;TGZ")
+
+# 声明linux平台原生二进制安装程序
+if(UNIX)
+    if(CMAKE_SYSTEM_NAME MATCHES Linux) 
+        list(APPEND CPACK_GENERATOR "DEB") # .deb
+        set(CPACK_DEBIAN_PACKAGE_MAINTAINER "master")
+        set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
+        set(CPACK_DEBIAN_PACKAGE_DEPENDS "uuid-dev")
+
+        list(APPEND CPACK_GENERATOR "RPM") # .rpm
+        set(CPACK_RPM_PACKAGE_RELEASE "1")
+        set(CPACK_RPM_PACKAGE_LICENSE "MIT")
+        set(CPACK_RPM_PACKAGE_REQUIRES "UUID-DEVEL")
+    endif()
+endif()
+
+# 声明windows平台原生二进制安装程序
+if(WIN32 OR MINGW)
+   list(APPEND CPACK_GENERATOR "NSIS") # nsis安装程序
+   set(CPACK_NSIS_PACKAGE_NAME "hello")
+   set(CPACK_NSIS_CONTACT "master")
+   set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+endif()
+
+# 声明windows平台原生二进制安装程序
+if(APPLE)
+    list(APPEND CPACK_GENERATOR "Bundle") # bundle
+    set(CPACK_BUNDLE_NAME "hello")
+    configure_file(${PROJECT_SOURCE_DIR}/cmake/Info.plist.in Info.plist @ONLY)
+    set(CPACK_BUNDLE_PLIST ${CMAKE_CURRENT_BINARY_DIR}/Info.plist)
+    set(CPACK_BUNDLE_ICON ${PROJECT_SOURCE_DIR}/cmake/coffee.icns)
+endif()
+
+# 打印信息
+message(STATUS "CPack genertors: ${CPACK_GENERATOR}")
+
+include(CPack)
+```
+
+---
 
 
 
@@ -656,6 +801,8 @@ endif()
 
 PROTOBUF_GENERATE_CPP(hello hello  hello.proto)
 ```
+
+---
 
 
 
@@ -722,11 +869,16 @@ BOOST_AUTO_TEST_CASE(xx)
 BOOST_AUTO_TEST_SUITE_END()
 ```
 
+---
+
 
 
 ## 集成git
 
 TODO
+
+---
+
 
 
 ## 集成Visual Studio
@@ -742,6 +894,8 @@ microsoft在VS2017开始支持CMake，因此构建不同版本的VS项目，需�
 - VS2017以下
 
     1. TODO
+
+---
 
 
 
@@ -850,11 +1004,15 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(hello Qt5::Widgets)
 ```
 
+---
+
 
 
 ## 集成Zeromq
 
 TODO
+
+---
 
 
 
