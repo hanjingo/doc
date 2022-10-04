@@ -805,13 +805,7 @@ participant 观察者
 
 - 需要使用 `mermaid` 解析，并在开头使用关键字 `sequenceDiagram` 指明
 
-- 线段的样式遵循 
-
-  ```
-  mermaid
-  ```
-
-   的解析方式
+- 线段的样式遵循`mermaid`的解析方式：
 
   - `->` ： 实线连接
   - `-->` ：虚线连接
