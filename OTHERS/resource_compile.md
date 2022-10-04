@@ -105,6 +105,7 @@
 - P2P节点发现库 [nearby-connections](https://github.com/google/nearby-connections)
 - Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
 - C++ HTTP项目 [qinguoyi](https://github.com/qinguoyi)/**[TinyWebServer](https://github.com/qinguoyi/TinyWebServer)**
+- C++内网穿透库 [lazy-luo/smarGate](https://github.com/lazy-luo/smarGate )
 
 ### 数据库/存储
 
@@ -172,6 +173,7 @@
 - [bitcoin](https://github.com/bitcoin/bitcoin)
 - [eos](https://github.com/EOSIO/eos)
 - [go-ipfs-swarm-key-gen](https://github.com/Kubuxu/go-ipfs-swarm-key-gen)
+- [FISCO-BCOS/FISCO-BCOS](https://github.com/FISCO-BCOS/FISCO-BCOS)
 
 ### 操作系统
 

@@ -16,7 +16,8 @@
 ### 基本原理
 
 1. 变量使用`${}`方式取值，但是在IF控制语句中是直接使用变量名；
-2. 指令格式 `指令(参数1 参数2 ...)`；
+2. 系统变量使用`ENV{变量名}`访问；
+3. 指令格式 `指令(参数1 参数2 ...)`；
 4. make不支持make distclean；
 5. 在CMake中，C++是默认的编程语言；如果要编译其他语言，使用`LANGUAGES`选项显式声明；
 6. 使用cmake命令时，通过`-D`选项设置选项选项，通过`-G`;
@@ -24,18 +25,67 @@
 
 ### 条件控制
 
+#### IF...ELSE...ENDIF
+
 ```cmake
-if (PARAM)
-    ...
+if(<condition>)
+  <commands>
+elseif(<condition>) 
+  <commands>
 else()
-    ...
+  <commands>
 endif()
 ```
 
-- 开 1/ON/YES/true/Y/非零数值
-- 关 0/OFF/NO/false/N/IGNORE/NOTFOUND/空字符串/xxx-NOTFOUND
+condition有以下几类：
+
+- 基本表达式
+
+    | condition                                                                      | 说明  |
+    |--------------------------------------------------------------------------------|-------|
+    | 1<br>ON<br>YES<br>true<br>Y<br>非零数值                                        | true  |
+    | 0<br>OFF<br>NO<br>false<br>N<br>IGNORE<br>NOTFOUND<br>空字符串<br>xxx-NOTFOUND | false |
+
+- 逻辑表达式
+
+    | condition | 说明   |
+    |-----------|--------|
+    | NOT       | 非运算 |
+    | AND       | 与运算 |
+    | OR        | 或运算 |
+
+- 扩充检查
+
+    | condition     | 说明                                                                                                                                  |
+    |---------------|---------------------------------------------------------------------------------------------------------------------------------------|
+    | COMMAND       | 如果给定的名称是一个可以调用的命令、宏或函数,则为真                                                                                   |
+    | POLICY        | 如果给定名称是现有策略（格式为 CMP<NNNN> ），则为True                                                                                 |
+    | TARGET        | 如果给定名称是通过调用（在任何目录中） `add_executable()`，`add_library()`或`add_custom_target()`命令创建的现有逻辑目标名称，则为true |
+    | TEST          | 如果给定名称是由 add_test() 命令创建的现有测试名称，则为true（3.3版新增）                                                             |
+    | DEFINED<name> | 具有给定`<name>`的变量，则为true                                                                                                      |
+    | CACHE{<name>} | 具有给定`<name>`的缓存变量，则为true                                                                                                  |
+    | ENV{<name>}   | 具有给定`<name>`的环境变量 ，则为true                                                                                                 |
+    | IN_LIST       | 如果给定的元素包含在命名的列表变量中,则为真(3.3版新增)                                                                                |
+
+- 文件操作
+
+    | condition     | 说明                                                   |
+    |---------------|--------------------------------------------------------|
+    | EXISTS        | 如果指定的文件或目录存在，则为True                     |
+    | IS_NEWER_THAN | 如果 file1 比 file2 更新或两个文件之一不存在，则为true |
+    | IS_DIRECTORY  | 如果给定的名称是一个目录,则为真                        |
+    | IS_SYMLINK    | 如果给定的名称是一个符号链接,则为真                    |
+    | IS_ABSOLUTE   | 如果给定的路径是一个绝对路径,则为真。                  |
+
+    注意：
+    1. 对于`IS_ABSOLUTE`有以下情况：
+        + 空 path 评估为假。
+        + 在 Windows 主机上，任何以驱动器号和冒号（例如 C: ）、正斜杠或反斜杠开头的 path 都将评估为真。这意味着像`C:no\base\dir`这样的路径将评估为真，即使路径的非驱动器部分是相对的。
+        + 在非 Windows 主机上，任何以波浪号 ( ~ )开头的 path 计算结果为 true。
 
 使用IF进行条件控制。
+
+例：
 
 ```cmake
 set(ok 0)
@@ -55,6 +105,50 @@ else()
 endif()
 ```
 
+#### WHILE
+
+```cmake
+while(<condition>)
+  <commands>
+endwhile()
+```
+
+当条件为真时，循环执行命令。
+
+#### FOREACH
+
+遍历列表，一共4种使用方式：
+
+- 使用`foreach(loop_var arg1 arg2 ...)`提供循环变量和显式项列表（如果项目列表位于变量中，则必须显式展开它，即`${sources_with_lower_optimization}`必须作为参数传递）。
+- 通过指定一个范围，对整数进行循环
+    ```cmake
+    foreach(loop_var range total)
+
+    foreach(loop_var range start stop [step])
+    ```
+- 对列表值变量的循环
+    ```cmake
+    foreach(loop_var IN LISTS [list1[...]])
+    ```
+- 对变量的循环
+    ```cmake
+    foreach(loop_var IN ITEMS [item1 [...]])
+    ```
+
+例：
+
+```cmake
+list(
+    APPEND hello_src
+        hello.c
+        hello_main.c
+)
+
+foreach(f IN LISTS hello_src)
+    ...
+endforeach()
+```
+
 ### 项目结构
 
 - `Makefile` make将运行指令来构建项目；
@@ -68,7 +162,17 @@ endif()
 
 ## 函数
 
-### ADD_CUSTOM_COMMAND
+###  CMake函数
+
+#### ADD_COMPILE_DEFINITIONS
+
+TODO
+
+#### ADD_COMPILE_OPTIONS
+
+TODO
+
+#### ADD_CUSTOM_COMMAND
 
 ```cmake
 add_custom_command(OUTPUT output1 [output2 ...]
@@ -99,7 +203,50 @@ add_custom_command(
 )
 ```
 
-### ADD_EXECUTABLE
+#### ADD_CUSTOM_TARGET
+
+TODO
+
+#### ADD_DEFINITIONS
+
+```cmake
+add_definitions(-DFOO -DBAR ...)
+```
+
+添加编译器命令行定义（由`-D`定义的标志）。
+
+```cmake
+add_definitions(-DABC -DHELLO)
+```
+
+```c++
+#ifdef ABC
+    ...
+#endif
+
+#ifdef HELLO
+    ...
+#endif
+```
+
+#### ADD_DEPENDENCIES
+
+```cmake
+add_dependencies(<target> [<target-dependency>]...)
+```
+
+- `target` 顶层目标；
+- `target-dependency` 依赖关系。
+
+在顶层目标之间增加一个依赖关系。
+
+```cmake
+add_subdirectory(lib1)
+
+add_dependencies(hello lib1)
+```
+
+#### ADD_EXECUTABLE
 
 ```cmake
 add_executable(<name> [WIN32] [MACOSX_BUNDLE]
@@ -112,13 +259,12 @@ add_executable(<name> [WIN32] [MACOSX_BUNDLE]
 ```cmake
 add_executable(<name> IMPORTED [GLOBAL])
 ```
-导入可执行文件
+导入可执行文件。
 
 ```cmake
 add_executable(<name> ALIAS <target>)
 ```
-为可执行文件命别名
-
+为可执行文件命别名。
 
 例：
 
@@ -128,7 +274,7 @@ add_executable(hello
 )
 ```
 
-### ADD_LIBRARY
+#### ADD_LIBRARY
 
 ```cmake
 add_library(<name> [STATIC | SHARED | MODULE]
@@ -144,9 +290,30 @@ add_library(<name> [STATIC | SHARED | MODULE]
 - INTERFACE 可变库（用于项目之外的目标构建使用）；
 - ALIAS 别名（用于为项目中已存在的库目标定义别名）。
 
-从源文件创建库（动态/静态/目标文件/...）。
+创建库（动态/静态/目标文件/...）。
 
 ```cmake
+add_library(<name> OBJECT [<source>...])
+```
+
+创建obj文件的依赖库。
+
+```cmake
+add_library(<name> OBJECT [<source>...])
+```
+
+创建接口依赖。
+
+```camke
+add_library(<name> <type> IMPORTED [GLOBAL])
+```
+
+导入依赖。
+
+例：
+
+```cmake
+# 创建hello.lib
 add_library(hello
     STATIC
         hello.h
@@ -154,7 +321,12 @@ add_library(hello
 )
 ```
 
-### ADD_LINK_LIBRARY
+#### ADD_LINK_LIBRARY
+
+```cmake
+link_libraries([item1 [item2 [...]]]
+               [[debug|optimized|general] <item>] ...)
+```
 
 在链接时将依赖文件(lib)与可执行文件(exe)链接起来。
 
@@ -165,7 +337,15 @@ target_link_libraries(hello
 )
 ```
 
-### ADD_SUBDIRECTORY
+#### ADD_LINK_OPTIONS
+
+```cmake
+add_link_options(<option> ...)
+```
+
+在链接步骤中添加当前目录及以下的可执行文件、共享库或模块库目标的选项。
+
+#### ADD_SUBDIRECTORY
 
 `ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])` 
 
@@ -179,11 +359,39 @@ target_link_libraries(hello
 ADD_SUBDIRECTORY(sub_dir)
 ```
 
-### AUX_SOURCE_DIRECTORY 
+#### ADD_TEST
+
+```cmake
+add_test(NAME <name> COMMAND <command> [<arg>...]
+         [CONFIGURATIONS <config>...]
+         [WORKING_DIRECTORY <dir>]
+         [COMMAND_EXPAND_LISTS])
+```
+
+- `COMMAND` 命令行
+- `CONFIGURATIONS` 配置
+- `WORKING_DIRECTORY` 工作目录
+- `COMMAND_EXPAND_LISTS` 对COMMAND参数扩展（3.16版本中新增的功能）
+
+添加测试（具体见[CTest](#CTest)）。
+
+#### AUX_SOURCE_DIRECTORY 
+
+```cmake
+aux_source_directory(<dir> <variable>)
+```
 
 搜集所有在指定路径下的源文件的文件名，将输出结果列表储存在指定的变量中。
 
-### CMAKE_DEPENDENT_OPTION
+```cmake
+aux_source_directory(. HELLO_SRC) # 查找当前目录下所有源文件并保存到HELLO_SRC
+```
+
+#### CMAKE_DEPENDENT_OPTION
+
+```cmake
+cmake_dependent_option(<option> "<help_text>" <value> <depends> <force>)
+```
 
 定义依赖于其他选项的选项。
 
@@ -199,7 +407,11 @@ cmake -DUSE_LIBRARY=ON .. # MAKE_STATIC_LIBRARY=OFF
 ```
 
 
-### CMAKE_MINIMUM_REQUIRE
+#### CMAKE_MINIMUM_REQUIRE
+
+```cmake
+cmake_minimum_required(VERSION <min>[...<policy_max>] [FATAL_ERROR])
+```
 
 CMake最小版本要求。
 
@@ -209,7 +421,7 @@ cmake_minimum_required()
 cmake_minimum_required(VERSION 3.24.1)
 ```
 
-### CONFIGURE_FILE
+#### CONFIGURE_FILE
 
 配置文件通过源码版本检查。
 
@@ -217,7 +429,30 @@ cmake_minimum_required(VERSION 3.24.1)
 configure_file(hello.h.in hello.h)
 ```
 
-### EXECUTE_PROCESS
+#### ENABLE_TESTING
+
+```cmake
+configure_file(<input> <output>
+               [NO_SOURCE_PERMISSIONS | USE_SOURCE_PERMISSIONS |
+                FILE_PERMISSIONS <permissions>...]
+               [COPYONLY] [ESCAPE_QUOTES] [@ONLY]
+               [NEWLINE_STYLE [UNIX|DOS|WIN32|LF|CRLF] ])
+```
+
+启用当前目录及以下目录的测试。
+
+#### EXEC_PROGRAM
+
+```cmake
+exec_program(Executable [directory in which to run]
+             [ARGS <arguments to executable>]
+             [OUTPUT_VARIABLE <var>]
+             [RETURN_VALUE <var>])
+```
+
+是否构建 test 目标,涉及工程所有目录。
+
+#### EXECUTE_PROCESS
 
 执行一条命令，并获得它的执行结果。
 
@@ -234,7 +469,55 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
 endif()
 ```
 
-### FIND_PACKAGE
+#### FILE
+
+```cmake
+Reading
+  file(READ <filename> <out-var> [...])
+  file(STRINGS <filename> <out-var> [...])
+  file(<HASH> <filename> <out-var>)
+  file(TIMESTAMP <filename> <out-var> [...])
+  file(GET_RUNTIME_DEPENDENCIES [...])
+
+Writing
+  file({WRITE | APPEND} <filename> <content>...)
+  file({TOUCH | TOUCH_NOCREATE} [<file>...])
+  file(GENERATE OUTPUT <output-file> [...])
+  file(CONFIGURE OUTPUT <output-file> CONTENT <content> [...])
+
+Filesystem
+  file({GLOB | GLOB_RECURSE} <out-var> [...] [<globbing-expr>...])
+  file(RENAME <oldname> <newname> [...])
+  file(COPY_FILE <oldname> <newname> [...])
+  file({REMOVE | REMOVE_RECURSE } [<files>...])
+  file(MAKE_DIRECTORY [<dir>...])
+  file({COPY | INSTALL} <file>... DESTINATION <dir> [...])
+  file(SIZE <filename> <out-var>)
+  file(READ_SYMLINK <linkname> <out-var>)
+  file(CREATE_LINK <original> <linkname> [...])
+  file(CHMOD <files>... <directories>... PERMISSIONS <permissions>... [...])
+  file(CHMOD_RECURSE <files>... <directories>... PERMISSIONS <permissions>... [...])
+
+Path Conversion
+  file(REAL_PATH <path> <out-var> [BASE_DIRECTORY <dir>] [EXPAND_TILDE])
+  file(RELATIVE_PATH <out-var> <directory> <file>)
+  file({TO_CMAKE_PATH | TO_NATIVE_PATH} <path> <out-var>)
+
+Transfer
+  file(DOWNLOAD <url> [<file>] [...])
+  file(UPLOAD <file> <url> [...])
+
+Locking
+  file(LOCK <path> [...])
+
+Archiving
+  file(ARCHIVE_CREATE OUTPUT <archive> PATHS <paths>... [...])
+  file(ARCHIVE_EXTRACT INPUT <archive> [...])
+```
+
+文件操作命令。
+
+#### FIND_PACKAGE
 
 - TODO 库名称；
 - TODO 库得最低版本；
@@ -247,39 +530,80 @@ endif()
 find_package(Boost 1.80.0 REQUIRED COMPONENTS filesystem system)
 ```
 
-### FOREACH
-
-遍历列表，一共4种使用方式：
-
-- 使用`foreach(loop_var arg1 arg2 ...)`提供循环变量和显式项列表（如果项目列表位于变量中，则必须显式展开它，即`${sources_with_lower_optimization}`必须作为参数传递）。
-- 通过指定一个范围，对整数进行循环
-    ```cmake
-    foreach(loop_var range total)
-
-    foreach(loop_var range start stop [step])
-    ```
-- 对列表值变量的循环
-    ```cmake
-    foreach(loop_var IN LISTS [list1[...]])
-    ```
-- 对变量的循环
-    ```cmake
-    foreach(loop_var IN ITEMS [item1 [...]])
-    ```
+#### FIND_PATH
 
 ```cmake
-list(
-    APPEND hello_src
-        hello.c
-        hello_main.c
-)
-
-foreach(f IN LISTS hello_src)
-    ...
-endforeach()
+find_path (
+          <VAR>
+          name | NAMES name1 [name2 ...]
+          [HINTS [path | ENV var]... ]
+          [PATHS [path | ENV var]... ]
+          [REGISTRY_VIEW (64|32|64_32|32_64|HOST|TARGET|BOTH)]
+          [PATH_SUFFIXES suffix1 [suffix2 ...]]
+          [DOC "cache documentation string"]
+          [NO_CACHE]
+          [REQUIRED]
+          [NO_DEFAULT_PATH]
+          [NO_PACKAGE_ROOT_PATH]
+          [NO_CMAKE_PATH]
+          [NO_CMAKE_ENVIRONMENT_PATH]
+          [NO_SYSTEM_ENVIRONMENT_PATH]
+          [NO_CMAKE_SYSTEM_PATH]
+          [NO_CMAKE_INSTALL_PREFIX]
+          [CMAKE_FIND_ROOT_PATH_BOTH |
+           ONLY_CMAKE_FIND_ROOT_PATH |
+           NO_CMAKE_FIND_ROOT_PATH]
+         )
 ```
 
-### INSTALL
+- `NAMES` 为目录中的文件指定一个或多个可能的名称；
+- `HINTS, PATHS` 搜索的目录;
+- `PATH_SUFFIXES` 在每个目录位置下面指定额外的子目录进行检查,否则视为无效；
+- `DOC` 指定`<VAR>`缓存条目的文档字符串；
+- `NO_CACHE` 搜索的结果将被存储在一个普通的变量中,而不是缓存条目（3.21版新增）；
+- `REQUIRED` 如果没有找到任何东西,则停止处理并发出错误信息,否则在下一次用相同的变量调用find_path时,将再次尝试搜索（3.18版本新增）；
+- `CMAKE_FIND_ROOT_PATH_BOTH` 按上述顺序搜索；
+- `NO_CMAKE_FIND_ROOT_PATH` 不要使用`CMAKE_FIND_ROOT_PATH`变量；
+- `ONLY_CMAKE_FIND_ROOT_PATH` 仅搜索重新rooted目录和`CMAKE_STAGING_PREFIX`下的目录。
+
+查找包含命名文件的目录。
+
+#### FIND_LIBRARY
+
+```cmake
+find_library (
+          <VAR>
+          name | NAMES name1 [name2 ...] [NAMES_PER_DIR]
+          [HINTS [path | ENV var]... ]
+          [PATHS [path | ENV var]... ]
+          [PATH_SUFFIXES suffix1 [suffix2 ...]]
+          [DOC "cache documentation string"]
+          [NO_CACHE]
+          [REQUIRED]
+          [NO_DEFAULT_PATH]
+          [NO_PACKAGE_ROOT_PATH]
+          [NO_CMAKE_PATH]
+          [NO_CMAKE_ENVIRONMENT_PATH]
+          [NO_SYSTEM_ENVIRONMENT_PATH]
+          [NO_CMAKE_SYSTEM_PATH]
+          [CMAKE_FIND_ROOT_PATH_BOTH |
+           ONLY_CMAKE_FIND_ROOT_PATH |
+           NO_CMAKE_FIND_ROOT_PATH]
+         )
+```
+
+此命令用于查找库。
+
+#### INCLUDE
+
+```cmake
+include(<file|module> [OPTIONAL] [RESULT_VARIABLE <var>]
+                      [NO_POLICY_SCOPE])
+```
+
+从文件或模块加载并运行CMake代码。
+
+#### INSTALL
 
 `INSTALL(TARGETS targets ... [[ARCHIVE|LIBRARY|RUNTIME]] [DESTINATION <dir>] [PERMISSIONS permissions ...] [CONFIGURATIONS [Debug|Release|...]] [COMPONENT <component>] [OPTIONAL]])` 
 
@@ -302,7 +626,7 @@ INSTALL(TARGETS myrun mylib mystaticlib
 )
 ```
 
-### LIST
+#### LIST
 
 合成文件列表。
 
@@ -314,7 +638,27 @@ list(
 )
 ```
 
-### MESSAGE
+#### MACRO
+
+```cmake
+macro(<name> [<arg1> ...])
+  <commands>
+endmacro()
+```
+
+开始记录一个宏,以便以后以命令的形式调用（调用不区分大小写）。
+
+例：
+
+```cmake
+macro(hello)
+    ...
+endmacro()
+
+Hello()
+```
+
+#### MESSAGE
 
 `MESSAGE([SEND_ERROR | STATUS | FATAL_ERROR] "message to display" ...)` 
 
@@ -324,7 +668,7 @@ list(
 
 向终端输出信息。
 
-### OPTION
+#### OPTION
 
 `OPTION(<NAME> "MESSAGE" [VALUE])`
 
@@ -338,7 +682,7 @@ list(
 option(hello "hello world" ON)
 ```
 
-### PROJECT 
+#### PROJECT 
 
 `PROJECT(target_name LANGUAGES language)`
 
@@ -352,25 +696,23 @@ project(HELLO)
 
 指定项目名。
 
-### PROJECT_BINARY_DIR
-
-TODO
-
-### PROJECT_SOURCE_DIR
-
-TODO
-
-### SET
+#### SET
 
 `SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])`
 
-设置[变量值](#变量 )。
+设置[变量值](#变量)。
 
 ```cmake
 SET(SRC_LIST main.c t1.c t2.c)
 ```
 
-### SET_TARGET_PROPERTIES
+#### SET_TARGET_PROPERTIES
+
+```cmake
+set_target_properties(target1 target2 ...
+                      PROPERTIES prop1 value1
+                      prop2 value2 ...)
+```
 
 为生成目标设置属性。
 
@@ -384,13 +726,29 @@ set_target_properties(hello
 )
 ```
 
-### SUBDIRS
+#### SET_TESTS_PROPERTES
+
+```cmake
+set_tests_properties(test1 [test2...] PROPERTIES prop1 value1 prop2 value2)
+```
+
+- `prop*` 键
+
+    + TIMEOUT 
+
+设置测试参数。
+
+```cmake
+set_tests_properties(helo PROPERTIES TIMEOUT 10) # 设置测试超时
+```
+
+#### SUBDIRS
 
 `SUBDIRS(dir1 dir2 ...)` 
 
 一次添加多个子目录（不推荐使用）。
 
-### TARGET_COMPILE_DEFINITIONS
+#### TARGET_COMPILE_DEFINITIONS
 
 根据作用域将目标的编译标志传递到其他目标。
 
@@ -400,7 +758,7 @@ target_compile_definitions(hello_flags
 )
 ```
 
-### TARGET_COMPILE_FEATURES
+#### TARGET_COMPILE_FEATURES
 
 设置C++标准。
 
@@ -408,7 +766,7 @@ target_compile_definitions(hello_flags
 target_compile_features(hello PUBLIC cxx_auto_type)
 ```
 
-### TARGET_COMPILE_OPTIONS
+#### TARGET_COMPILE_OPTIONS
 
 设置编译选项。
 
@@ -416,7 +774,7 @@ target_compile_features(hello PUBLIC cxx_auto_type)
 target_compile_options(hello PRIVATE ${hello_flags})
 ```
 
-### TARGET_LINK_LIBRARIES
+#### TARGET_LINK_LIBRARIES
 
 `TARGET_LINK_LIBRARIES[TARGETS SOURCE]` 
 
@@ -429,7 +787,7 @@ target_compile_options(hello PRIVATE ${hello_flags})
 target_link_libraries(hello hello_lib)
 ```
 
-### TARGET_INCLUDE_DIRECTORIES
+#### TARGET_INCLUDE_DIRECTORIES
 
 - `PRIVATE` 将目录添加到此目标的include目录中；
 - `INTERFACE` 将该目录添加到任何连接到此库的目标的include目录中（不包括自己）；
@@ -447,9 +805,91 @@ target_include_directories(hello
 )
 ```
 
-### TARGETS
+#### TARGETS
 
 生成的目标名。
+
+
+### 自定义函数
+
+#### function
+
+cmake提供`function`，用于自定义函数。
+
+```cmake
+function(<name> [arg1 [arg2 [arg3 ...]]])
+  COMMAND1(ARGS ...)
+  COMMAND2(ARGS ...)
+  ...
+endfunction(<name>)
+```
+
+- `<𝑛𝑎𝑚𝑒>` 为函数名字
+- `arg1、arg2...` 为函数参数
+
+例：
+
+```cmake
+set(x "ABC")
+set(y "DEF")
+
+function(F1 arg)
+  message(arg "abc" PARENT_SCOPE)
+endfunction()
+
+function(F2 arg)
+  message(${arg} "def" PARENT_SCOPE) 
+endfunction()
+
+Foo(${x}) # 传值
+Foo(y)    # 传引用
+```
+
+#### 隐式参数
+
+cmake针对`functiion`定义了一些隐含参数：
+
+| 隐式参数 | 说明                                                             |
+|----------|------------------------------------------------------------------|
+| ARGC     | 函数实参的个数                                                   |
+| ARGV     | 所有实参列表                                                     |
+| ARGN     | 所有额外实参列表, 即ARGV去掉函数声明时显示指定的实参，剩余的实参 |
+| ARGV0    | 函数第1个实参                                                    |
+| ARGV1    | 函数第2个实参                                                    |
+| ARGV2    | 函数第3个实参                                                    |
+| ...      | ...                                                              |
+
+例：
+
+```cmake
+function(print_list arg)
+    message("======= args count : ${ARGC} ======= ")    # 实际实参个数
+
+    message("======= all args ======= ")                # 打印所有参数
+    foreach(v IN LISTS ARGV)
+        message(${v})
+    endforeach()
+
+
+    message("======= all extra args ======= ")          # 打印所有额外参数
+    foreach(v IN LISTS ARGN)
+        message(${v})
+    endforeach()
+
+    message("======= print content of ARGV0 ======= ")  # 打印第一个参数里的所有内容
+    foreach(v IN LISTS ARGV0)
+        message(${v})
+    endforeach()
+endfunction()
+
+set(arg hello world) 
+
+message("------------ calling with qutoes -----------")     # 使用引号来调用
+print_list("${arg}")
+
+message("------------ calling without qutoes -----------")  # 不使用引号调用
+print_list(${arg})
+```
 
 ---
 
@@ -459,11 +899,18 @@ target_include_directories(hello
 
 ### 系统变量
 
-- `UNIX`
-- `WIN32`
-- `MINGW`
-- `APPLE`
-- `CMAKE_SYSTEM_NAME`
+- `CMAKE_MAJOR_VERSION` 主版本号
+- `CMAKE_MINOR_VERSION` 次版本号
+- `CMAKE_PATCH_VERSION` 补丁等级
+- `CMAKE_SYSTEM` 系统名称
+    + `APPLE` macos系统
+    + `UNIX` unix系统
+    + `WIN32` windows系统
+    + `MINGW` mingw环境
+- `CMAKE_SYSTEM_NAME` 不包含版本的系统名
+- `CMAKE_SYSTEM_VERSION` 系统版本
+- `CMAKE_SYSTEM_PROCESSOR` 处理器名称
+- `HOME`
 
 ### 编译变量
 
@@ -472,40 +919,37 @@ target_include_directories(hello
 ### 环境变量
 
 - `CMAKE_BINARY_DIR` 二进制文件生成目录；
-- `CMAKE_CURRENT_SOURCE_DIR` 当前源目录；
 - `CMAKE_CURRENT_BINARY_DIR` 当前所在的生成目录；
+- `CMAKE_CURRENT_LIST_FILE` 当前正在处理的列表文件的完整路径；
+- `CMAKE_CURRENT_LIST_LINE`当前正在处理的文件的行号；
+- `CMAKE_CURRENT_SOURCE_DIR` 当前源目录；
+- `CMAKE_INCLUDE_CURRENT_DIR` 是否将当前的源代码和构建目录添加到include路径中；
+- `CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE` 是否强制预置项目包含目;
+- `CMAKE_INCLUDE_PATH` 
+- `CMAKE_LIBRARY_PATH`
+- `CMAKE_MODULE_PATH`
 - `CMAKE_PROJECT_NAME` 由`project()`命令设置的第一个项目（顶级项目）的名称；
 - `CMAKE_SOURCE_DIR` 根源目录；
 - `EXECUTABLE_OUTPUT_PATH` 可执行二进制文件的生成路径；
 - `LIBRARY_OUTPUT_PATH` 共享库的生成路径；
-- `PROJECT_SOURCE_DIR` 当前cmake项目的源目录；
 - `PROJECT_BINARY_DIR` 当前项目的生成目录；
 - `PROJECT_NAME` 项目名；
+- `PROJECT_SOURCE_DIR` 当前cmake项目的源目录；
 - `xxx_SOURCE_DIR` xxx项目的源目录；
 - `xxx_BINARY_DIR` xxx项目的二进制目录。
 
 ### 外部标志
 
-- `CMAKE_BUILD_TYPE` [构建类型](#构建类型)
+- `BUILD_SHARED_LIBS` 控制默认的库编译方式(默认编译生成的库都是静态库)；
+- `CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS` 用于控制if else语句的书写方式；
+- `CMAKE_BUILD_TYPE` [构建类型](#构建类型)；
 - `CMAKE_C_FLAGS` c编译器标志；
-- `CMAKE_CXX_COMPILER` 指定使用哪个c++编译器
+- `CMAKE_CXX_COMPILER` 指定使用哪个c++编译器；
     + `clang++` 使用clang；
-- `CMAKE_CXX_FLAGS` c++编译器标志
+- `CMAKE_CXX_FLAGS` c++编译器标志；
     + `-std` 编译器版本；
 - `CMAKE_CXX_STANDARD` c++标准库标志（从v3.1开始提供）；
 - `CMAKE_LINKER_FLAGS` 链接器标志；
-
-```cmake
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DEX2" CACHE STRING "Set C++ Compiler Flags" FORCE)
-
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # 使用c++11版本
-
-set(CMAKE_CXX_STANDARD 11) # 使用c++11标准库
-```
-
-```sh
-cmake -DCMAKE_CXX_COMPILER=clang++ .. # 使用clang编译
-```
 
 ### 编译器选项
 
@@ -531,6 +975,19 @@ endif(LOG_TABLE)
 
 ```cmake
 cmake -DLOG_TABLE=ON ..
+```
+### 示例
+
+```cmake
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DEX2" CACHE STRING "Set C++ Compiler Flags" FORCE)
+
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # 使用c++11版本
+
+set(CMAKE_CXX_STANDARD 11) # 使用c++11标准库
+```
+
+```sh
+cmake -DCMAKE_CXX_COMPILER=clang++ .. # 使用clang编译
 ```
 
 ---
@@ -606,7 +1063,74 @@ TODO
 
 
 
+## 单元测试
+
+### CTest
+
+CMake从3.5开始提供了测试工具CTest，用于单元测试。
+
+CTest遵循的标准约定是：返回零意味着成功，非零返回意味着失败；可以返回零或非零的脚本，都可以做测试用例。
+
+使用以下选项可以从CTest获得更详细的测试输出：
+
+- `--output-on-failure` 将测试程序生成的任何内容打印到屏幕上，以免测试失败；
+- `-v` 将启用测试的详细输出；
+- `-vv` 启用更详细的输出;
+- `--rerun-failed` 是否重新运行以前失败的测试。
+
+例：
+
+```cmake
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+project(hello_test LANGUAGES CXX)
+
+find_package(PythonInterp REQUIRED)
+find_program(BASH_EXECUTABLE NAMES bash REQUIRED)
+
+add_executable(hello_test test.cpp)
+```
+
+```python
+enable_testing() # 测试这个目录和目录下的所有子文件夹
+
+# 设置测试环境变量
+set_tests_properties(python_test
+    PROTERTIES
+        ENVIRONMENT
+            HELLO_MODULE_PATH=${CMAKE_CURRENT_SOURCE_DIR}
+            HELLO_HEADER_FILE=${CMAKE_CURRENT_SOURCE_DIR}/test.hpp)
+            HELLO_LIBRARY_FILE=$<TARGET_FILE:hello_test>
+            ${PYTHON_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/test.py
+)
+
+# 定义一个新的测试，
+add_test(
+    NAME hello_test # 设置测试名称
+    COMMAND $<TARGET_FILE:hello_test> # 使用生成器表达式运行命令
+)
+
+# 设置测试时长
+set_tests_properties(hello PROPERTIES TIMEOUT 10)
+```
+
+```sh
+ctest
+```
+
+### 其它
+
+CMake同时支持以下其它单元测试工具：
+
+- [boost test](#集成Boost)
+
+---
+
+
+
 ## 编译构建
+
 
 ### 编译过程
 
@@ -778,6 +1302,12 @@ include(CPack)
 
 
 
+## 可移植性
+
+---
+
+
+
 ## 集成Protobuf
 
 ### 变量
@@ -883,17 +1413,44 @@ TODO
 
 ## 集成Visual Studio
 
+microsoft在VS2017开始支持CMake，如果需要启用Visual Studio 对CMake的支持，需要安装VS的C++ CMake工具“C++ CMake tools for Windows”。
+
 ### 构建VS项目
 
-microsoft在VS2017开始支持CMake，因此构建不同版本的VS项目，需要使用不同的方法：
+因此构建不同版本的VS项目，需要在构建时指定VS生成器和架构：
 
-- VS2017及以上
+```sh
+cmake -G "<platform>" -A <architecture>
+```
 
-    1. TODO
+- `platform` VS生成器
+    + "Visual Studio 6"
+    + "Visual Studio 7"
+    + "Visual Studio 7 .NET 2003"
+    + "Visual Studio 8 2005"
+    + "Visual Studio 9 2008"
+    + "Visual Studio 10 2010"
+    + "Visual Studio 11 2012"
+    + "Visual Studio 12 2013"
+    + "Visual Studio 14 2015"
+    + "Visual Studio 15 2017"
+    + "Visual Studio 16 2019"
+    + "Visual Studio 17 2022"
+    + ...
+- `architecture` 架构
+    + Win32
+    + x64
+    + ARM
+    + ARM64
+    + ...
 
-- VS2017以下
+选择编译环境。
 
-    1. TODO
+例：
+
+```sh
+cmake -G "Visual Studio 17 2022" -A x64
+```
 
 ---
 
@@ -1010,9 +1567,88 @@ target_link_libraries(hello Qt5::Widgets)
 
 ## 集成Zeromq
 
-TODO
+zeromq是一个开源的第三方网络库，cmake提供相关方式集成zeromq。
+
+### 变量
+
+- `ZMQ_BUILD_TESTS` 构建test示例
+- `BUILD_SHARED` 构建动态库
+- `BUILD_STATIC` 构建静态库
+
+例：
+
+```sh
+cmake .. -DZMQ_BUILD_TESTS=OFF -DBUILD_STATIC=ON -DBUILD_SHARED=ON
+```
+
+### zmqpp
+
+zmqpp是一个优秀的zeromq C++版本封装库，使用Cmake可以集成zmqpp工程，以下是常用变量：
+
+- `ZMQ_BUILD_TESTS` 是否开启test
+- `ZMQPP_BUILD_STATIC` 是否编译静态库（默认开启）
+- `ZMQPP_BUILD_SHARED` 是否编译动态库（默认开启）
+- `ZMQPP_LIBZMQ_NAME_STATIC` zeromq的静态库
+- `ZMQPP_LIBZMQ_NAME_SHARED` zeromq的动态库
+- `ZEROMQ_LIB_DIR` zeromq的的关的查找路径
+- `ZEROMQ_INCLUDE_DIR` zeromq相头文件目录
+
+例：
+
+```cmake
+cmake .. -G "Visual Studio 14 2015 Win64" -DZMQ_BUILD_TESTS=OFF
+```
+---
+
+
+
+## 集成Valgrind
+
+Valgrind是一个通用的工具，用于检测内存缺陷和内存泄漏，CMake支持集成Valgrind。
+
+例：
+
+```c++
+// main.cpp
+#include <iostream>
+
+int main() {
+    auto m = new double[1000]; // 没有释放
+}
+```
+
+```cmake
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+project(hello LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(hello_test main.cpp)
+
+# 查找valgrind，并设置绝对路径MEMORYCHECK_COMMAND
+find_program(MEMORYCHECK_COMMAND NAMES valgrind)
+
+# 设置valgrind参数（创建日志文件，用于记录内存缺陷信息）
+set(MEMORYCHECK_COMMAND_OPTIONS "--trace-children=yes --leak-check=full")
+
+include(CTest)
+enable_testing()
+
+add_test(
+    NAME hello_test
+    COMMAND $<TARGET_FILE:hello_test>
+)
+```
+
+```sh
+ctest -T memcheck
+```
 
 ---
+
 
 
 
@@ -1033,3 +1669,9 @@ TODO
 [7] [Using CMake with Qt 5](https://www.kdab.com/using-cmake-with-qt-5/)
 
 [8] [Build with CMake](https://doc.qt.io/qt-5/cmake-manual.html)
+
+[9] [CMake 3.21 [中文]](https://runebook.dev/zh-CN/docs/cmake/-index-#Commands)
+
+[10] [Visual Studio 中的 CMake 项目](https://learn.microsoft.com/zh-cn/cpp/build/cmake-projects-in-visual-studio?view=msvc-170)
+
+[11] [Visual Studio 17 2022](https://cmake.org/cmake/help/latest/generator/Visual%20Studio%2017%202022.html)

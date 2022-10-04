@@ -351,6 +351,8 @@ archaeological `/ˌɑːkɪəˈlɒdʒɪkəl/` 考古的，考古学的
 
 architecture `/ˈɑːrkɪtektʃər/` 建筑学，体系，构造
 
+archiver `/ˈɑrˌkaɪv/` 档案，存档
+
 ardent `/ˈɑːdnt/` 热心的，热烈的，激情的
 
 arduous `/ˈɑːdjuəs/` 艰苦的，艰难的
@@ -974,6 +976,8 @@ condor `/ˈkɒndɔː(r)/` 神鹰，秃鹫
 conference `/ˈkɒnfərəns/` 会议，研讨会
 
 confession `/kənˈfeʃn/` 忏悔，坦白，供认，认罪
+
+configuration `/kənˌfɪɡə'reɪʃn/` 结构，布局，配置
 
 conflate `/kən'fleɪt/` 合并
 
@@ -5107,6 +5111,8 @@ synchronization `/ˌsɪŋkrənaɪ'zeɪʃn/` 同步化
 
 synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 
+synopsis `/səˈnɑpsəs/` 梗概
+
 syntax `/ˈsɪntæks/` 语法，句法
 
 synthesis `/ˈsɪnθəsɪs/` 合成，结合，综合体
@@ -5197,8 +5203,6 @@ testify `/ˈtestɪfaɪ/` 出庭，作证，证明，证实
 
 textured `/ˈtekstʃəd/` 有纹理的，质感粗糙的，质地不平的
 
-tolerate `/ˈtɒləreɪt/` 忍受，容忍，包容，容许
-
 ### th
 
 [回到T](#T)--[回到顶部](#英汉词典)
@@ -5285,6 +5289,8 @@ toggle `/ˈtɒɡl/` 切换，转换
 
 tolerance `/ˈtɒlərəns/`  容错，公差，容量
 
+tolerate `/ˈtɒləreɪt/` 忍受，容忍，包容，容许
+
 toned `/təʊnd/` 结实强壮的
 
 topographical `/ˌtɒpəˈɡræfɪkl/` 地形的，地形学的，地貌的
@@ -5300,6 +5306,8 @@ tough `/tʌf/` 艰苦的，艰难的，严厉的，忍受，暴徒，恶棍
 tournament `/'tʊənəmənt/` 锦标赛，比赛，比武
 
 tow `/təʊ/` 拖，牵引
+
+tox `/'tɒks/` 毒药
 
 ### tr
 
@@ -5320,6 +5328,8 @@ transformation `/ˌtrænsfəˈmeɪʃn/` 变化，转变，转型
 transient `/ˈtrænʃnt/` 短暂的，临时的，过往的
 
 transition `/træn'zɪʃn/` 转换，转变
+
+transitively `/'trænsətɪvli/` 及物地
 
 transmitter `/trænzˈmɪtə(r)/` 发射台，发报台，传输者
 
