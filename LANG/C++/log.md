@@ -1,6 +1,18 @@
 # C++日志库
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [log4cplus](#log4cplus)
+    - [环境搭建](#环境搭建)
+        + [linux](#linux)
+        + [windows](#windows)
+    - [基本类型](#基本类型)
+    - [示例](#示例)
+        + [1.vs集成log4cplus](#1vs集成log4cplus)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

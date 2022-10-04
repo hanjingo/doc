@@ -1,6 +1,13 @@
 # QT单元测试
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [QTestlib](#qtestlib)
+    - [使用示例](#使用示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

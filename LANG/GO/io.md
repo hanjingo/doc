@@ -1,5 +1,10 @@
 # io
 
+
+<!-- vim-markdown-toc GFM -->
+
+<!-- vim-markdown-toc -->
+
 - `io.WriteAt(p []byte, off int64) (n int, err error)`
 
   WriteAt 从 p 中将 len(p) 个字节写入到偏移量 off 处的基本数据流中。它返回从 p 中被写入的字节数

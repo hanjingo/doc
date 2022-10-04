@@ -1,6 +1,45 @@
 # Boost.Asio
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [API](#api)
+    - [io_service](#io_service)
+    - [timer](#timer)
+    - [address](#address)
+    - [endpoint](#endpoint)
+    - [socket](#socket)
+    - [acceptor](#acceptor)
+    - [resolver](#resolver)
+* [辅助库](#辅助库)
+    - [handler](#handler)
+    - [error_code](#error_code)
+    - [io_service](#io_service-1)
+        + [io_service::work](#io_servicework)
+    - [strand](#strand)
+    - [buffer](#buffer)
+        + [mutable_buffer](#mutable_buffer)
+        + [const_buffer](#const_buffer)
+    - [timer](#timer-1)
+        + [同步定时器](#同步定时器)
+        + [异步定时器](#异步定时器)
+        + [timer配合bind和lambda使用](#timer配合bind和lambda使用)
+* [网络通信](#网络通信)
+    - [ip::tcp](#iptcp)
+    - [address](#address-1)
+    - [endpoint](#endpoint-1)
+    - [resolver](#resolver-1)
+    - [socket](#socket-1)
+    - [acceptor](#acceptor-1)
+    - [handler](#handler-1)
+* [示例](#示例)
+    - [1. 同步通信](#1-同步通信)
+    - [2. 异步通信](#2-异步通信)
+    - [3. 域名解析](#3-域名解析)
+    - [4. UDP协议通信](#4-udp协议通信)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 asio不需要编译，但它依赖一些其他Boost库组件，最基本的是`boost.system`库，用来提供系统错误支持。与thread库不同的是asio默认使用标准库`<chrono>`提供的时间功能，如果要强制使用`boost.chrono`，可以定义宏`BOOST_ASIO_DISABLE_STD_CHRONO`。
 
@@ -782,7 +821,7 @@ int main()
 }
 ```
 
-# 参考
+## 参考
 
 [1] 罗剑锋.Boost程序库完全开发指南-深入c++"准"标准库
 

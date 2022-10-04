@@ -1,6 +1,36 @@
 # C++环境配置
 
-[TOC]
+]
+<!-- vim-markdown-toc GFM -->
+
+* [第三方库对比](#第三方库对比)
+* [依赖环境](#依赖环境)
+    - [ubuntu/debain](#ubuntudebain)
+    - [macos](#macos)
+    - [windows](#windows)
+        + [vcpkg](#vcpkg)
+* [GCC](#gcc)
+    - [编译安装](#编译安装)
+* [CMAKE](#cmake)
+    - [脚本安装](#脚本安装)
+    - [编译安装](#编译安装-1)
+* [QT](#qt)
+    - [二进制安装](#二进制安装)
+    - [编译安装](#编译安装-2)
+    - [报错解决](#报错解决)
+* [QtCreator](#qtcreator)
+    - [编译安装](#编译安装-3)
+* [Clang](#clang)
+    - [命令安装](#命令安装)
+    - [编译安装](#编译安装-4)
+* [Boost](#boost)
+    - [Linux/Unix](#linuxunix)
+    - [Windows](#windows-1)
+* [folly](#folly)
+    - [使用vcpkg](#使用vcpkg)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

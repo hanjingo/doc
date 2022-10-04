@@ -1,6 +1,14 @@
 # Qt操作数据库
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [Sqlite](#sqlite)
+    - [示例](#示例)
+        + [QT5操作sqlite](#qt5操作sqlite)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

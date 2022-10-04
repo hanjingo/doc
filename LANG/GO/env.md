@@ -1,6 +1,14 @@
 # go环境配置
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [安装golang](#安装golang)
+* [配置](#配置)
+* [启用](#启用)
+* [配置国内代理](#配置国内代理)
+
+<!-- vim-markdown-toc -->
 
 
 

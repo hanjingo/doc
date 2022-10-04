@@ -1,6 +1,14 @@
 # make
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [分类](#分类)
+* [Makefile](#makefile)
+    - [语法](#语法)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 make是一个自动化构建工具，通过读取“makefile”文件来构建项目。
 

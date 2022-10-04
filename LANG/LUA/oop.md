@@ -1,6 +1,15 @@
 # Lua面向对象
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [Class类](#class类)
+* [工厂模式](#工厂模式)
+* [示例](#示例)
+    - [1 lua实现继承](#1-lua实现继承)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

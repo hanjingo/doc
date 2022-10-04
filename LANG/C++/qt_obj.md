@@ -1,6 +1,14 @@
 # Qt元对象系统
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [元对象系统](#元对象系统)
+    - [Q_OBJECT宏](#q_object宏)
+    - [QMetaObject](#qmetaobject)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

@@ -1,3 +1,6 @@
 # LUA数据类型
 
-TODO
+
+<!-- vim-markdown-toc GFM -->
+
+<!-- vim-markdown-toc -->

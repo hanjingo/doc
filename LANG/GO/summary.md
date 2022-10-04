@@ -1,6 +1,13 @@
 # Golang总结
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [优缺点](#优缺点)
+    - [优点](#优点)
+    - [缺点](#缺点)
+
+<!-- vim-markdown-toc -->
 
 
 

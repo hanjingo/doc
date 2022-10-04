@@ -1,6 +1,19 @@
 # boost.pool
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [pool](#pool)
+    - [API](#api)
+    - [用法](#用法)
+* [object_pool](#object_pool)
+    - [API](#api-1)
+    - [用法](#用法-1)
+* [singleton_pool](#singleton_pool)
+    - [API](#api-2)
+    - [用法](#用法-2)
+
+<!-- vim-markdown-toc -->
 
 
 

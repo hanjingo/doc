@@ -1,6 +1,12 @@
 # boost 单元测试
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [语法](#语法)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 ## 语法

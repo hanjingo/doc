@@ -1,6 +1,12 @@
 # c++安卓开发
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [文档](#文档)
+* [外部链接](#外部链接)
+
+<!-- vim-markdown-toc -->
 
 TODO
 
