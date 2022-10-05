@@ -17,19 +17,19 @@
 
 # Guide
 
-[En-Zh-Dictionary](en_zh_dictionary.md) &nbsp; &nbsp; &nbsp; &nbsp; [Interview](interview.md)
+[En-Zh-Dictionary](en_zh_dictionary.md) &emsp; [Interview](interview.md)
 
-[Bug](BUG/README.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Shell](LANG/shell.md) 
+[Bug](BUG/README.md) &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [Shell](LANG/shell.md) 
 
-[Git](OTHERS/git.md) &nbsp; &nbsp; &nbsp; &nbsp; [&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Redis Command](DB/REDIS/cmd.md) 
+[Git](OTHERS/git.md) &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; [Redis Command](DB/REDIS/cmd.md) 
 
-[Markdown](LANG/markdown.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [SQL](DB/sql.md) 
+[Markdown](LANG/markdown.md) &emsp; &emsp; &emsp; &nbsp; &nbsp; [SQL](DB/sql.md) 
 
-[STL](LANG/C++/stl.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [vim shortcut](OTHERS/vim_shortcut.md)  
+[STL](LANG/C++/stl.md) &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [vim shortcut](OTHERS/vim_shortcut.md)  
 
-[dot language](LANG/dot.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ASSIC table](OTHERS/assic_table.md)  
+[dot language](LANG/dot.md) &emsp; &emsp; &nbsp; &nbsp; [ASSIC table](OTHERS/assic_table.md)  
 
-[Posix Interface](OS/posix.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Lua API](LANG/LUA/api.md)  
+[Posix Interface](OS/posix.md) &emsp; &emsp; [Lua API](LANG/LUA/api.md)  
 
 [Sockets Program](NET/socket.md)
 
