@@ -1,19 +1,21 @@
-# 目录
+[中文版](README_zh.md) | [English](README.md)
 
-- [算法](ALGO/README.md)
-- [BUG速览](BUG/README.md)
-- [数据库](DB/README.md)
-- [分布式系统](DCS/README.md)
-- [编程语言](LANG/README.md)
-- [数学](MATH/README.md)
-- [多媒体](MEDIA/README.md)
-- [计算机网络](NET/README.md)
-- [读书笔记](NOTE/README.md)
-- [操作系统](OS/README.md)
-- [杂项](OTHERS/README.md)
-- [工程实践](PROJ/README.md)
+# Summary
 
-# 快捷导航
+- [Algorithm](ALGO/README.md)
+- [Bug](BUG/README.md)
+- [DB](DB/README.md)
+- [DCS](DCS/README.md)
+- [Language](LANG/README.md)
+- [Math](MATH/README.md)
+- [Media](MEDIA/README.md)
+- [Network](NET/README.md)
+- [Note](NOTE/README.md)
+- [OS](OS/README.md)
+- [Others](OTHERS/README.md)
+- [Project](PROJ/README.md)
 
-[英汉词典](en_zh_dictionary.md) [面试笔记](interview.md) [Bug速查](BUG/README.md) [shell手册](LANG/shell.md) [git指南](OTHERS/git.md) [redis命令](DB/REDIS/cmd.md) [markdown手册](LANG/markdown.md) [sql语法手册](DB/sql.md) [STL](LANG/C++/stl.md) [vim快捷键](OTHERS/vim_shortcut.md)  [dot语法](LANG/dot.md)  [ASSIC码表](OTHERS/assic_table.md)  [Posix接口](OS/posix.md)  [Lua API](LANG/LUA/api.md)  [套接字编程](NET/socket.md)
+# Guide
+
+[En-Zh-Dictionary](en_zh_dictionary.md) [Interview](interview.md) [Bug](BUG/README.md) [Shell](LANG/shell.md) [Git](OTHERS/git.md) [Redis Command](DB/REDIS/cmd.md) [Markdown](LANG/markdown.md) [SQL](DB/sql.md) [STL](LANG/C++/stl.md) [vim shortcut](OTHERS/vim_shortcut.md)  [dot language](LANG/dot.md)  [ASSIC table](OTHERS/assic_table.md)  [Posix Interface](OS/posix.md)  [Lua API](LANG/LUA/api.md)  [Sockets Program](NET/socket.md)
 
