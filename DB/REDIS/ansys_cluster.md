@@ -1,8 +1,36 @@
 # Redis源码分析-集群
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
 
+* [节点](#节点)
+    - [定义](#定义)
+    - [启动节点](#启动节点)
+    - [节点握手](#节点握手)
+* [槽指派](#槽指派)
+    - [源码分析](#源码分析)
+    - [在集群中执行命令](#在集群中执行命令)
+* [重新分片](#重新分片)
+    - [实现原理](#实现原理)
+* [ASK错误](#ask错误)
+    - [CLUSTER SETSLOT IMPORTING命令的实现](#cluster-setslot-importing命令的实现)
+    - [CLUSTER SETSLOT MIGRATING命令的实现](#cluster-setslot-migrating命令的实现)
+    - [ASK错误](#ask错误-1)
+        + [ASKING命令](#asking命令)
+        + [ASK错误和MOVED错误的区别](#ask错误和moved错误的区别)
+* [复制与故障转移](#复制与故障转移)
+    - [设置从节点](#设置从节点)
+    - [故障检测](#故障检测)
+    - [故障转移](#故障转移)
+    - [选举新的主节点](#选举新的主节点)
+* [消息](#消息)
+    - [消息头](#消息头)
+    - [FAIL消息的实现](#fail消息的实现)
+    - [PUBLISH消息的实现](#publish消息的实现)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+ 
 
 ## 节点
 

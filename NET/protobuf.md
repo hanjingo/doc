@@ -1,8 +1,46 @@
-
-
 # Protobuf编码
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [类图](#类图)
+* [语法](#语法)
+    - [元素](#元素)
+    - [关键字](#关键字)
+        + [~~`required`~~](#required)
+        + [optional](#optional)
+        + [repeated](#repeated)
+        + [enum](#enum)
+        + [extensions](#extensions)
+        + [extend](#extend)
+    - [生成命令](#生成命令)
+    - [oneof](#oneof)
+    - [map](#map)
+    - [缺失值与默认值](#缺失值与默认值)
+* [编码](#编码)
+    - [Varint](#varint)
+        + [编码过程](#编码过程)
+        + [例1](#例1)
+        + [例2](#例2)
+        + [例3](#例3)
+    - [ZigZag](#zigzag)
+        + [例1](#例1-1)
+    - [Protobuf是如何采用Variant和ZigZag编码的](#protobuf是如何采用variant和zigzag编码的)
+    - [编码数据大小](#编码数据大小)
+* [实现](#实现)
+    - [协议自举](#协议自举)
+    - [源码分析](#源码分析)
+* [安装](#安装)
+* [用例](#用例)
+    - [用例1](#用例1)
+* [最佳实践](#最佳实践)
+    - [1 protobuf的优化策略](#1-protobuf的优化策略)
+* [参考](#参考)
+    - [文献](#文献)
+    - [外链](#外链)
+
+<!-- vim-markdown-toc -->
+
+
 
 Google Protocol Buffers（简称Protobuf）是一款非常优秀的库，它定义了一种紧凑（compact，相对于XML和JSON而言）的可扩展二进制消息格式，特别适合网络数据传输。
 

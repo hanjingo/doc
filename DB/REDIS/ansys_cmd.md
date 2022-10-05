@@ -1,6 +1,14 @@
 # Redis源码分析-命令行
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [定义](#定义)
+* [实现](#实现)
+    - [get](#get)
+    - [set](#set)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 ## 定义
 

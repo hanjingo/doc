@@ -1,6 +1,20 @@
-[TOC]
-
 # MessagePack编码
+
+<!-- vim-markdown-toc GFM -->
+
+* [语法](#语法)
+    - [元素类型](#元素类型)
+    - [限制](#限制)
+    - [自定义类型](#自定义类型)
+* [原理](#原理)
+    - [序列化](#序列化)
+* [对比](#对比)
+* [示例](#示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 It's like JSON, but fast and small.
 

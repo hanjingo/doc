@@ -1,6 +1,12 @@
 # BitSwap协议(数据块交换协议)
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [摘要](#摘要)
+* [消息协议](#消息协议)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

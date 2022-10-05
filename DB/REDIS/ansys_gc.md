@@ -1,7 +1,19 @@
 # Redis源码分析-内存回收
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
+
+* [内存管理](#内存管理)
+    - [置换策略](#置换策略)
+        + [noeviction](#noeviction)
+        + [allkeys-lru](#allkeys-lru)
+        + [volatile-lru](#volatile-lru)
+        + [allkeys-random](#allkeys-random)
+        + [volatile-random](#volatile-random)
+        + [volatile-ttl](#volatile-ttl)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 ## 内存管理

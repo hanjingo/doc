@@ -1,5 +1,14 @@
 # Redis实现异步队列
 
+
+<!-- vim-markdown-toc GFM -->
+
+* [摘要](#摘要)
+
+<!-- vim-markdown-toc -->
+
+
+
 ## 摘要
 
 通过使用redis的`zset`,`list`，发布订阅等数据结构和功能，可以实现一个异步队列。

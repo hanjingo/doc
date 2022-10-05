@@ -1,7 +1,12 @@
 # ZeroMQ问题汇总
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
+
+- [慢启动问题](#慢启动问题)
+- [高水位问题](#高水位问题)
+
+<!-- vim-markdown-toc -->
 
 
 ### 慢启动问题

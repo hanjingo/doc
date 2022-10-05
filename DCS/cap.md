@@ -1,6 +1,16 @@
 # CAP理论
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [CAP](#cap)
+    - [分区容错性](#分区容错性)
+    - [可用性](#可用性)
+    - [一致性](#一致性)
+* [BASE](#base)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

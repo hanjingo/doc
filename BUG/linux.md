@@ -1,7 +1,13 @@
 # linux错误
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
+
+- [ubuntu的dash问题](#ubuntu的dash问题)
+- [wsl环境下git clone报错](#wsl环境下git-clone报错)
+- [shell脚本文件编码格式问题](#shell脚本文件编码格式问题)
+
+<!-- vim-markdown-toc -->
 
 
 ### ubuntu的dash问题

@@ -1,6 +1,17 @@
 # Raft
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [节点的三个状态](#节点的三个状态)
+* [领导选举](#领导选举)
+* [记录复写](#记录复写)
+* [安全性](#安全性)
+* [应用实例](#应用实例)
+* [链接](#链接)
+
+<!-- vim-markdown-toc -->
+
+
 
 `raft(Reliable Replicated Redundant And Fault-Tolerant, 可靠，可复制，可冗余，可容错算法)`；一种相对paxos更简单的算法。
 

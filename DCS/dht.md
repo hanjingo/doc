@@ -1,6 +1,19 @@
 # DHT
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [前提](#前提)
+* [概述](#概述)
+    - [传统的bt模式](#传统的bt模式)
+    - [DHT模式](#dht模式)
+    - [Kademlia,DHT,KRPC和BitTorrent之间的关系](#kademliadhtkrpc和bittorrent之间的关系)
+* [DHT](#dht)
+    - [路由表](#路由表)
+* [参考](#参考)
+    - [文献](#文献)
+    - [外链](#外链)
+
+<!-- vim-markdown-toc -->
 
 
 

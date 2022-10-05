@@ -1,8 +1,37 @@
 # Redis源码分析-Lua脚本
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
 
+* [创建并修改Lua环境](#创建并修改lua环境)
+    - [创建Lua环境](#创建lua环境)
+    - [载入函数库](#载入函数库)
+    - [创建redis全局table](#创建redis全局table)
+    - [使用Redis自制的随机函数来替换Lua原有的随机函数](#使用redis自制的随机函数来替换lua原有的随机函数)
+    - [创建排序辅助函数](#创建排序辅助函数)
+    - [创建redis.pcall函数的错误报告辅助函数](#创建redispcall函数的错误报告辅助函数)
+    - [保护Lua的全局环境](#保护lua的全局环境)
+    - [将Lua环境保存到服务器状态的Lua属性里面](#将lua环境保存到服务器状态的lua属性里面)
+* [Lua环境协作组件](#lua环境协作组件)
+    - [伪客户端](#伪客户端)
+    - [lua_scripts字典](#lua_scripts字典)
+* [EVAL命令的实现](#eval命令的实现)
+    - [定义脚本函数](#定义脚本函数)
+    - [将脚本保存到lua_scripts字典](#将脚本保存到lua_scripts字典)
+    - [执行脚本函数](#执行脚本函数)
+* [EVALSHA命令的实现](#evalsha命令的实现)
+* [脚本管理命令的实现](#脚本管理命令的实现)
+    - [SCRIPT FLUSH](#script-flush)
+    - [SCRIPT EXISTS](#script-exists)
+    - [SCRIPT LOAD](#script-load)
+    - [SCRIPT KILL](#script-kill)
+* [脚本复制](#脚本复制)
+    - [复制EVAL命令，SCRIPT FLUSH命令和SCRIPT LOAD命令](#复制eval命令script-flush命令和script-load命令)
+    - [复制EVALSHA命令](#复制evalsha命令)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+ 
 
 Redis从2.6版本开始引入对Lua脚本的支持；
 

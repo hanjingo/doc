@@ -1,8 +1,17 @@
-[TOC]
-
 # MurmurHash算法
 
-## 摘要
+
+<!-- vim-markdown-toc GFM -->
+
+* [摘要](#摘要)
+* [原理](#原理)
+    - [x86平台32位](#x86平台32位)
+    - [x64平台128位](#x64平台128位)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+## 摘要 
 
 **MurmurHash算法**，由Austin Appleby在2008年发明；目前(2021年)一共有`MurmurHash1`，`MurmurHash2`，`MurmurHash3`三个版本；与其他hash函数相比，对于规律性较强的key，MurMurHash的随机分布特征表现更良好，Redis，Memcached，Cassandra，HBase，Lucene中都使用到了这种hash算法。
 

@@ -1,6 +1,16 @@
 # Redis源码分析-服务端
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [命令请求的执行过程](#命令请求的执行过程)
+    - [redisCommand结构的主要属性](#rediscommand结构的主要属性)
+* [serverCron](#servercron)
+    - [流程](#流程)
+* [初始化服务器](#初始化服务器)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

@@ -1,6 +1,11 @@
 # 传染病模型
 
-TODO
+
+<!-- vim-markdown-toc GFM -->
+
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

@@ -1,7 +1,11 @@
-[TOC]
-
 # MySQL问题
 
+<!-- vim-markdown-toc GFM -->
+
+- [修改密码时提示不合法](#修改密码时提示不合法)
+- [Windows下QT5连接MYSQL报错](#windows下qt5连接mysql报错)
+
+<!-- vim-markdown-toc -->
 
 
 ### 修改密码时提示不合法

@@ -1,6 +1,13 @@
-[TOC]
-
 # 八皇后问题
+
+<!-- vim-markdown-toc GFM -->
+
+* [更新1：如何用递归表示 n 层 for 循环](#更新1如何用递归表示-n-层-for-循环)
+* [更新2：原答案的「解压」版本：](#更新2原答案的解压版本)
+* [更新3： C++03 版本，采用 std::next_permutation](#更新3-c03-版本采用-stdnext_permutation)
+
+<!-- vim-markdown-toc -->
+
 
 问题：1-9 数字组成3个数 abc, cde, fgh 且 abc:def:ghi=1:2:3。
 

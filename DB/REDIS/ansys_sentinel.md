@@ -1,6 +1,29 @@
 # Redis源码分析-哨兵
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [原理](#原理)
+* [启动并初始化Sentinel](#启动并初始化sentinel)
+* [获取主服务器信息](#获取主服务器信息)
+* [获取从服务器信息](#获取从服务器信息)
+* [向主服务器和从服务器发送信息](#向主服务器和从服务器发送信息)
+* [接受来自主服务器和从服务器的频道信息](#接受来自主服务器和从服务器的频道信息)
+    - [更新sentinels字典](#更新sentinels字典)
+    - [创建连向其他Sentinel的命令连接](#创建连向其他sentinel的命令连接)
+* [检测主观下线状态](#检测主观下线状态)
+* [检查客观下线状态](#检查客观下线状态)
+    - [SENTINEL is-master-down-by-addr命令](#sentinel-is-master-down-by-addr命令)
+    - [客观下线状态的判断条件](#客观下线状态的判断条件)
+* [选举领头sentinel](#选举领头sentinel)
+    - [选举规则](#选举规则)
+    - [示例](#示例)
+* [故障转移](#故障转移)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 哨兵(Sentinel)是Redis的高可用性(high availability)解决方案；Sentinel本质上只是一个运行在特殊模式下的Redis服务器；
 

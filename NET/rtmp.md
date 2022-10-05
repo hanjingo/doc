@@ -1,6 +1,12 @@
 # RTMP协议
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 RTMP（Real-Time Messaging Protocol, 实时消息协议）用于低延迟传输流媒体音视频数据，基于TCP，默认使用端口1935。
 

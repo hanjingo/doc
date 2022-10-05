@@ -1,10 +1,14 @@
 # 最短路径算法
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [Dijkstra算法](#dijkstra算法)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
-
-### Dijkstra算法
+## Dijkstra算法
 
 Dijkstra算法按阶段进行，在每个阶段，Dijkstra算法选择一个顶点$v$，它在所有unknown顶点中居于最小的$d_v$，同时算法声明从$s$到$v$的最短路径是known的。阶段的其余部分由$d_w$值的更新工作组成。
 

@@ -1,7 +1,12 @@
 # golang常见错误
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
+
+* [waitgroup的坑](#waitgroup的坑)
+* [时间转换的坑](#时间转换的坑)
+
+<!-- vim-markdown-toc -->
 
 
 

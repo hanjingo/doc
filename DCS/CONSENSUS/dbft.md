@@ -1,5 +1,12 @@
 # 授权拜占庭容错(Delegated Byzantine Fault Tolerance)
 
+<!-- vim-markdown-toc GFM -->
+
+* [摘要](#摘要)
+* [流程](#流程)
+
+<!-- vim-markdown-toc -->
+
 
 
 ## 摘要

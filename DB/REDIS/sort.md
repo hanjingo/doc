@@ -1,6 +1,27 @@
 # Redis源码分析-排序
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [定义](#定义)
+    - [redisSortObject](#redissortobject)
+* [SORT命令的实现](#sort命令的实现)
+* [ALPHA选项的实现](#alpha选项的实现)
+* [ASC选项和DESC选项的实现](#asc选项和desc选项的实现)
+* [BY选项的实现](#by选项的实现)
+* [带有ALPHA选项的BY选项的实现](#带有alpha选项的by选项的实现)
+* [LIMIT选项的实现](#limit选项的实现)
+* [GET选项的实现](#get选项的实现)
+* [STORE选项的实现](#store选项的实现)
+* [多个选项的执行顺序](#多个选项的执行顺序)
+    - [选项的执行顺序](#选项的执行顺序)
+    - [选项的摆放顺序](#选项的摆放顺序)
+* [参考](#参考)
+    - [文献](#文献)
+
+<!-- vim-markdown-toc -->
+
+
 
 Redis的SORT命令可以对列表键，集合键或者有序集合键的值进行排序；
 

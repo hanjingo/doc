@@ -1,6 +1,23 @@
 # Redis命令
 
-[TOC]
+
+<!-- vim-markdown-toc GFM -->
+
+* [Key](#key)
+* [String](#string)
+* [Hash](#hash)
+* [List](#list)
+* [Set](#set)
+* [Zset](#zset)
+* [Pub/Sub](#pubsub)
+* [Transaction](#transaction)
+* [HyperLogLog](#hyperloglog)
+* [Script](#script)
+* [Server](#server)
+* [其它](#其它)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 ## Key
 

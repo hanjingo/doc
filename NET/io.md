@@ -1,6 +1,41 @@
 # 网络I/O
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [I/O模型](#io模型)
+    - [阻塞式I/O](#阻塞式io)
+    - [非阻塞式I/O](#非阻塞式io)
+    - [I/O复用](#io复用)
+    - [信号驱动式I/O](#信号驱动式io)
+    - [异步I/O](#异步io)
+    - [同步I/O和异步I/O对比](#同步io和异步io对比)
+    - [I/O模型对比](#io模型对比)
+* [多路复用](#多路复用)
+    - [select](#select)
+        + [描述符就绪条件](#描述符就绪条件)
+        + [select的最大描述符数](#select的最大描述符数)
+        + [运行机制](#运行机制)
+        + [select的缺点](#select的缺点)
+    - [pselect](#pselect)
+    - [kqueue](#kqueue)
+    - [poll](#poll)
+        + [触发条件](#触发条件)
+        + [缺点](#缺点)
+    - [epoll](#epoll)
+        + [epoll_create](#epoll_create)
+        + [poll_ctl](#poll_ctl)
+        + [epoll_wait](#epoll_wait)
+        + [用例](#用例)
+* [流操作](#流操作)
+    - [recv/send](#recvsend)
+    - [readv/writev](#readvwritev)
+    - [recvmsg/sendmsg](#recvmsgsendmsg)
+* [总结](#总结)
+    - [多路复用对比](#多路复用对比)
+    - [I/O操作函数比较](#io操作函数比较)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

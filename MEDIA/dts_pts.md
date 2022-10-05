@@ -1,6 +1,13 @@
 # DTS PTS的概念
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [前提](#前提)
+* [DTS、PTS 的概念](#dtspts-的概念)
+* [音视频的同步](#音视频的同步)
+* [PTS和DTS的时间基](#pts和dts的时间基)
+
+<!-- vim-markdown-toc -->
 
 
 

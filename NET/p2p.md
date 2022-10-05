@@ -1,6 +1,18 @@
 # P2P协议
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [术语](#术语)
+* [链路控制协议](#链路控制协议)
+    - [LCP操作](#lcp操作)
+* [多链路PPP](#多链路ppp)
+    - [认证](#认证)
+* [压缩控制协议(CCP)](#压缩控制协议ccp)
+* [隧道](#隧道)
+    - [GRE](#gre)
+    - [PPTP](#pptp)
+
+<!-- vim-markdown-toc -->
 
 
 

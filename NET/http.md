@@ -1,6 +1,26 @@
 # HTTP协议
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [URI](#uri)
+    - [格式](#格式)
+    - [URL快捷方式](#url快捷方式)
+        + [相对URL](#相对url)
+    - [URI,URL和URN的区别](#uriurl和urn的区别)
+* [HTTP报文](#http报文)
+    - [请求报文(Request Message)](#请求报文request-message)
+    - [响应报文(Response Message)](#响应报文response-message)
+* [首部](#首部)
+    - [通用首部](#通用首部)
+    - [请求首部](#请求首部)
+    - [响应首部](#响应首部)
+    - [实体首部](#实体首部)
+* [版本](#版本)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 `超文本传输协议(HyperText Transfer Protocol, HTTP)` 是一种用于分布式，协作式和超媒体信息系统的应用层协议；
 

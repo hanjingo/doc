@@ -1,13 +1,17 @@
 # EOS-GO开发常见错误
 
-[TOC]
 
+<!-- vim-markdown-toc GFM -->
+
+* [eos-go报action declares irrelevant authority错误](#eos-go报action-declares-irrelevant-authority错误)
+
+<!-- vim-markdown-toc -->
 
 
 ## eos-go报action declares irrelevant authority错误
 
 先上代码
-
+ 
 ```go
 func ask(ctx context.Context, api *eos.API, privKey string) {
 	act := &eos.Action{
