@@ -1,4 +1,6 @@
-# 目录[中文版](README_zh.md) | [English](README.md)
+[中文版](README_zh.md) | [English](README.md)
+
+# 目录
 
 ## 快捷导航
 
