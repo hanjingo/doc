@@ -1,5 +1,20 @@
 # skynet环境搭建
 
+<!-- vim-markdown-toc GFM -->
+
+* [依赖库](#依赖库)
+* [编译](#编译)
+    - [linux](#linux)
+* [运行](#运行)
+    - [单点](#单点)
+    - [集群](#集群)
+    - [master/slave模式](#masterslave模式)
+    - [cluster模式](#cluster模式)
+* [退出](#退出)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
 
 
 ## 依赖库

@@ -1,6 +1,18 @@
 # ZMQ源码分析-mailbox
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [mutex_t](#mutex_t)
+* [atomic_ptr_t](#atomic_ptr_t)
+* [signaler_t](#signaler_t)
+* [ypipe_t](#ypipe_t)
+    - [ypipe_base_t](#ypipe_base_t)
+* [yqueue_t](#yqueue_t)
+* [mailbox](#mailbox)
+    - [i_mailbox](#i_mailbox)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

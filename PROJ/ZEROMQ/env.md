@@ -1,6 +1,17 @@
 # libzmq环境搭建
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [二进制安装](#二进制安装)
+    - [windows](#windows)
+* [源码安装](#源码安装)
+    - [windows](#windows-1)
+    - [linux](#linux)
+* [测试](#测试)
+    - [qt+zeromq静态库示例](#qtzeromq静态库示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

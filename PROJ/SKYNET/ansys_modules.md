@@ -1,9 +1,27 @@
 # skynet源码分析-模块机制
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [模块定义](#模块定义)
+* [模块实现](#模块实现)
+    - [xxx_create](#xxx_create)
+    - [xxx_init](#xxx_init)
+    - [xxx_release](#xxx_release)
+    - [xxx_signal](#xxx_signal)
+* [模块管理](#模块管理)
+    - [模块文件加载](#模块文件加载)
+    - [模块文件解析](#模块文件解析)
+    - [模块文件释放](#模块文件释放)
+* [服务上下文](#服务上下文)
+* [回调](#回调)
+    - [C服务回调](#c服务回调)
+    - [LUA服务回调](#lua服务回调)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
-
+ 
 ## 模块定义
 
 ```c

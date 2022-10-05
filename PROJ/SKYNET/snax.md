@@ -1,10 +1,18 @@
 # skynet的snax框架
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [使用](#使用)
+    - [snax服务编写规范](#snax服务编写规范)
+    - [创建snax请求](#创建snax请求)
+* [热更新](#热更新)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 `snax`是对 skynet API 的部分封装（主要是请求/回调这一块）而产生的一个框架。
-
-
 
 ## 使用
 

@@ -1,6 +1,11 @@
 # ZeroMQ源码分析 - ypipe
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [ypipe_t](#ypipe_t)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

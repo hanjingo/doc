@@ -1,6 +1,25 @@
 # skynet集群
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [harbor ID](#harbor-id)
+    - [消息投递](#消息投递)
+* [`master/slave`模式](#masterslave模式)
+    - [API](#api)
+    - [开启集群](#开启集群)
+    - [组网](#组网)
+    - [harbor服务](#harbor服务)
+    - [缺点](#缺点)
+    - [操作示例](#操作示例)
+* [cluster模式](#cluster模式)
+    - [API](#api-1)
+    - [开启](#开启)
+        + [方法一 配置文件](#方法一-配置文件)
+        + [方法二 lua table](#方法二-lua-table)
+    - [示例](#示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

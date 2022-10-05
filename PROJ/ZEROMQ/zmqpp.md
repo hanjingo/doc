@@ -1,6 +1,24 @@
 # zmqpp
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [环境构建](#环境构建)
+    - [windows](#windows)
+* [发布订阅(pub-sub)模式](#发布订阅pub-sub模式)
+    - [注意事项](#注意事项)
+    - [Qt+zmqpp发布订阅示例](#qtzmqpp发布订阅示例)
+* [一问一答(req-rep)模式](#一问一答req-rep模式)
+    - [Qt+zmqpp一问一答示例](#qtzmqpp一问一答示例)
+* [推送拉取(push-pull)模式](#推送拉取push-pull模式)
+    - [Qt+zmqpp推送拉取示例](#qtzmqpp推送拉取示例)
+* [高级应答(dealer-router)模式](#高级应答dealer-router模式)
+    - [Qt+zmqpp高级应答示例](#qtzmqpp高级应答示例)
+* [高级发布订阅(xpub-xsub)模式](#高级发布订阅xpub-xsub模式)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 个人认为，zmqpp库是对libzmq封装的最好的c++库，非常方便用于构建zmq程序，推荐使用。
 

@@ -1,6 +1,24 @@
 # Docker环境搭建
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [版本选择](#版本选择)
+* [镜像选择](#镜像选择)
+* [Linux](#linux)
+* [Macos](#macos)
+* [Windows](#windows)
+    - [安装](#安装)
+        + [win10](#win10)
+        + [win7,win8](#win7win8)
+    - [运行](#运行)
+        + [win10](#win10-1)
+        + [win7,win8](#win7win8-1)
+    - [使用镜像](#使用镜像)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 ## 版本选择
 

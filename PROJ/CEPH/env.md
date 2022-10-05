@@ -1,6 +1,10 @@
 # Ceph环境搭建
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

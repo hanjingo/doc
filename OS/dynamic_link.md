@@ -1,6 +1,24 @@
 # 动态链接
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [动态链接库](#动态链接库)
+    - [优缺点](#优缺点)
+* [动态链接器](#动态链接器)
+    - [LINUX/UNIX](#linuxunix)
+* [生成](#生成)
+* [加载](#加载)
+    - [LINUX/UNIX](#linuxunix-1)
+* [API](#api)
+    - [dlopen](#dlopen)
+    - [dlmopen](#dlmopen)
+    - [dlsym](#dlsym)
+    - [dlclose](#dlclose)
+* [工程经验](#工程经验)
+    - [导出接口类](#导出接口类)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

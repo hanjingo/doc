@@ -1,6 +1,18 @@
 # ZMQ源码分析 - 多线程
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [分类](#分类)
+    - [IO线程](#io线程)
+    - [socket线程](#socket线程)
+* [object_t](#object_t)
+* [command_t](#command_t)
+    - [发送](#发送)
+    - [接收](#接收)
+* [总结](#总结)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

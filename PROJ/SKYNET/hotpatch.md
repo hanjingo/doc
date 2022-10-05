@@ -1,6 +1,26 @@
 # skynet热更新
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [前提](#前提)
+    - [1. upvalue](#1-upvalue)
+    - [2. skynet缓存机制](#2-skynet缓存机制)
+        + [源码实现](#源码实现)
+    - [优点](#优点)
+* [方法一 clearcache](#方法一-clearcache)
+    - [源码实现](#源码实现-1)
+    - [用例](#用例)
+* [方法二 inject](#方法二-inject)
+    - [热更代码编写规范](#热更代码编写规范)
+    - [源码实现](#源码实现-2)
+    - [用例](#用例-1)
+* [方法三 snax.hotfix](#方法三-snaxhotfix)
+* [方法四 使用skynet-reload](#方法四-使用skynet-reload)
+* [方法五 利用lua-require](#方法五-利用lua-require)
+    - [原理](#原理)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

@@ -1,6 +1,14 @@
 # 内存管理函数
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [malloc](#malloc)
+* [free](#free)
+* [new](#new)
+* [delete](#delete)
+* [malloc/free与new/delete的区别](#mallocfree与newdelete的区别)
+
+<!-- vim-markdown-toc -->
 
 
 

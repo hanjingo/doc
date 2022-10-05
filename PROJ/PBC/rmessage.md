@@ -1,6 +1,14 @@
 # 编/解码
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [定义](#定义)
+    - [rmessage](#rmessage)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 ## 定义
 

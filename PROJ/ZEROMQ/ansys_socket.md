@@ -1,6 +1,22 @@
 # ZMQ源码分析 - socket
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [类结构](#类结构)
+* [通讯协议](#通讯协议)
+* [socket分类](#socket分类)
+* [socket_base_t](#socket_base_t)
+    - [建立连接](#建立连接)
+    - [断线重连](#断线重连)
+    - [消息触发模式](#消息触发模式)
+    - [释放与销毁](#释放与销毁)
+    - [发送多帧](#发送多帧)
+    - [多次发送](#多次发送)
+* [pub_t](#pub_t)
+* [xpub_t](#xpub_t)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

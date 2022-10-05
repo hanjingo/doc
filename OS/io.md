@@ -1,6 +1,39 @@
 # I/O
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [I/O系统层次](#io系统层次)
+    - [I/O系统模块层次](#io系统模块层次)
+    - [设备与控制器之间的接口](#设备与控制器之间的接口)
+    - [设备控制器](#设备控制器)
+    - [内存映像I/O](#内存映像io)
+    - [I/O通道](#io通道)
+        + [字节多路通道(Byte Multiplexor Channel)](#字节多路通道byte-multiplexor-channel)
+        + [数组选择通道(Block Selector Channel)](#数组选择通道block-selector-channel)
+        + [数组多路通道(Block Multiplexor Channel)](#数组多路通道block-multiplexor-channel)
+* [fcntl，ioctl和路由套接字操作小结](#fcntlioctl和路由套接字操作小结)
+* [I/O效率](#io效率)
+    - [预读](#预读)
+    - [延迟写](#延迟写)
+* [常见I/O错误](#常见io错误)
+    - [TOCTTOU错误](#tocttou错误)
+* [Posix API](#posix-api)
+    - [access/faccessat](#accessfaccessat)
+    - [fcntl](#fcntl)
+    - [open/openat](#openopenat)
+    - [creat](#creat)
+    - [close](#close)
+    - [lseek](#lseek)
+    - [read](#read)
+    - [write](#write)
+    - [dup/dup2](#dupdup2)
+    - [sync](#sync)
+    - [fsync](#fsync)
+    - [fdatasync](#fdatasync)
+    - [ioctl](#ioctl)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

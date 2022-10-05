@@ -1,6 +1,14 @@
 # skynet源码分析-启动
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [流程](#流程)
+    - [1.读取配置](#1读取配置)
+    - [2.启动skynet](#2启动skynet)
+
+<!-- vim-markdown-toc -->
+
+
 
 ## 流程
 

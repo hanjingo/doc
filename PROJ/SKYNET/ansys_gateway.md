@@ -1,6 +1,14 @@
 # skynet源码分析-网关
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [msgserver](#msgserver)
+    - [编码规范](#编码规范)
+* [原理](#原理)
+* [示例](#示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
 
 
 

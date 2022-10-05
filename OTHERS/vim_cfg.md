@@ -1,6 +1,15 @@
 # vim配置
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [安装](#安装)
+    - [编译安装](#编译安装)
+* [配置脚本](#配置脚本)
+* [配置插件](#配置插件)
+* [配置go插件](#配置go插件)
+* [配置YouCompleteMe](#配置youcompleteme)
+
+<!-- vim-markdown-toc -->
 
 
 

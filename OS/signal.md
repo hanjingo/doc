@@ -1,6 +1,30 @@
 # 信号
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [信号分类](#信号分类)
+    - [UNIX系统信号](#unix系统信号)
+* [相关函数](#相关函数)
+    - [wait](#wait)
+    - [waitpid](#waitpid)
+    - [signal](#signal)
+    - [kill](#kill)
+    - [raise](#raise)
+    - [alarm](#alarm)
+    - [pause](#pause)
+    - [信号集](#信号集)
+    - [sigprocmask](#sigprocmask)
+    - [sigpending](#sigpending)
+    - [sigaction](#sigaction)
+* [信号处理](#信号处理)
+    - [信号产生](#信号产生)
+    - [信号处理](#信号处理-1)
+    - [示例](#示例)
+* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
+
 
 `信号（signal）`就是告知某个进程发生了某个事件的通知，有时也称为`软件中断（software interrupt）`。信号通常是异步发生的，要使用信号相关函数，需包含以下头文件：
 
