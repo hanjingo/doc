@@ -1,3 +1,5 @@
+[中文版](README.md) | [English](README_en.md)
+
 # c++并发编程实战
 
 Anthony Williams . 1ED
@@ -16,4 +18,4 @@ Anthony Williams . 1ED
 - [附录C 消息传递框架与完整的ATM示例](appendix_c.md)
 - [附录D C++线程库参考](appendix_d.md)
 
-[英文版](README_en.md)
+

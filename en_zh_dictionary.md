@@ -557,6 +557,8 @@ benign `/bɪˈnaɪn/` 仁慈的，温和的，善良的
 
 bequest `/bɪˈkwest/` 遗产，遗赠
 
+bet `/bɛt/` 打赌，赌博，下注
+
 beware `/bɪˈweə(r)/` 小心，提防，当心
 
 ### bi
@@ -789,6 +791,8 @@ centigrade `/ˈsentɪɡreɪd/` 摄氏度
 
 ceremony `/ˈserəməni/` 典礼，仪式，礼节，宗教仪式
 
+certain `/ˈsərtn/` 确定的，确信的，某些
+
 ### ch
 
 [回到C](#C)--[回到顶部](#英汉词典)
@@ -945,9 +949,13 @@ compete `/kəmˈpiːt/` 竞争，对抗，竞赛
 
 compile `/kəmˈpaɪl/` 汇编，收集，编撰
 
+complex `/ˈkɒmplɛks/` 复杂的，难懂的
+
 complimentary `/ˌkɒmplɪˈmentri/` 免费的，赠送的，赞美的
 
 component `/kəmˈpəʊnənt/` 组成，成分，组合的
+
+compose `/kəmˈpəʊz/` 组成，创作，构思，整理
 
 compound `/'kɒmpaʊnd/` 化合物，复合物，混合，调和，院子
 
@@ -1194,6 +1202,8 @@ copper `/ˈkɒpə(r)/` 铜，警官
 cord `/kɔːd/` 绳，粗线，细绳
 
 corn `/kɔːn/` 玉米，谷物，谷粒
+
+corner `/ˈkɔːnə/` 角落，街角，困境，偏远地区
 
 cornet `/ˈkɔːnɪt/` （乐器）短号，圆锥形蛋糕
 
@@ -1506,6 +1516,8 @@ diagram `/ˈdaɪəɡræm/` 图解，图表，示意图
 diameter `/daɪˈæmɪtər/` 直径
 
 disaster `/dɪ'zɑːstə(r)/` 灾难
+
+discuss `/dɪˈskʌs/` 讨论，论述
 
 decimal `/ˈdesɪml/` 小数，小数的
 
@@ -1853,6 +1865,8 @@ endowment `/ɪnˈdaʊmənt/` 捐款，资助，天资，才能
 
 endure `/ɪnˈdjʊə(r)/` 忍耐，忍受，持续，持久
 
+enforce `/ɪnˈfɔːs/` 加强，强制，强迫
+
 engage `/ɪnˈɡeɪdʒ/` 吸引，从事，聘用，约定，订婚
 
 enhancement `/ɪn'hɑːnsmənt/` 增强，提高，放大
@@ -2127,6 +2141,8 @@ fiction `/ˈfɪkʃn/` 小说，虚构，假想物
 
 fierce `/fɪəs/` 凶猛的，凶残的，狂热的
 
+figure `/ˈfɪɡə/` 数字，算术，人物，插图，图形
+
 finch `/fɪntʃ/` 雀类
 
 finite `/'faɪnaɪt/` 有限的
@@ -2166,6 +2182,8 @@ flicker `/ˈflɪkər/` 闪烁，闪现，摇曳，抖动
 fling `/flɪŋ/` 投掷，放纵，抛，丢
 
 flint `/flɪnt/` 燧石，打火石
+
+flip `/flɪp/` 轻弹，弹，掷，反转，空翻，无礼的，冒失的，轻率的
 
 flora `/ˈflɔːrə/` 植物群
 
@@ -2278,6 +2296,8 @@ fruitless `/ˈfruːtləs/` 无效的，无益的，徒劳的
 fulfill `/fʊl'fɪl/` 完成，履行，执行，满足
 
 fume `/fjuːm/` 愤怒，恼火，冒烟
+
+function `/ˈfʌŋ(k)ʃn/` 函数，功能，用途
 
 fundamental `/ˌfʌndəˈmentl/` 根本的，重大的，基础的，不能再分的
 
@@ -2623,6 +2643,8 @@ impetus `/ˈɪmpɪtəs/` 推力，动力，惯性
 
 implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
 
+implicit `/ɪmˈplɪsɪt/` 隐式的，含蓄的，内在的
+
 imply `/ɪmˈplaɪ/` 含有...的意思，暗示，暗指，说明，表明，使必要
 
 impose `/ɪmˈpəʊz/` 强制执行，推行，强迫，利用
@@ -2693,6 +2715,8 @@ indigestion `/ˌɪndɪˈdʒestʃən/` 消化不良
 
 individual `/ɪndɪˈvɪdʒʊ(ə)l/` 单独的，独特的，个人主义，个人，个体
 
+indivisible `/ˌɪndɪˈvɪzɪbl/` 不可分割的
+
 indiscriminate `/ˌɪndɪˈskrɪmɪnət/` 任意的，随意的，不加选择的
 
 indolent `/ˈɪndələnt/` 懒散的，懒惰的
@@ -2738,6 +2762,8 @@ inherit `/ɪnˈherɪt/` 继承，沿袭，接替
 inheritance `/ɪnˈherɪtəns/` 遗产，继承物，遗传特征
 
 inhibit `/ɪnˈhɪbɪt/` 阻止，阻碍，抑制
+
+initialization `//ɪˌnɪʃəlaɪ'zeɪʃn` 初始化，赋初值
 
 initiate `/ɪˈnɪʃieɪt/` 开始，发动，发起，接纳，吸收
 
@@ -2806,6 +2832,8 @@ interest `/ˈɪntrəst/` 兴趣，重要性，利益
 interleave `/ˌɪntə'liːv/` 插入，交错
 
 intermittent `/ˌɪntəˈmɪtənt/` 断断续续的，间歇的
+
+internal `/ɪnˈtəːnl/` 里面的，体内的，内心的，内部的
 
 interpret `/ɪnˈtɜːprət/` 解释，说明，口译，领会，表演
 
@@ -2989,6 +3017,8 @@ lava `/ˈlɑːvə/` 熔岩，岩浆，火山岩
 
 lavish `/ˈlævɪʃ/` 奢华，浪费
 
+lay `/leɪ/` 安放，放，铺，摆放
+
 layman `/ˈleɪmən/` 门外汉，外行
 
 ### le
@@ -3168,6 +3198,8 @@ mate `/meɪt/` 朋友，伙伴，同事，配偶，交配
 matchless `/ˈmætʃləs/` 无敌的，无可匹敌的
 
 matrix `/'meɪtrɪks/` 矩阵，母体，子宫，发源地，基质，社会环境，政治局势，线路网
+
+matter `/ˈmatə/` 事情，问题，物质，排出物，事态
 
 maze `/meɪz/` 迷宫，错综复杂
 
@@ -3411,6 +3443,8 @@ nonstarter `/nɒn'stɑːtə/`  早就无成功希望的人，未开始的人
 
 nonverbal `/ˌnɒn'vɜːbl/` 非言辞的，不使用语言的，手语的
 
+nor `/nɔr/` 也不 
+
 normalization `/ˌnɔːməlaɪˈzeɪʃən/` 正常化，标准化
 
 notably `/'nəʊtəbli/` 显著的，特别的
@@ -3577,6 +3611,8 @@ orchid `/ˈɔːkɪd/` 兰花
 
 ordeal `/ɔːˈdiːl/` 严酷的考验，磨难，煎熬
 
+order `/ˈɔːdə/` 顺序，条理，秩序，命令
+
 ordinance `/ˈɔːdɪnəns/` 法令，条例，指示，训令
 
 ordinary `/ˈɔːdnri/` 法官，普通的，一般的，平常的
@@ -3737,6 +3773,8 @@ patrol `/pəˈtrəʊl/` 巡逻，巡查，闲逛
 
 patronize `/ˈpætrənaɪz/` 屈就，屈尊，光顾，资助
 
+pattern `/ˈpatn/` 模式，匹配，图案，样式，样品，模仿
+
 paucity `/ˈpɔːsəti/` 少量，缺乏，贫乏
 
 pave `/peɪv/` 铺（地），铺垫
@@ -3890,6 +3928,8 @@ poem `/ˈpəʊɪm/` 诗
 pole `/pəʊl/` 电线杆，电极，磁极，（行星的）极
 
 polish `/ˈpɒlɪʃ/` 磨光，擦亮，润饰
+
+pilicy `/ˈpɒlɪsi/` 政策，原则，保险单，保险合同
 
 poll `/pəʊl/` 投票，民意调查
 
@@ -4075,6 +4115,8 @@ prospect `/ˈprɒspekt/` 勘探，探矿，展望，前景
 
 prosperity `/prɒˈsperəti/` 兴旺，繁荣，昌盛，发达
 
+protect `/prəˈtɛkt/` 保护，保卫
+
 protest `/ˈprəʊtest/` 抗议，反对，申辩
 
 protein `/ˈproʊtiːn/` 蛋白质
@@ -4139,6 +4181,8 @@ quiescent `/kwiˈesnt/` 静止的，沉寂的，静态的
 
 quirky `/ˈkwəːki/` 古怪的
 
+quite `/kwaɪt/` 比较，相当，完全，很
+
 quote `/kwəʊt/` 引用，引号，开价，上市
 
 ---
@@ -4148,6 +4192,8 @@ quote `/kwəʊt/` 引用，引号，开价，上市
 ### ra
 
 [回到R](#R)--[回到顶部](#英汉词典)
+
+race `/reɪs/` 竞争，匆忙，竞速
 
 radiate `/reɪdieɪt/` 辐射，放射，散发，光芒四射的
 
@@ -4357,6 +4403,8 @@ respective `/rɪˈspek.tɪv/`  各自的，分别的
 
 respiratory `/ˈrespərətɔːri/` 呼吸的
 
+response `/rɪˈspɒns/` 答复，反应
+
 responsiveness `/rɪ'spɒnsɪvnəs/` 响应性，反应性
 
 rest `/rest/` 剩余，休息，支撑，依赖，搁置，埋葬
@@ -4448,6 +4496,8 @@ rote `/rəʊt/` 死记硬背，生搬硬套
 ### ru
 
 [回到R](#R)--[回到顶部](#英汉词典)
+
+ruby `/ˈruːbi/` 红宝石
 
 rug `/rʌɡ/` 地毯，毯子
 
@@ -4993,6 +5043,8 @@ submerge `/səbˈmɜːdʒ/` 淹没，沉没，掩盖
 
 submit `/səb'mɪt/` 提交，递交，屈从，使...屈服
 
+subobject `/'sʌb'ɔbdʒikt/` 子类，子对象
+
 subscript `/'sʌbskrɪpt/` 下标
 
 subsequent `/ˈsʌbsɪkwənt/` 随后的，后来的，之后的
@@ -5346,6 +5398,8 @@ tray `/treɪ/` 盘子，碟子
 treacherous `/ˈtretʃərəs/` 背叛的，奸诈的，不可信任的
 
 treat `/triːt/` 对待
+
+treatment `//ˈtriːtm(ə)nt` 对待，论述，探讨，治疗，处理
 
 trench `/trentʃ/` 沟，渠，壕沟，战壕
 
@@ -5738,6 +5792,8 @@ wit `/wɪt/` 机智，风趣，智力，才思敏捷，理解力
 witness `/ˈwɪtnəs/` 目击者，见证人
 
 withdraw `/wɪðˈdrɔ/` 撤回，退出，收回，取款
+
+within `/wɪðˈɪn/` 在...里面，在...内
 
 ### wo
 
