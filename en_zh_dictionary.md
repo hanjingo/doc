@@ -2,7 +2,7 @@
 
 |                | a      | b      | c      | d      | e      | f      | g      | h      | i      | j      | k      | l      | m      | n      | o      | p      | q      | r      | s      | t      | u      | v      | w      | x      | y      | z |
 | -------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | - |
-| [**A**](#A) |        | [ab](#ab) | [ac](#ac) | [ad](#ad) | [ae](#ae) | [af](#af) | [ag](#ag) |        | [ai](#ai) | [aj](#aj) |        | [al](#al) | [am](#am) | [an](#an) |        | [ap](#ap) | [aq](#aq) | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) | [aw](#aw) |        |        |   |
+| [**A**](#A) |        | [ab](#ab) | [ac](#ac) | [ad](#ad) | [ae](#ae) | [af](#af) | [ag](#ag) |   [ah](#ah)     | [ai](#ai) | [aj](#aj) |        | [al](#al) | [am](#am) | [an](#an) |        | [ap](#ap) | [aq](#aq) | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) | [aw](#aw) |        |        |   |
 | [**B**](#B) | [ba](#ba) |        |        |        | [be](#be) |        |        |        | [bi](#bi) |        |        | [bl](#bl) |        |        | [bo](#bo) |        |        | [br](#br) |        |        | [bu](#bu) |        |        |        | [by](#by) |   |
 | [**C**](#C) | [ca](#ca) |        |        |        | [ce](#ce) |        |        | [ch](#ch) | [ci](#ci) |        |        | [cl](#cl) |        |        | [co](#co) |        |        | [cr](#cr) |        |        | [cu](#cu) |        |        |        | [cy](#cy) |   |
 | [**D**](#D) | [da](#da) |        |        |        | [de](#de) |        |        |        | [di](#di) |        |        |        |        |        | [do](#do) |        |        | [dr](#dr) |        |        | [du](#du) |        | [dw](#dw) |        | [dy](#dy) |   |
@@ -139,7 +139,7 @@ advance `/ədˈvɑːns/` 前进，推进
 
 advancement `/ədˈvɑːnsmənt/` 进步，发展
 
-advantage `/əd'vɑːntɪdʒ/` 优势，有利于
+advantage `/əd'vɑːntɪdʒ/` 优点，优势，有利于
 
 adverse `/'ædvɜːs/` 不利的，逆向的，有害的
 
@@ -156,6 +156,8 @@ aesthetic `/iːsˈθetɪk/` 审美观，美感
 [回到A](#A)--[回到顶部](#英汉词典)
 
 affective `/əˈfektɪv/` 感情的，情感的
+
+affiliate `/əˈfɪlɪeɪt/` 并入，隶属，附属，加入
 
 affinity `/əˈfɪn.ə.ti/` 姻亲，近似，密切关系，吸引力
 
@@ -174,6 +176,12 @@ aggregate `/ˈæɡrɪɡət /`  总数，合计
 aggress `/ə'gres/` 侵略，攻击，侵犯，挑衅
 
 agitation `/ˌædʒɪˈteɪʃn/` 摇动，煽动，忧虑
+
+### ah
+
+[回到A](#A)--[回到顶部](#英汉词典)
+
+ahead `/əˈhɛd/` 向前，今后，领先，在...前，先进
 
 ### ai
 
@@ -553,6 +561,8 @@ beast `/biːst/` 野兽，行为粗暴的人
 
 bedrock `/ˈbedrɒk/` 地基，基岩，基本原则
 
+behave `/bɪˈheɪv/` 表现，行为，运转
+
 benefit `/'benɪfɪt/` 利益，津贴，有益于
 
 benign `/bɪˈnaɪn/` 仁慈的，温和的，善良的
@@ -578,6 +588,8 @@ bitter `/ˈbɪtə(r)/` 苦的，苦味，苦难
 ### bl
 
 [回到B](#B)--[回到顶部](#英汉词典)
+
+blade `/bleɪd/` 刀片，桨叶，锋刃，叶片
 
 blanket `/ˈblæŋkɪt/` 毛毯，覆盖层
 
@@ -750,6 +762,8 @@ capture `/ˈkæptʃə(r)/` 俘虏，捕获，攻占，表达，刻画，拍摄
 carapace `/ˈkærəpeɪs/` 甲壳，外壳，龟壳
 
 careerism `/kə'rɪərɪzəm/` 野心，追名逐利
+
+caremony `/ˈsɛrɪməni/` 仪式，礼节 
 
 cargo `/ˈkɑːɡəʊ/` 货物
 
@@ -932,6 +946,8 @@ coined `/kɔind/` 创造，制造硬币
 colleague `/'kɒliːɡ/` 同事
 
 combine `/kəm'baɪn/` 组合，结合，集团，联合企业
+
+combustion `/kəmˈbʌstʃ(ə)n/` 燃烧，燃烧装置
 
 cometary `/ˈkɑməˌtɛri/` 彗星的，彗星似的
 
@@ -1307,6 +1323,8 @@ crop `/krɒp/` 农作物，收成，庄家，修剪，收获
 
 crosscut `/krɒskʌt/` 横切，正交，横越，捷径
 
+crossover `/ˈkrɔsˌoʊvər/` 穿越，交叉点，中转站，交叉风格
+
 crown `/kraʊn/` 王冠
 
 crucial `/'kruːʃl/` 决定性的，关键的
@@ -1400,6 +1418,8 @@ debris `/ˈdebriː/` 残骸，碎片，废墟
 dedicate `/'dedɪkeɪt/` 致力于，献出
 
 deduce `/dɪ'djuːs/` 演绎，推理
+
+defect `/ˈdiːfɛkt/` 缺陷，瑕疵，叛变
 
 defend `/dɪˈfend/` 保卫，防御，保护
 
@@ -1522,6 +1542,8 @@ diagnose `/ˈdaɪəɡnəʊz/` 诊断，判断
 diagram `/ˈdaɪəɡræm/` 图解，图表，示意图
 
 diameter `/daɪˈæmɪtər/` 直径
+
+disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` 缺点，不利条件，不利地位，
 
 disaster `/dɪ'zɑːstə(r)/` 灾难
 
@@ -1691,6 +1713,8 @@ dreary `/ˈdrɪəri/` 沉闷的，乏味的，凄凉的
 
 drought `/draʊt/` 干旱，旱灾
 
+drove `/drʌɪv/` 开，操作，驱动，钉，拧，打，吹，冲
+
 drowsy `/ˈdraʊzi/` 困倦的，昏昏欲睡的
 
 ### du
@@ -1738,6 +1762,8 @@ dynamic `/daɪˈnæmɪk/` 动态，有活力的，动力学，力学
 [回到E](#E)--[回到顶部](#英汉词典)
 
 earthenware `/ˈɜːrθnwer/` 陶器，陶制的
+
+ease `/iːz/` 容易，减轻，缓和
 
 ### ec
 
@@ -2303,6 +2329,8 @@ fruitless `/ˈfruːtləs/` 无效的，无益的，徒劳的
 
 [回到F](#F)--[回到顶部](#英汉词典)
 
+fuel `/ˈfjuːəl/` 燃料，营养物，刺激因素
+
 fulfill `/fʊl'fɪl/` 完成，履行，执行，满足
 
 fume `/fjuːm/` 愤怒，恼火，冒烟
@@ -2697,6 +2725,8 @@ inclined `/ɪnˈklaɪnd/` 倾斜，倾向，趋势
 
 incomplete `/ˌɪnkəm'pliːt/` 不完全的，不完整的
 
+inconsistent `/ˌɪnkənˈsɪst(ə)nt/` 反常的，不一致的，前后矛盾的，反复无常的
+
 inconvenient `/ˌɪnkən'viːniənt/` 不方便的
 
 incorporation `/ɪnˌkɔːpəˈreɪʃən/` 公司，法人，合并，并入
@@ -3089,6 +3119,8 @@ linear `/ˈlɪniə(r)/` 线性的，直线的，线状的
 
 linearization `/lɪnɪəraɪ'zeɪʃən/` 线性化
 
+lineup `/ˈlʌɪnʌp/` 阵容，团队，排队，系列节目
+
 linger `/ˈlɪŋɡə(r)/` 逗留，留恋，流连，徘徊
 
 linguistic `/lɪŋˈɡwɪstɪk/` 语言的，语言学的
@@ -3114,6 +3146,8 @@ locomote `/ˌləʊkə'məʊt/` 移动，走动，走来走去
 locomotive `/ˌləʊkə'məʊtɪv/` 火车头，机车，运动的，走动的
 
 logarithmic `/ˌlɒgəˈrɪðmɪk/` 对数(log)
+
+logistic `/ləˈdʒɪstək(ə)l/` 物流的，后勤的
 
 loom `/luːm/` 织布机，逼近，耸然出现
 
@@ -3240,6 +3274,8 @@ melody `/ˈmelədi/` 旋律，曲调，乐曲
 memorandum `/ˌmeməˈrændəm/` 备忘录，便签，报告
 
 mention `/ˈmenʃn/` 提到，提及，说起
+
+mentor `/ˈmɛntɔː/` 导师，指导
 
 merchandise `/ˈmɜːtʃəndaɪs/` 商品，货品，推销，销售
 
@@ -3448,6 +3484,8 @@ nifty `/'nɪfti/` 小巧的，漂亮的，熟练的
 [回到N](#N)--[回到顶部](#英汉词典)
 
 nocturnal `/nɒkˈtɜːnl/` 夜晚的，夜行的
+
+noise `/nɔɪz/` 噪声，声音，干扰
 
 nominee `/ˌnɒmɪˈniː/` 被任命者，被提名的人
 
@@ -4359,6 +4397,8 @@ rekindle `/ˌriːˈkɪndl/` 重新点燃，振作精神
 
 relate `/rɪ'leɪt/` 叙述，有关联，涉及，发生共鸣
 
+relationship `/rɪˈleɪʃnʃɪp/` 联系，亲属关系，人际关系，逻辑关系
+
 relative `/'relətɪv/` 相对的，相关的，亲戚
 
 relax `/rɪ'læks/` 放松，休息，放宽
@@ -4411,7 +4451,7 @@ reschedule `/ˌriː'ʃedjuːl/` 重排
 
 reserve `/rɪˈzɜːv/` 预定，预留，保留，保有
 
-resemble `/rɪˈzembl/` 像
+resemble `/rɪˈzembl/` 像，类似于
 
 reservoir `/ˈrezəvwɑː(r)/` 水库，储水池，储存器
 
@@ -4729,6 +4769,8 @@ shield `/ʃiːld/` 盾牌，保护，掩藏
 
 shift `/ʃɪft/` 转移，挪动，变换
 
+shimmer `/ˈʃɪmə/` 闪烁，闪光，蒸腾
+
 shine `/ʃaɪn/` 发光，照耀
 
 shingle `/ˈʃɪŋɡl/` 屋顶板，木瓦，小招牌
@@ -4886,6 +4928,8 @@ soybean `/sɔɪˌbiːn/` 黄豆，大豆
 spaceship `/ˈspeɪsʃɪp/` 宇宙飞船
 
 spacious `/ˈspeɪʃəs/` 宽敞的，广阔的
+
+span `/span/` 持续时间，范围，宽度，跨度，全长，跨越，涵盖
 
 spare `/speə(r)/` 备用的，闲置的，多余的，空闲的
 
@@ -5129,6 +5173,8 @@ suppose `/səˈpəʊz/` 认为，设想，假定，推测
 
 suppress `/səˈprɛs/` 压制，镇压，封锁，组织，抑制
 
+supremacy `/səˈprɛməsi/` 优势，至高无上
+
 surge `/sɜːdʒ/` 浪涌，激增，冲击，涌动
 
 surgeon `/ˈsɜːdʒən/` 外科医生
@@ -5238,6 +5284,8 @@ taxicab `/ˈtæksɪkæb/` 出租车
 ### te
 
 [回到T](#T)--[回到顶部](#英汉词典)
+
+teach `/tiːtʃ/` 教，讲授，训练，教导，倡导，教训
 
 technique `/tɛkˈniːk/` 方法，技巧
 
@@ -5606,6 +5654,8 @@ usual `/'juːʒuəl/` 通常的，惯常的，惯例的
 ### ut
 
 [回到U](#U)--[回到顶部](#英汉词典)
+
+utility `/juːˈtɪlɪti/` 实用，公用事业，多才多艺的
 
 utilize `/ˈjuːtəlaɪz/` 利用
 

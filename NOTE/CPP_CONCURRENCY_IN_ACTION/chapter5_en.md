@@ -270,4 +270,62 @@ int main()
 
 ### 5.3.3 Memory ordering for atomic operations
 
+These distinct memory-ordering models can have varying costs on different CPU architectures.
+
+The availability of the distinct memory-ordering models allows expert to take advantage of the increased performance of the more fine-grained ordering relation-ships where they're advantageous while allowing the use of the default sequentially consistent ordering(which is considerably easier to reason about than the others) for those cases that are less critical.
+
+**SEQUENTIALLY CONSISTENT ORDERING**
+
+The default ordering is named `sequentially consistent` because it implies that the vehavior of the program is consistent with a simple sequential view of the world. If all operations on instances of atomic types are sequentially consisten, the behavior of a multithreaded program is as if all these operations were performed in some particular sequence by a single thread.
+
+This ease of understanding can come at a price, though. On a weakly ordered machine with many processors, it can impose a noticeable performance penalty, beacuse the overall sequence of operations must be kept consistent between the processors, possibly requiring extensive (and expensive!) synchronization operations between the processors.
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+std::atomic<bool> x,y;
+std::atomic<int> z;
+
+void write_x()
+{
+  x.store(true,std::memory_order_seq_cst);  // 1
+}
+
+void write_y()
+{
+  y.store(true,std::memory_order_seq_cst);  // 2
+}
+void read_x_then_y()
+{
+  while(!x.load(std::memory_order_seq_cst));
+  if(y.load(std::memory_order_seq_cst))  // 3
+    ++z;
+}
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_seq_cst));
+  if(x.load(std::memory_order_seq_cst))  // 4
+    ++z;
+}
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x);
+  std::thread b(write_y);
+  std::thread c(read_x_then_y);
+  std::thread d(read_y_then_x);
+  a.join();
+  b.join();
+  c.join();
+  d.join();
+  assert(z.load()!=0);  // 5
+}
+```
+
+*Listing 5.4 Sequential consistency implies a total ordering*
+
 TODO
