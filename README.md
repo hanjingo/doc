@@ -28,7 +28,7 @@
 [STL](LANG/C++/stl.md) &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [vim shortcut](OTHERS/vim_shortcut.md)  
 
 [dot language](LANG/dot.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ASSIC table](OTHERS/assic_table.md)  
-=======
+
 [dot language](LANG/dot.md) &emsp; &emsp; &nbsp; &nbsp; [ASSIC table](OTHERS/assic_table.md)  
 
 [Posix Interface](OS/posix.md) &emsp; &emsp; [Lua API](LANG/LUA/api.md)  

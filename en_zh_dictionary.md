@@ -397,6 +397,8 @@ assessment `/əˈsesmənt/` 评估，估价，看法
 
 assign `/əˈsʌɪn/` 分配，指派
 
+assignment `/əˈsʌɪnm(ə)nt/` 任务，作业，分配
+
 assist `/əˈsɪst/` 帮助，援助，支持
 
 associate `/ə'səʊʃieɪt/` 关联，联想，交往，同伴
@@ -725,6 +727,8 @@ cacti `/ˈkæktaɪ/` 仙人掌
 
 cage `/keɪdʒ/` 笼子
 
+calculate `/ˈkalkjʊleɪt/` 计算，估算，计划
+
 calibration `/ˌkælɪˈbreɪʃn/` 校准，刻度，标定
 
 caller `/'kɔːlə(r)/` 调用者，呼叫者，来访者
@@ -930,6 +934,8 @@ colleague `/'kɒliːɡ/` 同事
 combine `/kəm'baɪn/` 组合，结合，集团，联合企业
 
 cometary `/ˈkɑməˌtɛri/` 彗星的，彗星似的
+
+comma `/ˈkɒmə/` 逗号
 
 commercialize `/kə'mɜːʃəlaɪz/` 商业化，利用...牟利
 
@@ -1204,6 +1210,8 @@ cord `/kɔːd/` 绳，粗线，细绳
 corn `/kɔːn/` 玉米，谷物，谷粒
 
 corner `/ˈkɔːnə/` 角落，街角，困境，偏远地区
+
+corner `/ˈkɔːnəstəʊn/` 基础，奠基石
 
 cornet `/ˈkɔːnɪt/` （乐器）短号，圆锥形蛋糕
 
@@ -2099,6 +2107,8 @@ farewell `/ˌfeəˈwel/` 告别，辞行
 
 fascinate `/ˈfæsɪneɪt/` 入迷，迷住，吸引
 
+fashion `/ˈfaʃn/` 时尚，潮流，使...成型
+
 fasten `/ˈfɑːsn/` 系，扎牢，扣住，固定
 
 fateful `/ˈfeɪtfl/` 重大的，决定性的，宿命的
@@ -2424,6 +2434,8 @@ grip `/ɡrɪp/` 抓紧，握紧
 [回到G](#G)--[回到顶部](#英汉词典)
 
 guarantee `/ˌɡærən'tiː/` 保证，担保，抵押品
+
+guideline `/ˈɡʌɪdlʌɪn/` 指导方针
 
 gulp `/ɡʌlp/` 吞咽，吸入，狼吞虎咽
 
@@ -3111,6 +3123,8 @@ loosely `/loosely/` 宽松的，松散的，不精确的
 
 loot `/luːt/` 抢劫，劫掠，战利品，赃物
 
+loss `/lɔs/` 损失，亏损，丢失
+
 ### lu
 
 [回到L](#L)--[回到顶部](#英汉词典)
@@ -3214,6 +3228,8 @@ meantime `/'miːntaɪm/` 与此同时
 measurable `/'meʒərəbl/` 可测量的，重要的，可察觉的
 
 measure `/ˈmeʒə(r)/` 测量，估量，尺寸，长度，数量
+
+meat `/miːt/` 肉，主要部分，实质
 
 mechanism `/'mekənɪzəm/`  机制，原理，结构，机构
 
@@ -3451,6 +3467,8 @@ notably `/'nəʊtəbli/` 显著的，特别的
 
 notations `/nəʊˈteɪʃ(ə)n/` 标记，表示法，记号
 
+notice `/ˈnəʊtɪs/` 通知，公告，注意，关注，通知书
+
 notorious `/nəʊˈtɔːriəs/` 臭名昭著的，声名狼藉的
 
 nourishment `/ˈnʌrɪʃmənt/` 营养品，养分
@@ -3464,6 +3482,8 @@ noxious `/ˈnɒkʃəs/` 有害的，有毒的
 ### nu
 
 [回到N](#N)--[回到顶部](#英汉词典)
+
+nuance `/ˈnjuːɑːns/` 细微差别
 
 nuclei `/ˈnjuːklɪaɪ/` 核心，原子核，细胞核
 
@@ -3746,6 +3766,8 @@ parcel `/ˈpɑːsl/` 包裹，小包，一块地
 parliament `/ˈpɑː.lɪ.mənt/` 议会
 
 partial `/ˈpɑːʃl/` 部分，不完全的，偏爱
+
+participate `/pɑːˈtɪsɪpeɪt/` 参加，参与
 
 particle `/ˈpɑːtɪkl/` 微粒，粒子，颗粒
 
@@ -4047,6 +4069,8 @@ primary `/'praɪməri/` 主要的，首要的，初级的，要素
 
 prime `/praɪm/` 首要的，典型的，最好的
 
+principle `/ˈprɪnsɪpl/` 原理，原则，行为准则
+
 prior `/ˈpraɪə(r)/` 先前的，较早的，优先的，院长，会长
 
 privacy `/ˈprɪvəsi/` 隐私，自由，独处，私生活
@@ -4250,6 +4274,8 @@ reap `/riːp/` 收割，获得，收获
 rebellious `/rɪˈbeljəs/` 反叛的，叛逆的，叛乱的
 
 rebuke `/rɪˈbjuːk/` 指责，谴责，训斥
+
+recalculate `/ˌriːˈkalkjʊleɪt/` 重新计算
 
 recall `/rɪˈkɔːl/` 回忆起，记得
 
@@ -4700,6 +4726,8 @@ shelter `/'ʃeltə(r)/` 避难所，保护，庇护
 shepherd `/ˈʃepəd/` 牧羊人，领头，护送
 
 shield `/ʃiːld/` 盾牌，保护，掩藏
+
+shift `/ʃɪft/` 转移，挪动，变换
 
 shine `/ʃaɪn/` 发光，照耀
 

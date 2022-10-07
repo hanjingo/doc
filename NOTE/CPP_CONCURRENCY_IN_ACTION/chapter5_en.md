@@ -10,6 +10,14 @@
     - [5.2.1 The standard atomic types](#521-the-standard-atomic-types)
     - [5.2.2 Operations on std::atomic_flag](#522-operations-on-stdatomic_flag)
     - [5.2.3 Operations on std::atomic<bool>](#523-operations-on-stdatomicbool)
+    - [5.2.4 Operations on std::atomic<T*>: pointer arithmetic](#524-operations-on-stdatomict-pointer-arithmetic)
+    - [5.2.5 Operations on standard atomic integral types](#525-operations-on-standard-atomic-integral-types)
+    - [5.2.6 The std::atomic<> primary class template](#526-the-stdatomic-primary-class-template)
+    - [5.2.7 Free functions for atomic operations](#527-free-functions-for-atomic-operations)
+* [5.3 Synchronizing operations and enforcing ordering](#53-synchronizing-operations-and-enforcing-ordering)
+    - [5.3.1 The synchronizes-with relationship](#531-the-synchronizes-with-relationship)
+    - [5.3.2 The happens-before relationship](#532-the-happens-before-relationship)
+    - [5.3.3 Memory ordering for atomic operations](#533-memory-ordering-for-atomic-operations)
 
 <!-- vim-markdown-toc -->
 
@@ -68,9 +76,31 @@ An `atomic` operation is an indivisible operation. You can't observe such an ope
 
 *Table 5.2 The standard atomic typedefs and their corresponding built-in typedefs*
 
-| Atomic typedef | Corresponding Standard Library typedef |
-|----------------|----------------------------------------|
-TODO
+| 原子typedef           | 对应的标准库typedef |
+|-----------------------|---------------------|
+| atomic_int_least8_t   | int_least8_t        |
+| atomic_uint_least8_t  | uint_least8_t       |
+| atomic_int_least16_t  | int_least16_t       |
+| atomic_uint_least16_t | uint_least16_t      |
+| atomic_int_least32_t  | int_least32_t       |
+| atomic_uint_least32_t | uint_least32_t      |
+| atomic_int_least64_t  | int_least64_t       |
+| atomic_uint_least64_t | uint_least64_t      |
+| atomic_int_fast8_t    | int_fast8_t         |
+| atomic_uint_fast8_t   | uint_fast8_t        |
+| atomic_int_fast16_t   | int_fast16_t        |
+| atomic_uint_fast16_t  | uint_fast16_t       |
+| atomic_int_fast32_t   | int_fast32_t        |
+| atomic_uint_fast32_t  | uint_fast32_t       |
+| atomic_int_fast64_t   | int_fast64_t        |
+| atomic_uint_fast64_t  | uint_fast64_t       |
+| atomic_intptr_t       | intptr_t            |
+| atomic_uintptr_t      | uintptr_t           |
+| atomic_size_t         | size_t              |
+| atomic_ptrdiff_t      | ptrdiff_t           |
+| atomic_intmax_t       | intmax_t            |
+| atomic_uintmax_t      | uintmax_t           |
+
 
 it suffices to know that the operations are divided into three categories:
 
@@ -102,3 +132,142 @@ public:
 *Listing 5.1 Implementation of a spinlock mutex using std::atomic_flag*
 
 ### 5.2.3 Operations on std::atomic<bool>
+
+The compare/exchange operation is the cornerstone of programming with atomic types; it compares the value of the atomic variable with a supplied expected value and stores the supplied desired value if they're equal. If the values aren't equal, the expected value and stores the supplied desired value if they're equal. If the values aren't equal, the expected value is updated with the actual value of the atomic variable. The return type of the compare/exchange functions is a `bool`, which is `true` if the store was performed and false otherwise.
+
+Because `compare_exchange_weak()` can fail spuriously, it must typically be used in a loop:
+
+```c++
+bool expected=false;
+extern atomic<bool> b; // 设置些什么
+while(!b.compare_exchange_weak(expected,true) && !expected);
+```
+
+### 5.2.4 Operations on std::atomic<T*>: pointer arithmetic
+
+Beacuse both `fetch_add()` and `fetch_sub()` are read-modify-write operations, they can have any of the memory-ordering tags and can participate in a `release wequence`. Specifying the ordering semantics isn't possible for the operator forms, because there's no way of providing the onformation: these forms therefore always have `memory_order_seq_cst` semantics.
+
+```c++
+class Foo{};
+Foo some_array[5];
+std::atomic<Foo*> p(some_array);
+Foo* x=p.fetch_add(2);  // p加2，并返回原始值
+assert(x==some_array);
+assert(p.load()==&some_array[2]);
+x=(p-=1);  // p减1，并返回原始值
+assert(x==&some_array[1]);
+assert(p.load()==&some_array[1]);
+```
+
+The function forms also allow the memory-ordering semantics to be specified as an additional function call argument:
+
+```c++
+p.fetch_add(3,std::memory_order_release);
+```
+
+### 5.2.5 Operations on standard atomic integral types
+
+### 5.2.6 The std::atomic<> primary class template
+
+In order to use `std::atomic<UDT>` for some user-defined type UDT, this type must have a `trivial` copy-assignment operator. This means that the type must not have any virtual functions or virtual base classes and must use the compiler-generated copy-assignment operator. Not only that, but every base class and non-static data member of a user-defined type must also have a trivial copy-assignment operator. This essentially permits the compiler to use `memcpy()` or an equivalent operation for assignment operations, because there's no user-written code to run.
+
+Finally, the type must be `bitwise equality comparable`. This goes alongside the assign-ment requirements; not only must you be able to copy an object of type UDT using `memcpy()`, but you must be able to compare instances for equality using `memcmp()`. 
+
+don't pass pointers and references to protected data outside the scope of the lock by passing them as arguments to user-suplied functions.
+
+### 5.2.7 Free functions for atomic operations
+
+*Table 5.3 The operations available on atomic types*
+
+| 操作                                       | atomic_flag | `atomic<bool>` | `atomic<T*>` | `atomic<integral-type>` | `atomic<other-type>` |
+|--------------------------------------------|-------------|----------------|--------------|-------------------------|----------------------|
+| test_and_set                               | *           |                |              |                         |                      |
+| clear                                      | *           |                |              |                         |                      |
+| is_lock_free                               |             | *              | *            | *                       | *                    |
+| load                                       |             | *              | *            | *                       | *                    |
+| store                                      |             | *              | *            | *                       | *                    |
+| exchange                                   |             | *              | *            | *                       | *                    |
+| compare_exchange_weak,<br>compare_exchange |             | *              | *            | *                       | *                    |
+| fetch_add, `+=`                            |             |                | *            | *                       | *                    |
+| fetch_sub, `-=`                            |             |                | *            | *                       |                      |
+| fetch_or, `                                | =`          |                |              |                         | *                    |  |
+| fetch_and, `&=`                            |             |                |              | *                       |                      |
+| fetch_xor, `^=`                            |             |                |              | *                       |                      |
+| `++`, `--`                                 |             |                | *            | *                       |                      |
+
+example:
+
+```c++
+std::shared_ptr<my_data> p;
+void process_global_data()
+{
+  std::shared_ptr<my_data> local=std::atomic_load(&p);
+  process_data(local);
+}
+void update_global_data()
+{
+  std::shared_ptr<my_data> local(new my_data);
+  std::atomic_store(&p,local);
+}
+```
+
+## 5.3 Synchronizing operations and enforcing ordering
+
+```c++
+#include <vector>
+#include <atomic>
+#include <iostream>
+
+std::vector<int> data;
+std::atomic<bool> data_ready(false);
+
+void reader_thread()
+{
+  while(!data_ready.load())  // 1
+  {
+    std::this_thread::sleep(std::milliseconds(1));
+  }
+  std::cout<<"The answer="<<data[0]<<"\m";  // 2
+}
+void writer_thread()
+{
+  data.push_back(42);  // 3
+  data_ready=true;  // 4
+}
+
+```
+
+*Listing 5.2 Reading and writing variables from different threads*
+
+![5_2](res/5_2.png) 
+
+*Figure 5.2 Enforcing an ordering between nonatomic operations using atomic operations *
+
+### 5.3.1 The synchronizes-with relationship
+
+The synchronizes-With relationship is something that you can get only between operations on atomic types.
+
+### 5.3.2 The happens-before relationship
+
+```c++
+#include <iostream>
+void foo(int a,int b)
+{
+  std::cout<<a<<”,”<<b<<std::endl;
+}
+int get_num()
+{
+  static int i=0;
+  return ++i;
+}
+int main()
+{
+  foo(get_num(),get_num());  // 无序调用get_num()
+}
+```
+
+*Listing 5.3 Order of evaluation of arguments to a function call is unspecified*
+
+### 5.3.3 Memory ordering for atomic operations
+
+TODO
