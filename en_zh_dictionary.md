@@ -517,6 +517,8 @@ awoken `/əˈwəʊkən/` （awake的过去分词）醒来，唤起
 
 baboon `/bəˈbuːn/` 狒狒
 
+backdrop `/ˈbakdrɒp/` 背景，背景幕
+
 backslash `/ˈbækslæʃ/` 反斜杠
 
 bacteriophage `/bæk'tɪrɪə,feɪdʒ/` 噬菌体
@@ -1543,7 +1545,9 @@ diagram `/ˈdaɪəɡræm/` 图解，图表，示意图
 
 diameter `/daɪˈæmɪtər/` 直径
 
-disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` 缺点，不利条件，不利地位，
+disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` 缺点，不利条件，不利地位
+
+disambiguate `/ˌdɪsamˈbɪɡjʊeɪt/` 消除...的歧义
 
 disaster `/dɪ'zɑːstə(r)/` 灾难
 
@@ -2453,6 +2457,8 @@ gravitation `/ˌɡrævɪˈteɪʃn/` 万有引力，引力
 
 grease `/ɡriːs/` 润滑油，油脂，给...涂油
 
+grievance `/ˈɡriːvns/` 不平的事，委屈
+
 grind `/ɡraɪnd/` 磨，使..光滑
 
 grip `/ɡrɪp/` 抓紧，握紧
@@ -2716,6 +2722,8 @@ incentive `/ɪnˈsentɪv/` 刺激，激励
 inception `/ɪnˈsepʃn/` 开端，创始
 
 incessant `/ɪnˈsesnt/` 连续的，不间断的
+
+incident `/ˈɪnsɪd(ə)nt/` 发生的事，枝节，暴力事件，由某事物导致
 
 incisive `/ɪnˈsaɪsɪv/` 敏锐的，透彻的，一针见血的
 
@@ -3085,6 +3093,8 @@ legendary `/ˈledʒəndri/` 传奇的，传说的，负有盛名的
 
 legislature `/ˈledʒɪsleɪtʃər/` 立法机关
 
+legitimacy `/lɪˈdʒɪtɪməsi/` 合法性，合理性，婚生子
+
 legume `/ˈleɡjuːm/` 豆类，豆科作物
 
 leisure `/ˈleʒə(r)/` 空闲，闲暇
@@ -3231,9 +3241,13 @@ marine `/məˈriːn/` 海洋的，海产的，海军陆战队
 
 margin `/ˈmɑːdʒɪn/` 边缘，书页白边，差额，幅度
 
+martial `/ˈmɑːʃl/` 军事的，军乐
+
 marvel `/ˈmɑːvl/` 奇迹，奇才，惊叹，吃惊
 
 mason `/ˈmeɪsn/` 泥瓦匠，石匠
+
+massacre `/ˈmasəkə/` 大屠杀，惨败，把...搞砸
 
 massive `/ˈmæsɪv/` 大量的，巨大的，大规模的
 
@@ -4519,6 +4533,8 @@ rhetoric `/ˈretərɪk/` 修辞学，花言巧语
 
 rid `/rɪd/` 摆脱，消除
 
+rifle `/ˈrʌɪfl/` 步枪
+
 rift `/rɪft/` 分裂，裂缝，裂口，断裂
 
 rigid `/'rɪdʒɪd/` 坚硬的，死板的，僵硬的
@@ -5418,6 +5434,8 @@ toggle `/ˈtɒɡl/` 切换，转换
 tolerance `/ˈtɒlərəns/`  容错，公差，容量
 
 tolerate `/ˈtɒləreɪt/` 忍受，容忍，包容，容许
+
+toll `/təʊl/` 通行费，伤亡人数，毁坏，长途电话费，钟声
 
 toned `/təʊnd/` 结实强壮的
 
