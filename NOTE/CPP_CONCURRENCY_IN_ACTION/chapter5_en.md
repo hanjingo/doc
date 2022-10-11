@@ -18,6 +18,10 @@
     - [5.3.1 The synchronizes-with relationship](#531-the-synchronizes-with-relationship)
     - [5.3.2 The happens-before relationship](#532-the-happens-before-relationship)
     - [5.3.3 Memory ordering for atomic operations](#533-memory-ordering-for-atomic-operations)
+    - [5.3.4 Release sequences and synchronizes-with](#534-release-sequences-and-synchronizes-with)
+    - [5.3.5 Fences](#535-fences)
+    - [5.3.6 Ordering nonatomic operations with atomics](#536-ordering-nonatomic-operations-with-atomics)
+* [5.4 Summary](#54-summary)
 
 <!-- vim-markdown-toc -->
 
@@ -328,4 +332,441 @@ int main()
 
 *Listing 5.4 Sequential consistency implies a total ordering*
 
-TODO
+**NON-SEQUENTIALLY CONSISTENT MEMORY ORDERINGS**
+
+![5_3](res/5_3.png)
+
+*Figure 5.3 Sequential consistency and happens-before*
+
+Even if the trheads are running the same bit of code, they can disagree on the order of events because of operations in other threads in the absence of explicit ordering constraints, because the different CPU caches and internal buffers can hold different values for the same memory. It's so important I'll say it again: `threads don't have to agree on the order of events`.
+
+**Relaxed ORDERING**
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+std::atomic<bool> x,y;
+std::atomic<int> z;
+
+void write_x_then_y()
+{
+  x.store(true,std::memory_order_relaxed);  // 1
+  y.store(true,std::memory_order_relaxed);  // 2
+}
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_relaxed));  // 3
+  if(x.load(std::memory_order_relaxed))  // 4
+    ++z;
+}
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x_then_y);
+  std::thread b(read_y_then_x);
+  a.join();
+  b.join();
+  assert(z.load()!=0);  // 5
+}
+```
+
+*Listing 5.5 Relaxed operations have very few ordering requirements*
+
+![5_4](res/5_4.png)
+
+*Figure 5.4 Relaxed atomics and happens-before*
+
+```c++
+#include <thread>
+#include <atomic>
+#include <iostream>
+
+std::atomic<int> x(0),y(0),z(0);  // 1
+std::atomic<bool> go(false);  // 2
+
+unsigned const loop_count=10;
+
+struct read_values
+{
+  int x,y,z;
+};
+
+read_values values1[loop_count];
+read_values values2[loop_count];
+read_values values3[loop_count];
+read_values values4[loop_count];
+read_values values5[loop_count];
+
+void increment(std::atomic<int>* var_to_inc,read_values* values)
+{
+  while(!go)
+    std::this_thread::yield();  // 3 自旋，等待信号
+  for(unsigned i=0;i<loop_count;++i)
+  {
+    values[i].x=x.load(std::memory_order_relaxed);
+    values[i].y=y.load(std::memory_order_relaxed);
+    values[i].z=z.load(std::memory_order_relaxed);
+    var_to_inc->store(i+1,std::memory_order_relaxed);  // 4
+    std::this_thread::yield();
+  }
+}
+
+void read_vals(read_values* values)
+{
+  while(!go)
+    std::this_thread::yield(); // 5 自旋，等待信号
+  for(unsigned i=0;i<loop_count;++i)
+  {
+    values[i].x=x.load(std::memory_order_relaxed);
+    values[i].y=y.load(std::memory_order_relaxed);
+    values[i].z=z.load(std::memory_order_relaxed);
+    std::this_thread::yield();
+  }
+}
+
+void print(read_values* v)
+{
+  for(unsigned i=0;i<loop_count;++i)
+  {
+    if(i)
+      std::cout<<",";
+    std::cout<<"("<<v[i].x<<","<<v[i].y<<","<<v[i].z<<")";
+  }
+  std::cout<<std::endl;
+}
+
+int main()
+{
+  std::thread t1(increment,&x,values1);
+  std::thread t2(increment,&y,values2);
+  std::thread t3(increment,&z,values3);
+  std::thread t4(read_vals,values4);
+  std::thread t5(read_vals,values5);
+
+  go=true;  // 6 开始执行主循环的信号
+
+  t5.join();
+  t4.join();
+  t3.join();
+  t2.join();
+  t1.join();
+
+  print(values1);  // 7 打印最终结果
+  print(values2);
+  print(values3);
+  print(values4);
+  print(values5);
+}
+```
+
+*Listing 5.6 Relaxed operations on multiple threads*
+
+**UNDERSTANDING RELAXED ORDERING**
+
+**QCQUIRE-RELEASE ORDERING**
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+std::atomic<bool> x,y;
+std::atomic<int> z;
+void write_x()
+{
+  x.store(true,std::memory_order_release);
+}
+void write_y()
+{
+  y.store(true,std::memory_order_release);
+}
+void read_x_then_y()
+{
+  while(!x.load(std::memory_order_acquire));
+  if(y.load(std::memory_order_acquire))  // 1
+    ++z;
+}
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_acquire));
+  if(x.load(std::memory_order_acquire))
+    ++z;
+}
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x);
+  std::thread b(write_y);
+  std::thread c(read_x_then_y);
+  std::thread d(read_y_then_x);
+  a.join();
+  b.join();
+  c.join();
+  d.join();
+  assert(z.load()!=0); // 3
+}
+```
+
+![5_6](res/5_6.png)
+
+*Figure 5.6 Acquire-release and happens-before*
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+std::atomic<bool> x,y;
+std::atomic<int> z;
+
+void write_x_then_y()
+{
+  x.store(true,std::memory_order_relaxed);  // 1 自旋，等待y被设置为true
+  y.store(true,std::memory_order_release);  // 2
+}
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_acquire));  // 3
+  if(x.load(std::memory_order_relaxed))  // 4
+    ++z;
+}
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x_then_y);
+  std::thread b(read_y_then_x);
+  a.join();
+  b.join();
+  assert(z.load()!=0);  // 5
+}
+```
+
+*Listing 5.8 Acquire-release operations can impose ordering on relaxed operations*
+
+if A inter-thread happens-before B and B inter-thread happens-before C, then A inter-thread happens-before C. This means that acquire-release ordering can be used to synchronize data across several threads, even when the "intermediate" threads haven't actually touched the data.
+
+**TRANSITIVE SYNCHRONIZATION WITH ACQUIRE-RELEASE ORDERING**
+
+```c++
+std::atomic<int> data[5];
+std::atomic<bool> sync1(false),sync2(false);
+
+void thread_1()
+{
+  data[0].store(42,std::memory_order_relaxed);
+  data[1].store(97,std::memory_order_relaxed);
+  data[2].store(17,std::memory_order_relaxed);
+  data[3].store(-141,std::memory_order_relaxed);
+  data[4].store(2003,std::memory_order_relaxed);
+  sync1.store(true,std::memory_order_release);  // 1.设置sync1
+}
+
+void thread_2()
+{
+  while(!sync1.load(std::memory_order_acquire));  // 2.直到sync1设置后，循环结束
+  sync2.store(true,std::memory_order_release);  // 3.设置sync2
+}
+void thread_3()
+{
+  while(!sync2.load(std::memory_order_acquire));   // 4.直到sync1设置后，循环结束
+  assert(data[0].load(std::memory_order_relaxed)==42);
+  assert(data[1].load(std::memory_order_relaxed)==97);
+  assert(data[2].load(std::memory_order_relaxed)==17);
+  assert(data[3].load(std::memory_order_relaxed)==-141);
+  assert(data[4].load(std::memory_order_relaxed)==2003);
+}
+```
+
+*Listing 5.9 Transitive synchronization using acquire and release ordering*
+
+**DATA DEPENDENCY WITH ACQUIRE-RELEASE ORDERING AND MEMORY_ORDER_CONSUME**
+
+There are two new relations that deal with data dependencies: `dependency-ordered-before` and `carries-a-dependency-to`. Just like sequenced-before, carries-a-dependency-to applies strictly within a single thread and essentially models the data dependency between operations; if the result of an operation A is used as an operand for an operation B, then A carries-a-dependency-to B. If the result of operation A is value of a scalar type such as an `int`, then the relationship still applies if the result of A is stored in a variable, and that variable is then used as an operand for operation B. This operation is also transitive, so if A carries-a-dependency-to B, and B carries-a-dependency-to C, then A carries-a-dependency-to C.
+
+```c++
+struct X
+{
+int i;
+std::string s;
+};
+
+std::atomic<X*> p;
+std::atomic<int> a;
+
+void create_x()
+{
+  X* x=new X;
+  x->i=42;
+  x->s="hello";
+  a.store(99,std::memory_order_relaxed);  // 1
+  p.store(x,std::memory_order_release);  // 2
+}
+
+void use_x()
+{
+  X* x;
+  while(!(x=p.load(std::memory_order_consume)))  // 3
+    std::this_thread::sleep(std::chrono::microseconds(1));
+  assert(x->i==42);  // 4
+  assert(x->s=="hello");  // 5
+  assert(a.load(std::memory_order_relaxed)==99);  // 6
+}
+
+int main()
+{
+  std::thread t1(create_x);
+  std::thread t2(use_x);
+  t1.join();
+  t2.join();
+}
+```
+
+*Listing 5.10 Using std::memory_order_consume to synchronize data*
+
+### 5.3.4 Release sequences and synchronizes-with
+
+If the store is tagged with `memory_order_release`, `memory_order_acq_rel`, or `memory_order_seq_cst`, and the load is tagged with `memory_order_consume`, `memory_order_acquire`, or `memory_order_seq_cst`, and each operation in the chain loads the value written by the previous operation, then the chain of operations constitutes a `release sequence` and the initial store synchronizes-with(for `memory_order_acquire` or `memory_order_seq_cst`) or is dependency-ordered-before (for `memory_order_consume`) the final load. Any atomic read-modify-write operations in the chain can have any memory ordering(even `memory_order_relaxed`).
+
+```c++
+#include <atomic>
+#include <thread>
+
+std::vector<int> queue_data;
+std::atomic<int> count;
+
+void populate_queue()
+{
+  unsigned const number_of_items=20;
+  queue_data.clear();
+  for(unsigned i=0;i<number_of_items;++i)
+  {
+    queue_data.push_back(i);
+  }
+
+  count.store(number_of_items,std::memory_order_release);  // 1 初始化存储
+}
+
+void consume_queue_items()
+{
+  while(true)
+  {
+    int item_index;
+    if((item_index=count.fetch_sub(1,std::memory_order_acquire))<=0)  // 2 一个“读-改-写”操作
+    {
+      wait_for_more_items();  // 3 等待更多元素
+      continue;
+    }
+    process(queue_data[item_index-1]);  // 4 安全读取queue_data
+  }
+}
+
+int main()
+{
+  std::thread a(populate_queue);
+  std::thread b(consume_queue_items);
+  std::thread c(consume_queue_items);
+  a.join();
+  b.join();
+  c.join();
+}
+```
+
+*Listing 5.11 Reading values from a queue with atomic operations*
+
+![5_7](res/5_7.png)
+
+### 5.3.5 Fences
+
+These are operations that encorce memory-ordering constraints without modifying any data and are typically combined with atomic operations that use the `memory_order_relaxed` ordering constraints. Fences are global operations and affect the ordering of other atomic operations in the thread that executed the fence. Fences are also commonly called `memory barriers`, and they get their name because they put a line in the code that certain operations can't cross.
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+std::atomic<bool> x,y;
+std::atomic<int> z;
+
+void write_x_then_y()
+{
+  x.store(true,std::memory_order_relaxed);  // 1
+  std::atomic_thread_fence(std::memory_order_release);  // 2
+  y.store(true,std::memory_order_relaxed);  // 3
+}
+
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_relaxed));  // 4
+  std::atomic_thread_fence(std::memory_order_acquire);  // 5
+  if(x.load(std::memory_order_relaxed))  // 6
+    ++z;
+}
+
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x_then_y);
+  std::thread b(read_y_then_x);
+  a.join();
+  b.join();
+  assert(z.load()!=0);  // 7
+}
+```
+
+*Listing 5.12 Relaxed operations can be ordered with fences*
+
+### 5.3.6 Ordering nonatomic operations with atomics
+
+```c++
+#include <atomic>
+#include <thread>
+#include <assert.h>
+
+bool x=false;  // x现在是一个非原子变量
+std::atomic<bool> y;
+std::atomic<int> z;
+
+void write_x_then_y()
+{
+  x=true;  // 1 在栅栏前存储x
+  std::atomic_thread_fence(std::memory_order_release);
+  y.store(true,std::memory_order_relaxed);  // 2 在栅栏后存储y
+}
+
+void read_y_then_x()
+{
+  while(!y.load(std::memory_order_relaxed));  // 3 在#2写入前，持续等待
+  std::atomic_thread_fence(std::memory_order_acquire);
+  if(x)  // 4 这里读取到的值，是#1中写入
+    ++z;
+}
+int main()
+{
+  x=false;
+  y=false;
+  z=0;
+  std::thread a(write_x_then_y);
+  std::thread b(read_y_then_x);
+  a.join();
+  b.join();
+  assert(z.load()!=0);  // 5 断言将不会触发
+}
+```
+
+*Listing 5.13 Enforcing ordering on nonatomic operations*
+
+
+
+## 5.4 Summary
+
+

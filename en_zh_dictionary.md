@@ -133,6 +133,8 @@ admiration `/ˌædməˈreɪʃn/` 钦佩，仰慕，羡慕
 
 admit `/ədˈmɪt/` 承认，招供，准许
 
+adopt `/əˈdɒpt/` 领养，提名，选用，移居，采用，采取，正式通过
+
 adorn `/əˈdɔːn/` 装饰，装扮
 
 advance `/ədˈvɑːns/` 前进，推进
@@ -367,6 +369,8 @@ arduous `/ˈɑːdjuəs/` 艰苦的，艰难的
 
 arena `/əˈriːnə/` 竞技场，圆形运动场，圆形剧场，斗争场所，活动场所
 
+argue `/ˈɑːɡjuː/` 争论，辩论，主张，表明，说服，提供证明
+
 arise `/ə'raɪz/` 出现，升起，上升
 
 arithmetic `/əˈrɪθmətɪk/` 算术，算术运算
@@ -518,6 +522,8 @@ awoken `/əˈwəʊkən/` （awake的过去分词）醒来，唤起
 baboon `/bəˈbuːn/` 狒狒
 
 backdrop `/ˈbakdrɒp/` 背景，背景幕
+
+backfire `/ˈbakfʌɪə/` 事与愿违，后院起火，逆火
 
 backslash `/ˈbækslæʃ/` 反斜杠
 
@@ -703,11 +709,15 @@ bulk `/bʌlk/` 主体，大部分，大量，增大，毛估
 
 bump `/bʌmp/` 碰撞，撞击，肿块
 
+burden `/ˈbəːdn/` 重担，负担，要旨
+
 burdensome `/ˈbɜːdnsəm/` 沉重的，繁重的，恼人的
 
 burrow `/ˈbʌrəʊ/` 洞穴，挖掘，掩体，钻进，搜寻
 
 burst `/bɜːst/`  爆裂，胀开，暴涨
+
+bury `/ˈbɛri/` 埋葬，掩埋，抛开，隐藏，埋头读书，把...插入
 
 bush `/bʊʃ/` 灌木，矮树丛
 
@@ -776,6 +786,8 @@ carpenter `/'kɑːpəntə(r)/` 木匠，做木工活
 carries `/'kæri/` 携带，运送，搬运，承载
 
 carve `/kɑːv/` 雕刻，切块
+
+cashier `/kəˈʃɪə/` 出纳员，开除...的军职
 
 cassette `/kəˈset/` 磁带，录像带
 
@@ -1295,6 +1307,8 @@ craft `/krɑːft/` 工艺，手艺，狡诈，船舶，航空器，行会会员
 
 cram `/kræm/` 塞满，挤满
 
+cranberry `/ˈkranb(ə)ri/` 越橘，越橘果实
+
 crater `/ˈkreɪtə(r)/` 坑，弹坑，火山口
 
 crawl `/krɔːl/` 爬，爬行，自由泳
@@ -1338,6 +1352,10 @@ crunch `/krʌntʃ/` 压碎，嚼，困境，至关重要的
 ### cu
 
 [回到C](#C)--[回到顶部](#英汉词典)
+
+cubic `/ˈkjuːbɪk/` 立方形的，立方的，三次方的
+
+cubicle `/ˈkjuːbɪkl/` 小隔间
 
 cue `/kjuː/` 暗示，提示，信号
 
@@ -1711,6 +1729,8 @@ drastic `/ˈdræstɪk/` 极端的，激烈的，重大的
 
 drawer `/drɔːr/` 抽屉，出票人
 
+dread `/drɛd/` 恐惧，惧怕，可怕的事物
+
 dreadful `/ˈdredfl/` 极端的，严重的，糟糕透顶的，可怕的
 
 dreary `/ˈdrɪəri/` 沉闷的，乏味的，凄凉的
@@ -1720,6 +1740,10 @@ drought `/draʊt/` 干旱，旱灾
 drove `/drʌɪv/` 开，操作，驱动，钉，拧，打，吹，冲
 
 drowsy `/ˈdraʊzi/` 困倦的，昏昏欲睡的
+
+drum `/drʌm/` 鼓，打鼓，有节奏地敲击
+
+drumstick `/ˈdrʌmstɪk/` 鼓槌，鸡腿，家禽腿
 
 ### du
 
@@ -1917,6 +1941,8 @@ enrich `/ɪnˈrɪtʃ/` 充实，丰富
 
 ensemble `/ɒnˈsɒmbl/` 合唱团，乐团，总效果
 
+ensue `/ɪnˈsjuː/` 接着发生
+
 ensure `/ɪn'ʃʊə(r)/` 确保，担保，确认
 
 entertainment `/ˌentəˈteɪnmənt/` 娱乐，招待，文艺表演
@@ -1980,6 +2006,8 @@ especial `/ɪ'speʃl/` 特别的，特殊的，特有的
 estate `/ɪˈsteɪt/` 遗产，庄园，个人财产
 
 estimate `/'estɪmət/` 估计，估价，评价
+
+essence `/ˈɛsns/` 本质，精油，香精
 
 essential `/ɪˈsenʃl/` 本质的，要素，必需品
 
@@ -2212,6 +2240,8 @@ flatten `/ˈflætn/` 压平，弄平，推倒，摧毁，击倒
 flavor `/ˈfleɪvə/` 风味，调味，特色
 
 flavour `/ˈfleɪvər/` 风味，特点，特色
+
+flesh `/flɛʃ/` 肉，可食用部分，皮肤，肉体，肉欲
 
 flexibility `/ˌfleksə'bɪləti/` 灵活性，弹性，适应性
 
@@ -2447,6 +2477,8 @@ grand `/ɡrænd/` 壮丽的，堂皇的，宏伟的，大钢琴，一千美元
 
 granite `/ˈɡrænɪt/` 花岗岩，花岗石
 
+granular `/ˈɡranjʊlə/` 颗粒状的，粗糙的
+
 granularity `/grænjʊ'lærɪtɪ/` 颗粒度，粒度
 
 graph `/ɡræf/` 图，图表
@@ -2458,6 +2490,8 @@ gravitation `/ˌɡrævɪˈteɪʃn/` 万有引力，引力
 grease `/ɡriːs/` 润滑油，油脂，给...涂油
 
 grievance `/ˈɡriːvns/` 不平的事，委屈
+
+grill `/ɡrɪl/` 烤架，烤炙，烧烤店
 
 grind `/ɡraɪnd/` 磨，使..光滑
 
@@ -2824,6 +2858,8 @@ injustice `/ɪnˈdʒʌstɪs/` 不公正的，不公平
 innocent `/ˈɪnəsnt/` 天真的，无辜的，单纯的
 
 innumerable `/ɪˈnjuːmərəbl/` 无数的，多的数不清的
+
+insidious `/ɪnˈsɪdɪəs/` 潜伏的，暗中滋生的，阴险的，有隐患的
 
 insight `/ˈɪnsaɪt/` 洞察力，领悟，了解
 
@@ -3432,6 +3468,8 @@ mundane `/mʌnˈdeɪn/` 单调的，平凡的
 mural `/ˈmjʊərəl/` 壁画，墙壁的
 
 mutate `/mjuːˈteɪt/` 变异，转换，转变
+
+mutual `/ˈmjuːtʃʊəl/` 相互的，关系对等的，共用的，互助的
 
 ### my
 
@@ -4425,6 +4463,8 @@ relies `/rɪ'laɪ/` 信任，依赖
 
 relieve `/rɪˈliːv/` 减轻，缓和，解除，放心
 
+relinquish `/rɪˈlɪŋkwɪʃ/` 放弃，松开
+
 reluctant `/rɪˈlʌktənt/` 勉强的，不情愿的
 
 remain `/rɪ'meɪn/` 剩余，残留，遗迹，留下
@@ -4587,6 +4627,8 @@ rugged `/ˈrʌɡɪd/` 崎岖的，不平的，粗旷的，强壮的
 
 ruins `/ˈruːɪnz/` 毁坏，破坏，遗迹
 
+rummage `/ˈrʌmɪdʒ/` 翻找，供义卖的捐献物
+
 runaway `/'rʌnəweɪ/` 逃亡者，逃跑的，失控的
 
 rupture `/ˈrʌptʃə(r)/` 破裂，断裂，割裂，裂开
@@ -4632,6 +4674,8 @@ satirist `/ˈsætərɪst/` 讽刺作家，惯于讽刺的人
 satisfaction `/ˌsætɪsˈfækʃn/` 满足，满意，欣慰，清偿，赔偿
 
 saturate `/ˈsætʃəreɪt/` 浸透，充满，饱和
+
+sauce `/sɔːs/` 调味汁，炖水果
 
 saucer `/ˈsɔːsə(r)/` 茶碟，茶托，碟状物
 
@@ -4975,7 +5019,11 @@ spectator `/spɛkˈteɪtə/` 观众
 
 speculate `/ˈspekjuleɪt/` 推测，推断，投机，做投机买卖
 
+spend `/spɛnd/` 花费，耗尽，用完，度过
+
 speedup `/'spiːdʌp/` 加速，高速化，追赶
+
+spent `/spɛnt/` 用过失效的，精疲力竭的，枯竭的
 
 spherical `/ˈsferɪkl/` 球形的，球状的
 
@@ -5090,6 +5138,8 @@ straightforward `/ˌstreɪt'fɔːwəd/` 笔直的，易懂的，坦率的
 strain `/streɪn/` 负担，压力，拉紧，拉伤
 
 strait `/streɪt/` 海峡，水道
+
+stray `/streɪ/` 走失，漫不经心地移动，偏离正题，有外遇，流浪的
 
 strap `/stræp/` 捆扎，打绷带，带子
 
@@ -5280,6 +5330,8 @@ tadpole `/ˈtædpəʊl/` 蝌蚪
 tailor `/ˈteɪlə(r)/` 裁缝，订做
 
 tain `/teɪn/` 锡箔，薄锡板
+
+tale `/teɪl/` 故事，警示，流言
 
 tame `/teɪm/` 驯服，驯化，温顺的
 
