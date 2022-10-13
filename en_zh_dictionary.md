@@ -2813,6 +2813,8 @@ inert `/ɪˈnɜːt/` 不动的，惰性的
 
 inextricably `/ˌɪnɪkˈstrɪkəbli/` 无法摆脱的，不可分割的
 
+infamous `/ˈɪnfəməs/` 臭名昭著的，无耻的
+
 inferior `/ɪnˈfɪriər/` 低等，低劣的，下级
 
 inferiority `/ɪnˌfɪəriˈɒrəti/` 劣等，低等，自卑感
@@ -3824,6 +3826,8 @@ pact `/pækt/` 契约，条约
 pale `/peɪl/` 苍白的，灰白的，暗淡的，微弱的
 
 palette `/ˈpælət/` 调色板
+
+panacea `/ˌpanəˈsiːə/` 万能药
 
 pandemic `/pænˈdemɪk/` 流行病，大流行的，普遍的，全世界的
 
