@@ -11,7 +11,6 @@
     - [3.2.2 Structing code for protecting shared data](#322-structing-code-for-protecting-shared-data)
     - [3.2.3 Spotting race conditions inherent in interfaces](#323-spotting-race-conditions-inherent-in-interfaces)
     - [3.2.4 Deadlock: the problem and a solution](#324-deadlock-the-problem-and-a-solution)
-    - [3.2.4 Deadlock: the problem and a solution](#324-deadlock-the-problem-and-a-solution-1)
     - [3.2.5 Further guidelines for avoiding deadlock](#325-further-guidelines-for-avoiding-deadlock)
     - [3.2.6 Flexible locking with std::unique_lock](#326-flexible-locking-with-stdunique_lock)
     - [3.2.7 Transferring mutex ownership between scopes](#327-transferring-mutex-ownership-between-scopes)
@@ -171,9 +170,7 @@ public:
 ### 3.2.4 Deadlock: the problem and a solution
 
 This is almost the opposite of a race dondition: rather than two threads racing to be first, each one is waiting for the other, so neither makes any progress.
-
-### 3.2.4 Deadlock: the problem and a solution
-
+.
 all it takes is for two threads to try to exchange data between the same two instances with the parameters swapped, and you have deadlock!
 
 ```c++

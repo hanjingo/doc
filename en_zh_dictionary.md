@@ -2,7 +2,7 @@
 
 |                | a      | b      | c      | d      | e      | f      | g      | h      | i      | j      | k      | l      | m      | n      | o      | p      | q      | r      | s      | t      | u      | v      | w      | x      | y      | z |
 | -------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | - |
-| [**A**](#A) |        | [ab](#ab) | [ac](#ac) | [ad](#ad) | [ae](#ae) | [af](#af) | [ag](#ag) |   [ah](#ah)     | [ai](#ai) | [aj](#aj) |        | [al](#al) | [am](#am) | [an](#an) |        | [ap](#ap) | [aq](#aq) | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) | [aw](#aw) |        |        |   |
+| [**A**](#A) |        | [ab](#ab) | [ac](#ac) | [ad](#ad) | [ae](#ae) | [af](#af) | [ag](#ag) |   [ah](#ah)     | [ai](#ai) | [aj](#aj) | [ak](#ak)    | [al](#al) | [am](#am) | [an](#an) |        | [ap](#ap) | [aq](#aq) | [ar](#ar) | [as](#as) | [at](#at) | [au](#au) | [av](#av) | [aw](#aw) |        |        |   |
 | [**B**](#B) | [ba](#ba) |        |        |        | [be](#be) |        |        |        | [bi](#bi) |        |        | [bl](#bl) |        |        | [bo](#bo) |        |        | [br](#br) |        |        | [bu](#bu) |        |        |        | [by](#by) |   |
 | [**C**](#C) | [ca](#ca) |        |        |        | [ce](#ce) |        |        | [ch](#ch) | [ci](#ci) |        |        | [cl](#cl) |        |        | [co](#co) |        |        | [cr](#cr) |        |        | [cu](#cu) |        |        |        | [cy](#cy) |   |
 | [**D**](#D) | [da](#da) |        |        |        | [de](#de) |        |        |        | [di](#di) |        |        |        |        |        | [do](#do) |        |        | [dr](#dr) |        |        | [du](#du) |        | [dw](#dw) |        | [dy](#dy) |   |
@@ -200,6 +200,12 @@ aim `/eɪm/` 目标，瞄准，对准，针对
 [回到A](#A)--[回到顶部](#英汉词典)
 
 ajar `/əˈdʒɑː(r)/` 半开，微启
+
+### ak
+
+[回到A](#A)--[回到顶部](#英汉词典)
+
+akin `/əˈkɪn/` 类似的
 
 ### al
 
@@ -586,6 +592,8 @@ beware `/bɪˈweə(r)/` 小心，提防，当心
 [回到B](#B)--[回到顶部](#英汉词典)
 
 bias `/ˈbaɪəs/` 偏心，偏爱，偏向
+
+bibliography `/ˌbɪblɪˈɒɡrəfi/` 书目，参考文献
 
 biography `/baɪˈɒɡrəfi/` 传记文学
 
@@ -1279,7 +1287,7 @@ couple `/'kʌpl/` 连接，交配，配对
 
 coupling `/'kʌplɪŋ/` 耦合，联合，结合
 
-course `/kɔːs/` 课程
+course `/kɔːs/` 课程, 进程，航向，航线，路线
 
 court `/kɔːt/` 法院，法庭，争取
 
@@ -2497,6 +2505,8 @@ grind `/ɡraɪnd/` 磨，使..光滑
 
 grip `/ɡrɪp/` 抓紧，握紧
 
+gross `/ɡrəʊs/` 粗俗的，严重的，粗略的，总收入（毛利）
+
 ### gu
 
 [回到G](#G)--[回到顶部](#英汉词典)
@@ -2710,6 +2720,8 @@ immobile `/ɪˈməʊbaɪl/` 静止的，不动的，固定的
 immobilize `/ɪˈməʊbəlaɪz/` 固定，使不动
 
 immunity `/ɪˈmjuːnəti/` 免疫，免疫力，豁免，免除
+
+immutable `/ɪˈmjuːtəbl/` 不可改变的
 
 impact `/ɪmˈpækt/` 冲击，撞击，影响，挤入，压紧
 
@@ -3791,7 +3803,11 @@ overlap `/ˈəʊvəlæp/` 重叠，交替
 
 overlook `/ˌəʊvəˈlʊk/` 忽略，忽视，俯视
 
+overnight `/ˌəʊvəˈnʌɪt/` 一晚上，整晚，夜间的，过夜的
+
 oversee `/ˌəʊvəˈsiː/` 监督，监视，偷看到
+
+oversleep `/ˌəʊvəˈsliːp/` 睡过头
 
 oversubscription `/əʊvəsəbsk'rɪpʃn/` 超额认购
 
@@ -3838,6 +3854,8 @@ panel `/ˈpænl/` 面板，镶嵌板，讨论小组，转接咨询组
 panned `/pænd/` 严厉批评，抨击，淘金
 
 parachute `/ˈpærəʃuːt/` 降落伞，跳伞
+
+paradigm `/ˈparədʌɪm/` 范例，词形变化表
 
 parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
@@ -4238,6 +4256,8 @@ protect `/prəˈtɛkt/` 保护，保卫
 protest `/ˈprəʊtest/` 抗议，反对，申辩
 
 protein `/ˈproʊtiːn/` 蛋白质
+
+provide `/prəˈvʌɪd/` 提供
 
 proximity `/prɒk'sɪməti/` 接近，亲近
 
@@ -5473,6 +5493,10 @@ timber `/ˈtɪmbə(r)/` 木材，树木，木质骨架
 
 timidity `/tɪ'mɪdətɪ/` 胆怯，胆小
 
+time `/tʌɪm/` 时间，一段时间，时刻，用时，规定时间
+
+timetable `/ˈtʌɪmˌteɪbl/` 时间表，日程表，时刻表，把...排入时间表
+
 timing `/'taɪmɪŋ/` 时机，定时，时间的掌握
 
 tissue `/ˈtɪʃuː/` 纸巾，手巾纸，（人，动植物）组织
@@ -5564,6 +5588,8 @@ trickle `/ˈtrɪkl/` 涓涓细流，流淌，滴水
 tricky `/'trɪki/` 棘手的，狡猾的，巧妙的
 
 trifle `/ˈtrʌɪf(ə)l/` 少量，琐事
+
+trigger `/ˈtrɪɡə/` 板机，触发器，触发因素
 
 trio `/'triːəʊ/` 三重奏，三个一组
 
@@ -5706,6 +5732,8 @@ unwieldy `/ʌnˈwiːldi/` 笨重的，笨手笨脚的，不灵巧的
 [回到U](#U)--[回到顶部](#英汉词典)
 
 upcoming `/'ʌpkʌmɪŋ/` 即将到来的
+
+uphold `/ʌpˈhəʊld/` 维持，保持，支持
 
 uproar `/ˈʌprɔ/` 喧嚣，骚动
 
