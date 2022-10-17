@@ -2061,6 +2061,8 @@ examine `/ɪɡˈzæmɪn/` 审查，考察，考试
 
 excavation `/ˌekskə'veɪʃn/` 开凿，挖掘，发掘
 
+exceed `/ɪkˈsiːd/` 超过，超出，超越
+
 excellent `/ˈeksələnt/` 杰出的，卓越的，极好的
 
 excess `/ɪkˈses/` 过量的，额外的，过度的，额外
@@ -2151,6 +2153,8 @@ faculty `/ˈfæklti/` 院系，能力，教职工
 
 fade `/feɪd/` 褪色，变淡，逐渐消失
 
+fail `/feɪl/` 失败，不及格，出故障，衰退，缺乏
+
 failover `/ˈfālˌōvər/` 故障转移
 
 faint `/feɪnt/` 昏倒，昏厥
@@ -2220,6 +2224,8 @@ fierce `/fɪəs/` 凶猛的，凶残的，狂热的
 figure `/ˈfɪɡə/` 数字，算术，人物，插图，图形
 
 finch `/fɪntʃ/` 雀类
+
+fine `/fʌɪn/` 极好的，优秀的，罚款，对...处以罚金
 
 finite `/'faɪnaɪt/` 有限的
 
@@ -5210,6 +5216,8 @@ subobject `/'sʌb'ɔbdʒikt/` 子类，子对象
 subscript `/'sʌbskrɪpt/` 下标
 
 subsequent `/ˈsʌbsɪkwənt/` 随后的，后来的，之后的
+
+subset `/ˈsʌbsɛt/` 分组，子集
 
 subside `/səbˈsaɪd/` 平息，减弱，消退
 
