@@ -293,6 +293,8 @@ anecdote `/ˈænɪkdəʊt/` 趣闻，轶事
 
 anesthetic `/ˌænəˈsθɛtɪk/` 麻醉药，麻醉剂
 
+angle `/ˈaŋɡl/` 角，角度，视角，拐角，斜移，面向
+
 angular `/'æŋɡjələ(r)/` 有角的，消瘦的，笨拙的
 
 anomaly `/əˈnɒməli/` 异常，反常
@@ -1996,6 +1998,8 @@ eradicate `/ɪˈrædɪkeɪt/` 根除，消灭，杜绝
 erect `/ɪˈrekt/` 建造，建立，垂直的，竖立的
 
 erode `/ɪˈrəʊd/` 腐蚀，侵蚀，风化，削弱，损害
+
+erratum `/ɛˈrɑːtəm/` 勘误表，书中的文字错误
 
 ### es
 
@@ -4245,6 +4249,8 @@ proportion `/prəˈpɔːʃn/` 比例，份额，部分
 
 propose `/prəˈpəʊz/` 提议，求婚，打算
 
+proposition `/ˌprɒpəˈzɪʃn/` 主张，计划，生意，任务，命题
+
 propulsion `/prəˈpʌlʃn/` 推动力，推进
 
 pros `/prəʊ/` 正面的，能手，行家，专业的
@@ -5756,6 +5762,8 @@ urbane `/ɜːˈbeɪn/` 温文儒雅的，练达的，从容不迫的
 ### us
 
 [回到U](#U)--[回到顶部](#英汉词典)
+
+usage `/ˈjuːsɪdʒ/` 习俗，用法，使用
 
 usher `/ˈʌʃə(r)/` 引导，引领，门卫
 
