@@ -639,6 +639,10 @@ boastful `/ˈbəʊstfl/` 自夸的，自吹自擂的
 
 boil `/bɔɪl/` 煮沸，沸腾，翻滚
 
+boiler `/ˈbɔɪlə/` 锅炉
+
+boilerplate `/bɔɪləpleɪt/` 样板文件，锅炉钢板
+
 bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 
 bookkeeping `/'bʊkkiːpɪŋ/` 记账
@@ -701,6 +705,8 @@ brittle `/ˈbrɪtl/` 易碎的，脆弱的，靠不住的
 
 brown `/braʊn/` 棕色，褐色
 
+brute `/bruːt/` 粗野的人，野兽，麻烦，最基本的
+
 ### bu
 
 [回到B](#B)--[回到顶部](#英汉词典)
@@ -708,6 +714,8 @@ brown `/braʊn/` 棕色，褐色
 buckle `/ˈbʌkl/` 用扣子扣紧，扣住
 
 bud `/bʌd/` 芽，苞，花蕾，发芽
+
+buggy `/ˈbʌɡi/` 婴儿车，折叠式童车，轻便马车，专用小车
 
 bulk `/bʌlk/` 大部分，庞大，巨大
 
@@ -802,6 +810,8 @@ cashier `/kəˈʃɪə/` 出纳员，开除...的军职
 cassette `/kəˈset/` 磁带，录像带
 
 cast `/kɑːst/` 铸造，铸件，投射，抛，投
+
+casual `/ˈkaʒʊ(ə)l/` 偶然的，随意的，漫不经心的，临时工
 
 catalyze `/kætəlaɪz/` 催化，刺激，促进
 
@@ -1273,6 +1283,8 @@ corrosive `/kəˈrəʊsɪv/` 腐蚀性的，腐蚀剂
 
 corrupt `/kəˈrʌpt/` 贪污，腐败，不道德的，破坏，损坏
 
+corruption `/kəˈrʌpʃn/` 腐化堕落，贪污受贿，出错
+
 cosmopolitan `/ˌkɒzməˈpɒlɪtən/` 见多识广的，世界性的，游历四方的
 
 cotton `/ˈkɒtn/` 棉，棉布，一致，和谐
@@ -1448,6 +1460,8 @@ debris `/ˈdebriː/` 残骸，碎片，废墟
 dedicate `/'dedɪkeɪt/` 致力于，献出
 
 deduce `/dɪ'djuːs/` 演绎，推理
+
+deduction `/dɪˈdʌkʃn/` 扣除，推论，推理，税后额度
 
 defect `/ˈdiːfɛkt/` 缺陷，瑕疵，叛变
 
@@ -2451,7 +2465,7 @@ girder `/ˈɡɜːdə(r)/` 大梁，纵梁，撑住
 
 [回到G](#G)--[回到顶部](#英汉词典)
 
-glare `/ɡleə(r)/` 闪耀，刺眼，瞪视
+glare `/ɡleə(r)/` 闪耀，刺眼，瞪视，怒视
 
 glance `/ɡlɑːns/` 扫视，瞥，掠过，反光，闪现
 
@@ -2813,6 +2827,8 @@ indent `/ɪnˈdent/` 缩进，缩格，订单，订购
 
 independent `/ˌɪndɪˈpendənt/` 独立的，自主的，公正的，无关的
 
+indeterminate `/ˌɪndɪˈtəːmɪnət/` 不确定的，模糊的
+
 indicate `/ˈɪndɪkeɪt/` 指示，说明
 
 indifference `/ɪnˈdɪfrəns/` 冷漠，冷淡，漠不关心
@@ -3015,6 +3031,8 @@ ion `/ˈaɪən/` 离子
 
 irregular `/ɪˈreɡjələ(r)/` 不整齐的，不规则的，无规律的
 
+irrelevant `/ɪˈrɛlɪv(ə)nt/` 无关紧要的，不相关的
+
 irreparable `/ɪˈrepərəbl/` 不可修复的
 
 irresistible `/ˌɪrɪˈzɪstəbl/` 不可抗拒的，极诱人的
@@ -3126,6 +3144,8 @@ latter `/ˈlætər/` 后，后者，后面的，末尾的
 lava `/ˈlɑːvə/` 熔岩，岩浆，火山岩
 
 lavish `/ˈlævɪʃ/` 奢华，浪费
+
+lawyer `/ˈlɔɪə/` 律师
 
 lay `/leɪ/` 安放，放，铺，摆放
 
@@ -3239,6 +3259,10 @@ lull `/lʌl/` 平静，放松，缓和，减弱
 
 lumber `/ˈlʌmbər/` 木材，废旧家具，拖累，缓慢移动
 
+lure `/ljɔː/` 诱饵，诱惑，引诱
+
+lurk `/ləːk/` 潜伏，闲逛，潜藏，潜水
+
 lustrous `/ˈlʌstrəs/` 有光泽的，光辉的
 
 luxurious `/lʌɡˈʒʊəriəs/` 奢侈的，豪华的
@@ -3278,6 +3302,8 @@ malnutrition `/ˌmælnjuˈtrɪʃn/` 营养不良
 mammal `/ˈmæml/` 哺乳动物
 
 maneuver `/məˈnuːvə/` 演习，调动
+
+manifest `/ˈmanɪfɛst/` 明显的，清楚显示，证明，显现，货单
 
 manifestation `/ˌmænɪfeˈsteɪʃn/` 显示，表明，显灵
 
@@ -3943,6 +3969,8 @@ penetrate `/ˈpenətreɪt/` 刺穿，穿透，进入，渗透
 
 pensive `/ˈpensɪv/` 沉思的，忧伤的
 
+penultimate `/pɪˈnʌltɪmət/` 倒数第二的
+
 perch `/pɜːtʃ/` 栖息，就位，停留，鲈鱼
 
 penchant `/ˈpentʃənt/` 爱好，嗜好
@@ -4491,6 +4519,8 @@ relative `/'relətɪv/` 相对的，相关的，亲戚
 
 relax `/rɪ'læks/` 放松，休息，放宽
 
+relay `/ˈriːleɪ/` 继电器，中继设备，转播，转达，拉力赛
+
 relevant `/ˈreləvənt/` 相关的，合适的，有意义的
 
 reliance `/rɪˈlaɪəns/` 依靠，信任
@@ -4502,6 +4532,8 @@ relieve `/rɪˈliːv/` 减轻，缓和，解除，放心
 relinquish `/rɪˈlɪŋkwɪʃ/` 放弃，松开
 
 reluctant `/rɪˈlʌktənt/` 勉强的，不情愿的
+
+rely `/rɪˈlʌɪ/` 依靠，依赖
 
 remain `/rɪ'meɪn/` 剩余，残留，遗迹，留下
 
@@ -4861,6 +4893,8 @@ shelter `/'ʃeltə(r)/` 避难所，保护，庇护
 
 shepherd `/ˈʃepəd/` 牧羊人，领头，护送
 
+shied `/ʃaɪd/` 害羞（shy的过去式），避而远之
+
 shield `/ʃiːld/` 盾牌，保护，掩藏
 
 shift `/ʃɪft/` 转移，挪动，变换
@@ -5008,6 +5042,8 @@ somewhat `/ˈsʌmwɒt/` 有点，稍微，有几分
 soothe `/suːð/` 安抚，安慰，缓解
 
 sophistication `/səˌfɪstɪˈkeɪʃn/` 世故，老练，复杂度，精密
+
+sore `/sɔː/` 痛的，感到疼痛的，紧迫的，剧烈的，疮，痛处
 
 souvenir `/ˌsuːvəˈnɪə(r)/` 纪念品，纪念物
 
@@ -5239,6 +5275,8 @@ substantially `/səbˈstænʃəli/` 大体上，基本上，总的来说
 
 substitution `/ˌsʌbstɪ'tjuːʃ(ə)n/` 置换，取代，代入
 
+subtle `/ˈsʌtl/` 细微的，微妙的，精妙的，敏锐的，隐约的
+
 subtly `/'sʌtli/` 敏锐的
 
 subtract `/səbˈtrækt/` 减少，减去
@@ -5405,7 +5443,9 @@ temperament `/ˈtemprəmənt/` 气质，性格，性情，资质
 
 temperance `/ˈtempərəns/` 自制，节制，节欲
 
-temperate `/ˈtempərət/` 温和的，心平气和的，温带的，
+temperate `/ˈtempərət/` 温和的，心平气和的，温带的
+
+temporal `/ˈtɛmp(ə)rəl/` 世俗的，时间的
 
 tempting `/ˈtemptɪŋ/` 诱人的，吸引人的
 
@@ -5432,6 +5472,8 @@ termite `/ˈtɜːmaɪt/` 白蚁
 ternary `/'tɜːnərɪ/` 三元，三个，三重，
 
 terrace `/ˈterəs/` 梯田，足球场阶梯看台，排屋
+
+testability `/testə'bɪlɪtɪ/` 易测性，可测试的
 
 testify `/ˈtestɪfaɪ/` 出庭，作证，证明，证实
 
@@ -5741,6 +5783,8 @@ unsubstantiated `/ˌʌnsəbˈstænʃieɪtɪd/` 未经证实的
 
 unwieldy `/ʌnˈwiːldi/` 笨重的，笨手笨脚的，不灵巧的
 
+unwitting `/ʌnˈwɪtɪŋ/` 不知情的，不了解的，无意的
+
 ### up
 
 [回到U](#U)--[回到顶部](#英汉词典)
@@ -5813,7 +5857,7 @@ various `/ˈveəriəs/` 各种各样的，多种多样的，变化，多样性
 
 varnish `/ˈvɑːnɪʃ/` 清漆，指甲油，给...上漆
 
-vary `/ˈveəri/` 变化，变更
+vary `/ˈveəri/` 变化，变更，差异
 
 vast `/vɑːst/` 巨大的，广阔的，辽阔的，大量的
 

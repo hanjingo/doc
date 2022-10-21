@@ -11,3 +11,4 @@ Anthony Williams, 1ED
 - [Chapter7 - Designing lock-free concurrent data structures](chapter7_en.md)
 - [Chapter8 - Designing concurrent code](chapter8_en.md)
 - [Chapter9 - Advanced thread management](chapter9_en.md)
+- [Chapter10 - Testing and debugging multithreaded applications](chapter10_en.md)

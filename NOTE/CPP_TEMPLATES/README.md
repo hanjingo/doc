@@ -1,3 +1,5 @@
+[中文版](README_zh.md) | [English](README.md)
+
 # C++ Templates: The Complete Guide
 
 David Vandevoorde, Nicolai M. Josuttis . 1ED
@@ -27,4 +29,4 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Appendix A. The One-Definition Rule]
 - [Appendix B. Overload Resolution]
 
-[中文版](README_zh.md)
+
