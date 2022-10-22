@@ -5563,6 +5563,10 @@ tissue `/ˈtɪʃuː/` 纸巾，手巾纸，（人，动植物）组织
 
 tobacco `/təˈbækəʊ/` 烟草，烟叶
 
+toddle `/ˈtɒdl/` 蹒跚行走，闲逛
+
+toddler `/ˈtɒdələ/` 学步的儿童
+
 toes `/təʊz/` 脚趾，足尖
 
 toggle `/ˈtɒɡl/` 切换，转换

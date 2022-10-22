@@ -12,7 +12,7 @@
 
 ## 源码分析
 
-- [协程](ansys_coroutine.md)
-- [数据类型](ansys_data_type.md)
-- [GC](ansys_gc.md)
+- [LUA源码分析-协程](ansys_coroutine.md)
+- [LUA源码分析-数据类型](ansys_data_type.md)
+- [LUA源码分析-GC](ansys_gc.md)
 

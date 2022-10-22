@@ -3,11 +3,11 @@
 David Vandevoorde, Nicolai M. Josuttis . 1ED
 
 - [第1章 关于本章](chapter1_zh.md)
-- [第2章 函数模板]
-- [第3章 类模板]
-- [第4章 非类型模板参数]
-- [第5章 技巧性基础知识]
-- [第6章 模板实战]
+- [第2章 函数模板](chapter2_zh.md)
+- [第3章 类模板](chapter3_zh.md)
+- [第4章 非类型模板参数](chapter4_zh.md)
+- [第5章 技巧性基础知识](chapter5_zh.md)
+- [第6章 模板实战](chapter6_zh.md)
 - [第7章 模板术语]
 - [第8章 深入模板基础]
 - [第9章 模板中的名称]
