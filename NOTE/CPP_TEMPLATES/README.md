@@ -10,7 +10,7 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter4. Nontype Template Parameters]
 - [Chapter5. Trickly Basics]
 - [Chapter6. Using Templates in Practice]
-- [Chapter7. Basic Template Terminology]
+- [Chapter7. Basic Template Terminology](chapter7.md)
 - [Chapter8. Fundamentals in Depth]
 - [Chapter9. Names in Templates]
 - [Chapter10. Instantiation]

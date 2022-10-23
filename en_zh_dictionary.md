@@ -5379,6 +5379,8 @@ synchronization `/ˌsɪŋkrənaɪ'zeɪʃn/` 同步化
 
 synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 
+synonym `/ˈsɪnənɪm/` 同义词
+
 synopsis `/səˈnɑpsəs/` 梗概
 
 syntax `/ˈsɪntæks/` 语法，句法
