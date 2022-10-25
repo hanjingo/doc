@@ -17,6 +17,10 @@
     - [8.3.2 类型实参](#832-类型实参)
     - [8.3.3 非类型实参](#833-非类型实参)
     - [8.3.4 模板的模板实参](#834-模板的模板实参)
+    - [8.3.5 实参的等价性](#835-实参的等价性)
+* [8.4 友元](#84-友元)
+    - [8.4.1 友元函数](#841-友元函数)
+    - [8.4.2 友元模板](#842-友元模板)
 
 <!-- vim-markdown-toc -->
 
@@ -183,4 +187,80 @@ SFINAE(替换失败并非错误)原则：SFINAE是令函数模板可以重载的
 
 ### 8.3.4 模板的模板实参
 
+模板的模板实参必须精确匹配：在匹配过程中，“模板的模板实参”的缺省模板实参将不会被考虑，但是“模板的模板参数”的缺省实参还是有效的（注意区分实参和参数）。
 
+```c++
+template <typename T,
+    template <typename ELEM,
+    typename ALLOC = std::allocator<ELEM>>
+    class CONT>
+
+class Stack{
+    public:
+        Stack(){}
+        Stack(Stack<T, CONT> const &);
+        ~Stack(){}
+        Stack<T, CONT> operator=(Stack<T, CONT> const &);
+    private:
+        CONT<T> elems;
+};
+
+Stack<int, vector> stack;
+```
+
+### 8.3.5 实参的等价性
+
+当每个对应的参数都相等时，就称为这两组模板是相等的：
+
+```c++
+template <typename T, int I>
+class Mix{};
+typedef int Integer;
+Max<int, 3*3> p1;
+Max<Integer, 4+5> p2; // 等价于p1
+```
+
+- 从成员函数模板产生的函数永远不会改写一个虚函数；
+- 从构造函数模板产生的构造函数一定不会是缺省的拷贝构造函数。
+
+
+
+## 8.4 友元
+
+- 友元声明可能是某个实体的唯一声明；
+- 友元函数的声明可以是一个定义。
+
+### 8.4.1 友元函数
+
+**注意1:不能在友元声明中定义一个模板实例。**
+
+如果名称后面没有紧跟一对尖括号，那么只有在下面两种情况下是合法的：
+
+1. 如果名称不是受限的；
+2. 如果名称是受限的（就是说前面有双冒号::），那么该名称必须引用一个在此之前声明的函数或者函数模板。
+
+```c++
+void multiply(void*); // 普通函数
+template<typename T>  // 函数模板
+void multiply(T);
+class Comrades {
+   friend void multiply(int){}    // 定义了一个新函数::multiply(int)
+   friend void ::multiply(void*); // 受限名称，则是引用先前定义的普通函数
+   friend void ::multiply(int);   // 引用template的一个实体
+   friend void ::multiply<double*>(double*); // 带尖括号，一定是一个模板的实例，而且此时编译器必须见到了此template
+   friend void ::error(){} // ERROR：受限的名称，一定是对已经存在的名称的引用
+};
+```
+
+一般来说必须在模板内部定义的友元函数类型定义中，包含了类模板的模板参数，这样就不会生成两个完全相同的函数，就不会违反ODR了。
+
+### 8.4.2 友元模板
+
+让模板的所有实例都成为友元，这就需要声明友元模板。
+
+```c++
+class Manager{
+    template<typename T>
+    friend int ticket(){}
+};
+```
