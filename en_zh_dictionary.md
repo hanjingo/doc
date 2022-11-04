@@ -249,6 +249,8 @@ amazement `/əˈmeɪzmənt/` 惊愕，惊奇
 
 ambience `/ˈæmbiəns/` 环境，氛围，气氛
 
+ambient `/ˈambɪənt/` 周围的，环境音乐的
+
 ambivalent `/æmˈbɪvələnt/` 矛盾的
 
 ambiguity `/ambɪˈɡjuːɪti/` 歧义

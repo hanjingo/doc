@@ -10,8 +10,8 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [第6章 模板实战](chapter6_zh.md)
 - [第7章 模板术语](chapter7_zh.md)
 - [第8章 深入模板基础](chapter8_zh.md)
-- [第9章 模板中的名称]
-- [第10章 实例化]
+- [第9章 模板中的名称](chapter9_zh.md)
+- [第10章 实例化](chapter10_zh.md)
 - [第11章 模板实参演绎]
 - [第12章 特化与重载]
 - [第13章 未来的方向]

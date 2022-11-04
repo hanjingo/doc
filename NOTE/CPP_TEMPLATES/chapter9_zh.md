@@ -12,6 +12,12 @@
     - [9.3.1 非模板中的上下文相关性](#931-非模板中的上下文相关性)
     - [9.3.2 依赖型类型名称](#932-依赖型类型名称)
     - [9.3.3 依赖型模板名称](#933-依赖型模板名称)
+    - [9.3.4 using-declaration中的依赖型名称](#934-using-declaration中的依赖型名称)
+    - [9.3.5 ADL和显式模板实参](#935-adl和显式模板实参)
+* [9.4 派生和类模板](#94-派生和类模板)
+    - [9.4.1 非依赖型基类](#941-非依赖型基类)
+    - [9.4.2 依赖型基类](#942-依赖型基类)
+* [9.5 本章后记](#95-本章后记)
 
 <!-- vim-markdown-toc -->
 
@@ -89,5 +95,107 @@ maximum munch扫描原则：C++实现应该让一个标记具有尽可能多的�
 4. 名称依赖于模板参数。
 
 ### 9.3.3 依赖型模板名称
+
+如果限定符号前面的名称（或者表达式）的类型要依赖于某个模板参数，并且紧接着在限定符后面的是一个tempalte-id（就是指一个后面带有尖括号内部实参列表的模板名称），那么就应该使用关键字typename。
+
+```c++
+template <typename T>
+class Shell {
+public:
+    template <int N>
+    class In {
+    public:
+        template<int M>
+        class Deep{
+        public:
+            virtual void f();
+        };
+    };
+};
+
+template<typename T, int N>
+class Weird {
+public:
+    void case1(typename Shell<T>::template In<N>::template Deep<N>* p) {
+        p->template Deep<6>::f(); // 抑制virtual call
+    }
+    void case2(typename Shell<T>::template In<N>::template Deep<N>& p) {
+        p.template Deep<8>::f(); // 同上，且Deep<8>并不要求依赖于模板参数N
+    }
+};
+```
+
+### 9.3.4 using-declaration中的依赖型名称
+
+从类中引入名称的using-declaration的能力是很有限的：只能把基类中的名称引入到派生类中。
+
+使用using-declaration的漏洞：
+
+```c++
+template <typename T>
+class BXT {
+    public:
+        typedef T Mystery;
+
+        template<typename U>
+        struct Magic;
+};
+```
+
+### 9.3.5 ADL和显式模板实参
+
+```c++
+template <typename T>
+class DXTT : private BXT<T> {
+    public:
+        using BXT<T>::Mystery;      // 不必再写typename了
+        using BXT<T>::Magic;        // 统一了using-declaration写法
+        typename BXT<T>::Mystery m; // 使用typename很合情理，BXT<T>是依赖名称
+        typename BXT<T>::template Magic<T> *plink; // 用::template显式的表示Magic是一个模板
+};
+```
+
+
+
+## 9.4 派生和类模板
+
+### 9.4.1 非依赖型基类
+
+非依赖型基类：无需知道模板实参就可以完全确定类型的基类。
+
+```c++
+template <typename X>
+class Base {
+    public:
+        int basefield;
+        typedef int T;
+};
+
+template <typename T>
+class D2 : public Base<double> {
+    public:
+        void f() {
+            basefield = 7;
+        }
+        T strange; // 永远都是Base<double>::T即int类型
+};
+
+int main() {
+    D2<char> d;
+    cout << typeid(d.strange).name() << endl; // 永远输出int类型
+}
+```
+
+### 9.4.2 依赖型基类
+
+C++标准规定：对于模板中的非依赖型名称，将会在看到的第一时间进行查找。
+
+标准C++声明：非依赖型名称不会在依赖型基类中进行查找（但仍然是在看到的时候马上进行查找）。
+
+依赖型名称只有在实例化时才会进行查找。
+
+
+
+## 9.5 本章后记
 
 
