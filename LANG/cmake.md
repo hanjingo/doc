@@ -12,46 +12,6 @@
     - [项目结构](#项目结构)
 * [函数](#函数)
     - [CMake函数](#cmake函数)
-        + [ADD_COMPILE_DEFINITIONS](#add_compile_definitions)
-        + [ADD_COMPILE_OPTIONS](#add_compile_options)
-        + [ADD_CUSTOM_COMMAND](#add_custom_command)
-        + [ADD_CUSTOM_TARGET](#add_custom_target)
-        + [ADD_DEFINITIONS](#add_definitions)
-        + [ADD_DEPENDENCIES](#add_dependencies)
-        + [ADD_EXECUTABLE](#add_executable)
-        + [ADD_LIBRARY](#add_library)
-        + [ADD_LINK_LIBRARY](#add_link_library)
-        + [ADD_LINK_OPTIONS](#add_link_options)
-        + [ADD_SUBDIRECTORY](#add_subdirectory)
-        + [ADD_TEST](#add_test)
-        + [AUX_SOURCE_DIRECTORY](#aux_source_directory)
-        + [CMAKE_DEPENDENT_OPTION](#cmake_dependent_option)
-        + [CMAKE_MINIMUM_REQUIRE](#cmake_minimum_require)
-        + [CONFIGURE_FILE](#configure_file)
-        + [ENABLE_TESTING](#enable_testing)
-        + [EXEC_PROGRAM](#exec_program)
-        + [EXECUTE_PROCESS](#execute_process)
-        + [FILE](#file)
-        + [FIND_PACKAGE](#find_package)
-        + [FIND_PATH](#find_path)
-        + [FIND_LIBRARY](#find_library)
-        + [INCLUDE](#include)
-        + [INSTALL](#install)
-        + [LIST](#list)
-        + [MACRO](#macro)
-        + [MESSAGE](#message)
-        + [OPTION](#option)
-        + [PROJECT](#project)
-        + [SET](#set)
-        + [SET_TARGET_PROPERTIES](#set_target_properties)
-        + [SET_TESTS_PROPERTES](#set_tests_propertes)
-        + [SUBDIRS](#subdirs)
-        + [TARGET_COMPILE_DEFINITIONS](#target_compile_definitions)
-        + [TARGET_COMPILE_FEATURES](#target_compile_features)
-        + [TARGET_COMPILE_OPTIONS](#target_compile_options)
-        + [TARGET_LINK_LIBRARIES](#target_link_libraries)
-        + [TARGET_INCLUDE_DIRECTORIES](#target_include_directories)
-        + [TARGETS](#targets)
     - [自定义函数](#自定义函数)
         + [function](#function)
         + [隐式参数](#隐式参数)
@@ -224,7 +184,7 @@ endwhile()
 - 通过指定一个范围，对整数进行循环
     ```cmake
     foreach(loop_var range total)
-
+    
     foreach(loop_var range start stop [step])
     ```
 - 对列表值变量的循环
@@ -265,15 +225,15 @@ endforeach()
 
 ###  CMake函数
 
-#### ADD_COMPILE_DEFINITIONS
+**ADD_COMPILE_DEFINITIONS**
 
 TODO
 
-#### ADD_COMPILE_OPTIONS
+**ADD_COMPILE_OPTIONS**
 
 TODO
 
-#### ADD_CUSTOM_COMMAND
+**ADD_CUSTOM_COMMAND**
 
 ```cmake
 add_custom_command(OUTPUT output1 [output2 ...]
@@ -304,11 +264,11 @@ add_custom_command(
 )
 ```
 
-#### ADD_CUSTOM_TARGET
+**ADD_CUSTOM_TARGET**
 
 TODO
 
-#### ADD_DEFINITIONS
+**ADD_DEFINITIONS**
 
 ```cmake
 add_definitions(-DFOO -DBAR ...)
@@ -330,7 +290,7 @@ add_definitions(-DABC -DHELLO)
 #endif
 ```
 
-#### ADD_DEPENDENCIES
+**ADD_DEPENDENCIES**
 
 ```cmake
 add_dependencies(<target> [<target-dependency>]...)
@@ -347,7 +307,7 @@ add_subdirectory(lib1)
 add_dependencies(hello lib1)
 ```
 
-#### ADD_EXECUTABLE
+**ADD_EXECUTABLE**
 
 ```cmake
 add_executable(<name> [WIN32] [MACOSX_BUNDLE]
@@ -375,7 +335,7 @@ add_executable(hello
 )
 ```
 
-#### ADD_LIBRARY
+**ADD_LIBRARY**
 
 ```cmake
 add_library(<name> [STATIC | SHARED | MODULE]
@@ -422,7 +382,7 @@ add_library(hello
 )
 ```
 
-#### ADD_LINK_LIBRARY
+**ADD_LINK_LIBRARY**
 
 ```cmake
 link_libraries([item1 [item2 [...]]]
@@ -438,7 +398,7 @@ target_link_libraries(hello
 )
 ```
 
-#### ADD_LINK_OPTIONS
+**ADD_LINK_OPTIONS**
 
 ```cmake
 add_link_options(<option> ...)
@@ -446,7 +406,7 @@ add_link_options(<option> ...)
 
 在链接步骤中添加当前目录及以下的可执行文件、共享库或模块库目标的选项。
 
-#### ADD_SUBDIRECTORY
+**ADD_SUBDIRECTORY**
 
 `ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])` 
 
@@ -460,7 +420,7 @@ add_link_options(<option> ...)
 ADD_SUBDIRECTORY(sub_dir)
 ```
 
-#### ADD_TEST
+**ADD_TEST**
 
 ```cmake
 add_test(NAME <name> COMMAND <command> [<arg>...]
@@ -476,7 +436,7 @@ add_test(NAME <name> COMMAND <command> [<arg>...]
 
 添加测试（具体见[CTest](#CTest)）。
 
-#### AUX_SOURCE_DIRECTORY 
+**AUX_SOURCE_DIRECTORY**
 
 ```cmake
 aux_source_directory(<dir> <variable>)
@@ -488,7 +448,7 @@ aux_source_directory(<dir> <variable>)
 aux_source_directory(. HELLO_SRC) # 查找当前目录下所有源文件并保存到HELLO_SRC
 ```
 
-#### CMAKE_DEPENDENT_OPTION
+**CMAKE_DEPENDENT_OPTION**
 
 ```cmake
 cmake_dependent_option(<option> "<help_text>" <value> <depends> <force>)
@@ -508,7 +468,7 @@ cmake -DUSE_LIBRARY=ON .. # MAKE_STATIC_LIBRARY=OFF
 ```
 
 
-#### CMAKE_MINIMUM_REQUIRE
+**CMAKE_MINIMUM_REQUIRE**
 
 ```cmake
 cmake_minimum_required(VERSION <min>[...<policy_max>] [FATAL_ERROR])
@@ -522,7 +482,7 @@ cmake_minimum_required()
 cmake_minimum_required(VERSION 3.24.1)
 ```
 
-#### CONFIGURE_FILE
+**CONFIGURE_FILE**
 
 配置文件通过源码版本检查。
 
@@ -530,7 +490,7 @@ cmake_minimum_required(VERSION 3.24.1)
 configure_file(hello.h.in hello.h)
 ```
 
-#### ENABLE_TESTING
+**ENABLE_TESTING**
 
 ```cmake
 configure_file(<input> <output>
@@ -542,7 +502,7 @@ configure_file(<input> <output>
 
 启用当前目录及以下目录的测试。
 
-#### EXEC_PROGRAM
+**EXEC_PROGRAM**
 
 ```cmake
 exec_program(Executable [directory in which to run]
@@ -553,7 +513,7 @@ exec_program(Executable [directory in which to run]
 
 是否构建 test 目标,涉及工程所有目录。
 
-#### EXECUTE_PROCESS
+**EXECUTE_PROCESS**
 
 执行一条命令，并获得它的执行结果。
 
@@ -570,7 +530,7 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
 endif()
 ```
 
-#### FILE
+**FILE**
 
 ```cmake
 Reading
@@ -618,7 +578,7 @@ Archiving
 
 文件操作命令。
 
-#### FIND_PACKAGE
+**FIND_PACKAGE**
 
 - TODO 库名称；
 - TODO 库得最低版本；
@@ -631,7 +591,7 @@ Archiving
 find_package(Boost 1.80.0 REQUIRED COMPONENTS filesystem system)
 ```
 
-#### FIND_PATH
+**FIND_PATH**
 
 ```cmake
 find_path (
@@ -669,7 +629,7 @@ find_path (
 
 查找包含命名文件的目录。
 
-#### FIND_LIBRARY
+**FIND_LIBRARY**
 
 ```cmake
 find_library (
@@ -695,7 +655,7 @@ find_library (
 
 此命令用于查找库。
 
-#### INCLUDE
+**INCLUDE**
 
 ```cmake
 include(<file|module> [OPTIONAL] [RESULT_VARIABLE <var>]
@@ -704,7 +664,7 @@ include(<file|module> [OPTIONAL] [RESULT_VARIABLE <var>]
 
 从文件或模块加载并运行CMake代码。
 
-#### INSTALL
+**INSTALL**
 
 `INSTALL(TARGETS targets ... [[ARCHIVE|LIBRARY|RUNTIME]] [DESTINATION <dir>] [PERMISSIONS permissions ...] [CONFIGURATIONS [Debug|Release|...]] [COMPONENT <component>] [OPTIONAL]])` 
 
@@ -727,7 +687,7 @@ INSTALL(TARGETS myrun mylib mystaticlib
 )
 ```
 
-#### LIST
+**LIST**
 
 合成文件列表。
 
@@ -739,7 +699,7 @@ list(
 )
 ```
 
-#### MACRO
+**MACRO**
 
 ```cmake
 macro(<name> [<arg1> ...])
@@ -759,7 +719,7 @@ endmacro()
 Hello()
 ```
 
-#### MESSAGE
+**MESSAGE**
 
 `MESSAGE([SEND_ERROR | STATUS | FATAL_ERROR] "message to display" ...)` 
 
@@ -769,7 +729,7 @@ Hello()
 
 向终端输出信息。
 
-#### OPTION
+**OPTION**
 
 `OPTION(<NAME> "MESSAGE" [VALUE])`
 
@@ -783,7 +743,7 @@ Hello()
 option(hello "hello world" ON)
 ```
 
-#### PROJECT 
+**PROJECT**
 
 `PROJECT(target_name LANGUAGES language)`
 
@@ -797,7 +757,7 @@ project(HELLO)
 
 指定项目名。
 
-#### SET
+**SET**
 
 `SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])`
 
@@ -807,7 +767,7 @@ project(HELLO)
 SET(SRC_LIST main.c t1.c t2.c)
 ```
 
-#### SET_TARGET_PROPERTIES
+**SET_TARGET_PROPERTIES**
 
 ```cmake
 set_target_properties(target1 target2 ...
@@ -827,7 +787,7 @@ set_target_properties(hello
 )
 ```
 
-#### SET_TESTS_PROPERTES
+**SET_TESTS_PROPERTES**
 
 ```cmake
 set_tests_properties(test1 [test2...] PROPERTIES prop1 value1 prop2 value2)
@@ -843,13 +803,13 @@ set_tests_properties(test1 [test2...] PROPERTIES prop1 value1 prop2 value2)
 set_tests_properties(helo PROPERTIES TIMEOUT 10) # 设置测试超时
 ```
 
-#### SUBDIRS
+**SUBDIRS**
 
 `SUBDIRS(dir1 dir2 ...)` 
 
 一次添加多个子目录（不推荐使用）。
 
-#### TARGET_COMPILE_DEFINITIONS
+**TARGET_COMPILE_DEFINITIONS**
 
 根据作用域将目标的编译标志传递到其他目标。
 
@@ -859,7 +819,7 @@ target_compile_definitions(hello_flags
 )
 ```
 
-#### TARGET_COMPILE_FEATURES
+**TARGET_COMPILE_FEATURES**
 
 设置C++标准。
 
@@ -867,7 +827,7 @@ target_compile_definitions(hello_flags
 target_compile_features(hello PUBLIC cxx_auto_type)
 ```
 
-#### TARGET_COMPILE_OPTIONS
+**TARGET_COMPILE_OPTIONS**
 
 设置编译选项。
 
@@ -875,7 +835,7 @@ target_compile_features(hello PUBLIC cxx_auto_type)
 target_compile_options(hello PRIVATE ${hello_flags})
 ```
 
-#### TARGET_LINK_LIBRARIES
+**TARGET_LINK_LIBRARIES**
 
 `TARGET_LINK_LIBRARIES[TARGETS SOURCE]` 
 
@@ -888,7 +848,7 @@ target_compile_options(hello PRIVATE ${hello_flags})
 target_link_libraries(hello hello_lib)
 ```
 
-#### TARGET_INCLUDE_DIRECTORIES
+**TARGET_INCLUDE_DIRECTORIES**
 
 - `PRIVATE` 将目录添加到此目标的include目录中；
 - `INTERFACE` 将该目录添加到任何连接到此库的目标的include目录中（不包括自己）；
@@ -906,7 +866,7 @@ target_include_directories(hello
 )
 ```
 
-#### TARGETS
+**TARGETS**
 
 生成的目标名。
 
@@ -1236,11 +1196,11 @@ CMake同时支持以下其它单元测试工具：
 ### 编译过程
 
 - 内部编译
-    
+  
     1. TODO
 
 - 外部编译
-    
+  
     1. 在目录中清除所有非CmakeLists.txt的中间文件，如：CMakeCache.txt等。
     2. 在目录中建立build文件夹。
     3. 进入build文件夹，执行命令`cmake ..`。
