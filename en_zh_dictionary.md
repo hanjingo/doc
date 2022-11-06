@@ -539,11 +539,15 @@ backslash `/ˈbækslæʃ/` 反斜杠
 
 bacteriophage `/bæk'tɪrɪə,feɪdʒ/` 噬菌体
 
+bald `/bɔːld/` 秃头的，单调的，无装饰的
+
 balloon `/bəˈluːn/` 气球，热气球
 
 balmy `/ˈbɑːmi/` （气候）温和的，温暖惬意的
 
 bang `/bæŋ/` 巨响，猛击，砰的一声
+
+bangle `/'bæŋɡl/` 手镯，环饰
 
 barb `/bɑːb/` 倒刺，倒钩，挖苦
 
@@ -589,6 +593,8 @@ bequest `/bɪˈkwest/` 遗产，遗赠
 
 bet `/bɛt/` 打赌，赌博，下注
 
+beverage `/'bevərɪdʒ/` 饮料
+
 beware `/bɪˈweə(r)/` 小心，提防，当心
 
 ### bi
@@ -611,6 +617,8 @@ bitter `/ˈbɪtə(r)/` 苦的，苦味，苦难
 
 blade `/bleɪd/` 刀片，桨叶，锋刃，叶片
 
+blank `/blæŋk/` 空白，空白的，茫然地
+
 blanket `/ˈblæŋkɪt/` 毛毯，覆盖层
 
 blaze `/bleɪz/` 闪耀，燃烧
@@ -618,6 +626,8 @@ blaze `/bleɪz/` 闪耀，燃烧
 bleach `/bliːtʃ/` 漂白，变白，褪色，漂白剂
 
 blend `/blend/` 混合，掺合，混合物
+
+blight `/blaɪt/` 枯萎，凋谢，摧毁
 
 blockbuster `/ˈblɒkbʌstə(r)/` 一鸣惊人的，非常成功的
 
@@ -647,9 +657,13 @@ boilerplate `/bɔɪləpleɪt/` 样板文件，锅炉钢板
 
 bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 
+bomb `/bɒm/` 炸弹，轰炸
+
 bookkeeping `/'bʊkkiːpɪŋ/` 记账
 
 boo `/buː/` 嘘声，呸
+
+boom `/buːm/` 繁荣，兴旺，急速增长，吊杆，支臂
 
 boon `/buːn/` 恩惠，合得来的
 
@@ -699,6 +713,8 @@ bridle `/ˈbraɪdl/` 缰绳，马笼头，约束，束缚
 
 brief `/briːf/` 摘要，简述，短暂的，简短的
 
+bright `/braɪt/` 明亮的，聪明的，阳光的，生动的
+
 brilliance `/brilliance/` 光辉，鲜明，透明度，亮度
 
 brim `/brɪm/` 边缘，边沿
@@ -718,6 +734,8 @@ buckle `/ˈbʌkl/` 用扣子扣紧，扣住
 bud `/bʌd/` 芽，苞，花蕾，发芽
 
 buggy `/ˈbʌɡi/` 婴儿车，折叠式童车，轻便马车，专用小车
+
+bulletin `/'bʊlətɪn/` 公报，期刊，发表，公示
 
 bulk `/bʌlk/` 大部分，庞大，巨大
 
@@ -816,6 +834,8 @@ cast `/kɑːst/` 铸造，铸件，投射，抛，投
 casual `/ˈkaʒʊ(ə)l/` 偶然的，随意的，漫不经心的，临时工
 
 catalyze `/kætəlaɪz/` 催化，刺激，促进
+
+catchy `/'kætʃi/` 引人注目的，易记住的，朗朗上口的，诡诈的，不连贯的
 
 caterpillar `/ˈkætəpɪlə(r)/` 毛毛虫
 
@@ -943,6 +963,8 @@ clarity `/'klærəti/` 清楚，透明
 
 clause `/klɔːz/` 条款，从句，子句
 
+claw `/klɔː/` 爪，钳，鳌
+
 clergy `/ˈklɜːdʒi/` 牧师，神职人员
 
 clerk `/klɑːk/` 店员，职员，文书，接待员
@@ -958,6 +980,8 @@ clutch `/klʌtʃ/` 抓住，抱紧，离合器
 coach `/kəʊtʃ/` 教练，辅导老师，训练，辅导，长途汽车
 
 coarse `/kɔːs/` 粗糙的，粗大的
+
+coast `/kəʊst/` 海岸，海滨
 
 coaster `/'kəʊstə(r)/` 杯垫，小托盘，惯性运转装置
 
@@ -1066,6 +1090,8 @@ conscious `/ˈkɒnʃəs/` 意识到，自觉地，神智清醒的
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
 consequence `/'kɒnsɪkwəns/` 结果，后果，重要性
+
+consent `/kən'sent/` 同意，赞成
 
 conserve `/kənˈsɜːrv /` 保存，节约，保护，节省
 
@@ -1423,7 +1449,7 @@ dampen `/ˈdæmpən/` 变潮湿，沮丧
 
 danger `/'deɪndʒə(r)/` 危险，威胁
 
-dangling `/'dæŋɡl/` 摇晃，悬垂，挂着，追求
+dangle `/'dæŋɡl/` 摇晃，悬垂，挂着，追求
 
 dawn `/dɔːn/` 黎明，破晓
 
@@ -1432,6 +1458,8 @@ dazzling `/ˈdæzlɪŋ/` 耀眼的，灿烂的，辉煌的
 ### de
 
 [回到D](#D)--[回到顶部](#英汉词典)
+
+dearth `/dɜːθ/` 缺乏，粮食不足
 
 decadent `/ˈdekədənt/` 颓废的，衰退的，堕落的
 
@@ -1708,6 +1736,8 @@ district `/ˈdɪstrɪkt/` 地区，区域，行政区
 disturb `/dɪˈstɜːb/` 打扰，扰乱，失调
 
 disturbed `/dɪ'stɜːbd/` 有心理疾病的，不安的
+
+ditch `/dɪtʃ/` 沟渠，壕沟，挖渠，迫降
 
 dive `/daɪv/` 跳水
 
@@ -2193,6 +2223,8 @@ fallback `/ˈfɔːlbæk/` 退路，应变计划
 
 fanciful `/ˈfænsɪfl/` 异想天开的，空想的，别出心裁的
 
+fangle `/'fæŋgəl/` 新发明，新款式，新鲜事物
+
 farce `/fɑːs/` 闹剧，胡闹
 
 farewell `/ˌfeəˈwel/` 告别，辞行
@@ -2277,6 +2309,8 @@ flavor `/ˈfleɪvə/` 风味，调味，特色
 
 flavour `/ˈfleɪvər/` 风味，特点，特色
 
+flee `/fliː/` 逃跑，消失，逃离
+
 flesh `/flɛʃ/` 肉，可食用部分，皮肤，肉体，肉欲
 
 flexibility `/ˌfleksə'bɪləti/` 灵活性，弹性，适应性
@@ -2346,6 +2380,8 @@ former `/ˈfɔːrmər/` 模型，样板，构造者，前，前者
 fort `/fɔːt/` 要塞，堡垒，城堡，军营
 
 forth `/fɔːθ/` 向前，向外
+
+forum `/'fɔːrəm/` 讨论会，论坛
 
 foster `/ˈfɒstə(r)/` 收养的，代养，照料，促进，培养
 
@@ -2596,6 +2632,8 @@ harness `/ˈhɑːnɪs/` 马具，挽具，保护带
 harried `/ˈhærid/` 折磨，反复攻击
 
 harshness `/hɑ:ʃnis/` 刺耳，粗糙的，严肃
+
+haste `/heɪst/` 匆忙，赶快
 
 hatch `/hætʃ/` 孵出，破壳，舱口，舱门
 
@@ -3019,6 +3057,10 @@ inventory `/ˈɪnvəntri/` 库存，财产清单
 
 invertebrate `/ɪnˈvɜːtɪbrət/` 无脊椎动物
 
+invest `/ɪn'vest/` 投资，投入
+
+investment `/ɪn'vestmənt/` 投资额，投资
+
 invoke `/ɪnˈvəʊk/` 引用，调用，提起，唤起，援助
 
 involve `/ɪnˈvɑːlv/` 包含，涉及，卷入
@@ -3123,9 +3165,11 @@ knapsack `/ˈnæpsæk/` 小背包
 
 lack `/læk/` 缺乏，不足
 
+laborious `/ləˈbɔːriəs/` 费力的，幸苦的
+
 lag `/læɡ/` 落后，延迟，滞后
 
-laborious `/ləˈbɔːriəs/` 费力的，幸苦的
+lam `/læm/` 打，鞭笞，逃亡
 
 lament `/ləˈment/` 哀叹，哀悼，挽歌，痛惜，对...表示失望
 
@@ -3134,6 +3178,8 @@ lampshade `/ˈlæmpʃeɪd/` 灯罩
 landmass `/ˈlændˌmæs/` 大陆，陆地，地块
 
 landscape `/ˈlændskeɪp/` 景观，景色，风景画
+
+lap `/læp/` 膝部，下摆，舔，包围，重叠
 
 laser `/ˈleɪzə(r)/` 激光，激光器
 
@@ -3305,6 +3351,8 @@ malnutrition `/ˌmælnjuˈtrɪʃn/` 营养不良
 
 mammal `/ˈmæml/` 哺乳动物
 
+mandate `/'mændeɪt/` 命令，指令，要求，授权
+
 maneuver `/məˈnuːvə/` 演习，调动
 
 manifest `/ˈmanɪfɛst/` 明显的，清楚显示，证明，显现，货单
@@ -3352,6 +3400,8 @@ matchless `/ˈmætʃləs/` 无敌的，无可匹敌的
 matrix `/'meɪtrɪks/` 矩阵，母体，子宫，发源地，基质，社会环境，政治局势，线路网
 
 matter `/ˈmatə/` 事情，问题，物质，排出物，事态
+
+mature `/mə'tʃʊə(r)/` 成熟，成熟的，长成，到期的，考虑周到的
 
 maze `/meɪz/` 迷宫，错综复杂
 
@@ -3905,8 +3955,6 @@ paramount `/ˈpærəmaʊnt/` 元首，至尊的，权力最大的
 
 paranoid `/ˈpærənɔɪd/` 偏执狂，妄想症患者
 
-parenthesis `/pə'renθəsɪs/` 圆括号，插入语
-
 paraphrase `/ˈpærəfreɪz/` 解释，释义
 
 parapsychology `/ˌpærəsaɪˈkɒlədʒi/` 灵学，超心理学
@@ -3914,6 +3962,10 @@ parapsychology `/ˌpærəsaɪˈkɒlədʒi/` 灵学，超心理学
 parasite `/ˈpærəsaɪt/` 寄生虫，食客
 
 parcel `/ˈpɑːsl/` 包裹，小包，一块地
+
+pardon `/'pɑːdn/` 原谅，宽恕，赦免，请再说一遍
+
+parenthesis `/pə'renθəsɪs/` 圆括号，插入语
 
 parliament `/ˈpɑː.lɪ.mənt/` 议会
 
@@ -4385,6 +4437,8 @@ raft `/rɑːft/` 木筏，救生艇
 
 rag `/ræɡ/` 破布，质量低劣的报纸，破旧的
 
+rage `/reɪdʒ/` 狂怒，大怒，狂暴，肆虐
+
 rally `/ˈræli/` 集会，召集，汽车拉力赛
 
 rampant `/ˈræmpənt/` 猖獗的，泛滥的，疯长的
@@ -4485,13 +4539,23 @@ refer `/rɪ'fɜː(r)/` 参考，归类，归因
 
 reflect `/rɪˈflekt/` 反映，反射，表明
 
+reform `/rɪ'fɔːm/` 改革，改良，改造
+
 refraction `/rɪˈfrækʃn/` 折射，折射角
 
 refrigerant `/rɪˈfrɪdʒərənt/` 冷藏，冷冻，制冷，制冷剂，冷冻剂
 
+regard `/rɪˈɡɑːd/` 注视，注意，关心，关注，尊重，看待
+
+regardless `/rɪˈɡɑːdləs/` 不管，不顾，毫无价值的
+
+regime `/reɪˈʒiːm/` 政体，政治制度，严密组织
+
 register `/ˈredʒɪstər/` 登记，注册，指示，挂号
 
 regular `/ˈreɡjələr/` 规则的，有规律的，相似的，经常的，常客
+
+regulate `/ˈreɡjuleɪt/` 规定，管理，控制
 
 rehabilitation `/ˌri:əˌbɪlɪ'teɪʃn/` 康复，恢复，善后，平反
 
@@ -4502,14 +4566,6 @@ reign `/reɪn/` 统治，当政，任期
 rein `/reɪn/` 缰绳，驾驭，控制
 
 reinforce `/ˌriːɪnˈfɔːs/` 加强，加固，增援，支持
-
-regard `/rɪˈɡɑːd/` 注视，注意，关心，关注，尊重，看待
-
-regardless `/rɪˈɡɑːdləs/` 不管，不顾，毫无价值的
-
-regime `/reɪˈʒiːm/` 政体，政治制度，严密组织
-
-regulate `/ˈreɡjuleɪt/` 规定，管理，控制
 
 rejuvenate `/rɪˈdʒuːvəneɪt/` 返老还童，恢复活力，复原
 
@@ -4971,6 +5027,8 @@ skew `/skjuː/` 歪曲，曲解，倾斜，扭曲
 
 skimp `/skɪmp/` 克扣，节省
 
+skyline `/'skaɪlaɪn/` 地平线
+
 skyscraper `/ˈskaɪskreɪpə(r)/` 摩天大楼
 
 ### sl
@@ -5131,6 +5189,8 @@ spot `/spɒt/` 污点，斑点，地点，场所，现货，插播节目
 
 spotless `/ˈspɒtləs/` 极其清洁的，非常干净的
 
+spouse `/spaʊs/` 配偶
+
 sprawl `/sprɔːl/` 伸展四肢，蔓延，爬行
 
 spray `/spreɪ/` 喷洒，浪花，喷剂
@@ -5236,6 +5296,8 @@ strip `/strɪp/` 剥去，脱衣服，扒光
 strive `/straɪv/` 努力，奋斗，力争
 
 stocky `/ˈstɒki/` 矮胖的，粗壮的
+
+storey `/'stɔːri/` 楼层
 
 stove `/stəʊv/` 炉子，火炉
 
@@ -5455,6 +5517,8 @@ temporal `/ˈtɛmp(ə)rəl/` 世俗的，时间的
 
 tempting `/ˈtemptɪŋ/` 诱人的，吸引人的
 
+tenable `/'tenəbl/` 站得住脚的，无懈可击的
+
 tend `/tend/` 趋势
 
 tenement `/ˈtenəmənt/` 房屋，住户，租户，廉租公寓
@@ -5531,6 +5595,8 @@ thrown `/θrəʊn/` 抛，掷，摔，丢
 
 thrust `/θrʌst/` 猛冲，刺，戳
 
+thumb `/θʌm/` 拇指，翻阅
+
 thus `/ðʌs/` 这样，如此，因而，从而
 
 ### ti
@@ -5584,6 +5650,8 @@ tolerate `/ˈtɒləreɪt/` 忍受，容忍，包容，容许
 toll `/təʊl/` 通行费，伤亡人数，毁坏，长途电话费，钟声
 
 toned `/təʊnd/` 结实强壮的
+
+tongs `/tɒŋz/` 钳子，夹具
 
 topographical `/ˌtɒpəˈɡræfɪkl/` 地形的，地形学的，地貌的
 

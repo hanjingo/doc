@@ -12,9 +12,9 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [第8章 深入模板基础](chapter8_zh.md)
 - [第9章 模板中的名称](chapter9_zh.md)
 - [第10章 实例化](chapter10_zh.md)
-- [第11章 模板实参演绎]
-- [第12章 特化与重载]
-- [第13章 未来的方向]
+- [第11章 模板实参演绎](chapter11_zh.md)
+- [第12章 特化与重载](chapter12_zh.md)
+- [第13章 未来的方向](chapter13_zh.md)
 - [第14章 模板的多态威力]
 - [第15章 trait与policy类]
 - [第16章 模板与继承]

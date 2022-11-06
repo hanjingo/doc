@@ -48,7 +48,7 @@
         public:
             template<typename T, int N> operator T[N]&(){...}
     };
-
+    
     void f(int (&)[20]){...}
     void g(S s) {
         f(s);
@@ -62,4 +62,59 @@
 模版演绎过程会试图找到函数模版参数的一个匹配，以使参数化类型P等同于类型A。当找不到这种匹配的时候，下面的变化是可接受的：
 
 - 如果原来生命的参数是一个引用参数子，那么被替换的P类型可以比A类型多一个const或者volatile限定符。
-- 如果A类型是指针类型或者成员指针类型，
+- 如果A类型是指针类型或者成员指针类型，那么它可以进行限定符转型（就是说，添加const或者volatile限定符），转化为被替换的P类型。
+- 当演绎过程不涉及到转型运算符模板的时候，被替换的P类型可以是A类型的基类；或者当A是指针类型时，P可以是一个指针类型，它所指向的类型是A所指向的类型的基类。
+
+
+
+## 11.5 类模板参数
+
+模板实参演绎只能应用于函数模板和成员函数模板，不能用于类模板。对于类模板的构造函数，也不能根据实参来演绎类模板参数。例：
+
+```c++
+template<typename T>
+class S {
+    public:
+    	S(T b) : a(b) {}
+    private:
+    	T a;
+};
+
+S x(12); // 错误：不能从构造函数的调用实参12演绎类模板参数T
+```
+
+
+
+## 11.6 缺省调用实参
+
+对于缺省调用实参而言，即使不是依赖型的，也不能用于演绎模板实参。例：
+
+```c++
+template<typename T>
+void f(T x = 42){...}
+int main()
+{
+    f<int>(); // 正确；T=int
+    f();      // 错误；不能根据缺省调用实参42来演绎T
+}
+```
+
+
+
+## 11.7 Barton-Nackman方法
+
+限制的模板扩展（restricted template expansion）。
+
+```c++
+template<typename T>
+class Array{
+    public:
+    	...
+        friend bool operator==(Array<T> const &a, Array<T> const &b) {...}
+}
+```
+
+
+
+## 11.8 本章后记
+
