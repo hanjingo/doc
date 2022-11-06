@@ -261,3 +261,38 @@ class Variant {
 }
 ```
 
+
+
+## 13.15 初始化器的演绎
+
+```c++
+template<typename T>
+class Complex {
+    public:
+    	Complex(T const& re, T const& im);
+};
+
+Complex<> z(1.0, 3.0);
+```
+
+
+
+## 13.16 函数表达式
+
+引入一个函数表达式，使用一个特殊符号`$`，在该符号后面紧跟圆括号中的参数类型和花括号里面的实体。在构造的内部，通过符号`$n`来引用每个参数。
+
+```c++
+class BigValue {
+    public:
+    	void init();
+};
+void compute(std::vecotr<BigValue>& vec)
+{
+    std::for_each(vec.begin(), vec.end(),
+                 $(BigValue&){$1.init();});
+}
+```
+
+
+
+## 13.17 本章后记

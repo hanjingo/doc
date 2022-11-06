@@ -15,8 +15,8 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [第11章 模板实参演绎](chapter11_zh.md)
 - [第12章 特化与重载](chapter12_zh.md)
 - [第13章 未来的方向](chapter13_zh.md)
-- [第14章 模板的多态威力]
-- [第15章 trait与policy类]
+- [第14章 模板的多态威力](chapter14_zh.md)
+- [第15章 trait与policy类](chapter15_zh.md)
 - [第16章 模板与继承]
 - [第17章 metaprogram]
 - [第18章 表示式模板]

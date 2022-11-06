@@ -311,6 +311,8 @@ anticipation `/ænˌtɪsɪ'peɪʃn/` 预期，预料，期盼
 
 antique `/ænˈtiːk/` 古董，古物，古迹，古代
 
+annoy `/ə'nɔɪ/` 使恼怒，使烦恼，骚扰
+
 annum `/ˈænəm/`  年
 
 anxiety `/æŋˈzaɪəti/` 焦虑，担忧，害怕
@@ -328,6 +330,8 @@ apparent `/ə'pærənt/` 明显的，表面上
 appeal `/əˈpiːl/` 上诉，呼吁，吸引
 
 appendix `/ə'pendɪks/` 附录，附属物，阑尾
+
+appetite `/'æpɪtaɪt/` 食欲，嗜好，欲望
 
 appliance `/əˈplaɪəns/` 家用电器，器具
 
@@ -729,7 +733,7 @@ brute `/bruːt/` 粗野的人，野兽，麻烦，最基本的
 
 [回到B](#B)--[回到顶部](#英汉词典)
 
-buckle `/ˈbʌkl/` 用扣子扣紧，扣住
+buckle `/ˈbʌkl/` 用扣子扣紧，扣住，（皮带）搭扣
 
 bud `/bʌd/` 芽，苞，花蕾，发芽
 
@@ -750,6 +754,8 @@ bump `/bʌmp/` 碰撞，撞击，肿块
 burden `/ˈbəːdn/` 重担，负担，要旨
 
 burdensome `/ˈbɜːdnsəm/` 沉重的，繁重的，恼人的
+
+burgeon `/'bɜːdʒən/` 发芽，萌芽，嫩枝
 
 burrow `/ˈbʌrəʊ/` 洞穴，挖掘，掩体，钻进，搜寻
 
@@ -999,25 +1005,57 @@ cognitive `/ˈkɒɡnətɪv/` 认知的，感知的
 
 coherent `/kəʊ'hɪərənt/` 连贯的，一致的，黏着的
 
+coherent `/kəʊˈhɪərənt/` 连贯的，协调一致的，有条理的
+
+cohesion `/kəʊˈhiːʒn/` 凝聚，凝聚力，结合
+
+coinage `/ˈkɔɪnɪdʒ/` 货币，货币制度，铸币权
+
+coincide `/ˌkəʊɪnˈsaɪd/` 巧合，一致，相符，重叠
+
 coil `/kɔɪl/` 线圈，（一）圈，（一）卷
 
 coined `/kɔind/` 创造，制造硬币
 
 colleague `/'kɒliːɡ/` 同事
 
+collaborate `/kəˈlæbəreɪt/` 合作，协作
+
+collapse `/kəˈlæps/` 崩溃，崩塌，垮掉
+
+collision `/kəˈlɪʒn/` 碰撞，冲突
+
+colloquial `/kəˈləʊkwiəl/` 口语的，白话的，通俗的
+
+colonize `/ˈkɒlənaɪz/` 殖民，移民
+
+combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
+
 combine `/kəm'baɪn/` 组合，结合，集团，联合企业
 
 combustion `/kəmˈbʌstʃ(ə)n/` 燃烧，燃烧装置
 
+comet `/ˈkɒmɪt/` 彗星
+
 cometary `/ˈkɑməˌtɛri/` 彗星的，彗星似的
 
+comic `/ˈkɒmɪk/` 滑稽的，使人发笑的，漫画，喜剧演员
+
 comma `/ˈkɒmə/` 逗号
+
+comment `/ˈkɒment/` 评论，解说，批评，指责
+
+commercial `/kəˈmɜːʃl/` 贸易的，商业的，盈利的
 
 commercialize `/kə'mɜːʃəlaɪz/` 商业化，利用...牟利
 
 committee `/kə'mɪti/` 委员会
 
+commodity `/kəˈmɒdəti/` 商品，有用的东西
+
 commonplace `/'kɒmənpleɪs/` 平凡的，普通的，老生常谈的
+
+communal `/kəˈmjuːnl/` 公共的，共有的
 
 commute `/kəˈmjuːt/` 通勤，上下班往返，减刑
 
@@ -1044,6 +1082,36 @@ compound `/'kɒmpaʊnd/` 化合物，复合物，混合，调和，院子
 comprehensive `/ˌkɒmprɪ'hensɪv/` 可理解的，全面的，综合的，广泛的
 
 comprise `/kəmˈpraɪz/` 包含，包括，构成，组成
+
+compact `/ˈkɑːmpækt/` 小巧的，紧凑的，紧密的，合约，协定
+
+comparable `/ˈkɒmpərəbl/` 类似的，比得上的，可比较的
+
+compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
+
+compensate `/ˈkɒmpenseɪt/` 补偿，弥补，赔偿
+
+complacence `/kəm'pleɪsns/` 自满
+
+complex `/ˈkɒmpleks/` 复杂的，难解的，复合的
+
+complexity `/kəm'pleksəti/` 复杂性，复杂度
+
+complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
+
+complicity `/kəmˈplɪsəti/` 共谋，同谋，共犯，勾结
+
+compliment `/ˈkɒmplɪmənt/` 恭维，赞扬，称赞，赞美
+
+compose `/kəmˈpəʊz/` 组成，构成，作曲，撰写
+
+composite `/ˈkɒmpəzɪt/` 合成的，合成物，混合物
+
+comprehend `/ˌkɒmprɪˈhend/` 由...组成，理解，领悟
+
+comprehensive `/ˌkɒmprɪˈhensɪv/` 综合的，全部的，所有的
+
+compromise `/ˈkɒmprəmaɪz/` 妥协，折中，和解
 
 comrade `/ˈkɒmreɪd/` 朋友，同志
 
@@ -1101,6 +1169,8 @@ consistency `/kənˈsɪstənsi/` 一致性，连贯性，平滑度，坚实度�
 
 consolidate `/kənˈsɒlɪdeɪt/` 合并，巩固，加固
 
+consortium `/kən'sɔːtɪəm/` 财团，联合，合伙
+
 conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
 
 constitute `/'kɒnstɪtjuːt/` 构成，组成，任命，建立，制定
@@ -1140,68 +1210,6 @@ conversion  `/kənˈvɜːʃn/` 转换，转变，皈依
 convey `/kən'veɪ/` 表达，运输，传送，转移
 
 convincing `/kən'vɪnsɪŋ/` 有说服力的，令人信服的
-
-coherent `/kəʊˈhɪərənt/` 连贯的，协调一致的，有条理的
-
-cohesion `/kəʊˈhiːʒn/` 凝聚，凝聚力，结合
-
-coinage `/ˈkɔɪnɪdʒ/` 货币，货币制度，铸币权
-
-coincide `/ˌkəʊɪnˈsaɪd/` 巧合，一致，相符，重叠
-
-collaborate `/kəˈlæbəreɪt/` 合作，协作
-
-collapse `/kəˈlæps/` 崩溃，崩塌，垮掉
-
-collision `/kəˈlɪʒn/` 碰撞，冲突
-
-colloquial `/kəˈləʊkwiəl/` 口语的，白话的，通俗的
-
-colonize `/ˈkɒlənaɪz/` 殖民，移民
-
-combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
-
-comet `/ˈkɒmɪt/` 彗星
-
-comic `/ˈkɒmɪk/` 滑稽的，使人发笑的，漫画，喜剧演员
-
-comment `/ˈkɒment/` 评论，解说，批评，指责
-
-commercial `/kəˈmɜːʃl/` 贸易的，商业的，盈利的
-
-commodity `/kəˈmɒdəti/` 商品，有用的东西
-
-communal `/kəˈmjuːnl/` 公共的，共有的
-
-compact `/ˈkɑːmpækt/` 小巧的，紧凑的，紧密的，合约，协定
-
-comparable `/ˈkɒmpərəbl/` 类似的，比得上的，可比较的
-
-compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
-
-compensate `/ˈkɒmpenseɪt/` 补偿，弥补，赔偿
-
-complacence `/kəm'pleɪsns/` 自满
-
-complex `/ˈkɒmpleks/` 复杂的，难解的，复合的
-
-complexity `/kəm'pleksəti/` 复杂性，复杂度
-
-complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的
-
-complicity `/kəmˈplɪsəti/` 共谋，同谋，共犯，勾结
-
-compliment `/ˈkɒmplɪmənt/` 恭维，赞扬，称赞，赞美
-
-compose `/kəmˈpəʊz/` 组成，构成，作曲，撰写
-
-composite `/ˈkɒmpəzɪt/` 合成的，合成物，混合物
-
-comprehend `/ˌkɒmprɪˈhend/` 由...组成，理解，领悟
-
-comprehensive `/ˌkɒmprɪˈhensɪv/` 综合的，全部的，所有的
-
-compromise `/ˈkɒmprəmaɪz/` 妥协，折中，和解
 
 concentric `/kənˈsentrɪk/` 同心的
 
@@ -1494,6 +1502,8 @@ dedicate `/'dedɪkeɪt/` 致力于，献出
 deduce `/dɪ'djuːs/` 演绎，推理
 
 deduction `/dɪˈdʌkʃn/` 扣除，推论，推理，税后额度
+
+defame `/dɪ'feɪm/` 诽谤，中伤
 
 defect `/ˈdiːfɛkt/` 缺陷，瑕疵，叛变
 
@@ -2521,6 +2531,8 @@ glitch `/ɡlɪtʃ/` 失灵，小故障
 
 gloomy `/'ɡluːmi/` 阴暗的，阴沉的，令人沮丧的
 
+glove `/ɡlʌv/` 手套，给...戴手套
+
 ### go
 
 [回到G](#G)--[回到顶部](#英汉词典)
@@ -2649,13 +2661,15 @@ haze `/heɪz/` 薄雾，雾气，烟雾，疑惑
 
 headscarf `/ˈhedskɑːf/` 方头巾（女用）
 
+healing `/ˈhiːlɪŋ/` 康复，治疗，治愈
+
 hearty `/ˈhɑːti/`  亲切的，友好的，丰盛的，喧闹
 
 heed `/hiːd/` 留心，注意，听从劝告
 
 heel `/hiːl/` 脚后跟，鞋跟
 
-healing `/ˈhiːlɪŋ/` 康复，治疗，治愈
+hegemony `/hɪ'dʒeməni/` 霸权，领导权
 
 held `/held/` hold的过去式，拿着，控制，持有，掌握，举行
 
@@ -2670,6 +2684,8 @@ heroism `/ˈherəʊɪzəm/` 英雄主义
 ### hi
 
 [回到H](#H)--[回到顶部](#英汉词典)
+
+hiccup `/'hɪkʌp/` 打嗝，暂时性的小问题
 
 hierarchy `/ˈhʌɪərɑːki/` 等级制度
 
@@ -3447,6 +3463,8 @@ metabolism `/məˈtæbəlɪzəm/` 新陈代谢
 
 metal `/'metl/` 金属，合金，玻璃液，覆盖，装配
 
+methane `/'miːθeɪn/` 甲烷，沼气
+
 methodically `/mə'θɒdɪklɪ/` 有条不紊的，系统的
 
 methodology `/ˌmeθəˈdɒlədʒi/` 方法论，方法学
@@ -3933,6 +3951,8 @@ pale `/peɪl/` 苍白的，灰白的，暗淡的，微弱的
 
 palette `/ˈpælət/` 调色板
 
+palm `/pɑːm/` 手掌，棕榈
+
 panacea `/ˌpanəˈsiːə/` 万能药
 
 pandemic `/pænˈdemɪk/` 流行病，大流行的，普遍的，全世界的
@@ -4003,6 +4023,8 @@ pattern `/ˈpatn/` 模式，匹配，图案，样式，样品，模仿
 
 paucity `/ˈpɔːsəti/` 少量，缺乏，贫乏
 
+pauper `/'pɔːpə(r)/` 乞丐，贫民，穷人
+
 pave `/peɪv/` 铺（地），铺垫
 
 payoff `/'peɪɔːf/` 收益，成果，清算，发工资，报复
@@ -4010,6 +4032,8 @@ payoff `/'peɪɔːf/` 收益，成果，清算，发工资，报复
 ### pe
 
 [回到P](#P)--[回到顶部](#英汉词典)
+
+pearl `/pɜːl/` 珍珠
 
 peculiar `/pɪˈkjuːliə(r)/` 奇怪的，怪异的，特别的
 
@@ -5035,6 +5059,8 @@ skyscraper `/ˈskaɪskreɪpə(r)/` 摩天大楼
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
+slam `/slæm/` 砰地关上，猛烈抨击
+
 slander `/ˈslɑːndə(r)/` 诽谤，诋毁
 
 slash `/slæʃ/` 斜线，斜杠，砍，砍痕
@@ -5222,6 +5248,8 @@ staff `/stɑːf/` 员工，全体职工，拐杖，棒，五线谱
 stage `/steɪdʒ/` 舞台，戏剧，阶段，步骤，组织，策划
 
 staircase `/ˈsteəkeɪs/` 楼梯
+
+stale `/steɪl/` 不新鲜的，陈腐的，腐坏，厌倦的
 
 stall `/stɔːl/` 栅栏，小隔间，货摊，失速，熄火，拖延
 
@@ -5524,6 +5552,8 @@ tend `/tend/` 趋势
 tenement `/ˈtenəmənt/` 房屋，住户，租户，廉租公寓
 
 tension `/ˈtenʃn/` 紧张，矛盾，对立，烦躁
+
+tent `/tent/` 帐篷，宿营
 
 tentacle `/ˈtentəkl/` 触角，触手，触须
 
