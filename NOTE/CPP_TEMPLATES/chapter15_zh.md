@@ -18,6 +18,8 @@
     - [15.2.4 promotion trait](#1524-promotion-trait)
 * [15.3 policy trait](#153-policy-trait)
     - [15.3.1 只读的参数类型](#1531-只读的参数类型)
+    - [15.3.2 拷贝，交换和移动](#1532-拷贝交换和移动)
+* [15.4 本章后记](#154-本章后记)
 
 <!-- vim-markdown-toc -->
 
@@ -114,3 +116,11 @@ class RParam{
                 T const&>::Result Type;
 };
 ```
+
+### 15.3.2 拷贝，交换和移动
+
+
+
+## 15.4 本章后记
+
+
