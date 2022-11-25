@@ -22,5 +22,5 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [第18章 表示式模板](chapter18_zh.md)
 - [第19章 类型区分](chapter19_zh.md)
 - [第20章 智能指针](chapter20_zh.md)
-- [第21章 tuple]
-- [第22章 函数对象和回调]
+- [第21章 tuple](chapter21_zh.md)
+- [第22章 函数对象和回调](chapter22_zh.md)
