@@ -11,7 +11,7 @@
 | [**G**](#G) | [ga](#ga) |        |        |        | [ge](#ge) |        |        |        | [gi](#gi) |        |        | [gl](#gl) |        |        | [go](#go) |        |        | [gr](#gr) |        |        | [gu](#gu) |        |        |        | [gy](#gy) |   |
 | [**H**](#H) | [ha](#ha) |        |        |        | [he](#he) |        |        |        | [hi](#hi) |        |        |        |        |        | [ho](#ho) |        |        |        |        |        | [hu](#hu) |        |        |        | [hy](#hy) |   |
 | [**I**](#I) |        |        | [ic](#ic) | [id](#id) |        |        | [ig](#ig) |        |        |        |        | [il](#il) | [im](#im) | [in](#in) | [io](#io) |        |        | [ir](#ir) | [is](#is) | [it](#it) |        |        |        |        |        |   |
-| [**J**](#J) |        |        |        |        | [je](#je) |        |        |        |        |        |        |        |        |        | [jo](#jo) |        |        |        |        |        | [ju](#ju) |        |        |        |        |   |
+| [**J**](#J) |    [ja](#ja)    |        |        |        | [je](#je) |        |        |        |        |        |        |        |        |        | [jo](#jo) |        |        |        |        |        | [ju](#ju) |        |        |        |        |   |
 | [**K**](#K) |        |        |        |        | [ke](#ke) |        |        |        | [ki](#ki) |        |        |        |        | [kn](#kn) |        |        |        |        |        |        |        |        |        |        |        |   |
 | [**L**](#L) | [la](#la) |        |        |        | [le](#le) |        |        |        | [li](#li) |        |        |        |        |        | [lo](#lo) |        |        |        |        |        | [lu](#lu) |        |        |        |        |   |
 | [**M**](#M) | [ma](#ma) |        |        |        | [me](#me) |        |        |        | [mi](#mi) |        |        |        |        |        | [mo](#mo) |        |        |        |        |        | [mu](#mu) |        |        |        | [my](#my) |   |
@@ -213,6 +213,8 @@ akin `/əˈkɪn/` 类似的
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
+album `/ˈalbəm/` 册子，歌曲专辑
+
 alchemy `/ˈælkəmi/` 炼金术，神秘力量，魔力
 
 algae `/'ældʒiː/` 藻类，水藻，海藻
@@ -272,6 +274,8 @@ amid `/əˈmɪd/` 在...中，被...围绕
 amino `/ə'miːnəʊ/` 氨基的
 
 among `/əˈmʌŋ/` 在...之内，在...之中
+
+ampersand `/ˈampəsand/` 符号&
 
 ample `/ˈæmpl/` 充足的，硕大的
 
@@ -701,7 +705,7 @@ bowl `/bəʊl/` 碗，钵
 
 brace `/breɪs/` 吊带，背带，支撑，绷紧，防备，支柱，支架，一对
 
-bracket `/ˈbrakɪt/` 在括号中，支架，等级
+bracket `/ˈbrakɪt/` 在括号中，支架，等级，圆括号
 
 braid `/breɪd/` 编织，辫子，交叉往来
 
@@ -1221,6 +1225,8 @@ contrast `/'kɒntrɑːst/` 对比，差别，对照，反差
 
 controversial `/ˌkɒntrəˈvɜːʃl/` 有争议的
 
+controversy `/ˈkɒntrəvəːsi/` 争论
+
 conversion  `/kənˈvɜːʃn/` 转换，转变，皈依
 
 convey `/kən'veɪ/` 表达，运输，传送，转移
@@ -1315,7 +1321,7 @@ corn `/kɔːn/` 玉米，谷物，谷粒
 
 corner `/ˈkɔːnə/` 角落，街角，困境，偏远地区
 
-corner `/ˈkɔːnəstəʊn/` 基础，奠基石
+cornerstone `/ˈkɔːnəstəʊn/` 基础，奠基石
 
 cornet `/ˈkɔːnɪt/` （乐器）短号，圆锥形蛋糕
 
@@ -1330,6 +1336,8 @@ correctly `/kə'rektli/` 正确的，准确的
 correctness `/kə'rektnəs/` 正确性，正确
 
 correspond `/kɒrɪˈspɒnd/` 通信，相符，符合
+
+corrigendum `/ˌkɒrɪˈdʒɛndəm/` 勘误表
 
 corrosion `/kəˈrəʊʒn/` 腐蚀，侵蚀
 
@@ -1666,6 +1674,8 @@ diction `/ˈdɪkʃn/` 吐字，发音，措辞
 dietetics `/ˌdaɪəˈtetɪks/` 营养学，饮食学
 
 dietitian `/ˌdaɪəˈtɪʃn/` 营养学家
+
+differ `/ˈdɪfə/` 有区别，持不同看法
 
 differential `/ˌdɪfəˈrɛnʃəlz/` 差别，差价，差动齿轮
 
@@ -2081,6 +2091,8 @@ equivalent `/ɪˈkwɪv(ə)l(ə)nt/` 相等于，等量，等价于
 
 eradicate `/ɪˈrædɪkeɪt/` 根除，消灭，杜绝
 
+erratum `/ɛˈrɑːtəm/` 文字错误，勘误表
+
 erect `/ɪˈrekt/` 建造，建立，垂直的，竖立的
 
 erode `/ɪˈrəʊd/` 腐蚀，侵蚀，风化，削弱，损害
@@ -2290,6 +2302,8 @@ favorite `/ˈfeɪvərɪt/` 喜爱的，喜欢的
 ### fe
 
 [回到F](#F)--[回到顶部](#英汉词典)
+
+feedback `/ˈfiːdbak/` 反馈，反馈信息
 
 felt `/felt/` 毛毡，制毡
 
@@ -3173,6 +3187,12 @@ itinerary `/aɪˈtɪnərəri/` 行程，旅程
 
 # J
 
+### ja
+
+[回到J](#J)--[回到顶部](#英汉词典)
+
+jasmine `/ˈdʒazmɪn/` 茉莉
+
 ### je
 
 [回到J](#J)--[回到顶部](#英汉词典)
@@ -3421,6 +3441,8 @@ malnutrition `/ˌmælnjuˈtrɪʃn/` 营养不良
 
 mammal `/ˈmæml/` 哺乳动物
 
+manage `/ˈmanɪdʒ/` 管理，开发利用，打理，完成，做得到
+
 mandate `/'mændeɪt/` 命令，指令，要求，授权
 
 maneuver `/məˈnuːvə/` 演习，调动
@@ -3565,6 +3587,8 @@ minuscule `/ˈmɪnəskjuːl/` 极小的，极微的
 
 miracle `/ˈmɪrəkl/` 奇迹，神迹，精品
 
+misbehavior `/'mɪsbɪ'heɪvjə/` 粗鲁行为，品行不端
+
 misconduct `/ˌmɪsˈkɒndʌkt/`  行为失当，行为不端，失职
 
 mislead `/ˌmɪsˈliːd/` 误导，引入歧途
@@ -3572,6 +3596,10 @@ mislead `/ˌmɪsˈliːd/` 误导，引入歧途
 missionary `/ˈmɪʃənri/` 传教士，传教士体位
 
 mistress `/ˈmɪstrəs/` 主妇，情妇，女主人
+
+misunderstand `/ˌmɪsʌndəˈstand/` 误解，争执
+
+misuse `/ˌmɪsˈjuːz/` 误用，错用，滥用，虐待
 
 mitigate `/ˈmɪtɪɡeɪt/` 减轻，缓和
 
@@ -3806,6 +3834,8 @@ occasional `/ə'keɪʒənl/` 偶然的，临时的
 occupy `/ˈɒkjupaɪ/`  使用，占用，占领，居住
 
 occur `/ə'kɜː(r)/` 发生，存在，出现
+
+occurrence `/əˈkʌrəns/` 发生的事，存在情况
 
 octal `/ɒktəl/` 八进制，八脚
 
@@ -4457,6 +4487,8 @@ pseudo `/ˈsjuːdəʊ/` 假的，冒充的
 
 [回到P](#P)--[回到顶部](#英汉词典)
 
+publication `/ˌpʌblɪˈkeɪʃn/` 出版物，出版，公布
+
 puddle `/ˈpʌdl/` 水坑，水洼，雨水坑
 
 pulp `/pʌlp/` 果肉，纸浆，浆状物
@@ -5003,6 +5035,8 @@ separate `/'sepərət/` 分开，区分，分离
 
 separately `/'sepərətli/` 分别的，个别的，分开的，独立的
 
+separation `/ˌsɛpəˈreɪʃn/` 分居，离别，分开，分离
+
 sequence `/ˈsiːkwəns/` 串行，顺序，测序
 
 sequential `/sɪ'kwenʃl/` 连续的
@@ -5088,6 +5122,8 @@ silt `/sɪlt/` 淤泥，泥沙，淤塞
 silver `/'sɪlvə(r)/` 银币，银器，银的，银色
 
 silversmith `/ˈsɪlvəsmɪθ/` 银匠
+
+similar `/ˈsɪm(ɪ)lə/` 相似的
 
 simpler `/'sɪmplər/` 简单的，单纯的
 
@@ -5198,6 +5234,8 @@ solomon `/ˈsɒləmən/` 智者，聪明人
 somewhat `/ˈsʌmwɒt/` 有点，稍微，有几分
 
 soothe `/suːð/` 安抚，安慰，缓解
+
+sophisticate `/səˈfɪstɪkət/` 老于世故的人，使...更精确
 
 sophistication `/səˌfɪstɪˈkeɪʃn/` 世故，老练，复杂度，精密
 
@@ -5463,6 +5501,8 @@ suffice `/sə'faɪs/` 足够，使...满足
 
 sufficient `/sə'fɪʃnt/` 足够的，充分的
 
+suggest `/səˈdʒɛst/` 建议，推荐，认为，表明，暗示，出现
+
 suite `/swiːt/` 一套，一组
 
 sumptuous `/ˈsʌmptʃuəs/` 奢侈的，华丽的，奢华的
@@ -5470,6 +5510,8 @@ sumptuous `/ˈsʌmptʃuəs/` 奢侈的，华丽的，奢华的
 sundial `/ˈsʌndaɪəl/` 日晷
 
 superb `/suːˈpɜːb/` 极好的，卓越的，质量极高的
+
+superficial `/ˌsuːpəˈfɪʃl/` 外表的，粗略的，表面的，肤浅的
 
 superintendent `/ˌsuːpərɪnˈtendənt/` 主管人，负责人，监管人，警长
 
@@ -5548,6 +5590,8 @@ synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 synonym `/ˈsɪnənɪm/` 同义词
 
 synopsis `/səˈnɑpsəs/` 梗概
+
+syntactic `/sɪnˈtaktɪk/` 句法的
 
 syntax `/ˈsɪntæks/` 语法，句法
 
@@ -6135,6 +6179,8 @@ vocabulary `/və(ʊ)ˈkabjʊləri/` 词汇，词汇量，词汇表
 
 vocation `/vəʊˈkeɪʃn/` 职业，业务，行业，使命
 
+volatile `/ˈvɒlətʌɪl/` 易挥发的，变化无常的，不稳定的
+
 volcano `/vɒlˈkeɪnəʊ/` 火山
 
 volunteer `/ˌvɒlənˈtɪə(r)/` 志愿者，自愿做
@@ -6250,6 +6296,8 @@ worthwhile `/ˌwɜːθ'waɪl/` 值得
 wrap `/ræp/` 包，包裹，围巾，披肩
 
 wreck `/rek/` 沉船，失事，破坏，损毁
+
+wrestle `/ˈrɛsl/` 扭打，摔跤，艰苦斗争
 
 wrinkle `/ˈrɪŋkl/` 皱纹
 
