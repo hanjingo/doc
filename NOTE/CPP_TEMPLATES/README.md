@@ -5,8 +5,8 @@
 David Vandevoorde, Nicolai M. Josuttis . 1ED
 
 - [Chapter1. About This Book](chapter1.md)
-- [Chapter2. Function Templates]
-- [Chapter3. Class Templates]
+- [Chapter2. Function Templates](chapter2.md)
+- [Chapter3. Class Templates](chapter3.md)
 - [Chapter4. Nontype Template Parameters]
 - [Chapter5. Trickly Basics]
 - [Chapter6. Using Templates in Practice]

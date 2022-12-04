@@ -1137,6 +1137,8 @@ concatenate `/kɑnˈkæt(ə)ˌneɪt/` 连接，串联，连锁
 
 concede `/kənˈsiːd/` 让步，承认失败，让与
 
+conceivable `/kənˈsiːvəbl/` 可想到的
+
 concentrate `/'kɒnsntreɪt/` 专心，集中，浓缩
 
 concept `/ˈkɒnsept/` 概念，观念，理解，想法，怀孕
@@ -1293,7 +1295,9 @@ continent `/ˈkɒntɪnənt/` 大陆，陆地，洲
 
 controversy `/ˈkɒntrəvɜːsi/` 争论，辩论，争议
 
-convention `/kənˈvenʃn/` 传统，习俗，常规，惯例，集会
+convene `/kənˈviːn/` 召开，开会
+
+convention `/kənˈvenʃn/` 大会， 传统，习俗，常规，惯例，集会
 
 convenient `/kənˈviːnɪənt/` 实用的，方便的，公共设施
 
@@ -3939,6 +3943,8 @@ ordinary `/ˈɔːdnri/` 法官，普通的，一般的，平常的
 
 ore `/ɔː(r)/` 矿石，矿砂
 
+orient `/ˈɔːrɪənt/` 东方国家
+
 oriental `/ˌɔːriˈentl/` 东方的，东方人
 
 oriented  `/ˈɔːrɪɛnt/` 导向
@@ -5012,6 +5018,8 @@ semantics `/sɪ'mæntɪks/` 语义学，符号学
 semester `/sɪˈmestər/` 学期
 
 semiarid `/ˌsɛmiˈærɪd/` 半干旱的
+
+semicolon `/ˌsɛmɪˈkəʊlən/` 分号
 
 semiliterate `/semi'litəreit/` 半文盲，有初等文化者
 
