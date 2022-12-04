@@ -1147,6 +1147,8 @@ conceptual `/kən'septʃuəl/` 概念的
 
 conclude `/kənˈkluːd/` 推断，断定，终止，结束
 
+conclusion `/kənˈkluː.ʒən/` 结尾，结局，结果
+
 concrete `/ˈkɒŋkriːt/` 混凝土，水泥
 
 condenser `/kənˈdensə(r)/` 冷凝器，（汽车发动机）电容器
@@ -1828,6 +1830,8 @@ drama `/ˈdrɑːmə/` 戏，戏剧，演戏，戏剧性
 dramatic `/drəˈmætɪk/` 戏剧性的，巨大的，突然的，令人吃惊的
 
 drastic `/ˈdræstɪk/` 极端的，激烈的，重大的
+
+drawback `/ˈdrɔːbak/` 退税，缺陷
 
 drawer `/drɔːr/` 抽屉，出票人
 
@@ -2579,7 +2583,7 @@ glean `/ɡliːn/` 收集
 
 glide `/ɡlaɪd/` 滑翔，滑动
 
-glitch `/ɡlɪtʃ/` 失灵，小故障
+glitch `/ɡlɪtʃ/` 失灵，小故障，小毛病，小差错
 
 gloomy `/'ɡluːmi/` 阴暗的，阴沉的，令人沮丧的
 
@@ -2723,6 +2727,8 @@ headscarf `/ˈhedskɑːf/` 方头巾（女用）
 
 healing `/ˈhiːlɪŋ/` 康复，治疗，治愈
 
+heard `/hɪər/` 听见，听到
+
 hearty `/ˈhɑːti/`  亲切的，友好的，丰盛的，喧闹
 
 heed `/hiːd/` 留心，注意，听从劝告
@@ -2750,6 +2756,8 @@ hiccup `/'hɪkʌp/` 打嗝，暂时性的小问题
 hierarchy `/ˈhʌɪərɑːki/` 等级制度
 
 hinder `/ˈhɪndə(r)/` 阻碍，妨碍，阻挡
+
+hindrance `/ˈhɪn.drəns/` 障碍，阻碍
 
 hinge `/hɪndʒ/` 铰链，关键
 
@@ -3018,6 +3026,8 @@ injustice `/ɪnˈdʒʌstɪs/` 不公正的，不公平
 innocent `/ˈɪnəsnt/` 天真的，无辜的，单纯的
 
 innumerable `/ɪˈnjuːmərəbl/` 无数的，多的数不清的
+
+insertion `/ɪnˈsɜː.ʃən/` 插入，添加（文字）
 
 insidious `/ɪnˈsɪdɪəs/` 潜伏的，暗中滋生的，阴险的，有隐患的
 
@@ -4454,6 +4464,8 @@ proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 property `/ˈprɒpəti/` 财产，房产，庄园，特性，性能
 
 proportion `/prəˈpɔːʃn/` 比例，份额，部分
+
+proposal `/prəˈpəʊ.zə/` 建议，计划，提案
 
 propose `/prəˈpəʊz/` 提议，求婚，打算
 

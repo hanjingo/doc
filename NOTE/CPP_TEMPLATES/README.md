@@ -7,7 +7,7 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter1. About This Book](chapter1.md)
 - [Chapter2. Function Templates](chapter2.md)
 - [Chapter3. Class Templates](chapter3.md)
-- [Chapter4. Nontype Template Parameters]
+- [Chapter4. Nontype Template Parameters](chapter4.md)
 - [Chapter5. Trickly Basics]
 - [Chapter6. Using Templates in Practice]
 - [Chapter7. Basic Template Terminology](chapter7.md)
@@ -28,5 +28,4 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter22. Function Objects and Callbacks]
 - [Appendix A. The One-Definition Rule]
 - [Appendix B. Overload Resolution]
-
 

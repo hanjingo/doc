@@ -58,7 +58,7 @@ max(T const& a, T const& b)
 
 specify the template argument list explicitly:
 
-1. 
+1. in function templates(unlike class templates) no default template arguments can be specified.
 
 ```c++
 template <typename T1, typename T2, typename RT>
@@ -66,8 +66,47 @@ inline RT max(T1 const& a, T2 const& b);
 max<int, double, double>(4, 4, 2);
 ```
 
+2. instantiate a template explicitly for certain types:
+
+```c++
+template<typename RT, typename T1, typename T2>
+inline RT max(T1 const& a, T2 const& b);
+max<double>(4, 4.2);
+```
+
 
 
 ## 2.4 Overloading Function Templates
 
+Like ordinary functions, function templates can be overloaded. That is, you can have different function definitions with the dame function name so that when that name is used in a function call, a C++ compiler must decide which one of the various candidates to call.
+
+```c++
+inline int const& max(int const& a, int const& b)
+{
+    return a < b ? b : a;
+}
+
+template <typename T>
+inline T const& max(T const& a, T const& b)
+{
+    return a < b ? b : a;
+}
+
+template <typename T>
+inline T const& max(T const& a, T const& b, T const& c)
+{
+    return ::max(::max(a, b), c);
+}
+```
+
+
+
+## 2.5 Summary
+
+- Template functions define a family of functions for different template arguments.
+- When you pass template arguments, function templates are instantiated for these argument types.
+- You can explicitly qualify the template parameters.
+- You can overload function templates.
+- When you overload function templates, limit your changes to specifying template parameters explicitly.
+- Make sure you see all overloaded versions of function templates before you call them.
 
