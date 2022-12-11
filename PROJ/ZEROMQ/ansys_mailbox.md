@@ -91,6 +91,8 @@ class signaler_t // 信号机
 
 ## ypipe_t
 
+具体见：[ypipe](ansys_ypipe.md)
+
 ```c++
 template <typename T, int N> class ypipe_t ZMQ_FINAL : public ypipe_base_t<T>
 {

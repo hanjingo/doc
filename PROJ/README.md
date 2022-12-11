@@ -17,7 +17,6 @@
 ## 第三方项目
 
 - [Ceph](CEPH/READE.md)
-- [Docker](DOCKER/README.md)
 - [EOS](EOSIO/README.md)
 - [Ethereum](ETH/README.md)
 - [Filecoin](FILECOIN/README.md)
@@ -26,5 +25,5 @@
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)
 - [skynet](SKYNET/README.md)
-- [pbc](PBC/README.md)
 - [NGINX]
+- [linux core]

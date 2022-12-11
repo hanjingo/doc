@@ -58,6 +58,12 @@
 
 
 
+## 术语
+
+- `抽象基类`
+
+---
+
 ## new
 
 ### new operator
@@ -1474,3 +1480,6 @@ TODO
 [11] [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers)
 
 [12] [cppreference.com-联合体声明](https://zh.cppreference.com/w/cpp/language/union)
+
+[13] [JOINT STRIKE FIGHTER AIR VEHICLE C++ CONDING STANDARDS](res/JSF-AV-rules.pdf)
+

@@ -13,6 +13,7 @@
 ## Boost
 
 - [asio](boost_asio.md)
+- [lockfree](boost_lockfree.md)
 - [optional](boost_optional.md)
 - [pool](boost_pool.md)
 - [statechart](boost_statechart.md)

@@ -1057,6 +1057,11 @@ public:
 };
 ```
 
+#### 第三方实现
+
+- Zeromq
+- boost.lockfree.queue/boost.lockfree.spsc_queue
+
 ### 无锁线程安全栈
 
 ```c++
@@ -1295,6 +1300,10 @@ public:
   }
 };
 ```
+
+#### 第三方实现
+
+- boost.lockfree.stack
 
 
 
