@@ -8,11 +8,11 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter2. Function Templates](chapter2.md)
 - [Chapter3. Class Templates](chapter3.md)
 - [Chapter4. Nontype Template Parameters](chapter4.md)
-- [Chapter5. Trickly Basics]
-- [Chapter6. Using Templates in Practice]
+- [Chapter5. Trickly Basics](chapter5.md)
+- [Chapter6. Using Templates in Practice](chapter6.md)
 - [Chapter7. Basic Template Terminology](chapter7.md)
-- [Chapter8. Fundamentals in Depth]
-- [Chapter9. Names in Templates]
+- [Chapter8. Fundamentals in Depth](chapter8.md)
+- [Chapter9. Names in Templates](chapter9.md)
 - [Chapter10. Instantiation]
 - [Chapter11. Template Argument Deduction]
 - [Chapter12. Specialization and Overloading]

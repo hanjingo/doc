@@ -1841,6 +1841,8 @@ dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧
 
 diagnose `/ˈdaɪəɡnəʊz/` 诊断，判断
 
+diagnostic `/ˌdʌɪəɡˈnɒstɪk/` 症状，诊断程序，诊断法，s诊断的
+
 diagram `/ˈdaɪəɡræm/` 图解，图表，示意图
 
 diameter `/daɪˈæmɪtər/` 直径
@@ -2331,6 +2333,8 @@ envelope `/ˈɛnvələʊp/` 信封，膜，包装袋，气囊
 
 envious `/ˈenviəs/` 嫉妒，羡慕的
 
+envision `/ɪnˈvɪʒn/` 想象
+
 ### eo
 
 [回到E](#E)--[回到顶部](#英汉词典)
@@ -2368,6 +2372,8 @@ erect `/ɪˈrekt/` 建造，建立，垂直的，竖立的
 erode `/ɪˈrəʊd/` 腐蚀，侵蚀，风化，削弱，损害
 
 erratum `/ɛˈrɑːtəm/` 勘误表，书中的文字错误
+
+erroneous `/ɪˈrəʊnɪəs/` 错误的
 
 ### es
 
@@ -2653,6 +2659,8 @@ finch `/fɪntʃ/` 雀类
 
 fine `/fʌɪn/` 极好的，优秀的，罚款，对...处以罚金
 
+finery `/ˈfʌɪnəri/` 华丽服饰
+
 finite `/'faɪnaɪt/` 有限的
 
 fir `/fɜːr/` 杉木
@@ -2896,6 +2904,8 @@ gallant `/ɡəˈlænt/` 勇敢的，（向女子）献殷勤的，护卫
 gallery `/ˈɡæləri/` 美术馆，画廊，旁听席
 
 garb `/ɡɑːb/` 装束，装饰，打扮，外表
+
+garner `/ˈɡɑːnə/` 获得，收集，得到
 
 gasoline `/ˈɡæsəliːn/` 汽油
 
@@ -3459,6 +3469,8 @@ inaugurate `/ɪˈnɔːɡjəreɪt/` 开创，为...揭幕，为...举行就职典
 
 incapable `/ɪnˈkeɪpəbl/` 不能克制的，没有能力的
 
+incarnation `/ˌɪnkɑːˈneɪʃn/` 体现，生命，肉身
+
 incense `/ˈɪnsens/` 熏香，焚香，激怒
 
 incentive `/ɪnˈsentɪv/` 刺激，激励
@@ -3474,6 +3486,8 @@ incisive `/ɪnˈsaɪsɪv/` 敏锐的，透彻的，一针见血的
 inclination `/ˌɪnklɪˈneɪʃn/` 倾向，意愿，趋向
 
 inclined `/ɪnˈklaɪnd/` 倾斜，倾向，趋势
+
+inclusion `/ɪnˈkluːʒn/` 包括，被包括的项目
 
 incomplete `/ˌɪnkəm'pliːt/` 不完全的，不完整的
 
@@ -3527,6 +3541,8 @@ inextricably `/ˌɪnɪkˈstrɪkəbli/` 无法摆脱的，不可分割的
 
 infamous `/ˈɪnfəməs/` 臭名昭著的，无耻的
 
+inference `/ˈɪnf(ə)rəns/` 推断，推断结果
+
 inferior `/ɪnˈfɪriər/` 低等，低劣的，下级
 
 inferiority `/ɪnˌfɪəriˈɒrəti/` 劣等，低等，自卑感
@@ -3548,6 +3564,8 @@ infuse `/ɪnˈfjuːz/` 沏（茶），泡（草药），注入
 ingenious `/ɪnˈdʒiːniəs/` 聪明的，精巧的，机敏的，巧妙的
 
 ingest `/ɪnˈdʒest/` 摄入，食入，咽下
+
+ingredient `/ɪnˈɡriːdɪənt/` 原料，因素
 
 inhabitant `/ɪnˈhæbɪtənt/` 居民
 
@@ -3622,6 +3640,8 @@ intellectual `/ˌɪntəˈlektʃuəl/` 知识分子，智力的，理智的
 intelligence `/ɪnˈtelɪdʒəns/` 智力，才智，情报，理解力
 
 intend `/ɪn'tend/` 想要，打算，意指
+
+intense `/ɪnˈtɛns/` 强烈的，紧张的，激烈的
 
 intent `/ɪn'tent/` 意图，目的，意向，含义
 
@@ -4477,6 +4497,8 @@ miracle `/ˈmɪrəkl/` 奇迹，神迹，精品
 
 misbehavior `/'mɪsbɪ'heɪvjə/` 粗鲁行为，品行不端
 
+misconception `/ˌmɪskənˈsɛpʃn/` 错误观念
+
 misconduct `/ˌmɪsˈkɒndʌkt/`  行为失当，行为不端，失职
 
 mislead `/ˌmɪsˈliːd/` 误导，引入歧途
@@ -5070,6 +5092,8 @@ overlook `/ˌəʊvəˈlʊk/` 忽略，忽视，俯视
 overnight `/ˌəʊvəˈnʌɪt/` 一晚上，整晚，夜间的，过夜的
 
 oversee `/ˌəʊvəˈsiː/` 监督，监视，偷看到
+
+oversimplification `/ˌəʊvəˌsɪmplɪfɪˈkeɪʃn/` 过于简化
 
 oversleep `/ˌəʊvəˈsliːp/` 睡过头
 
@@ -5945,6 +5969,8 @@ rein `/reɪn/` 缰绳，驾驭，控制
 
 reinforce `/ˌriːɪnˈfɔːs/` 加强，加固，增援，支持
 
+reiterate `/ˌriːˈɪtəreɪt/` 重申
+
 rejuvenate `/rɪˈdʒuːvəneɪt/` 返老还童，恢复活力，复原
 
 rekindle `/ˌriːˈkɪndl/` 重新点燃，振作精神
@@ -6406,6 +6432,8 @@ sewerage `/ˈsuːərɪdʒ/` 排水系统，污水处理系统
 shade `/ʃeɪd/` 灯罩，阴凉处，遮蔽，阴影
 
 shadow `/ˈʃædəʊ/` 阴影，影子，背光处，些许
+
+shallow `/ˈʃaləʊ/` 浅的，微弱的，浅薄的
 
 sham `/ʃæm/` 伪装，假象，冒充
 
@@ -7051,6 +7079,8 @@ tenable `/'tenəbl/` 站得住脚的，无懈可击的
 
 tend `/tend/` 趋势
 
+tendency `/ˈtɛndənsi/` 倾向，趋势，派别
+
 tenement `/ˈtenəmənt/` 房屋，住户，租户，廉租公寓
 
 tension `/ˈtenʃn/` 紧张，矛盾，对立，烦躁
@@ -7450,6 +7480,8 @@ unary `/ˈjuːnəri/` 一元（数学名词）
 unbearable `/ʌnˈbeərəbl/` 无法忍受的，难耐的
 
 uncharted `/ˌʌnˈtʃɑːtɪd/` 未知的，地图上未标明的，人迹罕至的
+
+underestimate `/ʌndərˈɛstɪmeɪt/` 低估
 
 underlie `/ˌʌndəˈlaɪ/` 构成，作为...的原因
 
