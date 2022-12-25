@@ -188,6 +188,7 @@
 ### 浏览器和网络工具
 
 - Telegram的Qt版本 [telegramdesktop](https://github.com/telegramdesktop)/**[tdesktop](https://github.com/telegramdesktop/tdesktop)**
+- Telegram机器人 [tdlib](https://github.com/tdlib)/**[telegram-bot-api](https://github.com/tdlib/telegram-bot-api)**
 - 基于Qt和Xmpp的通讯工具 [WHUCSLASD2017](https://github.com/WHUCSLASD2017)/**[nowe](https://github.com/WHUCSLASD2017/nowe)**
 - 官方Curl库 [curl](https://github.com/curl)/**[curl](https://github.com/curl/curl)**
 - [chromium浏览器](https://github.com/chromium/chromium)
