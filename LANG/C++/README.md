@@ -25,6 +25,7 @@
 - [string](boost_string.md)
 - [test](boost_test.md)
 - [time](boost_time.md)
+- [ublas](boost_ublas.md)
 
 ---
 

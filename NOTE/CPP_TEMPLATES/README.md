@@ -15,7 +15,7 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter9. Names in Templates](chapter9.md)
 - [Chapter10. Instantiation](chapter10.md)
 - [Chapter11. Template Argument Deduction](chapter11.md)
-- [Chapter12. Specialization and Overloading]
+- [Chapter12. Specialization and Overloading](chapter12.md)
 - [Chapter13. Future Directions]
 - [Chapter14. The Polymorphic Power of Templates]
 - [Chapter15. Traits and Policy Classes]

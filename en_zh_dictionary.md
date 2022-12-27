@@ -429,6 +429,8 @@ arthritis `/ɑːˈθraɪtɪs/` 关节炎
 
 articulate `/ɑːˈtɪkjuleɪt/` 表达，善于表达的，口齿清晰的
 
+artificial `/ˌɑːtɪ'fɪʃl/` 人造的，虚伪的，武断的
+
 artisan `/ˌɑːtɪˈzæn/` 工匠，手艺人
 
 ### as
@@ -1217,6 +1219,8 @@ compass `/ˈkʌmpəs/` 罗盘，指南针，圆规
 
 compelling `/kəmˈpelɪŋ/` 引人入胜的，强迫，迫使，不可抗拒的
 
+compensate `/'kɒmpenseɪt/` 补偿，赔偿，付报酬
+
 compete `/kəmˈpiːt/` 竞争，对抗，竞赛
 
 compile `/kəmˈpaɪl/` 汇编，收集，编撰
@@ -1933,6 +1937,8 @@ discreet `/dɪˈskriːt/` 谨慎的，慎重的，考虑周到的
 
 discrete `/dɪˈskriːt/` 分散，分离，离散
 
+discriminate `/dɪ'skrɪmɪneɪt/` 区分，区别对待，辨别，差别对待
+
 disgrace `/dɪsˈɡreɪs/` 耻辱，丢脸
 
 disillusion `/ˌdɪsɪˈluːʒn/` 幻灭，觉醒
@@ -2246,6 +2252,8 @@ eliminate `/ɪˈlɪmɪneɪt/` 消灭，铲除，排除，淘汰
 elite `/eɪˈliːt/` 精英，精锐的，上层集团，掌权人物
 
 elixir `/ɪˈlɪksə(r)/` 万能药，长生不老药
+
+ellipsis `/ɪ'lɪpsɪs/` 省略，省略号
 
 elusive `/iˈluːsɪv/` 难懂的，难以达到的，难解的
 
@@ -3722,6 +3730,8 @@ intimacy `/ˈɪntɪməsi/` 亲密，密切，性行为
 intoxication `/ɪnˌtɒksɪˈkeɪʃn/` 醉酒，陶醉，中毒
 
 intrepid `/ɪnˈtrepɪd/` 勇敢的，无畏的，刚毅的
+
+intricate `/'ɪntrɪkət/` 复杂的，难懂的
 
 introduce `/ˌɪntrəˈdjuːs/` 介绍，主持，引出，初次提及，引入，推行，插入
 
@@ -5501,6 +5511,8 @@ potentially `/pə'tenʃəli/` 潜在地
 
 practice `/ˈpræktɪs/` 习惯，习俗，实践，练习，实习
 
+pragmatic `/præɡ'mætɪk/` 实用主义的，实际的
+
 prairie `/ˈpreri/` 大草原
 
 preach `/priːtʃ/` 传教，布道，说教，宣扬
@@ -5560,6 +5572,8 @@ present `/ˈpreznt/` 目前，提出，出席
 preserve `/prɪˈzɜːv/` 防腐，保护，维护，保存，保养，保鲜
 
 preside `/prɪˈzaɪd/` 主持，担任
+
+presumably `/prɪ'zjuːməbli/` 大概，据推测，可能
 
 presume `/prɪ'zjuːm/` 假定，推测，利用，理所当然
 
@@ -6127,6 +6141,8 @@ reverse `/rɪˈvɜːs/` 反面，背面，颠倒，反转，废除
 
 revert `/rɪˈvɜːt/` 恢复，还原，归还
 
+revise `/rɪ'vaɪz/` 校订，修正，校正
+
 revisit `/ˌriː'vɪzɪt/` 回顾，重温，再访，重游
 
 revitalization `/ˌri:ˌvaɪtəlaɪ'zeɪʃn/` 复兴，复苏，新生
@@ -6256,6 +6272,8 @@ rugged `/ˈrʌɡɪd/` 崎岖的，不平的，粗旷的，强壮的
 ruins `/ˈruːɪnz/` 毁坏，破坏，遗迹
 
 rummage `/ˈrʌmɪdʒ/` 翻找，供义卖的捐献物
+
+rumored `/'ruːmə/` 谣言，传闻，谣传
 
 runaway `/'rʌnəweɪ/` 逃亡者，逃跑的，失控的
 
@@ -7039,6 +7057,8 @@ syntax `/ˈsɪntæks/` 语法，句法
 
 synthesis `/ˈsɪnθəsɪs/` 合成，结合，综合体
 
+synthesize `/'sɪnθəsaɪz/` 合成，综合
+
 ### sz
 
 [回到S](#S)--[回到顶部](#英汉词典)
@@ -7342,6 +7362,8 @@ transitively `/'trænsətɪvli/` 及物地
 transmitter `/trænzˈmɪtə(r)/` 发射台，发报台，传输者
 
 transmute `/trænzˈmjuːt/` 变形，变化
+
+transparency `/træns'pærənsi/` 透明度，幻灯片
 
 transparent `/trænsˈpærənt/` 透明的，清澈的，显而易见的，易懂的
 
@@ -7677,6 +7699,8 @@ valentine `/ˈvæləntaɪn/` 情人节
 
 valid `/ˈvælɪd/` 有效的，合理的，认可的
 
+validity `/və'lɪdəti/` 合法性，有效性，正确性
+
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
 vapor `/ˈveɪpə(r)/` 蒸汽，水蒸气
@@ -7771,6 +7795,8 @@ via `/ˈvaɪə/` 通过，经由，凭借，经过（某一地方）
 
 vibration `/vaɪˈbreɪʃn/` 振动，颤动，犹豫
 
+vice `/vaɪs/` 缺点，恶习，邪恶，罪行，生理缺陷，副的，代替，代理的，老虎钳
+
 vicious `/ˈvɪʃəs/` 恶毒的，凶残的，邪恶的
 
 videocassette `/ˌvɪdɪoʊkə'set/` 录像带
@@ -7822,6 +7848,8 @@ vivid `/ˈvɪvɪd/` 清晰的，生动的，鲜艳的，强烈的，丰富的
 [回到V](#V)--[回到顶部](#英汉词典)
 
 vocabulary `/və(ʊ)ˈkabjʊləri/` 词汇，词汇量，词汇表
+
+vocal `/'vəʊkl/` 声音的，口头的，声乐的，直言不讳的，元音，声乐作品
 
 vocation `/vəʊˈkeɪʃn/` 职业，业务，行业，使命
 
