@@ -1014,7 +1014,7 @@ print_list(${arg})
 
 ### 编译器选项
 
-TOD
+TODO
 
 ### 从命令行传入参数
 
@@ -1097,6 +1097,13 @@ FetchContent_Declare( # 声明外部内容
     hello
     GIT_REPOSITORY https://github.com/hanjingo/doc.git
     GIT_TAG main
+)
+
+FetchContent_Populate( # 声明外部内容
+  firmware
+  URL        https://mycompany.com/assets/firmware-1.23-arm.tar.gz
+  URL_HASH   MD5=68247684da89b608d466253762b0ff11
+  SOURCE_DIR firmware
 )
 
 # CMake 3.14+

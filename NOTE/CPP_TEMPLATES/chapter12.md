@@ -77,3 +77,45 @@ A full specialization is in many ways similar to a normal declaration (or rather
 
 Not only member templates, but also ordinary static data members and member functions of class templates, can be fully specialized. The syntax requires `template<>` prefix for every enclosing class templat. If a member template is being specialized, a `template<>` must also be added to denote it is being specialized.
 
+```c++
+template<>
+class Outer<bool>::Inner<wchar_t>{
+    public:
+    	enum{count = 2};
+};
+```
+
+
+
+## 12.4 Partial Class Template Specialization
+
+There exists a number of limitations on the parameter and argument lists of partial specialization declarations. Some of them are as follows:
+
+1. The arguments of the partial specialization must match in kind (type, nontype, or template) the corresponding parameters of the primary template.
+2. The parameter list of the partial specialization cannot have default arguments; the default arguments of the primary class template are used instead.
+3. The nontype arguments of the partial specialization should either be nondependent values or plain nontype template parameters. They cannot be more complex dependent expressions like `2*N` (where `N` is a template parameter).
+4. The list of template arguments of the partial specialization should not be identical (ignoring renaming) to the list of parameters of the primary template.
+
+```c++
+template<typename T, int I = 3>
+class S;           // 基本模板
+
+template<typename T>
+class S<int, T>;   // 错误；参数类型不匹配
+
+template<typename T = int>
+class S<T, 10>;    // 错误；不能具有缺省实参
+
+template<int I>
+class S<int, I*2>; // 错误；不能有非类型的表达式
+
+template<typename U, int K>
+class S<U, K>;     // 错误；局部特化和基本模板之间没有本质的区别
+```
+
+
+
+## 12.5 Afternotes
+
+`template metaprogramming` Using the template instantiation mechanism to perform nontrivial computations at compile time.
+

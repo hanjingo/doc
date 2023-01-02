@@ -157,6 +157,7 @@
 
 - C++日志库 [log4cpp](http://log4cpp.sourceforge.net/)
 - C++日志库 [log4cplus](https://github.com/log4cplus)/**[log4cplus](https://github.com/log4cplus/log4cplus)**
+- C++日志集大成者 [amrayn](https://github.com/amrayn)/**[easyloggingpp](https://github.com/amrayn/easyloggingpp)**
 
 ### 内存管理库
 

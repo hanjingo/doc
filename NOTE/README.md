@@ -75,6 +75,7 @@
 
 ## 在读
 
+- [API Design for C++](API_DESIGN_FOR_CPP/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [Boost程序库完全开发指南-深入C++"准"标准库](PROFESSIONAL_BOOST_GUIDE/README.md)

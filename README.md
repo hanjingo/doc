@@ -29,8 +29,6 @@
 
 [dot language](LANG/dot.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;[ASSIC table](OTHERS/assic_table.md) 
 
-[dot language](LANG/dot.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;[ASSIC table](OTHERS/assic_table.md) 
-
 [Posix Interface](OS/posix.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;[Lua API](LANG/LUA/api.md) 
 
 [Sockets Program](NET/socket.md)&nbsp;|

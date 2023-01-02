@@ -267,9 +267,9 @@ ambience `/ˈæmbiəns/` 环境，氛围，气氛
 
 ambient `/ˈambɪənt/` 周围的，环境音乐的
 
-ambivalent `/æmˈbɪvələnt/` 矛盾的
-
 ambiguity `/ambɪˈɡjuːɪti/` 歧义
+
+ambivalent `/æmˈbɪvələnt/` 矛盾的
 
 ameliorate `/ə'miːliəreɪt/` 改善，变好
 
@@ -409,6 +409,8 @@ arduous `/ˈɑːdjuəs/` 艰苦的，艰难的
 
 arena `/əˈriːnə/` 竞技场，圆形运动场，圆形剧场，斗争场所，活动场所
 
+arguable `/'ɑːɡjuəbl/` 可辩论的，可论证的
+
 argue `/ˈɑːɡjuː/` 争论，辩论，主张，表明，说服，提供证明
 
 arise `/ə'raɪz/` 出现，升起，上升，产生
@@ -498,6 +500,8 @@ attempt `/ə'tempt/` 企图，尝试，试图
 attend `/əˈtend/` 出席，参加
 
 attendant `/əˈtendənt/` 服务员，侍者，随从
+
+attentive `/ə'tentɪv/` 注意的，留意的
 
 attic `/'ætɪk/` 阁楼
 
@@ -701,6 +705,8 @@ blend `/blend/` 混合，掺合，混合物
 
 blight `/blaɪt/` 枯萎，凋谢，摧毁
 
+bloat `/bləʊt/` 膨胀，肿胀的，自傲
+
 blockbuster `/ˈblɒkbʌstə(r)/` 一鸣惊人的，非常成功的
 
 blossom `/ˈblɒsəm/` 开花，花朵，兴旺
@@ -812,6 +818,8 @@ brim `/brɪm/` 边缘，边沿
 brittle `/ˈbrɪtl/` 易碎的，脆弱的，靠不住的
 
 broad `/brɔːd/` 宽广的，广泛的，明显的，粗野的
+
+brought `/brɔːt/` 拿来，带来
 
 brown `/braʊn/` 棕色，褐色
 
@@ -958,6 +966,8 @@ catalyze `/kætəlaɪz/` 催化，刺激，促进
 catastrophic `/ˌkæt.əˈstrɒf.ɪk/` 极差的，糟糕透顶的，灾难性的
 
 catchy `/'kætʃi/` 引人注目的，易记住的，朗朗上口的，诡诈的，不连贯的
+
+categorize `/'kætəɡəraɪz/` 分类
 
 caterpillar `/ˈkætəpɪlə(r)/` 毛毛虫
 
@@ -1181,7 +1191,11 @@ collision `/kəˈlɪʒn/` 碰撞，冲突
 
 colloquial `/kəˈləʊkwiəl/` 口语的，白话的，通俗的
 
+colon `/'kəʊlən/` 冒号，结肠
+
 colonize `/ˈkɒlənaɪz/` 殖民，移民
+
+combat `/'kɒmbæt/` 战斗，试图解决，与...斗争
 
 combination `/ˌkɒmbɪˈneɪʃn/` 联合，组合，联合体
 
@@ -1198,6 +1212,8 @@ comic `/ˈkɒmɪk/` 滑稽的，使人发笑的，漫画，喜剧演员
 comma `/ˈkɒmə/` 逗号
 
 comment `/ˈkɒment/` 评论，解说，批评，指责
+
+commentator `/'kɒmənteɪtə(r)/` 评论员，解说员，注释者
 
 commercial `/kəˈmɜːʃl/` 贸易的，商业的，盈利的
 
@@ -1224,6 +1240,10 @@ compensate `/'kɒmpenseɪt/` 补偿，赔偿，付报酬
 compete `/kəmˈpiːt/` 竞争，对抗，竞赛
 
 compile `/kəmˈpaɪl/` 汇编，收集，编撰
+
+complete `/kəm'pliːt/` 完整的，完成的，彻底的，完成，使完美，使圆满
+
+completeness `/kəm'pliːtnəs/` 完成，结束，完整，圆满
 
 complex `/ˈkɒmplɛks/` 复杂的，难懂的
 
@@ -1368,6 +1388,8 @@ contrast `/'kɒntrɑːst/` 对比，差别，对照，反差
 controversial `/ˌkɒntrəˈvɜːʃl/` 有争议的
 
 controversy `/ˈkɒntrəvəːsi/` 争论
+
+covariant `/kəʊ'veəriənt/` 协变的，协变式
 
 converge `/kən'vɜːdʒ/` 聚合，集中，会聚，使集合
 
@@ -1699,6 +1721,8 @@ deceptive `/dɪ'septɪv/` 骗人的，虚伪的，欺诈的
 
 decide `/dɪ'saɪd/` 决定，判断，断定
 
+decision `/dɪ'sɪʒn/` 决定，决心，判决
+
 decline `/dɪˈklaɪn/` 下降，减少，衰退
 
 decompose `/ˌdiːkəmˈpəʊz/` 分解，腐烂
@@ -1718,6 +1742,8 @@ dedicate `/'dedɪkeɪt/` 致力于，献出
 deduce `/dɪ'djuːs/` 演绎，推理
 
 deduction `/dɪˈdʌkʃn/` 扣除，推论，推理，税后额度
+
+deem `/diːm/` 认为，视作
 
 defame `/dɪ'feɪm/` 诽谤，中伤
 
@@ -2723,6 +2749,8 @@ flavor `/ˈfleɪvə/` 风味，调味，特色
 
 flavour `/ˈfleɪvər/` 风味，特点，特色
 
+fledge `/fledʒ/` 长羽毛，用羽毛覆盖，在...上装羽毛，喂养小鸟（以待羽毛长成）
+
 flee `/fliː/` 逃跑，消失，逃离
 
 flesh `/flɛʃ/` 肉，可食用部分，皮肤，肉体，肉欲
@@ -3099,6 +3127,8 @@ groove `/ɡruːv/` 槽，开槽，纹，习惯
 
 gross `/ɡrəʊs/` 粗俗的，严重的，粗略的，总收入（毛利）
 
+growth `/ɡrəʊθ/` 增长，生长，发展，种植，生长物，瘤子，赘生物
+
 ### gs
 
 [回到G](#G)--[回到顶部](#英汉词典)
@@ -3258,6 +3288,8 @@ hierarchy `/ˈhʌɪərɑːki/` 等级制度
 hinder `/ˈhɪndə(r)/` 阻碍，妨碍，阻挡
 
 hindrance `/ˈhɪn.drəns/` 障碍，阻碍
+
+hindsight `/'haɪndsaɪt/` 事后聪明，后见之明，照门（枪的瞄准器）
 
 hinge `/hɪndʒ/` 铰链，关键
 
@@ -3687,6 +3719,8 @@ interaction `/ˌɪntər'ækʃn/` 相互作用，相互影响
 
 interest `/ˈɪntrəst/` 兴趣，重要性，利益
 
+interesting `/'ɪntrəstɪŋ/` 有趣的，引人入胜的
+
 interleave `/ˌɪntə'liːv/` 插入，交错
 
 intermittent `/ˌɪntəˈmɪtənt/` 断断续续的，间歇的
@@ -3744,6 +3778,8 @@ invade `/ɪnˈveɪd/` 入侵，侵犯
 invariants `/ɪnˈveərɪənts/` 不变量，不变关系
 
 invasion `/ɪnˈveɪʒn/` 侵略，入侵，侵犯
+
+invent `/ɪn'vent/` 发明，捏造
 
 invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
 
@@ -4153,6 +4189,8 @@ legislature `/ˈledʒɪsleɪtʃər/` 立法机关
 
 legitimacy `/lɪˈdʒɪtɪməsi/` 合法性，合理性，婚生子
 
+legitimate `/lɪ'dʒɪtɪmət/` 合法的，世袭的，婚生的，正当的，合理的，授权，宣布...合法
+
 legume `/ˈleɡjuːm/` 豆类，豆科作物
 
 leisure `/ˈleʒə(r)/` 空闲，闲暇
@@ -4438,6 +4476,10 @@ maze `/meɪz/` 迷宫，错综复杂
 [回到M](#M)--[回到顶部](#英汉词典)
 
 meager `/ˈmiːgə/` 瘦的，贫瘠的，贫乏的
+
+mean `/miːn/` 意思是，打算，导致，意味，平均值，平均的，中庸，低劣的，刻薄的，卑劣的
+
+meant `/ment/` 意味着，表示...的意思，注定，打算
 
 meantime `/'miːntaɪm/` 与此同时
 
@@ -4801,6 +4843,8 @@ nominee `/ˌnɒmɪˈniː/` 被任命者，被提名的人
 
 nonconformity `/ˌnɒnkənˈfɔːməti/` 不墨守成规的，不认同主流思想的
 
+nondefining `/ˌnɒn.dɪˈfaɪ.nɪŋ/` 非定义
+
 nonfiction `/ˌnɒnˈfɪkʃən/` 非小说性写实文学
 
 nonstarter `/nɒn'stɑːtə/`  早就无成功希望的人，未开始的人
@@ -5077,6 +5121,8 @@ ornament `/ˈɔːnəmənt/` 装饰，首饰，点缀
 
 orphan `/ˈɔːfn/` 孤儿
 
+orthogonality `/ɔːθɒgə'nælɪtɪ/` 正交性，相互垂直
+
 ### os
 
 [回到O](#O)--[回到顶部](#英汉词典)
@@ -5090,6 +5136,8 @@ osprey `/ˈɒspreɪ/`  鱼鹰
 ### ou
 
 [回到O](#O)--[回到顶部](#英汉词典)
+
+ourselves `/ɑː'selvz/` 我们自己
 
 oust `/aʊst/` 革职，罢免，剥夺
 
@@ -5487,6 +5535,8 @@ portrayal `/pɔːˈtreɪəl/` 画像，描写，描绘
 
 postage `/ˈpəʊstɪdʒ/` 邮费，邮资
 
+poster `/'pəʊstə(r)/` 海报，装饰画，广告
+
 postoperative `/ˌpəʊst ˈɒpərətɪv/` 术后的
 
 postpone `/pəʊs(t)ˈpəʊn/` 推迟
@@ -5636,6 +5686,8 @@ projection `/prəˈdʒekʃn/` 预测，推断，投影，投射
 prominent `/ˈprɒmɪnənt/`  重要的，杰出的，著名的，突出的
 
 promise `/'prɒmɪs/` 允诺，承诺，发誓，预示，约定
+
+promotion `/prə'məʊʃn/` 提升，促进，晋升，促销
 
 prompt `/prɒmpt/` 促使，导致，鼓励，督促，提示，准时的
 
@@ -5840,6 +5892,8 @@ quiescent `/kwiˈesnt/` 静止的，沉寂的，静态的
 quirky `/ˈkwəːki/` 古怪的
 
 quite `/kwaɪt/` 比较，相当，完全，很
+
+quo `/k'wəʊ/` 说
 
 quote `/kwəʊt/` 引用，引号，开价，上市
 
@@ -6062,6 +6116,8 @@ remainder `/rɪ'meɪndə(r)/` 剩余物，余数
 remark `/rɪˈmɑːk/` 评论，谈论，言论，评述
 
 remedy `/ˈrɛmɪdi/` 改进，补偿，治疗
+
+reminiscent `/ˌremɪ'nɪsnt/` 怀旧的，引人联想的，回忆着，回忆录作者
 
 remnant `/ˈremnənt/` 遗迹，残余物，边角剩料
 
@@ -6315,6 +6371,8 @@ sacred `/ˈseɪkrɪd/` 神圣的，受尊重的，神的
 
 saga `/ˈsɑːɡə/` 传奇故事，冒险故事，长篇小说
 
+sake `/seɪk/` 理由，缘故，目的，利益
+
 salient `/ˈseɪliənt/` 显著的，突出的，凸角
 
 saline `/ˈseɪlaɪn/` 盐水，盐分，含盐的
@@ -6550,6 +6608,8 @@ shuttle `/ˈʃʌtl/` 班机，班车，梭子，穿梭工具
 signify `/ˈsɪɡnɪfaɪ/` 表示，说明，预示，要紧
 
 significant `/sɪɡˈnɪfɪkənt/` 重要的，显著的，相当数量地
+
+silent `/'saɪlənt/` 安静的，沉默的，无言的，不吵闹的
 
 silt `/sɪlt/` 淤泥，泥沙，淤塞
 
@@ -6868,6 +6928,8 @@ strap `/stræp/` 捆扎，打绷带，带子
 stratum `/ˈstrɑːtəm/` 层，地层，岩层，阶层
 
 straw `/strɔː/` 稻草，吸管，麦秆
+
+strengthen `/'streŋθn/` 加强，变坚固
 
 strenuous `/ˈstrenjuəs/` 费力的，奋力的，顽强的
 
@@ -7557,6 +7619,8 @@ unbiased `/ʌn'baɪəst/` 公正的
 
 uncharted `/ˌʌnˈtʃɑːtɪd/` 未知的，地图上未标明的，人迹罕至的
 
+uncommon `/ʌn'kɒmən/` 不寻常的，不常见的，极度的
+
 underestimate `/ʌndərˈɛstɪmeɪt/` 低估
 
 underlie `/ˌʌndəˈlaɪ/` 构成，作为...的原因
@@ -7748,6 +7812,8 @@ venomous `/ˈvenəməs/` 有毒的，恶毒的
 ventilation `/ˌvɛntɪˈleɪʃən/` 通风，出口
 
 venue `/ˈvenjuː/` 地点，犯罪地点，审判地
+
+verbose `/vɜː'bəʊs/` 罗嗦的，冗长的
 
 verbosity `/vɜ:'bɒsətɪ/` 冗长，赘述
 
@@ -7956,6 +8022,8 @@ wavy `/ˈweɪvi/` 起伏不平的，波浪形的
 ### we
 
 [回到W](#W)--[回到顶部](#英汉词典)
+
+weaken `/'wiːkən/` 削弱，变弱，弄淡，使...弱
 
 weariness `/ˈwɪərinəs/` 疲倦，疲劳，厌倦
 
