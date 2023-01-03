@@ -175,6 +175,8 @@ affinity `/əˈfɪn.ə.ti/` 姻亲，近似，密切关系，吸引力
 
 affluent `/ˈæfluənt/` 富裕的，丰富的
 
+afford `/ə'fɔːd/` 提供，给予，花费的起，能够做，承担得起
+
 afterward `/'ɑːftəwəd/` 后来，以后
 
 ### ag
@@ -222,6 +224,8 @@ akin `/əˈkɪn/` 类似的
 ### al
 
 [回到A](#A)--[回到顶部](#英汉词典)
+
+albeit `/ˌɔːl'biːɪt/` 虽然（即使）
 
 album `/ˈalbəm/` 册子，歌曲专辑
 
@@ -740,6 +744,8 @@ boil `/bɔɪl/` 煮沸，沸腾，翻滚
 boiler `/ˈbɔɪlə/` 锅炉
 
 boilerplate `/bɔɪləpleɪt/` 样板文件，锅炉钢板
+
+bold `/bəʊld/` 大胆的，陡峭的，醒目的，粗体的，无礼的
 
 bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 
@@ -1303,11 +1309,13 @@ concept `/ˈkɒnsept/` 概念，观念，理解，想法，怀孕
 
 conceptual `/kən'septʃuəl/` 概念的
 
+concise `/kən'saɪs/` 简明的，简要的
+
 conclude `/kənˈkluːd/` 推断，断定，终止，结束
 
 conclusion `/kənˈkluː.ʒən/` 结尾，结局，结果
 
-concrete `/ˈkɒŋkriːt/` 混凝土，水泥
+concrete `/ˈkɒŋkriːt/` 具体的，实体的，混凝土，水泥，实质性的，凝结，结合
 
 condenser `/kənˈdensə(r)/` 冷凝器，（汽车发动机）电容器
 
@@ -1637,6 +1645,8 @@ cumbersome `/ˈkʌmbəs(ə)m/` 笨重的，累赘的
 
 cupboard `/'kʌbəd/` 碗柜，衣柜，壁橱
 
+curious `/'kjʊəriəs/` 好奇的，奇特的
+
 curriculum `/kəˈrɪkjələm/` 课程，全部课程
 
 curtain `/'kɜːtn/` 门窗，窗帘，装饰，遮蔽
@@ -1744,6 +1754,10 @@ deduce `/dɪ'djuːs/` 演绎，推理
 deduction `/dɪˈdʌkʃn/` 扣除，推论，推理，税后额度
 
 deem `/diːm/` 认为，视作
+
+deep `/diːp/` 深的，深刻的，深奥的，深处
+
+deeper `/'diːpə/` 更深
 
 defame `/dɪ'feɪm/` 诽谤，中伤
 
@@ -1898,6 +1912,8 @@ disaster `/dɪ'zɑːstə(r)/` 灾难
 discuss `/dɪˈskʌs/` 讨论，论述
 
 disentangle `/ˌdɪs(ɪ)nˈtaŋɡl/` 解开，摆脱，理出
+
+distinguish `/dɪ'stɪŋɡwɪʃ/` 区别，辨认，使显著
 
 decimal `/ˈdesɪml/` 小数，小数的
 
@@ -2293,6 +2309,8 @@ embarrass `/ɪmˈbærəs/` 尴尬，困扰
 
 embarrassingly `/ɪm'bærəsɪŋli/` 令人为难的
 
+embarrassment `/ɪm'bærəsmənt/` 困窘，尴尬，难堪
+
 embassy `/ˈembəsi/` 大使馆
 
 embattle `/ɪmˈbætld/` 处境艰难的，被困扰的，列阵，严阵以待
@@ -2318,6 +2336,8 @@ emotion `/ɪˈməʊʃn/` 情绪，情感，激情
 emperor `/ˈempərər/` 皇帝
 
 emphasis `/ˈemfəsɪs/` 强调，重视，加强，重读
+
+emulate `/'emjuleɪt/` 仿真，效法，尽力赶上
 
 ### en
 
@@ -2532,6 +2552,8 @@ expanse `/ɪkˈspæns/` 宽阔，广阔，浩瀚
 expedition `/ˌekspəˈdɪʃn/` 远征，探险，考察
 
 expell `/ɪkˈspel/` 排除
+
+experience `/ɪk'spɪəriəns/` 经历，经验，体验，感受
 
 expire `/ɪkˈspaɪə(r)/` 过期，失效，断气
 
@@ -2997,6 +3019,8 @@ genre `/ˈʒɑːnrə/` 类型，流派，体裁
 
 genuine `/'dʒenjuɪn/` 真诚的，真实的
 
+geometric `/ˌdʒiːə'metrɪk/` 几何学的，几何图形学的
+
 ### gf
 
 [回到G](#G)--[回到顶部](#英汉词典)
@@ -3114,6 +3138,8 @@ gravitation `/ˌɡrævɪˈteɪʃn/` 万有引力，引力
 grease `/ɡriːs/` 润滑油，油脂，给...涂油
 
 greedy `/'ɡriːdi/` 贪婪的
+
+grief `/ɡriːf/` 悲痛，忧伤
 
 grievance `/ˈɡriːvns/` 不平的事，委屈
 
@@ -3265,6 +3291,10 @@ heredity `/həˈredəti/` 遗传，遗传特征
 
 heroism `/ˈherəʊɪzəm/` 英雄主义
 
+heterogeneous `/ˌhetərə'dʒiːniəs/` 非均匀的，异种的，异质的，由不同成分形成的
+
+heuristic `/hju'rɪstɪk/` 启发式的（教学），探索的
+
 ### hf
 
 [回到H](#H)--[回到顶部](#英汉词典)
@@ -3324,6 +3354,8 @@ hollow `/ˈhɒləʊ/` 中空的，空洞的
 homespun `/'həʊmspʌn/` 朴素的，手织的
 
 homestead `/ˈhəʊmsted/` 家宅，宅地，农庄
+
+hood `/hʊd/` 头巾，兜帽，遮罩，引擎盖，覆盖
 
 horde `/hɔːd/` 部落，一大群
 
@@ -3779,6 +3811,8 @@ invariants `/ɪnˈveərɪənts/` 不变量，不变关系
 
 invasion `/ɪnˈveɪʒn/` 侵略，入侵，侵犯
 
+invasive `/ɪn'veɪsɪv/` 侵入的，侵略性的，攻击性的
+
 invent `/ɪn'vent/` 发明，捏造
 
 invention `/ɪnˈvɛnʃ(ə)n/` 发明物，发明，创造力
@@ -4150,6 +4184,8 @@ lavish `/ˈlævɪʃ/` 奢华，浪费
 lawyer `/ˈlɔɪə/` 律师
 
 lay `/leɪ/` 安放，放，铺，摆放
+
+layer `/'leɪə(r)/` 层，分层，层次
 
 layman `/ˈleɪmən/` 门外汉，外行
 
@@ -5727,6 +5763,8 @@ protest `/ˈprəʊtest/` 抗议，反对，申辩
 
 protein `/ˈproʊtiːn/` 蛋白质
 
+prove `/pruːv/` 证明，检验，发酵
+
 provide `/prəˈvʌɪd/` 提供
 
 proximity `/prɒk'sɪməti/` 接近，亲近
@@ -6017,6 +6055,8 @@ reclaim `/rɪˈkleɪm/` 开拓，拿回，要求归还，沙漠化
 
 reclamation `/ˌrekləˈmeɪʃn/` 开垦，开拓，改造
 
+recode `/'riː'kəʊd/` 重新编码
+
 recognition `/ˌrekəɡˈnɪʃn/` 认识，识别，承认，赞赏
 
 recollection `/ˌrekəˈlekʃn/` 回忆，记忆，记忆力
@@ -6046,6 +6086,8 @@ reed `/riːd/` 簧片，芦苇
 reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
 
 reek `/riːk/` 恶臭，难闻的气味
+
+reengineer `/riːendʒɪ'nɪə(r)/` 再设计，重新建造，再设法处理
 
 refer `/rɪ'fɜː(r)/` 参考，归类，归因
 
@@ -6695,6 +6737,8 @@ slumber `/ˈslʌmbə(r)/` 睡眠，沉睡
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
+smooth `/smuːð/` 光滑的，平稳的，流畅的，圆滑的，可口的
+
 smoother `/'smuːðə/` 路面平整机，压路机，修光工具
 
 smuggle `/ˈsmʌɡl/` 走私，偷运
@@ -6738,6 +6782,8 @@ sophisticate `/səˈfɪstɪkət/` 老于世故的人，使...更精确
 sophistication `/səˌfɪstɪˈkeɪʃn/` 世故，老练，复杂度，精密
 
 sore `/sɔː/` 痛的，感到疼痛的，紧迫的，剧烈的，疮，痛处
+
+sought `/sɔːt/` 搜索
 
 souvenir `/ˌsuːvəˈnɪə(r)/` 纪念品，纪念物
 
@@ -6960,6 +7006,8 @@ stun `/stʌn/` 打昏，给...深刻印象，使...震惊，让...愣住
 [回到S](#S)--[回到顶部](#英汉词典)
 
 subduct `/səb'dʌkt/` 减法，塌陷，掏空，取回
+
+subexpression `/sʌbɪksp'reʃn/` 子表达式
 
 submarine `/ˌsʌbməˈriːn/` 潜艇，长卷三明治，水下的，海地的
 
@@ -7402,6 +7450,8 @@ tox `/'tɒks/` 毒药
 ### tr
 
 [回到T](#T)--[回到顶部](#英汉词典)
+
+track `/træk/` 轨道，跑道，踪迹，小路，追踪，跟踪
 
 traction `/ˈtrækʃn/` 拖拽，牵引，拉力
 

@@ -153,3 +153,147 @@ int main()
 }
 ```
 
+
+
+## 13.11 Custom Instantiation Diagnostics
+
+```c++
+template<typename T>
+void shell(T const& env)
+{
+    template try {
+        typename T::Index p;
+        *p = 0;
+    } catch "T::Index must be a pointer=like type";
+    typename T::Index i;
+    middle(i);
+}
+```
+
+
+
+## 13.12 Overloaded Class Templates
+
+It is entirely possible to imagine that class templates could be overloaded on their template parameters.
+
+```c++
+template<typename T1>
+class Tuple{
+    // 单个
+};
+
+template<typename T1, typename T2>
+class Tuple{
+    // 一对
+};
+
+template<typename T1, typename T2>
+class Pair{
+    // 一对泛型的类型域
+};
+
+template<int I1, int I2>
+class Pair{
+    // 一对常整数值
+};
+
+template<typename T1, typename T2, typename T3>
+class Tuple{
+    // 3元组
+};
+```
+
+
+
+## 13.13 List Parameters
+
+A need that shows up sometimes is the ability to pass a list of types as a single template argument. Usually, this list meant for one of two purpose: declaring a function with a parameterized number of parameters or defining a type struct with a parameterized list of members.
+
+```c++
+#include <iostream>
+
+template<typename T, ... list>
+T const& max(T const&, T const&, list const&);
+
+template<typename T>
+class ListProps {
+    public:
+    	enum{length = 1};
+};
+
+template<... list>
+class ListProps {
+    public:
+    	enum{length = 1 + ListProps<list[1 ...]>::length};
+}
+
+int main()
+{
+    std::cout << max(1, 2, 3, 4) << std::endl;
+}
+```
+
+
+
+## 13.14 Layout Control
+
+A fairly common template programming challenge is to declare an array of bytes that will be sufficiently large (but no excessively so) to hold an object of an as yet unknown type `T` -- in other words, a template parameter. One application of thist is the so-called discriminated unions (also called variant types or tagged unions):
+
+```c++
+template<typename T>
+class Alignment {
+    public:
+    	enum{max = alignof(T)};
+};
+
+template <... list>
+class Alignment {
+    public:
+    	enum{max = alignof(list[0]) > Alignment<list[1 ...]>::max
+            ? alignof(list[0])
+            : Alignment<list[1 ...]>::max}
+};
+
+template<... list>
+class Variant {
+    public:
+    	char buffer[Size<list>::max] alignof(Alignment<list>::max);
+}
+```
+
+
+
+## 13.15 Initializer Deduction
+
+```c++
+template<typename T>
+class Complex {
+    public:
+    	Complex(T const& re, T const& im);
+};
+
+Complex<> z(1.0, 3.0);
+```
+
+
+
+## 13.16 Function Expressions
+
+The idea here is that we can introduce a function expression with a special token `$` followed by parameter types in parentheses and a brace-enclosed body. Within such a construct, we can refer to the parameters with the special notation `$n`, when `n` is a constant indicating the number of the parameter.
+
+```c++
+class BigValue {
+    public:
+    	void init();
+};
+void compute(std::vecotr<BigValue>& vec)
+{
+    std::for_each(vec.begin(), vec.end(),
+                 $(BigValue&){$1.init();});
+}
+```
+
+
+
+## 13.17 Afternotes
+

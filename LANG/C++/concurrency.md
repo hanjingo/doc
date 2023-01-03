@@ -1510,3 +1510,5 @@ TODO
 [3] [cppreference.com](https://zh.cppreference.com/)
 
 [4] [面试题 -- 如何设计一个线程池](https://segmentfault.com/a/1190000040631931)
+
+[5] [C++ 标准库线程安全讨论](https://en.cppreference.com/w/cpp/container#Thread_safety)

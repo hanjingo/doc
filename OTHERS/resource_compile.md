@@ -60,6 +60,7 @@
 | 设计模式<br>Design Pattern                                   | + Erich Gamma<br>+ Richard Helm<br>+ Ralph Johnson<br>+ John Vlissides | 1th  | 学设计模式必看               |
 | STL源码刨析<br>The Annotated STL Sources(using SGI STL)      | + 侯捷                                                       | 1th  | 对stl讲解的比较详细          |
 | Unix环境高级编程<br>Advanced Programming in the UNIX Environment | + [美]W.Richard Stevens<br>+ [美]Stephen A.Rago              | 3th  | 讲解*nix系统编程领域的”圣经“ |
+| C++ Template 进阶指南                                        |                                                              |      |                              |
 
 ### 经济学
 

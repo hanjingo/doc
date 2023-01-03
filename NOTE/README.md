@@ -75,6 +75,7 @@
 
 ## 在读
 
+- [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [API Design for C++](API_DESIGN_FOR_CPP/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
