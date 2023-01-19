@@ -3,6 +3,7 @@
 - [总结](summary.md)
 - [ARP协议](arp.md)
 - [Bitswap协议](bitswap.md)
+- [CAN协议](can.md)
 - [DHCP协议](dhcp.md)
 - [Chord协议]
 - [DNS协议](dns.md)

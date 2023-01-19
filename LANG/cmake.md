@@ -980,6 +980,7 @@ print_list(${arg})
 ### 环境变量
 
 - `CMAKE_BINARY_DIR` 二进制文件生成目录；
+- `CMAKE_RUNTIME_OUTPUT_DIRECTORY` 可执行文件存放路径
 - `CMAKE_CURRENT_BINARY_DIR` 当前所在的生成目录；
 - `CMAKE_CURRENT_LIST_FILE` 当前正在处理的列表文件的完整路径；
 - `CMAKE_CURRENT_LIST_LINE`当前正在处理的文件的行号；
@@ -992,7 +993,9 @@ print_list(${arg})
 - `CMAKE_PROJECT_NAME` 由`project()`命令设置的第一个项目（顶级项目）的名称；
 - `CMAKE_SOURCE_DIR` 根源目录；
 - `EXECUTABLE_OUTPUT_PATH` 可执行二进制文件的生成路径；
-- `LIBRARY_OUTPUT_PATH` 共享库的生成路径；
+- `LIBRARY_OUTPUT_PATH` 共享库（动态/静态库）的生成路径（当默认路径不设置时，才生效）；
+- `CMAKE_ARCHIVE_OUTPUT_DIRECTORY` 静态库默认存放路径。
+- `CMAKE_LIBRARY_OUTPUT_DIRECTORY` 动态库默认存放路径。
 - `PROJECT_BINARY_DIR` 当前项目的生成目录；
 - `PROJECT_NAME` 项目名；
 - `PROJECT_SOURCE_DIR` 当前cmake项目的源目录；
@@ -1013,6 +1016,10 @@ print_list(${arg})
 - `CMAKE_LINKER_FLAGS` 链接器标志；
 
 ### 编译器选项
+
+TODO
+
+### 缓存变量
 
 TODO
 
@@ -1743,3 +1750,5 @@ ctest -T memcheck
 [10] [Visual Studio 中的 CMake 项目](https://learn.microsoft.com/zh-cn/cpp/build/cmake-projects-in-visual-studio?view=msvc-170)
 
 [11] [Visual Studio 17 2022](https://cmake.org/cmake/help/latest/generator/Visual%20Studio%2017%202022.html)
+
+[12] [CMake语法—缓存变量（Cache Variable）](https://www.cnblogs.com/Braveliu/p/15614013.html)

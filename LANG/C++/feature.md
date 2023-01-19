@@ -64,6 +64,12 @@
 
 ---
 
+### numeric_limits
+
+TODO
+
+---
+
 ## new
 
 ### new operator
@@ -1465,6 +1471,14 @@ TODO
 
 
 
+## execution_character_set
+
+TODO
+
+---
+
+
+
 ## 参考
 
 [1] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
@@ -1492,4 +1506,6 @@ TODO
 [12] [cppreference.com-联合体声明](https://zh.cppreference.com/w/cpp/language/union)
 
 [13] [JOINT STRIKE FIGHTER AIR VEHICLE C++ CONDING STANDARDS](res/JSF-AV-rules.pdf)
+
+[14] [c语言宏定义唯一匿名变量,C语言宏定义技巧](https://blog.csdn.net/weixin_32473663/article/details/117090245)
 

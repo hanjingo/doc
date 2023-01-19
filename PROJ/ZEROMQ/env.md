@@ -60,13 +60,14 @@
    | Visual Studio 14 2015 Win32 | vs2015 32位编译器 |
    | ...                         |                   |
    
-   | 参数            | 说明         |
-   | --------------- | ------------ |
-   | ZMQ_BUILD_TESTS | 构建test示例 |
-   | BUILD_SHARED    | 构建动态库   |
-   | BUILD_STATIC    | 构建静态库   |
-   | ...             |              |
-
+   | 参数              | 说明               |
+   | ----------------- | ------------------ |
+   | ZMQ_BUILD_TESTS   | 构建test示例       |
+   | BUILD_SHARED      | 构建动态库         |
+   | BUILD_STATIC      | 构建静态库         |
+   | ZeroMQ_BINARY_DIR | 二进制文件存放路径 |
+   | ...               |                    |
+   
    例子：
    
    ```sh

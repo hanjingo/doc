@@ -49,3 +49,9 @@ In contrast, the following can be said about static polymorphism in C++:
 
 Generic programming is a subdiscipline of computer science that deals with finding abstract representations of efficient algorithms, data structures, and other software concepts, and with their systematic organization... Generic programming focuses on representing families of domain concepts.
 
+
+
+## 14.6 Afternotes
+
+National Institutes of Health Class Library (NIHCL)
+

@@ -17,8 +17,8 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter11. Template Argument Deduction](chapter11.md)
 - [Chapter12. Specialization and Overloading](chapter12.md)
 - [Chapter13. Future Directions](chapter13.md)
-- [Chapter14. The Polymorphic Power of Templates]
-- [Chapter15. Traits and Policy Classes]
+- [Chapter14. The Polymorphic Power of Templates](chapter14.md)
+- [Chapter15. Traits and Policy Classes](chapter15.md)
 - [Chapter16. Templates and Inheritance]
 - [Chapter17. Metaprograms]
 - [Chapter18. Expression Templates]

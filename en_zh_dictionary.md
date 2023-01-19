@@ -487,6 +487,8 @@ astronomer `/əˈstrɒnəmə(r)/` 天文学家
 
 astute `/əˈstjuːt/` 精明的，狡猾的，机敏的
 
+asymptotic `/æsɪmp'tɒtɪk/` 渐近线的
+
 ### at
 
 [回到A](#A)--[回到顶部](#英汉词典)
@@ -1386,6 +1388,8 @@ contender `/kənˈtendə(r)/` 竞争者，角逐者，钻机，打孔装置
 contention `/kən'tenʃn/` 争论，争辩，争夺，论点
 
 context `/'kɒntekst/` 上下文，环境，背景
+
+contiguous `/kən'tɪɡjuəs/` 邻近的，连续的，接触的
 
 contour `/ˈkɒntʊə(r)/` 外形，轮廓，等高线
 
@@ -6761,6 +6765,8 @@ snug `/snʌɡ/` 舒适的，温暖的，合身的
 
 soar `/sɔːr/` 骤增，猛升
 
+solace `/'sɒləs/` 安慰，慰藉，使快乐，使安慰，使缓和
+
 sole `/səʊl/` 唯一的，独占，鞋底，脚掌
 
 solemn `/ˈsɒləm/` 冷峻的，庄严的，表情严肃的，郑重的
@@ -7017,6 +7023,8 @@ submit `/səb'mɪt/` 提交，递交，屈从，使...屈服
 
 subobject `/'sʌb'ɔbdʒikt/` 子类，子对象
 
+suboptimal `/'sʌb'ɒptɪməl/` 未达最佳标准的，不最理想的，不最适宜的，不最满意的
+
 subroutine `/subroutine/` 子程序
 
 subscript `/'sʌbskrɪpt/` 下标
@@ -7064,6 +7072,10 @@ sufficient `/sə'fɪʃnt/` 足够的，充分的
 suggest `/səˈdʒɛst/` 建议，推荐，认为，表明，暗示，出现
 
 suite `/swiːt/` 一套，一组
+
+summation `/sʌ'meɪʃn/` 总结，加法，总和，有代表性的整体
+
+summed `/sʌmd/` 总计的，总数的
 
 sumptuous `/ˈsʌmptʃuəs/` 奢侈的，华丽的，奢华的
 
@@ -7663,6 +7675,8 @@ unanimous `/juˈnænɪməs/` 全体一致的
 
 unary `/ˈjuːnəri/` 一元（数学名词）
 
+unaware `/ˌʌnə'weə(r)/` 没有发觉的，不知道的
+
 unbearable `/ʌnˈbeərəbl/` 无法忍受的，难耐的
 
 unbiased `/ʌn'baɪəst/` 公正的
@@ -7888,6 +7902,8 @@ veteran `/ˈvetərən/` 退伍军人，老兵，经验丰富的人
 vehicle `/ˈviːəkl/` 交通工具，车辆，手段，工具
 
 veil `/veɪl/` 面纱，面罩，掩盖，掩饰
+
+vein `/veɪn/` 静脉，纹理，叶脉，岩脉，使有脉络，用脉络装饰
 
 vex `/veks/` 使恼怒，烦扰，使困惑
 

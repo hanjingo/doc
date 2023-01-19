@@ -38,6 +38,7 @@
 
 | 组件             | boost | folly                          |
 | ---------------- | ----- | ------------------------------ |
+| 日志             |       |                                |
 | 内存管理         |       | Arena.h<br>ThreadCachedArena.h |
 | 线程管理         |       |                                |
 | 线程安全数据结构 |       | AtomicHashMap                  |
@@ -206,14 +207,20 @@ cmake --version
 
    configure参数说明:
    
-   | 参数                     | 说明               |
-   | ------------------------ | ------------------ |
-   | release                  | 编译release版本    |
-   | prefix                   | 指定安装位置       |
-   | nomake                   | 编译时跳过某些项目 |
-   | QMAKE_APPLE_DEVICE_ARCHS | 指定CPU架构        |
-   | opensource               | 指定linces         |
-   | skip                     | 编译时跳过某些模块 |
+   | 参数                     | 说明                                                         |
+   | ------------------------ | ------------------------------------------------------------ |
+   | release                  | 编译release版本                                              |
+   | prefix                   | 指定安装位置                                                 |
+   | opensource               | 指定linces                                                   |
+   | platform                 | 指定平台                                                     |
+   | QMAKE_APPLE_DEVICE_ARCHS | 指定CPU架构                                                  |
+   | no-sse2                  |                                                              |
+   | no-penssl                |                                                              |
+   | no-cups                  |                                                              |
+   | no-glib                  |                                                              |
+   | no-iconv                 |                                                              |
+   | skip                     | 编译时跳过某些模块：<br>qtvirtualkeyboard <br>qt3d<br>qtcanvas3d<br>qtpurchasing |
+   | nomake                   | 编译时跳过某些项目：<br>examples<br>tools                    |
 
 ​		**注意：configure默认安装所有的插件，有些插件在Arm下不支持，需要根据实际情况删减！**
 
@@ -368,6 +375,34 @@ TODO
 
 ## Boost
 
+编译选项列表：
+
+| 编译选项        | 说明                                                         |
+| --------------- | ------------------------------------------------------------ |
+| toolset         | 指定使用的编译工具：<br>`msvc-15.0` 使用vs2017<br>`msvc-14.0` 使用vs2015<br>`msvc-12.0` 使用vs2013<br>... |
+| install         | 同时生成库文件和include文件（不推荐，很慢）                  |
+| prefix          | 生成的库文件（静态/动态）和include文件存放路径               |
+| stage           | 只生成库文件（推荐）                                         |
+| stagedir        | 生成的库文件（静态/动态）存放路径（默认stage）               |
+| builddir        | 中间文件（临时文件）存放路径                                 |
+| link            | 生成动态/静态链接库：<br>`static` 静态链接<br>`shared` 动态链接 |
+| runtime-link    | 使用动态/静态链接C++标准库：<br/>`static` 静态链接<br/>`shared` 动态链接 |
+| build-type      | 是否编译所有库：<br>`complete` 编译所有库                    |
+| with            | 指定使用组件（组件信息请查看boost文档）                      |
+| without         | 指定不使用组件（组件信息请查看boost文档）                    |
+| show-libraries  | 显示需要编译的库名称                                         |
+| architecture    | CPU架构：<br>`x86` x86架构<br>`x64` x64架构<br>...           |
+| address-model   | CPU位数（需要与architecture配合使用）：<br>`32` 32位寻址<br>`64` 64位寻址 |
+| instruction-set | 指令集                                                       |
+| threading       | 使用单线程/多线程：<br>`single` 单线程<br>`multi` 多线程     |
+| variant         | 指定生成debug/release版本（默认两者都生成）<br>release<br>debug |
+
+示例：
+
+```sh
+b2.exe stage --stagedir="../bins/lib" --with-log
+```
+
 ### Linux/Unix
 
 编译安装：
@@ -400,7 +435,7 @@ sudo ./b2 --without-graph_parallel --without-mpi -q -j $(nproc) install
 3. 执行`b2.exe`/`bjm.exe`执行编译。
 
    ```sh
-   .\b2
+   b2.exe stage --with-log
    ```
 
 使用vcpkg：
@@ -429,6 +464,14 @@ TODO
 
   ```sh
   vcpkg install folly:x64-windows
+  ```
+
+
+
+## log4cplus
+
+  ```sh
+  cmake ../
   ```
 
 
