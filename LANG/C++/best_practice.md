@@ -2300,3 +2300,5 @@ TODO
 
 [7] [Modern C++中lambda表达式的陷阱](https://blog.csdn.net/czyt1988/article/details/80149695)
 
+[8] [360 安全规则集合](https://github.com/Qihoo360/safe-rules)
+
