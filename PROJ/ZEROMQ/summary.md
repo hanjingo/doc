@@ -80,4 +80,5 @@ zmq_connect (requester, "tcp://localhost:5555");
 - [ZeroMQ研究与应用分析_zzhongcy的专栏-程序员ITS201](https://its201.com/article/yangyangye/19814133)
 - [Zeromq 源码全解析(1)_不积跬步无以至千里-程序员宅基地_zeromq源码分析](https://www.cxyzjd.com/article/qq_22478401/103965222)
 - [Internal Architecture of libzmq](http://wiki.zeromq.org/whitepapers:architecture)
+- [服务端ZMQ(一)——源码解析](https://blog.csdn.net/weixin_43730892/article/details/127693541)
 

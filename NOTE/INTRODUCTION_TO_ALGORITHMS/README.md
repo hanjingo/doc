@@ -1,6 +1,6 @@
 # 算法导论
 
-[美]Thomas H.Cormen, [美]Charles E.Leiserson, [美]Ronald L. Rivest, [美]Clifford Stein . 1th Edition
+[美]Thomas H.Cormen, [美]Charles E.Leiserson, [美]Ronald L. Rivest, [美]Clifford Stein . 3th Edition
 
 - [第1章 算法在计算中的作用](chapter1.md)
 - [第2章 算法基础](chapter2.md)
@@ -39,6 +39,6 @@
 - [第35章 近似算法]
 - [附录A 求和](appendix_a.md)
 - [附录B 集合等离散数学内容](appendix_b.md)
-- [附录C 计数与概率]
-- [附录D 矩阵]
+- [附录C 计数与概率](appendix_c.md)
+- [附录D 矩阵](appendix_d.md)
 

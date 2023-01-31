@@ -387,10 +387,10 @@ TODO
 | builddir        | 中间文件（临时文件）存放路径                                 |
 | link            | 生成动态/静态链接库：<br>`static` 静态链接<br>`shared` 动态链接 |
 | runtime-link    | 使用动态/静态链接C++标准库：<br/>`static` 静态链接<br/>`shared` 动态链接 |
-| build-type      | 是否编译所有库：<br>`complete` 编译所有库                    |
+| build-type      | 是否编译所有库：<br>`minimal` 最小化<br>`complete` 编译所有库 |
 | with            | 指定使用组件（组件信息请查看boost文档）                      |
 | without         | 指定不使用组件（组件信息请查看boost文档）                    |
-| show-libraries  | 显示需要编译的库名称                                         |
+| show-libraries  | 显示需要编译的库名称（用于指定使用某些组件）                 |
 | architecture    | CPU架构：<br>`x86` x86架构<br>`x64` x64架构<br>...           |
 | address-model   | CPU位数（需要与architecture配合使用）：<br>`32` 32位寻址<br>`64` 64位寻址 |
 | instruction-set | 指令集                                                       |

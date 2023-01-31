@@ -173,12 +173,14 @@ ___粗斜体___
 
 ## 代码
 
+````markdown
 ```c++
 #inclue <iostream>
 int main(void) {
 	std::cout << "hello world" << std::endl;
 }
 ```
+````
 
 ```c++
 #inclue <iostream>

@@ -1,6 +1,6 @@
 # 初等数论及其应用
 
-(美)Kenneth H. Rosen . 5ED
+[美] Kenneth H. Rosen . 5ED
 
 - [第一章 整数]
 - [第二章 整数的表示法和运算]
