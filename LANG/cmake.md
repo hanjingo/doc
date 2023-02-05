@@ -1415,6 +1415,8 @@ PROTOBUF_GENERATE_CPP(hello hello  hello.proto)
 
 ### 变量
 
+（变量的具体细节请查看cmake安装目录下的`\share\cmake-xxx\Modules\FindBoost.cmake`文件，或参考官网：https://cmake.org/cmake/help/v3.6/module/FindBoost.html）
+
 通过以下**boost信息变量**来获取Boost的信息：
 - Boost_FOUND：是否找到了所需的库；
 - Boost_INCLUDE_DIRS：boost头文件搜索路径；
