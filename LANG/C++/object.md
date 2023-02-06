@@ -647,6 +647,10 @@ bar( X &__result )
 
 TODO
 
+### CRTP
+
+TODO
+
 
 
 ## 总结
@@ -686,3 +690,4 @@ TODO
 ## 参考
 
 - [`#pragma pack(push) 和#pragma pack(pop) 以及#pragma pack()`](https://blog.csdn.net/myyllove/article/details/84560893/)
+- [初探C++ CRTP(奇异的递归模板模式)](https://blog.csdn.net/u011436427/article/details/125597908)

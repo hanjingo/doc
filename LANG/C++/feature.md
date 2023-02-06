@@ -1491,6 +1491,26 @@ TODO
 
 
 
+## 可变参数
+
+### va_list
+
+TODO
+
+### 初始化列表
+
+TODO
+
+### 模板展开
+
+TODO
+
+[返回顶部](#C++特性)
+
+---
+
+
+
 ## 参考
 
 [1] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
@@ -1520,4 +1540,6 @@ TODO
 [13] [JOINT STRIKE FIGHTER AIR VEHICLE C++ CONDING STANDARDS](res/JSF-AV-rules.pdf)
 
 [14] [c语言宏定义唯一匿名变量,C语言宏定义技巧](https://blog.csdn.net/weixin_32473663/article/details/117090245)
+
+[15] [C++可变参数函数](https://blog.csdn.net/qq_32534441/article/details/103495144)
 
