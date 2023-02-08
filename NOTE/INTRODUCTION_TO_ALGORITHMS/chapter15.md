@@ -153,3 +153,64 @@ $$
 
 ## 15.3 动态规划原理
 
+**最优子结构**
+
+**一些微妙之处**
+
+在尝试使用动态规划方法时要小心，要注意问题是否具有最优子结构性质。考虑下面两个问题，其中都是给定一个有向图$G=(V, E)$和两个顶点$u, v \in V$。
+
+- **无权（unweighted）最短路径**：找到一条从$u$到$v$的边数最少的路径。这条路径必然是简单路径，因为如果路径中包含环，将环去掉显然会减少边的数量。
+- **无权最长路径**：找到一条从$u$到$v$的边数最多的简单路径。这里必须加上简单路径的要求，因为我们可以不停地沿着环走，从而得到任意长的路径。
+
+![15_6](res/15_6.png)
+
+**重叠子问题**
+
+$$
+\begin{align}
+& RECURSIVE-MATRIX-CHAIN(p, i, j) \\
+& if\ i = j \\
+& \qquad return\ 0 \\
+& m[i, j] = \infty \\
+& for\ k = i\ to\ j - 1 \\
+& \qquad q = RECURSIVE-MATRIX-CHAIN(p, i, k) \\
+& \qquad \qquad + RECURSIVE-MATRIX-CHAIN(p, k + 1, j) \\
+& \qquad \qquad + p_{i-1}p_{k}p_{j} \\
+& \qquad if\ q < m[i, j] \\
+& \qquad \qquad m[i, j] = q \\
+& return\ m[i, j]
+\end{align}
+$$
+
+![15_7](res/15_7.png)
+
+**重构最优解**
+
+**备忘**
+
+$$
+\begin{align}
+& MEMOIZED-MATRIX-CHAIN(p) \\
+& n = p.length - 1 \\
+& let\ m[1..n, 1..n]\ be\ a\ new\ table \\
+& for\ i = 1\ to\ n \\
+& \qquad for\ j = i\ to\ n \\
+& \qquad \qquad m[i, j] = \infty \\
+& return\ LOOKUP-CHAIN(m, p, 1, n)
+\end{align}
+$$
+
+$$
+\begin{align}
+& LOOKUP-CHAIN(m, p, i, j) \\
+& if\ m[i, j] < \infty \\
+& \qquad return\ m[i, j] \\
+& if\ i == j \\
+& \qquad m[i, j] = 0 \\
+& else\ for\ k = i\ to\ j - 1 \\
+& \qquad q = LOOKUP-CHAIN(m, p, i, k) + LOOKUP-CHAIN(m, p, k + 1, j) + p_{i - 1}p_{k}p_{j} \\
+& \qquad if\ q < m[i, j] \\
+& \qquad \qquad m[i, j] = q \\
+& return\ m[i, j]
+\end{align}
+$$
