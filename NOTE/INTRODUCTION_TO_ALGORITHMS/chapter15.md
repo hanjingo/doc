@@ -165,7 +165,6 @@ $$
 ![15_6](res/15_6.png)
 
 **重叠子问题**
-
 $$
 \begin{align}
 & RECURSIVE-MATRIX-CHAIN(p, i, j) \\
@@ -214,3 +213,84 @@ $$
 & return\ m[i, j]
 \end{align}
 $$
+
+
+
+## 15.4 最长公共子序列
+
+**最长公共子序列问题（longest-common-subsequence problem）**：给定两个序列$X = <x_1, x_2, ..., x_m>$和$Y = <y_1, y_2, ..., y_n>$，求$X$和$Y$长度最长的公共子序列。
+
+**定理 15.1 （LCS的最优子结构）** 令$X = <x_1, x_2, ..., x_m>$和$Y = <y_1, y_2, ..., y_n>$为两个序列，$Z = <z_1, z_2, ..., z_k>$为$X$和$Y$的任意LCS。
+
+1. 如果$x_m \neq y_n$，则$z_k = x_m = y_n$且$Z_{k - 1}$是$X_{m - 1}$和$Y_{n - 1}$的一个LCS。
+2. 如果$x_m \neq y_n$，那么$z_k \neq x_m$意味着$Z$是$X_{m - 1}$和$Y$的一个LCS。
+3. 如果$x_m \neq y_n$，那么$z_k \neq y_n$意味着$Z$是$X$和$Y_{n - 1}$的一个LCS。
+
+$$
+\begin{align}
+& LCS-LENGTH(X, Y) \\
+& m = X.length \\
+& n = Y.length \\
+& let\ b[1..m, 1..n]\ and\ c[0..m, 0..n]\ be\ new\ tables \\
+& for\ i = 1\ to\ m \\
+& \qquad c[i, 0] = 0 \\
+& for\ j = 0\ to\ n \\
+& \qquad c[0, j] = 0 \\
+& for\ i = 1\ to\ m \\
+& \qquad for\ j = 1\ to\ n \\
+& \qquad \qquad if\ x_i == y_i \\
+& \qquad \qquad \qquad c[i, j] = c[i - 1, j - 1] + 1 \\
+& \qquad \qquad \qquad b[i, j] = "↖" \\
+& \qquad \qquad elseif\ c[i - 1, j] \geqslant c[i, j - 1] \\
+& \qquad \qquad \qquad c[i, j] = c[i - 1, j] \\
+& \qquad \qquad \qquad b[i, j] = "↑" \\
+& \qquad \qquad else\ c[i, j] = c[i, j - 1] \\
+& \qquad \qquad \qquad b[i, j] = "←" \\
+& return\ c\ and\ b
+\end{align}
+$$
+
+$$
+\begin{align}
+& PRINT-LCS(b, X, i, j) \\
+& if\ i == 0\ or\ j == 0 \\
+& \qquad return \\
+& if\ b[i, j] = "↖" \\
+& \qquad PRINT-LCS(b, X, i - 1, j - 1) \\
+& \qquad print\ x_i \\
+& elseif\ b[i, j] = "↑" \\
+& \qquad PRINT-LCS(b, X, i - 1, j) \\
+& else\ PRINT-LCS(b, X, i, j - 1)
+\end{align}
+$$
+
+![15_8](res/15_8.png)
+
+
+
+## 15.5 最优二叉搜索树
+
+**最优二叉搜索树（optimal binary search tree）问题**：给定一个$n$个不同关键字的已排序的序列$K = <k_1, k_2, ..., k_n>$（因此$k_1 < k_2 < ... < k_n$），对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。
+
+![15_9](res/15_9.png)
+$$
+\begin{align}
+& OPTIMAL-BST(p, q, n) \\
+& let\ e[1..n + 1, 0..n], w[1..n + 1, 0..n],\ and\ root[1..n, 1..n]\ be\ new\ tables \\
+& for\ i = 1\ to\ n + 1 \\
+& \qquad e[i, i - 1] = q_{i - 1} \\
+& \qquad w[i, i - 1] = q_{i - 1} \\
+& for\ l = 1\ to\ n \\
+& \qquad for\ i = 1\ to\ n - l + 1 \\
+& \qquad \qquad j = i + l - 1 \\
+& \qquad \qquad e[i, j] = \infty \\
+& \qquad \qquad w[i, j] = w[i, j - 1] + p_j + q_j \\
+& \qquad \qquad for\ r = i\ to\ j \\
+& \qquad \qquad \qquad t = e[i, r - 1] + e[r + 1, j] + w[i, j] \\
+& \qquad \qquad \qquad if\ t < e[i, j] \\
+& \qquad \qquad \qquad \qquad e[i, j] = t \\
+& \qquad \qquad \qquad \qquad root[i, j] = r \\
+& return\ e\ and\ root
+\end{align}
+$$
+![15_10](res/15_10.png)
