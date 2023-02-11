@@ -18,10 +18,10 @@
 - [第14章 数据结构的扩张](chapter14.md)
 - [第15章 动态规划](chapter15.md)
 - [第16章 贪心算法](chapter16.md)
-- [第17章 摊还分析]
-- [第18章 B树]
-- [第19章 斐波那契堆]
-- [第20章 van Emde Boas树]
+- [第17章 摊还分析](chapter17.md)
+- [第18章 B树](chapter18.md)
+- [第19章 斐波那契堆](chapter19.md)
+- [第20章 van Emde Boas树](chapter20.md)
 - [第21章 用于不相交集合的数据结构]
 - [第22章 基本的图算法]
 - [第23章 最小生成树](chapter23.md)

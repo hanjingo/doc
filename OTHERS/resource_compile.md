@@ -293,3 +293,4 @@
 - cmake教程 [xiaoweiChen](https://github.com/xiaoweiChen)/**[CMake-Cookbook](https://github.com/xiaoweiChen/CMake-Cookbook)**
 - makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
 - 非常全面的关于CS知识点总结 [SmartKeyerror](https://github.com/SmartKeyerror)/**[Psyduck](https://github.com/SmartKeyerror/Psyduck)**
+- 非常全面的计算机相关知识笔记 [selfboot](https://github.com/selfboot)/**[CS_Offer](https://github.com/selfboot/CS_Offer)**
