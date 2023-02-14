@@ -1,6 +1,6 @@
 # 编译原理
 
-(美) Alfred V.Aho, (美) Monica S.Lam, (美) Ravi Sethi, (美) Jeffrey D.Ullman . 2th ED
+[美] Alfred V.Aho, [美] Monica S.Lam, [美] Ravi Sethi, [美] Jeffrey D.Ullman . 2th ED
 
 - [1 Introduction(简介)](chapter1.md)
 - A Simple Syntax-Directed Translator

@@ -8,9 +8,10 @@
 
 ### 数据结构与算法
 
-| 书名                                                         | 版次 | 作者                 | 摘要/评价                      |
-| ------------------------------------------------------------ | ---- | -------------------- | ------------------------------ |
-| [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 3ED  | [美]Mark Allen Weiss | 可以作为<<算法导论>>的配套书。 |
+| 书名                                                         | 版次 | 作者                                                         | 摘要/评价                      |
+| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------ |
+| [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 3ED  | [美]Mark Allen Weiss                                         | 可以作为<<算法导论>>的配套书。 |
+| [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)             | 3ED  | [美]Thomas H.Cormen<br>[美]Charles E.Leiserson<br>[美]Ronald L. Rivest<br>[美]Clifford Stein | 算法领域的圣经。               |
 
 ### 操作系统
 
@@ -81,7 +82,6 @@
 
 ## 在读
 
-- [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
@@ -95,7 +95,7 @@
 - [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
-- [经济学原理](THE_PRINCIPLE_OF_ECONOMICS/README.md)
+- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 - [IPFS原理与实践](PRINCIPLES_AND_PRACTICES_OF_IPFS/README.md)
 - [国富论](THE_WEALTH_OF_NATIONS/README.md)
@@ -106,7 +106,6 @@
 
 ## 计划读
 
-- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
 - [算法](ALGORITHMS/README.md)
 - [API Design for C++](API_DESIGN_FOR_CPP/README.md)
 - [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
