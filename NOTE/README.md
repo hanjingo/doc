@@ -6,6 +6,15 @@
 
 ## 已读
 
+### 数学
+
+| 书名 | 版次 | 作者 | 摘要/评价 |
+| ---- | ---- | ---- | --------- |
+|      |      |      |           |
+|      |      |      |           |
+|      |      |      |           |
+|      |      |      |           |
+
 ### 数据结构与算法
 
 | 书名                                                         | 版次 | 作者                                                         | 摘要/评价                      |
@@ -82,6 +91,7 @@
 
 ## 在读
 
+- [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
 - [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
@@ -106,6 +116,16 @@
 
 ## 计划读
 
+- [Essential C++]
+- [More Effective C++]
+- [数理统计及其应用]
+- [什么是数学]
+- [微积分学教程 第一卷]
+- [微积分学教程 第二卷]
+- [微积分学教程 第三卷]
+- [代数学引论]
+- [信息论，编码与密码学]
+- [概率论基础教程]
 - [算法](ALGORITHMS/README.md)
 - [API Design for C++](API_DESIGN_FOR_CPP/README.md)
 - [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)

@@ -7,6 +7,7 @@
 - [dot](dot.md)
 - [make](make.md)
 - [markdown](markdown.md)
+- [python](python.md)
 - [shell](shell.md)
 - [solidity](solidity.md)
 

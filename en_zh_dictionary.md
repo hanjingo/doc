@@ -5471,6 +5471,8 @@ paradigm `/ˈparədʌɪm/` 范例，词形变化表
 
 parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 
+parallelism `/'pærəlelɪzəm/` 并行度，平行，相似
+
 parameter `/pə'ræmɪtə(r)/` 参数，参量，决定因素
 
 paramount `/ˈpærəmaʊnt/` 元首，至尊的，权力最大的
@@ -6951,6 +6953,10 @@ skyscraper `/ˈskaɪskreɪpə(r)/` 摩天大楼
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
+slack `/slæk/` 松弛的，懈怠的，萧条的，松散，淡季
+
+slackness `/slæk/` 松弛的，松弛度，懈怠的，疏忽，松散，淡季
+
 slam `/slæm/` 砰地关上，猛烈抨击
 
 slander `/ˈslɑːndə(r)/` 诽谤，诋毁
@@ -7095,7 +7101,7 @@ speculation `/ˌspekju'leɪʃn/` 推测，投机，沉思
 
 spend `/spɛnd/` 花费，耗尽，用完，度过
 
-speedup `/'spiːdʌp/` 加速，高速化，追赶
+speedup `/'spiːdʌp/` 加速，加速比，高速化，追赶
 
 spent `/spɛnt/` 用过失效的，精疲力竭的，枯竭的
 

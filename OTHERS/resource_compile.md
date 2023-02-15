@@ -294,3 +294,4 @@
 - makefile教程 [seisman](https://github.com/seisman)/**[how-to-write-makefile](https://github.com/seisman/how-to-write-makefile)**
 - 非常全面的关于CS知识点总结 [SmartKeyerror](https://github.com/SmartKeyerror)/**[Psyduck](https://github.com/SmartKeyerror/Psyduck)**
 - 非常全面的计算机相关知识笔记 [selfboot](https://github.com/selfboot)/**[CS_Offer](https://github.com/selfboot/CS_Offer)**
+- 数学学习路线图 [TalalAlrawajfeh](https://github.com/TalalAlrawajfeh)/**[mathematics-roadmap](https://github.com/TalalAlrawajfeh/mathematics-roadmap)**
