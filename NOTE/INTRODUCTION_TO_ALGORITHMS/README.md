@@ -34,9 +34,9 @@
 - [第30章 多项式与快速傅里叶变换](chapter30.md)
 - [第31章 数论算法](chapter31.md)
 - [第32章 字符串匹配](chapter32.md)
-- [第33章 计算几何学]
-- [第34章 NP完全性]
-- [第35章 近似算法]
+- [第33章 计算几何学](chapter33.md)
+- [第34章 NP完全性](chapter34.md)
+- [第35章 近似算法](chapter35.md)
 - [附录A 求和](appendix_a.md)
 - [附录B 集合等离散数学内容](appendix_b.md)
 - [附录C 计数与概率](appendix_c.md)

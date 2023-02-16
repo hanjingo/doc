@@ -1193,6 +1193,8 @@ clerk `/klɑːk/` 店员，职员，文书，接待员
 
 climate `/'klaɪmət/` 气候，风气
 
+clique `/kliːk/` 派系，小集团
+
 closure `/ˈkləʊʒə(r)/` 闭包，停业，关闭，倒闭，终止
 
 clutch `/klʌtʃ/` 抓住，抱紧，离合器
@@ -8422,6 +8424,8 @@ widen `/'waɪdn/` 加宽，变宽，扩大
 wider `/waɪdə/` 更宽的
 
 widespread `/ˈwaɪdspred/` 广泛的，普遍的
+
+widget `/'wɪdʒɪt/` 部件，小产品
 
 wildlife `/ˈwaɪldlaɪf/` 野生动物
 

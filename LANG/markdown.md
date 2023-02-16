@@ -51,6 +51,8 @@
 ###### 六级标题
 ```
 
+
+
 ## 段落
 
 ```markdown
@@ -62,6 +64,22 @@ b
 a  
 
 b
+
+
+
+## 任务列表
+
+```markdown
+- [ ] 跑步
+- [ ] 骑车
+- [x] 吃饭
+- [ ] 睡觉
+```
+
+- [ ] 跑步
+- [ ] 骑车
+- [x] 吃饭
+- [ ] 睡觉
 
 
 
@@ -362,17 +380,17 @@ int main(void) {
 
 | 效果                                                         | 源码                                                         |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| $\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$ | `$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$` |
+| $\mathbb{ABCdef}$                                            | `$\mathbb{ABCdef}$`                                          |
+| Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ | `Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ` |
+| $\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$, $o O$, $\rho$, $\upsilon$, $\chi$, $\psi$ | `$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$, $o O$, $\rho$, $\upsilon$, $\chi$, $\psi$` |
 | $\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$ | `$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$` |
 | $\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$ | `$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$` |
 | $\sin(x)$, $\cos(x)$, $\tan(x)$, $\cot(x)$                   | `$\sin(x)$, $\cos(x)$, $\tan(x)$, $\cot(x)$`                 |
 | $\forall$, $\exists$, $\because$, $\therefore$, $\neg$       | `$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`     |
 | $x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$ | `$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$` |
 | $x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$ | `$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$` |
-| $\mathbb{ABCdef}$                                            | `$\mathbb{ABCdef}$`                                          |
-| Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ | `Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ` |
 | $x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$, $x \mid y$, $x \nmid y$, $x \parallel y$, $x \nparallel y$ | `$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$, $x \mid y$, $x \nmid y$, $x \parallel y$, $x \nparallel y$` |
-| $x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$ | `$x \geq y$, $x \leq y$, $x \neq y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$` |
+| $x \geq y$, $x \leq y$, $x \neq y$, $x \sim y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$ | `$x \geq y$, $x \leq y$, $x \neq y$, $x \sim y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$` |
 | $\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$, $\uparrow$, $\Uparrow$, $\downarrow$, $\Downarrow$, $\updownarrow$, $\Updownarrow$, $\leftrightarrow$, $\Leftrightarrow$ | `$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$, $\uparrow$, $\Uparrow$, $\downarrow$, $\Downarrow$, $\updownarrow$, $\Updownarrow$, $\leftrightarrow$, $\Leftrightarrow$` |
 | $\lfloor x \rfloor$，$\lceil x \rceil$                       | `$\lfloor x \rfloor$，$\lceil x \rceil$`                     |
 | $\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$, $\widetilde{x}$ | `$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$, $\widetilde{x}$` |
@@ -382,7 +400,7 @@ int main(void) {
 | $\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$                 | `$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$`               |
 | $\ln15$, $\log_2 10$, $\lg7$                                 | `$\ln15$, $\log_2 10$, $\lg7$`                               |
 | $a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$   | `$a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$` |
-| $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$ | `$\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$` |
+| $\Sigma$, $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$ | `$\Sigma$, $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$` |
 | $\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$                    | `$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`                  |
 | $\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$                | `$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`              |
 | $\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$         | `$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`       |
