@@ -52,15 +52,15 @@
 
 ### C++
 
-| 书名                                                                         | 版次 | 作者                                   | 摘要/评价                                                                                                                                            |
-|------------------------------------------------------------------------------|------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Effective C++](EFFECTIVE_CPP/README.md)                                     | 3ED  | [美]Scott Meyers                       | 想写好c++必读之作                                                                                                                                    |
-| [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)                       | 1ED  | Scott Meyers                           | 想写好modern c++必读之作                                                                                                                             |
-| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)                           | 1ED  | 侯捷                                   | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
-| [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton                        | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。                                                               |
-| [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md)                 | 1ED  | Stanley B.Lippman                      | 学习C++面向对象的经典著作。                                                                                                                          |
-| [Effective STL](EFFECTIVE_STL/README.md)                                     | 1ED  | [美]Scott Meyers                       | 建议在初步了解STL后再配合使用此书，里面的很多条款需要对STL比较熟悉才能领悟到其意图。                                                                |
-| [C++ Templates](CPP_TEMPLATES/README.md)                                     | 1ED  | David Vandevoorde, Nicolai M. Josuttis | 学c++模版必看                                                                                                                                        |
+| 书名                                                         | 版次 | 作者                                   | 摘要/评价                                                    |
+| ------------------------------------------------------------ | ---- | -------------------------------------- | ------------------------------------------------------------ |
+| [Effective C++](EFFECTIVE_CPP/README.md)                     | 3ED  | [美]Scott Meyers                       | 想写好c++必读之作                                            |
+| [Effective Modern C++](EFFECTIVE_MODERN_CPP/README.md)       | 1ED  | Scott Meyers                           | 想写好modern c++必读之作                                     |
+| [STL源码剖析](THE_ANNOTATED_STL_SOURCES/README.md)           | 1ED  | 侯捷                                   | 02年的书，用的STL(sigstl)版本比较老，新版stl改动较大，要想看最新的代码可以去：<br>git://gcc.gnu.org/git/gcc.git<br>https://github.com/microsoft/STL |
+| [C++标准模版库编程实战](USING_THE_CPP_STANDARD_TEMPLATE_LIBRARIES/README.md) | 1ED  | [美]Ivor Horton                        | 讲的不够深入，书上知识基本都可以去 https://zh.cppreference.com/ 找到，所以不是很推荐。 |
+| [深度探索C++对象模型](INSIDE_THE_CPP_OBJECT_MODEL/README.md) | 1ED  | Stanley B.Lippman                      | 学习C++面向对象的经典著作。                                  |
+| [Effective STL](EFFECTIVE_STL/README.md)                     | 1ED  | [美]Scott Meyers                       | 建议在初步了解STL后再配合使用此书，里面的很多条款需要对STL比较熟悉才能领悟到其意图。 |
+| [C++ Templates](CPP_TEMPLATES/README.md)                     | 1ED  | David Vandevoorde, Nicolai M. Josuttis | 学c++模版必看                                                |
 
 
 ### 音视频
