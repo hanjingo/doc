@@ -45,10 +45,10 @@
 
 ### 并行编程
 
-| 书名                                                   | 版次 | 作者             | 摘要/评价                                                                                                                                                                                                      |
-|--------------------------------------------------------|------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
-| Communicating Sequential Processes                     |      | C.A.R.Hoare      |                                                                                                                                                                                                                |
+| 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
+| ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
+| [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md) |      | C.A.R.Hoare      |                                                              |
 
 ### C++
 
@@ -91,9 +91,12 @@
 
 ## 在读
 
+- [国富论](THE_WEALTH_OF_NATIONS/README.md)
+- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
+- [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md)
+- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
 - [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
-- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [Boost程序库完全开发指南-深入C++"准"标准库](PROFESSIONAL_BOOST_GUIDE/README.md)
 - [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
@@ -105,10 +108,8 @@
 - [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
-- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 - [IPFS原理与实践](PRINCIPLES_AND_PRACTICES_OF_IPFS/README.md)
-- [国富论](THE_WEALTH_OF_NATIONS/README.md)
 - [谷歌分布式系统相关论文](GOOGLE_DCS_DOC/README.md)
 - [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
 

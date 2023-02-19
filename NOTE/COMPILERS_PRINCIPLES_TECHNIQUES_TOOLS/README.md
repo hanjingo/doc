@@ -2,16 +2,16 @@
 
 [美] Alfred V.Aho, [美] Monica S.Lam, [美] Ravi Sethi, [美] Jeffrey D.Ullman . 2th ED
 
-- [1 Introduction(简介)](chapter1.md)
-- A Simple Syntax-Directed Translator
-- Lexical Analysis
-- Syntax Analysis
-- Syntax-Directed Translation
-- Intermediate-Code Generation
-- Run-Time Environments
-- Code Generation
-- Machine-Independent Optimizations
-- Instruction-Level Parallelism
-- Optimizing for Parallelism and Locality
-- Interprocedural Analysis
+- [1 Introduction(引论)](chapter1.md)
+- 2 A Simple Syntax-Directed Translator
+- 3 Lexical Analysis
+- 4 Syntax Analysis
+- 5 Syntax-Directed Translation
+- 6 Intermediate-Code Generation
+- 7 Run-Time Environments
+- 8 Code Generation
+- 9 Machine-Independent Optimizations
+- 10 Instruction-Level Parallelism
+- 11 Optimizing for Parallelism and Locality
+- 12 Interprocedural Analysis
 

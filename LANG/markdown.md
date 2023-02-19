@@ -1432,4 +1432,5 @@ state 多线程 {
 - [Markdown 中 LaTex 数学公式命令](https://www.jianshu.com/p/0ea47ae02262)
 - [Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962)
 - [Markdown 文件中绘制甘特图](https://www.marapython.com/posts/gantt-chart/#%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E8%8A%82%E7%82%B9Milestone)
+- [一份 Markdown，输出中英双语两份文件](https://github.com/TomBener/bilingual-docs)
 

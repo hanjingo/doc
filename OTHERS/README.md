@@ -5,6 +5,7 @@
 - [emacs快捷键](emacs_shortcut.md)
 - [git教程](git.md)
 - [如何写论文](how_to_write_paper.md)
+- [Pandoc手册](pandoc.md)
 - [代理设置](proxy.md)
 - [重新绑定键](rebind_key.md)
 - [正则表达式](regular_expression.md)
