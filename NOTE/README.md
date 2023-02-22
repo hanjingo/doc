@@ -8,12 +8,9 @@
 
 ### 数学
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
-|      |      |      |           |
-|      |      |      |           |
-|      |      |      |           |
+| 书名                                                         | 版次 | 作者         | 摘要/评价                                            |
+| ------------------------------------------------------------ | ---- | ------------ | ---------------------------------------------------- |
+| [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md) | 1ED  | 吴岚<br>黄海 | 金融数学入门教材，需要提前学好：函数，概率论相关知识 |
 
 ### 数据结构与算法
 
@@ -83,18 +80,15 @@
 
 ### 经济学
 
-| 书名 | 版次 | 作者 | 摘要/评价 |
-| ---- | ---- | ---- | --------- |
-|      |      |      |           |
+| 书名                                      | 版次 | 作者      | 摘要/评价                          |
+| ----------------------------------------- | ---- | --------- | ---------------------------------- |
+| [国富论](THE_WEALTH_OF_NATIONS/README.md) | 1ED  | 亚当.斯密 | 经济学的圣经，入门政治经济学首选。 |
 
 
 
 ## 在读
 
-- [国富论](THE_WEALTH_OF_NATIONS/README.md)
 - [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
-- [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md)
-- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
 - [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
@@ -112,6 +106,9 @@
 - [IPFS原理与实践](PRINCIPLES_AND_PRACTICES_OF_IPFS/README.md)
 - [谷歌分布式系统相关论文](GOOGLE_DCS_DOC/README.md)
 - [Ceph源码分析](THE_SOURCE_CODE_ANALYSIS_OF_CEPH/README.md)
+- [算法](ALGORITHMS/README.md)
+- [API Design for C++](API_DESIGN_FOR_CPP/README.md)
+- [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 
 
 
@@ -120,16 +117,12 @@
 - [Essential C++]
 - [More Effective C++]
 - [数理统计及其应用]
-- [什么是数学]
 - [微积分学教程 第一卷]
 - [微积分学教程 第二卷]
 - [微积分学教程 第三卷]
 - [代数学引论]
 - [信息论，编码与密码学]
 - [概率论基础教程]
-- [算法](ALGORITHMS/README.md)
-- [API Design for C++](API_DESIGN_FOR_CPP/README.md)
-- [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 - [C++覆辙录]
 - [Modern C++ Design]
 

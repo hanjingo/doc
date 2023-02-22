@@ -1,6 +1,6 @@
 # 数学建模-第五版
 
-Frank R.Giordano; Williamn P.Fox; Steven B. Horton
+Frank R.Giordano, Williamn P.Fox, Steven B. Horton
 
 - [第一章 对变化进行建模]
 - [第二章 建模过程，比例性和集合相似性]
