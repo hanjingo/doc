@@ -20,7 +20,7 @@ What are the common wages of labour, depends everywhere upon the contract usuall
 
 对于靠工资生活的人的需求的增长必然同预定用于支付工资的资金的增长成比例。
 
-
+A man must always live by his work, and his wages must at least be sufficient to maintain him. They must even upon most occasions be somewhat more, otherwise it would be impossible for him to bring up a family, and the race of such workmen could not last beyond the first generation.
 
 若劳动者的工资水平能达到养活劳动者及其家庭，且有剩余，基于劳动者之间的竞争和雇主们的利益关系，工资很快便会降到仅满足一般人道标准的最低工资水平。
 

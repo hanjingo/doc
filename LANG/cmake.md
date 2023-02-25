@@ -1756,3 +1756,5 @@ ctest -T memcheck
 [12] [CMake语法—缓存变量（Cache Variable）](https://www.cnblogs.com/Braveliu/p/15614013.html)
 
 [13] [CMake C++ 项目模板](https://zhuanlan.zhihu.com/p/606155750?utm_campaign=shareopn&utm_medium=social&utm_oi=974639756117843968&utm_psn=1609273999753658368&utm_source=wechat_session)
+
+[14] [CMake 生成漂亮的 VS 项目文件](https://zhuanlan.zhihu.com/p/441155027?utm_campaign=shareopn&utm_medium=social&utm_oi=974639756117843968&utm_psn=1609391864909348864&utm_source=wechat_session)

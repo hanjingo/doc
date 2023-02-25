@@ -1,25 +1,53 @@
 # 数学
 
-- [金融数学](finance.md)
+- [术语](terminology.md)
+- [证明](proof.md)
 
 
 
-## 离散数学
+## Arithmetic 算术
+
+TODO
+
+
+
+## Number Theory 代数
 
 ### 数论
 
-- [DES算法](DISCRETE_MATHEMATICS/des.md)
+- [DES算法](NUMBER_THEORY/des.md)
+
+---
+
+
+
+## Calculus 微积分 
+
+TODO
+
+---
+
+
+
+## 概率论
+
+TODO
+
+---
+
+
+
+## Discrete Mathematics 离散数学
+
+TODO
+
+---
 
 
 
 ## 数学建模
 
-- [传染病模型](infectious_disease.md)
-
-
-
-## 其它
-
 - [决策树](decision_table.md)
-- [数学术语](terminology.md)
+- [金融模型](finance.md)
+- [传染病模型](infectious_disease.md)
 

@@ -187,4 +187,5 @@ install:editor
 
 - [维基百科-make](https://zh.wikipedia.org/wiki/Make)
 - [GNU make](https://www.gnu.org/software/make/manual/make.html)
+- [如何系统地学习 Makefile 相关的知识（读/写）？](https://www.zhihu.com/question/23792247/answer/2902637809?utm_campaign=shareopn&utm_medium=social&utm_oi=974639756117843968&utm_psn=1612875781914554368&utm_source=wechat_session)
 

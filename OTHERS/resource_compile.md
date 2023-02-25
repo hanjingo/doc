@@ -177,6 +177,10 @@
 
 - 通用的加/解密库 [openssl](https://github.com/openssl)/**[openssl](https://github.com/openssl/openssl)**
 
+### 量化
+
+- 量化交易系统 [kungfu-origin](https://github.com/kungfu-origin)/**[kungfu](https://github.com/kungfu-origin/kungfu)**
+
 ---
 
 
