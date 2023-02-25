@@ -8,7 +8,6 @@
 - [DCS](DCS/README.md)
 - [Language](LANG/README.md)
 - [Math](MATH/README.md)
-- [Media](MEDIA/README.md)
 - [Network](NET/README.md)
 - [Note](NOTE/README.md)
 - [OS](OS/README.md)

@@ -196,25 +196,6 @@ Qt
 
 ---
 
-## [多媒体](MEDIA/README.md)
-
-- [FFmpeg](FFMPEG/README.md)
-- [DTS和PTS](dts_pts.md)
-- [I帧 P帧 B帧](frame.md)
-- [GB/T 28181](gb28181.md)
-- [ts协议](ts.md)
-
-### [FFmpeg](MEDIA/README.md)
-
-- [速查手册](ffmpeg_cmd.md)
-- [安装](env.md)
-- [常用的数据结构](ansys_data_struct.md)
-- [init系列函数](ansys_init.md)
-- [main函数](ansys_main.md)
-- [注册系列函数](ansys_register.md)
-
----
-
 ## [计算机网络](NET/README.md)
 
 - [总结](NET/summary.md)

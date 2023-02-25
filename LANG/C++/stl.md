@@ -61,6 +61,34 @@ TODO
 
 ### shared_ptr
 
+shared_ptr与scoped_ptr一样包装了new操作符在堆上分配的动态对象，但它实现的是引用计数型的智能指针，
+可以被自由地拷贝和赋值，当没有代码使用它时（引用计数为0），才删除被包装过的动态分配的对象。
+
+**构造函数**
+
+shared_ptr有多种形式的构造函数，可以应用于各种可能的情形：
+
+- 无参的`shared_ptr()`: 创建一个持有空指针的`shared_ptr`。
+
+- `shared_ptr(Y * p)`: 获得指向类型T的指针p的管理权，同时将引用计数量为1，这个构造函数要求Y类型必须能够转换为T类型。
+
+  ```c++
+  shared_ptr<int> sp(new int(10));
+  ```
+
+- `shared_ptr(shared_ptr const & r)`: 从另外一个`shared_ptr`获得指针的管理权，同时引用计数加1，结果是两个`shared_ptr`共享一个指针的管理权。
+
+- `operator=`: 赋值操作符，可以从另外一个`shared_ptr`获得指针的管理权，其行为同拷贝构造函数。
+
+  ```c++
+  shared_ptr<int> sp(new int(10));
+  shared_ptr<int> sp2 = sp;
+  ```
+
+- `shared_ptr(Y * p, D d)`: 其行为类似`shared_ptr(Y * p)`，但它使用参数d指定了析构时的定制删除器，而不是简单的`delete`。
+
+- `aliasing`: 别名构造函数是不增加引用计数的特殊用法
+
 | 成员函数                  | 描述                                                 |
 | ------------------------- | ---------------------------------------------------- |
 | get                       | 返回存储的指针。                                     |
@@ -2699,6 +2727,36 @@ int main()
     std::cout << "x:" << x << ", y:" << y << std::endl; // x:, y:hello
 }
 ```
+
+### enable_shared_from_this
+
+若一个类T继承`std::enable_shared_from_this<T>`，则会为该类T提供成员函数：`shared_from_this`。当T类型对象t被一个名为pt的`std::shared_ptr<T>`类对象管理时，调用`T::shared_from_this`成员函数，将会返回一个新的`std::shared_ptr<T>`对象，它与pt共享t的所有权。
+
+例：
+
+```c++
+#include <memory>
+#include <iostream>
+struct Good : std::enable_shared_from_this<Good>
+{
+public:
+    std::shared_ptr<Good> getptr() {
+        return shared_from_this();
+    }
+    ~Good() { std::cout << "Good::~Good() called" << std::endl; }
+};
+int main()
+{
+    { // 限定作用域，确保智能指针在system("pause")之前析构
+        std::shared_ptr<Good> gp1(new Good());
+        std::shared_ptr<Good> gp2 = gp1->getptr();
+        std::cout << gp1.use_count() << std::endl;
+        std::cout << gp2.use_count() << std::endl;
+    }
+    system("pause");
+}
+```
+
 
 ---
 
