@@ -10,19 +10,14 @@
 - [软件开发流程](software_dev_flow.md)
 - [软件测试](software_test.md)
 - [Token机制](token.md)
-- [生物科技](BIOTECH/README.md)
 - [游戏开发](GAME/README.md)
 
 
 
 ## 第三方项目
 
-- [Ceph](CEPH/READE.md)
 - [EOS](EOSIO/README.md)
 - [Ethereum](ETH/README.md)
-- [Filecoin](FILECOIN/README.md)
-- [Grpc](GRPC/README.md)
-- [IPFS](IPFS/README.md)
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)
 - [skynet](SKYNET/README.md)
