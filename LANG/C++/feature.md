@@ -1322,6 +1322,12 @@ void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问�
 
 ## pragma
 
+### message
+
+TODO
+
+### warning
+
 TODO
 
 [返回顶部](#C++特性)

@@ -22,6 +22,8 @@
 - [lockfree](BOOST/lockfree.md)
 - [optional](BOOST/optional.md)
 - [pool](BOOST/pool.md)
+- [property tree](BOOST/property_tree.md)
+- [python](BOOST/python.md)
 - [statechart](BOOST/statechart.md)
 - [strand](BOOST/strand.md)
 - [string](BOOST/string.md)
