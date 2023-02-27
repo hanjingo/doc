@@ -248,7 +248,7 @@
 - 金山出的云游戏平台 [liuguang](https://github.com/ksyun-kenc/liuguang)
 - [红警1源码](https://github.com/electronicarts/CnC_Remastered_Collection)
 - 房卡麻将服务器 [mj_server](https://github.com/qipaiprojects/mj_server)
-- 房卡麻将服务器 [mj_client](https://github.com/qipaiprojects/mj_client)
+- 房卡麻将客户端 [mj_client](https://github.com/qipaiprojects/mj_client)
 - [UnrealEngine](https://github.com/EpicGames/UnrealEngine)
 - 跨平台渲染引擎 [bkaradzic](https://github.com/bkaradzic)/**[bgfx](https://github.com/bkaradzic/bgfx)**
 - 开源版红警 [OpenRA](https://github.com/OpenRA)/**[OpenRA](https://github.com/OpenRA/OpenRA)**

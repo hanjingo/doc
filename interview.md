@@ -788,36 +788,6 @@ TODO
 
 
 
-## GO
-
-### 基本语法
-
-#### GO的不足
-
-具体见：[Golang总结#优缺点](LANG/GO/summary.md)
-
-#### GO的协程原理
-
-TODO
-
-#### Go的GMP模型
-
-TODO
-
-#### Select机制
-
-TODO
-
-#### GC优化与内存逃逸
-
-TODO
-
-[返回顶部](#面试笔记)
-
----
-
-
-
 ## Skynet
 
 ### 基础知识

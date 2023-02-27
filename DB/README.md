@@ -8,6 +8,7 @@
 
 ## 第三方库
 
+- [InfluxDB](INFLUXDB/README.md)
 - [Mysql](MYSQL/README.md)
 - [Redis](REDIS/README.md)
 - [Sqlite](SQLITE/README.md)

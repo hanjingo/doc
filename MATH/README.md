@@ -48,6 +48,5 @@ TODO
 ## 数学建模
 
 - [决策树](decision_table.md)
-- [金融模型](finance.md)
 - [传染病模型](infectious_disease.md)
 

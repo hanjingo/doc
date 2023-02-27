@@ -1,5 +1,6 @@
 # 工程实践
 
+- [持续集成与交付](cicd.md)
 - [软件调试](debug.md)
 - [运维技巧](dev_ops.md)
 - [错误处理](error_resolve.md)

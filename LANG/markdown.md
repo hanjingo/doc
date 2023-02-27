@@ -1407,7 +1407,7 @@ state 多线程 {
     }
 )
 
-（如果工具如vnote等，支持graphviz，直接使用dot语法）
+（如果工具如vnote等，支持graphviz，直接使用[dot语法](dot.md)）
 
 ​	digraph demo {
 ​    	bgcolor="beige"
