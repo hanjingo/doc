@@ -8,9 +8,9 @@
 
 ### 数学
 
-| 书名                                                         | 版次 | 作者         | 摘要/评价                                                    |
-| ------------------------------------------------------------ | ---- | ------------ | ------------------------------------------------------------ |
-| [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md) | 1ED  | 吴岚<br>黄海 | 金融数学入门教材，需要提前学好：排列组合，微积分，以及概率论相关知识。 |
+| 书名         | 版次 | 作者         | 摘要/评价                                                    |
+| ------------ | ---- | ------------ | ------------------------------------------------------------ |
+| 金融数学引论 | 1ED  | 吴岚<br>黄海 | 金融数学入门教材，需要提前学好：排列组合，微积分，以及概率论相关知识。 |
 
 ### 数据结构与算法
 
@@ -88,21 +88,22 @@
 
 ## 在读
 
-- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
-- [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
-- [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
 - [Android c++高级编程](PRO_ANDROID_CPP_WITH_THE_NDK/README.md)
 - [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
+- [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
+- [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
+- [API Design for C++](API_DESIGN_FOR_CPP/README.md)
+- [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
+- [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
+- [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md)
+- [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
 - [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
-- [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
-- [API Design for C++](API_DESIGN_FOR_CPP/README.md)
-- [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 
 
 

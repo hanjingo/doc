@@ -4,20 +4,33 @@
 
 ## 3.1 什么是JNI
 
+JNI允许Java类的某些方法原生实现，同时让它们能够像普通Java方法一样被调用和使用。
+
 
 
 ## 3.2 以一个示例开始
 
 ### 3.2.1 原生方法的声明
 
-使用native关键字声明原生方法。
+使用native关键字声明原生方法：
+
+```java
+public native String stringFromJNI();
+```
 
 ### 3.2.2 加载共享库
 
-提供2种方法加载共享库:
+`java.lang.System`提供2种静态方法，用于在运行时加载共享库：
 
 - load
+
 - loadLibrary
+
+  ```java
+  static {
+      System.loadLibrary("hello-jni");
+  }
+  ```
 
 ### 3.2.3 实现原生方法
 
@@ -35,8 +48,8 @@
 
    原生函数的声明格式`JNIEXPORT 返回值 JNICALL 函数名(JNIEnv*, jobject)`;
 
-   - JNIEnv: 指向可用JNI函数表的接口指针，是线程-局部数据指针，无法缓存以及被其它线程使用。
-   - jobject: 当前类实例的java对象引用
+   - JNIEnv接口指针：指向可用JNI函数表的接口指针，是线程-局部数据指针，无法缓存以及被其它线程使用。
+   - jobject：当前类实例的java对象引用。
 
 
 
@@ -82,19 +95,19 @@
 
 ### 3.4.1 字符串操作
 
-JNI不提供任何修改字符串的函数，支持Unicode和UTF-8两种编码。例:
+JNI不提供任何修改字符串的函数，支持Unicode和UTF-8两种编码；例：
 
 ```c++
 jstring javaString;
 javaString = (*env)->NewStringUTF(env, "Hello World!");
 ```
 
-java字符串转c++字符串函数
+将java字符串转c++字符串函数的方法：
 
-- Unicode: GetStringChars
-- UTF-8: GetStringUTFChars
+- Unicode：GetStringChars
+- UTF-8：GetStringUTFChars
 
-例:
+例：
 
 ```c++
 const jbyte* str;
@@ -102,14 +115,14 @@ jboolean isCopy;
 str = (*env)->GetStringUTFChars(env, javaString, &isCopy);
 ```
 
-c++字符串使用完后要记得释放，否则会引起内存泄漏。
+**注意：c++字符串使用完后要记得释放，否则会引起内存泄漏。**
 
-释放c++字符串
+释放c++字符串的方法：
 
-- Unicode: ReleaseStringChars
-- UTF-8: ReleaseStringUTFChars
+- Unicode：ReleaseStringChars
+- UTF-8：ReleaseStringUTFChars
 
-例:
+例：
 
 ```c++
 (*env)->ReleaseStringUTFChars(env, javaString, str);
@@ -157,6 +170,8 @@ nativeDirectArray = (*env)->GetIntArrayElements(env, javaArray, &isCopy);
 | 0          | 将内容复制回来并释放原生数组                                 |
 | JNI_COMMIT | 将内容复制回来但不释放原生数组，一般用于周期性更行一个java数组 |
 | JNI_ABORT  | 释放原生数组但不用将内容复制回来                             |
+
+
 
 ### 3.4.3 NIO操作
 

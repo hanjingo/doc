@@ -11,7 +11,7 @@
 - [第七章 原生线程](chapter7.md)
 - [第八章 POSIX Socket API:面向连接的通信](chapter8.md)
 - [第九章 POSIX Socket API:无连接的通信](chapter9.md)
-- [第十章 POSIX Socket API:本地通信]
+- [第十章 POSIX Socket API:本地通信](chapter10.md)
 - [第十一章 支持C++](chapter11.md)
 - [第十二章 原生图形API]
 - [第十三章 原生音频API]
