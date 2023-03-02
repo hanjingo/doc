@@ -20,10 +20,11 @@
 - [Protobuf编码](protobuf.md)
 - [QoS服务质量控制](qos.md)
 - [MessagePack编码](msgpack.md)
-- [Groupcast组播](multicast.md)
+- [GroupCast组播](multicast.md)
 - [NAT网络地址转换](nat.md)
 - [P2P协议](res/p2p.md)
 - [套接字](socket.md)
+- [socks5协议](socks5.md)
 - [TCP协议](tcp.md)
 - [UDP协议](udp.md)
 - [RTMP协议]
