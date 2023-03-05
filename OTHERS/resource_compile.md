@@ -204,6 +204,11 @@
 
 - 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - ai神库 [tensorflow](https://github.com/tensorflow)/**[tensorflow](https://github.com/tensorflow/tensorflow)**
+- OpenAI教程 [openai](https://github.com/openai)/**[openai-cookbook](https://github.com/openai/openai-cookbook)**
+
+### 金融
+
+- ctp接口封装 [krenx1983](https://github.com/krenx1983)/**[openctp](https://github.com/krenx1983/openctp)**
 
 ### 区块链
 

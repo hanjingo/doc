@@ -21,10 +21,10 @@
 
 ### 操作系统
 
-| 书名                                                         | 版次 | 作者                                         | 摘要/评价                                                |
-| ------------------------------------------------------------ | ---- | -------------------------------------------- | -------------------------------------------------------- |
-| [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)    | 3ED  | 汤小丹<br>梁红兵<br>哲凤屏<br>汤子瀛         | 里面一些专业词汇的拼写错误较多，讲的比较宽泛，不太推荐！ |
-| [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md) | 2ED  | [美]W.Richard Stevens <br>[美]Stephen A.Rago | 可以当*nix系统的API字典用。                              |
+| 书名                                                         | 版次 | 作者                                         | 摘要/评价                                                  |
+| ------------------------------------------------------------ | ---- | -------------------------------------------- | ---------------------------------------------------------- |
+| [计算机操作系统](THE_COMPUTER_OPERATING_SYSTEM/README.md)    | 3ED  | 汤小丹<br>梁红兵<br>哲凤屏<br>汤子瀛         | 里面一些专业词汇的拼写错误较多，讲的比较宽泛，**不推荐！** |
+| [UNIX环境高级编程](ADVANCED_PROGRAMMING_IN_THE_UNIX_ENVIRONMENT/README.md) | 2ED  | [美]W.Richard Stevens <br>[美]Stephen A.Rago | 可以当*nix系统的API字典用。                                |
 
 ### 数据库
 
@@ -44,7 +44,7 @@
 
 | 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
 | ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       | 1ED  | Anthony Williams | 千万不要看中文翻译版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       | 1ED  | Anthony Williams | 千万不要看中文纸质版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
 | [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md) |      | C.A.R.Hoare      |                                                              |
 
 ### C++
