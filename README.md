@@ -31,5 +31,5 @@
 
 [Posix Interface](OS/posix.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;[Lua API](LANG/LUA/api.md) 
 
-[Sockets Program](NET/socket.md)&nbsp;|
+[Sockets Program](NET/socket.md)&nbsp;|&nbsp;&nbsp;[ChatGPT CookBook](chatgpt.md)
 

@@ -24,7 +24,7 @@ TODO
 
 
 
-## Windows下设置代理
+## Windows下设置/取消代理
 
 新建环境变量：
 

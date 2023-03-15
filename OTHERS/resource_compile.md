@@ -204,11 +204,14 @@
 
 - 自动驾驶必看 [ApolloAuto](https://github.com/ApolloAuto)/**[apollo](https://github.com/ApolloAuto/apollo)**
 - ai神库 [tensorflow](https://github.com/tensorflow)/**[tensorflow](https://github.com/tensorflow/tensorflow)**
-- OpenAI教程 [openai](https://github.com/openai)/**[openai-cookbook](https://github.com/openai/openai-cookbook)**
+- OpenAI的API教程 [openai](https://github.com/openai)/**[openai-cookbook](https://github.com/openai/openai-cookbook)**
+- 英文版语料大全，chatgpt的英文饲料 [f](https://github.com/f)/**[awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts)**
+- 中文版chatgpt语料大全，chatgpt的中文饲料 [PlexPt](https://github.com/PlexPt)/**[awesome-chatgpt-prompts-zh](https://github.com/PlexPt/awesome-chatgpt-prompts-zh)**
 
 ### 金融
 
 - ctp接口封装 [krenx1983](https://github.com/krenx1983)/**[openctp](https://github.com/krenx1983/openctp)**
+- xtp官网 https://xtp.zts.com.cn/
 
 ### 区块链
 
@@ -304,3 +307,8 @@
 - 非常全面的关于CS知识点总结 [SmartKeyerror](https://github.com/SmartKeyerror)/**[Psyduck](https://github.com/SmartKeyerror/Psyduck)**
 - 非常全面的计算机相关知识笔记 [selfboot](https://github.com/selfboot)/**[CS_Offer](https://github.com/selfboot/CS_Offer)**
 - 数学学习路线图 [TalalAlrawajfeh](https://github.com/TalalAlrawajfeh)/**[mathematics-roadmap](https://github.com/TalalAlrawajfeh/mathematics-roadmap)**
+- ChatGPT赚钱指南 [How to Make Money with ChatGPT: Strategies, Tips, and Tactics](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt?a=705657043)
+- ChatGPT饲养手册 [The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts](https://fka.gumroad.com/l/art-of-chatgpt-prompting?a=705657043)
+- 面试宝典 [0voice](https://github.com/0voice)/**[interview_internal_reference](https://github.com/0voice/interview_internal_reference)**
+- C++新特性总结 [0voice](https://github.com/0voice)/**[cpp_new_features](https://github.com/0voice/cpp_new_features)**
+- Linux内核学习资料 [0voice](https://github.com/0voice)/**[linux_kernel_wiki](https://github.com/0voice/linux_kernel_wiki)**

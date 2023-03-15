@@ -8,7 +8,7 @@
 
   1 引论
 
-- 2 A Simple Syntax-Directed Translator
+- [2 A Simple Syntax-Directed Translator](chapter2.md)
 
 - 3 Lexical Analysis
 

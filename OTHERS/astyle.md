@@ -4,7 +4,22 @@
 
 
 
-TODO
+## 配置示例
+
+```sh
+--style=kr
+--indent=spaces=4
+--align-pointer=type
+--align-reference=type
+--indent-col1-comments
+--pad-oper
+--pad-header
+--unpad-paren
+--close-templates
+--add-brackets
+--convert-tabs
+--mode=c
+```
 
 
 
