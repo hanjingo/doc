@@ -6,11 +6,15 @@
 
 - [1 Introduction](chapter1.md)
 
-  1 引论
+  引论
 
 - [2 A Simple Syntax-Directed Translator](chapter2.md)
 
-- 3 Lexical Analysis
+  一个简单的语法制导翻译器
+
+- [3 Lexical Analysis](chapter3.md)
+
+  词法分析
 
 - 4 Syntax Analysis
 
