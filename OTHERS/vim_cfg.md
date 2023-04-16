@@ -167,4 +167,8 @@ mv vim82 vim80
    ctags -R *
    ```
 
+
    
+## 参考
+
+[1] [VIM 参考手册](https://yianwillis.github.io/vimcdoc/doc/eval.html)

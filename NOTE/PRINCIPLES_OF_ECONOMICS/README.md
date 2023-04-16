@@ -2,7 +2,7 @@
 
 经济学原理
 
-[美] N.Gregory Mankiw.4th ED
+[美] N.Gregory Mankiw . 4th ED
 
 - [CHAPTER 1 TEN PRINCIPLES OF ECONOMICS](chapter1.md)
 
@@ -20,11 +20,11 @@
 
   第4章 供给与需求的市场力量
   
-- CHAPTER 5 ELASTICITY AND ITS APPLICATION
+- [CHAPTER 5 ELASTICITY AND ITS APPLICATION](chapter5.md)
 
   第5章 弹性及其应用
 
-- CHAPTER 6 SUPPLY, DEMAND, AND GOVERNMENT POLICIES
+- [CHAPTER 6 SUPPLY, DEMAND, AND GOVERNMENT POLICIES](chapter6.md)
 
   第6章 供给，需求与政府政策
 

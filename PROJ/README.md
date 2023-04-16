@@ -24,5 +24,3 @@
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)
 - [skynet](SKYNET/README.md)
-- [NGINX]
-- [linux core]

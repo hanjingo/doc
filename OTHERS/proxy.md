@@ -1,5 +1,7 @@
 # 代理设置
 
+[TOC]
+
 
 
 ## 在终端中使用/取消代理
@@ -46,8 +48,8 @@ TODO
      ```sh
      wget https://github.com/fatedier/frp/releases/download/v0.47.0/frp_0.47.0_linux_amd64.tar.gz
      tar -zxf frp_0.47.0_linux_amd64.tar.gz
-     sudo cp -r frp_0.47.0_linux_amd64 /usr/bin/
-     link /usr/bin/frp_0.47.0_linux_amd64/frps /usr/bin/frps
+     sudo cp -r frp_0.47.0_linux_amd64 /usr/local/bin/
+     link /usr/local/bin/frp_0.47.0_linux_amd64/frps /usr/local/bin/frps
      ```
 
    - `windows` 略
@@ -81,12 +83,16 @@ TODO
      Type=simple
      Restart=on-failure
      RestartSec=5s
-     ExecStart=/usr/bin/frps -c /etc/frps.ini
-     ExecReload=/usr/bin/frps reload -c /etc/frps.ini
+     ExecStart=/usr/local/bin/frps -c /etc/frps.ini
+     ExecReload=/usr/local/bin/frps reload -c /etc/frps.ini
      
      [Install]
      WantedBy=default.target
      ```
+
+   - `macos`
+
+     使用launchagent，具体略。
 
 4. 设置开启启动
 
@@ -107,11 +113,22 @@ TODO
      ```sh
      wget https://github.com/fatedier/frp/releases/download/v0.47.0/frp_0.47.0_linux_amd64.tar.gz
      tar -zxf frp_0.47.0_linux_amd64.tar.gz
-     sudo cp -r frp_0.47.0_linux_amd64 /usr/bin/
-     link /usr/bin/frp_0.47.0_linux_amd64/frpc /usr/bin/frpc
+     sudo cp -r frp_0.47.0_linux_amd64 /usr/local/bin/
+     link /usr/local/bin/frp_0.47.0_linux_amd64/frpc /usr/local/bin/frpc
      ```
      
-   - `windows` 略
+   - macos
+
+     ```sh
+     wget https://github.com/fatedier/frp/releases/download/v0.47.0/frp_0.47.0_darwin_amd64.tar.gz
+     tar -zxf frp_0.47.0_darwin_amd64.tar.gz
+     sudo cp -r frp_0.47.0_darwin_amd64 /usr/local/bin/
+     link /usr/local/bin/frp_0.47.0_darwin_amd64/frpc /usr/local/bin/frpc
+     ```
+
+   - windows
+
+     略
 
 2. 新建/修改配置文件，添加以下内容：
 
@@ -148,8 +165,8 @@ TODO
      Type=simple
      Restart=on-failure
      RestartSec=5s
-     ExecStart=/usr/bin/frpc -c /etc/frpc.ini
-     ExecReload=/usr/bin/frpc reload -c /etc/frpc.ini
+     ExecStart=/usr/local/bin/frpc -c /etc/frpc.ini
+     ExecReload=/usr/local/bin/frpc reload -c /etc/frpc.ini
      
      [Install]
      WantedBy=default.target

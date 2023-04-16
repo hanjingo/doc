@@ -16,21 +16,38 @@
 
   词法分析
 
-- 4 Syntax Analysis
+- [4 Syntax Analysis](chapter4.md)
 
-- 5 Syntax-Directed Translation
+  语法分析
 
-- 6 Intermediate-Code Generation
+- [5 Syntax-Directed Translation](chapter5.md)
 
-- 7 Run-Time Environments
+  语法制导的翻译
 
-- 8 Code Generation
+- [6 Intermediate-Code Generation](chapter6.md)
 
-- 9 Machine-Independent Optimizations
+  中间代码生成
 
-- 10 Instruction-Level Parallelism
+- [7 Run-Time Environments](chapter7.md)
 
-- 11 Optimizing for Parallelism and Locality
+  运行时刻环境
 
-- 12 Interprocedural Analysis
+- [8 Code Generation](chapter8.md)
 
+  代码生成
+
+- [9 Machine-Independent Optimizations](chapter9.md)
+
+  机器无关优化
+
+- [10 Instruction-Level Parallelism](chapter10.md)
+
+  指令级并行性
+
+- [11 Optimizing for Parallelism and Locality](chapter11.md)
+
+  并行性和局部性优化
+
+- [12 Interprocedural Analysis](chapter12.md)
+
+  过程间分析

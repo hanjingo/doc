@@ -19,6 +19,12 @@
 | [数据结构与算法分析-C++描述](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 3ED  | [美]Mark Allen Weiss                                         | 可以作为<<算法导论>>的配套书。 |
 | [算法导论](INTRODUCTION_TO_ALGORITHMS/README.md)             | 3ED  | [美]Thomas H.Cormen<br>[美]Charles E.Leiserson<br>[美]Ronald L. Rivest<br>[美]Clifford Stein | 算法领域的圣经。               |
 
+### 编译原理
+
+| 书名                                                        | 版次 | 作者                                                         | 摘要/评价        |
+| ----------------------------------------------------------- | ---- | ------------------------------------------------------------ | ---------------- |
+| [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md) | 2ED  | [美] Alfred V.Aho<br>[美] Monica S.Lam<br>[美] Ravi Sethi<br>[美] Jeffrey D.Ullman | 编译领域的圣经。 |
+
 ### 操作系统
 
 | 书名                                                         | 版次 | 作者                                         | 摘要/评价                                                  |
@@ -42,10 +48,9 @@
 
 ### 并行编程
 
-| 书名                                                         | 版次 | 作者             | 摘要/评价                                                    |
-| ------------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md)       | 1ED  | Anthony Williams | 千万不要看中文纸质版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
-| [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md) |      | C.A.R.Hoare      |                                                              |
+| 书名                                                   | 版次 | 作者             | 摘要/评价                                                    |
+| ------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文纸质版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
 
 ### C++
 
@@ -72,12 +77,6 @@
 | ------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------ |
 | [设计模式](DESIGN_PATTERN/README.md) | 1ED  | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides | 设计模式领域地圣经，推荐！！！ |
 
-### 哲学
-
-| 书名                      | 版次 | 作者 | 摘要/评价 |
-| ------------------------- | ---- | ---- | --------- |
-| [必然](CERTAIN/README.md) |      |      |           |
-
 ### 经济学
 
 | 书名                                      | 版次 | 作者      | 摘要/评价                          |
@@ -88,19 +87,17 @@
 
 ## 在读
 
-- [编译原理](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md)
-- [Window核心编程](PROGRAMMING_APPLICATIONS_FOR_MICROSOFT_WINDOWS/README.md)
+- [More Effective C++](MORE_EFFECTIVE_CPP/README.md)
+- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [UNIX网络编程 卷二](UNIX_NETWORK_PROGRAMMING_V2/README.md)
 - [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 - [初等数论及其应用](ELEMENTARY_NUMBER_THEORY_AND_ITS_APPLICATIONS/README.md)
 - [API Design for C++](API_DESIGN_FOR_CPP/README.md)
 - [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md)
 - [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
-- [金融数学引论](INTRODUCTION_TO_THE_MATHEMATICS_OF_FINANCE/README.md)
 - [CppTemplateTutorial](CPP_TEMPLATE_TUTORIAL/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
-- [并行程序设计导论](AN_INTRODUCTION_TO_PARALLEL_GROGRAMMING/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
 
@@ -108,16 +105,15 @@
 
 ## 计划读
 
+- [大规模并行处理器程序设计]
+- [高频交易]
 - [期权，期货及其他衍生产品]
 - [An introduction to probability theory and its applications]
-- [Developing High-Frequency Trading Syst]
-- [Essential C++]
-- [More Effective C++]
+- [Developing High-Frequency Trading System]
 - [数理统计及其应用]
 - [微积分学教程 第一卷]
 - [微积分学教程 第二卷]
 - [微积分学教程 第三卷]
-- [代数学引论]
 - [概率论基础教程]
 - [C++覆辙录]
 - [Modern C++ Design]

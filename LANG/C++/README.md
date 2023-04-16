@@ -16,6 +16,7 @@
 
 - [algorithm](BOOST/algorithm.md)
 - [asio](BOOST/asio.md)
+- [beast](BOOST/beast.md)
 - [container](BOOST/container.md)
 - [interprocess](BOOST/interprocess.md)
 - [io](BOOST/io.md)
