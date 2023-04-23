@@ -19,8 +19,7 @@
 
 ## 第三方项目
 
-- [EOS](EOSIO/README.md)
-- [Ethereum](ETH/README.md)
 - [OpenSSL](OPENSSL/README.md)
 - [ZeroMQ](ZEROMQ/README.md)
 - [skynet](SKYNET/README.md)
+- []

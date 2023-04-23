@@ -1,0 +1,45 @@
+# CHAPTER 8. OF THE WAGES OF LABOUR
+
+第八章 论劳动工资
+
+
+
+What are the common wages of labour, depends everywhere upon the contract usually made between those two parties, whose interests are by no means the same.
+
+当劳动者和雇佣者非同一人的情况下，劳动者获得的报酬即为劳动工资，其大小取决于劳资双方订立的契约。
+
+
+
+劳动者对工资的需求随着国家的收入和资本的增加而增加。
+
+
+
+引起劳动工资的上升不是国民财富的实际大小，而是它的不断增长。因此，最高的劳动工资并非出现在最富的国家，而是出现在最繁荣，发展最快的国家。
+
+
+
+对于靠工资生活的人的需求的增长必然同预定用于支付工资的资金的增长成比例。
+
+A man must always live by his work, and his wages must at least be sufficient to maintain him. They must even upon most occasions be somewhat more, otherwise it would be impossible for him to bring up a family, and the race of such workmen could not last beyond the first generation.
+
+若劳动者的工资水平能达到养活劳动者及其家庭，且有剩余，基于劳动者之间的竞争和雇主们的利益关系，工资很快便会降到仅满足一般人道标准的最低工资水平。
+
+
+
+丰厚的劳动报酬是国民财富增加的必然结果和自然反应。极度贫困是社会发展停滞的表现，如果劳动者处于饥饿状态，则是社会急速衰退的征兆。
+
+
+
+丰厚的劳动报酬即是财富增加的结果，又是人口增加的原因。
+
+
+
+劳动者的幸福来自于社会进步，而非社会财富达到顶峰。
+
+
+
+劳动的货币价格受到两种情况的支配：一是劳动需求，二是生活必需品的价格。
+
+
+
+因资本增加而造成劳动工资提高的同时也会提高劳动生产力，以较少的劳动生产较多的产品。
