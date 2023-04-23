@@ -19,5 +19,4 @@
 - [静态链接](static_link.md)
 - [存储器](storage.md)
 - [unix系统内核结构](unix_core.md)
-- [Windows API](winapi.md)
 
