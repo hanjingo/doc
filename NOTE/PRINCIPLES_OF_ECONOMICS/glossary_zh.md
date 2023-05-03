@@ -1,0 +1,135 @@
+# 术语表
+
+- 总需求曲线（aggregate-demand curve）。
+- 总供给曲线（aggregate-supply curve）。
+- 升值（appreciation）。
+- 自动稳定器（automatic stabilizers）。
+- 贸易平衡（balanced trade）。
+- 银行资本（bank capital）。
+- 债券（bond）。
+- 预算赤字（budget deficit）。
+- 预算盈余（budget surplus）。
+- 资本外逃（capital flight）。
+- 资本需要量（capital requirement）。
+- 追赶效应（catch-up effect）。
+- 中央银行（central bank）。
+- 古典二分法（classical dichotomy）。
+- 封闭经济（closed economy）。
+- 集体谈判（collective bargaining）。
+- 商品货币（commodity money）。
+- 复利（compounding）。
+- 消费物价指数（consumer price index, CPI）。
+- 消费（consumption）。
+- 挤出（crowding out）。
+- 挤出效应（crowding-out effect）。
+- 通货（currency）。
+- 周期性失业（cyclical unemployment）。
+- 活期存款（demand deposits）。
+- 贬值（depreciation）。
+- 萧条（depression）。
+- 收益递减（diminishing returns）。
+- 贴现率（discount rate）。
+- 丧失信心的工人（discouraged workers）。
+- 多元化（diversification）。
+- 效率工资（efficiency wages）。
+- 有效市场假说（efficient markets bypothesis）。
+- 出口（exports）。
+- 联邦基金利率（federal funds rate）。
+- 联邦储备（federal reserve, Fed）。
+- 法定货币（fiat money）。
+- 金融学（finance）。
+- 金融中介机构（financial intermediaries）。
+- 金融市场（financial markets）。
+- 金融体系（financial system）。
+- 企业特有风险（firm-specific risk）。
+- 财政政策（fisical policy）。
+- 费雪效应（fisher effect）。
+- 部分准备金银行（fractional-reserve banking）。
+- 摩擦性失业（frictional unemployment）。
+- 基本面分析（fundamental analysis）。
+- 终值（future value）。
+- GDP平减指数（GDP deflator）。
+- 政府购买（government purchase）。
+- 国内生产总值（gross domestic product, GDP）。
+- 人力资本（human capital）。
+- 进口（imports）。
+- 指数化（indexation）。
+- 通货膨胀率（inflation rate）。
+- 通货膨胀税（inflation tax）。
+- 信息有效（informational efficiency）。
+- 投资（investment）。
+- 寻找工作（job search）。
+- 劳动力（labor force）。
+- 劳动力参工率（labor-force participation rate）。
+- 杠杆（leverage）。
+- 杠杆率（leverage ratio）。
+- 流动性（liquidity）。
+- 宏观经济学（macroeconomics）。
+- 可贷资金市场（market for loanable funds）。
+- 市场风险（market risk）。
+- 交换媒介（medium of eschange）。
+- 菜单成本（menu costs）。
+- 微观经济学（microeconomics）。
+- 总需求与总供给模型（model of aggregate demand and aggregate supply）。
+- 货币中性（monetary neutrality）。
+- 货币政策（monetary policy）。
+- 货币（money）。
+- 货币乘数（money multipiler）。
+- 货币供给（money supply）。
+- 乘数效应（multiplier effect）。
+- 共同基金（mutual fund）。
+- 国民储蓄（national saving）。
+- 自然产出水平（natural level of output）。
+- 自然失业率（natural rate of unemployment）。
+- 自然资源（natural resources）。
+- 自然率假说（natural-rate bypothesis）。
+- 资本净流出（net capital outflow）。
+- 净出口（net exports）。
+- 名义汇率（nominal exchange rate）。
+- 名义GDP（nominal GDP）。
+- 名义利率（nominal interest rate）。
+- 名义变量（nominal variables）。
+- 开放经济（open economy）。
+- 公开市场操作（open-market operations）。
+- 菲利普斯曲线（phillips curve）。
+- 物质资本（physical capital）。
+- 现值（present value）。
+- 私人储蓄（private saving）。
+- 生产物价指数（producer price index, PPI）。
+- 生产率（productivity）。
+- 公共储蓄（public saving）。
+- 购买力平价（purchasing-power）。
+- 数量方程式（quantity equation）。
+- 货币数量论（quantity theory of money）。
+- 随机游走（random walk）。
+- 理性预期（rational expectations）。
+- 真实汇率（real exchange rate）。
+- 真实GDP（real GDP）。
+- 真实利率（real interest rate）。
+- 真实变量（real variables）。
+- 衰退（recession）。
+- 准备金率（reserve ratio）。
+- 法定准备金（reserve requirements）。
+- 准备金（reserves）。
+- 风险厌恶（risk aversion）。
+- 牺牲率（sacrifice ratio）。
+- 皮鞋成本（shoeleather cost）。
+- 滞涨（stagflation）。
+- 股票（stock）。
+- 价值储藏手段（store of value）。
+- 罢工（strike）。
+- 结构性失业（structural unemployment）。
+- 供给冲击（supply sock）。
+- 技术知识（technological knowledge）。
+- 流动性偏好理论（theory of liquidity preference）。
+- 贸易余额（trade balance）。
+- 贸易赤字（trade deficit）。
+- 贸易政策（trade policy）。
+- 贸易盈余（trade surplus）。
+- 失业保险（unemployment insurance）。
+- 失业率（unemployment rate）。
+- 工会（union）。
+- 计价单位（unit of account）。
+- 货币流通速度（velocity of money）。
+
+

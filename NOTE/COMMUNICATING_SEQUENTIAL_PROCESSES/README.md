@@ -9,3 +9,4 @@ C.A.R.Hoare
 - [5 Sequential Processes]
 - [6 Shared Resources]
 - [7 Discussion]
+- [Glossary](glossary.md)

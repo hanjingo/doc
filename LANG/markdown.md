@@ -328,8 +328,6 @@ int main(void) {
     ...
 }
 </pre>
-
-
 ### 单元格
 
 ```markdown
@@ -371,7 +369,15 @@ int main(void) {
 </table>
 
 
+### 左右分栏
 
+```html
+<div style="width: 50%; float:left;">左侧</div>
+<div style="width: 50%; float:left;">右侧</div>
+```
+
+<div style="width: 50%; float:left;">左侧</div>
+<div style="width: 50%; float:left;">右侧</div>
 
 
 ## 公式
@@ -1425,6 +1431,7 @@ state 多线程 {
 
 ## 参考
 
+- [Markdown: Syntax](https://daringfireball.net/projects/markdown/syntax#html)
 - [markdown 绘制流程图、时序图、甘特图](https://www.jianshu.com/p/6dbcc3aff98b)
 - [使用 Typora 画图（类图、流程图、时序图）](https://zhuanlan.zhihu.com/p/172635547)
 - [Class diagrams](https://mermaid-js.github.io/mermaid/#/classDiagram?id=class-diagrams)
@@ -1433,4 +1440,3 @@ state 多线程 {
 - [Cmd Markdown 公式指导手册](https://www.zybuluo.com/codeep/note/163962)
 - [Markdown 文件中绘制甘特图](https://www.marapython.com/posts/gantt-chart/#%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E8%8A%82%E7%82%B9Milestone)
 - [一份 Markdown，输出中英双语两份文件](https://github.com/TomBener/bilingual-docs)
-

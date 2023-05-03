@@ -83,13 +83,12 @@
 | 书名                                      | 版次 | 作者      | 摘要/评价                          |
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [国富论](THE_WEALTH_OF_NATIONS/README.md) | 1ED  | 亚当.斯密 | 经济学的圣经，入门政治经济学首选。 |
-| [经济学原理](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | [美] N.Gregory Mankiw | 经济学（宏观+微观）入门教材。 |
+| [经济学原理](PRINCIPLES_OF_ECONOMICS/README_zh.md) | 4ED | [美] N.Gregory Mankiw | 经济学（宏观+微观）入门教材。 |
 
 
 
 ## 在读
 
-- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Linux内核设计与实现](LINUX_KERNEL_DEVELOPMENT/README.md)
 - [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
 - [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)

@@ -45,9 +45,9 @@
 
 ### Parallel
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author           | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
+| [C++ concurrency in action](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams |                   |
 
 ### C++
 
@@ -60,9 +60,14 @@
 | Title                                   | Edition | Author  | Abstract/Evaluate              |
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
+| [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
 
 
 
 ## Reading
+
+- [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
+
+
 
 ## Planned Reading
