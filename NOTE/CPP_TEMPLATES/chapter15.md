@@ -38,3 +38,48 @@ This is the key of the traits concept: Traits provide an avenue to configure con
 
 ### 15.1.3 Parameterized Traits
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;">decouple `/diː'kʌpl/` 分离，拆散</div>
+<div style="width: 50%; float:left;">summed `/sʌmd/` 总计的，总数的</div>
+<div style="width: 50%; float:left;">omit `/ə'mɪt/` 省略，遗漏，忘记，删去</div>
+<div style="width: 50%; float:left;">bonnet `/'bɒnɪt/` 软帽，引擎罩，壁炉罩</div>
+<div style="width: 50%; float:left;">revision `/rɪ'vɪʒn/` 修订本，校订，修正，复习</div>
+<div style="width: 50%; float:left;">revise `/rɪ'vaɪz/` 校订，修正，校正</div>
+<div style="width: 50%; float:left;">circumvent `/ˌsɜːkəm'vent/` 绕行，避开，围住</div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

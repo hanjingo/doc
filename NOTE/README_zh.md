@@ -1,3 +1,5 @@
+[English](README.md) | 中文版
+
 # 读书笔记
 
 [TOC]
@@ -95,6 +97,7 @@
 - [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
 - [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
 - [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
+- [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
 
 
 
@@ -104,17 +107,12 @@
 - [线性代数]
 - [货币金融学]
 - [投资学]
-- [大规模并行处理器程序设计]
 - [高频交易]
 - [期权，期货及其他衍生产品]
-- [An introduction to probability theory and its applications]
-- [Developing High-Frequency Trading System]
 - [数理统计及其应用]
 - [微积分学教程 第一卷]
 - [微积分学教程 第二卷]
 - [微积分学教程 第三卷]
 - [概率论基础教程]
 - [C++覆辙录]
-- [Modern C++ Design]
-- [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 

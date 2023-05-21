@@ -38,7 +38,7 @@ This great increase in the quantity of work, which, in consequence of the divisi
 <div style="width: 50%; float:left;">scarce `/skeəs/` 缺乏的，不足的，勉强</div>
 <div style="width: 50%; float:left;">utmost `/'ʌtməʊst/` 极度，最大可能</div>
 
-<div style="width: 50%; float:left;">grinds `/ɡraɪnd/` 碾磨，碾碎，压迫，停顿</div>
+<div style="width: 50%; float:left;">grind `/ɡraɪnd/` 碾磨，碾碎，压迫，停顿</div>
 <div style="width: 50%; float:left;">performed `/pə'fɔːm/` 执行，履行，表演，运转</div>
 
 <div style="width: 50%; float:left;">consequently `/'kɒnsɪkwəntli/` 因此，所以</div>

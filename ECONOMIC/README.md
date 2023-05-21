@@ -1,6 +1,8 @@
-# 经济学
+[中文版](README_zh.md) | English
+
+# Economic
 
 
 
-## 金融
+## Finance
 

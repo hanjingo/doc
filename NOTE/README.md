@@ -1,4 +1,4 @@
-[中文版](README_zh.md)
+English | [中文版](README_zh.md)
 
 # Note
 
@@ -49,12 +49,6 @@
 | ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
 | [C++ concurrency in action](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams |                   |
 
-### C++
-
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
-
 ### Economic
 
 | Title                                   | Edition | Author  | Abstract/Evaluate              |
@@ -67,7 +61,18 @@
 ## Reading
 
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
+- [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
+- [Computer Systems](COMPUTER_SYSTEM/READM)
+- [C++ Templates: The Complete Guide](CPP_TEMPLATES/READM)
 
 
 
 ## Planned Reading
+
+- [Introduction to Algorithms]
+- [HIGH-FREQUENCY TRADING]
+- [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
+- [Design and Development of a Functional High-Frequency Trading Algorithm]
+- [An introduction to probability theory and its applications]
+- [Developing High-Frequency Trading System]
+- [Modern C++ Design]
