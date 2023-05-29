@@ -31,7 +31,7 @@ English | [中文版](README_zh.md)
 | ----- | ------- | ------ | ----------------- |
 |       |         |        |                   |
 
-### DataBase
+### Database
 
 | Title | Edition | Author | Abstract/Evaluate |
 | ----- | ------- | ------ | ----------------- |

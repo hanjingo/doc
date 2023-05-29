@@ -164,3 +164,16 @@ int main() {
 
 ## 9.5 Afternotes
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

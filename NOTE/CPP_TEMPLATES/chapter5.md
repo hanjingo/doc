@@ -139,3 +139,16 @@ std::string s;
 - By explicitly calling a default constructor, you can make sure that variables and members of templates are initialized by a default value even if they are instantiated with a build-in type.
 - For string literals there is an array-to-pointer conversion during argument deduction if and only if the parameter is not a reference.
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

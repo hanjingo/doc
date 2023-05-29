@@ -42,18 +42,11 @@
 
 ## [Note](NOTE/README.md)
 
-### Parallel
-
 | Title                                                        | Edition | Author           | Abstract/Evaluate |
 | ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
-| [C++ concurrency in action](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams |                   |
-
-### Economic
-
-| Title                                                        | Edition | Author           | Abstract/Evaluate |
-| ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
-| [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md)     | 1ED     | Adam Smith       |                   |
-| [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED     | N.Gregory Mankiw |                   |
+| [THE WEALTH OF NATIONS](NOTE/THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith       |                   |
+| [PRINCIPLES OF ECONOMICS](NOTE/PRINCIPLES_OF_ECONOMICS/README.md) | 4ED     | N.Gregory Mankiw |                   |
+| [C++ concurrency in action](NOTE/CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams |                   |
 
 ---
 

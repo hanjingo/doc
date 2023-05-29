@@ -55,3 +55,16 @@ Generic programming is a subdiscipline of computer science that deals with findi
 
 National Institutes of Health Class Library (NIHCL)
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

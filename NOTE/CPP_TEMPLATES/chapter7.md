@@ -62,3 +62,17 @@ A translation unit is what results from preprocessing a source file; that is, it
 
 - Template parameters are those names that are listed after the keyword `template` in the template declaration or definition (`T` and `N` in our example).
 - Template arguments are the items that are substituted for template parameters (`double` and `10` in our example). Unlike template parameters, template arguments can be more than just "names".
+
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

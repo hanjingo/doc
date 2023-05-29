@@ -1,4 +1,4 @@
-[中文版](README_zh.md)
+[中文版](README_zh.md) | English
 
 # THE WEALTH OF NATIONS
 

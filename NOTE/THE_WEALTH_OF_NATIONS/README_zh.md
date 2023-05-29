@@ -1,3 +1,5 @@
+中文版 | [English](README.md)
+
 # 国富论
 
 亚当.斯密

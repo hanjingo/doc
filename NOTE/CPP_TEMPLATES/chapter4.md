@@ -58,3 +58,16 @@ class MyClass {
 - Templates can have template parameters that are values rather than types.
 - You cannot use floating-point numbers, class-type objects, and objects with internal linkage(such as string literals) as arguments for nontype template parameters.
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

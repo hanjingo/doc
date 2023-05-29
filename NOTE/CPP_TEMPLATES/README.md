@@ -1,4 +1,4 @@
-[中文版](README_zh.md) | [English](README.md)
+[中文版](README_zh.md) | English
 
 # C++ Templates: The Complete Guide
 

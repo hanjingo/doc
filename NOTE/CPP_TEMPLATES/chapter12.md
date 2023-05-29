@@ -119,3 +119,16 @@ class S<U, K>;     // 错误；局部特化和基本模板之间没有本质的�
 
 `template metaprogramming` Using the template instantiation mechanism to perform nontrivial computations at compile time.
 
+
+
+## Glossary
+
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
