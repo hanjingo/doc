@@ -1,301 +1,120 @@
-# 第七章 设计无锁的并发数据结构
+# Chapter7 - Designing lock-free concurrent data structures
 
 [TOC]
 
 
 
-## 7.1 定义和结果
+## 7.1 Definitions and consequences
 
-`阻塞（blocking）`使用互斥元，条件变量以及future来同步。
+`blocking` Algorithms and data structures that use mutexes, condition variables, and futures to synchronize.
 
-`非阻塞（nonblocking）`不使用阻塞库函数的数据结构和算法。
+`nonblocking` Data structures and algorighms that don't use blocking library functions.
 
-### 7.1.1 非阻塞数据结构
+### 7.1.1 Types of nonblocking data structures
 
 ```c++
 class spinlock_mutex
 {
-  std::atomic_flag flag;
+    std::atomic_flag flag;
 public:
-  spinlock_mutex():
-    flag(ATOMIC_FLAG_INIT)
-  {}
-  void lock()
-  {
-    while(flag.test_and_set(std::memory_order_acquire));
-  }
-  void unlock()
-  {
-    flag.clear(std::memory_order_release);
-  }
+    spinlock_mutex() : 
+    	flag(ATOMIC_FLAG_INIT)
+    {}
+    void lock()
+    {
+        while(flag.test_and_set(std::memory_order_acquire));
+    }
+    void unlock()
+    {
+        flag.clear(std::memory_order_release);
+    }
 };
 ```
 
-### 7.1.2 无锁数据结构
+*Listing 7.1 Implementation of spin-lock mutex using std::atomic_flag*
 
-无锁算法中的循环会让一些线程处于“饥饿”状态。如有线程在“错误”时间执行，那么第一个线程将会不停得尝试自己所要完成的操作(其他程序继续执行)。“无锁-无等待”数据结构，就为了避免这种问题存在的。
+### 7.1.2 Lock-free data structures
 
-### 7.1.3 无等待数据结构
+Lock-free algorithms with such loops can result in one thread being subject to `starvation`. If another thread performs operations with the "wrong" timing, the other thread might make progress while the first thread continually has to retry its operation. Data structures that avoid this problem are wait-free as well as lock-free.
 
-无等待数据结构就是：首先，是无锁数据结构；并且，每个线程都能在有限的步数内完成操作，暂且不管其他线程是如何工作的。由于会和别的线程产生冲突，所以算法可以进行无数次尝试，因此并不是无等待的。
+### 7.1.3 Wait-free data structures
 
-### 7.1.4 无锁数据结构的优点和缺点
+A wait-free data structure is a lock-free data structure with the additional property that every thread accessing the data structure can complete its operation within a bounded number of steps, regardless of the behavior of other threads. Algorithms that can involve an unbounded number of retries because of clashes with other threads are thus not wait-free.
 
-使用无锁数据结构的原因：
+### 7.1.4 The pros and cons of lock-free data structures
 
-1. 为了实现最大程度的并发。
-2. 代码健壮性。
-
+This brings us to another downside of lock-free and wait-free code: although it can increase the potential for concurrency of operations on a data structure and reduce the time an individual thread spends waiting, it may well `decrease` overall performance. First, the atomic operations used for lock-free code can be much slower than nonatomic operations, and there'll likely be more of them in a lock-free data structure than in the mutex locking code for a lock-based data structure.
 
 
-## 7.2 无锁数据结构的例子
 
-### 7.2.1 写一个无锁的线程安全栈
+## 7.2 Examples of lock-free data structures
 
-`风险指针（hazard pointers）`如果一个线程准备访问别的线程准备删除的对象，那么他会用风险指针来引用对象，因此就可以通知别的线程删除此对象可能是有风险的。
+### 7.2.1 Writing a thread-safe stack without locks
 
 ```c++
-unsigned const max_hazard_pointers=100;
-struct hazard_pointer
-{
-  std::atomic<std::thread::id> id;
-  std::atomic<void*> pointer;
-};
-hazard_pointer hazard_pointers[max_hazard_pointers];
-
-class hp_owner
-{
-  hazard_pointer* hp;
-public:
-  hp_owner(hp_owner const&)=delete;
-  hp_owner operator=(hp_owner const&)=delete;
-  hp_owner() : hp(nullptr)
-  {
-    for (unsigned i = 0; i < max_hazard_pointers; ++i)
-    {
-      std::thread::id old_id;
-      if(hazard_pointers[i].id.compare_exchange_strong( // 试着获取风险指针的所有权
-        old_id, std::this_thread::get_id())){
-        hp = &hazard_pointers[i];
-        break;
-      }
-    }
-    if (!hp)
-    {
-      throw std::runtime_error("No hazard pointers available");
-    }
-  }
-  std::atomic<void*>& get_pointer()
-  {
-    return hp->pointer;
-  }
-  ~hp_owner()
-  {
-    hp->pointer.store(nullptr);
-    hp->id.store(std::thread::id());
-  }
-}
-
 template<typename T>
 class lock_free_stack
 {
 private:
-  struct node;
-  struct counted_node_ptr
-  {
-    int external_count;
-    node* ptr;
-  };
   struct node
   {
-    std::shared_ptr<T> data;
+    T data;
     node* next;
-    
-    node(T const& data_) : data(std::make_shared<T>(data_)) {}
+
+    node(T const& data_):  // 1
+     data(data_)
+    {}
   };
-  
-  std::atomic<counted_node_ptr> head;
-  std::atomic<unsigned> thread_in_pop;
-  std::atomic<node*> to_be_deleted;
-  std::atomic<data_to_reclaim*> nodes_to_reclaim;
-  
-  void try_reclaim(node* old_head);
-  static void delete_nodes(node* nodes)
-  {
-    while(nodes)
-    {
-      node* next = nodes->next;
-      delte nodes;
-      nodes = next;
-    }
-  }
-  void increase_head_count(counted_node_ptr& old_counter)
-  {
-    counted_node_ptr new_counter;
-    do
-    {
-      new_counter = old_counter;
-      ++new_counter.external_count;
-    }
-    while (!head.compare_exchange_strong(old_counter, new_counter, 
-                                         std::memory_order_acquire,
-                                         std::memory_order_relaxed));
-    old_counter.external_count = new_counter.external_count;
-  }
-  void try_reclaim(node* old_head)
-  {
-    if (threads_in_pop == 1)
-    {
-      node* nodes_to_delete = to_be_deleted.exchange(nullptr); // 列出将要被删除的节点清单
-      if (!--threads_in_pop)
-      {
-        delete_nodes(nodes_to_delete);
-      }
-      else if (nodes_to_delete)
-      {
-        chain_pending_nodes(nodes_to_delete);
-      }
-      delete old_head;
-    }
-    else
-    {
-      chain_pending_node(old_head);
-      --threads_in_pop;
-    }
-  }
-  void chain_pending_nodes(node* nodes)
-  {
-    node* last = nodes;
-    while (node* const next = last->next) // 跟随下一个指针，链至末尾
-    {
-      last = next;
-    }
-    chain_pending_nodes(nodes, last);
-  }
-  void chain_pending_nodes(node* first, node* last)
-  {
-    last->next = to_be_deleted;
-    while (!to_be_deleted.compare_exchange_weak(last->next, first)); // 循环以保证last->next正确
-  }
-  void chain_pending_node(node* n)
-  {
-    chain_pending_nodes(n, n);
-  }
-  std::atomic<void*>& get_hazard_pointer_for_current_thread()
-  {
-    thread_local static hp_owner hazard; // 每个线程都有自己的风险指针
-    return hazard.get_pointer();
-  }
-  bool outstanding_hazard_pointers_for(void* p)
-  {
-    for(unsigned i=0; i<maz_hazard_pointers; ++i)
-    {
-      if(hazard_pointers[i].pointer.load() == p)
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  void add_to_reclaim_list(data_to_reclaim* node)
-	{
-  	node->next = nodes_to_reclaim.load();
-  	while (!nodes_to_reclaim.compare_exchange_weak(node->next, node));
-	}
-	template<typename T>
-	void reclaim_later(T* data)
-	{
-  	add_to_reclaim_list(new data_to_reclaim(data));
-	}
-	void delete_nodes_with_no_hazards()
-	{
-  	data_to_reclaim* current=nodes_to_reclaim.exchange(nullptr);
-  	while(current)
-    {
-    	data_to_reclaim* const next = current->next;
-    	if (!outstanding_hazard_pointers_for(current->data))
-    	{
-      	delete current;
-    	}
-    	else
-    	{
-      	add_to_reclaim_list(current);
-    	}
-    	current = next;
-  	}
-	}
-  template<typename T>
-	void do_delete(void* p)
-	{
-  	delete static_cast<T*>(p);
-	}
-  
-	struct data_to_reclaim
-	{
-  	void* data;
-  	std::function<void(void*)> deleter;
-  	data_to_reclaim* next;
-  
-  	template<typename T>
-  	data_to_reclaim(T* p) : data(p), deleter(&do_delete<T>), next(0) {}
-  	~data_to_reclaim()
-  	{
-    	deleter(data);
-  	}
-	};
+
+  std::atomic<node*> head;
 public:
-  ~lock_free_stack()
-  {
-    while(pop());
-  }
   void push(T const& data)
   {
-    counted_node_ptr new_node; // 创建节点
-    new_node.ptr = new node(data);
-    new_node.external_count = 1;
-    new_node.ptr->next = head.load(std::memory_order_relaxed); // 将next指针指向head
-    while(!head.compare_exchange_weak(new_node->next, new_node,
-                                      std::memory_order_release,
-                                      std::memory_order_relaxed)); // 将head指向新节点
-  }
-  std::shared_ptr<T> pop()
-  {
-    counted_node_ptr old_head = head.load(std::memory_order_relaxed);
-    for (;;)
-    {
-      increase_head_count(old_head);
-      node* const ptr = old_head.ptr;
-      if (!ptr)
-      {
-        return std::shared_ptr<T>();
-      }
-      if (head.compare_exchange_strong(old_head, ptr->next, std::memory_order_relaxed))
-      {
-        std::shared_ptr<T> res;
-        res.swap(ptr->data);
-        int const count_increase = old_head.external_count - 2;
-        if (ptr->internal_count.fetch_add(count_increase,
-                                         std::memory_order_release)==-count_increase)
-        {
-          delete ptr;
-        }
-        return res;
-      }
-      else if(ptr->internal_count.fetch_add(-1, std::memory_order_relaxed) == 1)
-      {
-        ptr->internal_count.load(std::memory_order_acquire);
-        delete ptr;
-      }
-    }
+    node* const new_node=new node(data); // 2
+    new_node->next=head.load();  // 3
+    while(!head.compare_exchange_weak(new_node->next,new_node));  // 4
   }
 };
 ```
 
-![7-1](res/7-1.png)
+*Listing 7.2 Implementing push() without locks*
 
-### 7.2.2 停止内存泄漏：使用无锁数据结构管理内存
+```c++
+template<typename T>
+class lock_free_stack
+{
+private:
+  struct node
+  {
+    std::shared_ptr<T> data;  // 1 指针获取数据
+    node* next;
 
-清单7.4 没有线程通过pop()访问节点时，就对节点进行回收：
+    node(T const& data_):
+      data(std::make_shared<T>(data_))  // 2 让std::shared_ptr指向新分配出来的T
+    {}
+  };
+
+  std::atomic<node*> head;
+public:
+  void push(T const& data)
+  {
+    node* const new_node=new node(data);
+    new_node->next=head.load();
+    while(!head.compare_exchange_weak(new_node->next,new_node));
+  }
+  std::shared_ptr<T> pop()
+  {
+    node* old_head=head.load();
+    while(old_head && // 3 在解引用前检查old_head是否为空指针
+      !head.compare_exchange_weak(old_head,old_head->next));
+    return old_head ? old_head->data : std::shared_ptr<T>();  // 4
+  }
+};
+```
+
+*Listing 7.3 A lock-free stack that leaks nodes*
+
+### 7.2.2 Stopping those pesky leaks: managing memory in lock-free data structures
 
 ```c++
 template<typename T>
@@ -322,7 +141,7 @@ public:
 };
 ```
 
-清单7.5 采用引用计数的回收机制：
+*Listing 7.4 Reclaiming nodes when no threads are in pop()*
 
 ```c++
 template<typename T>
@@ -384,9 +203,11 @@ private:
 };
 ```
 
-### 7.2.3 检测使用风险指针(不可回收)的节点
+*Listing 7.5 The reference-counted reclamation machinery*
 
-清单7.6 使用风险指针实现的pop()
+### 7.2.3 Detecting nodes that can't be reclaimed using hazard pointers
+
+`hazard pointer` deleting a node that might still be referenced by other threads is hazardous. If other threads do indeed hold references to that node and proceed to access the node through that reference.
 
 ```c++
 std::shared_ptr<T> pop()
@@ -424,7 +245,7 @@ std::shared_ptr<T> pop()
 }
 ```
 
-清单7.7 get_hazard_pointer_for_current_thread()函数的简单实现：
+*Listing 7.6 An Implementation of pop() using hazard pointers*
 
 ```c++
 unsigned const max_hazard_pointers=100;
@@ -480,7 +301,7 @@ std::atomic<void*>& get_hazard_pointer_for_current_thread()  // 3
 }
 ```
 
-清单7.8 回收函数的简单实现：
+*Listing 7.7 A simple implementation of get_hazard_pointer_for_current_thread()*
 
 ```c++
 template<typename T>
@@ -541,9 +362,9 @@ void delete_nodes_with_no_hazards()
 }
 ```
 
-### 7.2.4 检测使用引用计数的节点
+*Listing 7.8 A simple implementation of the reclaim functions*
 
-清单7.9 无锁栈——使用无锁`std::shared_ptr<>`的实现：
+### 7.2.4 Detecting nodes in use with reference counting
 
 ```c++
 template<typename T>
@@ -578,7 +399,7 @@ public:
 };
 ```
 
-清单7.10 使用分离引用计数的方式推送一个节点到无锁栈中：
+*Listing 7.9 A lock-free stack using a lock-free std::shared_ptr<> implementation*
 
 ```c++
 template<typename T>
@@ -624,7 +445,7 @@ public:
 };
 ```
 
-清单7.11 使用分离引用计数从无锁栈中弹出一个节点：
+*Listing 7.10 Pushing a node on a lock-free stack using split reference counts*
 
 ```c++
 template<typename T>
@@ -680,9 +501,9 @@ public:
 };
 ```
 
-### 7.2.5 应用于无锁栈上的内存模型
+*Listing 7.11 Popping a node from a lock-free stack using split reference counts*
 
-清单7.12 基于引用计数和松散原子操作的无锁栈
+### 7.2.5 Applying the memory model to the lock-free stack
 
 ```c++
 template<typename T>
@@ -779,9 +600,9 @@ public:
 };
 ```
 
-### 7.2.6 写一个无锁的线程安全队列
+*Listing 7.12 A lock-free stack with reference counting and relaxed atomic operations*
 
-清单7.13 单生产者/单消费者模型下的无锁队列：
+### 7.2.6 Writing a thread-safe queue without locks
 
 ```c++
 template<typename T>
@@ -852,7 +673,32 @@ public:
 };
 ```
 
-清单7.15 使用带有引用计数tail，实现的无锁队列中的push()：
+*Listing 7.13 A single-producer, single-consumer lock-free queue*
+
+```c++
+void push(T new_value)
+{
+  std::unique_ptr<T> new_data(new T(new_value));
+  counted_node_ptr new_next;
+  new_next.ptr=new node;
+  new_next.external_count=1;
+  for(;;)
+  {
+    node* const old_tail=tail.load();  // 1
+    T* old_data=nullptr;
+    if(old_tail->data.compare_exchange_strong(
+      old_data,new_data.get()))  // 2
+    {
+      old_tail->next=new_next;
+      tail.store(new_next.ptr);  // 3
+      new_data.release();
+      break;
+    }
+  }
+}
+```
+
+*Listing 7.14 A(broken) first attempt at revising push()*
 
 ```c++
 template<typename T>
@@ -921,7 +767,7 @@ public:
 };
 ```
 
-清单7.16 使用尾部引用计数，将节点从无锁队列中弹出
+*Listing 7.15 Implementing push() for a lock-free queue with a reference-counted tail*
 
 ```c++
 template<typename T>
@@ -957,7 +803,7 @@ public:
 };
 ```
 
-清单7.17 在无锁队列中释放一个节点引用：
+*Listing 7.16 Popping a node from a lock-free queue with a reference-counted tail*
 
 ```c++
 template<typename T>
@@ -989,7 +835,7 @@ private:
 };
 ```
 
-清单7.18 从无锁队列中获取一个节点的引用：
+*Listing 7.17 Releasing a node reference in a lock-free queue*
 
 ```c++
 template<typename T>
@@ -1015,7 +861,7 @@ private:
 };
 ```
 
-清单7.19 无锁队列中释放节点外部计数器：
+*Listing 7.18 Obtaining a new reference to a node in a lock-free queue*
 
 ```c++
 template<typename T>
@@ -1049,7 +895,7 @@ private:
 };
 ```
 
-清单7.20 修改pop()用来帮助push()完成工作：
+*Listing 7.19 Freeing an external counter to a node in a lock-free queue*
 
 ```c++
 template<typename T>
@@ -1087,7 +933,7 @@ public:
 };
 ```
 
-清单7.21 无锁队列中简单的帮助性push()的实现：
+*Listing 7-20 pop() modified to allow helping on the push() side*
 
 ```c++
 template<typename T>
@@ -1149,43 +995,41 @@ public:
 };
 ```
 
-
-
-## 7.3 对于设计无锁数据结构的指导建议
-
-### 7.3.1 指导建议：使用`std::memory_order_seq_cst`的原型
-
-使用`std::memory_order_seq_cst`作为原型。
-
-### 7.3.2 指导建议：对无锁内存的回收策略
-
-无锁代码最大的问题之一就是管理内存，当别的线程引用对象的时候就不能删除它们。以下三种方法来确保可以安全回收内存：
-
-- 等待知道没有线程访问该数据结构，并且删除所有等待删除的对象。
-- 使用风险指针来确定线程正在访问一个特定的对象。
-- 引用计数对象，只有直到没有显著的引用时才删除它们。
-
-另一个方法就是回收节点，并且当数据结构被销毁的时候才完全释放它们。因为节点是重复使用的，内存永远不会失效，这样避免未定义行为的困难就不存在了。但是会引来`ABA问题`。
-
-### 7.3.3 指导建议：小心ABA问题
-
-[ABA问题维基百科](https://en.wikipedia.org/wiki/ABA_problem)
-
-ABA问题是任何基于比较/交换的算法都必须提防的问题，它是这样的：
-
-1. 线程1读取一个原子变量x，并且发现它的值为A。
-2. 线程1基于这个值执行了一些操作，例如解引用它（如果它是指针的话）或者做一些查找操作。
-3. 线程1被操作系统阻塞了。
-4. 另一个线程在x上执行了一些操作，将它的值改为B。
-5. 第三个线程更改了与值A相关的值，因此线程1持有的数值就不再有效了。这个变化有可能很大，如释放它所指向的内存或者改变相关的值一样。
-6. 第三个线程基于新值将x的值改回A。如果这是一个指针，那么就可能是一个新的对象，此对象刚好与先前的对象使用了相同的地址。
-7. 线程1重新取得x，并在x上执行比较/交换操作，与A进行比较。比较/交换操作成功了（因为值确实是A），但是这个A的值是错误的。第二步中读取的值不再有效，但是线程1并不知道，并且将破坏数据机构。
-
-### 7.3.4 指导建议：识别忙等待循环和帮助其他线程
-
-识别忙于等待的循环以及辅助其它线程。
+*Listing 7.21 A sample push() with helping for a lock-free queue*
 
 
 
-## 7.4 总结
+## 7.3 Guidelines for writing lock-free data structures
+
+### 7.3.1 Guideline: use std::memory_order_seq_cst for prototyping
+
+`std::memory_order_seq_cst` is much easier to reason about than any other memory ordering because all such operations form a total order.
+
+### 7.3.2 Guideline: use a lock-free memory reclamation scheme
+
+In thist chapter you've seen three techniques for ensuring that memory can safely be reclaimed:
+
+- Waiting until no threads are accessing the data structure and deleting all objects that are pending deletion.
+- Using hazard pointers to identify that a thread is accessing a particular object.
+- Reference counting the objects so that they aren't deleted until there are no outstanding references.
+
+### 7.3.3 Guideline: watch out for the ABA problem
+
+ABA problem goes like this:
+
+1. Thread 1 reads an atomic variable `x` and finds it has value `A`.
+2. Thread 1 performs some operation based on this value, such as dereferencing it(if it's a pointer) or doing alookup or something.
+3. Thread 1 is stalled by the operation system.
+4. Another thread performs some operations on `x` that changes its value to `B`.
+5. A thread then changes the data associated with the value `A` such that the value held by thread 1 is no longer valid. This may be as drastic as freeing the pointed-to memory or just changing an associated value.
+6. A thread then changes `x` back to A based on this new data. If this is a pointer, it may be a new object that just happens to share the same address as the old one.
+7. Thread 1 resumes and performs a compare/exchange on `x`, comparing against `A`. The compare/exchange succeeds (because the value is indeed `A`), but this is `the wrong A value`. The data originally read at step 2 is longer valid, but thread 1 has no way of telling and will thus corrupt the data structure.
+
+### 7.3.4 Guideline: identify busy-wait loops and help the other thread
+
+TODO
+
+
+
+## 7.4 Summary
 

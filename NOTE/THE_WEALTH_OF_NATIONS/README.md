@@ -69,7 +69,7 @@ Adam Smith
 
 - [CHAPTER 4. OF DRAWBACKS](b4_chapter4.md)
 
-- [CHPATER 5. OF BOUNTIES](b4_chapter5.md)
+- [CHAPTER 5. OF BOUNTIES](b4_chapter5.md)
   
 - [CHAPTER 6. OF TREATIES OF COMMERCE](b4_chapter6.md)
 

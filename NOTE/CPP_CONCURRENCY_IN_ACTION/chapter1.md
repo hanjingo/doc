@@ -1,82 +1,73 @@
-# 第一章 你好，c++并发世界
+# Chapter1 - Hello, world of concurrency in C++
 
 [TOC]
 
 
 
-## 1.1 什么是并发
+## 1.1 What is concurrency?
 
-最简单和最基本的并发,是指两个或更多独立的活动同时发生。
+### 1.1.1 Concurrency in computer systems
 
-### 1.1.1 计算机系统中的并发
+`task switching` By doing a bit of one task and then a bit of another and so on, it appears that the tasks are happening concurrently. 
 
 ![1_1](res/1_1.png)
 
-*图 1.1 并发的两种方式：双核机器的真正并行 Vs. 单核机器的任务切换*
+*Fingure 1.1 Two approaches to concurrency: parallel execution on a dual-core machine versus task switching on a single-core machine*
 
 ![1_2](res/1_2.png)
 
-*图 1.2 四个任务在两个核心之间的切换*
-
-### 1.1.2 并发的途径
-
-*多进程并发* 将应用程序分为多个独立的进程，它们在同一时刻运行。
+*Figure 1.2 Task switching of four tasks on two cores*
 
 ![1_3](res/1_3.png)
 
-*图 1.3 一对并发运行的进程之间的通信*
-
-*多线程并发* 在单个进程中运行多个线程。
+*Figure 1.3 Communication between a pair of processes running concurrently*
 
 ![1_4](res/1_4.png)
 
-*图 1.4 同一进程中的一对并发运行的线程之间的通信*
-
-地址空间共享，以及缺少线程间数据的保护，使得操作系统的记录工作量减小，所以使用多线程相关的开销远远小于使用多个进程。
+*Figure 1.4 Communication between a pair of threads running concurrently in a single process*
 
 
 
-## 1.2 为什么使用并发？
+## 1.2 Why use concurrency?
 
-### 1.2.1 为了分离关注点
+### 1.2.1 Using concurrency for separation of concerns
 
-通过将相关的代码与无关的代码分离，可以使程序更容易理解和测试，从而减少出错的可能性。
+Separation of concerns is almost always a good idea when writing software; by group-ing related bits of code together and keeping unrelated bits of code apart, you can make your programs easier to understand and test, and thus less likely to contain bugs.
 
-### 1.2.2 为了性能
+### 1.2.2 Using concurrency for performance
 
-将一个单个任务分成几部分，且各自并行运行，从而降低总运行时间。这就是`任务并行（*task parallelism*）`。
+There are two ways to use concurrency for performance:
 
-一个线程执行算法的一部分，而另一个线程执行算法的另一个部分——或是在数据方面——每个线程在不同的数据部分上执行相同的操作（第二种方式）。这就是`数据并行（*data parallelism*）`。
+1. `task parallelism` divide a single task into parts and run each in parallel, thus reducing the total runtime.
+2. `data parallelism` The divisions may be either in terms of processing -- one thread performs one part of the algorithm while another thread performs a different part -- or in terms of data -- each thread performs the same operation on different parts of the data.
 
-### 1.2.3 什么时候不使用并发
+### 1.2.3 When not to use concurrency
 
-使用并发的代码在很多情况下难以理解，因此编写和维护的多线程代码就会产生直接的脑力成本，同时额外的复杂性也可能引起更多的错误。
+Code using concurrency is harder to understand in many cases, so there's a direct intellectual cost to writing and maintaining multithreaded code, and the additional complexity can also lead to more bugs.
 
-因为操作系统需要分配内核相关资源和堆栈空间，所以在启动线程时存在固有的开销，然后才能把新线程加入调度器中，所有这一切都需要时间。
+There's an inherent overhead associated with launching a thread, because the OS has allocate the associated kernel resources and stack space and then add the new thread to the scheduler, all of which takes time.
 
-线程是有限的资源。如果让太多的线程同时运行，则会消耗很多操作系统资源，从而使得操作系统整体上运行得更加缓慢。
+Furthermore, threads are a limited resource. If you have too many threads run-ning at once, this consumes OS resources and may make the system as a whole run slower.
 
-运行越多的线程，操作系统就需要做越多的上下文切换，每个上下文切换都需要耗费本可以花在有价值工作上的时间。
-
-
-
-## 1.3 C++中的并发和多线程
-
-### 1.3.1 C++多线程历史
-
-### 1.3.2 新标准支持并发
-
-### 1.3.3 C++线程库的效率
-
-### 1.3.4 平台相关的工具
+Finally, the more threads you have running, the more context switching the operating system has to do.
 
 
 
-## 1.4 开始入门
+## 1.3 Concurrency and multithreading in C++
 
-### 1.4.1 你好，并发世界
+### 1.3.1 History of multithreading in C++
 
-清单 1.1 一个简单的**Hello, Concurrent World**程序：
+### 1.3.2 Concurrency support in the new standard
+
+### 1.3.3 Efficiency in the C++ Thread Library
+
+### 1.3.4 Platform-specific facilities
+
+
+
+## 1.4 Getting started
+
+### 1.4.1 Hello, Concurrent World
 
 ```c++
 #include <iostream>
@@ -92,9 +83,11 @@ int main()
 }
 ```
 
+*Listing 1.1 A simple Hello, Concurrent World program*
 
 
-## 1.5 小结
+
+## 1.5 Summary
 
 
 

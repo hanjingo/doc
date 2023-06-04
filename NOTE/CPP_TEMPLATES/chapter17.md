@@ -1,18 +1,11 @@
-# 第17章 metaprogram
-
+# CHAPTER17. metaprogram
 
 <!-- vim-markdown-toc GFM -->
-
-* [17.5 计算完整性](#175-计算完整性)
-* [Glossary](#glossary)
 
 <!-- vim-markdown-toc -->
 
 
 the program did show that the template instantiation mechanism is a primitive recursive language that can perform nontrivial computations at compile time.
-
-
-## 17.5 计算完整性
 
 a template metaprogram can dontain:
 

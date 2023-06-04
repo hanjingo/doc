@@ -2,19 +2,7 @@
 
 
 
-## 12.1 When "Generic Code" Doesn't Quite Cut It
-
-### 12.1.1 Transparent Customization
-
-### 12.1.2 Semantic Transparency
-
-
-
-## 12.2 Overloading Function Templates
-
 In the previous section we saw that two function templates with the same name can coexist, even though they may be instantiated so that both have identical parameter types.
-
-### 12.2.1 Signatures
 
 Two functions can coexist in a program if they have distinct signatures. We define the signature of a function as the following information:
 
@@ -41,29 +29,15 @@ template<typename T>
 char f2(T);
 ```
 
-### 12.2.2 Partial Ordering of Overloaded Function Templates
-
-### 12.2.3 Formal Ordering Rules
-
 We then synthesize two artificial lists of argument types (or for conversion function templates, a return tyep) by substituting every template parameter as follows:
 
 1. Replace each template type parameter with a unique "made up" type.
 2. Replace each template template parameter with a unique "made up" class template.
 3. Replace each nontype template parameter with a unique "made up" value of the appropriate type.
 
-### 12.2.4 Templates and Nontemplates
-
 Function templates can be overloaded with nontemplate functions. All else being equal, the nontemplate function is preferred in selecting the actual function being called.
 
-
-
-## 12.3 Explicit Specialization
-
-### 12.3.1 Full Class Template Specialization
-
 A full specialization is introduced with a sequence of three tokens: `template`, `<` and `>`. In addition, the class name declarator is followed by the template arguments for which the specialization is declared.
-
-### 12.3.2 Full Function Template Specialization
 
 The syntax and principles behind (explicit) full function template specialization are much the same as those for full class template specialization, but overloading and argument deduction come into play.
 
@@ -72,8 +46,6 @@ The full specialization declaration can omit explicit template arguments when th
 A full function template specialization cannot include default argument values. However, any default arguments that were specified for the template being specialized remain applicable to the explicit specialization.
 
 A full specialization is in many ways similar to a normal declaration (or rather, a normal redeclaration). In particular, it does not declare a template, and therefore only one definition of a noninline full function template specialization should appear in a program. However, we must still ensure that a declaration of the full specialization follows the template to prevent attempts at using the function generated from the template. The declarations for template `g` in the previous example would therefore typically be organized in two files.
-
-### 12.3.3 Full Member Specialization
 
 Not only member templates, but also ordinary static data members and member functions of class templates, can be fully specialized. The syntax requires `template<>` prefix for every enclosing class templat. If a member template is being specialized, a `template<>` must also be added to denote it is being specialized.
 
@@ -84,10 +56,6 @@ class Outer<bool>::Inner<wchar_t>{
     	enum{count = 2};
 };
 ```
-
-
-
-## 12.4 Partial Class Template Specialization
 
 There exists a number of limitations on the parameter and argument lists of partial specialization declarations. Some of them are as follows:
 
@@ -112,10 +80,6 @@ class S<int, I*2>; // 错误；不能有非类型的表达式
 template<typename U, int K>
 class S<U, K>;     // 错误；局部特化和基本模板之间没有本质的区别
 ```
-
-
-
-## 12.5 Afternotes
 
 `template metaprogramming` Using the template instantiation mechanism to perform nontrivial computations at compile time.
 

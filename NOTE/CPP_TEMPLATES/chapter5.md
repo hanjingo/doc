@@ -2,20 +2,23 @@
 
 
 
-## 5.1 Keyword typename
-
 The keyword `typename` was introduced during the standardization of C++ to clarify that an identifier inside a template is a type. Consider the following example:
 
 ```c++
 template <typename T>
 class MyClass{
     typename T::SubType *ptr;
-}
+    ...
+};
 ```
 
 Here, the second `typename` is used to clarify that `SubType` is a type defined within class  `T`. Thus, `ptr` is a pointer to the type `T::SubType`.
 
-Without `typename`, `SubType` would be considered a static member. Thus it would be a concrete variable or object As a result, the expression `T::SubType *ptr` would be a multiplication of the static `SubType` member of class `T` with `ptr`.
+Without `typename`, `SubType` would be considered a static member. Thus it would be a concrete variable or object As a result, the expression 
+
+`T::SubType *ptr` 
+
+would be a multiplication of the static `SubType` member of class `T` with `ptr`.
 
 A very similar problem was discovered after the introduction of `typename`. Consider the following example using the standard `bitset` type:
 
@@ -29,10 +32,6 @@ void printBitset(std::bitset<N> const& bs)
 
 In conclusion, the `.template` notation (and similar notations such as `->template`) should be used only inside templates and only if they follow something that depends on a template parameter.
 
-
-
-## 5.2 Using `this->`
-
 For class templates with base classes, using a name `x` by itself is not always equivalent to `this->x`, even though a member `x` is inherited.
 
 ```c++
@@ -40,11 +39,7 @@ template <typename T>
 class Derived : public Base<T> {...}
 ```
 
-
-
-## 5.3 Member Templates
-
-Class members can also be templtes. This is possible for both nested classes and member functions.
+Class members can also be templates. This is possible for both nested classes and member functions.
 
 ```c++
 template <typename T>
@@ -60,9 +55,7 @@ Stack<T>& Stack<T>::operator=(Stack<T2> const& op2) {
 }
 ```
 
-
-
-## 5.4 Template Template Parameters
+Template template parameters examples:
 
 ```c++
 template <typename T, 
@@ -80,10 +73,6 @@ class Stack{
 };
 ```
 
-
-
-## 5.5 Zero Initialization
-
 For funcamental types such as `int`, `double`, or pointer types, there is no default constructor that initializes them with a useful default value. Instead, any noninitialized local variable has a undefined value:
 
 ```c++
@@ -94,10 +83,6 @@ void foo()
 }
 
 ```
-
-
-
-## 5.6 Using String Literals as Arguments for Function Templates
 
 The explanation for this behavior is that during argument deduction array-to-pointer conversion(often called decay) occurs only if the parameter does not have a reference type. This is demonstrated by the following program:
 
@@ -129,26 +114,32 @@ std::string s;
 
 
 
-## 5.7 Summary
+## Summary
 
 - To access a type name that depends on a template parameter, you have to qualify the name with a leading typename.
-- Nested classes and member functions can also be tempaltes. One application is the ability to implement generic operations with internal type conversions. However, type checking still occurs.
+- Nested classes and member functions can also be templates. One application is the ability to implement generic operations with internal type conversions. However, type checking still occurs.
 - Template versions of assignment operators don't replace default assignment operators.
-- You can also use class templates as template parameters, as so-called template template paramters.
-- Tempate template arguments must match exactly. Default tempalte arguments of template template arguments are ignored.
-- By explicitly calling a default constructor, you can make sure that variables and members of templates are initialized by a default value even if they are instantiated with a build-in type.
+- You can also use class templates as template parameters, as so-called template template parameters.
+- Template arguments must match exactly. Default template arguments of template template arguments are ignored.
+- By explicitly calling a default constructor, you can make sure that variables and members of templates are initialized by a default value even if they are instantiated with a build in type.
 - For string literals there is an array-to-pointer conversion during argument deduction if and only if the parameter is not a reference.
 
 
 
 ## Glossary
 
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">tricky `/'trɪki/` 棘手的，狡猾的，巧妙的</div>
+<div style="width: 50%; float:left;">relevant `/'reləvənt/` 相关的，切题的，中肯的，有意义的，目的明确的</div>
+<div style="width: 50%; float:left;">thumb `/θʌm/` 拇指，翻阅，（搭便车）手势</div>
+<div style="width: 50%; float:left;">deque `/'dek/` （计算机）双端队列</div>
+<div style="width: 50%; float:left;">insertion `/ɪn'sɜːʃn/` 插入</div>
+<div style="width: 50%; float:left;">compilation `/ˌkɒmpɪ'leɪʃn/` 汇集，编写，编辑</div>
+<div style="width: 50%; float:left;">gist `/dʒɪst/` 要点，主旨</div>
+<div style="width: 50%; float:left;">conform `/kən'fɔːm/` 使一致，遵从</div>
+<div style="width: 50%; float:left;">peach `/piːtʃ/` 桃子，桃树，桃红色</div>
+<div style="width: 50%; float:left;">stumbled `/'stʌmbl/` 绊倒，蹒跚，犯错误，无意中发现</div>
+<div style="width: 50%; float:left;">phenomenon `/fə'nɒmɪnən/` 现象，奇人，奇事</div>
+<div style="width: 50%; float:left;">corrigendum `/ˌkɒrɪ'dʒendəm/` 勘误表，（应改正的）错误</div>
+<div style="width: 50%; float:left;">concrete `/'kɒŋkriːt/` 具体的，实质性的，混凝土，凝结，结合</div>
+<div style="width: 50%; float:left;">explicit `/ɪk'splɪsɪt/` （计算机）显式的，明确的，清晰的</div>
+<div style="width: 50%; float:left;">lexicographical `/leksɪkə'græfɪkl/` 词典编篡的</div>

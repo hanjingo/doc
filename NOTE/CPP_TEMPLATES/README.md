@@ -19,13 +19,11 @@ David Vandevoorde, Nicolai M. Josuttis . 1ED
 - [Chapter13. Future Directions](chapter13.md)
 - [Chapter14. The Polymorphic Power of Templates](chapter14.md)
 - [Chapter15. Traits and Policy Classes](chapter15.md)
-- [Chapter16. Templates and Inheritance]
-- [Chapter17. Metaprograms]
-- [Chapter18. Expression Templates]
-- [Chapter19. Type Classification]
-- [Chapter20. Smart Pointers]
-- [Chapter21. Tuples]
-- [Chapter22. Function Objects and Callbacks]
-- [Appendix A. The One-Definition Rule]
-- [Appendix B. Overload Resolution]
+- [Chapter16. Templates and Inheritance](chapter16.md)
+- [Chapter17. Metaprograms](chapter17.md)
+- [Chapter18. Expression Templates](chapter18.md)
+- [Chapter19. Type Classification](chapter19.md)
+- [Chapter20. Smart Pointers](chapter20.md)
+- [Chapter21. Tuples](chapter21.md)
+- [Chapter22. Function Objects and Callbacks](chapter22.md)
 

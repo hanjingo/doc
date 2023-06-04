@@ -7,8 +7,6 @@
 
 
 
-## 9.1 Name Taxonomy
-
 | Classification         | Explanation and Notes                                        |
 | ---------------------- | ------------------------------------------------------------ |
 | Identifier             | A name that consists solely of an uninterrupted sequences of letters, underscores(`_`) and digits. It cannot start with a digit, and some identifiers are reserverd fro the implementation: You should not introduce them in your programs(as a rule of thumb, avoid leading underscores and double underscores). The concept of "letter" should be taken broadly and includes special universal character names (UCNs) that encode glyphs from nonalphabetical languages. |
@@ -30,13 +28,7 @@
 
 *Table 9.2 Name Taxonomy(part two)*
 
-
-
-## 9.2 Looking Up Names
-
 A more recent twist to the lookup of unqualified names is that -- in addition to ordinary lookup -- they may sometimes undergo so-called argument-dependent lookup (ADL).
-
-### 9.2.1 Argument-Dependent Lookup
 
 The precise definition of the set of associated namespaces and associated classes for a given type is determined by the following rules:
 
@@ -47,21 +39,9 @@ The precise definition of the set of associated namespaces and associated classe
 - For function types, the sets of associated namespaces and classes comprise the namespaces and classes associated with all the parameter types and those associated with the return type.
 - For pointer-to-member-of-class-X types, the sets of associated namespaces and classes include those associated with `X` in addition to those associated with the type of the member. (If it is a pointer-to-member-function type, then the parameter and return types can contribute too.)
 
-### 9.2.2 Friend Name Injection
-
-### 9.2.3 Injected Class Names
-
-The name of a class is "injected" inside the scope of that class itself and is therefore accessible as an unqualified name in that scope.(However, it is not accessible as qualified name because this is the notation used to denote the constructors.)
-
-
-
-## 9.3 Parsing Templates
-
-### 9.3.1 Context Sensitivity in Nontemplates
+The name of a class is "injected" inside the scope of that class itself and is therefore accessible as an unqualified name in that scope.(However, it is not accessible as qualified name because this is the notation used to denote the constructors.
 
 This is a consequence of the so-called `maximum munch` tokenization principle: A C++ implementation must collect as many consecutive characters as possible into a token.
-
-### 9.3.2 Dependent Names of Types
 
 The typename prefix to a name is reuired when the name:
 
@@ -69,8 +49,6 @@ The typename prefix to a name is reuired when the name:
 2. Is qualified
 3. Is not used as in a l;ist of base class specifications or in a list of member initializers introducing a constructor definition
 4. Is dependent on a template parameter
-
-### 9.3.3 Dependent Names of Templates
 
 A problem very similar to the one encountered in the previouse section occurs when a name of a template is dependent. In general, a C++ compiler is required to treat a `<` following the name of the name of a template as the beginning of a template argument list; otherwise, it is a "less than" operator. As is the case with type names, a compiler has to assume that a dependent name does not refer to a template unless the programmer provides extra information using the keyword `template`:
 
@@ -101,7 +79,7 @@ public:
 };
 ```
 
-### 9.3.4 Dependent Names in Using-Declarations
+Dependent Names in Using-Declarations:
 
 ```c++
 template <typename T>
@@ -114,7 +92,7 @@ class BXT {
 };
 ```
 
-### 9.3.5 ADL and Explicit Template Arguments
+ADL and Explicit Template Arguments:
 
 ```c++
 template <typename T>
@@ -126,12 +104,6 @@ class DXTT : private BXT<T> {
         typename BXT<T>::template Magic<T> *plink; // 用::template显式的表示Magic是一个模板
 };
 ```
-
-
-
-## 9.4 Derivation and Class Templates
-
-### 9.4.1 Nondependent Base Classes
 
 In a class template, a nondependent base class is one with a complete type that can be determined without knowing the template arguments.
 
@@ -157,12 +129,6 @@ int main() {
     cout << typeid(d.strange).name() << endl; // 永远输出int类型
 }
 ```
-
-### 9.4.2 Dependent Base Classes
-
-
-
-## 9.5 Afternotes
 
 
 

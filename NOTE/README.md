@@ -20,6 +20,12 @@ English | [中文版](README_zh.md)
 | ----- | ------- | ------ | ----------------- |
 |       |         |        |                   |
 
+### Program Language
+
+| Title                                                    | Edition | Author                                   | Abstract/Evaluate |
+| -------------------------------------------------------- | ------- | ---------------------------------------- | ----------------- |
+| [C++ Templates: The Complete Guide](CPP_TEMPLATES/READM) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
+
 ### Compile&Build
 
 | Title | Edition | Author | Abstract/Evaluate |
@@ -54,7 +60,6 @@ English | [中文版](README_zh.md)
 | Title                                   | Edition | Author  | Abstract/Evaluate              |
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
-| [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
 
 
 
@@ -63,7 +68,8 @@ English | [中文版](README_zh.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
 - [Computer Systems](COMPUTER_SYSTEM/READM)
-- [C++ Templates: The Complete Guide](CPP_TEMPLATES/READM)
+- [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md)
+- [Design Pattern](DESIGN_PATTERN/README.md)
 
 
 
@@ -76,3 +82,4 @@ English | [中文版](README_zh.md)
 - [An introduction to probability theory and its applications]
 - [Developing High-Frequency Trading System]
 - [Modern C++ Design]
+- [Computer Networking: A Top-Down Approach]

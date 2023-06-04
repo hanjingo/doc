@@ -2,31 +2,9 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [8.1 Parameterized Declarations](#81-parameterized-declarations)
-    - [8.1.1 Virual Member Functions](#811-virual-member-functions)
-    - [8.1.2 Linkage of Templates](#812-linkage-of-templates)
-    - [8.1.3 Primary Templates](#813-primary-templates)
-* [8.2 Template Parameters](#82-template-parameters)
-    - [8.2.1 Type Parameters](#821-type-parameters)
-    - [8.2.2 Nontype Parameters](#822-nontype-parameters)
-    - [8.2.3 Template Template Parameters](#823-template-template-parameters)
-    - [8.2.4 Default Template Arguments](#824-default-template-arguments)
-* [8.3 Template Arguments](#83-template-arguments)
-    - [8.3.1 Function Template Arguments](#831-function-template-arguments)
-    - [8.3.2 Type Arguments](#832-type-arguments)
-    - [8.3.3 Nontype Arguments](#833-nontype-arguments)
-    - [8.3.4 Template Template Arguments](#834-template-template-arguments)
-    - [8.3.5 Equivalence](#835-equivalence)
-* [8.4 Friends](#84-friends)
-    - [8.4.1 Friend Functions](#841-friend-functions)
-    - [8.4.2 Friend Templates](#842-friend-templates)
-* [8.5 Afternotes](#85-afternotes)
-
 <!-- vim-markdown-toc -->
 
 
-
-## 8.1 Parameterized Declarations
 
 C++ currently supports two fundamental kinds of templates: class templates and function templates.
 
@@ -36,11 +14,7 @@ All three correspond to definitions of members of class templates:
 2. Definitions of nested class members of class templates
 3. Definitions of static data members of class templates
 
-### 8.1.1 Virual Member Functions
-
 Member function templates cannot be declared virtual. This constraint is imposed because the usual implementation of the virtual function call mechanism uses a fixed-size table with one entry per virtual function. However, the number of instantiations of a member function template is not fixed until the entire program has been translated.
-
-### 8.1.2 Linkage of Templates
 
 Every template must have a name and that name must be unique within its scope, except that function templates can be overloaded. Note especially that, unlike class types, class templates cannot share a name with a different kind of entity:
 
@@ -59,8 +33,6 @@ class s; // 错误：与struct s冲突
 
 Template names have linkage, but they cannot have C linkage.
 
-### 8.1.3 Primary Templates
-
 Normal declarations of templates declare so-called primary templates. Such template declarations are declared without adding template arguments in angle brackets after the template name:
 
 ```c++
@@ -73,21 +45,13 @@ template <typename T> void translate(T*);    // 正确
 template <typename T> void translate<T>(T*); // 错误
 ```
 
-
-
-## 8.2 Template Parameters
-
 There are three kinds of template parameters:
 
 1. Type parameters(these are by far the most common)
 2. Nontype parameters
 3. Template template parameters
 
-### 8.2.1 Type Parameters
-
 Type parameters are introduced with either the keyword `typename` or the keyword `class`: The two are entirely equivalent. The keyword must be followed by a simple identifier and that identifier must be followed by a comma to denote the start of the next parameter declaration, a closing angle bracket (>) to denote the end of the parameterization clause, or an equal sign (=) to denote the beginning of a default template argument.
-
-### 8.2.2 Nontype Parameters
 
 Nontype template parameters stand for constant values that can be determined at compile or link time. The type of such a parameter(in other words, the type of the value for which it stands) must be one of the following:
 
@@ -107,15 +71,7 @@ class List;
 
 **nontype parameters are always rvalues: Their address cannot be taken, and they cannot be assigned to.**
 
-### 8.2.3 Template Template Parameters
-
 Template template parameters are placeholders for class templates. They are declared much like class templates, but the keywords `struct` and `union` cannot be used.
-
-### 8.2.4 Default Template Arguments
-
-
-
-## 8.3 Template Arguments
 
 Template arguments are the "values" that are substituted for template parameters when instantiating a template. These values can be determined using several different mechanisms:
 
@@ -123,8 +79,6 @@ Template arguments are the "values" that are substituted for template parameters
 - Injected class name: Within the scope of a class template `X` with template parameters `P1`, `P2`, ..., the name of that template(`X`) can be equivalent to the template-id `X<P1, P2, ...>`. 
 - Default template arguments: Explicit template arguments can be omitted from class template instances if default template arguments are available. However, even if all template parameters have a default value, the (possibly empty) angle brackets must be provided.
 - Argument deduction: Function template arguments that are not explicitly specified may be deduced from the tyes of the function call arguments in a call.
-
-### 8.3.1 Function Template Arguments
 
 Template arguments for a function template can be specified explicitly or deduced from the way the template is used.
 
@@ -148,14 +102,10 @@ apply(&multi<int>, i); // 这里应该产生二义性
 
 This "substitution-failure-is-not-an-error"(SFINAE) principle is clearly an important ingredient to make the overloading of function templates practical. However, it also enables remarkable compile-time techniques.
 
-### 8.3.2 Type Arguments
-
 Template type arguments are the "values" specified for template type parameters. Most commonly used types can be used as template arguments, but there are two exceptions:
 
 - Local classes and enumerations(in other words, types declared in a function definition) cannot be involved in template type arguments.
 - Types that involve unnamed class types or unnamed enumeration types cannot be template type arguments(unnamed classes or enumerations that are given a name through a typedef declaration are OK).
-
-### 8.3.3 Nontype Arguments
 
 Nontype template arguments are the values substituted for nontype parameters. Such a value must be one of the following things:
 
@@ -171,10 +121,6 @@ there are some constant values that are, perhaps surprisingly, not currently val
 - Floating-point numbers
 - String literals
 
-### 8.3.4 Template Template Arguments
-
-### 8.3.5 Equivalence
-
 Two sets of template arguments are equivalent when values of the arguments are identical one-for-one.
 
 This has two important consequences for class members:
@@ -182,14 +128,10 @@ This has two important consequences for class members:
 1. A function generated from a member function template never overrides a virtual function.
 2. A constructor generated from a constructor template is never a default copy constructor.(Similarly, an assignment generated from an assignment template is never a copy-assignment operator. However, this is less prone to problems because unlike copy constructors, assignment operators are never called implicitly.)
 
-
-
-## 8.4 Friends
+Friends:
 
 1. A friend declaration may be the only declaration of an entity.
 2. A friend function declaration can be definition.
-
-### 8.4.1 Friend Functions
 
 If the name is not followed by angle brackets, there are two possibilities:
 
@@ -211,7 +153,7 @@ class Comrades {
 
 two different instantiations create two identical definitions-a direct violation of the ODR。
 
-### 8.4.2 Friend Templates
+Friend Templates:
 
 ```c++
 class Manager{
@@ -219,10 +161,6 @@ class Manager{
     friend int ticket(){}
 };
 ```
-
-
-
-## 8.5 Afternotes
 
 
 

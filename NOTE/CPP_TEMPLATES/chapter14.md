@@ -2,19 +2,7 @@
 
 
 
-## 14.1 Dynamic Polymorphosm
-
 `bastract base class (ABC)`
-
-
-
-## 14.2 Static Polymorphism
-
-
-
-## 14.3 Dynamic versus Static Polymorphism
-
-**Terminology**
 
 Dynamic and static polymorphism provide support for different C++ programming idioms:
 
@@ -24,8 +12,6 @@ Dynamic and static polymorphism provide support for different C++ programming id
 - Polyporphism implemented via templates is unbounded and static:
   - Unbounded means that the interfaces of the types participating in the polymorphic behavior are not predetermined (other terms for this concept are noninvasive or nonintrusive).
   - Static means that the binding of the interfaces is done at compile time (statically).
-
-**Strengths and Weaknesses**
 
 Dynamic polymorphism in C++ exhibits the following strengths:
 
@@ -39,19 +25,7 @@ In contrast, the following can be said about static polymorphism in C++:
 - Generated code is potentially faster (because no indirection through pointers is needed a priori and novirtual functions can be inlined much more often).
 - Concrete types that provide only partial interfaces can still be used if only that part ends up being exercised by the application.
 
-
-
-## 14.4 New Forms of Design Patterns
-
-
-
-## 14.5 Generic Programming
-
 Generic programming is a subdiscipline of computer science that deals with finding abstract representations of efficient algorithms, data structures, and other software concepts, and with their systematic organization... Generic programming focuses on representing families of domain concepts.
-
-
-
-## 14.6 Afternotes
 
 National Institutes of Health Class Library (NIHCL)
 

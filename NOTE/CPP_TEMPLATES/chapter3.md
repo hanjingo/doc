@@ -1,20 +1,12 @@
-# Chapter3 Class Templates
+# Chapter 3 Class Templates
 
 <!-- vim-markdown-toc GFM -->
-
-* [3.1 Implementation of Class Template Stack](#31-implementation-of-class-template-stack)
-    - [3.1.1 Declaration of Class Templates](#311-declaration-of-class-templates)
-    - [3.1.2 Implementation of Member Functions](#312-implementation-of-member-functions)
-* [3.2 Use of Class Template Stack](#32-use-of-class-template-stack)
-* [3.3 Specializations of Class Templates](#33-specializations-of-class-templates)
 
 <!-- vim-markdown-toc -->
 
 
 
-## 3.1 Implementation of Class Template Stack
-
-### 3.1.1 Declaration of Class Templates
+Declaration of Class Templates:
 
 ```c++
 template<typename T>
@@ -25,11 +17,6 @@ class Stack{
 };
 ```
 
-### 3.1.2 Implementation of Member Functions
-
-
-
-## 3.2 Use of Class Template Stack
 
 To use an object of a class template, you must specify the template arguments explicitly.
 
@@ -37,10 +24,6 @@ Template arguments may be any type:
 
 1. The only requirement is that any operation that is called is possible according to this type.
 2. Note that you have to put whitespace between the two closing template brackets.
-
-
-
-## 3.3 Specializations of Class Templates
 
 You can specialize a class template for certain template arguments. Similar to the overloading of function templates, specializing class templates allows you to optimize implementations for certain types or to fix a misbehavior of certain types for an instantiation of the class template.
 
@@ -54,13 +37,9 @@ class Stack<std::string> {
 warning:
 
 1. if you specialize a class template, you must also specialize all member functions.
-2. it does demonstrate that the implementation of a specialization might look very different from the implementation of the primary template.
+2. it does demonstrate that the implementation of specialization might look very different from the implementation of the primary template.
 
-
-
-## 3.4 Partial Specialization
-
-Class templates can be partially specialized. You can specify special implemetations for particular circumstances, but some template parameters must still be defined by the user.
+Class templates can be partially specialized. You can specify special implementations for particular circumstances, but some template parameters must still be defined by the user:
 
 ```c++
 template <typename T>
@@ -80,14 +59,9 @@ class MyClass<T*, T*> {
 
 MyClass<int, int> m;
 MyClass<int*, int*> m;
-
 ```
 
-
-
-## 3.5 Default Template Arguments
-
-For class templates you can also define default values for template parameters. These values are called `default template arguments`. They may even refer to previous template parameters.
+For class templates you can also define default values for template parameters. These values are called `default template arguments`. They may even refer to previous template parameters:
 
 ```c++
 tempalte <typename T, typename CONT = std::vector<T> >
@@ -109,7 +83,7 @@ s.push(1.1);
 
 
 
-## 3.6 Summary
+## Summary
 
 - A class template is class that is implemented with one or more type parameters left open.
 - To use a class template, you pass the open types as template arguments. The class template is then instantiated (and compiled) for these types.
@@ -122,12 +96,10 @@ s.push(1.1);
 
 ## Glossary
 
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">concentrate `/'kɒnsntreɪt/` 专心，集中，浓缩</div>
+<div style="width: 50%; float:left;">assignment `/ə'saɪnmənt/` 分配（任务，内存），委托，指定</div>
+<div style="width: 50%; float:left;">statement `/'steɪtmənt/` 语句，声明，陈述</div>
+<div style="width: 50%; float:left;">qualification `/ˌkwɒlɪfɪ'keɪʃn/` 资格，资历，限制</div>
+<div style="width: 50%; float:left;">instantiated `/ɪns'tænʃɪeɪt/` 实例化，举例</div>
+<div style="width: 50%; float:left;">refrain `/rɪ'freɪn/` 避免，抑制，克制，重复</div>
+<div style="width: 50%; float:left;">occurrence `/ə'kʌrəns/` 发生，出现，事件</div>

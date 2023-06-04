@@ -53,7 +53,7 @@
 
 | 书名                                                   | 版次 | 作者             | 摘要/评价                                                    |
 | ------------------------------------------------------ | ---- | ---------------- | ------------------------------------------------------------ |
-| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED  | Anthony Williams | 千万不要看中文纸质版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
+| [C++并发编程实战](CPP_CONCURRENCY_IN_ACTION/README_zh.md) | 1ED  | Anthony Williams | 千万不要看中文纸质版，辣眼睛。直接去看：<br>中文版翻译版：https://nj.gitbooks.io/c/content/<br>英文版原版：https://www.bogotobogo.com/cplusplus/files/CplusplusConcurrencyInAction_PracticalMultithreading.pdf |
 
 ### C++
 

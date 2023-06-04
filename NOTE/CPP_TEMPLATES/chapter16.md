@@ -81,8 +81,6 @@ int main(){
 }
 ```
 
-
-
 The designers of C++ had various reasons to avoid zero-size classes.
 
 However, even though there are no zero-size types in C++, the C++ standard does specify that when an empty class is used as a base class, no space needs to be allocated for it provided that it does not cause it to be allocated to the smae address as another object or subobject od rhw amw rype.
@@ -103,15 +101,15 @@ class EmptyThree : public EmptyToo {
 };
 ```
 
-![16_2](C:/Users/heheh/Desktop/doc/NOTE/CPP_TEMPLATES/res/16_2.png)
+![16_2](/res/16_2.png)
 
 *Figure 16.2. Layout of EmptyThree by a compiler that implements the EBCO*
 
-![16_3](C:/Users/heheh/Desktop/doc/NOTE/CPP_TEMPLATES/res/16_3.png)
+![16_3](/res/16_3.png)
 
 *Figure 16.3. Layout of EmptyThree by a compiler that does not implement the EBCO Consider an example that runs into a constraint of empty base optimization*
 
-![16_4](C:/Users/heheh/Desktop/doc/NOTE/CPP_TEMPLATES/res/16_4.png)
+![16_4](/res/16_4.png)
 
 *Figure 16.4. Layout of NonEmpty by a compiler that implements the EBCO*
 
