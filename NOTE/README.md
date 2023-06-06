@@ -65,9 +65,10 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
-- [Computer Systems](COMPUTER_SYSTEM/READM)
+- [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/READM)
 - [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md)
 - [Design Pattern](DESIGN_PATTERN/README.md)
 
@@ -75,7 +76,6 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
-- [Introduction to Algorithms]
 - [HIGH-FREQUENCY TRADING]
 - [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Design and Development of a Functional High-Frequency Trading Algorithm]
