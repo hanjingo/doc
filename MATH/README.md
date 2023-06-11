@@ -1,27 +1,8 @@
-# 数学
+[中文版](README_zh.md) | English
 
-- [术语](terminology.md)
-- [证明](proof.md)
+# Math
 
-
-
-## Arithmetic 算术
-
-TODO
-
-
-
-## Number Theory 代数
-
-### 数论
-
-- [DES算法](NUMBER_THEORY/des.md)
-
----
-
-
-
-## Calculus 微积分 
+## Arithmetic
 
 TODO
 
@@ -29,7 +10,7 @@ TODO
 
 
 
-## 概率论
+## Number Theory
 
 TODO
 
@@ -37,7 +18,7 @@ TODO
 
 
 
-## Discrete Mathematics 离散数学
+## Calculus
 
 TODO
 
@@ -45,8 +26,17 @@ TODO
 
 
 
-## 数学建模
+## Probability Theory
 
-- [决策树](decision_table.md)
-- [传染病模型](infectious_disease.md)
+TODO
+
+---
+
+
+
+## Discrete Mathematics
+
+TODO
+
+
 

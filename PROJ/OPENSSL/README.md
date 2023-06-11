@@ -1,5 +1,4 @@
-# OpenSSL
+[中文版](README_zh.md) | English
 
-- [DES使用示例](ecb.md)
-- [环境搭建](env.md)
+# OpenSSL
 

@@ -1,4 +1,6 @@
-# 编程语言
+[中文版](README_zh.md) | English
+
+# Program Language
 
 - [c/c++](C++/README.md)
 - [lua](LUA/README.md)
@@ -7,4 +9,3 @@
 - [markdown](markdown.md)
 - [shell](shell.md)
 - [solidity](solidity.md)
-

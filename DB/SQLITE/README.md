@@ -1,3 +1,3 @@
-# sqlite
+[中文版](README_zh.md) | English
 
-- [环境配置](env.md)
+# sqlite

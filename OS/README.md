@@ -1,22 +1,4 @@
-# 操作系统
+[中文版](README_zh.md) | English
 
-- [COM技术](com.md)
-- [编译与链接](compile_and_link.md)
-- [守护进程](daemon.md)
-- [驱动](drive.md)
-- [动态链接](dynamic_link.md)
-- [可执行程序](exe.md)
-- [文件系统](file_system.md)
-- [中断](interrupt.md)
-- [文件I/O](io.md)
-- [内存管理函数](mem_mgr.md)
-- [多处理机系统](multi_processor.md)
-- [流水线模型](pipeline.md)
-- [posix接口](posix.md)
-- [进程，线程和协程](progress_thread_coroutine.md)
-- [系统安全](safe.md)
-- [信号](signal.md)
-- [静态链接](static_link.md)
-- [存储器](storage.md)
-- [unix系统内核结构](unix_core.md)
+# Operation System
 

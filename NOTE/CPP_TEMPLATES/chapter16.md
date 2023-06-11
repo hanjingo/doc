@@ -154,4 +154,3 @@ C++ allows us to parameterize directly three kinds of entities through templates
 <div style="width: 50%; float:left;">track `/træk/` 追踪，跟踪，轨道，跑道，踪迹，小路</div>
 <div style="width: 50%; float:left;">tedious `/'tiːdiəs/` 单调乏味的，沉闷的</div>
 <div style="width: 50%; float:left;">decrement `/'dekrɪmənt/` 减少，负增长，减量</div>
-

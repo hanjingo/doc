@@ -1,34 +1,25 @@
-# libzmq环境搭建
+# Zmq环境搭建
 
 <!-- vim-markdown-toc GFM -->
-
-* [二进制安装](#二进制安装)
-    - [windows](#windows)
-* [源码安装](#源码安装)
-    - [windows](#windows-1)
-    - [linux](#linux)
-* [测试](#测试)
-    - [qt+zeromq静态库示例](#qtzeromq静态库示例)
-* [参考](#参考)
 
 <!-- vim-markdown-toc -->
 
 
 
-## 二进制安装
+## LibZmq环境搭建
 
-### windows
+### 二进制安装
+
+#### windows
 
 1. 去github：https://github.com/zeromq/libzmq/releases 下载官方编译好的zeromq；
 2. 解压文件；
 2. 添加解压后的文件目录到环境变量；
 2. 完成。
 
+### 源码安装
 
-
-## 源码安装
-
-### windows
+#### windows
 
 1. 安装cmake与VisualStudio；
 
@@ -78,7 +69,7 @@
    
 6. 完成。
 
-### linux
+#### linux
 
 1. 新建build文件夹，并构建cmake
 
@@ -94,11 +85,9 @@
    make
    ```
 
+### 测试
 
-
-## 测试
-
-### qt+zeromq静态库示例
+#### qt+zeromq静态库示例
 
 1. 新建qt console项目；
 
@@ -140,7 +129,10 @@
    version:4-3-4
    ```
 
-   
+
+---
+
+
 
 ## 参考
 

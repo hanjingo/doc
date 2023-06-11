@@ -1,15 +1,3 @@
-# 数据库
+[中文版](README_zh.md) | English
 
-- [acid](acid.md)
-- [数据库设计](design.md)
-- [sql手册](sql.md)
-
-
-
-## 第三方库
-
-- [InfluxDB](INFLUXDB/README.md)
-- [Mysql](MYSQL/README.md)
-- [Redis](REDIS/README.md)
-- [Sqlite](SQLITE/README.md)
-
+# DB

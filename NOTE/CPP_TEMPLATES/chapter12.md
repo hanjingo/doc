@@ -87,12 +87,43 @@ class S<U, K>;     // 错误；局部特化和基本模板之间没有本质的�
 
 ## Glossary
 
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">optimal `/ˈɒptɪməl/` 最优的，最佳的</div>
+<div style="width: 50%; float:left;">transparent `/trænsˈpærənt/` 透明的，清澈的，显而易见的，易懂的</div>
+<div style="width: 50%; float:left;">facility `/fəˈsɪləti/` 特色，设备，设施，天才，天赋</div>
+<div style="width: 50%; float:left;">pragmatic `/præɡ'mætɪk/` 实用主义的，实际的</div>
+<div style="width: 50%; float:left;">deviation `/ˌdiːvi'eɪʃn/` 偏差，偏离，出轨，背离</div>
+<div style="width: 50%; float:left;">presumably `/prɪ'zjuːməbli/` 大概，据推测，可能</div>
+<div style="width: 50%; float:left;">discriminate `/dɪ'skrɪmɪneɪt/` 区分，区别对待，辨别，差别对待
+</div>
+<div style="width: 50%; float:left;">transparent `/trænsˈpærənt/` 透明的，清澈的，显而易见的，易懂的</div>
+<div style="width: 50%; float:left;">transparency `/træns'pærənsi/` 透明度，幻灯片</div>
+<div style="width: 50%; float:left;">dramatic `/drəˈmætɪk/` 戏剧性的，巨大的，突然的，令人吃惊的</div>
+<div style="width: 50%; float:left;">coexist `/ˌkəʊɪɡˈzɪst/` 共存，和平共处</div>
+<div style="width: 50%; float:left;">indicate `/ˈɪndɪkeɪt/` 指示，说明，象征，显示，预示</div>
+<div style="width: 50%; float:left;">substitute `/'sʌbstɪtjuːt/` 代替，替代品，替补队员</div>
+<div style="width: 50%; float:left;">trivial `/'trɪviəl/` 琐碎的，不重要的</div>
+<div style="width: 50%; float:left;">criterion `/kraɪ'tɪəriən/` 标准，准则</div>
+<div style="width: 50%; float:left;">formal `/'fɔːml/` 正式的，正规的，形式的，拘谨的</div>
+<div style="width: 50%; float:left;">accommodate `/əˈkɒmədeɪt/` 容纳，住宿，调解，向..提供，随和，乐于助人，顾及的</div>
+<div style="width: 50%; float:left;">intuitive `/ɪn'tjuːɪtɪv/` 直觉的</div>
+<div style="width: 50%; float:left;">ellipsis `/ɪ'lɪpsɪs/` 省略，省略号</div>
+<div style="width: 50%; float:left;">synthesize `/'sɪnθəsaɪz/` 合成，综合</div>
+<div style="width: 50%; float:left;">artificial `/ˌɑːtɪ'fɪʃl/` 人造的，虚伪的，武断的</div>
+<div style="width: 50%; float:left;">versa `/versa/` 反，反的</div>
+<div style="width: 50%; float:left;">intricate `/'ɪntrɪkət/` 复杂的，难懂的</div>
+<div style="width: 50%; float:left;">tune `/tjuːn/` 曲调，曲子，（收音机）调谐</div>
+<div style="width: 50%; float:left;">transparent `/trænsˈpærənt/` 透明的，清澈的，显而易见的，易懂的
+</div>
+<div style="width: 50%; float:left;">disambiguate `/ˌdɪsamˈbɪɡjʊeɪt/` 消除...的歧义</div>
+<div style="width: 50%; float:left;">reinforce `/ˌriːɪnˈfɔːs/` 加强，加固，增援，支持</div>
+<div style="width: 50%; float:left;">notion `/'nəʊʃn/` 观念，概念，想法，主张</div>
+<div style="width: 50%; float:left;">via `/ˈvaɪə/` 通过，经由，凭借，经过（某一地方）</div>
+<div style="width: 50%; float:left;">applicable `/ə'plɪkəbl/` 合适的，适用的，可应用的</div>
+<div style="width: 50%; float:left;">prevent `/prɪˈvent/` 阻止，阻挠，阻碍，预防</div>
+<div style="width: 50%; float:left;">attentive `/ə'tentɪv/` 注意的，留意的</div>
+<div style="width: 50%; float:left;">contrast `/'kɒntrɑːst/` 对比，差别，对照，反差</div>
+<div style="width: 50%; float:left;">combat `/'kɒmbæt/` 战斗，试图解决，与...斗争</div>
+<div style="width: 50%; float:left;">bloat `/bləʊt/` 膨胀，肿胀的，自傲</div>
+<div style="width: 50%; float:left;">legitimate `/lɪ'dʒɪtɪmət/` 合法的，世袭的，婚生的，正当的，合理的，授权，宣布...合法</div>
+<div style="width: 50%; float:left;">brought `/brɔːt/` 拿来，带来</div>
+<div style="width: 50%; float:left;">likelihood `/'laɪklihʊd/` 可能性</div>

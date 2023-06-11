@@ -80,12 +80,21 @@ class Array{
 
 ## Glossary
 
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">unwieldy `/ʌnˈwiːldi/` 笨重的，笨手笨脚的，不灵巧的</div>
+<div style="width: 50%; float:left;">intuitive `/ɪn'tjuːɪtɪv/` 直觉的</div>
+<div style="width: 50%; float:left;">conclude `/kənˈkluːd/` 推断，断定，终止，结束</div>
+<div style="width: 50%; float:left;">tentatively `/'tentətɪvli/` 试验性地，犹豫不决地，暂时地</div>
+<div style="width: 50%; float:left;">conclusion `/kənˈkluː.ʒən/` 结尾，结局，结果</div>
+<div style="width: 50%; float:left;">mention `/ˈmenʃn/` 提到，提及，说起</div>
+<div style="width: 50%; float:left;">literal `/ˈlɪtərəl/` 常量，字面值，文学的，书面的，字面上的</div>
+<div style="width: 50%; float:left;">overlook `/ˌəʊvəˈlʊk/` 忽略，忽视，俯视</div>
+<div style="width: 50%; float:left;">participate `/pɑːˈtɪsɪpeɪt/` 参加，参与，分享</div>
+<div style="width: 50%; float:left;">intricate `/'ɪntrɪkət/` 复杂的，难懂的</div>
+<div style="width: 50%; float:left;">possibility `/ˌpɒsə'bɪləti/` 可能，可能性，潜在的价值</div>
+<div style="width: 50%; float:left;">preferable `/ˈprefrəbl/` 更好的，较合适的，更可取的</div>
+<div style="width: 50%; float:left;">trick `/trɪk/` 诡计，欺骗，把戏</div>
+<div style="width: 50%; float:left;">candidate `/ˈkændɪdət/` 候选人，申请人，考生</div>
+<div style="width: 50%; float:left;">sensitive `/'sensətɪv/` 敏感的，灵敏的，感光的，善解人意的</div>
+<div style="width: 50%; float:left;">vocal `/'vəʊkl/` 声音的，口头的，声乐的，直言不讳的，元音，声乐作品</div>
+<div style="width: 50%; float:left;">eliminate `/ɪˈlɪmɪneɪt/` 消灭，铲除，排除，淘汰</div>
+<div style="width: 50%; float:left;">rumored `/'ruːmə/` 谣言，传闻，谣传</div>

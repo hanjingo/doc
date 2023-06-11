@@ -24,7 +24,7 @@ English | [中文版](README_zh.md)
 
 | Title                                                    | Edition | Author                                   | Abstract/Evaluate |
 | -------------------------------------------------------- | ------- | ---------------------------------------- | ----------------- |
-| [C++ Templates: The Complete Guide](CPP_TEMPLATES/READM) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
+| [C++ Templates: The Complete Guide](CPP_TEMPLATES/README.md) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
 
 ### Compile&Build
 

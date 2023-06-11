@@ -1,2 +1,2 @@
-# HFT
+# High Frequency Trading
 

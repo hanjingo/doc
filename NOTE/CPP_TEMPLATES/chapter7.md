@@ -30,9 +30,9 @@ A declaration is a C++ construct that introduces or reintroduces a name into a C
 
 the declaration of a class template or function template is called a definition if it has a body.
 
-The One-Definition Rule:
+The One-Definition Rule(ODR):
 
-- Noninline functions and member functions, as well as global variables and static data members should be defined only once across the whole program.
+- Noninline functions and member functions, as well as global variables and static data members, should be defined only once across the whole program.
 - Class types(including struct and unions) and inline functions should be defined at most once per translation unit, and all these definitions should be identical.
 
 A translation unit is what results from preprocessing a source file; that is, it includes the contents named by `#include` directives.
@@ -46,12 +46,8 @@ Template Arguments versus Template Parameters:
 
 ## Glossary
 
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">synonym `/ˈsɪnənɪm/` 同义词</div>
+<div style="width: 50%; float:left;">tied `/taɪd/` 系，打结，约束</div>
+<div style="width: 50%; float:left;">substitution `/ˌsʌbstɪ'tjuːʃ(ə)n/` 置换，取代，代入</div>
+<div style="width: 50%; float:left;">dramatic `/drəˈmætɪk/` 戏剧性的，巨大的，突然的，令人吃惊的</div>
+<div style="width: 50%; float:left;">complex `/ˈkɒmplɛks/` 复杂的，难懂的</div>

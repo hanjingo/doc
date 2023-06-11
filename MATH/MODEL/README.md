@@ -1,4 +1,4 @@
-# 数学模型
+[中文版](README_zh.md) | English
 
-- [传染病模型](infectious_disease.md)
+# Math Model
 

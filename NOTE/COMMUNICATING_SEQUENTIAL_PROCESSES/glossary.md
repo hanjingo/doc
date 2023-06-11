@@ -1,4 +1,4 @@
-# 生词本
+# Glossary
 
 <div style="width: 50%; float:left;">patience `/'peɪʃns/` 耐心，忍耐，毅力</div>
 <div style="width: 50%; float:left;">untiringly `/ʌn'taɪərɪŋlɪ/` 不疲倦地，不屈不挠地</div>

@@ -1,4 +1,4 @@
-# wmessage
+# PBC-wmessage
 
 <!-- vim-markdown-toc GFM -->
 
