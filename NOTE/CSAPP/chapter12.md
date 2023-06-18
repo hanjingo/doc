@@ -84,6 +84,67 @@ A semaphore that is used as a counter for a set of available resources is called
 
 **Synchronization overhead is expensive and should be avoided if possible. If it cannot be avoided, the overhead should be amortized by as much useful computation as possible.**
 
+The speedup of a parallel program is typically defined as
+$$
+S_p = \frac{T_1}{T_p}
+$$
+where $p$ is the number of processor cores and $T_k$ is the running time on $k$ cores.
+
+A related measure, known as `efficiency`, is defined as 
+$$
+E_p = \frac{S_p}{p} = \frac{T_1}{p T_p}
+$$
+and is typically reported as a percentage in the range $(0, 100]$. Efficiency is a measure of the overhead due to parallelization. Programs with high efficiency are spending more time doing useful work and less time synchronizing and communicating than programs with low efficiency.
+
+`weak scaling`, which increases the problem size along with the number of processors, such that the amount of work performed on each processor is held constant as the number of processors increases. With this formulation, speedup and efficiency are expressed in terms of the total amount of work accomplished per unit of time.
+
+A function is said to be `thread-safe` if and only if it will always produce correct results when called repeatedly from multiple concurrent threads. If a function is not thread-safe, then we say it is `thread-unsafe`.
+
+We can identify four (nondisjoint) classes of thread-unsafe functions:
+
+- Class 1: Functions that do not protect shared variables.
+- Class 2: Functions that keep state across multiple invocations.
+- Class 3: Functions that return a pointer to a static variable.
+- Class 4: Functions that call thread-unsafe functions.
+
+`reentrant functions`: that are characterized by the property that they do not reference `any` shared data when they are called by multiple threads.
+
+![12_39](res/12_39.png)
+
+Reentrant functions are typically more efficient than non-reentrant threadsafe functions because they require no synchronization operations.
+
+If all function arguments are passed by value (i.e., no pointers) and all data references are to local automatic stack variables (i.e., no references to static or global variables), then the function is `explicitly reentrant`, in the sense that we can assert its reentrancy regardless of how it is called.
+
+`implicitly reentrant` function, in the sense that it is only reentrant if the calling threads are careful to pass pointers to nonshared data.
+
+the lock-and-copy approach has number of disadvantages:
+
+- First, the additional synchronization slows down the program.
+- Second, functions that return pointers to complex structures of structures require a `deep copy` of the structures in order to copy the entire structure hierarchy.
+- Third, the lock-and-copy approach will not work for a class 2 thread-unsafe function such as rand that relies on static state across calls.
+
+Races usually occur because programmers assume that threads will take some particular trajectory through the execution state space, forgetting the golden rule that threaded programs must work correctly for any feasible trajectory.
+
+Semaphores introduce the potential for a nasty kind of run-time error, called `deadlock`, where a collection of threads is blocked, waiting for a condition that will never be true.
+
+![12_44](res/12_44.png)
+
+From this graph, we can glean some important insights about deadlock:
+
+- The programmer has incorrectly ordered the $P$ and $V$ operations such that the forbidden regions for the two semaphores overlap.
+- The overlapping forbidden regions induce a set of states called the `deadlock region`.
+- Deadlock is an especially difficult issue because it is not always predictable.
+
+Mutex lock ordering rule: Given a total ordering of all mutexes, a program is deadlock-free if each thread acquires its mutexes in order and releases them in reverse order.
+
+
+
+## Summary
+
+Processes are scheduled automatically by the kernel, and because of their separate virtual address spaces, they require explicit IPC mechanisms in order to share data. Event-driven programs create their own concurrent logical flows, which are modeled as state machines, and use I/O multiplexing to explicitly schedule the flows. Because the program runs in a single process, sharing data between flows is fast and easy. Threads are a hybrid of these approaches. Like flows based on processes, threads are scheduled automatically by the kernel. Like flows based on I/O multiplexing, threads run in the context of a single process, and thus can share data quickly and easily.
+
+Regardless of the concurrency mechanism, synchronizing concurrent accesses to shared data is a difficult problem. The $P$ and $V$ operations on semaphores have been developed to help deal with this problem. Semaphore operations can be used to provide mutually exclusive access to shared data, as well as to schedule access to resources such as the bounded buffers in producer-consumer systems and shared objects in readers-writers systems. A concurrent prethreaded echo server provides a compelling example of these usage scenarios for semaphores.
+
 
 
 ## Glossary
@@ -178,16 +239,45 @@ A semaphore that is used as a counter for a set of available resources is called
 <div style="width: 50%; float:left;">summing `/'sʌmɪŋ/` 求和，合计，概述</div>
 <div style="width: 50%; float:left;">elapse `/əˈlaps/` 逝去（时间），过去</div>
 <div style="width: 50%; float:left;">tricky `/'trɪki/` 棘手的，狡猾的，巧妙的</div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">routine `/ruˈtin/` 常规，例行的，程序</div>
+<div style="width: 50%; float:left;">magnitude `/ˈmæɡnɪtjuːd/` 巨大，重大，重要性，地震等级</div>
+<div style="width: 50%; float:left;">eliminate `/ɪˈlɪmɪneɪt/` 消灭，铲除，排除，淘汰</div>
+<div style="width: 50%; float:left;">tricky `/'trɪki/` 棘手的，狡猾的，巧妙的</div>
+<div style="width: 50%; float:left;">elapse `/əˈlaps/` 逝去（时间），过去</div>
+<div style="width: 50%; float:left;">exploit `/ɪkˈsplɔɪt/` 剥削，压榨，利用，开发，功绩，英勇行为</div>
+<div style="width: 50%; float:left;">numerator `/'njuːməreɪtə(r)/` （数学）分子（除法）</div>
+<div style="width: 50%; float:left;">feasible `/'fiːzəbl/` 可行的，可能的</div>
+<div style="width: 50%; float:left;">efficiency `/ɪ'fɪʃnsi/` 功率，效率</div>
+<div style="width: 50%; float:left;">fool `/fuːl/` 傻瓜，小丑，愚弄，欺骗，开玩笑，干蠢事，玩弄，鬼混</div>
+<div style="width: 50%; float:left;">decade `/'dekeɪd/` 十年</div>
+<div style="width: 50%; float:left;">advent `/'ædvent/` 出现，到来</div>
+<div style="width: 50%; float:left;">accomplish `/əˈkʌmplɪʃ/` 达到，完成，结束</div>
+<div style="width: 50%; float:left;">prediction `/prɪˈdɪkʃn/` 预言，预言的事物</div>
+<div style="width: 50%; float:left;">complicated `/ˈkɒmplɪkeɪtɪd/` 复杂的，难懂的</div>
+<div style="width: 50%; float:left;">iceberg `/ˈaɪsbɜːɡ/` 冰山</div>
+<div style="width: 50%; float:left;">survey `/'sɜːveɪ/` 问卷，测量，调查，纵览，视察</div>
+<div style="width: 50%; float:left;">couch `/kaʊtʃ/` 长椅，睡椅，兽穴，埋伏，躺下</div>
+<div style="width: 50%; float:left;">pseudorandom `/psjuːdəʊ'rændəm/` （计算机）伪随机</div>
+<div style="width: 50%; float:left;">prone `/prəʊn/` 易于...的，有...倾向的，俯卧的</div>
+<div style="width: 50%; float:left;">disaster `/dɪ'zɑːstə(r)/` 灾难</div>
+<div style="width: 50%; float:left;">recourse `/rɪ'kɔːs/` 依赖，求助，追索权</div>
+<div style="width: 50%; float:left;">reentrant `/riː'entrənt/` （计算机）重入，凹入的，凹角</div>
+<div style="width: 50%; float:left;">callee `/kɔː'liː/` 被召唤者，被呼叫者</div>
+<div style="width: 50%; float:left;">deprecate `/ˈdeprəkeɪt/` 强烈反对，不赞成</div>
+<div style="width: 50%; float:left;">disruptive `/dɪs'rʌptɪv/` 分裂的，破坏性的，制造混乱的</div>
+<div style="width: 50%; float:left;">correctness `/kə'rektnəs/` 正确性，正确</div>
+<div style="width: 50%; float:left;">spot `/spɒt/` 污点，斑点，地点，场所，现货，插播节目，职位，现货的</div>
+<div style="width: 50%; float:left;">scary `/'skeəri/` 可怕的，引起恐慌的</div>
+<div style="width: 50%; float:left;">unaware `/ˌʌnə'weə(r)/` 没有发觉的，不知道的</div>
+<div style="width: 50%; float:left;">nasty `/'nɑːsti/` 下流的，严重的</div>
+<div style="width: 50%; float:left;">glean `/ɡliːn/` 收集</div>
+<div style="width: 50%; float:left;">trap `/træp/` 陷阱，圈套，牢笼，夹住，绊住，缠住</div>
+<div style="width: 50%; float:left;">overlap `/ˈəʊvəlæp/` 重叠，交替</div>
+<div style="width: 50%; float:left;">proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的</div>
+<div style="width: 50%; float:left;">bibliographic `/ˌbibliə'ɡræfik,-kəl/` 书籍解题的,著书目录的</div>
+<div style="width: 50%; float:left;">barber `/ˈbɑːbə(r)/` 理发师，理发店</div>
+<div style="width: 50%; float:left;">comprehensive `/ˌkɒmprɪ'hensɪv/` 可理解的，全面的，综合的，广泛的</div>
+<div style="width: 50%; float:left;">pitfall `/ˈpɪtfɔːl/` 陷阱，困难，危险，隐患</div>
+<div style="width: 50%; float:left;">pugh `/pjuː/` 表示轻蔑，嫌恶等时所发声音</div>
+<div style="width: 50%; float:left;">flawed `/flɔːd/` 有裂纹的，有瑕疵的，有缺陷的</div>
+<div style="width: 50%; float:left;">simultaneous `/ˌsɪml'teɪniəs/` 同步的，同时发生的</div>
