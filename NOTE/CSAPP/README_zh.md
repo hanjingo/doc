@@ -2,5 +2,5 @@
 
 # 计算机操作系统
 
-3ED . Randal E. Bryant, David R. O'Hallaron
+Randal E. Bryant, David R. O'Hallaron . 3ED
 
