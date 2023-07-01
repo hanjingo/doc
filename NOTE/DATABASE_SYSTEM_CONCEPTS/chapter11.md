@@ -161,4 +161,5 @@ A `bitmap` is simply an array of bits. In its simplest form, a `bitmap index` on
 
 ## Summary
 
-- TODO
+- Many queries reference only a small proportion of the records in a file. To reduce the overhead in searching for these records, we can construct `indices` for the files that store the database.
+- Index-sequential files are one of the oldest index schemes used in database systems. TODO

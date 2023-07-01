@@ -50,6 +50,7 @@
 | [THE WEALTH OF NATIONS](NOTE/THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith                               |                   |
 | [C++ concurrency in action](NOTE/CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams                         |                   |
 | [C++ Templates: The Complete Guide](NOTE/CPP_TEMPLATES/README.md) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
+| [PRINCIPLES OF ECONOMICS](NOTE/PRINCIPLES_OF_ECONOMICS/README.md) | 4ED     | N.Gregory Mankiw                         |                   |
 
 ---
 

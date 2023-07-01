@@ -20,7 +20,7 @@ Abraham Silberschatz, Henry F. Korth, S. Sudarshan . 6ED
 - [Chapter16 Recovery System]
 - [Chapter17 Database-System Architectures]
 - [Chapter18 Parallel Databases]
-- [Chapter19 Distributed Databases]
+- [Chapter19 Distributed Databases](chapter19.md)
 - [Chapter20 Data Warehousing and Mining]
 - [Chapter21 Information Retrieval]
 - [Chapter22 Object-Based Databases]

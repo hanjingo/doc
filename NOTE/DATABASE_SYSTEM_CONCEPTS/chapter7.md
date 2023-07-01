@@ -217,7 +217,36 @@ This commonality can be expressed by `generalization`, which is a containment re
 
 Higher- and lower-level entity sets also may be designated by the terms `superclass` and `subclass`, respectively.
 
-TODO
+Whether a given protion of an E-R model was arrived at by specialization or generalization, the outcome is basically the same:
+
+- A higher-level entity set with attributes and relationships that apply to all of its lower-level entity sets.
+- Lower-level entity sets with distinctive features that apply only within a particular lower-level entity set.
+
+The lower-level entity sets may be one of the following:
+
+- Disjoint. A `disjointness constraint` requires that an entity belong to no more than one lower-level entity set.
+- Overlapping. In `overlapping generalizations`, the same entity may belong to more than one lower-level entity set within a single generalization.
+
+A final constraint, the `completeness constraint` on a generalization or specialization, specifies whether or not an entity in the higher-level entity set must belong to at least one of the lower-level entity sets within the generalization/specialization. This constraitn may be one of the following:
+
+- `Total generalization` or `specialization`. Each higher-level entity msut belong to a lower-level entity set.
+- `Partial generalization` or `specialization`. Some higher-level entities may not belong to any lower-level entity set.
+
+![7_24](res/7_24.png)
+
+![7_25](res/7_25.png)
+
+The `Unified Modeling Language` (UML) is a standard developed under the auspices of the Object Management Group (OMG) for creating specifications of various components of a software system. Some of the parts of UML are:
+
+- `Class diagram`. A class diagram is similar to an E-R diagram. Later in this section we illustrate a few features of class diagrams and how they relate to E-R diagrams.
+- `Use case diagram`. Use case diagrams show the interaction between users and the system, in particular the steps of tasks that users perform (such as withdrawing money or registering for a course).
+- `Activity diagram`. Activity diagrams depict the flow of tasks between various components of a system.
+- `Implementation diagram`. Implementation diagrams show the system components and their interconnections, both at the software component level and the hardware component level.
+
+There are two main metrics for performance:
+
+- Throughput--the number of queries or updates (often referred to as `transactions`) that can be processed on average per unit of time.
+- Response time--the amount of time a `single` transaction takes from start to finish in either the average case or the worst case.
 
 
 
@@ -309,20 +338,3 @@ TODO
 <div style="width: 50%; float:left;">stems `/stems/` 柄，茎，船首，起源于，阻止，遏制</div>
 <div style="width: 50%; float:left;">recognition `/ˌrekəɡˈnɪʃn/` 认识，识别，承认，赞赏</div>
 <div style="width: 50%; float:left;">aggregation `/ˌæɡrɪ'ɡeɪʃn/` 集合，聚合，集合体</div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>

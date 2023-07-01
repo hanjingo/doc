@@ -10,7 +10,7 @@ Randal E. Bryant, David R. O'Hallaron . 3ED
 - [4 Processor Architecture]
 - [5 Optimizing Program Performance]
 - [6 The Memory Hierarchy](chapter6.md)
-- [7 Linking](chapter7.m)
+- [7 Linking](chapter7.md)
 - [8 Exceptional Control Flow](chapter8.md)
 - [9 Virtual Memory]
 - [10 System-Level I/O]

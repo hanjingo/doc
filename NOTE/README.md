@@ -60,6 +60,7 @@ English | [中文版](README_zh.md)
 | Title                                   | Edition | Author  | Abstract/Evaluate              |
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
+| [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
 
 
 
@@ -69,7 +70,6 @@ English | [中文版](README_zh.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
 - [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md)
-- [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md)
 - [Design Pattern](DESIGN_PATTERN/README.md)
 - [COMPUTER NETWORKING: A Top-Down Approach](COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md)
 
