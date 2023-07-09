@@ -27,5 +27,11 @@ Because the differences in average wages among groups in part reflect difference
 
 ## Summary
 
-TODO
+- Workers earn different wages for many reasons. To some extent, wage differentials compensate workers for job attributes. Other things equal, workers in hard, unpleasant jobs get paid more than workers in easy, pleasant jobs.
+- Workers with more human capital get paid more than workers withless human capital. The return to accumulating human capital is high and has increased over the past decade.
+- Although years of education, experience, and job characteristics affect earnings as theory predicts, there is much variation in earnings that connot be explained by theings that economists can measure. The unexplained variation in earnings is largely attributable to natural ability, effort, and chance.
+- Some economists have suggested that more educated workers earn higher wages not because education raises productivity but because workers with high natural ability use education as a way to signal their high ability to employers. If this signaling theory were correct, then increasing the educational attainment of all workers would not raise the overall level of wages.
+- Wages are sometimes pushed above the level that brings supply and demand into balance. Three reason for above-equilibrium wages are minimum-wage laws, unions, and efficiency wages.
+- Some differences in earnings are attributable to discrimination on the basis of race, sex, or other factors. Measuring the amount of discrimination is difficult, however, because one must correct for differences in human capital and job characteristics.
+- Competitive markets tend to limit the impact of discrimination on wages. If the wages of a group of workers are lower than those of another group for reasons not related to marginal productivity, then nondiscriminatory firms will be more profitable than discriminatory firms. Profit-maximizing behavior, therefor, can act to reduct discriminatory wage differentials. Discrimination can persist in competitive markets if customers are willing to pay more to discriminatory firms or if the government passes laws requiring firms to discriminate.
 

@@ -75,4 +75,7 @@ Despite these differences from our previous example, Big Bob’s cost curves sha
 
 ## Summary
 
-TODO
+- The goal of firms is to maximize profit, which equals total revenue minus total cost.
+- When analyzing a firm's behavior, it is important to include all the opportunity costs of production. Some of the opportunity costs, such as the wages a firm pays its workers, are explicit. Other opportunity costs, such as the wages the firm owner gives up by working in the firm rather than taking another job, are implicit.
+- A firm's costs reflect its production process. A typical firm's production function gets flatter as the quantity of an input increases, displaying the property of diminishing marginal product. As a result, a firm's total-cost curve gets steeper as the quantity produced rises. rises as output increases further. The marginal-cost curve always crosses the average-total-cost curve at the minimum of average total cost.
+- A firm's costs often depend on the time horizon being cosidered. In particular, many costs are fixed in the short run but variable in the long run. As a result, when the firm change its level of production, average total cost may rise more in the short run than in

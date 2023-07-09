@@ -30,4 +30,7 @@
 
 ## Summary
 
-TODO
+- Data on the distribution of income show wide disparity in our society. The richest fifth of families earns about ten times as much income as the poorest fifth.
+- Because in-kind transfers, the economic life cycle, transitory income, and economic mobility are so important for understanding variation in income, it is difficult to gauge the degree of inequality in our society using data on the distribution of income in a single year. When these factors are taken into account, they tend to suggest that economic well-being is more equally distributed than is annual income.
+- Political philosophers differ in their views about the role of government in altering the distribution of income. Utilitarians (such as John Stuart Mill) would choose the distribution of income to maximize the sum of utility of everyone on society. Liberals (such as John Rawls) would determine the distribution of income as if we were behind a "veil of ignorance" that prevented us from knowing our own stations in life.  Libertarians (such as Rebert Nozick) would have the government enforce individual rights to ensure a fair process but then not be concerned about inequality in the resulting distribution of income.
+- Various policies aim to help the poor--minimum-wage laws, welfare, negative income taxes, and in-kind transfers. Although each of these policies helps some families escape poverty, they also have unintended side effects. Because financial assistance declines as income rises, the poor often high effective tax rates discourage poor families from escaping poverty on their own.

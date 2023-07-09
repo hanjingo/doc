@@ -118,5 +118,153 @@ A compromise between the advantages and disadvantages can be achieved through th
 
 Each site maintains a local lock manager whose function is to administer the lock and unlock requests for those data items that are stored in that site. When a transaction wishes to lock a data item $Q$ that is not replicated and resides at site $S_i$ , a message is sent to the lock manager at site $S_i$ requesting a lock (in a particular lock mode). If data item $Q$ is locked in an incompatible mode, then the request is delayed until it can be granted. Once it has determined that the lock request can be granted, the lock manager sends a message back to the initiator indicating that it has granted the lock request.
 
-TODO
+When a system uses data replication, we can choose one of the replicas as the `primary copy`. For each data item $Q$, the primary copy of $Q$ must reside in precisely one site, which we call the `primary site` of $Q$.
 
+The `majority protocol` works this way: If data item $Q$ is replicated in $n$ different sites, then a lock-request message must be sent to more than one-half of the $n$ sites in which $Q$ is tored. Each lock manager determines whether the lock can be granted immediately (as far as it is concerned). As before, the response is delayed until the request can be granted. The transaction does not operate on $Q$ until it has successfully obtained a lock on a majority of the replicas of $Q$.
+
+The `majority protocol` suffers from these disadvantages:
+
+- `Implementation`. The majority protocol is more complicated to implement than are the previous schemes. It requires at least $2(n/2 + 1)$ messages for handling lock requests and at least $(n/2 + 1)$ messages for handling unlock requests.
+- `Deadlock handling`. In addition to the problem of global deadlocks due to the use of a distributed-lock-manager approach, it is possible for a deadlock to occur even if only one data item is being locked.
+
+The `biased protocol` is another approach to handling replication. The difference from the majority protocol is that requests for shared locks are given more favorable treatment than requests for exclusive locks:
+
+- `Shared locks`. When a transaction needs to lock data item $Q$, it simply requests a lock on $Q$ from the lock manager at one site that contains a replica of $Q$.
+- `Exclusive locks`. When a transaction needs to lock data item $Q$, it requests a lock on $Q$ from the lock manager at all sites that contain a replica of $Q$.
+
+The `quorum consensus` protocol is a generalization of the majority protocol. The quorum consensus protocol assigns each site a nonnegative weight. It assigns reqd and write operations on an item $x$ two integers, called `read quorum` $Q_r$ and `write quorum` $Q_w$, that must satisfy the following condition, where $S$ is the total weight of all sites at which $x$ resides:
+$$
+Q_r + Q_w > S\ and\ 2 * Q_w > S
+$$
+To execute a read operation, enough replicas must be locked that their total weight is a least $r$. To execute a write operation, enough replicas must be locked so that their total weight is at least $w$.
+
+`Timestamping` is that each transaction is given a `unique` timestamp that the system uses in deciding the serialization order. There are two primary methods for generating unique timestamps, one centralized and one distributed.:
+
+- In the centralized scheme, a single site distributes the timestamps. The site can use a logical counter or its own local clock for this purpose.
+- In the distributed scheme, each site generates a unique local timestamp by using either a logical counter or the local clock. We obtain the unique global timestamp by concatenating the qunique local timestamp with the site identifier, which also must be unique.
+
+![19_3](res/19_3.png)
+
+Replication with Weak Degrees of Consistency:
+
+- With `master-slave replication`. the database allows updates at a primary site, and automatically propagates updates to replicas at other sites. Transactions may read the replicas at other sites, but are not permitted to update them.
+- `multimaster replication (also called update-anywhere replication)` updates are permitted at any replica of a data item, and are automatically propagated to all replicas. This model is the basic model used to manage replicas in distributed databases. Transactions update the local copy and the system updates other replicas transparently.
+
+`transaction-consistent snapshot`. that is, the replica should reflect all updates of transactions up to some transaction in the serialization order, and should not reflect any updates of later transactions in the serialization order.
+
+Many database systems provide an alternative form of updating: They update at one site, with `lazy propagation` of updates to other sites, instead of immediately applying updates to all replicas as part of the transaction performing the update. Schemes based on lazy propagation allow transaction processing (including updates) to proceed even if a site is disconnected from the network, thus improving availability, but, unfortunately, do so at the cost of consistency. One of two approaches is usually followed when lazy propagation is used:
+
+- Updates at replicas are translated into updates at a primary site, which are then propagated lazily to all replicas. This approach ensures that updates to an item are ordered serially, although serializability problems can occur, since transactions may read an old value of some other data item and use it to perform an update.
+- Updates are performed at any replica and propagated to all other replicas. This approach can cause even more problems, since the same data item may be updated concurrently at multiple sites.
+
+If we allow deadlocks to occur and rely on deadlock detection, the main problem in a distributed system is deciding how to maintain the wait-for graph. Common techniques for dealing with this issue require that each site keep a `local wait-for graph`.  The nodes of the graph correspond to all the transactions (local as well as nonlocal) that are currently either holding or requesting any of the items local to that site. For example:
+
+![19_4](res/19_4.png)
+
+These local wait-for graphs are constructed in the usual manner for local transactions and data items. When a transaction $T_i$ on site $S_1$ needs a resouce in site $S_2$, it sends a request message to site $S_2$. If the resource is held by transaction $T_j$, the system inserts an edge $T_i \rightarrow T_j$ in the local wait-for graph of site $S_2$.
+
+![19_5](res/19_5.png)
+
+In the `centralized deadlock detection` approach, the system constructs and maintains a `global wait-for graph`(the union of all the local graphs) in a `single` site: the deadlock-detection coordinator. Since there is communication delay in the system, we must distinguish between two types of wait-for graphs. The `real` graph describes the real but unknown state of the system at any instance in time, as would be seen by an omniscient observer. The `constructed` graph is an approximation generated by the controller during the execution of the controller's algorithm. Obviously, the controller must generate the constructed graph in such a way that, whenever the detection algorithm is invoked, the reported results are correct. `Correct` means in this case that, if a deadlock exists, it is reported promptly, and if the system reports a deadlock, it is indeed in a deadlock state.
+
+The global wait-for graph can be reconstructed or updated under these conditions:
+
+- Whenever a new edge is inserted in or removed from one of the local wait-for graphs.
+- Periodically, when a number of changes have occurred in a local wait-for graph.
+- Whenever the coordinator needs to invoke the cycle-detection algorithm.
+
+This scheme may produce unnecessary rollbacks if:
+
+- `False cycles` exist in the global wait-for graph.
+- A `deadlock` has indeed occurred and a victim has been picked, while one of the transactions was aborted for reasons unrelated to the deadlock.
+
+One of the goals in using distributed databases is `high availability`; that is, the database must function almost all the time. In particular, since failures are mote likely in large distributed systems, a distributed database must continue functioning even when there are various types of failures. The ability to continue functioning even during failures is referred to as `robustness`.
+
+For a distributed system to be robust, it must `detect` failures, `reconfigure` the system so that computation may continue, and `recover` when a processor or a link is repaired.
+
+`CAP theorem`. which states that any distributed database can have at most two of the following three properties:
+
+- Consistency.
+- Availability.
+- Partition-tolerance.
+
+The proof of the CAP theorem uses the following definition of consistency, with replicated data: an execution of a set of operations (reads and writes) on replicated data is said to be `consistent` if its result is the same as if the operations were executed on a single site, in some sequential order, and the sequential order is consistent with the ordering of operations issued by each process (transaction).
+
+A multidatabase system supports two types of transactions:
+
+1. `Local transactions`. These transactions are executed by each local database system outside of the multidatabase system's control.
+2. `Global transactions`. These transactions are executed under the multidata-base system's control.
+
+
+
+## Summary
+
+- A distributed database system consists of a collection of sites, each of which maintains a local database system. Each site is able to process local transactions: those transactions that access data in only that single site. In addition, a site may participate in the execution of global transactions requires communication among the sites.
+
+- Distributed databases may be homogeneous, where all sites have a common schema and dtabase system code, or heterogeneous, where the schemas and system codes may differ.
+
+- There are several issues involved in storing a relation in the distributed database, including replication and fragmentation. It is essential that the system minimize the degree to which a user needs to be aware of how a relation is stored.
+
+- A distributed system may suffer from the same types of failure that can afflict a centralized system. There are, however, additional failures with which we need to deal in a distributed environment, including the failure of a site, the failure of a link, loss of a message, and network partition. Each of these problems needs to be considered in the design of a distributed recovery scheme.
+
+- To ensure atomicity, all the sites in which a transaction $T$ executed must agree on the final outcome of the execution. $T$ either commits at all sites or aborts at all sites. To ensure this property, the transaction coordinator of $T$ must execute a commit protocol. The most widely used commit protocol is the two-phase commit protocol.
+
+- The two-phase commit protocol may lead to blocking, the situation in which the fate of a transaction cannot be determined until a failed site (the coordinator) recovers. We can use the three-phase commit protocol to reduce the probability of blocking.
+
+- Persistent messaging provides an alternative model for handling distributed transactions. The model breaks a single transaction into parts that are executed at different databases. Persistent messages (which are guaranteed to be delivered exactly once, regardless of failures), are sent to remote sites to request actions to be taken there. While persistent messaging avoids the blocking problem, application developers have to write code to handle various types of failures.
+
+- The various concurrency-control schemes used in a centralized system can be modified for use in a distributed environment.
+
+  - In the case of locking protocols, the only change that needs to be incorporated is in the way that the lock manager is implemented. There are a variety of different approaches here. One or more central coordinators may be used. If, instead, a distributed-lock-manager approach is taken, replicated data must be treated specially.
+  - Protocols for handling replicated data include the primary copy, majority, biased, and quorum consensus protocols. These have different trade-offs in terms of cost and ability to work in the presence of failures.
+  - In the case of timestamping and validation schemes, the only needed change is to develop a mechanism for generating unique global timestamps.
+  - Many database systems support lazy replication, where updates are propagated to replicas outside the scope of the transaction that performed the update. Such facilities must be used with great care, since they may result in nonserializable executions.
+
+- Deadlock detection in a distributed-lock-manager environment requires cooperation between multiple sites, since there may be global deadlocks even when there are no local deadlocks.
+
+- To provide high availability, a distributed database must detect failures, reconfigure itself so that computation may continue, and recover when a processor or a link is repaired. The task is greatly complicated by the fact that it is hard to distinguish between network partitions and site failures.
+
+  The majority protocol can be extended by using version numbers to permit transaction processing to proceed even in the presence of failures. While the protocol has a significant overhead, it works regardless of the type of failure. Less-expensive protocols are available to deal with site failures, but they assume network partitioning does not occur.
+
+- Some of the distributed algorithms require the use of a coordinator. To provide high availability, the system must maintain a backup copy that is ready to assume responsibility if the coordinator fails. Another approach is to choose the new coordinator after the coordinator has failed. The algorithms that determine which site should act as a coordinator are called **election algorithms**.
+
+- Queries on a distributed database may need to access multiple sites. Several optimization techniques are available to identify the best set of sites to access. Queries can be written automatically in terms of fragments of relations and then choices can be made among the replicas of each fragment. Semijoin techniques may be employed to reduce data transfer involved in joining relations (or fragments or relicas thereof) across distinct sites.
+
+- Heterogeneous distributed databases allow sites to have their own schemas and database system code. A multidatabase system provides an environment in which new database applications can access data from a variety of preexisting databases located in various heterogeneous hardware and software environments. The local database systems may employ different logical models and data-definition and data-manipulation languages, and may differ in their concurrency-control and transaction-management mechanisms. A multidatabase system creates the illusion of logical database integration, without requiring physical database integration.
+
+- A large number of data-storage systems on the cloud have been built in recent years, in response to data storage needs of extremely large-scale Web applications. These data-storage systems allow scalability to thousands of nodes, with geographic distribution, and high availability. However, they do not support the usual ACID properties, and they achieve availability during partitions at the cost of consistency of replicas. Current data-storage systems also do not support SQL, and provide only a simple `put()/get()` interface. While cloud computing is attractive even for traditional databases, there are several challenges due to lack of control on data placement and geographic replication.
+
+- Directory systems can be viewed as a specialized form of database, where information is organized in a hierarchical fashion similar to the way files are organized in a file system. Directories are accessed by standardized directory access protocols such as LADAP. Directories can be distributed across multiple sites to provide autonomy to individual sites. Directories can contain referrals to other directories, which help build an integrated view whereby a query is sent to a single directory, and it is transparently executed at all relevant directories.
+
+
+
+## Glossary
+
+<div style="width: 50%; float:left;">granted `/'ɡrɑːntɪd/` 的确，假定</div>
+<div style="width: 50%; float:left;">quorum `/'kwɔːrəm/` （计算机）仲裁，法定人数</div>
+<div style="width: 50%; float:left;">presence `/'prezns/` 出席，存在，到场</div>
+<div style="width: 50%; float:left;">prevent `/prɪˈvent/` 阻止，阻挠，阻碍，预防</div>
+<div style="width: 50%; float:left;">omniscient `/ɒm'nɪsiənt/` 全知的，无所不知的</div>
+<div style="width: 50%; float:left;">coordinator `/kəʊ'ɔːdɪneɪtə/` （计算机）协调器，协调者</div>
+<div style="width: 50%; float:left;">victim `/ˈvɪktɪm/` 牺牲者，受害人，牺牲品</div>
+<div style="width: 50%; float:left;">homogeneous `/ˌhɒmə'dʒiːniəs/` 同质的，同种的</div>
+<div style="width: 50%; float:left;">fragmentation `/ˌfræɡmen'teɪʃn/` 分裂，破碎</div>
+<div style="width: 50%; float:left;">fate `/feɪt/` 命运，宿命</div>
+<div style="width: 50%; float:left;">heterogeneous `/ˌhetərə'dʒiːniəs/` （计算机）非均匀的，异种的，异质的，由不同成分形成的
+</div>
+<div style="width: 50%; float:left;">integration `/ˌɪntɪ'ɡreɪʃn/` 集成，综合，同化</div>
+<div style="width: 50%; float:left;">autonomy `/ɔː'tɒnəmi/` 自治，自治权，自主</div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;"></div>

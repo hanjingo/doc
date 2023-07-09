@@ -32,4 +32,7 @@
 
 ## Summary
 
-TODO
+- The U.S. government raises revenue using various taxes. The most important taxes for the dederal government are individual income taxes and payroll taxes for social insurance. The most important taxes for state and local governments are sales taxes and property taxes.
+- The efficiency of a tax system refers to the costs it imposes on taxpayers. There are two costs of taxes beyond the transfer fo resources from the taxpayer to the government. The first is the distortion in the allocation of resources that arises as taxes alter incentives and behavior. The second is the administrative burden of complying with the tax laws.
+- The equity of a tax system concerns whether the tax burden is distributed fairly among the population. According to the benefits principle, it is fair for people to pay taxes based on the benefits they receive from the government. According to the ability-to-pay principle, it is fair for people to pay taxes based on their capability to handle the financial burden. When evaluating the equity of a tax system, it is important to remember a lesson from the study of tax incidence: The distribution of tax burdens is not the same as the distribution of tax bills.
+- When considering changes in the tax laws, policymakers often face a tradeoff between efficiency and equity. Much of the debate over tax policy arises because people give different weight to these two goals.

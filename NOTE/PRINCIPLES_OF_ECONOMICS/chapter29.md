@@ -67,4 +67,8 @@ $$
 
 ## Summary
 
-TODO
+- Net exports are the value of domestic goods and services sold abroad minus the value of foreign goods and services sold domestically. Net foreign investment is the acquisition of foreign assets by domestic residents minus the acquisition of domestic assets by foreigners. Because every international transaction involves an exchange of an asset for a good or service, an economy’s net foreign investment always equals its net exports.
+- An economy’s saving can be used either to finance investment at home or to buy assets abroad. Thus, national saving equals domestic investment plus net foreign investment.
+- The nominal exchange rate is the relative price of the currency of two countries, and the real exchange rate is the relative price of the goods and services of two countries. When the nominal exchange rate changes so that each dollar buys more foreign currency, the dollar is said to appreciate or strengthen. When the nominal exchange rate changes so that each dollar buys less foreign currency, the dollar is said to depreciate or weaken.
+- According to the theory of purchasing-power parity, a dollar (or a unit of any other currency) should be able to buy the same quantity of goods in all countries. This theory implies that the nominal exchange rate between the currencies of two countries should reflect the price levels in those countries. As a result, countries with relatively high inflation should have depreciating currencies, and countries with relatively low inflation should have appreciating currencies.
+

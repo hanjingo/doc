@@ -28,4 +28,7 @@ In the long run, the higher saving rate leads to a highr level of productivity a
 
 ## Summary
 
-TODO
+- Economic prosperity, as measured by GDP per person, varies substantially around the world. The average income in the world's richest countries in more than ten times that in the world's poorest countries. Because growth rates of real GDP also vary substantially, the relative positions of countries can change dramatically over time.
+- The standard of living in an economy depends on the economy's ability to produce goods and services. Productivity, in turn, depends on the amounts of physical capital, human capital, natural resources, and technological knowledge available to workers.
+- Government policies can influence the economy's growth rate in many ways: encouraging saving and investment, encouraging investment from abroad, fostering education, maintaining property rights and political stability, allowing free trade, controlling population growth, and promoting the research an development of new technologies.
+- The accumulation of capital is subject to diminishing returns: The more capital an economy has, the less additional output the economy gets from an extra unit of capital. Because of diminishing returns, higher saving leads to higher growth for a period of time, but growth eventually slows down as the economy approaches a higher level of capital, productivity, and income. Also because of diminishing returns, the return to capital is especially high in poor countries. Other things equal, these countries can grow faster because of the catch-up effect.

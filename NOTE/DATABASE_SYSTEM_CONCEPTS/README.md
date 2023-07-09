@@ -2,7 +2,7 @@
 
 Abraham Silberschatz, Henry F. Korth, S. Sudarshan . 6ED
 
-- [Chapter1 Introduction]
+- [Chapter1 Introduction](chapter1.md)
 - [Chapter2 Introduction to the Relational Model]
 - [Chapter3 Introduction to SQL]
 - [Chapter4 Intermediate SQL]

@@ -5,7 +5,7 @@ English | [中文版](README_zh.md)
 Randal E. Bryant, David R. O'Hallaron . 3ED
 
 - [1 A Tour of Computer System](chapter1.md)
-- [2 Representing and Manipulating Information]
+- [2 Representing and Manipulating Information](chapter2.md)
 - [3 Machine-Level Representation of Programs]
 - [4 Processor Architecture]
 - [5 Optimizing Program Performance]

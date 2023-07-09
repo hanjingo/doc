@@ -34,4 +34,9 @@ $$
 
 ## Summary
 
-TODO
+- The overall level of prices in a economy adjusts to bring money supply and money demand into balance. When the central bank increases the supply of money, ti causes the price level to rise. Persistent growth in the quantity of money supplied leads to continuing inflation.
+- The principle of modetary neutrality asserts that changes in the quantity of money influence nominal variables but not real variables. Most economists believe that monetary neutrality approximately describes the behavior of the economy in the long run.
+- A government can pay for some of its spending simply by printing money. When countries rely heavily on this "inflation tax", the result is hyperinflation.
+- One application of the principle of monetary neutrality is the Fisher effect. According to the Fisher effect, when the inflation rate rises, the nominal interest rate rises by the same amount, so that the real interest rate remains the same.
+- Many people  think that inflation makes them poorer because it raises the cost of what they buy. This view is a fallacy, however, because inflation also raises nominal incomes.
+- Economists have identified six costs of inflation: shoeleather costs associated with reduced money holdings, menu costs associated with more frequent adjustment of prices, increased variability of relative prices, unintended changes in tax liabilities due to nonindexation of the tax code, confusion and inconvenience resultign from a changing unit of account, and arbitrary redistributions of wealth between debtors and creditors. Many of these costs are large during hyperinflation, but the size of these costs for moderate inflation is less clear.

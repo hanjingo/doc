@@ -52,4 +52,10 @@ Thus, the higher the reserve ratio, the less of each deposit banks loan out, and
 
 ## Summary
 
-TODO
+- The term money refers to assets that people regularly use to buy goods and services.
+- Money serves three functions. As a medium of exchange, it provides the item used to make transactions. As a unit of account, it provides the way in which prices and other economic values are recorded. As a store of value, it provides a way of transferring purchasing powewr from the present to the future.
+- Commodity money, such as gold, is money that has intrinsic value: It would be valued even if it were not used as money. Fiat money, such as paper dollars, is money without intrinsic value: It would be worthless if it wre not used as money.
+- In the U.S. economy, money takes the form of currency and various types of bank deposits, such as checking accounts.
+- The Federal Reserve, the central bank of the United States, is responsible for regulating the U.S. monetary system. The Fed chairman is appointed by president and confirmed by Congress every four years. The chairman is the lead member of the Federal Open Market Committee, which meets about every six weeks to consider changes in monetary policy.
+- The Fed controls the money supply primarily through open-market operations: The purchase of government bonds increases the money supply, and the sale of government bonds decreases the money supply. The Fed can also expand the money supply by lowering reserve requirements or decreasing the discount rate, and it can contract the money supply by raising reserve requirements or increasing the discount rate.
+- When banks loan out some of their deposits, they increase the quantity of money in the economy. Because of this role of banks in determining the money supply, the Fed's control of the money supply is imperfect.

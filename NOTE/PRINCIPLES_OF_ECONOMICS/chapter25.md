@@ -50,5 +50,8 @@ A budget surplus increases the supply of loanable funds, reduces the interest ra
 
 ## Summary
 
-TODO
+- The U.S. financial system is made up of many types of financial institutions, such as the bond market, the stock market, banks, and mutual funds. All these institutions act to direct the resources of households who want to save some of their income into the hands of households and firms who want to borrow.
+- National income accounting identities reveal some important relationships among macroeconomic variables. In particular, for a closed economy, national savng must equal investment. Financial institutions are the mechanism through which the economy matches one person's saving with another person's investment.
+- The interest rate is determined by the supply and demand for loanable funds. The supply of loanable funds comes from households who want to save some of their income and lend it out. The demand for loanable funds comes from households and firms who want to borrow fro investment. To analyze how any policy or event affects the interest rate, one must consider how it affects the supply and demand for loanable funds.
+- National saving equals private saving plus public saving. A government budget deficit represents negative public saving and, therefore, reduces national saving and the supply of loanable funds available to finance investment. When a government budget deficit crowds out investment, it reduces the growth of productivity and GDP.
 

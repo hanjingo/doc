@@ -24,4 +24,7 @@ Whenever a new firm considers entering the market with a new product, it conside
 
 ## Summary
 
-TODO
+- A monopolistically competitive market is characterized by three attributes: many firms, differentiated products, and free entry.
+- The equilibrium in a monopolistically competitive market differs from that in a perfectly competitive market in two related ways. First, each firm has excess capacity. That is, it operates on the downward-sloping portion of the average-total-cost curve. Second, each firm charges a price above marginal cost.
+- Monopolistic competition does not have all the desirable properties of perfect competition. There is the standard deadweight loss of monopoly caused by the markup of price over marginal cost. In addition, the number of firms (and thus the variety of products) can be too large or too small. In practice, the ability of policymakers to correct these inefficiencies is limited.
+- The product differentiation inherent in monopolistic competition leads to the use of advertising and brand names. Critics of advertising and brand names argue that firms use them to take advantage of consumer irrationality and to reduce competition. Defenders of advertising and brand names argue that firms use them to inform consumers and to compete more vigorously on price and product quality.
