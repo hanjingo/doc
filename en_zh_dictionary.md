@@ -223,6 +223,10 @@ admiration `/ˌædməˈreɪʃn/` 钦佩，仰慕，羡慕
 
 admissible `/əd'mɪsəbl/` 可容许的，准予就职的
 
+admission `/əd'mɪʃn/` 承认，入会费，许可
+
+admissions `/əd'mɪʃnz/` 招生
+
 admit `/ədˈmɪt/` 承认，招供，准许
 
 admittedly `/əd'mɪtɪdli/` 不可否认的，公认的
@@ -476,6 +480,8 @@ amends `/ə'mendz/` 赔偿，赔罪，补偿
 amendment `/əˈmendmənt/` 修订，改正，修正案
 
 amenity `/əˈmiːnəti/` 舒适，适意，便利设施
+
+amenities `/ə'miːnəti/` 礼仪，礼节，舒适，适意，便利设施
 
 amid `/əˈmɪd/` 在...中，被...围绕
 
@@ -818,6 +824,8 @@ assumption `/əˈsʌmpʃn/`假定，假设
 assure `/ə'ʃʊə(r)/` 确保，使放心
 
 assuredly `/ə'ʃʊərədli/` 确实的，确信的
+
+asterisk `/æstərɪsk/` 星号(*)
 
 asteroid `/'æstərɔɪd/` 小行星，星状的
 
@@ -1197,6 +1205,8 @@ bibliographic `/ˌbibliə'ɡræfik,-kəl/` 书籍解题的,著书目录的
 
 bibliography `/ˌbɪblɪˈɒɡrəfi/` 书目，参考文献
 
+bicker `/'bɪkə(r)/` 口角，斗嘴，闪烁，潺潺流水声
+
 biconnected `/bɪkə'nektɪd/` 双连通
 
 bidirectional `/ˌbaɪdə'rekʃənl/` 双向的
@@ -1226,6 +1236,8 @@ bit `/bɪt/` 比特，少量，小块，片刻，钻头
 bitonic `/baɪtɒnɪk/` （计算机）双调的
 
 bitter `/ˈbɪtə(r)/` 苦的，苦味，苦难
+
+bitwise `/bɪt'waɪz/` （计算机）按位，逐位
 
 bivalent `/baɪ'veɪlənt/` （化学）二价的
 
@@ -1785,6 +1797,8 @@ celebrity `/səˈlebrəti/` 名人，名流，著名
 
 celestial `/səˈlestiəl/` 天上的，天空的，神仙，天人
 
+cellar `/'selə(r)/` 地窖，地下室
+
 cellular `/'seljələ(r)/` 细胞的，多孔的，蜂窝式的
 
 censure `/'senʃə(r)/` 责难，责备，公开谴责
@@ -1830,6 +1844,8 @@ chalk `/tʃɔːk/` 粉笔，用粉笔写，白垩
 chamber `/ˈtʃeɪmbə(r)/` 会议室，议院，（音乐）室内的，小型的，秘密的
 
 chameleon `/kə'miːliən/` 变色龙，善变的人
+
+chamois `/'ʃæmɪ/` 岩羚羊，羚羊皮
 
 chance `/tʃɑːns/` 可能性，机会，碰巧，偶然发生
 
@@ -2115,6 +2131,8 @@ coinage `/ˈkɔɪnɪdʒ/` 货币，货币制度，铸币权
 
 coincide `/ˌkəʊɪnˈsaɪd/` 巧合，一致，相符，重叠
 
+coincidental `/kəʊˌɪnsɪ'dentl/` 巧合的
+
 coil `/kɔɪl/` 线圈，（一）圈，（一）卷
 
 coined `/kɔind/` 创造，制造硬币
@@ -2199,7 +2217,7 @@ commonwealth `/'kɒmənwelθ/` 联合体，联邦
 
 communal `/kəˈmjuːnl/` 公共的，共有的
 
-commutativity `/kəmjuːtə'tɪvɪtɪ/` 可换性
+commutativity `/kəmjuːtə'tɪvɪtɪ/` 可换性，交换的，互相的
 
 commute `/kəˈmjuːt/` 通勤，上下班往返，减刑
 
@@ -2638,6 +2656,8 @@ contiguous `/kənˈtɪɡjʊəs/` 毗邻的，相邻的
 coordinate `/kəʊˈɔːdɪnət/` 协调，坐标，套装
 
 coordination `/kəʊˌɔːdɪ'neɪʃn/` 协调
+
+coordinator `/kəʊ'ɔːdɪneɪtə/` （计算机）协调器，协调者
 
 cope `/kəʊp/` 应付，妥善处理，对抗，笼罩，长袍
 
@@ -3309,6 +3329,8 @@ developed `/dɪ'veləpt/` 发达的，成熟的
 
 deviation `/ˌdiːvi'eɪʃn/` 偏差，偏离，出轨，背离
 
+devise `/dɪ'vaɪz/` 设计，发明，遗赠
+
 devote `/dɪˈvəʊt/` 致力于，奉献，投入时间，专注于
 
 devour `/dɪ'vaʊə(r)/` 吞食，毁灭，贪婪地阅读
@@ -3342,6 +3364,8 @@ diagonalizable `/daɪæɡənə'laɪzəbl/` 可对角化
 diagram `/ˈdaɪəɡræm/` 图解，图表，示意图
 
 diagrammatical `/daɪəɡrə'mætɪkl/` 概略，图解的，用图表示的
+
+dialogue `/'daɪəlɒɡ/` 对话
 
 diameter `/daɪˈæmɪtər/` 直径
 
@@ -3377,7 +3401,7 @@ dishearten `/dɪs'hɑːtn/` 使沮丧，使泄气
 
 dishonour `/dɪs'ɒnə(r)/` 耻辱，丢脸，拒付
 
-disjoint `/dɪs'dʒɔɪnt/` 不相交，脱节，解体
+disjoint `/dɪs'dʒɔɪnt/` （数学）不相交，脱节，解体
 
 disjunctive `/dɪs'dʒʌŋktɪv/` 可分的，分离的，分隔的
 
@@ -4259,6 +4283,8 @@ escalation `/ˌeskə'leɪʃn/` 逐步扩大，增加
 
 escape `/ɪˈskeɪp/` 逃跑，逃避，逃脱
 
+escapee `/ɪˌskeɪ'piː/` 逃亡者，逃犯
+
 eschew `/ɪsˈtʃuː/` 回避，避开，避免
 
 escort `/ˈeskɔːrt /` 护送，陪同，警卫，仪仗兵
@@ -4559,6 +4585,8 @@ facility `/fəˈsɪləti/` 特色，设备，设施，天才，天赋
 
 facsimile `/fækˈsɪməli/` 副本，复制本，传真
 
+faction `/'fækʃn/` 内讧，小集团，派系斗争
+
 factor `/ˈfæktə(r)/` （数学）商，因素，因子，要素
 
 factorization `/dæktəraɪ'zeɪʃən/` （数学）因式分解
@@ -4633,6 +4661,8 @@ fashion `/ˈfaʃn/` 形式，时尚，潮流，使...成型
 
 fasten `/ˈfɑːsn/` 系，扎牢，扣住，固定
 
+fate `/feɪt/` 命运，宿命
+
 fateful `/ˈfeɪtfl/` 重大的，决定性的，宿命的
 
 fathom `/'fæðəm/` 测量深度，彻底了解
@@ -4696,6 +4726,8 @@ feminist `/ˈfemənɪst/` 女权主义者，女权运动者
 femtofarad `//` （电容单位）微法拉
 
 fence `/fens/` 栅栏，篱笆，束缚，击剑，回避
+
+feral `/'ferəl/` 野生的，凶猛的
 
 ferment `/'fɜːment/` 发酵，酵素，动乱
 
@@ -5107,6 +5139,8 @@ funeral `/ˈfjuːnərəl/` 葬礼，出殡
 
 fungi `/ˈfʌŋgaɪ/` 真菌
 
+fur `/fɜː(r)/` 毛皮，软毛，毛皮制品，皮衣
+
 furnace `/'fɜːnɪs/` 炉子，熔炉，严峻考验
 
 furnish `/'fɜːnɪʃ/` 布置，装备，提供
@@ -5318,6 +5352,8 @@ glyph `/ɡlɪf/` 雕刻的文字，雕像，竖沟
 [回到G](#G)--[回到顶部](#英汉词典)
 
 goal `/ɡəʊl/` 目标，球门，球篮
+
+goat `/ɡəʊt/` 山羊，色鬼，替罪羊
 
 goldsmith `/'ɡəʊldsmɪθ/` 金匠
 
@@ -5627,11 +5663,15 @@ heard `/hɪər/` 听见，听到
 
 hearty `/ˈhɑːti/`  亲切的，友好的，丰盛的，喧闹
 
+heat `/hiːt/` 加热，热度，热，热烈，激烈，发烧
+
 heaver `/'hiːvə/` 挑夫，杠杆
 
 heaviest `/'hevɪɪst/` 最重的
 
 hedge `/hedʒ/` 篱笆，障碍，推诿，防护物
+
+hedgehog `/'hedʒhɒɡ/` 刺猬
 
 heed `/hiːd/` 留心，注意，听从劝告
 
@@ -5704,6 +5744,8 @@ higgling `/'hɪɡlɪŋ/` 讨价还价，临机应变
 hilbert `/ˈhɪlbərt/` （数学）希尔伯特
 
 hill `/hɪl/` 丘陵，山冈，小山，堆起
+
+himalayan `/ˌhɪməˈleɪən/` 喜马拉雅
 
 hinder `/ˈhɪndə(r)/` 阻碍，妨碍，阻挡
 
@@ -6142,6 +6184,8 @@ inclosure `/ɪn'kləʊʒə/` 围笼，附件
 inclusion `/ɪnˈkluːʒn/` 包括，被包括的项目
 
 inclusive `/ɪn'kluːsɪv/` （计算机）包括的，包含...在内的，包罗广泛的
+
+incoherent `/ˌɪnkəʊ'hɪərənt/` 不连贯的，语无伦次的
 
 incompatible `/ˌɪnkəm'pætəbl/` 不相容的，不能并存的，矛盾的
 
@@ -6719,6 +6763,8 @@ isomorphic `/ˌaɪsəʊ'mɔːfɪk/` 同形的，异种同形的
 
 isomorphism `/ˌaɪsəʊ'mɔːfɪzəm/` 同形，类质同像
 
+israel `/'ɪzreɪl/` 以色列
+
 issue `/'ɪʃuː/` 议题，问题，发布，公布，期刊号
 
 ### it
@@ -7166,6 +7212,8 @@ legacy `/ˈleɡəsi/` 遗产，遗留，后遗症
 legal `/ˈliːɡl/`  法律的，合法的
 
 legendary `/ˈledʒəndri/` 传奇的，传说的，负有盛名的
+
+legion `/'liːdʒən/` 军团，很多的
 
 legislator `/'ledʒɪsleɪtə(r)/` 立法者
 
@@ -8753,6 +8801,8 @@ overwhelm `/ˌəʊvəˈwelm/` 压倒，征服，压垮，感情充溢
 
 overwhelming `/ˌəʊvə'welmɪŋ/` 压倒性的，势不可挡的
 
+overzealous `/ˌəʊvə'zeləs/` 过分热心的
+
 ### ow
 
 [回到O](#O)--[回到顶部](#英汉词典)
@@ -9167,6 +9217,8 @@ photosphere `/photosphere/` 光球，光球层
 
 phrase `/freɪz/` 短语，措辞
 
+physically `/'fɪzɪkli/` 身体上地，实际上
+
 physician `/fɪ'zɪʃn/` 内科医生
 
 ### pi
@@ -9394,6 +9446,8 @@ possession  `/pə'zeʃn/` 财产，殖民地
 possessor `/pə'zesə(r)/` 持有人，拥有者
 
 possibility `/ˌpɒsə'bɪləti/` 可能，可能性，潜在的价值
+
+possum `/'pɒsəm/` 负鼠
 
 postage `/ˈpəʊstɪdʒ/` 邮费，邮资
 
@@ -10047,6 +10101,8 @@ quite `/kwaɪt/` 比较，相当，完全，很
 
 quo `/k'wəʊ/` 说
 
+quorum `/'kwɔːrəm/` （计算机）仲裁，法定人数
+
 quota `/'kwəʊtə/` 配额，定额，限额，最低票数
 
 quote `/kwəʊt/` 引用，引号，开价，上市
@@ -10099,6 +10155,8 @@ rag `/ræɡ/` 破布，质量低劣的报纸，破旧的，破衣服
 
 rage `/reɪdʒ/` 狂怒，大怒，狂暴，肆虐
 
+rail `/reɪl/` 铁轨，栏杆，扶手
+
 railcar `/'reɪlkɑː(r)/` 有轨车
 
 rally `/ˈræli/` 集会，召集，汽车拉力赛
@@ -10122,6 +10180,8 @@ rash `/ræʃ/` 疹子，大量，鲁莽的，轻率的
 raster `/'ræstə/` 光栅，扫描线
 
 rasterization `/rɑːstəraɪ'zeɪʃən/` 光栅化
+
+rat `/ræt/` 鼠，捕鼠，变节者，卑鄙的人
 
 rather `/ˈræðər/` 相当，有点，反而，而是
 
@@ -10393,6 +10453,8 @@ reliable `/rɪ'laɪəbl/` 可靠的，可信的
 
 reliance `/rɪˈlaɪəns/` 依靠，信任
 
+reliant `/rɪ'laɪənt/` 依赖的
+
 relief `/rɪ'liːf/` 减轻，替代，安慰
 
 relies `/rɪ'laɪ/` 信任，依赖
@@ -10453,6 +10515,8 @@ renovate `/ˈrenəveɪt/` 翻修，修复，更新
 
 renowned `/rɪ'naʊnd/` 有名的，有声誉的
 
+rental `/'rentl/` 租借，租费，地租的
+
 repack `/repack/` 改装，重新包装，再装配，换填料
 
 repainting `/riː'peɪntɪŋ/` 重绘
@@ -10468,6 +10532,8 @@ repeal `/rɪ'piːl/` 废止，撤销
 repel `/rɪˈpel/` 击退，驱逐，推开，驱除
 
 repelled `/rɪ'peld/` 击退的，排斥的
+
+repertoire `/'repətwɑː(r)/` 全部节目，全部才能
 
 repetition `/ˌrepə'tɪʃn/` 重复，反复
 
@@ -10787,6 +10853,8 @@ royal `/'rɔɪəl/` 皇家的，盛大的，高贵的，堂皇的
 
 rub `/rʌb/` 摩擦，搓，惹恼，困难，障碍
 
+rubric `/'ruːbrɪk/` 标题，类，注释，规则，用红色书写的
+
 ruby `/ˈruːbi/` 红宝石
 
 rug `/rʌɡ/` 地毯，毯子
@@ -10902,6 +10970,8 @@ sapphire `/ˈsæfaɪə(r)/` 蓝宝石，蔚蓝色的
 satellite `/'sætəlaɪt/` 卫星，人造卫星
 
 satirist `/ˈsætərɪst/` 讽刺作家，惯于讽刺的人
+
+satirize `/'sætəraɪz/` 讽刺
 
 satisfaction `/ˌsætɪsˈfækʃn/` 满足，满意，欣慰，清偿，赔偿
 
@@ -11034,6 +11104,8 @@ seashore `/'siːʃɔː(r)/` 海滨
 seasoning `/ˈsiːznɪŋ/` 调味品，佐料，添加剂
 
 seaweed `/ˈsiːwiːd/` 海草，海藻
+
+secretary `/'sekrətri/` 部长，秘书，书记，大臣，写字台
 
 sector `/'sektə(r)/` （计算机）扇区，部门，部分，区域
 
@@ -11255,6 +11327,8 @@ signify `/ˈsɪɡnɪfaɪ/` 表示，说明，预示，要紧
 
 significant `/sɪɡˈnɪfɪkənt/` 重要的，显著的，相当数量地
 
+signpost `/'saɪnpəʊst/` 引导，征兆，路标，广告柱
+
 silent `/'saɪlənt/` 安静的，沉默的，无言的，不吵闹的
 
 silicon `/'sɪlɪkən/` 硅
@@ -11288,6 +11362,8 @@ simulate `/ˈsɪmjuleɪt/` 模拟，仿真，冒充，假装
 simulation `/ˌsimyəˈlāSH(ə)n/` 模拟，仿真
 
 simultaneous `/ˌsɪml'teɪniəs/` 同步的，同时发生的
+
+sincerely `/sɪn'sɪəli/` 真诚地，真心地
 
 singly `/'sɪŋɡli/` 单独地，各自的，分别的
 
@@ -11445,6 +11521,8 @@ soberest `/'səʊbə(r)/` 清醒，清醒的，稳重的，颜色暗淡的
 
 sobriety `/sə'braɪəti/` 清醒，严肃，节制
 
+sociopolitical `/ˌsəʊsiəʊpə'lɪtɪkl/` 社会政治的
+
 sodium `/'səʊdiəm/` 钠
 
 soever `/səʊ'evə/` 无论（任何）
@@ -11454,6 +11532,8 @@ softened `/'sɒfənd/` 软化的
 soil `/sɔɪl/` 土壤，污物，粪便
 
 solace `/'sɒləs/` 安慰，慰藉，使快乐，使安慰，使缓和
+
+solar `/'səʊlə(r)/` 太阳的，太阳能的
 
 sole `/səʊl/` 唯一的，独占，鞋底，脚掌
 
@@ -11769,7 +11849,7 @@ steer `/stɪə(r)/` 驾驶，操控，控制，引导
 
 stellar `/ˈstelə(r)/` 星的，恒星的，主要的，优秀的，精彩的
 
-stems `/stems/` 柄，茎，船首，起源于，阻止，遏制
+stem `/stem/` 柄，茎，船首，起源于，阻止，遏制
 
 stencil `/'stensl/` 模板，蜡纸
 
@@ -11804,6 +11884,10 @@ stir `/stɜː(r)/` 激起，惹起，搅合，骚乱，活动，引起
 stitch `/stɪtʃ/` 缝，绣，缝合
 
 stiver `/'staɪvə/` 不值钱的东西(一点点)
+
+stoat `/stəʊt/` 鼬，白鼬
+
+stowaway `/'stəʊəweɪ/` 逃票乘客，收藏处
 
 straddle `/'strædl/` 跨坐，把两腿叉开，观望
 
@@ -12301,6 +12385,8 @@ tempting `/ˈtemptɪŋ/` 诱人的，吸引人的
 
 tenable `/'tenəbl/` 站得住脚的，无懈可击的
 
+tenant `/'tenənt/` 租赁，房客，佃户，承租人
+
 tend `/tend/` 趋势，照料，朝向
 
 tendency `/ˈtɛndənsi/` 倾向，趋势，派别
@@ -12314,6 +12400,8 @@ tenement `/ˈtenəmənt/` 房屋，住户，租户，佃户，廉租公寓
 tenfold `/'tenfəʊld/` 十倍的，十重的
 
 tennessee `/ˌtenə'siː/` 田纳西州
+
+tense `/tens/` 拉紧，紧张的，绷紧的
 
 tension `/ˈtenʃn/` 紧张，矛盾，对立，烦躁
 
@@ -12372,6 +12460,8 @@ textured `/ˈtekstʃəd/` 有纹理的，质感粗糙的，质地不平的
 ### th
 
 [回到T](#T)--[回到顶部](#英汉词典)
+
+thar `/θɑr/` 塔尔沙漠
 
 thatch `/θætʃ/` 茅草，茅草屋顶，浓密的头发
 
@@ -12487,13 +12577,15 @@ tilt `/tɪlt/` 倾斜，偏向
 
 timber `/ˈtɪmbə(r)/` 木材，树木，木质骨架
 
+time `/tʌɪm/` 时间，一段时间，时刻，用时，规定时间
+
+timescale `/'taɪmskeɪl/` 时标，时间量程
+
+timetable `/ˈtʌɪmˌteɪbl/` 时间表，日程表，时刻表，把...排入时间表
+
 timid `/'tɪmɪd/` 胆怯地，害羞的
 
 timidity `/tɪ'mɪdətɪ/` 胆怯，胆小
-
-time `/tʌɪm/` 时间，一段时间，时刻，用时，规定时间
-
-timetable `/ˈtʌɪmˌteɪbl/` 时间表，日程表，时刻表，把...排入时间表
 
 timing `/'taɪmɪŋ/` 时机，定时，时间的掌握
 
@@ -13193,6 +13285,8 @@ vacuity `/və'kjuːəti/` 贫乏，无聊，空白
 
 vacuum `/'vækjuəm/` 真空，空白，用吸尘器打扫
 
+vagary `/'veɪgərɪ/` 奇特，好奇，变幻莫测
+
 vagrants `/'veɪɡrənts/` 流浪乞讨人员
 
 vague `/veɪɡ/` 含糊的，模糊的，不明确的
@@ -13294,6 +13388,8 @@ ventilation `/ˌvɛntɪˈleɪʃən/` 通风，出口
 venture `/'ventʃə(r)/` 冒险，风险，投机，企业
 
 venue `/ˈvenjuː/` 地点，犯罪地点，审判地
+
+verb `/vɜːb/` 动词
 
 verbose `/vɜː'bəʊs/` 罗嗦的，冗长的
 
@@ -13545,6 +13641,8 @@ wales `/weɪlz/` （英国）威尔士
 
 walkout `/ˈwɔːkaʊt/` 罢工，退场，退席
 
+wallaby `/'wɒləbi/` 小袋鼠，澳洲土人
+
 walnut `/ˈwɔːlnʌt/` 核桃，胡桃，核桃树
 
 wander `/'wɒndə(r)/` 漫步，徘徊，闲逛，迷路
@@ -13613,6 +13711,8 @@ weariness `/ˈwɪərinəs/` 疲倦，疲劳，厌倦
 
 weary `/'wɪəri/` 疲倦，厌烦
 
+weasel `/'wiːzl/` 黄鼠狼，狡猾的人，逃避，推诿
+
 weaver `/'wiːvə(r)/` 织布工，编织者
 
 wedding `/ˈwedɪŋ/` 婚礼，结婚典礼
@@ -13643,6 +13743,8 @@ whale `/weɪl/` 鲸鱼，捕鲸，打击
 
 whalebone `/'weɪlbəʊn/` 鲸鱼须
 
+whaler `/'weɪlə(r)/` 捕鲸者，捕鲸船
+
 wheelwright `/'wiːlraɪt/` 车轮制造人，车匠
 
 whereas `/ˌweər'æz/` 然而，鉴于
@@ -13660,6 +13762,8 @@ whittle `/ˈwɪtl/` 削（木头），削减，大刀，屠刀
 wholesale `/'həʊlseɪl/` 批发，大规模的，草率的
 
 wholesome `/'həʊlsəm/` 有益健康的，合乎卫生的
+
+wholly `/'həʊlli/` 完全地，全部地，一概
 
 ### wi
 

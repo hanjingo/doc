@@ -17,9 +17,9 @@ Abraham Silberschatz, Henry F. Korth, S. Sudarshan . 6ED
 - [Chapter13 Query Optimization]
 - [Chapter14 Transactions](chapter14.md)
 - [Chapter15 Concurrency Control](chapter15.md)
-- [Chapter16 Recovery System]
-- [Chapter17 Database-System Architectures]
-- [Chapter18 Parallel Databases]
+- [Chapter16 Recovery System](chapter16.md)
+- [Chapter17 Database-System Architectures](chapter17.md)
+- [Chapter18 Parallel Databases](chapter18.md)
 - [Chapter19 Distributed Databases](chapter19.md)
 - [Chapter20 Data Warehousing and Mining]
 - [Chapter21 Information Retrieval]

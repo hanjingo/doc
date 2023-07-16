@@ -33,9 +33,9 @@ English | [中文版](README_zh.md)
 
 ### OS
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author                                  | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | --------------------------------------- | ----------------- |
+| [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md) | 3ED     | Randal E. Bryant<br>David R. O'Hallaron |                   |
 
 ### Database
 
@@ -69,7 +69,6 @@ English | [中文版](README_zh.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
-- [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md)
 - [Design Pattern](DESIGN_PATTERN/README.md)
 - [COMPUTER NETWORKING: A Top-Down Approach](COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md)
 

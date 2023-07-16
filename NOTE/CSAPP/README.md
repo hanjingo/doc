@@ -12,7 +12,7 @@ Randal E. Bryant, David R. O'Hallaron . 3ED
 - [6 The Memory Hierarchy](chapter6.md)
 - [7 Linking](chapter7.md)
 - [8 Exceptional Control Flow](chapter8.md)
-- [9 Virtual Memory]
+- [9 Virtual Memory](chapter9.md)
 - [10 System-Level I/O]
 - [11 Network Programming](chapter11.md)
 - [12 Concurrent Programming](chapter12.md)

@@ -51,6 +51,7 @@
 | [C++ concurrency in action](NOTE/CPP_CONCURRENCY_IN_ACTION/README.md) | 1ED     | Anthony Williams                         |                   |
 | [C++ Templates: The Complete Guide](NOTE/CPP_TEMPLATES/README.md) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
 | [PRINCIPLES OF ECONOMICS](NOTE/PRINCIPLES_OF_ECONOMICS/README.md) | 4ED     | N.Gregory Mankiw                         |                   |
+| [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md) | 3ED     | Randal E. Bryant<br>David R. O'Hallaron  |                   |
 
 ---
 
@@ -63,4 +64,3 @@
 ---
 
 ## [Project](PROJ/README.md)
-

@@ -275,6 +275,138 @@ $$
 x *_{w}^{u}y = (x \cdot y)\ mod\ 2^w
 $$
 
+PRINCIPLE: Two's-complement multiplication
+
+For $x$ and $y$ such that $TMin_w \leq x, y \leq TMax_w$:
+$$
+x *_{w}^{t} y = U2T_w((x \cdot y)\ mod\ 2^w)
+$$
+We claim that the bit-level representation of the product operation is identical for both unsigned and two's-complement multiplication, as stated by the following principle:
+
+PRINCIPLE: Bit-level equivalence of unsigned and two's-complement multiplication
+
+Let $\vec x$ and $\vec y$ be bit vectors of length $w$. Define integers $x$ and $y$ as the values represented by these bits in two's-complement form: $x = B2T_w(\vec{x})$ and $y = B2T_w(\vec{y})$. Define nonnegative integers $x'$ and $y'$ as the values represented by these bits in unsigned form: $x' = B2U_w(\vec{x})$ and $y' = B2U_w(\vec{y})$. Then
+$$
+T2B_w(x *_{w}^{t} y) = U2B_w(x' *_{w}^{u} y')
+$$
+DERIVATION: Bit-level equivalence of unsigned and two's-complement multiplication
+
+We have $x' = x + x_{w-1}2^w$ and $y' = y + y_{w-1}2^w$. Computing the product of these values modulo $2^w$ gives the following:
+$$
+\begin{equation}\begin{split}
+(x' \cdot y')mod\ 2^w &= [(x + x_{w-1}2^w) \cdot (y + y_{w-1} 2^w)]\ mod\ 2^w \\
+&= [x \cdot y + (x_{w-1}y + y_{w-1}x)2^w + x_{w-1}y_{w-1}2^{2w}]\ mod\ 2^w \\
+&= (x \cdot y)\ mod\ 2^w 
+\end{split}\end{equation}
+$$
+ The terms with weight $2^w$ and $2^{2w}$ drop out due to the modulus operator. We have $x *_{w}^{t} y = U2T_w((x \cdot y)\ mod\ 2^w)$. We can apply the operation $T2U_w$ to both sides to get
+$$
+T2U_w(x *_{w}^{t} y) = T2U_w(U2T_w((x \cdot y)\ mod\ 2^w)) = (x \cdot y)\ mod\ 2^w
+$$
+We can then apply $U2B_w$ to both sides to get
+$$
+U2B_w(T2U_w(x *_{w}^{t} y)) = T2B_w(x *_{w}^{t} y) = U2B_w(x' *_{w}^{u} y')
+$$
+
+PRINCIPLE: Multiplication by a power of 2
+
+Let $x$ be the unsigned integer represented by bit pattern $[x_{w-1}, x_{w-2}, \cdots, x_0]$. Then for any $k \geq 0$, the $w + k$-bit unsigned representation of $x2^k$ is given by $[x_{w-1}, x_{w-2}, \cdots, x_0, 0, \cdots, 0]$, where $k$ zeros have been added to the right.
+
+DERIVATION: Multiplication by a power of 2
+
+This property can be derived using Equation 2.1:
+$$
+\begin{equation}\begin{split}
+B2U_{w+k}([x_{w-1}, x_{w-2}, \cdots, x_0, 0, \cdots, 0]) &= \sum_{i=0}^{w-1}x_i 2^{i+k} \\
+&= \left[ \sum_{i=0}^{w-1} x_i 2^i \right] \cdot 2^k \\
+&= x2^k
+\end{split}\end{equation}
+$$
+When shifting left by $k$ for a fixed word size, the high-order $k$ bits are discarded, yielding
+$$
+[x_{w-k-1}, x_{w-k-2}, \cdots, x_0, 0, \cdots, 0]
+$$
+but this is also the case when performing multiplication on fixed-size words.
+
+PRINCIPLE: Unsigned multiplication by a power of 2
+
+For $C$ variables $x$ and $k$ with unsigned values $x$ and $k$, such that $0 \leq k < w$, the $C$ expression $x \ll k$ yields the value $x *_{w}^{t} 2^k$.
+
+PRINCIPLE: Unsigned division by a power of 2
+
+For $C$ variables $x$ and $k$ with unsigned values $x$ and $k$, such that $0 \leq k < w$, the $C$ expression $x \gg k$ yields the value $\lfloor x/2^k \rfloor$.
+
+DERIVATION: Unsigned division by a power of 2
+
+Let $x$ be the unsigned integer represented by bit pattern $[x_{w-1}, x_{w-2}, \cdots, x_0]$, and let $k$ be in the range $0 \leq k < w$. Let $x'$ be the unsigned number with $w - k$-bit representation $[x_{w-1}, x_{w-2}, \cdots, x_k]$, and let $x''$ be the unsigned number with $k$-bit representation $[x_{k-1}, \cdots, x_0]$. We can therefore see that $x = 2^kx' + x''$, and that $0 \leq x'' < 2^k$. It therefore follows that $\lfloor x/2^k \rfloor = x'$.
+
+Performing a logical right shift of bit vector $[x_{w-1}, x_{w-2}, \cdots, x_0]$ by $k$ yields the it vector
+$$
+[0, \cdots, 0, x_{w-1}, x_{w-2}, \cdots, x_k]
+$$
+This bit vector has numeric value $x'$, which we have seen is the value that would result by computing the expression $x \gg k$.
+
+PRINCIPLE: Two's-complement division by a power of 2, rounding down
+
+Let C variables $x$ and $k$ have two's-complement value $x$ and unsigned value $k$, respectively, such that $0 \leq k < w$. The C expression $x >> k$, when the shift is performed arithmetically, yields the value $\lfloor x/2^k \rfloor$.
+
+DERIVATION: Two's-complement division by a power of 2, rounding down
+
+Let $x$ be the two's-complement integer represented by bit pattern $[x_{w-1}, x_{w-2}, \cdots, x_0]$, and let $k$ be in the range $0 \leq k < w$. Let $x'$ be the two's-complement number represented by the $w-k$ bits $[x_{w-1}, x_{w-2}, \cdots, x_k]$, and let $x''$ be the unsigned number represented by the low-order $k$ bits $[x_{k-1}, \cdots, x_0]$. By a similar analysis as the unsigned case, we have $x = 2^k x' + x''$ and $0 \leq x'' < 2^k$, giving $x' = \lfloor x/2^k \rfloor$. Furthermore, observe that shifting bit vector $[x_{w-1}, x_{w-2}, \cdots, x_0]$ right arithmetically by $k$ yields the bit vector
+$$
+[x_{w-1}, \cdots, x_{w-1}, x_{w-1}, x_{w-2}, \cdots, x_k]
+$$
+which is the sign extension from $w-k$ bits to $w$ bits of $[x_{w-1}, x_{w-2}, \cdots, x_k]$. Thus, this shifted bit vector is the two's-complement representation of $\lfloor x/2^k \rfloor$.
+
+PRINCIPLE: Two's-complement division by a power of 2, rounding up
+
+Let C variables $x$ and $k$ have two's-complement value $x$ and unsigned value $k$, respectively, such that $0 \leq k < w$. The C expression $(x + (1 << k) - ) >> k$, when the shift is performed arithmetically, yields the value $\lceil x/2^k \rceil$.
+
+DERIVATION: Two's-complement division by a power of 2, rounding up
+
+To see that $\lceil x/y \rceil = \lfloor (x+y-1)/y \rfloor$, suppose that $x = qy + r$, where $0 \leq r < y$, giving $(x + y - 1)/y = q + (r + y - 1)$ and so $\lfloor (x + y - 1)/y \rfloor = q + \lfloor (r + y - 1)/y \rfloor$. The latter term will equal 0 when $r = 0$ and 1 when $r > 0$. That is, by adding a bias of $y - 1$ to $x$ and then rounding the division downward, we will get $q$ when $y$ divides $x$ and $q + 1$ otherwise.
+
+Decimal notation uses a representation of the form
+$$
+d_m d_{m-1} \cdots d_1 d_0 \cdot d_{-1} d_{-2} \cdots d_{-n}
+$$
+where each decimal digit $d_i$ ranges between 0 and 9. This notation represents a value $d$ defined as:
+$$
+d = \sum_{i=-n}^{m}10^i \times d_i
+$$
+The weighting of the digits is defined relative to the decimal point symbol ('.'), meaning that digits to the left are weighted by nonnegative powers of 10, giving integral values, while digits to the right are weighted by negative powers of 10, giving fractional values.
+
+![2_31](res/2_31.png)
+
+By analogy, consider a notation of the form
+$$
+b_m b_{m-1} \cdots b_1 b_0 \cdot b_{-1}b_{-2} \cdots b_{-n+1}b_{-n}
+$$
+where each binary digit, or bit, $b_i$ ranges between 0 and 1, as is illustrated in Figure 2.31. This notation represents a number $b$ defined as
+$$
+b = \sum_{i = -n}^{m} 2^i \times b_i
+$$
+The symbol '.' now becomes a `binary point`, with bits on the left being weighted by nonnegative powers of 2, and those on the right being weighted by negative powers of 2.
+
+The IEEE floating-point standard represents a number in a form $V = (-1)^s \times M \times 2^E$:
+
+- The sign $s$ determines whether the number is negative (s = 1) or positive (s = 0), where the interpretation of the sign bit for numeric value 0 is handled as a special case.
+- The significand $M$ is a fractional binary number that ranges either between $1$ and $2 - \epsilon$ or between $0$ and $1 - \epsilon$.
+- The exponent $E$ weights the value by a (possibly negative) power of 2.
+
+![2_32](res/2_32.png)
+
+The bit representation of a floating-point number is divided into three fields to encode these values:
+
+- The single sign bit $s$ directly encodes the sign $s$.
+- The $k$-bit exponent field $exp = e_{k-1} \cdots e_1e_0$ encodes the exponent $E$.
+- The $n$-bit fraction field $frac = f_{n-1} \cdots f_1 f_0$ encodes the significand $M$, but the value encoded also depends on whether or not the exponent field equals 0.
+
+
+
+## Summary
+
+TODO
 
 
 
