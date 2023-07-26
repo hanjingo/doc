@@ -1,11 +1,13 @@
-# 设计模式
+[中文版](README_zh.md) | English
 
-Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides. 1th Edition.2010
+# Design Pattern
 
-- [第一章 引言](chapter1.md)
-- [第二章 实例研究:设计一个文档编辑器](chapter2.md)
-- [第三章 创建型模式](chapter3.md)
-- [第四章 结构型模式](chapter4.md)
-- [第五章 行为模式](chapter5.md)
-- [第六章 结论](chapter6.md)
+Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides. 1th Edition
+
+- [1 Introduction](chapter1.md)
+- [2 A Case Study: Designing a Document Editor](chapter2.md)
+- [3 Creational Patterns](chapter3.md)
+- [4 Structural Patterns](chapter4.md)
+- [5 Behavioral Patterns](chapter5.md)
+- [6 Conclusion](chapter6.md)
 

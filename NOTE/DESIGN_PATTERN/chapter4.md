@@ -1,129 +1,131 @@
-# 第四章 结构型模式
+# 4 Structural Patterns
 
 [TOC]
 
-## 4.1 ADAPTER（适配器） - 类对象结构型模式
 
-1. 意图
 
-   将一个类的接口转换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+## ADAPTER
 
-2. 别名
+1. Intent
 
-   包装器Wrapper。
+   Convert the interface of a class into another interface clients expect. Adapter let classes work together that couldn't otherwise because of incompatible interfaces.
 
-3. 动机
+2. Also Known As
 
-4. 适用性
+   Wrapper
 
-   以下情况使用Adapter模式：
+3. Motivation
 
-   - 你想使用一个已经存在的类，而它的接口不符合你的需求。
-   - 你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。
-   - （仅适用于对象Adapter）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。
+4. Applicability
 
-5. 结构
+   Use the Adapter pattern when:
+
+   - you want to use an existing class, and its interface does not match the one you need.
+   - you want to create a reusable class that cooperates with unrelated or unforeseen classes, that is, classes that don't necessarily have compatible interfaces.
+   - (object adapter only) you need to use several existing subclasses, but it's impractical to adapt their interface by subclassing  every one. An object adapter can adapt the interface of its parent class.
+
+5. Struct
+
+   A class adapter uses multiple inheritance to adapt one interface to another.
 
    ![4_1a](res/4_1a.png)
 
-   *类适配器使用多重继承对一个接口与另一个接口进行匹配*
+   An object adapter relies on object composition:
 
    ![4_1b](res/4_1b.png)
 
-   *对象匹配器依赖于对象的组合*
+6. Participants
 
-6. 参与者
+   - `Target` defines the domain-specific interface that Client uses.
+   - `Client` collaborates with objects conforming to the Target interface.
+   - `Adaptee` defines an existing interface that needs adapting.
+   - `Adapter` adapts the interface of Adaptee to the Target interface.
 
-   - `Target(Shape)` 定义Client使用的与特定领域相关的接口。
-   - `Client(DrawingEditor)` 与符合Target接口的对象协同。
-   - `Adaptee(TextView)` 定义一个已经存在的接口，这个接口需要适配。
-   - `Adapter(TextShape)` 对Adaptee的接口与Target接口进行适配。
+7. Collaborations
 
-7. 协作
+   - Clients call operations on an Adapter instance. In turn, the adapter calls Adaptee operations that carry out the request.
 
-   - Client在Adapter实例上调用一些操作。接着适配器调用Adaptee的操作实现这个请求。
+8. Consequences
 
-8. 效果
+   Class and object adapters have different trade-offs. A class adapter:
 
-   对类适配器的权衡：
+   - adapts Adaptee to Target by committing to a concrete Adaptee class. As a consequence, a class adapter won't work when we want to adapt a class and all its subclasses.
+   - lets Adapter override some of Adaptee's behavior, since Adapter is a subclass of Adaptee.
+   - introduces only one object, and no additional pointer indirection is needed to get to the adaptee.
 
-   - 用一个具体的Adapter类对Adaptee和Target进行匹配。结果是当我们想要匹配一个类以及所有它的子类时，类Adapter将不能胜任工作。
-   - 使得Adapter可以重定义Adaptee的部分行为，因为Adapter是Adaptee的一个子类。
-   - 仅仅引入了一个对象，并不需要额外的指针以间接得到adaptee。
+   An object adapter:
 
-   对对象适配器的权衡：
+   - lets a single Adapter work with many Adaptees -- that is, the Adaptee itself and all of its subclasses (if any). The Adapter can also add functionality to all Adaptees at once.
+   - makes it harder to override Adaptee behavior. It will require subclassing Adaptee and making Adapter refer to the subclass rather than the Adaptee itself.
 
-   - 允许一个Adapter与多个Adaptee，即Adaptee本身以及它的所有子类（如果有子类的话）同时工作。Adapter也可以一次给所有的Adaptee添加功能。
-   - 使得重定义Adaptee的行为比较困难。这就需要生成Adaptee的子类并使得Adapter引用这个子类而不是引用Adaptee本身。
-   
-   使用Adapter模式时需要考虑的其他一些因素：
-   
-   1. Adapter的匹配程度。
-   2. 可插入的Adapter。
-   3. 使用双向适配器提供透明操作。
-   
-9. 实现
+   Here are other issues to consider when using the Adapter pattern:
 
-   使用Adapter模式需要注意以下问题：
+   1. How much adapting does Adapter do?
+   2. Pluggable adapters.
+   3. Using two-way adapters to provide transparency.
 
-   1. 使用C++实现适配器类。
-   2. 可插入的适配器。
+9. Implementation
 
-10. 代码示例
+   Although the implementation of Adapter is usually straightforward, here are some issues to keep in mind:
 
-   ```c++
-   class Shape {
-   public:
-       Shape();
-       virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
-       virtual Manipulator* CreateManipulator() const;
-   };
-   
-   class TextView {
-   public:
-       TextView();
-       void GetOrigin(Coord& x, Coord& y) const;
-       void GetExtent(Coord& width, Coord& height) const;
-       virtual bool IsEmpty() const;
-   };
-   
-   class TextShape : public Shape {
-   public:
-       TextShape(TextView*);
-       
-       virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
-       virtual bool IsEmpty() const;
-       virtual Manipulator* CreateManipulator() const;
-   private:
-       TextView* _text;
-   };
-   
-   TextShape::TextShape(TextView* t) {
-       _text = t;
-   }
-   
-   void TextShape::BoundingBox(Point& bottomLeft, Point& topRight) const {
-       Coord bottom, left, width, height;
-       
-       GetOrigin(bottom, left);
-       GetExtent(width, height);
-       
-       bottomLeft = Point(bottom, left);
-       topRight = Point(bottom + height, left + width);
-   }
-   
-   bool TextShape::IsEmpty() const {
-       return TextView::IsEmpty();
-   }
-   
-   Manipulator* TextShape::CreateManipulator() const {
-       return new TextManipulator(this);
-   }
-   ```
+   1. Implementing class adapters in C++.
+   2. Pluggable adapters.
 
-11. 已知应用
+10. Sample Code
 
-12. 相关模式
+    ```c++
+    class Shape {
+    public:
+        Shape();
+        virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
+        virtual Manipulator* CreateManipulator() const;
+    };
+    
+    class TextView {
+    public:
+        TextView();
+        void GetOrigin(Coord& x, Coord& y) const;
+        void GetExtent(Coord& width, Coord& height) const;
+        virtual bool IsEmpty() const;
+    };
+    
+    class TextShape : public Shape {
+    public:
+        TextShape(TextView*);
+        
+        virtual void BoundingBox(Point& bottomLeft, Point& topRight) const;
+        virtual bool IsEmpty() const;
+        virtual Manipulator* CreateManipulator() const;
+    private:
+        TextView* _text;
+    };
+    
+    TextShape::TextShape(TextView* t) {
+        _text = t;
+    }
+    
+    void TextShape::BoundingBox(Point& bottomLeft, Point& topRight) const {
+        Coord bottom, left, width, height;
+        
+        GetOrigin(bottom, left);
+        GetExtent(width, height);
+        
+        bottomLeft = Point(bottom, left);
+        topRight = Point(bottom + height, left + width);
+    }
+    
+    bool TextShape::IsEmpty() const {
+        return TextView::IsEmpty();
+    }
+    
+    Manipulator* TextShape::CreateManipulator() const {
+        return new TextManipulator(this);
+    }
+    ```
+
+11. Known Uses
+
+12. Related Patterns
 
     Bridge
 
@@ -131,275 +133,296 @@
 
     Proxy
 
+---
 
 
-## 4.2 BRIDGE（桥接） - 对象结构型模式
 
-1. 意图
+## BRIDGE
 
-   将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+1. Intent
 
-2. 别名
+   Decouple an abstraction from its implementation so that the two can vary independently.
+
+2. Also Known As
 
    Handle/Body
 
-3. 动机
+3. Motivation
 
-4. 适用性
+4. Applicability
 
-   - 不希望在抽象和它的实现部分之间有一个固定的绑定关系。
-   - 类的抽象以及它的实现都应该可以通过生成子类的方法加以扩充。
-   - 需要对一个抽象的实现部分的修改应对客户不产生影响，即客户的代码不必重新编译。
-   - 需要对客户完全隐藏抽象的实现部分。
-   - 有许多类要生成，类层次结构为“嵌套的普化”（nested generalizations）。
-   - 需要在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。
-   
-5. 结构
+   - you want to avoid a permanent binding between an abstraction and its implementation.
+   - both the abstractions and their implementations should be extensible by subclassing.
+   - changes in the implementation of an abstraction should have no impact on clients; that is, their code should not have to be recompiled.
+   - (C++) you want to hide the implementation of an abstraction completely from clients. In C++ the representation of a class is visible in the class interface.
+   - you have a proliferation of classes as shown earlier in the first Motivation diagram. Such a class hierarchy indicates the need for splitting an object into two parts.
+   - youwant toshare animplementationamongmultiple objects(perhaps using reference counting), and this fact should be hidden from the client.
+
+5. Structure
 
    ![4_2](res/4_2.png)
 
-6. 参与者
+6. Participants
 
    - Abstraction
 
-     定义抽象类的接口；
+     defines the abstraction's interface.
 
-     维护一个指向Implementor类型对象的指针。
+     maintains a reference to an object of type Implementor.
 
-   - RefinedAbstraction
+   - Refined Abstraction
 
-     扩充由Abstraction定义的接口。
+     Extends the interface defined by Abstraction.
 
    - Implementor
 
-     定义实现类的接口，该接口不一定要与Abstraction的接口完全一致；事实上这两个接口可以完成不同。一般来讲，Implementor接口仅提供基本操作，而Abstraction则定义了基于这些基本操作的较高层次的操作。
+     defines the interface for implementation classes. This interface doesn't have to correspond exactly to Abstraction's interface; in fact the two interfaces can be quite different. Typically the Implementor interface provides only primitive operations, and Abstraction defines higher-level operations based on these primitives.
 
    - ConcreteImplementor
 
-     实现Implementor接口并定义它的具体实现。
+     implements the Implementor interface and defines its concrete implementation.
 
-7. 协作
+7. Collaborations
 
-   - Abstraction将client的请求转发给它的Implementor对象。
+   Abstraction forwards client requests to its Implementor object.
 
-8. 效果
+8. Consequences
 
-   优点：
+   The Bridge pattern has the following consequences:
 
-   - 分离接口及其实现部分；
-   - 提高可扩充性；
-   - 实现细节对客户透明。
+   1. Decoupling interface and implementation.
+   2. Improved extensibility.
+   3. Hiding implementation details from clients.
 
-9. 实现
+9. Implementation
 
-   使用Bridge模式需要注意以下问题：
+   Consider the following implementation issues when applying the Bridge pattern:
 
-   1. 仅有一个Implementor；
-   2. 创建正确的Implementor对象；
-   3. 共享Implementor对象；
-   4. 采用多重继承机制。
+   1. Only one Implementor.
+   2. Creating the right Implementor object.
+   3. Sharing implementors.
+   4. Using multiple inheritance.
 
-10. 代码示例
+10. Sample Code
 
-   ```c++
-   class Window {
-   public:
-       Window(View* contents);
-       
-       // requests handled by window
-       virtual void DrawContents();
-       
-       virtual void Open();
-       virtual void Close();
-       virtual void Iconify();
-       virtual void Deiconify();
-       
-       // requests forwarded to implementation
-       virtual void SetOrigin(const Point& at);
-       virtual void SetExtent(const Point& extent);
-       virtual void Raise();
-       virtual void Lower();
-       
-       virtual void DrawLine(const Point&, const Point&);
-       virtual void DrawRect(const Point&, const Point&);
-       virtual void DrawPolygon(const Point[], int n);
-       virtual void DrawText(const char*, const Point&);
-       
-   protected:
-       WindowImp* GetWindowImp();
-       View* GetView();
-       
-   private:
-       WindowImp* _imp;
-       View* _contents; // the window's contents
-   };
-   void Window::DrawRect(const Point& p1, const Point& p2) {
-       WindowImp* imp = GetWindowImp();
-       imp->DeviceRect(p1.X(), p1.Y(), p2.X(), p2.Y());
-   }
-   
-   class WindowImp {
-   public:
-       virtual void ImpTop() = 0;
-       virtual void ImpBottom() = 0;
-       virtual void ImpSetExtent(const Point&) = 0;
-       virtual void ImpSetOrigin(const Point&) = 0;
-       
-       virtual void DeviceRect(Coord, Coord, Coord, Coord) = 0;
-       virtual void DeviceText(const char*, Coord, Coord) = 0;
-       virtual void DeviceBitmap(const char*, Coord, Coord) = 0;
-       // lots more functions for drawing on windows...
-       
-   protected:
-       WindowImp();
-   };
-   
-   class ApplicationWindow : public Window {
-   public:
-       // ...
-       virtual void DrawContents();
-   };
-   void ApplicationWindow::DrawContents() {
-       GetView()->DrawOn(this);
-   }
-   
-   class IconWindow : public Window {
-   public:
-       // ...
-       virtual void DrawContents();
-       
-   private:
-       const char* _bitmapName;
-   };
-   void IconWindow::DrawContents() {
-       WindowImp* imp = GetWindowImp();
-       if (imp != 0) {
-           imp->DeviceBitmap(_bitmapName, 0.0, 0.0);
-       }
-   }
-   
-   class XWindowImp : public WindowImp {
-   public:
-       XWindowImp();
-       
-       virtual void DeviceRect(Coord, Coord, Coord, Coord);
-       // remainder of public interface...
-       
-   private:
-       // lots of X window system-specific state, including:
-       Display* _day;
-       Drawable _winid;
-       GC _gc;
-   };
-   void XWindowImp::DeviceRect(Coord x0, Coord y0, Coord x1, Coord y1) {
-       int x = round(min(x0, x1));
-       int y = round(min(y0, y1));
-       int w = round(abs(x0 - x1));
-       int h = round(abs(y0 - y1));
-       XDrawRectangle(_dpy, _windid, _gc, x, y, w, h);
-   }
-   
-   class PMWindowImp : public WindowImp {
-   public:
-       PMWindowImp();
-       virtual void DeviceRect(Coord, Coord, Coord, Coord);
-       
-       // remainder of public interface...
-   private:
-       // lots of PM window system-specific state, including:
-       HPS _hps;
-   };
-   void PMWindowImp::DeviceRect(Coord x0, Coord y0, Coord x1, Coord y1) {
-       Coord left = min(x0, x1);
-       Coord right = max(x0, x1);
-       Coord bottom = min(y0, y1);
-       Coord top = max(y0, y1);
-       
-       PPOINTL point[4];
-       
-       point[0].x = left; point[0].y = top;
-       point[1].x = right; point[1].y = top;
-       point[2].x = right; point[2].y = bottom;
-       point[3].x = left; point[3].y = bottom;
-       
-       if (
-           (GpiBeginPath(_hps, 1L) == false) || 
-           (GpiSetCurrentPosition(_hps, &point[3]) == false) ||
-           (GpiPolyLine(_hps, 4L, point) == GPI_ERROR) ||
-           (GpiEndPath(_hps) == false)
-       ) { 
-           // report error 
-       } else {
-           GpiStrokePath(_hps, 1L, 0L);
-       }
-   }
-   
-   WindowImp* Window::GetWindowImp() {
-       if (_imp == 0) {
-           _imp = WindowSystemFactory::Instance()->MakeWindowImp();
-       }
-       return _imp;
-   }
-   ```
+    ```c++
+    class Window {
+    public:
+        Window(View* contents);
+        
+        // requests handled by window
+        virtual void DrawContents();
+        
+        virtual void Open();
+        virtual void Close();
+        virtual void Iconify();
+        virtual void Deiconify();
+        
+        // requests forwarded to implementation
+        virtual void SetOrigin(const Point& at);
+        virtual void SetExtent(const Point& extent);
+        virtual void Raise();
+        virtual void Lower();
+        
+        virtual void DrawLine(const Point&, const Point&);
+        virtual void DrawRect(const Point&, const Point&);
+        virtual void DrawPolygon(const Point[], int n);
+        virtual void DrawText(const char*, const Point&);
+        
+    protected:
+        WindowImp* GetWindowImp();
+        View* GetView();
+        
+    private:
+        WindowImp* _imp;
+        View* _contents; // the window's contents
+    };
+    void Window::DrawRect(const Point& p1, const Point& p2) {
+        WindowImp* imp = GetWindowImp();
+        imp->DeviceRect(p1.X(), p1.Y(), p2.X(), p2.Y());
+    }
+    
+    class WindowImp {
+    public:
+        virtual void ImpTop() = 0;
+        virtual void ImpBottom() = 0;
+        virtual void ImpSetExtent(const Point&) = 0;
+        virtual void ImpSetOrigin(const Point&) = 0;
+        
+        virtual void DeviceRect(Coord, Coord, Coord, Coord) = 0;
+        virtual void DeviceText(const char*, Coord, Coord) = 0;
+        virtual void DeviceBitmap(const char*, Coord, Coord) = 0;
+        // lots more functions for drawing on windows...
+        
+    protected:
+        WindowImp();
+    };
+    
+    class ApplicationWindow : public Window {
+    public:
+        // ...
+        virtual void DrawContents();
+    };
+    void ApplicationWindow::DrawContents() {
+        GetView()->DrawOn(this);
+    }
+    
+    class IconWindow : public Window {
+    public:
+        // ...
+        virtual void DrawContents();
+        
+    private:
+        const char* _bitmapName;
+    };
+    void IconWindow::DrawContents() {
+        WindowImp* imp = GetWindowImp();
+        if (imp != 0) {
+            imp->DeviceBitmap(_bitmapName, 0.0, 0.0);
+        }
+    }
+    
+    class XWindowImp : public WindowImp {
+    public:
+        XWindowImp();
+        
+        virtual void DeviceRect(Coord, Coord, Coord, Coord);
+        // remainder of public interface...
+        
+    private:
+        // lots of X window system-specific state, including:
+        Display* _day;
+        Drawable _winid;
+        GC _gc;
+    };
+    void XWindowImp::DeviceRect(Coord x0, Coord y0, Coord x1, Coord y1) {
+        int x = round(min(x0, x1));
+        int y = round(min(y0, y1));
+        int w = round(abs(x0 - x1));
+        int h = round(abs(y0 - y1));
+        XDrawRectangle(_dpy, _windid, _gc, x, y, w, h);
+    }
+    
+    class PMWindowImp : public WindowImp {
+    public:
+        PMWindowImp();
+        virtual void DeviceRect(Coord, Coord, Coord, Coord);
+        
+        // remainder of public interface...
+    private:
+        // lots of PM window system-specific state, including:
+        HPS _hps;
+    };
+    void PMWindowImp::DeviceRect(Coord x0, Coord y0, Coord x1, Coord y1) {
+        Coord left = min(x0, x1);
+        Coord right = max(x0, x1);
+        Coord bottom = min(y0, y1);
+        Coord top = max(y0, y1);
+        
+        PPOINTL point[4];
+        
+        point[0].x = left; point[0].y = top;
+        point[1].x = right; point[1].y = top;
+        point[2].x = right; point[2].y = bottom;
+        point[3].x = left; point[3].y = bottom;
+        
+        if (
+            (GpiBeginPath(_hps, 1L) == false) || 
+            (GpiSetCurrentPosition(_hps, &point[3]) == false) ||
+            (GpiPolyLine(_hps, 4L, point) == GPI_ERROR) ||
+            (GpiEndPath(_hps) == false)
+        ) { 
+            // report error 
+        } else {
+            GpiStrokePath(_hps, 1L, 0L);
+        }
+    }
+    
+    WindowImp* Window::GetWindowImp() {
+        if (_imp == 0) {
+            _imp = WindowSystemFactory::Instance()->MakeWindowImp();
+        }
+        return _imp;
+    }
+    ```
 
-11. 已知应用
+11. Known Uses
 
-12. 相关模式
+12. Related Patterns
 
-    Abstract Factory模式。
+    Abstract Factory.
 
-    Adapter模式。
+    Adapter.
+
+---
 
 
 
-## 4.3 COMPOSITE(组合) - 对象结构型模式
+## COMPOSITE
 
-1. 意图
+1. Intent
 
-   将对象组合成树型结构以表示“部分-整体”的层次结构。Composite使得用户对单个对象和组合对象的使用具有一致性。
+   Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
-2. 动机
+2. Motivation
 
-3. 适用性
+3. Applicability
 
-   - 希望表示对象的部分 - 整体层次结构；
-   - 希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
+   Use the Composite pattern when:
 
-4. 结构
+   - you want to represent part-whole hierarchies of objects.
+   - you want clients to be able to ignore the difference between compositions of objects and individual objects. Client will treat all objects in the composite structure uniformly.
+
+4. Structure
 
    ![4_3](res/4_3.png)
 
-5. 参与者
+5. Participants
 
    - Component
-     1. 为组合中的对象声明接口；
-     2. 在适当的情况下，实现所有类共有接口地缺省行为；
-     3. 声明一个接口用于访问和管理Component地子组件；
-     4. （可选）在递归结构中顶定义一个接口，用于访问一个父部件，并在合适的情况下实现它。
+
+     declares the interface for objects in the composition.
+
+     implements default behavior for the interface common to all classes, as appropriate.
+
+     declares an interface for accessing and managing its child components.
+
+     (optional) defines an interface for accessing a component's parent in the recursive structure, and implements it if that's appropriate.
+
    - Leaf
-     1. 在组合中表示叶节点对象，叶节点没有子节点；
-     2. 在组合中定义图元对象的行为。
+
+     represents leaf objects in the composition. A leaf has no children.
+
+     defines behavior for primitive objects in the composition.
+
    - Composite
-     1. 定义有子部件的那些部件的行为；
-     2. 存储子部件；
-     3. 在Component接口中实现与子部件有关的操作。
+
+     define behavior for components having children.
+
+     stores child components.
+
+     implements child-related operations in the Component interface.
+
    - Client
-     1. 通过Component接口操纵组合部件的对象。
 
-6. 协作
+     manipulates objects in the composition through the Component interface.
 
-   用户使用Component类接口与组合结构中的对象进行交互。如果接收者是一个叶节点，则直接处理请求。如果接收者是Composite，它通常将请求发送给它的子部件，在转发请求之前与/或之后可能执行一些辅助操作。
+6. Collaborations
 
-7. 效果
+   Clients use the Component class interface to interact with objects in the composite structure. If the recipient is a leaf, then the request is handled directly. If the recipient is a Composite, then it usually forwards requests to its child components, possibly performing additional operations before and/or after forwarding.
 
-   - 定义了包含基本对象和组合对象的类层次结构；
-   - 简化客户代码；
-   - 使得更容易增加新类型的组件；
-   - 使你的设计变得更加一般化。
+7. Consequences
 
-8. 实现
+   The Composite pattern:
 
-9. 代码示例
+   - defines class hierarchies consisting of primitive objects and composite objects.
+   - make the client simple.
+   - makes it easier to add new kinds of components.
+   - can make your design overly general.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class Equipment {
@@ -485,185 +508,203 @@
    cout << "The net price is " << chassis->NetPrice() << endl;
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Decorator模式
+    Decorator
 
-    Flyweight模式
+    Flyweight
 
-    Iterator模式
+    Iterator
 
-    Visitor模式
+    Visitor
+
+---
 
 
 
-## 4.4 DECORATOR(装饰) - 对象结构型模式
+## DECORATOR
 
-1. 意图
+1. Intent
 
-   动态地给一个对象添加一个额外的职责。就增加功能来说，Decorator模式相比生成子类更为灵活。
+   Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-2. 别名
+2. Also Known As
 
-   包装器Wrapper
+   Wrapper
 
-3. 动机
+3. Motivation
 
-4. 适用性
+4. Applicability
 
-   - 在不影响其它对象的情况下，以动态，透明地方式给单个对象添加职责。
-   - 处理那些可以撤销的职责。
-   - 当不能采用生成子类地方法进行扩充时；一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。
+   Use Decorator:
 
-5. 结构
+   - to add responsibilities to individual objects dynamically and transparently, that is, without affecting other objects.
+   - for responsibilities that can be withdrawn.
+   - when extension by subclassing is impractical. Sometimes a large number of independent extensions are possible and would produce an explosion of subclasses to support every combination. Or a class definition may be hidden or otherwise unavailable for subclassing.
+
+5. Structure
 
    ![4_4](res/4_4.png)
 
-6. 参与者
+6. Participants
 
    - Component
-     1. 定义一个对象接口，可以给这些对象动态地添加职责。
-   - ConcreteComponent
-     1. 定义一个对象，可以给这个对象添加一些职责。
+
+     defines the interface for objects that can have responsibilities added to them dynamically.
+
+   - Concrete Component
+
+     defines an object to which additional responsibilities can be attached.
+
    - Decorator
-     1. 维持一个指向Component对象的指针，并定义一个与Component接口一致地接口。
-   - ConcreteDecorator
-     1. 向组件添加职责。
 
-7. 协作
+     maintains a reference to a Component object and defines an interface that conforms to Component's interface.
 
-   - Decorator将请求转发给它地Component对象，并有可能在转发请求前后执行一些附加的动作。
+   - Concrete Decorator
 
-8. 效果
+     adds responsibilities to the component.
 
-   优点：
+7. Collaborations
 
-   - 比静态继承更灵活；
-   - 避免在层次结构高层地类有太多的特征。
+   Decorator forwards requests to its Component object. It may optionally perform additional operations before and after forwarding the request.
 
-   缺点：
+8. Consequences
 
-   - Decorator与它的Component不一样；
-   - 有许多小对象。
-   
-9. 实现
+   The Decorator pattern has at least two key benefits and two liabilities:
 
-10. 代码示例
+   1. More flexibility than static inheritance.
+   2. Avoids feature-laden classes high up in the hierarchy.
+   3. A decorator and its component aren't identical.
+   4. Lots of little objects.
 
-   ```c++
-   class VisualComponent {
-   public:
-       VisualComponent();
-       
-       virtual void Draw();
-       virtual void Resize();
-       // ...
-   };
-   
-   class Decorator : public VisualComponent {
-   public:
-       Decorator(VisualComponent*);
-       
-       virtual void Draw();
-       virtual void Resize();
-       // ...
-       
-   private:
-       VisualComponent* _component;
-   };
-   
-   void Decorator::Draw() {
-       _component->Draw();
-   }
-   void Decorator::Resize() {
-       _component->Resize();
-   }
-   
-   class BorderDecorator : public Decorator {
-   public:
-       BorderDecorator(VisualComponent*, int borderWidth);
-       
-       virtual void Draw();
-       
-   private:
-       void DrawBorder(int);
-       
-   private:
-       int _width;
-   };
-   void BorderDecorator::Draw() {
-       Decorator::Draw();
-       DrawBorder(_width);
-   }
-   
-   void Window::SetContents(VisualComponent* contents) {
-       // ...
-   }
-   
-   Window* window = new Window;
-   TextView* textView = new TextView;
-   window->SetContents(textView);
-   window->SetContents(new BorderDecorator(new ScrollDecorator(textView), 1));
-   ```
+9. Implementation
 
-11. 已知应用
+10. Sample Code
 
-12. 相关模式
+    ```c++
+    class VisualComponent {
+    public:
+        VisualComponent();
+        
+        virtual void Draw();
+        virtual void Resize();
+        // ...
+    };
+    
+    class Decorator : public VisualComponent {
+    public:
+        Decorator(VisualComponent*);
+        
+        virtual void Draw();
+        virtual void Resize();
+        // ...
+        
+    private:
+        VisualComponent* _component;
+    };
+    
+    void Decorator::Draw() {
+        _component->Draw();
+    }
+    void Decorator::Resize() {
+        _component->Resize();
+    }
+    
+    class BorderDecorator : public Decorator {
+    public:
+        BorderDecorator(VisualComponent*, int borderWidth);
+        
+        virtual void Draw();
+        
+    private:
+        void DrawBorder(int);
+        
+    private:
+        int _width;
+    };
+    void BorderDecorator::Draw() {
+        Decorator::Draw();
+        DrawBorder(_width);
+    }
+    
+    void Window::SetContents(VisualComponent* contents) {
+        // ...
+    }
+    
+    Window* window = new Window;
+    TextView* textView = new TextView;
+    window->SetContents(textView);
+    window->SetContents(new BorderDecorator(new ScrollDecorator(textView), 1));
+    ```
 
-    Adapter模式：Decorator模式不同于Adapter模式，因为装饰仅改变对象的职责而不改变它的接口；而适配器将给对象一个全新的接口。
+11. Known Uses
 
-    Composite模式：可以将装饰视为一个退化的，仅有一个组件的组合。然而，装饰仅给对象添加一些额外的职责 - - 它的目的不在于对象聚集。
+12. Related Patterns
 
-    Strategy模式：用一个装饰你可以改变对象的外表；而Strategy模式使得你可以改变对象的内核。这是改变对象的两种途径。
+    Adapter: A decorator is different from an adapter in that a decorator only changes an object's responsibilities, not its interface; an adapter will give an object a completely new interface.
+
+    Composite: A decorator can be viewed as a degenerate composite with only one component. However, a decorator adds additional responsibilities -- it isn't intended for object aggregation.
+
+    Strategy: A decorator lets you change the skin of an object; a strategy lets you change the guts. These are two alternative ways of changing an object.
+
+---
 
 
 
-## 4.5 FACADE(外观) - 对象结构型模式
+## FACADE
 
-1. 意图
+1. Intent
 
-   为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。
+   Provide a unified interface to a set of interfaces in subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
-2. 动机
+2. Motivation
 
-3. 适用性
+3. Applicability
 
-   - 当你要为一个复杂子系统提供一个简单接口时；
-   - 客户程序与抽象类的实现部分之间存在着很大的依赖性；
-   - 当你需要构建一个层次结构的子系统时，使用facade模式定义子系统中每层的入口点。
+   Use the Facade pattern when:
 
-4. 结构
+   - you want to provide a simple interface to acomplex subsystem.
+   - there are many dependenciew between clients and the implementation classes of an abstraction.
+   - you want to layer your subsystems.
+
+4. Structure
 
    ![4_5a](res/4_5a.png)
 
-5. 参与者
+5. Paritcipants
 
    - Facade
-     1. 知道哪些子系统类负责处理请求；
-     2. 将客户的请求代理给适当的子系统对象。
-   - Subsystem classes
-     1. 实现子系统的功能；
-     2. 处理由Facade对象指派的任务；
-     3. 没有facade的任何相关信息；即没有指向facade的指针。
 
-6. 协作
+     known which subsystem classes are responsible for a request.
 
-   - 客户程序通过发送请求给Facade的方式与子系统通讯，Facade将这些消息转发给适当的子系统对象。尽管是子系统中的有关对象在做实际工作，但Facade模式本身也必须将它的接口转换成子系统的接口。
-   - 使用Facade的客户程序不需要直接访问子系统对象。
+     delegates client requests to appropriate subsystem objects.
 
-7. 效果
+   - subsystem classes
 
-   优点：
+     implement subsystem functionality.
 
-   - 它对客户屏蔽子系统组件，因而减少了客户处理的对象的数目并使得子系统使用起来更加方便；
-   - 实现了子系统与客户之间的松耦合关系；
-   - 可以在系统易用性和通用性之间加以选择。
+     handle work assigned by the Facade object.
 
-8. 实现
+     have no knowledge of the facade; that is, they keep no references to it.
 
-9. 代码示例
+6. Collaborations
+
+   - Clients communicate with the subsystem by sending requests to Facade, which forwards them to the appropriate subsystem object(s). Although the subsystem objects perform the actual work, the facade may have to do work of its own to translate its interface to subsystem interfaces.
+   - Clients that use the facade don't have to access its subsystem objects directly.
+
+7. Consequences
+
+   The Facade pattern offers the following benefits:
+
+   1. It shields clients from subsystem components, thereby reducing the number of objects that clients deal with and making the subsystem easier to use.
+   2. It promotes weak coupling between the subsystem and its clients.
+   3. It doesn't prevent applications from using subsystem classes if they need to.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class Scanner {
@@ -761,69 +802,84 @@
    }
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Abstract Factory模式：可以与Facade模式一起使用以提供一个接口，这一接口可用来以一种子系统独立的方式创建子系统对象。
+    `Abstract Factory` can be used with Facade to provide an interface for creating subsystem objects in a subsystem-independent way. Abstract Factory can also be used as an alternative to Facade to hide platform-specific classes.
 
-    Mediator模式：与Facade模式相似，它抽象了一些已有的类的功能。
+    `Mediator` is similar to Facade in that it abstracts functionality of existing classes.
+
+---
 
 
 
-## 4.6 FLYWEIGHT(享元) - 对象结构型模式
+## FLYWEIGHT
 
-1. 意图
+1. Intent
 
-   运用共享技术有效地支持大量细粒度的对象。
+   Use sharing to support large numbers of fine-grained objects efficiently.
 
-2. 动机
+2. Motivation
 
-   有些应用程序得益于在其整个设计过程中采用对象技术，但简单化的实现代价极大。
+   Some applications could benefit from using objects throughout their design, but a naive implementation would be prohibitively expensive.
 
-3. 适用性
+3. Applicability
 
-   - 一个应用程序使用了大量的对象；
-   - 完全由于使用大量的对象，造成很大的存储开销；
-   - 对象的大多数状态都可变为外部状态；
-   - 如果删除对象的外部状态，那么可以用相对较少的共享对象取代很多组对象；
-   - 应用程序不依赖于对象标识，由于Flyweight对象可以被共享，对于概念上明显有别的对象，标识测试将返回真值。
+   Apply the Flyweight pattern wen all of the following are true:
 
-4. 结构
+   - An application use a large number of objects.
+   - Storage costs are high because fo the sheer quantity of objects.
+   - Most object state can be made extrinsic.
+   - Many groups of objects may be replaced by relatively few shared objects once extrinsic state is removed.
+   - The application doesn't depend on object identity. Since flyweight objects may be shared, identity tests will return true for conceptually distinct objects.
+
+4. Structure
 
    ![4_6](res/4_6.png)
 
-5. 参与者
+5. Participants
 
    - Flyweight
-     1. 描述一个接口，通过这个接口flyweight可以接收并作用于外部状态。
-   - ConcreteFlyweight
-     1. 实现Flyweight接口，并为内部状态（如果有的话）增加存储空间。ConcreteFlyweight对象必须是可共享的。它所存储的状态必须是内部的；即，它必须独立于ConcreteFlyweight对象的场景。
-   - UnsharedConcreteFlyweight
-     1. 并非所有的Flyweight子类都需要被共享。Flyweight接口使共享成为可能，但它并不强制共享。在Flyweight对象结构的某些层次，UnsharedConcreteFlyweight对象通常将ConcreteFlyweight对象作为子节点。
-   - FlyweightFactory
-     1. 创建并管理flyweight对象；
-     2. 确保合理地共享flyweight；当用户请求一个flyweight时，FlyweightFactory对象提供一个已创建的实例或创建一个（如果不存在的话）。
+
+     declares an interface through which flyweights can receive and act on extrinsic state.
+
+   - Concrete Flyweight
+
+     implements the Flyweight interface and adds storage for intrinsic state, if any. A ConcreteFlyweight object must be sharable. Any state it stores must be intrinsic; that is, it must be independent of the ConcreteFlyweight object's context.
+
+   - Unshared Concrete Flyweight
+
+     not all Flyweight subclasses need to be shared. The Flyweight interface `enables` sharing; it doesn't enforce it. It's common for UnsharedConcreteFlyweight objects to have ConcreteFlyweight objects as children at some level in the flyweight object structure (as the Row and Column classes have).
+
+   - Flyweight Factory
+
+     creates and manages flyweight objects.
+
+     ensures that flyweights are shared properly. When a client requests a flyweight, the FlyweightFactory object supplies an existing instance or creates one, if not exists.
+
    - Client
-     1. 维持一个对flyweight的引用；
-     2. 计算或存储一个（多个）flyweight的外部状态。
 
-6. 协作
+     maintains a reference to flyweight(s).
 
-   - flyweight执行时所需的状态必定是内部的或外部的。内部状态存储与ConcreteFlyweight对象之中；而外部对象则由Client对象存储或计算。当用户调用flyweight对象的操作时，将该状态传递给它；
-   - 用户不应直接对ConcreteFlyweight类进行实例化，而只能从FlyweightFactory对象得到ConcreteFlyweight对象，这可以保证对它们适当地进行共享。
+     computes or stores the extrinsic state of flyweight(s).
 
-7. 效果
+6. Collaborations
 
-   共享的flyweight越多，空间节省也就越大，存储节约由以下因素决定：
+   - State that a flyweight needs tofunction must be characterized aseither intrinsic or extrinsic. Intrinsic state is stored in the ConcreteFlyweight object; extrinsic state is stored or computed by Client objects. Clients pass this state to the flyweight when they invoke its operations.
+   - State that a flyweight needs tofunction must be characterized aseither intrinsic or extrinsic. Intrinsic state is stored in the ConcreteFlyweight object; extrinsic state is stored or computed by Client objects. Clients pass this state to the flyweight when they invoke its operations
 
-   - 因为共享，实例总数减少的数目；
-   - 对象内部状态的平均数目；
-   - 外部状态是计算的还是存储的。
+7. Consequences
 
-8. 实现
+   Storage savings are a function of several factors:
 
-9. 代码示例
+   - the reduction in the total number of instances that comes from sharing.
+   - the amount of intrinsic state per object.
+   - whether extrinsic state is computed or stored.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class Glyph {
@@ -903,70 +959,78 @@
    }
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Flyweight模式通常和Composite模式结合起来，用共享叶结点的有向无环图实现一个逻辑上的层次结构。
+    The Flyweight pattern is often combined with the Composite pattern to implement a logically hierarchical structure in terms of a directed-acyclic graph with shared leaf nodes. It's often best to implement State and Strategy objects as flyweights.
+
+---
 
 
 
-## 4.7 PROXY(代理) - 对象结构型模式
+## PROXY
 
-1. 意图
+1. Intent
 
-   为其它对象提供一种代理以控制对这个对象的访问。
+   Provide a surrogate or placeholder for another object to control access to it.
 
-2. 别名
+2. Also Known As
 
-   Surrogate。
+   Surrogate
 
-3. 动机
+3. Motivation
 
-4. 适用性
+4. Applicability
 
-   - 远程代理（Remote Proxy）为一个对象在不同的地址空间提供局部代表。
-   - 虚代理（Virtual Proxy）根据需要创建开销很大的对象。
-   - 保护代理（Protection Proxy）控制对原始对象的访问。
-   - 智能指引（Smart Reference）取代了简单的指针，它在访问对象时执行一些附加操作；它的典型用途包括：
-     1. 对指向实际对象的引用计数，这样当该对象没有引用时，可以自动释放它（也称为ieSmart Pointers）。
-     2. 当第一次引用一个持久对象时，将它转投入内存。
-     3. 在访问一个实际对象前，检查是否已经锁定了它，以确保其他对象不能改变它。
+   - A remote proxy provides a local representative for an object in a different address space.
+   - A virtual proxy creates expensive objects on demand.
+   - A protection proxy controls access to the original object.
+   - Asmart reference is a replacement for a bare pointerthat performs additional actions when an object is accessed. 
 
-5. 结构
+5. Structure
 
    ![4_7](res/4_7.png)
 
-6. 参与者
+6. Participants
 
    - Proxy
-     1. 保存一个引用使得代理可以访问实体。若RealSubject和Subject的接口相同，Proxy会引用Subject；
-     2. 提供一个与Subject的接口，这样代理就可以用来替代实体；
-     3. 控制对实体的存取，并可能负责创建和删除它；
-     4. 其它功能依赖于代理的类型：
-        - Remote Proxy负责对请求及其参数进行编码，并向不同地址空间中的实体发送已编码的请求；
-        - Virtual Proxy可以缓存实体的附加信息，以便延迟对它的访问；
-        - Protection Proxy检查调用者是否具有实现一个请求所必需的访问权限。
+
+     maintains a reference that letsthe proxy access the real subject. Proxymay refer to a Subject if the RealSubject and Subjectinterfaces are the same.
+
+     provides an interface identical to Subject's so that a proxy can by substituted for the real subject.
+
+     controls access to the real subject and may be responsible for creating and deleting it.
+
+     other responsibilities depend on the kind ofproxy:
+
+     - remote proxies are responsible for encoding a request and its arguments and for sending the encoded request to the real subject in a different address space.
+     - remote proxies are responsible for encoding a request and its arguments and for sending the encoded request to the real subject in a different address space.
+     - protection proxies check that the caller has the access permissions required to perform a request.
+
    - Subject
-     1. 定义RealSubject和Proxy的共用接口，这样就在任何使用RealSubject的地方都可以使用Proxy。
+
+     defines the common interface for RealSubject and Proxy so that a Proxy can be used anywhere a RealSubject is expected.
+
    - RealSubject
-     1. 定义Proxy所代表的实体。
 
-7. 协作
+     defines the real object that the proxy represents.
 
-   - 代理根据其种类，在适当的时候向RealSubject转发请求；
+7. Collaborations
 
-8. 效果
+   Proxy forwards requests to RealSubject when appropriate, depending on the kind of proxy.
 
-   Proxy模式在访问对象时引入了一定程度的间接性。根据代理的类型，附加的间接性有多种用途：
+8. Consequences
 
-   1. Remote Proxy可以隐藏一个对象存在于不同地址空间的事实；
-   2. Virtual Proxy可以进行最优化；
-   3. Protection Proxies和Smart Reference都允许在访问一个对象时有一些附加的内务处理（Housekeeping task）。
+   The Proxy pattern introduces a level of indirection when accessing an object. The additional indirection has many uses, depending on the kind of proxy: 
 
-9. 实现
+   1. A remote proxy can hide the fact that an object resides in a different address space. 
+   2. A virtual proxy can perform optimizations such as creating an object on demand.
+   3. Bothprotection proxies and smart references allow additional housekeeping tasks when an object is accessed.
 
-10. 代码示例
+9. Implementation
+
+10. Sample Code
 
     ```c++
     class Graphic {
@@ -1057,30 +1121,30 @@
     text->Insert(new ImageProxy("anImageFileName"));
     ```
 
-11. 已知应用
+11. Known Uses
 
-12. 相关模式
+12. Related Patterns
 
-    Adapter模式：适配器Adapter为它所适配的对象提供了一个不同的接口。相反，代理提供了与它的实体相同的接口。然而，用于访问保护的代理可能会拒绝执行实体会执行的操作，因此，它的接口实际上可能只是实体接口的一个子集。
+    Adapter: An adapter provides a different interface to the object it adapts. In contrast, a proxy provides the same interface as its subject.However, a proxy used for access protection might refuse to perform an operation that the subject will perform, so its interface may be effectively a subset of the subject's.
 
-    Decorator模式：尽管decorator的实现部分与代理相似，但decorator的目的不一样。Decorator为对象添加一个或多个功能，而代理则控制对对象的访问。
+    Decorator: Although decorators can have similar implementations as proxies, decorators have a different purpose. A decorator adds one or more responsibilities to an object, whereas a proxy controls access to an object.
+
+---
 
 
 
-## 4.8 结构型模式的讨论
+## Discussion of Structural Patterns
 
-### 4.8.1 Adapter与Bridge
+### Adapter versus Bridge
 
-Adapter模式主要是为了解决两个已有接口之间不匹配的问题，它不考虑这些接口是怎样实现的，也不考虑他们各自可能会如何演化。这种方式不需要对两个独立设计的类中的任一个进行重新设计，就能够使他们协同工作。
+Adapter focuses on resolving incompatibilities between two existing interfaces. It doesn't focus on how those interfaces are implemented, nor does it consider how they might evolve independently. It's a way of making two independently designed classes work together without reimplementing one or the other.
 
-Bridge模式则对抽象接口与它的（可能是多个）实现部分进行桥接。虽然这一模式允许你修改实现它的类，它仍然为用户提供了一个稳定的接口。
+Bridge, on the other hand, bridges an abstraction and its (potentially numerous) implementations. It provides a stable interface to clients even as it lets you vary the classes that implement it. It also accommodates new implementations as the system evolves.
 
-Adapter在类已经设计后后实施，Bridge模式在设计之前实施。
+### Composite versus Decoratorversus Proxy
 
-### 4.8.2 Composite, Decorator与Proxy
+Decorator is designed to let you add responsibilities to objectswithout subclassing. It avoids the explosion ofsubclasses that can arise from trying to cover every combination of responsibilities statically.
 
-Decorator旨在使你能够不需要生成子类即可给对象添加职责。这就避免了静态实现所有功能组合，从而导致子类急剧增加。
+Composite has a different intent. It focuses on structuring classes so that many related objects can be treated uniformly, and multiple objects can be treated as one. Its focus is not on embellishment but on representation.
 
-Composite旨在构造类，使多个相关的对象能够以统一的方式处理，而多重对象可以被当作一个对象来处理。它重点不在于修改，而在于表示。
-
-Proxy模式构成一个对象并为用户提供一致的接口，Proxy模式不能动态地添加或分离性质，它也不是为递归组合而设计的。它的目的是当直接访问一个实体不方便或不符合需要时，为这个实体提供一个替代者。
+Like Decorator, the Proxy pattern composes an object and provides an identical interface to clients. Unlike Decorator,the Proxy pattern is not concerned with attaching or detaching properties dynamically, and it's not designed for recursive composition. Its intent is to provide a stand-in for a subject when it's inconvenient or undesirable to access the subject directly because.

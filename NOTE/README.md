@@ -62,6 +62,12 @@ English | [中文版](README_zh.md)
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
 | [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
 
+### Software Engineering
+
+| Title                                      | Edition | Author                                                       | Abstract/Evaluate |
+| ------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
+| [Design Pattern](DESIGN_PATTERN/README.md) | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
+
 
 
 ## Reading
@@ -69,7 +75,6 @@ English | [中文版](README_zh.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
-- [Design Pattern](DESIGN_PATTERN/README.md)
 
 
 

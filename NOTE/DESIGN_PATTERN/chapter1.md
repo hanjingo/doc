@@ -1,288 +1,239 @@
-# 第一章 引言
+# 1 Introduction
 
-[TOC]
+In general, a pattern has four essential elements:
 
-## 1.1 什么是设计模式
+1. The `pattern name` is a handle we can use do describe a design problem.
+2. The `problem` describes when to apply the pattern.
+3. The `solution` describes the elements that make up the design, their relationships, responsibilities, and collaborations.
+4. The `consequences` are the results and trade-offs of applying the pattern.
 
-一个模式有4个基本要素:
+MVC consists of three kinds of objects. The Model is the application object, the View is its screen presentation, and the Controller defines the way the user interface reacts to user input.
 
-1. 模式名称(pattern name)
+Describing Design Patterns:
 
-   用来描述模式的问题。
+- Pattern Name and Classification.
+- Intent.
+- Also Known As.
+- Motivation.
+- Applicability.
+- Structure.
+- Participants.
+- Collaborations.
+- Consequences.
+- Implementation.
+- Sample Code.
+- Known Uses.
+- Related Patterns.
 
-2. 问题(problem)
+The Catalog of Design Patterns:
 
-   描述应该在何时使用模式。
+- Abstract Factory.
 
-3. 解决方案(solution)
+  Provide an interfae for creating families of related or dependent objects without specifying their concrete classes.
 
-   描述了设计的组成成分。
+- Adapter.
 
-4. 效果(consequences)
+  Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
 
-   描述了模式应用的效果以及使用模式应权衡的问题。
+- Bridge.
 
+  Decouple an abstraction from its implementation so that the two can vary independently.
 
+- Builder.
 
-## 1.2 Smalltalk MVC中的设计模式
+  Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
-MVC(Model/View/Controller)
+- Chain of Responsiblilit.
 
+  Avoid coupling the sender of a request to its receiver by giving more tahn one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.
 
+- Command.
 
-## 1.3 描述设计模式
+  Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
-- 模式名和分类
-- 意图
-- 别名
-- 动机
-- 适用性
-- 结构
-- 参与者
-- 协作
-- 效果
-- 实现
-- 代码示例
-- 已知应用
-- 相关模式
+- Composite.
 
+  Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
+- Decorator.
 
-## 1.4 设计模式的编目
+  Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-- Abstract Factory(抽象工厂模式)
+- Facade.
 
-  提供了一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类。
+  Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
-- Adapter(适配器模式)
+- Factory Method.
 
-  将一个类的接口转换成客户希望的另一个接口。使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+  Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 
-- Bridge(桥接模式)
+- Flyweight.
 
-  将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+  Use sharing to support large numbers of fine-grained objects efficiently.
 
-- Builder(构建者模式)
+- Interpreter.
 
-  将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+  Given a language, define a represention for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
 
-- Chain of Responsibility()
+- Iterator.
 
-  为解除请求的发送者和接收者之间耦合，而使多个对象都有机会处理这个请求。
+  Provide a way to access the elements of an aggregate objec sequentially without exposing its underlying representation.
 
-- Command(命令模式)
+- Mediator.
 
-  将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可取消的操作。
+  Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
 
-- Composite(组合模式)
+- Memento.
 
-  将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使得客户对单个对象和符合对象的使用具有一致性。
+  Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
 
-- Decorator(装饰模式)
+- Observer.
 
-  动态的给一个对象添加一些额外的职责。
+  Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
-- Facade(外观模式)
+- Prototype.
 
-  为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层接口，这个接口使得这一子系统更容易使用。
+  Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.
 
-- Factory Method(工厂方法模式)
+- Proxy.
 
-  定义一个用于创建对象的接口，让子类决定将哪一个类实例化。使一个类的实例化延迟到其子类。
+  Provide a surrogate or place holder for another object to control access to it.
 
-- Flyweight(享元模式)
+- Singleton.
 
-  运用共享技术有效地支持大量细粒度的对象。
+  Ensure a class only has one instance, and provide a global point of access to it.
 
-- Interpreter(解释器模式)
+- State.
 
-  给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子。
+  Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-- Iterator(迭代器模式)
+- Strategy.
 
-  给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子。
+  Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
-- Mediator(中介者模式)
+- Template Method.
 
-  用一个中介对象来封装一些列的对象互交。中介者使各对象不需要显式的相互引用，从而使其耦合松散，而且可以独立的改变他们之间的交互。
+  Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorith without changing the algorithm's structure.
 
-- Memento(备忘录模式)
+- Visitor.
 
-  在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到保存的状态。
+  Represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
 
-- Observer(观察者设计模式)
+Design pattern space:
 
-  定义对象间的一种一对多的依赖关系，以便当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并自动刷新。
+|        | Creational                                            | Structural                                                   | Behavioral                                                   |
+| ------ | ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Class  | Factory Method                                        | Adapter                                                      | Interpreter<br>Template Method                               |
+| Object | Abstract Factory<br>Builder<br>Prototype<br>Singleton | Adapter<br>Bridge<br>Composite<br>Decorator<br>Facade<br>Flyweight<br>Proxy | Chain of Responsibility<br>Command<br>Iterator<br>Mediator<br>Memento<br>Observer<br>State<br>Strategy<br>Visitor |
 
-- Prototype(原型模式)
-
-  用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象。
-
-- Proxy(代理模式)
-
-  为其他对象提供一个代理以控制对这个对象的访问。
-
-- Singleton(单例模式)
-
-  保证一个类仅有一个实例，并提供一个访问它的全局访问点。
-
-- State(状态模式)
-
-  允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它所属的类。
-
-- Strategy(策略模式)
-
-  定义一系列的算法，把他们一个个封装起来，并且使他们可相互替换。本模式使得算法的变化可独立于使用它的客户。
-
-- Template Method(模板方法模式)
-
-  定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
-
-- visitor(访问者模式)
-
-  表示一个作用于某对象结构中的各元素的操作。
-
-
-
-## 1.5 组织编目
-
-设计模式空间：
-
-|      | 创建型                                                | 结构型                                                       | 行为型                                                       |
-| ---- | ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 类   | Factory Method                                        | Adapter                                                      | Interpreter<br>Template Method                               |
-| 对象 | Abstract Factory<br>Builder<br>Prototype<br>Singleton | Adapter<br>Bridge<br>Composite<br>Decorator<br>Facade<br>Flyweight<br>Proxy | Chain of Responsibility<br>Command<br>Iterator<br>Mediator<br>Memento<br>Observer<br>State<br>Strategy<br>Visitor |
+Design pattern relationships:
 
 ![1_1](res/1_1.png)
 
-*设计模式之间的关系*
+Object-oriented programs are made up of objects. An `object` packages both data and the procedures that operate on that data. The procedures are typically called `methods` or `operations`. An object performs an operation when it receives a `request` (or `message`) from a `client`.
 
+Specifying Object Interfaces:
 
+- A `type` is a name used to denote a particular interface.
+- We say that a type is a `subtype` of another if its interface contains the interface of its `supertype`.
+- The run-time association of a request to an object and one of tis operations is known as `dynamic binding`.
+- This substitutability is known as `polymorphism`, and it's a key concept in object-oriented systems.
 
-## 1.6 设计模式怎样解决设计问题
+Specifying Object Implementations:
 
-### 1.6.1 寻找合适的对象
+- An `abstract class` is one whose main purpose is to define a common interface for its subclasses.
+- The operations that an abstract class declares but doesn't implement are called `abstract operations`.
+- Classes that aren't abstract are called `concrete classes`.
+- A `mixin class` is a class that's intended to provide an optional interface or functionality to other classes.
 
-面向对象程序由对象组成，对象包括数据和对数据进行操作的过程，过程通常称为方法或操作。对象在收到客户的的请求(或消息)后，执行相应的操作。
+**Class versus Interface Inheritance**:
 
-### 1.6.2 决定对象的粒度
+TODO
 
-### 1.6.3 指定对象接口
+**Programming to an Interface, not an Implementation**; There are two benefits to manipulating objects solely in terms of the interface defined by abstract classes:
 
-- `类型(type)` 用来表示特定接口的一个名字。
-- `子类型(subtype)` 被包含的接口。
-- `超类型(supertype)` 包含另一个类型的接口的类型。
-- `动态绑定(dynamic binding)` 发送给对象的请求和它的相应操作在运行时刻的连接。
-- `多态(polymorphism)` 动态绑定允许你在运行时刻彼此替换有相同接口的对象，这种可替换性就叫多态。
+1. Client remain unaware of the specific types of objects they use, as logn as the obejcts adhere to the interface that clients expect.
+2. Client remain unaware of the classes that implement these objects. Clients only know about the abstract class(es) defining the interface.
 
-### 1.6.4 描述对象的实现
+Inheritance versus Composition:
 
-`抽象类(abstract class)`的主要目的是为他的子类定义公共接口。
+1. The two most common techniques for reusing functionality in object-oriented systems are class inheritance and `object composition`.
+2. Class inheritance lets you define the implementation of one class in terms of another's. Reuse by subclassing is often referred to as `white-box reuse`.
+3. Object composition requires that the objects being composed have well-defined interfaces. This style of reuse is called `black-box reuse`, because no internal details of objects are visible.
 
-在抽象类中定义却没有实现的操作就成为`抽象操作(abstract operation)`。
+`Delegation` is a way of making composition as powerful for reuse as inheritance.
 
-非抽象类称为`具体类(concrete class)`。
+Another (not strictly object-oriented) technique for reusing functionality is through `parameterized types`, also known as `generics` (Ada, Eiffel) and `templates`(C++). This technique lets you define a type without specifying all the other types it uses.
 
-`混入类(mixin class)`是给其他类提供可选择的接口或功能的类。
+Aggregation implies that one object owns or is responsible for another object. Generally we speak of an object `having` or being `part` of another object. Aggregation implies that an aggregate object and its owner have identical lifetimes.
 
-- 类继承与接口继承的比较
+Acquaintance implies that an object merely knows of another object. Acquainted objects may request operations of each other, but they aren't responsible for each other. Acquaintance is a weaker relationship than aggregation and suggests much looser coupling between objects.
 
-  一个对象可以有多个类型，不同类的对象可以有相同的类型。
+In C++, aggregation can be implemented by defining member variables that are real instances, but it's more common to define them as pointers or references to instances. Acquaintance is implemented with pointers and references as well.
 
-- 对接口编程，而不是对实现编程。
+Here are some common causes of redesign along with the design pattern(s) that address them:
 
-  1. 客户无须知道他们使用对象的特定类型，只须对象有客户所期望的接口。
+1. `Creating an object by specifying a class explicitly`.
 
-  2. 客户无须知道他们使用的对象是用什么类来实现的，他们只须知道定义接口的抽象类。
+   Design patterns: Abstract Factory, Factory Method, Prototype.
 
-### 1.6.5 运用复用机制
+2. `Dependence on specific operations`.
 
-1. 继承和组合的比较
+   Design patterns: Chain of Resposibility, Command
 
-   面向对象系统中功能服用的两种最常用技术是类继承和对象组合(object composition)。
-   类继承允许根据其他类的实现来定义一个类的实现。这种通过生成子类的复用通常称为白箱复用(white-box reuse)。
-   新的更复杂的功能可以通过组装或组合对象来获得。对象组合要求被组合的对象具有良好定义的接口。这种服用风格被称为黑箱复用(black-box reuse)。
-   **优先使用对象组合，而不是类继承**
+3. `Dependence on hardware and software platform`.
 
-2. 委托
+   Design patterns: Abstract Factory, Bridge
 
-   委托(delegation)是一种组合方法，它使组合具有与继承同样的复用能力。
+4. `Dependence on object representations or implementations`.
 
-3. 继承和参数化类型的比较
+   Design patterns: Abstract Factory, Bridge, Memento, Proxy
 
-   另一种功能复用计数(并非严格的面向对象技术)使参数化类型(parameterized type),也就是类属(generic)或模板(templates)。它允许你在定义一个类型时并不指定该类型所用到的其他所有类型。未经指定的类型在使用时以参数形式提供。
+5. `Algorithmic dependencies`.
 
-### 1.6.6 关联运行时刻和编译时刻的结构
+   Design patterns: Builder, Iterator, Strategy, Template Method, Visitor
 
-- 聚合(aggregation)
-  集合意味着一个对象拥有另一个对象或对另一个对象负责。一般我们称一个对象包含另一个对象或者是另一个对象的一部分。聚合意味着聚合对象和其所有者具有相同的生命周期。
-- 相识(acquaintance)
-  相识意味着一个对象仅仅知道另一个对象。相识的对象可能请求彼此的操作，但是它们不为对方负责。相识是一种比聚合要弱的关系，它只标识了对象间较松散的耦合关系。
+6. `Tight coupling`.
 
-C++中，聚合可以通过定义表示真正实例的成员变量来实现，但更通常的是将这些成员变量定义为实例指针或引用；相识也是以指针或引用来实现。
+   Design patterns: Abstract Factory, Command, Facade, Mediator, Observer, Chain of Responsibility
 
-### 1.6.7 设计应支持变化
+7. `Extending functionality by subclassing`.
 
-解决问题的常用设计模式:
+   Design patterns: Bridge, Chain of Responsibility, Composite, Decorator, Observer, Strategy
 
-1. **通过显式地指定一个类来创建对象** 在创建对象时指定类名将使你受特定实现地约束而不是特定接口的约束。这会使未来的变化更负责。要避免这种情况，应该间接地创建对象。
+8. `Inability to alter classes conveniently`.
 
-   设计模式：Abstract Factory, Factory Method, Prototype.
+   Design patterns: Adapter, Decorator, Visitor
 
-2. **对特殊操作地依赖** 当你为请求指定一个特殊的操作时，完成该请求地方式就固定下来了。为避免把请求代码写死，你将可以在编译时刻或运行时刻很方便的改变响应请求的方法。
+Because patterns and frameworks have some similarities, people often wonder how or even if they differ. They are different in three major ways:
 
-   设计模式：Chain of Resposibility, Command
+1. `Design patterns are more abstract than frameworks`.
+2. `Design patterns are smaller architectural elements than frameworks`.
+3. `Design patterns are less specialized than frameworks`.
 
-3. **对硬件和软件平台地依赖** 外部地操作系统接口和应用编程接口(API)在不同的软硬件平台上时不同的。依赖于特定平台的软件将很难一直到其它平台上，甚至都很难跟上本地平台地更新。所以设计系统时限制其平台相关性就很重要了。
+Here are several different approaches to finding the design pattern that's right for your problem:
 
-   设计模式: Abstract Factory, Bridge
+- `Consider how design patterns solve design problems`.
+- `Scan Intent sections`.
+- `Study how patterns interrelate`.
+- `Study patterns of like purpose`.
+- `Examine a cause of redesign`.
+- `Consider what should be variable in your design`.
 
-4. **对对象标识或实现地依赖** 知道对象怎样表示，保存，定位或实现地客户在对象发生变化时可能也需要变化。对客户隐藏这些信息能阻止连锁变化。
+Here's a step-by-step approach to applying a design pattern effectively:
 
-   设计模式：Abstract Factory, Bridge, Memento, Proxy
+1. `Read the pattern once through for an overview`.
+2. `Go back and study the Structure, Participants, and Collaborations sections`.
+3. `Look at the Sample Code section to see a concrete example of the pattern in code`.
+4. `Choose names for pattern participants that are meaningful in the application context`.
+5. `Define the classes`.
+6. `Define application-specific names for operations in the pattern`.
+7. `Implement the operations to carry out the responsibilities and collaborations in the pattern`.
 
-5. **算法依赖** 算法在开发和复用时常常被扩展，优化和替代。依赖于某个特定算法的对象在算法发生变化时不得不变化。因此有可能发生变化地算法应该被孤立起来。
+Design aspects that design patterns let you vary:
 
-   设计模式：Builder, Iterator, Strategy, Template Method, Visitor
-
-6. **紧耦合** 紧耦合地类很难独立地被复用，因为他们是相互依赖的。紧耦合产生单块的系统，要改变或删掉一个类，你必须理解和改变其他许多类。这样的系统是一个很难学习，移植和维护地密集体。松散耦合提高了一个类本身被复用的可能性，并且系统更已于学习，移植，修改和扩展。设计模式使用抽象耦合和分层技术来提高系统的松散耦合性。
-
-   设计模式：Abstract Factory, Command, Facade, Mediator, Observer, Chain of Responsibility
-
-7. **通过生成子类来扩充功能** 通常很难通过定义子类来定制对象。每一个心累都有固定的实现开销(初始化,终止处理等)。定义子类还需要对符类有深入地了解。子类方法会导致类爆炸，因为即使对于一个简单地扩充，你也不得不引用许多新的子类。一般的对象组合技术和具体的委托技术，是继承之外组合对象行为的另一种灵活方法。新的功能可以通知以新的方式组合已有对象，而不是通过定义已存在类的子类的方式加到应用中去。另一方面，过多使用对象组合会使设计难于理解。许多设计模式产生的设计中，你可以定义一个子类，且将它的实例和已存在实例进行组合来引入定制的功能。
-
-   设计模式：Bridge, Chain of Responsibility, Composite, Decorator, Observer, Strategy
-
-8. **不能方便地对类进行修改** 有时你不得不改变一个难以修改的类。
-
-   设计模式：Adapter, Decorator, Visitor
-
-模式和框架地区别:
-
-1. 设计模式比框架更抽象
-2. 设计模式是比框架更小的体系结构元素
-3. 框架比设计模式更加特例化
-
-
-
-## 1.7 怎样选择设计模式
-
-设计模式所支持地设计的可变方面：
-
-| 目的 | 设计模式                                                     | 可变地方面                                                   |
-| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 创建 | Abstract Factory<br>Builder<br>Factory Method<br>Prototype<br>Singleton | 产品对象家族<br>如何创建一个组合对象<br>被实例化地子类<br>被实例化地类<br>一个类地唯一实例 |
-| 结构 | Adapter<br>Bridge<br>Composite<br>Decorator<br>Facade<br>Flyweight<br>Proxy | 对象地接口<br>对象地实现<br>一个对象地结构和组成<br>对象的职责，不生成子类<br>一个子系统地接口<br>对象的存储开销<br>如何访问一个对象；该对象地位置 |
-| 行为 | Chain of Responsibility<br>Command<br>Interpreter<br>Iterator<br>Mediator<br>Memento<br>Observer<br>State<br>Strategy<br>Template Method<br>Visitor | 满足一个请求的对象<br>何时，怎样满足一个请求<br>一个语言地文法及解释<br>如何遍历，访问一个聚合地各元素<br>对象间怎样互交，和谁互交<br>一个对象中那些私有信息存放在该对象之外，以及在什么时候进行存储<br>多个对象依赖于另一个对象，而这些对象又如何保持一致<br>对象地状态<br>算法<br>算法中的某些步骤<br>某些可作用于一个（组）对象上的操作，但不修改这些对象的类 |
-
-
-
-## 1.8 怎样使用设计模式
-
-1. 大致浏览一遍模式
-2. 回头研究结构部分，参与者部分和协作部分
-3. 看代码示例部分，看看这个模式代码形式地具体例子
-4. 选择模式参数与者地名字，使他们在应用上下文中有意义
-5. 定义类
-6. 定义模式中专用于应用的操作名称
-7. 实现执行模式中责任和协作地操作
+| Purpose    | Design Pattern                                               | Aspect(s) That Can Vary                                      |
+| :--------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Creational | Abstract Factory<br>Builder<br>Factory Method<br>Prototype<br>Singleton | families of product objects<br>how a composite object gets created<br>subclass of object that is instantiated<br>class of object that is instantiated<br>the sole instance of a class |
+| Structural | Adapter<br>Bridge<br>Composite<br>Decorator<br>Facade<br>Flyweight<br>Proxy | interface to an object<br>implementation of an object<br>structure and composition of an object<br>responsibilities of an object without subclassing<br>interface to a subsystem<br>storage costs of objects<br>how an object is accessed; its location |
+| Behavioral | Chain of Responsibility<br>Command<br>Interpreter<br>Iterator<br>Mediator<br>Memento<br>Observer<br>State<br>Strategy<br>Template Method<br>Visitor | object that can fulfill a request<br>when and how a request is fulfilled<br>grammar and interpretation of a language<br>how an aggregate's elements are accessed, traversed<br>how and which objects interact with each other<br>what private information is stored outside an object, and when<br>number of objects that depend on another object; how the dependent objects stay up to date<br>states of an object<br>an algorithm<br>steps of an algorithm<br>operations that can be applied to object(s) without changing their class(es) |

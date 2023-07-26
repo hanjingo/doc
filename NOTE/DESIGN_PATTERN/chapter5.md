@@ -1,57 +1,64 @@
-# 第五章 行为模式
+# 5 Behavioral Patterns
 
 [TOC]
 
 
 
-## 5.1 CHAIN OF RESPONSIBILITY(职责链) - 对象行为型模式
+## CHAIN OF RESPONSIBILITY
 
-1. 意图
+1. Intent
 
-   使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
+   Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.
 
-2. 动机
+2. Motivation
 
-3. 适用性
+3. Applicability
 
-   - 有多个的对象可以处理一个请求，哪个对象处理该请求运行时刻自动确定；
-   - 想要在不明确指定接收者的情况下，向多个对象中的一个提交一个请求；
-   - 可处理一个请求的对象集合应被动态指定。
+   Use Chain of Responsibility when:
 
-4. 结构
+   - more than one object may handle a request, and the handler isn't known a priori. The handler should be ascertainedautomatically.
+   - you want to issue a request to one ofseveral objectswithout specifyingthe receiver explicitly.
+   - the set of objects that can handle a request should be specified dynamically.
+
+4. Structure
 
    ![5_1](res/5_1.png)
 
-5. 参与者
+5. Participants
 
    - Handler
-     1. 顶一个处理请求的接口；
-     2. （可选）实现后继链。
+
+     defines an interface for handling requests.
+
+     (optional)implements the successor link.
+
    - ConcreteHandler
-     1. 处理它所负责的请求；
-     2. 可访问它的后继者；
-     3. 如果可处理该请求，就处理之；否则将该请求转发给它的后继者。
+
+     handles requests it isresponsible for.
+
+     can access its successor.
+
+     if the ConcreteHandler can handle the request, it does so; otherwise it forwards the request to its successor.
+
    - Client
-     1. 向链上的具体处理者（ConcreteHandler）对象提交请求。
 
-6. 协作
+     initiates the request to a ConcreteHandler object on the chain.
 
-   - 当客户提交一个请求时，请求沿链传递直至有一个ConcreteHandler对象负责处理它。
+6. Collaborations
 
-7. 效果
+   When a client issues a request, the request propagates along the chain until a ConcreteHandler object takes responsibility for handling it.
 
-   优点：
+7. Consequences
 
-   - 降低耦合度；
-   - 增强了给对象指派职责（Responsibility）的灵活性。
+   Chain of Responsibility has the following benefits and liabilities:
 
-   缺点：
+   - Reduced coupling.
+   - Added flexibility in assigning responsibilities to objects.
+   - Receipt isn't guaranteed.
 
-   - 不保证被接受。
+8. Implementation
 
-8. 实现
-
-9. 代码示例
+9. Sample Code
 
    ```c++
    typedef int Topic;
@@ -172,69 +179,83 @@
    button->HandleHelp();
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    职责链常与Composite一起使用。这种情况下，一个构件的父构件可作为它的后继。
+    Chain of Responsibility is often applied in conjunction with Composite. There, a component's parent can act as its successor.
+
+---
 
 
 
-## 5.2 COMMAND(命令) - 对象行为型模式
+## COMMAND
 
-1. 意图
+1. Intent
 
-   将一个请求封装为一个，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
+   Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
-2. 别名
+2. Also Known As
 
-   动作(Action)，事务(Transaction)
+   Action, Transaction
 
-3. 动机
+3. Motivation
 
-4. 适用性
+4. Applicability
 
-   - 抽象出待执行的动作以参数化某对象；
-   - 在不同的时刻指定，排列和执行请求；
-   - 支持取消操作；
-   - 支持修改日志；
-   - 用构建在原语操作上的高层操作构造一个系统。
+   - parameterize objects by an actiontoperform, asMenultem objects did above.
+   - specify, queue, and execute requests at different times.
+   - support undo.
+   - support logging changes so that they can be reapplied in case of a system crash.
+   - structure a system around high-level operations built on primitives operations.
 
-5. 结构
+5. Structure
 
    ![5_2](res/5_2.png)
 
-6. 参与者
+6. Participants
 
    - Command
-     1. 声明执行操作的接口。
+
+     declares an interface for executing an operation
+
    - ConcreteCommand
-     1. 将一个接收者对象绑定于一个动作；
-     2. 调用接收者相应的操作，以实现Execute。
+
+     defines a binding between a Receiver object and an action.
+
+     implements Execute by invoking the corresponding operation(s) on Receiver.
+
    - Client
-     1. 创建一个具体命令对象并设定它的接收者。
+
+     creates a ConcreteCommand object and sets its receiver
+
    - Invoker
-     1. 要求该命令执行这个请求。
+
+     asks the command to carry out the request.
+
    - Receiver
-     1. 知道如何实施与执行一个请求相关的操作。任何类都可能作为一个接收者。
 
-7. 协作
+     knows how to perform the operations associated with carrying out a request. Any class may serve as a Receiver.
 
-   - Client创建一个ConcreteCommand对象并指定它的Receiver对象；
-   - 某Invoker对象存储该ConcreteCommand对象；
-   - 该Invoker通过调用Command对象的Execute操作来提交一个请求。若该命令是可撤销的，ConcreteCommand就在执行Excute操作之前存储当前状态以用于取消该命令；
-   - ConcreteCommand对象对调用它的Receiver的一些操作以执行该请求。
+7. Collaborations
 
-8. 效果
+   - The client creates a ConcreteCommand object and specifies itsreceiver.
+   - An Invoker object stores the ConcreteCommand object.
+   - The invoker issues a request by calling Execute on the command. When commands are undoable, ConcreteCommand stores state for undoing the command prior to invoking Execute.
+   - The ConcreteCommand object invokes operations on its receiver to carry out the request.
 
-   - Command模式将调用操作的对象与知道如何实现该操作的对象解耦；
-   - Command是头等的对象；它们可像其它的对象一样被操纵和扩展；
-   - 你可将多个命令装配成一个复合命令；
-   - 增加新的Command很容易，因为这无需改变已有的类。
+8. Consequences
 
-9. 实现
+   The Command pattern has the following consequences:
 
-10. 代码示例
+   - Command decouples the object that invokesthe operation from the one that knows how to perform it.
+   - Commands are first-class objects. They can be manipulated and extended like any other object.
+   - Youcan assemble commands into a composite command. An example is the MacroCommand class described earlier. In general, composite commands are an instance of the Composite pattern.
+   - It's easy to add new Commands, because you don't have to change existing classes.
+
+9. Implementation
+
+10. Sample Code
 
     ```c++
     class Comkmand {
@@ -336,73 +357,87 @@
     aCommand->Execute();
     ```
 
-11. 已知应用
+11. Known Uses
 
-12. 相关模式
+12. Related Patterns
 
-    Composite模式：可被用来实现宏命令。
+    A Composite can be used to implement MacroCommands. 
 
-    Memento模式：可被用来保持某个状态，命令用这一状态来取消它的效果。
+    A Memento can keep state the command requires to undo its effect. 
+
+    A command that must be copied before being placed on the history list acts as a Prototype.
+
+---
 
 
 
-## 5.3 INTERPRETER(解释器) - 类行为型模式
+## INTERPRETER
 
-1. 意图
+1. Intent
 
-   给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。
+   Given a language, define a represention forits grammar along with an interpreter that uses the representation to interpret sentences in the language.
 
-2. 动机
+2. Motivation
 
-   如果一个特定类型的问题发生的频率足够高，那么可能就值得将该问题的各个实例表述为一个简单语言中的句子。这样就可以构建一个解释器，该解释器通过解释这些句子来解决该问题。
+   If a particular kind of problem occurs often enough, then it might be worthwhile to express instances of the problem as sentences in a simple language. Then you can build an interpreter that solves the problem by interpreting these sentences.
 
-3. 适用性
+3. Applicability
 
-   - 该文法简单对于复杂的文法，文法的类层次变得庞大而无法管理。此时语法分析程序生成器这样的工具是更好的选择。它们无需构建抽象语法树即可解释表达式，这样可以节省空间而且还可能节省时间；
-   - 效率不是一个关机键问题最高效的解释器通常不是通过直接解释语法分析树实现的，而是首先将它们转换成另一种形式。
+   - the grammar is simple.
+   - efficiency is not a critical concern.
 
-4. 结构
+4. Structure
 
    ![5_3](res/5_3.png)
 
-5. 参与者
+5. Participants
 
-   - AbstractExpression（抽象表达式）
-     1. 声明一个抽象的解释操作，这个接口为抽象语法树中所有的节点所共享。
-   - TerminalExpression（终结符表达式）
-     1. 实现与文法中的终结符相关联的解释操作；
-     2. 一个句子中的每个终结符需要该类的一个实例。
-   - NoterminalExpression（非终结符表达式）
-     1. 对文法中的每一条规则$R ::= R_1 R_2 ... R_n$都需要一个NonterminalExpression类；
-     2. 为从$R_1$到$R_n$的每个符号都维护一个AbstractExpression类型的实例变量；
-     3. 为文法中的非终结符实现解释（Interpret）操作。解释（Interpret）一般要递归地调用表示$R_1$到$R_n$的那些对象的解释操作.
-   - Context（上下文）
-     1. 包含解释器之外的一些全局信息。
-   - Client（客户）
-     1. 构建（或被给定）表示该文法定义的语言中一个特定的句子的抽象语法树。该抽象语法树由NonterminalExpression和TerminalExpression的实例装配而成；
-     2. 调用解释操作。
+   - AbstractExpression
 
-6. 协作
+     declares an abstractInterpret operation that is common to allnodes in the abstract syntax tree
 
-   - Client构建（或被给定）一个句子，它是NonterminalExpression和TerminalExpression的实例的一个抽象语法树，然后初始化上下文并调用解释操作；
-   - 每一非终结符表达式节点定义相应子表达式的解释操作。而各终结符表达式的解释操作构成了递归的基础；
-   - 每一节点的解释操作用上下文存储和访问解释器的状态。
+   - TerminalExpression
 
-7. 效果
+     implements anInterpret operation associated with terminal symbolsin the grammar.
 
-   优点：
+     an instance isrequired for every terminal symbol in a sentence.
 
-   - 易于改变和扩展文法；
-   - 易于实现文法。
+   - NoterminalExpression 
 
-   缺点：
+     one such classisrequired for every rule $R ::= R_1 R_2 ... R_n$ in the grammar.
 
-   - 复杂的文法难以维护；
-   - 增加了新的解释表达式的方式。
+     maintains instance variables of type AbstractExpression for each of the symbols $R_1$ through $R_n$.
 
-8. 实现
+     implements an Interpret operation for nonterminal symbols in the grammar.Interpret typically callsitself recursively on the variables representing $R_1$ through $R_n$.
 
-9. 代码示例
+   - Context
+
+     containsinformation that's global totheinterpreter.
+
+   - Client
+
+     builds (oris given) an abstract syntax tree representing a particular sentence in the language that the grammar defines. The abstract syntax tree is assembled from instances of the NonterminalExpression and TerminalExpression classes.
+
+     invokes the Interpret operation.
+
+6. Collaborations
+
+   - The client builds (oris given) the sentence as an abstract syntax tree ofNonterminalExpression and TerminalExpression instances. Then the client initializes the context and invokes the Interpret operation.
+   - Each NonterminalExpression node defines Interpret in terms of Interpret on each subexpression. The Interpret operation of each TerminalExpression defines the base case in the recursion.
+   - The Interpret operations at each node use the context to store and access the state of the interpreter.
+
+7. Consequences
+
+   The Interpreter pattern has the following benefits and liabilities:
+
+   - It's easy to change and extend the grammar.
+   - Implementing the grammar is easy, too.
+   - Complex grammars arehard to maintain.
+   - Adding new ways to interpret expressions.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class BooleanExp {
@@ -502,355 +537,369 @@
    result = replacement->Evaluate(context);
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Composite模式：抽象语法树是一个复合模式的实例。
+    Composite: The abstract syntax tree is an instance of the Composite pattern. 
 
-    Flyweight模式：说明了如何在抽象语法树中共享终结符。
+    Flyweight: shows how to share terminal symbols within the abstractsyntax tree. 
 
-    Iterator模式：解释器可用一个迭代器遍历该结构。
+    Iterator: The interpreter can use an Iterator to traverse the structure. 
 
-    Visitor模式：可用来在一个类中维护抽象语法树中的各节点的行为。
+    Visitor: can be used to maintain the behavior in each node in the abstract syntax tree in one class.
+
+---
 
 
 
-## 5.4 ITERATOR(迭代器) - 对象行为型模式
+## ITERATOR
 
-1. 意图
+1. Intent
 
-   提供一种方法顺序访问呢一个聚合对象中各个元素，而又不需暴露该对象的内部表示。
+   Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
-2. 别名
+2. Motivation
 
-   游标（Cursor）
+3. Applicability
 
-3. 动机
+   Use the Iterator pattern:
 
-   将对列表的访问和遍历从列表对象中分离出来并放入一个迭代器（iterator）对象中。
+   - to access an aggregate object's contents without exposing its internal representation.
+   - to support multiple traversals of aggregateobjects.
+   - to provide a uniform interface for traversing different aggregate structures (that is, to support polymorphic iteration).
 
-4. 适用性
-
-   - 访问一个聚合对象的内容而无需暴露它的内部表示
-   - 支持对聚合对象的多种遍历；
-   - 为遍历不同的聚合结构提供一个统一的接口（即，支持多态迭代）。
-
-5. 结构
+4. Structure
 
    ![5_4](res/5_4.png)
 
-6. 参与者
+5. Participants
 
-   - Iterator（迭代器）
-     1. 迭代器定义访问和遍历元素的接口。
-   - ConcreteIterato（具体迭代器）
-     1. 具体迭代器实现迭代器接口；
-     2. 对该聚合遍历时跟踪当前位置；
-     3. 聚合定义创建相应迭代器对象的接口。
-   - ConcreteAggregate（具体聚合）
-     1. 具体聚合实现创建相应迭代器的接口，该操作返回ConcreteIterator的一个适当的实例。
+   - Iterator
 
-7. 协作
+     defines an interface for accessing and traversing elements.
 
-   - ConcreteIterator跟踪聚合中的当前对象，并能够计算出待遍历的后继对象。
+   - ConcreteIterator
 
-8. 效果
+     1. implements theIterator interface.
+     2. keeps track ofthe current position in the traversal ofthe aggregate.
 
-   - 它支持以不同的方式遍历一个聚合；
-   - 迭代器简化了聚合的接口；
-   - 在同一个聚合上可以有多个遍历。
+   - Aggregate
 
-9. 实现
+     defines an interface for creating an Iterator object.
 
-10. 代码示例
+   - ConcreteAggregate
 
-    ```c++
-    template <class Item>
-    class List {
-    public:
-        List(long size = DEFAULT_LIST_CAPACITY);
-        long Count() const;
-        Item& Get(long index) const;
-        // ...
-    };
-    
-    template <class Item>
-    class Iterator {
-    public:
-        virtual void First() = 0;
-        virtual void Next() = 0;
-        virtual bool IsDone() const = 0;
-        virtual Item CurrentItem() const = 0;
-        
-    protected:
-        Iterator();
-    };
-    
-    template<class Item>
-    class ListIterator : public Iterator<Item> {
-    public:
-        ListIterator(const List<Item>* aList);
-        virtual void First();
-        virtual void Next();
-        virtual bool IsDone() const;
-        virtual Item CurrentItem() const;
-        
-    private:
-        const List<Item>* _list;
-        long _current;
-    };
-    
-    template<class Item>
-    ListIterator<Item>::ListIterator(const List<Item>* aList) : 
-        _list(aList), _current(0) {}
-    
-    template<class Item>
-    void ListIterator<Item>::First() {
-        _current = 0;
-    }
-    
-    template <class Item>
-    void ListIterator<Item>::Next() {
-        _current++;
-    }
-    
-    template <class Item>
-    bool ListIterator<Item>::IsDone() const {
-        return _current >= _list->Count();
-    }
-    
-    template <class Item>
-    Item ListIterator<Item>::CurrentItem() const {
-        if (IsDone()) {
-            throw IteratorOutOfBounds;
-        }
-        return _list->Get(_current);
-    }
-    
-    void PrintEmployee(Iterator<Employee*>& i) {
-        for (i.First(); !i.IsDone(); i.Next()) {
-            i.CurrentItem()->Print();
-        }
-    }
-    
-    List<Employee*>* employees;
-    // ...
-    ListIterator<Employee*> forward(employees);
-    ReverseListIterator<Employee*> backward(employees);
-    PrintEmployees(forward);
-    PrintEmployees(backward);
-    
-    SkipList<Employee*>* employees;
-    // ...
-    
-    SkipListIterator<Employee*> iterator(employees);
-    PrintEmployees(iterator);
-    
-    template<class Item>
-    class AbstractList {
-    public:
-        virtual Iterator<Item>* CreateIterator() const = 0;
-        // ...
-    };
-    
-    template <class Item>
-    Iterator<Item>* List<Item>::CreateIterator() const {
-        return new ListIterator<Item>(this);
-    }
-    
-    // we know only that we have an AbstractList
-    AbstractList<Employee*>* employees;
-    // ...
-    
-    Iterator<Employee*>* iterator = employees->CreateIterator();
-    PrintEmployees(*iterator);
-    delete iterator;
-    
-    template<class Item>
-    class IteratorPtr {
-    public:
-        IteratorPtr(Iterator<Item>* i) : _i(i) {}
-        ~IteratorPtr() { delte _i; }
-        
-        Iterator<Item>* operator->() { return _i; }
-        Iterator<Item>& operator*() { return *_i; }
-        
-    private:
-        // disallow copy and assignment to avoid
-        // multiple deletions of _i:
-        
-        IteratorPtr(const IteratorPtr&);
-        IteratorPtr& operator=(const IteratorPtr&);
-        
-    private:
-        Iterator<Item>* _i;
-    };
-    
-    AbstractList<Employee*>* employees;
-    // ...
-    
-    IteratorPtr<Employee*> iterator(employees->CreateIterator());
-    PrintEmployees(*iterator);
-    
-    template <class Item>
-    class ListTraverser {
-    public:
-        ListTraverser(List<Item>* aList);
-        bool Traverse();
-        
-    protected:
-        virtual bool ProcessItem(const Item&) = 0;
-        
-    private:
-        ListIterator<Item> _iterator;
-    };
-    
-    template <class Item>
-    ListTraverser<Item>::ListTraverser(List<Item>* aList) : 
-        _iterator(aList) {}
-    
-    template <class Item>
-    bool ListTraverser<Item>::Traverse() {
-        bool result = false;
-        
-        for (_iterator.First(); !_iterator.IsDone(); _iterator.Next()) {
-            result = ProcessItem(_iterator.CurrentItem());
-            
-            if (result == false) {
-                break;
-            }
-        }
-        return result;
-    }
-    
-    class PrintNEmployees : public ListTraverser<Employee*> {
-    public:
-        PrintNEmployees(List<Employee*>* aList, int n) :
-            ListTraverser<Employee*>(aList), _total(n), _count(0) {}
-        
-    protected:
-        bool ProcessItem(Employee* const&);
-        
-    private:
-        int _total;
-        int _count;
-    };
-    
-    bool PrintNEmployees::ProcessItem(Employee* const& e) {
-        _count++;
-        e->Print();
-        return _count < _total;
-    }
-    
-    List<Employee*>* employees;
-    // ...
-    
-    PrintNEmployees pa(employees, 10);
-    pa.Traverse();
-    
-    ListIterator<Employee*> i(employees);
-    int count = 0;
-    for (i.First(); !i.IsDone(); i.Next()) {
-        count++;
-        i.CurrentItem()->Print();
-        if (count >= 10) {
-            break;
-        }
-    }
-    
-    template <class Item>
-    class FilteringListTraverser {
-    public:
-        FilteringListTraverser(List<Item>* aList);
-        bool Traverse();
-        
-    protected:
-        virtual bool ProcessItem(const Item&) = 0;
-        virtual bool TestItem(const Item&) = 0;
-        
-    private:
-        ListIterator<Item> _iterator;
-    };
-    
-    template <class Item>
-    void FilteringListTraverser<Item>::Traverse() {
-        bool result = false;
-        for (_iterator.First(); !_iterator.IsDone(); _iterator.Next()) {
-            if (TestItem(_iterator.CurrentItem())) {
-                result = ProcessItem(_iterator.CurrentItem());
-                if (result == false) {
-                    break;
-                }
-            }
-        }
-        return result;
-    }
-    ```
+     implements the Iterator creation interface to return an instance of the proper Concretelterator.
 
-11. 已知应用
+6. Collaborations
 
-12. 相关模式
+   A Concretelterator keeps track of the current object in the aggregate and can compute the succeeding object in the traversal.
 
-    Composite：迭代器常被应用到象复合这样的递归结构上。
+7. Consequences
 
-    Factory Methond：多态迭代器靠Factory Method来例化适当的迭代器子类。
+   The Iterator pattern has three important consequences:
 
-    Memento：常与迭代器模式一起使用。迭代器可使用一个memento来捕获一个迭代的状态。状态器在其内部存储memento。
+   - It supports variations in the traversal of an aggregate.
+   - Iterators simplify the Aggregate interface.
+   - More than one traversal can be pending on an aggregate.
+
+8. Implementation
+
+9. Sample Code
+
+   ```c++
+   template <class Item>
+   class List {
+   public:
+       List(long size = DEFAULT_LIST_CAPACITY);
+       long Count() const;
+       Item& Get(long index) const;
+       // ...
+   };
+   
+   template <class Item>
+   class Iterator {
+   public:
+       virtual void First() = 0;
+       virtual void Next() = 0;
+       virtual bool IsDone() const = 0;
+       virtual Item CurrentItem() const = 0;
+       
+   protected:
+       Iterator();
+   };
+   
+   template<class Item>
+   class ListIterator : public Iterator<Item> {
+   public:
+       ListIterator(const List<Item>* aList);
+       virtual void First();
+       virtual void Next();
+       virtual bool IsDone() const;
+       virtual Item CurrentItem() const;
+       
+   private:
+       const List<Item>* _list;
+       long _current;
+   };
+   
+   template<class Item>
+   ListIterator<Item>::ListIterator(const List<Item>* aList) : 
+       _list(aList), _current(0) {}
+   
+   template<class Item>
+   void ListIterator<Item>::First() {
+       _current = 0;
+   }
+   
+   template <class Item>
+   void ListIterator<Item>::Next() {
+       _current++;
+   }
+   
+   template <class Item>
+   bool ListIterator<Item>::IsDone() const {
+       return _current >= _list->Count();
+   }
+   
+   template <class Item>
+   Item ListIterator<Item>::CurrentItem() const {
+       if (IsDone()) {
+           throw IteratorOutOfBounds;
+       }
+       return _list->Get(_current);
+   }
+   
+   void PrintEmployee(Iterator<Employee*>& i) {
+       for (i.First(); !i.IsDone(); i.Next()) {
+           i.CurrentItem()->Print();
+       }
+   }
+   
+   List<Employee*>* employees;
+   // ...
+   ListIterator<Employee*> forward(employees);
+   ReverseListIterator<Employee*> backward(employees);
+   PrintEmployees(forward);
+   PrintEmployees(backward);
+   
+   SkipList<Employee*>* employees;
+   // ...
+   
+   SkipListIterator<Employee*> iterator(employees);
+   PrintEmployees(iterator);
+   
+   template<class Item>
+   class AbstractList {
+   public:
+       virtual Iterator<Item>* CreateIterator() const = 0;
+       // ...
+   };
+   
+   template <class Item>
+   Iterator<Item>* List<Item>::CreateIterator() const {
+       return new ListIterator<Item>(this);
+   }
+   
+   // we know only that we have an AbstractList
+   AbstractList<Employee*>* employees;
+   // ...
+   
+   Iterator<Employee*>* iterator = employees->CreateIterator();
+   PrintEmployees(*iterator);
+   delete iterator;
+   
+   template<class Item>
+   class IteratorPtr {
+   public:
+       IteratorPtr(Iterator<Item>* i) : _i(i) {}
+       ~IteratorPtr() { delte _i; }
+       
+       Iterator<Item>* operator->() { return _i; }
+       Iterator<Item>& operator*() { return *_i; }
+       
+   private:
+       // disallow copy and assignment to avoid
+       // multiple deletions of _i:
+       
+       IteratorPtr(const IteratorPtr&);
+       IteratorPtr& operator=(const IteratorPtr&);
+       
+   private:
+       Iterator<Item>* _i;
+   };
+   
+   AbstractList<Employee*>* employees;
+   // ...
+   
+   IteratorPtr<Employee*> iterator(employees->CreateIterator());
+   PrintEmployees(*iterator);
+   
+   template <class Item>
+   class ListTraverser {
+   public:
+       ListTraverser(List<Item>* aList);
+       bool Traverse();
+       
+   protected:
+       virtual bool ProcessItem(const Item&) = 0;
+       
+   private:
+       ListIterator<Item> _iterator;
+   };
+   
+   template <class Item>
+   ListTraverser<Item>::ListTraverser(List<Item>* aList) : 
+       _iterator(aList) {}
+   
+   template <class Item>
+   bool ListTraverser<Item>::Traverse() {
+       bool result = false;
+       
+       for (_iterator.First(); !_iterator.IsDone(); _iterator.Next()) {
+           result = ProcessItem(_iterator.CurrentItem());
+           
+           if (result == false) {
+               break;
+           }
+       }
+       return result;
+   }
+   
+   class PrintNEmployees : public ListTraverser<Employee*> {
+   public:
+       PrintNEmployees(List<Employee*>* aList, int n) :
+           ListTraverser<Employee*>(aList), _total(n), _count(0) {}
+       
+   protected:
+       bool ProcessItem(Employee* const&);
+       
+   private:
+       int _total;
+       int _count;
+   };
+   
+   bool PrintNEmployees::ProcessItem(Employee* const& e) {
+       _count++;
+       e->Print();
+       return _count < _total;
+   }
+   
+   List<Employee*>* employees;
+   // ...
+   
+   PrintNEmployees pa(employees, 10);
+   pa.Traverse();
+   
+   ListIterator<Employee*> i(employees);
+   int count = 0;
+   for (i.First(); !i.IsDone(); i.Next()) {
+       count++;
+       i.CurrentItem()->Print();
+       if (count >= 10) {
+           break;
+       }
+   }
+   
+   template <class Item>
+   class FilteringListTraverser {
+   public:
+       FilteringListTraverser(List<Item>* aList);
+       bool Traverse();
+       
+   protected:
+       virtual bool ProcessItem(const Item&) = 0;
+       virtual bool TestItem(const Item&) = 0;
+       
+   private:
+       ListIterator<Item> _iterator;
+   };
+   
+   template <class Item>
+   void FilteringListTraverser<Item>::Traverse() {
+       bool result = false;
+       for (_iterator.First(); !_iterator.IsDone(); _iterator.Next()) {
+           if (TestItem(_iterator.CurrentItem())) {
+               result = ProcessItem(_iterator.CurrentItem());
+               if (result == false) {
+                   break;
+               }
+           }
+       }
+       return result;
+   }
+   ```
+
+10. Known Uses
+
+11. Related Patterns
+
+    Composite (163):Iterators are often applied to recursive structures such as Composites.
+
+    Factory Method (107):Polymorphic iterators rely on factory methods to instantiate the appropriate Iterator subclass. 
+
+    Memento (283) is often used in conjunction with the Iterator pattern. An iterator can use a memento to capture the state of an iteration. The iterator stores the memento internally.
+
+---
 
 
 
-## 5.5 MEDIATOR(中介者) - 对象行为型模式
+## MEDIATOR
 
-1. 意图
+1. Intent
 
-   用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变他们之间地交互。
+   Define an object that encapsulateshow a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
 
-2. 动机
+2. Motivation
 
-   将一个系统分割成许多对象通常可以增强可复用性，但是对象间相互连接地激增又会降低其可复用性。大量的相互连接使得一个对象似乎不太可能在没有其他对象的支持下工作 -- 系统表现为一个不可分割的整体。而且，对系统的行为进行任何较大的改动都十分困难，因为行为被分布在许多对象中。结果是，你可能不得不定义很多子类以定制系统的行为。
+3. Applicability
 
-3. 适用性
+   Use the Mediator pattern when:
 
-   - 一组对象以定义良好但是复杂的方式进行通信。产生的相互依赖关系结构混乱且难以理解。
-   - 一个对象引用其他很多对象并且直接与这些对象通信，导致难以复用该对象。
-   - 想定制一个分布在多个类中的行为，而又不想生成太多的子类。
+   - a set of objects communicatein well-defined but complexways.The resulting interdependencies are unstructured and difficult to understand.
+   - reusing an object is difficult because itrefers to and communicateswithmany other objects.
+   - a behavior that's distributed between several classes should be customizable without a lot of subclassing.
 
-4. 结构
+4. Structure
 
    ![5_5](res/5_5.png)
 
-5. 参与者
+5. Participants
 
-   - Mediator（中介者）
-     1. 中介者定义一个接口用于与各同事（Colleague）对象通信。
-   - ConcreteMediator（具体中介者）
-     1. 具体中介者通过协调各同时对象实现协作行为；
-     2. 了解并维护它的各个同事。
-   - Colleague class（同事类）
-     1. 每一个同事类都知道它的中介者对象；
-     2. 每一个同事对象都需在与其它的同事通信的时候，与它的中介者通信.
+   - Mediator
 
-6. 协作
+     defines an interface for communicating with Colleague objects
 
-   - 同事向一个中介者对象发送和接受请求。中介者在各同事间适当地转发请求以实现协作行为。
+   - ConcreteMediator
 
-7. 效果
+     implements cooperative behavior bycoordinating Colleague objects.
 
-   优点：
+      knows andmaintains itscolleagues.
 
-   - 减少了子类生成；
-   - 它将各Colleague解耦；
-   - 它简化了对象协议；
-   - 它对对象如何协作进行了抽象。
+   - Colleague class
 
-   缺点：
+     each Colleague class knows itsMediator object.
 
-   - 它使控制集中化。
+     each colleague communicates with its mediator whenever it would have otherwise communicated with another colleague.
 
-8. 实现
+6. Collaborations
 
-9. 代码示例
+   Colleagues send and receive requests from a Mediator object. The mediator implements the cooperative behavior by routing requests between the appropriate colleague(s).
+
+7. Consequences
+
+   The Mediator pattern has the followingbenefits and drawbacks:
+
+   1. It limits subclassing.
+   2. It decouples colleagues.
+   3. It simplifies object protocols.
+   4. It abstracts how objects cooperate.
+   5. It centralizes control.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class DialogDirector {
@@ -944,393 +993,404 @@
    }
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Facade模式：与中介者地不同之处在于它是对一个对象子系统进行抽象，从而提供了一个更为方便的接口。它地协议是单向的，即Facade对象对这个子系统类提出请求，但反之则不行。相反，Mediator提供了各Colleague对象不支持或不能支持地协作行为，而且协议是多向地。
+    Facade (185) differs from Mediator in that it abstracts a subsystem of objects to provide a more convenient interface. Its protocol is unidirectional; that is, Facade objects make requests of the subsystem classes but not vice versa. In contrast, Mediator enables cooperative behavior that colleague objects don't or can't provide, and the protocol is multidirectional.
 
-    Colleague可使用Observer模式与Mediator通信。
+    Colleagues can communicate with the mediator using the Observer (293) pattern.
+
+---
 
 
 
-## 5.6 MEMENTO(备忘录) -- 对象行为型模式
+## MEMENTO
 
-1. 意图
+1. Intent
 
-   在不破坏封装性地前提下，捕获一个对象地内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。
+   Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
 
-2. 别名
+2. Motivation
 
-   Token
+3. Applicability
 
-3. 动机
+   Use the Memento pattern when:
 
-   一个备忘录（memento）是一个对象，它存储另一个对象在某个瞬间地内部状态，而后者称为备忘录的原发器（originator）。当需要设置原发器的检查点时，取消操作机制会向原发器请求一个备忘录。原发器用描述当前状态的信息初始化该备忘录。只有原发器可以向备忘录中存取信息，备忘录对其他的对象”不可见“。
+   - a snapshot of (some portion of) an object's state must be saved so that it can be restored to that state later, and
+   - a direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
 
-4. 适用性
-
-   - 必须保存一个对象在某一个时刻的（部分）状态，这样以后需要时它才能恢复到先前的状态；
-   - 如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。
-
-5. 结构
+4. Structure
 
    ![5_6](res/5_6.png)
 
-6. 参与者
+5. Participants
 
-   - Memento（备忘录）
-     1. 备忘录存储原发器对象的内部状态。原发器根据需要决定备忘录存储原发器的哪些内部状态；
-     2. 防止原发器以外的其它对象访问备忘录。备忘录实际上有两个接口，管理者（caretaker）只能看到备忘录的窄接口 -- 它只能将备忘录传递给其他对象。相反，原发器能够看到一个宽接口，允许它访问返回到先前状态所需的所有数据。理想的情况是只允许生成本备忘录的那个原发器访问本备忘录的内部状态。
-   - Originator（原发器）
-     1. 原发器创建一个备忘录，用以记录当前时刻它的内部状态；
-     2. 使用备忘录恢复内部状态。
-   - Caretaker（负责人）
-     1. 负责保存好备忘录；
-     2. 不能对备忘录的内容进行操作或检查。
+   - Memento
 
-7. 协作
+     stores internal state of the Originator object. The memento may store as much or as little of the originator's internal state as necessary at its originator's discretion.
 
-   - 管理器向原发器请求一个备忘录，保留一段时间后，将其送回给原发器，如图所示：
+     protects against access by objects other than the originator. Mementos have effectively two interfaces. Caretaker sees a narrow interface to the Memento—it can only pass the memento to other objects. Originator, in contrast, sees a wide interface, one that letsit access all the data necessary to restore itself to its previous state. Ideally, only the originator that produced the memento would be permitted to access the memento's internal state.
+
+   - Originator
+
+     creates a memento containing a snapshot of its current internal state.
+
+     uses the memento to restore its internal state.
+
+   - Caretaker
+
+     is responsible for the memento's safekeeping.
+
+     never operates on or examines the contents of a memento.
+
+6. Collaborations
+
+   - A caretaker requests a memento from an originator, holds it for a time, and passes it back to the originator, as the following interaction diagram illustrates:
 
      ![5_6b](res/5_6b.png)
 
-   - 备忘录是被动的。只有创建备忘录的原发器会对它的状态进行赋值和检索。
+   - Mementos are passive. Only the originator that created a mementowill assign or retrieve its state.
 
-8. 效果
+7. Consequences
 
-   1. 保护封装边界；
-   2. 简化了原发器；
-   3. 使用备忘录可能代价很高；
-   4. 定义窄接口和宽接口；
-   5. 维护备忘录的潜在代价。
+   The Memento pattern has several consequences:
 
-9. 实现
+   - Preserving encapsulation boundaries.
+   - It simplifies Originator.
+   - Using mementos might beexpensive.
+   - Defining narrow and wide interfaces.
+   - Hidden costs in caring for mementos.
 
-10. 代码示例
+8. Implementation
 
-    ```c++
-    class State;
-    
-    class Originator {
-    public:
-        Memento* CreateMemento();
-        void SetMemento(const Memento*);
-        // ...
-    private:
-        State* _state; // internal data structures
-        // ...
-    };
-    
-    class Memento {
-    public:
-        // narrow public interface
-        virtual ~Memento();
-    private:
-        // private members accessible only to Originator
-        friend class Originator;
-        Memento();
-        void SetState(State*);
-        State* GetState();
-        // ...
-    private:
-        State* _state;
-        // ...
-    };
-    
-    class Graphic;
-    // base class for graphical objects in the graphical editor
-    
-    class MoveCommand {
-    public:
-        MoveCommand(Graphic* target, const Point& delta);
-        void Execute();
-        void Unexecute();
-    private:
-        ConstraintSolverMemento* _state;
-        Point _delta;
-        Graphic* _target;
-    };
-    void MoveCommand::Unexecute() {
-        ConstraintSolver* solver = ConstraintSolver::Instance();
-        _target->Move(-_delta);
-        solver->SetMemento(_state); // restore solver state
-        solver->Solve();
-    }
-    
-    class ConstraintSolver {
-    public:
-        static ConstraintSolver* Instance();
-        
-        void Solve();
-        void AddConstraint(Graphic* startConnection, Graphic* endConnection);
-        void RemoveConstraint(Graphic* startConnection, Graphic* endConnection);
-        ConstraintSolverMemento* CreateMemeto();
-        void SetMemento(ConstraintSolverMemento*);
-    private:
-        // nontrivial state and operations for enforcing
-        // connectivity semantics
-    };
-    
-    class ConstraintSolverMemento {
-    public:
-        virtual ~ConstraintSolverMemento();
-    private:
-        friend class ConstraintSolver;
-        ConstraintSolverMemento();
-        
-        // private constraint solver state
-    };
-    ```
+9. Sample Code
 
-11. 已知应用
+   ```c++
+   class State;
+   
+   class Originator {
+   public:
+       Memento* CreateMemento();
+       void SetMemento(const Memento*);
+       // ...
+   private:
+       State* _state; // internal data structures
+       // ...
+   };
+   
+   class Memento {
+   public:
+       // narrow public interface
+       virtual ~Memento();
+   private:
+       // private members accessible only to Originator
+       friend class Originator;
+       Memento();
+       void SetState(State*);
+       State* GetState();
+       // ...
+   private:
+       State* _state;
+       // ...
+   };
+   
+   class Graphic;
+   // base class for graphical objects in the graphical editor
+   
+   class MoveCommand {
+   public:
+       MoveCommand(Graphic* target, const Point& delta);
+       void Execute();
+       void Unexecute();
+   private:
+       ConstraintSolverMemento* _state;
+       Point _delta;
+       Graphic* _target;
+   };
+   void MoveCommand::Unexecute() {
+       ConstraintSolver* solver = ConstraintSolver::Instance();
+       _target->Move(-_delta);
+       solver->SetMemento(_state); // restore solver state
+       solver->Solve();
+   }
+   
+   class ConstraintSolver {
+   public:
+       static ConstraintSolver* Instance();
+       
+       void Solve();
+       void AddConstraint(Graphic* startConnection, Graphic* endConnection);
+       void RemoveConstraint(Graphic* startConnection, Graphic* endConnection);
+       ConstraintSolverMemento* CreateMemeto();
+       void SetMemento(ConstraintSolverMemento*);
+   private:
+       // nontrivial state and operations for enforcing
+       // connectivity semantics
+   };
+   
+   class ConstraintSolverMemento {
+   public:
+       virtual ~ConstraintSolverMemento();
+   private:
+       friend class ConstraintSolver;
+       ConstraintSolverMemento();
+       
+       // private constraint solver state
+   };
+   ```
 
-12. 相关模式
+10. Known Uses
 
-    Command模式：命令可使用备忘录来为可撤销的操作维护状态；
+11. Related Patterns
 
-    Iterator模式：如前所述备忘录可用于迭代。
+    Command (233): Commands can use mementos to maintain state for undoable operations. 
+
+    Iterator (257): Mementos can be used for iteration as described earlier.
+
+---
 
 
 
-## 5.7 OBSERVER(观察者) -- 对象行为型模式
+## OBSERVER
 
-1. 意图
+1. Intent
 
-   定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并自动更新。
+   Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
-2. 别名
+2. Motivation
 
-   依赖（Dependents），发布-订阅（Publish-Subscribe）。
+   The Observer pattern describes how to establish these relationships. The key objects in this pattern are subject and observer. A subject may have any number of dependent observers.Allobservers are notified whenever the subject undergoes a change in state.In response, each observer will query the subjectto synchronize its state with the subject's state. 
 
-3. 动机
+   This kind of interaction is also known as publish-subscribe. The subject is the publisher of notifications. It sends out these notifications without having to know who its observers are. Any number of observers can subscribe to receive notifications.
 
-   Observer模式中的关键对象是目标（subject）和观察者（oberver）。一个目标可以有任意数目的依赖它的观察者。一旦目标的状态发生改变，所有的观察者都得到通知。作为对这个通知的响应，每个观察者都将查询目标以使其状态与目标的状态同步。
+3. Applicability
 
-   这种交互也称为`发布-订阅（publish-subscribe）`。目标是通知的发布者。它发出通知时并不需知道谁是它的观察者。可以有任意数目的观察者订阅并接收通知。
+   Use the Observer pattern in any of the following situations: 
 
-4. 适用性
+   - When an abstraction has two aspects, one dependent on the other. Encapsulating these aspects in separate objects lets you vary and reuse them independently. 
+   - When a change to one object requires changing others, and you don't know how many objects need to be changed. 
+   - When an object should be able to notify other objects without making assumptions about who these objects are.In other words, you don't want these objects tightly coupled.
 
-   - 当一个抽象模型有两个方面，其中一个方面依赖于另一个方面。将这二者封装在独立的对象中以使它们可以各自独立的改变和复用；
-   - 当对一个对象的改变需要同时改变其它对象，而不知道具体有多少对象有待改变；
-   - 当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换言之，你不希望这些对象是紧密耦合的。
-
-5. 结构
+4. Structure
 
    ![5_7](res/5_7.png)
 
-6. 参与者
+5. Participants
 
-   - Subject（目标）
-     1. 目标知道它的观察者，可以有任意多个观察者观察同一个目标；
-     2. 提供注册和删除观察者对象的接口。
-   - Observer（观察者）
-     1. 为那些在目标发生改变时需获得通知的对象定义一个更新接口。
-   - ConcreteSubject（具体目标）
-     1. 将有关状态存入各ConcreteObserver对象；
-     2. 当它的状态发生改变时，向它的各个观察者发出通知。
-   - ConcreteObserver（具体观察者）
-     1. 维护一个指向ConcreteSubject对象的引用；
-     2. 存储有关状态，这些状态应与目标的状态保持一致；
-     3. 实现Observer的更新接口以使自身状态与目标的状态保持一致。
+   - Subject
 
-7. 协作
+     nows its observers. Any number of Observer objects may observe a subject.
 
-   - 当ConcreteSubject发生任何可能导致其观察者与其本身状态不一致的改变时，它将通知它的各个观察者；
-   - 在得到一个具体目标的改变通知后，ConcreteObserver对象可向目标对象查询信息。ConcreteObserver使用这些信息以使它的状态与目标对象的状态一致。
+     provides an interface for attachingand detaching Observer objects.
 
-   ![5_7b](res/5_7b.png)
+   - Observer
 
-8. 效果
+     defines an updating interface for objects that should be notified ofchanges in a subject.
 
-   优点：
+   - ConcreteSubject
 
-   - 目标和观察者间的抽象耦合；
-   - 支持广播通信。
+     stores state ofinterest toConcreteObserver objects.
 
-   缺点：
+     sends a notification to its observers when itsstate changes.
 
-   - 意外的更新。
+   - ConcreteObserver
 
-9. 实现
+     maintains a reference to a ConcreteSubject object.
 
-10. 代码示例
+     stores state that should stay consistent with the subject's.
 
-    ```c++
-    class Subject;
-    
-    class Observer {
-    public:
-        virtual ~Observer();
-        virtual void Update(Subject* theChangedSubject) = 0;
-    protected:
-        Observer();
-    };
-    
-    class Subject {
-    public:
-        virtual ~Subject();
-        
-        virtual void Attach(Observer*);
-        virtual void Detach(Observer*);
-        virtual void Notify();
-    protected:
-        Subject();
-    private:
-        List<Observer*> *_observers;
-    };
-    void Subject::Attach(Observer* o) {
-        _observers->Append(0);
-    }
-    void Subject::Detach(Observer* o) {
-        _observers->Remove(0);
-    }
-    void Subject::Notify() {
-        ListIterator<Observer*> i(_observers);
-        for (i.First(); !i.IsDone(); i.Next()) {
-            i.CurrentItem()->Update(this);
-        }
-    }
-    
-    class ClockTimer : public Subject {
-    public:
-        ClockTimer();
-        
-        virtual int GetHour();
-        virtual int GetMinute();
-        virtual int GetSecond();
-        
-        void Tick();
-    };
-    void ClockTimer::Tick() {
-        // update internal time-keeping state
-        // ...
-        Notify();
-    }
-    
-    class DigitalClock : public Widget, public Observer {
-    public:
-        DigitalClock(ClockTimer*);
-        virtual ~DigitalClock();
-        virtual void Update(Subject*);
-        // overrides Observer operation
-        
-        virtual void Draw();
-        // overrides Widget operation;
-        // defines how to draw the digital clock
-    private:
-        ClockTimer* _subject;
-    };
-    DigitalClock::DigitalClock(ClockTimer* s) {
-        _subject = s;
-        _subject->Attach(this);
-    }
-    DigitalClock::~DigitalClock() {
-        _subject->Detach(this);
-    }
-    void DigitalClock::Update(Subject* theChangedSubject) {
-        if (theChangedSubject == _subject) {
-            Draw();
-        }
-    }
-    void DigitalClock::Draw() {
-        // get the new values from the subject
-        
-        int hour = _subject->GetHour();
-        int minute = _subject->GetMinute();
-        // etc.
-        
-        // draw the digital clock
-    }
-    
-    class AnalogClock : public Widget, public Observer {
-    public:
-        AnalogClock(ClockTimer*);
-        virtual void Update(Subject*);
-        virtual void Draw();
-        // ...
-    };
-    
-    ClockTimer* timer = new ClockTimer;
-    AnalogClock* analogClock = new AnalogClock(timer);
-    DigitalClock* digitalClock = new DigitalClock(timer);
-    ```
+     implements the Observer updating interface to keep its state consistent with the subject's.
 
-11. 已知应用
+6. Collaborations
 
-12. 相关模式
+   - ConcreteSubject notifies its observers whenever a change occurs that could make its observers' state inconsistent with its own.
 
-    Mediator：通过封装复杂的更新语义，ChangeManager充当目标和观察者之间的中介者；
+   - After being informed of a change in the concrete subject, a ConcreteObserver object may query the subject for information.ConcreteObserver uses this information to reconcile its state with that of the subject.
 
-    Singleton：ChangeManager可使用Singleton模式来保证它是唯一的并且是可全局访问。
+     The following interaction diagram illustrates the collaborations between a subject and two observers:
+
+     ![5_7b](res/5_7b.png)
+
+7. Consequences
+
+   Further benefits and liabilities of the Observer pattern include the following:
+
+   - Abstract coupling between Subject and Observer.
+   - Support for broadcast communication.
+   - Unexpected updates.
+
+8. Implementation
+
+9. Sample Code
+
+   ```c++
+   class Subject;
+   
+   class Observer {
+   public:
+       virtual ~Observer();
+       virtual void Update(Subject* theChangedSubject) = 0;
+   protected:
+       Observer();
+   };
+   
+   class Subject {
+   public:
+       virtual ~Subject();
+       
+       virtual void Attach(Observer*);
+       virtual void Detach(Observer*);
+       virtual void Notify();
+   protected:
+       Subject();
+   private:
+       List<Observer*> *_observers;
+   };
+   void Subject::Attach(Observer* o) {
+       _observers->Append(0);
+   }
+   void Subject::Detach(Observer* o) {
+       _observers->Remove(0);
+   }
+   void Subject::Notify() {
+       ListIterator<Observer*> i(_observers);
+       for (i.First(); !i.IsDone(); i.Next()) {
+           i.CurrentItem()->Update(this);
+       }
+   }
+   
+   class ClockTimer : public Subject {
+   public:
+       ClockTimer();
+       
+       virtual int GetHour();
+       virtual int GetMinute();
+       virtual int GetSecond();
+       
+       void Tick();
+   };
+   void ClockTimer::Tick() {
+       // update internal time-keeping state
+       // ...
+       Notify();
+   }
+   
+   class DigitalClock : public Widget, public Observer {
+   public:
+       DigitalClock(ClockTimer*);
+       virtual ~DigitalClock();
+       virtual void Update(Subject*);
+       // overrides Observer operation
+       
+       virtual void Draw();
+       // overrides Widget operation;
+       // defines how to draw the digital clock
+   private:
+       ClockTimer* _subject;
+   };
+   DigitalClock::DigitalClock(ClockTimer* s) {
+       _subject = s;
+       _subject->Attach(this);
+   }
+   DigitalClock::~DigitalClock() {
+       _subject->Detach(this);
+   }
+   void DigitalClock::Update(Subject* theChangedSubject) {
+       if (theChangedSubject == _subject) {
+           Draw();
+       }
+   }
+   void DigitalClock::Draw() {
+       // get the new values from the subject
+       
+       int hour = _subject->GetHour();
+       int minute = _subject->GetMinute();
+       // etc.
+       
+       // draw the digital clock
+   }
+   
+   class AnalogClock : public Widget, public Observer {
+   public:
+       AnalogClock(ClockTimer*);
+       virtual void Update(Subject*);
+       virtual void Draw();
+       // ...
+   };
+   
+   ClockTimer* timer = new ClockTimer;
+   AnalogClock* analogClock = new AnalogClock(timer);
+   DigitalClock* digitalClock = new DigitalClock(timer);
+   ```
+
+10. Known Uses
+
+11. Related Patterns
+
+    Mediator (273):Byencapsulating complex update semantics, theChangeManager acts as mediator between subjects and observers.
+
+    Singleton (127): The ChangeManager may use the Singleton pattern to make it unique and globally accessible.
+
+---
 
 
 
-## 5.8 STATE(状态) -- 对象行为型模式
+## STATE
 
-1.  意图
+1. Intent
 
-   允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。
+   Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-2. 别名
+2. Motivation
 
-   状态对象（Objects for States）
+3. Applicability
 
-3. 动机
+   Use the State pattern in either of the following cases:
 
-4. 适用性
+   - An object's behavior depends on its state, and it must change its behavior at run-time depending on that state.
+   - Operations have large, multipart conditional statements that depend on the object's state. This state is usually represented by one or more enumerated constants.
 
-   下面两种情况可使用State模式：
-
-   - 一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为；
-   - 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态；这个状态通常用一个或多个枚举常量表示。
-
-5. 结构
+4. Structure
 
    ![5_8_1](res/5_8_1.png)
-   
-6. 参与者
 
-   - `Context` 环境
-   - `State` 状态
-   - `ConcreteState subclasses` 具体状态子类
+5. Participants
 
-7. 协作
+   - Context
 
-   - Context 将与状态相关的请求委托给当前的ConcreteState对象处理。
-   - Context可将自身作为一个参数传递给处理该请求的状态对象；这使得状态对象在必要时可访问Context。
-   - Context是客户使用的主要接口。客户可用状态对象来配置一个Context，一旦一个Context配置完毕，它的客户不再需要直接与状态对象打交道。
-   - Context或ConcreteState子类都可以决定哪个状态是另外哪一个的后继者，以及是在何种条件下进行状态转换。
-   
-8. 效果
+     defines the interface ofinterest to clients.
 
-   State模式有以下效果：
+     maintains an instance of a ConcreteState subclass that defines the current state.
 
-   1. 它将与特定状态相关的行为局部化，并且将不同状态的行为分割开来。
+   - State
 
-      State模式将所有与一个特定的状态的状态相关的行为都放入一个对象中，决定状态转移的逻辑**不在**单块的if或switch语句中，而是分布在State子类之间。将每个状态转换和动作封装到一个类中，就把着眼点从执行状态提高到整个对象的状态，这将使代码结构化并使其意图更加清晰。
+     defines an interface for encapsulating the behavior associated with a particular state of the Context.
 
-   2. 它使得状态转换显式化。
+   - ConcreteState subclasses
 
-   3. State对象可被共享。
+     each subclassimplements a behavior associated with a state of the Context.
 
-9. 实现
+6. Collaborations
 
-   实现State模式要考虑以下方面：
+   - Context delegates state-specific requests to the current ConcreteState object.
+   - A context may pass itself as an argument to the State object handling the request. This lets the State object access the context if necessary. 
+   - Context isthe primary interface for clients.Clients canconfigure a context with State objects. Once a context is configured, its clients don't have to deal with the State objects directly. 
+   - EitherContextortheConcreteState subclasses candecide which state succeeds another and under what circumstances.
 
-   1. 谁定义状态转换。
+7. Consequences
 
-   2. 基于表的另一种方法；
+   The State pattern has the following consequences:
 
-      使用表将输入映射到状态转换，对于每一个状态，一张表将每一个可能的输入映射到一个后继状态。
+   - It localizes state-specific behavior and partitions behavior for different states.
+   - It makes state transitions explicit.
+   - State objects can beshared.
 
-   3. 创建和销毁State对象。
+8. Implementation
 
-   4. 使用动态继承。
+9. Sample Code
 
-10. 代码示例
-
-   ```cpp
+   ```c++
    class TCPOctetStream;
    class TCPState;
    
@@ -1432,192 +1492,213 @@
    }
    ```
 
-11. 已知应用
+10. Known Uses
 
-12. 相关模式
+11. Related Patterns
 
-    Singleton。
+    The Flyweight (195) pattern explains when and how State objects can be shared. 
+
+    State objects are often Singletons (127).
+
+---
 
 
 
-## 5.9 STRATEGY(策略) -- 对象行为型模式
+## STRATEGY
 
-1. 意图
+1. Intent
 
-   定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。
+   Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
-2. 别名
+2. Motivation
 
-   政策（Policy）
+   Many algorithms existfor breaking a streamoftextintolines. Hard-wiring allsuch algorithms into the classes that require them isn't desirable for several reasons:
 
-3. 动机
+   - Clients that need linebreaking get more complex if they include the linebreaking code. That makes clients bigger and harder to maintain, especially if they support multiple linebreaking algorithms.
+   - Different algorithms will be appropriate at different times. Wedon't want to support multiple linebreaking algorithms if we don't use them all.
+   - It's difficult toadd newalgorithms and vary existing ones when linebreaking is an integral part of a client.
 
-   - 需要换行功能的客户程序如果直接包含换行算法代码的话将会变得复杂，这使得客户程序庞大并且难以维护，尤其当其需要支持多种换行算法时问题会更加严重；
-   - 不同的时候需要不同的算法，我们不想支持我们并不使用的换行算法；
-   - 当换行功能是客户程序的一个难以分割的成分时，增加新的换行算法或改变现有算法将十分困难。
+3. Applicability
 
-4. 适用性
+   Use the Strategy pattern when:
 
-   - 许多相关的类仅仅是行为有异。”策略“提供了一种用多个行为中的一个行为来配置一个类的方法；
-   - 需要使用一个算法的不同变体；
-   - 算法使用客户不应该知道的数据。可使用策略模式以避免暴露复杂的，与算法相关的数据结构；
-   - 一个类定义了多种行为，并且这些行为在这个类的操作中以多个条件语句的形式出现。将相关的条件分支移入它们各自的Strategy类中以代替这些条件语句。
+   - many related classes differ only in their behavior. Strategies provide a way to configure a class with one of many behaviors.
+   - you need different variants of an algorithm. For example, you might define algorithms reflecting different space/time trade-offs. Strategies can be used when these variants are implemented as a class hierarchy of algorithms.
+   - an algorithm uses data that clients shouldn't know about. Use the Strategy pattern to avoid exposing complex, algorithm-specific data structures.
+   - a class defines many behaviors, and these appear as multiple conditional statements in its operations. Instead of many conditionals, move related conditional branches into their own Strategy class.
 
-5. 结构
+4. Structure
 
    ![5_9](res/5_9.png)
 
-6. 参与者
+5. Participants
 
-   - Strategy（策略）
-     1. 定义所有支持的算法的公共接口。Context使用这个接口来调用某ConcreteStrategy定义的算法。
-   - ConcreteStrategy（具体策略）
-     1. 以Strategy接口实现某具体算法。
+   - Strategy
+
+     declares an interface common to all supported algorithms. Context uses this interface to call the algorithm defined by a ConcreteStrategy
+
+   - ConcreteStrategy
+
+     implements the algorithm using the Strategy interface.
+
    - Context（上下文）
-     1. 用一个ConcreteStrategy对象来配置；
-     2. 维护一个对Strategy对象的引用；
-     3. 可定义一个接口来让Stategy访问它的数据。
 
-7. 协作
+     is configured with a ConcreteStrategy object.
 
-   - Strategy和Context相互作用以实现选定的算法。当算法被调用时，Context可以将该算法所需要的所有数据都传递给该Stategy。或者，Context可以将自身作为一个参数传递给该Stategy。或者，Context可以将自身作为一个参数传递给Strategy操作。这就让Strategy在需要时可以回调Context。
-   - Context将它的客户的请求转发给它的Strategy。客户通常创建并传递一个ConcreteStrategy对象给该Context；这样，客户仅与Context交互。通常有一系列的ConcreteStrategy类可供客户从中选择。
+     maintains a reference to a Strategy object.
 
-8. 效果
+     may define an interface that lets Strategy access its data.
 
-   优点：
+6. Collaborations
 
-   - 相关算法系列；
-   - 一个替代继承的方法；
-   - 消除了一些条件语句；
-   - 实现的选择；
-   - 客户必须了解不同的Strategy。
+   - Strategy and Context interact to implement the chosen algorithm. A context may pass all data required by the algorithm to the strategy when the algorithm is called. Alternatively, the context can pass itself as an argument to Strategy operations. That lets the strategy call back on the context as required.
+   - A context forwards requests from its clients to its strategy. Clients usually create and pass a ConcreteStrategy object to the context; thereafter, clients interact with the contextexclusively.There is often a family ofConcreteStrategy classes for a client to choose from.
 
-   缺点：
+7. Consequences
 
-   - Strategy和Context之间的通信开销；
-   - 增加了对象的数目。
+   The Strategy pattern has the following benefits and drawbacks:
 
-9. 实现
+   - Families of related algorithms.
+   - An alternative to subclassing.
+   - Strategies eliminate conditional statements. 
+   - A choice of implementations.
+   - Clients must be aware of different Strategies.
+   - Communication overhead between Strategy and Context.
+   - Increased number of objects.
 
-10. 代码示例
+8. Implementation
 
-    ```c++
-    class Composition {
-    public:
-        Composition(Compositor*);
-        void Repair();
-    private:
-        Compositor* _compositor;
-        Component* _components;
-        int _componentCount;
-        int _lineWidth;
-        int* _lineBreaks;
-        int _lineCount;
-    };
-    
-    class Compositor {
-    public:
-        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[], 
-                            int componentCount, int lineWidth, int breaks[]) = 0;
-    protected:
-        Compositor();
-    };
-    void Composition::Repair() {
-        Coord* natural;
-        Coord* stretchability;
-        Coord* shrinkability;
-        int componentCount;
-        int* breaks;
-        
-        // prepare the arrays with the desired component sizes
-        // ...
-        
-        // determine where the breaks are:
-        int breakCount;
-        breakCount = _compositor->Compose(
-        	natural, stretchability, shrinkability,
-            componentCount, _lineWidth, breaks);
-        
-        // lay out components according to breaks
-        // ...
-    }
-    
-    class SimpleCompositor : public Compositor {
-    public:
-        SimpleCompositor();
-        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
-                            int componentCount, int lineWidth, int breaks[]);
-        // ...
-    };
-    
-    class TeXCompositor : public Compositor {
-    public:
-        TeXCompositor();
-        virtual int COmpose(Coord natural[], Coord stretch[], Coord shrink[], 
-                            int componentCount, int lineWidth, int breaks[]);
-        // ...
-    };
-    
-    class ArrayCompositor : public Compositor {
-    public:
-        ArrayCompositor(int interval);
-        virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
-                            int componentCount, int lineWidth, int breaks[]);
-        // ...
-    };
-    
-    Composition* quick = new Composition(new SimpleCompositor);
-    Composition* slick = new Composition(new TeXCompositor);
-    Composition* iconic = new Composition(new ArrayCompositor(100));
-    ```
+9. Sample Code
 
-11. 已知应用
+   ```c++
+   class Composition {
+   public:
+       Composition(Compositor*);
+       void Repair();
+   private:
+       Compositor* _compositor;
+       Component* _components;
+       int _componentCount;
+       int _lineWidth;
+       int* _lineBreaks;
+       int _lineCount;
+   };
+   
+   class Compositor {
+   public:
+       virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[], 
+                           int componentCount, int lineWidth, int breaks[]) = 0;
+   protected:
+       Compositor();
+   };
+   void Composition::Repair() {
+       Coord* natural;
+       Coord* stretchability;
+       Coord* shrinkability;
+       int componentCount;
+       int* breaks;
+       
+       // prepare the arrays with the desired component sizes
+       // ...
+       
+       // determine where the breaks are:
+       int breakCount;
+       breakCount = _compositor->Compose(
+       	natural, stretchability, shrinkability,
+           componentCount, _lineWidth, breaks);
+       
+       // lay out components according to breaks
+       // ...
+   }
+   
+   class SimpleCompositor : public Compositor {
+   public:
+       SimpleCompositor();
+       virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
+                           int componentCount, int lineWidth, int breaks[]);
+       // ...
+   };
+   
+   class TeXCompositor : public Compositor {
+   public:
+       TeXCompositor();
+       virtual int COmpose(Coord natural[], Coord stretch[], Coord shrink[], 
+                           int componentCount, int lineWidth, int breaks[]);
+       // ...
+   };
+   
+   class ArrayCompositor : public Compositor {
+   public:
+       ArrayCompositor(int interval);
+       virtual int Compose(Coord natural[], Coord stretch[], Coord shrink[],
+                           int componentCount, int lineWidth, int breaks[]);
+       // ...
+   };
+   
+   Composition* quick = new Composition(new SimpleCompositor);
+   Composition* slick = new Composition(new TeXCompositor);
+   Composition* iconic = new Composition(new ArrayCompositor(100));
+   ```
 
-12. 相关模式
+10. Known Uses
 
-    Flyweight：Strategy对象经常是很好的轻量级对象。
+11. Related Patterns
+
+    Flyweight (195): Strategy objects often make good flyweights.
+
+---
 
 
 
-## 5.10 TEMPLATE METHOD(模板方法) -- 类行为型模式
+## TEMPLATE METHOD
 
-1. 意图
+1. Intent
 
-   定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。TemplateMethod使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。
+   Define the skeleton of an algorithm in an operation, deferring some steps to subclasses.Template Method letssubclassesredefine certain steps of an algorithm without changing the algorithm's structure.
 
-2. 动机
+2. Motivation
 
-   通过使用抽象操作定义了一个算法中的一些步骤，模板方法确定了它们的先后顺序，但它允许Application和Document子类改变这些具体步骤以满足它们各自的需求。
+   By defining some of the steps of an algorithm using abstract operations, the template method fixes their ordering, but it lets Application and Document subclasses vary those steps to suit their needs.
 
-3. 适用性
+3. Applicability
 
-   - 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现；
-   - 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复；
-   - 控制子类扩展。
+   By defining some of the steps of an algorithm using abstract operations, the template method fixes their ordering, but it lets Application and Document subclasses vary those steps to suit their needs:
 
-4. 结构
+   - to implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary.
+   - when common behavior among subclasses should be factored and localized in a common class to avoid code duplication.
+   - to control subclasses extensions.
 
-5. 参与者
+4. Structure
 
-   - AbstractClass（抽象类）
-     1. 定义抽象的原语操作（primitive operation），具体的子类将重定义它们以实现一个算法的各步骤；
-     2. 实现一个模板方法，定义一个算法的骨架。改模板方法不仅调用原语操作，也调用定义在AbstractClass或其他对象中的操作。
-   - ConcreteClass（具体类）
-     1. 实现原语操作以完成算法中与特定子类相关的步骤。
+5. Participants
 
-6. 协作
+   - AbstractClass
 
-   - ConcreteClass靠AbstractClass来实现算法中不变的步骤。
+     defines abstract primitive operations that concrete subclasses define to implement steps of an algorithm.
 
-7. 效果
+     implements a template method defining the skeleton of an algorithm. The template method calls primitive operations as well as operations defined in AbstractClass or those of other objects.
 
-   - 模板方法是一种代码服用的基本技术。
-   - 模板方法导致一种反向的控制结构。
+   - ConcreteClass
 
-8. 实现
+     implements the primitive operations to carry outsubclass-specific stepsof the algorithm.
 
-9. 代码示例
+6. Collaborations
+
+   ConcreteClass relies on AbstractClass to implement the invariant steps ofthe algorithm.
+
+7. Consequences
+
+   Template methods call the following kinds of operations:
+
+   - concrete operations (either on the ConcreteClass or on client classes);
+   - concrete AbstractClass operations (i.e., operations that are generally useful to subclasses);
+   - primitive operations (i.e., abstract operations);
+   - factory methods (see Factory Method (107)); and
+   - hook operations, which provide default behavior that subclasses can extend if necessary. A hook operation often does nothing by default.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    void View::Display() {
@@ -1633,68 +1714,86 @@
    }
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Factory Method模式：常被模板方法调用。
+    Factory Methods (107) are often called by template methods. In the Motivation example, the factory method DoCreateDocument is called by the template method OpenDocument.
 
-    Strategy模式：模板方法使用继承来改变算法的一部分。Strategy使用委托来改变整个算法。
+    Strategy (315): Template methods use inheritance to vary part of an algorithm. Strategies use delegation to vary the entire algorithm.
+
+---
 
 
 
-## 5.11 VISITOR(访问者) -- 对象行为型模式
+## VISITOR
 
-1. 意图
+1. Intent
 
-   表示一个作用于某对象结构中的各元素的操作。它使你可以在不改变各元素的类的前提下定义作用域这些元素的新操作。
+   Represent an operation to be performed on the elements of an object structure.Visitor lets you define a new operation without changing the classes of the elements on which it operates.
 
-2. 动机
+2. Motivation
 
-3. 适用性
+3. Applicability
 
-   - 一个对象结构包含很多类对象，它们有不同的接口，而你想对这些对象实施一些依赖于其具体类的操作；
-   - 需要对一个对象结构中的对象进行很多不同的并且不相关的操作，而你想避免让这些操作”污染“这些对象的类。Visitor使得你可以将相关的操作集中起来定义在一个类中。当该对象结构被很多应用共享时，用Visitor模式让每个应用仅包含需要用到的操作。
-   - 定义对象结构的类很少改变，但经常需要在此结构上定义新的操作。改变对象结构类需要重定义对所有访问者的接口，这可能需要很大的代价。如果对象结构类经常改变，那么可能还是在这些类中定义这些操作较好。
+   Use the Visitorpattern when:
 
-4. 结构
+   - an object structure contains many classes of objectswith differing interfaces, and you want to perform operations on these objects that depend on their concrete classes.
+   - manydistinct and unrelated operations need tobe performed on objectsinan object structure, and you want to avoid "polluting" their classes with these operations. Visitorlets you keep related operations together by definingthem in one class. When the object structure is shared by many applications, use Visitor to put operations in just those applications that need them.
+   - the classes defining the object structure rarely change, but you often want to define new operations over the structure. Changing the object structure classes requires redefining the interface to all visitors, which is potentially costly. Ifthe object structure classes change often, then it's probably better to define the operations in those classes.
+
+4. Structure
 
    ![5_11](res/5_11.png)
 
-5. 参与者
+5. Participants
 
-   - Visitor（访问者）
-     1. 为该对象结构中ConcreteElement的每一个类声明一个Visit操作。该操作的名字和特征标识了发送Visit请求给该访问者的那个类。这使得访问者可以确定正被访问元素的具体的类。这样访问者就可以通过该元素的特定接口直接访问它。
-   - ConcreteVisitor（具体访问者）
-     1. 实现每个由Visitor声明的操作。每个操作实现本算法的一部分，而该算法片段乃是对应于结构中对象的类。ConcreteVisitor为该算法提供了上下文并存储它的局部状态。这一状态常常在遍历该结构的过程中累积结果。
-   - Element（元素）
-     1. 定义一个Accept操作，它以一个访问者为参数。
-   - ConcreteElement（具体元素）
-     1. 实现Accept操作，该操作以一个访问者为参数。
+   - Visitor
+
+     declares a Visit operation for each class of ConcreteElement in the object structure. Theoperation's name and signature identifiesthe class that sends the Visit request to the visitor. That lets the visitor determine the concrete class of the element being visited. Then the visitor can access the element directly through its particularinterface.
+
+   - ConcreteVisitor
+
+     mplements each operation declared byVisitor.Eachoperation implements a fragment of the algorithm defined for the corresponding class of object in the structure. ConcreteVisitor provides the context for the algorithm and stores its local state. This state often accumulates results during the traversal of the structure.
+
+   - Element
+
+     defines an Accept operation that takes a visitor as an argument.
+
+   - ConcreteElement
+
+     implements an Accept operation that takes a visitor as an argument.
+
    - ObjectStructure（对象结构）
-     1. 能枚举它的元素；
-     2. 可以提供一个高层的接口以允许该访问者访问它的元素；
-     3. 可以是一个复合或是一个集合。
 
-6. 协作
+     can enumerate itselements.
 
-   - 一个使用Visitor模式的客户必须创建一个ConcreteVisitor对象，然后遍历该对象结构，并用该访问者访问每一个元素；
-   - 当一个元素被访问时，它调用对应于它的类的Visitor操作。如果必要，该元素将自身作为这个操作的一个参数以便该访问者访问它的状态。
+     mayprovide a high-level interface to allow the visitor to visit its elements.
 
-   ![5_11b](res/5_11b.png)
+     may either be a composite (see Composite (163)) or a collection such as a list or a set.
 
-7. 效果
+6. Collaborations
 
-   - 访问者模式使得易于增加新的操作；
-   - 访问者集中相关的操作而分离无关的操作；
-   - 增加新的ConcreteElement类很困难；
-   - 通过类层次进行访问；
-   - 累积状态；
-   - 破坏封装。
+   - A client that uses the Visitor pattern must create a ConcreteVisitor object and then traverse the object structure, visiting each element with the visitor.
 
-8. 实现
+   - When an element is visited, it calls the Visitor operation that corresponds to its class. The element supplies itself as an argument to this operation to let the visitor access its state, if necessary.
 
-9. 代码示例
+     ![5_11b](res/5_11b.png)
+
+7. Consequences
+
+   Some of the benefits and liabilities of the Visitor pattern are asfollows:
+
+   - Visitor makes adding newoperations easy.
+   - A visitor gathers related operations and separates unrelated ones.
+   - Adding new ConcreteElement classes is hard.
+   - Visiting across class hierarchies.
+   - Accumulating state.
+   - Breaking encapsulation.
+
+8. Implementation
+
+9. Sample Code
 
    ```c++
    class Equipment {
@@ -1770,52 +1869,56 @@
    cout << "Inventory " << component->Name() << visitor.GetInventory();
    ```
 
-10. 已知应用
+10. Known Uses
 
-11. 相关模式
+11. Related Patterns
 
-    Composite：访问者可以用于对一个由Composite模式定义的对象结构进行操作；
+    Composite (163):Visitorscan be used to apply an operation over an object structure defined by the Composite pattern. 
 
-    Interpreter：访问者可以用于解释。
+    Interpreter (243): Visitor may be applied to do the interpretation.
+
+---
 
 
 
-## 5.12 行为模式的讨论
+## Discussion of Behavioral Pattern
 
-### 5.12.1 封装变化
+### Encapsulating Variation
 
-封装变化是很多行为模式的主题。当一个程序的某个方面的特征经常发生改变时，这些模式就定义一个封装这个方面的对象。这样当该程序的其它部分依赖于这个方面时，他们都可以与此对象写作。这些模式通常定义一个抽象类来描述这些封装变化的对象，并且通常该模式依据这个对象来命名。
+Encapsulating variation is a theme of many behavioral patterns. When an aspect of a program changes frequently, these patterns define an object that encapsulates that aspect. Then other parts of the program can collaboratewith the object whenever they depend on that aspect. The patterns usually define an abstract class that describes the encapsulating object, and the pattern derives its name from that object.
 
-### 5.12.2 对象作为参数
+### Objects as Arguments
 
-一些模式引入总是被用作参数的对象。
+Several patterns introduce an object that's always used as an argument.
 
-其他模式定义一些可作为令牌到处传递的对象，这些对象将在稍后被调用。
+Other patterns define objects that act as magic tokens to be passed around and invoked at a later time.
 
-### 5.12.3 通信应该被封装还是被分布
+### Should Communication be Encapsulated or Distributed?
 
-Mediator和Observer是相互竞争的模式。它们之间的差别是，Observer通过引入Observer和Subject对象来分布通信，而Mediator对象则封装了其它对象间的通信。
+Mediator (273) and Observer (293) are competing patterns. The difference between them isthat Observer distributes communication by introducing Observer and Subject objects, whereas a Mediator object encapsulates the communication between other objects.
 
-### 5.12.4 对发送者和接收者解耦
+### Decoupling Senders and Receivers
 
-命令模式使用一个Command对象来定义一个发送者和一个接收者之间的绑定关系，从而支持解耦，如图所示：
+The Command pattern supports decoupling by using a Command object to define the binding between a sender and receiver:
 
 ![5_12a](res/5_12a.png)
 
-观察者模式通过定义一个接口来通知目标中发生的改变，从而将发送者（目标）与接收者（观察者）解耦，如图所示：
+The Observer pattern decouples senders (subjects) from receivers (observers)by defining an interface for signaling changes in subjects. Observer defines a looser senderreceiver binding than Command, since a subject may have multiple observers, and their number can vary at run-time:
 
 ![5_12b](res/5_12b.png)
 
-中介者模式让对象通过一个Mediator对象间接的互相引用，从而对它们解耦，如图所示：
+The Mediator pattern decouples objects by having them refer to each other indirectly through a Mediator object.
 
 ![5_12c](res/5_12c.png)
 
-职责链模式通过沿一个潜在接收者链传递请求而将发送者与接收者解耦，如图所示：
+Finally, the Chain of Responsibility pattern decouples the sender from the receiver by passing the request along a chain of potential receivers:
 
 ![5_12d](res/5_12d.png)
 
-### 5.12.5 总结
 
-各个行为模式之间是相互补充和相互加强的关系。
 
-设计良好的面向对象式系统通常有多个模式镶嵌在其中，但其设计者却未必使用这些术语进行思考。然而，在模式级别而不是在类或对象级别上的进行系统组装可以使我们更方便地获取同等的协同性。
+## Summary
+
+With few exceptions, behavioral design patterns complement and reinforce each other.
+
+Well-designed object-oriented systems are just like this—they have multiple patterns embedded in them—but not because their designers necessarily thought in these terms.
