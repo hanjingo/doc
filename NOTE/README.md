@@ -75,6 +75,7 @@ English | [中文版](README_zh.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
+- [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md)
 
 
 
@@ -86,4 +87,3 @@ English | [中文版](README_zh.md)
 - [An introduction to probability theory and its applications]
 - [Developing High-Frequency Trading System]
 - [Modern C++ Design]
-- [Computer Networking: A Top-Down Approach]

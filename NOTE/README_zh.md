@@ -86,33 +86,3 @@
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [国富论](THE_WEALTH_OF_NATIONS/README.md) | 1ED  | 亚当.斯密 | 经济学的圣经，入门政治经济学首选。 |
 | [经济学原理](PRINCIPLES_OF_ECONOMICS/README_zh.md) | 4ED | [美] N.Gregory Mankiw | 经济学（宏观+微观）入门教材。 |
-
-
-
-## 在读
-
-- [Linux内核设计与实现](LINUX_KERNEL_DEVELOPMENT/README.md)
-- [离散数学及其应用](DISCRETE_MATHEMATICS_AND_ITS_APPLICATIONS/README.md)
-- [计算机组成原理](COMPUTER_ORGANIZATIONA_AND_ARCHITECTURE/README.md)
-- [高性能MySQL](HIGH_PERFORMANCE_MYSQL/README.md)
-- [现代体系结构上的UNIX系统](UNIX_SYSTEMS_FOR_MODERN_ARCHITECTURES/README.md)
-- [数学建模](A_FIRST_COURSE_IN_MATHEMATICAL_MODELING/README.md)
-- [应用密码学-协议,算法与c源程序](APPLIED_CRYPTOGRAPHY_PROTOCOLS_ALGORITHMS_AND_SOURCE_CODE_IN_C/README.md)
-
-
-
-## 计划读
-
-- [深入理解LINUX内核]
-- [线性代数]
-- [货币金融学]
-- [投资学]
-- [高频交易]
-- [期权，期货及其他衍生产品]
-- [数理统计及其应用]
-- [微积分学教程 第一卷]
-- [微积分学教程 第二卷]
-- [微积分学教程 第三卷]
-- [概率论基础教程]
-- [C++覆辙录]
-
