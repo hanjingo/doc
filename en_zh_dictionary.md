@@ -231,9 +231,7 @@ admit `/ədˈmɪt/` 承认，招供，准许
 
 admittedly `/əd'mɪtɪdli/` 不可否认的，公认的
 
-adopt `/əˈdɒpt/` 领养，提名，选用，移居，采用，采取，正式通过
-
-adopt `/ə'dɒpt/` 采用，收养，接受
+adopt `/əˈdɒpt/` 采用，领养，接受，提名，选用，移居，正式通过
 
 adoptee `/ə'dɒptiː/` 被收养者，被立嗣者
 
@@ -672,6 +670,8 @@ approximation `/əˌprɒksɪ'meɪʃn/` 近似值，近似
 april `/'eɪprəl/` 四月（简写Apr）
 
 apt `/æpt/` 恰当的，聪明的，公寓
+
+aptitude `/'æptɪtjuːd/` 天资，资质，才能，倾向
 
 ### aq
 
@@ -1156,6 +1156,8 @@ behold `/bɪ'həʊld/` 看，看到，注视，领悟
 bellow `/'beləʊ/` 吼叫，大声喝叫，风箱，鼓风机
 
 bells `/bels/` 排钟
+
+bend `/bend/` 弯曲，弯道，使弯曲，屈服，屈从，集中于
 
 beneath `/bɪ'niːθ/` 在...之下，低于
 
@@ -1745,11 +1747,15 @@ catalog `/ˈkætəlɒɡ/` 目录，系列，种类，产品样本，等级分类
 
 catalyze `/kætəlaɪz/` 催化，刺激，促进
 
+catastrophe `/kə'tæstrəfi/` 大灾难，大祸，彻底失败
+
 catastrophic `/ˌkæt.əˈstrɒf.ɪk/` 极差的，糟糕透顶的，灾难性的
 
 catchy `/'kætʃi/` 引人注目的，易记住的，朗朗上口的，诡诈的，不连贯的
 
 categorize `/'kætəɡəraɪz/` 分类
+
+cater `/'keɪtə(r)/` 提供饮食及服务，迎合，满足
 
 caterpillar `/ˈkætəpɪlə(r)/` 毛毛虫
 
@@ -2025,6 +2031,8 @@ clergy `/ˈklɜːdʒi/` 牧师，神职人员
 
 clerk `/klɑːk/` 店员，职员，文书，接待员
 
+cliche `/'kliːʃeɪ/` 陈腔滥调
+
 cliff `/klɪf/` 悬崖，峭壁
 
 climate `/'klaɪmət/` 气候，风气
@@ -2225,6 +2233,8 @@ compact `/ˈkɑːmpækt/` 小巧的，紧凑的，紧密的，合约，协定，
 
 companion `/kəm'pæniən/` 同伴，陪伴，参考书
 
+companionship `/kəm'pæniənʃɪp/` 友谊，陪伴，交情
+
 comparable `/ˈkɒmpərəbl/` 类似的，比得上的，可比较的
 
 comparison `/kəm'pærɪsn/` 比较，比喻
@@ -2396,6 +2406,8 @@ confound `/kən'faʊnd/` 使困惑，混淆，挫败，诅咒
 confounded `/kən'faʊndɪd/` 困惑的，惊慌失措的，讨厌的
 
 confront `/kənˈfrʌnt/` 直面，对峙，解决
+
+congenial `/kən'dʒiːniəl/` 同性质的，适意的，趣味相同的，友善的
 
 congenital `/kənˈdʒenɪtl/` 先天性的，天生的
 
@@ -2855,6 +2867,8 @@ crucial `/'kruːʃl/` 决定性的，关键的
 
 crucible `/'kruːsɪbl/` 坩埚，熔炉，严酷的考验
 
+crudely `/kruːdli/` 粗糙地，粗鲁地，未加工地
+
 cruelly `/'kruːəli/` 残酷的，极其，非常
 
 crunch `/krʌntʃ/` 压碎，嚼，困境，至关重要的
@@ -3259,6 +3273,8 @@ descend `/dɪˈsend/` 下降，走下，降临
 
 descendant `/dɪˈsendənt/` 后代，后裔，派生物
 
+description `/dɪ'skrɪpʃn/` 描述，刻画，类型，说明书
+
 descriptor `/dɪ'skrɪptə(r)/` 描述符
 
 designate `/ˈdezɪɡneɪt/` 委任，指定，指派
@@ -3652,6 +3668,8 @@ divide `/dɪˈvʌɪd/` 分配，划分，分开，除以
 division `/dɪ'vɪʒn/` 划分，除法，部门，分开
 
 divisor `/dɪ'vaɪzə(r)/` （数学）除数
+
+divorce `/dɪ'vɔːs/` 使分离，离婚
 
 dizz `/'dɪz/` 头晕，头昏眼花
 
@@ -4072,6 +4090,8 @@ emotion `/ɪˈməʊʃn/` 情绪，情感，激情
 emperor `/ˈempərər/` 皇帝
 
 emphasis `/ˈemfəsɪs/` 强调，重视，加强，重读
+
+emphatic `/ɪm'fætɪk/` 强调的，语势强的，有目共睹的
 
 empirical `/ɪm'pɪrɪkl/` 经验主义的
 
@@ -4501,6 +4521,8 @@ exponentiation `/ˌekspoʊˌnenʃɪ'eɪʃən/` 取幂（数学运算），求幂
 
 expose `/ɪk'spəʊz/` 揭露，曝光，面临
 
+exposition `/ˌekspə'zɪʃn/` 博览会，展览会，说明
+
 exposure `/[ɪk'spəʊʒə(r)/` 暴露，揭露，曝光，亮相，挨冻
 
 expounded `/ɪk'spaʊnd/` 详细说明，阐述，解释
@@ -4844,6 +4866,8 @@ flamboyant `/flæmˈbɔɪənt/` 华丽的，艳丽的，炫耀的
 flat `/flæt/` 平坦的，扁平的，低调的，单调的，平直的，公寓，变平，降调
 
 flatten `/ˈflætn/` 压平，弄平，推倒，摧毁，击倒
+
+flatter `/'flætə(r)/` 奉承，恭维，取悦
 
 flavor `/ˈfleɪvə/` 风味，调味，特色
 
@@ -6147,6 +6171,8 @@ inadmissible `/ˌɪnəd'mɪsəbl/` 不允许的，（法律上）不承认的
 
 inadvertently `/ˌɪnəd'vɜːtəntli/` 不注意地，疏忽地，非故意地
 
+inappropriate `/ˌɪnə'prəʊpriət/` 不适当的，不适宜的
+
 inattention `/ˌɪnə'tenʃn/` 粗心，疏忽
 
 inaugurate `/ɪˈnɔːɡjəreɪt/` 开创，为...揭幕，为...举行就职典礼
@@ -6258,6 +6284,8 @@ indifference `/ɪnˈdɪfrəns/` 冷漠，冷淡，漠不关心
 indifferently `/ɪn'dɪfrəntli/` 不在乎地，冷淡的，淡然的
 
 indigence `/'ɪndɪdʒəns/` 贫穷
+
+indigenous `/ɪn'dɪdʒənəs/` 土生土长的，本地的，天生的
 
 indigent `/'ɪndɪdʒənt/` 贫穷的，贫困的
 
@@ -6478,6 +6506,8 @@ instructive `/ɪnˈstrʌktɪv/` 有教育意义的
 instructor `/ɪn'strʌktə(r)/` 教员，讲师，指导书
 
 instrument `/ˈɪnstrəmənt/` 仪器，器械，工具，手段
+
+insufficient `/ˌɪnsə'fɪʃnt/` 不足的
 
 insulation `/ˌɪnsjuˈleɪʃn/` 隔离，绝缘，隔绝
 
@@ -7087,11 +7117,13 @@ knives `/naɪvz/` 刀子（knife的复数）
 
 [回到L](#L)--[回到顶部](#英汉词典)
 
+laborious `/ləˈbɔːriəs/` 费力的，幸苦的
+
 lace `/leɪs/` 鞋带，花边，缎带
 
 lack `/læk/` 缺乏，不足
 
-laborious `/ləˈbɔːriəs/` 费力的，幸苦的
+laden `/'leɪdn/` 装载，装货，装满的，负担重的
 
 lag `/læɡ/` 落后，延迟，滞后
 
@@ -7835,6 +7867,8 @@ minister `/ˈmɪnɪstər/` 部长，大臣，使节，照顾，给予帮助
 
 minor `/'maɪnə(r)/` 轻微的，次要的，辅修课目，未成年人
 
+minority `/maɪ'nɒrəti/` 少数，少数民族，未成年
+
 mint `/mɪnt/` 铸币厂，薄荷，伪造
 
 minterm `/'mɪntəm/` 小项
@@ -7926,6 +7960,8 @@ modem `/'məʊdem/` （计算机）调制解调器
 moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理中客
 
 moderately `/'mɒdərətli/` 适度地，一般地
+
+modesty `/'mɒdəsti/` 谦逊，虚心，端庄，朴实，中肯
 
 modifier `/ˈmɒdɪfaɪə(r)/` 修饰语
 
@@ -8134,6 +8170,8 @@ namely `/'neɪmli/` 即，也就是
 nap `/næp/` 打盹，小睡，疏忽，绒毛
 
 narcotic `/nɑːˈkɒtɪk/` 麻醉品，镇静剂，致幻剂
+
+narration `/nə'reɪʃn/` 叙述
 
 narrative `/'nærətɪv/` 故事，叙述
 
@@ -8754,6 +8792,8 @@ overdetermined `/'əʊvədɪ'tɜːmɪnd/` 过于武断的，超定的
 overdrawn `/ˌəʊvə'drɔːn/` 张拉过度的，透支的，夸张的
 
 overemphasize `/ˌəʊvər'emfəsaɪz/` 过分强调
+
+overestimate `/ˌəʊvər'estɪmeɪt/` 过高估计，评价过高
 
 overflow `/ˌəʊvəˈfləʊ/` 溢出，挤满
 
@@ -9411,6 +9451,8 @@ polymorphism `/ˌpɒlɪˈmɔːfɪzm/` （计算机）多态，多样性
 
 polynomial `/ˌpɒlɪ'nəʊmɪəl/` （数学）多项式，多项的
 
+pompous `/'pɒmpəs/` 傲慢的，自大的，浮华的
+
 pontage `/'pɒntɪdʒ/` 过桥费
 
 pontificate `/pɒn'tɪfɪkeɪt/` 武断地或自封为权威地谈论某事物，(教皇的)职位或任期
@@ -9638,6 +9680,8 @@ preserve `/prɪˈzɜːv/` 防腐，保护，维护，保存，保养，保鲜
 preside `/prɪˈzaɪd/` 主持，担任
 
 pressing `/'presɪŋ/` 紧迫的，紧急的
+
+prestigious `/pre'stɪdʒəs/` 享有声望的，声望很高的
 
 presumably `/prɪ'zjuːməbli/` 大概，据推测，可能
 
@@ -10269,6 +10313,8 @@ receptacle `/rɪˈseptəkl/` 容器
 
 receptionist `/rɪˈsepʃənɪst/` 接待员
 
+recession `/rɪ'seʃn/` 后退，经济不景气
+
 recipe `/ˈresəpi/` 配方，食谱，药方，秘诀
 
 recipient `/rɪˈsɪpiənt/` 接受者，收件人，受方
@@ -10651,6 +10697,8 @@ retention `/rɪ'tenʃn/` 保留物，保存，保持(力)，记忆力
 
 retinue `/'retɪnjuː/` 侍从，随员
 
+retirement `/rɪ'taɪəmənt/` 退休，隐匿处
+
 retransmission `/riːtrænz'mɪʃən/` 重发，中继，转播
 
 retreating `/rɪt'riːtɪŋ/` 再加工，再精制
@@ -10712,6 +10760,8 @@ rewrote `/ˌriː'rəʊt/` 再写，（计算机）重写
 [回到R](#R)--[回到顶部](#英汉词典)
 
 rhetoric `/ˈretərɪk/` 修辞学，花言巧语
+
+rhetorical `/rɪ'tɒrɪkl/` 修辞的，词藻华丽的
 
 ### ri
 
@@ -10869,7 +10919,7 @@ rum `/rʌm/` 朗姆酒，古怪的，危险的
 
 rummage `/ˈrʌmɪdʒ/` 翻找，供义卖的捐献物
 
-rumored `/'ruːmə/` 谣言，传闻，谣传
+rumor `/'ruːmə/` 谣言，传闻，谣传
 
 runaway `/'rʌnəweɪ/` 逃亡者，逃跑的，失控的
 
@@ -10969,9 +11019,9 @@ sapphire `/ˈsæfaɪə(r)/` 蓝宝石，蔚蓝色的
 
 satellite `/'sætəlaɪt/` 卫星，人造卫星
 
-satirist `/ˈsætərɪst/` 讽刺作家，惯于讽刺的人
+satire `/satire/` 讽刺
 
-satirize `/'sætəraɪz/` 讽刺
+satirist `/ˈsætərɪst/` 讽刺作家，惯于讽刺的人
 
 satisfaction `/ˌsætɪsˈfækʃn/` 满足，满意，欣慰，清偿，赔偿
 
@@ -12279,6 +12329,8 @@ tackle `/ˈtækl/` 解决，应付，处理，阻断，阻截，渔具
 
 tackling `/'tæklɪŋ/` 卷起，抱住，扭住
 
+tact `/tækt/` 机智，手法
+
 tactics `/ˈtæktɪks/` 战术，战略，兵法，手段
 
 tadpole `/ˈtædpəʊl/` 蝌蚪
@@ -12659,6 +12711,8 @@ topology `/tə'pɒlədʒi/` 拓扑，布局，地志学
 
 torpor `/ˈtɔːpə(r)/` 麻木，迟钝，死气沉沉，懒散，不活泼
 
+toss `/tɒs/` 投掷，震荡，辗转
+
 touchdown `/ˈtʌtʃdaʊn/` 着陆，降落，触地得分
 
 touching `/ˈtʌtʃɪŋ/` 感人的，动人的
@@ -12917,6 +12971,8 @@ twist `/twɪst/` 扭曲，弯曲，转动，旋转
 
 twisted `/'twɪstɪd/` 扭曲的，喝醉的，古怪的
 
+twofold `/'tuːfəʊld/` 两倍的，双重的
+
 ### tx
 
 [回到T](#T)--[回到顶部](#英汉词典)
@@ -13040,6 +13096,8 @@ unchoked `/ʌnt'ʃəʊkt/` 未堵塞的
 uncluttered `/ˌʌn'klʌtəd/` 整齐的，整洁的
 
 uncommon `/ʌn'kɒmən/` 不寻常的，不常见的，极度的
+
+uncongenial `/ˌʌnkən'dʒiːniəl/` 志趣不相投的，不相宜的，不合适的
 
 unconquerable `/ʌn'kɒŋkərəbl/` 不可征服的，克服不了的，压抑不住的
 
@@ -13759,6 +13817,8 @@ whirlwind `/'wɜːlwɪnd/`  旋风，旋风般的突发事件
 
 whittle `/ˈwɪtl/` 削（木头），削减，大刀，屠刀
 
+wholeheartedly `/ˌhəʊl'hɑːtɪdli/` 尽力，全心全意地
+
 wholesale `/'həʊlseɪl/` 批发，大规模的，草率的
 
 wholesome `/'həʊlsəm/` 有益健康的，合乎卫生的
@@ -13872,6 +13932,8 @@ worn `/wɔːn/` （wear的过去分词）用旧的，穿坏的，筋疲力尽，
 worry `/'wʌri/` 担心，撕咬，发愁，忧虑
 
 worse `/wɜːs/` 更坏的，更差的，更严重的
+
+worsened `/'wɜːsn/` 恶化，使更坏
 
 worst `/wɜːst/` 最坏的，最差的，最不利的
 

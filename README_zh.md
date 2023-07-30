@@ -181,6 +181,11 @@ Qt
 - [套接字](LANG/C++/qt_socket_zh.md)
 - [单元测试](LANG/C++/qt_test_zh.md)
 
+### [english](ENGLISH/README_zh.md)
+
+- [English语法](ENGLISH/grammary_zh.md)
+- [English写作](ENGLISH/writting_zh.md)
+
 ### [go](LANG/GO/README_zh.md)
 
 - [总结](LANG/GO/summary_zh.md)
