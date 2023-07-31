@@ -18,7 +18,9 @@
 | 主+谓+间宾+直宾 | Chatting on the Internet | brings   | me(间接宾语) a lot of fun.(直接宾语)           |
 | 主+谓+宾+宾补   | We                       | can call | Internet addicts(宾语) webaholics.(宾语补足语) |
 
-### 陈述句的否定
+### 陈述句
+
+#### 陈述句的否定
 
 陈述句的否定构成有两种：
 
@@ -41,7 +43,9 @@
   | I like English.   | I do not like English.    |
   | He likes English. | He does not like English. |
 
-### 一般疑问句
+### 疑问句
+
+#### 一般疑问句
 
 一般疑问句的构成有两种：
 
@@ -63,7 +67,7 @@
   | He likes English. | Does he like English? | Yes, he does. / No, he doesn't. |
   | I likes English.  | Do you like English?  | Yes, I do. / No, I don't.       |
 
-### 特殊疑问句
+#### 特殊疑问句
 
 特殊疑问句是在上述一般疑问句的基础上变化而来的。
 
@@ -87,7 +91,43 @@
 | Which            | Which one(可省略) do you want?       |
 | Whose            | Whose car did you borrow last night? |
 
+### 祈使句
 
+TODO
+
+### 感叹句
+
+TODO
+
+### 从句
+
+#### 主语从句
+
+TODO
+
+#### 宾语从句
+
+TODO
+
+#### 表语从句
+
+TODO
+
+#### 定语从句
+
+TODO
+
+#### 状语从句
+
+TODO
+
+#### 同位语从句
+
+TODO
+
+### 倒装
+
+TODO
 
 ---
 
@@ -95,7 +135,117 @@
 
 ### 主格人称代词
 
-TODO
+主格人称代词用法：
+
+1. 主格人称代词在句中用作主语
+
+   例：She is my daughter.
+
+2. 作并列主语时，主格人称代词的排列顺序
+
+   |      | 顺序                                                         |
+   | ---- | ------------------------------------------------------------ |
+   | 单数 | you and i<br>you and he<br>you, he and i                     |
+   | 复数 | we and you<br>we and they<br>we, you and they<br>you and they |
+
+3. 表示泛指的主格代词
+
+   - one：one作不定人称代词，意思是“任何人”，因此只能用于谈泛指的人们，而且是包括说话者本人在内。不能用来转指某一个人或某一特定的群体，也不能用来指不包括说话人在内的一群人
+
+     例：One should always try to help people.
+
+   - we, you, they：用来表示泛指
+
+     例：We should never lose heart in face of difficulties.
+
+4. she (her)可用于拟人化，表示country，motherland，moon，earth，ship等等
+
+   例：The ship lost most of her rigging in the storm.
+
+### 宾格人称代词
+
+宾格人称代词用法：
+
+1. 宾格人称代词（如me，you，him，her）主要在句中作宾语
+
+   - 用在动词后边作直接宾语，例：I like her.
+   - 用在动词后边作间接宾语，例：He bought me dinner that day.
+   - 用作介词宾语，例：I am very fond of him.
+
+2. 宾格代词也可用作表语
+
+   例：It's me.
+
+3. 主格代词和宾格代词可以作同位语
+
+   例：Our teachers are all nice to us students.
+
+4. 宾格代词在句中作宾语的位置
+
+   - 表间接宾语（通常是表示人）可在直接宾语之前。
+
+     例：He bought me a pen as a birthday gift.
+
+   - 如果直接宾语是人称代词，直接宾语应紧跟在动词之后；而间接宾语放在句末，且在间接宾语前要用介词to或for。
+
+     例：
+
+     I will give it to you.
+
+     Throw it away.
+
+### 物主代词
+
+物主代词歧视就是人称代词的所有格形式，表示所有关系，分为形容词性和名词性。
+
+- 形容词性物主代词：my, your, his, her, its, our, your, their。
+- 名词性物主代词：mine, yours, his, hers, its, ours, yours, theirs。
+
+形容词性物主代词的用法：
+
+1. 形容词性物主代词必要和名词连用，对名词起限定作用，不能单独使用
+
+   例：Your book is over there.
+
+2. 若表示强调，我们可以在形容词性物主代词后边加上own
+
+   例：I wish I had my own house.
+
+名词性物主代词的用法：
+
+1. 与形容词性物主代词相反，名词性物主代词只能单独使用，不能再与名词连用
+
+   例：~~This is not my book, Mine bookis in my bag~~ -> This is not my book, Mine is in my bag.
+
+2. 我们也可以用"of + 名词性物主代词"这样的结构
+
+   例：a friend of min.
+
+### 反身代词
+
+反身代词有：myself, yourself, himself, herself, itself, ourselves, yourselves, themselves.
+
+反身代词的用法：
+
+1. 反身代词用作宾语
+
+   - 若动词所表示的行为施加到施动者自己身上时，也就是说主语和宾语为同一人时，我们用反身代词作动词的宾语
+
+     例：Take good care of yourself.
+
+   - 若主语和宾语不是同一人时，则**不能用反身代词作宾语**
+
+     例：~~That could help themselves to predict earthquakes~~
+
+2. 反身代词起强调作用
+
+   - 强调主语；例：He **himself** went to visit the old lady.
+   - 强调宾语；例：He saw Tom **himself**.
+
+3. 介词+反身代词
+
+   - by oneself；例：I Went there by myself.
+   - of oneself；例：The door opened of itself.
 
 
 
@@ -138,10 +288,6 @@ look, sound, smell, taste, feel, seem, appear, become, turn, ...
 
 不及物动词（intransitive verb）：这种动词所表示的动作没有作用对象，其本身意思完整，其后不需带宾语。在词典中标为vi.。
 
-比如我们说“他死了（died）”，“死（died）”这个动作就只是主语自主完成的，并没有作用对象，并不是说他的死使另外一个人怎么样了。
-
-再比如，我们说These children are playing.（这些孩子正在玩耍。）play本身已经表达了完整的意思，也没有作用的对象，这句话并没有告诉我们孩子们在玩什么。
-
 ### 双宾动词
 
 双宾动词（dative verb）：这种动词后面所接成分有人又有物。一般这里的“人”表示动作的接受者，称作间接宾语（indirect object）；“物”表示动作作用的对象，是动作的承受者，称作直接宾语（direct object）。
@@ -154,14 +300,14 @@ look, sound, smell, taste, feel, seem, appear, become, turn, ...
 
 宾语和宾语补足语合起来叫作复合宾语。
 
-区分双宾语和复合宾语:
-
-在间接宾语后边加上be动词，若能构成合乎逻辑的句子，后面的名词即是补足语。比如我们可以说“John is our chairman.”。所以第一句中的our chairman是宾语补足语。若加be动词无法构成合乎逻辑的句子，后面的名词则为直接宾语。比如我们不能说“John is a cake.（约翰是一块蛋糕。）”。所以，“I made John a cake.”是双宾语结构。
-
 例：
 
 - I made John our chairman。
 - I made John a cake。
+
+### 情态动词
+
+TODO
 
 
 
@@ -532,6 +678,28 @@ an hour, an unkind old lady, an apple, an egg, an L(元音开头的单个字母)
 
 ---
 
+## 副词
+
+根据副词的词义，我们可以把副词做如下分类：
+
+1. TODO https://www.tingclass.net/show-10288-472266-1.html
+
+### 关系副词
+
+TODO
+
+
+
+---
+
+## 介词
+
+TODO
+
+
+
+---
+
 ## 形容词
 
 在一个名词短语中，形容词作定语修饰一个名词时，位置是："限定词+形容词+名词"：
@@ -771,6 +939,10 @@ There is something wrong with my computer.
 
      例：It is a most difficult problem.
 
+### 个体形容词
+
+TODO
+
 
 
 ---
@@ -892,11 +1064,132 @@ There is something wrong with my computer.
 | 过去进行时态。 | I was watching CCTV news when he arrived yesterday.          |
 | 将来进行时态。 | I will be watching CCTV news at 7:15 pm tomorrow.<br>I will be watching CCTV news when you come tomorrow. |
 
+### 完成时态
+
+TODO
+
 
 
 ---
 
+## 其它
 
+### 不定式
+
+TODO
+
+### 动名词复合结构
+
+TODO
+
+### 被动语态
+
+TODO
+
+### 限定词
+
+TODO
+
+### 关系词
+
+TODO
+
+### 主谓一致
+
+主谓一致：即指谓语动词人称和数上要和主语一致；具体规则如下：
+
+1. 在一般现在时中，若主语是单数第三人称，谓语动词要加`-e`或`-es`，具体变化同名词的单数变复数
+
+   单数第三人称作主语的词：
+
+   - 单数人称代词：he, she, it, ...
+   - 不定代词：each, everyone, ...
+   - 人名：John, ...
+   - 普通单数名词：my brother, English, ....
+
+   单数动词变化规则：
+
+   - be；例：John is smart
+   - have；例：She has a gift
+   - 其它动词在词尾加`-s`或`-es`，具体变化同名词的单数变复数：work/works, like/likes, do/does, go/goes, study/studies, cry/cries, teach/teaches.
+
+   复数动词变化规律：
+
+   - be；例：They are smart
+   - have；例：They have gifts
+   - 其它动词不需在词尾加`-s`或`-es`，直接用动词原形；例：My students work hard.
+
+2. 在助动词或情态动词后面，直接接动词原形
+
+   例：~~She can sings in English~~ -> She can sing in English.
+
+3. There be 句型须主谓一致
+
+   例：There is a book on the desk.
+
+4. "数量词+名词"结构的主谓一致
+
+   |                                        | 数量词                                                       | 例子                                                         |
+   | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | 只接单数                               | one<br>each<br>every                                         | one boy<br>each boy<br>every boy                             |
+   | 只接复数                               | two, three, etc.<br>both<br>a couple of<br>a few<br>few<br>several<br>many<br>a number of | two boys<br>both boys<br>a couple of boys<br>a few boys<br>few boys<br>several boys<br>many boys<br>a number of boys |
+   | 只与不可数名词连用                     | a little<br>little<br>much<br>a great deal of<br>a large amount of | a little water<br>little water<br>much water<br>a great deal of water<br>a large amount of water |
+   | 与可数名词复数或<br>不可数名词连用均可 | not any<br>some<br>a lot of<br>lots of<br>plenty of<br>most<br>all | not any boys<br>some boys<br>a lot of boys<br>lots of boys<br>plenty of boys<br>most boys<br>all boys |
+
+   在上述数量词中，有些还可以接of短语连用；具体用法如下：
+   $$
+   \text{总的规则：接可数名词复数时用复数谓语；接不可数名词时用单数谓语。} \\
+   
+   \left.
+   \begin{matrix}
+   \text{all of} \\
+   \text{most of} \\
+   \text{some of} \\
+   \text{any of}
+   \end{matrix}
+   \right\} + \text{特指限定词} + \text{可数名词复数或不可数名词} \\
+   
+   \text{例：Most of the information is uesless} \\
+    
+   \left.
+   \begin{matrix}
+   \text{many of} \\
+   \text{a few of} \\
+   \text{few of} \\
+   \text{several of} \\
+   \text{both of} \\
+   \text{two of} \\
+   \text{three of} 
+   \end{matrix}
+   \right\} + \text{特指限定词} + \text{可数名词复数} \\
+   
+   \text{例：Many of these students are good at English} \\
+   
+   \left.
+   \begin{matrix}
+   \text{much of} \\
+   \text{a little of} \\
+   \text{little of} 
+   \end{matrix}
+   \right\} + \text{特指限定词} + \text{不可数名词} \\
+   
+   \text{例：Much of the water is wasted} \\
+   
+   \left.
+   \begin{matrix}
+   \text{one of} \\
+   \text{each of} \\
+   \text{every one of} 
+   \end{matrix}
+   \right\} + \text{特指限定词} + \text{可数名词复数} + \text{单数谓语} \\
+   
+   \text{例：Much of the water is wasted} \\
+   $$
+   
+
+
+
+---
 
 ## 参考
 
