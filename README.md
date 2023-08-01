@@ -4,7 +4,7 @@
 
 ## Quick Guide
 
-[En-Zh-Dictionary](en_zh_dictionary.md) 
+[En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md) 
 
 ---
 

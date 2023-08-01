@@ -682,7 +682,193 @@ an hour, an unkind old lady, an apple, an egg, an L(元音开头的单个字母)
 
 根据副词的词义，我们可以把副词做如下分类：
 
-1. TODO https://www.tingclass.net/show-10288-472266-1.html
+1. 时间副词：afterwards, eventually, recently, lately, soon, then, now, at one, since then, till, before, early, immediately.
+1. 地点副词：down, from, in, on, over, out of, round, away, up, here, there, somewhere, anywhere, nowhere, everywhere.
+1. 频度副词：always, continually, frequently, occasionally, often, once, repeatedly, sometimes, usually, ever, never, rarely, seldom.
+1. 程度副词：absolutely, almost, barely, completely, enough, entirely, extremely, fairly, far, hardly, just, much, nearly, only, quite, rather, really, scarcely, so, too, very.
+1. 方式副词：bravely, calmly, fast, happily, hard, well, intentionally.
+1. 句子副词：actually, apparently, certainly, clearly, evidently, obviously, probably, undoubtedly, definitely, primarily, chiefly, basically, mainly, principally, fundamentally, normally, hopefully.
+
+一般来说，副词在句中的位置有以下几种：
+
+- 句首；例：Yesterday I met her in the park.
+
+- 句中；例：I have never been there before.
+
+- 句末
+
+  例：He went away quickly.
+
+  几个副词出现在句末时，一般采用“方式副词+地点副词+时间副词”的顺序；例：She sang an English song nicely in the auditorium last night.
+
+确定性副词和不确定性副词，如：probably, possibly, perhaps, certainly, definitely, surely等，通常不用于句末，而是用于句首和句中；例：He has probably not been there before.
+
+### 时间副词
+
+时间副词用于表示动作发生的时间；有以下几种分类：
+
+1. 表示确切时间的副词：yesterday, today, now, tomorrow.
+2. 表示不确切时间的副词：already, recently, lately, before, soon, then, afterwards.
+3. 表示时间的副词短语：this morning, last night, in the morning/afternoon/evening, a week ago, three months ago, at once, in a while, in recent days.
+
+时间副词在句中的位置：
+
+1. 表示确切时间的副词和表示时间的短语一般不能用于句中，它们可用于句首或句末
+
+   例：Tommorrow（句首） I'm leaving for Beijing on a business trip.
+
+2. 表示不确切的时间副词可用于句首，句中或句末
+
+   例：
+
+   Recently（句首） I have been busy. 
+
+   I've recently（句中） been busy. 
+
+   I have been busy recently（句末）.
+
+3. before, early, immediately, late通常位于句末
+
+   例：He come to school late.
+
+### 地点副词
+
+地点副词表示动作发生的地点和方位；有以下几种分类：
+
+1. 表示方向的地点副词：away, down, in, off, on, over, out, round, up.
+2. 表示位置的地点副词：here, there, somewhere, anywhere, nowhere, everywhere.
+
+地点副词在句中的位置：
+
+1. 方向地点副词一般用于“位置地点副词/介词短语”之前
+
+   例：He often walks around in the garden after supper.
+
+2. 两个表示位置的介词短语连用时，较大的地点位于句末
+
+   例：He works in a foreign-funded company in Beijing.
+
+3. 方向地点副词：away, down, in, off, on, over, out, round, up，还有here, there可以用于倒装结构而放在句首；这时可以有两种倒装结构：
+
+   - 副词+动态动词+名词主语；例：Here comes the teacher.
+   - 副词+代词主语+动态动词；例：Here he comes.
+
+4. 与上面的倒装结构类似，down, from, in, on over, out of, round, up等用作介词时，引导的表示地点的介词短语用在句首，句子采用全部倒装结构（介词短语+动词+主语）
+
+   例：On the table sits a cat.
+
+### 频度副词
+
+频度副词表示动作发生的频率或次数；频度副词分类：
+
+1. 表示确切频率的副词或短语：daily, weekly, monthly, yearly/annually, twice a week/month/year.
+2. 表示不确切频率的副词
+   - 表示肯定：always, often, usually, sometimes, occasionally, frequently, continually, repeatedly, once, ever.
+   - 表示否定：never, rarely, seldom.
+
+频度副词在句中的位置：
+
+1. 表示不确切频率的副词与句中的动词形式有关，情况如下：
+
+   - 用在实义动词之前，be(am, is, are, was, were)动词和助动词(will, should, have)之后
+
+     例：I often do some shopping on weekends.
+
+   - 若句中的谓语动词由多个部分组成，比如：will be done, should have done等，这时副词一般要放在第一个助动词之后
+
+     例：This project will never be finished.
+
+   - 在加强语气的句子中，我们一般是把副词放在第一个助动词之前或be动词之前
+
+     例：You really will get a reward one day.
+
+   - 在只有助动词而省去实义动词的句子中，副词一定要放在这个助动词之前
+
+     例：You should have known better than to trust him.
+
+2. 表示确切频率的副词一般只能用于句末
+
+   例：Milk is delivered daily.
+
+3. 上述表示不确切频率的副词，有些也可以用于句首或句末
+
+   例：Usually I work late into the night.
+
+4. always可在句末，但不能放在句首，除非用在祈使句中
+
+   例：~~Always you make the same mistakes.~~ -> You always make the same mistakes.
+
+5. 在否定句中的频度副词
+
+   一般来说，always要放在not之后（not always）；而often, sometimes, usually要放在not之前；
+
+   例：The history lectures sometimes aren't interesting.
+
+6. 否定频度副词never, rarely, seldom使用时有两点需注意
+
+   - 不能再与否定词not连用；例：~~He doesn't seldom go out at night~~ -> He seldom goes out at night.
+   - 一般只用在句中；若放在句首，则句子要用部分倒装；例：I have never heard such a story <--> Never have I heard such a story.
+
+### 程度副词
+
+程度副词表示动作发生的大小和程度；有以下分类：
+
+- absolutely, almost, completely, enough, entirely, extremely.
+- fairly, far, just, much, nearly, only.
+- rather, really, so, too, very, quite.
+- 表示否定：barely, scarcely, hardly.
+
+以下程度副词用于修饰名词：
+
+quite, only, even, particularly, especially, almost, rather.
+
+例：quite an expert.
+
+程度副词在句中的位置：
+
+1. 一般直接放在所修饰的对象之前
+
+   - 修饰形容词；例：You are absolutely wrong.
+   - 修饰动词；例：I really like English.
+   - 修饰副词；例：He speaks English quite well.
+
+2. enough的特殊用法
+
+   enough是个例外，它要放在所修饰的形容词和副词之后；例：He didn't work quickly enough.
+
+3. barely, scarcely, hardly不能与否定词连用
+
+   例：~~He hardly attends class~~ -> He rarely attends class.
+
+### 方式副词
+
+方式副词表示动作行为的方式，一般只用于修饰动词。
+
+方式副词在数目上是不固定的，因为它可以由相应的形容词加`-ly`构成；例：bravely, calmly, fast, happily, hard, well, intentionally.
+
+方式副词在句子中的位置通常位于动词之后，规则如下：
+
+1. 通常要放在动词后边；例：He ran **fast**.
+2. 当动词带有宾语时，因为宾语是主要元素，因此宾语在前，副词后置；例：He can finish the job **quickly**.
+3. 若动词后边所接的成分很长，往往把**副词放在动词前面**；例：He **firmly believes** taht he will succeed.
+4. 在"动词+介词+宾语"结构里，方式副词可用于宾语后或介词前；例：The class is listening carefully to the teacher.
+5. 方式副词要放在被动分词之前；例：I was badly paid in that company after i had just graduated.
+
+### 句子副词
+
+句子副词通常放在句首，用来修饰整个句子，而非句子中的谓语动词。通常表达说话人的观点或说话的角度；用法如下：
+
+1. 表明说话的角度：economically, objectively, philosophically, scientifically, nutritionally, geologically, ...
+
+   例：Geologically, a thousand years is a short time.
+
+2. 表达说话人的态度：actually, apparently, certainly, clearly, evidently, obviously, presumably, probably, undoubtedly, definitely, primarily, chiefly, basically, mainly, principally, fundamentally, normally, hopefully, ...
+
+   例：Frankly, i think he is dishonest.
+
+3. 位置不一样可能会导致意思变化
+
+   例：Happily, he didn't die (幸好，他还活着) <--> He didn't die happily（挂的时候不是很快乐）.
 
 ### 关系副词
 
@@ -694,9 +880,106 @@ TODO
 
 ## 介词
 
-TODO
+介词的作用：介词是把名词（或相当于名词的成分）与动词，形容词或其它名词联系起来，以表示前后词语之间的关系；例：The great Nobel Prize-winning Irish poet, Seamus Heaney, gave me a stanza from a poem he wrote that today hangs on the wall of my office in the upstairs of the White House.
 
+介词的种类：
 
+1. 简单介词（simple preposition）：at, by, for, from, in, near, of, off, on.
+
+2. 复合介词（compound preposition）
+
+   - 由两个简单介词连在一起固定构成的介词：inside, into, onto, outside, throughout, upon, within, withoug.
+
+   - 由两个介词搭配连用的介词：from above, from behind, from beneath, from under, until after, except for.
+
+     例：Until after World War 2, the new science was neglected.
+
+3. 短语介词（phrasal preposition）：at the cost of, at the mercy of, at odds with, by means of, by reason of, by virtue of, by way of, in place of, in favor of, in spite of, with an eye to.
+
+**注意**
+
+1. 介词的宾语（用在介词后）：介词不能独立使用，在介词后面必须带有宾语；
+2. 与介词搭配的词（用在介词前）：与介词连用，置于介词前面的词主要有动词，名词和形容词；
+3. 介词是英语词类中的一种虚词，不能独立在句中充当句子成分。但介词与其宾语一起构成介词短语以后，就可以在句中充当多种句子成分。可以作主语，补足语，定语和状语等。
+
+### 表示时间，日期的介词
+
+- at, in, on
+
+  1. at（主要表示时间点）
+
+     - 用来表示在特定的某一时刻；例：at nine a.m.
+     - 用来表示不确定的某一时刻；例：at night.
+     - 用来表示年龄段；例：He got married at twenty.
+
+  2. in（主要表示时间段）
+
+     - 一般指在相对较长的一段时间内；例：in the twenty-first century.
+     - 还可表示“在...时间之内/之后”，通常用于将来时态中；例：The train is leaving in a minute.
+
+  3. on（主要表示具体的某一天）
+
+     - 表示具体的日期和星期；例：On my birthday.
+     - 表示特定某一天的上午，下午，凌晨或半夜等；例：On a hot midnight in July.
+     - 表示"在第几天"；例：On his first day to school.
+     - on+动名词或名词；例：on doing sth.
+
+  4. in the beginning/end与at the beginning/end
+
+     例：
+
+     At the beginning of the concert.
+
+     In the beginning, i wrote to my family regularly, later i just gave up.
+
+  5. last/next/this/every前不用at/on/in
+
+     例：~~on next Friday~~ -> I'll see you next Friday.
+
+- during, for
+
+  1. during表示"在...期间内"。表示事件发生的过程，不表示在此过程中事件发生的起止事件。for则表示这件事延续时间的长短，指出事件发生的开始时间。
+
+     例：I had lived in the countryside for 8 years before i moved to beijing.
+
+  2. during可接表示事件延续一段时间的名词，如stay, visit, travel等；for一般不能这样用，for一般只接具体的时间量。
+
+     例：
+
+     during my visit to China.
+
+     for six years.
+
+  3. from, since, for
+
+     - from：通常要和介词to或till/until连用；例：Most people work from nine to five.
+     - since：since+时间点，表示“从那一刻开始”；通常与现在完成时或过去完成时连用；例：He has been here since last Sunday.
+     - for：for+时间段，表示“动作延续到说话的那一刻”；通常与现在完成时或过去完成时连用；例：I have lived here for a year.
+
+  4. before, after, till/until
+
+     这几个词即可作介词接短语，又可用作连词接从句。他们后面所接的时间一般是“时间点”，以表示“在某一时刻之前（before）”，“在某一时刻之后（after）”，“一直到某一时刻为止（till/until）”。
+
+     例：We finished the work before 10 o'clock.
+
+     **till/until用法注意点：**
+
+     - 延续性句子谓语（用肯定） + till/until + 时间点（若是从句，则从句中的谓语动词是短暂性动词）
+
+       例：He will stay here until next Sunday.
+
+     - 短暂性句子谓语（用否定） + till/until + 时间点（若是从句，则从句中的谓语动词是短暂性动词）
+
+       例：He didn't finish the work until 10 o'clock.
+
+  5. by
+
+     - by的意思是no later than，表示“不迟于某个时间”，“到了某个时间”；例：by the end of next year.
+     - by引导的时间状语常与将来完成时态或过去完成时态连用；例：By the end of last year i had learned 2,000 words.
+
+### 表示地点，方位的介词
+
+TODO https://www.tingclass.net/show-10288-472283-1.html
 
 ---
 
