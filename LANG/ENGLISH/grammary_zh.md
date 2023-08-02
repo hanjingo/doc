@@ -18,7 +18,71 @@
 | 主+谓+间宾+直宾 | Chatting on the Internet | brings   | me(间接宾语) a lot of fun.(直接宾语)           |
 | 主+谓+宾+宾补   | We                       | can call | Internet addicts(宾语) webaholics.(宾语补足语) |
 
+### 其它句型
+
+1. 主语+谓语动词（+状语）；例：The Sun sets in the west.
+
+2. 主语+系动词+主语补足语
+
+   - 最常见的是形容词，名词（短语）做表语；例：He looks unhappy.
+
+   - 也可以用介词短语做表语；例：Beauty is in the eys of the beholder.
+
+   - 副词不能用作表语；例：~~He looks happily~~.
+
+   - 在英语中，除了be以外，还有其它系动词
+
+     1. 常见的单传表示主语的特征，状态的：feel, look, sound, taste, smell, seem, appear.
+
+        例：The iron feels hot.
+
+     2. 表示主语由一种状态转变为另一种状态的（这些系动词与形容词连用，通常具有固定的搭配关系）：become, grow, get, turn, fall, go, come.
+
+        例：The jokes fell flat.
+
+     3. 常见的表示主语保持某种状态的：continue, remain, stay, keep, hold, rest, prove.
+
+        例：The weather continued fine for deveral days.
+
+     4. 常见的近似于不及物动词的系动词：sit, act, arrive, blush, marry, die, be, born.
+
+        例：All the audience sat silent.
+
+3. 主语+谓语+宾语；例：Beauty will buy no beef.
+
+4. 主语+谓语+双宾语；例：He showed the guard（间接宾语） his passport（直接宾语）.
+
+   有些动词后需要接两个宾语：一个指人的宾语（间接宾语），一个指物的宾语（直接宾语），共称为双宾语。根据间接宾语和介词的关系，可以将这样的动词分为以下几类：
+
+   - 与give一样，当间接宾语后移时，间接宾语前需带介词to，表示间接宾语是动作的承受者。这样的动词有：
+
+     assign, award, bring, deliver, deny, feed, give, grant, hand, lend, offer, owe, pass, pay, promise, post, read, recommend, sell, send, show, take, write.
+
+     例：He showed his passport to the guard.
+
+   - 与buy一样，当间接宾语后移时，间接宾语前需带介词for，这样的动词有：
+
+     book, buy, build, change, choose, cook, fetch, find, get, keep, make, prepare, sing, order.
+
+     例：I am going to buy a gift for her.
+
+   - 有个别动词只用于这样的结构：主语+动词+间接宾语（+直接宾语），而不能转换成带介词的结构。这样的动词有：charge, cost, bet等。
+
+     例：I'll bet you ten dollars.
+
+5. 主语+谓语+复合宾语
+
+   - 接复合宾语的动词
+
+     常见的带复合宾语的动词有：appoint, believe, call, choose, consider, declare, elect, feel, find, keep, leave, let, make, name, nominate, prove, see, suppose, vote。
+
+     例：They appointed John chairman.
+
+   - 区分双宾语和复合宾语；例：I make John our chairman.
+
 ### 陈述句
+
+陈述句用于陈述事实，表明态度，阐述观点；例：Studying English takes time.
 
 #### 陈述句的否定
 
@@ -47,7 +111,7 @@
 
 #### 一般疑问句
 
-一般疑问句的构成有两种：
+一般疑问句需要用yes或no来回答，其构成有两种：
 
 - 谓语动词含有be动词或情态动词
 
@@ -69,7 +133,7 @@
 
 #### 特殊疑问句
 
-特殊疑问句是在上述一般疑问句的基础上变化而来的。
+特殊疑问句是在上述一般疑问句的基础上变化而来的，用来对句子中某一部分进行提问，或者用来对句中某一具体内容提问。
 
 句式：特殊疑问词+一般疑问句 或 作主语的疑问词+谓语部分。
 
@@ -91,43 +155,201 @@
 | Which            | Which one(可省略) do you want?       |
 | Whose            | Whose car did you borrow last night? |
 
+#### 选择疑问句
+
+选择疑问句提供两种或两种以上情形供对方选择，不用yes或no来回答；例：Do you like tea or coffee?
+
+#### 反义疑问句
+
+反义疑问句附在陈述句之后，对陈述句所说的事实和观点提出疑问；一般来说由两种形式：
+
+- 陈述句肯定；例：I am going to look like a lemon, aren't i?
+- 陈述句否定；例：You have not completed that job, have you?
+
 ### 祈使句
 
-TODO
+祈使句特点：
+
+1. 用以表示请求，命令，劝告，建议等；
+2. 主语you常省略，只以动词原形开头；
+3. 一般没有时态变化，不与情态动词连用。
+
+例：Stop bugging me!
 
 ### 感叹句
 
-TODO
+感叹句主要由what和how引导；
+
+what结构主要有三种：
+
+1. What a(n\2) + 形容词 + 可数名词单数 + 主谓部分 + ！
+
+   例：What a lovely boy he is!
+
+2. What + 形容词 + 不可数名词/可数名词复数 + 主谓部分 + !
+
+   例：What foolish mistakes you have made!
+
+3. What + a(n\2) + 可数名词单数 + !
+
+   例：What a day!
+
+how结构主要有三种：
+
+1. How + 形容词/副词 + 主谓部分 + !
+
+   例：How lovely the boy is!
+
+2. How + 形容词 + a(n\2) + 可数名词单数 + 主谓部分 + !
+
+   例：How lovely a by he is!
+
+3. How + 主谓部分(实义动词作谓语) + !
+
+   例：How he snores!
 
 ### 从句
 
-#### 主语从句
+以下从句统称为名词性从句：
 
-TODO
+- 主语从句；例：**What i am reading** is interesting.
+- 宾语从句；例：I believe **what he said**.
+- 表语从句；例：The book is **what i want**.
+- 同位语从句；例：The mother must accept the fact **that her baby is deaf**.
 
-#### 宾语从句
+我们使用以下三种句子来充当以上4种成分：
 
-TODO
+- 陈述句
 
-#### 表语从句
+  陈述句转换为名词性从句时，句首要加that
 
-TODO
+  - 主语从句：把"that + 陈述句"结构放在主语位置即构成主语从句；
 
-#### 定语从句
+    常见的主语从句句型：
 
-TODO
+    | It is + 过去分词 + that从句 | - It's reported that...<br>- It's believed that...<br>- It is generally thought that...<br>- It should be noted that...<br>- It has been found that...<br>- It must be pointed out that... |
+    | --------------------------- | ------------------------------------------------------------ |
+    | It is + 形容词 + that从句   | - It is clear that...<br>- It is possible that...<br>- It is likely that...<br>- It is natural that...<br>- It is certain that...<br>- It is strange that...<br>- It is fortunate that...<br>- It is necessary that... |
+    | It is + 名词短语 + that从句 | - It is a pity that...<br>- It is a fact that...<br>- It is good news that...<br>- It is a good thing that...<br>- It is no wonder that....<br>- It is a shame that...<br>- It is an honor that...<br>- It is common knowledge that...<br>- It is my belief that...<br>- It is a miracle that... |
 
-#### 状语从句
+    例：
 
-TODO
+    Englis is difficult.
 
-#### 同位语从句
+    It is obvios that the doesn't understand English.
 
-TODO
+  - 宾语从句
 
-### 倒装
+    把"that+陈述句"这一结构放在宾语位置即构成宾语从句；
 
-TODO
+    例：
+
+    I think (that) you are right.
+
+    I think that a sound knowledge of grammar is indispensable to good writing.
+
+    **注意：只有宾语从句中的that才可以省略，主语从句，表语从句和同位语从句中的that一般不可以省略。**
+
+  - 表语从句
+
+    把“that+陈述句”这一结构放在表语位置即构成表语从句；例：My idea is that the child should be sent to school.
+
+  - 同位语从句
+
+    把“that+陈述句”这一结构放在同位语位置即构成同位语从句；例：The fact that he succeeded in the experiment pleased everybody.
+
+- 一般疑问句
+
+  1. 一般疑问句要变成陈述语句，并且用whether或if来作引导词
+
+     - 主语从句；例：Whether he comes or not makes no difference to me.
+     - 宾语从句；例：I don't know if he needs my help.
+     - 表语从句；例：My concern is whether he comes or not.
+     - 同位语从句；例：They are faced with the problem whether they should continue to work.
+
+  2. if一般只用于引导宾语从句，而whether可引导包括宾语从句在内的各种名词从句。
+
+  3. if不和or not直接连用，即一般不说if or not，但可以说if...or not；而whether没有此限制
+
+     例：~~I don't know if or not be will come~~ --> I don't know whether or not be will come.
+
+- 特殊疑问句
+
+  1. 主语从句；例：What he told you is true.
+  2. 宾语从句；例：The mother will buy whichever books her son wants.
+  3. 表语从句；例：Money is what we are badly in need of.
+  4. 同位语从句；例：I have no idea who he is.
+
+  特殊疑问句需转换成陈述句语序，不用倒装或疑问语序
+
+  例：I have no idea when he will return.
+
+引导名词从句的常用连词：
+
+- 对于陈述句，连词that在从句中不作成分，也无词义；
+- 对于一般疑问句，连词whether，if在从句中不作成分，但有词义；
+- 对于特殊疑问句
+  1. when, where, why, how在从句中作状语；
+  2. who, whom, what在从句中作主语，宾语和表语；
+  3. which, whose在从句中作定语，后面接名词。
+
+以下关系代词在定语从句中作宾语时可以省略：
+
+- who；例：I'm talking about friends who you can share almost everything with.
+- whom；
+- which；例：Tina likes the present which i gave her for her birthday.
+- that；例：Tina likes the present that i gave her for her birthday.
+
+### 定语从句
+
+定语从句的两个重要概念：
+
+1. 先行词：被定语从句修饰或限制的对象称为先行词；
+2. 关系词：指代先行词，起连接主句和从句的作用并且在定语从句中充当一定成分的连接词称为关系词；关系词有两个作用：
+   - 代词作用；指代先行词并且在定语从句中充当一定成分；
+   - 连接作用；起连接主句和从句的作用。
+
+定语分类：
+
+| 两种定于       | 比较                                                         | 例句                                  |
+| -------------- | ------------------------------------------------------------ | ------------------------------------- |
+| 形容词作定语   | 形容词作定语多置于名词之前。                                 | I don't like **lazy** people.         |
+| 完整句子作定语 | 从句修饰名词要置于名词之后。从句往往表达更为复杂的意思。比如b，c两个句子就不便用形容词来作定语，而要采用句子做定语。 | I don't like people **who are lazy**. |
+
+**限制性定语从句**用来提供必要的信息，以说明所修饰的先行词的身份或性质，或用于限制先行词所指的范围。若去掉限制性定语从句，则主句部分意义不明确，或不完整。例：I don't like people who are never on time.
+
+**非限制性定语从句**用来提供附加而非必要信息，只是对先行词进一步的解释，补充或说明。若去掉此定语从句，整个主句意义仍然很明确，不会引起误解和歧视。例：Beijing, which is the capital of China, has developed into an iternational city.
+
+### 状语从句
+
+状语从句就是用连词将两个分句连接起来，以表达分句之间特定的逻辑关系。
+
+例：I've brought my umbrella in case it rains.
+
+状语从句类型：
+
+- 时间状语从句：when, while, as, before, after, since, till, until, as soon as.
+- 地点状语从句：where
+- 原因状语从句：because, as, for, since
+- 目的状语从句：so that, in order that
+- 结果状语从句：so...that, so that, such...that
+- 条件状语从句：if, unless
+- 让步状语从句：although, though, even though, even if
+- 比较状语从句：as, than
+- 方式状语从句：as, the way
+
+在同时满足以下两点时，可将从句的主语和be动词省略：
+
+1. 逐句地主语和从句的主语一致；
+2. 从句谓语中含有be动词。
+
+例：When (he was) a student in the university, he read a lot.
+
+### 时间状语从句
+
+TODO https://www.tingclass.net/show-10288-472373-1.html
+
+
 
 ---
 
@@ -872,7 +1094,37 @@ quite, only, even, particularly, especially, almost, rather.
 
 ### 关系副词
 
-TODO
+关系副词when的用法：
+
+1. 先行词指时间
+
+   when引导限制性和非限制性定语从句，其先行词需是表示**时间**的名词，如day, year, time等。when可用"时间介词 + which"来替换。
+
+   例：I'll never forget the day when i met you.
+
+2. 关系副词when在从句中作时间状语
+
+   表示时间的先行名词，若其定语从句不是缺状语，而是缺主语或宾语，关系词要用which或that。因为用when来引导定语从句的前提条件是：when在其所引导的定语从句中作时间状语。
+
+   例：The day, which began brightly, ended with a violent storm.
+
+关系副词where的用法：
+
+1. 先行词指地点
+
+   where引导定语从句时，其先行词必须是表示地点的名词，如place, house等。
+
+   例：Do you know any place where i can buy clint's grammar book?
+
+2. 关系副词where在从句中作地点状语
+
+   与when类似，并非所有先行词表示地点的情况下，都得用where来引导定语从句。这得看关系词在从句中所充当的成分。where在定语从句中作地点状语，但若定语从句缺主语或宾语，就要用which或that来引导。
+
+   例：The library where students often study was on fire last night.
+
+关系副词why的用法：
+
+用来表原因，只引导限制性定语从句，先行词是reason等表示原因的名词，why在定语从句中作状语；例：This is the reason why i didn't come here.
 
 
 
@@ -979,7 +1231,92 @@ TODO
 
 ### 表示地点，方位的介词
 
-TODO https://www.tingclass.net/show-10288-472283-1.html
+1. at, in
+
+   - 表示地点或场所时，一般来讲，in表示较大的地方，at表示较小的地方
+
+     例：in a country, at home.
+
+   - 我们可以用in或at来谈论建筑物，但用at通常表示某事发生的场合
+
+     例：
+
+     I met him at the cinema last night.
+
+     I enjoyed the film but it was very cold in the cinema.
+
+2. on, over, above
+
+   - on表示两事物表面接触；例：Put away the books on the desk.
+
+   - over表示两事物表面不仅有接触，而且有覆盖（或上下方位）的含义；例：
+
+     Mon put a rug over me when i was asleep.
+
+     There is a bridge over the river.
+
+   - above仅表示上下方位关系，且事物表面不接触，也不是“正上方”；例：The sun rose above the horizon.
+
+3. below, under, beneath
+
+   - under表示"在...下方"，两物体可以接触，也可以隔开一定的距离
+
+     例：The dog is groveling under the table.
+
+   - below则一般表示在两个表面之间建个一定的距离
+
+     例：They live below us.
+
+   - beneath可用来替换under，但在表示抽象含义时，最好用beneath
+
+     例：He would think it beneath him to tell a lie.
+
+### 表示方式，手段的介词
+
+1. by
+
+   - 表示行为方式；例：send something by post.
+
+   - 接交通工具；
+
+     例：I hon't mind going by car but i don't want to go in your car.
+
+     注意：
+
+     1. by car, 不说~~by a car~~, ~~by my car~~, ~~by the car~~，但说：in a car, in my car, in the car.
+     2. car, tax前用介词in；例：They didn't come in their car, they came in a taxi.
+     3. 自行车和公共交通设施前使用on；例：on the train.
+
+   - 表示通过某种手段以达到预期的结果；例：We succeeded by cooperating with them.
+
+2. with；表示用具体的工具做某事；with接单数可数名词时，需要带冠词；例：I killed a fly with a flyflap.
+
+3. in；表示以某种方式做某事；例：Write in pencil.
+
+4. through；其用法与by相近，指示through一般多跟名词连用，by则多与动名词搭配；
+
+   例：They talked to each other through an interpreter.
+
+### 介词搭配形容词
+
+1. 常与to连用的形容词：equal, favorable, faithful, familiar, good, hostile, loyal, parallel, opposite, responsible, sensible, useful, similar, used.
+2. 常与about连用的形容词：anxious, careful, careless, certain, considerate, enthusiastic, guilty, happy, mad, sad, sure.
+3. 常与for连用的形容词：available, bad, convenient, eager, eligible, good, grateful, homesick, famous, hungry, necessary, noted, ready, responsible, sorry, suitable.
+4. 常与with连用的形容词：angry, acquainted, bored, careful, popular, ill, strict, busy, familiar, impatient, sympathetic.
+5. 常与of连用的形容词：
+   - 恐惧：afraid, frightened, terrified, scared.
+   - 好恶：ashamed, envious, fond, jealous, proud, tired.
+   - 态度：suspicious, critical, tolerant, ignorant.
+   - 意识：aware, conscious.
+   - 此外：capable/incapable, full, guilty, hopeful, independent.
+6. 常与at连用的形容词：angry, bad, clever, disappointed, disgusted, good, marvelous, quick, skilful, useless, weak.
+
+### 介词搭配名词
+
+1. 名词+for；例：a reason for.
+2. 名词+in；例：a change in the costs.
+3. 名词+to；例：an answer to a question.
+4. 名词+with/between；例：A has a relationship with B.
 
 ---
 
@@ -1469,6 +1806,41 @@ TODO
    \text{例：Much of the water is wasted} \\
    $$
    
+
+### 先行词指人，用关系代词who/whom
+
+1. 先行词指人时用who/whom；例：Anger is a **thief** who steals away the nice moments.
+
+2. who和whom的区别
+
+   - who在定语从句中可用主语，宾语和表语，但who之前不可用介词（如不能说with who，只能说with whom）。
+
+     例：I like the people with whom i work.
+
+   - whom在定语从句中**不能作主语**，但可做宾语或表语。
+
+     例：A rich person is not one who has the most, but is one who needs the least.
+
+### 表示人或物的所属关系，用whose
+
+我们用whose表示所属关系，其作用就如同物主代词my, your, her, his, their以及our一样，whose后百年要接名词。whose的先行词可以是人或物。“whose+名词”在从句中可作主语，动词宾语或介词宾语。
+
+例：When i looked through the window, i saw a girl whose beauty took my breath away.
+
+### 先行词指物，用关系代词which
+
+which可以指代由单个名词或代词构成的先行词；例：Anger is a wind which blows out the lamp of the mind.
+
+### that可以指代人，也可以指代物
+
+that即可指人，也可指物；**that不用在非限制性定语从句中；that不能用于借此之后**。
+
+**在下列情况中最好使用that：**
+
+1. **当先行词既有人又有物时，关系代词用that；**例：The writer and his novels that he article deals with are quite familiar to us.
+2. **先行词为指物的all, little, few, much, none以及the first时， 关系代词用that；**例：All that glitters is not gold.
+3. **先行词是不定代词something, anything, nothing, everything时，关系代词一般用that**；例：Is there anything that i can do for you?
+4. **先行词被any, only, all, every, no, some, much, few, little, 序数词，最高级，the only, the one, the very, the right以及the last修饰时，关系代词用that。**例：Tell us all things that you know.
 
 
 
