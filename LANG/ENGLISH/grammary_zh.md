@@ -347,7 +347,147 @@ how结构主要有三种：
 
 ### 时间状语从句
 
-TODO https://www.tingclass.net/show-10288-472373-1.html
+时间状语从句用法：
+
+1. 时间状语额从句要用一般现在时表示将来动作；例：~~When he will arrive~~ -> When he arrives.
+
+2. when的意思相当于`at that time`
+
+   从句的谓语动词通常是短暂性动词，表示瞬时的动作；例：I'll speak to him when he arrives.
+
+   从句的谓语也可用延续性动词，这时从句往往用过去进行时态，表示过去某一时间正在发生的动作；例：The doorbell rang when i was telephoning.
+
+3. while相当于`during that time`，表示某一时间段内发生的动作。因此，从句谓语通常只用延续性动词；例：The phone rang while i was taking my bath.
+
+4. until
+
+   - 当主句谓语动词是延续性动词时，主句通常用肯定形式；例：Wait(延续性动词) until he comes back.
+   - 若主句谓语动词是短暂性动词，则主句要用否定形式；例：I did not realize how special my mother was until i became an adult.
+   - 我们还可以把not...until转换成倒装句型；例：Not until his boss came back did he leave the office.
+
+5. 表示"一...就..."的连词：as soon as, once, immediately, the moment。这些连词后通常接短暂性动词，表示瞬间动作；例：We will leave as soon as it stops raining.
+
+6. by the time强调的是“一个动词在另外一个动作发生时已经完成”。因此，与by the time 从句搭配的主句要用完成时态。
+
+   by the time与两种完成时搭配：
+
+   | By the time they **arrived**, we **had already** left       | 从句中arrived表示过去动作，对应的主句用过去完成时  |
+   | ----------------------------------------------------------- | -------------------------------------------------- |
+   | By the time they **arrive**, we **will have already left**. | 从句中arrive表示将来动作，对应的主句用将来完成时。 |
+
+### 地点状语从句
+
+地点状语从句用法：
+
+1. 通常由where引导；例：Stay where you are.
+2. 也可由whereever, anywhere和everywhere引导；例：whereever he happens to be.
+3. 有时含有条件意味；例：Where there is a will, there is a way.
+
+### 原因状语从句
+
+原因状语从句用法：
+
+1. because
+
+   - 语气最强，只有它才能用来回答why引导的问句；例：I am leaving because i'm fed up with the job and the boss.
+   - 可与表示强调的only, just连用；例：You shouldn't get angry just because some people speak ill of you.
+
+2. since
+
+   表示人们已知的事实，不需强调的原因；例：Since Monday is Bob's birthday, let's throw him a party.
+
+3. as
+
+   as与since用法差不多，所引出的理由在说话人看来已经很明显，或已为听话人所熟悉，不需用because加以强调；例：I left a message as you weren't there.
+
+4. for
+
+   for表示推断的理由，是对前面分句的内容加以解释或说明；例：The days are short, for it is now December.
+
+### 目的与结果状语从句
+
+目的与结果状语从句用法：
+
+1. 目的状语从句常见的引导词：so that, in order that。从句中常含有情态动词：will/would或can/could；例：I turned off the TV so that my roommate could study in peace and quite.
+
+2. 结果状语从句常见的连接词：so...that, such...that。从句中一般不带情态动词，且从句都要放在主句之后；例：The food is so bad in the school cafeteria that flies go there to lose weight.
+
+3. 注意句中such和so的用法区别
+
+   - such为形容词，修饰名词或名词短语，表示“这样的...”，所修饰的名词或名词短语可以是单数意义，复数意义或不可数；
+
+     例：He is such a good teacher that everyone likes him.
+
+   - so为副词，不能直接修饰名词，而是修饰形容词或副词；
+
+     例：He is so good a teacher that everyone likes him.
+
+   - so可与many, much, few以及little搭配，such不可以
+
+     例：I made so many mistakes that i failed the exam.
+
+### 条件状语从句
+
+条件状语从句通常可有下列词或短语来引导：as long as, supposing, if, so long as, on condition that, unless, suppose, providing/provided (that).
+
+例：If it rains tomorrow, i will take my umbrella.
+
+### 让步状语从句
+
+让步状语从句用法：
+
+1. 常见的让步状语从句的引导词有：through, although, even though, even if.
+
+   例：Though he tried hard, (yet/still) he failed.
+
+   **注意：主句前不可用but，但可用yet或still。**
+
+2. despite, in spite of, for all 是介词性质，后边只接名词（短语），不接从句
+
+   例：
+
+   Though he was inexperienced == In spite of his inexperience.
+
+   Although it was dangerous == Despite the danger.
+
+   Though the weather was ba == In spite of the bad weather.
+
+3. while位于句首时，一般表示“尽管...”，引导让步状语从句
+
+   例：While i sympathize with your point of view, i can not accept it.
+
+4. as引导的倒装句，表示让步
+
+   句型：形容词+as+主语+谓语
+
+   例：Young as he is, he is knowledgeable.
+
+### 比较状语从句
+
+比较状语从句用法：
+
+1. 引导词as
+
+   - 结构1：as + 形容词/副词 + as；例：The work is not as difficult as you think.
+   - 结构2：as + 形容词 + a(n\2) + 可数名词单数 + as；例：I didn't finish as large a part of the work as he did.
+
+2. 引导词than
+
+   - 两个同类事物之间才能比较，如he和i。两个非同类事物之间是无法做比较的
+
+     例：He is taller than i (am).
+
+   - 在有than的比较句子里，主句中必须有比较级形式出现
+
+     例：He has made greater（比较级） contributions to the company than anyone else.
+
+   - "the more...（主句），the more...（主句）"句型表示比较
+
+     例：The more she practiced, the worse she sang.
+
+### 方式状语从句
+
+方式状语从句表示主句动作的方式，常用的引导词有as, as if, asthough和the way等；例：When in rome, do as the romans do.
 
 
 
@@ -1686,7 +1826,69 @@ TODO
 
 ### 完成时态
 
-TODO
+完成时态表示的是在（现在，过去或将来的）某一特定时刻之前开始发生并持续到这一特定时刻或对这一特定时刻有影响的一个活动。
+
+| 时态与用法                                                   | 例句                                                     | 解释                                                         |
+| ------------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------------------ |
+| 现在完成时表示在现在之前（即过去）开始并持续到现在或对现在有影响的动作。 | I have learned 2,000 works so far.                       | 动作learned在“现在”之前开始发生并持续到现在。                |
+| 过去完成时表示在过去的过去开始并持续到过去某一时间或对过去有影响的动作。 | I had learned 1,000 words by the end of last year.       | 动作learned在the end of last year之前开始发生并持续到the end of last year。 |
+| 将来完成时表示在将来之前（可能是过去，现在或将来）开始并持续到将来或对将来有影响的动作。 | I will have learned 3,000 words by the end of next year. | 动作learned在the end of next year之前开始发生并持续到the end of next year。 |
+
+#### 现在完成时
+
+现在完成时表示开始于过去的某一动作一直持续到现在，而且还可能继续持续下去；这种现在完成时的特点：
+
+1. 谓语动词一般为延续性动词；
+2. 动作发生的时间是过去，但这一动作持续到现在，而且还可能继续持续下去；
+3. 这种用法的现在完成时态常与表示“一段时间”的时间状语连用，以说明某个动作或状态持续了多久。
+
+例：The teacher has taught in this school since i came here.
+
+与现在完成时搭配的时间状语：
+
+1. since + 时间点；例：I've worked in this company since 2016.
+
+2. for + 时间段；例：I've worked in this company for three years.
+
+3. 表示"到目前为止..."：until now, up until now, up to now, up till now, so far 
+
+   例：We have up until now failed to take any action to decide on a common language that would further communication between nations.
+
+4. 表示"最近几世纪/年/月以来..."：for the past few years, over the past few years, during the last three months, for the last few centuries, through centuries, throughout history
+
+   例：Throughout history man has had to accept the fact that all living things must die, for the very nature of life inludes death.
+
+现在完成时在表示发生在过去但与现在仍有联系的动作或状态时的使用：
+
+1. 这种完成时态的肯定句不与表示“一段时间”的状语连用
+
+   例：I haven't seen a file for weeks.
+
+2. 与不确定时间的时间状语（already, et, lately, often, just, never）连用
+
+   例：Has it stopped raining yet?
+
+3. 用来宣布刚刚发生的事
+
+   例：The president has been assassinated.
+
+现在完成时表示到目前为止的一个时间段内重复发生的动作：
+
+例：For more than eighty years, scientists have argued over whether life exists on the planet Mars.
+
+其他需要使用现在完成时的结构：
+
+1. This/That/It is + 序数词 + 名词 + that + 现在完成时
+
+   例：It is the third tiem that i've come to Beijing.
+
+2. This/That/It is + 最高级/only修饰的名词 + 现在完成时
+
+   例：This is the most interesting movie that i've ever seen.
+
+#### 过去完成时
+
+TODO https://www.tingclass.net/show-10288-472417-1.html
 
 
 
