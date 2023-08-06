@@ -210,14 +210,14 @@ how结构主要有三种：
 
 ### 从句
 
-以下从句统称为名词性从句：
+所谓名词从句，就是把完整的句子当作名词来使用，在另一个句子中充当某种成分；以下从句统称为名词性从句：
 
 - 主语从句；例：**What i am reading** is interesting.
 - 宾语从句；例：I believe **what he said**.
 - 表语从句；例：The book is **what i want**.
 - 同位语从句；例：The mother must accept the fact **that her baby is deaf**.
 
-我们使用以下三种句子来充当以上4种成分：
+我们使用以下三种句子来充当以上4种名词性从句的成分：
 
 - 陈述句
 
@@ -227,10 +227,12 @@ how结构主要有三种：
 
     常见的主语从句句型：
 
-    | It is + 过去分词 + that从句 | - It's reported that...<br>- It's believed that...<br>- It is generally thought that...<br>- It should be noted that...<br>- It has been found that...<br>- It must be pointed out that... |
-    | --------------------------- | ------------------------------------------------------------ |
-    | It is + 形容词 + that从句   | - It is clear that...<br>- It is possible that...<br>- It is likely that...<br>- It is natural that...<br>- It is certain that...<br>- It is strange that...<br>- It is fortunate that...<br>- It is necessary that... |
-    | It is + 名词短语 + that从句 | - It is a pity that...<br>- It is a fact that...<br>- It is good news that...<br>- It is a good thing that...<br>- It is no wonder that....<br>- It is a shame that...<br>- It is an honor that...<br>- It is common knowledge that...<br>- It is my belief that...<br>- It is a miracle that... |
+    | It is + 过去分词 + that从句                                  | - It's reported that...<br>- It's believed that...<br>- It is generally thought that...<br>- It should be noted that...<br>- It has been found that...<br>- It must be pointed out that... |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | It is + 形容词 + that从句                                    | - It is clear that...<br>- It is possible that...<br>- It is likely that...<br>- It is natural that...<br>- It is certain that...<br>- It is strange that...<br>- It is fortunate that...<br>- It is necessary that... |
+    | It is + 名词短语 + that从句                                  | - It is a pity that...<br>- It is a fact that...<br>- It is good news that...<br>- It is a good thing that...<br>- It is no wonder that....<br>- It is a shame that...<br>- It is an honor that...<br>- It is common knowledge that...<br>- It is my belief that...<br>- It is a miracle that... |
+    | It + 不及物动词或其短语 + that从句（不及物动词或其短语可以是seem，appear，turn out, come about等） | - It seems that<br>- It follows that<br>- It happens that<br>- It turns out that<br>- It comes about that |
+    | 其他结构                                                     | - It dawns upon/on sb. that...<br>- It occurs to sb.that...<br>- It makes no difference that...<br>- It doesn't need to be bothered that...<br>- It is of little consequence that... |
 
     例：
 
@@ -256,7 +258,8 @@ how结构主要有三种：
 
   - 同位语从句
 
-    把“that+陈述句”这一结构放在同位语位置即构成同位语从句；例：The fact that he succeeded in the experiment pleased everybody.
+    1. "名词 + that + 陈述句"句型；例：The rumor that Tom was thief turned out to be untrue.
+    2. "名词 + 其他成分 + that + 陈述句"句型；例：They spread the lie everywhere that Tom was guilty of theft.
 
 - 一般疑问句
 
@@ -300,7 +303,7 @@ how结构主要有三种：
 - which；例：Tina likes the present which i gave her for her birthday.
 - that；例：Tina likes the present that i gave her for her birthday.
 
-### 定语从句
+#### 定语从句
 
 定语从句的两个重要概念：
 
@@ -320,7 +323,105 @@ how结构主要有三种：
 
 **非限制性定语从句**用来提供附加而非必要信息，只是对先行词进一步的解释，补充或说明。若去掉此定语从句，整个主句意义仍然很明确，不会引起误解和歧视。例：Beijing, which is the capital of China, has developed into an iternational city.
 
-### 状语从句
+先行词和关系词是定语从句的的两个重要概念：
+
+- 先行词：被关系词所指代，并且被定语从句所修饰或限定的对象。
+- 关系词：重复指代先行词，起连接主句和从句的作用并且在定语从句中充当一定成分的连接词。关系词有两个作用：
+  1. 代词作用：重复指代先行词并且在定语从句中充当一定成分；
+  2. 连接作用：起连接主句和从句的作用。
+
+先行词不一定都是一个“词”，先行词可以是：
+
+1. 一个词（通常是名词，也可以是代词）；例：He who laughs last, laughs best.
+2. 一个短语；例：He likes climbing mountains, which is a good exercise.
+3. 一个分句；例：He said that he had no time, which isn't true.
+4. 一个完整句子；例：He arrived an hour later, which annoyed his girlfriend very much.
+
+关系词的分类：
+
+| 语法作用 | 人       | 物             | 其它       | 人和物        | 其它 |
+| -------- | -------- | -------------- | ---------- | ------------- | ---- |
+| 主语     | who      | which          |            | that          |      |
+| 宾语     | who/whom | which          |            | that/省略that |      |
+| 所有关系 | whose    | whose/of which |            |               |      |
+| 限定性   |          | which          |            |               |      |
+| 状语     |          |                | when/where |               | why  |
+
+1. that和why只引导限定性定语从句；
+
+2. 关系代词：关系代词在从句中可充当主语，宾语或表语。其中whose一定要与名词连用，表示所属关系。which可单独引导定语从句，也可用作限定词与名词连用：
+
+   - who, whom -> 指人
+   - which -> 指物
+   - that, whose -> 指人或物
+
+3. 关系副词：关系副词只充当状语
+
+   **注意：how不可以作为表示方式的关系副词来引导定语从句。在定语从句中，若表示方式，我们用以下句型：**
+
+   - the way in which...
+   - the way that...
+   - the way ...
+
+as作关系代词的用法：
+
+1. 在as引导限定性定语从句时，只是用在一些固定的结构中，即只能用在such，the same，as，so的后面
+
+   例：He is not the same playboy as we knew.
+
+2. as引导非限定性定语从句可位于句首，而which不能这样用
+
+   例：As is known, the whale is not fish but a mammal.
+
+3. as和which都可引导非限定性定语从句，代替前面整个句子
+
+   例：He married her, as/which was natural.
+
+what作关系代词的用法：
+
+1. what前不能有先行词
+
+   例：~~You can have everything what you like.~~ 
+
+2. what单独使用
+
+   例：She is not what she used to be == She is not the girl that she used to be.
+
+3. what + 名词
+
+   例：What money i have has been given to you == All the money that i have has been given to you.
+
+than作关系代词的用法：
+
+1. than可作关系代词引导定语从句，在从句中一般作主语；
+2. than前面的主句需有形容词的比较级形式；
+3. than也可在从句中作宾语。
+
+but作关系代词的用法：
+
+1. but作关系代词，相当于that... not, who... not, whom... not，在句中作主语或宾语，可指人或物
+
+   例：There is no man but errors.（but作主语）
+
+2. 尽管定语从句形式上肯定，但在意义上是否定的；
+
+3. 常与具有否定意义的主句连用；
+
+4. 通常只引导限定性定语从句。
+
+when的用法
+
+1. 可引导限定性和非限定性定语从句，其先行词必须是表示时间的名词，如day，year，time等；when可用on which来替换
+
+   例：I'll never forget the day when/(on which) i met you.
+
+2. 紧跟在时间名词后边的关系副词，也可省去
+
+   例：I'll never forget the day i met you.
+
+3. 注意：表示时间的先行名词，
+
+#### 状语从句
 
 状语从句就是用连词将两个分句连接起来，以表达分句之间特定的逻辑关系。
 
@@ -345,7 +446,7 @@ how结构主要有三种：
 
 例：When (he was) a student in the university, he read a lot.
 
-### 时间状语从句
+#### 时间状语从句
 
 时间状语从句用法：
 
@@ -375,7 +476,7 @@ how结构主要有三种：
    | ----------------------------------------------------------- | -------------------------------------------------- |
    | By the time they **arrive**, we **will have already left**. | 从句中arrive表示将来动作，对应的主句用将来完成时。 |
 
-### 地点状语从句
+#### 地点状语从句
 
 地点状语从句用法：
 
@@ -383,7 +484,7 @@ how结构主要有三种：
 2. 也可由whereever, anywhere和everywhere引导；例：whereever he happens to be.
 3. 有时含有条件意味；例：Where there is a will, there is a way.
 
-### 原因状语从句
+#### 原因状语从句
 
 原因状语从句用法：
 
@@ -404,7 +505,7 @@ how结构主要有三种：
 
    for表示推断的理由，是对前面分句的内容加以解释或说明；例：The days are short, for it is now December.
 
-### 目的与结果状语从句
+#### 目的与结果状语从句
 
 目的与结果状语从句用法：
 
@@ -426,13 +527,13 @@ how结构主要有三种：
 
      例：I made so many mistakes that i failed the exam.
 
-### 条件状语从句
+#### 条件状语从句
 
 条件状语从句通常可有下列词或短语来引导：as long as, supposing, if, so long as, on condition that, unless, suppose, providing/provided (that).
 
 例：If it rains tomorrow, i will take my umbrella.
 
-### 让步状语从句
+#### 让步状语从句
 
 让步状语从句用法：
 
@@ -462,7 +563,7 @@ how结构主要有三种：
 
    例：Young as he is, he is knowledgeable.
 
-### 比较状语从句
+#### 比较状语从句
 
 比较状语从句用法：
 
@@ -485,9 +586,231 @@ how结构主要有三种：
 
      例：The more she practiced, the worse she sang.
 
-### 方式状语从句
+#### 方式状语从句
 
 方式状语从句表示主句动作的方式，常用的引导词有as, as if, asthough和the way等；例：When in rome, do as the romans do.
+
+### 不定式
+
+#### 不定式作主语
+
+- It + ... + to do sth；例：It takes time to study English well.
+- 不定式结构也可以直接置于句首作主语，此时谓语动词要用单数形式；例：To solve this problem takes a genius like Einstein.
+
+#### 不定式作宾语
+
+- 跟在一个及物动词后面作宾语；例：I hope to see you again.
+
+- 连接代词（what, who, which）或连接副词（how, when, where）及连词whether后可接一个带to的动词不定式，置于某些动词之后时，可以看作一个连接词引导的宾语从句的简略形式
+
+  例：I wonder who to invite (== who I should invite).
+
+#### 不定式作宾语补足语
+
+动词+sb. to do sth；例：They don't allow people to smoke in the theater.
+
+#### 不定式作后置定语
+
+1. 所修饰的名词在逻辑上与不定式成动宾关系
+
+   例：I had no place to live in.
+
+   注意：
+
+   - 注定是作定语时，一般用主动形式表达被动含义。
+   - 不定式中的动词后不能再加宾语；例：~~I gave the kid a comic to read it.~~
+   - 不定式中的动词后的介词不能省略；例：~~I need a pen to write.~~
+
+2. **被only, last, next, 序数词以及最高级形容词修饰的名词常用不定式作定语**
+
+   例：I dont't think he is the best man to do the job.
+
+#### 不定式作独立成分
+
+动词不定式可用独立成分，用来修饰整个句子，常见的有：to begin with, to tell the truth, to make a long story short, so to speak, to be brief/exact/frank/honest, to say nothing of, to say the least.
+
+例：
+
+To begin with, on behalf of all your American guests, i wish to thank you for the incomparable hospitality.
+
+I have a point there, to say the least.
+
+To make a long story short, he is in hospital now.
+
+#### 不定式作目的状语
+
+例：I went to the post office to mail a letter.
+
+#### 不定式作结果状语
+
+1. 直接用在句中作结果状语
+
+   例：He lived to be hundred years old.
+
+2. never to do结构表示结果
+
+   例：John left his hometown ten years ago, never to return.
+
+3. only to do引出意想不到或不愉快的结果
+
+   例：We hurried to the railway station, only to find the train had just left.
+
+4. ...enough to
+
+   例：He is not old enough to go to school.
+
+5. too...to结构
+
+   例：The box is too heavy for me to move.
+
+#### 形容词后的不定式
+
+1. 句子主语和不定式动词可构成逻辑上的主谓关系，这一句型中的形容词通常表示人的性格特征或行为表现；如：brave, careful, careless, clever, considerate, cruel, foolish, generous, kind, modest, nice, polite, rude, selfish, silly, stupid, thoughful.
+
+   例：He was surprised to learn how much he had spent.
+
+2. 句子主语和不定式动词可构成逻辑上的动宾关系
+
+   例：She is interesting to listen to.
+
+**句子主语与不定式动词为动宾关系时，要注意以下几点：**
+
+- 不定式一般不用被动式，而多用主动形式表示被动含义；例：~~English is difficult to be spoken.~~
+- 不定式后不能再加宾语；例：~~Football is very interesting to watch it.~~
+- 不定动词所带的介词不能省略；例：~~She is interesting to listen.~~
+
+
+
+---
+
+## 主语
+
+### 名词作主语
+
+#### 单数形式的名词作主语
+
+一般来说，单数名词作主语，谓语动词用单数形式。但是以下情况例外：
+
+1. Many a + 可数名词单数，虽为复数概念，但作主语时谓语用单数形式
+
+   例：Many a boy and girl has made such a funny experiment.
+
+2. More than one + 可数名词单数，是复数概念，但作主语时谓语用单数形式
+
+   例：There is more than one answer to this question.
+
+   与此类似的另外一个结构：more + 复数名词 + than one，作主语时谓语用复数形式
+
+   例：More persons than one were killed.
+
+3. one/a + 单数名词 + or two作主语时，谓语用单数形式
+
+   例：A word or two is misused in the sentence.
+
+4. 对于集体名词，如party, crowd, class, team, family, crew, government, committee, audience, public等，作主语时，谓语的数要视情况而定
+
+   例：Police in Guangdong province are investigating an organized cheating operation in dianbai county of the province during national college entrance exams.
+
+5. "the + 形容词或过去分词"作主语时，谓语动词的形式
+
+   - 若表示抽象概念，谓语用单数形式
+
+     例：The good in him overweighs the bad.
+
+   - 若表示一类人，则为复数概念，作主语时谓语用复数形式
+
+     例：The blind are unfortunate.
+
+   - 有时需要根据上下文来判断
+
+     例：
+
+     The deceased was his mother.
+
+     Th edeceased were ten farmers.
+
+#### 单数形式的名词作主语
+
+复数形式的名词作主语时谓语动词的基本原则：
+
+1. 若复数形式的名词表示的是复数概念，则显然要接复数形式的谓语；
+2. 若复数形式的名词表示的是单数概念，或将其看成一个整体，则用单数形式的谓语。
+
+我们主要采用意义一致的原则来判断主谓一致：
+
+1. 常见的表示成对概念的复数名词作主语时，谓语用复数形式
+
+   pants, trousers, scissors, scales, glasses, binoculars, spectacles.
+
+2. 形式上是复数（词尾有s）但表示单数概念的词，作主语时谓语用单数形式
+
+   works, gallows, politics, statistics, measles, diabetes.
+
+   例：Politics is often a popular topic among people.
+
+3. 表示时间，重量，数额的复数名词作主语时，通常将他们看成一个整体，谓语用单数形式
+
+   例：Ten years is a moment in history.
+
+4. 复数的专有名词作主语时，谓语均用复数形式
+
+   例：The himalayas are the roof of the world.
+
+#### 两个名词性结构作并列主语
+
+当两个名词性结构作并列主语时，谓语动词的形式：
+
+1. 由and连接的多个并列结构作主语时，若表示一种事物或一种概念，谓语用单数形式；若表示的是多个不同的概念，则谓语用复数形式
+
+   例：The writer and translator is delivering apeech in our college tonight.
+
+2. 若and连接两个并列主语，且and后的名词有相关的副词（not, perhaps, particularly, even, too, likewise, as well）修饰，则谓语动词形式与and前面的名词保持一致
+
+   例：The horse, not the donkey, is used in games of racing.
+
+3. 两个表示不同物质的名词，虽由and连接，但习惯上此两样东西常常被同时使用，这时我们将两者看作是一个整体，谓语仍用单数形式
+
+   例：Bread and butter is my favorite breakfast.
+
+4. or连接的并列主语，谓语形式和or邻近的主语保持一致
+
+   例：He or i am to go.
+
+5. every...and (every)... / each...and (each)... / neither...nor...句型中，谓语的单复数与or / but (also) / nor后面的名词一致
+
+   例：Not only the students but also their teacher is required to attend the meeting.
+
+6. 在either...or... / not only...but also... / neither...nor... 句型中，谓语的单复数与or / but (also) / nor后面的名词一致
+
+   例：Not only the students but also their teacher is required to attend the meeting.
+
+7. 在“主语+with / together with / along with / as well as / as much as / including / in addition to / added to / except / besides / rather than / accompanied by + 另一主语”的结构中，谓语形式与第一个主语保持人称和数的一致
+
+   例：Mary, along with her sisters, attends the sessions regularly.
+
+### of结构做主语
+
+of结构作主语时谓语动词的单复数形式：
+
+1. 像kind, type, sort, class, species, breed, variety, form, brand等表示类别的名词，总的规律是：句子谓语的单复数与of前面的名词形式保持一致
+
+   例：What kind of rice is served in that restaurant?
+
+2. "a pair of + 复数名词"看作整体，作主语时谓语用单数形式
+
+   例：A pair of gloves/glasses is on the table.
+
+3. "the + 最高级 + of + 名词复数"作主语时，谓语用单数形式
+
+   例：The most elaborate of all bird nests is the large, doomed communal structure built by social weaverbirds.
+
+4. "a number of / an average of / a total of + 名词复数"作主语时，谓语用复数形式，强调数量
+
+   例：A total of ten thousand dollars were donated last month.
+
+5. "A part of + 单数名词"作主语时，谓语使用单数形式；"A partof + 复数名词"作主语时，谓语用复数形式
+
+   例：A part of the apple is bad.
 
 
 
@@ -669,7 +992,225 @@ look, sound, smell, taste, feel, seem, appear, become, turn, ...
 
 ### 情态动词
 
-TODO
+情态动词多用来表示可能，建议，愿望，必要，允许，能力，怀疑等，以表示说话者对某种行为或状态的看法或态度。
+
+英语中常见的情态动词：can/could, may/might, shall/should, will/would, must, had better, be able to, be going to, ought to, be supposed to, have to/ have got to.
+
+情态动词用法：
+
+1. 在谓语中的作用：情态动词中不能单独作句子谓语，必须和实义动词一起构成复合谓语。没有第三人称单数的变化，且后面只能接动词原形
+
+   例：~~He can dances~~ -> He can dance.
+
+2. 对现在的肯定推测
+
+   | 表达方式        | 肯定的程度                               | 例句                                                         |
+   | --------------- | ---------------------------------------- | ------------------------------------------------------------ |
+   | 陈述句          | 对客观事实的陈述，表示100%确定           | He is sick                                                   |
+   | must            | 表示强烈的肯定，对自己陈述的内容很有把握 | He must be sick                                              |
+   | may/could/might | 表达较弱肯定，把握不大                   | He may/might/could be sick<br>I don't really know. He may be at home watching TV. He might be at the library. He could be out of town. |
+   | can             | 常表示一般性的肯定推测                   | Winters in Chongqing can be really cold.                     |
+
+3. 对现在的否定推测
+
+   | 表达方式           | 否定的程度                                   | 例句                           |
+   | ------------------ | -------------------------------------------- | ------------------------------ |
+   | 陈述句             | 对客观事实的陈述，表示强烈的否定             | It is very bad.                |
+   | can't, couldn't    | 表示说话人认为某事是不可能的，强烈的否定推测 | It can't be very good.         |
+   | may not, might not | 表示一般性的否定推测                         | It may/might not be very good. |
+
+4. 对过去的肯定推测：must/can/may/could/might + 完成式
+
+   | 表达方式                  | 肯定的程度                                     | 例句                               |
+   | ------------------------- | ---------------------------------------------- | ---------------------------------- |
+   | 陈述句                    | 对客观事实的陈述，表示100%确定                 | He was sick.                       |
+   | must have done            | 对过去情况的肯定推测，把握较大                 | He must have been sick.            |
+   | may/could/might have done | 对过去情况的肯定推测，把握不是很大，表示有可能 | He may/could/might have been sick. |
+
+5. 对过去的否定推测
+
+   | 表达方式                | 否定的程度                                             | 例句                             |
+   | ----------------------- | ------------------------------------------------------ | -------------------------------- |
+   | 陈述句                  | 对客观事实的陈述，表示100%确定                         | He wasn't sick.                  |
+   | could not have done     | 对过去情况的否定推测，把握较大，意为“一定不是；不可能” | He couldn't have been sick.      |
+   | may/might not have done | 对过去情况的否定推测，把握不是很大，意为“可能没有”     | He may/might not have been sick. |
+
+6. 对将来的推测
+
+   | 表达方式        | 否定的程度                       | 例句                                    |
+   | --------------- | -------------------------------- | --------------------------------------- |
+   | will/will not   | 表示十分有把握的对未来的预计     | He will do well on the test.            |
+   | should/ought to | 表示对将来事件的推测，比较有把握 | He should/ought to do well on the test. |
+   | can/may/might   | 表示对将来事件不太有把握的推测   | He can/may/might do well on the test.   |
+
+7. "情态动词+完成式"的用法
+
+   - 表示对过去的推测
+
+     | 肯定推测 | could have done/may have done/might have done/must have done/should have done/ought to have done |
+     | -------- | ------------------------------------------------------------ |
+     | 否定推测 | can't have done/couldn't have done/may not have done/might not have done |
+
+     例：The situation was bad but it could have been worse.
+
+   - 表示过去应该或能够做某事而实际并没有做
+
+     1. should/ought to have done表示过去**应该**做某事而实际并没有做，含有批评的意思
+
+        例：You should have phoned me last night.
+
+     2. could have done表示过去**本能**做某事而实际并没有做，含有惋惜的意思
+
+        例：You could have told me you were getting married.
+
+     3. 表示本来不必做某事，但实际上做了
+
+        例：The restaurant was nearly empty, we needn't have booked a table.
+
+#### can/could/be able to
+
+1. 表示现在或将来有能力做某事
+
+   例：Bob can play the piano, He has taken lessons for many years.（后天获得的能力）
+
+2. 表示过去有能力做某事
+
+   例：I could run fast when i was a child, but now i can't.
+
+3. 在表示“过去有能力做某事”时，could和was/were able to的用法区别
+
+   - could只能表示过去“一般的能力，总的能力”
+
+     例：I could able to recite several poems when i was 3 years of age.
+
+   - 而要表示在过去某个特定场合所表现出“特定的能力，具体的能力”，或表示某人在某一场合设法成功地完成了某件事，而非表示泛指的能力时，我们要用was/were able to。此时，was/were able to 意思相当于succeeded in doing或managed to do.
+
+     例：With the aid of the wood, he was able to swim across the river.
+
+   - 在否定句中could和was/were able to 可以互换，也就是说在否定句中它们就不存在上述区别
+
+     例：I applied everywhere but couldn't get any good job.
+
+#### may/might/can/could
+
+1. 肯定句--给与许可
+
+   例：I can leave the office as soon as i have finished == I am allowed to leave the office.
+
+2. 否定句--拒绝许可（甚至禁止）
+
+   例：You can't take your camera into the museum.
+
+3. could一般不用来表示现在的许可，而用来表示过去的许可
+
+   例：I could allowed to read what i liked when i was a child.
+
+#### may i.../would you...
+
+1. 第一人称：请求对方允许我们做某事
+
+   - may i和could i 表示较正式，很礼貌地提出请求
+
+     例：May i please borrow your car?
+
+   - Can i...?则时非正式的请求允许，一般用于说话人与对方相当熟悉的情况下
+
+     例：Can i borrow your pen?
+
+   - Might i...?显得过于正式和客气，所以一般很少用
+
+2. 第二人称：请求对方为我们做某事
+
+   | 用法                                                         | 例句                                                         |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | would you和could you都是用来表示很客气地请求，客气程度相同；will you不如would you客气。 | Would you please lend me your car?<br>Would you lend me your car, please?<br>Could you please lend me your car?<br>Could you lend me your car, please? |
+   | can you常用于非正式场合或熟人之间。                          | Can you pass me the salt, Mom?                               |
+
+#### must/have to/have got to
+
+1. must和have to相近，都翻译为“必须”
+
+   例：All applicants must take an entrance exam.
+
+2. have got to 主要用于口语中不是很正式
+
+   例：I have got to go now, i have a class in ten minutes.
+
+3. 要表示过去“必须”，我们要用had to，而must和have got to没有过去式形式
+
+   例：I had to study last Sunday.
+
+4. 注意否定意思：don't have to 不必要；mustn't或must not 千万不要
+
+   例：Tomorrow is Saturday, we don't have to got to school.
+
+#### should/ought to/had better
+
+1. should和ought to意思相近，表示“应该做某事”
+
+   例：You should do as you are told.
+
+2. had better常用于口语中，后面接动词原形，否定用had better not，含有警告或警示的意味
+
+   例：We had better study harder, or we'll probably fail in the exam.
+
+#### shall
+
+shall一般用法：
+
+1. shall用于第二，三人称的陈述句，表示说话人的许诺
+
+   例：You shall have the money back next week == i promise you will have...
+
+2. shall用于第二，三人称的陈述句，还表示说话人强烈的意愿，甚至是威胁
+
+   例：You shall pay for this.
+
+3. 在法律条文，规章制度中，我们常用shall表示“必须”
+
+   例：Each competitor shall wear a number.
+
+4. shall用于第一，三人称的一般疑问句中，表示“建议”
+
+   例：Shall i buy you a gift?
+
+shall i/we/he...?用法：
+
+1. shall用于第一，三人称的一般疑问句中，表示征求对方的“建议”
+
+   例：Shall i open the window?
+
+2. could在有些情况下并不表示过去能做某事，而是表示提议，也可以用can，但could没有can那么肯定
+
+   例：We could go to the cinema.
+
+3. may/might (just) as well也常用来向他人推荐更佳方案，意为"倒不如...；不妨..."
+
+   例：I'll go on Monday by train.
+
+4. 其它非情态动词表示建议，如Let's..., Why don't...?, Why not...?等
+
+   例：Let's go to a movie.
+
+#### will/would/used to
+
+will或would表示说话者愿意做某事；例：I will get it.
+
+would do或used to表示过去重复的动作；例：When i was a child, my mother would read / used to read me a story before bed.
+
+would do和used to的区别：
+
+1. used to可以表示过去定期重复的动作，也可以表示过去存在的状态，含有“现在不再...”的含义。would只能用来表示过去重复的动作，不表示状态
+
+   例：
+
+   When i was a boy, i would go / used to go swimming in a river near my house.
+
+   I used to have a cat.
+
+2. used to 和 would均不能用来表示过去某事发生的次数
+
+   例：~~I used to go / would go to that restaurant over ten times when i was in college~~ -> I went to that restaurant over ten times when i was in college.
 
 
 
@@ -826,6 +1367,116 @@ I have a term paper(论文，可数) to write on weekends.
 名词短语是英语造句中不可或缺的元素。比如简单句的主语（a句），宾语（b，c，d句）或表语（e句）通常由名词短语来充当。另外英文中介词不能单独使用，其后面必须接宾语，所接的宾语也往往是名词短语（句）。
 
 名词短语是由名词与它前面的修饰语一起构成的。一般来讲，名词前面有两种修饰语。其一是限定词，用来限定名词所指的范围，对名词起泛指或特指、定量或不定量等限定修饰作用。
+
+
+
+---
+
+## 动名词
+
+### 动名词作主语
+
+1. 单个动名词放在句首作主语时，谓语动词用单数形式
+
+   例：Seeing is believing.
+
+2. It is no good doing sth.句型
+
+   例：Is it any good trying to explain?
+
+3. There be句型中动名词的使用
+
+   - There is no point (in) doing sth. 干某事没有必要，没有意义
+
+     例：There is no point in my buying salmon if you don't like fish.
+
+   - There is no use/good (in) doing sth. 干某事没有用
+
+     例：There is no use arguing with him.
+
+   - There is no doing sth. "不能...; 不可..."
+
+     例：There is no denying that...
+
+### 接动名词作宾语的动词
+
+只能接动名词作宾语的动词:
+
+appreciate, avoid, consider, delay, dislike, escape, feel like, finish, can't help, involve, permit, postpone, practise, risk, can't stand, tolerate, understand, enjoy, overlook, suggest.
+
+例：
+
+I will overlook your being so rude to my sister this time but don't let it happen again.
+
+Many of the things we do involve taking some risk in order to achieve a satisfactory result.
+
+Being a bad-tempered man, he would not tolerate having his lectures interrupted.
+
+接动名词和接动词不定式有区别的动词：
+
+1. 在demand, deserve, need, require, want等动词后，动名词在主动形式表示被动含义，若改接不定式作宾语，则必须用不定式的被动形式
+
+   例：~~The garden needs being watered~~ -> The garden needs to be watered.
+
+2. 与remember, forget, stop, go on和regret连用时，动名词表示发生于这些东西之前的事，不定式表示发生在谓语动词之后的事
+
+   - remember doing sth. 记得已做过某事
+
+     例：I still remember being taken to Beijing for the first time.
+
+   - forget doing sth. 忘记了已做过的某事
+
+     例：I forget locking the door. So when i came back, i was surprised to find the door locked.
+
+   - stop doing sth. 表示停下经常做的或手头正做的事
+
+     例：I really must stop smoking.
+
+   - go on doing sth. 表示继续做一直在做的事
+
+     例：The teacher went on explaining the text.
+
+   - regret doing sth. 对已发生的事感到后悔
+
+     例：I don't regret telling her what i though, even if it upset her.
+
+### 其他后面接动名词的结构
+
+- have + difficult/trouble/problem/(a lot of) fun/(lots of) pleasure/a hard time/a good time/a difficult time + (in) doing sth.
+
+- 表示"情不自禁..., 不得不..."的短语：can't help doing, can't resist doing, can't keep from doing, can't hold back from doing, can't keep back from doing.
+
+  **注意下列短语要接不定式：can't help but do, can't choose but to do.**
+
+- 主动形式表示被动含义：be worth doing "值得做..."
+
+  例：The book is worth reading.
+
+### 动名词复合结构
+
+名词性物主代词（如his, my, your等）或名词所有格（如Mary's, Tom's等）与动名词连用，即构成动名词的复合结构（his doing, Mary's doing），用来交代动名词的逻辑主语，以区别于句子主语。
+
+例：Clint insisted on reading the letter. <--> Client insisted on my reading the letter.
+
+动名词复合结构的用法：
+
+1. 动名词复合结构常在句中作主语或宾语
+
+   例：
+
+   Tom's coming home at last was a great consolation. （作主语）
+
+   Do you mind my making a suggestion?（作及物动词宾语）
+
+2. 在使用动词复合结构时，什么时候用普通格，什么时候用所有格，一般遵循以下原则：
+
+   - 若动名词复合结构在句中作主语，最好用所有格形式
+
+     例：Tom's refusing to accept the invitation upset me.
+
+   - 动名词复合结构在句中作宾语时，用普通格或所有格均可
+
+     例：Do you mind me making a suggestion?
 
 
 
@@ -994,7 +1645,9 @@ an hour, an unkind old lady, an apple, an egg, an L(元音开头的单个字母)
 
   例：a lot of books, a great deal of water, a couple of days.
 
-数量词`a few, few, a little, little`的特殊用法：
+### a few, few, a little, little的特殊用法
+
+数量词a few, few, a little, little的特殊用法：
 
 1. 与名词搭配
 
@@ -1018,7 +1671,9 @@ an hour, an unkind old lady, an apple, an egg, an L(元音开头的单个字母)
 
    例：His theory is rather difficult and only a few students can understand it.
 
-数量词`some, any`的特殊用法：
+### some, any特殊用法
+
+数量词some, any的特殊用法：
 
 1. some和any均可以与不可数名词和可数名词复数连用，表示“一些”。some一般用在肯定句中，而any一般用在否定句中；例：
 
@@ -1701,7 +2356,103 @@ There is something wrong with my computer.
 
 ### 个体形容词
 
-TODO
+each和every后面都只能接单数可数名词，若其所修饰限定的名词作主语，句子的谓语动词显然要用单数形式。
+
+例：Every/Each boy has a gift.
+
+个体形容词each/every用法的区别：
+
+1. each不仅用作限定词，还可用作代词；而every只能用作限定词。因此each可以单独使用作成分，而every只能与名词连用，不能单独使用
+
+   例：~~Every has a gift.~~ -> Each has gift.
+
+2. 从意思上来看，两者有以下区别
+
+   - each可以用来指两个或两个以上的事物，而every缺总是指三个或三个以上的事物，不能指两个
+
+     例：~~There are a lot of trees on every side of the street.~~ -> There are a lot of trees on each side of the street.
+
+   - 尽管each和every都可作“每一个”讲，但两者意思并不完全相同。every强调整体，相当于all；而each表示个别概念，强调一个个不同的人或物
+
+     例：
+
+     We want every student to succeed in the exam.（强调整体）
+
+     Each student has his own personal dream in his mind.（强调个体）
+
+   - every可与数词连用，然后再加复数名词，而each一般不这么用
+
+     例：every two days, every other day, every four years.
+
+   - 此类词与of连用
+
+     someone/anyone/everyone/no one + 不接of短语。
+
+     some one/any one/every one/none + of短语。
+
+个体形容词another/other用法：
+
+1. 与名词搭配时的区别
+
+   another只能与单数可数名词连用，表示不确定的“另一个”“再一个”，如another day, another cup of water，而不说another days或another water。然而，other与单数，复数可数名词以及不可数名词连用均可，表示不确定的“另外的”“其余的”人或物。
+
+2. 与数词搭配时的区别
+
+   - another + 数词 + 复数名词
+
+     例：~~three another days~~ -> another three days.
+
+   - 数词 + other + 复数名词
+
+     例：~~other three days.~~ -> three other days.
+
+   - other的其它用法
+
+     1. other之前可以有其他限定词修饰，如：some, any, every, one/two/three, no, many, his/my/their等
+
+        例：Can you give me some other reference books?
+
+     2. "other + 名词"表示不确定的“其他的...，另外的...”；"the other + 名词"表示特定的“其余的...”
+
+        例：Some metals are magnetic and other metals are not.
+
+     3. other只能作限定词来用，后面必须接名词，不能说~~Other are...~~；而others只能用作代词，后面不能再接名词，~~Others people are...~~。
+
+个体形容词either/neither用法：
+
+1. 从词义角度分析，二者词义不同
+
+   - either的基本意思是“两个当中的任何一个”，即“这个或那个”
+
+     例：Come over on Saturday or Sunday either day is OK.
+
+   - either有时也指“两个中的每一个”，特别是与end和side连用时
+
+     例：There are a lot of trees on either side of the river.
+
+   - neither只有一个意思“两者都不”
+
+     例：Neither of the answers is right.
+
+2. 从与名词的搭配来看，两者的结构用法相同
+
+   - 用作限定词，总是与单数可数名词连用，谓语动词用单数形式
+
+     例：Either day is OK.
+
+   - 用作代词时，二者不直接接名词，而是单独使用或接of短语
+
+     例：Come over on Saturday or Sunday either is OK.
+
+     **注意：**
+
+     1. 名词前必须有限定词；例：~~either of answers~~
+     2. 名词必须用复数形式；例：~~either of the answer~~
+     3. 谓语动词通常用单数形式；例：~~either of the answers are right.~~
+
+   - either...not相当于neither
+
+     例：either of the answers is not correct.
 
 
 
@@ -1888,7 +2639,147 @@ TODO
 
 #### 过去完成时
 
-TODO https://www.tingclass.net/show-10288-472417-1.html
+过去完成时用来表示在过去某一时刻之前（即过去的过去）就已开始的动作。
+
+过去完成时用法如下：
+
+1. 表示开始于过去某一时刻之前（即过去的过去）的动作或状态在过去这一时刻仍在持续。
+
+   例：I had stayed in America for two years when he moved here.
+
+2. 表示开始于过去某一时刻之前的动作到过去这一时刻之前即已停止。
+
+   例：She had made everything ready before i came.
+
+3. 表示在过去某一时刻之前开始的动作，在过去这一时刻之前的一段时间内重复发生。
+
+   例：I had written her 100 letters when she finally promised to marry me.
+
+4. 过去完成时的其它用法
+
+   - intend, mean, hope, want, plan, suppose, expect, think, propose, wish等动词的过去完成时，可表示过去未能实现的计划，设想，意图或希望等
+
+     例：I had intended to see you, but i was too busy.
+
+   - 用在"It was the + 序数词/最高级 + that..."句型中
+
+     例：Last week i attended an international conference and saw Mr.Machine. It was the third time that i had met him.
+
+一般过去时与过去完成时的比较：
+
+- 两个或两个以上相继发生的动作，用and或but按动作发生的先后顺序，此时要用一般过去时，而不用过去完成时。过去完成时则强调主语在过去某一时刻回顾更早的动作
+
+  例：He opened the door and entered, but（一般过去时）found nobody.
+
+- 在表示两个相继发生的动作时，用过去完成时可以表示在一个动作完成以后，另一个动作才开始发生，从而使得两个动作相互独立，彼此脱离开来。用一般过去时，则可能表示一个动作的发生“导致”另一个动作的发生，或两个动作之间有因果关系
+
+  例：I opened the window and the cat jumped out.
+
+#### 将来完成时
+
+将来完成时，是以“将来”为坐标时间，来表示开始于将来之前的动作持续到将来。
+
+将来完成时的用法：
+
+1. 表示延续到将来某一时刻的动作或状态；例：I will have learned 8,000 words by the end of next year.
+2. 表示将来某一时刻之前发生的动作对将来有影响；例：I will have finished my homework by the time i go out on a date tonight.
+3. 表示将来某一时刻之前开始的动作，在该时刻之前的一段时间内重复发生；例：By five o'clock this afternoon the spaceship will have travelled eleven times round the Earth.
+
+### 完成进行时
+
+完成进行时具有完成和进行两方面的特点；表示一个动作在现在，过去或将来的某一时刻之前的一段时间里一直在进行，或重复进行，强调动作的持续性。
+
+#### 现在完成进行时
+
+现在完成进行时表示在现在之前的一段时间里一直在持续或重复进行的动作；其用法如下：
+
+1. 与表示一段时间的时间状语连用
+
+   例：It began raining two hours ago and it's still raining.
+
+2. 可以不与表示一段时间的时间状语连用
+
+   例：I have been thinking about changing my job.
+
+3. 表示动作持续到说话为止
+
+   例：I'm so sorry i'm late, have you been waiting long?
+
+4. 表示不久前刚刚结束的动作
+
+   例：Have you been running?
+
+5. 表示过去一段时间内重复发生的动作
+
+   例：I've been getting up early since i entered the college.
+
+现在完成进行时与现在完成时的比较：
+
+1. 相同点
+
+   - 谓语动词都表示延续性的动作，如：live, learn, study, sleep, snow, wait, work, teach, stay等。
+
+   - 都与表示“一段时间”的时间状语连用。这时，用两种时态几乎没有多大区别
+
+     例：
+
+     I have been learning English for ten years.
+
+     I have learned English for ten years.
+
+2. 不同点
+
+   - 现在完成时只有在与for three years, since three years ago等这样的表示一段时间的时间状语连用时才与现在完成进行时的意思相近。不加这样的时间状语时，现在完成时表示的是一个完成了的动作
+
+     例：I have worked in this company.
+
+   - 现在完成进行时所强调的是在过去一段时间内某项活动的持续性，因此强调的是动作本身。现在完成时则是强调动作的结果
+
+     例：My hands are very dirty, i've been painting the house.
+
+   - 短暂性动词的完成时不能与表示“一段时间”的时间状语连用。但是，短暂性动词的完成进行时可与表示“一段时间”的时间状语连用，表示重复动作
+
+     例：Every sunday they meet in the same bar, they've been going there for years.
+
+   - 现在完成进行时强调动作的持续性，因此它表示一种看起来不间断的动作
+   
+     例：I have been sitting in class since 8 o'clock this morning.
+   
+   - 不能用于进行时态的动词，往往可以用于现在完成时态，但同样不能用于现在完成进行时
+   
+     例：~~How long have you been knowing Jane?~~ -> How long have you known Jane?
+
+#### 过去完成进行时
+
+过去完成进行时表示在过去的某一时刻之前的一段时间里一直在持续或重复进行的动作。
+
+过去完成进行时用法：
+
+- 强调在过去的某一时刻之前一直在持续的一项活动，且该活动可能仍将继续持续下去
+
+  例：When i arrived in Inner Mongolia, it had been snowin for half a month.
+
+- 强调在过去的某一时刻之前一直在持续的一项活动，活动持续到过去这一时刻为止，或者是在这一时刻之前刚刚结束
+
+  例：The police had been looking for the murderer for two years before they caught him.
+
+- 可表示过去某一时刻之前的一段时间内重复发生的动作
+
+  例：He had been gambling for two years before his wife found out.
+
+#### 将来完成进行时
+
+表示在将来的某一时刻之前的一段时间里一直在持续或重复进行的动作。这个动作开始的时间可能是过去，现在或将来。
+
+将来完成进行时用法：
+
+- 强调在将来的某一时刻之前一直在持续的一项活动
+
+  例：I,m retiring this fall. By then i'll have been teaching for 30 years.
+
+- 表示在将来某个时刻之前经常重复的动作
+
+  例：I will have been attending professor smith's lectures for half a year by next week.
 
 
 
@@ -1896,25 +2787,157 @@ TODO https://www.tingclass.net/show-10288-472417-1.html
 
 ## 其它
 
-### 不定式
-
-TODO
-
-### 动名词复合结构
-
-TODO
-
 ### 被动语态
 
-TODO
+被动语态的构成：be + 过去分词；主动句的主语I, you, he变成被动句中by的宾语：by me, by you, by him；主动句的宾语the window变成被动句的主语。
+
+例：
+
+| 主动句                | 被动句                        |
+| --------------------- | ----------------------------- |
+| I clean the window.   | The window is cleaned by me.  |
+| You clean the window. | The window is cleaned by you. |
+| He cleans the window. | The window is cleaned by him. |
+
+#### 被动语态中be动词变化
+
+根据时态的不同，被动语态中be动词可以有多种变化：
+
+| 时态       | 主动句                                  | 被动句                                           | be的形式       |
+| ---------- | --------------------------------------- | ------------------------------------------------ | -------------- |
+| 一般现在时 | He <u>cleans</u> the window.            | The window <u>is cleaned</u> by him.             | is             |
+| 现在进行时 | He <u>is cleaning</u> the window.       | The window <u>is being cleaned</u> by him.       | is being       |
+| 现在完成时 | He <u>has cleaned</u> he window.        | The window <u>has been cleaned</u> by him.       | has been       |
+| 一般过去时 | He <u>cleaned</u> the window.           | The window <u>was cleaned</u> by him.            | was            |
+| 过去进行时 | He <u>was cleaning</u> the window.      | The window <u>was being cleaned</u> by him.      | was being      |
+| 过去完成时 | He <u>had cleaned</u> the window.       | The window <u>had been cleaned</u> by him.       | had been       |
+| 一般将来时 | He <u>will clean</u> the window.        | The window <u>will be cleaned</u> by him.        | will be        |
+| 将来完成时 | He <u>will have cleaned</u> the window. | The window <u>will have been cleaned</u> by him. | will have been |
+
+#### 被动语态中的介词短语by sb.可以省略
+
+被动语态在使用中是可以不带by短语的，即不给出动作的实施者，因为有些情况下不需要知道动作的实施者，或谁是实施者并不重要。具体情况包括：
+
+1. 动作的实施者很明显，因而没有必要提到
+
+   例：The rubbish hasn't been collected.
+
+2. 不知道谁是动作的实施者或没有必要提及动作的实施者
+
+   例：The president has been murdered.
+
+3. 动作的实施者泛指“人们”
+
+   例：
+
+   People believe him to be honest.（主动句）
+
+   He is believed to be honest.（被动句）
+
+4. 当动作的实施者是不定代词one或you和they时，常可用被动语态
+
+   例：You see this kind of advertisement everywhere --> This kind of advertisement is seen everywhere.
+
+5. 在主从复合句中，使用被动语态可避免改变句子主语（这时可以用by引出动作实施者）
+
+   | 主动句                                                       | 被动句                                                       |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | When he arrived home, <u>a detective</u> arrested him.       | 可改为：When he arrived home, <u>he was arrested by a detective.</u> |
+   | When their mother was ill, the <u>neighbors</u> looked after the children. | 可改为：When their mother was ill, <u>the children were looked after by the neighbors.</u> |
+
+#### 不及物动词没有被动语态
+
+一般涞水，能带宾语的动词才可以有被动语态。因此，不及物动词和系动词是没有被动语态的，只有及物动词才可以有被动语态。
+
+例：
+
+He looks fine.（没有被动语态）
+
+He came here last night.（没有被动语态）
+
+#### 双宾语句子的被动语态
+
+对于双宾语句子（即句子含有一个直接宾语和一个间接宾语）的被动语态，理论上讲，可以有两种形式：
+
+- Someone gave me a gift --> I was given a gift.
+- Someone gave me a gift --> A gift was given to me.
+
+#### 静态被动形式
+
+| The door <u>was locked</u> by me two minutes ago | 这里的was locked强调动作                                     |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Now the door <u>is locked.</u>                   | 这里的is locked并非强调动作，只是在说明门的状态。locked起着形容词的作用，用来描述状态而非动作，我们称之为“静态被动形式”。 |
+
+#### get的被动形式
+
+get与过去分词连用：
+
+- 既可以构成被动语态；例：My watch got broken while i was playing with the children.
+- 也可以接静态的被动形式，表示主语的状态；例：I stopped working because i got tired.
 
 ### 限定词
 
-TODO
+#### 限定词与名词搭配
 
-### 关系词
+各种限定词与不同“数”的名词搭配，应遵循以下规则：
 
-TODO
+1. 只与单数可数名词搭配的限定词有：a, an, each, either, neither, another, every, one等。
+2. 只与复数可数名词搭配的限定词有：both, few, a few, fewer, a number of, many, several, these, those, two/three/four等。
+3. 只与不可数名词搭配的限定词有：little, a little, much, a bit of, a great amount/deal of等。
+4. 与不可数名词或复数可数名词均可搭配的限定词有：a lot of, lots of, plenty of, more, mostd等。
+5. 与单数可数名词，复数可数名词和不可数名词均可搭配的限定词有：any, some, no, the, my/your/his..., Tom's/my mother's等。
+
+#### 限定词之间的位置搭配
+
+限定词分为三类：
+
+1. 前位限定词
+
+   前位限定词主要用来说明名词的数量，分为：
+
+   - 表示倍数关系的数量形容词；例：half my salary, twice my salary, double my salary, three times my salary.
+   - 表示几分之几的数词；例：one third my salary, two thirds my salary.
+   - 个体形容词；例：all my salary, both my salaries.
+
+   注意：前位限定词一般互相排斥，不能共存；例：~~all half my salary~~
+
+2. 中位限定词
+
+   中位限定词分为：
+
+   - 冠词：the, a, an；例：all the book.
+   - 物主形容词：my, your, his, her, our, their；例：all my money.
+   - 指示形容词：this, that, these, those；例：all these problems.
+   - 名词属格；例：all John's friends.
+
+   注意：中位限定词彼此排斥，不能同时出现；例：~~my the money~~
+
+3. 后位限定词
+
+   后位限定词分为：
+
+   - 基数词或序数词：one/first, two/second, three/third；例：the two childeren.
+   - 一般序数词：next，last，past，previous，subsequent，other，another；例：my next plan.
+   - 数量形容词：few，many，several，little，less，more；例：my many friends.
+
+   注意：后位限定词可以同时出现在名词前，但也有先后顺序：
+
+   - 序数词/一般序数词 + 基数词；例：the first two weeks.
+   - 序数词/一般序数词 + 数量形容词；例：during the past few years.
+
+#### 限定词与形容词的区别
+
+限定词与形容词在性质和用法上存在区别：
+
+1. 限定词用以限定名词所指的范围，对名词起泛指或特指，定量或不定量等限定修饰作用；而形容词则是用来表示名词的性质和特征
+
+   例：many / a few / his children（限定作用） <==> naughty / lovely / clever children（修饰作用）
+
+2. 限定词一般不用作表语；而绝大多数形容词都可以用作表语。
+
+3. 除了few, little, many, much外，限定词没有比较级和最高级形式；大多数形容词有比较级和最高级形式。
+
+4. 限定词总是位于名词之前；而形容词作定语时，有的可置于被修饰词之后；例：a kind woman.
 
 ### 主谓一致
 
@@ -2044,9 +3067,64 @@ that即可指人，也可指物；**that不用在非限制性定语从句中；t
 3. **先行词是不定代词something, anything, nothing, everything时，关系代词一般用that**；例：Is there anything that i can do for you?
 4. **先行词被any, only, all, every, no, some, much, few, little, 序数词，最高级，the only, the one, the very, the right以及the last修饰时，关系代词用that。**例：Tell us all things that you know.
 
+### 省略to的用法
+
+省略to的不定式作宾语补足语：
+
+1. 感官动词的宾语补足语中不带to：see, hear, watch, notice, feel, observe.
+2. 使役动词的宾语补足语中不带to：let, make, have.
+
+例：The teacher has us write a composition every week.
+
+一些短语句型中to的省略：had better, would rather, would sooner, would just as soon, might (just) as well, cannot but, cannot choose but, cannot help but.
+
+例：I cannot but admire his courage.
+
+do + nothing/anything/everything + but do句型中to的省略：
+
+1. 若but前没有do，则不定式要带to
+
+   例：I have no choice but to wait.
+
+2. 若but前有do，but后的不定式省略to
+
+   例：I have nothing to do but wait.
+
+3. 在解释do的精确含义时，be动词后直接加动词原形，神略to
+
+   例：All that i could do then was wait.
+
+### have/get sth. done
+
+我们可以用have sth. done或者get sth. done来表示以下内容：
+
+1. 安排别人把事情做好（主要用法）
+
+   例：I must get my hair cut. == I want someone to cut my hair.
+
+2. 谈论发生在自己身上的事
+
+   例：I got my car stolen last year.
+
+### 特殊句式中的主谓一致问题
+
+1. 名词性从句或名词性的短语作主语时，谓语用单数形式
+
+   例：What i said and did is of no concern to you.
+
+2. 定语从句中的主谓一致
+
+   定语从句中的谓语形式应与先行词的单复数形式保持一致。若先行词为单数形式，那么从句谓语也用单数形式；若先行词为复数形式，那么从句谓语也用复数形式；例：
+
+   He is the only one of those men who likes to drive fast.（单数）
+
+   He is one of those men who like to dirve fast.（复数）
+
 
 
 ---
+
+
 
 ## 参考
 
