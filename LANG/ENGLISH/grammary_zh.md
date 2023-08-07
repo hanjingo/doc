@@ -419,7 +419,63 @@ when的用法
 
    例：I'll never forget the day i met you.
 
-3. 注意：表示时间的先行名词，
+3. 注意：表示时间的先行名词，若定语从句不是缺状语，而是缺少主语或宾语，要用which或that来引导定语从句。因为用when来引导定语从句的前提条件是when在其引导的定语从句中作时间状语。
+
+where的用法
+
+1. where引导定语从句，作状语，其前边的先行词必须是表示地点的名词，如place，house等
+
+   例：Do you know any place where i can buy clint's grammar book?
+
+2. 注意：与when类似，并非凡是表示地点的名词作先行词，都得由where来引导定语从句，这需要看关系词在从句中充当的成分。若定语从句缺主语或宾语，要用which或that引导定语从句
+
+   例：This is the town which i told you about before.
+
+3. where的先行词可以是含有地点意义的抽象名词，如situation, point等
+
+   例：Cheating is most likely in situations where the vital interests are high and the chances of getting caught are low.
+
+4. 区分where引导的地点状语从句和定语从句
+
+   - 若是定语从句，则where前边必然有被修饰的地点名词；
+
+     例：When you read books, you had better make a mark at the spot where you have any question.
+
+   - 若是where前边没有被修饰的名词则视为地点状语从句；
+
+     例：When you read books, you had beter make a mark where you have any question.
+
+why的用法
+
+why用来表示原因，只引导限定性定语从句，先行词是reason等表示原因的名词；例：This is the reason why i didn't come here.
+
+in which to do结构
+
+“介词 + 关系代词”这一定语从句结构，可以简化为不定式；例：
+
+The farmer used wood to build a house in which he could store grains.
+
+The farmer used wood to build a house in which to store grains.
+
+The farmer used wood to build a house to store grains in.
+
+#### 高级定语从句
+
+定语从句会出现各种复杂的结构：
+
+1. 定语从句后置
+
+   例：Consequently, nothing seems good that does not accord with the interests of the people.
+
+2. 带有插入语的定语从句
+
+   例：He ran all the way from the station, which i though was incredible.
+
+3. 并列定语从句
+
+4. 双层定语从句
+
+   He is the only person that we know who speaks so many foreign languages.
 
 #### 状语从句
 
@@ -429,15 +485,17 @@ when的用法
 
 状语从句类型：
 
-- 时间状语从句：when, while, as, before, after, since, till, until, as soon as.
-- 地点状语从句：where
-- 原因状语从句：because, as, for, since
-- 目的状语从句：so that, in order that
-- 结果状语从句：so...that, so that, such...that
-- 条件状语从句：if, unless
-- 让步状语从句：although, though, even though, even if
-- 比较状语从句：as, than
-- 方式状语从句：as, the way
+| 状语从句种类 | 常用连接词                                                   | 特殊连接词                                                   |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 时间状语从句 | when, while, as, before, after, since, till, until, as soon as. | 1. 一些时间名词：the moment, the instant, the minute, they day, next time, every time<br>2. 一些副词：instantly, immediately, directly<br>3. 固定搭配的连词：no sooner...than, hardly...when, scarcely...when |
+| 地点状语从句 | where                                                        | wherever, anywhere, everywhere                               |
+| 原因状语从句 | because, as, for, since                                      | seeing that, considering that, now that, given that, in that, inasmuch as, insomuch as |
+| 目的状语从句 | so that, in order that                                       | lest, for fear that, in case, in the hope that, on purpose that, for the purpose that, to the end that |
+| 结果状语从句 | so...that, so that, such...that                              | such that, to the degree that, to the extent that, to such a degree that, to such an extent that |
+| 条件状语从句 | if, unless                                                   | suppose, supposing, providing, provided, on condition that, so long as, as long as |
+| 让步状语从句 | although, though, even though, even if                       | while（一般用在句首）, as（用于倒装结构）, whatever, whoever, whichever, however, whenever, wherever, whether...or..., as + adj  + as + 主谓结构（用在句首） |
+| 比较状语从句 | as, than                                                     | 其它比较句型：the more...the more..., just as...so..., A is to B what/as C is to D, no more...than, not A so much as B/not so much A as B. |
+| 方式状语从句 | as, the way                                                  |                                                              |
 
 在同时满足以下两点时，可将从句的主语和be动词省略：
 
@@ -457,6 +515,17 @@ when的用法
    从句的谓语动词通常是短暂性动词，表示瞬时的动作；例：I'll speak to him when he arrives.
 
    从句的谓语也可用延续性动词，这时从句往往用过去进行时态，表示过去某一时间正在发生的动作；例：The doorbell rang when i was telephoning.
+
+   也可以用whenever引导时间状语从句；例：Whenever you say "i love you", mean it. Whenever you say "I'm sorry", look the person right in the eyes.
+
+   **注意：when引导时间状语从句时主句和从句的时态搭配，以及不同时态表达的主句动作和从句动作的时间先后关系：**
+
+   | 例句                                                         | 主从时态                                  | 用法解释                                                     |
+   | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
+   | I'll speak to him when he arrives.<br>I'll tell him about it when he comes back. | 主句一般将来时+从句一般现在时             | 时间状语从句中要用一般现在时表示将来。                       |
+   | I'll give you a call when i have finished the work<br>I'll go when i have had my dinner | 主句一般将来时+从句现在完成时             |                                                              |
+   | I started my dinner when he left/had left.<br>He left when i got/had got there | 主句一般过去时+从句一般过去时或过去完成时 | 若主从句都用一般过去时，则表示从句动作先发生。所以，从句还可以用过去完成时。 |
+   | I had started my dinner when he left.<br>He had already left when i got there | 主句过去完成时+从句一般过去时             |                                                              |
 
 3. while相当于`during that time`，表示某一时间段内发生的动作。因此，从句谓语通常只用延续性动词；例：The phone rang while i was taking my bath.
 
@@ -3120,7 +3189,37 @@ do + nothing/anything/everything + but do句型中to的省略：
 
    He is one of those men who like to dirve fast.（复数）
 
+### so和such的用法区别
 
+1. so的用法
+
+   - so + 形容词/副词；例：The food is so bad in the school cafeteria that flies go there to lose weight.
+   - so + 形容词 + a(n) + 单数可数名词；例：This is so expensive a house that i can't afford to buy it.
+   - so many/much/few/little + 名词；
+
+2. such的用法
+
+   - such后可直接加各种名词
+
+     单数可数名词：such a house, such a day
+
+     复数可数名词：such boys, such shirts, such cars
+
+     不可数名词：such patience, such weather, such information
+
+   - such + 形容词 + 名词
+
+     单数可数名词：such an expensive house, such a nice day
+
+     复数可数名词：such nice boys, such good shirts, such expensive cars
+
+     不可数名词：such great patience, such nice weather, such important information
+
+   - 限定词 + such + 名词
+
+     例：~~no such a man.~~ -> no such man.
+
+     
 
 ---
 
