@@ -666,6 +666,44 @@ The farmer used wood to build a house to store grains in.
 - It + ... + to do sth；例：It takes time to study English well.
 - 不定式结构也可以直接置于句首作主语，此时谓语动词要用单数形式；例：To solve this problem takes a genius like Einstein.
 
+#### 不定式作状语
+
+- 作目的状语
+
+  例：To avoid criticism, do nothing, say nothing, be nothing.
+
+- 作结果状语
+
+  1. Only to do... 引出意想不到或不愉快的结果
+
+     例：We hurried to the railway station, only to find the train had just left.
+
+  2. so...as to, such as to表示结果，**注意不要漏掉as**
+
+     例：He is so indifference is such as to make everyone despair.
+
+  3. enough...to结构
+
+     例：He is not old enough to go to school.
+
+  4. too...to结构
+
+     - 通常，这一结构的意思是“太...以致不能...”，形式是肯定的，意思是否定的
+
+       例：The box is too heavy for me to even move.
+
+     - 在too ready/anxious/eager to do结构中，因为too不是修饰形容词ready/anxious/eager的，而是修饰整个ready/anxious/eager to do的，故此结构有"时刻准备..., 急于...，非常想..."等意思，形式是肯定的，意思也是肯定的
+
+       例：I'm just too eager to help you.
+
+     - too前若有only, all, but, really修饰时，此结构亦表示肯定
+
+       例：I am only too pleased to help you.
+
+     - 作条件状语
+
+       例：You would be stupid not to ask for a raise.
+
 #### 不定式作宾语
 
 - 跟在一个及物动词后面作宾语；例：I hope to see you again.
@@ -732,6 +770,140 @@ To make a long story short, he is in hospital now.
 
    例：The box is too heavy for me to move.
 
+#### 动词不定式作独立成分
+
+动词不定式可用作独立成分来修饰整个句子，常见的有：to begin with, to tell the truth, to make a long story short, so to speak, to be brief/exact/frank/honest, to say nothing of, to say the least.
+
+例：I have a point there, to say the least.
+
+#### 不定式的逻辑主语
+
+1. for sb. to do
+
+   例：It's important for you to go there in person.
+
+2. of sb. to do
+
+   例：It's wise of you not to argue with your boss.
+
+#### 不定式的时态
+
+不定式的时态，语态的构成：
+
+| 四种形式   | 主动               | 被动              |
+| ---------- | ------------------ | ----------------- |
+| 一般式     | to do              | to be done        |
+| 完成式     | to have done       | to have been done |
+| 进行式     | to be doing        | 一般不用          |
+| 完成进行式 | to have been doing | 一般不用          |
+
+不定式的一般形式to do所表示的动作通常：
+
+1. 与主要谓语所表示的动作和状态同时或几乎同时发生
+
+   例：I am glad to see you.
+
+2. 或是在主要谓语动作之后发生
+
+   例：We plan to go to the sea this summer.
+
+3. 不定式的完成式（to have done）
+
+   不定式的完成式可表示：
+
+   - 发生在谓语之前的动作；例：We are happy to have visited so many historic places in Beijing.
+   - 表示“非真实”的过去；例：I meant to have telephoned, but i forgot.
+   - 偶尔表示“将来”；例：She hopes to have finished the work by the time he comes back.
+
+4. 不定式的进行式（to be doing）
+
+   不定式的进行式可表示：
+
+   - 正在进行的动作
+
+     例：He pretended to be sleeping when she came in.
+
+   - 反复发生的一般性动作
+
+     例：I'd rather read than watch television; the programs seem to be getting worse all the time.
+
+5. 不定式的完成进行式（to have been doing）
+
+   表示在谓语动作之前已经开始并且一直在持续进行的某一动作；例：He seems to have been sitting there all day.
+
+#### 不定式的语态
+
+1. 一般来讲，在句中若出现了不定式动作的执行者时，则不定式用主动形式。若没有执行者或不定式所修饰的成分是不定式动作的承受者，则不定式用被动形式；请比较：
+
+   | 主动                                       | 被动                                    |
+   | ------------------------------------------ | --------------------------------------- |
+   | He wants someone to take some photographs. | He wants some photographs to be taken.  |
+   | I have three letters to write today.       | I want the letters to be typed at once. |
+
+2. 形容词后边的不定式通常用不定式的主动形式来表示被动意思
+
+   例：English is difficult to speak.
+
+3. to let, to blame
+
+   例：
+
+   You should be to blame for it.
+
+   The house is to let.
+
+4. 不定式完成被动式及双重被动结构
+
+   例：The book is said to have been published.
+
+#### 不带to的不定式
+
+以下几种情况不定式要省略to：
+
+1. 在以下动词的复合宾语中
+
+   - 感官动词：see, hear, watch, notice, feel, observe
+
+   - 使役动词：let, make, have
+
+     例：The teacher has us write a composition every week.
+
+   - help, listen to, look at后边的动词不定式可用to, 也可不用to
+
+     例：Would you like to listen to me read the poem?
+
+2. 在下列这些短语句型中：
+
+   had better, would rather, would sooner, would just as soon, might as well, cannot but, cannot choose but, cannot help but.
+
+   例：I cannot but admire his courage.
+
+3. 在rather than, other than, than后
+
+   例：Rather than wait anymore, i decided to go home by taxi.
+
+4. 在Do nothing/anything/everything but do句型中
+
+   例：I have nothing to do but wait.
+
+5. Why (not) + do? 句型中
+
+   - Why do sth.?含有责怪之意，通常表明做某事是无意义或愚蠢的
+
+     例：Why pay to see that movie, since you can see it on TV for nothing.
+
+   - Why not do sth.?表示建议
+
+     例：Why not take a holiday?
+
+6. 两个动词不定式由and, or, but等连接时，为了避免重复而省去第二个不定式中的to
+
+   例：I'd like to lie down and go to sleep.
+
+#### 分裂不定式
+
+所谓分裂不定式，即to与动词之间插入了一个副词；例：He liked to half close his eyes.
+
 #### 形容词后的不定式
 
 1. 句子主语和不定式动词可构成逻辑上的主谓关系，这一句型中的形容词通常表示人的性格特征或行为表现；如：brave, careful, careless, clever, considerate, cruel, foolish, generous, kind, modest, nice, polite, rude, selfish, silly, stupid, thoughful.
@@ -747,12 +919,6 @@ To make a long story short, he is in hospital now.
 - 不定式一般不用被动式，而多用主动形式表示被动含义；例：~~English is difficult to be spoken.~~
 - 不定式后不能再加宾语；例：~~Football is very interesting to watch it.~~
 - 不定动词所带的介词不能省略；例：~~She is interesting to listen.~~
-
-
-
----
-
-## 主语
 
 ### 名词作主语
 
@@ -880,6 +1046,40 @@ of结构作主语时谓语动词的单复数形式：
 5. "A part of + 单数名词"作主语时，谓语使用单数形式；"A partof + 复数名词"作主语时，谓语用复数形式
 
    例：A part of the apple is bad.
+
+### 分词短语作状语
+
+分词短语作状语时的逻辑主语问题：
+
+1. 主语一致：分词短语的动作应该由句子主语发出
+
+   例：~~Looking out of the window, there are lots of people in the street.~~ -> Looking out of the window, i saw lots of people in the street.
+
+2. 有自己主语的分词结构--独立分词结构
+
+   例：It being so nice a day, we go out for a walk.
+
+3. 固定表达结构
+
+   - 副词 + speaking：如generally/strictly/broadly... speaking.
+
+     例：Generally speaking, men are stronger than women.
+
+   - 分词 + 介词：如judging from, talking of, allowing for, considering, assuming, supposing
+
+     例：Judging from his expression, he is in a lousy mood.
+
+   - 分词 + that从句：如seeing that..., considering that..., supposing that..., granting that..., allowing that...
+
+     例：Considering that she has no experience, she has done a good job.
+
+分词短语作状语，其实就是相应的状语从句简化的结果，在句中可表示：
+
+1. 绝大多数情形下，分词动作发生在谓语动作之前
+
+   例：Reading the letter, she burst out crying.
+
+2. TODO https://www.tingclass.net/show-10288-472671-1.html
 
 
 
@@ -1281,6 +1481,93 @@ would do和used to的区别：
 
    例：~~I used to go / would go to that restaurant over ten times when i was in college~~ -> I went to that restaurant over ten times when i was in college.
 
+### 非谓语动词
+
+|        | 作成分                                                       |
+| ------ | ------------------------------------------------------------ |
+| 不定式 | 可当作名词，形容词和副词来使用。因此不定式在句中能够充当**除了谓语之外的任何其它成分**。 |
+| 动名词 | 动名词相当于名词，因此在句中主要充当：主语，宾语，表语。     |
+| 分词   | 分词相当于形容词和副词，因此在句中主要充当：定语，状语，补足语。 |
+
+#### It is... + to do sth
+
+1. It is... + to do sth.句型
+
+   不定式作主语，常用it作形式主语，放在句首，将真正的主语动词不定式（短语）放在句子后面。
+
+   例：It's easy to be wise after the event.
+
+2. 不定式结构也可直接置于句首作主语，此时谓语动词要用单数
+
+   例：To err is human, to forgive divine.
+
+#### 动词 + to do (作宾语)
+
+1. 直接跟在一个及物动词后面作宾语。这时句子有以下两个特点：
+
+   - 句子主语和不定式的逻辑主语是一致的，即两个动词所表示的动作都由全句主语发出；
+   - 这时句子的谓语动词多是描写态度，不定式的动词则说明行为。
+
+2. 在一些动词之后，可以在连接代词（what, who, which）或连接副词（how, when, where）及连词whether后面接一个动词不定式。我们可以将这种结构看成是连接词引导的宾语从句的简略形式
+
+   例：I wonder who to invite == who i should invite.
+
+3. 动词+it+宾补（名词或形容词）+to do（作宾语）
+
+   例：I think it hard to answer the question in one go.
+
+#### 动词 + sb./sth. to do sth.（作宾语补足语）
+
+1. 通常的结构时：动词+sb./sth. to do sth.
+
+   例：They don't allow people to smoke in the theater.
+
+2. 在let, make, have, see, hear, feel, watch, notice, listen to等动词后面作宾补的不定时中，to要省略。
+
+#### 名词+to do sth.（作宾语）
+
+1. 动宾关系（所修饰的名词在逻辑上作不定式的宾语）
+
+   由被修饰的名词决定不定式动词是否需要接介词；例：~~i need a pen to write~~ -> I need a pen to write with.
+
+2. 主谓关系
+
+   被only, last, next，序数词以及形容词最高级修饰的名词常用不定式作定语，所修饰的名词与不定式构成逻辑主谓关系；例：I don't think he is the best man to do the job.
+
+3. 同位关系
+
+   - 与动词相关的名词：要求与不定式连用的动词，它的名词形式也要接不定式。这类常见的名词有：arrangement, attempt, claim, decision, hope, determination, failure, need, plan, promise, refusal, resolution, tendency, threat, wish等。
+
+     例：He refused to cooperate with us.
+
+   - 与形容词相关的名词：要求与不定式连用的形容词，它的名词形式也要接不定式。这样的名词有：ability, ambition, anxiety, eagerness, inclination, reluctance等。
+
+     例：She was reluctant to accept his invitation.
+
+#### 形容词+to do sth.（作主语补足语）
+
+1. 句子主语和不定式动词可构成逻辑上的动宾关系
+
+   例：Relativity theory isn't easy to understand == It isn't easy to understnd relativity theory.
+
+   注意：
+
+   - 不定式动词一般不用被动式；例：~~English is difficult to be spoken.~~
+   - 不定式后不能再加宾语；例：~~She is nice to talk to her.~~
+   - 不定式动词所带的介词不能省略；例：~~She is easy to get on.~~
+
+2. 句子主语和不定式动词可构成逻辑上的主谓关系；这一句型中的形容词通常表示人的性格特征或行为表现；如：brave, careful, careless, clever, considerate, cruel, foolish, generous, kind, modest, nice, polite, rude, selfish, silly, stupid, thoughful.
+
+   例：He was kind to help us.
+
+   这时句子可用以下两种方式来改写：
+
+   | so...as to                             | He was so kind as to help us.  |
+   | -------------------------------------- | ------------------------------ |
+   | It is/was + 形容词 + of sb. to do sth. | It was kind of him to help us. |
+
+   
+
 
 
 ---
@@ -1467,7 +1754,7 @@ I have a term paper(论文，可数) to write on weekends.
 
      例：There is no denying that...
 
-### 接动名词作宾语的动词
+### 动名词作宾语
 
 只能接动名词作宾语的动词:
 
@@ -1546,6 +1833,42 @@ Being a bad-tempered man, he would not tolerate having his lectures interrupted.
    - 动名词复合结构在句中作宾语时，用普通格或所有格均可
 
      例：Do you mind me making a suggestion?
+
+### 动名词的时态和语态
+
+1. 动名词的被动式
+
+   - 构成：being done
+
+   - 意义与用法：当动名词所修饰的名词或代词在意义上是充当动名词动作的承受者时，或者说是作动名词的逻辑宾语时，动名词要用被动形式
+
+     例：He narrowly escaped being run over.
+
+2. 动名词的完成式
+
+   - 构成：having done
+
+   - 意义与用法：用动名词完成式表明动名词动作发生在谓语动作之前
+
+     例：He denied having been there.
+
+3. 动名词的完成被动式
+
+   - 构成：having been done
+
+   - 意义与用法：兼具完成式和被动式的双重特点
+
+     例：He prided himself one having never been beaten in chess.
+
+### there be的动名词及不定式形式
+
+1. there be的动名词形式
+
+   例：No one would have dreamed of there being such a good place.
+
+2. there be的不定式形式
+
+   例：It was too late for there to be any buses.
 
 
 
@@ -2849,6 +3172,62 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 - 表示在将来某个时刻之前经常重复的动作
 
   例：I will have been attending professor smith's lectures for half a year by next week.
+
+### 现在分词
+
+现在分词的意义：
+
+1. 主动的，一般的动作
+
+   - 此时若将现在分词改成定语从句，则定语从句的谓语要用一般时态；
+   - 此时现在分词多数表示的是所修饰名词的一种持久性的特点，并不是强调正在发生的动作。
+
+   例：a promising young man == a young man who promises well.
+
+2. 主动的，正在进行的动作
+
+   - 此时若将现在分词改成定语从句，则定语从句的谓语要用进行时态；
+   - 此时现在分词多数表示的是所修饰名词的一种短暂性的特点，强调正在发生的一个动作
+
+   例：falling leaves == leaves that are falling.
+
+### 过去分词
+
+过去分词的意义：
+
+1. 被动的，一般的或完成的动作
+
+   此时若将过去分词改成定语从句，则定语从句的谓语要用被动语态；例：the exploited class == the class that is exploited.
+
+2. 主动的，完成的动作
+
+   1. 由及物动词变来的过去分词才有被动意义，而由不及物动词变来的过去分词则不能表示被动，而只表示主动的，完成的动作。此时，过去分词一般表示一种完成的状态，而多数已失去了原动词的动作概念。
+
+   2. 此时若将过去分词改成定语从句，则定语从句的谓语要用主动语态，完成时态
+
+      例：fallen leaves == leaves that have fallen.
+
+现在分词和过去分词的区别：
+
+1. 从语态角度来看，现在分词表示主动意义，它与所修饰的名词构成主谓关系
+
+   例：
+
+   fallen leaves == leaves that **have fallen**（表示完成的动作）
+
+   falling leaves == leaves that **are falling**（表示进行的动作）
+
+   sunken ships == ships that **have sunken**（表示完成的动作）
+
+   sinking ships == ships that **are sinking**（表示进行的动作）
+
+2. 从时态角度来看，现在分词一般表示进行的动作，过去分词则表示完成的动作
+
+   例：
+
+   - to be done 表示将来的动作（用不定式表示被动）
+   - being done 表示进行的动作
+   - done 表示一般过去或完成的动作
 
 
 
