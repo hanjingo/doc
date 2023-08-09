@@ -30,6 +30,7 @@ English | [中文版](README_zh.md)
 
 | Title | Edition | Author | Abstract/Evaluate |
 | ----- | ------- | ------ | ----------------- |
+|       |         |        |                   |
 
 ### OS
 
@@ -81,6 +82,7 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
+- [Practical English Usage]
 - [HIGH-FREQUENCY TRADING]
 - [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Design and Development of a Functional High-Frequency Trading Algorithm]

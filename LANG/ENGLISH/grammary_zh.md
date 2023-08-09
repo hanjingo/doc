@@ -303,6 +303,31 @@ how结构主要有三种：
 - which；例：Tina likes the present which i gave her for her birthday.
 - that；例：Tina likes the present that i gave her for her birthday.
 
+名词从句的简化：
+
+1. 名词从句与动名词
+
+   - that引导的主语从句简化：直接用动名词复合结构来替换主语从句，放在句首作主语；
+
+     例：It surprised us that John won the marathon.
+
+   - that引导的同位语从句简化：先在同位语从句所修饰的名词后边加上介词，通常是用of来表示同位关系，然后把从句换成动名词复合结构；
+
+     例：There was no chance that Davy would come from the battle alive.
+
+   - that引导的宾语从句简化：宾语从句的简化较复杂，可转换成不定式或动名词，与主语谓语动词的用法密切相关；
+
+     例：I hope that i can dirve to work in my own car.
+
+2. 名词从句与不定式
+
+   能简化成不定式的名词从句一般有两个共同的特征：
+
+   - 名词从句谓语往往含有情态意义，多见的是should, can和could；
+   - 通常是连接代词，连接副词以及whether引导的名词从句。
+
+   例：I don't know what i should do.
+
 #### 定语从句
 
 定语从句的两个重要概念：
@@ -459,6 +484,28 @@ The farmer used wood to build a house in which to store grains.
 
 The farmer used wood to build a house to store grains in.
 
+定语从句的简化：
+
+定语从句的简化就是把定语从句简化为短语；注意：只能是关系词在从句中作主语的情况下，我们才能将定语从句简化为短语。
+
+1. 从句中含有be动词
+
+   如果定语从句中含有be动词的形式，我们只需把关系词和be动词省去即简化成短语，往往是分词短语（主动的用现在分词，被动的用过去分词），或者形容词短语。
+
+   例：Do you know the boy who is playing the violin? <--> Do you know the boy playing the violin?
+
+2. 从句中没有be动词
+
+   如果定语从句中没有be动词的形式，我们则可把从句的主语（即关系代词）省去并且把从句的动词变成现在分词-ing形式
+
+   例：They live in a room that faces the south <--> They live in a room facing the south.
+
+3. 用不定式替换定语从句
+
+   英文中规定， **被the only，the last，the next，序数词，最高级形容词修饰的名词，其后所接的定语从句往往要用不定式来替换。**
+
+   例：He is the only one that understands me <--> He is the only one to understand me.
+
 #### 高级定语从句
 
 定语从句会出现各种复杂的结构：
@@ -503,6 +550,22 @@ The farmer used wood to build a house to store grains in.
 2. 从句谓语中含有be动词。
 
 例：When (he was) a student in the university, he read a lot.
+
+状语从句的简化：
+
+**只有当状语从句的主语和主句的主语相同时，才能把状语从句换成短语。** 否则，会引起句意改变。例：~~While lecturing to the class, I fell asleep.~~ -> While the teacher was lecturing to the class, I fell asleep.
+
+1. 从句含有be动词
+
+   如果状语从句中含有be动词的形式，我们只需要把从句主语和be动词省去，即简化成短语。简化后的短语往往是分词短语（主动的用现在分词，被动的用过去分词）、形容词短语或名词短语。这种省略主要常见于时间、地点、条件及让步状语从句中。
+
+   例：Metals expand when (they are) heated and contract when (they are) cooled.
+
+2. 从句没有be动词
+
+   如果状语从句中没有be动词的形式，我们则可以把从句主语省去并且把动词变成现在分词-ing形式。
+
+   例：Since I came to Beijing, i have made many new friends <--> Since coming to Beijing, i have made many new friends.
 
 #### 时间状语从句
 
@@ -1073,13 +1136,241 @@ of结构作主语时谓语动词的单复数形式：
 
      例：Considering that she has no experience, she has done a good job.
 
-分词短语作状语，其实就是相应的状语从句简化的结果，在句中可表示：
+分词短语作状语，其实就是相应的状语从句简化的结果，在句中可表示如下方面：
 
-1. 绝大多数情形下，分词动作发生在谓语动作之前
+1. 表时间，分词短语一般要置于句首
 
-   例：Reading the letter, she burst out crying.
+   - 绝大多数情形下，分词动作发生在谓语动作之前
 
-2. TODO https://www.tingclass.net/show-10288-472671-1.html
+     例：Reading the letter, she burst out crying.
+
+   - 分词动作与谓语动作同时发生
+
+     例：Be careful when crossing the street.
+
+2. 表示原因，分词短语可置于句首或句末，有时还置于主谓之间
+
+   例：Clint, horrified at what he had done, could at first say nothing.
+
+3. 表条件，通常放在句首
+
+   例：If seen under a microscope, a fresh snowflake has a delicate six-pointed shape.
+
+4. 表让步，通常放在句首
+
+   例：Although still running in a number of cities, the electric trolley has for the most part fallen into disuse.
+
+5. 表结果，一般只放在句末，否则句子意义会不同
+
+   例：I went home, finding(表结果) the door locked. <--> Finding(表时间) the door locked, i went home.
+
+6. 表伴随状况，补充说明或方式，分词短语置于句首或句末均可
+
+   例：Smiling, he answered.
+
+分词短语可以用在某些连词或介词后面：
+
+- 连词 + 分词短语；例：After having annoyed everybody, he went home.
+- 介词 + 分词短语；例：A car roared past, with smoke pouring from the exhaust.
+
+### 虚拟语气
+
+1. 三种基本虚拟形态
+
+   | 表示虚拟的时间 | if从句的谓语形式  | 主句谓语形式                                  |
+   | -------------- | ----------------- | --------------------------------------------- |
+   | 现在           | did/were          | would/should/might/could + do                 |
+   | 过去           | had done/had been | would/should/might/could + have done/had been |
+   | 将来           | were to/should+do | would/should/might/could + do                 |
+
+   例：
+
+   If i could rearrange the alphabet, i'd put U and I together.（与现在事实相反）
+
+   You would have missed the train if you had not hurried.（与过去事实相反）
+
+   If i should win the lottery, i would buy a car.（与将来事实相反）
+
+2. 混合时间虚拟语气句
+
+   常见的混合时间是 **从句表示过去，主句表示现在。**
+
+   例：If I had not studied English, I would never be here to teach you grammar today.
+
+3. 倒装虚拟语气句
+
+   当if条件句中有助动词should，had或were时，则可以省去if，而将should，had 或 were置于句首，从而构成倒装虚拟语气句，意义不变。
+
+   例：Should I win the lottery, I would buy a car. == If I should win the lottery, I would buy a car.
+
+4. 函数虚拟语气句
+
+   含蓄虚拟语气句是指没有完整的条件从句，但在上下文隐含了虚拟条件的意味。隐含的条件意味可以通过下列方式表达：
+
+   - 介词或介词短语
+
+     例：What would I have done without you ? == What would I have done if I had not been with you ?
+
+   - 分词短语
+
+     例：Given more time , I would have been able to finish the test.
+     == If I had been given more time , I would have been able to finish the test.
+
+   - 通过上下文来暗示条件
+
+     例：We would have won the game. (if something unexpected had not happened)。
+
+5. 跳层虚拟语气句
+
+   - 虚拟语气句+ but +陈述句
+
+     例：He would put on weight, but he doesn't eat much. == If he ate much, he would put on weight.
+
+   - 陈述句+ or else +虚拟语气句
+
+     例：I didn't know the extent of his difficulty, or else I would have promised to help him.
+
+#### 名词从句虚拟语气句
+
+1. 在下列词的宾语从句中，从句谓语必须用(should +) do的形式：
+
+   ask，advise，beg，command，demand，decide，deserve，desire，determine，move，order，prefer，propose，require，recommend，request，suggest，urge，insist
+
+   例：His father urged that he study medicine.（不用studies）
+
+2. It is +形容词 / 过去分词 / 特定的名词+ that...主语从句中用(should +) do
+
+   - 接这种结构的常见形容词有：
+
+     astonishing，amazing，advisable，appropriate，crucial，desirable，essential，important，imperative，keen，necessary，natural，normal，odd，proper，preferable，strange，sorry，shocked，surprising，urgent，unusual，vital
+
+     例：It is natural that I should dwell upon his successes rather than upon his failures.
+
+   - 接这种结构常见的过去分词有：
+
+     decided，desired，demanded，ordered，requested，required，suggested，recommended
+
+     例：It is requested that all members be present at the meeting.
+
+   - 接这种结构的常见特定名词有：
+
+     advice，decision，desire，demand，suggestion，motion，pray，resolution，idea，proposal，order，wish preference，recommendation，requirement
+
+     例：It is my proposal that he be sent to study further abroad.
+
+3. 在上述名词的表语从句和同位语从句中
+
+   例：For my own part, it seems that the main requirement of an intern-ational language is that it be easily learned.
+
+#### 其它虚拟语气句型
+
+1. 在wish后的宾语从句中
+
+   - 对现状表示的愿望，从句谓语动词用过去时，意指从句谓语和主句谓语所表示的动作同时发生
+
+     例：I wish I were a little younger.
+
+   - 对过去发生的事情表示遗憾、后悔，从句谓语动词用过去完成时（had done）或would/could +现在完成时（have done），意指从句谓语动词所表示的动作发生在主句谓语所表示的动作之前
+
+     例：I wish I had been there.
+
+   - 对将来发生的事情表示祝愿、期许等，从句谓语动词用would/could + 动词原形，意指从句谓语动词所表示的动作可能发生在主句谓语所表示的动作之后
+
+     例：I wish he could explain what he means.
+
+2. 在If only感叹句中
+
+   例：
+
+   If only he had followed your advice!（对过去虚拟）
+
+   If only I were taller.（对现在虚拟）
+
+   If only the rain would stop .（对将来虚拟）
+
+3. 在as if/as though从句中
+
+   - 表示和现在事实相反或对现在的情况有所怀疑，谓语用一般过去时
+
+     例：I really don't care for the way you’re speaking to me. It seems as if you were my father.
+
+   - 表示与过去事实相反，谓语用过去完成时
+
+     例：It is becoming dark. It looks as if it's going to rain.
+
+4. 在It is (high) time (that) 从句中
+
+   例：Don't dawdle away your youth any more. It is time you thought about your future.
+
+5. 在would rather, would (just) as soon, would sooner, would prefer等从句中
+
+   例：I'd just as soon you didn't speak rudely to her.
+
+### 倒装句
+
+#### 部分倒装
+
+1. 句首有否定词或否定短语时，句子要部分倒装
+
+   - 常见的否定词有：never，hardly，scarcely，little，seldom，not，not until，rarely，no sooner...than，nowhere等
+
+     例：No sooner had I taken a bath than the bell rang.
+
+   - 常见的否定短语有in no way，in no case，at no time，by no means，in no sense，on no account，under no circumstances等
+
+     例：In no way do I blame you for what happened.
+
+   - 如果否定词不是修饰整个句子，而只是限定句子主语，则句子不用倒装
+
+     例：Not only I but also he has been there.
+
+2. "So + 形容词 / 副词”及“to the extent/degree”放在句首，表示程度，句子要倒装
+
+   例：To such an extent did his health deteriorate that he was forced to retire.
+
+3. 在含有were, had, should的虚拟语气中，若省去if，必须倒装
+
+4. as引导的让步状语从句必须倒装
+
+5. "only +状语”置于句首
+
+   - only +表示时间或方式的短语置于句首
+
+     例：Only then did she realize she was wrong.
+
+   - only若加各类状语从句置于句首，需要注意是主句中的主谓语必须倒装，而不是从句中的主谓语倒装，这一点与not until用法相同
+
+     例：Only when he had failed three times did he turn to me for advice.
+
+   - 若only修饰的是句子主语，而非状语时，句子不用倒装
+
+     例：Only she knew how to deal with this problem.
+
+6. 代词so, neither, nor或no more置于句首
+
+   例：I can't speak French, nor can he.
+
+7. 让步状语从句的倒装句：be it...
+
+   例：The business of each day, be it selling goods or shipping them, went quite smoothly.
+
+#### 全部倒装
+
+1. 以介词开头的地点状语置于句首
+
+   例：From the window came sound of music.
+
+2. 副词out，in，along，then，now，up，down，away，here，there等位于句首
+
+   例：When Greek meets Greek, then comes the tug of war.
+
+3. such位于句首
+
+   例：Such will be my future dreams.
+
+4. 表语置于句首
+
+   例：Blessed is the person who is too busy to worry in the daytime and too sleepy to worry at night.
 
 
 
@@ -1833,6 +2124,10 @@ Being a bad-tempered man, he would not tolerate having his lectures interrupted.
    - 动名词复合结构在句中作宾语时，用普通格或所有格均可
 
      例：Do you mind me making a suggestion?
+
+动名词复合结构与现在分词短语的区别：
+
+现在分词短语通常是“名词+doing”，动名词复合结构通常由“所有格名词+doing”构成。
 
 ### 动名词的时态和语态
 
@@ -3191,6 +3486,59 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
    例：falling leaves == leaves that are falling.
 
+现在分词和动名词的区别：
+
+1. 两者在句中充当的句子成分不完全一样
+
+   - 动名词是动词和名词的结合体；
+   - 现在分词是动词和形容词或副词的结合体。
+
+   两者能够充当的成分有：
+
+   | 现在分词 | 状语 | 补足语 | 表语 | 定语 |
+   | -------- | ---- | ------ | ---- | ---- |
+   | 动名词   | 主语 | 宾语   | 表语 | 定语 |
+
+   例：I found him standing at the door.
+
+2. 作表语时的区别
+
+   二者均可做表语，但现在分词作表语，修饰句子主语，说明主语的性质特征；而动名词作表语则说明句子主语的具体内容是什么。
+
+   例：
+
+   His hobby is collecting stamps.（动名词）
+
+   These results are most satisfying.（现在分词）
+
+3. 作定语时的区别
+
+   二者均可做定语，但现在分词作定语，表示被修饰名词的行为状态，通常含有进行意味，且均可改为定语从句；动名词作定语一般表示所修饰名词的用途，一般不可直接改为定语从句。
+
+   例：
+
+   a sleeping car == a car used for sleep（动名词）
+
+   a sleeping child == a child who is sleeping（现在分词）
+
+#### 现在分词构成的复合形容词
+
+1. 名词+及物动词的现在分词
+
+   例：English-speaking contries == the people in these countries speak English.
+
+2. 名词+不及物动词的现在分词
+
+   例：a night-walking animal == an animal walks at night.
+
+3. 形容词+系动词的现在分词
+
+   例：a good-looking young man == a young man looks good.
+
+4. 副词+不及物动词的现在分词
+
+   例：hard-working people == people work hard.
+
 ### 过去分词
 
 过去分词的意义：
@@ -3228,6 +3576,28 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
    - to be done 表示将来的动作（用不定式表示被动）
    - being done 表示进行的动作
    - done 表示一般过去或完成的动作
+
+过去分词构成的复合形容词：
+
+1. 名词+及物动词的过去分词
+
+   例：man-made fibers == fibers made by man.
+
+2. 形容词+及物动词的过去分词
+
+   例：a clean-shaven man == a man shaved himself clean.
+
+3. 副词+及物动词的过去分词
+
+   例：a well-bred young man == a young man bred well.
+
+4. 形容词+名词+ed
+
+   warm-hearted, cold-blooded, narrow-minded, blue-eyed, near-sighted, long-haired, lighter-skinned, middle-aged, ill-humored, bad-tempered, ...
+
+5. 数词+名词+ed
+
+   one-eyed camel, two-faced person, ten-storyed building, three-legged table, ...
 
 
 
@@ -3598,7 +3968,38 @@ do + nothing/anything/everything + but do句型中to的省略：
 
      例：~~no such a man.~~ -> no such man.
 
-     
+
+### 分词的完成式
+
+构成：表示主动--having done；表示被动--having been done。
+
+意义与用法：分词的完成式主要是为了强调分词动作与谓语动作之间有很长的时间间隔，或者是因为分词动作本身经历了很长时间的延续。
+
+注意：
+
+1. 分词动作与位于动作之间有一段间隔，则必须用分词完成式
+
+   例：Having failed twice, he didn't want to try again.
+
+2. 分词动作本身要持续一段时间时，也必须用分词的完成式
+
+   例：Having been his own boss for such a long time, he found it hard to accept orders from another.
+
+3. 使用分词的完成式可以避免造成句子意思混淆不清
+
+   例：Having sung a song, he sat down.
+
+### 分词作补足语
+
+1. 在感官动词（如find, hear, smell, observe, watch, notice）之后，我们可以用两类分词作宾语补足语
+
+   例：I heard him criticized many times.
+
+2. 在这些动词之后，我们也可以用不带to的不定式作补足语。其中，用现在分词与用不定式的区别是：用现在分词，强调动作在进行；用不定式则表示一般的动作或一个动作自始至终的全过程
+
+   例：When i glanced out of the window i saw mary crossing the road.
+
+
 
 ---
 
