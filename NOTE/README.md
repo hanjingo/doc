@@ -82,6 +82,10 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
+- [COMPUTER ORGANIZATION AND DESIGN - THE HARDWARE/SOFTWARE INTERFACE]
+- [SOFTWARE ENGINEERING]
+- [The Algorithm Design Manual]
+- [Structure and Interpretation of Computer Programs]
 - [Practical English Usage]
 - [HIGH-FREQUENCY TRADING]
 - [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
