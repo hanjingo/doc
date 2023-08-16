@@ -39,31 +39,33 @@ IPv6类似。
 
 ![udp_head_ipv4](res/udp_head_ipv4.png)
 
-- `源端口号`
+- `Source Port Number(源端口号)`
 
-- `目的端口号`
+- `Destination Port Number(目的端口号)`
 
-- `长度`
+- `Length(长度)`
 
   理论上数据报的最大长度为65535字节（8个字节给UDP头部）；
 
   UDP编程接口允许应用程序指定每次一个网络的读操作完成时返回的最大字节数，如果接受的数据报操作这个指定大小会发生API`截断（truncate）`数据报行为。
 
-- `校验和`
+- `Checksum(校验和)`
 
   ![udp_checksum](res/udp_checksum.png)
 
   **注意：当一个UDP/IPV4数据报穿过一个NAT时，不仅IP层头部的校验和要被修改，而且UDP伪头部的校验和也必须被正确地修改，因为IP层的地址和`/`或UDP层的端口号可能会改变。**
 
-- `负载数据`
+- `Payload Data(负载数据)`
 
 ### IPv6
 
 ![udp_head_ipv6](res/udp_head_ipv6.png)
 
-- `源IPv6地址`
-- `目的IPv6地址`
-- `长度`
+- `Source IPv6 Address(源IPv6地址)`
+- `Destination IPv6 Address(目的IPv6地址)`
+- `Length(长度)`
+- `Reserved(保留)`
+- `Next Header(下一个UDP头)`
 
 **注意：**
 

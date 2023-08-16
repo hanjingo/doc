@@ -43,7 +43,29 @@ A `computer virus` is a computer program that modifies an operating system or ap
 
 The `security policy` defines what is permitted who is allowed to access what data and who can perform what operations.
 
+A portable abstraction is one that does not change as the hardware changes.
 
+The `abstract machine interface`(AMI) is the interface provided by operating systems to applications. A key part of the AMI is the `application programming interface`(API), the list of function calls the operating system provides to applications.
+
+The `hardware abstraction layer`(HAL) is designed to hide unimportant hardware details.
+
+One performance metric is the `efficiency` of the abstraction presented to applications. A related concept to efficiency is `overhead`, the added resource cost of implementing an abstraction.
+
+`fairness`, between different users of the same machine, or between different applications running on that machine.
+
+`Response` time, sometimes called `delay`, is how long it takes for a single specific task from when it starts until it completes.
+
+`Throughput` is the rate at which a group of tasks can be completed. Throughput is a measure of efficiency for a group of tasks rather than a single one.
+
+`predictability`, whether the system's response time or other metric is consistent over time.
+
+The `network effect` occurs when the value of some technology depends not only on its intrinsic capabilities, but also on the number of other people who have adopted that technology.
+
+A `proprietary` system is one under the control of a single company, so it can be changed at any time by its provider to meet the needs of its customers.
+
+An `open system` is one where the system's source code is public, allowing anyone the ability to inspect the code and change it.
+
+TODO Page40
 
 
 
@@ -151,11 +173,57 @@ sophisticate `/səˈfɪstɪkət/` 老练的，精密的，复杂的，老于世�
 <div style="width: 50%; float:left;">impractical `/ɪmˈpræktɪkl/` 不明智的，不现实的，无用的</div>
 <div style="width: 50%; float:left;">anomaly `/əˈnɒməli/` 异常，反常</div>
 <div style="width: 50%; float:left;">retrospect `/'retrəspekt/` 回顾，回想，追溯</div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">insulate `/'ɪnsjuleɪt/` 使绝缘，隔离</div>
+<div style="width: 50%; float:left;">optical `/'ɒptɪkl/` 光学的，视觉的</div>
+<div style="width: 50%; float:left;">procedural `/prə'siːdʒərəl/` 程序的</div>
+<div style="width: 50%; float:left;">apparent `/ə'pærənt/` 明显的，表面上</div>
+<div style="width: 50%; float:left;">associate `/ə'səʊʃieɪt/` 关联，联想，交往，同伴</div>
+<div style="width: 50%; float:left;">perceive `/pə'siːv/` 注意到，觉察到，认为，理解</div>
+<div style="width: 50%; float:left;">mediate `/'miːdieɪt/` 调停，斡旋，居间的，间接的</div>
+<div style="width: 50%; float:left;">degree `/dɪ'ɡriː/` 程度，度数，学位</div>
+<div style="width: 50%; float:left;">impede `/ɪmˈpiːd/` 阻碍，妨碍，阻止</div>
+<div style="width: 50%; float:left;">perceive `/pə'siːv/` 注意到，觉察到，认为，理解</div>
+<div style="width: 50%; float:left;">instant `/ˈɪnstənt/` 立即，立刻</div>
+<div style="width: 50%; float:left;">instantaneous `/ˌɪnstən'teɪniəs/` 瞬间的，即刻的</div>
+<div style="width: 50%; float:left;">pedestrian `/pə'destriən/` 徒步的，缺乏想像的，行人</div>
+<div style="width: 50%; float:left;">congest `/kən'dʒest/` 拥挤</div>
+<div style="width: 50%; float:left;">carpool `/'kɑːpuːl/` 拼车，合伙使用汽车</div>
+<div style="width: 50%; float:left;">lane `/leɪn/` 小路，小巷，行车道，跑道，航道</div>
+<div style="width: 50%; float:left;">arguable `/'ɑːɡjuəbl/` 可辩论的，可论证的</div>
+<div style="width: 50%; float:left;">adoption `/ə'dɒpʃn/` 采用，采纳，收养</div>
+<div style="width: 50%; float:left;">alleged `/ə'ledʒd/` 声称的，可疑的，靠不住的</div>
+<div style="width: 50%; float:left;">circular `/'sɜːkjələ(r)/` 循环的，传单，通报</div>
+<div style="width: 50%; float:left;">virtuous `/virtuous/` 有品德的，贞洁的</div>
+<div style="width: 50%; float:left;">accommodate `/əˈkɒmədeɪt/` 容纳，住宿，调解，向..提供，随和，乐于助人，顾及的</div>
+<div style="width: 50%; float:left;">adherence `/əd'hɪərəns/` 坚持，固守，黏附</div>
+<div style="width: 50%; float:left;">assurance `/ə'ʃʊərəns/` 保证，担保，确信，自信，保险</div>
+<div style="width: 50%; float:left;">fragmentation `/ˌfræɡmen'teɪʃn/` 分裂，破碎</div>
+<div style="width: 50%; float:left;">impair `/ɪm'peə(r)/` （计算机）损伤，损害，削弱</div>
+<div style="width: 50%; float:left;">purveyor `/pə'veɪə(r)/` 粮食供应者，承办者，散播者</div>
+<div style="width: 50%; float:left;">interoperability `/'ɪntərɒpərə'bɪlətɪ/` 互操作性，互用性</div>
+<div style="width: 50%; float:left;">idiosyncratic `/ˌɪdiəsɪŋ'krætɪk/` 特质的，与众不同的</div>
+<div style="width: 50%; float:left;">chaotic `/keɪ'ɒtɪk/` 混乱的</div>
+<div style="width: 50%; float:left;">vet `/vet/` 诊疗，审查，老兵，兽医</div>
+<div style="width: 50%; float:left;">practice `/ˈpræktɪs/` 习惯，习俗，实践，练习，实习</div>
+<div style="width: 50%; float:left;">telemarketing `/'telimɑːkɪtɪŋ/` 电话销售，电话推销</div>
+<div style="width: 50%; float:left;">tweak `/twiːk/` 拧，扭，拉，微调</div>
+<div style="width: 50%; float:left;">incidence `/'ɪnsɪdəns/` 发生（率），入射</div>
+<div style="width: 50%; float:left;">shave `/ʃeɪv/` 刮，剃，修剪，剃刀</div>
+<div style="width: 50%; float:left;">painstaking `/'peɪnzteɪkɪŋ/` 辛苦，苦心，工夫，辛苦的，勤勉的，十分小心的</div>
+<div style="width: 50%; float:left;">factor `/ˈfæktə(r)/` （数学）商，因素，因子，要素</div>
+<div style="width: 50%; float:left;">prioritize `/praɪ'ɒrətaɪz/` 把...区分优先次序</div>
+<div style="width: 50%; float:left;">transistor</div>
+<div style="width: 50%; float:left;">density</div>
+<div style="width: 50%; float:left;">exponential</div>
+<div style="width: 50%; float:left;">trajectory</div>
+<div style="width: 50%; float:left;">radically</div>
+<div style="width: 50%; float:left;">incredibly</div>
+<div style="width: 50%; float:left;">patiently</div>
+<div style="width: 50%; float:left;">synthesize</div>
+<div style="width: 50%; float:left;">fraction</div>
+<div style="width: 50%; float:left;">progression</div>
+<div style="width: 50%; float:left;">conceptual</div>
+<div style="width: 50%; float:left;">Tremendous</div>
 <div style="width: 50%; float:left;"></div>
 <div style="width: 50%; float:left;"></div>
 <div style="width: 50%; float:left;"></div>

@@ -73,6 +73,7 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
