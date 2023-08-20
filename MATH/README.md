@@ -2,6 +2,14 @@
 
 # Math
 
+## Calculus
+
+TODO
+
+---
+
+
+
 ## Arithmetic
 
 TODO
@@ -11,14 +19,6 @@ TODO
 
 
 ## Number Theory
-
-TODO
-
----
-
-
-
-## Calculus
 
 TODO
 

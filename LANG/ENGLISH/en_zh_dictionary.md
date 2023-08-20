@@ -16,7 +16,7 @@
 | [**L**](#L) | [la](#la) |        |        |        | [le](#le) |        |        |        | [li](#li) |        |        |        |        |        | [lo](#lo) |        |        |        |        |        | [lu](#lu) | [lv](#lv) |        |        |        |   |
 | [**M**](#M) | [ma](#ma) |        |        |        | [me](#me) |        |        |        | [mi](#mi) |        |        |        |        | [mn](#mn) | [mo](#mo) |        |        |        |        |        | [mu](#mu) |        |        |        | [my](#my) |   |
 | [**N**](#N) | [na](#na) |        |        |        | [ne](#ne) |        |        |        | [ni](#ni) |        |        |        |        |        | [no](#no) |        |        |        | [ns](#ns) |        | [nu](#nu) |        |        |        |        |   |
-| [**O**](#O) | [oa](#oa) | [ob](#ob) | [oc](#oc) | [od](#od) |        | [of](#of) |        |        |        |        |        | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |        | [or](#or) | [os](#os) |        | [ou](#ou) | [ov](#ov) | [ow](#ow) |        | [oy](#oy) |   |
+| [**O**](#O) | [oa](#oa) | [ob](#ob) | [oc](#oc) | [od](#od) | [oe](#oe) | [of](#of) |        |        |        |        |        | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |        | [or](#or) | [os](#os) |        | [ou](#ou) | [ov](#ov) | [ow](#ow) |        | [oy](#oy) |   |
 | [**P**](#P) | [pa](#pa) |        |        |        | [pe](#pe) |        |        | [ph](#ph) | [pi](#pi) |        |        | [pl](#pl) |        |        | [po](#po) |        |        | [pr](#pr) | [ps](#ps) |        | [pu](#pu) |        |        |        | [py](#py) |   |
 | [**Q**](#Q) |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        | [qu](#qu) |        |        |        |        |   |
 | [**R**](#R) | [ra](#ra) |        |        |        | [re](#re) |        |        | [rh](#rh) | [ri](#ri) |        |        |        |        |        | [ro](#ro) |        |        |        |        |        | [ru](#ru) | [rv](#rv) |        |        | [ry](#ry) |   |
@@ -1223,6 +1223,8 @@ bibliographic `/ˌbibliə'ɡræfik,-kəl/` 书籍解题的,著书目录的
 
 bibliography `/ˌbɪblɪˈɒɡrəfi/` 书目，参考文献
 
+bicentennial `/ˌbaɪsen'teniəl/` 两百周年的，两百周年纪念
+
 bicker `/'bɪkə(r)/` 口角，斗嘴，闪烁，潺潺流水声
 
 biconnected `/bɪkə'nektɪd/` 双连通
@@ -1554,6 +1556,8 @@ bully `/bʊli/` 威吓，霸道，霸凌
 bump `/bʌmp/` 碰撞，撞击，肿块
 
 bunch `/bʌntʃ/` 串，束，一群，捆，突出物，凸起
+
+bundle `/'bʌndl/` 捆，束，包，大笔钱
 
 burden `/ˈbəːdn/` 重担，负担，要旨
 
@@ -2857,6 +2861,8 @@ craps `/kræps/` 掷骰子赌博
 
 crash `/kræʃ/` （计算机）闪崩，崩溃，撞击，坠毁，破产，暴跌
 
+crass `/kræs/` 粗鲁的，愚钝的，非常的
+
 crater `/ˈkreɪtə(r)/` 坑，弹坑，火山口
 
 crawl `/krɔːl/` 爬，爬行，自由泳
@@ -2952,6 +2958,8 @@ cubicle `/ˈkjuːbɪkl/` 小隔间
 cuckoo `/'kʊkuː/` 杜鹃，杜鹃的叫声，愚蠢的，疯狂的
 
 cue `/kjuː/` 暗示，提示，信号
+
+cuisine `/kwɪ'ziːn/` 烹饪，佳肴
 
 cull `/kʌl/` 剔除，拣选
 
@@ -3701,6 +3709,8 @@ diverse `/daɪˈvɜːs/` 多种多样的，不同的
 
 diversion `/daɪ'vɜːʃn/` 转向，转移，娱乐活动，临时绕行
 
+diversity `/daɪ'vɜːsəti/` 多样性，差异
+
 divergence `/daɪˈvɜːdʒəns/` 发散，分歧，差异
 
 divergent `/daɪ'vɜːdʒənt/` 分歧的，分开的，偏离的
@@ -4423,6 +4433,8 @@ evenly `/'iːvnli/` 平衡的，平坦的，平等的
 
 eventually `/ɪˈventʃuəli/` 最后，终于
 
+evergrande `//` （地产开放商）恒大
+
 evergreen `/'evəɡriːn/` 常绿的，常绿植物
 
 evict `/ɪ'vɪkt/` 驱逐，驱赶，依法收回
@@ -4974,6 +4986,8 @@ fluctuation `/ˌflʌktʃu'eɪʃn/` 波动，起伏
 fluffy `/ˈflʌfi/` 毛茸茸的，绒毛的，松软的
 
 fluid `/'fluːɪd/` 液体，流体，流动的，不定的
+
+flung `/flʌŋ/` （fling的过去式），投掷，放纵，抛，丢
 
 flurry `/'flʌri/` 发慌，焦躁，一阵疾风，阵雪，忙乱
 
@@ -5724,6 +5738,8 @@ harshness `/hɑ:ʃnis/` 刺耳，粗糙的，严肃
 harvest `/'hɑːvɪst/` 收成，收获，收割，成果
 
 haste `/heɪst/` 匆忙，赶快
+
+hastily `/'heɪstɪli/` 匆忙地，急速地
 
 hatch `/hætʃ/` 孵出，破壳，舱口，舱门
 
@@ -6753,6 +6769,8 @@ intolerable `/ɪn'tɒlərəbl/` 无法忍受的，难耐的
 
 intoxication `/ɪnˌtɒksɪˈkeɪʃn/` 醉酒，陶醉，中毒
 
+intravenous `/ˌɪntrə'viːnəs/` 静脉的，静脉注射的
+
 intrepid `/ɪnˈtrepɪd/` 勇敢的，无畏的，刚毅的
 
 intricate `/'ɪntrɪkət/` 复杂的，难懂的
@@ -6832,6 +6850,8 @@ involution `/'ɪnvə'ljuːʃən/` （数学）乘方，卷入，复杂性
 involve `/ɪnˈvɑːlv/` 包含，涉及，卷入
 
 involvement `/ɪn'vɒlvmənt/` 卷入，牵连，参与，兴趣，恋爱关系，性关系
+
+inward `/'ɪnwəd/` 内部的，内心的，向内的，亲密的，内部
 
 ### io
 
@@ -7016,6 +7036,8 @@ jog `/dʒɒɡ/` 慢跑，轻碰，轻击
 joiner `/'dʒɔɪnə(r)/` 木匠，社团活跃分子
 
 joint `/dʒɔɪnt/` 联合的，共同的，合资的，关节，接合处，贴合
+
+jotting `/'dʒɒtɪŋ/` 匆匆记下的东西
 
 journalism `/'dʒɜːnəlɪzəm/` 新闻工作，新闻业，新闻写作
 
@@ -7349,6 +7371,8 @@ leather `/'leðə(r)/` 皮革，皮制品，用皮鞭抽打
 
 lecture `/ˈlektʃər/` 演讲，讲课，讲座
 
+leery `/'lɪəri/` 机敏的，有戒心的，留神的
+
 leftmost `/'leftməʊst/` 最左边的
 
 legacy `/ˈleɡəsi/` 遗产，遗留，后遗症
@@ -7545,6 +7569,8 @@ loom `/luːm/` 织布机，逼近，耸然出现
 
 loon `/luːn/` 鱼鹰
 
+looseleaf `/'luːsɪliːf/` 活叶式的，各页可任意装拆的
+
 loosely `/loosely/` 宽松的，松散的，不精确的
 
 loot `/luːt/` 抢劫，劫掠，战利品，赃物
@@ -7556,6 +7582,8 @@ lossy `/'lɒsi/` （计算机）有损的
 lottery `/'lɒtəri/` 彩票
 
 lowercase `/'ləʊəˌkeɪs/` 小写体，小写字母
+
+loyalty `/'lɔɪəlti/` 忠诚，忠心，忠贞
 
 ### lp
 
@@ -7766,6 +7794,8 @@ mastiff `/'mæstɪf/` 敖犬
 mat `/mæt/` 垫子，席子，编织
 
 mate `/meɪt/` 朋友，伙伴，同事，配偶，交配
+
+materialism `/mə'tɪəriəlɪzəm/` 唯物主义，唯物论，实利主义
 
 materially `/mə'tɪəriəli/` 物质上，实质性地，重大地
 
@@ -8339,6 +8369,8 @@ naughty `/ˈnɔːti/` 顽皮的，淘气的
 
 neat `/niːt/` 整洁的，小巧的，整齐的，灵巧的
 
+nebulous `/'nebjələs/` 星云的，星云状的，朦胧的，模糊的
+
 needle `/'niːdl/` 针头，缝纫，激怒，嘲弄
 
 needless `/'niːdləs/` 不需要的，无用的
@@ -8402,6 +8434,8 @@ newtonian `/nju:'təuniən/` 牛顿的，信仰牛顿学说的
 ### ni
 
 [回到N](#N)--[回到顶部](#英汉词典)
+
+niceties `/'naɪsəti/` 准确，精确，细微的区别，优美的东西
 
 niche `/niːʃ/` 璧龛，合适的位置，市场定位，商机
 
@@ -8525,6 +8559,8 @@ nourishment `/ˈnʌrɪʃmənt/` 营养品，养分
 
 novel `/ˈnɒvl/` （长篇）小说，新奇，新颖，新鲜，风格独特的
 
+novelist `/'nɒvəlɪst/` 小说家
+
 november `/nəʊ'vembə(r)/` 十一月（简写Nov）
 
 novice `/'nɒvɪs/` 新手，生手
@@ -8615,6 +8651,8 @@ oatmeal `/'əʊtmiːl/` 燕麦片，燕麦粥，浅棕色
 
 obedience `/ə'biːdiəns/` 服从，顺从
 
+obese `/əʊ'biːs/` 极肥胖的
+
 obfuscate `/'ɒbfʌskeɪt/` 弄暗，使模糊，使困惑
 
 objection `/əb'dʒekʃn/` 反对，异议
@@ -8694,6 +8732,8 @@ odor `/ˈəʊdə/` 气味，臭味，名声
 ### oe
 
 [回到O](#O)--[回到顶部](#英汉词典)
+
+oedipus `/ˈiːdɪpəs/` （希腊神话）俄狄甫斯
 
 ### of
 
@@ -8921,6 +8961,8 @@ outweigh `/ˌaʊtˈweɪ/` 胜过，超过，重于，比...有价值
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
+oven `/'ʌvn/` 烤箱，烤炉
+
 overall `/ˌəʊvərˈɔːl/` 全面的，全部的，总体的，总计
 
 overconfident `/ˌəʊvəˈkɒnfɪdənt/` 自负的，过分自信的
@@ -9082,6 +9124,8 @@ parallel `/ˈparəlɛl/` 平行的，同时存在的，并联的
 parallelism `/'pærəlelɪzəm/` 并行度，平行，相似
 
 paralysing `/'pærəlaɪzɪŋ/` 陷于瘫痪的
+
+paralysis `/pə'ræləsɪs/` 瘫痪，麻痹
 
 parameter `/pə'ræmɪtə(r)/` 参数，参量，决定因素
 
@@ -9305,6 +9349,8 @@ permeate `/ˈpɜːmieɪt/` 渗透，扩散，感染
 
 permissible `/pə'mɪsəbl/` 可允许的，容许的
 
+permissive `/permissive/` 放任的，纵容的，许可的，获准的
+
 permit `/pəˈmɪt/` 允许，许可证，特许证
 
 permute `/pə'mjuːt/` （数学）排列，交换，变更
@@ -9444,6 +9490,8 @@ pillory `/'pɪləri/` 示众，套上枷锁，嘲弄
 pin `/pɪn/` （计算机）引脚，钉住，固定住，别针，徽章
 
 pinch `/pɪntʃ/` 捏，拧，掐
+
+pine `/paɪn/` 松树，松木，消瘦，渴望
 
 pinpoint `/'pɪnpɔɪnt/` 精确地找到，瞄准，使突出，精确的，微小的
 
@@ -9618,6 +9666,8 @@ pontificate `/pɒn'tɪfɪkeɪt/` 武断地或自封为权威地谈论某事物�
 popcorn `/ˈpɒpkɔːn/` 爆米花
 
 porcelain `/'pɔːsəlɪn/` 瓷器，瓷
+
+pore `/pɔː(r)/` 毛孔，小孔，熟读，钻研，沉思
 
 porous `/ˈpɔːrəs/` 多孔的，透气的，可渗透的
 
@@ -9979,6 +10029,8 @@ progenitor `/prəʊ'dʒenɪtə(r)/` 祖先，先驱
 
 progress `/ˈprɑːɡres/` 进步，进展，进程，前进
 
+progression `/prə'ɡreʃn/` 前进，进展，连续
+
 progressive `/prə'ɡresɪv/` 先进的，前进的，渐进的，进步分子，革新主义者
 
 prohibit `/prə'hɪbɪt/` 禁止
@@ -10307,6 +10359,8 @@ quasi `/'kweɪsaɪ/` 类似的，外表的
 
 quench `/kwentʃ/` 熄灭，结束，冷淬，解渴
 
+quest `/kwest/` 探索，寻求，搜索
+
 quicken `/'kwɪkən/` 变快，变活跃，刺激
 
 quiescent `/kwiˈesnt/` 静止的，沉寂的，静态的
@@ -10324,6 +10378,8 @@ quo `/k'wəʊ/` 说
 quorum `/'kwɔːrəm/` （计算机）仲裁，法定人数
 
 quota `/'kwəʊtə/` 配额，定额，限额，最低票数
+
+quotation `/kwəʊ'teɪʃn/` 语录，引用，行情，引语，报价
 
 quote `/kwəʊt/` 引用，引号，开价，上市
 
@@ -10382,6 +10438,8 @@ railcar `/'reɪlkɑː(r)/` 有轨车
 rally `/ˈræli/` 集会，召集，汽车拉力赛
 
 rampant `/ˈræmpənt/` 猖獗的，泛滥的，疯长的
+
+ran `/ræn/` run的过去式
 
 ranch `/rɑːntʃ/` 牧场，大牧场，大农场
 
@@ -10603,6 +10661,8 @@ refrain `/rɪ'freɪn/` 避免，抑制，克制，重复
 
 refrigerant `/rɪˈfrɪdʒərənt/` 冷藏，冷冻，制冷，制冷剂，冷冻剂
 
+refrigerator `/rɪ'frɪdʒəreɪtə(r)/` 冰箱
+
 refuge `/'refjuːdʒ/` 避难，庇护
 
 refurnish `/ˌriː'fɜːnɪʃ/` 重新装备，再供给
@@ -10674,6 +10734,8 @@ relaxation `/ˌriːlæk'seɪʃn/` 消遣，松弛，放松
 relay `/ˈriːleɪ/` 继电器，中继设备，转播，转达，拉力赛
 
 relegate `/'relɪɡeɪt/` 使降级，流放，移交，委任
+
+relentlessly `/rɪ'lentləsli/` 无情地，残酷地，持续不断地，不屈不挠地
 
 relevant `/ˈreləvənt/` 相关的，合适的，有意义的
 
@@ -11553,6 +11615,8 @@ shower `/'ʃaʊə(r)/` 淋浴，阵雨
 
 shrink `/ʃrɪŋk/` 收缩，退缩，减低
 
+shroud `/ʃraʊd/` 裹尸布，覆盖物，用某物覆盖或遮蔽某物
+
 shun `/ʃʌn/` 闪开，避开，回避
 
 shutter `/ˈʃʌtə(r)/` 百叶窗，（照相机）快门
@@ -11767,6 +11831,8 @@ soberest `/'səʊbə(r)/` 清醒，清醒的，稳重的，颜色暗淡的
 
 sobriety `/sə'braɪəti/` 清醒，严肃，节制
 
+societal `/sə'saɪətl/` 社会的
+
 socio `/səʊsi'ːəʊ/` 社会
 
 sociopolitical `/ˌsəʊsiəʊpə'lɪtɪkl/` 社会政治的
@@ -11906,6 +11972,8 @@ spectator `/spɛkˈteɪtə/` 观众
 speculate `/ˈspekjuleɪt/` 推测，推断，投机，做投机买卖
 
 speculation `/ˌspekju'leɪʃn/` 推测，投机，沉思
+
+speculative `/'spekjələtɪv/` 推测的，推理的，思索的，投机的
 
 speed `/spiːd/` 速度，迅速，加速，急行
 
@@ -12499,6 +12567,8 @@ synchronization `/ˌsɪŋkrənaɪ'zeɪʃn/` 同步化
 
 synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 
+cynical `/'sɪnɪkl/` 愤世嫉俗的，悲观的，恶意的
+
 synonym `/ˈsɪnənɪm/` 同义词
 
 synonymous `/sɪ'nɒnɪməs/` 同义的，暗示的
@@ -12869,6 +12939,8 @@ tissue `/ˈtɪʃuː/` 纸巾，手巾纸，（人，动植物）组织
 
 tithe `/taɪð/` 十分之一税，小部分
 
+titration `/tɪ'treɪʃn/` （一种定量分析的手段）滴定
+
 ### tj
 
 [回到T](#T)--[回到顶部](#英汉词典)
@@ -12978,6 +13050,8 @@ tradesman `/'treɪdzmən/` 零售商，工匠
 traffic `/'træfɪk/` 交通流量，游览，不正当生意（走私）
 
 tragedy `/ˈtrædʒədi/` 悲剧，灾难，惨案
+
+tragic `/'trædʒɪk/` 悲剧的，悲惨的
 
 trail `/treɪl/` 小径，记号，追踪，足迹，失利
 
@@ -13105,6 +13179,8 @@ trip `/trɪp/` 旅行，摔倒，差错，失误，绊倒，扬帆，起锚，�
 
 triplet `ˈtrɪplət` 三个，三联体，三胞胎
 
+trite `/traɪt/` 平庸的，陈腐的
+
 triumph `/ˈtraɪʌmf/` 狂喜，胜利，凯旋
 
 trivial `/'trɪviəl/` 琐碎的，不重要的
@@ -13150,6 +13226,8 @@ tub `/tʌb/` 浴缸，盆，桶，饭盒
 tuesday `/'tjuːzdeɪ/` 星期二
 
 tuition `/tjuˈɪʃn/` 学费，教学，讲授
+
+tumble `/'tʌmbl/` 暴跌，倒塌，跌倒，翻滚，弄乱，明白，突然发现
 
 tumbrel `/'tʌmbrəl/` 农车，施肥车
 
@@ -13232,6 +13310,8 @@ tyranny `/'tɪrəni/` 暴政，苛政，专制
 ### ub
 
 [回到U](#U)--[回到顶部](#英汉词典)
+
+ubiquitous `/juː'bɪkwɪtəs/` 到处存在的
 
 ubiquity `/juː'bɪkwətɪ/` 到处存在，(同时的)普遍存在
 
@@ -13445,6 +13525,8 @@ unskilfulness `/ʌnskɪl'fʊlnes/` 不熟练
 
 unsubstantiated `/ˌʌnsəbˈstænʃieɪtɪd/` 未经证实的
 
+untether `/ʌn'teðə/` 解下(拴牛马的)绳，链
+
 untiring `/ʌnˈtʌɪərɪŋ/` 不知疲倦的，不屈不挠的
 
 untrustworthy `/ʌn'trʌstwɜːði/` 靠不住的，不能信赖的
@@ -13598,6 +13680,8 @@ valley `/'væli/` 山谷，溪谷，流域
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
 
 van `/væn/` 先导，先锋，运货
+
+vanish `/'vænɪʃ/` 消失，绝迹，不见了
 
 vanity `/'vænəti/` 自负，虚荣心，无价值的东西，浮华
 

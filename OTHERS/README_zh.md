@@ -28,5 +28,3 @@
 - [简历模版](tmpl/resume_zh.md)
 - [软件测试报告模板](tmpl/soft_test_zh.md)
 - [工作日志模版](tmpl/work_note_zh.md)
-- [vim配置文件模板](tmpl/.vimrc)
-- [别名配置文件](tmpl/.aliases)

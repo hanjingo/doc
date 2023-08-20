@@ -65,7 +65,24 @@ A `proprietary` system is one under the control of a single company, so it can b
 
 An `open system` is one where the system's source code is public, allowing anyone the ability to inspect the code and change it.
 
-TODO Page40
+`batch operating systems`, one program can be using the processor while another is being loaded into memory.
+
+While one job was running, the operating system would set up the I/O devices to do background transfers for the next/previous job using a process called `direct memory access`(DMA).
+
+Batch operating systems were soon extended to run multiple applications at once, that is, `multitasking`, or what is also sometimes called `multiprogramming`.
+
+Instead of running a test operating system directly on the hardware, with virtual machines an operating system can be run just like any another application. The true operating system, called a `virtual machine monitor`, exports an abstract machine interface (AMI) that is identical to the underlying hardware.
+
+A `time-sharing` operating system, is one designed to support interactive use of the computer, rather than the batch mode processing of earlier systems.
+
+Here are some examples of operating systems that the reader might have used recently:
+
+- Desktop, laptop, and netbook operating systems.
+- Smartphone operating systems.
+- Embedded systems.
+- Virtual machines.
+- Server operating systems.
+- Server clusters.
 
 
 
@@ -212,33 +229,41 @@ sophisticate `/səˈfɪstɪkət/` 老练的，精密的，复杂的，老于世�
 <div style="width: 50%; float:left;">painstaking `/'peɪnzteɪkɪŋ/` 辛苦，苦心，工夫，辛苦的，勤勉的，十分小心的</div>
 <div style="width: 50%; float:left;">factor `/ˈfæktə(r)/` （数学）商，因素，因子，要素</div>
 <div style="width: 50%; float:left;">prioritize `/praɪ'ɒrətaɪz/` 把...区分优先次序</div>
-<div style="width: 50%; float:left;">transistor</div>
-<div style="width: 50%; float:left;">density</div>
-<div style="width: 50%; float:left;">exponential</div>
-<div style="width: 50%; float:left;">trajectory</div>
-<div style="width: 50%; float:left;">radically</div>
-<div style="width: 50%; float:left;">incredibly</div>
-<div style="width: 50%; float:left;">patiently</div>
-<div style="width: 50%; float:left;">synthesize</div>
-<div style="width: 50%; float:left;">fraction</div>
-<div style="width: 50%; float:left;">progression</div>
-<div style="width: 50%; float:left;">conceptual</div>
-<div style="width: 50%; float:left;">Tremendous</div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">transistor `/træn'zɪstə(r)/` 晶体管</div>
+<div style="width: 50%; float:left;">density `/ˈdensəti/` 密度，浓度，稠密，密集</div>
+<div style="width: 50%; float:left;">exponential `/ˌekspə'nenʃl/` （数学）指数性的，成倍的，幂的</div>
+<div style="width: 50%; float:left;">trajectory `/trə'dʒektəri/` 轨道，弹道，轨迹</div>
+<div style="width: 50%; float:left;">radical `/'rædɪkl/` 根本的，彻底的，激进的，激进分子</div>
+<div style="width: 50%; float:left;">incredible `/ɪn'kredəbl/` 难以置信的，惊人的</div>
+<div style="width: 50%; float:left;">patient `/'peɪʃnt/` 病人，能忍耐的，有耐心的</div>
+<div style="width: 50%; float:left;">synthesize `/'sɪnθəsaɪz/` 合成，综合</div>
+<div style="width: 50%; float:left;">fraction `/ˈfrækʃn/` 部分，分数，小数，片段</div>
+<div style="width: 50%; float:left;">progression `/prə'ɡreʃn/` 前进，进展，连续</div>
+<div style="width: 50%; float:left;">conceptual `/kən'septʃuəl/` 概念的</div>
+<div style="width: 50%; float:left;">tremendously `/trə'mendəsli/` 惊人地，非常，十分</div>
+<div style="width: 50%; float:left;">warehouse `/ˈweəhaʊs/` 仓库，存入仓库</div>
+<div style="width: 50%; float:left;">pore `/pɔː(r)/` 毛孔，小孔，熟读，钻研，沉思</div>
+<div style="width: 50%; float:left;">likelihood `/'laɪklihʊd/` 可能性</div>
+<div style="width: 50%; float:left;">batch `/bætʃ/` 一批，批处理</div>
+<div style="width: 50%; float:left;">spare `/speə(r)/` 备用的，闲置的，多余的，空闲的</div>
+<div style="width: 50%; float:left;">burst `/bɜːst/`  爆裂，胀开，暴涨</div>
+<div style="width: 50%; float:left;">sustain `/səˈsteɪn/` 维持，持久，遭受，蒙受</div>
+<div style="width: 50%; float:left;">dedicate `/'dedɪkeɪt/` 致力于，献出</div>
+<div style="width: 50%; float:left;">paramount `/ˈpærəmaʊnt/` 元首，至尊的，权力最大的</div>
+<div style="width: 50%; float:left;">surreptitiously `/ˌsʌrəp'tɪʃəsli/` 偷偷摸摸地，暗中地</div>
+<div style="width: 50%; float:left;">misbehavior `/'mɪsbɪ'heɪvjə/` 粗鲁行为，品行不端</div>
+<div style="width: 50%; float:left;">integrate `/'ɪntɪɡreɪt/` （数学）求积分，整合，结合，取消隔离，完整的，组合的</div>
+<div style="width: 50%; float:left;">oven `/'ʌvn/` 烤箱，烤炉</div>
+<div style="width: 50%; float:left;">intravenous `/ˌɪntrə'viːnəs/` 静脉的，静脉注射的</div>
+<div style="width: 50%; float:left;">titration `/tɪ'treɪʃn/` （一种定量分析的手段）滴定</div>
+<div style="width: 50%; float:left;">bundle `/'bʌndl/` 捆，束，包，大笔钱</div>
+<div style="width: 50%; float:left;">merit `/ˈmerɪt/` 优点，价值，功绩，值得</div>
+<div style="width: 50%; float:left;">devastate `/ˈdevəsteɪt/` 毁灭，摧毁，彻底破坏，震惊</div>
+<div style="width: 50%; float:left;">paradigm `/ˈparədʌɪm/` 范例，词形变化表</div>
+<div style="width: 50%; float:left;">tolerance `/ˈtɒlərəns/`  容错，公差，容量</div>
+<div style="width: 50%; float:left;">accommodate `/əˈkɒmədeɪt/` 容纳，住宿，调解，向..提供，随和，乐于助人，顾及的</div>
+<div style="width: 50%; float:left;">resist `/rɪˈzɪst/` 抵制，反抗，回击，抵挡</div>
+<div style="width: 50%; float:left;">ubiquitous `/juː'bɪkwɪtəs/` 到处存在的</div>
+<div style="width: 50%; float:left;">untether `/ʌn'teðə/` 解下(拴牛马的)绳，链</div>
+<div style="width: 50%; float:left;">heterogeneous `/ˌhetərə'dʒiːniəs/` （计算机）非均匀的，异种的，异质的，由不同成分形成的</div>
+<div style="width: 50%; float:left;">refrigerator `/rɪ'frɪdʒəreɪtə(r)/` 冰箱</div>

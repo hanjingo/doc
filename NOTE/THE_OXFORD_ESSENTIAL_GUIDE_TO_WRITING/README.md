@@ -4,9 +4,9 @@ Thomas S. Kane .
 
 - [CHAPTER1. Subject, Reader, and Kinds of Writing](chapter1.md)
 - [CHAPTER2. Strategy and Style](chapter2.md)
-- [3. Grammar, Usage, and Mechanics]
-- [4. Looking for Subjects]
-- [5. Exploring for Topics]
+- [CHAPTER3. Grammar, Usage, and Mechanics](chapter3.md)
+- [CHAPTER4. Looking for Subjects](chapter4.md)
+- [CHAPTER5. Exploring for Topics](chapter5.md)
 - [6. Making a Plan]
 - [7. Drafts and Revisions]
 - [8. Beginning]
