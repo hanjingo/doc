@@ -1,46 +1,12 @@
 # markdown手册
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [标题](#标题)
-* [段落](#段落)
-* [字体](#字体)
-* [分割线](#分割线)
-* [删除线](#删除线)
-* [下划线](#下划线)
-* [列表](#列表)
-* [区块](#区块)
-* [代码](#代码)
-* [链接](#链接)
-* [图片](#图片)
-* [锚定](#锚定)
-* [脚注](#脚注)
-* [表格](#表格)
-* [html语法样式](#html语法样式)
-    - [颜色](#颜色)
-    - [代码块](#代码块)
-    - [单元格](#单元格)
-* [公式](#公式)
-    - [一些常用的数学公式](#一些常用的数学公式)
-    - [矩阵](#矩阵)
-    - [分类表达式](#分类表达式)
-    - [多行表达式](#多行表达式)
-    - [方程组](#方程组)
-    - [表格](#表格-1)
-    - [交换图表](#交换图表)
-* [绘制流程图](#绘制流程图)
-    - [样式流程图](#样式流程图)
-* [绘制时序图](#绘制时序图)
-    - [标准时序图](#标准时序图)
-* [绘制甘特图](#绘制甘特图)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[toc]
 
 
 
-## 标题
+## markdown基本语法
+
+### 标题
 
 ```markdown
 # 一级标题
@@ -51,9 +17,7 @@
 ###### 六级标题
 ```
 
-
-
-## 段落
+### 段落
 
 ```markdown
 a  
@@ -65,9 +29,7 @@ a
 
 b
 
-
-
-## 任务列表
+### 任务列表
 
 ```markdown
 - [ ] 跑步
@@ -81,9 +43,7 @@ b
 - [x] 吃饭
 - [ ] 睡觉
 
-
-
-## 字体
+### 字体
 
 ``` markdown
 *斜体*
@@ -99,9 +59,7 @@ _斜体_
 __粗体__
 ___粗斜体___
 
-
-
-## 分割线
+### 分割线
 
 ```markdown
 ***
@@ -123,7 +81,7 @@ ___粗斜体___
 
 
 
-## 删除线
+### 删除线
 
 ``` markdown
 ~~删除线~~ 
@@ -131,9 +89,7 @@ ___粗斜体___
 
 ~~删除线~~ 
 
-
-
-## 下划线
+### 下划线
 
 ``` markdown
 <u>下划线</u>
@@ -141,9 +97,7 @@ ___粗斜体___
 
 <u>下划线</u>
 
-
-
-## 列表
+### 列表
 
 ```markdown
 * 无序列表1
@@ -169,9 +123,7 @@ ___粗斜体___
 1. 列表嵌套
    -  嵌套
 
-
-
-## 区块
+### 区块
 
 ```markdown
 > 普通区块
@@ -187,9 +139,7 @@ ___粗斜体___
 >
 > > 嵌套区块2层
 
-
-
-## 代码
+### 源代码
 
 ````markdown
 ```c++
@@ -207,9 +157,7 @@ int main(void) {
 }
 ```
 
-
-
-## 链接
+### 链接
 
 ```markdown
 这个链接用 1 作为网址变量 [Google][1]
@@ -227,9 +175,7 @@ int main(void) {
 [1]: http://www.google.com/
 [runoob]: http://www.runoob.com/
 
-
-
-## 图片
+### 图片
 
 ```markdown
 ![百度图标](https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png)
@@ -237,9 +183,7 @@ int main(void) {
 
 ![百度图标](https://www.baidu.com/img/PCfb_5bf082d29588c07f842ccde3f97243ea.png)
 
-
-
-## 锚定
+### 锚定
 
 ```markdown
 这是正文,在这里引用锚点[<sup>[1]</sup>](#refer-anchor-1)
@@ -251,9 +195,7 @@ int main(void) {
 
 <div id="refer-anchor-1">[1] 作者. 文献名. 页码 起始-结束. 年份</div>
 
-
-
-## 脚注
+### 脚注
 
 **注意：非标准语法，但typora支持**
 
@@ -267,10 +209,7 @@ int main(void) {
 
 [^1]: 这里是脚注说明
 
-
-
-
-## 表格
+### 表格
 
 **无对齐方式:**
 
@@ -303,7 +242,7 @@ int main(void) {
 
 
 
-## html语法样式
+## 内嵌html语法样式
 
 ### 颜色
 
@@ -367,8 +306,6 @@ int main(void) {
         <td colspan = "2"> 单元格4 </td>
     </tr>
 </table>
-
-
 ### 左右分栏
 
 ```html
@@ -380,39 +317,139 @@ int main(void) {
 <div style="width: 50%; float:left;">右侧</div>
 
 
-## 公式
 
-### 一些常用的数学公式
+## 数学公式
+
+### 希腊字母
+
+| 效果       | 源码         | 效果      | 源码        | 效果       | 源码         | 效果          | 源码            | 效果      | 源码        | 效果       | 源码         |
+| ---------- | ------------ | --------- | ----------- | ---------- | ------------ | ------------- | --------------- | --------- | ----------- | ---------- | ------------ |
+| $\alpha$   | `$\alpha$`   | $\kappa$  | `$\kappa$`  | $\psi$     | `$\psi$`     | $\digamma$    | `$\digamma$`    | $\Delta$  | `$\Delta$`  | $\Theta$   | `$\Theta$`   |
+| $\beta$    | `$\beta$`    | $\lambda$ | `$\lambda$` | $\rho$     | `$\rho$`     | $\varepsilon$ | `$\varepsilon$` | $\Gamma$  | `$\Gamma$`  | $\Upsilon$ | `$\Upsilon$` |
+| $\chi$     | `$\chi$`     | $\mu$     | `$\mu$`     | $\sigma$   | `$\sigma$`   | $\varkappa$   | `$\varkappa$`   | $\Lambda$ | `$\Lambda$` | $\Xi$      | `$\Xi$`      |
+| $\delta$   | `$\delta$`   | $\nu$     | `$\nu$`     | $\tau$     | `$\tau$`     | $\varphi$     | `$\varphi$`     | $\Omega$  | `$\Omega$`  |            |              |
+| $\epsilon$ | `$\epsilon$` | $o$       | `$o$`       | $\theta$   | `$\theta$`   | $\varpi$      | `$\varpi$`      | $\Phi$    | `$\Phi$`    | $\aleph$   | `$\aleph$`   |
+| $\eta$     | `$\eta$`     | $\omega$  | `$\omega$`  | $\upsilon$ | `$\upsilon$` | $\varrho$     | `$\varrho$`     | $\Pi$     | `$\Pi$`     | $\beth$    | `$\beth$`    |
+| $\gamma$   | `$\gamma$`   | $\phi$    | `$\phi$`    | $\xi$      | `$\xi$`      | $\varsigma$   | `$\varsigma$`   | $\Psi$    | `$\Psi$`    | $\daleth$  | `$\daleth$`  |
+| $\iota$    | `$\iota$`    | $\pi$     | `$\pi$`     | $\zeta$    | `$\zeta$`    | $\vartheta$   | `$\vartheta$`   | $\Sigma$  | `$\Sigma$`  | $\gimel$   | `$\gimel$`   |
+
+### 文本文字
+
+```markdown
+$$\mathbb{ABCdef}$$
+```
+
+$$
+\mathbb{ABCdef}
+$$
+
+```markdown
+$$\text{hello world}$$
+```
+
+$$
+\text{hello world}
+$$
+
+```markdown
+Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ
+```
+
+Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ
+
+### 标准函数
+
+| 效果      | 源码        | 效果      | 源码        | 效果                            | 源码                              | 效果      | 源码        |
+| --------- | ----------- | --------- | ----------- | ------------------------------- | --------------------------------- | --------- | ----------- |
+| $\arccos$ | `$\arccos$` | $\arcsin$ | `$\arcsin$` | $\arctan$                       | `$\arctan$`                       | $\arg$    | `$\arg$`    |
+| $\cos(x)$ | `$\cos(x)$` | $\cosh$   | `$\cosh$`   | $\cot(x)$                       | `$\cot(x)$`                       | $\coth$   | `$\coth$`   |
+| $\csc$    | `$\csc$`    | $\deg$    | `$\deg$`    | $\det$                          | `$\det$`                          | $\dim$    | `$\dim$`    |
+| $\exp $   | `$\exp$`    | $\gcd$    | `$\gcd$`    | $\hom$                          | `$\hom$`                          | $\inf$    | `$\inf$`    |
+| $\ker $   | `$\ker$`    | $\lg x$   | `$\lg x$`   | $\lim^{x \to \infty}_{y \to 0}$ | `$\lim^{x \to \infty}_{y \to 0}$` | $\liminf$ | `$\liminf$` |
+| $\limsup$ | `$\limsup$` | $\ln x$   | `$\ln x$`   | $\log_x y$                      | `$\log_x y$`                      | $\max$    | `$\max$`    |
+| $\min$    | `$\min$`    | $\Pr$     | `$\Pr$`     | $\sec$                          | `$\sec$`                          | $\sin(x)$ | `$\sin(x)$` |
+| $\sinh$   | `$\sinh$`   | $\sup$    | `$\sup$`    | $\tan(x)$                       | `$\tan(x)$`                       | $\tanh$   | `$\tanh$`   |
+
+### 算术运算
+
+| 效果       | 源码         | 效果        | 源码          | 效果            | 源码              | 效果             | 源码               |
+| ---------- | ------------ | ----------- | ------------- | --------------- | ----------------- | ---------------- | ------------------ |
+| $x \pm y$  | `$x \pm y$`  | $x \mp y$   | `$x \mp y$`   | $x \times y$    | `$x \times y$`    | $x \cdot y$      | `$x \cdot y$`      |
+| $x \ast y$ | `$x \ast y$` | $x \div y$  | `$x \div y$`  | $x/y$           | `$x/y$`           | $x \quad y$      | `$x \quad y$`      |
+| $x \mid y$ | `$x \mid y$` | $x \nmid y$ | `$x \nmid y$` | $x \parallel y$ | `$x \parallel y$` | $x \nparallel y$ | `$x \nparallel y$` |
+
+### 逻辑关系
+
+| 效果            | 源码              | 效果             | 源码               | 效果            | 源码              | 效果              | 源码                |
+| --------------- | ----------------- | ---------------- | ------------------ | --------------- | ----------------- | ----------------- | ------------------- |
+| $\forall$       | `$\forall$`       | $\exists$        | `$\exists$`        | $\because$      | `$\because$`      | $\therefore$      | `$\therefore$`      |
+| $\neg$          | `$\neg$`          | $\infty$         | `$\infty$`         |                 |                   |                   |                     |
+| $x \in y$       | `$x \in y$`       | $x \notin y$     | `$x \notin y$`     | $x \subset y$   | `$x \subset y$`   | $x \not\subset y$ | `$x \not\subset y$` |
+| $x \subseteq y$ | `$x \subseteq y$` | $x \subsetneq y$ | `$x \subsetneq y$` |                 |                   |                   |                     |
+| $x \cup y$      | `$x \cup y$`      | $x \cap y$       | `$x \cap y$`       | $x \bigcup y$   | `$x \bigcup y$`   | $x \bigcap y$     | `$x \bigcap y$`     |
+| $x \setminus y$ | `$x \setminus y$` | $x \bigvee y$    | `$x \bigvee y$`    | $x \bigwedge y$ | `$x \bigwedge y$` |                   |                     |
+| $x \geq y$      | `$x \geq y$`      | $x \leq y$       | `$x \leq y$`       | $x \neq y$      | `$x \neq y$`      | $x \sim y$        | `$x \sim y$`        |
+| $x \approx y$   | `$x \approx y$`   | $x \equiv y$     | `$x \equiv y$`     | $x \leqslant y$ | `$x \leqslant y$` | $x \geqslant y$   | `$x \geqslant y$`   |
+| $x < y$         | `$x < y$`         | $x > y$          | `$x > y$`          | $x \ll y$       | `$x \ll y$`       | $x \gg y$         | `$x \gg y$`         |
+
+### 分割符号
+
+| 效果           | 源码             | 效果           | 源码             | 效果               | 源码                 | 效果               | 源码                 |
+| -------------- | ---------------- | -------------- | ---------------- | ------------------ | -------------------- | ------------------ | -------------------- |
+| $\{$           | `$\{$`           | $\}$           | `$\}$`           | $\left [ \right ]$ | `$\left [ \right ]$` | $\left ( \right )$ | `$\left ( \right )$` |
+| $\langle$      | `$\langle$`      | $\rangle$      | `$\rangle$`      |                    |                      |                    |                      |
+| $\|$           | `$\|$`           | $\Vert$        | `$\Vert$`        |                    |                      |                    |                      |
+| $\Uparrow$     | `$\Uparrow$`     | $\Downarrow$   | `$\Downarrow$`   | $\uparrow$         | `$\uparrow$`         | $\downarrow$       | `$\downarrow$`       |
+| $\updownarrow$ | `$\updownarrow$` | $\Updownarrow$ | `$\Updownarrow$` |                    |                      |                    |                      |
+| $\Leftarrow$   | `$\Leftarrow$`   | $\Rightarrow$  | `$\Rightarrow$`  | $\leftrightarrow$  | `$\leftrightarrow$`  | $\Leftrightarrow$  | `$\Leftrightarrow$`  |
+| $\llcorner$    | `$\llcorner$`    | $\lrcorner$    | `$\lrcorner$`    | $\ulcorner$        | `$\ulcorner$`        | $\urcorner$        | `$\urcorner$`        |
+
+### 数学表达式
+
+| 效果                                                         | 源码                                                         | 效果                                                         | 源码                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $\lfloor x \rfloor$                                          | `$\lfloor x \rfloor$`                                        | $\lceil x \rceil$                                            | `$\lceil x \rceil$`                                          |
+| $\dot x$                                                     | `$\dot x$`                                                   | $\ddot x$                                                    | `$\ddot x$`                                                  |
+| $\dot {\dot x}$                                              | `$\dot {\dot x}$`                                            |                                                              |                                                              |
+| $\hat x$                                                     | `$\hat x$`                                                   | $\widehat {xy}$                                              | `$\widehat {xy}$`                                            |
+| $\widetilde{x}$                                              | `$\widetilde{x}$`                                            |                                                              |                                                              |
+| $x \leftarrow y$                                             | `$x \leftarrow y$`                                           | $x \rightarrow y$                                            | `$x \rightarrow y$`                                          |
+| $x \mapsto y$                                                | `$x \mapsto y$`                                              |                                                              |                                                              |
+| $\underleftarrow{a+b}$                                       | `$\underleftarrow{a+b}$`                                     | $\underrightarrow{a+b}$                                      | `\underrightarrow{a+b}`                                      |
+| $\overleftarrow{a+b}$                                        | `$\overleftarrow{a+b}$`                                      | $\overrightarrow{a+b}$                                       | `$\overrightarrow{a+b}$`                                     |
+| $\underline{a+b}$                                            | `$\underline{a+b}$`                                          | $\overline{a+b}$                                             | `$\overline{a+b}$`                                           |
+| $\underleftrightarrow{a+b}$                                  | `$\underleftrightarrow{a+b}$`                                | $\overleftrightarrow{a + b}$                                 | `$\overleftrightarrow{a + b}$`                               |
+| $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$               | `$\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$`             | $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$             | `$\underbrace{a\cdot a\cdots a}_{b\text{ times}}$`           |
+| $a^b$                                                        | `$a^b$`                                                      | $\angle{abc}$                                                | `$\angle{abc}$`                                              |
+| $\lbrace \frac{a}{b} \rbrace$                                | `$\lbrace \frac{a}{b} \rbrace$`                              | $\left \langle \frac{a}{b} \right \rangle$                   | `$\left \langle \frac{a}{b} \right \rangle$`                 |
+| $\left [ a,b \right )$                                       | `$\left [ a,b \right )$`                                     |                                                              |                                                              |
+| $\sqrt{x}$                                                   | `$\sqrt{x}$`                                                 | $\sqrt[n]{y}$                                                | `$\sqrt[n]{y}$`                                              |
+| $\sum_{r=1}^n$                                               | `$\sum_{r=1}^n$`                                             |                                                              |                                                              |
+| $\prod_{i=1}^{K}$                                            | `$\prod_{i=1}^{K}$`                                          | $\coprod$                                                    | `$\coprod$`                                                  |
+| $\int^{\infty}_{0}$                                          | `$\int^{\infty}_{0}$`                                        | $\oint$                                                      | `$\oint$`                                                    |
+| $\iint$                                                      | `$\iint$`                                                    | $\iiint$                                                     | `$\iiint$`                                                   |
+| $\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$            | `$\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$`          | $\Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg]$            | `$\Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg]$`          |
+| $\Bigg \langle \bigg \langle \Big \langle\big\langle\langle x \rangle \big \rangle\Big\rangle\bigg\rangle\Bigg\rangle$ | `$\Bigg \langle \bigg \langle \Big \langle\big\langle\langle x \rangle \big \rangle\Big\rangle\bigg\rangle\Bigg\rangle$` | $\Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x \rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert$ | `$\Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x \rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert$` |
+| $\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$ | `$\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$` |                                                              |                                                              |
+| $\cdots$                                                     | `$\cdots$`                                                   | $\vdots$                                                     | `$\vdots$`                                                   |
+| $60 \%$                                                      | `$60 \%$`                                                    |                                                              |                                                              |
+
+### 数学公式
 
 | 效果                                                         | 源码                                                         |
-| :----------------------------------------------------------- | ------------------------------------------------------------ |
-| $\mathbb{ABCdef}$                                            | `$\mathbb{ABCdef}$`                                          |
-| Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ | `Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ, Ⅺ, Ⅻ, ⅩⅢ, ⅩⅣ, ⅩⅤ, ⅩⅥ, ⅩⅦ, ⅩⅧ, ⅩⅨ, ⅩⅩ, ⅩⅩⅩ, ⅩⅬ, Ⅼ, ⅬⅩ, ⅬⅩⅩ, ⅬⅩⅩⅩ, ⅩⅭ, ⅩⅭⅨ` |
-| $\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$, $o O$, $\rho$, $\upsilon$, $\chi$, $\psi$ | `$\alpha$, $\beta$, $\gamma$, $\delta$, $\epsilon$, $\omega$, $\lambda$, $\pi$, $\tau$,  $\varphi$, $\emptyset$, $\phi$, $\zeta$, $\Omega$, $\mu$, $\sigma$, $\theta$, $\nu$, $\xi$, $o O$, $\rho$, $\upsilon$, $\chi$, $\psi$` |
-| $\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$ | `$\infty$, $\nabla$, $\Delta$, $\Gamma$, $\Theta$, $\Lambda$, $\Sigma$, $\Upsilon$, $\Phi$` |
-| $\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$ | `$\oplus$, $\ominus$, $\diamond$, $\odot$, $\oslash$, $\uplus$, $\otimes$, $\bigcirc$, $\amalg$, $\bigtriangleup$, $\bigtriangledown$, $\dagger$, $\lhd$, $\rhd$, $\ddagger$, $\unlhd$, $\unrhd$, $\wr$` |
-| $\sin(x)$, $\cos(x)$, $\tan(x)$, $\cot(x)$                   | `$\sin(x)$, $\cos(x)$, $\tan(x)$, $\cot(x)$`                 |
-| $\forall$, $\exists$, $\because$, $\therefore$, $\neg$       | `$\forall$, $\exists$, $\because$, $\therefore$, $\neg$`     |
-| $x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$ | `$x \in y$, $x \notin y$, $x \subset y$, $x \not\subset y$, $x \subseteq y$, $x \subsetneq y$` |
-| $x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$ | `$x \cup y$, $x \cap y$, $x \bigcup y$, $x \bigcap y$, $x \setminus y$, $x \bigvee y$, $x \bigwedge y$` |
-| $x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$, $x \mid y$, $x \nmid y$, $x \parallel y$, $x \nparallel y$ | `$x \pm y$, $x \mp y$, $x \times y$, $x \cdot y$, $x \ast y$, $x \div y$, $x/y$, $x \quad y$, $x \mid y$, $x \nmid y$, $x \parallel y$, $x \nparallel y$` |
-| $x \geq y$, $x \leq y$, $x \neq y$, $x \sim y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$ | `$x \geq y$, $x \leq y$, $x \neq y$, $x \sim y$, $x \approx y$, $x \equiv y$, $x \leqslant y$, $x \geqslant y$, $x < y$, $x > y$, $x \ll y$, $x \gg y$` |
-| $\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$, $\uparrow$, $\Uparrow$, $\downarrow$, $\Downarrow$, $\updownarrow$, $\Updownarrow$, $\leftrightarrow$, $\Leftrightarrow$ | `$\leftarrow$, $\Leftarrow$, $\rightarrow$, $\Rightarrow, \mapsto$, $\uparrow$, $\Uparrow$, $\downarrow$, $\Downarrow$, $\updownarrow$, $\Updownarrow$, $\leftrightarrow$, $\Leftrightarrow$` |
-| $\lfloor x \rfloor$，$\lceil x \rceil$                       | `$\lfloor x \rfloor$，$\lceil x \rceil$`                     |
-| $\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$, $\widetilde{x}$ | `$\dot x$, $\ddot x$, $\dot {\dot x}$, $\hat x$, $\widehat {xy}$, $\overline x$, $\vec x$, $\overrightarrow {xy}$, $\overleftarrow {xy}$, $\overleftrightarrow{xy}$, $\vec{x} \cdot \vec{y}=0$, $\widetilde{x}$` |
-| $\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$, $a \overset{b}{=} c$ | `$\underleftrightarrow{a+b}$, $\underrightarrow{a+b}$, $\underleftarrow{a+b}$, $\overline{a+b}$, $\underline{a+b}$, $\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$, $\underbrace{a\cdot a\cdots a}_{b\text{ times}}$, $a \overset{b}{=} c$` |
-| $\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$ | `$\frac{7x+5}{1+y^2}$, $\frac{\partial x}{\partial y}$, $\boxed{E=mc^2}$` |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $f(x)$                                                       | `$f(x)$`                                                     |
+| $\overset{a,b}{f(x)}$                                        | `$\overset{a,b}{f(x)}$`                                      |
+| $\underset{ab}{f(x)}$                                        | `$\underset{ab}{f(x)}$`                                      |
+| $ f\left(\left[\frac{1+\left\{x,y\right\}}{\left(\frac xy + \frac yx \right)(u+1)}+a    \right]^{3/2} \right) \tag {行标} $ | `$ f\left(\left[\frac{1+\left\{x,y\right\}}{\left(\frac xy + \frac yx \right)(u+1)}+a    \right]^{3/2} \right) \tag {行标} $` |
+| $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}$             | `$\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}$`           |
+| ${n+1 \choose k}={n \choose k}+{n \choose k-1}$              | `${n+1 \choose k}={n \choose k}+{n \choose k-1}$`            |
+| $\frac{\partial x}{\partial y}$                              | `$\frac{\partial x}{\partial y}$`                            |
+| $a \overset{b}{=} c$                                         | `$a \overset{b}{=} c$`                                       |
+| $a_{\left.{\overline{\,2\,}}\!\right|i}$                     | `$a_{\left.{\overline{\,2\,}}\!\right|i}$`                   |
+| $\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$        | `$\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$`      |
 | $x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$ | `$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$` |
-| $\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$                 | `$\overset{a,b}{f(1)}$, $\underset{ab}{f(1)}$`               |
-| $\ln15$, $\log_2 10$, $\lg7$                                 | `$\ln15$, $\log_2 10$, $\lg7$`                               |
-| $a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$, $60 \%$, $\angle{abc}$, $a_{\left.{\overline{\,2\,}}\!\right|i}$, $\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$ | `$a^b$, $z=z_l$, $\cdots$, $\vdots$, $\sqrt{2}+\sqrt[n]{3}$, $60 \%$, $\angle{abc}$, $a_{\left.{\overline{\,2\,}}\!\right|i}$, $\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$` |
-| $\Sigma$, $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$ | `$\Sigma$, $\sum \frac{1}{i^2}$, $\sum_{r=1}^n$, $\sum_{i=0}^{n}i^2$, $\sum_{k_0,k_1,\ldots>0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$` |
-| $\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$                    | `$\prod \frac{1}{i^2}$,  $\prod_{i=1}^{K}$`                  |
-| $\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$                | `$\lim^{x \to \infty}_{y \to 0} {\frac{x}{y}}$`              |
-| $\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$         | `$\int^{\infty}_{0}{xdx}$, $\iint$, $\iiint$, $\oint$`       |
-| ${n+1 \choose k}={n \choose k}+{n \choose k-1}$, $\lbrace \frac{a}{b} \rbrace$, $\left \langle \frac{a}{b} \right \rangle$, $\left [ a,b \right )$ | `${n+1 \choose k}={n \choose k}+{n \choose k-1}$, $\lbrace \frac{a}{b} \rbrace$, $\left \langle \frac{a}{b} \right \rangle$, $\left [ a,b \right )$` |
-| $ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $ | `$ f\left(    \left[       \frac{        1+\left\{x,y\right\}      }{        \left(           \frac xy + \frac yx        \right)        (u+1)      }+a    \right]^{3/2} \right) \tag {行标} $` |
-| $\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$, $\Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg]$, $\Bigg \langle \bigg \langle \Big \langle\big\langle\langle x \rangle \big \rangle\Big\rangle\bigg\rangle\Bigg\rangle$, $\Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x \rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert$, $\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$ | `$\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$, $\Bigg[\bigg[\Big[\big[[x]\big]\Big]\bigg]\Bigg]$, $\Bigg \langle \bigg \langle \Big \langle\big\langle\langle x \rangle \big \rangle\Big\rangle\bigg\rangle\Bigg\rangle$, $\Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x \rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert$, $\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$` |
+| $\boxed{E=mc^2}$                                             | `$\boxed{E=mc^2}$`                                           |
 
 ### 矩阵
 
@@ -515,7 +552,7 @@ f(n)
 \cfrac n2, &if\ n\ is\ even\\
 3n + 1, &if\  n\ is\ odd
 \end{cases}
-\qquad (1)
+\qquad (1)f(n)
 $$
 
 **分类表达式2:**
@@ -655,9 +692,11 @@ $$
 
 
 
-## 绘制流程图
+## 高级语法
 
-### 样式流程图
+### 流程图
+
+#### 样式流程图
 
 基本语法:
 
@@ -725,7 +764,7 @@ graph LR
 	end
 ```
 
-### 标准流程图
+#### 标准流程图
 
 基本语法：
 
@@ -777,11 +816,9 @@ cond(yes)->io->e
 cond(no)->sub1(right)->op
 ```
 
+### 时序图
 
-
-## 绘制时序图
-
-### 标准时序图
+#### 标准时序图
 
 基本语法:
 
@@ -827,7 +864,7 @@ Note over 服务端,客户端: TCP 三次握手
 participant 观察者
 ```
 
-### 带样式时序图
+#### 带样式时序图
 
 基本语法同标准时序图，不同的是
 
@@ -899,9 +936,7 @@ participant 对象C
 Note over 对象A,对象C: 汇总
 ```
 
-
-
-## 绘制甘特图
+### 甘特图
 
 基本语法：
 
@@ -973,11 +1008,9 @@ gantt
         测试报告: 48h
 ```
 
+### UML图
 
-
-## 绘制UML图
-
-### 类图
+#### 类图
 
 - `<|--` 继承
 
@@ -1200,9 +1233,7 @@ class Shape
 <<interface>> Shape
 ```
 
-
-
-## 绘制饼图
+### 饼图
 
 ```markdown
 pie
@@ -1222,17 +1253,12 @@ pie
     "Iron" :  5
 ```
 
-
-
-
-
-## 绘制折线图
+### 折线图
 
 (需要安装vidtor)
 
 ```echarts
 {
-
  "title" : {  
  "text": "简单的折线图",  
  "subtext": "纯属虚构"  
@@ -1265,9 +1291,7 @@ pie
 }
 ```
 
-
-
-## 绘制状态图
+### 状态图
 
 ```markdown
 stateDiagram-v2
@@ -1381,7 +1405,7 @@ state 多线程 {
 
    
 
-## 绘制树状图
+### 树状图
 
 (typora等其他不支持graphviz的工具，可以使用这个网站：https://g.gravizo.com/svg 作为图床)
 
@@ -1431,6 +1455,7 @@ state 多线程 {
 
 ## 参考
 
+- LATEX Mathematical Symbols
 - [Markdown: Syntax](https://daringfireball.net/projects/markdown/syntax#html)
 - [markdown 绘制流程图、时序图、甘特图](https://www.jianshu.com/p/6dbcc3aff98b)
 - [使用 Typora 画图（类图、流程图、时序图）](https://zhuanlan.zhihu.com/p/172635547)
