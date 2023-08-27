@@ -84,6 +84,8 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
+- [THE MYTHICAL MAN-MONTH]
+- [ASKING THE RIGHT QUESTIONS - A Guide to Critical Thinking]
 - [COMPUTER ORGANIZATION AND DESIGN - THE HARDWARE/SOFTWARE INTERFACE]
 - [SOFTWARE ENGINEERING]
 - [The Algorithm Design Manual]

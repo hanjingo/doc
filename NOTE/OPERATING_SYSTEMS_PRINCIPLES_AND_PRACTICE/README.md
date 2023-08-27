@@ -3,7 +3,7 @@
 Thomas Anderson / Michael Dahlin . 2 ED
 
 - [Chapter 1 Introduction](chapter1.md)
-- [2 The Kernel Abstraction]
+- [Chapter2 The Kernel Abstraction](chapter2.md)
 - [3 The Programming Interface]
 - [4 Concurrency and Threads]
 - [5 Synchronizing Access to Shared Objects]

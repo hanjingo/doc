@@ -361,6 +361,8 @@ aim `/eɪm/` 目标，瞄准，对准，针对
 
 airborne `/'eəbɔːn/` 升空，空运的，空中传播的
 
+airfare `/'eəfeə(r)/` 机票价格
+
 airtight `/'eətaɪt/` 密封的，不透气的，无懈可击的
 
 ### aj
@@ -775,6 +777,8 @@ artisan `/ˌɑːtɪˈzæn/` 工匠，手艺人
 
 artist `/'ɑːtɪst/` 艺术家，美术家，艺人
 
+artwork `/'ɑːtwɜːk/` 艺术品，美术品，（总称）插图
+
 ### as
 
 [回到A](#A)--[回到顶部](#英汉词典)
@@ -962,6 +966,8 @@ average `/'ævərɪdʒ/` 平均数，平均的，一般的，通常的
 averse `/əˈvɜːs/` 厌恶，不乐意的，不想做
 
 aversion `/ə'vɜːʃn/` 憎恨，嫌恶
+
+avian `/'eɪviən/` 鸟类的
 
 aviation `/ˌeɪviˈeɪʃn/` 航空，航空学，航空制造学
 
@@ -1253,6 +1259,8 @@ bistable `/baɪ'steɪbl/` 双稳态，双稳态的
 
 bit `/bɪt/` 比特，少量，小块，片刻，钻头
 
+bite `/baɪt/` 咬，叮，蜇
+
 bitonic `/baɪtɒnɪk/` （计算机）双调的
 
 bitter `/ˈbɪtə(r)/` 苦的，苦味，苦难
@@ -1357,6 +1365,8 @@ bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 
 bomb `/bɒm/` 炸弹，轰炸
 
+bombard `/bɒm'bɑːd/` 炮轰，攻击，以高速粒子撞击
+
 bombed `/bɒmd/` 遭到轰炸的，醉酒的，吸毒麻醉了的
 
 bondmen `/'bɒndmən/` 奴隶
@@ -1376,6 +1386,8 @@ boon `/buːn/` 恩惠，合得来的
 boost `/buːst/` 促进，提高，帮助，激励
 
 booth `/buːð/` 货摊，电话亭，小间
+
+boredom `/'bɔːdəm/` 无聊，厌烦，厌倦，令人厌烦的事物
 
 borne `/bɔːn/` 由...传播的，由...传送的，生（孩子），负荷
 
@@ -1544,6 +1556,8 @@ bulk `/bʌlk/` 大部分，庞大，巨大
 bulky `/'bʌlki/` 庞大的，笨重的，肥大的
 
 bull `/bʊl/` 公牛，鲁莽的
+
+bullet `/'bʊlɪt/` 子弹，弹丸
 
 bulletin `/'bʊlətɪn/` 公报，期刊，发表，公示
 
@@ -1852,6 +1866,8 @@ centralized `/sentrəlaɪzd/` 集中的
 centre `/'sentə(r)/` 中心，居中，中央
 
 centric `/'sentrɪk/` 中心的，中央的
+
+cereal `/'sɪəriəl/` 麦片粥，谷类的，谷物的
 
 ceremony `/ˈserəməni/` 典礼，仪式，礼节，宗教仪式
 
@@ -3485,6 +3501,8 @@ disqualify `/dɪs'kwɒlɪfaɪ/` 使...丧失资格
 
 disregard `/ˌdɪsrɪ'ɡɑːd/` 漠视，不理会，不顾，忽视
 
+disrespectful `/ˌdɪsrɪ'spektfl/` 无礼的，不尊敬的
+
 disruptive `/dɪs'rʌptɪv/` 分裂的，破坏性的，制造混乱的
 
 dissatisfaction `/ˌdɪsˌsætɪs'fækʃn/` 不满
@@ -4107,6 +4125,8 @@ emancipate `/ɪ'mænsɪpeɪt/` 释放，解放
 
 emancipation `/ɪˌmænsɪˈpeɪʃən/` 解放，自立，释放
 
+embark `/ɪm'bɑːk/` 乘船，装载，着手，从事
+
 embarrass `/ɪmˈbærəs/` 尴尬，困扰
 
 embarrassingly `/ɪm'bærəsɪŋli/` 令人为难的
@@ -4537,6 +4557,8 @@ expansion `/ɪk'spænʃn/` 膨胀，扩展，扩充
 
 expansionary `/ɪk'spænʃənri/` 扩张性的
 
+expectancy `/ɪk'spektənsi/` 期待，预期
+
 expectation `/ˌekspek'teɪʃn/` 预料，期望
 
 expedient `/ɪk'spiːdiənt/` 权宜的，临时手段，权宜之计
@@ -4587,7 +4609,7 @@ expose `/ɪk'spəʊz/` 揭露，曝光，面临
 
 exposition `/ˌekspə'zɪʃn/` 博览会，展览会，说明
 
-exposure `/[ɪk'spəʊʒə(r)/` 暴露，揭露，曝光，亮相，挨冻
+exposure `/ɪk'spəʊʒə(r)/` 暴露，揭露，曝光，亮相，挨冻
 
 expounded `/ɪk'spaʊnd/` 详细说明，阐述，解释
 
@@ -5085,6 +5107,8 @@ formalization `/ˌfɔːməlaɪ'zeɪʃn/` （计算机）格式化，形式化，
 
 formalize `/'fɔːməlaɪz/` 使正式化
 
+formative `/'fɔːmətɪv]/` 形成的，造形的，影响发展的，（语法）构词成分
+
 former `/ˈfɔːrmər/` 模型，样板，构造者，前，前者
 
 formerly `/'fɔːməli/` 以前，从前
@@ -5282,6 +5306,8 @@ fuzzy `/'fʌzi/` 模糊的，含糊不清的，毛茸茸的
 ### ga
 
 [回到G](#G)--[回到顶部](#英汉词典)
+
+gadget `/'ɡædʒɪt/` 小机件，小玩意儿，小巧的机械
 
 gaggle `/ˈɡæɡl/` 一群（吵闹的人），一群（鹅）
 
@@ -5534,6 +5560,8 @@ graph `/ɡræf/` 图，图表
 graphite `/ˈɡræfaɪt/` 石墨
 
 grapple `/'ɡræpl/` 抓钩，抓住，扭打，搏斗
+
+grasp `/ɡrɑːsp/` 把握，领会，抓住
 
 grate `/ɡreɪt/` 栅，壁炉，摩擦，磨碎
 
@@ -5788,6 +5816,8 @@ heat `/hiːt/` 加热，热度，热，热烈，激烈，发烧
 heaver `/'hiːvə/` 挑夫，杠杆
 
 heaviest `/'hevɪɪst/` 最重的
+
+hectic `/'hektɪk/` 忙乱的，兴奋的，（医学）发热的，发红的
 
 hedge `/hedʒ/` 篱笆，障碍，推诿，防护物
 
@@ -6639,6 +6669,8 @@ insurmountable `/ˌɪnsə'maʊntəbl/` 无法解决的，难以对付的
 
 intact `/ɪnˈtakt/` 完整的
 
+intake `/'ɪnteɪk/` 吸入，招收，入口，通风口
+
 integer `/'ɪntɪdʒə(r)/` 整数，完整的事物，整体
 
 integral `/ˈɪntɪɡrəl/` 必须的，不可或缺的，完整的
@@ -6670,6 +6702,8 @@ intentional `/ɪn'tenʃənl/` 存心的，有意的，故意的
 interact `/ˌɪntərˈækt/` 交互，交流，沟通，合作，交往
 
 interaction `/ˌɪntər'ækʃn/` 相互作用，相互影响
+
+interactive `/ˌɪntər'æktɪv/` 相互作用的；交互的
 
 interarrival `/ɪntəræ'raɪvəl/` 两次输入的时间间隔
 
@@ -7273,6 +7307,8 @@ lament `/ləˈment/` 哀叹，哀悼，挽歌，痛惜，对...表示失望
 
 lampshade `/ˈlæmpʃeɪd/` 灯罩
 
+landfill `/'lændfɪl/` 垃圾填埋地，垃圾填埋法
+
 landmass `/ˈlændˌmæs/` 大陆，陆地，地块
 
 landscape `/ˈlændskeɪp/` 景观，景色，风景画
@@ -7459,6 +7495,8 @@ lie `/laɪ/` 躺平，平放，说谎，谎言
 
 lifecycle `/'laɪfˌsaɪkl/` 生命周期，生命循环，生活过程
 
+lighten `/'laɪtn/` 使轻松，变得轻松，发亮，变亮，照亮，减轻，变轻，闪电，使变淡
+
 likelihood `/'laɪklihʊd/` 可能性
 
 likewise `/ˈlaɪkwaɪz/` 同样的，类似的，此外
@@ -7619,7 +7657,7 @@ lumber `/ˈlʌmbər/` 木材，废旧家具，拖累，缓慢移动
 
 lump `/lʌmp/` 团，块，归并，瘤
 
-lure `/ljɔː/` 诱饵，诱惑，引诱
+lure `/ljɔː/` 诱饵，诱惑，引诱，（钓鱼）路亚
 
 lurk `/ləːk/` 潜伏，闲逛，潜藏，潜水
 
@@ -7941,6 +7979,8 @@ methodically `/mə'θɒdɪklɪ/` 有条不紊的，系统的
 
 methodology `/ˌmeθəˈdɒlədʒi/` 方法论，方法学
 
+metro `/'metrəʊ/` 地铁，大都市的，（商场）麦德龙
+
 metrology `/mə'trɒlədʒi/` 度量衡
 
 metropolis `/mə'trɒpəlɪs/` 大都市，首府
@@ -7982,6 +8022,8 @@ midst `/mɪdst/` 中间，当中
 midway `/ˌmɪd'weɪ/` 中间，中途的
 
 midwife `/ˈmɪdwaɪf/` 产婆，接生员
+
+migrant `/'maɪɡrənt/` 移居者，候鸟
 
 migration `/maɪˈɡreɪʃn/` 迁移，迁徙
 
@@ -8165,6 +8207,8 @@ monsoon `/ˌmɒn'suːn/` 雨季，季风
 
 monument `/ˈmɒnjumənt/` 纪念碑，遗迹
 
+mood `/muːd/` 心情，情绪，气氛
+
 moor `/mɔː(r)/` 荒野，旷野，停泊
 
 moral `/'mɒrəl/` 道德的，寓意，品行，伦理
@@ -8178,6 +8222,8 @@ morality `/mə'ræləti/` 道德，美德，品行
 moreover `/mɔːrˈəʊvə(r)/` 此外，而且
 
 mortality `/mɔː'tæləti/` 死亡率，死亡数目
+
+mortar `/'mɔːtə(r)/` 灰泥，灰浆，臼，迫击炮
 
 mortgage `/'mɔːɡɪdʒ/` 按揭，抵押，抵押贷款
 
@@ -8819,6 +8865,8 @@ operand `/ˈɒpərænd/` （计算机）操作数，（计算机）操作对象�
 
 operational `/ˌɒpə'reɪʃənl/` 操作的，运作的，可用的，作战的
 
+opponent `/ə'pəʊnənt/` 对手，反对者，敌手，反对的，敌对的
+
 opportunity `/ˌɒpə'tjuːnəti/` 机会，时机
 
 oppose `/ə'pəʊz/` 反对，对抗
@@ -8950,6 +8998,8 @@ outperform `/ˌaʊtpə'fɔːm/` 优于，超额完成，过度执行
 outrage `/'aʊtreɪdʒ/` 暴行，凌辱，义愤
 
 outside `/ˌaʊtˈsaɪd /` 外部，外表，外面
+
+outskirt `/'aʊtˌskɜːt/` 郊区
 
 outspoken `/aʊtˈspəʊkən/` 直率，坦诚，直言不讳
 
@@ -9231,6 +9281,8 @@ pauper `/'pɔːpə(r)/` 乞丐，贫民，穷人
 
 pave `/peɪv/` 铺（地），铺垫
 
+pavement `/'peɪvmənt/` 路面，人行道，铺石，铺路材料
+
 paycheck `/'peɪtʃek/` 薪水支票，工资
 
 payoff `/'peɪɔːf/` 收益，成果，清算，发工资，报复
@@ -9402,6 +9454,8 @@ pervert `/pə'vɜːt/` 误用，歪曲，曲解，变态
 pesky `/'peski/` 讨厌的，烦人的
 
 pessimistic `/ˌpesɪˈmɪstɪk/` 悲观的
+
+pester `/'pestə(r)/` 纠缠，使苦恼
 
 pestilence `/ˈpestɪləns/` 瘟疫
 
@@ -9638,6 +9692,8 @@ polite `/pə'laɪt/` 有礼貌的，客气的，有教养的，文雅的
 poll `/pəʊl/` 投票，民意调查
 
 pollen `/ˈpɒlən/` 花粉
+
+pollute `/pə'luːt/` 污染，弄脏
 
 polumorphos `/ˌpɒl.ɪˈmɔː.fəs/` （计算机）多态
 
@@ -10011,6 +10067,8 @@ prodigious `/prəˈdɪdʒəs/` 巨大的，惊人的
 
 prodigy `/ˈprɒdədʒi/` 天才，奇才，精英，神童
 
+profanities `/prə'fænəti/` 亵渎，不敬的言语
+
 proficiency `/prəˈfɪʃnsi/` 精通，熟练
 
 profile `/ˈprəʊfaɪl/` 轮廓，简介，概述，侧面
@@ -10108,6 +10166,8 @@ prospect `/ˈprɒspekt/` 预期，，展望，前景，勘探，探矿
 prospective `/prə'spektɪv/` 预期的，未来的
 
 prosperity `/prɒˈsperəti/` 兴旺，繁荣，昌盛，发达
+
+prosperous `/'prɒspərəs/` 繁荣的，兴旺的
 
 prostitution `/ˌprɒstɪ'tjuːʃn/` 卖淫，滥用
 
@@ -10372,6 +10432,8 @@ quirk `/kwɜːk/` 怪癖，急转
 quirky `/ˈkwəːki/` 古怪的
 
 quite `/kwaɪt/` 比较，相当，完全，很
+
+quizzes `/kwɪz/` 恶作剧，测验，盘问，问答比赛
 
 quo `/k'wəʊ/` 说
 
@@ -11415,6 +11477,8 @@ secretary `/'sekrətri/` 部长，秘书，书记，大臣，写字台
 
 sector `/'sektə(r)/` （计算机）扇区，部门，部分，区域
 
+sedentary `/'sedntri/` 久坐的，固定不动的
+
 sediment `/ˈsedɪmənt/` 沉渣，沉淀物
 
 seed `/siːd/` 种子，起源，起因
@@ -11606,6 +11670,8 @@ shore `/ʃɔː(r)/` 岸，滨
 shortcoming `/'ʃɔːtkʌmɪŋ/` 缺点，短处
 
 shortcut `/ˈʃɔːtkʌt/` 捷径，近路
+
+shorten `/'ʃɔːtn/` 弄短，变短
 
 shortfall `/'ʃɔːtfɔːl/` 差额，不足
 
@@ -12643,6 +12709,8 @@ tangle `/ˈtæŋɡl/` 纠缠，缠绕，乱糟糟一团
 
 tanner `/'tænə(r)/` 制革工人
 
+tantrum `/'tæntrəm/` 发脾气，发怒
+
 tape `/teɪp/` 磁带，胶布，终点，用胶布粘，用绳子捆绑，用卷尺测量
 
 tapeworm `/ˈteɪpwɜːm/` 绦虫（寄生虫）
@@ -13020,6 +13088,8 @@ tout `/taʊt/` 兜售，高价卖，刺探，吹捧，贩子
 tow `/təʊ/` 拖，牵引
 
 tox `/'tɒks/` 毒药
+
+toxin `/'tɒksɪn/` 毒素，毒质
 
 ### tp
 
@@ -13893,6 +13963,8 @@ vital `/ˈvaɪtl/` 必不可少的，极其重要的，生机勃勃的
 
 vitalist `/vaɪtəlɪst/` 活力论者
 
+vitally `/'vaɪtəli/` 重要地，极其，生命攸关地
+
 vivid `/ˈvɪvɪd/` 清晰的，生动的，鲜艳的，强烈的，丰富的
 
 ### vj
@@ -14220,6 +14292,8 @@ wizard `/'wɪzəd/` 男巫，术士，鬼才
 ### wo
 
 [回到W](#W)--[回到顶部](#英汉词典)
+
+woe `/wəʊ/` 悲哀，苦痛，不幸，困难
 
 woken `/'wəʊkən/` （wake的过去分词）唤醒，起来，觉醒
 
