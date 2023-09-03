@@ -4,4 +4,5 @@ English | [中文版](README_zh.md)
 
 - [English Grammary](grammary.md)
 - [English Sentences](sentences.md)
+- [English Speaking](speaking.md)
 - [English Writting](writting.md)
