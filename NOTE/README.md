@@ -74,6 +74,7 @@ English | [中文版](README_zh.md)
 ## Reading
 
 - [BBC News](BBC/README.md)
+- [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
@@ -91,7 +92,6 @@ English | [中文版](README_zh.md)
 - [SOFTWARE ENGINEERING]
 - [The Algorithm Design Manual]
 - [Structure and Interpretation of Computer Programs]
-- [Practical English Usage]
 - [HIGH-FREQUENCY TRADING]
 - [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Design and Development of a Functional High-Frequency Trading Algorithm]

@@ -7,7 +7,7 @@ Thomas S. Kane .
 - [CHAPTER3. Grammar, Usage, and Mechanics](chapter3.md)
 - [CHAPTER4. Looking for Subjects](chapter4.md)
 - [CHAPTER5. Exploring for Topics](chapter5.md)
-- [6. Making a Plan]
+- [CHAPTER6. Making a Plan](chapter6.md)
 - [7. Drafts and Revisions]
 - [8. Beginning]
 - [9. Closing]

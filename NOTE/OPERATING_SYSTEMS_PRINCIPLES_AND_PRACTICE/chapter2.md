@@ -66,6 +66,49 @@ There are several causes for transitions from kernel-mode to user-mode:
 - Switch to a different process.
 - User-level upcall.
 
+we need the processor to save its state and switch what it is doing, all while it continues to execute instructions that might alter the state that is in the process of saving.
+
+most operating systems have a common sequence of instructions for entering the kernel, this common sequence must provide:
+
+- Limited entry.
+- Atomic changes to processor state.
+- Transparent, restartable execution.
+
+To identify the code to run on a context switch, the processor will include a special register that points to an area of kernel memory called the `interrupt vector`. The interrupt vector is an array of pointers, with each entry pointing to the first instruction of a different handler procedure in the kernel.
+
+We use a separate kernel-level interrupt stack for two reasons:
+
+-  First, having a dedicated stack is necessary for reliability.
+- Second, having a protected stack is necessary for security.
+
+![2_8](res/2_8.png)
+
+*Kernel and user stacks for various states of a process*
+
+1. If the process is running on the processor in user-mode, its kernel stack is empty, ready to be used for an interrupt.
+2. If the process is running on the processor in kernel-mode, e.g., due to an interrupt, exception or system call trap, its kernel stack is in use, containing the saved registers from the suspended user-level computation, as well as the current state of the kernel handler.
+3. If the process is available to run but is waiting for its turn on the processor, its kernel stack contains the registers and state to be restored when the process is resumed.
+4. If the process is waiting for an I/O event to complete, its kernel stack contains the suspended computation to be resumed when the I/O finishes.
+
+When a context switch occurs the x86 hardware:
+
+- If in user-mode, pushes the interrupted process's stack pointer onto the kernel's exception stack, and switches to the kernel stack.
+- Pushes the interrupted process's instruction pointer.
+- Pushes the x86 `processor status word`.
+
+x86 has complementary features for restoring state: a `popad` instruction to pop an array of integer register values off the stack into the registers and an `iret` (return from interrupt) instruction that loads a stack pointer, instruction pointer, and processor status word off of the stack into the appropriate processor registers.
+
+The kernel should assume the parameters to each system call are intentionally designed to corrupt the kernel.
+
+A `pair of stubs` are two short procedures that mediate between two environments.
+
+The kernel stub has four tasks:
+
+- Locate system call arguments.
+- Validate parameters.
+- Copy before check.
+- Copy back any results.
+
 
 
 
@@ -127,18 +170,18 @@ There are several causes for transitions from kernel-mode to user-mode:
 <div style="width: 50%; float:left;">demultiplex</div>
 <div style="width: 50%; float:left;">accomplish</div>
 <div style="width: 50%; float:left;">suspend</div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
-<div style="width: 50%; float:left;"></div>
+<div style="width: 50%; float:left;">obliterate</div>
+<div style="width: 50%; float:left;">misnomer</div>
+<div style="width: 50%; float:left;">premium</div>
+<div style="width: 50%; float:left;">freeze</div>
+<div style="width: 50%; float:left;">invocation</div>
+<div style="width: 50%; float:left;">halves</div>
+<div style="width: 50%; float:left;">terminology</div>
+<div style="width: 50%; float:left;">dummy</div>
+<div style="width: 50%; float:left;">recur</div>
+<div style="width: 50%; float:left;">trap</div>
+<div style="width: 50%; float:left;">stubs</div>
+<div style="width: 50%; float:left;">oblivious</div>
 <div style="width: 50%; float:left;"></div>
 <div style="width: 50%; float:left;"></div>
 <div style="width: 50%; float:left;"></div>

@@ -183,7 +183,7 @@ Qt
 
 ### [english](LANG/ENGLISH/README_zh.md)
 
-- [English语法](LANG/ENGLISH/grammary_zh.md)
+- [English语法](LANG/ENGLISH/grammar_zh.md)
 - [English写作](LANG/ENGLISH/writting_zh.md)
 
 ### [go](LANG/GO/README_zh.md)
