@@ -8,7 +8,7 @@ Thomas S. Kane .
 - [CHAPTER4. Looking for Subjects](chapter4.md)
 - [CHAPTER5. Exploring for Topics](chapter5.md)
 - [CHAPTER6. Making a Plan](chapter6.md)
-- [7. Drafts and Revisions]
+- [CHAPTER7. Drafts and Revisions](chapter7.md)
 - [8. Beginning]
 - [9. Closing]
 - [10. Organizing the Middle]

@@ -3,4 +3,5 @@
 # Economic
 
 - [Finance Model](finance.md)
+- [Fix Protocol](fix.md)
 - [High Frequency Trading](hft.md)
