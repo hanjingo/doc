@@ -4,7 +4,7 @@
 
 ## Quick Guide
 
-[En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md), [Sentences](LANG/ENGLISH/sentences.md)
+[En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md), [English Best Practice](LANG/ENGLISH/best_practice.md)
 
 ---
 
@@ -40,7 +40,7 @@
 ### [English](LANG/ENGLISH/README.md)
 
 - [En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md)
-- [Grammary](LANG/ENGLISH/grammary.md)
+- [Grammarly](LANG/ENGLISH/grammary.md)
 - [Sentences](LANG/ENGLISH/sentences.md)
 
 ### [Lua](LANG/LUA/README.md)
