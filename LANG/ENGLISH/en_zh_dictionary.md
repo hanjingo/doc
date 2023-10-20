@@ -37,10 +37,13 @@
 
 abandon `/əˈbændən/` 放弃，遗弃，抛弃，中止，放任，放纵
 
-> 近义词1（放弃）: desert, evacuate, for-sake, leave, quit, vacate, withdraw from.
-> 近义词2（遗弃）: drop, forsake, jilt, leave behind, leave in the lurch, maroon, renounce, repudiate, strand, wash your hands of.
-> 近义词3（放弃计划）: cancel, chuck in, discard, discontinue, ditch, drop, finish, forgo, give up, postpone, scrap.
-> 近义词4（放弃权力）: cede, drop, forfeit, forgo, give up, relinquish, renounce, resign, surrender, waive, yield.
+> 近义词(放弃): desert, evacuate, for-sake, leave, quit, vacate, withdraw from.
+> 
+> 近义词(遗弃): drop, forsake, jilt, leave behind, leave in the lurch, maroon, renounce, repudiate, strand, wash your hands of.
+> 
+> 近义词(放弃计划): cancel, chuck in, discard, discontinue, ditch, drop, finish, forgo, give up, postpone, scrap.
+> 
+> 近义词(放弃权力): cede, drop, forfeit, forgo, give up, relinquish, renounce, resign, surrender, waive, yield.
 
 abbreviation `/əˌbriːviˈeɪʃn/` 缩写，缩略，省略号
 
@@ -75,6 +78,10 @@ abrasive `/ə'breɪsɪv/` 磨料，磨损的，粗糙的
 abreast `/ə'brest/` 并肩地，跟上
 
 abridge `/əˈbrɪdʒ/` 删节，节略
+
+abridgement `/ə'brɪdʒmənt/` 节略，删节本，限制，缩短
+
+abrogate `/'æbrəɡeɪt/` 废除，取消
 
 abrupt `/ə'brʌpt/` 突然的，意外的，陡峭的
 
@@ -194,7 +201,7 @@ acyclic `/ˌeɪ'saɪklɪk/` 非循环的，无环的
 
 adage `/'ædɪdʒ/` 格言，谚语，古话
 
-adapt `/ə'dæpt/` 适应，适合，适配
+adapt `/ə'dæpt/` 适应，适合，适配，改变
 
 adaptive `/ə'dæptɪv/` 合适的，适应的
 
@@ -402,6 +409,8 @@ airtight `/'eətaɪt/` 密封的，不透气的，无懈可击的
 
 ajar `/əˈdʒɑː(r)/` 半开，微启
 
+adjust `/əˈdʒʌst/` 调整，调节，适应，习惯，校正，校准，使适应
+
 ### ak
 
 [回到A](#A)--[回到顶部](#英汉词典)
@@ -419,6 +428,8 @@ albeit `/ˌɔːl'biːɪt/` 虽然（即使）
 albino `/æl'biːnəʊ/` 白化的，白化病者
 
 album `/ˈalbəm/` 册子，歌曲专辑
+
+alchemist `/'ælkəmɪst/` 炼丹术士，炼金术士
 
 alchemy `/ˈælkəmi/` 炼金术，神秘力量，魔力
 
@@ -466,6 +477,8 @@ alloy `/'ælɔɪ/` 合金，掺杂质
 
 allure `/ə'lʊə(r)/` 诱惑，吸引，吸引力
 
+alluring `/ə'lʊərɪŋ/` 迷人的，诱惑的
+
 > 近义词: attract, beguile, bewitch, cajole, charm, coax, decoy, draw, entice, fascinate, inveigle, lead on, lure, magnetize, persuade, seduce, tempt.
 
 ally `/'ælaɪ/` 结盟，同盟国，伙伴
@@ -484,7 +497,7 @@ alphabetical `/ˌælfəˈbetɪkl/` 按字母顺序排列的，按字母表顺序
 
 alter `/ˈɔːltə/` 改变，更改
 
-> 近义词1（改）: adapt, ajust, amend, become different, convert, edit, emend, enlarge, make different, modify, reconstruct, reduce, reform, remake, remodel, reorganize, reshape, revise, transform, vary.
+> 近义词(改变，更改): adapt, adjust, amend, become different, convert, edit, emend, enlarge, make different, modify, reconstruct, reduce, reform, remake, remodel, reorganize, reshape, revise, transform, vary.
 
 alteration `/ˌɔːltə'reɪʃn/` 改变，变更
 
@@ -522,6 +535,8 @@ ameliorate `/ə'miːliəreɪt/` 改善，变好
 
 amenable `/əˈmiːnəbl/` 顺从的，愿意的
 
+amend `/ə'mend/` 修正，改进
+
 amends `/ə'mendz/` 赔偿，赔罪，补偿
 
 amendment `/əˈmendmənt/` 修订，改正，修正案
@@ -539,6 +554,8 @@ amino `/ə'miːnəʊ/` 氨基的
 among `/əˈmʌŋ/` 在...之内，在...之中
 
 amongst `/ə'mʌŋst/` 在...之中，在...之间
+
+amoral `/ˌeɪ'mɒrəl/` 与道德无关的，无从区分是非的
 
 amortize `/ə'mɔːtaɪz/` 分期偿还，摊还
 
@@ -652,6 +669,8 @@ annoy `/ə'nɔɪ/` 使恼怒，使烦恼，骚扰
 
 > 例句1: Used in every second or third sentence they may well draw too much attention and annoy the reader.
 
+annoyance `/ə'nɔɪəns/` 烦恼，生气，令人讨厌的人或事情
+
 annoying `/ə'nɒɪɪŋ/` 讨厌的，恼人的，使人烦恼的
 
 > 近义词: aggravating, displeasing, exasperating, galling, grating, irksome, irritating, jarring, maddening, offensive, provocative, provoking, tiresome, troublesome, trying, upsetting, vexatious, vexing, worrying.
@@ -662,7 +681,7 @@ annuitant `/ə'njʊɪtənt/` 领受养老金的人
 
 annuity `/ə'njuːəti/` 年金，养老金，年金保险
 
-annulling `/ə'nʌlɪŋ/` 取消，废除
+annul `/ə'nʌl/` 废除，消减，取消，宣告无效
 
 annum `/ˈænəm/`  年
 
@@ -720,9 +739,11 @@ appreciable `/əˈpriːʃəbl/` 可观的，可察觉到的
 
 appreciate `/ə'priːʃieɪt/` 感激，欣赏，赏识，增值
 
-> 近义词1(感激): admire, approve of, be grateful for, be senitive to, cherish, enjoy, esteem, like, prize, regard highly, respect, sympathize with, treasure, value, welcome.
-> 近义词2(了解): acknowledge, apprehend, comprehend, know, realize, recognize, see, understand.
-> 近义词3(涨价): build up, escalate, gain, go up, grow, improve, increase, inflate, mount, rise, soar, strengthen.
+> 近义词(感激): admire, approve of, be grateful for, be senitive to, cherish, enjoy, esteem, like, prize, regard highly, respect, sympathize with, treasure, value, welcome.
+> 
+> 近义词(了解): acknowledge, apprehend, comprehend, know, realize, recognize, see, understand.
+> 
+> 近义词(涨价): build up, escalate, gain, go up, grow, improve, increase, inflate, mount, rise, soar, strengthen.
 
 appreciation `/əˌpriːʃiˈeɪʃn/` 感激，鉴赏，欣赏，增值，理解
 
@@ -732,12 +753,18 @@ apprenticeship `/ə'prentɪʃɪp/` 学徒期，学徒身份
 
 approach `/əˈprəʊtʃ/` 靠近，接近，方法，方式，建议
 
-> 近义词1(靠近.n): advance, advent, arrival, coming, nearing.
-> 近义词2(通路.n): access, doorway, entrance, entry, passage, road, way in.
-> 近义词3(态度.n): attitude, course, manner, means, method, mode, procedure, style, system, technique, way.
-> 近义词4(接洽.n): appeal, application, invitation, offer, overture, proposal, proposition.
-> 近义词5(靠近.v): advance on, bear down on, catch up with, come near, draw near, gain on, move towards, near.
+> 近义词(靠近.n): advance, advent, arrival, coming, nearing.
+> 
+> 近义词(通路.n): access, doorway, entrance, entry, passage, road, way in.
+> 
+> 近义词(态度.n): attitude, course, manner, means, method, mode, procedure, style, system, technique, way.
+> 
+> 近义词(接洽.n): appeal, application, invitation, offer, overture, proposal, proposition.
+> 
+> 近义词(靠近.v): advance on, bear down on, catch up with, come near, draw near, gain on, move towards, near.
+> 
 > 近义词6(处理.v): begin, undertake.
+> 
 > 近义词7(向...接洽.v): contact.
 
 appropriate `/əˈprəʊpriət/`  合适的，恰当的，盗用，占用，侵吞，拨出（款项）
@@ -886,7 +913,9 @@ assertion `/ə'sɜːʃn/` 断言，主张，论断
 
 assembler `/ə'semblə(r)/` （计算机）汇编程序，装配工
 
-assessment `/əˈsesmənt/` 评估，估价，看法
+assess `/ə'ses/` 评定，评估，估算
+
+assessment `/əˈsesmənt/` 估价，看法
 
 asshole `/'æshəʊl/` 肛门，讨厌的人
 
@@ -935,6 +964,8 @@ astound `/əˈstaʊnd/` 震惊，令人惊骇
 astray `/ə'streɪ/` 迷途地，误入歧途的
 
 astronomer `/əˈstrɒnəmə(r)/` 天文学家
+
+astronomical `/ˌæstrə'nɒmɪkl/` 天文学的，巨大的
 
 astronomy `/ə'strɒnəmi/` 天文学
 
@@ -994,8 +1025,9 @@ attraction `/ə'trækʃn/` 吸引力
 
 attractive `/ə'træktɪv/` 有吸引力的，诱人的
 
-> 近义词1(有吸引力的): agreeable, alluring, adorable, appealing, artistic, beautiful, bewitching, bonny, captivating, charming, cute, desirable, enchanting, endearing, engaging, enticing, fascinating, fetching, glamorous, good-looking, gorgeous, handsome, hypnotic, interesting, inviting, irresistible, lovable, lovely, magnetic, personable, pleasant, pleasing, prepossessing, pretty, quaint, seductive, stunning, taking, tempting, winsome.
-> 近义词2(诱人的): enviable, sought after.
+> 近义词(有吸引力的): agreeable, alluring, adorable, appealing, artistic, beautiful, bewitching, bonny, captivating, charming, cute, desirable, enchanting, endearing, engaging, enticing, fascinating, fetching, glamorous, good-looking, gorgeous, handsome, hypnotic, interesting, inviting, irresistible, lovable, lovely, magnetic, personable, pleasant, pleasing, prepossessing, pretty, quaint, seductive, stunning, taking, tempting, winsome.
+> 
+> 近义词(诱人的): enviable, sought after.
 
 ### au
 
@@ -1601,6 +1633,8 @@ briar `/'braɪə(r)/` 荆棘，烟
 
 bribe `/braɪb/` 贿赂
 
+bribery `/'braɪbəri/` 受贿，行贿，贿络行为
+
 bribing `/bribing/` 贿赂
 
 brick `/brɪk/` 砖，砖块，砌砖
@@ -1611,7 +1645,7 @@ brickmaker `/b'rɪkmeɪkə/` 制砖工
 
 bridle `/ˈbraɪdl/` 缰绳，马笼头，约束，束缚
 
-brief `/briːf/` 摘要，简述，短暂的，简短的
+brief `/briːf/` 摘要，简述，短暂的，简短的，概要的
 
 brigade `/brɪ'ɡeɪd/` 旅，队，组，组队，编组
 
@@ -1921,9 +1955,11 @@ cast `/kɑːst/` 铸造，铸件，投射，抛，投
 
 casual `/ˈkaʒʊ(ə)l/` 偶然的，随意的，漫不经心的，临时工
 
-> 近义词1(偶然的): accidental, chance, fortuitous, incidental, random, unexpected, unforeseen, unintentional, unplanned, unpremeditated.
-> 近义词2(随便的): apathetic, blase, careless, couldn't-care-less, easy-going, free-and-easy, lackadaisical, laid back, lax, negligent, nonchalant, offhand, relaxed, slap-happy, throwaway, unconcerned, unenthusiastic, unimportant, unprofessional.
-> 近义词3(非正式的): informal.
+> 近义词(偶然的): accidental, chance, fortuitous, incidental, random, unexpected, unforeseen, unintentional, unplanned, unpremeditated.
+> 
+> 近义词(随便的): apathetic, blase, careless, couldn't-care-less, easy-going, free-and-easy, lackadaisical, laid back, lax, negligent, nonchalant, offhand, relaxed, slap-happy, throwaway, unconcerned, unenthusiastic, unimportant, unprofessional.
+> 
+> 近义词(非正式的): informal.
 
 catalan `/'kætəlæn/` 加泰罗尼亚
 
@@ -1979,6 +2015,8 @@ caveat `/ˈkæviæt/` 警告，告诫
 
 cease `/siːs/` 终止，停止
 
+cede `/siːd/` 割让(领土/权利)，放弃
+
 ceiling `/'siːlɪŋ/` 天花板，上限
 
 celebrated `/ˈselɪbreɪtɪd/` 著名的，庆祝
@@ -2010,6 +2048,8 @@ centre `/'sentə(r)/` 中心，居中，中央
 centric `/'sentrɪk/` 中心的，中央的
 
 cereal `/'sɪəriəl/` 麦片粥，谷类的，谷物的
+
+cerebral `/'serəbrəl/` 大脑的，理智的
 
 ceremony `/ˈserəməni/` 典礼，仪式，礼节，宗教仪式
 
@@ -2121,6 +2161,8 @@ chorus `/ˈkɔːrəs/` 副歌，合唱曲，合唱
 
 chow `/tʃaʊ/` 食物，吃，中国黑鼻狗
 
+chromatic `/krə'mætɪk/` 彩色的，着色的，染色质的，半音阶的，变音的，变音体系的
+
 chrome `/krəʊm/` 铬，铬合金
 
 chromo `/krəʊməʊ/` 多彩石印版
@@ -2138,6 +2180,8 @@ christian `/'krɪstʃən/` 基督徒
 christopher `/'kristəfə/` （名字）克里斯托弗
 
 chubby `/ˈtʃʌb.i/` 胖乎乎的
+
+chuck `/tʃʌk/` 抛掷，卡盘，咯咯声，扔，抛掷，撵走，咯咯叫
 
 chunk `/tʃʌŋk/` 大块，段
 
@@ -2201,8 +2245,9 @@ civilize `/'sɪvəlaɪz/` 使开化，使文明
 
 claim `/kleɪm/` 声称，断言，要求
 
-> 近义词1(要求): ask for, collect, demand, exact, insist on, request, require, take.
-> 近义词2(声称): affirm, allege, argue, assert, attest, contend, declare, insist, maintain, pretend, profess, state.
+> 近义词(要求): ask for, collect, demand, exact, insist on, request, require, take.
+> 
+> 近义词(声称): affirm, allege, argue, assert, attest, contend, declare, insist, maintain, pretend, profess, state.
 
 clam `/klæm/` 蛤，蛤蜊，沉默寡言的人
 
@@ -2480,6 +2525,8 @@ competent `/'kɒmpɪtənt/` 有能力的，足够地，胜任的
 
 competitor `/kəm'petɪtə(r)/` 竞争者，对手
 
+> 近义词：adversary，counterpart，opponent，rival
+
 compilation `/ˌkɒmpɪ'leɪʃn/` 汇集，编写，编辑
 
 compile `/kəmˈpaɪl/` 汇编，收集，编撰
@@ -2528,9 +2575,11 @@ composed `/kəm'pəʊzd/` 镇静的，沉着的，由...组成的
 
 compound `/'kɒmpaʊnd/` 化合物，复合物，混合，调和，院子
 
-> 近义词1(noun.复合物): alloy, amalgam, blend, combination, composite, composition, fusion, synthesis.
-> 近义词2(noun.围住的场地): corral, enclosure, pen, run.
-> 近义词3(verb.使更坏): aggravate, complicate.
+> 近义词(noun.复合物): alloy, amalgam, blend, combination, composite, composition, fusion, synthesis.
+> 
+> 近义词(noun.围住的场地): corral, enclosure, pen, run.
+> 
+> 近义词(verb.使更坏): aggravate, complicate.
 
 composite `/ˈkɒmpəzɪt/` 合成的，合成物，混合物
 
@@ -2590,11 +2639,15 @@ concrete `/ˈkɒŋkriːt/` 具体的，实体的，混凝土，水泥，实质�
 
 concurrent `/kən'kʌrənt/` 同时发生的
 
+condensation `/ˌkɒnden'seɪʃn/` 浓缩，凝结，液滴
+
 condenser `/kənˈdensə(r)/` 冷凝器，（汽车发动机）电容器
 
 condescend `/ˌkɒndɪ'send/` 屈尊
 
 condor `/ˈkɒndɔː(r)/` 神鹰，秃鹫
+
+conducive `/kən'djuːsɪv/` 有助的，有益的
 
 conduct `/kən'dʌkt/` 行为，举动，品行，引导，指挥，管理，导热，导电
 
@@ -2792,11 +2845,15 @@ conjunction `/kən'dʒʌŋkʃn/` 结合，关联，连词，(事件等的)同时
 
 conjunctive `/kən'dʒʌŋktɪv/` 连结的，结合的，连接词
 
+conjure `/'kʌndʒə/` 变戏法，恳求，唤起，以咒文召唤
+
 conquer `/'kɒŋkə(r)/` 征服，克服，得胜
 
-> 近义词1(征服): annex, capture, occupy, overrun, possess, quell, seize, subject, subjugate, take, win.
-> 近义词2(打败，克服): beat, best, checkmate, crush, defeat, get the better of, humble, lick, master, outdo, overcome, overpower, overthrow, overwhelm, rout, silence, subdue, succeed against, thrash, triumph over, vanquish, worst.
-> 近义词3(攀登...成功): climb, reach the top of.
+> 近义词(征服): annex, capture, occupy, overrun, possess, quell, seize, subject, subjugate, take, win.
+> 
+> 近义词(打败，克服): beat, best, checkmate, crush, defeat, get the better of, humble, lick, master, outdo, overcome, overpower, overthrow, overwhelm, rout, silence, subdue, succeed against, thrash, triumph over, vanquish, worst.
+> 
+> 近义词(攀登...成功): climb, reach the top of.
 
 conqueror `/'kɒŋkərə/` 征服者，胜利者
 
@@ -3048,6 +3105,8 @@ crafty `/'krɑːfti/` 狡猾的，熟练的，巧妙地
 
 cram `/kræm/` 塞满，挤满
 
+cramm `/k'ræm/` 塞入，填入，塞满，撒谎
+
 crammed `/kræmd/` 塞满的，挤满的
 
 cramped `/kræmpt/` 狭窄的，束缚的，难认的
@@ -3129,6 +3188,8 @@ crusader `/kruː'seɪdə(r)/` 十字军战士，改革者
 crush `/krʌʃ/` 压碎，击败，使...失望，折皱，压榨
 
 crusher `/'krʌʃə(r)/` 压碎器，打击
+
+crust `/krʌst/` 外壳，坚硬的外壳，面包皮，结硬皮
 
 cryptic `/'krɪptɪk/` 隐秘的，秘密的，用密码的，隐晦的
 
@@ -3300,6 +3361,8 @@ dazzling `/ˈdæzlɪŋ/` 耀眼的，灿烂的，辉煌的
 
 dearer `/dɪə(r)/` 亲爱的，宝贵的，昂贵的，哎呀
 
+dearest `/'dɪərɪst/` 最亲爱的，最可爱的
+
 dearth `/dɜːθ/` 缺乏，粮食不足
 
 deassert `/diːə'sɜːt/` 解除认定
@@ -3364,9 +3427,11 @@ decoy `/'diːkɔɪ/` 诱饵，引诱
 
 decrease `/dɪ'kriːs/` 减少，降低
 
-> 近义词1(减少.noun): constraction, cut, cut-bak, decl;ine, diminuendo, downturn, drop, fall, falling off, reduction.
-> 近义词2(减低.verb): abate, curtail, cut, lessen, lower, reduce, slacken.
-> 近义词3(降低.verb): contract, decl;ine, die away, diminish, dwindle, fall off, lessen, peter out, shrink, slim down, subside, tail off, taper off, wane
+> 近义词(减少.noun): constraction, cut, cut-bak, decl;ine, diminuendo, downturn, drop, fall, falling off, reduction.
+> 
+> 近义词(减低.verb): abate, curtail, cut, lessen, lower, reduce, slacken.
+> 
+> 近义词(降低.verb): contract, decl;ine, die away, diminish, dwindle, fall off, lessen, peter out, shrink, slim down, subside, tail off, taper off, wane
 
 decrement `/'dekrɪmənt/` 减少，减量，负增长
 
@@ -3465,6 +3530,8 @@ delightful `/dɪ'laɪtfl/` 令人愉快的，可喜的
 delimit `/di'lɪmɪt/` 界定，划界
 
 delimiter `/dɪˈlɪmɪt/` 分隔符，定界符
+
+delineate `/dɪ'lɪnieɪt/` 描绘，叙述，画出
 
 delinquency `/dɪ'lɪŋkwənsi/` （少年）犯罪，失职
 
@@ -3596,6 +3663,8 @@ despotical `/de'spɒtɪkəl/` 暴君的，专横的
 
 dessert `/dɪˈzɜːt/` 甜点
 
+desert `/'dezət/` 遗弃，离弃，放弃，擅离职守，沙漠，荒地，应得
+
 deserve `/dɪ'zɜːv/` 应受，值得
 
 destabilise `/diː'steɪbɪlaɪz/` 动摇，使...不稳定
@@ -3624,7 +3693,11 @@ determinism `/dɪ'tɜːmɪnɪzəm/` 决定性，决定论，宿命
 
 deterministic `/dɪˌtɜːmɪ'nɪstɪk/` 确定的，宿命的
 
+deterrent `/dɪ'terənt/` 威慑的，威慑物，妨碍物，障碍
+
 detestable `/dɪ'testəbl/` 可憎的，令人厌恶的
+
+detonate `/'detəneɪt/` 使爆炸，使爆裂，爆炸，发爆炸声
 
 detour `/'diːtʊə(r)/` 绕路，便道
 
@@ -3680,6 +3753,8 @@ dialogue `/'daɪəlɒɡ/` 对话
 
 diameter `/daɪˈæmɪtər/` 直径
 
+diatonic `/ˌdaɪə'tɒnɪk/` 自然音阶的，全音阶的
+
 diophantine `/.dɑiə'fæntɑin/` （数学）丢番图
 
 dioxide `/daɪ'ɒksaɪd/` 二氧化物
@@ -3713,6 +3788,8 @@ disentanglement `/ˌdɪsɪn'tæŋgəlmənt/` 解开，解脱
 disfranchise `/ˌdɪs'fræntʃaɪz/` 剥夺...权力
 
 dishearten `/dɪs'hɑːtn/` 使沮丧，使泄气
+
+dishonesty `/dɪs'ɒnɪstiː/` 不诚实，不法行为
 
 dishonour `/dɪs'ɒnə(r)/` 耻辱，丢脸，拒付
 
@@ -4045,6 +4122,8 @@ doll `/dɒl/` 玩偶，玩具娃娃
 domain `/də'meɪn/` 域，领地，领域，范围
 
 domestic `/də'mestɪk/` 家庭的，国内的，驯养的，佣人，家仆
+
+domicile `/'dɒmɪsaɪl/` 住所，住宅
 
 dominance `/'dɒmɪnəns/` 优势，支配地位，控制力
 
@@ -4426,6 +4505,8 @@ embrace `/ɪmˈbreɪs/` 拥抱，悻然接受，信奉，包括
 
 embroider `/ɪmˈbrɔɪdə(r)/` 刺绣，绣花，润色，渲染
 
+emend `/i'mend/` 修订，校订
+
 emerge `/iˈmɜːdʒ/` 浮现，显现，新兴的，漏出，暴露
 
 emigration `/ˌemɪ'ɡreɪʃn/` 移民
@@ -4434,8 +4515,9 @@ eminence `/ˈemɪnəns/` 卓越，显赫
 
 eminent `/'emɪnənt/` 著名的，卓越的，显著的
 
-> 近义词1(著名的.adj): august, celebrated, distinguished, esteemed, familiar, famous, great, illustrious, important, notable, noteworthy, renowned, well-known.
-> 近义词2(显著的.adj): conspicuous, elevated, high, noticeable, obvious, outstanding, prominent, visible.
+> 近义词(著名的.adj): august, celebrated, distinguished, esteemed, familiar, famous, great, illustrious, important, notable, noteworthy, renowned, well-known.
+> 
+> 近义词(显著的.adj): conspicuous, elevated, high, noticeable, obvious, outstanding, prominent, visible.
 
 emission `/i'mɪʃn/` 散发，发行，排放
 
@@ -4465,6 +4547,8 @@ emulation `/ˌemju'leɪʃn/` 竞争，效法，追赶
 
 enabling `/ɪ'neɪbl/` 使能够，使可能
 
+enact `/ɪ'nækt/` 制定法律，扮演
+
 enactment `/ɪˈnæktmənt/` 制定，通过，颁布，法律，法规
 
 encapsulate `/ɪnˈkæpsjuleɪt/` 概括，压缩，简述，装入胶囊，包装
@@ -4483,14 +4567,17 @@ encompass `/ɪnˈkʌmpəs/` 包含，包围
 
 encounter `/ɪnˈkaʊntə(r)/` 邂逅，偶遇，遭遇
 
-> 近义词1(相遇): meeting, be bombarded by, be confronted by.
-> 近义词2(冲突): battle, brush, clash, collision, confrontation, dispute.
+> 近义词(相遇): meeting, be bombarded by, be confronted by.
+> 
+> 近义词(冲突): battle, brush, clash, collision, confrontation, dispute.
 
 encouraged `/ɪn'kʌrɪdʒd/` 鼓励，被鼓励的，促进，支持
 
 encroach `/ɪn'krəʊtʃ/` 侵占，侵犯，侵害
 
 encroachment `/ɪn'krəʊtʃmənt/` 侵蚀，侵犯
+
+encrustation `/ˌenkrʌ'steɪʃn/` 污垢，硬壳，表面装饰
 
 encumber `/ɪn'kʌmbə(r)/` 妨害，阻害
 
@@ -4616,11 +4703,13 @@ epic `/ˈepɪk/` 史诗的，壮丽的，壮举
 
 epidemic `/ˌepɪˈdemɪk/` 流行病，流行性的，传染的
 
+epilog `/'epɪˌlɒg/` 尾声，后记，跋
+
 episode `/'epɪsəʊd/` 插曲，一段情节，片段，轶事
 
 epistolary `/ɪ'pɪstələri/` 书信的，用书信的，书信体的
 
-epilog `/'epɪˌlɒg/` 尾声，后记，跋
+epitomize `/ɪ'pɪtəmaɪz/` 摘要，概括，成为 ... 的缩影，作为典范
 
 ### eq
 
@@ -4656,7 +4745,13 @@ eradicate `/ɪˈrædɪkeɪt/` 根除，消灭，杜绝
 
 erasable `/ɪ'reɪsəbl/` 可消除的，可抹去的
 
+err `/ɜː(r)/` 犯错，做错
+
 errata `/e'rɑːtə/` 勘误
+
+erratum `/ɛˈrɑːtəm/` 文字错误，勘误表，书中的文字错误
+
+erroneous `/ɪˈrəʊnɪəs/` 错误的
 
 erect `/ɪˈrekt/` 建造，建立，垂直的，竖立的
 
@@ -4665,10 +4760,6 @@ erection `/ɪ'rekʃ(ə)n/` 直立，建造，建筑物，勃起
 ergonomics `/ˌɜːɡə'nɒmɪks/` 人类工程学，工作环境改造学
 
 erode `/ɪˈrəʊd/` 腐蚀，侵蚀，风化，削弱，损害
-
-erratum `/ɛˈrɑːtəm/` 文字错误，勘误表，书中的文字错误
-
-erroneous `/ɪˈrəʊnɪəs/` 错误的
 
 ### es
 
@@ -4700,9 +4791,11 @@ esthetic `/es'θetɪk/` 审美观，审美的，美学，美学的
 
 estimate `/'estɪmət/` 估计，估价，评价
 
-> 近义词1(估量.n): appraisal, assessment, conjecture, estimation, evaluation, guess, judgement, opinion, surmise.
-> 近义词2(估价.n): guesstimate, price, quotation, reckoning, specification, valuation.
-> 近义词3(估计.v): appraise, assess, calculate, compute, conjecture, consider, count up, evaluate, gauge, guess, judge, project, reckon, surmise, think out, weigh up, work out.
+> 近义词(估量.n): appraisal, assessment, conjecture, estimation, evaluation, guess, judgement, opinion, surmise.
+> 
+> 近义词(估价.n): guesstimate, price, quotation, reckoning, specification, valuation.
+> 
+> 近义词(估计.v): appraise, assess, calculate, compute, conjecture, consider, count up, evaluate, gauge, guess, judge, project, reckon, surmise, think out, weigh up, work out.
 
 estimation `/ˌestɪ'meɪʃn/` 判断，估计
 
@@ -4742,6 +4835,8 @@ euxine `/'ɜːziːn/` 黑色的
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
+evacuate `/ɪ'vækjueɪt/` 疏散，撤出，排泄
+
 evacuation `/ɪˌvækju'eɪʃn/` 撤离，疏散，排泄，排泄物
 
 evade `/ɪ'veɪd/` 逃避，躲避，规避
@@ -4754,9 +4849,11 @@ evenly `/'iːvnli/` 平衡的，平坦的，平等的
 
 eventually `/ɪˈventʃuəli/` 最后，终于
 
-evergrande `//` （地产开放商）恒大
+evergrande （地产开发商）恒大
 
 evergreen `/'evəɡriːn/` 常绿的，常绿植物
+
+everlasting `/ˌevə'lɑːstɪŋ/` 永恒的，持久的，无止境的，（大写Everlasting）上帝
 
 evict `/ɪ'vɪkt/` 驱逐，驱赶，依法收回
 
@@ -4810,9 +4907,11 @@ excess `/ɪkˈses/` 过量的，额外的，过度的，额外
 
 excessive `/ɪk'sesɪv/` 过分的，过多的
 
-> 近义词1(过分的): disproportionate, exaggerated, extreme, fanatical, great, immoderate, inordinate, intemperate, needless, overdone, profuse, undue, unnecessary.
-> 近义词2(过多的): extravagant, huge, prodigal, profligate, superfluous, unneeded, wasteful, moderate.
-> 近义词3(过高的): exorbitant extortionate, unrealistic, unreasonable
+> 近义词(过分的): disproportionate, exaggerated, extreme, fanatical, great, immoderate, inordinate, intemperate, needless, overdone, profuse, undue, unnecessary.
+> 
+> 近义词(过多的): extravagant, huge, prodigal, profligate, superfluous, unneeded, wasteful, moderate.
+> 
+> 近义词(过高的): exorbitant extortionate, unrealistic, unreasonable
 
 exchequer `/ɪks'tʃekə(r)/` 国库，英国财政部
 
@@ -4833,6 +4932,8 @@ exclusive `/ɪkˈskluːsɪv/` 专有的，独占的，专有的，排外的，�
 executioner `/ˌeksɪ'kjuːʃənə(r)/` 侩子手
 
 exemplary `/ɪɡˈzempləri/` 模范的，典范的，惩戒性的
+
+exemplify `/ɪɡ'zemplɪfaɪ/` 例证，示范
 
 exempt `/ɪɡˈzempt/` 豁免，免除，免税
 
@@ -4941,6 +5042,8 @@ extensive `/ɪkˈstensɪv/` 广阔的，广泛的
 extent `/ɪk'stent/` 广阔，宽度，长度，大小，范围
 
 exterior `/ɪk'stɪəriə(r)/` 外部，外表，，外景
+
+exterminate `/ɪk'stɜːmɪneɪt/` 消灭，扑灭，根绝
 
 external `/ɪkˈstɜːnl/` 外部，外界，外来的
 
@@ -5076,6 +5179,8 @@ fanfare `/'fænfeə(r)/` 炫耀，仪式上用的短曲
 
 fangle `/'fæŋgəl/` 新发明，新款式，新鲜事物
 
+fanatic `/fə'nætɪk/` 狂热者，极端分子，盲信者
+
 farad `/'færæd/` （电容单位）法拉
 
 farce `/fɑːs/` 闹剧，胡闹
@@ -5140,6 +5245,8 @@ feast `/fiːst/` 宴会，酒席，享乐，请客
 
 february `/'februəri/` 二月（简写Feb）
 
+fed `/fed/` （feed的过去式和过去分词）喂养，（美国口音）联邦政府官员
+
 fee `/fiː/` 费用，酬金
 
 feedback `/ˈfiːdbak/` 反馈，反馈信息
@@ -5158,7 +5265,7 @@ feminism `/'femənɪzəm/` 女权主义，争取女权运动
 
 feminist `/ˈfemənɪst/` 女权主义者，女权运动者
 
-femtofarad `//` （电容单位）微法拉
+femtofarad （电容单位）微法拉
 
 fence `/fens/` 栅栏，篱笆，束缚，击剑，回避
 
@@ -5422,6 +5529,8 @@ foresaw `/fɔː'sɔː/` foresee的过去式
 
 foresee `/fɔːˈsiː/` 预料，预见，预知
 
+foreseeable `/fɔː'siːəbl/` 可预见到的
+
 foresight `/ˈfɔːsaɪt/` 远见，深谋远虑
 
 forest `/ˈfɒrɪst/` 森林
@@ -5480,7 +5589,7 @@ fort `/fɔːt/` 要塞，堡垒，城堡，军营
 
 forth `/fɔːθ/` 向前，向外
 
-fortified `/'fɔːtɪfaɪd/` 加强的
+fortify `/'fɔːtɪfaɪ/` 加强，增强，筑防御工事于，（物质或精神上）支持或鼓励
 
 fortune `/'fɔːtʃuːn/` 命运，财产，运气
 
@@ -5777,6 +5886,8 @@ gesture `/'dʒestʃə(r)/` 手势，姿势
 ### gi
 
 [回到G](#G)--[回到顶部](#英汉词典)
+
+giant `/'dʒaɪənt/` 巨人，巨物，大公司，巨大的
 
 gibberish `/'dʒɪbərɪʃ/` 莫名其妙的话，胡言乱语
 
@@ -6158,6 +6269,8 @@ haste `/heɪst/` 匆忙，赶快
 
 hastily `/'heɪstɪli/` 匆忙地，急速地
 
+hasty `/'heɪsti/` 匆匆的，轻率的，急忙的
+
 hatch `/hætʃ/` 孵出，破壳，舱口，舱门
 
 hatred `/'heɪtrɪd/` 仇恨，憎恨，敌意，怨恨
@@ -6173,6 +6286,8 @@ havoc `/'hævək/` 破坏，混乱
 hawker `/'hɔːkə(r)/` 沿街叫卖的小贩
 
 hazard `/ˈhæzəd/` 公害，危险，冒险
+
+hazardous `/'hæzədəs/` 危险的，冒险的，碰运气的
 
 haze `/heɪz/` 薄雾，雾气，烟雾，疑惑
 
@@ -6622,6 +6737,8 @@ imitation `/ˌɪmɪ'teɪʃn/` 模仿，冒充，假造的
 
 immediate `/ɪ'miːdiət/` 直接的，最接近的，利己的，目前的
 
+immemorial `/ˌɪmə'mɔːriəl/` 远古的，极古的，久远的
+
 immense `/ɪˈmens/` 巨大的，极大的
 
 immigrant `/ˈɪmɪɡrənt/` 移民，外侨
@@ -6667,6 +6784,8 @@ impertinence `/ɪm'pɜːtɪnəns/` 无礼，鲁莽，不恰当
 impertinent `/ɪm'pɜːtɪnənt/` 鲁莽的，无礼的，粗鲁的，离题的
 
 impetus `/ˈɪmpɪtəs/` 推力，动力，惯性
+
+impinge `/ɪm'pɪndʒ/` 撞击，打击，侵犯，对...有影响
 
 implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
 
@@ -6740,6 +6859,8 @@ inbound `/'ɪnbaʊnd/` 归本国的，回内地的，入境的，入站
 
 incapable `/ɪnˈkeɪpəbl/` 不能克制的，没有能力的
 
+incarnate `/ɪn'kɑːnət/` 体现，使 ... 具体化，化身的，人体化的
+
 incarnation `/ˌɪnkɑːˈneɪʃn/` 体现，生命，肉身，（生活中的）特殊阶段
 
 incense `/ˈɪnsens/` 熏香，焚香，激怒
@@ -6770,8 +6891,9 @@ inclosure `/ɪn'kləʊʒə/` 围笼，附件
 
 include `/ɪn'kluːd/` 包含，包括
 
-> 近义词1(包含): blend in, combine, comprise, consist of, contain, embody, encompass, incorporate, involve, make room for, mix, subsume, take in.
-> 近义词2(包括): add in, allow for, cover, take into account.
+> 近义词(包含): blend in, combine, comprise, consist of, contain, embody, encompass, incorporate, involve, make room for, mix, subsume, take in.
+> 
+> 近义词(包括): add in, allow for, cover, take into account.
 
 inclusion `/ɪnˈkluːʒn/` 包括，被包括的项目
 
@@ -7245,8 +7367,9 @@ intimacy `/ˈɪntɪməsi/` 亲密，密切，性行为
 
 intimate `/'ɪntɪmət/` 亲密的，私人的，暗示，透露
 
-> 近义词1(亲密的): affectionate, close, familiar, friendly, informal, loving, sexual.
-> 近义词2(私人的): confidential, detailed, exhaustive, personal, private, secret.
+> 近义词(亲密的): affectionate, close, familiar, friendly, informal, loving, sexual.
+> 
+> 近义词(私人的): confidential, detailed, exhaustive, personal, private, secret.
 
 intimidating `/ɪn'tɪmɪdeɪtɪŋ/` 威胁的，咄咄逼人的
 
@@ -7365,6 +7488,8 @@ irish `/'aɪrɪʃ/` 爱尔兰
 ironic `/aɪˈrɒnɪk/` 讽刺的，反话的
 
 ironically `/aɪ'rɒnɪkli/` 讽刺地，说反话地
+
+irony `/'aɪrəni/` 反讽，讽剌之事
 
 irreducibility `/ɪrɪdjuːsə'bɪlɪtɪ/` （数学）不可约性
 
@@ -7497,6 +7622,8 @@ jeweller `/'dʒuːələ(r)/` 珠宝商，宝石匠人
 ### ji
 
 [回到J](#J)--[回到顶部](#英汉词典)
+
+jilt `/dʒɪlt/` 抛弃，遗弃(情人或恋人)，负心人
 
 jitter `/'dʒɪtə/` 振动，紧张
 
@@ -7758,6 +7885,10 @@ lace `/leɪs/` 鞋带，花边，缎带
 
 lack `/læk/` 缺乏，不足
 
+ladder `/'lædə(r)/` 阶梯，梯子，梯状物
+
+> 例句: He put up the ladder and climbed to the loft.
+
 laden `/'leɪdn/` 装载，装货，装满的，负担重的
 
 > 例句: Controversial issues laden with feelings--abortion, politics, religions.
@@ -7980,6 +8111,8 @@ likelihood `/'laɪklihʊd/` 可能性
 
 likewise `/ˈlaɪkwaɪz/` 同样的，类似的，此外
 
+limb `/lɪm/` 肢体，枝干，树枝，肢解
+
 limelight `/ˈlaɪmlaɪt/` 众人注意的中心
 
 limestone `/ˈlaɪmstəʊn/` 石灰石，石灰岩
@@ -8088,6 +8221,8 @@ logistic `/ləˈdʒɪstək(ə)l/` 物流的，后勤的
 
 loneliness `/'ləʊnlinəs/` 孤独，寂寞
 
+longevity `/lɒn'dʒevəti/` 长寿，寿命
+
 loom `/luːm/` 织布机，逼近，耸然出现
 
 loon `/luːn/` 鱼鹰
@@ -8147,6 +8282,8 @@ lull `/lʌl/` 平静，放松，缓和，减弱
 lumber `/ˈlʌmbər/` 木材，废旧家具，拖累，缓慢移动
 
 lump `/lʌmp/` 团，块，归并，瘤
+
+lurch `/lɜːtʃ/` 举步蹒跚，突然倾斜，猛地一跳(或动)
 
 lure `/ljɔː/` 诱饵，诱惑，引诱，（钓鱼）路亚
 
@@ -8220,6 +8357,8 @@ makespan `/meɪks'pæn/` 最大完工时间
 
 makeup `/ˈmeɪkʌp/` 化妆品，天性，性格
 
+malady `/'mælədi/` 病，疾病，弊病
+
 malfunction `/ˌmæl'fʌŋkʃn/` 故障，失灵，发生故障，不起作用
 
 malice `/'mælɪs/` 恶意，怨恨，蓄意
@@ -8286,6 +8425,8 @@ manuring `/manuring/` 施肥
 
 manuscript `/ˈmanjʊskrɪpt/` 手抄本，手稿，原稿
 
+manyfold `/'menɪfəʊld/` 许多倍地
+
 marble `/ˈmɑːbl/` 大理石，玻璃弹子
 
 march `/mɑːtʃ/` 三月（简写Mar），行军，前进，游行示威，进行曲
@@ -8297,6 +8438,8 @@ maritime `/'mærɪtaɪm/` 海上的，海事的
 margin `/ˈmɑːdʒɪn/` 边缘，书页白边，差额，幅度
 
 marginal `/'mɑːdʒɪnl/` 边缘的，编辑的，微小的
+
+maroon `/mə'ruːn/` 褐红色的，鞭炮，被放逐到孤岛的人，闲荡
 
 martial `/ˈmɑːʃl/` 军事的，军乐
 
@@ -8329,6 +8472,8 @@ mate `/meɪt/` 朋友，伙伴，同事，配偶，交配
 materialism `/mə'tɪəriəlɪzəm/` 唯物主义，唯物论，实利主义
 
 materially `/mə'tɪəriəli/` 物质上，实质性地，重大地
+
+maternal `/mə'tɜːnl/` 母亲的，母系的，母方的，母性的
 
 maternity `/mə'tɜːnəti/` 母性，母亲身份，产科病房
 
@@ -8402,6 +8547,8 @@ mediator `/'miːdieɪtə(r)/` 调解人，介质
 
 medieval `/ˌmediˈiːvl/` 中世纪，中古时代的
 
+mediocre `/ˌmiːdi'əʊkə(r)/` 平庸的，平凡的
+
 mediocrity `/ˌmiːdi'ɒkrəti/` 平常，平庸之才
 
 mediterranean `/ˌmedɪtə'reɪniən/` 地中海，地中海的
@@ -8448,7 +8595,7 @@ merger `/'mɜːdʒə(r)/` 合并
 
 merit `/ˈmerɪt/` 优点，价值，功绩，值得
 
-merrier `/'meri/` 愉快的，欢乐的，<口>微醉的
+merrier `/'meri/` 愉快的，欢乐的，（口语）微醉的
 
 merrily `/'merəli/` 欢乐的，愉快的
 
@@ -8582,7 +8729,7 @@ misconceive `/ˌmɪskən'siːv/` 误解
 
 misconception `/ˌmɪskənˈsɛpʃn/` 错误观念
 
-misconduct `/ˌmɪsˈkɒndʌkt/`  行为失当，行为不端，失职
+misconduct `/ˌmɪsˈkɒndʌkt/` 行为失当，行为不端，失职
 
 misdemeanor `/ˌmɪsdɪ'miːnə/` 轻罪，不正当行为
 
@@ -9380,6 +9527,8 @@ omit `/ə(ʊ)ˈmɪt/` 删掉，漏掉，省略，遗漏
 
 omitted `/əʊ'mɪtɪd/` 省略了的
 
+omnipotent `/ɒm'nɪpətənt/` 全能的，无所不能的
+
 omnipresence `/ˌɒmnɪ'prezns/` 无处不在，遍布
 
 omnipresent `/ˌɒmnɪ'preznt/` 无处不在的
@@ -9522,6 +9671,8 @@ ostentation `/ˌɒsten'teɪʃn/` 卖弄，炫耀，摆阔
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
+outdo `/ˌaʊt'duː/` 超过，胜过
+
 ought `/ɔːt/` 应该，应当，本该
 
 ounce `/aʊns/` 盎司
@@ -9545,6 +9696,8 @@ outfit `/'aʊtfɪt/` 配备，供应，用具，机构
 outgrow `/ˌaʊtˈɡrəʊ/` 长大，长的比...大
 
 outlet `/ˈaʊtlet/` 出口，出路，销路，电源插座，宣泄口
+
+outline `/'aʊtlaɪn/` 大纲，轮廓，概述，画出轮廓
 
 outlive `/ˌaʊt'lɪv/` 活得比...久，比...耐久
 
@@ -9609,6 +9762,8 @@ overnight `/ˌəʊvəˈnʌɪt/` 一晚上，整晚，夜间的，过夜的
 overran `/ˌəʊvə'ræn/` 超过，越过
 
 overrun `/ˌəʊvə'rʌn/` 超越，侵占，泛滥
+
+oversea `/ˌəʊvə'siː/` 海外的，在海外
 
 oversee `/ˌəʊvəˈsiː/` 监督，监视，偷看到
 
@@ -9822,6 +9977,8 @@ patch `/pætʃ/` 修补，掩饰，解决，补丁，眼罩，小片，膏药
 
 patent `/ˈpætnt/` 专利权，专利证书
 
+paternal `/pə'tɜːnl/` 父亲的，似父亲的，得自父亲的
+
 pathfinder `/'pɑːθfaɪndə(r)/` 探路者
 
 pathological `/ˌpæθə'lɒdʒɪkl/` 病态的，病理学的
@@ -9996,11 +10153,15 @@ perpetuity `/ˌpɜːpə'tjuːəti/` 永恒，永久，永久年金
 
 perplex `/pəˈpleks/` 困惑，迷惑
 
+perseverance `/ˌpɜːsɪ'vɪərəns/` 不屈不挠，毅力，坚韧不拔
+
 persist `/pəˈsɪst/`  坚持，维持
 
 persistence `/pə'sɪstəns/` 坚持，毅力
 
 persistent `/pə'sɪstənt/` 坚持的，连续的，固执的
+
+personify `/pə'sɒnɪfaɪ/` 拟人化，使人格化，是…的典型，是…的化身，表现
 
 perspective `/pə'spektɪv/` 角度，远景，看法，透视
 
@@ -10045,6 +10206,8 @@ petrified `/'petrɪfaɪd/` 惊呆的，石化的
 petrol `/'petrəl/` （英）汽油
 
 petroleum `/pəˈtrəʊliəm/` 石油，原油
+
+petty `/'peti/` 小的，琐碎的，次要的，狭隘的
 
 pewter `/'pjuːtə(r)/` 铅锡锑合金，铅锡锑合金器皿
 
@@ -10264,6 +10427,8 @@ poacher `/'pəʊtʃə(r)/` 偷猎者，蒸锅
 
 podcast `/'pɒdkɑːst/` 播客，发表博客
 
+podium `/'pəʊdiəm/` 讲台，（乐队）指挥台，建筑物的墩座，矮墙，（生物）管足
+
 poem `/ˈpəʊɪm/` 诗
 
 poetry `/'pəʊətri/` 诗歌，诗意，诗集
@@ -10447,6 +10612,8 @@ preceding `/prɪ'siːdɪŋ/` 在前的，先前的
 precious `/ˈpreʃəs/` 宝贝，宝贵的，珍贵的
 
 precipitate `/prɪˈsɪpɪteɪt/` 加速，促成，沉淀物，鲁莽的，草率的，仓促的
+
+precis `/'preɪsiː/` 摘要，大纲
 
 precise `/prɪˈsaɪs/` 准确的，精确的，明确的，细致的
 
@@ -10728,9 +10895,11 @@ promissory `/'prɒmɪsərɪ/` 约定支付的
 
 promote `/prə'məʊt/` 提升，促进，促销
 
-> 近义词1(提升): advance, elevate, exalt, give promotion, move up, prefer, raise, upgrade. 
-> 近义词2(支持，鼓励): back, boost, encourage, help, sponsor, support.
-> 近义词3(推广): advertise, make known, market, plug, popularize, publicize, push, sell.
+> 近义词(提升): advance, elevate, exalt, give promotion, move up, prefer, raise, upgrade. 
+> 
+> 近义词(支持，鼓励): back, boost, encourage, help, sponsor, support.
+> 
+> 近义词(推广): advertise, make known, market, plug, popularize, publicize, push, sell.
 
 promoter `/prə'məʊtə(r)/` 促进者，发起人，催化剂
 
@@ -10862,6 +11031,8 @@ pulse `/pʌls/` 脉搏，冒充，跳动
 
 pump `/pʌmp/` 泵，抽水机，打气筒，抽水，打气，灌输，抽取，增加，盘问
 
+pun `/pʌn/` 双关语
+
 punch `/pʌntʃ/` 拳打，拳击，打洞
 
 pungent `/ˈpʌndʒənt/` 刺激性的，刺鼻的，强烈的
@@ -10896,8 +11067,10 @@ putrid `/'pjuːtrɪd/` 腐臭的，令人厌恶的
 
 puzzle `/ˈpʌzl/` 迷惑，困惑，拼图，智力游戏
 
-> 近义词1（难题，谜）: brainteaser, difficulty, dilemma, enigma, mystery, poser, problem, quandary, question
-> 近义词2（谜语的种类）: acrostic, anagram, conundrum, crossword, maze, riddle.
+> 近义词(难题，谜): brainteaser, difficulty, dilemma, enigma, mystery, poser, problem, quandary, question
+> 
+> 近义词(谜语的种类): acrostic, anagram, conundrum, crossword, maze, riddle.
+> 
 > 例句1: Can you solve this puzzle?
 
 ### pv
@@ -11114,6 +11287,8 @@ radiate `/reɪdieɪt/` 辐射，放射，散发，光芒四射的
 
 radical `/'rædɪkl/` 根本的，彻底的，激进的，激进分子
 
+radioactivity `/ˌreɪdiəʊæk'tɪvəti/` 放射性，辐射
+
 radius `/'reɪdiəs/` 半径范围，半径，辐射区
 
 radix `/'reɪdɪks/` （数学）基数，根值
@@ -11242,6 +11417,8 @@ recalculate `/ˌriːˈkalkjʊleɪt/` 重新计算
 
 recall `/rɪˈkɔːl/` 回忆起，记得
 
+recapitulation `/ˌriːkəpɪtʃu'leɪʃn/` 重述要点，概括，摘要
+
 receipt `/rɪ'siːt/` 收据，收条，收到
 
 receptacle `/rɪˈseptəkl/` 容器
@@ -11284,7 +11461,7 @@ recommend `/ˌrekəˈmend/` 推荐，介绍，举荐
 
 recompence `/ˈrekəmpens/` 赔偿，补偿，报酬，惩罚
 
-reconstructing `/ˌriːkən'strʌkt/` 重建，修复，重现
+reconstruct `/ˌriːkən'strʌkt/` 重建，修复，重现
 
 recount `/rɪˈkaʊnt/` 叙述，讲述，重新计算
 
@@ -11350,9 +11527,11 @@ refit `/ˌriː'fɪt/` 改装，整修，重新装配(改装；整修；修理)
 
 reflect `/rɪˈflekt/` 反映，反射，表明
 
-> 近义词1(映出;反照): mirror, return, send back, shine back, throw back.
-> 近义词2(反映;表明): bear witness to, correspond to, demonstrate, echo, exhibit, indicate, match, reveal, show.
-> 近义词3(思忆;沉思): brood on, chwe over, consider, contemplate, mediate on, ponder, remind yourself of, reminisce about, ruminate, talk over, think about.
+> 近义词(映出;反照): mirror, return, send back, shine back, throw back.
+> 
+> 近义词(反映;表明): bear witness to, correspond to, demonstrate, echo, exhibit, indicate, match, reveal, show.
+> 
+> 近义词(思忆;沉思): brood on, chwe over, consider, contemplate, mediate on, ponder, remind yourself of, reminisce about, ruminate, talk over, think about.
 
 reflection `/rɪ'flekʃn/` 反射，倒影，沉思
 
@@ -11484,6 +11663,8 @@ remain `/rɪ'meɪn/` 剩余，残留，遗迹，留下
 
 remainder `/rɪ'meɪndə(r)/` 剩余物，余数
 
+remake `/'riːmeɪk/` 再作，再制，重作
+
 remark `/rɪˈmɑːk/` 评论，谈论，言论，评述
 
 remarkable `/rɪ'mɑːkəbl/` 非凡的，卓越的，显著的，异常的，值得主意的
@@ -11493,6 +11674,8 @@ remedy `/ˈrɛmɪdi/` 改进，补偿，治疗，补救，矫正
 reminiscent `/ˌremɪ'nɪsnt/` 怀旧的，引人联想的，回忆着，回忆录作者
 
 remittance `/rɪ'mɪtns/` 汇款
+
+remodel `/ˌriː'mɒdl/` 重新塑造，改建，改制，改编
 
 remonstrated `/'remənstreɪt/` 抗议，劝诫
 
@@ -11564,9 +11747,11 @@ repository `/rɪ'pɒzətri/` 仓库，容器，储藏室，智囊
 
 represent `/ˌreprɪˈzent/` 代表，等于，表现，描述，陈述，意味着
 
-> 近义词1（表现）: act out, delineate, depict, describe, draw, enact, exhibit, illustrate, paint, picture, portray, show.
-> 近义词2（代表）: embody, epitomize, exemplify, incarnate, personify, stand for, symbolize.
-> 近义词3（陈述）：be an example of, express, present, speak for.
+> 近义词(表现，描述，描绘): act out, delineate, depict, describe, draw, enact, exhibit, illustrate, paint, picture, portray, show.
+> 
+> 近义词(代表，体现): embody, epitomize, exemplify, incarnate, personify, stand for, symbolize.
+> 
+> 近义词(陈述）：be an example of, express, present, speak for.
 
 representable `/ˌriːprɪ'zentəbl/` 能被代表的，能加以描绘的
 
@@ -11579,6 +11764,8 @@ reproduce `/ˌriːprəˈdjuːs/` 生殖，繁殖，复印，仿造，再生
 reprogram `/rɪ'prəʊgræm/` （计算机）重编程序，改编指令序列
 
 republic `/rɪ'pʌblɪk/` 共和国，共和政体
+
+repudiate `/rɪ'pjuːdieɪt/` 拒绝，拒付，断绝，否认
 
 repulsive `/rɪ'pʌlsɪv/` 令人厌恶的，可憎的
 
@@ -11787,6 +11974,8 @@ rival `/ˈraɪvl/` 竞争，竞争对手，与...匹配，比得上
 rivalry `/'raɪvlri/` 敌对，竞争，对抗
 
 rivalship `/'raɪvəlʃɪp/` 竞争，对抗
+
+rivet `/'rɪvɪt/` 铆钉，铆接，固定，钉牢，集中，吸引
 
 ### rj
 
@@ -12060,7 +12249,21 @@ scalability `/skeɪlə'bɪlɪtɪ/` 伸缩性，可测量性
 
 scalar `/ˈskeɪlər/` 数量，标量，无向量的
 
-scale `/skeɪl/` 刻度，等级，规模，音阶，称重，刮鳞
+scale `/skeɪl/` 刻度，等级，规模，音阶，称重，鳞，刮鳞，水垢
+
+> 近义词(鳞): flake, plate.
+> 
+> 近义词(水垢): crust, deposit, encrustation, fur.
+> 
+> 近义词(刻度): calibration, gradation.
+> 
+> 近义词(等级): hierarchy, ladder, order, ranking, spectrum.
+> 
+> 近义词(音阶): chromatic scale, diatonic scale, major scale, minor scale, sequence, series.
+> 
+> 近义词(比例): proportion, ratio.
+> 
+> 近义词(规模): size.
 
 scaled `/skeɪld/` 有鳞片的，去鳞，零次栉比的
 
@@ -12211,6 +12414,8 @@ seminar `/ˈsɛmɪnɑː/` 研讨会，研讨班
 senate `/'senət/` 参议院，大学理事会
 
 senator `/ˈsenətə(r)/` 参议员
+
+senility `/sə'nɪləti/` 高龄，老迈
 
 sensation `/senˈseɪʃn/` 感觉，感知，直觉
 
@@ -12436,6 +12641,8 @@ simultaneous `/ˌsɪml'teɪniəs/` 同步的，同时发生的
 
 sincerely `/sɪn'sɪəli/` 真诚地，真心地
 
+sinful `/'sɪnfl/` 有罪的，罪恶的
+
 singly `/'sɪŋɡli/` 单独地，各自的，分别的
 
 singular `/'sɪŋɡjələ(r)/` 单数的，奇特的，非凡的
@@ -12495,6 +12702,8 @@ slam `/slæm/` 砰地关上，猛烈抨击
 slander `/ˈslɑːndə(r)/` 诽谤，诋毁
 
 slash `/slæʃ/` 斜线，斜杠，砍，砍痕
+
+slaughter `/'slɔːtə(r)/` 残杀，屠杀，大量杀戮
 
 slavish `/ˈsleɪvɪʃ/` 盲从的，照搬的，无独创性的
 
@@ -12872,7 +13081,11 @@ stagflation `/stæɡ'fleɪʃn/` 滞涨，停滞性膨胀
 
 stagger `/'stæɡə(r)/` 蹒跚，犹豫，动摇，摇摆不定
 
+stagnant `/'stæɡnənt/` 不流动的，停滞的，不景气的
+
 staircase `/ˈsteəkeɪs/` 楼梯
+
+stake `/steɪk/` 桩，赌注，利害关系，用桩支撑，下注
 
 stakeholder `/'steɪkhəʊldə(r)/` 利益相关者，保管赌注的人
 
@@ -13024,13 +13237,19 @@ strict `/strɪkt/` 严格的，严厉的
 
 stride `/straɪd/` 大步走，阔步行走，步伐，步态
 
-> 近义词1(步态): gait.
-> 近义词2(散步): constitutional, hike, promenade, ramble, saunter, stroll, traipse, tramp, trek, trudge, turn.
-> 近义词3(步行的路径): aisle, alley, path, pathway, pavement.
-> 近义词4(步行): be a pedestrian, travel on foot.
-> 近义词5(走过): stamp, step, trample, tread.
+> 近义词(步态): gait.
+> 
+> 近义词(散步): constitutional, hike, promenade, ramble, saunter, stroll, traipse, tramp, trek, trudge, turn.
+> 
+> 近义词(步行的路径): aisle, alley, path, pathway, pavement.
+> 
+> 近义词(步行): be a pedestrian, travel on foot.
+> 
+> 近义词(走过): stamp, step, trample, tread.
 
 strike `/straɪk/` 罢工，打击，碰撞，攻击
+
+stringent `/'strɪndʒənt/` 严格的，银根紧的，紧迫的
 
 strip `/strɪp/` 剥去，脱衣服，扒光
 
@@ -13188,7 +13407,17 @@ suite `/swiːt/` 一套，一组
 
 summarization `/ˌsʌmərɪ'zeɪʃən/` 摘要，概要
 
-summarize `/'sʌməraɪz/` 概述；摘要而言
+summarize `/'sʌməraɪz/` 概述，摘要而言
+
+summary `/'sʌməri/` 摘要，总结，简略的，概要的，速决的
+
+> 近义词(概要的): brief.
+>
+> 近义词(速决的): hasty.
+>
+> 近义词(总结): abstract, digest, outline, recapitulation, resume, review, summation, summing-up.
+>
+> 近义词(摘要): abridgement, condensation, precis, reduction, synopsis.
 
 summation `/sʌ'meɪʃn/` 总结，加法，总和，有代表性的整体
 
@@ -13231,6 +13460,8 @@ superiority `/suːˌpɪəri'ɒrəti/` 优越性，优势，上级，高手，上
 superscalar `/'suːpəˌskeɪlə/` 超标量
 
 supersink `/'sjuːpəsɪŋk/` 超收点
+
+superstition `/ˌsuːpə'stɪʃn/` 迷信，没有根据的理论
 
 supertype `/suː'pərtaɪp/` （计算机）父类型
 
@@ -13360,6 +13591,8 @@ synchronize `/'sɪŋkrənaɪz/` 同步，同时发生
 
 syndrome `/'sɪndrəʊm/` 症候群，综合症
 
+synergy `/'sɪnədʒi/` 协同作用，增效作用
+
 synonym `/ˈsɪnənɪm/` 近义词
 
 synonymous `/sɪ'nɒnɪməs/` 同义的，暗示的
@@ -13436,9 +13669,13 @@ tangle `/ˈtæŋɡl/` 纠缠，缠绕，乱糟糟一团
 
 tanner `/'tænə(r)/` 制革工人
 
+tantalizing `/'tæntəlaɪzɪŋ/` 诱人的，逗人的
+
 tantamount `/'tæntəmaʊnt/` 同等的，相等的，相当于
 
 tantrum `/'tæntrəm/` 发脾气，发怒
+
+tap `/tæp/` 龙头，塞子，窃听，轻拍，轻敲，鞋掌，开发，利用，索要
 
 tape `/teɪp/` 磁带，胶布，终点，用胶布粘，用绳子捆绑，用卷尺测量
 
@@ -13669,6 +13906,8 @@ threatening `/ˈθretnɪŋ/` 威胁的，恐吓的，扬言
 threatment `/triːtmənt/` 治疗，对待，处理，待遇
 
 thrift `/θrɪft/` 节俭，节约
+
+thrill `/θrɪl/` 激动，引起激动的事物，震颤，感到紧张
 
 thrive `/θraɪv/` 兴旺，繁荣，茁壮成长
 
@@ -13957,6 +14196,8 @@ treat `/triːt/` 对待
 treaty `/'triːti/` 条约，协定
 
 treatment `/ˈtriːtm(ə)nt/` 对待，论述，探讨，治疗，处理
+
+trek `/trek/` 长途跋涉，艰苦跋涉
 
 tremendous `/trəˈmendəs/` 极大的，巨大的，绝妙的，极棒的
 
@@ -14286,8 +14527,9 @@ understaffed `/ˌʌndə'stɑːft/` 人员不足的
 
 understand `/ʌndə'stænd/` 懂，理解，听说，获悉，知道，认为
 
-> 近义词1(理解): appreciate, apprehend, comprehend, cotton on to, decipher, decode, fathom, follow, gather, get, get to the bottom of, grasp, interpret, know, learn, make out, make sense of, master, perceive, realize, recognize, see, take in, twig.
-> 近义词2(了解): empathize with, sympathize with.
+> 近义词(理解): appreciate, apprehend, comprehend, cotton on to, decipher, decode, fathom, follow, gather, get, get to the bottom of, grasp, interpret, know, learn, make out, make sense of, master, perceive, realize, recognize, see, take in, twig.
+> 
+> 近义词(了解): empathize with, sympathize with.
 
 understock `/ˌʌndə'stɒk/` 存货不足
 
@@ -14308,6 +14550,8 @@ undisturbed `/ˌʌndɪ'stɜːbd/` 为受干扰的，安静的
 undivided `/ˌʌndɪ'vaɪdɪd/` 专一的，没分开的
 
 undoubtedly `/ʌn'daʊtɪdli/` 无疑地
+
+undue `/ˌʌn'djuː/` 过分的，不适当的
 
 unencumbered `/ˌʌnɪn'kʌmbəd/` 没有阻碍的，没有负担的
 
@@ -14353,6 +14597,8 @@ unjust `/ˌʌn'dʒʌst/` 不公平的
 
 unlawful `/ʌn'lɔːfl/` 私生的，非法的
 
+unlikelihood `/ʌn'laɪklihʊd/` 未必有，不可信
+
 unmerited `/'ʌn'merɪtɪd/` 无功受禄的，不当的
 
 unmet `/ˌʌn'met/` 未满足的，未相遇的，未应付的
@@ -14397,8 +14643,9 @@ unsubstantiated `/ˌʌnsəbˈstænʃieɪtɪd/` 未经证实的
 
 unsuccessful `/ʌnsək'sesfʊl/` 不成功的，失败的
 
-> 近义词1(无用的): abortive, failed, fruitless, futile, ill-fated, ineffective, ineffectual, lossmaking, sterile, unavailing, unlucky, unproductive, unprofitable, unsatisfactory, useless, vain.
-> 近义词2(失败的): beaten, defeated, losing.
+> 近义词(无用的): abortive, failed, fruitless, futile, ill-fated, ineffective, ineffectual, lossmaking, sterile, unavailing, unlucky, unproductive, unprofitable, unsatisfactory, useless, vain.
+> 
+> 近义词(失败的): beaten, defeated, losing.
 
 untether `/ʌn'teðə/` 解下(拴牛马的)绳，链
 
@@ -14431,6 +14678,8 @@ upcoming `/'ʌpkʌmɪŋ/` 即将到来的
 uphold `/ʌpˈhəʊld/` 维持，保持，支持
 
 upholsterer `/ʌp'həʊlstərə(r)/` 室内装潢商
+
+uplift `/'ʌplɪft/` 鼓舞，提高（道德水准等），振作，（地质学）隆起
 
 uppercase `/'ʌpəˌkeɪs/` 大写字母，大写的
 
@@ -14523,6 +14772,8 @@ utterly `/'ʌtəli:/` 完全，全然，绝对
 [回到V](#V)--[回到顶部](#英汉词典)
 
 vacant `/'veɪkənt/` 空虚的，空的，木然地
+
+vacate `/və'keɪt/` 空出，让出
 
 vacation `/veɪˈkeɪʃn/` 假期，休假，度假
 
@@ -15068,6 +15319,8 @@ widespread `/ˈwaɪdspred/` 广泛的，普遍的
 
 widget `/'wɪdʒɪt/` 部件，小产品
 
+wield `/wiːld/` 行使，施加(影响)，使用(武器等)，挥舞
+
 wildcard `/'waɪldkɑːd/` （计算机）通配符，（纸牌的）百搭牌
 
 wildlife `/ˈwaɪldlaɪf/` 野生动物
@@ -15075,6 +15328,8 @@ wildlife `/ˈwaɪldlaɪf/` 野生动物
 willing `/ˈwɪlɪŋ/` 愿意，乐意，想要，决心
 
 willingness `/'wɪlɪŋnəs/` 愿意，乐意，想要，决心
+
+willpower `/'wɪlpaʊə(r)/` 意志力
 
 winch `/wɪntʃ/` 绞车
 
@@ -15105,6 +15360,8 @@ withdrawn `/wɪð'drɔːn/` 偏僻的，离群的，孤独的，内向的
 within `/wɪðˈɪn/` 在...里面，在...内
 
 witness `/ˈwɪtnəs/` 目击者，见证人
+
+witted `/'wɪtɪd/` 智力 ... 的，头脑 ... 的
 
 wizard `/'wɪzəd/` 男巫，术士，鬼才
 
