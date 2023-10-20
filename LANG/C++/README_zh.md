@@ -59,4 +59,5 @@
 - [c++日志库](OTHER/log_zh.md)
 - [c++单元测试](OTHER/test_zh.md)
 - [C++日期时间](OTHER/time_zh.md)
+- [C++调试工具--breakpad](OTHER/break_pad_zh.md)
 

@@ -4,6 +4,7 @@
 
 - [ASSIC码表](assic_table_zh.md)
 - [astyle代码格式化工具](astyle_zh.md)
+- [chatgpt手册](chatgpt.md)
 - [emacs快捷键](emacs_shortcut_zh.md)
 - [git教程](git_zh.md)
 - [如何写论文](how_to_write_paper_zh.md)
