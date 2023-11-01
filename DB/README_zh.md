@@ -3,6 +3,7 @@
 # 数据库
 
 - [acid](acid_zh.md)
+- [数据库最佳实践](best_practice_zh.md)
 - [数据库设计](design_zh.md)
 - [sql手册](sql_zh.md)
 

@@ -76,9 +76,10 @@
 
 ### 软件工程
 
-| 书名                                 | 版次 | 作者                                                         | 摘要/评价                      |
-| ------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------ |
-| [设计模式](DESIGN_PATTERN/README.md) | 1ED  | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides | 设计模式领域地圣经，推荐！！！ |
+| 书名                                          | 版次 | 作者                                                         | 摘要/评价                      |
+| --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------ |
+| [设计模式](DESIGN_PATTERN/README.md)          | 1ED  | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides | 设计模式领域地圣经，推荐！！！ |
+| [软件工程](SOFTWARE_ENGINEERING/README_zh.md) | 9ED  | Ian Sommerville                                              |                                |
 
 ### 经济学
 
