@@ -8,6 +8,7 @@
 - [emacs快捷键](emacs_shortcut_zh.md)
 - [git教程](git_zh.md)
 - [如何写论文](how_to_write_paper_zh.md)
+- [面试笔记](interview_zh.md)
 - [Pandoc手册](pandoc_zh.md)
 - [代理设置](proxy_zh.md)
 - [重新绑定键](rebind_key_zh.md)
