@@ -104,6 +104,34 @@
 
 产品量度分为两类：
 
-1. 动态量度，通过对执行中的程序度量所收集到的。TODO
-2. 静态量度
+1. 动态量度，通过对执行中的程序度量所收集到的。在系统测试期间或系统投入使用后可以收集到这些量度。
+2. 静态量度，通过对系统各种表现形式度量所收集到的。
+
+![24_11](res/24_11.png)
+
+*静态软件产品量度*
+
+![24_12](res/24_12.png)
+
+*CK面向对象的量度套件*
+
+### 24.4.2 软件组件分析
+
+![24_13](res/24_13.png)
+
+*产品度量过程*
+
+- 选择要做的度量(Choose Measurements to be Made)
+- 选择要评估的组件(Select Components to be Assessed)
+- 度量组件特性(Measure Component Characteristics)
+- 识别异常度量(Identify Anomalous Measurements)
+- 分析异常组件(Analyze Anomalous Components)
+
+### 24.4.3 度量歧义
+
+
+
+## 总结
+
+TODO
 
