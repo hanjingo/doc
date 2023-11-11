@@ -1386,11 +1386,23 @@ august `/'ɔːɡəst/` 八月（简写Aug），威严的，尊贵的
 
 authenticate `/ɔː'θentɪkeɪt/` 证明，验证
 
-automates `/'ɔːtəmeɪt/` 使自动化
+automate `/'ɔːtəmeɪt/` make automatic or control or operate automatically.
 
-automatic `/ˌɔːtə'mætɪk/` 自动的，无意识的，必然的
-
-automaton `/ɔː'tɒmətən/` 机器人，不动脑筋机械行事的人
+> vt. 使自动化，使自动操作
+>
+> vi. 自动化，自动操作
+>
+> SYN: change, alter, modify
+>
+> Ex: automate a factory.
+>
+> Ex: a fully automated process.
+>
+> DERIVATIVES: automation ` /ˌɔːtəˈmeɪʃn/` 自动化(技术), 自动操作
+>
+> DERIVATIVES: automatic `/ˌɔːtə'mætɪk/` 自动的，无意识的，必然的
+>
+> DERIVATIVES: automaton `/ɔː'tɒmətən/` 机器人，不动脑筋机械行事的人
 
 automobile `/'ɔːtəməbiːl]/` 汽车，汽车的
 
@@ -2021,7 +2033,27 @@ bombard `/bɒm'bɑːd/`
 
 bombed `/bɒmd/` 遭到轰炸的，醉酒的，吸毒麻醉了的
 
-bondmen `/'bɒndmən/` 奴隶
+bond `/bɒnd/` 
+
+> n. 1 an electrical force linking atoms. 2 a certificate of debt (usually interest-bearing or discounted) that is issued by a government or corporation in order to raise money; the issuer is required to pay a fixed sum annually until maturity and then a fixed sum to repay the principal. 3 a connection based on kinship or marriage or common interest. 4 (criminal law) money that must be forfeited by the bondsman if an accused person fails to appear in court for trial. 5 a restraint that confines or restricts freedom (especially something used to tie down or restrain a prisoner). 6 a connection that fastens things together. 7 a superior quality of strong durable white writing paper; originally made for printing documents. 8 United States civil rights leader who was elected to the legislature in Georgia but was barred from taking his seat because he opposed the Vietnam War. 9 British secret operative 007 in novels by Lan Fleming. 10 the property of sticking together (as of glue and wood) or the joining of surfaces of different composition.
+>
+> v. 1 stick to firmly. 2 create social or emotional ties. 3 issue bonds on. 4 bring together in a common cause or emotion.
+>
+> adj. 1 held in slavery.
+>
+> n. 结合；粘合剂；债券；约定
+>
+> vi. 结合，团结在一起
+>
+> vt. 以…作保；使结合
+>
+> SYN: attraction, attractive force, debt instrument, certificate of indebtedness, security, certificate, connection.
+>
+> Ex: a bonding course.
+>
+> Ex: sold the bond at par.
+>
+> DERIVATIVES: bondmen `/'bɒndmən/` 奴隶
 
 bone `/bəʊn/` 骨骼，骨，核心，除去骨头，努力学习，非常地，极其地
 
@@ -3485,7 +3517,15 @@ consecrate `/'kɒnsɪkreɪt/` 奉献，神圣的
 
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
-consequence `/'kɒnsɪkwəns/` 结果，后果，重要性
+consequence `/'kɒnsɪkwəns/` 1 a result or effect, typically one that is unwelcome or unpleasant. 2 importance or relevance. 3 (consequences) a game in which a narrative is made up by the players in turn, each ignorant of what has already been contributed.
+
+> n. 结果, 后果, 重要(性), 重大
+>
+> SYN: phenomenon, result, resultant, final result, outcome, termination, significance
+>
+> Ex: the past is of no consequence.
+>
+> Ex: a woman of consequence.
 
 consequential `/ˌkɒnsɪ'kwenʃəl/` 间接的，重要的，自大的
 
@@ -4449,9 +4489,9 @@ degenerate `/dɪ'dʒenəreɪt/` 退化，堕落
 
 degradation `/ˌdɛɡrəˈdeɪʃn/` 1 the condition or process of degrading or being degraded. 2 the wearing down of rock by disintegration.
 
-> Ex: a trail of human misery and degradation.
->
 > n. 降格；堕落；退化
+>
+> Ex: a trail of human misery and degradation.
 
 degrade `/dɪˈɡreɪd/` 贬低，降级，恶化，分解，侮辱，削弱
 
@@ -4725,7 +4765,15 @@ detriment `/ˈdetrɪmənt/` 伤害，损害
 
 devalue `/ˌdiː'væljuː/` 贬值，降低价值
 
-devastate `/ˈdevəsteɪt/` 毁灭，摧毁，彻底破坏，震惊
+devastate `/ˈdevəsteɪt/` 1 destroy or ruin. 2 cause (someone) severe and overwhelming shock or grief.
+
+> vt. 毁坏；使荒芜, 在感情上(精神上、财务上等)压垮
+>
+> SYN: destroy, ruin, overwhelm, overpower, sweep over, whelm, overcome
+>
+> Ex: the city was devastated by a huge earthquake.
+>
+> Ex: she was devastated by the loss of Damian.
 
 developed `/dɪ'veləpt/` 发达的，成熟的
 
@@ -4839,7 +4887,17 @@ digestion `/daɪˈdʒestʃən/` 消化，消化系统
 
 digit `/ˈdɪdʒɪt/` 数字位，进制位，数字，手指，拇指，脚趾
 
-digital `/'dɪdʒɪtl/` 数字的，数码的，手指的，计数的
+digital `/'dɪdʒɪtl/` 1 of a circuit or device that represents magnitudes in digits. 2 displaying numbers rather than scale positions. 3 relating to or performed with the fingers.
+
+> adj. 数字的；手指的
+>
+> n. 数字；键
+>
+> SYN: digit, figure, dactyl
+>
+> Ex: digital TV.
+>
+> Ex: the digital revolution.
 
 dignity `/'dɪɡnəti/` 1 the state or quality of being worthy of honor or respect. 2 a composed or serious manner or style.
 
@@ -6153,7 +6211,15 @@ eviscerate `/ɪˈvɪsəreɪt/` 切除内脏，取出内脏
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
-exacerbate `/ɪɡ'zæsəbeɪt/` 加重(使 ... 恶化；激怒)
+exacerbate `/ɪɡ'zæsəbeɪt/` make (a problem, bad situation, or negative feeling) worse.
+
+> vt. 使恶化；使加重
+>
+> SYN: change, alter, modify, anger
+>
+> Ex: Everything conspires to exacerbate the situation.
+>
+> Ex: The drugs they gave her only exacerbated the pain.
 
 exact `/ɪɡˈzækt/` 准确的，精确的，严谨的，要求，索取
 
@@ -6479,9 +6545,17 @@ fairness `/'feənəs/` 公平，公正
 
 fairy `/'feəri/` 仙女，小精灵，优雅的，幻想中的，虚构的
 
-faith `/feɪθ/` 信仰，信念，信任
+faith `/feɪθ/` 1 a strong belief in a supernatural power or powers that control human destiny. 2 complete confidence in a person or plan etc. 3 an institution to express belief in a divine power. 4 loyalty or allegiance to a cause or a person.
 
-faithful `/ˈfeɪθfl/` 忠诚的，忠贞的，信徒
+> n. 信心；信任；相信；宗教信仰
+>
+> SYN: belief, theological virtue, supernatural virtue, institution, establishment, commitment, allegiance 
+>
+> Ex: an implicit faith in God.
+>
+> Ex: an unshakeable faith in God.
+>
+> DERIVATIVES: faithful `/ˈfeɪθfl/` 忠诚的，忠贞的，信徒
 
 falcon `/ˈfɔːlkən/` 猎鹰，猎隼
 
@@ -7283,9 +7357,9 @@ fuzzy `/'fʌzi/` 模糊的，含糊不清的，毛茸茸的
 
 gadget `/'ɡædʒɪt/` a small mechanical or electronic device or tool, especially an ingenious or novel one.
 
-> Ex: a variety of kitchen gadgets.
->
 > n. 小机件；小玩意儿；小巧的机械
+>
+> Ex: a variety of kitchen gadgets.
 
 gaggle `/ˈɡæɡl/` 一群（吵闹的人），一群（鹅）
 
@@ -8383,7 +8457,15 @@ immediate `/ɪ'miːdiət/` 直接的，最接近的，利己的，目前的
 
 immemorial `/ˌɪmə'mɔːriəl/` 远古的，极古的，久远的
 
-immense `/ɪˈmens/` 巨大的，极大的
+immense `/ɪˈmens/` unusually great in size or amount or degree or especially extent or scope.
+
+> adj. 极大的, 巨大的
+>
+> SYN: large, big
+>
+> Ex: an immense improvement.
+>
+> Ex: immense pleasure.
 
 immigrant `/ˈɪmɪɡrənt/` 移民，外侨
 
@@ -8835,6 +8917,14 @@ infatuation `/ɪnˌfætʃu'eɪʃn/` 迷恋
 
 infeasible `/ɪn'fiːzəbl/` 行不通的，不可实行的
 
+Infectious `/ɪnˈfɛkʃəs/` 1 (of a disease or disease-causing organism) liable to be transmitted to people, organisms, etc. through the environment. 2 likely to spread or influence others in a rapid manner.
+
+> adj. 传染的, 有传染性的, 有感染力的
+>
+> SYN: septic, infected, catching, communicable, contagious, contractable, transmissible
+>
+> Ex: a highly infectious virus.
+
 infer `/ɪn'fɜː(r)/` 推断，猜测，暗示
 
 inference `/ˈɪnf(ə)rəns/` 推断，推断结果
@@ -8953,9 +9043,19 @@ innocent `/ˈɪnəsnt/` 清白的，无害的，无辜的，无知的，天真�
 
 innocuous `/ɪ'nɒkjuəs/` 无害的，无毒的，无关痛痒的
 
-innovate `/'ɪnəveɪt/` 改革，创新
+ innovate `/'ɪnəveɪt/` bring something new to an environment.
 
-innovation `/ˌɪnə'veɪʃn/` 创新，革新
+> vi. 改革；创新；革新
+>
+> vt. 创始；改变；创立；引人
+>
+> SYN: initiate, pioneer
+>
+> Ex: innovate in techniques.
+>
+> Ex: innovate upon religious forms.
+>
+> DERIVATIVES: innovation `/ˌɪnə'veɪʃn/` 改革；创新；革新
 
 innumerable `/ɪˈnjuːmərəbl/` 无数的，多的数不清的
 
@@ -9003,9 +9103,23 @@ installment `/ɪnˈstɔːlmənt/` 分期的，安装，安置
 
 instalment `/ɪn'stɔːlmənt/` 分期付款，一部分
 
-instant `/ˈɪnstənt/` 立即，立刻
+instant `/ˈɪnstənt/` 
 
-instantaneous `/ˌɪnstən'teɪniəs/` 瞬间的，即刻的
+> n. 1 a very short time (as the time it takes the eye blink or the heart to beat). 2 a particular point in time.
+>
+> adj. 1 occurring with no delay. 2 in or of the present month. 3 demanding attention.
+>
+> n. 片刻, 顷刻, 刹那
+>
+> adj. 立即的, 即食的, 立即可冲食的
+>
+> SYN: moment, minute, second, bit, point, point in time
+>
+> Ex: instant coffee.
+>
+> Ex: instant gratification.
+>
+> DERIVATIVES: instantaneous `/ˌɪnstən'teɪniəs/` 瞬间的，即刻的
 
 instantiate `/ɪns'tænʃɪeɪt/` 实例化，演示
 
@@ -10017,7 +10131,17 @@ legitimate `/lɪ'dʒɪtɪmət/` 合法的，世袭的，婚生的，正当的，
 
 legume `/ˈleɡjuːm/` 豆类，豆科作物
 
-leisure `/ˈleʒə(r)/` 空闲，闲暇
+leisure `/ˈleʒə(r)/` 1 time available for ease and relaxation. 2 freedom to choose a pastime or enjoyable activity.
+
+> n. 闲暇；空闲；安逸
+>
+> adj. 空闲的；有闲的；业余的
+>
+> SYN: time off, rest, ease, repose, relaxation
+>
+> Ex: a leisure complex.
+>
+> Ex: leisure hours.
 
 lemma `/'lemə/` （数学）引理，词条
 
@@ -10415,7 +10539,13 @@ malignant `/mə'lɪɡnənt/` 有恶意的，恶性的，有害的
 
 malleability `/ˌmæliə'bɪləti/` 延展性，韧性，可塑性
 
-malnutrition `/ˌmælnjuˈtrɪʃn/` 营养不良
+malnutrition `/ˌmælnjuˈtrɪʃn/` a state of poor nutrition; can result from insufficient or excessive or unbalanced diet or from inability to absorb foods
+
+> n. 营养不良
+>
+> SYN: deficiency disease
+>
+> Ex: *children die every day from malnutrition and disease*.
 
 malt `/mɔːlt/` 麦芽，含麦芽的（啤酒）
 
@@ -10903,7 +11033,17 @@ misunderstand `/ˌmɪsʌndəˈstand/` 误解，争执
 
 misuse `/ˌmɪsˈjuːz/` 误用，错用，滥用，虐待
 
-mitigate `/ˈmɪtɪɡeɪt/` 减轻，缓和
+mitigate `/ˈmɪtɪɡeɪt/` 1 lessen or to try to lessen the seriousness or extent of. 2 make less severe or harsh.
+
+> vt. 使缓和，使减轻
+>
+> vi. 减轻，缓和下来
+>
+> SYN: apologize, excuse, justify, rationalize, rationalize, decrease
+>
+> Ex: to mitigate the effect of something.
+>
+> Ex: mitigate pain.
 
 ### mj
 
@@ -10933,7 +11073,13 @@ mnemonic `/nɪ'mɒnɪk/` 助记的，助记符号，记忆的，记忆方法
 
 mobbish `/'mɒbɪʃ/` 暴徒似地，滋扰的，无规律的
 
-mobility `/məʊˈbɪləti/` 流动性，灵活性
+mobility `/məʊˈbɪləti/` the quality of moving freely.
+
+> n. 迁移率；机动性；移动性
+>
+> SYN: quality
+>
+> Ex: Mobility is very important in guerrilla warfare.
 
 mobilize `/ˈməʊbəlaɪz/` 组织，鼓动，动员，调动
 
@@ -10946,6 +11092,14 @@ modem `/'məʊdem/` （计算机）调制解调器
 moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理中客
 
 moderately `/'mɒdərətli/` 适度地，一般地
+
+modernity `/məˈdəːnɪti/` the quality or condition of being modern
+
+> n. 现代性
+>
+> SYN: currentness, currency, up-to-dateness
+>
+> Ex: an aura of technological modernity.
 
 modesty `/'mɒdəsti/` 谦逊，虚心，端庄，朴实，中肯
 
@@ -12293,6 +12447,14 @@ parental `/pə'rentl/` 父母的
 
 parenthesis `/pə'renθəsɪs/` 圆括号，插入语
 
+parenthood `/ˈpɛːrənthʊd/` the state of being a parent and the responsibilities involved.
+
+> n. 父母身份;双亲立场
+>
+> SYN: adulthood
+>
+> Ex: high rates of single parenthood.
+
 pareto `/'pærtəʊ/` （数学）帕累托
 
 parish `/'pærɪʃ/` 教区，地方行政区，郡
@@ -12899,6 +13061,14 @@ pole `/pəʊl/` 电线杆，电极，磁极，（行星的）极
 
 policy `/ˈpɒlɪsi/` 政策，原则，保险单，保险合同
 
+polio `/ˈpəʊlɪəʊ/` an acute viral disease marked by inflammation of nerve cells of the brain stem and spinal cord
+
+> n. <医>脊髓灰质炎,小儿麻痹症
+>
+> SYN: infectious disease
+>
+> Ex: a live vaccine containing the polio virus.
+
 polish `/ˈpɒlɪʃ/` 磨光，擦亮，润饰
 
 polite `/pə'laɪt/` 有礼貌的，客气的，有教养的，文雅的
@@ -12969,7 +13139,21 @@ poset `/'pəʊzet/` 部分有序集
 
 positional `/pə'zɪʃənəl/` 位置的，地位的，阵地的
 
-positive `/'pɒzətɪv/` 正数，正面，积极的，肯定的，正面的
+positive `/'pɒzətɪv/` 
+
+> n. 1 a film showing a photographic image whose tones correspond to those of the original subject.
+>
+> adj. 1 characterized by or displaying affirmation or acceptance or certainty etc. 2 having a positive electric charge. 3 involving advantage or good. 4 indicating existence or presence of a suspected condition or pathogen. 5 formally laid down or imposed. 6 impossible to deny or disprove. 7 of or relating to positivism. 8 reckoned, situated or tending in the direction which naturally or arbitrarily is taken to indicate increase or progress or onward motion. 9 greater than zero. 10 marked by excessive confidence. 11 persuaded of; very sure.
+>
+> adj. 确实的，明确的, 积极的；肯定的, 表现得有信心和有希望的，确信的, 〈数〉〈电〉正的，阳性的, 完全的；纯粹的
+>
+> n. 〈语〉原级形容词, 确实；正量，正数, 正片
+>
+> SYN: film, photographic film
+>
+> Ex: positive hydrotropism.
+>
+> Ex: positive orthogeotropism.
 
 possess `/pə'zes/` 拥有，持有，支配
 
@@ -13223,25 +13407,21 @@ prethreading `//` （计算机）预分配线程
 
 pretty `/'prɪti/` 相当的，漂亮的，好看的
 
-prevail `/prɪˈveɪl/` 流行，盛行，战胜，普遍，压倒，挫败
+prevail `/prɪˈveɪl/` 1 prove more powerful or superior. 2 (prevail on/upon) persuade (someone) to do something.
 
-prevailing `/prɪ'veɪlɪŋ/` 盛行的，广泛流传的，主流的
-
-prevalence `/ˈprɛv(ə)ləns/` 1 the fact or condition of being prevalent; commonness.
-
-> Ex: the prevalence of obesity in adults.
+> vi. 说服，劝说；诱使, 盛行，流行, 获胜；占优势
 >
-> n.传播；流行；普及
-
-prevalent `/'prevələnt/` 流行的，普通的
-
-prevent `/prɪˈvɛnt/` 1 keep (something) from happening; stop (someone) from doing something; 2 (of God) go before (someone) with spiritual guidance and help.
-
-> v. 预防；防止，阻止；挡住
+> SYN: exist, be, continue, win, persuade
 >
-> Ex: action must be taken to prevent further accidents.
+> Ex: it is hard for logic to prevail over emotion.
 >
-> DERIVATIVES: preventive `/prɪ'ventɪv/` 预防的，预防性措施
+> Ex: she was prevailed upon to give an account of her work.
+>
+> DERIVATIVES: prevalence `/ˈprɛv(ə)ləns/` n.传播；流行；普及
+>
+> DERIVATIVES: prevalent `/'prevələnt/` 流行的，普通的
+>
+> DERIVATIVES: prevailing `/prɪ'veɪlɪŋ/` 盛行的，广泛流传的，主流的
 
 previous `/ˈpriːviəs/` 先前的，过早的，以前
 
@@ -13401,7 +13581,13 @@ prolific `/prə'lɪfɪk/` 多产的，作品丰富的
 
 prolog `/'prəʊlɒg/` 序言，序幕，开场白，开端
 
-prolong `/prə'lɒŋ/` 延长，拖延
+prolong `/prə'lɒŋ/` extend the duration of.
+
+> vt. 拖延；延长
+>
+> SYN: lengthen, continue, uphold, carry on, bear on, preserve
+>
+> Ex: an idea which prolonged the life of the engine by many years.
 
 promenade `/ˌprɒmə'nɑːd/` 散步，散步场所，队列前进，方块舞，漫步，（舞蹈中的）队列前进
 
@@ -13869,7 +14055,23 @@ quotient `/'kwəʊʃnt/` （数学）商，份额
 
 [回到R](#R)--[回到顶部](#英汉词典)
 
-race `/reɪs/` 竞争，匆忙，竞速
+race `/reɪs/` 
+
+> n. 1 any competition. 2 people who are believed to belong to the same genetic stock. 3 a contest of speed. 4 the flow of air that is driven backward by an aircraft propeller. 5 (biology) a taxonomic group that is a division of a species; usually arises as a consequence of geographical isolation within a species. 6 a canal for a current of water.
+>
+> n. 1 step on it. 2 compete in a race. 3 to work as fast as possible towards a goal, sometimes in competition with others. 4 cause to move fast or to rush or race.
+>
+> n. 种族，人种；家庭，门弟；属，种
+>
+> vt. 和…竞赛；使急走，使全速行进；使参加比赛
+>
+> vi. 比速度，参加竞赛；全速行进
+>
+> SYN: contest, competition, group, grouping, flow, taxonomic group, taxonomic category
+>
+> Ex: the race of birds.
+>
+> Ex: The race is on.
 
 racial `/ˈreɪʃl/` relating to the major groupings into which humankind is sometimes divided on the basis of physical characteristics or shared ancestry.
 
@@ -15551,6 +15753,16 @@ slump `/slʌmp/` 暴跌，大幅度下跌，猛然瘫坐，使倒下
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
+smallpox `/ˈsmɔːlpɒks/` a highly contagious viral disease characterized by fever and weakness and skin eruption with pustules that form scabs that slough off leaving scars.
+
+> n. 天花
+>
+> SYN: pox
+>
+> Ex: Vaccination for smallpox is efficacious.
+>
+> Ex: Smallpox can be contained by vaccination.
+
 smelt `/smelt/` 香鱼，胡瓜鱼，熔炼
 
 smith `/smɪθ/` 铁匠，（姓氏）史密斯
@@ -16825,7 +17037,15 @@ testament `/'testəmənt/` 证明，自白，遗嘱，圣经
 
 testify `/ˈtestɪfaɪ/` 出庭，作证，证明，证实
 
-testimonial `/ˌtestɪ'məʊniəl/` 证明书，奖品，感谢信
+testimony `/ˈtɛstɪməni/` a formal written or spoken statement, especially one given in a court of law.
+
+> n. (法庭上证人的)证词, 证明, 证据
+>
+> SYN: evidence, assertion, averment, asseveration
+>
+> Ex: the testimony of an eyewitness.
+>
+> DERIVATIVES: testimonial `/ˌtestɪ'məʊniəl/` 证明书，奖品，感谢信
 
 tex `/tɛx/` （计算机）编程语言tex
 
