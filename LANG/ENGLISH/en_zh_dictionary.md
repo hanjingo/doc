@@ -1803,6 +1803,14 @@ bilingual `/ˌbaɪ'lɪŋɡwəl/` 双语的
 
 binomial `/baɪ'nəʊmiəl/` （数学）二项式，二项的
 
+biodiversity `/ˌbʌɪə(ʊ)dʌɪˈvəːsɪti/` the variety of plant and animal life in the world or in a particular habitat, a high level of which is usually considered to be important and desirable.
+
+> n. 生物多类状态, 生物多样性
+>
+> SYN: diverseness, diversity, multifariousness, variety
+>
+> Ex: Trees around the world increase, protect the world's biodiversity.
+
 biofuel `/'baiəu'fju:əl/` 生物燃料
 
 biography `/baɪˈɒɡrəfi/` 传记文学
@@ -3731,6 +3739,16 @@ conscientious `/ˌkɒnʃiˈenʃəs/` 认真的，勤勤恳恳的
 
 conscious `/ˈkɒnʃəs/` 意识，知觉，思想，神志
 
+conservation `/ˌkɒnsəˈveɪʃn/` 1 prevention of wasteful use of a resource. 2 the principle by which the total value of a physical quantity or parameter (such as energy, mass, linear or angular momentum) remains constant in a system which is not subject to external influence.
+
+> n. 保存, 保护, 避免浪费, 对自然环境的保护
+>
+> SYN: improvement, betterment, advance, preservation, saving, principle
+>
+> Ex: the conservation of energy.
+>
+> Ex: the law of conservation of mass.
+
 conservative `/kənˈsɜːvətɪv/` 
 
 > adj. 1 averse to change or innovation and holding traditional values. 2 (in a political context) favouring free enterprise, private ownership, and socially traditional ideas. 3 (of an estimate) purposely low for the sake of caution. 4 (of surgery or medical treatment) intended to control rather than eliminate a condition, with existing tissue preserved as far as possible. 
@@ -4099,7 +4117,15 @@ crowd `/kraʊd/` 人群，群众，拥挤，涌入
 
 crown `/kraʊn/` 王权，王冠，顶点，加冕
 
-crucial `/'kruːʃl/` 决定性的，关键的
+crucial `/'kruːʃl/` 1 of extreme importance; vital to the resolution of a crisis. 2 having crucial relevance. 3 of the greatest importance. 4 having the power or quality of deciding.
+
+> adj. 决定性的；重要的；定局的；决断的
+>
+> SYN: critical, decisive, life-and-death, life-or-death, pivotal, polar, material
+>
+> Ex: It's a crucial decision.
+>
+> Ex: a crucial problem.
 
 crucible `/'kruːsɪbl/` 坩埚，熔炉，严酷的考验
 
@@ -4493,7 +4519,17 @@ degradation `/ˌdɛɡrəˈdeɪʃn/` 1 the condition or process of degrading or b
 >
 > Ex: a trail of human misery and degradation.
 
-degrade `/dɪˈɡreɪd/` 贬低，降级，恶化，分解，侮辱，削弱
+degrade `/dɪˈɡreɪd/` 1 reduce the level of land, as by erosion. 2 reduce in worth or character, usually verbally. 3 lower the grade of something; reduce its worth.
+
+> vt. 使……丢脸；使……降级；使……降解；贬低
+>
+> vi. 退化；降级，降低
+>
+> SYN: humiliate, mortify, chagrin, humble, abase, worsen, aggravate
+>
+> Ex: degrade a currency.
+>
+> Ex: Don't degrade yourself by answering him.
 
 degree `/dɪ'ɡriː/` 程度，度数，学位
 
@@ -5771,7 +5807,15 @@ emission `/i'mɪʃn/` 散发，发行，排放
 
 emolument `/ɪ'mɒljumənt/` 薪资，报酬，优势
 
-emotion `/ɪˈməʊʃn/` 情绪，情感，激情
+emotion `/ɪˈməʊʃn/` a strong feeling deriving from one's circumstances, mood, or relationships with others.
+
+> n. 情感；感情；情绪
+>
+> SYN: act, play, represent
+>
+> Ex: his voice was shaky with emotion.
+>
+> DERIVATIVES: emotional `/ɪˈməʊʃən(ə)l /` 感情的, 情绪的, 情绪激动的
 
 empathize `/'empəθaɪz/` 起共鸣，表同情，有同感
 
@@ -6606,6 +6650,16 @@ farcical `/ˈfɑːsɪkl/` 荒谬的
 fare `/feə(r)/` 车费，路费，乘客，食物，进展，进食，旅行，行走
 
 farewell `/ˌfeəˈwel/` 告别，辞行
+
+farmland `/ˈfɑːmland/` land used for farming.
+
+> n. 农田
+>
+> SYN: country, rural area, land, ground, soil
+>
+> Ex: the farmland round the school.
+>
+> Ex: farmland traversed by drystone walls.
 
 fascinate `/ˈfæsɪneɪt/` 入迷，迷住，吸引
 
@@ -7839,9 +7893,15 @@ gyration `/ˌdʒaɪəˈreɪʃən/` 旋转，回旋，环动
 
 [回到H](#H)--[回到顶部](#英汉词典)
 
-habitat `/ˈhæbɪtæt/` 栖息地，生活环境
+habitat `/ˈhabɪtat/` the natural home or environment of an animal, plant, or other organism.
 
-habitation `/ˌhæbɪ'teɪʃn/` 居住，住所
+> n. (动物的)栖息地, 住处
+>
+> SYN: environment, environs, surroundings, surround
+>
+> Ex: wild chimps in their natural habitat.
+>
+> DERIVATIVES: habitation `/ˌhæbɪ'teɪʃn/` 居住，住所
 
 hack `/hæk/` 劈砍，乱踢，咳嗽，出租车，雇佣文人，非法侵入（计算机）
 
@@ -9435,9 +9495,15 @@ invoker `/ɪn'vəʊkə/` 调用者
 
 involution `/'ɪnvə'ljuːʃən/` （数学）乘方，卷入，复杂性
 
-involve `/ɪnˈvɑːlv/` 包含，涉及，卷入
+involve `/ɪnˈvɑːlv/` have or include (something) as a necessary or integral part or result.
 
-involvement `/ɪn'vɒlvmənt/` 卷入，牵连，参与，兴趣，恋爱关系，性关系
+> vt. 包含；牵涉；使陷于；潜心于
+>
+> SYN: refer, pertain, relate, concern, come to, bear on, touch
+>
+> Ex: my job involves a lot of traveling.
+>
+> DERIVATIVES: involvement `/ɪn'vɒlvmənt/` 卷入，牵连，参与，兴趣，恋爱关系，性关系
 
 inward `/'ɪnwəd/` 1 directed or proceeding towards the inside; coming in from outside. 2 variant of inwards.
 
@@ -9983,7 +10049,23 @@ landfill `/'lændfɪl/` 垃圾填埋地，垃圾填埋法
 
 landmass `/ˈlændˌmæs/` 大陆，陆地，地块
 
-landscape `/ˈlændskeɪp/` 景观，景色，风景画
+landscape `/ˈlændskeɪp/`
+
+> n. 1 all the visible features of an area of land, often considered in terms of their aesthetic appeal. 2 a format of printed matter or screen display that is winder than it is high.
+>
+> v. make (a garden or other area of ground) more attractive by altering the existing design, adding ornamental features, and planting trees and shrubs.
+>
+> adj. of or in a format of printed matter or screen display that is wider than it is high.
+>
+> n. 风景, 景色, 风景画, 风景照
+>
+> Ex: the soft colours of the Northumbrian landscape.
+>
+> Ex: if you have shot in portrait mode, Windows shows it in landscape.
+>
+> Ex: the site has been tastefully landscaped.
+>
+> Ex: all come complete with colour screens capable of displaying content in both portrait and landscape format.
 
 lane `/leɪn/` 小路，小巷，行车道，跑道，航道
 
@@ -10813,7 +10895,17 @@ mend `/mend/` 1 repair (something that is broken or damaged). 2 add fuel to (a f
 
 menial `/'miːniəl/` 佣人，仆人，卑贱的人
 
-mental `/'mentl/` 思想的，心理的，精神的，脑力的，精神病患者
+mental `/'mentl/` 1 relating to the mind. 2 relating to disorders of the mind. 3 mad; insane.
+
+> adj. 精神的, 头脑的, 心理的, 智力的, 精神病的
+>
+> SYN: intellectual, rational, noetic, moral, psychic, psychical, psychogenic
+>
+> Ex: mental faculties.
+>
+> Ex: mental health.
+>
+> Ex: I think he was a little worried that I might be mental.
 
 mention `/ˈmenʃn/` 提到，提及，说起
 
@@ -13783,7 +13875,15 @@ purchase `/'pɜːtʃəs/` 购买
 
 purchaser `/'pɜːtʃəsə(r)/` 买方，购买者
 
-purify `/'pjʊərɪfaɪ/` 净化，精炼
+purify `/'pjʊərɪfaɪ/` remove contaminants from.
+
+> t. 净化；使纯净
+>
+> vi. 变纯净；净化
+>
+> SYN: better, improve, amend, ameliorate, meliorate, change, alter
+>
+> Ex: they set out to purify art by reviving the spirit and style of early religious painting.
 
 purse `/pɜːs/` 钱包，小钱袋，(获奖)奖金
 
@@ -14287,7 +14387,13 @@ recount `/rɪˈkaʊnt/` 叙述，讲述，重新计算
 
 recourse `/rɪ'kɔːs/` 依赖，求助，追索权
 
-recreation `/ˌriːkriˈeɪʃn/` 娱乐，消遣，游戏
+recreation `/ˌriːkriˈeɪʃn/` 1 activity done for enjoyment when one is not working. 2 the action or process of creating something again.
+
+> n. 娱乐(方式); 消遣(方式)
+>
+> SYN: activity, rejuvenation
+>
+> Ex: the recreation of classical syllabic metres.
 
 rectangle `/'rektæŋɡl/` 长方形，矩形
 
@@ -15329,7 +15435,15 @@ secretary `/'sekrətri/` 部长，秘书，书记，大臣，写字台
 
 sector `/'sektə(r)/` （计算机）扇区，部门，部分，区域
 
-sedentary `/'sedntri/` 久坐的，固定不动的
+sedentary `/ˈsɛd(ə)nt(ə)ri/` (of a person) tending to spend much time seated; somewhat inactive.
+
+> dj. 坐着的, (指工作等)坐着干的, 案头的, (指人)不爱活动的
+>
+> SYN: inactive
+>
+> Ex: a sedentary job.
+>
+> Ex: lead a sedentary life.
 
 sediment `/ˈsedɪmənt/` 沉渣，沉淀物
 
