@@ -49,7 +49,7 @@ Core文件经由以下信号产生：
    - 非法指针转换
 5. 堆栈溢出
 
-### 3.2配置CoreDump
+### 3.2配置CoreDump捕获
 
 #### 3.2.1开启功能
 
@@ -70,6 +70,8 @@ linux默认不生成core文件，开启core文件生成功能有以下3种方法
    setrlimit(RLIMIT_CORE, &limit);
    ...
    ```
+
+也可以通过使用跨平台崩溃捕获工具：[BreakPad](..\LANG\C++\OTHER\break_pad_zh.md), CrashPad
 
 #### 3.2.2文件大小
 
@@ -257,7 +259,7 @@ TODO
 
 ## 4BreakPad
 
-[跨平台的Qt程序崩溃生成Dump文件Breakpad](https://blog.csdn.net/HeroGuo_JP/article/details/105387526)
+参考：[BreakPad](..\LANG\C++\OTHER\break_pad_zh.md)
 
 
 

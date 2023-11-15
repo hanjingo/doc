@@ -1,16 +1,8 @@
 # EOS开发常见错误
 
+[TOC]
 
-<!-- vim-markdown-toc GFM -->
 
-* [脏数据问题](#脏数据问题)
-* [eos无法启动](#eos无法启动)
-* [Error 3090003](#error-3090003)
-* [fetching abi for undefined: unknown key (eosio::chain::name)](#fetching-abi-for-undefined-unknown-key-eosiochainname)
-* [Error 3080004](#error-3080004)
-* [eos合约被冲掉的问题](#eos合约被冲掉的问题)
-
-<!-- vim-markdown-toc -->
 
 ## 脏数据问题  
 

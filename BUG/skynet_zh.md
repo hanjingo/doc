@@ -1,14 +1,8 @@
 # skynet问题
 
+[TOC]
 
-<!-- vim-markdown-toc GFM -->
 
-- [lua模块引用时找不到文件](#lua模块引用时找不到文件)
-- [热更新时print函数无法打印](#热更新时print函数无法打印)
-- [调用snax.exit()报错](#调用snaxexit报错)
-- [使用第三方库pbc时，报`module 'protobuf.c' not found`错误](#使用第三方库pbc时报module-protobufc-not-found错误)
-
-<!-- vim-markdown-toc -->
 
 
 ### lua模块引用时找不到文件

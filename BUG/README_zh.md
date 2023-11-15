@@ -6,6 +6,16 @@
 
 
 
+## Windows
+
+#### [崩溃捕获不起作用](win_zh.md)
+
+关键词：**windows**, **SetUnhandledExceptionFilter**, **breakpad**
+
+在Windows下通过函数`SetUnhandledExceptionFilter`或breakpad设置崩溃捕获时，有时候不起作用...
+
+
+
 ## linux
 
 #### [ubuntu的dash问题](linux_zh.md)
@@ -55,57 +65,6 @@ Lambda引用捕获局部变量时，由于离开作用域导致局部变量释�
 关键词：**C++**，**构造函数**，**线程安全**， **注册回调**
 
 多线程在构造函数里面暴露this指针很危险的...
-
-
-
-
-## eos
-
-#### [脏数据问题](eos_zh.md)
-
-关键词：**eos**，**脏数据**
-
-通过错误的方式关闭正在运行的eos系统，在eos下次启动时会报错...
-
-#### [eos无法启动](eos_zh.md)
-
-关键词：**eos**，**无法启动**
-
-eos无法启动...
-
-#### [没有导入系统私钥](eos_zh.md)
-
-关键词：**eos**，**系统私钥**, **Error 3090003**
-
-创建账户时报Error 3090003错误：`Provided keys, permissions, and delays do not satisfy declared authorizations...`
-
-#### [abi错误](eos_zh.md)
-
-关键词：**eos**，**abi**
-
-调用接口时报错：`Error: fetching abi for undefined: unknown key...`
-
-#### [执行命令超时](eos_zh.md)
-
-关键词：**eos**，**Error 3080004**, **超时**
-
-由于eos系统的限制，执行时间过长的的命令会报错：`Transaction exceeded the current CPU usage limit imposed on the transaction...`
-
-#### [eos合约被冲掉的问题](eos_zh.md)
-
-关键词：**eos**，**合约**
-
-一个eos账号只能部署一个合约...
-
-
-
-## Eos-GO
-
-#### [权限异常](eos-go_zh.md)
-
-关键词：**eos-go**
-
-权限异常导致报错`action declares irrelevant authority...`
 
 
 
@@ -210,6 +169,66 @@ TODO
 关键词：**ZeroMQ**，**HWN**，**高水位**
 
 TODO
+
+
+
+## Qt
+
+#### [Qt的信号槽被卡住](qt_zh.md)
+
+关键词：**Qt**，**信号槽**
+
+使用Qt信号槽时，如果在槽函数中执行非常耗时的操作，有可能会卡住整个信号槽机制，导致其它信号无响应...
+
+
+
+## eos
+
+#### [脏数据问题](eos_zh.md)
+
+关键词：**eos**，**脏数据**
+
+通过错误的方式关闭正在运行的eos系统，在eos下次启动时会报错...
+
+#### [eos无法启动](eos_zh.md)
+
+关键词：**eos**，**无法启动**
+
+eos无法启动...
+
+#### [没有导入系统私钥](eos_zh.md)
+
+关键词：**eos**，**系统私钥**, **Error 3090003**
+
+创建账户时报Error 3090003错误：`Provided keys, permissions, and delays do not satisfy declared authorizations...`
+
+#### [abi错误](eos_zh.md)
+
+关键词：**eos**，**abi**
+
+调用接口时报错：`Error: fetching abi for undefined: unknown key...`
+
+#### [执行命令超时](eos_zh.md)
+
+关键词：**eos**，**Error 3080004**, **超时**
+
+由于eos系统的限制，执行时间过长的的命令会报错：`Transaction exceeded the current CPU usage limit imposed on the transaction...`
+
+#### [eos合约被冲掉的问题](eos_zh.md)
+
+关键词：**eos**，**合约**
+
+一个eos账号只能部署一个合约...
+
+
+
+## Eos-GO
+
+#### [权限异常](eos-go_zh.md)
+
+关键词：**eos-go**
+
+权限异常导致报错`action declares irrelevant authority...`
 
 
 

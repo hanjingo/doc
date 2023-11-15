@@ -61,6 +61,12 @@ TODO
 
 TODO
 
+### 崩溃捕捉
+
+breakpad/crashpad
+
+TODO
+
 ---
 
 
@@ -72,6 +78,12 @@ TODO
 TODO
 
 ### 动态编译
+
+TODO
+
+### 编译加速
+
+IncrediBuild
 
 TODO
 
