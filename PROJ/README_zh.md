@@ -5,6 +5,7 @@
 - [持续集成与交付](cicd_zh.md)
 - [软件调试](debug_zh.md)
 - [运维技巧](dev_ops_zh.md)
+- [开发工具](dev_tool_zh.md)
 - [错误处理](error_resolve_zh.md)
 - [唯一ID的生成](id_zh.md)
 - [IM系统构建](im_zh.md)
