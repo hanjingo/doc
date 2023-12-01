@@ -9,9 +9,9 @@ Thomas S. Kane .
 - [CHAPTER5. Exploring for Topics](chapter5.md)
 - [CHAPTER6. Making a Plan](chapter6.md)
 - [CHAPTER7. Drafts and Revisions](chapter7.md)
-- [8. Beginning]
-- [9. Closing]
-- [10. Organizing the Middle]
+- [CHAPTER8. Beginning](chapter8.md)
+- [CHAPTER9. Closing](chapter9.md)
+- [CHAPTER10. Organizing the Middle](chapter10.md)
 - [11. Point of View, Persona, and Tone]
 - [12. Basic Structure]
 - [13. Paragraph Unity]
