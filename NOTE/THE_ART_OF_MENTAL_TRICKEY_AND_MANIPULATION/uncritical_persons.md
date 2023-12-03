@@ -1,5 +1,7 @@
 # Uncritical Persons (intellectually unskilled thinkers)
 
+
+
 ## Vocabulary
 
 preponderance

@@ -1,6 +1,8 @@
 # Introduction
 
-TO understand the human mind, understand self-deception -- Anon
+To understand the human mind, understand self-deception -- Anon
+
+
 
 ## Vocabulary
 

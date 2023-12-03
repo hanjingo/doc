@@ -392,8 +392,11 @@ b2.exe stage --stagedir="../bins/lib" --with-log
 编译安装：
 
 ```sh
-export BOOST_ROOT="/usr/local/boost-1.75"
-echo -e '\nexport BOOST_ROOT="/usr/local/boost-1.75"' >> ~/.bashrc
+export BOOST_ROOT=/usr/local/boost-1.75
+export BOOST_INCLUDE=/usr/local/boost-1.75/include
+export BOOST_LIB=/usr/local/boost-1.75/lib
+echo -e '\nexport BOOST_INCLUDE="/usr/local/boost-1.75/include"' >> ~/.bashrc
+echo -e '\nexport BOOST_LIB="/usr/local/boost-1.75/lib"' >> ~/.bashrc
 sudo mkdir -p ${BOOST_ROOT}
 mkdir -p ~/tmp
 cd ~/tmp

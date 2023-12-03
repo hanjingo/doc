@@ -3559,6 +3559,8 @@ conspicuously `/kən'spɪkjuəsli/` 明显的，超群的，惹人注目的
 
 conspiracy `/kən'spɪrəsɪ/` 阴谋，共谋
 
+conspirator `/kən'spɪrətə(r)/` 同谋者，阴谋者，反叛者
+
 constantly `/'kɒnstəntli/` 不断地，经常地
 
 constituent `/kən'stɪtjuənt/` 成分，选民，构成物
@@ -4057,6 +4059,8 @@ creature `/'kriːtʃə(r)/` 生物，动物，人
 
 creditor `/ˈkredɪtə(r)/` 债主，债权人
 
+credulity `/krɪ'djuːləti/` 轻信，易信
+
 creep `/kriːp/` 爬，爬行，蔓延
 
 crew `/kruː/` 全体工作人员，专业团队
@@ -4080,6 +4084,8 @@ critical `/ˈkrɪtɪkl/` 关键的，严重的，致命的
 criticism `/'krɪtɪsɪzəm/` 批评，评论
 
 criticize `/ˈkrɪtɪsaɪz/` 批评，批判，挑剔，指责，评论，评价
+
+critique `/krɪ'tiːk/` 批评，批评法，评论
 
 crony `/'krəʊnɪ/` a close friend or companion.
 
@@ -4112,6 +4118,8 @@ crossbar `/'krɒsbɑː(r)/` 横杆，（足球门的）横木，（自行车）�
 crosscut `/krɒskʌt/` 横切，正交，横越，捷径
 
 crossover `/ˈkrɔsˌoʊvər/` 穿越，交叉点，中转站，交叉风格
+
+crows `/krəʊ/` 乌鸦，啼叫，欢叫，报晓，啼叫，欢叫，夸口，洋洋自得
 
 crowd `/kraʊd/` 人群，群众，拥挤，涌入
 
@@ -5267,19 +5275,13 @@ divert `/daɪˈvɜːt/` 转向，绕路，转移
 
 divide `/dɪˈvʌɪd/` 分配，划分，分开，除以
 
-divine `/dɪˈvʌɪn/` 1 of or like God or a god. 2 discover (something) by guesswork or intuition. 3 have supernatural or magical insight into (future events).
+divine `/dɪˈvʌɪn/` adj.神圣的；神的; vt.推断; vi.预言；理解; n.牧师；神学家
 
+> 1 of or like God or a god. 2 discover (something) by guesswork or intuition. 3 have supernatural or magical insight into (future events).
+>
 > Ex: heroes with divine powers.
 >
 > Ex: frauds who claimed to divine the future in chickens' entrails.
->
-> adj.神圣的；神的
->
-> vt.推断
->
-> vi.预言；理解
->
-> n.牧师；神学家
 
 division `/dɪ'vɪʒn/` 划分，除法，部门，分开
 
@@ -5634,6 +5636,8 @@ ego `/ˈiː.ɡəʊ/` a person's sense of self-esteem or self-importance.
 > Ex: Readers have egos too.
 >
 > n. 自我；自负；自尊心
+
+egocentric `/ˌeɡəʊ'sentrɪk/` 自我中心的，利己的
 
 ### eh
 
@@ -6585,6 +6589,8 @@ fairground `/'feəɡraʊnd/` 集市，游乐场
 
 fairly `/ˈfeəli/` 公平的
 
+fairminded `/feər'maɪndɪd/` 大公无私
+
 fairness `/'feənəs/` 公平，公正
 
 fairy `/'feəri/` 仙女，小精灵，优雅的，幻想中的，虚构的
@@ -7295,6 +7301,8 @@ fringe `/frɪndʒ/` 边缘，刘海，穗，流苏
 
 frivolous `/'frɪvələs/` 轻佻的，妄动的，琐碎的，无足轻重的
 
+frog `/frɒɡ/` 蛙，嗓音沙哑，马的蹄叉，刀剑的挂环
+
 frontier `/'frʌntɪə(r)/` 边界，边境，尖端，边缘
 
 frost `/frɒst/` 霜冻，严寒
@@ -7613,6 +7621,8 @@ glorify `/'ɡlɔːrɪfaɪ/` 美化，赞美
 
 glossary `/ˈɡlɒs(ə)ri/` 术语表
 
+glosses `/ɡlɒs/` 光彩，光泽，虚饰，注释，注解，掩盖，（使）有光泽，作注释
+
 glove `/ɡlʌv/` 手套，给...戴手套
 
 glue `/ɡluː/` 胶水，粘贴
@@ -7856,6 +7866,8 @@ guilds `/'ɡɪldz/` 行业协会
 guilty `/'ɡɪlti/` 有罪的，内疚的
 
 gulf `/ɡʌlf/` 海湾，吞没
+
+gullibility `/ˌɡʌlə'bɪləti/` 易受骗
 
 gulp `/ɡʌlp/` 吞咽，吸入，狼吞虎咽
 
@@ -8741,6 +8753,8 @@ inclination `/ˌɪnklɪˈneɪʃn/` 1 a person's natural tendency or urge to act 
 >
 > n.倾向；意愿；趋势；斜坡；倾斜度
 
+incline `/ɪn'klaɪn/` 倾斜，斜坡，斜面，(使)倾向于，向前弯，(使)倾斜
+
 inclosure `/ɪn'kləʊʒə/` 围笼，附件
 
 include `/ɪn'kluːd/` 1 comprise or contain as part of a whole. a make part of a whole or set. 2 make part of a whole or set.
@@ -9229,15 +9243,11 @@ intangible `/ɪn'tændʒəbl/` 无形的，难以明了的
 
 integer `/'ɪntɪdʒə(r)/` 整数，完整的事物，整体
 
-integral `/ˈɪntɪɡrəl/` 
+integral `/ˈɪntɪɡrəl/` n. （微）积分; adj. 构成整体所必需的
 
 > n. 1 the result of a mathematical integration; F(x) is the integral of f(x) if dF/dx = f(x).
 >
 > adj. 1 existing as an essential constituent or characteristic. 2 constituting the undiminished entirety; lacking nothing essential especially not damaged.
->
-> n. （微）积分
->
-> adj. 构成整体所必需的
 >
 > SYN: calculation, computation, figuring, reckoning
 >
@@ -9548,6 +9558,8 @@ ironic `/aɪˈrɒnɪk/` using or characterized by irony.
 ironically `/aɪ'rɒnɪkli/` 讽刺地，说反话地
 
 irony `/'aɪrəni/` 反讽，讽剌之事
+
+irrational `/ɪ'ræʃənl/` 无理数，无理性的，不合理的
 
 irreducibility `/ɪrɪdjuːsə'bɪlɪtɪ/` （数学）不可约性
 
@@ -13719,6 +13731,8 @@ prompt `/prɒmpt/` 促使，导致，鼓励，督促，提示，准时的
 
 prone `/prəʊn/` 易于...的，有...倾向的，俯卧的
 
+propaganda `/ˌprɒpə'ɡændə/` 宣传，宣传的内容
+
 propagate `/ˈprɒpəɡeɪt/` 传播，宣传，繁殖，增值
 
 propagation `/ˌprɒpə'ɡeɪʃn/` 传播，宣传，繁殖，增值
@@ -15474,6 +15488,8 @@ selfish `/'selfɪʃ/` 自私的，利己的
 semantic `/sɪˈmæntɪk/` 语义的
 
 semantically `/sɪ'mæntɪkli/` 语义上的
+
+semanticist `/sə'mæntəsɪst/` 语意学学者
 
 semantics `/sɪ'mæntɪks/` 语义学，符号学
 
