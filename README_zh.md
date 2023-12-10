@@ -309,6 +309,7 @@ Qt
 - [ASSIC码表](OTHERS/assic_table_zh.md)
 - [astyle代码格式化工具](OTHERS/astyle_zh.md)
 - [chatgpt手册](OTHERS/chatgpt.md)
+- [数据恢复](OTHERS/data_recover_zh.md)
 - [emacs快捷键](OTHERS/emacs_shortcut_zh.md)
 - [git教程](OTHERS/git_zh.md)
 - [代理设置](OTHERS/proxy_zh.md)

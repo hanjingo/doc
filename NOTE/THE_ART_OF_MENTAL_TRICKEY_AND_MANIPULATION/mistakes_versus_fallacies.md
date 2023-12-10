@@ -4,12 +4,12 @@
 
 ## Vocabulary
 
-inadvertently
+inadvertently `/ˌɪnəd'vɜːtəntli/` 不注意地，疏忽地，非故意地
 
-unintentionally
+unintentional `/ˌʌnɪn'tenʃənl/` 非故意的，无心的
 
-innocently
+innocent `/ˈɪnəsnt/` 清白的，无害的，无辜的，无知的，天真的
 
-reverts
+revert `/rɪˈvɜːt/` 恢复，还原，归还
 
-conclude
+conclude `/kənˈkluːd/` 推断，断定，终止，结束

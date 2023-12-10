@@ -17,8 +17,6 @@ Richard Paul, Linda Elder
 - [Analogies and Metaphors](analogies_and_metaphors.md)
 - [44 Foul Ways to Win an Argument](44_foul_ways_to_win_an_argument.md)
 - [44 Foul Ways to Win an Argument (chart)](44_foul_ways_to_win_an_argument_chart.md)
-- [Fallacy Detection: Analyzing a Presidential Speech]
-- [Fallacy Detection: Analyzing a Speech from a Presidential Candidate]
-- [Avoid Two Extremes]
-- [Conclusion: Fallacies in an Ideal (and in a Real) World]
+- [Avoid Two Extremes](avoid_two_extremes.md)
+- [Conclusion: Fallacies in an Ideal (and in a Real) World](conclusion.md)
 

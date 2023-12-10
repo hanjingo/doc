@@ -34,46 +34,46 @@ diverse `/daɪˈvɜːs/` 多种多样的，不同的
 
 frog `/frɒɡ/` 蛙，嗓音沙哑，马的蹄叉，刀剑的挂环
 
-domesticated
+domestic `/də'mestɪk/` 家庭的，国内的，驯养的，佣人，家仆
 
-manner
+manner `/ˈmanə/` 方式，举止，风俗，礼仪
 
-obedience
+obedience `/ə'biːdiəns/` 服从，顺从
 
-predispositions
+predisposition `/ˌpriːdɪspə'zɪʃn/` 倾向，癖性，（易患病的）体质
 
-associations
+association `/əˌsəʊʃi'eɪʃn/` 协会；社团；交往；联想；联合；结合
 
-adhered
+adhere `/ədˈhɪə(r)/` vi. 黏附, 附着, 坚持, 支持
 
-cautious
+cautious `/'kɔːʃəs/` 谨慎的，十分小心的
 
-tendency
+tendency `/ˈtɛndənsi/` 倾向，趋势，派别
 
-egocentrically
+egocentric `/ˌeɡəʊ'sentrɪk/` 自我中心的，利己的
 
-ethnocentrically
+ethnocentrically `/ˌeθnəʊ'sentrɪzəm/` 民族优越感
 
-compel
+compel `/kəm'pel/` v. 强迫；迫使；使不得已
 
-mutual
+mutual `/ˈmjuːtʃʊəl/` 相互的，关系对等的，共用的，互助的
 
-virtues
+virtue `/'vɜːtʃuː/` 美德，德行，优点，贞操
 
-treacherous
+treacherous `/ˈtretʃərəs/` 背叛的，奸诈的，不可信任的
 
-warlike
+warlike `/'wɔːlaɪk/` 好战的，战争的
 
-cruel
+cruel `/ˈkruː(ə)l/` adj.残酷的；残忍的；引起痛苦的
 
-readily
+readily `/'redɪli/` 容易的，迅速的，乐意的，欣然
 
-caricatures
+caricature `/ˈkærɪkətʃʊə(r)/` 漫画，讽刺画，夸张的描述
 
-aggrandizing
+aggrandise `/əɡ'rændaɪz/` 扩大某人的权力
 
-egocentrically
+egocentric `/ˌeɡəʊ'sentrɪk/` 自我中心的，利己的
 
-sociocentrically
+sociocentrically `/səʊsɪəʊ'sentrɪk/` 社会中心论的，群体中心论的
 
-boggles
+boggle `/'bɒɡl/` 犹豫，吃惊，困惑

@@ -16,7 +16,7 @@
 | [**L**](#L) | [la](#la) |        |        |        | [le](#le) |        |        |        | [li](#li) |        |        |        |        |        | [lo](#lo) |        |        |        |        |        | [lu](#lu) | [lv](#lv) |        |        |        |   |
 | [**M**](#M) | [ma](#ma) |        |        |        | [me](#me) |        |        |        | [mi](#mi) |        |        |        |        | [mn](#mn) | [mo](#mo) |        |        |        |        |        | [mu](#mu) |        |        |        | [my](#my) |   |
 | [**N**](#N) | [na](#na) |        |        |        | [ne](#ne) |        |        |        | [ni](#ni) |        |        |        |        |        | [no](#no) |        |        |        | [ns](#ns) |        | [nu](#nu) |        |        |        |        |   |
-| [**O**](#O) | [oa](#oa) | [ob](#ob) | [oc](#oc) | [od](#od) | [oe](#oe) | [of](#of) |        |        |        |        |        | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |        | [or](#or) | [os](#os) |        | [ou](#ou) | [ov](#ov) | [ow](#ow) |        | [oy](#oy) |   |
+| [**O**](#O) | [oa](#oa) | [ob](#ob) | [oc](#oc) | [od](#od) | [oe](#oe) | [of](#of) |        |        |        |        |        | [ol](#ol) | [om](#om) | [on](#on) | [oo](#oo) | [op](#op) |        | [or](#or) | [os](#os) |        | [ou](#ou) | [ov](#ov) | [ow](#ow) |        | [oy](#oy) | [oz](#oz) |
 | [**P**](#P) | [pa](#pa) |        |        |        | [pe](#pe) |        |        | [ph](#ph) | [pi](#pi) |        |        | [pl](#pl) |        |        | [po](#po) |        |        | [pr](#pr) | [ps](#ps) |        | [pu](#pu) |        |        |        | [py](#py) |   |
 | [**Q**](#Q) |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        | [qu](#qu) |        |        |        |        |   |
 | [**R**](#R) | [ra](#ra) |        |        |        | [re](#re) |        |        | [rh](#rh) | [ri](#ri) |        |        |        |        |        | [ro](#ro) |        |        |        |        |        | [ru](#ru) | [rv](#rv) |        |        | [ry](#ry) |   |
@@ -35,15 +35,11 @@
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
-abandon `/əˈbændən/`
+abandon `/əˈbændən/` v. （不顾责任，义务等）离弃，遗弃，抛弃；（不得已）舍弃，丢弃，离开；停止（支持或帮助）；放弃（信念）；中止；放弃；不再有；陷入，沉湎于（某种情感）；n. 放任；放纵
 
 > n. 1 the trait of lacking restraint or control; reckless freedom from inhibition or worry. 2 a feeling of extreme emotional intensity.
 >
 > v. 1 forsake, leave behind. 2 stop maintaining or insisting on; of ideas or claims. 3 give up with the intent of never claiming again. 4 leave behind empty; move out of. 5 leave someone who needs or counts on you; leave in the lurch.
->
-> v. （不顾责任，义务等）离弃，遗弃，抛弃；（不得已）舍弃，丢弃，离开；停止（支持或帮助）；放弃（信念）；中止；放弃；不再有；陷入，沉湎于（某种情感）；
->
-> n. 放任；放纵
 >
 > SYN(n.1): wantonness, unconstraint
 >
@@ -67,21 +63,18 @@ abbreviation `/əˌbriːviˈeɪʃn/` 缩写，缩略，省略号
 
 abhor `/əb'hɔː(r)/` 憎恶，厌恶，痛恨
 
-abhorrent `/əbˈhɒrənt/` inspiring disgust and loathing; repugnant.
+abhorrent `/əbˈhɒrənt/` adj. 令人厌恶的；(be ～ of)憎恶的；讨厌的；(be ～ to)相抵触的；不符的；(be ～ from)不相容的；背离的；(be ～ from)持异议的；强烈反对的； adv. 令人厌恶地
 
-> adj. 令人厌恶的；(be ～ of)憎恶的；讨厌的；(be ～ to)相抵触的；不符的；(be ～ from)不相容的；背离的；(be ～ from)持异议的；强烈反对的
-> adv. 令人厌恶地
+> inspiring disgust and loathing; repugnant.
 >
 > SYN: offensive
 >
 > Ex: It's abhorrent to my idea.
 
-abide `/əˈbʌɪd/` 1 (abide by) accept or act in accordance with (a rule, decision, or recommendation). 2 (can/could abide) be able to tolerate (someone or something). 3 (of a feeling or memory) continue without fading or being lost.
+abide `/əˈbʌɪd/` vt. 容忍, 忍受, 等候； vi. 逗留, 居住
 
-> vt. 容忍, 忍受, 等候
->
-> vi. 逗留, 居住
->
+> 1 (abide by) accept or act in accordance with (a rule, decision, or recommendation). 2 (can/could abide) be able to tolerate (someone or something). 3 (of a feeling or memory) continue without fading or being lost.
+> 
 > Ex: I said I would abide by their decision.
 
 abiding `/əˈbaɪdɪŋ/` 持久的，永久的，由来已久的
@@ -92,11 +85,13 @@ ablaze `/əˈbleɪz/` 着火，燃烧，闪耀
 
 ablest `/'eɪbl/` 能够的，能干的
 
-abolish `/əˈbɒlɪʃ/` put an end to.
+abolish `/əˈbɒlɪʃ/` vt. 废除；革除；消灭
 
+> put an end to.
+>
 > SYN: annul, abrogate, cancel, destroy, do away with, eliminate, end, eradicate, finish, get rid of, invalidate, nullify, overturn, put an end to, quash, repeal, remove, rescind, revoke, suppress, terminate, withdraw.
-> 
-> vt. 废除；革除；消灭
+
+aboriginal `/æbə'rɪdʒɪn(ə)l/` adj. (据文献记载)最早就存在的，最早就有的；n. 土生动物(或植物)；n. 土著人特征；adv. 最早就存在；最早就有
 
 abort `/əˈbɔː(r)t/` 中止，中断，终止
 
@@ -116,15 +111,11 @@ abridge `/əˈbrɪdʒ/` 删节，节略
 
 abridgement `/ə'brɪdʒmənt/` 节略，删节本，限制，缩短
 
-abroad `/əˈbrɔːd/` 
+abroad `/əˈbrɔːd/` > adv. 到国外；广为流传； adj. 在国外；海外(一般作表语)
 
 > adv. 1 in or to a foreign country or countries. 2 in different directions; over a wide area. 3 out of doors. 4 wide of the mark; in error.
 > 
 > n. foreign countries considered collectively.
-> 
-> adv. 到国外；广为流传
->
-> adj. 在国外；海外(一般作表语)
 >
 > Ex: we usually go abroad for a week in May.
 >
@@ -194,9 +185,9 @@ accordingly `/ə'kɔːdɪŋli/` 因此，相应的，于是
 
 accordion `/əˈkɔːdiən/` 手风琴
 
-accountable `/əˈkaʊntəbl/` 1 (of a person, organization, or institution) required or expected to justify actions or decisions; responsible. 2 explicable; understandable.
+accountable `/əˈkaʊntəbl/` adj. 负有责任的, 应对自己的行为做出说明的
 
-> adj. 负有责任的, 应对自己的行为做出说明的
+> 1 (of a person, organization, or institution) required or expected to justify actions or decisions; responsible. 2 explicable; understandable.
 >
 > SYN: responsible
 >
@@ -204,17 +195,19 @@ accountable `/əˈkaʊntəbl/` 1 (of a person, organization, or institution) req
 
 accountant `/ə'kaʊntənt/` 会计师
 
+accredit `/ə'kredɪt/` vt. 归于；认为；授权；委派；鉴定合格
+
 accrual `/ə'kruːəl/` 自然增长，收益的
 
-accurate `/ˈækjərət/`  1 (especially of information, measurements, or predictions) correct in all details; exact. 2 (with reference to a weapon, missile, or shot) capable of or successful in reaching the intended target.
+accurate `/ˈækjərət/`  adj. 准确的；精确的
 
-> adj. 准确的；精确的
+> 1 (especially of information, measurements, or predictions) correct in all details; exact. 2 (with reference to a weapon, missile, or shot) capable of or successful in reaching the intended target.
 > 
 > Ex: an accurate assessment.
 >
 > Ex: reliable, accurate rifles.
 > 
-> DERIVATIVES: accurately `/'ækjərətli/` 精确地，准确地
+> DERIVS: accurately `/'ækjərətli/` 精确地，准确地
 
 accusation `/ˌækjuˈzeɪʃn/` 指控，控告，谴责，起诉
 
@@ -226,7 +219,7 @@ accustom `/əˈkʌstəm/` 习惯，适应
 
 achieve `/ə'tʃiːv/` 完成，达到，实现
 
-acid `/ˈæsɪd/` 酸的，酸性的
+acid `/ˈæsɪd/` n. 酸；酸性物质；<俚>迷幻药；adj. 酸的；酸性的；尖酸的
 
 acknowledge `/ək'nɒlɪdʒ/` 承认，公认，告知收到
 
@@ -246,9 +239,9 @@ acronym `/ˈækrənɪm/` 首字母缩略语
 
 activation `/ˌæktɪ'veɪʃn/` 激活，催化作用
 
-activism `/'æktɪvɪz(ə)m/` a policy of taking direct and militant action to achieve a political or social goal
+activism `/'æktɪvɪz(ə)m/` n. 行动（第一）主义，激进主义；触动论
 
-> n. 行动（第一）主义，激进主义；触动论
+> a policy of taking direct and militant action to achieve a political or social goal
 >
 > SYN: policy
 >
@@ -282,15 +275,11 @@ addend `/ə'dend/` 加数
 
 adder `/'ædə(r)/` 蝰蛇，加法器
 
-addict `/ˈæd.ɪkt/` 
+addict `/ˈæd.ɪkt/` n. （尤对有害之物）有瘾的人，入迷的人；吸毒成瘾的人，瘾君子； v. 使沉溺；使上瘾；使自己沾染（某些恶习）
 
 > n. 1 someone who is so ardently devoted to something that it resembles an addiction. 2 someone who is physiologically dependent on a substance; abrupt deprivation of the substance produces withdrawal symptoms. 
 >
 > v. 1 to cause (someone or oneself) to become dependent (on something, especially a narcotic drug).
->
-> n. （尤对有害之物）有瘾的人，入迷的人；吸毒成瘾的人，瘾君子；
->
-> v. 使沉溺；使上瘾；使自己沾染（某些恶习）
 >
 > SYN(n.): enthusiast, partisan, partizan, drug user, substance abuser, user
 >
@@ -299,22 +288,22 @@ addict `/ˈæd.ɪkt/`
 > Ex: a drug addict too far gone for rehabilitation.
 >
 > Ex: he's addicted to computers.
->
-> DERIVATIVES: addictive
+
+addiction `/ə'dɪkʃn/` n. 沉溺；上瘾
 
 additive `/'ædətɪv/` 添加剂，添加的
 
-adequate `/'ædɪkwət/` 足够的，适当的，能够胜任的
+adequate `/'ædɪkwət/` adj. 足够的，适当的，能够胜任的
 
-adhere `/ədˈhɪə(r)/` 1 stick fast to (a surface or substance). 2 believe in and follow the practices of.
+adhere `/ədˈhɪə(r)/` vi. 黏附, 附着, 坚持, 支持
 
-> vi. 黏附, 附着, 坚持, 支持
+> 1 stick fast to (a surface or substance). 2 believe in and follow the practices of.
 >
 > Ex: paint won't adhere well to a greasy surface.
 >
 > Ex: I do not adhere to any organized religion.
 >
-> DERIVATIVES: adherence `/əd'hɪərəns/` 坚持，固守，黏附
+> DERIVS: adherence `/əd'hɪərəns/` 坚持，固守，黏附
 
 adhesive `/ədˈhiːsɪv/` 粘合剂，粘着剂
 
@@ -322,9 +311,9 @@ adieu `/ə'djuː/` 再见，再会，告辞
 
 adjacency `/ə'dʒeɪsnsɪ/` 邻近，邻接
 
-adjacent `/əˈdʒeɪsnt/` 1 next to or adjoining something else. 2 next to very near a specified location.
+adjacent `/əˈdʒeɪsnt/` adj. 邻近的
 
-> adj. 邻近的
+> 1 next to or adjoining something else. 2 next to very near a specified location.
 >
 > SYN: close, connected, near, nigh
 >
@@ -344,11 +333,13 @@ administer `/ədˈmɪnɪstər/` 管理，掌管，治理
 
 administration `/ədˌmɪnɪ'streɪʃn/` 管理，行政，任期，实施
 
+> DERIVS: administrative `/ədˈmɪnɪstrətɪv/` adj. 行政的，管理的；经营的；后方勤务的
+
 admiral `/'ædmərəl/` 舰队司令，海军上将
 
-admiration `/ˌædməˈreɪʃn/` 1 pleased contemplation. 2 respect; warm approval. 3.an object of this.
+admiration `/ˌædməˈreɪʃn/` n. 钦佩；赞赏
 
-> n. 钦佩；赞赏
+> 1 pleased contemplation. 2 respect; warm approval. 3.an object of this.
 >
 > Ex: Admiration for winners, fear being losers.
 
@@ -376,9 +367,9 @@ adorning `/ə'dɔːnɪŋ/` 修饰，装饰
 
 adulterated `/ə'dʌltəreɪtɪd/` 掺入次品的
 
-adulthood `/'ædʌlthʊd/` the state or condition of being fully grown or mature.
+adulthood `/'ædʌlthʊd/` n. 成人期
 
-> n. 成人期
+> the state or condition of being fully grown or mature.
 >
 > Ex: the crucial years between adolescence and adulthood.
 
@@ -392,9 +383,9 @@ advantageous `/ˌædvən'teɪdʒəs/` 有利的，有助的，有益的
 
 advent `/'ædvent/` 出现，到来
 
-adverbials `/æd'vɜːbiəlz/` 1 a word or phrase that modifies or qualifies another word or a group of words, expressing a relation of place, time, manner, degree, etc...
+adverbials `/æd'vɜːbiəlz/` 状语 
 
-> 状语
+> 1 a word or phrase that modifies or qualifies another word or a group of words, expressing a relation of place, time, manner, degree, etc...
 >
 > Ex: Different adverbials can go in different places in a sentence.
 
@@ -404,9 +395,9 @@ adverse `/'ædvɜːs/` 不利的，逆向的，有害的
 
 adversity `/əd'vɜːsəti/` 不幸，灾难，逆境
 
-advert `/ˈadvəːt/` an advertisement.
+advert `/ˈadvəːt/` n.广告; vt.注意；谈到
 
-> n.广告; vt.注意；谈到
+> an advertisement.
 > 
 > Ex: the advert currently runs during televised matches.
 
@@ -414,25 +405,21 @@ advertisement `/əd'vɜːtɪsmənt/` 广告
 
 advise `/əd'vaɪz/` 劝告，通知，忠告，提建议
 
-advisor `/əd'vaizə/` a person who gives advice in a particular field
+advisor `/əd'vaizə/` n. 顾问;劝告者 
 
-> n. 顾问;劝告者
+> a person who gives advice in a particular field
 >
 > SYN: authority
 >
 > Ex: His amiability condemns him to being a constant advisor to other people's troubles.
 >
-> DERIVATIVES: advisory `/əd'vaɪzəri/` 顾问的，咨询的，报告
+> DERIVS: advisory `/əd'vaɪzəri/` 顾问的，咨询的，报告
 
-advocate `/'ædvəkeɪt/` 
+advocate `/'ædvəkeɪt/` vt. 提倡，主张，拥护； n. 拥护者；提倡者；律师；辩护者
 
 > n. 1 a person who pleads for a cause or propounds an idea. 2 a lawyer who pleads cases in court.
 >
 > v. 1 push for something. 2 speak, plead, or argue in favour of.
->
-> vt. 提倡，主张，拥护
->
-> n. 拥护者；提倡者；律师；辩护者
 >
 > SYN(n.): person, individual, someone, somebody, mortal, soul, lawyer
 >
@@ -476,15 +463,11 @@ affinity `/əˈfɪn.ə.ti/` 姻亲，近似，密切关系，吸引力
 
 affirm `/ə'fɜːm/` 证实，断言，肯定
 
-affirmative `/ə'fɜːmətɪv/` 
+affirmative `/ə'fɜːmətɪv/` adj. 肯定的；正面的; n. 肯定词(如“yes”)；肯定语；(辩论中的)正方；赞成；肯定
 
 > adj. 1 aggreeing with or consenting to a statement or request. 2 supportive, hopeful, or encouraging. 3 stating that a fact is so; making an assertion.
 >
 > n. 1 a statement of agreement with or consent to an assertion or request. 2 a word used in making assertions or to express consent.
-> 
-> adj. 肯定的；正面的
->
-> n. 肯定词(如“yes”)；肯定语；(辩论中的)正方；赞成；肯定
 >
 > Ex: In a few affirmative structures the verb can come before the subject.
 
@@ -494,7 +477,7 @@ afflict `/ə'flɪkt/` 折磨，使痛苦
 
 affluence `/'æfluəns/` 富裕
 
-affluent `/ˈæfluənt/` 富裕的，丰富的
+affluent `/ˈæfluənt/` adj. 富裕的；n. 支流
 
 afford `/ə'fɔːd/` 提供，给予，花费的起，能够做，承担得起
 
@@ -505,6 +488,8 @@ afterward `/'ɑːftəwəd/` 后来，以后
 [回到A](#A)--[回到顶部](#英汉词典)
 
 agency `/'eɪdʒənsi/` 代理，政府机构
+
+aggrandise `/əɡ'rændaɪz/` 扩大某人的权力
 
 aggravate `/'æɡrəveɪt/` 恶化，严重
 
@@ -528,9 +513,9 @@ agitation `/ˌædʒɪˈteɪʃn/` 摇动，煽动，忧虑
 
 agnostic `/æɡ'nɒstɪk/` 不可知论者
 
-agonize `/ˈægəˌnaɪz/` 1.undergo anguish; suffer agony. 2.expressing agony
+agonize `/ˈægəˌnaɪz/` v. (使)极度痛苦
 
-> v. (使)极度痛苦
+> 1.undergo anguish; suffer agony. 2.expressing agony
 >
 > SYN: hurt, labour, struggle, suffer, worry, wrestle
 
@@ -546,15 +531,11 @@ ahead `/əˈhɛd/` 先前，向前，今后，领先，在...前，先进
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
-aid `/eɪd/` 
+aid `/eɪd/` n. 援助；帮助；救援；助手；辅助物；v. 辅助；援助；接济
 
 > n. 1 help, typically of a practical nature. 2 a grant of subsidy or tax to a king or queen. 
 >
 > v. 1 help or support (someone or something) in the achievement of something.
->
-> n. 援助；帮助；救援；助手；辅助物
->
-> v. 辅助；援助；接济
 >
 > Ex: she walked with the aid of a Zimmer frame.
 >
@@ -566,9 +547,9 @@ aim `/eɪm/` 目标，瞄准，对准，针对
 
 airborne `/'eəbɔːn/` 升空，空运的，空中传播的
 
-airfare `/'eəfeə(r)/` the fare charged for traveling by airplane
+airfare `/'eəfeə(r)/` n. 机票价格 
 
-> n. 机票价格
+> the fare charged for traveling by airplane
 >
 > SYN: fare, transportation
 >
@@ -596,9 +577,9 @@ akin `/əˈkɪn/` 类似的
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
-alas `/əˈlas/` used to express grief, pity, or concern.
+alas `/əˈlas/` int. 唉；哎呀(表示悲伤、忧愁、恐惧等) 
 
-> int. 唉；哎呀(表示悲伤、忧愁、恐惧等)
+> used to express grief, pity, or concern.
 >
 > Ex: alas, my funds have some limitations.
 
@@ -612,10 +593,10 @@ alchemist `/'ælkəmɪst/` 炼丹术士，炼金术士
 
 alchemy `/ˈælkəmi/` 炼金术，神秘力量，魔力
 
-alcohol `/ˈalkəhɒl/` 1 a colourless volatile flammable liquid which is produced by the natural fermentation of sugars and is the intoxicating constituent of wine, beer, spirits, and other drinks, and is also used as an industrial solvent and as fuel.
+alcohol `/ˈalkəhɒl/` n.酒精；酒；乙醇 
 
-> n.酒精；酒；乙醇
->
+> 1 a colourless volatile flammable liquid which is produced by the natural fermentation of sugars and is the intoxicating constituent of wine, beer, spirits, and other drinks, and is also used as an industrial solvent and as fuel.
+> 
 > Ex: the use of petrol containing alcohol.
 
 ale `/eɪl/` 麦芽酒
@@ -662,15 +643,11 @@ allowance `/ə'laʊəns/` 津贴，限额，定量，折扣，零用钱
 
 alloy `/'ælɔɪ/` 合金，掺杂质
 
-allure `/ə'lʊə(r)/`
+allure `/ə'lʊə(r)/` v. 诱惑；吸引；n. 诱惑力；吸引力
 
 > n. the quality of being powerfully and mysteriously attractive or fascinating.
 >
 > v. powerfully attract or charm; tempt.
->
-> v. 诱惑；吸引
->
-> n. 诱惑力；吸引力
 > 
 > SYN: attract, beguile, bewitch, cajole, charm, coax, decoy, draw, entice, fascinate, inveigle, lead on, lure, magnetize, persuade, seduce, tempt.
 
@@ -690,25 +667,23 @@ alphabet `/ˈælfəbet/` 字母表
 
 alphabetical `/ˌælfəˈbetɪkl/` 按字母顺序排列的，按字母表顺序的
 
-alter `/ˈɔːltə/` 1 make or become different; change. 2 castrate or spay.
+alter `/ˈɔːltə/` v. 改变；更改；阉割；切除卵巢
 
-> v. 改变；更改；阉割；切除卵巢
+> 1 make or become different; change. 2 castrate or spay.
 >
 > SYN(改变，更改): adapt, adjust, amend, become different, convert, edit, emend, enlarge, make different, modify, reconstruct, reduce, reform, remake, remodel, reorganize, reshape, revise, transform, vary.
 
 alteration `/ˌɔːltə'reɪʃn/` 改变，变更
 
-alternative `/ɔːlˈtəːnətɪv/` 
+alternative `/ɔːlˈtəːnətɪv/` adj.两者择一的；供选择的；非主流的；n.二者择一；供替代的选择
 
 > adj. 1 (of one or more things) available as another possibility or choice. 2 relating to activities that depart from or challenge traditional norms.
 >
 > n. one of two or more available possibilities.
 >
-> adj.两者择一的；供选择的；非主流的
->
-> n.二者择一；供替代的选择
->
 > Ex: the various alternative methods for resolving disputes.
+>
+> DERIVS: alternate `/ɔːlˈtɜːnət/` adj. 轮流的, 交替的；间隔的；代替的；vt. & vi. (使)交替, (使)轮换
 
 altitude `/ˈæltɪtjuːd/` 海拔，高地
 
@@ -740,6 +715,8 @@ ambitious `/æm'bɪʃəs/` 有雄心的，野心勃勃的，有抱负的
 
 ambivalent `/æmˈbɪvələnt/` 矛盾的
 
+ambush `/ˈæmbʊʃ/` n. 埋伏；伏击；埋伏着的人, 伏兵；设埋伏地点, 伏击处；vt. 埋伏；伏击；vi. 埋伏；埋伏着
+
 ameliorate `/ə'miːliəreɪt/` 改善，变好
 
 amenable `/əˈmiːnəbl/` 顺从的，愿意的
@@ -770,7 +747,7 @@ amortize `/ə'mɔːtaɪz/` 分期偿还，摊还
 
 ampersand `/ˈampəsand/` 符号&
 
-ample `/ˈæmpl/` 充足的，硕大的
+ample `/ˈæmpl/` adj. 充足的，硕大的
 
 amply `/'æmpli/` 足够的，详细的，充分的
 
@@ -778,9 +755,9 @@ amplify `/ˈæmplɪfaɪ/` 放大，增强，充实
 
 amsterdam `/ˈæmstəˈdæm/` 阿姆斯特丹
 
-amused `/ə'mju:zd/` finding something funny or entertaining.
+amused `/ə'mju:zd/` adj. 愉快的；顽皮的；被逗乐的；觉得好笑的
 
-> adj. 愉快的；顽皮的；被逗乐的；觉得好笑的
+> finding something funny or entertaining.
 >
 > SYN: pleased
 >
@@ -804,11 +781,11 @@ anarchy `/'ænəki/` 无政府状态，混乱
 
 anatomy `/əˈnætəmi/` 解刨，解刨学，人体
 
-ancestor `/ˈænsestə(r)/` a person, typically one more remote than a grandparent, from whom one is descended.
+ancestor `/ˈænsestə(r)/` n. 祖先, 祖宗; 原型, 先驱
 
-> Ex: he could trace his ancestors back to James the First.
+> a person, typically one more remote than a grandparent, from whom one is descended.
 >
-> n. 祖先, 祖宗; 原型, 先驱
+> Ex: he could trace his ancestors back to James the First. 
 
 anchor `/'æŋkə(r)/` 锚定，抛锚，停泊，新闻主播
 
@@ -822,9 +799,9 @@ anew `/ə'njuː/` 重新，再
 
 angle `/ˈaŋɡl/` 角，角度，视角，拐角，斜移，面向
 
-angry `/'æŋgrɪ/` 1.feeling or showing anger. 2.inflamed; painful. 3.suggesting anger.
+angry `/'æŋgrɪ/` adj. 生气的；愤怒的；（伤口等）肿痛的，发炎的；（天空或海洋）天昏地暗的，狂风暴雨的
 
-> adj. 生气的；愤怒的；（伤口等）肿痛的，发炎的；（天空或海洋）天昏地暗的，狂风暴雨的
+> 1.feeling or showing anger. 2.inflamed; painful. 3.suggesting anger.
 >
 > SYN: aerated, annoyed, apoplectic, bad-tempered, bitter, bristling, choked, choleric, disgruntled, enraged, exasperated, fiery, fuming, furious, heated, hostile, hot under the collar, ill-tempered, incensed, indignant, infuriated, in high dudgeon, irascible, irate, livid, mad, miffed, outraged, peeved, piqued, provoked, put out, raging, ratty, raving, resentful, riled, seething, shirty, sore, vexed, ugly, wild, wrathful.
 
@@ -832,9 +809,9 @@ angular `/'æŋɡjələ(r)/` 有角的，消瘦的，笨拙的
 
 animate `/'ænɪmeɪt/` 赋予生命，鼓励，有生命力的
 
-animosity `/ˌanɪˈmɒsɪti/` strong hostility.
+animosity `/ˌanɪˈmɒsɪti/` n.憎恶；仇恨
 
-> n.憎恶；仇恨
+> strong hostility.
 >
 > Ex: he no longer felt any animosity towards her.
 
@@ -842,15 +819,15 @@ anomalous `/ə'nɒmələs/` 反常的，不规则的
 
 anomaly `/əˈnɒməli/` 异常，反常
 
-anonymity `/ˌænəˈnɪməti/` 1 the situation in which someone's name is not given or known. 2 a situation in which a person is not known by or spoken of by name.
+anonymity `/ˌænəˈnɪməti/` n. 匿名；作者不详；匿名者，无名者
 
-> n. 匿名；作者不详；匿名者，无名者
+> 1 the situation in which someone's name is not given or known. 2 a situation in which a person is not known by or spoken of by name.
 >
 > SYN: obscurity
 >
 > Ex: Our company promises to preserve the anonymity of all its clients.
 > 
-> DERIVATIVES: anonymous `/əˈnɑnɪməs/` 匿名的，无名的
+> DERIVS: anonymous `/əˈnɑnɪməs/` 匿名的，无名的
 
 answerable `/'ɑːnsərəbl/` 有责任的，应负责任的，可答复的
 
@@ -859,6 +836,8 @@ antecedent `/ˌæntɪ'siːdnt/` 前情，先行词，祖先
 anthem `/ˈænθəm/` 国歌，赞美诗
 
 anthropomorphism `/ˌanθrəpəˈmɔːfɪz(ə)m/` 拟人化
+
+antibiotic `/ˌæntibaɪˈɒtɪk/` n. <微>抗生素, 抗菌素；adj. 抗生的；抗菌的
 
 anticipate `/ænˈtɪsɪpeɪt/` 预期，期盼，预料
 
@@ -896,9 +875,9 @@ anniversary `/ˌænɪ'vɜːsəri/` 周年纪念日
 
 annotated `/'ænəteɪtɪd/` 带注释的
 
-annoy `/ə'nɔɪ/` 1 cause slight anger or mental distress to. 2 be somewhat angry. 3 harass repeatedly.
+annoy `/ə'nɔɪ/` v. 使恼怒；使烦恼；骚扰
 
-> v. 使恼怒；使烦恼；骚扰
+> 1 cause slight anger or mental distress to. 2 be somewhat angry. 3 harass repeatedly.
 >
 > SYN(annoying): aggravating, displeasing, exasperating, galling, grating, irksome, irritating, jarring, maddening, offensive, provocative, provoking, tiresome, troublesome, trying, upsetting, vexatious, vexing, worrying.
 >
@@ -944,17 +923,11 @@ apparel `/ə'pærəl/` 衣服，装具，装饰，使 ... 穿衣
 
 apparent `/ə'pærənt/` 明显的，表面上
 
-appeal `/əˈpiːl/` 
+appeal `/əˈpiːl/` n. 恳求；呼吁；上诉；吸引力；n. (体育比赛中)诉请裁决；v. 呼吁；有吸引力；求助；诉请
 
 > v. 1 make a serious, urgent, or heartfelt request. 2 apply to a higher court for a reversal of the decision of a lower court. 3 be attractive or interesting. 
 >
 > n. 1 a serious, urgent, or heartfelt request. 2 an application to a higher court for a decision to be reversed. 3 a request for donations to support a charity or cause. 4 the quality of being attractive or interesting.
-> 
-> n. 恳求；呼吁；上诉；吸引力
-> 
-> n. (体育比赛中)诉请裁决
->
-> v. 呼吁；有吸引力；求助；诉请
 >
 > Ex: Images are classified according to the sense to which they primarily appeal.
 
@@ -980,11 +953,9 @@ apportion `/əˈpɔːʃn/` 分配，分摊
 
 appreciable `/əˈpriːʃəbl/` 可观的，可察觉到的
 
-appreciate `/ə'priːʃieɪt/` 1 recognize the full worth of. 2 understand (a situation) fully; grasp the full implications of. 3 rise in value or price.
+appreciate `/ə'priːʃieɪt/` > vt. 欣赏；赏识；感激；领会；意识到；vi. 增值
 
-> vt. 欣赏；赏识；感激；领会；意识到
-> 
-> vi. 增值
+> 1 recognize the full worth of. 2 understand (a situation) fully; grasp the full implications of. 3 rise in value or price.
 > 
 > SYN(1): admire, approve of, be grateful for, be sensitive to, cherish, enjoy, esteem, like, prize, regard highly, respect, sympathize with, treasure, value, welcome.
 > 
@@ -1000,15 +971,11 @@ apprehend `/ˌæprɪ'hend/` 理解，忧虑，逮捕，拘押
 
 apprenticeship `/ə'prentɪʃɪp/` 学徒期，学徒身份
 
-approach `/əˈprəʊtʃ/`
+approach `/əˈprəʊtʃ/` v. 靠近；接近；接洽；要求；达到；动手处理；n. 途径；方法；接近；接洽；要求；路径；进场着陆；相似的事物
 
 > v. 1 come near or nearer to (someone or something) in distance or time. 2 speak to (someone) for the first time about a proposal or request. 3 start to deal with (a situation or problem) in a certain way.
 >
 > n. 1 a way of dealing with a situation or problem. 2 an initial proposal or request made to someone. 3 the action of coming near or nearer to someone or something in distance or time.
-> 
-> v. 靠近；接近；接洽；要求；达到；动手处理 
-> 
-> n. 途径；方法；接近；接洽；要求；路径；进场着陆；相似的事物
 >
 > SYN(6): advance, advent, arrival, coming, nearing.
 > 
@@ -1042,9 +1009,9 @@ appropriation `/əˌprəʊpri'eɪʃn/` 拨款，挪用
 
 approval `/ə'pruːvl/` 同意，批准，认可，赞同
 
-approve `/ə'pruːv/` 1 officially agree to or accept as satisfactory. 2 prove; show.
+approve `/ə'pruːv/` v. 批准；赞成；同意；称许
 
-> v. 批准；赞成；同意；称许
+> 1 officially agree to or accept as satisfactory. 2 prove; show.
 > 
 > Ex: What attitudes and claims will meet with their approval?
 
@@ -1080,17 +1047,13 @@ arc `/ɑːk/` 弧，弧光，电弧
 
 arcane `/ɑː'keɪn/` 神秘的，不可思议的
 
-arch `/ɑːtʃ/`
+arch `/ɑːtʃ/` n. 拱, 拱门；拱形物；vt. & vi. (使)弯成拱形
 
 > n. 1 a curved shape in the vertical plane that spans an opening. 2 a curved bony structure supporting or enclosing organs (especially the inner sides of the feet). 3 a passageway under a curved masonry construction. 4 (architecture) a masonry construction (usually curved) for spanning an opening and supporting the weight above it. 
 >
 > v. 1 form an arch or curve
 >
 > adj. 1 (used of behavior or attitude) characteristic of those who treat others with condescension. 2 expert in skulduggery.
->
-> n. 拱, 拱门；拱形物
->
-> vt. & vi. (使)弯成拱形
 >
 > SYN(n): curve curved shape, skeletal structure, entrance, entranceway, entryway, entry
 >
@@ -1112,15 +1075,11 @@ archival `/ɑː'kaɪvəl/` 关于档案的，存档的
 
 archiver `/ˈɑrˌkaɪv/` （计算机）存档，档案
 
-arctic `/ˈɑːktɪk/` 
+arctic `/ˈɑːktɪk/` dj. 北极的；极寒的；n. 北极圈；御寒防水套鞋
 
 > adj. 1 relating to the regions around the North Pole. 2 (arctic) (of weather conditions) very cold.
 >
 > n. 1 (the Arctic) the regions around the North Pole. 2 a thick waterproof overshoe extending to the ankle or above. 3 (artic) a drab-coloured hairy butterfly of the arctic and subarctic regions of the New World.
-> 
-> dj. 北极的；极寒的
-> 
-> n. 北极圈；御寒防水套鞋
 >
 > SYN(n.1): Arctic Zone, North Frigid Zone
 >
@@ -1145,6 +1104,8 @@ arena `/əˈriːnə/` 竞技场，圆形运动场，圆形剧场，斗争场所�
 arguable `/'ɑːɡjuəbl/` 可辩论的，可论证的
 
 argue `/ˈɑːɡjuː/` 争论，辩论，主张，表明，说服，提供证明
+
+aridity `/ə'ridəti/` n. 干旱，乏味
 
 arise `/ə'raɪz/` 出现，升起，上升，产生
 
@@ -1218,7 +1179,7 @@ aspiration `/ˌæspəˈreɪʃn/` 抱负，渴望，志向，送气，吸液
 
 aspiring `/əˈspʌɪərɪŋ/` 有抱负的，渴望从事...的
 
-assault `/əˈsɔːlt/` 侵犯，袭击
+assault `/əˈsɔːlt/` n. 攻击；突袭；抨击；vt. 袭击；突袭
 
 assay `/ə'seɪ/` 化验，分析
 
@@ -1256,9 +1217,9 @@ associativity `/ə'səʊʃəˌtɪvɪtɪ/` 关联性，综合性
 
 assort `/ə'sɔːt/` 分类，分级，协调
 
-assuage `/əˈsweɪdʒ/` make (an unpleasant feeling) less intense.
+assuage `/əˈsweɪdʒ/` v.缓和；减轻；镇定
 
-> v.缓和；减轻；镇定
+> make (an unpleasant feeling) less intense.
 > 
 > Ex: the letter assuaged the fears of most members.
 
@@ -1292,7 +1253,7 @@ astronomy `/ə'strɒnəmi/` 天文学
 
 astute `/əˈstjuːt/` 精明的，狡猾的，机敏的
 
-asylum `/ə'saɪləm/` 收容所，避难所，精神病院，（政治）庇护
+asylum `/ə'saɪləm/` n. 收容所，避难所，精神病院，（政治）庇护
 
 asymmetric `/ˌeɪsɪ'metrɪk/` 不对称的
 
@@ -1336,15 +1297,11 @@ attentive `/ə'tentɪv/` 注意的，留意的
 
 attic `/'ætɪk/` 阁楼
 
-attire `/əˈtʌɪə/`
+attire `/əˈtʌɪə/` n. 服装；盛装；v. 穿衣；打扮
 
 > n. clothes, especially fine or formal ones.
 >
 > v. be dressed in clothes of a specified kind.
->
-> n. 服装；盛装
->
-> v. 穿衣；打扮
 >
 > Ex: holiday attire.
 >
@@ -1352,9 +1309,9 @@ attire `/əˈtʌɪə/`
 
 attorney `/ə'tɜːni/` （辩护）律师
 
-attract `/əˈtrækt/` 1 cause to come to a place or participate in a venture by offering something of interest or advantage.
+attract `/əˈtrækt/` v. 吸引；引来
 
-> v. 吸引；引来
+> 1 cause to come to a place or participate in a venture by offering something of interest or advantage.
 >
 > SYN(attractive): agreeable, alluring, adorable, appealing, artistic, beautiful, bewitching, bonny, captivating, charming, cute, desirable, enchanting, endearing, engaging, enticing, fascinating, fetching, glamorous, good-looking, gorgeous, handsome, hypnotic, interesting, inviting, irresistible, lovable, lovely, magnetic, personable, pleasant, pleasing, prepossessing, pretty, quaint, seductive, stunning, taking, tempting, winsome.
 > 
@@ -1386,11 +1343,9 @@ august `/'ɔːɡəst/` 八月（简写Aug），威严的，尊贵的
 
 authenticate `/ɔː'θentɪkeɪt/` 证明，验证
 
-automate `/'ɔːtəmeɪt/` make automatic or control or operate automatically.
+automate `/'ɔːtəmeɪt/` vt. 使自动化，使自动操作；vi. 自动化，自动操作
 
-> vt. 使自动化，使自动操作
->
-> vi. 自动化，自动操作
+> make automatic or control or operate automatically.
 >
 > SYN: change, alter, modify
 >
@@ -1398,11 +1353,11 @@ automate `/'ɔːtəmeɪt/` make automatic or control or operate automatically.
 >
 > Ex: a fully automated process.
 >
-> DERIVATIVES: automation ` /ˌɔːtəˈmeɪʃn/` 自动化(技术), 自动操作
+> DERIVS: automation ` /ˌɔːtəˈmeɪʃn/` 自动化(技术), 自动操作
 >
-> DERIVATIVES: automatic `/ˌɔːtə'mætɪk/` 自动的，无意识的，必然的
+> DERIVS: automatic `/ˌɔːtə'mætɪk/` 自动的，无意识的，必然的
 >
-> DERIVATIVES: automaton `/ɔː'tɒmətən/` 机器人，不动脑筋机械行事的人
+> DERIVS: automaton `/ɔː'tɒmətən/` 机器人，不动脑筋机械行事的人
 
 automobile `/'ɔːtəməbiːl]/` 汽车，汽车的
 
@@ -1452,9 +1407,9 @@ avowed `/ə'vaʊd/` 自认的，公开宣布的
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
-aware `/əˈweə(r)/` 1 (sometimes followed by 'of') having or showing knowledge or understanding or realization or perception. 2 bearing in mind; attentive to. 3 aware or knowing.
+aware `/əˈweə(r)/` adj. 知道的；意识到的；有...方面知识的；懂世故的。
 
-> adj. 知道的；意识到的；有...方面知识的；懂世故的。
+> 1 (sometimes followed by 'of') having or showing knowledge or understanding or realization or perception. 2 bearing in mind; attentive to. 3 aware or knowing.
 >
 > SYN: alert, sensible, careful, heedful
 >
@@ -1462,19 +1417,19 @@ aware `/əˈweə(r)/` 1 (sometimes followed by 'of') having or showing knowledge
 >
 > Ex: Are you aware that there is a difficulty?
 >
-> DERIVATIVES: awareness `/əˈwɛːnəs/` n.认识；觉察；意识
+> DERIVS: awareness `/əˈwɛːnəs/` n.认识；觉察；意识
 
-awe `/ɔː/` n. 1 an overwhelming feeling of wonder or admiration. 2 a profound emotion inspired by a deity. v. 1 inspire awe in.
+awe `/ɔː/` vt. 使敬畏；使畏怯；n. 敬畏
 
-> vt. 使敬畏；使畏怯
->
-> n. 敬畏
+> n. 1 an overwhelming feeling of wonder or admiration. 2 a profound emotion inspired by a deity. v. 1 inspire awe in.
 >
 > SYN: wonder, wonderment, admiration, emotion
 >
 > Ex: I was awed by the huge gorilla.
 >
 > Ex: his staff members are in awe of him.
+>
+> DERIVS: awesome `/ˈɔːsəm/` adj. 令人敬畏的；令人惊叹的；令人惊惧的；【美，非正式】很好的；了不起的（或极好玩的等）
 
 awful `/'ɔːfl/` 糟糕的，可怕的，充满敬畏的，难受的
 
@@ -1483,6 +1438,8 @@ awkward `/'ɔːkwəd/` 尴尬的，笨拙的，别扭的
 awkwardly `/ɔːkwədli/` 笨拙的，别扭的，拘谨的
 
 awoken `/əˈwəʊkən/` （awake的过去分词）醒来，唤起
+
+awry `/ə'raɪ/` adj. 扭曲的；歪曲的；adv. 错误地；出岔子；歪；斜
 
 ### ax
 
@@ -1528,19 +1485,17 @@ backslash `/ˈbækslæʃ/` 反斜杠
 
 bacteriophage `/bæk'tɪrɪə,feɪdʒ/` 噬菌体
 
+bacterium `/bækˈtɪəriəm/` n. 细菌 (复数为bacteria)；adj. 细菌的
+
 baffle `/'bæfl/` 困惑，难倒，阻碍，受挫，挡板，隔音板
 
 baggage `/'bæɡɪdʒ/` 行李
 
-bail `/beɪl/` 
+bail `/beɪl/` n. 保释，保释人；保释金；杓；vt. 保释，帮助某人脱离困境；往外舀水
 
 > n. 1 (criminal law) money that must be forfeited by the bondsman if an accused person fails to appear in court for trial. 2 the legal system that allows an accused person to be temporarily released from custody (usually on condition that a sum of money guarantees their appearance at trial). 
 >
 > v. 1 release after a security has been paid. 2 deliver something in trust to somebody for a special purpose and for a limited period. 3 secure the release of (someone) by providing security. 4 empty (a vessel) by bailing. 5 remove (water) from a vessel with a container.
->
-> n. 保释，保释人；保释金；杓
->
-> vt. 保释，帮助某人脱离困境；往外舀水
 >
 > SYN: recognizance, recognisance, legal system
 >
@@ -1608,9 +1563,9 @@ barony `/'bærəni/` 男爵领地
 
 barrack `/'bærək/` 军营，嘲笑
 
-barred `/bɑːd/` 1 closed or secured with a long rigid piece of wood, metal, or similar material. 2 marked with bands of colour or light.
+barred `/bɑːd/` adj. 被禁止的；受阻的；有条纹的
 
-> adj. 被禁止的；受阻的；有条纹的
+> 1 closed or secured with a long rigid piece of wood, metal, or similar material. 2 marked with bands of colour or light.
 >
 > Ex: a barred gate.
 >
@@ -1634,9 +1589,9 @@ basis `/'beɪsɪs/` 基础，根据，基底
 
 basket `/'bɑːskɪt/` 篮，篓，筐
 
-bastion `/ˈbæstiən/` 1 a projecting part of a fortification built at an angle to the line of a wall, so as to allow defensive fire in several directions.  2 an institution, place, or person strongly maintaining particular principles, attitudes, or activities.
+bastion `/ˈbæstiən/` n. 棱堡；堡垒
 
-> n. 棱堡；堡垒
+> 1 a projecting part of a fortification built at an angle to the line of a wall, so as to allow defensive fire in several directions.  2 an institution, place, or person strongly maintaining particular principles, attitudes, or activities.
 > 
 > Ex: cricket's last bastion of discrimination.
 
@@ -1678,20 +1633,17 @@ bedrock `/ˈbedrɒk/` 地基，基岩，基本原则
 
 befall `/bɪ'fɔːl/` 发生，降临
 
-beggar `/'beɡə(r)/` 
+beggar `/'beɡə(r)/` n. 乞丐；穷人；【英】家伙；vt. 使贫穷；使不足；使不能
 
 > n. 1 a person, typically a homeless one, who lives by asking for money or food. 2 a person of a specified type, especially one to be envied or pitied. 
+>
 > v. 1 reduce (someone) to poverty.
->
-> n. 乞丐；穷人；【英】家伙
->
-> vt. 使贫穷；使不足；使不能
 > 
 > Ex: poor little beggars.
 >
 > Ex: why should I beggar myself for you?
 >
-> DERIVATIVES: beggarly `/'beɡəli/` 像乞丐的，赤贫的，下贱的
+> DERIVS: beggarly `/'beɡəli/` 像乞丐的，赤贫的，下贱的
 
 begging `/'beɡɪŋ/` 请求，乞求
 
@@ -1737,15 +1689,11 @@ bespoke `/bɪ'spəʊk/` 预定的，定制的，定期的
 
 bestow `/bɪ'stəʊ/` 授予，给予，使用，放置
 
-bet `/bɛt/` 
+bet `/bɛt/` v.打赌；确信无疑；n.赌注；确信
 
 > v. 1 risk a sum of money or valued item against someone else's on the basis of the outcome of an unpredictable event such as a race or game. 2 informal used to express certainty. 
 >
 > n. 1 an act of betting a sum of money. 
->
-> v.打赌；确信无疑
->
-> n.赌注；确信
 >
 > Ex: I would be prepared to bet that he wanted to leave.
 >
@@ -1759,9 +1707,9 @@ betook `/bɪ'tʊk/` 去，赴，致力于
 
 betrayal `/bɪ'treɪəl/` 背叛，暴露
 
-beverage `/ˈbɛv(ə)rɪdʒ/` (chiefly in commercial use) a drink other than water.
+beverage `/ˈbɛv(ə)rɪdʒ/` n. 饮料
 
-> n. 饮料
+> (chiefly in commercial use) a drink other than water.
 >
 > SYN: food, nutrient, liquid
 >
@@ -1770,6 +1718,8 @@ beverage `/ˈbɛv(ə)rɪdʒ/` (chiefly in commercial use) a drink other than wat
 > Ex: The sale of alcoholic beverages is restricted to those over 21.
 
 beware `/bɪˈweə(r)/` 小心，提防，当心
+
+bewilder `/bɪ'wɪldə(r)/` vt. 使迷惑； 使 ... 不知所措
 
 bewitch `/bɪ'wɪtʃ/` 蛊惑，使着迷
 
@@ -1801,11 +1751,13 @@ bijective `/bɪ'dʒektɪv/` 双射的
 
 bilingual `/ˌbaɪ'lɪŋɡwəl/` 双语的
 
+> DERIVS: bilingualism `/baɪ'lɪŋgwəlɪzəm/` n. 习用两种语言；能用两种语言
+
 binomial `/baɪ'nəʊmiəl/` （数学）二项式，二项的
 
-biodiversity `/ˌbʌɪə(ʊ)dʌɪˈvəːsɪti/` the variety of plant and animal life in the world or in a particular habitat, a high level of which is usually considered to be important and desirable.
+biodiversity `/ˌbʌɪə(ʊ)dʌɪˈvəːsɪti/` n. 生物多类状态, 生物多样性
 
-> n. 生物多类状态, 生物多样性
+> the variety of plant and animal life in the world or in a particular habitat, a high level of which is usually considered to be important and desirable.
 >
 > SYN: diverseness, diversity, multifariousness, variety
 >
@@ -1831,15 +1783,11 @@ bistable `/baɪ'steɪbl/` 双稳态，双稳态的
 
 bit `/bɪt/` 比特，少量，小块，片刻，钻头
 
-bite `/baɪt/` 
+bite `/baɪt/` v. 咬；叮；蜇；n. 咬；一口；(被咬的)伤痕
 
 > v. 1 (of a person or animal) uses the teeth to cut into or through something. 2 (of a fish) take the bait or lure on the end of a fishing line into the mouth. 3 make firm contact with a surface. 4 (of a policy or situation) take effect, with unpleasant consequences. 
 >
 > n. 1 an act of biting something in order to eat it. 2 a piece cut off by biting. 3 a sharp or pungent flavor.
->
-> v. 咬；叮；蜇
->
-> n. 咬；一口；(被咬的)伤痕
 > 
 > Ex: Rosa bit into a cupcake.
 >
@@ -1861,9 +1809,9 @@ bitonic `/baɪtɒnɪk/` （计算机）双调的
 
 bitter `/ˈbɪtə(r)/` 苦的，苦味，苦难
 
-bitterness `/ˈbɪtənəs/` 1 sharpness of taste; lack of sweetness. 2 anger and disappointment at being treated unfairly; resentment.
+bitterness `/ˈbɪtənəs/` n.苦味；悲痛；怨恨
 
-> n.苦味；悲痛；怨恨
+> 1 sharpness of taste; lack of sweetness. 2 anger and disappointment at being treated unfairly; resentment.
 > 
 > Ex: the lime juice imparts a slight bitterness.
 
@@ -1889,9 +1837,9 @@ blaring `/bleə(r)/` 巨响，吼叫声，高声鸣叫，大叫
 
 blase `/'blɑːzeɪ/` 对享乐感到厌倦的，无动于衷的，非常世故的
 
-blatant `/ˈbleɪtnt/` (of bad behaviour) done openly and unashamedly.
+blatant `/ˈbleɪtnt/` adj. 明目张胆的；炫耀的；公然的；喧闹的
 
-> adj. 明目张胆的；炫耀的；公然的；喧闹的
+> (of bad behaviour) done openly and unashamedly.
 >
 > Ex: blatant lies.
 
@@ -1903,19 +1851,19 @@ bleacher `/ˈbliːtʃə(r)/` 漂白剂，露天长椅，漂白剂
 
 blend `/blend/` 混合，掺合，混合物
 
-bless `/bles/` pronounce words in a religious rite in order to confer or invoke divine favor upon; ask God to look favorably on.
+bless `/bles/` vt. 保佑；祝福；赐福；有幸具有
 
-> vt. 保佑；祝福；赐福；有幸具有
+> pronounce words in a religious rite in order to confer or invoke divine favor upon; ask God to look favorably on.
 > 
 > Ex: he blessed the dying man and anointed him.
 >
-> DERIVATIVES: blessed `/'blesɪd/` 神圣的，有福的，愉快的
+> DERIVS: blessed `/'blesɪd/` 神圣的，有福的，愉快的
 >
-> DERIVATIVES: blessing `/'blesɪŋ/` 祝福，祷告，幸事
+> DERIVS: blessing `/'blesɪŋ/` 祝福，祷告，幸事
 
 blight `/blaɪt/` 枯萎，凋谢，摧毁
 
-blind `/blʌɪnd/` 
+blind `/blʌɪnd/` adj. 瞎的；盲目的；adv. 看不见地；盲目地；n. 百叶窗；掩饰，借口；vt. 使失明；使失去理智
 
 > n. 1 people who have severe visual impairments, considered as a group. 2 a hiding place sometimes used by hunters (especially duck hunters). 3 something that keeps things out or hinders sight. 4 something intended to misrepresent the true nature of an activity.
 >
@@ -1923,21 +1871,13 @@ blind `/blʌɪnd/`
 >
 > adj. 1 unable to see. 2 unable or unwilling to perceive or understand. 3 not based on reason or evidence.
 >
-> adj. 瞎的；盲目的
->
-> adv. 看不见地；盲目地
->
-> n. 百叶窗；掩饰，借口
->
-> vt. 使失明；使失去理智
->
 > Ex: a blind pipe.
 >
 > Ex: blind fate.
 >
 > Ex: blind mail.
 >
-> DERIVATIVES: blindly `/'blaɪndli/` 摸索地，盲目地，蛮干地
+> DERIVS: blindly `/'blaɪndli/` 摸索地，盲目地，蛮干地
 
 blissfully `/'blɪsfəli/` 幸福的
 
@@ -1949,7 +1889,7 @@ blockade `/blɒ'keɪd/` 封锁，阻碍物
 
 blockbuster `/ˈblɒkbʌstə(r)/` 一鸣惊人的，非常成功的
 
-blonde `/blɒnd/` 
+blonde `/blɒnd/` adj. 亚麻色的；白皙的；白肤金发碧眼的；n. 白肤金发碧眼的女人
 
 > n. 1 a person with fair skin and hair. 2 a light grayish yellow to near white.
 >
@@ -1957,17 +1897,11 @@ blonde `/blɒnd/`
 
 blossom `/ˈblɒsəm/` 开花，花朵，兴旺
 
-blouse `/blaʊz/` 
+blouse `/blaʊz/` n. 宽松的上衣；女装衬衫；vt. 使…宽松下垂；vi. 宽松下垂
 
 > n. 1 awoman's upper garment resembling a shirt, typically with a collar, buttons, and sleeves.
 >
 > v. 1 make (a garment) hang in loose folds.
->
-> n. 宽松的上衣；女装衬衫
->
-> vt. 使…宽松下垂
-> 
-> vi. 宽松下垂
 >
 > Ex: I bloused my trousers over my boots.
 
@@ -2009,6 +1943,8 @@ boastful `/ˈbəʊstfl/` 自夸的，自吹自擂的
 
 bog `/bɒɡ/` 沼泽，陷于困境
 
+boggle `/'bɒɡl/` 犹豫，吃惊，困惑
+
 boil `/bɔɪl/` 煮沸，沸腾，翻滚
 
 boiler `/ˈbɔɪlə/` 锅炉，汽锅，热水器
@@ -2027,21 +1963,17 @@ bolster `/ˈbəʊlstə(r)/` 枕垫，靠垫，加强，改善
 
 bomb `/bɒm/` 炸弹，轰炸
 
-bombard `/bɒm'bɑːd/`
+bombard `/bɒm'bɑːd/` v. 炮轰；攻击；[核]以高速粒子撞击；n. 射石炮
 
 > v. 1 attack (a place or person) continuously with bombs, shells, or other missiles.
 > 
 > n. 1 a cannon of the earliest type, which fired a stone ball or large shot.
-> 
-> v. 炮轰；攻击；[核]以高速粒子撞击
->
-> n. 射石炮
 >
 > Ex: the city was bombarded by federal forces.
 
 bombed `/bɒmd/` 遭到轰炸的，醉酒的，吸毒麻醉了的
 
-bond `/bɒnd/` 
+bond `/bɒnd/` n. 结合；粘合剂；债券；约定；vi. 结合，团结在一起；vt. 以…作保；使结合
 
 > n. 1 an electrical force linking atoms. 2 a certificate of debt (usually interest-bearing or discounted) that is issued by a government or corporation in order to raise money; the issuer is required to pay a fixed sum annually until maturity and then a fixed sum to repay the principal. 3 a connection based on kinship or marriage or common interest. 4 (criminal law) money that must be forfeited by the bondsman if an accused person fails to appear in court for trial. 5 a restraint that confines or restricts freedom (especially something used to tie down or restrain a prisoner). 6 a connection that fastens things together. 7 a superior quality of strong durable white writing paper; originally made for printing documents. 8 United States civil rights leader who was elected to the legislature in Georgia but was barred from taking his seat because he opposed the Vietnam War. 9 British secret operative 007 in novels by Lan Fleming. 10 the property of sticking together (as of glue and wood) or the joining of surfaces of different composition.
 >
@@ -2049,19 +1981,13 @@ bond `/bɒnd/`
 >
 > adj. 1 held in slavery.
 >
-> n. 结合；粘合剂；债券；约定
->
-> vi. 结合，团结在一起
->
-> vt. 以…作保；使结合
->
 > SYN: attraction, attractive force, debt instrument, certificate of indebtedness, security, certificate, connection.
 >
 > Ex: a bonding course.
 >
 > Ex: sold the bond at par.
 >
-> DERIVATIVES: bondmen `/'bɒndmən/` 奴隶
+> DERIVS: bondmen `/'bɒndmən/` 奴隶
 
 bone `/bəʊn/` 骨骼，骨，核心，除去骨头，努力学习，非常地，极其地
 
@@ -2100,6 +2026,8 @@ bottleneck `/'bɒtlnek/` 瓶颈，阻塞，妨碍，狭窄的
 bought `/bɔːt/` 购买，获得，收买
 
 boulder `/'bəʊldə(r)/` 大圆石，巨砾
+
+boulevard `/ˈbuːləvɑːd/` n. （市区的）林荫大道；（常用作街道名称）要道，大街
 
 bounce `/baʊns/` 反弹，弹跳，蹦跳
 
@@ -2151,9 +2079,9 @@ brass `/brɑːs/` 黄铜，铜管，厚脸皮
 
 brawl `/brɔːl/` 争吵，打斗，闹事
 
-brawn `/brɔːn/` 1 physical strength in contrast to intelligence. 2 meat from a pig's or calf's head that is cooked and pressed in a pot with jelly.
+brawn `/brɔːn/` n. (尤指强壮的)肌肉
 
-> n. (尤指强壮的)肌肉
+> 1 physical strength in contrast to intelligence. 2 meat from a pig's or calf's head that is cooked and pressed in a pot with jelly.
 >
 > Ex: commando work required as much brain as brawn.
 >
@@ -2211,15 +2139,11 @@ brighter `/braɪt/` 明亮的，聪明的，阳光的，生动的，有前途的
 
 brilliance `/brilliance/` 光辉，鲜明，透明度，亮度
 
-brilliant `/'brɪljənt/` 
+brilliant `/'brɪljənt/` adj. 卓越的；灿烂的；美妙的；杰出的；才华横溢的；n. 宝石
 
 > adj. 1 (of light or color) very bright. 2 exceptionally clever or talented. 3 excellent; marvellous.
 >
 > n. 1 a diamond of brilliant cut.
->
-> adj. 卓越的；灿烂的；美妙的；杰出的；才华横溢的
->
-> n. 宝石
 >
 > Ex: brilliant sunshine illuminated the scene.
 >
@@ -2237,9 +2161,9 @@ brittle `/ˈbrɪtl/` 易碎的，脆弱的，靠不住的
 
 broad `/brɔːd/` 宽广的，广泛的，明显的，粗野的
 
-broaden `/'brɔːdn/` become larger in distance from side to side; widen.
+broaden `/'brɔːdn/` v. 变宽；扩大；开阔
 
-> v. 变宽；扩大；开阔
+> become larger in distance from side to side; widen.
 >
 > Ex: her smile broadened.
 
@@ -2277,27 +2201,19 @@ buckle `/ˈbʌkl/` 用扣子扣紧，扣住，（皮带）搭扣
 
 bud `/bʌd/` 芽，苞，花蕾，发芽
 
-buddhism `/ˈbʊdɪzəm/` a widespread Asian religion or philosophy, founded by Siddartha Gautama in north-eastern India in the 5th century BC.
+buddhism `/ˈbʊdɪzəm/` n. 佛教
 
-> n. 佛教
+> a widespread Asian religion or philosophy, founded by Siddartha Gautama in north-eastern India in the 5th century BC.
 >
 > Ex: these days he practices Buddhism and meditates.
 
-budget `/'bʌdʒɪt/` 
+budget `/'bʌdʒɪt/` n. 预算；vt. 编预算；为 ... 做预算；vi. 节省开支；adj. 廉价的；不贵的
 
 > n. 1 an estimate of income and expenditure for a set period of time. 2 a quantity of written or printed material. 
 >
 > v. 1 allow or provide a particular amount of money in a budget. 
 >
 > adj. 1 inexpensive.
->
-> n. 预算
->
-> vt. 编预算；为 ... 做预算
->
-> vi. 节省开支
->
-> adj. 廉价的；不贵的
 >
 > Ex: keep within the household budget.
 >
@@ -2321,11 +2237,13 @@ bullet `/'bʊlɪt/` 子弹，弹丸
 
 bulletin `/'bʊlətɪn/` 公报，期刊，发表，公示
 
+bullfighting `/'bʊlfaɪtɪŋ/` 斗牛
+
 bullish `/ˈbʊlɪʃ/` 对未来有信心的，牛市的
 
 bullion `/'bʊliən/` 金银，金银锭
 
-bully `/bʊli/` 
+bully `/bʊli/` n. 欺凌弱小者；开球；vt. 恐吓；威胁；欺负
 
 > n. 1 a person who habitually seeks to harm or intimidate those whom they perceive as vulnerable. 
 >
@@ -2338,10 +2256,6 @@ bully `/bʊli/`
 > n. 1 (also bully-off) an act of starting play in field hockey, in which two opponents strike each other's sticks three times and then go for the ball. 
 > 
 > v. 1 (also bully-off) (in field hockey) start play with a bully.
-
-> n. 欺凌弱小者；开球
->
-> vt. 恐吓；威胁；欺负
 >
 > Ex: he is a ranting, domineering bully.
 >
@@ -2357,15 +2271,11 @@ bum `/bʌm/` 流浪汉，游荡者，懒鬼，乞求，残废的
 
 bump `/bʌmp/` 碰撞，撞击，肿块
 
-bunch `/bʌn(t)ʃ/` 
+bunch `/bʌn(t)ʃ/` n.串；束；一群；捆；突出物；凸起；vt.使成一束(或一群等)；隆起；成束成群
 
 > n. 1 a number of things, typically of the same kind, growing or fastened together. 2 (bunches) a girls's hairstyle in which the hair is tied back into two clumps at the back or on either side of the head.
 >
 > v. 1 collect or fasten into a compact group.
-> 
-> n.串；束；一群；捆；突出物；凸起
-> 
-> vt.使成一束(或一群等)；隆起；成束成群
 >
 > Ex: the people who wrote in complaining are a bunch of idiots.
 
@@ -2375,9 +2285,9 @@ burden `/ˈbəːdn/` 重担，负担，要旨
 
 burdensome `/ˈbɜːdnsəm/` 沉重的，繁重的，恼人的
 
-bureaucracy `/bjʊə'rɒkrəsi/` 官僚制度，官僚主义，官僚
+bureaucracy `/bjʊə'rɒkrəsi/` n. 官僚制度；官僚主义；官僚
 
-bureaucrat `/'bjʊərəkræt/` 官僚
+> DERIVS: bureaucrat `/'bjʊərəkræt/` n. 官僚作风的人；官僚
 
 burke `/bɜːk/` 秘密镇压，回避，搁置
 
@@ -2391,9 +2301,9 @@ burglar `/'bɜːɡlə(r)/` 窃贼
 
 burgomaster `/bɜː'ɡəmɑːstər/` 市长
 
-burly `/'bɜːlɪ/` (of a person) large and strong; heavily built.
+burly `/'bɜːlɪ/` adj. 结实的；魁梧的
 
-> adj. 结实的；魁梧的
+> (of a person) large and strong; heavily built.
 >
 > Ex: I saw a burly figure approaching.
 
@@ -2465,6 +2375,8 @@ byzantium `/bɪˈzæntɪəm/` 拜占庭
 
 cabbage `/'kæbɪdʒ/` 卷心菜，洋白菜
 
+cabin `/ˈkæbɪn/` n. 小屋；客舱；船舱；vt. 把…关在小屋里；vi. 住在小屋里
+
 cabinet `/ˈkæbɪnət/` 内阁，陈列柜，橱柜
 
 cable `/'keɪbl/` 电缆，电报，发电报
@@ -2481,9 +2393,9 @@ cajole `/kə'dʒəʊl/` (以甜言蜜语)哄骗
 
 calamity `/kə'læməti/` 灾难，不幸事件
 
-calcium `/ˈkalsɪəm/` the chemical element of atomic number 20, a soft grey metal.
+calcium `/ˈkalsɪəm/` n.钙
 
-> n.钙
+> the chemical element of atomic number 20, a soft grey metal.
 
 calculate `/ˈkalkjʊleɪt/` 计算，估算，计划
 
@@ -2499,9 +2411,9 @@ callous `/'kæləs/` 麻木的，无情的，硬结的，起老茧的
 
 calm `/kɑːm/` 平静，镇静，沉着
 
-calorie `/ˈkæləri/` 1 (also small calorie)  (abbreviation call) a unit of energy equivalent to the heat energy needed to raise the temperature of 1 gram of water by 1 °C (now often defined as equal to 4.1868 joules). 2 (also large calorie) (abbreviation cal or Cal) a unit of energy, often used to express the nutritional value of foods, equivalent to the heat energy needed to raise the temperature of 1 kilogram of water by 1 °C, and equal to one thousand small calories; a kilocalorie.
+calorie `/ˈkæləri/` n. 卡；卡路里(热量单位)
 
-> n. 卡；卡路里(热量单位)
+> 1 (also small calorie)  (abbreviation call) a unit of energy equivalent to the heat energy needed to raise the temperature of 1 gram of water by 1 °C (now often defined as equal to 4.1868 joules). 2 (also large calorie) (abbreviation cal or Cal) a unit of energy, often used to express the nutritional value of foods, equivalent to the heat energy needed to raise the temperature of 1 kilogram of water by 1 °C, and equal to one thousand small calories; a kilocalorie.
 >
 > Ex: the milk derived from cashews is lactose-free and has fewer calories.
 
@@ -2510,6 +2422,10 @@ cambrics `/'kæmbrɪk/` 细亚麻布或棉布
 camcorder `/'kæmkɔːdə(r)/` 摄录机，便携式摄像机
 
 came `/kʌm/` 来到，成为，达到，接近
+
+camouflage `/ˈkæməflɑːʒ/` n. 伪装；隐藏；掩藏；伪装物；掩饰手段；保护色；vt. & vi. 隐蔽；隐藏；掩藏；掩盖
+
+> DERIVS: camouflaging `/'kæməflɑːʒ/` 伪装，掩饰，迷彩服
 
 campaign `/kæmˈpeɪn/` 政治运动，战役，领导运动
 
@@ -2525,9 +2441,9 @@ candidate `/ˈkændɪdət/` 候选人，申请人，考生
 
 canonical `/kə'nɒnɪkl/` 权威的
 
-canteen `/kanˈtiːn/` 1 a restaurant provided by an organization such as a college, factory, or company for its students or staff. 2 a small water bottle, as used by soldiers or compers. 3 a specially designed case or box containing a set of cutlery.
+canteen `/kanˈtiːn/` n. 食堂；水壶
 
-> n. 食堂；水壶
+> 1 a restaurant provided by an organization such as a college, factory, or company for its students or staff. 2 a small water bottle, as used by soldiers or compers. 3 a specially designed case or box containing a set of cutlery.
 >
 > SYN: flask, shop, store, restaurant, eating house, eating place, recreation room
 >
@@ -2569,9 +2485,9 @@ carder `/'kɑːdə/` 梳刷的人，起毛工人
 
 cardinality `/kɑːdɪ'nælɪtɪ/` 基数
 
-cardiovascular `/ˌkɑːdɪə(ʊ)ˈvaskjʊlə/` relating to the heart and blood vessels.
+cardiovascular `/ˌkɑːdɪə(ʊ)ˈvaskjʊlə/` adj. 心血管的
 
-> adj. 心血管的
+> relating to the heart and blood vessels.
 >
 > SYN: blood vessel
 >
@@ -2579,9 +2495,9 @@ cardiovascular `/ˌkɑːdɪə(ʊ)ˈvaskjʊlə/` relating to the heart and blood 
 
 careerism `/kə'rɪərɪzəm/` 野心，追名逐利
 
-caregiver `/ˈkɛːɡɪvə/` a family member or paid helper who regularly looks after a child or a sick, elderly, or disabled person.
+caregiver `/ˈkɛːɡɪvə/` n. 看护者
 
-> n. 看护者
+> a family member or paid helper who regularly looks after a child or a sick, elderly, or disabled person.
 
 caremony `/ˈsɛrɪməni/` 仪式，礼节
 
@@ -2627,9 +2543,9 @@ cassette `/kəˈset/` 磁带，录像带
 
 cast `/kɑːst/` 铸造，铸件，投射，抛，投
 
-casual `/ˈkaʒʊ(ə)l/` 1 relaxed and unconcerned. 2 not regular or permanent. 3 happening by chance; accidental. 4 without formality of style or manner, in particular (of clothing) suitable for everyday wear rather than formal occasions. 5 a person who does something irregularly. 
+casual `/ˈkaʒʊ(ə)l/` adj. 不在意的；不放在心上的；漫不经心的; 不固定的；不定期的；临时的; 不经意的，随意的；碰巧的; （衣服）休闲的；便装的
 
-> adj. 不在意的；不放在心上的；漫不经心的; 不固定的；不定期的；临时的; 不经意的，随意的；碰巧的; （衣服）休闲的；便装的
+> 1 relaxed and unconcerned. 2 not regular or permanent. 3 happening by chance; accidental. 4 without formality of style or manner, in particular (of clothing) suitable for everyday wear rather than formal occasions. 5 a person who does something irregularly. 
 >
 > SYN(3): accidental, chance, fortuitous, incidental, random, unexpected, unforeseen, unintentional, unplanned, unpremeditated.
 > 
@@ -2648,6 +2564,8 @@ casual `/ˈkaʒʊ(ə)l/` 1 relaxed and unconcerned. 2 not regular or permanent. 
 > Ex: a number of casuals became regular customers.
 >
 > Ex: she designs women's casuals.
+>
+> DERIVS: casualty `/ˈkæʒuəlti/` n. 意外事故；伤亡人员；急诊室
 
 catalan `/'kætəlæn/` 加泰罗尼亚
 
@@ -2663,9 +2581,9 @@ catchy `/'kætʃi/` 引人注目的，易记住的，朗朗上口的，诡诈的
 
 categorize `/'kætəɡəraɪz/` 分类
 
-cater `/'keɪtə(r)/` provide people with food and drink at a social event or other gathering.
+cater `/'keɪtə(r)/` v. 提供饮食及服务；迎合；满足
 
-> v. 提供饮食及服务；迎合；满足
+> provide people with food and drink at a social event or other gathering.
 >
 > Ex: my mother helped to cater for the party.
 
@@ -2686,6 +2604,8 @@ cause `/kɔːz/` 引起，原因，理由
 caustic `/ˈkɔːstɪk/` 尖酸刻薄的，挖苦的，腐蚀性的
 
 caution `/'kɔːʃn/` 警告，劝告，戒备，慎重，吸引眼球地人或物
+
+cautious `/'kɔːʃəs/` 谨慎的，十分小心的
 
 caveat `/ˈkæviæt/` 警告，告诫
 
@@ -2775,17 +2695,13 @@ chameleon `/kə'miːliən/` 变色龙，善变的人
 
 chamois `/'ʃæmɪ/` 岩羚羊，羚羊皮
 
-champion `/ˈtʃampɪən/` 
+champion `/ˈtʃampɪən/` n. 拥护者；冠军；优胜者；勇士；vt. 拥护；保卫；为 ... 而斗争
 
 > n. 1 a person who has surpassed all rivals in a sporting contest or other competition. 2 a person who vigorously supports or defends a person or cause. 
 >
 > v. 1 vigorously support or defend the cause of. 4 excellent.
 >
 > adj. 1 excellent.
->
-> n. 拥护者；冠军；优胜者；勇士
->
-> vt. 拥护；保卫；为 ... 而斗争
 >
 > Ex: a champion hurdler.
 >
@@ -2819,17 +2735,11 @@ charm `/tʃɑːm/` 魅力，吸引力，迷人，着迷
 
 charter `/'tʃɑːtə(r)/` 宪章，特许，租赁，执照，包租
 
-chase `/tʃeɪs/` 
+chase `/tʃeɪs/` vt. 追捕；追求；镂刻，雕刻；试图赢得；vi. 奔跑；追赶；n. 追捕；争取；狩猎
 
 > vt. 1 pursue in order to catch or catch up with. 2 drive or cause to go in a specified direction. 3 try to obtain (something owed or required).
 >
 > n. 1 an act of pursuing someone or something.
->
-> vt. 追捕；追求；镂刻，雕刻；试图赢得
->
-> vi. 奔跑；追赶
->
-> n. 追捕；争取；狩猎
 >
 > Ex: the dog chased after the stick.
 >
@@ -2843,15 +2753,15 @@ chattels `/tʃætlz/` 动产，奴隶
 
 chatter `/'tʃætə(r)/` 饶舌，啁啾，喋喋不休地谈，(小溪的)潺潺流水声，(牙齿)打颤，喋喋不休地谈，咔嗒作响
 
-chauvinistic `/ˌʃəʊvɪˈnɪstɪk/` displaying excessive or prejudiced support for one's own cause or group, in particular showing male prejudice against women.
+chauvinistic `/ˌʃəʊvɪˈnɪstɪk/` adj. 沙文主义的；盲目爱国的
 
-> adj. 沙文主义的；盲目爱国的
+> displaying excessive or prejudiced support for one's own cause or group, in particular showing male prejudice against women.
 >
 > Ex: it is a chauvinistic, male-dominated society.
 
-cheerful `/'tʃɪəfl/` noticeably happy and optimistic.
+cheerful `/'tʃɪəfl/` adj. 高兴的；快乐的
 
-> adj. 高兴的；快乐的
+> noticeably happy and optimistic.
 >
 > SYN: animated, bright, buoyant, cheery, chirpy, contented, convivial, delighted, elated, festive, gaygenial, glad, gleeful, good-humoured, happy, hearty, jaunty, jocund, jolly, jovial, joyful, joyous, jubilant, laughing, light, light-hearted, lively, merry, optimistic, perky, pleased, rapturous, sparkling, spirited, sprightly, sunny, warm-hearted.
 >
@@ -2907,9 +2817,9 @@ chrome `/krəʊm/` 铬，铬合金
 
 chromo `/krəʊməʊ/` 多彩石印版
 
-chronic `/ˈkrɒnɪk/` 1 (of an illness) persisting for a long time or constantly recurring. 2 of a very poor quality.
+chronic `/ˈkrɒnɪk/` adj.长期的；慢性的；惯常的
 
-> adj.长期的；慢性的；惯常的
+> 1 (of an illness) persisting for a long time or constantly recurring. 2 of a very poor quality.
 >
 > Ex: the school suffers from chronic overcrowding.
 
@@ -2987,15 +2897,11 @@ civilize `/'sɪvəlaɪz/` 使开化，使文明
 
 [回到C](#C)--[回到顶部](#英汉词典)
 
-claim `/kleɪm/` 
+claim `/kleɪm/` n. 要求；要求权；主张；断言；声称；要求物；vt. 要求；请求；主张；声称；断言
 
 > v. 1 state or assert that something is the case, typically without providing evidence or proof. 2 formally request or demand; say that one owns or has earned (something). 3 cause the loss of (someone's life). 
 >
 > n. 1 an assertion that something is true. 5 a demand or request for something considered one's due.
->
-> n. 要求；要求权；主张；断言；声称；要求物 
->
-> vt. 要求；请求；主张；声称；断言
 >
 > SYN(要求): ask for, collect, demand, exact, insist on, request, require, take.
 > 
@@ -3157,9 +3063,9 @@ coin `/kɔɪn/` 硬币，金钱，铸造
 
 coinage `/ˈkɔɪnɪdʒ/` 货币，货币制度，铸币权
 
-coincide `/ˌkəʊɪnˈsaɪd/` v. 1 go with, fall together. 2 happen simultaneously. 3 be the same.
+coincide `/ˌkəʊɪnˈsaɪd/` vi. 一致，符合；同时发生
 
-> vi. 一致，符合；同时发生
+> v. 1 go with, fall together. 2 happen simultaneously. 3 be the same.
 >
 > SYN: coexist, happen, hap, go on, pass off, occur, pass
 >
@@ -3167,7 +3073,7 @@ coincide `/ˌkəʊɪnˈsaɪd/` v. 1 go with, fall together. 2 happen simultaneou
 >
 > Ex: My ideas coincide with his.
 >
-> DERIVATIVES: coincidental `/kəʊˌɪnsɪ'dentl/` 巧合的
+> DERIVS: coincidental `/kəʊˌɪnsɪ'dentl/` 巧合的
 
 coil `/kɔɪl/` 线圈，（一）圈，（一）卷
 
@@ -3177,7 +3083,9 @@ colinearity `/kɒlɪ'nərɪtɪ/` 共线性，同线性
 
 collaborate `/kəˈlæbəreɪt/` 合作，协作
 
-collaborative `/kə'læbərətɪv/` 协作的，合作的
+> DERIVS: collaboration `/kəˌlæbə'reɪʃn/` n. 合作；通敌
+> 
+> DERIVS: collaborative `/kə'læbərətɪv/` 协作的，合作的
 
 collapse `/kəˈlæps/` 崩溃，崩塌，垮掉
 
@@ -3185,9 +3093,9 @@ collar `/'kɒlə(r)/` 衣领，项圈，（机械）轴环，抓住，为 ... �
 
 collateral `/kə'lætərəl/` 旁系的，并行的，附属的，附属担保物
 
-colleague `/'kɒliːɡ/` a person with whom one works in a profession or business.
+colleague `/'kɒliːɡ/` n. 同事, 同僚
 
-> n. 同事, 同僚
+> a person with whom one works in a profession or business.
 >
 > Ex: a late colleague of mine.
 
@@ -3195,13 +3103,15 @@ collective `/kə'lektɪv/` 集体的，共同的
 
 collier `/'kɒliə(r)/` 煤矿工人，运煤船
 
-collision `/kəˈlɪʒn/` 1 an instance of one moving object or person striking violently against another. 2 an instance of two or more records being assigned the same identifier or location in memory.
+collision `/kəˈlɪʒn/` n. 碰撞；冲突
 
-> n. 碰撞；冲突
+> 1 an instance of one moving object or person striking violently against another. 2 an instance of two or more records being assigned the same identifier or location in memory.
 >
 > Ex: his car was in collision with a lorry.
 
 colloquial `/kəˈləʊkwiəl/` 口语的，白话的，通俗的
+
+collude `/kəˈluːd/` vi. 密谋,共谋
 
 collusion `/kə'luːʒn/` 共谋，勾结
 
@@ -3259,9 +3169,9 @@ commission `/kə'mɪʃn/` 委员会，委托，佣金，犯罪
 
 committee `/kə'mɪti/` 委员会
 
-commodity `/kəˈmɒdəti/` a raw material or primary agricultural product that can be bought and sold, such as copper or coffee.
+commodity `/kəˈmɒdəti/` n. 商品；日用品；有价值之物
 
-> n. 商品；日用品；有价值之物
+> a raw material or primary agricultural product that can be bought and sold, such as copper or coffee.
 >
 > Ex: The actual price at which any commodity is commonly sold, is called its market price.
 
@@ -3275,7 +3185,7 @@ commutativity `/kəmjuːtə'tɪvɪtɪ/` 可换性，交换的，互相的
 
 commute `/kəˈmjuːt/` 通勤，上下班往返，减刑
 
-compact `/ˈkɑːmpækt/` 小巧的，紧凑的，紧密的，合约，协定，压实，小型汽车
+compact `/ˈkɑːmpækt/` adj. 紧密的；紧凑的；简洁的；vt. 使简洁；使装满；压实；n. 合约条约；梳妆粉盒；<美>小型汽车
 
 companion `/kəm'pæniən/` 同伴，陪伴，参考书
 
@@ -3291,13 +3201,13 @@ compass `/ˈkʌmpəs/` 罗盘，指南针，圆规，范围，围绕
 
 compatible `/kəmˈpatɪb(ə)l/` 兼容的，一致的
 
-compel `/kəm'pel/` force or oblige (someone) to do something.
+compel `/kəm'pel/` v. 强迫；迫使；使不得已
 
-> v. 强迫；迫使；使不得已
+> force or oblige (someone) to do something.
 >
 > Ex: a sense of duty compelled Harry to answer her questions.
 >
-> DERIVATIVES: compelling `/kəmˈpelɪŋ/` 引人入胜的，强迫，迫使，不可抗拒的
+> DERIVS: compelling `/kəmˈpelɪŋ/` 引人入胜的，强迫，迫使，不可抗拒的
 
 compendium `/kəm'pendiəm/` 简要，概略，提纲，手册
 
@@ -3311,7 +3221,7 @@ compete `/kəmˈpiːt/` strive to gain or win something by defeating or establis
 
 > Ex: no one can compete with his physical prowess.
 >
-> DERIVATIVES: competitor `/kəm'petɪtə(r)/` 竞争者，对手
+> DERIVS: competitor `/kəm'petɪtə(r)/` 竞争者，对手
 
 competent `/'kɒmpɪtənt/` 有能力的，足够地，胜任的
 
@@ -3345,11 +3255,9 @@ compliant `/kəm'plaɪənt/` 适用的，顺从的
 
 complicate `/'kɒmplɪkeɪt/` 使复杂化，使难懂
 
-complicate `/ˈkɒmplɪkeɪt/` 1 make (something) more complicated.
+complicate `/ˈkɒmplɪkeɪt/` v. 使复杂化；使起纠纷；adj. 复杂的
 
-> v. 使复杂化；使起纠纷
->
-> adj. 复杂的
+> 1 make (something) more complicated.
 >
 > Ex: increased choice will complicate matters for the consumer.
 
@@ -3365,7 +3273,7 @@ compose `/kəmˈpəʊz/` 1 write or create (a work of art, especially music or p
 
 > Ex: You must compose a report for a business meeting.
 >
-> DERIVATIVES: composed `/kəm'pəʊzd/` 镇静的，沉着的，由...组成的
+> DERIVS: composed `/kəm'pəʊzd/` 镇静的，沉着的，由...组成的
 
 compound `/'kɒmpaʊnd/` 
 
@@ -3387,9 +3295,9 @@ composition `/ˌkɒmpə'zɪʃn/` 成分，作品，组织，作文，合成物
 
 compositionality `/cʌmpəzɪʃə'nælɪtɪ/` 组合性
 
-comprehend `/ˌkɒmprɪˈhend/` 1 grasp mentally; understand. 2 include, comprise, or encompass.
+comprehend `/ˌkɒmprɪˈhend/` vt. 充分理解；领悟；包括
 
-> vt. 充分理解；领悟；包括
+> 1 grasp mentally; understand. 2 include, comprise, or encompass.
 >
 > Ex: I simply couldn't comprehend what had happened.
 >
@@ -3399,7 +3307,7 @@ comprehensive `/ˌkɒmprɪ'hensɪv/` 可理解的，全面的，综合的，广�
 
 comprise `/kəmˈpraɪz/` 包含，包括，构成，组成
 
-compromise `/ˈkɒmprəmaɪz/` 妥协，折中，和解
+compromise `/ˈkɒmprəmaɪz/` n. 妥协；折衷；折衷案；和解；vt. 妥协处理；危害；vi. 妥协，和解；让步
 
 compulsive `/kəm'pʌlsɪv/` 极有趣的，强迫的，上瘾的，难以抑制的
 
@@ -3425,7 +3333,7 @@ conceit `/kən'siːt/` 自负，字字珠玑，好评，幻想
 
 conceivable `/kənˈsiːvəbl/` 可想到的
 
-conceive `/kən'siːv/` 设想，想出，怀孕
+conceive `/kən'siːv/` vt. 构思；持有；以为；怀孕；vi. 怀孕；设想；考虑
 
 concentrate `/'kɒnsntreɪt/` 专心，集中，浓缩
 
@@ -3441,25 +3349,27 @@ conclude `/kənˈkluːd/` 推断，断定，终止，结束
 
 conclusion `/kənˈkluː.ʒən/` 结尾，结局，结果
 
-concrete `/ˈkɒŋkriːt/` 具体的，实体的，混凝土，水泥，实质性的，凝结，结合
+concrete `/ˈkɒŋkriːt/` adj. 具体的；实质性的；混凝土的；n. 水泥；混凝土；具体物；v. 凝结；结合
 
 concurrent `/kən'kʌrənt/` 同时发生的
+
+concussion `/kən'kʌʃn/` n. 脑震荡；震动
 
 condensation `/ˌkɒnden'seɪʃn/` 浓缩，凝结，液滴
 
 condenser `/kənˈdensə(r)/` 冷凝器，（汽车发动机）电容器
 
-condescend `/ˌkɒndɪˈsɛnd/` 1 show that one feels superior; be patronizing.
+condescend `/ˌkɒndɪˈsɛnd/` v.屈尊，俯就，怀着优越感对待
 
-> v.屈尊；俯就；怀着优越感对待
+> 1 show that one feels superior; be patronizing.
 >
 > Ex: take care not to condescend to your reader.
 
 condor `/ˈkɒndɔː(r)/` 神鹰，秃鹫
 
-conducive `/kənˈdjuːsɪv/` 1 making a certain situation or outcome likely or possible.
+conducive `/kənˈdjuːsɪv/` adj.有助的；有益的
 
-> adj.有助的；有益的
+> 1 making a certain situation or outcome likely or possible.
 >
 > Ex: the harsh lights and cameras were hardly conducive to a relaxed atmosphere.
 
@@ -3489,7 +3399,9 @@ conflate `/kən'fleɪt/` 合并
 
 conflict `/ˈkɒnflɪkt/` 冲突，争执，战斗
 
-conform `/kənˈfɔːm/` 符合，一致，遵守
+conform `/kənˈfɔːm/` v. 使一致；遵从，遵守
+
+> DERIVS: conformity `/kən'fɔːmɪtɪ/` n. 一致；符合；遵守
 
 confound `/kən'faʊnd/` 使困惑，混淆，挫败，诅咒
 
@@ -3507,11 +3419,9 @@ connoisseur `/ˌkɑːnəˈsɜːr/` 行家，鉴赏家，鉴定家
 
 cons `/kɔn/` 反面的，骗局，反对
 
-conscious `/ˈkɒnʃəs/` 1 aware of and responding to one's surroundings. 2 having knowledge of something. 3 (of an action or feeling) deliberate and intentional.
+conscious `/ˈkɒnʃəs/` adj. 神志清醒的；意识到的；自觉的；有意的；n. 意识
 
-> adj. 神志清醒的；意识到的；自觉的；有意的
->
-> n. 意识
+> 1 aware of and responding to one's surroundings. 2 having knowledge of something. 3 (of an action or feeling) deliberate and intentional.
 >
 > Ex: although I was in pain, I was conscious.
 >
@@ -3519,15 +3429,15 @@ conscious `/ˈkɒnʃəs/` 1 aware of and responding to one's surroundings. 2 hav
 >
 > Ex: a conscious effort to walk properly.
 >
-> DERIVATIVES: consciousness `/'kɒnʃəsnəs/` 意识，知觉，自觉，觉悟
+> DERIVS: consciousness `/'kɒnʃəsnəs/` 意识，知觉，自觉，觉悟
 
 consecrate `/'kɒnsɪkreɪt/` 奉献，神圣的
 
 consecutive `/kənˈsekjətɪv/` 连续的，连续不断的
 
-consequence `/'kɒnsɪkwəns/` 1 a result or effect, typically one that is unwelcome or unpleasant. 2 importance or relevance. 3 (consequences) a game in which a narrative is made up by the players in turn, each ignorant of what has already been contributed.
+consequence `/'kɒnsɪkwəns/` n. 结果, 后果, 重要(性), 重大
 
-> n. 结果, 后果, 重要(性), 重大
+> 1 a result or effect, typically one that is unwelcome or unpleasant. 2 importance or relevance. 3 (consequences) a game in which a narrative is made up by the players in turn, each ignorant of what has already been contributed.
 >
 > SYN: phenomenon, result, resultant, final result, outcome, termination, significance
 >
@@ -3547,11 +3457,13 @@ considerable `/kənˈsɪdərəbl/` 相当大的，重要的，可观的
 
 consistency `/kənˈsɪstənsi/` 一致性，连贯性，平滑度，坚实度，粘稠度
 
-consolation `/ˌkɒnsəˈleɪʃn/` 安慰
+consolation `/ˌkɒnsəˈleɪʃn/` n. 安慰，慰问
 
 console `/kən'səʊl/` （计算机）操控台，仪表盘，(游戏)平台，安慰，慰藉
 
-consolidate `/kənˈsɒlɪdeɪt/` 合并，巩固，加固，统一
+consolidate `/kənˈsɒlɪdeɪt/` vt. & vi. 合并，巩固，加固，统一
+
+> DERIVS: consolidation `/kən,sɒlɪ'deɪʃən/` n. 巩固，加强，强化；联合，统一；合并；变坚固
 
 consortium `/kən'sɔːtɪəm/` 财团，联合，合伙
 
@@ -3569,7 +3481,9 @@ constitute `/'kɒnstɪtjuːt/` 构成，组成，任命，建立，制定
 
 constraction `/kənst'rækʃn/` 构造
 
-constraint `/kən'streɪnt/` 约束，限制，强制
+constrain `/kənˈstreɪn/` vt. 强迫，强使；限制，约束
+
+> DERIVS: constraint `/kən'streɪnt/` n. 约束；强制；约束条件；对感情的压抑；虚情假意；[计算机] 限制.
 
 constrict `/kənˈstrɪkt/` 收缩，限制，约束，限定
 
@@ -3591,6 +3505,8 @@ contain `/kən'teɪn/` 容纳，包含，抑制，克制
 
 containment `/kən'teɪnmənt/` 控制，遏制政策，容积
 
+contaminate `/kən'tæmɪneɪt/` vt. 弄脏；污染
+
 contemplate `/ˈkɒntəmpleɪt/` 沉思，考虑，深思熟虑
 
 contemporary `/kən'temprəri/` 同时代的，当代的
@@ -3601,11 +3517,15 @@ contemptible `/kən'temptəbl/` 可轻视的，可鄙的
 
 contemptuously `/kən'temptjʊəslɪ/` 傲慢的，蔑视的
 
-contender `/kənˈtendə(r)/` 竞争者，角逐者，钻机，打孔装置
+contend `/kən'tend/` v. 竞争；争斗；争辩；坚决主张
+
+> DERIVS: contender `/kənˈtendə(r)/` 竞争者，角逐者，钻机，打孔装置
 
 contenting `/'kɒntent/` 内容，目录，含量，满意的，满足的
 
 contention `/kən'tenʃn/` 争论，争辩，争夺，论点
+
+contentious `/kən'tenʃəs/` adj. 好辩的；好争吵的；有争议的
 
 context `/'kɒntekst/` 上下文，环境，背景
 
@@ -3619,25 +3539,23 @@ contraction `/kən'trækʃn/` 缩写式，收缩，痉挛
 
 contradiction `/ˌkɒntrəˈdɪkʃn/` 矛盾，对立，不一致
 
-contrary `/'kɒntrəri/` 
+contrary `/'kɒntrəri/` adj. 相反的；截然不同的；执拗的；n. 反面；相反
 
 > adj. 1 opposite in nature, direction, or meaning. 2 perversely inclined to disagree or to do the opposite of what is expected or desired. 
 >
 > n. 1 (the contrary) the opposite. 2 a contrary proposition.
 >
-> adj. 相反的；截然不同的；执拗的
-> 
-> n. 反面；相反
->
 > Ex: The quantity of money, on the contrary, must in every country naturally increase as the value of the annual produce increases.
 
 contrast `/'kɒntrɑːst/` 对比，差别，对照，反差
+
+contravene `/ˌkɒntrəˈviːn/` vt. 取消，违反
 
 contribute `/kən'trɪbjuːt/` 捐助，投稿，贡献
 
 contrivance `/kən'traɪvəns/` 机械装置，想出办法，人工痕迹
 
-contrive `/kən'traɪv/` 图谋，发明，设计
+contrive `/kən'traɪv/` v. 图谋；发明；设计；设法做到
 
 controversial `/ˌkɒntrəˈvɜːʃl/` 有争议的
 
@@ -3651,15 +3569,11 @@ concentric `/kənˈsentrɪk/` 同心的，同轴的
 
 concept `/ˈkɒnsept/` 观念，概念
 
-concern `/kənˈsɜːn/`
+concern `/kənˈsɜːn/` vt. 涉及，关系到；使担心；n. 关心；关系；关心的事
 
 > n. 1 something that interests you because it is important or affects you. 2 an anxious feeling. 3 a commercial or industrial enterprise and the people who constitute it. 4 something or someone that causes anxiety; a source of unhappiness. 5 a feeling of sympathy for someone or something. 
 >
 > v. 1 have to do with or be relevant to. 2 be on the mind of.
->
-> vt. 涉及，关系到；使担心
->
-> n. 关心；关系；关心的事
 >
 > SYN(n.2): care, fear
 >
@@ -3675,7 +3589,7 @@ concern `/kənˈsɜːn/`
 >
 > Ex: The second question concerns our method of work.
 >
-> DERIVATIVES: concerning `/kən'sɜːnɪŋ/` 关于，涉及
+> DERIVS: concerning `/kən'sɜːnɪŋ/` 关于，涉及
 
 concert `/'kɒnsət/` 音乐会，一致，和谐，协定，协同安排，合作
 
@@ -3695,15 +3609,15 @@ confront `/kənˈfrʌnt/` 面对
 
 confuse `/kənˈfjuːz/` 困惑，混淆
 
-congest `/kən'dʒest/` 1 crowd (a road or place) so as to hinder or prevent freedom of movement. 2 cause (a part of the body) to fill abnormally with blood or other fluid.
+congest `/kən'dʒest/` vt. 充满，拥挤
 
-> vt. 充满,拥挤
+> 1 crowd (a road or place) so as to hinder or prevent freedom of movement. 2 cause (a part of the body) to fill abnormally with blood or other fluid.
 >
 > SYN: obstruct, obturate, impede, occlude, jam, block, close up
 >
 > Ex: congested arteries.
 >
-> DERIVATIVES: congestion `/kən'dʒestʃən/` 阻塞；拥挤；充血
+> DERIVS: congestion `/kən'dʒestʃən/` 阻塞；拥挤；充血
 
 congress `/ˈkɒŋɡres/` 国会，议会
 
@@ -3741,9 +3655,9 @@ conscientious `/ˌkɒnʃiˈenʃəs/` 认真的，勤勤恳恳的
 
 conscious `/ˈkɒnʃəs/` 意识，知觉，思想，神志
 
-conservation `/ˌkɒnsəˈveɪʃn/` 1 prevention of wasteful use of a resource. 2 the principle by which the total value of a physical quantity or parameter (such as energy, mass, linear or angular momentum) remains constant in a system which is not subject to external influence.
+conservation `/ˌkɒnsəˈveɪʃn/` n. 保存, 保护, 避免浪费, 对自然环境的保护
 
-> n. 保存, 保护, 避免浪费, 对自然环境的保护
+> 1 prevention of wasteful use of a resource. 2 the principle by which the total value of a physical quantity or parameter (such as energy, mass, linear or angular momentum) remains constant in a system which is not subject to external influence.
 >
 > SYN: improvement, betterment, advance, preservation, saving, principle
 >
@@ -3751,15 +3665,11 @@ conservation `/ˌkɒnsəˈveɪʃn/` 1 prevention of wasteful use of a resource. 
 >
 > Ex: the law of conservation of mass.
 
-conservative `/kənˈsɜːvətɪv/` 
+conservative `/kənˈsɜːvətɪv/` adj. 保守的；守旧的；n. 保守派(党)；保守的人
 
 > adj. 1 averse to change or innovation and holding traditional values. 2 (in a political context) favouring free enterprise, private ownership, and socially traditional ideas. 3 (of an estimate) purposely low for the sake of caution. 4 (of surgery or medical treatment) intended to control rather than eliminate a condition, with existing tissue preserved as far as possible. 
 >
 > n. 1 a person who is averse to change and holds traditional values. 2 a person favouring free enterprise, private ownership, and socially traditional ideas.
->
-> adj. 保守的；守旧的
->
-> n. 保守派(党)；保守的人
 >
 > Ex: they were very conservation in their outlook.
 >
@@ -3774,6 +3684,8 @@ conserve `/kənˈsɜːv/` 保护，保藏，节约，果酱，蜜饯
 consequent `/ˈkɒnsɪkwənt/` 结果，推论，随之而来的
 
 consequently `/'kɒnsɪkwəntli/` 因此，所以
+
+consignment `/consignment/` n. 委托；寄售；寄售物；托付货物
 
 consist `/kənˈsɪst/` 包括，组成，存在于
 
@@ -3797,6 +3709,8 @@ continent `/ˈkɒntɪnənt/` 大陆，陆地，洲
 
 continuation `/kənˌtɪnjʊ'eɪʃən/` 继续，延续，续集
 
+continuity `/ˌkɒntɪ'njuːəti/` n. 连续性
+
 continuous `/kən'tɪnjuəs/` 连续的，继续的，连绵不断的
 
 controversy `/ˈkɒntrəvɜːsi/` 争论，辩论，争议
@@ -3813,9 +3727,9 @@ conventional `/kən'venʃənl/` 传统的，惯例的，常规的
 
 convenience `/kən'viːnjəns/` 便利，舒适，适宜，便利设施
 
-convenient `/`/kənˈviːnɪənt/` fitting in well with a person's needs, activities, and plans.
+convenient `/kənˈviːnɪənt/` adj. 便利的；方便的
 
-> adj. 便利的；方便的
+> fitting in well with a person's needs, activities, and plans.
 >
 > Ex: I phoned your office to confirm that this date is convenient.
 
@@ -3855,17 +3769,11 @@ convulsion `/kən'vʌlʃn/` 抽搐，震动，动乱
 
 convex `/ˈkɒnveks/` 凸面，凸状，凸函数
 
-convict `/kənˈvɪkt/` 
+convict `/kənˈvɪkt/` vt.宣判 ... 有罪；使 ... 知罪；n.囚犯；罪犯；adj.被定罪的
 
 > v. 1 declare (someone) to be guilty of a criminal offense by the verdict of a jury or the decision of a judge in a court of law. 
 >
 > n. 1 a person found guilty of a criminal offense and serving. 3 a sentence of imprisonment.
->
-> vt.宣判 ... 有罪；使 ... 知罪
->
-> n.囚犯；罪犯
->
-> adj.被定罪的
 >
 > Ex: the thieves were convicted of the robbery.
 >
@@ -4071,9 +3979,9 @@ cripple `/ˈkrɪpl/` 瘸子，残疾人，使...变残疾
 
 crisscross `/ˈkrɪskrɒs/` 十字形，相互交叉
 
-criteria `/krʌɪˈtɪərɪən/` a principle or standard by which something may be judged or decided.
+criteria `/krʌɪˈtɪərɪən/` n. 标准；尺度；准则
 
-> n. 标准；尺度；准则
+> a principle or standard by which something may be judged or decided.
 >
 > Ex: they award a green label to products that meet certain environmental criteria.
 
@@ -4087,21 +3995,17 @@ criticize `/ˈkrɪtɪsaɪz/` 批评，批判，挑剔，指责，评论，评价
 
 critique `/krɪ'tiːk/` 批评，批评法，评论
 
-crony `/'krəʊnɪ/` a close friend or companion.
+crony `/'krəʊnɪ/` n. 密友；好朋友；亲伴
 
-> n. 密友；好朋友；亲伴
+> a close friend or companion.
 >
 > Ex: he went gambling with his cronies.
 
-crop `/krɒp/` 
+crop `/krɒp/` n. 农作物；收成；庄稼；(一)批；v. 修剪；啃吃；收获；出现
 
 > n. 1 a cultivated plant that is grown on a large scale commercially, especially a cereal, fruit, or vegetable. 2 a group or amount of related people or things appearing or occurring at one time. 3 a hairstyle in which the hair is cut very short. 4 short for riding crop or hunting crop. 5 a pouch in a bird's gullet where food is stored or prepared for digestion. 6 the entire tanned hide of an animal. 
 > 
 > v. 1 cut (something, especially a person's hair) very short. 2 (of an animal) bite off and eat the tops of (plants). 3 harvest (plants or their produce) from a particular area.
->
-> n. 农作物；收成；庄稼；(一)批
->
-> v. 修剪；啃吃；收获；出现
 >
 > Ex: the main crops were oats and barley.
 >
@@ -4125,9 +4029,9 @@ crowd `/kraʊd/` 人群，群众，拥挤，涌入
 
 crown `/kraʊn/` 王权，王冠，顶点，加冕
 
-crucial `/'kruːʃl/` 1 of extreme importance; vital to the resolution of a crisis. 2 having crucial relevance. 3 of the greatest importance. 4 having the power or quality of deciding.
+crucial `/'kruːʃl/` adj. 决定性的；重要的；定局的；决断的
 
-> adj. 决定性的；重要的；定局的；决断的
+> 1 of extreme importance; vital to the resolution of a crisis. 2 having crucial relevance. 3 of the greatest importance. 4 having the power or quality of deciding.
 >
 > SYN: critical, decisive, life-and-death, life-or-death, pivotal, polar, material
 >
@@ -4139,9 +4043,9 @@ crucible `/'kruːsɪbl/` 坩埚，熔炉，严酷的考验
 
 crudely `/kruːdli/` 粗糙地，粗鲁地，未加工地
 
-cruel `/ˈkruː(ə)l/` 1 wilfully causing pain or suffering to others, or feeling no concern about it. 2 spoil or ruin (an opportunity or a chance of success).
+cruel `/ˈkruː(ə)l/` adj.残酷的；残忍的；引起痛苦的
 
-> adj.残酷的；残忍的；引起痛苦的
+> 1 wilfully causing pain or suffering to others, or feeling no concern about it. 2 spoil or ruin (an opportunity or a chance of success).
 >
 > Ex: people who are cruel to animals.
 >
@@ -4213,21 +4117,17 @@ cupboard `/'kʌbəd/` 碗柜，衣柜，壁橱
 
 curate `/'kjʊərət/` 副牧师，助理牧师
 
-curb `/kəːb/` 
+curb `/kəːb/` n.路边；克制；勒马绳；vt.抑制；勒住；牵(狗)到合适地方大小便
 
 > n. 1 a check or restraint on something. 2 (also curb bit) a type of bit with a strap or chain attached which passes under a horse's lower jaw, used as a check. 3 variant spelling of verb. 4 a swelling on the back of a horse's hock, caused by spraining a ligament. 
 > 
 > vt. 1 restrain or keep in check. 2 lead (a dog being walked) near the curb to urinate or defecate, in order to avoid soiling buildings, pavements, etc.
 >
-> n.路边；克制；勒马绳
->
-> vt.抑制；勒住；牵(狗)到合适地方大小便
->
 > Ex: plans to introduce tougher curbs on insider dealing.
 >
 > Ex: she promised she would curb her temper.
 >
-> DERIVATIVES: curbing `'kɜːbɪŋ/` 边石，边石的材料
+> DERIVS: curbing `/'kɜːbɪŋ/` 边石，边石的材料
 
 cured `/'kjʊəd/` 治愈的
 
@@ -4273,13 +4173,11 @@ cutoff `/'kʌtɔːf/` 近路，切断
 
 cyber `/'saɪbə/` 网络的
 
-cyberbully `/ˈsaɪ.bəˌbʊl.i/` 
+cyberbully `/ˈsaɪ.bəˌbʊl.i/` v. 网络欺凌
 
 > n. someone who uses the internet to harm or frighten another person, especially by sending them unpleasant messages.
 >
 > v. to use the internet to harm or frighten another person, especially by sending them unpleasant messages.
->
-> v. 网络欺凌
 >
 > Ex: In contrast, anyone can be a cyberbully.
 
@@ -4287,9 +4185,9 @@ cyberspace `/'saɪbəspeɪs/` 网络空间
 
 cyclic `/'saɪklɪk/` 循环的，周期性的，环形的
 
-cyclist `/ˈsaɪklɪst/` a person who rides a bicycle.
+cyclist `/ˈsaɪklɪst/` n. 骑自行车的人
 
-> n. 骑自行车的人
+> a person who rides a bicycle.
 
 cyclomatic `/ˌsaɪkləˈmætɪk/` 圈，环形，循环
 
@@ -4327,6 +4225,8 @@ dangling `/'dæŋɡl/` （计算机）悬垂，摇晃，挂着，追求
 
 dare `/deə(r)/` 敢
 
+dart `/dɑːt/` vt. 投掷；投射；vi. 向前冲；飞奔；n. 飞镖
+
 dash `/dæʃ/` 破折号，冲，猛冲，猛掷，泼溅，匆忙完成
 
 dastardly `/'dæstədli/` 懦弱的，欺善怕恶的
@@ -4357,6 +4257,10 @@ dazzling `/ˈdæzlɪŋ/` 耀眼的，灿烂的，辉煌的
 
 deafen `/'defn/` 使聋，把 ... 震聋
 
+deal `/diːl/` n. 协定；交易；大量；v. 应付；分配；处理；交易；经营
+
+> DERIVS: dealt `/delt/` 动词deal的过去式和过去分词
+
 dearer `/dɪə(r)/` 亲爱的，宝贵的，昂贵的，哎呀
 
 dearest `/'dɪərɪst/` 最亲爱的，最可爱的
@@ -4369,9 +4273,9 @@ debase `/dɪ'beɪs/` 降低质量/地位/价值，贬低
 
 debasement `/dɪ'beɪsmənt/` 降低（品质，价值）
 
-debilitate `/dɪˈbɪlɪteɪt/` 1 make (someone) very weak and infirm.
+debilitate `/dɪˈbɪlɪteɪt/` vt.使 ... 衰弱
 
-> vt.使 ... 衰弱
+> 1 make (someone) very weak and infirm.
 >
 > Ex: he was severely debilitated by a stomach upset.
 
@@ -4391,13 +4295,13 @@ deceive `/dɪˈsiːv/` 欺骗，行骗，诓骗
 
 december `/dɪ'sembə(r)/` 十二月(简写Dec)
 
-decency `/ˈdiːsnsi/` 1 behaviour that conforms to accepted standards of morality or respectability. 2 (decencies) things required for a reasonable standard of life.
+decency `/ˈdiːsnsi/` n. 得体；礼貌；体面
 
+> 1 behaviour that conforms to accepted standards of morality or respectability. 2 (decencies) things required for a reasonable standard of life.
+>
 > Ex: she had the decency to come and confess.
 >
-> Ex: I can't afford any of the decencies of life.
->
-> n. 得体；礼貌；体面
+> Ex: I can't afford any of the decencies of life. 
 
 decent `/ˈdiːsnt/` 得体的，体面的
 
@@ -4425,9 +4329,9 @@ declension `/dɪ'klenʃn/` 衰退，倾斜，语尾变化
 
 decline `/dɪˈklaɪn/` 下降，减少，衰退
 
-decompose `/ˌdiːkəmˈpəʊz/` 分解，腐烂
+decompose `/ˌdiːkəmˈpəʊz/` vt. 分解，腐烂
 
-decomposition `/ˌdiːkɒmpə'zɪʃn/` 分解，腐烂，变质
+> DERIVS: decomposition `/ˌdiːkɒmpə'zɪʃn/` 分解，腐烂，变质
 
 decorate `/ˈdekəreɪt/` 装饰，粉刷，油漆，点缀
 
@@ -4455,13 +4359,13 @@ decryption `/diː'krɪpʃn/` （计算机）译码
 
 dedicate `/'dedɪkeɪt/` 致力于，献出
 
-dedication `/ˌdɛdɪˈkeɪʃn/` 1 the quality of being dedicated or committed to a task or purpose. 2 the action of dedicating a church or other building.
+dedication `/ˌdɛdɪˈkeɪʃn/` n. 奉献；献词；献堂礼
 
 > Ex: his dedication to his duties.
 >
 > Ex: the dedication of a new city church.
 >
-> n. 奉献；献词；献堂礼
+> 1 the quality of being dedicated or committed to a task or purpose. 2 the action of dedicating a church or other building.
 
 deduce `/dɪ'djuːs/` 演绎，推理
 
@@ -4511,6 +4415,10 @@ deflation `/ˌdiː'fleɪʃn/` 通货紧缩，放气
 
 deflator `/dɪf'leɪtə/` 紧缩指数
 
+deforest `/ˌdiː'fɒrɪst/` v. 采伐森林；清除树林
+
+> DERIVS: deforestation `/deforestation/` n. 森林开伐；滥伐森林
+
 defrauded `/dɪ'frɔːd/` 诈骗
 
 defray `/dɪ'freɪ/` 支付
@@ -4519,19 +4427,19 @@ defrost `/ˌdiːˈfrɒst/` 解冻，除霜
 
 defunct `/dɪˈfʌŋkt/` 不复存在的，失效的，死亡的，解散的
 
+defy `/dɪˈfaɪ/` vt. 藐视；公然反抗；挑衅；使落空；经受住；顶住；抗住；n. 挑战；对抗
+
 degenerate `/dɪ'dʒenəreɪt/` 退化，堕落
 
-degradation `/ˌdɛɡrəˈdeɪʃn/` 1 the condition or process of degrading or being degraded. 2 the wearing down of rock by disintegration.
+degradation `/ˌdɛɡrəˈdeɪʃn/` n. 降格；堕落；退化
 
-> n. 降格；堕落；退化
+> 1 the condition or process of degrading or being degraded. 2 the wearing down of rock by disintegration.
 >
 > Ex: a trail of human misery and degradation.
 
-degrade `/dɪˈɡreɪd/` 1 reduce the level of land, as by erosion. 2 reduce in worth or character, usually verbally. 3 lower the grade of something; reduce its worth.
+degrade `/dɪˈɡreɪd/` vt. 使……丢脸；使……降级；使……降解；贬低；vi. 退化；降级，降低
 
-> vt. 使……丢脸；使……降级；使……降解；贬低
->
-> vi. 退化；降级，降低
+> 1 reduce the level of land, as by erosion. 2 reduce in worth or character, usually verbally. 3 lower the grade of something; reduce its worth.
 >
 > SYN: humiliate, mortify, chagrin, humble, abase, worsen, aggravate
 >
@@ -4546,6 +4454,8 @@ dehumanizing `/ˌdiːˈhjuːmənaɪz/` 使失去人性，使非人化
 dehydrate `/ˌdiːhaɪˈdreɪt/` 脱水，失水
 
 delegate `/ˈdelɪɡət /` 代理，授权，委托，代表
+
+> DERIVS: delegation `/delɪ'geɪʃ(ə)n/` n. 代表团
 
 deleterious `/ˌdeləˈtɪəriəs/` 有害的
 
@@ -4569,13 +4479,13 @@ delimiter `/dɪˈlɪmɪt/` 分隔符，定界符
 
 delineate `/dɪ'lɪnieɪt/` 描绘，叙述，画出
 
-delinquency `/dɪˈlɪŋkw(ə)nsi/` 1 minor crime, especially that committed by young people. 2 neglect of one's duty.
+delinquency `/dɪˈlɪŋkw(ə)nsi/` n. （少年）犯罪；失职
 
+> 1 minor crime, especially that committed by young people. 2 neglect of one's duty.
+>
 > Ex: social causes of crime and delinquency.
 >
-> Ex: he relayed this in such a manner as to imply grave delinquency on the host's part.
->
-> n. （少年）犯罪；失职
+> Ex: he relayed this in such a manner as to imply grave delinquency on the host's part. 
 
 delinquent `/dɪ'lɪŋkwənt/` 有过失的，怠忽的，失职的，拖欠的，行为不良的人，少年犯
 
@@ -4599,9 +4509,9 @@ demilitarized `/diːmɪlɪtəˌraɪzd/` 非武装的
 
 demise `/dɪ'maɪz/` 死亡，转让房产，让位，让渡，遗赠，转让
 
-democratic `/ˌdeməˈkrætɪk/` 1 relating to or supporting democracy or its principles. 2 (Democratic) (in the US) relating to the Democratic Party.
+democratic `/ˌdeməˈkrætɪk/` adj. 民主的, 有民主精神或作风的
 
-> adj. 民主的, 有民主精神或作风的
+> 1 relating to or supporting democracy or its principles. 2 (Democratic) (in the US) relating to the Democratic Party. 
 >
 > SYN: antiauthoritarian, classless, egalitarian, parliamentary, participatory, popular, representative
 >
@@ -4614,6 +4524,8 @@ demographic `/ˌdemə'ɡræfɪk/` 人口统计学的，人口的
 demolish `/dɪˈmɒlɪʃ/` 拆除，毁坏
 
 demonstrate `/ˈdemənstreɪt/` 证明，证实，说明，表露，演示，示威，游行
+
+> DERIVS: demonstration `/ˌdemənˈstreɪʃn/` n. 表明；证明；示范；<非正>游行示威
 
 demultiplexing `/dɪmʌltɪp'leksɪŋ/` （计算机）多路处理，多路化，多路分解
 
@@ -4647,11 +4559,11 @@ departure `/dɪˈpɑːtʃə(r)/` 离开，启程，违背
 
 dependability `/dɪˌpendə'bɪləti/` 可靠性，可依赖性
 
-depict `/dɪˈpɪkt/` represent by a drawing, painting, or other art form.
+depict `/dɪˈpɪkt/` vt.描绘；描写；刻画
 
-> Ex: paintings depicting Old Testament scenes.
+> represent by a drawing, painting, or other art form.
 >
-> vt.描绘；描写；刻画
+> Ex: paintings depicting Old Testament scenes. 
 
 deplete `/dɪˈpliːt/` 耗尽，用尽
 
@@ -4667,11 +4579,13 @@ depreciation `/dɪˌpriːʃɪˈeɪʃən/` 贬值，折旧，轻视，低估
 
 depress `/dɪˈpres/` 使...沮丧，使...萧条，减少(工资)
 
+> DERIVS: depression `/dɪ'preʃn/` n. 沮丧；萧条
+
 deprive `/dɪˈpraɪv/` 剥夺，免去，免职，匮乏，贫困
 
 depth `/depθ/` 深度，深奥
 
-deputy `/'depjuti/` 代表，副手，议员
+deputy `/'depjuti/` n. 代表；副手；议员
 
 deque `/'dek/` （计算机）双端队列
 
@@ -4699,17 +4613,11 @@ designer `/dɪ'zaɪnə(r)/` 设计者
 
 desirable `/desirable/` 令人向往的，性感的，渴望的
 
-desire `/dɪˈzaɪər/`
+desire `/dɪˈzaɪər/` n. 欲望；要求，心愿；性欲；vt. 要求；想要；希望得到…；vi. 渴望
 
 > n. 1 the feeling that accompanies an unsatisfied state. 2 an inclination to want things. 3 something that is desired.
 >
 > v. 1feel or have a desire for; want strongly. 2 expect and wish. 3 express a desire for.
->
-> n. 欲望；要求，心愿；性欲
->
-> vt. 要求；想要；希望得到…
->
-> vi. 渴望
 >
 > Ex: There is a desire for peace universally.
 >
@@ -4721,11 +4629,11 @@ despair `/dɪ'speə(r)/` 绝望，失望
 
 desperate `/'despərət/` 绝望的，不顾一切的
 
-despise `/dɪ'spaɪz/` feel contempt or a deep repugnance for.
+despise `/dɪ'spaɪz/` vt. 轻视
 
-> Ex: he despised himself for being selfish.
+> feel contempt or a deep repugnance for.
 >
-> vt. 轻视
+> Ex: he despised himself for being selfish. 
 
 despite `/dɪˈspaɪt/` 尽管，即使，憎恨，轻视
 
@@ -4737,17 +4645,15 @@ despotical `/de'spɒtɪkəl/` 暴君的，专横的
 
 dessert `/dɪˈzɜːt/` 甜点
 
-desert `/dɪˈzəːt/` 1 abandon (a person, cause, or organization) in a way considered disloyal or treacherous. 2 a waterless, desolate area of land with little or no begetation, typically one covered with sand. 3 rare a flock of lapwings.
+desert `/dɪˈzəːt/` n. 沙漠；荒地；应得(的惩罚或奖励)；v. 遗弃；离弃；放弃；擅离职守
 
+> 1 abandon (a person, cause, or organization) in a way considered disloyal or treacherous. 2 a waterless, desolate area of land with little or no begetation, typically one covered with sand. 3 rare a flock of lapwings.
+>
 > Ex: we feel our public representatives have deserted us.
 > 
 > Ex: the desert of the Sinai peninsula is a harsh place.
 > 
 > Ex: a desert of lapwings rises from a ploughed field.
-> 
-> n. 沙漠；荒地；应得(的惩罚或奖励)
->
-> v. 遗弃；离弃；放弃；擅离职守
 
 deserve `/dɪ'zɜːv/` 应受，值得
 
@@ -4765,9 +4671,9 @@ detect `/dɪˈtekt/` 发现，查明，探测
 
 detention `/dɪˈtenʃn/` 拘留，扣押，监禁
 
-deter `/dɪˈtɜː(r)/` v. 1 try to prevent; show opposition to. 2 turn away from by persuasion.
+deter `/dɪˈtɜː(r)/` vt. 制止，阻止；使打消念头
 
-> vt. 制止，阻止；使打消念头
+> v. 1 try to prevent; show opposition to. 2 turn away from by persuasion.
 >
 > SYN(v.1): discourage
 >
@@ -4777,9 +4683,9 @@ deter `/dɪˈtɜː(r)/` v. 1 try to prevent; show opposition to. 2 turn away fro
 >
 > Ex: Dogs can deter unwelcome intruders.
 
-deteriorate `/dɪˈtɪərɪəreɪt/` 1 become progressively worse.
+deteriorate `/dɪˈtɪərɪəreɪt/` v. 恶化；变质；衰退
 
-> v. 恶化；变质；衰退
+> 1 become progressively worse.
 >
 > SYN: decay, crumble, delapidate, worsen, decline
 >
@@ -4807,11 +4713,13 @@ detraction `/dɪ'trækʃən/` 诽谤，减损
 
 detriment `/ˈdetrɪmənt/` 伤害，损害
 
+> DERIVS: detrimental `/ˌdetrɪ'mentl/` adj. 有害的；n. 有害的人或事
+
 devalue `/ˌdiː'væljuː/` 贬值，降低价值
 
-devastate `/ˈdevəsteɪt/` 1 destroy or ruin. 2 cause (someone) severe and overwhelming shock or grief.
+devastate `/ˈdevəsteɪt/` vt. 毁坏；使荒芜, 在感情上(精神上、财务上等)压垮
 
-> vt. 毁坏；使荒芜, 在感情上(精神上、财务上等)压垮
+> 1 destroy or ruin. 2 cause (someone) severe and overwhelming shock or grief.
 >
 > SYN: destroy, ruin, overwhelm, overpower, sweep over, whelm, overcome
 >
@@ -4849,9 +4757,9 @@ dexterity `/dɛkˈstɛrɪti/` 机敏，灵巧，熟练，手艺
 
 [回到D](#D)--[回到顶部](#英汉词典)
 
-diabetes `/ˌdʌɪəˈbiːtiːz/` any of several metabolic disorders marked by excessive urination and persistent thirst
+diabetes `/ˌdʌɪəˈbiːtiːz/` n. <医>糖尿病
 
-> n. <医>糖尿病
+> any of several metabolic disorders marked by excessive urination and persistent thirst
 >
 > SYN: polygenic disorder, polygenic disease
 >
@@ -4877,9 +4785,9 @@ diatonic `/ˌdaɪə'tɒnɪk/` 自然音阶的，全音阶的
 
 diophantine `/.dɑiə'fæntɑin/` （数学）丢番图
 
-dioxide `/daɪ'ɒksaɪd/` an oxide containing two atoms of oxygen in the molecule.
+dioxide `/daɪ'ɒksaɪd/` n. 二氧化碳
 
-> n. 二氧化碳
+> an oxide containing two atoms of oxygen in the molecule.
 >
 > SYN: oxide
 >
@@ -4889,17 +4797,11 @@ dioxide `/daɪ'ɒksaɪd/` an oxide containing two atoms of oxygen in the molecul
 
 dicing `/'daɪsɪŋ/` 菱形装饰(切割)
 
-dictate `/dɪkˈteɪt/` 
+dictate `/dɪkˈteɪt/` vt. & vi. 大声讲或读；口授；vt. 指示；指定；指令；n. 命令，规定，要求
 
 > n. 1 an authoritative rule. 2 a guiding principle.
 >
 > v. 1 issue commands or orders for. 2 say out loud for the purpose of recording. 3 rule as a dictator.
->
-> vt. & vi. 大声讲或读；口授
->
-> vt. 指示；指定；指令
->
-> n. 命令，规定，要求
 >
 > Ex: dictate a letter to sb.
 >
@@ -4923,6 +4825,8 @@ diffracting `/dɪ'frækt/` 使分散，使衍射
 
 diffuse `/dɪˈfjuːz/` 传播，扩散，弥漫
 
+diffusion `/dɪ'fjuːʒn/` n. 扩散；散布；传播；漫散
+
 dig `/dɪɡ/` 挖，掘，翻土，探究
 
 digest `/'dɑɪdʒɛst/` 摘要，消化，理解
@@ -4931,11 +4835,9 @@ digestion `/daɪˈdʒestʃən/` 消化，消化系统
 
 digit `/ˈdɪdʒɪt/` 数字位，进制位，数字，手指，拇指，脚趾
 
-digital `/'dɪdʒɪtl/` 1 of a circuit or device that represents magnitudes in digits. 2 displaying numbers rather than scale positions. 3 relating to or performed with the fingers.
+digital `/'dɪdʒɪtl/` adj. 数字的；手指的；n. 数字；键
 
-> adj. 数字的；手指的
->
-> n. 数字；键
+> 1 of a circuit or device that represents magnitudes in digits. 2 displaying numbers rather than scale positions. 3 relating to or performed with the fingers.
 >
 > SYN: digit, figure, dactyl
 >
@@ -4943,9 +4845,9 @@ digital `/'dɪdʒɪtl/` 1 of a circuit or device that represents magnitudes in d
 >
 > Ex: the digital revolution.
 
-dignity `/'dɪɡnəti/` 1 the state or quality of being worthy of honor or respect. 2 a composed or serious manner or style.
+dignity `/'dɪɡnəti/` n. 尊严；高贵；端庄
 
-> n. 尊严；高贵；端庄
+> 1 the state or quality of being worthy of honor or respect. 2 a composed or serious manner or style.
 > 
 > Ex: the dignity of labour.
 >
@@ -4981,7 +4883,7 @@ dimensional `/dɪ'menʃənəl/` 维度的，次元的，空间的，尺寸的
 
 dimensioning `/dɪ'menʃənɪŋ/` 量尺寸的，标注位置的
 
-diminish `/dɪ'mɪnɪʃ/` 减少，变少，减损，贬低
+diminish `/dɪ'mɪnɪʃ/` vt. 减少；减损；贬低；vi. 变少；逐渐变细
 
 diminuendo `/dɪˌmɪnju'endəʊ/` (音乐)渐弱
 
@@ -4999,7 +4901,7 @@ dire `/ˈdaɪə(r)/` 可怕的，恐怖的
 
 direct `/dəˈrekt/` 直径，直接的，亲自的，直射的，指导，指挥，导演
 
-disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` 1 an unfavourable circumstance or condition that reduces the chances of success or effectiveness. 2 put in an unfavourable position in relation to someone or something else.
+disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` n. 不利；不利条件；损害；损失
 
 > SYN: drawback, handicap, hardship, hindrance, impediment, inconvenience, liability, minus, nuisance, privation, snag, trouble, weakness.
 >
@@ -5007,7 +4909,7 @@ disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` 1 an unfavourable circumstance or condi
 >
 > Ex: the pension scheme tends to disadvantage women.
 >
-> n. 不利；不利条件；损害；损失
+> 1 an unfavourable circumstance or condition that reduces the chances of success or effectiveness. 2 put in an unfavourable position in relation to someone or something else.
 
 disambiguate `/ˌdɪsamˈbɪɡjʊeɪt/` 消除...的歧义
 
@@ -5027,15 +4929,11 @@ discern `/dɪˈsɜːn/` 辨别，识别，看出
 
 discharge `/dɪs'tʃɑːdʒ/` 释放，解雇，放电
 
-discipline `/ˈdɪsɪplɪn/` 
+discipline `/ˈdɪsɪplɪn/` n.纪律；训练；学科；vt.训练；惩罚
 
 > n. 1 the practice of training people to obey rules or a code of behavior, using punishment to correct disobedience. 2 a branch of knowledge, typically one studied in higher education.
 >
 > vt. 1 train (someone) to obey rules or a code of behavior, using punishment to correct disobedience.
->
-> n.纪律；训练；学科
->
-> vt.训练；惩罚
 >
 > Ex: a lack of proper parental and school discipline.
 >
@@ -5053,45 +4951,47 @@ discourage `/dɪsˈkʌrɪdʒ/` 阻止，阻拦，使...泄气
 
 discourse `/dɪsˈkɔːs/` 交谈，演讲，论述，著述，论文
 
+discourteous `/dɪs'kɜːtiəs/` adj. 失礼的；无礼貌的
+
 discredit `/dɪs'kredɪt/` 败坏...的名声，怀疑，不信任
 
 discreet `/dɪˈskriːt/` 谨慎的，慎重的，考虑周到的
 
 discrepancy `/dɪs'krepənsi/` 差异，不一致，分歧
 
-discrete `/dɪˈskriːt/` individually separate and distinct.
+discrete `/dɪˈskriːt/` adj. 分离的, 不相关联的
 
-> adj. 分离的, 不相关联的
+> individually separate and distinct.
 >
 > Ex: speech sounds are produced as a continuous sound signal rather than discrete units.
 >
-> DERIVATIVES: discretion `/dɪ'skreʃn/` 谨慎，慎重，自行决定
+> DERIVS: discretion `/dɪ'skreʃn/` 谨慎，慎重，自行决定
 
 discriminate `/dɪ'skrɪmɪneɪt/` 区分，区别对待，辨别，差别对待
 
-discrimination `/dɪˌskrɪmɪˈneɪʃn/` 1 the unjust or prejudicial treatment of different categories of people, especially on the grounds of ethnicity, age, sex, or disability. 2 recognition and understanding of the difference between one thing and another. 3 the selection of a signal having a required characteristic, such as frequency or amplitude, by means of a discriminator.
+discrimination `/dɪˌskrɪmɪˈneɪʃn/` n. 歧视；鉴赏力；辨别
 
+> 1 the unjust or prejudicial treatment of different categories of people, especially on the grounds of ethnicity, age, sex, or disability. 2 recognition and understanding of the difference between one thing and another. 3 the selection of a signal having a required characteristic, such as frequency or amplitude, by means of a discriminator.
+>
 > Ex: victims of racial discrimination.
 >
 > Ex: young children have difficulties in making fine discriminations.
->
-> n. 歧视；鉴赏力；辨别
 
 discriminator `/dɪ'skrɪmɪneɪtə/` （计算机）分辨符，鉴别器，鉴别者
 
 discuss `/dɪˈskʌs/` 讨论，论述
 
-disdain `/dɪsˈdeɪn/` 1 the feeling that someone or something is unworthy of one's consideration or respect. 2 consider to be unworthy of one's consideration.
+disdain `/dɪsˈdeɪn/` n.轻蔑；v.蔑视
 
+> 1 the feeling that someone or something is unworthy of one's consideration or respect. 2 consider to be unworthy of one's consideration.
+>
 > Ex: her upper lip curled in disdain.
 >
 > Ex: he disdained his patients as an inferior rabble.
->
-> n.轻蔑
->
-> v.蔑视
 
 diseconomy `/ˌdɪsɪ'kɒnəmɪ/` 不经济
+
+disempower `/dɪsɪm'paʊər/` v. 剥夺；使失去权利
 
 disengage `/ˌdɪsɪn'ɡeɪdʒ/` 解除，解开，脱离
 
@@ -5129,6 +5029,8 @@ disjoint `/dɪs'dʒɔɪnt/` （数学）不相交，脱节，解体
 
 disjunctive `/dɪs'dʒʌŋktɪv/` 可分的，分离的，分隔的
 
+dislodge `/dɪs'lɒdʒ/` 逐出，用力移出，移走
+
 dismal `/'dɪzməl/` 阴沉的，凄凉的，暗的
 
 dismantle `/dɪs'mæntl/` 拆除，拆开，去除，废除
@@ -5145,11 +5047,11 @@ disorganize `/dɪsˈɔːɡənaɪzd/` 破坏组织，扰乱秩序，计划不周�
 
 disparate `/'dɪspərət/` 不同的，异类的
 
-disparity `/dɪ'spærəti/` a difference in level or treatment, especially one that is seen as unfair.
+disparity `/dɪ'spærəti/` n. 不一致
 
-> Ex: income-based health care disparities.
+> a difference in level or treatment, especially one that is seen as unfair.
 >
-> n. 不一致
+> Ex: income-based health care disparities. 
 
 dispassionate `/dɪs'pæʃənət/` 冷静的，不带感情的，平心静气的
 
@@ -5179,7 +5081,9 @@ disregard `/ˌdɪsrɪ'ɡɑːd/` 漠视，不理会，不顾，忽视
 
 disrespectful `/ˌdɪsrɪ'spektfl/` 无礼的，不尊敬的
 
-disruptive `/dɪs'rʌptɪv/` 分裂的，破坏性的，制造混乱的
+disrupt `/dɪs'rʌpt/` vt. 干扰；打断；妨碍；使分裂；使破裂
+
+> DERIVS: disruptive `/dɪs'rʌptɪv/` 分裂的，破坏性的，制造混乱的
 
 dissatisfaction `/ˌdɪsˌsætɪs'fækʃn/` 不满
 
@@ -5205,11 +5109,11 @@ dissolvent `/dɪ'zɒlvənt/` 溶剂，有溶解能力的
 
 dissonance `/'dɪsənəns/` 不一致，不和谐
 
-dissuade `/dɪˈsweɪd/` persuade (someone) not to take a particular course of action.
+dissuade `/dɪˈsweɪd/` v. 劝阻
 
-> Ex: his friends tried to dissuade him from flying.
+> persuade (someone) not to take a particular course of action.
 >
-> v. 劝阻
+> Ex: his friends tried to dissuade him from flying. 
 
 dissuading `/dɪ'sweɪd/` 劝阻
 
@@ -5227,9 +5131,9 @@ distort `/dɪˈstɔːt/` 失真，扭曲，歪解，偏激
 
 distract `/dɪ'strækt/` 分散，转移，分心，困扰
 
-distraction `/dɪ'strækʃn/` 1 a thing that prevents someone from giving full attention to something else. 2 extreme agitation of the mind or emotions.
+distraction `/dɪ'strækʃn/` n. 注意力分散；消遣；心烦意乱
 
-> n. 注意力分散；消遣；心烦意乱
+> 1 a thing that prevents someone from giving full attention to something else. 2 extreme agitation of the mind or emotions.
 >
 > SYN: confusion, mental confusion, confusedness, muddiness, disarray, inattention, entertainment
 >
@@ -5289,25 +5193,21 @@ divisive `/dɪ'vaɪsɪv/` 不和的，分裂的，区分的
 
 divisor `/dɪ'vaɪzə(r)/` （数学）除数
 
-divorce `/dɪˈvɔːs/` 1 the legal dissolution of a marriage by a  court or other competent body. 2 legally dissolve one's marriage with (someone). 3 separate or dissociate (something) from something else, typically with an undesirable effect.
+divorce `/dɪˈvɔːs/` n. 分离；离婚；vt. 使分离；与 ... 离婚；vi. 离婚
 
+> 1 the legal dissolution of a marriage by a  court or other competent body. 2 legally dissolve one's marriage with (someone). 3 separate or dissociate (something) from something else, typically with an undesirable effect.
+>
 > Ex: her divorce from her first husband.
 >
 > Ex: they divorced eight years later.
 >
 > Ex: religion cannot be divorced from morality.
->
-> n. 分离；离婚
->
-> vt. 使分离；与 ... 离婚
->
-> vi. 离婚
 
-divulge `/daɪˈvʌldʒ/` 1 make known (private or sensitive information).
+divulge `/daɪˈvʌldʒ/` v. 泄露；暴露
 
-> Ex: I do not want to divulge my plans at the moment.
+> 1 make known (private or sensitive information).
 >
-> v. 泄露；暴露
+> Ex: I do not want to divulge my plans at the moment. 
 
 dizz `/'dɪz/` 头晕，头昏眼花
 
@@ -5351,11 +5251,11 @@ domestic `/də'mestɪk/` 家庭的，国内的，驯养的，佣人，家仆
 
 domicile `/'dɒmɪsaɪl/` 住所，住宅
 
-dominance `/'dɒmɪnəns/` power and influence over others.
+dominance `/'dɒmɪnəns/` n. 支配；控制；统治；优势；【生】优势度，显性
 
-> Ex: the worldwide dominance of Hollywood.
+> power and influence over others.
 >
-> n. 支配；控制；统治；优势；【生】优势度，显性
+> Ex: the worldwide dominance of Hollywood. 
 
 dominant `/'dɒmɪnənt/` 主要的，主宰的，显性的，显性基因
 
@@ -5371,7 +5271,11 @@ doorway `/'dɔːweɪ/` 门口
 
 dorm `/dɔːm/` 宿舍
 
-dormant `/ˈdɔːmənt/` 潜伏的，蛰服的，休眠的
+dormancy `/ˈdɔːmənsi/` n. 休眠，冬眠；蛰伏
+
+> DERIVS: dormant `/ˈdɔːmənt/` 潜伏的，蛰服的，休眠的
+
+dose `/dəʊs/` n. 剂量；一剂；一服；vt. 给 ... 服药
 
 dotted-quad `/ˈdɒtɪd kwɒd/` 点分
 
@@ -5405,11 +5309,11 @@ dramatic `/drəˈmætɪk/` 戏剧性的，巨大的，突然的，令人吃惊�
 
 draper `/'dreɪpə(r)/` 布商，带式输送机，布面清选机
 
-drastic `/ˈdræstɪk/` likely to have a strong or far-reaching effect; radical and extreme.
+drastic `/ˈdræstɪk/` adj. 激烈的；重大的；极端的
 
-> Ex: a drastic reduction of staffing levels.
+> likely to have a strong or far-reaching effect; radical and extreme.
 >
-> adj. 激烈的；重大的；极端的
+> Ex: a drastic reduction of staffing levels. 
 
 draught `/drɑːft/` 拖，拽，通风，气流，药水，国际跳棋，散装的
 
@@ -5419,19 +5323,15 @@ drawer `/drɔːr/` 抽屉，出票人
 
 drawn `/drɔːn/` 憔悴的
 
-dread `/drɛd/` 1 anticipate with great apprehension or fear. 2 regard with great awe or reverence. 3 great fear or apprehension. 4 a person with dreadlocks. 5 a sudden take-off and flight of a flock of gulls or other birds. 6 greatly feared; dreadful. 7 regarded with awe; greatly revered.
+dread `/drɛd/` v. 惧怕；担心；n. 恐惧；可怕的人或事；adj. 恐怖的；使人敬畏的
 
+> 1 anticipate with great apprehension or fear. 2 regard with great awe or reverence. 3 great fear or apprehension. 4 a person with dreadlocks. 5 a sudden take-off and flight of a flock of gulls or other birds. 6 greatly feared; dreadful. 7 regarded with awe; greatly revered.
+>
 > Ex: I dread to think what Russel will say.
 >
 > Ex: I used to have a dread of Friday afternoons.
 >
 > Ex: he was stricken with the dread disease and died.
->
-> v. 惧怕；担心
->
-> n. 恐惧；可怕的人或事
->
-> adj. 恐怖的；使人敬畏的
 
 dreadful `/ˈdredfl/` 极端的，严重的，糟糕透顶的，可怕的
 
@@ -5477,7 +5377,7 @@ dry `/draɪ/` 变干，干的，干燥的，口渴的
 
 dual `/ˈdjuːəl/` 两部分，双重的
 
-duality `/djuː'æləti/` 二重性，二元性
+> DERIVS: duality `/djuː'æləti/` 二重性，二元性
 
 dub `/dʌb/` 配音，轻点，起绰号
 
@@ -5521,11 +5421,11 @@ dwarf `/dwɔːf/` 侏儒，矮子
 
 dwell `/dwel/` 居住，栖身，存在，冥想，详细阐述
 
-dweller ` /ˈdwelə(r)/` a person or animal that lives in or at a specified place.
+dweller ` /ˈdwelə(r)/` n. 居民；居住者
 
-> Ex: city dwellers.
+> a person or animal that lives in or at a specified place.
 >
-> n. 居民；居住者
+> Ex: city dwellers. 
 
 dwelling `/'dwelɪŋ/` 住处，住宅
 
@@ -5543,7 +5443,9 @@ dwindle `/'dwɪndl/` 减少，缩小
 
 dye `/daɪ/` 染色，染料
 
-dyer `/'daɪə/` 染坊，染工
+> DERIVS: dyer `/'daɪə/` 染坊，染工
+
+dysfunctional `/dɪs'fʌŋkʃənl/` adj. 机能失调的；功能障碍的
 
 dynamic `/daɪˈnæmɪk/` 动态，有活力的，动力学，力学
 
@@ -5631,11 +5533,11 @@ effortless `/'efətləs/` 容易的，不费力气的，应付自如的
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
-ego `/ˈiː.ɡəʊ/` a person's sense of self-esteem or self-importance.
+ego `/ˈiː.ɡəʊ/` n. 自我；自负；自尊心
 
-> Ex: Readers have egos too.
+> a person's sense of self-esteem or self-importance.
 >
-> n. 自我；自负；自尊心
+> Ex: Readers have egos too. 
 
 egocentric `/ˌeɡəʊ'sentrɪk/` 自我中心的，利己的
 
@@ -5652,6 +5554,8 @@ eigenspace `/eɪdʒəns'peɪs/` 本征空间
 eigenvalue `/'aɪdʒənˌvæljuː/` （数学）特征值
 
 eigenvector `/'aɪgənvektə(r)/` （数学）特征向量
+
+eighth `/eɪtθ/` adj. 第八的；八分之一的；num. 第八；八分之一
 
 either `/'aɪðə(r)/` 任一的，不是...就是...
 
@@ -5723,11 +5627,11 @@ ellipsis `/ɪ'lɪpsɪs/` 省略，省略号
 
 ellipsoid `/ɪ'lɪpsɔɪd/` 椭圆体，椭面
 
-eloquent `/'eləkwənt/` fluent or persuasive in speaking or writing.
+eloquent `/'eləkwənt/` adj. 雄辩的；有口才的；动人的
 
-> Ex: As Thompson and the Transcript man had said, Vanzetti was naturally and quietly eloquent. So he was electrocuted.
+> fluent or persuasive in speaking or writing.
 >
-> adj. 雄辩的；有口才的；动人的
+> Ex: As Thompson and the Transcript man had said, Vanzetti was naturally and quietly eloquent. So he was electrocuted.
 
 elusive `/iˈluːsɪv/` 难懂的，难以达到的，难解的
 
@@ -5739,19 +5643,21 @@ emancipate `/ɪ'mænsɪpeɪt/` 释放，解放
 
 emancipation `/ɪˌmænsɪˈpeɪʃən/` 解放，自立，释放
 
-embark `/ɪm'bɑːk/` 1 go on board a ship or aircraft. 2 (embark on/upon) begin (a course of action).
+embargo `/ɪmˈbɑːɡəʊ/` vt. 禁止出入港口；禁止或限制贸易；征用或扣押；n. 封港令；禁令；禁止
 
+embark `/ɪm'bɑːk/` v. 乘船；装载；着手；从事
+
+> 1 go on board a ship or aircraft. 2 (embark on/upon) begin (a course of action).
+>
 > Ex: the passengers were ready to be embarked.
 >
 > Ex: she embarked on a new career.
->
-> v. 乘船；装载；着手；从事
 
 embarrass `/ɪmˈbærəs/` 尴尬，困扰
 
-embarrassingly `/ɪm'bærəsɪŋli/` 令人为难的
-
-embarrassment `/ɪm'bærəsmənt/` 困窘，尴尬，难堪
+> DERIVS: embarrassingly `/ɪm'bærəsɪŋli/` 令人为难的
+>
+> DERIVS: embarrassment `/ɪm'bærəsmənt/` 困窘，尴尬，难堪
 
 embassy `/ˈembəsi/` 大使馆
 
@@ -5765,9 +5671,9 @@ embodiment `/ɪm'bɒdimənt/` 化身，体现
 
 embody `/ɪmˈbɒdi/` 体现，包含，象征
 
-embolden `/ɪmˈbəʊldən/` 1 give (someone) the courage or confidence to do something or to behave in a certain way. 2 cause (a piece of text) to appear in a bold typeface.
+embolden `/ɪmˈbəʊldən/` vt. 鼓励,使有胆量
 
-> vt. 鼓励,使有胆量
+> 1 give (someone) the courage or confidence to do something or to behave in a certain way. 2 cause (a piece of text) to appear in a bold typeface.
 >
 > SYN: encourage
 >
@@ -5777,15 +5683,15 @@ embolden `/ɪmˈbəʊldən/` 1 give (someone) the courage or confidence to do so
 
 emboss `/ɪmˈbɒs/` 浮雕，凹凸印，装饰
 
-embrace `/ɪmˈbreɪs/` 1 hold (someone) closely in one's arms, especially as a sign of affection. 2 accept (a belief, theory, or change) willingly and enthusiastically. 3 include or contain (something) as a constituent part. 4 an act of holding someone closely in one's arms. 5 an act of accepting something willingly or enthusiastically.
+embrace `/ɪmˈbreɪs/` n.拥抱；包含；包围；接受；信奉；v.拥抱
 
+> 1 hold (someone) closely in one's arms, especially as a sign of affection. 2 accept (a belief, theory, or change) willingly and enthusiastically. 3 include or contain (something) as a constituent part. 4 an act of holding someone closely in one's arms. 5 an act of accepting something willingly or enthusiastically.
+>
 > Ex: the two embraced, holding each other tightly.
->
-> n.拥抱；包含；包围；接受；信奉
->
-> v.拥抱
 
 embroider `/ɪmˈbrɔɪdə(r)/` 刺绣，绣花，润色，渲染
+
+embryo `/'embrɪəʊ/` n. [动]胚胎；[植]胚芽；初期；adj. 初期的；胚胎的
 
 emend `/i'mend/` 修订，校订
 
@@ -5795,8 +5701,10 @@ emigration `/ˌemɪ'ɡreɪʃn/` 移民
 
 eminence `/ˈemɪnəns/` 卓越，显赫
 
-eminent `/'emɪnənt/` 1 (of a person) famous and respected within a particular sphere. 2 (of a positive quality) present to a notable degree.
+eminent `/'emɪnənt/` adj. 著名的；卓越的
 
+> 1 (of a person) famous and respected within a particular sphere. 2 (of a positive quality) present to a notable degree.
+>
 > SYN(1): august, celebrated, distinguished, esteemed, familiar, famous, great, illustrious, important, notable, noteworthy, renowned, well-known.
 > 
 > SYN(2): conspicuous, elevated, high, noticeable, obvious, outstanding, prominent, visible.
@@ -5804,22 +5712,24 @@ eminent `/'emɪnənt/` 1 (of a person) famous and respected within a particular 
 > Ex: one of the world's most eminent statisticians.
 > 
 > Ex: the book's scholarship and eminent readability.
->
-> adj. 著名的；卓越的
 
 emission `/i'mɪʃn/` 散发，发行，排放
 
 emolument `/ɪ'mɒljumənt/` 薪资，报酬，优势
 
-emotion `/ɪˈməʊʃn/` a strong feeling deriving from one's circumstances, mood, or relationships with others.
+emotion `/ɪˈməʊʃn/` n. 情感；感情；情绪
 
-> n. 情感；感情；情绪
+> a strong feeling deriving from one's circumstances, mood, or relationships with others.
 >
 > SYN: act, play, represent
 >
 > Ex: his voice was shaky with emotion.
 >
-> DERIVATIVES: emotional `/ɪˈməʊʃən(ə)l /` 感情的, 情绪的, 情绪激动的
+> DERIVS: emotional `/ɪˈməʊʃən(ə)l /` 感情的, 情绪的, 情绪激动的
+>
+> DERIVS: emotive `/ɪ'məʊtɪv/` adj. 感情的；情绪的；表现感情的
+
+empathic `/ɪm'pæθɪk/` adj. 移情作用的；感情移入的
 
 empathize `/'empəθaɪz/` 起共鸣，表同情，有同感
 
@@ -5863,8 +5773,10 @@ enclosure `/ɪnˈkləʊʒə(r)/` 圈地，围场，附件
 
 encompass `/ɪnˈkʌmpəs/` 包含，包围
 
-encounter `/ɪnˈkaʊntə(r)/` 1 unexpectedly be faced with or experience (something hostile or difficult). 2 meet (someone) unexpectedly. 3 an unexpected or casual meeting with someone or something.
+encounter `/ɪnˈkaʊntə(r)/` n. 意外的相见；邂逅；遭遇；v. 遭遇；遇到；偶然碰到
 
+> 1 unexpectedly be faced with or experience (something hostile or difficult). 2 meet (someone) unexpectedly. 3 an unexpected or casual meeting with someone or something.
+>
 > SYN(2,3): meeting, be bombarded by, be confronted by.
 > 
 > SYN(1): battle, brush, clash, collision, confrontation, dispute.
@@ -5874,10 +5786,6 @@ encounter `/ɪnˈkaʊntə(r)/` 1 unexpectedly be faced with or experience (somet
 > Ex: what do we know about the people we encounter in our daily lives?
 > 
 > Ex: she felt totally unnerved by the encounter.
->
-> n. 意外的相见；邂逅；遭遇 
-> 
-> v. 遭遇；遇到；偶然碰到
 
 encouraged `/ɪn'kʌrɪdʒd/` 鼓励，被鼓励的，促进，支持
 
@@ -5905,11 +5813,9 @@ enforce `/ɪnˈfɔːs/` 加强，强制，强迫
 
 enfranchise `/ɪn'fræntʃaɪz/` 解放，给与选举权
 
-engage `/ɪnˈɡeɪdʒ/` 1 carry out or participate in an activity; be involved in. 2 engage or engross wholly.  3 engage or hire for work. 4 ask to represent; of legal counsel. 5 give to in marriage. 6 get caught. 7 carry on (wars, battles, or campaigns). 8 hire for work or assistance. 9 engage for service under a term of contract. 10 keep engaged. 
+engage `/ɪnˈɡeɪdʒ/` vt. 雇佣；吸引，占用；使订婚；使参加；预定；vi. 答应，保证；从事；交战；啮合
 
-> vt. 雇佣；吸引，占用；使订婚；使参加；预定
->
-> vi. 答应，保证；从事；交战；啮合
+> 1 carry out or participate in an activity; be involved in. 2 engage or engross wholly.  3 engage or hire for work. 4 ask to represent; of legal counsel. 5 give to in marriage. 6 get caught. 7 carry on (wars, battles, or campaigns). 8 hire for work or assistance. 9 engage for service under a term of contract. 10 keep engaged. 
 >
 > SYN(v.1): prosecute, pursue
 >
@@ -5985,13 +5891,17 @@ entered `/'entə(r)d/` 进入的
 
 enterprise `/'entəpraɪz/` 企业，事业，进取心
 
-entertain `/ˌentə'teɪn/` 娱乐，招待，考虑，感兴趣，容纳
+entertain `/ˌentə'teɪn/` v. 娱乐；使有兴趣；招待；考虑；抱有；容纳
 
-entertainment `/ˌentəˈteɪnmənt/` 娱乐，招待，文艺表演
+> DERIVS: entertainment `/ˌentəˈteɪnmənt/` n. 娱乐，招待，文艺表演
 
 enthusiasm `/ɪn'θjuːziæzəm/` 热情，热心，热衷的事物
 
-entice `/ɪn'taɪs/` 诱使，引诱
+enthusiast `/ɪnˈθjuːziæst/` n. 热心人，热衷者
+
+> DERIVS: enthusiastic `/ɪnˌθjuːziˈæstɪk/` adj. 满腔热情的，热心的；极感兴趣的
+
+entice `/ɪn'taɪs/` vt. 诱使，引诱
 
 enticement `/ɪn'taɪsmənt/` 诱人，诱惑
 
@@ -6023,13 +5933,13 @@ enviable `/'enviəbl/` 令人欣羡的，可羡慕的
 
 envious `/ˈenviəs/` 嫉妒，羡慕的
 
-envisage `/ɪn'vɪzɪdʒ/` form a mental image of something that is not present or that is not the case.
+envisage `/ɪn'vɪzɪdʒ/` vt. 正视，面对；想像
 
-> vt. 正视，面对；想像
+> form a mental image of something that is not present or that is not the case.
 >
 > Ex: envisage an bright future.
 >
-> DERIVATIVES: envision `/ɪnˈvɪʒn/` 想象
+> DERIVS: envision `/ɪnˈvɪʒn/` 想象
 
 envy `/'envi/` 羡慕，妒忌
 
@@ -6059,11 +5969,11 @@ epitomize `/ɪ'pɪtəmaɪz/` 摘要，概括，成为 ... 的缩影，作为典�
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
-equalizer `/ˈiːkwəlʌɪzə/` 1 a thing which has an equalizing effect. 2 a weapon, especially a gun. 3 a passive network designed to modify a frequency response, especially to compensate for distortion.
+equalizer `/ˈiːkwəlʌɪzə/` n. 均衡器
 
-> Ex: education is the great equalizer.
+> 1 a thing which has an equalizing effect. 2 a weapon, especially a gun. 3 a passive network designed to modify a frequency response, especially to compensate for distortion.
 >
-> n. 均衡器
+> Ex: education is the great equalizer. 
 
 equate `/i'kweɪt/` 同等看待，等同，使相等
 
@@ -6095,11 +6005,11 @@ eradicate `/ɪˈrædɪkeɪt/` 根除，消灭，杜绝
 
 erasable `/ɪ'reɪsəbl/` 可消除的，可抹去的
 
-err `/əː/` 1 be mistaken or incorrect; make a mistake.
+err `/əː/` v.犯错；做错
 
-> Ex: the judge had erred in ruling that the evidence was inadmissible.
+> 1 be mistaken or incorrect; make a mistake.
 >
-> v.犯错；做错
+> Ex: the judge had erred in ruling that the evidence was inadmissible. 
 
 errata `/e'rɑːtə/` 勘误
 
@@ -6109,17 +6019,19 @@ erroneous `/ɪˈrəʊnɪəs/` 错误的
 
 erect `/ɪˈrekt/` 建造，建立，垂直的，竖立的
 
-erection `/ɪ'rekʃ(ə)n/` 直立，建造，建筑物，勃起
+> DERIVS: erection `/ɪ'rekʃ(ə)n/` 直立，建造，建筑物，勃起
 
 ergonomics `/ˌɜːɡə'nɒmɪks/` 人类工程学，工作环境改造学
 
 erode `/ɪˈrəʊd/` 腐蚀，侵蚀，风化，削弱，损害
 
+erosion `/ɪ'rəʊʒn/` n. 腐蚀；侵蚀；减少，流失
+
 ### es
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
-escalate `/ˈeskəleɪt/` 加剧，逐步升高，不断恶化
+escalate `/ˈeskəleɪt/` vt. 升级；vi. 升高；逐步升级
 
 escalation `/ˌeskə'leɪʃn/` 逐步扩大，增加
 
@@ -6135,7 +6047,7 @@ especial `/ɪ'speʃl/` 特别的，特殊的，特有的
 
 espresso `/e'spresəʊ/` 浓咖啡
 
-essay `/ˈeseɪ/` 
+essay `/ˈeseɪ/` n. 散文，随笔；vt. 尝试；对...做试验
 
 > n. 1 an analytic or interpretive literary composition. 2 a tentative attempt. 
 >
@@ -6148,10 +6060,6 @@ essay `/ˈeseɪ/`
 > Ex: The essay is a literary form.
 >
 > Ex: essay to do sth.
->
-> n. 散文，随笔
->
-> vt. 尝试；对...做试验
 
 essence `/ˈɛsns/` 本质，精油，香精
 
@@ -6167,8 +6075,10 @@ esteem `/ɪ'stiːm/` 尊敬，认为
 
 esthetic `/es'θetɪk/` 审美观，审美的，美学，美学的
 
-estimate `/'estɪmət/` 1 roughly calculate or judge the value, number, quantity, or extent of. 2 a written statement indicating the likely price that will be charged for specified work or repairs. 3 a judgement of the worth or character of someone or something.
+estimate `/'estɪmət/` n. 估价；估计；v. 估计；估价；评价
 
+> 1 roughly calculate or judge the value, number, quantity, or extent of. 2 a written statement indicating the likely price that will be charged for specified work or repairs. 3 a judgement of the worth or character of someone or something.
+> 
 > SYN(3.n): appraisal, assessment, conjecture, estimation, evaluation, guess, judgement, opinion, surmise.
 > 
 > SYN(2.n): guesstimate, price, quotation, reckoning, specification, valuation.
@@ -6180,10 +6090,6 @@ estimate `/'estɪmət/` 1 roughly calculate or judge the value, number, quantity
 > Ex: compare costs by getting estimates from at least two firms.
 >
 > Ex: his high estimate of the poem.
->
-> n. 估价；估计 
->
-> v. 估计；估价；评价
 
 estimation `/ˌestɪ'meɪʃn/` 判断，估计
 
@@ -6200,6 +6106,8 @@ ethical `/'eθɪkl/` 伦理的，道德的，凭处方出售的
 ethics `/'eθɪks/` 道德规范，道德标准，伦理学
 
 ethnic `/ˈeθnɪk/` 种族的，民族的，人种学的
+
+ethnocentrically `/ˌeθnəʊ'sentrɪzəm/` 民族优越感
 
 ethnography `/eθ'nɒɡrəfi/` 人种学，人种论
 
@@ -6259,9 +6167,9 @@ eviscerate `/ɪˈvɪsəreɪt/` 切除内脏，取出内脏
 
 [回到E](#E)--[回到顶部](#英汉词典)
 
-exacerbate `/ɪɡ'zæsəbeɪt/` make (a problem, bad situation, or negative feeling) worse.
+exacerbate `/ɪɡ'zæsəbeɪt/` vt. 使恶化；使加重
 
-> vt. 使恶化；使加重
+> make (a problem, bad situation, or negative feeling) worse.
 >
 > SYN: change, alter, modify, anger
 >
@@ -6277,11 +6185,11 @@ exactly `/ɪɡ'zæktli/` 精确地，准确地，完全的，严密的
 
 exactness `/ɪɡ'zæktnəs/` 正确，精确性
 
-exaggerate `/ɪɡˈzadʒəreɪt/` represent (something) as being larger, better, or worse than it really is.
+exaggerate `/ɪɡˈzadʒəreɪt/` vt.夸张；夸大；adj.言过其辞的
 
+> represent (something) as being larger, better, or worse than it really is.
+> 
 > Ex: he was apt to exaggerate any aches and pains.
->
-> vt.夸张；夸大；adj.言过其辞的
 
 exaggeration `/ɪɡˌzædʒəˈreɪʃn/` 夸张，夸大
 
@@ -6301,8 +6209,10 @@ excerpt `/'eksɜːpt/` 摘录，引用
 
 excess `/ɪkˈses/` 过量的，额外的，过度的，额外
 
-excessive `/ɪk'sesɪv/` more than is necessary, normal, or desirable; immoderate.
+excessive `/ɪk'sesɪv/` adj. 过分的；过多的
 
+> more than is necessary, normal, or desirable; immoderate.
+> 
 > SYN: disproportionate, exaggerated, extreme, fanatical, great, immoderate, inordinate, intemperate, needless, overdone, profuse, undue, unnecessary.
 > 
 > SYN: extravagant, huge, prodigal, profligate, superfluous, unneeded, wasteful, moderate.
@@ -6310,28 +6220,30 @@ excessive `/ɪk'sesɪv/` more than is necessary, normal, or desirable; immoderat
 > SYN: exorbitant extortionate, unrealistic, unreasonable
 >
 > Ex: he was drinking excessive amounts of brandy.
->
-> adj. 过分的；过多的
 
 exchequer `/ɪks'tʃekə(r)/` 国库，英国财政部
 
 excise `/'eksaɪz/` 征税，货物税，消费税，切除，删除
 
-excite `/ɪk'saɪt/` 1 cause (someone) to feel very enthusiastic and eager. 2 give rise to (a feeling or reaction). 3 produce a state of increased energy or activity in (a physical or biological system).
+excite `/ɪk'saɪt/` vt. 使兴奋；使激动；刺激；激起
 
+> 1 cause (someone) to feel very enthusiastic and eager. 2 give rise to (a feeling or reaction). 3 produce a state of increased energy or activity in (a physical or biological system).
+>
 > Ex: flying still excites me.
 >
 > Ex: the ability to excite interest in others.
 >
 > Ex: the energy of an electron is sufficient to excite the atom.
->
-> vt. 使兴奋；使激动；刺激；激起
 
 excludability `/ɪk'skluːd/` 排除，阻止，拒绝接受
 
 exclusion `/ɪk'skluːʒn/` 排除，除外，逐出
 
 exclusive `/ɪkˈskluːsɪv/` 专有的，独占的，专有的，排外的，独家
+
+excreta `/ɪk'skriːtə/` n. 排泄物
+
+excursion `/ɪk'skɜːʃn/` n. 远足；短途旅行；【物】偏移，漂移，偏离；偏差，偏振
 
 executioner `/ˌeksɪ'kjuːʃənə(r)/` 侩子手
 
@@ -6353,17 +6265,15 @@ exhaust `/ɪɡˈzɔːst/` 耗尽，用完，使筋疲力尽，排气管
 
 exhaustively `/ɪɡ'zɔːstɪvli/` 用尽一切地
 
-exhibit `/ɪɡˈzɪbɪt/` 1 publicly display (a work of art or item of interest) in an art gallery or museum or at a trade fair. 2 manifest clearly (a quality or a type of behaviour). 3 an object or collection of objects on public display in an art gallery or museum or at a trade fair.
+exhibit `/ɪɡˈzɪbɪt/` v. 展览；陈列；展示；表现；n. 展品；展览
 
+> 1 publicly display (a work of art or item of interest) in an art gallery or museum or at a trade fair. 2 manifest clearly (a quality or a type of behaviour). 3 an object or collection of objects on public display in an art gallery or museum or at a trade fair.
+>
 > Ex: only one sculpture was exhibited in the artist's lifetime.
 >
 > Ex: he could exhibit a saintlike submissiveness.
 >
 > Ex: the museum is rich in exhibits.
->
-> v. 展览；陈列；展示；表现
->
-> n. 展品；展览
 
 exhilarate `/ɪɡˈzɪləreɪt/` 兴奋，使高兴，使激动
 
@@ -6373,17 +6283,21 @@ exigency `/'eksɪdʒənsi/` 紧急，迫切需要
 
 exigible `/'eksɪdʒɪbl/` 可要求的
 
-existence `/ɪɡ'zɪstəns/` the fact or state of living or having objective reality.
+exile `/ˈeksaɪl/` vt. 流放, 放逐, 使流亡；n. 流放, 放逐, 流亡；被流放者, 流亡国外者, 背井离乡者
 
-> Ex: the organization has been in existence for fifteen years.
+existence `/ɪɡ'zɪstəns/` n. 存在；生存
+
+> the fact or state of living or having objective reality.
 >
-> n. 存在；生存
+> Ex: the organization has been in existence for fifteen years.
 
 exodus `/'eksədəs/` 大批的离去，（圣经）出埃及记
 
-exorbitant `/ɪɡˈzɔːbɪtənt/` 1 greatly exceeding bounds of reason or moderation.
+ex-offender `/'eksəf'endər/` 前罪犯
 
-> adj. 过度的，极高的
+exorbitant `/ɪɡˈzɔːbɪtənt/` adj. 过度的，极高的
+
+> 1 greatly exceeding bounds of reason or moderation.
 >
 > SYN: immoderate
 >
@@ -6403,7 +6317,7 @@ expectancy `/ɪk'spektənsi/` 期待，预期
 
 expectation `/ˌekspek'teɪʃn/` 预料，期望
 
-expedient `/ɪk'spiːdiənt/` 权宜的，临时手段，权宜之计
+expedient `/ɪk'spiːdiənt/` adj. 权宜的，临时手段，权宜之计
 
 expedition `/ˌekspəˈdɪʃn/` 远征，探险，考察
 
@@ -6413,11 +6327,11 @@ expell `/ɪkˈspel/` 排除
 
 expelled `/ɪk'spel/` 驱逐，开除，排出
 
-expenditure `/ɪkˈspɛndɪtʃə/` 1 the action of spending funds.
+expenditure `/ɪkˈspɛndɪtʃə/` n. 开支；消耗
 
-> Ex: the expenditure of taxpayers' money.
+> 1 the action of spending funds.
 >
-> n. 开支；消耗
+> Ex: the expenditure of taxpayers' money. 
 
 expense `/ɪk'spens/` 费用，花费，代价
 
@@ -6427,17 +6341,15 @@ experiential `/ɪkˌspɪəri'enʃl/` 有经验的
 
 experimental `/ɪkˌsperɪ'mentl/` 实验的，实验性的
 
-expert `/'ekspɜːt/` 1 a person who is very knowledgeable about or skillful in a particular area. 2 having or involving a great deal of knowledge or skill in a particular area.
+expert `/'ekspɜːt/` n. 专家；能手；adj. 熟练的；内行的
 
+> 1 a person who is very knowledgeable about or skillful in a particular area. 2 having or involving a great deal of knowledge or skill in a particular area.
+>
 > Ex: an expert in healthcare.
 >
 > Ex: he had received expert academic advice.
->
-> n. 专家；能手
->
-> adj. 熟练的；内行的
 > 
-> DERIVATIVES: expertise `/ˌekspɜːˈtiːz/` 专门知识或技能
+> DERIVS: expertise `/ˌekspɜːˈtiːz/` 专门知识或技能
 
 expiration `/ˌekspə'reɪʃn/` 期满，终止，呼气
 
@@ -6465,8 +6377,10 @@ expose `/ɪk'spəʊz/` 揭露，曝光，面临
 
 exposition `/ˌekspə'zɪʃn/` 博览会，展览会，说明
 
-exposure `/ɪk'spəʊʒə(r)/` 1 the state of having no protection from something harmful. 2 the revelation of something secret, especially something embarrassing or damaging. 3 the action of exposing a photographic film to light. 4 the direction in which a building faces; an outlook.
+exposure `/ɪk'spəʊʒə(r)/` n. 暴露；揭露；胶片；曝光时间；(在电视、报纸等媒体上的)亮相；挨冻
 
+> 1 the state of having no protection from something harmful. 2 the revelation of something secret, especially something embarrassing or damaging. 3 the action of exposing a photographic film to light. 4 the direction in which a building faces; an outlook.
+>
 > Ex: the dangers posed by exposure to asbestos.
 >
 > Ex: she took her life for fear of exposure as a spy.
@@ -6474,8 +6388,6 @@ exposure `/ɪk'spəʊʒə(r)/` 1 the state of having no protection from somethin
 > Ex: trial exposures made with a UV filter.
 >
 > Ex: the exposure is perfect--a gentle slope to the southwest.
->
-> n. 暴露；揭露；胶片；曝光时间；(在电视、报纸等媒体上的)亮相；挨冻
 
 expounded `/ɪk'spaʊnd/` 详细说明，阐述，解释
 
@@ -6513,9 +6425,13 @@ extra `/'ekstrə/` 额外的，特别地，临时演员
 
 extract `/'ekstrækt/` 摘录，提取，榨出
 
+extracurricular `/ˌekstrəkə'rɪkjʊlə/` adj. 课外的；业余的
+
 extraneous `/ɪk'streɪniəs/` 外来的，无关的
 
 extraordinary `/ɪk'strɔːdnri/` 非凡的，特别的，特派的
+
+extrapolation `/ɪkˌstræpə'leɪʃn/` n. 外推法；归纳；推论
 
 extravagance `/ɪk'strævəɡəns/` 铺张浪费，奢侈品，富丽堂皇
 
@@ -6555,7 +6471,7 @@ eyesore `/'aɪsɔː(r)/` 剌眼的东西，眼中钉，眼痛
 
 fabric `/'fæbrɪk/` 结构，织物
 
-fabulous `/ˈfæbjələs/` 极好的，寓言中的，传说中的
+fabulous `/ˈfæbjələs/` adj. 难以置信的；传说的，寓言中的；极好的
 
 façade `/fə'sɑ:d/` （房屋的）正面，假象，外观
 
@@ -6585,19 +6501,21 @@ failover `/ˈfālˌōvər/` 故障转移
 
 faint `/feɪnt/` 昏倒，昏厥
 
+fair `/feə(r)/` adj. 公平的；美丽的，白皙的；晴朗的；adv. 公平地；清楚地；直接地；vi. 转晴；n. 展览会；市集；美人
+
+> DERIVS: fairly `/ˈfeəli/` 公平的
+>
+> DERIVS: fairminded `/feər'maɪndɪd/` 大公无私
+>
+> DERIVS: fairness `/'feənəs/` 公平，公正
+
 fairground `/'feəɡraʊnd/` 集市，游乐场
-
-fairly `/ˈfeəli/` 公平的
-
-fairminded `/feər'maɪndɪd/` 大公无私
-
-fairness `/'feənəs/` 公平，公正
 
 fairy `/'feəri/` 仙女，小精灵，优雅的，幻想中的，虚构的
 
-faith `/feɪθ/` 1 a strong belief in a supernatural power or powers that control human destiny. 2 complete confidence in a person or plan etc. 3 an institution to express belief in a divine power. 4 loyalty or allegiance to a cause or a person.
+faith `/feɪθ/` n. 信心；信任；相信；宗教信仰
 
-> n. 信心；信任；相信；宗教信仰
+> 1 a strong belief in a supernatural power or powers that control human destiny. 2 complete confidence in a person or plan etc. 3 an institution to express belief in a divine power. 4 loyalty or allegiance to a cause or a person.
 >
 > SYN: belief, theological virtue, supernatural virtue, institution, establishment, commitment, allegiance 
 >
@@ -6605,7 +6523,7 @@ faith `/feɪθ/` 1 a strong belief in a supernatural power or powers that contro
 >
 > Ex: an unshakeable faith in God.
 >
-> DERIVATIVES: faithful `/ˈfeɪθfl/` 忠诚的，忠贞的，信徒
+> DERIVS: faithful `/ˈfeɪθfl/` 忠诚的，忠贞的，信徒
 
 falcon `/ˈfɔːlkən/` 猎鹰，猎隼
 
@@ -6625,13 +6543,11 @@ fallen `/'fɔːlən/` 落下的
 
 fallow `/'fæləʊ/` 休耕，不活跃的
 
-fame `/feɪm/` the state of being known or talked about by many people, especially on account of notable achievements.
+fame `/feɪm/` n. 名声；名望；vt. 使出名
 
+> the state of being known or talked about by many people, especially on account of notable achievements.
+>
 > Ex: the song's success rocketed him to stardom and fame.
->
-> n. 名声；名望
->
-> vt. 使出名
 
 familiarize `/fə'mɪliəraɪz/` 使熟悉
 
@@ -6649,6 +6565,8 @@ fanatic `/fə'nætɪk/` 狂热者，极端分子，盲信者
 
 farad `/'færæd/` （电容单位）法拉
 
+faraway `/'fɑːrəweɪ/` adj. 遥远的；远方的；(神情)恍惚的；出神的
+
 farce `/fɑːs/` 闹剧，胡闹
 
 farcical `/ˈfɑːsɪkl/` 荒谬的
@@ -6657,9 +6575,9 @@ fare `/feə(r)/` 车费，路费，乘客，食物，进展，进食，旅行，
 
 farewell `/ˌfeəˈwel/` 告别，辞行
 
-farmland `/ˈfɑːmland/` land used for farming.
+farmland `/ˈfɑːmland/` n. 农田
 
-> n. 农田
+> land used for farming.
 >
 > SYN: country, rural area, land, ground, soil
 >
@@ -6679,8 +6597,10 @@ fateful `/ˈfeɪtfl/` 重大的，决定性的，宿命的
 
 fathom `/'fæðəm/` 测量深度，彻底了解
 
-fatigue `/fəˈtiːɡ/` 1 extreme tiredness resulting from mental or physical exertion or illness. 2 weakness in metal or other materials caused by repeated variations of stress. 3 (fatigues) menial non-military tasks performed by a soldier, sometimes as a punishment. 4 (fatigues) loose clothing, typically khaki, olive drab, or camouflaged, of a sort worn by soldiers on active duty. 5 cause (someone) to feel exhausted. 6 weaken (a metal or other material) by repeated variations of stress.
+fatigue `/fəˈtiːɡ/` n.疲劳；疲乏；劳务杂役；v.（使）疲劳；adj.疲劳的
 
+> 1 extreme tiredness resulting from mental or physical exertion or illness. 2 weakness in metal or other materials caused by repeated variations of stress. 3 (fatigues) menial non-military tasks performed by a soldier, sometimes as a punishment. 4 (fatigues) loose clothing, typically khaki, olive drab, or camouflaged, of a sort worn by soldiers on active duty. 5 cause (someone) to feel exhausted. 6 weaken (a metal or other material) by repeated variations of stress.
+>
 > Ex: he was nearly dead with fatigue.
 >
 > Ex: metal fatigue.
@@ -6688,22 +6608,12 @@ fatigue `/fəˈtiːɡ/` 1 extreme tiredness resulting from mental or physical ex
 > Ex: we're on cookhouse fatigues, sir.
 >
 > Ex: they were fatigued by their journey.
->
-> n.疲劳；疲乏；劳务杂役
->
-> v.（使）疲劳
->
-> adj.疲劳的
 
-fatty `/ˈfati/`
+fatty `/ˈfati/` adj. 脂肪的；多脂肪的；肥胖的；[医]脂肪过多的；n. [口]胖子
 
 > adj. containing a large amount of fat.
 >
 > n. a fat person (often used as a nickname or form of address).
->
-> adj. 脂肪的；多脂肪的；肥胖的；[医]脂肪过多的
->
-> n. [口]胖子
 >
 > SYN: large person
 >
@@ -6711,7 +6621,7 @@ fatty `/ˈfati/`
 >
 > Ex: a stranger called him a fatty.
 >
-> DERIVATIVES: fatten `/'fætn/` 养肥，使肥胖
+> DERIVS: fatten `/'fætn/` 养肥，使肥胖
 
 faucet `/ˈfɔːsɪt/` 水龙头，龙头
 
@@ -6759,23 +6669,21 @@ feedback `/ˈfiːdbak/` 反馈，反馈信息
 
 feller `/'felə/` 伐木工，接缝工，小伙子
 
-fellow `/'feləʊ/` 1 a man or boy. 2 (usually fellows) a person in the same position, involved in the same activity, or otherwise associated with another. 3 a member of a learned society. 4 sharing a particular activity, quality, or condition with someone or something.
+fellow `/'feləʊ/` n. 家伙；同事；同伴；研究员；校董；adj. 同伴的；同事的；同类的
 
+> 1 a man or boy. 2 (usually fellows) a person in the same position, involved in the same activity, or otherwise associated with another. 3 a member of a learned society. 4 sharing a particular activity, quality, or condition with someone or something.
+>
 > Ex: he was an extremely obliging fellow.
 >
 > Ex: he was learning with a rapidity unique among his fellows.
->
-> n. 家伙；同事；同伴；研究员；校董
->
-> adj. 同伴的；同事的；同类的
 
 fellowship `/'feləʊʃɪp/` 友谊，团体，会员资格，奖学金
 
-felon `/ˈfɛlən/` 1 a person who has committed a felony. 2 cruel; wicked.
+felon `/ˈfɛlən/` n.重罪犯
 
-> Ex: the felon undermining hand of dark corruption.
+> 1 a person who has committed a felony. 2 cruel; wicked.
 >
-> n.重罪犯
+> Ex: the felon undermining hand of dark corruption.
 
 felony `/'feləni/` 重罪
 
@@ -6787,25 +6695,21 @@ feminist `/ˈfemənɪst/` 女权主义者，女权运动者
 
 femtofarad （电容单位）微法拉
 
-fence `/fens/` 1 a barrier, railing, or other upright structure, typically of wood or wire, enclosing an area of ground to prevent or control access or escape. 2 a guard or guide on a plane, saw, or other tool. 3 a person who deals in stolen goods. 4 surround or protect with a fence. 5 buy or sell (stolen goods). 6 engage in the sport of fencing.
+fence `/fens/` n. 栅栏；围墙；买卖赃物的人；v. 用篱笆围住；束缚；击剑；回避
 
-> Ex: Strong fences make good neighbors.
-> 
-> n. 栅栏；围墙；买卖赃物的人 
+> 1 a barrier, railing, or other upright structure, typically of wood or wire, enclosing an area of ground to prevent or control access or escape. 2 a guard or guide on a plane, saw, or other tool. 3 a person who deals in stolen goods. 4 surround or protect with a fence. 5 buy or sell (stolen goods). 6 engage in the sport of fencing.
 >
-> v. 用篱笆围住；束缚；击剑；回避
+> Ex: Strong fences make good neighbors.
 
 feral `/'ferəl/` 野生的，凶猛的
 
-ferment `/fəˈmɛnt/` 1 (of a substance) undergo fermentation. 2 incite or stir up (trouble or disorder). 3 agitation and excitement among a group of people, typically concerning major change and leading to trouble or violence. 4 a fermenting agent or enzyme.
+ferment `/fəˈmɛnt/` n. 发酵；酵素；动乱；v. （使）发酵；动乱
 
+> 1 (of a substance) undergo fermentation. 2 incite or stir up (trouble or disorder). 3 agitation and excitement among a group of people, typically concerning major change and leading to trouble or violence. 4 a fermenting agent or enzyme.
+>
 > Ex: the drink had fermented, turning some of the juice into alcohol.
 > 
 > Ex: the politicians and warlords who are fermenting this chaos.
-> 
-> n. 发酵；酵素；动乱
->
-> v. （使）发酵；动乱
 
 ferromagnet `/ˌferəʊ'mægnɪt/` 铁磁体，磁铁，铁磁物质
 
@@ -6847,9 +6751,9 @@ fiat `/'fiːæt/` 命令，法令，（汽车品牌）菲亚特
 
 fiber `/faɪbə/` 纤维，（同fibre）
 
-fiction `/ˈfɪkʃn/` 1 literature in the form of prose that describes imaginary events and people. 2 something that is invented or untrue.
+fiction `/ˈfɪkʃn/` n. 小说；虚构；杜撰
 
-> n. 小说；虚构；杜撰
+> 1 literature in the form of prose that describes imaginary events and people. 2 something that is invented or untrue.
 >
 > Ex: Writing that is primarily entertaining includes fiction, personal essays, sketches.
 
@@ -6857,15 +6761,15 @@ fictitious `/fɪk'tɪʃəs/` 假想的，虚假的，虚伪的
 
 fidelity `/fɪ'deləti/` 忠诚，忠实，准确性，保真度
 
-fierce `/fɪəs/` 1 having or displaying an intense or ferocious aggressiveness. 2 very; extremely.
+fierce `/fɪəs/` adj.强烈的；凶猛的；酷烈的
 
+> 1 having or displaying an intense or ferocious aggressiveness. 2 very; extremely.
+>
 > Ex: fierce storms lashed the country.
 >
 > Ex: his fierce loyalty.
 >
-> Ex: the fire door had a fierce pneumatic return.
->
-> adj.强烈的；凶猛的；酷烈的
+> Ex: the fire door had a fierce pneumatic return. 
 
 fiery `/'faɪəri/` 火的，炽热的，激烈的，暴躁的，辛辣的
 
@@ -6905,9 +6809,9 @@ fission `/'fɪʃn/` 分裂，裂变
 
 fist `/fɪst/` 拳头，拳打，紧握
 
-fitness `/ˈfɪtnəs/` 1 the condition of being physically fit and healthy. 2 (fitness for/to do) the quality of being suitable to fulfil a particular role or task.
+fitness `/ˈfɪtnəs/` n. 健康, 适当,适合
 
-> n. 健康, 适当,适合
+> 1 the condition of being physically fit and healthy. 2 (fitness for/to do) the quality of being suitable to fulfil a particular role or task.
 >
 > SYN: suitability, suitableness, condition, shape, soundness, competence, competency
 >
@@ -6943,13 +6847,11 @@ flaky `/'fleɪki/` 薄片的，易剥落的，成层的，疯疯癫癫的
 
 flamboyant `/flæmˈbɔɪənt/` 华丽的，艳丽的，炫耀的
 
-flammable `/ˈflaməbl/` 1 easily set on fire.
+flammable `/ˈflaməbl/` adj. 易燃的；可燃性的；n. 易燃品
 
+> 1 easily set on fire.
+>
 > Ex: the use of highly flammable materials.
-> 
-> adj. 易燃的；可燃性的
-> 
-> n. 易燃品
 
 flat `/flæt/` 平坦的，扁平的，低调的，单调的，平直的，公寓，变平，降调
 
@@ -6957,11 +6859,11 @@ flatmate `/'flætmeɪt/` 室友，(英)合住一套公寓的人
 
 flatten `/ˈflætn/` 压平，弄平，推倒，摧毁，击倒
 
-flatter `/'flætə(r)/` 1 cause (someone) to feel honoured and pleased. 2 (flatter oneself) choose to believe something favourable about oneself, typically when this belief is unfounded. 3 give an unrealistically favourable impression of. 4 (of a colour or a style of clothing) cause (someone) to appear to the best advantage. 5 please (the ear or eye).
+flatter `/'flætə(r)/` v. 奉承；恭维；取悦；显得好看
 
-> Ex: This doesn't mean you have to flatter them or avoid saying something they may disagree with.
+> 1 cause (someone) to feel honoured and pleased. 2 (flatter oneself) choose to believe something favourable about oneself, typically when this belief is unfounded. 3 give an unrealistically favourable impression of. 4 (of a colour or a style of clothing) cause (someone) to appear to the best advantage. 5 please (the ear or eye).
 >
-> v. 奉承；恭维；取悦；显得好看
+> Ex: This doesn't mean you have to flatter them or avoid saying something they may disagree with. 
 
 flavor `/ˈfleɪvə/` 风味，调味，特色
 
@@ -7037,11 +6939,11 @@ flux `/flʌks/` 流量，变迁，熔化，涨
 
 [回到F](#F)--[回到顶部](#英汉词典)
 
-foe `/fəʊ/` an enemy or opponent.
+foe `/fəʊ/` n. 敌人；仇敌
 
-> Ex: his work was praised by friends and foes alike.
+> an enemy or opponent.
 >
-> n. 敌人；仇敌
+> Ex: his work was praised by friends and foes alike. 
 
 foghorn `/ˈfɒɡhɔːn/` 雾角，雾喇叭
 
@@ -7063,9 +6965,9 @@ footman `/'fʊtmən/` 男仆，侍应生，步兵，步行者
 
 footpath `/'fʊtpɑːθ/` 小径，人行道，乡野小路
 
-footprint `/ˈfʊtprɪnt/` 1 the impression left by a foot or shoe on the ground or a surface. 2 the area occupied or affected by something.
+footprint `/ˈfʊtprɪnt/` n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印；<商>(建筑物或设备，尤指计算机)占用的空间；<术>(尤指来自卫星的)广播信号覆盖区
 
-> n. (尤指软地上的)脚印，足迹；(地板上的)脚印，鞋印；<商>(建筑物或设备，尤指计算机)占用的空间；<术>(尤指来自卫星的)广播信号覆盖区
+> 1 the impression left by a foot or shoe on the ground or a surface. 2 the area occupied or affected by something.
 >
 > SYN: mark, print, trace, vestige, tincture, shadow, area
 >
@@ -7093,15 +6995,13 @@ foregoing `/'fɔːɡəʊɪŋ/` 前面的，先前的，前述地
 
 foreground `/'fɔːɡraʊnd/` 前景，最显著的位置
 
-foremost `/ˈfɔːmə(ʊ)st/` 1 most prominent in rank, importance, or position. 2 before anything else in rank, importance, or position; in the first place.
+foremost `/ˈfɔːmə(ʊ)st/` adj. 最重要的；最初的；adv. 在最前面
 
+> 1 most prominent in rank, importance, or position. 2 before anything else in rank, importance, or position; in the first place.
+> 
 > Ex: one of the foremost art collectors of his day.
 >
 > Ex: it was, foremost, the first unequivocal demonstration of the process.
->
-> adj. 最重要的；最初的
->
-> adv. 在最前面
 
 forerunner `/ˈfɔːrʌnə(r)/` 先驱，预兆，前兆
 
@@ -7125,31 +7025,27 @@ foreword `/ˈfɔːwəːd/` 前言
 
 forex `/'fɔːeks/` 外汇
 
-forfeit `/'fɔːfɪt/` 1 lose or be deprived of (property or a right or privilege) as a penalty for wrongdoing. 2 a fine or penalty for wrongdoing. 3 lost or surrendered as a penalty for wrongdoing.
+forfeit `/'fɔːfɪt/` n. 没收物；罚金；丧失；vt. 没收；丧失；adj. 丧失了的
 
+> 1 lose or be deprived of (property or a right or privilege) as a penalty for wrongdoing. 2 a fine or penalty for wrongdoing. 3 lost or surrendered as a penalty for wrongdoing.
+>
 > Ex: those unable to meet their taxes were liable to forfeit their estates.
 >
 > Ex: the loser must pay a forfeit.
 >
 > Ex: his possessions were declared forfeit.
 >
-> n. 没收物；罚金；丧失
->
-> vt. 没收；丧失
->
-> adj. 丧失了的
-
-forfeiting `/'fɔːrfɪt/` 包买票据
+> DERIVS: forfeiting `/'fɔːrfɪt/` 包买票据
 
 forge `/fɔːdʒ/` 锻造，制作，艰苦干成
 
 forger `/'fɔːdʒə(r)/` 伪造者，铁匠
 
-forgo `/fəˈɡəʊ/` 1 go without (something desirable). 2 refrain from.
+forgo `/fəˈɡəʊ/` vt.放弃；弃绝；对...断念
 
-> Ex: she wanted to forgo the tea and leave while they could.
+> 1 go without (something desirable). 2 refrain from.
 >
-> vt.放弃；弃绝；对...断念
+> Ex: she wanted to forgo the tea and leave while they could. 
 
 fork `/fɔːk/` 叉，耙
 
@@ -7163,17 +7059,17 @@ formalization `/ˌfɔːməlaɪ'zeɪʃn/` （计算机）格式化，形式化，
 
 formalize `/'fɔːməlaɪz/` 使正式化
 
-formative `/'fɔːmətɪv]/` 1 serving to form something, especially having a profound influence on a person's development. 2 a formative element.
+formation `/fɔː'meɪʃn/` n. 形成；队形；编队；构造；[地]地层
 
+formative `/'fɔːmətɪv]/` adj. 形成的；造形的；影响发展的；n. [语]构词成分
+
+> 1 serving to form something, especially having a profound influence on a person's development. 2 a formative element.
+>
 > Ex: his formative years.
->
-> adj. 形成的；造形的；影响发展的
->
-> n. [语]构词成分
 
 former `/ˈfɔːrmər/` 模型，样板，构造者，前，前者
 
-formerly `/'fɔːməli/` 以前，从前
+> DERIVS: formerly `/'fɔːməli/` 以前，从前
 
 formidable `/'fɔːmɪdəbl/` 强大的，可怕的，难对付的
 
@@ -7185,11 +7081,11 @@ formulate `/'fɔːmjuleɪt/` 用公式表示，规划，制定，系统性阐述
 
 formulation `/ˌfɔːmju'leɪʃn/` 格式化，公式化，规划，构想，配方
 
-forsake `/fə'seɪk/` 1 abandon or leave.
+forsake `/fə'seɪk/` v. 放弃；断念；抛弃
 
+> 1 abandon or leave.
+>
 > Ex: he would never forsake Tara.
-> 
-> v. 放弃；断念；抛弃
 
 fort `/fɔːt/` 要塞，堡垒，城堡，军营
 
@@ -7207,15 +7103,11 @@ forum `/'fɔːrəm/` 讨论会，论坛
 
 fossil `/'fɒsl/` 化石，食古不化的人
 
-foster `/ˈfɒstə(r)/` 
+foster `/ˈfɒstə(r)/` vt. 养育，抚育；培养；抱（希望等）；adj. 收养的，养育的
 
 > v. 1 promote the growth of. 2 bring up under fosterage; of children. 3 help develop, help grow.
 >
 > adj. 1 providing or receiving nurture or parental care though not related by blood or legal ties.
->
-> vt. 养育，抚育；培养；抱（希望等）
->
-> adj. 收养的，养育的
 >
 > SYN(vt): cultivate, rear, raise, plant, adopt
 >
@@ -7249,6 +7141,8 @@ fraction `/ˈfrækʃn/` 部分，分数，小数，片段
 
 fractional `/'frækʃənl/` 微不足道的，断片的，分数的，小数的
 
+fracture `/'fræktʃə(r)/` n. 破碎；骨折；vt. 破碎；破裂；vi. 断裂
+
 fragile `/ˈfrædʒaɪl/` 易碎的，脆弱的
 
 fragment `/'fræɡmənt/` 碎片，片段，使破碎，分裂
@@ -7274,6 +7168,8 @@ free `/friː/` 释放，自由的，免费的，空闲的
 freed `/f'riːd/` free的过去式
 
 freehold `/'friːhəʊld/` 永久业权
+
+freeway `/ˈfriːweɪ/` n. 高速公路
 
 freeze `/friːz/` 冻结，停止
 
@@ -7339,9 +7235,9 @@ fry `/fraɪ/` 油煎，油炸
 
 fuel `/ˈfjuːəl/` 燃料，营养物，刺激因素
 
-fulfill `/fʊl'fɪl/` 1 put in effect. 2 fulfill the requirements or expectations of. 3 fill or meet a want or need.
+fulfill `/fʊl'fɪl/` vt. 履行；满足；实现；使结束（等于fulfil）
 
-> vt. 履行；满足；实现；使结束（等于fulfil）
+> 1 put in effect. 2 fulfill the requirements or expectations of. 3 fill or meet a want or need.
 >
 > SYN: complete, finish, effect, effectuate, set up, meet, fit
 >
@@ -7352,6 +7248,8 @@ fulfill `/fʊl'fɪl/` 1 put in effect. 2 fulfill the requirements or expectation
 fulfilment `/fʊl'fɪlmənt/` 完成，成就感，实现
 
 fuller `/fʊlə/` 压槽锤，漂洗工
+
+fullest `/'fʊlɪst/` adj. 最满的，最完全的（形容词full的最高级）
 
 fume `/fjuːm/` 愤怒，恼火，冒烟
 
@@ -7371,7 +7269,7 @@ furious `/'fjʊəriəs/` 狂怒的，猛烈的
 
 furnace `/'fɜːnɪs/` 炉子，熔炉，严峻考验
 
-furnish `/'fɜːnɪʃ/` 布置，装备，提供
+furnish `/'fɜːnɪʃ/` vt. 布置，装备，提供
 
 furniture `/'fɜːnɪtʃə(r)/` 家具，家私，设备，装置，床罩
 
@@ -7417,9 +7315,9 @@ fuzzy `/'fʌzi/` 模糊的，含糊不清的，毛茸茸的
 
 [回到G](#G)--[回到顶部](#英汉词典)
 
-gadget `/'ɡædʒɪt/` a small mechanical or electronic device or tool, especially an ingenious or novel one.
+gadget `/'ɡædʒɪt/` n. 小机件；小玩意儿；小巧的机械
 
-> n. 小机件；小玩意儿；小巧的机械
+> a small mechanical or electronic device or tool, especially an ingenious or novel one.
 >
 > Ex: a variety of kitchen gadgets.
 
@@ -7461,8 +7359,10 @@ gather `/'ɡæðə(r)/` 聚集，集合，收集，推测，褶子
 
 gaudy `/'ɡɔːdi/` 俗丽的，盛大宴会
 
-gauge `/ɡeɪdʒ/` 1 an instrument that measures and gives a visual display of the amount, level, or contents of something. 2 the thickness, size, or capacity of something, especially as a standard measure. 3 the position of a sailing ship to windward (the weather gage) or leeward (the lee gage) of another. 4 estimate or determine the amount, level, or volume of. 5 measure the dimensions of (an object) with a gauge.
+gauge `/ɡeɪdʒ/` n. 测量仪器；测量标准；（铁道的）轨距；（钢丝等的）直径；（枪管的）口径；v. 估计；判断；测量
 
+> 1 an instrument that measures and gives a visual display of the amount, level, or contents of something. 2 the thickness, size, or capacity of something, especially as a standard measure. 3 the position of a sailing ship to windward (the weather gage) or leeward (the lee gage) of another. 4 estimate or determine the amount, level, or volume of. 5 measure the dimensions of (an object) with a gauge.
+>
 > Ex: a fuel gauge.
 >
 > Ex: the French fleet was heavily outnumbered but had the weather gage.
@@ -7472,10 +7372,6 @@ gauge `/ɡeɪdʒ/` 1 an instrument that measures and gives a visual display of t
 > Ex: when dry, the assemblies can be gauged exactly and planed to width.
 > 
 > Ex: It isn't easy to gauge your readers' level of knowledge or to sense their beliefs and values.
->
-> n. 测量仪器；测量标准；（铁道的）轨距；（钢丝等的）直径；（枪管的）口径 
-> 
-> v. 估计；判断；测量
 
 gaussian `/'gaʊsɪən/` （数学）高斯的
 
@@ -7503,31 +7399,35 @@ genealogies `/ˌdʒiːni'ælədʒi/` 宗谱，家系
 
 general `/ˈdʒenrəl/` 一般的，总体的，大体的
 
+> generalisation `/ˌdʒenərəlai'zeiʃən/` n. 一般化, 普通化, 归纳, 概论
+
 generous `/ˈdʒenərəs/` 慷慨的，大方的，丰富的，充足的
 
-genetic `/dʒɪˈnɛtɪk/` 1 relating to genes or heredity. 2 relating to the origin, or arising from a common origin.
+genetic `/dʒɪˈnɛtɪk/` adj.遗传的；基因的；起源的
 
+> 1 relating to genes or heredity. 2 relating to the origin, or arising from a common origin.
+>
 > Ex: there are fears that genetic techniques could be abused.
 >
 > Ex: the genetic relations between languages.
->
-> adj.遗传的；基因的；起源的
 
 genre `/ˈʒɑːnrə/` 类型，流派，体裁
+
+gently `/'dʒentli/` adv. 轻轻地；温柔地，文雅地，有礼貌地；和缓地；高贵地
 
 gentry `/'dʒentri/` 绅士，名流，贵族
 
 genuine `/'dʒenjuɪn/` 真诚的，真实的
 
-geographical ` ˌdʒiːəˈɡræfɪkl/` based on or derived from the physical features of an area.
+geographical `/ˌdʒiːəˈɡræfɪkl/` adj. 地理学的，地理的
 
-> adj. 地理学的，地理的
+> based on or derived from the physical features of an area.
 >
 > SYN: geography, geographics
 >
 > Ex: a geographical expression.
 >
-> DERIVATIVES: geographically `/ˌdʒiːə'ɡræfɪkli/` 地理学上的
+> DERIVS: geographically `/ˌdʒiːə'ɡræfɪkli/` 地理学上的
 
 geometric `/ˌdʒiːə'metrɪk/` 几何学的，几何图形学的
 
@@ -7562,6 +7462,8 @@ giant `/'dʒaɪənt/` 巨人，巨物，大公司，巨大的
 gibberish `/'dʒɪbərɪʃ/` 莫名其妙的话，胡言乱语
 
 gigabyte `/'ɡɪɡəbaɪt/` （计算机）千兆字节（GB）
+
+giggle `/ˈɡɪɡl/` vi. 傻笑；咯咯地笑；vt. 咯咯地笑着说；n. 吃吃的笑
 
 gilding `/'ɡɪldɪŋ/` 镀金，表面装饰
 
@@ -7605,15 +7507,15 @@ glitch `/ɡlɪtʃ/` 失灵，小故障，小毛病，小差错
 
 glitter `/'ɡlɪtə(r)/` 灿烂，闪烁，亮片
 
-globe `/ɡləʊb/` 1 (the globe) the earth. 2 a spherical or rounded object. 3 from (something) into a globe.
+globe `/ɡləʊb/` n.地球；地球仪；球体；世界
 
+> 1 (the globe) the earth. 2 a spherical or rounded object. 3 from (something) into a globe.
+> 
 > Ex: goods from all over the globe.
 >
 > Ex: orange trees clipped into giant globes.
 >
 > Ex: there, in miniature, the world was globed like a fruit.
->
-> n.地球；地球仪；球体；世界
 
 gloomy `/'ɡluːmi/` 阴暗的，阴沉的，令人沮丧的
 
@@ -7626,6 +7528,8 @@ glosses `/ɡlɒs/` 光彩，光泽，虚饰，注释，注解，掩盖，（使�
 glove `/ɡlʌv/` 手套，给...戴手套
 
 glue `/ɡluː/` 胶水，粘贴
+
+glut `/ɡlʌt/` 供过于求，过量供应
 
 glutton `/'ɡlʌtn/` 贪吃者
 
@@ -7687,8 +7591,10 @@ graceful `/ˈɡreɪsfl/` 优雅的，优美的，得体的
 
 gradation `/ɡrə'deɪʃn/` 渐变，阶段，等级，刻度
 
-grade `/ɡreɪd/` 1 a particular level of rank, quality, proficiency, or value. 2 a mark indicating the quality of a student's work. 3 a gradient or slope. 4 a variety of cattle produced by crossing with a superior breed. 5 arrange in or allocate to grades; classify or sort. 6 give a mark to (a student or a piece of work). 7 pass gradually from one level, especially a shade of colour, into another. 8 reduce (a road) to an easy gradient. 9 cross (livestock) with a superior breed.
+grade `/ɡreɪd/` n. 等级；年级；成绩；斜坡；v. 分级；评分；渐次变化
 
+> 1 a particular level of rank, quality, proficiency, or value. 2 a mark indicating the quality of a student's work. 3 a gradient or slope. 4 a variety of cattle produced by crossing with a superior breed. 5 arrange in or allocate to grades; classify or sort. 6 give a mark to (a student or a piece of work). 7 pass gradually from one level, especially a shade of colour, into another. 8 reduce (a road) to an easy gradient. 9 cross (livestock) with a superior breed.
+>
 > Ex: high-grade steel.
 >
 > Ex: I got good grades last semester.
@@ -7696,10 +7602,6 @@ grade `/ɡreɪd/` 1 a particular level of rank, quality, proficiency, or value. 
 > Ex: just over the crest of a long seven percent grade.
 >
 > Ex: grade stock.
->
-> n. 等级；年级；成绩；斜坡
->
-> v. 分级；评分；渐次变化
 
 gradient `/'ɡreɪdiənt/` 倾斜度，坡度，梯度
 
@@ -7729,21 +7631,17 @@ grandeur `/'ɡrændʒə(r)/` 庄严，伟大，宏伟，壮观
 
 granite `/ˈɡrænɪt/` 花岗岩，花岗石
 
-grant `/ɡrɑːnt/` 1 agree to give or allow (something requested) to. 2 agree or admit to (someone) that (something) is true. 3 a sum of money given by a government or other organization for a particular purpose.
+grant `/ɡrɑːnt/` v. 授予；同意；承认；认为；n. 授予物；补助金；同意；给予；财产转让；n. 格兰特(男名)
 
+> 1 agree to give or allow (something requested) to. 2 agree or admit to (someone) that (something) is true. 3 a sum of money given by a government or other organization for a particular purpose.
+>
 > Ex: they were granted a meeting.
 >
 > Ex: a research grant.
->
-> v. 授予；同意；承认；认为
->
-> n. 授予物；补助金；同意；给予；财产转让
->
-> n. 格兰特(男名)
 > 
-> DERIVATIVES: granted `/'ɡrɑːntɪd/` 的确，假定
+> DERIVS: granted `/'ɡrɑːntɪd/` 的确，假定
 >
-> DERIVATIVES: granting `/ɡrɑːnt/` 授予，同意，承认，认为，财产转让
+> DERIVS: granting `/ɡrɑːnt/` 授予，同意，承认，认为，财产转让
 
 granular `/ˈɡranjʊlə/` 颗粒状的，粗糙的
 
@@ -7765,9 +7663,9 @@ gratification `/ˌɡrætɪfɪ'keɪʃn/` 满足，喜悦
 
 gratify `/'ɡrætɪfaɪ/` 使满足，使高兴
 
-gratitude `/ˈɡrætɪtjuːd/` the quality of being thankful; readiness to show appreciation for and to return kindness.
+gratitude `/ˈɡrætɪtjuːd/` n. 感激, 感谢
 
-> n. 感激, 感谢
+> the quality of being thankful; readiness to show appreciation for and to return kindness.
 >
 > Ex: she expressed her gratitude to the committee for their support.
 
@@ -7819,6 +7717,10 @@ groat `/ɡrəʊt/` 些许
 
 grocer `/'ɡrəʊsə(r)/` 食品杂货商，杂货店
 
+groom `/ɡruːm/` vt. 推荐；喂马；整饰；n. 马夫；新郎；男仆；vi. 打扮
+
+grooming `/'ɡruːmɪŋ/` n. 修饰；美容；（动物）梳理毛发
+
 groove `/ɡruːv/` 槽，开槽，纹，习惯
 
 gross `/ɡrəʊs/` 粗俗的，严重的，粗略的，总收入（毛利）
@@ -7854,6 +7756,8 @@ guarantee `/ˌɡærən'tiː/` 保证，担保，抵押品
 guard `/ɡɑːd/` 看守，守卫，保卫
 
 guardian `/'ɡɑːdiən/` 监护人，保护人
+
+guerrilla `/gə'rɪlə/` n. 游击队员
 
 guidance `/'ɡaɪdns/` 指导，引导，导航
 
@@ -7905,20 +7809,22 @@ gyration `/ˌdʒaɪəˈreɪʃən/` 旋转，回旋，环动
 
 [回到H](#H)--[回到顶部](#英汉词典)
 
-habitat `/ˈhabɪtat/` the natural home or environment of an animal, plant, or other organism.
+habitat `/ˈhabɪtat/` n. (动物的)栖息地, 住处
 
-> n. (动物的)栖息地, 住处
+> the natural home or environment of an animal, plant, or other organism.
 >
 > SYN: environment, environs, surroundings, surround
 >
 > Ex: wild chimps in their natural habitat.
 >
-> DERIVATIVES: habitation `/ˌhæbɪ'teɪʃn/` 居住，住所
+> DERIVS: habitation `/ˌhæbɪ'teɪʃn/` 居住，住所
 
 hack `/hæk/` 劈砍，乱踢，咳嗽，出租车，雇佣文人，非法侵入（计算机）
 
-hail `/heil/` 1 pellets of frozen rain which fail in showers from cumulonimbus clouds. 2 (it hails, it is hailing, etc.) hail falls. 3 (of a large number of objects) fall or be hurled forcefully. 4 call out to (someone) to attract attention. 5 praise (someone or something) enthusiastically. 6 (hail from) have one's home or origins in (a place).
+hail `/heil/` n. 冰雹；vi. 下冰雹；vt. 招呼；喝彩；宣称；来自；n. 欢呼
 
+> 1 pellets of frozen rain which fail in showers from cumulonimbus clouds. 2 (it hails, it is hailing, etc.) hail falls. 3 (of a large number of objects) fall or be hurled forcefully. 4 call out to (someone) to attract attention. 5 praise (someone or something) enthusiastically. 6 (hail from) have one's home or origins in (a place).
+>
 > Ex: rain and hail bounced on the tiled roof.
 >
 > Ex: it hailed so hard we had to stop.
@@ -7930,14 +7836,6 @@ hail `/heil/` 1 pellets of frozen rain which fail in showers from cumulonimbus c
 > Ex: he has been hailed as the new James Dean.
 >
 > Ex: they hail from Turkey.
->
-> n. 冰雹
->
-> vi. 下冰雹
->
-> vt. 招呼；喝彩；宣称；来自
->
-> n. 欢呼
 
 half `/hɑːf/` 一半，下半场，不完全的
 
@@ -7945,7 +7843,9 @@ halo `/'heɪləʊ/` （日/月）晕，光环
 
 halting `/'hɔːltɪŋ/` 跛的，踌躇的
 
-halves `/hɑːvz/` 一半（half的复数形式）
+halve `/hɑːv/` vt. 把…分成两半；把…减半
+
+> DERIVS: halves `/hɑːvz/` 一半（half的复数形式）
 
 halving `/'hɑːvɪŋ/` 对分（减半）
 
@@ -7971,9 +7871,11 @@ handy `/ˈhændi/` 方便的，手巧的，灵巧的，现成的
 
 handymen `/'hændimen/` 杂工
 
-harassment `/ˈhærəsmənt/` 1 behaviour that annoys or upsets someone. 2 illegal behaviour towards a person that causes mental or emotional suffering, which includes repeated unwanted contacts without a reasonable purpose, insults, threats, touching, or offensive language.
+haphazard `/hæpˈhæzəd/` adj. 偶然的, 随意的, 无计划的
 
-> n. 骚扰，扰乱
+harassment `/ˈhærəsmənt/` n. 骚扰，扰乱
+
+> 1 behaviour that annoys or upsets someone. 2 illegal behaviour towards a person that causes mental or emotional suffering, which includes repeated unwanted contacts without a reasonable purpose, insults, threats, touching, or offensive language.
 >
 > SYN: annoyance, chafe, vexation, mistreatment
 >
@@ -7981,7 +7883,9 @@ harassment `/ˈhærəsmənt/` 1 behaviour that annoys or upsets someone. 2 illeg
 
 harangue `/hə'ræŋ/` 慷慨激昂地劝说，长篇激烈演说
 
-harbor `/ˈhɑːbə/` 海港，海湾，避难所
+harbour `/'hɑːbə(r)/` n. 港口；避难所；vt. 庇护；心怀；窝藏；vi. 进入避祸所；躲藏
+
+> DERIVS: harbor `/ˈhɑːbə/` 海港，海湾，避难所
 
 harden `/'hɑːdn/`  (使)变硬，(使)坚强
 
@@ -8011,15 +7915,13 @@ harsh `/hɑːʃ/` 粗糙的，严厉的，严酷的，刺耳的，使人不舒�
 
 harshness `/hɑ:ʃnis/` 刺耳，粗糙的，严肃
 
-harvest `/'hɑːvɪst/` 1 the process or period of gathering in crops. 2 gather (a crop) as a harvest.
+harvest `/'hɑːvɪst/` n. 收成；收获；收割；成果；后果；v. 收获；收割
 
+> 1 the process or period of gathering in crops. 2 gather (a crop) as a harvest.
+>
 > Ex: farmers work longer hours during the harvest.
 >
 > Ex: after harvesting, most of the crop is stored in large buildings.
->
-> n. 收成；收获；收割；成果；后果
->
-> v. 收获；收割
 
 haste `/heɪst/` 匆忙，赶快
 
@@ -8073,6 +7975,8 @@ healing `/ˈhiːlɪŋ/` 康复，治疗，治愈
 
 heard `/hɪər/` 听见，听到
 
+hearsay `/'hɪəseɪ/` n. 传闻
+
 hearty `/ˈhɑːti/`  亲切的，友好的，丰盛的，喧闹
 
 heat `/hiːt/` 加热，热度，热，热烈，激烈，发烧
@@ -8101,6 +8005,8 @@ heir `/eə(r)/` 继承人
 
 held `/held/` hold的过去式，拿着，控制，持有，掌握，举行
 
+helix `/'hiːlɪks/` n. 耳轮；螺旋，螺旋状物
+
 hem `/hem/` 边缘，镶边，卷边
 
 hemp `/hemp/` 大麻
@@ -8119,17 +8025,19 @@ hereditary `/hə'redɪtri/` 世袭的，遗传的
 
 heredity `/həˈredəti/` 遗传，遗传特征
 
+heritage `/'herɪtɪdʒ/` n. 遗产；继承物
+
 hermitian `/hɛ'miʃən/` （数学）共轭（矩阵）
 
 heroism `/ˈherəʊɪzəm/` 英雄主义
 
 herring `/'herɪŋ/` 青鱼，鲱鱼
 
-hesitate `/'hezɪteɪt/` pause in indecision before saying or doing something.
+hesitate `/'hezɪteɪt/` vi. 犹豫；不情愿；口吃
 
-> Ex: A time when it is better to do something, even if it is wrong, than to hesitate.
+> pause in indecision before saying or doing something.
 >
-> vi. 犹豫；不情愿；口吃
+> Ex: A time when it is better to do something, even if it is wrong, than to hesitate. 
 
 hessian `/'hesiən/` 黑森州，粗麻布
 
@@ -8166,6 +8074,8 @@ higgling `/'hɪɡlɪŋ/` 讨价还价，临机应变
 hilbert `/ˈhɪlbərt/` （数学）希尔伯特
 
 hill `/hɪl/` 丘陵，山冈，小山，堆起
+
+hillside `/ˈhɪlˌsaɪd/` n. 山坡，山腹；山腰
 
 himalayan `/ˌhɪməˈleɪən/` 喜马拉雅
 
@@ -8213,6 +8123,8 @@ hitherto `/ˌhɪðə'tuː/` 到目前为止，迄今
 
 hobble `/ˈhɑː.bəl/` 蹒跚，一瘸一拐的走
 
+hockey `/ˈhɒki/` n. 冰球；曲棍球
+
 hodgepodge `/'hɒdʒpɒdʒ/` 混煮，杂烩菜
 
 hoeing `/'həʊɪŋ/` 挖掘
@@ -8236,6 +8148,10 @@ homestead `/ˈhəʊmsted/` 家宅，宅地，农庄
 homicide `/'hɒmɪsaɪd/` 杀人，杀人者
 
 homogeneous `/ˌhɒmə'dʒiːniəs/` 同质的，同种的
+
+homogenisation `/ˌhəʊmədʒənɑɪ'zeɪʃən/` n. 均化；均质化；同质化
+
+homogenization `/həʊmədʒənaɪ'zeɪʃən/` n. 均化作用
 
 homosexuality `/'hɔməu,seksju'æləti/` 同性恋
 
@@ -8313,15 +8229,13 @@ hubris `/'hjuːbrɪs/` 傲慢，骄傲
 
 hue `/hjuː/` 颜色，色彩，色度，色调
 
-hug `/hʌɡ/` 1 squeeze (someone) tightly in one's arms, typically to express affection. 2 an act of holding someone tightly in one's arms, typically to express affection.
+hug `/hʌɡ/` v.拥抱；紧抱；抱有；挨着；n.拥抱；紧抱
 
+> 1 squeeze (someone) tightly in one's arms, typically to express affection. 2 an act of holding someone tightly in one's arms, typically to express affection.
+>
 > Ex: he hugged her close to him.
 >
 > Ex: there were hugs and tears as they were reunited.
->
-> v.拥抱；紧抱；抱有；挨着
->
-> n.拥抱；紧抱
 
 hull `/hʌl/` 外壳，皮，船体
 
@@ -8335,11 +8249,11 @@ hunter `/'hʌntə(r)/` 猎人，猎犬，搜寻者
 
 hurdle `/ˈhəːdl/` 栏，障碍，跨栏赛
 
-hurtful `/'hɜːtfl/` causing distress to someone's feelings.
+hurtful `/'hɜːtfl/` adj. 造成损害的；有害的；伤害的
 
-> SYN: biting, cruel, cutting, damaging, derogatory, distressing, hard to bear, harmful, injurious, malicious, nasty, painful, sarcastic, scathing, spiteful, uncharitable, unkind, upsetting, vicious, wounding.
+> causing distress to someone's feelings.
 >
-> adj. 造成损害的；有害的；伤害的
+> SYN: biting, cruel, cutting, damaging, derogatory, distressing, hard to bear, harmful, injurious, malicious, nasty, painful, sarcastic, scathing, spiteful, uncharitable, unkind, upsetting, vicious, wounding. 
 
 hurtling `/'hɜːtlɪŋ/` 疾驰的，飞奔的
 
@@ -8387,7 +8301,9 @@ hyphenate `/'haɪfəneɪt/` 用连字符号连接，断字
 
 hypnotic `/hɪp'nɒtɪk/` 催眠的，催眠术的，易于催眠的，安眠药，催眠状态的人
 
-hypocritical `/ˌhɪpə'krɪtɪkl/` 伪善的
+hypocrite `/'hɪpəkrɪt/` n. 伪君子；伪善者
+
+> DERIVS: hypocritical `/ˌhɪpə'krɪtɪkl/` 伪善的
 
 hypothesis `/haɪˈpɒθəsɪs/` 假设，猜想，猜测
 
@@ -8435,11 +8351,11 @@ identical `/aɪˈdentɪkl/` 完全相同的，同样的
 
 identify `/ʌɪˈdɛntɪfʌɪ/` 认出，识别
 
-ideological `/ˌʌɪdɪəˈlɒdʒɪkl/` 1 based on or relating to a system of ideas and ideals, especially concerning economic or political theory and policy.
+ideological `/ˌʌɪdɪəˈlɒdʒɪkl/` adj. 意识形态的；思想上的
 
-> Ex: the ideological struggle that underpinned the Cold War.
+> 1 based on or relating to a system of ideas and ideals, especially concerning economic or political theory and policy.
 >
-> adj. 意识形态的；思想上的
+> Ex: the ideological struggle that underpinned the Cold War.
 
 idiom `/'ɪdiəm/` 方言，成语，惯用语，风格，特色
 
@@ -8503,13 +8419,13 @@ illustrate `/ˈɪləstreɪt/` 说明，详解，配图说明，插图
 
 [回到I](#I)--[回到顶部](#英汉词典)
 
-imagery `/'ɪmɪdʒ(ə)rɪ/` 1 visually descriptive or figurative language, especially in a literary work. 2 visual images collectively.
+imagery `/'ɪmɪdʒ(ə)rɪ/` n. 意象；肖像；图像；比喻
 
+> 1 visually descriptive or figurative language, especially in a literary work. 2 visual images collectively.
+>
 > Ex: Tennyson uses imagery to create a lyrical emotion.
 >
-> Ex: the impact of computer-generated imagery on contemporary art.
->
-> n. 意象；肖像；图像；比喻
+> Ex: the impact of computer-generated imagery on contemporary art. 
 
 imaginary `/ɪ'mædʒɪnəri/` 想象的，虚构的
 
@@ -8517,21 +8433,25 @@ imbalance `/ɪm'bæləns/` 不平衡，失调
 
 imbibe `/ɪmˈbaɪb/` 喝，饮，吸收，接受（信息）
 
-imitate `/ˈɪmɪteɪt/` take or follow as a model.
+imitate `/ˈɪmɪteɪt/` vt.模仿
 
-> Ex: his style was imitated by many other writers.
+> take or follow as a model.
 >
-> vt.模仿
+> Ex: his style was imitated by many other writers. 
 
 imitation `/ˌɪmɪ'teɪʃn/` 模仿，冒充，假造的
+
+immature `/ˌɪmə'tjʊə(r)/` adj. 不成熟的
+
+> DERIVS: immaturity `/ˌɪmə'tjʊərəti/` n. 不成熟
 
 immediate `/ɪ'miːdiət/` 直接的，最接近的，利己的，目前的
 
 immemorial `/ˌɪmə'mɔːriəl/` 远古的，极古的，久远的
 
-immense `/ɪˈmens/` unusually great in size or amount or degree or especially extent or scope.
+immense `/ɪˈmens/` adj. 极大的, 巨大的
 
-> adj. 极大的, 巨大的
+> unusually great in size or amount or degree or especially extent or scope.
 >
 > SYN: large, big
 >
@@ -8555,21 +8475,17 @@ immunity `/ɪˈmjuːnəti/` 免疫，免疫力，豁免，免除
 
 immutable `/ɪˈmjuːtəbl/` 不可改变的
 
-impact `/ˈɪmpakt/` 1 the action of one object coming forcibly into contact with another. 2 a marked effect or influence. 3 come into forcible contact with another object. 4 (impact on) have a strong effect on someone or something.
+impact `/ˈɪmpakt/` n.影响；冲击力；撞击；vt.挤入；压紧；撞击；对 ... 发生影响；vi.冲击；撞击；产生影响
 
+> 1 the action of one object coming forcibly into contact with another. 2 a marked effect or influence. 3 come into forcible contact with another object. 4 (impact on) have a strong effect on someone or something.
+> 
 > Ex: bullets which expand and cause devastating injury on impact.
 >
 > Ex: our regional measures have had a significant impact on unemployment.
->
-> n.影响；冲击力；撞击
->
-> vt.挤入；压紧；撞击；对 ... 发生影响
->
-> vi.冲击；撞击；产生影响
 
-impair `/ɪm'peə(r)/` weaken or damage (something, especially faculty or function).
+impair `/ɪm'peə(r)/` vt. 削弱；损害；减少
 
-> vt. 削弱；损害；减少
+> weaken or damage (something, especially faculty or function).
 >
 > SYN: damage
 >
@@ -8587,15 +8503,13 @@ impediment `/ɪm'pedɪmənt/` 障碍，阻碍，口吃
 
 impenetrable `/ɪm'penɪtrəbl/` 不能穿过的，无可理喻的
 
-imperative `/ɪmˈpɛrətɪv/` 1 of vital importance; crucial. 2 giving an authoritative command. 3 an essential or urgent thing. 4 Grammar a verb or phrase in the imperative mood.
+imperative `/ɪmˈpɛrətɪv/` adj.紧要的；必要的；祈使的；n.紧要的事；命令；义务；驱使
 
+> 1 of vital importance; crucial. 2 giving an authoritative command. 3 an essential or urgent thing. 4 Grammar a verb or phrase in the imperative mood.
+> 
 > Ex: it is imperative that standards are maintained.
 >
 > Ex: free movement of labour was an economic imperative.
->
-> adj.紧要的；必要的；祈使的
->
-> n.紧要的事；命令；义务；驱使
 
 imperfect `/ɪm'pɜːfɪkt/` 有缺点的，不完美的
 
@@ -8609,7 +8523,11 @@ impetus `/ˈɪmpɪtəs/` 推力，动力，惯性
 
 impinge `/ɪm'pɪndʒ/` 撞击，打击，侵犯，对...有影响
 
-implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
+implement `/ˈɪmplɪment/` vt. 使生效, 贯彻, 执行；n. 工具, 器具, 用具
+
+> DERIVS: implementation `/ˌɪmplɪmɛnˈteɪʃən/` 执行，实施，生效，完成
+
+implication `/ˌɪmplɪ'keɪʃn/` n. 牵连；含意；暗示；卷入
 
 implicit `/ɪmˈplɪsɪt/` 隐式的，含蓄的，内在的
 
@@ -8649,19 +8567,17 @@ improvise `/ˈɪmprəvaɪz/` 即兴创作，临时做
 
 imprudence `/ɪm'pruːdns/` 轻率，不小心，不谨慎
 
-impulse `/ˈɪmpʌls/` 1 a sudden strong and unreflective urge or desire to act. 2 something that causes something to happen or happen more quickly; an impetus. 3 a pulse of electrical energy; a brief current. 4 a force acting briefly on a body and producing a finite change of momentum.
+impulse `/ˈɪmpʌls/` n. 冲动；心血来潮；神经冲动；[物]冲量；[电]脉冲；vt. 推动
 
-> Ex: I had an almost irresistible impulse to giggle.
-> 
-> n. 冲动；心血来潮；神经冲动；[物]冲量；[电]脉冲
-> 
-> vt. 推动
-
-impulsive `/ɪmˈpʌlsɪv/` 1 acting or done without forethought. 2 physics acting as an impulse.
-
-> Ex: the approaching waves contain an impulsive component.
+> 1 a sudden strong and unreflective urge or desire to act. 2 something that causes something to happen or happen more quickly; an impetus. 3 a pulse of electrical energy; a brief current. 4 a force acting briefly on a body and producing a finite change of momentum.
 >
-> adj.冲动的；任性的
+> Ex: I had an almost irresistible impulse to giggle.
+
+impulsive `/ɪmˈpʌlsɪv/` adj.冲动的；任性的
+
+> 1 acting or done without forethought. 2 physics acting as an impulse.
+>
+> Ex: the approaching waves contain an impulsive component.
 
 impurity `/ɪm'pjʊərəti/` 不纯，杂质
 
@@ -8677,11 +8593,9 @@ inaccuracy `/ɪn'ækjərəsi/` 不准确，错误
 
 inactivate `/ɪn'æktɪveɪt/` 钝化，失活
 
-inadequate `/ɪn'ædɪkwət/` lacking the quality or quantity required; insufficient for a purpose.
+inadequate `/ɪn'ædɪkwət/` adj. 不适当的；不充分的；不足胜任的；信心不足的；adv. 不充足地，不适当的；不足胜任地
 
-> adj. 不适当的；不充分的；不足胜任的；信心不足的
->
-> adv. 不充足地，不适当的；不足胜任地
+> lacking the quality or quantity required; insufficient for a purpose.
 >
 > SYN(adj.): deficient, incapable, incompetent, short-handed
 >
@@ -8699,11 +8613,9 @@ inattention `/ˌɪnə'tenʃn/` 粗心，疏忽
 
 inaugurate `/ɪˈnɔːɡjəreɪt/` 开创，为...揭幕，为...举行就职典礼
 
-inbound `/'ɪnbaʊnd/` directed or moving inward or toward a center.
+inbound `/'ɪnbaʊnd/` adj. 归本国的；回内地的；入境的；n. 入站
 
-> adj. 归本国的；回内地的；入境的
->
-> n. 入站
+> directed or moving inward or toward a center.
 >
 > SYN: incoming
 >
@@ -8713,19 +8625,19 @@ inbound `/'ɪnbaʊnd/` directed or moving inward or toward a center.
 
 incapable `/ɪnˈkeɪpəbl/` 不能克制的，没有能力的
 
+incarceration `/ɪnˌkɑːsə'reɪʃn/` n. 下狱；监禁；幽闭
+
 incarnate `/ɪn'kɑːnət/` 体现，使 ... 具体化，化身的，人体化的
 
 incarnation `/ˌɪnkɑːˈneɪʃn/` 体现，生命，肉身，（生活中的）特殊阶段
 
 incense `/ˈɪnsens/` 熏香，焚香，激怒
 
-incentive `/ɪnˈsɛntɪv/` 1 a thing that motivates or encourages someone to do something.
+incentive `/ɪnˈsɛntɪv/` adj.刺激的；鼓励的；n.刺激；鼓励；动机
 
+> 1 a thing that motivates or encourages someone to do something.
+> 
 > Ex: give farmers an incentive to improve their land.
->
-> adj.刺激的；鼓励的
->
-> n.刺激；鼓励；动机
 
 inception `/ɪnˈsepʃn/` 开端，创始
 
@@ -8735,30 +8647,34 @@ incidence `/'ɪnsɪdəns/` 发生（率），入射
 
 incident `/ˈɪnsɪd(ə)nt/` 发生的事，枝节，暴力事件，由某事物导致
 
-incidental `/ˌɪnsɪ'dentl/` 偶然的，附带的，非主要的，容易发生的，附带事件，杂项
+> DERIVS: incidental `/ˌɪnsɪ'dentl/` 偶然的，附带的，非主要的，容易发生的，附带事件，杂项
 
 incisive `/ɪnˈsaɪsɪv/` 敏锐的，透彻的，一针见血的
+
+incite `/ɪn'saɪt/` 煽动，刺激，诱因
 
 incitement `/ɪn'saɪtmənt/` 煽动，刺激，诱因
 
 inclemency `/ɪn'klemənsi/` 险恶，严酷
 
-inclination `/ˌɪnklɪˈneɪʃn/` 1 a person's natural tendency or urge to act or feel in a particular way; a disposition. 2 the fact or degree of sloping. 3 the angle at which a straight line or plane is inclined to another.
+inclination `/ˌɪnklɪˈneɪʃn/` n.倾向；意愿；趋势；斜坡；倾斜度
 
+> 1 a person's natural tendency or urge to act or feel in a particular way; a disposition. 2 the fact or degree of sloping. 3 the angle at which a straight line or plane is inclined to another.
+> 
 > Ex: he was free to follow his inclinations.
 >
 > Ex: the questioner's inclination of his head.
 >
 > Ex: cometary orbits vary widely in inclination.
->
-> n.倾向；意愿；趋势；斜坡；倾斜度
 
 incline `/ɪn'klaɪn/` 倾斜，斜坡，斜面，(使)倾向于，向前弯，(使)倾斜
 
 inclosure `/ɪn'kləʊʒə/` 围笼，附件
 
-include `/ɪn'kluːd/` 1 comprise or contain as part of a whole. a make part of a whole or set. 2 make part of a whole or set.
+include `/ɪn'kluːd/` adj. 造成损害的；有害的；伤害的
 
+> 1 comprise or contain as part of a whole. a make part of a whole or set. 2 make part of a whole or set.
+>
 > SYN(1): blend in, combine, comprise, consist of, contain, embody, encompass, incorporate, involve, make room for, mix, subsume, take in.
 > 
 > SYN(2): add in, allow for, cover, take into account.
@@ -8766,8 +8682,6 @@ include `/ɪn'kluːd/` 1 comprise or contain as part of a whole. a make part of 
 > Ex: other changes included the abolition of the death penalty.
 >
 > Ex: we have included some hints for beginners in this section.
->
-> adj. 造成损害的；有害的；伤害的
 
 inclusion `/ɪnˈkluːʒn/` 包括，被包括的项目
 
@@ -8797,11 +8711,9 @@ incorporation `/ɪnˌkɔːpəˈreɪʃən/` 公司，法人，合并，并入
 
 incorrect `/ˌɪnkə'rekt/` 不正确的，错误的
 
-incorrigible `/ɪnˈkɒrɪdʒəbl/` 1 (of a person or their behaviour) not able to be changed or reformed. 2 an incorrigible person.
+incorrigible `/ɪnˈkɒrɪdʒəbl/` adj.无药可救的；积习难改的；固执的；n.不可救药的人
 
-> adj.无药可救的；积习难改的；固执的
->
-> n.不可救药的人
+> 1 (of a person or their behaviour) not able to be changed or reformed. 2 an incorrigible person.
 > 
 > Ex: he's an incorrigible liar.
 >
@@ -8811,9 +8723,9 @@ increase `/ɪn'kriːs/` 增加，提高
 
 increasing `/ɪn'kriːsɪŋ/` 增长的，增加的
 
-incredible `/ɪnˈkredəbl/` 1 impossible to believe. 2 difficult to believe; extraordinary.
+incredible `/ɪnˈkredəbl/` adj. 不能相信的, 不可信的；〈非正〉难以置信的, 不可思议的, 惊人的
 
-> adj. 不能相信的, 不可信的；〈非正〉难以置信的, 不可思议的, 惊人的
+> 1 impossible to believe. 2 difficult to believe; extraordinary.
 >
 > SYN: astounding, dumbfounding, dumfounding, fabulous, improbable, marvelous, marvellous
 >
@@ -8851,15 +8763,15 @@ indeterminate `/ˌɪndɪˈtəːmɪnət/` 不确定的，模糊的
 
 indexation `/ˌɪndek'seɪʃn/` 指数化
 
-indicate `/ˈɪndɪkeɪt/` 指示，说明，象征，显示，预示
+indicate `/ˈɪndɪkeɪt/` v. 指示；象征；显示；暗示，预示；v. 表明；指明
 
-indication `/ˌɪndɪˈkeɪʃn/` 1 a sign or piece of information that indicates something. 2 a symptom that suggests certain treatment is necessary.
+indication `/ˌɪndɪˈkeɪʃn/` n. 指示；表示；迹象
 
+> 1 a sign or piece of information that indicates something. 2 a symptom that suggests certain treatment is necessary.
+>
 > Ex: the visit was an indication of the improvement in relations between the countries.
 >
-> Ex: heavy bleeding is a common indication for hysterectomy.
->
-> n. 指示；表示；迹象
+> Ex: heavy bleeding is a common indication for hysterectomy. 
 
 indicator `/ˈɪndɪkeɪtə(r)/` 转向灯，指示信号，标志，迹象，指示器，指针
 
@@ -8881,8 +8793,10 @@ indignant `/ɪn'dɪɡnənt/` 愤慨的，愤愤不平的
 
 indignation `/ˌɪndɪɡ'neɪʃn/` 愤怒，愤慨，义愤
 
-indirect `/ˌɪndə'rekt/` 1 not directly caused by or resulting from something. 2 (of a route) not straight; not following the shortest way. 3 avoiding direct mention or exposition of a subject.
+indirect `/ˌɪndə'rekt/` adj. 间接的；迂回的；次要的；不坦率的
 
+> 1 not directly caused by or resulting from something. 2 (of a route) not straight; not following the shortest way. 3 avoiding direct mention or exposition of a subject.
+> 
 > Ex: full employment would have an indirect effect on wage levels.
 >
 > Ex: he took a careful, indirect route home from his dockside rendezvous.
@@ -8890,12 +8804,10 @@ indirect `/ˌɪndə'rekt/` 1 not directly caused by or resulting from something.
 > Ex: an indirect attack on the Archbishop.
 > 
 > Ex: In an indirect question, we do not put an auxiliary before the subject, and we do not use a question mark.
->
-> adj. 间接的；迂回的；次要的；不坦率的
 
-indiscretion `/ɪndɪ'skreʃ(ə)n/` 1 the trait of being injudicious. 2 a petty misdeed.
+indiscretion `/ɪndɪ'skreʃ(ə)n/` n. 不慎重的举止,轻率的言行
 
-> n. 不慎重的举止,轻率的言行
+> 1 the trait of being injudicious. 2 a petty misdeed.
 >
 > SYN: folly, foolishness, unwiseness, misbehavior, misbehavior, misdeed
 >
@@ -8903,15 +8815,13 @@ indiscretion `/ɪndɪ'skreʃ(ə)n/` 1 the trait of being injudicious. 2 a petty 
 
 indiscriminate `/ˌɪndɪˈskrɪmɪnət/` 任意的，随意的，不加选择的
 
-indispensable `/ˌɪndɪˈspensəbl/` too important to be without.
+indispensable `/ˌɪndɪˈspensəbl/` adj.必不可少的，必须的. n.不可缺少之物
 
+> too important to be without.
+>
 > SYN: critical, vital, necessary, obligatory
 >
 > Ex: an indispensable obligation.
->
-> adj.必不可少的，必须的. 
->
-> n.不可缺少之物
 
 indisputable `/ˌɪndɪ'spjuːtəbl/` 无可争辩的，无可质疑的
 
@@ -8919,7 +8829,7 @@ individual `/ɪndɪˈvɪdʒʊ(ə)l/` 单独的，独特的，个人主义，个�
 
 indivisible `/ˌɪndɪˈvɪzɪbl/` 不可分割的
 
-indolent `/ˈɪndələnt/` 懒散的，懒惰的
+indolent `/ˈɪndələnt/` adj. 懒散的，懒惰的
 
 indorse `/ɪn'dɔːs/` 背书，批注
 
@@ -8927,19 +8837,17 @@ induce `/ɪnˈdjuːs/` 诱导，引导，引产，催生
 
 induction `/ɪn'dʌkʃn/` （数学）归纳法，感应，就职，诱发
 
-indulge `/ɪnˈdʌldʒ/` 1 (indulge in) allow oneself to enjoy the pleasure of. 2 allow (someone) to enjoy something desired.
+indulge `/ɪnˈdʌldʒ/` vt. 迁就；纵情于；放任；vi. 放纵自己于 ...
 
+> 1 (indulge in) allow oneself to enjoy the pleasure of. 2 allow (someone) to enjoy something desired.
+>
 > Ex: we indulged in a cream tea.
 > 
 > Ex: a luxury service used to indulge the chief executive.
-> 
-> vt. 迁就；纵情于；放任
-> 
-> vi. 放纵自己于 ...
-
-indulgence `/ɪn'dʌldʒəns/` 沉溺，放纵，嗜好
-
-indulgent `/ɪn'dʌldʒənt/` 任性的，纵容的，溺爱的
+>
+> DERIVS: indulgence `/ɪn'dʌldʒəns/` 沉溺，放纵，嗜好
+>
+> DERIVS: indulgent `/ɪn'dʌldʒənt/` 任性的，纵容的，溺爱的
 
 industrious `/ɪn'dʌstriəs/` 勤劳的，勤奋的
 
@@ -8951,19 +8859,17 @@ inequal `/'ɪnɪkwəl/` 不平等的
 
 inert `/ɪˈnɜːt/` 不动的，惰性的
 
-inescapable `/ˌɪnɪˈskeɪpəbl/` unable to be avoided or denied.
+inescapable `/ˌɪnɪˈskeɪpəbl/` adj.无法逃脱的；不可避免的
 
-> adj.无法逃脱的；不可避免的
+> unable to be avoided or denied.
 >
 > Ex: political reform was inescapable.
 
-inevitable `/ɪn'evɪtəbl/` 
+inevitable `/ɪn'evɪtəbl/` adj. 不可避免的, 必然发生的, 〈非正〉总会发生的, 照例必有的, 惯常的
 
 > adj. certain to happen; unavoidable.
 >
 > n. a situation that is unavoidable.
->
-> adj. 不可避免的, 必然发生的, 〈非正〉总会发生的, 照例必有的, 惯常的
 >
 > Ex: war was inevitable.
 >
@@ -8991,9 +8897,9 @@ infatuation `/ɪnˌfætʃu'eɪʃn/` 迷恋
 
 infeasible `/ɪn'fiːzəbl/` 行不通的，不可实行的
 
-Infectious `/ɪnˈfɛkʃəs/` 1 (of a disease or disease-causing organism) liable to be transmitted to people, organisms, etc. through the environment. 2 likely to spread or influence others in a rapid manner.
+infectious `/ɪnˈfɛkʃəs/` adj. 传染的, 有传染性的, 有感染力的
 
-> adj. 传染的, 有传染性的, 有感染力的
+> 1 (of a disease or disease-causing organism) liable to be transmitted to people, organisms, etc. through the environment. 2 likely to spread or influence others in a rapid manner.
 >
 > SYN: septic, infected, catching, communicable, contagious, contractable, transmissible
 >
@@ -9019,7 +8925,7 @@ infinity `/ɪnˈfɪnəti/` 无穷，无限
 
 infirmary `/ɪnˈfɜːməri/` 医务室
 
-infirmity `/ɪn'fɜːməti/` 虚弱，疾病，弱点
+infirmity `/ɪn'fɜːməti/` n. 虚弱；病身；疾病；弱点
 
 infix `/'ɪnfɪks/` （计算机）中缀，把...嵌入，把...插入
 
@@ -9031,6 +8937,8 @@ inflation `/ɪn'fleɪʃn/` 通货膨胀
 
 inflexible `/ɪnˈfleksəbl/` 顽固的，僵化的，死板的
 
+inflict `/ɪnˈflɪkt/` vt. 把…强加给, 使承受, 遭受
+
 influence `/'ɪnfluəns/` 影响，感染，权势，势力
 
 influential `/ˌɪnfluˈenʃl/` 有很大影响力的，有支配力的
@@ -9039,9 +8947,11 @@ influx `/'ɪnflʌks/` 流入，河口，汇集，涌入
 
 informational `/ˌɪnfə'meɪʃənl/` 信息的，介绍情况的
 
-infrastructure `/ˈɪnfrəˌstrʌktʃə/` the basic physical and organizational structures and facilities (e.g. buildings, roads, power supplies) needed for the operation of a society or enterprise.
+informative `/ɪnˈfɔːmətɪv/` adj. 提供信息的；adv. 提供信息地
 
-> n. 基础设施; 基础结构
+infrastructure `/ˈɪnfrəˌstrʌktʃə/` n. 基础设施; 基础结构
+
+> the basic physical and organizational structures and facilities (e.g. buildings, roads, power supplies) needed for the operation of a society or enterprise.
 >
 > SYN: structure, store, stock, fund
 >
@@ -9049,7 +8959,7 @@ infrastructure `/ˈɪnfrəˌstrʌktʃə/` the basic physical and organizational 
 
 infrequent `/ɪn'friːkwənt/` 不常见的，不频繁的
 
-infringe `/ɪn'frɪndʒ/` 违反，侵犯
+infringe `/ɪn'frɪndʒ/` vt. & vi. 违反，侵犯，侵害
 
 infuriate `/ɪn'fjʊərieɪt/` 狂怒的，激怒
 
@@ -9097,11 +9007,11 @@ injustice `/ɪnˈdʒʌstɪs/` 不公正的，不公平
 
 inlet `/'ɪnlet/` 水湾，入口，引进，插入物
 
-inmate `/ˈɪnmeɪt/` 1 a person confined to an institution such as a prison or hospital.
+inmate `/ˈɪnmeɪt/` n.同住者；犯人；居民
 
-> Ex: inmates of the Louisiana State Penitentiary.
+> 1 a person confined to an institution such as a prison or hospital.
 >
-> n.同住者；犯人；居民
+> Ex: inmates of the Louisiana State Penitentiary.
 
 inn `/ɪn/` 客栈，小旅店
 
@@ -9117,11 +9027,9 @@ innocent `/ˈɪnəsnt/` 清白的，无害的，无辜的，无知的，天真�
 
 innocuous `/ɪ'nɒkjuəs/` 无害的，无毒的，无关痛痒的
 
- innovate `/'ɪnəveɪt/` bring something new to an environment.
+innovate `/'ɪnəveɪt/` vi. 改革；创新；革新；vt. 创始；改变；创立；引人
 
-> vi. 改革；创新；革新
->
-> vt. 创始；改变；创立；引人
+> bring something new to an environment.
 >
 > SYN: initiate, pioneer
 >
@@ -9129,15 +9037,15 @@ innocuous `/ɪ'nɒkjuəs/` 无害的，无毒的，无关痛痒的
 >
 > Ex: innovate upon religious forms.
 >
-> DERIVATIVES: innovation `/ˌɪnə'veɪʃn/` 改革；创新；革新
+> DERIVS: innovation `/ˌɪnə'veɪʃn/` 改革；创新；革新
 
 innumerable `/ɪˈnjuːmərəbl/` 无数的，多的数不清的
 
-inordinate `/ɪnˈɔːdɪnət/` 1 unusually or disproportionately large; excessive. 2 (of a person) unrestrained in feelings or behaviour.
+inordinate `/ɪnˈɔːdɪnət/` adj. 过度的；非常的；无法无天的
 
-> Ex: the case had taken up an inordinate amount of time.
+> 1 unusually or disproportionately large; excessive. 2 (of a person) unrestrained in feelings or behaviour.
 >
-> adj. 过度的；非常的；无法无天的
+> Ex: the case had taken up an inordinate amount of time. 
 
 inquiry `/ɪn'kwaɪərɪ/` 调查，询问，打听，查问
 
@@ -9159,7 +9067,7 @@ inspect `/ɪnˈspekt/` 检查，审查，查看，视察
 
 inspection `/ɪn'spekʃn/` 视察，检查
 
-inspiration `/ˌɪnspə'reɪʃn/` 灵感，吸气
+inspiration `/ˌɪnspə'reɪʃn/` n. 灵感；妙计；吸气；鼓舞
 
 inspire `/ɪnˈspaɪər/` 激励，鼓舞，产生灵感
 
@@ -9177,15 +9085,11 @@ installment `/ɪnˈstɔːlmənt/` 分期的，安装，安置
 
 instalment `/ɪn'stɔːlmənt/` 分期付款，一部分
 
-instant `/ˈɪnstənt/` 
+instant `/ˈɪnstənt/` n. 片刻, 顷刻, 刹那；adj. 立即的, 即食的, 立即可冲食的
 
 > n. 1 a very short time (as the time it takes the eye blink or the heart to beat). 2 a particular point in time.
 >
 > adj. 1 occurring with no delay. 2 in or of the present month. 3 demanding attention.
->
-> n. 片刻, 顷刻, 刹那
->
-> adj. 立即的, 即食的, 立即可冲食的
 >
 > SYN: moment, minute, second, bit, point, point in time
 >
@@ -9193,7 +9097,7 @@ instant `/ˈɪnstənt/`
 >
 > Ex: instant gratification.
 >
-> DERIVATIVES: instantaneous `/ˌɪnstən'teɪniəs/` 瞬间的，即刻的
+> DERIVS: instantaneous `/ˌɪnstən'teɪniəs/` 瞬间的，即刻的
 
 instantiate `/ɪns'tænʃɪeɪt/` 实例化，演示
 
@@ -9201,11 +9105,11 @@ instantiation `/ɪnstænʃɪ'eɪʃən/` 实例，示例
 
 instead `/ɪn'sted/` 替代，反而
 
-instill `/ɪnˈstɪl/` 1 gradually but firmly establish (an idea or attitude) in a person's mind. 2 Put (a substance) into something in the form of liquid drops.
+instill `/ɪnˈstɪl/` vt.逐渐灌输；滴注
 
-> Ex: the standards her parents had instilled into her.
+> 1 gradually but firmly establish (an idea or attitude) in a person's mind. 2 Put (a substance) into something in the form of liquid drops.
 >
-> vt.逐渐灌输；滴注
+> Ex: the standards her parents had instilled into her.
 
 institute `/ˈɪnstɪtjuːt/` 机构，制度，学院，研究所
 
@@ -9219,7 +9123,11 @@ instructor `/ɪn'strʌktə(r)/` 教员，讲师，指导书
 
 instrument `/ˈɪnstrəmənt/` 仪器，器械，工具，手段
 
+> DERIVS: instrumental `/ˌɪnstrəˈmentl/` adj. 为器乐谱写的；用乐器演奏的；有帮助的，起作用的
+
 insufficient `/ˌɪnsə'fɪʃnt/` 不足的
+
+insularity `/ˌinsju'lærəti/` n. 岛国；岛国根性；孤立；偏狭
 
 insulate `/'ɪnsjuleɪt/` 使绝缘，隔离
 
@@ -9255,9 +9163,9 @@ integral `/ˈɪntɪɡrəl/` n. （微）积分; adj. 构成整体所必需的
 
 integrate `/'ɪntɪɡreɪt/` （数学）求积分，整合，结合，取消隔离，完整的，组合的
 
-integration `/ˌɪntɪˈɡreɪʃn/` 1 the action or process of integrating. 2 the finding of an integral or integrals. 3 the coordination of processes in the nervous system, including diverse sensory information and motor impulses.
+integration `/ˌɪntɪˈɡreɪʃn/` n. 集成；综合；同化
 
-> n. 集成；综合；同化
+> 1 the action or process of integrating. 2 the finding of an integral or integrals. 3 the coordination of processes in the nervous system, including diverse sensory information and motor impulses.
 > 
 > Ex: economic and political integration.
 >
@@ -9305,6 +9213,8 @@ interesting `/'ɪntrəstɪŋ/` 有趣的，引人入胜的
 
 interfere `/ˌɪntə'fɪə(r)/` 干涉，妨碍
 
+intergenerational `/ˌɪntədʒenə'reɪʃənl/` adj. 两代人之间的
+
 interim `/'ɪntərɪm/` 暂时的，临时的，中间的，过渡时期，暂定
 
 interior `/ɪn'tɪəriə(r)/` 内部，内在，内地的，国内的
@@ -9347,13 +9257,13 @@ interrelate `/ˌɪntərɪ'leɪt/` 互相关连，相关
 
 intersperse `/ˌɪntə'spɜːs/` 散布，散置，点缀
 
-intervene `/ˌɪntə'viːn/` 干涉，干预，介入，调停，插入，阻挠
+intervene `/ˌɪntə'viːn/` vi. 干涉；干预；介入；调停；插入；阻挠
 
-intervention `/ˌɪntə'venʃn/` 介入，干预，调停
+> DERIVS: intervention `/ˌɪntə'venʃn/` n. 介入；干预；调停
 
 intense `/ɪnˈtens/` 强烈的，激烈的，尖锐的
 
-intensify `/ɪnˈtensɪfaɪ/` 强化，加固，增强，加剧
+intensify `/ɪnˈtensɪfaɪ/` vt. 增强；强化；加剧
 
 intensional `/ɪn'tenʃənəl/` 紧张的，专心致志的，内涵的
 
@@ -9361,11 +9271,11 @@ interchange `/ˈɪntətʃeɪndʒ /` 互换，交换，替换
 
 interdependence `/ˌɪntədɪˈpendəns/` 相互依赖，相互依存
 
-interdependent `/ˌɪntədɪˈpɛnd(ə)nt /` (of two or more people or things) dependent on each other.
+interdependent `/ˌɪntədɪˈpɛnd(ə)nt /` adj. 相互依赖的；互助的
 
-> Ex: we in Europe are all increasingly interdependent.
+> (of two or more people or things) dependent on each other.
 >
-> adj. 相互依赖的；互助的
+> Ex: we in Europe are all increasingly interdependent. 
 
 interdomain `/ɪntɜːrdəʊ'meɪn/` （计算机）域间
 
@@ -9391,8 +9301,10 @@ intensive `/ɪnˈtensɪv/`  密集的，加强器
 
 intimacy `/ˈɪntɪməsi/` 亲密，密切，性行为
 
-intimate `/'ɪntɪmət/` 1 closely acquainted; familiar. 2 private and personal. 3 a very close friend.
+intimate `/'ɪntɪmət/` adj. 亲密的；私人的；关系紧密的；vt. 暗示；透露；n. 密友
 
+> 1 closely acquainted; familiar. 2 private and personal. 3 a very close friend.
+>
 > SYN(1): affectionate, close, familiar, friendly, informal, loving, sexual.
 > 
 > SYN(1): confidential, detailed, exhaustive, personal, private, secret.
@@ -9400,32 +9312,28 @@ intimate `/'ɪntɪmət/` 1 closely acquainted; familiar. 2 private and personal.
 > Ex: intimate friends.
 >
 > Ex: intimate details of his sexual encounters.
->
-> adj. 亲密的；私人的；关系紧密的 
->
-> vt. 暗示；透露 
->
-> n. 密友
 
 intimidating `/ɪn'tɪmɪdeɪtɪŋ/` 威胁的，咄咄逼人的
 
-intolerable `/ɪn'tɒlərəbl/` unable to be endured.
+intolerable `/ɪn'tɒlərəbl/` adj. 无法忍受的；难耐的
 
-> Ex: the intolerable pressures of his work.
+> unable to be endured.
 >
-> adj. 无法忍受的；难耐的
+> Ex: the intolerable pressures of his work.
 
-intoxicate `/ɪnˈtɒksɪkeɪt/` 1 (of alcoholic drink or a drug) cause (someone) to lose control of their faculties or behaviour. 2 poison (someone).
+intoxicate `/ɪnˈtɒksɪkeɪt/` vt. 下毒； 使 ... 陶醉
 
-> Ex: we don't allow people into sessions if they are intoxicated by alcohol or drugs.
-> 
-> vt. 下毒； 使 ... 陶醉
+> 1 (of alcoholic drink or a drug) cause (someone) to lose control of their faculties or behaviour. 2 poison (someone).
+>
+> Ex: we don't allow people into sessions if they are intoxicated by alcohol or drugs. 
 
 intravenous `/ˌɪntrə'viːnəs/` 静脉的，静脉注射的
 
 intrepid `/ɪnˈtrepɪd/` 勇敢的，无畏的，刚毅的
 
 intricate `/'ɪntrɪkət/` 复杂的，难懂的
+
+intrigue `/ɪnˈtriːɡ/` vi. 搞阴谋诡计；vt. 激起…的好奇心；n. 密谋策划, 阴谋, 诡计
 
 intriguing `/ɪn'triːɡɪŋ/` 吸引人的，有趣的
 
@@ -9439,13 +9347,13 @@ introductory `/ˌɪntrə'dʌktəri/` 介绍的，前言的，序文的
 
 introspection `/ˌɪntrə'spekʃn/` 内省，反省，自省
 
-intrude `/ɪnˈtruːd/` 1 put oneself deliberately into a place or situation where one is unwelcome or uninvited. 2 (of igneous rock) be forced or thrust into (an existing formation).
+intrude `/ɪnˈtruːd/` v. 闯入；侵入；打扰；干涉
 
+> 1 put oneself deliberately into a place or situation where one is unwelcome or uninvited. 2 (of igneous rock) be forced or thrust into (an existing formation).
+>
 > Ex: she felt awkward at intruding on private grief.
 >
 > Ex: the granite may have intruded these rock layers.
->
-> v. 闯入；侵入；打扰；干涉
 
 intuition `/ˌɪntju'ɪʃn/` 直觉
 
@@ -9505,23 +9413,19 @@ invoker `/ɪn'vəʊkə/` 调用者
 
 involution `/'ɪnvə'ljuːʃən/` （数学）乘方，卷入，复杂性
 
-involve `/ɪnˈvɑːlv/` have or include (something) as a necessary or integral part or result.
+involve `/ɪnˈvɑːlv/` vt. 包含；牵涉；使陷于；潜心于
 
-> vt. 包含；牵涉；使陷于；潜心于
+> have or include (something) as a necessary or integral part or result.
 >
 > SYN: refer, pertain, relate, concern, come to, bear on, touch
 >
 > Ex: my job involves a lot of traveling.
 >
-> DERIVATIVES: involvement `/ɪn'vɒlvmənt/` 卷入，牵连，参与，兴趣，恋爱关系，性关系
+> DERIVS: involvement `/ɪn'vɒlvmənt/` 卷入，牵连，参与，兴趣，恋爱关系，性关系
 
-inward `/'ɪnwəd/` 1 directed or proceeding towards the inside; coming in from outside. 2 variant of inwards.
+inward `/'ɪnwəd/` adj. 内部的；内心的；向内的；亲密的；adv. 向内；n. 内部；内在
 
-> adj. 内部的；内心的；向内的；亲密的
->
-> adv. 向内
->
-> n. 内部；内在
+> 1 directed or proceeding towards the inside; coming in from outside. 2 variant of inwards.
 >
 > Ex: inward mail.
 
@@ -9549,11 +9453,11 @@ irate `/aɪ'reɪt/` 发怒的，生气的
 
 irish `/'aɪrɪʃ/` 爱尔兰
 
-ironic `/aɪˈrɒnɪk/` using or characterized by irony.
+ironic `/aɪˈrɒnɪk/` adj. 说反话的；讽刺的
 
-> Ex: his mouth curved into an ironic smile.
+> using or characterized by irony.
 >
-> adj. 说反话的；讽刺的
+> Ex: his mouth curved into an ironic smile.
 
 ironically `/aɪ'rɒnɪkli/` 讽刺地，说反话地
 
@@ -9583,7 +9487,9 @@ irrevocable `/ɪ'revəkəbl/` 不能晚会的，不能变更的
 
 irrigate `/ˈɪrɪɡeɪt/` 灌溉，冲洗
 
-irritability `/ˌɪrɪtə'bɪləti/` 易怒，过敏性，兴奋性
+irritable `/ˈɪrɪtəbl/` adj. 易怒的, 急躁的
+
+> DERIVS: irritability `/ˌɪrɪtə'bɪləti/` 易怒，过敏性，兴奋性
 
 irritate `/ˈɪrɪteɪt/` 使恼怒，刺激
 
@@ -9647,27 +9553,19 @@ itinerary `/aɪˈtɪnərəri/` 行程，旅程
 
 [回到J](#J)--[回到顶部](#英汉词典)
 
-jail `/dʒeɪl/` 1 a place for the confinement of people accused or convicted of a crime. 2 put (someone) in jail.
+jail `/dʒeɪl/` n.监牢；监狱；拘留所；vt.监禁；下狱
 
+> 1 a place for the confinement of people accused or convicted of a crime. 2 put (someone) in jail.
+>
 > Ex: he spent 15 years in jail.
 >
 > Ex: the driver was jailed for two years.
->
-> n.监牢；监狱；拘留所
->
-> vt.监禁；下狱
 
-jams `/dʒam/`
+jams `/dʒam/` n. 果酱, 拥挤，堵塞, 困难的处境；窘境；vt. & vi. (使)塞紧，(使)挤满, 发生故障；夹住，卡住；vt. 堵塞, (发射无线电波)干扰(信息，节目)
 
 > n. 1 preserve of crushed fruit. 2 informal terms for a difficult situation. 3 a dense crowd of people. 4 deliberate radiation or reflection of electromagnetic energy for the purpose of disrupting enemy use of electronic devices or systems.
 >
 > v. 1 press tightly together or cram. 2 push down forcibly. 3 crush or bruise. 4 interfere with or prevent the reception of signals. 5 get stuck and immobilized. 6 crowd or pack to capacity. 7 block passage through. 
->
-> n. 果酱, 拥挤，堵塞, 困难的处境；窘境
->
-> vt. & vi. (使)塞紧，(使)挤满, 发生故障；夹住，卡住
->
-> vt. 堵塞, (发射无线电波)干扰(信息，节目)
 >
 > Ex: people jammed their belongings into cars.
 >
@@ -9701,15 +9599,13 @@ jasmine `/ˈdʒazmɪn/` 茉莉
 
 jealousy `/ˈdʒeləsi/` 嫉妒，羡慕
 
-jeer `/dʒɪə/` 1 make rude and mocking remarks, typically in a loud voice. 2 a rude and mocking remark.
+jeer `/dʒɪə/` v. 嘲弄；揶揄；奚落；n. 嘲笑；讥评
 
+> 1 make rude and mocking remarks, typically in a loud voice. 2 a rude and mocking remark.
+>
 > Ex: some of the younger men jeered at him.
 >
 > Ex: the taunts and jeers of my classmates.
->
-> v. 嘲弄；揶揄；奚落
->
-> n. 嘲笑；讥评
 
 jelly `/'dʒeli/` 果冻，胶状物
 
@@ -9821,17 +9717,15 @@ justification `/ˌdʒʌstɪfɪ'keɪʃn/` 正当的理由，辩护
 
 justify `/'dʒʌstɪfaɪ/` 替...辩护，证明...正当，调整版面
 
-juvenile `/ˈdʒuːvɪnʌɪl/` 1 for or relating to young people. 2 childish; immature. 3 a young person.
+juvenile `/ˈdʒuːvɪnʌɪl/` adj. 青少年的；幼稚的；n. 青少年；青少年读物；幼雏；扮演少年的演员
 
+> 1 for or relating to young people. 2 childish; immature. 3 a young person.
+>
 > Ex: juvenile crime.
 >
 > Ex: she's bored with my juvenile conversation.
 >
 > Ex: the law relating to the sentencing of juveniles.
->
-> adj. 青少年的；幼稚的
->
-> n. 青少年；青少年读物；幼雏；扮演少年的演员
 
 ### jv
 
@@ -9937,6 +9831,8 @@ knack `/næk/` 技巧，诀窍
 
 knapsack `/ˈnæpsæk/` 小背包
 
+knock `/nɒk/` v. 敲击；互撞；攻击；n. 敲；敲门；敲打
+
 knit `/nɪt/` 编织，密接，结合，皱眉
 
 knives `/naɪvz/` 刀子（knife的复数）
@@ -10007,19 +9903,17 @@ lack `/læk/` 缺乏，不足
 
 lackadaisical `/ˌlækə'deɪzɪkl/` 无精打采的，懒散的
 
-ladder `/'lædə(r)/` a piece of equipment consisting of a series of bars or steps between two upright lengths of wood, metal, or rope, used for climbing up or down something
+ladder `/'lædə(r)/` n. 阶梯；梯子；梯状物
 
+> a piece of equipment consisting of a series of bars or steps between two upright lengths of wood, metal, or rope, used for climbing up or down something
+>
 > Ex: He put up the ladder and climbed to the loft.
+
+laden `/'leɪdn/` adj. 装满的；装载的；负担重的；v. 装载，装货（动词lade的过去分词）
+
+> heavily loaded or weighed down.
 >
-> n. 阶梯；梯子；梯状物
-
-laden `/'leɪdn/` heavily loaded or weighed down.
-
 > Ex: Controversial issues laden with feelings--abortion, politics, religions.
->
-> adj. 装满的；装载的；负担重的 
-> 
-> v. 装载，装货（动词lade的过去分词）
 
 lag `/læɡ/` 落后，延迟，滞后
 
@@ -10037,19 +9931,15 @@ lam `/læm/` 打，鞭笞，逃亡
 
 lamb `/læm/` 小羊，羔羊，温顺的人
 
-lame `/leɪm/` 1 (especially of an animal) unable to walk without difficulty as the result of an injury or illness affecting the leg or foot. 2 (of something intended to be entertaining) uninspiring and dull. 3 (of verse or metrical feet) halting; metrically defective. 4 make (a person or animal) lame.
+lame `/leɪm/` adj.无说服力的；跛足的；vt.使 ... 成残废；n.金属薄板
 
+> 1 (especially of an animal) unable to walk without difficulty as the result of an injury or illness affecting the leg or foot. 2 (of something intended to be entertaining) uninspiring and dull. 3 (of verse or metrical feet) halting; metrically defective. 4 make (a person or animal) lame.
+>
 > Ex: his horse went lame.
 >
 > Ex: I found the program pretty lame and not very informative.
 >
 > Ex: he was badly lamed during the expedition.
->
-> adj.无说服力的；跛足的
->
-> vt.使 ... 成残废
->
-> n.金属薄板
 
 lament `/ləˈment/` 哀叹，哀悼，挽歌，痛惜，对...表示失望
 
@@ -10057,19 +9947,17 @@ lamentable `/'læməntəbl/` 可悲的，哀伤的，可怜的
 
 lampshade `/ˈlæmpʃeɪd/` 灯罩
 
-landfill `/'lændfɪl/` 垃圾填埋地，垃圾填埋法
+landfill `/'lændfɪl/` n. 垃圾堆；垃圾填埋地；v. 将...埋在垃圾填埋地
 
 landmass `/ˈlændˌmæs/` 大陆，陆地，地块
 
-landscape `/ˈlændskeɪp/`
+landscape `/ˈlændskeɪp/` n. 风景, 景色, 风景画, 风景照
 
 > n. 1 all the visible features of an area of land, often considered in terms of their aesthetic appeal. 2 a format of printed matter or screen display that is winder than it is high.
 >
 > v. make (a garden or other area of ground) more attractive by altering the existing design, adding ornamental features, and planting trees and shrubs.
 >
 > adj. of or in a format of printed matter or screen display that is wider than it is high.
->
-> n. 风景, 景色, 风景画, 风景照
 >
 > Ex: the soft colours of the Northumbrian landscape.
 >
@@ -10111,15 +9999,13 @@ laundry `/'lɔːndri/` 洗衣店，洗衣，要洗的衣服
 
 lava `/ˈlɑːvə/` 熔岩，岩浆，火山岩
 
-lavish `/ˈlavɪʃ/` 1 sumptuously rich, elaborate, or luxurious. 2 bestow something in generous or extravagant quantities on.
+lavish `/ˈlavɪʃ/` adj. 大方的；丰富的；浪费的；vt. 浪费；慷慨给予
 
+> 1 sumptuously rich, elaborate, or luxurious. 2 bestow something in generous or extravagant quantities on.
+>
 > Ex: he was lavish with his hospitality.
 >
 > Ex: the media couldn't lavish enough praise on the film.
->
-> adj. 大方的；丰富的；浪费的
->
-> vt. 浪费；慷慨给予
 
 lawbreaker `/'lɔːbreɪkə(r)/` 犯法者
 
@@ -10175,8 +10061,10 @@ lease `/liːs/` 出租，租约
 
 leasehold `/'liːshəʊld/` 租赁，租约
 
-led `/liːd/` 1 cause (a person or animal) to go with one by holding them by the hand, a halter, a rope, etc. while moving forward. 2 (usually lead to) be a route or means of access to a particular place or in a particular direction. 3 be in charge or command of. 4 have the advantage over competitors in a race or game. 5 have or experience (a particular way of life). 6 the initiative in an action; an example for others to follow. 7 (the lead) a position of advantage in a contest; first place. 8 the chief part in a play or file. 9 a strap or cord for restraining and guiding a dog or other domestic animal. 10 a wire that conveys electric current from a source to an appliance, or that connects two points of a circuit together. 11 the distance advanced by a screw in one turn. 12 an artificial watercourse leading to a mill.
+led `/liːd/` v.引导；领先；带领；abbr.发光二极管
 
+> 1 cause (a person or animal) to go with one by holding them by the hand, a halter, a rope, etc. while moving forward. 2 (usually lead to) be a route or means of access to a particular place or in a particular direction. 3 be in charge or command of. 4 have the advantage over competitors in a race or game. 5 have or experience (a particular way of life). 6 the initiative in an action; an example for others to follow. 7 (the lead) a position of advantage in a contest; first place. 8 the chief part in a play or file. 9 a strap or cord for restraining and guiding a dog or other domestic animal. 10 a wire that conveys electric current from a source to an appliance, or that connects two points of a circuit together. 11 the distance advanced by a screw in one turn. 12 an artificial watercourse leading to a mill.
+>
 > Ex: Britain is now taking the lead in environmental policies.
 >
 > Ex: the team burst into life and took the lead.
@@ -10184,10 +10072,6 @@ led `/liːd/` 1 cause (a person or animal) to go with one by holding them by the
 > Ex: she had the lead in a new film.
 >
 > Ex: the dog is our constant walking companion and is always kept on a lead.
->
-> v.引导；领先；带领
->
-> abbr.发光二极管
 
 lesson `/'lesn/` 课程，榜样，典范，训斥，告诫
 
@@ -10209,11 +10093,11 @@ legendary `/ˈledʒəndri/` 传奇的，传说的，负有盛名的
 
 legion `/'liːdʒən/` 军团，很多的
 
-legislation `/ˌlɛdʒɪˈsleɪʃn/` 1 laws, considered collectively.
+legislation `/ˌlɛdʒɪˈsleɪʃn/` n.法律；法规；立法
 
-> Ex: it will require legislation to change this situation.
+> laws, considered collectively.
 >
-> n.法律；法规；立法
+> Ex: it will require legislation to change this situation. 
 
 legislator `/'ledʒɪsleɪtə(r)/` 立法者
 
@@ -10225,11 +10109,9 @@ legitimate `/lɪ'dʒɪtɪmət/` 合法的，世袭的，婚生的，正当的，
 
 legume `/ˈleɡjuːm/` 豆类，豆科作物
 
-leisure `/ˈleʒə(r)/` 1 time available for ease and relaxation. 2 freedom to choose a pastime or enjoyable activity.
+leisure `/ˈleʒə(r)/` n. 闲暇；空闲；安逸；adj. 空闲的；有闲的；业余的
 
-> n. 闲暇；空闲；安逸
->
-> adj. 空闲的；有闲的；业余的
+> 1 time available for ease and relaxation. 2 freedom to choose a pastime or enjoyable activity.
 >
 > SYN: time off, rest, ease, repose, relaxation
 >
@@ -10241,11 +10123,11 @@ lemma `/'lemə/` （数学）引理，词条
 
 lender `/'lendə(r)/` 出借人，贷方
 
-lengthy `/ˈlɛnθi/` 1 (especially in reference to time) of considerable or unusual length, especially so as to be tedious.
+lengthy `/ˈlɛnθi/` adj.冗长的；漫长的
 
-> Ex: lengthy delays.
+> 1 (especially in reference to time) of considerable or unusual length, especially so as to be tedious.
 >
-> adj.冗长的；漫长的
+> Ex: lengthy delays. 
 
 leopard `/ˈlepəd/` 豹子
 
@@ -10259,15 +10141,13 @@ letter `/'letə(r)/` 信，字母，印刷，租赁人
 
 lettuce `/ˈletɪs/` 生菜
 
-lever `/ˈliːvə/` 1 a rigid bar resting on a pivot, used to move a heavy or firmly fixed load with one end when pressure is applied to the other. 2 lift or move with a lever.
+lever `/ˈliːvə/` n.杠杆；控制杆；手段；v.撬开；使用杠杆
 
+> 1 a rigid bar resting on a pivot, used to move a heavy or firmly fixed load with one end when pressure is applied to the other. 2 lift or move with a lever.
+>
 > Ex: a tyre lever.
 >
 > Ex: she levered the lid off the pot with a screwdriver.
->
-> n.杠杆；控制杆；手段
->
-> v.撬开；使用杠杆
 
 leverage `/ˈliːvərɪdʒ/` 影响力，杠杆作用，杠杆效力
 
@@ -10303,8 +10183,10 @@ liability `/ˌlaɪə'bɪləti/` 债务，责任，倾向，可能性，不利因
 
 liable `/'laɪəbl/` 有义务的，有...倾向，易患病的
 
-liberal `/'lɪbərəl/` 1 willing to respect or accept behaviour or opinions different from one's own; open to new ideas. adj.2 relating to or denoting a political and social philosophy that promotes individual rights, civil liberties, democracy, and free enterprise. 3 (Liberal) relating to a Liberal party or (in the UK) the Liberal Democrat Party. 4 given, used, or occurring in generous amounts. 5. (of education) concerned with broadening a person's general knowledge and experience, rather than with technical or professional training. 6 (especially of an interpretation of a law) broadly construed or understood; not strictly literal or exact. 7 a supporter of policies that are socially progressive and promote social welfare. 8 a supporter of political and social philosophy that promotes individual rights, civil liberties, democracy, and free enterprise. 9 (Liberal) a supporter or member of a Liberal party or (in the UK) the Liberal Democrat Party.
+liberal `/'lɪbərəl/` adj. 慷慨的；大方的；开明的；自由主义的；n. 自由主义者；开明的人
 
+> 1 willing to respect or accept behaviour or opinions different from one's own; open to new ideas. adj.2 relating to or denoting a political and social philosophy that promotes individual rights, civil liberties, democracy, and free enterprise. 3 (Liberal) relating to a Liberal party or (in the UK) the Liberal Democrat Party. 4 given, used, or occurring in generous amounts. 5. (of education) concerned with broadening a person's general knowledge and experience, rather than with technical or professional training. 6 (especially of an interpretation of a law) broadly construed or understood; not strictly literal or exact. 7 a supporter of policies that are socially progressive and promote social welfare. 8 a supporter of political and social philosophy that promotes individual rights, civil liberties, democracy, and free enterprise. 9 (Liberal) a supporter or member of a Liberal party or (in the UK) the Liberal Democrat Party.
+>
 > Ex: they have liberal views on divorce.
 >
 > Ex: a liberal democratic state.
@@ -10324,10 +10206,6 @@ liberal `/'lɪbərəl/` 1 willing to respect or accept behaviour or opinions dif
 > Ex: the Liberals are looking to defend a seat in Tuebrook and Stoneycroft.
 > 
 > Ex: The liberal reward of labour, therefore, as it is the effect of increasing wealth, so it is the cause of increasing population.
->
-> adj. 慷慨的；大方的；开明的；自由主义的 
->
-> n. 自由主义者；开明的人
 
 liberalism `/'lɪbərəlɪzəm/` 自由主义
 
@@ -10341,11 +10219,11 @@ lie `/laɪ/` 躺平，平放，说谎，谎言
 
 lifecycle `/'laɪfˌsaɪkl/` 生命周期，生命循环，生活过程
 
-lifespan `/ˈlʌɪfspan/` 1 the length of time for which a person or animal lives or a thing functions.
+lifespan `/ˈlʌɪfspan/` n.寿命；使用期限
 
-> Ex: the human lifespan.
+> 1 the length of time for which a person or animal lives or a thing functions.
 >
-> n.寿命；使用期限
+> Ex: the human lifespan.
 
 lighten `/'laɪtn/` 使轻松，变得轻松，发亮，变亮，照亮，减轻，变轻，闪电，使变淡
 
@@ -10373,6 +10251,8 @@ linearizability `/lin·eariz·abil·i·ty/` （数学）线性一致性
 
 linearization `/lɪnɪəraɪ'zeɪʃən/` 线性化
 
+linebacker `/'laɪnbækə/` n. 后卫球员
+
 linen `/'lɪnɪn/` 亚麻布，亚麻线，亚麻制品
 
 lineup `/ˈlʌɪnʌp/` 阵容，团队，排队，系列节目
@@ -10392,6 +10272,8 @@ linker `/'lɪŋkə/` 链接器
 liquidity `/lɪ'kwɪdəti/` 液态，流动性，流动资产，资产折现力
 
 liquor `/'lɪkə(r)/` 酒，烈性酒
+
+literacy `/ˈlɪtərəsi/` n. 读写能力，识字，有文化；（某领域或某方面的）知识，能力
 
 literal `/ˈlɪtərəl/` 常量，字面值，文学的，书面的，字面上的
 
@@ -10473,6 +10355,8 @@ loneliness `/'ləʊnlinəs/` 孤独，寂寞
 
 longevity `/lɒn'dʒevəti/` 长寿，寿命
 
+longitudinal `/ˌlɒŋɡɪ'tjuːdɪnl/` adj. 经线的；纵向的；长久的
+
 loom `/luːm/` 织布机，逼近，耸然出现
 
 loon `/luːn/` 鱼鹰
@@ -10483,11 +10367,11 @@ loosely `/loosely/` 宽松的，松散的，不精确的
 
 loot `/luːt/` 抢劫，劫掠，战利品，赃物
 
-lopsided `/ˌlɒpˈsʌɪdɪd/` with one side lower or smaller than the other.
+lopsided `/ˌlɒpˈsʌɪdɪd/` adj. 倾向一方的；不平衡的
 
+> with one side lower or smaller than the other.
+> 
 > Ex:  a lopsided grin.
->
-> adj. 倾向一方的；不平衡的
 
 loss `/lɔs/` 损失，亏损，丢失
 
@@ -10529,11 +10413,11 @@ lucrative `/ˈluːkrətɪv/` 赚大钱的，合算的，获利的，有利可图
 
 luggage `/'lʌɡɪdʒ/` 行李
 
-lukewarm `/ˌluːkˈwɔːm/` 1 (of liquid or food that should be hot) only moderately warm; tepid.
+lukewarm `/ˌluːkˈwɔːm/` adj. 微温的；不热情的
 
-> Ex: they drank bitter lukewarm coffee.
+> 1 (of liquid or food that should be hot) only moderately warm; tepid.
 >
-> adj. 微温的；不热情的
+> Ex: they drank bitter lukewarm coffee.
 
 lull `/lʌl/` 平静，放松，缓和，减弱
 
@@ -10621,6 +10505,8 @@ makeup `/ˈmeɪkʌp/` 化妆品，天性，性格
 
 malady `/'mælədi/` 病，疾病，弊病
 
+malfeasance `/ˌmæl'fiːzəns/` n. 渎职；不正当；不法行为
+
 malfunction `/ˌmæl'fʌŋkʃn/` 故障，失灵，发生故障，不起作用
 
 malice `/'mælɪs/` 恶意，怨恨，蓄意
@@ -10633,9 +10519,9 @@ malignant `/mə'lɪɡnənt/` 有恶意的，恶性的，有害的
 
 malleability `/ˌmæliə'bɪləti/` 延展性，韧性，可塑性
 
-malnutrition `/ˌmælnjuˈtrɪʃn/` a state of poor nutrition; can result from insufficient or excessive or unbalanced diet or from inability to absorb foods
+malnutrition `/ˌmælnjuˈtrɪʃn/` n. 营养不良
 
-> n. 营养不良
+> a state of poor nutrition; can result from insufficient or excessive or unbalanced diet or from inability to absorb foods
 >
 > SYN: deficiency disease
 >
@@ -10643,11 +10529,11 @@ malnutrition `/ˌmælnjuˈtrɪʃn/` a state of poor nutrition; can result from i
 
 malt `/mɔːlt/` 麦芽，含麦芽的（啤酒）
 
-maltreat `/malˈtriːt/` 1 treat (a person or animal) cruelly or with violence.
+maltreat `/malˈtriːt/` vt.虐待
 
-> Ex: children die from neglect or are maltreated by their carers.
+> 1 treat (a person or animal) cruelly or with violence.
 >
-> vt.虐待
+> Ex: children die from neglect or are maltreated by their carers. 
 
 mammal `/ˈmæml/` 哺乳动物
 
@@ -10657,31 +10543,23 @@ mandamus `/mæn'deɪməs/` 执行令，命令书
 
 mandarin `/'mændərɪn/` 国语，满清
 
-mandate `/mandate/` 1 an official order or commission to do something. 2 the authority to carry out a policy, regarded as given by the electorate to a party or candidate that wins an election. 3 give (someone) authority to act in a certain way. 4 (be mandated to) (of territory) be assigned to (another power) under a mandate of the League of Nations.
+mandate `/mandate/` n. 命令；指令；要求；授权；v. 把(某一地区)置于委任管理下
 
+> 1 an official order or commission to do something. 2 the authority to carry out a policy, regarded as given by the electorate to a party or candidate that wins an election. 3 give (someone) authority to act in a certain way. 4 (be mandated to) (of territory) be assigned to (another power) under a mandate of the League of Nations.
+>
 > Ex: a mandate to seek the release of political prisoners.
 >
 > Ex: the rightful king was mandated and sanctioned by God.
 >
 > Ex: mandated territories.
->
-> n. 命令；指令；要求；授权
->
-> v. 把(某一地区)置于委任管理下
 
 mandatory `/'mændətəri/` 法定的，义务的，强制性的，受委托的
 
-maneuver `/məˈnuːvə/` 
+maneuver `/məˈnuːvə/` 策略，演习，调遣，机动，用计谋，用计
 
 > n 1 a movement or series of moves requiring skill and care. 2 (manoeuvers) a large-scale military exercise of troops, warships, and other forces.
 >
 > v. 1 move skilfully or carefully. 2 carefully guide or manipulate (someone or something) in order to achieve and end.
->
-> n. 策略；演习；调遣；机动
->
-> vi. 调遣；演习；用计谋；机动
->
-> vt. 演习；调遣；用计；机动
 >
 > SYN(n): operation, military operation, plan of action, motion, movement, move, evasion
 >
@@ -10701,11 +10579,11 @@ manhood `/'mænhʊd/` 成年，勇气，男子气概
 
 manifest `/ˈmanɪfɛst/` 明显的，清楚显示，证明，显现，货单
 
-manifestation `/ˌmænɪfeˈsteɪʃn/` 1 an event, action, or object that clearly shows or embodies something abstract or theoretical.
+manifestation `/ˌmænɪfeˈsteɪʃn/` n. 表现；示威运动；显灵
 
-> Ex: the first obvious manifestations of global warming.
+> 1 an event, action, or object that clearly shows or embodies something abstract or theoretical.
 >
-> n. 表现；示威运动；显灵
+> Ex: the first obvious manifestations of global warming. 
 
 manifesto `/ˌmænɪ'festəʊ/` 宣告，声明，发表宣言
 
@@ -10765,8 +10643,10 @@ mass `/mæs/` 大量，块，众多，大规模的，集中
 
 massacre `/ˈmasəkə/` 大屠杀，惨败，把...搞砸
 
-masses `/'mæsɪz/` 1 a large body of matter with no definite shape. 2 a large number of people or objects crowded together. 3 (the mass of) the majority of. 4 the quantity of matter which a body contains, as measured by its acceleration under a given force or by the force exerted on it by a gravitational field. 5 involving or affecting large numbers of people or things. 6 assemble or cause to assemble into a single body or mass.
+masses `/'mæsɪz/` n. 平民；群众
 
+> 1 a large body of matter with no definite shape. 2 a large number of people or objects crowded together. 3 (the mass of) the majority of. 4 the quantity of matter which a body contains, as measured by its acceleration under a given force or by the force exerted on it by a gravitational field. 5 involving or affecting large numbers of people or things. 6 assemble or cause to assemble into a single body or mass.
+>
 > Ex: the sun broke out from behind a mass of clouds.
 >
 > Ex: a mass of cyclists.
@@ -10778,14 +10658,14 @@ masses `/'mæsɪz/` 1 a large body of matter with no definite shape. 2 a large n
 > Ex: a mass exodus of refugees.
 >
 > Ex: clouds massed heavily on the horizon.
->
-> n. 平民；群众
 
 massive `/ˈmæsɪv/` 大量的，巨大的，大规模的
 
 massively `/'mæsɪvli/` 大量地，大规模地
 
 masterpiece `/ˈmɑːstəpiːs/` 杰作，代表作
+
+mastery `/'mɑːstəri/` n. 精通；掌握；熟练；控制
 
 mastiff `/'mæstɪf/` 敖犬
 
@@ -10875,7 +10755,11 @@ mediocre `/ˌmiːdi'əʊkə(r)/` 平庸的，平凡的
 
 mediocrity `/ˌmiːdi'ɒkrəti/` 平常，平庸之才
 
+meditation `/ˌmedɪˈteɪʃn/` n. 默想, 默念，沉思, 思考；冥想
+
 mediterranean `/ˌmedɪtə'reɪniən/` 地中海，地中海的
+
+mega `/'meɡə/` adj. 巨大的；adv. 非常；pref. 表示“大；百万”
 
 megabyte `/'meɡəbaɪt/` （计算机）兆字节（MB）
 
@@ -10891,25 +10775,23 @@ memoization `/mem-o-iza-tion/` （计算机）对函数返回值进行缓存
 
 memorandum `/ˌmeməˈrændəm/` 备忘录，便签，报告
 
-mend `/mend/` 1 repair (something that is broken or damaged). 2 add fuel to (a fire). 3 a repair in a material.
+menace `/'menəs/` n. 威胁；恐吓；<口>讨厌的人（物）；v. 威吓；威胁
 
+mend `/mend/` vt. 修理；修补；改进；vi. 改过自新；改进；痊愈；n. 修补；改进；修补处
+
+> 1 repair (something that is broken or damaged). 2 add fuel to (a fire). 3 a repair in a material.
+>
 > Ex: workmen were mending faulty cabling.
 >
 > Ex: he mended the fire and turned the meat on the greenwood racks.
 >
 > Ex: the mend was barely visible.
->
-> vt. 修理；修补；改进
->
-> vi. 改过自新；改进；痊愈
->
-> n. 修补；改进；修补处
 
 menial `/'miːniəl/` 佣人，仆人，卑贱的人
 
-mental `/'mentl/` 1 relating to the mind. 2 relating to disorders of the mind. 3 mad; insane.
+mental `/'mentl/` 精神的, 头脑的, 心理的, 智力的, 精神病的
 
-> adj. 精神的, 头脑的, 心理的, 智力的, 精神病的
+> 1 relating to the mind. 2 relating to disorders of the mind. 3 mad; insane.
 >
 > SYN: intellectual, rational, noetic, moral, psychic, psychical, psychogenic
 >
@@ -10939,13 +10821,11 @@ merely `/'mɪəli/` 仅仅，只不过
 
 merger `/'mɜːdʒə(r)/` 合并
 
-merit `/ˈmɛrɪt/` 1 the quality of being particularly good or worthy, especially so as to deserve praise or reward. 2 deserve or be worthy of (reward, punishment, or attention).
+merit `/ˈmɛrɪt/` n.优点；功绩；价值；v.值得；应得
 
+> 1 the quality of being particularly good or worthy, especially so as to deserve praise or reward. 2 deserve or be worthy of (reward, punishment, or attention).
+>
 > Ex: composers of outstanding merit.
->
-> n.优点；功绩；价值
->
-> v.值得；应得
 
 merrier `/'meri/` 愉快的，欢乐的，（口语）微醉的
 
@@ -10965,7 +10845,9 @@ metal `/'metl/` 金属，合金，玻璃液，覆盖，装配
 
 metallic `/mə'tælɪk/` 金属的
 
-metaphor `/'metəfə(r)/` 象征，隐喻
+metaphor `/'metəfə(r)/` n. 象征；隐喻
+
+> DERIVS: metaphorical `/ˌmetə'fɒrɪkl/` adj. 隐喻性的；比喻性的
 
 metastable `/ˌmetə'steɪbəl/` 介稳的，亚稳的
 
@@ -11031,6 +10913,8 @@ migration `/maɪˈɡreɪʃn/` 迁移，迁徙
 
 milder `/maɪld/` 温和的，柔和的，宽大的，清淡的
 
+milestone `/'maɪlstəʊn/` n. 里程碑
+
 milieu `/mɪlˈjɜː/` 社会环境，社会背景，周围
 
 militia `/mə'lɪʃə/` 民兵组织，义勇军，国民军
@@ -11046,6 +10930,8 @@ millwright `/'mɪlraɪt/` 技工，造水车木匠
 mime `/maɪm/` 默剧，哑剧
 
 mimic `/ˈmɪmɪk/` 模仿，戏弄
+
+mindful `/'maɪndfl/` adj. 深切注意的；记住的
 
 mindless `/'maɪndləs/` 不留神的，不顾虑的，无需动脑的，愚蠢的
 
@@ -11093,11 +10979,11 @@ miserable `/'mɪzrəbl/` 痛苦的，悲惨的，贫乏的，狼狈的
 
 miserably `/'mɪzrəbli/` 悲惨的，糟糕的
 
-misery `/ˈmɪz(ə)ri/` 1 a state or feeling of great physical or mental distress or discomfort.
+misery `/ˈmɪz(ə)ri/` n. 痛苦；悲惨的境遇；苦难
 
-> Ex: the misery of the miner's existence.
+> 1 a state or feeling of great physical or mental distress or discomfort.
 >
-> n. 痛苦；悲惨的境遇；苦难
+> Ex: the misery of the miner's existence. 
 
 misfortune `/ˌmɪs'fɔːtʃuːn/` 不幸，灾祸
 
@@ -11117,11 +11003,11 @@ misnomer `/ˌmɪs'nəʊmə(r)/` 误称，用词不当
 
 misrepresent `/ˌmɪsˌreprɪ'zent/` 误称，歪曲，不合适地代表
 
-misrepresentation `/ˌmɪsˌrɛprɪzɛnˈteɪʃn/` the action or offence of giving a false or misleading account of the nature of something.
+misrepresentation `/ˌmɪsˌrɛprɪzɛnˈteɪʃn/` n.误称；不实的陈述
 
-> Ex: she is seeking damages on allegations of misrepresentation.
+> the action or offence of giving a false or misleading account of the nature of something.
 >
-> n.误称；不实的陈述
+> Ex: she is seeking damages on allegations of misrepresentation. 
 
 missionary `/ˈmɪʃənri/` 传教士，传教士体位
 
@@ -11137,11 +11023,9 @@ misunderstand `/ˌmɪsʌndəˈstand/` 误解，争执
 
 misuse `/ˌmɪsˈjuːz/` 误用，错用，滥用，虐待
 
-mitigate `/ˈmɪtɪɡeɪt/` 1 lessen or to try to lessen the seriousness or extent of. 2 make less severe or harsh.
+mitigate `/ˈmɪtɪɡeɪt/` vt. 使缓和，使减轻；vi. 减轻，缓和下来
 
-> vt. 使缓和，使减轻
->
-> vi. 减轻，缓和下来
+> 1 lessen or to try to lessen the seriousness or extent of. 2 make less severe or harsh.
 >
 > SYN: apologize, excuse, justify, rationalize, rationalize, decrease
 >
@@ -11177,9 +11061,9 @@ mnemonic `/nɪ'mɒnɪk/` 助记的，助记符号，记忆的，记忆方法
 
 mobbish `/'mɒbɪʃ/` 暴徒似地，滋扰的，无规律的
 
-mobility `/məʊˈbɪləti/` the quality of moving freely.
+mobility `/məʊˈbɪləti/` n. 迁移率；机动性；移动性
 
-> n. 迁移率；机动性；移动性
+> the quality of moving freely.
 >
 > SYN: quality
 >
@@ -11187,7 +11071,7 @@ mobility `/məʊˈbɪləti/` the quality of moving freely.
 
 mobilize `/ˈməʊbəlaɪz/` 组织，鼓动，动员，调动
 
-mock `/mɒk/` 嘲笑，嘲弄，模仿，伪装
+mock `/mɒk/` v. 嘲弄；嘲笑；模仿；n. 嘲笑；模仿；戏弄；adj. 假的；伪装的；模拟的
 
 mockingbird `/ˈmɒkɪŋbɜːd/` 嘲鸫(一种鸟)，模仿鸟
 
@@ -11195,11 +11079,13 @@ modem `/'məʊdem/` （计算机）调制解调器
 
 moderate `/ˈmɒdərət /` 温和的，适度的，合理的，中立的，理中客
 
-moderately `/'mɒdərətli/` 适度地，一般地
+> DERIVS: moderately `/'mɒdərətli/` 适度地，一般地
+>
+> DERIVS: moderation `/ˌmɒdə'reɪʃn/` n. 缓和；适度；节制；计分审核制
 
-modernity `/məˈdəːnɪti/` the quality or condition of being modern
+modernity `/məˈdəːnɪti/` n. 现代性
 
-> n. 现代性
+> the quality or condition of being modern
 >
 > SYN: currentness, currency, up-to-dateness
 >
@@ -11217,8 +11103,10 @@ moist `/mɔɪst/` 潮湿的，湿润的
 
 molasses `/mə'læsɪz/` 糖浆，糖蜜
 
-mold `/məʊld/` 1 a hollow container used to give shape to molten or hot liquid material when it cools and hardens. 2 a distinctive and typical style, form, or character. 3 a frame or template for producing moldings. 4 form (an object) out of malleable material. 5 influence the formation or development of.
+mold `/məʊld/` n. 模式；类型；模子；模型；真菌；软土；vt. 形成；制模；发霉；vi. 发霉；符合形状
 
+> 1 a hollow container used to give shape to molten or hot liquid material when it cools and hardens. 2 a distinctive and typical style, form, or character. 3 a frame or template for producing moldings. 4 form (an object) out of malleable material. 5 influence the formation or development of.
+>
 > Ex: the smith would pour the molten metal into the shaped mold.
 >
 > Ex: he planned to conquer the world as a roving reporter in the mold of his hero.
@@ -11228,20 +11116,14 @@ mold `/məʊld/` 1 a hollow container used to give shape to molten or hot liquid
 > Ex: mold the figure with white fondant.
 >
 > Ex: he was instrumental in molding the policy and ideals of the journal.
->
-> n. 模式；类型；模子；模型；真菌；软土
->
-> vt. 形成；制模；发霉
->
-> vi. 发霉；符合形状
 
 molecular `/məˈlekjələr/` 分子的，由分子组成的
 
-molest `/məˈlest/` 1 assault or abuse (a person, especially a woman or child) sexually. 2 pester or harass (someone) in an aggressive or persistent manner.
+molest `/məˈlest/` v. 骚扰；干扰；调戏
 
-> Ex: he had been arrested for being drunk and molesting passers-by.
+> 1 assault or abuse (a person, especially a woman or child) sexually. 2 pester or harass (someone) in an aggressive or persistent manner.
 >
-> v. 骚扰；干扰；调戏
+> Ex: he had been arrested for being drunk and molesting passers-by.
 
 momentary `/'məʊməntri/` 短暂的，瞬间的，时刻的
 
@@ -11258,6 +11140,8 @@ moniker `/'mɒnɪkə(r)/` 名字，绰号
 monitor `/ˈmɒnɪtə(r)/` 显示器，监视器，班长，监视，检查，监听
 
 monk `/mʌŋk/` 僧侣，修道士
+
+monocoque `/'mɒnə(ʊ)kɒk/` n. 单体横造
 
 monograph `/ˈmɒnəɡrɑːf/` 专著，专论
 
@@ -11285,15 +11169,11 @@ mood `/muːd/` 心情，情绪，气氛
 
 moor `/mɔː(r)/` 荒野，旷野，停泊
 
-moral `/ˈmɒrəl/` 
+moral `/ˈmɒrəl/` adj. 道德的；精神上的；n. 寓意；道德；品行；伦理
 
 > adj. 1 concerned with the principles of right and wrong behaviour. 2 holding or manifesting high principles for proper conduct. 
 >
 > n. 1 a lesson that can be derived from a story or experience. 2 (moral) standards of behaviour; principles of right and wrong.
->
-> adj. 道德的；精神上的
->
-> n. 寓意；道德；品行；伦理
 >
 > Ex: a moral judgment.
 >
@@ -11303,9 +11183,9 @@ moral `/ˈmɒrəl/`
 
 morale `/məˈrɑːl/` 士气，斗志
 
-moralist `/'mɒrəlɪst/` a person who teaches or promotes morality.
+moralist `/'mɒrəlɪst/` n. 道德学家；卫道士
 
-> n. 道德学家；卫道士
+> a person who teaches or promotes morality.
 
 morality `/mə'ræləti/` 道德，美德，品行
 
@@ -11317,15 +11197,15 @@ mortar `/'mɔːtə(r)/` 灰泥，灰浆，臼，迫击炮
 
 mortgage `/'mɔːɡɪdʒ/` 按揭，抵押，抵押贷款
 
-mortify `/ˈmɔːtɪfʌɪ/` 1 cause (someone) to feel very embarrassed or ashamed. 2 subdue (the body or its needs and desires) by self-denial or discipline. 3 (of flesh) be affected by gangrene or necrosis.
+mortify `/ˈmɔːtɪfʌɪ/` v.使 ... 受辱； 抑制
 
+> 1 cause (someone) to feel very embarrassed or ashamed. 2 subdue (the body or its needs and desires) by self-denial or discipline. 3 (of flesh) be affected by gangrene or necrosis.
+>
 > Ex: he was suitably mortified by his own idiocy.
 >
 > Ex: they wish to return to heaven by mortifying the flesh.
 >
 > Ex: the cut in Henry's arm bad mortified.
->
-> v.使 ... 受辱； 抑制
 
 mostly `/ˈməʊstli/` 主要的，大部分的，基本上
 
@@ -11351,8 +11231,10 @@ mourning `/'mɔːnɪŋ/` 悲痛，孝服，服丧期
 
 moveable `/'muːvəbl/` 活动的，每年变化的，动产，可移动物体
 
-movement `/ˈmuːvmənt/` 1 an act of moving. 2 a change or development. 3 a group of people working together to advance their shared political, social, or artistic ideas. 4 a principal division of a longer musical work, self-sufficient in terms of key, tempo, and structure. 5 (also bowel movement) an act of defecation.
+movement `/ˈmuːvmənt/` n. 活动；运动；动作；[音]乐章
 
+> 1 an act of moving. 2 a change or development. 3 a group of people working together to advance their shared political, social, or artistic ideas. 4 a principal division of a longer musical work, self-sufficient in terms of key, tempo, and structure. 5 (also bowel movement) an act of defecation.
+>
 > Ex: the free movement of labor.
 >
 > Ex: movements in the underlying financial markets.
@@ -11360,8 +11242,6 @@ movement `/ˈmuːvmənt/` 1 an act of moving. 2 a change or development. 3 a gro
 > Ex: the labor movement.
 >
 > Ex: the slow movement of his violin concerto.
->
-> n. 活动；运动；动作；[音]乐章
 
 ### mp
 
@@ -11395,13 +11275,15 @@ multibillion `/mʌltɪ'bɪljən/` 数万亿的
 
 multicore `/'mʌltɪkɔː/` （计算机）多核
 
+multiculturalism `/ˌmʌltiˌkʌltʃərəlɪzəm/` n. 多元文化
+
 multidimensional `/ˌmʌltidaɪ'menʃənl/` 多维的，多面的
 
 multidisciplinary `/ˌmʌltidɪsə'plɪnəri/` 包括各种学科的，有关各种学问的
 
-multifaceted `/ˌmʌltɪˈfasɪtɪd/` 1 having many sides. 2 having many different aspects or features.
+multifaceted `/ˌmʌltɪˈfasɪtɪd/` adj. 多方面的；多才多艺的
 
-> adj. 多方面的；多才多艺的
+> 1 having many sides. 2 having many different aspects or features.
 >
 > SYN: varied
 >
@@ -11435,6 +11317,8 @@ munch `/mʌntʃ/`  用力咀嚼
 
 mundane `/mʌnˈdeɪn/` 单调的，平凡的
 
+municipality `/mjuːˌnɪsɪ'pæləti/` n. 自治市；市当局
+
 munificent `/mjuː'nɪfɪsnt/` 慷慨的，大方的
 
 mural `/ˈmjʊərəl/` 壁画，墙壁的
@@ -11455,7 +11339,7 @@ mutton `/'mʌtn/` 羊肉
 
 mutual `/ˈmjuːtʃʊəl/` 相互的，关系对等的，共用的，互助的
 
-mutually `/'mjuːtʃuəli/` 相互的，彼此的
+> DERIVS: mutually `/'mjuːtʃuəli/` 相互的，彼此的
 
 ### mv
 
@@ -11473,15 +11357,15 @@ mutually `/'mjuːtʃuəli/` 相互的，彼此的
 
 [回到M](#M)--[回到顶部](#英汉词典)
 
-myriad `/ˈmɪriəd/` 1 a countless or extremely great number of people or things. 2 (chiefly in classical history) a unit of ten thousand. 3 countless or extremely great in number.
+myopic `/maɪ'ɒpɪk/` 近视的，缺乏远见的
 
+myriad `/ˈmɪriəd/` adj. 无数的；n. 极大数量
+
+> 1 a countless or extremely great number of people or things. 2 (chiefly in classical history) a unit of ten thousand. 3 countless or extremely great in number.
+>
 > Ex: there's a myriad of islands to explore.
 >
 > Ex: the army was organized on a decimal system, up to divisions of 10,000 or myriads.
->
-> adj. 无数的
->
-> n. 极大数量
 
 myth `/mɪθ/` 神话，虚构的东西
 
@@ -11497,15 +11381,13 @@ myth `/mɪθ/` 神话，虚构的东西
 
 [回到N](#N)--[回到顶部](#英汉词典)
 
-nagging `/ˈnæ gɪŋ/` 1 (of a person) constantly harassing someone to do something. 2 persistently painful or worrying.
+nagging `/ˈnæ gɪŋ/` adj. 纠缠不休的；抱怨的；唠叨的；n. 唠叨
 
+> 1 (of a person) constantly harassing someone to do something. 2 persistently painful or worrying.
+>
 > Ex: I wanted to get away from my nagging parents.
 >
 > Ex: a nagging pain.
->
-> adj. 纠缠不休的；抱怨的；唠叨的
->
-> n. 唠叨
 
 nail `/neɪl/` 钉子，钉住，固定住，指甲，爪
 
@@ -11523,6 +11405,8 @@ narration `/nə'reɪʃn/` 叙述
 
 narrative `/'nærətɪv/` 故事，叙述
 
+narrator `/nə'reɪtə/` n. 叙述者；解说员
+
 narrow `/ˈnarəʊ/` 狭窄的，变窄，有限的，差距小的
 
 narrower `/'nærəʊ/` 有限的，狭窄的，精密的
@@ -11538,6 +11422,8 @@ nativity `/nə'tɪvəti/` 出生，诞生
 naturalist `/ˈnætʃrəlɪst/` 自然主义者，博物学家
 
 naughty `/ˈnɔːti/` 顽皮的，淘气的
+
+navigate `/'nævɪɡeɪt/` vi. 航行；驾驶；操纵 vt. 航行；驾驶；横渡；<口>设法穿过，走过，经过
 
 ### nb
 
@@ -11571,15 +11457,11 @@ negation `/nɪ'ɡeɪʃn/` 对立面，否定，否认，反对
 
 negative `/'neɡətɪv/` 否定的，消极的，否定
 
-neglect `/nɪˈɡlekt/`
+neglect `/nɪˈɡlekt/` vt. 疏忽，忽视；忽略；n. 疏忽，忽视；怠慢
 
 > n. 1 lack of attention and due care. 2 the state of something that has been unused and neglected. 3 willful lack of care and attention. 4 the trait of neglecting responsibilities and lacking concern. 5 failure to act with the prudence that a reasonable person would exercise under the same circumstances. 
 >
 > v. 1 leave undone or leave out. 2 fail to do something; leave something undone. 3 fail to attend to. 4 given little or no attention to.
->
-> vt. 疏忽，忽视；忽略
->
-> n. 疏忽，忽视；怠慢
 >
 > SYN: inattention, decline, declination, mistreatment, carelessness, sloppiness, nonaccomplishment
 >
@@ -11621,11 +11503,11 @@ newbie `/ˈnjuːbi/` 新手
 
 newsroom `/ˈnjuːzruːm/` 新闻编辑部
 
-newsworthiness `/ˈnjuːzwɜːði/` noteworthy as news; topical.
+newsworthiness `/ˈnjuːzwɜːði/` n. 有新闻价值
 
-> Ex: a newsworthy event.
+> noteworthy as news; topical.
 >
-> n. 有新闻价值
+> Ex: a newsworthy event.
 
 newtonian `/nju:'təuniən/` 牛顿的，信仰牛顿学说的
 
@@ -11687,15 +11569,13 @@ nilpotent `/nɪl'pəʊtənt/` 幂零
 
 nobility `/nəʊ'bɪləti/` 贵族，高尚
 
-noble `/ˈnəʊbl/` 1 belonging by rank, title, or birth to the aristocracy. 2 having or showing fine personal qualities or high moral principles.
+noble `/ˈnəʊbl/` adj.高贵的；宏伟的；高尚的；n.贵族
 
+> 1 belonging by rank, title, or birth to the aristocracy. 2 having or showing fine personal qualities or high moral principles.
+>
 > Ex: the medieval palace was once owned by a noble Florentine family.
 >
 > Ex: the promotion of human rights was a noble aspiration.
->
-> adj.高贵的；宏伟的；高尚的
->
-> n.贵族
 
 nocturnal `/nɒkˈtɜːnl/` 夜晚的，夜行的
 
@@ -11705,11 +11585,11 @@ noise `/nɔɪz/` 噪声，声音，干扰
 
 noiseless `/'nɔɪzləs/` 无声的，寂静的
 
-noisy `/'nɒɪzɪ/` 1 making or given to making a lot of noise. 2 accompanied by or introducing random fluctuations that obscure the real signal or data.
+noisy `/'nɒɪzɪ/` adj. 喧闹的；嘈杂的；吵闹的
 
-> SYN: blaring, boisterous, booming, cacophonous, chattering, clamorous, deafening, ear-splitting, fortissimo, loud, raucous, resounding, reverberating, rowdy, screaming, screeching, shrieking, shrill, strident, talkative, thunderous, tumultuous, uproarious, vociferous.
+> 1 making or given to making a lot of noise. 2 accompanied by or introducing random fluctuations that obscure the real signal or data.
 >
-> adj. 喧闹的；嘈杂的；吵闹的
+> SYN: blaring, boisterous, booming, cacophonous, chattering, clamorous, deafening, ear-splitting, fortissimo, loud, raucous, resounding, reverberating, rowdy, screaming, screeching, shrieking, shrill, strident, talkative, thunderous, tumultuous, uproarious, vociferous.
 
 nominal `/'nɒmɪnl/` 名义上的，象征性的，名词性的
 
@@ -11765,13 +11645,13 @@ normalization `/ˌnɔːməlaɪˈzeɪʃən/` 正常化，标准化
 
 northbridge `/'nɔːθbrɪdʒ/` （计算机）北桥
 
-nosy `/'nəʊzɪ/` 1 showing too much curiosity about other people's affairs. 2 pry into something.
+nosy `/'nəʊzɪ/` adj. 好管闲事的；爱追问的
 
+> 1 showing too much curiosity about other people's affairs. 2 pry into something.
+>
 > Ex: stop being so nosy!
 >
 > Ex: they don't nosy into your business like some people.
->
-> adj. 好管闲事的；爱追问的
 
 notable `/'nəʊtəbl/` 显著的，著名的，名人
 
@@ -11783,11 +11663,11 @@ notice `/ˈnəʊtɪs/` 通知，公告，注意，关注，通知书
 
 notion `/'nəʊʃn/` 观念，概念，想法，主张
 
-notorious `/nəʊˈtɔːriəs/` famous or well known, typically for some bad quality or deed.
+notorious `/nəʊˈtɔːriəs/` adj. 臭名昭著的
 
-> Ex: Los Angeles is notorious for its smog.
+> famous or well known, typically for some bad quality or deed.
 >
-> adj. 臭名昭著的
+> Ex: Los Angeles is notorious for its smog.
 
 notwithstanding `/ˌnɒtwɪθ'stændɪŋ/` 虽然，尽管
 
@@ -11835,25 +11715,21 @@ nuance `/ˈnjuːɑːns/` 细微差别
 
 nuclei `/ˈnjuːklɪaɪ/` 核心，原子核，细胞核
 
-nudge `/nʌdʒ/` 1 prod (someone) gently with one's elbow in order to attract attention. 2 a light touch or push.
+nudge `/nʌdʒ/` vt. 轻推；轻触；推进；vi. 轻推；n. 轻推
 
+> 1 prod (someone) gently with one's elbow in order to attract attention. 2 a light touch or push.
+>
 > Ex: people were nudging each other and pointing at me.
 >
 > Ex: she appreciated the nudge to her memory.
->
-> vt. 轻推；轻触；推进
->
-> vi. 轻推
->
-> n. 轻推
 
-nuisance `/ˈnjuːsns/` 1 a person or thing causing inconvenience or annoyance.
+nuisance `/ˈnjuːsns/` n.讨厌的人；讨厌的东西；伤害
 
+> 1 a person or thing causing inconvenience or annoyance.
+>
 > Ex: it's a nuisance having all those people clomping through the house.
 >
 > Ex: I hope you're not going to make a nuisance of yourself.
->
-> n.讨厌的人；讨厌的东西；伤害
 
 nullify `/'nʌlɪfaɪ/` 使无效，废除，取消
 
@@ -11865,9 +11741,11 @@ numerator `/'njuːməreɪtə(r)/` （数学）分子（除法）
 
 numerous `/'njuːmərəs/` 为数众多的，许多
 
-nutrition `/nuˈtrɪʃ(ə)n/` the process of providing or obtaining the food necessary for health and growth.
+nurture `/'nɜːtʃə(r)/` vt. 养育；培育；照顾；扶持；n. 养育；培育；环境因素
 
-> n. 营养
+nutrition `/nuˈtrɪʃ(ə)n/` n. 营养
+
+> the process of providing or obtaining the food necessary for health and growth.
 >
 > SYN: organic process, biological process, food, nutrient, science, scientific discipline
 >
@@ -11913,11 +11791,9 @@ oatmeal `/'əʊtmiːl/` 燕麦片，燕麦粥，浅棕色
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
-obey `/ə(ʊ)ˈbeɪ/` submit to the authority of (someone) or comply with (a law).
+obey `/ə(ʊ)ˈbeɪ/` vt. & vi. 服从；听从；vt. 遵守；遵循
 
-> vt. & vi. 服从；听从
->
-> vt. 遵守；遵循
+> submit to the authority of (someone) or comply with (a law).
 >
 > SYN: adjust, conform, adapt
 >
@@ -11925,33 +11801,37 @@ obey `/ə(ʊ)ˈbeɪ/` submit to the authority of (someone) or comply with (a law
 >
 > Ex: enjoin sb.to obey the rules.
 >
-> DERIVATIVES: obedience `/ə'biːdiəns/` 服从，顺从
+> DERIVS: obedience `/ə'biːdiəns/` 服从，顺从
 
 obese `/əʊ'biːs/` 极肥胖的
 
-obesity `/ə(ʊ)ˈbiːsɪti/` 1 the state or condition of being very fat or overweight.
+obesity `/ə(ʊ)ˈbiːsɪti/` n.肥胖；肥大
 
-> n.肥胖；肥大
+> 1 the state or condition of being very fat or overweight.
 >
 > Ex: the problem of obesity among children.
 
 obfuscate `/'ɒbfʌskeɪt/` 弄暗，使模糊，使困惑
 
-objection `/əb'dʒekʃn/` 反对，异议
+objection `/əb'dʒekʃn/` n. 反对，异议；厌恶；反对的理由
 
-obligation `/ˌɒblɪˈɡeɪʃn/` 1 an act or course of action to which a person is morally or legally bound; a duty or commitment.
+obligation `/ˌɒblɪˈɡeɪʃn/` n. 义务；责任
 
-> Ex: I have an obligation to look after her.
+> 1 an act or course of action to which a person is morally or legally bound; a duty or commitment.
 >
-> n. 义务；责任
+> Ex: I have an obligation to look after her. 
 
 oblige `/əˈblaɪdʒ/` 责任，义务，强迫，迫使，帮助，效劳
 
 oblivious `/ə'blɪviəs/` 没注意到，健忘的
 
-obscure `/əbˈskjʊr/` 隐藏，遮掩，模糊的，难解的，不著名的，微暗的，使...模糊，隐藏
+obscene `/əb'siːn/` adj. 淫秽的；猥亵的
 
-obscurity `/əb'skjʊərəti/` 昏暗，晦涩，不出名，不明
+obscure `/əbˈskjʊr/` adj. 难解的；不著名的；微暗的；[语音学]轻音的；v. 使 ... 模糊；隐藏；变模糊；n. 模糊不清的东西
+
+> DERIVS: obscuring `/əb'skjʊə(r)/` adj. 难解的；不著名的；微暗的；[语音学]轻音的；v. 使 ... 模糊；隐藏；变模糊；n. 模糊不清的东西
+>
+> DERIVS: obscurity `/əb'skjʊərəti/` n. 昏暗，晦涩，不出名，不明
 
 obsessed `/əbˈsest/` 心神不宁的，着迷的，困扰的
 
@@ -11983,13 +11863,15 @@ obviously `/'ɒbviəsli/` 显然的
 
 occasion `/əˈkeɪʒ(ə)n/` 场合，时刻，特殊事件，时机，引起
 
-occasional `/əˈkeɪʒən(ə)l/` 1 occurring, appearing, or done infrequently and irregularly.
+occasional `/əˈkeɪʒən(ə)l/` adj.偶然的；临时的；不时的
 
-> Ex: the occasional car went by but no taxis.
+> 1 occurring, appearing, or done infrequently and irregularly.
 >
-> adj.偶然的；临时的；不时的
+> Ex: the occasional car went by but no taxis. 
 
 occupation `/ˌɒkju'peɪʃn/` 职业，占有，消遣，居住
+
+> DERIVS: occupational `/ˌɒkjuˈpeɪʃənl/` adj. 职业的,职业造成的；adv. 职业引起地
 
 occupier `/'ɒkjupaɪə(r)/` 占有者，居住者，占领军
 
@@ -12083,7 +11965,7 @@ omega `/'əʊmɪɡə/` 希腊字符（Ω）
 
 omit `/ə(ʊ)ˈmɪt/` 删掉，漏掉，省略，遗漏
 
-omitted `/əʊ'mɪtɪd/` 省略了的
+> DERIVS: omitted `/əʊ'mɪtɪd/` 省略了的
 
 omnipotent `/ɒm'nɪpətənt/` 全能的，无所不能的
 
@@ -12103,11 +11985,11 @@ ongoing `/'ɒnɡəʊɪŋ/` 进行的，不断发展的
 
 onset `/ˈɒnset/` 开端，发生，开始，攻击，袭击
 
-onslaught `/ˈɒnslɔːt/` a fierce or destructive attack.
+onslaught `/ˈɒnslɔːt/` n.猛攻；攻击；抨击
 
-> Ex: a series of onslaughts on the citadel.
+> a fierce or destructive attack.
 >
-> n.猛攻；攻击；抨击
+> Ex: a series of onslaughts on the citadel. 
 
 onto `/'ɒntə/` 到...上
 
@@ -12127,11 +12009,11 @@ operand `/ˈɒpərænd/` （计算机）操作数，（计算机）操作对象�
 
 operational `/ˌɒpə'reɪʃənl/` 操作的，运作的，可用的，作战的
 
-opponent `/əˈpəʊnənt/` someone who competes with or opposes another in a contest, game, or argument.
+opine `/əʊ'paɪn/` v. 认为；想
 
-> n.对手；反对者；敌手
->
-> adj.反对的；敌对的
+opponent `/əˈpəʊnənt/` n.对手；反对者；敌手；adj.反对的；敌对的
+
+> someone who competes with or opposes another in a contest, game, or argument.
 >
 > Ex: he beat his opponent by a landslide margin.
 
@@ -12197,11 +12079,11 @@ order `/ˈɔːdə/` 顺序，条理，秩序，命令
 
 ordinance `/ˈɔːdɪnəns/` 法令，条例，指示，训令
 
-ordinary `/ˈɔːdnri/` 1 with no special or distinctive features; normal. 2 (especially of a judge or bishop) exercising authority by virtue of office and not by deputation. 3 (the ordinary) what is commonplace or standard. 4 a judge who exercises authority by virtue of office and not by deputation. 5 (the Ordinary) a member of the clergy, such as an archbishop in a province or a bishop in a diocese, with immediate jurisdiction. 6 (ordinary) those parts of a Roman Catholic service, especially the Mass, which do not vary from day to day. 7 any of the simplest principal charges used in coats of arms (especially chief, pale, bend, fess, bar, chevron, cross, saltire). 8 short for ordinary share. 9 a meal provided at a fixed time and price at an inn. 10 a penny-farthing bicycle.
+ordinary `/ˈɔːdnri/` adj. 平凡的；普通的；平淡的
 
-> Ex: it was just an ordinary evening.
+> 1 with no special or distinctive features; normal. 2 (especially of a judge or bishop) exercising authority by virtue of office and not by deputation. 3 (the ordinary) what is commonplace or standard. 4 a judge who exercises authority by virtue of office and not by deputation. 5 (the Ordinary) a member of the clergy, such as an archbishop in a province or a bishop in a diocese, with immediate jurisdiction. 6 (ordinary) those parts of a Roman Catholic service, especially the Mass, which do not vary from day to day. 7 any of the simplest principal charges used in coats of arms (especially chief, pale, bend, fess, bar, chevron, cross, saltire). 8 short for ordinary share. 9 a meal provided at a fixed time and price at an inn. 10 a penny-farthing bicycle.
 >
-> adj. 平凡的；普通的；平淡的
+> Ex: it was just an ordinary evening. 
 
 ore `/ɔː(r)/` 矿石，矿砂
 
@@ -12253,9 +12135,9 @@ ourselves `/ɑː'selvz/` 我们自己
 
 oust `/aʊst/` 革职，罢免，剥夺
 
-outbound `/'aʊtbaʊnd/` that is going out or leaving.
+outbound `/'aʊtbaʊnd/` adj. 开往外地的,开往外国的
 
-> adj. 开往外地的,开往外国的
+> that is going out or leaving.
 >
 > SYN: outgoing
 >
@@ -12265,11 +12147,9 @@ outbound `/'aʊtbaʊnd/` that is going out or leaving.
 
 outbreak `/'aʊtbreɪk/` 爆发，暴动
 
-outcast `/'aʊtkɑːst/` 1 a person who has been rejected or ostracized by their society or social group. 2 (of a person) rejected or ostracized.
+outcast `/'aʊtkɑːst/` n. 被驱逐的人；adj. 被逐出的；被遗弃的；无家可归的
 
-> n. 被驱逐的人
->
-> adj. 被逐出的；被遗弃的；无家可归的
+> 1 a person who has been rejected or ostracized by their society or social group. 2 (of a person) rejected or ostracized.
 >
 > Ex: she went from trusted pal to ostracized outcast overnight.
 >
@@ -12283,6 +12163,8 @@ outfit `/'aʊtfɪt/` 配备，供应，用具，机构
 
 outgrow `/ˌaʊtˈɡrəʊ/` 长大，长的比...大
 
+outlaw `/'aʊtlɔː/` n. 被剥夺法律保护的人；逃犯；反叛者；v. 使 ... 失去法律保护；将 ... 逐出社会；宣告非法
+
 outlet `/ˈaʊtlet/` 出口，出路，销路，电源插座，宣泄口
 
 outline `/'aʊtlaɪn/` 大纲，轮廓，概述，画出轮廓
@@ -12293,17 +12175,17 @@ outperform `/ˌaʊtpə'fɔːm/` 优于，超额完成，过度执行
 
 outrage `/'aʊtreɪdʒ/` 暴行，凌辱，义愤
 
-outrageous `/aʊtˈreɪdʒəs/` 1 shockingly bad or excessive. 2 very bold and unusual and rather shocking.
+outrageous `/aʊtˈreɪdʒəs/` adj.过分的；骇人的
 
-> adj.过分的；骇人的
+> 1 shockingly bad or excessive. 2 very bold and unusual and rather shocking.
 
-outshine `/ˌaʊtˈʃʌɪn/` 1 shine more brightly than. 2 be much better than (someone) in a particular area.
+outshine `/ˌaʊtˈʃʌɪn/` v.优于；使相形见拙；光亮强过；发光
 
+> 1 shine more brightly than. 2 be much better than (someone) in a particular area.
+>
 > Ex: a supernova would outshine all the other stars in its galaxy.
 >
 > Ex: it is a shame when a mother outshines a daughter.
->
-> v.优于；使相形见拙；光亮强过；发光
 
 outside `/ˌaʊtˈsaɪd /` 外部，外表，外面
 
@@ -12315,13 +12197,13 @@ outspoken `/aʊtˈspəʊkən/` 直率，坦诚，直言不讳
 
 outward `/'aʊtwəd/` 向外的，在外，表面
 
-outweigh `/ˌaʊtˈweɪ/` 1 be heavier than. 2 weigh more heavily
+outweigh `/ˌaʊtˈweɪ/` vt. 比...重（在重量上）；比...重要；比...有价值
 
+> 1 be heavier than. 2 weigh more heavily
+>
 > SYN: surpass, outstrip, outmatch, outgo, exceed, outdo, surmount
 >
-> Ex: The merits of your plan outweigh the defects.
->
-> vt. 比...重（在重量上）；比...重要；比...有价值
+> Ex: The merits of your plan outweigh the defects. 
 
 ### ov
 
@@ -12337,19 +12219,19 @@ overdetermined `/'əʊvədɪ'tɜːmɪnd/` 过于武断的，超定的
 
 overdrawn `/ˌəʊvə'drɔːn/` 张拉过度的，透支的，夸张的
 
+overdue `/ˌəʊvəˈdjuː/` adj. 迟到的；过期的；未兑的
+
 overemphasize `/ˌəʊvər'emfəsaɪz/` 过分强调
 
-overestimate `/ˌəʊvər'estɪmeɪt/` 1 form too high or favourable an estimate of. 2 an excessively high estimate.
+overestimate `/ˌəʊvər'estɪmeɪt/` v. 过高估计；过高出价；n. 估计过高；评价过高；出价过高
 
+> 1 form too high or favourable an estimate of. 2 an excessively high estimate.
+>
 > Ex: his influence cannot be overestimated.
 >
 > Ex: the figure of 30 percent was an overestimate.
 > 
 > Ex: Readers may be annoyed if you overestimate their knowledge.
->
-> v. 过高估计；过高出价 
->
-> n. 估计过高；评价过高；出价过高
 
 overflow `/ˌəʊvəˈfləʊ/` 溢出，挤满
 
@@ -12381,7 +12263,9 @@ oversee `/ˌəʊvəˈsiː/` 监督，监视，偷看到
 
 overseer `/'əʊvəsɪə(r)/` 监督人，工头
 
-oversight `/'əʊvəsaɪt/` 疏忽，失察，监管，看管
+overshadow `/ˌəʊvə'ʃædəʊ/` v. 遮阴；使不快乐或减少乐趣；使黯然失色
+
+oversight `/'əʊvəsaɪt/` n. 疏忽，失察，监管，看管
 
 oversimplification `/ˌəʊvəˌsɪmplɪfɪˈkeɪʃn/` 过于简化
 
@@ -12427,6 +12311,8 @@ oyster `/ˈɔɪstə(r)/` 牡蛎，生蚝
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
+ozone `/ˈəʊzəʊn/` n. 臭氧；新鲜的空气
+
 ---
 
 ## P
@@ -12455,8 +12341,10 @@ pairwise `/peər'waɪz/` 对偶的，成对的
 
 palace `/'pæləs/` 宫殿，豪华住宅
 
-pale `/peɪl/` 1 light in color or shade; containing little color or pigment. 2 inferior or unimpressive. 3 become pale in one's face from shock or fear. 4 seem or become less important.
+pale `/peɪl/` adj. 苍白的；灰白的；暗淡的；无力的；vi. 变苍白；变黯淡；相形见绌；n. 栅栏
 
+> 1 light in color or shade; containing little color or pigment. 2 inferior or unimpressive. 3 become pale in one's face from shock or fear. 4 seem or become less important.
+>
 > Ex: choose pale floral patterns for walls.
 >
 > Ex: the new cheese is a pale imitation of continental cheeses.
@@ -12464,12 +12352,6 @@ pale `/peɪl/` 1 light in color or shade; containing little color or pigment. 2 
 > Ex: I paled at the thought of what she might say.
 >
 > Ex: all else pales by comparison.
->
-> adj. 苍白的；灰白的；暗淡的；无力的
->
-> vi. 变苍白；变黯淡；相形见绌
->
-> n. 栅栏
 
 palette `/ˈpælət/` 调色板
 
@@ -12483,7 +12365,9 @@ palpable `/'pælpəbl/` 易察觉的，可摸到的，明显的
 
 paltry `/'pɔːltri/` 微不足道的，琐碎的
 
-pampered `/'pæmpəd/` 饮食过量的，娇惯的
+pamper `/ˈpæmpə(r)/` vt. 纵容；宠；娇养
+
+> DERIVS: pampered `/'pæmpəd/` 饮食过量的，娇惯的
 
 pamphlet `/'pæmflət/` 小册子
 
@@ -12499,11 +12383,11 @@ panned `/pænd/` 严厉批评，抨击，淘金
 
 pans `/pænz/` 平底锅
 
-paparazzi `/ˌpɑ:pə'rɑ:tsi:/` 1 a freelance photographer who pursues celebrities to get photographs of them.
+paparazzi `/ˌpɑ:pə'rɑ:tsi:/` n. 狗仔队
 
-> Ex: she inclined her head graciously, permitting the paparazzi to photograph her.
+> 1 a freelance photographer who pursues celebrities to get photographs of them.
 >
-> n. 狗仔队
+> Ex: she inclined her head graciously, permitting the paparazzi to photograph her.
 
 par `/pɑː(r)/` 同等，等位，常态，票面价值，平常的，标准的
 
@@ -12551,9 +12435,9 @@ parental `/pə'rentl/` 父母的
 
 parenthesis `/pə'renθəsɪs/` 圆括号，插入语
 
-parenthood `/ˈpɛːrənthʊd/` the state of being a parent and the responsibilities involved.
+parenthood `/ˈpɛːrənthʊd/` n. 父母身份;双亲立场
 
-> n. 父母身份;双亲立场
+> the state of being a parent and the responsibilities involved.
 >
 > SYN: adulthood
 >
@@ -12573,11 +12457,11 @@ parliamentary `/ˌpɑːlə'mentri/` 议会的，国会的
 
 parsimonious `/ˌpɑːsɪ'məʊniəs/` 极度节俭的，吝啬的
 
-parsimony `/'pɑːsɪməni/` extreme unwillingness to spend money or use resources.
+parsimony `/'pɑːsɪməni/` n. 过度节俭；吝啬；简约性
 
-> Ex: Capitals are increased by parsimony, and dininished by prodigality and misconduct.
+> extreme unwillingness to spend money or use resources.
 >
-> n. 过度节俭；吝啬；简约性
+> Ex: Capitals are increased by parsimony, and dininished by prodigality and misconduct. 
 
 partake `/pɑː'teɪk/` 参与，分担，分享，吃喝，参与
 
@@ -12585,17 +12469,15 @@ partial `/ˈpɑːʃl/` 部分，不完全的，偏爱
 
 partially `/'pɑːʃəli/` 偏特化，部分地，不公平地
 
-participate `/pɑːˈtɪsɪpeɪt/` 1 take part in an action or endeavor. 2 (participate of) have or possess (a particular quality).
+participate `/pɑːˈtɪsɪpeɪt/` vi.参加；参与；vt.分享
 
-> vi.参加；参与
->
-> vt.分享
+> 1 take part in an action or endeavor. 2 (participate of) have or possess (a particular quality).
 >
 > Ex: both members participate of harmony.
 >
-> DERIVATIVES: participant `/pɑː'tɪsɪpənt/` 参与者
+> DERIVS: participant `/pɑː'tɪsɪpənt/` 参与者
 >
-> DERIVATIVES: participation `/pɑːˌtɪsɪ'peɪʃn/` 参加，参与
+> DERIVS: participation `/pɑːˌtɪsɪ'peɪʃn/` 参加，参与
 
 participle `/pɑː'tɪsɪpl/` 分词
 
@@ -12623,7 +12505,7 @@ pat `/pæt/` 轻拍，抚摸，适合的
 
 patch `/pætʃ/` 修补，掩饰，解决，补丁，眼罩，小片，膏药
 
-patent `/ˈpætnt/` 专利权，专利证书
+patent `/ˈpætnt/` vt. 取得…的专利权；授予专利；adj. 专利的；新奇的；显然的；n. 专利权；专利品；执照
 
 paternal `/pə'tɜːnl/` 父亲的，似父亲的，得自父亲的
 
@@ -12697,13 +12579,11 @@ pecuniary `/pɪ'kjuːniəri/` 金钱的，金钱上的
 
 pedagogic `/ˌpedəˈɡɒdʒɪk/` 教育学的
 
-pedestrian `/pə'destriən/` 1 a person walking rather than traveling in a vehicle. 2 lacking inspiration or excitement; dull.
+pedestrian `/pə'destriən/` adj. 徒步的；缺乏想像的；n. 行人
 
+> 1 a person walking rather than traveling in a vehicle. 2 lacking inspiration or excitement; dull.
+>
 > Ex: a pedestrian bridge.
->
-> adj. 徒步的；缺乏想像的
->
-> n. 行人
 
 pedestrianization `/pə'destriənaɪz/` 使(街道等)无车辆行驶，使成为行人专用区，步行
 
@@ -12717,13 +12597,13 @@ peeve `/piːv/` 气恼，怨恨
 
 peltry `/'peltrɪ/` 生皮，毛皮类
 
-penalty `/ˈpɛnlti/` 1 a punishment imposed for breaking a law, rule, or contract. 2 (in sports and games) a handicap imposed on a player or team for infringement of rules.
+penalty `/ˈpɛnlti/` n.处罚；惩罚；不利；罚球
 
+> 1 a punishment imposed for breaking a law, rule, or contract. 2 (in sports and games) a handicap imposed on a player or team for infringement of rules.
+>
 > Ex: the charge carries a maximum penalty of ten years' imprisonment.
 >
 > Ex: she only incurred 6.40 penalties for time on cross-country.
->
-> n.处罚；惩罚；不利；罚球
 
 pence `/pens/` 便士
 
@@ -12751,15 +12631,15 @@ perceive `/pə'siːv/` 注意到，觉察到，认为，理解
 
 perceptible `/pə'septəbl/` 可察觉的，看得见的
 
-perception `/pə'sepʃn/` 1 the ability to see, hear, or become aware of something through the senses. 2 the way in which something is regarded, understood, or interpreted.
+perception `/pə'sepʃn/` n. 观念；洞察力；认识能力
 
+> 1 the ability to see, hear, or become aware of something through the senses. 2 the way in which something is regarded, understood, or interpreted.
+>
 > Ex: the normal limits to human perception.
 >
 > Ex: we need to challenge many popular perceptions of old age.
 > 
 > Ex: Most important, keeping a commonplace book will give you new perceptions and ideas and feelings.
->
-> n. 观念；洞察力；认识能力
 
 perch `/pɜːtʃ/` 栖息，就位，停留，鲈鱼
 
@@ -12777,11 +12657,11 @@ perfectly `/'pɜːfɪktli/` 完全地，无瑕疵地，完整地，完美地，�
 
 perform `/pəˈfɔːm/` 做，履行，执行，表演
 
-perfume `/ˈpəːfjuːm/` 1 a fragrant liquid typically made from essential oils extracted from flowers and spices, used to give a pleasant smell to one's body. 2 give a pleasant smell to.
+perfume `/ˈpəːfjuːm/` n.香水；香气; vt.洒香水于；使香气弥漫
 
-> Ex: I caught a whiff of her fresh lemony perfume.
+> 1 a fragrant liquid typically made from essential oils extracted from flowers and spices, used to give a pleasant smell to one's body. 2 give a pleasant smell to.
 >
-> n.香水；香气; vt.洒香水于；使香气弥漫
+> Ex: I caught a whiff of her fresh lemony perfume.
 
 perhaps `/pəˈhæps/` 可能，大概，也许
 
@@ -12795,17 +12675,15 @@ periodically `/ˌpɪəri'ɒdɪkli/` 周期性的，定期的
 
 peripheral `/pə'rɪfərəl/` （计算机）外围设备，外围的，不重要的
 
-perish `/ˈpɛrɪʃ/` 1 literary die, especially in a violent or sudden way. 2 (of rubber, food, etc.) lose its normal qualities; rot or decay. 3 (be perished) be suffering from extreme cold.
+perish `/ˈpɛrɪʃ/` vi.毁灭；消失；腐烂；vt.毁灭；使死亡
 
+> 1 literary die, especially in a violent or sudden way. 2 (of rubber, food, etc.) lose its normal qualities; rot or decay. 3 (be perished) be suffering from extreme cold.
+>
 > Ex: a great part of his army perished of hunger and disease.
 >
 > Ex: an abandoned tyre whose rubber had perished.
 >
 > Ex: I was perished with cold before the end of the day.
->
-> vi.毁灭；消失；腐烂
->
-> vt.毁灭；使死亡
 
 perishable `/ˈperɪʃəbl/` 易坏的，易变质的，易腐烂的
 
@@ -12828,6 +12706,8 @@ pernicious `/pə'nɪʃəs/` 有害的，恶性的
 perpendicular `/ˌpɜːpən'dɪkjələ(r)/` 垂直的，直立的，陡峭的
 
 perpetration `/ˌpɜːpə'treɪʃn/` 犯罪，做坏事
+
+perpetrator `/'pɜːpətreɪtə(r)/` n. 犯人，犯罪嫌疑人；作恶之人
 
 perpetual `/pə'petʃuəl/` 永久的，永恒的
 
@@ -12873,11 +12753,11 @@ pesky `/'peski/` 讨厌的，烦人的
 
 pessimistic `/ˌpesɪˈmɪstɪk/` 悲观的
 
-pester `/'pestə(r)/` trouble or annoy (someone) with frequent or persistent requests or interruptions.
+pester `/'pestə(r)/` v. 纠缠；使苦恼
 
-> Ex: she constantly pestered him with telephone calls.
+> trouble or annoy (someone) with frequent or persistent requests or interruptions.
 >
-> v. 纠缠；使苦恼
+> Ex: she constantly pestered him with telephone calls. 
 
 pestilence `/ˈpestɪləns/` 瘟疫
 
@@ -12913,6 +12793,8 @@ pewter `/'pjuːtə(r)/` 铅锡锑合金，铅锡锑合金器皿
 
 [回到P](#P)--[回到顶部](#英汉词典)
 
+phage `/feɪdʒ/` n. [医]噬菌体
+
 phantom `/'fæntəm/` 幻影，幽灵，错觉的
 
 pharmaceutical `/ˌfɑːmə'suːtɪkl/` 药品，成药，制药的，配药的
@@ -12923,6 +12805,8 @@ phenomenon `/fəˈnɒmɪnən/` 现象，杰出的人，奇人，奇事
 
 philadelphia `/ˌfilə'delfjə/` （美国）费城
 
+philanthropic `/ˌfɪlən'θrɒpɪk/` adj. 博爱的；慈善的
+
 philology `/fɪˈlɒlədʒi/` 语言学，文献学
 
 philosopher `/fə'lɒsəfə(r)/` 哲学家，思想家
@@ -12931,39 +12815,33 @@ philosophy `/fəˈlɒsəfi/` 哲学，思想体系，基本原理，准则
 
 phonetics `/fəˈnetɪks/` 语音学，发音学
 
-phony `/ˈfəʊni/` 1 not genuine; fraudulent. 2 a fraudulent person or thing.
+phony `/ˈfəʊni/` adj. 假的；伪造的；欺骗的；n. 假货；赝品；骗子；suf. 表声音
 
+> 1 not genuine; fraudulent. 2 a fraudulent person or thing.
+>
 > Ex: phone cruise-ship job offers.
->
-> adj. 假的；伪造的；欺骗的
->
-> n. 假货；赝品；骗子
->
-> suf. 表声音
 
 phishing `/'fɪʃɪŋ/` 网络钓鱼
 
 photosphere `/photosphere/` 光球，光球层
 
-phrase `/freɪz/` 1 a small group of words standing together as a conceptual unit, typically forming a component of a clause. 2 put into a particular form of words.
+phrase `/freɪz/` n. 短语；习语；措辞；[音]乐句；vt. 措词；将(乐曲)分成乐句
 
+> 1 a small group of words standing together as a conceptual unit, typically forming a component of a clause. 2 put into a particular form of words.
+>
 > Ex: 'to improve standards' is the key phrase here.
 > 
 > Ex: it's important to phrase the question correctly.
-> 
-> n. 短语；习语；措辞；[音]乐句
-> 
-> vt. 措词；将(乐曲)分成乐句
 
 physically `/'fɪzɪkli/` 身体上地，实际上
 
 physician `/fɪ'zɪʃn/` 内科医生
 
-physique `/fɪ'ziːk/` the form, size, and development of a person's body.
+physique `/fɪ'ziːk/` n. 体格；体形
 
-> Ex: a sturdy, muscular physique.
+> the form, size, and development of a person's body.
 >
-> n. 体格；体形
+> Ex: a sturdy, muscular physique. 
 
 ### pi
 
@@ -13047,15 +12925,13 @@ pixel `/'pɪksl/` 像素
 
 [回到P](#P)--[回到顶部](#英汉词典)
 
-plague `/pleɪɡ/` 1 (usually the plague) a contagious bacterial disease characterized by fever and delirium, typically with the formation of buboes (bubonic plague) and sometimes infection of the lungs (pneumonic plague). 2 an unusually large number of insects or animals infesting a place and causing damage. 3 a thing causing trouble or irritation. 4 cause continual trouble or distress to.
+plague `/pleɪɡ/` n. 瘟疫；麻烦；灾祸；vt. 折磨；烦扰；造成麻烦
 
+> 1 (usually the plague) a contagious bacterial disease characterized by fever and delirium, typically with the formation of buboes (bubonic plague) and sometimes infection of the lungs (pneumonic plague). 2 an unusually large number of insects or animals infesting a place and causing damage. 3 a thing causing trouble or irritation. 4 cause continual trouble or distress to.
+>
 > Ex: diseases like smallpox wiped out the indigenous people in a succession of plagues.
 >
 > Ex: he has been plagued by ill health.
->
-> n. 瘟疫；麻烦；灾祸
->
-> vt. 折磨；烦扰；造成麻烦
 
 plain `/pleɪn/` 朴素的，清晰的，平原，广阔的地区，完全的，存粹的
 
@@ -13151,23 +13027,25 @@ poem `/ˈpəʊɪm/` 诗
 
 poetry `/'pəʊətri/` 诗歌，诗意，诗集
 
-poignant `/ˈpɔɪnjənt/` evoking a keen sense of sadness or regret.
+poignant `/ˈpɔɪnjənt/` adj. 悲伤的；痛切的；严厉的；尖锐的；剧烈的；浓烈的
 
-> Ex: a poignant reminder of the passing of time.
+> evoking a keen sense of sadness or regret.
 >
-> adj. 悲伤的；痛切的；严厉的；尖锐的；剧烈的；浓烈的
+> Ex: a poignant reminder of the passing of time. 
 
 poise `/pɔɪz/` 平衡，姿态，镇静，做准备，盘旋
 
 poison `/'pɔɪzn/` 中毒，毒药，毒害
 
+polar `/'pəʊlə(r)/` adj. 两极的；对立的；n. 极线；极性
+
 pole `/pəʊl/` 电线杆，电极，磁极，（行星的）极
 
 policy `/ˈpɒlɪsi/` 政策，原则，保险单，保险合同
 
-polio `/ˈpəʊlɪəʊ/` an acute viral disease marked by inflammation of nerve cells of the brain stem and spinal cord
+polio `/ˈpəʊlɪəʊ/` n. <医>脊髓灰质炎,小儿麻痹症
 
-> n. <医>脊髓灰质炎,小儿麻痹症
+> an acute viral disease marked by inflammation of nerve cells of the brain stem and spinal cord
 >
 > SYN: infectious disease
 >
@@ -13180,6 +13058,8 @@ polite `/pə'laɪt/` 有礼貌的，客气的，有教养的，文雅的
 poll `/pəʊl/` 投票，民意调查
 
 pollen `/ˈpɒlən/` 花粉
+
+pollination `/ˌpɒlə'neɪʃn/` n. 授粉
 
 pollute `/pə'luːt/` 污染，弄脏
 
@@ -13231,11 +13111,11 @@ portfolio `/pɔːt'fəʊliəʊ/` 文件夹，作品集，公文包，投资组�
 
 portion `/ˈpɔːʃ(ə)n/` 一部分，命运，份额，分担的责任
 
-portray `/pɔːˈtreɪ/` depict (someone or something) in a work of art or literature.
+portray `/pɔːˈtreɪ/` vt.画像；描写；描绘
 
-> Ex: the ineffectual Oxbridge dons portrayed by Evelyn Waugh.
+> depict (someone or something) in a work of art or literature.
 >
-> vt.画像；描写；描绘
+> Ex: the ineffectual Oxbridge dons portrayed by Evelyn Waugh. 
 
 pose `/pəʊz/` 姿态，姿势，造成，提出，假装
 
@@ -13243,21 +13123,19 @@ poset `/'pəʊzet/` 部分有序集
 
 positional `/pə'zɪʃənəl/` 位置的，地位的，阵地的
 
-positive `/'pɒzətɪv/` 
+positive `/'pɒzətɪv/` adj. 确实的，明确的, 积极的；肯定的, 表现得有信心和有希望的，确信的, 〈数〉〈电〉正的，阳性的, 完全的；纯粹的；n. 〈语〉原级形容词, 确实；正量，正数, 正片
 
 > n. 1 a film showing a photographic image whose tones correspond to those of the original subject.
 >
 > adj. 1 characterized by or displaying affirmation or acceptance or certainty etc. 2 having a positive electric charge. 3 involving advantage or good. 4 indicating existence or presence of a suspected condition or pathogen. 5 formally laid down or imposed. 6 impossible to deny or disprove. 7 of or relating to positivism. 8 reckoned, situated or tending in the direction which naturally or arbitrarily is taken to indicate increase or progress or onward motion. 9 greater than zero. 10 marked by excessive confidence. 11 persuaded of; very sure.
->
-> adj. 确实的，明确的, 积极的；肯定的, 表现得有信心和有希望的，确信的, 〈数〉〈电〉正的，阳性的, 完全的；纯粹的
->
-> n. 〈语〉原级形容词, 确实；正量，正数, 正片
 >
 > SYN: film, photographic film
 >
 > Ex: positive hydrotropism.
 >
 > Ex: positive orthogeotropism.
+>
+> DERIVS: positively `/ˈpɔzətɪvlɪ/` adv. 极其；绝对地；十分肯定地；坚定地
 
 possess `/pə'zes/` 拥有，持有，支配
 
@@ -13345,9 +13223,9 @@ preamble `/ˈpriːæmbl/` 序言，导言，前言，开场白
 
 precarious `/prɪ'keəriəs/` 不稳定的，不安全的
 
-precaution `/prɪˈkɔːʃn/` a measure taken in advance to prevent something dangerous, unpleasant, or inconvenient from happening.
+precaution `/prɪˈkɔːʃn/` n. 预防措施
 
-> n. 预防措施
+> a measure taken in advance to prevent something dangerous, unpleasant, or inconvenient from happening.
 >
 > SYN: measure, step, circumspection, caution, judiciousness
 >
@@ -13357,9 +13235,9 @@ precaution `/prɪˈkɔːʃn/` a measure taken in advance to prevent something da
 
 precede `/prɪ'siːd/` 在...之前，先于，领先
 
-precedence `/'presɪdəns/` 优先，居先
-
-precedent `/ˈpresɪdənt/` 先例，范例，惯例
+> DERIVS: precedence `/'presɪdəns/` 优先，居先
+>
+> DERIVS: precedent `/ˈpresɪdənt/` 先例，范例，惯例
 
 preceding `/prɪ'siːdɪŋ/` 在前的，先前的
 
@@ -13381,29 +13259,31 @@ precondition `/ˌpriːkən'dɪʃn/` 先决条件，前提
 
 precursor `/priˈkɜːsə(r)/` 先驱，先锋，前身
 
+predator `/'predətə(r)/` n. 食肉动物；掠夺者；（动物的）捕食性天敌
+
 predecessor `/'priːdɪsesə(r)/` 祖先，前任，原有事物
 
 predefined `/priːdɪ'faɪnd/` 预定义的，预先确定的
 
 predicate `/ˈprɛdɪkeɪt/` 断言，断定，宣布，谓词
 
-predict `/prɪ'dɪkt/` say or estimate that (a specified thing) will happen in the future or will be a consequence of something.
+predict `/prɪ'dɪkt/` vt. 预报，预言；预知；vi. 作出预言；作预料，作预报
 
-> vt. 预报，预言；预知
->
-> vi. 作出预言；作预料，作预报
+> say or estimate that (a specified thing) will happen in the future or will be a consequence of something.
 >
 > Ex: it is too early to predict a result.
 >
-> DERIVATIVES: predictable `/prɪˈdɪk.tə.bəl/` 可预言的，可预计的，可预料的
+> DERIVS: predictable `/prɪˈdɪk.tə.bəl/` 可预言的，可预计的，可预料的
 >
-> DERIVATIVES: prediction `/prɪˈdɪkʃn/` 预言，预言的事物
+> DERIVS: prediction `/prɪˈdɪkʃn/` 预言，预言的事物
 >
-> DERIVATIVES: predictive `/prɪ'dɪktɪv/` 预言的，预兆的，预测的
+> DERIVS: predictive `/prɪ'dɪktɪv/` 预言的，预兆的，预测的
 >
-> DERIVATIVES: predictor `/prɪ'dɪktə(r)/` 预言家
+> DERIVS: predictor `/prɪ'dɪktə(r)/` 预言家
 
 predilection `/ˌpriːdɪ'lekʃn/` 偏好，袒护
+
+predisposition `/ˌpriːdɪspə'zɪʃn/` 倾向，癖性，（易患病的）体质
 
 predominant `/prɪˈdɒmɪnənt/` 主要的，主导的，明显的，显著的
 
@@ -13439,6 +13319,8 @@ prelinker （计算机）预接头
 
 premature `/ˈpremətʃə(r)/` 早产的，早熟的，仓促的
 
+premiere `/ˈpremieə(r)/` n. (戏剧、电影等)首次公演
+
 premise `/'premɪs/` 假设，前进，预述
 
 premium `/'priːmiəm/` 额外费用，奖金，溢价，保险费
@@ -13451,27 +13333,27 @@ preparatory `/prɪ'pærətri/` 预备的，准备的，初步的
 
 prepend `/pri:'pend/` 预留，预置，预先准备
 
+preponderance `/prɪˈpɔndərəns/` n. 多数；优势；占优势
+
 preponderate `/prɪ'pɒndəreɪt/` 占优势，胜过
 
 preprocessing `/prep'rəʊsesɪŋ/` （计算机）预处理
 
 preprocessor `/priː'proʊsesə(r)/` （计算机）预处理器
 
-prerequisite `/priːˈrɛkwɪzɪt/` 1 a thing that is required as a prior condition for something else to happen or exist. 2 required as a prior condition.
+prerequisite `/priːˈrɛkwɪzɪt/` n.先决条件；前提；adj.作为前提的；必备的
 
-> n.先决条件；前提
->
-> adj.作为前提的；必备的
+> 1 a thing that is required as a prior condition for something else to happen or exist. 2 required as a prior condition.
 
 prerogative `/prɪ'rɒɡətɪv/` 特权，显著的优点
 
 prescribe `/prɪˈskraɪb/` 开药方，采用...疗法，命令，指示
 
-presence `/'prezns/` 1 the state or fact of existing, occurring, or being present. 
+presence `/'prezns/` n. 出席；存在；到场；【生】存在度
 
-> Ex: my presence in the flat made her happy.
+> 1 the state or fact of existing, occurring, or being present. 
 >
-> n. 出席；存在；到场；【生】存在度
+> Ex: my presence in the flat made her happy.
 
 present `/ˈpreznt/` 目前，提出，出席
 
@@ -13487,11 +13369,11 @@ preside `/prɪˈzaɪd/` 主持，担任
 
 pressing `/'presɪŋ/` 紧迫的，紧急的
 
-prestigious `/prɛˈstɪdʒəs/` 1 inspiring respect and admiration; having high status.
+prestigious `/prɛˈstɪdʒəs/` adj.享有声望的；声望很高的；<古>魔术的
 
-> Ex: a prestigious academic post.
+> 1 inspiring respect and admiration; having high status.
 >
-> adj.享有声望的；声望很高的；<古>魔术的
+> Ex: a prestigious academic post. 
 
 presumably `/prɪ'zjuːməbli/` 大概，据推测，可能
 
@@ -13507,13 +13389,15 @@ pretend `/prɪ'tend/` 假装，装作，自以为
 
 pretense `/prɪˈtens/` 虚假，借口，伪称，做作
 
+> DERIVS: pretension `/prɪˈtenʃn/` n. 自称，自命；自命不凡，自负；要求，主张；权力，资格
+
 prethreading `//` （计算机）预分配线程
 
 pretty `/'prɪti/` 相当的，漂亮的，好看的
 
-prevail `/prɪˈveɪl/` 1 prove more powerful or superior. 2 (prevail on/upon) persuade (someone) to do something.
+prevail `/prɪˈveɪl/` vi. 说服，劝说；诱使, 盛行，流行, 获胜；占优势
 
-> vi. 说服，劝说；诱使, 盛行，流行, 获胜；占优势
+> 1 prove more powerful or superior. 2 (prevail on/upon) persuade (someone) to do something.
 >
 > SYN: exist, be, continue, win, persuade
 >
@@ -13521,11 +13405,11 @@ prevail `/prɪˈveɪl/` 1 prove more powerful or superior. 2 (prevail on/upon) p
 >
 > Ex: she was prevailed upon to give an account of her work.
 >
-> DERIVATIVES: prevalence `/ˈprɛv(ə)ləns/` n.传播；流行；普及
+> DERIVS: prevalence `/ˈprɛv(ə)ləns/` n.传播；流行；普及
 >
-> DERIVATIVES: prevalent `/'prevələnt/` 流行的，普通的
+> DERIVS: prevalent `/'prevələnt/` 流行的，普通的
 >
-> DERIVATIVES: prevailing `/prɪ'veɪlɪŋ/` 盛行的，广泛流传的，主流的
+> DERIVS: prevailing `/prɪ'veɪlɪŋ/` 盛行的，广泛流传的，主流的
 
 previous `/ˈpriːviəs/` 先前的，过早的，以前
 
@@ -13535,8 +13419,10 @@ priest `/priːst/` 教士，神父，牧师，僧侣
 
 primality `/prɪ'mælɪtɪ/` 素性
 
-primary `/'praɪməri/` 1 of chief importance; principal. 2 earliest in time or order. 3 not derived from, caused by, or based on anything else; original. 4 (of an organic compound) having its functional group located on a carbon atom which is bonded to no more than one other carbon atom. 5 denoting or relating to organisms that produce organic compounds from simple substances such as water and carbon dioxide, typically by photosynthesis. 6 relating to or denoting the input side of a transformer or other inductive device. 7 (Primary) former term for Palaeozoic. 8 (also primary election) (in the US) a preliminary election to appoint delegates to a party conference or to select the candidates for a principal, especially presidential, election. 9 a primary colour. 10 (the Primary) the Palaeozoic era. 11 (in the US) run against (the current holder of a political office) in the preliminary election a party uses to select its candidate for the main election.
+primary `/'praɪməri/` adj. 首要的；主要的；初级的；初等教育的；根本的；初期的；n. 第一位；初选；最主要者；要素；原色；初级线圈
 
+> 1 of chief importance; principal. 2 earliest in time or order. 3 not derived from, caused by, or based on anything else; original. 4 (of an organic compound) having its functional group located on a carbon atom which is bonded to no more than one other carbon atom. 5 denoting or relating to organisms that produce organic compounds from simple substances such as water and carbon dioxide, typically by photosynthesis. 6 relating to or denoting the input side of a transformer or other inductive device. 7 (Primary) former term for Palaeozoic. 8 (also primary election) (in the US) a preliminary election to appoint delegates to a party conference or to select the candidates for a principal, especially presidential, election. 9 a primary colour. 10 (the Primary) the Palaeozoic era. 11 (in the US) run against (the current holder of a political office) in the preliminary election a party uses to select its candidate for the main election.
+>
 > SYN: basic, chief, dominant, first, foremost, fundamental, greatest, important, initial, leading, main, major, outstanding, paramount, prime, principal, supreme, top.
 >
 > Ex: the government's primary aim is to see significant reductions in unemployment.
@@ -13552,10 +13438,6 @@ primary `/'praɪməri/` 1 of chief importance; principal. 2 earliest in time or 
 > Ex: these two Republicans should win their primaries easily
 > 
 > Ex: I'm not primarying the president, and no one else should either unless we want to lose the White House.
->
-> adj. 首要的；主要的；初级的；初等教育的；根本的；初期的 
->
-> n. 第一位；初选；最主要者；要素；原色；初级线圈
 
 prime `/praɪm/` 首要的，典型的，最好的
 
@@ -13563,7 +13445,7 @@ primeval `/praɪ'miːv(ə)l/` 原始的，初期的
 
 primitive `/'prɪmətɪv/` 原始的，简陋的，原始人
 
-primitives `/p'rɪmɪtɪvz/` 基元，本原，原始人
+> DERIVS: primitives `/p'rɪmɪtɪvz/` 基元，本原，原始人
 
 primogeniture `/ˌpraɪməʊ'dʒenɪtʃə(r)/` 长子继承权
 
@@ -13623,15 +13505,15 @@ proclivity `/prəˈklɪvəti/` 倾向，癖好，怪癖
 
 proconsul `/prəʊ'kɒnsl/` 地方总督
 
-procrastinate `/prəʊˈkræstɪneɪt/` to keep delaying something that must be done, often because it is unpleasant or boring.
+procrastinate `/prəʊˈkræstɪneɪt/` vi. 拖延，耽搁
 
-> vi. 拖延，耽搁
+> to keep delaying something that must be done, often because it is unpleasant or boring.
 >
 > SYN(v.): delay, stall, drag one's feet, drag one's heels, shillyshally, dilly-dally, dillydally
 >
 > Ex: she procrastinated her return.
 >
-> DERIVATIVES: procrastination `/prəʊˌkræstɪ'neɪʃn/` 拖延，耽搁
+> DERIVS: procrastination `/prəʊˌkræstɪ'neɪʃn/` 拖延，耽搁
 
 procure `/prə'kjʊə(r)/` 获得，采办，拉皮条
 
@@ -13685,9 +13567,9 @@ prolific `/prə'lɪfɪk/` 多产的，作品丰富的
 
 prolog `/'prəʊlɒg/` 序言，序幕，开场白，开端
 
-prolong `/prə'lɒŋ/` extend the duration of.
+prolong `/prə'lɒŋ/` vt. 拖延；延长
 
-> vt. 拖延；延长
+> extend the duration of.
 >
 > SYN: lengthen, continue, uphold, carry on, bear on, preserve
 >
@@ -13705,8 +13587,10 @@ promise `/'prɒmɪs/` 允诺，承诺，发誓，预示，约定
 
 promissory `/'prɒmɪsərɪ/` 约定支付的
 
-promote `/prə'məʊt/` 1 support or actively encourage (a cause, venture, etc.); further the progress of. 2 raise (someone) to a higher position or rank.
+promote `/prə'məʊt/` vt. 促进；提升；升迁；发起；促销，推销
 
+> 1 support or actively encourage (a cause, venture, etc.); further the progress of. 2 raise (someone) to a higher position or rank.
+>
 > SYN(2): advance, elevate, exalt, give promotion, move up, prefer, raise, upgrade. 
 > 
 > SYN(1): back, boost, encourage, help, sponsor, support.
@@ -13716,20 +13600,20 @@ promote `/prə'məʊt/` 1 support or actively encourage (a cause, venture, etc.)
 > Ex: some regulation is still required to promote competition.
 >
 > Ex: she was promoted to General Manager.
+
+promotion `/prəˈməʊʃn/` n.提升；促进；晋升；促销
+
+> 1 activity that supports or encourages a cause, venture, or aim. 2 the publicizing of a product, organization, or venture so as to increase sales or public awareness. 3 the action of promoting someone or something to a higher position or rank or the fact of being so promoted.
 >
-> vt. 促进；提升；升迁；发起；促销，推销
-
-promotion `/prəˈməʊʃn/` 1 activity that supports or encourages a cause, venture, or aim. 2 the publicizing of a product, organization, or venture so as to increase sales or public awareness. 3 the action of promoting someone or something to a higher position or rank or the fact of being so promoted.
-
 > Ex: the promotion of cultural and racial diversity.
 >
 > Ex: majors designated for promotion to lieutenant colonel.
->
-> n.提升；促进；晋升；促销
 
 prompt `/prɒmpt/` 促使，导致，鼓励，督促，提示，准时的
 
 prone `/prəʊn/` 易于...的，有...倾向的，俯卧的
+
+prop `/prɒp/` n. 支柱；支持者；倚靠人；n. 道具；n. 螺旋桨；推进器；v. 支撑；维持
 
 propaganda `/ˌprɒpə'ɡændə/` 宣传，宣传的内容
 
@@ -13737,11 +13621,15 @@ propagate `/ˈprɒpəɡeɪt/` 传播，宣传，繁殖，增值
 
 propagation `/ˌprɒpə'ɡeɪʃn/` 传播，宣传，繁殖，增值
 
+propeller `/prə'pelə/` n. 螺旋桨，推进器
+
 propensity `/prə'pensəti/` 倾向，习性
 
 proper `/ˈprɒpə(r)/` 正确的，恰当的，完全的
 
 property `/ˈprɒpəti/` 财产，房产，庄园，特性，性能
+
+proponent `/prə'pəʊnənt/` n. 提倡者；支持者
 
 proportion `/prəˈpɔːʃn/` 比例，份额，部分
 
@@ -13771,15 +13659,15 @@ prosecution `/ˌprɒsɪ'kjuːʃn/` 起诉，原告，实行
 
 prospect `/ˈprɒspekt/` 预期，，展望，前景，勘探，探矿
 
-prospective `/prə'spektɪv/` 预期的，未来的
+> DERIVS: prospective `/prə'spektɪv/` 预期的，未来的
 
-prosper `/ˈprɒspə/` 1 succeed in material terms; be financially successful. 2 flourish physically. 3 make successful.
+prosper `/ˈprɒspə/` vi.繁盛；成功；兴旺
 
+> 1 succeed in material terms; be financially successful. 2 flourish physically. 3 make successful.
+>
 > Ex: areas where grey squirrels cannot prosper.
 >
 > Ex: God has wonderfully prospered this nation.
->
-> vi.繁盛；成功；兴旺
 
 prosperity `/prɒˈsperəti/` 兴旺，繁荣，昌盛，发达
 
@@ -13809,19 +13697,17 @@ proverb `/'prɒvɜːb/` 谚语，格言
 
 provide `/prəˈvʌɪd/` 提供
 
-provincial `/prə'vɪnʃl/` 1 of or concerning a province of a country or empire. 2 of or concerning the regions outside the capital city of a country, especially when regarded as unsophisticated or narrow-minded. 3 an inhabitant of a province of a country or empire. 4 an inhabitant of the regions outside the capital city of a country, especially when regarded as unsophisticated or narrow-minded. 5 the head or chief of a province or of a religious order in a province.
+provincial `/prə'vɪnʃl/` adj. 省的；地方的；偏狭的；n. 乡下人；地方人民
 
+> 1 of or concerning a province of a country or empire. 2 of or concerning the regions outside the capital city of a country, especially when regarded as unsophisticated or narrow-minded. 3 an inhabitant of a province of a country or empire. 4 an inhabitant of the regions outside the capital city of a country, especially when regarded as unsophisticated or narrow-minded. 5 the head or chief of a province or of a religious order in a province.
+>
 > Ex: the provincial government.
 >
 > Ex: a provincial backwater.
 >
 > Ex: a town populated by money-grubbers, philistines, and self-satisfied provincials.
->
-> adj. 省的；地方的；偏狭的
->
-> n. 乡下人；地方人民
 > 
-> DERIVATIVES: provincialism `/prə'vɪnʃ(ə)lɪz(ə)m/` 方言，地方风格，乡下习气
+> DERIVS: provincialism `/prə'vɪnʃ(ə)lɪz(ə)m/` 方言，地方风格，乡下习气
 
 provision `/prə'vɪʒn/` 食品，粮食，供应，规定，条款，预备，准备金
 
@@ -13873,6 +13759,8 @@ pulse `/pʌls/` 脉搏，冒充，跳动
 
 pump `/pʌmp/` 泵，抽水机，打气筒，抽水，打气，灌输，抽取，增加，盘问
 
+pumpkin `/ˈpʌmpkɪn/` n. 南瓜，南瓜的果肉, 南瓜囊
+
 pun `/pʌn/` 双关语
 
 punch `/pʌntʃ/` 拳打，拳击，打洞
@@ -13889,11 +13777,9 @@ purchase `/'pɜːtʃəs/` 购买
 
 purchaser `/'pɜːtʃəsə(r)/` 买方，购买者
 
-purify `/'pjʊərɪfaɪ/` remove contaminants from.
+purify `/'pjʊərɪfaɪ/` t. 净化；使纯净；vi. 变纯净；净化
 
-> t. 净化；使纯净
->
-> vi. 变纯净；净化
+> remove contaminants from.
 >
 > SYN: better, improve, amend, ameliorate, meliorate, change, alter
 >
@@ -13915,8 +13801,10 @@ pusillanimity `/ˌpjuːsɪlə'nɪmɪtɪ/` 胆怯，无气力
 
 putrid `/'pjuːtrɪd/` 腐臭的，令人厌恶的
 
-puzzle `/ˈpʌzl/` 1 cause (someone) to feel confused because they cannot understand something. 2 a game, toy, or problem designed to test ingenuity or knowledge. 3 a person or thing that is difficult to understand or explain; an enigma.
+puzzle `/ˈpʌzl/` n. 难题；谜；迷惑；拼图游戏；vt. 使为难；使困惑；vi. 苦思；迷惑
 
+> 1 cause (someone) to feel confused because they cannot understand something. 2 a game, toy, or problem designed to test ingenuity or knowledge. 3 a person or thing that is difficult to understand or explain; an enigma.
+>
 > SYN: brainteaser, difficulty, dilemma, enigma, mystery, poser, problem, quandary, question
 > 
 > SYN: acrostic, anagram, conundrum, crossword, maze, riddle.
@@ -13928,12 +13816,6 @@ puzzle `/ˈpʌzl/` 1 cause (someone) to feel confused because they cannot unders
 > Ex: the meaning of the poem has always been a puzzle.
 > 
 > Ex: Can you solve this puzzle?
-> 
-> n. 难题；谜；迷惑；拼图游戏 
->
-> vt. 使为难；使困惑 
->
-> vi. 苦思；迷惑
 
 ### pv
 
@@ -14047,6 +13929,8 @@ pythagorean `/pai'θægəriən/` （数学）毕达哥拉斯的
 
 [回到Q](#Q)--[回到顶部](#英汉词典)
 
+quadcopter `/kwæd'kɒptər/` n. 四轴飞行器
+
 quadratic `/kwɒ'drætɪk/` （数学）二次方程式，二次的
 
 quadrature `/'kwɒdrətʃə/` （数学）求面积，矩，弦
@@ -14065,29 +13949,27 @@ qualification `/ˌkwɒlɪfɪˈkeɪʃn/` 资格，资历，学历，限定条件
 
 qualify `/ˈkwɒlɪfaɪ/` 合格，资格，有权的
 
-qualitatively `/'kwɒlɪtətɪvli/` 从质量方面看，品质上
+qualitative `/'kwɒlɪtətɪv/` adj. 定性的，性质(上)的；质量的
+
+> DERIVS: qualitatively `/'kwɒlɪtətɪvli/` 从质量方面看，品质上
 
 quality `/ˈkwɒləti/` 质量，品质，才能，特质
 
-qualm `/kwɑːm/` 1 an uneasy feeling of doubt, worry, or fear, especially about one's own conduct; a misgiving.
+qualm `/kwɑːm/` n. 疑虑；晕眩；紧张不安
 
-> Ex: military regimes generally have no qualms about controlling the press.
+> 1 an uneasy feeling of doubt, worry, or fear, especially about one's own conduct; a misgiving.
 >
-> n.疑虑；晕眩；紧张不安
+> Ex: military regimes generally have no qualms about controlling the press.
 
 quantity `/ˈkwɒntəti/` 数量，数额
 
 quantization `/ˌkwɒntɪ'zeɪʃən/` 量化，量子化
 
-quarantine `/ˈkwɒrəntiːn/` 
+quarantine `/ˈkwɒrəntiːn/` n. (人或动物生病之后被隔离的)检疫期；vt. 对...进行检疫隔离
 
 > n. a state, period, or place of isolation in which people or animals that may have been exposed to infectious disease are placed.
 >
 > v. place (a person or animal) in quarantine in order to prevent the spread of an infectious disease.
->
-> n. (人或动物生病之后被隔离的)检疫期
->
-> vt. 对...进行检疫隔离
 >
 > Ex: many animals die in quarantine.
 
@@ -14117,13 +13999,11 @@ quirky `/ˈkwəːki/` 古怪的
 
 quite `/kwaɪt/` 比较，相当，完全，很
 
-quiz `/kwɪz/` 
+quiz `/kwɪz/` n. 问答比赛(游戏), 小测验
 
 > n. an examination consisting of a few short questions.
 >
 > v. examine someone's knowledge of something.
->
-> n. 问答比赛(游戏), 小测验
 >
 > Ex: They are having a quiz now.
 >
@@ -14169,17 +14049,11 @@ quotient `/'kwəʊʃnt/` （数学）商，份额
 
 [回到R](#R)--[回到顶部](#英汉词典)
 
-race `/reɪs/` 
+race `/reɪs/` n. 种族，人种；家庭，门弟；属，种；vt. 和…竞赛；使急走，使全速行进；使参加比赛；vi. 比速度，参加竞赛；全速行进
 
 > n. 1 any competition. 2 people who are believed to belong to the same genetic stock. 3 a contest of speed. 4 the flow of air that is driven backward by an aircraft propeller. 5 (biology) a taxonomic group that is a division of a species; usually arises as a consequence of geographical isolation within a species. 6 a canal for a current of water.
 >
 > n. 1 step on it. 2 compete in a race. 3 to work as fast as possible towards a goal, sometimes in competition with others. 4 cause to move fast or to rush or race.
->
-> n. 种族，人种；家庭，门弟；属，种
->
-> vt. 和…竞赛；使急走，使全速行进；使参加比赛
->
-> vi. 比速度，参加竞赛；全速行进
 >
 > SYN: contest, competition, group, grouping, flow, taxonomic group, taxonomic category
 >
@@ -14187,17 +14061,19 @@ race `/reɪs/`
 >
 > Ex: The race is on.
 
-racial `/ˈreɪʃl/` relating to the major groupings into which humankind is sometimes divided on the basis of physical characteristics or shared ancestry.
+racial `/ˈreɪʃl/` adj. 种族的；人种的
 
-> Ex: a racial minority.
+> relating to the major groupings into which humankind is sometimes divided on the basis of physical characteristics or shared ancestry.
 >
-> adj. 种族的；人种的
+> Ex: a racial minority. 
 
 radial `/'reɪdiəl/` 光线的，放射状的
 
 radiate `/reɪdieɪt/` 辐射，放射，散发，光芒四射的
 
 radical `/'rædɪkl/` 根本的，彻底的，激进的，激进分子
+
+> DERIVS: radically `/ˈrædɪkli/` adv. 根本地;彻底地;完全地；激进地;极端地
 
 radioactivity `/ˌreɪdiəʊæk'tɪvəti/` 放射性，辐射
 
@@ -14220,6 +14096,8 @@ railcar `/'reɪlkɑː(r)/` 有轨车
 rally `/ˈræli/` 集会，召集，汽车拉力赛
 
 ramble `/'ræmbl/` 漫步，漫谈，漫游，蔓延，闲谈，漫笔
+
+ramification `/ˌræmɪfɪ'keɪʃn/` n. 分叉；衍生物，后果；支流；结果
 
 rampant `/ˈræmpənt/` 猖獗的，泛滥的，疯长的
 
@@ -14323,11 +14201,11 @@ reasoning `/'riːzənɪŋ/` 推论，推理，论证
 
 reassembling `/riːə'semblɪŋ/` （计算机）合段
 
-reassure `/ˌriːəˈʃʊr/` say or do something to remove the doubts or fears of (someone).
+reassure `/ˌriːəˈʃʊr/` v. 使…安心；再保证；重拾(信心等)
 
-> Ex: he understood her feelings and tried to reassure her.
+> say or do something to remove the doubts or fears of (someone).
 >
-> v. 使…安心；再保证；重拾(信心等)
+> Ex: he understood her feelings and tried to reassure her. 
 
 reassuring `/ˌri:əʃʊərɪŋ/` 安慰的，鼓气的，可靠的
 
@@ -14338,6 +14216,8 @@ rebel `/'rebl/` 造反，反抗，反感，反叛者，造反者，叛逆者
 rebellion `/rɪ'beljən/` 叛乱，反抗
 
 rebellious `/rɪˈbeljəs/` 反叛的，叛逆的，叛乱的
+
+rebound `/rɪ'baʊnd/` vi. 弹回；反弹；产生反作用；未能奏效；(尤指关系破裂以后)处于伤心困惑的状态，心灰意懒之余
 
 rebuke `/rɪˈbjuːk/` 指责，谴责，训斥
 
@@ -14357,19 +14237,21 @@ receptionist `/rɪˈsepʃənɪst/` 接待员
 
 recession `/rɪ'seʃn/` 后退，经济不景气
 
+recidivism `/rɪ'sɪdɪvɪzəm/` n. 累犯；[医]复发
+
 recipe `/ˈresəpi/` 配方，食谱，药方，秘诀
 
 recipient `/rɪˈsɪpiənt/` 接受者，收件人，受方
 
 reciprocal `/rɪ'sɪprəkl/` （数学）倒数，互惠的，相互的，互补的
 
-reciprocate `/rɪˈsɪprəkeɪt/` 1 respond to (a gesture or action) by making a corresponding one. 2 (of a part of a machine) move backward and forwards in a straight line.
+reciprocate `/rɪˈsɪprəkeɪt/` v. 互换；交换；报答；往返运动
 
+> 1 respond to (a gesture or action) by making a corresponding one. 2 (of a part of a machine) move backward and forwards in a straight line.
+>
 > Ex: the favour was reciprocated.
 >
 > Ex: when you're shooting most semi-automatic handguns, the slide reciprocates as part of the firing cycle.
->
-> v. 互换；交换；报答；往返运动
 
 recital `/rɪˈsaɪtl/` 独奏，吟诵，朗诵
 
@@ -14401,9 +14283,9 @@ recount `/rɪˈkaʊnt/` 叙述，讲述，重新计算
 
 recourse `/rɪ'kɔːs/` 依赖，求助，追索权
 
-recreation `/ˌriːkriˈeɪʃn/` 1 activity done for enjoyment when one is not working. 2 the action or process of creating something again.
+recreation `/ˌriːkriˈeɪʃn/` n. 娱乐(方式); 消遣(方式)
 
-> n. 娱乐(方式); 消遣(方式)
+> 1 activity done for enjoyment when one is not working. 2 the action or process of creating something again.
 >
 > SYN: activity, rejuvenation
 >
@@ -14449,15 +14331,11 @@ reef `/riːf/` 暗礁，礁石，收帆，卷起船帆
 
 reek `/riːk/` 恶臭，难闻的气味
 
-reel `/ri:l/` 
+reel `/ri:l/` n. 卷筒；摇晃，旋转；v. 眩晕，旋转，卷，绕
 
 > n. 1 a cylinder on which film, wire, thread, or other flexible materials can be wound. 2 a lively Scottish or Irish folk dance.
 >
 > v. 1 wind a line onto a reel by turning the real. 2 lose one's balance and stagger or lurch violently.
->
-> n. 卷筒；摇晃，旋转
->
-> v. 眩晕，旋转，卷，绕
 
 reemphasize `/'riːmfəsaɪz/` 再度强调，重新强调
 
@@ -14475,8 +14353,10 @@ refinement `/rɪ'faɪnmənt/` 精致，文雅，改良，精炼，提炼
 
 refit `/ˌriː'fɪt/` 改装，整修，重新装配(改装；整修；修理)
 
-reflect `/rɪˈflekt/` 1 (of a surface or body) throw back (heat, light, or sound) without absorbingit. 2 think deeply or carefully about. 3 (reflect on) (of an action or situation) bring credit or discredit to the relevant parties.
+reflect `/rɪˈflekt/` v. 反映；反射；反省；归咎；显示
 
+> 1 (of a surface or body) throw back (heat, light, or sound) without absorbingit. 2 think deeply or carefully about. 3 (reflect on) (of an action or situation) bring credit or discredit to the relevant parties.
+>
 > SYN(1): mirror, return, send back, shine back, throw back.
 > 
 > SYN(3): bear witness to, correspond to, demonstrate, echo, exhibit, indicate, match, reveal, show.
@@ -14488,8 +14368,6 @@ reflect `/rɪˈflekt/` 1 (of a surface or body) throw back (heat, light, or soun
 > Ex: he reflected with sadness on the unhappiness of his marriage.
 >
 > Ex: I want every decision I make to reflect well on me.
-> 
-> v. 反映；反射；反省；归咎；显示
 
 reflection `/rɪ'flekʃn/` 反射，倒影，沉思
 
@@ -14515,8 +14393,10 @@ refurnish `/ˌriː'fɜːnɪʃ/` 重新装备，再供给
 
 regain `/rɪ'ɡeɪn/` 恢复，重回
 
-regard `/rɪˈɡɑːd/` 1 consider or think of in a specified way. 2 (of a thing) relate to; concern. 3 attention to or concern for something. 4 (regards) best wishes (used to express friendliness in greetings).
+regard `/rɪˈɡɑːd/` v. 尊敬；视为；注视；留意；和 ... 有关；n. 关心；尊敬；注意；致意；考
 
+> 1 consider or think of in a specified way. 2 (of a thing) relate to; concern. 3 attention to or concern for something. 4 (regards) best wishes (used to express friendliness in greetings).
+>
 > Ex: he was highly regarded by all of his colleagues and clients.
 >
 > Ex: if these things regarded only myself, I could stand it with composure.
@@ -14526,10 +14406,6 @@ regard `/rɪˈɡɑːd/` 1 consider or think of in a specified way. 2 (of a thing
 > Ex: give her my regards.
 >
 > Ex: Themselves they may regard very seriously or with an ironic or an amused detachment.
->
-> v. 尊敬；视为；注视；留意；和 ... 有关
->
-> n. 关心；尊敬；注意；致意；考
 
 regarding `/regarding/` 关于，至于
 
@@ -14561,9 +14437,9 @@ regularity `/ˌreɡju'lærəti/` 规律性，规则性，定期
 
 regulate `/ˈreɡjuleɪt/` 规定，管理，控制
 
-rehabilitate `/ˌriː(h)əˈbɪlɪteɪt/` 1 restore (someone) to health or normal life by training and therapy after imprisonment, addiction, or illness.
+rehabilitate `/ˌriː(h)əˈbɪlɪteɪt/` vt.使恢复；修复；改造
 
-> vt.使恢复；修复；改造
+> 1 restore (someone) to health or normal life by training and therapy after imprisonment, addiction, or illness.
 
 rehabilitation `/ˌri:əˌbɪlɪ'teɪʃn/` 康复，恢复，善后，平反
 
@@ -14575,9 +14451,13 @@ rein `/reɪn/` 缰绳，驾驭，控制
 
 reinforce `/ˌriːɪnˈfɔːs/` 加强，加固，增援，支持
 
+reins `/reɪnz/` n. 肾脏；腰部；感情；肺腑；缰绳
+
 reinstate `/ˌriːɪn'steɪt/` 使复位，恢复
 
 reintegration `/ˌriːɪntə'greɪʃən/` 重新整合
+
+> DERIVS: reintegrate `/riː'ɪntɪgreɪt/` vt. 使重新成为一体；使重新统一
 
 reiterate `/ˌriːˈɪtəreɪt/` 重申
 
@@ -14613,17 +14493,17 @@ reliance `/rɪˈlaɪəns/` 依靠，信任
 
 reliant `/rɪ'laɪənt/` 依赖的
 
-relief `/rɪ'liːf/` 减轻，替代，安慰
+relief `/rɪ'liːf/` n. 减轻；解除；轻松；浮雕；救济(品)；安慰；替代；adj. 提供救济的；文本的
 
 relies `/rɪ'laɪ/` 信任，依赖
 
 relieve `/rɪˈliːv/` 减轻，缓和，解除，放心
 
-religion `/rɪ'lɪdʒən/` the belief in and worship of a superhuman power or powers, especially a God or gods.
+religion `/rɪ'lɪdʒən/` n. 宗教；宗教信仰
 
-> Ex: ideas about the relationship between science and religion.
+> the belief in and worship of a superhuman power or powers, especially a God or gods.
 >
-> n. 宗教；宗教信仰
+> Ex: ideas about the relationship between science and religion. 
 
 religious `/rɪ'lɪdʒəs/` 宗教的，虔诚的，严谨的
 
@@ -14669,6 +14549,8 @@ removal `/rɪ'muːvl/` 移动，除去，开除
 
 remnant `/ˈremnənt/` 遗迹，残余物，边角剩料
 
+renaissance `/rɪ'neɪsns/` n. 文艺复兴；再生
+
 render `/ˈrendə(r)/` 渲染，使得，提供，送交，表现，描绘
 
 rendezvous `/'rɒndɪvuː/` 约会，汇合，集合，汇合地点
@@ -14693,13 +14575,13 @@ repainting `/riː'peɪntɪŋ/` 重绘
 
 repairability `/rɪpeərə'bɪlɪtɪ/` 可修理性,可修性
 
-repay `/rɪ'peɪ/` payback (a loan).
+repay `/rɪ'peɪ/` v. 偿还；报答；还钱给
 
+> payback (a loan).
+>
 > Ex: the loans were to be repaid over a 20-year period.
 >
-> v. 偿还；报答；还钱给
->
-> DERIVATIVES: repayment `/rɪ'peɪmənt/` 偿还
+> DERIVS: repayment `/rɪ'peɪmənt/` 偿还
 
 repeal `/rɪ'piːl/` 废止，撤销
 
@@ -14709,11 +14591,11 @@ repel `/rɪˈpel/` 击退，驱逐，推开，驱除
 
 repelled `/rɪ'peld/` 击退的，排斥的
 
-repent `/rɪˈpɛnt/` 1 feel or express sincere regret or remorse about one's wrongdoing or sin.
+repent `/rɪˈpɛnt/` v. 后悔；悔悟；忏悔
 
-> Ex: the padre urged his listeners to repent.
+> 1 feel or express sincere regret or remorse about one's wrongdoing or sin.
 >
-> v.后悔；悔悟；忏悔
+> Ex: the padre urged his listeners to repent.
 
 repertoire `/'repətwɑː(r)/` 全部节目，全部才能
 
@@ -14735,8 +14617,10 @@ reposition `/ˌriːpə'zɪʃən/` （计算机）重定位，调换位置，储�
 
 repository `/rɪ'pɒzətri/` 仓库，容器，储藏室，智囊
 
-represent `/ˌreprɪˈzent/` 1 be entitled or appointed to act or speak for (someone), especially in an official capacity. 2 constitute; amount to. 3 depict (a particular subject) in a work of art. 4 state or point out clearly.
+represent `/ˌreprɪˈzent/` vt. 表现；表示；描绘；代表；象征；说明；阐明；vi. 提出异议
 
+> 1 be entitled or appointed to act or speak for (someone), especially in an official capacity. 2 constitute; amount to. 3 depict (a particular subject) in a work of art. 4 state or point out clearly.
+>
 > SYN(表现，描述，描绘): act out, delineate, depict, describe, draw, enact, exhibit, illustrate, paint, picture, portray, show.
 > 
 > SYN(代表，体现): embody, epitomize, exemplify, incarnate, personify, stand for, symbolize.
@@ -14751,13 +14635,9 @@ represent `/ˌreprɪˈzent/` 1 be entitled or appointed to act or speak for (som
 >
 > Ex: it was represented to him that she would be an unsuitable wife.
 > 
-> DERIVATIVES: representable `/ˌriːprɪ'zentəbl/` 能被代表的，能加以描绘的
+> DERIVS: representable `/ˌriːprɪ'zentəbl/` 能被代表的，能加以描绘的
 >
-> DERIVATIVES: representation `/ˌreprɪzen'teɪʃn/` 陈述，表现，表示
->
-> vt. 表现；表示；描绘；代表；象征；说明；阐明
-> 
-> vi. 提出异议
+> DERIVS: representation `/ˌreprɪzen'teɪʃn/` 陈述，表现，表示
 
 reproach `/rɪ'prəʊtʃ/` 责备，申斥，耻辱
 
@@ -14769,11 +14649,11 @@ republic `/rɪ'pʌblɪk/` 共和国，共和政体
 
 repudiate `/rɪ'pjuːdieɪt/` 拒绝，拒付，断绝，否认
 
-repulsive `/rɪ'pʌlsɪv/` 1 arousing intense distaste or disgust. 2 relating to repulsion between physical objects. 3 lacking friendliness or sympathy.
+repulsive `/rɪ'pʌlsɪv/` adj. 令人厌恶的；排斥的
 
-> Ex: a repulsive smell.
+> 1 arousing intense distaste or disgust. 2 relating to repulsion between physical objects. 3 lacking friendliness or sympathy.
 >
-> adj. 令人厌恶的；排斥的
+> Ex: a repulsive smell. 
 
 repurchase `/riː'pɜːtʃəs/` 再次购买，买回
 
@@ -14781,7 +14661,9 @@ reputation `/ˌrepju'teɪʃn/` 声誉，名气
 
 reputed `/rɪˈpjuːtɪd/` 普遍认为，称号，所谓
 
-requisite `/'rekwɪzɪt/` 必要的，需要的，必需品
+requisite `/'rekwɪzɪt/` adj. 必要的；需要的；n. 必需品
+
+requisition `/ˌrekwɪ'zɪʃn/` n. 请求；征用；v. 要求；征用
 
 reread `/riː'riːd/` 重读，再读
 
@@ -14824,6 +14706,8 @@ resist `/rɪˈzɪst/` 抵制，反抗，回击，抵挡
 resistance `/rɪ'zɪstəns/` 抵抗，反对，阻力，电阻
 
 resolution `/ˌrezə'luːʃn/` 决心，决定，决议，分辨率
+
+resonate `/'rezəneɪt/` v. 共鸣；共振
 
 resort `/rɪˈzɔːt/` 采取，求助，诉诸，度假胜地
 
@@ -14875,6 +14759,10 @@ retransmission `/riːtrænz'mɪʃən/` 重发，中继，转播
 
 retreating `/rɪt'riːtɪŋ/` 再加工，再精制
 
+retrench `/rɪˈtrentʃ/` vt. 删除；减少；紧缩开支；vi. 节省；紧缩
+
+> DERIVS: retrenchment `/rɪ'trentʃmənt/` n. 节省，删除
+
 retribution `/ˌretrɪ'bjuːʃn/` 报应，惩罚，报复
 
 retrieve `/rɪˈtriːv/` 取回，检索，挽救
@@ -14905,13 +14793,15 @@ revert `/rɪˈvɜːt/` 恢复，还原，归还
 
 revise `/rɪ'vaɪz/` 校订，修正，校正
 
-revised `/rɪ'vaɪzd/` 已校订的，已修正的，已校正的
-
-revision `/rɪ'vɪʒn/` 校订，修订本，修正，复习
+> DERIVS: revised `/rɪ'vaɪzd/` 已校订的，已修正的，已校正的
+>
+> DERIVS: revision `/rɪ'vɪʒn/` 校订，修订本，修正，复习
 
 revisit `/ˌriː'vɪzɪt/` 回顾，重温，再访，重游
 
 revitalization `/ˌri:ˌvaɪtəlaɪ'zeɪʃn/` 复兴，复苏，新生
+
+revival `/rɪ'vaɪvl/` n. 复兴；复活；恢复精神
 
 revive `/rɪˈvaɪv/` 苏醒，复苏，进步，振作，再兴
 
@@ -14949,6 +14839,8 @@ rid `/rɪd/` 摆脱，消除
 
 ridge `/rɪdʒ/` 山脊，山脉
 
+ridicule `/'rɪdɪkjuːl/` 嘲笑，愚弄，笑柄
+
 ridiculous `/rɪ'dɪkjələs/` 荒谬的，可笑的
 
 riding `/'raɪdɪŋ/` ride的现在分词，骑马
@@ -14983,9 +14875,9 @@ rite `/raɪt/`  仪式，典礼
 
 rival `/ˈraɪvl/` 竞争，竞争对手，与...匹配，比得上
 
-rivalry `/'raɪvlri/` 敌对，竞争，对抗
-
-rivalship `/'raɪvəlʃɪp/` 竞争，对抗
+> DERIVS: rivalry `/'raɪvlri/` 敌对，竞争，对抗
+> 
+> DERIVS: rivalship `/'raɪvəlʃɪp/` 竞争，对抗
 
 rivet `/'rɪvɪt/` 铆钉，铆接，固定，钉牢，集中，吸引
 
@@ -15031,19 +14923,15 @@ rock `/rɒk/` 岩石，摇滚乐，困境，摇动，使震惊
 
 rod `/rɒd/` 杆，竿，棍棒
 
-rogue `/rəʊɡ/` 1 a dishonest or unprincipled person. 2 an elephant or other large wild animal living apart from the herd and having savage or destructive tendencies. 3 remove inferior or defective plants or seedlings from (a crop).
+rogue `/rəʊɡ/` n.流氓；调皮鬼；离群野兽；[农]劣种；v.游手好闲；欺诈；去劣；adj.离群凶猛的
 
+> 1 a dishonest or unprincipled person. 2 an elephant or other large wild animal living apart from the herd and having savage or destructive tendencies. 3 remove inferior or defective plants or seedlings from (a crop).
+>
 > Ex: you are a rogue and an embezzler.
 >
 > Ex: a rouge elephant.
 >
 > Ex: the sowing has to be rogued to remove aberrant seedlings.
->
-> n.流氓；调皮鬼；离群野兽；[农]劣种
->
-> v.游手好闲；欺诈；去劣
->
-> adj.离群凶猛的
 
 roller `/'rəʊlə(r)/` 滚筒，滚轴，巨浪
 
@@ -15064,6 +14952,8 @@ rot `/rɒt/` 腐烂，败坏，胡话
 rotational `/rəʊ'teɪʃənl/` 回转的，轮流的
 
 rote `/rəʊt/` 死记硬背，生搬硬套
+
+rotor `/'rəʊtə/` n. [电]转子；水平旋翼；旋转体
 
 rough `/rʌf/` 粗糙的，粗略的，大概的，粗暴的，殴打，草拟
 
@@ -15129,11 +15019,11 @@ runaway `/'rʌnəweɪ/` 逃亡者，逃跑的，失控的
 
 rupture `/ˈrʌptʃə(r)/` 破裂，断裂，割裂，裂开
 
-rural `/ˈrʊərəl/` in, relating to, or characteristic of the countryside rather than the town. 
+rural `/ˈrʊərəl/` adj. 农村的，乡村的，田园的
 
-> Ex: remote rural areas.
+> in, relating to, or characteristic of the countryside rather than the town. 
 >
-> adj. 农村的，乡村的，田园的
+> Ex: remote rural areas. 
 
 rustic `/'rʌstɪk/` 乡村的，纯朴的，土气的，乡下人，村夫
 
@@ -15183,8 +15073,10 @@ sacrifice `/'sækrɪfaɪs/` 牺牲，祭品，供奉，亏本出售
 
 sacrilege `/'sækrəlɪdʒ/` 亵渎圣物，悖理逆天的行为
 
-saddle `/'sædl/` 1 a seat fastened on the back of a horse or other animal for riding, typically made of leather and raised at the front and rear. 2 a low part of a ridge between two higher points or peaks. 3 a shaped support on which a cable, wire, or pipe rests. 4 the lower part of the back in a mammal or fowl, especially when distinct in shape or marking. 5 put a saddle on (a horse). 6 (usually be saddled with) burden (someone) with an onerous responsibility or task.
+saddle `/'sædl/` n. 鞍；车座；山脊；当权；vt. 装以马鞍；使负担；vi. 装马鞍
 
+> 1 a seat fastened on the back of a horse or other animal for riding, typically made of leather and raised at the front and rear. 2 a low part of a ridge between two higher points or peaks. 3 a shaped support on which a cable, wire, or pipe rests. 4 the lower part of the back in a mammal or fowl, especially when distinct in shape or marking. 5 put a saddle on (a horse). 6 (usually be saddled with) burden (someone) with an onerous responsibility or task.
+>
 > Ex: follow the road which goes across the saddle between two tors.
 >
 > Ex: feathers at the rear of a rooster's saddle.
@@ -15192,12 +15084,8 @@ saddle `/'sædl/` 1 a seat fastened on the back of a horse or other animal for r
 > Ex: he was in the stable saddling up his horse.
 >
 > Ex: he's saddled with debts of $12 million.
->
-> n. 鞍；车座；山脊；当权
->
-> vt. 装以马鞍；使负担
->
-> vi. 装马鞍
+
+safeguard `/'seɪfɡɑːd/` n. 保卫者；保护措施；vt. 保卫；保护
 
 saga `/ˈsɑːɡə/` 传奇故事，冒险故事，长篇小说
 
@@ -15227,6 +15115,8 @@ sanctimonious `/ˌsæŋktɪˈməʊniəs/` 道貌岸然的，伪善的
 
 sanction `/ˈsæŋkʃn/` 批准，制裁，处罚
 
+sanctuary `/ˈsæŋktʃuəri/` n. 圣所, 圣地；圣堂；庇护所；庇护, 庇护权；避难所；禁猎区, 鸟兽类保护区
+
 sanctuaries `/'sæŋktʃuəri/` 避难所，圣所，神殿
 
 sand `/sænd/` 沙，沙子，沙滩，黄灰色，撒沙
@@ -15249,7 +15139,7 @@ sapphire `/ˈsæfaɪə(r)/` 蓝宝石，蔚蓝色的
 
 sarcastic `/sɑː'kæstɪk/` 讽刺的
 
-satellite `/'sætəlaɪt/` 卫星，人造卫星
+satellite `/'sætəlaɪt/` n. 卫星，人造卫星
 
 satire `/satire/` 讽刺
 
@@ -15301,8 +15191,10 @@ scalability `/skeɪlə'bɪlɪtɪ/` 伸缩性，可测量性
 
 scalar `/ˈskeɪlər/` 数量，标量，无向量的
 
-scale `/skeɪl/` 1 each of the small, thin horny or bony plates protecting the skin of fish and reptiles, typically overlapping one another. 2 a thick, dry flake of skin. 3 a flaky covering or deposit. 4 remove scale or scales from. 5 (especially of the skin) form scales.
+scale `/skeɪl/` n. 刻度；等级，规模；音阶；量程；天枰，磅秤；鳞片，鳞状物；v. 攀登；按比例决定；称重；刮鳞；剥落
 
+> 1 each of the small, thin horny or bony plates protecting the skin of fish and reptiles, typically overlapping one another. 2 a thick, dry flake of skin. 3 a flaky covering or deposit. 4 remove scale or scales from. 5 (especially of the skin) form scales.
+>
 > SYN(鳞): flake, plate.
 > 
 > SYN(水垢): crust, deposit, encrustation, fur.
@@ -15317,17 +15209,15 @@ scale `/skeɪl/` 1 each of the small, thin horny or bony plates protecting the s
 > 
 > SYN(规模): size.
 >
-> n. 刻度；等级，规模；音阶；量程；天枰，磅秤；鳞片，鳞状物
-> 
-> v. 攀登；按比例决定；称重；刮鳞；剥落
+> DERIVS: scaled `/skeɪld/` 有鳞片的，去鳞，零次栉比的
+
+scam `/skæm/` n. 骗局；骗钱；v. 诈骗
+
+scandal `/ˈskændl/` n. 丑闻；反感；耻辱；中伤
+
+> an action or event regarded as morally or legally wrong and causing general public outrage.
 >
-> DERIVATIVES: scaled `/skeɪld/` 有鳞片的，去鳞，零次栉比的
-
-scandal `/ˈskændl/` an action or event regarded as morally or legally wrong and causing general public outrage.
-
 > Ex: a bribery scandal involving one of his key supporters.
->
-> n. 丑闻；反感；耻辱；中伤
 
 scantiness `/'skæntɪnɪs/` 缺乏，不足
 
@@ -15357,13 +15247,13 @@ schema `/'skiːmə/` 图解，计划，模式，纲要
 
 scholar `/ˈskɑːlər/` 学者，学术，获奖学金的学生
 
-scholarship `/scholarship/` 1 academic study or achievement; learning at a high level. 2 a grant or payment made to support a student's education, awarded on the basis of academic or other achievement.
+scholarship `/scholarship/` n. 奖学金；学问；学识
 
+> 1 academic study or achievement; learning at a high level. 2 a grant or payment made to support a student's education, awarded on the basis of academic or other achievement.
+>
 > Ex: the intellectual dishonesty has nothing to do with lack of scholarship.
 >
 > Ex: he went on a state-sponsored scholarship to study engineering.
->
-> n. 奖学金；学问；学识
 
 scholastic `/skə'læstɪk/` 学术的，学习的，学院的，教育的，墨守成规者，学究
 
@@ -15383,12 +15273,14 @@ scour `/ˈskaʊər/` 冲刷，搜查，刷洗
 
 scout `/skaʊt/` 童子军，侦查，物色
 
-scrap `/skræp/` 碎片，口角，废弃，取消，抛弃，报废
+scrap `/skræp/` n. 碎片；废品；少许；瘦小的人；争斗；打架；v. 报废；舍弃；打架
 
-scrape `/skreɪp/` 刮掉，擦掉，擦伤
+> DERIVS: scrape `/skreɪp/` v. 刮掉；擦掉；n. 擦伤；擦掉；刮擦声；<口>窘境
 
-scratch `/skrætʃ/` 1 score or mark the surface of (something) with a sharp or pointed object. 2 cancel or strike out (writing) with a pen or pencil. 3 play a record using the scratch technique. 4 a mark or wound made by scratching. 5 a technique, used especially in rap music, of stopping a record by hand and moving it back and forwards to give a rhythmic scratching effect. 6 (in sport) the starting point in a race for a competitor that is not given a handicap or advantage. 7 money. 8 assembled or made from whatever is available, and so unlikely to be of the highest quality. 9 (of a sports competitor or event) with no handicap given.
+scratch `/skrætʃ/` v. 抓；搔（痒）；划破；划掉；n. 抓痕；乱写；抓的声音；起跑线；adj. 无让步的
 
+> 1 score or mark the surface of (something) with a sharp or pointed object. 2 cancel or strike out (writing) with a pen or pencil. 3 play a record using the scratch technique. 4 a mark or wound made by scratching. 5 a technique, used especially in rap music, of stopping a record by hand and moving it back and forwards to give a rhythmic scratching effect. 6 (in sport) the starting point in a race for a competitor that is not given a handicap or advantage. 7 money. 8 assembled or made from whatever is available, and so unlikely to be of the highest quality. 9 (of a sports competitor or event) with no handicap given.
+>
 > Ex: he scratched at a stain on his jacket.
 >
 > Ex: he raps and scratches simultaneously to dazzling effect.
@@ -15400,12 +15292,6 @@ scratch `/skrætʃ/` 1 score or mark the surface of (something) with a sharp or 
 > Ex: he was working to get some scratch together.
 >
 > Ex: he was a scratch player at many courses.
->
-> v. 抓；搔（痒）；划破；划掉
->
-> n. 抓痕；乱写；抓的声音；起跑线
->
-> adj. 无让步的
 
 scratchpad `/'skrætʃpæd/` 便笺条(便笺式存储器)
 
@@ -15424,6 +15310,8 @@ scrum `/skrʌm/` 疯狂的马，多而乱的一群人
 scruple `/'skruːpl/` 顾忌，顾虑，迟疑
 
 scrupulous `/ˈskruːpjələs/` 恪守道德规范的，一丝不苟的，仔细的
+
+scrutiny `/'skruːtəni/` n. 监视；细看；周密的调查
 
 sculpt `/skʌlpt/` 雕塑，雕刻
 
@@ -15449,9 +15337,9 @@ secretary `/'sekrətri/` 部长，秘书，书记，大臣，写字台
 
 sector `/'sektə(r)/` （计算机）扇区，部门，部分，区域
 
-sedentary `/ˈsɛd(ə)nt(ə)ri/` (of a person) tending to spend much time seated; somewhat inactive.
+sedentary `/ˈsɛd(ə)nt(ə)ri/` dj. 坐着的, (指工作等)坐着干的, 案头的, (指人)不爱活动的
 
-> dj. 坐着的, (指工作等)坐着干的, 案头的, (指人)不爱活动的
+> (of a person) tending to spend much time seated; somewhat inactive.
 >
 > SYN: inactive
 >
@@ -15521,11 +15409,11 @@ senility `/sə'nɪləti/` 高龄，老迈
 
 sensation `/senˈseɪʃn/` 感觉，感知，直觉
 
-sensationalism `/sen'seɪʃ(ə)n(ə)lɪz(ə)m/` 1 (especially in journalism) the presentation of stories in a way that is intended to provoke public interest or excitement, at the expense of accuracy. 2 another term for phenomenalism.
+sensationalism `/sen'seɪʃ(ə)n(ə)lɪz(ə)m/` n. 追求轰动效应；感觉论；煽情主义；哗众取宠
 
-> Ex: media sensationalism.
+> 1 (especially in journalism) the presentation of stories in a way that is intended to provoke public interest or excitement, at the expense of accuracy. 2 another term for phenomenalism.
 >
-> n. 追求轰动效应；感觉论；煽情主义；哗众取宠
+> Ex: media sensationalism. 
 
 sense `/sens/` 感官，意识，感觉
 
@@ -15534,6 +15422,8 @@ sensible `/ˈsensəbl/` 明智的，合理的，理智的，意识到
 sensitive `/'sensətɪv/` 敏感的，灵敏的，感光的，善解人意的
 
 sensitivity `/ˌsensə'tɪvəti/` 敏感，多愁善感，灵敏度
+
+sensitizing `/'sensɪtaɪzɪŋ/` 光敏处理
 
 sensor `/'sensə(r)/` 传感器，探测器
 
@@ -15547,7 +15437,7 @@ sentential `/sen'tenʃəl/` 句子的，命题的，判决的
 
 sentiment `/ˈsentɪmənt/` 观点，看法，哀伤 ，伤感
 
-sentimental `/ˌsentɪ'mentl/` 感伤的，感情的，多愁善感的
+> DERIVS: sentimental `/ˌsentɪ'mentl/` 感伤的，感情的，多愁善感的
 
 sentinel `/'sentɪnl/` （计算机）标记符号，哨兵，放哨，传送器
 
@@ -15593,6 +15483,8 @@ severely `/sə'vɪrlɪ/` 严格地，严重的，严肃的，朴实的
 
 severest `/sɪ'vɪə(r)/` 严厉的，严重的，剧烈的，严格的，严峻的
 
+severity `/sɪ'verəti/` n. 严格；严重；严肃
+
 sewerage `/ˈsuːərɪdʒ/` 排水系统，污水处理系统
 
 ### sf
@@ -15615,7 +15507,7 @@ shadow `/ˈʃædəʊ/` 阴影，影子，背光处，些许
 
 shaft `/ʃɑːft/` 柄，竖井，杆状物，矛，轴，光线
 
-shallow `/ˈʃaləʊ/` 浅的，微弱的，浅薄的
+shallow `/ˈʃaləʊ/` adj. 浅的；薄的；n. 浅滩；浅处；v. 变浅
 
 sham `/ʃæm/` 伪装，假象，冒充
 
@@ -15623,7 +15515,9 @@ shame `/ʃeɪm/` 羞耻，羞愧，丢脸
 
 sharp `/ʃɑːp/` 锋利的，轮廓分明的
 
-shattered `/ˈʃætəd/` 非常惊愕难过的，遭受极大打击的
+shatter `/ˈʃætə(r)/` vt. 打碎；破掉；使散开；粉碎；破坏；vi. 粉碎；损坏；落叶；n. 碎片；乱七八糟的状态
+
+> DERIVS: shattered `/ˈʃætəd/` 非常惊愕难过的，遭受极大打击的
 
 shave `/ʃeɪv/` 刮，剃，修剪，剃刀
 
@@ -15669,15 +15563,13 @@ shirty `/'ʃɜːti/` 发怒的，心情坏的
 
 shone `/ʃɒn/` 反光，照向
 
-shoo `/ʃuː/` 1 a word said to frighten or drive away a person or animal. 2 make (a person or animal) go away by waving one's arms at them, saying 'shoo', or otherwise acting in a discouraging manner.
+shoo `/ʃuː/` v. 发出嘘声赶走；int. 嘘(赶走鸟等时所发声音)
 
+> 1 a word said to frighten or drive away a person or animal. 2 make (a person or animal) go away by waving one's arms at them, saying 'shoo', or otherwise acting in a discouraging manner.
+>
 > Ex: 'Shoo,' said Mrs Beavis to her girls, and the passage emptied.
 >
 > Ex: I went to comfort her but she shooed me away.
->
-> v. 发出嘘声赶走
->
-> int. 嘘(赶走鸟等时所发声音)
 
 shopkeeper `/'ʃɒpkiːpə(r)/` 店主，零售商人
 
@@ -15694,6 +15586,8 @@ shorten `/'ʃɔːtn/` 弄短，变短
 shortfall `/'ʃɔːtfɔːl/` 差额，不足
 
 shorthand `/'ʃɔːthænd/` 速记，缩写
+
+showcase `/'ʃəʊkeɪs/` n. (玻璃)陈列柜；显示优点的东西；vt. 使展示；陈列
 
 shower `/'ʃaʊə(r)/` 淋浴，阵雨
 
@@ -15745,15 +15639,15 @@ similar `/ˈsɪm(ɪ)lə/` 相似的
 
 similarity `/ˌsɪmə'lærəti/` 相似，类似
 
-simple `/'sɪmpl/` 1 easily understood or done; presenting no difficulty. 2 plain, basic, or uncomplicated in form, nature, or design; without much decoration or ornamentation. 3 composed of a single element; not compound. 4 having an intellectual disability. 5 a medicinal herb, or a medicine made from one.
+simple `/'sɪmpl/` adj. 简单的；朴素的；单纯的；笨的
 
+> 1 easily understood or done; presenting no difficulty. 2 plain, basic, or uncomplicated in form, nature, or design; without much decoration or ornamentation. 3 composed of a single element; not compound. 4 having an intellectual disability. 5 a medicinal herb, or a medicine made from one.
+>
 > Ex: the simple truth.
 >
 > Ex: a quiet, unassuming man with simple tastes.
 >
 > Ex: the gatherers of simples.
->
-> adj. 简单的；朴素的；单纯的；笨的
 
 simplex `/'sɪmpleks/` （数学）单形体，单工的，单一结构的
 
@@ -15776,6 +15670,8 @@ sinful `/'sɪnfl/` 有罪的，罪恶的
 singly `/'sɪŋɡli/` 单独地，各自的，分别的
 
 singular `/'sɪŋɡjələ(r)/` 单数的，奇特的，非凡的
+
+sinister `/ˈsɪnɪstə(r)/` adj. 危险的, 不吉祥的, 凶兆的, 险恶的
 
 sink `/sɪŋk/` 下沉，沉没，渗透，低落，落下，水渠，沟槽，散热器
 
@@ -15803,9 +15699,9 @@ sketch `/sketʃ/` 素描，速写，框架，概述，草图
 
 sketchpad `/'sketʃpæd/` 素描簿
 
-skew `/skjuː/` 歪曲，曲解，倾斜，扭曲
+skew `/skjuː/` adj. 偏的，歪斜的；偏态的；异面的；n. 斜角，倾斜；偏见；偏态；v. 偏离，歪斜；扭转，偏转；歪曲；使（分布）偏态；斜视
 
-skewing `/'skjuːɪŋ/` 斜，偏移，时间滞后
+> DERIVS: skewing `/'skjuːɪŋ/` n. 时(间)滞(后)，(两个相关信号间的)相位差
 
 skim `/skɪm/` 撇去，略读，掠过，滑过，瞒报，脱脂物
 
@@ -15883,9 +15779,9 @@ slump `/slʌmp/` 暴跌，大幅度下跌，猛然瘫坐，使倒下
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
-smallpox `/ˈsmɔːlpɒks/` a highly contagious viral disease characterized by fever and weakness and skin eruption with pustules that form scabs that slough off leaving scars.
+smallpox `/ˈsmɔːlpɒks/` n. 天花
 
-> n. 天花
+> a highly contagious viral disease characterized by fever and weakness and skin eruption with pustules that form scabs that slough off leaving scars.
 >
 > SYN: pox
 >
@@ -15907,6 +15803,8 @@ smoother `/'smuːðə/` 路面平整机，压路机，修光工具
 
 smoothing `/'smuːðɪŋ/` 平滑，滤除
 
+smother `/'smʌðə(r)/` v. 窒息；闷死；用沙等闷住火；忍住；厚厚地或大面积地覆盖
+
 smuggle `/ˈsmʌɡl/` 走私，偷运
 
 smuggler `/'smʌɡlə(r)/` 走私者
@@ -15927,11 +15825,11 @@ sniper `/'snaɪpə(r)/` 狙击手
 
 snippet `/ˈsnɪpɪt/` 小部分，片段，一则（新闻），一小段（谈话），一小条（消息）
 
-snobbish `/'snɒbɪʃ/` relating to, characteristic of, or like a snob.
+snobbish `/'snɒbɪʃ/` adj. 势利的；自命不凡的
 
-> Ex: the writer takes a rather snobbish tone.
+> relating to, characteristic of, or like a snob.
 >
-> adj. 势利的；自命不凡的
+> Ex: the writer takes a rather snobbish tone.
 
 snoop `/snuːp/` 窥探，探听
 
@@ -15962,6 +15860,8 @@ sobriety `/sə'braɪəti/` 清醒，严肃，节制
 societal `/sə'saɪətl/` 社会的
 
 socio `/səʊsi'ːəʊ/` 社会
+
+sociocentrically `/səʊsɪəʊ'sentrɪk/` 社会中心论的，群体中心论的
 
 sociopolitical `/ˌsəʊsiəʊpə'lɪtɪkl/` 社会政治的
 
@@ -16013,6 +15913,8 @@ sophistication `/səˌfɪstɪˈkeɪʃn/` 世故，老练，复杂度，精密
 
 sophistry `/'sɒfɪstri/` 诡辩
 
+sophomore `/'sɒfəmɔː/` n. (中等、专科学校或大学的)二年级学生
+
 sordid `/'sɔːdɪd/` 卑鄙的，不诚实的，肮脏的，破烂的
 
 sore `/sɔː/` 痛的，感到疼痛的，紧迫的，剧烈的，疮，痛处
@@ -16021,9 +15923,9 @@ sorrow `/'sɒrəʊ/` 悲伤，悲痛，懊悔，伤心事
 
 sou `/suː/` 无价值之物
 
-sought `/sɔːt/` 1 that is looked for. 2 being searched for.
+sought `/sɔːt/` v. 寻找
 
-> v. 寻找
+> 1 that is looked for. 2 being searched for.
 >
 > SYN: search, seek, look for, wanted
 >
@@ -16137,6 +16039,8 @@ spill `/spɪl/` 溢出，洒出，涌出，溅出
 
 spin `/spɪn/` 旋转，疾驰，防止，结网，眩晕
 
+spinal `/'spaɪnl/` adj. 脊骨的；脊髓的；尖刺的；尖刺状突起的；n. 脊髓麻醉
+
 spindle `/'spɪndl/` （机械磁盘）主轴，纺锤，轴，细长的人或物
 
 spine `/spaɪn/` 脊椎，脊柱，刺毛
@@ -16167,15 +16071,19 @@ spoil `/spɔɪl/` 溺爱，宠溺，破坏，糟蹋，剧透
 
 spoilage `/ˈspɔɪlɪdʒ/` 变质，腐败
 
+spokeswoman `/ˈspəʊkswʊmən/` n. 女发言人, 女代言人
+
 sponge `/spʌndʒ/` 海绵，多孔布丁，（用湿布）擦，揩油
 
 sponsor `/ˈspɒnsə(r)/` 赞助，主办，义捐，赞助商
 
-spontaneous `/spɒnˈteɪniəs/` performed or occurring as a result of a sudden impulse or inclination and without premeditation or external stimulus.
+> DERIVS: sponsorship `/'spɒnsəʃɪp/` n. 赞助；倡议；保证人地位；教父母身份
 
-> Ex: a spontaneous display of affection.
+spontaneous `/spɒnˈteɪniəs/` adj. 自发的，自然的，本能的；自然产生的
+
+> performed or occurring as a result of a sudden impulse or inclination and without premeditation or external stimulus.
 >
-> adj. 自发的，自然的，本能的；自然产生的
+> Ex: a spontaneous display of affection. 
 
 spoofing `/spuːfɪŋ/` 电子欺诈，电信诈骗
 
@@ -16195,6 +16103,8 @@ spout `/spaʊt/` 喷口，水柱，喷出
 
 sprawl `/sprɔːl/` 伸展四肢，蔓延，爬行
 
+> DERIVS: sprawling `/ˈsprɔːlɪŋ/` adj. 蔓生的;不规则地伸展的
+
 spray `/spreɪ/` 喷洒，浪花，喷剂
 
 spread `/spred/` 传播，散开，散布，范围，差额，幅度
@@ -16213,11 +16123,11 @@ spyware `/'spaɪweə/` 间谍软件
 
 [回到S](#S)--[回到顶部](#英汉词典)
 
-squander `/ˈskwɒndə/` waste (something, especially money or time) in a reckless and foolish manner.
+squander `/ˈskwɒndə/` vt.浪费；挥霍
 
-> Ex: 100 RMB of taxpayers' money has been squandered on administering the tax.
+> waste (something, especially money or time) in a reckless and foolish manner.
 >
-> vt.浪费；挥霍
+> Ex: 100 RMB of taxpayers' money has been squandered on administering the tax. 
 
 squash `/skwɒʃ/` 压扁，压软，南瓜
 
@@ -16239,25 +16149,19 @@ squirrel `/ˈskwɪrəl/` 松鼠
 
 stabilizers `/s'teɪbəlaɪzəz/` 稳定剂
 
+stadium `/'steɪdiəm/` n. 体育场；运动场；[生]期
+
 staff `/stɑːf/` 员工，全体职工，拐杖，棒，五线谱
 
 stage `/steɪdʒ/` 舞台，戏剧，阶段，步骤，组织，策划
 
 stagflation `/stæɡ'fleɪʃn/` 滞涨，停滞性膨胀
 
-stagger `/'stæɡə(r)/` 
+stagger `/'stæɡə(r)/` vt. 使交错；蹒跚；使犹豫；vi. 蹒跚；犹豫；n. 蹒跚；交错安排；adj. 交错的；错开的
 
 > n. 1 an unsteady uneven gait. 
 >
 > v. 1 walk as if unable to control one's movements. 2 walk with great difficulty. 3 to arrange in a systematic order. 4 astound or overwhelm, as with shock.
->
-> vt. 使交错；蹒跚；使犹豫
->
-> vi. 蹒跚；犹豫
->
-> n. 蹒跚；交错安排
->
-> adj. 交错的；错开的
 >
 > Ex: The fellness of the blow staggered him.
 >
@@ -16281,17 +16185,15 @@ stalled `/stɔːld/` 被困住的
 
 stamped `/stæmpt/` 盖上邮戳的
 
+stance `/stæns/` n. 立场；态度；站立姿势
+
 standalone `/standalone/` 独立的，单独的
 
 stannary `/'stænərɪ/` 锡矿
 
-staple `/ˈsteɪpl/` 1 a piece of thin wire with two short right-angled end pieces which are driven by a stapler through sheets of paper to fasten them together. 2 attach or secure with a staple or staples. 3 a main or important element of something. 4 the fibre of cotton or wool is considered with regard to its length and degree of fineness. 5 a center of trade, especially in a specified commodity. 6 main or important, especially in terms of consumption.
+staple `/ˈsteɪpl/` n. U形(订书)钉；主要产物(要素)；原料(地)；adj. 主要的；重要的；vt. 用订书机装订
 
-> n. U形(订书)钉；主要产物(要素)；原料(地)
->
-> adj. 主要的；重要的
->
-> vt. 用订书机装订
+> 1 a piece of thin wire with two short right-angled end pieces which are driven by a stapler through sheets of paper to fasten them together. 2 attach or secure with a staple or staples. 3 a main or important element of something. 4 the fibre of cotton or wool is considered with regard to its length and degree of fineness. 5 a center of trade, especially in a specified commodity. 6 main or important, especially in terms of consumption.
 > 
 > Ex: Merrill stapled a batch of papers together.
 >
@@ -16355,15 +16257,15 @@ stealth `/stelθ/` 秘密行动，鬼鬼祟祟，隐形飞机
 
 steep `/stiːp/` 陡峭，险峻的，急剧的，浸泡，沉浸
 
-steer `/stɪə(r)/` 1 guide or control the movement of (a vehicle, vessel, or aircraft). 2 the type of steering of a vehicle. 3 a piece of advice or information concerning the development of a situation.
+steer `/stɪə(r)/` v. 操纵；驾驶；掌舵；引导
 
+> 1 guide or control the movement of (a vehicle, vessel, or aircraft). 2 the type of steering of a vehicle. 3 a piece of advice or information concerning the development of a situation.
+>
 > Ex: he let Lily steer.
 >
 > Ex: some cars boast four-wheel steer.
 >
 > Ex: the need for the NHS to be given a clear steer as to its future direction.
->
-> v. 操纵；驾驶；掌舵；引导
 
 stellar `/ˈstelə(r)/` 星的，恒星的，主要的，优秀的，精彩的
 
@@ -16379,17 +16281,19 @@ steward `/'stjuːəd/` 乘务员，管家，干事，管理员
 
 stewardess `/ˌstjuːəˈdes/` 空姐，女乘务员
 
-stewardship `/ˈstjuːədʃɪp/` 1 the job of supervising or taking care of something, such as an organization or property.
+stewardship `/ˈstjuːədʃɪp/` n. 管理员、服务员等的职位和职责
 
-> Ex: the funding and stewardship of the NHS.
+> 1 the job of supervising or taking care of something, such as an organization or property.
 >
-> n.管理员、服务员等的职位和职责
+> Ex: the funding and stewardship of the NHS.
 
 sticks `/stɪks/` 郊区，偏远的乡村
 
 sticky `/ˈstɪki/` 粘性的，黏糊糊的
 
 stiff `/stɪf/` 硬的，僵直的，艰难的，生硬的，拘谨的，烈性的，死尸，流浪汉，过于拘谨的人，吝啬鬼，醉鬼
+
+stigma `/'stɪɡmə/` n. 耻辱；污名；n. 柱头
 
 stilt `/stɪlt/` 高跷，支架，支柱
 
@@ -16415,6 +16319,8 @@ stiver `/'staɪvə/` 不值钱的东西(一点点)
 
 stoat `/stəʊt/` 鼬，白鼬
 
+stout `/staʊt/` adj. 结实的；矮胖的；勇敢的；激烈的；n. 矮胖子；烈性啤酒
+
 stowaway `/'stəʊəweɪ/` 逃票乘客，收藏处
 
 straddle `/'strædl/` 跨坐，把两腿叉开，观望
@@ -16423,8 +16329,10 @@ straightforward `/ˌstreɪt'fɔːwəd/` 笔直的，易懂的，坦率的
 
 straightjacket `/ˈstreɪtdʒækɪt/` 紧身衣，束缚
 
-strain `/streɪn/` 1 force (a part of one's body or oneself) to make an unusually great effort. 2 pour (a mainly liquid substance) through a porous or perforated device or material in order to separate out any solid matter. 3 a force tending to pull or stretch something to an extreme or damaging degree. 4 a severe or excessive demand on the strength, resources, or abilities of someone or something. 5 (usually strains) the sound of a piece of music.
+strain `/streɪn/` n. 拉紧；紧张；血统；笔调；（动植物或疾病的）品种；v. 拉紧；劳累；过分使用
 
+> 1 force (a part of one's body or oneself) to make an unusually great effort. 2 pour (a mainly liquid substance) through a porous or perforated device or material in order to separate out any solid matter. 3 a force tending to pull or stretch something to an extreme or damaging degree. 4 a severe or excessive demand on the strength, resources, or abilities of someone or something. 5 (usually strains) the sound of a piece of music.
+>
 > Ex: I stopped and listened, straining my ears for any sound.
 >
 > Ex: strain the custard into a  bow.
@@ -16434,10 +16342,6 @@ strain `/streɪn/` 1 force (a part of one's body or oneself) to make an unusuall
 > Ex: she's under considerable strain.
 >
 > Ex: the distant strains of the brass band grew louder.
->
-> n. 拉紧；紧张；血统；笔调；（动植物或疾病的）品种
->
-> v. 拉紧；劳累；过分使用
 
 strait `/streɪt/` 海峡，水道，困境，狭窄的，困难的
 
@@ -16467,8 +16371,10 @@ stretchability `/ˌstretʃə'bɪlɪtɪ/` 拉伸性，延展性
 
 strict `/strɪkt/` 严格的，严厉的
 
-stride `/straɪd/` 1 walk with long firm steps. 2 cross with one step. 3 bestride;straddle.
+stride `/straɪd/` n. 大步走；一大步；步伐；进步；vt. 跨；跨骑；vi. 迈大步走；跨过；分腿站立
 
+> 1 walk with long firm steps. 2 cross with one step. 3 bestride;straddle.
+>
 > SYN(步态): gait.
 > 
 > SYN(散步): constitutional, hike, promenade, ramble, saunter, stroll, traipse, tramp, trek, trudge, turn.
@@ -16478,12 +16384,6 @@ stride `/straɪd/` 1 walk with long firm steps. 2 cross with one step. 3 bestrid
 > SYN(步行): be a pedestrian, travel on foot.
 > 
 > SYN(走过): stamp, step, trample, tread.
-> 
-> n. 大步走；一大步；步伐；进步
-> 
-> vt. 跨；跨骑
->
-> vi. 迈大步走；跨过；分腿站立
 
 strident `/'straɪdnt/` 刺耳的，吱吱尖叫的，尖锐的
 
@@ -16495,13 +16395,13 @@ strip `/strɪp/` 剥去，脱衣服，扒光
 
 stripe `/straɪp/` 条纹，种类，鞭打，抽打
 
-strive `/strʌɪv/` 1 make great efforts to achieve or obtain something. 2 struggle or fight vigorously.
+strive `/strʌɪv/` vi.奋斗；努力；力求；斗争
 
+> 1 make great efforts to achieve or obtain something. 2 struggle or fight vigorously.
+>
 > Ex: we must strive to secure steady growth.
 >
 > Ex: scholars must strive against bias.
->
-> vi.奋斗；努力；力求；斗争
 
 strobe `/strəʊb/` 频闪闪光灯，频闪观测器，频闪放电管
 
@@ -16583,7 +16483,9 @@ subset `/ˈsʌbsɛt/` 分组，子集
 
 subside `/səbˈsaɪd/` 平息，减弱，消退
 
-subsidiary `/səb'sɪdiəri/` 子公司，附属机构，辅助的，补贴的
+subsidiary `/səb'sɪdiəri/` n. 子公司；附属机构；adj. 辅助的；补贴的；附属的
+
+subsidise `/'sʌbsidaiz/` vt. 给…津贴或补贴; 资助或补助…
 
 subsidy `/ˈsʌbsədi/` 补贴，津贴，补助金
 
@@ -16593,9 +16495,9 @@ subsistence `/səb'sɪstəns/` 生存，生计，存在
 
 subspecies `/'sʌbˌspiːʃiːz/` 亚种
 
-substance `/'sʌbstəns/` 1 a particular kind of matter with uniform properties. 2 the real physical matter of which a person or thing consists and which has a tangible, solid presence. 3 the quality of being important, valid, or significant. 4 the essential nature underlying phenomena, which is subject to changes and accidents.
+substance `/'sʌbstəns/` n. 实质；物质；财产；内容；重要性
 
->  n. 实质；物质；财产；内容；重要性
+> 1 a particular kind of matter with uniform properties. 2 the real physical matter of which a person or thing consists and which has a tangible, solid presence. 3 the quality of being important, valid, or significant. 4 the essential nature underlying phenomena, which is subject to changes and accidents. 
 >
 >  SYN: physical entity, part, portion, component part, component, content, cognitive content.
 >
@@ -16603,9 +16505,9 @@ substance `/'sʌbstəns/` 1 a particular kind of matter with uniform properties.
 >
 >  Ex: a malleable substance.
 
-substantial `/səb'stænʃl/` 1 of considerable importance, size, or worth. 2 concerning the essentials of something. 3 real and tangible rather than imaginary.
+substantial `/səb'stænʃl/` adj. 坚固的；结实的；大量的，可观的；重大的，重要的；实质的，基本的，大体上的
 
-> adj. 坚固的；结实的；大量的，可观的；重大的，重要的；实质的，基本的，大体上的
+> 1 of considerable importance, size, or worth. 2 concerning the essentials of something. 3 real and tangible rather than imaginary.
 >
 > SYN: considerable, essential, wholesome, sound
 >
@@ -16613,7 +16515,7 @@ substantial `/səb'stænʃl/` 1 of considerable importance, size, or worth. 2 co
 >
 > Ex: The article is devoid of substantial matter.
 >
-> DERIVATIVES: substantially `/səbˈstanʃəli/` 大体上；实质上；非常
+> DERIVS: substantially `/səbˈstanʃəli/` 大体上；实质上；非常
 
 substitute `/'sʌbstɪtjuːt/` 代替，替代品，替补队员
 
@@ -16625,15 +16527,15 @@ subsume `/səb'sjuːm/` 归入，纳入，包含，包括
 
 subtle `/ˈsʌtl/` 细微的，微妙的，精妙的，敏锐的，隐约的
 
-subtly `/'sʌtli/` 1 in a manner that is so delicate or precise as to be difficult to analyse or describe. 2 in a clever and indirect way, in order to achieve something.
+subtly `/'sʌtli/` adv. 敏锐地；巧妙地；精细地
 
-> Ex: When you must indicate your plan, do so as subtly as you can.
+> 1 in a manner that is so delicate or precise as to be difficult to analyse or describe. 2 in a clever and indirect way, in order to achieve something.
 >
-> adv. 敏锐地；巧妙地；精细地
+> Ex: When you must indicate your plan, do so as subtly as you can. 
 
 subtract `/səbˈtrækt/` 减少，减去
 
-subtraction `/səb'trækʃən/` （数学）减法，扣除
+> DERIVS: subtraction `/səb'trækʃən/` （数学）减法，扣除
 
 subtree `/səbt'riː/` （计算机）子树
 
@@ -16675,8 +16577,10 @@ summarization `/ˌsʌmərɪ'zeɪʃən/` 摘要，概要
 
 summarize `/'sʌməraɪz/` 概述，摘要而言
 
-summary `/'sʌməri/` 1 a brief statement or account of the main points of something. 2 not including needless details or formalities; brief. 3 (of a judicial process) conducted without the customary legal formalities.
+summary `/'sʌməri/` n. 摘要；总结；adj. 简略的；概要的；即决的
 
+> 1 a brief statement or account of the main points of something. 2 not including needless details or formalities; brief. 3 (of a judicial process) conducted without the customary legal formalities.
+>
 > SYN(概要的): brief.
 >
 > SYN(速决的): hasty.
@@ -16690,10 +16594,6 @@ summary `/'sʌməri/` 1 a brief statement or account of the main points of somet
 > Ex: summary financial statements.
 >
 > Ex: summary arrest.
->
-> n. 摘要；总结
->
-> adj. 简略的；概要的；即决的
 
 summation `/sʌ'meɪʃn/` 总结，加法，总和，有代表性的整体
 
@@ -16743,13 +16643,15 @@ supertype `/suː'pərtaɪp/` （计算机）父类型
 
 supervise `/ˈsuːpəvaɪz/` 监督，指导，管理
 
-supervisor `/'suːpəvaɪzə(r)]/` a person who supervises a person or an activity.
+supervisor `/'suːpəvaɪzə(r)]/` n. 监督者, 管理者
 
-> n. 监督者, 管理者
+> a person who supervises a person or an activity.
 
 supplant `/səˈplɑːnt/` 代替，排挤掉，替代物
 
 supplier `/sə'plaɪə(r)/` 供应商
+
+supportive `/sə'pɔːtɪv/` adj. 支持的
 
 suppose `/səˈpəʊz/` 认为，设想，假定，推测
 
@@ -16775,19 +16677,19 @@ surmount `/səˈmaʊnt/` 克服，战胜，越过，登上...的最高点
 
 surname `/ˈsɜːneɪm/` 姓，给...加姓
 
-surpass `/ɪmˈpɛrətɪv/` 1 exceed; be greater than.
+surpass `/ɪmˈpɛrətɪv/` vt. 超越；胜过
 
+> 1 exceed; be greater than.
+>
 > Ex: he continued to surpass me at all games.
 >
 > SYN: beat, better, do better than, eclipse, exceed, excel, outclass, outdo, outshine, outstrip, overshadow, top, transcend.
->
-> vt.超越；胜过
 
 surplus `/ˈsɜːpləs/` 盈余，过剩，顺差
 
 surreptitiously `/ˌsʌrəp'tɪʃəsli/` 偷偷摸摸地，暗中地
 
-surrogate `/ˈsɜːrəɡət/` 代理，代孕，代表，替代
+surrogate `/ˈsɜːrəɡət/` n. 代理人；代用品；代孕者；adj. 替代的
 
 surround `/sə'raʊnd/` 包围，环绕
 
@@ -16843,6 +16745,8 @@ swelling `/ˈswelɪŋ/` 膨胀，肿胀，增大
 
 swiftness `/ˈswɪftnəs/` 迅速，敏捷，迅速性
 
+swollen `/'swəʊlən/` adj. 肿胀的，浮肿的；浮夸的；激动兴奋的
+
 ### sx
 
 [回到S](#S)--[回到顶部](#英汉词典)
@@ -16879,7 +16783,7 @@ syndrome `/'sɪndrəʊm/` 症候群，综合症
 
 synergy `/'sɪnədʒi/` 协同作用，增效作用
 
-synonym `/ˈsɪnənɪm/` SYN
+synonym `/ˈsɪnənɪm/` SYN，近义词
 
 synonymous `/sɪ'nɒnɪməs/` 同义的，暗示的
 
@@ -16913,47 +16817,35 @@ tableaus `/'tæbləʊz/` 生动的场面
 
 tableware `/ˈteɪblwer/` 餐具
 
-tabloid `/ˈtæblɔɪd/` 1 a newspaper having pages half the size of those of the average broadsheet, typically popular in style and dominated by sensational stories.
+tabloid `/ˈtæblɔɪd/` n. 小报；小型画报；药片；adj. 扼要的
 
+> 1 a newspaper having pages half the size of those of the average broadsheet, typically popular in style and dominated by sensational stories.
+>
 > Ex: the tabloid press.
->
-> n. 小报；小型画报；药片
->
-> adj. 扼要的
 
-taboo `/təˈbuː/` 1 a social or religious custom prohibiting or restricting a particular practice or forbidding association with a particular person, place, or thing. 2 prohibited or restricted by social custom. 3 place under a taboo.
+taboo `/təˈbuː/` n. 禁忌；禁止接近；禁止使用；adj. 禁忌的；vt. 禁忌
 
+> 1 a social or religious custom prohibiting or restricting a particular practice or forbidding association with a particular person, place, or thing. 2 prohibited or restricted by social custom. 3 place under a taboo.
+>
 > Ex: the use of violence must remain a taboo in our society.
 >
 > Ex: sex was a taboo subject.
 >
 > Ex: traditional societies taboo female handling of food during this period.
->
-> n. 禁忌；禁止接近；禁止使用
->
-> adj. 禁忌的
->
-> vt. 禁忌
 
 tabular `/'tæbjələ(r)/` 制成表的，扁平的
 
-tacit `/'tæsɪt/` understood or implied without being stated.
+tacit `/'tæsɪt/` adj. 心照不宣的；缄默的；默示的
 
-> Ex: your silence may be taken to mean tacit agreement.
+> understood or implied without being stated.
 >
-> adj. 心照不宣的；缄默的；默示的
+> Ex: your silence may be taken to mean tacit agreement.
 
-tackle `/ˈtækl/` 
+tackle `/ˈtækl/` vt. 解决；应付；vt. & vi. 捉住；扭倒；n. 拦截；擒抱, 器具，器械，用具, 滑车，滑轮组
 
 > n. 1 the equipment required for a task or sport. 2 a mechanism consisting of ropes, pulley blocks, hooks, or other things for lifting heavy objects. 3 an act of playing the ball, or attempting to do so, when it is in the possession of an opponent. 4 a player who lines up next to the end along the line of scrimmage.
 >
 > v. 1 make determined efforts to deal with (a problem or difficult task). 2 try to take the ball from (an opponent) by intercepting them.
->
-> vt. 解决；应付
->
-> vt. & vi. 捉住；扭倒
->
-> n. 拦截；擒抱, 器具，器械，用具, 滑车，滑轮组
 >
 > Ex: fishing tackle.
 >
@@ -17027,11 +16919,11 @@ tavern `/ˈtævən/` 客栈，酒馆，小旅店
 
 tawdry `/ˈtɔːdri/` 下流的，粗俗的，卑鄙的
 
-taxation `/takˈseɪʃn/` 1 the leavying of tax.
+taxation `/takˈseɪʃn/` n. 课税；征税；税金
 
-> Ex: the progressive nature of taxation.
+> 1 the leavying of tax.
 >
-> n.课税；征税；税金
+> Ex: the progressive nature of taxation.
 
 taxicab `/ˈtæksɪkæb/` 出租车
 
@@ -17055,27 +16947,25 @@ taxpayer `/'tækspeɪə(r)/` 纳税人
 
 [回到T](#T)--[回到顶部](#英汉词典)
 
-teach `/tiːtʃ/` 
+teach `/tiːtʃ/` vt. 教；教导；教授；教训；vi. 给予指导
 
 > v. 1 impart knowledge to or instruct (someone) as to how to do something. 2 cause (someone) to learn or understand something by example or experience.
 >
 > n. a teacher.
 >
-> vt. 教；教导；教授；教训
->
-> vi. 给予指导
->
 > Ex: she taught him to read.
 >
 > Ex: traveling taught me that not everyone shared my beliefs.
 >
-> DERIVATIVES: taught `/tɔːt/` （teach的过去式）教导，教育
+> DERIVS: taught `/tɔːt/` （teach的过去式）教导，教育
 
 technique `/tɛkˈniːk/` 方法，技巧
 
 technological `/ˌteknə'lɒdʒɪkl/` 科技的，工艺的
 
 tectonic `/tekˈtɒnɪk/` 地壳构造的，构造学
+
+teddy `/'tedɪ/` n. 连衫衬裤；泰迪玩具熊
 
 tedious `/ˈtiːdiəs/` 沉闷的，乏味的，冗长的
 
@@ -17127,7 +17017,7 @@ tennessee `/ˌtenə'siː/` 田纳西州
 
 tense `/tens/` 拉紧，紧张的，绷紧的
 
-tension `/ˈtenʃn/` 紧张，矛盾，对立，烦躁
+tension `/ˈtenʃn/` n. 张力，拉力；紧张，不安；电压；vt. 使紧张；使拉紧
 
 tent `/tent/` 帐篷，宿营
 
@@ -17155,6 +17045,8 @@ ternary `/'tɜːnərɪ/` 三元，三个，三重
 
 terrace `/ˈterəs/` 梯田，足球场阶梯看台，排屋
 
+terrestrial `/təˈrestriəl/` adj. 地球的；陆上的；陆栖的；n. 地球人;陆地生物
+
 terrified `/'terɪfaɪd/` 恐惧的，受惊吓的
 
 territory `/'terətri/` 领土，领域，版图
@@ -17167,15 +17059,15 @@ testament `/'testəmənt/` 证明，自白，遗嘱，圣经
 
 testify `/ˈtestɪfaɪ/` 出庭，作证，证明，证实
 
-testimony `/ˈtɛstɪməni/` a formal written or spoken statement, especially one given in a court of law.
+testimony `/ˈtɛstɪməni/` n. (法庭上证人的)证词, 证明, 证据
 
-> n. (法庭上证人的)证词, 证明, 证据
+> a formal written or spoken statement, especially one given in a court of law.
 >
 > SYN: evidence, assertion, averment, asseveration
 >
 > Ex: the testimony of an eyewitness.
 >
-> DERIVATIVES: testimonial `/ˌtestɪ'məʊniəl/` 证明书，奖品，感谢信
+> DERIVS: testimonial `/ˌtestɪ'məʊniəl/` 证明书，奖品，感谢信
 
 tex `/tɛx/` （计算机）编程语言tex
 
@@ -17202,6 +17094,8 @@ thar `/θɑr/` 塔尔沙漠
 thatch `/θætʃ/` 茅草，茅草屋顶，浓密的头发
 
 theater `/ˈθɪətə(r)/` 剧院，剧场，戏剧，战场
+
+theft `/θeft/` n. 偷窃
 
 theme `/θiːm/` 主题，题目，主旋律，基调
 
@@ -17273,15 +17167,11 @@ throng `/θrɒŋ/`人群，一大群，大量，群集，挤满
 
 through `/θruː/` 通过，穿过，直达
 
-throughout `/θruː'aʊt/` 
+throughout `/θruː'aʊt/` prep. (表示时间)自始至终;在…期间, (表示区域)遍及…地域;遍及…场所；adv. 处处, 始终, 在所有方面
 
 > prep. in every part of (a place or object).
 >
 > adv. in every part of a place or object.
->
-> prep. (表示时间)自始至终;在…期间, (表示区域)遍及…地域;遍及…场所
->
-> adv. 处处, 始终, 在所有方面
 >
 > Ex: the event had repercussions throughout Europe.
 >
@@ -17427,8 +17317,10 @@ torn `/tɔːn/` 破碎的，撕掉，扯下，扰乱
 
 torpor `/ˈtɔːpə(r)/` 麻木，迟钝，死气沉沉，懒散，不活泼
 
-toss `/tɒs/` 1 throw (something) somewhere lightly or casually. 2 move or cause to move from side to sider or back and forth. 3 search (a place). 4 an act or instance of tossing something.
+toss `/tɒs/` n. 投掷；震荡；v. 投掷；摇荡；辗转
 
+> 1 throw (something) somewhere lightly or casually. 2 move or cause to move from side to sider or back and forth. 3 search (a place). 4 an act or instance of tossing something.
+>
 > Ex: she tossed me a box of matches.
 >
 > Ex: the trees tossed in the wind.
@@ -17438,20 +17330,12 @@ toss `/tɒs/` 1 throw (something) somewhere lightly or casually. 2 move or cause
 > Ex: a defiant toss of her head.
 > 
 > Ex: As the danger drew near they would wheel about, toss their heads in the air, and dive in a twinkling into their burrows.
->
-> n. 投掷；震荡
->
-> v. 投掷；摇荡；辗转
 
-totalitarian `/təʊˌtæləˈteəriən/` 
+totalitarian `/təʊˌtæləˈteəriən/` adj. 极权主义的；n. 极权主义者, 极权主义
 
 > adj. relating to a system of government that is centralized and dictatorial and requires complete subservience to the state.
 >
 > n. a person advocating a totalitarian system of government.
->
-> adj. 极权主义的
->
-> n. 极权主义者, 极权主义
 >
 > SYN: disciple, adherent
 >
@@ -17464,6 +17348,8 @@ touchdown `/ˈtʌtʃdaʊn/` 着陆，降落，触地得分
 touching `/ˈtʌtʃɪŋ/` 感人的，动人的
 
 tough `/tʌf/` 艰苦的，艰难的，严厉的，忍受，暴徒，恶棍
+
+> DERIVS: tougher `/tʌfə/` adj. 更困难的
 
 tourism `/'tʊərɪzəm/` 旅游业，观光
 
@@ -17505,11 +17391,11 @@ tradesman `/'treɪdzmən/` 零售商，工匠
 
 traffic `/'træfɪk/` 交通流量，游览，不正当生意（走私）
 
-tragedy `/ˈtradʒɪdi/` 1 an event causing great suffering, destruction, and distress, such as a serious accident, crime, or natural catastrophe. 2 a play dealing with tragic events and having an unhappy ending, especially one concerning the downfall of the main character.
+tragedy `/ˈtradʒɪdi/` n.悲剧；灾难；惨事
 
-> Ex: his life had been plagued by tragedy.
+> 1 an event causing great suffering, destruction, and distress, such as a serious accident, crime, or natural catastrophe. 2 a play dealing with tragic events and having an unhappy ending, especially one concerning the downfall of the main character.
 >
-> n.悲剧；灾难；惨事
+> Ex: his life had been plagued by tragedy.
 
 trail `/treɪl/` 小径，记号，追踪，足迹，失利
 
@@ -17517,11 +17403,11 @@ trailing `/'treɪlɪŋ/` 蔓生的，拖尾
 
 traipse `/treɪps/` 闲逛，游荡，无精打采者
 
-trait `/tret/` a distinguishing quality or characteristic, typically one belonging to a person.
+trait `/tret/` n. 特征；特点；少许；一笔
 
-> Ex: the traditionally British trait of self-denigration.
+> a distinguishing quality or characteristic, typically one belonging to a person.
 >
-> n. 特征；特点；少许；一笔
+> Ex: the traditionally British trait of self-denigration.
 
 trajectory `/trə'dʒektəri/` 轨道，弹道，轨迹
 
@@ -17583,7 +17469,9 @@ trapped `/'træpid/` 诱捕，陷入困境的，受到限制的，捕获的，�
 
 trapping `/'træpɪŋ/` 装饰物，象征的符号
 
-traumatic `/trɔː'mætɪk/` 创伤的，外伤的
+trauma `/'trɔːmə/` n. 创伤；外伤
+
+> DERIVS: traumatic `/trɔː'mætɪk/` 创伤的，外伤的
 
 travel `/'trævl/` 旅行，移动，去某地，传播，快速移动
 
@@ -17605,17 +17493,19 @@ treatment `/ˈtriːtm(ə)nt/` 对待，论述，探讨，治疗，处理
 
 trek `/trek/` 长途跋涉，艰苦跋涉
 
-tremendous `/trəˈmendəs/` 1 very great in amount, scale, or intensity. 2 inspiring awe or dread.
+tremendous `/trəˈmendəs/` adj. 巨大的；惊人的
 
-> Ex: there was a tremendous explosion.
+> 1 very great in amount, scale, or intensity. 2 inspiring awe or dread.
 >
-> adj. 巨大的；惊人的
+> Ex: there was a tremendous explosion.
 
 tremendously `/trə'mendəsli/` 惊人地，非常，十分
 
 trench `/trentʃ/` 沟，渠，壕沟，战壕
 
 trend `/trend/` 倾向，趋势，转向，方位
+
+trial `/'traɪəl/` n. 审讯；试验；试用；尝试；预赛或选拔赛；讨厌的事；惹麻烦的人；v. 测试
 
 triangle `/'traɪæŋɡl/` 三角(形)
 
@@ -17639,11 +17529,11 @@ trickle `/ˈtrɪkl/` 涓涓细流，流淌，滴水
 
 tricks `/trɪks/` 戏法
 
-tricky `/ˈtrɪki/` 1 (of a task, problem, etc.) requiring care and skill because difficult or awkward. 2 deceitful or crafty.
+tricky `/ˈtrɪki/` adj.棘手的；狡猾的；巧妙的
 
-> applying eyeliner can be a tricky business.
+> 1 (of a task, problem, etc.) requiring care and skill because difficult or awkward. 2 deceitful or crafty.
 >
-> adj.棘手的；狡猾的；巧妙的
+> applying eyeliner can be a tricky business. 
 
 trie `/t'riː/` （计算机）特里结构，单词查找树
 
@@ -17696,6 +17586,8 @@ truly `/'truːli/` 真实的，真诚的，正确的
 trumpet `/ˈtrʌmpɪt/` 喇叭，小号，宣扬，鼓吹
 
 truncation `/trʌŋˈkeɪʃn/` 切除，截断，截词
+
+trustee `/trʌs'tiː/` n. 受托人；托管人；vt. 移交（财产或管理权）给受托人
 
 trustworthy `/ˈtrʌstwɜːði/` 值得信赖的，可靠的
 
@@ -17763,19 +17655,19 @@ twig `/twɪɡ/` 理解，领悟，小枝，嫩枝
 
 twine `/twaɪn/` 麻绳，合股线，缠绕，盘绕
 
-twist `/twɪst/` 扭曲，弯曲，转动，旋转
+twist `/twɪst/` v. 缠绕；捻；搓；拧；扭曲；n. 拧；捻；扭曲；盘旋；弯曲处
 
-twisted `/'twɪstɪd/` 扭曲的，喝醉的，古怪的
+> DERIVS: twisted `/'twɪstɪd/` 扭曲的，喝醉的，古怪的
 
-twofold `/'tuːfəʊld/` 1 twice as great or as numerous. 2 so as to double; to twice the number or amount.
+twofold `/'tuːfəʊld/` adj. 两倍的；双重的
 
+> 1 twice as great or as numerous. 2 so as to double; to twice the number or amount.
+>
 > Ex: a twofold increase in the risk.
 >
 > Ex: use increased more than twofold from 1979 to 1989.
 > 
 > Ex: Its problem is twofold: to arrange the events in a sequence of time and to reveal their significance.
->
-> adj. 两倍的；双重的
 
 ### tx
 
@@ -17797,9 +17689,9 @@ typist `/'taɪpɪst/` 打字员
 
 typo `/'taɪpəʊ/` 打字排版错误
 
-tyrannical `/tɪ'rænɪkl/` exercising power in a cruel or arbitrary way.
+tyrannical `/tɪ'rænɪkl/` adj. 暴君的, 暴君似的, 专制的；专横的
 
-> adj. 暴君的, 暴君似的, 专制的；专横的
+> exercising power in a cruel or arbitrary way.
 >
 > SYN: dictatorship, absolutism, author
 >
@@ -17809,9 +17701,9 @@ tyrannical `/tɪ'rænɪkl/` exercising power in a cruel or arbitrary way.
 
 tyranny `/'tɪrəni/` 暴政，苛政，专制
 
-tyrant `/ˈtaɪrənt/` 1 a cruel and oppressive ruler. 2 a tyrant flycatcher.
+tyrant `/ˈtaɪrənt/` n. 专制统治者；暴君, 暴君似的人；专横的人, 严酷的事物，苛刻的事物, (古希腊的)僭主，僭王
 
-> n. 专制统治者；暴君, 暴君似的人；专横的人, 严酷的事物，苛刻的事物, (古希腊的)僭主，僭王
+> 1 a cruel and oppressive ruler. 2 a tyrant flycatcher.
 >
 > SYN: dictator, potentate, ruler, swayer, person, individual, someone
 >
@@ -17837,9 +17729,9 @@ tyre `/'taɪə(r)/` 轮胎（=tire）
 
 [回到U](#U)--[回到顶部](#英汉词典)
 
-ubiquitous `/juːˈbɪkwɪtəs/` present, appearing, or found everywhere.
+ubiquitous `/juːˈbɪkwɪtəs/` adj. 到处存在的
 
-> adj.到处存在的
+> present, appearing, or found everywhere.
 
 ubiquity `/juː'bɪkwətɪ/` 到处存在，(同时的)普遍存在
 
@@ -17961,23 +17853,23 @@ undergo `/ˌʌndə'ɡəʊ/` 经历，经受，遭受
 
 underlie `/ˌʌndəˈlaɪ/`  位于...之下，构成，作为...的原因
 
-undermine `/ˌʌndəˈmʌɪn/` 1 erode the base or foundation of (a rock formation). 2 lessen the effectiveness, power, or ability of especially gradually or insidiously.
+undermine `/ˌʌndəˈmʌɪn/` vt.逐渐削弱；暗中损害；在...下挖；从根基处损害
 
+> 1 erode the base or foundation of (a rock formation). 2 lessen the effectiveness, power, or ability of especially gradually or insidiously.
+>
 > Ex: the flow of water had undermined pillars supporting the roof.
 >
 > Ex: this could undermine years of hard work.
->
-> vt.逐渐削弱；暗中损害；在...下挖；从根基处损害
 
 underneath `/ˌʌndəˈniːθ/` 底面，底部，底下
 
 underpin `/ˌʌndə'pɪn/` 从下头支持，支撑
 
-underprivileged `/ʌndə'prɪvɪlɪdʒd/` (of a person) not enjoying the same standard of living or rights as the majority of people in a society.
+underprivileged `/ʌndə'prɪvɪlɪdʒd/` adj. 贫穷的；社会底层的；被剥夺基本社会权利的
 
-> Ex: needy and underprivileged members of the community.
+> (of a person) not enjoying the same standard of living or rights as the majority of people in a society.
 >
-> adj. 贫穷的；社会底层的；被剥夺基本社会权利的
+> Ex: needy and underprivileged members of the community.
 
 underscore `/ˌʌndəˈskɔː(r) /` 下划线，底线，强调
 
@@ -17985,8 +17877,10 @@ undersold `/ˌʌndə'səʊld/` 低价出售
 
 understaffed `/ˌʌndə'stɑːft/` 人员不足的
 
-understand `/ʌndə'stænd/` 1 perceive the intended meaning of (words, a language, or a speaker). 2 interpret or view (something) in a particular way. 3 be sympathetically or knowledgeably aware of the character or nature of.
+understand `/ʌndə'stænd/` v. 懂得；明白；理解；认识到；听说；获悉
 
+> 1 perceive the intended meaning of (words, a language, or a speaker). 2 interpret or view (something) in a particular way. 3 be sympathetically or knowledgeably aware of the character or nature of.
+>
 > SYN(理解): appreciate, apprehend, comprehend, cotton on to, decipher, decode, fathom, follow, gather, get, get to the bottom of, grasp, interpret, know, learn, make out, make sense of, master, perceive, realize, recognize, see, take in, twig.
 > 
 > SYN(了解): empathize with, sympathize with.
@@ -17996,8 +17890,6 @@ understand `/ʌndə'stænd/` 1 perceive the intended meaning of (words, a langua
 > Ex: as the term is usually understood, legislation refers to regulations and directives.
 >
 > Ex: I understand how you feel.
->
-> v. 懂得；明白；理解；认识到；听说；获悉
 
 understock `/ˌʌndə'stɒk/` 存货不足
 
@@ -18055,15 +17947,15 @@ unintended `/ˌʌnɪn'tendɪd/` 非计划中的，非故意的
 
 unintentional `/ˌʌnɪn'tenʃənl/` 非故意的，无心的
 
-unique `/ju'niːk/` 1 being the only one of its kind; unlike anything else. 2 a unique person or thing.
+unique `/ju'niːk/` adj. 独特的；独一无二的；稀罕的
 
+> 1 being the only one of its kind; unlike anything else. 2 a unique person or thing.
+>
 > Ex: this discovery was unique in history.
 >
 > Ex: some of Lamb's writings were so memorably beautiful as to be uniques in their class.
 >
 > Ex: Don't be afraid to be unique or speak your mind, because that's what makes you different from everyone else.
->
-> adj. 独特的；独一无二的；稀罕的
 
 unison `/'juːnɪsn/` 一致行动，(歌唱或演奏)齐声
 
@@ -18123,15 +18015,15 @@ unsolicited `/ˌʌnsə'lɪsɪtɪd/` 未经请求的，主动提供的
 
 unsubstantiated `/ˌʌnsəbˈstænʃieɪtɪd/` 未经证实的
 
-unsuccessful `/ʌnsək'sesfʊl/` not successful
+unsuccessful `/ʌnsək'sesfʊl/` adj. 不成功的；失败的
 
+> not successful
+>
 > SYN(无用的): abortive, failed, fruitless, futile, ill-fated, ineffective, ineffectual, lossmaking, sterile, unavailing, unlucky, unproductive, unprofitable, unsatisfactory, useless, vain.
 > 
 > SYN(失败的): beaten, defeated, losing.
 >
 > Ex: an unsuccessful attempt to enter Parliament.
->
-> adj. 不成功的；失败的
 
 unsustainable `/ˌʌnsə'steɪnəbl/` 不能持续的，无法支撑的，无法维持的
 
@@ -18147,9 +18039,9 @@ unwholesome `/ˌʌn'həʊlsəm/` 有害健康的，令人生厌地
 
 unwieldy `/ʌnˈwiːldi/` 笨重的，笨手笨脚的，不灵巧的
 
-unwise `/ʌn'waɪz/` (of a person or action) not wise or sensible.
+unwise `/ʌn'waɪz/` adj. 不明智的；愚蠢的；轻率的
 
-> adj. 不明智的；愚蠢的；轻率的
+> (of a person or action) not wise or sensible.
 >
 > SYN: foolish, impolitic
 >
@@ -18285,11 +18177,11 @@ vagrants `/'veɪɡrənts/` 流浪乞讨人员
 
 vague `/veɪɡ/` 含糊的，模糊的，不明确的
 
-vain `/veɪn/` 1 having or showing an excessively high opinion of one's appearance, abilities, or worth. 2 producing no result; useless.
+vain `/veɪn/` adj. 自负的；徒劳的；无效的；虚荣的
 
-> Ex: their flattery made him vain.
+> 1 having or showing an excessively high opinion of one's appearance, abilities, or worth. 2 producing no result; useless.
 >
-> adj. 自负的；徒劳的；无效的；虚荣的
+> Ex: their flattery made him vain. 
 
 valentine `/ˈvæləntaɪn/` 情人节
 
@@ -18306,6 +18198,8 @@ validly `/'vælɪdli/` 正当地，妥当地
 valley `/'væli/` 山谷，溪谷，流域
 
 valuation `/ˌvæljuˈeɪʃn/` 估价，评估
+
+vampire `/'væmpaɪə/` n. 吸血蝠；吸血鬼；高利贷者；(舞台上的)活板门；adj. (似)吸血鬼的
 
 van `/væn/` 先导，先锋，运货
 
@@ -18331,15 +18225,15 @@ varying `/'veərɪŋ/` 不同的
 
 vassal `/'væsl/` 诸侯，附庸，属国，隶属的
 
-vast `/vɑːst/` of very great extent or quantity; immense.
+vast `/vɑːst/` adj. 巨大的；广阔的
 
+> of very great extent or quantity; immense.
+>
 > Ex: a vast plain full of orchards.
 >
 > Ex: It ought to be neither so vast that no one person can encompass it nor so narrow and trivial that no one cares.
 >
-> adj. 巨大的；广阔的
->
-> DERIVATIVES: vastly `/'vɑːstli/` 极大地，广大地
+> DERIVS: vastly `/'vɑːstli/` 极大地，广大地
 
 vault `/vɔːlt/` 金库，保险库，跳跃，腾跃
 
@@ -18417,7 +18311,7 @@ verse `/vɜːs/` 诗句，歌曲段落
 
 versus `/'vɜːsəs/` 对抗，与...相对
 
-vertebrate `/ˈvɜːtɪbrət/` 脊椎动物
+vertebrate `/ˈvɜːtɪbrət/` n. 脊椎动物；adj. 有脊椎的；脊椎动物的
 
 vertices `/'vɜːteks/` （几何学）顶点，最高点，头顶
 
@@ -18457,27 +18351,29 @@ viable `/'vaɪəbl/` 可行的，能生存的
 
 vibration `/vaɪˈbreɪʃn/` 振动，颤动，犹豫
 
-vicarious `/vɪ'keəriəs/` 1 experienced in the imagination through the feelings or actions of another person. 2 acting or done for another.
+vicarious `/vɪ'keəriəs/` adj. 代理的；担任代理的；替身的；代替性的；有同感的
 
+> 1 experienced in the imagination through the feelings or actions of another person. 2 acting or done for another.
+> 
 > Ex: this catalogue brings vicarious pleasure in luxury living.
->
-> adj. 代理的；担任代理的；替身的；代替性的；有同感的
 
 vice `/vaɪs/` 缺点，恶习，邪恶，罪行，生理缺陷，副的，代替，代理的，老虎钳
 
-vicious `/ˈvɪʃəs/` 1 deliberately cruel or violent. 2 immoral. 3 (of language or a line of reasoning) imperfect; defective.
+vicious `/ˈvɪʃəs/` adj.恶毒的；恶意的；剧烈的；堕落的
 
+> 1 deliberately cruel or violent. 2 immoral. 3 (of language or a line of reasoning) imperfect; defective.
+>
 > Ex: the dog was vicious and likely to bite.
 >
 > Ex: every soul on earth, virtuous or vicious, shall perish.
->
-> adj.恶毒的；恶意的；剧烈的；堕落的
 
 vicissitudes `/vɪ'sɪsɪtjuːdz/` (人生的)盛衰，变迁
 
-victim `/ˈvɪktɪm /` a person harmed, injured, or killed as a result of a crime, accident, or other event or action.
+victim `/ˈvɪktɪm /` n.牺牲者；受害人；牺牲品
 
-> n.牺牲者；受害人；牺牲品
+> a person harmed, injured, or killed as a result of a crime, accident, or other event or action.
+>
+> DERIVS: victimise `/ˈvɪktəˌmaɪz/` vt. 责怪或处罚某人不当(使之受冤或代人受过)；不正当地使某人受损害或受苦难；欺负某人
 
 victual `/'vɪtl/` 食物，供应食物
 
@@ -18485,13 +18381,13 @@ victualling `/'vɪtəlɪŋ/` 装载粮食
 
 videocassette `/ˌvɪdɪoʊkə'set/` 录像带
 
-vie `/vʌɪ/` 1 compete eagerly with someone in order to do or achieve something.
+vie `/vʌɪ/` v.竞争
 
+> 1 compete eagerly with someone in order to do or achieve something.
+>
 > Ex: the athletes were vying for a place in the British team.
 >
-> v.竞争
->
-> DERIVATIVES: vying `/ˈvaɪɪŋ/` 竞争的，竞赛的
+> DERIVS: vying `/ˈvaɪɪŋ/` 竞争的，竞赛的
 
 viewpoints `/v'juːpɔɪnts/` 观点
 
@@ -18543,7 +18439,7 @@ virtue `/'vɜːtʃuː/` 美德，德行，优点，贞操
 
 virtuous `/virtuous/` 有品德的，贞洁的
 
-viscous `/ˈvɪskəs/` 粘稠的，粘性的
+viscous `/ˈvɪskəs/` adj. 粘稠的，粘性的
 
 visible `/ˈvɪzəbl/` 可见的，明显的
 
@@ -18553,8 +18449,10 @@ visualize `/'vɪʒuəlaɪz/` 看得见，形象化，设想
 
 visualizer `/'vɪzjʊəlaɪzə/` 想象者
 
-vital `/ˈvʌɪtl/` 1 absolutely necessary; essential. 2 full of energy; lively. 3 fatal. 4 the body's important internal organs.
+vital `/ˈvʌɪtl/` adj. 至关重要的；有活力的；生死攸关的
 
+> 1 absolutely necessary; essential. 2 full of energy; lively. 3 fatal. 4 the body's important internal organs.
+>
 > Ex: secrecy is of vital importance.
 >
 > Ex: a beautiful, vital girl.
@@ -18562,8 +18460,6 @@ vital `/ˈvʌɪtl/` 1 absolutely necessary; essential. 2 full of energy; lively.
 > Ex: the wound is vital.
 >
 > Ex: he felt the familiar knot contract in his vitals.
->
-> adj. 至关重要的；有活力的；生死攸关的
 
 vitalist `/vaɪtəlɪst/` 活力论者
 
@@ -18609,13 +18505,11 @@ vociferous `/və(ʊ)'sɪf(ə)rəs/` 吵吵嚷嚷的，大声叫喊的
 
 vogue `/vəʊɡ/` 时尚，流行，风尚，时兴
 
-volatile `/ˈvɒlətʌɪl/` 1 (of a substance) easily evaporated at normal temperatures. 2 liable to change rapidly and unpredictably, especially for the worse. 3 (of a computer's memory) retaining data only as long as there is a power supply connected. 4 a volatile substance.
+volatile `/ˈvɒlətʌɪl/` adj. 不稳定的；反复无常的；易挥发的；n. 挥发物
 
+> 1 (of a substance) easily evaporated at normal temperatures. 2 liable to change rapidly and unpredictably, especially for the worse. 3 (of a computer's memory) retaining data only as long as there is a power supply connected. 4 a volatile substance.
+>
 > Ex: volatile solvents such as petroleum ether, hexane, and benzene.
-> 
-> adj. 不稳定的；反复无常的；易挥发的
-> 
-> n. 挥发物
 
 volcano `/vɒlˈkeɪnəʊ/` 火山
 
@@ -18627,11 +18521,11 @@ volunteer `/ˌvɒlənˈtɪə(r)/` 志愿者，自愿做
 
 voyage `/ˈvɔɪɪdʒ/` 航海，航行
 
-voyeurism `/vwɑ:'jə:rizəm/` the practice of gaining sexual pleasure from watching others when they are naked or engaged in sexual activity.
+voyeurism `/vwɑ:'jə:rizəm/` n. 窥阴癖者
 
-> Ex: internet sites dedicated to the act of voyeurism.
+> the practice of gaining sexual pleasure from watching others when they are naked or engaged in sexual activity.
 >
-> n. 窥阴癖者
+> Ex: internet sites dedicated to the act of voyeurism.
 
 ### vp
 
@@ -18729,6 +18623,8 @@ wardrobe `/'wɔːdrəʊb/` 衣柜，衣橱
 
 warehouse `/ˈweəhaʊs/` 仓库，存入仓库
 
+warlike `/'wɔːlaɪk/` 好战的，战争的
+
 warp `/wɔːp/` 弄歪，歪曲，扭曲，使翘起，乖僻，绞船索
 
 warrant `/ˈwɒrənt/` 保证，凭据，许可证，执行令
@@ -18787,6 +18683,8 @@ weasel `/'wiːzl/` 黄鼠狼，狡猾的人，逃避，推诿
 
 weaver `/'wiːvə(r)/` 织布工，编织者
 
+webbed `/webd/` adj. 有蹼的；蜘蛛网状的；v. 用蹼将…连接；结网；使落入圈套（web的过去分词）
+
 wedding `/ˈwedɪŋ/` 婚礼，结婚典礼
 
 wednesday `/'wenzdeɪ/` 星期三
@@ -18832,6 +18730,8 @@ wherewithal `/'weəwɪðɔːl/` 必要的资金，手段
 whim `/wɪm/` 心血来潮的，一时兴起的
 
 whirlwind `/'wɜːlwɪnd/`  旋风，旋风般的突发事件
+
+whistle `/'wɪsl/` n. 口哨；汽笛；警笛；v. 吹口哨；鸣汽笛；呼啸；吹口哨召唤
 
 whittle `/ˈwɪtl/` 削（木头），削减，大刀，屠刀
 
@@ -18902,6 +18802,8 @@ withdrawn `/wɪð'drɔːn/` 偏僻的，离群的，孤独的，内向的
 withhold `/wɪð'həʊld/` 抑制，阻挡，扣留，保留
 
 within `/wɪðˈɪn/` 在...里面，在...内
+
+withstand `/wɪðˈstænd/` vt. 经受, 承受
 
 witness `/ˈwɪtnəs/` 目击者，见证人
 
@@ -19007,11 +18909,11 @@ wrist `/rɪst/` 手腕，腕关节
 
 writ `/rɪt/` 令状
 
-wrongdoer `/ˈrɒŋˌduːə/` 1 a person who behaves illegally or dishonestly; an offender.
+wrongdoer `/ˈrɒŋˌduːə/` n.做坏事的人；罪犯；违法者
 
-> Ex: they need to punish wrongdoers.
+> 1 a person who behaves illegally or dishonestly; an offender.
 >
-> n.做坏事的人；罪犯；违法者
+> Ex: they need to punish wrongdoers.
 
 wronskian `/'rɔnskiən/` （数学）朗斯基矩阵
 
@@ -19209,8 +19111,10 @@ yeomanry `/'jəʊmənri/` 自由民
 
 [回到Y](#Y)--[回到顶部](#英汉词典)
 
-yield `/jiːld/` 1 produce or provide (a natural, agricultural, or industrial product). 2 give way to arguments, demands, or pressure. 3 (of a mass or structure) give way under force or pressure.
+yield `/jiːld/` v. 生产；获利；屈服；弯下去；n. 投资收益；生产量
 
+> 1 produce or provide (a natural, agricultural, or industrial product). 2 give way to arguments, demands, or pressure. 3 (of a mass or structure) give way under force or pressure.
+>
 > Ex: the land yields grapes and tobacco.
 >
 > Ex: he yielded to the demands of his partners.
@@ -19218,10 +19122,6 @@ yield `/jiːld/` 1 produce or provide (a natural, agricultural, or industrial pr
 > Ex: he reeled into the house as the door yielded.
 > 
 > Ex: No fixed capital can yield any revenue but by means of a circulating capital.
->
-> v. 生产；获利；屈服；弯下去
->
-> n. 投资收益；生产量
 
 ### yj
 
@@ -19249,9 +19149,9 @@ yield `/jiːld/` 1 produce or provide (a natural, agricultural, or industrial pr
 
 yolk `/jəʊk/` 蛋黄
 
-youngster `/ˈjʌŋstə(r)/` a child, young person, or young animal.
+youngster `/ˈjʌŋstə(r)/` n. 年轻人;（尤指）少年，儿童
 
-> n. 年轻人;（尤指）少年，儿童
+> a child, young person, or young animal.
 >
 > Ex: uneducated youngsters.
 
