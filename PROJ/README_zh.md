@@ -21,6 +21,7 @@
 
 ## 第三方项目
 
+- [DPDK](DPDK/README_zh.md)
 - [OpenSSL](OPENSSL/README_zh.md)
 - [ZeroMQ](ZEROMQ/README_zh.md)
 - [skynet](SKYNET/README_zh.md)

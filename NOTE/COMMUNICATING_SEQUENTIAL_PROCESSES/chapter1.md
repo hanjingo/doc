@@ -1,10 +1,6 @@
 # 1 Processes
 
-<!-- vim-markdown-toc GFM -->
-
-* [1.1 Introduction](#11-introduction)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -14,5 +10,5 @@ TODO
 
 
 
-## glossary
+## Glossary
 

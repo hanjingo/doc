@@ -72,6 +72,7 @@
 | [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](NOTE/CSAPP/README.md) | 3ED     | Randal E. Bryant<br>David R. O'Hallaron                      |                   |
 | [COMPUTER NETWORKING: A Top-Down Approach](NOTE/COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md) | 6ED     | James F. Kurose<br>Keith W. Ross                             |                   |
 | [Design Pattern](NOTE/DESIGN_PATTERN/README.md)              | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
+| [THE ART OF MENTAL TRICKERY AND MANIPULATION](NOTE/THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder                                 |                   |
 
 ---
 

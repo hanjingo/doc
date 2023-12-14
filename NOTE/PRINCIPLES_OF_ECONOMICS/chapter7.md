@@ -6,19 +6,19 @@ The equilibrium of supply and demand in a market maximizes the total benefits re
 
 `willingness to pay`. the maximum amount that a buyer will pay for a good.
 
-![7_1](/res/7_1.png)
+![7_1](res/7_1.png)
 
-![7_2](/res/7_2.png)
+![7_2](res/7_2.png)
 
 The area below the demand curve and above the price measures the consumer surplus in a market.
 
-![7_3](/res/7_3.png)
+![7_3](res/7_3.png)
 
 `cost`. the value of everything a seller must give up to produce a good.
 
 `producer surplus`. the amount a seller is paid for a good minus the seller's cost.
 
-![7_6](/res/7_6.png)
+![7_6](res/7_6.png)
 
 $$
 \begin{equation}\begin{split}
@@ -33,13 +33,13 @@ $$
 
 `equity`. the fairness of the distribution of well-being among the members of society.
 
-![7_7](/res/7_7.png)
+![7_7](res/7_7.png)
 
 1. Free markets allocate the supply of goods to the buyers who value them most highly, as measured by their willingness to pay.
 2. Free markets allocate the demand for goods to the sellers who can produce them at least cost.
 3. Free markets produce the quantity of goods that maximizes the sum of consumer and producer surplus.
 
-![7_8](/res/7_8.png)
+![7_8](res/7_8.png)
 
 `market failure`. the inability of some unregulated markets to allocate resources efficiently. When markets fail, public policy can potentially remedy the problem and increase economic efficiency.
 

@@ -6,26 +6,26 @@
 
 `price floor`. a legal minimum on the price at which a good can be sold.
 
-![6_1](/res/6_1.png)
+![6_1](res/6_1.png)
 
 When the government imposes a binding price ceiling on a competitive market, a shortage of the good arises, and sellers must ration the scarce goods among the large number of potential buyers.
 
-![6_2](/res/6_2.png)
+![6_2](res/6_2.png)
 
 `tax incidence`. the study of who bears the burden of taxation.
 
-![6_6](C:/Users/heheh/Desktop/PRINCIPLES_OF_ECONOMICS/res/6_6.png)
+![6_6](res/6_6.png)
 
 - Taxes discourage market activity. When a good is taxed, the quantity of the good sold is smaller in the new equilibrium.
 - Buyers and sellers share the burden of taxes. In the new equilibrium, buyers pay more for the good, and sellers receive less.
 
-![6_7](C:/Users/heheh/Desktop/PRINCIPLES_OF_ECONOMICS/res/6_7.png)
+![6_7](res/6_7.png)
 
 Taxes on buyers and taxes on sellers are equivalent.
 
 Tax incidence depends on the forces of supply and demand.
 
-![6_9](C:/Users/heheh/Desktop/PRINCIPLES_OF_ECONOMICS/res/6_9.png)
+![6_9](res/6_9.png)
 
 A tax burden falls more heavily on the side of the market that is less elastic.
 

@@ -13,3 +13,4 @@ When a relation is partitioned (by a technique other than round-robin), there ma
 - Attribute-value skew.
 - Partition skew.
 
+TODO

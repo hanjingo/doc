@@ -69,11 +69,16 @@ English | [中文版](README_zh.md)
 | ------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
 | [Design Pattern](DESIGN_PATTERN/README.md) | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
 
+### Logic
+
+| Title                                                        | Edition | Author                       | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ---------------------------- | ----------------- |
+| [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder |                   |
+
 
 
 ## Reading
 
-- [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md)
 - [BBC News](BBC/README.md)
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
