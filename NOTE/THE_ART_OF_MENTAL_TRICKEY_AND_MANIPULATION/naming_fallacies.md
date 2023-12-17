@@ -31,39 +31,39 @@ dislodge `/dɪs'lɒdʒ/` 逐出，用力移出，移走
 
 myopic `/maɪ'ɒpɪk/` 近视的，缺乏远见的
 
-conformist
+conformist `/kən'fɔːmɪst/` n. 遵奉者；adj. 因循守旧的
 
-egocentric
+egocentric `/ˌeɡəʊ'sentrɪk/` adj. 自我中心的；利己的
 
-sociocentric
+sociocentric `/səʊsɪəʊ'sentrɪk/` adj. 社会中心论的；群体中心论的
 
-wantonly
+wantonly `/'wɒntənli/` adv. 放纵地；嬉闹地
 
-blind
+blind `/blʌɪnd/` adj. 瞎的；盲目的；adv. 看不见地；盲目地；n. 百叶窗；掩饰，借口；vt. 使失明；使失去理智
 
-faith
+faith `/feɪθ/` n. 信心；信任；相信；宗教信仰
 
-prejudice
+prejudice `/ˈpredʒudɪs/` n. 偏见；伤害；vt. 伤害；使 ... 存偏见；使偏袒
 
-delusion
+delusion `/dɪ'luːʒn/` n. 错觉；幻觉；妄想；欺骗
 
-conjunction
+conjunction `/kən'dʒʌŋkʃn/` n. 结合；关联；连词；(事件等的)同时发生
 
-rubber
+rubber `/'rʌbə(r)/` n. 橡胶；橡皮；橡胶制品；adj. 橡胶的
 
-virtues
+virtue `/'vɜːtʃuː/` n. 美德；德行；优点；贞操
 
-instincts
+instinct `/'ɪnstɪŋkt/` n. 直觉；本能；天性；adj. 充满的
 
-plumbs
+plumb `/plʌm/` v. （用铅垂）测量；探测；n. 铅锤；垂直；adj. 垂直的；<口>完全的；adv. 恰恰；<口>彻底地
 
-persuasion
+persuasion `/pə'sweɪʒn/` n. 说服；劝说；信念
 
-instruments
+instrument `/ˈɪnstrəmənt/` n. 仪器；乐器；工具；器械；v. 用器械（或仪器）装备；向…提交文书
 
-flagrant
+flagrant `/'fleɪɡrənt/` adj. 恶名昭著的；明目张胆的
 
-snares
+snare `/sneə(r)/` n. 陷阱；诱惑；圈套；勒除器；vt. 以陷阱捕获；诱惑
 
-counterfeit
+counterfeit `/ˈkaʊntəfɪt/` n. 膺品；伪造品；adj. 假冒的；假装的；v. 仿造；伪装；假装
 

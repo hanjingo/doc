@@ -51,48 +51,48 @@ Here is a list of common problems in human thinking:
 
 ## Vocabulary
 
-exclusive
+exclusive `/ɪkˈskluːsɪv/` adj. 排外的；独占的；唯一的；完整的；奢华的；n. 独家新闻；独权
 
-exhaustive
+exhaustive `/ɪɡ'zɔːstɪv/` adj. 彻底的；详尽的；消耗的
 
-traps
+trap `/træp/` n. 圈套；陷阱；困境；双轮轻便马车；U（或S）型管道；防臭瓣；v. 设圈套；陷入（困境）
 
-snares
+snare `/sneə(r)/` n. 陷阱；诱惑；圈套；勒除器；vt. 以陷阱捕获；诱惑
 
-prey
+prey `/preɪ/` n. 牺牲者；被掠食者，猎物；vi. 掠夺；捕食；使 ... 苦恼
 
-muddled
+muddle `/'mʌdl/` n. 混乱；糊涂；vt. 使混乱；使糊涂；弄糟；vi. 胡乱应付；混乱
 
-unrealistic
+unrealistic `/ˌʌnrɪə'lɪstɪk/` adj. 不切实际的；不实在的
 
-trivial
+trivial `/'trɪviəl/` adj. 不重要的；琐碎的
 
-contradictions
+contradiction `/ˌkɒntrəˈdɪkʃn/` n. 矛盾；反驳；否认；不一致
 
-vague
+vague `/veɪɡ/` adj. 不明确的；模糊的；茫然的；犹豫不决的
 
-irrelevant
+irrelevant `/ɪˈrɛlɪv(ə)nt/` 无adj. 不恰当的；无关系的；不相干的
 
-inferences
+inference `/ˈɪnf(ə)rəns/` n. 推理；推论；推断；结论
 
-distort
+distort `/dɪˈstɔːt/` vt. 歪曲；扭曲；变形；vi. 歪曲
 
-superficial
+superficial `/ˌsuːpəˈfɪʃl/` adj. 表面的；肤浅的
 
-imprecisely
+imprecise `/ˌɪmprɪ'saɪs/` adj. 不精确的
 
-illogically
+illogical `/ɪ'lɒdʒɪkl/` adj. 不合逻辑的；不合理的
 
-hypocritically
+hypocritical `/ˌhɪpə'krɪtɪkl/` adj. 伪善的
 
-ethnocentrically
+ethnocentrically `/ˌeθnəʊ'sentrɪzəm/` n. 民族优越感
 
-egocentrically
+egocentrically `/ˌeɡəʊ'sentrɪk/` adj. 自我中心的；利己的
 
-neatly
+neat `/niːt/` adj. 整洁的；简洁的；利索的；adv. 整洁地；利索地
 
-comparison
+comparison `/kəm'pærɪsn/` n. 比较；比喻
 
-analogy
+analogy `/ə'nælədʒi/` n. 类比；相似；类似
 
-metaphor
+metaphor `/'metəfə(r)/` n. 象征；隐喻

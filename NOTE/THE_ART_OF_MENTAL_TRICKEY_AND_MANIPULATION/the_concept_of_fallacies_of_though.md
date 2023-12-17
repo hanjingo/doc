@@ -4,32 +4,30 @@
 
 ## Vocabulary
 
-fallacy
+fallacy `/'fæləsi/` n. 谬论；谬误的推理
 
-deception
+deception `/dɪ'sepʃn/` n. 骗局；诡计；欺诈
 
-sophism
+sophism `/'sɒfɪzəm/` n. 诡辩
 
-esp
+vitiate `/'vɪʃieɪt/` v. 使败坏；损害；使失效
 
-vitiates
+syllogism `/'sɪlədʒɪzəm/` n. 三段论法；演绎推理；诡辩
 
-syllogism
+sophistry `/'sɒfɪstri/` n. 诡辩
 
-sophistry
+delusive `/dɪ'luːsɪv/` adj. 使迷惑的；欺瞒的；虚假的
 
-delusive
+erroneousness `/ɪ'rəʊniːəsnɪs/` n. 错误；有误差；不正确
 
-erroneousness
+delusion `/dɪ'luːʒn/` n. 错觉；幻觉；妄想；欺骗
 
-delusion
+psychologist `/saɪ'kɒlədʒɪst/` n. 心理学家，心理学者
 
-psychologists
+distort `/dɪˈstɔːt/` vt. 歪曲；扭曲；变形；vi. 歪曲
 
-distort
+unpremeditated `/ˌʌnpriː'medɪteɪtɪd/` adj. 无预谋的；非故意的；偶然的
 
-unpremeditated
+repression `/rɪ'preʃn/` n. 抑制；压抑；镇压
 
-repression
-
-projection
+projection `/prəˈdʒekʃn/` n. 投影；投射；规划；发射；凸出物；预测；放映

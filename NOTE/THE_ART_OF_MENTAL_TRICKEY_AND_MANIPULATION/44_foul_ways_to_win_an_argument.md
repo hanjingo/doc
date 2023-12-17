@@ -186,407 +186,391 @@
 
 ## Vocabulary
 
-artistry
+artistry `/'ɑːtɪstri/` n. 艺术性；艺术才能
 
-insult
+insult `/ɪnˈsʌlt/` n. 侮辱；辱骂；冒犯；vt. 侮辱；辱骂；凌辱
 
-stratagems
+stratagem `/'strætədʒəm/` n. 战略；计谋
 
-counterfeits
+counterfeit `/ˈkaʊntəfɪt/` n. 膺品；伪造品；adj. 假冒的；假装的；v. 仿造；伪装；假装
 
-pervade
+pervade `/pə'veɪd/` vt. 弥漫；遍及；蔓延
 
-inoculated
+inoculate `/ɪ'nɒkjuleɪt/` v. 给 ... 注射疫苗；灌输
 
-probe
+probe `/prəʊb/` n. 调查；查究；探针；探测器；v. 用探针测；探测；详细调查
 
-fostered
+foster `/ˈfɒstə(r)/` vt. 养育，抚育；培养；抱（希望等）；adj. 收养的，养育的
 
-impressive
+impressive `/ɪm'presɪv/` adj. 给人深刻印象的
 
-pomp
+pomp `/pɒmp/` n. 壮丽；盛观；夸耀
 
-ceremony
+ceremony `/ˈserəməni/` n. 仪式；礼节；典礼
 
-prominent
+prominent `/ˈprɒmɪnənt/`  adj. 显著的；杰出的；突出的
 
-unscrupulous
+unscrupulous `/ʌnˈskruːpjələs/` adj. 肆无忌惮的；不道德的
 
-stake
+stake `/steɪk/` n. 桩；赌注；利害关系；v. 用桩支撑；下注
 
-deception
+deception `/dɪ'sepʃn/` n. 骗局；诡计；欺诈
 
-unethical
+unethical `/ʌn'eθɪkl/` adj. 不道德的；缺乏职业道德的
 
-battery
+battery `/'bætərɪ/` n. 电池；一系列；炮兵连；排炮；[律]殴打
 
-ante
+ante `/'ænti/` n. (纸牌游戏中发牌钱下的)赌注；(需预付的)款项；v. 下赌注；付款；pref. 表示“前”
 
-Slippery 
+slippery `/'slɪpəri/` adj. 滑的；狡猾的；不可靠的 
 
-Slope
+slope `/sləʊp/` n. 倾斜；斜坡；斜面；斜率；斜线；vt. 使倾斜；vi. 倾斜；有坡度
 
-domino 
+domino `/'dɒmɪnəʊ/` n. 多米诺骨牌 
 
-Appeal 
+appeal `/əˈpiːl/` n. 恳求；呼吁；上诉；吸引力；n. (体育比赛中)诉请裁决；v. 呼吁；有吸引力；求助；诉请 
 
-awe
+awe `/ɔː/` vt. 使敬畏；使畏怯；n. 敬畏
 
-religious
+religious `/rɪ'lɪdʒəs/` adj. 宗教的；虔诚的；严谨的；信奉宗教的
 
-mesmerized 
+mesmerize `/ˈmezməraɪz/` v. 施以催眠术；迷住；迷惑 
 
-demagogues
+demagogue `/'deməɡɒɡ/` n. 煽动者；蛊惑民心的政客
 
-guise
+guise `/ɡaɪz/` n. 装束；外观；伪装；借口
 
-deceive
+deceive `/dɪˈsiːv/` vt. 欺骗；vi. 行骗
 
-con
+con `/kɔn/` n. 骗局；反对；反对的理由；adv. 反面地；反对地；vt. 精读；记诵
 
-unprinciple
+unprincipled `/ʌn'prɪnsəpld/` adj. 不道德的；无原则的；放荡不羁的
 
-distrust
+distrust `/dɪs'trʌst/` v. 不信任；n. 不信任；怀疑
 
-portray 
+portray `/pɔːˈtreɪ/` vt.画像；描写；描绘 
 
-sympathy
+sympathy `/'sɪmpəθi/` n. 同情；同情心；同感；赞同；慰问
 
-whines
+whine `/waɪn/` n. 闹声；抱怨；牢骚；v. 哭诉；发牢骚
 
-fate
+fate `/feɪt/` n. 命运；宿命
 
-ploy
+ploy `/plɔɪ/` n. 策略；手段
 
-hatred 
+hatred `/'heɪtrɪd/` n. 仇恨；憎恨；敌意；怨恨 
 
-stir 
+stir `/stɜː(r)/` vt. 激起；惹起；搅和；vi. 活动；引起；挪动；n. 骚乱；感动(激动；愤怒或震动)；搅拌 
 
-irrational 
+irrational `/ɪ'ræʃənl/` n. 无理数；adj. 无理性的；不合理的 
 
-squarely
+squarely `/'skweəli/` adv. 成方形地；成直角地；直接地；坚定地；公平地
 
-highfalutin
+highfalutin `/ˌhaɪfə'luːtɪn/` adj. 自大的, 骄傲的
 
-actin
+actin `/'æktɪn/` n. （生物）肌动蛋白
 
-enslaved
+enslave `/ɪn'sleɪv/` vt. 使做奴隶；使处于奴役的状态
 
-opponent
+opponent `/əˈpəʊnənt/` n. 对手；反对者；敌手；adj.反对的；敌对的
 
-coincide
+coincide `/ˌkəʊɪnˈsaɪd/` vi. 一致，符合；同时发生
 
-suspicious 
+suspicious `/sə'spɪʃəs/` adj. 可疑的；多疑的
 
-religion
+religion `/rɪ'lɪdʒən/` n. 宗教；宗教信仰
 
-bungle
+bungle `/'bʌŋɡl/` v. 拙劣地工作；粗率地做；搞坏；贻误；n. 粗制滥造；搞糟的工作
 
-premise
+premise `/'premɪs/` n. 前提；vt. 预述；提论；假设
 
-blunder
+blunder `/'blʌndə(r)/` n. 大错；v. 失策；绊倒；弄糟
 
-epithets
+epithet `/'epɪθet/` n. 性质描述词；称号；浑名
 
-mud
+mud `/mʌd/` n. 泥；泥浆；诽谤；vt. 弄脏；抹泥
 
-slinging
+slinging `/s'lɪnɡɪŋ/` v. 吊;挂;(随便地)扔，丢;押往;撵走;驱逐;遣送; n. 吊起；抛砂;
 
-insinuates
+insinuate `/ɪn'sɪnjueɪt/` v. 暗示；迂回进入；迂回进行；含沙射影的说
 
-terrorism
+terrorism `/'terərɪzəm/` n. 恐怖主义；恐怖行动
 
-poisoning
+poison `/'pɔɪzn/` n. 毒药；毒害；败坏道德之事；vt. 毒害；摧毁；中毒；adj. 有毒的；危险的
 
-liberal
+liberal `/'lɪbərəl/` adj. 慷慨的；大方的；开明的；自由主义的；n. 自由主义者；开明的人
 
-tight
+tight `/taɪt/` adj. 紧的；紧身的；密集的；拮据的；adv. 紧紧地；牢固地；迅速地
 
-epithets
+epithet `/'epɪθet/` n. 性质描述词；称号；浑名
 
-cave
+cave `/keɪv/` n. 洞穴；山洞；v. 挖空；塌落；屈服
 
-tyranny
+tyranny `/'tɪrəni/` n. 暴政；苛政；专制
 
-articulating
+articulate `/ɑːˈtɪkjuleɪt/` adj. 发音清晰的；善于表达的；有关节的；v. 清楚地讲话；发音；以关节连接
 
-maneuver
+maneuver `/məˈnuːvə/` vt. 巧妙地操纵；使演习；调遣；vi. 演习；调遣；用计策；n. 演习；策略；调遣
 
-whatsoever
+whatsoever `/ˌwɒtsəʊ'evə/` adv. 任何(用于否定句中以加强语气)；pron. 无论什么；adj. 无论什么的
 
-terrorism
+terrorism `/'terərɪzəm/` n. 恐怖主义；恐怖行动
 
-nuanced
+nuance `/ˈnjuːɑːns/` n. 细微差别
 
-tyranny
+tyranny `/'tɪrəni/` n. 暴政；苛政；专制
 
-sequitur
+sequitur `/'sekwɪtə/` n. (根据前提得出的)推断；推理；结论
 
-illogical
+illogical `/ɪ'lɒdʒɪkl/` adj. 不合逻辑的；不合理的
 
-obscure
+obscure `/əbˈskjʊr/` adj. 难解的；不著名的；微暗的；[语音学]轻音的；v. 使 ... 模糊；隐藏；变模糊；n. 模糊不清的东西
 
-legitimate
+legitimate `/lɪ'dʒɪtɪmət/` adj. 合法的；世袭的；婚生的；正当的；合理的；vt. 使合法；授权；宣布 ... 为合法
 
-dispassionate
+dispassionate `/dɪs'pæʃənət/` adj. 冷静的；不带感情的；平心静气的
 
-foul
+foul `/faʊl/` adj. 恶臭的；邪恶的；污秽的；恶劣的；犯规的；n. 犯规；v. 弄脏；妨碍；犯规
 
-rumor
+rumor `/'ruːmə/` n. 谣言；传闻；vt. 谣传
 
-mentality
+mentality `/men'tæləti/` n. 智力；心理状态；精神性
 
-tribunal
+tribunal `/traɪ'bjuːnl/` n. 法庭；法院；法官席；裁决
 
-communists
+communist `/'kɒmjənɪst/` adj. 共产主义的；n. 共产主义者
 
-elected
+elected `/ɪ'lektɪd/` adj. 当选的
 
-ostracized
+ostracize `/'ɒstrəsaɪz/` vt. 放逐；排斥
 
-blackballed
+blackball `/'blækbɔːl/` n. 反对票；vt. 投票反对；排斥
 
-atrocities
+atrocity `/ə'trɒsəti/` n. 暴行；残暴
 
-occurred
+occur `/ə'kɜː(r)/` vi. 发生；存在；出现；想到
 
-depose
+depose `/dɪ'pəʊz/` v. 废黜；罢免；（通常以书面）证明；作证（尤指在法庭宣誓）；放下
 
-fabricators
+fabricator `/'fæbrɪkeɪtə/` n. 制作者；假造者；杜撰者
 
-discrediting
+discredit `/dɪs'kredɪt/` v. 败坏…的名声；怀疑；不信；n. 丧失名誉；怀疑；不信任；丢脸
 
-inappropriate
+inappropriate `/ˌɪnə'prəʊpriət/` adj. 不适当的；不合宜的
 
-marijuana
+marijuana `/ˌmærə'wɑːnə/` n. 大麻
 
-skimpy
+skimpy `/'skɪmpi/` adj. (衣服等)尺寸小的；不足的；缺乏的；吝啬的
 
-straw
+straw `/strɔː/` n. 稻草；吸管；麦杆；不值钱的东西；adj. 用稻草做的；麦杆色的；无价值的；像稻草人的；非正式民意测验所发现的
 
-innocent
+innocent `/ˈɪnəsnt/` adj. 清白的；无害的；无辜的；无知的；天真纯洁的
 
-convicted
+convict `/kənˈvɪkt/` vt. 宣判 ... 有罪；使 ... 知罪；n.囚犯；罪犯；adj.被定罪的
 
-retort
+retort `/rɪ'tɔːt/` v. 反驳；回嘴；反击；n. 反驳；顶嘴
 
-fuel
+fuel `/ˈfjuːəl/` n. 燃料；刺激因素；vt. 供以燃料；vi. 加燃料
 
-discredit
+discredit `/dɪs'kredɪt/` v. 败坏…的名声；怀疑；不信；n. 丧失名誉；怀疑；不信任；丢脸
 
-bureaucracy
+bureaucracy `/bjʊə'rɒkrəsi/` n. 官僚制度；官僚主义；官僚
 
-contradiction
+contradiction `/ˌkɒntrəˈdɪkʃn/` n. 矛盾；反驳；否认；不一致
 
-inconsistencies
+inconsistency `/ˌɪnkən'sɪstənsi/` n. 不一致；不调和；矛盾
 
-integrity
+integrity `/ɪnˈteɡrəti/` n. 完整；完善；正直；诚实
 
-sophisticated
+sophisticate `/səˈfɪstɪkət/` n. 久经世故的人；vt. 玩弄诡辩；掺合；弄复杂
 
-compromise
+compromise `/ˈkɒmprəmaɪz/` n. 妥协；折衷；折衷案；和解；vt. 妥协处理；危害；vi. 妥协，和解；让步
 
-sovereignty
+sovereignty `/'sɒvrənti/` n. 主权；独立国
 
-reformation
+reformation `/ˌrefə'meɪʃn/` n. 改造；变革
 
-innocent
+innocent `/ˈɪnəsnt/` adj. 清白的；无害的；无辜的；无知的；天真纯洁的
 
-normalcy
+normalcy `/'nɔːmlsi/` n. 常态
 
-tyranny
+tyranny `/'tɪrəni/` n. 暴政；苛政；专制
 
-aggression
+aggression `/ə'ɡreʃn/` n. 进攻；侵犯；侵害；侵略
 
-barbarism
+barbarism `/'bɑːbərɪzəm/` n. 野蛮；暴行
 
-dictatorship
+dictatorship `/ˌdɪk'teɪtəʃɪp/` n. 专政；独裁（权）
 
-plots
+plot `/plɒt/` n. 情节；阴谋；图；(小块)土地；v. 密谋；绘图；计划；标示位置
 
-cunning
+cunning `/'kʌnɪŋ/` adj. 狡猾的；有眼光的；精巧的；可爱的；n. 【C】狡诈；灵巧
 
-sanitizing
+sanitize `/'sænɪtaɪz/` vt. 采取卫生措施使其安全；消毒；使无害
 
-righteous
+righteous `/'raɪtʃəs/` adj. 公正的；公义的；当然的
 
-obscure
+obscure `/əbˈskjʊr/` adj. 难解的；不著名的；微暗的；[语音学]轻音的；v. 使 ... 模糊；隐藏；变模糊；n. 模糊不清的东西
 
-lip
+lip `/lɪp/` n. 嘴唇；唇状物；v. 接吻；说话；拍打
 
-grace
+grace `/ɡreɪs/` n. 优美；优雅；恩惠；vt. 使优美；使荣耀
 
-evade
+evade `/ɪ'veɪd/` v. 逃避；躲避；规避
 
-deflects
+deflect `/dɪ'flekt/` v. 使偏斜；转向；改变原计划
 
-truistic
+truistic `/'truːɪstɪk/` 无人置疑的,平凡的
 
-slide
+slide `/slaɪd/` vi. 滑动；下滑；滑入；悄悄地溜走；vt. 使滑动；n. 幻灯片；滑坡；滑动；雪崩
 
-vagueness
+vague `/veɪɡ/` adj. 不明确的；模糊的；茫然的；犹豫不决的
 
-diversions
+diversion `/daɪ'vɜːʃn/` n. 转向；转移；娱乐活动；临时绕行
 
-truisms
+truism `/'truːɪzəm/` n. 自明之理；老生常谈
 
-receptive
+receptive `/rɪ'septɪv/` adj. 易接受的；愿意接受的
 
-flatter
+flatter `/'flætə(r)/` v. 奉承；恭维；取悦；显得好看
 
-subtle
+subtle `/ˈsʌtl/` adj. 微妙的；敏锐的；不明显的；精细的；狡猾的
 
-suspect
+suspect `/sə'spekt/` v. 怀疑；猜想；n. 嫌疑犯；adj. 可疑的；不可信的
 
-proficient
+proficient `/prə'fɪʃnt/` adj. 熟练的；精通的；n. 能手
 
-tendency
+tendency `/ˈtɛndənsi/` n. 趋势；倾向；秉性
 
-excuse
+excuse `/ɪk'skjuːs/` vt. 原谅；辩解；n. 理由；辩解；借口
 
-forthcoming
+forthcoming `/ˌfɔːθ'kʌmɪŋ/` adj. 即将到来的；现成的；乐意帮助的
 
-hedge
+hedge `/hedʒ/` n. 树篱；篱笆；障碍；防护物；套期保值；推诿；v. 用树篱围；避免直接回答；两面下注
 
-weasel
+weasel `/'wiːzl/` n. 鼬鼠；黄鼠狼；狡猾的人；v. 逃避；推诿
 
-christian
+christian `/'krɪstʃən/` n. 基督徒；adj. 基督教的；基督徒的
 
-atheist
+atheist `/'eɪθiɪst/` n. 无神论者
 
-compassionate
+compassionate `/kəm'pæʃənət/` adj. 有同情心的；vt. 同情
 
-dodge
+dodge `/dɒdʒ/` v. 避开；躲避；n. 躲避；诡计
 
-stockpile
+stockpile `/'stɒkpaɪl/` n. 贮藏堆；积蓄；v. 储备；储存
 
-flagrant
+flagrant `/'fleɪɡrənt/` adj. 恶名昭著的；明目张胆的
 
-loudly
+superficial `/ˌsuːpəˈfɪʃl/` adj. 表面的；肤浅的
 
-superficially
+malnutrition `/ˌmælnjuˈtrɪʃn/` n. 营养不良
 
-malnutrition
+hurricane `/'hʌrɪkən/` n. 飓风；暴风
 
-starvation
+noble `/ˈnəʊbl/` adj.高贵的；宏伟的；高尚的；n.贵族
 
-hurricane
+assassination `/əˌsæsɪ'neɪʃn/` n. 暗杀
 
-noble
+detention `/dɪˈtenʃn/` n. 滞留；拘留；扣押；监禁
 
-assassinations
+torture `/'tɔːtʃə(r)/` n. 拷问；痛苦；vt. 拷问；使痛苦；曲解
 
-detentions
+alas `/əˈlas/` int. 唉；哎呀(表示悲伤、忧愁、恐惧等) 
 
-torture
+totalitarian `/təʊˌtæləˈteəriən/` adj. 极权主义的；n. 极权主义者, 极权主义
 
-alas
+tactic `/ˈtæktɪk/` n. 战略；策略
 
-totalitarian
+glitter `/'ɡlɪtə(r)/` n. 灿烂；闪烁；辉耀；亮片；v. 闪烁
 
-tactics
+devotion `/dɪ'vəʊʃn/` n. 虔诚；献身；奉献；热爱
 
-glitter
+patriotism `/'peɪtriətɪzəm/` n. 爱国主义；爱国心
 
-devotion
+deliberate `/dɪˈlɪbərət/` adj. 深思熟虑的；故意的；从容不迫的；v. 仔细考虑；研讨
 
-patriotism
+coincide `/ˌkəʊɪnˈsaɪd/` vi. 一致，符合；同时发生
 
-deliberately
+vague `/veɪɡ/` adj. 不明确的；模糊的；茫然的；犹豫不决的
 
-coincide
+preach `/priːtʃ/` vt. 讲道；说教；vi. 传道；训诫
 
-vague
+hypocrisy `/hɪ'pɒkrəsi/` n. 伪善
 
-preaches
+grape `/greɪp/` n. 葡萄
 
-hypocrisy
+unspoken `/ˌʌn'spəʊkən/` adj. 未说出口的；不言而喻的
 
-flagrant
+mindset `/ˈmaɪndset/` n. 精神状态；心态；意向
 
-grapes
+whatsoever `/ˌwɒtsəʊ'evə/` adv. 任何(用于否定句中以加强语气)；pron. 无论什么；adj. 无论什么的
 
-unspoken
+deed `/diːd/` n. 行为；事迹；[法]契约；vt. 立契转让
 
-mindset
+atrocity `/ə'trɒsəti/` n. 暴行；残暴
 
-whatsoever
+patriotic `/ˌpætriˈɒtɪk/` adj. 爱国的
 
-deeds
+distort `/dɪˈstɔːt/` vt. 歪曲；扭曲；变形；vi. 歪曲
 
-atrocities
+condemn `/kən'dem/` vt. 谴责；判刑
 
-patriotic
+detractor `/dɪ'træktə(r)/` n. 贬低者
 
-distorted
+indignant `/ɪn'dɪɡnənt/` adj. 愤慨的；愤愤不平的
 
-condemn
+counterattack `/'kaʊntərəˌtæk/` n. 反击；反攻；v. 反击；反攻
 
-detractors
+prosecute `/ˈprɒsɪkjuːt/` vt. 起诉；告发；从事；彻底进行；vi. 起诉；担任检察官
 
-indignantly
+invade `/ɪnˈveɪd/` v. 侵略；拥入；侵害；侵扰
 
-counterattack
+unadorned `/ˌʌnə'dɔːnd/` adj. 没有装饰的；不加渲染的；朴素的
 
-prosecutor
+foster `/ˈfɒstə(r)/` vt. 养育，抚育；培养；抱（希望等）；adj. 收养的，养育的
 
-invade
+omnipresence `/ˌɒmnɪ'prezns/` n. 无所不在；无所不在的；全在；遍在
 
-patriotism
+vague `/veɪɡ/` adj. 不明确的；模糊的；茫然的；犹豫不决的
 
-unadorned
+spineless `/'spaɪnləs/` adj. 无脊椎的；没有骨气的；懦弱的
 
-foster
+belittle `/bɪ'lɪtl/` vt. 轻视；贬低；使相形见小
 
-omnipresence
+detention `/dɪˈtenʃn/` n. 滞留；拘留；扣押；监禁
 
-prejudices
+phrase `/freɪz/` n. 短语；习语；措辞；[音]乐句；vt. 措词；将(乐曲)分成乐句
 
-vague 
+aggressive `/ə'ɡresɪv/` adj. 侵略的；进攻性的；好斗的；有进取心的
 
-spineless
+courageous `/kə'reɪdʒəs/` adj. 勇敢的；有勇气的，有胆量的
 
-belittle
+traitor `/'treɪtə(r)/` n. 叛徒；卖国贼；出卖朋友者
 
-torture
+cunning `/'kʌnɪŋ/` adj. 狡猾的；有眼光的；精巧的；可爱的；n. 【C】狡诈；灵巧
 
-detention
+fanatic `/fə'nætɪk/` n. 狂热者；极端分子；盲信者；adj. 狂热的；盲信的
 
-phrase
+comfort `/'kʌmfət/` n. 舒适；安逸；安慰；慰藉；vt. 安慰；使舒适
 
-aggressive
+vested `/'vestɪd/` adj. 穿好衣服的；[法律]既定的
 
-label
+reveal `/rɪˈviːl/` vt. 显示；透露；揭示；展现；n. (外墙与门或窗之间的)窗侧；门侧；(汽车的)窗框
 
-courageous
+linguistically `/lɪŋ'ɡwɪstɪk/` adj. 语言的；语言学的
 
-traitor
+deliberate `/dɪˈlɪbərət/` adj. 深思熟虑的；故意的；从容不迫的；v. 仔细考虑；研讨
 
-cunning
+interpretation `/ɪnˌtɜːrprəˈteɪʃn/` n. 解释；翻译；阐释；(艺术的)演绎
 
-fanatic
+refute `/rɪ'fjuːt/` vt. 驳斥；反驳；驳倒
 
-comfort
+herring `/'herɪŋ/` n. 青鱼；鲱
 
-vested
+bureaucratic `/ˌbjʊərə'krætɪk/` adj. 官僚的；繁文缛节的
 
-reveal
+condemn `/kən'dem/` vt. 谴责；判刑
 
-linguistically
-
-deliberately
-
-interpretations
-
-refute
-
-herring
-
-bureaucratic
-
-condemn
-
-torture
-
-violations
+violation `/ˌvaɪə'leɪʃn/` n. 违反；违背；妨碍
 

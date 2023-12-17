@@ -22,9 +22,10 @@ English | [中文版](README_zh.md)
 
 ### Program Language
 
-| Title                                                    | Edition | Author                                   | Abstract/Evaluate |
-| -------------------------------------------------------- | ------- | ---------------------------------------- | ----------------- |
+| Title                                                        | Edition | Author                                   | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ---------------------------------------- | ----------------- |
 | [C++ Templates: The Complete Guide](CPP_TEMPLATES/README.md) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
+| [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)           | 1ED     | Martin Reddy                             |                   |
 
 ### Compile&Build
 
@@ -79,7 +80,7 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
-- [BBC News](BBC/README.md)
+- [ESSAY](ESSAY/README.md)
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
