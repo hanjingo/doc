@@ -18,26 +18,22 @@ Rather than using numbers, it is better, if possible, to set up an analysis by e
 
 ## Vocabulary
 
-signpost
+signpost `/'saɪnpəʊst/` n. 路标；招牌柱；广告柱；征兆；迹象;v. 设路标；指示；引导
 
-impinges
+impinge `/ɪm'pɪndʒ/` vi. 撞击；侵犯；对...有影响；vt. 撞击，打击
 
-ethics
+ethics `/'eθɪks/` n. 道德规范；道德标准；伦理学
 
-signaled
+evocation `/ˌiːvəʊ'keɪʃn/` n. 引起；唤起；<古> 召唤；招魂
 
-evocation
+doctrine `/ˈdɒktrɪn/` n. 学说；教义；主义；（政府政策的）正式声明
 
-doctrines
+evoke `/ɪ'vəʊk/` vt. 唤起；引起
 
-evoked
+cautious `/'kɔːʃəs/` adj. 谨慎的；十分小心的
 
-cautiously
+domestic `/də'mestɪk/` adj. 家庭的；国内的；驯养的；n. 佣人；家仆
 
-domesticity
+marital `/'mærɪtl/` adj. 婚姻的
 
-marital
-
-aversion
-
-
+aversion `/ə'vɜːʃn/` n. 嫌恶；憎恨

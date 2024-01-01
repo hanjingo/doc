@@ -212,7 +212,6 @@ git rm --cached 子模块名
 ```sh
 git rm --cached "文件"
 git rm --cached -r "文件夹"
-
 ```
 
 
