@@ -18,6 +18,7 @@
 - [vim配置](vim_cfg_zh.md)
 - [vim快捷键](vim_shortcut_zh.md)
 - [vimium快捷键](vimium_shortcut_zh.md)
+- [英汉词典](OTHERS/en_zh_dictionary.md)
 
 
 

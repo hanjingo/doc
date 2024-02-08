@@ -3,7 +3,6 @@
 # Program Language
 
 - [c/c++](C++/README.md)
-- [english](ENGLISH/README.md)
 - [lua](LUA/README.md)
 - [Python](PYTHON/README.md)
 - [dot](dot.md)

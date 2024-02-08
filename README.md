@@ -4,7 +4,7 @@
 
 ## Quick Guide
 
-[En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md), [English Best Practice](LANG/ENGLISH/best_practice.md)
+[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
 
 ---
 

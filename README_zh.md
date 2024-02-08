@@ -4,7 +4,7 @@
 
 ## 快捷导航
 
-[英汉词典](LANG/ENGLISH/en_zh_dictionary.md) [面试笔记](OTHERS/interview_zh.md) [Bug速查](BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
+[英汉词典](OTHERS/en_zh_dictionary.md) [面试笔记](OTHERS/interview_zh.md) [Bug速查](BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
 
 ---
 
