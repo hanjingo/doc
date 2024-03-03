@@ -82,6 +82,7 @@ English | [中文版](README_zh.md)
 
 - [ESSAY](ESSAY/README.md)
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
+- [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
@@ -93,10 +94,7 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
-- [THE MYTHICAL MAN-MONTH]
-- [ASKING THE RIGHT QUESTIONS - A Guide to Critical Thinking]
 - [COMPUTER ORGANIZATION AND DESIGN - THE HARDWARE/SOFTWARE INTERFACE]
-- [SOFTWARE ENGINEERING]
 - [The Algorithm Design Manual]
 - [Structure and Interpretation of Computer Programs]
 - [HIGH-FREQUENCY TRADING]

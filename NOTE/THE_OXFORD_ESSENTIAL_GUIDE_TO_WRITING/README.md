@@ -12,9 +12,9 @@ Thomas S. Kane .
 - [CHAPTER8. Beginning](chapter8.md)
 - [CHAPTER9. Closing](chapter9.md)
 - [CHAPTER10. Organizing the Middle](chapter10.md)
-- [11. Point of View, Persona, and Tone]
-- [12. Basic Structure]
-- [13. Paragraph Unity]
+- [CHAPTER 11 Point of View, Persona, and Tone](chapter11.md)
+- [CHAPTER 12 Basic Structure](chapter12.md)
+- [CHAPTER 13 Paragraph Unity](chapter13.md)
 - [14. Paragraph Development: Illustration and Restatement]
 - [15. Paragraph Development: Comparison, Contrast, and Analogy]
 - [16. Paragraph Development: Cause and Effect]
