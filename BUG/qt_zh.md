@@ -17,3 +17,20 @@
 **解决**
 
 1. 在耗时的槽函数中执行QCoreApplication的processEvents以防止信号槽被卡住。
+
+
+
+### Qt的readyRead信号粘包问题
+
+**问题**
+
+使用Qt Tcp套接字进行通信时，根据readyRead信号来读数据，可能会出现多个数据包只触发一次readyRead信号，会导致粘包问题。
+
+**原因**
+
+根据readyRead信号来读数据，可能会出现多个数据包只触发一次readyRead信号；具体见：https://blog.csdn.net/whiskey_wei/article/details/80790428。
+
+**解决**
+
+收到readyRead信号后，手动拆包。
+
