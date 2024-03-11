@@ -8,6 +8,7 @@
 - [数据恢复](data_recover_zh.md)
 - [emacs快捷键](emacs_shortcut_zh.md)
 - [git教程](git_zh.md)
+- [grammar](grammar_zh.md)
 - [如何写论文](how_to_write_paper_zh.md)
 - [面试笔记](interview_zh.md)
 - [Pandoc手册](pandoc_zh.md)
