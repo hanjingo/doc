@@ -260,7 +260,7 @@
 
 [回到A](#A)--[回到顶部](#英汉词典)
 
-abandon [`/əˈbændən/`](/res/pronounce/abandon.mp3) v. （不顾责任，义务等）离弃，遗弃，抛弃；（不得已）舍弃，丢弃，离开；停止（支持或帮助）；放弃（信念）；中止；放弃；不再有；陷入，沉湎于（某种情感）；n. 放任；放纵
+abandon [`/əˈbændən/`](./res/pronounce/abandon.mp3) v. （不顾责任，义务等）离弃，遗弃，抛弃；（不得已）舍弃，丢弃，离开；停止（支持或帮助）；放弃（信念）；中止；放弃；不再有；陷入，沉湎于（某种情感）；n. 放任；放纵
 
 > n. 1 the trait of lacking restraint or control; reckless freedom from inhibition or worry. 2 a feeling of extreme emotional intensity.
 >
