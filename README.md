@@ -37,12 +37,6 @@
 
 - [Feature](LANG/C++/feature.md)
 
-### [English](LANG/ENGLISH/README.md)
-
-- [En-Zh-Dictionary](LANG/ENGLISH/en_zh_dictionary.md)
-- [Grammarly](LANG/ENGLISH/grammary.md)
-- [Sentences](LANG/ENGLISH/sentences.md)
-
 ### [Lua](LANG/LUA/README.md)
 
 ### [Python](LANG/PYTHON/README.md)
@@ -83,6 +77,8 @@
 ---
 
 ## [Others](OTHERS/README.md)
+
+- [En-Zh-Dictionary](Others/en_zh_dictionary.md)
 
 ---
 
