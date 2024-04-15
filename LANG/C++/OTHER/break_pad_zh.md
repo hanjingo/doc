@@ -113,11 +113,19 @@
 
 ## 分析dump文件
 
+### 通过Windbg分析dump文件
+
+1. 对于`mingw`环境编译生成的可执行程序，需要先使用工具[cv2pdb](https://github.com/rainers/cv2pdb)生产pdb文件（如已有pdb文件，可跳过）；
+2. 选择`“File”`->`“Symbol File Path…”`，导入符号文件(*.pdb)；
+3. 选择`“File”`->`“Source File Path…”`，导入源代码；
+4. 选择`“File”`->`“Open Crash Dump…”`，导入dump文件；
+5. 输入：!analyze -v 开始进行分析。
+
 ### 通过VS分析dump文件
 
-1. 直接将`*.exe`, `*.dmp`, `*.pdb`（如果有）放到同一目录下，使用vs打开dmp文件并调试
+1. 直接将`*.exe`, `*.dmp`, `*.pdb`（如果有）放到同一目录下，使用vs打开dump文件并调试
 
-2. 对于`mingw`环境编译生成的可执行程序，需要设置源代码路径：
+2. 对于`mingw`环境编译生成的可执行程序，需要先使用工具[cv2pdb](https://github.com/rainers/cv2pdb)生产pdb文件，并设置源代码路径：
 
    依次点击：视图-解决方案管理器-属性-调试源文件；导入源文件所在目录。
 
@@ -161,6 +169,7 @@ TODO
 
 - [google/breakpad](https://github.com/google/breakpad)
 - [buzzySmile/qBreakpad](https://github.com/buzzySmile/qBreakpad)
+- [Qt-mingw 生成dump文件并使用vs调试定位错误代码](https://blog.csdn.net/LiHong333/article/details/129798322)
 - [Qt Windows系统使用QBreakpad实战](https://blog.csdn.net/CLinuxF/article/details/122917770)
 - [跨平台的Qt程序崩溃生成Dump文件Breakpad](https://blog.csdn.net/HeroGuo_JP/article/details/105387526)
 - [Google Breakpad 在 windows下捕获程序崩溃报告](https://blog.csdn.net/goforwardtostep/article/details/56304285)

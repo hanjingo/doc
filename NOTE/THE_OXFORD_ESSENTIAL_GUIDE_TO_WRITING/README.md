@@ -15,7 +15,7 @@ Thomas S. Kane .
 - [CHAPTER 11 Point of View, Persona, and Tone](chapter11.md)
 - [CHAPTER 12 Basic Structure](chapter12.md)
 - [CHAPTER 13 Paragraph Unity](chapter13.md)
-- [14. Paragraph Development: Illustration and Restatement]
+- [CHAPTER 14. Paragraph Development: Illustration and Restatement](chapter14.md)
 - [15. Paragraph Development: Comparison, Contrast, and Analogy]
 - [16. Paragraph Development: Cause and Effect]
 - [17. Paragraph Development: Definition, Analysis, and Qualification]
