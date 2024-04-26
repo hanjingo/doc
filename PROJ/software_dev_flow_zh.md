@@ -142,6 +142,10 @@ NSIS是由开发WinAMP的公司制作的打包工具，使用NSIS的打包流程
 
 6. 完成。
 
+注意：
+
+1. 打包后如果程序安装在系统目录，可能会遇到权限问题；可通过使用插件：AccessControl来修改文件权限，参考：https://blog.csdn.net/wyw0000/article/details/130940479
+
 ---
 
 
@@ -173,4 +177,5 @@ TODO
 ## 参考
 
 - [使用NSIS打包程序](https://zhuanlan.zhihu.com/p/144079072)
+- [nsis制作windows安装包-修改安装目录读写权限](https://blog.csdn.net/wyw0000/article/details/130940479)
 - [Qt应用打包发布，部署真正的Qt程序Linux&Windows](https://www.jianshu.com/p/3822addbf096?u_atoken=3ea4540e-7e56-4434-bdda-ffee6a13bbde&u_asession=01lfkJPHmquz4yWlkrJd9RnR-xPkMeq3-6wI7EMOK_uq-FTwafr4pFbNDg5sB2mGNeX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K_BD-OyU7upKs7s6-2fKDBqK1h9zIJGqUc2hCV04v6XLWBkFo3NEHBv0PZUm6pbxQU&u_asig=05QQGENPHj3y0qRSj9RI0Xfq1nJH53GHjAkSXx36L4i7-BoQ3D9UPwSEMRh9ZcrIMc4ruywSmutjBQCF-LRWlJeKogHYT_JOCqt9Ta9vk-PylooRqt7VSOrtNH7qyFrp3T_VEGbYZ2rlDw4P411cQEfZnrQk8hQVX_5xsVJeWXpjH9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzfllwJ0JjoKeTFJQi4ILT2hm_Kqn1m0z57U51OSiJyvxn3URtWYq5VQe2s5Xl6Zn2u3h9VXwMyh6PgyDIVSG1W86WMJNItsIFfq0VbYDx1m-GVjuvW8Mbnw36tryIj0GRs1up2ljDTFMirZ8nF_FO7KA0a_HbABeZOL0rfsv7BP8mWspDxyAEEo4kbsryBKb9Q&u_aref=bshiuf1dzl%2BMf%2Bb7xX10dMDL2zA%3D)

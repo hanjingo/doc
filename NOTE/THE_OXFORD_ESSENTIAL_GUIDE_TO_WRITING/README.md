@@ -2,23 +2,23 @@
 
 Thomas S. Kane . 
 
-- [CHAPTER1. Subject, Reader, and Kinds of Writing](chapter1.md)
-- [CHAPTER2. Strategy and Style](chapter2.md)
-- [CHAPTER3. Grammar, Usage, and Mechanics](chapter3.md)
-- [CHAPTER4. Looking for Subjects](chapter4.md)
-- [CHAPTER5. Exploring for Topics](chapter5.md)
-- [CHAPTER6. Making a Plan](chapter6.md)
-- [CHAPTER7. Drafts and Revisions](chapter7.md)
-- [CHAPTER8. Beginning](chapter8.md)
-- [CHAPTER9. Closing](chapter9.md)
+- [CHAPTER 1. Subject, Reader, and Kinds of Writing](chapter1.md)
+- [CHAPTER 2. Strategy and Style](chapter2.md)
+- [CHAPTER 3. Grammar, Usage, and Mechanics](chapter3.md)
+- [CHAPTER 4. Looking for Subjects](chapter4.md)
+- [CHAPTER 5. Exploring for Topics](chapter5.md)
+- [CHAPTER 6. Making a Plan](chapter6.md)
+- [CHAPTER 7. Drafts and Revisions](chapter7.md)
+- [CHAPTER 8. Beginning](chapter8.md)
+- [CHAPTER 9. Closing](chapter9.md)
 - [CHAPTER10. Organizing the Middle](chapter10.md)
 - [CHAPTER 11 Point of View, Persona, and Tone](chapter11.md)
 - [CHAPTER 12 Basic Structure](chapter12.md)
 - [CHAPTER 13 Paragraph Unity](chapter13.md)
-- [CHAPTER 14. Paragraph Development: Illustration and Restatement](chapter14.md)
-- [15. Paragraph Development: Comparison, Contrast, and Analogy]
-- [16. Paragraph Development: Cause and Effect]
-- [17. Paragraph Development: Definition, Analysis, and Qualification]
+- [CHAPTER 14 Paragraph Development: Illustration and Restatement](chapter14.md)
+- [CHAPTER 15 Paragraph Development(2): Comparison, Contrast, and Analogy](chapter15.md)
+- [CHAPTER 16 Paragraph Development(3): Cause and Effect](chapter16.md)
+- [CHAPTER 17 Paragraph Development(4): Definition, Analysis, and Qualification](chapter17.md)
 - [18. The Sentence: A Definition]
 - [19. Sentence Styles]
 - [20. The Well-Written Sentence: Concision]
