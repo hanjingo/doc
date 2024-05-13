@@ -1,4 +1,20 @@
-TODO
+# CHAPTER 19 Sentence Styles
+
+a segregating style consists of relatively short, uncomplicated sentences, even though some of them may not be simple in the grammatical sense.
+
+it couples short, independent clauses to make longer sequential statements.
+
+it lacks a clear shape. Being open-ended, it has no necessary stopping place; one could go on and on adding clauses.
+
+Most commonly a cumulative sentence consists of an initial independent clause followed by a number of subordinate constructions which accumulate details about the person, place, event, or idea.
+
+Parallelism occurs in all types of sentences as a way of organizing minor constructions.
+
+Parallel constructions are subject to a strict rule of style: `they must be in the same grammatical form`.
+
+Parallel sentences have several advantages. First, they are impressive and pleasing to hear, elaborate yet rhythmic and ordered, following a master plan with a place for everything and everything in its place. Second, parallelism is economical, using one element of a sentence to serve three or oufr others.
+
+A third advantage of parallelism is its capacity to enrich meaning by emphasizing or revealing subtle connections between words.
 
 
 

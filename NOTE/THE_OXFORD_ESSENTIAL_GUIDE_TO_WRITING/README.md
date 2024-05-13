@@ -19,10 +19,10 @@ Thomas S. Kane .
 - [CHAPTER 15 Paragraph Development(2): Comparison, Contrast, and Analogy](chapter15.md)
 - [CHAPTER 16 Paragraph Development(3): Cause and Effect](chapter16.md)
 - [CHAPTER 17 Paragraph Development(4): Definition, Analysis, and Qualification](chapter17.md)
-- [18. The Sentence: A Definition]
-- [19. Sentence Styles]
-- [20. The Well-Written Sentence: Concision]
-- [21. The Well-Written Sentence: Emphasis]
+- [CHAPTER 18 The Sentence: A Definition](chapter18.md)
+- [CHAPTER 19 Sentence Styles](chapter19.md)
+- [CHAPTER 20 The Well-Written Sentence(1): Concision](chapter20.md)
+- [CHAPTER 21 The Well-Written Sentence(2): Emphasis](chapter21.md)
 - [22. The Well-Written Sentence: Rhythm]
 - [23. The Well-Written Sentence: Variety]
 - [24. Meaning]
