@@ -23,14 +23,14 @@ Thomas S. Kane .
 - [CHAPTER 19 Sentence Styles](chapter19.md)
 - [CHAPTER 20 The Well-Written Sentence(1): Concision](chapter20.md)
 - [CHAPTER 21 The Well-Written Sentence(2): Emphasis](chapter21.md)
-- [22. The Well-Written Sentence: Rhythm]
-- [23. The Well-Written Sentence: Variety]
-- [24. Meaning]
-- [25. Clarity and Simplicity]
-- [26. Concision]
-- [27. Figurative Language]
-- [28. Unusual Words and Collocations]
-- [29. Improving Your Vocabular: Dictionaries]
+- [CHAPTER 22 The Well-Written Sentence(3): Rhythm](chapter22.md)
+- [CHAPTER 23 The Well-Written Sentence(4): Variety](chapter23.md)
+- [CHAPTER 24 Meaning](chapter24.md)
+- [CHAPTER 25 Clarity and Simplicity](chapter25.md)
+- [CHAPTER 26 Concision](chapter26.md)
+- [CHAPTER 27 Figurative Language](chapter27.md)
+- [CHAPTER 28 Unusual Words and Collocations](chapter28.md)
+- [CHAPTER 29 Improving Your Vocabulary: Dictionaries](chapter29.md)
 - [30. Description]
 - [31. Narration]
 - [32. Stops]
