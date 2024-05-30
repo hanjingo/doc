@@ -36,154 +36,150 @@ An image is a word or expression that speaks directly to one or more of the sens
 
 ## Vocabulary
 
-figurative
+figurative `/'fɪɡərətɪv/` adj. 比喻的；象征的
 
-clue
+clue `/kluː/` n. 线索；提示
 
-woven
+woven `/'wəʊvn/` adj. 编织的（动词weave的过去分词.）
 
-cap
+cap `/kæp/` n. 帽子；盖子；顶；上限；vt. 超过；加盖于；戴帽；覆盖；完成；设限；vi. 脱帽致意
 
-vanity
+vanity `/'vænəti/` n. 自负；虚荣心；无价值的东西；浮华
 
-pretentiousness
+pretentious `/prɪ'tenʃəs/` adj. 自命不凡的；自负的；矫饰的；炫耀的
 
-decoration
+decoration `/ˌdekə'reɪʃn/` n. 装饰；装饰品
 
-entertain
+entertain `/ˌentə'teɪn/` v. 娱乐；使有兴趣；招待；考虑；抱有；容纳
 
-witty
+witty `/'wɪti/` adj. 机智的；诙谐的
 
-succinctness
+succinctness `/sək'sɪŋktnəs/` n. 简明；简洁
 
-preposition
+preposition `/ˌprepə'zɪʃn/` n. 介词
 
-praise
+praise `/preɪz/` vt. 赞美；称赞；n. 赞美；称赞；崇拜；vi. 赞美
 
-corpse
+corpse `/kɔːps/` n. 尸体
 
-cart
+cart `/kɑːt/` n. 【C】(二轮或四轮)运货马车；手推车；vt. <非正式>(用手推车)运送；(用力；粗鲁地)拖
 
-plank
+plank `/plæŋk/` n. 厚板；支撑物；政纲条目；vt. 铺板；用力放下；<口>立即付钱
 
-drifter
+drifter `/'drɪftə(r)/` n. 漂流者；漂流物；漂网渔船
 
-futility
+futility `/fjuː'tɪləti/` n. 无用；无益；无价值
 
-connotation
+connotation `/ˌkɑːnə'teɪʃn/` n. 涵义；言外之意；[逻]内涵
 
-ponderousness
+ponderousness `/'pɒndərəs/` adj. 笨重的；笨拙的；乏味的
 
-bossy
+bossy `/'bɒsi/` adj. 专横的；爱发号施令的；n. 母牛或者小牛
 
-nanny
+nanny `/'næni/` n. 保姆；<英>祖母；外婆
 
-righteousness
+righteousness `/'raɪtʃəsnəs/` n. 正当；正义；正直
 
-smug
+smug `/smʌɡ/` adj. 自鸣得意的；沾沾自喜的；整洁的
 
-disdain
+disdain `/dɪsˈdeɪn/` n. 轻蔑；v. 蔑视
 
-zeal
+zeal `/ziːl/` n. 热情；热忱
 
-sober
+sober `/'səʊbə(r)/` adj. 清醒的；稳重的；沉着冷静的；颜色暗淡的；vt. 使清醒；使沉着；vi. 清醒；冷静下来
 
-persuasive
+persuasive `/pə'sweɪsɪv/` adj. 有说服力的；令人信服的
 
-fanatic
+fanatic `/fə'nætɪk/` n. 狂热者；极端分子；盲信者；adj. 狂热的；盲信的
 
-venerate
+venerate `/'venəreɪt/` v. 尊敬；尊崇；崇拜
 
-venerate
+catnip `/'kætnɪp/` n. 猫薄荷；樟脑草=catmint.
 
-catnip
+schoolmarm `/'skuːlmɑːm/` n. 女教师；装出教师派头的人
 
-schoolmarm
+sane `/seɪn/` adj. 心智健全的；明智的
 
-sane
+infinitive `/ɪn'fɪnətɪv/` n. 不定式
 
-infinitive
+cape `/keɪp/` n. 岬；海角；n. 披肩
 
-cape
+cod `/kɒd/` n. 鳕鱼；v. 哄骗；愚弄
 
-cod
+bend `/bend/` v. 弯曲；使弯曲；屈服；屈从；集中于；n. 弯曲；弯道
 
-bended
+metonymy `/mə'tɒnəmi/` n. 转喻
 
-thoreau
+vivid `/ˈvɪvɪd/` adj. 生动的；鲜艳的；栩栩如生的
 
-metonymy
+thumbprint `/'θʌmprɪnt/` n. 拇指纹
 
-vividly
+crudeness `/kruːdnəs/` n. 天然的状态；未成熟；生硬；粗野
 
-thumbprint
+allude `/ə'luːd/` v. 暗示；暗指
 
-crudeness
+disciple `/dɪ'saɪpl/` n. 弟子；门徒；信徒
 
-alluding
+wry `/raɪ/` adj. 面部肌肉扭曲的；啼笑皆非的；讽刺的；挖苦的
 
-disciple
+veneration `/ˌvenə'reɪʃn/` n. 崇敬
 
-wry
+predigest `/ˌpriːdɪ'dʒest/` vt. 预先消化；使易消化；简化
 
-veneration
+pap `/pæp/` n. 奶头；乳头；n. 软食；半流质食物；无实质内容的东西；n. 政治上的恩惠
 
-predigest
+spoon `/spuːn/` n. 匙；调羹；匙状物；vt. 以匙舀起；vi. 调情
 
-pap
+nudge `/nʌdʒ/` vt. 轻推；轻触；推进；vi. 轻推；n. 轻推
 
-spoon
+knee `/niː/` n. 膝盖；膝关节
 
-nudge
+revise `/rɪ'vaɪz/` n. 校订；修正；再校稿；v. 校订；修正；校正
 
-knee
+personification `/pəˌsɒnɪfɪ'keɪʃn/` n. 拟人；化身；典型；具体化
 
-revise
+sailor `/'seɪlə(r)/` n. 海员；水手；扁平的硬边草帽
 
-personification
+aristocratic `/ˌærɪstə'krætɪk/` adj. 贵族的；赞成贵族政治的；爱挑剔的
 
-sailor
+merchant `/'mɜːtʃənt/` n. 商人；店主；专家；adj. 商业的；商船的；n. （班轮提单）货方；签约方
 
-aristocratic
+elegant `/'elɪɡənt/` adj. 优雅的；雅致的
 
-merchant
+carriage `/'kærɪdʒ/` n. 四轮马车；客车车厢；运输；运费；举止；托架
 
-elegantly
+allusion `/ə'luːʒn/` n. 暗指；暗示
 
-carriage
+historian `/hɪ'stɔːriən/` n. 历史学家；编史者
 
-allusion
+subtle `/ˈsʌtl/` adj. 微妙的；敏锐的；不明显的；精细的；狡猾的
 
-historian
+pervade `/pə'veɪd/` vt. 弥漫；遍及；蔓延
 
-subtler
+blithely `/'blaɪðli/` adv. 愉快地；无挂虑地
 
-pervading
+unaware `/ˌʌnə'weə(r)/` adj. 没有发觉的；不知道的
 
-blithely
+disparity `/dɪ'spærəti/` n. 不一致
 
-unaware
+denominator `/dɪ'nɒmɪneɪtə(r)/` n. 分母；平均水平
 
-disparity
+comic `/ˈkɒmɪk/` n. 连环图画；喜剧演员；adj. 滑稽的；有趣的；喜剧的
 
-denominator
+overstatement `/'əʊvəsteɪtmən/` n. 夸大其词；大话
 
-comic
+tactic `/ˈtæktɪk/` n. 战略；策略
 
-overstatement
+paradox `/'pærədɒks/` n. 悖论；似非而是的论点；自相矛盾的话
 
-tactic
+horror `/ˈhɒrə(r)/` n. 恐怖；战栗；厌恶；震惊；adj. 恐怖的
 
-paradox
+pun `/pʌn/` n. 双关语
 
-horror
+plight `/plaɪt/` n. 困境；苦境；n. 誓约；vt. 宣誓；订婚
 
-pun
+maiden `/'meɪdn/` n. 未婚女子；少女；断头机；从未赢过的赛马；adj. 未婚的；处女的；初次的
 
-plight
+lustful `/'lʌstfl/` adj. 好色的；渴望的；贪婪的
 
-maiden
-
-lustful
-
-monk
+monk `/mʌŋk/` n. 僧侣；修道士

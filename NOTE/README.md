@@ -25,7 +25,6 @@ English | [中文版](README_zh.md)
 | Title                                                        | Edition | Author                                   | Abstract/Evaluate |
 | ------------------------------------------------------------ | ------- | ---------------------------------------- | ----------------- |
 | [C++ Templates: The Complete Guide](CPP_TEMPLATES/README.md) | 1ED     | David Vandevoorde<br>Nicolai M. Josuttis |                   |
-| [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)           | 1ED     | Martin Reddy                             |                   |
 
 ### Compile&Build
 
@@ -76,11 +75,18 @@ English | [中文版](README_zh.md)
 | ------------------------------------------------------------ | ------- | ---------------------------- | ----------------- |
 | [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder |                   |
 
+### Other
+
+| Title                                                        | Edition | Author           | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
+| [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane . |                   |
+
 
 
 ## Reading
 
 - [ESSAY](ESSAY/README.md)
+- [CRITICAL THINKING](CRITICAL_THINKING/README.md)
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
@@ -88,7 +94,7 @@ English | [中文版](README_zh.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
-- [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md)
+- [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)
 
 
 

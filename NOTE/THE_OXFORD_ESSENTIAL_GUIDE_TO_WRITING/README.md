@@ -31,7 +31,7 @@ Thomas S. Kane .
 - [CHAPTER 27 Figurative Language](chapter27.md)
 - [CHAPTER 28 Unusual Words and Collocations](chapter28.md)
 - [CHAPTER 29 Improving Your Vocabulary: Dictionaries](chapter29.md)
-- [30. Description]
-- [31. Narration]
-- [32. Stops]
-- [33. The Other Marks]
+- [CHAPTER 30 Description](chapter30md)
+- [CHAPTER 31 Narration](chapter31.md)
+- [CHAPTER 32 Stops](chapter32.md)
+- [CHAPTER 33 The Other Marks](chapter33.md)

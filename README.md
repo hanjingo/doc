@@ -4,7 +4,7 @@
 
 ## Quick Guide
 
-[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
+[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)   [ESSAY](NOTE/ESSAY/README.md)
 
 ---
 
@@ -35,7 +35,7 @@
 
 ### [C++](LANG/C++/README.md)
 
-- [Feature](LANG/C++/feature.md)
+- [C++ Feature](LANG/C++/feature.md)
 
 ### [Lua](LANG/LUA/README.md)
 
@@ -67,6 +67,7 @@
 | [COMPUTER NETWORKING: A Top-Down Approach](NOTE/COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md) | 6ED     | James F. Kurose<br>Keith W. Ross                             |                   |
 | [Design Pattern](NOTE/DESIGN_PATTERN/README.md)              | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
 | [THE ART OF MENTAL TRICKERY AND MANIPULATION](NOTE/THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder                                 |                   |
+| [The Oxford Essential Guide to Writing](NOTE/THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane .                                             |                   |
 
 ---
 
