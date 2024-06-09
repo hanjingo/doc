@@ -5,8 +5,8 @@ M. Neil Browne, Stuart M.Keeley, 8ED
 - [CHAPTER 1 The Benefit of Asking the Right Questions](chapter1.md)
 - [CHAPTER 2 What Are the Issue and the Conclusion?](chapter2.md)
 - [CHAPTER 3 What are the Reasons?](chapter3.md)
-- [4 What Words or Phrases Are Ambiguous?]
-- [5 What Are the Value Conflicts and Assumptions?]
+- [CHAPTER 4 What Words or Phrases Are Ambiguous?](chapter4.md)
+- [CHAPTER 5 What Are the Value Conflicts and Assumptions?](chapter5.md)
 - [6 What Are the Descriptive Assumptions?]
 - [7 Are There Any Fallacies in the Reasoning?]
 - [8 How Good Is the Evidence: intuition, Personal Experience, Testimonials, and Appeals to Authority?]

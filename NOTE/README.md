@@ -74,19 +74,19 @@ English | [中文版](README_zh.md)
 | Title                                                        | Edition | Author                       | Abstract/Evaluate |
 | ------------------------------------------------------------ | ------- | ---------------------------- | ----------------- |
 | [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder |                   |
+| [CRITICAL THINKING](CRITICAL_THINKING/README.md)             |         | JONATHAN HABER.              |                   |
 
 ### Other
 
-| Title                                                        | Edition | Author           | Abstract/Evaluate |
-| ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
-| [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane . |                   |
+| Title                                                        | Edition | Author           | Abstract/Evaluate                                            |
+| ------------------------------------------------------------ | ------- | ---------------- | ------------------------------------------------------------ |
+| [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane . |                                                              |
+| [LITERATURE](LITERATURE/README.md)                           |         |                  | - [The Declaration of Independence](LITERATURE/the_declaration_of_independence.md) |
 
 
 
 ## Reading
 
-- [ESSAY](ESSAY/README.md)
-- [CRITICAL THINKING](CRITICAL_THINKING/README.md)
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)

@@ -1,4 +1,0 @@
-# Essay
-
-- [China](china.md)
-

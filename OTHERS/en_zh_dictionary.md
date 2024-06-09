@@ -63,6 +63,12 @@ abbreviate `/ə'briːvieɪt/` vt. 缩写；缩短；使简略
 
 > DRV: abbreviation `/əˌbriːviˈeɪʃn/` n. 缩写
 
+abdicate `/'æbdɪkeɪt/` vt. 正式放弃；让位; vi. 退位；辞职
+
+> Ex: HE has abdicated Government here, by declaring us out of his Protection and waging War against us. --The Declaration of Independence
+
+abductive `/æb'dʌktɪv/` adj. 诱导的
+
 abhor `/əb'hɔː(r)/` vt. 憎恶；厌恶；痛恨
 
 > DRV: abhorrent `/əbˈhɒrənt/` adj. 令人厌恶的；(be ～ of)憎恶的；讨厌的；(be ～ to)相抵触的；不符的；(be ～ from)不相容的；背离的；(be ～ from)持异议的；强烈反对的； adv. 令人厌恶地
@@ -126,6 +132,10 @@ abrupt `/ə'brʌpt/` adj. 突然的；唐突的；意外的；陡峭的
 absent `/ˈæbsənt/` adj. 缺席的；不在的；缺乏的；vt. 使缺席
 
 > DRV: absenteeism `/ˌæbsən'tiːɪzəm/` n. （无故）旷课；（无故）旷工
+
+absolve `/əb'zɒlv/` vt. 宣告...无罪；赦免
+
+> Ex: that they are absolved from all Allegiance to the British Crown, and that all political Connection between them and the State of Great-Britain, is and ought to be totally dissolved; --The Declaration of Independence
 
 absorb `/əbˈzɔːb/` vt. 吸收；吸引 ... 的注意；吞并；承受
 
@@ -249,6 +259,10 @@ acquaint `/əˈkweɪnt/` vt. 使了解；使熟知；告知
 >
 > DRV: acquainted `/ə'kweɪntɪd/` adj. 熟悉的；认识的；了解的；有知识的
 
+acquiesce `/ˌækwi'es/` vi. 默许；勉强同意
+
+> Ex: We must, therefore, acquiesce in the Necessity, which denounces our Separation, and hold them, as we hold the rest of Mankind, Enemies in War, in Peace, Friends. --The Declaration of Independence
+
 acquire `/əˈkwaɪə(r)/`  vt. 获得；学到；取得
 
 > DRV: acquisition `/ˌækwɪ'zɪʃn/` n. 获得；所获之物；采集
@@ -321,7 +335,11 @@ addict `/ˈæd.ɪkt/` n. （尤对有害之物）有瘾的人，入迷的人；�
 
 additive `/'ædətɪv/` n. 添加剂；adj. 添加的
 
-adequate `/'ædɪkwət/` adj. 足够的，适当的，能够胜任的
+adept `/ə'dept/` adj. 熟练的；老练的; n. 名手；专家
+
+adequacy `/'ædɪkwəsi/` n. 足够；适当
+
+> DRV: adequate `/'ædɪkwət/` adj. 足够的，适当的，能够胜任的
 
 adhere `/ədˈhɪə(r)/` vi. 黏附, 附着, 坚持, 支持
 
@@ -509,6 +527,8 @@ affect `/ə'fekt/` vt. 影响；感动；作用
 
 affiliate `/əˈfɪlɪeɪt/` n. 分公司；附属机构；vt. 使隶属于；接纳；追溯；vi. 发生联系
 
+> DRV: affiliation `/əˌfɪli'eɪʃn/` n. 加入；入会；联系；附属机构，分公司，分部；结交，交往
+
 affine `/ə'faɪn/` n. 婚姻关系形成的亲属；adj. [化]亲合的；[数]仿射的
 
 > DRV: affinity `/əˈfɪn.ə.ti/` n. 姻亲；密切关系；吸引力
@@ -535,6 +555,8 @@ affluent `/ˈæfluənt/` adj. 富裕的；奢华的; n. 支流
 
 afford `/ə'fɔːd/` v. 花费得起；能够做；承担得起(后果)；提供；给予
 
+aforementioned `/əˌfɔː'menʃənd/` adj. 上述的；前述的
+
 aftermath `/'ɑːftəmæθ/` n. 后果；余波；灾后时期；再生作物
 
 afterward `/'ɑːftəwəd/` adv. 后来；以后
@@ -544,6 +566,8 @@ afterward `/'ɑːftəwəd/` adv. 后来；以后
 [回到A](#A)--[回到顶部](#英汉词典)
 
 agency `/'eɪdʒənsi/` n. 代理；代理处；政府机构
+
+agenda `/ə'dʒendə/` n. 议事日程
 
 agglomerate `/ə'ɡlɒməreɪt/` v. 使结块；使成团或凝结；集结；n. 〈地质〉集块岩；〈化学〉附聚物；团块；集结；adj. 凝聚的；成团的；结块的
 
@@ -731,9 +755,13 @@ alleviate `/əˈliːvieɪt/` vt. 减轻；使 ... 缓和
 
 alley `/'æli/` n. 胡同；巷；跑道；球道
 
+alliance `/ə'laɪəns/` n. 联盟；联姻；结盟
+
 allies `/əˈlaɪz/` n. 同盟；协约国
 
 alligator `/'ælɪɡeɪtə(r)/` n. 短吻鳄；adj. 鳄鱼皮的
+
+alliteration `/əˌlɪtə'reɪʃn/` n. 头韵
 
 allodial `/ə'ləʊdjəl/` adj. 自主的；自由地的
 
@@ -847,6 +875,8 @@ amino `/ə'miːnəʊ/` adj. 氨基的
 
 amnesia `/æm'niːziə/` n. 健忘症；记忆缺失
 
+amnesty `/'æmnəsti/` n. 大赦；特赦
+
 among `/əˈmʌŋ/` prep. 在 ... 之中；...之一
 
 > DRV: amongst `/ə'mʌŋst/` prep. 在 ... 之中； 在 ... 之间
@@ -883,8 +913,10 @@ amuse `/ə'mjuːz/` v. 娱乐；消遣；使 ... 发笑
 
 anaemic `/ə'niːmɪk/` adj. 贫血的；无力的=anemic.
 
-analogy `/ə'nælədʒi/` n. 类比；相似；类似
+analog `/'ænəlɔːg/` adj. 模拟的；类比的; n. (=analogue)类似(模拟量)
 
+> DRV: analogy `/ə'nælədʒi/` n. 类比；相似；类似
+>
 > DRV: analogous `/ə'næləɡəs/` adj. 类似的
 >
 > DRV: analogue `/'ænəlɒɡ/` n. 类似物；adj. 模拟的，模拟计算机的
@@ -892,6 +924,8 @@ analogy `/ə'nælədʒi/` n. 类比；相似；类似
 analyse `/'ænəlaɪz/` vt. 分析；细察
 
 > SYN(vt.分析): break down, dissect, evaluate, examine, interpret, investigate, scrutinize, separate out, study.
+
+anaphora `/ə'næfərə/` n. [语]首语重复法；[语]照应
 
 anarchy `/'ænəki/` n. 无政府状态；混乱
 
@@ -1013,6 +1047,10 @@ annex `/ə'neks/` vt. 并吞；附加；获得；n. 附件；附属物；附属�
 
 annihilate `/ə'naɪəleɪt/` v. 消灭；歼灭；彻底消除；使无效；废止
 
+> DRV: annihilation `/əˌnaɪə'leɪʃn/` n. 歼灭；消灭；湮灭
+>
+> Ex: whereby the Legislative Powers, incapable of Annihilation, have returned to the People at large for their exercise --The Declaration of Independence
+
 anniversary `/ˌænɪ'vɜːsəri/` n. 周年纪念；周年纪念日
 
 annotate `/'ænəteɪt/` v. 注解
@@ -1107,6 +1145,8 @@ appoint `/ə'pɔɪnt/` v. 任命；委派；指定；约定
 
 apportion `/əˈpɔːʃn/` v. 分配；分摊；分派
 
+appraisal `/ə'preɪzl/` n. 估计；评估
+
 appreciable `/əˈpriːʃəbl/` adj. 可感知的；可评估的；很可观的
 
 appreciate `/ə'priːʃieɪt/` vt. 欣赏；赏识；感激；领会；意识到；了解；vi. 增值；涨价
@@ -1197,6 +1237,8 @@ arbitrage `/'ɑːbɪtrɑːʒ/` n. 套利交易；套汇；仲裁
 
 arbitrary `/ˈɑːbɪtrəri/` adj. 任意的；专制的；武断的；霸道的
 
+> Ex: FOR abolishing the free System of English Laws in a neighbouring Province, establishing therein an arbitrary Government, and enlarging its Boundaries, so as to render it at once an Example and fit Instrument for introducing the same absolute Rule into these Colonies: --The Declaration of Independence
+
 arboreal `/ɑːˈbɔːriəl/` adj. 树木的；栖于树木的，生活在树上的；像树的
 
 arc `/ɑːk/` n. 弧；弧形物；vi. 形成电弧；按弧形轨迹行进
@@ -1268,6 +1310,8 @@ argon `/'ɑːɡɒn/` n. 氩
 argue `/ˈɑːɡjuː/` v. 说服；争论；辩论
 
 > DRV: arguable `/'ɑːɡjuəbl/` adj. 可辩论的；可论证的
+>
+> DRV: arguer `/arguer/` n. 辩论者；论证者
 
 aridity `/ə'ridəti/` n. 干旱，乏味
 
@@ -1380,6 +1424,10 @@ assert `/ə'sɜːt/` vt. 断言；主张，坚持；生效；维护
 > DRV: assertion `/ə'sɜːʃn/` n. 断言；主张；论断；自信，坚定；被维护的东西
 
 assembler `/ə'semblə(r)/` n. 装配工；〈计〉汇编程序
+
+assent `/ə'sent/` n. 同意；赞成; vi. 赞成
+
+> Ex: HE has refused his Assent to Laws, the most whole-some and necessary for the public Good.--The Declaration of Independence
 
 assess `/ə'ses/` v. 评定；评估；估算
 
@@ -1931,6 +1979,8 @@ beaver `/'biːvə(r)/` n. 海狸； 獭皮(帽)； <粗>女性生殖器；n. 护
 
 bedrock `/ˈbedrɒk/` n. 岩床；根底；基础；基本原则
 
+bedtime `/'bedtaɪm/` n. 就寝时间
+
 beef `/biːf/` n. 牛肉；肌肉；力气；牢骚；v. 抱怨；告发；加强
 
 befall `/bɪ'fɔːl/` v. 发生；降临
@@ -1954,6 +2004,8 @@ behave `/bɪˈheɪv/` v. 表现；行为；举止
 behemoth `/bɪ'hiːmɒθ/` n. 巨兽；庞然大物；异常巨大的东西
 
 behold `/bɪ'həʊld/` vt. 看到；注视；领悟；vi. 看；看啊(多用于祈使句；引起人的注意)
+
+> DRV: beholden `/bɪ'həʊldən/` adj. 蒙恩的；有义务的
 
 behoove `/bɪ'huːv/` v. 理应；有必要
 
@@ -2073,7 +2125,9 @@ bicycle `/'baɪsɪkl/` n. 自行车；vi. 骑自行车
 
 bidirectional `/ˌbaɪdə'rekʃənl/` adj. 双向的；双向作用的
 
-bigotry `/'bɪɡətri/` n. 固执；顽固；顽迷
+bigot `/'bɪɡət/` n. (宗教、政治等的)盲信者；顽固者
+
+> DRV: bigotry `/'bɪɡətri/` n. 固执；顽固；顽迷
 
 bijective `/bɪ'dʒektɪv/` adj. 双射的
 
@@ -2339,6 +2393,8 @@ boll `/bəʊl/` n. 圆蒴；圆荚；棉铃
 
 bolster `/ˈbəʊlstə(r)/` n. 长枕；靠垫；vt. 支持；鼓励
 
+bolt `/bəʊlt/` n. 门闩；螺栓；一卷布；弩箭; v. （突然）逃离；闩住；狼吞虎咽；用螺栓固定; adv. 挺直地
+
 bomb `/bɒm/` n. 炸弹；vt. 轰炸；投弹于；vi. 投弹；失败
 
 > DRV: bombard `/bɒm'bɑːd/` v. 炮轰；攻击；[核]以高速粒子撞击；n. 射石炮
@@ -2506,6 +2562,8 @@ breed `/briːd/` v. 繁殖；养育；引起，产生；教养；n. 品种；血
 breeze `/briːz/` n. 微风；<口>轻而易举的事；焦炭渣；v. 飘然而行；轻松通过
 
 brethren `/'breðrən/` n. <古>同胞；同党；同会
+
+> Ex: HE has constrained our fellow Citizens taken Captive on the high Seas to bear Arms against their Country, to become the Executioners of their Friends and Brethren, or to fall themselves by their Hands. --The Declaration of Independence
 
 brevity `/'brevəti/` n. 短暂；简短；简洁
 
@@ -2933,9 +2991,9 @@ capsule `/'kæpsjuːl/` n. 胶囊；太空舱；荚膜；概要；v. 概括；�
 
 capital `/'kæpɪtl/` n. 首都；资本；大写字母；[建筑]柱顶；adj. 资本的；大写的；一流的；首要的；极其严重的；涉及死亡的
 
-> Ex: To one who is wise but has no other property, time is his only capital.
->
 > DRV: capitalization `/ˌkæpɪtəlaɪ'zeɪʃn/` n. 资本化；大写字母的使用
+>
+> Ex: To one who is wise but has no other property, time is his only capital.
 
 captive `/'kæptɪv/` n. 俘虏；迷恋者；adj. 被俘的；被迷住的
 
@@ -3149,6 +3207,8 @@ census `/ˈsensəs/` n. 人口普查；户口普查；统计
 
 centennial `/senˈteniəl/` n. 百年纪念；adj. 一百年的
 
+centerpiece `/'sentəpiːs/` n. 中心装饰品；（餐桌）中央的摆饰
+
 centigrade `/ˈsentɪɡreɪd/` adj. 摄氏的；百分度的
 
 centimetre `/'sentɪmiːtə(r)/` n. 厘米(cm)
@@ -3255,11 +3315,15 @@ charismatic `/ˌkærɪz'mætɪk/` adj. 有魅力的
 
 charity `/'tʃærəti/` n. 慈善；宽厚；慈善机关(团体)；仁慈
 
+> DRV: charitable `/'tʃærətəbl/` adj. 仁慈的；(为)慈善事业的；宽恕的
+
 charm `/tʃɑːm/` n. 魅力；吸引力；迷人；美貌；v. （使）着迷；施魔法
 
 charmingly `/'tʃɑːmɪŋli/` adv. 迷人地；愉悦地
 
 charter `/'tʃɑːtə(r)/` n. 宪章；特许；(船、机、车等的)租赁；vt. 包租；特许；发给 ... 执照；adj. 特许的
+
+> Ex: FOR taking away our Charters, abolishing our most valuable Laws, and altering fundamentally the Forms of our Governments: --The Declaration of Independence
 
 chase `/tʃeɪs/` vt. 追捕；追求；镂刻，雕刻；试图赢得；vi. 奔跑；追赶；n. 追捕；争取；狩猎
 
@@ -3437,11 +3501,13 @@ citizenship `/ˈsɪtɪzənʃɪp/` n. 国籍；公民权；公民的身份
 
 civil `/ˈsɪvl/` adj. 公民的；文明的；国内的；民用的；民事的；【建】土木的
 
-civilian `/səˈvɪliən/` adj. 平民的；n. 罗马法专家；平民
-
-civility `/səˈvɪləti/` n. 礼貌；谦恭
-
-civilize `/'sɪvəlaɪz/` vt. 使开化；使文明
+> DRV: civilian `/səˈvɪliən/` adj. 平民的；n. 罗马法专家；平民
+>
+> DRV: civility `/səˈvɪləti/` n. 礼貌；谦恭
+>
+> DRV: civilize `/'sɪvəlaɪz/` vt. 使开化；使文明
+>
+> Ex: HE has affected to render the Military independent of and superior to the Civil Power. --The Declaration of Independence
 
 ### cj
 
@@ -3623,6 +3689,8 @@ coaster `/'kəʊstə(r)/` n. 杯垫；小托盘；惯性运转装置；沿海航
 
 coat `/kəʊt/` n. 涂层；外套；上衣；层；表皮；vt. 涂上；覆盖；包上
 
+coauthor `/kəʊ'ɔːθə/` n. 合著者；共同执笔者
+
 coax `/kəʊks/` v. 哄；诱骗；灵巧慢慢地做
 
 coaxial `/kəʊ'æksɪəl/` adj. 同轴的
@@ -3666,6 +3734,8 @@ coexist `/ˌkəʊɪɡˈzɪst/` v. 同时存在(于同一处)；共存；共处
 cofactor `/kəʊ'fæktə/` n. 辅助因素；辅因子；余因子
 
 coffer `/'kɒfə(r)/` n. 金库；保险箱；（建筑物的）镶板；防水堰；v. 放入保险箱；用平顶镶板装饰
+
+cognate `/'kɒɡneɪt/` n. 同源词; adj. 同源的；相关的
 
 cognitive `/ˈkɒɡnətɪv/` adj. 认识的；认知的；有认识力的
 
@@ -3724,6 +3794,8 @@ colleague `/'kɒliːɡ/` n. 同事, 同僚
 > Ex: a late colleague of mine.
 
 collective `/kə'lektɪv/` adj. 集体的；共同的；n. 集体
+
+collegiate `/kə'liːdʒiət/` adj. 大学的；大学生的；学院的
 
 collier `/'kɒliə(r)/` n. 煤矿工人；运煤船
 
@@ -3920,6 +3992,8 @@ compile `/kəmˈpaɪl/` vt. 编译；编制；编纂
 > DRV: compilation `/ˌkɒmpɪ'leɪʃn/` n. 汇集；编写；编辑
 
 complacence `/kəm'pleɪsns/` n. 自满
+
+compleat `/kəm'pliːt/` adj. 有造诣的；非常熟练的
 
 complement `/'kɒmplɪment/` vt. 相辅相成；n. 补足物；补语；余角
 
@@ -4193,6 +4267,8 @@ congregate `/'kɒŋɡrɪɡeɪt/` v. 使集合；聚集；集合；adj. 集体的
 
 congress `/ˈkɒŋɡres/` n. 代表大会；议会；n. 立法机关；n. 国会<美>
 
+> Ex: WE, therefore, the Representatives of the UNITED STATES OF AMERICA, in GENERAL CONGRESS, Assembled, appealing to the Supreme Judge of the World for the Rectitude of our Intentions, do, in the Name, and by Authority of the good People of these Colonies, solemnly Publish and Declare, That these United Colonies are, and of Right ought to be, FREE AND INDEPENDENT STATES; --The Declaration of Independence
+
 conifer `/ˈkɑːnɪfər/` n. 针叶树
 
 conjecture `/kən'dʒektʃə(r)/` n. 推测；臆测；v. 推测
@@ -4235,6 +4311,8 @@ cons `/kɔn/` n. 骗局；反对；反对的理由；adv. 反面地；反对地�
 
 consanguinity `/ˌkɒnsæŋ'ɡwɪnəti/` n. 血缘；血亲；同族
 
+> Ex: They too have been deaf to the Voice of Justice and of Consanguinity. --The Declaration of Independence
+
 conscious `/ˈkɒnʃəs/` adj. 神志清醒的；意识到的；自觉的；有意的；n. 意识
 
 > 1 aware of and responding to one's surroundings. 2 having knowledge of something. 3 (of an action or feeling) deliberate and intentional.
@@ -4258,6 +4336,8 @@ consensual `/kən'senʃuəl/` adj. 在两愿下成立的；交感性的
 consensus `/kən'sensəs/` n. 一致；同意；共识
 
 consent `/kən'sent/` n. 同意；赞成；v. 同意；答应
+
+> Ex: Governments are instituted among Men, deriving their just Powers from the Consent of Governed. --The Declaration of Independence
 
 consequence `/'kɒnsɪkwəns/` n. 结果, 后果, 重要(性), 重大
 
@@ -4350,6 +4430,8 @@ constraction `/kənst'rækʃn/` n. 构造
 constrain `/kənˈstreɪn/` vt. 强迫，强使；限制，约束
 
 > DRV: constraint `/kən'streɪnt/` n. 约束；强制；约束条件；对感情的压抑；虚情假意；[计算机] 限制.
+>
+> Ex: Such has been the patient Sufferance of these Colonies; and such is now the Necessity which constrains them to alter their former Systems of Government. --The Declaration of Independence
 
 constrict `/kənˈstrɪkt/` v. 压缩；束紧；使收缩
 
@@ -4362,6 +4444,8 @@ consul `/'kɒnsl/` n. 领事；（古罗马）执行官员
 consult `/kənˈsʌlt/` v. 查阅；请教；商讨；就诊
 
 > DRV: consultancy `/kən'sʌltənsɪ/` n. 咨询；顾问的工作；咨询公司
+>
+> DRV: consultant `/kən'sʌltənt/` n. 顾问；咨询者；<英>会诊医生
 >
 > DRV: consultation `/ˌkɒnsl'teɪʃn/` n. 咨询；请教；协议会
 
@@ -4395,15 +4479,29 @@ contend `/kən'tend/` v. 竞争；争斗；争辩；坚决主张
 
 content `/'kɒntent/` n. 内容； 目录； 含量；adj. 满足的； 满意的；vt. 使 ... 满足； 使 ... 安心
 
-contention `/kən'tenʃn/` n. 争论；争辩；争夺；论点
-
+> DRV: contention `/kən'tenʃn/` n. 争论；争辩；争夺；论点
+>
 > DRV: contentious `/kən'tenʃəs/` adj. 好辩的；好争吵的；有争议的
 
 contest `/'kɒntest/` n. 竞赛；比赛；vt. 驳斥；争取；vi. 奋斗
 
 context `/'kɒntekst/` n. 上下文；环境；背景
 
+> DRV: contextual `/kən'tekstʃʊəl/` adj. 上下文的；与语境有关的
+
 contiguous `/kən'tɪɡjuəs/` adj. 邻近的；连续的；接触的
+
+continent `/ˈkɒntɪnənt/` n. 大陆；洲；(the Continent)欧洲大陆
+
+> No man is an island, entire of itself; every man is a piece of the continent, a part of the main. --John Donne
+
+contingent `/kən'tɪndʒənt/` n. 代表团；小分队；偶然的事情；adj. 取决于；经验主义的；不可预知的
+
+continuation `/kənˌtɪnjʊ'eɪʃən/` n. 继续；延续；续集
+
+continuity `/ˌkɒntɪ'njuːəti/` n. 连续性
+
+continuous `/kən'tɪnjuəs/` adj. 连续的；继续的；连绵不断的
 
 contour `/ˈkɒntʊə(r)/` n. 周线；轮廓；等高线；概要；电路；vt. 画轮廓(画等高线)；adj. 显示轮廓的
 
@@ -4440,22 +4538,6 @@ controversy `/ˈkɒntrəvəːsi/` n. 争议；(公开的)争论
 > DRV: controversial `/ˌkɒntrəˈvɜːʃl/` adj. 有争议的；引起争论的
 
 controvert `/ˌkɒntrə'vɜːt/` v. 议论；辩驳；驳击
-
-content `/kənˈtent/` n. 内容； 目录； 含量；adj. 满足的； 满意的；vt. 使 ... 满足； 使 ... 安心
-
-continent `/ˈkɒntɪnənt/` n. 大陆；洲；(the Continent)欧洲大陆
-
-> No man is an island, entire of itself; every man is a piece of the continent, a part of the main. --John Donne
-
-contingent `/kən'tɪndʒənt/` n. 代表团；小分队；偶然的事情；adj. 取决于；经验主义的；不可预知的
-
-continuation `/kənˌtɪnjʊ'eɪʃən/` n. 继续；延续；续集
-
-continuity `/ˌkɒntɪ'njuːəti/` n. 连续性
-
-continuous `/kən'tɪnjuəs/` adj. 连续的；继续的；连绵不断的
-
-controversy `/ˈkɒntrəvɜːsi/` n. 争议；(公开的)争论
 
 covariance `/kəʊ'veərɪəns/` n. 共分散；（数学）协方差
 
@@ -4512,6 +4594,8 @@ convolution `/ˌkɒnvə'luːʃn/` n. 回旋；卷旋；盘旋；n. （数学）�
 convoy `/'kɒnvɔɪ/` n. 护航队；护送；护卫；警护；v. 护航；护送
 
 convulsion `/kən'vʌlʃn/` n. 抽搐；震动；动乱
+
+> Ex: the State remaining in the mean time exposed to all the Dangers of Invasion from without, and Convulsions within. --The Declaration of Independence
 
 convict `/kənˈvɪkt/` vt. 宣判 ... 有罪；使 ... 知罪；n.囚犯；罪犯；adj.被定罪的
 
@@ -4651,7 +4735,11 @@ counterattack `/'kaʊntərəˌtæk/` n. 反击；反攻；v. 反击；反攻
 
 counterbalance `/ˌkaʊntəˈbæləns/` n. 平衡；平衡力；v. 抵销；使平衡
 
+counterclaim `/'kaʊntəkleɪm/` n. 反诉；反对要求; v. 反诉；提起反诉
+
 counterclockwise `/ˌkaʊntəˈklɒkwaɪz/` adj. 逆时针的；adv. 逆时针地
+
+counterexample `/'kaʊntəɪg'zæmpl/` n. 反例
 
 counterfactual `/ˌkaʊntə'fæktʃuəl/` adj. [逻]反事实的( 指在不同条件下有可能发生但违反现存事实的)
 
@@ -4680,6 +4768,8 @@ courage `/'kʌrɪdʒ/` n. 勇气；胆量
 > DRV: courageous `/kə'reɪdʒəs/` adj. 勇敢的；有勇气的，有胆量的
 
 course `/kɔːs/` n. 课程；讲座；过程；路线；一道(菜)；v. 跑过，穿过；追赶；快跑
+
+> DRV: coursework `/'kɔːswɜːk/` n. 课程作业
 
 court `/kɔːt/` n. 法院；庭院；宫廷；球场；奉承；v. 献殷勤；追求；招致；设法获得
 
@@ -4785,6 +4875,8 @@ creek `/kriːk/` n. 小湾；小溪
 
 creep `/kriːp/` vi. 蹑手蹑脚地走；爬；渐渐出现；蔓延；毛骨悚然；n. 卑鄙小人；爬；徐行；蠕动
 
+crescendo `/krə'ʃendəʊ/` n. 声音渐增；高潮；顶峰
+
 crew `/kruː/` n. 全体船员；全体乘务员；(一组)工作人员；划艇队员；v. 当船员；当机务人员
 
 > Ex: No member of a crew is praised for the rugged individuality of his rowing. --Ralph Waldo Emerson
@@ -4792,6 +4884,8 @@ crew `/kruː/` n. 全体船员；全体乘务员；(一组)工作人员；划艇
 cricket `/'krɪkɪt/` n. 板球；蟋蟀；vi. 打板球
 
 cripple `/ˈkrɪpl/` n. 跛者；残废；v. 削弱；使...瘫痪
+
+> DRV: crippling `/'krɪplɪŋ/` adj. 严重损害身体的；造成严重后果的
 
 crisper `/'krɪspə/` n. 保鲜储藏格；卷发器；使食物变脆的人
 
@@ -4851,6 +4945,8 @@ crossbar `/'krɒsbɑː(r)/` n. 横杆；(足球门上的)横木；(自行车架�
 
 crosscut `/krɒskʌt/` n. 横锯；横切；剪接；v. 横切；adj. 横切的
 
+crosshair `/'krɔːsheə/` n. 十字丝；十字准线；准星；目标
+
 crossover `/ˈkrɔsˌoʊvər/` n. 交叉；交迭；跨界
 
 crows `/krəʊ/` n. 乌鸦；啼叫；欢叫；v. 报晓；啼叫；欢叫；夸口；洋洋自得
@@ -4883,11 +4979,11 @@ cruel `/ˈkruː(ə)l/` adj. 残酷的；残忍的；引起痛苦的
 
 > 1 wilfully causing pain or suffering to others, or feeling no concern about it. 2 spoil or ruin (an opportunity or a chance of success).
 >
+> DRV: cruelty `/'kruːəlti/` n. 残酷；虐待；残酷的行为
+>
 > Ex: people who are cruel to animals.
 >
 > Ex: Ernie nearly cruelled the whole thing by laughing.
->
-> DRV: cruelty `/'kruːəlti/` n. 残酷；虐待；残酷的行为
 
 cruise `/kruːz/` n. 巡航；漫游； 游艇；v. 慢速行驶；乘船游览；游弋；巡游
 
@@ -4960,6 +5056,8 @@ culminate `/ˈkʌlmɪneɪt/` vi. 达到顶点；达到高潮；告终；vt. 使�
 culprit `/'kʌlprɪt/` n. 罪犯；起因
 
 cultivate `/ˈkʌltɪveɪt/` vt. 栽培；耕作；培养；陶冶；结交(朋友)
+
+cultural `/'kʌltʃərəl/` adj. 文化的；和养动植物有关的
 
 cumbersome `/ˈkʌmbəs(ə)m/` adj. 笨重的；不方便的
 
@@ -5151,7 +5249,9 @@ dazzle `/'dæzl/` v. 使眼花；使赞许；n. 光辉
 
 deacon `/'diːkən/` n. (教会的)执事；助祭；受训准备做牧师者；v. <美俚>包装时把最好的放在上面；欺骗
 
-deafen `/'defn/` vt. 使聋； 把 ... 震聋
+deaf `/def/` adj. 聋的；充耳不闻的
+
+> DRV: deafen `/'defn/` vt. 使聋； 把 ... 震聋
 
 deal `/diːl/` n. 协定；交易；大量；v. 应付；分配；处理；交易；经营
 
@@ -5276,6 +5376,8 @@ deduce `/dɪ'djuːs/` vt. 演绎；推断
 deduct `/dɪ'dʌkt/` vt. 扣除；演绎
 
 > DRV: deduction `/dɪˈdʌkʃn/` n. 扣除；扣除额；推论；推理；演绎
+>
+> DRV: deductive `/dɪ'dʌktɪv/` adj. 推论的；演绎的
 
 deed `/diːd/` n. 行为；事迹；[法]契约；vt. 立契转让
 
@@ -5390,6 +5492,8 @@ deliberate `/dɪˈlɪbərət/` adj. 深思熟虑的；故意的；从容不迫�
 > Ex: Take time to deliberate; but when the time for action arrives, stop thinking and go in.
 >
 > DRV: deliberation `/dɪˌlɪbə'reɪʃn/` n. 熟虑；审议；从容
+>
+> DRV: deliberative `/dɪ'lɪbəˌreɪtɪv/` adj. 慎重的；审议的；考察的
 
 delicacy `/'delɪkəsi/` n. 柔弱；精致；优雅；谨慎；佳肴
 
@@ -5485,6 +5589,8 @@ denote `/dɪˈnəʊt/` vt. 表示；象征
 
 > DRV: denotative `/dɪ'nəʊtətɪv/` adj. 指示的；外延的
 
+denounce `/dɪ'naʊns/` v. 谴责；告发；通告废除
+
 dense `/dens/` adj. 密集的；稠密的；浓密的
 
 density `/ˈdensəti/` n. 密度；浓度；比重
@@ -5526,6 +5632,10 @@ deplore `/dɪ'plɔː(r)/` vt. 悲叹； 谴责； 对 ... 深感遗憾
 depose `/dɪ'pəʊz/` v. 废黜；罢免；（通常以书面）证明；作证（尤指在法庭宣誓）；放下
 
 deposit `/dɪˈpɒzɪt/` v. 放置；(使)沉淀；存储；付(订金等)；寄存；n. 存款；定金；堆积物；矿床
+
+> DRV: depository `/dɪ'pɒzɪtri/` n. 存储处；贮藏所；受托人
+>
+> Ex: HE has called together Legislative Bodies at Places unusual, uncomfortable, and distant from the Depository of their public Records, for the sole Purpose of fatiguing them into Compliance with his Measures. --The Declaration of Independence
 
 depot `/ˈdepəʊ/` n. 贮藏所；仓库；车站；补给站
 
@@ -5588,6 +5698,8 @@ desire `/dɪˈzaɪər/` n. 欲望；要求，心愿；性欲；vt. 要求；想�
 > Ex: a keen desire to lean.
 
 desirous `/dɪ'zaɪərəs/` adj. 渴望的；想要的
+
+desolate `/'desələt/` adj. 荒凉的；荒芜的；孤单寂寞的
 
 despair `/dɪ'speə(r)/` n. 绝望；失望；vi. 失望
 
@@ -5801,6 +5913,8 @@ diary `/'daɪəri/` n. 日记；日记簿
 
 diatonic `/ˌdaɪə'tɒnɪk/` adj. [音]自然音阶的；全音阶的
 
+dichotomy `/daɪ'kɒtəmi/` n. 两分；分裂；二分法
+
 dicing `/'daɪsɪŋ/` n. 菱形装饰(切割)
 
 dictate `/dɪkˈteɪt/` vt. & vi. 大声讲或读；口授；vt. 指示；指定；指令；n. 命令，规定，要求
@@ -5974,6 +6088,8 @@ disapproval `/ˌdɪsəˈpruːvl/` n. 不赞成
 disaster `/dɪ'zɑːstə(r)/` n. 灾难
 
 > DRV: disastrous `/dɪ'zɑːstrəs/` adj. 灾难性的；极糟的
+
+disavow `/ˌdɪsə'vaʊ/` v. 否认；不赞成
 
 disband `/dɪs'bænd/` v. 解散；遣散
 
@@ -6189,7 +6305,7 @@ dissolute `/'dɪsəluːt/` adj. 放荡的；放纵的；肆意挥霍的
 
 dissolve `/dɪ'zɒlv/` vt. 使溶解；解散；消除；解决(问题)；使沮丧；vi. 溶解；液化；消散；变得模糊；n. 叠化画面
 
-dissolvent `/dɪ'zɒlvənt/` adj. 有溶解力的；n. 溶剂
+> DRV: dissolvent `/dɪ'zɒlvənt/` adj. 有溶解力的；n. 溶剂
 
 dissonance `/'dɪsənəns/` n. 不一致；不和谐；[音]不协和音.
 
@@ -6200,6 +6316,8 @@ dissuade `/dɪˈsweɪd/` v. 劝阻
 > Ex: his friends tried to dissuade him from flying. 
 >
 > DRV: dissuading `/dɪ'sweɪd/` v. 劝阻
+
+distal `/'dɪstl/` adj. 末梢部的
 
 distant `/'dɪstənt/` adj. 疏远的；遥远的；远房的；陌生的；远行的
 
@@ -6282,6 +6400,8 @@ divine `/dɪˈvʌɪn/` adj. 神圣的；神的; vt. 推断; vi. 预言；理解;
 > Ex: heroes with divine powers.
 >
 > Ex: frauds who claimed to divine the future in chickens' entrails.
+>
+> Ex: And for the support of this Declaration, with a firm Reliance on the Protection of divine Providence, we mutually pledge to each other our Lives, our Fortunes, and our sacred Honor. --The Declaration of Independence
 
 divisive `/dɪ'vaɪsɪv/` adj. 不和的；分裂的；区分的
 
@@ -6349,6 +6469,8 @@ dogma `/'dɒɡmə/` n. 教条；教义；信条
 >
 > DRV: dogmatism `/'dɒɡmətɪzəm/` n. 武断；教条主义；独断论
 
+dojo `/'dəʊdʒəʊ/` n. 柔道训练学校；柔道馆
+
 doll `/dɒl/` n. 玩具娃娃；美貌女子；有吸引力的人；v. 打扮
 
 domain `/də'meɪn/` n. 领地；领域；范围
@@ -6374,6 +6496,8 @@ dominance `/'dɒmɪnəns/` n. 支配；控制；统治；优势；【生】优�
 domineer `/ˌdɒmɪ'nɪə/` v. 擅权；作威作福
 
 domino `/'dɒmɪnəʊ/` n. 多米诺骨牌
+
+donor `/'dəʊnə(r)/` n. 捐赠人；施主；供者
 
 doomsday `/'duːmzdeɪ/` n. 世界末日；[宗]最后的审判日
 
@@ -6671,6 +6795,8 @@ edify `/ˈɛdɪfʌɪ/` vt. 训导；教导；启发；薰陶
 
 editorial `/ˌedɪ'tɔːriəl/` n. 社论；adj. 编辑的
 
+educator `/'edʒukeɪtə(r)/` n. 教育工作者，教师，老师；教育学家；教育行政官员
+
 ### ee
 
 [回到E](#E)--[回到顶部](#英汉词典)
@@ -6712,6 +6838,8 @@ ego `/ˈiː.ɡəʊ/` n. 自我；自负；自尊心
 egocentric `/ˌeɡəʊ'sentrɪk/` adj. 自我中心的；利己的
 
 > DRV: egocentrically `/ˌeɡəʊ'sentrɪk/` adj. 自我中心的；利己的
+>
+> DRV: egocentrism `/ɪgɒ'sentrɪzm/` n. 自我中心主义
 
 ### eh
 
@@ -6899,6 +7027,8 @@ emend `/i'mend/` vt. 修订；校订
 
 emerge `/iˈmɜːdʒ/` vi. 浮现；(由某种状态)脱出；(事实)显现出来
 
+emeritus `/i'merɪtəs/` adj. 名誉退休的; n. 名誉退休者
+
 emigration `/ˌemɪ'ɡreɪʃn/` n. 移民
 
 eminent `/'emɪnənt/` adj. 著名的；显著的；卓越的
@@ -7019,7 +7149,9 @@ endanger `/ɪnˈdeɪndʒə(r/` vt. 危及；危害
 
 endear `/ɪn'dɪə(r)/` v. 使受喜爱 
 
-endeavour `/ɪn'devə(r)/` v. <英>尽力；努力；n. 奋力；尽力
+endeavor `/ɪn'devə/` n. 尽力；努力; v. 尽力；努力；力图 =endeavour
+
+> Ex: HE has endeavoured to prevent the Population of these States; --The Declaration of Independence
 
 endian `/'endiən/` n. （计算机）字节序
 
@@ -7029,9 +7161,11 @@ endorse `/ɪn'dɔːs/` vt. 赞同；支持；背书于
 
 endow `/ɪn'daʊ/` vt. 捐助；赋予；使具有某种品质
 
+> DRV: endowment `/ɪnˈdaʊmənt/` n. 【U】捐助(奖金)；n. 【C】捐助(钱的数量)；天赋
+>
 > Ex: Never forget that it is the spirit with which you **endow** your work that makes it useful or futile.
 >
-> DRV: endowment `/ɪnˈdaʊmənt/` n. 【U】捐助(奖金)；n. 【C】捐助(钱的数量)；天赋
+> Ex: WE hold these Truths to be self-evident, that all Men are created equal, that they are **endowed** by their Creator with certain unalienable Rights. --The Declaration of Independence
 
 endure `/ɪnˈdjʊə(r)/` vt. 容忍；vi. 忍耐；持久；持续
 
@@ -7097,6 +7231,8 @@ enrage `/ɪnˈreɪdʒ/` vt. 激怒；使暴怒
 
 enrich `/ɪnˈrɪtʃ/` vt. 使富足；使肥沃；使丰富
 
+> DRV: enrichment `/ɪn'rɪtʃmənt/` n. 丰富；改进；浓缩
+
 enroll `/ɪn'rəʊl/` v. 登记；招收；入伍
 
 > DRV: enrollment `/ɪn'rəʊlmənt/` n. 登记；注册；入伍；入会
@@ -7134,6 +7270,8 @@ enthusiasm `/ɪn'θjuːziæzəm/` n. 热情；热心；热忱；热衷的事物
 > DRV: enthusiast `/ɪnˈθjuːziæst/` n. 热心人，热衷者
 >
 > DRV: enthusiastic `/ɪnˌθjuːziˈæstɪk/` adj. 满腔热情的，热心的；极感兴趣的
+
+enthymeme `/'enθəˌmiːm/` n. 省略推理法；省略三段论法
 
 entice `/ɪn'taɪs/` vt. 诱使，引诱
 
@@ -7207,6 +7345,8 @@ epilog `/'epɪˌlɒg/` n. 尾声；后记；跋；收场白
 
 episode `/'epɪsəʊd/` n. 一段情节；片段；轶事；插曲
 
+epistemology `/ɪˌpɪstə'mɒlədʒi/` n. 认识论
+
 epistolary `/ɪ'pɪstələri/` adj. 书信的；用书信的；书信体的
 
 epitaph `/'epɪtɑːf/` n. 墓志铭
@@ -7252,6 +7392,8 @@ equity `/'ekwəti/` n. 公平；公正；n. 衡平法；权益；产权；(无�
 equivalence `/ɪ'kwɪvələns/` n. 相等；等值
 
 equivalent `/ɪˈkwɪv(ə)l(ə)nt/` adj. 等价的 相等的；n. 相等物
+
+equivocation `/ɪˌkwɪvə'keɪʃn/` n. 模糊话；含糊其辞
 
 ### er
 
@@ -7501,6 +7643,8 @@ exceed `/ɪkˈsiːd/` vt. 超过；超出；vi. 领先
 
 excellent `/ˈeksələnt/` adj. 杰出的；优秀的；极好的
 
+> DRV: excellence `/'eksələns/` n. 优秀；卓越；优点
+
 excerpt `/'eksɜːpt/` n. 摘录；vt. 摘录；引用
 
 excessive `/ɪk'sesɪv/` adj. 过分的；过多的；过高的
@@ -7552,6 +7696,8 @@ excuse `/ɪk'skjuːs/` vt. 原谅；辩解；n. 理由；辩解；借口
 > DRV: excusable `/ɪk'skjuːzəbl/` adj. 可原谅的
 
 executioner `/ˌeksɪ'kjuːʃənə(r)/` n. 刽子手
+
+exemplar `/ɪɡzemp'lə/` n. 模范，榜样；标本
 
 exemplary `/ɪɡˈzempləri/` adj. 可仿效的；模范的
 
@@ -7620,6 +7766,8 @@ exorbitant `/ɪɡˈzɔːbɪtənt/` adj. 过度的，极高的
 > Ex: exorbitant interest rates;
 
 exorcist `/'eksɔːsɪst/` n. 驱魔的人；召魂者
+
+exordium `/ek'sɔːdɪəm/` n. 绪言；绪论
 
 exotic `/ɪɡ'zɒtɪk/` adj. 外来的；异国的；奇异的；脱衣舞的
 
@@ -7951,6 +8099,8 @@ fare `/feə(r)/` n. 车费；路费；乘客；食物；vi. 过活；进展；�
 
 farewell `/ˌfeəˈwel/` int. 再会；别了；n. 告别；adj. 告别的
 
+farmhouse `/'fɑːmhaʊs/` n. 农舍；农家
+
 farmland `/ˈfɑːmland/` n. 农田
 
 > land used for farming.
@@ -8115,6 +8265,8 @@ fertility `/fə'tɪləti/` n. 【C】肥沃；(人)繁殖力；(思想等的)丰
 
 fertilizer `/'fɜːtəlaɪzə(r)/` n. 肥料
 
+fervent `/'fɜːvənt/` adj. 热情的；强烈的；炎热的；热心的
+
 festival `/'festɪvl/` adj. 节日的；喜庆的；n. 节日；欢宴；庆祝及祭祀
 
 fetching `/'fetʃɪŋ/` adj. 动人的；引人的；迷人的
@@ -8217,7 +8369,11 @@ fireproof `/'faɪəpruːf/` adj. 耐火的；防火的；v. 使防火；装有�
 
 firm `/fɜːm/` n. 公司；商行；adj. 坚定的；结实的；坚固的；严格的；v. (使)变得坚实；确定；adv. 稳固地；坚定地
 
-firmware `/'fɜːmweə(r)/` n. （计算机）固件
+> DRV: firmness `/fɜːmnəs/` n. 坚固；坚牢；坚定
+>
+> DRV: firmware `/'fɜːmweə(r)/` n. （计算机）固件
+>
+> Ex: HE has dissolved Representative Houses repeatedly, for opposing with manly **Firmness** his Invasions on the Rights of the People. --The Declaration of Independence
 
 fiscal `/'fɪskl/` adj. 财政的；国库的
 
@@ -8457,6 +8613,8 @@ foregoing `/'fɔːɡəʊɪŋ/` adj. 前面的；先前的；前述的
 
 foreground `/'fɔːɡraʊnd/` n. 前景；最显著的位置
 
+forehead `/'fɔːhed/` n. 前额；前部
+
 foreignism `/'fɒrɪnɪzəm/` n. 外国风俗习惯(外国语的语言现象)
 
 foremost `/ˈfɔːmə(ʊ)st/` adj. 最重要的；最初的；adv. 在最前面
@@ -8645,7 +8803,7 @@ fracker `//` n. 水力压裂机
 
 fraction `/ˈfrækʃn/` n. 小部分；少许；分数；片段
 
-fractional `/'frækʃənl/` adj. 微不足道的；断片的；分数的；小数的
+> DRV: fractional `/'frækʃənl/` adj. 微不足道的；断片的；分数的；小数的
 
 fracture `/'fræktʃə(r)/` n. 破碎；骨折；vt. 破碎；破裂；vi. 断裂
 
@@ -9056,6 +9214,8 @@ gilding `/'ɡɪldɪŋ/` n. 镀金；镀金材料；表面装饰
 ginger `/'dʒɪndʒə(r)/` n. 姜；姜根；精力；深棕色；vt. 用姜调味；使 ... 活泼
 
 > DRV: gingerly `/'dʒɪndʒəli/` adv. 极度小心谨慎地
+
+giraffe `/dʒə'rɑːf/` n. 长颈鹿
 
 girder `/ˈɡɜːdə(r)/` n. 大梁；纵梁；撑住
 
@@ -9633,6 +9793,8 @@ harmony `/'hɑːməni/` n. 和谐；协调；调和；和声
 
 harness `/ˈhɑːnɪs/` n. 马具；安全带；甲胄；系在身上的绳子；vt. 束以马具；披上甲胄；利用；管理；控制
 
+harp `/hɑːp/` n. 竖琴; v. 反复诉说；唠叨
+
 harried `/ˈhærid/` vt. 不断骚扰；打扰；侵扰；侵掠
 
 harrow `/'hærəʊ/` n. 耙；vt. 耙掘；伤害；使苦恼
@@ -9714,6 +9876,8 @@ healing `/ˈhiːlɪŋ/` n. 康复；复原；adj. 有治疗功用的
 hearsay `/'hɪəseɪ/` n. 传闻
 
 hearty `/ˈhɑːti/`  adj. 亲切友好的；衷心的；热烈的；丰盛的；健壮的（尤指老人）
+
+> DRV: hearten `/'hɑːtn/` vt. 鼓励；激励；振作
 
 heat `/hiːt/` n. 热度；热；热烈；激烈；发烧；v. (使)变热；(使)激动
 
@@ -9882,6 +10046,8 @@ hitch `/hɪtʃ/` n. 猛拉；急促猛推；跛行；妨碍；免费搭车；vt.
 hither `/'hɪðə(r)/` adv. <古>到此处；adj. 附近的
 
 > DRV: hitherto `/ˌhɪðə'tuː/` adv. 到目前为止；迄今
+>
+> Ex: refusing to pass others to encourage their Migrations hither, and raising the Conditions of new Appropriations of Lands. --The Declaration of Independence
 
 ### hj
 
@@ -10013,6 +10179,8 @@ hotelling `/həʊ'telɪŋ/` n.（数学）哈罗德·霍特林；漫游办公；
 
 hotspot `/'hɒtspɒt/` n. 热点；热区
 
+hound `/haʊnd/` n. 猎狗；可鄙之人；追踪者；迷; vt. 带猎犬狩猎；紧追；烦扰；催促
+
 household `/'haʊshəʊld/` n. 家庭；户；adj. 家庭的；家喻户晓的
 
 hovel `/'hɒvl/` n. 不适宜居住的小屋；杂物间；家畜小屋
@@ -10080,6 +10248,8 @@ humility `/hjuː'mɪləti/` n. 谦逊；谦虚；谦卑
 hummingbird `/ˈhʌmɪŋbɜːd/` n. 蜂鸟
 
 humpback `/'hʌmpbæk/` n. 驼背；座头鲸；小鲑鱼
+
+hunch `/hʌntʃ/` n. 预感；块；肉峰; v. 弯腰驼背
 
 hunter `/'hʌntə(r)/` n. 猎人；猎犬；猎马；搜寻者
 
@@ -10349,6 +10519,8 @@ immense `/ɪˈmens/` adj. 极大的, 巨大的
 
 immerse `/ɪ'mɜːs/` vt. 浸；陷入
 
+> DRV: immersion `/ɪ'mɜːʃn/` n. 沉浸；浸入；专心；浸礼
+
 immigrant `/ˈɪmɪɡrənt/` n. 移民；外侨
 
 > SYN(n.移民): incomer, newcomer, settler.
@@ -10400,6 +10572,8 @@ impede `/ɪmˈpiːd/` vt. 妨碍；阻止
 > Ex: Self-discipline and self-control are not dams that impede our freedom; they are levees that channel our energies and guide our talents. --William Arthur Ward
 >
 > DRV: impediment `/ɪm'pedɪmənt/` n. 障碍；阻碍；口吃
+
+impel `/ɪm'pel/` v. 驱使；激励
 
 impenetrable `/ɪm'penɪtrəbl/` adj. 不能穿过的；不可理喻的
 
@@ -10454,6 +10628,8 @@ impose `/ɪmˈpəʊz/` v. 强加；课征；强迫；征收(税款)
 > DRV: imposing `/ɪm'pəʊzɪŋ/` adj. 令人难忘的；壮丽的
 > 
 > DRV: imposition `/ˌɪmpə'zɪʃn/` n. 强迫接受；课税；欺骗；[印]拼版
+>
+> Ex: FOR imposing Taxes on use without our Consent: --The Declaration of Independence
 
 impostor `/ɪm'pɒstə(r)/` n. 冒充者；骗子
 
@@ -10476,6 +10652,8 @@ impress `/ɪm'pres/` n. 印记；印象；特征；v. 使 ... 有印象；影响
 imprison `/ɪm'prɪzn/` v. 监禁；关押；束缚
 
 > DRV: imprisonment `/ɪm'prɪznmənt/` n. 【U】监禁；关押；禁锢
+
+improbable `/ɪm'prɒbəbl/` adj. 不大可能的；不像会发生的；似不可信的
 
 improper `/ɪm'prɒpə(r)/` adj. 不合适的；错误的；不道德的
 
@@ -10539,7 +10717,9 @@ inappropriate `/ˌɪnə'prəʊpriət/` adj. 不适当的；不合宜的
 
 inattention `/ˌɪnə'tenʃn/` n. 不注意；粗心；疏忽
 
-inaugurate `/ɪˈnɔːɡjəreɪt/` v. 举行就职典礼；举行仪式；开始；开创
+inaugural `/ɪ'nɔːɡjərəl/` adj. 就职典礼的；开幕的；首次的; n. 就职演说；就职典礼
+
+> DRV: inaugurate `/ɪˈnɔːɡjəreɪt/` v. 举行就职典礼；举行仪式；开始；开创
 
 inbound `/'ɪnbaʊnd/` adj. 归本国的；回内地的；入境的；n. 入站
 
@@ -10781,6 +10961,8 @@ induce `/ɪnˈdjuːs/` vt. 引起；促使；劝服；引诱
 
 induction `/ɪn'dʌkʃn/` n. 归纳法；感应；就职；诱发
 
+inductively `/ɪn'dʌktɪvli/` adv. 诱导地；归纳地
+
 indulge `/ɪnˈdʌldʒ/` vt. 迁就；纵情于；放任；vi. 放纵自己于 ...
 
 > 1 (indulge in) allow oneself to enjoy the pleasure of. 2 allow (someone) to enjoy something desired.
@@ -10798,6 +10980,8 @@ industrious `/ɪn'dʌstriəs/` adj. 勤劳的；勤奋的
 > SYN(adj.勤奋的): assiduous, busy, conscientious, diligent, earnest, energetic, enterprising, hard-working, involved, keen, laborious, persistent, productive, sedulous, tireless, zealous.
 
 inefficient `/ˌɪnɪ'fɪʃnt/` adj. 无效率的；无能的；不称职的
+
+inegalitarian `/'ɪnɪgælɪ'teərɪən/` adj. 不平等的；不均等的；赞成不平等(或不均等)的
 
 inelastic `/ˌɪnɪˈlæstɪk/` adj. 无弹性的；无伸缩性的
 
@@ -10923,6 +11107,8 @@ infuriate `/ɪn'fjʊərieɪt/` adj. 狂怒的；v. 激怒
 
 infuse `/ɪnˈfjuːz/` vt. 沏（茶）；注入；使获得；鼓舞；泡制；倾注（液体）
 
+> DRV: infusion `/ɪn'fjuːʒn/` n. 注入；灌输；激励；泡制
+
 ingenious `/ɪnˈdʒiːniəs/` adj. 机灵的；精巧的；有独创性的
 
 ingenuity `/ˌɪndʒə'njuːəti/` n. 心灵手巧；独创性；精巧
@@ -10961,6 +11147,8 @@ inhumane `/ˌɪnhjuː'meɪn/` adj. 无情的；残忍的；不人道的
 
 initiate `/ɪˈnɪʃieɪt/` vt. 开始；创始；启蒙；介绍加入；n. 创始人；adj. 新加入的；启蒙的
 
+> DRV: initiative `/ɪ'nɪʃətɪv/` adj. 自发的; n. 首创精神；主动权；第一步；倡议；项目
+>
 > DRV: initialization `/ɪˌnɪʃəlaɪ'zeɪʃn/` n. 初始化；赋初值
 
 injection `/ɪn'dʒekʃn/` n. 注射；注射物；数学函数
@@ -11018,6 +11206,8 @@ inordinate `/ɪnˈɔːdɪnət/` adj. 过度的；非常的；无法无天的
 inorganic `/ˌɪnɔː'ɡænɪk/` adj. 无机的；非自然生长的
 
 inquiry `/ɪn'kwaɪərɪ/` n. 调查；询问；打听；查问
+
+inquisitiveness `/ɪn'kwɪzətɪvnəs/` n. 求知欲,好奇
 
 insane `/ɪn'seɪn/` adj. 疯狂的；精神错乱的；荒唐的
 
@@ -11134,6 +11324,10 @@ insurer `/n'ʃʊərə(r)/` n. 保险公司；保险人；承保方
 insurmountable `/ˌɪnsə'maʊntəbl/` adj. 无法解决的；难以对付的
 
 > Ex: No difficulty is insurmountable if one sets one's midn on it.
+
+insurrection `/ˌɪnsə'rekʃn/` n. 叛乱；暴动
+
+> Ex: HE has excited domestic Insurrections amongst us, and has endeavoured to bring on the Inhabitants of our Frontiers, the merciless Indian Savages, whose known Rule of Warfare, is an undistinguished Destruction, of all Ages, Sexes and Conditions. --The Declaration of Independence
 
 intact `/ɪnˈtakt/` adj. 完好无缺的；原封不动的；未经触碰的
 
@@ -11253,7 +11447,7 @@ internal `/ɪnˈtəːnl/` adj. 国内的；内部的；身内的
 
 > DRV: internist `/ɪn'tɜːnɪst/` n. 内科医师
 >
-> DRV: internalizing `/ɪn'tɜːnəlaɪz/` v. 使内在化；使藏在心底
+> DRV: internalize `/ɪn'tɜːnəlaɪz/` v. 使内在化；使藏在心底
 
 internship `/'ɪntɜːnʃɪp/` n. 实习生职位；实习期
 
@@ -11287,7 +11481,9 @@ interprocedural `/ɪntɜːrprə'siːdʒərəl/` n. （计算机）过程间
 
 interrelate `/ˌɪntərɪ'leɪt/` v. 互相关连；相关
 
-interrogative `/ˌɪntə'rɒɡətɪv/` adj. 疑问的；n. 疑问词；疑问句
+interrogate `/ɪn'terəɡeɪt/` v. 质问；讯问；审问
+
+> DRV: interrogative `/ˌɪntə'rɒɡətɪv/` adj. 疑问的；n. 疑问词；疑问句
 
 intersect `/ˌɪntəˈsekt/` v. 贯穿；(和 ... )相交；交叉
 
@@ -11699,6 +11895,8 @@ jeweller `/'dʒuːələ(r)/` n. 珠宝商；宝石匠
 
 [回到J](#J)--[回到顶部](#英汉词典)
 
+jibe `/dʒaɪb/` v. 嘲笑；嘲弄；<口>符合；相一致；（使）改变方向；（使）从一舷转至另一舷
+
 jiff `/dʒɪf/` n. 瞬间
 
 jilt `/dʒɪlt/` vt. 抛弃；遗弃(情人或恋人)；n. 负心人
@@ -11781,6 +11979,10 @@ journeyman `/'dʒɜːnimən/` n. 熟练工人；可靠能干但不出色的工�
 
 judicial `/dʒu'dɪʃl/` adj. 司法的；法庭的；公正的；审判上的
 
+> DRV: judiciary `/dʒu'dɪʃəri/` n. 司法部；司法制度；法官; adj. 司法的；法院的；法官的
+>
+> Ex: HE has obstructed the Administration of Justice, by refusing his Assent to Laws for establishing Judiciary Powers. --The Declaration of Independence
+
 judicious `/dʒʊˈdɪʃəs/` adj. 明智的；贤明的；审慎的
 
 juggle `/'dʒʌɡl/` v. 玩杂耍；同时做；纂改；欺骗；n. 玩杂耍；纂改；花招
@@ -11799,7 +12001,11 @@ june `/dʒuːn/` n. 六月（简写Jun）
 
 jurisdiction `/ˌdʒʊərɪs'dɪkʃn/` n. 管辖权；司法权；审判权；控制权
 
+> Ex: HE has combined with others to subject us to a Jurisdiction foreign to our Constitution, and unacknowledged by our Laws; --The Declaration of Independence
+
 jury `/'dʒʊəri/` n. 陪审团；评委会；adj. 临时用的；vt. 挑选
+
+> Ex: OR depriving us, in many Cases, of the Benefits of Trial by Jury: --The Declaration of Independence
 
 justify `/'dʒʌstɪfaɪ/` vt. 替 ... 辩护；证明 ... 正当；调整版面
 
@@ -11865,6 +12071,8 @@ juxtaposition `/ˌdʒʌkstəpə'zɪʃn/` n. 并排；并置
 
 keen `/kiːn/` adj. 敏锐的；强烈的；锋利的；热衷的；精明的
 
+> DRV: keener `/'kiːnə/` n. 哭丧女(尤指职业的哭丧女人)
+>
 > DRV: keenly `/kiːnli/` adv. 敏锐地；强烈地；热心地
 
 keepsake `/'kiːpseɪk/` n. 纪念品
@@ -11900,6 +12108,8 @@ kilobyte `/'kɪləbaɪt/` n. （计算机）千字节（KB）
 kilogram `/'kɪləɡræm/` n. 千克；公斤(kg)
 
 kindergarten `/'kɪndəɡɑːtn/` n. 幼儿园
+
+kindred `/'kɪndrəd/` n. 家人和亲戚；相似；亲戚关系; adj. 同族的；同类的；血缘的
 
 kitchenette `/ˌkɪtʃɪ'net/` n. 小厨房
 
@@ -12239,13 +12449,15 @@ legislation `/ˌlɛdʒɪˈsleɪʃn/` n. 法律；法规；立法
 
 > laws, considered collectively.
 >
+> DRV: legislative `/'ledʒɪslətɪv/` adj. 立法的；有立法权的；n. 立法机构；立法权
+>
+> DRV: legislator `/'ledʒɪsleɪtə(r)/` n. 立法者
+>
+> DRV: legislature `/ˈledʒɪsleɪtʃər/` n. 立法机关
+>
 > Ex: it will require legislation to change this situation. 
 >
-> DRV: legislative `/'ledʒɪslətɪv/` adj. 立法的；有立法权的；n. 立法机构；立法权
-
-legislator `/'ledʒɪsleɪtə(r)/` n. 立法者
-
-legislature `/ˈledʒɪsleɪtʃər/` n. 立法机关
+> Ex: FOR suspending our own Legislatures, and declaring themselves invested with Power to legislate for us in all Cases whatsoever. --The Declaration of Independence
 
 legitimacy `/lɪˈdʒɪtɪməsi/` n. 合法；合理；正当
 
@@ -12302,6 +12514,8 @@ lever `/ˈliːvə/` n. 杠杆；控制杆；手段；v. 撬开；使用杠杆
 levity `/'levəti/` n. 轻浮；轻率；不稳定；多变
 
 levy `/'levi/` n. 征税；召集；vt. 征收；发动；vi. 强收
+
+> Ex: and that as FREE AND INDEPENDENT STATES, they have full Power to levy War, conclude Peace, contract Alliances, establish Commerce, and to do all other Acts and Things which INDEPENDENT STATES may of right do. --The Declaration of Independence
 
 lexeme `/'leksiːm/` n. 词位
 
@@ -12381,6 +12595,8 @@ liberty `/ˈlɪbəti/` n. 自由；自由权；冒失
 >
 > Ex: Life without liberty is like a body without spirit. --Gibran
 
+licensure `/'laɪsənʃʊə/` n. 许可证的发给
+
 licentious `/laɪ'senʃəs/` adj. 放荡的；放肆的
 
 lie `/laɪ/` v. 躺下；位于；在于；平放；存在；延伸；说谎；n. 谎言
@@ -12438,6 +12654,8 @@ lingua `/'lɪŋgwə/` n. 舌(语言)
 linkage `/'lɪŋkɪdʒ/` n. 联系；连合；连锁；结合
 
 linker `/'lɪŋkə/` n. 链接器
+
+lionize `/'laɪənaɪz/` vt. 崇拜；看重 =lionise(英).
 
 lip `/lɪp/` n. 嘴唇；唇状物；v. 接吻；说话；拍打
 
@@ -12687,6 +12905,10 @@ magician `/məˈdʒɪʃn/` n. 魔术师；巫师
 
 magistrate `/'mædʒɪstreɪt/` n. 地方法官；行政官
 
+magnanimity `/ˌmæɡnə'nɪməti/` n. 宽大；雅量；高尚
+
+> Ex: We have appealed to their native Justice and Magnanimity, and we have conjured them by the Ties of our common Kindred to disavow these Usurpations, which, would inevitably interrupt our Connections and Correspondence. --The Declaration of Independence
+
 magnetic `/mæɡ'netɪk/` adj. 有磁性的；有吸引力的；催眠术的；n. 磁体，磁性物质
 
 magnetize `/'mæɡnətaɪz/` vt. 使磁化；吸引；诱惑
@@ -12829,6 +13051,8 @@ mansion `/ˈmænʃn/` n. 大厦；宅邸；公寓
 
 mantissa `/mæn'tɪsə/` n. （数学）尾数；假数
 
+mantle `/'mæntl/` n. 斗篷；覆盖物；墙的外皮；（汽灯的）纱罩；[地]地幔; v. 覆盖；笼罩；脸红
+
 manual `/'mænjuəl/` adj. 手工的；体力的；n. 指南；手册；键盘
 
 manufacturer `/ˌmænju'fæktʃərə(r)/` n. 制造商
@@ -12908,6 +13132,8 @@ masses `/'mæsɪz/` n. 平民；群众
 > DRV: massive `/ˈmæsɪv/` adj. 巨大的；大量的；大规模的；大范围的；严重的
 >
 > DRV: massively `/'mæsɪvli/` adv. 大量地；大规模地
+
+masterful `/'mɑːstəfl/` adj. 傲慢的；熟练的；出色的
 
 masterpiece `/ˈmɑːstəpiːs/` n. 杰作
 
@@ -13093,6 +13319,8 @@ merchandise `/ˈmɜːtʃəndaɪs/` n. 商品；货物；v. 推销；销售；经
 
 merchant `/'mɜːtʃənt/` n. 商人；店主；专家；adj. 商业的；商船的；n. （班轮提单）货方；签约方
 
+merciless `/'mɜːsɪləs/` adj. 无慈悲心的；无情的；残忍的
+
 mercury `/'mɜːkjəri/` n. 水银；（M~）水星；精神
 
 mere `/mɪə(r)/` adj. 仅仅的；纯粹的
@@ -13125,6 +13353,8 @@ mess `/mes/` n. 混乱；混杂；脏乱；一份食品；粪便；（军队的�
 
 metabolism `/məˈtæbəlɪzəm/` n. 新陈代谢
 
+metacognition `/me'tækɔːgnɪʃən/` n. 元认知
+
 metal `/'metl/` n. 金属；合金；玻璃液；vt. (以金属)覆盖、装配
 
 metallic `/mə'tælɪk/` adj. 金属的；金属般的
@@ -13154,6 +13384,8 @@ methane `/'miːθeɪn/` n. 甲烷；沼气
 methodically `/mə'θɒdɪklɪ/` adv. 有条不紊地；有方法地；有条理地
 
 methodology `/ˌmeθəˈdɒlədʒi/` n. 方法学；一套方法
+
+> DRV: methodological `/ˌmeθədə'lɒdʒɪkl/` adj. 方法的；方法论的
 
 meticulou `/mə'tɪkjələs/` adj. 一丝不苟的；缜密的
 
@@ -13299,6 +13531,8 @@ mirth `/mɜːθ/` n. 欢乐；欢笑
 >
 > DRV: mirthless `/'mɜːθləs/` adj. 不快乐的；悲伤的；阴郁的
 
+misalignment `/ˌmɪsə'laɪnmənt/` n. 不重合；不对准；角误差；偏心率；误差方向
+
 misapprehension `/ˌmɪsæprɪ'henʃn/` n. 误解
 
 misbehavior `/'mɪsbɪ'heɪvjə/` n. 粗鲁行为；品行不端
@@ -13349,11 +13583,11 @@ misnomer `/ˌmɪs'nəʊmə(r)/` n. 误称；用词不当
 
 misread `/ˌmɪs'riːd/` v. 读错；看错；误解
 
-misrepresent `/ˌmɪsˌreprɪ'zent/` v. 误称；歪曲；不合适地代表
-
 misrepresentation `/ˌmɪsˌrɛprɪzɛnˈteɪʃn/` n. 误称；不实的陈述
 
 > the action or offence of giving a false or misleading account of the nature of something.
+>
+> DRV: misrepresent `/ˌmɪsˌreprɪ'zent/` v. 误称；歪曲；不合适地代表
 >
 > Ex: she is seeking damages on allegations of misrepresentation. 
 
@@ -13416,6 +13650,8 @@ mnemonic `/nɪ'mɒnɪk/` adj. 助记的；记忆的；n. 记忆方法；助记�
 [回到M](#M)--[回到顶部](#英汉词典)
 
 moan `/məʊn/` n. 呻吟声；抱怨声；vt. 抱怨；呻吟；vi. 呻吟；抱怨
+
+mob `/mɒb/` n. 暴民；一伙；[贬]民众; vt. 大举包围；蜂拥而入
 
 mobbish `/'mɒbɪʃ/` adj. 暴徒似的；滋扰的；无规律的
 
@@ -13617,7 +13853,9 @@ motivate `/ˈməʊtɪveɪt/` vt. 激发(兴趣或欲望)；给与动机
 
 motivation `/ˌməʊtɪˈveɪʃn/` n. 动机；动力；刺激；积极性
 
-motorist `/'məʊtərɪst/` n. 驾车的人；乘车旅行的人
+motor `/'məʊtə(r)/` n. 马达；发动机；机动车; adj. 机动的；汽车的；运动神经的
+
+> DRV: motorist `/'məʊtərɪst/` n. 驾车的人；乘车旅行的人
 
 mottle `/'mɒtl/` vt. 使成杂色；弄成斑驳；n. 斑点；杂色
 
@@ -13909,8 +14147,6 @@ neglect `/nɪˈɡlekt/` vt. 疏忽，忽视；忽略；n. 疏忽，忽视；怠�
 >
 > SYN: inattention, decline, declination, mistreatment, carelessness, sloppiness, nonaccomplishment
 >
-> Ex: Four things do not come back: the spoken words, the sped arrow, the past life, and the neglected opportunity.
->
 > DRV: neglected `/nɪ'ɡlektɪd/` adj. 被忽视的
 >
 > DRV: neglectful `/nɪ'ɡlektfl/` adj. 疏忽的；不注意的
@@ -13920,6 +14156,10 @@ neglect `/nɪˈɡlekt/` vt. 疏忽，忽视；忽略；n. 疏忽，忽视；怠�
 > DRV: negligent `/ˈneɡlɪdʒənt/` adj. 疏忽的；粗心的；不在意的
 >
 > DRV: negligible `/'neɡlɪdʒəbl/` adj. 可以忽略的；微不足道的
+>
+> Ex: Four things do not come back: the spoken words, the sped arrow, the past life, and the neglected opportunity.
+>
+> Ex: HE has forbidden his Governors to pass Laws of immediate and pressing Importance, unless suspended in their Operation till his Assent should be obtained; and when so suspended, he has utterly neglected to attend to them. --The Declaration of Independence
 
 negotiate `/nɪ'ɡəʊʃieɪt/` vi. 谈判；协商；交涉；vt. 谈判达成；成功越过；议价出售
 
@@ -14091,6 +14331,8 @@ nonblocking `/'nɒn'blɒkɪŋ/` adj. 不闭塞的
 
 nonchalant `/ˈnɒnʃələnt/` adj. 若无其事的；不关心的；冷淡的
 
+noncognitive `/ˌnɒnˈkɒɡnɪtɪv/` adj. 非认知性的
+
 nonconformity `/ˌnɒnkənˈfɔːməti/` n. 不墨守成规的；不认同主流思想的
 
 nondefining `/ˌnɒn.dɪˈfaɪ.nɪŋ/` adj. 非定义
@@ -14245,6 +14487,8 @@ nulling `/'nʌlɪŋ/` v. 清零；置零
 
 nullity `/'nʌlɪtɪ/` n. 无效；无足轻重
 
+numeracy `/'njuːmərəsi/` n. 识数；计算能力
+
 numerator `/'njuːməreɪtə(r)/` n.（数学）分子（除法）
 
 numerous `/'njuːmərəs/` adj. 为数众多的；许多
@@ -14253,7 +14497,11 @@ nun `/nʌn/` n. 尼姑；修女
 
 nursery `/'nɜːsəri/` n. 托儿所；保育室；苗圃
 
-nutrition `/nuˈtrɪʃ(ə)n/` n. 营养
+nut `/nʌt/` n. 坚果；果仁; n. 螺母；螺帽；难对付的人(事); vi. 采坚果
+
+> DRV: nuts `/nʌts/` adj. 疯的；狂热的; int. 呸；胡说; n. 坚果，果仁；螺帽；怪人（名词nut的复数形式）
+
+nurture `/'nɜːtʃə(r)/` vt. 养育；培育；照顾；扶持；n. 养育；培育；环境因素
 
 > the process of providing or obtaining the food necessary for health and growth.
 >
@@ -14261,11 +14509,11 @@ nutrition `/nuˈtrɪʃ(ə)n/` n. 营养
 >
 > Ex: a guide to good nutrition.
 >
-> DRV: nurture `/'nɜːtʃə(r)/` vt. 养育；培育；照顾；扶持；n. 养育；培育；环境因素
+> DRV: nutrition `/nuˈtrɪʃ(ə)n/` n. 营养
 >
-> nutrient `/'njuːtriənt/` adj. 营养的；滋养的；n. 营养物；营养品
+> DRV: nutrient `/'njuːtriənt/` adj. 营养的；滋养的；n. 营养物；营养品
 >
-> nutritious `/nju'trɪʃəs/` adj. 有营养的；滋养的
+> DRV: nutritious `/nju'trɪʃəs/` adj. 有营养的；滋养的
 
 ### nv
 
@@ -14472,6 +14720,8 @@ offence `/ə'fens/` n. 犯罪；过错；攻击，冒犯；令人讨厌的事物
 > DRV: offender `/ə'fendə(r)/` n. 罪犯；冒犯者
 >
 > DRV: offensive `/əˈfensɪv/` adj. 令人不快的；冒犯的；侮辱的；与进攻有关的；n. 攻势；攻击
+>
+> Ex: FOR transporting us beyond Seas to be tried for pretended Offences: --The Declaration of Independence
 
 offhand `/ˌɒf'hænd/` adj. 即时的；未经准备的；唐突无礼的；adv. 即时地；未经思索地；随便地
 
@@ -14651,6 +14901,8 @@ oral `/ˈɔːrəl/` adj. 口头的；口部的；口语的；n. 口试
 
 orator `/'ɒrətə(r)/` n. 演说者；演讲者；雄辩家
 
+> DRV: oratory `/'ɒrətri/` n. 讲演术；演说；祈祷室；小礼拜堂 Oratory. n. （天主教）奥拉托利会
+
 orbit `/'ɔːbɪt/` n. 势力范围；眼眶；轨迹；vt. 绕轨道而行；进入轨道；vi. 盘旋
 
 > DRV: orbital `/ˈɔːbɪtl/` adj. 轨道的；(城市)外环路的；眼窝的；n. 高速环形路；[数学]轨函数
@@ -14706,6 +14958,8 @@ orthogonal `/ɔː'θɒgənl/` adj. 直角的；直交的；【计】正交的
 ### os
 
 [回到O](#O)--[回到顶部](#英汉词典)
+
+osmosis `/ɒz'məʊsɪs/` n. 渗透；渗透性；潜移默化
 
 osprey `/ˈɒspreɪ/` n. 鱼鹰
 
@@ -14973,6 +15227,8 @@ pal `/pal/` n. 朋友；伙伴；vi. 结为友
 
 palace `/'pæləs/` n. 宫殿；豪华住宅；王室；大的公共建筑(如旅馆、影院等)
 
+palatable `/'pælətəbl/` adj. 美味的；使人愉快的；遂心如意的
+
 pale `/peɪl/` adj. 苍白的；灰白的；暗淡的；无力的；vi. 变苍白；变黯淡；相形见绌；n. 栅栏
 
 > 1 light in color or shade; containing little color or pigment. 2 inferior or unimpressive. 3 become pale in one's face from shock or fear. 4 seem or become less important.
@@ -14985,7 +15241,7 @@ pale `/peɪl/` adj. 苍白的；灰白的；暗淡的；无力的；vi. 变苍�
 >
 > Ex: all else pales by comparison.
 
-palatable `/'pælətəbl/` adj. 美味的；使人愉快的；遂心如意的
+paleontologist `/pælɪɒn'tɒlədʒɪst/` n. 古生物学者
 
 palette `/ˈpælət/` n. 调色板
 
@@ -15087,6 +15343,8 @@ pardon `/'pɑːdn/` n. 原谅，宽恕，饶恕；赦免，赦免状；vt. 原�
 
 > DRV: pardonable `/'pɑːdnəbl/` adj. 可原谅的；可宽恕的
 
+pare `/peə(r)/` v. 削减；剥或削（某物）的皮；修剪（某物）边缘
+
 parental `/pə'rentl/` adj. 父母的
 
 parenthesis `/pə'renθəsɪs/` n. 圆括号；插入语
@@ -15112,6 +15370,8 @@ parlance `/'pɑːləns/` n. 说法；用语；语调；辩论
 parliament `/ˈpɑː.lɪ.mənt/` n. 议会；国会；一届议会的会期
 
 > DRV: parliamentary `/ˌpɑːlə'mentri/` adj. 议会的；国会的；议会制定的
+
+parody `/'pærədi/` n. 仿作；拙劣的模仿; v. 拙劣模仿；作模仿诗文
 
 parrot `/'pærət/` n. 鹦鹉；盲目重复或模仿他人行为的人；vt. 学舌；盲目重复或模仿
 
@@ -15182,6 +15442,8 @@ pathfinder `/'pɑːθfaɪndə(r)/` n. 探路者；探索者
 pathogen `/'pæθədʒən/` n. 病原体
 
 pathological `/ˌpæθə'lɒdʒɪkl/` adj. 病理学的
+
+pathway `/'pɑːθweɪ/` n. 路；径
 
 patient `/'peɪʃnt/` adj. 有耐心的；能忍耐的；n. 病人
 
@@ -15281,7 +15543,13 @@ peculiar `/pɪˈkjuːliə(r)/` adj. 奇怪的；特殊的；独特的；古怪�
 
 pecuniary `/pɪ'kjuːniəri/` adj. 金钱上的；金钱的
 
-pedagogic `/ˌpedəˈɡɒdʒɪk/` adj. 教学法的
+pedagog `/'pedəˌgɒg/` n. 教授；教育者
+
+> DRV: pedagogy `/'pedəɡɒdʒi/` n. 教育学；教授法；教育
+>
+> DRV: pedagogic `/ˌpedəˈɡɒdʒɪk/` adj. 教学法的
+
+pedestal `/'pedɪstl/` n. 基架；底座；受人尊敬的地位; vt. 搁在台上；颂扬
 
 pedestrian `/pə'destriən/` adj. 徒步的；缺乏想像的；n. 行人
 
@@ -15322,6 +15590,8 @@ pence `/pens/` n. 便士
 penchant `/ˈpentʃənt/` n. 喜好(倾向)；嗜好
 
 pendant `/ˈpendənt/` n. 垂饰；悬挂物；吊坠；adj. 下垂的；悬而未决的
+
+pending `/'pendɪŋ/` adj. 待定的；即将发生或来临的; prep. 直到；等待 ... 的时候；在 ... 期间
 
 pendulum `/'pendjələm/` n. 摆锤；钟摆；摇摆不定
 
@@ -15373,6 +15643,10 @@ perfect `/'pɜːfɪkt/` adj. 完美的；完全的；完满的；十足的；理
 >
 > DRV: perfectly `/'pɜːfɪktli/` adv. 完全地；无瑕疵地；完整地；完美地；圆满地
 
+perfidy `/'pɜːfədi/` n. 不诚实；不忠；背信弃义
+
+> Ex: HE is, at this Time, transporting large Armies of foreign Mercenaries to compleat the Works of Death, Desolation, and Tyranny, already begun with circumstances of Cruelty and Perfidy, scarcely paralleled in the most barbarous Ages, and totally unworthy the Head of a civilized Nation. --The Declaration of Independence
+
 perform `/pəˈfɔːm/` v. 执行；履行；表演；运转；举行
 
 perfume `/ˈpəːfjuːm/` n. 香水；香气; vt. 洒香水于；使香气弥漫
@@ -15411,6 +15685,8 @@ perish `/ˈpɛrɪʃ/` vi. 毁灭；消失；腐烂；vt. 毁灭；使死亡
 
 perishable `/ˈperɪʃəbl/` adj. 易腐烂的；会枯萎的；会死的
 
+perjury `/'pɜːdʒəri/` n. 伪证罪；伪誓；背信弃义
+
 permanent `/'pɜːmənənt/` adj. 永久的；持久的；固定的；n. <口> 烫发
 
 > SYN(adj.永久的): abiding, chronic, constant, continual, continuous, durable, enduring, everlasting, fixed, immutable, incessant, incurrable, indestructible, ineradicable, irreparable, irreversible, lasting, lifelong, long-lasting, never-ending, perennial, perpetual, persistent, stable, steady, unalterable, unchanging, unending.
@@ -15428,6 +15704,8 @@ permute `/pə'mjuːt/` v. （数学）排列；交换；变更
 permutation `/ˌpɜːmju'teɪʃn/` n. 交换；排列
 
 pernicious `/pə'nɪʃəs/` adj. 有害的；恶性的
+
+peroration `/ˌperə'reɪʃn/` n. 结语；结论
 
 perpendicular `/ˌpɜːpən'dɪkjələ(r)/` adj. 垂直的；直立的；陡峭的；n. 垂直线
 
@@ -15514,6 +15792,8 @@ petal `/ˈpetl/` n. 花瓣
 peter `/'piːtə(r)/` n. 彼得(男子名)；vi. 慢慢消失；耗尽
 
 petition `/pəˈtɪʃn/` n. 请愿书；祈求；申请；vi. 请愿；祈求；vt. 向 ... 请愿，请求
+
+> Ex: IN every stage of these Oppressions we have Petitioned for Redress in the most humble Terms: Our repeated Petitions have been answered only by repeated Injury. --The Declaration of Independence
 
 petrify `/'petrɪfaɪ/` vt. 使石化；使发呆；vi. 石化
 
@@ -15819,6 +16099,8 @@ plump `/plʌmp/` adj. 丰满的；v. 下降；支持；变丰满；n. 突然重�
 
 plunder `/'plʌndə(r)/` v. 掠夺；抢劫；n. 抢夺；掠夺品；赃物；战利品
 
+> Ex: HE has plundered our Seas, ravaged our Coasts, burnt our Towns, and destroyed the Lives of our People. --The Declaration of Independence
+
 plunge `/plʌndʒ/` v. 使投入；跳入；栽进；下降，急降，突降；n. 投入；跳入
 
 plural `/'plʊərəl/` adj. 复数的；n. 复数
@@ -16021,6 +16303,8 @@ postfix `/pəʊst'fɪks/` n. 后缀；vt. 加 ... 作后缀
 
 postgraduate `/ˌpəʊst'ɡrædʒuət/` n. 研究生；adj. 大学毕业后的；研究生的
 
+postmodernism `/ˌpəʊst'mɒdənɪzəm/` n. 后现代主义
+
 postoperative `/ˌpəʊst ˈɒpərətɪv/` adj. 术后的
 
 postorder `/pɒs'tɔːrdə/` n. （计算机）后序（遍历）
@@ -16052,6 +16336,8 @@ pots `/pɔts/` n. 罐子；壶；abbr. 光学地面模拟器
 pottage `/'pɒtɪdʒ/` n. 浓汤；肉汁
 
 poultry `/'pəʊltri/` n. 家禽；家禽肉
+
+pounce `/paʊns/` v. 猛扑；突然袭击；抓住；撒吸墨粉; n. 猛扑；袭击；(猛禽的)爪；吸墨粉
 
 poundage `/'paʊndɪdʒ/` n. (按每磅征收的)税金或手续费；重量
 
@@ -16191,9 +16477,11 @@ preempt `/prɪ'empt/` v. 以优先购买权获得；先占；(桥牌中)先发�
 >
 > DRV: preemptive `/prɪ'emptɪv/` adj. 优先购买的；先发制人的
 
+preexist `/'priːɪg'zɪst/` vt. 先于 ... 存在; vi. 先前存在
+
 prefabricate `/'priː'fæbrɪkeɪt/` vt. 预先建造
 
-preface `/'prefəs/` n. 序文； 绪言； 前言；v. 作序，写前言；以…开始
+preface `/'prefəs/` n. 序文; 绪言; 前言；v. 作序, 写前言; 以…开始
 
 prefer `/prɪ'fɜː(r)/` vt. 宁可；较喜欢；提出（控告）
 
@@ -16233,7 +16521,11 @@ premiere `/ˈpremieə(r)/` n. (戏剧、电影等)首次公演
 
 premise `/'premɪs/` n. 前提；vt. 预述；提论；假设
 
+premises `/'premɪsɪz/` n. (企业；机构等)房产；经营场所; 名词premise的复数形式.
+
 premium `/'priːmiəm/` n. 额外费用；奖金；保险费；n. (商)溢价；adj. 高价的；优质的
+
+premodern `/priː'mɒdn/` n. 前现代
 
 preoccupation `/priˌɒkju'peɪʃn/` n. 占据思想；全神贯注；心里总想着的事物
 
@@ -16289,6 +16581,8 @@ preserve `/prɪˈzɜːv/` v. 保护；保存；保持；n. 禁猎区；蜜饯
 
 > DRV: preservation `/ˌprezə'veɪʃn/` n. 保存；维护；防腐
 
+preservice `/priː'sɜːvɪs/` adj. 服役前的
+
 preside `/prɪˈzaɪd/` v. 主持；任主席；统辖
 
 pressing `/'presɪŋ/` adj. 紧迫的；紧急的
@@ -16304,6 +16598,10 @@ presume `/prɪ'zjuːm/` vt. 假定；推测；姑且认定；认为是理所当�
 > DRV: presumption `/prɪ'zʌmpʃn/` n. 推测；可能性；冒昧；放肆；[法律]推定
 >
 > DRV: presumptuous `/prɪ'zʌmptʃuəs/` adj. 放肆的；冒昧的；自以为是的；自作主张的
+
+presuppose `/ˌpriːsə'pəʊz/` v. 预先假定；预料；预料为必要的条件
+
+preteen `/'priː'tiːn/` adj. 青春期前的；13岁以下的; n. 青春期前的孩子；不满13岁的儿童
 
 pretend `/prɪ'tend/` v. 假装；装作；自以为
 
@@ -16705,6 +17003,8 @@ provoke `/prə'vəʊk/` vt. 激怒；惹起；驱使; 触怒
 >
 > SYN(vt.引起): arouse, bring about, cause, elicit, excite, generate, give rise to, induce, inspire, kindle, occasion, produce, promote, prompt, spark off, stimulate, stir up.
 
+prowess `/'praʊəs/` n. 英勇；非凡的能力
+
 proximity `/prɒk'sɪməti/` n. 接近；亲近
 
 prudent `/'pruːdnt/` adj. 谨慎的；有远见的；精明的
@@ -16744,6 +17044,8 @@ psychology `/saɪ'kɒlədʒi/` n. 心理；心理学
 ### pu
 
 [回到P](#P)--[回到顶部](#英汉词典)
+
+puberty `/'pjuːbəti/` n. 【U】青春期；春情发动期
 
 publication `/ˌpʌblɪˈkeɪʃn/` n. 出版；发行；出版物；公布；发表
 
@@ -16790,6 +17092,10 @@ purify `/'pjʊərɪfaɪ/` v. 净化；使纯净；vi. 变纯净；净化
 > SYN: better, improve, amend, ameliorate, meliorate, change, alter
 >
 > Ex: they set out to purify art by reviving the spirit and style of early religious painting.
+
+purport `/pə'pɔːt/` v. 意味着；声称；意图; n. 意义；要旨；大要
+
+purposive `/'pɜːpəsɪv/` adj. 有目的的；故意的
 
 purse `/pɜːs/` n. 钱包；小钱袋；(获奖)奖金；vt. 皱起；放进钱包
 
@@ -17133,7 +17439,9 @@ radical `/'rædɪkl/` adj. 激进的；彻底的；基本的；n. 激进分子
 
 > DRV: radically `/ˈrædɪkli/` adv. 根本地;彻底地;完全地；激进地;极端地
 
-radioactivity `/ˌreɪdiəʊæk'tɪvəti/` n. 放射性；辐射
+radioactive `/ˌreɪdiəʊ'æktɪv/` adj. 放射性的
+
+> DRV: radioactivity `/ˌreɪdiəʊæk'tɪvəti/` n. 放射性；辐射
 
 radius `/'reɪdiəs/` n. 半径范围；半径；桡骨；辐射区
 
@@ -17193,6 +17501,8 @@ rasterization `/rɑːstəraɪ'zeɪʃən/` n. 光栅化
 
 rat `/ræt/` n. 变节者；鼠；卑鄙的人；v. 捕鼠；背叛；偷窃
 
+rater `/'reɪtə/` n. 估价人；某一等级之人或物；<俚>小型游艇
+
 rather `/ˈræðər/` adv. 相当；宁愿；有点儿；int. <英口> 好呀
 
 ratify `/ˈrætɪfaɪ/` v. 批准；认可
@@ -17248,6 +17558,8 @@ readership `/'riːdəʃɪp/` n. (某一报刊杂志等的)读者群；读者身�
 readily `/'redɪli/` adv. 容易地；迅速地；乐意地；欣然
 
 readiness `/'redinəs/` n. 准备就绪；预备；欣然；敏捷
+
+readout `/'riːdaʊt/` n. [计]读出；示值读数
 
 reagent `/ri'eɪdʒənt/` n. 试药；试剂
 
@@ -17310,6 +17622,8 @@ rebound `/rɪ'baʊnd/` vi. 弹回；反弹；产生反作用；未能奏效；(�
 > Ex: Happiness, I have discovered, is nearly always a **rebound** from hard work. --Patti D.Grayson
 
 rebuke `/rɪˈbjuːk/` v. 指责，斥责；n. 指责；谴责
+
+rebuttal `/rɪ'bʌtl/` n. 反驳；反证
 
 recalculate `/ˌriːˈkalkjʊleɪt/` vt. 再计算；再核算；再估计；换算
 
@@ -17379,6 +17693,8 @@ recollect `/ˌrekə'lekt/` v. 回忆；回想；记起
 
 recommend `/ˌrekəˈmend/` vt. 推荐；建议；劝告；使受欢迎；使可取
 
+> DRV: recommendation `/ˌrekəmen'deɪʃn/` n. 推荐；建议
+
 recompence `/ˈrekəmpens/` n. 报应；赔偿；补偿；报酬；惩罚 = recompense 
 
 reconciliation `/ˌrekənsɪli'eɪʃn/` n. 和解；调和
@@ -17404,6 +17720,8 @@ recreation `/ˌriːkriˈeɪʃn/` n. 娱乐(方式); 消遣(方式)
 rectangle `/'rektæŋɡl/` n. 长方形；矩形
 
 rectangular `/rek'tæŋɡjələ(r)/` adj. 矩形的；长方形的；直角的
+
+rectitude `/'rektɪtjuːd/` n. 诚实；正直；操行端正
 
 rector `/'rektə(r)/` n. 校长；教区牧师
 
@@ -17653,11 +17971,13 @@ religion `/rɪ'lɪdʒən/` n. 宗教；宗教信仰
 
 > the belief in and worship of a superhuman power or powers, especially a God or gods.
 >
-> Ex: ideas about the relationship between science and religion. 
->
 > DRV: religious `/rɪ'lɪdʒəs/` adj. 宗教的；虔诚的；严谨的；信奉宗教的
+>
+> Ex: ideas about the relationship between science and religion. 
 
 relinquish `/rɪˈlɪŋkwɪʃ/` vt. 放弃；放手
+
+> Ex: HE has refused to pass other Laws for the Accommodation of large Districts of People, unless those People would relinquish the Right of Representation in the Legislature, a Right inestimable to them, and formidable to Tyrants only. --The Declaration of Independence
 
 relish `/'relɪʃ/` v. 享受；从...获得乐趣；品味；渴望；喜欢；有滋味；n. 滋味；爱好；调味品
 
@@ -17677,6 +17997,8 @@ remark `/rɪˈmɑːk/` n. 评论；备注；注意；v. 评论；注意到
 
 remedy `/ˈrɛmɪdi/` n. 治疗法；药物；补救；vt. 治疗；补救；矫正
 
+> DRV: remedial `/rɪ'miːdiəl/` adj. 治疗的；补救的；矫正的
+>
 > Ex: For what cannot be cured, patience is the best remedy.
 
 reminisce `/ˌremɪ'nɪs/` v. 追忆；缅怀
@@ -18617,6 +18939,8 @@ scoping `/s'kəʊpɪŋ/` n.（计算机）辖域
 
 scorch `/skɔːtʃ/` v. （使）烧焦；变焦；（使）枯萎；n. 烧焦
 
+scoring `/'skɔːrɪŋ/` n. 得分；刻痕；划痕
+
 scorn `/skɔːn/` n. 轻蔑；奚落；笑柄；v. 轻蔑；鄙视；嘲弄；不屑
 
 > DRV: scornful `/'skɔːnfl/` adj. 轻蔑的；嘲笑的
@@ -18673,6 +18997,8 @@ scrupulous `/ˈskruːpjələs/` adj. 小心谨慎的；细心的；严谨的
 
 scrutiny `/'skruːtəni/` n. 监视；细看；周密的调查
 
+> DRV: scrutinize `/'skruːtənaɪz/` v. 仔细检查；细看
+
 sculpt `/skʌlpt/` v. 雕刻；n. 雕刻；雕塑；雕刻品；雕塑品
 
 ### sd
@@ -18686,6 +19012,8 @@ sculpt `/skʌlpt/` v. 雕刻；n. 雕刻；雕塑；雕刻品；雕塑品
 seaborne `/'siːbɔːn/` adj. 海上运输的；浮在海上的
 
 seam `/siːm/` n. 缝；接缝；vt. 缝合；接合；使有纹；vi. 有裂缝
+
+> DRV: seamless `/'siːmləs/` adj. 持续的；无缝的
 
 seaman `/'siːmən/` n. 海员；水手
 
@@ -19165,6 +19493,8 @@ sink `/sɪŋk/` v. 下沉；沉没；渗透；低落；变低；衰弱；（太�
 
 sinuous `/ˈsɪnjuəs/` adj. 弯弯曲曲的；蜿蜒的；乖僻的
 
+sisterhood `/'sɪstəhʊd/` n. 姊妹关系；姊妹之谊；妇女团体
+
 situate `/'sɪtʃueɪt/` vt. 位于； 坐落在；adj. 位于 ... 的； 坐落在 ... 的
 
 > DRV: situation `/ˌsɪtʃu'eɪʃn/` n. 形势；局面；位置；职位；处境；状况
@@ -19427,6 +19757,8 @@ socio `/səʊsi'ːəʊ/` n. 社会
 >
 > DRV: sociocentric `/səʊsɪəʊ'sentrɪk/` adj. 社会中心论的；群体中心论的
 >
+> DRV: sociocentrism `/səʊsɪəʊ'sentrɪzəm/` n. 社会中心论；群体中心论
+>
 > DRV: sociopolitical `/ˌsəʊsiəʊpə'lɪtɪkl/` adj. 社会政治的
 
 sodium `/'səʊdiəm/` n. 钠
@@ -19572,6 +19904,8 @@ spat `/spæt/` n. 小争吵；轻打声；<口> 轻拍；n. 鞋罩；n. 贝卵�
 spatial `/'speɪʃl/` adj. 空间的
 
 spawn `/spɔːn/` n. 卵；产物；后代；结果；vt. 产卵；种菌丝于；产生；造成；vi. 产卵；大量生产
+
+spearhead `/'spɪəhed/` n. 矛尖；突击队的先遣队；攻击的最前线; v. 做先锋；在前面带头做先锋
 
 specialist `/'speʃəlɪst/` n. 专家；专科医生；专食性动物
 
@@ -19813,6 +20147,8 @@ stalagmite `/'stæləɡmaɪt/` n. 石笋
 
 stale `/steɪl/` adj. 不新鲜的；陈腐的；厌倦的；v. 变得不新鲜；腐坏；(动物)撒尿；n. (动物的)尿
 
+> DRV: stalemate `/'steɪlmeɪt/` n. 僵局；和棋；僵持状态；陷于困境; v. 使陷入僵局；使陷入困境
+
 stall `/stɔːl/` n. 栅栏；小隔间；货摊；座位；v. 把...关进畜舍里；失速；熄火；拖延；（使）动弹不得
 
 > DRV: stallage `/'stɔːlɪdʒ/` n. 摆摊用地
@@ -19830,6 +20166,8 @@ stamp `/stæmp/` n. 邮票；图章；印；跺脚；v. 跺脚；盖章
 stance `/stæns/` n. 立场；态度；站立姿势
 
 standalone `/'stændəˌləʊn/` adj. 独立的；单独的；n. 独立的电脑
+
+standpoint `/'stændpɔɪnt]/` n. 立场；观点
 
 stannary `/'stænərɪ/` n. 锡矿
 
@@ -20091,6 +20429,8 @@ strive `/strʌɪv/` vi. 奋斗；努力；力求；斗争
 
 strobe `/strəʊb/` n. 频闪闪光灯；频闪观测器；频闪放电管
 
+stroke `/strəʊk/` n. 中风；击打；一笔（画）；意外的运气; v. 击打; v. 轻抚；奉承
+
 stroll `/strəʊl/` n. 闲逛；漫步；v. 闲逛；漫步
 
 stromatolite `/strəʊ/` n. [地]叠层(石)
@@ -20171,7 +20511,7 @@ subordinate `/sə'bɔːdɪnət/` adj. 下级的；次要的；n. 属下；附属
 
 > DRV: subordination `/səˌbɔːdɪ'neɪʃn/` n. 放置在下级；隶属；次等
 
-subroutine `/subroutine/` n.（计算机）子程序
+subroutine `/'sʌbruːtiːn/` n.（计算机）子程序
 
 subsampling `/sʌb'zɑːmplɪŋ/` n.（计算机）二次抽样
 
@@ -20201,11 +20541,13 @@ substance `/'sʌbstəns/` n. 实质；物质；财产；内容；重要性
 
 > 1 a particular kind of matter with uniform properties. 2 the real physical matter of which a person or thing consists and which has a tangible, solid presence. 3 the quality of being important, valid, or significant. 4 the essential nature underlying phenomena, which is subject to changes and accidents. 
 >
->  SYN: physical entity, part, portion, component part, component, content, cognitive content.
+> SYN: physical entity, part, portion, component part, component, content, cognitive content.
 >
->  Ex: the substance of a speech.
+> Ex: the substance of a speech.
 >
->  Ex: a malleable substance.
+> Ex: a malleable substance.
+>
+> Ex: HE has erected a Multitude of new Offices, and sent hither Swarms of Officers to harrass our People, and eat out their Substance. --The Declaration of Independence
 
 substantial `/səb'stænʃl/` adj. 坚固的；结实的；大量的，可观的；重大的，重要的；实质的，基本的，大体上的
 
@@ -20275,9 +20617,11 @@ sue `/suː/` vt. 控告；起诉；vi. 请求；起诉
 
 suffer `/'sʌfə(r)/` 忍vt. 遭受；忍受；容忍，宽恕，听任；允许，准许；vi. 受苦；患病；受损失；变差，变糟；处于不利地位
 
-> Ex: Although the world is full of suffering, it is also full of the overcoming of it. --Helen Keller
+> DRV: sufferable `/'sʌfərəbəl/` adj. 可容忍的；可忍耐的；可忍受得了的
 >
 > DRV: sufferance `/'sʌfərəns/` n. 容许；忍耐；忍受；容忍；痛苦；默许
+>
+> Ex: Although the world is full of suffering, it is also full of the overcoming of it. --Helen Keller
 
 suffice `/sə'faɪs/` vi. 足够；使满足；vt. 使 ... 足够
 
@@ -20318,6 +20662,8 @@ summary `/'sʌməri/` n. 摘要；总结；adj. 简略的；概要的；即决�
 > DRV: summarize `/'sʌməraɪz/` v. 概述；摘要而言
 
 summation `/sʌ'meɪʃn/` n. 总结；加法；总和；有代表性的整体
+
+> DRV: summative `/'səmətɪv/` adj. 总结的
 
 summed `/sʌmd/` adj. 总计的；总数的
 
@@ -20415,6 +20761,8 @@ surgeon `/ˈsɜːdʒən/` n. 外科医生
 
 surgery `/'sɜːdʒəri/` n. 外科手术；外科；诊所；手术室
 
+surgical `/'sɜːdʒɪkl/` adj. 外科的；外科医生的；手术上的
+
 surjection `/sɜː'dʒekʃən/` n.（数学）满射
 
 surmount `/səˈmaʊnt/` vt. 克服；越过；登上 ... 最高点
@@ -20449,7 +20797,7 @@ suspect `/sə'spekt/` v. 怀疑；猜想；n. 嫌疑犯；adj. 可疑的；不�
 
 suspend `/sə'spend/` v. 暂停；悬浮；中止；勒令停职
 
-suspender `/səˈspendər/` n. 吊袜带；(裤子或裙子的)背带；悬挂物
+> DRV: suspender `/səˈspendər/` n. 吊袜带；(裤子或裙子的)背带；悬挂物
 
 suspicion `/səˈspɪʃn/` n. 猜疑；怀疑
 
@@ -20525,7 +20873,11 @@ syllable `/'sɪləbl/` n. 音节；vt. 分音节
 
 syllabus `/'sɪləbəs/` n. 大纲；摘要
 
+> DRV: syllabi `/'sɪləbaɪ/` n. 提纲；摘要; 名词syllabus的复数形式.
+
 syllogism `/'sɪlədʒɪzəm/` n. 三段论法；演绎推理；诡辩
+
+> DRV: syllogistic `/ˌsɪlə'dʒɪstɪk/` adj. 三段论法的；演绎的；演绎性的
 
 symbolic `/sɪm'bɒlɪk/` adj. 象征的；符号的；n. 代号
 
@@ -20546,6 +20898,8 @@ sympathy `/'sɪmpəθi/` n. 同情；同情心；同感；赞同；慰问
 symphony `/ˈsɪmfəni/` n. 交响乐
 
 symptom `/ˈsɪmptəm/` n. 症状；征兆
+
+synaptic `/sɪ'næptɪk/` adj. 突触的；染色体接合的
 
 sync `/sɪŋk/` n. 同步；同时发生；一致；v. （使）同时发生
 
@@ -20847,6 +21201,8 @@ tentative `/'tentətɪv/` adj. 不确定的；暂时的；试验性质的；犹�
 
 tenure `/'tenjə(r)/` n. 终身职位；任期；保有
 
+> Ex: HE has made Judges dependent on his Will alone, for the Tenure of their Offices, and the Amount and Payment of their Salaries. --The Declaration of Independence
+
 tera `/'tiərə/` n. 兆兆；万亿
 
 terabyte `/ˈterəbaɪt/` n. 万亿字节（TB）；太字节
@@ -21001,7 +21357,9 @@ threadlike `/θredˌlaɪk/` adj. 丝状的；像丝的；细长的
 
 threat `/θret/` n. 威胁；恐吓
 
-threatening `/ˈθretnɪŋ/` adj. 威胁(性)的；凶兆的；险恶的；胁迫的
+> DRV: threaten `/'θretn/` v. 威胁；恐吓；似将发生
+>
+> DRV: threatening `/ˈθretnɪŋ/` adj. 威胁(性)的；凶兆的；险恶的；胁迫的
 
 threatment `/triːtmənt/` n. 治疗；对待；处理
 
@@ -21427,9 +21785,9 @@ tremendous `/trəˈmendəs/` adj. 巨大的；惊人的
 
 > 1 very great in amount, scale, or intensity. 2 inspiring awe or dread.
 >
-> Ex: there was a tremendous explosion.
->
 > DRV: tremendously `/trə'mendəsli/` adv. 惊人地；非常；十分
+>
+> Ex: there was a tremendous explosion.
 
 trench `/trentʃ/` n. 沟；沟渠；战壕；v. 挖沟；侵占
 
@@ -21516,6 +21874,8 @@ trivial `/'trɪviəl/` adj. 不重要的；琐碎的
 trolley `/ˈtrɒli/` n. 手推车；<美>电车
 
 troop `/truːp/` n. 群；组；军队；大量；vi. 群集；结队；成群前行
+
+> Ex: FOR quartering large Bodies of Armed Troops among us: --The Declaration of Independence
 
 trophy `/ˈtroʊfi/` n. 奖品；战利品；adj. 显示身份的；有威望的
 
@@ -21683,6 +22043,8 @@ twofold `/'tuːfəʊld/` adj. 两倍的；双重的
 
 tycoon `/taɪˈkuːn/` n. 大亨；巨头；巨子
 
+tying `/'taɪɪŋ/` n. 系结(动词tie的现在分词形式).
+
 typewritten `/'taɪprɪtn/` adj. 用打字机打出的
 
 typhoid `/'taɪfɔɪd/` n. 伤寒
@@ -21694,6 +22056,8 @@ typify `/ˈtɪpɪfaɪ/` v. 作为某人或某物的典型；代表；象征
 typist `/'taɪpɪst/` n. 打字员
 
 typo `/'taɪpəʊ/` n. 打字排版错误
+
+> DRV: typographical `/ˌtaɪpə'ɡræfɪkl/` adj. 排字上的；印刷上的 =typographic.
 
 tyrant `/ˈtaɪrənt/` n. 专制统治者；暴君, 暴君似的人；专横的人, 严酷的事物，苛刻的事物, (古希腊的)僭主，僭王
 
@@ -22103,6 +22467,10 @@ unveil `/ˌʌn'veɪl/` vt. 揭开；公布；vi. 揭开
 
 unvocal `/'ʌnvəkl/` adj. 不悦耳的
 
+unwarrantable `/ʌn'wɒrəntəbl/` adj. 不能保证的；不能承认的；不允许的
+
+> Ex: We have warned them from Time to Time of Attempts by their Legislature to extend an unwarrantable Jurisdiction over us.
+
 unwary `/ʌn'weəri/` adj. 不小心的；疏忽的
 
 unwholesome `/ˌʌn'həʊlsəm/` adj. 有害健康的；看上去不健康的；令人生厌的
@@ -22165,7 +22533,9 @@ urban `/ˈɜːbən/` adj. 城市的；都市的
 
 urbane `/ɜːˈbeɪn/` adj. 温文尔雅的；懂礼的
 
-urgent `/'ɜːdʒənt/` adj. 紧急的；急迫的；坚持要求的
+urge `/ɜːdʒ/` vt. 驱策；鼓励；催促；力陈; vi. 极力主张; n. 冲动；强烈愿望
+
+> DRV: urgent `/'ɜːdʒənt/` adj. 紧急的；急迫的；坚持要求的
 
 urinate `/'jʊərɪneɪt/` v. 小便
 
@@ -22190,6 +22560,10 @@ usher `/ˈʌʃə(r)/` n. 带位员；招待员；vt. 引导；引入；vi. 做�
 usual `/'juːʒuəl/` adj. 通常的；惯常的；惯例的
 
 usurp `/juː'zɜːp/` v. 篡夺；霸占；篡位
+
+> DRV: usurpation `/ˌjuːzɜː'peɪʃn/` n. 篡夺；侵犯；霸占
+>
+> Ex: But when a long Train of Abuses and Usurpations, pursuing invariably the same Object, evinces a Design to reduce them under absolute Despotism, it is their Right, it is their Duty, to throw off such Government, and to provide new Guards for their future Security. --The Declaration of Independence
 
 usury `/'juːʒəri/` n. 高利率；高利贷
 
@@ -22305,6 +22679,8 @@ vampire `/'væmpaɪə/` n. 吸血蝠；吸血鬼；高利贷者；(舞台上的)
 
 van `/væn/` n. 箱形客货两用车；<主英>(铁路的)有盖货车；[军]先锋；先导；翼；v. (用货车)运
 
+vandal `/'vændl/` n. 破坏他人或公共财产者
+
 vanish `/'vænɪʃ/` vi. 消失；绝迹；不见了
 
 vanity `/'vænəti/` n. 自负；虚荣心；无价值的东西；浮华
@@ -22406,6 +22782,8 @@ venue `/ˈvenjuː/` n. 审判地；集合地；会场，场所；体育场馆；
 verb `/vɜːb/` n. 动词
 
 verbal `/'vɜːbl/` adj. 口头的；用言语的；用文字的；逐字的；动词的；n. 动名词
+
+verbiage `/'vɜːbiɪdʒ/` n. 废话；冗长；措辞
 
 verbose `/vɜː'bəʊs/` adj. 罗嗦的；冗长的
 
@@ -22577,7 +22955,7 @@ virtue `/'vɜːtʃuː/` n. 美德；德行；优点；贞操
 >
 > Ex: Vice is often clothed in virtue's habit.
 >
-> DRV: virtuous `/virtuous/` adj. 有品德的；有德行的；贞洁的
+> DRV: virtuous `/'vɜːtʃuəs/` adj. 有品德的；有德行的；贞洁的
 
 virtuoso `/ˌvɜːtʃu'əʊsəʊ/` n. 艺术能手；演艺精湛的人
 
@@ -22803,7 +23181,7 @@ warpath `/'wɔːpɑːθ/` n. 出征路途；敌对行动
 
 warrant `/ˈwɒrənt/` n. 委任状；凭证；根据；正当理由；vt. 担保；保证；辩解；授权
 
-warranty `/'wɒrənti/` n. 保单；根据；保修期
+> DRV: warranty `/'wɒrənti/` n. 保单；根据；保修期
 
 warrior `/'wɒriə(r)/` n. 勇士；战士；武士
 
@@ -23116,6 +23494,8 @@ workmanship `/'wɜːkmənʃɪp/` n. 手艺；技巧；工艺品
 workmate `/'wɜːkmeɪt/` n. 同事；工友
 
 workout `/'wɜːkaʊt/` n. 健身；练习；考验
+
+worksheet `/'wɜːkʃiːt/` n. (学生的)活页练习题；工作记录表
 
 worm `/wɜːm/` n. 虫；蠕虫；v. 蠕动；驱虫；慢慢获取
 
