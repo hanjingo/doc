@@ -121,6 +121,12 @@
 4. 选择`“File”`->`“Open Crash Dump…”`，导入dump文件；
 5. 输入：!analyze -v 开始进行分析。
 
+注意：有时候会报`ntdll.wrong.symbols.dll`这类错误，输入以下命令即可：
+
+```cmd
+TODO
+```
+
 ### 通过VS分析dump文件
 
 1. 直接将`*.exe`, `*.dmp`, `*.pdb`（如果有）放到同一目录下，使用vs打开dump文件并调试
