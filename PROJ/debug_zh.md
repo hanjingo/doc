@@ -6,13 +6,31 @@
 
 ## 定位内存问题
 
+### 内存泄漏
+
+内存泄漏分类：
+
 TODO
+
+内存泄漏有以下几种工具可以用于定位问题：
+
+- GCC/LLVM自带的工具:LeakSanitizer 
+- Valgrind
+- ...
+
+具体使用参考：[开发工具#GCC#使用LeakSanitizer定位内存访问错误](dev_tool_zh.md), [开发工具#Valgrind#使用](dev_tool_zh.md)
+
+---
 
 
 
 ## 定位CPU跑满问题
 
+### 死锁
+
 TODO
+
+---
 
 
 
@@ -136,7 +154,7 @@ sleep 15
 
 ### dump捕获
 
-linux/windows下都有各自的dump捕获函数，也可以通过使用跨平台崩溃捕获工具：[BreakPad](..\LANG\C++\OTHER\break_pad_zh.md), CrashPad来捕获。
+linux/windows下都有各自的dump捕获函数，也可以通过使用跨平台崩溃捕获工具：[开发工具#BreakPad](dev_tool_zh.md), CrashPad来捕获。
 
 ### dump文件格式
 
@@ -169,11 +187,13 @@ f(xx) # xx:堆栈层数(1:一般是main函数, ...)
 
 #### 使用VisualStudio
 
-TODO
+参考：[开发工具#分析dump文件#通过VS分析dump文件](dev_tool_zh.md)
 
 #### 使用windbg
 
-TODO
+参考：[开发工具#分析dump文件#通过Windbg分析dump文件](dev_tool_zh.md)
+
+---
 
 
 
@@ -181,15 +201,19 @@ TODO
 
 TODO
 
+---
+
 
 
 ## 定位高并发问题
 
 TODO
 
+---
 
 
-## 使用系统日志
+
+## 使用系统日志帮助定位
 
 ### 日志分类
 
@@ -267,6 +291,8 @@ windows：
 - Windows
 
   略
+
+---
 
 
 
