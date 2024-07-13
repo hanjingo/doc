@@ -82,12 +82,15 @@ English | [中文版](README_zh.md)
 | ------------------------------------------------------------ | ------- | ---------------- | ------------------------------------------------------------ |
 | [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane . |                                                              |
 | [LITERATURE](LITERATURE/README.md)                           |         |                  | - [The Declaration of Independence](LITERATURE/the_declaration_of_independence.md) |
+| [Speech Collection](SPEECH_COLLECTION/README.md)             |         |                  |                                                              |
+| [The Constitution of the United States](THE_CONSTITUTION_OF_THE_UNITED_STATES/the_constitution_of_the_united_states.txt) |         |                  |                                                              |
 
 
 
 ## Reading
 
 - [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
+- [Investments](INVESTMENTS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
