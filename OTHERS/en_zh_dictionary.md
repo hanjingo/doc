@@ -599,7 +599,11 @@ aging `/'eɪdʒɪŋ/` n. 老化(时效；迟滞); 老龄化
 
 agio `/'ædʒɪəʊ/` n. 贴水；扣头；折扣
 
-agitation `/ˌædʒɪˈteɪʃn/` n. 激动；鼓动；搅动
+agitate `/ˈædʒɪteɪt/` v. （尤指为法律、社会状况的改变而）激烈争论，鼓动，煽动；使激动；使焦虑；使狂躁不安；搅动；摇动（液体等）
+
+> DRV: agitation `/ˌædʒɪˈteɪʃn/` n. 激动；鼓动；搅动
+>
+> Ex: There isn't even agreement over whether boredom is always a low-energy, flat kind of emotion or whether feeling **agitated** and restless counts as boredom, too. --IELTS13-Test1-Passage2
 
 agnostic `/æɡ'nɒstɪk/` n. 不可知论者；adj. 不可知论的；不可知论者的
 
@@ -1093,7 +1097,11 @@ aorta `/eɪ'ɔːtə/` n. 主动脉
 
 apart `/ə'pɑːt/` adv. 相距；分开地；分别地；adj. 分开的；分离的
 
-apathetic `/ˌæpə'θetɪk/` adj. 缺乏感情的；缺乏兴趣的；无动于衷的；冷淡的
+apathy `/'æpəθɪ/` n. 漠然，冷淡, 无兴趣；无动于衷
+
+> DRV: apathetic `/ˌæpə'θetɪk/` adj. 缺乏感情的；缺乏兴趣的；无动于衷的；冷淡的
+>
+> Ex: For a start, it can include a lot of other mental states, such as frustration, **apathy**, depression and indifference. --IELTS13-Test1-Passage2
 
 aperiodic `/ˌeɪpɪərɪ'ɒdɪk/` adj. 非周期性的
 
@@ -1334,6 +1342,8 @@ armour `/'ɑːmə(r)/` n. 甲胄；铁甲；防护具
 arose `/ə'rəʊz/` v. 上升，起立，形成
 
 > DRV: arouse `/əˈraʊz/` v. 叫醒；唤醒；激起；睡醒
+>
+> Ex: These can be plotted on two axes - one running left to right, which measures low to high **arousal**, and the other from top to bottom, which measures how positive or negative the feeling is. --IELTS13-Test1-Passage2
 
 arrange `/əˈreɪndʒ/` vt. 整理；安排；计划；改编(乐曲)；vi. 协商；计划
 
@@ -2303,6 +2313,8 @@ blockade `/blɒ'keɪd/` n. 【C】封锁；阻碍物；vt. 封锁；挡住
 
 blockbuster `/ˈblɒkbʌstə(r)/` n. 轰动；巨型炸弹；大片
 
+> Ex: Another feature that attracted a lot of attention was an interactive journey through a number of the locations chosen for **blockbuster** films which had made use of New Zealand's stunning scenery as a backdrop.  --IELTS13-Test1-Passage1 
+
 blonde `/blɒnd/` adj. 亚麻色的；白皙的；白肤金发碧眼的；n. 白肤金发碧眼的女人
 
 > n. 1 a person with fair skin and hair. 2 a light grayish yellow to near white.
@@ -2446,6 +2458,8 @@ booth `/buːð/` n. 货摊；电话亭；小间
 bore `/bɔː(r)/` v. 使厌烦；开凿；钻孔；挖掘；盯着看；n. 讨厌的人；麻烦事；(管道、枪炮等的)孔；涌潮；(找水或石油的)钻孔；动词bear的过去式.
 
 > DRV: boredom `/'bɔːdəm/` n. 无聊；厌烦；厌倦；令人厌烦的事物
+>
+> Ex: But defining **boredom** so that it can be studied in the lab has proved difficult. --IELTS13-Test1-Passage2
 
 borne `/bɔːn/` adj. (用作复合词)由 ... 传播的；由 ... 传送的；vbl. 生；负荷(动词bear的过去分词)
 
@@ -2488,6 +2502,8 @@ bourgeoisie `/ˌbʊəʒwɑː'ziː/` n. 中产阶级；资产阶级
 bourses `/ˈbʊəsɪz/` n. （非英语国家，尤指法国的）股票交易所
 
 bout `/baʊt/` n. 回合；一场；一阵；发作；（摔跤等）比赛
+
+boutique `/buːˈtiːk/` n. 精品店；专卖流行衣服的小商店; adj. 精品屋的；小规模专售精品的
 
 bow `/baʊ/` n. 弓；鞠躬礼；蝴蝶结；船头；v. 鞠躬；致敬；压弯
 
@@ -2754,6 +2770,8 @@ bunch `/bʌn(t)ʃ/` n. 串；束；一群；捆；突出物；凸起；vt. 使�
 bundle `/'bʌndl/` n. 捆；束；包；大笔钱；v. 捆；把 ... 扎成一捆；匆忙地走
 
 bungle `/'bʌŋɡl/` v. 拙劣地工作；粗率地做；搞坏；贻误；n. 粗制滥造；搞糟的工作
+
+bungalow `/'bʌŋgələʊ/` n. 平房；小屋
 
 buoy `/bɔɪ/` n. 浮标；浮筒；救生圈；救生衣；v. 使浮起；支持；鼓励；用浮标指示
 
@@ -3042,6 +3060,8 @@ caricature `/ˈkærɪkətʃʊə(r)/` n. 讽刺画；讽刺；歪曲；笨拙的�
 caring `/'keərɪŋ/` adj. 关怀的
 
 carjacking `/'kɑːdʒækɪŋ/` n. 劫车；暴力抢夺汽车或抢劫司机
+
+carnation `/kɑː'neɪʃ(ə)n/` n. 麝香石竹;康乃馨
 
 carpenter `/'kɑːpəntə(r)/` n. 木匠；v. 做木工活
 
@@ -3419,6 +3439,10 @@ chorus `/ˈkɔːrəs/` n. 合唱队；歌舞队；齐声说道；副歌部分；
 
 chow `/tʃaʊ/` n. 食物；中国黑鼻狗（土狗）；v. 吃
 
+christian `/'krɪstʃən/` n. 基督徒；adj. 基督教的；基督徒的
+
+> DRV: christianity `/ˌkrɪsti'ænəti/` n. 基督教；基督教精神
+
 chromatic `/krə'mætɪk/` adj. 彩色的；着色的；【生】 易染的；染色质的；【音】半音的，半音阶的；变音的；变音体系的
 
 chrome `/krəʊm/` n. 铬；铬黄；（计算机）谷歌浏览器；vt. 镀铬
@@ -3437,11 +3461,7 @@ chronologically `/ˌkrɒnə'lɒdʒɪkli/` adj. 按年代的
 
 chronology `/krəˈnɒlədʒi/` n. 年代学；年表；按年代次序的排列
 
-christian `/'krɪstʃən/` n. 基督徒；adj. 基督教的；基督徒的
-
-> DRV: christianity `/ˌkrɪsti'ænəti/` n. 基督教；基督教精神
-
-christopher `/'kristəfə/` n. （名字）克里斯托弗
+chrysanthemum `/krɪ'sænθɪməm/` n. 〈植〉菊花
 
 chubby `/ˈtʃʌb.i/` adj. 圆胖的；丰满的
 
@@ -4191,6 +4211,10 @@ condescend `/ˌkɒndɪˈsɛnd/` v. 屈尊，俯就，怀着优越感对待
 >
 > Ex: take care not to condescend to your reader.
 
+condiment `/'kɒndɪm(ə)nt/` n. 调味品, 佐料
+
+> Ex: games to people are what condiments to diet.
+
 condom `/'kɒndɒm/` n. 安全套；避孕套
 
 condor `/ˈkɒndɔː(r)/` n. 大兀鹰；秃鹰金币
@@ -4780,6 +4804,8 @@ court `/kɔːt/` n. 法院；庭院；宫廷；球场；奉承；v. 献殷勤；
 > DRV: courthouse `/ˈkɔːthaʊs/` n. 法院大楼
 >
 > DRV: courtyard `/'kɔːtjɑːd/` n. 庭院；院子
+>
+> Ex: courtesy demands reciprocity.
 
 courtship `/'kɔːtʃɪp/` n. 求爱；求婚；求爱时期
 
@@ -4840,6 +4866,8 @@ crank `/kræŋk/` n. 曲柄；有怪癖的人；脾气坏的人；妙语；古�
 > Ex: The mean with a new idea is a crank until the idea succeeds. --Mark Twain
 
 cranny `/'kræni/` n. 裂缝；裂隙 
+
+crappy `/'kræpɪ/` adj. 糟糕的；蹩脚的；没价值的
 
 craps `/kræps/` n. 掷骰子赌博
 
@@ -5114,6 +5142,10 @@ custody `/'kʌstədi/` n. 拘留；监禁；监护；羁押
 custom `/ˈkʌstəm/` n. 习惯；风俗；惯例；（复）Customs: 海关；关税；adj. 定做的；定制的
 
 cutler `/'kʌtlə/` n. 刀匠；制餐刀商
+
+> DRV: cutlery `/ˈkʌtləri/` n. 餐具；刀剑制造业
+
+cutlet `/'kʌtlɪt/` n. (供烧烤、煎、炸用的)肉片,肉饼,炸肉排
 
 cutoff `/'kʌtɔːf/` n. 近路；切断
 
@@ -5537,6 +5569,8 @@ demangling `/dɪ'mɑːŋɡlɪŋ/` n. （计算机）识别解码
 
 dementia `/dɪ'menʃə/` n. 痴呆
 
+demerit `/diːˈmerɪt/` n. 缺点, 过失, 短处
+
 demesne `/də'meɪn/` n. 土地所有；领地
 
 demilitarise `/diː'mɪlɪtəraɪz/` adj. 解除武装
@@ -5804,6 +5838,8 @@ detract `/dɪ'trækt/` vi. 贬低；减去；vt. 转移，使分心
 detriment `/ˈdetrɪmənt/` n. 损伤；损害物
 
 > DRV: detrimental `/ˌdetrɪ'mentl/` adj. 有害的；n. 有害的人或事
+>
+> Ex: More evidence that boredom has **detrimental** effects comes from studies of people who are more or less prone to boredom. --IELTS13-Test1-Passage2
 
 detritus `/dɪ'traɪtəs/` n. 碎石；碎屑
 
@@ -6186,6 +6222,8 @@ disgruntle `/dɪs'grʌntl/` vt. 使不满；使不高兴
 disguise `/dɪs'ɡaɪz/` vt. 掩饰；假装；假扮；n. 伪装；伪装物
 
 disgust `/dɪs'ɡʌst/` n. 厌恶；憎恶；反感；vt. 使厌恶；使作呕
+
+> Ex: Compares it to **disgust** - an emotion that motivates us to stay away from certain situations. --IELTS13-Test1-Passage2
 
 dishearten `/dɪs'hɑːtn/` vt. 使沮丧；使泄气
 
@@ -7515,6 +7553,8 @@ etcetera `/et'setərə/` n. 附加的人；附加物；以及其它；等等(etc
 
 eternal `/ɪ'tɜːnl/` adj. 永久的；永恒的；n. 永恒的事
 
+> DRV: eternity `/ɪ'tɜːnɪtɪ/` n. 来世，来生；不朽；永世
+
 ethernet `/'iːθənet/` n. 以太网
 
 ethics `/'eθɪks/` n. 道德规范；道德标准；伦理学
@@ -8267,6 +8307,10 @@ fertilizer `/'fɜːtəlaɪzə(r)/` n. 肥料
 
 fervent `/'fɜːvənt/` adj. 热情的；强烈的；炎热的；热心的
 
+fester `/'festə/` vi. 溃烂；化脓；vt. 使……溃烂；使……痛苦；使……恶化；n. 脓疮，脓疱；溃烂
+
+> Ex: But even if boredom has evolved to help us survive, it can still be toxic if allowed to **fester**.  --IELTS13-Test1-Passage2
+
 festival `/'festɪvl/` adj. 节日的；喜庆的；n. 节日；欢宴；庆祝及祭祀
 
 fetching `/'fetʃɪŋ/` adj. 动人的；引人的；迷人的
@@ -8497,7 +8541,9 @@ floppy `/'flɒpi/` n. （计算机）软盘（disk）；adj. 松软的；懒散�
 
 flora `/ˈflɔːrə/` n. 植物；群落
 
-floral `/ˈflɔːrəl/` adj. 花似的；花的；植物的；n. 以花占主要的图片或设计
+> DRV: floral `/ˈflɔːrəl/` adj. 花似的；花的；植物的；n. 以花占主要的图片或设计
+>
+> DRV: florist `/'flɒrɪst/` n. 花商，种花人；花卉研究者
 
 flounder `/ˈflaʊndə(r)/` v. 挣扎；踌躇；笨拙而错乱地说或做；n. 挣扎；错乱的行动；n. 比目鱼；鲽
 
@@ -11554,6 +11600,8 @@ intricate `/'ɪntrɪkət/` adj. 复杂的；难懂的
 intrigue `/ɪnˈtriːɡ/` vi. 搞阴谋诡计；vt. 激起…的好奇心；n. 密谋策划, 阴谋, 诡计
 
 > DRV: intriguing `/ɪn'triːɡɪŋ/` adj. 吸引人的；有趣的
+>
+> Ex: **Intriguingly**, Goetz has found that while people experience all kinds of boredom, they tend to specialize in one. --IELTS13-Test1-Passage2
 
 intrinsic `/ɪn'trɪnsɪk/` adj. 内在的；固有的；本质的
 
@@ -11570,6 +11618,8 @@ introvert `/'ɪntrəvɜːt/` n. 个性内向者；vt. 使 ... 内向
 intrude `/ɪnˈtruːd/` v. 闯入；侵入；打扰；干涉
 
 > 1 put oneself deliberately into a place or situation where one is unwelcome or uninvited. 2 (of igneous rock) be forced or thrust into (an existing formation).
+>
+> DRV: intrusive `/ɪn'truːsɪv/` adj. 闯入的, 打扰的
 >
 > Ex: she felt awkward at intruding on private grief.
 >
@@ -11728,6 +11778,8 @@ irritate `/ˈɪrɪteɪt/` v. 激怒；使疼痛或发炎
 > DRV: irritability `/ˌɪrɪtə'bɪləti/` n. 易怒；过敏性；兴奋性
 >
 > DRV: irritating `/ˈɪrɪteɪtɪŋ/` adj. 刺激性的；恼人的
+>
+> Ex: People try to connect with the world and if they are not successful there's that frustration and **irritability**. --IELTS13-Test1-Passage2
 
 ### is
 
@@ -11764,6 +11816,8 @@ iterative `/'ɪtərətɪv/` adj. 迭代的；重复的
 itinerant `/aɪˈtɪnərənt/` adj. 巡回的；流动的；n. 巡回者
 
 itinerary `/aɪˈtɪnərəri/` n. 旅行计划，行程表；旅程；游记；adj. 旅程的；巡回的；游历的
+
+> Ex: As the site developed, additional features were added to help independent travellers devise their own customised **itineraries**. --IELTS13-Test1-Passage1
 
 ### iu
 
@@ -12306,6 +12360,8 @@ largish `/'lɑːdʒɪʃ/` adj. 颇大的
 lark `/lɑːk/` n. 云雀；百灵鸟；嬉戏；玩笑；v. 嬉戏
 
 laser `/ˈleɪzə(r)/` n. 激光；镭射
+
+lashing `/'læʃɪŋ/` n. 鞭打；叱责；痛骂；v. 鞭打；猛烈摇动；抨击（lash的ing形式）
 
 lastage `/'læsteɪdʒ/` n. 市场税
 
@@ -12896,6 +12952,8 @@ lyrical `/'lɪrɪkl/` adj. 抒情的；抒情诗的；热情的；狂热的；n.
 [回到M](#M)--[回到顶部](#英汉词典)
 
 machinery `/mə'ʃiːnəri/` n. 机械；(总称)机器
+
+macho `/'mætʃəʊ/` adj. 大男子气概的
 
 madman `/'mædmən/` n. 疯子；精神病患者
 
@@ -13784,6 +13842,8 @@ monument `/ˈmɒnjumənt/` n. 纪念碑；历史遗迹；不朽作品
 > DRV: monumental `/ˌmɒnju'mentl/` adj. 纪念碑的；作为纪念的；不朽的
 
 mood `/muːd/` n. 心情；情绪；气氛
+
+> Ex: out of the mood.
 
 moor `/mɔː(r)/` n. 荒野；旷野；v. 系住；停泊
 
@@ -15079,6 +15139,8 @@ oven `/'ʌvn/` n. 烤箱；烤炉
 
 overall `/ˌəʊvərˈɔːl/` adj. 全部的；总体的；全面考虑的；adv. 总的来说；总共；n. 罩衫；工作服
 
+overawe `/ˌəʊvərˈɔː/` vt. 吓倒,吓住
+
 overblown `/ˌəʊvə'bləʊn/` adj. 停息的；盛开过的；夸张的；过分的；肥大的
 
 overconfident `/ˌəʊvəˈkɒnfɪdənt/` adj. 自负的；过于自信的
@@ -15420,6 +15482,8 @@ passion `/ˈpæʃn/` n. 激情；热情；酷爱；盛怒
 > DRV: passionate `/'pæʃənət/` adj. 热情的；激情的；易怒的
 
 passive `/ˈpæsɪv/` adj. 被动的；消极的；n. 被动性
+
+> Ex: Mann concluded that a **passive**, boring activity is best for creativity because it allows the mind to wander. --IELTS13-Test1-Passage2
 
 pasta `/'pæstə/` n. 意大利面
 
@@ -16087,6 +16151,8 @@ plug `/plʌɡ/` n. 塞子；插头；推销；火花塞；口嚼烟；v. 塞；�
 >
 > DRV: plugged `/'plʌgɪd/` adj. 塞紧的；堵住的
 
+plum `/plʌm/` n. 李子; 李子树；理想之物(尤指高薪的职位)
+
 plumage `/ˈpluːmɪdʒ/` n. 鸟类羽毛；翅膀；华丽的衣服
 
 plumb `/plʌm/` v. （用铅垂）测量；探测；n. 铅锤；垂直；adj. 垂直的；<口>完全的；adv. 恰恰；<口>彻底地
@@ -16204,6 +16270,10 @@ polymorphic `/ˌpɒli'mɔːfɪk/` adj. 多样性的
 polymorphism `/ˌpɒlɪˈmɔːfɪzm/` n. （计算机）多态；多样性
 
 polynomial `/ˌpɒlɪ'nəʊmɪəl/` n. 多项式；adj. 多项的
+
+polystyrene `/ˌpɒlɪ'staɪriːn/` n. 聚苯乙烯
+
+> Ex: In experiments published last year, Mann found that people who had been made to feel bored by copying numbers out of the phone book for 15 minutes came up with more creative ideas about how to use a **polystyrene** cup than a control group. --IELTS13-Test1-Passage2
 
 polysyndeton `/pɒlɪ'sɪndɪtɒn/` n. [语]连词叠用
 
@@ -16877,6 +16947,10 @@ prompt `/prɒmpt/` adj. 迅速的；敏捷的；立刻的；vt. 激起；促进�
 
 prone `/prəʊn/` adj. 易于 ... 的；有 ... 倾向的；俯卧的
 
+> DRV: proneness `/prəunnis/` n. 俯伏,倾向
+>
+> Ex: Boredom **proneness** has been linked with a variety of traits. --IELTS13-Test1-Passage2
+
 prop `/prɒp/` n. 支柱；支持者；倚靠人；n. 道具；n. 螺旋桨；推进器；v. 支撑；维持
 
 propaganda `/ˌprɒpə'ɡændə/` n. 宣传；宣传的内容
@@ -17423,11 +17497,11 @@ race `/reɪs/` n. 种族，人种；家庭，门弟；属，种；vt. 和…竞�
 >
 > SYN: contest, competition, group, grouping, flow, taxonomic group, taxonomic category
 >
+> DRV: racial `/ˈreɪʃl/` adj. 种族的；人种的
+>
 > Ex: the race of birds.
 >
 > Ex: The race is on.
->
-> DRV: racial `/ˈreɪʃl/` adj. 种族的；人种的
 
 radial `/'reɪdiəl/` adj. 光线的；光线状的；放射状的；n. 放射状部分；桡骨神经 (或动脉)；n. 子午线轮胎
 
@@ -17474,6 +17548,8 @@ rampant `/ˈræmpənt/` adj. 猖獗的；蔓延的；猛烈的；[纹]跃立的
 ran `/ræn/` run的过去式
 
 ranch `/rɑːntʃ/` n. 牧场；大牧场；大农场
+
+ransom `/ˈrænsəm/` vt. 赎回，赎；勒索赎金；得赎金后释放；[宗]救赎; n. 赎金；赎身，赎回
 
 rapacious `/rə'peɪʃəs/` adj. 贪婪的；强夺的
 
@@ -18633,6 +18709,10 @@ rudimentary `/ˌruːdɪ'mentri/` adj. 基本的；初步的；未充分发展的
 
 rug `/rʌɡ/` n. 地毯；毯子；旅行毯
 
+rugby `/'rʌɡbi/` n. 橄榄球
+
+> Ex: One of the most popular was an interview with former New Zealand All Blacks **rugby** captain Tana Umaga. --IELTS13-Test1-Passage1 
+
 rugged `/ˈrʌɡɪd/` adj. 高低不平的；崎岖的；粗犷的；粗鲁的；(人)坚毅的；(气候)严酷的；(声音)刺耳的；坚固耐用的
 
 ruin `/'ruːɪn/` vt. 毁灭；毁坏；（使）破产；糟蹋，使（妇女）失去贞操；n. 毁灭；废墟；崩溃
@@ -18747,6 +18827,8 @@ sake `/seɪk/` n. 理由；缘故；目的；利益
 
 salad `/'sæləd/` n. 沙拉
 
+salesclerk `/'seɪlzklɑːk/` n. 店员
+
 salient `/ˈseɪliənt/` adj. 突出的；显著的；跳跃的；n. 突出部分
 
 saline `/ˈseɪlaɪn/` adj. 含盐的；咸的；n. 生理盐溶液；盐湖
@@ -18798,6 +18880,8 @@ sap `/sæp/` n. 树液；汁液；精力；<俚>易上当的人；地道；v. �
 sapphire `/ˈsæfaɪə(r)/` n. 蓝宝石；深蓝色；adj. 蓝宝石的；深蓝色的
 
 sarcastic `/sɑː'kæstɪk/` adj. 讽刺的
+
+sardine `/sɑː'diːn/` n. 沙丁鱼；[俚]庸碌无能的人；vt. [口]使拥挤不堪
 
 sardonic `/sɑː'dɒnɪk/` adj. 讥讽的；嘲笑的；冷笑的
 
@@ -18908,6 +18992,8 @@ scenario `/sɪˈnɑː.ri.əʊ/` n. 剧本；情节梗概
 scenery `/ˈsiːnəri/` n. 风景；背景；布景
 
 scenic `/ˈsiːnɪk/` adj. 风景好的；戏剧性的
+
+> Ex: The campaign focused on New Zealand's **scenic** beauty, exhilarating outdoor activities and authentic Maori culture, and it made New Zealand one of the strongest national brands in the world. --IELTS13-Test1-Passage1 
 
 scent `/sent/` n. 气味；香味；线索；v. 闻出；发觉；充满；得到 ... 的暗示
 
@@ -19364,6 +19450,8 @@ shoveller `/'ʃʌvələ/` n. 翻扬机(挖土机驾驶员)
 showcase `/'ʃəʊkeɪs/` n. (玻璃)陈列柜；显示优点的东西；vt. 使展示；陈列
 
 shower `/'ʃaʊə(r)/` n. 淋浴；阵雨；送礼会；(大量)涌泻；v. 冲(淋浴)；下(阵雨)；倾注
+
+shred `/ʃred/` n. 碎片；少量剩余；最少量；破布；vt. 切成条状；用碎纸机撕毁；vi. 撕碎
 
 shrewd `/ʃruːd/` adj. 精明的；敏锐的；狡猾的
 
@@ -19936,6 +20024,8 @@ speculate `/ˈspekjuleɪt/` vt. 推测；vi. 投机；深思
 > DRV: speculation `/ˌspekju'leɪʃn/` n. 推测；投机；沉思
 >
 > DRV: speculative `/'spekjələtɪv/` adj. 推测的；推理的；思索的；投机的
+>
+> Ex: Psychologist Francoise Wemelsfelder **speculates** that our over-connected lifestyles might even be a new source of boredom. --IELTS13-Test1-Passage2
 
 speed `/spiːd/` n. 速度；迅速；v. 加速；急行
 
@@ -20093,6 +20183,8 @@ square `/skweə(r)/` n. 正方形；广场；街区；平方；直角尺；<俚>
 
 squash `/skwɒʃ/` n. 壁球；摺皱不堪；拥挤嘈杂的人群；浓缩果汁；美国南瓜；vt. 压制；压扁；vi. 变扁；挤进
 
+squeak `/skwiːk/` vi. 告密；吱吱叫；侥幸成功；n. 吱吱声；机会；vt. 以短促尖声发出
+
 squeeze `/skwiːz/` v. 挤压；塞进；压榨；设法腾出；n. 挤压；少量；拥挤；严控；财政困难
 
 squirm `/skwɜːm/` v. (因不舒适、羞愧或紧张而)蠕动
@@ -20112,6 +20204,8 @@ squirt `/skwɜːt/` v. 喷出；溅迸；注射；n. 水枪；注射器；喷出
 ### st
 
 [回到S](#S)--[回到顶部](#英汉词典)
+
+stabbing `/'stæbɪŋ/` adj. (尤指疼痛)有如刀割的; 突然剧烈的
 
 stabilizers `/s'teɪbəlaɪzəz/` n. 稳定剂
 
@@ -23048,6 +23142,8 @@ volunteer `/ˌvɒlənˈtɪə(r)/` n. 志愿者；(自行生长的)植物；v. (�
 vomit `/'vɒmɪt/` v. 吐出；呕吐；喷出；n. 呕吐；呕吐物
 
 voracious `/və'reɪʃəs/` adj. 狼吞虎咽的；贪婪的；贪吃的；求知欲强的
+
+voucher ``
 
 vow `/vaʊ/` n. 誓约；v. 发誓
 
