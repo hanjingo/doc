@@ -71,10 +71,11 @@ English | [中文版](README_zh.md)
 
 ### Logic
 
-| Title                                                        | Edition | Author                       | Abstract/Evaluate |
-| ------------------------------------------------------------ | ------- | ---------------------------- | ----------------- |
-| [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder |                   |
-| [CRITICAL THINKING](CRITICAL_THINKING/README.md)             |         | JONATHAN HABER.              |                   |
+| Title                                                        | Edition | Author                            | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | --------------------------------- | ----------------- |
+| [THE ART OF MENTAL TRICKERY AND MANIPULATION](THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder      |                   |
+| [CRITICAL THINKING](CRITICAL_THINKING/README.md)             |         | JONATHAN HABER.                   |                   |
+| [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md) | 8 ED    | M. Neil Browne<br>Stuart M.Keeley |                   |
 
 ### Other
 
@@ -89,7 +90,6 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
-- [ASKING THE RIGHT QUESTIONS-A Guide to Critical Thinking](ASKING_THE_RIGHT_QUESTIONS/README.md)
 - [Investments](INVESTMENTS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)

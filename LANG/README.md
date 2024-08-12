@@ -7,5 +7,6 @@
 - [Python](PYTHON/README.md)
 - [dot](dot.md)
 - [markdown](markdown.md)
+- [rust](rust.md)
 - [shell](shell.md)
 - [solidity](solidity.md)

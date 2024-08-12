@@ -1,11 +1,13 @@
+[中文版](README_zh.md) | English
+
 # Database System Concepts
 
 Abraham Silberschatz, Henry F. Korth, S. Sudarshan . 6ED
 
 - [Chapter1 Introduction](chapter1.md)
-- [Chapter2 Introduction to the Relational Model]
-- [Chapter3 Introduction to SQL]
-- [Chapter4 Intermediate SQL]
+- [Chapter2 Introduction to the Relational Model](chapter2.md)
+- [Chapter3 Introduction to SQL](chapter3.md)
+- [Chapter4 Intermediate SQL](chapter4.md)
 - [Chapter5 Advanced SQL]
 - [Chapter6 Formal Relational Query Languages]
 - [Chapter7 Database Design and the E-R Model](chapter7.md)

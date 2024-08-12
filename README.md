@@ -41,6 +41,10 @@
 
 ### [Python](LANG/PYTHON/README.md)
 
+### Rust
+
+- [Rust](LANG/rust.md)
+
 ---
 
 ## [Math](MATH/README.md)

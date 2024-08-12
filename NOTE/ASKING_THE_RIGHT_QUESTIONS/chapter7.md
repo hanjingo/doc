@@ -1,4 +1,4 @@
-# CHAPTER7 Are There Any Fallacies in the Reasoning?
+# CHAPTER 7 Are There Any Fallacies in the Reasoning?
 
 The objective of critical reading and listening is to judge the acceptability or worth of conclusions.
 

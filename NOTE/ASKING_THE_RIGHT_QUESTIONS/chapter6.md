@@ -1,4 +1,4 @@
-# CHAPTER6 What Are the Descriptive Assumptions?
+# CHAPTER 6 What Are the Descriptive Assumptions?
 
 `Descriptive assumptions` are beliefs about the way the world is; prescriptive or value assumptions, you remember, are beliefs about how the world should be.
 
