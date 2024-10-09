@@ -40,9 +40,9 @@ English | [中文版](README_zh.md)
 
 ### Database
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author                                                 | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ------------------------------------------------------ | ----------------- |
+| [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md) | 6ED     | Abraham Silberschatz<br>Henry F. Korth<br>S. Sudarshan |                   |
 
 ### Net
 
@@ -85,6 +85,7 @@ English | [中文版](README_zh.md)
 | [LITERATURE](LITERATURE/README.md)                           |         |                  | - [The Declaration of Independence](LITERATURE/the_declaration_of_independence.md) |
 | [Speech Collection](SPEECH_COLLECTION/README.md)             |         |                  |                                                              |
 | [The Constitution of the United States](THE_CONSTITUTION_OF_THE_UNITED_STATES/the_constitution_of_the_united_states.txt) |         |                  |                                                              |
+| [THE ELEMENTS OF STYLE](THE_ELEMENTS_OF_STYLE/README.md)     | 4ED     | E.B.WHITE        |                                                              |
 
 
 
@@ -96,7 +97,6 @@ English | [中文版](README_zh.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
-- [Database System Concepts](DATABASE_SYSTEM_CONCEPTS/README.md)
 - [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)
 
 

@@ -83,7 +83,7 @@
 
 ## [Others](OTHERS/README.md)
 
-- [En-Zh-Dictionary](Others/en_zh_dictionary.md)
+- [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
 
 ---
 

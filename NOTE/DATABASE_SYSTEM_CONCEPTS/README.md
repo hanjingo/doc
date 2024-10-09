@@ -8,29 +8,29 @@ Abraham Silberschatz, Henry F. Korth, S. Sudarshan . 6ED
 - [Chapter2 Introduction to the Relational Model](chapter2.md)
 - [Chapter3 Introduction to SQL](chapter3.md)
 - [Chapter4 Intermediate SQL](chapter4.md)
-- [Chapter5 Advanced SQL]
-- [Chapter6 Formal Relational Query Languages]
+- [Chapter5 Advanced SQL](chapter5.md)
+- [Chapter6 Formal Relational Query Languages](chapter6.md)
 - [Chapter7 Database Design and the E-R Model](chapter7.md)
-- [Chapter8 Relational Database Design]
-- [Chapter9 Application Design and Development]
+- [Chapter8 Relational Database Design](chapter8.md)
+- [Chapter9 Application Design and Development](chapter9.md)
 - [Chapter10 Storage and File Structure](chapter10.md)
 - [Chapter11 Indexing and Hashing](chapter11.md)
-- [Chapter12 Query Processing]
-- [Chapter13 Query Optimization]
+- [Chapter12 Query Processing](chapter12.md)
+- [Chapter13 Query Optimization](chapter13.md)
 - [Chapter14 Transactions](chapter14.md)
 - [Chapter15 Concurrency Control](chapter15.md)
 - [Chapter16 Recovery System](chapter16.md)
 - [Chapter17 Database-System Architectures](chapter17.md)
 - [Chapter18 Parallel Databases](chapter18.md)
 - [Chapter19 Distributed Databases](chapter19.md)
-- [Chapter20 Data Warehousing and Mining]
-- [Chapter21 Information Retrieval]
-- [Chapter22 Object-Based Databases]
-- [Chapter23 XML]
-- [Chapter24 Advanced Application Development]
-- [Chapter25 Spatial and Temporal Data and Mobility]
-- [Chapter26 Advanced Transaction Processing]
-- [Chapter27 PostgreSQL]
-- [Chapter28 Oracle]
-- [Chapter29 IBM DB2 Universal Database]
-- [Chapter30 Microsoft SQL Server]
+- [Chapter20 Data Warehousing and Mining](chapter20.md)
+- [Chapter21 Information Retrieval](chapter21.md)
+- [Chapter22 Object-Based Databases](chapter22.md)
+- [Chapter23 XML](chapter23.md)
+- [Chapter24 Advanced Application Development](chapter24.md)
+- [Chapter25 Spatial and Temporal Data and Mobility](chapter25.md)
+- [Chapter26 Advanced Transaction Processing](chapter26.md)
+- [Chapter27 PostgreSQL](chapter27.md)
+- [Chapter28 Oracle](chapter28.md)
+- [Chapter29 IBM DB2 Universal Database](chapter29.md)
+- [Chapter30 Microsoft SQL Server](chapter30.md)
