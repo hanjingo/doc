@@ -1,19 +1,21 @@
-# 第一章 算法在计算中的作用
+[中文版](chapter1_zh.md) | English
+
+# 1 The Role of Algorithms in Computing
 
 
 
-## 1.1 算法
+## 1.1 Algorithms
 
-`算法（algorithm）` 是一系列的计算步骤，用来将输入数据转换成输出结果。
+An `algorithm` is any well-defined computational procedure that takes some value, or set of values, as `input` and produces some value, or set of values, as `output`.
 
-对排序问题的形式化定义：
+Here is how we formally define the `sorting problem`:
 
-​    输入：由$n$个数构成的一个序列$(a_1, a_2, ..., a_n)$。
+​    Input: A sequence of $n$ numbers $(a_1, a_2, ..., a_n)$.
 
-​    输出：对输入序列的一个排列（重排）$(a_1', a_2', ..., a_n')$，使得$a_1' \leqslant a_2' \leqslant ... \leqslant a_n'$。
+​    Output: A permutation (reordering) $(a_1', a_2', ..., a_n')$ of the input sequence such that $a_1' \leq a_2' \leq ... \leq a_n'$.
 
 
 
-## 1.2 作为一种技术的算法
+## 1.2 Algorithms as a technology
 
-`效率：`为求解相同问题而设计的不同算法在效率方面常常具有显著的差别，这些查遍可能比由于硬件和软件造成的差别要重要得多。
+Different algorithms devised to solve the same problem often differ dramatically in their `efficiency`. These differences can be much more significant than differences due to hardware and software.

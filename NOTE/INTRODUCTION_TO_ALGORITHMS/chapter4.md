@@ -1,42 +1,45 @@
-# 第四章 分治策略
+# 4 Divide-and-Conquer
 
 
 
-**递归式**
+**Recurrence**
 
-三种求解递归式的方式（即得出算法的$\theta$或$O$渐近界的方法）：
+There are three methods for solving recurrences-that is, for obtaining asymptotic "$\theta$" or "$O$" bounds on the solution:
 
-- 代入法：我们猜测一个界，然后用数学归纳法证明这个界是正确的。
-- 递归树法：将递归式转换为一棵树，其节点表示不同层次的递归调用产生的代价。然后采用边界和技术来求解递归式。
-- 主方法：可求解形如下面公式的递归式的界：$T(n) = aT(n/b) + f(n)$，其中$a \geqslant 1, b > 1, f(n)是一个给定的函数$。
+- In the `substitution method`, we guess a bound and then use mathematical induction to prove our guess correct.
 
-**递归式技术细节**
+- The `recursion-tree method` converts the recurrence into a tree whose nodes represent the costs incurred at various levels of the recursion. We use techniques for bounding summations to solve the recurrence.
 
-技术上，描述MERGE-SORT最坏情况运行时间的准确的递归式为：
+- The `master method` provides bounds for recurrences of the form
+  $$
+  T(n) = aT(n/b) + f(n)
+  $$
+  , where $a \geq 1, b > 1, and\ f(n)$ is a given function.
+
+**Technicalities in recurrences**
+
+Technically, the recurrence describing the worst-case running time of MERGE-SORT is really:
 $$
 T(n) = 
 \begin{cases}
-\theta(1), &若n=1\\
-T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + \theta(n), &若n>1
+\theta(1), &if\ n=1\\
+T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + \theta(n) &if\ n>1
 \end{cases}
 $$
 
-
-## 4.1 最大子数组问题
-
-**最大子数组（maximum subarray）** 最大的非空连续子数组。
+## 4.1 The maximum-subarray problem
 
 ![4_3](res/4_3.png)
 
-考虑求解两个子数组$A[low..mid]$和$A[mid+1..high]$，如图所示：
+We find the midpoint, say mid, of the subarray, and consider the subarrays $A[low..mid]$ and $A[mid+1..high]$, As below figure shows:
 
 ![4_4](res/4_4.png)
 
-$A[low..high]$的任何连续子数组$A[i..j]$所处的位置必然是以下三种情况之一：
+any contiguous subarray $A[i..j]$ of $A[low..high]$ must lie in exactly one of the following places:
 
-- 完全位于子数组$A[low..mid]$中，因此$low \leqslant i \leqslant j \leqslant mid$。
-- 完全位于子数组$A[mid+1..high]$中，因此$mid < i \leqslant j \leqslant high$。
-- 跨越了中点，因此$low \leqslant i \leqslant mid < j \leqslant high$。
+- entirely in the subarray $A[low..mid]$, so that $low \leq i \leq j \leq mid$,
+- entirely in the subarray $A[mid+1..high]$, so that $mid < i \leq j \leq high$, or
+- crossing the midpoint, so that $low \leq i \leq mid < j \leq high$.
 
 ```c++
 FIND-MAX-CROSSING-SUBARRAY(A, low, mid, high)
@@ -72,54 +75,56 @@ else mid = \lfloor (low+high)/2 \rfloor
     else return (cross - low, cross - high, cross - sum)
 ```
 
-**分治算法分析**
+**Analyzing the divide-and-conquer algorithm**
 
-FIND-MAXIMUM-SUBARRAY运行时间$T(n)$的递归式：
+The running time $T(n)$ of FIND-MAXIMUM-SUBARRAY:
 $$
 T(n) = 
 \begin{cases}
-\theta(1), &若n=1\\
-2T(n/2) + \theta(n), &若n>1
+\theta(1) &if\ n=1\\
+2T(n/2) + \theta(n) &if\ n>1
 \end{cases}
 $$
 
 
-## 4.2 矩阵乘法的Strassen算法
+## 4.2 Strassen's algorithm for matrix multiplication
 
-若$A = (a_{ij})$和$B = (b_{ij})$是$n \times n$的方阵，则对$i, j = 1, 2, ..., n$，定义乘积$C = A \cdot B$中的元素$C_{ij}$为：$c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}$。
-
-SQUARE-MATRIX-MULTIPLY-RECURSIVE运行时间的递归式：
+If $A = (a_{ij})$ and $B = (b_{ij})$ are square $n \times n$ matrices, then in the product $C = A \cdot B$, we define the entry $C_{ij}$, for $i, j = 1, 2, ..., n$, by:
+$$
+c_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj}
+$$
+The running time of SQUARE-MATRIX-MULTIPLY-RECURSIVE:
 $$
 T(n) = 
 \begin{cases}
-\theta(1) &若n=1\\
-8T(n/2) + \theta(n^2) &若n>1
+\theta(1) &if\ n=1\\
+8T(n/2) + \theta(n^2) &if\ n>1
 \end{cases}
 $$
-Strassen算法运行时间$T(n)$的递归式：
+The running time $T(n)$ of Strassen's algorithm:
 $$
 T(n) = 
 \begin{cases}
-\theta(1) &若n=1\\
-7T(n/2) + \theta(n^2) &若n>1
+\theta(1) &if\ n=1\\
+7T(n/2) + \theta(n^2) &if\ n>1
 \end{cases}
 $$
 
 
-## 4.3 用代入法求解递归式
+## 4.3 The substitution method for solving recurrences
 
-代入法求解递归式分为2步：
+The `substitution method` for solving recurrences comprises two steps:
 
-1. 猜测解的形式。
-2. 用数学归纳法求出解中的常数，并证明解是正确的。
+1. Guess the form of the solution.
+2. Use mathematical induction to find the constants and show that the solution works.
 
 
 
-## 4.4 用递归树方式求解递归式
+## 4.4 The recursion-tree method for solving recurrences
 
 ![4_5](res/4_5.png)
 
-确定整棵树的代价：
+The costs over all levels to determine the cost for the entire tree:
 $$
 \begin{equation}\begin{split} 
 T(n) &= cn^2 + \frac{3}{16}cn^2 + (\frac{3}{16})^2 cn^{2} + ... + (\frac{3}{16})^{log_4 n-1} cn^2 + \theta(n^{log_4 3}) \\
@@ -131,97 +136,133 @@ $$
 
 
 
-## 4.5 用主方法求解递归式
+## 4.5 The master method for solving recurrences
 
-### 主定理
+**Theorem 4.1 (Master theorem)** Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined on the nonnegative integers by the recurrence:
+$$
+T(n) = aT(n/b) + f(n)
+$$
+, where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n)$ has the following asymptotic bounds:
 
-**定理4.1** 令$a \geqslant 1$和$b > 1$是常数，$f(n)$是一个函数，$T(n)$是定义在非负整数上的递归式：$T(n) = aT(n/b) + f(n)$。其中我们将$n/b$解释为$\lfloor n/b \rfloor$或$\lceil n/b \rceil$。那么$T(n)$有如下渐近界：
-
-1. 若对某个常数$\epsilon > 0$有$f(n) = O(n^{log_b a - \epsilon})$，则$T(n) = \theta(n^{log_b a})$。
-2. 若$f(n) = \theta(n^{log_b a})$，则$T(n) = \theta(n^{log_b a} lg\ n)$。
-3. 若对某个常数$\epsilon > 0$有$f(n) = \Omega(n^{log_b a+\epsilon})$，且对某个常数$c < 1$和所有足够大的$n$有$af(n/b) \leqslant cf(n)$，则$T(n) = \theta(f(n))$。
+1. If $f(n) = O(n^{log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \theta(n^{log_b a})$.
+2. If $f(n) = \theta(n^{log_b a})$, then $T(n) = \theta(n^{log_b a} lg\ n)$.
+3. If $f(n) = \Omega(n^{log_b a+\epsilon})$ for some constant $\epsilon > 0$, and if $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \theta(f(n))$.
 
 
 
-## 4.6 证明主定理
+## 4.6 Proof of the master theorem
 
-### 4.6.1 对b的幂证明主定理
+### 4.6.1 The proof for exact powers
 
-**引理4.2** 令$a \geqslant 1$和$b > 1$是常数，$f(n)$是一个定义在$b$的幂上的非负函数。$T(n)$是定义在$b$的幂上的递归式：
+**Lemma 4.2** Let $a \geq 1$ and $b > 1$ be constants, and let $f(n)$ be a nonnegative function defined on exact powers of $b$. Define $T(n)$ on exact powers of $b$ by the recurrence:
 $$
 T(n) = 
 \begin{cases}
-\theta(1) &若n=1 \\
-aT(n/b) + f(n) &若n=b^i \\
+\theta(1) &if\ n=1 \\
+aT(n/b) + f(n) &if\ n=b^i \\
 \end{cases}
 $$
-其中$i$是正整数。那么$T(n) = \theta(n^{log_b a} + \sum_{j=0}^{log_b n-1} a^j f(n/b^j))$。
+, where $i$ is a positive integer. Then:
+$$
+T(n) = \theta(n^{log_b a}) + \sum_{j=0}^{log_b n-1} a^j f(n/b^j)
+$$
 
-**证明** 
+**Proof**
 
 ![4_7](res/4_7.png)
 
-树的根节点的代价为$f(n)$，它有$a$个孩子节点，每个的代价为$f(n/b)$。每个孩子节点又有$a$个孩子，使得在深度为$2$的层次上有$a^2$个节点，每个的代价为$f(n/b^2)$。一般地，深度为$j$的层次上有$a^j$个节点，每个的代价为$f(n/b^j)$。每个叶节点的代价为$T(1) = \theta(1)$，深度为$log_b n$，因为$n/b ^ {log_b n} = 1$。树中共有$a^{log_b n} = n^{log_b a}$个叶节点。
+We use the recursion tree in Figure 4.7. The root of the tree has cost $f(n)$, and it has $a$ children, each with cost $f(n/b)$. (It is convenient to think of $a$ as being an integer, especially when visualizing the recursion tree, but the mathematics does not require it.) Each of these children has $a$ children has cost $f(n/b^2)$. In general, there are $a^j$ nodes at depth $j$, and each has cost $f(n/b^j)$. The cost of each leaf is $T(1) = \theta(1)$, and each leaf is at depth $log_b n$, since $n/b^{log_b n} = 1$. There are $a^{log_b n} = n^{log_b a}$ leaves in the tree.
 
-**引理4.3** 令$a \geqslant 1$和$b > 1$是常数，$f(n)$是一个定义在$b$的幂上的非负函数。$g(n)$是定义在$b$的幂上的函数：$g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j)$，对$b$的幂，$g(n)$有如下渐近界：
+**Lemma 4.3** Let $a \geq 1$ and $b > 1$ be constants, and let $f(n)$ be a nonnegative function defined on exact powers of $b$. A function $g(n)$ defined over exact powers of $b$ by:
+$$
+g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j)
+$$
+, has the following asymptotic bounds for exact powers of $b$:
 
-1. 若对某个常数$\epsilon > 0$有$f(n) = O(n^{log_b a - \epsilon})$，则$g(n) = O(n^{log_b a})$。
-1. 若$f(n) = \theta(n^{log_b a})$，则$g(n) = \theta(n^{log_b a} lg\ n)$。
-1. 若对某个常数$c < 1$和所有足够大的$n$有$af(n/b) \leqslant cf(n)$，则$g(n) = \theta((n))$。
+1. If $f(n) = O(n^{log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $g(n) = O(n^{log_b a})$.
+2. If $f(n) = \theta(n^{log_b a})$, then $g(n) = \theta(n^{log_b a} lg\ n)$.
+3. If $af(n/b) \leq cf(n)$ for some constant $c < 1$ and for all sufficiently large $n$, then $g(n) = \theta(f(n))$.
 
-**证明** 对情况1，我们有$f(n) = O(n^{log_b a - \epsilon})$，这意味着$f(n/b^j) = O((n / b^j)^{log_b a - \epsilon})$。代入公式$g(n) = \sum_{j=0}^{log_b n - 1} a^j f(n/b^j)$得$g(n) = O(\sum_{j=0}^{log_b n - 1} a^j (\frac{n}{b^j})^{log_b a - \epsilon})$，对于$O$符号内的和式，通过提取因子并化简来求它的界，得到一个递增的几何级数：
+**Proof** For case 1, we have $f(n) = O(n^{log_b a - \epsilon})$, which implies that $f(n/b^j) = O((n / b^j)^{log_b a - \epsilon})$. Substituting into equation $g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j)$ yields:
+$$
+g(n) = O\left(\sum_{j=0}^{log_b n - 1} a^j \left(\frac{n}{b^j}\right)^{log_b a - \epsilon}\right)
+$$
+, we bound the summation within the $O$-notation by factoring out terms and simplifying, which leaves an increasing geometric series:
 $$
 \begin{equation}\begin{split} 
-\sum_{j=0}^{log_b n-1} a^j (\frac{n}{b^j})^{log_b a - \epsilon} &= n^{log_b a - \epsilon} \sum_{j=0}^{log_b n-1}(\frac{ab^\epsilon}{b^{log_b a}})^j = n^{log_b a - \epsilon} \sum_{j=0}^{log_b n-1}(b^{\epsilon})^j \\
-&= n^{log_b a - \epsilon} (\frac{b \epsilon log_b n - 1}{b^e - 1}) = n^{log_b a - \epsilon}(\frac{n^\epsilon - 1}{b^\epsilon - 1})
+\sum_{j=0}^{log_b n-1} a^j \left(\frac{n}{b^j}\right)^{log_b a - \epsilon} &= n^{log_b a - \epsilon} \sum_{j=0}^{log_b n-1}\left(\frac{ab^\epsilon}{b^{log_b a}}\right)^j \\
+&= n^{log_b a - \epsilon} \sum_{j=0}^{log_b n-1}(b^{\epsilon})^j \\
+&= n^{log_b a - \epsilon} \left(\frac{b \epsilon log_b n - 1}{b^e - 1}\right) \\
+&= n^{log_b a - \epsilon} \left(\frac{n^\epsilon - 1}{b^\epsilon - 1}\right)
 \end{split}\end{equation}
 $$
-  由于情况2假定$f(n) = \theta(n^{log_b a})$，因此有$f(n/b^j) = \theta((n/b^j)^{log_b a})$，代入公式得$g(n) = \theta(\sum_{j=0}^{log_b n - 1} a^j (\frac{n}{b^j}) ^ {log_b a})$
+, Since $b$ and $\epsilon$ are constants, we can rewrite the last expression as $n^{log_b{a} - \epsilon} O(n^{\epsilon}) = O(n^{log_b{a}})$. Substituting this expression for the summation in the equation $g(n) = O\left(\sum_{j=0}^{log_b n - 1} a^j \left(\frac{n}{b^j}\right)^{log_b a - \epsilon}\right)$ yields $g(n) = O(n^{log_b{a}})$, thereby proving case 1.
 
-采用与情况1相同的方式，求出$\theta$符号内和式的界，但这次并未得到一个几何级数，而是发现和式的每一项都是相同的：$\sum_{j=0}^{log_b n - 1} a^j (\frac{n}{b^j}) ^ log_b a = n^{log_b a} \sum_{j=0}^{log_b n - 1}(\frac{a}{b^{log_b a}})^j = n^{log_b a} \sum_{j=0}^{log_b n - 1} 1 = n^{log_b a} log_b n$
+, Because case 2 assumes that $f(n) = \theta(n^{log_b a})$, we have that $f(n/b^j) = \theta((n/b^j)^{log_b a})$. Substituting into equation $g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j)$ yields:
+$$
+g(n) = \theta\left(\sum_{j=0}^{log_b n - 1} a^j \left(\frac{n}{b^j}\right) ^ {log_b a}\right)
+$$
+, We bound the summation within the $\theta$-notation as in case 1, but this time we do not obtain a geometric series. Instead, we discover that every term of the summation is the same:
+$$
+\begin{equation}\begin{split} 
+\sum_{j=0}^{log_b{n-1}} a^j \left(\frac{n}{b^j}\right)^{log_b {a}} &= n^{log_b{a}} \sum_{j=0}^{log_b{n-1}} \left(\frac{a}{b^{log_b{a}}}\right)^j \\
+&= n^{log_b{a}} \sum_{j=0}^{log_b{n-1}} 1 \\
+&= n^{log_b{a}} log_b{n}
+\end{split}\end{equation}
+$$
+, Substituting this expression for the summation in equation $g(n) = \theta\left(\sum_{j=0}^{log_b n - 1} a^j \left(\frac{n}{b^j}\right) ^ {log_b a}\right)$ yields:
+$$
+\begin{equation}\begin{split} 
+g(n) &= \theta(n^{log_b{a}} log_b{n}) \\
+&= \theta(n^{log_b{a}} lg{n})
+\end{split}\end{equation}
+$$
+, proving case 2. We prove case 3 similarly. Since $f(n)$ appears in the definition $g(n) = \sum_{j=0}^{log_b n-1} a^j f(n/b^j)$ of $g(n)$ and all terms of $g(n)$ are nonnegative, we can conclude that $g(n) = \Omega(f(n))$ for exact powers of $b$. We assume in the statement of the lemma that $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$. We rewrite this assumption as $f(n/b) \leq (c/a)f(n)$ and iterate $j$ times, yielding $f(n/b^j) \leq (c/a)^j f(n)$ or, equivalently, $a^j f(n/b^j) \leq c^j f(n)$, where are assume that the values we iterate on are sufficiently large. Since the last, and smallest, such value is $n/b^{j - 1}$, it is enough to assume that $n/b^{j - 1}$ is sufficiently large.
 
-用这个表达式替换公式$g(n) = \theta(\sum_{j=0}^{log_b n - 1} a^j (\frac{n}{b^j}) ^ {log_b a})$中的和式，得到：$g(n) = \theta(n^{log_b a log_b n}) = \theta(n^{log_b a} lg\ n)$。情况2得证。
-
-  情况3的证明类似。由于$f(n)$出现在定义$g(n) = \sum_{j=0}^{log_b n - 1} a^j f(n/b^j)$中，且$g(n)$的所有项都是非负的，因此可以得出结论：对$b$的幂，$g(n) = \Omega(f(n))$。假定在这个引理中，对某个常数$c < 1$和所有足够大的$n$有$af(n/b) \leqslant cf(n)$。将这个假设改写为$f(n/b) \leqslant (c/a)f(n)$并迭代$j$次，得到$f(n/b^j) \leqslant (c/a)^j f(n)$，或等价地，$a^j f(n/b^j) \leqslant c^j f(n)$，其中假设进行迭代的值足够大。由于最后一个，也就是最小的值为$n/b^{j-1}$，因此假定$n/b^{j-1}$足够大就够了。
-
-**引理4.4** 令$a \geqslant 1$和$b > 1$是常数，$f(n)$是一个定义在$b$的幂上的非负函数。$T(n)$是定义在$b$的幂上的递归式：
+**Lemma 4.4** Let $a \geq 1$ and $b > 1$ be constants, and let $f(n)$ be a nonnegative function defined on exact powers of $b$. Define $T(n)$ on exact powers of $b$ by the recurrence:
 $$
 T(n) = 
 \begin{cases}
-\theta(1) &若n=1 \\
-aT(n/b) + f(n) &若n=b^i \\
+\theta(1) &if\ n=1 \\
+aT(n/b) + f(n) &if\ n=b^i \\
 \end{cases}
 $$
-其中$i$是正整数。那么对$b$的幂，$T(n)$有如下渐近界：
+, where $i$ is a positive integer. Then $T(n)$ has the following asymptotic bounds for exact powers of $b$:
 
-1. 若对某个常数$\epsilon > 0$有$f(n) = O(n^{log_b a - \epsilon})$，则$T(n) = \theta(n^{log_b a})$。
-2. 若$f(n) = \theta(n^{log_b a})$，则$T(n) = \theta(n^{log_b a log\ n})$。
-3. 若对某个常数$\epsilon > 0$，有$f(n) = \Omega(n^{log_b a + \epsilon})$，并且对某个常数$c < 1$和所有足够大的$n$，有$af(n/b) \leqslant cf(n)$，则$T(n) = \theta(f(n))$。
+1. If $f(n) = O(n^{log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \theta(n^{log_b a})$.
+2. If $f(n) = \theta(n^{log_b a})$, then $T(n) = \theta(n^{log_b{a}} lg\ {n})$.
+3. If $f(n) = \Omega(n^{log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \theta(f(n))$.
 
-**证明**  我们有：$T(n) = \theta(n^{log_b a}) + O(n^{log_b a}) = \theta(n^{log_b a})$，
+**Proof** We use the bounds in Lemma 4.3 to evaluate the summation from Lemma 4.2 For case 1, we have:
+$$
+\begin{equation}\begin{split} 
+T(n) &= \theta(n^{log_b a}) + O(n^{log_b a}) \\
+&= \theta(n^{log_b a})
+\end{split}\end{equation}
+$$
+, and for case 2,
+$$
+\begin{equation}\begin{split} 
+T(n) &= \theta(n^{log_b{a}}) + \theta(n^{log_b{a}} lg\ {n}) \\
+&= \theta(n^{log_b{a}} lg\ n)
+\end{split}\end{equation}
+$$
+, For case 3,
+$$
+\begin{equation}\begin{split} 
+T(n) &= \theta(n^{log_b{a}}) + \theta(f(n)) \\
+&= \theta(f(n))
+\end{split}\end{equation}
+$$
+, because $f(n) = \Omega(n^{log_b a + \epsilon})$.
 
-对于情况2：$T(n) = \theta(n^{log_b a}) + \theta(n^{log_b\ a lg\ n}) = \theta(n^{log_b a lg\ n})$，
 
-对于情况3：$T(n) = \theta(n^{log_b a}) + \theta(f(n)) = \theta(f(n))$，
 
-因为$f(n) = \Omega(n^{log_b a + \epsilon})$。
-
-### 4.6.2 向下取整和向上取整
+### 4.6.2 Floors and ceilings
 
 ![4_8](res/4_8.png)
 
-$T(n) = \theta(n^{log_b a}) + \sum_{j=0}^{\lfloor log_b n \rfloor - 1} a^j f(n_j)$
-
-$g(n) = \sum_{j=0}^{\lfloor log_b n \rfloor - 1} a^j f(n_j)$
-$$
-\begin{equation}\begin{split} 
-f(n_j) 
-&\leqslant c(\frac{n}{b^j} + \frac{b}{b-1})^{log_b a} = c(\frac{n}{b^j}(1 + \frac{b^j}{n} \cdot \frac{b}{b-1}))^{log_b a} \\
-&= c(\frac{n log_b a}{a^j})(1 + (\frac{b^j}{n} \cdot \frac{b}{b-1})) ^ log_b a \\
-&\leqslant c(\frac{n log_b a}{a^j})(1 + \frac{b}{b - 1})^{log_b a} = O(\frac{n^{log_b a}}{a^j})
-\end{split}\end{equation}
-$$
-因为$c(1+b/(b-1))^{log_b a}$是常量。
+TODO
 
 
 

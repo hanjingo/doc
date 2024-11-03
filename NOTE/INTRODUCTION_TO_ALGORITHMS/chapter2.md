@@ -1,12 +1,14 @@
-# 第二章 算法基础
+[中文版](chapter2_zh.md) | English
+
+# 2 Getting Started
 
 
 
-## 2.1 插入排序
+## 2.1 Insertion sort
 
-输入：$n$个数$(a_1, a_2, ..., a_n)$。
+Input: S sequence of $n$ numbers $(a_1, a_2, ..., a_n)$.
 
-输出：输入序列的一个排列（即重新排序）$(a_1', a_2', ..., a_n')$，使得$a_1' \leqslant a_2' \leqslant ... \leqslant a_n'$。
+Output: A permutation (reordering) $(a_1', a_2', ..., a_n')$ of the input sequence such that $a_1' \leq a_2' \leq ... \leq a_n'$.
 
 ```c++
 INSERTION-SORT(A)
@@ -22,84 +24,80 @@ for j = 2 to A.length
 
 ![2_2](res/2_2.png)
 
-循环不变式主要用于帮助我们理解算法的正确性，其具有一下三条性质：
+We use loop invariants to help us understand why an algorithm is correct. We must show three things about a loop invariant:
 
-- `初始化:` 循环的第一次迭代之前，它为真。
-- `保持:` 如果循环的某次迭代之前它为真，那么下次迭代之前它仍为真。
-- `终止:` 在循环终止时，不变式为我们提供一个有用的性质，该性质有助于证明算法是正确的
-
-
+- Initialization: It is true prior to the first iteration of the loop.
+- Maintenance: If it is true before an iteration of the loop, it remains true before the next iteration.
+- Termination: When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.
 
 
-## 2.2 分析算法
 
-`算法分析` 即指对一个算法所需要的资源进行预测。
+## 2.2 Analyzing algorithms
 
-**术语**
+`Analyzing` an algorithm has come to mean predicting the resources that the algorithm requires.
 
-`运行时间` 执行的基本操作数或步数。
+The `running time` of an algorithm on a particular input is the number of primitive operations or "steps" executed.
 
-`输入规模`
+**INSERTION-SORT presenting**
 
-**INSERTION-SORT算法分析**
+To compute $T(n)$, the running time of INSERTION-SORT on an input of $n$ values, we sum the products of the cost and times columns, obtaining:
 
-计算在具有$n$个值的输入上INSERTION-SORT的运行时间$T[n]$，我们将代价与次数列对应元素之积求和，得到：$T(n) = C_1n + c_2(n - 1) + c_4(n - 1) + C_5\sum_{j=2}^{n}t_j + c_6\sum_{j=2}^{n}(t_j - 1) + c_7\sum_{j=2}^{n}(t_j - 1) + C_8(n - 1)$
+$T(n) = c_1n + c_2(n - 1) + c_4(n - 1) + C_5\sum_{j=2}^{n}t_j + c_6\sum_{j=2}^{n}(t_j - 1) + c_7\sum_{j=2}^{n}(t_j - 1) + C_8(n - 1)$
 
-- 最佳情况：输入数组已经提前正向排序。这时，对每个$j=2, 3, ..., n$，我们发现在第5行，当$i$取其初值$j - 1$时，有$A[i] \leqslant key$。从而对$j = 2, 3, ..., n$有$t_j = 1$，该最佳情况的运行时间为：
+- The best case: occurs if the array is already sorted. For each $j=2, 3, ..., n$, we then find that $A[i] \leqslant key$ in line 5 when $i$ has it's initial value of $j - 1$. Thus $t_j = 1$ for $j = 2, 3, ..., n$, and the best-case running time is:
   $$
   \begin{equation}\begin{split} 
-  T(n) &= C_1n + c_2(n-1) + C_4(n-1) + c_5(n-1) + c_8(n-1) \\
+  T(n) &= c_1n + c_2(n-1) + c_4(n-1) + c_5(n-1) + c_8(n-1) \\
   &= (c_1 + c_2 + C_4 + c_5 + c_8)n - (c_2 + c_4 + c_5 + c_8)
   \end{split}\end{equation}
   $$
-  直接把该运行时间表示为$an+b$，其中$a, b$为常量，所以它是$n$的线性函数。
+  we can express this running time as $an+b$ for constants $a$ and $b$ that depend on the statement costs $c_i$; it is thus a `linear function` of $n$.
 
-- 最坏情况：输入数组已经提前反向排序。这时，我们必须将每个元素$A[j]$与整个已排序子数组$A[1..j-1]$中的每个元素进行比较，所以对$j=2, 3, ..., n$，有$t_j = j$。注意到：
-
-  $\sum_{j=2}^{n}j = \frac{n(n+1)}{2} - 1$和$\sum_{j=2}^{n}(j-1) = \frac{n(n-1)}{2}$。在最坏情况下，INSORTION-SORT的运行时间为：
+- The worst case: the array is in reverse sorted order. We must compare each element $A[j]$ with each element in the entire sorted subarry $A[1..j-1]$, and so $t_j = j$ for $j=2, 3, ..., n$. Noting that: $\sum_{j=2}^{n}j = \frac{n(n+1)}{2} - 1$ and $\sum_{j=2}^{n}(j-1) = \frac{n(n-1)}{2}$, we find that in the worst case, the running time of INSERTION-SORT is:
   $$
   \begin{equation}\begin{split} 
   T(n) &= c_1n + c_2(n - 1) + c_4(n - 1) + c_5(\frac{n(n+1)}{2} - 1) + c_6(\frac{n(n-1)}{2}) + c_7(\frac{n(n-1)}{2}) + c_8(n-1) \\
   &= (\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2})n^2 + (c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8)n - (c_2 + c_4 + c_5 + c_8)
   \end{split}\end{equation}
   $$
-  直接把该运行时间表示为$an^2 + bn + c$，其中常量$a, b, c$依赖于语句代价$c_i$。因此它是$n$的二次函数。
+  We can express this worst-case running time as $an^2 + bn + c$ for constants $a, b$ and $c$ that again depend on the statement costs $c_i$; it is thus a `quadratic function` of $n$.
 
-对于一个问题的算法分析，往往只需要集中于求最坏情况运行时间：
+For the remainder of this book, though, we shall usually concentrate on finding only the `worst-case running time`, that is, the longest running time for any input of size $n$. We give three reasons for this orientation:
 
-- 一个算法的最坏情况运行时间给出了任何输入的运行时间的一个上界。知道了这个界，就能确保该算法绝不需要更长的时间。
-- 对于某些算法，最坏情况经常出现。
-- 平均情况往往与最坏情况大致一样差。
+- The worst-case running time of an algorithm gives us an upper bound on the running time for any input. Knowing it provides a guarantee that the algorithm will never take any longer.
+- For some algorithms, the worst case occurs fairly often.
+- The "average case" is often roughly as bad as the worst case.
 
 
 
-## 2.3 设计算法
+## 2.3 Designing algorithms
 
-### 2.3.1 分治法
+### 2.3.1 The divide-and-conquer approach
 
-分治法：将原问题分解为几个规模较小但类似于原问题的子问题，递归地求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
+`divide-and-conquer` approach: they break the problem into several subproblems that are similar to the original problem but smaller in size, solve the subproblems recursively, and then combine these solutions to create a solution to the original problem.
 
-分治模式再每层递归时有以下步骤：
+The divide-and-conquer paradigm involves three steps at each level of the recursion:
 
-1. **分解**原问题为若干子问题，这些子问题是原问题的规模较小的实例。
-2. **解决**这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解。
-3. **合并**这些子问题的解成原问题的解。
+1. **Divide** the problem into a number of subproblems that are smaller instances of teh same problem
+2. **Conquer** the subproblems by solving them recursively. If the subproblem sizes are small enough, however, just solve teh subproblems in a straightforward manner.
+3. **Combine** the solutions to the subproblems into the solution for the original problem.
 
-例：
+For example:
 
 ![2_4](res/2_4.png)
 
-### 2.3.2 分析分治算法
+*Figure 2.4 The operation of merge sort on the array $A = (5, 2, 4, 7, 1, 3, 2, 6)$. The lenghts of the sorted sequences being merged increase as teh algorithm progresses from bottom to top.*
 
-我们假设$T(n)$是规模为$n$的一个问题的运行时间。若问题规模足够小，如对某个常量$c, n \leqslant c$，则直接求解需要常量时间，我们将其写作$\theta(1)$。假设把原问题分解成$a$个子问题，每个子问题的规模是原问题的$1/b$。（对归并排序，$a$和$b$都为2，然而，我们将看到在许多分治算法中，$a \neq b$。）为了求解一个规模为$n/b$的子问题，需要$T(n/b)$的时间，所以需要$aT(n/b)$的时间来求解$a$个子问题。如果分解问题成子问题需要时间$D(n)$，合并子问题的解成原问题的解需要时间$C(n)$，那么得到递归式：
+### 2.3.2 Analyzing divide-and-conquer algorithms
+
+We let $T(n)$ be the running time on a problem of size $n$. If the problem size is small enough, say $n \leq c$ for some constant $c$, the straightforward solution takes constant time, which we write as $\theta(1)$. Suppose that our division of the problem yields $a$ subproblems, each of which is $1/b$ the size of teh original. (For merge sort, both $a$ and $b$ are 2, but we shall see many divide-and-conquer algorithms in which $a \neq b$.) It takes time $T(n/b)$ to solve one subproblem of size $n/b$, and so it takes time $aT(n/b)$ to solve $a$ of them. If we take $D(n)$ time to divide the problem into subproblems and $C(n)$ time to combine the solutions to the subproblems into the solution to the original problem, we get the recurrence:
 $$
 T(n) =
 \begin{cases}
-\theta(1) & 若 n \leqslant c \\
-aT(n/b) + D(n) + C(n) & 其它
+\theta(1) & \text{if n} \leqslant c \\
+aT(n/b) + D(n) + C(n) & \text{otherwise}
 \end{cases}
 $$
-例，求解递归式：
+Resulting recursion tree, For Example:
 
 ![2_5](res/2_5.png)
-

@@ -155,7 +155,7 @@ T(n) =
 aT(n/b) + f(n) &若n=b^i \\
 \end{cases}
 $$
-其中$i$是正整数。那么$T(n) = \theta(n^{log_b a} + \sum_{j=0}^{log_b n-1} a^j f(n/b^j))$。
+其中$i$是正整数。那么$T(n) = \theta(n^{log_b a}) + \sum_{j=0}^{log_b n-1} a^j f(n/b^j)$。
 
 **证明** 
 
@@ -167,7 +167,7 @@ $$
 
 1. 若对某个常数$\epsilon > 0$有$f(n) = O(n^{log_b a - \epsilon})$，则$g(n) = O(n^{log_b a})$。
 1. 若$f(n) = \theta(n^{log_b a})$，则$g(n) = \theta(n^{log_b a} lg\ n)$。
-1. 若对某个常数$c < 1$和所有足够大的$n$有$af(n/b) \leqslant cf(n)$，则$g(n) = \theta((n))$。
+1. 若对某个常数$c < 1$和所有足够大的$n$有$af(n/b) \leqslant cf(n)$，则$g(n) = \theta(f(n))$。
 
 **证明** 对情况1，我们有$f(n) = O(n^{log_b a - \epsilon})$，这意味着$f(n/b^j) = O((n / b^j)^{log_b a - \epsilon})$。代入公式$g(n) = \sum_{j=0}^{log_b n - 1} a^j f(n/b^j)$得$g(n) = O(\sum_{j=0}^{log_b n - 1} a^j (\frac{n}{b^j})^{log_b a - \epsilon})$，对于$O$符号内的和式，通过提取因子并化简来求它的界，得到一个递增的几何级数：
 $$

@@ -32,7 +32,6 @@ r_C = yr_p + (1 - y)r_f
 $$
 , taking the expectation of this portfolio's rate of return:
 $$
-
 \begin{equation}\begin{split}
 E(r_C) &= yE(r_P) + (1 - y)r_f \\
 &= r_f + y[E(r_P) - r_f] = 7 + y(15 - 7)
@@ -55,7 +54,17 @@ y^{*} = \frac{E(r_P) - r_f}{A\sigma_{P}^2}
 $$
 We call the capital allocation line provided by 1-monty T-bills and a broad index of common stocks the `capital market line` (CML). A passive strategy generates an investment opportunity set that is represented by the CML.
 
-Investing a fraction $y$ in the prospect and the remainder in the risk
+Investing a fraction $y$ in the prospect and the remainder in the risk-free asset provides a total rate of return of $1 + r + by$ with probability $p$, or $1 + r - ay$ with probability $q$. Because Kelly employs a log utility function, the expected utility of the prospect, per dollar of initial wealth, is:
+$$
+E[U(y)] = p\ ln(1 + r + yb) + q\ ln(1 + r - ay)
+$$
+, the investment that maximizes the expected utility has become known as the Kelly criterion (or Kelly formula). The criterion states that the fraction of total wealth invested in the risky prospect is independent of wealth and is given by:
+$$
+y = (1 + r)\left(\frac{p}{a} - \frac{q}{b}\right)
+$$
+, this will be the investor's asset allocation in each period.
+
+
 
 ## Vocabulary
 

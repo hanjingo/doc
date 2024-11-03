@@ -8,11 +8,11 @@ Zvi Bodie, Alex Kane, Alan J.Marcus, 10ED
 - [CHAPTER 4 Mutual Funds and Other Investment Companies](chapter4.md)
 - [CHAPTER 5 Risk, Return, and the Historical Record](chapter5.md)
 - [CHAPTER 6 Capital Allocation to Risky Assets](chapter6.md)
-- [CHAPTER 7 Optimal Risky Portfolios]
-- [CHAPTER 8 Index Models]
-- [CHAPTER 9 The Capital Asset Pricing Model]
-- [CHAPTER 10 Arbitrage Pricing Theory and Multifactor Models of Risk and Return]
-- [CHAPTER 11 The Efficient Market Hypothesis]
+- [CHAPTER 7 Optimal Risky Portfolios](chapter7.md)
+- [CHAPTER 8 Index Models](chapter8.md)
+- [CHAPTER 9 The Capital Asset Pricing Model](chapter9.md)
+- [CHAPTER 10 Arbitrage Pricing Theory and Multifactor Models of Risk and Return](chapter10.md)
+- [CHAPTER 11 The Efficient Market Hypothesis](chapter11.md)
 - [CHAPTER 12 Behavioral Finance and Technical Analysis]
 - [CHAPTER 13 Empirical Evidence on Security Returns]
 - [CHAPTER 14 Bond Prices and Yields]

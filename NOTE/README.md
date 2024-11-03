@@ -79,18 +79,19 @@ English | [中文版](README_zh.md)
 
 ### Other
 
-| Title                                                        | Edition | Author           | Abstract/Evaluate                                            |
-| ------------------------------------------------------------ | ------- | ---------------- | ------------------------------------------------------------ |
-| [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane . |                                                              |
-| [LITERATURE](LITERATURE/README.md)                           |         |                  | - [The Declaration of Independence](LITERATURE/the_declaration_of_independence.md) |
-| [Speech Collection](SPEECH_COLLECTION/README.md)             |         |                  |                                                              |
-| [The Constitution of the United States](THE_CONSTITUTION_OF_THE_UNITED_STATES/the_constitution_of_the_united_states.txt) |         |                  |                                                              |
-| [THE ELEMENTS OF STYLE](THE_ELEMENTS_OF_STYLE/README.md)     | 4ED     | E.B.WHITE        |                                                              |
+| Title                                                        | Edition | Author         | Abstract/Evaluate                                            |
+| ------------------------------------------------------------ | ------- | -------------- | ------------------------------------------------------------ |
+| [The Oxford Essential Guide to Writing](THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane |                                                              |
+| [LITERATURE](LITERATURE/README.md)                           |         |                | - [The Declaration of Independence](LITERATURE/the_declaration_of_independence.md) |
+| [Speech Collection](SPEECH_COLLECTION/README.md)             |         |                |                                                              |
+| [The Constitution of the United States](THE_CONSTITUTION_OF_THE_UNITED_STATES/the_constitution_of_the_united_states.txt) |         |                |                                                              |
+| [THE ELEMENTS OF STYLE](THE_ELEMENTS_OF_STYLE/README.md)     | 4ED     | E.B.WHITE      |                                                              |
 
 
 
 ## Reading
 
+- [Thinking Fast and Slow](THINKING_FAST_AND_SLOW/README.md)
 - [Investments](INVESTMENTS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
@@ -98,6 +99,7 @@ English | [中文版](README_zh.md)
 - [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)
+- [Large-Scale C++ Software Design](LARGE_SCALE_CPP_SOFTWARE_DESIGN/README.md)
 
 
 
