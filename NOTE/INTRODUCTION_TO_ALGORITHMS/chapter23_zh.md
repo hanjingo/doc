@@ -52,7 +52,9 @@ $$
 & return\ A
 \end{align}
 $$
-![23_4](res/23_4.png)
+![23_4a](res/23_4a.png)
+
+![23_4b](res/23_4b.png)
 
 **Prim算法**
 

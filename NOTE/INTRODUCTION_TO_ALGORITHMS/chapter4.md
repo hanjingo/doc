@@ -1,4 +1,8 @@
+[中文版](chapter4_zh.md) | English
+
 # 4 Divide-and-Conquer
+
+[TOC]
 
 
 
@@ -6,11 +10,11 @@
 
 There are three methods for solving recurrences-that is, for obtaining asymptotic "$\theta$" or "$O$" bounds on the solution:
 
-- In the `substitution method`, we guess a bound and then use mathematical induction to prove our guess correct.
+- In the **substitution method**, we guess a bound and then use mathematical induction to prove our guess correct.
 
 - The `recursion-tree method` converts the recurrence into a tree whose nodes represent the costs incurred at various levels of the recursion. We use techniques for bounding summations to solve the recurrence.
 
-- The `master method` provides bounds for recurrences of the form
+- The **master method** provides bounds for recurrences of the form
   $$
   T(n) = aT(n/b) + f(n)
   $$
@@ -27,7 +31,9 @@ T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + \theta(n) &if\ n>1
 \end{cases}
 $$
 
-## 4.1 The maximum-subarray problem
+
+
+## The maximum-subarray problem
 
 ![4_3](res/4_3.png)
 
@@ -87,7 +93,8 @@ T(n) =
 $$
 
 
-## 4.2 Strassen's algorithm for matrix multiplication
+
+## Strassen's algorithm for matrix multiplication
 
 If $A = (a_{ij})$ and $B = (b_{ij})$ are square $n \times n$ matrices, then in the product $C = A \cdot B$, we define the entry $C_{ij}$, for $i, j = 1, 2, ..., n$, by:
 $$
@@ -111,16 +118,17 @@ T(n) =
 $$
 
 
-## 4.3 The substitution method for solving recurrences
 
-The `substitution method` for solving recurrences comprises two steps:
+## The substitution method for solving recurrences
+
+The **substitution method** for solving recurrences comprises two steps:
 
 1. Guess the form of the solution.
 2. Use mathematical induction to find the constants and show that the solution works.
 
 
 
-## 4.4 The recursion-tree method for solving recurrences
+## The recursion-tree method for solving recurrences
 
 ![4_5](res/4_5.png)
 
@@ -136,7 +144,7 @@ $$
 
 
 
-## 4.5 The master method for solving recurrences
+## The master method for solving recurrences
 
 **Theorem 4.1 (Master theorem)** Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined on the nonnegative integers by the recurrence:
 $$
@@ -150,9 +158,9 @@ $$
 
 
 
-## 4.6 Proof of the master theorem
+## Proof of the master theorem
 
-### 4.6.1 The proof for exact powers
+### The proof for exact powers
 
 **Lemma 4.2** Let $a \geq 1$ and $b > 1$ be constants, and let $f(n)$ be a nonnegative function defined on exact powers of $b$. Define $T(n)$ on exact powers of $b$ by the recurrence:
 $$
@@ -256,13 +264,24 @@ T(n) &= \theta(n^{log_b{a}}) + \theta(f(n)) \\
 $$
 , because $f(n) = \Omega(n^{log_b a + \epsilon})$.
 
-
-
-### 4.6.2 Floors and ceilings
+### Floors and ceilings
 
 ![4_8](res/4_8.png)
 
-TODO
+$T(n) = \theta(n^{log_b a}) + \sum_{j=0}^{\lfloor log_b n \rfloor - 1} a^j f(n_j)$
+
+$g(n) = \sum_{j=0}^{\lfloor log_b n \rfloor - 1} a^j f(n_j)$
+$$
+\begin{equation}\begin{split} 
+f(n_j) 
+&\leqslant c(\frac{n}{b^j} + \frac{b}{b-1})^{log_b a} = c(\frac{n}{b^j}(1 + \frac{b^j}{n} \cdot \frac{b}{b-1}))^{log_b a} \\
+&= c(\frac{n log_b a}{a^j})(1 + (\frac{b^j}{n} \cdot \frac{b}{b-1})) ^ log_b a \\
+&\leqslant c(\frac{n log_b a}{a^j})(1 + \frac{b}{b - 1})^{log_b a} = O(\frac{n^{log_b a}}{a^j})
+\end{split}\end{equation}
+$$
+since $c(1+b/(b-1))^{log_b a}$ is a constant.
+
+
 
 
 

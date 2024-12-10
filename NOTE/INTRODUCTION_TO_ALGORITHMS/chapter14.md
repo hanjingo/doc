@@ -1,12 +1,16 @@
-# 第14章 数据结构的扩张
+[中文版](chapter14_zh.md) | English
+
+# 14 Augmenting Data Structures
+
+[TOC]
 
 
 
-## 14.1 动态顺序统计
+## Dynamic order statistics
 
 ![14_1](res/14_1.png)
 
-**查找具有给定秩的元素**
+**Retrieving an element with a given rank**
 $$
 \begin{align}
 & OS-SELECT(x, i) \\
@@ -18,9 +22,9 @@ $$
 & else\ return\ OS-SELECT(x.right, i - r)
 \end{align}
 $$
-对于$n$个元素的动态集合，OS-SELECT的运行时间为$O(lg\ n)$。
+The running time of $OS-SELECT$ is $O(lg\ n)$ for a dynamic set of $n$ elements.
 
-**确定一个元素的秩**
+**Determining the rank of an element**
 $$
 \begin{align}
 & OS-RANK(T, x) \\
@@ -32,44 +36,42 @@ $$
 & return r
 \end{align}
 $$
-**对子树规模的维护**
+**Maintaining subtree sizes**
 
 ![14_2](res/14_2.png)
 
 
 
-## 14.2 如何扩张数据结构
+## How to augment a data structure
 
-扩张一种数据结构可以分为4个步骤：
+We can break the process of augmenting a data structure into four steps:
 
-1. 选择一种基础数据结构。
-2. 确定基础数据结构中要维护的附加信息。
-3. 检验基础数据结构上的基本修改操作能否维护附加信息。
-4. 设计一些新操作。
+1. Choose an underlying data structure.
+2. Determine additional information to maintain in the underlying data structure.
+3. Verify that we can maintain the additional information for the basic modifying operations on the underlying data structure.
+4. Develop new operations.
 
-**对红黑树的扩张**
+**Augmenting red-black trees**
 
-**定理 14.1**（红黑树的扩张）设$f$是$n$个结点的红黑树$T$扩张的属性，且假设对任一结点$x$，$f$的值仅依赖于结点$x, x.left和x.right$的信息，还可能包括$x.left.f和x.right.f$。那么，我们可以在插入和删除操作期间对$T$的所有结点的$f$值进行维护，并且不影响这两个操作的$O(lg\ n)$渐近时间性能。
+**Theorem 14.1 (Augmenting a red-black tree)**: Let $f$ be an attribute that augments a red-black tree $T$ of $n$ nodes, and suppose that the value of $f$ for each node $x$ depends on only the information in nodes $x, x.left, and x.right$, possibly including $x.left.f$ and $x.right.f$. Then, we can maintain the values of $f$ in all nodes of $T$ during insertion and deletion without asymptotically affecting the $O(lg\ n)$ performance of these operations.
 
 
 
-## 14.3 区间树
+## Interval trees
 
-我们把一个区间$[t_1, t_2]$表示成一个对象$i$，其中属性$i.low = t_1$为**低端点（low endpoint）**，属性$i.high = t_2$为**高端点（high endpoint）**。我们称区间$i$和$i'$**重叠（overlap）**，如果$i \cap i' \neq \emptyset$，即如果$i.low \leqslant i'.high且i'.low \leqslant i.high$。
+We can represent an interval $[t_1, t_2]$ as an object $i$, with attributes $i.low = t_1$(the **low endpoint**) and $i.high = t_2$ (the **high endpoint**). We say that intervals $i$ and $i'$ **overlap** if $i \cap i' \neq \phi$, that is, if $i.low \leq i'.high$ and $i'.low \leq i.high$. As Figure 14.3 shows, any two intervals $i$ and $i'$ satisfy the **interval trichotomy**; that is, exactly one of the following three properties holds:
 
-任何两个区间$i$和$i'$满足**区间三分律（interval trichotomy，即下面三条性质之一成立）**：
-
-1. $i$和$i'$重叠。
-2. $i$在$i'$的左边（也就是$i.high < i'.low$）。
-3. $i$在$i'$的右边（也就是$i'.high < i.low$）。
+1. $i$ and $i'$ overlap,
+2. $i$ is to the left of $i'(i.e.,\ i.high < i'.low)$,
+3. $i$ is to the right of $i'(i.e.,\ i'.high < i.low)$.
 
 ![14_3](res/14_3.png)
 
-**区间树（interval tree）** 是一种对动态集合进行维护的红黑树，其中每个元素$x$都包含一个区间$x.int$。区间树支持下列操作：
+An **interval tree** is a red-black tree that maintains a dynamic set of elements, with each element $x$ containing an interval $x.int$. Interval trees support the following operations:
 
-- $INTERVAL-INSERT(T, x)$：将包含区间属性int的元素$x$插入到区间树$T$中。
-- $INTERVAL-DELETE(T, x)$：从区间树$T$中删除元素$x$。
-- $INTERVAL-SEARCH(T, i)$：返回一个指向区间树$T$中元素$x$的指针，使$x.int$与$i$重叠；若此元素不存在，则返回$T.nil$。
+- $INTERVAL-INSERT(T, x)$ adds the element $x$, whose $int$ attribute is assumed to contain an interval, to the interval tree $T$.
+- $INTERVAL-DELETE(T, x)$ removes the element $x$ from the interval tree $T$.
+- $INTERVAL-SEARCH(T, i)$ returns a pointer to an element $x$ in the interval tree $T$ such that $x.int$ overlaps interval $i$, or a pointer to the sentinel $T.nil$ if no such element is in the set.
 
 ![14_4](res/14_4.png)
 $$
@@ -83,6 +85,6 @@ $$
 & return\ x
 \end{align}
 $$
-**定理 14.2** $INTERVAL-SEARCH(T, i)$的任意一次执行，或者返回一个其区间与$i$重叠的结点，或者返回$T.nil$，此时树$T$中没有任何结点的区间与$i$重叠。
+**Theorem 14.2** Any execution of $INTERVAL-SEARCH(T, i)$ either returns a node whose interval overlaps $i$, or it returns $T.nil$ and the tree $T$ contains no node whose interval overlaps $i$.
 
 ![14_5](res/14_5.png)

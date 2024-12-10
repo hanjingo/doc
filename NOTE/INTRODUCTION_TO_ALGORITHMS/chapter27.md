@@ -1,15 +1,19 @@
-# 第27章 多线程算法
+[中文版](chapter27_zh.md) | English
+
+# 27 Multithreaded Algorithms
+
+[TOC]
 
 
 
-动态多线程模型具有如下重要优点：
+Our model for dynamic multithreading offers several important advantages:
 
-- 它是串行编程模型的一个简单扩展。
-- 它从理论上提供了一种基于“工作量”和"持续时间"概念的简洁方式来量化并行性。
-- 许多涉及嵌套并行的多线程算法都比较自然地服从分治模式。
-- 该模型符合并行计算发展的实际情况。
+- It is a simple extension of our serial programming model.
+- It provides a theoretically clean way to quantify parallelism based on the notions of "work" and "span".
+- Many multithreaded algorithms involving nested parallelism follow naturally from the divide-and-conquer paradigm.
+- The model is faithful to how parallel-computing practice is evolving.
 
-## 27.1 动态多线程基础
+## The basics of dynamic multithreading
 
 ![27_1](res/27_1.png)
 $$
@@ -23,35 +27,37 @@ $$
 & \qquad return\ x + y
 \end{align}
 $$
-**多线程执行的模型**
+**A model for multithreaded execution**
 
 ![27_2](res/27_2.png)
 
-**性能度量**
+**Performance measures**
 
-度量多线程算法理论效率的衡量标准：
+The work and span provide lower bounds on the running time $T_P$ of a multithreaded computation on $P$ processors:
 
-- 工作量（work）
-- 持续时间（span）
+- In one step, an ideal parallel computer with $P$ processors can do at most $P$ units of work, and thus in $T_P$ time, it can perform at most $PT_P$ work. Since the total work to do is $T_1$, we have $PT_P \geq T_1$. Dividing by $P$ yields the **work law**:
+  $$
+  T_P \geq T_1 / P
+  $$
 
-work和span为$P$个处理器的一个多线程计算提供了下界：
+- A $P$-processor ideal parallel computer cannot run any faster than a machine with an unlimited number of processors. Looked at another way, a machine with an unlimited number of processors can emulate a $P$-processor machine by using just $P$ of its processors. Thus, the **span law** follows:
+  $$
+  T_P \geq T_{\infty}
+  $$
 
-- 对于一个计算步，一台有$P$个处理器的理想并行计算机最多能做$P$个单位工作量，所以在$T_p$时间内最多能做$PT_p$的工作量。因为要做的总工作量是$T_1$，于是有$PT_p \geqslant T_1$。两边都除以$P$后，就得到**工作量定律（work law）**：$T_p \geqslant T_1 / P$。
-- 一台有$P$个处理器的理想并行计算机不可能快于一台有无限个处理器的机器。从另一种方式看，一台有无限个处理器的机器可以只使用其中的$P$个处理器来模拟一台有$P$个处理器的计算机。因此，得到下面的**持续时间定律（span law）**：$T_p \geqslant T_{\infty}$。
+**Scheduling**
 
-**调度**
+**Theorem 27.1** On an ideal parallel computer with $P$ processors, a greedy scheduler executes a multithreaded computation with work $T_1$ and span $T_{\infty}$ in time: $T_p \leq T_1 / P + T_{\infty}$.
 
-**定理 27.1** 在有$P$个处理器的理想计算机上，贪心调度器执行一个工作量为$T_1$和持续时间为$T_{\infty}$的多线程计算的运行时间为：$T_p \leqslant T_1 / P + T_{\infty}$。
+**Corollary 27.2** The running time $T_P$ of any multithreaded computation scheduled by a greedy scheduler on an ideal parallel computer with $P$ processors is within a factor of 2 of optimal.
 
-**推论 27.2** 对于一台有$P$个处理器的理想并行计算机，使用贪心调度器调度的任何多线程计算的运行时间$T_p$都在最优时间的2倍以内。
+**Corollary 27.3** Let $T_P$ be the running time of a multithreaded computation produced by a greedy scheduler on an ideal parallel computer with $P$ processors, and let $T_1$ and $T_{\infty}$ be the work and span of the computation, respectively. Then, if $P \ll (T_1 / T_{\infty})$, we have $T_p \approx T_1 / P$, or equivalently, a speedup of approximately $P$.
 
-**推论 27.3** 设$T_p$是一个贪心调度器在$P$个处理器的理想并行计算机上调度多线程计算所产生的运行时间，$T_1$和$T_{\infty}$分别是计算的工作量和持续时间。如果$P \ll (T_1 / T_{\infty})$，则有$T_p \approx T_1 / P$，或等价地，一个接近$P$的加速比。
-
-**多线程算法的分析**
+**Analyzing multithreaded algorithms**
 
 ![27_3](res/27_3.png)
 
-**并行循环**
+**Parallel loops**
 $$
 \begin{align}
 & MAT-VEC(A, x) \\
@@ -67,9 +73,9 @@ $$
 $$
 ![27_4](res/27_4.png)
 
-对于一个有$n$次迭代且第$i$次迭代的持续时间是$iter_{\infty}(i)$的并行循环，整个持续时间是：$T_{\infty}(n) = \theta(lgn) + max_{1 \leqslant i \leqslant n} iter_{\infty}(i)$。
+Since the depth of recursive calling is logarithmic in the number of iterations, for a parallel loop with $n$ iterations in which the $i$th iteration has span $iter_{\infty}(i)$, the span is: $T_{\infty}(n) = \theta(lgn) + max_{1 \leq i \leq n} iter_{\infty}(i)$.
 
-**竞争条件**
+**Race conditions**
 
 ![27_5](res/27_5.png)
 $$
@@ -87,9 +93,10 @@ $$
 $$
 
 
-## 27.2 多线程矩阵乘法
 
-**矩阵乘法的多线程算法**
+## Multithreaded matrix multiplication
+
+**Multithreaded matrix multiplication**
 $$
 \begin{align}
 & P-SQUARE-MATRIX-MULTIPLY(A, B) \\
@@ -103,7 +110,7 @@ $$
 & return\ C
 \end{align}
 $$
-**矩阵乘法的分治多线程算法**
+**A divide-and-conquer multithreaded algorithm for matrix multiplication**
 $$
 \begin{align}
 & P-MATRIX-MULTIPLY-RECURSIVE(C, A, B) \\
@@ -126,11 +133,9 @@ $$
 & \qquad \qquad c_{ij} = c_{ij} + t_{ij}
 \end{align}
 $$
-**多线程Strassen算法**
 
 
-
-## 27.3 多线程归并排序
+## Multithreaded merge sort
 
 $$
 \begin{align}
@@ -146,9 +151,7 @@ $$
 
 ![27_6](res/27_6.png)
 
-**多线程归并的分析**
-
-**多线程归并排序**
+**Multithreaded merge sort**
 $$
 \begin{align}
 & P-MERGE-SORT(A, p, r, B, s) \\
@@ -164,5 +167,3 @@ $$
 & \qquad P-MERGE(T, 1, q', q' + 1, n, B, s)
 \end{align}
 $$
-**多线程归并排序分析**
-

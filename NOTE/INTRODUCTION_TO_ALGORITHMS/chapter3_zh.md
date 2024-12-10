@@ -60,16 +60,16 @@ f(n) = \Omega(f(n))
 $$
 **对称性**
 $$
-f(n) = \theta(g(n))当且仅当g(n)=\theta(f(n))
+f(n) = \theta(g(n)) \text{ 当且仅当 } g(n)=\theta(f(n))
 $$
 **转置对称性**
 $$
-f(n) = O(g(n))当且仅当g(n)=\Omega(f(n)) \\
-f(n) = o(g(n))当且仅当g(n)=\omega(f(n))
+f(n) = O(g(n)) \text{ 当且仅当 } g(n)=\Omega(f(n)) \\
+f(n) = o(g(n)) \text{ 当且仅当 } g(n)=\omega(f(n))
 $$
 **三分性**
 
-对任意两个实数$a$和$b$，下列三种情况恰有一种必须成立：$a < b$, $a = b$, 或$a > b$。
+对任意两个实数$a$和$b$，下列三种情况恰有一种必须成立：$a < b$, $a = b$, 或$a > b$。 
 
 
 
@@ -226,5 +226,4 @@ F_1 &= 1 \\
 F_i &= F_{i-1} + F_{i-2}, \quad i \geqslant 2
 \end{split}\end{equation}
 $$
-
 

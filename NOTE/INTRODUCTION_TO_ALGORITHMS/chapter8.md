@@ -1,28 +1,32 @@
-# 第8章 线性时间排序
+[中文版](chapter8_zh.md) | English
+
+# 8 Sorting in linear Time
+
+[TOC]
 
 
 
-## 8.1 排序算法的下界
-
-**决策树模型**
-
-决策树是一棵完全二叉树，它可以表示在给定输入规模情况下，某一特定排序算法对所有元素的比较操作。
+## Lower bounds for sorting
 
 ![8_1](res/8_1.png)
 
-**最坏情况的下界**
+**The decision-tree model**
 
-当决策树中每种排列都是以可达的叶结点的形式出现时，该决策树高度的下界也就是比较排序算法运行时间的下界。
+A **decision tree** is a full binary tree that represents the comparisons between elements that are performed by a particular sorting algorithm operating on an input of a given size.
 
-**定理 8.1** 在最坏情况下，任何比较排序算法都需要做$\Omega (nlg\ n)$次比较。
+**A lower bound for the worst-case**
 
-**推论 8.2** 堆排序和归并排序都是渐近最优的比较排序算法。
+A lower bound on the heights of all decision trees in which each permutation appears as a reachable leaf is therefore a lower bound on the running time of any comparison sort algorithm.
+
+**Theorem 8.1** Any comparison sort algorithm requires $\Omega(n lg\ n)$ comparisons in the worst case.
+
+**Corollary 8.2** Heapsort and merge sort are asymptotically optimal comparison sorts.
 
 
 
-## 8.2 计数排序
+## Counting sort
 
-**计数排序** 假设$n$个输入元素中的每一个都是在$0$到$k$区间内的一个整数，其中$k$为某个整数。当$k = O(n)$时，排序的运行时间为$\theta(n)$。
+**Counting sort** assumes that each of the $n$ input elements is an integer in the range $0$ to $k$, for some integer $k$. When $k = O(n)$, the sort runs in $\theta(n)$ time.
 
 ![8_2](res/8_2.png)
 $$
@@ -42,14 +46,14 @@ $$
 & \qquad C[A[j]] = C[A[j]] - 1
 \end{align}
 $$
-计数排序的一个重要性质就是它是**稳定的**，原因如下：
+An important property of counting sort is that it is **stable**: 
 
-1. 具有相同值得元素在输出数组中的相对次序与它们在输入数组中的相对次序相同。
-2. 计数排序经常会被用作基数排序算法得一个子过程。
+1. Numbers with the same value appear in the output array in the same order as they do in the input array.
+2. Counting sort is often used as a subroutine in radix sort.
 
 
 
-## 8.3 基数排序
+## Radix sort
 
 ![8_3](res/8_3.png)
 $$
@@ -59,15 +63,15 @@ $$
 & \qquad use\ a\ stable\ sort\ to\ sort\ array\ A\ on\ digit\ i
 \end{align}
 $$
-**引理 8.3** 给定$n$个$d$位数，其中每一个数位有$k$个可能的取值。如果RADIX-SORT使用得稳定排序方法耗时$\theta(n + k)$，那么它就可以在$\theta(d(n + k))$时间内将这些数排好序。
+**Lemma 8.3** Given $n$ d-digit numbers in which each digit can take on up to $k$ possible values, $RADIX-SORT$ correctly sorts these numbers in $\theta(d(n + k))$ time if the stable sort it uses takes $\theta(n + k)$ time.
 
-**引理 8.4** 给定一个$b$位数和任何正整数$r \leqslant b$，如果RADIX-SORT使用的稳定排序算法对数据取值区间是$0$到$k$得输入进行排序耗时$\theta(n + k)$，那么它就可以在$\theta((b/r)(n + 2^r))$时间内将这些数排好序。
+**Lemma 8.4** Given $n$ $b$-bit numbers and any positive integer $r \leq b$, $RADIX-SORT$ correctly sorts these numbers in $\theta((b/r)(n + 2^r))$ time if the stable sort it uses takes $\theta(n + k)$ time for inputs in the range $0$ to $k$.
 
 
 
-### 8.4 桶排序
+## Bucket sort
 
-桶排序将$[0, 1)$区间划分为$n$个相同大小的子区间，或称为**桶**。然后，将$n$个输入数分别放到各个桶中。
+Bucket sort divides the interval $[0, 1)$ into $n$ equal-sized subintervals, or **buckets**, and then distribute the $n$ input numbers into the buckets.
 
 ![8_4](res/8_4.png)
 $$
@@ -84,24 +88,26 @@ $$
 & concatenate\ the\ lists\ B[0], B[1], ..., B[n - 1]\ together\ in\ order
 \end{align}
 $$
-假设$n_i$是表示桶$B[i]$中元素个数得随机变量，因为插入排序得时间代价是平方阶得，所以桶排序的时间代价为：
+Let $n_i$ be the random variable denoting the number of elements placed in bucket $B[i]$. Since insertion sort runs in quadratic time, the running time of bucket sort is:
 $$
 T(n) = \theta(n) + \sum_{i = 0}^{n - 1}O(n_i ^ 2)
 $$
-对上式两边取期望，并利用期望的线性性质，有：
+, Taking expectations of both sides and using linearity of expectation, we have:
 $$
 \begin{equation}\begin{split} 
-E[T(n)] &= E[\theta(n) + \sum_{i = 0}^{n - 1}O(n_i ^ 2)] \\
+E[T(n)] &= E\left[\theta(n) + \sum_{i = 0}^{n - 1}O(n_i ^ 2)\right] \\
 &= \theta(n) + \sum_{i = 0}^{n - 1}E[O(n_i ^ 2)] \\
 &= \theta(n) + \sum_{i = 0}^{n - 1}O(E[n_i ^ 2])
 \end{split}\end{equation}
 $$
-为了计算$E[n_i ^ 2]$，我们展开平方项，并重新组合各项，得到：
+, To compute $E[n_i ^ 2]$, we expand the square and regroup terms:
 $$
 \begin{equation}\begin{split} 
-E[n_i ^ 2] &= E[(\sum_{j = 1}^{n} X_{ij})^2] = E[\sum_{j = 1}^{n} \sum_{k = 1}^{n} X_{ij} X_{ik}] = E[\sum_{j = 1}^{n} X_{ij}^2 + \sum_{1 \leqslant j \leqslant n} \sum_{1 \leqslant k \leqslant n, k \neq j}X_{ij} X_{ik}] \\
+E[n_i ^ 2] &= E[(\sum_{j = 1}^{n} X_{ij})^2] \\
+&= E[\sum_{j = 1}^{n} \sum_{k = 1}^{n} X_{ij} X_{ik}] \\
+&= E[\sum_{j = 1}^{n} X_{ij}^2 + \sum_{1 \leqslant j \leqslant n} \sum_{1 \leqslant k \leqslant n, k \neq j}X_{ij} X_{ik}] \\
 &= \sum_{j = 1}^{n}E[X_{ij}^2] + \sum_{1 \leqslant j \leqslant n} \sum_{1 \leqslant k \leqslant n, k \neq j} E[X_{ij} X_{ik}]
 \end{split}\end{equation}
 $$
-综上所得：桶排序的期望运行时间为$\theta(n) + n \cdot O(2 - 1/n) = \theta(n)$。
+, We conclude that the average-case running time for bucket sort is $\theta(n) + n \cdot O(2 - 1/n) = \theta(n)$.
 

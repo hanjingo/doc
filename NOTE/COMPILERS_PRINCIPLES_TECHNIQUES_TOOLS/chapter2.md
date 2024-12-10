@@ -1,98 +1,63 @@
-# 第二章 一个简单的语法制导翻译器
+# Chapter 2 A Simple Syntax-Directed Translator
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [2.1 引言](#21-引言)
-* [2.2 语法定义](#22-语法定义)
-    - [2.2.1 文法定义](#221-文法定义)
-    - [2.2.2 推导](#222-推导)
-    - [2.2.3 语法分析树](#223-语法分析树)
-    - [2.2.4 二义性](#224-二义性)
-    - [2.2.5 运算符的结合性](#225-运算符的结合性)
-    - [2.2.6 运算符的优先级](#226-运算符的优先级)
-    - [2.2.7 2.2节的练习](#227-22节的练习)
-* [2.3 语法制导翻译](#23-语法制导翻译)
-    - [2.3.1 后缀表示](#231-后缀表示)
-    - [2.3.2 综合属性](#232-综合属性)
-    - [2.3.3 简单语法制导定义](#233-简单语法制导定义)
-    - [2.3.4 树的遍历](#234-树的遍历)
-    - [2.3.5 翻译方案](#235-翻译方案)
-    - [2.3.6 2.3节的练习](#236-23节的练习)
-* [2.4 语法分析](#24-语法分析)
-    - [2.4.1 自顶向下分析方法](#241-自顶向下分析方法)
-    - [2.4.2 预测分析法](#242-预测分析法)
-    - [2.4.3 何时使用$\epsilon$产生式](#243-何时使用产生式)
-    - [2.4.4 设计一个预测分析器](#244-设计一个预测分析器)
-    - [2.4.5 左递归](#245-左递归)
-    - [2.4.6 2.4节的练习](#246-24节的练习)
-* [2.5 简单表达式的翻译器](#25-简单表达式的翻译器)
-    - [2.5.1 抽象语法和具体语法](#251-抽象语法和具体语法)
-
-<!-- vim-markdown-toc -->
-
-## 2.1 引言
-
-抽象语法树（abstract syntax tree）或语法树（syntax tree）：一颗表示源程序层次化语法结构的树。
+[TOC]
 
 
 
-## 2.2 语法定义
+## Introduction
 
-### 2.2.1 文法定义
-
-一个上下文无关文法（context-free grammar）由四个元素组成：
-
-1. 一个`终结符号`集合，它们有时也称为“词法单元”。终结符号是该文法所定义的语言的基本符号的集合。
-2. 一个`非终结符号`集合，它们有时也称为“语法变量”。每个非终结符号表示一个终结符号串的集合。
-3. 一个产生式集合，其中每个产生式包括一个称为`产生式头`或`左部`的非终结符号，一个箭头，和一个称为`产生式体`或`右部`的由终结符号及非终结符号组成的序列。
-4. 指定一个非终结符号为`开始`符号。
-
-### 2.2.2 推导
-
-根据文法推导符号串时，我们首先从开始符号出发，不断将某个非终结符号替换为该非终结符号的某个产生式的体。可以从开始符号推导得到的所有终结号串的集合称为该文法定义的`语言（language）`。
-
-### 2.2.3 语法分析树
-
-给定一个上下文无关文法，该文法的一颗`语法分析树（parse tree）`是具有以下性质的树：
-
-1. 根节点的标号为文法的开始符号。
-2. 每个叶子节点的标号为一个终结符号或$\$。
-3. 每个内部节点的标号为一个非终结符号。
-4. 如果非终结符号$A$是某个内部节点的标号，并且它的子节点的标号从左至右分别为$X_1, X_2, ..., X_n$，那么必然存在产生式$A \rightarrow X_1 X_2 \cdots X_n$，其中$X_1, X_2, \cdots, X_n$既可以是终结符号，也可以是非终结符号。
-
-### 2.2.4 二义性
-
-一个文法可能有多棵语法分析树能够生成同一个给定的终结符阿訇串。这样的文法称为具有`二义性（ambiguous）`。
-
-### 2.2.5 运算符的结合性
-
-### 2.2.6 运算符的优先级
-
-### 2.2.7 2.2节的练习
+`abstract syntax trees` or simply `syntax trees`, represent the hierarchical syntactic structure of the source program.
 
 
 
-## 2.3 语法制导翻译
+## Syntax Definition
 
-语法制导翻译是通过向一个文法的产生式附加一些规则或程序片段而得到的。
+### Definition of Grammars
 
-两个与语法制导翻译相关的概念：
+A `context-free grammar` has four components:
 
-- 属性（attribute）：属性表示与某个程序构造相关的任意的量。
-- （语法制导的）翻译方案（translation scheme）：翻译方案是一种将程序片段附加到一个文法的各个产生式上的表示法。
+1. A set of `terminal` symbols, sometimes referred to as "tokens". The terminals are the elementary symbols of the language defined by the grammar.
+2. A set of `nonterminals`, sometimes called "syntactic variables". Each nonterminal represents a set of strings of terminals, in a manner we shall describe.
+3. A set of `productions`, where each production consists of a nonterminal, called the `head` or `left side` of the production, an arrow, and a sequence of terminals and/or nonterminals, called the `body` or `right side` of teh production. The intuitive intent of a production is to specify one of the written forms of a construct; if the head nonterminal represents a construct, then the body represents a written form of the construct.
+4. A designation of one of the nonterminals as the `start` symbol.
 
-### 2.3.1 后缀表示
+### Derivations
 
-一个表达式$E$的后缀表示(postfix notation)可以按照下面的方式进行归纳定义：
+A grammar derives strings by beginning with the start symbol and repeatedly replacing a nonterminal by the body of a production for that nonterminal. The terminal strings that can be derived from the start symbol form the `language` defined by the grammar.
 
-1. 如果$E$是一个变量或常量，则$E$的后缀表示是$E$本身。
-2. 如果$E$是一个形如$E_1\ op\ E_2$的表达式，其中op是一个二目运算符，那么$E$的后缀表示是$E_1' E_2'2 op$，这里$E_1'$和$E_2'$分别是$E_1$和$E_2$的后缀表示。
-3. 如果$E$是一个形如（$E_1$）的被括号括起来的表达式，则$E$的后缀表示就是$E_1$的后缀表示。
+### Parse Trees
 
-### 2.3.2 综合属性
+Formally, given a context-free grammar, a `parse tree` according to the grammar is a tree with the following properties:
 
-属性在语法分析树节点N上的值是由N的子节点以及N本身的属性值确定的属性，那么这个属性就称为综合属性（synthesized attribute）;综合属性具有一个很好的性质：只需要对语法分析树进行一次自底向上的便利，就可以计算出属性的值。
+1. The root is labeled by the start symbol.
+2. Each leaf is labeled by a terminal or by $\epsilon$.
+3. Each interior node is labeled by a nonterminal.
+4. If $A$ is the nonterminal labeling some interior node and $X_1, X_2, ..., X_n$ are the labels of the children of that node from left to right, then there must be a production $A \rightarrow X_1X_2...X_n$. Here, $X_1, X_2, ..., X_n$ each stand for a symbol that is either a terminal or a nonterminal. As a special case, if $A \rightarrow \epsilon$ is a production, then a node labeled $A$ may have a single child labeled $\epsilon$.
+
+### Ambiguity
+
+A grammar can have more than one parse tree generating a given string of terminals. Such a grammar is said to be `ambiguous`.
+
+
+
+## Syntax-Directed Translation
+
+Syntax-directed translation is done by attaching rules or program fragments to productions in a grammar:
+
+- `Attributes`. An `attribute` is any quantity associated with a programming construct.
+- `(Syntax-directed) translation schemes`. A `translation scheme` is a notation for attaching program fragments to the productions of a grammar.`
+
+### Postfix Notation
+
+The `postfix notation` for an expression $E$ can be defined inductively as follows:
+
+1. If $E$ is a variable or constant, then the postfix notation for $E$ is $E$ itself.
+2. If $E$ is an expression of the form $E_1$ op $E_2$, where op is any binary operator, then the postfix notation for $E$ is $E_1'$ $E_2'$ op, where $E_1'$ and $E_2'$ are the postfix notations for $E_1$ and $E_2$, respectively.
+3. If $E$ is a parenthesized expression of the form $(E_1)$, then the postfix notation for $E$ is the same as the postfix notation for $E_1$.
+
+### Synthesized Attributes
+
+An attribute is said to be `synthesized` if its value at a parse-tree node $N$ is determined from attribute values at the child of $N$ and at $N$ itself. Synthesized attributes have the desirable property that they can be evaluated during a single bottom-up traversal of a parse tree.
 
 ### 2.3.3 简单语法制导定义
 

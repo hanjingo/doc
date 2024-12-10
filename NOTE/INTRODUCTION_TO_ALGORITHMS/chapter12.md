@@ -1,28 +1,32 @@
-# 第12章 二叉搜索树
+[中文版](chapter12_zh.md) | English
+
+# Binary Search Trees
+
+[TOC]
 
 
 
-## 12.1 什么是二叉搜索树
-
-**二叉搜索树性质** 设$x$是二叉搜索树中的一个结点。如果$y$是$x$左子树中的一个结点，那么$y.key \leqslant x.key$。如果$y$是$x$右子树中的一个结点，那么$y.key \geqslant x.key$。
+## What is a binary search tree?
 
 ![12_1](res/12_1.png)
 
-**中序遍历（inorder tree walk）** 输出的子树根的关键字位于其左子树的关键字值和右子树的关键字值之间。
+**binary-search-tree property:** Let $x$ be a node in a binary search tree. If $y$ is a node in the left subtree of $x$, then $y.key \leq x.key$. If $y$ is a node in the right subtree of $x$, then $y.key \geq x.key$.
 
-**先序遍历（preorder tree walk）** 输出的根的关键字在其左右子树的关键字值之前。
+**Theorem 12.1** If $x$ is the root of an $n$-node subtree, then the call $INORDER-TREE-WALK(x)$ takes $\theta(n)$ time.
 
-**后序遍历（postorder tree walk）** 输出的根的关键字在其左右子树的关键字值之后。
+The binary-search-tree property allows us to print out all the keys in a binary search tree in sorted order by a simple recursive algorithm, called an **inorder tree walk**.
 
-**定理 12.1** 如果$x$是一棵有$n$个结点子树的根，那么调用INORDER-TREE-WALK(x)需要$\theta(n)$时间。
+A **preorder tree walk** prints the root before the values in either subtree.
+
+A **postorder tree walk** prints the root after the values in its subtrees.
 
 
 
-## 12.2 查询二叉搜索树
+## Querying a binary search tree
 
-**查找**
+**Searching**
 
-递归模式查找：
+![12_2](res/12_2.png)
 $$
 \begin{align}
 & TREE-SEARCH(x, k) \\
@@ -34,7 +38,6 @@ $$
 \end{align}
 $$
 
-while模式查找：
 $$
 \begin{align}
 & ITERATIVE-TREE-SEARCH(x, k) \\
@@ -45,9 +48,7 @@ $$
 & return\ x
 \end{align}
 $$
-![12_2](res/12_2.png)
-
-**最大关键字元素和最小关键字元素**
+**Minimum and maximum**
 $$
 \begin{align}
 & TREE-MINIMUM(x) \\
@@ -66,7 +67,7 @@ $$
 \end{align}
 $$
 
-**后继和前驱**
+**Successor and predecessor**
 $$
 \begin{align}
 & TREE-SUCCESSOR(x) \\
@@ -79,13 +80,13 @@ $$
 & return\ y
 \end{align}
 $$
-**定理 12.2** 在一棵高度为$h$的二叉搜索树上，动态集合上的操作SEARCH, MINIMUM, MAXIMUM, SUCCESSOR和PREDECESSOR可以在$O(h)$时间内完成。
+**Theorem 12.2** We can implement the dynamic-set operations $SEARCH$, $MINIMUM$, $MAXIMUM$, $SUCCESSOR$, and $PREDECESSOR$ so that each one runs in $O(h)$ time on a binary search tree of height $h$.
 
 
 
-## 12.3 插入和删除
+## Insertion and deletion
 
-**插入**
+**Insertion**
 $$
 \begin{align}
 & TREE-INSERT(T, z) \\
@@ -106,7 +107,7 @@ $$
 $$
 ![12_3](res/12_3.png)
 
-**删除**
+**Deletion**
 $$
 \begin{align}
 & TRANSPLANT(T, u, v) \\
@@ -140,11 +141,10 @@ $$
 
 ![12_4](res/12_4.png)
 
-**定理 12.3** 在一棵高度为$h$的二叉搜索树上，实现动态集合操作INSERT和DELETE的运行时间均为$O(h)$。
+**Theorem 12.3** We can implement the dynamic-set operations $INSERT$ and $DELETE$ so that each one runs in $O(h)$ time on a binary search tree of height $h$.
 
 
 
-## 12.4 随机构建二叉搜索树
+## Randomly built binary search trees
 
-**定理 12.4** 一棵有$n$个不同关键字的随机构建二叉搜索树的期望高度为$O(lg\ n)$。
-
+**Theorem 12.4** The expected height of a randomly built binary search tree on $n$ distinct keys is $O(lg\ n)$.

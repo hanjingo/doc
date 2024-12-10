@@ -1,50 +1,53 @@
-# 第19章 斐波那契堆
+[中文版](chapter19_zh.md) | English
+
+# Fibonacci Heaps
+
+[TOC]
 
 
 
-斐波那契堆用途：
+A **mergeable heap** is any data structure that supports the following five operations, in which each element has a $key$:
 
-1. 支持一系列操作，这些操作构成了可合并堆。
+- $MAKE-HEAP()$ creates and returns a new heap containing no elements.
+- $INSERT(H, x)$ inserts element $x$, whose $key$ has already been filled in, into heap $H$.
+- $MINIMUM(H)$ returns a pointer to the element in heap $H$ whose key is minimum.
+- $EXTRACT-MIN(H)$ deletes the element from heap $H$ whose key is minimum, returning a pointer to the element.
+- $UNION(H_1, H_2)$ creates and returns a new heap that contains all the elements of heap $H_1$ and $H_2$. Heaps $H_1$ and $H_2$ are "destroyed" by this operations.
 
-   **可合并堆（mergeable heap）**是支持以下5种操作的一种数据结构，其中每个元素都有一个关键字：
+In addition to the mergeable-heap operations above, Fibonacci heaps also support the following two operations:
 
-   - $MAKE-HEAP()$：创建和返回一个新的不含任何元素的堆。
-   - $INSERT(H, x)$：将一个已填入关键字的元素$x$插入堆$H$中。
-   - $MINIMUM(H)$：返回一个指向堆$H$中具有最小关键字元素的指针。
-   - $EXTRACT-MIN(H)$：从堆$H$中删除最小关键字的元素，并返回一个指向该元素的指针。
-   - $UNION(H_1, H_2)$：创建并返回一个包含堆$H_1$和堆$H_2$中所有元素的新堆。堆$H_1$和堆$H_2$由这一操作“销毁”。
-
-2. 斐波那契堆的一些操作可以在常数摊还时间内完成，这使得这种数据结构非常适合于需要频繁调用这些操作的应用。
+- $DECREASE-KEY(H, x, k)$ assigns to element $x$ within heap $H$ the new key value $k$, which we assume to be no greater than its current key value.
+- $DELETE(H, x)$ deletes element $x$ from heap $H$.
 
 ![19_1](res/19_1.png)
 
 
 
-## 19.1 斐波那契堆结构
+## Structure of Fibonacci heaps
 
-一个**斐波那契堆**是一系列具有**最小堆序（min-heap ordered）**的有根树的集合。每棵树均遵循**最小堆性质（min-heap property）**：每个结点的关键字大于或等于它的父结点的关键字。
+A **Fibonacci heap** is a collection of rooted trees that are **min-heap ordered**. That is, each tree obeys the **min-heap property**: they key of a node is greater than or equal to the key of its parent.
 
 ![19_2](res/19_2.png)
 
-**势函数**
+**Potential function**
 
-对于一个给定的斐波那契堆$H$，用$t(H)$来表示$H$中根链表中树的数目，用$m(H)$来表示$H$中已标记的结点数目。定义斐波那契堆$H$的势函数$\Phi(H)$如下：$\Phi(H) = t(H) + 2m(H)$。
+For a given Fibonacci heap $H$, we indicate by $t(H)$ the number of trees in the root list of $H$ and by $m(H)$ the number of marked nodes in $H$. We then define the potential $\Phi(H)$ of Fibonacci heap $H$ by:
+$$
+\Phi(H) = t(H) + 2m(H)
+$$
 
-**最大度数**
 
+## Mergeable-heap operations
 
+**Creating a new Fibonacci heap**
 
-## 19.2 可合并堆操作
-
-**创建一个新的斐波那契堆**
-
-**插入一个结点**
+**Inserting a node**
 
 ![19_3](res/19_3.png)
 
-**寻找最小结点**
+**Finding the minimum node**
 
-**两个斐波那契堆的合并**
+**Uniting two Fibonacci heaps**
 $$
 \begin{align}
 & FIB-HEAP-UNION(H_1, H_2) \\
@@ -57,7 +60,7 @@ $$
 & return\ H
 \end{align}
 $$
-**抽取最小结点**
+**Extracting the minimum node**
 $$
 \begin{align}
 & FIB-HEAP-EXTRACT-MIN(H) \\
@@ -75,7 +78,9 @@ $$
 & return\ z
 \end{align}
 $$
-![19_4](res/19_4.png)
+![19_4a](res/19_4a.png)
+
+![19_4b](res/19_4b.png)
 $$
 \begin{align}
 & CONSOLIDATE(H) \\
@@ -116,9 +121,9 @@ $$
 
 
 
-## 19.3 关键字减值和删除一个结点
+## Decreasing a key an deleting a node
 
-**关键字减值**
+**Decreasing a key**
 $$
 \begin{align}
 & FIB-HEAP-DECREASE-KEY(H, x, k) \\
@@ -160,15 +165,15 @@ $$
 
 
 
-## 19.4 最大度数的界
+## Bounding the maximum degree
 
-**引理 19.1** 设$x$是斐波那契堆中的任意结点，并假定$x.degree=k$。设$y_1, y_2, ..., y_k$表示$x$的孩子，并以它们链入$x$的先后顺序排列，则$y_1 \cdot degree \geqslant 0$，且对于$i = 2, 3, ..., k$，有$y_i.degree \geqslant i - 2$。
+**Lemma 19.1** Let $x$ be any node in a Fibonacci heap, and suppose that $x.degree = k$. Let $y_1, y_2, ..., y_k$ denote the children of $x$ in the order in which they were linked to $x$, from the earliest to the latest. Then, $y_1.degree \geq 0$ and $y_i.degree \geq i - 2$ for $i = 2, 3, ..., k$.
 
-**引理 19.2** 对于所有的整数$k \geqslant 0$，$F_{k + 2} = 1 + \sum_{i = 0}^{k} F_i$。
+**Lemma 19.2** For all integers $k \geq 0$, $F_{k + 2} = 1 + \sum_{i = 0}^{k}F_i$.
 
-**引理 19.3** 对于所有的整数$k \geqslant 0$，斐波那契数的第$k + 2$个数满足$F_{k + 2} \geqslant \phi ^ k$。
+**Lemma 19.3** For all integers $k \geq 0$, the $(k + 2)$nd Fibonacci number satisfies $F_{k + 2} \geq \phi^k$.
 
-**引理 19.4** 设$x$是斐波那契堆中的任意结点，并设$k = x.degree$，则有$size(x) \geqslant F_{k + 2} \geqslant \Phi^k$，其中$\phi = (1 + \sqrt{5}) / 2$。
+**Lemma 19.4** Let $x$ be any node in a Fibonacci heap, and let $k = x.degree$. Then $size(x) \geq F_{k + 2} \geq \phi^k$, where $\phi = (1 + \sqrt{5}) / 2$.
 
-**推论 19.5** 一个$n$个节点的斐波那契堆中任意结点的最大度数$D(n)$为$O(lgn)$。
+**Corollary 19.5** The maximum degree $D(n)$ of any node in an $n$-node Fibonacci heap is $O(lg\ n)$.
 

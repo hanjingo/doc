@@ -2,9 +2,11 @@
 
 # 1 The Role of Algorithms in Computing
 
+[TOC]
 
 
-## 1.1 Algorithms
+
+## Algorithms
 
 An `algorithm` is any well-defined computational procedure that takes some value, or set of values, as `input` and produces some value, or set of values, as `output`.
 
@@ -16,6 +18,6 @@ Here is how we formally define the `sorting problem`:
 
 
 
-## 1.2 Algorithms as a technology
+## Algorithms as a technology
 
 Different algorithms devised to solve the same problem often differ dramatically in their `efficiency`. These differences can be much more significant than differences due to hardware and software.

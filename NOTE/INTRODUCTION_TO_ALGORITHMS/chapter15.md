@@ -1,16 +1,29 @@
-# 第15章 动态规划
+[中文版](chapter15_zh.md) | English
+
+# 15 Dynamic Programming
+
+[TOC]
 
 
 
-动态规划通常用来求解**最优化问题（optimization problem）**。
+We typically apply dynamic programming to **optimization problems**.
 
-## 15.1 钢条切割
+When developing a dynamic-programming algorithm, we follow a sequence of four steps:
 
-**钢条切割问题**：给定一段长度为$n$英寸的钢条和一个价格表$p_i(i = 1, 2, ..., n)$，求切割钢条方案，使得销售收益$r_n$最大。注意，如果长度为$n$英寸的钢条的价格$p_n$足够大，最优解可能就是完全不需要切割。
+1. Characterize the structure of an optimal solution.
+2. Recursively define the value of an optimal solution.
+3. Compute the value of an optimal solution, typically in a bottom-up fashion.
+4. Construct an optimal solution from computed information.
+
+## Rod cutting
+
+The **rod-cutting problem** is the following. Given a rod of length $n$ inches and a table of prices $p_i$ for $i = 1, 2, ..., n$, determine the maximum revenue $r_n$ obtainable by cutting up the rod and selling the pieces. Note that if the price $p_n$ for a rod of length $n$ is large enough, an optimal solution may require no cutting at all.
+
+![15_1](res/15_1.png)
 
 ![15_2](res/15_2.png)
 
-**自顶向下递归实现**
+**Recursive top-down implementation**
 $$
 \begin{align}
 & CUT-ROD(p, n) \\
@@ -24,11 +37,11 @@ $$
 $$
 ![15_3](res/15_3.png)
 
-CUR-ROD的运行时间：$T(n) = 1 + \sum_{j = 0}^{n - 1} T(j) = 2^n$。
+The running time of CUT-ROD: $T(n) = 1 + \sum_{j = 0}^{n - 1} T(j) = 2^n$.
 
-**使用动态规划方法求解最优钢条切割问题**
+**Using dynamic programming for optimal rod cutting**
 
-- 带备忘的自顶向下法（top-down with memoization）
+- top-down with memoization
   $$
   \begin{align}
   & MEMOIZED-CUT-ROD(p, n) \\
@@ -54,7 +67,7 @@ CUR-ROD的运行时间：$T(n) = 1 + \sum_{j = 0}^{n - 1} T(j) = 2^n$。
   \end{align}
   $$
 
-- 自底向上法(bottom-up method)
+- bottom-up method
   $$
   \begin{align}
   & BOTTOM-UP-CUT-ROD(p, n) \\
@@ -69,11 +82,11 @@ CUR-ROD的运行时间：$T(n) = 1 + \sum_{j = 0}^{n - 1} T(j) = 2^n$。
   \end{align}
   $$
 
-**子问题图**
+**Subproblem graphs**
 
 ![15_4](res/15_4.png)
 
-**重构解**
+**Reconstructing a solution**
 $$
 \begin{align}
 & EXTENDED-BOTTOM-UP-CUT-ROD(p, n) \\
@@ -102,9 +115,9 @@ $$
 
 
 
-## 15.2 矩阵链乘法
+## Matrix-chain multiplication
 
-**矩阵链乘法问题（matrix-chain multiplication problem）**：给定$n$个矩阵的链$<A_1, A_2, ..., A_n>$，矩阵$A_i$的规模为$P_{i - 1} \times P_i (1 \leqslant i \leqslant n)$，求完全括号化方案，使得计算乘积$A_1A_2...A_n$所需标量乘法次数最少。
+We state the **matrix-chain multiplication problem** as follows: given a chain $<A_1, A_2, ..., A_n>$ of $n$ matrices, where for $i = 1, 2, ..., n$, matrix $A_i$ has dimension $p_{i - 1} \times p_i$, fully parenthesize the product $A_1 A_2 ... A_n$ in a way that minimizes the number of scalar multiplications:
 $$
 \begin{align}
 & MATRIX-MULTIPLY(A, B) \\
@@ -119,15 +132,15 @@ $$
 & return\ C
 \end{align}
 $$
-**计算括号话方案的数量**
+**Counting the number of parenthesizations**
 $$
 P(n) = 
 \begin{cases}
-1, &如果n = 1\\
-\sum_{n - 1}^{k = 1}P(k)P(n - k), &如果 n \geqslant 2
+1, &if\ n = 1\\
+\sum_{n - 1}^{k = 1}P(k)P(n - k), &if\ n \geqslant 2
 \end{cases}
 $$
-**应用动态规划方法**
+**Applying dynamic programming**
 $$
 \begin{align}
 & MATRIX-CHAIN-ORDER(p) \\
@@ -151,20 +164,18 @@ $$
 
 
 
-## 15.3 动态规划原理
+## Elements of dynamic programming
 
-**最优子结构**
+**Subtleties**
 
-**一些微妙之处**
+You should be careful not to assume that optimal substructure applies when it does not. Consider the following two problems in which we are given a directed graph $G = (V, E)$ and vertices $u, v \in V$.
 
-在尝试使用动态规划方法时要小心，要注意问题是否具有最优子结构性质。考虑下面两个问题，其中都是给定一个有向图$G=(V, E)$和两个顶点$u, v \in V$。
-
-- **无权（unweighted）最短路径**：找到一条从$u$到$v$的边数最少的路径。这条路径必然是简单路径，因为如果路径中包含环，将环去掉显然会减少边的数量。
-- **无权最长路径**：找到一条从$u$到$v$的边数最多的简单路径。这里必须加上简单路径的要求，因为我们可以不停地沿着环走，从而得到任意长的路径。
+- **Unweighted shortest path**: Find a path from $u$ to $v$ consisting of the fewest edges. Such a path must be simple, since removing a cycle from a path produces a path with fewer edges.
+- **Unweighted longest simple path**: Find a simple path from $u$ to $v$ consisting of the most edges. We need to include the requirement of simplicity because otherwise we can traverse a cycle as many times as we like to create paths with an arbitrarily large number of edges.
 
 ![15_6](res/15_6.png)
 
-**重叠子问题**
+**Overlapping subproblems**
 $$
 \begin{align}
 & RECURSIVE-MATRIX-CHAIN(p, i, j) \\
@@ -183,10 +194,7 @@ $$
 
 ![15_7](res/15_7.png)
 
-**重构最优解**
-
-**备忘**
-
+**Memoization**
 $$
 \begin{align}
 & MEMOIZED-MATRIX-CHAIN(p) \\
@@ -216,16 +224,17 @@ $$
 
 
 
-## 15.4 最长公共子序列
+## Longest common subsequence
 
-**最长公共子序列问题（longest-common-subsequence problem）**：给定两个序列$X = <x_1, x_2, ..., x_m>$和$Y = <y_1, y_2, ..., y_n>$，求$X$和$Y$长度最长的公共子序列。
+In the **longest-common-subsequence problem**, we are given two sequences $X = <x_1, x_2, ..., x_m>$ and $Y = <y_1, y_2, ..., y_n>$ and wish to find a maximum length common subsequence of $X$ and $Y$.
 
-**定理 15.1 （LCS的最优子结构）** 令$X = <x_1, x_2, ..., x_m>$和$Y = <y_1, y_2, ..., y_n>$为两个序列，$Z = <z_1, z_2, ..., z_k>$为$X$和$Y$的任意LCS。
+**Theorem 15.1 (Optimal substructure of an LCS)** Let $X = <x_1, x_2, ..., x_m>$ and $Y = <y_1, y_2, ..., y_n>$ be sequences, and let $Z = <z_1, z_2, ..., z_k>$ be any LCS of $X$ and $Y$.
 
-1. 如果$x_m \neq y_n$，则$z_k = x_m = y_n$且$Z_{k - 1}$是$X_{m - 1}$和$Y_{n - 1}$的一个LCS。
-2. 如果$x_m \neq y_n$，那么$z_k \neq x_m$意味着$Z$是$X_{m - 1}$和$Y$的一个LCS。
-3. 如果$x_m \neq y_n$，那么$z_k \neq y_n$意味着$Z$是$X$和$Y_{n - 1}$的一个LCS。
+1. If $X_m = y_n$, then $z_k = x_m = y_n$ and $Z_{k - 1}$ is an LCS of $X_{m - 1}$ and $Y_{n - 1}$.
+2. If $x_m \neq y_n$, then $z_k \neq x_m$ implies that $Z$ is an LCS of $x_{m - 1}$ and $Y$.
+3. If $x_m \neq y_n$, then $z_ \neq y_n$ implies that $Z$ is an LCS of $X$ and $Y_{n - 1}$.
 
+Example:
 $$
 \begin{align}
 & LCS-LENGTH(X, Y) \\
@@ -268,9 +277,9 @@ $$
 
 
 
-## 15.5 最优二叉搜索树
+## Optimal binary search trees
 
-**最优二叉搜索树（optimal binary search tree）问题**：给定一个$n$个不同关键字的已排序的序列$K = <k_1, k_2, ..., k_n>$（因此$k_1 < k_2 < ... < k_n$），对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。
+**optimal binary search tree**. Formally, we are given a sequence $K = <k_1, k_2, ..., k_n>$ of $n$ distinct keys in sorted order (so that $k_1 < k_2 < ... < k_n$), and we wish to build a binary search tree from these keys. For each key $k_i$, we have a probability $p_i$ that a search will be for $k_i$.
 
 ![15_9](res/15_9.png)
 $$

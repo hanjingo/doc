@@ -1,12 +1,14 @@
-# 第23章 最小生成树
+[中文版](chapter23_zh.md) | English
+
+# 23 Minimum Spanning Trees
+
+[TOC]
 
 
 
 ![23_1](res/23_1.png)
 
-
-
-## 23.1 最小生成树的形成
+## Growing a minimum spanning tree
 
 $$
 \begin{align}
@@ -19,25 +21,25 @@ $$
 \end{align}
 $$
 
-无向图$G = (V, E)$的一个**切割**$(S, V - S)$是集合$V$的一个划分。
+A **cut** $(S, V - S)$ of an undirected graph $G = (V, E)$ is a partition of $V$.
 
-如果一条边$(u, v) \in E$的一个端点位于集合$S$，另一个端点位于集合$V - s$，则称该条边**横跨**切割$(S, V - S)$。
+We say that an edge $(u, v) \in E$ **crosses** the cut $(S, V - S)$ if one of its endpoints is in $S$ and the other is in $V - S$.
 
-如果集合$A$中不存在横跨该切割的边，则称该切割**尊重**集合$A$。在横跨一个切割的所有边中，权重最小的边称为**轻量级边**。
+We say that a cut **respects** a set $A$ of edges if no edge in $A$ crosses the cut. An edge is a **light edge** crossing a cut if its weight is the minimum of any edge crossing the cut.
 
 ![23_2](res/23_2.png)
 
-**定理 23.1** 设$G = (V, E)$是一个在边$E$上定义了实数值权重函数$w$的连通无向图。设集合$A$为$E$的一个子集，且$A$包括在图$G$的某棵最小生成树中，设$(S, V - S)$是图$G$中尊重集合$A$的任意一个切割，又设$(u, v)$是横跨切割$(S, V - S)$的一条轻量级边。那么边$(u, v)$对于集合$A$是安全的。
+**Theorem 23.1** Let $G = (V, E)$ be a connected, undirected graph with a real-valued weight function $w$ defined on $E$. Let $A$ be a subset of $E$ that is included in some minimum spanning tree for $G$, let $(S, V - S)$ be any cut of $G$ that respects $A$, and let $(u, v)$ be a light edge crossing $(S, V - S)$. Then, edge $(u, v)$ is safe for $A$.
 
 ![23_3](res/23_3.png)
 
-**推论 23.2** 设$G = (V, E)$是一个连通无向图，并有定义在边集合$E$上的实数权重函数$w$。设集合$A$为$E$的一个子集，且该子集包括在$G$的某棵最小生成树里，并设$C = (V_{C}, E_{C})$为森林$G_{A} = (V, A)$中的一个连通分量（树）。如果边$(u, v)$是连接$C$和$G_{A}$中某个其它连通分量的一条轻量级边，则边$(u, v)$对于集合$A$是安全的。
+**Corollary 23.2** Let $G = (V, E)$ be a connected, undirected graph with a real-valued weight function $w$ defined on $E$. Let $A$ be a subset of $E$ that is included in some minimum spanning tree for $G$, and let $C = (V_C, E_C)$ be a connected component (tree) in the forest $G_A = (V, A)$. If $(u, v)$ is a light edge connecting $C$ to some other component in $G_A$, then $(u, v)$ is safe for $A$.
 
 
 
-## 23.2 Kruskal算法和Prim算法
+## The algorithms of Kruskal and Prim
 
-**Kruskal算法**
+**Kruskal's algorithm**
 $$
 \begin{align}
 & MST-KRUSKAL(G, w) \\
@@ -52,9 +54,11 @@ $$
 & return\ A
 \end{align}
 $$
-![23_4](res/23_4.png)
+![23_4a](res/23_4a.png)
 
-**Prim算法**
+![23_4b](res/23_4b.png)
+
+**Prim's algorithm**
 
 ![23_5](res/23_5.png)
 $$

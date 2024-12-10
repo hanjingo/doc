@@ -1,26 +1,30 @@
-# 第13章 红黑树
+[中文版](chapter13_zh.md) | English
+
+# Red-Black Trees
+
+[TOC]
 
 
 
-**红黑树（red-black tree）**是许多平衡搜索树中的一种，可以保证在最坏情况下基本动态集合操作的时间复杂度为$O(lg\ n)$。
+**Red-black trees** are one of many search-tree schemes that are "balanced" in order to guarantee that basic dynamic-set operations take $O(lg\ n)$ time in the worst case.
 
-## 13.1 红黑树的性质
+## Properties of red-black trees
 
-一棵红黑树是满足下面红黑性质的二叉搜索树：
+A red-black tree is a binary tree that satisfies the following **red-black properties**:
 
-1. 每个结点或是**红色**的，或是**黑色**的。
-2. 根结点是**黑色**的。
-3. 每个叶结点(NIL)是**黑色**的。
-4. 如果一个结点是**红色**的，则它的两个子结点都是**黑色**的。
-5. 对每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点。
+1. Every node is either red or black.
+2. The root is black.
+3. Every leaf (NIL) is black.
+4. If a node is red, then both its children are black.
+5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
-**引理 13.1** 一棵有$n$个内部结点的红黑树的高度至多为$2 lg(n + 1)$。
+**Lemma 13.1** A red-black tree with $n$ internal nodes has height at most $2lg(n + 1)$.
 
 ![13_1](res/13_1.png)
 
 
 
-## 13.2 旋转
+## Rotations
 
 ![13_2](res/13_2.png)
 $$
@@ -44,7 +48,7 @@ $$
 
 
 
-## 13.3 插入
+## Insertion
 
 $$
 \begin{align}
@@ -95,7 +99,7 @@ $$
 
 
 
-## 13.4 删除
+## Deletion
 
 $$
 \begin{align}
@@ -166,7 +170,3 @@ $$
 $$
 
 ![13_7](res/13_7.png)
-
-**分析**
-
-RB-DELETE运行的总时间为$O(lg\ n)$。

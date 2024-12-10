@@ -1,8 +1,12 @@
-# 第28章 矩阵运算
+[中文版](chapter28_zh.md) | English
+
+# 28 Matrix Operations
+
+[TOC]
 
 
 
-## 28.1 求解线性方程组
+## Solving systems of linear equations
 
 $$
 \begin{bmatrix}
@@ -29,21 +33,27 @@ b_n
 \end{bmatrix}
 $$
 
-或等价地，设$A = (a_{ij}), x = (x_i) 和 b = (b_i)$，记为：
+, or, equivalently, letting $A = (a_{ij}), x = (x_i)\ and\ b = (b_i)$, as:
 $$
 Ax = b
 $$
-如果$A$是非奇异矩阵，那么它具有逆$A ^ {-1}$，于是
+, If $A$ is nonsingular, it possesses an inverse $A^{-1}$, and:
 $$
 x = A ^ {-1} b
 $$
-**LUP分解综述**
+**Overview of LUP decomposition**
 
-LUP分解背后的思想就是找出三个$n \times n$矩阵$L, U和P$，满足
+The idea behind LUP decomposition is to find three $n \times n$ matrices $L$, $U$, and $P$ such that:
 $$
 PA = LU
 $$
-($L$是一个单位下三角矩阵，$U$是一个上三角举证，$P$是一个置换矩阵。我们称满足上面公式的矩阵$L, U和P$为矩阵$A$的**LUP分解**)。
+, where:
+
+- $L$ is a unit lower-triangular matrix,
+- $U$ is an upper-triangular matrix, and
+- $P$ is a permutation matrix.
+
+, We call matrices $L$, $U$, and $P$ satisfying above equation an **LUP decomposition** of the matrix $A$.
 $$
 \begin{align}
 & LUP-SOLVE(L, U, \pi, b) \\
@@ -56,7 +66,7 @@ $$
 & return\ x
 \end{align}
 $$
-**计算一个LU分解**
+**Computing an LU decomposition**
 $$
 \begin{align}
 & LU-DECOMPOSITION(A) \\
@@ -104,22 +114,22 @@ $$
 
 
 
-## 28.2 矩阵求逆
+## Inverting matrices
 
-**定理 28.1**（矩阵乘法不比矩阵求逆困难）如果能在$I(n)$时间内求出一个$n \times n$矩阵的逆，其中$I(n) = \Omega(n^2)$且$I(n)$满足正则性条件$I(3n) = O(I(n))$，那么可以在$O(I(n))$时间内求出两个$n \times n$矩阵的乘积。
+**Theorem 28.1 (Multiplication is no harder than inversion)** If we can invert an $n \times n$ matrix in time $I(n)$, where $I(n) = \Omega(n^2)$ and $I(n)$ satisfies the regularity condition $I(3n) = O(I(n))$, then we can multiply two $n \times n$ matrices in time $O(I(n))$.
 
-**定理 28.2**（矩阵求逆运算不比矩阵乘法运算更难）如果能在$M(n)$时间内计算出两个$n \times n$实数矩阵的乘积，其中$M(n) = \Omega(n ^ 2)$且$M(n)$满足两个正则性条件：对任意的$k(0 \leqslant k \leqslant n)$，$M(n + k) = O(M(n))$；对某个常数$c < 1/2, M(n/2) \leqslant cM(n)$。那么可以在$O(M(n))$时间内计算出任何一个$n \times n$非奇异实数矩阵的逆。
+**Theorem 28.2 (Inversion is no harder than multiplication)** Suppose we can multiply two $n \times n$ real matrices in time $M(n)$, where $M(n) = \Omega(n^2)$ and $M(n)$ satisfies the two regularity conditions $M(n + k) = \Omega(M(n))$ for any $k$ in the range $0 \leq k \leq n$ and $M(n / 2) \leq cM(n)$ for some constant $c < 1 / 2$. Then we can compute the inverse of any real nonsingular $n \times n$ matrix in time $O(M(n))$.
 
 
 
-## 28.3 对称正定矩阵的最小二乘逼近
+## Symmetric positive-definite matrices and least-squares approximation
 
-**引理 28.3** 任何对称正定矩阵都是非奇异矩阵。
+**Lemma 28.3** Any positive-definite matrix is nonsingular.
 
-**引理 28.4** 如果$A$是一个对称正定矩阵，那么$A$的每个主子矩阵都是对称正定的。
+**Lemma 28.4** If $A$ is a symmetric positive-definite matrix, then every leading submatrix of $A$ is symmetric and positive-definite.
 
-**引理 28.5**（舒尔补引理）如果$A$是一个对称正定矩阵，$A_k$是$A$的$k \times k$主子矩阵，那么$A$关于$A_k$的舒尔补是对称正定的。
+**Lemma 28.5 (Schur complement lemma)** If $A$ is a symmetric positive-definite matrix and $A_k$ is a leading $k \times k$ submatrix of $A$, then the Schur complement $S$ of $A$ with respect to $A_k$ is symmetric and positive-definite.
 
-**推论 28.6** 一个对称正定矩阵的LU分解永远不会出现除数为0的情形。
+**Corollary 28.6** LU decomposition of a symmetric positive-definite matrix never causes a division by 0.
 
 ![28_3](res/28_3.png)

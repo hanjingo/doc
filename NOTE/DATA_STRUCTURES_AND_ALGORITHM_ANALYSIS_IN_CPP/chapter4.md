@@ -1,33 +1,27 @@
-# 第四章 树
+# CHAPTER 4 Trees
 
 [TOC]
 
 
 
-## 预备知识
+## Preliminaries
 
-`树（tree）` 一棵树是一些结点的集合；这个集合可以是空集；若不是空集，则树由称作`根（root）`的结点$r$以及零个或多个非空的（子）树$T_1, T_2, ..., T_k$组成，这些子树中每一棵的根都被来自根$r$的一条有向的`边（edge）`所连接。
+A `tree` can be defined in several ways. One natural way to define a tree is recursively. A tree is a collection of nodes. The collection can be empty; otherwise, a tree consists of a distinguished node, $r$, called the `root`, and zero or more nonempty (sub)trees $T_1, T_2, ..., T_k$, each of whose roots are connected by a directed `edge` from $r$.
 
 ![4_1](res/4_1.png)
 
-*一般的树*
-
-每条边都将某个结点连接到它的父亲，而除去根结点外每一个结点都有一个父亲。
+The root of each subtree is said to be a `child` of $r$, and $r$ is the `parent` of each subtree root.
 
 ![4_2](res/4_2.png)
 
-*一棵具体的树*
+- `siblings`: Nodes with the same parent are **siblings** (K，L，M).
+- `leaves`: Nodes with no children are known as **leaves** (B，C，H，I，P，Q，K，L，M，N).
 
-- `兄弟（siblings）结点` 具有相同父亲的结点（如：K，L，M）。
-- `叶（leaf）结点` 没有儿子的结点（如：B，C，H，I，P，Q，K，L，M，N）。
+If there is a path from $n_1$ to $n_2$, then $n_1$ is an **ancestor** of $n_2$ and $n_2$ is a **descendant** of $n_1$. If $n_1 \neq n_2$, then $n_1$ is a **proper ancestor** of $n_2$ and $n_2$ is a **proper descendant** of $n_1$.
 
-如果存在从$n_1$到$n_2$的一条路径，那么$n_1$是$n_2$的一位`祖先（ancestor）`而$n_2$是$n_1$的一个`后裔（descendant）`。如果$n_1 \neq n_2$，那么$n_1$是$n_2$的一位`真祖先（proper ancestor）`而$n_2$是$n_1$的一个`真后裔（proper descendant）`。
-
-### 树的实现
+### Implementation of Trees
 
 ![4_4](res/4_4.png)
-
-*在上图（一棵具体的树）中所表示的树的第一儿子/下一兄弟的表示法*
 
 ```c++
 struct TreeNode
@@ -38,31 +32,27 @@ struct TreeNode
 };
 ```
 
-### 树的遍历及应用
+### Tree Traversals with an Application
 
-`前序遍历（preorder traversal）` 对结点的处理工作是在它的诸儿子结点被处理之前进行的；运行时间为$O(N)$。
+In a `preorder traversal`, work at a node is performed before (pre) its children are processed. The running time is $O(N)$.
 
-`后序遍历（postORDER TRAVERSAL）` 在一个结点的工作是在它的诸儿子结点被计算后进行的。
-
-![4_8](res/4_8.png)
-
-*经由后序遍历得到的带有文件大小的UNIX目录*
+In a `postorder traversal`, the work at a node is performed after (post) its children are evaluated.
 
 
 
-## 二叉树
+## Binary Trees
 
-`二叉树（binary tree）` 是一棵每个结点都不能有多于两个儿子的树；平均二叉树的深度要比结点个数$N$小得多。
+A binary tree is a tree in which no node can have more than two children. A property of a binary tree that is sometimes important is that the depth of an average binary tree is considerably smaller than $N$.
 
 ![4_11](res/4_11.png)
 
-*一般二叉树*
-
 ![4_12](res/4_12.png)
 
-*最坏情形的二叉树*
+### An Example: Expression Trees
 
-### 实现
+An `expression tree`. The leaves of an expression tree are `operands`, such as constants or variable names, and the other nodes contain `operators`.
+
+Binary tree node class (pseudocode):
 
 ```c++
 struct BinaryNode
@@ -73,119 +63,99 @@ struct BinaryNode
 };
 ```
 
-### 一个例子-表达式树
-
-`表达式树（expression tree）` 树叶是`操作数（operand）`，其他结点是`操作符（operator）`。
-
 ![4_14](res/4_14.png)
 
-$(a+b*c)+((d*e+f)*g)$的表达式树
+Example, Constructing an Expression Tree:
 
-`中缀表达式（infix expression）`
+1. suppose the input is: `a b + c d e + * *`
 
-`中序遍历（inorder traversal）`
-
-`后序遍历（postorder traversal）`
-
-`前序遍历（preorder traversal）`
-
-例，构造一刻表达式树：
-
-1. 假设输入为 `a b + c d e + * *`
-
-2. 前两个符号是操作数，因此创建两棵单结点树并将指向它们的指针压入栈中
+2. The first two symbols are operands, so we create one-node trees and push pointers to them onto a stack
 
    ![expr_tree1](res/expr_tree1.png)
 
-3. "+"被读入，因此指向两棵树的指针被弹出，形成一棵新的树，并将指向它的指针压入栈中
+3. A `+` is read, so two pointers to trees are popped, a new tree is formed, and a pointer to it is pushed onto the stack
 
    ![expr_tree2](res/expr_tree2.png)
 
-4. c，d和e被读入，在每个单结点树创建后，指向对应的树的指针被压入栈中
+4. c, d, and e are read, and for each a one-node tree is created and a pointer to the corresponding tree is pushed onto the stack
 
    ![expr_tree3](res/expr_tree3.png)
 
-5. 读入"+"号，因此两棵树合并
+5. a `+` is read, so two trees are merged
 
    ![expr_tree4](res/expr_tree4.png)
 
-6. 读入`"*"`号，因此，弹出两棵树的指针并形成一棵新的树，`"*"`号是他的根
+6. A `*` is read, so we pop two tree pointers and form a new tree with a `*` as root
 
    ![expr_tree5](res/expr_tree5.png)
 
-7. 读入最后一个符号，两棵树合并，而窒息那个最后的树的指针被留在栈中。
+7. The last symbol is read, two trees are merged, and a pointer to the final tree is left on the stack
 
    ![expr_tree6](res/expr_tree6.png)
 
 
 
-## 查找树ADT-二叉查找树
+
+
+## The Search Tree ADT-Binary Serch Trees
 
 ![4_15](res/4_15.png)
 
-*查找树*
+The average depth of a binary search tree turns out to be $O(log N)$, we generally do not need to worry about running out of stack space.
 
 二叉查找树的平均深度是$O(log\ N)$，一般不必担心栈空间用尽。
-
-### contains
-
-### findMin和findMax
 
 ### insert
 
 ![4_22a](res/4_22a.png)
 
-*插入5之前的二叉查找树*
+*Binary search trees before inerting 5*
 
 ![4_22b](res/4_22b.png)
 
-*插入5以后的二叉查找树*
+*Binary search trees after inerting 5*
 
 ### remove
 
 ![4_24a](res/4_24a.png)
 
-*具有一个儿子的结点4删除前的情况*
+*Deletion of a node (4) with one child, before*
 
 ![4_24b](res/4_24b.png)
 
-*具有一个儿子的结点4删除后的情况*
+*Deletion of a node (4) with one child, after*
 
 ![4_25a](res/4_25a.png)
 
-*删除具有2个儿子的结点2前的情况*
+*Deletion of a node (2) with two children, before*
 
 ![4_25b](res/4_25b.png)
 
-*删除具有2个儿子的结点2后的情况*
+*Deletion of a node (2) with two children, after*
 
-### 析构函数和复制赋值操作符
+### Average-Case Analysis
 
-### 平均情况分析
+The sum of the depths of all nodes in a tree is known as the `internal path length`.
 
-`内部路径长（internal path length）` 一棵树的所有结点的深度和。
+**Result** The average depth over all nodes in a tree is $O(logN)$ on the assumption that all insertion sequences are equally likely.
 
-**结论** 如果所有的插入序列都是等可能的，那么，树的所有结点的平均深度为$O(logN)$。
-
-**证明** 令$D(N)$是具有$N$个结点的某棵树$T$的内部路径长，$D(1) = 0$。一棵$N$结点树是由一棵$i$结点左子树和一棵$(N-i-1)$结点右子树以及深度为0的一个根节点组成，其中$0 \leqslant i < N$, $D(i)$为根的左子树的内部路径长。但是在原树中，所有这些结点都要加深一层。同样的结论对于右子树也是成立的。因此我们得到递推关系：
-
-$D(N) = D(i) + D(N-i-1) + N - 1$
-
-如果所有子树的大小都是等可能的出现，这对于二叉查找树是成立的（因为子树的大小只依赖于第一个插入到树中的元素的相对秩（rank）），但对二叉树不成立，那么$D(i)$和$D(N-i-1)$的平均值都是$(1/N) \sum_{j=0}^{N-1} D(j)$。于是
-
-$D(N) \frac{2}{N} \left[ \sum_{j=0}^{N-1} D(j)\right] + N - 1$
-
-求解这个递推关系，得到平均值为$D(N) = O(NlogN)$。因此任意结点预期的深度为$O(logN)$。
+**Proof** Let $D(N)$ be the internal path length for some tree $T$ of $N$ nodes. $D(1) = 0$. An N-node tree consists of an $i$-node left subtree and an $(N - i - 1)$-node right subtree, plus a root at depth zero for $0 \leq i < N$. $D(i)$ is the internal path length of the left subtree with respect to tis root. In the main tree, all these nodes are one level deeper. The same holds for the right subtree. Thus, we get the recurrence: 
+$$
+D(N) = D(i) + D(N-i-1) + N - 1
+$$
+, If all subtree sizes are equally likely, which is true for binary search trees (since the subtree size depends only on the relative rank of the first element inerted into the tree), but not binary trees, then the average value of both $D(i)$ and $D(N - i - 1)$ is $(1/N) \sum_{j=0}^{N-1} D(j)$. This yields:
+$$
+D(N) \frac{2}{N} \left[ \sum_{j=0}^{N-1} D(j)\right] + N - 1
+$$
+, obtaining an average value of $D(N) = O(NlogN)$. Thus, the expected depth of any node is $O(logN)$.
 
 ![4_29](res/4_29.png)
 
-*一棵随机生成的二叉查找树（500个结点，结点期望深度为9.98）*
+It has been shown that if we alternate insertions and deletions $\Theta(N^2)$ times, then the trees will have an expected depth of $\Theta(\sqrt{N})$.
 
-如果交替插入和删除$\Theta(N^2)$次，那么树的期望深度将是$\Theta(\sqrt{N})$。
+![4_30](res/4_30.png)
 
-![4_30](res/4_30.png)*在$\Theta(n^2)$次insert/remove操作后的二叉查找树（平均深度=12.51)*
-
-二叉搜索树源码：
+The source of binary search tree:
 
 ```c++
 // 二叉查找树的框架
@@ -305,86 +275,67 @@ private:
 
 
 
+## AVL Trees
 
+An AVL (Adelson-Velskii and Landis) tree is a binary search tree with a `balance condition`, it requires:
 
-## AVL树
-
-`AVL(Adelson-Velskii and Landis)树` 带有平衡条件（balance condition）的二叉查找树。
-
-1. 必须保证树的深度是$O(logN)$; 
-2. 要求每个结点都必须有相同高度（高度最多相差1）的左子树和右子树；
+1. the depth of the tree is $O(logN)$.
+2. the left and right subtrees have the same height.
 
 ![4_33](res/4_33.png)
 
-*高度为9的最小AVL树*
+It is easy to see that a violation might occur in four cases:
 
-`旋转（rotation）`
+1. An insertion into the left subtree of the left child of $\alpha$.
+2. An insertion into the right subtree of the left child of $\alpha$.
+3. An insertion into the left subtree of the right child of $\alpha$.
+4. An insertion into the right subtree of the right child of $\alpha$.
 
-`单旋转（single rotation）`
-
-`双旋转（double rotation）`
-
-### 单旋转
+### Single Rotation
 
 ![4_34](res/4_34.png)
 
-*单旋转修正情形(1)*
-
 ![4_35](res/4_35.png)
-
-*插入6破坏了AVL性质，而后经过单旋转又将AVL性质恢复*
 
 ![4_36](res/4_36.png)
 
-*单旋转修正情形*
-
 ![4_rotate1](res/4_rotate1.png)
 
-![4_rotate2](res/4_rotate2.png)
+### Double Rotation
 
-### 双旋转
-
-![4_37](res/4_37.png)*单旋转不能修正情形*
+![4_37](res/4_37.png)
 
 ![4_38](res/4_38.png)
 
-*左-右双旋转修正情形*
-
 ![4_39](res/4_39.png)
-
-*右-左双旋转修正情形*
 
 ![4_43](res/4_43.png)
 
-*单旋转*
-
 ![4_45](res/4_45.png)
 
-*双旋转*
+Example:
 
-例：
-
-1. 插入15
+1. Insert 15
 
    ![4_rotate3](res/4_rotate3.png)
 
-2. 插入14
+2. Insert 14
 
    ![4_rotate4](res/4_rotate4.png)
 
-3. 插入13
+3. Insert 13
 
    ![4_rotate5](res/4_rotate5.png)
 
-4. 插入12
+4. Insert 12
 
    ![4_rotate6](res/4_rotate6.png)
 
-5. 插入11，10，8
+5. Insert 11，10，8
 
    ![4_rotate7](res/4_rotate7.png)
 
-6. 插入9
+6. Insert 9
 
    ![4_rotate8](res/4_rotate8.png)
 
@@ -452,79 +403,55 @@ struct AvlNode
 
 
 
-## 伸展树
+## Splay Trees
 
-`伸展树（splay tree）` 它保证从空树开始任意连续$M$次对树的操作最多花费$O(Mlog\ N)$时间；当一个节点被访问后，它就要经过一系列AVL树的旋转被推到根上。
+**Splay tree** that guarantees that any $M$ consecutive tree operations starting from an empty tree take at most $O(Mlog\ N)$ time.
 
-当$M$次操作的序列总的最坏情形运行时间为$O(Mf(N))$时，我们说它的`摊还（amortized）`运行时间为$O(f(N))$；每次操作最坏情形时间$O(N)$并非不好，只要它相对不常发生就行。
+Generally, when a sequence of $M$ operations has total worst-case running time of $O(Mf(N))$, we say that the **amortized** running time is $O(f(N))$.
 
-### 一个简单的想法（不能直接使用）
+### A Simple Idea (That Does Not Work)
 
-例，在树中对$k_1$进行一次find之后所发生的情况：
+As an example, consider what happens after an access (a `find`) on $k_1$ in the following tree:
 
 ![4_find1](res/4_find1.png)
 
-*虚线是访问的路径。首先，在$k_1$和它的父结点之间实施一次单旋转，得到下面的树。*
+The access path is dashed. First, we would perform a single rotation between $k_1$ and its parent, obtaining the following tree:
 
 ![4_find2](res/4_find2.png)
 
-*然后，在$k_1$和$k_3$之间旋转，得到下一棵树。*
+Then, we rotate between $k_1$ and $k_3$, obtaining the next tree:
 
 ![4_find3](res/4_find3.png)
 
-*再实行两次旋转直到$k_1$到达树根*
+Then two more rotations are performed until we reach the root:
 
 ![4_find4](res/4_find4.png)
 
-### 伸展
+### Splaying
 
 ![4_50](res/4_50.png)
 
-*将全部由左儿子构成的树在结点1伸展的结果*
-
 ![4_51](res/4_51.png)
-
-*将前面的树在结点2伸展的结果*
 
 ![4_52](res/4_52.png)
 
-*将前面的树在结点3伸展的结果*
-
 ![4_53](res/4_53.png)
-
-*将前面的树在结点4伸展的结果*
 
 ![4_54](res/4_54.png)
 
-*将前面的树在结点5伸展的结果*
-
 ![4_55](res/4_55.png)
-
-*将前面的树在结点6伸展的结果*
 
 ![4_56](res/4_56.png)
 
-*将前面的树在结点7伸展的结果*
-
 ![4_57](res/4_57.png)
-
-*将前面的树在结点8伸展的结果*
 
 ![4_58](res/4_58.png)
 
-*将前面的树在结点9伸展的结果*
+![4_59](res/4_59.png)
 
 
 
-## 树的遍历
-
-`中序遍历（inorder traversal）`
-
-`后序遍历（postorder traversal）`
-
-`前序遍历（preorder traversal）`
-
-`层序遍历（level-order traversal）` 所有深度为$d$的结点要在深度为$d+1$的结点之前进行处理。
+## Tree Traversals(Revisited)
 
 ```c++
     void printTree(ostream& out = cout) const
@@ -548,45 +475,39 @@ struct AvlNode
 
 
 
-## B树
+## B-Trees
 
-阶为$M$的B树是一棵具有下列结构特性的树：
+A B-tree of order $M$ is an $M$-ary tree with the following properties:
 
-1. 数据项存储在树叶上；
-2. 非叶结点存储直到$M-1$键，以指示搜索方向；键$i$代表子树$i+1$中的最小的键；
-3. 树的根或者是一片树叶，或者其儿子数载2和$M$之间；
-4. 除根外，所有非树叶结点的儿子数载$\lceil L/2 \rceil$和$M$之间；
-5. 所有的树叶都在相同的深度上并有$\lceil L/2 \rceil$和$L$之间个数据项，稍后描述$L$的确定。
+1. The data items are stored at leaves.
+2. The nonleaf nodes store up to $M - 1$ keys to guide the searching; key $i$ represents the smallest key in subtree $i + 1$.
+3. The root is either a leaf or has between two and $M$ children.
+4. All nonleaf nodes (except the root) have between $\lceil M / 2 \rceil$ and $M$ children.
+5. All leaves are at the same depth and have between $\lceil L / 2 \rceil$ and $L$ data items, for some $L$ (the determination of $L$ is described shortly).
 
 ![4_62](res/4_62.png)
 
-*5阶B树*
-
 ![4_63](res/4_63.png)
-
-*将57插入到B树*
 
 ![4_64](res/4_64.png)
 
-*将55插入到B树中引起分裂成两片树叶*
-
 ![4_65](res/4_65.png)
-
-*把40插入到上图的B树中，引起树叶被分裂为两片然后又造成父结点的分裂*
 
 ![4_66](res/4_66.png)
 
-*从上图的B树中删除99后的B树*
+![4_67](res/4_67.png)
 
 
 
-## 标准库中的set和map
+## Sets and Maps in the Standard Library
 
-### set
+### Sets
 
-set是一个排序后的容器，该容器不允许重复；set特有的操作是高效的插入，删除和执行基本查找。
+The `set` is an ordered container that does not allow duplicates.
 
-STL定义了以下insert/erase函数：
+The unique operations required by the `set` are the abilities to insert, remove, and perform a basic search (efficiently).
+
+The STL defines insert/erase function:
 
 ```c++
 pair<iterator, bool> insert(const Object& x); // 如果已存在，插入失败
@@ -597,7 +518,7 @@ iterator erase(iterator itr);
 iterator erase(iterator start, iterator end);
 ```
 
-使用示例：
+For example:
 
 ```c++
 set<int> s;
@@ -605,11 +526,11 @@ for (int i = 0; i < 1000000; i++)
   s.insert(s.end(), i);
 ```
 
-### map
+### Maps
 
-map用来存储排序后的由键和值组成的项的集合，键必须唯一，但是多个键可以对应同一值；所以只不需要唯一。
+A `map` is used to store a collection of ordered entries that consists of keys and their values. Keys must be unique, but several keys can map to the same values. Thus values need not be unique.
 
-map的`operator[]`不能用于常量的map，例：
+Consequently, the underlying implementation is a balanced binary search tree. Typically, an AVL tree is not used; instead, top-down red-black trees are often used:
 
 ```c++
 map<string, double> salaries;
@@ -623,22 +544,17 @@ else
   cout << itr->second << endl;
 ```
 
-### set和map的实现
+The hard part is efficiently advancing to the next node. There are several possible solutions, some of which are lsited here:
 
-C++需要set和map支持在最坏的情况下对基本的操作如：insert，erase和find仅消耗对数时间，底层实现是平衡二叉查找树（以RB-tree居多）。
+1. When the iterator is constructed, have each iterator store as its data an array containing the `set` items. This doesn't work: It makes it impossible to efficiently implement any of the routines that return an iterator after modifying the `set`, such as some of the versions of `erase` and `insert`.
+2. Have the iterator maintain a stack storing nodes on the path to the current node. With this information, one can deduce the next node in the iteration, which is either the node in the current node's right subtree that contains the minimum item or the nearest ancestor that contains the current node in its left subtree. This makes the iterator somewhat large and makes the iterator code clumsy.
+3. Have each node in the search tree store its parent in addition to the children. The iterator is not as large, but there is now extra memory required in each node, and the code to iterate is still clumsy.
+4. Have each node maintain extra links: one to the next smaller, and one to the next larger node. This takes space, but the iteration is very simple to do, and it is easy to maintain these links.
+5. Maintain the extra links only for nodes that have `nullptr` left or right links by using extra Boolean variables to allow the routines to tell if a left link is being used as a standard binary search tree left link or a link to the next smaller node, and similarly for the right link.
 
-如何高效地将迭代器推进到下一个节点的方法：
+### An Example That Uses Several Maps
 
-1. 当迭代器构造完成后，每一个迭代器都将一个包含set项的数组作为自己的数据存储；这没有用：这使得在修改过set后返回一个迭代器的任何例程的实现都不可能高效；例如：erase，insert。
-2. 使迭代器维持一个栈，用来存储通向当前结点的路径上的结点。基于这个信息，可以推出在迭代器中的下一个结点，它可能是当前结点的右子树所包含的最小项，或者是最近的在其左子树中包含当前结点的祖先。这使得迭代器有一点大，并且使得迭代器的代码很笨拙。
-3. 使查找树中的每一个结点除了存储其儿子外，也存储其父亲。迭代器不会很大，但是现在每个结点都需要额外的存储空间，而且迭代代码还是很笨拙。
-4. 使每个结点保持额外的链接：一个至下一个较小结点，另一个至下一个较大结点。这样也占用空间，但是此时的迭代过程就很容易实现，而且很容易对这些链接进行维护。
-5. 仅为那些左侧或右侧的链接为NULL的结点保持额外的链接，通过使用额外的布尔变量使得例程可以指示出是否一个左链接正在作为标准二叉查找树的左链接或者至下一个较小结点的链接而使用，对于右结点也做同样处理。
-
-### 使用几个map的例子
-
-例1，给定一个map，其键为单词，值为指向只有一个字符不同的单词组的vector。
-输出具有minwords或更多个通过一个字符替换就可以得到其他单词的那些单词（低效模式）：
+Example1. use a `map` in which the keys are words and the value are vectors containing the words that can be changed from the key with a one-character substitution:
 
 ```c++
 // 打印单词
@@ -692,7 +608,7 @@ map<string, vector<string> > computeAdjacentWords(const vector<string>& words)
 }
 ```
 
-例2，例1的优化版：
+Example2:
 
 ```c++
 map<string, vector<String> > computeAdjacentWords(const vector<string>& words) 

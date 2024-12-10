@@ -1,50 +1,72 @@
-# 第30章 多项式与快速傅里叶变换
+[中文版](chapter30_zh.md) | English
+
+# 30 Polynomials and the FFT
+
+[TOC]
 
 
 
-**多项式**
+**Polynomials**
 
-一个以$x$为变量的多项式定义在一个代数域$F$上，将函数$A(x)$表示为形式和：
+A **polynomial** in the variable $x$ over an algebraic field $F$ represents a function $A(x)$ as a formal sum:
 $$
 A(x) = \sum_{j = 0}^{n - 1} a_j x^j
 $$
-我们称$a_0, a_1, ..., a_{n - 1}$为如上多项式的系数，所有系数都属于域$F$。
+, We call the values $a_0, a_1, ..., a_{n - 1}$ the **coefficients** of the polynomial.
 
-## 30.1 多项式的表示
+## Representing polynomials
 
-对于一个次数界为$n$的多项式$A(x) = \sum_{j = 0}^{n - 1}a_j x^j$而言，其**系数表达**是一个由系数组成的向量$a = (a_0, a_1, ..., a_{n - 1})$。
+**Coefficient representation**
 
-**定理 30.1**（插值多项式的唯一性）对于任意$n$个点值对组成的集合$\{(x_0, y_0), (x_1, y_1), ..., (x_{n - 1}, y_{n - 1})\}$，其中所有的$x_k$都不同；那么存在唯一的次数界为$n$的多项式$A(x)$，满足$y_k = A(x_k), k = 0, 1, ..., n - 1$。
+A **coefficient representation** of a polynomial $A(x) = \sum_{j = 0}^{n - 1}a_j x^j$ of degree bound $n$ is a vector of coefficients $a = (a_0, a_1, ..., a_{n - 1})$.
 
-拉格朗日公式：$A(x) = \sum_{k = 0}^{n - 1} y_k \frac{\prod_{j \neq k}(x - x_j)}{\prod_{j \neq k} (x_k - x_j)}$。
+**Point-value representation**
+
+A **point-value representation** of a polynomial $A(x)$ of degree-bound $n$ is a set of $n$ **point-value pairs**:
+$$
+\{(x_0, y_0), (x_1, y_1), ..., (x_{n - 1}, y_{n - 1})\}
+$$
+, such that all of the $x_k$ are distinct and:
+$$
+y_k = A(x_k)
+$$
+, for $k = 0, 1, ..., n - 1$. A polynomial has many different point-value representations, since we can use any set of $n$ distinct points $x_0, x_1, ..., x_{n - 1}$ as a basis for the respresentation.
+
+**Theorem 30.1 (Uniquenes of an interpolating polynomial)** For any set $\{(x_0, y_0), (x_1, y_1), ..., (x_{n - 1}, y_{n - 1})\}$ of $n$ point-value pairs such that all the $x_k$ values are distinct, there is a unique polynomial $A(x)$ of degree-bound $n$ such that $y_k = A(x_k)$ for $k = 0, 1, ..., n - 1$.
+
+**Lagrange's formula**: $A(x) = \sum_{k = 0}^{n - 1} y_k \frac{\prod_{j \neq k}(x - x_j)}{\prod_{j \neq k} (x_k - x_j)}$.
+
+**Fast multiplication of polynomials in coefficient form**
 
 ![30_1](res/30_1.png)
 
-**定理 30.2** 当输入与输出多项式均采用系数表达时，我们就能在$\theta(n lgn)$时间复杂度内，计算出两个次数界为$n$的多项式乘积。
+**Theorem 30.2** We can multiply two polynomials of degree-bound $n$ in time $\theta(n lg\ n)$, with both the input and output representations in coefficient form.
 
 
 
-## 30.2 DFT与FFT
+## The DFT and FFT
 
-**单位复数根**
+**Complex roots of unity**
 
-$n$次单位复数根是满足$w^n = 1$的复数$w$。$n$次单位复数根恰好有$n$个：对于$k = 0, 1, ..., n - 1$，这些根是$e^{2\pi i k / n}$。为了解释这个表达式，我们利用复数的指数形式的定义：
-
-$e^{iu} = cos(u) + i sin(u)$
-
+A **complex nth root of unity** is a somplex number $w$ such that:
+$$
+w^n = 1
+$$
+, There are exactly $n$ complex $n$th roots of unity: $e^{2 \pi i k / n}$ for $k = 0, 1, ..., n - 1$. To interpret this formula, we use the definition of the exponential of a complex number:
+$$
+e^{iu} = cos(u) + i\ sin(u)
+$$
 ![30_2](res/30_2.png)
 
-**引理 30.3**（消去引理）对于任何整数$n \geqslant 0, k \geqslant 0, 以及 d> 0$，$w_{dn}^{dk} = w_{n}^{k}$。
+**Lemma 30.3 (Cancellation lemma)** For any integers $n \geq 0, k \geq 0$, and $d > 0$, $w_{dn}^{dk} = w_{n}^{k}$.
 
-**推论 30.4** 对任意偶数$n > 0$，有$w_{n}^{n/2} = w_2 = -1$。
+**Corollary 30.4** For any even integer $n > 0$, $w_{n}^{n/2} = w_2 = -1$.
 
-**引理 30.5**（折半引理）如果$n > 0$为偶数，那么$n$个$n$次单位复数根的平方的集合就是$n / 2$个$n / 2$次单位复数根的集合。
+**Lemma 30.5 (Halving lemma)** If $n > 0$ is even, then the squares of the $n$ complex $n$th roots of unity are the $n / 2$ complex $(n / 2)$th roots of unity.
 
-**引理 30.6**（求和引理）对任意整数$n \geqslant 1$和不能被$n$整除的非负整数$k$，有$\sum_{j = 0}^{n - 1}(w_{n}^{k})^j = 0$。
+**Lemma 30.6 (Summation lemma)** For any integer $n \geq 1$ and nonzero integer $k$ not divisible by $n$, $\sum_{j = 0}^{n - 1}(w_{n}^{k})^j = 0$.
 
-**离散傅里叶变换（DFT）**
-
-**快速傅里叶变换（FFT）**
+**The FFT**
 $$
 \begin{align}
 & RECURSIVE-FFT(a) \\
@@ -64,13 +86,13 @@ $$
 & return\ y
 \end{align}
 $$
-**定理 30.7** 对$j, k = 0, 1, ..., n - 1, V_n^{-1}$的$(j, k)$处元素为$w_n^{-kj} / n$。
+**Theorem 30.7** For $j, k = 0, 1, ..., n - 1, V_n^{-1}$, the $(j, k)$ entry of $V_n^{-1}$ is $w_n^{-kj} / n$.
 
-**定理 30.8**（卷积定理）对任意两个长度为$n$的向量$a$和$b$，其中$n$是2的幂，$a \otimes b = DFT_{2n}^{-1}(DFT_{2n}(a) \cdot DFT_{2n}(b))$，其中向量$a$和$b$用0填充，使其长度达到$2n$，并用"."表示2个$2n$个元素组成向量的点乘。
+**Theorem 30.8 (Convolution theorem)** For any two vectors $a$ and $b$ of length $n$, where $n$ is a power of 2, $a \otimes b = DFT_{2n}^{-1}(DFT_{2n}(a) \cdot DFT_{2n}(b))$, where the vectors $a$ and $b$ are padded with 0s to length $2n$ and $\cdot$ denotes the componentwise product of two $2n$-element vectors.
 
 
 
-## 30.3 高效FFT实现
+## Efficient FFT implementations
 
 ![30_3](res/30_3.png)
 
@@ -95,3 +117,4 @@ $$
 \end{align}
 $$
 ![30_5](res/30_5.png)
+

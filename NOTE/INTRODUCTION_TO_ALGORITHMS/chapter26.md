@@ -1,17 +1,21 @@
-# 第26章 最大流
+[中文版](chapter26_zh.md) | English
+
+# 26 Maximum Flow
+
+[TOC]
 
 
 
-## 26.1 流网络
+## Flow networks
 
 ![26_1](res/26_1.png)
 
-设$G = (V, E)$为一个流网络，其容量函数为$c$。设$s$为网络的源结点，$t$为汇点。$G$中的流是一个实值函数$f: V \times V \rightarrow R$，满足下面的两条性质：
+Let $G = (V, E)$ be a flow network with a capacity function $c$. Let $s$ be the source of the network, and let $t$ be the sink. A `flow` in $G$ is a real-valued function $f: V \times V \rightarrow R$ that satisfies the following two properties:
 
-- **容量限制**：对于所有的结点$u, v \in V$，要求$0 \leqslant f(u, v) \leqslant c(u, v)$。
-- **流量守恒**：对于所有的结点$u \in V - \{s, t\}$，要求$\sum_{v \in V}f(v, u) = \sum_{v \in V} f(u, v)$。
+- **Capacity constraint**: For all $u, v \in V$, we require $0 \leq f(u, v) \leq c(u, v)$.
+- **Flow conservation**: For all $u \in V - \{s, t\}$, we require $\sum_{v \in V}f(v, u) = \sum_{v \in V} f(u, v)$.
 
-一个流$f$的值$|f|$定义如下：$|f| = \sum_{v \in V} f(s, v) - \sum_{v \in V} f(v, s)$。
+We call the nonnegative quantity $f(u, v)$ the flow from vertex $u$ to vertex $v$. The **value** $|f|$ of a flow $f$ is defined as: $|f| = \sum_{v \in V} f(s, v) - \sum_{v \in V} f(v, s)$, that is, the total flow out of the source minus the flow into the source.
 
 ![26_2](res/26_2.png)
 
@@ -19,7 +23,7 @@
 
 
 
-## 26.2 Ford-Fulkerson方法
+## The Ford-Fulkerson method
 
 $$
 \begin{align}
@@ -31,62 +35,50 @@ $$
 \end{align}
 $$
 
-假定有一个流网络$G = (V, E)$，其源节点为$s$，汇点为$t$。设$f$为图$G$中的一个流，考虑结点对$u, v \in V$，定义残存容量$c_f (u, v)$如下：
+Suppose that we have a flow network $G = (V, E)$ with source $s$ and sink $t$. Let $f$ be a flow in $G$, and consider a pair of vertices $u, v \in V$. We define the **residual capacity** $c_f(u, v)$by:
 $$
 c_f(u, v) = 
 \begin{cases}
-c(u, v) - f(u, v) &若(u, v) \in E\\
-f(u, v) &若(v, u) \in E \\
-0 &其它
+c(u, v) - f(u, v) &if(u, v) \in E\\
+f(u, v) &if(v, u) \in E \\
+0 &otherwise
 \end{cases}
 $$
-给定一个流网络$G = (V, E)$和一个流$f$，则由$f$所诱导的图$G$的残存网络为$G_f = (V, E_f)$，其中$E_f = \{(u, v) \in V \times V: c_f(u, v) > 0\}$。
+, Because of our assumption that $(u, v) \in E$ implies $(v, u) \notin E$, exactly one case in above equation applies to each ordered pair of vertices.
 
+Given a flow network $G = (V, E)$ and a flow $f$, the **residual network** of $G$ induced by $f$ is $G_f = (V, E_f)$, where:
+$$
+E_f = \{(u, v) \in V \times V: c_f(u, v) > 0\}
+$$
 ![26_4](res/26_4.png)
 
-**引理 26.1** 设$G = (V, E)$为一个流网络，源结点为$s$，汇点为$t$，设$f$为$G$中的一个流。设$G_f$为由流$f$所诱导的$G$的残存网络，设$f'$为$G_f$中的一个流。那么公式：
-$$
-(f \uparrow f')(u, v) =
-\begin{cases}
-f(u, v) + f'(u, v) - f'(v, u) &若(u, v) \in E\\
-0 &其它 \\
-\end{cases}
-$$
-所定义的函数$f \uparrow f'$是$G$的一个流，其值为$|f \uparrow f'| = |f| + |f'|$。
+**Lemma 26.1** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$, and let $f$ be a flow in $G$. Let $G_f$ be the residual network of $G$ induced by $f$, and let $f'$ be a flow in $G_f$. Then the function $f \uparrow f'$ defined in equation (26.4) is a flow in $G$ with value $|f \uparrow f'| = |f| + |f'|$.
 
-**引理 26.2** 设$G = (V, E)$为一个流网络，设$f$为图$G$中的一个流，设$p$为残存网络$G_f$中的一条增广路径。定义一个函数$f_p : V \times V \rightarrow R$如下：
+**Lemma 26.2** Let $G = (V, E)$ be a flow network, let $f$ be a flow in $G$, and let $p$ be an augmenting path in $G_f$. Define a function $f_p : V \times V \rightarrow R$ by:
 $$
 f_p(u, v) = 
 \begin{cases}
-c_f(p) &若(u, v)在p上 \\
-0 &其他 
+c_f(p) &if (u, v) \text{ is on p} \\
+0 &otherwise. 
 \end{cases}
 $$
-则$f_p$是残存网络$G_f$中的一个流，其值为$|f_p| = c_f(p) > 0$。
+, Then, $f_p$ is a flow-in $G_f$ with value $|f_p| = c_f(p) > 0$.
 
-**推论 26.3** 设$G = (V, E)$为一个流网络，设$f$为$G$中的一个流，设$p$为残存网络$G_f$中的一条增广路径。设$f_p$由公式：
-$$
-f_p(u, v) = 
-\begin{cases}
-c_f(p) &若(u, v)在p上 \\
-0 &其他 
-\end{cases}
-$$
-所定义，假定将$f$增加$f_p$的量，则函数$f \uparrow f_p$是图$G$中的一个流，其值为$|f \uparrow f_p| = |f| + |f_p| > |f|$。
+**Corollary 26.3** Let $G = (V, E)$ be a flow network, let $f$ be a flow in $G$, and let let $p$ be an augmenting path in $G_f$. Let $f_p$ be defined as in equation (26.8), and suppose that we augment $f$ by $f_p$. Then the function $f \uparrow f_p$ is a flow in $G$ with value $|f \uparrow f_p| = |f| + |f_p| > |f|$.
 
 ![26_5](res/26_5.png)
 
-**引理 26.4** 设$f$为流网络$G$的一个流，该流网络的源节点为$s$，汇点为$t$，设$(S, T)$为流网络$G$的任意切割，则横跨切割$(S, T)$的净流量为$f(S, T) = |f|$。
+**Lemma 26.4** Let $f$ be a flow in a flow network $G$ with source $s$ and sink $t$, and let $(S, T)$ be any cut of $G$. Then the net flow across $(S, T)$ is $f(S, T) = |f|$.
 
-**推论 26.5** 流网络$G$中任意流$f$的值不能超过$G$的任意切割的容量。
+**Corollary 26.5** The value of any flow $f$ in a flow network  $G$ is bounded from above by the capacity of any cut of $G$.
 
-**定理 26.6**（最大流最小切割定理）设$f$为流网络$G = (V, E)$中的一个流，该流网络的源结点为$s$，汇点为$t$，则下面的条件是等价的：
+**Theorem 26.6 (Max-flow min-cut theorem)** If $f$ is a flow in a flow network $G = (V, E)$ with soruce $s$ and sink $t$, then the following conditions are equivalent:
 
-1. $f$是$G$的一个最大流。
-2. 残存网络$G_f$不包括任何增广路径。
-3. $|f| = c(S, T)$，其中$(S, T)$是流网络$G$的某个切割。
+1. $f$ is a maximum flow in $G$.
+2. The residual network $G_f$ contains no augmenting paths.
+3. $|f| = c(S, T)$ for some cut $(S, T)$ of $G$.
 
-**基本的Ford-Fulkerson算法**
+**The basic Ford-Fulkerson algorithm**
 $$
 \begin{align}
 & FORD-FULKERSON(G, s, t) \\
@@ -100,33 +92,35 @@ $$
 & \qquad \qquad else(v, u).f = (v, u).f - c_f(p)
 \end{align}
 $$
-![26_6](res/26_6.png)
+![26_6a](res/26_6a.png)
+
+![26_6b](res/26_6b.png)
 
 ![26_7](res/26_7.png)
 
-**引理 26.7** 如果Edmonds-Karp算法运行在流网络$G = (V, E)$上，该网络的源结点为$s$汇点为$t$，则对于所有的结点$v \in V - \{s, t\}$，残存网络$G_f$中的最短路径距离$\delta_{f}(s, v)$随着每次流量的递增而单调递增。
+**Lemma 26.7** If the Edmonds-Karp algorithm is run on a flow network $G = (V, E)$ with source $s$ and sink $t$, then for all vertices $v \in V - \{s, t\}$, the shortest-path distance $\delta_{f}(s, v)$ in the residual network $G_f$ increases monotonically with each flow augmentation.
 
-**定理 26.8** 如果Edmonds-Karp算法运行在源结点为$s$汇点为$t$的流网络$G = (V, E)$上，则该算法所执行的流量递增操作的总次数为$O(VE)$。
+**Theorem 26.8** If the Edmonds-Karp algorithm is run on a flow network $G = (V, E)$ with source $s$ and sink $t$, then the total number of flow augmentations performed by the algorithm is $O(VE)$.
 
 
 
-## 26.3 最大二分匹配
+## Maximum bipartite matching
 
 ![26_8](res/26_8.png)
 
-**引理 26.9** 设$G = (V, E)$为一个二分图，其结点划分为$V = L \cup R$，设$G' = (V', E')$是图$G$所对应的流网络。如果$M$是$G$中的一个匹配，则流网络$G'$中存在一个整数值的流$f$，使得$|f| = |M|$。相反，如果$f$是$G'$中的一个整数值的流，则$G$中存在一个匹配$M$，使得$|M| = |f|$。
+**Lemma 26.9** Let $G = (V, E)$ be a bipartite graph with vertex partition $V = L \cup R$, and let $G' = (V', E')$ be its corresponding flow network. If $M$ is a matching in $G$, then there is an integer-valued flow $f$ in $G'$ with value $|f| = |M|$. Conversely, if $f$ is an integer-valued flow in $G'$, then there is a matching $M$ in $G$ with cardinality $|M| = |f|$.
 
-**定理 26.10**（完整性定理）如果容量函数$c$只能取整数值，则$Ford-Fulkerson$方法所生成的最大流$f$满足$|f|$是整数值的性质。而且，对于所有的结点$u$和$v$，$f(u, v)$的值都是整数。
+**Theorem 26.10 (Integrality theorem)** If the capacity function $c$ takes on only integral values, then the maximum flow $f$ produced by the Ford-Fulkerson method has the property that $|f|$ is an integer. Moreover, for all vertices $u$ and $v$, the value of $f(u, v)$ is an integer.
 
-**推论 26.11** 二分图$G$中的一个最大匹配$M$的基数等于其对应的流网络$G'$中某一最大流$f$的值。
+**Corollary 26.11** The cardinality of a maximum matching $M$ in a bipartite graph $G$ equals the value of a maximum flow $f$ in its corresponding flow network $G'$.
 
 
 
-## 26.4 推送-重贴标签算法
+## Push-relabel algorithms
 
-**引理 26.12** 设$G = (V, E)$为一个流网络，设$f$为$G$的预流，设$h$为$V$上的高度函数。对于任意两个结点$u, v \in V$，如果$h(u) > h(v) + 1$，则$(u, v)$不是残存网络中的一条边。
+**Lemma 26.12** Let $G = (V, E)$ be a flow network, let $f$ be a preflow in $G$, and let $h$ be a height function on $V$. For any two vertices $u, v \in V$, if $h(u) > h(v) + 1$, then $(u, v)$ is not an edge in the residual network.
 
-**推送操作**
+**The push operation**
 $$
 \begin{align}
 & PUSH(u, v) \\
@@ -139,7 +133,7 @@ $$
 & v.e = v.e + \bigtriangleup_{f}(u, v)
 \end{align}
 $$
-**引理 26.13** 在从结点$u$到结点$v$的一个非饱和推送操作后，结点$u$将不再溢出。
+**Lemma 26.13** After a nonsaturating push from $u$ to $v$, the vertex $u$ is no longer overflowing.
 $$
 \begin{align}
 & RELABEL(u) \\
@@ -174,45 +168,45 @@ $$
 \end{align}
 $$
 
-**引理 26.14**（可以对溢出结点执行推送或重贴标签操作）设$G = (V, E)$是一个源结点为$s$汇点为$t$的流网络，设$f$为一个预流，$h$为$f$的任意高度函数。如果$u$是一个溢出结点，则要么可以对结点$u$执行推送操作，要么可以对其执行重贴标签操作。
+**Lemma 26.14 (An overflowing vertex can be either pushed or relabeled)** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$, let $f$ be a preflow, and let $h$ be any height function for $f$. If $u$ is any overflowing vertex, then either a push or relabel operation applies to it.
 
-**引理 26.15**（结点高度从来不会降低）在一个流网络$G = (V, E)$上执行$GENERIC-PUSH-RELABEL$算法的过程中，对于每个结点$u \in V$，其高度$v.h$从来不会减少。而且，每当一个重贴标签操作应用到结点$u$上时，其高度$u.h$至少增加1个单位。
+**Lemma 26.15 (Vertex heights never decrease)** During the execution of the $GENERIC-PUSH-RELABEL$ procedure on a flow network $G = (V, E)$, for each vertex $u \in V$, the height $u.h$ never decreases. Moreover, whenever a relabel operation is applied to a vertex $u$, its height $u.h$ increases by at least 1.
 
-**引理 26.16** 设$G = (V, E)$是一个源结点为$s$汇点为$t$的流网络，则$GENERIC-PUSH-RESLABEL$算法在$G$上执行的过程中，将维持属性$h$作为一个高度函数。
+**Lemma 26.16** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$. Then the execution of $GENERIC-PUSH-RELABEL$ on $G$ maintains the attribute $h$ as a height function.
 
-**引理 26.17** 设$G = (V, E)$是一个源结点为$s$汇点为$t$的流网络，设$f$为$G$中的一个预流，$h$为$V$上的一个高度函数。那么在残存网络$G_f$中不存在一条从源结点$s$到汇点$t$的路径。
+**Lemma 26.17** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$, let $f$ be a preflow in $G$, and let $h$ be a height function on $V$. Then there is no path from the source $s$ to the sink $t$ in the residual network $G_f$.
 
-**定理 26.18**（通用的推送-重贴标签算法的正确性）设$G = (V, E)$是一个源节点为$s$汇点为$t$的流网络，如果算法$GENERIC-PUSH-RELABEL$在图G上运行时能够终止，则该算法所计算出的预流$f$是图G的一个最大流。
+**Theorem 26.18 (Correctness of the generic push-relabel algorithm)** If the algorithm $GENERIC-PUSH-RELABEL$ terminates when run on a flow network $G = (V, E)$ with source $s$ and sink $t$, then the preflow $f$ it computes is a maximum flow for $G$.
 
-**引理 26.19** 设$G = (V, E)$是源结点为$s$汇点为$t$的一个流网络，设$f$是$G$中的一个预流。那么对于任意溢出节点$x$，在残存网络$G_f$中存在一条从节点$x$到源节点$s$的简单路径。
+**Lemma 26.19** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$, and let $f$ be a preflow in $G$. Then, for any overflowing vertex $x$, there is a simple path from $x$ to $s$ in the residual network $G_f$.
 
-**引理 26.20** 设$G = (V, E)$是源节点为$s$汇点为$t$的一个流网络，在$G$上执行算法$GENERIC-PUSH-RELABEL$过程中的任意时刻，对于所有节点$u \in V, u.h \leqslant 2|V| - 1$。
+**Lemma 26.20** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$. At any time during the execution of $GENERIC-PUSH-RELABEL$ on $G$, we have $u.h \leq 2|V| - 1$ for all vertices $u \in V$.
 
-**推论 26.21**（重贴标签操作次数的界）设$G = (V, E)$是源节点为$s$汇点为$t$的一个流网络，则在$G$上执行算法$GENERIC-PUSH-RELABEL$的过程中，对每个节点所执行的重贴标签操作的次数最多为$2|V| - 1$次，而所有重贴标签操作不会超过$(2|V| - 1)(|V| - 2) < 2|V|^2$。
+**Corollary 26.21 (Bound on relabel operations)** Let $G = (V, E)$ be a flow network with source $s$ and sink $t$. Then, during the execution of $GENERIC-PUSH-RELABEL$ on $G$, the number of relabel operations is at most $2|V| - 1$ per vertex and at most $(2|V| - 1)(|V| - 2) < 2|V|^2$ overall.
 
-**引理 26.22**（饱和推送操作次数的上界）设$G = (V, E)$是源节点为$s$汇点为$t$的一个流网络，则在$G$上执行算法$GENERIC-PUSH-RELABEL$的过程中，对每个节点所执行的重贴标签操作的次数最多为$2|V|-1$次，而所有重贴标签操作不会超过$(2|V| - 1)(|V| - 2) < 2|V|^2$。
+**Lemma 26.22 (Bound on saturating pushes)** During the execution of $GENERIC-PUSH-RELABEL$ on any flow network $G = (V, E)$, the number of saturating pushes is less than $2|V||E|$.
 
-**引理 26.23**（非饱和推送操作次数的上界）设$G = (V, E)$是源节点为$s$汇点为$t$的一个流网络，则在$G$上执行算法$GENERIC-PUSH-RELABEL$的过程中，非饱和推送操作的次数少于$4|V|^2(|V| + |E|)$。
+**Lemma 26.23 (Bound on nonsaturating pushes)** During the execution of $GENERIC-PUSH-RELABEL$ on any flow network $G = (V, E)$, the number of nonsaturating pushes is less than $4|V|^2(|V| + |E|)$.
 
-**定理 26.24** 在任意流网络$G = (V, E)$上执行$GENERIC-PUSH-RELABEL$算法的过程中，基本操作的总次数是$O(V^2 E)$。
+**Theorem 26.24** During the execution of $GENERIC-PUSH-RELABEL$ on any flow network $G = (V, E)$, the number of basic operations is $O(V^2 E)$.
 
-**推论 26.25** 对于任意流网络$G = (V, E)$，都存在一种通用推送-重贴标签算法的实现，其运行时间为$O(V^2 E)$。
+**Corollary 26.25** There is an implementation of the generic push-relabel algorithm that runs in $O(V^2 E)$ time on any flow network $G = (V, E)$.
 
 
 
-## 26.5 前置重贴标签算法
+## The relabel-to-front algorithm
 
-**许可边和网络**
+**Admissible edges and networks**
 
-设图$G = (V, E)$是一个源节点为$s$汇点为$t$的流网络，$f$是$G$的一个预流，$h$是一个高度函数。对于边$(u v)$，如果$c_f(u, v) > 0$且$h(u) = h(v) + 1$，则边$(u, v)$是一条**许可边**。
+If $G = (V, E)$ is a flow network with source $s$ and sink $t$, $f$ is a preflow in $G$, and $h$ is a height function, then we say that $(u, v)$ is an **admissible edge** if $c_f(u, v) > 0$ and $h(u) = h(v) + 1$. Otherwise, $(u, v)$ is **inadmissible**. The **admissible network** is $G_{f,h} = (V, E_{f,h})$, where $E_{f,h}$ is the set of admissible edges.
 
-**引理 26.26**（许可网络是无环的）如果图$G = (V, E)$是一个源节点为$s$汇点为$t$的流网络，$f$是$G$的一个预流，$h$是一个高度函数，则许可网络$G_{f,h} = (V, E_{f, h})$是无环的。
+**Lemma 26.26 (The admissible network is acyclic)** If $G = (V, E)$ is a flow network, $f$ is a preflow in $G$, and $h$ is a height function on $G$, then the admissible network $G_{f,h} = (V, E_{f,h})$ is acyclic.
 
-**引理 26.27** 如果图$G=(V, E)$是一个源节点为$s$为汇点$t$的流网络，$f$是$G$的一个预流，假定$h$是一个高度函数，如果结点$u$是一个溢出结点，且$(u, v)$是一条许可边，则$PUSH(u, v)$操作适用于结点$u$上。该操作不会创建任何新的许可边，但有可能导致边$u v$成为非许可边。
+**Lemma 26.27** Let $G = (V, E)$ be a flow network, let $f$ be a preflow in $G$, and suppose that the attribute $h$ is a height function. If a vertex $u$ is overflowing and $(u, v)$ is an admissible edge, then $PUSH(u, v)$ applies. The operation does not create any new admissible edges, but it may cause $(u, v)$ to become inadmissible.
 
-**引理 26.28** 设图$G = (V, E)$是一个源结点为$s$，汇点为$t$的流网络，$f$是$G$的一个预流，假定$h$是一个高度函数，如果结点$u$是一个溢出结点，且不存在从结点$u$发出的许可边，则$RELABEL(u)$操作适用于结点$u$。此外，在对结点$u$进行重贴标签操作后，将至少存在一条从结点$u$发出的许可边，但不存在进入结点$u$的许可边。
+**Lemma 26.28** Let $G = (V, E)$ be a flow network, let $f$ be a preflow in $G$, and suppose that the attribute $h$ is a height function. If a vertex $u$ is overflowing and there are no admissible edges leaving $u$, then $RELABEL(u)$ applies. After the relabel operation, there is at least one admissible edge leaving $u$, but there are no admissible edges entering $u$.
 
-**释放溢出结点**
+**Discharging an overflowing vertex**
 $$
 \begin{align}
 & DISCHARGE(u) \\
@@ -226,13 +220,15 @@ $$
 & \qquad else\ u.current = v.next - neighbor
 \end{align}
 $$
-![26_9](res/26_9.png)
 
-![26_9_1](res/26_9_1.png)
 
-**引理 26.29** 如果$DISCHARGE$操作在第7行调用$PUSH(u, v)$操作，则推送操作适用于边$(u, v)$。如果$DISCHARGE$操作在第4行调用$RELABEL(u)$操作，则重贴标签操作适用于结点$u$。
+**Lemma 26.29** If $DISCHARGE$ calls $PUSH(u, v)$ in line 7, then a push operation applies to $(u, v)$. If $DISCHARGE$ calls $RELABEL(u)$ in line 4, then a relabel operation applies to $u$.
 
-**前置重贴标签算法**
+![26_9a](res/26_9a.png)
+
+![26_9b](res/26_9b.png)
+
+**The relabel-to-front algorithm**
 $$
 \begin{align}
 & RELABEL-TO-FRONT(G, s, t) \\
@@ -249,10 +245,10 @@ $$
 & \qquad \qquad u = u.next 
 \end{align}
 $$
-![26_10](res/26_10.png)
+![26_10a](res/26_10a.png)
 
-![26_10_1](res/26_10_1.png)
+![26_10b](res/26_10b.png)
 
-**定理 26.30** 前置重贴标签算法在任何流网络$G = (V, E)$上的运行时间为$O(V^3)$。
+**Theorem 26.30** The running time of $RELABEL-TO-FRONT$ on any flow network $G = (V, E)$ is $O(V^3)$.
 
-前置重贴标签算法的总运行时间为$O(V^3 + VE)$，也就是$O(V^3)$。
+The running time of $RELABEL-TO-FRONT$ is therefore $O(V^3 + VE)$, which is $O(V^3)$.

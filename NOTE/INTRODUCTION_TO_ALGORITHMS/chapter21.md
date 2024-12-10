@@ -1,12 +1,16 @@
-# 第21章 用于不相交集合的数据结构
+[中文版](chapter21_zh.md) | English
+
+# 21 Data Structures for Disjoint Sets
+
+[TOC]
 
 
 
-## 21.1 不相交集合的操作
+## Disjoint-set operations
 
-**不相交集合数据结构（disjoint-set data structure）**维护了一个不相交动态集的集合$S = \{S_1, S_2, ..., S_k\}$。
+A **disjoint-set data structure** maintains a collection $\delta = \{S_1, S_2, ..., S_k\}$ of disjoint dynamic sets.
 
-**不相交集合数据结构的一个应用**
+**An application of disjoint-set data structures**
 
 ![21_1](res/21_1.png)
 $$
@@ -31,38 +35,38 @@ $$
 
 
 
-## 21.2 不相交集合的链表表示
+## Linked-list representation of disjoint sets
 
 ![21_2](res/21_2.png)
 
-**合并的一个简单实现**
+**A simple implementation of union**
 
 ![21_3](res/21_3.png)
 
-一个操作的摊还时间为$\theta(n)$。
+The amortized time of an operation is $\theta(n)$。
 
-**一种加权合并的启发式策略**
+**A weighted-union heuristic**
 
-**定理 21.1** 使用不相交集合的链表表示和加权合并启发式策略，一个具有$m$个$MAKE-SET$, $UNION$和$FIND-SET$操作的序列（其中有$n$个是$MAKE-SET$操作）需要的时间为$O(m + nlgn)$。
+**Theorem 21.1** Using the linked-list representation of disjoint sets and the weighted-union heuristic, a sequence of $m$ $MAKE-SET$, and $FIND-SET$ operations, $n$ of which are $MAKE-SET$ operations, takes $O(m + nlg\ n)$ time.
 
 
 
-## 21.3 不相交集合森林
+## Disjoint-set forests
 
-**不相交集合森林（disjoint-set forest）**：每个成员仅指向它的父结点，每棵树的根包含集合的代表，并且是其自己的父节点。
+In a **disjoint-set forest**, each member points only to its parent. The root of each tree contains the representative and is its own parent.
 
 ![21_4](res/21_4.png)
 
-**改进运行时间的启发式策略**
+**Heuristics to improve the running time**
 
-启发式策略：
+two heuristics:
 
-- 按秩合并（union by rank）
-- 路径压缩（path compression）
+- union by rank
+- path compression
 
 ![21_5](res/21_5.png)
 
-**实现不相交集合森林的伪代码**
+Example:
 $$
 \begin{align}
 &MAKE-SET(x) \\
@@ -98,47 +102,47 @@ $$
 \end{align}
 $$
 
-**启发式策略对运行时间的影响**
+**Effect of the heuristics on the running time**
 
-单独使用路径压缩启发式策略给出的最坏情况运行时间为$\theta(n + f \cdot (1 + log_{2+f/n}n))$。
+The path-compression heuristic alone gives a worst-case running time of $\theta(n + f \cdot (1 + log_{2+f/n}n))$.
 
-同时使用按秩合并于路径压缩时，最坏情况的运行时间为$O(m\alpha(n))$。
+When we use both union by rank and path compression, the worst-case running time is $O(m\alpha(n))$.
 
 
 
-## 21.4 带路径压缩的按秩合并的分析
+## Analysis of union by rank with path compression
 
-对于整数$k \geqslant 0$与$j \geqslant 1$，定义函数$A_k (j)$为：
+For integers $k \geq 0$ and $j \geq 1$, we define the function $A_k(j)$ as:
 $$
 A_k(j) = 
 \begin{cases}
-j + 1, &如果k = 0\\
-A_{k - 1}^{(j + 1)}, &如果k \geqslant 1
+j + 1, &if\ k = 0\\
+A_{k - 1}^{(j + 1)}, &if\ k \geq 1
 \end{cases}
 $$
-**引理 21.2** 对于任意整数$j \geqslant 1$，有$A_1(j) = 2j + 1$。
+**Lemma 21.2** For any integer $j \geq 1$, we have $A_1(j) = 2j + 1$.
 
-**引理 21.3** 对于任意整数$j \geqslant 1$，有$A_2(j) = 2^{j + 1}(j + 1) - 1$。
+**Lemma 21.3** For any integer $j \geq 1$, we have $A_2(j) = 2^{j + 1}(j + 1) - 1$.
 
-**引理 21.4** 对于所有的结点$x$，有$x.rank \leqslant x.p.rank$，如果$x \neq x.p$，则此式是严格不等式。$x.rank$的初始值为$0$，并且随着时间而增加，直到$x \neq x.p$；从此以后，$x.rank$的值就不再发生变化。$x.p.rank$的值随时间单调递增。
+**Lemma 21.4** For all nodes $x$, we have $x.rank \leq x.p.rank$, with strict inequality if $x \neq x.p$. The value of $x.rank$ is initially 0 and increases through time until $x \neq x.p$; from then on, $x.rank$ does not change. The value of $x.p.rank$ monotonically increases over time.
 
-**推论 21.5** 从任何一个结点指向根的简单路径上，节点的秩是严格递增的。
+**Corollary 21.5** As we follow the simple path from any node toward a root, the node ranks strictly increase.
 
-**引理 21.6** 每个节点的秩最大为$n - 1$。
+**Lemma 21.6** Every node has rank at most $n - 1$.
 
-**引理 21.7** 假设通过将每个$UNION$转换成两个$FIND-SET$操作，后再接一个$LINK$操作，我们可以把$m'$个$MAKE-SET, UNION和FIND-SET$操作的序列$S'$转换成$m$个$MAKE-SET, LINK和FIND-SET$操作的序列$S$。那么，如果操作序列$S$的运行时间为$O(m\alpha(n))$，则序列$S'$的运行时间为$O(m'\alpha(n))$。
+**Lemma 21.7** Suppose we convert a sequence $S'$ of $m'$ $MAKE-SET$, $UNION$, and $FIND-SET$ operations into a sequence $S$ of $m$ $MAKE-SET$, $LINK$, and $FIND-SET$ operations by turning each $UNION$ into two $FIND-SET$ operations followed by a $LINK$. Then, if sequence $S$ runs in $O(m\ \alpha(n))$ time, sequence $S'$ runs in $O(m'\alpha(n))$ time.
 
-**引理 21.8** 对于每个结点$x$和所有操作的计数$q$，我们有$0 \leqslant \phi_{q}(x) \leqslant \alpha(n) \cdot x.rank$。
+**Lemma 21.8** For every node $x$, and for all operation counts $q$, we have $0 \leq \phi_{q}(x) \leq \alpha(n) \cdot x.rank$.
 
-**推论 21.9** 如果结点$x$不是一个根结点，并且$x.rank > 0$，则$\phi_q(x) < \alpha(n) \cdot x.rank$。
+**Corollary 21.9** If node $x$ is not a root and $x.rank > 0$, then $\phi_q(x) < \alpha(n) \cdot x.rank$.
 
-**引理 21.10** 设$x$是一个非根结点，并且假设第$q$个操作是$LINK$或$FIND-SET$。那么再第$q$次操作之后，$\phi_q(x) \leqslant \phi_{q - 1}(x)$。此外，如果$x.rank \geqslant 1$，并且$level(x)$或$iter(x)$是由于第$q$次操作而发生了改变，则$x$的势至少下降$1$。
+**Lemma 21.10** Let $x$ be a node that is not a root, and suppose that the $q$th operation is either a $LINK$ or $FIND-SET$. Then after the $q$th operation, $\phi_q(x) \leq \phi_{q - 1}(x)$. Moreover, if $x.rank \geq 1$ and either $level(x)$ or $iter(x)$ changes due to the $q$th operation, then $\phi_q(x) \leq \phi_{q - 1}(x) - 1$. That is, $x$'s potential cannot increase, and if it has positive rank and either $level(x)$ or $iter(x)$ changes, then $x$'s potential drops by at least 1.
 
-**引理 21.11** 每个$MAKE-SET$操作的摊还代价为$O(1)$。
+**Lemma 21.11** The amortized cost of each $MAKE-SET$ operation is $O(1)$.
 
-**引理 21.12** 每个$LINK$操作的摊还代价为$O(\alpha(n))$。
+**Lemma 21.12** The amortized cost of each $LINK$ operation is $O(\alpha(n))$.
 
-**引理 21.13** 每个$FIND-SET$操作的摊还代价为$O(\alpha(n))$。
+**Lemma 21.13** The amortized cost of each $FIND-SET$ operation is $O(\alpha(n))$.
 
-**定理 21.14** 一组$m$个$MAKE-SET, UNION和FIND-SET$操作的序列，其中$n$个是$MAKE-SET$操作，它能在一个不相交集合森林上使用按秩合并于路径压缩在最坏情况时间$O(m \alpha(n))$内处理完。
+**Theorem 21.14** A sequence of $m$ $MAKE-SET$, $UNION$, and $FIND-SET$ operations, $n$ of which are $MAKE-SET$ operations, can be performed on a disjoint-set forest with union by rank and path compression in worst-case time $O(m \alpha(n))$.
 

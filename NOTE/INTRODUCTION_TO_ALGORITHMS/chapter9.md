@@ -1,13 +1,17 @@
-# 第9章 中位数和顺序统计量
+[中文版](chapter9_zh.md) | English
+
+# 9 Medians and Order Statistics
+
+[TOC]
 
 
 
-选择问题：
+We formally specify the **selection problem** as follows:
 
-- 输入：一个包含$n$个（互异的）数的集合$A$和一个整数$i, 1 \leqslant i \leqslant n$。
-- 输出：元素$x \in A$，且$A$中恰好有$i - 1$个其它元素小于它。
+- **Input**: A set $A$ of $n$ (distinct) numbers and an integer $i$, with $1 \leq i \leq n$.
+- **Output**: The element $x \in A$ that is larger than exactly $i - 1$ other elements of $A$.
 
-## 9.1 最小值和最大值
+## Minimum and maximum
 
 $$
 \begin{align}
@@ -21,7 +25,7 @@ $$
 
 
 
-## 9.2 期望为线性时间的选择算法
+## Selection in expected linear time
 
 $$
 \begin{align}
@@ -40,9 +44,8 @@ $$
 
 
 
-## 9.3 最坏情况为线性时间的选择算法
+## Selection in worst-case linear time
 
 ![9_1](res/9_1.png)
 
-与比较排序一样，SELECT和RANDOMIZED-SELECT也是通过元素间的比较来确定他们之间的相对次序的。但是它们不需要任何关于输入的假设，它们不受限于$\Omega(n ln\ n)$的下界约束，因为他们没有使用排序就解决了选择问题。
-
+As in a comparison sort, $SELECT$ and $RANDOMIZED-SELECT$ determine information about the relative order of elements only by comparing elements. Recall from Chapter 8 that sorting requires $\Omega(n\ lg\ n)$ time in the comparison model, even on average.

@@ -1,128 +1,96 @@
-# 第六章 优先队列（堆）
+# CHAPTER 6 Priority Queues (Heaps)
 
 [TOC]
 
 
 
-## 6.1 模型
+## Model
 
 ![6_1](res/6_1.png)
 
-*优先队列的基本模型*
 
 
+## Binary Heap
 
-## 6.2 一些简单的实现
+### Structure Property
 
-
-
-## 6.3 二叉堆
-
-`二叉堆(binary heap)`
-
-### 6.3.1 结构性质
-
-容易证明，一棵高为$h$的完全二叉树有$2^h$到$2^{h+1} - 1$个结点；这意味着，完全二叉树的高是$\lfloor logN \rfloor$，显然它是$O(logN)$。
+It is easy to show that a complete binary tree of height $h$ has between $2^h$ and $2^{h + 1} - 1$ nodes. This implies that the height of a complete binary tree is $\lfloor logN \rfloor$, which is clearly $O(logN)$.
 
 ![6_2](res/6_2.png)
 
-*一棵完全二叉树*
-
 ![6_3](res/6_3.png)
 
-*完全二叉树的数组实现*
-
-### 6.3.2 堆序性质
+### Heap-Order Property
 
 ![6_5](res/6_5.png)
 
-*两棵完全树（只有左边的树是堆）*
+By the heap-order property, the minimum element can always be found at the root. Thus, we get the extra operation, `findMin`, in constant time.
 
-根据堆序性质，最小元总可以在根处找到。因此，我们以常数时间得到附加操作findMin。
-
-### 6.3.3 基本的堆操作
+### Basic Heap Operations
 
 1. insert
 
    ![6_6](res/6_6.png)
 
-   *尝试插入14：创建一个空穴，再将空穴上冒*
-
    ![6_7](res/6_7.png)
-
-   *将14插入到前面的堆中的最后两步*
 
 2. deleteMin
 
    ![6_9](res/6_9.png)
 
-   *在根处建立空穴*
-
    ![6_10](res/6_10.png)
-
-   *在deleteMin中的接下来的两步*
 
    ![6_11](res/6_11.png)
 
-   *在deleteMin中的最后两步*
 
-### 6.3.4 堆的其它操作
+### Other Heap Operations
 
 ![6_13](res/6_13.png)
 
-*一棵巨大的完全二叉树*
-
 1. decreaseKey
 
-   $decreaseKey(p, \Delta)$操作减小在位置$p$处的元素的值，减小的幅度为正的量$\Delta$。由于这可能破坏堆序性质，因此必须通过上滤操作对堆进行调整。该操作对系统管理员是有用的：系统管理程序能够使它们的程序以最高的优先级来运行。
+   The $decreaseKey(p, \Delta)$ operation lowers the value of the item at position $p$ by a positive amount $\Delta$. Since this might violate the heap order, it must be fixed by a `percolate up`. This operation could be useful to system administrators: They can make their programs run with highest priority.
 
 2. increaseKey
 
-   $increaseKey(p, \Delta)$操作增加在位置$p$处的元素的值，增加的幅度为正的量$\Delta$。这可以用下滤来完成。许多调度程序自动地降低过多消耗CPU时间的进程的优先级。
+   The $increaseKey(p, \Delta)$ operation increases the value of the item at position $p$ by a positive amount $\Delta$. This is done with a `percolate down`. Many schedulers automatically drop the priority of a process that is consuming excessive CPU time.
 
 3. remove
 
-   $remove(p)$操作删除堆中位置$p$上的结点。这通过首先执行$decreaseKey(p, \infty)$然后再执行`delteMin()`来完成。当一个进程由用户中止（而不是正常终止）时，必须将其从优先队列中除去。
+   The $remove(p)$ operation removes the node at position $p$ from the heap. This is done by first perfoming $decreaseKey(p, \infty)$ and then performing $delteMin()$. When a process is terminated by a user (instead of finishing normally), it must be removed from the priority queue.
 
 4. buildHeap
 
-   通过项的原始集合来构造，这个构造函数将$N$项作为输入并把它们放入一个堆中。
+   The binary heap is sometimes constructed from an initial collection of items. This constructor takes as input $N$ items and places them into a heap.
 
 ![6_15](res/6_15.png)
 
-*左 - 初始堆；右 - 在percolateDown(7)之后*
-
 ![6_16](res/6_16.png)
-
-*左 - percolateDown(6)之后；右 - percolateDown(5)之后*
 
 ![6_17](res/6_17.png)
 
-*左 - percolateDown(4)之后；右 - percolateDown(3)之后*
-
 ![6_18](res/6_18.png)
 
-*左 - percolateDown(2)之后；右 - percolateDown(1)之后*
+**Theorem 6.1** For the perfect binary tree of height $h$ containing $2^{h + 1} - 1$ nodes, the sum of the heights of the nodes is $2^{h + 1} - 1 - (h + 1)$.
 
-**定理6.1** 包含$2^{h+1} - 1$个结点且高为$h$的理想二叉树（perfect binary tree）的结点的高度和为$2^{h+1} - 1 - (h + 1)$。
+**Proof** It is easy to see that this tree consists of 1 node at height $h$, 2 nodes at height $h - 1$, $2^2$ nodes at height $h - 2$, and in general $2^i$ nodes at height $h - i$. The sum of the heights of all the nodes is then:
+$$
+\begin{equation}\begin{split}
+S &= \sum_{i = 0}^{h} 2^i(h - i) \\
+&= h + 2(h - 1) + 4(h - 2) + 8(h - 3) + 16(h - 4) + ... + 2^{h - 1}(1) \qquad (6.1)
+\end{split}\end{equation}
+$$
+, Multiplying by 2 gives the equation:
+$$
+2S = 2h + 4(h - 1) + 8(h - 2) + 16(h - 3) + ... + 2^h(1) \qquad (6.2)
+$$
+, We subtract these two equations and obtain Equation(6.3). We find that certain terms almost cancel. For instance, we have $2h - 2(h - 1) = 2$, $4(h - 1) - 4(h - 2) = 4$, and so on. The last term in Equation(6.2), $2^h$, does not appear in Equation(6.1); thus, it appears in Equation(6.3). The first term in Equation(6.1), $h$, does not appear in Equation(6.2); thus, $-h$ appears in Equation(6.3). We obtain:
+$$
+S = -h + 2 + 4 + 8 + ... + 2^{h - 1} + 2^h = (2^{h + 1} - 1) - (h + 1) \qquad (6.3)
+$$
+, which proves the theorem.
 
-**证明** 容易看出，该树由高度$h$上的1个结点，高度$h - 1$上的2个结点，高度$h - 2$上的$2^2$个结点以及一般在高度$h - i$上的$2^i$个结点组成。则所有结点的高度和为：
-
-$S = \sum_{i = 0}^{h} 2^i(h - i)$
-
-$= h + 2(h - 1) + 4(h - 2) + 8(h - 3) + 16(h - 4) + ... + 2^{h - 1}(1) \qquad (6.1)$
-
-两边乘以$2$得到方程：
-
-$2S = 2h + 4(h - 1) + 8(h - 2) + 16(h - 3) + ... + 2^h(1) \qquad (6.2)$
-
-将这两个方程相减得到方程$(6.3)$。我们发现，非常数项几乎都消去了，例如我们有$2h - 2(h - 1) = 2$, $4(h - 1) - 4(h - 2) = 4$，等等。方程$(6.2)$的最后一项$2^h$在方程$(6.1)$中不出现；因此，它出现在方程$(6.3)$中。方程$(6.1)$中的第一项$h$在方程$(6.2)$中不出现；因此，$-h$出现在方程$(6.3)$中。我们得到：
-
-$S = -h + 2 + 4 + 8 + ... + 2^{h - 1} + 2^h = (2^{h + 1} - 1) - (h + 1) \qquad (6.3)$
-
-定理得证。
-
-例，二叉堆实现：
+Example. implement of binary heap:
 
 ```c++
 #include <vector>
@@ -193,79 +161,61 @@ private:
 
 
 
-## 6.4 优先队列的应用
+## Applications of Priority Queues
 
-### 6.4.1 选择问题
+### The Selection Problem
 
-对于`选择问题`，以下两个算法，在$k = \lceil N/2 \rceil$的极端情形下，这两个算法都以$O(NlogN)$时间运行：
+We give two algorithms here, both of which run in $O(NlogN)$ in the extreme case of $k = \lceil N/2 \rceil$, which is a distinct improvement:
 
-1. 算法6A
+1. Algorithm 6A
 
-   先将$N$个元素读入一个数组，然后对该数组应用`buildHeap算法`。最后，执行$k$次deleteMin操作。最后从该堆提取的元素就是正确答案。显然，只要改变堆序性质，就可以求解原始的问题：找出第$k$个最大的元素。
+   We read the $N$ elements into an array. We then apply the `buildHeap` algorithm to this array. Finally, we perform $k$ `deleteMin` operations. The last element extracted from the heap is our answer. It should be clear that by changing the heap-order property, we could solve the original problem of finding the $k$th largest element.
 
-2. 算法6B
+2. Algorithm 6B
 
-   在任一时刻都将维持$k$个最大元素的集合$S$。在前$k$个元素读入以后，当再读入一个新的元素时，该元素将与第$k$个最大元素进行比较，设第$k$个最大的元素为$S_k$。注意，$S_k$是$S$中最小的元素。如果新的元素更大，那么用新元素代替$S$中的$S_k$。此时，$S$将有一个新的最小元素，它可能是新添加进来的元素，也可能不是。再输入完成时，我们找到$S$中的最小元素，将其返回，它就是该问题的答案。
-
-### 6.4.2 事件模拟
-
-TODO
+   For the second algorithm, we return to the original problem and find the $k$th largest element. We use the idea from algorithm 1B. At any point in time we will maintain a set $S$ of the $k$ largest elements. After the first $k$ elements are read, when a new element is read it is compared with the $k$th largest element, which we denote by $S_k$. Notice that $S_k$ is the smallest element in $S$. If the new element is larger, then it replaces $S_k$ in $S$. $S$ will then have a new smallest element, which may or may not be the newly added element. At the end of the input, we find the smallest element in $S$ and return it as the answer.
 
 
 
-## 6.5 d堆
+## d-Heaps
 
-d堆是二叉堆的简单推广，它与二叉堆很像，但其所有的结点都有d个儿子（二叉堆是2堆）。
+**d-heap**, which is exactly like a binary heap except that all nodes have $d$ children (thus, a binary heap is a 2-heap).
 
-![6-19](res/6_19.png)
-
-*一个3堆（d == 3）*
+![6_19](res/6_19.png)
 
 
 
-## 6.6 左式堆
+## Leftist Heaps
 
-`左式堆（leftist heap）`像二叉堆那样既有结构性质，又有堆序性质；和所有使用的堆一样，左式堆具有相同的堆序性质，左式堆也是二叉树。左式堆和二叉堆唯一的区别是：左式堆不是理想平衡的（perfectly balanced），而且事实上是趋于非常不平衡的。
+Like a binary heap, a **leftist heap** has both a structural property and an ordering property. Indeed, a leftist heap, like virtually all heaps used, has the same heap-order property we have already seen. Furthermore, a leftist heap is also a binary tree. The only difference between a leftist heap and a binary heap is that leftist heaps are not perfectly balanced, but actually attempt to be very unbalanced.
 
-### 6.6.1 左式堆性质
+### Leftist Heap Property
 
-把任一结点$X$的`零路径长（null path length）`$npl(X)$定义为从$X$到一个不具有两个儿子的结点的最短路径的长；因此，具有0个或1个儿子的结点的$npl$为0，而$npl(NULL) = -1$。
+We define the **null path length**, $npl(X)$, of any node $X$ to be the length of the shortest path from $X$ to a node without two children. Thus, the `npl` of a node with zero or one child is 0, while $npl(nullptr) = -1$.
 
 ![6_20](res/6_20.png)
 
-*两棵树的零路径长；只有左边的树是左式的*
+The leftist heap property is that for every node $X$ in the heap, the null path length of the left child is at least as large as that of the right child.
 
-左式堆性质：对于堆中的每一个结点$X$，左儿子的零路径长至少与右儿子的零路径长一样大。
+**Theorem 6.2** A leftist tree with $r$ nodes on the right path must have at least $2^r - 1$ nodes.
 
-**定理6.2** 在右路径上有$r$个结点的左式树必然至少有$2^r - 1$个结点。
+**Proof** The proof is by induction. If $r = 1$, there must be at least one tree node. Otherwise, suppose that the theorem is true for $1, 2, ..., r$. Consider a leftist tree with $r + 1$ nodes on the right path. Then the root has a right subtree with $r$ nodes on the right path, and a left subtree with at least $r$ nodes on the right path (otherwise it would not be leftist). Applying the inductive hypothesis to these subtrees yields a minimum of $2^r - 1$ nodes in each subtree. This plus the root gives at least $2^{r+1} - 1$ nodes in the tree, proving the theorem.
 
-**证明** 数学归纳法证明。如果$r = 1$，则必然至少存在一个树结点。其次，设定理对$1, 2, ..., r$个结点成立。考虑在右路径上有$r + 1$个结点的左式树。此时，根具有在右路径上含有$r$个结点的右子树，以及在右路径上至少含有$r$个结点的左子树（否则它就不是左式树）。对这两条子树应用归纳假设，得知在每棵子树上最少有$2^r - 1$个结点，再加上根结点，于是在该树上至少有$2^{r+1} - 1$个结点，定理得证。
+From this theorem, it follows immediately that a leftist tree of $N$ nodes has a right path containing at most $\lfloor log(N + 1) \rfloor$ nodes.
 
-从上述定理可以得到：$N$个结点的左式树有一条右路径最多含有$\lfloor log(N + 1) \rfloor$个结点。
-
-### 6.6.2 左式堆操作
+### Leftist Heap Operations
 
 ![6_21](res/6_21.png)
 
-*两个左式堆$H_1$和$H_2$*
-
 ![6_22](res/6_22.png)
-
-*将H_2与H_1的右子堆合并的结果*
 
 ![6_23](res/6_23.png)
 
-*将前面图中的左式堆作为$H_1$的右儿子接上后的结果*
-
 ![6_24](res/6_24.png)
-
-*交换$H_1$的根的儿子得到的结果*
 
 ![6_28](res/6_28.png)
 
-*合并$H_1$和$H_2$的右路径的结果*
-
-例，左式堆实现：
+Example. the implement of LeftistHeap:
 
 ```c++
 
@@ -343,91 +293,69 @@ private:
 
 
 
-## 6.7 斜堆
+## Skew Heaps
 
-`斜堆（skew heap）`是具有堆序的二叉树，但是不存在对树的结构限制。
+A **skew heap** is a self-adjusting version of a leftist heap that is incredibly simple to implement.
 
 ![6_31](res/6_31.png)
 
-*两个斜堆$H_1$和$H_2$*
-
 ![6_32](res/6_32.png)
-
-*将$H_2$与$H_1$的右子堆合并的结果*
 
 ![6_33](res/6_33.png)
 
-*合并斜堆$H_1$和$H_2$的结果*
 
 
+## Binomial Queues
 
-## 6.8 二项队列
+### Binomial Queue Structure
 
-### 6.8.1 二项队列结构
+**Binomial queues** differe from all the priority queue implementations that we have seen in that a binomial queue is not a heap-ordered tree but rather a `collection` of heap-ordered trees, known as a **forest**. Each of the heap-ordered trees is of a constrained form known as a **binomial tree**.
 
-`二项队列（binomial queue）`不是一棵堆序的树，而是堆序的树的集合，称为**森林（forest）**。
+### Binomial Queue Operations
+
+The minimum element can then be found by scanning the roots of all the trees. Since there are at most log $N$ different trees, the minimum can be found in $O(log N)$ time.
 
 ![6_34](res/6_34.png)
 
-*二项树$B_0, B_1, B_2, B_3以及B_4$*
-
-二项树$B_k$由一个带有儿子$B_0, B_1, ..., B_{k - 1}$的根组成。高度为$k$的二项树恰好有$2^k$个结点，而在深度$d$处的结点数是二项系数${k \choose d}$。如果我们把堆序施加到二项树上并允许任意高度上最多一棵二项树，那么我们能够用二项树的集合唯一地表示任意大小的优先队列。
-
-例，6个元素的优先队列可以表示为下图的形状：
-
 ![6_35](res/6_35.png)
-
-*具有6个元素的二项队列$H_1$*
-
-### 6.8.2 二项队列操作
-
-最小元可以通过搜索所有树的根来找出，由于最多有$logN$棵不同的树，因此最小元可以以$O(logN)$时间找到。
 
 ![6_36](res/6_36.png)
 
-*两个二项队列$H_1$和$H_2$*
-
 ![6_37](res/6_37.png)
-
-*$H_1$和$H_2$中两棵$B_1$树合并*
 
 ![6_38](res/6_38.png)
 
-*二项队列$H_3$：合并$H_1$和$H_2$的结果*
-
 ![6_39](res/6_39.png)
 
-*依次插入1~7来构成一个二项队列*
+![6_40](res/6_40.png)
+
+![6_41](res/6_41.png)
+
+![6_42](res/6_42.png)
+
+![6_43](res/6_43.png)
+
+![6_44](res/6_44.png)
+
+![6_45](res/6_45.png)
 
 ![6_46](res/6_46.png)
 
-*二项队列$H_3$*
-
 ![6_47](res/6_47.png)
-
-*二项队列H'，包含除$B_3$外的$H_3$中所有的二项树*
 
 ![6_48](res/6_48.png)
 
-*二项队列H''：除去$12$后的$B_3$*
-
 ![6_49](res/6_49.png)
 
-*deleteMin应用到$H_3$的结果*
-
-### 6.8.3 二项队列的实现
+### Implementation of Binomial Queues
 
 ![6_50](res/6_50.png)
 
-*画成森林的二项队列$H_3$*
-
 ![6_51](res/6_51.png)
-
-*二项队列$H_3$的表示方式*
 
 ![6_53](res/6_53.png)
 
-*合并两棵二项树*
+Example. Binomial queue class interface and node definition:
 
 ```c++
 template <typename Comparable>
@@ -565,7 +493,7 @@ private:
 
 
 
-## 6.9 标准库中的优先队列
+## Priority Queues in the Standard Library
 
 ```c++
 #include <iostream>

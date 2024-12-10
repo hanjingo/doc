@@ -1,39 +1,43 @@
-# 第20章 van Emde Boas树
+[中文版](chapter20_zh.md) | English
+
+# 20 van Emde Boas Trees
+
+[TOC]
 
 
 
-## 20.1 基本方法
+## Preliminary approaches
 
-**直接寻址**
-
-**叠加的二叉树结构**
+**Direct addressing**
 
 ![20_1](res/20_1.png)
 
-**叠加的一棵高度恒定的树**
+**Superimposing a binary tree structure**
+
+**Superimposing a tree of constant height**
 
 ![20_2](res/20_2.png)
 
 
 
-## 20.2 递归结构
+## A recursive structure
 
 ![20_3](res/20_3.png)
 
-### 20.2.1 原型van Emde Boas结构
+### Proto van Emde Boas structures
 
-对于全域$\{0, 1, 2, ..., u - 1\}$，定义**原型van Emde Boas结构**(proto van Emde Boas structure)或**proto-vEB结构**(proto-vEB structure)，记作$proto-vEB(u)$，可以如下递归定义。每个$proto-vEB(u)$结构都包含一个给定全域大小的属性$u$。另外，它包含以下特征：
+For the universe $\{0, 1, 2, ..., u - 1\}$, we define a **proto van Emde Boas structure**, or **proto-vEB structure**, which we denote as $proto-vEB(u)$, recursively as follows. Each $proto-vEB(u)$ structure contains an attribute $u$ giving its universe size. In addition, it contains the following:
 
-- 如果$u = 2$，那么它是基础大小，只包含一个两个位的数组$A[0..1]$。
-- 否则，对某个整数$k \geqslant 1, u = 2^{2^k}$，于是有$u \geqslant 4$。除了全域大小$u$之外，$proto-vEB(u)$还有以下属性：
-  1. 一个名为summary的指针，指向一个$proto-vEB(\sqrt u)$结构。
-  2. 一个数组$cluster[1 .. \sqrt{u} - 1]$，存储$\sqrt{u}$个指针，每个指针都指向一个$proto-vEB(\sqrt{u})$结构。
+- If $u = 2$, then it is the base size, and it contains an array $A[0..1]$ of two bits.
+- Otherwise, $u = 2^{2^k}$ for some integer $k \geq 1$, so that $u \geq 4$. In addition to the universe size $u$, the data structure $proto-vEB(u)$ contains the following attributes:
+  - a pointer named `summary` to a $proto-vEB(\sqrt{u})$ structure and
+  - an array $cluster[0..\sqrt{u} - 1]$ of $\sqrt{u}$ pointers, each to a $proto-vEB(\sqrt{u})$ structure.
 
 ![20_4](res/20_4.png)
 
-### 20.2.2 原型van Emde Boas结构上的操作
+### Operations on a proto van Emde Boas structure
 
-**判断一个值是否在集合中**
+**Determining whether a value is in the set**
 $$
 \begin{align}
 & PROTO-vEB-MEMBER(V, x) \\
@@ -42,7 +46,7 @@ $$
 & else\ return\ PROTO-vEB-MEMBER(V.cluster[high(x)], low(x))
 \end{align}
 $$
-**查找最小元素**
+**Finding the minimum element**
 $$
 \begin{align}
 & PROTO-vEB-MINIMUM(V) \\
@@ -59,9 +63,7 @@ $$
 & \qquad \qquad return\ index(min-cluster, offset)
 \end{align}
 $$
-$PROTO-vEB-MINIMUM$的运行时间为$\theta(lg\ u)$。
-
-**查找后继**
+**Finding the successor**
 $$
 \begin{align}
 & PROTO-vEB-SUCCESSOR(V, x) \\
@@ -79,7 +81,7 @@ $$
 & \qquad \qquad \qquad return\ index(succ-cluster, offset)
 \end{align}
 $$
-**插入元素**
+**Inserting an element**
 $$
 \begin{align}
 & PROTO-vEB-INSERT(V, x) \\
@@ -89,23 +91,26 @@ $$
 & \qquad PROTO-vEB-INSERT(V.summary, high(x))
 \end{align}
 $$
-**删除元素**
+**Deleting an element**
 
 
 
-## 20.3 van Emde Boas树及其操作
-
-### 20.3.1 van Emde Boas树
+## The van Emde Boas tree
 
 ![20_5](res/20_5.png)
 
+### van Emde Boas trees
+
+A vEB tree contains two attributes not found in a proto-vEB structure:
+
+- $min$ stores the minimum element in the vEB tree, and
+- $max$ stores the maximum element in the vEB tree.
+
 ![20_6](res/20_6.png)
 
-不应使用一棵van Emde Boas树用于**仅仅执行少量操作的情况**，因为建立数据结构的时间要超过单个操作节省的时间。
+### Operations on a van Emde Boas tree
 
-### 20.3.2 van Emde Boas树的操作
-
-**查找最小元素和最大元素**
+**Finding the minimum and maximum elements**
 $$
 \begin{align}
 & vEB-TREE-MINIMUM(V) \\
@@ -120,7 +125,7 @@ $$
 \end{align}
 $$
 
-**判断一个值是否在集合中**
+**Determining whether a value is in the set**
 $$
 \begin{align}
 & vEB-TREE-MEMBER(V, x) \\
@@ -131,7 +136,7 @@ $$
 & else\ return\ vEB-TREE-MEMBER(V.cluster[high(x)], low(x))
 \end{align}
 $$
-**查找后继和前驱**
+**Finding the successor and predecessor**
 $$
 \begin{align}
 & vEB-TREE-SUCCESSOR(V, x) \\
@@ -176,7 +181,7 @@ $$
 \end{align}
 $$
 
-**插入一个元素**
+**Inserting an element**
 $$
 \begin{align}
 & vEB-EMPTY-TREE-INSERT(V, x) \\
@@ -202,6 +207,6 @@ $$
 \end{align}
 $$
 
-**删除一个元素**
+**Deleting an element**
 
 TODO

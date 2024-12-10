@@ -1,21 +1,27 @@
-# 第6章 堆排序
+[中文版](chapter6_zh.md) | English
+
+# 6 Heapsort
+
+[TOC]
 
 
 
-## 6.1 堆
+## Heaps
+
+The **(binary) heap** data structure is an array object that we can view as a nearly complete binary tree.
 
 ![6_1](res/6_1.png)
 
-二叉堆可以分为两种形式：
+There are two kinds of binary heaps:
 
-- 最大堆：除根以外的所有结点$i$都有$A[PARENT(i)] \geqslant A[i]$。
-- 最小堆：除根以外的所有结点$i$都有$A[PARENT(i)] \leqslant A[i]$。
+- **max-heap**: the **max-heap property** is that for every node $i$ other than the root, $A[PARENT(i)] \geq A[i]$.
+- **min-heap**: the **min-heap property** is that for every node $i$ other than the root, $A[PARENT(i)] \leq A[i]$.
 
-堆结构上的一些基本操作的运行时间至多与树的高度成正比，即时间复杂度为$O(lgn)$。
+The basic operations on heaps run in time at most proportional to the height of the tree and thus take $O(lg\ n)$ time.
 
 
 
-## 6.2 维护堆的性质
+## Maintaining the heap property
 
 ![6_2](res/6_2.png)
 $$
@@ -33,13 +39,11 @@ MAX-HEAPIFY(A, i) \\
 & \qquad MAX-HEAPIFY(A, largest)
 \end{align}
 $$
-MAX-HEAPIFY的运行时间：$T(n) \leqslant T(2n / 3) + \theta(1)$的解为：$T(n) = O(lgn)$。
-
-对于一个树高为$h$的节点来说，MAX-HEAPIFY的时间复杂度为$o(h)$。
+The running time of $MAX-HEAPIFY$ by the recurrence $T(n) \leq T(2n / 3) + \theta(1)$. The solution to this recurrence, is $T(n) = O(lg\ n)$. Alternatively, we can characterize the running time of $MAX-HEAPIFY$ on a node of height $h$ as $O(h)$.
 
 
 
-## 6.3 建堆
+## Building a heap
 
 ![6_3](res/6_3.png)
 $$
@@ -50,11 +54,13 @@ BUILD-MAX-HEAP(A) \\
 & \qquad MAX-HEAPIFY(A, i)
 \end{align}
 $$
-BUILD-MAX-HEAP的总代价为：$\sum_{\lfloor lg n \rfloor}^{h = 0} \lceil \frac{n}{2^{h + 1}} \rceil O(h) = O(n \sum_{h = 0}^{\lfloor lgn \rfloor} \frac{h}{2^h}) = O(n \sum_{h = 0}^{\infty} \frac{h}{2^h}) = O(n)$。
+The total cost of BUILD-MAX-HEAP:
+
+$\sum^{\lfloor lg n \rfloor}_{h = 0} \lceil \frac{n}{2^{h + 1}} \rceil O(h) = O(n \sum_{h = 0}^{\lfloor lgn \rfloor} \frac{h}{2^h}) = O(n \sum_{h = 0}^{\infty} \frac{h}{2^h}) = O(n)$。
 
 
 
-## 6.4 堆排序算法
+## The heapsort algorithm
 
 ![6_4](res/6_4.png)
 $$
@@ -69,14 +75,15 @@ HEAPSORT(A) \\
 $$
 
 
-## 6.5 优先队列
 
-**优先队列（priority queue）** 是一种用来维护由一组元素构成的集合$S$的数据结构，其中的每一个元素都有一个相关的值，称为**关键字（key）**。一个**最大优先队列**支持以下操作：
+## Priority queues
 
-- $INSERT(S, x)$：把元素$x$插入集合$S$中。这一操作等价于$S = S \cup \{x\}$。
-- $MAXIMUM(S)$：返回$S$中具有最大键字的元素。
-- $EXTRACT-MAX(S)$：去掉并返回$S$中的具有最大键字的元素。
-- $INCREASE-KEY(S, x, k)$：将元素$x$的关键字值增加到$k$，这里假设$k$的值不小于$x$的原关键字值。
+A **priority queue** is a data structure for maintaining a set $S$ of elements, each with an associated value called a **key**. A **max-priority queue** supports the following operations:
+
+- $INSERT(S, x)$ inserts the element $x$ into the set $S$, which is equivalent to the operation $S = S \cup \{x\}$.
+- $MAXIMUM(S)$ returns the element of $S$ with the largest key.
+- $EXTRACT-MAX(S)$ removes and returns the element of $S$ with the largest key.
+- $INCREASE-KEY(S, x, k)$ increases the value of element $x$'s key to the new value $k$, which is assumed to be at least as large as $x$'s current key value.
 
 ![6_5](res/6_5.png)
 $$

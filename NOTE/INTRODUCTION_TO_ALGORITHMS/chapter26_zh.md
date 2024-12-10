@@ -100,7 +100,9 @@ $$
 & \qquad \qquad else(v, u).f = (v, u).f - c_f(p)
 \end{align}
 $$
-![26_6](res/26_6.png)
+![26_6a](res/26_6a.png)
+
+![26_6b](res/26_6b.png)
 
 ![26_7](res/26_7.png)
 
@@ -226,9 +228,9 @@ $$
 & \qquad else\ u.current = v.next - neighbor
 \end{align}
 $$
-![26_9](res/26_9.png)
+![26_9a](res/26_9a.png)
 
-![26_9_1](res/26_9_1.png)
+![26_9b](res/26_9b.png)
 
 **引理 26.29** 如果$DISCHARGE$操作在第7行调用$PUSH(u, v)$操作，则推送操作适用于边$(u, v)$。如果$DISCHARGE$操作在第4行调用$RELABEL(u)$操作，则重贴标签操作适用于结点$u$。
 
@@ -249,9 +251,9 @@ $$
 & \qquad \qquad u = u.next 
 \end{align}
 $$
-![26_10](res/26_10.png)
+![26_10a](res/26_10a.png)
 
-![26_10_1](res/26_10_1.png)
+![26_10b](res/26_10b.png)
 
 **定理 26.30** 前置重贴标签算法在任何流网络$G = (V, E)$上的运行时间为$O(V^3)$。
 

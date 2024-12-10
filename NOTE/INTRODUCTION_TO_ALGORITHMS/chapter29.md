@@ -1,38 +1,42 @@
-# 第29章 线性规划
+[中文版](chapter29_zh.md) | English
+
+# 29 Linear Programming
+
+[TOC]
 
 
 
 ![29_2](res/29_2.png)
 
+## Standard and slack forms
 
+**Standard form**
 
-## 29.1 标准型和松弛型
-
-**标准型**
-
-在标准型中，我们已知$n$个实数$c_1, c_2, ..., c_n$；$m$个实数$b_1, b_2, ..., b_m$，以及$mn$个实数$a_{ij}$，其中$i = 1, 2, ..., m, j = 1, 2, ..., n$。我们希望找到$n$个实数$x_1, x_2, ..., x_n$，最大化$\sum_{j = 1}^{n} c_j x_j$，满足约束条件：
+In **standard form**, we are given $n$ real numbers $c_1, c_2, ..., c_n$; $m$ real numbers $b_1, b_2, ..., b_m$; and $mn$ real numbers $a_{ij}$ for $i = 1, 2, ..., m$ and $j = 1, 2, ..., n$. We wish to find $n$ real numbers $x_1, x_2, ..., x_n$ that maximze $\sum_{j = 1}^{n} c_j x_j$ subject to:
 $$
 \begin{equation}\begin{split} 
-\sum_{j = 1}^{n}a_{ij}x_{j} &\leqslant b_i, i = 1, 2, ..., m \\
-x_j &\geqslant 0, j = 1, 2, ..., n
+\sum_{j = 1}^{n}a_{ij}x_{j} &\leq b_i,\ for\ i = 1, 2, ..., m \\
+x_j &\geq 0,\ for\ j = 1, 2, ..., n
 \end{split}\end{equation}
 $$
 
 
-## 29.2 将问题表达为线性规划
+
+## Formulating problems as linear programs
 
 ![29_3](res/29_3.png)
 
 
 
-## 29.3 单纯形算法
+## The simplex algorithm
 
-**引理 29.1** 考虑当$a_{le} \neq 0$时对$PIVOT(N, B, A, b, c, v, l, e)$的调用。令调用返回值为$(\hat{N}, \hat{B}, \hat{A}, \hat{b}, \hat{c}, \hat{v})$，令$\overline x$表示调用之后的基本解。那么：
+**Lemma 29.1** Consider a call to $PIVOT(N, B, A, b, c, v, l, e)$ in which $a_{1e} \neq 0$. Let the values returned from the call be $(\hat{N}, \hat{B}, \hat{A}, \hat{b}, \hat{c}, \hat{v})$, and let $\overline{x}$ denote the basic solution after the call. Then:
 
-1. 对每个$j \in \hat{N}, \overline{x_j} = 0$。
-2. $\overline{x_e} = b_l / a_{le}$。
-3. 对每个$i \in \hat{B} - \{e\}, \overline{x_i} = b_i - a_{ie}\hat{b_e}$。
+1. $\overline{x}_j = 0 \text{ for each } j \in \hat{N}$.
+2. $\overline{x}_e = b_1 / a_{le}$.
+3. $\overline{x}_i = b_i - a_{ie} \hat{b}_e \text{ for each } i \in \hat{B} - \{e\}$.
 
+Example:
 $$
 \begin{align}
 & SIMPLEX(A, b, c) \\
@@ -56,51 +60,44 @@ $$
 \end{align}
 $$
 
-**引理 29.2** 给定一个线性规划$(A, b, c)$。假设在$SIMPLEX$第1行中对$INITIALIZE-SIMPLEX$的调用返回一个基本解可行的松弛型。如果$SIMPLEX$在第17行返回一个解，则这个解是此线性规划的一个可行解。如果$SIMPLEX$在第11行返回“无界”，则此线性规划是无界的。
+**Lemma 29.2** Given a linear program $(A, b, c)$, suppose that the call to $INITIALIZE-SIMPLEX$ in line 1 of $SIMPLEX$ returns a slack form for which the basic solution is feasible. Then if $SIMPLEX$ returns a solution in line 17, that solution is a feasible solution to the linear program. If $SIMPLEX$ returns "unbounded" in line 11, the linear program is unbounded.
 
-**引理 29.3** 设$I$是一个下标集合。对于每一个$j \in I$，设$a_j$和$\beta_{j}$是实数，并令$x_j$是一个实数变量。设$\gamma$是任意的实数。假设对于变量$x_j$的任何设置，我们有：
+**Lemma 29.3** Let $I$ be a set of indices. For each $j \in I$, let $\alpha_{j}$ and $\beta_{j}$ be real numbers, and let $x_j$ be a real-valued variable. Let $\gamma$ be any real number. Suppose that for any settings of the $x_j$, we have:
 $$
 \sum_{j \in I}\alpha_{j}x_{j} = \gamma + \sum_{j \in I}\beta_{j}x_{j}
 $$
-那么对于任意的$j \in I, \alpha_{j} = \beta_{j}$，且$\gamma = 0$。
+, Then $\alpha_{j} = \beta_{j}$ for each $j \in I$, and $\gamma = 0$.
 
-**引理 29.4** 设$(A, b, c)$是一个线性规划的标准形式。给定基本变量的一个集合$B$，那么关联的松弛型是唯一确定的。
+**Lemma 29.4** Let $(A, b, c)$ be a linear program in standard form. Given a set $B$ of basic variables, the associated slack form is uniquely determined.
 
-**引理 29.5** 如果$SIMPLEX$在至多${n+m \choose m}$次迭代内不终止，那么它是循环的。
+**Lemma 29.5** If $SIMPLEX$ fails to terminate in at most ${n+m \choose m}$ iterations, then it cycles.
 
-**引理 29.6** 如果$SIMPLEX$的第4行和第9行总是通过选择具有最小下标的变量来打破目标值不变的局面，那么$SIMPLEX$必然终止。
+**Lemma 29.6** If lines 4 and 9 of $SIMPLEX$ always break ties by choosing the variable with the smallest index, then $SIMPLEX$ must terminate.
 
-**引理 29.7** 假设$INITIALIZE-SIMPLEX$返回一个基本解可行的松弛型，则$SIMPLEX$要么报告一个线性规则是无界的，要么在至多${n + m \choose m}$次循环内终止，并得到一个可行解。
+**Lemma 29.7** Assuming that $INITIALIZE-SIMPLEX$ returns a slack form for which the basic solution is feasible, $SIMPLEX$ either reports that a linear program is unbounded, or it terminates with a feasible solution in at most ${n + m \choose m}$ iterations.
 
 
 
-## 29.4 对偶性
+## Duality
 
-**引理 29.8**（线性规划弱对偶性）设$\overline{x}$表示公式$\sum_{j = 1}^{n}c_j x_j$，$\sum_{j = 1}^{n}a_{ij}x_j \leqslant b_i, i = 1, 2, ..., m$，$x_j \geqslant 0, j = 1, 2, ..., n$。中原始线性规划的任意一个可行解，$\overline{y}$表示公式$\sum_{i = 1}^{m}b_i y_i$，$\sum_{i = 1}^{m} a_{ij} y_i \geqslant c_j, j = 1, 2, ..., n$，$y_i \geqslant 0, i = 1, 2, ..., m$中对偶问题的任意一个可行解。那么有：
+**Lemma 29.8 (Weak linear-programming duality)** Let $\overline{x}$ be any feasible solution to the primal linear program in (29.16)-(29.18) and let $\overline{y}$ be any feasible solution to the dual linear program in (29.83)-(29.85). Then, we have:
 $$
 \sum_{j = 1}^{n} c_j \overline{x_j} \leqslant \sum_{i = 1}^{m} b_i \overline{y_i}
 $$
-**推论 29.9** 令$\overline{x}$表示一个原始线性规划$(A, b, c)$的一个可行解，令$\overline{y}$表示相应对偶问题的一个可行解。如果
+**Corollary 29.9** Let $\overline{x}$ be a feasible solution to a primal linear program $(A, b, c)$, and let $\overline{y}$ be a feasible solution to the corresponding dual linear program. If:
 $$
 \sum_{j = 1}^{n} c_j \overline{x_j} = \sum_{i = 1}^{m} b_i \overline{y_i}
 $$
-那么$\overline{x}$和$\overline{y}$分别是原始线性规划和对偶线性规划的最优解。
+, then $\overline{x}$ and $\overline{y}$ are optimal solutions to the primal and dual linear programs, respectively.
 
-**定理 29.10**（线性规划对偶性）假设$SIMPLEX$在原始线性规划$(A, b, c)$上返回值$\overline{x} = (\overline{x_1}, \overline{x_2}, ..., \overline{x_n})$。令$N$和$B$分别表示最终松弛型非基本便令和基本变量的集合，令$c'$表示最终松弛型中的系数，令$\overline{y} = (\overline{y_1}, \overline{y_2}, ..., \overline{y_m})$由公式：
-$$
-\overline{y_i} = 
-\begin{cases}
--c_{n + i}', &若(n + i) \in N \\
-0, &其它
-\end{cases}
-$$
-定义。那么$\overline{x}$是原始线性规划的一个最优解，$\overline{y}$是对偶性规划的一个最优解，以及：
+**Theorem 29.10 (Linear-programming duality)** Suppose that $SIMPLEX$ returns values $\overline{x} = (\overline{x_1}, \overline{x_2}, ..., \overline{x_n})$ for the primal linear program $(A, b, c)$. Let $N$ and $B$ denote the nonbasic and basic variables for the final slack form, let $c'$ denote the coefficients in the final slack form, and let $\overline{y} = (\overline{y_1}, \overline{y_2}, ..., \overline{y_m})$ be defined by equation (29.91). Then $\overline{x}$ is an optimal solution to the primal linear program, $\overline{y}$ is an optimal solution to the dual linear program, and:
 $$
 \sum_{j = 1}^{n} c_j \overline{x_j} = \sum_{i = 1}^{m}b_j \overline{y_i}
 $$
 
 
-## 29.5 初始基本可行解
+
+## The initial basic feasible solution
 
 $$
 \begin{align}
@@ -124,13 +121,26 @@ $$
 \end{align}
 $$
 
-**引理 29.12** 如果一个线性规划$L$没有可行解，那么$INITIALIZE-SIMPLEX$返回"不可行"；否则，它返回一个基本解可行的有效松弛型。
+**Lemma 29.11** Let $L$ be a linear program in standard form, given as in (29.16)-(29.18). Let $x_0$ be a new variable, and let $L_{aux}$ be the following linear program with $n + 1$ variables:
 
-**定理 29.13**（线性规划基本定理）任何以标准型给出的线性规划$L$可能会是如下情形：
+maximize: 
+$$
+-x_0
+$$
+subject to: 
+$$
+\sum_{j = 1}^{n}a_{ij}x_j - x_0 \leq b_i &for\ i = 1, 2, ..., m, \\
+x_j \geq 0 &for\ j = 0, 1, ..., n
+$$
+, Then $L$ is feasible if and only if the optimal objective value of $L_{aux}$ is 0.
 
-1. 有一个有限目标值的最优解。
-2. 不可行。
-3. 无界。
+**Lemma 29.12** If a linear program $L$ has no feasible solution, then $INITIALIZE-SIMPLEX$ returns "infeasible". Otherwise, it returns a valid slack form for which the basic solution is feasible.
 
-如果$L$是不可行的。$SIMPLEX$返回"不可行"。如果$L$是无界的，$SIMPLEX$返回"无界"。否则，$SIMPLEX$返回一个有限目标值的最优解。
+**Theorem 29.13 (Fundamental theorem of linear programming)** Any linear program $L$, given in standard form, either:
+
+1. has an optimal solution with a finite objective value.
+2. is infeasible, or
+3. is unbounded.
+
+If $L$ is infeasible, $SIMPLEX$ returns "infeasible". If $L$ is unbounded, $SIMPLEX$ returns "unbounded". Otherwise, $SIMPLEX$ returns an optimal solution with a finite objective value.
 

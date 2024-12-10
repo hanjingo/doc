@@ -1,52 +1,22 @@
-# 第3章 表，栈和队列
+# CHAPTER 3 Lists, Stacks, and Queues
 
 [TOC]
 
+An `abstract data type`(ADT) is a set of objects together with a set of operations.
 
+We deal with a general list of the form $A_0, A_1, A_2, ..., A_{N - 1}$. We say that the size of this list is $N$. We will call the special list of size 0 an `empty list`.
 
-## 3.1 抽象数据类型（ADT）
-
-`抽象数据类型（abstract data type，ADT）` 是带有一组操作的一些对象的集合。
-
-
-
-## 3.2 表ADT
-
-`空表（empty list）`大小为0的表。
-
-### 3.2.1 表的简单数组实现
-
-### 3.2.2 简单链表
+## Linked Lists
 
 ![3_1](res/3_1.png)
 
-*一个链表*
-
 ![3_2](res/3_2.png)
-
-*从链表中删除*
 
 ![3_3](res/3_3.png)
 
-*向链表插入*
-
 ![3_4](res/3_4.png)
 
-*双向链表*
-
-
-
-## 3.3 STL中的向量和表
-
-### 3.3.1 迭代器
-
-### 3.3.2 示例：对表使用erase
-
-### 3.3.3 const_iterator
-
-
-
-## 3.4 向量的实现
+**Implementation of vector**:
 
 ```c++
 template <typename Object>
@@ -129,25 +99,15 @@ private:
 };
 ```
 
-
-
-## 3.5 表的实现
+**Implementation of list:**
 
 ![3_9](res/3_9.png)
 
-*具有表头节点和尾节点的双向链表*
-
 ![3_10](res/3_10.png)
-
-*具有表头节点和尾节点的空双向链表*
 
 ![3_17](res/3_17.png)
 
-*将新节点插入双向链表然后按指示的顺序改变指针*
-
 ![3_19](res/3_19.png)
-
-*从双向链表中删除由p指定的节点*
 
 ```c++
 template <typename Object>
@@ -294,37 +254,42 @@ private:
 
 
 
-## 3.6 栈ADT
+## Stack
 
-### 3.6.1 栈模型
+![3_23](res/3_23.png)
 
 ![3_24](res/3_24.png)
 
-*栈模型：只有栈顶元素是可访问的*
+### Implementation of Stacks
 
-### 3.6.2 栈的实现
+- Linked List Implementation of Stacks
+- Array Implementation of Stacks
 
-- 基于list
-- 基于vector
+### Applications
 
-### 3.6.3 应用
-
-1. 平衡符号
-2. 后缀表达式
-3. 中缀到后缀的转换
-4. 函数调用
+- Balancing Symbols
+- Postfix Expressions
+- Infix to Postfix Conversion
+- Function Calls
 
 
 
-## 3.7 队列ADT
+## The Queue ADT
 
-### 3.7.1 队列模型
+### Array Implementation of Queues
 
 ![3_27](res/3_27.png)
 
-*队列模型*
+![queue_initial](res/queue_initial.png)
 
-### 3.7.2 队列的数组实现
+![queue_enqueue_1](res/queue_enqueue_1.png)
 
-### 3.7.3 队列的应用
+![queue_enqueue_2](res/queue_enqueue_2.png)
 
+![queue_dequeue_1](res/queue_dequeue_1.png)
+
+![queue_dequeue_2](res/queue_dequeue_2.png)
+
+![queue_dequeue_3](res/queue_dequeue_3.png)
+
+![queue_dequeue_4](res/queue_dequeue_4.png)

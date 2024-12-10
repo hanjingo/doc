@@ -1,10 +1,14 @@
-# 第10章 基本数据结构
+[中文版](chapter10_zh.md) | English
+
+# Elementary Data Structures
+
+[TOC]
 
 
 
-## 10.1 栈和队列
+## Stacks and queues
 
-### 栈
+### Stacks
 
 ![10_1](res/10_1.png)
 
@@ -29,11 +33,9 @@ else S.top = S.top - 1
     return S[S.top + 1]
 ```
 
-### 队列
+### Queues
 
 ![10_2](res/10_2.png)
-
-*利用数组$Q[1..12]$实现一个队列。只有出现在浅灰色格子里的才是队列的元素。（a）队列包含5个元素，位于$Q[7..11]$。（b）依次调用ENQUEUE(Q, 17)， ENQUEUE(Q, 3)和ENQUEUE(Q, 5)后队列的构成。（c）在调用DEQUEUE(Q)并返回原对头的关键字值15后，队列的构成。此时新的队头元素的关键字为6*
 
 ```c++
 ENQUEUE(Q, x)
@@ -54,11 +56,13 @@ return x
 
 
 
-## 10.2 链表
+## Linked lists
+
+A **linked list** is a data structure in which the objects are arranged in a linear order.
 
 ![10_3](res/10_3.png)
 
-### 链表的搜索
+### Searching a linked list
 
 ```c++
 LIST-SEARCH(L, k)
@@ -68,7 +72,7 @@ while x != NIL and x.key != k
 return x
 ```
 
-### 链表的插入
+### Inserting into a linked list
 
 ```c++
 LIST-INSERT(L, x)
@@ -79,7 +83,7 @@ L.head = x
 x.prev = NIL
 ```
 
-### 链表的删除
+### Deleting from a linked list
 
 ```c++
 LIST-DELETE(L, x)
@@ -90,25 +94,25 @@ if x.next != NIL
     x.next.prev = x.prev
 ```
 
-### 哨兵
-
-`哨兵（sentinel）`是一个哑对象，其作用是简化边界条件的处理。哨兵基本不能降低数据结构相关操作的渐近时间界，但可以降低常数因子。在循环语句中使用哨兵的好处往往在于可以使代码简洁，而非提高速度。
+### Sentinels
 
 ![10_4](res/10_4.png)
 
+A **sentinel** is a dummy object that allows us to simplify boundary conditions.
 
 
-## 10.3 指针和对想的实现
 
-### 对象的多数组表示
+## Implementing pointers and objects
+
+### A multiple-array representation of objects
 
 ![10_5](res/10_5.png)
 
-### 对象的单数组表示
+### A single-array representation of objects
 
 ![10_6](res/10_6.png)
 
-### 对象的分配与释放
+### Allocating and freeing objects
 
 ```c++
 ALLOCATE-OBJECT()
@@ -131,15 +135,13 @@ free = x
 
 
 
-## 10.4 有根树的表示
+## Representing rooted trees
 
-### 二叉树
+### Binary trees
 
 ![10_9](res/10_9.png)
 
-### 分支无限制的有根树
+### Rooted trees with unbounded branching
 
 ![10_10](res/10_10.png)
-
-### 树的其它表示方法
 

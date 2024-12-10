@@ -1,17 +1,17 @@
-# 数据结构与算法分析-C++描述
+# Data Structures and Algorithm Analysis in C++
 
-[美]Mark Allen Weiss.3ED
+Mark Allen Weiss, 4ED
 
-- [第1章 引论](chapter1.md)
-- [第2章 算法分析](chapter2.md)
-- [第3章 表，栈和队列](chapter3.md)
-- [第4章 树](chapter4.md)
-- [第5章 散列](chapter5.md)
-- [第6章 优先队列(堆)](chapter6.md)
-- [第7章 排序](chapter7.md)
-- [第8章 不相交集类](chapter8.md)
-- [第9章 图论算法](chapter9.md)
-- [第10章 算法设计技巧](chapter10.md)
-- [第11章 摊还分析](chapter11.md)
-- [第12章 高级数据结构及其实现](chapter12.md)
+- [Chapter 1 Programming: A General Overview](chapter1.md)
+- [Chapter 2 Algorithm Analysis](chapter2.md)
+- [Chapter 3 Lists, Stacks, and Queues](chapter3.md)
+- [Chapter 4 Trees](chapter4.md)
+- [Chapter 5 Hashing](chapter5.md)
+- [Chapter 6 Priority Queues(Heaps)](chapter6.md)
+- [Chapter 7 Sorting](chapter7.md)
+- [Chapter 8 The Disjoint Sets Class](chapter8.md)
+- [Chapter 9 Graph Algorithms](chapter9.md)
+- [Chapter 10 Algorithm Design Techniques](chapter10.md)
+- [Chapter 11 Amortized Analysis](chapter11.md)
+- [Chapter 12 Advanced Data Structures and Implementation](chapter12.md)
 

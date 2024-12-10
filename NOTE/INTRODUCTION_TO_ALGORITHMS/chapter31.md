@@ -1,8 +1,12 @@
+[中文版](chapter31_zh.md) | English
+
 # 第31章 数论算法
 
+[TOC]
 
 
-## 31.1 基础数论概念
+
+## Elementary number-theoretic notions
 
 **整除性与约数**
 

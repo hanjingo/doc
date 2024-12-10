@@ -2,9 +2,11 @@
 
 # 2 Getting Started
 
+[TOC]
 
 
-## 2.1 Insertion sort
+
+## Insertion sort
 
 Input: S sequence of $n$ numbers $(a_1, a_2, ..., a_n)$.
 
@@ -32,7 +34,7 @@ We use loop invariants to help us understand why an algorithm is correct. We mus
 
 
 
-## 2.2 Analyzing algorithms
+## Analyzing algorithms
 
 `Analyzing` an algorithm has come to mean predicting the resources that the algorithm requires.
 
@@ -70,9 +72,9 @@ For the remainder of this book, though, we shall usually concentrate on finding 
 
 
 
-## 2.3 Designing algorithms
+## Designing algorithms
 
-### 2.3.1 The divide-and-conquer approach
+### The divide-and-conquer approach
 
 `divide-and-conquer` approach: they break the problem into several subproblems that are similar to the original problem but smaller in size, solve the subproblems recursively, and then combine these solutions to create a solution to the original problem.
 
@@ -86,9 +88,7 @@ For example:
 
 ![2_4](res/2_4.png)
 
-*Figure 2.4 The operation of merge sort on the array $A = (5, 2, 4, 7, 1, 3, 2, 6)$. The lenghts of the sorted sequences being merged increase as teh algorithm progresses from bottom to top.*
-
-### 2.3.2 Analyzing divide-and-conquer algorithms
+### Analyzing divide-and-conquer algorithms
 
 We let $T(n)$ be the running time on a problem of size $n$. If the problem size is small enough, say $n \leq c$ for some constant $c$, the straightforward solution takes constant time, which we write as $\theta(1)$. Suppose that our division of the problem yields $a$ subproblems, each of which is $1/b$ the size of teh original. (For merge sort, both $a$ and $b$ are 2, but we shall see many divide-and-conquer algorithms in which $a \neq b$.) It takes time $T(n/b)$ to solve one subproblem of size $n/b$, and so it takes time $aT(n/b)$ to solve $a$ of them. If we take $D(n)$ time to divide the problem into subproblems and $C(n)$ time to combine the solutions to the subproblems into the solution to the original problem, we get the recurrence:
 $$

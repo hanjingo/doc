@@ -1,4 +1,4 @@
-中文版 | [English](README_zh.md)
+中文版 | [English](README.md)
 
 # 算法导论
 

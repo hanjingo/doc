@@ -1,8 +1,12 @@
+[中文版](chapter3_zh.md) | English
+
 # 3 Growth of Functions
 
+[TOC]
 
 
-## 3.1 asymptotic notation
+
+## asymptotic notation
 
 **$\theta$-notation**
 
@@ -19,7 +23,7 @@ Graphic examples of the $\theta$:
 
 **$O$-notation**
 
-The $\theta$-notation asymptotically bounds a function from above and below. When we have only an `asymptotic upper bound`, we use $O$-notation. For a given function $g(n)$, we denote by $O(g(n))$ (pronounced "big-oh of g of n" or sometimes just "oh of g of n") the set of functions:
+The $\theta$-notation asymptotically bounds a function from above and below. When we have only an **asymptotic upper bound**, we use $O$-notation. For a given function $g(n)$, we denote by $O(g(n))$ (pronounced "big-oh of g of n" or sometimes just "oh of g of n") the set of functions:
 $$
 O(g(n)) = \{f(n)：\text{there exist positive constants}\ c \text{ and } n_0 \text{ such that}\\
 0 \leq f(n) \leq cg(n) \text{ for all } n \geq n_0\}
@@ -28,7 +32,7 @@ $$
 
 **$\Omega$-notation**
 
-Just as $O$-notation provides an asymptotic upper bound on a function, $\Omega$-notation provides an `asymptotic lower bound`. For a given function $g(n)$, we denote by $\Omega(g(n))$ (pronounced "big-omega of g of n" or sometimes just "omega of g of n") the set of functions:
+Just as $O$-notation provides an asymptotic upper bound on a function, $\Omega$-notation provides an **asymptotic lower bound**. For a given function $g(n)$, we denote by $\Omega(g(n))$ (pronounced "big-omega of g of n" or sometimes just "omega of g of n") the set of functions:
 $$
 \Omega(g(n)) = \{f(n): \text{there exist positive constants } c \text{ and } n_0 \text{ such\ that}\\
 0 \leq cg(n) \leq f(n) \text{ for all } n \geq n_0\}
@@ -86,7 +90,7 @@ $$
 
 
 
-## 3.2 Standard notations and common functions
+## Standard notations and common functions
 
 **Monotonicity**
 
@@ -214,7 +218,7 @@ n\cdot (n-1)! &if\ n>0
 $$
 , thus, $n!=1 \cdot 2 \cdot 3 \cdot \cdot \cdot n$.
 
-A weak upper bound on the factorial function is $n! \leq n^n$, since each of the $n$ terms in the factorial product is at most $n$. `Stirling's approximation`,
+A weak upper bound on the factorial function is $n! \leq n^n$, since each of the $n$ terms in the factorial product is at most $n$. **Stirling's approximation**,
 $$
 n! = \sqrt{2 \pi n}(\frac{n}{e})^n(1 + \theta(\frac{1}{n}))
 $$

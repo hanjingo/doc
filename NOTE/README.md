@@ -16,9 +16,10 @@ English | [中文版](README_zh.md)
 
 ### DataStruct&Algorithm
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author                                                       | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
+| [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md) | 3ED     | Thomas H.Cormen<br>Charles E.Leiserson<br>Ronald L. Rivest<br>Clifford Stein |                   |
+| [Data Structures and Algorithm Analysis in C++](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 4ED     | Mark Allen Weiss                                             |                   |
 
 ### Program Language
 
@@ -28,9 +29,9 @@ English | [中文版](README_zh.md)
 
 ### Compile&Build
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author                                                       | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
+| [Compilers Principles](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md) | 2ED     | Alfred V.Aho<br>Monica S.Lam<br>Ravi Sethi<br>Jeffrey D.Ullman |                   |
 
 ### OS
 
@@ -62,6 +63,7 @@ English | [中文版](README_zh.md)
 | ----------------------------------------- | ---- | --------- | ---------------------------------- |
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
 | [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
+| [Investments](INVESTMENTS/README.md) | 10ED | Zvi Bodie<br>Alex Kane<br>Alan J.Marcus | |
 
 ### Software Engineering
 
@@ -91,12 +93,11 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [The Algorithm Design Manual](THE_ALGORITHM_DESIGN_MANUAL/README.md)
 - [Thinking Fast and Slow](THINKING_FAST_AND_SLOW/README.md)
-- [Investments](INVESTMENTS/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
-- [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
 - [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)
 - [Large-Scale C++ Software Design](LARGE_SCALE_CPP_SOFTWARE_DESIGN/README.md)
@@ -105,12 +106,11 @@ English | [中文版](README_zh.md)
 
 ## Planned Reading
 
+- [Modern C++ Design]
 - [COMPUTER ORGANIZATION AND DESIGN - THE HARDWARE/SOFTWARE INTERFACE]
-- [The Algorithm Design Manual]
+- [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Structure and Interpretation of Computer Programs]
 - [HIGH-FREQUENCY TRADING]
-- [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Design and Development of a Functional High-Frequency Trading Algorithm]
 - [An introduction to probability theory and its applications]
 - [Developing High-Frequency Trading System]
-- [Modern C++ Design]

@@ -13,20 +13,20 @@ Zvi Bodie, Alex Kane, Alan J.Marcus, 10ED
 - [CHAPTER 9 The Capital Asset Pricing Model](chapter9.md)
 - [CHAPTER 10 Arbitrage Pricing Theory and Multifactor Models of Risk and Return](chapter10.md)
 - [CHAPTER 11 The Efficient Market Hypothesis](chapter11.md)
-- [CHAPTER 12 Behavioral Finance and Technical Analysis]
-- [CHAPTER 13 Empirical Evidence on Security Returns]
-- [CHAPTER 14 Bond Prices and Yields]
-- [CHAPTER 15 The Term Structure of Interest Rates]
-- [CHAPTER 16 Managing Bond Portfolios]
-- [CHAPTER 17 Macroeconomic and Industry Analysis]
-- [CHAPTER 18 Equity Valuation Models]
-- [CHAPTER 19 Financial Statement Analysis]
-- [CHAPTER 20 Options Markets: Introduction]
-- [CHAPTER 21 Option Valuation]
-- [CHAPTER 22 Futures Markets]
-- [CHAPTER 23 Futures, Swaps, and Risk Management]
-- [CHAPTER 24 Portfolio Performance Evaluation]
-- [CHAPTER 25 International Diversification]
-- [CHAPTER 26 Hedge Funds]
-- [CHAPTER 27 The Theory of Active Portfolio Management]
-- [CHAPTER 28 Investment Policy and the Framework of the CFA Institute]
+- [CHAPTER 12 Behavioral Finance and Technical Analysis](chapter12.md)
+- [CHAPTER 13 Empirical Evidence on Security Returns](chapter13.md)
+- [CHAPTER 14 Bond Prices and Yields](chapter14.md)
+- [CHAPTER 15 The Term Structure of Interest Rates](chapter15.md)
+- [CHAPTER 16 Managing Bond Portfolios](chapter16.md)
+- [CHAPTER 17 Macroeconomic and Industry Analysis](chpater17.md)
+- [CHAPTER 18 Equity Valuation Models](chpater18.md)
+- [CHAPTER 19 Financial Statement Analysis](chapter19.md)
+- [CHAPTER 20 Options Markets: Introduction](chapter20.md)
+- [CHAPTER 21 Option Valuation](chapter21.md)
+- [CHAPTER 22 Futures Markets](chapter22.md)
+- [CHAPTER 23 Futures, Swaps, and Risk Management](chapter23.md)
+- [CHAPTER 24 Portfolio Performance Evaluation](chapter24.md)
+- [CHAPTER 25 International Diversification](chapter25.md)
+- [CHAPTER 26 Hedge Funds](chapter26.md)
+- [CHAPTER 27 The Theory of Active Portfolio Management](chapter27.md)
+- [CHAPTER 28 Investment Policy and the Framework of the CFA Institute](chapter28.md)

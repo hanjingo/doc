@@ -1,8 +1,12 @@
-# 第25章 所有结点对的最短路径问题
+[中文版](chapter25_zh.md) | English
+
+# 25 All-Pairs Shortest Paths
+
+[TOC]
 
 
 
-## 25.1 最短路径和矩阵乘法
+## Shortest paths and matrix multiplication
 
 $$
 \begin{align}
@@ -46,6 +50,8 @@ $$
 $$
 
 ![25_1](res/25_1.png)
+
+![25_2](res/25_2.png)
 $$
 \begin{align}
 & FASTER-ALL-PAIRS-SHORTEST-PATHS(W) \\
@@ -61,7 +67,8 @@ $$
 $$
 
 
-## 25.2 Floyd-Warshall算法
+
+## The Floyd-Warshall algorithm
 
 ![25_3](res/25_3.png)
 $$
@@ -100,15 +107,15 @@ $$
 
 
 
-## 25.3 用于稀疏图的johnson算法
+## Johnson's algorithm for sparse graphs
 
-Johnson算法可以在$O(V^2lgV + VE)$的时间内找到所有节点对之间的最短路径。
+Johnson's algorithm finds shortest paths between all pairs in $O(V^2lgV + VE)$ time.
 
-**引理 25.1**（重新赋予权重并不改变最短路径） 给定带权重的有向图$G = (V, E)$，其权重函数为$w: E \rightarrow R$，设$h: V \rightarrow R$为任意函数，该函数将结点映射到实数上。对于每条边$(u, v) \in E$，定义
+**Lemma 25.1 (Reweighting does not change shortest paths)** Given a weighted, directed graph $G = (V, E)$ with weight function $w: E \rightarrow R$, let $h: V \rightarrow R$ be any function mapping vertices to real numbers. For each edge $(u, v) \in E$, define:
 $$
 \hat{w}(u, v) = w(u, v) + h(u) - h(v)
 $$
-设$p = <v_0, v_1, ..., v_k>$为从结点$v_0$到结点$v_k$的任意一条路径，那么$p$是在使用权重函数$w$时，从结点$v_0$到结点$v_k$的一条最短路径，当且仅当$p$是在使用权重函数$\hat{w}$时从结点$v_0$到结点$v_k$的一条最短路径，即$w(p) = \delta(v_0, v_k)$当且仅当$\hat{w}(p) = \hat{\delta}(v_0, v_k)$。而且，图$G$在使用权重函数$w$时不包含权重为负值得环路，当且仅当$p$在使用权重函数$\hat{w}$也不包括权重为负值的环路。
+, Let $p = <v_0, v_1, ..., v_k>$ be any path from vertex $v_0$ to vertex $v_k$. Then $p$ is a shortest path from $v_0$ to $v_k$ with weight function $w$ if and only if it is a shortest path with weight function $\hat{w}$. That is, $w(p) = \delta(v_0, v_k)$ if and only if $\hat{w}(p) = \hat{\delta}(v_0, v_k)$. Furthermore, $G$ has a negative-weight cycle using weight function $w$ if and only if $G$ has a negative-weight cycle using weight function $\hat{w}$.
 
 ![25_6](res/25_6.png)
 $$

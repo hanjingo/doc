@@ -1,14 +1,18 @@
-# 第7章 快速排序
+[中文版](chapter7_zh.md) | English
+
+# 7 Quicksort
+
+[TOC]
 
 
 
-## 7.1 快速排序的描述
+## Description of quicksort
 
-对一个数组$A[p .. r]$进行快速排序的三步分治过程：
+Here is the three-step divide-and-conquer process for sorting a typical subarray $A[p..r]$:
 
-1. 分解：数组$A[p .. r]$被划分为两个（可能为空）子数组$A[p .. q - 1]$和$A[q + 1 .. r]$，使得$A[p .. q - 1]$中的每一个元素都小于等于$A[q]$，而$A[q]$也小于等于$A[q + 1 .. r]$中的每个元素。
-2. 解决：通过递归调用快速排序，对子数组$A[p .. q - 1]$和$A[q + 1 .. r]$进行排序。
-3. 合并：因为子数组都是原址排序的，所以不需要合并操作：数组$A[p .. r]$已经有序。
+1. **Divide:** Partition (rearrange) the array $A[p..r]$ into two (possibly empty) subarrays $A[p..q - 1]$ and $A[q + 1 .. r]$ such that each element of $A[p .. q - 1]$ is less than or equal to $A[q]$, which is, in turn, less than or equal to each element of $A[1 + 1 .. r]$. Compute the index $q$ as part of this partitioning procedure.
+2. **Conquer:** Sort the two subarrays $A[p .. q - 1]$ and $A[q + 1 .. r]$ by recursive calls to quicksort.
+3. **Combine:** Because the subarrays are already sorted, no work is needed to combine them: the entire array $A[p..r]$ is now sorted.
 
 $$
 \begin{align}
@@ -42,29 +46,32 @@ $$
 
 
 
-## 7.2 快速排序的性能
+## Performance of quicksort
 
-**最坏情况划分**
-
-$T(n) = T(n - 1) + T(0) + \theta(n) = T(n - 1) + \theta(n)$
-
-**最好情况划分**
+**Worst-case partitioning**
+$$
+\begin{equation}\begin{split}
+T(n) &= T(n - 1) + T(0) + \theta(n) \\
+&= T(n - 1) + \theta(n)
+\end{split}\end{equation}
+$$
+**Best-case partitioning**
 
 $T(n) = 2T(n / 2) + \theta(n)$
 
-**平衡的划分**
+**Balanced partitioning**
 
 $T(n) = T(9n/10) + T(n / 10) + cn$
 
 ![7_4](res/7_4.png)
 
-**对于平均情况的直观观察**
+**Intuition for the average case**
 
 ![7_5](res/7_5.png)
 
 
 
-## 7.3 快速排序的随机化版本
+## A randomized version of quicksort
 
 $$
 \begin{align}
@@ -87,28 +94,31 @@ $$
 
 
 
-## 7.4 快速排序分析
+## Analysis of quicksort
 
-### 7.4.1 最坏情况分析
+### Worst-case analysis
 
-假设$T(n)$是最坏情况下QUICKSORT在输入规模为$n$的数据集合上所花费的时间，则有递归式：
+Let $T(n)$ be teh worst-case time for the procedure QUICKSORT on an input of size $n$. We have the recurrence:
 $$
 T(n) = max_{0 \leqslant q \leqslant n - 1}(T(q) + T(n - q - 1)) + \theta(n)
 $$
-因为PARTITION函数生成的两个子问题的规模加总为$n - 1$，所以参数$q$的变化范围是$0$到$n - 1$。我们不妨猜测$T(n) \leqslant cn^2$成立，其中$c$为常数。代入上式中，得：
+, where the parameter $q$ ranges from $0$ to $n - 1$ because the procedure PARTITION produces two subproblems with total size $n - 1$. We guess that $T(n) \leq cn^2$ for some constant $c$. Substituting this guess into above recurrence, we obtain:
 $$
 \begin{equation}\begin{split} 
 T(n) & \leqslant max_{0 \leqslant q \leqslant n - 1}(cq^2 + c(n - q - 1)^2) + \theta(n) \\ 
 & = c \cdot max_{0 \leqslant q \leqslant n - 1}(q^2 + (n - q - 1)^2) + \theta(n)
 \end{split}\end{equation}
 $$
-表达式$q^2 + (n - q - 1)^2$在参数取值区间$0 \leqslant q \leqslant n - 1$的端点上取得最大值。由于该表达式对于$q$的二阶导数是正的，我们可以得到表达式的上界$max_{0 \leqslant q \leqslant n - 1}(q^2 + (n - q - 1)^2) \leqslant (n - 1)^2 = n^2 - 2n + 1$，代入上式中，得：
+, The expression $q^2 + (n - q - 1)^2$ achieves a maximum over the parameter's range $0 \leq q \leq n - 1$ at either endpoint. To verify this claim, note that the second derivative of the expression with respect to $q$ is positive. This observation gives us the bound $max_{0 \leqslant q \leqslant n - 1}(q^2 + (n - q - 1)^2) \leq (n - 1)^2 = n^2 - 2n + 1$. Continuing with our bounding of $T(n)$, we obtain:
 $$
-T(n) \leqslant cn^2 - c(2n - 1) + \theta(n) \leqslant cn^2
+\begin{equation}\begin{split} 
+T(n) &\leq cn^2 - c(2n - 1) + \theta(n) \\ 
+&\leq cn^2
+\end{split}\end{equation}
 $$
 
-### 7.4.2 期望运行时间
+### Expected running time
 
-**引理 7.1** 当在一个包含$n$个元素得数组上运行QUICKSORT时，假设在PARTITION的第4行中所做比较的次数为$X$，那么QUICKSORT的运行时间为$O(n + X)$。
+**Lemma 7.1** Let $X$ be the number of comparisons performed in line 4 of PARTITION over the entire execution of QUICKSORT on an $n$-element array. Then the running time of QUICKSORT is $O(n + X)$.
 
-使用RANDOMIZED-PARTITION，在输入元素互异的情况下，快速排序算法的期望运行时间为$O(nlg\ n)$。
+**Proof** By the discussion above, the algorithm makes at most $n$ calls to PARTITION, each of which does a constant amount of work and then executes the `for` loop some number of times. Each iteration of the `for` loop executes line 4.

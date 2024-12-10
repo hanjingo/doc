@@ -1,259 +1,148 @@
-# 1 Introduction
+# Introduction
 
-第1章 引论
-
-
-
-## 1.1 Language Processors
-
-1.1 语言处理器
+[TOC]
 
 
 
-## 1.2 The Structure of a Compiler
-
-1.2 一个编译器的结构
+## The Structure of a Compiler
 
 there are two parts to this mapping:
 
-编译器分为两个部分：
-
 - analysis part: breaks up the source program into constituent pieces and imposes a grammatical structure on them. It then uses this structure to create an intermediate representation of the source program.
 
-  分析（analysis）部分：把源程序分解为多个组成要素，并在这些要素上加上语法结构，并使用该结构来创建该源程序的一个中间表示）。
+- synthesis part: Construct the desired target program from the intermediate representation and the information in the symbol table.
 
-- synthesis part: constructs the desired target program from the intermediate representation and the information in the symbol table.
 
-  综合（synthesis）部分：根据中间表示和符号表中的信息来构造用户期待的目标程序。
-
-### 1.2.1 Lexical Analysis
-
-1.2.1 词法分析
+### Lexical Analysis
 
 The first phase of a compiler is called *lexical analysis* or *scanning*. The lexical analyzer reads the stream of characters making up the source program and groups the characters into meaningful sequences called *lexemes*.
 
-编译器的第1个步骤称为词法分析（lexical analysis）或扫描（scanning）。词法分析器读入组成源程序的字符流，并且将它们组织成为有意义的词素（lexeme）的序列。
-
-### 1.2.2 Syntax Analysis
-
-1.2.2 语法分析
+### Syntax Analysis
 
 The second phase of the compiler is *syntax analysis* or *parsing*. The parser uses the first components of the tokens produced by the lexical analyzer to create a tree-like intermediate representation that depicts the grammatical structure of the token stream.
 
-编译器的第2个步骤称为语法分析（syntax analysis）或解析（parsing）。语法分析器使用由词法分析器生成的各个词法单元的第一个分量来创建树形的中间表示。该中间表示给出了词法分析产生的词法单元流的语法结构。
+### Semantic Analysis
 
-### 1.2.3 Semantic Analysis
+The *semantic analyzer* uses the syntax tree and the information in the symbol table to check the source program for semantic consistency with the language definition. It also gathers type information and saves it in either the syntax tree or the symbol table, for subsequent use during intermediate-code generation.
 
-1.2.3 语义分析
-
-The *semantic analyzer* uses the syntax tree and the information in the symbol table to check the source program for semantic consistency with the language definition. It also gathers tyep information and saves it in either the syntax tree or the symbol table, for subsequent use during intermediate-code generation.
-
-语义分析器（semantic analyzer）使用语法树和符号表中的信息来检查源程序是否和语言定义的语义已知。它同时也手机类型信息，并把这些信息存放在语法树或符号表中，以便在随后的中间代码生成过程中使用。
-
-### 1.2.4 Intermediate Code Generation
-
-1.2.4 中间代码生成
-
-三地址代码（three-address code）。
-
-### 1.2.5 Code Optimization
-
-1.2.5 代码优化
-
-### 1.2.6 Code Generation
-
-1.2.6 代码生成
+### Code Generation
 
 The code generator takes as input an intermediate representation of the source program and maps it into the target language.
 
-代码生成器以源程序的中间表示形式作为输入，并把它映射到目标语言。
-
-### 1.2.7 Symbol-Table Management
-
-1.2.7 符号表管理
+### Symbol-Table Management
 
 The symbol table is a data structure containing a record for each variable name, with fields for the attributes of the name.
 
-符号表数据结构为每个变量名字创建了一个记录条目。记录的字段就是名字的各个属性。
-
-### 1.2.8 The Grouping of Phases into Passes
-
-1.2.8 将多个步骤组合成趟
+### The Grouping of Phases into Passes
 
 we can produce compilers for different source languages for one target machine by combining different front ends with the back end for that target machine.
 
-可以把一个前端和不同的目标机后端结合，建立针对不同目标机的编译器。
-
-### 1.2.9 Compiler-Construction Tools
-
-1.2.9 编译器构造工具
+### Compiler-Construction Tools
 
 Some commonly used compiler-construction tools include:
 
-一些常用的编译器构造工具包括：
-
 1. *Parser generators* that automatically produce syntax analyzers from a grammatical description of a programming language.
-
-   语法分析器的生成器：根据一个程序设计语言的语法描述自动生成语法分析器。
 
 2. *Scanner generators* that produce lexical analyzers from a regular-expression description of the tokens of a language.
 
-   扫描器的生成器：根据一个语法的语法单元的正则表达式描述生成词法分析器。
-
 3. *Syntax-directed translation engines* that produce collections of routines for walking a parse tree and generating intermediate code.
-
-   语法制导的翻译引擎：生成一组用于遍历分析树并生成中间代码的例程。
 
 4. *Code-generator generators* that produce a code generator from a collection of rules for translating each operation of the intermediate language into the machine language for a target machine.
 
-   代码生成器的生成器：依据一组关于如何把中间语言的每个运算翻译成目标机上的机器语言的规则，生成一个代码生成器。
-
 5. *Data_flow analysis engines* that facilitate the gathering of information about how values are transmitted from one part of a program to each other part. Data-flow analysis is a key part of code optimization.
 
-   数据流分析引擎：帮助手机数据流信息，即程序中的值如何从程序的一个部分传递到另一部分。
-
-6. *Compiler-construction toolkits* that provide an integrated set of routines for construction various phases of a compiler.
-
-   编译器构造工具集：提供了可用于构造编译器的不同阶段的例程的完整集合。
+6. *Compiler-construction toolkits* that provide an integrated set of routines for constructing various phases of a compiler.
 
 
 
-## 1.3 The Evolution of Programming Languages
+## The Science of Building a Compiler
 
-1.3 程序设计语言的发展历程
-
-### 1.3.1 The Move to Higher-level Languages
-
-1.3.1 走向高级程序设计语言
-
-### 1.3.2  Impacts on Compilers
-
-1.3.2 对编译器的影响
-
-### 1.3.3 Exercises for Section 1.3
-
-
-
-## 1.4 The Science of Building a Compiler
-
-1.4 构建一个编译器的相关科学
-
-### 1.4.1 Modeling in Compiler Design and Implementation
-
-1.4.1 编译器设计和实现中的建模
-
-### 1.4.2 The Science of Code Optimization
-
-1.4.2 代码优化的科学
+### The Science of Code Optimization
 
 Compiler optimizations must meet the following design objectives:
 
-编译器优化必须满足下面的设计目标：
-
 - The optimization must be correct, that is, preserve the meaning of the compiled program.
-
-  优化必须是正确的，也就是说，不能改变被编译程序的含义。
 
 - The optimization must improve the performance of many programs.
 
-  优化必须能够改善很多程序的性能。
-
 - The compilation time must be kept reasonable.
-
-  优化所需的时间必须保持在合理的范围内。
 
 - The engineering effort required must be manageable.
 
-  所需要的工程方面的工作必须是可管理的。
 
 
 
-## 1.5 Applications of Compiler Technology
+## Applications of Compiler Technology
 
-1.5 编译技术的应用
+### Implementation of High-Level Programming Languages
 
-### 1.5.1 高级程序设计语言的实现
+A high-level programming language defines a programming abstraction: the programmer expresses an algorithm using the language, and the compiler must translate that program to the target language.
 
-一个高级程序设计语言定义了一个编程抽象：程序员使用这个语言表达算法，而编译器必须把这个程序翻译成目标语言。
+The key ideas behind object orientation are:
 
-面向对象的主要思想：
+1. Data abstraction and,
+2. Inheritance of properties.
 
-1. 数据抽象
-2. 特性的继承
+### Optimizations for Computer Architectures
 
-### 1.5.2 针对计算机体系结构的优化
+Almost all high-performance systems take advantage of the same two basic techniques:
 
-几乎所有的高性能系统都利用了两种技术：
+- parallelism,
+- memory hierarchies.
 
-- 并行（parallelism）
-- 内存层次结构（memory hierarchy）
+### Software Productivity Tools
 
-### 1.5.3 新计算机体系结构的设计
+- Type Checking
 
-- RISC
-- 专用体系结构
+  Type checking is an effective and well-established technique to catch inconsistencies in programs.
 
-### 1.5.4 程序翻译
+- Bounds Checking
 
-- 二进制翻译
-- 硬件合成
-- 数据查询解释器
-- 编译然后模拟
+  It is easier to make mistakes when programming in a lower-level language than a higher-level one.
 
-### 1.5.5 软件生产率工具
+- Memory-Management Tools
 
-- 类型检查
-
-  是一种有效的，且被充分研究的技术，它可以被用于捕捉程序中的不一致性。
-
-- 边界检查
-
-- 内存管理工具
+  Automatic memory management obliterates all memory-management errors (e.g., "memory leaks"), which are a major source of problems in C and C++ programs.
 
 
 
-## 1.6 程序设计语言基础
+## Programming Language Basics
 
-### 1.6.1 静态和动态的区别
+### The Static/Dynamic Distinction
 
-- 静态策略：在编译时刻做出决定的策略。
-- 动态策略：只允许在运行程序的时候做出决定的策略。
+A policy that allows the compiler to decide an issue, then we say that language uses a `static policy` or that the issue can be decided at `compile time`.
 
-### 1.6.2 环境与状态
+A policy that only allows a decision to be made when we execute the program is said to be a `dynamic policy` or to require a decision at `run time`.
 
-名字和内存（存储）位置的关联，及之后和值的关联可以用两个映射来描述。这两个映射随着程序的运行而改变：
+### Environments and States
 
-- 环境：一个从名字到存储位置的映射。
-- 状态：一个从内存位置到它们的值的映射。
+The association of names with locations in memory (the `store`) and then with values can be described by two mappings that change as the program runs:
 
-### 1.6.3 静态作用域和块结构
+1. The `environment` is a mapping from names to locations in the store.
+2. The `state` is a mapping from locations in store to their values.
 
-在C语言中，有关块的语法如下：
+### Static Scope and Block Structure
 
-1. 块是一种语句。块可以出现在其它类型的语句（比如赋值语句）所能够出现的任何地方。
-2. 一个块包含了一个声明的序列，然后再跟着一个语句序列。这些声明和语句用一对括号包围起来。
+In C, the syntax of blocks is given by:
 
-### 1.6.4 显式访问控制
+1. One type of statement is a block. Blocks can appear anywhere that other types of statements, such as assignment statements, can appear.
+2. A block is a sequence of declarations followed by a sequence of statements, all surrounded by braces.
 
-### 1.6.5 动态作用域
+### Dynamic Scope
 
-动态作用域：对一个名字$x$的使用指向的是最近被调用但还没有终止且声明了$x$的过程中的这个声明。
+`dynamic scope`: a use of a name $x$ refers to the declaration of $x$ in the most recently called, not-yet-terminated, procedure with such a declaration.
 
-### 1.6.6 参数传递机制
+### Parameter Passing Mechanisms
 
-在值调用中，会对实在参数求值（如果它是表达式）或拷贝（如果它是变量）。这些值被放在属于被调用过程的相应形式参数的内存位置上。
+**Call-by-Value**
 
-在引用调用中，实在参数的地址作为相应的形式参数的值被传递给被调用者。在被调用者的代码中使用形式参数时，实现方法是沿着这个指针找到调用者指明的内存位置。
+In `call-by-value`, the actual parameter is evaluated (if it is an expression) or copied (if it is a variable). The value is placed in the location belonging to the corresponding formal parameter of the called procedure.
 
-在名调用中，它要求被调用者的运行方式好像是用实在参数以字面方式替换了被调用者的代码中的形式参数一样。
+**Call-by-Reference**
 
-### 1.6.7 别名
+In `call-by-reference`, the address of the actual parameter is passed to the callee as the value of the corresponding formal parameter. Uses of the formal parameter in the code of the callee are implemented by following this pointer to the location indicated by the caller. Changes to the formal parameter thus appear as changes to the actual parameter.
 
+**Call-by-Name**
 
-
-## 1.7 总结
-
-
-
-## 1.8 参考文献
+It requires that the callee execute as if the actual parameter were substituted literally for the formal parameter in the code of the callee, as if the formal parameter were a macro standing for the actual parameter (with renaming of local names in the called procedure, to keep them distinct).
 

@@ -1,52 +1,45 @@
-# 第九章 图论算法
+# CHAPTER 9 Graph Algorithms
 
 [TOC]
 
 
 
-## 9.1 若干定义
+## Definitions
 
-- `图（grph）` $G = (V, E)$由`顶点(vertex)`的集$V$和`边（edge）`的集$E$组成。
-- `边` 也叫`弧（arc）`，图的每一个点对$(v, w)，其中v, w \in V$。
-- `有向图（digraph）`点对有序的图。
-- `路径（path）` 一个顶点序列$w_1$, $w_2$, $w_3$, ..., $w_N$，其中$(w_i, w_{i+1}) \in E, 1 \leqslant i < N$。
-- `回路（cycle）` 有向图中满足$w_1 = w_N$且长至少为1的一条路径。
-- `无环（acyclic）` 没有回路的有向图（简称：DAG）；
-- `连通无向图` 无向图中从每一个顶点到每个其他顶点都存在一条路径，也称作强连通的（strongly connected）。
-- `弱连通(weakly connected)有向图` 有向图不是强连通的，但是它的基础图（underlying graph，即其弧上去掉方向所形成的图）是联通的 。
-- `完全图（complete graph）` 每一对顶点间都存在一条边的图。
+- A **graph** $G = (V, E)$ consists of a set of vertices, $V$​, and a set of edges, E.
+- Each graph edge is a pair $(v, w)$, where $v, w \in V$. Edges are sometimes refered to as **arcs**.
+- Directed graphs are sometimes referred to as **digraphs**.
+- A **path** in a graph is sequence of vertices $w_1, w_2, w_3, ..., w_N$ such that $(w_i, w_{i+1}) \in E$ for $1 \leq i < N$.
+- A **cycle** in a direted graph is a path of length at least 1 such that $w_1 = w_N$.
+- A directed graph is **acyclic** if it has no cycles.
+- An undirected graph is **connected** if there is a path from every vertex to every other vertex.
+- A directed graph with this property is called **strongly connected**.
+- If a directed graph is not strongly connected, but the underlying graph (without direction to the arcs) is connected, then the graph is said to be **weakly connected**.
+- A **complete graph** is a graph in which there is an edge between every pair of vertices.
 
 ![9_1](res/9_1.png)
 
-*一个有向图*
+The ways to represent a graph:
 
-表示图的方法：
+- adjacency matrix
 
-- `邻接矩阵（adjacent matrix）表示法` 
+  For each $edge(u, v)$, we set $A[u][v]$ to true; otherwise the entry in the array is false. If the edge has a weight associated with it, then we can set $A[u][v]$ equal to the weight and use either a very large or a very small weight as a sentinel to indicate nonexistent edges.
 
-  使用二维数组，对于每条边$(u, v)$，置$A[u][v] = true$；否则，数组的项就是false。如果边有一个权，那么可以置$A[u][v]$等于该权，而使用一个很大或者很小的权作为标记表示不存在的边。
+- adjacency list
 
-  这种表示的优点是非常简单，但是，它的空间需求则为$\Theta(|V|^2)$，如果图的边不是很多，那么这种表示的代价非常大；邻接矩阵适合于稠密（dense）的图：$|E| = \Theta(|V|^2)$。
-
-- `邻接表（adjacency list）`
-
-  对于每一个顶点，使用一个表存放所有邻接的顶点；此时的空间需求为$O(|E|+|V|)$，它对于图的大小而言是线性的。
+  For each vertex, we keep a list of all adjacent vertices. The space requirement is then $O(|E| + |V|)$​, which is linear in the size of the graph.
 
   ![9_2](res/9_2.png)
 
-  *图的邻接表表示*
 
 
+## Topological Sort
 
-## 9.2 拓扑排序
-
-`拓扑排序（topological sort）` 是对有向无环图的顶点的一种排序，它使得如果存在一条从$v_i$到$v_j$的路径，那么在排序中$v_j$出现在$v_i$的后面。
+A **topological sort** is an ordering of vertices in a directed acyclic graph, such that if there is a path from $v_i$ to $v_j$ appears after $v_i$ in the ordering.
 
 ![9_3](res/9_3.png)
 
-*表示课程结构的无环图*
-
-![9_4](res/9_4.png)*一个无环图*
+![9_4](res/9_4.png)
 
 ```c++
 // 简单的拓扑排序伪代码
@@ -66,13 +59,11 @@ void Graph::topsort()
 
 ![9_6](res/9_6.png)
 
-*对上图中的图应用拓扑排序的结果*
 
 
+## Shortest-Path Algorithms
 
-## 9.3 最短路径算法
-
-输入是一个加权图：与每条边$(v_i, v_j)$相联系的是穿越该边的代价（或称为值）$c_{i,j}$。一条路径$v_1 v_2 ... v_N$的值是$\sum_{i=1}^{N-1} c_{i,i+1}$叫做`加权路径长（weighted path length）`。而`无权路径长（unweighted path length）`只是路径上的边数，即$N-1$。
+The input is a weighted graph: Associated with each edge $(v_i, v_j)$ is a cost $c_{i,j}$ to traverse the edge. The cost of a path $v_1 v_2 ... v_N$ is $\sum_{i=1}^{N-1} c_{i,i+1}$. This is referred to as the **weighted path length**. The **unweighted path length** is merely the number of edges on the path, namely, $N - 1$.
 
 ```c++
 // 施行拓扑排序的伪代码
@@ -101,41 +92,27 @@ void Graph::topsort()
 }
 ```
 
-**单源最短路径问题** 给定一个加权图$G=(V, E)$和一个特定顶点$s$作为输入，找出从$s$到$G$中每一个其他顶点的最短加权路径。
+**Single-Source Shortest-Path Problem** Given as input a weighted graph, $G = (V, E)$, and a distinguished vertex, $s$, find the shortest weighted path from $s$ to every other vertex in $G$.
 
 ![9_8](res/9_8.png)
 
-*有向图G*
-
 ![9_9](res/9_9.png)
 
-*带有负值回路的图*
+### Unweighted Shortest Paths
 
-### 无权最短路径
+**breadth-first search** operates by processing vertices in layers: The vertices closest to the start are evaluated first, and the most distant vertices are evaluated last. This is much the same as a level-order traversal for trees.
 
-`广度优先搜索（breadth-first search）` 该方法按层处理顶点：距开始点最近的那些顶点首先被求值，而最远的那些顶点最后被求值。
-
-例：
+Example:
 
 ![9_10](res/9_10.png)
 
-*一个无权有向图G*
-
 ![9_11](res/9_11.png)
-
-*将开始结点标记为通过0条边可以到达的结点后的图*
 
 ![9_12](res/9_12.png)
 
-*找出所有从s出发路径长为1的顶点之后的图*
-
 ![9_13](res/9_13.png)
 
-*找出所有从s出发路径长为2的顶点之后的图*
-
 ![9_14](res/9_14.png)
-
-*最后的最短路径*
 
 ```c++
 // 无权最短路径算法的伪代码
@@ -164,7 +141,7 @@ void Graph::unweighted(Vertex s)
 
 ![9_17](res/9_17.png)
 
-*使用上面伪代码的无权最短路径算法的坏情形*
+### Dijkstra's Algorithm
 
 ```c++
 // 无权最短路径算法的伪代码（使用邻接表）
@@ -194,51 +171,31 @@ void Graph::unweighted(Vertex s)
 
 ![9_19](res/9_19.png)
 
-*无权最短路径算法期间数据如何变化*
+Dijkstra's algorithm proceeds in stages, just like the unweighted shortest-path algorithm. At each stage, Dijkstra's algorith selects a vertex, $v$, which has the smallest $d_v$ among all the `unknown` vertices and declares that the shortest path from $s$ to $v$ is `known`. The remainder of a stage consists of updating the values of $d_w$.
 
-### Dijkstra算法
+In the unweighted case, we set $d_w = d_v + 1$ if $d_w = \infty$. Thus, we essentially lowered the value of $d_w$ if vertex $v$ offered a shorter path. If we apply the same logic to the weighted case, then we should set $d_w = d_v + c_{v,w}$ if this new value for $d_w$ would be an improvement. Put simply, the algorithm decides whether or not it is a good idea to use $v$ on the path to $w$. The original cost, $d_w$, is the cost without using $v$; the cost calculated above is the cheapest path using $v$ (and only `known` vertices).
 
-Dijkstra算法按阶段进行，在每个阶段，Dijkstra算法选择一个顶点$v$，它在所有unknown顶点中居于最小的$d_v$，同时算法声明从$s$到$v$的最短路径是known的。阶段的其余部分由$d_w$值的更新工作组成。
-
-在无权的情形，若$d_w = \infin$则置$d_w = d_v + 1$。因此，若顶点$v$能提供一条更短路径，则我们本质上就降低了$d_w$的值。如果对加权的情形应用同样的逻辑，那么当$d_w$的新值$d_v + c_{v,w}$是一个改进的值时，就置$d_w = d_v + c_{v, w}$。简言之，使用通向$w$路径上的顶点$v$是不是一个好主意由算法决定。原始的值$d_w$是不用$v$的值；上面所算出的值是使用$v$（和仅仅为known的顶点）的最便宜的路径。
-
-例：
+Example:
 
 ![9_20](res/9_20.png)
 
-*有向图G*
-
 ![9_21](res/9_21.png)
-
-*用于Dijkstra算法的表的初始配置*
 
 ![9_22](res/9_22.png)
 
-*在$v_1$被声明为known后的表*
-
 ![9_23](res/9_23.png)
-
-*在$v_4$被声明为known后*
 
 ![9_24](res/9_24.png)
 
-*在$v_2$被声明为known后*
-
 ![9_25](res/9_25.png)
-
-*在$v_5$与$v_3$被声明为known后*
 
 ![9_26](res/9_26.png)
 
-*在$v_7$被声明为known后*
-
 ![9_27](res/9_27.png)
-
-*在$v_6$被声明为known之后，算法终止*
 
 ![9_28](res/9_28.png)
 
-*Dijkstra算法的各个阶段*
+Example. Dijkstra pseudo code:
 
 ```c++
 // Dijkstra算法伪代码
@@ -289,7 +246,9 @@ void Graph::dijkstra(Vertex s)
 }
 ```
 
-### 具有负边值的图
+### Graphs with Negative Edge Costs
+
+Example. Pseudocode for weighted shortest-path algorithm with negative edge costs:
 
 ```c++
 // 具有负边值的加权最短路径算法的伪代码
@@ -318,53 +277,40 @@ void Graph::weightedNegative(Vertex s)
 }
 ```
 
-### 无环图
-
-`关键路径分析（critical path analysis）`
-
-`动作结点图（activity-node graph）`
-
-`事件结点图（event-node graph）`
+### Acyclic Graphs
 
 ![9_33](res/9_33.png)
 
-*动作结点图*
-
 ![9_34](res/9_34.png)
-
-*事件结点图*
-
-事件结点图中每个事件的最早完成时间：
 
 ![9_35](res/9_35.png)
 
-*最早完成时间*
-
-$EC_1 = 0$
-
-$EC_w = \underset{(v,w) \in E}{max} (EC_v + C_{v,w})$
-
-计算能够完成而不影响最后完成时间的最晚时间$LC_i$：
-
 ![9_36](res/9_36.png)
-
-*最晚完成时间*
-
-$LC_n = EC_n$
-
-$LC_v = min(LC_w - c_{v,w})$
 
 ![9_37](res/9_37.png)
 
-*最早完成时间，最晚完成时间和松弛时间*
+If $EC_i$ is the earliest completion time for node $i$, then the applicable rules are:
+$$
+\begin{equation}\begin{split} 
+EC_1 &= 0 \\
+EC_w &= \underset{(v,w) \in E}{max} (EC_v + C_{v,w})
+\end{split}\end{equation}
+$$
+We can also compute the latest time $LC_i$, that each event can finish without affecting the final completion time. The formulas to do this are:
+$$
+\begin{equation}\begin{split} 
+LC_n &= EC_n \\
+LC_v &= \underset{(v, w) \in E}{min}(LC_w - c_{v,w})
+\end{split}\end{equation}
+$$
+The **slack time** for each edge in the event-node graph represents the amount of time that the completion of the corresponding activity can be delayed without delaying the overall completion. It is easy to see that:
+$$
+Slack_{(v, w)} = LC_w - EC_v - c_{v,w}
+$$
 
-每条边的`松弛时间（slack time）`代表对应动作可以被延迟而不推迟整体完成的时间量：
+### Shortest Path Example
 
-$Slack_{(v, w)} = LC_w - EC_v -c_{v,w}$
-
-### 所有顶点对的最短路径
-
-### 最短路径举例
+Example. C++ code to fid word ladders:
 
 ```c++
 // 查找字梯的C++程序
@@ -408,107 +354,67 @@ vector<string> getChainFromPrevMap(const map<string, string>& previous, const st
 
 
 
-## 9.4 网络流问题
+## Network Flow Problems
 
 ![9_39](res/9_39.png)
 
-*一个图（左边）和它的最大流*
+Suppose we given a directed graph $G = (V, E)$ with edge capacities $c_{v, w}$. These capacities could represent the amount of water that could flow through a pipe or the amount of traffic that could flow on a stree between two intersections. We have two vertices: $s$, which we call the **source**, and $t$, which is the **sink**. Through any edge, $(v, w)$, at most $c_{v, w}$ units of "flow" may pass. At any vertex, $v$, that is not either $s$ or $t$, the total flow coming in must equal the total flow going out. The maximum-flow problem is to determine the maximum amount of flow that can pass from $s$ to $t$.
 
-设给定边容量为$c_{v,w}$的有向图$G=(V, E)$。这些容量可以代表通过一个管道的水的流量或两个交叉路口之间马路上的交通流量。有两个顶点，一个是$s$，称为`源点（source）`，一个是$t$，称为`汇点（sink）`。对于任一条边$(v, w)$，最多有“流”的$c_{v,w}$个单位可以通过。在既不是源点$s$又不是汇点$t$的任一顶点$v$，总的进入的流必须等于总的发出的流。
+**A Simple Maximum-Flow Algorithm**
 
-**一个简单的最大流算法**
+**residual graph** tells, for each edge, how much more flow can be added.
 
-`残余图(residual graph)` 它表示对于每条边还能再添加上多少流。
-
-`增长路径（augmenting path）`
+**augmenting path** the minimum edge on this path is the amount of flow that can be added to every edge on the path.
 
 ![9_40](res/9_40.png)
 
-*图，流图以及残余图的初始阶段*
-
 ![9_41](res/9_41.png)
-
-*沿$s$, $b$, $d$, $t$加入2个单位的流后的$G$, $G_f$, $G_r$*
 
 ![9_42](res/9_42.png)
 
-*沿$s$, $a$, $c$, $t$加入2个单位的流后的$G$, $G_f$, $G_r$*
-
 ![9_43](res/9_43.png)
-
-*沿$s$, $a$, $d$, $t$加入1个单位的流后的$G$, $G_f$, $G_r$ -- 算法终止*
 
 ![9_44](res/9_44.png)
 
-*如果初始动作是沿$s$, $a$, $d$, $t$加入3个单位的流得到$G$, $G_f$, $G_r$ -- 算法终止但解不是最优的*
-
 ![9_45](res/9_45.png)
-
-*使用正确的算法沿$s$, $a$, $d$, $t$加入3个单位的流后的图*
 
 ![9_46](res/9_46.png)
 
-*使用正确算法沿$s$, $b$, $d$, $a$, $c$, $t$加入2个单位的流后的图*
-
 ![9_47](res/9_47.png)
 
-*经典的不好的增长情形*
 
 
-
-## 9.5 最小生成树
-
-`最小生成树(minimum spanning tree)` 
+## Minimum Spanning Tree
 
 ![9_48](res/9_48.png)
 
-*图G和它的最小生成树*
+### Prim's Algorithm
 
-### 9.5.1 Prim算法
-
-计算最小生成树的一种方法是使其连续地一步步长成。在每一步，都要把一个结点当作根并往上加边，这样也就把相关联地顶点加到增长中的树上了。
-
-![9_49](res/9_49.png)
-
-*在每一步之后的Prim算法*
-
-![9_50](res/9_50.png)
-
-*在Prim算法中使用的表的初始状态*
-
-![9_51](res/9_51.png)
-
-*在$v_1$声明为已知（known）后的表*
+One way to compute a minimum spanning tree is to grow the tree in successive stages. In each stage, one node is picked as the root, and we add an edge, and thus an associated vertex, to the tree.
 
 ![9_52](res/9_52.png)
 
-*在$v_4$声明为已知后的表*
-
 ![9_53](res/9_53.png)
-
-*在$v_2$和$v_3$先后声明为已知后的表*
 
 ![9_54](res/9_54.png)
 
-*在$v_7$声明为已知后的表*
-
 ![9_55](res/9_55.png)
-
-*在$v_6$和$v_5$选取后的表（Prim算法终止）*
-
-### 9.5.2 Kruskal算法
-
-连续地按照最小的权选择边，并且当所选的边不产生回路时就把它作为取定的边。
 
 ![9_56](res/9_56.png)
 
-*Kruskal算法施于图G的过程*
-
 ![9_57](res/9_57.png)
 
-*Kruskal算法是在处理一个森林 - 树的集合。开始的时候，存在$|V|$棵单节点树，而添加一边则将两棵树合并成一棵树。当算法终止的时候，就只有一棵树了，这棵树就是最小生成树。*
+### Kruskal's Algorithm
 
-Kruskal算法伪代码：
+A second greedy strategy is to continually select the edges in order of smallest weight and accept an edge if it does not cause a cycle.
+
+![9_58](res/9_58.png)
+
+![9_59](res/9_59.png)
+
+Formally, Kruskal's algorithm maintains a forest--a collection of trees. Initially, there are $|V|$ single-node trees. Adding an edge merges two trees into one. When the algorithm terminates, there is only one tree, and this is the minimum spanning tree.
+
+Example.Pseudocode for Kruskal's algorithm:
 
 ```c++
 void Graph::kruskal()
@@ -534,13 +440,13 @@ void Graph::kruskal()
 }
 ```
 
-该算法的最坏情形运行时间为$O(|E|log|E|)$，它受堆操作控制。注意，由于$|E|=O(|V|^2)$，因此这个运行时间实际上是$O(|E|log|V|)$。在实践中，该算法要比这个时间界指示的时间快得多。
+The worst-case running time of this algorithm is $O(|E|log|E|)$, which is dominated by the heap operations. Notice that since $|E|=O(|V|^2)$, this running time is actually $O(|E|log|V|)$. In practice, the algorithm is much faster than this time bound would indicate.
 
 
 
-## 9.6 深度优先搜索的应用
+## Applications of Depth-First Search
 
-深度优先搜索模板（伪代码）：
+Example.Template for depth-first search (pseudocode):
 
 ```c++
 void Graph::dfs(Vertex v)
@@ -552,39 +458,31 @@ void Graph::dfs(Vertex v)
 }
 ```
 
-### 9.6.1 无向图
+### Undirected Graphs
 
-![9_60](res/9_60.png)
-
-*一个无向图*
-
-![9_61](res/9_61.png)
-
-*`深度优先生成树（depth-first spanning tree）`步骤：树的根是A，是第一个被访问到的顶点。图中的每一条边(v, w)都出现在树上。如果处理(v, w)时发现w已被标记，并且处理(w, v)时发现v也被标记，那么我们就画一条虚线，并称之为`后向边(back edge)`，标识这条“边”实际上不是树的一部分。*
-
-### 9.6.2 双连通性
-
-一个连通的无向图中的任一顶点删除之后，剩下的图仍然连通，那么这样的无向连通图就称为`双连通的（biconnected）`。
-
-如果图不是双连通的，那么，将其删除后图不再连通的那些顶点叫做`割点(articulation point)`。
-
-![9_62](res/9_62.png)
-
-*具有割点C和D的图*
+![9_62](res/9_60.png)
 
 ![9_63](res/9_63.png)
 
-*深度优先搜索提供了一种找出连通图中所有割点的线性时间算法：从图中任一顶点开始，执行深度优先搜索并在顶点被访问时给它们编号。对于每一个顶点$v$，我们称其前序编号为$Num(v)$。然后，对于深度优先搜索生成树上的每一个顶点$v$，计算编号最低的顶点，我们称之为$Low(v)$，该点可从$v$开始通过树的零边或多条边，且可能还有一条后向边（以该序）达到。*
+We graphically illustrate these steps with a **depth-first spanning tree**. The root of the tree is $A$, the first vertex visited. Each edge $(v, w)$ in the graph is present in the tree. If, when we process $(v, w)$, we find that $w$ is unmarked, or if, when we process $(w, v)$, we find that $v$ is unmarked, we indicate this with a tree edge. If, when we process $(v, w)$, we find that $w$ is already marked, and when processing $(w, v)$, we find that $v$ is already marked, we draw a dashed line, which we will call a **back edge**, to indicate that this "edge" is not really part of the tree.
 
-![9_64](res/9_64.png)
+### Biconnectivity
 
-*从C开始深度优先搜索所得到的深度优先树*
+A connected undirected graph is **biconnected** if there are no vertices whose removal disconnects the rest of the graph.
 
-通过对深度优先生成树执行一次后序遍历有效地算出$Low$，根据$Low$地定义可知，$Low(v)$是以下三者中的最小者：
+If a graph is not biconnected, the vertices whose removal would disconnect the graph are known as **articulation points**.
 
-- $Num(v)$；
-- 所有向右边$(v, w)$中地最低$Num(w)$；
-- 树地所有边$(v, w)$中地最低$Low(w)$。
+![9_62](res/9_62.png)
+
+![9_65](res/9_65.png)
+
+![9_66](res/9_66.png)
+
+By the definition of $Low$, $Low(v)$ is the minimum of:
+
+1. $Num(v)$
+2. the lowest $Num(w)$ among all back edges $(v, w)$
+3. the lowest $Low(w)$ among all tree edges $(v, w)$
 
 例，计算割点：
 
@@ -622,13 +520,21 @@ void Graph::assignLow(Vertex v)
 }
 ```
 
-### 9.6.3 欧拉回路
+### Euler Circuits
 
-![9_68](res/9_68.png)
+![9_70](res/9_70.png)
 
-*三个图*
+![9_71](res/9_71.png)
 
-例，使用“一笔画完”的方法，画上面的图：
+![9_72](res/9_72.png)
+
+![9_73](res/9_73.png)
+
+![9_74](res/9_74.png)
+
+![9_75](res/9_75.png)
+
+Example. Testing for articulation points in one depth-first search (test for the root is omitted) (pseudocode):
 
 ```++
 void Graph::findArt(Vertex v)
@@ -652,47 +558,33 @@ void Graph::findArt(Vertex v)
 }
 ```
 
-### 9.6.4 有向图
-
-![9_74](res/9_74.png)
-
-*一个有向图*
-
-![9_75](res/9_75.png)
-
-*对上图进行深度优先搜索*
-
-### 查找强分支
+### Directed Graphs
 
 ![9_76](res/9_76.png)
 
-*通过对上面的有向图的后续遍历所编号的$G_r$*
-
 ![9_77](res/9_77.png)
 
-*$G_r$的深度优先搜索 - 强分支为{G}, {H, I, J}, {B, A, C, F}, {D}, {E}*
-
-
-
-## 9.7 NP完全性介绍
-
-### 9.7.1 难与易
-
-计算基不可能解决碰巧发生的每一个问题，这些”不可能“解出的问题称为`不可判定问题(undecidable problem)`。
-
-### 9.7.2 NP类
-
-`NP(非确定型多项式时间, nondeterministic polynomial-time)`
-
-### 9.7.3 NP完全问题
-
-`NP完全(NP-complete)`问题有一个性质，即NP中的任一问题都能够`多项式地归约(polynomially reduced)`成NP完全问题。
-
-**旅行商问题** 给定一完全图$G=(V, E)$，其边的值以及整数$K$，是否存在一个访问所有顶点并且总值小于等于$K$的简单回路？
+### Finding Strong Components
 
 ![9_78](res/9_78.png)
 
-*哈密尔顿回路问题变换成旅行商问题*
+![9_79](res/9_79.png)
+
+
+
+## Introduction ot NP-Completeness
+
+### Easy VS Hard
+
+Just as real numbers are not sufficient to express a solution to $x^2 < 0$, one can prove that computers cannot solve every problem that happens to come along. These "impossible" problems are called **undecidable problems**.
+
+### NP-Complete Problems
+
+An NP-complete problem has the property that any problem in NP can be **polynomially reduced** to it.
+
+**Traveling Salesman Problem** Given a complete graph, $G = (V, E)$, with edge costs, and an integer $k$, is there a simple cycle that visits all vertices and has total cost $\leq K$?
+
+![9_80](res/9_80.png)
 
 
 

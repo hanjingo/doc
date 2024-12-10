@@ -1,12 +1,12 @@
+[中文版](chapter5_zh.md) | English
+
 # 5 Probabilistic Analysis and Randomized Algorithms
 
-
-
-## 5.1 The hiring problem
+[TOC]
 
 
 
-## 5.2 Indicator random variables
+## Indicator random variables
 
 Indicator random variables provide a convenient method for converting between probabilities and expectations. Suppose we are given a sample space $S$ and an event $A$. Then the `indicator random variable I{A}` associated with event $A$ is defined as:
 $$
@@ -36,7 +36,7 @@ $$
 
 
 
-## 5.3 Randomly permuting arrays
+## Randomly permuting arrays
 
 ```c++
 RANDOMIZED-HIRE-ASSISTANT(n)
@@ -72,15 +72,19 @@ Pr\{E_1 \cap E_2 \cap E_3 \cap ... \cap E_{n-1} \cap E_n\}
 $$
 , Using Exercise C.2-5, this probability is equal to:
 $$
-Pr\{E_1\} \cdot Pr\{E_2|E_1\} TODO
+Pr\{E_1\} \cdot Pr\{E_2|E_1\} \cdot Pr\{E_3|E_2 \cap E_1\} \cdot Pr\{E_4 | E_3 \cap E_2 \cap E_1\} \\
+... Pr\{E_i | E_{i - 1} \cap E_{i - 2} \cap ... \cap E_1\} ... Pr{E_n | E_{n - 1} \cap ... \cap E_1}
 $$
 
+We have that $Pr\{E_1\} = 1 / n$ because it is the probability that one priority chosen randomly out of a set of $n$ is the smallest priority. Next, we observe
 
-**引理5.4** 假设所有优先级都不同，则过程PERMUTE-BY-SORTING产生输入的均匀随机排列。
+**Lemma 5.5** Procedure $RANDOMIZE-IN-PLACE$ computes a uniform random permutation.
 
-**证明** 我们从考虑每个元素$A[i]$分配到第$i$个最小优先级的特殊排列开始，并说明这个排列正好发生的概率是$1/n!$。对$i=1, 2, ..., n$，设$E_i$代表元素$A[i]$分配到第$i$个最小优先级的事件。然后我们想计算对所有的$i$，事件$E_i$发生的概率，即$Pr\{E_1 \cap E_2 \cap E_3 \cap ... \cap E_{n-1} \cap E_n\} = (\frac{1}{n})(\frac{1}{n-1})...(\frac{1}{2})(\frac{1}{1}) = \frac{1}{n!}$。
+**Proof** We use the following loop invariant: Just prior to the $i$th iteration of the `for` loop of lines 2-3, for each possible $(i - 1)$-permutation of the $n$ elements, the subarray $A[1...i - 1]$ contains this $(i - 1)$-permutation with probability $(n - i + 1)!/n!$.
 
-**引理5.5** 过程RANDOMIZE-IN-PLACE可计算出一个均匀随机排列。
 
-**证明** 我们使用下面的循环不变式：在第2~3行for循环的第i次迭代以前，对每个可能的(i-1)排列，子数组A[1..i-1]包含这个(i-1)排列的概率是(n-i+1)!/n!。
+
+## Probabilistic analysis and further uses of indicator random variables
+
+### The birthday paradox
 

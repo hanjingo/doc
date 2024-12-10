@@ -1,68 +1,61 @@
-# 第2章 算法分析
+# Chapter 2 Algorithm Analysis
 
 [TOC]
 
 
 
-## 数学基础
+## Mathematical Background
 
-**定义2.1** 如果存在正常数$c$和$n_0$使得当$N \geqslant n_0$时$T(N) \leqslant cf(N)$，则记为$T(N) = O(f(N))$。
+**Definition 2.1** $T(N) = O(f(N))$ if there are positive constants $c$ and $n_0$ such that $T(N) \leqslant cf(N)$ when $N \geqslant n_0$.
 
-**定义2.2** 如果存在正常数$c$和$n_0$使得当$N \geqslant n_0$时$T(N) \geqslant cg(N)$，则记为$T(N)= \Omega (g(N))$。
+**Definition 2.2** $T(N)= \Omega (g(N))$ if there are positive `constants` $c$ and $n_{0}$ such that $T(N) \geqslant cg(N)$ when $N \geqslant n_0$.
 
-**定义2.3** $T(N) \Theta (h(N))$当前仅当$T(N) = O(h(N))$和$T(N) = \Omega(h(N)) $。
+**Definition 2.3** $T(N) = \Theta (h(N))$ if and only if $T(N) = O(h(N))$ and $T(N) = \Omega(h(N)) $.
 
-**定义2.4** 如果对所有的常数$c$存在$n_0$使得当$N > n_0$时$T(N) < cp(N)$，则记为$T(N) = 0(p(N))$。非正式的定义为：如果$T(N) = O(p(N))$且$T(N) \neq \Theta(p(N))$，则$T(N) = o(p(N))$。
+**Definition 2.4** $T(N) = o(p(N))$ if, for all positive constants $c$, there exists an $n_{0}$ such that $T(N) < cp(N)$ when $N > n_0$. Less formally, $T(N) = o(p(N))$ if $T(N) = O(p(N))$ and $T(N) \neq \Theta(p(N))$.
 
-**法则1** 如果$T_1(N) = O(f(N))$且$T_2(N) = O(g(N))$，那么
+**Rule 1** If $T_1(N) = O(f(N))$ and $T_2(N) = O(g(N))$, then
 
-(a) $T_1(N) + T_2(N) = O(f(N) + g(N))$（直观地非正式地表达为$max(O(f(N)), O(g(N)))$）
+(a) $T_1(N) + T_2(N) = O(f(N) + g(N))$ (intuitively and less formally it is $O(max(f(N), g(N))$),
 
-(b) $T_1(N)T_2(N) = O(f(N)g(N))$
+(b) $T_1(N) * T_2(N) = O(f(N) * g(N))$
 
-**法则2** 如果$T(N)$是一个$k$次多项式，则$T(N) = \Theta(N^k)$。
+**Rule 2** If $T(N)$ is a polynomial of degree $k$, then $T(N) = \Theta(N^k)$.
 
-**法则3** 对任意常数$k$, $log^kN = O(N)$。它告诉我们对数增长得非常缓慢。
+**Rule 3** $log^k N = O(N)$ for any constant $k$. This tells us that logarithms grow very slowly.
 
-典型的增长率：
+Typical growth rates:
 
-| 函数       | 名称       |
-| ---------- | ---------- |
-| $c$        | 常量       |
-| $log\ N$   | 对数       |
-| $log^2\ N$ | 对数的平方 |
-| $N$        | 线性       |
-| $Nlog\ N$  | 现行对数   |
-| $N^2$      | 二次       |
-| $N^3$      | 三次       |
-| $2^N$      | 指数       |
-
-
-
-## 模型
+| Function   | Name        |
+| ---------- | ----------- |
+| $c$        | Constant    |
+| $log\ N$   | Logarithmic |
+| $log^2\ N$ | Log-squared |
+| $N$        | Linear      |
+| $N logN$   |             |
+| $N^2$      | Quadratic   |
+| $N^3$      | Cubic       |
+| $2^N$      | Exponential |
 
 
 
-## 要分析的问题
+## What to Analyze
 
 ![2_4](res/2_4.png)
 
-*各种计算最大子序列和的算法图（横坐标为N，纵坐标为时间）*
 
 
+## Running-Time Calculations
 
-## 运行时间计算
+### General Rules
 
-### 一般法则
+**Rule 1-FOR loops** The running time of a `for` loop is at most the running time of the statements inside the `for` loop (including tests) times the number of iterations.
 
-**法则1：for循环** 一个for循环的运行时间至多是该for循环内语句（包括测试）的运行时间乘以迭代的次数。
+**Rule 2-Netsted loops** Analyze these inside out. The total running time of a statement inside a group of nested loops is the running time of the statement multiplited by the product of the size of all the loops.
 
-**法则2：嵌套循环** 从里向外分析这些循环。在一组嵌套循环内部的一条语句总的运行时间为该语句的运行时间乘以改组所有循环的大小的乘积。
+**Rule 3-Consecutive Statements** These just add (which means that the maximum is the one that counts).
 
-**法则3：顺序语句** 将各个语句的运行时间求和即可。
-
-**法则4：If/Else语句** 对于程序片段
-
+**Rule 4-If/Else** For the fragment:
 ```c++
 if (condition)
   S1
@@ -70,27 +63,24 @@ else
   S2
 ```
 
-一个if/else语句的运行时间从不超过判断再加上$S_1$和$S_2$中运行时间较长者的总的运行时间。
+, the running time of an `if/else` statement is never more than the running time of the test plus the larger of the running time of $S_1$ and $S_2$.
 
-### 最大子序列和问题的解
+### Logarithms in the Running Time
 
-### 运行时间中的对数
+The most confusing aspect of analyzing algorithms probably centers around the logarithm. We have already seen that some divide-and-conquer algorithms will run in $O(N log N)$ time. Besides divide-and-conquer algorithms, the most frequent appearance of logarithms centers around the following general rule: An algorithm is $O(log N)$ if it takes constant (O(1)) time to cut the problem size by a fraction (which is usually $\frac{1}{2}$). On the other hand, if constant time is required to merely reduce the problem by a constant `amount` (such as to make the problem smaller by 1), then the algorithm is $O(N)$.
 
-对数最常出现的规律为：如果一个算法用常数时间$O(1)$将问题的大小削减为其一部分（通常是1/2），那么该算法就是$O(log\ N)$的；另一方面，如果使用常数时间只是把问题减少一个常数的数量（如将问题减少1），那么这种算法就是$O(N)$的。
+1. Binary Search
 
-1. 二分搜索
+   `Binary Search` Given an integer $X$ and integers $A_0, A_1, ..., A_{N-1}$, which are presorted and already in memory, find $i$ such that $A_i = X$, or return $i = -1$ if $X$ is not in the input.
 
-   `二分搜索（binary serch）` 给定一个整数$X$和整数$A_0, A_1, ..., A_{N-1}$，后者已经预先排序并在内存中，求下标$i$使得$A_i = X$，如果$X$不在数据中，则返回$i = -1$。
+   Thus, the running time is $O(log N)$.
 
-   运行时间是$O(log\ N)$。
+2. Euclid's Algorithm
 
-2. 欧几里得算法
+   **Theorem 2.1** if $M > N$, then $M \text{ mod } N < M / 2$.
 
-   **定理2.1** 如果$M > N$，则$M mod N < M/2$。
+   **Proof** There are two cases. If $N \leq M / 2$, then since the remainder is smaller then $N$, the theorem is true for this case. The other case is $N > M / 2$. But then $N$ goes into $M$ once with a remainder $M - N < M / 2$, proving the theorem.
 
-3. 幂运算
+3. Exponentiation
 
-### 检验你的分析
-
-### 分析结果的正确性
-
+   A recurrence formula can be written and solved. Simple intuition obviates the need for a brute-force approach.
