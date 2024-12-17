@@ -59,141 +59,97 @@ The `postfix notation` for an expression $E$ can be defined inductively as follo
 
 An attribute is said to be `synthesized` if its value at a parse-tree node $N$ is determined from attribute values at the child of $N$ and at $N$ itself. Synthesized attributes have the desirable property that they can be evaluated during a single bottom-up traversal of a parse tree.
 
-### 2.3.3 简单语法制导定义
+### Simple Syntax-Directed Definitions
 
-简单语法制导定义：要得到代表产生式头部的非终结符号的翻译结果的字符串，只需要将产生式体中各非终结符号的翻译结果按照它们在非终结符号中的出现顺序连接起来，并在其中穿插一些附加的串即可。
-
-### 2.3.4 树的遍历
-
-### 2.3.5 翻译方案
-
-动作在第一次访问一个节点时被执行，那么我们将这种🏪称为`前序遍历（preorder traversal）`。如果动作在我们最后离开一个节点前被执行，则称这种遍历为`后序遍历（postorder traversal）`。
-
-### 2.3.6 2.3节的练习
+The syntax-directed definition has the following important property: the string representing the translation of the nonterminal at the head of each production is the concatenation of the translations of the nonterminals in the production body, in the same order as in the production, with some optional additional strings interleaved.
 
 
 
-## 2.4 语法分析
+## Parsing
 
-语法分析是决定如何用一个文法生成一个终结符号串的过程。大多数语法分析方法可以归为以下两类：
+Most parsing methods fall into one of two classes, called the `top-down` and `bottom-up` methods. These terms refer to the order in which nodes in the parse tree are constructed:
 
-- 自顶向下（top-down）方法：构造过程从根节点开始，逐步向叶子节点方向进行。
-- 自底向上（bottom-up）方法：构造过程从叶子节点开始，逐步构造出根节点。
+- In top-down parsers, construction starts at the root and proceeds towards the leaves.
+- In bottom-up parsers, construction starts at the leaves and proceeds towards the root.
 
-### 2.4.1 自顶向下分析方法
+### Top-Down Parsing
 
-在自顶向下地构造一颗语法分析树时，反复执行下面两个步骤：
+The top-down construction of a parse tree is done by starting with the root, labeled with the starting nonterminal `stmt`, and repeatedly performing the following two steps:
 
-1. 在标号为非终结符号$A$的节点$N$上，选择$A$的一个产生式，并为该产生式体中的各个符号构造出N的子节点。
-2. 寻找下一个节点来构造子树，通常选择的是语法分析树最左边的尚未扩展的非终结符。
+1. At node $N$, labeled with nonterminal $A$, select one of the productions for $A$ and construct children at $N$ for the symbols in the production body.
+2. Find the next node at which a subtree is to be constructed, typically the leftmost unexpanded nonterminal of the tree.
 
-### 2.4.2 预测分析法
+### Predictive Parsing
 
-`递归下降分析方法（recursive-descent parsing）`是一种自顶向下的语法分析方法，它使用一组递归过程来处理输入。文法的每个非终结符都有一个相关联的过程。
+`Recursive-descent parsing` is a top-down method of syntax analysis in which a set of recursive procedures is used to process the input. One procedure is associated with each nonterminal of a grammar.
 
-`预测分析法（predictive parsing）`是递归下降分析方法的简单形式。在该分析法中，各个非终结符号对应的过程中的控制流可以由向前看符号无二义地确定。
+Here, we consider a simple form of recursive-descent parsing, called `predictive parsing`, in which the lookahead symbol unambiguously determines the flow of control through the procedure body for each nonterminal.
 
-### 2.4.3 何时使用$\epsilon$产生式
+### Left Recursion
 
-### 2.4.4 设计一个预测分析器
-
-### 2.4.5 左递归
-
-递归下降语法分析器有可能进入无限循环。当出现如下所示的“左递归”产生式时，分析器就会出现无限循环：
-
+It is possible for a recursive-descent parser to loop forever. A problem arises with "left-recursive" productions like:
 $$
 expr \rightarrow expr + term
 $$
-
-### 2.4.6 2.4节的练习
-
-
-
-## 2.5 简单表达式的翻译器
-
-### 2.5.1 抽象语法和具体语法
-
-`抽象语法树（abstract syntax tree）`：每个内部节点代表一个运算符，该节点的子节点代表这个运算符的运算分量。
-
-### 2.5.2 调整翻译方案
-
-### 2.5.3 非终结符号的过程
-
-### 2.5.4 翻译器的简化
-
-如果一个过程体中执行的最后一条语句是对该过程的递归调用，那么这个调用就称为是`尾递归的（tail recursive）`。
-
-### 2.5.5 完整的程序
+, where the leftmost symbol of the body is the same as the nonterminal at the head of the production.
 
 
 
-## 2.6 词法分析
+## A Translator for Simple Expressions
 
-构成一个词法单元的输入字符序列称为`词素（lexem）`。
+### Abstract and Concrete Syntax
 
-### 2.6.1 剔除空白和注释
+In an `abstract syntax tree` for an expression, each interior node represents and operator; the children of the node represent the operands of the operator.
 
-### 2.6.2 预读
+### Simplifying the Translator
 
-### 2.6.3 常量
-
-### 2.6.4 识别关键字和标识符
-
-### 2.6.5 词法分析器
-
-### 2.6.6 2.6节的练习
+First, certain recursive calls can be replaced by iterations. When the last statement executed in a procedure body is a recursive call to the same procedure, the call is said to be `tail recursive`.
 
 
 
-## 2.7 符号表
+## Symbol Tables
 
-`符号表（symbol table）`是一种供编译器用于保存有关源程序构造的各种信息的数据结构。这些信息在编译器的分析阶段被逐步收集并放入符号表，它们在综合阶段用于生成目标代码。
-
-### 2.7.1 为每个作用域设置一个符号表
-
-### 2.7.2 符号表的使用
+`Symbol tables` are data structures that are used by compilers to hold information about source-program constructs. The information is collected incrementally by the analysis phases of a compiler and used by the synthesis phases to generate the target code.
 
 
 
-## 2.8 生成中间代码
+## Intermediate Code Generation
 
-### 2.8.1 两种中间表示形式
+### Two Kinds of Intermediate Representations
 
-两种最重要的中间表示形式：
+The two most important intermediate representations are:
 
-- 树型结构，包括语法分析树和（抽象）语法树。
-- 线性表示形成，特别是“三地址代码”。
+- Trees, including parse trees and (abstract) syntax trees.
+- Linear representations, especially "three-address code".
 
-`静态检查（static check）`：编译器检查源程序是否遵循源语言的语法和语义规则。
+In addition to creating an intermediate representation, a compiler front end checks that the soruce program follows the syntactic and semantic rules of the source language. This checking is called `static checking`; in general "static" means "done by the compiler".
 
-### 2.8.2 语法树的构造
+### Construction of Syntax Trees
 
-一个语句序列的表示方法如下：用一个叶子节点null表示一个空语句序列，用运算符seq表示一个语句序列。规则如下：
+A sequence of statements is represented by using a left **null** for an empty statement and a operator **seq** for a sequence of statements, as in:
 $$
-stmts \rightarrow stmts_1\ stmt \{stmts.n = new\ Seq(stmts_1.n, stmt.n);\}
+stmts \rightarrow stmts_1 \ stmt \{stmts.n = new\ Seq(stmts_1.n, stmt.n);\}
 $$
 
-### 2.8.3 静态检查
+### Static Checking
 
-静态检查是指在编译过程中完成的各种一致性检查。这些检查不但可以确保一个程序被顺利地编译，而且还能再程序运行之前发现编程错误。静态检查包括：
+Static checks are consistency checks that are done during compilation. Not only do they assure that a program can be compiled successfully, but they also have the potential for catching programming errors early, before a program is run. Static checking includes:
 
-- 语法检查：语法要求比文法中的要求的更多。
-- 类型检查：一种语言的类型规则确保一个运算符或函数被应用到类型和数量都正确的运算分量上。
-
-### 2.8.4 三地址码
-
-### 2.8.5 2.8节的练习
+- `Syntactic Checking`. There is more to syntax than grammars.
+- `Type Checking`. The type rules of a language ensure that an operator or function is applied to the right number and type of operands.
 
 
 
-## 2.9 总结
+## Summary
 
-- 构造一个语法制导编译器要从源语言的文法开始。
-- 在描述一个翻译器时，在程序构造中附加属性是非常有用的。
-- 词法分析器从输入中逐个读取字符，并输出一个词法单元的流，其中词法单元由一个终结符号以及以属性值形式出现的附加信息组成。
-- 语法分析要解决的问题是指出如何从一个文法的开始符号推导出一个给定的终结符号串。
-- 使用被称为预测语法分析法的自顶向下（从语法分析树的根节点到叶子节点）方法可以手工建立高效的语法分析器。
-- 语法制导翻译通过在文法中添加规则或程序片段来完成。
-- 语法分析的结果是源代码的一种中间表示形式，称为中间代码。
-- 符号表是存放有关标识符的信息的数据结构。
+![2_46](res/2_46.png)
+
+- The starting point for a syntax-directed translator is a grammar for the source language.
+- In specifying a translator, it is helpful to attach attributes to a programming construct, where an `attribute` is any quantity associated with a construct.
+- A `lexical analyzer` reads the input one character at a time and produces as output a stream of `tokens`, where a token consists of a terminal symbol along with additional information in the form of attribute values.
+- Parsing is the problem of figuring out how a string of terminals can be derived from the start symbol of the grammar by repeatedly replacing a nonterminal with the body of one of its productions.
+- Efficient parsers can be built by hand, using a top-down (from the root to the leaves of a parse tree) method called predictive parsing.
+- Syntax-directed translation is done by attaching either rules or program fragments to productions in a grammar.
+- The result of syntax analysis is a representation of the source program, called `intermediate code`.
+- `Symbol tables` are data structures that hold information about identifiers.
 

@@ -72,6 +72,9 @@
 | [Design Pattern](NOTE/DESIGN_PATTERN/README.md)              | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
 | [THE ART OF MENTAL TRICKERY AND MANIPULATION](NOTE/THE_ART_OF_MENTAL_TRICKEY_AND_MANIPULATION/README.md) |         | Richard Paul,<br>Linda Elder                                 |                   |
 | [The Oxford Essential Guide to Writing](NOTE/THE_OXFORD_ESSENTIAL_GUIDE_TO_WRITING/README.md) | BERKLEY | Thomas S. Kane .                                             |                   |
+| [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md) | 3ED     | Thomas H.Cormen<br/>Charles E.Leiserson<br/>Ronald L. Rivest<br/>Clifford Stein |                   |
+| [Data Structures and Algorithm Analysis in C++](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 4ED     | Mark Allen Weiss                                             |                   |
+| [Compilers Principles](COMPILERS_PRINCIPLES_TECHNIQUES_TOOLS/README.md) | 2ED     | Alfred V.Aho<br/>Monica S.Lam<br/>Ravi Sethi<br/>Jeffrey D.Ullman |                   |
 
 ---
 

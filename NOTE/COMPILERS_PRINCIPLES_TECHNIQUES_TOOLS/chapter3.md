@@ -1,8 +1,10 @@
-# 第三章 词法分析
+# Chapter 3 Lexical Analysis
+
+[TOC]
 
 
 
-## 3.1 词法分析器的作用
+## The Role of the Lexical Analyzer
 
 词法分析器的主要任务是读入源程序的输入字符，将他们组成词素，生成并输出一个词法单元序列，每个词法单元对应于一个词素。
 

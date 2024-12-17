@@ -93,6 +93,7 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [COMPUTER ORGANIZATION AND DESIGN-THE HARDWARE/SOFTWARE INTERFACE](COMPUTER_ORGANIZATION_AND_DESIGN/README.md)
 - [The Algorithm Design Manual](THE_ALGORITHM_DESIGN_MANUAL/README.md)
 - [Thinking Fast and Slow](THINKING_FAST_AND_SLOW/README.md)
 - [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
@@ -107,7 +108,6 @@ English | [中文版](README_zh.md)
 ## Planned Reading
 
 - [Modern C++ Design]
-- [COMPUTER ORGANIZATION AND DESIGN - THE HARDWARE/SOFTWARE INTERFACE]
 - [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Structure and Interpretation of Computer Programs]
 - [HIGH-FREQUENCY TRADING]
