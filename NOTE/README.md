@@ -67,9 +67,10 @@ English | [中文版](README_zh.md)
 
 ### Software Engineering
 
-| Title                                      | Edition | Author                                                       | Abstract/Evaluate |
-| ------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
-| [Design Pattern](DESIGN_PATTERN/README.md) | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
+| Title                                                  | Edition | Author                                                       | Abstract/Evaluate |
+| ------------------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
+| [Design Pattern](DESIGN_PATTERN/README.md)             | 1ED     | Erich Gamma<br>Richard Helm<br>Ralph Johnson<br>John Vlissides |                   |
+| [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md) | 9ED     | Ian Sommerville                                              |                   |
 
 ### Logic
 
@@ -93,24 +94,17 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [THE ART OF MULTIPROCESSOR PROGRAMMING](THE_ART_OF_MULTIP_OCESSOR_PROGRAMMING/README.md)
 - [COMPUTER ORGANIZATION AND DESIGN-THE HARDWARE/SOFTWARE INTERFACE](COMPUTER_ORGANIZATION_AND_DESIGN/README.md)
 - [The Algorithm Design Manual](THE_ALGORITHM_DESIGN_MANUAL/README.md)
 - [Thinking Fast and Slow](THINKING_FAST_AND_SLOW/README.md)
-- [SOFTWARE ENGINEERING](SOFTWARE_ENGINEERING/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [THOMAS' CALCULUS](THOMAS_CALCULUS/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)
-- [API Design for Cpp](API_DESIGN_FOR_CPP/README.md)
-- [Large-Scale C++ Software Design](LARGE_SCALE_CPP_SOFTWARE_DESIGN/README.md)
 
 
 
 ## Planned Reading
 
-- [Modern C++ Design]
-- [Intel Threading Building Blocks: Outfitting C++ for Multi-core Processor Parallelism]
 - [Structure and Interpretation of Computer Programs]
-- [HIGH-FREQUENCY TRADING]
-- [Design and Development of a Functional High-Frequency Trading Algorithm]
 - [An introduction to probability theory and its applications]
-- [Developing High-Frequency Trading System]

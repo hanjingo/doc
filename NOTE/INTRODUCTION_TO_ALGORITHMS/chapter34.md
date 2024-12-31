@@ -1,40 +1,48 @@
-# 第34章 NP完全性
+# 34 NP-Completeness
+
+[TOC]
 
 
 
 ![34_1](res/34_1.png)
 
-## 34.1 多项式时间
+## Polynomial time
 
-**引理 34.1** 设$Q$是定义在一个实例集$I$上的一个抽象判定问题，$e_1$和$e_2$是$I$上多项式相关的编码，则$e_1(Q) \in P$当且仅当$e_2(Q) \in P$。
+**Lemma 34.1** Let $Q$ be an abstract decision problem on an instance set $I$, and let $e_1$ and $e_2$ be polynomially related encodings on $I$. Then, $e_1(Q) \in P$ if and only if $e_2(Q) \in P$.
 
-**定理 34.2** $P = \{L：L能被一个多项式时间算法所接受\}$。
+**Theorem 34.2** $P = \{L : L \text{ is accepted by a polynomial-time algorithm}\}.$
 
 
 
-## 34.2 多项式时间的验证
+## Polynomial-time verification
 
-**哈密顿回路**
+**Hamiltonian cycles**
 
 ![34_2](res/34_2.png)
 
-哈密顿回路问题：$HAM-CYCLE = \{<G>: G是哈密顿图\}$。
-
+The **hamiltonian-cycle problem**: "Does a graph G have a hamiltonian cycle?" as a formal language:
+$$
+HAM-CYCLE = \{<G>: \text{G is a hamiltonian graph}\}
+$$
 ![34_3](res/34_3.png)
 
 
 
-## 34.3 NP完全性与可归约性
+## NP-completeness and reducibility
 
-如果存在一个多项式时间可计算的函数$f: \{0, 1\}^{*} \rightarrow \{0, 1\}^{*}$，满足对所有的$x \in \{0, 1\}^{*}$，$x \in L_1$当且仅当$f(x) = L_2$，则称函数$f$为**归约函数**，计算$f$的多项式时间算法$F称为**归约算法**。
+We say that a language $L_1$ is **polynomial-time reducible** to a language $L_2$, written $L_1 \leq_{p} L_2$, if there exists a polynomial-time computable function $f: \{0, 1\}^{*} \rightarrow \{0, 1\}^{*}$ such that for all $x \in \{0, 1\}^{*}$,
+$$
+x \in L_1 \text{ if and only if } f(x) \in L_2
+$$
+, We call the function $f$ the **reduction function**, and a polynomial-time algorithm $F$ that computes $f$ is a **reduction algorithm**.
 
 ![34_4](res/34_4.png)
 
-**引理 34.3** 如果$L_1, L_2 \subseteq \{0, 1\}^{*}$是满足$L_1 \leqslant pL_2$的语言，则$L_2 \in P$蕴含着$L_1 \in P$。
+**Lemma 34.3** If $L_1, L_2 \subseteq \{0, 1\}^{*}$ are languages such that $L_1 \leq_{p} L_2$, then $L_2 \in P$ implies $L_1 \in P$.
 
 ![34_5](res/34_5.png)
 
-**定理 34.4** 如果任何NP完全问题是多项式时间可求解的，则$P = NP$。等价地，如果存在某一NP中的问题不是多项式时间可求解的，则所有NP完全问题都不是多项式时间可求解的。
+**Theorem 34.4** If any NP-complete problem is polynomial-time solvable, then $P = NP$. Equivalently, if any problem in $NP$ is not polynomial-time solvable, then no $NP$-complete problem is polynomial-time solvable.
 
 ![34_6](res/34_6.png)
 
@@ -42,25 +50,25 @@
 
 ![34_8](res/34_8.png)
 
-**引理 34.5** 电路可满足性问题属于NP类。
+**Lemma 34.5** The circuit-satisfiability problem belongs to the class $NP$.
 
-**引理 34.6** 电路可满足性问题是NP难度的。
+**Lemma 34.6** The circuit-satisfiability problem is $NP$-hard.
 
 ![34_9](res/34_9.png)
 
-**定理 34.7** 电路可满足性问题是NP完全的。
+**Theorem 34.7** The circuit-satisfiability problem is $NP$-complete.
 
 
 
-## 34.4 NP完全性的证明
+## NP-completeness proofs
 
-**引理 34.8** 如果语言$L$是一种满足对任意$L' \in NPC$都有$L' \leqslant pL$的语言，则$L$是NP难度的。此外，如果$L \in NP$，则$L \in NPC$。
+**Lemma 34.8** If $L$ is a language such that $L' \leq_{P} L$ for some $L' \in NPC$, then $L$ is $NP$-hard. If, in addition, $L \in NP$, then $L \in NPC$.
 
-**定理 34.9** 布尔公式的可满足性问题是NP完全的。
+**Theorem 34.9** Satisfiability of boolean formulas in $NP$-complete.
 
 ![34_10](res/34_10.png)
 
-**定理 34.10** 3合取范式形式的布尔公式的可满足性问题是NP完全的。
+**Theorem 34.10** Satisfiability of boolean formulas in 3-conjunctive normal form is $NP$-complete.
 
 ![34_11](res/34_11.png)
 
@@ -68,41 +76,44 @@
 
 
 
-## 34.5 NP完全问题
+## NP-complete problems
 
 ![34_13](res/34_13.png)
 
-### 34.4.1 团问题
-
-**定理 34.11** 团问题是NP完全的。
+**Theorem 34.11** The clique problem is $NP$-complete.
 
 ![34_14](res/34_14.png)
 
-### 34.5.2 顶点覆盖问题
+### The vertex-cover problem
 
 ![34_15](res/34_15.png)
 
-**定理 34.12** 顶点覆盖问题是NP完全的。
+**Theorem 34.12** The vertex-cover problem is $NP$-complete.
 
+### The hamiltonian-cycle problem
 
-
-## 34.5.3 哈密顿回路问题
-
-**定理 34.13** 哈密顿回路问题是NP完全问题。
+**Theorem 34.13** The hamiltonian cycle problem is NP-complete.
 
 ![34_16](res/34_16.png)
 
 ![34_17](res/34_17.png)
 
-### 34.5.4 旅行商问题
+### The traveling-salesman problem
 
-旅行商问题的形式语言：$TSP = \{<G, c, k>: G = (V, E)是一个完全图，c是V \times V \rightarrow Z上的一个函数，k \in Z, G中包含一个最大花费为k的旅行回路\}$。
+The formal language for the corresponding decision problem is:
+$$
+\begin{equation}\begin{split}
+TSP = \{<G, c, k>: &G = (V, E) \text{ is a complete graph}, \\
+&c \text{ is a function from } V \times V \rightarrow Z, \\
+&k \in Z, and \\
+&G \text{ has a traveling-salesman tour with cost at most k} \}.
+\end{split}\end{equation}
+$$
+**Theorem 34.14** The traveling-salesman problem is $NP$-complete.
 
-**定理 34.14** 旅行商问题是NP完全的。
+### The subset-sum problem
 
-### 34.5.5 子集和问题
-
-**定理 34.15** 子集和问题是NP完全的。
+**Theorem 34.15** The subset-sum problem is $NP$-complete.
 
 ![34_19](res/34_19.png)
 

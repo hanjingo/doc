@@ -1,397 +1,341 @@
-# 第11章 并行性和局部性优化
+# Chapter 11 Optimizing for Parallelism and Locality
+
+[TOC]
 
 
 
-## 11.1 基本概念
+## Basic Concepts
 
-### 11.1.1 多处理器
-
-`对称多处理器（Symmetric MultiProcessor, SMP）`
+### Multiprocessors
 
 ![11_1](res/11_1.png)
 
-对称多处理器使用`一致缓存协议（coherent cache protocol）`来对程序员隐藏高速缓存的存在。
+Symmetric multiprocessors use a `coherent cache protocol` to hide the presence of caches from the programmer.
 
-一个处理器和另一个处理器通信所花的时间大约是内存访问时间的两倍。以缓存线为单位的数据必须首先从源处理器的高速缓存写到内存中，然后再从内存取出放到第二个处理器的高速缓存中。
+The time taken for one processor to communicate with another is about twice the cost of a memory access. The data, in units of cache lines, must first be written from the first processor's cache to memory, and then fetched from the memory to the cache of the second processor.
 
 ![11_2](res/11_2.png)
 
-有两种不同的带有分布式内存的并行机：
+There are two variants of a parallel machine with distributed memories:
 
-- NUMA（NonUniform Memory Access， 不一致内存访问）机器。
-- 消息传递机器。
+- NUMA (nonuniform memory access) machines
+- message-passing machines.
 
-### 11.1.2 应用中的并行性
+### Parallelism in Applications
 
-使用两种高层次的度量来估计一个并行应用性能：
+We use two high-level metrics to estimate how well a parallel application will perform:
 
-- 并行性覆盖：指明了并行执行的计算过程所占的百分比。
-- 并行性粒度：指出了各个处理器在不和其他处理器通信或者同步的情况下能够运行的计算量。
+- `parallelism coverage`, which is the percentage of the computation that runs in parallel.
+- `granularity of parallelism`, which is the amount of computation that each processor can execute without synchronizing or communicating with others.
 
-**Amdahl 定律**
+**Amdahl's Law**
 
-并行性覆盖率可以用Amdahl定律来表示：如果$f$是被并行化代码的比率，并且如果并行化版本在一个有$p$个处理器的机器上运行，且没有任何通信或者并行化开销，那么此时的加速比是：
+`Amdahl's Law` states that, if $f$ is the fraction of the code parallelized, and if the parallelized version runs on a $p$-processor machine with no communication or parallelization overhead, the speedup is:
 $$
 \frac{1}{(1 - f) + (f / p)}
 $$
 
-### 11.1.3 循环层次上的并行性
+### Data Locality
 
-### 11.1.4 数据局部性
+`Temporal locality` occurs when the same data is used several times within a short time period.
 
-当同一个数据在短时间内被多次使用时就产生了`时间局部性（temporal locality）`。
+`Spatial locality` occurs when different data elements that are located near to each other are used within a short period of time.
 
-当位置相近的不同数据元素在短时间内被使用的时候就产生了`空间局部性（spatial locality）`。
+There are several important characteristics associated with numeric applications operating on arrays:
 
-操作数组的数值应用相关的几个重要性质：
-
-- 数组代码经常有很多可并行化的循环。
-- 当循环具有并行性的时候，它们的迭代可以按照任意的顺序执行。它们可以通过重新排序大幅提高数据局部性。
-- 当我们创建出大的相互独立的并行计算单元时，以串行方式执行它们往往会得到良好的数据局部性。
+- Array code often has many parallelizable loops.
+- When loops have parallelism, their iterations can be executed in arbitrary order; they can be reordered to improve data locality drastically.
+- As we create large units of parallel computation that are independent of each other, executing these serially tends to produce good data locality.
 
 ![11_3](res/11_3.png)
 
-### 11.1.5 仿射变换理论概述
+### Introduction to Affine Transform Theory
 
-对于带有数组访问的循环的优化问题，我们使用三种类型的空间。每个空间可以看成是一维或多维栅格中的点集：
+For the problem of optimizing loops with array accesses, we use three kinds of spaces. Each space can be thought of as points on a grid of one or more dimensions:
 
-- `迭代空间（iteration space）`是在一次计算过程中动态执行实例的集合，也就是各个循环下标的取值的组合。
-- `数据空间（data space）`是被访问的数组元素的集合。
-- `处理器空间（processor space）`是系统中的处理器的集合。
+1. The `iteration space` is the set of the dynamic execution instances in a computation, that is, the set of combinations of values taken on by the loop indexes.
+2. The `data space` is the set of array elements accessed.
+3. The `processor space` is the set of processors in the system. Normally, these processors are assigned integer numbers or vectors of integers to distinguish among them.
 
 ![11_4](res/11_4.png)
 
 
 
-## 11.2 矩阵乘法：一个深入的例子
+## Matrix Multiply: An In-Depth Example
 
-### 11.2.1 矩阵相乘算法
+### The Matrix-Multiplication Algorithm
 
 ![11_5](res/11_5.png)
 
 ![11_6](res/11_6.png)
 
-### 11.2.2 优化
+### Optimizations
 
-**改变数据布局**
+One way to improve the locality of a program is to change the layout of its data structures.
 
-改善一个程序的局部性的方法之一是改变它的数据结构的布局。
-
-**分块**
-
-`分块（blocking）`是另一种对循环中的迭代重新排序的方法，它可以大大提高一个程序的局部性。
+`Blocking` is a another way of reordering iterations in a loop that can greatly improve the locality of a program.
 
 ![11_7](res/11_7.png)
 
 ![11_8](res/11_8.png)
 
-### 11.2.3 高速缓存干扰
+### Cache Interference
 
-`高速缓存干扰（cache interference）`。
-
-### 11.2.4 11.2节的练习
+In a direct-mapped cache, if $n$ is a multiple of the cache size, then all the elements in the same row of an $n \times n$ array will be competing for the same cache location. In that case, bringing in the second element of a column will throw away the cache line of the first, even though the cache has the capacity to keep both of these lines at the same time. This situation is referred to as `cache interference`.
 
 
 
-## 11.3 迭代空间
+## Iteration Spaces
 
-### 11.3.1 从循环嵌套结构中构建迭代空间
+### Constructing Iteration Spaces from Loop Nests
 
 ![11_9](res/11_9.png)
 
-一个凸多面体具有以下性质：如果两个点在该多面体内，那么它们之间的连线上的所有点都在该多面体内。多面体使用循环界限不等式描述。循环的每个迭代器都可以由该多面体中的具有整数坐标的点表示。反过来，在多面体内的每个整数点都代表了该循环嵌套结构在某个时候执行的一个迭代。
+A `convex polyhedron` has the property that if two points are in the polyhedron, all points on the line between them are also in the polyhedron. All the iterations in the loop are represented by the points with integer coordinates found within the polyhedron described by the loop-bound inequalities. And conversely, all integer points within the polyhedron represent iterations of the loop nest at some time.
 
 ![11_11](res/11_11.png)
 
-### 11.3.2 循环嵌套结构的执行顺序
+### Matrix Formulation of Inequalities
 
-### 11.3.3 不等式组的矩阵表示方法
-
-在一个深度为$d$的循环嵌套中的迭代可用数学方式表示为：
+The iterations in a $d$-deep loop can be represented mathematically as:
 $$
-\{i在Z^d中|Bi + b \geqslant 0\} \qquad (11.1)
+\{i \text{ in } Z^d | Bi + b \geq 0\} \qquad (11.1)
 $$
-其中：
+Here,
 
-1. $Z$（按照数学惯例）表示整数的集合--包含正整数，负整数和零。
-2. $B$是一个$d \times d$的整数矩阵。
-3. $b$是一个长度为$d$的整数向量。
-4. $0$是一个由$d$个零组成的向量。
+1. $Z$, as is conventional in mathematics, represents the set of integers positive, negative, and zero,
+2. $B$ is a $d \times d$ integer matrix,
+3. $b$ is an integer vector of length $d$, and
+4. $0$ is a vector of $d$ 0's.
 
-### 11.3.4 混合使用符号常量
+### Incorporating Symbolic Constants
 
-`符号常量（symbolic constant）`变量对于嵌套结构中的所有循环都是循环不变的。
+Sometimes, we need to optimize a loop nest that involves certain variables that are loop-invariant for all the loops in the nest. We call such variables `symbolic constants`.
 
-### 11.3.5 控制执行的顺序
+### Controlling the Order of Execution
 
-投影的正式定义如下：令$S$为一个$n$维多面体。$S$到它的前$m$个维度的投影是满足如下条件的点$(x_1, x_2, \cdots, x_m)$：存在$x_{m+1}, x_{m+2}, \cdots, x_n$使得向量$[x_1, x_2, \cdots, x_n]$在$S$中。
+Projection can be defined formally as follows: Let $S$ be an $n$-dimensional polyhedron. The projection of $S$ onto the first $m$ of its dimensions is the set of points $(x_1, x_2, \cdots, x_m)$ such that for some $x_{m+1}, x_{m+2}, \cdots, x_n$, vector $[x_1, x_2, \cdots, x_n]$ is in $S$.
 
-**算法 11.11** Fourier-Motzkin消除算法。
+**Algorithm 11.11:** Fourier-Motzkin elimination.
 
-输入：一个带有变量$x_1, x_2, \cdots, x_n$的多面体$S$。也就是说，$S$是关于变量$x_i$的一组线性约束。一个给定的变量$x_m$是被指定需要消除的变量。
+INPUT: A polyhedron $S$ with variables $x_1, x_2, \cdots, x_n$. That is, $S$ is a set of linear constraints involving the variables $x_i$. One given variable $x_m$ is specified to be the variable to the eliminated.
 
-输出：一个关于变量$x_1, x_2, \cdots, x_{m-1}, x_{m+1}, \cdots, x_n$（即除$x_m$之外的所有$S$的变量）的多面体$S'$。$S'$是$S$到除第$m$个维度之外的所有维度的投影。
+OUTPUT: A polyhedron $S'$ with variables $x_1, x_2, \cdots, x_{m-1}, x_{m+1}, \cdots, x_n$ (i.e., all the variables of $S$ except for $x_m$) that is the projection of $S$ onto dimensions other than the $m$th.
 
-方法：令$C$是$S$中所有涉及$x_m$的约束的集合。执行下列步骤：
+METHOD: Let $C$ be all the constraints in $S$ involving $x_m$. Do the following:
 
-1. 对于$C$中关于$x_m$的每一对上界和下界，比如：
+1. For every pair of a lower bound and an upper bound on $x_m$ in $C$, such as
    $$
-   L \leqslant c_1 x_m \\
-   c_2 x_m \leqslant U
+   \begin{equation}\begin{split} 
+   L \leqslant &c_1 x_m \\
+   &c_2 x_m \leqslant U
+   \end{split}\end{equation}
    $$
-   建立一个新的约束：
+   create the new constraint
    $$
-   c_2 L \leqslant c_1 U
+   c_2 L \leq c_1 U
    $$
-   请注意，$c_1$和$c_2$是整数，但$L$和$U$可能是关于除$x_m$之外的其他变量的表达式。
+   Note taht $c_1$ and $c_2$ are integers, but $L$ and $U$ may be expressions with variables other than $x_m$.
 
-2. 如果整数$c_1$和$c_2$有公因子，讲上面约束的两边都除以这个因子。
+2. If integers $c_1$ and $c_2$ have a common factor, divide both sides by that factor.
 
-3. 如果新的约束是不可满足的，那么$S$无解，即多面体$S$和$S'$都是空的空间。
+3. If the new constraint is not satisfiable, then there is no solution to $S$; i.e., the polyhedra $S$ and $S'$ are both empty spaces.
 
-4. $S'$是约束集合$S - C$加上在第2步中生成的所有约束。
+4. $S'$ is the set of constraints $S - C$, plus all the constraints generated in step 2.
 
-**算法 11.13** 给定一组变量的顺序，计算这些变量的界限。
+**Algorithm 11.13:** Computing bounds for a given order of variables.
 
-输入：一个在变量$v_1, v_2, \cdots, v_n$之上的凸多面体$S$。
+INPUT: A convex polyhedron $S$ over variables $v_1, v_2, \cdots, v_n$.
 
-输出：每个变量$v_i$的下界$L_i$和上界$U_i$，这些界限只使用排在$v_i$之前的变量$v_j(j < i)$来表示。
+OUTPUT: A set of lower bounds $L_i$ and upper bounds $U_i$ for each $v_i$, expressed only in terms of the $v_j$'s, for $j < i$.
 
-方法：![11_15](res/11_15.png)
+METHOD:
 
-### 11.3.6 坐标轴的变换
-
-### 11.3.7 11.3节的练习
+![11_15](res/11_15.png)
 
 
 
-## 11.4 仿射的数组下标
+## Affine Array Indexes
 
-### 11.4.1 仿射访问
+### Affine Accesses
 
-如果下列条件成立，我们就说一个循环中的一个数组访问是`仿射`的。
+We say that an array access in a loop is `affine` if:
 
-1. 该循环的上下界被表示为外围循环变量和符号常量的仿射表达式。
-2. 该数组的每个维度的下标也是外围循环变量和符号常量的仿射表达式。
-
-### 11.4.2 实践中的仿射访问和非仿射访问
-
-### 11.4.3 11.4节的练习
+1. The bounds of the loop are expressed as affine expressions of the surrounding loop variables and symbolic constants, and
+2. The index for each dimension of the array is also an affine expression of surrounding loop variables and symbolic constants.
 
 
 
-## 11.5 数据复用
+## Data Reuse
 
-从数组访问函数中我们得到了两种可用于局部性优化和并行化的有用信息：
+From array access functions we derive two kinds of information useful for locality optimization and parallelization:
 
-1. 数据复用：对于局部性优化，我们希望识别除访问相同数据或相同高速缓存线的迭代集合。
-2. 数据依赖：为了并行化和局部性循环转换的正确性，我们希望找出代码中的所有数据依赖关系。
+1. `Data reuse:` for locality optimization, we wish to identify sets of iterations that access the same data or the same cache line.
+2. `Data dependence:` for correctness of parallelization and locality loop transformations, we wish to identify all the data dependences in the code.
 
-### 11.5.1 数据复用的类型
+### Types of Reuse
 
-我们将把访问指令本身称为`静态访问（static access）`，而当我们执行该循环嵌套结构时该语句的多次迭代称为`动态访问（dynamic access）`。
+For emphasis, we may refer to the statement itself as a `static access`, while the various iterations of the statement as we execute its loop nest are called `dynamic accesses`.
 
-### 11.5.2 自复用
+### Self Reuse
 
-矩阵$F$的秩是$F$的线性无关列（或者等价地，行）的最大数目。一个向量集合被称为`线性无关（linearly independent）`的条件是没有向量可以被写成该集合中有限多个其他向量的线性组合。
+The rank of a matrix $F$ is the largest number of columns (or equivalently, rows) of $F$ that are linearly independent. A set of vectors is `linearly independent` if none of the vectors can be written as a linear combination of finitely many other vectors in the set.
 
-### 11.5.3 自空间复用
+### Group Reuse
 
-### 11.5.4 组复用
-
-我们只在同一个循环中的具有相同系数矩阵的数组访问之间计算组复用。给定两个动态访问$Fi_1 + f_1$和$Fi_2 + f_2$，它们复用相同的数据的条件是
+We compute group reuse only among accesses in a loop sharing the same coefficient matrix. Given two dynamic accesses $Fi_1 + f_1$ and $Fi_2 + f_2$, reuse of the same data requires that:
 $$
 Fi_1 + f_1 = Fi_2 + f_2
 $$
-或者说
+or,
 $$
 F(i_1 - i_2) = (f_2 - f_1)
 $$
-假设$v$是这个等式的一个解，如果$w$是$F$的零空间中的任意向量，那么$w + v$也是一个解。实际上，这样的向量就是该方程的全部解。
-
-### 11.5.5 11.5节的练习
+, Suppose $v$ is one solution to this equation. Then if $w$ is any vector in the null space of $F, w + v$ is also a solution, and in fact those are all the solutions to the euqation.
 
 
 
-## 11.6 数组数据依赖关系分析
+## Array Data-Dependence Analysis
 
-### 11.6.1 数组访问的数据依赖关系的定义
+### Integer Linear Programming
 
-### 11.6.2 整数线性规划
+The data dependence analysis algorithm consists of three parts:
 
-`整数线性规划（integer linear programming）`。
+1. Apply the GCD (Greatest Common Divisor) test, which checks if there is an integer solution to the equalities, using the theory of linear Diophantine equations.
+2. Use a set of simple heuristics to handle the large numbers of typical inequal;ities.
+3. In the rare case where the heuristics do not work, we use a linear integer programming solver that uses a branch-and-bound approach based on Fourier-Motzkin elimination.
 
-数据依赖关系分析算法由三个部分组成：
+### The GCD Test
 
-1. 使用丢番图方程的理论，应用GCD（Greatest Common Divisor，最大公约数）测试来检验是否存在满足问题中所有等式的整数解。
-2. 使用一组简单的启发规则来处理大量的典型不等式。
-3. 使用线性整数规划求解程序来解决问题。
-
-### 11.6.3 GCD测试
-
-**定理 11.32** 线性丢番图方程（Diophantine equation）：
+**Theorem 11.32:** The linear Diophantine equation:
 $$
 a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = c
 $$
-有$x_1, x_2, \cdots, x_n$的一个整数解，当且仅当$gcd(a_1, a_2, \cdots, a_n)$能够整除$c$。
+, has an integer solution for $x_1, x_2, \cdots, x_n$ if and only of $gcd(a_1, a_2, \cdots, a_n)$ divides $c$.
 
-### 11.6.4 解决整数线性规划的启发式规则
+### Solving General Integer Linear Programs
 
-### 11.6.5 解决一般性的整数线性规划问题
+**Algorithm 11.39:** Branch-and-bound solution to integer linear programming problems.
 
-**算法 11.39** 整数线性规划问题的分支界定解法。
+INPUT: A convex polyhedron $S_n$ over variables $v_0, \cdots, v_n$.
 
-输入：一个变量$v_0, \cdots, v_n$上的多面体$S_n$.
+OUTPUT: "yes" if $S_n$ has an integer solution, "no" otherwise.
 
-输出：如果$S_n$有一个整数解，输出“yes”，否则输出"no"。
+METHOD:
 
-方法：![11_22](res/11_22.png)
-
-### 11.6.6 小结
-
-### 11.6.7 11.6节的练习
+![11_22](res/11_22.png)
 
 
 
-## 11.7 寻找无同步的并行性
+## Finding Synchronization-Free Parallelism
 
-### 11.7.1 一个介绍性的例子
+### Solving Space-Partition Constraints
 
-### 11.7.2 仿射空间分划
+**Algorithm 11.43:** Finding a highest-ranked synchronization-free affine partition for a program.
 
-`仿射空间分划（affine space partition）`。
+INPUT: A program with affine array accesses.
 
-### 11.7.3 空间分划约束
+OUTPUT: A partition.
 
-### 11.7.4 求解空间分划约束
+METHOD: Do the following:
 
-**算法 11.43** 找出一个程序的具有最高秩的无同步仿射分划。
+1. Find all data-dependent pairs of accesses in a program for each pair of data-dependent accesses.
+2. For each pair of dependent accesses, we reduce the number of unknowns in the index vectors.
+3. Drop the nonpartition variables.
+4. Find the rank of the affine partition and solve for the coefficient matrices.
+5. Find the constant terms.
 
-输入：一个带有仿射数组访问的程序。
+### A Simple Code-Generation Algorithm
 
-输出：一个分划。
+**Algorithm 11.45:** Generating code that executes partitions of a program sequentially.
 
-方法：执行下列步骤：
+INPUT: A program $P$ with affine array accesses. Each statement $s$ in the program has associated bounds of the form $B_s i + b_s \geq 0$, where $i$ is the vector of loop indexes for the loop nest in which statement $s$ appears. Also associated with statement $s$ is a partition $C_s i + c_s = p$ where $p$ is an $m$-dimensional vector of variables representing a processor $ID$; $m$ is the maximum, over all statements in program $P$, of the rank of the partition for that statement.
 
-1. 找出程序中所有的具有数据依赖关系的访问对。
-2. 对于每一对相互依赖的访问，我们减少其下标向量中的未知量的数目。
-3. 舍弃和分划无关的变量。
-4. 找出这个仿射分划的秩并求解系数矩阵。
-5. 找出常量项。
+OUTPUT: A program equivalent to $P$ but iterating over the processor space rather than over loop indexes.
 
-### 11.7.5 一个简单的代码生成算法
+METHOD: Do the following:
 
-**算法 11.45** 创建顺序执行一个程序的各个分划单元的代码。
+1. For each statement, use Fourier-Motzkin elimination to project out all the loop index variables from the bounds.
+2. Use Algorithm 11.13 to determine bounds on the partition ID's.
+3. Generate loops, one for each of the $m$ dimensions of processor space. Let $p = [p_1, p_2, \cdots, p_m]$ be the vector of variables for these loops; that is, there is one variable for each dimension of the processor space. Each loop variable $p_i$ ranges over the union of the partition spaces for all statements in the program $P$.
 
-输入：一个具有仿射数组访问的程序$P$。程序中的每个语句$s$具有形如$B_s i + b_s \geqslant 0$的界限，其中$i$是$s$所在循环嵌套结构的循环下标变量的向量。每个语句$s$还附有一个分划$C_s i + c_s = p$，其中$p$是一个由表示处理器ID的变量组成的$m$维向量。$m$是程序$P$中的各个语句的分划的秩的最大值。
+### Source-Code Transforms
 
-输出：一个等价于$P$的程序，但是它在处理器空间上（而不是原来的循环下标上）进行迭代遍历。
+Seven Primitive Affine Transforms:
 
-方法：执行下列步骤：
-
-1. 对于每个语句，使用Fourier-Motzkin消除法从界限中通过投影消除所有的循环下标变量。
-2. 使用算法11.13来决定分划单元ID的界限。
-3. 为处理器空间的$m$个维度中的每一维生成一个循环。令$p = [p_1, p_2, \cdots, p_m]$为这些循环的变量的向量。
-
-### 11.7.6 消除空迭代
-
-### 11.7.7 从最内层循环中消除条件测试
-
-### 11.7.8 源代码转换
-
-七个基本仿射转换：
-
-1. 融合（fusion）：融合转换的特点是把原程序中的多个循环下标映射到同一个循环下标上。新的循环融合了来自不同循环的语句。
-2. 裂变（fission）：裂变转换是融合的逆向转换。它把不同语句的同一个循环下标映射到转换得到的代码中的不同循环下标。这个转换把原来的一个循环分解为多个循环。
-3. 重新索引（re-indexing）：重新索引技术把一个语句的动态执行偏移固定多个迭代。这个仿射变换有一个常量项。
-4. 比例变换（scaling）：源程序中的连续迭代被一个常量因子隔开。这个仿射变换具有一个正的非单元系数。
-5. 反置（reversal）：按相关顺序执行循环中的迭代。反置转换的特点是有一个系数为-1.
-6. 交换（permutation）：交换内层循环和外层循环。这个仿射变换由单位矩阵中的经过交换的各行组成。
-7. 倾斜（skewing）：沿着一个角度来遍历循环的迭代空间。这个仿射变换是一个幺模矩阵，其对角线上都是1。
+1. `Fusion.` The fusion transform is characterized by mapping multiple loop indexes in the original program to the same loop index. The new loop fuses statements from different loops.
+2. `Fission.` Fission is the inverse of fusion. It maps the same loop index for different statements to different loop indexes in the transformed code. This splits the original loop into multiple loops.
+3. `Re-indexing.` Re-indexing shifts the dynamic executions of a statement by a constant number of iterations. The affine transform has a constant term.
+4. `Scaling.` Consective iterations in the source program are spaced apart by a constant factor. The affine transform has a positive nonunit coefficient.
+5. `Reversal.` Execute iterations in a loop in reverse order. Reversal is characterized by having -1 as a coefficient.
+6. `Permutation.` Permute the inner and outer loops. The affine transform consists of permuted rows of the indentity matrix.
+7. `Skewing.` Iterate through the iteration space in the loops at an angle. The affine transform is a unimodular matrix with 1's on the diagonal.
 
 ![11_35](res/11_35.png)
 
 ![11_36](res/11_36.png)
 
-### 11.7.9 11.7 节的练习
+
+
+## Synchronization Between Parallel Loops
+
+### The Parallelization Algorithm
+
+**Algorithm 11.54:** Maximize the degree of parallelism allowed by $O(1)$ synchronizations.
+
+INPUT: A program with array accesses.
+
+OUTPUT: SPMD code with a constant number of synchronization barriers.
+
+METHOD:
+
+1. Construct the program-dependence graph and partition the statements into strongly connected components (SCC's).
+2. Transform the code to execute SCC's in a topological order by applying fission if necessary.
+3. Apply Algorithm 11.43 to each SCC to find all of its synchronization-free parallelism. Barriers are inserted before and after each parallelized SCC.
 
 
 
-## 11.8 并行循环之间的同步
+## Pipelining
 
-### 11.8.1 固定多个同步运算
+### What is Pipelining?
 
-### 11.8.2 程序依赖图
+It is interesting to contrast pipelining with simple parallelism, where different processors execute different tasks:
 
-`程序依赖图（Program Dependence Graph, PDG）`。
+- Pipelining can only be applied to netst of depth at least two.
+- Tasks executed on a pipeline may share dependences.
+- If the tasks are independent, then simple parallelization has better processor utilization because processors can execute all at once without having to pay for the overhead of filling and draining the pipeline.
 
-### 11.8.3 层次结构化的时间
+### Successive Over-Relaxation (SOR): An Example
 
-### 11.8.4 并行化算法
-
-**算法 11.54** 在允许$O(1)$次同步的情况下最大化并行性的度数。
-
-输入：一个带有数组访问的程序。
-
-输出：带有固定多个同步栅障的SPMD代码。
-
-方法：
-
-1. 构造程序的程序依赖图，并把语句分划为强连通分量（SCC）。
-2. 转换代码，使之按照拓扑顺序执行各个SCC。必要时可以应用裂变转换。
-3. 对每个SCC应用算法11.43，寻找出所有的无同步并行性。在每个被并行化的SCC的前后都插入同步栅障。
-
-### 11.8.5 11.8节的练习
-
-
-
-## 11.9 流水线化技术
-
-`完全可交换循环（fully permutable loop）`。
-
-### 11.9.1 什么是流水线化
-
-流水线技术和不同处理器处理不同任务的简单并行性比较：
-
-- 流水线化技术只能应用于深度至少为2的循环嵌套结构。
-- 在一个流水线中运行的任务可以具有数据依赖关系。
-- 如果任务是独立的，那么简单的并行化方案具有较好的处理器利用率，原因是各个处理器可以一起开始执行，而不会产生填满和排空流水线的开销。
-
-### 11.9.2 连续过松弛方法：一个例子
-
-`连续过松弛法（Successive Over Relaxation, SOR）`是一个在使用松弛方法求解联立线性方程式时加快收敛速度的技术。
+`Successive over-relaxation (SOR)` is a technique for accelerating the convergence of relaxation methods for solving sets of simultaneous linear equations.
 
 ![11_50](res/11_50.png)
 
-我们把一个斜线上的全部迭代称为`波阵面（wave front）`，而这样的并行化方案被称为`波阵面推进（wavefronting）`。
+We refer to the iterations along each diagonal as a `wavefront`, and such a parallelization scheme as `wavefronting`.
 
-### 11.9.3 完全可交换循环
+### Fully Permutable Loops
 
 ![11_51](res/11_51.png)
 
-### 11.9.4 把完全可交换循环流水线化
+### Pipelining Fully Permutable Loops
 
 ![11_52](res/11_52.png)
 
-### 11.9.5 一般性的理论
+### General Theory
 
-流水线化的一般性理论：如果我们能够在一个循环嵌套结构中找到至少两个不同的最外层循环，并满足所有的依赖关系，那么就可以把这个计算过程流水线化。一个具有$k$个最外层完全可交换循环的循环嵌套结构具有$k - 1$度的流水线化并行度。
+The general theory underlying pipelining: if we can come up with at least two different outermost loops for a loop nest and satisfy all the dependences, then we can pipeline the computation. A loop with $k$ outermost fully permutable loops has $k - 1$ degrees of pipelined parallelism.
 
 ![11_53](res/11_53.png)
 
-### 11.9.6 时间分划约束
+### Solving Time-Partition Constraints by Frakas' Lemma
 
-### 11.9.7 用Farkas引理求解时间分划约束
+**Algorithm 11.59:** Finding a set of legal, maximally independent affine time-partition mappings for an outer sequential loop.
 
-**算法 11.59** 为一个外层的顺序循环找到一个合法的最大线性独立的仿射时间分划映射。
+INPUT: A loop nest with array accesses.
 
-输入：一个带有数组访问的循环嵌套结构。
+OUTPUT: A maximal set of linearly independent time-partition mappings.
 
-输出：线性独立时间分划映射的最大集。
-
-方法：
-
-### 11.9.8 代码转换
+### Code Transformations
 
 ![11_55](res/11_55.png)
 
@@ -399,97 +343,65 @@ $$
 
 ![11_57](res/11_57.png)
 
-### 11.9.9 具有最小同步量的并行性
+### Parallelism With Minimum Synchronization
 
-**算法 11.64** 找出一个程序中存在的所有并行度，同时所有并行性的粒度都尽可能地粗糙。
+**Algorithm 11.64:** Find all the degrees of parallelism in a program, with all the parallelism being as coarse-grained as possible.
 
-输入：一个要进行并行化的程序。
+INPUT: A program to be parallelized.
 
-输出：同一个程序的并行化版本。
+OUTPUT: A parallelized version of the same program.
 
-方法：完成下列步骤：
+METHOD: Do the following:
 
-1. 找出不需要同步运算的并行性的最大度数。
-2. 找出需要$O(1)$次同步运算的并行性的最大度数。
-3. 找出需要$O(n)$次同步运算的最大并行性度数。
-4. 在逐步增加同步度数的情况下寻找最大的并行性度数。
-
-### 11.9.10 11.9 节的练习
+1. Find the maximum degree of parallelism requiring no synchronization: Apply Algorithm 11.43 to the program.
+2. Find the maximum degree of parallelism that requires $O(1)$ synchronizations: Apply Algorithm 11.54 to each of the space partitions found in step 1. (If no synchronization-free parallelism is found, the whole computation is left in one partition).
+3. Find the maximum degree of parallelism that requires $O(n)$ synchronizations.
+4. Find the maximum degree of parallelism with successively greater degrees of synchronizations: Recursively apply Step 3 to computation belonging to each of the space partitions generated by the previous step.
 
 
 
-## 11.10 局部性优化
+## Locality Optimizations
 
-### 11.10.1 计算结果数据的时间局部性
+### Array Contraction
 
-### 11.10.2 数组收缩
+**Algorithm 11.68:** Array contraction.
 
-**算法 11.68** 数组收缩。
+INPUT: A program transformed by Algorithm 11.64.
 
-输入：一个由算法11.64转换得到的程序。
+OUTPUT: An equivalent program with reduced array dimensions.
 
-输出：一个等价的程序，但降低了数组的维度。
+METHOD: A dimension of an array can be contracted to a single element if:
 
-方法：一个数组的维度可以被收缩为一个元素的条件如下：
+1. Each independent partition uses only one element of the array.
+2. The value of the element upon entry to the partition is not used by the partition, and
+3. The value of the element is not live on exit from the partition.
 
-1. 每个独立的分划单元只使用这个数组的一个元素。
-2. 这个元素在分划单元入口处的值没有被这个分划单元使用。
-3. 这个元素的值在这个单元的出口处不活跃。
+### Putting it All Together
 
-### 11.10.3 分划单元的交织
+**Algorithm 11.71:** Optimize data locality on a uniprocessor.
 
-`最内层分块（innermost block）`。
+INPUT: A program with affine array accesses.
 
-`条状挖掘（stripmining）`。
+OUTPUT: An equivalent program that maximizes data locality.
 
-### 11.10.4 合成
+METHOD: Do the following steps:
 
-**算法 11.71** 在一个单处理器系统上优化数据局部性。
+1. Apply Algorithm 11.64 to optimize the temporal locality of computed results.
+2. Apply Algorithm 11.68 to contract arrays where possible.
+3. Determine the iteration subspace that may share the same data or cache lines using the technique described in Section 11.5. For each statement, identify those outer parallel loop dimensions that have data reuse.
+4. For each outer parallel loop carrying reuse, move a block of the iterations into the innermost block by applying the iterleaving primitives repeatedly.
+5. Apply blocking to the subset of dimensions in the innermost fully permutable loop nest that carries reuse.
+6. Block outer fully permutable loop nest for higher levels of memory hierarchies, such as the third-level cache or the physical memory.
+7. Expand scalars and arrays where necessary by the lenghts of the blocks.
 
-输入：一个带有仿射数组访问的程序。
+**Algorithm 11.72:** Optimize parallelism and data locality for multiprocessors.
 
-输出：一个最大化数据局部性的等价程序。
+INPUT: A program with affine array accesses.
 
-方法：执行下列步骤：
+OUTPUT: An equivalent program that maximizes parallelism and data locality.
 
-1. 应用算法11.64来优化计算结果的时间局部性。
-2. 应用算法11.68在可能的时候收缩数组。
-3. 利用11.5节中描述的技术，确定可能共享相同数据或高速缓存线的迭代子空间。对于每个语句，找出具有数据复用的外层并行循环的维度。
-4. 对每个带有数据复用的外层并行循环，重复使用基本的交织方法，把一个迭代分块移动到最内层块中。
-5. 对位于那些带有复用的最内层的完全可交换循环中的维度的子集应用分块技术。
-6. 对外层完全可交换循环嵌套结构进行分块，其目的是利用内存层次结构中的更高层存储设备，比如第三层高速缓存或物理内存。
-7. 在必要的地方按照块的边长扩展标量或者数组。
+METHOD: Do the following:
 
-**算法 11.72** 针对多处理器系统优化并行性和数据局部性。
-
-输入：一个带有仿射数组访问的程序。
-
-输出：一个最大化并行性和数据局部性的等价程序。
-
-方法：执行下列步骤：
-
-1. 使用算法11.64对这个程序进行并行化，并创建一个SPMD程序。
-2. 对步骤1中生成的SPMD程序应用算法11.71，以优化它的局部性。
-
-### 11.10.5 11.10节的练习
-
-
-
-## 11.11 仿射转换的其他用途
-
-### 11.11.1 分布式内存计算机
-
-### 11.11.2 多指令发送处理器
-
-### 11.11.3 向量和SIMD指令
-
-### 11.11.4 数据预取
-
-
-
-## 11.12 第11章总结
-
-
-
-## 11.13 第11章参考文献
+1. Use the Algorithm 11.64 to parallelize the program and create an SPMD program.
+2. Apply Algorithm 11.71 to the SPMD program produced in Step 1 to optimize its locality.
 

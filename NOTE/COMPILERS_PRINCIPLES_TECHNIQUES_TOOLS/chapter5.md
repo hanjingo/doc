@@ -1,165 +1,139 @@
-# 第五章 语法制导的翻译
+# Chapter 5 Syntax-Directed Translation
+
+[TOC]
 
 
 
-## 5.1 语法制导定义
+## Syntax-Directed Definitions
 
-`语法制导定义（Syntax-Directed Definition, SDD）`是一个上下文无关文法和属性及规则的结合。属性和文法符号相关联，而规则和产生式相关联。
+A `syntax-directed definition (SDD)` is a context-free grammar together with attributes and rules. Attributes are associated with grammar symbols and rules are associated with productions.
 
-### 5.1.1 继承属性和综合属性
+### Inherited and Synthesized Attributes
 
-非终结符号的两种属性：
+Two kinds of attributes for nonterminals:
 
-1. 综合属性（synthesized attribute）：在分析树节点$N$上的非终结符号$A$的综合属性是由$N$上的产生式所关联的语义规则来定义的。
-2. 继承属性（inherited attribute）：在分析树节点$N$上的非终结符号$B$的继承属性是由$N$的父节点上的产生式所关联的语义规则来定义的。
+1. A `synthesized attribute` for a nonterminal $A$ at a parse-tree node $N$ is defined by a semantic rule associated with the production at $N$.
+2. An `inherited attribute` for a nonterminal $B$ at a parse-tree node $N$ is defined by a semantic rule associated with the production at the parent of $N$.
 
-### 5.1.2 在语法分析树的节点上对SDD求值
+### Evaluating an SDD at the Nodes of a Parse Tree
 
-一个显示了它的各个属性的值的语法分析树称为注释语法分析树（annotated parse tree）。
-
-### 5.1.3 5.1节的练习
+A parse tree, showing the value(s) of its attribute(s) is called an `annotated parse tree`.
 
 
 
-## 5.2 SDD的求值顺序
+## Evaluation Orders for SDD's
 
-### 5.2.1 依赖图
+### Dependency Graphs
 
-依赖图描述了某个语法分析树中的属性实例之间的信息流：
+A `dependency graph` depicts the flow of information among the attribute instances in a particular parse tree:
 
-- 对于每个语法分析树的节点，比如一个标号为文法符号$X$的节点，和$X$关联的每个属性都在依赖图中有一个节点。
-- 假设和产生式$p$关联的语义规则通过$X.c$的值定义了综合属性$A.b$的值。那么相应的依赖图中有一条从$X.c$到$A.b$的边。更准确地讲，在每个标号为$A$且应用了产生式$p$的节点$N$上，创建一条从该产生式体中的符号$X$的实例所对应的$N$的子节点上的属性$c$到$N$上的属性$b$的边。
-- 假设和产生式$p$关联的一个语义规则通过$X.a$的值定义了继承属性$B.c$的值。那么，在相应的依赖图中有一条从$X.a$到$B.c$的边。对于每个标号为$B$，对应于产生式$p$中的这个$B$的节点$N$，创建一条从节点$M$上的属性$a$到$N$上的属性$c$的边。
+- For each parse-tee node, say a node labeled by grammar symbol $X$, the dependency graph has a node for each attribute associated with $X$.
+- Suppose that a semantic rule associated with a production $p$ defines the value of synthesized attribute $A.b$ in terms of the value of $X.c$ (the rule may define $A.b$ in terms of other attributes in addition to $X.c$). Then, the dependency graph has an edge from $X.c$ to $A.b$. More precisely, at every node $N$ labeled $A$ where production $p$ is applied, create an edge to attribute $b$ at $N$, from the attribute $c$ at the child of $N$ corresponding to this instance of the symbol $X$ in the body of the production.
+- Suppose that a semantic rule associated with a production $p$ defines the value of inherited attribute $B.c$ in terms of the value of $X.a$. Then, the dependency graph has an edge from $X.a$ to $B.$. For each node $N$ labeled $B$ that corresponds to an occurrence of this $B$ in the body of production $p$, create an edge to attribute $c$ at $N$ from the attribute $a$ at the node $M$ that corresponds to this occurrence of $X$. Note that $M$ could be either the parent or a sibling of $N$.
 
-### 5.2.2 属性求值的顺序
+### S-Attributed Definitions
 
-### 5.2.3 S属性的定义
+The two classes introduced in this section can be implemented efficiently in connection with top-down or bottom-up parsing:
 
-两种类型的SDD：
+1. An SDD is `S-attributed` if every attribute is synthesized.
+2. `L-attributed definitions`, each attribute must be either:
+   - Synthesized, or
+   - Inherited, but with the rules limited as follows. Suppose that there is a production $A \rightarrow X_1 X_2 \cdots X_n$, and that there is an inherited attribute $Xi.a$ computed by a rule associated with this production. Then the rule may use only:
+     1. Inherited attributes associated with the head $A$.
+     2. Either inherited or synthesized attributes associated with the occurrences of symbols $X_1, X_2, \cdots, X_{i-1}$ located to the left of $X_i$.
+     3. Inherited or synthesized attributes associated with this occurrence of $X_i$ itself, but only in such a way that there are no cycles in a dependency graph formed by the attributes of this $X_i$.
 
-1. 如果一个SDD的每个属性都是综合属性，它就是$S$属性的。
-2. L属性定义（L-attributed definition），每个属性必须要么是：
-   - 一个综合属性。
-   - 一个继承属性，但是它的规则具有如下限制。假设存在一个产生式$A \rightarrow X_1 X_2 \cdots X_n$，并且有一个通过这个产生式所关联的规则计算得到的继承属性$Xi.a$。那么这个规则只能使用：
-     1. 和产生式头$A$关联的继承属性。
-     2. 位于$X_i$左边的文法符号实例$X_1, X_2, \cdots, X_{i-1}$相关的继承属性或者综合属性。
-     3. 和这个$X_i$的实例本身相关的继承属性或综合属性，但是在由这个$X_i$的全部属性组成的以来图中不存在环。
+### Semantic Rules with Controlled Side Effects
 
-### 5.2.4 L属性的定义
+We shall control side effects in SDD's in one of the following ways:
 
-### 5.2.5 具有受控副作用的语义规则
-
-我们将按照下面的方法之一来控制SDD中的副作用
-
-- 支持那些不会对属性求值产生约束的附带副作用。
-- 对允许的求值顺序添加约束，使得以任何允许的顺序求值都会产生相同的翻译结果。
-
-### 5.2.6 5.2节的练习
+- Permit incidental side effects that do not constrain attribute evaluation.
+- Constrain the allowable evaluation orders, so that the same translation is produced for any allowable order.
 
 
 
-## 5.3 语法制导翻译的应用
+## Applications of Syntax-Directed Translation
 
-### 5.3.1 抽象语法树的构造
+### Construction of Syntax Trees
 
-抽象语法树性质：
+Syntax tree:
 
-- 如果节点是一个叶子，那么对象将有一个附加的域来存放这个叶子节点的词法值。构造函数$Leaf(op, val)$创建一个叶子对象。我们也可以把节点看作记录，那么Leaf就会返回一个指向与叶子节点对应的新记录的指针。
-- 如果节点是内部节点，那么它的附加字段的个数和该节点的语法树中的子节点个数相同。构造函数Node带有两个和多个参数：$Node(op, c_1, c_2, \cdots, c_k)$，该函数创建一个对象，对一个字段的值为$op$，其余$k$个字段的值为$c_1, \cdots, c_k$。
+- If the node is a leaf, an additional field holds the lexical value for the leaf. A constructor function $Leaf(op, val)$ creates a leaf object. Alternatively, if nodes are viewed as records, then $Leaf$ returns a pointer to a new record for a leaf.
+- If the node is an interior node, there are as many additional fields as the node has children in the syntax tree. A constructor function `Node` takes two or more arguments: $Node(op, c_1, c_2, ..., c_k)$ creates an object with first field $op$ and $k$ additional fields for the $k$ children $c_1, ..., c_k$.
 
 ![5_11](res/5_11.png)
 
-### 5.3.2 类型的结构
-
-### 5.3.3 5.3节的练习
 
 
+## Syntax-Directed Translation Schemes
 
-## 5.4 语法制导的翻译方案
+A `syntax-directed translation scheme (SDT)` is a context free grammar with program fragments embedded within production bodies. The program fragments are called `semantic actions` and can appear at any position within a production body. By convention, we place curly braces around actions; if braces are needed as grammar symbols, then we quote them. 
 
-`语法制导的翻译方案（syntax-directed translation scheme, SDT）`是在其产生式体中潜入了程序片段的一个上下文无关文法。这些程序片段为*语义动作*，他们可以出现在产生式体中的任何地方。
+### SDT's With Actions Inside Productions
 
-### 5.4.1 后缀翻译方案
+If we have a production $B \rightarrow X \{a\} Y$, the action $a$ is done after we have recognized $X$ (if $X$ is a terminal) or all the terminals derived from $X$ (if $X$ is a nonterminal). More precisely:
 
-### 5.4.2 后缀SDT的语法分析栈实现
+- If the parse is bottom-up, then we perform action $a$ as soon as this occurrence of $X$ appears on the top of the parsing stack.
+- If the parse is top-down, we perform $a$ just before we attempt to expand this occurrence of $Y$ (if $Y$ a nonterminal) or check for $Y$ on the input (if $Y$ is a terminal).
 
-### 5.4.3 产生式内部带有语义动作的SDT
+Any SDT can be implemented as follows:
 
-- 如果语法分析过程是自底向上的，那么我们在$X$的此次出现位于语法分析栈的栈顶时，我们立刻执行动作$a$。
-- 如果语法分析过程自顶向下的，那么我们在试图展开$Y$的本次出现（如果$Y$是非终结符号）或者在输入中检测$Y$(如果$Y$是终结符号)之前执行语义动作$a$。
+1. Ignoring the actions, parse the input and produce a parse tree as a result.
+2. Then, examine each interior node $N$, say one for production $A \rightarrow \alpha$. Add additional children to $N$ for the actions in $\alpha$, so the childre of $N$ from left to right have exactly the symbols and actions of $\alpha$.
+3. Perform a preorder traversal of the tree, and as soon as a node labeled by an action is visited, perform that action.
 
-任何SDT都可以按照下列方法实现：
+### SDT's for L-Attributed Definitions
 
-1. 忽略语义动作，对输入进行语法分析，并产生一棵语法分析树。
-2. 然后检测每个内部节点$N$，假设它的产生式是$A \rightarrow \alpha$。将$\alpha$中的各个动作当作$N$的附加子节点加入，使得$N$的子节点从左到右和$\alpha$中的符号及动作完全一致。
-3. 对这颗语法树进行谦虚遍历，并且当访问到一个以某个动作为标号的节点时立即执行这个动作。
+The rules for turning an L-attributed SDD into an SDT are as follows:
 
-### 5.4.4 从SDT中消除左递归
-
-文法转换保持了由文法生成的符号串中终结符号的顺序。因此，这些动作在任何从左到右的语法分析过程中都按照相同的顺序执行，不管这个分析是自顶向下的还是自底向上的。
-
-### 5.4.5 L属性定义的SDT
-
-将一个$L$属性的SDD转换为一个SDT的规则如下：
-
-1. 把计算某个非终结符号$A$的继承属性的动作插入到产生式体中紧靠在$A$的本次出现之前的位置上。如果$A$的多个继承属性以无环的方式相互依赖，就需要对这些属性的求值动作进行排序，以便先计算需要的属性。
-2. 将计算一个产生式头的综合属性的动作放置在这个产生式体的最右端。
-
-### 5.4.6 5.4节的练习
+1. Embed the actio that computes the inherited attributes for a nonterminal $A$ immediately before that occurrence of $A$ in the body of teh production. If several inherited attributes for $A$ depend on one another in any acyclic fashion, order the evaluation of attributes so that those needed first are computed first.
+2. Place the actions that compute a synthesized attribute for the head of a production at the end of the body of that production.
 
 
 
-## 5.5 实现L属性的SDD
+## Implementing L-Attributed SDD's
 
-通过遍历语法分析树来完成翻译工作的几种方法：
+The following methods do translation by traversing a parse tree:
 
-1. 建立语法分析树并注释。
-2. 构造语法分析树，加入动作，并按照前序顺序执行这些动作。
-3. 使用一个递归下降的语法分析器，它为每个非终结符号都建立一个函数。
-4. 使用一个递归下降的语法分析器，以边扫描边生成的方式生成代码。
-5. 与LL语法分析器结合，实现一个SDT。
-6. 与LR语法分析器结合，实现一个SDT。
+1. `Build the parse tree and annotate`.
+2. `Build the parse tree, add actions, and execute the actions in preorder.`
+3. `Use a recursive-descent parser` with one function for each nonterminal.
+4. `Generate code on the fly`, using a recursive-descent parser.
+5. `Implement an SDT in conjunction with an LL-parser`.
+6. `Implement an SDT in conjunction with an LR-parser`.  
 
-### 5.5.1 在递归下降语法分析过程中进行翻译
+### Translation During Recursive-Descent Parsing
 
-一个递归下降的语法分析器对每个非终结符号$A$都有一个函数$A$。我们可以按照如下方法把这个语法分析器扩展为一个翻译器：
+A recursive-descent parser has a function $A$ for each nonterminal $A$. We can extend the parser into a translator as follows:
 
-1. 函数$A$的参数是非终结符号$A$的继承属性。
-2. 函数$A$的返回值是非终结符号$A$的综合属性的集合。
+1. The arguments of function $A$ are the inherited attributes of nonterminal $A$.
+2. The return-value of function $A$ is the collection of synthesized attributes of nonterminal $A$.
 
-在函数$A$的函数体中，我们要进行语法分析并处理属性：
+In the body of function $A$, we need to both parse and handle attributes:
 
-1. 决定用哪个产生式来展开$A$。
-2. 当需要读入一个终结符号时，在输入中检查这些符号是否出现。
-3. 在局部变量中保存所有必要的属性值，这些值将用于计算产生式体中非终结符号的继承属性，或产生式头部的非终结符号的综合属性。
-4. 调用对应于被选定产生式体中的非终结符号的函数，向他们提供正确的阐述。
+1. Decide upon the production used to expand $A$.
+2. Check that each terminal appears on the input when it is required.
+3. Preserve, in local variables, the values of all attributes needed to compute inherited attributes for nonterminals in the body or synthesized attributes for the head nonterminal.
+4. Call functions corresponding to nonterminals in the body of the selected production, providing them with the proper arguments.
 
-### 5.5.2 边扫描边生成代码
+### On-The-Fly Code Generation
 
-边扫描边生成代码通过执行一个SDT中的语义动作，逐步把各个代码片段添加到一个数组或输出文件中。要保证这项技术能够正确应用，下列要素必不可少：
+In common cases such as our running code-generation example, we can instead incrementally generate pieces of the code into an array or output file by executing actions in an SDT. The elements we need to make this technique work are:
 
-1. 存在一个（一个或多个非终结符号的）主属性。
-2. 主属性是综合属性。
-3. 对主属性求值的规则保证：
-   - 主属性是将相关产生式体中的非终结符号的主苏醒之连接起来的得到的。
-   - 各个非终结符号的主属性值在连接运算中出现的顺序和这些非终结符号在产生式体中的出现顺序相同。
+1. There is, for one or more nonterminals, a `main` attribute.
+2. The main attributes are synthesized.
+3. The rules that evaluate the main attribute(s) ensure that
+   - The main attribute is the concatenation of main attributes of nanterminals appearing in the body of the production involved, perhaps with other elements that not main attributes, such as the string `label` or the values of labels $L1$ and $L2$.
+   - The main attributes of nontherminals appear in the rule in the same order as the nonterminals themselves appear in the production body.
 
-### 5.5.3 L属性的SDD和LL语法分析
+### L-Attributed SDD's and LL Parsing
 
-我们使用下列两个原则来管理语法分析栈中的属性：
+We use the following two principles to manage attributes on the stack:
 
-- 非终结符号$A$的继承属性放在表示这个非终结符号的栈记录中。对这些属性求值的代码通常使用紧靠在$A$的栈记录之上的动作记录来表示。
-- 非终结符号$A$的综合属性放在一个单独的综合记录中，它在栈中紧靠在$A$的记录之下。
+- The inherited attributes of a nonterminal $A$ are placed in the stack record that represents that nonterminal. The code to evaluate these attributes will usually be represented by an action-record immediately above the stack record for $A$; in fact, the conversion of L-attributed SDD's to SDT's ensures that the action-record will be immediately above $A$.
+- The synthesized attributes for a nonterminal $A$ are placed in a separate synthesize-record that is immediately below the record for $A$ on the stack.
 
-所有的属性拷贝工作能够正确进行的原理是：
+The principle that makes all this copying of attributes work is:
 
-- 所有拷贝都发生在对某个非终结符号的一次展开时创建的不同记录之间。因此，这些记录中的每个都知道其他各个记录在栈中离它有多远，因此可以安全地把值写到它下面的记录中。
-
-### 5.5.4 L属性的SDD的自底向上语法分析
-
-### 5.5.5 5.5节的练习
-
-
-
-## 5.6 总结
+- All copying takes place among the records that are created during one expansion of one nonterminal. Thus, each of these records knows how far below it on the stack each other record is, and can write values into the records below safely.
 

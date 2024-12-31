@@ -1,18 +1,20 @@
-# 第32章 字符串匹配
+# String Matching
+
+[TOC]
 
 
 
-字符串匹配问题的形式化定义：假设文本是一个长度为$n$的数组$T[1..n]$，而模式是一个长度为$m$的数组$P[1..m]$，其中$m \leqslant n$，进一步假设$P$和$T$的元素都是来自一个有限字母集$\sum$的字符。
+We formalize the string-matching problem as follows. We assume that the text is an array $T[1..n]$ of length $n$ and that the pattern is an array $P[1..m]$ of length $m \leq n$. We further assume that the elements of $P$ and $T$ are characters drawn from a finite alphabet $\sum$.
 
 ![32_1](res/32_1.png)
 
-**引理 32.1**（后缀重叠引理）假设$x, y$和$z$是满足$z \subset x$和$z \subset y$的字符串。如果$|x| \leqslant |y|$，那么$y \subset x$；如果$|x| \geqslant |y|$，那么$x \subset y$；如果$|x| = |y|$，那么$x = y$。
+**Lemma 32.1 (Overlapping-suffix lemma)** Suppose that $x, y$ and $z$ are strings such that $z \subset x$ and $z \subset y$. if $|x| \leq |y|$, then $y \subset x$. If $|x| \geq |y|$, then $x \subset y$. If $|x| = |y|$, then $x = y$.
 
-**证明** ![32_3](res/32_3.png)
+![32_3](res/32_3.png)
 
 
 
-## 32.1 朴素字符串匹配算法
+## The naive string-matching algorithm
 
 $$
 \begin{align}
@@ -29,7 +31,7 @@ $$
 
 
 
-## 32.2 Rabin-Karp算法
+## The Rabin-Karp algorithm
 
 ![32_5](res/32_5.png)
 $$
@@ -51,26 +53,26 @@ $$
 & \qquad \qquad t_{s+1} = (d(t_s - T[s + 1]h) + T[s + m + 1])\ mod\ q
 \end{align}
 $$
-Rabin-Karp算法的期望运行时间为：$O(n) + O(m(v + n/q))$。
+The expected matching time taken by the Rabin-Karp algorithm is $O(n) + O(m(v + n/q))$ where $v$ is the number of valid shifts.
 
 
 
-## 32.3 利用有限自动机进行字符串匹配
+## String matching with finite automata
 
-一个有限自动机$M$是一个5元组$(Q, q_0, A, \sum, \delta)$，其中：
+A **finite automton M**, illustrated in Figure 32.6, is a 5-tuple $(Q, q_0, A, \sum, \delta)$, where:
 
-- $Q$是状态的有限集合。
-- $q_0 \in Q$是初始状态。
-- $A \subseteq Q$是一个特殊的接受状态集合。
-- $\Sigma$是有限输入字母表。
-- $\delta$是一个从$Q \times \Sigma$到$Q$的函数，称为$M$的转移函数。
+- $Q$ is a finite set of **states**,
+- $q_0 \in Q$ is the **start state**,
+- $A \subseteq Q$ is a distinguished sete of **accepting states**,
+- $\Sigma$ is a finite **input alphabet**,
+- $\delta$ is a function from $Q \times \Sigma$ into $Q$, called the **transition function** of $M$.
 
 ![32_6](res/32_6.png)
 
-给定模式$P[1..m]$，其相应的字符串匹配自动机定义如下：
+We define the string-matching automaton that corresponds to a given pattern $P[1..m]$ as follows:
 
-- 状态集合$Q$为$\{0, 1, ..., m\}$。开始状态$q_0$是$0$状态，并且只有状态$m$是唯一被接受的状态。
-- 对任意的状态$q$和字符$a$，转移函数$\delta$定义如下：$\delta(q, a) = \sigma(P_q a)$。
+- The state set $Q$ is $\{0, 1, ..., m\}$. The start state $q_0$ is state 0, and state $m$ is the only accepting state.
+- The transition function $\delta$ is defined by the following equation, for any state $q$ and character $a$: $\delta(q, a) = \sigma(P_q a)$.
 
 ![32_7](res/32_7.png)
 $$
@@ -84,15 +86,20 @@ $$
 & \qquad \qquad print\ "Pattern\ occurs\ with\ shift"\ i - m
 \end{align}
 $$
-**引理 32.2**（后缀函数不等式）对任意字符串$x$和字符$a, \sigma(xa) \leqslant \sigma(x) + 1$。
+**Lemma 32.2 (Suffix-function inequality)** For any string $x$ and character $a$, we have $\sigma(xa) \leq \sigma(x) + 1$.
 
-**证明** ![32_8](res/32_8.png)
+![32_8](res/32_8.png)
 
-**引理 32.3**（后缀函数递归引理）对任意$x$和字符$a$，若$q = \sigma(x)$，则$\sigma(xa) = \sigma(P_q a)$。
+**Lemma 32.3 (Suffix-function recursion lemma)** For any string $x$ and character $a$, if $q = \sigma(x)$, then $\sigma(xa) = \sigma(P_q a)$.
 
-**证明** ![32-9](res/32_9.png)
+![32_9](res/32_9.png)
 
-**定理 32.4** 如果$\phi$是字符串匹配自动机关于给定模式$P$的终态函数，$T[1..n]$是自动机的输入文本，则对$i = 0, 1, ..., n \phi(T_i) = \sigma(T_i)$。
+**Theorem 32.4** If $\phi$ is the final-state function of a string-matching automaton for a given pattern $P$ and $T[1..n]$ is an input text for the automaton, then:
+$$
+\phi(T_i) = \sigma(T_i) \\
+for\ i = 0, 1, ..., n.
+$$
+
 $$
 \begin{align}
 & COMPUTE-TRANSITION-FUNCTION(P, \Sigma) \\
@@ -109,7 +116,8 @@ $$
 $$
 
 
-## 32.4 Knuth-Morris-Pratt算法
+
+## The Knuth-Morris-Pratt algorithm
 
 ![32_10](res/32_10.png)
 
@@ -148,15 +156,15 @@ $$
 \end{align}
 $$
 
-**引理 32.5**（前缀函数迭代引理）设$P$是长度为$m$的模式，其前缀函数为$\pi$，对$q = 1, 2, ..., m$，有$\pi ^ {*} [q] = \{k: k < q 且 P_q \subset P_k\}$。
+**Lemma 32.5 (Prefix-function iteration lemma)** Let $P$ be a pattern of length $m$ with prefix function $\pi$. Then, for $q = 1, 2, ..., m$, we have $\pi ^ {*} [q] = \{k: k < q\ and\ P_q \subset P_k\}$
 
-**引理 32.6** 设$P$是长度为$m$的模式，$\pi$是$P$的前缀函数。对$q = 1, 2, ..., m$，如果$\pi [q] > 0$，则$\pi [q] - 1 \in \pi^{*}[q - 1]$。
+**Lemma 32.6** Let $P$ be a pattern of length $m$, and let $\pi$ be the prefix function for $P$. For $q = 1, 2, ..., m$, if $\pi [q] > 0$, then $\pi [q] - 1 \in \pi^{*}[q - 1]$.
 
-**推论 32.7** 设$P$是长度为$m$的模式，$\pi$是$P$的前缀函数，对$q = 2, 3, ..., m$
+**Corollary 32.7** Let $P$ be a pattern of length $m$, and let $\pi$ be the prefix function for $P$. For $q = 1, 2, ..., m$,
 $$
 \pi [q] = 
 \begin{cases}
-0, &如果E_{q - 1} = \emptyset \\
-1 + max\{k \in E_{q - 1}\}, &如果E_{q - 1} \neq \emptyset
+0, &\text{if } E_{q - 1} = \emptyset \\
+1 + max\{k \in E_{q - 1}\}, &\text{if } E_{q - 1} \neq \emptyset
 \end{cases}
 $$

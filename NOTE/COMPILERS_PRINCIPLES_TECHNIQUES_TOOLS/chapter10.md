@@ -1,292 +1,250 @@
-# 第10章 指令级并行性
+# Chapter 10 Instruction-Level Parallelism
+
+[TOC]
 
 
 
-## 10.1 处理器体系结构
+## Processor Architectures
 
-`流水线（pipelining）`
-
-### 10.1.1 指令流水线和分支延时
+### Instruction Pipelines and Branch Delays
 
 ![10_1](res/10_1.png)
 
-### 10.1.2 流水线执行
+### Pipelined Execution
 
-如果一条指令的后继指令在不需要该指令的运算结果时可以立刻往下执行，我们就说该指令的执行被`流水线化(pipeline)`了。
+We say that the execution of an instruction is `pipelined` if succeeding instructions not dependent on the result are allowed to proceed.
 
-### 10.1.3 多指令发送
+### Multiple Instruction Issue
 
-通过在每个始终周期发送多条指令，处理器可以在同一时刻运行更多指令。可同时执行的指令数目是指令发送宽度和指令执行流水线中平均阶段数目的乘积。
-
-
-
-## 10.2 代码调度约束
-
-代码调度是程序优化的一种形式，它应用于由代码生成器生成的机器代码。代码调度要遵守下面三种约束：
-
-1. 控制依赖约束：所有在源程序中执行的运算都必须在优化后的程序中执行。
-2. 数据依赖约束：优化后的程序中的运算必须和原程序中的相应运算生成相同的结果。
-3. 资源约束：调度不能超额使用机器上的资源。
-
-### 10.2.1 数据依赖
-
-有三种类型的数据依赖关系：
-
-1. 真依赖：写之后再读。
-2. 反依赖：读之后再写。
-3. 输出依赖：写之后再写。
-
-### 10.2.2 寻找内存访问之间的依赖关系
-
-### 10.2.3 寄存器使用和并行性之间的折衷
-
-### 10.2.4 寄存器分配阶段和代码调度阶段之间的顺序
-
-### 10.2.5 控制依赖
-
-如果指令$i_2$的结果决定了指令$i_1$是否执行，那么就说指令$I_1$是`控制依赖（control-dependent）`于指令$i_2$的。
-
-### 10.2.6 对投机执行的支持
-
-`预取（prefetch）指令`
-
-`毒药位（poison bit）`
-
-`带断言的指令（predicated instruction）`
-
-### 10.2.7 一个基本的机器模型
-
-一个机器$M = <R, T>$由下列元素组成：
-
-1. 一个运算类型的集合$T$。这些运算类型包括加载，保存，算术运算等。
-2. 一个代表硬件资源的向量$R=[r_1, r_2, \cdots]$，其中$r_i$表示第$i$种资源的可用单元的数目。
-
-### 10.2.8 10.2节的练习
+By issuing several operations per clock, processors can keep even more operations in flight. The largest number of operations that can be executed simultaneously can be computed by multiplying the instruction issue width by the average number of stages in the execution pipeline.
 
 
 
-## 10.3 基本块调度
+## Code-Scheduling Constraints
 
-### 10.3.1 数据依赖图
+Code scheduling is a form of program optimization that applies to the machine code that is produced by the code generator. Code scheduling is subject to three kinds of constraints:
 
-我们把每个由机器指令组成的基本块表示成为一个`数据依赖图（data-dependence graph）`，$G = (N, E)$，其中节点集合$N$表示基本块中机器指令的运算，而有向边集合$E$表示运算之间的数据依赖约束。$G$的节点集合和边集按照如下方式构造：
+1. `Control-dependence constraints.` All the operations executed in the original program must be executed in the optimized one.
+2. `Data-dependence constraints.` The operations in the optimized program must produce the same results as the corresponding ones in the original program.
+3. `Resource constraints.` The schedule must not oversubscribe the resources on the machine.
 
-1. 在$N$中的每个运算$n$有一个资源预约表$RT_n$，其值就是$n$的运算类型所对应的资源预约表。
-2. $E$中的每条边$e$有一个表示延时的标号$d_e$。
+### Data Dependence
 
-### 10.3.2 基本块的列表调度方法
+There are three flavors of data dependence:
 
-**算法 10.7** 对一个基本块进行列表调度。
+1. `True dependence:` read after write.
+2. `Antidependence:` write after read.
+3. `Output dependence:` write after write.
 
-输入：一个机器-资源向量$R=[r_1, r_2, \cdots]$，其中$r_i$是第$i$种资源的可用单元的数目；一个数据依赖图$G = (N, E)$。$N$中的每个运算$n$的标号是它的资源预约表$RT_n$；$E$中的每个边$e = n_1 \rightarrow n_2$都有标号$d_e$，表明了$n_2$不能在$n_1$执行之后的$d_e$个时钟周期之内执行。
+### Control Dependence
 
-输出：一个调度方案$S$。它把$N$中的每个运算映射到时间位置中。各个运算在方案所确定的时间位置开始执行，就可以保证所有的数据依赖关系和资源约束都得到满足。
+An instruction $i_1$ is said to be `control-dependent` on instruction $i_2$ if the outcome of $i_2$ determines whether $i_1$ is to be executed.
 
-方法：![10_8](res/10_8.png)
+### Speculative Execution Support
 
-### 10.3.3 带优先级的拓扑排序
+The `prefetch` instruction was invented to bring data from memory to the cache before it is used.
 
-下面是一些关于节点的所有可能的带优先级的拓扑排序的性质：
+The `Posion Bits` was invented to allow speculative load of data from meory into the register file.
 
-- 如果不考虑资源约束，最短的调度方案可以根据`关键路径(cirtical path)`给出。
-- 如果所有的运算都是独立的，那么调度方案的长度收到可用资源的约束。
-- 最后，我们可以使用源代码中的顺序来解决运算之间难分先后的问题，在源程序中先出现的运算应该首先被安排。
+The `predicated instructions` were invented to reduce the number of branches in a program.
 
-### 10.3.4 10.3节的练习
+### A Basic Machine Model
+
+A machine $M = <R, T>$, consists of:
+
+1. A set of operation types $T$, such as loads, stores, arithmetic operations, and so on.
+2. A vector $R=[r_1, r_2, \cdots]$ representing hardware resources, where $r_i$ is the number of units available of the $i$th kind of resource.
 
 
 
-## 10.4 全局代码调度
+## Basic-Block Scheduling
 
-### 10.4.1 基本的代码移动
+### Data-Dependence Graphs
 
-如果从$B'$到达流图出口处的路径都经过$B$，我们说$B$`反向支配（postdominate）`$B'$。
+We represent each basic block of machine instructions by a `data-dependence graph`, $G = (N, E)$, having a set of nodes $N$ representing the operations in the machine instructions in the block and a set of directed edges $E$ representing the data-dependence constraints among the operations. The nodes and edges of $G$ are constructed as follows:
 
-当$B$支配$B'$并且$B'$反向支配$B$的时候，我们就说$B$和$B'$是`控制等价的（control equivalent）`，其含义是一个基本块会被执行当且仅当另一个基本块也会被执行。
+1. Each operation $n$ in $N$ has a resource-reservation table $RT_n$, whose value is simply the resource-reservation table associated with the operation type of $n$.
+2. Each edge $e$ in $E$ is labeled with delay $d_e$ indicating that the destination node must be issued no earlier than $d_e$ clocks after the source node is issued.
 
-### 10.4.2 向上的代码移动
+### List Scheduling of Basic Blocks
 
-### 10.4.3 向下的代码移动
+**Algorithm 10.7:** List scheduling a basic block.
+
+INPUT: A machine-resource vector $R=[r_1, r_2, \cdots]$, where $r_i$ is the number of units available of the $i$th kind of resource, and a data-dependence graph $G = (N, E)$. Each operation $n$ in $N$ is labeled with its resource-reservation table $RT_n$; each edge $e = n_1 \rightarrow n_2$ in $E$ is labeled with $d_e$ indicating that $n_2$ must execute no earlier than $d_e$ clocks after $n_1$.
+
+OUTPUT: A schedule $S$ that maps the operations in $N$​ into time slots in which the operations can be initiated satisfying all the data and resources constraints.
+
+METHOD:
+
+![10_8](res/10_8.png)
+
+### Prioritized Topological Orders
+
+Here are some observations about possible prioritized orderings of the nodes:
+
+- Without resource constraints, the shortest schedule is given by the `cirtical path`, the longest path through the data-dependence graph.
+- On the other hand, if all operations are independent, then the length of the schedule is constrained by the resources available.
+- Finally, we can use the source ordering to break ties between operations; the operation that shows up earlier in the source program should be scheduled first.
+
+
+
+## Global Code Scheduling
+
+### Primitive Code Motion
+
+A block $B$ `postdominates` block $B'$ if every path from $B'$ to the exit of the graph goes through $B$. When $B$ dominates $B'$ and $B'$ postdominates $B$, we say that $B$ and $B'$ are `control equivalent`, meaning that one is executed when and only when the other is.
+
+### Downward Code Motion
 
 ![10_13](res/10_13.png)
 
-1. 在控制等价的基本块之间移动指令最简单且性价比最高。不需要执行额外的运算，也不需要补偿代码。
-2. 在向上（向下）代码移动中，如果源基本块不反向支配（支配）目标基本块，那么就可能需要执行额外的运算。当该额外运算能够免费执行并且通过源基本块的路径被执行时，这个代码移动就是有益的。
-3. 在向上（向下）代码移动中，如果慕白哦基本块不知配（反向支配）源基本块，就需要补偿代码。带有补偿代码的路径的运行可能会变慢，因此保证被优化的路径具有较高的执行效率是很重要的。
-4. 最后一种情况把第二和第三种情况的不利之处合并起来：可能既需要执行额外运算，有需要补偿代码。
+1. Moving instructions between control-equivalent blocks is simplest and most cost effective. No extra operations are ever executed and no compensation code is needed.
+2. Extra operations may be executed if the source does not postdominate(dominate) the destination in upward (downward) code motion. This code motion is beneficial if the extra operations can be executed for free, and the path passing through th e source block is executed.
+3. Compensation code is needed if the destination does not dominte (post-dominate) the source in upward (downward) code motion. The paths with the compensation code may be slowed down, so it is important that the optimized paths are more frequently executed.
+4. The last case combines the disavantages of the second and third case: extra operations may be executed and compensation code is needed.
 
-### 10.4.4 更新数据依赖关系
+### Global Scheduling Algorithms
 
-### 10.4.5 全局调度算法
+**Algorithm 10.11:** Region-based scheduling.
 
-**算法 10.11** 基于区域的调度。
+INPUT: A control-flow graph and a machine-resource description.
 
-输入：一个控制流图和一个机器-资源描述。
+OUTPUT: A schedule $S$​ mapping each instruction to a basic block and a time slot.
 
-输出：一个调度方案$S$。它把每条指令映射到一个基本块和一个时间位置。
+METHOD: 
 
-方法：![10_15](res/10_15.png)
-
-### 10.4.6 高级代码移动技术
-
-### 10.4.7 和动态调度器的交互
-
-### 10.4.8 10.4节的练习
+![10_15](res/10_15.png)
 
 
 
-## 10.5 软件流水线化
+## Software Pipelining
 
-### 10.5.1 引言
-
-### 10.5.2 循环的软件流水线化
-
-### 10.5.3 寄存器分配和代码生成
-
-### 10.5.4 Do-Across循环
+### Do-Across Loops
 
 ![10_23](res/10_23.png)
 
-### 10.5.5 软件流水线化的目标和约束
+### Goals and Constraints of software Pipelining
 
-一个数据依赖图$G = (N, E)$的软件流水线调度方案可以描述为：
+A software-pipeline schedule for a data-dependence graph $G = (N, E)$ can be specified by:
 
-1. 一个启动间隔$T$。
-2. 一个相对调度方案$S$。对每个运算，它给定了该运算相对于它所处迭代的开始时刻的执行时间。
+1. An initiation interval $T$ and
+2. A relative schedule $S$ that specifies, for each operation, when that operation is executed relative to the start of the iteration to which it belongs.
 
-稳定状态下第$i$行所需资源可以由下面的公式给出：
+The resources committed in the $i$th row in the steady state are given by:
 $$
 RT_S[i] = \sum_{|t|(t\ mod\ 2) = i|} RT[t]
 $$
-我们把表示稳定状态的资源预约表称为这条流水线化的循环的`模数资源预约表（modular resource-reservation）`。
+, We refer to the resource-reservation table representing the steady state as the `modular resource-reservation table` of the pipelined loop.
 
-令$S$是软件流水线化的调度方案，它是一个从数据依赖图中的节点到整数的函数，并令$T$为启动时间间隔的目标，那么：
+Let $S$, a function from the nodes of the data-dependence graph to integers, be the software pipeline schedule, and let $T$ be the initiation interval target. Then:
 $$
 (\delta \times T) + S(n_2) - S(n_1) \geqslant d
 $$
-其中的迭代距离$\delta$必须是非负的。
+, The iteration difference, $\delta$, must be nonnegative.
 
-一个被流水线化的循环的启动间隔不小于$\overset{max}{c是一个G中的圈} \lceil \frac{\sum_{e在e中}d_e}{\sum_{e在e中}\delta_{e}} \rceil$个时钟周期。
-
-### 10.5.6 一个软件流水线化算法
-
-### 10.5.7 对无环数据依赖图进行调度
-
-**算法 10.19** 对一个无环依赖图进行软件流水线化处理。
-
-输入：一个机器资源向量$R = [r-1, r_2, \cdots]$，其中$r_i$表示第$i$种资源的可用单元数量；一个数据依赖图$G = (N, E)$。$N$中的每个运算$n$用它的资源预约表$RT_n$作为标号；$E$中的每条边$e = n_1 \rightarrow n_2$上有标号$<\delta_{e}, \delta_{e}>$。这个标号表示$n_2$只能在往前第$\delta_{e}$个迭代中的节点$n_1$执行$d_e$个时钟周期之后才可以执行。
-
-输出：一个经过软件流水线化的调度方案$S$和一个启动间隔$T$。
-
-方法：![10_26](res/10_26.png)
-
-### 10.5.8 对有环数据依赖图进行调度
-
-令$n_1$和$n_2$是一个依赖环中的两个运算，$S$是一个软件流水线调度方案，而$T$是这个调度方案的启动间隔。一个带有标号$<\delta_{1}, d_1>$的依赖边$n_1 \rightarrow n_2$对$S(n_1)$和$S(n_2)$加上了如下约束：
+The initiation interval of a pipelined loop is no smaller than:
 $$
-(\delta_{1} \times T) + S(n_2) - S(n_1) \geqslant d_1
+\overset{max}{\text{c a cycle in G}} \lceil \frac{\sum_{e \text{ in } c}d_e}{\sum_{e \text{ in } e}\delta_{e}} \rceil
 $$
-类似地，一个带有标号$<\delta_2, d_2>$的依赖边$n_2 \rightarrow n_1$增加了如下约束：
+, clocks.
+
+### Scheduling Acyclic Data-Dependence Graphs
+
+**Algorithm 10.19:** Software pipelining an acyclic dependence graph.
+
+INPUT: A machine-resource vector $R = [r_1, r_2, ...]$, where $r_i$ is the number of units available of the $i$th kind of resource, and a data-dependence graph $G = (N, E)$. Each operation $n$ in $N$ is labeled with its resource-reservation table $RT_n$; each edge $e = n_1 \rightarrow n_2$ in $E$ is labeled with $<\delta_{e}, d_{e}>$ indicating that $n_2$ must execute no earlier than $d_e$ clocks after node $n_1$ from the $\delta_{e}$th preceding iteration.
+
+OUTPUT: A sfotware-pipelined schedule $S$ and an initiation interval $T$.
+
+![10_26](res/10_26.png)
+
+### Scheduling Cyclic Dependence Graphs
+
+Let $n_1$ and $n_2$ be two operations in a dependence cycle, $S$ be a software pipeline schedule, and $T$ be the initiation interval for the schedule. A dependence edge $n_1 \rightarrow n_2$ with label $<\delta_{1}, d_1>$ imposes the following constraint on $S(n_1)$ and $S(n_2)$:
+$$
+(\delta_{1} \times T) + S(n_2) - S(n_1) \geq d_1
+$$
+, Similarly, a dependence edge $n_2 \rightarrow n_1$ with label $<\delta_2, d_2>$ imposes constraint:
 $$
 (\delta_2 \times T) + S(n_1) - S(n_2) \geqslant d_2
 $$
-因此
+, Thus,
 $$
 S(n_1) + d_1 - (\delta_{1} \times T) \leqslant S(n_2) \leqslant S(n_1) - d_2 + (\delta_2 \times T)
 $$
-一个图的强连通分量（Strongly Connected Component, SCC）是满足如下条件的一个节点集合，其中的每个节点都可以从集合中的所有其他节点到达。对SCC中的一个节点进行调度将会从上下两个方向限制其他各个节点的可行时间。如果存在一个从$n_1$到$n_2$的路径$p$，那么有
+A `strongly connected component (SCC)` in a graph is a set of nodes where every node in the component can be reached by every other node in the component. Scheduling one node in an SCC will bound the time of every other node in the component both from above and from below. Transitively, if there exists a path $p$ leading from $n_1$ to $n_2$, then:
 $$
-S(n_2) - S(n_1) \geqslant \overset{\Sigma}{e在p中}(d_e - (\delta_{e} \times T)) \qquad (10.1)
+S(n_2) - S(n_1) \geq \underset{e \text{ in } p}{\Sigma}(d_e - (\delta_{e} \times T)) \qquad (10.1)
 $$
-**算法 10.21** 软件流水线化。
+**Algorithm 10.21:** Software pipelining.
 
-输入：一个机器资源向量$R = [r_1, r_2, \cdots]$，其中$r_i$表示第$i$种资源的可用单元的数量；一个数据依赖图$G = (N, E)$。$N$中的每个运算$n$的标号为它的资源预约表$RT_n$；$E$中的每条边$e = n_1 \rightarrow n_2$上有标号$<\delta_e, d_e>$，这个标号表示$n_2$的执行时刻不能早于向前第$\delta_e$个迭代中的节点$n_1$之后的$d_e$个时钟周期。
+INPUT: A machine-resource vector $R = [r_1, r_2, \cdots]$, where $r_i$ is the number of units available of the $i$th kind of resource, and a data-dependence graph $G = (N, E)$. Each operation $n$ in $N$ is labeled with its resource-reservation table $RT_{n}$; each edge $e = n_1 \rightarrow n_2$ in $E$ is labeled with $<\delta_e, d_e>$ indicating that $n_2$ must execute no earlier than $d_e$ clocks after node $n_1$ from the $\delta_{e}$th preceding iteration.
 
-输出：一个软件流水线化的调度方案$S$和一个启动间隔$T$。
+OUTPUT: A sfotware-pipelined schedule $S$ and an initiation interval $T$.
 
-方法：![10_29](res/10_29.png)
+![10_29](res/10_29.png)
 
-### 10.5.9 对流水线化算法的改进
+### Modular Variable Expansion
 
-### 10.5.10 模数变量扩展
+A scalar variable is said to be `privatizable` in a loop if its live range falls within an iteration of the loop.
 
-如果一个标量变量的活跃范围处于循环的一个迭代之内，那么该标量变量被称为`可私有化的（privatizable）`。
+`Variable expansion` refers to the transformation of converting a privatizable scalar variable into an array and having the $i$th iteration of the loop read and write the $i$th element.
 
-`变量扩展（variable expansion）`指的是这样一种变换技术：它把一个可私有化的标量变量转换成为一个数组，并让循环的第$i$个迭代读写第$i$个元素。
+**Algorithm 10.23:** Software pipelining with modular variable expansion.
 
-**算法 10.23** 使用模数变量扩展技术的软件流水线化。
+INPUT: A data-dependence graph and a machine-resource description.
 
-输入：一个数据依赖图和一个机器资源描述。
+OUTPUT: Two loops, one software pipelined and one unpipelined.
 
-输出：两个循环，一个经过软件流水线化处理，另一个没有。
+METHOD:
 
-方法：
+1. Remove the loop-carried antidependences and output dependences associated with privatizable variables from the data-dependence graph.
 
-1. 从输入的数据依赖图种删除和可私有化变量相关的穿越循环的反依赖关系和输出依赖关系。
+2. Software-pipeline the resulting dependence graph using Algorithm 10.21. Let $T$ be the initiation interval for which a schedule is found, and $L$ be the length of the schedule for one iteration.
 
-2. 使用算法10.21对第一步得到的数据依赖图进行软件流水线化。令$T$是已经找到相应调度方案的启动间隔，$L$是要给迭代的调度方案的长度。
+3. From the resulting schedule, compute $q_v$, the minimum number of registers needed by each privatizable variable $v. Let Q = max_{v} q_{v}$.
 
-3. 对于每个可私有化变量$v$，依据得到的调度方案计算$q_v$，即$v$所需要的最小寄存器数目。令$Q = max_{v}q_{v}$。
+4. Generate two loops: a software-pipelined loop and an unpipelined loop.
 
-4. 生成两个循环：
+   The software-pipelined loop has:
+   $$
+   \lceil \frac{L}{T} \rceil + Q - 1
+   $$
+   copies of the iterations, placed $T$ clocks apart. It has a prolog with
+   $$
+   (\lceil \frac{L}{T} \rceil - 1)^T
+   $$
+   instructions, a steady state with $QT$ instructions, and an epilog of $L - T$ instructions. Insert a loop-back instruction that branches from the bottom of the steady state to the top of the steady state.
 
-   - 经过软件流水线化的循环
+   The number of registers assigned to privatizable variable $v$ is:
+   $$
+   q_v ' 
+   \begin{cases}
+   q_v &if\ Q\ mod\ q_v = 0 \\
+   Q &otherwise
+   \end{cases}
+   $$
+   The variable $v$ in iteration $i$ uses the $(i\ mod\ q_i')$th register assigned.
 
-     此循环有
-     $$
-     \lceil \frac{L}{T} \rceil + Q - 1
-     $$
-     个迭代的拷贝，各个拷贝之间相距$T$个时钟。它有一个带有
-     $$
-     (\lceil \frac{L}{T} \rceil - 1)^T
-     $$
-     条指令的序言部分，一个带有$QT$条指令的稳定状态和一个具有$L-T$条指令的尾声部分。插入一个从稳定状态的尾部到稳定状态顶端的循环回归指令。
+   Let $n$ be the variable representing the number of iterations in the source loop. The software-pipelined loop is executed if:
+   $$
+   n \geq \lceil \frac{L}{T} \rceil + Q - 1
+   $$
+   The number of times the loop-back branch is taken is:
+   $$
+   n_1 = \lfloor \frac{n - \lceil \frac{L}{T} \rceil  + 1}{Q} \rfloor
+   $$
+   Thus, the number of soruce iterations executed by the software-pipelined loop is:
+   $$
+   n_1 = 
+   \begin{cases}
+   \lceil \frac{L}{T} \rceil - 1 + Qn_1 &if\ n \geqslant \lceil \frac{L}{T} \rceil + Q - 1 \\
+   0 &otherwise
+   \end{cases}
+   $$
+   The number of iterations executed by the unpipelined loop is $n_3 = n - n_2$.
 
-     分配给可私有化变量$v$的寄存器数目是
-     $$
-     q_v ' 
-     \begin{cases}
-     q_v &如果Q\ mod\ q_v = 0 \\
-     Q &否则
-     \end{cases}
-     $$
-     在第$i$个迭代中的变量$v$使用的是被分配给$v$的第$(i\ mod\ q_i')个$寄存器。
+### Conditional Statements
 
-     令$n$为源代码循环中表示迭代数目的变量。这个软件流水线化的循环被执行的前提是
-     $$
-     n \geqslant \lceil \frac{L}{T} \rceil + Q - 1
-     $$
-     循环回归分支的执行次数是
-     $$
-     n_1 = \lfloor \frac{n - \lceil \frac{L}{T} \rceil  + 1}{Q} \rfloor
-     $$
-     因此，软件流水线化的循环所执行的源代码中迭代的次数是
-     $$
-     n_1 = 
-     \begin{cases}
-     \lceil \frac{L}{T} \rceil - 1 + Qn_1 &如果n \geqslant \lceil \frac{L}{T} \rceil + Q - 1 \\
-     0 &否则
-     \end{cases}
-     $$
-     
-
-   - 没有被流水线化的循环
-
-     执行的迭代数目是$n_3 = n - n_2$。
-
-### 10.5.11 条件语句
-
-如果一个机器没有带断言的指令，那么可以使用下面描述的`层次结构归约（hierarchical reduction）`技术来处理少量的依赖于数据的控制流。
-
-### 10.5.12 软件流水线化的硬件支持
-
-### 10.5.13 10.5节的练习
-
-
-
-## 10.6 第10章总结
-
-
-
-## 10.7 第10章参考文献
+If a machine does not have predicated instructions, we can use the concept of `hierarchical reduction`, described below, to handle a small amount of datadependent control flow.
 

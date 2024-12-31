@@ -1,13 +1,17 @@
-# 第35章 近似算法
+# 35 Approximation Algorithms
+
+[TOC]
 
 
 
-如果对规模为$n$的任意输入，近似算法所产生的近似解的代价$C$与最优解的代价$C^{*}$只差一个因子$\rho (n)$：
+We say that an algorithm for a problem has an **approximation ratio** of $\rho (n)$ if, for any input of size $n$, the cost $C$ of the solution produced by the algorithm is within a factor of $\rho(n)$ of the cost $C^{*}$ of an optimal solution:
 $$
-max(\frac{C}{C^{*}}, \frac{C^{*}}{C}) \leqslant \rho(n)
+max(\frac{C}{C^{*}}, \frac{C^{*}}{C}) \leq \rho(n)
 $$
 
-## 35.1 顶点覆盖问题
+If an algorithm achieves an approximation ratio of $\rho(n)$, we call it a $\rho(n)-approx-imation\ algorithm$.
+
+## The vertex-cover problem
 
 $$
 \begin{align}
@@ -22,15 +26,15 @@ $$
 \end{align}
 $$
 
-**定理 35.1** $APPROX-VERTEX-COVER$是一个多项式时间的2近似算法。
-
 ![35_1](res/35_1.png)
 
+**Theorem 35.1** $APPROX-VERTEX-COVER$ is a polynomial-time 2-approximation algorithm.
 
 
-## 35.2 旅行商问题
 
-### 35.2.1 满足三角不等式的旅行商问题
+## The traveling-salesman problem
+
+### The traveling-salesman problem with the triangle inequality
 
 $$
 \begin{align}
@@ -44,19 +48,19 @@ $$
 
 ![35_2](res/35_2.png)
 
-**定理 35.2** $APPROX-TSP-TOUR$是一个用于解决满足三角不等式的旅行商问题的多项式时间2近似算法。
+**Theorem 35.2** $APPROX-TSP-TOUR$ is a polynomial-time 2-approximation algorithm for the traveling-salesman problem with the triangle inequality.
 
-### 35.2.2 一般旅行商问题
+### The general traveling-salesman problem
 
-**定理 35.3** 如果$P \neq NP$，则对任何常数$\rho \geqslant 1$，一般旅行商问题不存在具有近似比为$\rho$的多项式时间近似算法。
+**Theorem 35.3** If $P \neq NP$, then for any constant $\rho \geq 1$, there is no polynomial-time approximation algorithm with approximation ratio $\rho$ for the general traveling-salesman problem.
 
 
 
-## 35.3 集合覆盖问题
+## The set-covering problem
 
 ![35_3](res/35_3.png)
 
-**一个贪心近似算法**
+**A greedy approximation algorithm**
 $$
 \begin{align}
 & GREEDY-SET-COVER(x, F) \\
@@ -69,15 +73,15 @@ $$
 & return\ e
 \end{align}
 $$
-**定理 35.4** $GREEDY-SET-COVER$是一个多项式时间的$\rho(n)$近似算法，其中：$\rho (n) = H(max\{|S|: S \in F \})$。
+**Theorem 35.4** $GREEDY-SET-COVER$ is a polynomial-time $\rho(n)$-approximation algorithm, where $\rho(n) = H(max\{|S|:S \in F\})$.
 
-**推论 35.5** $GREEDY-SET-COVER$是一个多项式时间的$(ln |X| + 1)$近似算法。
+**Corollary 35.5** $GREEDY-SET-COVER$ is a polynomial-time $(ln|X| + 1)$-approximation algorithm.
 
 
 
-## 35.4 随机化和线性规划
+## Randomization and linear programming
 
-**定理 35.6** 给定$MAX-3-CNF$可满足性问题的一个实例，它有$n$个变量$x_1, x_2, ..., x_n$和$m$个子句，以$1/2$概率独立地将每个变量设置为$1$并以$1/2$概率独立地将每个变量设置为$0$的随机化近似算法是一个随机化的$8/7$近似算法。
+**Theorem 35.6** Given an instance of $max-3-CNF$ satisfiability with $n$ variables $x_1, x_2, ..., x_n$ and $m$ clauses, the randomized algorithm that independently sets each variable to 1 with probability 1/2 and to 0 with probability 1/2 is a randomized 8/7-approximation algorithm.
 $$
 \begin{align}
 & APPROX-MIN-WEIGHT-VC(G, w) \\
@@ -89,13 +93,13 @@ $$
 & return\ C
 \end{align}
 $$
-**定理 35.7** 算法$APPROX-MIN-WEIGHT-VC$是求解最小权值顶点覆盖问题的一个多项式时间的2近似算法。
+**Theorem 35.7** Algorithm $APPROX-MIN-WEIGHT-VC$ is a polynomial-time 2-approximation algorithm for the minimum-weight vertex-cover problem.
 
 
 
-## 35.5 子集和问题
+## The subset-sum problem
 
-**一个指数时间的准确算法**
+**An exponential-time exact algorithm**
 $$
 \begin{align}
 & EXACT-SUBSET-SUM(S, t) \\
@@ -107,7 +111,7 @@ $$
 & return\ the\ largest\ element\ in\ L_n
 \end{align}
 $$
-**一个完全多项式时间近似模式**
+**A fully polynomial-time approximation scheme**
 $$
 \begin{align}
 & TRIM(L, \delta) \\
@@ -136,5 +140,5 @@ $$
 \end{align}
 $$
 
-**定理 35.8** $APPROX-SUBSET-SUM$是子集和问题的一个完全多项式时间近似模式。
+**Theorem 35.8** $approx-subset-sum$ is a fully polynomial-time approximation scheme for the subset-sum problem.
 

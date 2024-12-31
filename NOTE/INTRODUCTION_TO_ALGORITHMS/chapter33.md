@@ -1,16 +1,16 @@
-# 第33章 计算几何学
+# 33 Computational Geometry
+
+[TOC]
 
 
 
-## 33.1 线段的性质
+## Line-segment properties
 
-**叉积**
+**Cross products**
 
 ![33_1](res/33_1.png)
 
-**确定连续线段是向左转还是向右转**
-
-**判断两条线段是否相交**
+**Determining whether two line segments intersect**
 
 ![33_2](res/33_2.png)
 $$
@@ -54,11 +54,11 @@ $$
 
 
 
-## 33.2 确定任意一对线段是否相交
+## Determining whether any pair of segments intersects
 
 ![33_4](res/33_4.png)
 
-**求线段交点的伪代码**
+**Segment-intersection pseudocode**
 $$
 \begin{align}
 & ANY-SEGMENTS-INTERSECT(S) \\
@@ -78,11 +78,11 @@ $$
 $$
 ![33_5](res/33_5.png)
 
-ANY-SEGMENTS-INTERSECT的运行时间为$O(n lg n)$。
+If set $S$ contains $n$ segments, then $ANY-SEGMENTS-INTERSECT$ runs in time $O(n\ lg\ n)$.
 
 
 
-## 33.3 寻找凸包
+## Finding the convex hull
 
 ![33_6](res/33_6.png)
 $$
@@ -103,7 +103,7 @@ $$
 & \qquad return\ S
 \end{align}
 $$
-**定理 33.1**（Graham扫描算法的正确性）如果在一个$|Q| \geqslant 3$的点集$Q$上运行$GRAHAM-SCAN$，则在过程终止时，栈$S$从底部到顶部包含了按逆时针方向排列在$CH(Q)$中的各个顶点。
+**Theorem 33.1 (Correctness of Graham's scan)** If $GRAHAM-SCAN$ executes on a set $Q$ of points, where $|Q| \geq 3$, then at termination, the stack $S$ consists of, from bottom to top, exactly the vertices of $CH(Q)$ in counterclockwise order.
 
 ![33_7_1](res/33_7_1.png)
 
@@ -111,13 +111,11 @@ $$
 
 ![33_8](res/33_8.png)
 
-**Jarvis步进法**
-
 ![33_9](res/33_9.png)
 
 
 
-## 33.4 寻找最近点对
+## Finding the closest pair of points
 
 ![33_11](res/33_11.png)
 $$

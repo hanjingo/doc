@@ -1,332 +1,284 @@
-# 第七章 运行时刻环境
+# Chapter 7 Run-Time Environments
+
+[TOC]
 
 
 
-## 7.1 存储组织
+## Storage Organization
 
 ![7_1](res/7_1.png)
 
-喝多编译器使用下列的两种策略的某种组合进行动态存储分配：
-
-1. 栈式存储。
-2. 堆存储。
 
 
+## Stack  Allocation of Space
 
-## 7.2 空间的栈式分配
+### Activation Trees
 
-### 7.2.1 活动树
-
-假如过程调用（或者说过程的活动）在时间上不是嵌套的，那么栈式分配就不可行了。
-
-我们可以用一棵树来表示在整个程序运行期间的所有过程的活动，这棵树称为活动树（activation tree）。树中的每个节点对应于一个活动，根节点是启动程序执行的main过程的活动。
+We therefore can represent the activations of procedures during the running of an entire program by a tree, called an `activation tree`. Each node corresponds to one activation, and the root is the activation of the "main" procedure that initiates execution of the program.
 
 ![7_4](res/7_4.png)
 
-### 7.2.2 活动记录
+### Activation Records
 
-过程调用和返回通常由一个称为控制栈（control stack）的运行时刻栈进行管理。每个活跃的活动都有一个位于这个控制栈中的活动记录（activation record，有时也称为帧（frame））。
+Procedure calls and returns are usually managed by a run-time stack called the `control stack`. Each live activation has an `activation record` (sometimes called a `frame`) on the control stack, with the root of the activation tree at the bottom, and the entire sequence of activation records on the stack corresponding to the path in the activation tree to the activation where control currently resides.
 
 ![7_5](res/7_5.png)
 
-- 临时值。
-- 对应于这个活动记录的过程的局部数据。
-- 保存的机器状态，其中包括对此过程的此次调用之前的机器状态信息。
-- 一个“访问链”。
-- 一个控制链（control link），指向调用者的活动记录。
-- 当被调用函数有返回值时，要有一个用于存放这个返回值的空间。
-- 调用过程使用的实在参数（actual parameter）。
+The contents of activation records vary with the language being implemented. Here is a list of the kinds of data that might appear in an activation record:
+
+1. Temporary values, such as those arising from the evaluation of expressions, in cases where those temporaries cannot be held in registers.
+2. Local data belonging to the procedure whose activation record this is.
+3. A saved machine status, with inforation about the state of the machine just before the call to the procedure.
+4. An "access link" may be needed to locate data needed by the called procedure but found elsewhwere, e.g., in another activation record.
+5. A `control link`, pointing to the activation record of the caller.
+6. Space for the return value of the called function, if any.
+7. The actual parameters used by the calling procedure.
 
 ![7_6](res/7_6.png)
 
-### 7.2.3 调用代码序列
+### Calling Sequences
 
-`调用代码序列（calling sequence）`为一个活动记录在栈中分配空间，并在此记录的字段中填写信息。
+`calling sequences`, which consists of code that allocates an activation record on the stack and enters information into its fields. 
 
-`返回代码序列（return sequence）` 是一段类似的代码，它恢复机器状态，使得调用过程能够在调用结束之后继续执行。
+A `return sequence` is similar code to restore the state of the machine so the calling procedure can continue its execution after the call.
 
-在设计调用代码序列和活动记录的布局时，可以使用下列的设计原则：
+When designing calling sequences and the layout of activation records, the following principles are helpful:
 
-1. 在调用者和被调用者之间传递的值一般被放在被调用者的活动记录的开始位置，因此它们尽可能地靠近调用者的活动记录。
-2. 固定长度的项被放置在中间位置。
-3. 那些在早期不知道大小的项将被放置在活动记录的尾部。
-4. 我们必须小心地确定栈顶指针所指的位置。
+1. Values communicated between caller and callee are generally placed at the beginning of the callee's activation record, so they are as close as possible to the caller's activation record.
+2. Fixed-length items are generally placed in the middle.
+3. Items whose size may not be known early enough are placed at the end of the activation record.
+4. We must locate the top-of-stack pointer judiciously.
 
 ![7_7](res/7_7.png)
 
-### 7.2.4 栈中的变长数据
+### Variable-Length Data on the Stack
 
 ![7_8](res/7_8.png)
 
-### 7.2.5 7.2节的练习
 
 
+## Access to Nonlocal Data on the Stack
 
-## 7.3 栈中非局部数据的访问
+### Data Access Without Nested Procedures
 
-### 7.3.1 没有嵌套过程时的数据访问
+For languages that do not allow nested procedure declarations, allocation of storage for variables and access to those variables is simple:
 
-对于不允许声明嵌套过程的语言而言，变量的存储分配和访问这些变量是比较简单的：
+1. Global variables are allocated static storage.
+2. Any other name must be local to the activation at the top of the stack.
 
-1. 全局变量被分配在静态区。
-2. 其他变量一定是栈顶活动的局部变量。
+### Nesting Depth
 
-### 7.3.2 和嵌套过程相关的问题
+`nesting depth`: if a procedure $p$ is defined immediately within a procedure at nesting depth $i$, then give $p$ the nesting depth $i + 1$.
 
-### 7.3.3 一个支持嵌套过程声明的语言
+### Access Links
 
-### 7.3.4 嵌套深度
-
-`嵌套深度（nesting depth）`：如果一个过程$p$在一个嵌套深度为$i$的过程中定义，那么我们设定$p$的嵌套深度为$i+1$。
-
-### 7.3.5 访问链
-
-针对嵌套函数的通常的静态作用域规则的一个直接实现方法是在每个活动记录中增加一个`访问链（access link）`指针。访问链形成了一条链路，它从栈顶活动记录开始，经过嵌套深度逐步递减的活动的序列。沿着这条链路找到的活动就是其数据和对应过程可以被当前正在运行的过程访问的所有活动。
+A direct implementation of the normal static scope rule for nested functions is obtained by adding a pointer called the `access link` to each activation record. Access links form a chain from the activation record at the top of the stack to a sequence of activations at progressively lower nesting depths. Along this chain are all the activations whose data and procedures are accessible to the currently executing procedure.
 
 ![7_11](res/7_11.png)
 
-### 7.3.6 处理访问链
-
-### 7.3.7 过程型参数的访问链
+### Access Links for Procedure Parameters
 
 ![7_13](res/7_13.png)
 
-### 7.3.8 显示表
+### Displays
 
 ![7_14](res/7_14.png)
 
-### 7.3.9 7.3节的练习
 
 
+## Heap Management
 
-## 7.4 堆管理
+### The Memory Manager
 
-### 7.4.1 存储管理器
+The memory manager keeps track of all the free space in heap storage at all times. It performs two basic functions:
 
-存储管理器总是跟踪堆区中的空闲空间。它具有两个基本功能：
+- Allocation.
+- Deallocation.
 
-- 分配。
-- 回收。
+Here are the properties we desire of memory managers:
 
-下面是我们期望存储管理器具有的特性：
+- Space Efficiency.
+- Program Efficiency.
+- Low Overhead.
 
-- 空间效率。
-- 程序效率。
-- 低开销
-
-### 7.4.2 一台计算机的存储层次结构
+### The Memory Hierarchy of a Computer
 
 ![7_16](res/7_16.png)
 
-数据以连续存储块的方式进行传输。在主存和告诉缓存之间的数据是按照被称为`高速缓存栈（cache line）`的块进行传输的。
+Data is transferred as blocks of contiguous storage. To amortize the cost of access, larger blocks are used with the slower levels of the hierarchy. Between main memory and cache, data is transferred in blocks known as `cache lines`, which are typically from 32 to 256 bytes long. Between virtual memory (disk) and main memory, data is transferred in blocks known as `pages`, typically between 4K and 6K bytes in size.
 
-### 7.4.3 程序中的局部性
+### Locality in Programs
 
-如果一个程序访问的存储位置很可能将在一个很短的时间段内被再次访问，我们就说这个程序具有`时间局限性（temporal locality）`。
+We say that a program has `temporal locality` if the memory locations it accesses re likely to be accessed again within a short period of time.
 
-如果被访问过的存储位置的临近位置很可能在一个很短的时间段内被访问，我们就说这个程序具有`空间局部性（spatial locality）`。
+We say that a progra has `spatial locality` if memory locations close to the location accessed are likely also to be accessed within a short period of time.
 
-通常认为程序把90%的时间用来执行10%的代码。原因如下：
+The converntional wisdom is that programs spend 90% of their time executing 10% of the code. Here is why:
 
-- 程序经常包含很多从来不会被执行的指令。
-- 在程序的一次典型运行中，可能被调用的代码中只有一小部分会被实际执行。
-- 通常的程序往往将大部分时间花费在执行过程中的最内层循环和最紧凑的递归环上。
+- Programs often contain many instructions that are never executed.
+- Only a small fraction of the code that could be invoked is actually executed in a typical run of the program.
+- The typical program spends most of its time executing innermost loops and tight recursive cycles in a program.
 
-### 7.4.4 碎片整理
+### Reducing Fragmentation
 
-有两种数据结构可以用于支持相邻空闲块的接合：
+There are two data structures that are useful to support coalescing of adjacent free blocks:
 
-- 边界标记。
-- 一个双重链接的，嵌入式的空闲列表。
+- Boundary Tags.
+- A Doubly Linked, Embedded Free List.
 
 ![7_17](res/7_17.png)
 
-### 7.4.5 人工回收请求
+### Manual Deallocation Requests
 
-编程规范和工具：
+A few of the most popular conventions and tools that have been developed to help programmers cope with the complexity in managing memory:
 
-- 当一个对象的声明周期能够被静态推导出来时，`对象所有者（object ownership）`的概念是很有用的。
-- 当一个对象的生命周期需要动态确定是，`引用计数（reference counting）`会有所帮助。
-- 对于其生命周期局限于计算过程中的某个特定阶段的一组对象，可以使用`基于区域的分配（region-based allocation）`方法。
-
-### 7.4.6 7.4 节的练习
+- `Object ownership` is useful when an objet's lifetime can be statically reasoned about.
+- `Reference counting` is useful when an object's lifetime needs to be determined dynamically.
+- `Region-based allocation` is useful for collections of objects whose lifetimes are tied to specific phases in a computation.
 
 
 
-## 7.5 垃圾回收概述
+## Introduction to Garbage Collection
 
-### 7.5.1 垃圾回收器的设计目标
+### Design Goals for Garbage Collectors
 
-垃圾回收器的性能度量标准：
+Enumerate the performance metrics that must be considered when designing a garbage collector:
 
-- 总体运行时间。
-- 空间使用。
-- 停顿时间。
-- 程序局部性。
+- Overall Execution Time.
+- Space Usage.
+- Pause Time.
+- Program Locality.
 
-### 7.5.2 可达性
+### Reachability
 
-我们把所有不需要对任何指针解引用就可以被程序直接访问的数据称为`根集（root set）`。
+We refer to all the data that can ben accessed directly by a program, without having to dereference any pointer, as the `root set`.
 
-为了使垃圾回收器能够找到正确的根集，优化编译器可以做如下的处理：
+Here are some things an optimizing compiler can do to enable the garbage collector to find the correct root set:
 
-- 编译器可以限制垃圾回收机制只能在程序中的某些代码点上被激活。
-- 编译器可以写出一些信息供垃圾回收器恢复所有的引用。
-- 编译器可以确保当垃圾回收器被激活时每个可达对象都有一个引用指向它的基地址。
+- The compiler can restrict the invocation of garbage collection to only certain code points in the program, when no "hidden" references exist.
+- The compiler can write out information that the garbage collector can use to recover all the references, such as specifying which registers contin references, or how to compute the base address of an object that is given an internal address.
+- The compiler can assure that there is a reference to the base address of all reachable objects whenever the garbage collector may be invoked.
 
-一个mutator改变可达对象集合的四种基本操作：
+There are four basic operations that a mutator performs to change the set of reachable objects:
 
-- 对象分配。
-- 参数传递和返回值。
-- 引用赋值。
-- 过程返回。
+- Object Allocations.
+- Parameter Passing and Return Values.
+- Reference Assignments.
+- Precedure Returns.
 
-### 7.5.3 引用计数垃圾回收器
+### Reference Counting Garbage Collectors
 
-引用计数可以按照下面的方法进行维护：
+Reference counts can be maintained as follows:
 
-1. 对象分配。
-2. 参数传递。
-3. 引用赋值。
-4. 过程返回。
-5. 可达性的传递丢失。
+1. Object Allocation.
+2. Parameter Passing.
+3. Reference Assignments.
+4. Procedure Returns.
+5. Transitive Loss of Reachability.
 
-引用计数有两个主要的缺点：它不能回收不可达的循环数据结构，并且它的开销较大。
-
-### 7.5.4 7.5 节的练习
+Reference countring has two main disadvantages: it cannot collect unreachable, cyclic data structures, and it is expensive.
 
 
 
-## 7.6 基于跟踪的回收的介绍
+## Introduction to Trace-Based Collection
 
-### 7.6.1 基本的标记-清扫式回收器
+### A Basic Mark-and-Sweep Collector
 
-**算法 7.12** 标记-清扫式垃圾回收。
+**Algorithm 7.12:** Mark-and-sweep garbage collection.
 
-输入：一个由对象组成的根集，一个堆和一个被称为Free的包含了堆中所有未分配存储块的空闲空间列表（free list）。
+**INPUT:** A root set of objects, a heap, and a `free list`, called `Free`, with all the unallocated chunks of the heap. As in Section 7.4.4, all chunks of space are marked with boundary tags to indicate their free/used status and size.
 
-输出：在删除了所有垃圾之后的经过修改的Free列表。
+**OUTPUT:** A modified `Free` list after all teh garbage has been removed.
 
-方法：![7_21](res/7_21.png)
+![7_21](res/7_21.png)
 
 ![7_22](res/7_22.png)
 
-### 7.6.2 基本抽象
+### Basic Abstraction
 
-所有基于跟踪的算法都计算可达对象集合，然后取这个集合的补集。因此，内存是按照下列方式循环使用的：
+All trace-based algorithms compute the set of reachable objects and then take the complement of this set. Memory is therefore recycled as follows:
 
-1. 程序（或者说增变者）运行并发出分配请求。
-2. 垃圾回收器通过跟踪揭示可达性。
-3. 垃圾回收器收回不可达对象的存储空间。
+1. The program or mutator runs and makes allocation requests.
+2. The garbage collector discovers reachability by tracing.
+3. The garbage collector reclaims the storage for unreachable objects.
 
 ![7_23](res/7_23.png)
 
-虽然不同的基于跟踪的算法可能在实现方法上有所不同，但是它们都可以通过下列状态进行描述：
+While trace-base algorithms may differ in their implementation, they can all be described in terms of the following states:
 
-- 空闲的。
-- 未被访问的。
-- 待扫描的。
-- 已扫描的。
+1. Free.
+2. Unreached.
+3. Unscanned.
+4. Scanned.
 
-### 7.6.3 标记-清扫式算法的优化
+### Optimizing Mrk-and-Sweep
 
-**算法 7.14** Baker的标记-清扫式回收器。
+**Algorithm 7.14:** Baker's mark-and-sweep collector.
 
-输入：一个由对象组成的根集，一个堆区，一个空闲列表Free，一个名为Unreached的已分配对象的列表。
+**INPUT:** A root set of objects, a heap, a free list `Free`, and a list of allocated objects, which we refer to as `Unreached`.
 
-输出：经过修改的Free列表和Unreached列表。Unreached列表保存了被分配的对象。
+**OUTPUT:** Modified lists `Free` and `Unreached`, which holds allocated objects.
 
-方法：![7_25](res/7_25.png)
+![7_25](res/7_25.png)
 
-### 7.6.4 标记并压缩的垃圾回收器
+### Mark-and-Compact Garbage Collectors
 
-**算法 7.15** 一个标记并压缩的垃圾回收器。
+**Algorithm 7.15:** A mark-and-compact garbage collector.
 
-输入：一个由对象组成的根集，一个堆，以及一个标记空闲空间的起始位置的指针free。
+**INPUT:** A root set of objects, a heap, and `free`, a pointer marking the start of free space.
 
-输出：指针free的新值。
+**OUTPUT:** The new value of pointer `free`.
 
-方法：![7_26](res/7_26.png)
+### Copying collectors
+
+![7_26](res/7_26.png)
 
 ![7_27](res/7_27.png)
 
-### 7.6.5 拷贝回收器
+**Algorithm 7.16:** Cheney's copying collector.
 
-**算法 7.16** Cheney的拷贝回收器。
+**INPUT:** A root set of objects, and a heap consisting of the `From` semispace, containing allocated objects, and the $T_0$​ semispace, all of which is free.
 
-输入：一个由对象组成的根集，一个包含了From半空间和To半空间的堆区，其中From半空间包含了已分配对象，To半空间全部是空闲的。
-
-输出：最后，To半空间保存已分配的对象。free指针指明了To半空间中剩余空闲空间的开始位置。From半空间此时全部空闲。
-
-方法：Cheney算法在From半空间中找出可达对象，并且访问到它们时立刻把它们拷贝到To半空间。这种放置方法将相关对象放在一起，从而提高空间局部性。
+**OUTPUT:** At the end, the $T_0$ semispace holds the allocated objects. A `free` pointer indicates the start of free space remaining in the $T_0$ semispace. The `From` semispace is completely free.
 
 ![7_28](res/7_28.png)
 
-### 7.6.6 开销的比较
+### Comparing Costs
 
-算法的运行时间开销总结：
+Each estimate ignores the cost of processing the root set:
 
-- 基本的标记-清扫式算法：与堆区中存储块的数目成正比。
-- Baker的标记-清扫式算法：与可达对象的数目成正比。
-- 基本的标记并压缩算法：与堆区中存储块的数目和可达对象的总大小成正比。
-- Cheney的拷贝回收器：与可达对象的总大小成正比。
-
-### 7.6.7 7.6节的练习
+- `Basic Mark-and-Sweep`(Algorithm 7.12): Proportional to the number of chunks in the heap.
+- `Baker's Mark-and-Sweep`(Algorithm 7.14): Proportional to the number of reached objects.
+- `Basic Mark-and-Compact`(Algorithm 7.15): Proportional to the number of chunks in the heap plus the total size of the reched objects.
+- `Cheney's Copying Collector`(Algorithm 7.16): Proportional to the total size of the reached objects.
 
 
 
-## 7.7 短停顿垃圾回收
+## Short-Pause Garbage Collection
 
-### 7.7.1 增量式垃圾回收
-
-### 7.7.2 增量式可达性分析
-
-### 7.7.3 部分回收概述
-
-### 7.7.4 世代垃圾回收
-
-### 7.7.5 列车算法
+### The Train Algorithm
 
 ![7_29](res/7_29.png)
 
 ![7_30](res/7_30.png)
 
-### 7.7.6 7.7节的练习
 
 
+## Advanced Topics in Garbage Collection
 
-## 7.8 垃圾回收中的高级论题
+### Parallel and Concurrent Garbage Collection
 
-### 7.8.1 并行和并发垃圾回收
+We say a garbage collector is `parallel` if it uses multiple threads; it is `concurrent` if it runs simultaneously with the mutator.
 
-如果一个垃圾回收器使用多个线程，我们就称其为`并行的（parallel）`。如果回收器和增变者同时运行，就说它是`并发的（concurrent）`。
+An incremental analysis performs the following three steps:
 
-一个增量式分析完成下列三个步骤：
+1. Find the root set.
+2. Interleave the tracing of the reachable objects with the execution of the mutator(s).
+3. Stop the mutator(s) again to rescan all the cards that may hold references to unreached objects.
 
-1. 找到根集。
-2. 增变者的执行和对可达对象的跟踪交替进行。
-3. 再次暂停增变者的运行，重新扫描所有可能保存了指向未被访问对象的引用的卡片。
+Here is an outline of the parallel, concurrent garbage-collection algorith:
 
-下面给出一个并行，并发垃圾回收算法的大概描述：
-
-1. 扫描每个增变者线程的根集，将所有可以从根集中直接到达的对象设为待扫描状态。
-2. 扫描处于待扫描状态的对象。
-3. 扫描脏卡片中的对象。
-4. 最后一步保证所有的可达对象都标记为已被访问的。
-
-### 7.8.2 部分对象重新定位
-
-### 7.8.3 类型不安全的语言的保守垃圾回收
-
-### 7.8.4 弱引用
-
-### 7.8.5 7.8节的练习
-
-
-
-## 7.9 总结
-
-
-
-## 7.10 第七章参考文献
-
+1. Scan the root set for each mutator thread, and put all objects directly reachable from that thread into the `Unscanned` state.
+2. Scan objects that are in the `Unscanned` state.
+3. Scan the objects in dirty cards.
+4. The final step guarantees that all reachable objects are marked as reached.
