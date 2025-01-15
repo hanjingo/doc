@@ -13,7 +13,7 @@ Ten Principles of Economics:
 7. Governments Can Sometimes Improve Market Outcomes.
 8. A country's Standard of Living Depends on Its Ability to Produce Goods and Services.
 9. Price Rise When the Government Prints Too Much Money.
-10. Society Faces a Short-Run Tradeoff between Inflation and Unemployment.
+10. Society Faces a Short-Run Tradeoff Between Inflation and Unemployment.
 
 
 

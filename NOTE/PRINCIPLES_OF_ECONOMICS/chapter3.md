@@ -19,7 +19,7 @@ Trade can benefit everyone in society because it allows people to specialize in 
 ## Summary
 
 - Each person consumes goods and services produced by many other people both in our country and around the world. Interdependence and trade are desirable because they allow everyone to enjoy a greater quantity and variety of goods and services.
-- There are two ways to compare the ablility of two people in porducing a good. The person who can produce the good with the smaller quantity of inputs is said to have an absolute advantage in producing the good. The person who has the smaller opportunity cost of producing the good is said to have a comparative advantage. The gains from trade are based on comparative advanta absolute advantage.
-- Trade makes everyone better off because it all people to specialize in those activities in which they hava a comparative advantage.
+- There are two ways to compare the ability of two people to produce a good. The person who can produce the good with the smaller quantity of inputs is said to have an absolute advantage in producing the good. The person who has the smaller opportunity cost of producing the good is said to have a comparative advantage. The gains from trade are based on comparative advantage and absolute advantage.
+- Trade makes everyone better off because it all people to specialize in those activities in which they have a comparative advantage.
 - The principle of comparative advantage applies to countries as well as to people. Economists use the principle of comparative advantage to advocate free trade among countries.
 
