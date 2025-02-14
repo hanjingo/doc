@@ -26,7 +26,7 @@
 
    - 最常见的是形容词，名词（短语）做表语；例：He looks unhappy.
 
-   - 也可以用介词短语做表语；例：Beauty is in the eys of the beholder.
+   - 也可以用介词短语做表语；例：Beauty is in the eyes of the beholder.
 
    - 副词不能用作表语；例：~~He looks happily~~.
 
@@ -42,7 +42,7 @@
 
      3. 常见的表示主语保持某种状态的：continue, remain, stay, keep, hold, rest, prove.
 
-        例：The weather continued fine for deveral days.
+        例：The weather continued fine for several days.
 
      4. 常见的近似于不及物动词的系动词：sit, act, arrive, blush, marry, die, be, born.
 
@@ -95,7 +95,7 @@
   | 肯定句                     | 否定句                         |
   | -------------------------- | ------------------------------ |
   | He is a teacher.           | He is not a teacher.           |
-  | I can swim.                | I cannot swim.                 |
+  | I can swim.                | I can not swim.                |
   | He will come to the party. | He will not come to the party. |
 
 - 谓语动词是实义动词.
@@ -145,9 +145,9 @@
 | ---------------------- | ------------------------------------------------------------ |
 | Who                    | Who can sing in English?<br>Who did you see at the party last night? |
 | What                   | What do you like?<br>What are you doing?<br>What would you like to do tomorrow? |
-| When                   | When are you born?                                           |
+| When                   | When were you born?                                          |
 | Where                  | Where does he live?                                          |
-| How                    | How deos he go to school?<br>How old are you?<br>How often do you call your parents?<br>How many times a week do you go shopping? |
+| How                    | How does he go to school?<br>How old are you?<br>How often do you call your parents?<br>How many times a week do you go shopping? |
 | Why                    | Why do you often study at the library?                       |
 
 | 与名词连用的疑问 | 例子                                 |
@@ -202,7 +202,7 @@ how结构主要有三种：
 
 2. How + 形容词 + a(n\2) + 可数名词单数 + 主谓部分 + !
 
-   例：How lovely a by he is!
+   例：How lovely a boy he is!
 
 3. How + 主谓部分(实义动词作谓语) + !
 
@@ -230,15 +230,15 @@ how结构主要有三种：
     | It is + 过去分词 + that从句                                  | - It's reported that...<br>- It's believed that...<br>- It is generally thought that...<br>- It should be noted that...<br>- It has been found that...<br>- It must be pointed out that... |
     | ------------------------------------------------------------ | ------------------------------------------------------------ |
     | It is + 形容词 + that从句                                    | - It is clear that...<br>- It is possible that...<br>- It is likely that...<br>- It is natural that...<br>- It is certain that...<br>- It is strange that...<br>- It is fortunate that...<br>- It is necessary that... |
-    | It is + 名词短语 + that从句                                  | - It is a pity that...<br>- It is a fact that...<br>- It is good news that...<br>- It is a good thing that...<br>- It is no wonder that....<br>- It is a shame that...<br>- It is an honor that...<br>- It is common knowledge that...<br>- It is my belief that...<br>- It is a miracle that... |
-    | It + 不及物动词或其短语 + that从句（不及物动词或其短语可以是seem，appear，turn out, come about等） | - It seems that<br>- It follows that<br>- It happens that<br>- It turns out that<br>- It comes about that |
-    | 其他结构                                                     | - It dawns upon/on sb. that...<br>- It occurs to sb.that...<br>- It makes no difference that...<br>- It doesn't need to be bothered that...<br>- It is of little consequence that... |
+    | It is + 名词短语 + that从句                                  | - It is a pity that...<br>- It is a fact that...<br>- It is good news that...<br>- It is a good thing that...<br>- It is no wonder that...<br>- It is a shame that...<br>- It is an honor that...<br>- It is common knowledge that...<br>- It is my belief that...<br>- It is a miracle that... |
+    | It + 不及物动词或其短语 + that从句（不及物动词或其短语可以是seem，appear，turn out, come about等） | - It seems that...<br>- It follows that...<br>- It happens that...<br>- It turns out that...<br>- It comes about that... |
+    | 其他结构                                                     | - It dawns upon/on sb. that...<br>- It occurs to sb that...<br>- It makes no difference that...<br>- It doesn't need to be bothered that...<br>- It is of little consequence that... |
 
     例：
 
     Englis is difficult.
 
-    It is obvios that the doesn't understand English.
+    It is obvious that they don't understand English.
 
   - 宾语从句
 
@@ -317,7 +317,7 @@ how结构主要有三种：
 
    - that引导的宾语从句简化：宾语从句的简化较复杂，可转换成不定式或动名词，与主语谓语动词的用法密切相关；
 
-     例：I hope that i can dirve to work in my own car.
+     例：I hope that I can dirve to work in my own car.
 
 2. 名词从句与不定式
 
@@ -498,13 +498,13 @@ The farmer used wood to build a house to store grains in.
 
    如果定语从句中没有be动词的形式，我们则可把从句的主语（即关系代词）省去并且把从句的动词变成现在分词-ing形式
 
-   例：They live in a room that faces the south <--> They live in a room facing the south.
+   例：They live in a room that faces the south. <--> They live in a room facing the south.
 
 3. 用不定式替换定语从句
 
    英文中规定， **被the only，the last，the next，序数词，最高级形容词修饰的名词，其后所接的定语从句往往要用不定式来替换。**
 
-   例：He is the only one that understands me <--> He is the only one to understand me.
+   例：He is the only one that understands me. <--> He is the only one to understand me.
 
 #### 高级定语从句
 
@@ -516,13 +516,13 @@ The farmer used wood to build a house to store grains in.
 
 2. 带有插入语的定语从句
 
-   例：He ran all the way from the station, which i though was incredible.
+   例：He ran all the way from the station, which i thought was incredible.
 
 3. 并列定语从句
 
 4. 双层定语从句
 
-   He is the only person that we know who speaks so many foreign languages.
+   例：He is the only person that we know who speaks so many foreign languages.
 
 #### 状语从句
 
@@ -565,7 +565,7 @@ The farmer used wood to build a house to store grains in.
 
    如果状语从句中没有be动词的形式，我们则可以把从句主语省去并且把动词变成现在分词-ing形式。
 
-   例：Since I came to Beijing, i have made many new friends <--> Since coming to Beijing, i have made many new friends.
+   例：Since I came to Beijing, i have made many new friends. <--> Since coming to Beijing, i have made many new friends.
 
 #### 时间状语从句
 
@@ -586,9 +586,9 @@ The farmer used wood to build a house to store grains in.
    | 例句                                                         | 主从时态                                  | 用法解释                                                     |
    | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
    | I'll speak to him when he arrives.<br>I'll tell him about it when he comes back. | 主句一般将来时+从句一般现在时             | 时间状语从句中要用一般现在时表示将来。                       |
-   | I'll give you a call when i have finished the work<br>I'll go when i have had my dinner | 主句一般将来时+从句现在完成时             |                                                              |
-   | I started my dinner when he left/had left.<br>He left when i got/had got there | 主句一般过去时+从句一般过去时或过去完成时 | 若主从句都用一般过去时，则表示从句动作先发生。所以，从句还可以用过去完成时。 |
-   | I had started my dinner when he left.<br>He had already left when i got there | 主句过去完成时+从句一般过去时             |                                                              |
+   | I'll give you a call when i have finished the work.<br>I'll go when i have had my dinner. | 主句一般将来时+从句现在完成时             |                                                              |
+   | I started my dinner when he left/had left.<br>He left when i got/had got there. | 主句一般过去时+从句一般过去时或过去完成时 | 若主从句都用一般过去时，则表示从句动作先发生。所以，从句还可以用过去完成时。 |
+   | I had started my dinner when he left.<br>He had already left when i got there. | 主句过去完成时+从句一般过去时             |                                                              |
 
 3. while相当于`during that time`，表示某一时间段内发生的动作。因此，从句谓语通常只用延续性动词；例：The phone rang while i was taking my bath.
 
@@ -604,7 +604,7 @@ The farmer used wood to build a house to store grains in.
 
    by the time与两种完成时搭配：
 
-   | By the time they **arrived**, we **had already** left       | 从句中arrived表示过去动作，对应的主句用过去完成时  |
+   | By the time they **arrived**, we **had already** left.      | 从句中arrived表示过去动作，对应的主句用过去完成时  |
    | ----------------------------------------------------------- | -------------------------------------------------- |
    | By the time they **arrive**, we **will have already left**. | 从句中arrive表示将来动作，对应的主句用将来完成时。 |
 
@@ -613,7 +613,7 @@ The farmer used wood to build a house to store grains in.
 地点状语从句用法：
 
 1. 通常由where引导；例：Stay where you are.
-2. 也可由whereever, anywhere和everywhere引导；例：whereever he happens to be.
+2. 也可由whereever, anywhere和everywhere引导；例：Wherever he happens to be.
 3. 有时含有条件意味；例：Where there is a will, there is a way.
 
 #### 原因状语从句
@@ -939,7 +939,7 @@ To make a long story short, he is in hospital now.
 
    had better, would rather, would sooner, would just as soon, might as well, cannot but, cannot choose but, cannot help but.
 
-   例：I cannot but admire his courage.
+   例：I can not but admire his courage.
 
 3. 在rather than, other than, than后
 
@@ -3294,7 +3294,7 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
 4. 表示"最近几世纪/年/月以来..."：for the past few years, over the past few years, during the last three months, for the last few centuries, through centuries, throughout history
 
-   例：Throughout history man has had to accept the fact that all living things must die, for the very nature of life inludes death.
+   例：Throughout history, man has had to accept the fact that all living things must die, for the very nature of life includes death.
 
 现在完成时在表示发生在过去但与现在仍有联系的动作或状态时的使用：
 
@@ -3318,7 +3318,7 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
 1. This/That/It is + 序数词 + 名词 + that + 现在完成时
 
-   例：It is the third tiem that i've come to Beijing.
+   例：It is the third time that I've come to Beijing.
 
 2. This/That/It is + 最高级/only修饰的名词 + 现在完成时
 
@@ -3444,7 +3444,7 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
 - 强调在过去的某一时刻之前一直在持续的一项活动，且该活动可能仍将继续持续下去
 
-  例：When i arrived in Inner Mongolia, it had been snowin for half a month.
+  例：When I arrived in Inner Mongolia, it had been snowing for half a month.
 
 - 强调在过去的某一时刻之前一直在持续的一项活动，活动持续到过去这一时刻为止，或者是在这一时刻之前刚刚结束
 
@@ -3462,7 +3462,7 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
 - 强调在将来的某一时刻之前一直在持续的一项活动
 
-  例：I,m retiring this fall. By then i'll have been teaching for 30 years.
+  例：I'm retiring this fall. By then i'll have been teaching for 30 years.
 
 - 表示在将来某个时刻之前经常重复的动作
 
@@ -3525,7 +3525,7 @@ each和every后面都只能接单数可数名词，若其所修饰限定的名�
 
 1. 名词+及物动词的现在分词
 
-   例：English-speaking contries == the people in these countries speak English.
+   例：English-speaking countries == the people in these countries speak English.
 
 2. 名词+不及物动词的现在分词
 

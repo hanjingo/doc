@@ -1,17 +1,18 @@
-# 链表
+# Linked List
 
 [TOC]
 
 
 
+A linked list is a data structure in which the objects are arranged in a linear order.
 
-## 实现
+## Implement
 
-### 数据结构
+![doubly_linked_list](res/doubly_linked_list.png)
 
-![link_list_struct](res/link_list_struct.png)
+![empty_doubly_linked_list](res/empty_doubly_linked_list.png)
 
-*具有表头节点和尾节点的双向链表*
+### Structure
 
 ```c++
 template <typename Object>
@@ -128,11 +129,9 @@ private:
 };
 ```
 
-### 插入
+### Insert
 
 ![link_list_insert](res/link_list_insert.png)
-
-*将新节点插入双向链表*
 
 ```c++
 iterator insert(iterator itr, const Object& x) 
@@ -143,11 +142,9 @@ iterator insert(iterator itr, const Object& x)
 }
 ```
 
-### 删除
+### Delete
 
 ![link_list_delete](res/link_list_delete.png)
-
-*从双向链表中删除指定的节点*
 
 ```c++
 iterator erase(iterator itr)
@@ -173,6 +170,6 @@ iterator erase(iterator start, iterator end)
 
 
 
-## 参考
+## Reference
 
-[1] [美]Mark Allen Weiss.数据结构与算法分析-C++描述.3ED
+[1] Thomas H.Cormen, Charles E.Leiserson, Ronald L. Rivest, Clifford Stein . Introduction to Algorithms . 3ED

@@ -1,53 +1,6 @@
 # STL
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [智能指针](#智能指针)
-    - [shared_ptr](#shared_ptr)
-    - [weak_ptr](#weak_ptr)
-* [容器](#容器)
-    - [string](#string)
-    - [array](#array)
-    - [vector](#vector)
-    - [list](#list)
-    - [deque](#deque)
-    - [set](#set)
-    - [map](#map)
-    - [stack](#stack)
-    - [queue](#queue)
-    - [priority queue](#priority-queue)
-* [算法](#算法)
-    - [生成/填充](#生成填充)
-    - [排序](#排序)
-    - [合并](#合并)
-    - [搜索](#搜索)
-    - [分区](#分区)
-    - [比较](#比较)
-    - [复制](#复制)
-    - [交换/反转/删除/替换/旋转/移动/转换/去重](#交换反转删除替换旋转移动转换去重)
-    - [堆操作](#堆操作)
-    - [数值计算](#数值计算)
-    - [函数对象](#函数对象)
-    - [其它](#其它)
-* [I/O流](#io流)
-    - [ios_base](#ios_base)
-    - [basic_ios](#basic_ios)
-    - [istream](#istream)
-    - [ostream](#ostream)
-    - [ifstream](#ifstream)
-    - [ofstream](#ofstream)
-* [时间](#时间)
-    - [duration](#duration)
-    - [time_point](#time_point)
-* [其它](#其它-1)
-    - [function,bind和ref](#functionbind和ref)
-    - [optional](#optional)
-    - [&&和move](#和move)
-* [并发编程](#并发编程)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

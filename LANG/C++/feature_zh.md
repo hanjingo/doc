@@ -1,56 +1,6 @@
 # C++特性
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [new](#new)
-    - [new operator](#new-operator)
-    - [operator new](#operator-new)
-    - [placement new](#placement-new)
-* [explicit](#explicit)
-    - [显示和隐式声明](#显示和隐式声明)
-    - [注意事项](#注意事项)
-* [const](#const)
-    - [最基本的用法](#最基本的用法)
-    - [注意事项](#注意事项-1)
-* [volatile](#volatile)
-    - [多线程下的volatile](#多线程下的volatile)
-    - [注意事项](#注意事项-2)
-* [virtual](#virtual)
-    - [虚函数](#虚函数)
-    - [纯虚函数](#纯虚函数)
-    - [抽象类](#抽象类)
-    - [注意事项](#注意事项-3)
-* [static](#static)
-    - [作用](#作用)
-    - [注意事项](#注意事项-4)
-* [namespace](#namespace)
-    - [用法](#用法)
-    - [注意事项](#注意事项-5)
-* [union](#union)
-* [C++指针](#c指针)
-    - [常量指针](#常量指针)
-    - [指针常量](#指针常量)
-    - [指向常量的指针常量](#指向常量的指针常量)
-    - [指针与引用的区别](#指针与引用的区别)
-* [lambda](#lambda)
-    - [值捕获](#值捕获)
-    - [引用捕获](#引用捕获)
-    - [隐式捕获](#隐式捕获)
-    - [混合方式](#混合方式)
-    - [mutable](#mutable)
-    - [形参限制](#形参限制)
-* [list-initialization](#list-initialization)
-    - [初始化顺序](#初始化顺序)
-* [override](#override)
-* [final](#final)
-* [=default和=delete](#default和delete)
-* [pragma](#pragma)
-* [decltype](#decltype)
-* [mutable](#mutable-1)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

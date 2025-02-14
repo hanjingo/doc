@@ -290,7 +290,14 @@ NOTE:
 - for ... in ...
 
   ```rust
+  	let a = [10, 20, 30, 40, 50]
+  	for elem in a.iter() { // 10 20 30 40 50
+    	println!("elem={}", elem);  
+  	}
   
+  	for elem in (1..4).rev() { // 1 2 3 4
+    	println!("{}", elem);  
+  	} 
   ```
 
 NOTE:
@@ -298,6 +305,32 @@ NOTE:
 1. Rust will not automatically try to convert non-Boolean types to a Boolean. You must be explicit and always provide `if` with a Boolean as its condition.
 
 ### Ownership And Lifespan
+
+Rust use this rule to allocate memory: memory is managed through a system of ownership with a set of rules that the compiler checks at compile time. None of the ownership features slow down your program while it's running.
+
+Ownership Rules:
+
+- Each value in Rust has a variable that's called its `owner`.
+- There can be only one owner at a time.
+- When the owner goes out of scope, the value will be dropped.
+
+```rust
+{ // s is not valid here; it's not yet declared
+	let s = "hello"; // s is valid from this point forward
+} // this scope is now over, and s is no longer valid
+
+let s1 = String::from("hello");
+let s2 = s1; // shallow copy
+println!("{s1}, world"); // incorrect! the pointer of string has moved to s2
+
+let s1 = String::from("hello");
+let s2 = s1.clone(); // deep copy
+println!("s1={s1}, s2={s2}");
+```
+
+NOTE:
+
+1. Rust will never automatically create "deep" copies of your data. Therefore, any `automatic` copying can be assumed to be inexpensive in terms of runtimes performance.
 
 ### Enums
 

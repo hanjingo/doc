@@ -10,6 +10,12 @@
 
 ## [Algorithm](ALGO/README.md)
 
+- [Big O Notation](ALGO/big_o_notation.md)
+- [Hash](ALGO/hash.md)
+- [Linked List](ALGO/link_list.md)
+- [Queue](ALGO/queue.md)
+- [Sort Algorithm Summary](ALGO/sort.md)
+
 ---
 
 ## [Bug](BUG/README.md)
@@ -35,7 +41,9 @@
 
 ### [C++](LANG/C++/README.md)
 
+- [C++ Best Practice](LANG/C++/best_practice.md)
 - [C++ Feature](LANG/C++/feature.md)
+- [C++ STL](LANG/C++/stl.md)
 
 ### [Lua](LANG/LUA/README.md)
 
@@ -72,3 +80,5 @@
 ---
 
 ## [Project](PROJ/README.md)
+
+- [ROS](PROJ/ROS/README.md)

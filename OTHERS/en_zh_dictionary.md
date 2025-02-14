@@ -2359,6 +2359,8 @@ bilingual `/ˌbaɪ'lɪŋɡwəl/` adj. 双语的
 
 > DRV: bilingualism `/baɪ'lɪŋgwəlɪzəm/` n. 习用两种语言；能用两种语言
 
+billboard `/ˈbɪlbɔːd/` n. <主美>广告牌
+
 billiard `/'bɪljəd/` adj. 撞球用的；台球的; n. 连撞两球所得的分数
 
 > DRV: billiards `/'bɪljədz/` n. 台球,桌球戏，弹子球
@@ -6872,6 +6874,8 @@ discard `/dɪs'kɑːd/` vt. 丢弃；抛弃；vi. 丢牌；n. 丢牌；废牌
 discern `/dɪˈsɜːn/` v. 辨别；看出；察觉
 
 > DRV: discernible `/dɪ'sɜːnəbəl/` adj. 可辨别的
+>
+> DRV: discernment `/dɪ'sɜːnm(ə)nt/` n. <褒>识别能力；洞察力；敏锐，精明
 
 discharge `/dɪs'tʃɑːdʒ/` v. 排出；释放；解雇；放电；解除；清偿债务；n. 卸货；释放；发射；放电；准许离开；排出物
 
@@ -10869,6 +10873,8 @@ gunpowder `/'ɡʌnpaʊdə(r)/` n. 火药
 
 gurgle `/'gɜːg(ə)l/` n. 咯咯声；汩汩声; vi. 作汩汩声；作咯咯声; vt. 用咯咯声表示
 
+guru `/'gʊruː/` n. (个人的)宗教老师(或指导),(受下属崇敬的)领袖,头头
+
 gust `/ɡʌst/` n. 突然一阵；n. 风味；vi. 猛吹
 
 gut `/ɡʌt/` n. 内脏；肠子；羊肠线；胆量；勇气；vt. 取出内脏；摧毁（内部）；adj. 本能的；（问题等）根本的
@@ -12273,6 +12279,8 @@ incognito `/ˌɪnkɒg'niːtəʊ/` adj. 微行的；改名的；隐名埋姓的; 
 
 incoherent `/ˌɪnkəʊ'hɪərənt/` adj. 不连贯的；语无伦次的
 
+incomparable `/ɪn'kɒmp(ə)rəb(ə)l/` adj. 无双的; 无敌的,无比的
+
 incompatible `/ˌɪnkəm'pætəbl/` adj. 不相容的；不能并存的；矛盾的
 
 incompetent `/ɪnˈkɒmpɪtənt/` adj. 无能力的, 不称职的, 不胜任的
@@ -12682,6 +12690,10 @@ insane `/ɪn'seɪn/` adj. 疯狂的；精神错乱的；荒唐的
 > DRV: insanity `/ɪnˈsænəti/` n. 疯狂；愚顽；精神病；精神错乱
 
 insatiable `/ɪnˈseɪʃəbl/` adj. 不知足的；贪得无厌的
+
+inscribe `/ɪnˈskraɪb/` vt. 题写；题献；铭记；雕
+
+> DRV: inscription `/ɪn'skrɪpʃ(ə)n/` n. (作者)题词, 献词
 
 inscrutable `/ɪnˈskruːtəbl/` adj. 不可理解的;谜一样的
 
@@ -14222,6 +14234,8 @@ licensure `/'laɪsənʃʊə/` n. 许可证的发给
 licentious `/laɪ'senʃəs/` adj. 放荡的；放肆的
 
 lick `/lɪk/` vt. 舔；卷过；鞭打; vi. 舔；轻轻拍打; n. 舔；打；少许
+
+lid `/lɪd/` n. 盖, 盖子
 
 lie `/laɪ/` v. 躺下；位于；在于；平放；存在；延伸；说谎；n. 谎言
 
@@ -17418,6 +17432,8 @@ par `/pɑː(r)/` n. 同等；等位；常态；票面价值；[体]标准杆数�
 parable `/ˈpærəbl/` n. 寓言，比喻；[古]隐晦或谜般的格言
 
 parabolic `/ˌpærə'bɒlɪk/` adj. 抛物线的；比喻的；寓言似的
+
+paracetamol `/ˌpærə'siːtəmɒl/` n. 扑热息痛
 
 parachute `/ˈpærəʃuːt/` n. 降落伞；缓降物；[动]翅膜；v. 跳伞；用降落伞空投
 
@@ -21638,6 +21654,8 @@ scope `/skəʊp/` n. 机会；范围；眼界；观看的仪器；vt. 仔细研�
 scoping `/s'kəʊpɪŋ/` n.（计算机）辖域
 
 scorch `/skɔːtʃ/` v. （使）烧焦；变焦；（使）枯萎；n. 烧焦
+
+scorer `/ˈskɔ:rə/` n. （竞赛等的）记分员；记录员；得分者；刻划痕迹的人
 
 scoring `/'skɔːrɪŋ/` n. 得分；刻痕；划痕
 

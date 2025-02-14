@@ -1,14 +1,8 @@
 # 树
 
+[TOC]
 
-<!-- vim-markdown-toc GFM -->
 
-* [遍历](#遍历)
-    - [DFS](#dfs)
-    - [BFS](#bfs)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
 
 ## 遍历
 

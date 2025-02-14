@@ -1,15 +1,8 @@
 # HASH算法
 
-<!-- vim-markdown-toc GFM -->
+[TOC]
 
-* [HASH函数](#hash函数)
-    - [示例](#示例)
-* [HASH碰撞](#hash碰撞)
-    - [线性探测](#线性探测)
-    - [二次探测](#二次探测)
-    - [分离链接法](#分离链接法)
 
-<!-- vim-markdown-toc -->
 
 
 ## HASH函数
