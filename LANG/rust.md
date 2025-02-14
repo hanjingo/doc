@@ -20,7 +20,7 @@
   let mut var = ...;
   ```
 
-NOTE: 
+**NOTE:** 
 
 1. We can **shadow** a variable by using the same variable's name and repeating the use of the `let` keyword as follows:
 
@@ -120,7 +120,7 @@ A scalar type represents a single value. Rust has four primary scalar types:
          let arg3 = a[idx]; // compiles successfully. Buf if idx >= 5, panic!
      ```
 
-NOTE:
+**NOTE:**
 
 1. Rust is a statically typed language when we convert a type to another type, we must add a type annotation; for example:
 
@@ -217,7 +217,7 @@ NOTE:
 std::io::stdin().read_line(&mut val).expect("Fail to read line");
 ```
 
-NOTE:
+**NOTE:**
 
 1. Rust doesn't care where you define your functions, only that they're defined somewhere in a scope that can be seen by the caller.
 2. Rust did not support auto return value.
@@ -300,7 +300,7 @@ NOTE:
   	} 
   ```
 
-NOTE:
+**NOTE:**
 
 1. Rust will not automatically try to convert non-Boolean types to a Boolean. You must be explicit and always provide `if` with a Boolean as its condition.
 
@@ -314,25 +314,317 @@ Ownership Rules:
 - There can be only one owner at a time.
 - When the owner goes out of scope, the value will be dropped.
 
+Ownership example:
+
 ```rust
-{ // s is not valid here; it's not yet declared
-	let s = "hello"; // s is valid from this point forward
-} // this scope is now over, and s is no longer valid
+fn main() {
+    fn hello() { // s is not valid here; it's not yet declared
+        let s = "hello"; // s is valid from this point forward
+    } // this scope is now over, and s is no longer valid
 
-let s1 = String::from("hello");
-let s2 = s1; // shallow copy
-println!("{s1}, world"); // incorrect! the pointer of string has moved to s2
+    let s1 = String::from("hello");
+    let s2 = s1; // shallow copy
+    println!("{s1}, s2={s2}"); // incorrect! the pointer of string has moved to s2
 
-let s1 = String::from("hello");
-let s2 = s1.clone(); // deep copy
-println!("s1={s1}, s2={s2}");
+    let s1 = String::from("hello");
+    let s2 = s1.clone(); // deep copy
+    println!("s1={s1}, s2={s2}");
+
+    let x = 5; 
+    let y = x;
+    println!("x={x}, y={y}");
+
+    fn takes_ownership(arg: String) { // arg comes into scope
+        println!("{arg}");
+    } // Here, args goes out of scope and `drop` is called. The backing memory is freed.
+    let s = String::from("hello");
+    takes_ownership(s);
+    println!("{s}"); // incorrect, value borrowed here after move
+
+    fn makes_copy(arg: i32) { // arg comes into scop
+        println!("{arg}");
+    } // Here, arg goes out of scope. Nothing special happens.
+    let x = 5;
+    makes_copy(x);
+
+    fn gives_ownership() -> String { // will move its return value into the function that calls it
+        let str = String::from("yours"); // str comes into scope
+        str // str is returned and moves out to the calling function
+    }
+    let s1 = gives_ownership();
+
+    fn takes_and_gives_back(arg: String) -> String { // arg comes into scope
+        arg // arg is returned and moves out to the calling function
+    }
+    let s2 = String::from("hello");
+    let s3 = takes_and_gives_back(s2); // s2 is moved into takes_and_gives_back, which also moves its return value into s3
+  
+    fn change(s: &String) { // s is a reference to a String
+       s.push_str(", world"); // incorrect! `s` is a `&` reference, so the data it refers to cannot be borrowed as mutable
+  	} // Here, s goes out of scope. But because it does not have ownership of what it refers to, it is not dropped.
+  	let s4 = String::from("hello");
+  	change(&s4); // borrowing from s4
+  	println!("s4={s4}");
+  
+  	fn change_mut(s: &mut String) {
+      s.push_str(", world");
+  	}
+    let mut s5 = String::from("hello");
+  	change_mut(&mut s5);
+  	println!("s5={s5}");
+
+    let mut s6 = String::from("hello");
+    let r1 = &s6;
+    let r2 = &s6; 
+    let r3 = &mut s6; // incorrect! We cannot have a mutable reference while we have an immutable one to the same value.
+    println!("{}, {}, and {}", r1, r2, r3); 
+
+    let mut s7 = String::from("hello");
+    let r1 = &s7; // ok
+    let r2 = &s7; // ok
+	  println!("{r1}, {r2}"); 
+	// variables r1 and r2 will not be used after this point.
+
+	let r3 = &mut s7; // ok
+	println!("{r3}");
+
+    fn dangle() -> &String { // incorrect! this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+    	let s = String::from("hello");
+    	&s // returns a reference to data owned by the current function
+    } // Here, s goes out of scope, and is dropped. Its memory goes away; Danger!
+
+    let s8 = String::from("hello");
+    println!("{}", &s8[0..2]); 					// he
+    println!("{}", &s8[..2]);  					// he
+    println!("{}", &s8[3..s8.len()]);   // lo
+    println!("{}", &s8[3..]);           // lo
+    println!("{}", &s8[0..s8.len()]);		// hello
+    println!("{}", &s8[..]);						// hello
+  	fn find_word(arg: &String) -> &str {
+  		&arg[0..2]
+  	}
+  	let ret = find_word(&s8);
+  	s8.clear(); // incorrect! ret mutable borrow from s8. Rust disallows the mutable reference in `clear`.
+  	println!("{ret}");
+}
 ```
 
-NOTE:
+**NOTE:**
 
 1. Rust will never automatically create "deep" copies of your data. Therefore, any `automatic` copying can be assumed to be inexpensive in terms of runtimes performance.
 
+2. Any group of simple scalar values can implement `Copy`, and nothing that requires allocation or is some form of resource can implement `Copy`. Here are some of the types that implement `Copy`:
+   - All the integer types, such as `u32`.
+   - The Boolean type, `bool`, with values `true` and `false`.
+   - All the floating-point types, such as `f64`.
+   - The character type, `char`.
+   - Tuples, if they only contain types that also implement `Copy`. For example, `(i32, i32)` implements `Copy`, but `(i32, String)` does not.
+
+3. The ownership of a variable follows the same pattern every time: assigning a value to another variable moves it. When a variable that includes data on the heap goes out of scope, the value will be cleaned up by `drop` unless ownership of the data has been moved to another variable.
+
+4. We're **not allowed** to modify something we have a reference to.
+
+5. At any given time, you can have **either one** mutable reference **or any** number of immutable references. (see NOTE 6, 8).
+
+6. Mutable references have one big restriction: if you have a mutable reference to a value, you can have **no other references** to that value. For example:
+
+   ```rust
+   let mut s = String::from("hello");
+   let r1 = &mut s;
+   let r2 = &mut s; // incorrect! cannot borrow `s` as mutable more than once at a time
+   println!("r1={r1}, r2={r2}");
+   ```
+
+7. `Data races` cause undefined behavior and can be difficult to diagnose and fix when you're trying to track them down at runtime; Rust prevents this problem by refusing to compile code with data races! A `data race` is similar to a race condition and happens when these three behaviors occur:
+
+   - Two ro more pointers access the same data at the same time.
+   - At least one of the pointers is being used to write to the data.
+   - There's not mechanism being used to synchronize access to the data.
+
+8. We cannot have a mutable reference while we have an immutable one to the same value. For example:
+
+   ```rust
+       let mut s6 = String::from("hello");
+       let r1 = &s6; // ok
+       let r2 = &s6; // ok
+       let r3 = &mut s6; // incorrect!
+   ```
+
+9. A reference's scope starts from where it is introduced and continues through the last time that reference is used. For example:
+
+   ```rust
+       let mut s6 = String::from("hello");
+       let r1 = &s6; // ok
+       let r2 = &s6; // ok
+   		println!("{r1}, {r2}"); 
+   		// variables r1 and r2 will not be used after this point.
+   
+   		let r3 = &mut s6; // ok
+   		println!("{r3}");
+   ```
+
+10. In Rust, the compiler guarantees that references will never be dangling references: if you have a reference to some data, the compiler will ensure that the data will not go out of scope before the reference to the data does. For example:
+
+    ```rust
+    fn dangle() -> &String { // incorrect! this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+            let s = String::from("hello");
+            &s // returns a reference to data owned by the current function
+        } // Here, s goes out of scope, and is dropped. Its memory goes away; Danger!
+    ```
+
+11. A slice is a kind of reference, so it does not have ownership.
+
+### OOP
+
+Struct Example:
+
+```rust
+fn main() {
+    struct User {
+        active: bool,
+        username: String,
+        email: String,
+        sign_in_count: u64,
+    }
+    
+    let mut user1 = User {
+        active: true,
+        username: String::from("user1"),
+        email: String::from("def"),
+        sign_in_count: 1,
+    };
+    user1.username = String::from("new user1");
+    println!("{}", user1.username);
+    
+    fn build_user(email: String, username: String) -> User {
+        User {
+            active: true,
+            username: username,
+            email, // the field name same as parameter email, init shorthand!
+            sign_in_count: 1,
+        }
+    }
+    let user2 = build_user(String::from("hello"), String::from("user2"));
+
+    let user3 = User {
+        username: String::from("user3"),
+        ..user1 // after that, we can't use user1 fields(active, email, sign_in_count) any more, because this fields has been moved
+    };
+    println!("{}", user1.username); // ok
+    // println!("{}", user1.email);    // incorrect, value has been moved
+
+    struct Color(i32, i32, i32);
+    let black = Color(0, 0, 0);
+    struct Point(i32, i32, i32);
+    let origin = Point(0, 0, 0); // black and origin values are different types because they’re instances of different tuple structs. 
+
+    struct UnitLikeStruct;
+    let obj = UnitLikeStruct;
+
+    #[derive(Debug)] // print out debugging information
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    };
+    let rec1 = Rectangle {
+        width: 30,
+        height: 30,
+    };
+    println!("{rec1:?}");  // flat style
+    println!("{rec1:#?}"); // another style
+
+    let rec2 = Rectangle {
+        width: dbg!(3 * 10),
+        height: 30,
+    };
+    dbg!(&rec2);
+
+    impl Rectangle {
+        fn area(&self) -> u32 { // associated functions
+            self.width * self.height
+        }
+    };
+    impl Rectangle {
+        fn can_hold(&self, other: &Rectangle) -> bool { // associated functions
+            self.width > other.width && self.height > other.height
+        }
+        fn square(size: u32) -> Self {
+            Self {
+                width: size,
+                height: size,
+            }
+        }
+    };
+    let rec3 = Rectangle {
+        width: 10,
+        height: 10,
+    };
+    println!("rec3.area()={}", rec3.area());
+    println!("rec1.can_hold(rec2)={}", rec1.can_hold(&rec2));
+    println!("rec1.can_hold(rec3)={}", rec1.can_hold(&rec3));
+
+    let rec4 = Rectangle::square(1);
+    println!("{rec4:#?}");
+}
+
+```
+
+**NOTE:**
+
+1. Rust doesn't allow us to mark only certain fields as mutable.
+
+2. The struct update syntax uses `=` like an assignment; this is because it moves the data. For example:
+
+   ```rust
+   		let mut user1 = User {
+           active: true,
+           username: String::from("user1"),
+           email: String::from("def"),
+           sign_in_count: 1,
+       };
+   		let user3 = User {
+           username: String::from("user3"),
+           ..user1 // after that, we can't use user1 fields(active, email, sign_in_count) any more, because this fields has been moved
+       };
+       println!("{}", user1.username); // ok
+       println!("{}", user1.email);    // incorrect, value has been moved
+   ```
+
+3. Calling the `dbg!` macro prints to the standard error console stream (`stderr`), as opposed to `println!`, which prints to the standard output console stream (`stdout`). For example:
+
+   ```rust
+   		#[derive(Debug)] // print out debugging information
+       struct Rectangle {
+           width: u32,
+           height: u32,
+       };
+   
+       let rec2 = Rectangle {
+           width: dbg!(3 * 10),
+           height: 30,
+       };
+       dbg!(&rec2);
+   ```
+
+4. Rust doesn't have an equivalent to the `->` operator; instead, Rust has a feature called `automatic referencing and dereferencing`. Calling methods is one of the few places in Rust that has this behavior.
+
 ### Enums
+
+Enums Example:
+
+```rust
+```
+
+**NOTE:**
+
+1. Rust does not have nulls, but it does have an enum that can encode the concept of a value being present or absent. This enum is `Option<T>`, and it is defined by the stadard library as follows:
+
+   ```rust
+   enum Option<T> {
+   	None,
+     Some(T),
+   }
+   ```
 
 ### Match
 
@@ -340,9 +632,7 @@ NOTE:
 
 ### Concurrency
 
-### OOP
-
-#### Structs
+### Trait
 
 ---
 
