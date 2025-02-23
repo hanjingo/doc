@@ -1,35 +1,6 @@
 # C++环境配置
 
-<!-- vim-markdown-toc GFM -->
-
-* [第三方库](#第三方库)
-* [依赖环境](#依赖环境)
-    - [ubuntu/debain](#ubuntudebain)
-    - [macos](#macos)
-    - [windows](#windows)
-        + [vcpkg](#vcpkg)
-* [GCC](#gcc)
-    - [编译安装](#编译安装)
-* [CMAKE](#cmake)
-    - [脚本安装](#脚本安装)
-    - [编译安装](#编译安装-1)
-* [QT](#qt)
-    - [二进制安装](#二进制安装)
-    - [编译安装](#编译安装-2)
-    - [报错解决](#报错解决)
-* [QtCreator](#qtcreator)
-    - [编译安装](#编译安装-3)
-* [Clang](#clang)
-    - [命令安装](#命令安装)
-    - [编译安装](#编译安装-4)
-* [Boost](#boost)
-    - [Linux/Unix](#linuxunix)
-    - [Windows](#windows-1)
-* [folly](#folly)
-    - [使用vcpkg](#使用vcpkg)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -392,15 +363,15 @@ b2.exe stage --stagedir="../bins/lib" --with-log
 编译安装：
 
 ```sh
-export BOOST_ROOT=/usr/local/boost-1.75
-export BOOST_INCLUDE=/usr/local/boost-1.75/include
-export BOOST_LIB=/usr/local/boost-1.75/lib
-echo -e '\nexport BOOST_INCLUDE="/usr/local/boost-1.75/include"' >> ~/.bashrc
-echo -e '\nexport BOOST_LIB="/usr/local/boost-1.75/lib"' >> ~/.bashrc
+export BOOST_ROOT=/usr/local/boost/1_75_0
+export BOOST_INCLUDE=/usr/local/boost/1_75_0/include
+export BOOST_LIB=/usr/local/boost/1_75_0/lib
+echo -e '\nexport BOOST_INCLUDE="/usr/local/boost/1_75_0/include"' >> ~/.bashrc
+echo -e '\nexport BOOST_LIB="/usr/local/boost/1_75_0/lib"' >> ~/.bashrc
 sudo mkdir -p ${BOOST_ROOT}
 mkdir -p ~/tmp
 cd ~/tmp
-wget -c https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2
+wget -c https://archives.boost.io/release/1.75.0/source/boost_1_75_0.tar.bz2
 tar -xjf boost_1_75_0.tar.bz2
 cd boost_1_75_0
 ./bootstrap.sh --prefix=${BOOST_ROOT} 

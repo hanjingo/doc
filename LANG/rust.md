@@ -610,9 +610,41 @@ fn main() {
 
 ### Enums
 
+The advantages to using an enum rather than a struct:
+
+- We attach data to each variant of the enum directly, so there is no need for an extra struct.
+- Each variant can have different types and amounts of associated data.
+
 Enums Example:
 
 ```rust
+		enum IP {
+        V4(u8, u8, u8, u8),
+        V6(String),
+    }
+    let home = IP::V4(127, 0, 0, 1);
+    let loopback = IP::V6(String::from("::1"));
+
+    enum Message {
+        Quit,
+        Move{x: i32, y: i32},
+        Write(String),
+        ChangeColor(i32, i32, i32),
+    }
+    impl Message {
+        fn Call(&self) {
+        }
+    }
+    let msg1 = Message::Write(String::from("hello"));
+    msg1.Call();
+
+    let some1 = Option::Some(5); // Option prefix is not a must
+    let some2 = Some('e');
+    let some3 : Option<i32> = None;
+
+    let x: i8 = 5;
+    let y: Option<i8> = Some(5);
+    // let sum = x + y; // incorrect! the trait `Add<Option<i8>>` is not implemented for `i8`
 ```
 
 **NOTE:**
@@ -627,6 +659,46 @@ Enums Example:
    ```
 
 ### Match
+
+When the match expression executes, it compares the resulting value against the pattern of each arm, in order.
+
+Another useful feature of match arms is that they can bind to the parts of the values that match the pattern. This is how we can extract values out of enum variants.
+
+Match Example:
+
+```rust
+
+```
+
+**NOTE:**
+
+1. Matches in Rust are `exhaustive`: we must exhaust every last possibility in order for the code to be valid
+
+   ```rust
+       fn plus_one(x: Option<i32>) -> Option<i32> {
+           match x {
+               Some(i) => Some(i + 1),
+           }
+       }
+       let five = Some(5);
+       let six = plus_one(five);
+   		let none = plus_one(None); // incorrect
+   ```
+
+2. Using `if let` means less typing, less indentation, and less boilerplate code. However, you lose the exhaustive checking that match enforces.
+
+   ```rust
+       match coin {
+       	Coin::Quarter(state) => println!("{}", state),
+         _ => count += 1,
+   		}
+   		// same as
+   		if let Coin::Quarter(state) = coin {
+       	println!("{}", state);  
+   		} else {
+       	count += 1;  
+   		}
+   ```
 
 ### Error Handling
 
@@ -671,7 +743,53 @@ std::io::stdin().read_line(&mut var);
 
 ## Compile and Build
 
-### Project Heritage
+### Module system
+
+Rust has a module system that enables the reuse of code in an organized fashion.
+
+Every module definition in Rust starts with the keyword. For example:
+
+```rust
+mod network {...}
+```
+
+The rules for item visibility:
+
+1. If an item is public, it can be accessed through any of its parents modules.
+2. If an item is private, it can be accessed only by its immediate parent module and any of the parent's child modules.
+
+For example:
+
+```rust
+mod outermost {
+  pub fn f1() { println!("f1"); }
+  fn f2() { println!("f2"); }
+  mod inside {
+    pub fn f3() { println!("f3"); }
+    fn f4() { println!("f4"); }
+  }
+}
+```
+
+To bring all the items in a namespace into scope at once, we can use the `*` syntax, which is called the `glob operator`. For example:
+
+```rust
+enum TrafficLight {
+  Red,
+  Yellow,
+  Green,
+}
+use TrafficLight::*;
+fn main() {
+  let red = Red;
+  let yellow = Yellow;
+  let green = Green;
+}
+```
+
+
+
+
 
 ### Cargo cmd
 
