@@ -20,7 +20,7 @@
   let mut var = ...;
   ```
 
-**NOTE:** 
+*NOTE:* 
 
 1. We can **shadow** a variable by using the same variable's name and repeating the use of the `let` keyword as follows:
 
@@ -120,7 +120,7 @@ A scalar type represents a single value. Rust has four primary scalar types:
          let arg3 = a[idx]; // compiles successfully. Buf if idx >= 5, panic!
      ```
 
-**NOTE:**
+*NOTE:*
 
 1. Rust is a statically typed language when we convert a type to another type, we must add a type annotation; for example:
 
@@ -211,17 +211,6 @@ A scalar type represents a single value. Rust has four primary scalar types:
       let var3 = err_func(5); // incorrect! Nothing is returned
   ```
 
-#### Handling Failure
-
-```rust
-std::io::stdin().read_line(&mut val).expect("Fail to read line");
-```
-
-**NOTE:**
-
-1. Rust doesn't care where you define your functions, only that they're defined somewhere in a scope that can be seen by the caller.
-2. Rust did not support auto return value.
-
 ### Control Flow
 
 - if expressions
@@ -300,7 +289,7 @@ std::io::stdin().read_line(&mut val).expect("Fail to read line");
   	} 
   ```
 
-**NOTE:**
+*NOTE:*
 
 1. Rust will not automatically try to convert non-Boolean types to a Boolean. You must be explicit and always provide `if` with a Boolean as its condition.
 
@@ -409,7 +398,7 @@ fn main() {
 }
 ```
 
-**NOTE:**
+*NOTE:*
 
 1. Rust will never automatically create "deep" copies of your data. Therefore, any `automatic` copying can be assumed to be inexpensive in terms of runtimes performance.
 
@@ -569,7 +558,7 @@ fn main() {
 
 ```
 
-**NOTE:**
+*NOTE:*
 
 1. Rust doesn't allow us to mark only certain fields as mutable.
 
@@ -647,7 +636,7 @@ Enums Example:
     // let sum = x + y; // incorrect! the trait `Add<Option<i8>>` is not implemented for `i8`
 ```
 
-**NOTE:**
+*NOTE:*
 
 1. Rust does not have nulls, but it does have an enum that can encode the concept of a value being present or absent. This enum is `Option<T>`, and it is defined by the stadard library as follows:
 
@@ -667,10 +656,35 @@ Another useful feature of match arms is that they can bind to the parts of the v
 Match Example:
 
 ```rust
+    enum Coin {
+        Penny,
+        Nickel,
+    }
+    fn match_coin(coin: Coin) -> u8 {
+        match coin {
+            Coin::Penny => {
+                println!("match Penny");
+                1
+            }
+            Coin::Nickel => 5,
+        }
+    }
+    println!("{}", match_coin(Coin::Penny));
+    println!("{}", match_coin(Coin::Nickel));
 
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            Some(i) => Some(i + 1),
+            other => None,
+            _ => None, // same as: other => None,
+        }
+    }
+    let five = Some(5);
+    let six = plus_one(five);  // match Some(i)
+    let none = plus_one(None); // match other
 ```
 
-**NOTE:**
+*NOTE:*
 
 1. Matches in Rust are `exhaustive`: we must exhaust every last possibility in order for the code to be valid
 
@@ -702,9 +716,555 @@ Match Example:
 
 ### Error Handling
 
+#### panic
+
+```rust
+fn main() {
+    // panic!("crash");
+
+    let v = vec![1, 2, 3];
+    // v[100]; // incorrect! index out of bounds
+}
+```
+
+*NOTE:*
+
+1. To protect your program from `buffer overread`, if you try to read an element at an index that doesn't exist, Rust will stop execution and refuse to continue.
+
+#### Result
+
+```rust
+use std::fs::File;
+use std::io::ErrorKind;
+fn main() {
+  let result = File::open("hello.txt");
+  let ret = match result {
+    Ok(file) => file,
+    Err(error) => match error.kind() {
+      ErrorKind::NotFound => match File::create("hello.txt") {
+        OK(fc) => fc,
+        Err(e) => panic!("Problem creating the file: {e:?}"),
+      },
+      other_error => {
+        panic!("Problem opening the file: {other_error:?}");
+      }
+    },
+  };
+  
+  let greeting_file = File::open("hello.txt")?; // incorrect!
+}
+
+fn read_username_from_file1() -> Result<String, io::Error> {
+  let mut username = String::new();
+  File::open("hello.txt")?.read_to_string(&mut username)?;
+  Ok(username)
+}
+
+fn read_username_from_file2() -> Result<String, io::Error> {
+  fs::read_to_string("hello.txt")
+}
+```
+
+*NOTE:*
+
+1. The `?` operator can only be used in functions that have a return type of Result, because it is defined to work in the same way as the match expression. for example:
+
+   ```rust
+   use std::fs::File;
+   fn main() {
+     let f = File::open("hello.txt")?; // incorrect! the `?` operator can only be used in a function that returns `Result` or `Option`
+   }
+   ```
+
+2. It's advisable to have your panic when it's possible that your code could end up in a bad state. In this context, a `bad state` is when some assumption, guarantee, contract, or invariant has been broken, such as when invalid values, contradictory values, or missing values are passed to your code--plus one or more of the following:
+
+   - The bad state is not something that's `expected` to happen occasionally.
+   - Your code after this point needs to rely on not being in this bad state.
+   - There's not a good way to encode this information in the types you use.
+
+3. Rust doesn't care where you define your functions, only that they're defined somewhere in a scope that can be seen by the caller.
+
+4. Rust did not support auto return value.
+
+### Iterators & Closures
+
+```rust
+fn main() {
+  let list = vec![1, 2, 3];
+  println!("Before defining closure: {list:?}");
+  
+  let only_borrows = || println!("From colsure: {list:?}");
+  println!("Before calling closure: {list:?}");
+  
+  only_borrows();
+  println!("After calling closure: {list:?}");
+  
+  let itr = list.iter();
+  for val in itr {
+    println!("Got: {val}");
+  }
+}
+```
+
+### Trait & Template & Lifetime
+
+```rust
+fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+    for item in list {
+      if item > largest {
+        largest = item;
+      }
+    }
+    largest
+}
+pub trait Summary {
+  fn summarize(&self)->String;
+}
+pub struct NewsArticle {
+  pub headline: String,
+  pub location: String,
+  pub author: String,
+  pub content: String,
+}
+impl Summary for NewsArticle {
+  fn summarize(&self)->String {
+    format!("{}, by {} ({})", self.headline, self.author, self.location)
+  }
+}
+fn some_function<T, U>(t: &T, u: &U)->i32
+where
+	T: Display + Clone,
+	U: Clone + Debug,
+{
+  ...
+}
+fn main() {
+    let number_list = vec![34, 50, 25, 100, 65];
+    let result = largest(&number_list);
+    println!("the largest number is {result}");
+  
+  	let char_list = vec!['y', 'm', 'a', 'q'];
+  	let result = largest(&char_list);
+    println!("the largest char is {result}");
+}
+```
+
+*NOTE:*
+
+1. Rust accomplishes this by performing monomorphization of the code that is using generics at compile time. `Monomorphization` is the process of turning generic code into specific code by filling in the concrete types that are used when compiled.
+
+2. We can use `trait bounds` to constrain generic types to ensure the type will be limited to those that implement a particular trait and behavior:
+
+   ```rust
+   pub fn notify<T: Summary>(item1: &T, item2: &T) {...}
+   ```
+
+3. The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it's intended to reference. For example:
+
+   ```rust
+   fn main() {
+     let r;
+     {
+       let x = 5;
+       r = &x;
+     }
+     println!("r:{r}");
+   }
+   ```
+
+4. Lifetime annotations have a slightly unusual syntax: the names of lifetime parameters must start with a single quote (') and are usually all lowercase and very short, like generic types. Most people use the name `'a`. We place lifetime parameter annotations after the `&` of a reference, using a space to separate the annotation from the reference's type.
+
+5. As with generic type parameters, we need to declare genric lifetime parameters inside angle brackets between the function name and the parameter list. The constraint we want to express in this signature is that all the references in the parameters and the return value must have the same lifetime. For example:
+
+   ```rust
+   fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+     if x.len() > y.len() {
+       x
+     } else {
+       y
+     }
+   }
+   ```
+
+6. When returning a reference from a function, the lifetime parameter for the return type needs to match the lifetime parameter for one of the parameters. If the reference returned does `not` refer to one of the parameters, it must refer to a value created within this function, which would be a dangling reference because the value will go out of scope at the end of the function. For example:
+
+   ```rust
+   fn longest<'a>(x: &str, y: &str)->&'a str {
+     let result = String::from("really long string");
+     result.as_str() // incorrect! borrowed value must be valid for the lifetime 'a as defined
+   }
+   ```
+
+7. The compiler uses three rules to figure out what lifetimes references have when there aren't explicit annotations:
+
+   - The first rule is that each parameter that is a reference gets its own lifetime parameter.
+   - The second rule is if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters: `fn foo<'a>(x:&'a i32)->&'a i32`.
+   - The third rule is if there are multiple input lifetime parameters, but one of them is `&self` or `&mut` self because this is a method, the lifetime of self is assigned to all output lifetime parameters.
+
+### Smart Pointer
+
+```rust
+use crate::List::{Cons, Nil};
+use std::ops::Deref;
+
+impl<T> Deref for MyBox<T> {
+  type Target = T;
+  fn deref(&self) -> &Self::Target {
+    &self.0
+  }
+}
+struct MyBox<T>(T);
+impl<T> MyBox<T> {
+  fn new(x: T) -> MyBox<T> {
+    MyBox(x)
+  }
+}
+
+enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+
+struct CustomSmartPointer {
+  data: String,
+}
+impl Drop for CustomSmartPointer {
+  fn drop(&mut self) {
+    println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+  }
+}
+
+fn main() {
+    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+  
+  	let x = 5;
+  	let y = &x;
+  	assert_eq!(5, *y);
+  
+  	let y = Box::new(x);
+  	assert_eq!(5, *y);
+  
+  	let y = MyBox::new(x);
+  	assert_eq!(5, *y);
+  
+  	let c = CustomSmartPointer{
+    	data: String::from("some data"),  
+  	};
+  	println!("CustomSmartPointer created.");
+//  	c.drop(); // incorrect! explicit destructor calls not allowed
+  	std::mem::drop(c);
+  	println!("CustomSmartPointer dropped before the end of main.");
+}
+```
+
+*NOTE:*
+
+1. `Deref coercion` is a convenience that Rust performs on arguments to functions and methods. Deref coercion converts a reference to a type that implements `Deref` into a reference to a type that `Deref` can convert the original type into.
+
+2. Rust does deref coercion when it finds types and trait implementations in three cases:
+
+   - From `&T` to `&U` when `T: Deref<Target=U>`
+   - From `&mut T` to `&mut U` when `T: DerefMut<Target=U>`
+   - From `&mut T` to `&U` when `T: Deref<Target=U>`
+
+3. Rust doesn't let us call drop explicitly because Rust would still automatically call drop on the value at the end of main. This would be a `double free` error because Rust would be trying to clean up the same value twice.
+
+4. Preventing memory leaks entirely is not one of Rust's guarantees in the same way that disallowing data races at compile time is, meaning memory leaks are memory safe in Rust. We can see that Rust allows memory leaks by using `Rc<T>` and `RefCell<T>:` it's possible to create references where items refer to each other in a cycle. This creates memory leaks because the reference count of each item in the cycle will never reach 0, and the values will never be dropped. For example:
+
+   ```rust
+   use crate::List::{Cons, Nil};
+   use std::cell::RefCell;
+   use std::rc::Rc;
+   
+   #[derive(Debug)]
+   enum List {
+     Cons(i32, RefCell<Rc<List>>),
+     Nil,
+   }
+   impl List {
+     fn tail(&self)->Option<&RefCell<Rc<List>>> {
+       match self {
+         Cons(_, item) => Some(item),
+         Nil => None,
+       }
+     }
+   }
+   
+   fn main() {
+     let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
+     println!("a initial rc count = {}", Rc::strong_count(&a));
+     println!("a next item = {:?}", a.tail());
+     
+     let b = Rc::new(Cons(10, RefCell::new(Rc::clone(&a))));
+     println!("a rc count after b creation = {}", Rc::strong_count(&a));
+     println!("b initial rc count = {}", Rc::strong_count(&b));
+     println!("b next item = {:?}", b.tail());
+     
+     if let Some(link) = a.tail() {
+       *link.borrow_mut() = Rc::clone(&b);
+     }
+     println!("b rc count after changing a = {}", Rc::strong_count(&b));
+     println!("a rc count after changing a = {}", Rc::strong_count(&a));
+   }
+   ```
+
 ### Concurrency
 
-### Trait
+```rust
+use std::thread;
+use std::time::Duration;
+use std::sync::mpsc;
+use std::rc::Rc;
+use std::sync::{Arc, Mutex};
+use std::thread;
+fn main() {
+  // spawn + join
+  let handle = thread::spawn(||{
+    for i in 1..10 {
+      println!("hi number {i} from the spawned thread!");
+      thread::sleep(Duration::from_millis(1));
+    }
+  });
+  handle.join().unwrap();
+  for i in 1..5 {
+    println!("hi number {i} from the main thread!");
+    thread::sleep(Duration::from_millis(1));
+  }
+  
+  // channel
+  let (tx, rx) = mpsc::channel(); // mpsc: multiple producer, single consumer
+  thread::spawn(move || {
+    let vals = vec![
+      String::from("hi"),
+      String::from("from"),
+      String::from("the"),
+      String::from("thread"),
+    ];
+    for val in vals {
+      tx.send(val).unwrap();
+      thread::sleep(Duration::from_secs(1));
+    }
+  });
+  thread::spawn(move || {
+    let vals = vec![
+      String::from("more"),
+      String::from("messages"),
+      String::from("for"),
+      String::from("you"),
+    ];
+    for val in vals {
+      tx.send(val).unwrap();
+      thread::sleep(Duration::from_secs(1));
+    }
+  });
+  for received in rx {
+    println!("Got: {received}");
+  }
+  
+  // mutex
+  let counter = Arc::new(Mutex::new(0));
+  let mut handles = vec![];
+  for _ in 0..10 {
+    let counter = Arc::clone(&counter);
+    let handle = thread::spawn(move || {
+      let mut num = counter.lock().unwrap();
+      *num += 1;
+    });
+    handles.push(handle);
+  }
+  
+  for handle in handles {
+    handle.join().unwrap();
+  }
+  println!("Result: {}", *counter.lock().unwrap());
+}
+```
+
+*NOTE:*
+
+1. By adding the `move` keyword before the closure, we force the closure to take ownership of the values it's using rather than allowing Rust to infer that it should borrow the values. For example:
+
+   ```rust
+   use std::thread;
+   fn main() {
+     let v = vec![1, 2, 3];
+     let handle = thread::spawn(move || {
+       println!("Here's a vector: {:?}", v);
+     });
+     handle.join().unwrap();
+   }
+   ```
+
+2. Unfortunately, `Rc<T>` is not safe to share across threads. When `Rc<T>` manages the reference count, it adds to the count for each call to clone and subtracts from the count when each clone is dropped. But it doesn't use any concurrency primitives to make sure that changes to the count can't be interrupted by another thread.
+
+### Unsafe
+
+```rust
+extern "C" {
+  fn abs(input: i32) -> i32;
+}
+
+#[no_mangle]
+pub extern "C" fn call_from_c() {
+  println!("Just called a Rust function from C!");
+}
+
+unsafe trait Foo {}
+unsafe impl Foo for i32 {}
+
+fn add_one(x: i32) -> i32 {
+  x + 1
+}
+
+fn do_twice(f: fn(i32)->i32, arg: i32) -> i32 {
+  f(arg) + f(arg)
+}
+
+fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
+  Box::new(|x| x + 1)
+}
+
+fn main() {
+  // unsafe
+  unsafe fn dangerous() {}
+  unsafe {
+    dangerous(); // incorrect!
+  }
+  unsafe {
+    println!("Absolute value of -3 according to C:{}", abs(-3));
+  }
+  
+  // function pointer
+  let answer = do_twice(add_one, 5);
+  println!("The answer is: {answer}");
+}
+```
+
+*NOTE:*
+
+1. Different from references and smart pointers, raw pointers:
+
+   - Are allowed to ignore the borrowing rules by having both immutable and mutable pointers or multiple mutable pointers to the same location.
+   - Aren't guaranteed to point to valid memory.
+   - Are allowed to be null.
+   - Don't implement any automatic cleanup.
+
+2. We must call the dangerous function within a separate unsafe block. If we try to call dangerous without the unsafe block, we'll get an error. For example:
+
+   ```rust
+   fn main() {
+     unsafe fn dangerous() {}
+     unsafe {
+       dangerous(); // incorrect! call to unsafe function
+     }
+   }
+   ```
+
+3. You'll use default type parameters in two main ways:
+
+   - To extend a type without breaking existing code.
+   - To allow customization in specific cases most users won't need.
+
+### TEST
+
+Tests are Rust functions that verify that the non-test code is functioning in the expected manner. The bodies of test functions typically perform these three actions:
+
+1. Set up any needed data or state.
+2. Run the code you want to test.
+3. Assert the result are what you expect.
+
+```rust
+// run: cargo new adder --lib
+
+// lib.rs
+pub fn add(left: usize, right: usize) -> usize {
+    left + right
+}
+
+pub struct Guess {
+    value: i32,
+}
+impl Guess{
+  pub fn new(value: i32) -> Guess {
+    if value < 1 || value > 100 {
+      panic!("Guess value must be between 1 and 100, got {value}.");
+    }
+    Guess{value}
+  }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+      	assert_ne!(result, 1);
+    }
+
+    #[test]
+    fn greeting_contains_name() {
+        let result = "carol";
+        assert!(
+            result.contains("Carol"),
+            "Greeting did not contain name, value was `{}`",
+            result,
+        );
+    }
+  
+    #[test]
+  	#[should_panic(expected = "less than or equal to 100")]
+  	fn greater_than_100() {
+    	Guess::new(200);  
+  	}
+}
+#[derive(Debug)]
+struct Rectangle {
+  width: u32,
+  height: u32,
+}
+impl Rectangle {
+  fn can_hold(&self, other: &Rectangle) -> bool {
+    self.width > other.width && self.height > other.height
+  }
+}
+// run: cargo test
+```
+
+*NOTE:*
+
+1. When you run multiple tests, by default they run in parallel using threads. Make sure your tests don't depend on each other or on any shared state, including a shared environment, such as the current working directory or environment variables. If you don't want to run the tests in parallel or if you want more fine-grained control over the number of threads used, you can send the `--test-threads` flag and the number of threads you want to use to the test binary. For example
+
+   ```sh
+   cargo test -- --test-threads=1
+   ```
+
+2. If we want to see printed values for passing tests as well, we can disable the output capture behavior by using the `--nocapture` flag. For example:
+
+   ```sh
+   cargo test -- --nocapture
+   ```
+
+3. We can pass the name of any test function to cargo test to run only that test. For example:
+
+   ```sh
+   cargo test one_hundred
+   ```
+
+4. We can specify part of a test name, and any test whose name matches that value will be run.
+
+5. Rather than listing as arguments all tests you do want to run, you can instead annotate the time-consuming tests using the ignore attribute to exclude specific tests. For example:
+
+   ```rust
+   #[test]
+   #[ignore]
+   fn expensive_test() {...}
+   ```
+
+
 
 ---
 
@@ -712,22 +1272,163 @@ Match Example:
 
 ## Std
 
-### IO
+### Vector
 
 ```rust
-use std::io
+fn main() {
+    let v:Vec<i32> = Vec::new();
+    let v=vec![1, 2, 3];
+    let mut v = Vec::new();
+    v.push(5);
+
+    let v = vec![1, 2, 3, 4, 5];
+    let third: &i32 = &v[2];
+    println!("v[2]={third}"); // 3
+    let second: Option<&i32> = v.get(1); // 2
+    match second {
+        Some(second) => println!("the second element is {second}."),
+        None => println!("there is no second element!"),
+    }
+    //let not_exist = &v[100]; // incorrect! panic! index out of bounds
+    let not_exist: Option<&i32> = v.get(100); // not panic!
+
+    let mut v = vec![1, 2, 3];
+    let first: &i32 = &v[0];
+    // v.push(4); // incorrect! panic! cannot borrow `v` as mutable because it is also borrowed as immutable
+    for e in &mut v {
+        println!("{e}");
+    }
+
+    enum my_enum {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    };
+    let row = vec![
+        my_enum::Int(3),
+        my_enum::Text(String::from("blue")),
+        my_enum::Float(123.456),
+    ];
+}
 ```
 
-stdin()
+*NOTE:*
+
+1. The `[]` method will cause the program to panic while it references a nonexistent element.
+
+2. When the `get` method is passed an index that is outside the vector, it returns `None` without panicking.
+
+3. When the program has a valid reference, the borrow checker enforces the ownership and borrowing rules to ensure this reference and any other references to the contents of the vector remain valid. For example:
+
+   ```rust
+       let mut v = vec![1, 2, 3];
+       let first: &i32 = &v[0];
+       v.push(4); // incorrect! panic! cannot borrow `v` as mutable because it is also borrowed as immutable
+   ```
+
+4. When we need to store elements of a different type in a vector, we can define and use an enum. For example:
+
+   ```rust
+   		enum my_enum {
+           Int(i32),
+           Float(f64),
+           Text(String),
+       };
+       let row = vec![
+           my_enum::Int(3),
+           my_enum::Text(String::from("blue")),
+           my_enum::Float(123.456),
+       ];
+   ```
+
+### String
 
 ```rust
-let mut var = String::new();
-std::io::stdin().read_line(&mut var);
+fn main() {
+    let mut s = String::new();
+
+    let data = "hello world";
+    let s = data.to_string();
+    let s = "hello world".to_string();
+    let s = String::from("hello world");
+    
+    let mut s1 = String::from("c++ and ");
+    let s2 = "rust";
+    s1.push_str(s2);
+    println!("s1 = {}", s1); // c++ and rust
+
+    let s3 = String::from("hello ");
+    let s4 = String::from("world");
+    // let s5 = s3 + &s4; // incorrect! borrow of moved value: `s3`
+
+    let s6 = String::from("abc");
+    let s7 = String::from("def");
+    let s8 = String::from("123");
+    let s9 = s6 + "-" + &s7 + "-" + &s8;
+    println!("{}", s9); // abc-def-123
+
+    let s6_1 = String::from("abc");
+    let s7_1 = String::from("def");
+    let s8_1 = String::from("123");
+    let s9_1 = format!("{s6_1}:{s7_1}:{s8_1}");
+    println!("{}", s9_1); // abc:def:123
+
+    let s10 = String::from("hello");
+    // let c = s10[0]; // incorrect! string indices are ranges of `usize`
+
+    let hello = "hello";
+    let slice = &hello[0..3];
+    println!("{}", slice); // hel
+
+    for c in "hello".chars() {
+        println!("{c}");
+    }
+}
 ```
 
-### cmp
+*NOTE:*
 
+1. Strings are UTF-8 encoded, so we can include any properly encoded data in them.
 
+2. If you try to access parts of a `String` using indexing syntax in Rust, you'll get an error. For example:
+
+   ```rust
+       let s10 = String::from("hello");
+       // let c = s10[0]; // incorrect! string indices are ranges of `usize`
+   ```
+
+### Hash Map
+
+```rust
+use std::collections::HashMap;
+fn main() {
+    let mut scores = HashMap::new();
+    scores.insert(String::from("key1"), 1);
+    scores.insert(String::from("key2"), 2);
+    let key = String::from("key1");
+    let value = scores.get(&key).copied().unwrap_or(0);
+    println!("{}", value); // 1
+
+    scores.insert(String::from("key1"), 3); // 3, 2
+    scores.entry(String::from("key2")).or_insert(4); // 3, 2
+    scores.entry(String::from("key3")).or_insert(5); // 3, 2, 5
+    for (k, v) in &scores {
+        println!("{k}:{v}"); // 3,2,5
+    }
+
+    let key4 = String::from("key4");
+    let value4 = String::from("value4");
+    let mut hm = HashMap::new();
+    hm.insert(key4, value4);
+    // println!("{}", key4); // incorrect! value borrowed here after move
+}
+
+```
+
+*NOTE:*
+
+1. Each key can only have one value associated with it at a time.
+2. By default, HashMap uses a cryptographically secure hashing function that can provide resistance to Denial of Service (DoS) attacks (This is not thefastest hashing algorithm available).
 
 ---
 
@@ -786,8 +1487,6 @@ fn main() {
   let green = Green;
 }
 ```
-
-
 
 
 

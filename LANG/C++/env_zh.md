@@ -88,7 +88,7 @@ gcc -v
 ### 脚本安装
 
 ```sh
-wgets https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2-Linux-x86_64.sh
+wget https://github.com/Kitware/CMake/releases/download/v3.19.2/cmake-3.19.2-Linux-x86_64.sh
 sudo bash cmake-3.19.2-Linux-x86_64.sh --prefix=/usr/local --include-subdir --skip-license
 CMAKE_DIR="/usr/local/cmake-3.19.2-Linux-x86_64"
 export PATH=${CMAKE_DIR}/bin:$PATH
