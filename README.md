@@ -34,6 +34,7 @@
 
 - [Finance Model](ECONOMIC/finance.md)
 - [High Frequency Trading](ECONOMIC/hft.md)
+- [Ten Principles](ECONOMIC/10principles.md)
 
 ---
 
@@ -76,6 +77,7 @@
 ## [Others](OTHERS/README.md)
 
 - [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
+- [Interview](OTHERS/interview.md)
 
 ---
 

@@ -1,17 +1,6 @@
 # MDNS协议
 
-<!-- vim-markdown-toc GFM -->
-
-* [概述](#概述)
-* [MDNS协议](#mdns协议)
-        + [RR类型](#rr类型)
-    - [结构](#结构)
-* [MDNS流程](#mdns流程)
-    - [相关命令](#相关命令)
-        + [dns-sd](#dns-sd)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

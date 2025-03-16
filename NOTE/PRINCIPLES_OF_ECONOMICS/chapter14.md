@@ -88,7 +88,7 @@ At the end of this process of entry and exit, firms that remain in the market mu
 $$
 Profit = (P - ATC) \times Q.
 $$
-This equation shows that an operating firm has zero profit if and only if the price of the good equals the average total cost of producing that good. If price is above average total cost, profit is positive, which encourages new firms to enter. If price is less than average total cost, profit is negative, which encourages some firms to exit.
+This equation shows that an operating firm has zero profit if and only if the price of the good equals the average total cost of producing that good. If the price is above the average total cost, profit is positive, which encourages new firms to enter. If the price is less than the average total cost, profit is negative, which encourages some firms to exit.
 
 The process of entry and exit ends only when price and average total cost are driven to equality.
 

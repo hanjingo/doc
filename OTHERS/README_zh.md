@@ -14,7 +14,6 @@
 - [Pandoc手册](pandoc_zh.md)
 - [代理设置](proxy_zh.md)
 - [重新绑定键](rebind_key_zh.md)
-- [正则表达式](regular_expression_zh.md)
 - [优秀资源集合](resource_compile_zh.md)
 - [vim配置](vim_cfg_zh.md)
 - [vim快捷键](vim_shortcut_zh.md)

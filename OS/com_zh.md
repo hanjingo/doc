@@ -1,23 +1,6 @@
 # COM技术
 
-<!-- vim-markdown-toc GFM -->
-
-* [HRESULT和GUID](#hresult和guid)
-    - [HRESULT](#hresult)
-    - [GUID](#guid)
-        + [ProgID](#progid)
-* [创建组件](#创建组件)
-    - [IUnknown](#iunknown)
-    - [CoCreateInstance](#cocreateinstance)
-    - [CoGetClassObject](#cogetclassobject)
-* [组件注册](#组件注册)
-* [组件使用](#组件使用)
-    - [组件的装载与卸载](#组件的装载与卸载)
-    - [进程通讯](#进程通讯)
-    - [组件复用](#组件复用)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

@@ -1,11 +1,6 @@
 # 分布式存储
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

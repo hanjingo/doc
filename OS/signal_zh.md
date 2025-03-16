@@ -1,28 +1,6 @@
 # 信号
 
-<!-- vim-markdown-toc GFM -->
-
-* [信号分类](#信号分类)
-    - [UNIX系统信号](#unix系统信号)
-* [相关函数](#相关函数)
-    - [wait](#wait)
-    - [waitpid](#waitpid)
-    - [signal](#signal)
-    - [kill](#kill)
-    - [raise](#raise)
-    - [alarm](#alarm)
-    - [pause](#pause)
-    - [信号集](#信号集)
-    - [sigprocmask](#sigprocmask)
-    - [sigpending](#sigpending)
-    - [sigaction](#sigaction)
-* [信号处理](#信号处理)
-    - [信号产生](#信号产生)
-    - [信号处理](#信号处理-1)
-    - [示例](#示例)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

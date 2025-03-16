@@ -4,6 +4,8 @@
 
 
 
+![queue_model](res/queue_model.png)
+
 
 ## 参考
 

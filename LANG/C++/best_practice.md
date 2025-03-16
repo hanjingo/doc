@@ -742,9 +742,9 @@
 
 ## New C++
 
-### 1.正确使用模版类型推导
+### 1.Understand template type deduction.
 
-- 在模板型别推导过程中，具有引用型别的实参会被当成非引用型别来处理，其引用性会被忽略；
+- During template type deduction, arguments that are references are treated as non-references, i.e., their reference-ness is ignored. For example:
 
   ```c++
   template<typename T>

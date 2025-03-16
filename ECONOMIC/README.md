@@ -3,5 +3,6 @@
 # Economic
 
 - [Finance Model](finance.md)
-- [Fix Protocol](fix.md)
 - [High Frequency Trading](hft.md)
+- [Economic Terminology](terminology.md)
+- [Ten Principles](10principles.md)

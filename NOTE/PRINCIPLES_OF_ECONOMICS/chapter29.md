@@ -18,7 +18,7 @@
 
 `balanced trade`. a situation in which exports equal imports.
 
-`net foreign investment`. the purchase of foreign assets by domestic residents minust the purchase of domestic assets by foreignres.
+`net foreign investment`. the purchase of foreign assets by domestic residents minus the purchase of domestic assets by foreigners.
 
 Here, let's consider briefly some of the more important variables that influence net foreign investment:
 

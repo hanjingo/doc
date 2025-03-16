@@ -1,3 +1,5 @@
 # Finance Model
 
+[TOC]
+
 TODO

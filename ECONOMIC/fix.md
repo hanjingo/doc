@@ -1,3 +1,0 @@
-# FIX protocol
-
-TODO

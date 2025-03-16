@@ -43,7 +43,7 @@ the consumer chooses consumption of the two goods so that the marginal rate of s
 
 `income effect`. the change in consumption that results when a price change moves the consumer to a higher or lower indifference curve.
 
-`substitution effect`. the change in consumption that results when a price change moves the consumer along a give indifference curve to a point with a new marginal rate of substitution.
+`substitution effect`. the change in consumption that results when a price change moves the consumer along a given indifference curve to a point with a new marginal rate of substitution.
 
 The income effect is the change in consumption that results from the movement to a higher indifference curve. The substitution effect is the change in consumption that results from being at a point on an indifference curve with a different marginal rate of substitution.
 

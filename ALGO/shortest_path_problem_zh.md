@@ -1,11 +1,8 @@
 # 最短路径算法
 
-<!-- vim-markdown-toc GFM -->
+[TOC]
 
-* [Dijkstra算法](#dijkstra算法)
-* [参考](#参考)
 
-<!-- vim-markdown-toc -->
 
 
 ## Dijkstra算法
@@ -19,6 +16,3 @@ Dijkstra算法按阶段进行，在每个阶段，Dijkstra算法选择一个顶�
 ## 参考
 
 [1] [美]Mark Allen Weiss.数据结构与算法分析-C++描述.3ED
-
-
-

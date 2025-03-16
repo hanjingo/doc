@@ -1,13 +1,6 @@
 # 最小生成树
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [Prim算法](#prim算法)
-* [Kruskal算法](#kruskal算法)
-    - [实现](#实现)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

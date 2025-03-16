@@ -51,19 +51,19 @@ $$
 
 Here $\Delta$, the Greek letter `delta`, represents the change in a variable.
 
-Average total cost tells us the cost of a typical unit of output if total cost is divided evenly over all the units produced. Marginal cost tells us the increase in total cost that arises from producing an additional unit of output.
+Average total cost tells us the cost of a typical unit of output if the total cost is divided evenly over all the units produced. Marginal cost tells us the increase in total cost that arises from producing an additional unit of output.
 
 `efficient scale`. the quantity of output that minimizes average total cost.
 
-Whenever marginal cost is less than average total cost, average total cost is falling. Whenever marginal cost is greater than average total cost, average total cost is rising.
+Whenever the marginal cost is less than the average total cost, the average total cost is falling. Whenever the marginal cost is greater than the average total cost, the average total cost is rising.
 
-The marginal-cost curve crosses the average-total-cost curve at the efficient scale.
+The marginal cost curve crosses the average total cost curve at the efficient scale.
 
 Despite these differences from our previous example, Big Bob’s cost curves share the three properties that are most important to remember:
 
 - Marginal cost eventually rises with the quantity of output.
 - The average-total-cost curve is U-shaped.
-- The marginal-cost curve crosses the average-total-cost curve at the minimum of average total cost.
+- The marginal-cost curve crosses the average-total-cost curve at the minimum of the average total cost.
 
 `economies of scale`. the property whereby long-run average total cost falls as the quantity of output increases.
 

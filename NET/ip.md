@@ -1,5 +1,7 @@
 # The Internet Protocol
 
+[TOC]
+
 
 
 IP is the workhorse protocol of the TCP/IP protocol suite. All TCP, UDP, ICMP, and IGMP data gets transmitted as IP datagrams. IP provides a best-effort, connection-less datagram delivery service.

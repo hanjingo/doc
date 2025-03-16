@@ -83,7 +83,7 @@ There are various `concurrency-control` policies:
   - Consistency ensures that, if the database is initially consistent, the execution of the transaction (by itself) leaves the database in a consistent state.
   - Isolation ensures that concurrently executing transactions are isolated from one another, so that each has the impression that not other transaction is executing concurrently with it.
   - Durability ensures that, once a transaction has been committed, that transaction's updates do not get lost, even if there is a system failure.
-- Concurrent execution of transactions improves throughput of transactions and system utilization, and also reduces waiting time of transactions.
+- Concurrent execution of transactions improves the throughput of transactions and system utilization, and also reduces waiting time of transactions.
 - The various types of storage in a computer are volatile storage, nonvolatile storage, and stable storage. Data in volatile storage, such as in RAM, are lost when the computer crashes. Data in nonvolatile storage, such as disk, are not lost when the computer crashes, but may occasionally be lost because of failures such as disk crashes. Data in stable storage are never lost.
 - Stable storage that must be accessible online is approximated with mirrored disks, or other forms of RAID, which provide redundant data storage. Offline, or archival, stable storage may consist of multiple tape copies of data sotred in physically secure locations.
 - When several transactions execute concurrently on the database, the consistency of data may no longer be preserved. It is therefore necessary for the system to control the interaction among the concurrent transactions.

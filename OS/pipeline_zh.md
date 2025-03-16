@@ -1,21 +1,6 @@
 # 指令流水线模型
 
-<!-- vim-markdown-toc GFM -->
-
-* [性能指标](#性能指标)
-    - [吞吐率（Through Put Rate）](#吞吐率through-put-rate)
-        + [吞吐率计算公式](#吞吐率计算公式)
-        + [优化](#优化)
-    - [加速比（Speedup Ratio）](#加速比speedup-ratio)
-    - [效率（Efficiency）](#效率efficiency)
-* [流水线多发技术](#流水线多发技术)
-    - [普通流水](#普通流水)
-    - [超标量流水](#超标量流水)
-    - [超流水线技术](#超流水线技术)
-    - [超长指令字技术](#超长指令字技术)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

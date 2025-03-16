@@ -1,18 +1,10 @@
 # ARP协议
 
-<!-- vim-markdown-toc GFM -->
-
-* [ARP帧格式](#arp帧格式)
-* [ARP命令](#arp命令)
-* [ARP代理](#arp代理)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
 `ARP（Address Resolution Protocol，地址解析协议）`用于将IP地址映射为MAC地址。
-
-
 
 ## ARP帧格式
 

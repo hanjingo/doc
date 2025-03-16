@@ -57,6 +57,8 @@ insert 32 into 1, conflict with 18:
 
 ## Hash Function
 
+TODO
+
 
 
 ## Reference

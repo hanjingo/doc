@@ -9,13 +9,13 @@
 Superstars arise in markets that have two characteristics:
 
 - Every customer in the market want to enjoy the good supplied by the best producer.
-- The good is produced with a technology that make it possible for the best producer to supply every customer at low cost.
+- The good is produced with a technology that makes it possible for the best producer to supply every customer at low cost.
 
-`union`. a worker association that bargains with employers over wages and workding conditions.
+`union`. a worker association that bargains with employers over wages and working conditions.
 
 `strike`. the organized withdrawal of labor from a firm by a union.
 
-`efficiency wages`. above-equilibrium wages paid by firm in order to increase worker productivity.
+`efficiency wages`. above-equilibrium wages paid by firms in order to increase worker productivity.
 
 `discrimination`. the offering of different opportunities to similar individuals who differ only by race, ethnic group, sex, age, or other personal characteristics.
 

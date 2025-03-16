@@ -53,8 +53,8 @@ Labor, land, and capital each earn the value of their marginal contribution to t
 
 - The economy's income is distributed in the markets for the factors of production. The three most important factors of production are labor, land, and capital.
 - The demand for factors, such as labor, is a derived demand that comes from firms that use the factors to produce goods and services. Competitive, profit-maximizing firms hire each factor up to the point at which the value of the marginal product of the factor equals its price.
-- The supply of labor arises from individuals' tradeoff between work and leisure. An upward-sloping labor supply curve means that people respond to an increase in the wage by enjoying less leisure and working more hours.
-- The price paid to each factor adjusts to balance the supply and demand for that factor. Because factor demand reflects the value of the marginal product of that factor, in equilibrium each factor is compensated according to its marginal contribution to the production fo goods and ervices.
+- The supply of labor arises from individuals' tradeoff between work and leisure. An upward-sloping labor supply curve means that people respond to an increase in the wages by enjoying less leisure and working more hours.
+- The price paid to each factor adjusts to balance the supply and demand for that factor. Because factor demand reflects the value of the marginal product of that factor, in equilibrium each factor is compensated according to its marginal contribution to the production of goods and services.
 - Because factors of production are used together, the marginal product of any one factor depends on the quantities of all factors that are available. As a result, a change in the supply of one factor alters the equilibrium earnings of all the factors.
 
 

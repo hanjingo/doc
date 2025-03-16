@@ -1,9 +1,8 @@
 # 行为树
 
+[TOC]
 
-<!-- vim-markdown-toc GFM -->
 
-<!-- vim-markdown-toc -->
 
 TODO
 

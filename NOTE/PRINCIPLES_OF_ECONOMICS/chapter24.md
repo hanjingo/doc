@@ -2,13 +2,13 @@
 
 
 
-`productivity`. the amount of goods and service produced from each hour of a worker's time.
+`productivity`. the amount of goods and services produced from each hour of a worker's time.
 
 `physical capital`. the stock of equipment and structures that are used to produce goods and services.
 
 `human capital`. the knowledge and skills that workers acquire through education, training, and experience.
 
-`natural resources`. the inputs into the production of goods and services that are provided by nature, such as land, rivers, and minerla deposits.
+`natural resources`. the inputs into the production of goods and services that are provided by nature, such as land, rivers, and mineral deposits.
 
 `technological knowledge`. society's understanding of the best ways to produce goods and services.
 
@@ -20,9 +20,9 @@ where $F()$ is a function that shows how the inputs are combined to produce outp
 
 `diminishing returns`. the property whereby the benefit from an extra unit of an input declines as the quantity of the input increases.
 
-`catch-up effect`. the property whereby countries that start off poor tend to grow more rapidly than countries that start off rich.
+`catch-up effect`. The property whereby countries that start off poor tend to grow more rapidly than countries that start off rich.
 
-In the long run, the higher saving rate leads to a highr level of productivity and income, but not to higher growth in these variables.
+In the long run, the higher saving rate leads to a higher level of productivity and income, but not to higher growth in these variables.
 
 
 

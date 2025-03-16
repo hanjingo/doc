@@ -8,8 +8,41 @@
 
 ![12_2](res/12_2.png)
 
+例，父子进程都给同一个全局变量加1：
+
 ```c++
-TODO
+#include "unpipc.h"
+#define SEM_NAME "mysem"
+int count = 0;
+int 
+main(int argc, char **argv)
+{
+  int i, nloop;
+  sem_t *mutex;
+  if (argc != 2)
+    	err_quit("usage: incr1 <#loops>");
+  nloop = atoi(argv[1]);
+  
+  /* create, initialize, and unlink semaphore */
+  mutex = Sem_open(Px_ipc_name(SEM_NAME), O_CREAT | O_EXCL, FILE_MODE, 1);
+  Sem_unlink(Px_ipc_name(SEM_NAME));
+  setbuf(stdout, NULL);
+  if (Fork() == 0) {
+    for (i = 0; i < nloop; i++) {
+      Sem_wait(mutex);
+      printf("child: %d\n", count++);
+      Sem_post(mutex);
+    }
+    exit(0);
+  }
+  /* parent */
+  for (i = 0; i < nloop; i++) {
+    Sem_wait(mutex);
+    printf("parent: %d\n", count++);
+    Sem_post(mutex);
+  }
+  exit(0);
+}
 ```
 
 ![12_4](res/12_4.png)
@@ -110,13 +143,85 @@ int msync(void *addr, size_t len, int flags);
 ## 12.3 在内存映射文件中给计数器持续加1
 
 ```c+++
-TODO
+#include "unpipc.h"
+#define SEM_NAME "mysem"
+int 
+main(int argc, char **argv)
+{
+  int fd, i, nloop, zero = 0;
+  int *ptr;
+  sem_t *mutex;
+  if (argc != 3)
+    	err_quit("usage: incr2 <pathname> <#loops>");
+  nloop = atoi(argv[2]);
+  
+  /* create, initialize t 0, map into memory */
+  fd = Open(argv[1], O_RDWR | O_CREAT, FILE_MODE);
+  Write(fd, &zero, sizeof(int));
+  ptr = Mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  Close(fd);
+  /* create, initialize, and unlink semaphore */
+  mutex = Sem_open(Px_ipc_name(SEM_NAME), O_CREAT | O_EXCL, FILE_MODE, 1);
+  Sem_unlink(Px_ipc_name(SEM_NAME));
+  setbuf(stdout, NULL);
+  if (Fork() == 0) {
+    for (i = 0; i < nloop; i++) {
+      Sem_wait(mutex);
+      printf("child: %d\n", (*ptr)++);
+      Sem_post(mutex);
+    }
+    exit(0);
+  }
+  /* parent */
+  for (i = 0; i < nloop; i++) {
+    Sem_wait(mutex);
+    printf("parent: %d\n", (*ptr)++);
+    Sem_post(mutex);
+  }
+  exit(0);
+}
 ```
 
 ![12_11](res/12_11.png)
 
 ```c++
-TODO
+#include "unpipc.h"
+struct shared {
+  sem_t mutex;
+  int   count;
+} shared;
+int 
+main(int argc, char **argv)
+{
+  int fd, i, nloop;
+  struct sahred *ptr;
+  if (argc != 3)
+    err_quit("usage: incr3 <pathname> <#loops>");
+  nloop = atoi(argv[2]);
+  /* open file, initialize to 0, map into memory */
+  fd = Open(argv[1], O_RDWR | O_CREAT, FILE_MODE);
+  Write(fd, &shared, sizeof(struct shared));
+  ptr = Mmap(NULL, sizeof(struct shared), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  Close(fd);
+  /* initialize semaphore that is shared between processes */
+  Sem_init(&ptr->mutex, 1, 1);
+  setbuf(stdout, NULL);
+  if (Fork() == 0) {
+    for (i = 0; i < nloop; i++) {
+      Sem_wait(&ptr->mutex);
+      printf("child: %d\n", ptr->count++);
+      Sem_post(&ptr->mutex);
+    }
+    exit(0);
+  }
+  /* parent */
+  for (i = 0; i < nloop; i++) {
+    Sem_wait(&ptr->mutex);
+    printf("parent: %d\n", ptr->count++);
+    Sem_post(&ptr->mutex);
+  }
+  exit(0);
+}
 ```
 
 ![12_13](res/12_13.png)
@@ -126,7 +231,18 @@ TODO
 ## 12.4 4.4BSD匿名内存映射
 
 ```c++
-TODO
+int 
+main(int argc, char **argv)
+{
+  int i, nloop;
+  int *ptr;
+  sem_t *mutex;
+  if (argc != 2)
+    err_quit("usage: incr_map_anon <#loops>");
+  nloop = atoi(argv[1]);
+  /* map into memory */
+  ptr = Mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, -1, 0);
+}
 ```
 
 *4.4BSD匿名内存映射*
@@ -136,7 +252,20 @@ TODO
 ## 12.5 SVR4/dev/zero内存映射
 
 ```c++
-TODO
+int 
+main(int argc, char **argv)
+{
+  int fd, i, nloop;
+  int *ptr;
+  sem_t *mutex;
+  if (argc != 2)
+    err_quit("usage: incr_dev_zero <#loops>");
+  nloop = atoi(argv[1]);
+  /* open /dev/zero, map into memory */
+  fd = Open("/dev/zero", O_RDWR);
+  ptr = Mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  Close(fd);
+}
 ```
 
 *SVR4 /dev/zero内存映射*
@@ -146,7 +275,34 @@ TODO
 ## 12.6 访问内存映射的对象
 
 ```c++
-TODO
+#include "unpicp.h"
+int 
+main(int argc, char **argv)
+{
+  int fd, i;
+  char *ptr;
+  size_t filesize, mmapsize, pagesize;
+  if (argc != 4)
+    err_quit("usage: test1 <pathname> <filesize> <mmapsize>");
+  filesize = atoi(argv[2]);
+  mmapsize = atoi(argv[3]);
+  /* open file: create or truncate; set file size */
+  fd = Open(argv[1], O_RDWR | O_CREAT | O_TRUNC, FILE_MODE);
+  Lseek(fd, filesize - 1, SEEk_SET);
+  Write(fd, "", 1);
+  ptr = Mmap(NULL, mmapsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  Close(fd);
+  pagesize = Sysconf(_SC_PAGESIZE);
+  printf("PAGESIZE = %1d\n", (long)pagesize);
+  for (i = 0; i < max(filesize, mmapsize); i += pagesize) {
+    printf("ptr[%d] = %d\n", i, ptr[i]);
+    ptr[i] = 1;
+    printf("ptr[%d] = %d\n", i + pagesize - 1, ptr[i + pagesize - 1]);
+    ptr[i + pagesize - 1] = 1;
+  }
+  printf("ptr[%d] = %d\n", i, ptr[i]);
+  exit(0);
+}
 ```
 
 *访问其大小可能不同于文件大小的内存映射区*
@@ -156,7 +312,24 @@ TODO
 ![12_18](res/12_18.png)
 
 ```c++
-TODO
+#include "unpipc.h"
+#define FILE "test.data"
+#define SIZE 32768
+int 
+main(int argc, char **argv)
+{
+  int fd, i;
+  char *ptr;
+  /* open: create or truncate; then mmap file */
+  fd = Open(FILE, O_RDWR | O_CREAT | O_TRUNC, FILE_MODE);
+  ptr = Mmap(NULL, SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  for (i = 4096; i <= SIZE; i += 4096) {
+    printf("setting file size to %d\n", i);
+    Ftruncate(fd, i);
+    printf("ptr[%d] = %d\n", i - 1, ptr[i - 1]);
+  }
+  exit(0);
+}
 ```
 
 *允许文件大小增长的内存映射区例子*

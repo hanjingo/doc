@@ -12,9 +12,9 @@
 
 `financial intermediaries`. financial institutions through which savers can indirectly provide funds to borrowers.
 
-`mutual fund`. an institution that sells shares to the public an duses the proceeds to buy a portfolio of stocks and bonds.
+`mutual fund`. an institution that sells shares to the public an uses the proceeds to buy a portfolio of stocks and bonds.
 
-Recall that gross domestic product (GDP) is both total income in an economy and the total expenditure on the economy's output of goods and services. GDP (denoted as $Y$) is divided into four components of expenditure: consumption($C$), investment($I$), government purchases($G$), and net exports($NX$). We write:
+Recall that gross domestic product (GDP) is both the total income in an economy and the total expenditure on the economy's output of goods and services. GDP (denoted as $Y$) is divided into four components of expenditure: consumption($C$), investment($I$), government purchases($G$), and net exports($NX$). We write:
 $$
 Y = C + I + G + NX
 $$
@@ -24,7 +24,7 @@ This equation is an identity because every dollar of expenditure that shows up o
 $$
 S = I
 $$
-`private saving`. the income that households have left after paying for taxes and consuption.
+`private saving`. the income that households have left after paying for taxes and consumption.
 
 `public saving`. the tax revenue that the government has left after paying for its spending.
 
@@ -38,11 +38,11 @@ For the economy as a whole, saving must be equal to investment.
 
 if a change in the tax laws encouraged greater saving, the result would be lower interest rates and greater investment.
 
-if a change in the tax laws encouraged greater investment, the result would be higher interest rates and greater saving.
+if a change in the tax laws encouraged greater investment, the result would be higher interest rates and greater savings.
 
 `crowding out`. a decrease in investment that results from government borrowing.
 
-When the government reduces national saving by running a budget deficit, the interest rate rises, and investment falls.
+When the government reduces national savings by running a budget deficit, the interest rate rises, and investment falls.
 
 A budget surplus increases the supply of loanable funds, reduces the interest rate, and stimulates investment.
 

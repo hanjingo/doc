@@ -1,4 +1,4 @@
-# CHAPTER 6 SUPPLY , DEMAND, AND GOVERNMENT POLICIES
+# CHAPTER 6 SUPPLY, DEMAND, AND GOVERNMENT POLICIES
 
 
 
@@ -8,7 +8,7 @@
 
 ![6_1](res/6_1.png)
 
-When the government imposes a binding price ceiling on a competitive market, a shortage of the good arises, and sellers must ration the scarce goods among the large number of potential buyers.
+When the government imposes a binding price ceiling on a competitive market, a shortage of the goods arises, and sellers must ration the scarce goods among the large number of potential buyers.
 
 ![6_2](res/6_2.png)
 

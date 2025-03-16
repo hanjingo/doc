@@ -26,7 +26,7 @@ $$
 
 `Fisher effect`. the one-for-one adjustment of the nominal interest rate to the inflation rate.
 
-`hsoeleather costs`. the resources wasted when inflation encourages people to reduce their money holdings.
+shoe leather costs`. the resources wasted when inflation encourages people to reduce their money holdings.
 
 `menu costs`. the costs of changing prices.
 

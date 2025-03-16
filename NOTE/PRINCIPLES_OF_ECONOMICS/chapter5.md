@@ -33,8 +33,6 @@ If the elasticity is exactly 1, so that quantity moves the same amount proportio
 
 `total revenue`. the amount paid by buyer and received by sellers of a good, computed as the price of the good times the quantity sold. In any market, total revenue is $P \times Q$, the price of the good times the quantity of the good sold.
 
-
-
 ![5_2](res/5_2.png)
 
 ![5_3](res/5_3.png)

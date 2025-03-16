@@ -1,22 +1,6 @@
 # vim快捷键
 
-<!-- vim-markdown-toc GFM -->
-
-* [跳转操作](#跳转操作)
-* [查找替换操作](#查找替换操作)
-* [编辑操作](#编辑操作)
-    - [一键删除指定元素及其后面的内容](#一键删除指定元素及其后面的内容)
-* [窗口切换](#窗口切换)
-* [辅助操作](#辅助操作)
-* [文件操作](#文件操作)
-* [第三方插件](#第三方插件)
-    - [NerdTree](#nerdtree)
-    - [YouCompleteMe](#youcompleteme)
-    - [tagbar](#tagbar)
-    - [fzf](#fzf)
-    - [markdown-preview](#markdown-preview)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

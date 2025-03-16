@@ -69,8 +69,6 @@ Policymakers in the government can respond to the problem of monopoly in one of 
 
 `price discrimination`. the business practice of selling the same good at different prices to different customers.
 
-
-
 ![15_9](res/15_9.png)
 
 ![15_10](res/15_10.png)

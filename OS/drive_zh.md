@@ -1,19 +1,6 @@
 # 驱动
 
-<!-- vim-markdown-toc GFM -->
-
-* [功能](#功能)
-* [处理过程](#处理过程)
-    - [I/O设备控制](#io设备控制)
-* [设备分配](#设备分配)
-    - [设备控制表(DCT)](#设备控制表dct)
-    - [控制器控制表(COCT)](#控制器控制表coct)
-    - [通道控制表(CHCT)](#通道控制表chct)
-    - [系统设备表(SDT)](#系统设备表sdt)
-* [逻辑设备名到物理设备名映射](#逻辑设备名到物理设备名映射)
-    - [逻辑设备表(Logicl Unit Table, LUT)](#逻辑设备表logicl-unit-table-lut)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
