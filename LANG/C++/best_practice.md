@@ -1,3 +1,5 @@
+English | [中文版](best_practice_zh.md)
+
 # C++ Best Practice
 
 [TOC]
@@ -24,7 +26,7 @@
 
 - 对于`#ifndef ... #define ... #endif`的，可以使用`#pragma once`来代替；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -61,7 +63,7 @@
   ```
 
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -77,7 +79,7 @@
 
 - C++对象的成员变量的初始化动作发生在进入构造函数本体之前，C++不保证初始化内置类型对象；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -116,7 +118,7 @@
 
 - 避免隐式转换；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -136,7 +138,7 @@
 
 - **禁止在构造函数中调用虚拟函数**；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -179,7 +181,7 @@
 
 - 将基类析构函数设为公用且虚拟的或保护且非虚拟的；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -256,7 +258,7 @@
 
 - 对底层资源使用`引用计数法(reference-count)`，抑制copying；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -302,7 +304,7 @@
   result = 2 * oneFourth;
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -310,7 +312,7 @@
 
 - 禁止重载`&&`, `||`或`,`
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -345,7 +347,7 @@
 
 - 使用智能指针来保存动态分配的资源；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -403,7 +405,7 @@
 
 - 不要使用C语言风格的可变长参数`...`；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -444,7 +446,7 @@
     };
     ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -457,7 +459,7 @@
   - 如果函数里调用了virtual函数，也会使inline失效；
 - 不要仅仅因为函数定义在头文件，就将它们声明为inline；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -495,7 +497,7 @@
 
 - 为了将实现与定义分离，尽量不要在头文件中定义函数；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -578,7 +580,7 @@
 
 - 推荐将虚函数声明为非公用的，将公用函数声明为非虚函数；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -622,7 +624,7 @@
     };
     ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -657,7 +659,7 @@
   }
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -726,7 +728,7 @@
 
 - 需要类型转换时，为模版定义非成员函数
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -734,7 +736,7 @@
 
 - memcpy和memcmp会扰乱类型系统；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 ---
 
@@ -752,13 +754,13 @@
   int x = 27;
   const int cx = x;
   const int& rx = x;
-  // 在各次调用中，对param和T的型别推导结果如下:
-  f(x);   //T的型别是 int, param的型别是 int&
-  f(cx);  //T的型别是 const int, param的型别是 const int&
-  f(rx);  //T的型别是 const int, param的型别是 const int&
+  // The deduced types for param and T in various calls are as follows:
+  f(x);   // T is int, param's type is int&
+  f(cx);  // T is const int, param's type is const int&
+  f(rx);  // T is const int, param's type is const int&
   ```
 
-- 对万能引用形参进行推导时，左值实参会进行特殊处理；
+- When decuding types for universal reference parameters, lvalue arguments get special treatment.
 
   ```c++
   template<typename T>
@@ -766,104 +768,104 @@
   int x = 27;
   const int cx = x;
   const int& rx = x;
-  f(x);   //x是个左值，所以T的型别是int&, param的型别也是int&
-  f(cx);  //cx是个左值，所以T的型别是const int&, param的型别也是 const int&
-  f(rx);  //rx是个左值，所以T的型别是const int&, param的型别也是 const int&
-  f(27);  //27是个右值，所以T的型别是int，这么一来，param的型别就成了 int&&
+  f(x);   // x is lvalue, so T is int&, param's type is also int& 
+  f(cx);  // cx is lvalue, so T is const int&, param's type is also const int&
+  f(rx);  // rx is lvalue, so T is const int&, param's type is also const int&
+  f(27);  // 27 is rvalue, so T is int, param's type is therefore int&&
   ```
 
-- 对按值传递的形参进行推导时，若实参型别中带有const或volatile，则他们还是会被当作不带const或volatile的型别来处理；
+- When deducing types for by-value parameters, const and/or volatile arguments are treated as non-const and non-volatile.
 
   ```c++
   template<typename T>
   void f(T param);
-  const char* const ptr = "abc";  //ptr是个指向const对象的const指针
-  f(ptr);                         //传递型别为const char* const的实参
+  const char* const ptr = "abc";  // ptr is const pointer to const object
+  f(ptr);                         // pass arg of type const char* const
   ```
 
-- 在模板型别推导过程中，数组或函数型别的实参会退化成对应的指针，除非他们被用来初始化引用；
+- During template type deduction, arguments that are array or function names decay to pointers, unless they're used to initialize references.
 
   ```c++
   void someFunc(int, double);
   template<typename T>
   void f1(T param);
-  f1(someFunc);   //param被推导为函数指针，具体型别是 void(*)(int, double)
+  f1(someFunc);   // param deduced as ptr-to-func type is void(*)(int, double)
   
   template<typename T>
   vid f2(T& param);
-  f2(someFunc);   //param被推导为函数引用，具体型别是 void(&)(int, double)
+  f2(someFunc);   // param deduced as ref-to-func; type is void(&)(int, double)
   ```
 
 
 
-### 2.正确进行型别推导
+### 2.Understand auto type deduction
 
-- 在一般情况下，auto型别推导和模版型别推导是一模一样的，但是auto型别推导会假定用大括号括起来的初始化表达式代表一个`std::initializer_list`(初始化列表)，但模版型别推导却不会；
+- auto type deduction is usually the same as template type deduction, but auto type deduction assumes that a braced initializer represents a std::initializer_list, and template type deduction doesn't.
 
   ```c++
-  auto x = { 11, 23, 9 }; // x的型别是 std::initializer_list<int>
+  auto x = { 11, 23, 9 }; // s's type is std::initializer_list<int>
   
-  template<typename T>    // 带有形参的模版
-  void f(T param);        // 与x的声明等价的声明式
-  f({ 11, 23, 9 });       // 错误！无法推导T的型别
+  template<typename T>    // template with parameter declaration equivalent to x's declaration
+  void f(T param);
+  f({ 11, 23, 9 });       // error! can't deduce type for T
   ```
 
-- 在函数返回值或lambda式的形参中使用auto，意思是使用模版型别推导而非auto型别推导；
+- auto in a function return type or a lambda parameter implies template type deduction, not auto type deduction.
 
   ```c++
   std::vector<int> v;
   ...
   auto resetV = [&v](const auto& newValue) { v = newValue; }; // c++14
   ...
-  resetV({ 1, 2, 3 });    // 错误！无法为{ 1, 2, 3 }完成型别推导
+  resetV({ 1, 2, 3 });    // error! can't deduce type for {1, 2, 3}
   ```
 
 
 
-### 3.正确使用decltype
+### 3.Understand decltype
 
-- 绝大多数情况下，`decltype`会得出变量或表达式的型别而不做任何修改；
+- decltype almost always yields the type of a variable or expression without any modifications.
 
-- 对于型别为T的左值表达式，除非该表达式仅有一个名字，`decltype`总是得出型别`T&`；
+- For lvalue expressions of type T other than names, decltype always report a type of T&.
 
-- c++14支持`decltype(auto)`，和auto一样，它会从其初始化表达式出发来推导型别，但是它的型别推导使用的是`decltype`的规则；
+- C++14 supports `decltype(auto)`, which, like auto, deduces a type from its initializer, but it performs the type deduction using the decltype rules.
 
   ```c++
   Widget w;
   const Widget& cw = w;
-  decltype(auto) myWidget2 = cw; // decltype型别推导：const Widget&
+  decltype(auto) myWidget2 = cw; // decltype type deduction: const Widget&
   ```
 
 
 
-### 4.优先使用auto
+### 4.Prefer auto
 
-* auto变量必须初始化，避免致兼容性和效率问题的型别不匹配现象，还可以简化重构流程，简化代码；
+* auto variables must be initialized, are generally immune to type mismatches that can lead to portability or efficiency problems, can ease the process of refactoring, and typically require less typing than variables with explicitly specified types.
 
   ```c++
-  int x1;      // 有潜在的未初始化风险
-  auto x2;     // 编译错误！必须有初始化物
-  auto x3 = 0; // 没问题
-  auto derefLess = [](const auto& p1, const auto& p2) { return *p1 < *p2; }; // 使用auto表示lambda
+  int x1;      // potentially uninitialized
+  auto x2;     // error! initializer required
+  auto x3 = 0; // fine, x's value is well-defined
+  auto derefLess = [](const auto& p1, const auto& p2) { return *p1 < *p2; }; // comparison func.
   ```
 
-* 隐形代理型别可以导致auto类型推导错误；
-
-  ```c++
-  std::vector<bool> features(const Widget& w);
-  Widget w;
-  auto highPriority = features(w)[5]; // highPriority是std::vector<bool>::reference型别
-  ```
-
-* 带显式型别的初始化物习惯用法强制auto推导出你想要的型别；
+* "Invisible" proxy types can cause auto to deduce the "wrong" type for an initializing expression.
 
   ```c++
   std::vector<bool> features(const Widget& w);
   Widget w;
-  auto highPriority = static_cast<bool>(features(w)[5]); // highPriority被强制初始化为bool
+  auto highPriority = features(w)[5]; // highPriority is std::vector<bool>::reference type
   ```
 
-- 对`auto&&`型别的形参使用`decltype`和`std::forward`；
+* The explicitly typed initializer idiom forces auto to deduce the type you want it to have.
+
+  ```c++
+  std::vector<bool> features(const Widget& w);
+  Widget w;
+  auto highPriority = static_cast<bool>(features(w)[5]); // force deduce highPriority to bool
+  ```
+
+- Use `decltype` and `std::forward` for `auto&&` params;
 
   ```c++
   auto f = [](auto&& param) { 
@@ -871,25 +873,25 @@
   };
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 5.优先使用初始化列表
+### 5.Using {} when creating objects
 
-* 大括号初始化可以应用的语境最为广泛，可以阻止隐式窄化型别转换；
+* Braced initialization is the most widely usable initialization syntax, it prevents narrowing conversions, and it's immune to C++'s most vexing parse.'
 
   ```c++
-  std::vector<int> v{ 1, 3, 5 }; // v的初始内容为1, 3, 5
+  std::vector<int> v{ 1, 3, 5 };
   class Widget {
   private:
-      int x{ 0 }; // 推荐
-      int y = 0;  // 可行
-      int z(0);   // 不可行
+      int x{ 0 }; // fine, x's default value is 0
+      int y = 0;  // also fine
+      int z(0);   // error!
   };
   ```
 
-* 在构造函数重载决议期间，只要有任何可能，大括号初始化物就会与带有`std::initializer_list`型别的形参相匹配，即使其他重载版本有着貌似更加匹配的形参表；
+* During constructor overload resolution, braced initializers are matched to `std::initializer_list` parameters if at all possible, even if other constructors offer seemingly better matches.
 
   ```c++
   class Widget {
@@ -898,82 +900,82 @@
       Widget(int i, double d);
       Widget(std::initializer_list<long double> il);
   };
-  Widget w1(10, true); // 调用第一个构造函数
-  Widget w2{10, true}; // 调用第三个构造函数；使用大括号，调用的是带有std::initializer_list型别形参的构造函数(10和true被强制转换为long double)
-  Widget w3(10, 5.0);  // 调用第二个构造函数
-  Widget w4{10, 5.0};  // 调用第三个构造函数；使用大括号，调用的是带有std::initializer_list型别形参的构造函数(10和5.0倍强制转换为long double)
+  Widget w1(10, true); // uses parens and, as before, calls first ctor
+  Widget w2{10, true}; // uses braces, but now calls std::initializer_list ctor(10 and true convert to long double)
+  Widget w3(10, 5.0);  // uses parens and, as before, calls second ctor
+  Widget w4{10, 5.0};  // uses braces, but now calls std::initializer_list ctor (10 and 5.0 convert to long double)
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 6.优先选用nullptr
+### 6.Prefer nullptr to 0 and NULL.
 
-* 相对于0或NULL，优先选用nullptr；
+* Prefer nullptr to 0 and NULL;
 
-* 避免在整型和指针型别之间重载；
+* Avoid overloading on integral and pointer types.
 
   ```c++
   void f(int);
   void f(bool);
   void f(void*);
-  f(0);       // 调用的是f(int)，而不是f(void*)
-  f(NULL);    // 可能通不过编译，但一般会调用f(int)，从来不会调用f(void*) 
-  f(nullptr); // 调用的是f(void*)
+  f(0);       // calls f(int), not f(void*)
+  f(NULL);    // might not compile, but typically calls f(int). Never calls f(void*)
+  f(nullptr); // calls f(void*) overload
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 7.优先选用using而非typedef
+### 7.Prefer alias declarations (using) to typedefs
 
-* `typedef`和`using`的作用基本是一致的;
+* `typedef` and `using` has the same function.
 
   ```c++
-  typedef void (*FP)(int, const std::string&);  // 使用typedef
-  using FP = void (*)(int, const std::string&); // 使用别名
+  typedef void (*FP)(int, const std::string&);  // typedef
+  using FP = void (*)(int, const std::string&); // alias declaration
   ```
 
-* typedef不支持模板化，但别名声明支持；
+* `typedef` don't support templatization, but alias declarations do.
 
   ```c++
-  // 使用typedef
+  // typedef
   template<typename T>
   struct MyAllocList {
-      typedef std::list<T, MyAlloc<T>> type;   // MyAllocList<T>::type是std::list<T, MyAlloc<T>>的同义词
+      typedef std::list<T, MyAlloc<T>> type;   // synonym for std::list<T, MyAlloc<T>>
   };
   MyAllocList<Widget>::type lw;
   ```
   
   ```c++
-  // 使用别名
+  // alias declaration
   template<typename T>
-  using MyAllocList = std::list<T, MyAlloc<T>>; // std::list<T, MyAlloc<T>>的同义词
+  using MyAllocList = std::list<T, MyAlloc<T>>; // synonym for std::list<T, MyAlloc<T>>
   MyAllocList<Widget> lw;
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 8.优先选用enum class
+### 8.Prefer enum class
 
-* 限定作用域枚举类型降低了名字空间污染；
+* Scoped enums reduce namespace pollution.
 
   ```c++
-  enum class Color { black, white, red }; // black,white,red所在作用域被限定在Color内
-  auto white = false;     // 没问题，范围内并无其它“white”
-  Color c = white;        // 错误！范围内并无名为“white”的枚举量
-  Color c = Color::white; // 没问题
-  auto c = Color::white;  // 没问题
+  enum class Color { black, white, red }; // black,white,red are scoped to Color
+  auto white = false;     // fine, no other "white" in scope
+  Color c = white;        // error! no enumerator named "white" is in this scope
+  Color c = Color::white; // fine
+  auto c = Color::white;  // also fine
   ```
 
-* 限定作用域的枚举型别仅在枚举型别内可见，只能通过强制型别转换以转换至其他型别，不限范围的枚举型别中的枚举量可以隐式转换到整数型别；
+* Enumerator of scoped enums are visible only within the enum. They convert to other types only with a cast.
 
   ```c++
-  // 不限定范围枚举型别
+  // unscoped enum
   enum Color { black, white, red }; 
   std::vector<std::size_t> primeFactors(std::size_t x);
   Color c = red;
@@ -983,97 +985,95 @@
   ```
 
   ```c++
-  // 限定范围枚举型别
+  // enum is now scoped
   enum class Color { black, white, red };
   Color c = Color::red;
-  if (c < 14.5) {                     // 错误！不能将Color型别和double型别比较
-      auto factors = primeFactors(c); // 错误！不能将Color型别传入
+  if (c < 14.5) {                     // error! can't compare Color and double
+      auto factors = primeFactors(c); // error! can't pass Color to function expecting std::size_t
   }
   ```
 
-* 限定作用域的枚举型别和不限定范围的枚举型别都支持底层型别指定，限定作用域的枚举型别的默认底层型别是int，而不限范围的枚举型别没有默认底层型别；
+* Both scoped and unscoped enums support the specification of the underlying type. The default underlying type for scoped enums is int. Unscoped enums have no default underlying type.
 
-* 限定作用域的枚举型别总是可以进行前置声明，而不限范围的枚举型别却只有在指定了默认底层型别的前提下才可以进行前置声明；
+* Scoped enums may always be forwar-declared. Unscoped enums may be forward-declared only if their declaration specifies an underlying type.
 
   ```c++
-  enum Color;       // 错误
-  enum class Color; // 没问题
+  enum Color;       // error
+  enum class Color; // fine
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 9.优先选用delete
+### 9.Prefer deleted functions
 
-* 优先选用删除函数(delete)，而非private未定义函数；
+* Prefer deleted functions to private undefined ones.
 
   ```c++
-  // private未定义函数
+  // private not defined function
   template <class charT, class traits = char_traits<charT> >
   class basic_ios : public ios_base {
   public:
   		...
   private:
-      basic_ios(const basic_ios&);            // 未定义
-      basic_ios& operator=(const basic_ios&); // 未定义
+      basic_ios(const basic_ios&);            // not defined
+      basic_ios& operator=(const basic_ios&); // not defined
   };
   ```
 
   ```c++
-  // 删除函数delete
+  // delete function
   template <class charT, class traits = char_traits<charT> >
   class basic_ios : public ios_base {
-  public: // 习惯把delete函数声明为public
+  public: // declare
       basic_ios(const basic_ios&) = delete;
       basic_ios& operator=(const basic_ios&) = delete;
   }
   ```
 
-* 任何函数都可以删除(delete)，包括非成员函数和模板实现；
+* Any function may be deleted, including non-member functions and template instantiations.
 
   ```c++
-  // c++11 删除函数delete
+  // c++11 delete function
   class Widget {
   public:
       template<typename T>
       void processPointer(T* ptr) { ... }
   };
   template<>
-  void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问权限，但被删除了
+  void Widget::processPointer<void>(void*) = delete; // still public, but deleted
   ```
   
   ```c++
-  // c++98 private未定义函数
+  // c++98 private not defined function
   class Widget {
   public:
       template<typename T>
       void processPointer(T* ptr) { ... }
   private:
-      template<> // 可能编译不过
+      template<> // might not compile
       void processPointer<void>(void*);
   };
   ```
   
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 10.优先使用override
+### 10.Declare overriding functions override
 
-- override让编译器在想要改的函数实际上并未修改时提醒你；
+- Member function reference qualifiers make it possible to treat lvalue and rvalue objects (*this) differently.
 
-- 评估改写函数造成的影响；
+- For overriding to occur, several requirements must be met:
 
-- 支持重写的基本条件：
-
-  - 基类中的函数必须是虚函数
-  - 基类和派生类中的函数名字必须完全相同（析构函数例外）
-  - 基类和派生类中的函数形参型别必须完全相同
-  - 基类和派生类中的函数常量性（constness）必须完全相同
-  - 基类和派生类中的函数返回值和异常规格必须兼容
-  - (c++11新增)基类和派生类中的函数引用饰词（reference qualifier，`&`, `&&` ...）必须完全相同
+  - The base class function must be virtual.
+  - The base and derived function names must be identical (except in the case of destructors).
+  - The parameter types of the base and derived functions must be identical.
+  - The constness of the base and derived functions must be identical.
+  - The return types and exception specifications of the base and derived functions must be compatible
+  - (C++11 adds)The functions' `reference qualifiers`(&, && ...) must be identical.
 
   ```c++
   class Base {
@@ -1093,67 +1093,71 @@
   };
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 11.优先选用const_iterator
+### 11.Prefer const_iterators to iterators
 
-- 当迭代器指向的内容不需要修改时，优先选用const_iterator，而非iterator；
+- Prefer const_iterators to iteratos.
 
   ```c++
   std::vector<int> values;
-  // 容器的成员函数`cbegin`,`cend`等都返回`const_iterator`型别
+  // member function `cbegin`,`cend` return `const_iterator`
   auto it = std::find(values.cbegin(), values.cend(), 1983);
   values.insert(it, 1998);
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
 
-### 12.只要函数不会发射异常就加上noexcept声明
+### 12.Declare functions noexcept if they won't emit exceptions.
 
-* 相对于不带noexcept声明的函数，带有noexcept声明的函数有更多机会得到优化；
+* noexcept is part of a function's interface, and that means that callers may depend on it.
 
-  `noexcept`对函数的优化：优化器不需要在异常传出函数的前提下，将执行期栈保持在可开解状态；也不需要在异常逸出函数的前提下，保证所有其中的对象以其被构造顺序的逆序完成析构。
+* noexcept functions are more optimizable than non-noexcept function.
+
+* noexcept is particularly valuable for the move operations, swap, memory deallocation functions, and destructors.
+
+* Most functions are exception-neutral rather than noexcept.
 
   ```c++
-  RetType function(params) noexcept; // 最优化
-  RetType function(params) trow();   // 优化不够
-  RetType function(params);          // 优化不够
+  RetType function(params) noexcept; // most optimizable
+  RetType function(params) trow();   // less optimizable
+  RetType function(params);          // less optimizable
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 13.尽可能使用constexpr
+### 13.Use constexpr whenever possible.
 
-- constexpr具备const的所有属性，并且由编译期已知的值完成初始化；
+- constexpr objects are const and are initialized with values known during compilation.
 
   ```c++
-  constexpr auto arraySize2 = 10;    // 没问题，10是个编译期常量
+  constexpr auto arraySize2 = 10;    // fine, 10 is a compile-time constant
   ```
 
-- constexpr函数在调用时若传入的实参值是编译期已知的，则会产出编译期结果；
+- constexpr functions can produce compile-time results when called with arguments whose values are known during compilation.
 
   ```c++
-  int sz; // 非constexpr变量
+  int sz; // non-constexpr variable
   
-  constexpr auto arraySize1 = sz;    // 错误！sz的值在编译期未知
-  std::array<int, sz> data1;         // 错误！一样的问题
-  constexpr auto arraySize2 = 10;    // 没问题，10是个编译期常量
-  std::array<int, arraySize2> data2; // 没问题，arraySize2是个constexpr
+  constexpr auto arraySize1 = sz;    // error! sz's value not known at compilation
+  std::array<int, sz> data1;         // error! same problem
+  constexpr auto arraySize2 = 10;    // fine, 10 is a compile-time constant
+  std::array<int, arraySize2> data2; // fine, arraySize2 is constexpr
   
-  // const并未提供和constexpr同样的保证，因为const对象不一定经由编译期已知值来初始化
-  int sz; 						             // 仍然是非constexpr变量
-  const auto arraySize = sz; 	     // 没问题，arraySize是sz的一个const副本
-  std::array<int, arraySize> data; // 错误！arraySize
+  // Note that const doesn't offer the same guarantee as constexpr, because const objects need not be initialized with values known during compilation
+  int sz; 					   // as before
+  const auto arraySize = sz; 	     // find, arraySize is const copy of sz
+  std::array<int, arraySize> data; // error! arraySize's value not known at compilation
   ```
 
-- c++11中，constexpr函数不得包含多于一个可执行语句，即一条return语句；
+- In C++11, constexpr functions may contain no more than a single executable statement: a return.
 
   ```c++
   constexpr int pow(int base, int exp) noexcept
@@ -1162,43 +1166,43 @@
   }
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 14.正确使用三大智能指针
+### 14.Understand smartpointer
 
-* 使用`std::unique_ptr`管理具备专属所有权的资源;
+* Use `std::unique_ptr` for exclusive-ownership resource management.
 
   ```c++
   class Investment { ... };
   template<typename... Ts> makeInvestment(Ts&&... params);
   ```
 
-* 有状态的删除器和采用函数指针实现的删除器会增加`std::unique_ptr`型别的对象尺寸；
+* By default, resource destruction takes place via `delete`, but custom deleters can be specified. Stateful deleters and function pointers as deleters increase the size of `std::unique_ptr` objects.
 
   ```c++
-  auto delInvmt1 = [](Investment* pInvestment) // 使用无状态lambda表达式
+  auto delInvmt1 = [](Investment* pInvestment) // custom deleter as stateless lambda
                    {
                       makeLogEntry(PInvestment);
                       delete pInvestment;
                    };
   template<typename... Ts>
-  std::unique_ptr<Investmet, decltype(delInvmt1)> // 与Investment*相同
+  std::unique_ptr<Investmet, decltype(delInvmt1)> // return type has size of Investment*
   makeInvestment(Ts&&... args);
   
-  void delInvmt2(Investment* pInvestment) // 使用函数
-  {                                       // 使用自定义析构器
+  void delInvmt2(Investment* pInvestment) // custom deleter as function
+  {
       makeLogEntry(pInvestmenbt);         
       delete pInvestment;
   }
-  template<typename... Ts>                // 返回值尺寸等于
-  std::unique_ptr<Investment,             // Investment*的尺寸
-                  void (*)(Investment*)>  // 加上至少函数指针的尺寸！
+  template<typename... Ts>                // return type has size of Investment* plus at least size of function pointer!
+  std::unique_ptr<Investment,
+                  void (*)(Investment*)>
   makeInvestment(Ts&&... params);
   ```
 
-* 使用`std::shared_ptr`管理具备共享所有权的资源；
+* Use `std::shared_ptr` for shared-ownership resource management.
 
   ```c++
   auto customDeleter1 = [](Widget *pw){...};
@@ -1207,7 +1211,7 @@
   std::shared_ptr<Widget> pw2(new Widget, customDeleter2);
   ```
 
-* 避免使用裸指针型别的变量来创建`std::shard_ptr`指针；
+* Avoid creating `std::shared_ptrs` from variables of raw pointer type.
 
   ```c++
   class Widget {
@@ -1218,11 +1222,11 @@
   std::vector<std::shared_ptr<Widget> > processedWidgets;
   void Widget::process()
   {
-  	processedWidgets.emplace_back(this); // 将裸指针(this)传入，并套上一层std::shared_ptr，可能会引发未定义行为；
+  	processedWidgets.emplace_back(this); // add a raw pointer to a cotainer, this could cause undefined behavior 
   }
   ```
 
-  对于上述情况可以采用以下方法避免：
+  to avoid this, we could do that:
 
   ```c++
   class Widget : public std::enable_shared_from_this<Widget> {
@@ -1236,87 +1240,93 @@
   }
   ```
 
-* 引用计数会对以下性能造成影响：
+* The rules for control block creation are used:
 
-  - `std::shared_ptr`的尺寸是裸指针的两倍；
-  - 引用计数的内存必须动态分配；
-  - 引用计数的递增和递减必须是原子操作；
+  - `std::make_shared` always creates a control block.
+  - A control block is created when a `std::shared_ptr` is constructed from a unique-ownership pointer (i.e., a std::unique_ptr or std::auto_ptr).
+  - When a `std::shared_ptr` constructor is called with a raw pointer, it creates a control block.
   
-* 对于功能类似于`std::shared_ptr`，但是可能有空悬指针的情况使用`std::weak_ptr`；
+* The existence of the reference count has performance implications:
+
+  - `std::shared_ptr`are twice size of a raw pointer.
+  - Memory for the reference count must be dynamically allocated.
+  - Increments and decrements of the reference count must be atomic.
+  
+* Use `std::weak_ptr` for `std::sahred_ptr` like pointers that can dangle.
 
   ```c++
-  auto spw = std::make_shared<Widget>(); // spw构造完成后，指涉到Widget的引用计数设置为1
-  std::weak_ptr<Widget> wpw(spw) // wpw和spw指涉到同一个Widget。引用计数保持为1
-  spw = nullptr; // 引用计数变为0，Widget对象被析构。wpw空悬（expired）
+  auto spw = std::make_shared<Widget>(); // after spw is constructed, the pointed-to Widget's ref count (RC) is 1.
+  std::weak_ptr<Widget> wpw(spw) // wpw points to same Widget as spws. RC remains 1
+  spw = nullptr; // RC goes to 0, and the Widget is destroyed wpw now dangles
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 15.优先使用make系列函数而非直接使用new
+### 15.Prefer `std::make_unique` and `std::make_shared` to direct use of new
 
-- make系列函数消除了重复代码，改进了异常安全性，生成的目标代码会尺寸更小，速度更快；
+- Compared to direct use of `new`, `make` functions eliminate soruce code duplication, improve exception safety, and, for `std::make_shared` and `std::allocate_shared`, generat code that's smaller and faster.
 
   ```c++
-  auto upw1(std::make_unique<Widget>());    // 使用make_unique，简洁
-  std::unique_ptr<Widget> upw2(new Widget); // 不使用make_unique，重复
-  auto spw1(std::make_shared<Widget>());    // 使用make_shared，简洁
-  std::shared_ptr<Widget> spw2(new Widget); // 不使用make_shared，重复
+  auto upw1(std::make_unique<Widget>());    // with make func
+  std::unique_ptr<Widget> upw2(new Widget); // without make func
+  auto spw1(std::make_shared<Widget>());    // with make func
+  std::shared_ptr<Widget> spw2(new Widget); // without make func
   
   void processWidget(std::shared_ptr<Widget> spw, int priority);
   int computePriority();
-  processWidget(std::shared_ptr<Widget>(new Widget), computePriority()); // 潜在的资源泄漏风险
-  processWidget(std::make_shared<Widget>(), computePriority());          // 避免发生潜在的资源泄漏风险
+  processWidget(std::shared_ptr<Widget>(new Widget), computePriority()); // potential resource leak!
+  processWidget(std::make_shared<Widget>(), computePriority());          // no potential resource leak
   
-  std::shared_ptr<Widget> spw(new Widget); // 引发2次内存分配
-  auto spw = std::make_shared<Widget>();   // 1次内存分配
+  std::shared_ptr<Widget> spw(new Widget); // memory allocation twice
+  auto spw = std::make_shared<Widget>();   // memory allocation once
   ```
 
-- 对于`std::shared_ptr`，不建议使用make系列函数的额外场景包括：
+- For `std::shre_ptrs`, additional situations where `make` functions may be ill-advised include:
 
-  1. 自定义内存管理的类；
+  1. classes with custom memory management.
 
      ```c++
      std::unique_ptr<Widget, decltype(widgetDeleter)> upw(new Widget, widgetDeleter);
      std::shared_ptr<Widget> spw(new Widget, widgetDeleter);
      ```
 
-  2. 内存紧张的系统，非常大的对象，以及存在比指涉到相同对象的`std::shared_ptr`生存期更久的`std::weak_ptr`；
+  2. systems with memory concerns, very large objects, and `std::weak_ptrs` that outlive the corresponding `std::shared_ptrs`；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 16.正确使用万能引用和右值引用
+### 16.Understand universal references and 
 
-- 如果函数模板形参具备`T&&`型别，并且T的型别系推导而来，或如果对象使用`auto&&`声明型别，则该形参或对象就是个万能引用；
+- If a function template parameter has type `T&&` for a deduced type `T`, or if an object is declared using `auto&&`, the parameter or object is a universal reference.
 
   ```c++
   template<typename T>
-  void f(T&& param);  // 万能引用
+  void f(T&& param);  // universal reference
   std::vector<int> v;
-  f(v); // 错误！不能给一个右值引用绑定一个左值
+  f(v); // error! can't bind lvalue to rvalue reference
   
   Widget&& var1 = Widget();
-  auto&& var2 = var1; // 万能引用
+  auto&& var2 = var1; // universal reference
   ```
 
-- 如果型别声明并不精确的具备`type&&`的形式，或者型别推导并未发生，则`type&&`就代表右值引用；
+- If the form of the type declaration isn't precisely `type&&`, or if type deduction does not occur, `type&&` denotes an rvalue reference.
 
   ```c++
-  void f(Widget&& param);         // 右值引用
-  Widget&& var1 = Widget();       // 右值引用
+  void f(Widget&& param);         // rvalue reference
+  Widget&& var1 = Widget();       // rvalue reference
   template<typename T>
-  void f(std::vector<T>&& param); // 右值引用
+  void f(std::vector<T>&& param); // rvalue reference
   ```
 
-- 若采用右值来初始化万能引用，就会得到一个右值引用；若采用左值来初始化万能引用，就会得到一个左值引用；
+- Universal references correspond to rvalue references if they're initialized with rvalues. They correspond to lvalue references if they'are initialized with lvalue.
 
-- 禁止把万能引用作为重载函数的形参，如果一定要这么用，可以使用`std::enable_if`对模板施加限制；
+- Constraining templates via `std::enable_if` permits the use of universal references and overloading together, but it controls the conditions under which compilers may use the universal reference overloads.
 
   ```c++
-  // 错误示例
+  // incorrect example
   template<typename T>
   void logAndAdd(T&& name)
   {
@@ -1332,15 +1342,15 @@
       names.emplace(nameFromIdx(idx));
   }
   std::string petName("Darla");
-  logAndAdd(petName);
-  logAndAdd(std::string("Persephone")); // 对右值实施移动而非复制
-  logAndAdd("Patty Dog"); // 在multiset中直接构造一个std::string对象，而非复制一个std::string型别的临时对象
+  logAndAdd(petName); // copy lvalue into multiset
+  logAndAdd(std::string("Persephone")); // move rvalue instead of copying it
+  logAndAdd("Patty Dog"); // create std::string in multiset instead of copying a temporary std::string
   short nameIdx = 0;
-  logAndAdd(nameIdx); // 错误，这里优先匹配的是万能引用
+  logAndAdd(nameIdx); // error! match universal reference here
   ```
 
   ```c++
-  // 使用std::enable_if
+  // use std::enable_if
   class Person {
   public:
     template<
@@ -1351,47 +1361,46 @@
         !std::is_integral<std::remove_reference_t<T>>::value
       >
     >
-    // 接受std::string型别以及可以强制转型到std::string的实参型别的构造函数
+    // ctor for std::strings and args convertible to std::strings
     explicit Person(T&& n) : name(std::forward<T>(n)) {
-    	// 断言可以从T型别的对象构造一个std::string型别的对象
       static_assert(std::is_constructible<std::string, T>::value,
                   		"Parameter n can't be used to construct a std::string")
     }
-    // 接受整型实参的构造函数
+    // ctor for integral args
     explicit Person(int idx) : name(nameFromIdx(idx)) {...}
     ...
   private:
     std::string name;
   };
   ```
+  
+- Universal reference parameters often have efficiency advantages, but they typically have usability disadvantages.
 
-- 万能引用形参通常在性能方面具备优势，但在易用性方面一般会有劣势，使用时要权衡利弊；
-
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 17.正确使用std::move和std::forward
+### 17.Understand std::move and std::forward
 
-- `std::move`实施的是无条件的向右值型别的强制型别转换（不会执行移动操作），`std::forward`实施的是有条件的强制类型转换（仅当传入的实参被绑定到右值时，`std::forward`才针对该实参实施向右值型别的强制型别转换）；
+- `std::move` performs an unconditional cast to an rvalue. In and of itself, it doesn't move anything. `std::forward` casts its argument to an rvalue only if that argument is bound to an rvalue.
 
   ```c++
-  void process(const Widget& lvalArg); // 处理左值
-  void process(Widget&& rvalArg);      // 处理右值
+  void process(const Widget& lvalArg); // process lavlues
+  void process(Widget&& rvalArg);      // process rvalues
   
-  template<typename T> // 把param传递给process的函数模版
+  template<typename T> // template that passes param to process
   void logAndProcess(T&& param)
   {
-      process(std::forward<T>(param)); // 强制类型转换
+      process(std::forward<T>(param));
   }
   ```
 
-- 使用`std::move`可以避免复制入参数据成员的过程产生的复制操作成本；
+- To avoid paying for a copy operation when copying param into a data member, apply `std::move`.
 
   ```c++
   class Annotation {
   public:
-      // 将text移动入value
+      // "move" text into value; this code doesn't do what it seems to!
       explicit Annotation(const std::string text) : value(std::move(text)) 
       { ... }
   private:
@@ -1399,12 +1408,12 @@
   };
   ```
   
-- 针对右值引用实施`std::move`，针对万能引用实施`std::forward`；
+- Use `std::move` on rvalue references, `std::forward` on universal references.
 
   ```c++
   class Widget {
   public:
-    // 右值引用
+    // rvalue references
     Widget(Widget&& rhs) : name(std::move(rhs.name)), p(std::move(rhs.p)) {...}
   	...
   private:
@@ -1416,64 +1425,56 @@
   ```c++
   class Widget {
   public:
-    // 万能引用
+    // universal references
     template<typename T>
     void setName(T&& newName) { name = std::forward<T>(newName); }
   }
   ```
 
-- 若局部对象可能适用于返回值优化(RVO, return value optimization)，禁止对其进行`std::move`或`std::forward`；
+- Never apply `std::move` or `std::forward` to local objects if they would otherwise be eligible for the return value optimization.
 
   ```c++
   Widget makeWidget()
   {
   	Widget w;
     ...
-    return std::move(w); // 禁止操作，这样会导致跳过RVO优化
+    return std::move(w); // move w into return value (don't do this!)
   }
   ```
 
-- 移动操作在以下场景无效：
+- There are thuse several scenarious in which C++11's move semantics do you no good:
 
-  1. 没有移动操作
+  1. `No move operations:` The object to be moved from fails to offer move operations. The move request therefore becomes a copy request.
+2. `Move not faster:` The object to be moved from has move operations that are no faster than its copy operations.
+  3. `Move not usable:` The context in which the moving would take place requires a move operation that emits no exceptions, but that operation isn't declared `noexcept`.
 
-     待移动的对象未能提供移动操作，因此，移动请求就变成了复制请求；
+- For copyable, cheap-to-move parameters that are always copied, pass by value may be nearly as efficient as pass by reference, it's easier to implement, and it can generate less object code.
 
-  2. 移动未能更快
+- Copying parameters via construction may be significantly more expensive than copying them via assignment.
 
-     待移动的对象虽然有移动操作，但并不比其复制操作更快；
+- Pass by value is subject to the slicing problem, so it's typically inappropriate for base class parameter types.
 
-  3. 移动不可用
-
-     移动本可以发生的语境下，要求移动操作不可发射异常，但该操作未加上noexcept声明；
-  
-- 对于可复制的，在移动成本低廉的并且一定会被复制的形参而言，按值传递可能会和按引用传递的具备相近的效率，并可能生成更少量的目标代码；
-
-- 经由构造复制形参的成本可能比经由赋值复制形参高出很多；
-
-- 按值传递肯定会导致切片问题，所以基类型别特别不适用于按值传递；
-
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
-### 18.完美转发的失败场景
+### 18.Perfect forwarding fails
 
-完美转发的失败情形，是源于模板型别推到失败或推导结果是错误的类型，失败的情形如下：
+Perfect forwarding fails when template type deduction fails or when it deduces the wrong type. The kinds of arguments that lead to forwarding failure are:
 
-- 大括号初始化物
+- braced initializers.
 
   ```c++
   void f(const std::vector<int>& v);
-  f({1, 2, 3});   // 没问题，“{1, 2, 3}”会隐式转换为std::vector<int>
-  fwd({1, 2, 3}); // 错误！无法通过编译
+  f({1, 2, 3});   // fine, "{1, 2, 3}" implicitly converted to std::vector<int>
+  fwd({1, 2, 3}); // error! doesn't compile
   ```
 
-- 0和NULL用作空指针
+- null pointers expressed as 0 or NULL.
 
-  如果把0和NULL以空指针之名传递给模版，型别推导就会发生行为扭曲，推导结果会是整型而非所传递实参的指针型别（修正方案：用nullptr）;
+  When you try to pass 0 or NULL as a null pointer to a template, type deduction goes awry, deducing an integral type (typically int) instead of a pointer type for the argument you pass.
 
-- 仅有声明的整形`static const`成员变量
+- declaration-only integral `const static` data members.
 
   ```c++
   class Widget {
@@ -1489,7 +1490,7 @@
   fwd(Widget::MinVals); // 错误！可能无法链接
   ```
 
-- 重载的函数名字和模版名字
+- template and overloaded function names
 
   ```c++
   void f(int (*pf)(int));
@@ -1511,7 +1512,7 @@
   fwd(static_cast<ProcessFuncType>(workOnVal)); // 没问题
   ```
 
-- 位域被用作函数实参
+- bitfields
 
   ```c++
   struct IPv4Header {
@@ -1530,7 +1531,7 @@
   fwd(h.totalLength); // 错误!
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1576,7 +1577,7 @@
                              30s);
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1661,7 +1662,7 @@
 
 - volatile用于读写操作不可以被优化掉的内存；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1681,7 +1682,7 @@
 | 需要将一个标准序列容器中的元素按照是否满足某个特定的条件区分开来 |      |             | *       | *                |             |
 | 需要对list中的数据排序                                       |      |             | *       | *                |             |
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1698,7 +1699,7 @@
 | 使迭代器，指针或引用变为无效的次数最少                       |        | *    |       |                 |                 |       |                          |
 | 使用随机访问迭代器，没有删除操作，且插入操作只发生在容器尾部 |        |      | *     |                 |                 |       |                          |
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1706,7 +1707,7 @@
 
 - empty对所有的标准容器的操作都是**常数时间**，且empty函数常常会被内联，而size对于一些list的操作是**线性时间**；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1737,7 +1738,7 @@ vector<int> v;
 v.insert(v.begin(), data, data + numValues); // 使用区间插入效率比单元素插入高得多
 ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1758,7 +1759,7 @@ istream_iterator<int> dataEnd;
 list<int> data(dataBegin, dataEnd);
 ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1793,7 +1794,7 @@ list<int> data(dataBegin, dataEnd);
   }
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1809,7 +1810,7 @@ list<int> data(dataBegin, dataEnd);
   pw1 = pw2;                        // pw1指向Widget，pw2被置为NULL。
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1825,7 +1826,7 @@ list<int> data(dataBegin, dataEnd);
   TODO
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1834,7 +1835,7 @@ list<int> data(dataBegin, dataEnd);
 - 大多数情况下，推荐使用vector和string替换动态分配的数组；
 - 在多线程环境中，推荐使用内置数组代替含有引用计数的string；多线程下，为保证string的引用计数的安全性而采取的措施，会影响效率；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1849,7 +1850,7 @@ list<int> data(dataBegin, dataEnd);
       v.push_back(i);
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1857,7 +1858,7 @@ list<int> data(dataBegin, dataEnd);
 
 - `vector<bool>`是一个假的容器，为了节省空间，它并不真的存储bool，而是使用类似1个字节存储8个bool的位域（bitfield）方式来存放；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1908,7 +1909,7 @@ list<int> data(dataBegin, dataEnd);
   };
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1926,7 +1927,7 @@ list<int> data(dataBegin, dataEnd);
 
 - 对于set和multiset，修改元素的值这一行为具有不可移植性；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1952,7 +1953,7 @@ list<int> data(dataBegin, dataEnd);
 
 - 当更新已经在映射表中的元素的值时，要优先选择operator[]；
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1977,7 +1978,7 @@ list<int> data(dataBegin, dataEnd);
       ...
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -1998,7 +1999,7 @@ list<int> data(dataBegin, dataEnd);
   string fileData((istreambuf_iterator<char>(inputFile)), istreambuf_iterator<char>()); // istreambuf_iterator不会跳过任何字符（包括空格）
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -2030,7 +2031,7 @@ list<int> data(dataBegin, dataEnd);
   };
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -2077,7 +2078,7 @@ list<int> data(dataBegin, dataEnd);
   cout << v.size();                        // 输出7
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -2147,7 +2148,7 @@ list<int> data(dataBegin, dataEnd);
   for_each<DequeIntIter, DoSomething&>(di.begin(), di.end(), d); 
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -2168,7 +2169,7 @@ if (i != s.end())
     ...
 ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
@@ -2192,7 +2193,7 @@ if (i != s.end())
   vector<Widget> vw; // 创建了包含0个Widget对象的vector，当需要时它会增长（避免了拷贝）
   ```
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 ---
 
@@ -2202,7 +2203,7 @@ if (i != s.end())
 
 TODO
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 ---
 
@@ -2212,7 +2213,7 @@ TODO
 
 TODO
 
-[返回顶部](#C++最佳实践)
+[TOP](#C++ Best Practice)
 
 
 
