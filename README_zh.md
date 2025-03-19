@@ -96,8 +96,6 @@
 - [redis源码分析-事务](DB/REDIS/ansys_transaction_zh.md)
 - [redis源码分析-压缩列表](DB/REDIS/ansys_ziplist_zh.md)
 
-### [RocksDB](DB/ROCKSDB/README_zh.md)
-
 
 ### [Sqlite](DB/SQLITE/README_zh.md)
 

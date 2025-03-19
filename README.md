@@ -4,17 +4,23 @@
 
 ## Quick Guide
 
-[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)   [ESSAY](NOTE/ESSAY/README.md)
+[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
 
 ---
 
 ## [Algorithm](ALGO/README.md)
 
+- [Balance Tree](ALGO/balance_tree.md)
 - [Big O Notation](ALGO/big_o_notation.md)
+- [Binary Tree](ALGO/binary_tree.md)
 - [Hash](ALGO/hash.md)
 - [Linked List](ALGO/link_list.md)
+- [Minimum Spanning Tree](ALGO/minimum_spanning_tree.md)
 - [Queue](ALGO/queue.md)
+- [Red Black Tree](ALGO/rb_tree.md)
+- [Sortest Path Problem](ALGO/shortest_path_problem.md)
 - [Sort Algorithm Summary](ALGO/sort.md)
+- [Tree](ALGO/tree.md)
 
 ---
 
