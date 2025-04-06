@@ -10,6 +10,7 @@
 - [Minimum Spanning Tree](minimum_spanning_tree.md)
 - [Queue](queue.md)
 - [Red Black Tree](rb_tree.md)
+- [Search Algorithm Summary](search.md)
 - [Sortest Path Problem](shortest_path_problem.md)
 - [Sort Algorithm Summary](sort.md)
 - [Tree](tree.md)

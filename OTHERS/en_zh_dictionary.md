@@ -1350,6 +1350,8 @@ argue `/ˈɑːɡjuː/` v. 说服；争论；辩论
 > DRV: argumentative `/ˌɑːɡjuˈmentətɪv/` adj. 好辩的,争论的
 >
 > DRV: argumentum `/ˌɑːɡjʊ'mentəm/` n. 议论,论点
+>
+> REF: By an **argument**, we mean a sequence of statements that end with a conclusion. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 aridity `/ə'ridəti/` n. 干旱，乏味
 
@@ -2419,6 +2421,8 @@ bistable `/baɪ'steɪbl/` n. 双稳态；adj. 双稳态的
 
 bit `/bɪt/` n. [计算机]比特，少量；小块；片刻；马嚼子；（烟头等的）咬嘴；钻头；钥匙齿；<美口>一角二分半钱；v. 给（马等）上嚼口；约束
 
+> REF: A **bit** is a symbol with two possible values, namely, 0(zero) and 1(one). --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+
 bite `/baɪt/` v. 咬；叮；蜇；n. 咬；一口；(被咬的)伤痕
 
 > DRV: biting `/'baɪtɪŋ/` adj. 刺痛的；辛辣的；尖刻的
@@ -2750,6 +2754,8 @@ bounce `/baʊns/` vi. 弹起；重新恢复；退票；vt. 使弹起；解雇；
 > DRV: bouncer `/'baʊnsə(r)/` n. 看门保镖；巨大的东西；巨人；板球
 
 bound `/baʊnd/` adj. 必定的；有义务的；受约束的；装订的；vi. 跳；跳跃前进；猛涨；n. 跳跃；范围；界限
+
+> REF: When a quantifier is ued on the variable $x$, we say that this occurrence of the variable is **bound**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 bounty `/'baʊnti/` n. 慷慨；慷慨的赠予物；（由政府提供的）奖金
 
@@ -3996,6 +4002,8 @@ circle `/'sɜːkl/` n. 圆圈；圈子；包厢；v. 划圈；包围；盘旋；
 circuit `/ˈsɜːkɪt/` n. 巡回；线路；环形；电路；回路；v. 巡回；绕 ... 环形
 
 > DRV: circuitry `/'sɜːkɪtri/` n. 电路
+>
+> REF: A **logic circuit** (or **digital circuit**) receives input signals $p_1, p_2, ..., p_n$, each a bit [either 0 (off) or 1 (on)], and produces output signals $s_1, s_2, ..., s_n$, each a bit. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 circular `/'sɜːkjələ(r)/` adj. 圆形的；循环的；n. 传单；通报
 
@@ -4870,6 +4878,8 @@ conifer `/ˈkɑːnɪfər/` n. 针叶树
 conjecture `/kən'dʒektʃə(r)/` n. 推测；臆测；v. 推测
 
 > DRV: conjectural `/kənˈdʒektʃərəl/` adj. 推测的；好推测的
+>
+> REF: A **conjecture** is a statement that is being proposed to be a true statement. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 conjugate `/'kɒndʒəɡeɪt/` v. 结合；配合；（动词）词形变化；adj. 成对的；[数]共轭的；[语]同词根的；n. [数]共轭值；[语]同根词
 
@@ -4964,6 +4974,8 @@ consist `/kənˈsɪst/` vi. 由 ... 组成；构成；在于；符合
 consistent `/kənˈsɪstənt/` adj. 始终如一的；持续的；一致的
 
 > DRV: consistency `/kənˈsɪstənsi/` n. 连贯；一致性；强度；硬度；浓稠度
+>
+> REF: System specifications should be **consistent**, that is, they should not contain conflicting requirements that could be used to derive a contradiction. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 console `/kən'səʊl/` n. 仪表盘；操控台；(游戏)平台；落地式支座；vt. 安慰；慰藉
 
@@ -5085,6 +5097,10 @@ continent `/ˈkɒntɪnənt/` n. 大陆；洲；(the Continent)欧洲大陆
 
 contingent `/kən'tɪndʒənt/` n. 代表团；小分队；偶然的事情；adj. 取决于；经验主义的；不可预知的
 
+> DRV: contingency `/kən'tɪndʒ(ə)nsɪ/` n. 偶然发生的事故,意外事故
+>
+> REF: A compound proposition that is neither a tautology nor a contradiction is called a `contingency`. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+
 continuation `/kənˌtɪnjʊ'eɪʃən/` n. 继续；延续；续集
 
 continuity `/ˌkɒntɪ'njuːəti/` n. 连续性
@@ -5110,6 +5126,10 @@ contradict `/ˌkɒntrə'dɪkt/` vt. 反驳；与 ... 矛盾
 > DRV: contradiction `/ˌkɒntrəˈdɪkʃn/` n. 矛盾；反驳；否认；不一致
 >
 > DRV: contradictory `/ˌkɒntrə'dɪktəri/` adj. 矛盾的；n. 矛盾
+
+contrapositive `/ˌkɒntrə'pɒzɪtɪv/` n. 对换句; adj. 对换的
+
+> REF: The **contrapositive** of $p \rightarrow q$ is the proposition $\neg q \rightarrow \neg p$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 contrary `/'kɒntrəri/` adj. 相反的；截然不同的；执拗的；n. 反面；相反
 
@@ -5162,6 +5182,8 @@ converge `/kənˈvɜːdʒ/` vi. 聚合；集中；会聚；vt. 使集合
 converse `/ˈkɒnvɜːs/` n. 相反的事物；逆命题；adj. 相反的；逆向的；倒的；v. 交谈；谈话；n. 谈话
 
 > DRV: conversely `/'kɒnvɜːsli/` adv. 相反地
+>
+> REF: The proposition $q \rightarrow p$ is called the **converse** of $p \rightarrow q$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 convert `/kənˈvəːt/` v. (使)转变；使…改变信仰；转化；兑换；换算；n. 皈依者；改变信仰的人
 
@@ -5247,6 +5269,8 @@ cork `/kɔːk/` n. 软木塞；软木树；软木
 
 corn `/kɔːn/` n. 谷物；玉米；伤感平庸作品；v. 形成(颗粒状)；腌；(用谷物)喂
 
+> DRV: cornfield `/'kɔːnfiːld/` n. 〈美〉玉米田,〈英〉小麦田
+>
 > DRV: cornstalk `/'kɔːn,stɔːk/` n. 谷类的秆
 
 corner `/ˈkɔːnə/` n. 角落；转角；困境；v. 将 ... 逼入困境；转弯；垄断；adj. 位于角落的
@@ -8331,9 +8355,11 @@ equitable `/ˈekwɪtəbl/` adj. 公平的；公正的
 
 equity `/'ekwəti/` n. 公平；公正；n. 衡平法；权益；产权；(无固定利息的)股票
 
-equivalence `/ɪ'kwɪvələns/` n. 相等；等值
-
 equivalent `/ɪˈkwɪv(ə)l(ə)nt/` adj. 等价的 相等的；n. 相等物
+
+> DRV: equivalence `/ɪ'kwɪvələns/` n. 相等；等值
+>
+> REF: Compound propositions that have the same truth values in all possible cases are called **logically equivalent**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 equivocal `/ɪˈkwɪvəkl/` adj. 模棱两可的,意义不明的;模糊的,含糊的,不定的;(指人等)不可靠的
 
@@ -9904,6 +9930,8 @@ free `/friː/` adj. 自由的；免费的；畅通的；没有…的；未使用
 > SYN(自由.freedom): autonomy, discretion, independence, latitude, leeway, liberty, licence, opportunity, privilege, scope.
 >
 > DRV: freed `/f'riːd/` free的过去式
+>
+> REF: An occurrence of a variable that is not bound by a quantifier or set equal to a particular value is said to be **free**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 freehold `/'friːhəʊld/` n. [律]永久业权
 
@@ -11468,6 +11496,8 @@ holiday `/'hɒlədeɪ/` n. 假日；节日
 > DRV: holidaymaker `/'hɒlədeɪmeɪkə(r)/` n. 度假者
 
 holistic `/həʊ'lɪstɪk/` adj. 整体的；全盘的
+
+holler `/'hɒlə/` vi. 发牢骚；叫喊；抱怨; vt. 大声叫喊; n. 叫喊
 
 hollow `/ˈhɒləʊ/` adj. 空的；空洞的；凹陷的；虚伪的；(声音)沉闷的；n. 山谷；洞；窟窿；vt. 挖空；vi. 形成空洞；adv. 完全地；彻底
 
@@ -13086,6 +13116,8 @@ inventory `/ˈɪnvəntri/` n. 详细目录；存货(清单)；vt. 编制(详细�
 inverse `/ˌɪn'vɜːs/` adj. 倒转的；相反的；n. 倒数；相反的事物；(数学)逆反函数；负数
 
 > DRV: inversion `/ɪn'vɜːʃn/` n. 倒转；反向；倒置；[语法]倒装法
+>
+> REF: The proposition $\neg p \rightarrow \neg q$ is called the **inverse** of $p \rightarrow q$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 invertebrate `/ɪnˈvɜːtɪbrət/` n. 无脊椎动物；adj. 无脊椎的
 
@@ -14126,6 +14158,8 @@ leisure `/ˈleʒə(r)/` n. 闲暇；空闲；安逸；adj. 空闲的；有闲的
 leitmotif `/'laɪtməʊ,tiːf/` n. 主乐调,乐旨
 
 lemma `/'lemə/` n. （数学）引理；词条
+
+> REF: A less important theorem that is helpful in the proof of other results is called a **lemma** (plural `lemmas` or `lemmata`). --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 lemon `/ˈlemən/` n. 柠檬树; 柠檬; 柠檬黄, 柠檬色
 
@@ -18343,6 +18377,8 @@ playmate `/'pleɪmeɪt/` n. 游伴；玩伴
 
 playtime `/'pleɪtaɪm/` n. 课间休息时间；娱乐时间；上演时间
 
+plaza `/ˈplɑːzə/` n. 广场；市场，购物中心
+
 plea `/pliː/` n. 恳求；申诉；抗辩；借口
 
 > DRV: plead `/pliːd/` v. 辩护；恳求；提出借口；认罪
@@ -18661,6 +18697,10 @@ postal `/'pəʊstl/` adj. 邮政的；n. 明信片
 
 postbox `/'pəʊs(t)bɒks/` n. 邮箱
 
+postcondition `/ˌpəustkən'diʃən/` n. 后[置]条件
+
+> REF: the conditions that the output should satify when the program has run are known as **postconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+
 poster `/'pəʊstə(r)/` n. 海报；装饰画；急行旅人
 
 posterior `/pɒ'stɪəriə(r)/` adj. (在时间；次序上)较后的；n. 臀部
@@ -18812,6 +18852,8 @@ precocity `/prɪ'kɒsəti/` n. 早熟；过早发育
 preconception `/ˌpriːkənˈsepʃn/` n. 事先形成的观点或思想;先入之见
 
 precondition `/ˌpriːkən'dɪʃn/` n. 先决条件；前提；v. 预先准备
+
+> REF: The statements that describe valid input are known as **preconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 precursor `/priˈkɜːsə(r)/` n. 先驱；前任；前兆；[生物]前体，前驱体
 
@@ -19263,7 +19305,25 @@ prone `/prəʊn/` adj. 易于 ... 的；有 ... 倾向的；俯卧的
 
 pronominal `/prəʊ'nɒmɪn(ə)l/` adj. 代词的,代词性质的
 
-proofread `/ˈpruːfriːd/` vt. 校对；校勘; vi. 做校对工作
+proof `/pruːf/` n. 证据；证明；检验；校样；adj. 防 ... 的；耐 ... 的；v. 检验；校对
+
+> DRV: proofread `/ˈpruːfriːd/` vt. 校对；校勘; vi. 做校对工作
+>
+> REF: A direct proof shows that a conditional statement $p \rightarrow q$ is true by showing that if $p$ is true, then $q$ must also be true, so that the combination $p$ true and $q$ false never occurs. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: Proofs of theorems of this type that are not direct proofs, that is, that do not start with the premises and end with the conclusion, are called **indirect proofs**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: **Proofs by contraposition** make use of the fact that the conditional statement $p \rightarrow q$ is equivalent to its contrapositive, $\neg q \rightarrow \neg p$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: We can quickly prove that a conditional statement $p \rightarrow q$ is true when we know that $p$ is false, because $p \rightarrow q$ must be true when $p$ is false. Consequently, if we can show that $p$ is false, then we have a proof, called a **vacuous proof**, of the conditional statement $p \rightarrow q$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: Because the statement $r \wedge \neg r$ is a contradiction whenever $r$ is a proposition, we can prove that $p$ is true if we can show that $\neg p \rightarrow (r \wedge \neg r)$ is true for some proposition $r$. Proofs of this type are called **proofs by contradiction**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: **PROOFS OF EQUIVALENCE** To prove a theorem that is a biconditional statement, that is, a statement of the form $p \leftrightarrow q$, we show that $p \rightarrow q$ and $q \rightarrow p$ are both true. The validity of this approach is based on the tautology $(p \leftrightarrow q) \leftrightarrow (p \rightarrow q) \wedge (q \rightarrow p)$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: the original conditional statement with a hypothesis made up of a disjunction of the propositions $p_1, p_2, ..., p_n$ can be proved by providing each of the $n$ conditional statements $p_i \rightarrow q, i = 1, 2, ..., n$, individually. Such an argument is called a **proof by cases**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: **EXHAUSTIVE PROOF** Some theorems can be proved by examining a relatively small number of examples. Such proofs are called **exhaustive proofs**, or **proofs by exhaustion** because these proofs proceed by exhausting all possibilities. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 prop `/prɒp/` n. 支柱；支持者；倚靠人；n. 道具；n. 螺旋桨；推进器；v. 支撑；维持
 
@@ -19304,6 +19364,8 @@ propose `/prəˈpəʊz/` v. 打算；计划；向 ... 提议；求婚；提名
 proposition `/ˌprɒpəˈzɪʃn/` n. 提议；事业；命题；vt. 向 ... 调情
 
 > DRV: propositional `/ˌprɒpəˈzɪʃən(ə)l/` adj. 命题的
+>
+> REF: A **proposition** is a declarative sentence (that is, a sentence that declares a fact) that is either true or false, but not both. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 proprietary `/prə'praɪətri/` adj. 专利的；所有权的；n. 所有权；所有人
 
@@ -19584,6 +19646,8 @@ puzzle `/ˈpʌzl/` n. 难题；谜；迷惑；拼图游戏；vt. 使为难；使
 > DRV: puzzled `/'pʌzld/` adj. 困惑的；迷惑的
 >
 > DRV: puzzling `/'pʌzlɪŋ/` adj. 令人迷惑的；茫然不知所措的；莫名其妙的
+>
+> REF: Puzzles that can be solved using logical reasoning are known as **logic puzzles**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 ### pv
 
@@ -19736,6 +19800,12 @@ quality `/ˈkwɒləti/` n. 品质；才能；特质；adj. 高品质的；<英�
 qualm `/kwɑːm/` n. 疑虑；晕眩；紧张不安
 
 quandary `/'kwɒndəri/` n. 困惑；迷惑；为难
+
+quantifier `//ˈkwɒntɪfaɪə(r)/` n. 量词；量化词
+
+> REF: The **universal quantification** of $P(x)$ is the statement "P(x) for all values of x in the domain." --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: The **existential quantification** of P(x) is the proposition "There exists an element x in the domain such taht P(x)." --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 quantity `/ˈkwɒntəti/` n. 量；数量；大量
 
@@ -21482,6 +21552,8 @@ satisfy `/'sætɪsfaɪ/` v. 使满意；满足；使信服；清偿
 > DRV: satisfaction `/ˌsætɪsˈfækʃn/` n. 满意；赔偿；乐事；妥善处理；确信
 >
 > DRV: satisfying `/'sætɪsfaɪɪŋ/` adj. 令人满意的；圆满的；可相信的
+>
+> REF: A compound proposition is **satisfiable** if there is an assignment of truth values to its variables that make it true --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 satnav `/ˈsætnæv/` n. (卫星信息辅助的)航行; (可接收卫星信息的)航海系统
 
@@ -22758,6 +22830,10 @@ soloist `/'səʊləʊɪst/` n. 独唱者；独奏者
 solomon `/ˈsɒləmən/` n. 智者；聪明人
 
 soluble `/'sɒljəbl/` adj. 可溶解的；可解决的
+
+solution `/səˈluːʃn/` n. 解决, 解答, 解决办法然想到一个解决方法; 溶液; 溶解
+
+> REF: When we find a particular assignment of truth values that makes a compound proposition true, we have shown that it is satisfiable; such an assignment is called a **solution** of this particular satisfiability problem. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 solvent `/'sɒlvənt/` n. 溶剂；解决者；adj. 有偿付能力的；有溶解力的
 
@@ -24293,6 +24369,8 @@ taut `/tɔːt/` adj. 拉紧的；紧张的；整洁的; vt. 使纠缠；使缠�
 
 tautology `/tɔː'tɒlədʒi/` n. 无谓的重复；重言；累赘
 
+> REF: A compound proposition that is always true, no matter what the truth values of the propositional variables that occur in it, is called a `tautology`. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+
 tavern `/ˈtævən/` n. 酒馆；客栈
 
 tawdry `/ˈtɔːdri/` adj. 廉价而俗丽的；非常华丽的
@@ -24467,6 +24545,8 @@ ternary `/'tɜːnərɪ/` adj. 由三部分组成的；三重的；第三的；[�
 
 terrace `/ˈterəs/` n. 平台；阳台；梯田；vt. 使成梯田；给 ... 建阳台
 
+terrain `/təˈreɪn/` n. 地形, 地面, 地域, 地带
+
 terrestrial `/təˈrestriəl/` adj. 地球的；陆上的；陆栖的；n. 地球人;陆地生物
 
 terrific `/təˈrɪfɪk/` adj. 极大的, 非常的; 极好的，了不起的, 非常棒的, 非常漂亮的; 可怕的, 恐怖的, 骇人的
@@ -24546,6 +24626,8 @@ theology `/θi'ɒlədʒi/` n. 神学
 > DRV: theologian `/θɪə'ləʊdʒɪən/` n. 神学家; 宗教研究家
 
 theorem `/'θɪərəm/` n.（数学）定理
+
+> REF: A theorem is a statement that can be proven to be true by accepted mathematical operations and arguments. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 theoretical `/ˌθɪə'retɪkl/` adj. 理论上的
 
@@ -26990,6 +27072,8 @@ widespread `/ˈwaɪdspred/` adj. 分布(或散布)广的；普遍的
 widget `/'wɪdʒɪt/` n. 部件；小产品
 
 wield `/wiːld/` v. 行使；施加(影响)；使用(武器等)；挥舞
+
+wiggle `/ˈwɪɡl/` vi. 使……摆动，使……扭动; vt. 摆动; n. 扭动
 
 wildebeest `/'wɪldəbiːst/` n. 羚羊的一种
 

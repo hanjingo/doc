@@ -107,6 +107,7 @@
 - Zeromq依赖库 [libzmq](https://github.com/zeromq/libzmq)
 - C++ HTTP项目 [qinguoyi](https://github.com/qinguoyi)/**[TinyWebServer](https://github.com/qinguoyi/TinyWebServer)**
 - C++内网穿透库 [lazy-luo/smarGate](https://github.com/lazy-luo/smarGate )
+- DPDK资料大全 https://github.com/0voice/dpdk_engineer_manual
 
 ### 数据库/存储
 

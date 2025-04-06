@@ -77,19 +77,3 @@ Continuous media systems are characterized by their real-time information-delive
 - Synchronization among distinct data streams must be maintained.
 
 `Mobile computing` has proved useful in many applications.
-
-
-
-## Summary
-
-TODO
-
-
-
-## Vocabulary
-
-spatial `/'speɪʃl/` adj. 空间的
-
-elevation `/ˌelɪ'veɪʃn/` n. 提升；海拔；高度；提高；立视图
-
-cylinder `/'sɪlɪndə(r)/` n. （磁盘）柱面；圆筒；汽缸；圆柱体

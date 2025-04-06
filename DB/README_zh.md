@@ -10,7 +10,6 @@
 
 ## 第三方库
 
-- [InfluxDB](INFLUXDB/README_zh.md)
 - [Mysql](MYSQL/README_zh.md)
 - [Redis](REDIS/README_zh.md)
 - [Sqlite](SQLITE/README_zh.md)

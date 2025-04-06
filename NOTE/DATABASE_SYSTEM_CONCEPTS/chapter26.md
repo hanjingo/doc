@@ -18,9 +18,3 @@
 `Many-server, many-router model` illustrated in Figure 26.1d. A controller process starts up the other processes and supervises their functioning.
 
 ![26_2](res/26_2.png)
-
-
-
-## Summary
-
-TODO

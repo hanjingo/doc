@@ -50,6 +50,7 @@ English | [中文版](README_zh.md)
 | Title                                                        | Edition | Author                           | Abstract/Evaluate |
 | ------------------------------------------------------------ | ------- | -------------------------------- | ----------------- |
 | [COMPUTER NETWORKING: A Top-Down Approach](COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md) | 6ED     | James F. Kurose<br>Keith W. Ross |                   |
+| [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)   | 2.0.0   |                                  |                   |
 
 ### Parallel
 

@@ -8,8 +8,6 @@ English | [中文版](binary_tree_zh.md)
 
 A binary tree is a tree in which no node can have more than two children. A property of a binary tree that is sometimes important is that the depth of an average binary tree is considerably smaller than $N$.
 
-
-
 ## Generic binary tree
 
 ![binary_tree_struct](res/binary_tree_struct.png)

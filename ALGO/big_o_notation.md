@@ -6,12 +6,6 @@
 
 
 
-## Terminology
-
-- `time complexity`
-
-
-
 ## Definition
 
 **Definition 2.1** $T(N) = O(f(N))$ if there are positive constants $c$ and $n_0$ such that $T(N) \leqslant cf(N)$ when $N \geqslant n_0$.
@@ -112,6 +106,12 @@ We say that $A$ us congruent to $B$ modulo $N$, written $A \equiv B (mod\ N)$, i
 3. Proof by Contradiction
 
    Proof by contradiction proceeds by assuming that the theorem is false and showing that this assumption implies that some known property is false, and hence the original assumption was erroneous.
+
+
+
+## Terminology
+
+- `time complexity`
 
 
 

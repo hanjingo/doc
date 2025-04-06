@@ -1,23 +1,6 @@
 # 唯一ID的生成
 
-<!-- vim-markdown-toc GFM -->
-
-* [1 生成](#1-生成)
-    - [1.1 数据库自增](#11-数据库自增)
-    - [1.2 snow_flake算法](#12-snow_flake算法)
-* [2 IM系统的ID](#2-im系统的id)
-    - [2.1腾讯seqsvr](#21腾讯seqsvr)
-        + [2.1.1sequence](#211sequence)
-        + [2.1.2预分配中间层](#212预分配中间层)
-        + [2.1.3分号段共享存储](#213分号段共享存储)
-        + [2.1.4seqsvr总架构](#214seqsvr总架构)
-    - [2.2美团Leaf-segment](#22美团leaf-segment)
-        + [2.2.1数据库表设计](#221数据库表设计)
-    - [2.3美团Leaf-snowflake](#23美团leaf-snowflake)
-    - [2.4融云方案](#24融云方案)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
