@@ -1,4 +1,6 @@
-# SQL手册
+中文版 | [English](sql.md)
+
+# SQL语言
 
 [TOC]
 

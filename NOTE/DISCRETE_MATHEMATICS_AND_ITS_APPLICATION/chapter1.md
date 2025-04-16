@@ -182,3 +182,72 @@ The two parts of a **uniqueness proof** are:
 
 **THEOREM**: FERMAT'S LAST THEOREM The equation $x^n + y^n = z^n$ has no solutions in integers x, y, and z with $xyz \neq 0$ whenever $n$ is an integer with $n > 2$.
 
+
+
+## TERMS
+
+- **proposition**: a statement that is true or false.
+- **propositional variable**: a variable that represents a proposition.
+- **truth value**: true or false.
+- **$\neg p$ (negation of p)**: the proposition with truth value opposite to the truth value of $p$.
+- **logical operators**: operators used to combine propositions.
+- **compound proposition**: a proposition constructed by combining propositions using logical operators.
+- **truth table**: a table displaying all possible truth values of propositions.
+- **$p \vee q$ (disjunction of p and q)**: the proposition "$p$ or $q$", which is true if and only if at least one of $p$ and $q$ is true.
+- **$p \wedge q$ (conjunction of $p$ and $q$)**: the proposition "$p$ and $q$", which is true if and only if both $p$ and $q$ are true.
+- **$p \oplus q$ (exclusive or of $p$ and $q$)**: the proposition "p XOR q", which is true when exactly one of $p$ and $q$ is true.
+- **$p \rightarrow q$ ($p$ implies $q$)**: the proposition "if $p$, then $q$", which is false if and only if $p$ is true and $q$ is false.
+- **converse of $p \rightarrow q$**: the conditional statement $q \rightarrow p$.
+- **contrapositive of $p \rightarrow q$**: the conditional statement $\neg q \rightarrow \neg p$.
+- **inverse of $p \rightarrow q$**: the conditional statement $\neg p \rightarrow \neg q$.
+- **$p \leftrightarrow q$ (biconditional)**: the proposition "$p$ if and only if $q$", which is true if and only if $p$ and $q$ have the same truth value.
+- **bit**: either a 0 or a 1.
+- **Boolean variable**: a variable that has a value of 0 or 1.
+- **bit operation**: an operation on a bit or bits.
+- **bit string**: a list of bits.
+- **bitwise operations**: operations on bit strings that operate on each bit in one string and the corresponding bit in the other string.
+- **logic gate**: a logic element that performs a logical operation on one or more bits to produce an output bit.
+- **logic circuit**: a switching circuit made up of logic gates that produces one or more output bits.
+- **tautology**: a compound proposition that is always true.
+- **contradiction**: a compound proposition that is always false.
+- **contingency**: a compound proposition that is sometimes true and sometimes false.
+- **consistent compound propositions**: compound propositions for which there is an assignment of truth values to the variables that make all these propositions true.
+- **satisfiable compound proposition**: a compound proposition for which there is an assignment of truth values to its variables that makes it true.
+- **logically equivalent compound propositions**: compound propositions that always have the same truth values.
+- **predicate**: part of a sentence that attributes a property to the subject.
+- **propositional function**: a statement containing one or more variables that becomes a proposition when each of its variables is assigned a value or is bound by a quantifier.
+- **domain (or universe) of discourse**: the values a variable in a propositional function may take.
+- **$\exists x P(x)$ (existential quantification of $P(x)$)**: the proposition that is true if and only if there exists an $x$ in the domain such that $P(x)$ is true.
+- **$\forall x P(x)$ (universal quantification of $P(x)$)**: the proposition that is true if and only if $P(x)$ is true for every $x$ in the domain.
+- **logically equivalent expressions**: expression that have the same truth value no matter which propositional functions and domains are used.
+- **free variable**: a variable not bound in a propositional function.
+- **bound variable**: a variable that is quantified.
+- **scope of a quantifier**: portion of a statement where the quantifier binds its variable.
+- **argument**: a sequence of statements.
+- **argument form**: a sequence fo compound propositions involving propositional variables.
+- **premise**: a statement, in an argument, or argument form, other than the final one.
+- **conclusion**: the final statement in an argument or argument form.
+- **valid argument form**: a sequence of compound propositions involving propositional variables where the truth of all the premises implies the truth of the conclusion.
+- **valid argument**: an argument with a valid argument form.
+- **rule of inference**: a valid argument form that can be used in the demonstration that arguments are valid.
+- **fallacy**: an invalid argument form often used incorrectly as a rule of inference (or sometimes, more generally, an incorrect argument).
+- **circular reasoning or begging the question**: reasoning where one or more steps are based on the truth of the statement being proved.
+- **theorem**: a mathematical assertion that can be shown to be true.
+- **conjecture**: a mathematical assertion proposed to be true, but that has not been proved.
+- **proof**: a demonstration that a theorem is true.
+- **axiom**: a statement that is assumed to be true and that can be used as a basis for proving theorems.
+- **lemma**: a theorem used to prove other theorems.
+- **corollary**: a proposition that can be proved as a consequence of a theorem that has just been proved.
+- **vacuous proof**: a proof that $p \rightarrow q$ is true based on the fact that $p$ is false.
+- **trivial proof**: a proof that $p \rightarrow q$ is true based on the fact that $q$ is true.
+- **direct proof**: a proof that $p \rightarrow q$ is true that proceeds by showing that $q$ must be true when $p$ is true.
+- **proof by contraposition**: a proof that $p \rightarrow q$ is true that proceeds by showing that $p$ must be false when $q$ is false.
+- **proof by contradiction**: a proof that $p$ is true based on the truth of the conditional statement $\neg p \rightarrow q$, where $q$ is a contradiction.
+- **exhaustive proof**: a proof that establishes a result by checking a list of all possible cases.
+- **proof by cases**: a proof broken into separate cases, where these cases cover all possibilities.
+- **without loss of generality**: an assumption in a proof that makes it possible to prove a theorem by reducing the number of cases to consider in the proof.
+- **counterexample**: an element $x$ such that $P(x)$ is false.
+- **contructive existence proof**: a proof that an element with a specified property exists that explicitly finds such an element.
+- **nonconstructive existence proof**: a proof that an element with a specified property exists that does not explicitly find such an element.
+- **rational number**: a number that can be expressed as the ratio of two integers $p$ and $q$ such that $q \neq 0$.
+- **uniqueness proof**: a proof that there is exactly one element satisfying a specified property.

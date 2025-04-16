@@ -3,9 +3,9 @@
 Kenneth H. Rosen, 8ED
 
 - [CHAPTER 1 The Foundations: Logic and Proofs](chapter1.md)
-- CHAPTER 2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices
-- CHAPTER 3 Algorithms
-- CHAPTER 4 Number Theory and Cryptography
+- [CHAPTER 2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices](chapter2.md)
+- [CHAPTER 3 Algorithms](chapter3.md)
+- [CHAPTER 4 Number Theory and Cryptography](chapter4.md)
 - CHAPTER 5 Induction and Recursion
 - CHAPTER 6 Counting
 - CHAPTER 7 Discrete Probability

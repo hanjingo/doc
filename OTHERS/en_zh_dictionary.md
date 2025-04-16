@@ -125,6 +125,8 @@ abstain `/əbˈsteɪn/` vi. 放弃；自制；避免
 
 abstract `/'æbstrækt/` adj. 抽象的；理论的；抽象派的；n. 摘要；抽象派艺术作品；v. (/æbˈstrækt/)把…抽象出；提取；抽取；转移(注意力等)；做…的摘要；<婉>偷
 
+> DRV: abstruse `/əbˈstruːs/` adj. 深奥的；难懂的
+
 absurd `/əb'sɜːd/` adj. 荒唐的；可笑的；不合理的；n. 荒唐
 
 > DRV: absurdist `/əb'sɜːdɪst/` n. 荒诞主义者
@@ -539,6 +541,8 @@ aftermath `/'ɑːftəmæθ/` n. 后果；余波；灾后时期；再生作物
 
 aftershave `/'ɑːftəʃeɪv/` n. 须后水
 
+afterthought `/'ɑːftəθɔːt/` n. 事后的考虑或想法; 事后聪明，马后炮；事后再想起; 后来添加的东西；事后想到的事物
+
 afterward `/'ɑːftəwəd/` adv. 后来；以后
 
 ### ag
@@ -704,6 +708,10 @@ algebra `/'ældʒɪbrə/` n. 代数学
 > DRV: algebraic `/ˌaldʒɪˈbreɪɪk/` adj. 代数的；代数学的
 
 algorithm `/'ælɡərɪðəm/` n. 算法
+
+> REF: An `algorithm` is a finite sequence of precise instructions for performing a computation or for solving a problem. -- Discrete Mathematics and Its Applications by Kenneth H. Rosen
+>
+> REF: Algorithms that make what seems to be the "best" choice at each step are called **greedy algorithms**. -- Discrete Mathematics and Its Applications by Kenneth H. Rosen
 
 alibi `/'ælɪbaɪ/` n. 托辞；犯罪现场；辩解; vi. 辩解；找借口; vt. 为…辩解
 
@@ -874,6 +882,8 @@ amorphous `/əˈmɔːfəs/` adj. 无固定形状的; 非结晶的；非晶态的
 amortisation `/əmɔːtaɪ'zeɪʃən/` n. 阻尼(熄灭；折旧；清偿)
 
 amortize `/ə'mɔːtaɪz/` v. 分期偿还；摊还
+
+amp `/ˌeɪemˈpi:/` abbr. 安培（ampere，电流强度的单位）；放大器（amplifier）; n. [俚]电吉他
 
 ampersand `/ˈampəsand/` n. 符号&
 
@@ -3067,6 +3077,10 @@ bungle `/'bʌŋɡl/` v. 拙劣地工作；粗率地做；搞坏；贻误；n. �
 
 bungalow `/'bʌŋgələʊ/` n. 平房；小屋
 
+bunk `/bʌŋk/` n. 铺位；座床；床铺; vi. 睡在铺上；逃跑; vt. 为…提供铺位
+
+bunker `/'bʌŋkə/` n. (士兵用的) 掩体, 地堡, 掩蔽壕; (高尔夫球场的)沙坑
+
 bunkum `/'bʌŋkəm/` n. 博取欢心的演说,废话
 
 bunny `/'bʌnɪ/` n. 兔子
@@ -3245,7 +3259,9 @@ calculus `/ˈkalkjʊləs/` n. 微积分；算法；结石
 
 calf `/kɑːf/` n. 小牛；幼崽；愚蠢的年轻人；小牛皮；小腿肚
 
-calibration `/ˌkælɪˈbreɪʃn/` n. 校准；刻度
+caliber `/ˈkæləbə/` n. 口径；才干；器量；水准（等于calibre）
+
+> DRV: calibration `/ˌkælɪˈbreɪʃn/` n. 校准；刻度
 
 callee `/kɔː'liː/` n. 被呼叫者；被召唤者
 
@@ -4598,6 +4614,8 @@ compleat `/kəm'pliːt/` adj. 有造诣的；非常熟练的
 complement `/'kɒmplɪment/` vt. 相辅相成；n. 补足物；补语；余角
 
 > DRV: complementary `/ˌkɒmplɪ'mentri/` adj. 补充的；互补的
+>
+> DRV: complementation `/ˌkɒmplɪmen'teɪʃn/` n. 补充；互补; 补数法; 取余运算
 
 complete `/kəm'pliːt/` adj. 完整的；完成的；彻底的；vt. 完成；使完美；使圆满；填（表格等）
 
@@ -7293,6 +7311,8 @@ dolphin `/ˈdɒlfɪn/` n. 海豚
 
 domain `/də'meɪn/` n. 领地；领域；范围
 
+> REF: A `partial function f` from a set $A$ to a set $B$ is an assignment to each element $a$ in a subset of $A$, called the `domain of definition` of $f$, of a unique element $b$ in $B$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+
 dome `/dəʊm/` n. 圆屋顶；苍穹；<俚>脑袋；圆形的火山口；vt. 加圆屋顶于...上；使成圆屋顶；vi. 成圆顶状
 
 domestic `/də'mestɪk/` adj. 家庭的；国内的；驯养的；n. 佣人；家仆
@@ -7652,6 +7672,8 @@ earthworm `/'ɜːθwɜːm/` n. 蚯蚓
 earthy `/ˈɜːθi/` adj. 泥土的；像泥土的; 泥土气息的；粗俗的
 
 ease `/iːz/` n. 容易；悠闲；安逸；自在；v. 减轻；放松；缓和；缓慢移动
+
+> DRV: easement `/'iːzm(ə)nt/` n. 缓和；减轻；地役权
 
 easel `/ˈiːzl/` n. 画架,黑板架
 
@@ -10562,6 +10584,8 @@ gosh `/gɒʃ/` int. 唉；糟了；必定；天啊
 gospel `/ˈɡɒspl/` n. 新约圣经四福书之一；福音；真理
 
 gossip `/ˈɡɒsɪp/` n. 流言蜚语；爱说长道短的人；闲话；vi. 散播(流言蜚语)
+
+gotchas `/ˈɡɔtʃə/` int. 明白了（等于got you）
 
 gothic `/'ɡɔθik/` adj. 哥特式的；野蛮的; n. 哥特式
 
@@ -14189,6 +14213,8 @@ lettuce `/ˈletɪs/` n. 莴苣；生菜；<俚>纸币
 
 leukaemia `/lju'ki:miə/` n. 〈医〉白血病
 
+levee `/ˈlevi/` n. 堤坝（码头）；（旧时君主或显贵的）早晨接见; vt. 为…筑堤
+
 lever `/ˈliːvə/` n. 杠杆；控制杆；手段；v. 撬开；使用杠杆
 
 > DRV: leverage `/ˈliːvərɪdʒ/` n. 杠杆；杠杆作用；举债经营；v. 举债经营；补充(金钱等)；对…产生影响
@@ -14933,7 +14959,11 @@ maternal `/mə'tɜːnl/` adj. 母亲的；母系的；母方的；母性的
 
 > DRV: maternity `/mə'tɜːnəti/` n. 母性；母亲身份；产科病房；adj. 孕妇的；母性的
 
-matchless `/ˈmætʃləs/` adj. 无敌的；无可匹敌的
+match `/mætʃ/` vt. 使相配；与…竞争；相配；使比赛；敌得过，比得上; vi. 相配，相称；比赛；匹配；相比; n. 火柴；对手；匹配；比赛，竞赛
+
+> DRV: matchless `/ˈmætʃləs/` adj. 无敌的；无可匹敌的
+>
+> REF: Finding where a pattern occurs in a text string is called **string matching**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 mathematician `/ˌmæθəmə'tɪʃn/` n. 数学家
 
@@ -14942,6 +14972,10 @@ matriarch `/'meɪtrɪɑːk/` n. 女家长,高雅的老妇人
 matrimonial `/ˌmætrɪ'məʊniəl/` adj. 婚姻的；夫妇的
 
 matrix `/'meɪtrɪks/` n. 矩阵；发源地；基质；母体；子宫；(人或社会成长发展的）社会环境、政治局势；线路网；道路网；[地]杂基；矩阵转接电路；唱片模板
+
+> REF: A `matrix` is a rectangular array of numbers. A matrix with `m rows` and `n` columns is called an $m \times n$ matrix. The plural of matrix is `matrices`. A matrix with the same number of rows as columns is called `square`. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: A matrix all of whose entries are either 0 or 1 is called a **zero-one matrix**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 matroid `/mə'trɔɪd/` n. 矩阵胚；拟阵
 
@@ -17777,6 +17811,8 @@ pedant `/ˈpednt/` n. 书呆子；学究；卖弄学问的人；空谈家
 
 pedal `/ˈpedl/` vi. 踩踏板；骑车; n. 踏板；脚蹬子; vt. 踩……的踏板；骑（自行车）; adj. 脚踏的；脚的
 
+peddle `/ˈpedl/` vt. & vi. (沿街)叫卖；兜售; 宣传，散播
+
 pedestal `/'pedɪstl/` n. 基架；底座；受人尊敬的地位; vt. 搁在台上；颂扬
 
 pedestrian `/pə'destriən/` adj. 徒步的；缺乏想像的；n. 行人
@@ -17896,6 +17932,10 @@ perfidy `/'pɜːfədi/` n. 不诚实；不忠；背信弃义
 > REF: HE is, at this Time, transporting large Armies of foreign Mercenaries to compleat the Works of Death, Desolation, and Tyranny, already begun with circumstances of Cruelty and Perfidy, scarcely paralleled in the most barbarous Ages, and totally unworthy the Head of a civilized Nation. --The Declaration of Independence
 
 perform `/pəˈfɔːm/` v. 执行；履行；表演；运转；举行
+
+performance `/pəˈfɔːməns/` n. 表演，演出；工作情况，表现；（投资的）业绩；执行，履行；（汽车的）性能；（语言学）语言表现，言语行为
+
+> REF: By the worst-case performance of an algorithm, we mean the largest number of operations needed to solve the given problem using this algorithm on input of specified size. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 perfume `/ˈpəːfjuːm/` n. 香水；香气; vt. 洒香水于；使香气弥漫
 
@@ -18158,6 +18198,8 @@ physique `/fɪ'ziːk/` n. 体格；体形
 ### pi
 
 [回到P](#P)--[回到顶部](#英汉词典)
+
+pianist `/ˈpɪənɪst/` n. 钢琴家
 
 pick `/pɪk/` v. 拾；捡；挑选；采摘；找茬；偶然学到；n. 拾；捡；选择；采摘；精华；n. 鹤嘴锄；镐；琴拨
 
@@ -19223,6 +19265,8 @@ profitableness `/'prɒfɪtəblnɪs/` n. 有益；有利
 
 profligacy `/ˈprɒflɪɡəsi/` n. 放荡,不检点,肆意挥霍
 
+> DRV: profligate `/ˈprɒflɪɡət/` adj. 挥霍的,浪费的; 放荡的,行为不检点的; n. 放荡的人,浪子,肆意挥霍者
+
 profound `/prə'faʊnd/` adj. 深奥的；渊博的；极度的；意义深远的
 
 > DRV: profundity `/prəˈfʌndəti/` n. 深奥;深刻;深厚
@@ -19240,6 +19284,12 @@ progress `/ˈprɑːɡres/` n. 进步；发展；前进；v. 进步；发展；�
 > DRV: progression `/prə'ɡreʃn/` n. 前进；进展；连续
 >
 > DRV: progressive `/prə'ɡresɪv/` adj. 先进的；前进的；渐进的；革新的(音乐上的）；n. 进步分子；革新主义者
+>
+> REF: A `geometric progression` is a sequence of the form $a, ar, ar^2, ..., ar^n, ...$ where the `initial term a` and the `common ratio r` are real numbers. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: An `arithmetic progression` is a sequence of the form $a, a + d, a + 2d, ..., a + nd, ...$ where the `initial term a` and the `common difference d` are real numbers. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: The `Fibonacci sequence`, $f_0, f_1, f_2, ...$, is defined by the initial conditions $f_0 = 0, f_1 = 1$, and the recurrence relation $f_n = f_{n - 1} + f_{n - 2}$ for $n = 2, 3, 4, ...$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 prohibit `/prə'hɪbɪt/` vt. 禁止；妨碍
 
@@ -19668,6 +19718,8 @@ puzzle `/ˈpʌzl/` n. 难题；谜；迷惑；拼图游戏；vt. 使为难；使
 pygmy `/'piɡmi/` n. 俾格米人（一种身高不满五英尺的矮小人种）；侏儒；微不足道的人; adj. 矮小的；俾格米人的
 
 pyjamas `/pə'dʒɑːməz/` n. 睡衣；宽长裤
+
+pylon `/'paɪlən/` n. (架高压输电线的)电缆塔
 
 pyramid `/ˈpɪrəmɪd/` n. 金字塔；棱锥体；[证券]金字塔式交易法；v. 急速增加；以金字塔的模型构建
 
@@ -20776,6 +20828,8 @@ requisite `/'rekwɪzɪt/` adj. 必要的；需要的；n. 必需品
 > DRV: requisition `/ˌrekwɪ'zɪʃn/` n. 请求；征用；v. 要求；征用
 
 reread `/riː'riːd/` vt. 重读；再读
+
+reroute `/riː'ruːt/` vt. 变更旅程；按新的特定路线运送
 
 rerun `/riː'rʌn/` n. 重播节目; vt. 再播放
 
@@ -22028,6 +22082,8 @@ sequel `/'siːkw(ə)l/` n. 续集；结局；继续；后果
 sequence `/ˈsiːkwəns/` n. 顺序；连续；次序；一系列；vt. 按顺序排好
 
 > DRV: sequential `/sɪ'kwenʃl/` adj. 连续的(序贯的)
+>
+> REF: A `sequence` is a function from a subset of the set of integers (usually either the set $\{0, 1, 2, ...\}$ or the set $\{1, 2, 3, ...\}$) to a set $S$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 sequester `/sɪˈkwestər/` vt. 使 ... 隔绝； 隐退；vt. 扣押
 
@@ -22062,6 +22118,14 @@ servile `/'sɜːvaɪl/` adj. 屈从的；奴隶的；不自由的
 sesame `/'sesəm/` n. 芝麻
 
 session `/ˈseʃn/` n. 会议；（法庭的）开庭；（议会等的）开会；学期；讲习会
+
+set `/set/` n. 集合；一套；布景；装置；趋势; vt. 树立；点燃；放；点缀；使凝结; vi. 凝固；结果；定型; adj. 固定的；规定的；固执的
+
+> REF: A `set` is an unordered collection of distinct objects, called `elements or members` of the set. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: There is a special set that has no elements. This set is called the **empty set**, or **null set**, and is denoted by $\emptyset$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: A set with one element is called a **singleton set**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 setback `/ˈsetbæk/` n. 挫折; 阻碍
 
@@ -22882,6 +22946,12 @@ sordid `/'sɔːdɪd/` adj. 卑鄙的；不诚实的；肮脏的；破烂的
 sore `/sɔː/` adj. 疼痛的；痛心的；恼火的；严重的；n. 痛处；伤口
 
 sorrow `/'sɒrəʊ/` n. 悲伤；悲痛；懊悔；伤心事；vi. 悲伤；惋惜；悔恨
+
+sort `/sɔːt/` n. 种类；方式；品质; vi. 分类；交往；协调; vt. 将…分类；将…排序；挑选出某物
+
+> REF: **Sorting** is putting elements into a list. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: The bubble sort puts a list into increasing order by successively comparing adjacent elements, interchanging them if they are in the wrong order. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 sou `/suː/` n. 无价值之物
 
@@ -24273,6 +24343,8 @@ tadpole `/ˈtædpəʊl/` n. 蝌蚪
 
 tail `/teɪl/` n. 后部；尾巴；尾部；辫子；跟随者；vt. 跟踪；盯 ... 的梢；为 ... 装尾巴；vi. 尾随；附于其后；逐渐减少
 
+> DRV: tailback `/'teɪlbæk/` n. 〈英〉交通堵塞
+
 taille `/teɪl/` n.（领主征收的）租税
 
 tailor `/ˈteɪlə(r)/` n. 裁缝；vt. 缝制；调整使适合；vi. 做裁缝
@@ -25056,6 +25128,8 @@ tract `/trækt/` n. 大片土地；器官系统；[解]道；束；n. 小册子
 tractable `/ˈtræktəbl/` adj. 易处理的; 驯服的,温顺的
 
 tractability `/ˌtræktə'bɪləti/` n. 驯良；温顺；易处理
+
+> REF: A problem that is solvable using an algorithm with polynomial (or better) worst-cast complexity is called **tractable**, because the expectation is that the algorithm will produce the solution to the problem for reasonably sized input in a relatively short time. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 traction `/ˈtrækʃn/` n. 拽；牵引；牵引力；附着磨擦力
 
@@ -27234,6 +27308,8 @@ wool `/wʊl/` n. 羊毛；毛线；毛织品
 > DRV: woolly `/ˈwʊli/` adj. 羊毛制的，像羊毛的; <贬>(人或其思想)糊涂的；不清楚的
 
 wordplay `/'wɜːdpleɪ/` n. 字句的争论；双关语
+
+wordsmith `/'wɜːdsmɪθ/` n. 语言大师; 语言艺术家
 
 wordy `/ˈwɜːdi/` adj. 冗长的；口头的；唠叨的；文字的
 

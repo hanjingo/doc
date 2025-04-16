@@ -24,9 +24,9 @@ That is, the values of the attribute values of a tuple must be such that they ca
 
 A `superkey` is a set of one or more attributes that, taken collectively, allow us to identify uniquely a tuple in the relation.
 
-The `name` attribute of `instructor`, on the other hand, is not a superkey, because several instructors might have the same name.
+The `name` attribute of an `instructor`, on the other hand, is not a superkey, because several instructors might have the same name.
 
-We are often interested in superkeys for which no proper subset is a superkey. Such minimal superkeys are called `condidate keys`.
+We are often interested in superkeys for which no proper subset is a superkey. Such minimal superkeys are called `candidate keys`.
 
 It is possible that several distinct sets of attributes could serve as a candidate key.
 
@@ -36,7 +36,7 @@ Primary keys must be chosen with care.
 
 The primary key should be chosen such that its attribute values are never, or very rarely, changed.
 
-A relation, say $r_1$, may include among its attributes the primary key of another relation, say $r_2$. This attribute is called a `foreign key` from $r_1$, referencing $r_2$. The relation $r_1$ is also called `referencing relation` of the foreign key dependency, and $r_2$ is called the `referenced relation` of the foreign key.
+A relation, say $r_1$, may include among its attributes the primary key of another relation, say $r_2$. This attribute is called a `foreign key` from $r_1$, referencing $r_2$. The relation $r_1$ is also called `referencing the relation` of the foreign key dependency, and $r_2$ is called the `referenced relation` of the foreign key.
 
 A `referential integrity constraint` requires that the values appearing in specified attributes of any tuple in the referencing relation also appear in specified attributes of at least one tuple in the referenced relation.
 
@@ -54,12 +54,6 @@ The `join` operation allows the combining of two relations by merging pairs of t
 
 The `Cartesian product` operation combines tuples from two relations, but unlike the join operation, its result contains `all` pairs of tuples from the two relations, regardless of whether their attribute values match.
 
-The `union` operation performs a set union of two "similarly structed" tables.
+The `union` operation performs a set union of two "similarly structured" tables.
 
 ![2_1](res/2_1.png)
-
-
-
-## Summary
-
-TODO

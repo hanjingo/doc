@@ -383,7 +383,7 @@ $$
 | 效果            | 源码              | 效果             | 源码               | 效果            | 源码              | 效果              | 源码                |
 | --------------- | ----------------- | ---------------- | ------------------ | --------------- | ----------------- | ----------------- | ------------------- |
 | $\forall$       | `$\forall$`       | $\exists$        | `$\exists$`        | $\because$      | `$\because$`      | $\therefore$      | `$\therefore$`      |
-| $\neg$          | `$\neg$`          | $\infty$         | `$\infty$`         |                 |                   |                   |                     |
+| $\neg$          | `$\neg$`          | $\infty$         | `$\infty$`         | $\emptyset$     | `$\emptyset$`     |                   |                     |
 | $x \in y$       | `$x \in y$`       | $x \notin y$     | `$x \notin y$`     | $x \subset y$   | `$x \subset y$`   | $x \not\subset y$ | `$x \not\subset y$` |
 | $x \subseteq y$ | `$x \subseteq y$` | $x \subsetneq y$ | `$x \subsetneq y$` |                 |                   |                   |                     |
 | $x \cup y$      | `$x \cup y$`      | $x \cap y$       | `$x \cap y$`       | $x \bigcup y$   | `$x \bigcup y$`   | $x \bigcap y$     | `$x \bigcap y$`     |
@@ -391,6 +391,7 @@ $$
 | $x \geq y$      | `$x \geq y$`      | $x \leq y$       | `$x \leq y$`       | $x \neq y$      | `$x \neq y$`      | $x \sim y$        | `$x \sim y$`        |
 | $x \approx y$   | `$x \approx y$`   | $x \equiv y$     | `$x \equiv y$`     | $x \leqslant y$ | `$x \leqslant y$` | $x \geqslant y$   | `$x \geqslant y$`   |
 | $x < y$         | `$x < y$`         | $x > y$          | `$x > y$`          | $x \ll y$       | `$x \ll y$`       | $x \gg y$         | `$x \gg y$`         |
+| $x \odot y$     | `$x \odot y$`     | $x \oplus y$     | `$x \oplus y$`     | $x \circ y$     | `$x \circ y$`     |                   |                     |
 
 ### 分割符号
 

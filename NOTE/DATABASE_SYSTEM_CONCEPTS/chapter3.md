@@ -10,12 +10,12 @@ The SQL language has several parts:
 - Embedded SQL and dynamic SQL.
 - Authorization.
 
-The SQL DDL allows specification of not only a set of relations, but also information about each realation, including:
+The SQL DDL allows the specification of not only a set of relations but also information about each realization, including:
 
 - The schema for each relation.
 - The types of values associated with each attribute.
 - The integrity constraints.
-- The set of indices to be maintained for each relation.
+- The set of indices is to be maintained for each relation.
 - The security and authorization information for each relation.
 - The physical storage structure of each relation on disk.
 
@@ -31,9 +31,9 @@ The SQL standard supports a variety of built-in types, including:
 
 A `null` value indicates an absent value that may exist but be unknown or that may not exist at all.
 
-The `char` data type stores fixed length strings.
+The `char` data type stores fixed-length strings.
 
-We define a SQL relation by using the `creat table` command. The general form of the `create table` command is:
+We define a SQL relation by using the `create table` command. The general form of the `create table` command is:
 
 ```sql
 create table r
@@ -164,7 +164,7 @@ We define the escape character for a `like` comparison using the `escape` keywor
 - `like 'ab\%cd%' escape '\'` matches all strings beginning with `"ab%cd"`.
 - `like 'ab\\cd%' escape '\'` matches all strings beginning with "ab\cd".
 
-sql allows us to search for mismatches instead of matches by using the `not like` comparison operator. Some databases provide variants of the `like` operation which do not distinguish lower and upper case.
+SQL allows us to search for mismatches instead of matches by using the `not-like` comparison operator. Some databases provide variants of the `like` operation which do not distinguish lower and upper case.
 
 The asterisk symbol `*` can be used in the `select` clause to denote "all attributes". Thus, the use of `instructor.*` in the `select` clause of the query:
 
@@ -238,7 +238,7 @@ select name from instructor where salary is null;
 
 The predicate `is not null` succeeds if the value on which it is applied is not null.
 
-`Aggregae functions` are functions that take a collection (a set or multiset) of values as input and return a single value. SQL offers five built-in aggregate functions:
+`Aggregate functions` are functions that take a collection (a set or multiset) of values as input and return a single value. SQL offers five built-in aggregate functions:
 
 - Average: avg
 - Minimum: min
@@ -258,7 +258,7 @@ If we do want to eliminate duplicates, we use the keyword `distinct` in the aggr
 select count(distinct ID) from teches where semester='Spring' and year=2010;
 ```
 
-The attribute or attributes given in the `group by` clause are used to form groups. Tuples with the same value on all attributes in the `group by` clause are placed in one group:
+The attributes or attributes given in the `group by` clause are used to form groups. Tuples with the same value on all attributes in the `group by` clause are placed in one group:
 
 ```sql
 select dept_name, avg(salary) as avg_salary from instructor group by dept_name;
@@ -272,11 +272,11 @@ select dept_name, avg(salary) as avg_salary from instructor group by dept_name h
 
 The `count` of an empty collection is defined to be 0, and all other aggregate operations return a value of null when applied on an empty collection.
 
-A `Boolean` data type that can take values `true`, `false`, and `unknown`. The aggregate functions `some` and `every`, which mean exactly what you would intuitively expect, can be applied on a collection of Boolean values.
+A `Boolean` data type that can take values `true`, `false`, and `unknown`. The aggregate functions `some` and `every`, which means exactly what you would intuitively expect, can be applied to a collection of Boolean values.
 
 A subquery is a `select-from-where` expression that is nested within another query.
 
-The `in` connective tests for set membership, where the set is a collection of values produced by a `select` clause. The `not in` connective tests for the absence of set membership:
+The `in` connective tests for set membership, where the set is a collection of values produced by a `select` clause. The `not-in-connective tests for the absence of set membership:
 
 ```sql
 select distinct course_id from section where semester='Fall' and year=2009 and course_id not in (select course_id from section where semester='Spring' and year=2010);
@@ -365,9 +365,3 @@ update student S set tot_cred=(
   	where S.ID=takes.ID and takes.grade <> 'F' and take.grade is not null
 );
 ```
-
-
-
-## Summary
-
-TODO
