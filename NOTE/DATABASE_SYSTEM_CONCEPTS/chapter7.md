@@ -254,7 +254,7 @@ There are two main metrics for performance:
 
 - Database design mainly involves the design of the database schema. The `entity-relationship (E-R)` data model is a widely used data model for database design. It provides a convenient graphical representation to view data, relationships, and constraints.
 - The E-R model is intended primarily for the database-design process. It was developed to facilitate database design by allowing the specification of an `enterprise schema`. Such a schema represents the overall logical structure of the database. This overall structure can be expressed graphically by an `E-R diagram`.
-- An `entity` is an object that exists in the real world and is distinguishable from other objects. We express the distinction by associating with each entity a set of attributes that describes the object.
+- An `entity` is an object that exists in the real world and is distinguishable from other objects. We express the distinction by associating with each entity a set of attributes that describe the object.
 - A `relationship` is an association among several entities. A `relationship set` is a collection of relationships of the same type, and an `entity set` is a collection of entities of the same type.
 - The terms `superkey`, `candidate key`, and `primary key` apply to entity and relationship sets as they do for relation schemas. Identifying the primary key of a relationship set requires some care, since it is composed of attributes from one or more of the related entity sets.
 - `Mapping cardinalities` express the number of entities to which another entity can be associated via a relationship set.

@@ -21,9 +21,3 @@ In particular, recursive queries should not use any of the following constructs,
 - Aggregation on the recursive view.
 - `not exists` on a subquery that uses the recursive view.
 - Set difference (`except`) whose right-hand side uses the recursive view.
-
-
-
-## Summary
-
-TODO

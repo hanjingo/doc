@@ -1,4 +1,4 @@
-# Chapter17 Database-System Architectures
+# Chapter 17 Database-System Architectures
 
 
 
@@ -35,8 +35,8 @@ The shared memory contains all shared data, such as:
 
 There are two main measures of performance of a database system:
 
-1. `throughput`. the number of tasks that can be completed in a given time interval.
-2. `response time`. the amount of time it takes to complete a single task from the tiem it is submitted.
+1. `throughput`. The number of tasks that can be completed in a given time interval.
+2. `response time`. The amount of time it takes to complete a single task from the time it is submitted.
 
 A system that processes a large number of small transactions can improve throughput by processing many transactions in parallel. A system that processes large transactions can improve response time as well as throughput by performing subtasks of each transaction in parallel.
 
@@ -44,7 +44,7 @@ Running a given task in less time by increasing the degree of parallelism is cal
 
 Handling larger tasks by increasing the degree of parallelism is called `scaleup`.
 
-Suppose that the execution time of a task on the larger machine is $T_L$, and that the execution time of the same task on the smaller machine is $T_S$. The speedup due to parallelism is defined as $T_S/T_L$. The parallel system is said to demonstrate `linear speedup` if the speedup is $N$ when the larger system has $N$ times the resources (processor, disk, and so on) of the smaller system. If the speedup is less than $N$, the system is said to demonstrate `sublinear speedup`.
+Suppose that the execution time of a task on the larger machine is $T_L$, and that the execution time of the same task on the smaller machine is $T_S$. The speedup due to parallelism is defined as $T_S/T_L$. The parallel system is said to demonstrate `linear speedup` if the speedup is $N$ When the larger system has $N$ times the resources (processor, disk, and so on) of the smaller system. If the speedup is less than $N$, The system is said to demonstrate `sublinear speedup`.
 
 ![17_5](res/17_5.png)
 
@@ -66,8 +66,8 @@ Parallel systems consist of a set of components (processors, memory, and disks) 
 ![17_7](res/17_7.png)
 
 - Bus. All the system components can send data on and receive data from a single communication bus.
-- Mesh. The components are nodes in a grid, and each component connects to all its adjacent components in the grid. In a two-dimensional mesh each node connects to four adjacent nodes, while in a three-dimensional mesh each node connects to six adjacent nodes.
-- Hypercube. The components are numbered in binary, and a component is connected to another if the binary representations of their numbers differ in exactly one bit. Thus, each of the $n$ components is connected to $log(n)$ other components.
+- Mesh. The components are nodes in a grid, and each component connects to all its adjacent components in the grid. In a two-dimensional mesh, each node connects to four adjacent nodes, while in a three-dimensional mesh, each node connects to six adjacent nodes.
+- Hypercube. The components are numbered in binary, and a component is connected to another if the binary representations of their numbers differ in exactly one bit. Thus, each of the $n$ Components is connected to $log(n)$ other components.
 
 There are several architectural models for parallel machines:
 

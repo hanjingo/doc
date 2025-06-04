@@ -42,7 +42,7 @@ Vehicle navigation systems are systems that are mounted in automobiles and provi
 - `Raster data`.
 - `Vector data`.
 
-`Topographical` information, that is information about the elevation (height) of each point on a surface, can be represented in raster form.
+`Topographical` information, that is, information about the elevation (height) of each point on a surface, can be represented in raster form.
 
 There are a number of types of queries that involve spatial locations:
 
@@ -52,9 +52,9 @@ There are a number of types of queries that involve spatial locations:
 
 A tree structure called a `k-d tree` was one of the early structures used for indexing in multiple dimensions. Each level of a k-d tree partitions the space into two.
 
-The `k-d-B tree` extends the k-d tree to allow multiple child nodes for each internal node, just as a B-tree extends a binary tree, to reduce the height of the tree. k-d-B trees are better suited for secondary storage than k-d trees.
+The `k-d-B tree` extends the k-d tree to allow multiple child nodes for each internal node, just as a B-tree extends a binary tree, to reduce the height of the tree. K-d-B trees are better suited for secondary storage than k-d trees.
 
-An alternative representation fro two-dimensional data is a `quadtree`.
+An alternative representation for two-dimensional data is a `quadtree`.
 
 ![25_5](res/25_5.png)
 
@@ -66,8 +66,8 @@ A storage structure called an `R-tree` is useful for indexing of objects such as
 
 We shall now see how to implement search, insert, and delete operations on an R-tree:
 
-- Search. As the figure shows, the bounding boxes associated with sibling nodes may overlap; in $B^{+}-trees$, $k-d trees$, and quadtrees, in contrast, the ranges do not overlap.
-- Insert. When we insert an object into an R-tree, we select a leaf node to hold the object. Ideally we should pick a leaf node that has space to hold a new entry, and whose bounding box contains the bounding box of the object.
+- Search. As the figure shows, the bounding boxes associated with sibling nodes may overlap; in $B^{+}-trees$, $k-d trees$, Quadtrees, in contrast, the ranges do not overlap.
+- Insert. When we insert an object into an R-tree, we select a leaf node to hold the object. Ideally, we should pick a leaf node that has space to hold a new entry and whose bounding box contains the bounding box of the object.
 - Deletion. Deletion can be performed like a $B^{+}-tree$ deletion, borrowing entries from sibling nodes, or merging sibling nodes if a node becomes under-full. An alternative approach redistributes all the entries of under-full nodes to sibling nodes, with the aim of improving the clustering of entries in the R-tree.
 
 Continuous media systems are characterized by their real-time information-delivery requirements:

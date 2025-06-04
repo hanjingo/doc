@@ -1,4 +1,4 @@
-# CHAPTER3 Transport Layer
+# CHAPTER 3 Transport Layer
 
 
 
@@ -6,7 +6,7 @@ A transport-layer protocol provides for `logical communication` between applicat
 
 ![3_3](res/3_3.png)
 
-From the discussion above, we know that transport-layer multiplexing requires: (1) that sockets have unique identifiers, and (2) that each segment have special fields that indicate the socket to which the segment is to be delivered. 
+From the discussion above, we know that transport-layer multiplexing requires: (1) that sockets have unique identifiers, and (2) that each segment has special fields that indicate the socket to which the segment is to be delivered. 
 
 As many applications are better suited for UDP for the following reasons:
 
@@ -23,7 +23,7 @@ Summary of reliable data transfer mechanisms and their use:
 | ----------------------- | ------------------------------------------------------------ |
 | Checksum                | Used to detect bit errors in a transmitted packet.           |
 | Timer                   | Used to timeout/retransmit a packet, possibly because the packet (or its ACK) was lost within the channel. Because timeouts can occur when a packet is delayed but not lost (premature timeout), or when a packet has been received by the receiver but the receiver-to-sender ACK has been lost, duplicate copies of a packet may be received by a receiver. |
-| Sequence number         | Used for sequential numbering of packets of data flowing from sender to receiver. Gaps in the sequence numbers of received packets allow the receiver to detect a lost packet. Packets with duplicate sequence numbers allow the receiver to detect duplicate copies of a packet. |
+| Sequence number         | Used for sequential numbering of packets of data flowing from the sender to the receiver. Gaps in the sequence numbers of received packets allow the receiver to detect a lost packet. Packets with duplicate sequence numbers allow the receiver to detect duplicate copies of a packet. |
 | Acknowledgment          | Used by the receiver to tell the sender that a packet or set of packets has been received correctly. Acknowledgments will typically carry the sequence number of the packet or packets being acknowledged. Acknowledgments may be individual or cumulative, depending on the protocol. |
 | Negative acknowledgment | Used by the receiver to tell the sender that a packet has not been received correctly. Negative acknowledgments will typically carry the sequence number of the packet that was not received correctly. |
 | Window, pipelining      | The sender may be restricted to sending only packets with sequence numbers that fall within a given range. By allowing multiple packets to be transmitted but not yet acknowledged, sender utilization can be increased over a stop-and-wait mode of operation. We’ll see shortly that the window size may be set on the basis of the receiver’s ability to receive and buffer messages, or the level of congestion in the network, or both. |
@@ -33,7 +33,7 @@ Summary of reliable data transfer mechanisms and their use:
 - `Source port`
 - `Dest port`
 - `sequence number field`
-- `acknowledgment number field`
+- `Acknowledgment number field`
 - `receive window`
 - `header length field`
 - `options field`
@@ -67,10 +67,10 @@ TCP ACK Generation Recommendation [RFC 5681]:
 
 | Event                                                        | TCP Receiver Action                                          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Arrival of in-order segment with expected sequence number. All data up to expected sequence number already acknowledged. | Delayed ACK. Wait up to 500 msec for arrival of another in-order segment. If next in-order segment does not arrive in this interval, send an ACK. |
-| Arrival of in-order segment with expected sequence number. One other in-order segment waiting for ACK transmission. | Immediately send single cumulative ACK, ACKing both in-order segments. |
-| Arrival of out-of-order segment with higher-than-expected sequence number. Gap detected. | Immediately send duplicate ACK, indicating sequence number of next expected byte (which is the lower end of the gap). |
-| Arrival of segment that partially or completely fills in gap in received data. | Immediately send ACK, provided that segment starts at the lower end of gap. |
+| Arrival of the in-order segment with expected sequence number. All data up to the expected sequence number has already been acknowledged. | Delayed ACK. Wait up to 500 msec for the arrival of another in-order segment. If the next in-order segment does not arrive in this interval, send an ACK. |
+| Arrival of the in-order segment with expected sequence number. One other in-order segment is waiting for the ACK transmission. | Immediately send a single cumulative ACK, ACKing both in-order segments. |
+| Arrival of out-of-order segment with a higher-than-expected sequence number. Gap detected. | Immediately send a duplicate ACK, indicating the sequence number of the next expected byte (which is the lower end of the gap). |
+| Arrival of the segment that partially or completely fills in a gap in the received data. | Immediately send ACK, provided that the segment starts at the lower end of the gap. |
 
 ![3_37](res/3_37.png)
 
@@ -129,9 +129,3 @@ $$
 average throughput of a connection = \frac{0.75 \cdot W}{RTT}
 $$
 Using this highly idealized model for the steady-state dynamics of TCP, we can also derive an interesting expression that relates a connection’s loss rate to its available bandwidth [Mahdavi 1997].
-
-
-
-## Summary
-
-TODO

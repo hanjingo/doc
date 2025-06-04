@@ -30,7 +30,12 @@
 
 ## [DB](DB/README.md)
 
-- [ACID](DB/acid.md)
+- [Best Practice](DB/best_practice.md)
+- [Design](DB/design.md)
+- [Relational Model](DB/relational_model.md)
+- [SQL Language](DB/sql.md)
+- [Terminology](DB/terminology.md)
+- [Transaction](DB/transaction.md)
 
 ---
 
@@ -90,5 +95,3 @@
 ---
 
 ## [Project](PROJ/README.md)
-
-- 

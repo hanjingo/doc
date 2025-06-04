@@ -9,7 +9,7 @@ There are various modes in which a data item may be locked. In this section, we 
 
 ![15_1](res/15_1.png)
 
-We require that every transaction `request` a lock in an appropriate mode on data item $Q$, depending on the types of operations that it will perform on $Q$. The transaction makes the request to the concurrency-control manager. The transaction can proceed with the operation only after the concurrency-control manager `grants` the lock to the transaction. The use of these two lock modes allows multiple transactions to read a data item but limits write access to just one transaction at a time.
+We require that every transaction `request` a lock in an appropriate mode on the data item $Q$, depending on the types of operations that it will perform on $Q$. The transaction makes the request to the concurrency-control manager. The transaction can proceed with the operation only after the concurrency-control manager `grants` the lock to the transaction. The use of these two lock modes allows multiple transactions to read a data item, but limits write access to just one transaction at a time.
 
 To state this more generally, given a set of lock modes, we can define a `compatibility function` on them as follows: Let $A$ and $B$ represent arbitrary lock modes. Suppose that a transaction $T_i$ requests a lock of mode $A$ on item $Q$ on which transaction $T_j (T_i \neq T_j)$ currently holds a lock of mode $B$. If transaction $T_i$ can be granted a lock on $Q$ immediately, in spite of the presence of the mode $B$ lock, then we say mode $A$ is `compatible` with mode $B$. Such a function can be represented conveniently by a matrix.
 
@@ -75,7 +75,7 @@ There are two principal methods for dealing with the deadlock problem:
 
   ![15_13](res/15_13.png)
 
-  Deadlocks can be described precisely in terms of a directed graph called a `wait for graph`. This graph consists of a pair $G = (V, E)$, where $V$ is a set of vertices and $E$ is a set of edges. The set of vertices consists of all the transactions in the system. Each element in the set $E$ of edges is an ordered pair $T_i \rightarrow T_j$. If $T_i \rightarrow T_j$ is in $E$, then there is a directed edge from transaction $T_i$ to $T_j$, implying that transaction $T_i$ is waiting for transaction $T_j$ to release a data item that it needs.
+  Deadlocks can be described precisely in terms of a directed graph called a `wait-for graph`. This graph consists of a pair $G = (V, E)$, where $V$ is a set of vertices and $E$ is a set of edges. The set of vertices consists of all the transactions in the system. Each element in the set $E$ of edge is an ordered pair $T_i \rightarrow T_j$. If $T_i \rightarrow T_j$ is in $E$. Then there is a directed edge from transaction $T_i$ to $T_j$, implying that transaction $T_i$ is waiting for a transaction $T_j$ to release a data item that it needs.
 
   When transaction $T_i$ requests a data item currently being held by transaction $T_j$, then the edge $T_i \rightarrow T_j$ is inserted in the wait-for graph. This edge is removed only when transaction $T_j$ is no longer holding a data item needed by transaction $T_i$.
 
@@ -190,10 +190,6 @@ A transaction -- say, $T_i$ -- creates a new version $Q_k$ of data item $Q$ by i
 - Weak levels of consistency are used in some applications where consistency of query results is not critical, and using serializability would result in queries adversely affecting transaction processing. Degree-two consistency is one such weaker level of consistency; cursor stability is a special case of degree two consistency, and is widely used.
 - Concurrency control is a challenging task for tansactions that span user interactions. Applications often implement a scheme base on validation of writes using version numbers stored in tuples; this scheme provide a weak level of serializability, and can be implemented at the application level without modifications to the database.
 - Special concurrency-control techniques can be developed for special data structures. Often, special techniques are applied in $B^+$-trees to allow greater concurrency. These techniques allow nonserializable access to the $B^+$-tree, but they ensure that the $B^+$-tree structure is correct, and ensure that accesses to the database itself are serializable.
-
-
-
-## Glossary
 
 <div style="width: 50%; float:left;"></div>
 <div style="width: 50%; float:left;"></div>

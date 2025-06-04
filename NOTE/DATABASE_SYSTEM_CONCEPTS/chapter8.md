@@ -1,4 +1,4 @@
-# CHAPTER8 Relational Database Design
+# CHAPTER 8 Relational Database Design
 
 
 
@@ -17,9 +17,3 @@ To simplify matters further, we list additional rules. It is possible to use Arm
 We say that an attribute $B$ is `functionally determined` by $\alpha$ if $\alpha \rightarrow B$.
 
 The 3NF algorithm ensures the preservation of dependencies by explicitly building a schema for each dependency in a canonical cover. It ensures that the decomposition is a lossless decomposition by guaranteeing that at least one schema contains a candidate key for the schema being decomposed.
-
-
-
-## Summary
-
-TODO

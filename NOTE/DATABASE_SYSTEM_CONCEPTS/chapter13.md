@@ -10,9 +10,9 @@ An `equivalence rule` says that expressions of two forms are equivalent.
 
 A set of equivalence rules is said to be `minimal` if no rule can be derived from any combination of the others.
 
-in a `histogram,` the values for the attribute are divided into a number of ranges, and with each range, the histogram associates the number of tuples whose attribute value lies in that range.
+In a `histogram,` the values for the attribute are divided into a number of ranges, and with each range, the histogram associates the number of tuples whose attribute value lies in that range.
 
-an `equi-width histogram` divides the range of values into equal-sized ranges, whereas an `equi-depth` histogram adjusts the boundaries of the ranges such that each range has the same number of values.
+An `equi-width histogram` divides the range of values into equal-sized ranges, whereas an `equi-depth` histogram adjusts the boundaries of the ranges such that each range has the same number of values.
 
 We outline below how to estimate the sizes of the results of other relational-algebra operations:
 
@@ -21,7 +21,7 @@ We outline below how to estimate the sizes of the results of other relational-al
 - Set operations.
 - Outer join.
 
-A `cost-based optimizer` explores the space of all query-evaluation plans that are equivalent to the given quey, and chooses the one with the least estimated cost.
+A `cost-based optimizer` explores the space of all query-evaluation plans that are equivalent to the given query, and chooses the one with the least estimated cost.
 
 A particular sort order of the tuples is said to be an `interesting sort order` if it could be useful for a later operation.
 
@@ -33,7 +33,7 @@ Most optimizers allow a cost budget to be specified for query optimization. The 
 
 The caching and reuse of query plans is referred to as `plan caching`.
 
-The process of replacing a nested query with a query with join (possibly with a temporary relation) is called `decorrelation`.
+The process of replacing a nested query with a query with a join (possibly with a temporary relation) is called `decorrelation`.
 
 The task of keeping a materialized view up-to-date with the underlying data is known as `view maintenance`.
 
@@ -50,16 +50,10 @@ Aggregation operations proceed somewhat like projections. The aggregate operatio
 - avg
 - min, max
 
-Complex queries may in fact have subexpressions repeated in different parts of the query, which can be similarly exploited, to reduce query evaluation costs. Such optimization is known as `multi-query optimization`.
+Complex queries may in fact, have subexpressions repeated in different parts of the query, which can be similarly exploited to reduce query evaluation costs. Such optimization is known as `multi-query optimization`.
 
 `Common subexpression elimination` optimizes subexpressions shared by different expressions in a program, by computing and storing the result, and reusing it wherever the subexpression occurs.
 
 The `shared-scan` optimization works as follows: Instead of reading the relation repeatedly from disk, once for each query that needs to scan a relation, data are read once from disk, and pipelined to each of the queries.
 
 In `parametric query optimization`, a query is optimized without being provided specific values for its parameters.
-
-
-
-## Summary
-
-TODO

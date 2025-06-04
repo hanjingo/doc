@@ -13,10 +13,10 @@ A `data warehouse` is a repository (or archive) of information gathered from mul
 Among the issues to be addressed in building a warehouse are the following:
 
 - When and how to gather data.
-- What schema to use.
+- What schema to use?
 - Data transformation and cleansing.
 - How to propagate updates.
-- What data to summarize.
+- What data to summarize?
 
 To minimize storage requirements, dimension attributes are usually short identifiers that are foreign keys into other tables called `dimension tables`.
 
@@ -106,9 +106,3 @@ Rules have an associated `support`; as well as an associated `confidence`. These
 `Text mining` applies data-mining techniques to textual documents.
 
 `Data-visualization` system help users to examine large volumes of data, and to detect patterns visually.
-
-
-
-## Summary
-
-TODO

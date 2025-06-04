@@ -1,29 +1,31 @@
 # CHAPTER 19 Distributed Databases
 
+
+
 In a `homogeneous distributed database` system, all sites have identical database management system software, are aware of one another, and agree to cooperate in processing users’ requests. In such a system, local sites surrender a portion of their autonomy in terms of their right to change schemas or database-management system software. That software must also cooperate with other sites in exchanging information about transactions, to make transaction processing possible across multiple sites.
 
-In contrast, in a `heterogeneous distributed database`, different sites may use different schemas, and different database-management system software. The sites may not be aware of one another, and they may provide only limited facilities for cooperation in transaction processing. The differences in schemas are often a major problem for query processing, while the divergence in software becomes a hindrance for processing transactions that access multiple sites.
+In contrast, in a `heterogeneous distributed database`, different sites may use different schemas and different database management system software. The sites may not be aware of one another, and they may provide only limited facilities for cooperation in transaction processing. The differences in schemas are often a major problem for query processing, while the divergence in software becomes a hindrance for processing transactions that access multiple sites.
 
-Consider a relation $r$ that is to be stored in the database. There are two approaches to storing this relation in the distributed database:
+Consider a relation $r$ That is to be stored in the database. There are two approaches to storing this relation in the distributed database:
 
 - Replication. The system maintains several identical replicas (copies) of the relation, and stores each replica at a different site. The alternative to replication is to store only one copy of relation $r$.
 - Fragmentation. The system partitions the relation into several fragments, and stores each fragment at a different site.
 
 There are a number of advantages and disadvantages to replication:
 
-- Availability. If one of the sites containing relation $r$ fails, then the relation $r$ can be found in another site. Thus, the system can continue to process queries involving $r$, despite the failure of one site.
-- Increased parallelism. In the case where the majority of accesses to the relation $r$ result in only the reading of the relation, then several sites can process queries involving $r$ in parallel. The more replicas of r there are, the greater the chance that the needed data will be found in the site where the transaction is executing. Hence, data replication minimizes movement of data between sites.
+- Availability. If one of the sites contains a relation $r$ fails, then the relation $r$ can be found on another site. Thus, the system can continue to process queries involving $r$, despite the failure of one site.
+- Increased parallelism. In the case where the majority of accesses to the relation $r$ result in only the reading of the relation, then several sites can process queries involving $r$ in parallel. The more replicas of r there are, the greater the chance that the needed data will be found in the site where the transaction is executing. Hence, data replication minimizes the movement of data between sites.
 - Increased overhead on update. The system must ensure that all replicas of a relation $r$ are consistent; otherwise, erroneous computations may result. Thus, whenever $r$ is updated, the update must be propagated to all sites containing replicas. The result is increased overhead. 
 
 If relation $r$ is fragmented, $r$ is divided into a number of $fragments\ r_1, r_2,...,r_n$. These fragments contain sufficient information to allow reconstruction of the original relation $r$. There are two different schemes for fragmenting a relation:
 
 - `Horizontal fragmentation` splits the relation by assigning each tuple of $r$ to one or more fragments.
 
-  In horizontal fragmentation, a relation $r$ is partitioned into a number of subsets, $r_1, r_2,...,r_n$. Each tuple of relation $r$ must belong to at least one of the fragments, so that the original relation can be reconstructed, if needed.
+  In horizontal fragmentation, a relation $r$ is partitioned into a number of subsets, $r_1, r_2,...,r_n$. Each tuple of a relation $r$ must belong to at least one of the fragments, so that the original relation can be reconstructed, if needed.
 
 - `Vertical fragmentation` splits the relation by decomposing the scheme $R$ of relation $r$.
 
-  Vertical fragmentation of $r(R)$ involves the definition of several subsets of attributes $R_1, R_2,..., R_n$ of the schema $R$ so that:
+  Vertical fragmentation of $r(R)$ Involves the definition of several subsets of attributes $R_1, R_2,..., R_n$ of the schema $R$ so that:
   $$
   R = R_1 \cup R_2 \cup \cdots \cup R_n
   $$

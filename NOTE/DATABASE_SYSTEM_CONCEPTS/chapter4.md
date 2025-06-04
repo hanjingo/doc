@@ -12,7 +12,7 @@ select * from student join takes on student.ID=takes.ID;
 
 The `outer join` operation works in a manner similar to the join operations.
 
-There are in fact three forms of outer join:
+There are, in fact three forms of outer join:
 
 - The `left outer join` preserves tuples only in the relation named before (to the left of) the `left outer join` operation.
 - The `right outer join` preserves tuples only in the relation named after (to the right of) the `right outer join` operation.
@@ -34,7 +34,7 @@ Certain database systems allow view relations to be stored, but they make sure t
 
 The process of keeping the materialized view up-to-date is called `materialized view maintenance` (or often, just `view maintenance`).
 
-In general, an SQL view is said to be `updatable` (this is, inserts, updates or deletes can be applied on the view) if the following conditions are all satisfied by the query defining the view:
+In general, an SQL view is said to be `updatable` (that is, inserts, updates, or deletes can be applied on the view) if the following conditions are all satisfied by the query defining the view:
 
 - The `from` clause has only one database relation.
 - The `select` clause contains only attribute names of the relation and does not have any expressions, aggregates, or `distinct` specifications.
@@ -129,10 +129,10 @@ create domain DDollars as numeric(12, 2) not null;
 
 There are two significant differences between types and domains:
 
-1. Domains can have constraints, such as `not null`, specified on them, and can have default values defined for variables of the domain type, whereas userdefined types cannot have constraints or default values specified on them. User-defined types are designed to be used not just for specifying attribute types, but also in procedural extensions to SQL where it may not be possible to enforce constraints.
+1. Domains can have constraints, such as `not null`, specified on them, and can have default values defined for variables of the domain type, whereas user-defined types cannot have constraints or default values specified on them. User-defined types are designed to be used not just for specifying attribute types, but also in procedural extensions to SQL where it may not be possible to enforce constraints.
 2. Domains are not strongly typed. As a result, values of one domain type can be assigned to values of another domain type as long as the underlying types are compatible.
 
-Applications often require creation of tables that have the same schema as an existing table. SQL provides a `create table like` extension to support this task:
+Applications often require the creation of tables that have the same schema as an existing table. SQL provides a `create table like` extension to support this task:
 
 ```sql
 create table temp_instructor like instructor;
@@ -148,9 +148,3 @@ We may assign a user several forms of authorizations on parts of the database. A
 - Authorization to delete data.
 
 , each of these types of authorizations is called a `privilege`.
-
-
-
-## Summary
-
-TODO

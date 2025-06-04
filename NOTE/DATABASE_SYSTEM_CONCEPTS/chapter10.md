@@ -46,7 +46,7 @@ The mean time to failure (where failure is the loss of data) of a mirrored disk 
 
 With multiple disks, we can improve the transfer rate as well (or instead) by `striping data` across multiple disks. In its simplest form, data striping consists of splitting the bits of each byte across multiple disks; such striping is called `bit level striping`.
 
-`Block-level striping` stripes blocks across multiple disks. It treats the array of disks as a single large disk, and it gives blocks logical numbers; we assume the block numbers start from $0$. With an array of $n$ disks, block-level striping assigns logical block $i$ of the disk array to disk $(i\ mod\ n) + 1$; it uses the $\lfloor i/n \rfloor$th physical block of the disk to store logical block $i$.
+`Block-level striping` stripes blocks across multiple disks. It treats the array of disks as a single large disk, and it gives blocks logical numbers; we assume the block numbers start from $0$. With an array of $n$ disks, block-level striping assigns logical block $i$ of the disk array to disk $(i\ mod\ n) + 1$; it uses the $\lfloor i/n \rfloor$The physical block of the disk to store the logical block $i$.
 
 In summary, there are two main goals of parallelism in a disk system:
 
@@ -111,13 +111,13 @@ Several of the possible ways of organizing records in files are:
 - Sequential file organization. Records are stored in sequential order, according to the value of a "search key" of each record.
 - Hashing file organization. A hash function is computed on some attribute of each record. The result of the hash function specifies in which block of the file the record should be placed.
 
-A `sequential file` is designed for efficient processing of records in sorted order based on some search key. A `search key` is any attribute or set of attributes; it need not be the primary key, or even a superkey. To permit fast retrieval of records in search-key order, we chain together records by pointers. The pointer in each record points to the nxt record in search-key order. Furthermore, to minimize the number of block accesses in sequential file processing, we store records  physically in search-key order, or as close to search-key order as possible.
+A `sequential file` is designed for efficient processing of records in sorted order based on some search key. A `search key` is any attribute or set of attributes; it need not be the primary key, or even a superkey. To permit fast retrieval of records in search-key order, we chain together records by pointers. The pointer in each record points to the next record in search-key order. Furthermore, to minimize the number of block accesses in sequential file processing, we store records physically in search-key order, or as close to search-key order as possible.
 
 ![10_14](res/10_14.png)
 
 A `multitable clustering file organization` is a file organization, such as that illustrated in Figure 10.14, that stores related records of two or more relations in each block.
 
-Relational schemas and other metadata about relations are stored in a structure called the `data dictionary ` or `system catalog`. Among the types of information that the system must store are these:
+Relational schemas and other metadata about relations are stored in a structure called the `data dictionary or `system catalog`. Among the types of information that the system must store are these:
 
 - Names of the relations.
 - Names of the attributes of each relation.
@@ -161,10 +161,10 @@ Further, to serve the database system well, the buffer manager must use techniqu
 - Several types of data storage exist in most computer systems. They are classified by the speed with which they can access data, by their cost per unit of data to buy the memory, and by their reliability. Among the media available are cache, main memory, flash memory, magnetic disks, optical disks, and magnetic tapes.
 - Two factors determine the reliability of storage media: whether a power failure or system crash causes data to be lost, and what the likelihood is of physical failure of the storage device.
 - We can reduce the likelihood of physical failure by retaining multiple copies of data. For disks, we can use mirroring. Or we can use more sophisticated methods based on redundant arrays of independent disks (RAID). By striping data across disks, these methods offer high throughput rates on large accesses; by introducing redundancy across disks, they improve reliability greatly. Several different RAID organizations are possible, each with different cost, performance, and reliability characteristics. RAID level 1 (mirroring) and RAID level 5 are the most commonly used.
-- We can organize a file logically as a sequence of records mapped onto disk blocks. One approach to mapping the database to files is to use several files, and to store records of only one fixed length in any given file. An alternative is to structure files so that they can accommodate multiple lengths for records. The slotted-page method is widely used to handle varying length records within a disk block.
-- Since data are transferred between disk storage and main memory in units of a block, it is worthwhile to assign file records to blocks in such a way that a single block contains related records. If we can access several of the records we want with only one block access, we save disk accesses. Since disk accesses are usually the bottleneck in the performance of a database system, careful assignment of records to blocks can pay significant performance dividends.
-- The data dictionary, also referred to as the system catalog, keeps track of metadata, that is data about data, such as relation names, attribute names and types, storage information, integrity constraints, and user information.
-- One way to reduce the number of disk accesses is to keep as many blocks as possible in main memory. Since it is not possible to keep all blocks in main memory, we need to manage the allocation of the space available in main memory for the storage of blocks. The `buffer` is that part of main memory available for storage of copies of disk blocks. The subsystem responsible for the allocation of buffer space is called the `buffer manager`.
+- We can organize a file logically as a sequence of records mapped onto disk blocks. One approach to mapping the database to files is to use several files and to store records of only one fixed length in any given file. An alternative is to structure files so that they can accommodate multiple lengths for records. The slotted-page method is widely used to handle varying-length records within a disk block.
+- Since data is transferred between disk storage and main memory in units of a block, it is worthwhile to assign file records to blocks in such a way that a single block contains related records. If we can access several of the records we want with only one block access, we save disk accesses. Since disk accesses are usually the bottleneck in the performance of a database system, careful assignment of records to blocks can pay significant performance dividends.
+- The data dictionary, also referred to as the system catalog, keeps track of metadata, that is, data about data, such as relation names, attribute names and types, storage information, integrity constraints, and user information.
+- One way to reduce the number of disk accesses is to keep as many blocks as possible in main memory. Since it is not possible to keep all blocks in main memory, we need to manage the allocation of the space available in main memory for the storage of blocks. The `buffer` is that part of main memory available for the storage of copies of disk blocks. The subsystem responsible for the allocation of buffer space is called the `buffer manager`.
 
 
 

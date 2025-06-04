@@ -4,14 +4,14 @@
 
 The term `information retrieval` generally refers to the querying of unstructured textual data.
 
-The field of `information retrieval` has developed in parallel with the field of database.
+The field of `information retrieval` has developed in parallel with the field of databases.
 
 There are several differences between this model and the models used in traditional database systems:
 
 - Database systems deal with several operations that are not addressed in information-retrieval systems.
-- Information-retrieval systems deal with several issues that have not been addressed adequately in database systems.
+- Information-retrieval systems deal with several issues that have not been adequately addressed in database systems.
 
-In `full text` retrieval, all the words in each document are considered to be keywords.
+In `full-text` retrieval, all the words in each document are considered to be keywords.
 
 One way of measuring $TF(d, t)$, the relevance of a document $d$ to a term $t$, is:
 $$
@@ -42,9 +42,3 @@ $$
 `Information-extraction` systems convert information from textual form to a more structured form.
 
 `Question answering` systems attempt to provide direct answers to questions posed by users.
-
-
-
-## Summary
-
-TODO

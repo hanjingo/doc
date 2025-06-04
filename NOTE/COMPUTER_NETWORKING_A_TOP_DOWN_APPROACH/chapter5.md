@@ -1,4 +1,4 @@
-# Chapter5 The Link Layer: Links, Access Networks, and LANs
+# Chapter 5 The Link Layer: Links, Access Networks, and LANs
 
 
 
@@ -11,17 +11,17 @@ The Services Provided by the Link Layer:
 
 The link layer is implemented in a `network adapter`, also sometimes known as a `network interface card (NIC)`.
 
-On the sending side, the controller takes a datagram that has been created and stored in host memory by the higher layers of the protocol stack, encapsulates the datagram in a link-layer frame (filling in the frame's various fields), and then transmits the frame into the communication link, following the link-access protocol. On the receiving side, a controller receives the entire frame, and extracts the network-layer datagram. If the link layer performs error detection, then it is the sending controller that sets the error-detection bits in the frame header and it is the receiving controller that performs error detection.
+On the sending side, the controller takes a datagram that has been created and stored in host memory by the higher layers of the protocol stack, encapsulates the datagram in a link-layer frame (filling in the frame's various fields), and then transmits the frame into the communication link, following the link-access protocol. On the receiving side, a controller receives the entire frame and extracts the network-layer datagram. If the link layer performs error detection, then it is the sending controller that sets the error-detection bits in the frame header, and it is the receiving controller that performs error detection.
 
 ![5_2](res/5_2.png)
 
-Link layer is implemented in hardware, part of the link layer is implemented in software that runs on the host's CPU.
+The link layer is implemented in hardware, and part of the link layer is implemented in software that runs on the host's CPU.
 
-`bit-level error detection and correction`. detecting and correcting the corruption of bits in a link-layer frame sent from one node to another physically connected neighboring node -- are two services often provided by the link layer.
+`bit-level error detection and correction`. Detecting and correcting the corruption of bits in a link-layer frame sent from one node to another physically connected neighboring node -- are two services often provided by the link layer.
 
 ![5_3](res/5_3.png)
 
-`cyclic redundancy check (CRC)` codes are also known as `polynomial codes`, since it is possible to view the bit string to be sent as a polynomial whose coefficients are the 0 and 1 values in the bit string, with operations on the bit string interpreted as polynomial arithmetic.
+`Cyclic redundancy check (CRC)` codes are also known as `polynomial codes`, since it is possible to view the bit string to be sent as a polynomial whose coefficients are the 0 and 1 values in the bit string, with operations on the bit string interpreted as polynomial arithmetic.
 
 ![5_6](res/5_6.png)
 
@@ -107,9 +107,3 @@ Trends in Data Center Networking:
 A day in the life of a Web page request example:
 
 ![5_32](res/5_32.png)
-
-
-
-## Summary
-
-TODO

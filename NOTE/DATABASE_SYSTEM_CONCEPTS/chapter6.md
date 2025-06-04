@@ -1,4 +1,4 @@
-# CHAPTER6 Formal Relational Query Languages
+# CHAPTER 6 Formal Relational Query Languages
 
 
 
@@ -6,7 +6,7 @@ The `select` operation selects tuples that satisfy a given predicate.
 
 The `project` operation allows us to produce this relation. The project operation is a unary operation that returns its argument relation, with certain attributes left out.
 
-For a union operation $r \cup s$ to be valid, we require that two conditions hold:
+For a union operation $r \cup s$ To be valid, we require that two conditions hold:
 
 1. The relations $r$ and $s$ must be of the same arity. That is, they must have the same number of attributes.
 2. The domains of the $i$th attribute of $r$ and the $i$th attribute of $s$ must be the same, for all $i$.
@@ -40,9 +40,3 @@ A basic expression in the relational algebra consists of either one of the follo
 - $\sigma_p(E_1)$, where $P$ is a predicate on attributes in $E_1$
 - $\Pi_S(E_1)$, where $S$ is a list consisting of some of the attributes in $E_1$
 - $\rho_x(E_1)$, where $x$ is the new name for the result of $E_1$
-
-
-
-## Summary
-
-TODO

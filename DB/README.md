@@ -2,9 +2,20 @@
 
 # DB
 
-- [ACID](acid.md)
-- [Terminology](terminology.md)
+- [Best Practice](best_practice.md)
+- [Design](design.md)
+- [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
+- [Terminology](terminology.md)
+- [Transaction](transaction.md)
+
+
+
+## Storage Hierarchy
+
+![storage_device_hierarchy](res/storage_device_hierarchy.png)
+
+![disk_mechanism](res/disk_mechanism.png)
 
 
 
@@ -27,3 +38,18 @@
 ## Relational Model
 
 ![relational_algebra](res/relational_algebra.png)
+
+
+
+## E-R Notation
+
+![symb_used_in_e_r_notation](res/symb_used_in_e_r_notation.png)
+
+![alter_e_r_notation](res/alter_e_r_notation.png)
+
+
+
+## RAID
+
+![raid_lvl](res/raid_lvl.png)
+

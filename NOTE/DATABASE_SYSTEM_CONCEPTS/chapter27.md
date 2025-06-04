@@ -9,17 +9,17 @@ PostgreSQL types fall into the following categories:
 - `Domains`. A domain type is defined by coupling a base type with a constraint that values of the type must satisfy.
 - `Enumerated types`. These are similar to `enum` types used in programming languages such as C and Java.
 - `Pseudotypes`. Currently, PostgreSQL supports the following pseudotypes: `any`, `anyarray`, `anyelement`, `anyenum`, `anynonarray cstring`, `internal`, `opaque`, `language handler`, `record`, `trigger`, and `void`.
-- `Polymorphic types`. Four of the pseudotypes `anyelement`, `anyarray, `anymonarray`, and `anyenum` are collectively known as ploymorphic.
+- `Polymorphic types`. Four of the pseudotypes, `anyelement`, `anyarray, `anymonarray`, and `anyenum, are collectively known as polymorphic.
 
 The SQL standard defines the different isolation levels in terms of three phenomena that violate serializability. The three phenomena are called:
 
 - `Dirty read`. The transaction reads values written by another transaction that hasn't committed yet.
-- `Nonrepeatable read`. A transaction reads the same object twice during execution and finds a different value the second time, although the transaction has not changed the value in the meantime.
+- `Non-repeatable read`. A transaction reads the same object twice during execution and finds a different value the second time, although the transaction has not changed the value in the meantime.
 - `Phantom read`. A transaction re-executes a query returning a set of rows that satisfy a search condition and finds that the set of rows satisfying the condition has changed as a result of another recently committed transaction.
 
 A tuple is visible for a transaction $T$ if the following two conditions hold:
 
-1. The tuple was created by a transaction that committed before transaction $T$ took its snapshot.
+1. The tuple was created by a transaction that committed before the transaction $T$ took its snapshot.
 2. Updates to the tuple (if any) were executed by a transaction that is either
    - aborted, or
    - started running after $T$ took its snapshot, or

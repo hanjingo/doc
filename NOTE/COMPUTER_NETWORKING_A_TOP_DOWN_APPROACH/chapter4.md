@@ -1,4 +1,4 @@
-# Chapter4 The Network Layer
+# Chapter 4 The Network Layer
 
 
 
@@ -159,9 +159,3 @@ In practice, this model and its view of a homogenous set of routers all executin
 - `Administrative autonomy`.
 
 ![4_32](res/4_32.png)
-
-
-
-## Summary
-
-TODO

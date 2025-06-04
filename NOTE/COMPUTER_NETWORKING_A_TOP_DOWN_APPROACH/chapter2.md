@@ -1,4 +1,4 @@
-# Chapter2 Application Layer
+# Chapter 2 Application Layer
 
 
 
@@ -6,7 +6,7 @@ The application architecture, on the other hand, is designed by the application 
 
 In a `client-server` architecture, there is an always-on host, called the `server`, which services requests from many other hosts, called `clients`.
 
-In a `P2P architecture`, there is minimal (or no) reliance on dedicated servers in data centers. Instead the application exploits direct communication between pairs of intermittently connected hosts, called `peers`.
+In a `P2P architecture`, there is minimal (or no) reliance on dedicated servers in data centers. Instead, the application exploits direct communication between pairs of intermittently connected hosts, called `peers`.
 
 ![2_2](res/2_2.png)
 
@@ -44,9 +44,9 @@ The `HyperText Transfer Protocol (HTTP)`, the Web's application-layer protocol, 
 Non-persistent connections have some shortcomings:
 
 - First, a brand-new connection must be established and maintained for `each requested object`.
-- Second, as we just described, each object suffers a delivery delay of two RTTs one RTT to establish the TCP connection and one RTT to request and receive an object.
+- Second, as we just described, each object suffers a delivery delay of two RTTs, one RTT to establish the TCP connection and one RTT to request and receive an object.
 
-There are two types of HTTP message, request messages and response messages, both of which are discussed below:
+There are two types of HTTP messages, request messages and response messages, both of which are discussed below:
 
 - HTTP Request Message
 
@@ -56,31 +56,31 @@ There are two types of HTTP message, request messages and response messages, bot
 
   ![2_9](res/2_9.png)
 
-Cookies allow sites to keep track of users, cookie technology has four components:
+Cookies allow sites to keep track of users. Cookie technology has four components:
 
 1. a cookie header line in the HTTP response message;
 2. a cookie header line in the HTTP request message;
 3. a cookie file kept on the user's end system and managed by the user's browser;
-4. a back-end  database at the Web site.
+4. a back-end database at the website.
 
 ![2_10](res/2_10.png)
 
-A `Web cache` -- also called a `proxy server` -- is a network entity that satisfies HTTP requests on the behalf of an origin Web server. The Web cache has its own disk storage and keeps copies of recently requested objects in this storage.
+A `Web cache` -- also called a `proxy server` -- is a network entity that satisfies HTTP requests on behalf of an origin Web server. The Web cache has its own disk storage and keeps copies of recently requested objects in this storage.
 
 ![2_11](res/2_11.png)
 
-The `domain name system (DNS)` is :
+The Domain Name System (DNS)` is :
 
-1. a distributed database implemented in a hierarchy of `DNS servers`
-2. an application-layer protocol that allows hosts to query the distributed database.
+1. A distributed database implemented in a hierarchy of `DNS servers`
+2. An application-layer protocol that allows hosts to query the distributed database.
 
-The DNS's main task is provide a directory service that translates hostnames to IP addresses and other tasks:
+The DNS's main task is to provide a directory service that translates hostnames to IP addresses and performs other tasks:
 
 - Host aliasing.
 - Mail server aliasing.
 - Load distribution.
 
-In order to deal with the issue of scale, the DNS uses a large number of servers, organized in a hierarchical fashion and distributed around the world. No single DNS server has all of the mappings for all of the hosts in the Internet. Instead, the mappings are distributed across the DNS servers. To a first approximation, there are three classes of DNS servers:
+In order to deal with the issue of scale, the DNS uses a large number of servers, organized in a hierarchical fashion and distributed around the world. No single DNS server has all of the mappings for all of the hosts on the Internet. Instead, the mappings are distributed across the DNS servers. To a first approximation, there are three classes of DNS servers:
 
 ![2_19](res/2_19.png)
 
@@ -96,17 +96,17 @@ DNS message format:
 - The `question section` contains information about the query that is being made. This section includes:
   1. a name field that contains the name that is being queried.
   2. a type field that indicates the type of question being asked about the name.
-- In a reply from a DNS server, the `answer section` contains the resource records for the name that was originally queried. Recall that in each resource record there is the Type, the Value, and the TTL. A reply can return multiple RRs in the answer, since a hostname can have multiple IP addresses.
+- In a reply from a DNS server, the `answer section` contains the resource records for the name that was originally queried. Recall that in each resource record, there is the Type, the Value, and the TTL. A reply can return multiple RRs in the answer, since a hostname can have multiple IP addresses.
 - The `authority section` contains records of other authoritative servers.
 - The `additional section` contains other helpful records.
 
-Scalability of P2P Architectures: Denote the upload rate of the server's access link by $u_s$, the upload rate of the $i$the peer's access link by $u_i$, and the download rate of the $i$the peer's access link by $d_i$. Also denote the size of the file to be distributed (in bits) by $F$ and the number of peers that want to obtain a copy of the file by $N$. The `distribution time` is the time it takes to get a copy of the file to all $N$ peers.
+Scalability of P2P Architectures: Denote the upload rate of the server's access link by $u_s$, the upload rate of the $i$the peer's access link by $u_i$, and the download rate of the $i$the peer's access link by $d_i$. Also, denote the size of the file to be distributed (in bits) by $F$ and the number of peers that want to obtain a copy of the file by $N$. The `distribution time` is the time it takes to get a copy of the file to all $N$ peers.
 
 ![2_24](res/2_24.png)
 
 Let's first determine the distribution time for the client-server architecture, which we denote by $D_{cs}$. In the client-server architecture, none of the peers aids in distributing the file. We make the following observations:
 
-- The server must transmit one copy of the file to each of the $N$ peers. Thus the server must transmit $NF$ bits. Since the server's upload rate is $u_s$, the tiem to distribute the file must be at least $NF/u_s$.
+- The server must transmit one copy of the file to each of the $N$ peers. Thus, the server must transmit $NF$ bits. Since the server's upload rate is $u_s$, the time to distribute the file must be at least $NF/u_s$.
 - Let $d_{min}$ denote the download rate of the peer with the lowest download rate, that is, $d_{min} = min\{d_1, d_p, ..., d_N\}$. The peer with the lowest download rate cannot obtain all $F$ bits of the file in less than $F/d_{min}$ seconds. Thus the minimum distribution time is at least $F/d_{min}$.
 
 Putting these two observations together, we obtain
@@ -146,9 +146,3 @@ Socket Programming with UDP:
 Socket Programming with TCP:
 
 ![2_30](res/2_30.png)
-
-
-
-## Summary
-
-TODO

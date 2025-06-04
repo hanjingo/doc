@@ -1,3 +1,5 @@
+中文版 | [English](design.md)
+
 # 数据库设计
 
 [TOC]

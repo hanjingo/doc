@@ -9,7 +9,7 @@ We address the issue of supporting persistence for data that is in the native ty
 1. Build an `object-oriented database system`, that is, a database system that natively supports an object-oriented type system, and allows direct access to data from an object-oriented programming language using the native type system fo the language.
 2. Automatically convert data from the native type system of the programming language to a relational representation, and vice versa. Data conversion is specified using an `object-relational mapping`.
 
-Above types are called `user-defined` types in SQL:
+The above types are called `user-defined` types in SQL:
 
 ```sql
 create type Address as (
@@ -29,7 +29,7 @@ create table teachers of Teacher under people;
 The consistency requirements for subtables are:
 
 1. Each tuple of the supertable can correspond to at most one tuple in each of its immediate subtables.
-2. SQL has an additional constraint that all the tuple corresponding to each other must be derived from one tuple (inserted into one table).
+2. SQL has an additional constraint that all the tuples corresponding to each other must be derived from one tuple (inserted into one table).
 
 The following example illustrates how this array and multiset-valued attributes can be defined in SQL:
 
@@ -69,7 +69,7 @@ Subtables can be stored in an efficient manner, without replication of all inher
 - Each table stores the primary key (which may be inherited from a parent table) and the attributes that are defined locally. Inherited attributes (other than the primary key) do not need to be stored, and can be derived by means of a join with the supertable, based on the primary key.
 - Each table stores all inherited and locally defined attributes. When a tuple is inserted, it is stored only in the table in which it is inserted, and its presence is inferred in each of the supertables. Access to all attributes of a tuple is faster since a join is not required.
 
-A `persistent programming language` is a programming language extended with constructs to handle persistent data. persistent programming languages can be distinguished from languages with embedded SQL in at least two ways:
+A `persistent programming language` is a programming language extended with constructs to handle persistent data. Persistent programming languages can be distinguished from languages with embedded SQL in at least two ways:
 
 1. With an embedded language, the type system of the host language usually differs from the type system of the data manipulation language. The programmer is responsible for any type of conversions between the host language and SQL. Having the programmer carry out this task has several drawbacks:
    - The code to convert between objects and tuples operates outside the object-oriented type system and hence has a higher chance of having undetected errors.
@@ -111,13 +111,7 @@ Persistent Java Systems:
 
 We can summarize the strengths of the various kinds of database systems in this way:
 
-- `Relational systems`: Simple data types, powerful query languages, high protection.
+- `Relational systems`: Simple data types, powerful query languages, and high protection.
 - `Persistent programming language-based OODBs`: Complex data types, integration with programming language, high performance.
 - `Object-relational systems`: Complex data types, powerful query languages, high protection.
 - `Object-relational mapping systems`: Complex data types integrated with programming languages, designed as a layer on top of relational database systems.
-
-
-
-## Summary
-
-TODO

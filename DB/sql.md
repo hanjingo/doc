@@ -241,3 +241,55 @@ select dept_name, avg(salary) as avg_salary from instructor group by dept_name h
 ```
 
 The `count` of an empty collection is defined to be 0, and all other aggregate operations return a value of null when applied on an empty collection.
+
+
+
+## Join Operation
+
+The `outer join` operation works in a manner similar to the join operations.
+
+There are, in fact three forms of outer join:
+
+- The `left outer join` preserves tuples only in the relation named before (to the left of) the `left outer join` operation.
+- The `right outer join` preserves tuples only in the relation named after (to the right of) the `right outer join` operation.
+- The `full outer join` preserves tuples in both relations.
+
+
+
+## User-Defined Type
+
+The above types are called `user-defined` types in SQL:
+
+```sql
+create type Address as (
+	street varchar(20),
+	city varchar(20),
+	zipcode varchar(9))
+	not final;
+```
+
+Subtables defined example:
+
+```sql
+create table students of Student under people;
+create table teachers of Teacher under people;
+```
+
+If we want to insert the preceding tuple into the relations, For example:
+
+```sql
+insert into books
+	values('Compilers', 
+         array['Smith', 'Jones'], 
+         new Publisher('McGraw-Hill', 'New York'),
+         multiset['parsing', 'analysis']);
+```
+
+The `unnest with ordinality` clause can be used to get this information, as illustrated by the following query:
+
+```sql
+select title, A.author, A.position from books as B, unnest(B.author_array) with ordinality as A(author, position);
+```
+
+
+

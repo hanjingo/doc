@@ -1,4 +1,4 @@
-# Chapter1 Computer Networks and the Internet
+# Chapter 1 Computer Networks and the Internet
 
 
 
@@ -24,13 +24,13 @@ End systems are also referred to as `hosts` because they host application progra
 
 ![1_3](res/1_3.png)
 
-In a network application, end systems exchange `messages` with each other. To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as `packets`. Between source and destination, each packet travels through communication links and `packet switches`(for which there are two predominant types, `routers` and `linklayer switches`). Packets are transmitted over each communication link at a rate equal to the `full` transmission rate of the link. So, if a source end system or a packet switch is sending a packet of $L$ bits over a link with transmission rate $R$ bits/sec, then the time to transmit the packet is $L/R$ seconds.
+In a network application, end systems exchange `messages` with each other. To send a message from a source end system to a destination end system, the source breaks long messages into smaller chunks of data known as `packets`. Between source and destination, each packet travels through communication links and `packet switches`(for which there are two predominant types, `routers` and `link-layer switches`). Packets are transmitted over each communication link at a rate equal to the `full` transmission rate of the link. So, if a source end system or a packet switch is sending a packet of $L$ bits over a link with the transmission rate $R$ bits/sec, then the time to transmit the packet is $L/R$ seconds.
 
 Most packet switches use `store-and-forward transmission` at the inputs to the links. Store-and-forward transmission means that the packet switch must receive the entire packet before it can begin to transmit the first bit of the packet onto the outbound link.
 
 ![1_11](res/1_11.png)
 
-Sending one packet from source to destination over a path consisting of $N$ links each of rate $R$(thus, there are $N - 1$ routers between source and destination). Applying the same logic as above, we see that the end-to-end delay is:
+Sending one packet from the source to the destination over a path consisting of $N$ links each of the rates $R$(thus, there are $N - 1$ routers between the source and destination). Applying the same logic as above, we see that the end-to-end delay is:
 $$
 d_{end-to-end} = N \frac{L}{R} \qquad (1.1)
 $$

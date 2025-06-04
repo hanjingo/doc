@@ -68,9 +68,3 @@ A site providing such a collection of SOAP procedures is called a `Web service`.
 The `Web Services Description Language (WSDL)` is a language used to describe a Web service's capabilities.
 
 There is also a standard called `Universal Description, Discovery, and Integration (UDDI)` that defines how a directory of available Web services may be created and how a program may search in the directory to find a Web service satisfying its requirements.
-
-
-
-## Summary
-
-TODO

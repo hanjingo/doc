@@ -2,9 +2,46 @@
 
 [TOC]
 
+- **AES**: The `Advanced Encryption Standard` (AES) is a symmetric-key encryption algorithm that was adopted as an encryption standard by the U.S. government in 2000 and is now widely used.
+- **Aggregation**: `Aggregation` is an abstraction in which relationship sets (along with their associated entity sets) are treated as higher-level entity sets and can participate in relationships.
+- **Bottlenecks**: The performance of most systems (at least before they are tuned) is usually limited primarily by the performance of one or a few components, called `bottlenecks`.
+- **CGI**: The Common Gateway Interface (CGI)` standard defines how the Web server communicates with application programs.
+- **CORBA**: The `Common Object Request Broker Architecture (CORBA)` provides a detailed specification of the ORB, and includes an `Interface Description Language (IDL)`, which is used to define the data types used for data interchange.
+- **Data Warehouse**: A `data warehouse` is a repository (or archive) of information gathered from multiple sources, stored under a unified schema at a single site.
 - **DBMS**: A `database-management system` (DBMS) consists of a collection of interrelated data and a collection of programs to access that data. The data describe one particular enterprise.
 - **DDL**: A Special language called a `data-definition language(DDL)`, We specify the storage structure and access methods used by the database system by a set of statements in a special type of DDL called a `data storage and definition` language. 
 - **DML**: A `data-manipulation language (DML)` is a language that enables users to access or manipulate data as organized by the appropriate data model. 
+- **Equi-width histogram**: An `equi-width histogram` divides the range of values into equal-sized ranges, whereas an `equi-depth` histogram adjusts the boundaries of the ranges such that each range has the same number of values.
+- **Equivalence rule**: An `equivalence rule` says that expressions of two forms are equivalent.
+- **Entity**: An `entity` is an object that exists in the real world and is distinguishable from other objects.
+- **E-R Data Model**: The `entity-relationship (E-R)` data model is a widely used data model for database design. It provides a convenient graphical representation to view data, relationships, and constraints.
+- **Histogram**: In a `histogram,` the values for the attribute are divided into a number of ranges, and with each range, the histogram associates the number of tuples whose attribute value lies in that range.
+- **HTML**: Browsers use a standardized syntax, the `HyperText Markup Language (HTML)` standard, which supports both the formatted display of information and the creation of form-based interfaces.
+- **Index-Sequential Files**: Such files, with a clustering index on the search key, are called `index-sequential files`.
+- **Mapping cardinalities**: `Mapping cardinalities` express the number of entities to which another entity can be associated via a relationship set.
 - **Null value**: The `null` value is a special value that signifies that the value is unknown or does not exist.
+- **ODMG**: The `Object Database Management Group (ODMG)` was a group formed by OODB vendors to standardize the data model and language interfaces to OODBs.
+- **OMG**: The `Object Management Group (OMG)` is a consortium of companies, formed with the objective of developing a standard architecture for distributed software applications based on the object-oriented model.
+- **Persistent Programming Language**: A `persistent programming language` is a programming language extended with constructs to handle persistent data. 
+- **Public-key**: `Public-key encryption` is an alternative scheme that avoids some of the problems faced by symmetric-key encryption techniques.
 - **Query language**: A `query language` is a language in which a user requests information from the database.
-- **Superkey**: A `superkey` is a set of one or more attributes that, taken collectively, allow us to identify uniquely a tuple in the relation.
+- **Query Optimization**: `Query optimization` is the process of selecting the most efficient query-evaluation plan from among the many strategies usually possible for processing a given query, especially if the query is complex.
+- **Recoverable schedule**: A `recoverable schedule` is one where, for each pair of transactions $T_i$ and $T_j$ such that $T_j$ reads a data item previously written by $T_i$, the commit operation of $T_i$ appears before the commit operation of $T_j$.
+- **Relationship**: A `relationship` is an association among several entities.
+- **SAML**: The `Security Assertion Markup Language (SAML)` is a standard for exchanging authentication and authorization information between different security domains, to provide cross-organization single sign-on.
+- **Scaleup**: Handling larger tasks by increasing the degree of parallelism is called `scaleup`.
+- **Schedule**: The execution sequences just described are called `schedules`. They represent the chronological order in which instructions are executed in the system.
+- **Serializability order**: A `serializability order` of the transactions can be obtained by finding a linear order consistent with the partial order of the `precedence graph`.
+- **SOAP**: `Simple Object Access Protocol (SOAP)` is a remote procedure call standard that uses XML to encode data (both parameters and results), and uses HTTP as the transport protocol; that is, a procedure call becomes an HTTP request.
+- **Speedup**: Running a given task in less time by increasing the degree of parallelism is called `speedup`.
+- **Superkey**: A `superkey` is a set of one or more attributes that, taken collectively, allow us to uniquely identify a tuple in the relation.
+- **Temporal join**: A `temporal join` is a join, with the time of a tuple in the result being the intersection of the times of the tuples from which it is derived.
+- **Temporal projection**: A `temporal projection` is a projection where the tuples in the projection inherit their times from the tuples in the original relation.
+- **Temporal selection**: A `temporal selection` is a selection that involves the time attributes.
+- **TPC**: The `Transaction Processing Performance Council (TPC)` has defined a series of benchmark standards for database systems.
+- **TPS**: The performance metric is throughput, expressed as `transactions per second(TPS)`.
+- **Transaction**: A `transaction` is a unit of program execution that accesses and possibly updates various data items.
+- **UML**: The `Unified Modeling Language` (UML) is a standard developed under the auspices of the Object Management Group (OMG) for creating specifications of various components of a software system. 
+- **URL**: A `uniform resource locator (URL)` is a globally unique name for each document that can be accessed on the Web.
+- **UTC**: The `Universal Coordinated Time (UTC)` is a standard reference point for specifying time, with local times defined as offsets from UTC.
+- **Web Server**: A `Web server` is a program running on the server machine, that accepts requests from a Web browser and sends back results in the form of HTML documents.

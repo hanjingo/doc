@@ -1,4 +1,4 @@
-# Chapter11 Indexing and Hashing
+# Chapter 11 Indexing and Hashing
 
 
 
@@ -19,7 +19,7 @@ A file may have serveral indices, on different search keys. If the file containi
 
 Such files, with a clustering index on the search key, are called `index-sequential files`.
 
-An `index entry`, or `index record`, consists of a search-key value and pointers to one or more records with that value as their search-key value. The pointer to a record consists of the identifier of a disk block and an offset with the disk block to identify the record within the block.
+An `index entry`, or `index record`, consists of a search-key value and pointers to one or more records with that value as their search-key value. The pointer to a record consists of the identifier of a disk block and an offset within the disk block to identify the record within the block.
 
 There are two types of ordered indices that we can use:
 
@@ -39,7 +39,7 @@ We first describe algorithms for updating single-level indices:
 
     1. If the search-key value does not appear in the index, the system inserts an index entry with the search-key value in the index at the appropriate position.
 
-    2. Otherwise the following actions are taken:
+    2. Otherwise, the following actions are taken:
 
        a. If the index entry stores pointers to all records with the same search key value, the system adds a pointer to the new record in the index entry.
 
@@ -53,7 +53,7 @@ We first describe algorithms for updating single-level indices:
 
     1. If the deleted record was the only record with its particular search-key value, then the system deletes the corresponding index entry from the index.
 
-    2. Otherwise the following actions are taken:
+    2. Otherwise, the following actions are taken:
 
        a. If the index entry stores pointers to all records with the same search key value, the system deletes the pointer to the deleted record from the index entry.
 
@@ -63,30 +63,30 @@ We first describe algorithms for updating single-level indices:
 
     1. If the index does not contain an index entry with the search-key value of the deleted record, nothing needs to be done to the index.
 
-    2. Otherwise the system takes the following actions:
+    2. Otherwise, the system takes the following actions:
 
-       a. If the deleted record was the only record with its search key, the system replaces the corresponding index record with an index record for the next sear-key value (in search-key order). If the next search-key value already has an index entry, the entry is deleted instead of being replaced.
+       a. If the deleted record was the only record with its search key, the system replaces the corresponding index record with an index record for the next search-key value (in search-key order). If the next search-key value already has an index entry, the entry is deleted instead of being replaced.
 
        b. Otherwise, if the index entry for the search-key value points to the record being deleted, the system updates the index entry to point to the next record with the same search-key value.
 
-Secondary indices must be dense, with an index entry for every search-key value, and a pointer to every record in the file. A clustering index may be sparse, storing only some of the search-key values, since it is always possible to find records with intermediate search-key values by a sequential access to a part of the file, as described earlier. If a secondary index stores only some of the search-key values, records with intermediate search-key values may be anywhere in the file and, in general, we cannot find them without searching the entire file.
+Secondary indices must be dense, with an index entry for every search-key value, and a pointer to every record in the file. A clustering index may be sparse, storing only some of the search-key values, since it is always possible to find records with intermediate search-key values by a sequential access to a part of the file, as described earlier. If a secondary index stores only some of the search-key values, records with intermediate search-key values may be anywhere in the file, and, in general, we cannot find them without searching the entire file.
 
-Secondary indices improve the performance of queries that use keys other than the search key of the clustering index. However, they impose a significant overhead on modification of the database. The designer of a database decides which secondary indices are desirable on the basis of an estimate of the relative frequency of queries and modifications.
+Secondary indices improve the performance of queries that use keys other than the search key of the clustering index. However, they impose a significant overhead on the modification of the database. The designer of a database decides which secondary indices are desirable on the basis of an estimate of the relative frequency of queries and modifications.
 
 A search key containing more than one attribute is referred to as a `composite search key`. The structure of the index is the same as that of any other index, the only difference being that the search key is not a single attribute, but rather is a list of attributes. The search key can be represented as a tuple of values, of the form $(a_1, \cdots, a_n)$, where the indexed attributes are $A_1, \cdots, A_n$. The ordering of search-key values is the `lexicographic ordering`.
 
-The $B^{+}-tree$ index structure is the most widely used of several index structures that maintain their efficiency despite insertion and deletion fo data. A $B^{+}-tree$ index takes the form of a `balanced tree` in which every path from the root of the tree to a leaf of the tree is of the same length. Each nonleaf node in the tree has between $\lceil n/2 \rceil$ and $n$ children, where $n$ is fixed for a particular tree.
+The $B^{+}-tree$ Index structure is the most widely used of several index structures that maintain their efficiency despite the insertion and deletion of data. A $B^{+}-tree$ An index takes the form of a `balanced tree` in which every path from the root of the tree to a leaf of the tree is of the same length. Each non-leaf node in the tree has between $\lceil n/2 \rceil$ and $n$ children, where $n$ is fixed for a particular tree.
 
-A $B^{+}-tree$ index is a multilevel index, but it has a structure that differs from that of the multilevel idnex-sequential file. Figure 11.7 shows a typical node of a $B^{+}-tree$. It contains up to $n-1$ search-key values $K_1, K_2, \cdots, K_{n - 1}$, and $n$ pointers $P_1, P_2, \cdots, P_n$. The search-key values within a node are kept in sorted order; thus, if $i < j$, then $K_i < K_j$.
+A $B^{+}-tree$ Index is a multilevel index, but it has a structure that differs from that of the multilevel index-sequential file. Figure 11.7 shows a typical node of a $B^{+}-tree$. It contains up to $n-1$ search-key values $K_1, K_2, \cdots, K_{n - 1}$, and $n$ pointers $P_1, P_2, \cdots, P_n$. The search-key values within a node are kept in sorted order; thus, if $i < j$, then $K_i < K_j$.
 
 ![11_7](res/11_7.png)
 
-- We consider first the structure of the `leaf nodes`. For $i = 1, 2, ..., n - 1$, pointer $P_1$ points to a file record with search-key value $K_i$.
+- We consider first the structure of the `leaf nodes`. For $i = 1, 2, ..., n - 1$, pointer $P_1$ points to a file record with a search-key value $K_i$.
 - Each leaf can hold up to $n - 1$ values. We allow leaf nodes to contain as few as $\lceil (n - 1)/2 \rceil$ values. 
-- The ranges of values in each leaf do not overlap, except if there are duplicate search-key values, in which case a value may be present in more than one leaf. Specifically, if $L_i$ and $L_j$ are leaf nodes and $i < j$, then every search-key value in $L_i$ is less than or equal to every search-key value in $L_j$. If the $B^{+}-tree$ index is used as a dense index (as is usually the case) every search-key value must appear in some leaf node.
+- The ranges of values in each leaf do not overlap, except if there are duplicate search-key values, in which case a value may be present in more than one leaf. Specifically, if $L_i$ and $L_j$ are leaf nodes and $i < j$, then every search-key value in $L_i$ is less than or equal to every search-key value in $L_j$. If the $B^{+}-tree$ Index is used as a dense index (as is usually the case), every search-key value must appear in some leaf node.
 - Since there is a linear order on the leaves based on the search-key values that they contain, we use $P_n$ to chain together the leaf nodes in search-key order. This ordering allows for efficient sequential processing of the file.
-- The `nonleaf nodes` of the $B^{+}-tree$ form a multilevel (sparse) index on the leaf nodes. The structure of nonleaf nodes is the same as that for leaf nodes, except that all pointers are pointers to tree nodes. A nonleaf node may hold up to $n$ pointers, and must hold at least $\lceil n/2 \rceil$ pointers. The number of pointers in a node is called the `fanout` of the node. Nonleaf nodes are also referred to as `internal nodes`.
-- Unlike other nonleaf nodes, the root node can hold fewer than $\lceil n/2 \rceil$ pointers; however, it must hold at least two pointers, unless the tree consists of only one node. It is always possible to construct a $B^{+}-tree$, for any $n$, that satisfies the preceding requirements.
+- The `non-leaf nodes` of the $B^{+}-tree$ form a multilevel (sparse) index on the leaf nodes. The structure of nonleaf nodes is the same as that for leaf nodes, except that all pointers are pointers to tree nodes. A non-leaf node may hold up to $n$ pointers, and must hold at least $\lceil n/2 \rceil$ pointers. The number of pointers in a node is called the `fanout` of the node. Nonleaf nodes are also referred to as `internal nodes`.
+- Unlike other non-leaf nodes, the root node can hold fewer than $\lceil n/2 \rceil$ pointers; however, it must hold at least two pointers, unless the tree consists of only one node. It is always possible to construct a $B^{+}-tree$, for any $n$, that satisfies the preceding requirements.
 
 ![11_9](res/11_9.png)
 
@@ -94,9 +94,9 @@ A $B^{+}-tree$ index is a multilevel index, but it has a structure that differs 
 
   ![11_11](res/11_11.png)
 
-  Suppose that we wish to find records with a search-key value of $V$. Intuitively, the function starts at the root of the tree, and traverses the tree down until it reaches a leaf node that would contain the specified value if it exists in the tree. Sepecifically, starting with the root as the current node, the function repeats the following steps until a leaf node is reached. First, the current node is examined, looking for the smallest $i$ such that search-key value $K_i$ is greater than or equal to $V$. Suppose such a value is found; then, if $K_i$ is equal to $V$, the current node is set to the node pointed to by $P_{i+1}$, otherwise $K_i > V$, and the current node is set to the node pointed to by $P_i$. If no such value $K_i$ is found, then clearly $V > K_{m - 1}$, where $P_m$ is the last nonnull pointer in the node. In this case the current node is set to that pointed to by $P_m$. The above procedure is repeated, traversing down the tree until a leaf node is reached.
+  Suppose that we wish to find records with a search-key value of $V$. Intuitively, the function starts at the root of the tree and traverses the tree down until it reaches a leaf node that would contain the specified value if it exists in the tree. Specifically, starting with the root as the current node, the function repeats the following steps until a leaf node is reached. First, the current node is examined, looking for the smallest $i$ such that search-key value $K_i$ is greater than or equal to $V$. Suppose such a value is found; then, if $K_i$ is equal to $V$The current node is set to the node pointed to by $P_{i+1}$, otherwise $K_i > V$, and the current node is set to the node pointed to by $P_i$. If no such value $K_i$ is found, then clearly $V > K_{m - 1}$, where $P_m$ It is the last non-NULL pointer in the node. In this case, the current node is set to that pointed to by $P_m$. The above procedure is repeated, traversing down the tree until a leaf node is reached.
 
-  At the leaf node, if there is a search-key value equal to $V$, let $K_i$ be the first such value; pointer $P_i$ directs us to a record with search-key value $K_i$. The function then returns the leaf node $L$ and the index $i$. If no search-key with value $V$ is found in the leaf node, no record with key value $V$ exists in the relation, and function find returns null, to indicate failure.
+  At the leaf node, if there is a search-key value equal to $V$, let $K_i$ be the first such value; pointer $P_i$ directs us to a record with a search-key value $K_i$. The function then returns the leaf node $L$ and the index $i$. If no search-key with value $V$ is found in the leaf node, no record with key value $V$ exists in the relation, and function find returns null, to indicate failure.
 
 - Updates on $B^{+}-Trees$
 
@@ -124,17 +124,17 @@ We use the $B^{+}-tree$ structure not only as an index, but also as an organizer
 
 Formally, let $K$ denote the set of all search-key values, and let $B$ denote the set of all bucket addresses. A `hash function` $h$ is a function from $K$ to $B$. Let $h$ denote a hash function.
 
-To insert a record with search key $K_i$, we compute $h(K_i)$, which gives the address of the bucket for that record. Assume for now that there is space in the bucket to store the record. Then, the record is stored in that bucket.
+To insert a record with a search key $K_i$, we compute $h(K_i)$, which gives the address of the bucket for that record. Assume for now that there is space in the bucket to store the record. Then, the record is stored in that bucket.
 
-To perform a lookup on a search-key value $K_i$, we simply compute $h(K_i)$, then search the bucket with that address. Suppose that two search keys, $K_5$ and $K_7$, have the same hash value; that is, $h(K_5) = h(K_7)$. If we perform a lookup on $K_5$, the bucket $h(K_5)$ contains records with search-key values $K_5$ and records with search-key values $K_7$. Thus, we have to check the search-key value of every record in the bucket to verify that the record is one that we want.
+To perform a lookup on a search-key value $K_i$We simply compute $h(K_i)$Then search the bucket with that address. Suppose that two search keys, $K_5$ and $K_7$, have the same hash value; that is, $h(K_5) = h(K_7)$. If we perform a lookup on $K_5$, the bucket $h(K_5)$ contains records with search-key values $K_5$ and records with search-key values $K_7$. Thus, we have to check the search-key value of every record in the bucket to verify that the record is one that we want.
 
-Deletion is equally straightforward. If the search-key value of the record to be deleted is $K_i$, we compute $h(K_i)$, then search the corresponding bucket for that record, and delete the record from the bucket.
+Deletion is equally straightforward. If the search-key value of the record to be deleted is $K_i$, we compute $h(K_i)$Then search the corresponding bucket for that record, and delete the record from the bucket.
 
-Hashing can be used for two different purposes. In a `hash file organization`, we obtain the address of the disk block containing a desired record directly by computing a function on the search-key value of the record. In a `hash index organiaation` we organize the search keys, with their associated pointers, into a hash file structure.
+Hashing can be used for two different purposes. In a `hash file organization`, we obtain the address of the disk block containing a desired record directly by computing a function on the search-key value of the record. In a `hash index organization` we organize the search keys, with their associated pointers, into a hash file structure.
 
 Since we do not know at design time precisely which search-key values will be stored in the file, we want to choose a hash function that assigns search-key values to buckets in such a way that the distribution has these qualities:
 
-- The distribution is `uniform`. That is, the hash function assigns each bucket the same number of earch-key values from the set of `all` possible search-key values.
+- The distribution is `uniform`. That is, the hash function assigns each bucket the same number of each key values from the set of `all` possible search-key values.
 - The distribution is `random`. That is, in the average case, each bucket will have nearly the same number of values assigned to it, regardless of the actual distribution of search-key values. More precisely, the hash value will not be correlated to any externally visible ordering on the search-key values, such as alphabetic ordering or ordering by the length of the search keys; the hash function will appear to be random.
 
 So far, we have assumed that, when a record is inserted, the bucket to which it is mapped has space to store the record. If the bucket does not have enough space, a `bucket overflow` is said to occur. Bucket overflow can occur for several reasons:
@@ -162,4 +162,5 @@ A `bitmap` is simply an array of bits. In its simplest form, a `bitmap index` on
 ## Summary
 
 - Many queries reference only a small proportion of the records in a file. To reduce the overhead in searching for these records, we can construct `indices` for the files that store the database.
-- Index-sequential files are one of the oldest index schemes used in database systems. TODO
+- Index-sequential files are one of the oldest index schemes used in database systems. 
+- TODO

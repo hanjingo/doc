@@ -5,10 +5,10 @@
 Oracle has extensive support for object-relational constructs, including:
 
 - Object types. A single-inheritance model is supported for type hierarchies.
-- Collection types. Oracle supports `varrays`, which are variable length arrays, and nested tables.
+- Collection types. Oracle supports `varrays`, which are variable-length arrays, and nested tables.
 - Object tables. These are used to store objects while providing a relational view of the attributes of the objects.
 - Table functions. These are functions that produce sets of rows as output, and can be used in the from clause of a query. Table functions in Oracle can be nested. If a table function is used to express some form of data transformation, nesting multiple functions allows multiple transformations to be expressed in a single statement.
-- object views.These provide a virtual object table view of data stored in a regular relational table. They allow data to be accessed or viewed in an object-oriented style even if the data are really stored in a traditional relational format.
+- object views. These provide a virtual object table view of data stored in a regular relational table. They allow data to be accessed or viewed in an object-oriented style, even if the data is really stored in a traditional relational format.
 - Methods. These can be written in PL/SQL, Java, or C.
 - User-defined aggregate functions. These can be used in SQL statements in the same way as built-in functions such as sum and count.
 
@@ -17,7 +17,7 @@ Oracle provides storage containers for multidimensional data known as `analytic 
 Usually, an Oracle database has the following table spaces:
 
 - The `system` and the auxiliary `sysaux` table spaces, which are always created.
-- Table spaces created to store user data.
+- Table spaces are created to store user data.
 - The `undo` table space, which is used solely for storing undo information for transaction management and recovery.
 - `Temporary` table spaces.
 
@@ -25,15 +25,15 @@ The space in a table space is divided into units, called `segments`, each of whi
 
 - `Data segments`. Each table in a table space has its own data segment where the table data are stored unless the table is partitioned; if so, there is one data segment per partition.
 - `Index segments`. Each index in a table space has its own index segment, except for partitioned indices, which have one index segment per partition.
-- `Temporary segments`. These are segments used when a sort operation needs to write data to disk or when data are inserted into a temporary table.
+- `Temporary segments`. These are segments used when a sort operation needs to write data to disk or when data is inserted into a temporary table.
 - `Undo segments`. These segments contain undo information so that an uncommitted transaction can be rolled back.
 
-Below the level of segment, space is allocated at a level of granularity called an `extent`.
+Below the level of the segment, space is allocated at a level of granularity called an `extent`.
 
 Oracle provides storage parameters that allow for detailed control of how space is allocated and managed, parameters such as:
 
 - The size of a new extent that is to be allocated to provide room for rows that are inserted into a table.
-- The percentage of space utilization at which a database block is considered full and at which no more rows will be inerted into that block.
+- The percentage of space utilization at which a database block is considered full and at which no more rows will be inserted into that block.
 
 Oracle supports several features to protect the data from unauthorized access, including:
 
@@ -99,12 +99,12 @@ The shared-server configuration increases the number of users that a given numbe
 - A background dispatch process routes user requests to the next available server process.
 - Since a server process is shared among multiple SQL statements, Oracle does not keep private data in the PGA. Instead, it stores the session-specific data in the SGA.
 
-The are major advantages to offloading certain types of processing to storage CPUs:
+They are major advantages to offloading certain types of processing to storage CPUs:
 
 - It allows a large, but relatively inexpensive, expansion of the amount of processing power that is available.
 - The amount of data that needs to be transferred from a storage cell to the database server can be dramatically reduced, which can be very important since the bandwidth between the storage cell and database server is usually expensive and often a bottleneck.
 
-When executing a query against Exadata storage, the reduction of the amount o data that needs to be retrieved comes from several techniques that can be pushed to the storage cells and executed there locally:
+When executing a query against Exadata storage, the reduction of the amount of data that needs to be retrieved comes from several techniques that can be pushed to the storage cells and executed there locally:
 
 - Projection.
 - Table filtering.

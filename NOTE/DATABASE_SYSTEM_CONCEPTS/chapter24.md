@@ -6,7 +6,7 @@ The JDBC API also provides a feature called `batch update` that allows a number 
 
 Another aspect of improving set orientation lies in rewriting queries with `nested subqueries`.
 
-To support bulk load operations, most database systems provide a `bulk import` utility, and a corresponding `bulk export` utility.
+To support bulk load operations, most database systems provide a `bulk import` utility and a corresponding `bulk export` utility.
 
 Typically, there is a table, which we shall call the `master table`, and updates to the master table are received as a batch.
 
@@ -18,7 +18,7 @@ However, database systems are much more complex, and can be modeled as `queueing
 
 To learn more about the theory of queueing systems, generally referred to as `queueing theory`, you can consult the references cited in the bibliographical notes.
 
-The best way to spend the money to achieve the maximum number of transactions per second. A reduction of 1 I/O per second saves:
+The best way to spend the money is to achieve the maximum number of transactions per second. A reduction of 1 I/O per second saves:
 $$
 (price\ per\ disk\ drive)/(access\ per\ second\ per\ disk)
 $$
@@ -98,11 +98,11 @@ The `ODBC` standard is a widely used standard for communication between client a
 
 The X/Open consortium has also developed the `X/Open XA standards` for interoperation of databases.
 
-The `Object Database Management Group (ODMG)` was a group formed by OODB venders to standardize the data model and language interfaces to OODBs.
+The `Object Database Management Group (ODMG)` was a group formed by OODB vendors to standardize the data model and language interfaces to OODBs.
 
 The `Object Management Group (OMG)` is a consortium of companies, formed with the objective of developing a standard architecture for distributed software applications based on the object-oriented model.
 
-The `CommonObject Request Broker Architecture (CORBA)` provides a detailed specification of teh ORB, and includes an `Interface Description Language (IDL)`, which is used to define the data types used for data interchange.
+The `Common Object Request Broker Architecture (CORBA)` provides a detailed specification of the ORB, and includes an `Interface Description Language (IDL)`, which is used to define the data types used for data interchange.
 
 Microsoft introduced the `Entity data model`, which incorporates ideas from the entity-relationship and object-oriented data models, and an approach to integrating querying with the programming language, called `Language Integrated Querying` or `LINQ`.
 
@@ -114,7 +114,3 @@ Supply-chain management requires standardization of a variety of things such as:
 - Interfaces between trading partners.
 
 `Simple Object Access Protocol (SOAP)` is a remote procedure call standard that uses XML to encode data (both parameters and results), and uses HTTP as the transport protocol; that is, a procedure call becomes an HTTP request.
-
-## Summary
-
-TODO

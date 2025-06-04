@@ -380,18 +380,21 @@ $$
 
 ### 逻辑关系
 
-| 效果            | 源码              | 效果             | 源码               | 效果            | 源码              | 效果              | 源码                |
-| --------------- | ----------------- | ---------------- | ------------------ | --------------- | ----------------- | ----------------- | ------------------- |
-| $\forall$       | `$\forall$`       | $\exists$        | `$\exists$`        | $\because$      | `$\because$`      | $\therefore$      | `$\therefore$`      |
-| $\neg$          | `$\neg$`          | $\infty$         | `$\infty$`         | $\emptyset$     | `$\emptyset$`     |                   |                     |
-| $x \in y$       | `$x \in y$`       | $x \notin y$     | `$x \notin y$`     | $x \subset y$   | `$x \subset y$`   | $x \not\subset y$ | `$x \not\subset y$` |
-| $x \subseteq y$ | `$x \subseteq y$` | $x \subsetneq y$ | `$x \subsetneq y$` |                 |                   |                   |                     |
-| $x \cup y$      | `$x \cup y$`      | $x \cap y$       | `$x \cap y$`       | $x \bigcup y$   | `$x \bigcup y$`   | $x \bigcap y$     | `$x \bigcap y$`     |
-| $x \setminus y$ | `$x \setminus y$` | $x \bigvee y$    | `$x \bigvee y$`    | $x \bigwedge y$ | `$x \bigwedge y$` |                   |                     |
-| $x \geq y$      | `$x \geq y$`      | $x \leq y$       | `$x \leq y$`       | $x \neq y$      | `$x \neq y$`      | $x \sim y$        | `$x \sim y$`        |
-| $x \approx y$   | `$x \approx y$`   | $x \equiv y$     | `$x \equiv y$`     | $x \leqslant y$ | `$x \leqslant y$` | $x \geqslant y$   | `$x \geqslant y$`   |
-| $x < y$         | `$x < y$`         | $x > y$          | `$x > y$`          | $x \ll y$       | `$x \ll y$`       | $x \gg y$         | `$x \gg y$`         |
-| $x \odot y$     | `$x \odot y$`     | $x \oplus y$     | `$x \oplus y$`     | $x \circ y$     | `$x \circ y$`     |                   |                     |
+| 效果                                                         | 源码                                                         | 效果             | 源码               | 效果            | 源码              | 效果              | 源码                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ------------------ | --------------- | ----------------- | ----------------- | ------------------- |
+| $\forall$                                                    | `$\forall$`                                                  | $\exists$        | `$\exists$`        | $\because$      | `$\because$`      | $\therefore$      | `$\therefore$`      |
+| $\neg$                                                       | `$\neg$`                                                     | $\infty$         | `$\infty$`         | $\emptyset$     | `$\emptyset$`     |                   |                     |
+| $x \in y$                                                    | `$x \in y$`                                                  | $x \notin y$     | `$x \notin y$`     | $x \subset y$   | `$x \subset y$`   | $x \not\subset y$ | `$x \not\subset y$` |
+| $x \subseteq y$                                              | `$x \subseteq y$`                                            | $x \subsetneq y$ | `$x \subsetneq y$` |                 |                   |                   |                     |
+| $x \cup y$                                                   | `$x \cup y$`                                                 | $x \cap y$       | `$x \cap y$`       | $x \bigcup y$   | `$x \bigcup y$`   | $x \bigcap y$     | `$x \bigcap y$`     |
+| $x \setminus y$                                              | `$x \setminus y$`                                            | $x \bigvee y$    | `$x \bigvee y$`    | $x \bigwedge y$ | `$x \bigwedge y$` |                   |                     |
+| $x \geq y$                                                   | `$x \geq y$`                                                 | $x \leq y$       | `$x \leq y$`       | $x \leqslant y$ | `$x \leqslant y$` | $x \geqslant y$   | `$x \geqslant y$`   |
+| $x < y$                                                      | `$x < y$`                                                    | $x > y$          | `$x > y$`          | $x \ll y$       | `$x \ll y$`       | $x \gg y$         | `$x \gg y$`         |
+| $x \neq y$                                                   | `$x \neq y$`                                                 | $x \sim y$       | `$x \sim y$`       | $x \approx y$   | `$x \approx y$`   | $x \equiv y$      | `$x \equiv y$`      |
+| $x \not\equiv y$                                             | `$x \not\equiv y$`                                           |                  |                    |                 |                   |                   |                     |
+| $x \odot y$                                                  | `$x \odot y$`                                                | $x \oplus y$     | `$x \oplus y$`     | $x \circ y$     | `$x \circ y$`     |                   |                     |
+| $(s, \preccurlyeq)$                                          | `$(s, \preccurlyeq)$`                                        | $x \prec y$      | `x \prec y`        |                 |                   |                   |                     |
+| $(\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D})$ | `$(\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D})$` |                  |                    |                 |                   |                   |                     |
 
 ### 分割符号
 
@@ -434,6 +437,7 @@ $$
 | $\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$ | `$\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x \rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert$` |                                                              |                                                              |
 | $\cdots$                                                     | `$\cdots$`                                                   | $\vdots$                                                     | `$\vdots$`                                                   |
 | $60 \%$                                                      | `$60 \%$`                                                    |                                                              |                                                              |
+| $O(n \log n)$                                                | `$O(n \log n)$`                                              |                                                              |                                                              |
 
 ### 数学公式
 
@@ -451,6 +455,7 @@ $$
 | $\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$        | `$\ddot{a}^{(m)}_{\left.{\overline{\,2\,}}\!\right|i}$`      |
 | $x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$ | `$x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + ...}}}}$` |
 | $\boxed{E=mc^2}$                                             | `$\boxed{E=mc^2}$`                                           |
+| $c = m^e \bmod n$                                            | `$c = m^e \bmod n$`                                          |
 
 ### 矩阵
 
