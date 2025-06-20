@@ -1,16 +1,8 @@
 # OpenSSL总结
 
-<!-- vim-markdown-toc GFM -->
+[TOC]
 
-* [版本](#版本)
-    - [Openssl各版本及其支持情况](#openssl各版本及其支持情况)
-* [加密算法](#加密算法)
-* [目录结构](#目录结构)
-* [重大事件](#重大事件)
-    - [Heartbleed bug](#heartbleed-bug)
-* [参考](#参考)
 
-<!-- vim-markdown-toc -->
 
 
 

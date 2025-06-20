@@ -1,13 +1,6 @@
 # openssl - DES使用示例
 
-<!-- vim-markdown-toc GFM -->
-
-* [ECB模式](#ecb模式)
-    - [例1 ECB模式下正确性及性能测试](#例1-ecb模式下正确性及性能测试)
-    - [例2 ECB模式下加/解密文件](#例2-ecb模式下加解密文件)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

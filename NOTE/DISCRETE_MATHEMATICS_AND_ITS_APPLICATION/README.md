@@ -12,6 +12,6 @@ Kenneth H. Rosen, 8ED
 - [CHAPTER 8 Advanced Counting Techniques](chapter8.md)
 - [CHAPTER 9 Relations](chapter9.md)
 - [CHAPTER 10 Graphs](chapter10.md)
-- CHAPTER 11 Trees
-- CHAPTER 12 Boolean Algebra
-- CHAPTER 13 Modeling Computation
+- [CHAPTER 11 Trees](chapter11.md)
+- [CHAPTER 12 Boolean Algebra](chapter12.md)
+- [CHAPTER 13 Modeling Computation](chapter13.md)
