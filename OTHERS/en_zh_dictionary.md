@@ -109,6 +109,8 @@ abrupt `/ə'brʌpt/` adj. 突然的；唐突的；意外的；陡峭的
 
 absent `/ˈæbsənt/` adj. 缺席的；不在的；缺乏的；vt. 使缺席
 
+> DRV: absence `/'æbsəns/` n. 缺席；缺乏；不存在
+>
 > DRV: absenteeism `/ˌæbsən'tiːɪzəm/` n. （无故）旷课；（无故）旷工
 
 absolve `/əb'zɒlv/` vt. 宣告...无罪；赦免
@@ -245,6 +247,8 @@ acid `/ˈæsɪd/` n. 酸；酸性物质；<俚>迷幻药；adj. 酸的；酸性�
 
 acknowledge `/ək'nɒlɪdʒ/` vt. 承认；告知收到；公认；表示感谢；注意到
 
+> DRV: acknowledgment `/ək'nɒlɪdʒmənt/` n. 承认；确认；感谢；致谢
+>
 > DRV: acknowledgement `/ək'nɑlɪdʒmənt/` n. 答谢的表示; 确认收到的信等; 致谢, 鸣谢
 
 acorn `/'eɪkɔːn/` n. 橡子, 栎实
@@ -1077,6 +1081,8 @@ antique `/ænˈtiːk/` adj. 古代的；古老的；过时的；n. 古董；古�
 >
 > DRV: antiquity `/æn'tɪkwəti/` n. 古代；古物；古迹
 
+antirust `/'æntiraʌst/` adj. 防锈的；防锈剂
+
 antisemitic `/ˌæntisi'mitik/` adj. 反对犹太人的,排犹的
 
 antisocial `/æntɪ'səʊʃ(ə)l/` adj. 反社会的；危害社会安宁的；违反公益的; 不喜欢社交的，不合群的; 损害社会生活的
@@ -1299,6 +1305,8 @@ arable `/'ærəbl/` adj. 可耕的；适合种植的
 
 arbitrage `/'ɑːbɪtrɑːʒ/` n. 套利交易；套汇；仲裁
 
+> DRV: arbitrageur `/'ɑːbɪtrɑːʒə/` n. 套利者；套汇者
+
 arbitrary `/ˈɑːbɪtrəri/` adj. 任意的；专制的；武断的；霸道的
 
 > REF: FOR abolishing the free System of English Laws in a neighbouring Province, establishing therein an arbitrary Government, and enlarging its Boundaries, so as to render it at once an Example and fit Instrument for introducing the same absolute Rule into these Colonies: --The Declaration of Independence
@@ -1306,6 +1314,8 @@ arbitrary `/ˈɑːbɪtrəri/` adj. 任意的；专制的；武断的；霸道的
 arboreal `/ɑːˈbɔːriəl/` adj. 树木的；栖于树木的，生活在树上的；像树的
 
 arc `/ɑːk/` n. 弧；弧形物；vi. 形成电弧；按弧形轨迹行进
+
+arcade `/ɑː'keɪd/` n. 拱廊；拱廊商场；有拱廊的街道
 
 arcane `/ɑː'keɪn/` adj. 神秘的；不可思议的
 
@@ -1937,6 +1947,8 @@ backlog `/'bæklɒg/` n. 积压未办之事，积压的工作；没交付的订�
 
 backpropagation `/bækprɒpə'ɡeɪʃn/` n. （计算机）反向传播算法
 
+backslap `/'bækslæp/` n. 拍背；拍背的动作；拍背的友好行为
+
 backslash `/ˈbækslæʃ/` n. 反斜线符号(\)
 
 backstage `/bæk'steɪdʒ/` adv. 后台; 秘密地, 背地里, 在幕后
@@ -1958,6 +1970,8 @@ badminton `/ˈbædmɪntən/` n. 羽毛球运动
 baffle `/'bæfl/` v. 困惑；难倒；阻碍；受挫；n. 挡板；隔音板；反射板；困惑
 
 baggage `/'bæɡɪdʒ/` n. 行李
+
+baggy `/'bæɡi/` adj. 宽松的；袋状的；膨胀的
 
 bagpipe `/'bægpaɪp/` n. 风笛; vi. 奏风笛
 
@@ -1998,6 +2012,8 @@ balloon `/bəˈluːn/` n. 气球；球状物；vt. 使膨胀；vi. 乘气球飞�
 > DRV: ballooned `/bə'luːn/` vi. 激增；膨胀如气球; n. 气球; vt. 使像气球般鼓起；使激增; adj. 像气球般鼓起的
 
 ballot `/'bælət/` n. 投票；投票用纸；vi. 投票
+
+ballpark `/'bɔːlpɑːk/` n. 球场；大概；范围；adj. 大约的; 运动场的; 大致正确的
 
 balmy `/ˈbɑːmi/` adj. 芳香的；温和的；<俚>疯狂的；古怪的
 
@@ -2393,6 +2409,8 @@ bigot `/'bɪɡət/` n. (宗教、政治等的)盲信者；顽固者
 
 > DRV: bigotry `/'bɪɡətri/` n. 固执；顽固；顽迷
 
+bigwig `/'bɪɡwɪɡ/` n. 大人物；要人；显要人物; 权贵
+
 bijective `/bɪ'dʒektɪv/` adj. 双射的
 
 bilateral `/ˌbaɪˈlætərəl/` adj. 双边的, 双方的
@@ -2436,6 +2454,8 @@ biography `/baɪˈɒɡrəfi/` n. 传记
 > DRV: biographer `/baɪ'ɒɡrəfə/` n. 传记作者
 
 biomedical `/ˌbaɪəʊ'medɪkl/` adj. 生物医学的
+
+biometric `/ˌbaɪəʊ'metrɪk/` adj. 生物统计的；生物特征识别的
 
 biomolecule `/ˌbaɪəʊ'mɒlɪkjuːl/` n. 生物分子
 
@@ -2543,6 +2563,8 @@ blight `/blaɪt/` n. 枯萎病；导致破坏的因素；v. (使）枯萎；摧�
 
 blimey `/'blaɪmɪ/` int. 啊呀!
 
+blimp `/blɪmp/` n. 小型飞艇；<英俚>胖子；<美俚>老顽固
+
 blind `/blʌɪnd/` adj. 瞎的；盲目的；adv. 看不见地；盲目地；n. 百叶窗；掩饰，借口；vt. 使失明；使失去理智
 
 > DRV: blindly `/'blaɪndli/` adv. 摸索地；盲目地；蛮干地
@@ -2588,6 +2610,8 @@ bloodthirsty `/'blʌdθɜːstɪ/` adj. 嗜杀的,残忍的
 bloodstream `/'blʌdstriːm/` n. 血流
 
 blossom `/ˈblɒsəm/` n. 花；开花；全盛期；vi. 开花；成长
+
+blotter `/'blɒtə/` n. 吸墨纸；记录簿；污点
 
 blouse `/blaʊz/` n. 宽松的上衣；女装衬衫；vt. 使…宽松下垂；vi. 宽松下垂
 
@@ -2709,6 +2733,8 @@ bond `/bɒnd/` n. 结合；粘合剂；债券；约定；vi. 结合，团结在�
 
 bone `/bəʊn/` n. 骨骼；骨；核心；vt. 除去骨头；往衣服里加撑条；磨光表面；vi. 努力学习；adv. 非常地；极其地
 
+> DRV: bonehead `/ˈbəʊnhed/` n. 笨蛋；傻瓜
+>
 > DRV: boneless `/'bəʊnlɪs/` adj. 去骨的
 
 bonkers `/'bɒŋkəz/` adj. 疯狂的,精神不正常的
@@ -3085,11 +3111,15 @@ bull `/bʊl/` n. 公牛；股市看涨的人；<俚>警察；n. 荒谬的话；n
 
 bullet `/'bʊlɪt/` n. 子弹；弹丸
 
+bullethead `/'bʊlɪtheəd/` n. 圆头者, 笨蛋
+
 bulletin `/'bʊlətɪn/` n. 公报；期刊；新闻快报；公示；vt. 发表；用公告通知
 
 bullfighting `/'bʊlfaɪtɪŋ/` n. 斗牛
 
 bulldog `/'bʊldɒg/` n. 牛头犬，恶犬；短枪管大型手枪
+
+bulldoze `/'bʊldəʊz/` v. 恐吓；强迫；用推土机推平；n. 恐吓；强迫
 
 bullish `/ˈbʊlɪʃ/` adj. 牛市的；似牡牛的；看涨的；上扬的；乐观的
 
@@ -3166,6 +3196,8 @@ burn `/bɜːn/` v. 燃烧；烧着；烧毁；灼伤；急于；n. 烧伤；燃�
 > DRV: burnout `/'bɜːnaʊt/` n. 烧坏；燃料烧尽；精疲力尽
 >
 > DRV: burnt `/bɜːnt/` adj. 烧伤的；烧焦的；烧坏的
+
+burnish `/'bɜːnɪʃ/` vt. 擦亮；磨光；使光滑；n. 擦亮；光泽
 
 burp `/bɜːp/` vi. 打嗝; n. 打嗝,饱嗝
 
@@ -4029,6 +4061,8 @@ chuck `/tʃʌk/` n. 抛掷；卡盘；咯咯声；v. 扔；抛掷；撵走；咯
 
 chug `/tʃʌg/` vi. 发出(持续而单调的)短声, 发出突突声; n. (发动机缓慢运转时发出的)突突声
 
+chummy `/'tʃʌmi/` adj. 亲密的；友好的；n. 好朋友
+
 chump `/tʃʌmp/` n. 傻瓜,笨蛋; 短而厚的木块
 
 chunk `/tʃʌŋk/` n. 矮胖的人或物；厚块（片）；相当大的量；vt. （高尔夫球）没击中；vi. 发出猛冲的声音
@@ -4263,6 +4297,8 @@ clout `/klaʊt/` n. 猛击；影响力；v. 猛击
 
 clown `/klaʊn/` n. 小丑；粗鲁愚蠢的人; v. 扮小丑；胡闹
 
+cloy `/klɔɪ/` vi. <正>发腻,倒胃口
+
 cluck `/klʌk/` n. (母鸡)咯咯声; <俚>傻瓜，笨蛋
 
 clue `/kluː/` n. 线索；提示
@@ -4276,6 +4312,8 @@ clumsy `/'klʌmzi/` adj. 笨拙的；不得体的；笨重的
 > DRV: clumsiness `/'klʌmzinəs/` n. 笨拙；粗陋；不漂亮
 
 clunk `/klʌŋk/` n. 沉闷的金属声; vt. 用力地敲打；发出沉闷声; vi. 发出咚咚的声音
+
+> DRV: clunky `/'klʌŋki/` adj. 沉重的；影响不好的
 
 cluster `/'klʌstə(r)/` n. 群；簇；丛；串；v. 群集；丛生；使成群
 
@@ -4348,6 +4386,8 @@ cockroach `/'kɒkrəʊtʃ/` n. 蟑螂
 cocksure `/ˌkɒk'ʃʊə(r)/` adj. 确信的；深信的；过分自信的
 
 cocktail `/'kɒkteɪl/` n. 鸡尾酒；混合物；开胃品；n. 截短尾巴的马；adj. 鸡尾酒的
+
+cocky `/'kɒki/` adj. 自大的；骄傲的；过于自信的
 
 cocoon `/kə'kuːn/` n. 茧；茧状物；v. 包围；包裹
 
@@ -4498,6 +4538,8 @@ column `/ˈkɒləm/` n. 圆柱，柱形物；纵队，列；专栏
 coma `/'kəʊmə/` n. 昏迷
 
 comb `/kəʊm/` n. 梳子；鸡冠；蜂房；v. 梳理；彻底搜寻
+
+> DRV: combed `/'kəʊmd/` adj. 梳理过的；梳成的；有梳齿的
 
 combat `/'kɒmbæt/` n. 战斗；试图解决；v. 战斗；与 ... 斗争；试图解决；adj. 战斗的
 
@@ -4995,6 +5037,8 @@ conquer `/'kɒŋkə(r)/` vt. 征服；克服；战胜；vi. 得胜
 >
 > DRV: conquest `/'kɒŋkwest/` n. 征服；占领地；战利品；俘虏
 >
+> DRV: conquistador `/kɒŋˈkwɪstəˌdɔːr/` n. 西班牙征服者；西班牙殖民者
+>
 > REF: He **conquers** twice, who upon victory overcomes himself --Francis Bacon.
 
 cons `/kɔn/` n. 骗局；反对；反对的理由；adv. 反面地；反对地；vt. 精读；记诵
@@ -5051,7 +5095,9 @@ considerable `/kənˈsɪdərəbl/` adj. 重要的；相当大的；可观的
 
 considerate `/kən'sɪdərət/` adj. 考虑周到的；体谅的；体贴的
 
-consignment `/consignment/` n. 委托；寄售；寄售物；托付货物
+consign `/kən'saɪn/` vt. 委托；寄存；托运；放逐
+
+> DRV: consignment `/consignment/` n. 委托；寄售；寄售物；托付货物
 
 consist `/kənˈsɪst/` vi. 由 ... 组成；构成；在于；符合
 
@@ -5643,7 +5689,7 @@ creature `/'kriːtʃə(r)/` n. 生物；动物；人
 
 credence `/'kriːdns/` n. 信任；相信；祭器台
 
-> credential `/krə'denʃl/` n. 国书；凭据；印信；vt. 提供证明书；adj. 信任的
+> DRV: credential `/krə'denʃl/` n. 国书；凭据；印信；vt. 提供证明书；adj. 信任的
 
 creditor `/ˈkredɪtə(r)/` n. 债权人；债主
 
@@ -5712,6 +5758,10 @@ crockery `/'krɒkəri/` n. 陶器；瓦器
 crocodile `/ˈkrɒkədaɪl/` n. 鳄鱼
 
 crony `/'krəʊnɪ/` n. 密友；好朋友；亲伴
+
+crook `/krʊk/` n. 弯曲部分；钩状物；骗子；v. 弯曲；使成钩状；欺骗；adj. 弯曲的；不诚实的
+
+> DRV: crooked `/'krʊkɪd/` adj. 畸形的; 弯曲的, 歪的; 不正当的, 不诚实的
 
 crop `/krɒp/` n. 农作物；收成；庄稼；(一)批；v. 修剪；啃吃；收获；出现
 
@@ -5933,6 +5983,8 @@ cutoff `/'kʌtɔːf/` n. 近路；切断
 
 cutter `/'kʌtə/` n. 切削工人,切割工具; 快艇,小汽艇
 
+cutthroat `/'kʌtθrəʊt/` n. 杀人凶手；凶残的人；adj. 残酷的；激烈的；竞争激烈的; 不公正的；不道德的
+
 ### cv
 
 [回到C](#C)--[回到顶部](#英汉词典)
@@ -6034,6 +6086,8 @@ dangerous `/'deɪndʒərəs/` adj. 危险的；不安全的; 凶狠的;
 dangle `/'dæŋɡl/` v. 摇晃；（计算机）悬垂；挂着；追求；n. 摇摆；摇摆物
 
 > DRV: dangling `/'dæŋɡl/` v. 摇晃；（计算机）悬垂；挂着；追求；n. 摇摆；摇摆物
+
+dank `/dæŋk/` adj. 阴湿的；湿气重的；潮湿的
 
 dapper `/'dæpə(r)/` adj. 衣冠楚楚的；短小精悍的；干净的
 
@@ -6196,6 +6250,8 @@ decorate `/ˈdekəreɪt/` v. 装饰；布置；装修；授予某人奖章或其
 > DRV: decorator `/'dekəreɪtə(r)/` n. 装饰者；室内装潢师
 
 decorum `/dɪˈkɔːrəm/` n. 礼貌；礼仪；端正；恪守礼仪
+
+> DRV: decorous `/'dekərəs/` adj. 端庄的；得体的；合宜的
 
 decouple `/diːˈkʌpl/` vt. 分离；拆散；解耦
 
@@ -6457,6 +6513,8 @@ denial `/dɪ'naɪəl/` n. 否认；拒绝
 
 > DRV: denier `/'denɪə/` n. 否认者,法国旧银币,极少量的金额,极微量
 
+denigrate `/ˈdenɪɡreɪt/` vt. 诋毁；贬低；污蔑
+
 denizen `/'denɪzn/` vt. 给…居住权；移植; n. 居民；外来语；外籍居民
 
 denominate `/dɪ'nɒmɪneɪt/` vt. 命名,称呼
@@ -6601,6 +6659,8 @@ desolate `/'desələt/` adj. 荒凉的；荒芜的；孤单寂寞的
 
 despair `/dɪ'speə(r)/` n. 绝望；失望；vi. 失望
 
+> DRV: desperado `/'despəˌrɑːdəʊ/` n. 歹徒；亡命之徒；流氓
+>
 > DRV: desperate `/'despərət/` adj. 绝望的；不顾一切的；极其想要的
 >
 > DRV: desperation `/ˌdespəˈreɪʃn/` n. 绝望；不顾一切，拼命
@@ -6687,7 +6747,9 @@ determine `/dɪˈtɜːmɪn/` v. 决定；决心；确定；测定
 
 deterrent `/dɪ'terənt/` adj. 威慑的；n. 威慑物；妨碍物，障碍
 
-detestable `/dɪ'testəbl/` adj. 可憎的；令人厌恶的
+detest `/dɪ'test/` vt. 厌恶；憎恨
+
+> DRV: detestable `/dɪ'testəbl/` adj. 可憎的；令人厌恶的
 
 dethrone `/ˌdiː'θrəʊn/` vt. 废除(君主)
 
@@ -6945,6 +7007,8 @@ din `/dɪn/` n. 喧嚣；v. 絮聒不休地说；喧闹
 
 dine `/dʌɪn/` v. 用正餐；进餐
 
+ding `/dɪŋ/` vi. 响；执拗地讲; vt. 反复地说给人家听; n. 钟声
+
 dinosaur `/'daɪnəsɔː(r)/` n. 恐龙；n. (俚)过时、落伍的人或事物
 
 diode `/'daɪəʊd/` n. [电]二极管
@@ -6974,6 +7038,8 @@ direct `/dəˈrekt/` adj. 直接的；笔直的；坦白的；v. 对准；指挥
 > DRV: directorship `/də'rektəʃɪp/` n. 管理者的职位
 >
 > DRV: direst `/'daɪə(r)/` adj. 可怕的；悲惨的；极其的
+
+dirtcheap `/'də:t'tʃi:p/` adj. 毫无价值的,贱如粪土的; adv. 非常便宜地
 
 disadvantage `/ˌdɪsədˈvɑːntɪdʒ/` n. 缺点; 不利；不利条件；损害；损失
 
@@ -7199,6 +7265,8 @@ disrespectful `/ˌdɪsrɪ'spektfl/` adj. 无礼的；不尊敬的
 
 disrupt `/dɪs'rʌpt/` vt. 干扰；打断；妨碍；使分裂；使破裂
 
+> DRV: disruption `/dɪs'rʌpʃn/` n. 中断；分裂；瓦解；破坏
+>
 > DRV: disruptive `/dɪs'rʌptɪv/` adj. 分裂的；破坏性的；制造混乱的
 >
 > DRV: disruptiveness `/dɪs'rʌptɪvnɪs/` n. 破裂性(分裂)
@@ -7475,6 +7543,8 @@ dose `/dəʊs/` n. 剂量；一剂；一服；vt. 给 ... 服药
 
 dotted-quad `/ˈdɒtɪd kwɒd/` n. 点分
 
+doubloon `/'duːbluːn/` n. 双联金币（西班牙或西属美洲的金币）
+
 doughnut `/'dəʊnʌt/` n. 油炸圈饼；环状物
 
 dove `/dʌv/` n. 鸽子；温和派人物；鸽派人物
@@ -7539,6 +7609,8 @@ drape `/dreɪp/` vt. 用布帘覆盖；使呈褶裥状; vi. 成褶皱状垂下; 
 
 drastic `/ˈdræstɪk/` adj. 激烈的；重大的；极端的
 
+> DRV: drastically `/'dræstɪkli/` adv. 激烈地；彻底地；大大地
+
 draught `/drɑːft/` n. 通风；气流；一饮；药水；国际跳棋；拖，拽；adj. 散装的；拖曳重载用的
 
 drawback `/ˈdrɔːbak/` n. 缺点；退税；退款；不利条件；
@@ -7557,6 +7629,8 @@ dreary `/ˈdrɪəri/` adj. 沉闷的；令人沮丧的；情绪低落的
 
 dredge `/dredʒ/` vt. 疏浚(河道等); (在食物上)撒(面粉、糖等); vt. & vi. 挖除或吸出某物; 重提，翻出；回忆; 竭力做(某事); n. 挖泥机
 
+drench `/drentʃ/` vt. 使湿透；浸透；n. 湿透；浸湿
+
 dress `/dres/` n. 衣服; 服装；女装; 连衣裙; v. 打扮；穿衣；穿着；给（某人）穿衣; 清洗包扎（伤口）
 
 > SYN(n.衣服): apparel, attire, clothes, clothing, costume, garb, garments, gear, outfit, raiment.
@@ -7574,6 +7648,8 @@ drift `/drɪft/` vi. 漂流；漂移；吹积；漂泊；偏离；vt. 使漂流�
 > DRV: drifter `/'drɪftə(r)/` n. 漂流者；漂流物；漂网渔船
 
 drill `/drɪl/` n. 钻孔机；钻子；反复操练；播种机；v. 练习；钻孔；(军事)训练
+
+drip `/drɪp/` n. 滴水声；滴水；点滴；vi. 滴下；漏水；vt. 使滴下
 
 drivel `/'drɪvl/` n. 傻话；胡言；口水；v. 胡说；胡写；流口水
 
@@ -7646,6 +7722,8 @@ dude `/d(j)uːd/` n. 城里人; 纨绔子弟, 花花公子; 〈俚〉男人
 dudgeon `/'dʌdʒən/` n. 生气；不高兴
 
 due `/djuː/` adj. 应有的；到期的；预定的；应付的；n. 应得物；会费
+
+duel `/'djuːəl/` n. 决斗；斗争；v. 进行决斗
 
 dug `/dʌɡ/` n. 乳房；乳头; v. 挖，翻土（dig的过去式和过去分词）
 
@@ -7823,6 +7901,8 @@ ecology `/iˈkɒlədʒi/` n. 生态学；社会生态学
 
 > DRV: ecologic `/ekə'lɒdʒɪk/` adj. 生态的；生态学的
 
+econometric `/ˌiːkəʊnə'metrɪk/` adj. 计量经济学的
+
 ecosystem `/ˈiːkəʊsɪstəm/` n. 生态系统
 
 ecotourism `/ˈiːkəʊtʊərɪzəm/` n. 生态旅游
@@ -7902,6 +7982,8 @@ ego `/ˈiː.ɡəʊ/` n. 自我；自负；自尊心
 > DRV: egotistical `/ˌi:ɡə'tistik/` adj. 自我本位的, 任性的
 
 egregious `/ɪ'ɡriːdʒiəs/` adj. 极坏的;异乎寻常的
+
+egress `/'iːɡres/` n. 外出；出口；离开；vi. 外出；离开
 
 ### eh
 
@@ -8429,6 +8511,8 @@ ephemeral `/ɪˈfemərəl/` adj. 短暂的；朝生暮死的；n. 生存极短�
 
 epic `/ˈepɪk/` n. 史诗；叙事诗；adj. 史诗的；叙事诗的；宏大的；壮丽的
 
+epicenter `/'epɪsentə(r)/` n. 震中；中心点；核心
+
 epidemic `/ˌepɪˈdemɪk/` n. 流行病；传染病；adj. 流行的；传染性的
 
 > DRV: epidemiologist `/'epi,di:mi'ɔlədʒist/` n. 流行病学家
@@ -8479,7 +8563,9 @@ equestrian `/ɪˈkwestriən/` n. 骑马者；骑术家；adj. 骑马的；骑术
 
 equidistant `/ˌiːkwɪ'dɪstənt/` adj. 等距离的
 
-equilibrium `/ˌiːkwɪ'lɪbriəm/` n. 平衡；均衡；平静
+equilibria `/ˌiːkwɪ'lɪbrɪə/` n. 平衡；均衡；平静
+
+> DRV: equilibrium `/ˌiːkwɪ'lɪbriəm/` n. 平衡；均衡；平静
 
 equipage `/'ekwɪpɪdʒ/` n. 马车； 装备； 设备； 用具；n. <古>随员； 随从
 
@@ -8513,6 +8599,8 @@ erasable `/ɪ'reɪsəbl/` adj. 可消除的；可抹去的
 
 err `/əː/` v. 犯错；做错
 
+errand `/'erənd/` n. 差使；差事；使命
+
 errata `/e'rɑːtə/` n. 正误表；勘误
 
 erratum `/ɛˈrɑːtəm/` n. 勘误表
@@ -8540,6 +8628,8 @@ erode `/ɪˈrəʊd/` vt. 腐蚀；侵蚀；逐步毁坏，削弱，损害；vi. 
 erotic `/ɪ'rɒtɪk/` adj. (引起)性欲的;色情的; adv. 引起性欲地
 
 > DRV: erotica `/ɪ'rɒtɪkə/` n. 色情作品；色情书籍
+
+erupt `/ɪ'rʌpt/` vi. 爆发；喷出；突然发生；vt. 使爆发；使喷出
 
 ### es
 
@@ -8633,6 +8723,8 @@ ethnic `/ˈeθnɪk/` adj. 种族的；民族的；有民族特色的；n. 少数
 >
 > DRV: ethnography `/eθ'nɒɡrəfi/` n. 人种学；人种论
 
+ethos `/'iːθɒs/` n. 精神特质；民族精神；社会风气
+
 etiquette `/ˈetɪkət/` n. 礼节，礼仪；规矩
 
 etymology `/ˌetɪ'mɒlədʒi/` n. 语源；词源学
@@ -8681,9 +8773,11 @@ eve `/iːv/` n. (宗教节日或假日的)前日, 前夕; (重大事件发生的
 
 evenly `/'iːvnli/` adv. 平衡地；平坦地；平等地
 
-eventuality `/ɪ,ven(t)ʃʊ'ælɪtɪ/` n. <正>可能发生的事情(尤指坏事情);不测事件
+eventual `/ɪ'ven(t)ʃuəl/` adj. 最终的；结果的；可能的
 
-eventually `/ɪˈventʃuəli/` adv. 最后；终于
+> DRV: eventuality `/ɪ,ven(t)ʃʊ'ælɪtɪ/` n. <正>可能发生的事情(尤指坏事情);不测事件
+>
+> DRV: eventually `/ɪˈventʃuəli/` adv. 最后；终于
 
 everest `/'evərɪst/` n. 珠穆朗玛峰
 
@@ -9303,6 +9397,8 @@ fay `/feɪ/` n. 小仙女；妖精; vi. 接合; vt. 接合
 
 [回到F](#F)--[回到顶部](#英汉词典)
 
+fearlessness `/'fɪələsnəs/` n. 无畏；勇敢
+
 fearsome `/ˈfɪəsəm/` adj. <正>很可怕的;十分吓人的
 
 feasible `/'fiːzəbl/` adj. 可行的；可能的
@@ -9533,11 +9629,15 @@ fishbowl `/'fɪʃbəʊl/` n. 玻璃鱼缸
 
 fishery `/'fɪʃəri/` n. 渔场；渔业
 
+fishmonger `/'fɪʃmʌŋɡə(r)/` n. 鱼贩; 鱼商
+
 fission `/'fɪʃn/` n. 分裂；裂变；【生】裂殖
 
 fissure `/ˈfɪʃə(r)/` n. 狭长裂缝或裂隙；裂伤；分歧；分裂; vt. & vi. 裂开
 
 fist `/fɪst/` n. 拳头；vt. 紧握；用拳头打
+
+> DRV: fistfight `/'fɪstfaɪt/` n. 互殴
 
 fitness `/ˈfɪtnəs/` n. 健康, 适当,适合
 
@@ -9645,6 +9745,8 @@ flee `/fliː/` vi. 逃走；消失；逃避；(时间)飞逝；vt. 逃离
 
 > DRV: fleet `/fliːt/` n. 舰队；船队；机群；adj. 快速的；敏捷的；短暂的；vt. 使（时间）飞逝；vi. 疾飞；掠过；逐渐消失
 
+fleece `/fliːs/` n. 羊毛；羊毛制品；v. 剥夺；欺诈；骗取
+
 flesh `/flɛʃ/` n. 肉；肉体；人类；v. 充实；变胖
 
 > DRV: fleshiness `/'fleʃɪnɪs/` n. 肥胖；多肉
@@ -9673,6 +9775,8 @@ flint `/flɪnt/` n. 打火石；极硬的东西
 
 flip `/flɪp/` vt. 掷；轻击；弹；vi. 翻转；n. （跳水或体操动作中的）空翻；轻弹；浏览；adj. 无礼的；冒失的；轻率的
 
+> DRV: flip-flop `/'flɪpflɒp/` n. 触发器；啪嗒啪嗒的响声；向后翻的筋斗; vt. 使翻转；使突然转变; vi. 作后手翻；突然改变；啪嗒啪嗒地动; adj. 后手翻的；突然改变的; adv. 啪嗒啪嗒响着
+>
 > DRV: flippancy `/'flɪpənsi/` n. 无礼；言语尖刻
 
 flirt `/flɜːt/` v. 调情; 玩儿似地想做某事；冒险；不顾危险后果（flirt with）; n. 与多人调情的人
@@ -10053,7 +10157,9 @@ frantic `/'fræntɪk/` adj. 疯狂的；狂乱的；急忙的
 
 > DRV: frantically `/'fræntɪkli/` adv. 疯狂地;狂热地
 
-fraternal `/frəˈtɜːnl/` adj. 兄弟的,兄弟般的; 友好的,同志般的
+frat `/fræt/` n. 兄弟会；大学联谊会
+
+> DRV: fraternal `/frəˈtɜːnl/` adj. 兄弟的,兄弟般的; 友好的,同志般的
 
 fraud `/frɔːd/` n. 欺骗；诈欺；骗子
 
@@ -10236,6 +10342,8 @@ furrow `/'fʌrəʊ/` n. 犁沟；车辙；皱纹；v. （使）起皱纹；形�
 further `/ˈfɜː.ðər/` adj. 更远的；adv. 进一步地；此外；v. 促进；推动
 
 > DRV: furthermore `/ˌfɜːðəˈmɔː(r)/` adv. 而且；此外
+
+fury `/'fjʊəri/` n. 狂怒；暴怒；激怒；狂暴
 
 fuse `/fjuːz/` n. 保险丝；导火线；引线；vt. 熔化；融合；装导线；装引信于；vi. 熔化；融合
 
@@ -10535,6 +10643,8 @@ gild `/ɡɪld/` vt. 把…镀金；给…上金色，使有金子般的色彩; �
 
 gimme `/'ɡɪmɪ/` n. 〈口〉给我(或把它给我)
 
+gimmick `/'ɡɪmɪk/` n. 花招；诡计；噱头；暗机关；骗人的玩意; vt. 使有噱头；用花招吸引
+
 gin `/dʒɪn/` n. 杜松子酒, 荷兰酒
 
 ginger `/'dʒɪndʒə(r)/` n. 姜；姜根；精力；深棕色；vt. 用姜调味；使 ... 活泼
@@ -10669,6 +10779,8 @@ gnar `/nɑː/` v. (狗等)吠；吼；咆哮
 
 gnarly `/'nɑːli/` adj. 扭曲的；粗糙的；多瘤节的
 
+gnat `/næt/` n. 小飞虫；小烦扰
+
 gnaw `/nɔː/` v. 咬；折磨；侵蚀
 
 ### go
@@ -10734,6 +10846,8 @@ gothic `/'ɡɔθik/` adj. 哥特式的；野蛮的; n. 哥特式
 gotta `/'ɡɑtə/` n. 〈美俚〉必须
 
 gourmet `/ˈɡʊəmeɪ/` n. 美食家
+
+> DRV: gourmand `/'ɡʊəmənd/` n. 贪吃者；美食家；吃货
 
 govern `/'ɡʌvn/` v. 统治；支配；管理；规定；控制
 
@@ -10822,6 +10936,8 @@ granule `/ˈɡrænjuːl/` n. 颗粒
 > DRV: granularity `/grænjʊ'lærɪtɪ/` n. 颗粒度；粒度；间隔尺寸
 
 grape `/greɪp/` n. 葡萄
+
+> DRV: grapevine `/'ɡreɪpvaɪn/` n. 葡萄藤；小道消息；传闻
 
 graph `/ɡræf/` n. 图表；示意图；vt. (以图表)表示
 
@@ -10948,6 +11064,8 @@ grip `/ɡrɪp/` n. 紧握；手提包；了解；手柄；vt. 吸引；紧抓
 grisly `/ˈɡrɪzli/` adj. 可怕的；厉害的；严重的
 
 grit `/ɡrɪt/` n. 砂砾；勇气，决心；粗砂岩; v. 在……上铺砂砾；咬紧牙关；吱嘎吱嘎地移动
+
+grizzle `/ˈɡrɪzl/` n. 灰色；灰色的毛发；v. 变灰色；使变灰色
 
 groan `/ɡrəʊn/` v. 呻吟；抱怨；发嘎吱声；受重压；n. 呻吟；呻吟声
 
@@ -11227,6 +11345,8 @@ handy `/ˈhændi/` adj. 方便的；手边的；灵巧的；近便的；现成�
 
 handymen `/'hændimen/` n. 杂工
 
+hangar `/'hæŋə(r)/` n. 飞机库；飞机棚
+
 hanger `/'hæŋə/` n. 衣架；挂钩；绞刑执行者
 
 hangout `/'hæŋaʊt/` n. (流氓)住所；巢穴
@@ -11493,6 +11613,8 @@ heredity `/həˈredəti/` n. 遗传；遗传特征
 
 > DRV: hereditary `/hə'redɪtri/` adj. 世袭的；遗传的
 
+heresy `/'herəsi/` n. 异端；异教；异端邪说
+
 heretic `/'herɪtɪk/` n. 异端
 
 > DRV: heretical `/hə'retɪkl/` adj. 异教的；异端的
@@ -11581,7 +11703,9 @@ highlight `/'haɪlaɪt/` vt. 强调；照亮；加亮；使 ... 显得重要；�
 
 hijack `/'haɪdʒæk/` vt. 劫持；劫机；n. 劫持
 
-hilarious `/hɪˈleəriəs/` adj. 十分有趣的, 非常滑稽的; 欢闹的
+hilarity `/hɪ'lærəti/` n. 欢闹；狂欢；欢喜
+
+> DRV: hilarious `/hɪˈleəriəs/` adj. 十分有趣的, 非常滑稽的; 欢闹的
 
 hilbert `/ˈhɪlbərt/` n. （数学）希尔伯特
 
@@ -12139,6 +12263,8 @@ iffy `/'ɪfɪ/` adj. 不确定的,可疑的,有问题的
 
 ignite `/ɪɡˈnaɪt/` vi. 着火；燃烧；vt. 点燃；使 ... 燃烧；引发
 
+> DRV: ignition `/ɪɡˈnɪʃn/` n. 点火；点燃；(汽油引擎的)点火装置
+
 ignore `/ɪɡ'nɔː(r)/` vt. 忽视；不理；不顾
 
 > SYN(v.不理): disobey, disregard, leave out, miss out, neglect, omit, overlook, pass over, shut your eyes to, skip, slight, take no notice of, turn a blind eye to.
@@ -12605,6 +12731,8 @@ indecipherable `/ˌɪndɪˈsaɪfrəbl/` adj. 破译不出的,难辨认的
 
 indecision `/ɪndɪ'sɪʒ(ə)n/` n. 迟疑不决, 无决断力, 优柔寡断
 
+indecorous `/ɪn'dekərəs/` adj. 不合适的；不雅观的；不体面的
+
 indeed `/ɪn'diːd/` adv. 真正地；的确，确实；事实上；甚至
 
 indefatigable `/ˌɪndɪˈfætɪɡəbl/` adj. 不倦的,不屈不挠的
@@ -12612,6 +12740,8 @@ indefatigable `/ˌɪndɪˈfætɪɡəbl/` adj. 不倦的,不屈不挠的
 indefensible `/ˌɪndɪ'fensəbl/` adj. 不能防守的；不合理的；不可原谅的
 
 indefinite `/ɪnˈdefɪnət/` adj. 模糊的；不确定的；无限期的
+
+indelible `/ɪn'deləbl/` adj. 擦拭不掉的；无法忘怀的；持久的
 
 indent `/ɪnˈdent/` n. 订货单；n. 凹痕；v. 缩进；切割成锯齿状；缩排；定货
 
@@ -13030,6 +13160,8 @@ instinct `/'ɪnstɪŋkt/` n. 直觉；本能；天性；adj. 充满的
 institute `/ˈɪnstɪtjuːt/` n. 学院；学会；协会；vt. 开始；制定；创立
 
 > DRV: institution `/ˌɪnstɪ'tjuːʃn/` n. 制定；制度；机构；名流
+>
+> DRV: institutional `/ˌɪnstɪ'tjuːʃənl/` adj. 制度的；机构的；惯例的；n. 机构；制度
 
 instruction `/ɪn'strʌkʃn/` n. 指令；教学；教诲；说明
 
@@ -13133,7 +13265,11 @@ intercept `/ˌɪntə'sept/` n. 截取；妨碍；截距；vt. 拦截；阻止
 
 interchange `/ˈɪntətʃeɪndʒ /` n. 交换；立体交叉道；v. 交换
 
+intercom `/'ɪntəkɒm/` n. 内部通讯设备；对讲机
+
 interconnect `/ˌɪntəkə'nekt/` v. 使互相连接；连接
+
+intercontinental `/ˌɪntəˌkɒntɪ'nentl/` adj. 跨洲的,洲际的
 
 intercourse `/'ɪntəkɔːs/` n. 交往；交流；性交
 
@@ -13471,6 +13607,8 @@ irresponsible `/ˌɪrɪˈspɒnsəbl/` adj. 不负责任的; n. 不负责任; adv
 
 irretrievably `/ˌɪrɪ'triːvəbli/` adv. 不可挽回地；无法弥补地；不能恢复地
 
+irreverence `/ɪ'revərəns/` n. 不敬；无礼
+
 irreversible `/ˌɪrɪˈvɜːsəbl/` adj. 不可逆转的；不可挽回的
 
 irrevocable `/ɪ'revəkəbl/` adj. 不能挽回的；不能取消的；不能变更的
@@ -13532,6 +13670,8 @@ italic `/ɪ'tælɪk/` adj. 斜体的；n. 斜体
 > DRV: italicize `/ɪ'tælɪsaɪz/` vt. 用斜体字排字；在字下划横线
 
 itch `/ɪtʃ/` n. 痒; vi. 发痒
+
+itemize `/'aɪtəmaɪz/` vt. 逐条列记
 
 iterate `/ˈɪtəreɪt/` vt. 反复说；重复；重做；[计]迭代
 
@@ -13695,6 +13835,8 @@ jibe `/dʒaɪb/` v. 嘲笑；嘲弄；<口>符合；相一致；（使）改变�
 
 jiff `/dʒɪf/` n. 瞬间
 
+jig `/dʒɪɡ/` n. 快步舞(曲)<口>极快地; vt. & vi. (使)上下急动
+
 jiggle `/'dʒɪg(ə)l/` vt. & vi. 轻摇,抖动; vt. 坐立不安; n. 轻摇
 
 jigsaw `/'dʒɪgsɔː/` n. 线锯；镂花锯；拼图玩具; vt. 用线锯锯
@@ -13728,6 +13870,8 @@ jitter `/'dʒɪtə/` n. 振动；紧张；v. 感到紧张；振动
 ### jo
 
 [回到J](#J)--[回到顶部](#英汉词典)
+
+jockey `/'dʒɒki/` n. 骑师；操纵者；v. 操纵；骑马
 
 jocular `/'dʒɒkjələ(r)/` adj. 打趣的；滑稽的；诙谐的
 
@@ -14205,6 +14349,8 @@ lapse `/læps/` n. 过失；流逝；间隔；堕落；失效；vi. 流逝；失
 
 laptop `/'læptɒp/` n. 便携式电脑；笔记本电脑
 
+larcenous `/'lɑːs(ə)nəs/` adj. 盗窃的；贪婪的；n. 盗贼
+
 largesse `/lɑː'(d)ʒes/` n. 慷慨的赠与；慷慨赠与物（等于largess）
 
 largish `/'lɑːdʒɪʃ/` adj. 颇大的
@@ -14322,6 +14468,8 @@ leak `/liːk/` v. 渗；漏；泄露；n. 漏洞；泄露
 > DRV: leakage `/'liːkɪdʒ/` n. 泄漏，泄漏物
 
 lean `/liːn/` v. 倾斜；倾向；依靠；倚；屈身；adj. 瘦的；贫乏的；无脂肪的；n. 瘦肉；倾斜，倾向
+
+leaner `/ˈliːnə/` n. 清洗液；斜身倾前的射球; adj. 精瘦的；贫乏的；简洁的（lean的比较级）
 
 leap `/liːp/` v. 跳跃；跃过；跃；n. 跳跃；跃
 
@@ -14518,6 +14666,8 @@ lick `/lɪk/` vt. 舔；卷过；鞭打; vi. 舔；轻轻拍打; n. 舔；打；
 lid `/lɪd/` n. 盖, 盖子
 
 lie `/laɪ/` v. 躺下；位于；在于；平放；存在；延伸；说谎；n. 谎言
+
+lieu `/luː/` n. 代替; (以…)替代
 
 lieutenant `/lefˈtenənt/` n. 陆军中尉; 海军上尉; 副职官员
 
@@ -14729,6 +14879,8 @@ loneliness `/'ləʊnlinəs/` n. 孤独；寂寞
 
 longevity `/lɒn'dʒevəti/` n. 长寿；寿命
 
+longhand `/ˈlɒŋɡhænd/` n. 普通书写（速记或打字）；普通写法
+
 longitudinal `/ˌlɒŋɡɪ'tjuːdɪnl/` adj. 经线的；纵向的；长久的
 
 loom `/luːm/` n. 织布机；n. 若隐若现；vi. 隐约可见；迫近
@@ -14826,6 +14978,8 @@ lunacy `/'luːnəsi/` n. 精神失常；精神病；愚行
 > DRV: lunatic `/ˈluːnətɪk/` adj. 精神错乱的；疯狂的；愚蠢的; n. 疯子；疯人
 
 lunar `/'luːnə(r)/` adj. 月亮的；阴历的；银的
+
+lunge `/lʌndʒ/` n. 刺；猛冲；刺进；v. 刺；猛冲；刺进
 
 lupus `/'luːpəs/` n. [医]狼疮；[天]天狼座
 
@@ -15001,6 +15155,8 @@ mammal `/ˈmæml/` n. 哺乳动物
 
 > DRV: mammalian `/mæ'meɪliən/` n. 哺乳动物；adj. 哺乳动物的
 
+mammoth `/'mæməθ/` n. 猛犸象；adj. 巨大的；庞大的
+
 manage `/ˈmanɪdʒ/` v. 管理；经营；做成；设法对付；提供；有空
 
 > DRV: managerial `/ˌmænəˈdʒɪəriəl/` adj. 经理的;管理上的
@@ -15120,6 +15276,8 @@ marriage `/'mærɪdʒ/` n. 结婚；婚姻；婚礼；紧密结合
 marrow `/ˈmærəʊ/` n. 髓，骨髓；精华；活力
 
 marsh `/mɑːʃ/` n. 湿地；沼泽; adj. 沼泽的；生长在沼泽地的
+
+marshal `/'mɑːrʃl/` n. 元帅；典礼官；v. 整理；排列；安排；调度
 
 marshmallow `/mɑːʃ'mæləʊ/` n. 药属葵,药属葵蜜饯
 
@@ -15324,6 +15482,8 @@ mega `/'meɡə/` adj. 巨大的；adv. 非常；pref. 表示“大；百万”
 > DRV: megacity `/'megəˌsɪtɪ/` n. （人口超过1000万的）大城市
 >
 > DRV: megaphone `/'megəfəʊn/` n. 扩音器，喇叭筒; vt. 用扩音器对…讲话; vi. 用扩音器传达
+>
+> DRV: megastore `/'meɡəstɔː(r)/` n. 特大型商店
 
 melancholy `/'melənkəli/` n. 忧郁；忧愁；悲伤；adj. 忧沉的；使人悲伤的
 
@@ -15558,6 +15718,8 @@ middlemen `/'mɪd(ə)lmæn/` n. 中间人
 midpoint `/'mɪdpɔɪnt/` n. 中点；正中央
 
 midst `/mɪdst/` n. 中间；当中；prep. 在 ... 当中(=amidst)
+
+midtown `/'mɪdtaʊn/` n. 市中心区；adj. 市中心的
 
 midway `/ˌmɪd'weɪ/` adj. 中途的；中间的；adv. 中途地；中间地；n. 中途；中间；娱乐场；折中办法
 
@@ -16247,6 +16409,8 @@ mute `/mjuːt/` adj. 缄默的；无声的; 哑的，不会说话的; (字母)�
 
 mutilation `/ˌmju:ti'leiʃən/` n. 切断, 毁损
 
+mutt `/mʌt/` n. 蠢人; 笨蛋; 杂种狗；杂种动物；<俚>蠢货；v. 说话含糊不清；咕哝
+
 mutter `/ˈmʌtə(r)/` vt. & vi. 轻声低语；咕哝地抱怨; n. 轻声低语，小声抱怨
 
 mutton `/'mʌtn/` n. 羊肉
@@ -16326,6 +16490,8 @@ nanocrystal `/'nænəʊkrɪstl/` n. 纳米晶体
 nanotechnology `/ˌnænəutekˈnɔlədʒi/` n. 纳米技术，毫微技术
 
 nap `/næp/` n. 小睡；绒毛；纳普牌；vi. 打盹；疏忽
+
+> DRV: napping `/'næpɪŋ/` n. 起绒,拉绒,拉毛
 
 napkin `/ˈnæpkɪn/` n. 餐巾；餐巾纸；尿布
 
@@ -16955,6 +17121,8 @@ obsequious `/əb'siːkwiəs/` adj. 谄媚的；奉承的；顺从的
 
 observe `/əbˈzɜːv/` v. 观察；遵守；注意到；庆祝
 
+> DRV: observability `/əbˌzɜːvə'bɪləti/` n. 可观察性
+>
 > DRV: observant `/əb'zɜːvənt/` adj. 观察力敏锐的；（对法律、习俗、传统等）谨慎遵守的
 >
 > DRV: observation `/ˌɒbzə'veɪʃn/` n. 观察；观察力；注意；评论
@@ -17381,6 +17549,10 @@ orthogonal `/ɔː'θɒgənl/` adj. 直角的；直交的；【计】正交的
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
+oscillator `/ˈɒsɪleɪtə(r)/` n. 振荡器；振荡电路；振荡器件
+
+oscilloscope `/ˈɒsɪləskoʊp/` n. 示波器
+
 osmosis `/ɒz'məʊsɪs/` n. 渗透；渗透性；潜移默化
 
 osprey `/ˈɒspreɪ/` n. 鱼鹰
@@ -17426,6 +17598,8 @@ outbound `/'aʊtbaʊnd/` adj. 开往外地的,开往外国的
 > SYN: outgoing
 
 outbreak `/'aʊtbreɪk/` n. 爆发；暴动
+
+outburst `/'aʊtbɜːst/` n. 爆发；迸发；喷发
 
 outcast `/'aʊtkɑːst/` n. 被驱逐的人；adj. 被逐出的；被遗弃的；无家可归的
 
@@ -17679,6 +17853,8 @@ pageant `/'pædʒ(ə)nt/` n. 盛会；虚饰；游行；露天表演
 
 paging `/'peɪdʒɪŋ/` n. （计算机）分页；传呼；页面调度
 
+pail `/peɪl/` n. 桶；一桶的量；vt. 用桶装；vi. 用桶装水
+
 pain `/peɪn/` n. 疼痛；努力; vt. 使…痛苦；使…烦恼; vi. 引起疼痛；感到疼痛
 
 > DRV: painkiller `/'peɪnkɪlə/` n. 止痛药
@@ -17708,6 +17884,8 @@ paleontologist `/pælɪɒn'tɒlədʒɪst/` n. 古生物学者
 palette `/ˈpælət/` n. 调色板
 
 palindrome `/'pælɪndrəʊm/` n. 回文（指顺读和倒读都一样的词语）
+
+pall `/pɔːl/` n. 遮盖物；幕；棺罩；v. 使失去兴趣；使厌烦；变得平淡无味
 
 palliative `/'pæliətɪv/` adj. 减轻的；缓和的；治标的；n. 缓和剂
 
@@ -18046,6 +18224,8 @@ peacenik `/'piːsnɪk/` n. 反战分子；和平分子；反战运动分子; adj
 peach `/piːtʃ/` n. 桃子；桃树；桃红色
 
 peak `/piːk/` n. 尖端；山顶；顶峰；v. 达到顶峰；使处于顶点；vi. 消瘦
+
+peal `/piːl/` vt. 大声发出；使鸣响; n. 隆隆声，响亮持久的声音；钟声，钟乐；编钟; vi. 大声鸣响；震响
 
 peanut `/'piːnʌt/` n. 花生；<俚>渺小的人或物
 
@@ -18553,6 +18733,8 @@ pinot `/'pi:nəu/` n. 加州葡萄
 
 pinpoint `/'pɪnpɔɪnt/` v. 精确地找到；瞄准；使突出；n. 极小之物；精确位置；adj. 精确的；微小的
 
+pinstripe `/'pɪnstraɪp/` n. 细条纹布；细条纹西装；adj. 细条纹的
+
 pint `/paɪnt/` n. 品脱；一品脱的量；一品脱牛奶或啤酒
 
 pinwheel ` /'pɪnwiːl/` n. 纸风车；轮转焰火
@@ -18781,6 +18963,8 @@ plutocrat `/'pluːtəkræt/` n. 财阀，富豪
 >
 > DRV: plutocratic `/plu:tə'krætik/` adj. 财阀的,富豪的,有钱有势的
 
+ply `/plaɪ/` v. 供给；使用；从事；经营；n. 船只；工作；木材；厚片; 厚度；板层；褶
+
 ### pm
 
 [回到P](#P)--[回到顶部](#英汉词典)
@@ -18925,6 +19109,8 @@ pond `/pɒnd/` n. 池塘；(the pond) （非正式）大西洋; v. 拦截（流�
 
 ponder `/'pɒndə(r)/` v. 沉思；考虑
 
+> DRV: ponderous `/'pɒndərəs/` adj. 笨重的；笨拙的；乏味的
+>
 > DRV: ponderousness `/'pɒndərəs/` adj. 笨重的；笨拙的；乏味的
 
 pons `/pɔnz/` n. 桥，脑桥
@@ -19193,6 +19379,8 @@ predecessor `/'priːdɪsesə(r)/` n. 祖先；前任；原有事物
 
 predefined `/priːdɪ'faɪnd/` adj. 预定义的；预先确定的
 
+predetermine `/ˌpriːdɪ'tɜːmɪn/` vt. & vi. 预先裁定; 注定
+
 predicament `/prɪˈdɪkəmənt/` n. 困难的处境;窘境
 
 predicate `/ˈprɛdɪkeɪt/` n. [语]谓语；述语；v. 断定；意味；宣称；基于；adj. 谓语的
@@ -19243,6 +19431,8 @@ prefer `/prɪ'fɜː(r)/` vt. 宁可；较喜欢；提出（控告）
 >
 > DRV: preference `/'prefrəns/` n. 偏爱；优先；喜爱物；优惠
 >
+> DRV: preferential `/ˌprefə'renʃl/` adj. 优先的；优待的；特惠的
+>
 > DRV: preferred `/prɪ'fəd/` adj. 首选的；有优先权的
 
 prefetch `/'priː'fetʃ/` n. （计算机）预取
@@ -19264,6 +19454,8 @@ prehistoric `/ˌpriːhɪˈstɒrɪk/` adj. 史前的；有文字记载以前的�
 preimage `/prɪ'ɪmɪdʒ/` n. （数学）原象；逆像
 
 prejudice `/ˈpredʒudɪs/` n. 偏见；伤害；vt. 伤害；使 ... 存偏见；使偏袒
+
+prelaunch `/priː'lɔːntʃ/` adj. 发射前的,下水前的
 
 preliminary `/prɪˈlɪmɪnəri/` adj. 初步的；预备的；开始的；n. 初步行动；准备；初步措施
 
@@ -19537,7 +19729,9 @@ prodigy `/ˈprɒdədʒi/` n. 惊人的事物；奇迹；神童；天才
 
 > DRV: prodigious `/prəˈdɪdʒəs/` adj. 巨大的；惊人的；奇异的
 
-profanities `/prə'fænəti/` n. 亵渎；不敬的言语
+profane `/'prəfeɪn/` adj. 亵渎的；不敬的；世俗的；v. 亵渎；玷污；滥用
+
+> DRV: profanities `/prə'fænəti/` n. 亵渎；不敬的言语
 
 profess `/prə'fes/` vt. 声称；公开表明
 
@@ -19684,6 +19878,8 @@ proper `/ˈprɒpə(r)/` adj. 合适的；正当的；真正的
 property `/ˈprɒpəti/` n. 财产；所有物；地产，房地产；性质；道具
 
 prophet `/ˈprɒfɪt/` n. 预言家, 先知
+
+> DRV: prophecy `/'prɒfəsi/` n. 预言；预言能力；预言的内容
 
 propitious `/prəˈpɪʃəs/` adj. 有利的,吉祥的,吉利的; 合适的
 
@@ -19880,6 +20076,8 @@ pudding `/ˈpʊdɪŋ/` n. 布丁
 puddle `/ˈpʌdl/` n. 水坑；地上积水；胶泥；v. 搅浊；在泥污中打滚；排尿
 
 pugh `/pjuː/` int. 表示轻蔑；嫌恶等时所发声音
+
+puke `/pjuːk/` v. 呕吐；n. 呕吐物
 
 pulp `/pʌlp/` n. 果肉；纸浆；木髓；牙髓；低级刊物；v. 使成为浆状；除去 ... 的果肉；把...制成纸浆
 
@@ -20367,6 +20565,10 @@ ramp `/ræmp/` n. 坡道；斜坡；移动舷梯；vi. 加速；横冲直撞；�
 
 rampant `/ˈræmpənt/` adj. 猖獗的；蔓延的；猛烈的；[纹]跃立的
 
+ramrod `/'ræmrɒd/` n. 推弹杆; 棒槌；装填棒；v. 用棍棒装填（枪弹）；用棍棒装填（枪弹）; adj. 直立的；严格的
+
+ramshackle `/'ræmʃækl/` adj. 摇摇欲坠的；破旧不堪的；不牢固的
+
 ran `/ræn/` run的过去式
 
 ranch `/rɑːntʃ/` n. 牧场；大牧场；大农场
@@ -20442,6 +20644,8 @@ raucous `/'rɔːkəs/` adj. 沙哑的；粗声的；刺耳的
 ravage `/'rævɪdʒ/` v. 毁坏；破坏；掠夺；n. 破坏；蹂躏
 
 rave `/reɪv/` v. 极力赞扬；说胡话；咆哮；n. 喧闹的宴会；极力赞扬；胡说；(货车等的)围栏板
+
+> DRV: raving `/'reɪvɪŋ/` adj. 狂暴的；咆哮的；极好的；n. 狂语；胡言乱语；狂暴
 
 raven `/ˈreɪvn/` n. 乌鸦；渡鸦；v. 掠夺；adj. 乌黑的
 
@@ -20670,6 +20874,8 @@ rector `/'rektə(r)/` n. 校长；教区牧师
 recur `/rɪˈkɜː(r)/` vi. 重现；再发生
 
 > DRV: recurrence `/rɪ'kʌrəns/` n. 递归; 再现；再发生；反复
+>
+> DRV: recurrent `/rɪ'kʌrənt/` adj. 周期性的; 复发的；再现的；循环的
 
 recursion `/rɪ'kɜːʃn/` n.（计算机）递归；循环
 
@@ -20993,6 +21199,8 @@ rendezvous `/'rɒndɪvuː/` n. 约会；约会地点；汇合点；vi. 汇合；
 
 rendition `/renˈdɪʃn/` n. 演奏；解释；翻译；投降
 
+renegade `/'renɪɡeɪd/` n. 叛徒；变节者；脱党者；adj. 叛教的；背叛的；变节的
+
 renew `/rɪˈnjuː/` vt. 使更新；复兴；重申；续借; vi. 更新；重新开始
 
 > DRV: renewable `/rɪˈnjuːəbl/` adj. 可更新的；可再生的；再生性能源
@@ -21154,6 +21362,8 @@ rescue `/'reskjuː/` vt. 营救；援救；n. 营救；救援
 > SYN(vt.救出): deliver, extricate, free, liberate, ransom, release, save, set free.
 >
 > SYN(vt.抢救): bring away, recover, retrieve, salvage.
+
+resell `/ˌriː'sel/` vt. 转售；再卖；vi. 转售；再卖
 
 reserve `/rɪˈzɜːv/` vt. 保留；预订；延期；n. 候补；预备品；贮存；n. 含蓄；克制
 
@@ -21327,6 +21537,8 @@ retrieve `/rɪˈtriːv/` vt. 恢复；挽回；取回；vi. 找回猎物；n. �
 
 retro `/'retrəʊ/` n. 制动火箭,减速火箭
 
+retroactive `/ˌretrəʊ'æktɪv/` adj. 有追溯效力的；追溯的；反动的
+
 retrofit `/'retrəʊfɪt/` n. 式样翻新,花样翻新
 
 retrograde `/'retrəɡreɪd/` adj. 倒退的；退步的；逆行的；衰减的；v. 倒退；退化；逆行；adv. 后退地
@@ -21366,6 +21578,8 @@ reverse `/rɪˈvɜːs/` v. 逆转；倒退；互换；改变；adj. 相反的；
 > DRV: reversal `/rɪ'vɜːsl/` n. 翻转；倒转；反转
 >
 > DRV: reverser `/ri'və:sə/` n. 换向开关,回动器,换向器,复位器,选别器
+>
+> DRV: reversion `/rɪ'vɜːʃn/` n. 归还；恢复；复原；[法] 继承权；[生物] 返祖现象
 
 revert `/rɪˈvɜːt/` vi. 恢复；回复；归还
 
@@ -21727,6 +21941,8 @@ rupture `/ˈrʌptʃə(r)/` n. 破裂；断裂；[医]疝气；v. （使）破裂
 
 rural `/ˈrʊərəl/` adj. 农村的，乡村的，田园的
 
+ruse `/ruːz/` n. 诡计；策略，计策
+
 rushy `/'rʌʃɪ/` adj. 长满灯心草的
 
 rustic `/'rʌstɪk/` adj. 乡村的；纯朴的；手工粗糙的；土气的；n. 乡下人；村夫；农民
@@ -21855,6 +22071,8 @@ sanction `/ˈsæŋkʃn/` n. 批准；约束力；处罚；vt. 批准；支持
 
 sanctuary `/ˈsæŋktʃuəri/` n. 圣所, 圣地；圣堂；庇护所；庇护, 庇护权；避难所；禁猎区, 鸟兽类保护区
 
+> DRV: sanctum `/'sæŋktəm/` n. 圣所；密室；隐居处
+>
 > DRV: sanctuaries `/'sæŋktʃuəri/` n. 圣所；耶路撒冷的神殿；避难所
 
 sand `/sænd/` n. 沙；沙子；沙滩；黄灰色；vt. 撒沙；打磨；以沙掩盖
@@ -22195,6 +22413,8 @@ sculpt `/skʌlpt/` v. 雕刻；n. 雕刻；雕塑；雕刻品；雕塑品
 
 scum `/skʌm/` n. 浮渣；泡沫；糟粕; vi. 产生泡沫；被浮渣覆盖; vt. 将浮渣去除掉
 
+scurry `/'skʌri/` v. 急匆匆地跑；急赶；n. 急跑；急赶
+
 scuttle `/'skʌt(ə)l/` n. 天窗；煤桶；筐; vi. 逃避；急促地跑; vt. 使船沉没；破坏
 
 ### sd
@@ -22233,7 +22453,9 @@ sector `/'sektə(r)/` n. 部门；部分；区域；n. （计算机）扇形；�
 
 secular `/ˈsekjələ(r)/` adj. 世俗的；长期的；现世的；不朽的; n. 修道院外的教士，(对宗教家而言的) 俗人
 
-securitization `/si'kjurətizaiʃən/` n. 证券化
+secure `/sɪ'kjʊə(r)/` adj. 安心的；有把握的; 可靠的；牢靠的；稳固的；安全的；稳妥的; 严密把守的；牢固的；坚固的; v. （尤指经过努力）获得，取得，实现; 拴牢；扣紧；关严; 保护；保卫；使安全; 抵押；为（借款等）作保
+
+> DRV: securitization `/si'kjurətizaiʃən/` n. 证券化
 
 sedate `/sɪ'deɪt/` adj. 安静的；镇静的；vt. 使安静；使镇静
 
@@ -22565,6 +22787,8 @@ shed `/ʃed/` vt. 除掉；使脱落；使流出；使清晰；n. 小屋；车�
 
 > DRV: shedding `/'ʃediŋ/` n. 蜕落；脱落; v. 脱落（shed的ing形式）
 
+sheepish `/'ʃiːpɪʃ/` adj. 羞怯的；羞愧的；腼腆的；像绵羊的
+
 sheer `/ʃɪə(r)/` adj. 极轻薄的；陡峭的；全然的；adv. 垂直地；v. 避开；转向
 
 shelf `/ʃelf/` n. 架子；搁板；搁板状物；n. 搁置；闲置
@@ -22588,6 +22812,8 @@ shift `/ʃɪft/` v. 移动；改变；换挡；字型转换；n. 轮班；变化
 shilling `/'ʃɪlɪŋ/` n. 先令（货币单位）
 
 shimmer `/ˈʃɪmə/` n. 微光；闪光；摇曳的光；v. （使）闪烁；（使）发微光
+
+shimmy `/'ʃɪmi/` n. 摇摆舞；v. 摇摆；摇晃
 
 shin `/ʃɪn/` n. 胫骨；v. 攀爬； 快步走； 踢或打在 ... 的胫骨上
 
@@ -22800,6 +23026,8 @@ sinuous `/ˈsɪnjuəs/` adj. 弯弯曲曲的；蜿蜒的；乖僻的
 sinuses `/'sinə:ses/` n. 鼻窦；鼻窦炎
 
 sip `/sɪp/` n. 抿；小口喝；[计]单列直插式组件; vi. 啜饮; vt. 啜
+
+siphon `/'saɪf(ə)n/` n. 虹吸管；虹吸管式饮料机；虹吸管式抽水机；v. 用虹吸管抽取；用虹吸管输送
 
 siren `/'saɪr(ə)n/` n. 汽笛, 警报器; 迷人的女人, 妖妇
 
@@ -23429,7 +23657,11 @@ speculate `/ˈspekjuleɪt/` vt. 推测；vi. 投机；深思
 >
 > DRV: speculative `/'spekjələtɪv/` adj. 推测的；推理的；思索的；投机的
 >
+> DRV: speculator `/'spekjʊleɪtə/` n. 投机者；投机商；思索者
+>
 > REF: Psychologist Francoise Wemelsfelder **speculates** that our over-connected lifestyles might even be a new source of boredom. --IELTS13-Test1-Passage2
+
+sped `/spɛd/` n. 速度；迅速；v. 加速；急行（speed的过去分词）
 
 speed `/spiːd/` n. 速度；迅速；v. 加速；急行
 
@@ -23685,11 +23917,15 @@ stagnant `/'stæɡnənt/` adj. 不流动的；停滞的；不景气的
 
 > DRV: stagnation `/stæɡˈneɪʃn/` n. 淤塞;停滞;不景气
 
+staid `/'steɪd/` adj. 固定的；沉着的；稳重的；古板的；不活泼的
+
 stain `/steɪn/` v. （被）玷污；留下污渍; 给…染色（或着色）; 玷污，败坏（名声）; n. 污点；污渍; 染色剂；着色剂; （名声上的）污点
 
 > DRV: stainless `/ˈsteɪnləs/` adj. 不锈的；不锈钢制的; 无污点的,无瑕疵的
 
 staircase `/ˈsteəkeɪs/` n. 楼梯
+
+stairwell `/'steəwel/` n. 楼梯井
 
 stake `/steɪk/` n. 桩；赌注；利害关系；v. 用桩支撑；下注
 
@@ -23798,6 +24034,8 @@ stature `/ˈstætʃər/` n. 身高；名望
 statute `/'stætʃuːt/` n. 法令；法规；条例
 
 > DRV: statutory `/'stætʃətri/` adj. 法定的；法令的；触犯法令的
+
+stave `/steɪv/` n. 木条；诗句；vt. 打碎；击穿；vi. 逃避；逃脱
 
 steady `/ˈstedi/` adj. 稳定的；稳固的；坚定的；v. 使稳固；使稳定；(变得)稳固；使坚定；adv. 稳定地，稳固地；n. 关系固定的情侣 ；固定支架
 
@@ -23944,6 +24182,8 @@ stout `/staʊt/` adj. 结实的；矮胖的；勇敢的；激烈的；n. 矮胖�
 stowaway `/'stəʊəweɪ/` n. 逃票乘客；收藏处
 
 straddle `/'strædl/` v. 跨坐；把两腿叉开；观望；n. 跨坐；观望；指定价格的交易
+
+stradivarius `/,strædɪ'veərɪəs/` n. 弦乐器(斯特拉迪瓦里小提琴)
 
 straightforward `/ˌstreɪt'fɔːwəd/` adj. 易懂的；笔直的；坦率的
 
@@ -24119,13 +24359,15 @@ subexpression `/sʌbɪksp'reʃn/` n. 子表达式
 
 subframe `/sʌbf'reɪm/` n. 子帧；副框架
 
+subgroup `/'sʌbɡruːp/` n. 子群；隶属组织
+
+subhuman `/ˌsʌbˈhjuːmən/` adj. 次人类的；劣等人类的；n. 次人类；劣等人类
+
 subjugate `/ˈsʌbdʒuɡeɪt/` vt. 征服,降伏
 
 > DRV: subjugation `/ˌsʌbdʒu'ɡeiʃən/` n. 镇压,平息,征服
 >
 > DRV: subjugating `/ˈsʌbdʒuɡeɪt/` vt. 征服,降伏
-
-subgroup `/'sʌbɡruːp/` n. 子群；隶属组织
 
 sublet `/ˌsʌb'let/` vt. 转租；n. 转租合同
 
@@ -24138,6 +24380,8 @@ submerge `/səbˈmɜːdʒ/` vt. 使浸没；潜入水中；覆盖；vi. 浸没
 > DRV: submarine `/ˌsʌbməˈriːn/` n. 潜水艇；adj. 海面下的
 >
 > DRV: submersible `/səb'mɜːsɪb(ə)l/` n. 潜水器,深潜器,潜艇; adj. 能潜入〔可浸入〕水中的
+
+submicrosecond `/sʌbˈmaɪkrəʊˌsɛkənd/` n. 亚微秒
 
 submission `/səbˈmɪʃn/` n. 归顺, 降服, 投降; 屈从, 服从, 顺从; 提交, 呈递; <律>向法官或陪审团提出的意见或论据
 
@@ -24152,6 +24396,8 @@ suboptimal `/'sʌb'ɒptɪməl/` adj. 未达最佳标准的；不最理想的；�
 subordinate `/sə'bɔːdɪnət/` adj. 下级的；次要的；n. 属下；附属物；vt. 使服从；把 ... 放在次要
 
 > DRV: subordination `/səˌbɔːdɪ'neɪʃn/` n. 放置在下级；隶属；次等
+
+subpoena `/sə'pɪːnə/` n. 传票；vt. 传唤；传讯
 
 subroutine `/'sʌbruːtiːn/` n.（计算机）子程序
 
@@ -24775,6 +25021,8 @@ tampon `/'tæmpɒn/` n. (妇女月经时用的)卫生棉塞
 
 tan `/tæn/` n. 黄褐色, 棕黄色; vt. & vi. (使)晒成棕褐色; vt. 硝制(皮革)
 
+tandem `/'tændəm/` n. 串联；串座双人自行车; adj. 串联的; adv. 一前一后地；纵排地
+
 tangent `/'tændʒənt/` adj. 切线的，相切的；接触的；离题的; n. 切线，正切
 
 tangible `/ˈtandʒɪbl/` adj. 可触摸的；实际的；有形的；确凿的
@@ -24927,11 +25175,11 @@ telly `/'telɪ/` n. 电视
 
 temper `/'tempə(r)/` n. 脾气；性情；vt. 使缓和；调和；锻炼
 
-temperament `/ˈtemprəmənt/` n. 气质；性情
-
-temperance `/ˈtempərəns/` n. 节欲；禁酒；节制
-
-temperate `/ˈtempərət/` adj. 温和的；适度的；有节制的
+> DRV: temperament `/ˈtemprəmənt/` n. 气质；性情
+>
+> DRV: temperance `/ˈtempərəns/` n. 节欲；禁酒；节制
+>
+> DRV: temperate `/ˈtempərət/` adj. 温和的；适度的；有节制的
 
 tempest `/ˈtempɪst/` n. 暴风雨；骚动；动乱; vt. 使狂怒；扰乱，使激动; vi. 小题大作；起大风暴
 
@@ -25016,6 +25264,8 @@ ternary `/'tɜːnərɪ/` adj. 由三部分组成的；三重的；第三的；[�
 terrace `/ˈterəs/` n. 平台；阳台；梯田；vt. 使成梯田；给 ... 建阳台
 
 terrain `/təˈreɪn/` n. 地形, 地面, 地域, 地带
+
+terrarium `/təˈreəriəm/` n. 玻璃容器；植物园；动物园
 
 terrestrial `/təˈrestriəl/` adj. 地球的；陆上的；陆栖的；n. 地球人;陆地生物
 
@@ -25142,6 +25392,8 @@ thick `/θɪk/` adj. 厚的；浓密的；粗的；愚笨的
 thigh `/θaɪ/` n. 大腿，股
 
 thin `/θɪn/` adj. 薄的；瘦的；稀的
+
+> DRV: thinner `/'θɪnə/` n. 稀释剂；稀释液；油漆稀释剂
 
 thirst `/θɜːst/` n. (口)渴；渴感; 长期的干渴; 渴望；渴求
 
@@ -25400,6 +25652,8 @@ toll `/təʊl/` n. 伤亡人数；钟声；通行费；代价；v. 敲钟
 tomb `/tuːm/` n. 墓穴
 
 tome `/təʊm/` n. 大而重的书
+
+tommy `/ˈtɒmi/` n. <英俚>英国士兵；实物工资制；定位销钉; n. <俚>小刀；v. <俚>偷窃
 
 tone `/təʊn/` n. 语气；音调；调子；色调；风气；v. 使更健壮；定调；调色；装腔作势地说
 
@@ -26177,6 +26431,8 @@ umpire `/'ʌmpaɪə(r)/` n. 裁判员；仲裁人；vt. 为 ... 裁决；为 ...
 
 unabashed `/ˌʌnəˈbæʃt/` adj. 不怕批评的；不害臊的；不难为情的；不在乎的
 
+unabated `/ˌʌnə'beɪtɪd/` adj. 不减弱的；未衰退的；不屈不挠的
+
 unaccountable `/ˌʌnə'kaʊntəbl/` adj. 无法解释的；不能理解的；不负责任的
 
 unadorned `/ˌʌnə'dɔːnd/` adj. 没有装饰的；不加渲染的；朴素的
@@ -26246,6 +26502,10 @@ undeniable `/ˌʌndɪ'naɪəbl/` adj. 不可否认的；无可辩驳的
 underappreciated `/ˌʌndərə'pri:ʃieitid/` adj. 未得到正确评价的;未受到充分赏识(或欣赏)的
 
 underbred `/ʌndə'bred/` adj. 教养不良的,没教养的,下流的,劣种的
+
+undercoat `/ˈʌndəkoʊt/` n. 底漆；底涂；底毛；v. 给 ... 涂底漆；给 ... 刷底涂
+
+undercutting `/ˌʌndə'kʌtiŋ/` n. 凹割,掏槽,截槽,钻蚀,侧凹,刨削T形槽
 
 underdetermined `/ʌndədɪ'tɜːmɪnd/` adj. 未定的
 
@@ -27357,6 +27617,8 @@ warrant `/ˈwɒrənt/` n. 委任状；凭证；根据；正当理由；vt. 担�
 
 > DRV: warranty `/'wɒrənti/` n. 保单；根据；保修期
 
+warren `/'wɒrən/` n. 兔子窝；养兔场；拥挤的住宅区
+
 warrior `/'wɒriə(r)/` n. 勇士；战士；武士
 
 wary `/ˈweəri/` adj. 小心的；机警的
@@ -27542,6 +27804,8 @@ whirl `/wɜːl/` v. 使 ... 旋转；回旋；迅速移动；头晕目眩；n. �
 whisk `/wɪsk/` vt. 拂，掸；挥动；搅拌; vi. 飞奔，疾过; n. 扫帚；搅拌器；毛掸子
 
 > DRV: whisker `/'wɪskə/` n. 胡须；腮须；晶须
+>
+> DRV: whiskey `/'wɪski/` n. 威士忌酒；威士忌
 
 whisky `/'wɪski/` n. 威士忌酒
 
@@ -27586,6 +27850,8 @@ wider `/waɪdə/` adj. 更宽的；更广阔的
 widespread `/ˈwaɪdspred/` adj. 分布(或散布)广的；普遍的
 
 widget `/'wɪdʒɪt/` n. 部件；小产品
+
+widow `/'wɪdəʊ/` n. 寡妇；遗孀；v. 使成寡妇
 
 wield `/wiːld/` v. 行使；施加(影响)；使用(武器等)；挥舞
 

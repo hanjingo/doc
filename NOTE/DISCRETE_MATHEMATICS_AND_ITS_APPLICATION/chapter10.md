@@ -136,4 +136,40 @@ $$
 
 ## Key Terms and Results
 
-TODO
+### TERMS
+
+- **Adjacency matrix**: a matrix representing a graph using the adjacency of vertices.
+- **Adjacent**: two vertices are adjacent if there is an edge between them.
+- **Bipartite graph**: a graph with vertex set that can be partitioned into subsets $V_1$ and $V_2$ so that each edge connects a vertex in $V_1$ and a vertex in $V_2$. The pair $(V_1, V_2)$ is called a **bipartition** of $V$.
+- **Complete matching $M$ from $V_1$ to $V_2$**: a matching such that every vertex in $V_1$ is an endpoint of an edge in $M$.
+- **Deg $v$ (degree of the vertex $v$ in an undirected graph)**: the number of edges incident with $v$ with loops counted twice.
+- **Deg $^{-}(v)$ (the in-degree of the vertex $v$ in a graph with directed edges)**: the number of edges with $v$ as their terminal vertex.
+- **Deg $^{+}(v)$ (the out-degree of the vertex $v$ in a graph with directed edges)**: the number of edges with $v$ as their initial vertex.
+- **Directed edge**: an edge associated to an ordered pair $(u, v)$, where $u$ and $v$ are vertices.
+- **Directed graph**: a set of vertices together with a set of directed edges each of which is associated with an ordered pair of vertices.
+- **Directed multigraph**: a graph with directed edges that may contain multiple directed edges.
+- **Isolated vertex**: a vertex of degree zero.
+- **Loop**: an edge connecting a vertex with itself.
+- **Matching in a graph $G$**: a set of edges such that no two edges have a common endpoint.
+- **Maximum matching**: a matching containing the most edges among all matchings in a graph.
+- **Multiple directed edges**: distinct directed edges associated with the same ordered pair $(u, v)$, where $u$ and $v$ are vertices.
+- **Multiple edges**: distinct edges connecting the same vertices.
+- **Multigraph**: an undirected graph that may contain multiple edges but no loops.
+- **Incidence matrix**: a matrix representing a graph using the adjacency of vertices.
+- **Incident**: an edge is incident with a vertex if the vertex is an endpoint of that edge.
+- **Isomorphic simple graphs**: the simple graphs $G_1 = (V_1, V_1)$ and $G_2 = (V_2, E_2)$ are isomorphic if there exists a one-to-one correspondence $f$ from $V_1$ to $V_2$ such that $\{f(v_1), f(v_2)\} \in E_2$ if and only if $\{v_1, v_2\} \in E_1$ for all $v_1$ and $v_2$ in $V_1$.s
+- **Pendant vertex**: a vertex of degree one.
+- **Pseudograph**: an undirected graph that may contain multiple edges and loops.
+- **Regular graph**: a graph where all vertices have the same degree.
+- **Simple directed graph**: a directed graph without loops or multiple directed edges.
+- **Simple graph**: an undirected graph with no multiple edges or loops.
+- **Subgraph of a graph $G = (V, E)$**: a graph $(W, F)$, where $W$ is a subset of $V$ and $F$ is a subset of $E$.
+- **Underlying undirected graph of a graph with directed edges**: the undirected graph obtained by ignoring the directions of the edges.
+- **Undirected edge**: an edge associated to a set $\{u, v\}$, where $u$ and $v$ are vertices.
+- **Undirected graph**: a set of vertices and a set of undirected edges each of which is associated with a set of one or two of these vertices.
+- **$K_{n}$ (complete graph on $n$ vertices)**: the undirected graph with $n$ vertices where each pair of vertices is connected by an edge.
+- **$K_{m,n}$ (complete bipartite graph)**: the graph with vertex set partitioned into a subset of $m$ elements and a subset of $n$ elements with two vertices connected by an edge if and only if one is in the first subset and the other is in the second subset.
+- **$C_{n}$ (cycle of size $n$), $n \geq 3$**: the graph with $n$ vertices $v_1, v_2, ..., v_n$ and edges $\{v_1, v_2\}, \{v_2, v_3\}, ..., \{v_{n - 1}, v_{n}\}, \{v_{n}, v_{1}\}$.
+- **$W_{n}$ (wheel of size $n$), $n \geq 3$**: the graph obtained from $C_n$ by adding a vertex and edges from this vertex to the original vertices in $C_n$.
+- **$Q_{n}$ ($n$-cube), $n \geq 1$**: the graph that has the $2^n$ bit strings of length $n$ as its vertices and edges connecting every pair of bit strings that differ by exactly one bit.
+- **$G_1 \cup G_2$ (union of $G_1$ and $G_2$)**: the graph $(V_1 \cup V_2, E_1 \cup E_2)$, where $G_1 = (V_1, E_1)$ and $G_2 = (V_2, E_2)$.
