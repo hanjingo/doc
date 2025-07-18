@@ -43,6 +43,7 @@ TODO
 - [Sequences And Summations](DISCRETE_MATHEMATICS/sequence.md)
 - [Sets](DISCRETE_MATHEMATICS/sets.md)
 - [Generalized Permutations and Combinations](DISCRETE_MATHEMATICS/generalized_permutations_and_combinations.md)
+- [Tree](DISCRETE_MATHEMATICS/tree.md)
 
 
 

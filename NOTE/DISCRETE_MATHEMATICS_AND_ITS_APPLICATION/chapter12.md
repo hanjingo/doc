@@ -35,5 +35,14 @@ $$
 
 ## Key Terms and Results
 
-TODO
+### TERMS
 
+- **Boolean expressions**: the expressions obtained recursively by specifying that 0, 1, $x_1$, ..., $x_n$ are Boolean expressions and $\overline{E_1}$, $E_1 + E_2$, and $(E_1 E_2)$ are Boolean expressions if $E_1$ and $E_2$​ are.
+- **Boolean function of degree $n$**: a function from $B^n$ to $B$ where $B = \{0, 1\}$.
+- **Boolean variable**: a variable that assumes only the values 0 and 1.
+- **Dual of a boolean expression**: the expression obtained by interchanging $+$ signs and $\cdot$ signs and interchanging $0s$ and $1s$.
+- **$\overline{x}$(complement of $x$)**: an expression with the value 1 when $x$ has the value 0 and the value 0 when $x$ has the value 1.
+- **$x \cdot y$ (or $xy$) (Boolean product or conjunction of $x$ and $y$)**: an expression with the value 1 when both $x$ and $y$ have the value 1 and the value 0 otherwise.
+- **$x + y$(Boolean sum or disjunction of $x$ and $y$)**: an expression with the value 1 when either $x$ or $y$, or both, has the value 1, and 0 otherwise.
+
+TODO

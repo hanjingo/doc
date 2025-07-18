@@ -426,6 +426,44 @@ English | [中文版](terminology_zh.md)
 
 
 
+## Trees
+
+- **Ancestor of a vertex $v$ in a rooted tree**: any vertex on the path from the root to $v$​​.
+- **Balanced tree**: a tree in which every leaf is at level $h$ or $h - 1$, where $h$ is the height of the tree.
+- **Binary search tree**: a binary tree in which the vertices are labeled with items so that a label of a vertex is greater than the labels of all vertices in the left subtree of this vertex and is less than the labels of all vertices in the right subtree of this vertex.
+- **Binary tree**: an $m$-ary tree with $m = 2$(each child may be designated as a left or a right child of its parent).
+- **Child of a vertex $v$ in a rooted tree**: any vertex with $v$​​ as its parent.
+- **Decision tree**: a rooted tree where each vertex represents a possible outcome of a decision and the leaves represent the possible solutions of a problem.
+- **Descendant of a vertex $v$ in a rooted tree**: any vertex that has $v$ as an ancestor.
+- **Forest**: an undirected graph with no simple circuits.
+- **Full $m$-ary tree**: a tree with the property that every internal vertex has exactly $m$​ children.
+- **Game tree**: a rooted tree where vertices represent the possible positions of a game as it progresses and edges represent legal moves between these positions.
+- **Height of a tree**: the largest level of the vertices of a tree.
+- **Infix notation**: the form of an expression (including a full set of parentheses) obtained from an inorder traversal of the binary tree representing this expression.
+- **Inorder traversal**: a listing of the vertices of an ordered rooted tree defined recursively--the first subtree is listed, followed by the root, followed by the other subtrees in the order they occur from left to right.
+- **Internal vertex**: a vertex that has children.
+- **Leaf**: a vertex with no children.
+- **Level of a vertex**: the legth of the path from the root to this vertex.
+- **$m$-ary tree**: a tree with the property that every internal vertex has no more than $m$​​ children.
+- **Minmax strategy**: the strategy where the first player and second player move to positions represented by a child with maximum and minimum value, respectively.
+- **Minimum spanning tree**: a spanning tree with smallest possible sum of weights of its edges.
+- **Ordered tree**: a tree in which the children of each internal vertex are linearly ordered.
+- **Parent of $v$ in a rooted tree**: the vertex $u$ such that $(u, v)$​​​ is a edge of the rooted tree.
+- **Postorder traversal**: a listing of the vertices of an ordered rooted tree defined recursively--the subtrees are listed in the order they occur from left to right, followed by the root.
+- **Prefix code**: a code that has the property that the code of a character is never a prefix of the code of another character.
+- **Prefix (or Polish) notation**: the form of an expression obtained from a preorder traversal of the tree representing this expression.
+- **Postfix (or reverse Polish) notation**: the form of an expression obtained from a postorder traversal of the tree representing this expression.
+- **Preorder traversal**: a listing of the vertices of an ordered rooted tree defined recursively--the root is listed, followed by the first subtree, followed by the other in the order they occur from left to right.
+- **Rooted tree**: a directed graph with a specified vertex, called the root, such that there is a unique path to every other vertex from this root.
+- **Sibling of a vertex $v$ in a rooted tree**: a vertex with the same parent as $v$​.
+- **Spanning tree**: a tree containing all vertices of a graph.
+- **Subtree**: a subgraph of a tree that is also a tree.
+- **Tree**: a connected undirected graph with no simple circuits.
+- **Tree traversal**: a listing of the vertices of a tree.
+- **Value of a vertex in a game tree**: for a leaf, the payoff to the first player when the game terminates in the position represented by this leaf; for an internal vertex, the maximum or minimum of the values of its children, for an internal vertex at an even or odd level, respectively.
+
+
+
 ## Matrix
 
 - **Matrix**: a rectangular array of numbers.
