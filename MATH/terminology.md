@@ -32,6 +32,36 @@ English | [中文版](terminology_zh.md)
 
 
 
+## Boolean Algebra
+
+- **AND gate**: a device that accepts the values of two or more Boolean variables as input and produces their Boolean product as output.
+- **Boolean algebra**: a set $B$ with two binary operations $\vee$ and $\wedge$, elements 0 and 1, and a complementation operator $\overline{}$ that satisfies the identity, complement, associative, commutative, and distributive laws.
+- **Boolean expressions**: the expressions obtained recursively by specifying that 0, 1, $x_1$, ..., $x_n$ are Boolean expressions and $\overline{E_1}$, $E_1 + E_2$, and $(E_1 E_2)$ are Boolean expressions if $E_1$ and $E_2$​ are.
+- **Boolean function of degree $n$**: a function from $B^n$ to $B$ where $B = \{0, 1\}$.
+- **Boolean variable**: a variable that assumes only the values 0 and 1.
+- **Don't care condition**: a combination of input values for a circuit that is not possible or never occurs.
+- **Dual of a boolean expression**: the expression obtained by interchanging $+$ signs and $\cdot$ signs and interchanging $0s$ and $1s$.
+- **Essential prime implicant of a Boolean function**: a prime implicant of the Boolean function that must be included in a minimization of this function.
+- **Full adder**: a circuit that adds two bits and a carry, producing a sum bit and a carry bit.
+- **Functionally complete**: a set of Boolean operators is called functionally complete if every Boolean function can be represented using these operators.
+- **Half adder**: a circuit that adds two bits, producing a sum bit and a carry bit.
+- **Implicant of a Boolean function**: a product of literals with the property that if this product has the value 1, then the value of this Boolean function is 1.
+- **Inverter**: a device that accepts the value of a Boolean variable as input and produces the complement of the input.
+- **K-map for $n$ variables**: a rectangle divided into $2^n$ cells where each cell represents a minterm in the variables.
+- **Literal of the Boolean variable $x$**: either $x$ or $\overline{x}$.
+- **Minimization of a Boolean function**: representing a Boolean function as the sum of the fewest products of literals such that these products contain the fewest literals possible among all sums of products that represent this Boolean function.
+- **Minterm of $x_1, x_2, ..., x_n$**: a Boolean product $y_1 y_2 \cdots y_n$, where each $y_i$ is either $x_i$ or $\overline{x_i}$.
+- **OR gate**: a device that accepts the values of two or more Boolean variables as input and produces their Boolean sum as output.
+- **Prime implicant of a Boolean function**: a product of literals that is an implicant of the Boolean function and no product obtained by deleting a literal is also an implicant of this function.
+- **Sum-of-products expansion** (or disjunctive normal form): the representation of a Boolean function as a disjunction of minterms.
+- **$\overline{x}$(complement of $x$)**: an expression with the value 1 when $x$ has the value 0 and the value 0 when $x$ has the value 1.
+- **$x \cdot y$ (or $xy$) (Boolean product or conjunction of $x$ and $y$)**: an expression with the value 1 when both $x$ and $y$ have the value 1 and the value 0 otherwise.
+- **$x + y$(Boolean sum or disjunction of $x$ and $y$)**: an expression with the value 1 when either $x$ or $y$, or both, has the value 1, and 0 otherwise.
+- **$x | y (\text{or x NAND y})$**: the expression that has the value 0 when both $x$ and $y$ have the value 1 and the value 1 otherwise.
+- **$x \downarrow y (\text{or x NOR y})$**: the expression that has the value 0 when either $x$ or $y$ or both have the value 1 and the value 0 otherwise.
+
+
+
 ## Functions
 
 - **Codomain of $f$**: the set $B$, where $f$ is a function from $A$ to $B$.
@@ -397,6 +427,41 @@ English | [中文版](terminology_zh.md)
 - **Sequence**: a function with domain that is a subset of the set of integers.
 - **$\sum_{i = 1}^{n}a_i$**: the sum $a_1 + a_2 + ... + a_n$.
 - $\prod_{i=1}^{n}a_i$: the product $a_1 a_2 ... a_n$.
+
+
+
+## Modeling Computation
+
+- **AB(concatenation of A and B)**: the set of all strings formed by concatenating a string in A and a string in B in that order.
+- **$A^{*} $ (Kleene closure of A)**: the set of all strings made up by concatenating arbitrarily many strings from A.
+- **Alphabet (or vocabulary)**: a set that contains elements used to form strings.
+- **Backus-Naur form**: a description of a context-free grammar in which all productions having the same nonterminal as their left-hand side are combined with the different right-hand sides of these productions, each separated by a bar, with nonterminal symbols enclosed in angular brackets and the symbol $\rightarrow$ replaced by $::=$.
+- **Computable function**: a function whose values can be computed using a Turing machine.
+- **Decision problem**: a problem that asks whether statements from a particular class of statements are true.
+- **Derivation (or parse) tree**: an ordered rooted tree where the root represents the starting symbol of a type 2 grammar, internal vertices represent nonterminals, leaves represent terminals, and the children of a vertex are the symbols on the right side of a production, in order from left to right, where the symbol represented by the parent is on the left-hand side.
+- **Deterministic finite-state automaton $(S, I, f, s_0, F)$**: a five-tuple containing a set $S$ of states, an input alphabet $I$, a transition function $f$ that assigns a next state to every pair of a state and an input, a starting state $s_0$, and a set of final states $F$.
+- **Finite-state machine $(S, I, O, f, g, s_0)$ (or a Mealy machine)**: a six-tuple containing a set $S$ of states, an input alphabet $I$, an output alphabet $O$, a transition function $f$ that assigns a next state to every pair of a state and an input, an output function $g$ that assigns an output to every pair of a state and an input, and a starting state $s_0$.
+- **Language**: a subset of the set of all strings over an alphabet.
+- **Language recognized by an automaton**: the set of input strings that take the start state to a final state of the automaton.
+- **Nondeterministic finite-state automation $(S, I, f, s_0, F)$**: a five-tuple containing a set $S$ of states, an input alphabet $I$, a transition function $f$ that assigns a set of possible next states to every pair of a state and an input, a starting state $s_0$, and a set of final states $F$.
+- **Nondeterministic Turing machine**: a Turing machine that may have more than one transition rule corresponding to each (state, tape symbol) pair.
+- **Phrase-structure grammar $(V, T, S, P)$**: a description of a language containing a alphabet $V$, a set of terminal symbols $T$, a start symbol $S$, and a set of productions $P$.
+- **Regular expression**: an expression defined recursively by specifying that $\theta$, $\lambda$, and $x$, for all $x$ in the input alphabet, are regular expressions, and that $(AB)$, $(A \cup B)$, and $A^{*}$ are regular expressions when $A$ and $B$ are regular expressions.
+- **Regular set**: a set defined by a regular expression.
+- **Solvable problem**: a problem with the property that there is an effective algorithm that can solve all instances of the problem.
+- **The production $w \rightarrow w_1$**: $w$ cna be replaced by $w_1$ whenever it occurs in a string in the language.
+- **Turing machine $T = (S, I, f, s_0)$**: a four-tuple consisting of a finite set $S$ of states, an alphabet $I$ containing the blank symbol $B$, a partial function $f$ from $S \times I$ to $S \times I \times \{R, L\}$, and a starting state $s_0$.
+- **Type 0 grammar**: any phrase-structure grammar.
+- **Type 1 grammar**: a phrsae-structure grammar in which every production is of the form $w_1 \rightarrow w_2$, where $w_1 = lAr$ and $w_2 = lwr$, where $A \in N, l, r, w \in (N \cup T) * and w \neq \lambda$, or $w_1 = S$ and $w_2 = \lambda$ as long as $S$ is not on the right-hand side of another production.
+- **Type 2, or context-free, grammar**: a phrase-structure grammar in which every production is of the form $A \rightarrow w_1$, where $A$ is a nonterminal symbol.
+- **Type 3, or regular, grammar**: a phrase-structure grammar where every production is of the form $A \rightarrow aB$, $A \rightarrow a$, or $S \rightarrow \lambda$, where $A$ and $B$ are nonterminal symbols, $S$ is the start symbol, and $a$ is a terminal symbol
+- **Uncomputable function**: a function whose values cannot be computed using a Turing machine.
+- **Unsolvable problem**: a problem with the property that no effective algorithm exists that can solve all instances of the problem.
+- **$w_1 \Rightarrow w_2$ ($w_2$ is directly derivable from $w_1$)**: $w_2$ can be obtained from $w_1$ using a production to replace a string in $w_1$ with another string.
+- **$w_1 \Rightarrow^* w_2$($w_2$ is derivable from $w_1$)**: $w_2$ can be obtained from $w_1$ using a sequence of productions ot replace strings by other strings.
+- **P, the class of polynomial-time problems**: the class of problems that can be solved by a deterministic Turing machine in polynomial time in terms of the size of the input.
+- **NP, the class of nondeterministic polynomial-time problems**: the class of problems that can be solved by a nondeterministic Turing machine in polynomial time in terms of the size of the input.
+- **NP-complete**: a subset of the class of NP problems with the property that if any one of them is in the class $P$, then all problems in $NP$ are in the class $P$.
 
 
 

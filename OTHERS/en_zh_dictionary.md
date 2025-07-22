@@ -324,6 +324,10 @@ adapt `/ə'dæpt/` vt. 改编；使适应；vi. 适应；适合
 addend `/ə'dend/` n. 加数
 
 > DRV: adder `/'ædə(r)/` n. 蝰蛇；加法器
+>
+> REF: **Full adder**: a circuit that adds two bits and a carry, producing a sum bit and a carry bit. --Discrete Mathematics and Its Applications. Kenneth H. Rosen. 8th Edition. 2019.
+>
+> REF: **Half adder**: a circuit that adds two bits, producing a sum bit and a carry bit. --Discrete Mathematics and Its Applications. Kenneth H. Rosen. 8th Edition. 2019.
 
 addict `/ˈæd.ɪkt/` n. （尤对有害之物）有瘾的人，入迷的人；吸毒成瘾的人，瘾君子； v. 使沉溺；使上瘾；使自己沾染（某些恶习）
 
@@ -1079,7 +1083,7 @@ antique `/ænˈtiːk/` adj. 古代的；古老的；过时的；n. 古董；古�
 
 > DRV: antiquarian `/ˌæntɪ'kweəriən/` n. 古物研究者；古玩收藏家；adj. 古物研究的；买卖古旧书籍的
 >
-> DRV: antiquate `/'æntɪkweɪt/` adj. 旧式的；过时的
+> DRV: antiquate `/'æntɪkweɪt/` adj. 旧式的；过时的; 废弃
 >
 > DRV: antiquity `/æn'tɪkwəti/` n. 古代；古物；古迹
 
@@ -1800,6 +1804,10 @@ automate `/'ɔːtəmeɪt/` vt. 使自动化，使自动操作；vi. 自动化，
 > DRV: automatic `/ˌɔːtə'mætɪk/` adj. 自动的；无意识的；必然的；n. 自动装置；半自动武器
 >
 > DRV: automaton `/ɔː'tɒmətən/` n. 机器人；不动脑筋机械行事的人
+>
+> REF: A `finite-state automaton` $M = (S, I, f, s_0, F)$ consists of a finite set $S$ of `state`, a finite `input alphabet` $I$, a $\text{transition function } f$ that assigns a next state to every pair of state and input (so that $f: S \times I \rightarrow S$), an $initial$ or $\text{start state } s_0$, and a subset $F$ of $S$ consisting of `final` (or `accepting states`). --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: A `nondeterministic finite-state automaton` $M = (S, I, f, s_0, F)$ consists of a set $S$ of states, an input alphabet $I$, a transition function $f$ that assigns a set of states to each pair of state and input (so that $f: S \times I \rightarrow P(S)$), a starting state $s_0$, and a subset $F$ of $S$ consisting of the final states. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 automobile `/'ɔːtəməbiːl]/` n. 汽车；adj. 汽车的
 
@@ -1808,6 +1816,8 @@ autonomy `/ɔː'tɒnəmi/` n. 自治；自治权；自主
 > DRV: autonomous `/ɔːˈtɒnəməs/` adj. 自治的
 
 autopilot `/'ɔːtəʊpaɪlət/` n. 自动驾驶仪
+
+autoregressive `/ˌɔːtəʊrɪ'ɡresɪv/` adj. 自回归的
 
 auxiliary `/ɔːɡˈzɪliəri/` n. 助动词；辅助物；帮助者；adj. 辅助的；附加的
 
@@ -1973,6 +1983,8 @@ badminton `/ˈbædmɪntən/` n. 羽毛球运动
 
 baffle `/'bæfl/` v. 困惑；难倒；阻碍；受挫；n. 挡板；隔音板；反射板；困惑
 
+bagel `/'beɪɡl/` n. 贝果，百吉饼（硬面包圈）;（体育比赛中）零蛋
+
 baggage `/'bæɡɪdʒ/` n. 行李
 
 baggy `/'bæɡi/` adj. 宽松的；袋状的；膨胀的
@@ -2026,6 +2038,8 @@ baltic `/'bɔːltɪk/` adj. 波罗的海的；波罗的语的
 banal `/bəˈnɑːl/` adj. 陈腐的；平庸的；老一套的
 
 bandit `/'bændɪt/` n. 土匪, 强盗
+
+bandstand `/'bændstænd/` n. (有顶盖)室外音乐演奏台
 
 bandwagon `/'bændwægən/` n. (尤指政治上或商业上的)时尚, 浪潮, 声势浩大的活动
 
@@ -2165,6 +2179,8 @@ battery `/'bætərɪ/` n. 电池；一系列；炮兵连；排炮；[律]殴打
 
 bauble `/'bɔːbl/` n. 小玩意；美观的便宜货；华而不实的小件装饰品；丑角手杖
 
+bawdy `/'bɔːdi/` adj. 下流的；猥亵的；淫秽的；n. 下流话；猥亵作品
+
 bay `/beɪ/` n. 海湾；月桂树；隔间；犬吠；【计】机架，底板；vi. 嗥叫；哀号；adj. 红棕色
 
 bazaar `/bəˈzɑː(r)/` n. 集市；市场；义卖市场
@@ -2193,6 +2209,8 @@ beanbag `/'biːnbæɡ/` n. (游戏用的)豆子袋；豆袋椅；子弹小袋
 
 beanie `/'biːnɪ/` n. [口]无檐小便帽；（有花饰或羽饰的）小圆女帽
 
+beanpole `/'biːnpəʊl/` n. 豆杆；瘦长的人
+
 bear `/beə(r)/` n. 熊；v. 忍受；负荷；结果；证实；生子女
 
 > DRV: bearer `/'beərə(r)/` n. 持票者；带信人；承担人；脚夫；搬运工；能开花结果的植物；柩夫
@@ -2218,6 +2236,8 @@ bedevil `/bɪ'dev(ə)l/` vt. 使痛苦；虐待；使苦恼
 bedfellow `/'bedfeləʊ/` n. 同床者, 共睡者; (尤指在商业或政治上)关系密切的伙伴, 同事, 同盟者
 
 bedlam `/'bedləm/` n. 混乱，骚乱；精神病院，疯人院
+
+bedridden `/'bedrɪdn/` adj. 卧床不起的；长期卧床的
 
 bedrock `/ˈbedrɒk/` n. 岩床；根底；基础；基本原则
 
@@ -2765,6 +2785,26 @@ bookkeeping `/'bʊkkiːpɪŋ/` n. 簿记；记账
 
 bookseller `/'bʊkselə(r)/` n. 书商
 
+boolean `/'buːliən/` adj. 布尔的；布尔逻辑的；n. 布尔逻辑
+
+> REF: **Boolean algebra**: a set $B$ with two binary operations $\vee$ and $\wedge$, elements 0 and 1, and a complementation operator $\overline{}$ that satisfies the identity, complement, associative, commutative, and distributive laws. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Boolean expressions**: the expressions obtained recursively by specifying that 0, 1, $x_1$, ..., $x_n$ are Boolean expressions and $\overline{E_1}$, $E_1 + E_2$, and $(E_1 E_2)$ are Boolean expressions if $E_1$ and $E_2$​ are. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Dual of a boolean expression**: the expression obtained by interchanging $+$ signs and $\cdot$ signs and interchanging $0s$ and $1s$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Boolean function of degree $n$**: a function from $B^n$ to $B$ where $B = \{0, 1\}$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Boolean variable**: a variable that assumes only the values 0 and 1. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Literal of the Boolean variable $x$**: either $x$ or $\overline{x}$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Implicant of a Boolean function**: a product of literals with the property that if this product has the value 1, then the value of this Boolean function is 1. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Prime implicant of a Boolean function**: a product of literals that is an implicant of the Boolean function and no product obtained by deleting a literal is also an implicant of this function. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+>
+> REF: **Minimization of a Boolean function**: representing a Boolean function as the sum of the fewest products of literals such that these products contain the fewest literals possible among all sums of products that represent this Boolean function. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition. 2019.
+
 boom `/buːm/` n. 繁荣；兴旺；激增；低沉声；n. 帆杠；吊杆；支臂；尾桁；水栅；vi. 急速增长；发出低沉声；vt. 使兴旺；促进
 
 boomerang `/'buːməræŋ/` n. (澳大利亚)回飞镖; 自作自受; 伤及原提案者的言论及提议; vi. (计划)产生事与愿违的结果; 自食其果
@@ -3253,6 +3293,8 @@ butter `/ˈbʌtə(r)/` vt. 涂黄油于；[口]讨好; n. 黄油；奶油；奉�
 
 butterfly `/ˈbʌtəflaɪ/` n. 蝴蝶；蝶状物；蝶泳；vt. (烹饪时把鱼肉等）切开摊平
 
+buttonhole `/'bʌt(ə)nhoʊl/` n. 钮扣孔；v. 抓住（某人）与之攀谈
+
 buttress `/'bʌtrəs/` n. 扶墙；拱壁；v. 支持
 
 buzz `/bʌz/` vi. 发出嗡嗡声；充满；匆忙；vt. 使嗡嗡叫；低飞掠过；打电话；n. 嗡嗡声；电话
@@ -3320,6 +3362,8 @@ cadaverous `/kə'dæv(ə)rəs/` adj. 死人似的，尸体般的; 面色灰白�
 caddy `/'kædɪ/` n.（尤指用于储存茶叶的）小罐；（装小件物品的）小包；球童
 
 cadence `/ˈkeɪdns/` n. 节奏；韵律；抑扬顿挫
+
+cadre `/'kædrə/` n. 干部；骨干；核心小组；vt. 训练；培养
 
 cafe `/ˈkæfeɪ/` n. 咖啡馆; 小餐厅
 
@@ -4453,6 +4497,8 @@ coherent `/kəʊˈhɪərənt/` adj. 连贯的；有条理的；一致的；粘�
 
 cohesion `/kəʊˈhiːʒn/` n. 凝聚力；团结；内聚力
 
+> DRV: cohesive /kəʊ'hiːsɪv/` adj. 有凝聚力的；团结的；内聚的
+
 cohort `/'kəʊhɔːt/` n. 一群人；同伴；步兵队；[统计]队列
 
 coin `/kɔɪn/` n. 硬币；金钱；vt. 铸造（钱币）；创造（新词）；adj. 硬币的；投币的
@@ -4742,6 +4788,8 @@ complete `/kəm'pliːt/` adj. 完整的；完成的；彻底的；vt. 完成；�
 > DRV: completest `/kəm'pliːt/` adj. 完整的；完成的；彻底的；vt. 完成；使完美；使圆满；填（表格等）
 >
 > DRV: completion `/kəm'pliːʃn/` n. 完成；结束
+>
+> REF: **Functionally complete**: a set of Boolean operators is called functionally complete if every Boolean function can be represented using these operators. --Discrete Mathematics, 8th Edition, by Richard Johnsonbaugh
 
 complex `/ˈkɒmplɛks/` adj. 复杂的；合成的；复合的；n. 综合体；复合体；[医]综合症状；[心]情结
 
@@ -4822,6 +4870,12 @@ con `/kɔn/` n. 骗局；反对；反对的理由；adv. 反面地；反对地�
 concatenate `/kɑnˈkæt(ə)ˌneɪt/` v. 连结；连锁；adj. 连锁的
 
 > DRV: concatenation `/kɒnˌkætɪ'neɪʃən/` n. 连结；串联；一系列相互联系的事物
+>
+> REF: Suppose that $A$ and $B$ are subsets of $V^{*}$, where $V$ is a vocabulary. The **concatenation** of $A$ and $B$, denoted by $AB$, is the set of all strings of the form $xy$, where $x$ is a string in $A$ and $y$ is a string in $B$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: Suppose that $A$ is a subset of $V^{*}$. Then the `Kleene closure` of $A$, denoted by $A^{*}$, is the set consisting of concatenations of arbitrarily many string from $A$. That is, $A^* = \bigcup_{k=0}^{\infty} A^k$ --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+
+concave `/kən'keɪv/` adj. 凹的；凹面的；凹形的；n. 凹面镜
 
 conceal `/kən'siːl/` vt. 隐藏；隐瞒；掩盖
 
@@ -4919,6 +4973,18 @@ condescend `/ˌkɒndɪˈsɛnd/` v. 屈尊，俯就，怀着优越感对待
 
 condiment `/'kɒndɪm(ə)nt/` n. 调味品, 佐料
 
+condition `/kənˈdɪʃn/` n. 条件；状况；环境；健康状况；vt. 使适应；以...为条件；vi. 适应
+
+> DRV: postcondition `/ˌpəustkən'diʃən/` n. 后[置]条件
+>
+> DRV: precondition `/ˌpriːkən'dɪʃn/` n. 先决条件；前提；v. 预先准备
+>
+> REF: The statements that describe valid input are known as **preconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: the conditions that the output should satify when the program has run are known as **postconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: **Don't care condition**: a combination of input values for a circuit that is not possible or never occurs. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+
 condom `/'kɒndɒm/` n. 安全套；避孕套
 
 condone `/kənˈdəʊn/` vt. 宽恕；赦免
@@ -5009,6 +5075,8 @@ congregate `/'kɒŋɡrɪɡeɪt/` v. 使集合；聚集；集合；adj. 集体的
 
 congress `/ˈkɒŋɡres/` n. 代表大会；议会；n. 立法机关；n. 国会<美>
 
+> DRV: congressman `/'kɒŋɡresmən/` n. 国会议员；众议员
+>
 > REF: WE, therefore, the Representatives of the UNITED STATES OF AMERICA, in GENERAL CONGRESS, Assembled, appealing to the Supreme Judge of the World for the Rectitude of our Intentions, do, in the Name, and by Authority of the good People of these Colonies, solemnly Publish and Declare, That these United Colonies are, and of Right ought to be, FREE AND INDEPENDENT STATES; --The Declaration of Independence
 
 congruent `/'kɒŋɡruənt/` adj. <数>叠合的, 全等的; 符合的, 一致的, 和谐的
@@ -5398,6 +5466,8 @@ copper `/ˈkɒpə(r)/` n. 铜；铜币；警察；紫铜色；有紫铜色翅膀
 copra `/'kɒprə/` n. (用于榨油的)干椰子肉
 
 coprocessor `/'kəʊˌprəʊsesə/` n. 协处理器
+
+copter `/'kɒptə/` n. 直升机
 
 coptic `/'kɑptɪk/` adj. 科普特人的；科普特语的; n. 埃及古语；科普特语
 
@@ -7441,6 +7511,8 @@ divvy `/'dɪvi/` v. 分配；分摊；分享；n. 分摊；部分；分配
 
 dizz `/'dɪz/` n. 头晕；头昏眼花
 
+dizzy `/'dɪzi/` adj. 头晕的；眼花的；恍惚的；vt. 使头晕目眩；使茫然
+
 ### dj
 
 [回到D](#D)--[回到顶部](#英汉词典)
@@ -7588,6 +7660,8 @@ downplay `/ˌdaʊn'pleɪ/` v. 低估；对…轻描淡写；不予重视
 downright `/'daʊnraɪt/` adv. 完全地; adj. 彻底的, 完全的; 坦白的, 直率的
 
 downside `/'daʊnsaɪd/` n. 下降趋势（价格方面）；消极面；负面
+
+downsize `/'daʊnsaɪz/` v. 以较小尺寸设计；缩小尺寸；裁员；缩减
 
 downtime `/'daʊntaɪm/` n. 停机时间；停工期；不工作时间
 
@@ -9485,6 +9559,8 @@ femur `/'fiːmə/` n. 股骨；大腿骨
 
 fence `/fens/` n. 栅栏；围墙；买卖赃物的人；v. 用篱笆围住；束缚；击剑；回避
 
+> DRV: fencer `/'fensə/` n. 击剑者；栅栏工；买卖赃物者
+
 feral `/'ferəl/` adj. 野生的；凶猛的
 
 ferment `/fəˈmɛnt/` n. 发酵；酵素；动乱；v. （使）发酵；动乱
@@ -10507,7 +10583,13 @@ gasp `/ɡɑːsp/` vi. 喘息；喘气；渴望; vt. 气喘吁吁地说；喘着�
 
 gastronomy `/gæ'strɒnəmɪ/` n. 美食学;烹调法
 
-gatehouse `/'ɡeɪthaʊs/` n. 警卫室；门房；（水库等）闸门控制室
+gate `/ɡeɪt/` n. 大门；入口；闸口；v. 给…装大门；给…装闸
+
+> DRV: gatehouse `/'ɡeɪthaʊs/` n. 警卫室；门房；（水库等）闸门控制室
+>
+> REF: **AND gate**: a device that accepts the values of two or more Boolean variables as input and produces their Boolean product as output. -- Discrete Mathematics and Its Applications . Kenneth H. Rosen
+>
+> REF: **OR gate**: a device that accepts the values of two or more Boolean variables as input and produces their Boolean sum as output. -- Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 gather `/'ɡæðə(r)/` v. 聚集；集合；收集；推测；n. 聚集；褶子
 
@@ -10933,6 +11015,12 @@ gram `/ɡræm/` n. （重量单位）克(g)
 
 grammar `/ˈɡramə/` n. 语法；文法
 
+> REF: A **phrase-structure grammar** $G = (V, T, S, P)$ consists of a vocabulary $V$, a subset $T$ of $V$ consisting of terminal symbols, a start symbol $S$ from $V$, and a finite set of productions $P$. The set $V - T$ is denoted by $N$. Elements of $N$ are called `nonterminal symbols`. Every production in $P$ must contain at least one nonterminal on its left side. -- Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: Let $G = (V, T, S, P)$ be a **phrase-structure grammar**. Let $w_0 = l z_0 r$ (this is, the concatenation of $l, z_0$, and $r$) and $w_1 = l z_1 r$ be strings over $V$. If $z_0 \rightarrow z_1$ is a production of $G$, we say that $w_1$ is `directly derivable` from $w_0$ and we write $w_0 \Rightarrow w_1$. If $w_0, w_1, ..., w_n$ are strings over $V$ such that $w_0 \Rightarrow w_1, w_1 \Rightarrow w_2, ..., w_{n - 1} \Rightarrow w_n$, then we say that $w_n$ is `derivable from` $w_0$, and we write $w_0 \overset{*}{\Rightarrow} w_n$. The sequence of steps used to obtain $w_n$ from $w_0$ is called a `derivation`. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: Let $G = (V, T, S, P)$ be a **phrase-structure grammar**. The `language generated by` $G$ (or the `language of` $G$), denoted by $L(G)$, is the set of all strings of terminals that are derivable from the starting state $S$. In other words: $L(G) = \{w \in T^{*} | S \overset{*}{\Rightarrow} w\}$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+
 grammatical `/ɡrə'mætɪkl/` adj. 语法的；合乎文法的
 
 gramps `/ɡræmps/` n. [口]爷爷；[口]外公（gramp的复数）
@@ -11228,6 +11316,8 @@ gunner `/'gʌnə/` n. 炮手;枪手；射手；炮兵; 猎枪手
 gunpowder `/'ɡʌnpaʊdə(r)/` n. 火药
 
 gunslinger `/'gʌnslɪŋə/` n. 枪手；持枪者；持枪暴徒
+
+gunslinging `/'gʌnslɪŋɪŋ/` n. 枪战；持枪暴力行为
 
 gurgle `/'gɜːg(ə)l/` n. 咯咯声；汩汩声; vi. 作汩汩声；作咯咯声; vt. 用咯咯声表示
 
@@ -11683,6 +11773,8 @@ hessian `/'hesiən/` n. 黑森州；粗麻布
 
 heterogeneous `/ˌhetərə'dʒiːniəs/` adj. （计算机）非均匀的；异种的；异质的；由不同成分形成的
 
+heteroskedasticity `/ˌhetəroʊskəˌdæstɪ'sɪti/` n. 异方差性（统计学）
+
 heuristic `/hju'rɪstɪk/` adj. (教学)启发式的；探索的；n. 启发式教学
 
 > REF: Optimizers use `heuristics` to reduce the cost of optimization. -- Abraham Silberschatz, Henry F. Korth, S. Sudarshan . Database System Concepts . 6ED
@@ -11793,6 +11885,8 @@ hither `/'hɪðə(r)/` adv. <古>到此处；adj. 附近的
 >
 > REF: refusing to pass others to encourage their Migrations hither, and raising the Conditions of new Appropriations of Lands. --The Declaration of Independence
 
+hitter `/'hɪtə/` n. 击球手；打击者；打击者（尤指棒球运动员）
+
 hive `/haɪv/` n. 蜂箱, 蜂巢; 蜂群; 喧闹地区; vt. 使（蜂）入蜂箱; vi. （蜂）进入蜂箱; 把一部份分离出来；卖掉公司的一部分
 
 ### hj
@@ -11818,6 +11912,8 @@ hive `/haɪv/` n. 蜂箱, 蜂巢; 蜂群; 喧闹地区; vt. 使（蜂）入蜂�
 ### ho
 
 [回到H](#H)--[回到顶部](#英汉词典)
+
+ho-hum `/ˈhəʊ hʌm/` int. <口>无聊；没劲；唉
 
 hoard `/hɔːd/` n. (钱财、食物或其他珍贵物品的)储藏, 积存; vt. & vi. 积蓄并储藏(某物)
 
@@ -11980,6 +12076,8 @@ hostel `/'hɒst(ə)l/` n. 旅社，招待所（尤指青年旅社）
 hostile `/ˈhɒstaɪl/` adj. 敌对的；怀敌意的
 
 hotelling `/həʊ'telɪŋ/` n.（数学）哈罗德·霍特林；漫游办公；旅馆式办公
+
+hothouse `/'hɒthaʊs/` n. 温室；温床；温室培养的植物；v. 在温室中种植
 
 hotspot `/'hɒtspɒt/` n. 热点；热区
 
@@ -12582,6 +12680,8 @@ impute `/ɪm'pjuːt/` v. 归罪于；负责任；嫁祸
 ### in
 
 [回到I](#I)--[回到顶部](#英汉词典)
+
+in-the-fall `/ˈɪn ðə fɔːl/` n. 秋天；秋季
 
 inability `/ˌɪnə'bɪləti/` n. 无能；无力
 
@@ -13533,6 +13633,8 @@ inverted `/ɪn'vɜːtɪd/` adj. 反向的；倒转的
 
 inverter `/ɪn'vɜːtə/` n. 变换器；倒换器；逆变器；换流器；电流换向器
 
+> REF: **Inverter**: a device that accepts the value of a Boolean variable as input and produces the complement of the input. -- Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+
 invertible `/ɪn'vɜːtɪbl/` adj. 可逆的；被翻过来的；被颠倒的
 
 inverting `/ɪn'vɜːtɪŋ/` n. 转向
@@ -14335,6 +14437,8 @@ lagrange `/lə'ɡrɑndʒ/` n. （数学）拉格朗日
 
 laid `/leɪd/` vbl. 放置；躺下（lay的过去式和过去分词）
 
+lair `/leə/` n. 窝；兽穴；藏身处；v. 躲藏
+
 lain `/leɪn/` lie的过去分词，躺下，位于，平放，存在，延伸，说谎
 
 laissez `/leɪ'se/` n. 放任型父母
@@ -14719,6 +14823,8 @@ lieu `/luː/` n. 代替; (以…)替代
 
 lieutenant `/lefˈtenənt/` n. 陆军中尉; 海军上尉; 副职官员
 
+lifeblood `/'laɪfbʌd/` n. 生命线；命脉；血液
+
 lifeboat `/'laɪfbəʊt/` n. 救生艇，救生船
 
 lifecycle `/'laɪfˌsaɪkl/` n. 生命周期；生命循环；生活过程
@@ -15095,7 +15201,15 @@ macaroni `/ˌmækə'rəʊnɪ/` n. 通心面条；纨绔子弟；通心粉
 
 mace `/meɪs/` n. 权杖; 狼牙棒(古代兵器); 肉豆蔻干皮,肉豆蔻种衣(用作香料)
 
-machinery `/mə'ʃiːnəri/` n. 机械；(总称)机器
+machine `/mə'ʃiːn/` n. 机器；机械；机械装置；机械般工作的人；v. 用机器制造；用机器操作
+
+> DRV: machinery `/mə'ʃiːnəri/` n. 机械；(总称)机器
+>
+> REF: A **finite-state machine** $M = (S, I, O, f, g, s_0)$ consists of a finite set $S$ of `states`, a finite `input alphabet` $I$, a finite `output alphabet` $O$, a `transition function` $f$ that assigns to each state and input pair a new state, an `output function` $g$ that assigns to each state and input pair an output, and an `initial state` $s_0$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: Let $M = (S, I, O, f, g, s_0)$ be a **finite-state machine** and $L \subseteq I^{*}$. We say that $M$ `recognize (or accepts)` $L$ if an input string $x$ belongs to $L$ if and only if the last output bit produced by $M$ when given $x$ as input is a 1. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: A Turing machine $T = (S, I, f, s_0)$ consists of a finite set $S$ of states, and alphabet $I$ containing the blank symbol $B$, a partial function $f$ from $S \times I$ to $S \times I \times \{R, L\}$, and a starting state $s_0$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 macho `/'mætʃəʊ/` adj. 大男子气概的
 
@@ -15401,7 +15515,7 @@ match `/mætʃ/` vt. 使相配；与…竞争；相配；使比赛；敌得过�
 
 > DRV: matchless `/ˈmætʃləs/` adj. 无敌的；无可匹敌的
 >
-> REF: Finding where a pattern occurs in a text string is called **string matching**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+> REF: Finding where a pattern occurs in a text string is called **string matching**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 mathematician `/ˌmæθəmə'tɪʃn/` n. 数学家
 
@@ -16351,6 +16465,8 @@ mug `/mʌɡ/` n. 脸；杯；一杯的量；恶棍；v. 打劫；突击学习
 
 mulberry `/ˈmʌlbəri/` n. 桑树；桑葚；深紫红色
 
+mule `/mjuːl/` n. 骡子；拖鞋；[口]笨人；v. （使）驴交配；（使）骡交配
+
 mull `/mʌl/` vt. 研磨；思索或思考某事物；使醉; n. 混乱；软薄布; vi. 深思熟虑
 
 > DRV: mulled `/mʌld/` adj. 加糖的，香料热饮的; v. 仔细考虑；加糖和香料并烫热；使…糊涂（mull的过去分词）
@@ -16616,6 +16732,8 @@ navy `/ˈneɪvi/` n. 海军
 ### ne
 
 [回到N](#N)--[回到顶部](#英汉词典)
+
+near `/nɪr/` adv. (空间)在近处；在附近; (时间)临近，来临; (程度)几乎，差不多，将近; prep. (表示位置)靠近，在…附近; (表示时间)将近，快到，临近; (表示程度)接近，近乎，濒临; (表示关系)与…近似；与…紧密相关; (表示过程)到…去从事活动; (表示数目)大约，接近; adj. 近的；不远的; 亲密的；近亲的; 近似，相似; vt. & vi. 接近；靠近
 
 nearshore `/'nɪr'ʃɔr/` adj. (研究)近岸水域的
 
@@ -19175,6 +19293,10 @@ pontage `/'pɒntɪdʒ/` n. 过桥费
 
 pontificate `/pɒn'tɪfɪkeɪt/` v. 武断地或自封为权威地谈论某事物；n. (教皇的)职位或任期
 
+pony `/'pəʊni/` n. 小马；矮种马；小型马车；v. 付钱
+
+> DRV: pony-up `/ˈpəʊni ʌp/` v. 付钱；支付
+
 poo `/pu/` n. 屎；拉屎; v. 拉屎; abbr. 邮政汇票(=Post-Office Order)
 
 popcorn `/ˈpɒpkɔːn/` n. 爆米花
@@ -19266,10 +19388,6 @@ postage `/ˈpəʊstɪdʒ/` n. 邮费；邮资
 postal `/'pəʊstl/` adj. 邮政的；n. 明信片
 
 postbox `/'pəʊs(t)bɒks/` n. 邮箱
-
-postcondition `/ˌpəustkən'diʃən/` n. 后[置]条件
-
-> REF: the conditions that the output should satify when the program has run are known as **postconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 poster `/'pəʊstə(r)/` n. 海报；装饰画；急行旅人
 
@@ -19420,10 +19538,6 @@ precise `/prɪˈsaɪs/` adj. 精确的；恰好的；准确的；严格的
 precocity `/prɪ'kɒsəti/` n. 早熟；过早发育
 
 preconception `/ˌpriːkənˈsepʃn/` n. 事先形成的观点或思想;先入之见
-
-precondition `/ˌpriːkən'dɪʃn/` n. 先决条件；前提；v. 预先准备
-
-> REF: The statements that describe valid input are known as **preconditions**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen
 
 precursor `/priˈkɜːsə(r)/` n. 先驱；前任；前兆；[生物]前体，前驱体
 
@@ -19747,7 +19861,15 @@ probiotic `/ˌprəʊbaɪ'ɒtɪk/` n. 益生菌；adj. 前生命期的
 
 probity `/'prəʊbəti/` n. 诚实；廉洁；正直
 
-problematic `/ˌprɒbləˈmætɪk/` adj. 问题的；有疑问的
+problem `/ˈprɒbləm/` n. 问题；难题；疑难问题
+
+> DRV: problematic `/ˌprɒbləˈmætɪk/` adj. 问题的；有疑问的
+>
+> REF: A `decision problem` asks whether statements from a particular class of statements are true. Decision problems are also known as `yes-or-no` problems. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: A `decision problem` asks whether statements from a particular class of statements are true. Decision problems are also known as `yes-or-no` problems. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
+>
+> REF: The `halting problem` is the decision problem that asks whether a Turing machine $T$ eventually halts when given an input string $x$. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 procedural `/prə'siːdʒərəl/` adj. 程序的
 
@@ -20387,6 +20509,8 @@ quadtree `/k'wædtriː/` n.（计算机）四叉树
 
 quaint `/kweɪnt/` adj. 离奇有趣的；古色古香的；古怪的
 
+quake `/kweɪk/` v. 颤抖；震动；n. 地震；颤抖
+
 quaker `/'kweɪkə(r)/` n. 教友派信徒
 
 qualify `/ˈkwɒlɪfaɪ/` vt. 使具备资格；描述；[语]修饰；vi. 取得资格；合格
@@ -20405,9 +20529,9 @@ quandary `/'kwɒndəri/` n. 困惑；迷惑；为难
 
 quantifier `//ˈkwɒntɪfaɪə(r)/` n. 量词；量化词
 
-> REF: The **universal quantification** of $P(x)$ is the statement "P(x) for all values of x in the domain." --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+> REF: The **universal quantification** of $P(x)$ is the statement "P(x) for all values of x in the domain." --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 >
-> REF: The **existential quantification** of P(x) is the proposition "There exists an element x in the domain such taht P(x)." --Discrete Mathematics and Its Applications . Kenneth H. Rosen
+> REF: The **existential quantification** of P(x) is the proposition "There exists an element x in the domain such taht P(x)." --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 quantity `/ˈkwɒntəti/` n. 量；数量；大量
 
@@ -20636,6 +20760,8 @@ rancid `/ˈrænsɪd/` adj. (指含有油脂食物)因变质而有陈腐味道或
 randomize `/'rændəmaɪz/` vt. 使随机化；使任意化；使随机选择
 
 ranger `/'reɪn(d)ʒə/` n. 护林者;〈美〉突击队员
+
+ranging `/'reɪndʒɪŋ/` n. 范围；排列；射程；距离修正; 广泛搜索; v. 排列；漫游（range的现在分词）；漫步；变动
 
 ransom `/ˈrænsəm/` vt. 赎回，赎；勒索赎金；得赎金后释放；[宗]救赎; n. 赎金；赎身，赎回
 
@@ -20881,7 +21007,11 @@ recluse `/rɪˈkluːs/` n. 隐居者,遁世者,隐士
 
 recode `/'riː'kəʊd/` v. 重新编码
 
-recognition `/ˌrekəɡˈnɪʃn/` n. 承认；认出；赏识
+recognize `/ˈrekəɡnaɪz/` v. 认出；识别；承认；认可；赏识
+
+> DRV: recognition `/ˌrekəɡˈnɪʃn/` n. 承认；认出；赏识
+>
+> REF: A string $x$ is said to be `recognized` or `accepted` by the machine $M = (S, I, f, s_0, F)$ if it takes the initial state $s_0$ to a final state, that is, $f(s_0, x)$ is a state in $F$. The `language recognized` or `accepted` by the machine $M$, denoted by $L(M)$, is the set of all strings that are recognized by $M$. Two finite-state automata are called `equivalent` if they recognize the same language. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 recoil `/rɪ'kɔɪl/` v. 退却；畏缩；弹回；报应；n. 畏缩；弹回；后坐力
 
@@ -21081,6 +21211,8 @@ regrater `/rɪ'greɪtə/` n. 倒爷；囤积居奇者；转手倒卖者
 
 regress `/rɪˈɡres/` vi. 退化, 退步, 倒退
 
+> DRV: regression `/rɪ'ɡreʃn/` n. 退化；回归；回归分析
+>
 > DRV: regressive `/rɪ'ɡresɪv/` adj. 退步的；退化的；递减的(税率)；回归的
 
 regret `/rɪ'ɡret/` v. 后悔；惋惜；为 ... 感到遗憾；n. 遗憾；抱歉；后悔
@@ -21094,6 +21226,15 @@ regrow `/riːgreʊ/` v. 再生长；重新生长
 regular `/ˈreɡjələr/` adj. 有规律的；定期的；经常的；正规的；整齐的；规则的
 
 > DRV: regularity `/ˌreɡju'lærəti/` n. 规律性；规则性；匀整；定期
+>
+> REF: The `regular expressions` over a set $I$​ are defined recursively by:
+>
+> > - the symbol $\emptyset$ is a regular expression;
+> > - the symbol $\lambda$ is a regular expression;
+> > - the symbol $x$ is a regular expression whenever $x \in I$​;
+> > - the symbol ($AB$), ($A \cup B$), and $A^{*}$ are regular expressions whenever $A$ and $B$ are regular expressions.
+> >
+> > --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
 regulate `/ˈreɡjuleɪt/` vt. 调整；校准；管理；控制
 
@@ -21573,7 +21714,11 @@ retention `/rɪ'tenʃn/` n. 保留物；保存；保持(力)；记忆力
 
 retinue `/'retɪnjuː/` n. 侍从；随员
 
-retirement `/rɪ'taɪəmənt/` n. 退休；隐匿处
+retire `/rɪ'taɪə(r)/` v. 退休；撤退；退役；退出；n. 退休；隐居
+
+> DRV: retiree `/rɪˌtaɪə'riː/` n. 退休者；退伍军人
+>
+> DRV: retirement `/rɪ'taɪəmənt/` n. 退休；隐匿处
 
 retort `/rɪ'tɔːt/` v. 反驳；回嘴；反击；n. 反驳；顶嘴
 
@@ -21916,6 +22061,8 @@ rove `/rəʊv/` v. 漂泊；流浪；环顾；把线穿过孔；n. 徘徊；流�
 > DRV: roving `/'rəʊvɪŋ/` n. 粗纱
 
 rowdy `/'raʊdi/` adj. 吵闹的；粗暴的
+
+rower `/'raʊə(r)/` n. 划船者；划手；划艇运动员
 
 royal `/'rɔɪəl/` adj. 盛大的；皇家的；高贵的；第一流的；堂皇的；n. 顶桅帆；王室成员，贵族；纸张规格
 
@@ -22475,6 +22622,8 @@ scuff `/skʌf/` vt. 使磨损；践踏；拖着脚走; vi. 磨损；拖着脚走
 
 scuffle `/'skʌf(ə)l/` n. 扭打, 混战; vi. 扭打, 混战
 
+scull `/skʌl/` n. 双桨小艇；划手；v. 划双桨小艇；用双桨划行; 划船
+
 sculpt `/skʌlpt/` v. 雕刻；n. 雕刻；雕塑；雕刻品；雕塑品
 
 > DRV: sculpture `/ˈskʌlptʃə(r)/` n. 雕刻, 雕塑; 雕刻品; vt. & vi. 雕刻, 雕塑
@@ -22740,6 +22889,8 @@ servile `/'sɜːvaɪl/` adj. 屈从的；奴隶的；不自由的
 > DRV: servitude `/'sɜːvɪtjuːd/` n. 奴役；束缚；徒刑；〈法〉役劝
 
 sesame `/'sesəm/` n. 芝麻
+
+sescribe `/sɪ'skraɪb/` n. 记分员；记录员；得分者
 
 session `/ˈseʃn/` n. 会议；（法庭的）开庭；（议会等的）开会；学期；讲习会
 
@@ -23148,6 +23299,8 @@ sketch `/sketʃ/` n. 速写；素描；草图；概述；v. 草拟；速写；(�
 skew `/skjuː/` adj. 偏的，歪斜的；偏态的；异面的；n. 斜角，倾斜；偏见；偏态；v. 偏离，歪斜；扭转，偏转；歪曲；使（分布）偏态；斜视
 
 > DRV: skewing `/'skjuːɪŋ/` n. 时(间)滞(后)，(两个相关信号间的)相位差
+>
+> DRV: skewness `/'skjuːnəs/` n. 歪斜；偏斜；偏态
 
 ski `/skiː/` n. 滑雪橇; vi. 滑雪; adj. 滑雪（用）的
 
@@ -24871,6 +25024,8 @@ swell `/swel/` v. （使）膨胀；（使）鼓起；（使）增长；n. 增�
 
 swelter `/'sweltə(r)/` vi. 汗流浃背；中暑；热得难受；vt. 使热得难受；n. 中暑
 
+swerve `/swɜːv/` vi. 转向；偏离；vt. 使转向；使偏离；n. 转向；偏离
+
 swiftness `/ˈswɪftnəs/` n. 迅速；敏捷
 
 swig `/swɪɡ/` vi. 牛饮；大喝特喝; n. 痛饮，大喝；牛饮; vt. 牛饮；大喝特喝，豪饮
@@ -25043,9 +25198,13 @@ tackle `/ˈtækl/` vt. 解决；应付；vt. & vi. 捉住；扭倒；n. 拦截�
 
 > DRV: tackling `/'tæklɪŋ/` n. 扭住；抱住；卷起
 
+taco `/'tækoʊ/` n. 墨西哥玉米卷饼
+
 tact `/tækt/` n. 机智；手法
 
 tactic `/ˈtæktɪk/` n. 战略；策略
+
+> DRV: tactical `/'tæktɪkl/` adj. 战术的；策略的；机智的
 
 tactile `/ˈtæktaɪl/` adj. 触觉的，有触觉的；能触知的
 
@@ -25699,9 +25858,9 @@ toddle `/ˈtɒdl/` v. （幼儿等）东倒西歪地走；溜哒；散步；n. �
 
 > DRV: toddler `/ˈtɒdələ/` n. 初学走路的孩子
 
-toed `/təʊd/` adj. 斜着钉进去的；有趾的; v. 斜钉；装尖；用脚尖踢（toe的过去分词)
+toe `/təʊ/` n. 脚趾(=toes)；足尖；脚尖部分；v. 用脚尖踢；用脚尖触摸
 
-toes `/təʊz/` n. 脚趾；足尖；vt. 趾触；趾踢；vi. 踮着脚尖走
+toed `/təʊd/` adj. 斜着钉进去的；有趾的; v. 斜钉；装尖；用脚尖踢（toe的过去分词)
 
 toff `/tɒf/` n. 有钱人,名人,爱打扮的人,花花公子
 
@@ -27145,6 +27304,8 @@ van `/væn/` n. 箱形客货两用车；<主英>(铁路的)有盖货车；[军]�
 
 vandal `/'vændl/` n. 破坏他人或公共财产者
 
+vanguard `/'vænɡɑːd/` n. 先锋；前卫；先驱；前锋
+
 vanilla `/vəˈnɪlə/` n. 香子兰;香草; 香草醛；香草精; adj. 香草的;香草味的; 平凡的;普通的;乏味的
 
 vanish `/'vænɪʃ/` vi. 消失；绝迹；不见了
@@ -27521,6 +27682,8 @@ vixen `/'vɪks(ə)n/` n. 雌狐；泼妇，刁妇；唠叨的女人；坏心眼�
 
 vocabulary `/və(ʊ)ˈkabjʊləri/` n. 词汇；词汇量
 
+> REF: A `vocabulary`(or `alphabet`) $V$ is a finite, nonempty set of elements called `symbols`. A `word`(or `sentence`) over $V$ is a string of finite length of elements of $V$. The `empty string` or `null string`, denoted by $\lambda$ (and sometimes by $\epsilon$), is the string containing no symbols. The set of all words over $V$ is denoted by $V^{*}$. A `language over` $V$ is a subset of $V^{*}$. --Discrete Mathematics and Its Applications. Kenneth H. Rosen. 8th Edition. 2019.
+
 vocal `/'vəʊkl/` adj. 声音的；口头的；声乐的；直言不讳的；n. 元音；声乐作品
 
 > DRV: vocalizing `/'vəʊk(ə)laɪz/` vi. 发声；喊叫; vt. 使发成元音；使发声
@@ -27548,6 +27711,8 @@ vole `/vəʊl/` n. 大满贯；野鼠; vi. 赢得大满贯
 volley `/ˈvɒli/` n. 齐射；齐射出的子弹；凌空状态; vt. 截击；齐发；连声发出; vi. 齐鸣；截击；进行群射
 
 voltage `/'vəʊltɪdʒ/` n. 电压
+
+voluminous `/'vɒljuːməs/` adj. 宽松的；冗长的；卷数多的；体积大的; 数量大的
 
 voluntarily `/'vɒləntrəli/` adv. 自动地；以自由意志
 

@@ -68,3 +68,50 @@
 **THEOREM** The halting problem is an unsolvable decision problem. That is, no Turing machine exists that, when given an encoding of a Turing machine $T$ and its input string $x$ as input, can determine whether $T$ eventually halts when started with $x$ written on its tape.
 
 **Definition** A decision problem is in $P$ the `class of polynomial-time problems`, if it can be solved by a deterministic Turing machine in polynomial time in terms of the size of its input. That is, a decision problem is in $P$ if there is a deterministic Turing machine $T$ that solves the decision problem and a polynomial $p(n)$ such that for all integers $n$, $T$ halts in a final state after no more than $p(n)$ transitions whenever the input to $T$ is a string of length $n$. A decision problem is in $NP$, the `class of nondeterministic polynomial-time problems`, if it can be solved by a nondeterministic Turing machine in polynomial time in terms of the size of its input. That is, a decision problem is in $NP$ if there is a nondeterministic Turing machine $T$ that solves the problem and a polynomial $p(n)$ such that for all integers $n$, $T$ halts for every choice of transitions after no more than $p(n)$ transitions whenever the input to $T$ is a string of length $n$.
+
+
+
+## KeyTerms and Results
+
+### TERMS
+
+- **AB(concatenation of A and B)**: the set of all strings formed by concatenating a string in A and a string in B in that order.
+- **$A^{*} $ (Kleene closure of A)**: the set of all strings made up by concatenating arbitrarily many strings from A.
+- **Alphabet (or vocabulary)**: a set that contains elements used to form strings.
+- **Backus-Naur form**: a description of a context-free grammar in which all productions having the same nonterminal as their left-hand side are combined with the different right-hand sides of these productions, each separated by a bar, with nonterminal symbols enclosed in angular brackets and the symbol $\rightarrow$ replaced by $::=$.
+- **Computable function**: a function whose values can be computed using a Turing machine.
+- **Decision problem**: a problem that asks whether statements from a particular class of statements are true.
+- **Derivation (or parse) tree**: an ordered rooted tree where the root represents the starting symbol of a type 2 grammar, internal vertices represent nonterminals, leaves represent terminals, and the children of a vertex are the symbols on the right side of a production, in order from left to right, where the symbol represented by the parent is on the left-hand side.
+- **Deterministic finite-state automaton $(S, I, f, s_0, F)$**: a five-tuple containing a set $S$ of states, an input alphabet $I$, a transition function $f$ that assigns a next state to every pair of a state and an input, a starting state $s_0$, and a set of final states $F$.
+- **Finite-state machine $(S, I, O, f, g, s_0)$ (or a Mealy machine)**: a six-tuple containing a set $S$ of states, an input alphabet $I$, an output alphabet $O$, a transition function $f$ that assigns a next state to every pair of a state and an input, an output function $g$ that assigns an output to every pair of a state and an input, and a starting state $s_0$.
+- **Language**: a subset of the set of all strings over an alphabet.
+- **Language recognized by an automaton**: the set of input strings that take the start state to a final state of the automaton.
+- **Nondeterministic finite-state automation $(S, I, f, s_0, F)$**: a five-tuple containing a set $S$ of states, an input alphabet $I$, a transition function $f$ that assigns a set of possible next states to every pair of a state and an input, a starting state $s_0$, and a set of final states $F$.
+- **Nondeterministic Turing machine**: a Turing machine that may have more than one transition rule corresponding to each (state, tape symbol) pair.
+- **Phrase-structure grammar $(V, T, S, P)$**: a description of a language containing a alphabet $V$, a set of terminal symbols $T$, a start symbol $S$, and a set of productions $P$.
+- **Regular expression**: an expression defined recursively by specifying that $\theta$, $\lambda$, and $x$, for all $x$ in the input alphabet, are regular expressions, and that $(AB)$, $(A \cup B)$, and $A^{*}$ are regular expressions when $A$ and $B$ are regular expressions.
+- **Regular set**: a set defined by a regular expression.
+- **Solvable problem**: a problem with the property that there is an effective algorithm that can solve all instances of the problem.
+- **The production $w \rightarrow w_1$**: $w$ cna be replaced by $w_1$ whenever it occurs in a string in the language.
+- **Turing machine $T = (S, I, f, s_0)$**: a four-tuple consisting of a finite set $S$ of states, an alphabet $I$ containing the blank symbol $B$, a partial function $f$ from $S \times I$ to $S \times I \times \{R, L\}$, and a starting state $s_0$.
+- **Type 0 grammar**: any phrase-structure grammar.
+- **Type 1 grammar**: a phrsae-structure grammar in which every production is of the form $w_1 \rightarrow w_2$, where $w_1 = lAr$ and $w_2 = lwr$, where $A \in N, l, r, w \in (N \cup T) * and w \neq \lambda$, or $w_1 = S$ and $w_2 = \lambda$ as long as $S$ is not on the right-hand side of another production.
+- **Type 2, or context-free, grammar**: a phrase-structure grammar in which every production is of the form $A \rightarrow w_1$, where $A$ is a nonterminal symbol.
+- **Type 3, or regular, grammar**: a phrase-structure grammar where every production is of the form $A \rightarrow aB$, $A \rightarrow a$, or $S \rightarrow \lambda$, where $A$ and $B$ are nonterminal symbols, $S$ is the start symbol, and $a$ is a terminal symbol
+- **Uncomputable function**: a function whose values cannot be computed using a Turing machine.
+- **Unsolvable problem**: a problem with the property that no effective algorithm exists that can solve all instances of the problem.
+- **$w_1 \Rightarrow w_2$ ($w_2$ is directly derivable from $w_1$)**: $w_2$ can be obtained from $w_1$ using a production to replace a string in $w_1$ with another string.
+- **$w_1 \Rightarrow^* w_2$($w_2$ is derivable from $w_1$)**: $w_2$ can be obtained from $w_1$ using a sequence of productions ot replace strings by other strings.
+- **P, the class of polynomial-time problems**: the class of problems that can be solved by a deterministic Turing machine in polynomial time in terms of the size of the input.
+- **NP, the class of nondeterministic polynomial-time problems**: the class of problems that can be solved by a nondeterministic Turing machine in polynomial time in terms of the size of the input.
+- **NP-complete**: a subset of the class of NP problems with the property that if any one of them is in the class $P$, then all problems in $NP$ are in the class $P$.
+
+### RESULTS
+
+For every nondeterministic finite-state automaton there is a deterministic finite-state automaton that recognizes the same set.
+
+**Kleene's theorem**: A set is regular if and only if there is a finite-state automaton that recognizes it.
+
+A set is regular if and only if it is generated by a regular grammar.
+
+The halting problem is unsolvable.
