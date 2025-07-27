@@ -327,7 +327,7 @@ int main(void) {
 | $\alpha$   | `$\alpha$`   | $\kappa$  | `$\kappa$`  | $\psi$     | `$\psi$`     | $\digamma$    | `$\digamma$`    | $\Delta$  | `$\Delta$`  | $\Theta$   | `$\Theta$`   |
 | $\beta$    | `$\beta$`    | $\lambda$ | `$\lambda$` | $\rho$     | `$\rho$`     | $\varepsilon$ | `$\varepsilon$` | $\Gamma$  | `$\Gamma$`  | $\Upsilon$ | `$\Upsilon$` |
 | $\chi$     | `$\chi$`     | $\mu$     | `$\mu$`     | $\sigma$   | `$\sigma$`   | $\varkappa$   | `$\varkappa$`   | $\Lambda$ | `$\Lambda$` | $\Xi$      | `$\Xi$`      |
-| $\delta$   | `$\delta$`   | $\nu$     | `$\nu$`     | $\tau$     | `$\tau$`     | $\varphi$     | `$\varphi$`     | $\Omega$  | `$\Omega$`  |            |              |
+| $\delta$   | `$\delta$`   | $\nu$     | `$\nu$`     | $\tau$     | `$\tau$`     | $\varphi$     | `$\varphi$`     | $\Omega$  | `$\Omega$`  | $\ell$     | `$\ell$`     |
 | $\epsilon$ | `$\epsilon$` | $o$       | `$o$`       | $\theta$   | `$\theta$`   | $\varpi$      | `$\varpi$`      | $\Phi$    | `$\Phi$`    | $\aleph$   | `$\aleph$`   |
 | $\eta$     | `$\eta$`     | $\omega$  | `$\omega$`  | $\upsilon$ | `$\upsilon$` | $\varrho$     | `$\varrho$`     | $\Pi$     | `$\Pi$`     | $\beth$    | `$\beth$`    |
 | $\gamma$   | `$\gamma$`   | $\phi$    | `$\phi$`    | $\xi$      | `$\xi$`      | $\varsigma$   | `$\varsigma$`   | $\Psi$    | `$\Psi$`    | $\daleth$  | `$\daleth$`  |

@@ -384,6 +384,8 @@ admin `/'ædmɪn/` abbr. 管理；行政
 > DRV: administration `/ədˌmɪnɪ'streɪʃn/` n. 实施；管理；行政；行政部门；任期
 >
 > DRV: administrative `/ədˈmɪnɪstrətɪv/` adj. 行政的，管理的；经营的；后方勤务的
+>
+> DRV: administrivia `/ˌædmɪnɪ'strɪviə/` n. 管理琐事；行政细节
 
 admiral `/'ædmərəl/` n. 舰队司令；海军上将；[动]花蝶
 
