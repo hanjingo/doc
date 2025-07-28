@@ -15,3 +15,7 @@ IRENE ALDRIDGE . 2ED
 - [CHAPTER 11 Automated Market Making 2](chapter11.md)
 - [CHAPTER 12 Additional HFT Strategies, Market Manipulation, and Market Crashes](chapter12.md)
 - [CHAPTER 13 Regulation](chapter13.md)
+- [CHAPTER 14 Risk Management of HFT](chapter14.md)
+- [CHAPTER 15 Minimizing Market Impact](chapter15.md)
+- [CHAPTER 16 Implementation of HFT Systems](chapter16.md)
+

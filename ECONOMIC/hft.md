@@ -27,7 +27,7 @@ Performance attribution is a useful measure of strategy returns for the followin
 - Performance attribution is a measure of true added value of the strategy and lends itself to easy comparison with other strategies.
 - Near-term persistence of trending factors allows forecasting of strategy performance based on performance attribution.
 
-Performance attribution equition:
+Performance attribution equation:
 $$
 R_{it} = \alpha_{i} + \sum_{k}b_{ik}F_{kt} + u_{it}
 $$
