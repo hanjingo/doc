@@ -6569,7 +6569,9 @@ democratic `/ˌdeməˈkrætɪk/` adj. 民主的, 有民主精神或作风的
 >
 > DRV: democratized `/dɪ'mɒkrətaɪz/` vt. 使民主化
 
-demographic `/ˌdemə'ɡræfɪk/` adj. 人口统计学的，人口的；n. 具有统计学特征的人群（一般指根据年龄、性别等进行统计的人群）
+demography `/dɪ'mɒɡrəfi/` n. 人口统计学；人口统计资料
+
+> DRV: demographic `/ˌdemə'ɡræfɪk/` adj. 人口统计学的，人口的；n. 具有统计学特征的人群（一般指根据年龄、性别等进行统计的人群）
 
 demolish `/dɪˈmɒlɪʃ/` v. 拆毁；破坏；驳倒；<口>吃光
 
