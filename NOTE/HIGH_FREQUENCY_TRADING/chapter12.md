@@ -2,13 +2,15 @@
 
 [TOC]
 
+
+
 As this chapter shows, strategies thought to be malicious and often associated with HFT fall into one of the following categories:
 
 - Legitimate strategies serving price discovery.
 - Strategies not feasible in "lit" markets-regulated exchanges; the same strategies can be feasible in dark pools.
 - Strategies that are a direct consequence of pump-and-dump activity, a market manipulation technique that is banned in most financial markets.
 
-The CFTC subcommittee on HFT tasked with identifying undesirable HFT strategies identified the following instances:
+The CFTC subcommittee on HFT tasked with identifying undesirable HFT strategies, identified the following instances:
 
 - Latency arbitrage
 - Spread scalping

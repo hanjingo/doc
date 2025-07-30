@@ -1,8 +1,6 @@
 # Chapter 22. Function Objects and Callbacks
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -12,7 +10,7 @@ A function object (also called a functor) is any object that can be called using
 
 *Figure 22.1. Typical organization of type `D`*
 
-the outline is not sufficient when it comes to virtual functions, and in practice many implementations use a three-word structure for pointers to member functions:
+The outline is not sufficient when it comes to virtual functions, and in practice, many implementations use a three-word structure for pointers to member functions:
 
 1. The address of the member function, or `NULL` if it is a virtual function
 2. The required `this` adjustment
@@ -20,15 +18,15 @@ the outline is not sufficient when it comes to virtual functions, and in practic
 
 pass functors as function call arguments, this allows the caller to construct the function object(possibly using a nontrivial constructor) at run time.
 
-In our framework, we handle only class type functors and require them to provide the following information:
+In our framework, we handle only class-type functors and require them to provide the following information:
 
 - The number of parameters of the functor(as a member enumerator constant `NumParams`)
 - The type of each parameter(through member typedefs `Param1T, Param2T, Param3T, ...`)
 - The return type of the functor(through a member typedef `Return T`)
 
-the argument to be passed to the underlying functor can be one of three different values:
+The argument to be passed to the underlying functor can be one of three different values:
 
-- The corresponding parameter fo the bound functor
+- The corresponding parameter of the bound functor
 - The bound value
 - The parameter of the bound functor that is one position to the left of the argument we must pass
 

@@ -1,5 +1,7 @@
 # Chapter 1.About This Book
 
+[TOC]
+
 
 
 Templates are a solution to this problem without these drawbacks. They are functions or classes that are written for one or more types not yet specified. When you use a template, you pass the types as arguments, explicitly or implicitly. Because templates are language features, you have full support of type checking and scope.

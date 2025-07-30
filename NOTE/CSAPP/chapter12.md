@@ -1,5 +1,7 @@
 # 12 Concurrent Programming
 
+[TOC]
+
 
 
 Modern operating systems provide three basic approaches for building concurrent programs:

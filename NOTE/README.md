@@ -10,9 +10,9 @@ English | [中文版](README_zh.md)
 
 ### Math
 
-| Title | Edition | Author | Abstract/Evaluate |
-| ----- | ------- | ------ | ----------------- |
-|       |         |        |                   |
+| Title                                                        | Edition | Author           | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ---------------- | ----------------- |
+| [Discrete Mathematics and Its Applications](DISCRETE_MATHEMATICS_AND_ITS_APPLICATION/README.md) | 8ED     | Kenneth H. Rosen |                   |
 
 ### DataStruct&Algorithm
 
@@ -50,7 +50,6 @@ English | [中文版](README_zh.md)
 | Title                                                        | Edition | Author                           | Abstract/Evaluate |
 | ------------------------------------------------------------ | ------- | -------------------------------- | ----------------- |
 | [COMPUTER NETWORKING: A Top-Down Approach](COMPUTER_NETWORKING_A_TOP_DOWN_APPROACH/README.md) | 6ED     | James F. Kurose<br>Keith W. Ross |                   |
-| [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)   | 2.0.0   |                                  |                   |
 
 ### Parallel
 
@@ -65,6 +64,7 @@ English | [中文版](README_zh.md)
 | [THE WEALTH OF NATIONS](THE_WEALTH_OF_NATIONS/README.md) | 1ED     | Adam Smith |                   |
 | [PRINCIPLES OF ECONOMICS](PRINCIPLES_OF_ECONOMICS/README.md) | 4ED | N.Gregory Mankiw | |
 | [Investments](INVESTMENTS/README.md) | 10ED | Zvi Bodie<br>Alex Kane<br>Alan J.Marcus | |
+| [High-Frequency Trading](HIGH_FREQUENCY_TRADING/README.md) | 2ED | IRENE ALDRIDGE | |
 
 ### Software Engineering
 
@@ -95,12 +95,10 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
+- [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)
 - [The Calculus Lifesaver](THE_CALCULUS_LIFESAVER/README.md)
 - [The Probability Lifesaver](THE_PROBABILITY_LIFESAVER/README.md)
-- [Discrete Mathematics and Its Applications](DISCRETE_MATHEMATICS_AND_ITS_APPLICATION/README.md)
-- [THE ART OF MULTIPROCESSOR PROGRAMMING](THE_ART_OF_MULTIP_OCESSOR_PROGRAMMING/README.md)
 - [COMPUTER ORGANIZATION AND DESIGN-THE HARDWARE/SOFTWARE INTERFACE](COMPUTER_ORGANIZATION_AND_DESIGN/README.md)
-- [The Algorithm Design Manual](THE_ALGORITHM_DESIGN_MANUAL/README.md)
 - [Thinking Fast and Slow](THINKING_FAST_AND_SLOW/README.md)
 - [Operating System: Principles and Practice](OPERATING_SYSTEMS_PRINCIPLES_AND_PRACTICE/README.md)
 - [Communicating Sequential Processes](COMMUNICATING_SEQUENTIAL_PROCESSES/README.md)

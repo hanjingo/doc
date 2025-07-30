@@ -1,8 +1,6 @@
 # Chapter 19. Type Classification
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -10,9 +8,9 @@ It is sometimes useful to be able to know whether a template parameter is a buil
 
 Compound types are types constructed from other types. Simple compound types include plain types, pointer types, reference types, and even array types.
 
-The problem with function types is that because of the arbitrary number of parameters, there isn't a finite syntactic construct using template parameters that describes them all:
+The problem with function types is that, because of the arbitrary number of parameters, there isn't a finite syntactic construct using template parameters that describes them all:
 
-- provide partial specializations for functions with a template argument list that is shorter than a chosen limimt
+- provide partial specializations for functions with a template argument list that is shorter than a chosen limit
 
   ```c++
   template<typename R>
@@ -30,7 +28,7 @@ The problem with function types is that because of the arbitrary number of param
   enum {Yes = sizeof(test<T>(0) == 1)};s
   ```
 
-Overload resolution is the process that selects among various functions with a same based on the types of their arguments. As shown shortly, we can determine the outcome of a case of overload resolution without actually evaluating a function call. This is useful to test whether a particular implicit conversion exists. The implicit conversion that interests us particularly is the conversion from an enumeration type to an integral type: It allows us to identify enumeration types.
+Overload resolution is the process that selects among various functions with the same name based on the types of their arguments. As shown shortly, we can determine the outcome of a case of overload resolution without actually evaluating a function call. This is useful to test whether a particular implicit conversion exists. The implicit conversion that interests us particularly is the conversion from an enumeration type to an integral type: It allows us to identify enumeration types.
 
 Another approach is to proceed by elimination: if a type is not a fundamental type, not an enumeration type, and not a compound type, it must be a class type. The following straightforward template implements this idea:
 

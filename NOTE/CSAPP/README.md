@@ -1,5 +1,3 @@
-English | [中文版](README_zh.md)
-
 # Computer System
 
 Randal E. Bryant, David R. O'Hallaron . 3ED

@@ -1,5 +1,7 @@
 # 7 Linking
 
+[TOC]
+
 
 
 Linking is the process of collecting and combining various pieces of code and data into a single file that can be `loaded` (copied) into memory and executed.

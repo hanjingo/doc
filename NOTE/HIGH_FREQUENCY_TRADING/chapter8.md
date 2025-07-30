@@ -80,7 +80,7 @@ The dual-class share strategy suffers from two main shortcomings and may not wor
 
 ### Risk Arbitrage
 
-The CAPM is based on the idea that returns on all securities are influenced by the broad market returns. The degree of the co-movement that a particular security may experience with the market is different for each individual security and can vary through time.
+The `capital asset pricing model` (CAPM) is based on the idea that returns on all securities are influenced by the broad market returns. The degree of the co-movement that a particular security may experience with the market is different for each individual security and can vary through time.
 
 The CAPM equation is specified as follows:
 $$
@@ -93,12 +93,12 @@ $$
 
 , The equation can be estimated using ordinary least squares (OLS) regression. The resulting parameter estimates, $\hat{\alpha}$ and $\hat{\beta}$, measure the abnormal return that is intrinsic to the security $(\hat{\alpha})$ and the security's comovement with the market ($\hat{\beta}$).
 
-Once the point estimates for alphas and betas of the two securities are produced, along with standard deviations of those point estimates, the statistical significance of difference in alphas and betas is then determined using the difference in the means test, described here for betas only:
+Once the point estimates for alphas and betas of the two securities are produced, along with standard deviations of those point estimates, the statistical significance of the difference in alphas and betas is then determined using the difference in the means test, described here for betas only:
 $$
 \Delta \hat{\beta} = \hat{\beta_{i}} - \hat{\beta_{j}} \\
 \hat{\sigma_{\Delta \beta}} = \sqrt{\frac{\sigma_{\beta_{i}}^{2}}{n_{i}} + \frac{\sigma_{\beta_{j}}^{2}}{n_{j}}}
 $$
-, where $n_{i}$ and $n_{j}$ are the numbers of observations used in the estimation of above equation for security $i$ and security $j$, respectively.
+, where $n_{i}$ and $n_{j}$ are the numbers of observations used in the estimation of the above equation for security $i$ and security $j$, respectively.
 
 The standard $t$-ratio statistic is then determined as follows:
 $$

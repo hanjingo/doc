@@ -1,8 +1,6 @@
 # 第一章 关于本章
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

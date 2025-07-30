@@ -1,5 +1,7 @@
 # Chapter2 Introduction to the Relational Model
 
+[TOC]
+
 
 
 A relational database consists of a collection of `tables`, each of which is assigned a unique name.

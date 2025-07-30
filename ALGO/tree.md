@@ -40,7 +40,7 @@ In a `preorder traversal`, work at a node is performed before (pre) its children
 
 In a `postorder traversal`, the work at a node is performed after (post) its children are evaluated.
 
-In a `inorder traversal`, the general strategy is to process the left subtree first, then perform processing at the current node, and finally process the right subtree.
+In an `inorder traversal`, the general strategy is to process the left subtree first, then perform processing at the current node, and finally process the right subtree.
 
 In a `level-order traversal`, all nodes at depth $d$ are processed before any node at depth $d + 1$.
 

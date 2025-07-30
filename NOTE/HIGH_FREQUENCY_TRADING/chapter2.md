@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ![architecture_of_a_sample_multicore_cpu](res/architecture_of_a_sample_multicore_cpu.png)
 
 ![architecture_of_a_sample_gpu](res/architecture_of_a_sample_gpu.png)
@@ -10,11 +12,11 @@
 
 Performance-wise, FPGAs tend to be superior to GPUs and CPUs, particularly when used to simultaneously process a limited number of time series.
 
-Transmission speed of communication messages depends on several factors:
+The transmission speed of communication messages depends on several factors:
 
 - Size of message.
 - Connection bandwidth.
-- TCP/IP and UDP "window" sizes, specifying how many bytes market participants are willing to send and receive at per message "slice".
+- TCP/IP and UDP "window" sizes, specifying how many bytes market participants are willing to send and receive at a message "slice".
 
 ![core_message_architecture_in_trading](res/core_message_architecture_in_trading.png)
 

@@ -1,5 +1,7 @@
 # Chapter 10. Instantiation
 
+[TOC]
+
 
 
 When a C++ compiler encounters the use of a template specialization, it will create that specialization by substituting the required arguments for the template parameters.
@@ -26,7 +28,7 @@ int main()
 
 The POI is a point in the source where the substituted template could be inserted.
 
-For nonclass POIs an alternative exists: The nonclass template can be declared using `export` and defined in another translation unit.
+For nonclass POIs, an alternative exists: The nonclass template can be declared using `export` and defined in another translation unit.
 
 Looking Across Translation Units Examples:
 
@@ -46,20 +48,20 @@ void g1(int) {
 }
 ```
 
-All these implementations rely on two classic components: a compiler and a linker. The compiler translates source code to object files, which contain machine code with symbolic annotations (cross-referencing other object files and libraries). The linker creates executable program or libraries by combining the object files and resolving the symbolic cross-references they contain.
+All these implementations rely on two classic components: a compiler and a linker. The compiler translates source code to object files, which contain machine code with symbolic annotations (cross-referencing other object files and libraries). The linker creates executable programs or libraries by combining the object files and resolving the symbolic cross-references they contain.
 
 Greedy instantiation assumes that the linker is aware that certain entities -- linkable template instantiations in particular -- may in fact appear in duplicate across the various object files and libraries. The compiler will typically mark these entities in a special way. When the linker finds multiple instances, it keeps one and discards all the others. There is not much more to it than that.
 
 In theory, greedy instantiation has some serious drawbacks:
 
 - The compiler may be wasting time on generating and optimizing N instantiations, of which only one will be kept.
-- Linkers typically do not check that two instantiations are identical because some insignificant differences in generated code can validly occur for multiple instances of one template specialization. These small differences should not cause the linker to fail. (These differences could result from tiny differences in the state of the compiler at the instantiation time.) However, this often also results in the linker not noticing more substantial differences, such as when one instantiation was compiled for maximum performance whereas the other was compiled for most convenient debugging.
+- Linkers typically do not check that two instantiations are identical because some insignificant differences in generated code can validly occur for multiple instances of one template specialization. These small differences should not cause the linker to fail. (These differences could result from tiny differences in the state of the compiler at the instantiation time.) However, this often also results in the linker not noticing more substantial differences, such as when one instantiation was compiled for maximum performance, whereas the other was compiled for the most convenient debugging.
 - The sum of all the object files could potentially be much larger than with alternatives because the same code may be duplicated many times.
 
 Queried Instantiation:
 
-1. No specialization is avaliable: In this case, instantiation occurs, and the resulting specialization is entered in th edatabase.
-2. A specialization is available but is out of date because source changes have occurred since it was generated. Here, too, instantiation occurs, but the resulting specialization replaces the one previously stored in the database.
+1. No specialization is available: In this case, instantiation occurs, and the resulting specialization is entered in the database.
+2. A specialization is available, but it is out of date because source changes have occurred since it was generated. Here, too, instantiation occurs, but the resulting specialization replaces the one previously stored in the database.
 3. An up-to-date specialization is available in the database. Nothing needs to be done.
 
 Although conceptually simple, this design presents a few implementation challenges:

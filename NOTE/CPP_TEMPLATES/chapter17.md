@@ -1,13 +1,13 @@
 # CHAPTER17. metaprogram
 
-<!-- vim-markdown-toc GFM -->
+[TOC]
 
-<!-- vim-markdown-toc -->
+
 
 
 the program did show that the template instantiation mechanism is a primitive recursive language that can perform nontrivial computations at compile time.
 
-a template metaprogram can dontain:
+A template metaprogram can contain:
 
 - State variables: the template parameters
 - Loop constructs: through recursion

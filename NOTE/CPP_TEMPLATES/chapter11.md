@@ -1,13 +1,15 @@
 # Chapter 11. Template Argument Deduction
 
+[TOC]
+
 
 
 We still need to explore how argument-parameter matching proceeds. We describe it in terms of matching a type A (derived from the argument type) to a parameterized type P (derived from the parameter declaration). If the parameter is declared with a reference declarator, P is taken to be the type referenced, and A is the type of the argument. Otherwise, however, P is the declared parameter type, and A is obtained from the type of the argument by `decaying` array and function types to pointer types, ignoring top-level `const` and `volatile` qualifiers.
 
-However, a few constructs are not deduced contexts:
+However, a few constructs are not deduced from contexts:
 
 - Qualified type names. A type name like `Q<T>::X` will never be used to deduce a template parameter `T`.
-- Nontype expressions that are not just a nontype parameter. A type name like `S<I+1>` will never be used to deduce `I`.
+- Non-type expressions that are not just a nontype parameter. A type name like `S<I+1>` will never be used to deduce `I`.
 
 There are two situations in which the pair `(A, P)` used for deduction is not obtained from the arguments to a function call and the parameters of a function template:
 
@@ -33,7 +35,7 @@ There are two situations in which the pair `(A, P)` used for deduction is not ob
   }
   ```
 
-Normally, template deduction attempts to find a substitution of the function template parameters that make the parameterized type `P` identical to type `A`. However, when this is not possible, the following differences are tolerable:
+Normally, template deduction attempts to find a substitution of the function template parameters that makes the parameterized type `P` identical to type `A`. However, when this is not possible, the following differences are tolerable:
 
 - If the original parameter was declared with a reference declarator, the substituted `P` type may be more `const/volatile` qualified than the `A` type.
 - If the `A` type is a pointer or pointer-to-member type, it may be convertible to the substituted `P` type by a qualification conversion (int other words, a conversion that adds `const` and/or `volatile` qualifiers).

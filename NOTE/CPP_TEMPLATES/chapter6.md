@@ -1,8 +1,6 @@
 # Chapter6 Using Template in Practice
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

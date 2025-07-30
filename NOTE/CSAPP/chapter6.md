@@ -1,5 +1,7 @@
 # 6 The Memory Hierarchy
 
+[TOC]
+
 
 
 In practice, a `memory system` is a hierarchy of storage device with different capacities, costs, and access times. CPU registers hold the most frequently used data. Small, fast `cache memories` nearby the CPU act as staging areas for a subset of the data and instructions stored in the relatively slow main memory. The main memory stages data stored on largeg, slow disks, which in turn often serve as staging areas for data stored on the disks or tapes of other machines connected by networks.

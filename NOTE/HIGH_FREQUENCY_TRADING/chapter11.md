@@ -8,7 +8,7 @@
 
 ### Autocorrelation of Order Flow as a Predictor of Market Movement
 
-Order flow is the difference in trade volume between trades initiated with market buy orders and trades triggered by market sell orders, all noted within a predetermined period of time. Trades begin with a market buy order are known as `buyer initiated`. Similarly, trading volume caused by market sell orders is referred to as `seller initiated`. This equation illustrates the definition of order flow:
+Order flow is the difference in trade volume between trades initiated with market buy orders and trades triggered by market sell orders, all noted within a predetermined period of time. Trades begin with a market buy order are known as buyer-initiated. Similarly, trading volume caused by market sell orders is referred to as seller-initiated. This equation illustrates the definition of order flow:
 $$
 x_{t} = v_{t}^{a} - v_{t}^{b}
 $$
@@ -16,7 +16,7 @@ $$
 
 According to Lyons (2001), order flow is informative for three reasons:
 
-1. Order flow cna be thought of as market participants exposing their equity to their own forecasts.
+1. Order flow can be thought of as market participants exposing their equity to their own forecasts.
 2. Order flow data is decentralized with limited distribution.
 3. Order flow shows large and nontrivial positions that will temporarily move the market regardless of whether the originator of the trades possesses any superior information, due to market impact.
 

@@ -1,8 +1,6 @@
 # Chapter8 Fundamentals in Depth
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -51,7 +49,7 @@ There are three kinds of template parameters:
 2. Nontype parameters
 3. Template template parameters
 
-Type parameters are introduced with either the keyword `typename` or the keyword `class`: The two are entirely equivalent. The keyword must be followed by a simple identifier and that identifier must be followed by a comma to denote the start of the next parameter declaration, a closing angle bracket (>) to denote the end of the parameterization clause, or an equal sign (=) to denote the beginning of a default template argument.
+Type parameters are introduced with either the keyword `typename` or the keyword `class`: The two are entirely equivalent. The keyword must be followed by a simple identifier, and that identifier must be followed by a comma to denote the start of the next parameter declaration, a closing angle bracket (>) to denote the end of the parameterization clause, or an equal sign (=) to denote the beginning of a default template argument.
 
 Nontype template parameters stand for constant values that can be determined at compile or link time. The type of such a parameter(in other words, the type of the value for which it stands) must be one of the following:
 
@@ -78,7 +76,7 @@ Template arguments are the "values" that are substituted for template parameters
 - Explicit template arguments: A template name can be followed bny explicit template argument values enclosed in angle brackets. The resulting name is called a template-id.
 - Injected class name: Within the scope of a class template `X` with template parameters `P1`, `P2`, ..., the name of that template(`X`) can be equivalent to the template-id `X<P1, P2, ...>`. 
 - Default template arguments: Explicit template arguments can be omitted from class template instances if default template arguments are available. However, even if all template parameters have a default value, the (possibly empty) angle brackets must be provided.
-- Argument deduction: Function template arguments that are not explicitly specified may be deduced from the tyes of the function call arguments in a call.
+- Argument deduction: Function template arguments that are not explicitly specified may be deduced from the types of the function call arguments in a call.
 
 Template arguments for a function template can be specified explicitly or deduced from the way the template is used.
 
@@ -111,9 +109,9 @@ Nontype template arguments are the values substituted for nontype parameters. Su
 
 - Another nontype template parameter that has the right type
 - A compile-time constant value of integer(or enumeration) type. This is acceptable only if the corresponding parameter has a type that matches that of the value, or a type to which the value can be implicitly converted(for example, a `char` can be provided for an `int` parameter).
-- The name of an external variable or function precede3d by the built-in unary `&` ("address of") operator. For functions and array variables, `&` can be left out. Such template arguments match nontype parameters of a pointer type.
-- The previoous kind of argument but without a leading `&` operator is a valid argument for a nontype parameter of reference type.
-- A pointer-to-member constant; in other words, an expression of the form `&C::m` where `C` is a class type and `m` is a nonstatic member (data or function). This matches nontype parameters of pointer-to-member type only.
+- The name of an external variable or function preceded by the built-in unary `&` ("address of") operator. For functions and array variables, `&` can be left out. Such template arguments match nontype parameters of a pointer type.
+- The previous kind of argument, but without a leading `&` operator, is a valid argument for a non-type parameter of reference type.
+- A pointer-to-member constant; in other words, an expression of the form `&C::m` where `C` is a class type and `m` is a nonstatic member (data or function). This matches nontype parameters of a pointer-to-member type only.
 
 there are some constant values that are, perhaps surprisingly, not currently valid:
 
@@ -126,12 +124,12 @@ Two sets of template arguments are equivalent when values of the arguments are i
 This has two important consequences for class members:
 
 1. A function generated from a member function template never overrides a virtual function.
-2. A constructor generated from a constructor template is never a default copy constructor.(Similarly, an assignment generated from an assignment template is never a copy-assignment operator. However, this is less prone to problems because unlike copy constructors, assignment operators are never called implicitly.)
+2. A constructor generated from a constructor template is never a default copy constructor.(Similarly, an assignment generated from an assignment template is never a copy-assignment operator. However, this is less prone to problems because, unlike copy constructors, assignment operators are never called implicitly.)
 
 Friends:
 
 1. A friend declaration may be the only declaration of an entity.
-2. A friend function declaration can be definition.
+2. A friend function declaration can be a definition.
 
 If the name is not followed by angle brackets, there are two possibilities:
 

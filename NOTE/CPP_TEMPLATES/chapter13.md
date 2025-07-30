@@ -1,5 +1,7 @@
 # Chapter 13. Future Directions
 
+[TOC]
+
 
 
 The second typedef declaration is an error because the two closing angle brackets with no intervening blank space constitute a "right shift" (`>>`) operator, which makes no sense at that location in the source.

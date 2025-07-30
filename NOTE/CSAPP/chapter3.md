@@ -1,5 +1,7 @@
 # 3 Machine-Level Representation of Programs
 
+[TOC]
+
 
 
 `instruction set architecture`(ISA), defining the processor state, the format of the instructions, and the effect each of these instructions will have on the state.

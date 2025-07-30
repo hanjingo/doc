@@ -19,7 +19,7 @@ In the development of a successful HFT system, human time is functionally split 
 - Run-time monitoring: 5 percent.
 - Compliance and other administrivia: 10 percent.
 
-![the_economic_of_hft_vs_traditional_trading_business](res/the_economic_of_hft_vs_traditional_trading_business.png)
+
 
 ### Financial Markets Suitable for HFT
 
@@ -53,7 +53,7 @@ To be appropriate for trading at high frequencies, two requirements must be met:
 
 ### Leverage of HFT
 
-When the Sharpo ratio increases, the expected return in the numerator and the volatility in the denominator of the ratio increase proportionally by the amount of leverage, $L$:
+When the Sharpe ratio increases, the expected return in the numerator and the volatility in the denominator of the ratio increase proportionally by the amount of leverage, $L$:
 $$
 Sr^{HFT} = \frac{E[R_{annualized}]}{\sigma[R_{annualized}]} = \frac{E[R_{annualized}] \times L}{\sigma[R_{annualized}] \times L}
 $$

@@ -1,15 +1,13 @@
 # Chapter 20. Smart Pointers
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
-In C++, smart pointers are classes that behave somewhat like ordinary pointers(in that they provide the dereferencing operators `->` and `*`) but in addition encapsulate some memory or resource management policy.
+In C++, smart pointers are classes that behave somewhat like ordinary pointers(in that they provide the dereferencing operators `->` and `*`) but in addition, encapsulate some memory or resource management policy.
 
 
-tow different ownership models:
+two different ownership models:
 
 - `exclusive`: Exclusive ownership can be enforced with little overhead, compared with handling raw pointers. Smart pointers that enforce such a policy are useful to deal with exceptions thrown while manipulating dynamically allocated objects.
 - `shared`: Shared ownership can sometimes lead to excessively complicated object lifetime situations. In such cases, it may be advisable to move the burden of the lifetime decisions from the programmer to the program.
@@ -18,15 +16,15 @@ This section introduces two smart pointer types: a holder type to hold an object
 
 (resource acquisition is initialization, RAII)
 
-`reference counting`: For each object that is pointed to, keep a count of the number of pointers to it, and when that count drops to zero, delete the object.
+`Reference counting`: For each object that is pointed to, keep a count of the number of pointers to it, and when that count drops to zero, delete the object.
 
 Built-in pointers are subject to several implicit conversions:
 
 - Conversion to `void*`
-- Conversion to pointer to a base subobject of the object pointed to
+- Conversion to a pointer to a base subobject of the object pointed to
 - Conversion to `bool`(`false` if the pointer is null, `true` otherwise)
 
-Other drawbacks to implicit conversions to built-in pointer types include(assume `cp` is an counting pointer):
+Other drawbacks to implicit conversions to built-in pointer types include(assume `cp` is a counting pointer):
 
 - `delete cp;` and `::delete cp;` become valid
 - All sort of meaningless pointer arithmetic goes undiagnosed (for example, `cp[n], cp2 - cp1`, and so forth)

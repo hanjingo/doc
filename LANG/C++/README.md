@@ -5,3 +5,5 @@
 - [C++ Best Practice](best_practice.md)
 - [C++ Feature](feature.md)
 - [C++ STL](stl.md)
+- [C++ Template](template.md)
+- [C++ Terminology](terminology.md)

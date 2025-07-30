@@ -1,8 +1,6 @@
 # Chapter 3 Class Templates
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

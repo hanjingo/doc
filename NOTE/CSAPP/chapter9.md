@@ -1,5 +1,7 @@
 # 9 Virtual Memory
 
+[TOC]
+
 
 
 With one clean mechanism, virtual memory provides three important capabilities: 

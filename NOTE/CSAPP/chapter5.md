@@ -1,5 +1,7 @@
 # 5 Optimizing Program Performance
 
+[TOC]
+
 
 
 Writing an efficient program requires several types of activities. First, we must select an appropriate set of algorithms and data structures. Second, we must write source code that the compiler can effectively optimize to turn into efficient executable code.

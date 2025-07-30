@@ -1,5 +1,7 @@
 # Chapter 4.Nontype Template Paramters
 
+[TOC]
+
 
 
 default values for the template parameters can be specified:

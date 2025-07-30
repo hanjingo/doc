@@ -51,9 +51,9 @@ $$
 
 ### Corporate News
 
-Corporate activity such as earnings announcements, both quarterly and annual, significantly impacts equity prices of the firms releasing the announcements. Unexpectedly positive earnings typically lift equity prices, and unexpectedly negative earnings often depress corporate stock valuation.
+Corporate activity, such as earnings announcements, both quarterly and annual, significantly impacts equity prices of the firms releasing the announcements. Unexpectedly positive earnings typically lift equity prices, and unexpectedly negative earnings often depress corporate stock valuation.
 
-Theoretically, equities are priced as present values of future cash flows of the company, discounted at the appropriate interest rate determined by the capital asset pricing model (CAPM), the arbitrage pricing theory of Ross(1977), or the investor specific opportunity cost:
+Theoretically, equities are priced as present values of future cash flows of the company, discounted at the appropriate interest rate determined by the capital asset pricing model (CAPM), the arbitrage pricing theory of Ross(1977), or the investor-specific opportunity cost:
 $$
 \text{Equity price} = \sum_{t = 1}^{\infty} \frac{E[Earnings_{t}]}{(1 + R_{t})^{t}}
 $$

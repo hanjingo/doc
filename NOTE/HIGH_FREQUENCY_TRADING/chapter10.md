@@ -2,6 +2,8 @@
 
 [TOC]
 
+Most high-frequency trading (HFT) systems are deployed to provide automated market-making services.
+
 Automated market making provides several advantages to the market-making institution as well as other market participants:
 
 - First, automated market makers stay on script. As a result, automated market makers reduce the incidence of market crashes and negative surprises for market maker's bottom line.
@@ -22,7 +24,7 @@ The smaller the offset of a limit order from the market price in a naive strateg
 
 ### Volatility-Dependent Offset
 
-In high-volatility conditions, limit orders farther away from the market are likely to be hit, generating higher premium for market makers. In low-volatility conditions, however, limit orders may need to be placed closer to the market to be executed. A sample determination of volatility-dependent offset is shown in equation:
+In high-volatility conditions, limit orders farther away from the market are likely to be hit, generating higher premium for market makers. In low-volatility conditions, however, limit orders may need to be placed closer to the market to be executed. A sample determination of volatility-dependent offset is shown in the equation:
 $$
 \text{offset}_{t} = \text{round}(\frac{1}{T} \sum_{\tau = t - 1}^{t - T}(p_{\tau} - p_{\tau - 1})^{2})
 $$
@@ -35,7 +37,7 @@ P(hit, \Delta t) = 1 - P(\text{not hit}, \Delta t) = 1 - exp(- \frac{\lambda}{\m
 $$
 , Parameters $\lambda$ and $\mu$ can be calibrated on recent tick data. Level I data can be used to calibrate parameters for minimal time intervals, $\Delta t = 1$. When the best bid moves up or the size at the best bid increases, a new limit buy order is assumed to have arrived. When the best ask moves up or the size at the best ask decreases, a market buy order is recorded.
 
-Another analytical model for determining the optimal offset of limit orders is due to Foucault, Kadan, and Kandel (2005). This model explicitly suggests whether a trader should place a passive or an aggressive limit order, and how many ticks away from the market price should the trader place his limit order. The model makes the following key assumptions:
+Another analytical model for determining the optimal offset of limit orders is due to Foucault, Kadan, and Kandel (2005). This model explicitly suggests whether a trader should place a passive or an aggressive limit order, and how many ticks away from the market price the trader should place his limit order. The model makes the following key assumptions:
 
 - All other execution parameters have been selected.
 - All traders in the market are free to switch from passive to aggressive execution, and vice versa.
@@ -64,7 +66,9 @@ Key implications from Foucault et al. (2005) model, $j^{R} = ceiling[\frac{\delt
 - Lower trading costs also lead to lower spreads, suggesting that rebates help facilitate cheaper execution, not to make trading more expensive.
 - High execution costs and low market order arrival rates, however, result in wide reservation spreads, and may destroy markets by creating no-trade voids.
 
-### Market Making as a Service
+
+
+## Market Making as a Service
 
 Many measures of liquidity have been developed over the years. Among the most popular metrics are:
 
@@ -76,6 +80,12 @@ Many measures of liquidity have been developed over the years. Among the most po
 - Price change per unit volume.
 - Technical support and resistance levels.
 - Market resilience.
+
+
+
+## Shape of the Order Book
+
+When available, Level 2 data can be used to calculate the exact amount of aggregate supply and demand available on a given venue. Using Level 2 data, supply and demand can be determined as the cumulative sizes of limit orders posted on the sell and buy sides of the limit order book, respectively.
 
 ### Price Sensitivity to Block Transactions
 

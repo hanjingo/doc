@@ -1,20 +1,17 @@
 # Chapter 9 Names in Templates
 
-
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
 | Classification         | Explanation and Notes                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Identifier             | A name that consists solely of an uninterrupted sequences of letters, underscores(`_`) and digits. It cannot start with a digit, and some identifiers are reserverd fro the implementation: You should not introduce them in your programs(as a rule of thumb, avoid leading underscores and double underscores). The concept of "letter" should be taken broadly and includes special universal character names (UCNs) that encode glyphs from nonalphabetical languages. |
-| Operator-function-id   | The keyword `operator` followed by the symbol for an operator -- for example `operator new` and `operator []`. Many operators have alternative representations. For example, `operator &` can equivalently be written as `operator bit and` even when it denotes the unary address of operator. |
-| Conversion-function-id | Used to denote user-defined implicit conversion operator -- for example `operator int &`, which could also be obfuscated as `operator int bit and`. |
+| Identifier             | A name that consists solely of an uninterrupted sequence of letters, underscores(`_`), and digits. It cannot start with a digit, and some identifiers are reserved for the implementation: You should not introduce them in your programs(as a rule of thumb, avoid leading underscores and double underscores). The concept of "letter" should be taken broadly and includes special universal character names (UCNs) that encode glyphs from non-alphabetical languages. |
+| Operator-function-id   | The keyword `operator` followed by the symbol for an operator -- for example, `operator new` and `operator []`. Many operators have alternative representations. For example, `operator &` can equivalently be written as `operator bit and` even when it denotes the unary address of operator. |
+| Conversion-function-id | Used to denote user-defined implicit conversion operator -- for example, `operator int &`, which could also be obfuscated as `operator int bit and`. |
 | Template-id            | The name of a template followed by template arguments enclosed in angle brackets; for example, `List<T, int, 0>`(Strictly speaking, the C++ standard allows only simple identifiers for the template name of a template-id. However, this is probably an oversight and an operator-function-id should be allowed too; e.g. `operator+<X<int>>`.) |
 | Unqualified-id         | The generalization of an identifier. It can be any of the above(identifier, operator-function-id, conversion-function-id or template-id) or a "destructor name"(for example, notations like `~Data` or `~List<T, T, N>`). |
-| Qualified-id           | An unqualified-id that is qualified with the name of a class or namespace, or just with the global scope resolution operator. Note that such a name itself can be qualified. Examples are `::X`, `S::x`, `Array<T>::y`, and `::N::A<T>::z`. |
+| Qualified-id           | An unqualified ID that is qualified with the name of a class or namespace, or just with the global scope resolution operator. Note that such a name itself can be qualified. Examples are `::X`, `S::x`, `Array<T>::y`, and `::N::A<T>::z`. |
 | Qualified name         | This term is not defined in the standard, but we use it to refer to names that undergo so-called `qualified lookup`. Specifically, this is a qualified-id or an unqualified-id that is used after an explicit member access operator (`.` or `->`). Examples are `S::x`, `this->f`, and `p->A::m`. However, just `class_mem` in a context that is implicitly equivalent to `this->class_mem` is not a qualified name: The member access must be explicit. |
 | Unqualified name       | An unqualified-id that is not a qualified name. This is not a standard term but corresponds to names that undergo what the standard call `unqualified lookup`. |
 
@@ -39,18 +36,18 @@ The precise definition of the set of associated namespaces and associated classe
 - For function types, the sets of associated namespaces and classes comprise the namespaces and classes associated with all the parameter types and those associated with the return type.
 - For pointer-to-member-of-class-X types, the sets of associated namespaces and classes include those associated with `X` in addition to those associated with the type of the member. (If it is a pointer-to-member-function type, then the parameter and return types can contribute too.)
 
-The name of a class is "injected" inside the scope of that class itself and is therefore accessible as an unqualified name in that scope.(However, it is not accessible as qualified name because this is the notation used to denote the constructors.
+The name of a class is "injected" inside the scope of that class itself and is therefore accessible as an unqualified name in that scope.(However, it is not accessible as a qualified name because this is the notation used to denote the constructors.
 
 This is a consequence of the so-called `maximum munch` tokenization principle: A C++ implementation must collect as many consecutive characters as possible into a token.
 
-The typename prefix to a name is reuired when the name:
+The typename prefix to a name is required when the name:
 
 1. Appears in template
 2. Is qualified
-3. Is not used as in a l;ist of base class specifications or in a list of member initializers introducing a constructor definition
+3. Is not used as in a list of base class specifications or in a list of member initializers introducing a constructor definition
 4. Is dependent on a template parameter
 
-A problem very similar to the one encountered in the previouse section occurs when a name of a template is dependent. In general, a C++ compiler is required to treat a `<` following the name of the name of a template as the beginning of a template argument list; otherwise, it is a "less than" operator. As is the case with type names, a compiler has to assume that a dependent name does not refer to a template unless the programmer provides extra information using the keyword `template`:
+A problem very similar to the one encountered in the previous section occurs when the name of a template is dependent. In general, a C++ compiler is required to treat a `<` following the name of a template as the beginning of a template argument list; otherwise, it is a "less than" operator. As is the case with type names, a compiler has to assume that a dependent name does not refer to a template unless the programmer provides extra information using the keyword `template`:
 
 ```c++
 template <typename T>

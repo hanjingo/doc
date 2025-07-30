@@ -83,7 +83,7 @@ int main(){
 
 The designers of C++ had various reasons to avoid zero-size classes.
 
-However, even though there are no zero-size types in C++, the C++ standard does specify that when an empty class is used as a base class, no space needs to be allocated for it provided that it does not cause it to be allocated to the smae address as another object or subobject od rhw amw rype.
+However, even though there are no zero-size types in C++, the C++ standard does specify that when an empty class is used as a base class, no space needs to be allocated for it, provided that it does not cause it to be allocated to the same address as another object or subobject of the same type.
 
 empty base class optimization (or EBCO) means in practice:
 
@@ -113,7 +113,7 @@ class EmptyThree : public EmptyToo {
 
 *Figure 16.4. Layout of NonEmpty by a compiler that implements the EBCO*
 
-*Curiously Recurring Template Pattern (CRTP)*: This oddly named pattern refers to ageneral class of techniques that consists of passing a derived class as a template argument to one of its own base classes. In it's simplest form, C++ code for such a pattern looks as follows:
+*Curiously Recurring Template Pattern (CRTP)*: This oddly named pattern refers to a general class of techniques that consists of passing a derived class as a template argument to one of its own base classes. In it's simplest form, C++ code for such a pattern looks as follows:
 
 ```c++
 template <typename Derived>
@@ -154,3 +154,4 @@ C++ allows us to parameterize directly three kinds of entities through templates
 <div style="width: 50%; float:left;">track `/træk/` 追踪，跟踪，轨道，跑道，踪迹，小路</div>
 <div style="width: 50%; float:left;">tedious `/'tiːdiəs/` 单调乏味的，沉闷的</div>
 <div style="width: 50%; float:left;">decrement `/'dekrɪmənt/` 减少，负增长，减量</div>
+

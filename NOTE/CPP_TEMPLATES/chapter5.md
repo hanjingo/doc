@@ -1,5 +1,7 @@
 # Chapter5 Tricky Basics
 
+[TOC]
+
 
 
 The keyword `typename` was introduced during the standardization of C++ to clarify that an identifier inside a template is a type. Consider the following example:

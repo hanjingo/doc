@@ -2,7 +2,7 @@
 
 # Math
 
-- [Terminology](terminology.md)
+- [Math Terminology](terminology.md)
 
 
 

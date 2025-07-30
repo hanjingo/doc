@@ -1,5 +1,7 @@
 # 8 Exceptional Control Flow
 
+[TOC]
+
 
 
 From the time you first apply power to a processor until the time you shut it off, the program counter assumes a sequence of values

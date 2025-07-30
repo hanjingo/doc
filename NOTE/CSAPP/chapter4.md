@@ -1,5 +1,7 @@
 # 4 Processor Architecture
 
+[TOC]
+
 
 
 Each instruction in a Y86-64 program can read and modify some part of the processor state. This is  referred to as the `programmer-visible` state, where the "programmer" in this case is either someone writing programs in assembly code or a compiler generating machine-level code.

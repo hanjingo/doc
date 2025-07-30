@@ -17,7 +17,7 @@ TODO
 
 #### B树
 
-具体见：[平衡树](ALGO/balance_tree.md)
+具体见：[平衡树](../ALGO/balance_tree_zh.md)
 
 #### B+树
 
@@ -26,7 +26,7 @@ TODO
 - MySQL的InnoDB存储引擎；
 - ...
 
-具体见：[平衡树](ALGO/balance_tree.md)
+具体见：[平衡树](../ALGO/balance_tree_zh.md)
 
 #### 求二叉树最远叶子结点的距离
 
@@ -54,9 +54,9 @@ TODO
 
 #### LRU缓存实现
 
-一般用双向链表，具体见：[LRU算法](ALGO/lru.md)
+一般用双向链表，具体见：[LRU算法](../ALGO/lru_zh.md)
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -68,11 +68,11 @@ TODO
 
 #### 进程，线程和协程以及它们的区别
 
-具体见：[进程，线程和协程#区别](OS/progress_thread_coroutine.md)
+具体见：[进程，线程和协程#区别](../OS/progress_thread_coroutine_zh.md)
 
 #### 可执行程序的结构
 
-具体见：[可执行程序](OS/exe.md)
+具体见：[可执行程序](../OS/exe_zh.md)
 
 #### 不同线程之间是否可以共享套接字
 
@@ -81,11 +81,11 @@ TODO
 
 #### 如何提升memcpy的效率
 
-具体见：[POSIX接口#memcpy](OS/posix.md)
+具体见：[POSIX接口#memcpy](../OS/posix_zh.md)
 
 #### 进程状态图
 
-具体见：[进程，线程和协程#进程状态转移图](OS/progress_thread_coroutine.md)
+具体见：[进程，线程和协程#进程状态转移图](../OS/progress_thread_coroutine_zh.md)
 
 #### 多线程不安全的根本原因
 
@@ -115,13 +115,13 @@ TODO
 
 #### 描述Raft协议和Paxos协议，以及它们的区别
 
-具体见：[Raft协议](DCS/CONSENSUS/raft.md)， [Paxos协议](DCS/CONSENSUS/paxos.md)
+具体见：[Raft协议](../DCS/CONSENSUS/raft_zh.md)， [Paxos协议](../DCS/CONSENSUS/paxos_zh.md)
 
 #### 如何实现分布式锁
 
-具体见：[利用redis实现分布式锁](DB/REDIS/dcs_lock.md)
+具体见：[利用redis实现分布式锁](../DB/REDIS/dcs_lock_zh.md)
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -143,7 +143,7 @@ TODO
 
 第三次握手的时候可以
 
-具体见：[TCP](NET/tcp.md)
+具体见：[TCP](../NET/tcp_zh.md)
 
 #### 半连接队列
 
@@ -165,7 +165,7 @@ TODO
 
 #### TCP状态转移图
 
-具体见：[TCP#状态转移](NET/tcp.md)
+具体见：[TCP#状态转移](../NET/tcp_zh.md)
 
 #### 为什么不建议使用TCP自带的keepalive选项来做心跳
 
@@ -175,11 +175,11 @@ TODO
 
 #### Epoll的原理以及用法
 
-红黑树+链表；具体见：[网络I/O#Epoll](NET/io.md)
+红黑树+链表；具体见：[网络I/O#Epoll](../NET/io_zh.md)
 
 #### DNS原理
 
-具体见：[DNS协议](NET/dns.md)
+具体见：[DNS协议](../NET/dns_zh.md)
 
 #### RESTFUL API，以及PUT和GET的区别
 
@@ -189,7 +189,7 @@ TODO
 
 TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -201,11 +201,11 @@ TODO
 
 #### 游戏服务器的架构
 
-具体见：[游戏服务器开发#总体架构](PROJ/GAME/game_server_develop.md)
+具体见：[游戏服务器开发#总体架构](../PROJ/GAME/game_server_develop_zh.md)
 
 #### 热更新的用途
 
-具体见：[游戏服务器开发#热更新](PROJ/GAME/game_server_develop.md)
+具体见：[游戏服务器开发#热更新](../PROJ/GAME/game_server_develop_zh.md)
 
 ### 消息协议
 
@@ -215,7 +215,7 @@ TODO
 
 #### Protobuf的底层实现
 
-varint+zigzag，具体见：[Protobuf编码](NET/protobuf.md)
+varint+zigzag，具体见：[Protobuf编码](../NET/protobuf_zh.md)
 
 #### 使用UDP的理由
 
@@ -229,7 +229,7 @@ TODO
 
 #### 如何解决缓存与数据库的数据一致性问题
 
-具体见：[数据库设计](DB/design.md)
+具体见：[数据库设计](../DB/design_zh.md)
 
 #### 如何避免缓存穿透，缓存击穿和缓存雪崩
 
@@ -237,7 +237,7 @@ TODO
 - 缓存击穿：缓存中一个热点key失效，同时大量请求过来，压垮数据库
 - 缓存雪崩：缓存中的大量key同时失效，同时大量请求过来，压垮数据库
 
-具体见：[数据库设计#通用缓存系统](DB/design.md)
+具体见：[数据库设计#通用缓存系统](../DB/design_zh.md)
 
 ### 信息安全
 
@@ -257,21 +257,21 @@ TODO
 
 #### linux如何开启系统日志
 
-命令`systemctl restart rsyslog`，具体见：[软件调试方法#linux系统日志](PROJ/debug.md)
+命令`systemctl restart rsyslog`，具体见：[软件调试方法#linux系统日志](../PROJ/debug_zh.md)
 
 #### linux如何开启core文件生成
 
-命令`ulimit -c unlimited`，具体见：[软件调试方法#如何定位Core Dump问题](PROJ/debug.md)
+命令`ulimit -c unlimited`，具体见：[软件调试方法#如何定位Core Dump问题](../PROJ/debug_zh.md)
 
 #### CPU100%的调试方法
 
-具体见：[软件调试方法#如何定位CPU跑满问题](PROJ/debug.md)
+具体见：[软件调试方法#如何定位CPU跑满问题](../PROJ/debug_zh.md)
 
 #### CoreDump的调试方法
 
-用GDB，具体见：[软件调试方法#如何定位CoreDump问题](PROJ/debug.md)
+用GDB，具体见：[软件调试方法#如何定位CoreDump问题](../PROJ/debug_zh.md)
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -334,7 +334,7 @@ TODO
 
 `static_cast`,`dynamic_cast`,`reinterprent_cast`,`const_cast`
 
-具体见：[C++对象#类型转换](LANG/C++/object.md)
+具体见：[C++对象#类型转换](../LANG/C++/object_zh.md)
 
 #### static
 
@@ -367,7 +367,7 @@ TODO
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | - 提高运行速度；<br>- 可调式性比宏定义强；<br>- 会自动做安全检查和自动类型转换； | - 代码膨胀；<br>- 无法随着函数库升级而升级，需要重新编译；<br>- 编译器行为不可控； |
 
-具体见：[C++对象#内联函数](LANG/C++/object.md)
+具体见：[C++对象#内联函数](../LANG/C++/object_zh.md)
 
 ### 面向对象
 
@@ -381,7 +381,7 @@ TODO
 
 - 防止内存泄漏
 
-具体见：[C++特性#虚析构函数](LANG/C++/feature.md)
+具体见：[C++特性#虚析构函数](../LANG/C++/feature_zh.md)
 
 #### 哪些函数不能是虚函数？
 
@@ -391,7 +391,7 @@ TODO
 - 友元函数：不属于类成员函数，不能被继承；
 - 普通函数：普通函数无法被继承。
 
-具体见：[C++特性#virtual关键字](LANG/C++/feature.md)
+具体见：[C++特性#virtual关键字](../LANG/C++/feature_zh.md)
 
 #### 虚函数和纯虚函数的区别
 
@@ -399,7 +399,7 @@ TODO
 - 虚函数在子类可以不重载，纯虚函数必须在子类中实现；
 - 带纯虚函数的类叫做虚基类（抽象类），不能直接生成对象，只能被继承。
 
-具体见：[C++特性#虚函数#纯虚函数](LANG/C++/feature.md)
+具体见：[C++特性#虚函数#纯虚函数](../LANG/C++/feature_zh.md)
 
 #### 构造函数和析构函数可以调用虚函数吗？
 
@@ -420,26 +420,26 @@ TODO
 
 一个空类的大小通常为1字节，编译器为object配置能够在内存中唯一区分的地址。
 
-具体见：[C++对象#对象空间大小](LANG/C++/object.md)
+具体见：[C++对象#对象空间大小](../LANG/C++/object_zh.md)
 
 #### explicit构造函数的作用
 
 - 防止类构造函数的隐式自动转换。
 
-具体见：[C++特性#explicit关键字](LANG/C++/feature.md)
+具体见：[C++特性#explicit关键字](../LANG/C++/feature_zh.md)
 
 #### 虚析构函数的作用
 
 - 只有当一个类被用来作为基类的时候，才会把析构函数写成虚函数；
 - 防止内存泄漏
 
-具体见：[C++特性#虚析构函数](LANG/C++/feature.md)
+具体见：[C++特性#虚析构函数](../LANG/C++/feature_zh.md)
 
 #### 复制构造函数的作用，与赋值函数的区别是什么
 
 TODO
 
-具体见：[C++对象#复制构造函数](LANG/C++/object.md)
+具体见：[C++对象#复制构造函数](../LANG/C++/object_zh.md)
 
 #### 抽象基类与纯虚函数的作用
 
@@ -500,7 +500,7 @@ TODO
 - malloc返回`void*`，需要强转为对应类型指针；new直接返回对应类型指针
 - free和delete都不需要指定空间大小
 
-具体见：[内存管理函数](OS/mem_mgr.md)
+具体见：[内存管理函数](../OS/mem_mgr_zh.md)
 
 #### 字节对齐的规则
 
@@ -568,7 +568,7 @@ TODO
 
 用virtual封装一层接口；
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -584,19 +584,19 @@ TODO
 
 #### Lua数据类型
 
-具体见：[LUA源码分析-数据类型](LANG/LUA/ansys_data_type.md)
+具体见：[LUA源码分析-数据类型](../LANG/LUA/ansys_data_type_zh.md)
 
 #### 谈谈Lua的元表
 
-具体见：[LUA源码分析-数据类型#Metatable](LANG/LUA/ansys_data_type.md)
+具体见：[LUA源码分析-数据类型#Metatable](../LANG/LUA/ansys_data_type_zh.md)
 
 ### GC
 
 #### 谈谈Lua的GC
 
-具体见：[Lua源码分析-GC](LANG/LUA/ansys_gc.md)
+具体见：[Lua源码分析-GC](../LANG/LUA/ansys_gc_zh.md)
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -608,7 +608,7 @@ TODO
 
 #### 谈谈Skynet的定时器
 
-具体见：[skynet计时器](PROJ/GAME/SKYNET/ansys_timer.md)
+具体见：[skynet计时器](../PROJ/GAME/SKYNET/ansys_timer_zh.md)
 
 #### 谈谈Skynet的actor模型
 
@@ -616,13 +616,13 @@ TODO
 
 #### Skynet的集群方案有哪些
 
-`master/slaver`模式，`cluster`模式；具体见：[skynet集群](PROJ/GAME/SKYNET/cluster.md)
+`master/slaver`模式，`cluster`模式；具体见：[skynet集群](../PROJ/GAME/SKYNET/cluster_zh.md)
 
 #### Skynet有哪些热更新方案
 
-`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](PROJ/GAME/SKYNET/hotpatch.md)
+`clearcache`命令，`inject`命令，`云风制作的热更新工具-skynet-reload`，`snax框架的hotfix`，`利用lua的require机制`；具体见：[skynet热更新](../PROJ/GAME/SKYNET/hotpatch_zh.md)
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -652,11 +652,11 @@ TODO
 
 #### Redis如何实现延时队列
 
-具体见：[利用redis实现延时队列](DB/REDIS/delay_queue.md)
+具体见：[利用redis实现延时队列](../DB/REDIS/delay_queue_zh.md)
 
 #### Redis持久化
 
-具体见：[Redis源码分析-持久化](DB/REDIS/ansys_persistence.md)
+具体见：[Redis源码分析-持久化](../DB/REDIS/ansys_persistence_zh.md)
 
 #### Redis线程模型
 
@@ -694,7 +694,7 @@ TODO
 
 TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -770,7 +770,7 @@ TODO
 
 TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -788,7 +788,7 @@ TODO
 
 TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -802,7 +802,7 @@ TODO
 
 TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -834,7 +834,7 @@ TODO
 - 继承QRunnable并实现run方法，由QThreadPool启动业务类；
 - 调用`QtConcurrent::run()`直接将任务丢进子线程执行。
 
-具体见：[C++多线程#Qt多线程](LANG/C++/multi_thread.md)
+具体见：[C++多线程#Qt多线程](../LANG/C++/multi_thread_zh.md)
 
 #### 如何把一个继承于QObject的类转移到Thread里
 
@@ -842,7 +842,7 @@ TODO
 
 具体见：TODO
 
-[返回顶部](#面试笔记)
+[返回顶部](../#面试笔记)
 
 ---
 
@@ -850,7 +850,7 @@ TODO
 
 ## 参考
 
-- [Github-interviewGuide](https://github.com/NotFound9/interviewGuide)
-- [《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#zeromq)
-- [分布式面试题](https://zhuanlan.zhihu.com/p/433793240?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968&utm_campaign=shareopn)
+- [Github-interviewGuide](../https://github.com/NotFound9/interviewGuide)
+- [《后端架构师技术图谱》](../https://github.com/xingshaocheng/architect-awesome/blob/master/README_zh.md#zeromq)
+- [分布式面试题](../https://zhuanlan.zhihu.com/p/433793240?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968&utm_campaign=shareopn)
 

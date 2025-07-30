@@ -1,13 +1,15 @@
 # Chapter 12. Specialization and Overloading
 
+[TOC]
 
 
-In the previous section we saw that two function templates with the same name can coexist, even though they may be instantiated so that both have identical parameter types.
+
+In the previous section, we saw that two function templates with the same name can coexist, even though they may be instantiated so that both have identical parameter types.
 
 Two functions can coexist in a program if they have distinct signatures. We define the signature of a function as the following information:
 
 1. The unqualified name of the function (or the name of the function template from which it was generated).
-2. The class or namespace scope of that name and, if the name has internal linkageg, the translation unit in which the name is declared.
+2. The class or namespace scope of that name and, if the name has internal linkage, the translation unit in which the name is declared.
 3. The `const`, `volatile`, or `const volatile` qualification of the function(if it is a member function with such a qualifier).
 4. The types of the function parameters (before template parameters are substituted if the function is generated from a function template).
 5. Its return type, if the function is generated from a function template.
@@ -29,10 +31,10 @@ template<typename T>
 char f2(T);
 ```
 
-We then synthesize two artificial lists of argument types (or for conversion function templates, a return tyep) by substituting every template parameter as follows:
+We then synthesize two artificial lists of argument types (or for conversion function templates, a return type) by substituting every template parameter as follows:
 
-1. Replace each template type parameter with a unique "made up" type.
-2. Replace each template template parameter with a unique "made up" class template.
+1. Replace each template type parameter with a unique "made-up" type.
+2. Replace each template parameter with a unique "made-up" class template.
 3. Replace each nontype template parameter with a unique "made up" value of the appropriate type.
 
 Function templates can be overloaded with nontemplate functions. All else being equal, the nontemplate function is preferred in selecting the actual function being called.
@@ -45,9 +47,9 @@ The full specialization declaration can omit explicit template arguments when th
 
 A full function template specialization cannot include default argument values. However, any default arguments that were specified for the template being specialized remain applicable to the explicit specialization.
 
-A full specialization is in many ways similar to a normal declaration (or rather, a normal redeclaration). In particular, it does not declare a template, and therefore only one definition of a noninline full function template specialization should appear in a program. However, we must still ensure that a declaration of the full specialization follows the template to prevent attempts at using the function generated from the template. The declarations for template `g` in the previous example would therefore typically be organized in two files.
+A full specialization is in many ways similar to a normal declaration (or rather, a normal redeclaration). In particular, it does not declare a template, and therefore, only one definition of a non-inline full function template specialization should appear in a program. However, we must still ensure that a declaration of the full specialization follows the template to prevent attempts at using the function generated from the template. The declarations for template `g` in the previous example would therefore typically be organized in two files.
 
-Not only member templates, but also ordinary static data members and member functions of class templates, can be fully specialized. The syntax requires `template<>` prefix for every enclosing class templat. If a member template is being specialized, a `template<>` must also be added to denote it is being specialized.
+Not only member templates, but also ordinary static data members and member functions of class templates, can be fully specialized. The syntax requires `template<>` prefix for every enclosing class template. If a member template is being specialized, a `template<>` must also be added to denote that it is being specialized.
 
 ```c++
 template<>
@@ -81,7 +83,7 @@ template<typename U, int K>
 class S<U, K>;     // 错误；局部特化和基本模板之间没有本质的区别
 ```
 
-`template metaprogramming` Using the template instantiation mechanism to perform nontrivial computations at compile time.
+`template metaprogramming:` Using the template instantiation mechanism to perform nontrivial computations at compile time.
 
 
 

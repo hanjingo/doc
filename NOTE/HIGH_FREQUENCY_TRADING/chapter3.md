@@ -13,7 +13,7 @@ FIFO, known as the continuous auction, has been shown to enhance transparency of
 
 The main advantage of the pro-rata matching from the exchange point of view is the built-in incentives for traders to place large limit orders, and, therefore, to bring liquidity to the exchange.
 
-Orders can be described as passive or aggressive. A limit order far away from the market price (a low-priced limit buy order, or a high-priced limit sell order) is considered passive. The closer the limit order is to the market price, the more aggressive the order is. A market order is the most aggressive order, "crossing the spread" to be matched with the best-priced limit order on the opposite side of the limit order book. Limit orders crossing the spread are treated like market orders in the execution queue, and are also considered aggressive.
+Orders can be described as passive or aggressive. A limit order far away from the market price (a low-priced limit buy order, or a high-priced limit sell order) is considered passive. The closer the limit order is to the market price, the more aggressive the order is. A market order is the most aggressive order, "crossing the spread" to be matched with the best-priced limit order on the opposite side of the limit order book. Limit orders crossing the spread are treated like market orders in the execution queue and are also considered aggressive.
 
 In today's markets, price uncertainty can be the costliest component associated with the market order execution. From the time the market order is placed to the time the execution is recorded, the market price may "slip", resulting in worse execution than the prevailing price at the time the market order was placed. The slippage may be due to several factors:
 
@@ -21,7 +21,7 @@ In today's markets, price uncertainty can be the costliest component associated 
 - A market order that is large relative to the available depth of the order book may sweep through the book, executing fractional pieces of the order against limit orders at different price levels.
 - Additional market conditions, such as market disruptions, may also result in significant slippage.
 
-Under the NBBO rule, every limit order, whether placed by a large institution or an individual investor, has to be displayed to all market participants.
+The NBBO execution rule was put forth by the Securities and Exchange Commission (SEC) in 2005 under the regulation NMS, with the explicit purpose of leveling the playing field: under the NBBO rule, every limit order, whether placed by a large institution or an individual investor, has to be displayed to all market participants.
 
 NBBO limit orders can be achieved using two distinct approaches:
 

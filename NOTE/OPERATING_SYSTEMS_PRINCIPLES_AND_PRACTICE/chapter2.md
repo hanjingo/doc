@@ -1,5 +1,7 @@
 # Chapter 2 The Kernel Abstraction
 
+[TOC]
+
 
 
 Protection is essential to achieving several of the goals we listed for operating systems:

@@ -1,5 +1,7 @@
 # Chapter2 Function Templates
 
+[TOC]
+
 
 
 Function templates provide a functional behavior that can be called for different types.
@@ -14,7 +16,7 @@ inline T const& max(T const& a, T const& b)
 }
 ```
 
-Thus Follow example, templates are compiled twice:
+Thus, follow the example, templates are compiled twice:
 
 ```c++
 std::complex<float> c1, c2; // doesn't provide operator <
@@ -50,7 +52,7 @@ specify the template argument list explicitly:
    max<int, double, double>(4, 4, 2);
    ```
 
-2. instantiate a template explicitly for certain types:
+2. Instantiate a template explicitly for certain types:
 
    ```c++
    template<typename RT, typename T1, typename T2>

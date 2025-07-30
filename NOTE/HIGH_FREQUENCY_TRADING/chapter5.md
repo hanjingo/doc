@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 Costs known prior to trading activity are referred to as `transparent` or `explicit`, and costs that have to be estimated are known as `latent` or `implicit`.
 
 Transparent execution costs are generally known ahead of trading; they comprise:
@@ -33,19 +35,19 @@ At the tick level of data, transparent costs are being increasingly dominated by
 
 - Price Appreciation and Timing Risk Costs
 
-  The price appreciation cost refers to the forecasted loss of investment value during the execution of a large position. The timing cost refers to random, unforecasted price movement ahead of execution of a child order.
+  The price appreciation cost refers to the forecasted loss of investment value during the execution of a large position. The timing cost refers to random, unforecasted price movement ahead of the execution of a child order.
 
 - Opportunity Costs
 
-  The opportunity cost is the cost associated with inability to complete an order.
+  The opportunity cost is the cost associated with the inability to complete an order.
 
 - Market Impact Costs
 
   Market impact cost measures the adverse change in the market price following an order.
 
-`market impact`(MI) can be attributed to several factors including:
+The phenomenon of real-life price changes following news and orders is known as `market impact`(MI). MI can be attributed to several factors, including:
 
-- In the trading world with heterogeneous traders possessing different beliefs and information, MI is the negotiation or tatonnement process via which traders' information and beliefs are impounded into the security prices.
+- In the trading world with heterogeneous traders possessing different beliefs and information, MI is the negotiation or tatonnement process via which traders' information and beliefs are incorporated into the security prices.
 - Both market and limit orders represent traders' commitments of money and reputation, and therefore form credible signals to other market participants who may choose to trade in the same direction.
 - Every market buy (sell) order temporarily depletes liquidity supply on the ask (bid) side of the order book, driving the next market buy (sell) order to the matched against a higher (lower) best available limit order price.
 
@@ -57,7 +59,7 @@ At the tick level of data, transparent costs are being increasingly dominated by
 
 ![functional_form_of_market_impact](res/functional_form_of_market_impact.png)
 
-For market orders, the MI appears strongly concave in the order size, and the signs of market orders are autocorrelated in time: market buy orders tend to follow other market buy orders, and vice versa. A model unifying the preceding facts expresses the MI function as follow (Eisler, Bouchaud, and Kockelkoren, 2009):
+For market orders, the MI appears strongly concave in the order size, and the signs of market orders are autocorrelated in time: market buy orders tend to follow other market buy orders, and vice versa. A model unifying the preceding facts expresses the MI function as follows (Eisler, Bouchaud, and Kockelkoren, 2009):
 $$
 P_t = \sum_{t^{*} < t}[G(t, t^{*}) \in t^{*} (v_{t^{*}})^{\theta} + n_{t^{*}}] + p_{\infty}
 $$
@@ -71,7 +73,7 @@ The MI of an individual order recorded at time $t^{*}$ is then:
 $$
 MI_{t^{*}} = G(t, t^{*})\in_{t^{*}} (v_{t^{*}})^{\theta} + n_{t^{*}}
 $$
-The MI propagator function $G(t, t^{*})$ has to decay with time, and in a specific way, to satisfy the high autocorrelation of direction of subsequent trades. If $G$ did not decay, price returns would be proportional to the signs of the trades and returns would be highly autocorrelated in time. According to Eisler, Bouchaud and Kockelkoren (2009), $G$ decays as follows:
+The MI propagator function $G(t, t^{*})$ has to decay with time, and in a specific way, to satisfy the high autocorrelation of the direction of subsequent trades. If $G$ did not decay, price returns would be proportional to the signs of the trades and returns would be highly autocorrelated in time. According to Eisler, Bouchaud and Kockelkoren (2009), $G$ decays as follows:
 $$
 G(t, t^{*}) \sim |t - t^{*}|^{- \beta}
 $$

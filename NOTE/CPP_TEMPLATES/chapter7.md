@@ -1,15 +1,13 @@
 # Chapter 7. Basic Template Terminology
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
 There is some confusion about how a class that is a template is called:
 
 - The term class template states that the class is a template. That is, it is a parameterized description of a family of classes.
-- The term template class on the other hand has been used
+- The term template class on the other hand, has been used
     + as a synonym for class template.
     + to refer to classes generated from templates.
     + to refer to classes with a name that is a template-id.

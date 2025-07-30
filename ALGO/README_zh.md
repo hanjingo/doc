@@ -11,7 +11,7 @@
 - [行为树](behavior_tree_zh.md)
 - [二叉树](binary_tree_zh.md)
 - [布隆过滤器]
-- [crc校验算法]
+- [crc校验算法](crc_zh.md)
 - [延时队列]
 - [散列算法](hash_zh.md)
 - [堆](heap_zh.md)

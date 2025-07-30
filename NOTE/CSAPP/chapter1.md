@@ -1,5 +1,7 @@
 # 1 A Tour of Computer System
 
+[TOC]
+
 
 
 All information in a system including disk files, programs stored in memory, user data stored in memory, and data transferred across a network is represented as a bunch of bits. The only thing that distinguishes different data objects is the context in which we view them.

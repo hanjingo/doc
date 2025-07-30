@@ -1,6 +1,6 @@
 # 2 Representing and Manipulating Information
 
-
+[TOC]
 
 The three most important representations of numbers:
 

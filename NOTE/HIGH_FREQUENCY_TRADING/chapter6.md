@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## Principles of Performance Measurement
 
 At the heart of a successful investment management to HFT lie three P's:
@@ -30,7 +32,7 @@ Return can be expressed as a dollar difference in prices but is most often consi
 $$
 R_{t1} = \frac{P_{t1}}{P_{t0}} - 1
 $$
-, An equivalent log return metric is shown in equation:
+, An equivalent log return metric is shown in the equation:
 $$
 r_{t1} = ln(P_{t1}) - ln(P_{t0})
 $$
@@ -92,7 +94,7 @@ Win ratio explains what portion of the trades, trading days or trading months en
 $$
 \text{WinRatio} = \frac{\text{\#Trading Periods}|_{Gain > 0}}{\text{Total\#Trading Periods}}
 $$
-, Win ratios help compare accuracy of predictive signals of strategies: better forecasts result in higher win ratios.
+, Win ratios help compare the accuracy of predictive signals of strategies: better forecasts result in higher win ratios.
 
 ### Average Gain/Loss
 

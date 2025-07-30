@@ -47,6 +47,7 @@
 
 - [Finance Model](ECONOMIC/finance.md)
 - [High Frequency Trading](ECONOMIC/hft.md)
+- [Economic Terminology](ECONOMIC/terminology.md)
 - [Ten Principles](ECONOMIC/10principles.md)
 
 ---
@@ -55,9 +56,11 @@
 
 ### [C++](LANG/C++/README.md)
 
+- [C++ Terminology](LANG/C++/terminology.md)
 - [C++ Best Practice](LANG/C++/best_practice.md)
 - [C++ Feature](LANG/C++/feature.md)
 - [C++ STL](LANG/C++/stl.md)
+- [C++ Template](LANG/C++/template.md)
 
 ### [Lua](LANG/LUA/README.md)
 
@@ -70,6 +73,31 @@
 ---
 
 ## [Math](MATH/README.md)
+
+- [Math Terminology](MATH/terminology.md)
+
+### Number Theory
+
+- [Arithmetic](MATH/NUMBER_THEORY/arithmetic.md)
+
+### Probability Theory
+
+- [Bayes' Theorem](MATH/PROBABILITY_THEORY/bayes_theorem.md)
+- [Expected Value and Variance](MATH/PROBABILITY_THEORY/expected_value_and_variance.md)
+- [Probability Theory](MATH/PROBABILITY_THEORY/probability_theory.md)
+
+## Discrete Mathematics
+
+- [Algorithm](MATH/DISCRETE_MATHEMATICS/algorithm.md)
+- [Functions](MATH/DISCRETE_MATHEMATICS/functions.md)
+- [Induction](MATH/DISCRETE_MATHEMATICS/induction.md)
+- [Linear Recurrence](MATH/DISCRETE_MATHEMATICS/linear_recurrence.md)
+- [Logic And Proofs](MATH/DISCRETE_MATHEMATICS/logic_and_proofs.md)
+- [Matrix](MATH/DISCRETE_MATHEMATICS/matrix.md)
+- [Sequences And Summations](MATH/DISCRETE_MATHEMATICS/sequence.md)
+- [Sets](MATH/DISCRETE_MATHEMATICS/sets.md)
+- [Generalized Permutations and Combinations](MATH/DISCRETE_MATHEMATICS/generalized_permutations_and_combinations.md)
+- [Tree](MATH/DISCRETE_MATHEMATICS/tree.md)
 
 ---
 

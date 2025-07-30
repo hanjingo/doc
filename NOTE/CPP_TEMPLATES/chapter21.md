@@ -1,8 +1,6 @@
 # Chapter 21. Tuples
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

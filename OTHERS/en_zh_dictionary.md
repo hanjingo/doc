@@ -1801,6 +1801,8 @@ automate `/'ɔːtəmeɪt/` vt. 使自动化，使自动操作；vi. 自动化，
 
 > SYN: computerize, program.
 >
+> DRV: automata `/ɔː'tɒmətə/` n. 自动机；自动装置；机器人
+>
 > DRV: automation ` /ˌɔːtəˈmeɪʃn/` n. 自动化
 >
 > DRV: automatic `/ˌɔːtə'mætɪk/` adj. 自动的；无意识的；必然的；n. 自动装置；半自动武器

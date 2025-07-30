@@ -13,7 +13,7 @@ High-frequency trading is a form of automated trading that employs:
 - High-speed connections to markets for order entry; and
 - High message rates (orders, quotes or cancellations).
 
-The definition of HFT based on holding period of capital throughput. (High-frequency trading comprises):
+The definition of HFT is based on the holding period of capital throughput. (High-frequency trading comprises):
 
 - Systematic.
 - Quant-based models.
