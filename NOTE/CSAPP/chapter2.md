@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 The three most important representations of numbers:
 
 - `Unsigned` encodings are based on traditional binary notation, representing numbers greater than or equal to 0.

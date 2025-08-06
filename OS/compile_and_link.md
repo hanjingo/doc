@@ -4,6 +4,14 @@
 
 
 
+## Overview Of The Compilation System
+
+![the_compilation_system](res/the_compilation_system.png)
+
+*The compilation system*
+
+
+
 ## Lexical Analysis
 
 The main task of the lexical analyzer is to read the input characters of the source program, group them into lexemes, and produce as output a sequence of tokens for each lexeme in the source program.

@@ -4,7 +4,7 @@
 
 
 
-`instruction set architecture`(ISA), defining the processor state, the format of the instructions, and the effect each of these instructions will have on the state.
+`Instruction set architecture`(ISA), defining the processor state, the format of the instructions, and the effect each of these instructions will have on the state.
 
 The machine code for x86-64 differs greatly from the original C code. Parts of the processor state are visible that normally are hidden from the C programmer:
 

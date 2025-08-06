@@ -2443,6 +2443,8 @@ bigwig `/'bɪɡwɪɡ/` n. 大人物；要人；显要人物; 权贵
 
 bijective `/bɪ'dʒektɪv/` adj. 双射的
 
+> DRV: bijection `/baɪ'dʒekʃən/` n. 双射
+
 bilateral `/ˌbaɪˈlætərəl/` adj. 双边的, 双方的
 
 bilingual `/ˌbaɪ'lɪŋɡwəl/` adj. 双语的

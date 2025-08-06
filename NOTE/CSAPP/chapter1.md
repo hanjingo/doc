@@ -4,7 +4,7 @@
 
 
 
-All information in a system including disk files, programs stored in memory, user data stored in memory, and data transferred across a network is represented as a bunch of bits. The only thing that distinguishes different data objects is the context in which we view them.
+All information in a system, including disk files, programs stored in memory, user data stored in memory, and data transferred across a network, is represented as a bunch of bits. The only thing that distinguishes different data objects is the context in which we view them.
 
 ![1_3](res/1_3.png)
 
@@ -26,7 +26,7 @@ there are some important reasons why programmers need to understand how compilat
 - `Buses`. Running throughout the system is a collection of electrical conduits called `buses` that carry bytes of information back and forth between the components. Buses are typically designed to transfer fixed-size chunks of bytes known as `words`. The number of bytes in a word (the `word size`) is a fundamental system parameter that varies across systems. Most machines today have word sizes of either 4 bytes (32 bits) or 8 bytes (64 bits).
 - `I/O Devices`. Input/output (I/O) devices are the system's connection to the external world. Each I/O device is connected to the I/O bus by either a `controller` or an `adapter`. The distinction between the two is mainly one of packaging. Controllers are chipsets in the device itself or on the system's main printed circuit board (often called the `motherboard`). An adapter is a card that plugs into a slot on the motherboard. Regardless, the purpose of each is to transfer information back and forth between the I/O bus and an I/O device.
 - `Main Memory` The `main memory` is a temporary storage device that holds both a program and the data it manipulates while the processor is executing the program. Physically, main memory consists of a collection of `dynamic random access memory` (DRAM) chips. Logically, memory is organized as a linear array of bytes, each with its own unique address (array index) starting at zero.
-- `Processor` The `central processing unit` (CPU), or simply processor, is the engine that interprets (or `executes`) instructions stored in main memory. At its core is a word-size storage device (or `register`) called the `program counter` (PC). At any point in time, the PC points at (contains the address of) some machine-language instruction in main memory.
+- `Processor` The `central processing unit` (CPU), or simply processor, is the engine that interprets (or `executes`) instructions stored in main memory. At its core is a word-sized storage device (or `register`) called the `program counter` (PC). At any point in time, the PC points at (contains the address of) some machine-language instruction in main memory.
 
 ![1_6](res/1_6.png)
 
@@ -46,7 +46,7 @@ The main idea of a memory hierarchy is that storage at one level serves as a cac
 
 The operating system has two primary purposes: (1) to protect the hardware from misuse by runaway applications and (2) to provide applications with simple and uniform mechanisms for manipulating complicated and often wildly different low-level hardware devices.
 
-files are abstractions for I/O devices, virtual memory is an abstraction for both the main memory and disk I/O devices, and processes are abstractions for the processor, main memory, and I/O devices.
+Files are abstractions for I/O devices, virtual memory is an abstraction for both the main memory and disk I/O devices, and processes are abstractions for the processor, main memory, and I/O devices.
 
 A `process` is the operating system's abstraction for a running program. Multiple processes can run concurrently on the same system, and each process appears to have exclusive use of the hardware. By `concurrently`, we mean that the instructions of one process are interleaved with the instructions of another process.
 
@@ -54,9 +54,9 @@ A `process` is the operating system's abstraction for a running program. Multipl
 
 The operating system keeps track of all the state information that the process needs in order to run. This state, which is known as the `context`, includes information such as the current values of the PC, the register file, and the contents of main memory. At any point in time, a uniprocessor system can only execute the code for a single process. When the operating system decides to transfer control from the current process to some new process, it performs a `context switch` by saving the context of the current process, restoring the context of the new process, and then passing control to the new process. The new process picks up exactly where it left off.
 
-the transition from one process to another is managed by the operating system `kernel`. The kernel is the portion of the operating system code that is always resident in memory. When an application program requires some action by the operating system, such as to read or write a file, it executes a special `system call` instruction, transferring control to the kernel. The kernel then performs the requested operation and returns back to the application program. Note that the kernel is not a separate process. Instead, it is a collection of code and data structures that the system uses to manage all the processes.
+The transition from one process to another is managed by the operating system `kernel`. The kernel is the portion of the operating system code that is always resident in memory. When an application program requires some action by the operating system, such as to read or write a file, it executes a special `system call` instruction, transferring control to the kernel. The kernel then performs the requested operation and returns back to the application program. Note that the kernel is not a separate process. Instead, it is a collection of code and data structures that the system uses to manage all the processes.
 
-in modern systems, a process can actually consist of multiple execution units, called `threads`, each running in the context of the process and sharing the same code and global data.
+In modern systems, a process can actually consist of multiple execution units, called `threads`, each running in the context of the process and sharing the same code and global data.
 
 `Virtual memory` is an abstraction that provides each process with the illusion that it has exclusive use of the main memory. Each process has the same uniform view of memory, which is known as its `virtual address space`.
 
@@ -68,7 +68,7 @@ in modern systems, a process can actually consist of multiple execution units, c
 - `Stack`. At the top of the user's virtual address space is the `user stack` that the compiler uses to implement function calls. Like the heap, the user stack expands and contracts dynamically during the execution of the program. In particular, each time we call a function, the stack grows. Each time we return from a function, it contracts.
 - `Kernel virtual memory`. The top region of the address space is reserved for the kernel. Application programs are not allowed to read or write the contents of this area or to directly call functions defined in the kernel code. Instead, they must invoke the kernel to perform these operations.
 
-A `file` is a sequence of bytes, nothing more and nothing less. Every I/O device, including disks, keyboards, display, and even networks, is modeled as a file, All input and output in the system is performed by reading and writing files, using a small set of system calls known as `Unix I/O`.
+A `file` is a sequence of bytes, nothing more and nothing less. Every I/O device, including disks, keyboards, displays, and even networks, is modeled as a file. All input and output in the system is performed by reading and writing files, using a small set of system calls known as `Unix I/O`.
 
 ![1_14](res/1_14.png)
 
