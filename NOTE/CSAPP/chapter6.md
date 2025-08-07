@@ -10,7 +10,7 @@ In practice, a `memory system` is a hierarchy of storage device with different c
 
 ![6_2](res/6_2.png)
 
-summarizes the characteristics of SRAM and DRAM memory. SRAM si persistent as long as power is applied. Unlike DRAM, no refresh is necessary. SRAM can be accessed faster than DRAM. SRAM is not sensitive to disturbances such as light and electrical noise. The trade-off is that SRAM cells use more transistors than DRAM cells and thus have lower densities, are more expensive, and consume more power.
+Summarizes the characteristics of SRAM and DRAM memory. SRAM si persistent as long as power is applied. Unlike DRAM, no refresh is necessary. SRAM can be accessed faster than DRAM. SRAM is not sensitive to disturbances such as light and electrical noise. The trade-off is that SRAM cells use more transistors than DRAM cells and thus have lower densities, are more expensive, and consume more power.
 
 ![6_3](res/6_3.png)
 
@@ -68,7 +68,7 @@ $$
 
 Disks read and write data in sector-size blocks. The `access time` for a sector has three main components: `seek time, rotational latency, and transfer time`:
 
-- `Seek time`. To read the contents of some target sector, the arm first positions the head over the track that contains the target sector. The time required to move the arm is called the `seek time`. The seek time, $T_{seek}$, sepends on the previous position of the head and the speed that the arm moves across the surface. The average seek time in modern drives, $T_{avg\ seek}$, measured by taking the mean of serveral thousand seeks to random sectors, is typically on the order of 3 to 9 ms. The maximum time for a single seek, $T_{max\ seek}$, can be as high as 20 ms.
+- `Seek time`. To read the contents of some target sector, the arm first positions the head over the track that contains the target sector. The time required to move the arm is called the `seek time`. The seek time, $T_{seek}$, spends on the previous position of the head and the speed that the arm moves across the surface. The average seek time in modern drives, $T_{avg\ seek}$, measured by taking the mean of serveral thousand seeks to random sectors, is typically on the order of 3 to 9 ms. The maximum time for a single seek, $T_{max\ seek}$, can be as high as 20 ms.
 
 - `Rotational latency`. Once the head is in position over the track, the drive waits for the first bit of the target sector to pass under the head. The performance of this step depends on both the position of the surface when the head arrives at the target track and the rotational speed of the disk. In the worst case, the head just misses the target sector and waits for the disk to make a full rotation. Thus, the maximum rotational latency, in seconds, is given by
   $$
@@ -132,7 +132,7 @@ After the cache at level $k$ has fetched the block from level $k + 1$, the progr
 different kinds of cache misses:
 
 - `compulsory misses` or `cold misses`: if the cache at level $k$ is empty, then any access of any data object will miss. An empty cache is sometimes referred to as `cold cache`, and misses of this kind are called `compulsory misses` or `cold misses`.
-- `conflict miss`
+- `conflict miss` TODO
 
 The essence of the memory hierarchy is that the storage device at each level is a cache for the next lower level. At each level, some form of logic must `manage` the cache. By this we mean that something has to partition the cache storage into blocks, transfer blocks between different levels, decide when there are hits and misses, and then deal with them. The logic that manages the cache can be hardware, software, or a combination of the two.
 

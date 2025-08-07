@@ -12,7 +12,9 @@
 
 
 
-## Lexical Analysis
+## Compilation
+
+### Lexical Analysis
 
 The main task of the lexical analyzer is to read the input characters of the source program, group them into lexemes, and produce as output a sequence of tokens for each lexeme in the source program.
 
@@ -177,4 +179,54 @@ These components are:
 
 ## Linking
 
-TODO
+Linking is the process of collecting and combining various pieces of code and data into a single file that can be `loaded` (copied) into memory and executed.
+
+Given this notion of strong and weak symbols, Linux linkers use the following rules for dealing with duplicate symbol names:
+
+- Rule 1. Multiple strong symbols with the same name are not allowed.
+- Rule 2. Given a strong symbol and multiple weak symbols with the same name, choose the strong symbol.
+- Rule 3. Given multiple weak symbols with the same name, choose any of the weak symbols.
+
+![link_static_lib](res/link_static_lib.png)
+
+### ELF
+
+Compilers and assemblers generate relocatable object files (including shared object files). Linkers generate executable object files. Technically, an `object module` is a sequence of bytes, and an `object file` is an object module stored on disk in a file.
+
+![elf_obj](res/elf_obj.png)
+
+- `ELF header` The ELF header begins with a 16-byte sequence that describes the word size and byte ordering of the system that generated the file. 
+- `.text` The machine code of the compiled program.
+- `.rodata` Read-only data such as the format strings in printf statements, and jump tables for switch statements.
+- `.data` Initialized global and static C variables. Local C variables are maintained at run time on the stack and do not appear in either the `.data` or `.bss` sections.
+- `.bss` Uninitialized global and static C variables, along with any global or static variables that are initialized to zero. 
+- `.symtab` A symbol table with information about functions and global variables that are defined and referenced in the program. 
+- `.rel.text` A list of locations in the `.text` section that will need to be modified when the linker combines this object file with others. 
+- `.rel.data` Relocation information for any global variables that are referenced or defined by the module. 
+- `.debug` A debugging symbol table with entries for local variables and typedefs defined in the program, global variables defined and referenced in the program, and the original C source file. It is only present if the compiler driver is invoked with the `-g` option.
+- `.line` A mapping between line numbers in the original C source program and machine code instructions in the `.text` section. It is only present if the compiler driver is invoked with the `-g` option.
+- `.strtab` A string table for the symbol tables in the `.symtab` and `.debug` sections and for the section names in the section headers. 
+
+### Static Linking
+
+Static linkers are invoked by compiler drivers such as GCC. They combine multiple relocatable object files into a single executable object file. Multiple object files can define the same symbol, and the rules that linkers use for silently resolving these multiple definitions can introduce subtle bugs in user programs.
+
+![static_link](res/static_link.png)
+
+### Dynamic Linking
+
+Shared libraries are modern innovations that address the disadvantages of static libraries. A shared library is an object module that, at either run time or load time, can be loaded at an arbitrary memory address and linked with a program in memory. This process is known as `dynamic linking` and is performed by a program called a `dynamic linker`.
+
+![dyn_link](res/dyn_link.png)
+
+The dynamic linker then finishes the linking task by performing the following relocations:
+
+- Relocating the text and data of `libc.so` into some memory segment.
+- Relocating the text and data of `libvector.so` into another memory segment.
+- Relocating any references in `prog21` to symbols defined by `libc.so` and `libvector.so`.
+
+
+
+## Reference
+
+[1] Randal E. Bryant, David R. O'Hallaron . COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE . 3ED
