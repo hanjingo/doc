@@ -1,9 +1,6 @@
 # 投注共识
 
-
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

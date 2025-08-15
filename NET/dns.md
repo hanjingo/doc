@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 The Domain Name System (DNS)` is :
 
 1. A distributed database implemented in a hierarchy of `DNS servers`
@@ -12,8 +14,6 @@ The DNS's main task is to provide a directory service that translates hostnames 
 - Host aliasing.
 - Mail server aliasing.
 - Load distribution.
-
-
 
 ## Message
 
@@ -38,3 +38,9 @@ In order to deal with the issue of scale, the DNS uses a large number of servers
 - Root DNS servers.
 - Top-level domain (TLD) servers.
 - Authoritative DNS servers.
+
+
+
+## Reference
+
+[1] James F. Kurose, Keith W. Ross . Computer Networking: A Top-Down Approach . 6ED

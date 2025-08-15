@@ -1,3 +1,5 @@
+中文版 | [English](hash.md)
+
 # HASH算法
 
 [TOC]

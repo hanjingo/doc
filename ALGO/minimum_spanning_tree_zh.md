@@ -1,3 +1,5 @@
+中文版 | [English](minimum_spanning_tree.md)
+
 # 最小生成树
 
 [TOC]

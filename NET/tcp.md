@@ -324,3 +324,9 @@ Anytime it is operating, a TCP using keepalives may find its peer in one of four
 3. The client's host has crashed and rebooted.
 4. The peer's host is up and running but is unreachable from the requestor for some reason.
 
+
+
+## Reference
+
+[1] W.Richard Stevens, Stephen A.Rago . UNP . 6ED
+

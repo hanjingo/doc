@@ -1,3 +1,5 @@
+[English](arithmetic.md) | 中文版
+
 # Arithmetic
 
 [TOC]
@@ -6,7 +8,7 @@
 
 ## Definition
 
-**Definition**: If $a$ and $b$ are integers with $a \neq 0$, We say that $\text{a divides b}$ if there is an integer $c$ such that $b = ac$ (or equivalently, if $\frac{b}{a}$ is an integer). When $a$ divides $b$ we say that $a$ is a `factor` or `divisor` of $b$, and that $b$ is a `multiple` of $a$. The notation $a \mid b$ denotes that $a$ divides $b$. We write $a \nmid b$ when $a$ does not divide $b$.
+**Definition**: If $a$ and $b$ are integers with $a \neq 0$, we say that $\text{a divides b}$ if there is an integer $c$ such that $b = ac$ (or equivalently, if $\frac{b}{a}$ is an integer). When $a$ divides $b$ we say that $a$ is a `factor` or `divisor` of $b$, and that $b$ is a `multiple` of $a$. The notation $a \mid b$ denotes that $a$ divides $b$. We write $a \nmid b$ when $a$ does not divide $b$.
 
 **Definition**: In the equality given in the division algorithm, $d$ is called the $divisor$, $a$ is called the $dividend$, $q$ is called the $quotient$, and $r$ is called the $remainder$. This notation is used to express the quotient and remainder.
 

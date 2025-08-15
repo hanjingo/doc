@@ -1,3 +1,5 @@
+中文版 | [English](link_list.md)
+
 # 链表
 
 [TOC]

@@ -1,3 +1,5 @@
+[中文版](link_list_zh.md) | English
+
 # Linked List
 
 [TOC]

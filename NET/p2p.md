@@ -33,3 +33,8 @@ Thus, let's take the lower bound provided by Equation 2.2 as the actual minimum 
 $$
 D_{P2P} = max\{ \frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum_{i=1}^{N} u_i} \} \qquad (2.3)
 $$
+
+
+## Reference
+
+[1] James F. Kurose, Keith W. Ross . Computer Networking: A Top-Down Approach . 6ED

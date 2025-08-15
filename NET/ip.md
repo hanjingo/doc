@@ -34,15 +34,14 @@ IP is the workhorse protocol of the TCP/IP protocol suite. All TCP, UDP, ICMP, a
 
 ![ipv6_head_struct](res/ipv6_head_struct.png)
 
-- `Version`
-- `DSField`
+- `Version`. This 4-bit field identifies the IP version number.
+- `DSField`. This 8-bit field is similar in spirit to the TOS field we saw in IPv4.
 - `ECN`
-- `Flow Label`
-- `Payload Length`
-- `Next Header`
-- `Hop Limit`
-- `Source IP Address`
-- `Destination IP Address`
+- `Flow Label`. As discussed above, this 20-bit field is used to identify a flow of datagrams.
+- `Payload Length`. This 16-bit value is treated as an unsigned integer giving the number of bytes in the IPv6 datagram following the fixed-length, 40-byte datagram header.
+- `Next Header`. This field identifies the protocol to which the contents (data field) of this datagram will be delivered (for example, to TCP or UDP). The field uses the same values as the protocol field in the IPv4 header.
+- `Hop Limit`. The contents of this field are decremented by one by each router that forwards the datagram. If the hop limit count reaches zero, the datagram is discarded.
+- `Source IP Address`, `Destination IP Address`. The various formats of the IPv6 128-bit address are described in RFC 4291.
 
 
 
@@ -65,4 +64,6 @@ TODO
 
 
 ## Reference
+
+[1] James F. Kurose, Keith W. Ross . COMPUTER NETWORKING: A Top-Down Approach . 6ED
 

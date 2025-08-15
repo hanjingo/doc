@@ -96,6 +96,8 @@ Any modern computer system must provide the means for the operating system to co
 
 ![vm_mem_protection](res/vm_mem_protection.png)
 
+*Using VM to provide page-level memory protection.*
+
 ### Address Translation
 
 Formally, address translation is a mapping between the elements of an $N$-element virtual address space (VAS) and an $M$-element physical address space (PAS),
@@ -112,9 +114,13 @@ MAP(A) =
 $$
 ![addr_trans_symbol](res/addr_trans_symbol.png)
 
+*Summary of address tranlation symbols*
+
 How the MMU uses the page table to perform this mapping. A control register in the CPU, the `page table base register`(PTBR) points to the current page table. The $n$-bit virtual address has two components: a $p$-bit `virtual page offset`(VPO) and an $(n - p)$-bit `virtual page number`(VPN). The MMU uses the VPN to select the appropriate PTE.
 
 ![addr_trans_with_page_tbl](res/addr_trans_with_page_tbl.png)
+
+*Address translation with a page table*
 
 
 
@@ -126,9 +132,13 @@ Changes made to an area mapped to a private object, on the other hand, are not v
 
 ![shared_obj](res/shared_obj.png)
 
+*A shared object. (a) After process 1 maps the shared object. (b) After process 2 maps the same shared object. (Note that the physical pages are not necessarily contiguous.)*
+
 Private objects are mapped into virtual memory using a clever technique known as copy-on-write. A private object begins life in exactly the same way as a shared object, with only one copy of the private object stored in physical memory.
 
-TODO
+![copy_on_write](res/copy_on_write.png)
+
+*A private copy-on-write object. (a) After both processes have mapped the private copy-on-write object. (b) After process 2 writes to a page in the private area.*
 
 
 

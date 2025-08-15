@@ -1,15 +1,6 @@
 # bancor算法
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [摘要](#摘要)
-* [知识点](#知识点)
-* [token买入](#token买入)
-    - [token卖出](#token卖出)
-    - [特点](#特点)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

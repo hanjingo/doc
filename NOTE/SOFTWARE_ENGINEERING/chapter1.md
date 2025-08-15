@@ -8,8 +8,8 @@
 
 Many of these so-called software failures are a consequence of two factors:
 
-1. **Increasing demands** As new software engineering techniques help us to build larger, more complex systems, the demands change.
-2. **Low expectations** It is relatively easy to write computer programs without using software engineering methods and techniques.
+1. **Increasing demands.** As new software engineering techniques help us to build larger, more complex systems, the demands change.
+2. **Low expectations.** It is relatively easy to write computer programs without using software engineering methods and techniques.
 
 ## Professional software development
 
@@ -24,15 +24,15 @@ Essential attributes of good software:
 
 | Product characteristics    | Description                                                  |
 | -------------------------- | ------------------------------------------------------------ |
-| Maintainability            | Sofware should be written in such a way so that it can evolve to meet the changing needs of customers. This is a critical attribute because software change is an inevitable requirement of a changing business environment. |
-| Dependability and security | Software dependability includes a range of characteristics including reliability, security, and safety. Dependable software should not cause physical or economic damage in the event of system failure. Malicious users should not be able to access or damage the system. |
-| Efficiency                 | Software should not make wasteful use of system resources such as memory and proessor cycles. Efficiency therefore includes responsiveness, processing time, memory utilization, etc. |
+| Maintainability            | Software should be written in such a way so that it can evolve to meet the changing needs of customers. This is a critical attribute because software change is an inevitable requirement of a changing business environment. |
+| Dependability and security | Software dependability includes a range of characteristics, including reliability, security, and safety. Dependable software should not cause physical or economic damage in the event of system failure. Malicious users should not be able to access or damage the system. |
+| Efficiency                 | Software should not make wasteful use of system resources such as memory and proessor cycles. Efficiency, therefore includes responsiveness, processing time, memory utilization, etc. |
 | Acceptability              | Software must be acceptable to the type of users for which it is designed. This means that it must be understandable, usable, and compatible with other systems that they use. |
 
 Software engineering definition:
 
-1. `Engineering discipline` Engineers make things work.
-2. `All aspects of software production` Software engineering is not just concerned with the technical processes of software development.
+1. `Engineering discipline:` Engineers make things work.
+2. `All aspects of software production,` Software engineering is not just concerned with the technical processes of software development.
 
 There are four fundamental activities that are common to all software processes. These activities are:
 

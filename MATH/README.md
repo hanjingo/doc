@@ -17,6 +17,9 @@ TODO
 ## Number Theory
 
 - [Arithmetic](NUMBER_THEORY/arithmetic.md)
+- [CBC](cbc.md)
+- [DES](des.md)
+- [RSA](rsa.md)
 
 ---
 

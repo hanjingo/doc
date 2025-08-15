@@ -1,5 +1,7 @@
 # Chapter 1 Computer Networks and the Internet
 
+[TOC]
+
 
 
 ![1_1](res/1_1.png)
@@ -16,7 +18,7 @@ The applications are said to be `distributed applications`, since they involve m
 
 End systems attached to the Internet provide an `Application Programming Interface(API)` that specifies how a program running on one end system asks the Internet infrastructure to deliver data to a specific destination program running on another end system.
 
-**A protocol defines the format and the order of messges exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.**
+**A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.**
 
 ![1_2](res/1_2.png)
 
@@ -67,7 +69,7 @@ d_{end-end} = N(d_{proc} + d_{trans} + d_{prop}) \qquad (1.2)
 $$
 where, once again, $d_{trans} = L/R$, where $L$ is the packet size.
 
-The `instantaneous throughput` at any instant of time is the rate (in bits/sec) at which Host B is receiving the file. If the file consists of $F$ bits and the transfer takes $T$ seconds for Host $B$ to receive all $F$ bits, then th `average throughput` of the file transfer is $F/T$ bits/sec.
+The `instantaneous throughput` at any instant of time is the rate (in bits/sec) at which Host B is receiving the file. If the file consists of $F$ bits and the transfer takes $T$ seconds for Host $B$ to receive all $F$ bits, then the `average throughput` of the file transfer is $F/T$ bits/sec.
 
 ![1_19](res/1_19.png)
 

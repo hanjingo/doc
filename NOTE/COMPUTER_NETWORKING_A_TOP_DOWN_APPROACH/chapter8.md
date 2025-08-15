@@ -1,5 +1,9 @@
 # Chapter8 Security in Computer Networks
 
+[TOC]
+
+
+
 Identify the following desirable properties of secure communication:
 
 - `Confidentiality`.
@@ -94,7 +98,7 @@ Binding a public key to a particular entity is typically done by a `Certificatio
 
 A `nonce` is a number that a protocol will use only once in a lifetime. That is, once a protocol uses a nonce, it will never use that number again. 
 
-SSL is often used to provide security to transactions that take place over HTTP. However, because SSL secures TCP, it can be employed by any application that runs over TCP. SSL provides a simple Application Programmer Interface (API) with sockets, which is similar and analogous to TCP’s API. When an application wants to employ SSL, the application includes SSL classes/libraries.
+SSL is often used to provide security to transactions that take place over HTTP. However, because SSL secures TCP, it can be employed by any application that runs over TCP. SSL provides a simple Application Programming Interface (API) with sockets, which is similar and analogous to TCP’s API. When an application wants to employ SSL, the application includes SSL classes/libraries.
 
 ![8_24](res/8_24.png)
 
@@ -104,7 +108,7 @@ The IP security protocol, more commonly known as IPsec, provides security at the
 
 In the IPsec protocol suite, there are two principal protocols: the `Authentication Header (AH)` protocol and the `Encapsulation Security Payload (ESP)` protocol. When a source IPsec entity (typically a host or a router) sends secure datagrams to a destination entity (also a host or a router), it does so with either the AH protocol or the ESP protocol. The AH protocol provides source authentication and data integrity but does not provide confidentiality. The ESP protocol provides source authentication, data integrity, and confidentiality. Because confidentiality is often critical for VPNs and other IPsec applications, the ESP protocol is much more widely used than the AH protocol.
 
-Before sending IPsec datagrams from source entity to destination entity, the source and destination entities create a network-layer logical connection. This logical connection is called a `security association (SA)`. An SA is a simplex logical connection; that is, it is unidirectional from source to destination. If both entities want to send secure datagrams to each other, then two SAs (that is, two logical connections) need to be established, one in each direction.
+Before sending IPsec datagrams from the source entity to destination entity, the source and destination entities create a network-layer logical connection. This logical connection is called a `security association (SA)`. An SA is a simplex logical connection; that is, it is unidirectional from source to destination. If both entities want to send secure datagrams to each other, then two SAs (that is, two logical connections) need to be established, one in each direction.
 
 **Keep in mind, however, that not all traffic sent into the Internet by the gateway routers or by the laptops will be IPsec secured.**
 

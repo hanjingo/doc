@@ -1,5 +1,7 @@
 # 3 Creational Patterns
 
+[TOC]
+
 
 
 ## ABSTRACT FACTORY

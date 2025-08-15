@@ -2787,6 +2787,8 @@ boob `/buːb/` n. 蠢材，笨蛋；[俚]女人的乳房; vi. [英国口语]犯�
 
 booby `/'buːbi/` n. 傻瓜；饵雷；海鹅；乳房(儿语)
 
+booger `/'bʊɡə(r)/` n. 鼻屎
+
 bookkeeping `/'bʊkkiːpɪŋ/` n. 簿记；记账
 
 bookseller `/'bʊkselə(r)/` n. 书商
@@ -2928,6 +2930,8 @@ brace `/breɪs/` v. 防备；支撑；绷紧；振作；n. 支柱；支架；牙
 bracket `/ˈbrakɪt/` n. 档次；括号；支架；vt. 支撑；放在括号内；归入一类
 
 brag `/bræɡ/` vt. & vi. 自夸, 吹嘘
+
+> DRV: braggart `/ˈbræɡət/` n. 吹牛者
 
 braid `/breɪd/` n. 辫子；穗带；v. 编辫子；编织；镶缀
 
@@ -5813,8 +5817,10 @@ cricket `/'krɪkɪt/` n. 板球；蟋蟀；vi. 打板球
 
 crimson `/ˈkrɪmzn/` n. 深红; adj. 深红的
 
-cripple `/ˈkrɪpl/` n. 跛者；残废；v. 削弱；使...瘫痪
+crip `/krɪp/` n. 跛子；残废；v. 削弱；使...瘫痪
 
+> DRV: cripple `/ˈkrɪpl/` n. 跛者；残废；v. 削弱；使...瘫痪
+>
 > DRV: crippling `/'krɪplɪŋ/` adj. 严重损害身体的；造成严重后果的
 
 crisp `/krɪsp/` adj. 脆的；酥脆的；脆嫩的;（纸张或布料）洁净的；挺括的;（空气或天气）凉爽的；清新的；干燥寒冷让人舒畅的;（雪、树叶等）（压碎时发出）脆响的;（声音、图像等）清脆悦耳的；清晰分明的;（说话的方式）简短干脆的（表明某人忙或不友好）; n. 油炸土豆片，炸薯片（有多种风味，袋装）; v.（使）变脆
@@ -7700,6 +7706,8 @@ dracula `/'drækjulə/` n. 德拉库拉（人名）；吸血鬼，又叫惊情�
 draft `/drɑːft/` n. 草稿；草图；汇票；征兵；vt. 起草；征兵；选秀；adj. 酝酿中的
 
 drain `/dreɪn/` v. 排出；排干；喝光；耗尽；n. 下水道；消耗
+
+> DRV: drainage `/'dreɪnɪdʒ/` n. 排水；排水系统；污水；排水面积
 
 drama `/ˈdrɑːmə/` n. 戏剧；剧本；戏剧艺术；戏剧性事件
 
@@ -10043,6 +10051,8 @@ force `/fɔːs/` n. 武力；暴力；力量；影响力；力量大的人或（
 >
 > DRV: forcibly `/'fɔːsəbli/` adv. 强行地；强烈地
 
+ford `/fɔːd/` n. 浅滩；vi. 涉水而过；vt. 徒涉；涉过；n. 福特(美国汽车制造者)；福特汽车
+
 fore `/fɔː(r)/` adj. 在前部的; adv. 在前头, 朝前头
 
 forearm `/'fɔːrɑːm/` n. 前臂
@@ -11628,6 +11638,8 @@ heal `/hiːl/` vt. 治愈，痊愈；和解; vi. 痊愈
 hearsay `/'hɪəseɪ/` n. 传闻
 
 heartache `/'hɑːteɪk/` n. 伤心; 悲痛
+
+heartbreak `/'hɑːtbreɪk/` n. 心碎;断肠
 
 heartburn `/'hɑːtbɜːn/` n. 心痛,妒忌
 
@@ -15889,6 +15901,8 @@ midday `/ˌmɪd'deɪ/` n. 正午；中午
 
 middlemen `/'mɪd(ə)lmæn/` n. 中间人
 
+midget `/'mɪdʒɪt/` n. 侏儒；极小者；adj. 小型的
+
 midpoint `/'mɪdpɔɪnt/` n. 中点；正中央
 
 midst `/mɪdst/` n. 中间；当中；prep. 在 ... 当中(=amidst)
@@ -19307,6 +19321,8 @@ pony `/'pəʊni/` n. 小马；矮种马；小型马车；v. 付钱
 
 poo `/pu/` n. 屎；拉屎; v. 拉屎; abbr. 邮政汇票(=Post-Office Order)
 
+poop `/puːp/` n. 船尾；[俚]傻子；内幕消息；vt. 使精疲力尽；使船尾受击；vi. 疲乏；[俚]排便
+
 popcorn `/ˈpɒpkɔːn/` n. 爆米花
 
 popping `/'pɔpiŋ/` adj. 间歇的；凸出的; n. 爆音；突然跳出；爆孔；机器舞; v. 爆开；出现；敲击；抛出（pop的ing形式）
@@ -21772,9 +21788,9 @@ revamp `/riː'væmp/` vt. 修补；修改；翻新; n. 换新鞋面；改进
 
 reveal `/rɪˈviːl/` vt. 显示；透露；揭示；展现；n. (外墙与门或窗之间的)窗侧；门侧；(汽车的)窗框
 
-revegetate `/riː'vedʒɪteɪt/` v. [植] 再生长；再植
+> DRV: revelation `/ˌrevəˈleɪʃn/` n. 显露, 泄露, 透露, 揭露；被揭露的事, 暴露出来的事
 
-revelation `/ˌrevəˈleɪʃn/` n. 显露, 泄露, 透露, 揭露；被揭露的事, 暴露出来的事
+revegetate `/riː'vedʒɪteɪt/` v. [植] 再生长；再植
 
 revelry `/'revlri/` n. 狂欢；欢宴
 
@@ -23142,7 +23158,11 @@ sibling `/'sɪblɪŋ/` n. 兄弟姐妹
 
 sic `/sɪk/` vt. & vi. 使(狗等)去攻击; 追击；怂恿；使去攻击；n. 犬吠声
 
-sicken `/'sɪkən/` v. 患病；生病；恶心；使厌倦
+sick `/sɪk/` adj. 不舒服的；有病的，患病的；恶心的；想吐的；腻烦的，厌恶的，讨厌的；心烦意乱的，恼火的，不高兴的；n. 〈口〉呕吐物
+
+> DRV: sicken `/'sɪkən/` v. 患病；生病；恶心；使厌倦
+>
+> DRV: sicker `/'sikə/` adj. 住院病人安全的；可靠的；adv. 确实地，可靠地
 
 sickle `/'sɪkl/` n. 镰刀
 
@@ -23367,6 +23387,8 @@ slang `/slæŋ/` n. 俚语；行话；vt. 使用俚语；辱骂；vi. 辱骂
 slant `/slɑːnt/` vt. & vi. (使)倾斜；歪斜; vt. 有倾向性地编写或报道; n. 斜面，斜线; 倾向，偏向，侧重
 
 slap `/slæp/` n. 侮辱；掴；拍击声；vt. 侮辱；拍击；惩罚；申斥；adv. 直接地；正面地；突然地
+
+> DRV: slapper `/ˈslæpə(r)/` n. 掴人者；侮辱者；飞片；粘舌
 
 slash `/slæʃ/` v. 猛砍；乱砍；鞭打；割伤；尖锐抨击；大幅减少；n. 猛砍；斜线；长切口；衣衩；撒尿；沼泽地
 
@@ -23695,6 +23717,8 @@ solicit `/sə'lɪsɪt/` vt. 恳求；征求；勾引；vi. (妓女)拉客
 > DRV: solicitor `/səˈlɪsɪtər/` n. 律师；推销员
 
 solidarity `/ˌsɒlɪˈdærəti/` n. 团结；齐心协力
+
+soliloquy `/səˈlɪləkwɪ/` n. 自言自语；独白
 
 solitaire `/ˌsɒlɪ'teə(r)/` n. 单人纸牌；独粒宝石
 
@@ -24988,7 +25012,11 @@ svelte `/svelt/` adj. 苗条的,细长的,优美的
 
 swab `/swɒb/` n. 【C】医用拭子；医用海绵；vt. 擦净；以棉花棒涂敷于
 
+swag `/swæɡ/` n. 摇晃,水潭,赃物,珍贵物,垂花饰；vi. 摇晃,垂下
+
 swagger `/ˈswæɡə(r)/` vt. 吓唬；趾高气扬地行走或行事; vi. 大摇大摆；吹牛；虚张声势吓人; n. 大摇大摆；吹牛；威吓；下摆散开状的女式短大衣; adj. 炫耀的；时髦的
+
+> DRV: swaggy `/ˈswæɡi/` adj. 炫耀的；时髦的
 
 swallow `/'swɒləʊ/` n. 燕子；吞咽；一次吞咽的量；v. 忍受；吞下；咽下；轻信；不流露感情；收回
 
@@ -25733,6 +25761,8 @@ thursday `/'θɜːzdeɪ/` n. 星期四
 thus `/ðʌs/` adv. 这样；如此；因此；从而
 
 thwart `/θwɔːt/` v. 反对；阻碍；n. 座板；adv. 横过；adj. 横向的
+
+thy `/θaɪ/` pron. (古语)你的；汝的
 
 ### ti
 

@@ -1,16 +1,20 @@
 # Chapter6 Wireless and Mobile Networks
 
+[TOC]
+
+
+
 ![6_1](res/6_1.png)
 
 - `Wireless links`.
 - `Base station`.
 - `Network infrastructure`.
 
-At the highest level we can classify wireless networks according to two criteria:1. whether a packet in the wireless network crosses exactly `one wireless hop` or `multiple wireless hops`. 2. whether there is `infrastructure` such as a base station in the network:
+At the highest level, we can classify wireless networks according to two criteria. 1. Whether a packet in the wireless network crosses exactly `one wireless hop` or `multiple wireless hops`. 2. whether there is `infrastructure`, such as a base station in the network:
 
 - `Single-hop, infrastructure-based`.
 - `Single-hop, infrastructure-less`.
-- `Multi-hop, infrastructure-base`.
+- `Multi-hop, infrastructure-based`.
 - `Multi-hop, infrastructure-less`.
 
 We can  find a number of important differences between a wired link and a wireless link:
@@ -63,15 +67,15 @@ wireless LANs that deploy APs are often referred to as `infrastructure wireless 
 
 ![6_8](res/6_8.png)
 
-When a network administrator installs an AP, the administrator assigns a one or two word `Service Set Identifier (SSID)` to the access point. The administrator must also assign a channel number to the AP.
+When a network administrator installs an AP, the administrator assigns a one or two-word `Service Set Identifier (SSID)` to the access point. The administrator must also assign a channel number to the AP.
 
-The 802.11 standard requires that an AP periodically send `beacon frames`, each of which includes the AP's SSID and MAC address. The process of scanning channels and listening for beacon frames is known as `passive scanning`. A wireless host can also perform `active scanning`, by broadcasting a probe frame that will be received by all APs within the wireless host's range. APs respond to the probe request frame with a probe response frame. The wireless host can then choose the AP with which to associate from among the responding APs.
+The 802.11 standard requires that an AP periodically send `beacon frames`, each of which includes the AP's SSID and MAC address. The process of scanning channels and listening for beacon frames is known as `passive scanning`. A wireless host can also perform `active scanning` by broadcasting a probe frame that will be received by all APs within the wireless host's range. APs respond to the probe request frame with a probe response frame. The wireless host can then choose the AP with which to associate from among the responding APs.
 
 ![6_9](res/6_9.png)
 
 Unlike the 802.3 Ethernet protocol, the 802.11 MAC protocol does not implement collision detection. There are two important reasons for this:
 
-- The ability to detect collisions requires the ability to send (the sttion's own signal) and receive (to determine whether another station is also transmitting) at the same time. Because the strength of the received signal is typically very small compared to the strength of the transmitted signal at the 802.11 adapter, it is costly to build hardware that can detect a collision.
+- The ability to detect collisions requires the ability to send (the station's own signal) and receive (to determine whether another station is also transmitting) at the same time. Because the strength of the received signal is typically very small compared to the strength of the transmitted signal at the 802.11 adapter, it is costly to build hardware that can detect a collision.
 - More importantly, even if the adapter could transmit and listen at the same time (and presumably abort transmission when it senses a busy channel), the adapter would still not be able to detect all collisions.
 
 When the destination station receives a frame that passes the CRC, it waits a short period of time known as the `Short Inter-frame Spacing (SIFS)` and then sends back an acknowledgment frame. If the transmitting station does not receive an acknowledgment within a given amount of time, it assumes that an error has occurred and retransmits the frame, using the CSMA/CA protocol to access the channel. If an acknowledgment is not received after some fixed number of retransmissions, the transmitting station gives up and discards the frame.
@@ -86,7 +90,7 @@ An IEEE 802.15.1 network operates over a short range, at low power, and at low c
 
 ![6_16](res/6_16.png)
 
-A second personal area network standardized by the IEEE is the 802.14.5 standard [IEEE 802.15 2012] known as Zigbee. While Bluetooth networks provide a “cable replacement” data rate of over a Megabit per second, Zigbee is targeted at lowerpowered, lower-data-rate, lower-duty-cycle applications than Bluetooth.
+A second personal area network standardized by the IEEE is the 802.14.5 standard [IEEE 802.15 2012] known as Zigbee. While Bluetooth networks provide a “cable replacement” data rate of over a Megabit per second, Zigbee is targeted at lower-powered, lower-data-rate, lower-duty-cycle applications than Bluetooth.
 
 ![6_17](res/6_17.png)
 

@@ -6,13 +6,13 @@
 
 Three advantages of explicitly designing and documenting software architecture:
 
-1. `Stakeholder communication` The architecture is a high-level presentation of the system that may be used as a focus for discussion by a range of different stakeholders.
-2. `System analysis` Making the system architecture explicit at an early stage in the system development requires some analysis.
+1. `Stakeholder communication.` The architecture is a high-level presentation of the system that may be used as a focus for discussion by a range of different stakeholders.
+2. `System analysis:` Making the system architecture explicit at an early stage in the system development requires some analysis.
 3. `Large-scale reuse` A model of a system architecture is a compact, manageable description of how a system is organized and how the components interoperate. 
 
 ## Architectural design decisions
 
-Because of the close relationship between non-functional requirements and software architecture style and structure that you choose for a system should depend on the non-functional system requirements:
+Because of the close relationship between non-functional requirements and the software architecture style and structure that you choose for a system should depend on the non-functional system requirements:
 
 1. Performance
 2. Security

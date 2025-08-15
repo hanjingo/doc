@@ -1,8 +1,6 @@
 # 权益证明(PoS)
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

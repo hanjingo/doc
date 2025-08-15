@@ -1,4 +1,6 @@
-# Mimimum Spanning Trees
+[中文版](minimum_spanning_tree_zh.md) | English
+
+# Mimimum Spanning Tree
 
 [TOC]
 

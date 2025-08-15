@@ -1,3 +1,5 @@
+[中文版](shortest_path_problem_zh.md) | English
+
 # Shortest-Path Algorithms
 
 [TOC]
@@ -88,7 +90,7 @@ void Graph::unweighted(Vertex s)
 
 ## Dijkstra's Algorithm
 
-Dijkstra's algorithm proceeds in stages, just like the unweighted shortest-path algorithm. At each stage, Dijkstra's algorith selects a vertex, $v$, which has the smallest $d_v$ among all the `unknown` vertices and declares that the shortest path from $s$ to $v$ is `known`. The remainder of a stage consists of updating the values of $d_w$.
+Dijkstra's algorithm proceeds in stages, just like the unweighted shortest-path algorithm. At each stage, Dijkstra's algorithm selects a vertex, $v$, which has the smallest $d_v$ among all the `unknown` vertices and declares that the shortest path from $s$ to $v$ is `known`. The remainder of a stage consists of updating the values of $d_w$.
 
 In the unweighted case, we set $d_w = d_v + 1$ if $d_w = \infty$. Thus, we essentially lowered the value of $d_w$ if vertex $v$ offered a shorter path. If we apply the same logic to the weighted case, then we should set $d_w = d_v + c_{v,w}$ if this new value for $d_w$ would be an improvement. Put simply, the algorithm decides whether or not it is a good idea to use $v$ on the path to $w$. The original cost, $d_w$, is the cost without using $v$; the cost calculated above is the cheapest path using $v$ (and only `known` vertices).
 
@@ -179,6 +181,16 @@ void Graph::dijkstra(Vertex s)
 
 
 
+## AStar Search
+
+TODO
+
+
+
 ## Reference
 
 [1] Mark Allen Weiss.Data Structures and Algorithm Analysis in C++.4ED
+
+[2] [A* Pathfinding for Beginners](https://www.gamedev.net/reference/articles/article2003.asp)
+
+[3] [Implementation of A*](https://www.redblobgames.com/pathfinding/a-star/implementation.htmls)

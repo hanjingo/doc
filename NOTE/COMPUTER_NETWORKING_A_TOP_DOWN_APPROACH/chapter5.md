@@ -41,7 +41,7 @@ R = remainder \frac{D \cdot 2^r}{G}
 $$
 ![5_9](res/5_9.png)
 
-In a random access protocol, a transmitting node always transmits at the full rate of the channel, namely, $R$ bps. When there is a collision, each node involved in the collision repeatedly retransmits its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn't necessarily retransmit the frame right away. Instead it waits a random delay before retransmitting the frame.
+In a random access protocol, a transmitting node always transmits at the full rate of the channel, namely, $R$ bps. When there is a collision, each node involved in the collision repeatedly retransmits its frame (that is, packet) until its frame gets through without a collision. But when a node experiences a collision, it doesn't necessarily retransmit the frame right away. Instead, it waits a random delay before retransmitting the frame.
 
 The slotted ALOHA protocol required that all nodes synchronize their transmissions to start at the beginning of a slot.
 

@@ -1,8 +1,6 @@
 # 瑞波共识(Rayleigh wave consensus mechanism)
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

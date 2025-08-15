@@ -1,3 +1,5 @@
+[中文版](hash_zh.md) | English
+
 # Hash
 
 [TOC]

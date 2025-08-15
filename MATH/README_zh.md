@@ -11,8 +11,9 @@
 
 
 
-## 代数
+## 数论
 
+- [算术](NUMBER_THEORY/arithmetic_zh.md)
 - [DES算法](NUMBER_THEORY/des_zh.md)
 
 ---

@@ -1,3 +1,5 @@
+中文版 | [English](queue.md)
+
 # 队列
 
 [TOC]

@@ -106,7 +106,7 @@ A TLB is asmall, virtually addressed cache where each line holds a block consist
 
 ![9_16](res/9_16.png)
 
-Summarizes address translation with a $k$-level page table hierarchy. The virtual address is partitioned into $k$ VPNs and a VPO. Each VPN $i, 1 \leq i \leq k$, is an index into a page table at level $i$. Each PTE in a level $j$ table, $1 \leq j \leq k - 1$, points to the base of some page table at level $j + 1$. Each PTE in a level $k$ table contains either the PPN of some physical page or the address of a disk block. To constructe the physical address, the MMU must access $k$ PTEs before it can determine the PPN. As with a single-level hierarchy, the PPO is identical to the VPO.
+Summarizes address translation with a $k$-level page table hierarchy. The virtual address is partitioned into $k$ VPNs and a VPO. Each VPN $i, 1 \leq i \leq k$, is an index into a page table at level $i$. Each PTE in a level $j$ table, $1 \leq j \leq k - 1$, points to the base of some page table at level $j + 1$. Each PTE in a level $k$ table contains either the PPN of some physical page or the address of a disk block. To construct the physical address, the MMU must access $k$ PTEs before it can determine the PPN. As with a single-level hierarchy, the PPO is identical to the VPO.
 
 ![9_19](res/9_19.png)
 

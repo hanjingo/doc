@@ -1,3 +1,5 @@
+中文版 | [English](software_test.md)
+
 # 软件测试
 
 [TOC]

@@ -4,7 +4,6 @@
 
 # 算法
 
-- [A星寻路算法]
 - [平衡树](balance_tree_zh.md)
 - [大O计数法](big_o_notation_zh.md)
 - [有限状态机](fsm_zh.md)
@@ -12,9 +11,11 @@
 - [二叉树](binary_tree_zh.md)
 - [布隆过滤器]
 - [crc校验算法](crc_zh.md)
+- [DEFLATE压缩算法](deflate_zh.md)
 - [延时队列]
 - [散列算法](hash_zh.md)
 - [堆](heap_zh.md)
+- [Huffman编码](huffman_zh.md)
 - [KMP算法]
 - [LRU算法](lru_zh.md)
 - [最小生成树](minimum_spanning_tree_zh.md)

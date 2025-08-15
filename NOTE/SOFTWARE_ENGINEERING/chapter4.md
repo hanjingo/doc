@@ -13,12 +13,12 @@ User requirements and system requirements may be defined as follows:
 
 ![4_2](res/4_2.png)
 
-*Readers of different types of requirements specification*
+*Readers of different types of requirements specifications
 
 Software system requirements are often classified as functional requirements or nonfunctional requirements:
 
-1. `Functional requirements` These are statements of services the system should provide, how the system should react to particular inputs, and how the system should behave in particular situations. In some cases, the functional requirements may also explicitly state what the system should not do.
-2. `Non-functional requirements` These are constraints on the services or functions offered by the system. They include timing constraints, constraints on the development process, and constraints imposed by standards.
+1. `Functional requirements:` These are statements of services the system should provide, how the system should react to particular inputs, and how the system should behave in particular situations. In some cases, the functional requirements may also explicitly state what the system should not do.
+2. `Non-functional requirements:` These are constraints on the services or functions offered by the system. They include timing constraints, constraints on the development process, and constraints imposed by standards.
 
 ### Non-functional requirements
 

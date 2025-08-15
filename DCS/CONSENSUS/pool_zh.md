@@ -1,8 +1,6 @@
 # Pool验证池(Verify the pooling)
 
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

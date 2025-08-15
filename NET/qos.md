@@ -48,3 +48,8 @@ Summary of reliable data transfer mechanisms and their use:
 | Negative acknowledgment | Used by the receiver to tell the sender that a packet has not been received correctly. Negative acknowledgments will typically carry the sequence number of the packet that was not received correctly. |
 | Window, pipelining      | The sender may be restricted to sending only packets with sequence numbers that fall within a given range. By allowing multiple packets to be transmitted but not yet acknowledged, sender utilization can be increased over a stop-and-wait mode of operation. We’ll see shortly that the window size may be set on the basis of the receiver’s ability to receive and buffer messages, or the level of congestion in the network, or both. |
 
+
+
+## Reference
+
+[1] James F. Kurose, Keith W. Ross . Computer Networking: A Top-Down Approach . 6ED

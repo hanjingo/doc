@@ -17,11 +17,11 @@ Behavioral models are models of the dynamic behavior of the system as it is exec
 
 ## Model-driven architecture
 
-The MDA method recommends that three types of abstract system models should be produced:
+The MDA(model-driven architecture) method recommends that three types of abstract system models should be produced:
 
 1. A computation-independent model (CIM) that models the important domain abstractions used in the system.
 2. A platform-independent model (PIM) that models the operation of the system without reference to its implementation.
-3. Platform-specific models (PSM) which are transformations of the platform-independent model with a separate PSM for each application platform.
+3. Platform-specific models (PSM) which are transformations of the platform-independent model, with a separate PSM for each application platform.
 
 ![5_19](res/5_19.png)
 

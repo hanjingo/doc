@@ -1,5 +1,7 @@
 # Chapter 2 Application Layer
 
+[TOC]
+
 
 
 The application architecture, on the other hand, is designed by the application developer and dictates how the application is structured over the various end systems.

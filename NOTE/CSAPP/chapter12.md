@@ -66,7 +66,7 @@ A semaphore, $s$ is a global variable with a nonnegative integer value that can 
 - $P(s)$: If $s$ is nonzero, then $P$ decrements $s$ and returns immediately. If $s$ is zero, then suspend the thread until $s$ becomes nonzero and the thread is restarted by a $V$ operation. After restarting, the $P$ operation decrements $s$ and returns control to the caller.
 - $V(s)$: The $V$ operation increments $s$ by 1. If there are any threads blocked at a $P$ operation waiting for $s$ to become nonzero, then the $V$ operation restarts exactly one of these threads, which then completes its $P$ operation by decrementing $s$.
 
-when several threads are waiting at a semaphore, you cannot predict which one will be restarted as a result of the $V$.
+When several threads are waiting at a semaphore, you cannot predict which one will be restarted as a result of the $V$.
 
 The definitions of $P$ and $V$ ensure that a running program can never enter a state where a properly initialized semaphore has a negative value. This property, known as the semaphore invariant, provides a powerful tool for controlling the trajectories of concurrent programs.
 
@@ -82,7 +82,7 @@ Performing the $V$ operation is called `unlocking` the mutex.
 
 A thread that has locked but not yet unlocked a mutex is said to be `holding` the mutex.
 
-A semaphore that is used as a counter for a set of available resources is called a `counting sempahore`.
+A semaphore that is used as a counter for a set of available resources is called a `counting semaphore`.
 
 **Synchronization overhead is expensive and should be avoided if possible. If it cannot be avoided, the overhead should be amortized by as much useful computation as possible.**
 
@@ -119,7 +119,7 @@ If all function arguments are passed by value (i.e., no pointers) and all data r
 
 `implicitly reentrant` function, in the sense that it is only reentrant if the calling threads are careful to pass pointers to nonshared data.
 
-the lock-and-copy approach has number of disadvantages:
+the lock-and-copy approach has a number of disadvantages:
 
 - First, the additional synchronization slows down the program.
 - Second, functions that return pointers to complex structures of structures require a `deep copy` of the structures in order to copy the entire structure hierarchy.

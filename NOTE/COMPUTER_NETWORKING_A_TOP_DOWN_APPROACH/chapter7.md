@@ -1,5 +1,7 @@
 # Chapter7 Multimedia Networking
 
+[TOC]
+
 
 
 The most salient characteristic of video is its `high bit rate`. Another important characteristic of video is that it can be compressed, thereby trading off video quality with bit rate。

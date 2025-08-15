@@ -75,10 +75,10 @@ Software specification or requirements engineering is the process of understandi
 
 There are four main activities in the requirements engineering process:
 
-1. `Feasibility study` An estimate is made of whether the identified user needs may be satisfied using current software and hardware technologies. The study considers whether the proposed system will be cost-effective from a business point of view and if it can be developed within existing budgetary constraints.
-2. `Requirements elicitation and analysis` This is the process of deriving the system requirements through observation of existing systems, discussions with potential users and procurers, task analysis, and so on.
-3. `Requirements specification` Requirements specification is the activity of translating the information gathered during the analysis activity into a document that defines a set of requirements.
-4. `Requirements validation` This activity checks the requirements for realism, consistency, and completeness.
+1. `Feasibility study:` An estimate is made of whether the identified user needs may be satisfied using current software and hardware technologies. The study considers whether the proposed system will be cost-effective from a business point of view and if it can be developed within existing budgetary constraints.
+2. `Requirements elicitation and analysis:` This is the process of deriving the system requirements through observation of existing systems, discussions with potential users and procurers, task analysis, and so on.
+3. `Requirements specification:` Requirements specification is the activity of translating the information gathered during the analysis activity into a document that defines a set of requirements.
+4. `Requirements validation:` This activity checks the requirements for realism, consistency, and completeness.
 
 ### Software design and implementation
 
@@ -163,9 +163,9 @@ There are problems with incremental delivery:
 
 Each loop in the spiral is split into four sectors:
 
-1. `Objective setting` Specific objectives for that phase of the project are defined.
-2. `Risk assessment and reduction` For each of the identified project risks, a detailed analysis is carried out. Steps are taken to reduce the risk.
-3. `Development and validation` After risk evaluation, a development model for the system is chosen.
+1. `Objective setting:` Specific objectives for that phase of the project are defined.
+2. `Risk assessment and reduction.` For each of the identified project risks, a detailed analysis is carried out. Steps are taken to reduce the risk.
+3. `Development and validation.` After risk evaluation, a development model for the system is chosen.
 4. `Planning` The project is reviewed and a decision made whether to continue with a further loop of the spiral.
 
 
