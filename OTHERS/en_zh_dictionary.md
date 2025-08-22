@@ -175,7 +175,11 @@ accessory `/ək'sesəri/` n. 附件；配件；同谋；adj. 辅助的；附属�
 
 > DRV: accessorize `/ək'sesəraɪz/` v. 装饰,补充 穿戴装饰品
 
-accidental `/ˌæksɪˈdentl/` adj. 意外的； 偶然的； 附属的；n. 偶然； 不重要的东西； <音>变调的临时符号
+accident `/ˈæksɪdənt/` n. 事故；意外事件
+
+> DRV: accidental `/ˌæksɪˈdentl/` adj. 意外的； 偶然的； 附属的；n. 偶然； 不重要的东西； <音>变调的临时符号
+>
+> REF: **Accident (or mishap)**: An unplanned event or sequence of events which results in human death or injury, damage to property, or to the environment. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 acclaim `/ə'kleɪm/` n. 喝采；欢呼；赞同；v. 欢呼；喝采；称赞
 
@@ -706,6 +710,8 @@ alchemy `/ˈælkəmi/` n. 炼金术；魔力
 alcohol `/ˈalkəhɒl/` n. 酒精；酒；乙醇 
 
 > DRV: alcoholic `/ˌælkəˈhɒlɪk/` adj. 酒精的; n. 嗜酒者, 酒鬼
+>
+> DRV: alcoholism `/ˈælkəˌhɒlɪzəm/` n. 酗酒，酒精中毒
 
 ale `/eɪl/` n. 麦芽酒；乡下啤酒节
 
@@ -975,6 +981,8 @@ anesthetic `/ˌænəˈsθɛtɪk/` n. 麻醉剂；麻药；adj. 麻醉的；无�
 
 anew `/ə'njuː/` adv. 重新；再
 
+angina `/ænˈdʒaɪnə/` n. 心绞痛
+
 angle `/ˈaŋɡl/` n. 角度；角；观点；v. 形成或转变角度；歪曲；v. 钓鱼；谋取；n. 盎格鲁人
 
 > DRV: anglican `/ˈæŋglɪkən/` adj. 英国国教会的,英国圣公会的; <美>英国的；英国人的；英国文化的; n. 圣公会的信徒
@@ -1175,7 +1183,9 @@ apex `/'eɪpeks/` n. 顶点；最高点；尖端
 
 aphid `/'eɪfɪd/` n. 蚜虫
 
-apiece `/ə'piːs/` adv. 每个;每件;每人;各
+apiece `/ə'piːs/` adv. 每个; 每件; 每人; 各
+
+aplenty `/ə'plɛnti/` adv. 大量地；丰富地
 
 apnea `/æp'nɪə/` n. 无呼吸,呼吸暂停
 
@@ -1348,6 +1358,8 @@ archaic `/ɑː'keɪɪk/` adj. 已不通用的；古老的；古代的
 > DRV: archaism `/'ɑːkeɪɪzəm/` n. 古语；古体；拟古主义
 
 archangel `/ˈɑ:kˌeɪndʒəl/` n. 天使长,大天使
+
+archer `/ˈɑːtʃə/` n. 弓箭手
 
 archetype `/'ɑːkitaɪp/` n. （计算机）原型
 
@@ -1551,6 +1563,10 @@ assess `/ə'ses/` v. 评定；评估；估算
 
 > DRV: assessment `/əˈsesmənt/` n. 评价；评估；评定
 
+asset `/ˈæsɛt/` n. 资产；财产；有价值的东西
+
+> REF: **Asset**: Something of value that has to be protected. The asset may be the software system itself or data used by that system. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+
 asshole `/'æshəʊl/` n. <粗>肛门；讨厌的人
 
 assiduous `/əˈsɪdjʊəs/` adj. 勤勉的；刻苦的
@@ -1675,7 +1691,11 @@ attach `/əˈtatʃ/` v. 附上；系上；贴上；使依附；使附属；使�
 
 > DRV: attachment `/əˈtætʃ.mənt/` n. 附件；附属物；忠诚；依恋；附著；依赖；n. [法律]扣押令
 
-attacker `/ə'tækə(r)/` n. 攻击者；抨击者
+attack `/ə'tæk/` vt. 攻击；抨击；n. 攻击；抨击
+
+> DRV: attacker `/ə'tækə(r)/` n. 攻击者；抨击者
+>
+> REF: **Attack**: An exploitation of a system's vulnerability. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 attain `/ə'teɪn/` v. 实现；获得；达到
 
@@ -2235,6 +2255,8 @@ beauteous `/'bjuːtɪəs/` adj. 美丽的
 
 beaver `/'biːvə(r)/` n. 海狸； 獭皮(帽)； <粗>女性生殖器；n. 护面甲；vi. 卖力地工作
 
+bedchamber `/'bedʧeɪmbə(r)/` n. 卧室；寝室
+
 bedevil `/bɪ'dev(ə)l/` vt. 使痛苦；虐待；使苦恼
 
 bedfellow `/'bedfeləʊ/` n. 同床者, 共睡者; (尤指在商业或政治上)关系密切的伙伴, 同事, 同盟者
@@ -2272,6 +2294,8 @@ beg `/beɡ/` v. 恳求；乞讨
 > DRV: beggar `/'beɡə(r)/` n. 乞丐；穷人；【英】家伙；vt. 使贫穷；使不足；使不能
 >
 > DRV: beggarly `/'beɡəli/` adj. 像乞丐的；赤贫的；下贱的
+>
+> DRV: beggary `/'beɡəri/` n. 赤贫；卑劣；行乞
 >
 > DRV: begging `/'beɡɪŋ/` n. 请求；乞求
 
@@ -2607,7 +2631,9 @@ blind `/blʌɪnd/` adj. 瞎的；盲目的；adv. 看不见地；盲目地；n. 
 
 blip `/blɪp/` n. 小波动；小插曲；（在雷达屏幕显示出的）物体光点; vt. 使发出滴声；vi. 发出滴声
 
-blissful `/ˈblɪsfl/` adj. 充满喜悦的; 幸福的
+bliss `/blɪs/` n. 极乐；幸福
+
+> DRV: blissful `/ˈblɪsfl/` adj. 充满喜悦的; 幸福的
 
 blister `/'blɪstə/` n. 水疱, 水肿, 疱; 气泡; vt. & vi. (使)起水泡
 
@@ -2841,6 +2867,8 @@ borne `/bɔːn/` adj. (用作复合词)由 ... 传播的；由 ... 传送的；v
 
 borrow `/'bɒrəʊ/` v. 借；借鉴；抄袭
 
+bosom `/'bʊzəm/` n. 胸部；怀抱；心窝；vt. 抱住；怀抱
+
 bossy `/'bɒsi/` adj. 专横的；爱发号施令的；n. 母牛或者小牛
 
 bot `/bɒt/` abbr. 植物学的；abbr. 瓶子；abbr. 底部
@@ -3028,6 +3056,8 @@ brick `/brɪk/` n. 砖；砖块；砖状物；vt. 用砖围砌（或堵）
 bride `/braɪd/` n. 新娘；[英俚]姑娘，女朋友
 
 > DRV: bridal `/'braɪdl/` adj. 新娘的；婚礼的
+>
+> DRV: bridegroom `/'braɪdɡruːm/` n. 新郎
 >
 > DRV: bridesmaid `/'braɪdzmeɪd/` n. 女傧相；伴娘
 
@@ -4665,6 +4695,8 @@ commerce `/'kɒmɜːs/` n. 贸易；商业
 
 commingle `/kəˈmɪŋɡl/` vt. & vi. <文>混合,掺和,合并
 
+commiserate `/kəˈmɪzəreɪt/` vi. 表示怜悯；同情
+
 commissaries `/'kɒmɪsəri/` n. 军粮供应
 
 commission `/kə'mɪʃn/` n. 佣金；委员会；委托；委任；犯罪；vt. 授予；使服役；委托
@@ -5376,6 +5408,10 @@ contrite `/kənˈtraɪt/` adj. 悔悟了的；后悔的；悔罪的
 contrivance `/kən'traɪvəns/` n. 机械装置；发明的才能；想出的办法；人工痕迹
 
 contrive `/kən'traɪv/` v. 图谋；发明；设计；设法做到
+
+control `/kən'troʊl/` n. 控制；管理；支配；vt. 控制；管理；支配
+
+> REF: **Control**: A protective measure that reduces a system's vulnerability. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 controversy `/ˈkɒntrəvəːsi/` n. 争议；(公开的)争论
 
@@ -6164,6 +6200,8 @@ damage `/'dæmɪdʒ/` n. 损害；损失；毁坏; vt. 损害；毁坏; 损坏; 
 > SYN(vt.损毁): blemish, chip, deface, disfigure, flaw, mar, mark, sabotage, scar, scratch, spoil, vandalize.
 >
 > SYN(vt.弄坏): cripple, disable, immobilize, incapacitate, make inoperative, make useless.
+>
+> REF: **Damage**: A measure of the loss resulting from a mishap. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 dame `/deɪm/` n. (在英国)夫人(一种封号)；夫人(爵士妻子的称号); 女人
 
@@ -6761,6 +6799,8 @@ desirous `/dɪ'zaɪərəs/` adj. 渴望的；想要的
 
 desolate `/'desələt/` adj. 荒凉的；荒芜的；孤单寂寞的
 
+> DRV: desolation `/ˌdɛsəˈleɪʃən/` n. 荒凉；废墟；悲惨
+
 despair `/dɪ'speə(r)/` n. 绝望；失望；vi. 失望
 
 > DRV: desperado `/'despəˌrɑːdəʊ/` n. 歹徒；亡命之徒；流氓
@@ -7271,6 +7311,8 @@ disgust `/dɪs'ɡʌst/` n. 厌恶；憎恶；反感；vt. 使厌恶；使作呕
 
 dishearten `/dɪs'hɑːtn/` vt. 使沮丧；使泄气
 
+> DRV: disheartened `/dɪs'hɑːtənd/` adj. 沮丧的；泄气的
+
 dishing `/'dɪʃɪŋ/` adj. 碟形的,凹陷的
 
 dishonest `/dɪs'ɒnɪst/` adj. 不诚实的
@@ -7626,6 +7668,8 @@ doom `/duːm/` vt. 注定；判定; n. 厄运，劫数
 > DRV: doomsday `/'duːmzdeɪ/` n. 世界末日；[宗]最后的审判日
 
 doorbell `/'dɔːbel/` n. 门铃
+
+doornail `/'dɔːneɪl/` n. 门钉
 
 doorway `/'dɔːweɪ/` n. 门口
 
@@ -8139,6 +8183,8 @@ elapse `/əˈlaps/` v. 逝去；过去；n. （光阴）逝去
 
 elastic `/ɪ'læstɪk/` adj. 灵活的；有弹性的；可变的；n. 橡皮圈；有松紧的东西
 
+> DRV: elasticated `/ɪ'læstɪkeɪtɪd/` adj. 有弹性的；适应性强的
+>
 > DRV: elasticity `/ˌiːlæ'stɪsəti/` n. 弹力；弹性；伸缩性；灵活性
 
 elbow `/ˈelbəʊ/` n. 弯头；肘部；扶手; vt. 推挤；用手肘推开
@@ -8340,6 +8386,8 @@ empirical `/ɪm'pɪrɪkl/` adj. 经验主义的；以观察或实验为根据的
 emporium `/em'pɔːriəm/` n. 商场；商业中心
 
 empower `/ɪm'paʊə(r)/` vt. 授权；使能够
+
+emptiness `/ˈɛmptɪnəs/` n. 空虚；无物；贫乏
 
 emulate `/'emjuleɪt/` vt. 效法；尽力赶上；[计算机] 仿真.
 
@@ -8726,6 +8774,8 @@ error `/'erə(r)/` n. 错误；过失；误差；谬误
 > DRV: erroneous `/ɪˈrəʊnɪəs/` adj. 错误的；不正确的
 >
 > DRV: erroneousness `/ɪ'rəʊniːəsnɪs/` n. 错误；有误差；不正确
+>
+> REF: **Human error or mistake**: Human behavior that results in the introduction of faults into a system. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 erect `/ɪˈrekt/` vt. 使竖立；建立；建造；adj. 直立的；竖立的；笔直的
 
@@ -9180,6 +9230,8 @@ expose `/ɪk'spəʊz/` vt. 揭露；使曝光；使面临；使暴露
 > DRV: exposition `/ˌekspə'zɪʃn/` n. 博览会；展览会；说明
 >
 > DRV: exposure `/ɪk'spəʊʒə(r)/` n. 暴露；揭露；胶片；曝光时间；(在电视、报纸等媒体上的)亮相；挨冻
+>
+> REF: **Exposure**: Possible loss or harm to a computing system. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 expositor `/ɪks'pɒzɪtə/` n. 说明者；解释者
 
@@ -9337,6 +9389,8 @@ faint `/feɪnt/` adj. 微弱的；无力的；模糊的；v. 昏倒；n. 昏厥�
 
 fair `/feə(r)/` adj. 公平的；美丽的，白皙的；晴朗的；adv. 公平地；清楚地；直接地；vi. 转晴；n. 展览会；市集；美人
 
+> DRV: fairground `/'feəɡraʊnd/` n. 游乐场；集市
+>
 > DRV: fairly `/ˈfeəli/` adv. 公正地；相当地
 >
 > DRV: fairminded `/feər'maɪndɪd/` adj. 大公无私
@@ -9344,10 +9398,6 @@ fair `/feə(r)/` adj. 公平的；美丽的，白皙的；晴朗的；adv. 公�
 > DRV: fairness `/'feənəs/` n. 公平；公正
 >
 > DRV: fairy `/ˈfeəri/` n. 仙女，小精灵；[美俚]漂亮姑娘; adj. 仙女的
-
-fairground `/'feəɡraʊnd/` n. 游乐场；集市
-
-fairy `/'feəri/` n. 仙女；小精灵；adj. 优雅的；幻想中的；虚构的
 
 fait `/feɪ/` n. 事实；行为；[法]契据
 
@@ -10763,6 +10813,8 @@ gibberish `/'dʒɪbərɪʃ/` n. 莫名其妙的话；胡言乱语
 
 gibbon `/'gɪb(ə)n/` n. [动]长臂猿
 
+giddy `/'ɡɪdi/` adj. 头晕的；眼花的；轻浮的
+
 gig `/ɡɪɡ/` n. （流行音乐或爵士乐）现场演奏会，现场演唱会；现场喜剧表演; （尤指临时的）工作; 单马双轮轻便马车; 千兆字节，吉字节（同 gigabyte）; v. （公开）表演，演奏；做乐师
 
 gigabyte `/'ɡɪɡəbaɪt/` n. （计算机）千兆字节（GB）
@@ -10930,6 +10982,8 @@ goal `/ɡəʊl/` n. 球门；目标；得分
 > REF: Goals determine what you are going to be. --Julius Erving
 
 goat `/ɡəʊt/` n. 山羊；色鬼；替罪羊
+
+> DRV: goatee `/'ɡəʊtiː/` n. 山羊胡
 
 gobble `/'ɡɒbl/` vt. 狼吞虎咽；很快用完；发出咯咯叫声；n. 咯咯叫声
 
@@ -11168,8 +11222,8 @@ grew `/ɡruː/` grow的过去式
 grey `/ɡreɪ/` adj. 灰色的；n. 灰色；vi. 变成灰色
 
 > DRV: greybeard `/'ɡrei,biəd/` n. 老人
-
-greyhound `/'ɡreɪhaʊnd/` n. 灰狗
+>
+> DRV: greyhound `/'ɡreɪhaʊnd/` n. 灰狗
 
 grid `/ɡrɪd/` n. 格子；栅栏；电网；网格；赛车起跑线
 
@@ -11592,6 +11646,12 @@ haystack `/'heɪstæk/` n. 大干草堆=hayrick.
 hazard `/ˈhæzəd/` n. 危险；冒险；危害；vt. 冒险；赌运气
 
 > DRV: hazardous `/'hæzədəs/` adj. 危险的；冒险的；碰运气的
+>
+> REF: **Hazard**: A condition with the potential for causing or contributing to an accident. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition 
+>
+> REF: **Hazard probability**: The probability of the events occurring that create a hazard. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition 
+>
+> REF: **Hazard severity**: An assessment of the worst possible damage that could result from a particular hazard. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition 
 
 haze `/heɪz/` n. 薄雾；迷糊；vi. 变模糊；vt. 戏弄
 
@@ -11792,6 +11852,8 @@ hesitate `/'hezɪteɪt/` vi. 犹豫；不情愿；口吃
 hessian `/'hesiən/` n. 黑森州；粗麻布
 
 heterogeneous `/ˌhetərə'dʒiːniəs/` adj. （计算机）非均匀的；异种的；异质的；由不同成分形成的
+
+heterosexual `/ˌhetəroʊˈsekʃuəl/` adj. 异性恋的；n. 异性恋者
 
 heteroskedasticity `/ˌhetəroʊskəˌdæstɪ'sɪti/` n. 异方差性（统计学）
 
@@ -12674,6 +12736,8 @@ imprison `/ɪm'prɪzn/` v. 监禁；关押；束缚
 > DRV: imprisonment `/ɪm'prɪznmənt/` n. 【U】监禁；关押；禁锢
 
 improbable `/ɪm'prɒbəbl/` adj. 不大可能的；不像会发生的；似不可信的
+
+> DRV: improbability `/ˌɪmprə'bɒbɪlɪti/` n. 不大可能；似乎不可信的事
 
 improper `/ɪm'prɒpə(r)/` adj. 不合适的；错误的；不道德的
 
@@ -14485,6 +14549,8 @@ lamp `/læmp/` n. 灯；照射器; vt. 照亮; vi. 发亮
 
 lampoon `/læmˈpuːn/` vt. 讽刺; n. 讽刺文章
 
+lance `/læns/` n. 长矛；v. 用长矛刺
+
 lander `/'lændə/` n. 出铁槽；着陆器；把钩工人
 
 landfill `/'lændfɪl/` n. 垃圾堆；垃圾填埋地；v. 将...埋在垃圾填埋地
@@ -14504,6 +14570,8 @@ lane `/leɪn/` n. 小路；小巷；行车道；跑道；航道
 languid `/ˈlæŋɡwɪd/` adj. 没精打采的; 懒散的
 
 languish `/'læŋɡwɪʃ/` v. 衰弱无力；失去活力；受苦；憔悴
+
+> DRV: languishing `/ˈlæŋɡwɪʃɪŋ/` adj. 衰弱的；失去活力的；受苦的；憔悴的
 
 languor `/ˈlæŋɡə(r)/` n. 无精打采; 倦怠; 柔情,惹人爱怜的神色
 
@@ -14701,8 +14769,10 @@ legislation `/ˌlɛdʒɪˈsleɪʃn/` n. 法律；法规；立法
 >
 > REF: FOR suspending our own Legislatures, and declaring themselves invested with Power to legislate for us in all Cases whatsoever. --The Declaration of Independence
 
-legitimacy `/lɪˈdʒɪtɪməsi/` n. 合法；合理；正当
+legit `/lɪˈdʒɪt/` adj. 合法的；正当的；合理的
 
+> DRV: legitimacy `/lɪˈdʒɪtɪməsi/` n. 合法；合理；正当
+>
 > DRV: legitimate `/lɪ'dʒɪtɪmət/` adj. 合法的；世袭的；婚生的；正当的；合理的；vt. 使合法；授权；宣布 ... 为合法
 
 legroom `/'legruːm/` n. （车辆、飞机或剧院座位前的）放脚空间；踏脚处
@@ -15046,6 +15116,8 @@ loggerhead `/'lɒgəhed/` n. 傻子；笨蛋；铁头棒；大得不成比例的
 logistic `/ləˈdʒɪstək(ə)l/` adj. 后勤的；符号逻辑的
 
 logwood `/'lɒgwʊd/` n. 洋苏木
+
+loins `/lɔɪnz/` n. 腰部；腰肉
 
 loiter `/'lɔɪtə(r)/` v. 闲荡；虚度；徘徊
 
@@ -15534,6 +15606,8 @@ maternal `/mə'tɜːnl/` adj. 母亲的；母系的；母方的；母性的
 match `/mætʃ/` vt. 使相配；与…竞争；相配；使比赛；敌得过，比得上; vi. 相配，相称；比赛；匹配；相比; n. 火柴；对手；匹配；比赛，竞赛
 
 > DRV: matchless `/ˈmætʃləs/` adj. 无敌的；无可匹敌的
+>
+> DRV: matchmaker `/ˈmætʃˌmeɪkə(r)/` n. 媒人；调解人
 >
 > REF: Finding where a pattern occurs in a text string is called **string matching**. --Discrete Mathematics and Its Applications . Kenneth H. Rosen . 8th Edition . 2019
 
@@ -16327,6 +16401,8 @@ moonshot `/'mu:nʃɔt/` n. 月球探测器；对月球发射
 
 moor `/mɔː(r)/` n. 荒野；旷野；v. 系住；停泊
 
+moot `/muːt/` adj. 争议的；未决的；v. 提出...供讨论；n. 讨论会
+
 mop `/mɒp/` n. 拖把；拖把状物；vt. 用拖把拖；擦拭；vi. 用拖把拖
 
 > DRV: moppy `/'mɒpɪ/` adj. 拖把似的；蓬乱的
@@ -16944,6 +17020,8 @@ nincompoop `/'nɪŋkəmpuːp/` n. 傻子,无用的人
 nip `/nɪp/` vt. 夹；剪断；冻伤；捏；阻止; vi. 刺骨；夹；捏；小饮; n. 夹；捏；刺骨；小饮
 
 nipple `/ˈnɪpəl/` n. 奶嘴；乳头，奶头
+
+nirvana `/nɪrˈvɑːnə/` n. 涅槃；极乐世界
 
 nitrate `/'naɪtreɪt/` n. 硝酸盐; vt. 用硝酸处理
 
@@ -17777,6 +17855,8 @@ otherworldly `/'ʌðə'wɜːldlɪ/` adj. 超脱尘世的；超俗的
 
 [回到O](#O)--[回到顶部](#英汉词典)
 
+outdate `/ˌaʊt'deɪt/` v. 过时；使过时
+
 outdo `/ˌaʊt'duː/` v. 超过；胜过
 
 ought `/ɔːt/` aux. 应该；应当；本该
@@ -18182,6 +18262,8 @@ paraphrase `/ˈpærəfreɪz/` n. 释义；解述；改写；v. 改写；解述
 parapsychology `/ˌpærəsaɪˈkɒlədʒi/` n. 灵学；心理玄学
 
 parasite `/ˈpærəsaɪt/` n. 寄生虫；寄生生物；食客
+
+> DRV: parasitism `/ˈpærəˌsaɪtɪzəm/` n. 寄生现象；寄生主义
 
 parataxis `/ˌpærə'tæksɪs/` n. 并列；意合
 
@@ -20013,7 +20095,9 @@ prominent `/ˈprɒmɪnənt/` adj. 显著的；杰出的；突出的
 
 > DRV: prominence `/'prɒmɪnəns/` n. 突出物；突出；声望
 
-promiscuous `/prə'mɪskjuəs/` adj. 杂乱的；（指性）随便的；不规则的
+promiscuity `/ˌprɒmɪsˈkjuːɪti/` n. 杂乱；混乱；（性）滥交
+
+> DRV: promiscuous `/prə'mɪskjuəs/` adj. 杂乱的；（指性）随便的；不规则的
 
 promise `/'prɒmɪs/` n. 诺言；预示；约定；(有)希望；v. 允诺；发誓；答应；有希望
 
@@ -20084,6 +20168,8 @@ property `/ˈprɒpəti/` n. 财产；所有物；地产，房地产；性质；�
 prophet `/ˈprɒfɪt/` n. 预言家, 先知
 
 > DRV: prophecy `/'prɒfəsi/` n. 预言；预言能力；预言的内容
+>
+> DRV: prophylactic `/ˌprəʊfɪ'læktɪk/` adj. 预防的；防护的；n. 预防药；防护措施
 
 propitious `/prəˈpɪʃəs/` adj. 有利的,吉祥的,吉利的; 合适的
 
@@ -21950,6 +22036,10 @@ ripple `/'rɪpl/` n. 涟漪；波纹；潺潺声；粗钢梳；v. 使起涟漪�
 
 riser `/'raɪzə(r)/` n. 起床者,起义者,叛乱者
 
+risk `/rɪsk/` n. 风险；危险；v. 冒险
+
+> REF: **Risk**: This is a measure of the probability that the system will cause an accident. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+
 rite `/raɪt/` n. 仪式；典礼
 
 > DRV: ritual `/'rɪtʃuəl/` n. 仪式；典礼；宗教仪式；固定程序；adj. 仪式的；老规矩的；惯常的
@@ -21961,6 +22051,8 @@ rival `/ˈraɪvl/` n. 竞争者；对手；同伴；adj. 竞争的；v. 竞争�
 > DRV: rivalry `/'raɪvlri/` n. 敌对；竞争；对抗
 > 
 > DRV: rivalship `/'raɪvəlʃɪp/` n. 竞争；对抗
+
+riverbank `/'rɪvəbæŋk/` n. 河岸
 
 rivet `/'rɪvɪt/` n. 铆钉；v. 铆接；固定；钉牢；集中；吸引
 
@@ -22134,7 +22226,9 @@ rudimentary `/ˌruːdɪ'mentri/` adj. 基本的；初步的；未充分发展的
 
 > SYN(初步的，基础的): basic, crude, elementary, embryonic, immature, introductory, preliminary, primitive, provisional, undeveloped.
 
-rueful `/ˈruːfl/` adj. 后悔的, 悔恨的
+rue `/ruː/` v. 后悔；懊悔；n. 苦艾草；悔恨；悲伤
+
+> DRV: rueful `/ˈruːfl/` adj. 后悔的, 悔恨的
 
 ruffle `/ˈrʌfl/` vt. 弄皱；触怒；扰乱；迅速翻动; vi. 起皱；烦恼；连续地轻敲; n. 皱褶；生气；混乱；连续轻敲声
 
@@ -22653,6 +22747,8 @@ sculpt `/skʌlpt/` v. 雕刻；n. 雕刻；雕塑；雕刻品；雕塑品
 > DRV: sculpture `/ˈskʌlptʃə(r)/` n. 雕刻, 雕塑; 雕刻品; vt. & vi. 雕刻, 雕塑
 
 scum `/skʌm/` n. 浮渣；泡沫；糟粕; vi. 产生泡沫；被浮渣覆盖; vt. 将浮渣去除掉
+
+> DRV: scumbag `/ˈskʌmˌbæɡ/` n. [美俚]阴茎套；低劣的人；卑鄙的人
 
 scurry `/'skʌri/` v. 急匆匆地跑；急赶；n. 急跑；急赶
 
@@ -23613,6 +23709,8 @@ snob `/snɒb/` n. 势利小人；自命不凡的人
 > DRV: snobbery `/ˈsnɒbəri/` n. 势利，谄上欺下；摆绅士架子；势利的行为或语言
 >
 > DRV: snobbish `/'snɒbɪʃ/` adj. 势利的；自命不凡的
+
+snog `/snɒɡ/` vt. 亲吻；拥抱；n. 亲吻；拥抱
 
 snooker `/'snuːkə/` n. 斯诺克台球; vt. [英口]阻挠
 
@@ -25190,7 +25288,15 @@ syringe `/sɪ'rɪndʒ/` n. 注射器；vt. （用液体注射器）冲洗
 
 syrup `/'sɪrəp/` n. 糖浆; 糖汁; 糖浆类药品
 
-systematizer `/'sɪstɪmətaɪzə/` n. 组织者
+system `/ˈsɪstəm/` n. 系统；体制；制度；方法；vt. 使系统化
+
+> DRV: systematizer `/'sɪstɪmətaɪzə/` n. 组织者
+>
+> REF: **System error**: An erroneous system state that can lead to system behavior that is unexpected by system users. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+>
+> REF: **System failure**: An event that occurs at some point in time when the system does not deliver a service as expected by its users. No weather data is transmitted because the time is invalid. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+>
+> REF: **System fault**: A characteristic of a software system that can lead to a system error.
 
 ### sz
 
@@ -25297,6 +25403,8 @@ tandem `/'tændəm/` n. 串联；串座双人自行车; adj. 串联的; adv. 一
 tangent `/'tændʒənt/` adj. 切线的，相切的；接触的；离题的; n. 切线，正切
 
 tangible `/ˈtandʒɪbl/` adj. 可触摸的；实际的；有形的；确凿的
+
+> DRV: tangibly `/ˈtændʒəblɪ/` adv. 触摸地；实际地；有形地；确凿地
 
 tangle `/ˈtæŋɡl/` n. 缠结；混乱；纠纷；vt. 使缠结；使混乱；使陷入；vi. 纠缠；乱作一团；<口>吵架；争论
 
@@ -25754,7 +25862,9 @@ thumb `/θʌm/` n. 拇指；v. 翻阅；示意要求搭车
 
 thump `/θʌmp/` v. 重击；怦怦跳；猛击；用拳头打；n. 重击声；重打
 
-thunderous `/'θʌndərəs/` adj. 打雷的；雷鸣般的；怒气冲冲的
+thunderbolt `/'θʌndəbəʊlt/` n. 雷电；霹雳
+
+> DRV: thunderous `/'θʌndərəs/` adj. 打雷的；雷鸣般的；怒气冲冲的
 
 thursday `/'θɜːzdeɪ/` n. 星期四
 
@@ -27809,6 +27919,8 @@ vulgar `/'vʌlɡə(r)/` adj. 通俗的；粗俗的；乡土的；n. 平民，百
 vulnerable `/'vʌlnərəbl/` adj. 易受伤害的；有弱点的；脆弱的
 
 > DRV: vulnerability `/ˌvʌlnərə'bɪləti/` n.（计算机）漏洞；易受攻击；弱点
+>
+> REF: **Vulnerability**: A weakness in a computer-based system that may be exploited to cause loss or harm. --Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 vulture `/'vʌltʃə(r)/` n. 秃鹰；兀鹰；贪婪的人
 
@@ -28211,6 +28323,8 @@ wingspan `/ˈwɪŋspæn/` n. 翼幅；翼展
 wink `/wɪŋk/` vi. 闪烁；眨眼；使眼色; n. 眨眼；瞬间；使眼色；闪烁; vt. 眨眼
 
 winsome `/'wɪnsəm/` adj. 迷人的；可爱的；快活的
+
+wintry `/'wɪntri/` adj. 冬天的；寒冷的；冷淡的；凛冽的
 
 wipe `/waɪp/` v. 擦；揩；抹；拭去；消除；用力打；n. 擦拭；抹布
 

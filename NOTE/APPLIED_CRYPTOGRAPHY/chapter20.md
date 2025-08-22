@@ -215,4 +215,74 @@ $$
 
 this is called the **verification equation**.
 
-TODO
+![20_5](res/20_5.png)
+
+One of the nice things about using RSA for digital signatures is a feature called **message recovery**. When you verify an RSA signature, you compute $m$. Then you compare the computed $m$ with the message and see if the signature is valid for that message. With the previous schemes, you can't recover $m$ when you compute the signature; you need a candidate $m$ that you use in a verification equation. Well, as it turns out it is possible to construct a message recovery variant for all the above signature schemes.
+
+To sign, first compute:
+$$
+r = mg^k \mod p
+$$
+and replace $m$ by 1 in the signature equation. Then you can reconstruct the verification equation such that $m$ can be computed directly.
+
+You can do the same with the DSA-like schemes:
+$$
+r = (mg^k \mod p) \mod q
+$$
+All the variants are equally secure, so it makes sense to choose a scheme that is easy to compute with. The requirement to compute inverses slows most of these schemes. As it turns out, a scheme in this pile allows comuting both the signature equation and the verification equation without inverses and also gives message recovery. It is called the **p-NEW** scheme:
+$$
+r = mg^{-k} \mod p \\
+s = k - r'x \mod q
+$$
+And $m$ is recovered (and the signature verified) by:
+$$
+m = g^s y^{r'}r \mod p
+$$
+
+
+## ONG-SCHNORR-SHAMIR
+
+This signature scheme uses polynomials modulo $n$. Choose a large intreger $n$(you need not know the factorization of $n$). Then choose a random integer, $k$, such that $k$ and $n$ are relatively prime. Calculate $h$ such that:
+$$
+h = -k^{-2} \mod n = -(k^{-1})^2 \mod n
+$$
+The public key is $h$ and $n$; $k$ is the private key.
+
+To sign a message, $M$, first generate a random number, $r$, such that $r$ and $n$ are relatively prime. Then calculate:
+$$
+S_1 = 1/2 * (M/r + r) \mod n \\
+S_2 = k/2 * (M/r - r) \mod n
+$$
+The pair, $S_1$ and $S_2$, is the signature.
+
+To verify a signature, confirm that:
+$$
+S_1^{2} + h * S_2^{2} \equiv M (\mod n)
+$$
+
+
+## ESIGN
+
+ESIGN is a digital signature scheme from NTT Japan. It is touted as being at least as secure and considerably faster than either RSA or DSA, with similar key and signature lengths.
+
+The private key is a pair of large prime numbers, $p$ and $q$. The public key is $n$, when:
+$$
+n = p^2q
+$$
+$H$ is a hash function that operates on a message, $m$, such that $H(m)$ is between $0$ and $n - 1$. There is also a security parameter, $k$, which will be discussed shortly:
+
+1. Alice picks a random number $x$, where $x$ is less than $pq$.
+
+2. Alice computes:
+
+   $w$, the least integer that is larger than or equal to:
+   $$
+   (H(m) - x^k \mod n)/pq \\
+   s = x + ((w/kx^{k - 1}) \mod p) pq
+   $$
+
+3. Alice sends $s$ to Bob.
+
+4. To verify the signature, Bob computes $s^k \mod n$. He also computes $a$, which is the least integer larger than or equal to two times the number of bits of $n$ divided by 3. If $H(m)$ is less than or equal to $s^k \mod n$, and if $s^k \mod n$ is less than $H(m) + 2^a$, then the signature is considered valid.
+
+   

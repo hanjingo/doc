@@ -48,9 +48,9 @@ There are three risk categories that you can use in hazard assessment:
 
 Once potential risks and their root cause have been identified, you are then able to derive safety requirements that manage the risks and ensure that incidents or accidents do not occur. There are three possible strategies that you can use:
 
-1. `Hazard avoidance` The system is designed so that the hazard cannot occur.
-2. `Hazard detection and removal` The system is designed so that hazards are detected and neutralized before they result in an accident.
-3. `Damage limitation` The system is designed so that the consequences of an accident are minimized.
+1. `Hazard avoidance:` The system is designed so that the hazard cannot occur.
+2. `Hazard detection and removal:` The system is designed so that hazards are detected and neutralized before they result in an accident.
+3. `Damage limitation:` The system is designed so that the consequences of an accident are minimized.
 
 
 

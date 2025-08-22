@@ -5,6 +5,7 @@
 - [Balance Tree](balance_tree.md)
 - [Big O Notation](big_o_notation.md)
 - [Binary Tree](binary_tree.md)
+- [Bloom Filter](bloom_filter.md)
 - [CRC](crc.md)
 - [Deflate Algorithm](deflate.md)
 - [Hash](hash.md)

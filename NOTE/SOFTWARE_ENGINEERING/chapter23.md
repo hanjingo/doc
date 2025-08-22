@@ -75,7 +75,7 @@ There are two types of representation that are commonly used:
 
 ## Agile planning
 
-The most commonly used agile approaches such as Scrum (Schwaber, 2004) and extreme programming (Beck, 2000) have a two-stage approach to planning, corresponding to the startup phase in plan-driven development and development planning:
+The most commonly used agile approaches, such as Scrum (Schwaber, 2004) and extreme programming (Beck, 2000) have a two-stage approach to planning, corresponding to the startup phase in plan-driven development and development planning:
 
 1. Release planning, which looks ahead for several months and decides on the features that should be included in a release of a system.
 2. Iteration planning, which has a shorter-term outlook, and focuses on planning the next increment of a system.
@@ -90,8 +90,8 @@ The most commonly used agile approaches such as Scrum (Schwaber, 2004) and extre
 
 Organizations need to make software efforts and cost estimates. There are two types of techniques that can be used to do this:
 
-1. `Experience-based techniques` The estimate of future effort requirements is based on the manager's experience of past projects and the application domain. Essentially, the manager makes an informed judgment of what the effort requirements are likely to be.
-2. `Algorithmic cost modeling` In this approach, a formulaic approach is used to compute the project effort based on estimates of product attributes, such as size, and process characteristics, such as experience of staff involved.
+1. `Experience-based techniques.` The estimate of future effort requirements is based on the manager's experience of past projects and the application domain. Essentially, the manager makes an informed judgment of what the effort requirements are likely to be.
+2. `Algorithmic cost modeling.` In this approach, a formulaic approach is used to compute the project effort based on estimates of product attributes, such as size, and process characteristics, such as the experience of staff involved.
 
 ![23_9](res/23_9.png)
 
@@ -104,7 +104,7 @@ $$
 Effort = A \times Size^{B} \times M
 $$
 
-- $A$ is a constant factor which depends on local organizational practices and the type of software that is developed.
+- $A$ is a constant factor that depends on local organizational practices and the type of software that is developed.
 - $Size$ may be either an assessment of the code size of the software or a functionality estimate expressed in function or application points.
 - The value of exponent $B$ usually lies between 1 and 1.5.
 - $M$ is a multiplier made by combining process, product, and development attributes, such as the dependability requirements for the software and the experience of the development team.

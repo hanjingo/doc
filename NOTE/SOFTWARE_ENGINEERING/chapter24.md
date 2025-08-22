@@ -51,7 +51,7 @@ There are two related types of software engineering standards that may be define
 
 ![24_6](res/24_6.png)
 
-*ISO 9001and quality management*
+*ISO 9001 and quality management*
 
 
 

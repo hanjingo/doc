@@ -16,8 +16,8 @@ As well as the need for real-time response, there are other important difference
 
 Stimuli fall into two classes:
 
-1. `Periodic stimuli` These occur at predictable time intervals.
-2. `Aperiodic stimuli` These occur irregularly and unpredictably and are usually signaled using the computer's interrupt mechanism.
+1. `Periodic stimuli:` These occur at predictable time intervals.
+2. `Aperiodic stimuli:` These occur irregularly and unpredictably and are usually signaled using the computer's interrupt mechanism.
 
 ![20_2](res/20_2.png)
 
