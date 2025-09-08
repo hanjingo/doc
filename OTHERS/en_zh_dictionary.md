@@ -821,9 +821,11 @@ alter `/ˈɔːltə/` v. 改变；更改；阉割；切除卵巢
 
 alteration `/ˌɔːltə'reɪʃn/` n. 改变；变更
 
-alternative `/ɔːlˈtəːnətɪv/` adj. 两者择一的；供选择的；非主流的；n. 二者择一；供替代的选择
+alternate `/ɔːlˈtɜːnət/` adj. 轮流的, 交替的；间隔的；代替的；vt. & vi. (使)交替, (使)轮换
 
-> DRV: alternate `/ɔːlˈtɜːnət/` adj. 轮流的, 交替的；间隔的；代替的；vt. & vi. (使)交替, (使)轮换
+> DRV: alternation `/ˌɔːltə'neɪʃn/` n. 交替；轮流；变更
+>
+> DRV: alternative `/ɔːlˈtəːnətɪv/` adj. 两者择一的；供选择的；非主流的；n. 二者择一；供替代的选择
 
 altitude `/ˈæltɪtjuːd/` n. 高度；海拔；高地
 
@@ -6226,6 +6228,8 @@ dangle `/'dæŋɡl/` v. 摇晃；（计算机）悬垂；挂着；追求；n. �
 > DRV: dangling `/'dæŋɡl/` v. 摇晃；（计算机）悬垂；挂着；追求；n. 摇摆；摇摆物
 
 dank `/dæŋk/` adj. 阴湿的；湿气重的；潮湿的
+
+dant `/dænt/` vt. 使 ... 沮丧；使 ... 失去勇气；使 ... 变得胆怯
 
 dapper `/'dæpə(r)/` adj. 衣冠楚楚的；短小精悍的；干净的
 
@@ -18101,7 +18105,9 @@ pace `/peɪs/` n. 速度；步伐；(一)步；v. 踱步；(用步)测；(马)�
 
 pachyderm `/'pækɪdɜːm/` n. 大的厚皮动物(如象和犀牛); <喻>厚脸皮的人; 麻木不仁的人; 迟钝的人
 
-pacific `/pə'sɪfɪk/` adj. 和平的；平静的；温和的; n. 太平洋; adj. 太平洋的
+pacify `/ˈpæsɪfaɪ/` vt. 使平静；抚慰；平息
+
+> DRV: pacific `/pə'sɪfɪk/` adj. 和平的；平静的；温和的; n. 太平洋; adj. 太平洋的
 
 packetization `/pækɪtaɪ'zeɪʃən/` n. （计算机）信息分包
 
@@ -18738,6 +18744,8 @@ perpetual `/pə'petʃuəl/` adj. 永久的；永恒的；一再往复的
 perplex `/pəˈpleks/` v. 使困惑；使糊涂；使复杂化
 
 perquisite `/ˈpɜːkwɪzɪt/` n. (工资以外的)财务补贴,额外收入,津贴,奖金,小费(随职位而得到的)好处,利益,便利,特权,优待
+
+persecute `/ˈpɜːsɪkjuːt/` vt. 迫害；烦扰
 
 perseverance `/ˌpɜːsɪ'vɪərəns/` n. 不屈不挠；毅力；坚韧不拔
 
@@ -21767,6 +21775,8 @@ response `/rɪˈspɒns/` n. 反应；回答；响应；答复
 > DRV: responsiveness `/rɪ'spɒnsɪvnəs/` n. 响应性；反应性
 
 rest `/rest/` n. 剩余的部分；休息；支撑物；休止符；v. 休息；(使)倚靠；使(视线)停留在；搁在；依赖；基于；搁置；埋葬
+
+> DRV: restless `/ˈrestləs/` adj. 焦躁不安的；不平静的；不安宁的
 
 restatement `/ˌriː'steɪtmənt/` n. 再声明；重述
 
@@ -24984,6 +24994,8 @@ superstition `/ˌsuːpə'stɪʃn/` n. 迷信；没有根据的理论
 
 > DRV: superstitious `/ˌsuːpə'stɪʃəs/` adj. 迷信的
 
+superstructure `/ˈsuːpərˌstrʌktʃə/` n. 上层建筑；上部结构
+
 supertype `/suː'pərtaɪp/` n.（计算机）父类型
 
 supervise `/ˈsuːpəvaɪz/` vt. 监督；管理；指导
@@ -27263,6 +27275,8 @@ upshot `/'ʌpʃɒt/` n. 结果；结局；要点
 upside `/'ʌpsaɪd/` n. 上部；上面；上边
 
 upstart `/'ʌpstɑːt/` n. 暴发户；自命不凡的人; adj. 暴发户的；自命不凡的
+
+upswing `/ˈʌpswɪŋ/` n. 向上摆动；上升；增加; vi. 向上摆动；提高；回升
 
 uptick `/'ʌptɪk/` n. 小幅上升；小幅上涨； [商]报升（股票成交价格比上一个交易的为高）
 
