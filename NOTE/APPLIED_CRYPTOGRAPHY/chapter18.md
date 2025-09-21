@@ -150,3 +150,123 @@ No known attack on this scheme is easier than brute force.
 
 *Modified Davies-Meyer*
 
+### Preneel-Bosselears-Govaerts-Vandewalle
+
+This hash function produces a hash value twice the block length of the encryption algorithm: A 64-bit algorithm produces a 128-bit hash.
+
+With a 64-bit block algorithm, the scheme produces two 64-bit hash values, $G_i$ and $H_i$, which are concatenated to produce the 128-bit hash. With most block algorithms, the block size is 64 bits. Two adjacent message blocks, $L_i$ and $R_i$, each the size of the block length, are hashed together:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+G_i = E_{L_i \oplus H_{i - 1}}(R_i \oplus G_{i - 1}) \oplus R_i \oplus G_{i - 1} \oplus H_{i - 1} \\
+H_i = E_{L_i \oplus R_i}(H_{i - 1} \oplus G_{i - 1}) \oplus L_{i} \oplus G_{i - 1} \oplus H_{i - 1}
+$$
+
+### Quisquater-Girault
+
+This scheme generates a hash that is twice the block length and has a hash rate of 1. It has two hash values, $G_i$ and $H_i$, and two blocks, $L_i$ and $R_i$, are hashed together:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+W_i = E_{L_i} (G_{i - 1} \oplus R_i) \oplus R_i \oplus H_{i - 1} \\
+G_i = E_{R_i} (W_i \oplus L_i) \oplus G_{i - 1}) \oplus H_{i - 1} \oplus L_{i} \\
+H_i = W_i \oplus G_{i - 1}
+$$
+
+### LOKI Double-Block
+
+This algorithm is a modification of Quisquater-Girault, specifically designed to work with LOKI. All parameters are as in Quisquater-Girault:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+W_i = E_{L_i \oplus G_{i - 1}} (G_{i - 1} \oplus R_{i}) \oplus R_i \oplus H_{i - 1} \\
+G_i = E_{R_i \oplus H_{i - 1}} (W_i \oplus L_i) \oplus G_{i - 1} \oplus H_{i - 1} \oplus L_i \\
+H_i = W_i \oplus G_{i - 1}
+$$
+
+### Parallel Davies-Meyer
+
+This is yet another attempt at an algorithm with a hash rate of 1 that produces a hash twice the block length:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+G_i = E_{L_i \oplus F_i} (G_{i - 1} \oplus L_i) \oplus L_i \oplus H_{i - 1} \\
+H_i = E_{L_i} (H_{i - 1} \oplus R_i) \oplus R_i \oplus H_{i - 1}
+$$
+
+### Tandem and Abreast Daview-Meyer
+
+![18_11](res/18_11.png)
+
+*Tandem Daview-Meyer*
+
+In above scheme, two modified Daview-Meyer functions work in tandem:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+W_i = E_{G_{i - 1}, M_i} (H_{i - 1}) \\
+G_i = G_{i - 1} \oplus E_{M_i, w_i}(G_{i - 1}) \\
+H_i = W_i \oplus H_{i - 1}
+$$
+![18_12](res/18_12.png)
+
+*Abreast Daview-Meyer*
+
+In above scheme, uses two modified Daview-Meyer functions side-by-side:
+$$
+G_0 = I_G, \text{where } I_G \text{ is a random initial value} \\
+H_0 = I_H, \text{where } I_H \text{ is another random initial value} \\
+G_i = G_{i - 1} \oplus E_{M_i, H_{i - 1}}(\urcorner G_{i - 1}) \\
+H_i = H_{i - 1} \oplus E_{G_{i - 1}, M_i}(H_{i - 1})
+$$
+
+### MDC-2 and MDC-4
+
+![18_13](res/18_13.png)
+
+*MDC-2*
+
+![18_14](res/18_14.png)
+
+*MDC-4*
+
+### AR Hash Function
+
+The AR hash function was developed by Algorithmic Research, Ltd. and has been distributed by the ISO for information purposes only. Its basic structure is a variant of the underlying block cipher (DES in the reference) in CBC mode. The last two ciphertext blocks and a constant are XORed to the current message block and encrypted by the algorithm. The hash is the last two ciphertext blocks computed. The message is processed twice, with two different keys, so the hash function has a hash rate of $1/2$. The first key is `0x0000000000000000`, the second key is `0x2a41522f4446502a`, and `c` is `0x0123456789abcdef`. The result is compressed to a single 128-bit hash value. The details:
+$$
+H_i = E_K(M_i \oplus H_{i - 1} \oplus H_{i - 2} \oplus c) \oplus M_i
+$$
+
+ ### GOST Hash Function
+
+The compression function, $H_i= f(M_i, H_{i - 1})$ (both operands are 256-bit quantities) is defined as follows:
+
+1. Generate four GOST encryption keys by some linear mixing of $M_i$, $H_{i - 1}$, and some constants.
+2. Use each key to encrypt a different 64 bits of $H_{i - 1}$ in ECB mode. Store the resulting 256 bits into a temporary variable, $S$.
+3. $H_i$ is a complex, although linear, function of $S$, $M_i$ and $H_{i - 1}$.
+
+The final hash of $M$ is not the hash of the last block. There are actually three chaining variables: $H_n$ is the hash of the last message block, $Z$ is the sum mod $2^{256}$ of all the message blocks, and $L$ is the length of the message. Given those variables and the padded last block, $M'$, the final hash value is:
+$$
+H = f(Z \oplus M', f(L, f(M', H_n)))
+$$
+
+
+## MESSAGE AUTHENTICATION CODES
+
+A message authentication code, or MAC, is a key-dependent one-way hash function. MACs have the same properties as the one-way hash functions discussed previously, but they also include a key. Only someone with the identical key can verify the hash.
+
+### Message Authenticator Algorithm (MAA)
+
+$$
+v = v <<< 1 \\
+e = v \oplus w \\
+x = ((((e + y) \mod 2^{32}) \vee A \wedge C) * (x \oplus M_i)) \mod 2^{32} - 1 \\
+y = ((((e + x) \mod 2^{32}) \vee B \wedge D) * (y \oplus M_i)) \mod 2^{32} - 2
+$$
+
+### Stream Cipher MAC
+
+![18_15](res/18_15.png)
+
+*Stream cipher MAC*
+
