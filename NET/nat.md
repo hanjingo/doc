@@ -1,68 +1,111 @@
-# Network Address Translation
+ # Network Address Translation (NAT)
 
-[TOC]
+ [TOC]
 
+ ![nat_example](res/nat_example.png)
 
+ Network Address Translation (NAT) is a technique that allows a network device (usually a router or firewall) to rewrite IP addresses and optionally ports in packet headers as packets pass between two networks. NAT is most commonly used to map private (RFC 1918) addresses used in local networks to one or more public IPv4 addresses. This note summarizes common NAT types, how NAT works, its interaction with other protocols, common issues, and migration considerations for IPv6.
 
-![nat_example](res/nat_example.png)
+ ## Why NAT?
 
-*Network address translation*
+ - IPv4 address scarcity: NAT allows many hosts to share a small number of public IPv4 addresses.
+ - Network isolation and simplified address management for private networks.
+ - Policy enforcement and basic topology hiding: NAT can act as a primitive form of access control and conceal internal addressing.
 
-## Tunneling
+ While NAT solved practical deployment problems for IPv4, it breaks the original end-to-end addressing model and introduces complications for some applications and protocols.
 
-![nat_tunneling](res/nat_tunneling.png)
+ ## Basic concepts
 
-*Tunneling*
+ - Inside (local) vs outside (global) addresses: NAT translates between internal (private) addresses and external (public) addresses.
+ - Mapping: a NAT maintains a mapping table that associates an internal endpoint (IP:port) with an external address (and sometimes port).
+ - Types of mappings: one-to-one (static), many-to-one (dynamic, often with port translation), and port-preserving vs port-assigning behaviors.
 
-The link-state routing algorithm we present below is known as `Dijkstra's algorithm`, named after its inventor. Dijkstra's algorithm is iterative and has the property that after the $k$th iteration of the algorithm, the least-cost paths are known to $k$ destination nodes, and among the least-cost paths to all destination nodes, these $k$ paths will have the $k$ smallest costs. Let us define the following notation:
+ ## Common NAT types
 
-- $D(v)$: cost of the least-cost path from the source node to destination $v$ as of this iteration of the algorithm.
-- $p(v)$: previous node (neighbor of $v$) along the current least-cost path from the source to $v$.
-- $N'$: subset of nodes; $v$ is in $N'$ if the least-cost path from the source to $v$ is definitively known.
+ - Static NAT (one-to-one): maps a specific internal IP to a specific external IP. Often used for servers that must be reachable from the public Internet.
 
+ - Dynamic NAT (pool): translates internal addresses to a pool of public addresses on demand. When the pool is exhausted, new connections cannot be created.
 
+ - Port Address Translation (PAT) / NAT overload / masquerading: many internal hosts share a single public address; translations use different external ports to distinguish flows. This is the most common home-router NAT behavior.
 
-## Congestion-Sensitive Routing
+ - Destination NAT (DNAT): rewrites the destination IP (and optionally port) of incoming packets, commonly used for port forwarding to internal servers.
 
-![congestion_sensitive_routing](res/congestion_sensitive_routing.png)
+ - Source NAT (SNAT): rewrites the source IP of outgoing packets (often used in enterprise or cloud environments).
 
-*Oscillations with congestion-sensitive routing*
+ - Hairpin NAT (NAT loopback): allows internal hosts to access an internal server using the public IP and have the NAT loop the traffic back inside.
 
-### Distance Vector
+ ## How NAT operates (simplified packet flow)
 
-The `distance vector (DV)` algorithm is iterative, asynchronous, and distributed. Let $d_x(y)$ be the cost of the least-cost path from node $x$ to node $y$. Then the least costs are related by the celebrated Bellman-Ford equation, namely,
-$$
-d_x(y) = min_v\{c(x, v) + d_v(y)\} \qquad (4.1)
-$$
-where the $min_v$ in the equation is taken over all of x's neighbors. The Bellman-Ford equation is rather intuitive. Indeed, after traveling from $x$ to $v$, if we then tak the least-cost path from $v$ to $y$, the path cost will be $c(x, v) + d_v(y)$. Since we must begin by traveling to some neighbor $v$, the least cost from $x$ to $y$ is the minimum of $c(x, v) + d_v(y)$ taken over all neighbors $v$.
+ 1. Outbound packet from an internal host arrives at the NAT device.
+ 2. NAT consults its mapping table. If no mapping exists, it creates one according to its policy (static, dynamic, or PAT).
+ 3. NAT rewrites the source IP (and possibly source port) to the external address/port and forwards the packet to the outside network.
+ 4. Return packets arriving at the external address are matched against the NAT table; the NAT rewrites destination IP/port back to the internal endpoint and forwards the packet.
 
-The basic idea is as follows. Each node $x$ begins with $D_x(y)$, an estimate of the cost of the least-cost path from itself to node $y$, for all nodes in $N$. Let $D_x = [D_x(y):y\ in\ N]$ be node x's distance vector, which is the vector of cost estimates from $x$ to all other nodes, $y$, in $N$. With the DV algorithm, each node $x$ maintains the following routing information:
+ Mappings usually include a timeout so that ephemeral entries are removed after inactivity. Long-lived inbound mappings (e.g., for servers) are typically static or explicitly configured.
 
-- For each neighbor $v$, the cost $c(x, v)$ is the cost from $x$ to the directly attached neighbor, $v$.
-- Node x's distance vector, that is, $D_x = [D_x(y): y\ in\ N]$, containing x's estimate of tis cost to all destinations, $y$, in $N$.
-- The distance vectors of each of its neighbors, that is, $D_v = [D_v(y): y\ in\ N]$ for each neighbor $v$ of $x$.
+ ## NAT and transport-level identifiers
 
-In the distributed, asynchronous algorithm, from time to time, each node sends a copy of its distance vector to each of its neighbors. When a node $x$ receives a new distance vector from any of its neighbors $v$, it saves v's distance vector, and then uses the Bellman-Ford equation to update its own distance vector as follows:
-$$
-D_x(y) = min_v\{c(x, v) + D_v(y)\} \qquad for\ each\ node\ y\ in\ N
-$$
-![dv_algo](res/dv_algo.png)
+ Because NAT may change ports, protocols that embed IP addresses/ports in the application payload (FTP, SIP, H.323, some VPNs) need special handling. Common mitigations:
 
-*Distance-vector (DV) algorithm*
+ - Application-Level Gateways (ALGs): device components that inspect and rewrite application payloads to update embedded addresses/ports.
+ - Protocol-aware proxies: terminate and re-establish sessions at the NAT.
+ - Use of protocols that support NAT traversal (STUN, TURN, ICE) for peer-to-peer applications.
 
-Conclude LS and DV algorithms with a quick comparison of some of their attributes. Recall that $N$ is the set of nodes (routers) and $E$ is the set of edges (links).
+ ## NAT traversal techniques
 
-- `Message complexity`.
-- `Speed of convergence`.
-- `Robustness`.
+ - STUN (Session Traversal Utilities for NAT): discovers the public mapping created by NAT; works with some NAT types but fails with symmetric NAT.
+ - TURN (Traversal Using Relays around NAT): relays media through a public server; works reliably but consumes bandwidth on the relay.
+ - ICE (Interactive Connectivity Establishment): coordinates candidate addresses (host, reflexive, relay) and attempts connectivity in order of preference.
+ - UPnP and NAT-PMP: protocols that let hosts request port mappings from a local NAT device (common on consumer routers).
 
-In practice, this model and its view of a homogenous set of routers all executing the same routing algorithm is a bit simplistic for at least two important reasons:
+ ## Interaction with tunneling and VPNs
 
-- `Scale`.
-- `Administrative autonomy`.
+ NAT interacts with tunneling protocols in different ways:
 
+ - IPsec in tunnel mode: NAT breaks authentication/integrity checks unless NAT-T (NAT Traversal) is used, which encapsulates ESP in UDP.
+ - GRE and other tunnels: may require special handling (NAT traversal, port mapping) because tunnels encapsulate original headers.
+ - When IP-in-IP or layer-2 tunnels traverse NAT, the outer headers must be translated; this can complicate path MTU discovery.
 
+ ![nat_tunneling](res/nat_tunneling.png)
 
-## Reference
+ ## Problems and limitations
 
-[1] James F. Kurose, Keith W. Ross . Computer Networking: A Top-Down Approach . 6ED
+ - Breaks end-to-end connectivity: inbound connections require explicit port forwarding or static mappings.
+ - Port exhaustion: with PAT, a single IPv4 address only provides ~65k ports; real usable ports are fewer and can be exhausted under heavy NAT usage.
+ - Application incompatibility: protocols embedding addresses in payload often fail without ALGs or proxies.
+ - Performance and statefulness: NAT devices must maintain per-flow state, which adds memory and processing overhead and is a scalability concern for very large deployments.
+ - Logging and traceability: NAT obscures original internal IPs in public logs unless translations are recorded.
+
+ ## Security considerations
+
+ - NAT provides a modest degree of address hiding, but it is not a security boundary. Relying on NAT alone for security is insufficient; firewall policies and access control are still required.
+ - ALGs can introduce vulnerabilities if they are buggy; prefer endpoint-aware traversal (STUN/TURN/ICE) when possible.
+
+ ## NAT and IPv6
+
+ IPv6 was designed to restore end-to-end addressing and avoid the need for IPv4-style NAT. Recommended practices:
+
+ - Prefer native IPv6 addressing without NAT when possible.
+ - Use IPv6 Prefix Delegation and proper address planning instead of NAT.
+ - For IPv4/IPv6 coexistence, various transition mechanisms exist (NAT64, DNS64, 464XLAT). NAT64 provides protocol translation between IPv6 clients and IPv4 servers by combining DNS64 and a stateful translator.
+
+ ## Practical examples and configuration notes
+
+ - Home router (PAT): a single public address with per-flow port translations. Outbound TCP/UDP flows are automatically mapped; inbound flows require static port forwarding.
+ - Data center (SNAT/DNAT): cloud platforms often SNAT instances in private subnets to a set of public IPs and use DNAT/load-balancers for inbound traffic to services.
+
+ When configuring NAT, consider mapping timeouts (short for UDP, longer for TCP), logging of mappings for auditing, and monitoring for port exhaustion.
+
+ ## Troubleshooting checklist
+
+ - Check mapping table on NAT device for expected entry.
+ - Ensure required ports are forwarded for incoming services.
+ - If an application uses embedded IPs, verify ALGs or use an application proxy.
+ - For P2P issues, try STUN/ICE or enable UPnP/NAT-PMP if secure in your environment.
+
+ ## References
+
+ - Jim Kurose, Keith Ross, Computer Networking: A Top-Down Approach
+ - RFC 3022: Traditional IP Network Address Translator (Traditional NAT)
+ - RFC 2663: IP Network Address Translator (NAT)
+ - RFC 6147, RFC 6146: NAT64/DNS64

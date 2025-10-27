@@ -1,178 +1,184 @@
-# SOFTWARE ENGINEERING
+# Software Engineering — Concise Notes
 
 [TOC]
 
+This document summarizes core concepts in software engineering, consolidating content from the provided NOTES. It is organized to give a practical overview: requirements, process models, design and implementation activities, validation and testing, risk-driven approaches, and agile practices. Where helpful, diagrams referenced from the repository are retained.
 
+## 1. Requirements Engineering
 
-## Requirements Engineering
+Requirements capture what the system should do and the constraints it must satisfy. Requirements are commonly classified into:
 
-Software system requirements are often classified as functional requirements or nonfunctional requirements:
+- Functional requirements: the services the system offers, behavior in response to inputs, and required outputs. They may also state explicitly what the system should not do.
+- Non-functional requirements (quality attributes): constraints on how those services are delivered — performance, reliability, security, usability, maintainability, and standards compliance.
 
-1. `Functional requirements:` These are statements of services the system should provide, how the system should react to particular inputs, and how the system should behave in particular situations. In some cases, the functional requirements may also explicitly state what the system should not do.
+Non-functional requirements are often critical to system success; they should be documented, measurable, and testable. See diagram: ![non_functional_requirements](res/non_functional_requirements.png)
 
-2. `Non-functional requirements:` These are constraints on the services or functions offered by the system. They include timing constraints, constraints on the development process, and constraints imposed by standards.
+### The Software Requirements Document (SRD)
 
-   ![non_functional_requirements](res/non_functional_requirements.png)
+An SRD typically organizes requirements by feature and includes acceptance criteria, priorities, and traceability back to stakeholders. Typical SRD elements:
 
-   *Types of non-functional requirements*
+- Introduction and scope
+- Stakeholder and user descriptions
+- Functional requirements (grouped by feature)
+- Non-functional requirements (performance, security, availability)
+- Use cases and user scenarios
+- Glossary and references
 
-### The Software Requirements Document
-
-| Chapter | Description |
-| ------- | ----------- |
-|         |             |
-
-
-
----
-
-
-
-## Software Process Models
-
-The process models:
-
-- `The waterfall model:` This takes the fundamental process activities of specification, development, validation, and evolution and represents them as separate process phases such as requirements specification, software design, implementation, testing, and so on.
-- `Incremental development:` This approach interleaves the activities of specification, development, and validation. The system is developed as a series of versions(increments), with each version adding functionality to the previous version.
-- `Reuse-oriented software engineering` This approach is based on the existence of a significant number of reusable components. The system development process focuses on integrating these components into a system rather than developing them from scratch.
-
-### The Waterfall Model
-
-![waterfall_model](res\waterfall_model.png)
-
-*The waterfall model*
-
-The principal stages of the waterfall model directly reflect the fundamental development activities:
-
-1. Requirements analysis and definition
-2. System and software design
-3. Implementation and unit testing
-4. Integration and system testing
-5. Operation and maintenance
-
-### Incremental Development
-
-![incremental_development](res\incremental_development.png)
-
-*Incremental development*
-
-Incremental development has three important benefits, compared to the waterfall model:
-
-1. The cost of accommodating changing customer requirements is reduced.
-2. It is easier to get customer feedback on the development work that has been done.
-3. More rapid delivery and deployment of useful software to the customer is possible, even if all of the functionality has not been included.
-
-From a management perspective, the incremental approach has two problems:
-
-1. The process is not visible.
-2. System structure tends to degrade as new increments are added.
-
-### Reuse-Oriented Software Engineering
-
-![reuse_oriented_software_engineering](res\reuse_oriented_software_engineering.png)
-
-*Reuse-oriented software engineering*
-
-The intermediate stages in a reuse-oriented process are different:
-
-- `Component analysis:` Given the requirements specification, a search is made for components to implement that specification.
-- `Requirements modification:` During this stage, the requirements are analyzed using information about the components that have been discovered.
-- `System design with reuse:` During this phase, the framework of the system is designed or an existing framework is reused.
-- `Development and integration:` Software that cannot be externally procured is developed, and the components and COTS systems are integrated to create the new system.
+Good requirements are clear, consistent, complete, and verifiable. Requirements validation (reviews, prototypes, acceptance tests) reduces costly rework later.
 
 ---
 
+## 2. Software Process Models
 
+Software process models describe how development activities are organized. The right model depends on project size, risk, stakeholder involvement, and domain.
 
-## Software Process activities
+### 2.1 Waterfall model
 
-### Software Specification
+The waterfall model sequences activities into distinct phases: requirements, system/software design, implementation, integration and testing, and operation/maintenance. It is easy to understand and manage for projects with stable and well-understood requirements, but it is inflexible when requirements change.
 
-Software specification or requirements engineering is the process of understanding and defining what services are required from the system and identifying the constraints on the system's operation and development.
+Diagram: ![waterfall_model](res/waterfall_model.png)
 
-There are four main activities in the requirements engineering process:
+Pros:
+- Clear milestones and deliverables
+- Simple project control and documentation
 
-1. `Feasibility study:` An estimate is made of whether the identified user needs may be satisfied using current software and hardware technologies. The study considers whether the proposed system will be cost-effective from a business point of view and if it can be developed within existing budgetary constraints.
-2. `Requirements elicitation and analysis:` This is the process of deriving the system requirements through observation of existing systems, discussions with potential users and procurers, task analysis, and so on.
-3. `Requirements specification:` Requirements specification is the activity of translating the information gathered during the analysis activity into a document that defines a set of requirements.
-4. `Requirements validation:` This activity checks the requirements for realism, consistency, and completeness.
+Cons:
+- Poor adaptability to change
+- Late delivery of working software
 
-![requirement_engineering_proc](res\requirement_engineering_proc.png)
+### 2.2 Incremental development
 
-*The requirements engineering process*
+In incremental development, the system is delivered in a series of releases (increments). Each increment adds functionality and is validated with stakeholders.
 
-### Software Design And Implementation
+Benefits:
+- Lower initial delivery time; customers get working features earlier
+- Easier to incorporate changes between increments
+- Improved feedback loop with users
 
-Four activities that may be part of the design process for information systems:
+Risks:
+- Architectural decay if increments are not well coordinated
+- Reduced process visibility if work is not well tracked
 
-1. `Architectural design`, where you identify the overall structure of the system, the principal components (sometimes called sub-systems or modules), their relationships, and how they are distributed.
-2. `Interface design`, where you define the interfaces between system components.
-3. `Component design`, where you take each system component and design how it will operate.
-4. `Database design`, where you design the system data structures and how these are to be represented in a database.
+Diagram: ![incremental_development](res/incremental_development.png)
 
-![design_proc](res\design_proc.png)
+### 2.3 Reuse-oriented development
 
-*A general model of the design process*
+This approach focuses on assembling systems from existing components or COTS products. Key activities include component analysis, requirements adaptation, system design with reuse, and integration.
 
-### Software Validation
+Diagram: ![reuse_oriented_software_engineering](res/reuse_oriented_software_engineering.png)
 
-The stages in the testing process are:
+Advantages:
+- Faster delivery and potentially lower cost
+- Leverage proven functionality
 
-1. `Development testing` The components making up the system are tested by the people developing the system.
-2. `System testing` System components are integrated to create a complete system.
-3. `Acceptance testing` This is the final stage in the testing process before the system is accepted for operational use.
+Challenges:
+- Component mismatch and need to adapt requirements
+- Integration and licensing issues
 
-![stages_of_testing](res\stages_of_testing.png)
+### 2.4 Risk-driven (Spiral) model
 
-*Stages of testing*
+The spiral model (Boehm) centers development around iterative risk analysis and reduction. Each loop includes objective setting, risk analysis, development/validation, and planning.
 
-![plan_driven_testing](res\plan_driven_testing.png)
+Diagram: ![boehm_spiral_model](res/boehm_spiral_model.png)
 
-### Boehm's Spiral Model
-
-![boehm_spiral_model](res\boehm_spiral_model.png)
-
-*Boehm's spiral model of the software process*
-
-Each loop in the spiral is split into four sectors:
-
-1. `Objective setting:` Specific objectives for that phase of the project are defined.
-2. `Risk assessment and reduction.` For each of the identified project risks, a detailed analysis is carried out. Steps are taken to reduce the risk.
-3. `Development and validation.` After risk evaluation, a development model for the system is chosen.
-4. `Planning` The project is reviewed and a decision made whether to continue with a further loop of the spiral.
+Use the spiral model when the project has high technical, managerial, or market risk and when incremental prototyping and risk mitigation are essential.
 
 ---
 
+## 3. Core Process Activities
 
+Software engineering splits broadly into three interleaved activities: specification, development (design and implementation), and validation.
 
-## Agile software development
+### 3.1 Specification (Requirements engineering)
 
-Although there are many approaches to rapid software development, they share some fundamental characteristics:
+Main tasks:
 
-1. The processes of specification, design, and implementation are interleaved.
-2. The system is developed in a series of versions.
-3. System user interfaces are often developed using an interactive development system that allows the interface design to be quickly created by drawing and placing icons on the interface.
+1. Feasibility study — evaluate whether the system is achievable and cost-effective given current technology and budget constraints.
+2. Requirements elicitation and analysis — gather needs via interviews, workshops, observation, and document analysis.
+3. Requirements specification — write the SRD with structured, testable requirements.
+4. Requirements validation — ensure requirements are realistic, consistent, and complete (reviews, prototypes, acceptance criteria).
 
-### Agile methods
+Diagram: ![requirement_engineering_proc](res/requirement_engineering_proc.png)
 
-The principles of agile methods:
+### 3.2 Design and Implementation
 
-| Principle            | Description                                                  |
-| -------------------- | ------------------------------------------------------------ |
-| Customer involvement | Customers should be closely involved throughout the development process. Their role is to provide and prioritize new system requirements and to evaluate the iterations of the system. |
-| Incremental delivery | The software is developed in increments, with the customer specifying the requirements to be included in each increment. |
-| People not process   | The skills of the development team should be recognized and exploited. Team members should be left to develop their ways of working without prescriptive processes. |
-| Embrace change       | Expect the system requirements to change and so design the system to accommodate these changes. |
-| Maintain simplicity  | Focus on simplicity in both the software being developed and in the development process. Wherever possible, actively work to eliminate complexity from the system. |
+Design decomposes the system into architecture, components, and interfaces. Typical activities:
 
-### Plan-Driven And Agile Development
+- Architectural design — identify major components, their responsibilities, communication patterns, and deployment topology.
+- Interface design — define clean, versioned interfaces (APIs, data schemas, protocol contracts).
+- Component design — detail algorithms, data structures, and internal interfaces of each component.
+- Database design — model persistent data and map it to a DBMS schema, with attention to integrity constraints and performance.
 
-![plan_driven_and_agile_specification](res/plan_driven_and_agile_specification.png)
+Diagram: ![design_proc](res/design_proc.png)
+
+Good design practices:
+
+- Keep components small and cohesive
+- Define clear separation of concerns and abstraction boundaries
+- Use proven architectural patterns and document key design decisions
+
+### 3.3 Validation and Testing
+
+Testing strategies should be planned early and aligned with requirements. Typical test levels:
+
+1. Development/unit testing — low-level module tests, ideally automated
+2. Integration testing — verify interactions between components and subsystems
+3. System testing — validate the integrated system against requirements
+4. Acceptance testing — stakeholder validation before release
+
+Diagrams: ![stages_of_testing](res/stages_of_testing.png) and ![plan_driven_testing](res/plan_driven_testing.png)
+
+Good testing practices:
+
+- Automate unit and integration tests where possible
+- Use CI pipelines to run tests on every change
+- Maintain test data and environments reproducibly
 
 ---
 
+## 4. Agile Software Development
 
+Agile methods prioritize working software, customer collaboration, and responsiveness to change. Key characteristics:
 
-## REFERENCE
+1. Specification, design, and implementation are interleaved.
+2. The system evolves through frequent increments/iterations.
+3. Strong customer involvement and continuous feedback.
 
-[1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+### Agile principles (summary)
+
+| Principle | Summary |
+|---|---|
+| Customer involvement | Customers continuously provide requirements and feedback. |
+| Incremental delivery | Deliver working increments frequently. |
+| People over process | Empower teams to choose working practices. |
+| Embrace change | Accept requirement changes and adapt. |
+| Simplicity | Keep design and process simple; eliminate unnecessary complexity. |
+
+Diagram comparing plan-driven and agile specification: ![plan_driven_and_agile_specification](res/plan_driven_and_agile_specification.png)
+
+When to prefer agile:
+
+- Requirements are evolving or uncertain
+- Early user feedback is critical
+- Teams are empowered and co-located (or have strong communication channels)
+
+When to prefer plan-driven approaches:
+
+- Safety-critical, highly regulated domains where documentation and traceability are required
+- Large, distributed teams requiring formal coordination
+
+Hybrid approaches often combine agile practices for development with plan-driven governance and documentation for compliance.
+
+---
+
+## 5. Practical Advice & Patterns
+
+- Prioritize requirements with stakeholders and keep acceptance criteria explicit.
+- Invest in automated testing and continuous integration early.
+- Keep architecture resilient to change: design for modularity and loose coupling.
+- Monitor non-functional requirements (SLA metrics) and treat them as first-class requirements.
+- Reuse components when it reduces risk and cost, but validate integration and licensing implications.
+
+## References
+
+- Ian Sommerville, SOFTWARE ENGINEERING, 9th Edition — source material for these notes.

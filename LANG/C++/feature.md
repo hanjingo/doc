@@ -1,12 +1,161 @@
+English| [中文版](feature_zh.md) 
+
+# C++ language features
+
+[TOC]
+
+This file collects concise, practical notes about commonly used C++ language features. It focuses on intent, correct usage, and pitfalls rather than exhaustive details. For full specifications, see the references at the end (cppreference, C++ Core Guidelines, etc.).
+
+## new and operator new
+
+- The expression new T constructs an object of type T. Conceptually it does three things:
+  1. allocate storage (calls operator new(size_t)),
+  2. initialize the object (call constructor),
+  3. return the pointer to the constructed object.
+
+- operator new is a function that performs raw allocation (it does not call constructors). Common overloads:
+  - void* operator new(std::size_t size);            // throws std::bad_alloc on failure
+  - void* operator new(std::size_t size, const std::nothrow_t&) noexcept; // returns nullptr on failure
+  - void* operator new(std::size_t size, void* ptr) noexcept; // placement new (does not allocate)
+
+- Placement new constructs an object in already‑allocated storage:
+
+  char buffer[sizeof(MyType)];
+  MyType* p = new(buffer) MyType(args...); // construct at buffer
+  p->~MyType(); // must explicitly call destructor; memory not freed by delete
+
+- If a class provides a static operator new, it is called for allocations of that class; otherwise the global ::operator new is used.
+
+## explicit
+
+- Use explicit on constructors (and conversion operators) to prevent unintended implicit conversions. Prefer explicit for single‑argument constructors unless implicit conversion is intended and safe.
+
+  explicit MyType(int v);
+
+## const and references
+
+- const marks immutability of an object; prefer const for parameters and member functions when mutation is not intended.
+- const T* : pointer to const T (cannot modify pointee through this pointer).
+- T* const : const pointer to T (pointer value cannot change).
+- const T& : const reference; commonly used for parameter passing to avoid copies.
+
+Rules and common pitfalls:
+- A const object can only call const member functions.
+- Casting away const (const_cast) is undefined if the object was originally declared const and the write actually changes it.
+
+## volatile
+
+- volatile informs the compiler that the value might change for reasons unknown to the optimizer (hardware, signal handlers). It prevents certain optimizations (reload from memory).
+- volatile is NOT a synchronization primitive and does not replace atomics or proper synchronization for multithreaded programs. For multithreading use std::atomic and memory orders.
+
+## virtual, override, final
+
+- Use virtual to declare functions designed for polymorphic behaviour. Mark overriding functions with override to let the compiler check signature compatibility.
+
+  struct Base { virtual void f(); };
+  struct Derived : Base { void f() override; };
+
+- final prevents further overriding or inheritance:
+  - class X final { ... }; // cannot be derived
+  - virtual void g() final; // cannot be overridden in derived classes
+
+## =default and =delete
+
+- =default instructs the compiler to generate the default implementation (constructor, destructor, copy/move). Use it when you want the default but need it explicitly (e.g., when other special members exist).
+- =delete disables a function. Common uses: disable undesired implicit conversions or disable copy/move operations.
+
+  MyType(const MyType&) = delete; // non‑copyable
+
+## static
+
+- static local variables have static storage duration (initialized once). Static data members belong to the class, not instances — define them in a .cpp file.
+- static at namespace scope gives internal linkage (file scope).
+
+## namespaces
+
+- Namespaces organize code and avoid name clashes. Avoid `using namespace` in headers.
+- inline namespaces (since C++11) can help with versioning.
+
+## union
+
+- Unions store one data member at a time. Since C++11 unions can have non‑trivial special members, but accessing inactive members is undefined unless managed carefully (placement new + destructor).
+
+## pointers and references
+
+- Pointers are variables holding addresses; references are aliases and must be initialized.
+- Prefer references when null is not allowed; prefer smart pointers (std::unique_ptr/std::shared_ptr) for ownership management.
+
+## lambda expressions
+
+- Lambdas provide concise anonymous functions: [captures](params)->ret { body }.
+- Capture modes: [=] (by value), [&] (by reference), [this], and mixed forms like [=, &x] or [&, y].
+- mutable allows modification of captured-by-value variables inside the lambda.
+
+Example:
+
+  auto f = [x=42](int y) { return x + y; };
+
+## list‑initialization (braced init)
+
+- Use braced initialization to avoid narrowing conversions and to initialize aggregates and members. Constructor member initialization order follows declaration order in the class, not the order in the initializer list.
+
+## decltype
+
+- decltype(expr) yields the type of an expression (including reference/const qualifiers when appropriate). It is useful in templates and for expressing exact return types.
+
+## variadic templates and parameter packs
+
+- Use variadic templates for type‑safe variadic code: template<typename... Args> void f(Args&&... args);
+- std::index_sequence and fold expressions (since C++17) simplify pack expansion patterns.
+
+## sizeof
+
+- sizeof yields the size in bytes of a type or object at compile time for complete types.
+
+## POD / trivial / standard layout types
+
+- Concepts like POD, trivial, and standard layout describe types whose ABI and initialization semantics are simple. Prefer simpler types when interacting with C APIs or binary layouts.
+
+## pragma, compiler‑specific features
+
+- Pragmas are implementation defined; use them sparingly and document why the pragma is needed.
+
+## miscellaneous
+
+- mutable: allows modification of a data member even in const member functions; use sparingly for cached data or bookkeeping that doesn’t change observable state.
+- execution_character_set, locale, encoding are environment details; prefer portable APIs and clearly document assumptions.
+
+# Practical advice
+
+- Prefer RAII: manage resources via constructors/destructors and smart pointers.
+- Prefer const correctness and small ownership scopes.
+- Use std::atomic for shared mutable state across threads; do not rely on volatile for synchronization.
+- Prefer tested library implementations for complex tasks (lock‑free data structures, thread pools).
+
+# Terminology (short list)
+
+- abstract base class, accessor, constructor, copy constructor, default constructor, destructor, exception, iterator, lambda, member function, move constructor, POD, reference, scope, template, typedef, virtual function, etc.
+
+# References
+
+- cppreference.com — comprehensive standard reference
+- C++ Core Guidelines — best practices
+- Relevant chapters in popular books (see local NOTE/ folders for copies)
+
+---
+
+If you want, I can now:
+- expand one TODO topic (e.g., provide a small, fully compilable placement‑new example), or
+- mark this todo as completed and move to the next file on your list.
 # C++ Feature
 
 [TOC]
 
 
 
-## new
+# new
 
-### new operator
+## new operator
 
 new operator is an operation code, can't be overloaded; 
 
@@ -20,7 +169,7 @@ new operator是**操作符**，**不能被重载**，假如A是一个类，那�
 
 事实上，分配内存这一操作就是由`operator new(size_t)`来完成的，如果类A重载了operator new，那么将调用`A::operator new(size_t )`，否则调用全局`::operator new(size_t )`，后者由C++默认提供。 
 
-### operator new
+## operator new
 
 operator new是**函数**，分为三种形式（前2种只分配空间，不调用构造函数，这点区别于new operator）： 
 
@@ -44,7 +193,7 @@ new (p)A(); 								//调用第三种
 // new (p)A()调用placement new之后，还会在p上调用A::A()，这里的p可以是堆中动态分配的内存，也可以是栈中缓冲。 
 ```
 
-### placement new
+## placement new
 
 placement new是operator new的一个重载版本，placement new允许在一个已经分配好的内存中（栈或堆中）构造一个新的对象。
 
@@ -93,7 +242,7 @@ placement new的好处：
 
 
 
-## explicit
+# explicit
 
 C++中的explicit关键字只能用于修饰只有一个参数的类构造函数, 它的作用是表明该构造函数是显示的, 而非隐式的。
 
@@ -151,7 +300,7 @@ Error:不存在用户定义的从"std::string"到"const BOOK"的适当转换
 ...
 ```
 
-### 显示和隐式声明
+## 显示和隐式声明
 
 隐式声明：
 
@@ -264,7 +413,7 @@ public:  
     string3 = string1;        // 这样也是不行的, 因为取消了隐式转换, 除非类实现操作符"="的重载 
 ```
 
-### 注意事项
+## 注意事项
 
 1. 可以使用一个实参进行调用，不是指构造函数只能有一个形参。
 2. 隐式类类型转换容易引起错误，除非你有明确理由使用隐式类类型转换，否则，将可以用一个实参进行调用的构造函数都声明为explicit。
@@ -276,11 +425,11 @@ public:  
 
 
 
-## const
+# const
 
 const主要是为了程序的健壮型，减少程序出错。
 
-### 最基本的用法
+## 最基本的用法
 
 ```c++
 const int a=100; // b的内容不变,b只能是100也就是声明一个int类型的常量(#define b =100)
@@ -328,7 +477,7 @@ delete (int*)pHeap;
 pHeap = NULL; 
 ```
 
-### 注意事项
+## 注意事项
 
 1. const 和引用联合使用的时候要注意 
 
@@ -488,7 +637,7 @@ pHeap = NULL; 
 
 
 
-## volatile
+# volatile
 
 volatile关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。
 
@@ -511,7 +660,7 @@ const char* cpch;
 volatile char* vpch;
 ```
 
-### 多线程下的volatile
+## 多线程下的volatile
 
 当两个线程都要用到某一个变量且该变量的值会被改变时，应该用 volatile 声明，该关键字的作用是防止优化编译器把变量从内存装入 CPU 寄存器中。
 
@@ -539,7 +688,7 @@ while(bStop);
 
 这个关键字是用来设定某个对象的存储位置在内存中，而不是寄存器中（一般的对象编译器可能会将其的拷贝放在寄存器中，用以加快指令的执行速度）。
 
-### 注意事项
+## 注意事项
 
 1. 可以把一个**非volatile int**赋给**volatile int**，但是不能把**非volatile对象**赋给一个**volatile对象**。
 2. 除了基本类型外，对用户定义类型也可以用volatile类型进行修饰。
@@ -551,9 +700,9 @@ while(bStop);
 
 
 
-## virtual
+# virtual
 
-### 虚函数
+## 虚函数
 
 虚函数的默认参数：
 
@@ -586,7 +735,7 @@ int main(void) {
 Derived::fun(), x = 0
 ```
 
-### 纯虚函数
+## 纯虚函数
 
 纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法：
 
@@ -599,7 +748,7 @@ virtual func() = 0;
 1. 必须在继承中重新声明该函数，否则编译无法通过，使用纯虚函数可以规范接口形式。
 1. 声明纯虚函数的基类无法实例化对象，方便多态。
 
-### 抽象类
+## 抽象类
 
 含有纯虚函数的类被称为抽象类，抽象类可以拥有构造函数；例：
 
@@ -638,7 +787,7 @@ x = 4, y = 5
 ~Base()
 ```
 
-### 注意事项
+## 注意事项
 
 1. 从语法上讲，构造函数和析构函数都可以调用虚函数，但是**不建议**，原因如下：
 
@@ -723,7 +872,7 @@ x = 4, y = 5
 
 
 
-## static
+# static
 
 static 是 C/C++ 中很常用的修饰符，它被用来控制变量的存储方式和可见性。
 
@@ -733,13 +882,13 @@ static 被引入以告知编译器，将变量存储在程序的静态存储区�
 
 如果 static 要修饰一个类，说明这个类是一个静态内部类（注意static只能修饰一个内部类），也就是匿名内部类。
 
-### 作用
+## 作用
 
 - `修饰变量` static修饰的静态局部变量只执行初始化一次（节省内存），而且延长了局部变量的生命周期，直到程序运行结束以后才释放。
 - `修饰全局变量` 这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是 extern 外部声明也不可以（保障数据安全性）。
 - `修饰函数` 则这个函数的只能在本文件中调用，不能被其他文件调用。
 
-### 注意事项
+## 注意事项
 
 - **不能在类声明中定义静态数据成员**，类声明不进行实际的内存分配，静态数据成员要实际地分配空间。
 
@@ -813,11 +962,11 @@ static 被引入以告知编译器，将变量存储在程序的静态存储区�
 
 
 
-## namespace
+# namespace
 
 命名空间提供了一种在大项目中避免名字冲突的方法：在命名空间块内声明的符号被放入一个具名的作用域中，避免这些符号被误认为其他作用域中的同名符号。
 
-### 用法
+## 用法
 
 1. 具名命名空间
 
@@ -896,7 +1045,7 @@ static 被引入以告知编译器，将变量存储在程序的静态存储区�
    }
    ```
 
-### 注意事项
+## 注意事项
 
 1. 不要在头文件的全局作用域中写`using namespace`，这可能导致不合预期的名字冲突。
 
@@ -906,7 +1055,7 @@ static 被引入以告知编译器，将变量存储在程序的静态存储区�
 
 
 
-## union
+# union
 
 联合体是特殊的类类型，它在同一个时刻只能保有其一个**非静态**数据成员；各成员共享一段内存空间， 一个联合变量的长度等于各成员中最长的长度；具有以下特征：
 
@@ -940,9 +1089,9 @@ static union {
 
 
 
-## C++指针
+# C++指针
 
-### 常量指针
+## 常量指针
 
 常量指针：指针指向的对象是常量，那么指针所指的对象不能被更改，但是指针可以指向别处。
 
@@ -965,7 +1114,7 @@ const int *c = &a; // 这是合法的，非法的是对c的使用
 const int *d = &b; // b是常量，d可以指向b，d被赋值为b的地址是合法的
 ```
 
-### 指针常量
+## 指针常量
 
 指针常量：指针是一个常量，这个指针无法指向别处，但是其指向的值可以改变。
 
@@ -988,7 +1137,7 @@ a[0] = 'x';  // 合法，我们并没有限制a为常量指针（指向常量的
 *c[0] = 'x'; // 合法，与上面的操作一致
 ```
 
-### 指向常量的指针常量
+## 指向常量的指针常量
 
 指向常量的指针常量：一个指针常量，指向的对象也是一个常量；
 
@@ -1009,7 +1158,7 @@ const char *const d = &b;
 
 ```
 
-### 指针与引用的区别
+## 指针与引用的区别
 
 - 指针是一个指向地址的变量，引用是地址的别名；
 - 引用使用时无需解引用`(*)`，指针需要解引用；
@@ -1020,7 +1169,7 @@ const char *const d = &b;
 - 指针需要分配内存区域，引用不需要；
 - `++`,`--`等操作的意义不一样。
 
-### 智能指针
+## 智能指针
 
 具体见：[STL#智能指针](stl.md)
 
@@ -1030,7 +1179,7 @@ const char *const d = &b;
 
 
 
-## lambda
+# lambda
 
 C++11的一大亮点就是引入了Lambda表达式，利用Lambda表达式，可以方便的定义和创建匿名函数；Lambda表达式完整的声明格式如下：
 
@@ -1038,7 +1187,7 @@ C++11的一大亮点就是引入了Lambda表达式，利用Lambda表达式，可
 [捕获的外部变量] (形参) 是否可以修改捕获的变量值 异常-> return 返回类型{ ... }
 ```
 
-### 值捕获
+## 值捕获
 
 类似于值传递，被捕获的变量在Lambda表达式创建时通过值拷贝的方式传入，Lambda对传入值的修改**不影响**外部的值；例：
 
@@ -1051,7 +1200,7 @@ int main()
 }
 ```
 
-### 引用捕获
+## 引用捕获
 
 类似于引用传递，在被捕获的变量前加一个引用说明符`&`，Lambda对传入值的修改**会影响**外部的值；例：
 
@@ -1064,7 +1213,7 @@ int main()
 }
 ```
 
-### 隐式捕获
+## 隐式捕获
 
 编译器根据函数体中的代码来推断需要捕获的变量，这种方式称之为隐式捕获；隐式捕获有2种方式：
 
@@ -1086,7 +1235,7 @@ int main()
 }
 ```
 
-### 混合方式
+## 混合方式
 
 Lambda支持多种捕获方式组合使用，捕获形式表：
 
@@ -1100,7 +1249,7 @@ Lambda支持多种捕获方式组合使用，捕获形式表：
 | `[=, &x]`       | 变量x以引用形式捕获，其余变量以传值形式捕获                  |
 | `[&, x]`        | 变量x以值的形式捕获，其余变量以引用形式捕获                  |
 
-### mutable
+## mutable
 
 在Lambda中，如果以传值方式捕获外部变量，则函数体中不能修改该外部变量，否则会引发编译错误；使用mutable可以避免编译错误，并且使Lambda修改值捕获的外部变量；例：
 
@@ -1114,7 +1263,7 @@ int main()
 }
 ```
 
-### 形参限制
+## 形参限制
 
 1. 参数列表中不能有默认参数
 2. 不支持可变参数
@@ -1126,7 +1275,7 @@ int main()
 
 
 
-## list-initialization
+# list-initialization
 
 初始化类成员有2种方式：
 
@@ -1143,7 +1292,7 @@ int main()
 - `引用类型` 引用必须在定义的时候初始化，并且不能重新赋值，所以也要写在初始化列表里面；
 - `没有默认构造函数的类类型` 因为引用初始化列表可以不必调用默认构造函数来初始化，而是直接调用拷贝构造函数初始化；
 
-### 初始化顺序
+## 初始化顺序
 
 成员是按照它们在**类中出现**的顺序进行初始化，而不是按照它们在**初始化列表中出现**的顺序初始化；例：
 
@@ -1164,7 +1313,7 @@ struct foo
 
 
 
-## override
+# override
 
 如果派生类在虚函数声明时使用了`override`描述符，那么该函数必须重载其基类中的同名函数，否则代码将无法通过编译，提高了编译器检查的安全性。
 
@@ -1194,7 +1343,7 @@ struct DerivedTop : public DerivedMid
 
 
 
-## final
+# final
 
 用途：
 
@@ -1233,7 +1382,7 @@ struct DerivedTop : public DerivedMid
 
 
 
-## =default和=delete
+# =default和=delete
 
 如果在一个类中自己定义了一个构造函数，那么编译器将不会再给你一个默认构造函数；如果强制加上`=default`，就可以重新获得默认构造函数。
 
@@ -1272,23 +1421,13 @@ void Widget::processPointer<void>(void*) = delete; // 仍然具备public访问�
 
 
 
-## pragma
+# pragma
 
-### message
-
-TODO
-
-### warning
+## message
 
 TODO
 
-[返回顶部](#C++特性)
-
----
-
-
-
-## decltype
+## warning
 
 TODO
 
@@ -1298,7 +1437,7 @@ TODO
 
 
 
-## mutable
+# decltype
 
 TODO
 
@@ -1308,7 +1447,7 @@ TODO
 
 
 
-## 可变参数
+# mutable
 
 TODO
 
@@ -1318,7 +1457,7 @@ TODO
 
 
 
-## execution_character_set
+# 可变参数
 
 TODO
 
@@ -1328,7 +1467,7 @@ TODO
 
 
 
-## sizeof
+# execution_character_set
 
 TODO
 
@@ -1338,17 +1477,27 @@ TODO
 
 
 
-## 可变参数
-
-### va_list
+# sizeof
 
 TODO
 
-### 初始化列表
+[返回顶部](#C++特性)
+
+---
+
+
+
+# 可变参数
+
+## va_list
 
 TODO
 
-### 模板展开
+## 初始化列表
+
+TODO
+
+## 模板展开
 
 std::index_sequence
 
@@ -1360,9 +1509,9 @@ TODO
 
 
 
-## 数据类型
+# 数据类型
 
-### POD
+## POD
 
 TODO
 
@@ -1370,7 +1519,7 @@ TODO
 
 
 
-## Terminology
+# Terminology
 
 - `abstract base class` is a class from which no objects may be created; it is only used as a base class for the 
 - `abstract data type`
@@ -1415,7 +1564,7 @@ TODO
 
 
 
-## 参考
+# 参考
 
 [1] [C++参考手册](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
 

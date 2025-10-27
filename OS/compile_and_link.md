@@ -1,14 +1,14 @@
-# Compile&Link
+# Compile & Link — concise guide
 
 [TOC]
 
+This file condenses the key compile-and-link concepts (lexing, parsing, automata, object formats, and linking) into a practical reference. Diagrams in `res/` illustrate the pipeline and object layouts.
 
-
-## Overview Of The Compilation System
+## Overview of the compilation system
 
 ![the_compilation_system](res/the_compilation_system.png)
 
-*The compilation system*
+The compilation pipeline transforms source code into an executable image. Typical stages include preprocessing, lexical analysis, parsing, semantic checks, IR generation and optimization, code generation, assembly, and linking.
 
 
 

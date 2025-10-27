@@ -1,57 +1,8 @@
+[English](concurrency.md) | 中文版
+
 # C++并发编程
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [std::thread](#stdthread)
-    - [创建线程](#创建线程)
-    - [等待线程完成](#等待线程完成)
-    - [线程分离](#线程分离)
-    - [线程函数传参](#线程函数传参)
-    - [转移线程函数所有权](#转移线程函数所有权)
-    - [在运行时选择线程数量](#在运行时选择线程数量)
-    - [标识线程](#标识线程)
-* [std::mutex](#stdmutex)
-    - [RAII机制](#raii机制)
-    - [如何避免死锁](#如何避免死锁)
-    - [转移锁的所有权](#转移锁的所有权)
-    - [使用`boost::share_mutex`保护很少更新的数据结构](#使用boostshare_mutex保护很少更新的数据结构)
-    - [递归锁](#递归锁)
-* [std::atomic](#stdatomic)
-    - [原子操作](#原子操作)
-        + [CAS](#cas)
-        + [指针运算](#指针运算)
-    - [无锁布尔原子类型](#无锁布尔原子类型)
-    - [指定内存访问顺序](#指定内存访问顺序)
-    - [栅栏](#栅栏)
-* [std::future](#stdfuture)
-    - [异步运行](#异步运行)
-    - [线程间一次性值传递](#线程间一次性值传递)
-    - [异步函数封装](#异步函数封装)
-* [std::condition_variable](#stdcondition_variable)
-    - [与std::mutex配合](#与stdmutex配合)
-    - [与std::packaged_task配合](#与stdpackaged_task配合)
-    - [std::condition_variable_any](#stdcondition_variable_any)
-* [无锁并发](#无锁并发)
-    - [优缺点](#优缺点)
-    - [设计准则](#设计准则)
-    - [ABA问题](#aba问题)
-    - [无锁线程安全队列](#无锁线程安全队列)
-    - [无锁线程安全栈](#无锁线程安全栈)
-* [并发经验](#并发经验)
-    - [并发库比较](#并发库比较)
-    - [性能分析](#性能分析)
-    - [定位并发错误](#定位并发错误)
-* [示例](#示例)
-    - [并发版本的std::for_each](#并发版本的stdfor_each)
-    - [并发版本的std::find](#并发版本的stdfind)
-    - [线程池的实现](#线程池的实现)
-* [总结](#总结)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-
+[TOC]
 
 ## std::thread
 

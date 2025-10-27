@@ -1,51 +1,78 @@
-# Logic And Proofs
+# Logic and Proofs
 
 [TOC]
 
+## Introduction
 
+This note summarizes core concepts in propositional logic, predicate logic, and common proof techniques used in discrete mathematics. It collects definitions of logical connectives and quantifiers, standard equivalences and inference rules, types of proofs (direct, contrapositive, contradiction, induction, proof by cases), and short examples to illustrate the methods.
 
-## Definition
+## Propositional logic — connectives and truth
 
-**Definition** Let $p$ be a proposition. The negation of $p$, denoted by $\neg{p}$ (also denoted by $\over{p}$), is the statement "It is not the case that $p$".
+- Proposition: a declarative statement that is true or false (but not both).
+- Negation: $\neg p$ is "not $p$"; it has the opposite truth value of $p$.
+- Conjunction: $p\land q$ is "$p$ and $q$"; true iff both $p$ and $q$ are true.
+- Disjunction: $p\lor q$ is "$p$ or $q$" (inclusive); true iff at least one of $p,q$ is true.
+- Exclusive-or: $p\oplus q$ is true iff exactly one of $p,q$ is true.
+- Conditional: $p\rightarrow q$ is "if $p$ then $q"; false only when $p$ is true and $q$ is false.
+- Biconditional: $p\leftrightarrow q$ is "$p$ iff $q$"; true when $p$ and $q$ have the same truth value.
 
-> The proposition $\neg p$ is read "not $p$". The truth value of the negation of $p$, $\neg p$, is the opposite of the truth value of $p$.
+Truth tables enumerate all truth-value combinations and are the basic tool to verify equivalences and compute compound propositions.
 
-**Definition** Let $p$ and $q$ be propositions. The `conjunction` of $p$ and $q$, denoted by $p \and q$, is the proposition "p and q". The conjunction $p \and q$ is true when both $p$ and $q$​ are true and is false otherwise.
+## Logical equivalence and common identities
 
-**Definition** Let $p$ and $q$ be propositions. The `disjunction` of $p$ and $q$, denoted by $p \or q$, is the proposition "p or q". The disjunction $p \or q$ is false when both $p$ and $q$ are false and is true otherwise.
+- Logical equivalence: $p\equiv q$ means $p\leftrightarrow q$ is a tautology.
+- De Morgan's laws: $\neg(p\land q)\equiv\neg p\lor\neg q$ and $\neg(p\lor q)\equiv\neg p\land\neg q$.
+- Distribution, associativity, commutativity, and double negation are standard algebraic rules for logical formulas.
+- Contrapositive: $p\rightarrow q$ is equivalent to $\neg q\rightarrow\neg p$ (useful in proofs).
 
-**Definition** Let $p$ and $q$ be propositions. The `exclusive` or of $p$ and $q$, denoted by $p \oplus q$ (or $p$ XOR $q$), is the proposition that is true when exactly one of $p$ and $q$ is true and is false otherwise.
+Inference rules (examples): Modus ponens: from $p$ and $p\rightarrow q$ infer $q$. Modus tollens: from $\neg q$ and $p\rightarrow q$ infer $\neg p$.
 
-**Definition** Let $p$ and $q$ be propositions. The `conditional statement` $p \rightarrow q$ is the proposition "if p, then q". The conditional statement $p \rightarrow q$ is false when $p$ is true and $q$ is false, and true otherwise. In the conditional statement $p \rightarrow q$, $p$ is called the hypothesis (or `antecedent` or `premise`) and $q$​ is called the `conclusion` (or `consequence`).
+## Predicates and quantifiers
 
-**Definition** Let $p$ and $q$ be propositions. The `biconditional statement` $p \leftrightarrow q$ is the proposition "$p$ if and only if $q$". The biconditional statement $p \leftrightarrow q$ is true when $p$ and $q$ have the same truth values, and is false otherwise. Biconditional statements are also called `bi-implications`.
+- Predicate: a propositional function $P(x)$ depending on variable(s).
+- Universal quantifier: $\forall x\,P(x)$ means "$P(x)$ holds for all $x$ in the domain." A single counterexample disproves a universal claim.
+- Existential quantifier: $\exists x\,P(x)$ means "there exists $x$ in the domain with $P(x)$ true."
 
-**Definition** A `bit string` is a sequence of zero more bits. The length of this string is the number of bits in the string.
+Negation of quantified statements: $\neg(\forall x\,P(x))\equiv\exists x\,\neg P(x)$ and $\neg(\exists x\,P(x))\equiv\forall x\,\neg P(x)$.
 
-**Definition**: A compound proposition that is always true, no matter what the truth values of the propositional variables that occur in it, is called a `tautology`. A compound proposition that is always false is called a `contradiction`. A compound proposition that is neither a tautology nor a contradiction is called a `contingency`.
+Order of quantifiers matters: $\forall x\exists y\,Q(x,y)$ is generally not equivalent to $\exists y\forall x\,Q(x,y)$.
 
-**Definition**: The compound propositions $p$ and $q$ are called `logically equivalent` if $p \leftrightarrow q$ is a tautology. The notation $p \equiv q$ denotes that $p$ and $q$ are logically equivalent.
+## Arguments, validity, and proof structure
 
-**Definition**: The `universal quantification` of $P(x)$ is the statement "P(x) for all values of x in the domain." The notation $\forall x P(x)$ denotes the universal quantification of $P(x)$. Here $\forall$ is called the **universal quantifier**. We read $\forall x P(x)$ as "for all $xP(x)$" or "for every $xP(x)$". An element for which $P(x)$ is false is called a **counterexample** to $\forall x P(x)$.
+- An argument is a sequence of premises and a conclusion. An argument is valid if whenever all premises are true, the conclusion must be true.
+- A proof is a sequence of logical deductions from axioms or premises that establishes a conclusion.
 
-**Definition**: The `existential quantification` of P(x) is the proposition "There exists an element x in the domain such taht P(x)." We use the notation $\exists x P(x)$ for the existential quantification of $P(x)$. Here $\exists$ is called the `existential quantifier`.
+Common proof styles:
+- Direct proof: assume hypotheses and derive the conclusion by legal steps.
+- Proof by contrapositive: to prove $p\rightarrow q$, show $\neg q\rightarrow\neg p$.
+- Proof by contradiction: assume the negation of the desired conclusion and derive a contradiction.
+- Proof by cases: split into exhaustive cases and prove the statement in each case.
+- Existence proofs: constructive (exhibit an example) or nonconstructive (use logic or counting arguments to show existence).
+- Uniqueness proofs: show existence and that any two satisfying objects must be equal.
 
-**Definition**: Statements involving predicates and quantifiers are `logically equivalent` if and only if they have the same truth value no matter which predicates are substituted into these statements and which domain of discourse is used for the variables in these propositional functions. We use the notation $S \equiv T$ to indicate that two statements $S$ and $T$ involving predicates and quantifiers are logically equivalent.
+Template for a typical induction proof (see Induction notes for more): base case, inductive hypothesis, inductive step, conclude by induction.
 
-**Definition**: An `argument` in propositional logic is a sequence of propositions. All but the final proposition in the argument are called `premises,` and the final proposition is called the `conclusion`. An argument is `valid` if the truth of all its premises implies that the conclusion is true. An `argument form` in propositional logic is a sequence of compound propositions involving propositional variables. An argument form is `valid` if no matter which particular propositions are substituted for the propositional variables in its premises, the conclusion is true if the premises are all true.
+## Examples (short)
 
-**Definition**: The integer $n$ is `even` if there exists an integer $k$ such that $n = 2k$, and $n$ is `odd` if there exists an integer $k$ such that $n = 2k + 1$. (Note that every integer is either even or odd, and no integer is both even and odd.) Two integers have the `same parity` when both are even or both are odd; they have `opposite parity` when one is even and the other is odd.
+- Parity: prove that the sum of two even integers is even. Direct proof: let $m=2k$, $n=2\ell$, then $m+n=2(k+\ell)$.
 
-**Definition**: The real number $r$ is `rational` if there exist integers $p$ and $q$ with $q \neq 0$ such that $r = p / q$. A real number that is not rational is called `irrational`.
+- Irrationality of $\sqrt2$ (classical contradiction): assume $\sqrt2=p/q$ in lowest terms, derive that both $p$ and $q$ are even, contradicting lowest terms.
 
+- Proof by contrapositive: to show "if $n^2$ is even then $n$ is even", prove contrapositive: if $n$ is odd then $n^2$ is odd.
 
+## Useful proof techniques and tips
 
-## Theorem
+- Always state clearly what you assume and what you must prove.
+- For quantifiers, specify the domain of discourse.
+- When using induction, check base cases carefully (sometimes more than one base may be needed).
+- Use counterexamples to disprove universal statements or purported equivalences.
 
-**THEOREM**: FERMAT'S LAST THEOREM The equation $x^n + y^n = z^n$ has no solutions in integers x, y, and z with $xyz \neq 0$ whenever $n$ is an integer with $n > 2$.
+## Common definitions used in examples
 
-
+- Even/odd: $n$ is even if $\exists k\in\mathbb{Z}$ with $n=2k$; odd if $\exists k\in\mathbb{Z}$ with $n=2k+1$.
+- Rational/irrational: real $r$ is rational if $\exists p,q\in\mathbb{Z}$, $q\neq0$, with $r=p/q$; otherwise irrational.
 
 ## References
 
-[1] Kenneth H. Rosen . Discrete Mathematics and Its Applications . 8Edition
+[1] Kenneth H. Rosen. Discrete Mathematics and Its Applications. 8th Edition.
+

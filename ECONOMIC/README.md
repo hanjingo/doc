@@ -5,4 +5,8 @@
 - [Finance Model](finance.md)
 - [High Frequency Trading](hft.md)
 - [Economic Terminology](terminology.md)
-- [Ten Principles](10principles.md)
+- [Principles](principles.md)
+
+## Investments
+
+- [Instruments](instruments.md)

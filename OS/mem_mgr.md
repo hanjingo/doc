@@ -1,155 +1,166 @@
-# Memory Manage
+
+# Memory Management
 
 [TOC]
 
+This note summarizes practical memory-system concepts from a programmer's perspective (drawing on CS:APP). It explains the memory hierarchy, caches, virtual memory, page tables, the TLB, demand paging and page replacement policies, copy-on-write/shared mappings, and common allocator concerns. Diagrams in `res/` illustrate the main ideas.
 
+## Memory hierarchy
 
-## Memory Hierarchy
+Real systems arrange storage as a hierarchy with different capacities, latencies, and costs. Typical levels are:
 
-In practice, a `memory system` is a hierarchy of storage device with different capacities, costs, and access times.
+- Registers and CPU-local storage (fastest, smallest)
+- L1/L2/L3 caches (on-chip/off-chip caches)
+- Main memory (DRAM)
+- Persistent storage (SSD/HDD)
 
-`Random access memory (RAM)` comes in two varieties -- static and dynamic. Static RAM (SRAM) is faster and significantly more expensive than dynamic RAM (DRAM).
+SRAM is usually used for caches (fast, expensive). DRAM is used for main memory (slower, cheaper).
 
 ![mem_hierarchy](res/mem_hierarchy.png)
 
-### Disk
+Disk capacity and timings
 
-The maximum number of bits that can be recorded by a disk is known as its `maximum capacity`. or simply `capacity`. Disk capacity is determined by the following technology factors:
+Disk capacity depends on recording density, track density, and platter count. Disks transfer data in sector-sized blocks. Access time for a sector includes:
 
-- `Recording density` $(bits/in)$. The number of bits that can be squeezed into a 1-inch segment of a track.
-- `Track density` $(tracks/in)$. The number of tracks that can be squeezed into a 1-inch segment of the radius extending from the center of the platter.
-- `Areal density` $(bits/in^2)$. The product of the recording density and the track density.
+- Seek time: moving the head to the right track
+- Rotational latency: waiting for the sector under the head
+- Transfer time: serial transfer of the sector contents
 
-The capacity of a disk is given by the following formula:
-$$
-Capacity = \frac{\#bytes}{sector} \times \frac{average \# sectors}{track} \times \frac{\#tracks}{surface} \times \frac{\#surfaces}{platter} \times \frac{\#platters}{disk}
-$$
-Disks read and write data in sector-size blocks. The `access time` for a sector has three main components: 
+These overheads mean large sequential transfers are far more efficient than many small random accesses.
 
-- `Seek time`. To read the contents of some target sector, the arm first positions the head over the track that contains the target sector. The time required to move the arm is called the `seek time`. 
-- `Rotational latency`. Once the head is in position over the track, the drive waits for the first bit of the target sector to pass under the head. 
-- `Transfer time`. When the first bit of the target sector is under the head, the drive can begin to read or write the contents of the sector.
+### Cache metrics
 
-### Cache
+Important cache metrics:
 
-different kinds of cache misses:
+- Miss rate = #misses / #references
+- Hit rate = 1 - miss rate
+- Hit time: time to serve a request from the cache
+- Miss penalty: extra time to fetch the block from lower-level memory
 
-- `compulsory misses` or `cold misses
-- `conflict miss`
+Common miss types:
 
-Cache performance is evaluated with a number of metrics:
+- Compulsory (cold) misses: first reference to a block
+- Capacity misses: working set larger than the cache
+- Conflict misses: multiple blocks map to same cache set (for set-associative caches)
 
-- `Miss rate`. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as $\#misses / \#references$.
-- `Hit rate`. The fraction of memory references that hit. It is computed as $1-miss$ rate.
-- `Hit time`. The time to deliver a word in the cache to the CPU, including the time for set selection, line identification, and word selection. Hit time is on the order of several clock cycles for L1 caches.
-- `Miss penalty`. Any additional time required because of a miss. The penalty for L1 misses served from L2 is on the order of 10 cycles; from L3, 50 cycles; and from main memory, 200 cycles.
+Performance: throughput (bytes/sec) and latency are both important; many workloads are latency-sensitive.
 
-### Performance
+## Virtual memory: goals and benefits
 
-The rate that a program reads data from the memory system is called the `read throughput`, or sometimes the `read bandwidth`. If a program reads $n$ bytes over a period of $s$ seconds, then the read throughput over that period is $n/s$, typically expressed in units of megabytes per second (MB/s).
+Virtual memory (VM) gives each process the illusion of a large, private, contiguous address space. Key benefits:
 
-
-
-## Virtual Memory
-
-`Virtual memory` is an abstraction that provides each process with the illusion that it has exclusive use of the main memory. Each process has the same uniform view of memory, which is known as its `virtual address space`.
+- Efficient use of physical memory by keeping only active pages in RAM (DRAM acts as a cache for the address space).
+- Simpler programming model: each process has a uniform virtual address space.
+- Protection: isolate processes from each other and from the kernel.
 
 ![virtual_mem](res/virtual_mem.png)
 
+### Virtual address space layout
+
+Typical regions in a user process virtual address space:
+
+- Program text (code)
+- Initialized and uninitialized data (globals)
+- Heap (grows up via malloc/brk/munmap)
+- Shared libraries (mapped regions)
+- Stack (grows down)
+- Kernel space (in a separate, protected region)
+
 ![virtual_mem_org](res/virtual_mem_org.png)
 
-### Advantage
+## Pages, page tables, and the MMU
 
-With one clean mechanism, virtual memory provides three important capabilities: 
+Virtual memory is organized in pages (commonly 4 KiB, though large pages exist). The page table maps virtual page numbers (VPNs) to physical page frames. Each page table entry (PTE) typically contains:
 
-1. It uses main memory efficiently by treating it as a cache for an address space stored on disk, keeping only the active areas in main memory and transferring data back and forth between disk and memory as needed.
-2. It simplifies memory management by providing each process with a uniform address space.
-3. It protects the address space of each process fro corruption by other processes.
+- A valid/present bit
+- The physical frame number (PFN) or a pointer to disk location when not present
+- Access bits (read/write/execute), dirty bit, and other control flags
 
-### Virtual Addres
-
-Modern processors use a form of addressing known as `virtual addressing`. With virtual addressing, the CPU accesses main memory by generating a `virtual address`(VA), which is converted to the appropriate physical address before being sent to main memory. The task of converting a virtual address to a physical one is known as `address translation`. Like exception handling, address translation requires close cooperation between the CPU harware and the operating system. Dedicated hardware on the CPU chip called the `memory management unit`(MMU) translates virtual addresses on the fly, using a lookup table stored in main memory whose contents are managed by the operating system.
-
-![virtual_addr_usage](res/virtual_addr_usage.png)
-
-![virtual_addr](res/virtual_addr.png)
-
-- `Program code and data`. Code begins at the same fixed address for all processes, followed by data locations that correspond to global C variables.
-- `Heap`. Unlike the code and data areas, which are fixed in size once the process begins running, the heap expands and contracts dynamically at run time as a result of calls to C standard library routines such as `malloc` and `free`.
-- `Shared libraries`. It is an area that holds the code and data for `shared libraries` such as the C standard library and the math library.
-- `Stack`. At the top of the user's virtual address space is the `user stack` that the compiler uses to implement function calls.
-- `Kernel virtual memory`. It is reserved for the kernel. Application programs are not allowed to read or write the contents of this area or to directly call functions defined in the kernel code. Instead, they must invoke the kernel to perform these operations.
-
-### VM Page
-
-A page table is an array of `page table entries`(PTEs). Each page in the virtual address space has a PTE at a fixed offset in the page table. For our purposes, we will assume that each PTE consists of a `valid` bit and an $n$-bit address field. The valid bit indicates whether the virtual page is currently cached in DRAM. If the valid bit is set, the address field indicates the start of the corresponding physical page in DRAM where the virtual page is cached. If the valid bit is not set, then a null address indicates that the virtual page has not yet been allocated. Otherwise, the address points to the start of the virtual page on disk.
-
-![vm_page_hit](res/vm_page_hit.png)
-
-In virtual memory parlance, a DRAM cache miss is known as a page fault.
-
-![vm_page_fault_before](res/vm_page_fault_before.png)
-
-![vm_page_fault_after](res/vm_page_fault_after.png)
-
-Any modern computer system must provide the means for the operating system to control access to the memory system. A user process should not be allowed to modify its read-only code section. Nor should it be allowed to read or modify any of the code and data structures in the kernel. It should not be allowed to read or write the private memory of other processes, and it should not be allowed to modify any virtual pages that are shared with other processes, unless all parties explicitly allow it (via calls to explicit interprocess communication system calls).
-
-![vm_mem_protection](res/vm_mem_protection.png)
-
-*Using VM to provide page-level memory protection.*
-
-### Address Translation
-
-Formally, address translation is a mapping between the elements of an $N$-element virtual address space (VAS) and an $M$-element physical address space (PAS),
-$$
-MAP: VAS \rightarrow PAS \cup \phi
-$$
-where
-$$
-MAP(A) = 
-\begin{cases}
-\cfrac A', &if\ data\ at\ virtual\ addr. A\ are\ present\ at\ physical\ addr. A'\ in\ PAS\\
-\phi, &if\ data\ at\ virtual\ addr. A\ are\ not present\ in\ physical\ memory
-\end{cases}
-$$
-![addr_trans_symbol](res/addr_trans_symbol.png)
-
-*Summary of address tranlation symbols*
-
-How the MMU uses the page table to perform this mapping. A control register in the CPU, the `page table base register`(PTBR) points to the current page table. The $n$-bit virtual address has two components: a $p$-bit `virtual page offset`(VPO) and an $(n - p)$-bit `virtual page number`(VPN). The MMU uses the VPN to select the appropriate PTE.
+The CPU's MMU uses the current page table (pointed to by a register like CR3 on x86) to translate virtual addresses to physical addresses on every memory reference.
 
 ![addr_trans_with_page_tbl](res/addr_trans_with_page_tbl.png)
 
-*Address translation with a page table*
+### Multi-level page tables and page-table sizes
 
+To avoid huge contiguous page tables, architectures use multi-level page tables (two-level, three-level, or more). Each level uses part of the VPN to index a smaller table. This reduces memory usage for sparse address spaces.
 
+### Translation Lookaside Buffer (TLB)
 
-## Shared Object Mapping
-
-An object can be mapped into an area of virtual memory as either a `shared object` or a `private object`. If a process maps a shared obejct into an area of its virtual address space, then any writes that the process makes to that area are visible to any other processes that have also mapped the shared object into their virtual memory. Further, the changes are also reflected in the original object on disk.
-
-Changes made to an area mapped to a private object, on the other hand, are not visible to other processes, and any writes that the process makes to the area are not reflected back to the object on disk. A virtual memory area into which a shared object is mapped is often called a `shared area`. Similarly for a `private area`.
-
-![shared_obj](res/shared_obj.png)
-
-*A shared object. (a) After process 1 maps the shared object. (b) After process 2 maps the same shared object. (Note that the physical pages are not necessarily contiguous.)*
-
-Private objects are mapped into virtual memory using a clever technique known as copy-on-write. A private object begins life in exactly the same way as a shared object, with only one copy of the private object stored in physical memory.
-
-![copy_on_write](res/copy_on_write.png)
-
-*A private copy-on-write object. (a) After both processes have mapped the private copy-on-write object. (b) After process 2 writes to a page in the private area.*
-
-
-
-## Summary
-
-![page_hit_and_fault](res/page_hit_and_fault.png)
+Because walking page tables is expensive, CPUs use a TLB — a small, fast cache of recent virtual-to-physical translations. TLB hits are critical to performance; TLB misses force a page-table walk (software or hardware-assisted) and can be expensive.
 
 ![tlb_hit_and_miss](res/tlb_hit_and_miss.png)
 
+## Demand paging and page faults
 
+Most systems use demand paging: pages are loaded into physical memory only when first accessed. If a referenced page is not present, the hardware raises a page-fault exception. The kernel's page-fault handler:
 
-## Reference
+1. Determines the faulting virtual address and reason (access violation vs not-present)
+2. Locates or allocates a physical page (possibly reading it from swap or the mapped file)
+3. Updates the page table and PTE flags
+4. Restarts the faulting instruction
 
-[1] Randal E. Bryant, David R. O'Hallaron . COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE . 3ED
+Image sequence for page fault handling is illustrated in `res/vm_page_fault_before` and `res/vm_page_fault_after`.
+
+## Page replacement policies
+
+When physical memory is full, the OS chooses victim pages to evict. Common strategies:
+
+- Least Recently Used (LRU) or approximations (CLOCK) — favors evicting pages not recently referenced
+- FIFO — simple but poor in practice
+- Working-set algorithms — try to maintain the active working set
+
+Replacement policy interacts with workload behavior; swapping introduces large latency spikes.
+
+## Copy-on-write and shared mappings
+
+Shared mappings (e.g., shared libraries or explicit mmap with MAP_SHARED) cause writes to be visible to all processes mapping the same region. Private mappings (MAP_PRIVATE) use copy-on-write (COW): the kernel maps the same physical page read-only into multiple processes; on a write, the kernel makes a private copy and updates the PTE.
+
+![shared_obj](res/shared_obj.png)
+
+![copy_on_write](res/copy_on_write.png)
+
+Copy-on-write is heavily used at fork() to avoid copying the entire address space.
+
+## Fragmentation: internal vs external
+
+- Internal fragmentation: allocated region contains unused space (e.g., fixed-size blocks with wasted slack)
+- External fragmentation: free memory is split into small pieces making large contiguous allocations difficult
+
+Virtual memory (paging) largely eliminates external fragmentation for user allocations, but internal fragmentation and allocator-level fragmentation remain concerns.
+
+## Memory allocators and kernel interfaces
+
+At user level, allocators (malloc, free, jemalloc, tcmalloc) manage heap memory and implement strategies to reduce fragmentation and contention. They typically obtain memory from the kernel via brk/sbrk or mmap/munmap.
+
+Kernel interfaces for memory management include:
+
+- brk/sbrk: grow/shrink the heap (simple, less flexible)
+- mmap/munmap: map files or anonymous memory, used for large allocations and shared mappings
+
+Choosing the right interface and allocator matters for latency and scalability.
+
+## Large pages and NUMA
+
+Large pages (huge pages) reduce TLB pressure and can improve throughput for big-memory workloads. On NUMA machines, memory access latency depends on the memory's proximity to the CPU — NUMA-aware allocation and thread placement are important for performance.
+
+## Security features
+
+- Address Space Layout Randomization (ASLR) randomizes base addresses of segments to make exploitation harder
+- NX/DEP (non-executable pages) mark data pages non-executable
+- Page protection bits prevent unauthorized access
+
+## Summary and practical tips
+
+- Measure first: use perf, vmstat, iostat, and custom benchmarks to locate memory bottlenecks.
+- Use appropriate page sizes: default 4 KiB for general use; huge pages for TLB-sensitive workloads.
+- Avoid unnecessary page faults: touch large allocations (if appropriate) or use madvise to influence kernel behavior.
+- Use mmap for large or shared allocations; use tuned allocators for concurrent workloads.
+- Use O_DIRECT, fsync, and tuned flushing when building storage systems that need strict durability or predictable latency.
+
+![page_hit_and_fault](res/page_hit_and_fault.png)
+
+## References
+
+- Randal E. Bryant and David R. O'Hallaron, Computer Systems: A Programmer's Perspective (CS:APP), 3rd ed.
+- Relevant man pages: mmap(2), mprotect(2), brk(2), madvise(2)
+

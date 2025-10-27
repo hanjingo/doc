@@ -1,155 +1,147 @@
-# Process, Thread And Coroutine
+# Processes, Threads, and Coroutines
 
 [TOC]
 
+This note compares processes, threads, and coroutines from a programmer's perspective. It clarifies their semantics, trade-offs, common pitfalls (signals, synchronization, deadlocks, races), and when to prefer one model over another. Diagrams in `res/` illustrate context switch and signal handling.
 
+## Concurrency models — short overview
 
-Modern operating systems provide three basic approaches for building concurrent programs:
+Modern systems commonly use three approaches to structure concurrent programs:
 
-- `Processes`. With this approach, each logical control flow is a process that is scheduled and maintained by the kernel. Since processes have separate virtual address spaces, flows that want to communicate with each other must use some kind of explicit interprocess communication (IPC) mechanism.
-- `I/O multiplexing`. This is a form of concurrent programming where applications explicitly schedule their own logical flows in the context of a single process. Logical flows are modeled as state machines that the main program explicitly transitions from state to state as a result of data arriving on file descriptors. Since the program is a single process, all flows share the same address space.
-- `Threads`. Threads are logical flows that run in the context of a single process and are scheduled by the kernel. You can think of threads as a hybrid of the other two approaches, scheduled by the kernel-like process flows and sharing the same virtual address space like I/O multiplexing flows.
+- Processes: each logical flow runs in its own OS process with an independent virtual address space.
+- Threads: multiple lightweight flows (threads) share a process address space and are scheduled by the kernel (or sometimes in user space).
+- Coroutines: cooperative, user-space routines that explicitly yield control; they are lightweight and enable event-driven designs without kernel scheduling overhead.
 
-## Process
+Each model trades isolation, performance, and programming complexity differently. Processes provide strong isolation but higher IPC overhead; threads share memory and are easier for shared-state programs but require careful synchronization; coroutines give fine-grained control with minimal scheduling cost but move complexity to the application.
 
-A `process` is the operating system's abstraction for a running program. By `concurrently`, we mean that the instructions of one process are interleaved with the instructions of another process.
+## Processes
 
-### Pros And Cons
+A process is the OS abstraction for a running program. From a programmer's perspective, concurrency between processes means their instructions interleave on the CPU(s).
 
-Pros and Cons of Processes:
+Pros:
 
-- Having separate address spaces for processes is both an advantage and a disadvantage. It is impossible for one process to accidentally overwrite the virtual memory of another process, which eliminates a lot of confusing failures -- an obvious advantage.
-- On the other hand, separate address spaces make it more difficult for processes to share state information. To share information, they must use explicit IPC(interprocess communications) mechanisms.
-- Another disadvantage of process-based designs is that they tend to be slower because the overhead for process control and IPC is hight.
+- Strong isolation: separate address spaces prevent accidental memory corruption across processes.
+- Fault containment: a crashed process usually does not corrupt other processes.
 
-### Process Context Switch
+Cons:
 
-The operating system kernel implements multitasking using a higher-level form of exceptional control flow known as a `context switch`.
+- IPC overhead: communication requires explicit mechanisms (pipes, sockets, shared memory, etc.).
+- Higher creation and context-switch cost compared to threads.
 
-![proc_ctx_switch](res/proc_ctx_switch.png)
+### Context switching
 
-The kernel maintains a `context` for each process. The context is the state that the kernel needs to restart a preempted process. It consists of the values of objects such as the general-purpose registers, the floating-point registers, the program counter, user's stack, status registers, kernel's stack, and various kernel data structures such as a `page table` that characterizes the address space, a `process table` that contains information about the current process, and a `file table` that contains information about the files that the process has opened.
+The kernel stores a process's context (registers, program counter, kernel stack, page table pointer, and other OS structures) and restores it to resume execution. Context switches may be triggered by interrupts, blocking syscalls, or preemption.
 
-A context switch can occur while the kernel is executing a system call on behalf of the user.
+See `res/proc_ctx_switch.png` for a conceptual diagram.
 
-A context switch can also occur as a result of an interrupt.
+### Process states and lifecycle
 
-### Process States
+Typical states: running, runnable (ready), blocked (waiting), stopped, and terminated. Special behaviors include orphan adoption by `init` (PID 1) and zombie processes when children exit before being reaped.
 
-From a programmer's perspective, we can think of a process as being in one of three states:
+### Signals
 
-- `Running`. The process is either executing on the CPU or waiting to be executed and will eventually be scheduled by the kernel.
-- `Stopped`. The execution of the process is suspended and will not be scheduled. A process stops as a result of receiving a SIGSTOP, SIGTSTP, SIGTTIN, or SIGTTOU signal, and it remains stopped until it receives a SIGCONT signal, and it remains stopped until it receives a SIGCONT signal, at which point it becomes running again.
-- `Terminated`. The process is stopped permanently. A process becomes terminated for one of three reasons: (1) receiving a signal whose default action is to terminate the process, (2) returning from the main routine, or (3) calling the `exit` function.
+Signals are asynchronous notifications delivered by the kernel to processes to indicate events (e.g., SIGSEGV, SIGCHLD). Delivery has two phases: the kernel marks a signal pending for a process, and when the process next executes, the kernel arranges to deliver it (default action, ignore, or call a user-installed handler).
 
-When a parent process terminates, the kernel arranges for the `init` process to become the adopted parent of any orphaned children. The `init` process, which has a PID of 1, is created by the kernel during system start-up, never terminates, and is the ancestor of every process. If a parent process terminates without reaping its zombie children, then the kernel arranges for the init process to reap them. 
+Key points:
 
-### Signal
+- Signals are coarsely multiplexed: multiple deliveries of the same signal type may be merged into a single pending event.
+- Applications can block signals (sigprocmask), handle them (sigaction), or ignore them.
+- Signal handlers run asynchronously and must be careful about reentrancy and the limited-safe-list of functions they can call.
 
-A signal is a small message that notifies a process that an event of some type has occurred in the system.
+See `res/sig_handle.png` for an illustration.
 
-Each signal type corresponds to some kind of system event. Low-level hardware exceptions are processed by the kernel's exception handlers and would not normally be visible to user processes. Signals provide a mechanism for exposing the occurrence of such exceptions to user processes.
+## Threads
 
-The transfer of a signal to a destination process occurs in two distinct steps:
+Threads are multiple flows of control within a single process. Threads share the same virtual address space and most OS resources; each thread has its own registers, stack, and thread-local storage.
 
-1. `Sending a signal`. The kernel sends (delivers) a signal to a destination process by updating some state in the context of the destination process. The signal is delivered for one of two reasons: (1) The kernel has detected a system event such as a divide-by-zero error or the termination of a child process. (2) A process has invoked the `kill` function (discussed in the next section) to explicitly request the kernel to send a signal to the destination process. A process can send a signal to itself.
+Advantages:
 
-2. `Receiving a signal`. A destination process `receives` a signal when it is forced by the kernel to react in some way to the delivery of the signal. The process can either ignore the signal, terminate, or catch the signal by executing a user-level function called a `signal handler`.
+- Lower creation/context-switch cost than processes.
+- Easier sharing of in-process state (no IPC required).
 
-![sig_handle](res/sig_handle.png)
+Challenges:
 
-A signal that has been sent but not yet received is called a `pending signal`. At any point in time, there can be at most one pending signal of a particular type. If a process has a pending signal of type $k$, then any subsequent signals of type $k$ sent to that process are not queued; they are simply discarded. A process can selectively `block` the receipt of certain signals. When a signal is blocked, it can be delivered, but the resulting pending signal will not be received until the process unblocks the signal.
+- Synchronization: shared memory requires locks, atomics, or other coordination.
+- Safety: data races and deadlocks are common pitfalls.
 
-A pending signal is received at most once. For each process, the kernel maintains the set of pending signals in the pending bit vector, and the set of blocked signals in the blocked bit vector. The kernel sets bit $k$ in pending whenever a signal of type $k$ is delivered and clears bit $k$ in pending whenever a signal of type $k$ is received.
+### Thread termination and joining
 
-Each signal type has a predefined `default` action, which is one of the following:
+- A thread returns from its top-level routine or calls pthread_exit to terminate.
+- Threads can be joinable (allowing another thread to wait and reap resources) or detached (resources freed automatically).
+- The process `exit` terminates all threads in the process.
 
-- The process terminates.
-- The process terminates and dumps core.
-- The process stops (suspends) until restarted by a SIGCONT signal.
-- The process ignores the signal.
+### Thread safety and reentrancy
 
-Linux provides implicit and explicit mechanisms for blocking signals:
+- A function is thread-safe if it behaves correctly when invoked concurrently.
+- Reentrant functions neither use nor mutate shared state and are safe to call from signal handlers or recursively.
+- Common sources of thread-unsafety: global state, static buffers, and functions that return pointers to internal static storage.
 
-- `Implicit blocking mechanism`. By default, the kernel blocks any pending signals of the type currently being processed by a handler.
-- `Explicit blocking mechanism`. Applications can explicitly block and unblock selected signals using the `sigprocmask` function and its helpers.
+Illustration: `res/reentrant.png` shows relationships between reentrant, thread-safe, and thread-unsafe routines.
 
----
+### Synchronization primitives
 
+- Mutexes and condition variables (pthread mutex/cond): standard blocking primitives for mutual exclusion and coordination.
+- Semaphores: counting semaphores provide signaling and resource counting semantics (P and V operations).
+- Atomics and lock-free algorithms: use hardware atomic instructions (compare-and-swap) for low-latency synchronization.
 
+Deadlock: occurs when a cycle of threads waits on resources held by each other. Visual reasoning (progress graphs) helps understand possible deadlocks — see `res/progress_graph_deadlock.png`.
 
-## Thread
+Design tips:
 
-A thread is a logical flow that runs in the context of a process.
+- Keep critical sections small and avoid holding locks during blocking operations.
+- Use try-locks, lock ordering, or higher-level concurrency patterns to avoid deadlocks.
 
-Thread execution differs from processes in some important ways:
+## Coroutines
 
-- a thread context is much smaller than a process context.
-- a thread context switch is faster than a process context switch.
-- thread unlike processes, are not organized in a rigid parent-child hierarchy.
+Coroutines (also called fibers, green threads, or user-space threads in some contexts) are cooperatively scheduled routines that yield control explicitly. They are implemented in user space and do not require kernel scheduling for each switch.
 
-### Terminate
+Types and terminology:
 
-A thread terminates in one of the following ways:
+- Stackful coroutines (fibers): maintain their own stack and can suspend from deep call stacks.
+- Stackless coroutines: rely on the language/compiler to transform code into state machines (async/await, generators).
+- Green threads: user-space threads that the runtime schedules onto kernel threads.
 
-- The thread terminates `implicitly` when its top-level thread routine returns.
-- The thread terminates `explicitly` by calling the `pthread_exit` function.
-- Some peer thread calls the Linux `exit` function, which terminates the process and all threads associated with the process.
-- Another peer thread terminates the current thread by calling the `pthread_cancel` function with the ID of the current thread.
+Advantages:
 
-A joinable thread can be reaped and killed by other threads. Its memory resources (such as the stack) are not freed until it is reaped by another thread. In contrast, a detached thread cannot be reaped or killed by other threads. Its memory resources are freed automatically by the system when it terminates.
+- Extremely lightweight: thousands or millions of coroutines are feasible because switching is cheap.
+- Deterministic switching points: because yields are explicit, reasoning about control flow can be easier than preemptive threading.
 
-### Thread Safe
+Limitations:
 
-Thus, registers are never shared, whereas virtual memory is always shared.
+- Cooperative scheduling: a misbehaving coroutine that never yields can starve others.
+- Blocking syscalls: a blocking syscall in a coroutine will block the underlying kernel thread unless the runtime arranges nonblocking operations (or the syscall is proxied).
 
-A function is said to be `thread-safe` if and only if it will always produce correct results when called repeatedly from multiple concurrent threads. If a function is not thread-safe, then we say it is `thread-unsafe`.
+Common implementations and APIs:
 
-We can identify four (nondisjoint) classes of thread-unsafe functions:
+- C/C++: Boost.Context/Boost.Fiber, libco, custom assembly contexts.
+- Languages with built-in support: Go goroutines (M:N scheduler in runtime), Python asyncio (stackless coroutines with async/await), Kotlin coroutines, Rust async/await (futures + executor).
+- User-space runtimes often combine coroutines with an event loop or IO scheduler to handle blocking I/O via nonblocking primitives.
 
-- Class 1: Functions that do not protect shared variables.
-- Class 2: Functions that keep state across multiple invocations.
-- Class 3: Functions that return a pointer to a static variable.
-- Class 4: Functions that call thread-unsafe functions.
+Coroutine scheduling models:
 
-If all function arguments are passed by value (i.e., no pointers) and all data references are to local automatic stack variables (i.e., no references to static or global variables), then the function is `explicitly reentrant`, in the sense that we can assert its reentrancy regardless of how it is called.
+- Single-threaded event loop: coroutines run on one thread and use nonblocking I/O (common in Node.js, asyncio).
+- Work-stealing or M:N runtimes: schedule many coroutines over a pool of worker threads (Go, some coroutine libraries).
 
-`reentrant functions`: that are characterized by the property that they do not reference `any` shared data when they are called by multiple threads.
+Programming patterns and best practices:
 
-![reentrant](res/reentrant.png)
+- Keep coroutine entry/exit simple; prefer libraries that integrate with the platform's nonblocking I/O.
+- Avoid long-running CPU work in coroutines; offload to worker threads or thread pools.
+- Use structured concurrency where available (scopes that ensure coroutines are cancelled/joined cleanly).
 
-*Relationships between the sets of reentrant, thread-safe, and thread-unsafe functions.*
+Examples (conceptual):
 
-Races usually occur because programmers assume that threads will take some particular trajectory through the execution state space, forgetting the golden rule that threaded programs must work correctly for any feasible trajectory.
+- Async I/O pattern: await read() -> process -> await write(). The runtime drives readiness notifications and resumes coroutines on completion.
+- Producer/consumer: coroutines push items to an async queue; consumers await on the queue.
 
-### Semaphore
+## Choosing a model
 
-Semaphores introduce the potential for a nasty kind of run-time error, called `deadlock`, where a collection of threads is blocked, waiting for a condition that will never be true.
+- Use processes for isolation, fault containment, and when components are loosely coupled.
+- Use threads when you need true parallel CPU work and shared-memory communication.
+- Use coroutines for high-concurrency I/O-bound systems where cheap context switches and low memory overhead matter.
 
-![progress_graph_deadlock](res/progress_graph_deadlock.png)
+Hybrid approaches are common: e.g., a pool of kernel threads each running many coroutines to combine parallelism with massive concurrency.
 
-*Progress graph for a program that can deadlock.*
+## References
 
-A semaphore, $s$ is a global variable with a nonnegative integer value that can only be manipulated by two special operations, called $P$ and $V$:
-
-- $P(s)$: If $s$ is nonzero, then $P$ decrements $s$ and returns immediately. If $s$ is zero, then suspend the thread until $s$ becomes nonzero and the thread is restarted by a $V$ operation. After restarting, the $P$ operation decrements $s$ and returns control to the caller.
-- $V(s)$: The $V$ operation increments $s$ by 1. If there are any threads blocked at a $P$ operation waiting for $s$ to become nonzero, then the $V$ operation restarts exactly one of these threads, which then completes its $P$ operation by decrementing $s$​.
-
-A semaphore that is used in this way to protect shared variables is called a `binary semaphore` because its value is always 0 or 1.
-
-Binary semaphores whose purpose is to provide mutual exclusion are often called `mutexes`.
-
----
-
-
-
-## Coroutine
-
----
-
-
-
-## Reference
-
-[1] Randal E. Bryant, David R. O'Hallaron . COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE . 3ED
+- Randal E. Bryant and David R. O'Hallaron, Computer Systems: A Programmer's Perspective (CS:APP), 3rd ed.
 

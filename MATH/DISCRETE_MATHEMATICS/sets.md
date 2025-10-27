@@ -1,81 +1,81 @@
-# Sets
+﻿# Sets
 
 [TOC]
 
+## Introduction
 
+This note summarizes the basic notions and commonly used operations on sets in discrete mathematics. It is concise and practical: definitions, common identities, cardinality, Cartesian products, and brief remarks on countability and computability.
 
-## Definition
+## Basic definitions
 
-**Definition**: A `set` is an unordered collection of distinct objects, called `elements or members` of the set. A set is said to `contain` its elements. We write $a \in A$ to denote that $a$ is an element of the set A. The notation $a \notin A$ denotes that $a$ is not an element of the set A.
+- Set: An unordered collection of distinct objects called elements or members. We write a \in A to mean "a is an element of A" and a \notin A to mean "a is not an element of A." 
 
-**Definition**: Two sets are `equal` if and only if they have the same elements. Therefore, if $A$ and $B$ are sets, then $A$ and $B$ are equal if and only if $\forall x (x \in A \leftrightarrow x \in B)$. We write $A = B$ if $A$ and $B$ are equal sets.
+- Equality: Two sets A and B are equal (A = B) iff they contain exactly the same elements, i.e. \forall x (x \in A \leftrightarrow x \in B).
 
-**Definition**: The set $A$ is a `subset` of $B$, and $B$ is a `superset` of $A$, if and only if every element of $A$ is also an element of $B$. We use the notation $A \subseteq B$ to indicate that $A$ is a subset of the set $B$. If, instead, we want to stress that $B$ is a superset of $A$, we use the equivalent notation $B \supe A$. (So, $A \subseteq B$ and $B \supe A$ are equivalent statements.)
+- Empty set: The unique set with no elements, denoted by \varnothing (or {}).
 
-**THE EMPTY SET** There is a special set that has no elements. This set is called the **empty set**, or **null set**, and is denoted by $\phi$. The empty set can also be denoted by $\{\}$(that is, we represent the empty set with a pair of braces that encloses all the elements in this set).
+- Subset / superset: A is a subset of B (A \subseteq B) iff every element of A is also in B. Equivalently, B is a superset of A (B \supseteq A). If A \subseteq B and A \neq B we write A \subsetneq B.
 
-**Definition**: Let $S$ be a set. If there are exactly $n$ distinct elements in $S$ where $n$ is a nonnegative integer, we say that $S$ is a `finite set` and that $n$ is the `cardinality` of $S$. The cardinality of $S$ is denoted by $|S|$.
+- Power set: The power set P(S) is the set of all subsets of S.
 
-**Definition**: A set is said to be `infinite` if it is not finite.
+- Ordered n-tuple: (a_1, a_2, ..., a_n) is an ordered collection where order matters.
 
-**Definition**: Given a set $S$, the `power set` of $S$ is the set of all subsets of the set $S$. The power set of $S$ is denoted by $P(S)$.
+- Cartesian product: For sets A and B, the Cartesian product A \times B = \{(a,b) \mid a \in A, b \in B\}. More generally, \prod_{i=1}^n A_i = A_1 \times \cdots \times A_n is the set of n-tuples with component i taken from A_i.
 
-**Definition**: The `ordered n-tuple`$(a_1, a_2, ..., a_n)$ is the ordered collection that has $a_1$ as its first element, $a_2$ as its second element, ..., and $a_n$ as its $n$th element.
+## Set operations
 
-**Definition**: Let $A$ and $B$ be sets. The `Cartesian product` of $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs $(a, b)$, where $a \in A$ and $b \in B$. Hence: $A \times B = \{(a, b) | a \in A \wedge b \in B\}$.
+- Union: A \cup B = \{x \mid x \in A \text{ or } x \in B\}.
+- Intersection: A \cap B = \{x \mid x \in A \text{ and } x \in B\}.
+- Difference (relative complement): A \setminus B = \{x \mid x \in A \text{ and } x \notin B\}.
+- Complement: Given a universal set U, the complement of A is \overline{A} = U \setminus A.
+- Disjoint: A and B are disjoint if A \cap B = \varnothing.
 
-**Definition**: The `Cartesian product` of the sets $A_1, A_2, ..., A_n$ denoted by $A_1 \times A_2 \times ... \times A_n$, is the set of ordered $n$-tuples $(a_1, a_2, ..., a_n)$, where $a_i$ belongs to $A_i$ for $i = 1, 2, ..., n$. In other words, $A_1 \times A_2 \times ... A_n = \{(a_1, a_2, ..., a_n)|a_i \in A_i\ for\ i = 1, 2, ..., n\}$.
+## Common identities
 
-**Definition**: Let $A$ and $B$ be sets. The `union` of the sets $A$ and $B$, denoted by $A \cup B$, is the set that contains those elements that are either in $A$ or in $B$, or in both.
+Below are frequently used set identities (standard names shown):
 
-**Definition**: Let $A$ and $B$ be sets. The `intersection` of the sets $A$ and $B$, denoted by $A \cap B$, is the set containing those elements in both $A$ and $B$.
+- Identity laws: A \cap U = A, \quad A \cup \varnothing = A.
+- Domination laws: A \cup U = U, \quad A \cap \varnothing = \varnothing.
+- Idempotent laws: A \cup A = A, \quad A \cap A = A.
+- Complementation: \overline{\overline{A}} = A.
+- Commutative laws: A \cup B = B \cup A, \quad A \cap B = B \cap A.
+- Associative laws: A \cup (B \cup C) = (A \cup B) \cup C, and similarly for intersection.
+- Distributive laws: A \cup (B \cap C) = (A \cup B) \cap (A \cup C), and dual for intersection.
+- De Morgan's laws: \overline{A \cap B} = \overline{A} \cup \overline{B}, \quad \overline{A \cup B} = \overline{A} \cap \overline{B}.
+- Absorption laws: A \cup (A \cap B) = A, \quad A \cap (A \cup B) = A.
+- Complement laws: A \cup \overline{A} = U, \quad A \cap \overline{A} = \varnothing.
 
-**Definition**: Two sets are called `disjoint` if their intersection is the empty set.
+These identities are useful for algebraic manipulation of set expressions and for proofs.
 
-**Definition**: Let $A$ and $B$ sets. The `difference` of $A$ and $B$, denoted by $A - B$, is the set containing those elements that are in $A$ but not in $B$. The difference of $A$ and $B$ is also called the `complement of` $B$ `with respect to` $A$.
+## Cardinality and countability
 
-**Definition**: let $U$ be the universal set. The `complement` of the set $A$, denoted by $\overline{A}$, is the complement of $A$ with respect to $U$. Therefore, the complement of the set $A$ is $U - A$.
+- Cardinality: If a set S has exactly n distinct elements (n a nonnegative integer), we say S is finite and write |S| = n. Otherwise S is infinite.
 
-| Set Identities                                               |                     |
-| ------------------------------------------------------------ | ------------------- |
-| Identity                                                     | Name                |
-| $A \cap U = A$<br>$A \cup \phi = A$                          | Identity laws       |
-| $A \cup U = U$<br>$A \cap \phi = \phi$                       | Domination laws     |
-| $A \cup A = A$<br>$A \cap A = A$                             | Idempotent laws     |
-| $\overline{(\overline{A})} = A$                              | Complementation law |
-| $A \cup B = B \cup A$<br>$A \cap B = B \cap A$               | Commutative laws    |
-| $A \cup (B \cup C) = (A \cup B) \cup C$<br>$A \cap (B \cap C) = (A \cap B) \cap C$ | Associative laws    |
-| $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$<br>$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$ | Distributive laws   |
-| $\overline{A \cap B} = \overline{A} \cup \overline{B}$<br>$\overline{A \cup B} = \overline{A} \cap \overline{B}$ | De Morgan's laws    |
-| $A \cup (A \cap B) = A$<br>$A \cap (A \cup B) = A$           | Absorption laws     |
-| $A \cup \overline{A} = U$<br>$A \cap \overline{A} = \phi$    | Complement laws     |
+- Equal cardinality: Sets A and B have the same cardinality (|A| = |B|) iff there exists a bijection (one-to-one correspondence) between A and B.
 
-**Definition**: The `union` of a collection of sets is the set that contains those elements that are members of at least one set in the collection.
+- Comparisons: If there exists an injection from A to B, we write |A| \le |B|. If |A| \le |B| and |B| \le |A| then |A| = |B| (SchroederBernstein theorem).
 
-> We use the notation $A_1 \cup A_2 \cup ... \cup A_n = \underset{i=1}{\overset{n}{\bigcup}} A_i$ to denote the union of the sets $A_1, A_2, ..., A_n$.
+- Countability: A set is countable if it is finite or has the same cardinality as the natural numbers. Examples: \mathbb{N}, \mathbb{Z}, and \mathbb{Q} are countable; \mathbb{R} is uncountable.
 
-**Definition**: The `intersection` of a collection of sets is the set that cotains those elements that are members of all the sets in the collection.
+## Computability (brief remark)
 
-> We use the notation $A_1 \cap A_2 \cap ... \cap A_n = \overset{n}{\underset{i=1}{\bigcap}} A_i$ to denote the intersection of the sets $A_1, A_2, ..., A_n$.
+- A function is computable if there is an algorithm (or program) that, given an input, produces the function's value in finite time. Functions with no such algorithm are called uncomputable (undecidable in certain settings).
 
-**Definition**: The sets $A$ and $B$ have the same `cardinality` if and only if there is a one-to-one correspondence from $A$ to $B$. When $A$ and $B$ have the same cardinality, we write $|A| = |B|$.
+## Theorems (basic)
 
-**Definition**: If there is a one-to-one function from $A$ to $B$, the cardinality of $A$ is less than or the same as the cardinality of $B$ and we write $|A| \leq |B|$. Moreover, when $|A| \leq |B|$ and $A$ and $B$ have different cardinality, we way that the cardinality of $A$ is less than the cardinality of $B$ and we write $|A| < |B|$.
+- For every set S: \varnothing \subseteq S and S \subseteq S.
+- If A and B are countable sets, then A \cup B is countable.
+- SchroederBernstein theorem: If |A| \le |B| and |B| \le |A|, then |A| = |B| (there exists a bijection between A and B).
 
-**Definition**: We say that a function is **computable** if there is a computer program in some programming language that finds the values of this function. If a function is not computable we say it is **uncomputable**.
+## Examples
 
+- Example 1: If A = \{1,2,3\} and B = \{2,3,4\} then A \cup B = \{1,2,3,4\}, A \cap B = \{2,3\}, and A \setminus B = \{1\}.
+- Example 2: For sets A = \{0,1\} and B = \{a,b\}, the Cartesian product A \times B = \{(0,a),(0,b),(1,a),(1,b)\}.
 
+## Remarks and references
 
-## Theorem
-
-**THEOREM**: For every set $S, (i) \phi \subseteq S$ and $S \subseteq S$.
-
-**THEOREM**: If $A$ and $B$ are countable sets, then $A \cup B$ is also countable.
-
-**THEOREM**: If $A$ and $B$ are sets with $|A| \leq |B|$ and $|B| \leq |A|$, then $|A| = |B|$. In other words, if there are one-to-one functions $f$ from $A$ to $|B|$ and $g$ from $B$ to $A$, then there is a one-to-one correspondence between $A$ and $B$.
-
-
+- This note focuses on elementary set theory used in discrete mathematics. For deeper treatments see standard references (Rosen, or set-theory texts for advanced topics such as ordinals, cardinals, and ZF axioms).
 
 ## References
 
-[1] Kenneth H. Rosen . Discrete Mathematics and Its Applications . 8Edition
+1. Kenneth H. Rosen, Discrete Mathematics and Its Applications, 8th ed.

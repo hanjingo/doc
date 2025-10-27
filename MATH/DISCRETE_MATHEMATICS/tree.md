@@ -1,67 +1,75 @@
-# Tree
+﻿# Trees
 
 [TOC]
 
+## Introduction
 
+This note summarizes the basic definitions and properties of trees as used in discrete mathematics and algorithms. It covers free (unrooted) trees, rooted trees, m-ary and binary trees, tree traversals, spanning trees and minimum spanning trees, and a few standard combinatorial facts and theorems.
 
-## Definition
+## Definitions
 
-**Definition** A `tree` is a connected undirected graph with no simple circuits.
+- Tree (undirected): A tree is a connected undirected graph that contains no cycles (simple circuits). Equivalently, any two vertices are connected by exactly one simple path.
 
-**Definition** A `rooted tree` is a tree in which one vertex has been designated as the root and every edge is directed away from the root.
+- Rooted tree: A tree in which one vertex is designated as the root; edges are usually regarded as directed away from (or toward) the root to indicate parentchild relations.
 
-**Definition** A rooted tree is called an `m-ary tree` if every internal vertex has no more than `m` children. The tree is called a `full m-ary tree` if every internal vertex has exactly `m` children. An `m`-ary tree with `m = 2` is called a `binary tree`.
+- Parent, child, leaf, internal vertex: In a rooted tree, the parent of a vertex v is the neighbor on the unique path from v to the root; children are the vertices for which v is the parent. A leaf is a vertex with no children; an internal vertex has at least one child.
 
-**Definition** The `value of a vertex in a game tree` is defined recursively as:
+- m-ary tree: A rooted tree in which each internal vertex has at most m children. A full (or proper) m-ary tree is one in which every internal vertex has exactly m children. The special case m=2 is the binary tree.
 
-- the value of a leaf is the payoff to the first player player when the game terminates in the position represented by this leaf.
-- the value of an internal vertex at an even level is the maximum of the values of its children, and the value of an internal vertex at an odd level is the minimum of the values of its children.
+## Tree traversals (ordered rooted trees)
 
-**Definition** Let $T$ be an ordered rooted tree with root $r$. If $T$ consists only of $r$, then $r$ is the `preorder traversal` of $T$. Otherwise, suppose that $T_1, T_2, ..., T_n$ are the subtrees at $r$ from left to right in $T$. The `preorder traversal` begins by visiting $r$. It continues by traversing $T_1$ in preorder, then $T_2$ in preorder, and so on, until $T_n$ is traversed in preorder.
+When a rooted tree is ordered (an order is specified on the children of each vertex), standard depth-first traversals are defined as follows:
+
+- Preorder: Visit the root, then traverse each child subtree from left to right in preorder.
 
 ![preorder_traversal](res/preorder_traversal.png)
 
-**Definition** Let $T$ be an ordered rooted tree with root $r$. If $T$ consists only of $r$, then $r$ is the `inorder traversal` of $T$. Otherwise, suppose that $T_1, T_2, ..., T_n$ are the subtrees at $r$ from left to right. The `inorder traversal` begins by traversing $T_1$ in inorder, then visiting $r$. It continues by traversing $T_2$ in inorder, then $T_3$ in inorder, ..., and finally $T_n$ in inorder.
-
-![inorder_traversal](res/inorder_traversal.png)
-
-**Definition** Let $T$ be an ordered rooted tree with root $r$. If $T$ consists only of $r$, then $r$ is the `postorder traversal` of $T$. Otherwise, suppose that $T_1, T_2, ..., T_n$ are the subtrees at $r$ from left to right. The `postorder traversal` begins by traversing $T_1$ in postorder, then $T_2$ in postorder, ..., then $T_n$ in postorder, and ends by visiting $r$.
+- Postorder: Traverse each child subtree from left to right in postorder, then visit the root.
 
 ![postorder_traversal](res/postorder_traversal.png)
 
-**Definition** Let $G$ be a simple graph. A `spanning tree` of $G$ is a subgraph of $G$ that is a tree containing every vertex of $G$​.
+- Inorder: The usual inorder traversal is defined for binary trees: traverse the left subtree in inorder, visit the root, then traverse the right subtree in inorder. For general ordered trees there are multiple "inorder" generalizations; the binary-case definition is the standard one.
 
-**Definition** A `minimum spanning tree` in a connected weighted graph is a spanning tree that has the smallest possible sum of weights of its edges.
+![inorder_traversal](res/inorder_traversal.png)
 
+## Spanning trees and minimum spanning trees
 
+- Spanning tree: For a simple connected graph G, a spanning tree is a subgraph that is a tree and contains every vertex of G.
 
-## Theorem
+- Minimum spanning tree (MST): In a connected weighted graph, an MST is a spanning tree with minimum total edge weight. Standard algorithms: Kruskal's and Prim's algorithms.
 
-**THEOREM** An undirected graph is a tree if and only if there is a unique simple path between any two of its vertices.
+## Basic enumerative and structural facts
 
-**THEOREM** A tree with $n$ vertices has $n - 1$ edges.
+- Edges and vertices: A tree with n vertices has exactly n-1 edges. Conversely, a connected graph with n vertices and n-1 edges is a tree.
 
-**THEOREM** A full $m$-ary tree with $i$ internal vertices contains $n = mi + 1$ vertices.
+- Unique path characterization: A graph is a tree iff between every pair of vertices there is exactly one simple path.
 
-**THEOREM**: A full $m$-ary tree with:
+- Full m-ary trees: In a full m-ary tree with i internal vertices, the total number of vertices is n = mi + 1, and the number of leaves is l = (m-1)i + 1. Rearranging gives i = (n-1)/m and l = [(m-1)n + 1]/m when needed.
 
-- $n$ vertices has $i = (n - 1)/m$ internal vertices and $l = [(m - 1)n + 1]/m$ leaves.
-- $i$ internal vertices has $n = mi + 1$ vertices and $l = (m - 1)i + 1$ leaves.
-- $l$ leaves has $n = (ml - 1)/(m - 1)$ vertices and $i = (l - 1)/(m - 1)$ internal vertices.
+- Leaf bound: An m-ary tree of height h has at most m^h leaves (height measured as the maximum number of edges on a root-to-leaf path).
 
-**THEOREM** There are at most $m^k$ leaves in an $m$-ary tree of height $h$.
+## Applications and algorithmic lower bounds
 
-**THEOREM** A sorting algorithm based on binary comparisons requires at least $\lceil \log_2 n! \rceil$ comparisons.
+- Comparison sorting lower bound: Any comparison-based sorting algorithm can be modeled by a binary decision tree with n! leaves (one leaf per possible permutation). Hence the worst-case number of comparisons is at least \lceil \log_2 n! \rceil = \Omega(n \log n). This also yields the average-case \Omega(n \log n) bound under reasonable assumptions.
 
-**THEOREM** The average number of comparisons used by a sorting algorithm to sort $n$ elements based on binary comparisons is $\Omega(n \log n)$.
+- Game trees and minimax: In perfect-information two-player zero-sum games represented by a finite game tree, the minimax value of the root (computed recursively using min and max alternation) gives the payoff to the first player assuming optimal play.
 
-**THEOREM** The value of a vertex of a game tree tells us the payoff to the first player if both players follow the minmax strategy and play starts from the position represented by this vertex.
+## Theorems (concise)
 
-**THEOREM** A simple graph is connected if and only if it has a spanning tree.
+- A graph is a tree iff it is connected and has n-1 edges (n = |V|).
+- A simple connected graph has a spanning tree.
+- SchroederBernstein and other counting results for trees appear in combinatorics; use standard references for enumerative formulas.
 
+## Examples
 
+- Full binary tree with height 2: has 1 + 2 + 4 = 7 vertices and 4 leaves.
+- Spanning tree example: take any connected graph and remove edges until the remainder is acyclic while keeping connectivity.
 
-## Corollary
+## Remarks and references
 
-**COROLLARY** The number of comparisons used by a sorting algorithm to sort $n$ elements based on binary comparisons is $\Omega(n \log n)$.
+- For algorithmic details see chapters on trees and graph algorithms in Rosen's "Discrete Mathematics and Its Applications" and standard algorithm texts (CLRS) for MST and graph traversals.
 
+## References
+
+1. Kenneth H. Rosen, Discrete Mathematics and Its Applications, 8th ed.
+2. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, Introduction to Algorithms (CLRS).

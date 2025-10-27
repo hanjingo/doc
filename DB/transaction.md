@@ -1,9 +1,31 @@
-# Transaction
+## Transactions
 
 [TOC]
 
+This note summarizes the fundamentals of database transactions and concurrency control with a practical emphasis: the ACID properties, concurrency-control techniques (locking, timestamps, MVCC/snapshot isolation), two‑phase locking and deadlock handling, basic performance considerations, and the role of transaction-processing monitors.
 
+## ACID properties
 
+ACID is a concise way to describe the correctness guarantees that transactions provide:
+
+- Atomicity — all or nothing: a transaction's changes are made visible only if the transaction commits; on failure the system must roll back all partial effects.
+- Consistency — integrity preservation: if the database satisfies integrity constraints before a transaction, then it should satisfy them after the transaction (assuming the transaction is correct). Consistency is usually an application-level property enforced by constraints and transaction logic.
+- Isolation — apparent serial execution: concurrent transactions should behave as if they executed in some serial order. Different isolation levels relax this requirement to trade off performance and concurrency.
+- Durability — persistence of committed updates: once a transaction commits, its effects survive crashes (typically via logging and careful write ordering).
+
+Note: in practice isolation has multiple levels (read uncommitted, read committed, repeatable read, serializable) which allow different anomalies; serializability is the strongest property that guarantees equivalence to some serial schedule.
+
+## Why concurrency control matters
+
+Concurrent execution increases throughput and resource utilization but introduces interference between transactions. Concurrency control enforces correctness (typically serializability or a weaker, controlled isolation) while allowing high concurrency when safe.
+
+Common concurrency-control approaches:
+
+- Lock-based protocols (blocking): transactions acquire locks on data items to prevent conflicting accesses.
+- Timestamp-based protocols: assign logical timestamps to transactions and order conflicting operations by timestamps.
+- Multi-version concurrency control (MVCC): maintain multiple versions of data so readers can access a consistent snapshot without blocking writers; writers create new versions.
+
+Each approach trades implementation complexity, read/write conflict behavior, and performance characteristics.
 ## ACID
 
 ### Atomicity

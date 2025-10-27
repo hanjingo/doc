@@ -1,401 +1,136 @@
-# C++ Template
+# C++ Templates — concise guide
 
 [TOC]
 
+This note is a concise, practical guide to C++ templates. It reorganizes and fills gaps in the original `template.md` while remaining consistent with the `NOTE/CPP_TEMPLATES` material.
 
+Templates are C++'s mechanism for generic, compile-time polymorphism. They let you write functions and classes that operate on unspecified types. Unlike run-time polymorphism (virtual functions), templates are resolved at compile time, enabling highly optimized and type-safe code.
 
-Templates are a solution to the problem that there are functions or classes written for one or more types not yet specified. When you use a template, you pass the types as arguments, explicitly or implicitly. Because templates are language features, you have full support for type checking and scope.
+## Quick summary (contract)
+- Inputs: type and value template parameters; function/class usage sites.
+- Outputs: compiler-generated instantiations of functions/classes.
+- Error modes: failed deduction, substitution failure (SFINAE), ambiguous overloads, two-phase lookup surprises.
 
-## Function Templates
+## Function templates
 
-Function templates provide a functional behavior that can be called for different types.
+Function templates define families of functions parametrized by types (and sometimes values). Key points:
 
-Function templates have two kinds of parameters:
+- Declare template parameters with `template<>`, e.g. `template<typename T>`.
+- Template arguments are usually deduced from call arguments; you can also explicitly provide them (`f<int>(...)`).
+- Function templates can be overloaded; non-template overloads are preferred when equally viable.
 
-1. Template parameters, which are declared in angle brackets before the function template name:
-
-   ```c++
-   template<typename T>
-   ```
-
-2. Call parameters, which are declared in parentheses after the function template name:
-
-   ```c++
-   max(T const& a, T const& b)
-   ```
-
-specify the template argument list explicitly:
-
-1. in function templates(unlike class templates) no default template arguments can be specified.
-
-   ```c++
-   template <typename T1, typename T2, typename RT>
-   inline RT max(T1 const& a, T2 const& b);
-   max<int, double, double>(4, 4, 2);
-   ```
-
-2. Instantiate a template explicitly for certain types:
-
-   ```c++
-   template<typename RT, typename T1, typename T2>
-   inline RT max(T1 const& a, T2 const& b);
-   max<double>(4, 4.2);
-   ```
-
-Like ordinary functions, function templates can be overloaded. That is, you can have different function definitions with the dame function name so that when that name is used in a function call, a C++ compiler must decide which one of the various candidates to call:
+Example:
 
 ```c++
-inline int const& max(int const& a, int const& b)
-{
-    return a < b ? b : a;
-}
+inline int const& max(int const& a, int const& b) { return a < b ? b : a; }
 
 template <typename T>
-inline T const& max(T const& a, T const& b)
-{
-    return a < b ? b : a;
-}
+inline T const& max(T const& a, T const& b) { return a < b ? b : a; }
 
 template <typename T>
-inline T const& max(T const& a, T const& b, T const& c)
-{
-    return ::max(::max(a, b), c);
-}
+inline T const& max(T const& a, T const& b, T const& c) { return max(max(a, b), c); }
 ```
 
----
+Notes:
+- Default template arguments are common for class templates; for function templates template-argument deduction typically makes defaults unnecessary.
+- Prefer `typename` for type template parameters in modern code for clarity.
 
+## Class templates
 
+Class templates parametrize classes by types or values. You instantiate them by supplying template arguments (`Stack<int>`).
 
-## Class Templates
-
-Declaration of Class Templates:
-
-```c++
-template<typename T>
-class Stack{
-    Stack(Stack<T> const&);
-    ~Stack();
-    Stack<T> operator=(Stack<T> const &);
-};
-```
-
-
-To use an object of a class template, you must specify the template arguments explicitly.
-
-Template arguments may be any type:
-
-1. The only requirement is that any operation that is called is possible according to this type.
-2. Note that you have to put whitespace between the two closing template brackets.
-
-You can specialize a class template for certain template arguments. Similar to the overloading of function templates, specializing class templates allows you to optimize implementations for certain types or to fix a misbehavior of certain types for an instantiation of the class template.
+Example:
 
 ```c++
-template<>
-class Stack<std::string> {
-    ...
-}
-```
-
-**warning:**
-
-1. If you specialize a class template, you must also specialize all member functions.
-2. It does demonstrate that the implementation of specialization might look very different from the implementation of the primary template.
-
-Class templates can be partially specialized. You can specify special implementations for particular circumstances, but some template parameters must still be defined by the user:
-
-```c++
-template <typename T>
-class MyClass<T, int> {
-    ...
-};
-
-template<typename T>
-class MyClass<T, T> {
-    ...
-};
-
-template <typename T>
-class MyClass<T*, T*> {
-    ...
-};
-
-MyClass<int, int> m;
-MyClass<int*, int*> m;
-```
-
-For class templates you can also define default values for template parameters. These values are called `default template arguments`. They may even refer to previous template parameters:
-
-```c++
-tempalte <typename T, typename CONT = std::vector<T> >
+template<typename T, typename Container = std::vector<T>>
 class Stack {
-    private:
-        CONT elems;
-    ...
-};
-
-template <typename T, typename CONT>
-void Stack<T, CONT>::push(T const& elem)
-{
-    elems.push_back(elem);
-}
-
-Stack<double, std::deque<double> > s;
-s.push(1.1);
-```
-
----
-
-
-
-## Template Paramters
-
-There are three kinds of template parameters:
-
-1. Type parameters(these are by far the most common)
-2. Nontype parameters
-3. Template template parameters
-
-### Type parameters
-
-Type parameters are introduced with either the keyword `typename` or the keyword `class`: The two are entirely equivalent. The keyword must be followed by a simple identifier, and that identifier must be followed by a comma to denote the start of the next parameter declaration, a closing angle bracket (>) to denote the end of the parameterization clause, or an equal sign (=) to denote the beginning of a default template argument.
-
-### Nontype Template Paramters
-
-Nontype template parameters stand for constant values that can be determined at compile or link time. The type of such a parameter(in other words, the type of the value for which it stands) must be one of the following:
-
-- An integer type or an enumeration type
-- A pointer type(including regular object pointer types, function pointer types, and pointer-to-member types)
-- A reference type(both references to objects and references to functions are acceptable)
-
-Default values for the template parameters can be specified:
-
-```c++
-template <typename T, int MAXSIZE=66>
-class Stack{
-    ...
-}
-```
-
-You can also define nontype parameters for function templates. For example, the following function template defines a group of functions for which a certain value can be added:
-
-```c++
-template <typename T, int VAL = 6>
-T addValue(T const& x) {
-    return x + VAL;
-}
-```
-
-Note that nontype template parameters carry some restrictions. In general, they may be constant integral values(including enumerations) or pointers to objects with external linkage.
-
-Floating-point numbers and class-type objects are not allowed as nontype template parameters:
-
-```c++
-// error
-template <double VAT>
-double f(double d)
-{
-    return d * VAT;
-}
-
-// error
-template <std::string name>
-class MyClass {
-    ...
-};
-
-// error
-template <char const* name>
-class MyClass {
-    ...
+public:
+  void push(T const& elem) { elems.push_back(elem); }
+  void pop() { elems.pop_back(); }
+  T& top() { return elems.back(); }
+private:
+  Container elems;
 };
 ```
 
-### Template template parameters
+Key points:
+- Class templates may have default template arguments.
+- You can fully specialize a class template for a particular argument list: `template<> class Stack<std::string> { ... };` (specialized members must be provided).
+- Partial specialization is allowed for class templates (not for function templates): `template<typename T> class MyClass<T*, T*> { ... };`.
 
----
+## Kinds of template parameters
 
+1. Type parameters: `template<typename T>`.
+2. Nontype parameters: compile-time constants like `int N` or pointers; e.g. `template<typename T, int N>`.
+3. Template-template parameters: parameters that accept other templates, e.g. `template<template<typename> class C>`.
 
+Restrictions:
+- Nontype parameters are typically integral values, pointers, references, or enums. Floating-point and class-type nontype parameters are not supported.
 
-## Names in Templates
+## Dependent names and `typename`
 
-| Classification         | Explanation and Notes                                        |
-| ---------------------- | ------------------------------------------------------------ |
-| Identifier             | A name that consists solely of an uninterrupted sequence of letters, underscores(`_`), and digits. It cannot start with a digit, and some identifiers are reserved for the implementation: You should not introduce them in your programs(as a rule of thumb, avoid leading underscores and double underscores). The concept of "letter" should be taken broadly and includes special universal character names (UCNs) that encode glyphs from non-alphabetical languages. |
-| Operator-function-id   | The keyword `operator` followed by the symbol for an operator -- for example, `operator new` and `operator []`. Many operators have alternative representations. For example, `operator &` can equivalently be written as `operator bit and` even when it denotes the unary address of operator. |
-| Conversion-function-id | Used to denote user-defined implicit conversion operator -- for example, `operator int &`, which could also be obfuscated as `operator int bit and`. |
-| Template-id            | The name of a template followed by template arguments enclosed in angle brackets; for example, `List<T, int, 0>`(Strictly speaking, the C++ standard allows only simple identifiers for the template name of a template-id. However, this is probably an oversight and an operator-function-id should be allowed too; e.g. `operator+<X<int>>`.) |
-| Unqualified-id         | The generalization of an identifier. It can be any of the above(identifier, operator-function-id, conversion-function-id or template-id) or a "destructor name"(for example, notations like `~Data` or `~List<T, T, N>`). |
-| Qualified-id           | An unqualified ID that is qualified with the name of a class or namespace, or just with the global scope resolution operator. Note that such a name itself can be qualified. Examples are `::X`, `S::x`, `Array<T>::y`, and `::N::A<T>::z`. |
-| Qualified name         | This term is not defined in the standard, but we use it to refer to names that undergo so-called `qualified lookup`. Specifically, this is a qualified-id or an unqualified-id that is used after an explicit member access operator (`.` or `->`). Examples are `S::x`, `this->f`, and `p->A::m`. However, just `class_mem` in a context that is implicitly equivalent to `this->class_mem` is not a qualified name: The member access must be explicit. |
-| Unqualified name       | An unqualified-id that is not a qualified name. This is not a standard term but corresponds to names that undergo what the standard call `unqualified lookup`. |
-| Dependent name         | A name that depends in some way on a template parameter. Certainly any qualified or unqualified name that explicitly contains a template parameter is dependent. Furthermore, a qualified name that is qualified by a member access operator (`.` or `->`) is dependent if the type of the expression on the left of the access operator depends on a template parameter. In particular, `b` in `this->b` is a dependent name when it appears in a template. Finally, the identifier `ident` in a call of the form `ident(x, y, z)` is a dependent name if and only if any of the argument expressions has a type that depends on a template parameter. |
-| Nondependent name      | A name that is not a dependent name by the above description. |
+When a name depends on a template parameter (dependent name) and denotes a type, prefix it with `typename`: `typename T::value_type`.
 
-The precise definition of the set of associated namespaces and associated classes for a given type is determined by the following rules:
+Use `template` to disambiguate dependent template members when necessary: `X<T>::template rebind<U>`.
 
-- For built-in types, this is the empty set.
-- For pointer and array types, the set of associated namespaces and classes is that of the underlying type.
-- For enumeration types, the associated namespace is the namespace in which the enumeration is declared. For class members, the enclosing class is the associated class.
-- For class types (including union types) the set of associated classes is the type itself, the enclosing class, and any direct and indirect base classes. The set of associated namespaces is the namespaces in which the associated classes are declared. If the class is a class template instantiation, then they types of the template type arguments and the classes and namespaces in which the template arguments are declared are also included.
-- For function types, the sets of associated namespaces and classes comprise the namespaces and classes associated with all the parameter types and those associated with the return type.
-- For pointer-to-member-of-class-X types, the sets of associated namespaces and classes include those associated with `X` in addition to those associated with the type of the member. (If it is a pointer-to-member-function type, then the parameter and return types can contribute too.)
+## Template argument deduction
 
-The name of a class is "injected" inside the scope of that class itself and is therefore accessible as an unqualified name in that scope.(However, it is not accessible as a qualified name because this is the notation used to denote the constructors.
+Deduction rules in brief:
 
-This is a consequence of the so-called `maximum munch` tokenization principle: A C++ implementation must collect as many consecutive characters as possible into a token.
+- Arrays and functions decay to pointers during deduction.
+- Top-level `const`/`volatile` qualifiers are ignored.
+- Qualified type names and certain non-type expressions are not deduced.
 
-The typename prefix to a name is required when the name:
+If deduction fails, provide explicit template arguments or use overloads. SFINAE enables graceful exclusion of templates during overload resolution.
 
-1. Appears in template
-2. Is qualified
-3. Is not used as in a list of base class specifications or in a list of member initializers introducing a constructor definition
-4. Is dependent on a template parameter
+## Instantiation and two-phase lookup
 
----
+Instantiation substitutes template arguments to produce concrete code. Two-phase lookup means:
 
+1. First phase: parse template and perform non-dependent name lookup.
+2. Second phase: at instantiation, resolve dependent names.
 
+This separation can cause surprising lookup behaviour; use explicit qualification, `this->`, or `typename`/`template` to resolve ambiguities.
 
-## Template Argument Deduction
+## Specialization and overloading
 
-If the parameter is declared with a reference declarator, P is taken to be the type referenced, and A is the type of the argument. Otherwise, however, P is the declared parameter type, and A is obtained from the type of the argument by `decaying` array and function types to pointer types, ignoring top-level `const` and `volatile` qualifiers.
+- Full specialization: provide an alternative implementation for specific template arguments: `template<> class Foo<int> { ... };`.
+- Partial specialization: adjust class-template behavior for a range of argument patterns.
+- Function templates: prefer overloads or SFINAE over explicit specializations in most cases.
 
-However, a few constructs are not deduced from contexts:
+Overload resolution prefers non-template functions when they are otherwise equally good matches.
 
-- Qualified type names. A type name like `Q<T>::X` will never be used to deduce a template parameter `T`.
-- Non-type expressions that are not just a nontype parameter. A type name like `S<I+1>` will never be used to deduce `I`.
+## Practical tips and pitfalls
 
-There are two situations in which the pair `(A, P)` used for deduction is not obtained from the arguments to a function call and the parameters of a function template:
+- Use `typename` correctly for dependent types; missing `typename` is a common compile error.
+- Remember two-phase lookup; qualifying dependent names can avoid subtle errors.
+- Keep templates readable: prefer clear naming and small responsibilities.
+- Use standard library traits and helper utilities (e.g., `<type_traits>`) rather than reinventing type checks.
 
-- The First situation occurs when the address of a function template is taken:
+## Short examples
 
-  ```c++
-  template<typename T>
-  void f(T, T);
-  void (*pf)(char, char) = &f;
-  ```
-
-- The other special situation occurs with conversion operator templates:
-
-  ```c++
-  struct S {
-      public:
-          template<typename T, int N> operator T[N]&(){...}
-  };
-  
-  void f(int (&)[20]){...}
-  void g(S s) {
-      f(s);
-  }
-  ```
-
-Normally, template deduction attempts to find a substitution of the function template parameters that makes the parameterized type `P` identical to type `A`. However, when this is not possible, the following differences are tolerable:
-
-- If the original parameter was declared with a reference declarator, the substituted `P` type may be more `const/volatile` qualified than the `A` type.
-- If the `A` type is a pointer or pointer-to-member type, it may be convertible to the substituted `P` type by a qualification conversion (int other words, a conversion that adds `const` and/or `volatile` qualifiers).
-- Unless deduction occurs for a conversion operator template, the substituted `P` type may be a base class type of the `A` type, or a pointer to a base class type of the class type for which `A` is a pointer type.
-
----
-
-
-
-## Instantiation
-
-When a C++ compiler encounters the use of a template specialization, it will create that specialization by substituting the required arguments for the template parameters.
-
-`two-phase lookup`: The first phase is the parsing of a template, and the second phase is its instantiation.
-
-The POI is a point in the source where the substituted template could be inserted. For nonclass POIs, an alternative exists: The nonclass template can be declared using `export` and defined in another translation unit.
-
-In theory, greedy instantiation has some serious drawbacks:
-
-- The compiler may be wasting time on generating and optimizing N instantiations, of which only one will be kept.
-- Linkers typically do not check that two instantiations are identical because some insignificant differences in generated code can validly occur for multiple instances of one template specialization. These small differences should not cause the linker to fail. (These differences could result from tiny differences in the state of the compiler at the instantiation time.) However, this often also results in the linker not noticing more substantial differences, such as when one instantiation was compiled for maximum performance, whereas the other was compiled for the most convenient debugging.
-- The sum of all the object files could potentially be much larger than with alternatives because the same code may be duplicated many times.
-
-Queried Instantiation:
-
-1. No specialization is available: In this case, instantiation occurs, and the resulting specialization is entered in the database.
-2. A specialization is available, but it is out of date because source changes have occurred since it was generated. Here, too, instantiation occurs, but the resulting specialization replaces the one previously stored in the database.
-3. An up-to-date specialization is available in the database. Nothing needs to be done.
-
----
-
-
-
-## Specialization and Overloading
-
-Two functions can coexist in a program if they have distinct signatures. We define the signature of a function as the following information:
-
-1. The unqualified name of the function (or the name of the function template from which it was generated).
-2. The class or namespace scope of that name and, if the name has internal linkage, the translation unit in which the name is declared.
-3. The `const`, `volatile`, or `const volatile` qualification of the function(if it is a member function with such a qualifier).
-4. The types of the function parameters (before template parameters are substituted if the function is generated from a function template).
-5. Its return type, if the function is generated from a function template.
-6. The template parameters and the template arguments, if the function is generated from a function template.
-
-This means that the following templates and their instantiations could, in principle, coexist in the same program:
+Function with a nontype default:
 
 ```c++
-template<typename T1, typename T2>
-void f1(T1, T2);
+template<typename T, int VAL = 6>
+T addValue(T const& x) { return x + VAL; }
 
-template<typename T1, typename T2>
-void f1(T2, T1);
-
-template<typename T>
-long f2(T);
-
-template<typename T>
-char f2(T);
+int x = addValue<int, 3>(4); // 7
 ```
 
-We then synthesize two artificial lists of argument types (or for conversion function templates, a return type) by substituting every template parameter as follows:
-
-1. Replace each template type parameter with a unique "made-up" type.
-2. Replace each template parameter with a unique "made-up" class template.
-3. Replace each nontype template parameter with a unique "made up" value of the appropriate type.
-
-Function templates can be overloaded with nontemplate functions. All else being equal, the nontemplate function is preferred in selecting the actual function being called.
-
-A full specialization is introduced with a sequence of three tokens: `template`, `<` and `>`. In addition, the class name declarator is followed by the template arguments for which the specialization is declared.
-
-The syntax and principles behind (explicit) full function template specialization are much the same as those for full class template specialization, but overloading and argument deduction come into play.
-
-The full specialization declaration can omit explicit template arguments when the template being specialized can be determined via argument deduction (using as argument types the parameter types provided in the declaration) and partial ordering.
-
-A full function template specialization cannot include default argument values. However, any default arguments that were specified for the template being specialized remain applicable to the explicit specialization.
-
-A full specialization is in many ways similar to a normal declaration (or rather, a normal redeclaration). In particular, it does not declare a template, and therefore, only one definition of a non-inline full function template specialization should appear in a program. However, we must still ensure that a declaration of the full specialization follows the template to prevent attempts at using the function generated from the template. The declarations for template `g` in the previous example would therefore typically be organized in two files.
-
-Not only member templates, but also ordinary static data members and member functions of class templates, can be fully specialized. The syntax requires `template<>` prefix for every enclosing class template. If a member template is being specialized, a `template<>` must also be added to denote that it is being specialized.
+Template-template parameter:
 
 ```c++
-template<>
-class Outer<bool>::Inner<wchar_t>{
-    public:
-    	enum{count = 2};
-};
+template<template<typename, typename> class Container, typename T>
+class Wrapper { Container<T, std::allocator<T>> c; };
 ```
 
-There exists a number of limitations on the parameter and argument lists of partial specialization declarations. Some of them are as follows:
+## Next steps
+- If you'd like, I can expand this file with more concrete examples (SFINAE, traits, enable_if), add runnable snippets, or do a consistency pass across `NOTE/CPP_TEMPLATES`.
 
-1. The arguments of the partial specialization must match in kind (type, nontype, or template) the corresponding parameters of the primary template.
-2. The parameter list of the partial specialization cannot have default arguments; the default arguments of the primary class template are used instead.
-3. The nontype arguments of the partial specialization should either be nondependent values or plain nontype template parameters. They cannot be more complex dependent expressions like `2*N` (where `N` is a template parameter).
-4. The list of template arguments of the partial specialization should not be identical (ignoring renaming) to the list of parameters of the primary template.
+---
 
-```c++
-template<typename T, int I = 3>
-class S;
-
-template<typename T>
-class S<int, T>;   // error
-
-template<typename T = int>
-class S<T, 10>;    // error
-
-template<int I>
+Edited for clarity, corrected typos (e.g., `tempalte` → `template`), and reorganized topics for easier reading.
 class S<int, I*2>; // error
 
 template<typename U, int K>

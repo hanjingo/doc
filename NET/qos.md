@@ -1,55 +1,119 @@
 # QOS
 
+## Quality of Service (QoS) — concise reference
+
 [TOC]
 
+This note collects the most important QoS concepts from a network perspective: performance metrics, delay components and their intuition, basic queuing behaviour, QoS architectures (IntServ vs DiffServ), common queuing disciplines, policing and shaping, and practical measurement/troubleshooting tips. The treatment follows the style of Kurose & Ross while keeping the presentation compact.
 
+### Key metrics
 
-## Delay
+- Latency (one-way delay): time for a packet to travel from sender to receiver.
+- RTT (round-trip time): time for a small packet to travel to the peer and for its response to return.
+- Jitter: variation in packet delay (important for real-time media).
+- Throughput: achieved application-level transfer rate.
+- Loss rate: fraction of packets lost in transit.
 
-Sending one packet from the source to the destination over a path consisting of $N$ links each of the rates $R$(thus, there are $N - 1$ routers between the source and destination). Applying the same logic as above, we see that the end-to-end delay is:
-$$
-d_{end-to-end} = N \frac{L}{R} \qquad (1.1)
-$$
-As a packet travels from one node (host or router) to the subsequent node (host or router) along this path, the packet suffers from several types of delays at each node along the path. The most important of these delays are:
+Together these metrics determine application experience: e.g., high loss + retransmission increases effective latency and reduces throughput.
 
-- `Processing Delay`.
-- `Queuing Delay`.
-- `Transmission Delay`.
-- `Propagation Delay`.
+### Delay components
 
-, If we let $d_{proc}$, $d_{queue}$, $d_{trans}$, and $d_{prop}$ denote the processing, queuing, transmission, and propagation delays, then the total nodal delay is given by:
+As a packet traverses a path, it experiences delays at each node. Common components:
+
+- Processing delay (d_proc): time to examine packet header and perform routing/forwarding.
+- Queuing delay (d_queue): time a packet waits in an output queue before transmission; depends strongly on instantaneous load.
+- Transmission delay (d_trans): time to push the packet's bits onto the link, L/R, where L is packet size (bits) and R is link bandwidth (bits/sec).
+- Propagation delay (d_prop): time for signal to travel across the medium (distance / propagation speed).
+
+The per‑node (n·odal) delay is
+
 $$
-d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}
+d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}.
 $$
-The nodal delays accumulate and give an end-to-end delay,
+
+End-to-end (approximate) delay across N links is the sum of per-node delays. For uniform link rates R and packet size L and ignoring queueing and processing, a simple bound is
+
 $$
-d_{end-end} = N(d_{proc} + d_{trans} + d_{prop}) \qquad (1.2)
+d_{end-to-end} \approx N\frac{L}{R}.
 $$
-where, once again, $d_{trans} = L/R$, where $L$ is the packet size.
+
+But queueing dominates under load: queuing delay grows nonlinearly as utilization ρ→1. For an M/M/1 queue with arrival rate λ and service rate μ (service rate μ = 1/average service time), define ρ = λ/μ. The mean time in system (service + waiting) is
+
+$$
+W = \frac{1}{\mu - \lambda} = \frac{1/\mu}{1-\rho},
+$$
+
+and the mean waiting (queueing) time is
+
+$$
+W_q = \frac{\rho}{\mu - \lambda} = \rho\frac{1/\mu}{1-\rho}.
+$$
+
+These formulas illustrate that small increases in utilization near 1 produce large increases in queuing delay.
 
 ### RTT
 
-`round-trip time (RTT)`, which is the time it takes for a small packet to travel from client to server and then back to the client. The `RTT` includes packet-propagation delays, packet-queuing delays in intermediate routers and switches, and packet-processing delays.
+RTT = one-way delay (forward) + one-way delay (back). RTT includes propagation, queuing, and processing delays in the forward and reverse directions. RTT matters for transport protocols (e.g., TCP congestion control and timeout estimation).
 
 ![rtt_example](res/rtt_example.png)
 
+### Reliability and transport primitives (summary)
+
+Reliable transport typically uses a small set of mechanisms; common items and purpose:
+
+| Mechanism | Purpose / comments |
+|---|---|
+| Checksum | Detect bit errors in a packet. |
+| Timers | Trigger retransmission when ACKs are not received in time; timeout tuning affects both performance and spurious retransmits. |
+| Sequence numbers | Detect losses and duplicates; enable reordering and in-order delivery semantics. |
+| Acknowledgments (ACKs) | Inform sender of successful receipt; can be cumulative to reduce ACK overhead. |
+| Negative ACKs (NAKs) | Explicitly inform sender about missing or corrupted packets (less common). |
+| Windowing / pipelining | Allow multiple outstanding packets to keep the pipe full; window size interacts with RTT and receiver buffer capacity. |
 
 
-## Reliable
+### QoS architectures and mechanisms
 
-Summary of reliable data transfer mechanisms and their use:
+- Best-effort: the default Internet model — no guaranteed service; scalability and simplicity.
 
-| Mechanism               | Use, Comments                                                |
-| ----------------------- | ------------------------------------------------------------ |
-| Checksum                | Used to detect bit errors in a transmitted packet.           |
-| Timer                   | Used to timeout/retransmit a packet, possibly because the packet (or its ACK) was lost within the channel. Because timeouts can occur when a packet is delayed but not lost (premature timeout), or when a packet has been received by the receiver but the receiver-to-sender ACK has been lost, duplicate copies of a packet may be received by a receiver. |
-| Sequence number         | Used for sequential numbering of packets of data flowing from the sender to the receiver. Gaps in the sequence numbers of received packets allow the receiver to detect a lost packet. Packets with duplicate sequence numbers allow the receiver to detect duplicate copies of a packet. |
-| Acknowledgment          | Used by the receiver to tell the sender that a packet or set of packets has been received correctly. Acknowledgments will typically carry the sequence number of the packet or packets being acknowledged. Acknowledgments may be individual or cumulative, depending on the protocol. |
-| Negative acknowledgment | Used by the receiver to tell the sender that a packet has not been received correctly. Negative acknowledgments will typically carry the sequence number of the packet that was not received correctly. |
-| Window, pipelining      | The sender may be restricted to sending only packets with sequence numbers that fall within a given range. By allowing multiple packets to be transmitted but not yet acknowledged, sender utilization can be increased over a stop-and-wait mode of operation. We’ll see shortly that the window size may be set on the basis of the receiver’s ability to receive and buffer messages, or the level of congestion in the network, or both. |
+- Integrated Services (IntServ): per‑flow resource reservation (RSVP) and strict guarantees. Precise but does not scale well to many flows.
 
+- Differentiated Services (DiffServ): scalable, class-based treatment using DSCP codepoints; edge devices classify/mark packets and core routers provide per‑class queuing and forwarding behaviours.
 
+Admission control, policing, and shaping are often combined with these architectures to protect guarantees and control overload.
 
-## Reference
+### Queuing disciplines (common)
 
-[1] James F. Kurose, Keith W. Ross . Computer Networking: A Top-Down Approach . 6ED
+- FIFO (drop-tail): simple, can produce global synchronization and unfairness under congestion.
+- Priority queuing: strict priority for high‑priority flows; can starve low priority traffic.
+- Fair queuing (FQ) and Weighted Fair Queuing (WFQ): approximate fair bandwidth sharing among active flows.
+- Class-Based Queuing (CBQ): groups traffic into classes with allocated bandwidth.
+- Active Queue Management (AQM) (e.g., RED, CoDel): drop/mark packets before buffers fill to avoid long queues and reduce latency.
+
+Choice of discipline affects delay, jitter, and loss patterns seen by applications.
+
+### Policing vs shaping
+
+- Traffic policing: enforces rate limits by dropping or remarking packets that exceed a configured profile (often using token-bucket meters). Policing is an enforcement action.
+- Traffic shaping: buffers and smooths bursts to conform to a profile; reduces instant bursts at the cost of added delay.
+
+Token bucket: a common mechanism to allow controlled bursts while enforcing an average rate.
+
+### Measurement and practical tips
+
+- Measure RTT and one-way delay where possible; clock sync is required for accurate one-way measurements.
+- Monitor queue occupancy and packet-drop rates to detect congestion and bufferbloat.
+- Use AQM (e.g., CoDel) to mitigate excessive queuing delay (bufferbloat) in access networks.
+- When designing QoS policies, identify traffic classes (real‑time, interactive, bulk) and match treatment (low latency for voice, high throughput for bulk).
+- Test under realistic churn and traffic mixes (synthetic low-latency flows can be overwhelmed by bulk flows if not isolated).
+
+### Quick troubleshooting checklist
+
+1. Is latency the issue (high RTT) or loss/throughput? Measure both.
+2. Check link utilization and queue lengths; if utilization is high, consider AQM, shaping, or capacity upgrade.
+3. Verify DSCP markings at network edges are preserved through the path.
+4. For voice/video: ensure jitter buffers are appropriately sized and that packets aren’t being re-ordered excessively.
+
+## References
+
+- James F. Kurose, Keith W. Ross. Computer Networking: A Top-Down Approach.
+- RFCs: DiffServ (RFC 2475), RSVP and IntServ (RFC 2205), AQM (CoDel papers), relevant token-bucket RFCs.

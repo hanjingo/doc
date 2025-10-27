@@ -1,86 +1,100 @@
-# Algorithm
+# Algorithms (Discrete Mathematics)
 
 [TOC]
 
+## Introduction
 
+This note summarizes fundamental concepts of algorithms as presented in the Discrete Mathematics context (based primarily on Kenneth H. Rosen, Discrete Mathematics and Its Applications, 8th ed.). It collects definitions, important properties, common algorithmic paradigms, typical examples, and a compact guide to asymptotic analysis. The aim is to provide a concise reference suitable for students of discrete mathematics.
 
-## Definition
+## What is an algorithm?
 
-**Definition**: An `algorithm` is a finite sequence of precise instructions for performing a computation or for solving a problem.
+An algorithm is a finite, well-defined sequence of instructions for solving a problem or performing a computation. A good algorithm should be:
 
-**Definition**: Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $O(g(x))$ if there are constants $C$ and $k$ such that $|f(x)| \leq C|g(x)|$ whenever $x > k$. [This is read as "$f(x)$ is big-oh of $g(x)$."].
+- Correct: produce the intended output for all valid inputs.
+- Finite: terminate after a finite number of steps for any valid input.
+- Precise: each step must be unambiguous and executable.
+- Effective: every step can, in principle, be carried out exactly.
+- General: applicable to all instances of the problem, not just particular cases.
 
-**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Omega(g(x))$ if there are constants $C$ and $k$ with $C$ positive such that $|f(x)| \geq C|g(x)|$ whenever $x > k$. [This is read as "$f(x)$ is big-Omega of $g(x)$."],
+## Asymptotic notation (brief)
 
-**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Theta(g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega(g(x))$. When $f(x)$ is $\Omega(g(x))$, we say that $f$ is big-Theta of $g(x)$, that $f(x)$ is of `order` $g(x)$, and that $f(x)$ and $g(x)$ are of the `same order`.
+Let $f$ and $g$ be real- or integer-valued functions defined on sufficiently large inputs.
 
+- Big-O: $f(x)=O(g(x))$ if there exist positive constants $C$ and $k$ such that $|f(x)|\le C|g(x)|$ for all $x>k$. (Upper bound.)
+- Big-Omega: $f(x)=\Omega(g(x))$ if there exist positive constants $C$ and $k$ such that $|f(x)|\ge C|g(x)|$ for all $x>k$. (Lower bound.)
+- Big-Theta: $f(x)=\Theta(g(x))$ if $f(x)$ is both $O(g(x))$ and $\Omega(g(x))$ (tight bound).
 
+Common asymptotic classes: $\Theta(1)$ (constant), $\Theta(\log n)$ (logarithmic), $\Theta(n)$ (linear), $\Theta(n\log n)$, $\Theta(n^b)$ (polynomial), $\Theta(b^n)$ (exponential), $\Theta(n!)$ (factorial).
 
-## Theorem
+Example: any polynomial $f(x)=a_n x^n+\cdots+a_0$ with $a_n\neq0$ satisfies $f(x)=O(x^n)$.
 
-**THEOREM**: Let $f(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$, where $a_0, a_1, ..., a_{n - 1}, a_n$ are real numbers. Then $f(x)$ is $O(x^n)$.
+## Properties of algorithms
 
-**THEOREM**: Suppose that $f_1(x)$ is $O(g_1(x))$ and that $f_2(x)$ is $O(g_2(x))$. Then $(f_1 + f_2)(x)$ is $O(g(x))$, where $g(x) = max(|g_1(x)|, |g_2(x)|)$ for all $x$.
+- Input and output: an algorithm accepts an input (from a specified set) and produces output values.
+- Determinism: the steps of the algorithm are precisely defined so that the behavior is predictable.
+- Correctness: we often prove correctness by induction or by invariants.
+- Termination: an algorithm must terminate after a finite number of steps.
 
-**THEOREM** Suppose that $f_1(x)$ is $O(g_1(x))$ and $f_2(x)$ is $O(g_2(x))$. Then $(f_1 f_2)(x)$ is $O(g_1(x) g_2(x))$.
+## Common algorithmic paradigms
 
-**THEOREM** Let $f(x) = a_n x^n + a_{n-1}x^{n-1} + ... + a_1 x + a_0$, where $a_0, a_1, ..., a_n$ are real numbers with $a_n \neq 0$. Then $f(x)$ is of order $x^n$.
+- Divide and conquer: split a problem into smaller subproblems, solve them recursively, and combine the solutions. (E.g., merge sort.) Often analyzed using recurrence relations.
+- Greedy algorithms: repeatedly take the locally optimal choice, hoping to reach a global optimum. Requires proof of correctness for each problem (e.g., matroids, interval scheduling, some shortest-path/ MST formulations).
+- Dynamic programming: break problems into overlapping subproblems and store intermediate results to avoid recomputation (e.g., knapsack, longest common subsequence).
+- Backtracking / Branch-and-bound: systematic search with pruning for combinatorial problems (e.g., n-queens, SAT solvers).
 
+## Representative algorithms (short descriptions)
 
+Searching:
 
-## Corollary
+- Linear search: scan the list item by item until the target is found or the list ends. Time: $\Theta(n)$.
+- Binary search: on a sorted array, repeatedly compare the target to the middle element and narrow the search interval by half. Time: $\Theta(\log n)$.
 
-**COROLLARY**: Suppose that $f_1(x)$ and $f_2(x)$ are both $O(g(x))$. Then $(f_1 + f_2)(x)$ is $O(g(x))$.
+Sorting (selected):
 
+- Bubble sort: repeatedly swap adjacent out-of-order elements. Simple but inefficient: worst-case $\Theta(n^2)$.
+- Insertion sort: build a sorted prefix by inserting each new element in place. Best-case $\Theta(n)$ (nearly sorted data), average/worst $\Theta(n^2)$.
+- Merge sort / Quick sort / Heap sort: more efficient general-purpose sorts with average/worst complexities of $\Theta(n\log n)$ (merge and heap are $\Theta(n\log n)$ worst-case; quicksort average $\Theta(n\log n)$ but worst-case $\Theta(n^2)$ without careful pivoting).
 
+String matching:
 
-## Claim
+- Naive (brute-force) matching and more advanced algorithms such as Knuth–Morris–Pratt (KMP) and Boyer–Moore, which improve running time by using structure in patterns.
 
-**PROPERTIES OF ALGORITHMS**
+Greedy algorithms and NP/undecidable remarks:
 
-- `Input`. An algorithm has input values from a specified set.
-- `Output`. From each set of input values an algorithm produces output values from a specified set. The output values are the solution to the problem.
-- `Definiteness`. The steps of an algorithm must be defined precisely.
-- `Correctness`. An algorithm should produce the correct output values for each set of input values.
-- `Finiteness`. An algorithm should produce the desired output after a finite (but perhaps large) number of steps for any input in the set.
-- `Effectiveness`. It must be possible to perform each step of an algorithm exactly and in a finite amount of time.
-- `Generality`. The procedure should be applicable for all problems of the desired form, not just for a particular set of input values.
+- Greedy algorithms are widely used for optimization problems; correctness must be justified per-problem.
+- Some problems are computationally intractable (e.g., NP-hard) or undecidable (e.g., the Halting Problem: there is no general algorithm that decides for every program-input pair whether the program halts).
 
-**THE LINEAR SEARCH**. The linear search algorithm begins by comparing $x$ and $a_1$. When $x = a_1$, the solution is the location of $a_1$, namely, $1$. When $x \neq a_1$, compare $x$ with $a_2$. If $x = a_2$, the solution is the location of $a_2$, namely, $2$. When $x \neq a_2$, compare $x$ with $a_3$. Continue this process, comparing $x$ successively with each term of the list until a match is found, where the solution is the location of that term, unless no match occurs.
+## Recurrence relations and the Master theorem
 
-**THE BINARY SEARCH**. The binary search algorithm proceeds by comparing the element to be located to the middle term of the list. The list is then split into two smaller sublists of the same size, or where one of these smaller lists has one fewer term than the other. The search continues by restricting the search to the appropriate sublist based on the comparison of the element to be located and the middle term.
+Many divide-and-conquer algorithms satisfy recurrences of the form
+$$
+T(n)=a\,T(n/b)+f(n),
+$$
+where $a\ge1$ and $b>1$. The Master theorem gives common cases for the asymptotic growth of $T(n)$:
 
-**Sorting** is putting elements into a list.
+- If $f(n)=O\big(n^{\log_b a-\epsilon}\big)$ for some $\epsilon>0$, then $T(n)=\Theta(n^{\log_b a})$.
+- If $f(n)=\Theta\big(n^{\log_b a}\big)$, then $T(n)=\Theta(n^{\log_b a}\log n)$.
+- If $f(n)=\Omega\big(n^{\log_b a+\epsilon}\big)$ for some $\epsilon>0$ and a regularity condition holds, then $T(n)=\Theta(f(n))$.
 
-**THE BUBBLE SORT**. The bubble sort puts a list into increasing order by successively comparing adjacent elements, interchanging them if they are in the wrong order.
+Recurrences and generating functions are also useful tools for precise counting and analysis of algorithmic costs.
 
-**THE INSERTION SORT**. In the $j$th step of the insertion sort, the $j$th element of the list is inserted into the correct position in the list of the previously sorted $j - 1$ elements. To insert the $j$the element in the list, a linear search technique is used; the $j$th element is successively compared with the already sorted $j - 1$ elements at the start of the list until the first element that is not less than this element is found or until it has been compared with all $j - 1$ elements; the $j$th element is inserted in the correct position so that the first $j$ elements are sorted. The algorithm continues until the last element is placed in the correct position relative to the already sorted list of the first $n - 1$ elements.
+## Complexity terminology (quick table)
 
-Finding where a pattern occurs in a text string is called **string matching**.
+| Notation | Meaning |
+|---:|:---|
+| $\Theta(1)$ | constant time |
+| $\Theta(\log n)$ | logarithmic time |
+| $\Theta(n)$ | linear time |
+| $\Theta(n\log n)$ | linearithmic time |
+| $\Theta(n^b)$ | polynomial time |
+| $\Theta(b^n)$ | exponential time |
+| $\Theta(n!)$ | factorial time |
 
-Algorithms that make what seems to be the "best" choice at each step are called **greedy algorithms**.
+## Further reading and references
 
-**Halting problem**. It asks whether there is a procedure that does this: It takes as input a computer program and input to the program and determines whether the program will eventually stop when run with this input.
+[1] Kenneth H. Rosen, Discrete Mathematics and Its Applications, 8th Edition.
 
-**WORST-CASE COMPLEXITY** By the worst-case performance of an algorithm, we mean the largest number of operations needed to solve the given problem using this algorithm on input of specified size.
+Other recommended readings for algorithms and analysis:
 
-**AVERAGE-CASE COMPLEXITY** The average number of operations used to solve the problem over all possible inputs of a given size is found in this type of analysis.
-
-| Commonly Used Terminology for the Complexity of Algorithms |                         |
-| ---------------------------------------------------------- | ----------------------- |
-| Complexity                                                 | Terminology             |
-| $\Theta(1)$                                                | Constant complexity     |
-| $\Theta(log\ n)$                                           | Logarithmic complexity  |
-| $\Theta(n)$                                                | Linear complexity       |
-| $\Theta(n\ log\ n)$                                        | Linearithmic complexity |
-| $\Theta(n^b)$                                              | Polynomial complexity   |
-| $\Theta(b^n),\text{ where b > 1}$                          | Exponential complexity  |
-| $\Theta(n!)$                                               | Factorial complexity    |
-
-**TRACTABILITY** A problem that is solvable using an algorithm with polynomial (or better) worst-cast complexity is called **tractable**, because the expectation is that the algorithm will produce the solution to the problem for reasonably sized input in a relatively short time.
-
-
-
-## References
-
-[1] Kenneth H. Rosen . Discrete Mathematics and Its Applications . 8Edition
+- Cormen, Leiserson, Rivest, and Stein, Introduction to Algorithms (CLRS).
+- Kleinberg and Tardos, Algorithm Design.

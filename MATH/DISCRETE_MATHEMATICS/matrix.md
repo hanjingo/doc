@@ -1,66 +1,82 @@
-# Matrix
+# Matrices
 
 [TOC]
 
+## Introduction
 
+This note summarizes basic definitions and properties of matrices commonly used in discrete mathematics. It focuses on elementary concepts (dimensions, entries, row/column operations), standard matrix arithmetic, and Boolean (zero–one) matrices used for relations and graph adjacency. Definitions follow standard notation; proofs and advanced linear-algebra topics (determinant, eigenvalues) are omitted or only mentioned briefly.
 
-## Definition
+## Basic definitions and notation
 
-**Definition**: A `matrix` is a rectangular array of numbers. A matrix with `m rows` and `n` columns is called an $m \times n$ matrix. The plural of matrix is `matrices`. A matrix with the same number of rows as columns is called `squal`. Two matrices are `equal` if they have the same number of rows and the same number of columns and the corresponding entries in every position are equal.
+- A matrix is a rectangular array of elements (usually numbers). An m × n matrix has m rows and n columns. We write
+	$$A = [a_{ij}]_{m\\times n} = \\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1n}\\ a_{21} & a_{22} & \\cdots & a_{2n}\\ \\vdots & \\vdots & & \\vdots\\ a_{m1} & a_{m2} & \\cdots & a_{mn} \\end{bmatrix}. $$
 
-**Definition** Let $m$ and $n$ be positive integers and let
-$$
-A = 
-\begin{bmatrix}
-a_{11} & a_{12} & \dots & a_{1n} \\
-a_{21} & a_{22} & \dots & a_{2n} \\
-\vdots & \vdots &       & \vdots \\
-a_{m1} & a_{m2} & \dots & a_{mn}
-\end{bmatrix}
-$$
-, The $i$th row of **A** is the $1 \times n$ matrix $[a_{i1}, a_{i2}, ..., a_{in}]$. The $j$th column of $A$ is the $m \times 1$ matrix:
-$$
-\begin{bmatrix}
-a_{1j} \\
-a_{2j} \\
-\vdots \\
-a_{mj}
-\end{bmatrix}
-$$
-, The $(i, j)$th `element` or `entry` of $A$ is the element $a_{ij}$, that is, the number in the $i$th row and $j$th column of $A$. A convenient shorthand notation for expressing the matrix $A$ is to write $A = [a_{ij}]$, which indicates that $A$ is the matrix with its $(i,j)$th element equal to $a_{ij}$.
+- The entry in row i and column j is denoted a_{ij}. The i-th row is the 1×n vector [a_{i1},…,a_{in}] and the j-th column is the m×1 vector with entries a_{1j},…,a_{mj}.
 
-**Definition**: Let $A = [a_{ij}]$ and $B = [b_{ij}]$ be $m \times n$ matrices. The `sum of A` and `B`, denoted by $A + B$, is the $m \times n$ matrix that has $a_{ij} + b_{ij}$ as its $(i,j)$th element. In other words, $A + B = [a_{ij} + b_{ij}]$.
+- Two matrices are equal if they have the same dimensions and all corresponding entries are equal.
 
-**Definition**: Let $A$ be an $m \times k$ matrix and $B$ be a $k \times n$ matrix. The `product` of $A$ and $B$, denoted by $AB$, is the $m \times n$ matrix with its $(i, j)$th entry equal to the sum of the products of the corresponding elements from the $i$th row of $A$ and the $j$th column of $B$. In other words, if $AB = [c_{ij}]$, then $c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + ... + a_{ik}b_{kj}$.
+- A square matrix has the same number of rows and columns (n × n). Common special square matrices:
+	- Zero matrix: all entries 0, denoted 0_{m\\times n}.
+	- Identity matrix of order n: I_n with (i,i) entries 1 and others 0. Using Kronecker delta, (I_n)_{ij}=\\delta_{ij}.
+	- Diagonal matrix: only diagonal entries may be nonzero.
+	- Symmetric matrix: A^T = A (so a_{ij} = a_{ji}).
 
-**Definition**: The `identity matrix of order n` is the $n \times n$ matrix $I_n = [\delta_{ij}]$, (the `Kronecker delta`) where $\delta_{ij} = 1$ if $i = j$ and $\delta_{ij} = 0$ if $i \neq j$. Hence:
-$$
-I_n = 
-\begin{bmatrix}
-1 & 0 & \dots & 0 \\
-0 & 1 & \dots & 0 \\
-\vdots & \vdots & & \vdots \\
-0 & 0 & \dots & 1
-\end{bmatrix}
-$$
-**Definition**: Let $A = [a_{ij}]$ be an $m \times n$ matrix. The `transpose` of $A$, denoted by $A^t$, is the $n \times m$ matrix obtained by interchanging the rows and columns of $A$. In other words, if $A^t = [b_{ij}]$, then $b_{ij} = a_{ji}$ for $i = 1, 2, ..., n$ and $j = 1, 2, ..., m$.
+## Basic matrix operations
 
-**Definition**: A square matrix $A$ is called `symmetric` if $A = A^t$. Thus, $A = [a_{ij}]$ is symmetric if $a_{ij} = a_{ji}$ for all $i$ and $j$ with $1 \leq i \leq n$ and $1 \leq j \leq n$.
+- Addition and scalar multiplication (only for matrices of the same size):
+	- (A + B)_{ij} = a_{ij} + b_{ij}.
+	- (cA)_{ij} = c\\,a_{ij} for scalar c.
 
-A matrix all of whose entries are either 0 or 1 is called a **zero-one matrix**.
+- Matrix multiplication: If A is m×k and B is k×n, their product AB is m×n with
+	$$ (AB)_{ij} = \\sum_{t=1}^k a_{it}b_{tj}. $$
+	Note: matrix multiplication is associative and distributive over addition but is generally not commutative: AB \\neq BA in general.
 
-**Definition**: Let $A = [a_{ij}]$ and $B = [b_{ij}]$ be $m \times n$ zero-one matrices. Then the `join` of $A$ and $B$ is the zero-one matrix with $(i,j)$th entry $a_{ij} \vee b_{ij}$. The join of $A$ and $B$ is denoted by $A \vee B$. The `meet` of $A$ and $B$ is the zero-one matrix with $(i,j)$th entry $a_{ij} \wedge b_{ij}$. The meet of $A$ and $B$ is denoted by $A \wedge B$.
+- Identity and inverse (square matrices): For an n×n matrix A, if there exists B such that AB = BA = I_n, then B is the inverse of A and A is invertible.
 
-**Definition**: Let $A = [a_{ij}]$ be an $m \times k$ zero-one matrix and $B = [b_{ij}]$ be a $k \times n$ zero-one matrix. Then the `Boolean product` of $A$ and $B$, denoted by $A \odot B$, is the $m \times n$ matrix with $(i,j)$th entry $c_{ij}$ where: $c_{ij} = (a_{i1} \wedge b_{1j}) \vee (a_{i2} \wedge b_{2j}) \vee ... \vee (a_{ik} \wedge b_{kj})$.
+- Transpose: The transpose of A (m×n) is A^T (n×m) with (A^T)_{ij} = a_{ji}. Transpose properties include (A^T)^T = A, (A + B)^T = A^T + B^T, and (AB)^T = B^T A^T.
 
-**Definition**: Let $A$ be a square zero-one matrix and let $r$ be a positive integer. The $r$th `Boolean power` of $A$ is the Boolean product of $r$ factors of $A$. The $r$th Boolean product of $A$ is denoted by $A^{[r]}$. Hence:
-$$
-A^{[r]} = \underbrace{A \odot A \odot A \odot ... \odot A.}_{r\ times}
-$$
-, (This is well defined because the Boolean product of matrices is associative.) We also define $A^{[0]}$ to be $I_n$.
+## Common properties and identities
 
+- Associativity: (AB)C = A(BC) when dimensions match.
+- Distributivity: A(B + C) = AB + AC and (A + B)C = AC + BC.
+- Left/right identity: I_m A = A and A I_n = A for compatible sizes.
+- If A is m×n and B is n×m, then AB is m×m and BA is n×n (different sizes possible).
 
+## Rank, rows and columns (brief)
+
+- The row rank (dimension of the space spanned by rows) equals the column rank (dimension spanned by columns); this common value is the rank of A. Rank measures linear independence of rows/columns and is \\le min(m,n).
+
+## Boolean (zero–one) matrices
+
+A zero–one matrix is a matrix whose entries are in {0,1}. Such matrices commonly represent relations or adjacency in graphs.
+
+- Join (logical OR) and meet (logical AND): If A and B are m×n zero–one matrices, their join and meet are defined entrywise by
+	$$ (A \\vee B)_{ij} = a_{ij} \\vee b_{ij}, \\qquad (A \\wedge B)_{ij} = a_{ij} \\wedge b_{ij}. $$
+
+- Boolean product (used for composition of relations and graph reachability): If A is m×k and B is k×n (zero–one matrices), the Boolean product C = A \\odot B is the m×n zero–one matrix with
+	$$ c_{ij} = \\bigvee_{t=1}^k (a_{it} \\wedge b_{tj}), $$
+	i.e., c_{ij} = 1 iff there exists t with a_{it}=1 and b_{tj}=1.
+
+- Boolean powers: For a square zero–one matrix A, define A^{[r]} = A \\odot A \\odot \\cdots \\odot A (r factors). Also set A^{[0]} = I_n. Boolean powers are useful for computing reachability in directed graphs: (A^{[r]})_{ij}=1 iff there is a path of length exactly r from i to j.
+
+## Examples
+
+- Example (2×3 matrix):
+	$$ A = \\begin{bmatrix}1 & 2 & 0\\ 3 & -1 & 4\\ \\end{bmatrix}. $$
+	Here A has 2 rows and 3 columns.
+
+- Example (matrix multiplication): If
+	$$ A=\\begin{bmatrix}1 & 2\\ 0 & 3\\end{bmatrix},\\quad B=\\begin{bmatrix}4 & 0\\ 1 & 5\\end{bmatrix},$$
+	then
+	$$ AB = \\begin{bmatrix}1\\cdot4+2\\cdot1 & 1\\cdot0+2\\cdot5\\ 0\\cdot4+3\\cdot1 & 0\\cdot0+3\\cdot5\\end{bmatrix} = \\begin{bmatrix}6 & 10\\ 3 & 15\\end{bmatrix}. $$
+
+- Example (Boolean adjacency): For a directed graph with adjacency matrix A, the (i,j) entry of A^{[2]} (Boolean power) is 1 iff there exists an intermediate vertex k with edges i→k and k→j.
+
+## Remarks and pointers
+
+- This note covers elementary definitions used in discrete mathematics; further linear-algebra topics (determinant, eigenvalues, singular values, LU decomposition, solving linear systems) are beyond the scope here but are standard results in linear algebra texts.
+- For applications to relations and graphs, zero–one matrices and Boolean matrix multiplication are particularly useful; see the chapters on relations and graph theory in Rosen's "Discrete Mathematics and Its Applications."
 
 ## References
 
-[1] Kenneth H. Rosen . Discrete Mathematics and Its Applications . 8Edition
+1. Kenneth H. Rosen, Discrete Mathematics and Its Applications, 8th ed.

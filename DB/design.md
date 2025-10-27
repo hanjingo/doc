@@ -1,63 +1,104 @@
+
 [中文版](design_zh.md) | English
 
 # Database Design
 
 [TOC]
 
+This note summarizes practical principles for designing and operating relational and analytical databases. It covers schema design and normalization, common system architectures, data partitioning strategies for scale-out systems, distributed database types and trade-offs, and an introduction to data warehousing and OLAP design. Diagrams under `res/` illustrate the architectures.
 
+## Relational schema design
 
-## Relational Database Design
+Good schema design starts with modeling entities and relationships, identifying keys and functional dependencies (FDs), and normalizing to reduce redundancy and anomalies.
 
-We can use the following three rules to find logically implied functional dependencies:
+Important rules for reasoning about functional dependencies:
 
-- `Reflexivity rule`. If $\alpha$ is a set of attributes and $\beta \subseteq \alpha$, then $\alpha \rightarrow \beta$ holds.
-- `Augmentation rule`. If $\alpha \rightarrow \beta$ holds and $r$ is a set of attributes, then $r \alpha \rightarrow r \beta$ holds.
-- `Transitivity rule`. If $\alpha \rightarrow \beta$ holds and $\beta \rightarrow r$ holds, then $\alpha \rightarrow r$ holds.
+- Reflexivity: if β ⊆ α then α → β.
+- Augmentation: if α → β then αγ → βγ for any attribute set γ.
+- Transitivity: if α → β and β → γ then α → γ.
 
+From FDs you can derive candidate keys and reason about normalization. Normal forms reduce update anomalies:
 
+- 1NF (atomicity)
+- 2NF (no partial dependency on a composite key)
+- 3NF (no transitive dependency on a key)
+- BCNF (every nontrivial FD has a superkey on the left)
 
-## Database System Architectures
+Normalization trades redundancy for more joins; in practice OLTP schemas are usually normalized while OLAP schemas are denormalized for read performance.
 
-![center_computer_system](res/center_computer_system.png)
+Schema design steps (recommended):
 
-![cs_system](res/cs_system.png)
+1. Elicit requirements and draw an ER model.
+2. List attributes and candidate keys; infer functional dependencies.
+3. Normalize to the desired normal form, then consider denormalization where justified by performance.
+4. Add indexes, constraints, and physical design choices (partitioning, clustering) to match workload characteristics.
 
-![front_back_func](res/front_back_func.png)
+## System architectures
 
-![shm_proc_structure](res/shm_proc_structure.png)
+Architectural choices affect scalability, fault tolerance, and operational complexity:
 
-![paral_db_arch](res/paral_db_arch.png)
+- Client–server: single DB server or cluster accessed by clients; simple but may become a bottleneck.
+- Shared-disk: multiple server instances access the same storage (SAN); requires coordination to keep caches coherent.
+- Shared-nothing: each node owns its storage and processes a partition of the data; this model scales well horizontally and is common in parallel DBMS and distributed stores.
 
+Refer to `res/center_computer_system.png`, `res/cs_system.png`, and `res/paral_db_arch.png` for illustrations.
 
+## Data partitioning strategies
 
-## Parallel Databases
+Partitioning (sharding) is a primary technique for scaling databases. Common strategies include:
 
-We present three basic data-partitioning strategies. Assume that there are $n$ disks, $D_0, D_1, \cdots, d_{n-1}$, across which the data are to be partitioned:
+- Round-robin: scatter tuples cyclically across nodes/disks. It balances raw storage and sequential I/O but destroys locality (poor for range queries and colocated joins).
+- Hash partitioning: hash on one or more attributes to determine the home partition. Hashing balances load and is ideal for equality joins on the partition key because matching tuples appear on the same node.
+- Range partitioning: assign contiguous key ranges to partitions. Range partitioning preserves ordering and supports efficient range scans but requires careful split-point selection to avoid hotspots.
 
-- `Round-robin`. This strategy scans the relation in any order and sends the $i$th tuple to disk number $D_{i\ mod\ n}$. The round-robin scheme ensures an even distribution of tuples across disks; that is, each disk has approximately the same number of tuples as the others.
-- `Hash partitioning`. This declustering strategy designates one or more attributes from the given relation's schema as the partitioning attributes. A hash function is chosen whose range is $\{0, 1, \cdots, n - 1\}$. Each tuple of the original relation is hashed on the partitioning attributes. If the hash function returns $i$, then the tuple is placed on disk $D_i$.
-- `Range partitioning`. This strategy distributes tuples by assigning contiguous attribute-value ranges to each disk. It chooses a partitioning attribute, A, and a `partitioning vector` $[v_0, v_1, \cdots, v_{n-2}]$, such that, if $i < j$, then $v_i < v_j$. The relation is partitioned as follows: Consider a tuple $t$ such that $t[A] = x$. If $x < v_0$, then $t$ goes on disk $D_0$ If $x \geq v_{n-2}$, then $t$ goes on disk $D_{n-1}$. If $v_i \leq x < v_{i+1}$, then $t$ goes on disk $D_{i + 1}$.
+Other considerations:
 
+- Replication: copy data to multiple nodes for read scaling and fault tolerance. Synchronous replication preserves strong consistency but adds latency; asynchronous replication favors availability.
+- Composite/hybrid partitioning: combine hash and range partitioning (subpartitioning) to exploit multiple access patterns.
+- Skew mitigation: monitor and rebalance partitions, use adaptive hashing or hotspot offloading to handle skewed workloads.
 
+## Distributed database models and consistency
 
-## Distributed Databases
+Distributed databases span multiple sites and must trade off consistency, availability, and partition tolerance (CAP theorem). Two common setups:
 
-A distributed database system consists of a collection of sites, each of which maintains a local database system. Each site is able to process local transactions: those transactions that access data in only that single site. In addition, a site may participate in the execution of global transactions requires communication among the sites.
+- Homogeneous distributed DB: all sites run the same DBMS and share a global schema and coordination protocol. Easier coordination and uniform tooling.
+- Heterogeneous/federated DB: sites may run different systems and schemas; middleware performs schema translation and query federation.
 
-In a `homogeneous distributed database` system, all sites have identical database management system software, are aware of one another, and agree to cooperate in processing users’ requests.
+Transaction and consistency approaches:
 
-In a `heterogeneous distributed database`, different sites may use different schemas and different database management systems software.
+- Two-phase commit (2PC): provides atomic commit for distributed transactions but can block during coordinator failures.
+- Consensus-based replication (Paxos/Raft): builds highly-available replicated state machines and supports leader-based replication.
+- Eventual consistency / BASE: relax strong consistency for higher availability and lower latency (common in many NoSQL systems).
 
+Choose the appropriate consistency and replication strategy based on application semantics (financial transactions need serializability; user-facing caches may tolerate weaker guarantees).
 
+## Data warehouse and OLAP design
 
-## Data Warehouse
+Data warehouses centralize historical data for analytics. Typical characteristics:
 
-A `data warehouse` is a repository (or archive) of information gathered from multiple sources, stored under a unified schema at a single site. Once gathered, the data are stored for a long time, permitting access to historical data.
+- ETL: Extract, Transform, Load pipelines ingest and clean data from transactional sources.
+- Schema patterns: star schema (fact table + dimension tables) and snowflake schema (normalized dimensions). Star schemas are common for reporting because they simplify queries.
+- Columnar storage, compression, and vectorized execution: common optimizations for scan-heavy analytic workloads.
+- Materialized views and pre-aggregations: speed up frequent queries at the cost of maintenance overhead.
 
-![data_warehouse_arch](res/data_warehouse_arch.png)
+See `res/data_warehouse_arch.png` for an architecture diagram.
 
+## Physical design and operational considerations
 
+- Index selection: choose B-tree, hash, bitmap, or inverted indexes depending on query patterns and cardinality.
+- Partitioning and locality: align partitions with typical query predicates and geographic requirements.
+- Isolation levels: choose between read committed, repeatable read, and serializable based on correctness and performance needs.
+- Backups and recovery: design backup frequency, retention, and point-in-time recovery capability.
 
-## Reference
+## Practical checklist for database design
 
-[1] Abraham Silberschatz, Henry F. Korth, S. Sudarshan . Database System Concepts . 6 Edition
+1. Model entities and relationships (ER).
+2. Identify candidate keys and functional dependencies.
+3. Normalize to the desired normal form; consider selective denormalization for performance.
+4. Select partitioning/sharding and replication strategies aligned with workload and availability goals.
+5. Design indexes and access paths for critical queries.
+6. Plan monitoring, backup, and operational procedures.
+
+## References
+
+- Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts, 6th Edition.
