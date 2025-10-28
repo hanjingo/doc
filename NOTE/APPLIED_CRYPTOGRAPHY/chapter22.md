@@ -236,3 +236,5 @@ $$
 ### Implementing EKE with Diffie-Hellman
 
 With the Diffie-Hellman protocol, $K$ is generated automatically. The final protocol is even simpler. A value for $g$ and $n$ is set 
+
+TODO
