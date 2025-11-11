@@ -20,6 +20,7 @@ English | [中文版](README_zh.md)
 | ------------------------------------------------------------ | ------- | ------------------------------------------------------------ | ----------------- |
 | [Introduction to Algorithms](INTRODUCTION_TO_ALGORITHMS/README.md) | 3ED     | Thomas H.Cormen<br>Charles E.Leiserson<br>Ronald L. Rivest<br>Clifford Stein |                   |
 | [Data Structures and Algorithm Analysis in C++](DATA_STRUCTURES_AND_ALGORITHM_ANALYSIS_IN_CPP/README.md) | 4ED     | Mark Allen Weiss                                             |                   |
+| [Applied Cryptography](APPLIED_CRYPTOGRAPHY/README.md)       | 2ED     | BRUCE SCHNEIER                                               |                   |
 
 ### Program Language
 
@@ -95,7 +96,6 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
-- [Applied Cryptography](APPLIED_CRYPTOGRAPHY/README.md)
 - [LINEAR ALGEBRA WITH APPLICATIONS](LINEAR_ALGEBRA_WITH_APPLICATIONS/README.md)
 - [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)
 - [The Calculus Lifesaver](THE_CALCULUS_LIFESAVER/README.md)

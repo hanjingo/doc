@@ -4,7 +4,7 @@
 
 ## 快捷导航
 
-[英汉词典](OTHERS/en_zh_dictionary.md) [面试笔记](OTHERS/interview_zh.md) [Bug速查](BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
+[英汉词典](OTHERS/en_zh_dictionary.md) [面试笔记](OTHERS/interview_zh.md) [Bug速查](PROJ/BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
 
 ---
 
@@ -33,19 +33,6 @@
 
 ---
 
-## [Bug](BUG/README_zh.md)
-
-- [c++ 常见bug](BUG/cpp_zh.md)
-- [EOS开发常见错误](BUG/eos_zh.md)
-- [EOS-GO开发常见错误](BUG/eos-go_zh.md)
-- [golang常见错误](BUG/golang_zh.md)
-- [linux错误](BUG/linux_zh.md)
-- [MySQL问题](BUG/mysql_zh.md)
-- [网络问题](BUG/net_zh.md)
-- [skynet问题](BUG/skynet_zh.md)
-- [ZeroMQ问题汇总](BUG/zeromq_zh.md)
-
----
 
 ## [数据库](DB/README_zh.md)
 
@@ -322,6 +309,18 @@ Qt
 - [Token机制](PROJ/token_zh.md)
 - [游戏开发](PROJ/GAME/README_zh.md)
 - [网站搭建](PROJ/website_zh.md)
+
+### [Bug](PROJ/BUG/README_zh.md)
+
+- [c++ 常见bug](PROJ/BUG/cpp_zh.md)
+- [EOS开发常见错误](PROJ/BUG/eos_zh.md)
+- [EOS-GO开发常见错误](PROJ/BUG/eos-go_zh.md)
+- [golang常见错误](PROJ/BUG/golang_zh.md)
+- [linux错误](PROJ/BUG/linux_zh.md)
+- [MySQL问题](PROJ/BUG/mysql_zh.md)
+- [网络问题](PROJ/BUG/net_zh.md)
+- [skynet问题](PROJ/BUG/skynet_zh.md)
+- [ZeroMQ问题汇总](PROJ/BUG/zeromq_zh.md)
 
 ### [OpenSSL](PROJ/OPENSSL/README_zh.md)
 

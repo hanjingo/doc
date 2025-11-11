@@ -10,6 +10,14 @@
 
 
 
+## [AI](AI/README.md)
+
+
+
+---
+
+
+
 ## [Algorithm](ALGO/README.md)
 
 - [Balance Tree](ALGO/balance_tree.md)
@@ -110,9 +118,17 @@
 ### Number Theory
 
 - [Arithmetic](MATH/NUMBER_THEORY/arithmetic.md)
+- [Blow Fish](MATH/NUMBER_THEORY/blowfish.md)
 - [CBC](MATH/NUMBER_THEORY/cbc.md)
 - [DES](MATH/NUMBER_THEORY/des.md)
+- [Diffie-Hellman](MATH/NUMBER_THEORY/diffie_hellman.md)
+- [DSA](MATH/NUMBER_THEORY/dsa.md)
+- [Key](MATH/NUMBER_THEORY/key.md)
+- [MD5](MATH/NUMBER_THEORY/md5.md)
+- [Mode](MATH/NUMBER_THEORY/mode.md)
+- [Protocol](MATH/NUMBER_THEORY/protocol.md)
 - [RSA](MATH/NUMBER_THEORY/rsa.md)
+- [SHA](MATH/NUMBER_THEORY/sha.md)
 
 ### Probability Theory
 

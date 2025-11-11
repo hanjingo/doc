@@ -17,9 +17,17 @@ TODO
 ## Number Theory
 
 - [Arithmetic](NUMBER_THEORY/arithmetic.md)
-- [CBC](cbc.md)
-- [DES](des.md)
-- [RSA](rsa.md)
+- [Blow Fish](NUMBER_THEORY/blowfish.md)
+- [CBC](NUMBER_THEORY/cbc.md)
+- [DES](NUMBER_THEORY/des.md)
+- [Diffie-Hellman](NUMBER_THEORY/diffie_hellman.md)
+- [DSA](NUMBER_THEORY/dsa.md)
+- [Key](NUMBER_THEORY/key.md)
+- [MD5](NUMBER_THEORY/md5.md)
+- [Mode](NUMBER_THEORY/mode.md)
+- [Protocol](NUMBER_THEORY/protocol.md)
+- [RSA](NUMBER_THEORY/rsa.md)
+- [SHA](NUMBER_THEORY/sha.md)
 
 ---
 
