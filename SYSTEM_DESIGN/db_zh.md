@@ -1,4 +1,4 @@
-中文版 | [English](design.md)
+中文版 | [English](db.md)
 
 # 数据库设计
 

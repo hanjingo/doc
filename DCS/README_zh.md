@@ -10,6 +10,8 @@
 - [Merkle tree](merkle_zh.md)
 - [分布式存储](storage_zh.md)
 
+---
+
 
 
 ## Google分布式系统三大论文
@@ -17,6 +19,8 @@
   - TheGoogleFileSystem
   - MapReduce
   - Bigtable
+
+---
 
 
 
@@ -33,6 +37,8 @@
   - [dpos-股份授权证明](CONSENSUS/dpos_zh.md)
   - [pos-权益证明](CONSENSUS/pos_zh.md)
   - [pow-工作量证明](CONSENSUS/pow_zh.md)
+
+---
 
 
 

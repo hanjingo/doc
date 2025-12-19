@@ -3,7 +3,6 @@
 # DB
 
 - [Best Practice](best_practice.md)
-- [Design](design.md)
 - [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
 - [Terminology](terminology.md)

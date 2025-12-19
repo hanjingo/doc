@@ -4,7 +4,7 @@
 
 ## 快捷导航
 
-[英汉词典](OTHERS/en_zh_dictionary.md) [面试笔记](OTHERS/interview_zh.md) [Bug速查](PROJ/BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
+[英汉词典](OTHERS/en_zh_dictionary.md) [面试笔记](interview_zh.md) [Bug速查](PROJ/BUG/README_zh.md) [shell手册](LANG/shell_zh.md) [git指南](OTHERS/git_zh.md) [redis命令](DB/REDIS/cmd_zh.md) [markdown手册](LANG/markdown_zh.md) [sql语法手册](DB/sql_zh.md) [STL](LANG/C++/stl_zh.md) [vim快捷键](OTHERS/vim_shortcut_zh.md)  [dot语法](LANG/dot_zh.md)  [ASSIC码表](OTHERS/assic_table_zh.md)  [Posix接口](OS/posix_zh.md)  [Lua API](LANG/LUA/api_zh.md)  [套接字编程](NET/socket_zh.md)
 
 ---
 
@@ -300,9 +300,6 @@ Qt
 - [软件调试](PROJ/debug_zh.md)
 - [运维技巧](PROJ/dev_ops_zh.md)
 - [错误处理](PROJ/error_resolve_zh.md)
-- [唯一ID的生成](PROJ/id_zh.md)
-- [IM系统构建](PROJ/im_zh.md)
-- [推送系统构建](PROJ/push_zh.md)
 - [服务端图形引擎](PROJ/server_graphic_engine_zh.md)
 - [软件开发流程](PROJ/software_dev_flow_zh.md)
 - [软件测试](PROJ/software_test_zh.md)
@@ -373,3 +370,14 @@ Qt
 - [PBC-编/解码](PROJ/SKYNET/PBC/rmessage_zh.md)
 - [PBC-总结](PROJ/SKYNET/PBC/summary_zh.md)
 - [PBC-wmessage](PROJ/SKYNET/PBC/wmessage_zh.md)
+
+---
+
+
+
+## [系统设计](SYSTEM_DESIGN/README_zh.md)
+
+- [数据库设计](SYSTEM_DESIGN/db_zh.md)
+- [IM系统构建](SYSTEM_DESIGN/im_zh.md)
+- [推送系统构建](SYSTEM_DESIGN/push_zh.md)
+- [唯一ID的生成](SYSTEM_DESIGN/uuid_zh.md)

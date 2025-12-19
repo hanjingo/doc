@@ -1,5 +1,4 @@
-
-[中文版](design_zh.md) | English
+[中文版](db_zh.md) | English
 
 # Database Design
 

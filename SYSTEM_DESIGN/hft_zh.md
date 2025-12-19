@@ -1,3 +1,5 @@
+中文版 | [English](hft_zh.md)
+
 # 高频交易
 
 [TOC]

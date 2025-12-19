@@ -1,5 +1,0 @@
-# Interview
-
-[TOC]
-
-TODO

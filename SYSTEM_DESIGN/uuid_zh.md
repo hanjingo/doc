@@ -1,3 +1,5 @@
+中文版 | [English](uuid.md)
+
 # 唯一ID的生成
 
 [TOC]

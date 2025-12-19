@@ -2,4 +2,3 @@
 
 # DCS
 
-- [Distributed System Design](system_design.md)

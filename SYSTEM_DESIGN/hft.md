@@ -1,3 +1,5 @@
+[中文版](hft_zh.md) | English
+
 # High Frequency Trading
 
 [TOC]
@@ -1115,14 +1117,17 @@ $$
 
 
 
-## Practice
+## System Design
 
 ![hft_proc](res/hft_proc.png)
 
-*Typical High-Frequenc*
+*Typical High-Frequence*
 
 
 
 ## Referencer
 
 [1] IRENE ALDRIDGE . High-Frequency Trading . 1Edition
+
+[2] https://www.youtube.com/watch?v=iwRaNYa8yTw
+

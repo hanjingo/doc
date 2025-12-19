@@ -184,7 +184,6 @@
 ## [Others](OTHERS/README.md)
 
 - [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
-- [Interview](OTHERS/interview.md)
 
 ---
 
@@ -193,3 +192,15 @@
 ## [Project](PROJ/README.md)
 
 - [Design Pattern](PROJ/design_pattern.md)
+
+---
+
+
+
+## [System Design](SYSTEM_DESIGN/README.md)
+
+- [Database Design](SYSTEM_DESIGN/db.md)
+- [Distributed System Design](SYSTEM_DESIGN/dcs.md)
+- [File Sharing Service Design](SYSTEM_DESIGN/file_sharing_service.md)
+- [High Frequency Trading System Design](SYSTEM_DESIGN/hft.md)
+- [Universally Unique Identifier](SYSTEM_DESIGN/uuid.md)
