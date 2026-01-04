@@ -18,7 +18,7 @@ Peer-to-peer systems share these characteristics:
 
 ## Peer-to-peer middleware
 
-Peer-to-peer middleware systems are designed to specifically to meet the need for the automatic placement and subsequent location of the distributed objects managed by peer-to-peer systems and applications.
+Peer-to-peer middleware systems are designed specifically to meet the need for the automatic placement and subsequent location of the distributed objects managed by peer-to-peer systems and applications.
 
 ![10_3](res/10_3.png)
 

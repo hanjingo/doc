@@ -8,7 +8,7 @@
 
 ### Threats and attacks
 
-The main goal of security is to restrict access to information and resources to just those principals that are authorized to have access. Security threats fall into three broad classes:
+The main goal of security is to restrict access to information and resources to just those principals who are authorized to have access. Security threats fall into three broad classes:
 
 - *Leakage*: Refers to the acquisition of information by unauthorized recipients.
 - *Tampering*: Refers to the unauthorized alteration of information.
@@ -19,12 +19,12 @@ Attacks on distributed systems depend upon obtaining access to existing communic
 - *Eavesdropping*: Obtaining copies of messages without authority.
 - *Masquerading*: Sending or receiving messages using the identity of another principal without their authority.
 - *Message tampering*: Intercepting messages and altering their contents before passing them on to the intended recipient.
-- *Replaying*: Storing intercepted messages and sending them at a later data.
+- *Replaying*: Storing intercepted messages and sending them at a later date.
 - *Denial of service*: Flooding a channel or other resource with messages in order to deny access for others.
 
 ### Designing secure systems
 
-The design of secure systems is an exercise in balancing costs against the threats. The range of techniques that can be deployed for protecting processes and securing interprocess communication are strong enough to withstand almost any attack, but their use incurs expense and inconvenience:
+The design of secure systems is an exercise in balancing costs against the threats. The range of techniques that can be deployed for protecting processes and securing interprocess communication is strong enough to withstand almost any attack, but their use incurs expense and inconvenience:
 
 - A cost (in terms of computational effort and network usage) is incurred for their use. The costs must be balanced against the threats.
 - Inappropriately specified security measures may exclude legitimate users from performing necessary actions.
@@ -37,7 +37,7 @@ Worst-case assumptions and design guidelines:
 
 - Interfaces are exposed.
 - Networks are insecure.
-- Limit the lifetiem and scope of each secret.
+- Limit the lifetime and scope of each secret.
 - Algorithms and program code are available to attackers.
 - Attackers may have access to large resources.
 - Minimize the trusted base.
@@ -55,7 +55,7 @@ Cryptography is used to maintain the secrecy and integrity of information whenev
 To make certificates useful, two things are needed:
 
 - a standard format and representation for them so that certificate issuers and certificate users can successfully construct and interpret them;
-- aggrement on the manner in which chains of certificates are constructed, and in particular the notion of a trusted authority.
+- agreement on the manner in which chains of certificates are constructed, and in particular, the notion of a trusted authority.
 
 ### Access control
 
@@ -94,7 +94,7 @@ Because of its symmetrical use of keys, secret-key cryptography is often referre
 
 **Digest functions**. Digest functions are also called *secure hash functions* and denoted $H(M)$. They must be carefully designed to ensure that $H(M)$ is different from $H(M')$ for all likely pairs of messages $M$ and $M'$. If there are any pairs of different messages $M$ and $M'$ such that $H(M) = H(M')$, then a duplicitous principal could send a signed copy of $M$, but when confronted with it claim that $M'$ was originally sent and that it must have been altered in transit.
 
-### DIgital signatures with public keys
+### Digital signatures with public keys
 
 ![11_10](res/11_10.png)
 

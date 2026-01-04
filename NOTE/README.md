@@ -36,9 +36,10 @@ English | [中文版](README_zh.md)
 
 ### OS
 
-| Title                                                        | Edition | Author                                  | Abstract/Evaluate |
-| ------------------------------------------------------------ | ------- | --------------------------------------- | ----------------- |
-| [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md) | 3ED     | Randal E. Bryant<br>David R. O'Hallaron |                   |
+| Title                                                        | Edition | Author                                                      | Abstract/Evaluate |
+| ------------------------------------------------------------ | ------- | ----------------------------------------------------------- | ----------------- |
+| [COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE](CSAPP/README.md) | 3ED     | Randal E. Bryant<br>David R. O'Hallaron                     |                   |
+| [DISTRIBUTED SYSTEMS: Concepts and Design](DISTRIBUTED_SYSTEMS_CONCEPTS_AND_DESIGN/README.md) | 5ED     | George Coulouris, Jean Dolimore, Tim Kindberg, Gordon Blair |                   |
 
 ### Database
 
@@ -96,7 +97,6 @@ English | [中文版](README_zh.md)
 
 ## Reading
 
-- [DISTRIBUTED SYSTEMS: Concepts and Design](DISTRIBUTED_SYSTEMS_CONCEPTS_AND_DESIGN/README.md)
 - [LINEAR ALGEBRA WITH APPLICATIONS](LINEAR_ALGEBRA_WITH_APPLICATIONS/README.md)
 - [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)
 - [The Calculus Lifesaver](THE_CALCULUS_LIFESAVER/README.md)

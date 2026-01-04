@@ -35,7 +35,7 @@ TODO
 ## 参考
 
 ### 文献
-<div id="refer-1">[1]: [维基百科BitTorrent协议](https://zh.wikipedia.org/wiki/BitTorrent_(%E5%8D%8F%E8%AE%AE)</div>
+[1] [维基百科BitTorrent协议](https://zh.wikipedia.org/wiki/BitTorrent_(%E5%8D%8F%E8%AE%AE))
 
 ### 外部链接
 

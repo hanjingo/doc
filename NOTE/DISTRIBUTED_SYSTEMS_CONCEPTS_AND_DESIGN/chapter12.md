@@ -75,11 +75,11 @@ The division of responsibilities between the modules can be defined as follows:
 
   ![12_7](res/12_7.png)
 
-  *DIrectory service operations*
+  *Directory service operations*
 
-- **Hierarchic file system**. 
+- **Hierarchical file system**. 
 
-  A hierarchic file system such as the one that UNIX provides consists of a number of directories arranged in a tree structure. Each directory holds the names of the files and other directories that are accessible from it. Any file or directory can be referenced using a *pathname* - a multi-part name that represents a path through the tree.
+  A hierarchical file system, such as the one that UNIX provides, consists of a number of directories arranged in a tree structure. Each directory holds the names of the files and other directories that are accessible from it. Any file or directory can be referenced using a *pathname* - a multi-part name that represents a path through the tree.
 
 - **File groups**
 

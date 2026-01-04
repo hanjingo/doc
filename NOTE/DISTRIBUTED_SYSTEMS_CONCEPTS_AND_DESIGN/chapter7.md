@@ -6,7 +6,7 @@
 
 ## Introduction
 
-One could envisage an operating system in which users are never concerned with where their programs run, or the location of any resources. There is a *single system image*.
+One could envisage an operating system in which users are never concerned with where their programs run or the location of any resources. There is a *single system image*.
 
 
 

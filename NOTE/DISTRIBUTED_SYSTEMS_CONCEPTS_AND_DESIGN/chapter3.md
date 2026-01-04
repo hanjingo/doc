@@ -59,7 +59,7 @@ OSI protocol summary:
 
 **Packet assembly**. The task of dividing messages into packets before transmission and reassembling them at the receiving computer is usually performed in the transport layer.
 
-The network-layer protocol packets consist fo a *header* and a *data field*. In most network technologies, the data field is variable in length, with the maximum length called the *maximum transfer unit*(MTU). If the length of a message exceeds the MTU of the underlying network layer, it must be fragmented into chunks of the appropriate size, with sequence numbers for use on reassembly, and transmitted in multiple packets.
+The network-layer protocol packets consist of a *header* and a *data field*. In most network technologies, the data field is variable in length, with the maximum length called the *maximum transfer unit*(MTU). If the length of a message exceeds the MTU of the underlying network layer, it must be fragmented into chunks of the appropriate size, with sequence numbers for use on reassembly, and transmitted in multiple packets.
 
 ![3_6](res/3_6.png)
 

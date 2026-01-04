@@ -77,5 +77,3 @@ NULL represents missing or unknown values in SQL and introduces three-valued log
 
 - `NOTE/DATABASE_SYSTEM_CONCEPTS` (selected chapters on relational model and normalization)
 - Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts.
-
-<!-- End of relational model note -->
