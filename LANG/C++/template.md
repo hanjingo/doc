@@ -131,6 +131,8 @@ class Wrapper { Container<T, std::allocator<T>> c; };
 ---
 
 Edited for clarity, corrected typos (e.g., `tempalte` → `template`), and reorganized topics for easier reading.
+
+```
 class S<int, I*2>; // error
 
 template<typename U, int K>

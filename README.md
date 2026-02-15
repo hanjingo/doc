@@ -1,18 +1,8 @@
 [中文版](README_zh.md) | English
 
-# Summary
-
-## Quick Guide
-
-[En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
-
----
-
 
 
 ## [AI](AI/README.md)
-
-
 
 ---
 
@@ -60,6 +50,13 @@
 
 
 ## [DCS](DCS/README.md)
+
+- [Summary](DCS/summary.md)
+- [Google Big Table](DCS/big_table.md)
+- [Google File System](DCS/gfs.md)
+- [Google MapReduce](DCS/map_reduce.md)
+- [Synchronization](DCS/synchronization.md)
+- [System Models](DCS/system_model.md)
 
 ---
 

@@ -2,8 +2,42 @@
 
 [TOC]
 
+## C++ Standard Library (STL) — concise guide
+
+This note summarizes commonly used parts of the C++ Standard Library (containers, smart pointers, iterators, algorithms, and I/O). It condenses the material from the Chinese draft while keeping images and examples. The goal is practical: quick references, complexity notes, and short examples you can use as a starting point.
+
+## Quick orientation
+
+- Containers: sequence containers (vector, deque, list, array, forward_list), associative containers (set, map, multiset, multimap), unordered containers (unordered_map/set), and container adaptors (stack, queue, priority_queue).
+- Iterators: abstract the traversal of a container (input, output, forward, bidirectional, random access). Algorithms work with iterators.
+- Algorithms: non‑mutating (find, count), mutating (sort, transform), partitioning, numeric, heap operations, etc. Most algorithms express complexity guarantees in the standard.
+- Smart pointers: unique_ptr, shared_ptr, weak_ptr and helpers such as make_unique/make_shared.
+- I/O: iostreams family (ios_base, istream, ostream, iostream, fstream).
 
 ## Smart pointers
+
+Smart pointers provide RAII ownership and reduce manual delete errors.
+
+- std::unique_ptr<T>: exclusive ownership, lightweight, movable but not copyable. Use for single ownership and custom deleters when needed.
+
+- std::shared_ptr<T>: reference‑counted shared ownership. Use std::make_shared<T>(...) to allocate a control block and object in one allocation (more efficient). Supports custom deleters and aliasing constructors (create a shared_ptr that shares ownership but points to a different object).
+
+- std::weak_ptr<T>: non‑owning observer of an object managed by shared_ptr. Use weak_ptr::lock() to obtain a temporary shared_ptr, and expired()/use_count() to check state.
+
+Key member functions (shared_ptr / weak_ptr): get(), reset(), swap(), use_count(), unique(), expired(), lock().
+
+Example (shared/weak):
+
+```c++
+#include <memory>
+#include <string>
+int main() {
+	auto sp = std::make_shared<std::string>("hello");
+	std::weak_ptr<std::string> wp = sp;
+	if (auto locked = wp.lock()) // safe access
+		; // *locked
+}
+```
 
 ### shared_ptr
 
@@ -78,6 +112,24 @@ int main()
 
 
 ## Containers
+
+General rule: prefer the container whose complexity and operations match your usage pattern.
+
+- vector: dynamic array. Random access O(1). Push_back amortized O(1). Insert/erase in middle O(n). Good for contiguous storage and CPU cache locality.
+- array (std::array): fixed-size array wrapper (size part of type). All operations O(1).
+- string: specialized sequence for text. Use std::string for text data and std::string_view for non-owning views.
+- deque: double-ended queue; fast push/pop at both ends, but not contiguous.
+- list (std::list): doubly-linked list. Splice, insert, erase at known positions are O(1); random access is O(n). Use when many insert/erase operations in the middle and node stability is required.
+- forward_list: singly linked list (lower memory, weaker API).
+
+Associative containers (ordered, implemented with trees):
+- set / map: ordered containers, lookup/insert/erase O(log n). Iteration in order.
+
+Unordered containers (hash‑based):
+- unordered_set / unordered_map: average O(1) lookup/insert; worst-case O(n) depending on hash and collisions. Reserve() to avoid rehashing.
+
+Container adaptors:
+- stack, queue, priority_queue — provide restricted interfaces built on other containers.
 
 ### string
 
@@ -429,12 +481,29 @@ Example omitted.
 
 ### bitset
 
-TODO
+- `std::bitset<N>` is an efficient fixed-size representation of N bits with bitwise operators, `count()`, `test()`, `set()`, `reset()`. Use when N is known at compile time.
+
 
 ---
 
 
 ## Algorithms
+
+High-level categories:
+- Non-modifying sequence operations: find, count, any_of, all_of, none_of.
+- Modifying sequence operations: copy, transform, replace, fill.
+- Sorting and related: sort(), stable_sort(), partial_sort(), nth_element().
+- Partitioning: partition(), stable_partition(), partition_point().
+- Binary-search family (requires sorted range): lower_bound, upper_bound, binary_search.
+- Heap operations: make_heap, push_heap, pop_heap, sort_heap.
+- Numeric algorithms: accumulate, inner_product, partial_sum, iota.
+
+Examples and complexity notes:
+- binary_search — O(log n) on RandomAccessIterator and sorted data.
+- sort — O(n log n) average; stable_sort preserves relative order of equal elements.
+- nth_element — O(n) average; partitions so that the nth element is at its sorted position.
+
+Use std::algorithm overloads with execution policies (C++17 parallel algorithms) only after measuring and verifying thread-safety of the supplied functions.
 
 ### Generate / Fill
 
@@ -580,6 +649,10 @@ Example omission.
 
 ## I/O streams
 
+- iostreams are the standard C++ I/O facility: std::istream/std::ostream and derived types (fstream, stringstream).
+- ios_base contains format flags and locale management (flags(), precision(), width(), imbue()).
+- Avoid mixing C stdio and C++ iostreams unless sync_with_stdio(false) is used carefully for performance.
+
 ![io_inheritance](res/stl/io_inheritance.png)
 
 ### ios_base
@@ -628,16 +701,6 @@ Member functions (selected):
 - unordered_map/set: average lookup/insert O(1); use reserve() to minimize rehashes
 - sort: O(n log n) average; stable_sort: O(n log n) stable
 - make_heap/push_heap/pop_heap: O(log n) for push/pop
-
----
-
-## I want to continue
-
-I can now:
-
-- expand any section above with short, fully compilable examples (vector reserve demo, make_heap demo, shared_ptr aliasing example, etc.),
-- incorporate more of the original doc's images and inline examples (image references were preserved), or
-- mark this todo completed and move to the next file.
 
 ---
 
@@ -703,10 +766,6 @@ int main() {
 
 - Prefer `std::string` for owning text. Use `std::string_view` to pass a read-only view without copying. Be careful with lifetimes: `string_view` does not own the data.
 
-### bitset
-
-- `std::bitset<N>` is an efficient fixed-size representation of N bits with bitwise operators, `count()`, `test()`, `set()`, `reset()`. Use when N is known at compile time.
-
 ### Iterators: concrete advice
 
 - If an algorithm requires `RandomAccessIterator` (e.g., `std::sort`, `std::binary_search`), use containers that provide it (`vector`, `deque`, `array`). If only forward/bidirectional iteration is needed, prefer lighter containers.
@@ -721,224 +780,3 @@ int main() {
 
 - For heavy formatted I/O in tight loops, consider writing to an `std::ostringstream` and flushing once, or use lower-level I/O.
 - Disable synchronization with C stdio for speed: `std::ios::sync_with_stdio(false); std::cin.tie(nullptr);` — but avoid mixing C stdio and C++ iostreams after doing so unless you know the implications.
-
-# STL
-## C++ Standard Library (STL) — concise guide
-
-This note summarizes commonly used parts of the C++ Standard Library (containers, smart pointers, iterators, algorithms, and I/O). It condenses the material from the Chinese draft while keeping images and examples. The goal is practical: quick references, complexity notes, and short examples you can use as a starting point.
-
-## Quick orientation
-
-- Containers: sequence containers (vector, deque, list, array, forward_list), associative containers (set, map, multiset, multimap), unordered containers (unordered_map/set), and container adaptors (stack, queue, priority_queue).
-- Iterators: abstract the traversal of a container (input, output, forward, bidirectional, random access). Algorithms work with iterators.
-- Algorithms: non‑mutating (find, count), mutating (sort, transform), partitioning, numeric, heap operations, etc. Most algorithms express complexity guarantees in the standard.
-- Smart pointers: unique_ptr, shared_ptr, weak_ptr and helpers such as make_unique/make_shared.
-- I/O: iostreams family (ios_base, istream, ostream, iostream, fstream).
-
-## Smart pointers (memory management)
-
-Smart pointers provide RAII ownership and reduce manual delete errors.
-
-- std::unique_ptr<T>: exclusive ownership, lightweight, movable but not copyable. Use for single ownership and custom deleters when needed.
-
-- std::shared_ptr<T>: reference‑counted shared ownership. Use std::make_shared<T>(...) to allocate control block and object in one allocation (more efficient). Supports custom deleters and aliasing constructor (create a shared_ptr that shares ownership but points to a different object).
-
-- std::weak_ptr<T>: non‑owning observer of an object managed by shared_ptr. Use weak_ptr::lock() to obtain a temporary shared_ptr, and expired()/use_count() to check state.
-
-Key member functions (shared_ptr / weak_ptr): get(), reset(), swap(), use_count(), unique(), expired(), lock().
-
-Example (shared/weak):
-
-```c++
-#include <memory>
-#include <string>
-int main() {
-	auto sp = std::make_shared<std::string>("hello");
-	std::weak_ptr<std::string> wp = sp;
-	if (auto locked = wp.lock()) // safe access
-		; // *locked
-}
-```
-
-## Containers — overview and common complexity notes
-
-General rule: prefer the container whose complexity and operations match your usage pattern.
-
-- vector: dynamic array. Random access O(1). Push_back amortized O(1). Insert/erase in middle O(n). Good for contiguous storage and CPU cache locality.
-- array (std::array): fixed-size array wrapper (size part of type). All operations O(1).
-- string: specialized sequence for text. Use std::string for text data and std::string_view for non-owning views.
-- deque: double-ended queue; fast push/pop at both ends, but not contiguous.
-- list (std::list): doubly-linked list. Splice, insert, erase at known positions are O(1); random access is O(n). Use when many insert/erase operations in the middle and node stability is required.
-- forward_list: singly linked list (lower memory, weaker API).
-
-Associative containers (ordered, implemented with trees):
-- set / map: ordered containers, lookup/insert/erase O(log n). Iteration in order.
-
-Unordered containers (hash‑based):
-- unordered_set / unordered_map: average O(1) lookup/insert; worst-case O(n) depending on hash and collisions. Reserve() to avoid rehashing.
-
-Container adaptors:
-- stack, queue, priority_queue — provide restricted interfaces built on other containers.
-
-### Selected container details and notes
-
-- std::vector<T>
-	- Good for contiguous storage and algorithm compatibility.
-	- capacity() vs size(): use reserve() to avoid repeated reallocations.
-	- swap() is O(1) (just swaps internal pointers).
-
-- std::array<T,N>
-	- Fixed-size array wrapper. data() returns pointer to internal array. begin()/end() are O(1).
-
-- std::list<T>
-	- Stable iterators/pointers to elements, constant-time splice and insert/erase given iterator.
-
-- std::set / std::map
-	- Implemented with ordered balanced trees (typically red-black tree). Use for ordered iteration and logarithmic-time search.
-
-- std::priority_queue
-	- Heap-based adaptor. push/pop O(log n), top O(1).
-
-## Iterators and ranges
-
-- Iterators classify operations: input, output, forward, bidirectional, random_access. Algorithms require the weakest iterator concept needed.
-- Use range-based for loops and std::begin/std::end for generic code.
-
-## Algorithms — categories & representative functions
-
-High-level categories:
-- Non-modifying sequence operations: find, count, any_of, all_of, none_of.
-- Modifying sequence operations: copy, transform, replace, fill.
-- Sorting and related: sort(), stable_sort(), partial_sort(), nth_element().
-- Partitioning: partition(), stable_partition(), partition_point().
-- Binary-search family (requires sorted range): lower_bound, upper_bound, binary_search.
-- Heap operations: make_heap, push_heap, pop_heap, sort_heap.
-- Numeric algorithms: accumulate, inner_product, partial_sum, iota.
-
-Examples and complexity notes:
-- binary_search — O(log n) on RandomAccessIterator and sorted data.
-- sort — O(n log n) average; stable_sort preserves relative order of equal elements.
-- nth_element — O(n) average; partitions so that the nth element is at its sorted position.
-
-Use std::algorithm overloads with execution policies (C++17 parallel algorithms) only after measuring and verifying thread-safety of the supplied functions.
-
-## I/O streams (brief)
-
-- iostreams are the standard C++ I/O facility: std::istream/std::ostream and derived types (fstream, stringstream).
-- ios_base contains format flags and locale management (flags(), precision(), width(), imbue()).
-- Avoid mixing C stdio and C++ iostreams unless sync_with_stdio(false) is used carefully for performance.
-
-## Useful notes and practices
-
-- Prefer std::make_unique and std::make_shared for exception safety and efficiency.
-- Prefer value semantics and small objects; use move semantics (std::move) to transfer resources.
-- Use const references (const T&) to avoid unnecessary copies for large objects.
-- For concurrent code, prefer std::atomic and proper synchronization primitives; do not use volatile for thread synchronization.
-- When performance matters, check algorithmic complexity and memory behavior (cache locality for vectors vs lists).
-
-## Reference cheat‑sheet (selected functions and complexity)
-
-- vector: push_back (amortized O(1)), operator[] O(1), insert/erase O(n).
-- list: insert/erase at known position O(1), random access O(n).
-- set/map: lookup/insert/erase O(log n).
-- unordered_map/set: average lookup/insert O(1), reserve() to preallocate buckets.
-- sort: O(n log n) average; stable_sort: O(n log n) stable.
-- make_heap/push_heap/pop_heap: O(log n) for push/pop.
-
-## I want to continue
-
-I can now:
-
-- expand any section above with short, fully compilable examples (e.g., a vector reserve demo, make_heap demo, or a shared_ptr aliasing example), or
-- incorporate more of the original doc's images and inline examples (I preserved image references where relevant), or
-- mark this todo completed and move to your next file (tell me which one has priority).
-- mark this todo completed and move to your next file (tell me which one has priority).
-
----
-
-## Expanded examples and details
-
-Below are short, copy‑pasteable examples and a few more notes that were present in the original Chinese draft but were omitted in the brief summary. These are small, focused demos you can run to observe behavior.
-
-### Example 1 — vector reserve and reallocation
-
-This demo shows how reserve avoids repeated reallocations (addresses change only when capacity grows).
-
-```c++
-#include <iostream>
-#include <vector>
-
-int main() {
-	std::vector<int> v;
-	v.reserve(8);
-	std::cout << "initial capacity=" << v.capacity() << "\n";
-	for (int i = 0; i < 10; ++i) {
-		v.push_back(i);
-		std::cout << "i=" << i << " size=" << v.size() << " cap=" << v.capacity() << " ptr=" << static_cast<const void*>(v.data()) << "\n";
-	}
-}
-```
-
-Run it and observe that capacity increases only when needed; using reserve(10) would prevent intermediate reallocations.
-
-### Example 2 — heap operations (make_heap / push_heap / pop_heap)
-
-```c++
-#include <algorithm>
-#include <vector>
-#include <iostream>
-
-int main() {
-	std::vector<int> v{3,1,4,1,5,9,2};
-	std::make_heap(v.begin(), v.end());
-	std::cout << "heap top: " << v.front() << "\n"; // max-heap
-	v.push_back(6);
-	std::push_heap(v.begin(), v.end());
-	std::cout << "after push, top: " << v.front() << "\n";
-	std::pop_heap(v.begin(), v.end()); // moves top to v.back()
-	v.pop_back();
-	std::cout << "after pop, top: " << v.front() << "\n";
-}
-```
-
-### Example 3 — shared_ptr aliasing constructor (useful for sub-objects)
-
-The aliasing constructor allows a shared_ptr to share ownership of a control block while pointing to a different address (e.g., a member inside an object).
-
-```c++
-#include <memory>
-#include <iostream>
-
-struct S { int x; };
-
-int main() {
-	auto p = std::make_shared<S>();
-	p->x = 42;
-	// aliasing: sp2 shares ownership with p but points to &p->x
-	std::shared_ptr<int> sp2(p, &p->x);
-	std::cout << "use_count=" << p.use_count() << " *sp2=" << *sp2 << "\n";
-}
-```
-
-### string and string_view
-
-- Prefer std::string for owning text. Use std::string_view to pass read‑only views without copying. Beware lifetime: string_view does not own data.
-
-### bitset
-
-- std::bitset<N> is a fixed-size, efficient representation of N bits with bitwise operators, count(), test(), set(), reset(). Use when N is known at compile time.
-
-### Iterators: concrete advice
-
-- If an algorithm needs RandomAccessIterator (e.g., std::sort, std::binary_search) use containers that provide it (vector, deque, array). If only forward or bidirectional iteration is needed, prefer the lighter container.
-- When writing generic code, document the required iterator category.
-
-### Algorithms: stability and complexity reminders
-
-- stable_sort keeps equal elements in relative order (use when order matters). sort is typically faster but not stable.
-- nth_element partitions so the n-th element is at the position it would be in a sorted array; elements before are <= it, after are >= it.
-
-### I/O tips for performance
-
-- For tight loops that do a lot of formatted I/O, prefer writing to an std::ostringstream and flush at once, or use low-level I/O.
-- Turn off sync with stdio for faster streams in many programs: `std::ios::sync_with_stdio(false); std::cin.tie(nullptr);` (but do not mix C stdio and C++ iostreams after doing so unless you know what you're doing).

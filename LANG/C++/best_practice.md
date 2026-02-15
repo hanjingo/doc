@@ -1627,7 +1627,7 @@ TODO
 
 [4] 侯捷.STL源码刨析.2003
 
-[5] [美]Scott Meyers.Effective STL.1th Edition
+[5] Scott Meyers.Effective STL.1th Edition
 
 [6] [C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines?utm_source=wechat_session&utm_medium=social&utm_oi=974639756117843968#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers)
 

@@ -2,6 +2,10 @@ English | [中文版](concurrency_zh.md)
 
 # C++ Concurrency — practical summary
 
+[TOC]
+
+
+
 This note collects the essential C++ concurrency primitives and patterns (C++11 and later) with pragmatic tips, corrected wording, and small example sketches. It is distilled from Anthony Williams' "C++ Concurrency in Action" and the existing Chinese notes. The objective is a concise, accurate reference covering threads, mutexes, condition variables, futures/promises, atomics, lock‑free considerations, and common performance pitfalls.
 
 ## Threads and std::thread
@@ -156,9 +160,3 @@ See the Chinese note for longer code excerpts; for production code prefer docume
 - Anthony Williams — C++ Concurrency in Action
 - cppreference.com — concurrency reference
 - Library docs: Boost.Lockfree, Folly, libunifex, Asio (awaitable I/O)
-
----
-
-If you want, I can:
-- expand one of the sketches into a fully compilable example under `LANG/C++/examples` and run a local compile check; or
-- prepare a checklist of unit tests and sanitizers to run for concurrent modules.

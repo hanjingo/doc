@@ -2,6 +2,10 @@ English | [中文版](coroutine_zh.md)
 
 # C++ Coroutines
 
+[TOC]
+
+
+
 This note summarizes the C++ coroutine model (C++20 and practical extensions), explains the main concepts (coroutine frame, promise_type, coroutine_handle, awaiter/awaitable), and shows small illustrative patterns: generators and simple asynchronous tasks. It also covers lifetime and resource management, common pitfalls, and best practices for production code. The goal is a compact, practical reference rather than an exhaustive tutorial.
 
 ## What is a coroutine?
@@ -104,9 +108,3 @@ Then an async function can co_await other tasks and co_return a value that ends 
 - C++20 standard sections on coroutines (search for "coroutine" and promise_type semantics).
 - Lewis Baker — cppcoro examples and documentation.
 - Victor Luchangco / Gor Nishanov talks and notes on coroutine design and compiler transformations.
-
----
-
-If you want, I can (pick one):
-- add a fully compilable, minimal generator example file under `LANG/C++/examples` and run a quick compile check; or
-- produce a short checklist for migrating code to coroutines and common unit tests you should add.
