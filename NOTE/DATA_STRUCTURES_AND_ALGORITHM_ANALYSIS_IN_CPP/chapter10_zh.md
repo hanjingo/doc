@@ -855,7 +855,3 @@ bool turnpike(vector<int> &x, DistSet d, int n)
         return false;
 }
 ```
-
-### 10.5.2 博弈
-
-TODO

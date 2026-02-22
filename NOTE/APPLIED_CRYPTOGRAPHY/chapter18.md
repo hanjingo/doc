@@ -94,7 +94,14 @@ MD2 is another 128-bit one-way hash function designed by Ron Rivest. It, along w
 
 4. This is the compression function:
 
-   TODO
+   ```c++
+   t = 0
+   For j = 0 to 17
+     For k = 0 to 47
+     	t = X_k XOR S_t
+     	X_k = t
+     t = (t + i) mod 256
+   ```
 
 5. Set the second 16 bytes of $X$ to be the second 16 bytes of the message, and the third 16 bytes of $X$ to be the XOR of the first 16 bytes of $X$ and the second 16 bytes of $X$. Do step 4. Repeat steps 5 and 4 with every 16 bytes of the message, in turn.
 

@@ -1027,9 +1027,5 @@ ABA problem goes like this:
 
 ### 7.3.4 Guideline: identify busy-wait loops and help the other thread
 
-TODO
-
-
-
-## 7.4 Summary
+Busy-wait loop: with the waiting thread wasting CPU time while failing to proceed.
 

@@ -49,9 +49,3 @@ $$
 F_{0} = E(P_{T})\left(\frac{1 + r_{f}}{1 + k}\right)^{T}
 $$
 , where $k$ is the required rate of return on the commodity, which may be obtained from a model of asset market equilibrium such as the CAPM.
-
-
-
-## Summary
-
-TODO

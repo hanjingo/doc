@@ -21,29 +21,3 @@ We suggest that you adopt the following thinking steps in locating fallacies:
 
 TODO
 
-
-
-## Vocabulary
-
-ambiguous
-
-spotting
-
-unduly
-
-shocked
-
-hike
-
-dispute
-
-sorority
-
-hominem
-
-irrelevant
-
-blatantly
-
-erroneous
-

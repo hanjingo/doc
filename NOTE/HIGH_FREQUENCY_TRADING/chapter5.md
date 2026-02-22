@@ -140,7 +140,7 @@ The Dufour and Engle (2000) specification of the VAR model that ascertains causa
 $$
 \Delta P_t = \sum_{j = 1}^{5}a_j \Delta P_{t - j} + \sum_{t = 8}^{18}\gamma_{t}D_{t, i} + \sum_{j = 0}^{t}b_j Q_{i - j} + \varepsilon_i \\
 
-Q_i = \sum_{j = 1}^{5}c_j \Delta P_{t - j} + \sum_{t = 8}^{18}\delta_t D_{t, i} + \sum_{j = 1}^{5} d_j Q_{i - j} + \TODO
+Q_i = \sum_{j = 1}^{5}c_j \Delta P_{t - j} + \sum_{t = 8}^{18}\delta_t D_{t, i} + \sum_{j = 1}^{5} d_j Q_{i - j} + \vartheta_i
 $$
 
 - $R_i$ is the instantaneous market impact following a trade tick $i$, calculated as a one tick log return, that is, as a difference of logarithms of the price of tick $i$, and the price of the previous trade tick $i - 1$

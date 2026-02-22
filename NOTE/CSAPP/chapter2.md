@@ -406,12 +406,6 @@ The bit representation of a floating-point number is divided into three fields t
 
 
 
-## Summary
-
-TODO
-
-
-
 ## Glossary
 
 <div style="width: 50%; float:left;">presence `/'prezns/` 出席，存在，到场</div>

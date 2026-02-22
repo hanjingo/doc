@@ -49,9 +49,3 @@ Standard I/O streams are `full duplex` in the sense that programs can perform in
 
 1. Input functions following output functions.
 2. Output functions following input functions.
-
-
-
-## Summary
-
-TODO

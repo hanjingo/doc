@@ -118,9 +118,3 @@ $$
 When you establish a position in stocks and options that is hedged with respect to fluctuations in the price of the underlying asset, your portfolio is said to be `delta neutral`, meaning that the portfolio has no tendency to either increase or decrease in value when the stock price fluctuates.
 
 The sensitivity of an option price to changes in volatility is called the option's `vega`.
-
-
-
-## Summary
-
-TODO

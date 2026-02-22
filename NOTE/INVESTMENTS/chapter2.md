@@ -100,9 +100,7 @@ A `put option` gives its holder the right to sell an asset for a specified exerc
 
 A `futures contract` calls for delivery of an asset (or in some cases, its cash value) at a specified delivery or maturity date for an agreed-upon price, called the futures price, to be paid at contract maturity. The `long position` is held by the trader who commits to purchasing the asset on the delivery date. The trader who takes the `short position` commits to delivering the asset at contract maturity.
 
-## Summary
 
-TODO
 
 ## Vocabulary
 

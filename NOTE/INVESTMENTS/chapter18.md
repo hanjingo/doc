@@ -93,8 +93,3 @@ $$
 $$
 \text{Intrinsic value of equity} = \sum_{t = 1}^{T} \frac{FCFE_{t}}{(1 + k_{E})^{t}}, \text{where } V_{T} = \frac{FCFE_{T + 1}}{k_{E} - g}
 $$
-
-
-## Summary
-
-TODO

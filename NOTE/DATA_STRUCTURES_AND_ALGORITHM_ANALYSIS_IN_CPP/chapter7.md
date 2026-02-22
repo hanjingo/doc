@@ -113,11 +113,29 @@ void shellsort(vector<Comparable>& a)
 
 **Theorem 7.3** The worst-case running time of Shellsort using Shell's increments is $\Theta(N^2)$​.
 
-**Proof** TODO
+**Proof** The proof requires showing not only an upper bound on the worst-case running time but also showing that there exists some input that actually takes $\Omega(N^2)$ time to run. We prove the lower bound first by constructing a bad case. First, we choose $N$ to be a power of 2. This makes all the increments even, except for the last increment, which is 1. Now, we will give as input an array with the $N/2$ largest numbers in the even positions and the $N/2$ smallest numbers in the odd positions (for this proof, the first position is position 1). As all the increments except the last are even, when we come to the last pass, the $N/2$ largest numbers are still all in even positions and the $N/2$ smallest numbers are still all in odd positions. The $i$th smallest number $(i \leq N/2)$ is thus in position $2i - 1$ before the beginning of the last pass. Restoring the $i$th element to its correct place requires moving it $i - 1$ spaces in the array. Thus, to merely place the $N/2$ smallest elements in the correct place requires at least $\sum_{i = 1}^{N/2} i - 1 = \Omega(N^2)$ work. 
+
+To finish the proof, we show the upper bound of $O(N^2)$. As we have observed before, a pass with increment $h_k$ consists of $h_k$ insertion sorts of about $N/h_k$ elements. Since insertion sort is quadratic, the total cost of a pass is $O(h_k(N/h_k)^2) = O(N^2/h_k)$. Summing over all passes gives a total bound of $O(\sum_{i = 1}^{t}N^2/h_i) = O(N^2 \sum_{i = 1}^{t}1/h_i)$. Because the increments form a geometric series with common ratio 2, and the largest term in the series is $h_1 = 1, \sum_{i = 1}^{t}1/h_i < 2$. Thus we obtain a total bound of $O(N^2)$.
 
 **Theorem 7.4** The worst-case running time of Shellsort using Hibbard's increments is $\Theta(N^{3/2})$.
 
-**Proof** TODO
+**Proof** For the upper bound, as before, we bound the running time of each pass and sum over all passes. For increments $h_k > N^{1/2}$, we will use the bound $O(N^2 / h_k)$ from the previous theorem. Although this bound holds for the other increments, it is too large to be useful. Intuitively, we must take advantage of the fact that this increment sequence is special. What we need to show is that for any element $a[p]$ in position $p$, when it is time to perform an $h_k$-sort, there are only a few elements to the left of position $p$ that are larger than $a[p]$.
+
+When we come to $h_k$-sort the input array, we know that it has already been $h_{k + 1}$- and $h_{k + 2}$-sorted. Prior to the $h_k$-sort, consider elements in positions $p$ and $p - i, i \leq p$. If $i$ is a multiple of $h_{k + 1}$ or $h_{k + 2}$, then clearly $a[p - i] < a[p]$. We can say more, however. If $i$ is expressible as a linear combination (in nonnegative integers) of $h_{k + 1}$ and $h_{k + 2}$, then clearly $a[p - i] < a[p]$. We can say more, however. If $i$ is expressible as a linear combination (in nonnegative integers) of $h_{k + 1}$ and $h_{k + 2}$, then $a[p - i] < a[p]$.
+
+Now, $h_{k + 2} = 2h_{k + 1} + 1$, so $h_{k + 1}$ and $h_{k + 2}$ cannot share a common factor. In this case, it is possible to show that all integers that are at least as large as $(h_{k + 1} - 1)(h_{k + 2} - 1) = 8h_k^2 + 4h_k$ can be expressed as a linear combination of $h_{k + 1}$ and $h_{k + 2}$.
+
+This tells us that the body of the innermost for loop can be executed at most $8h_k + 4 = O(h_k)$ times for each of the $N - h_k$ positions. This gives a bound of $O(Nh_k)$ per pass.
+
+Using the fact that about half the increments satisfy $h_k < \sqrt{N}$, and assuming that $t$ is even, the total running time is then:
+$$
+O(\sum_{k = 1}^{t / 2}Nh_k + \sum_{k = t / 2 + 1}^{t}N^2/h_k) = O(N\sum_{k = 1}^{t / 2}h_k + N^2 \sum_{k = t / 2 + 1}^{t}1/h_k)
+$$
+Because both sums are geometric series, and since $h_{t/2} = \Theta(\sqrt{N})$, this simplifies to:
+$$
+= O(Nh_{t/2}) + O(\frac{N^2}{h_{t/2}}) = O(N^{3/2})
+$$
+
 
 
 
@@ -167,11 +185,31 @@ void percDown(vector<Comparable>& a, int i, int n)
 }
 ```
 
-In the worst case, at most $2NlogN - O(N)$​ comparisons are used by heapsort.
+In the worst case, at most $2N\log N - O(N)$​ comparisons are used by heapsort.
 
-**Theorem 7.5** The average number of comparisons used to heapsort a random permutation of $N$ distinct items is $2NlogN-O(Nlog\ logN)$.
+**Theorem 7.5** The average number of comparisons used to heapsort a random permutation of $N$ distinct items is $2N\log N-O(N\log \log N)$.
 
-**Proof** TODO
+**Proof** The heap construction phase uses $\Theta(N)$ comparisons on average, and so we only need to prove the bound for the second phase. We assume a permutation of $\{1, 2, ..., N\}$. 
+
+Suppose the $i$th `deleteMax` pushes the root element down $d_i$ levels. Then it uses $2d_i$ comparisons. For heap sort on any input, there is a cost sequence $D:d_1, d_2, ..., d_N$ that defines the cost of phase 2. That cost is given by $M_D = \sum_{i = 1}^{N}d_i$; the number of comparisons used is thus $2M_D$.
+
+Because level $d_i$ has at most $2^{d_i}$ nodes, there are $2^{d_i}$ possible places that the root element can go for any $d_i$. Consequently, for any sequence $D$, the number of distinct corresponding `deleteMax` sequences is at most:
+$$
+S_D = 2^{d_1} 2^{d_2} \cdots 2^{d_N}
+$$
+A simple algebraic manipulation shows that `for a given sequence D`,
+$$
+S_D = 2^{M_D}
+$$
+Because each $d_i$ can assume any value between 1 and $\lfloor \log N \rfloor$, there are at most $(\log N)^N$ possible sequences $D$. It follows that the number of distinct `deleteMax` sequences that require cost exactly equal to $M$ is at most the number of cost sequences of total cost $M$ times the number of `deleteMax` sequences for each of these cost sequences. A bound of $(\log N)^N 2^M$ follows immediately.
+
+The total number of heaps with cost sequence less than $M$ is at most
+$$
+\sum_{i = 1}^{M - 1}(\log N)^N 2^i < (\log N)^N 2^M
+$$
+If we choose $M = N(\log N - \log \log N - 4)$, then the number of heaps that have cost sequence less than $M$ is at most $(N / 16)^N$, and the theorem follows from our earlier comments.
+
+Using a more complex argument, it can be shown that heapsort always uses at least $N \log N - O(N)$ comparisons and that there are inputs that can achieve this bound. The average-case analysis can also be improved to $2N \log N - O(N)$ comparisons.
 
 
 
@@ -445,7 +483,13 @@ A **decision tree** is an abstraction used to prove lower bonds.
 
 **Lemma 7.5** The decision tree fro finding the $k$th smallest of $N$ elements must have at least ${N \choose k - 1} 2^{N - k}$​ leaves.
 
-**Proof** TODO
+**Proof** Observe that any algorithm that correctly identifies the $k$th smallest element $t$ must be able to prove that all other elements $x$ are either larger than or smaller than $t$. Otherwise, it would be giving the same answer regardless of whether $x$ was larger or smaller than $t$, and the answer cannot be the same in both circumstances. Thus each leaf in the tree, in addition to representing the $k$th smallest element, also represents the $k - 1$ smallest items that have been identified.
+
+Let $T$ be the decision tree, and consider two sets: $S = \{x_1, x_2, ..., x_{k - 1}\}$, representing the $k - 1$ smallest items, and $R$ which are the remaining items, including the $k$th smallest. Form a new decision tree, $T'$, by purging any comparisons in $T$ between an element in $S$ and an element in $R$. Since any element in $S$ is smaller than an element in $R$, the comparison tree node and its right subtree may be removed from $T$ without any loss of information. The following figure shows how nodes can be pruned.
+
+![7_21](res/7_21.png)
+
+Any permutation of $R$ that is fed into $T'$ follows the same path of nodes and leads to the same leaf as a corresponding sequence consisting of a permutation of $S$ followed by the same permutation of $R$. Since $T$ identifies the overall $k$th smallest element, and the smallest element in $R$ is that element, it follows that $T'$ identifies the smallest element in $R$. Thus $T'$ must have at least $2^{|R| - 1} = 2^{N - k}$ leaves. These leaves in $T'$ directly correspond to $2^{N - k}$ leaves representing $S$. Since there are ${N \choose k - 1}$ choice for $S$, there must be at least ${N \choose k - 1}2^{N - k}$ leaves in $T$.
 
 **Theorem 7.6** Any sorting algorithm that uses only comparisons between elements requires at least $\lceil log(N!) \rceil$ comparisons in the worst case.
 
@@ -466,7 +510,7 @@ log(N!) &= log(N(N-1)(N-2)...(2)(1)) \\
 $$
 **Theorem 7.8** Any comparison-based algorithm to find the smallest element must use at least $N - 1$ comparisons.
 
-**Proof** TODO
+**Proof** Every element, $x$, except the smallest element, must be involved in a comparison with some other element, $y$, in which $x$ is declared larger than $y$. Otherwise, if there were two different elements that had not been declared larger than any other elements, then either could be the smallest.
 
 **Theorem 7.9** Any comparison-based algorithm to find the $k$th smallest element must use at least $N - k + \lceil log {N \choose k - 1} \rceil$ comparisons.
 

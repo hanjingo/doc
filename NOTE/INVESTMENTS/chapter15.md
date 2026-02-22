@@ -54,8 +54,3 @@ $$
 $$
 \text{Nominal rate} \approx \text{Real rate} + \text{Inflation rate}
 $$
-
-
-## Summary
-
-TODO

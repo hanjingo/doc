@@ -39,11 +39,24 @@ delete x from the list T[h(x.key)]
 
 **Theorem 11.1** In a hash table in which collisions are resolved by chaining, an unsuccessful search takes average-case time $\theta(1 + \alpha)$, under the assumption of simple uniform hashing.
 
-**Proof** TODO
+**Proof** Under the assumption of simple uniform hashing, any key $k$ not already stored in the table is 
 
 **Theorem 11.2** In a hash table in which collisions are resolved by chaining, a successful search takes average-case time $\theta(1 + \alpha)$, under the assumption of simple uniform hashing.
 
-**Proof** TODO
+**Proof** We assume that the element being searched for is equally likely to be any of the $n$ elements stored in the table. The number of elements examined during a successful search for an element $x$ is one more than the number of elements that appear before $x$ in $x$'s list. Because new elements are placed at the front of the list, elements before $x$ in the list were all inserted after $x$ was inserted. To find the expected number of elements examined, we take the average, over the $n$ elements $x$ in the table, of 1 plus the expected number of elements added to $x$'s list after $x$ was added to the list. Let $x_i$ denote the $i$th element inserted into the table, for $i = 1, 2, ..., n$ and let $k_i = x_i key$. For keys $k_i$ and $k_j$, we define the indicator random variable $X_{ij} = I\{h(k_i) = h(k_j)\}$. Under the assumption of simple uniform hashing, we have $Pr\{h(k_i) = h(k_j)\} = 1/m$, and so by Lemma 5.1, $E[X_{ij}] = 1/m$. Thus, the expected number of elements examined in a successful search is:
+$$
+\begin{equation}\begin{split}
+E\left[ \frac{1}{n}\sum_{i=1}^{n}(1+\sum_{j=i+1}^{n}X_{ij}) \right] \\
+&= \frac{1}{n} \sum_{i=1}^{n} \left(1 + \sum_{j=i+1}^{n}E[X_{ij}]\right) \text{(by linearity of expectation)} \\
+&= \frac{1}{n} \sum_{i=1}^{n} \left(1 + \sum_{j=i+1}^{n} \frac{1}{m} \right) \\
+&= 1 + \frac{1}{nm} \sum_{i=1}^{n}(n - i) \\
+&= 1 + \frac{1}{nm} \left(\sum_{i=1}^{n}n - \sum_{i=1}^{n}i \right) \\
+&= 1 + \frac{1}{nm} \left(n^2 - \frac{n(n+1)}{2} \right) \text{(by equation (A.1))} \\
+&= 1 + \frac{n - 1}{2m} \\
+&= 1 + \frac{\alpha}{2} - \frac{\alpha}{2n}
+\end{split}\end{equation}
+$$
+Thus, the total time required for a successful search (including the time for computing the hash function) is $\Theta(2 + \alpha/2 - \alpha/2n) = \Theta(1 + \alpha)$.
 
 
 
@@ -77,11 +90,28 @@ The **multiplication method** for creating hash functions operates in two steps:
 
 **Theorem 11.3** Suppose that a hash function $h$ is chosen randomly from a universal collection of hash functions and has been used to hash $n$ keys into a table $T$ of size $m$, using chaining to resolve collisions. If key $k$ is not in the table, then the expected length $E[n_{h(k)}]$ of the list that key $k$ hashes to is at most the load factor $\alpha = n / m$. If key $k$ is in the table, then the expected length $E[n_{h(k)}]$ of the list containing key $k$ is at most $1 + \alpha$.
 
-**Proof** TODO
+**Proof** We note that the expectations here are over the choice of the hash function and do not depend on any assumptions about the distribution of the keys. For each pair $k$ and $l$ of distinct keys, define the indicator random variable $X_{kl} = I\{h(k) = h(l)\}$. Since by the definition of a universal collection of hash functions, a single pair of keys collides with probability at most $1/m$, we have $Pr\{h(k) = h(l)\} \leq 1/m$. By lemma 5.1, therefore, we have $E[X_{kl}] \leq 1/m$.
+
+Next we define, for each key $k$, the random variable $Y_k$ that equals the number of keys other than $k$ that hash to the same slot as $k$, so that
+$$
+Y_k = \sum_{l \in T, l \neq k}X_{kl}
+$$
+Thus we have
+$$
+\begin{equation}\begin{split}
+E[Y_k] &= E\left[ \sum_{l \in T, l \neq k}X_{kl} \right] \\
+&= \sum_{l \in T, l \neq k}X_{kl} E[X_{kl}] \quad \text{ (by linearity of expectation)} \\
+& \leq \sum_{l \in T, l \neq k}\frac{1}{m}.
+\end{split}\end{equation}
+$$
+The remainder of the proof depends on whether key $k$ is in table $T$.
+
+- If $k \notin T$, then $n_{h(k)} = Y_k$ and $|\{l:l \in T \text{ and } l \neq k\}| = n$. Thus $E[n_{h(k)}] = E[Y_k] \leq n/m = \alpha$.
+- If $k \in T$, then because key $k$ appears in list $T[h(k)]$ and the count $Y_k$ does not include key $k$, we have $n_{h(k)} = Y_k + 1$ and $|\{l:l \in T \text{ and } l \neq k\}| = n - 1$. Thus $E[n_{h(k)}] = E[Y_k] + 1 \leq (n - 1)/m + 1 = 1 + \alpha - 1/m < 1 + \alpha$.
 
 **Corollary 11.4** Using universal hashing and collision resolution by chaining in an initially empty table with $m$ slots, it takes the expected time $\theta(n)$ to handle any sequence of $n$ $INSERT$, $SEARCH$, and $DELETE$ operations containing $O(m)\ INSERT$ oerations. 
 
-**Proof** TODO
+**Proof** Since the number of insertions is $O(m)$, we have $n = O(m)$ and so $\alpha = O(1)$. The `INSERT` and `DELETE` operations take constant time and, by The orem 11.3, the expected time for each `SEARCH` operation is $O(1)$. By linearity of expectation, therefore, the expected time for the entire sequence of $n$ operations is $O(n)$. Since each operation takes $\Omega(1)$ time, the $\Theta(n)$ bound follows.
 
 **Theorem 11.5** The class $H_{pm}$ of hash functions defined by $h_{ab}(k) = ((ak + b)mod\ p)mod\ m$ and $H_{pm} = \{h_{ab}: a \in Z_p^{*}, b \in Z_p\}$ is universal.
 

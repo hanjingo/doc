@@ -90,9 +90,3 @@
 - 关键服务识别(Identify Critical Services and Components)
 - 攻击仿真(Identify Attacks and Compromisable Components)
 - 生存能力分析(Identify Softspots and Survivability Strategies)
-
-
-
-## 总结
-
-TODO

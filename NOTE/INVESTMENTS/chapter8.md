@@ -181,9 +181,3 @@ $$
 R_C = R_P - R_T = (.04 + 1.4R_{S\&P500} + e_P) - 1.4R_{S\&P500} = .04 + e_P
 $$
 , while this portfolio is still risky (due to the residual risk, $e_P$), the systematic has been eliminated, and if $P$ is reasonably well-diversified, the remaining nonsystemic risk will be small.
-
-
-
-## Summary
-
-TODO

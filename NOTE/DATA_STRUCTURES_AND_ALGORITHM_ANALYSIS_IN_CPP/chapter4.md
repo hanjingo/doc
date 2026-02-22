@@ -206,8 +206,8 @@ private:
             insert(x, t->left);
         else if (t->element < x)
             insert(x, t->right);
-        else
-            // todo
+        
+      	balance(t);
     };
 
     void remove(const Comparable& x, BinaryNode* & t) const {
@@ -378,8 +378,7 @@ struct AvlNode
                 else
                     doubleWithRightChild(t);
         }
-        else
-            // TODO
+        
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 

@@ -16,9 +16,3 @@ The three rules of thumb are to include country indexes in order of:
 2. `Country selection`
 3. `Stock selection`
 4. `Cash/bond selection`
-
-
-
-## Summary
-
-TODO

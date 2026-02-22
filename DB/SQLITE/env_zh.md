@@ -1,14 +1,8 @@
 # Sqlite环境配置
 
+[TOC]
 
-<!-- vim-markdown-toc GFM -->
 
-* [二进制安装](#二进制安装)
-    - [windows](#windows)
-    - [linux](#linux)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
 
 
 ## 二进制安装

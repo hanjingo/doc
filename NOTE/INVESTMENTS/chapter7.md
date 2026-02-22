@@ -157,8 +157,35 @@ $$
 &= E(r^2) - [E(r)]^2 = \sum_{i = 1}^{n}p(i)r(i)^2 - \left[\sum_{i = 1}^{n}p(i)r(i)\right]^2 \\
 \end{split}\end{equation}
 $$
-TODO
+The variance of a `portfolio` return is not as simple to compute as the mean. The portfolio variance is `not` the weighted average of the asset variances. The deviation of the portfolio rate of return in any scenario from its mean return is:
+$$
+\begin{equation}\begin{split}
+r_P - E(r_P) &= w_D r_D (i) + w_E r_E (i) - [w_D E(r_D) + w_E E(r_E)] \\
+&= w_D[r_D(i) - E(r_D)] + w_E[r_E(i) - E(r_E)] \\
+&= w_D d(i) + w_E e(i)
+\end{split}\end{equation}
+$$
+, where the lowercase variables denote deviations from the mean:
+$$
+d(i) = r_D(i) - E(r_D) \\
+e(i) = r_E(i) - E(r_E)
+$$
+, we express the variance of the portfolio return in terms of these deviations from the mean in above equation:
+$$
+\begin{equation}\begin{split}
+\sigma_{P}^{2} &= \sum_{i = 1}^{n}p(i)[w_D d(i) + w_E e(i)]^2 \\
+&= \sum_{i = 1}^{n}p(i)[w_D^2 d(i)^2 + w_E^2 e(i)^2 + 2w_D w_E d(i)e(i)] \\
+&= w_D^2 \sum_{i = 1}^{n}p(i)d(i)^2 + w_E^2\sum_{i = 1}^{n}p(i)e(i)^2 + 2w_D w_E\sum_{i = 1}^{n}p(i)d(i)e(i) \\
+&= w_D^2 \sigma_D^2 + w_E^2 \sigma_E^2 + 2w_D w_E \sum_{i = 1}^{n}p(i)d(i)e(i)
+\end{split}\end{equation}
+$$
+, the last line in this equation tells us that the variance of a portfolio is the weighted sum of portfolio variances (notice that the weights are the squares of the portfolio weights), plus an additional term that, as we will soon see, makes all the difference.
 
-## Summary
-
-TODO
+The covariance between two variables equals:
+$$
+\begin{equation}\begin{split}
+Cov(r_D, r_E) &= E(d \times e) = E\{[r_D - E(r_D)][r_E - E(r_E)]\} \\
+&= E(r_D r_E) - E(r_D)E(r_E)
+\end{split}\end{equation}
+$$
+, the covariance is an elegant way to quantify the covariation of two variables. This is easiest seen through a numerical example.

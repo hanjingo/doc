@@ -101,9 +101,3 @@ Here are some of the major issues that you should be aware of when using the fin
 - Reserving practices.
 - Depreciation.
 - Intangibles.
-
-
-
-## Summary
-
-TODO

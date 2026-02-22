@@ -45,9 +45,3 @@ Tests of long-horizon returns (i.e., returns over multiyear periods) have found 
 `Post-Earnings-Announcement Price Drift` A fundamental principle of efficient markets is that any new information ought to be reflected in stock prices very rapidly.
 
 The conventional performance benchmark today is a foru-factor model, which employs the three Fama-French factors (the return on the market index, and returns to portfolios based on size and book-to-market ratio) augmented by a momentum factor (a portfolio constructed base on prior-year stock return). Alphas constructed using an expanded index model using these four factors control for a wide range of mutual fund style choices that may affect average returns.
-
-
-
-## Summary
-
-TODO

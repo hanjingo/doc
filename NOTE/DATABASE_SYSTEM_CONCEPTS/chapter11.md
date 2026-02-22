@@ -156,11 +156,3 @@ To make a choice of file organization and indexing techniques for a relation, th
 - What types of queries are users likely to pose?
 
 A `bitmap` is simply an array of bits. In its simplest form, a `bitmap index` on the attribute $A$ of relation $\gamma$ consists of one bitmap for each value that $A$ can take. Each bitmap has as many bits as the number of records in the relation. The $i$th bit of the bitmap for value $v_j$ is set to $1$ if the record numbered $i$ has the value $v_j$ for attribute $A$. All other bits of the bitmap are set to $0$.
-
-
-
-## Summary
-
-- Many queries reference only a small proportion of the records in a file. To reduce the overhead in searching for these records, we can construct `indices` for the files that store the database.
-- Index-sequential files are one of the oldest index schemes used in database systems. 
-- TODO

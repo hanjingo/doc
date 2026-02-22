@@ -61,11 +61,11 @@ Our storage devices are all controlled by a single `clock`, a periodic signal th
 In general, processing an instruction involves a number of operations. We organize them in a particular sequence of stages, attempting to make all instructions follow a uniform sequence, even though the instructions differ greatly in their actions. The detailed processing at each step depends on the particular instruction being executed. Creating this framework will allow us to design a processor that makes best use of the hardware. The following is an informal description of the stages and the operations performed within them:
 
 - `Fetch`: The fetch stage reads the bytes of an instruction from memory, using the program counter (PC) as the memory address.
-- `Decode`: TODO
-- `Execute`: TODO
-- `Memory`: TODO
-- `Write back`: TODO
-- `PC updata`: TODO
+- `Decode`: The decode stage reads up to two operands from the register file, giving values `valA` and/or `valB`.
+- `Execute`: In the execute stage, the arithmetic/logic unit(ALU) either performs the operation specified by the instruction(according to the value of `ifun`), computes the effective address of a memory reference, or increments or decrements the stack pointer.
+- `Memory`: The memory stage may write data to memory, or it may read data from memory.
+- `Write back`: The write-back stage writes up to two results to the register file.
+- `PC update`: The PC is set to the address of the next instruction.
 
 The processing required for instruction types `OPq`(integer and logical operations), `rrmovq`(register-register move), and `irmovq`(immediate-register move):
 
@@ -130,9 +130,3 @@ Limitations of Pipelining:
 2. logical dependencies
 
    ![4_38](res/4_38.png)
-
-
-
-## Summary
-
-TODO

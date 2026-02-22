@@ -132,7 +132,7 @@ After the cache at level $k$ has fetched the block from level $k + 1$, the progr
 different kinds of cache misses:
 
 - `compulsory misses` or `cold misses`: if the cache at level $k$ is empty, then any access of any data object will miss. An empty cache is sometimes referred to as `cold cache`, and misses of this kind are called `compulsory misses` or `cold misses`.
-- `conflict miss` TODO
+- `conflict miss`: Restrictive placement policies of this kind lead to a type of miss known as a `conflict miss`, in which the cache is large enough to hold the referenced data objects, but because they map to the same cache block, the cache keeps missing.
 
 The essence of the memory hierarchy is that the storage device at each level is a cache for the next lower level. At each level, some form of logic must `manage` the cache. By this we mean that something has to partition the cache storage into blocks, transfer blocks between different levels, decide when there are hits and misses, and then deal with them. The logic that manages the cache can be hardware, software, or a combination of the two.
 

@@ -64,9 +64,3 @@ $$
 , In other words, the risk premium (expected excess return) on portfolio $P$ is the product of its beta and the market-index risk premium.
 
 `factor portfolio`, which is a well-diversified portfolio constructed to have a beta of 1 on one of the factors and a beta of zero on any other factor.
-
-
-
-## Summary
-
-TODO

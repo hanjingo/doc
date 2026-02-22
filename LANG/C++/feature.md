@@ -12,7 +12,7 @@ English | [中文版](feature_zh.md)
 
 The **new operator** is an operator and cannot be overloaded. If `A` is a class, then:
 
-```cpp
+```c++
 A* a = new A;
 ```
 
@@ -20,7 +20,7 @@ Actually performs the following three steps:
 
 1. Calls `operator new` to allocate enough memory, equivalent to:
 
-   ```cpp
+   ```c++
    operator new(sizeof(A));
    ```
 
@@ -34,7 +34,7 @@ In fact, memory allocation is done by `operator new(size_t)`. If class `A` overl
 
 `operator new` is a function and has three forms (the first two only allocate memory and do **not** call constructors, which distinguishes them from the new operator):
 
-```cpp
+```c++
 void* operator new(std::size_t size) throw(std::bad_alloc);
 ```
 
@@ -43,14 +43,14 @@ void* operator new(std::size_t size) throw(std::bad_alloc);
 - Returns a non-null pointer on success
 - Throws `std::bad_alloc` on failure
 
-```cpp
+```c++
 void* operator new(std::size_t size, const std::nothrow_t&) throw();
 ```
 
 - Can be overloaded
 - Returns `NULL` instead of throwing on failure
 
-```cpp
+```c++
 void* operator new(std::size_t size, void* ptr) throw();
 ```
 
@@ -77,7 +77,7 @@ Using the new operator requires searching the heap for free memory, which is slo
 
 1. **Allocate buffer in advance**
 
-```cpp
+```c++
 A* a = new A;                 // normal new
 A* a = new(std::nothrow) A;   // nothrow new
 new (p) A();                  // placement new
@@ -91,7 +91,7 @@ Placement new calls the constructor at address `p`.
 
 You must explicitly call the destructor:
 
-```cpp
+```c++
 p->~A();
 ```
 
@@ -122,7 +122,7 @@ Implicit conversions may create temporary objects that are discarded immediately
 
 Using `explicit` suppresses such conversions.
 
-```cpp
+```c++
 explicit BOOK(string ISBN, float price = 0.0f);
 ```
 
@@ -151,14 +151,14 @@ The `const` keyword improves robustness and prevents accidental modification.
 
 ### Basic usage
 
-```cpp
+```c++
 const int a = 100;
 int const b = 100; // same meaning
 ```
 
 ### const pointers
 
-```cpp
+```c++
 const int* p;      // pointer to const
 int* const p;      // const pointer
 const int* const p; // const pointer to const
@@ -193,7 +193,7 @@ The compiler will not optimize accesses to volatile variables.
 
 Without `volatile`, variables may be cached in registers, causing incorrect behavior in multi-threaded code.
 
-```cpp
+```c++
 volatile bool bStop = false;
 while (!bStop) { }
 ```
@@ -219,7 +219,7 @@ while (!bStop) { }
 
 ### Pure virtual functions
 
-```cpp
+```c++
 virtual void func() = 0;
 ```
 
@@ -307,7 +307,7 @@ A `union` can hold only one non-static data member at a time.
 
 ### Pointer to const
 
-```cpp
+```c++
 const int* p;
 ```
 
@@ -316,7 +316,7 @@ const int* p;
 
 ### Const pointer
 
-```cpp
+```c++
 int* const p = &x;
 ```
 
@@ -325,7 +325,7 @@ int* const p = &x;
 
 ### Const pointer to const
 
-```cpp
+```c++
 const int* const p = &x;
 ```
 

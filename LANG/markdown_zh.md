@@ -439,6 +439,8 @@ $$
 | $\cdots$                                                     | `$\cdots$`                                                   | $\vdots$                                                     | `$\vdots$`                                                   |
 | $60 \%$                                                      | `$60 \%$`                                                    |                                                              |                                                              |
 | $O(n \log n)$                                                | `$O(n \log n)$`                                              |                                                              |                                                              |
+| $\aleph_0$                                                   | `$\aleph_0$`                                                 |                                                              |                                                              |
+| $\vartheta_i$                                                | `$\vartheta_i$`                                              |                                                              |                                                              |
 
 ### 数学公式
 

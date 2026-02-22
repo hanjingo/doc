@@ -78,9 +78,3 @@ Bond rating agencies base their quality ratings largely on an analysis of the le
 **Collateral** Some bonds are issued with specific collateral behind them.
 
 A `credit default swap (CDS)` is in effect an insurance policy on the default risk of a bond or loan.
-
-
-
-## Summary
-
-TODO

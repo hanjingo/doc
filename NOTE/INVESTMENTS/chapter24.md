@@ -100,13 +100,12 @@ r_{p} - r_{B} = \sum_{i = 1}^{n}w_{pi}r_{pi} - \sum_{i = 1}^{n}w_{Bi}r_{Bi} = \s
 $$
 , Each term in the summation of above equation can be rewritten in a way that shows how asset allocation decisions versus security selection decisions for each asset class contributed to overall performance. We decompose each term of the summation into a sum of two terms as follows. Note that the two terms we label as contribution from asset allocation and contribution from security selection inthe following decomposition do in fact sum to the total contribution of each asset class to overall performance:
 
-TODO
-
-
-
-## Summary
-
-TODO
+$$
+\text{Contribution from asset allocation}\ (w_{Pi} - w_{Bi})r_{Bi} \\
+\text{+ Contribution from security selection}\ w_{Pi}(r_{Pi} - r_{Bi}) \\
+\text{= Total contribution from asset class i}\ w_{Pi}r_{Pi} - w_{Bi}r_{Bi}
+$$
+![24_10](res/24_10.png)
 
 
 

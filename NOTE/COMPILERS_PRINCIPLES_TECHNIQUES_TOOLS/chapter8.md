@@ -4,7 +4,7 @@
 
 
 
-## 8.1 Issues in the Design of a Code Generator
+## Issues in the Design of a Code Generator
 
 ### Instruction Selection
 

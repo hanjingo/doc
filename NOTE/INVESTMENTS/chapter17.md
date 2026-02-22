@@ -54,9 +54,3 @@ The relationship among industry structure, competitive strategy, and profitabili
 - **Pressure from Substitute Products**, Substitute products means that the industry faces competition from firms in related industries.
 - **Bargaining Power of Buyers**, If a buyer purchases a large fraction of an industry's output, it will have considerable bargaining power and can demand price concessions.
 - **Bargaining Power of Suppliers**, If a supplier of a key input has monopolistic control over the product, it can demand higher prices for the good and squeeze profits out of the industry.
-
-
-
-## Summary
-
-TODO

@@ -207,14 +207,14 @@ public:
 
 - AVOID CALLING USER-SUPPLIED CODE WHILE HOLDING A LOCK
 
-    TODO
+    If you call user-supplied code while holding a lock, and that code acquires a lock, you've violated the guideline on avoiding nested locks and could get deadlock.
 
 - ACQUIRE LOCKS IN A FIXED ORDER
 
     if two threds tried to traverse the list in reverse order using hand-over-hand locking, they could deadlock with each other in the middle of the list.    
 
 - USE A LOCK HIERARCHY
-    
+  
     you divide your application into layers and identify all the mutexes that may be locked in any given layer. When code tries to lock a mutex, it isn't permitted to lock that mutex if it already holds a lock from a lower layer.
 
 - EXTENDING THESE GUIDELINES BEYOND LOCKS
@@ -374,5 +374,4 @@ with `std::mutex` it's an error for a thread to try to lock a mutex it already o
 
 
 ## 3.4 Summary
-
 

@@ -176,9 +176,3 @@ The objective of the allocator, then, is to maximize the peak utilization $U_{n 
 The primary cause of poor heap utilization is a phenomenon known as `fragmentation`, which occurs when otherwise unused memory is not available to satisfy allocate requests. There are two forms of fragmentation: `internal fragmentation` and `external fragmentation`.
 
 ![9_35](res/9_35.png)
-
-
-
-## Summary
-
-TODO

@@ -66,9 +66,3 @@ Homer and Liebowitz coined a popular taxonomy of active bond portfolio strategie
 2. The `intermarket spread swap` is pursued when an investor believes that the yield spread between two sectors of the bond market is temporarily out of line.
 3. The `rate anticipation swap` is pegged to interest rate forecasting. In this case if investors believe that rates will fall, they will swap into bonds of longer duration. Conversely, when rates are expected to rise, they will swap into shorter duration bonds.
 4. The `pure yield pickup swap` is pursued not in response to perceived mispricing, but as a means of increasing return by holding higher-yield bonds. When the yield curve is upward-sloping, the yield pickup swap entails moving into longer-term bonds. This must be viewed as an attempt to earn an expected term premium in higher-yield bonds. The investor is willing to bear the interest rate risk that this strategy entails. The investor who swaps the shorter-term bond for the longer one will earn a higher rate of return as long as the yield curve does not shift up during the holding period. Of course if it does, the longer-duration bond will suffer a greater capital loss.
-
-
-
-## Summary
-
-TODO

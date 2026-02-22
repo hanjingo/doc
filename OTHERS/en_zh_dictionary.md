@@ -621,6 +621,8 @@ ageism `/'eɪdʒɪz(ə)m/` n. 对老年人的歧视
 
 agency `/'eɪdʒənsi/` n. 代理；代理处；政府机构
 
+> DRV: agentic `/eɪ'dʒentɪk/` adj. 代理的，像代理人的；（心理学）代理人的，服从权威的；（心理学）与表现或地位有关的；（心理学）主体的
+
 agenda `/ə'dʒendə/` n. 议事日程
 
 agglomerate `/ə'ɡlɒməreɪt/` v. 使结块；使成团或凝结；集结；n. 〈地质〉集块岩；〈化学〉附聚物；团块；集结；adj. 凝聚的；成团的；结块的
@@ -1666,6 +1668,8 @@ articulate `/ɑːˈtɪkjuleɪt/` adj. 发音清晰的；善于表达的；有关
 artifact `/'ɑːtɪˌfækt/` n. 人工制品；典型产物；【医】非源自脑中的电波，伪差，假象，人为现象
 
 > DRV: artefact `/'ɑːtɪfækt/` n. 人工制品，加工品
+>
+> DRV: artifacts `/'ɑːtɪfækt/` n. 史前古器物
 
 artificer `/ɑː'tɪfɪsə/` n. 技工；巧匠；创造者
 
@@ -2180,6 +2184,8 @@ axon `/'æksɒn/` n. 轴索，轴突（神经细胞）
 azimuth `/'æzɪmʌθ/` n. 方位角；方位
 
 azoic `/eɪ'zəʊɪk/` adj. 无生命时代的；无生命的; n. 无生代；无生代岩石
+
+Aztec `/'æztek/` n. 阿芝特克人；阿芝特克语; adj. 阿芝特克人的
 
 azure `/ˈæʒə(r)/` n. 天蓝色；蔚蓝色；adj. 天蓝色的；蔚蓝色的
 
@@ -5931,8 +5937,10 @@ congestion `/kən'dʒestʃən/` n. 拥挤;堵车;充血;阻塞
 
 conglomerate `/kən'ɡlɒmərət/` n. 联合企业；密集体；城郊混合区；[地]砾岩；adj. 聚成一团的；成簇的；vt. 使聚集；使结成；结合
 
-congratulate `/kənˈɡrætjuleɪt/` vt. 祝贺；道喜
+congrats `/kənˈɡræts/` n. 祝贺；道喜；vt. 祝贺；道喜
 
+> DRV: congratulate `/kənˈɡrætjuleɪt/` vt. 祝贺；道喜
+>
 > DRV: congratulatory `/kənˌɡrætʃuˈleɪtəri/` adj. 祝贺的；道喜的
 
 congregate `/'kɒŋɡrɪɡeɪt/` v. 使集合；聚集；集合；adj. 集体的
@@ -6277,6 +6285,8 @@ converge `/kənˈvɜːdʒ/` vi. 聚合；集中；会聚；vt. 使集合
 
 converse `/ˈkɒnvɜːs/` n. 相反的事物；逆命题；adj. 相反的；逆向的；倒的；v. 交谈；谈话；n. 谈话
 
+> DRV: conversational `/ˌkɒnvə'seɪʃənəl/` adj. 交谈的；会话的；适于交谈的
+>
 > DRV: conversationalist `/ˌkɒnvə'seɪʃənəlɪst/` n. 健谈者；善于交谈的人
 >
 > DRV: conversely `/'kɒnvɜːsli/` adv. 相反地
@@ -7381,6 +7391,10 @@ deck `/dek/` n. 甲板；层面；一副牌；vt. 装饰；<俚>用力击倒
 
 declamation `/ˌdeklə'meɪʃn/` n. 朗诵；雄辩
 
+declaration `/ˌdeklə'reɪʃn/` n. 宣言；声明；公布；宣告
+
+> REF: A **declaration** is a C++ construct that introduces or reintroduces a name into a C++ scope. This introduction always includes a partial classification of that name, but the details are not required to make a valid declaration. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+
 declarative `/dɪ'klærətɪv/` adj. 宣言的,公布的
 
 declension `/dɪ'klenʃn/` n. 语尾变化；格变化；倾斜；衰退
@@ -7496,6 +7510,8 @@ defile `/dɪ'faɪl/` vt. 弄脏; 污染; 玷污, 亵渎; 纵列行进; n. 峡谷
 definite `/ˈdefɪnət/` adj. 明确的；一定的；有把握的
 
 definition `/ˌdefɪ'nɪʃn/` n. 定义；阐释；清晰度
+
+> REF: The declaration of a class template or function template is called a **definition** if it has a body.  --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
 
 definitive `/dɪˈfɪnətɪv/` adj. 决定性的, 明确的, 权威性的, 不能或不必改变的
 
@@ -8640,6 +8656,8 @@ distribute `/dɪ'strɪbjuːt/` v. 分配；散发；分散; 分布; 分发; 散�
 > DRV: distributive `/dɪ'strɪbjətɪv/` adj. 分布的；分配的；〈语言〉个体的
 
 district `/ˈdɪstrɪkt/` n. 地区；行政区；vt. 把 ... 划分成区
+
+distro `/'dɪstrəʊ/` n. （计算机）发行版
 
 distrust `/dɪs'trʌst/` v. 不信任；n. 不信任；怀疑
 
@@ -10975,7 +10993,9 @@ fay `/feɪ/` n. 小仙女；妖精; vi. 接合; vt. 接合
 
 [回到F](#F)--[回到顶部](#英汉词典)
 
-fearlessness `/'fɪələsnəs/` n. 无畏；勇敢
+fearless `/'fɪələs/` adj. 无畏的；勇敢的
+
+> DRV: fearlessness `/'fɪələsnəs/` n. 无畏；勇敢
 
 fearsome `/ˈfɪəsəm/` adj. <正>很可怕的;十分吓人的
 
@@ -13643,6 +13663,8 @@ heretic `/'herɪtɪk/` n. 异端
 
 heritage `/'herɪtɪdʒ/` n. 遗产；继承物
 
+hermetic `hɜː'metɪk/` adj. 密封的；与外界隔绝的；不透气的；炼金术的; n. 炼金术士
+
 hermit `/'hɜːmɪt/` n. (尤指早期基督教的)隐居修道士; 隐士; 遁世者
 
 hermitian `/hɛ'miʃən/` n. （数学）共轭（矩阵）
@@ -15755,7 +15777,9 @@ introduce `/ˌɪntrəˈdjuːs/` vt. 介绍；引进；采用；提出；提倡�
 >
 > DRV: introductory `/ˌɪntrə'dʌktəri/` adj. 介绍的；引导的；开端的
 
-introspection `/ˌɪntrə'spekʃn/` n. 内省；反省；自省
+introspect `/ˌɪntrə'spekt/` v. 内省；反省；自省
+
+> DRV: introspection `/ˌɪntrə'spekʃn/` n. 内省；反省；自省
 
 introvert `/'ɪntrəvɜːt/` n. 个性内向者；vt. 使 ... 内向
 
@@ -18007,6 +18031,8 @@ massacre `/ˈmasəkə/` n. 大屠杀；<口>惨败；v. 大屠杀；<口>彻底�
 
 massage `/ˈmæsɑːʒ/` n. 按摩, 推拿
 
+> DRV: massager `/'mæsɑːʒə/` n. 按摩器；按摩师
+
 masse `/mæ'sei/` n. （撞球）挫杆；立杆击球
 
 masses `/'mæsɪz/` n. 平民；群众
@@ -19991,7 +20017,9 @@ novel `/ˈnɒvl/` n. 小说；adj. 新奇的
 >
 > DRV: novelty `/'nɒvlti/` n. 【C】新奇；小装饰；n. 【U】新奇的事物；新奇的经验
 
-november `/nəʊ'vembə(r)/` n. 十一月（简写Nov）
+November `/nəʊ'vembə(r)/` n. 十一月（简写Nov）
+
+> DRV: mid-November `/mɪd nəʊˈvembə(r)/` n. 十一月中旬
 
 novice `/'nɒvɪs/` n. 新手；新信徒
 
@@ -21561,7 +21589,9 @@ peep `/piːp/` vi. 偷看；窥视；发出吱吱声; n. 偷看；窥视；吱�
 
 peer `/pɪə(r)/` n. 同辈；同等的人；贵族；节点；vi. 凝视；窥视
 
-peerless `/ˈpɪələs/` adj. 无与伦比的,盖世无双的
+> REF: In a `P2P architecture`, there is minimal (or no) reliance on dedicated servers in data centers. Instead, the application exploits direct communication between pairs of intermittently connected hosts, called **peers**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
+
+peerless `/ˈpɪələs/` adj. 无与伦比的, 盖世无双的
 
 peeve `/piːv/` v. 气恼；怨恨
 
@@ -23255,6 +23285,8 @@ prodigy `/ˈprɒdədʒi/` n. 惊人的事物；奇迹；神童；天才
 
 > DRV: prodigious `/prəˈdɪdʒəs/` adj. 巨大的；惊人的；奇异的
 
+productize `/prə'dʌktɪzaɪ/` vt. 使 ... 成为商品；使 ... 商品化
+
 profane `/'prəfeɪn/` adj. 亵渎的；不敬的；世俗的；v. 亵渎；玷污；滥用
 
 > DRV: profanities `/prə'fænəti/` n. 亵渎；不敬的言语
@@ -23496,6 +23528,10 @@ protest `/ˈprəʊtest/` n. 抗议；反对；v. 抗议；反对；申明；断�
 > DRV: protestant `/'prɒtɪstənt/` n. 抗议者；adj. 抗议的；n. 新教徒；adj. 新教徒的
 
 protein `/ˈproʊtiːn/` n. 蛋白质
+
+protocol `/ˈproʊtəkɒl/` n. 协议；草案；礼仪；外交礼节
+
+> REF: Network designers organize protocols--and the network hardware and software that implement the protocols in layers. The protocols of the various layers are called the **protocol stack**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
 
 proton `/'prəʊtɒn/` n. 质子
 
@@ -24002,6 +24038,10 @@ queer `/kwɪə(r)/` n. 酷儿（对所有性取向非异性恋以及性别认同
 quell `/kwel/` vt. 镇压；减轻；平息；消除
 
 quench `/kwentʃ/` v. 熄灭；结束；冷淬；解渴
+
+query `/'kwɪəri/` n. 问题；疑问；质问；查询；v. 询问；质疑；查询
+
+> DRV: queryable `/'kwɪəriəbl/` adj. 可查询的；可质疑的
 
 quesadilla `/ˌkweɪsə'diːjə/` n. 墨西哥煎玉米饼夹奶酪
 
@@ -24639,6 +24679,10 @@ refer `/rɪ'fɜː(r)/` vt. 把 ... 提交；把 ... 归因；归类；vi. 参考
 
 referee `/ˌrefə'riː/` n. 裁判员；仲裁人；鉴定人；证明人；v. 裁判；仲裁 
 
+reference `/ˈrefərəns/` n. 参考；提及；参照；推荐信；证明人；[计算机]引用
+
+> REF: **Reference counting**: For each object that is pointed to, keep a count of the number of pointers to it, and when that count drops to zero, delete the object. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+
 referendum `/ˌrefəˈrendəm/` n. 公民投票权；外交官请示书
 
 referential `/ˌrefə'renʃəl/` adj. 指示的；有参考内容的；用作参考的
@@ -24742,6 +24786,8 @@ register `/ˈredʒɪstər/` v. 登记；记录；注册；挂号；n. 登记簿�
 registrar `/ˌredʒɪ'strɑː(r)/` n. 记录员；（学校）注册主任
 
 registration `/ˌredʒɪ'streɪʃn/` n. 注册；登记；挂号
+
+registry `/ˈredʒɪstri/` n. 档案室; 登记簿存放处; 注册处；挂号处
 
 regrater `/rɪ'greɪtə/` n. 倒爷；囤积居奇者；转手倒卖者
 
@@ -25077,6 +25123,8 @@ reproach `/rɪ'prəʊtʃ/` n. 责备；耻辱v. 责备；申斥
 > DRV: reproachful `/rɪ'prəʊtʃfʊl/` adj. 责备的;斥责的
 
 reproduce `/ˌriːprəˈdjuːs/` v. 再生；复制；生殖
+
+> DRV: reproducible `/ˌriːprə'djuːsəbl/` adj. 能繁殖的, 可再生的, 可复写的
 
 reprogram `/rɪ'prəʊgræm/` vt.（计算机）重编程序；改编指令序列
 
@@ -26431,6 +26479,10 @@ secular `/ˈsekjələ(r)/` adj. 世俗的；长期的；现世的；不朽的; n
 secure `/sɪ'kjʊə(r)/` adj. 安心的；有把握的; 可靠的；牢靠的；稳固的；安全的；稳妥的; 严密把守的；牢固的；坚固的; v. （尤指经过努力）获得，取得，实现; 拴牢；扣紧；关严; 保护；保卫；使安全; 抵押；为（借款等）作保
 
 > DRV: securitization `/si'kjurətizaiʃən/` n. 证券化
+>
+> DRV: security `/sɪ'kjʊərəti/` n. 安全；保障；证券；抵押品；安全措施；安全感
+>
+> REF: Before sending IPsec datagrams from the source entity to the destination entity, the source and destination entities create a network-layer logical connection. This logical connection is called a **security association (SA)**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
 
 sedate `/sɪ'deɪt/` adj. 安静的；镇静的；vt. 使安静；使镇静
 
@@ -28916,6 +28968,8 @@ summed `/sʌmd/` adj. 总计的；总数的
 
 > DRV: summing `/'sʌmɪŋ/` n. 合计；求和；概述
 
+summer-ish `/'sʌmərɪʃ/` adj. 夏季的；夏季般的
+
 summit `/'sʌmɪt/` n. 顶点；最高阶层；峰会
 
 summon `/'sʌmən/` vt. 召唤；召集；振奋
@@ -29266,6 +29320,8 @@ syllogism `/'sɪlədʒɪzəm/` n. 三段论法；演绎推理；诡辩
 
 symbolic `/sɪm'bɒlɪk/` adj. 象征的；符号的；n. 代号
 
+> DRV: symbolism `/ˈsɪmbəlɪzəm/` n. 象征主义, 象征手法
+>
 > DRV: symbolize `/ˈsɪmbəlaɪz/` v. 象征；用记号表现
 
 symbiosis `/ˌsɪmbaɪˈəʊsɪs/` n. 共生；共栖；合作关系
@@ -29671,6 +29727,18 @@ temper `/'tempə(r)/` n. 脾气；性情；vt. 使缓和；调和；锻炼
 > DRV: temperate `/ˈtempərət/` adj. 温和的；适度的；有节制的
 
 tempest `/ˈtempɪst/` n. 暴风雨；骚动；动乱; vt. 使狂怒；扰乱，使激动; vi. 小题大作；起大风暴
+
+template `/'templət/` n. 模板；样板；模范；范本；铅板
+
+> REF: The process of creating a regular class, function, or member function from a template by substituting actual values for its arguments is called **template instantiation**. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+>
+> REF: **Template parameters** are those names that are listed after the keyword `template` in the template declaration or definition. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+>
+> REF: **Template arguments** are the items that are substituted for template parameters. Unlike template parameters, template arguments can be more than just "names". --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+>
+> REF: **Template metaprogramming:** Using the template instantiation mechanism to perform nontrivial computations at compile time. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
+>
+> REF: **Expression templates**: It was originally invented in support of numeric array classes, and that is also the context in which we introduce it here. --C++ Templates: The Complete Guide.DDavid Vandevoorde, Nicolai M. Josuttis
 
 temple `/ˈtempl/` n. 庙宇；寺院；神殿；太阳穴
 
@@ -30238,6 +30306,8 @@ tome `/təʊm/` n. 大而重的书
 
 tommy `/ˈtɒmi/` n. <英俚>英国士兵；实物工资制；定位销钉; n. <俚>小刀；v. <俚>偷窃
 
+tomo `/'təʊməʊ/` n. 断层地质图,〈新西兰〉(石灰岩地体上的)灰岩坑, 灰岩洞
+
 tone `/təʊn/` n. 语气；音调；调子；色调；风气；v. 使更健壮；定调；调色；装腔作势地说
 
 > DRV: toned `/təʊnd/` adj. 具有 ... 音质的
@@ -30517,6 +30587,8 @@ transmit `/træns'mɪt/` vt. 传达；传染；传送；代代相传；vi. (以�
 > DRV: transmission `/træns'mɪʃn/` n. 传输；传播；播送；变速器
 >
 > DRV: transmitter `/trænzˈmɪtə(r)/` n. 传播者；发射机；发射台；送话器
+>
+> REF: The maximum amount of data that a link-layer frame can carry is called the **maximum transmission unit (MTU)**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
 
 transmute `/trænzˈmjuːt/` v. 使 ... 变形
 
@@ -30881,6 +30953,10 @@ tuna `/'tjuːnə/` n. [动]金枪鱼，鲔鱼
 tune `/tjuːn/` n. 曲调；调子；和谐；协调；数量；vt. 为 ... 调音；调整；vi. 调音；调整频率
 
 > DRV: tuned `/tjuːnd/` adj. （收音机）调谐的；调好台的
+
+tunnel `/ˈtʌnl/` n. 隧道；地道；坑道；v. 挖掘隧道；挖地道
+
+> REF: IPsec has two different packet forms, one for the so-called **tunnel mode** and the other for the so-called **transport mode**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
 
 tuple `/tʌpl/` n. 元组；数组；重数
 
@@ -31950,6 +32026,10 @@ vault `/vɔːlt/` n. 窖；穹；地下室；撑竿跳；vt. 做成圆拱形；�
 
 [回到V](#V)--[回到顶部](#英汉词典)
 
+vector `/ˈvektə(r)/` n. 向量；载体；矢量；[医]病媒
+
+> REF: Before encrypting the message (or the stream of data), the sender generates a random $k$-bit string, called the **Initialization Vector (IV)**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
+
 veg `/vɛdʒ/` n. 蔬菜
 
 > DRV: vegan `/'viːg(ə)n/` n. 纯素主义者(既不吃也不用任何动物产品, 如蛋、丝绸、皮革)
@@ -32634,6 +32714,12 @@ webby `/'webɪ/` adj. 丝网的, 有蹼的
 >
 > DRV: webbing `/ˈwebɪŋ/` n. 带子，边带；结实的带状织物；厚边；熔塌
 
+web-cache `/'webkæʃ/` n. 网页缓存
+
+> REF: A **Web cache**, also called a **proxy server** is a network entity that satisfies HTTP requests on behalf of an origin Web server. The Web cache has its own disk storage and keeps copies of recently requested objects in this storage. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
+
+webinar `/ˈwebɪnɑː(r)/` n. 网络研讨会；网络讲座
+
 wedding `/ˈwedɪŋ/` n. 婚礼；结合
 
 wedge `/wedʒ/` n. 楔子；楔形物；vt. 楔住；嵌；挤进
@@ -32864,7 +32950,11 @@ wind `/wɪnd /` n. 风；气息；转动；上发条；缠绕；v. 使喘不过�
 >
 > DRV: windy `/'wɪndi/` adj. 有风的；多风的
 
-windowsill `/'wɪndəʊsɪl/` n. 窗沿,窗台
+window `/'wɪndəʊ/` n. 窗户；窗口；(计算机)窗口
+
+> DRV: windowsill `/'wɪndəʊsɪl/` n. 窗沿, 窗台
+>
+> REF: TCP provides flow control by having the sender maintain a variable called the **receive window**. --COMPUTER NETWORKING: A Top-Down Approach by James F. Kurose, Keith W. Ross . 6ED
 
 wingman `/ˈwɪŋmən/` n. 僚机; 侧翼护卫；副手；助手
 

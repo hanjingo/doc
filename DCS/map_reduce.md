@@ -60,6 +60,6 @@ We guarantee that within a given partition, the intermediate key/value pairs are
 
 ## Reference
 
-[1] MapReduce: Simplified Data Processing on Large Clusters . Jeffrey Dean, Sanjay Ghemawat
+[1] Jeffrey Dean, Sanjay Ghemawat . MapReduce: Simplified Data Processing on Large Clusters
 
 [2] [【论文阅读笔记】MapReduce: Simplified Data Processing on Large Clusters](https://superlova.github.io/2021/05/04/%E3%80%90%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E3%80%91MapReduce-Simplified-Data-Processing-on-Large-Clusters/)

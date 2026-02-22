@@ -320,5 +320,19 @@ INPUT: A DFA $D$ with set of states $S$, input alphabet $\sum$, start state $s_0
 
 OUTPUT: A DFA $D'$ accepting the same language as $D$ and having as few states as possible.
 
-METHOD: TODO
+METHOD:
+
+1. Start with an initial partition $\prod$ with two groups, $F$ and $S - F$, the accepting and nonaccepting states of $D$.
+
+2. Apply the procedure of Fig. 3.64 to construct a new partition $\prod_{new}$.
+
+   ![3_64](res/3_64.png)
+
+3. If $\prod_{new} = \prod$, let $\prod_{final} = \prod$ and continue with step (4). Otherwise, repeat step (2) with $\prod_{new}$ in place of $\prod$.
+
+4. Choose one state in each group of $\prod_{final}$ as the *representative* for that group. The representatives will be the states of the minimum-state DFA $D'$. The other components of $D'$ are constructed as follows:
+
+   - The start state of $D'$ is the representative of the group containing the start state of $D$.
+   - The accepting states of $D'$ are the representatives of those groups that contain an accepting state of $D$.
+   - Let $s$ be the representative of some group $G$ of $\prod_{final}$, and let the transition of $D$ from $s$ on input $a$ be to state $t$. Let $r$ be the representative of $t$'s group $H$. Then in $D'$, there is a transition from $s$ to $r$ on input $a$.
 

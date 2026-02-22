@@ -1,8 +1,8 @@
-# C++ Templates — concise guide
+# C++ Templates
 
 [TOC]
 
-This note is a concise, practical guide to C++ templates. It reorganizes and fills gaps in the original `template.md` while remaining consistent with the `NOTE/CPP_TEMPLATES` material.
+
 
 Templates are C++'s mechanism for generic, compile-time polymorphism. They let you write functions and classes that operate on unspecified types. Unlike run-time polymorphism (virtual functions), templates are resolved at compile time, enabling highly optimized and type-safe code.
 
@@ -10,6 +10,8 @@ Templates are C++'s mechanism for generic, compile-time polymorphism. They let y
 - Inputs: type and value template parameters; function/class usage sites.
 - Outputs: compiler-generated instantiations of functions/classes.
 - Error modes: failed deduction, substitution failure (SFINAE), ambiguous overloads, two-phase lookup surprises.
+
+
 
 ## Function templates
 
@@ -32,8 +34,10 @@ inline T const& max(T const& a, T const& b, T const& c) { return max(max(a, b), 
 ```
 
 Notes:
-- Default template arguments are common for class templates; for function templates template-argument deduction typically makes defaults unnecessary.
+- Default template arguments are common for class templates; for function templates, template-argument deduction typically makes defaults unnecessary.
 - Prefer `typename` for type template parameters in modern code for clarity.
+
+
 
 ## Class templates
 
@@ -58,14 +62,18 @@ Key points:
 - You can fully specialize a class template for a particular argument list: `template<> class Stack<std::string> { ... };` (specialized members must be provided).
 - Partial specialization is allowed for class templates (not for function templates): `template<typename T> class MyClass<T*, T*> { ... };`.
 
+
+
 ## Kinds of template parameters
 
 1. Type parameters: `template<typename T>`.
-2. Nontype parameters: compile-time constants like `int N` or pointers; e.g. `template<typename T, int N>`.
+2. Non-type parameters: compile-time constants like `int N` or pointers; e.g. `template<typename T, int N>`.
 3. Template-template parameters: parameters that accept other templates, e.g. `template<template<typename> class C>`.
 
 Restrictions:
-- Nontype parameters are typically integral values, pointers, references, or enums. Floating-point and class-type nontype parameters are not supported.
+- Non-type parameters are typically integral values, pointers, references, or enums. Floating-point and class-type nontype parameters are not supported.
+
+
 
 ## Dependent names and `typename`
 
@@ -83,6 +91,8 @@ Deduction rules in brief:
 
 If deduction fails, provide explicit template arguments or use overloads. SFINAE enables graceful exclusion of templates during overload resolution.
 
+
+
 ## Instantiation and two-phase lookup
 
 Instantiation substitutes template arguments to produce concrete code. Two-phase lookup means:
@@ -92,6 +102,8 @@ Instantiation substitutes template arguments to produce concrete code. Two-phase
 
 This separation can cause surprising lookup behaviour; use explicit qualification, `this->`, or `typename`/`template` to resolve ambiguities.
 
+
+
 ## Specialization and overloading
 
 - Full specialization: provide an alternative implementation for specific template arguments: `template<> class Foo<int> { ... };`.
@@ -100,12 +112,16 @@ This separation can cause surprising lookup behaviour; use explicit qualificatio
 
 Overload resolution prefers non-template functions when they are otherwise equally good matches.
 
+
+
 ## Practical tips and pitfalls
 
 - Use `typename` correctly for dependent types; missing `typename` is a common compile error.
 - Remember two-phase lookup; qualifying dependent names can avoid subtle errors.
 - Keep templates readable: prefer clear naming and small responsibilities.
 - Use standard library traits and helper utilities (e.g., `<type_traits>`) rather than reinventing type checks.
+
+
 
 ## Short examples
 
@@ -125,14 +141,9 @@ template<template<typename, typename> class Container, typename T>
 class Wrapper { Container<T, std::allocator<T>> c; };
 ```
 
-## Next steps
-- If you'd like, I can expand this file with more concrete examples (SFINAE, traits, enable_if), add runnable snippets, or do a consistency pass across `NOTE/CPP_TEMPLATES`.
-
----
-
 Edited for clarity, corrected typos (e.g., `tempalte` → `template`), and reorganized topics for easier reading.
 
-```
+```c++
 class S<int, I*2>; // error
 
 template<typename U, int K>
@@ -167,8 +178,6 @@ In contrast, the following can be said about static polymorphism in C++:
 - Concrete types that provide only partial interfaces can still be used if only that part ends up being exercised by the application.
 
 Generic programming is a subdiscipline of computer science that deals with finding abstract representations of efficient algorithms, data structures, and other software concepts, and with their systematic organization... Generic programming focuses on representing families of domain concepts.
-
----
 
 
 
@@ -209,8 +218,6 @@ class Curious : public CuriousBase<Curious> {
 
 C++ allows us to parameterize directly three kinds of entities through templates: types, constants("nontypes"), and templates. However, indirectly, it also allows us to parameterize other attributes such as the virtuality of a member function.
 
----
-
 
 
 ## Type Classification
@@ -237,8 +244,6 @@ The problem with function types is that, because of the arbitrary number of para
   enum {Yes = sizeof(test<T>(0) == 1)};s
   ```
 
----
-
 
 
 ## Smart Pointers
@@ -261,8 +266,6 @@ Other drawbacks to implicit conversions to built-in pointer types include(assume
 
 - `delete cp;` and `::delete cp;` become valid
 - All sort of meaningless pointer arithmetic goes undiagnosed (for example, `cp[n], cp2 - cp1`, and so forth)
-
----
 
 
 
@@ -287,8 +290,6 @@ The argument to be passed to the underlying functor can be one of three differen
 - The corresponding parameter of the bound functor
 - The bound value
 - The parameter of the bound functor is one position to the left of the argument we must pass
-
----
 
 
 
@@ -408,8 +409,6 @@ std::string s;
   ```
 
 - force application programmers to use explicit conversions
-
----
 
 
 
@@ -556,10 +555,6 @@ std::string s;
   }
   ```
 
-  
-
-
----
 
 
 

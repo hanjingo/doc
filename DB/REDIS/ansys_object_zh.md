@@ -1,26 +1,6 @@
 # Redis源码分析-数据类型
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [object](#object)
-    - [LRU算法](#lru算法)
-* [string](#string)
-    - [编码方式](#编码方式)
-* [list](#list)
-    - [编码方式](#编码方式-1)
-* [hash](#hash)
-    - [编码](#编码)
-* [set](#set)
-    - [编码](#编码-1)
-* [zset](#zset)
-    - [编码](#编码-2)
-* [内存回收](#内存回收)
-    - [API](#api)
-    - [引用计数变更条件](#引用计数变更条件)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

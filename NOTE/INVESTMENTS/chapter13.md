@@ -142,9 +142,3 @@ $$
 E(r) = \frac{D_{1}}{P_{0}} + g
 $$
 , where $D_{1}$ is end-of-year dividends and $P_{0}$ is the current price of the stock.
-
-
-
-## Summary
-
-TODO

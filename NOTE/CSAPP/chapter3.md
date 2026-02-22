@@ -167,9 +167,3 @@ Here is a set of scalar AVX2 floating-point instructions that perform arithmetic
 
 ![3_49](res/3_49.png)
 
-
-
-## Summary
-
-TODO
-

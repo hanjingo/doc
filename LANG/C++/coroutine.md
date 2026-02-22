@@ -38,40 +38,47 @@ The compiler rewrites a coroutine into state machine code that uses these hooks.
 
 ## Minimal examples (sketches)
 
-1) Generator (simple, single‑threaded)
+1. Generator (simple, single‑threaded)
 
-// conceptual sketch — real implementations require more boilerplate
-struct generator {
-	struct promise_type {
-		T current;
-		generator get_return_object() { return generator{/*...*/}; }
-		suspend_always initial_suspend() { return {}; }
-		suspend_always final_suspend() noexcept { return {}; }
-		suspend_always yield_value(T value) {
-			current = value; return {};
-		}
-		void return_void() {}
-		void unhandled_exception() { std::terminate(); }
-	};
-	// iterator-like interface that resumes the coroutine to obtain next value
-};
+   ```c++
+   // conceptual sketch — real implementations require more boilerplate
+   struct generator {
+   	struct promise_type {
+   		T current;
+   		generator get_return_object() { return generator{/*...*/}; }
+   		suspend_always initial_suspend() { return {}; }
+   		suspend_always final_suspend() noexcept { return {}; }
+   		suspend_always yield_value(T value) {
+   			current = value; return {};
+   		}
+   		void return_void() {}
+   		void unhandled_exception() { std::terminate(); }
+   	};
+   	// iterator-like interface that resumes the coroutine to obtain next value
+   };
+   ```
 
-Usage:
-for (auto v : generator_of_ints()) { /* use v */ }
+   Usage:
 
-2) Simple task<T> (async result)
+   ```c++
+   for (auto v : generator_of_ints()) { /* use v */ }
+   ```
 
-// promise_type stores a std::promise/std::future or similar
-struct task<T> {
-	struct promise_type {
-		std::promise<T> p;
-		task get_return_object() { return task{p.get_future()}; }
-		suspend_never initial_suspend() { return {}; }
-		suspend_never final_suspend() noexcept { return {}; }
-		void return_value(T v) { p.set_value(std::move(v)); }
-		void unhandled_exception() { p.set_exception(std::current_exception()); }
-	};
-};
+2. Simple task<T> (async result)
+
+   ```c++
+   // promise_type stores a std::promise/std::future or similar
+   struct task<T> {
+   	struct promise_type {
+   		std::promise<T> p;
+   		task get_return_object() { return task{p.get_future()}; }
+   		suspend_never initial_suspend() { return {}; }
+   		suspend_never final_suspend() noexcept { return {}; }
+   		void return_value(T v) { p.set_value(std::move(v)); }
+   		void unhandled_exception() { p.set_exception(std::current_exception()); }
+   	};
+   };
+   ```
 
 Then an async function can co_await other tasks and co_return a value that ends up in the future.
 

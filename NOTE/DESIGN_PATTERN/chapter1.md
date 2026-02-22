@@ -148,12 +148,20 @@ Specifying Object Implementations:
 
 **Class versus Interface Inheritance**:
 
-TODO
+The difference between an object's class and its type:
+
+- An object's class defines how the object is implemented. The class defines the object's internal state and the implementation of its operations.
+- An object's type only refers to its interface--the set of requests to which it can respond.
+
+The difference between class inheritance and interface inheritance (or subtyping):
+
+- Class inheritance defines an object's implementation in terms of another object's implementation. In short, it's a mechanism for code and representation sharing.
+- Interface inheritance (or subtyping) describes when an object can be used in place of another.
 
 **Programming to an Interface, not an Implementation**; There are two benefits to manipulating objects solely in terms of the interface defined by abstract classes:
 
-1. Client remain unaware of the specific types of objects they use, as logn as the obejcts adhere to the interface that clients expect.
-2. Client remain unaware of the classes that implement these objects. Clients only know about the abstract class(es) defining the interface.
+1. Client remains unaware of the specific types of objects they use, as long as the objects adhere to the interface that clients expect.
+2. Client remains unaware of the classes that implement these objects. Clients only know about the abstract class(es) defining the interface.
 
 Inheritance versus Composition:
 

@@ -578,7 +578,3 @@ bool turnpike(vector<int> &x, DistSet d, int n)
         return false;
 }
 ```
-
-### Games
-
-TODO

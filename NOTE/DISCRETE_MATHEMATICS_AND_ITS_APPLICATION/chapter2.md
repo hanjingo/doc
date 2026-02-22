@@ -301,7 +301,7 @@ $$
 - **Cantor diagonalization argument**: a proof technique used to show that the set of real numbers is uncountable.
 - **computable function**: a function for which there is a computer program in some programming language that finds its values.
 - **uncomputable function**: a function for which no computer program in a programming language exists that finds its values.
-- **continuum hypothesis**: the statement that no set $A$ exists such that TODO.
+- **continuum hypothesis**: the statement that no set $A$ exists such that $$\aleph_0 < |A| < c$$.
 - **matrix**: a rectangular array of numbers.
 - **$I_n$ (identity matrix of order $n$)** the $n \times n$ matrix that has entries equal to 1 on its diagonal and 0s elsewhere.
 - **$A^t (\text{transpose of } A)$**: the matrix obtained from $A$ by interchanging the rows and columns.

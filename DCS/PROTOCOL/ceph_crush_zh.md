@@ -1,4 +1,4 @@
-# CephCrush算法
+# Ceph Crush算法
 
 [TOC]
 

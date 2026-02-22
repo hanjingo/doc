@@ -148,9 +148,3 @@ Given high bit error rates on wireless links and the possibility of handoff loss
 - `TCP sender awareness of wireless links`.
 - `Split-connection approaches`.
 
-
-
-## Summary
-
-TODO
-

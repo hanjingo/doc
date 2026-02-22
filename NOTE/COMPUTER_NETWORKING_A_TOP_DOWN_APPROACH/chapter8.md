@@ -172,9 +172,3 @@ Firewalls can be classified in three categories:
 - application gateways.
 
 ![8_34](res/8_34.png)
-
-
-
-## Summary
-
-TODO

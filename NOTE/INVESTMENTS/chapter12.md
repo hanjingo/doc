@@ -52,9 +52,3 @@ $$
 The `confidence index` is the ratio of the average yield on 10 top-rated corporate bonds divided by the average yield on 10 intermediate-grade corporate bonds. The ratio will always be below 100% because higher-rated bonds will offer lower promised yields to maturity. When bond traders are optimistic about the economy, however, they might require smaller default premiums on lower-rated debt. Hence, the yield spread will narrow, and the confidence index will approach 100%. Therefore, higher values of the confidence index are bullish signals.
 
 **Put/Call Ratio** Call options give investors the right to buy a stock at a fixed "exercise" price and therefore are a way of betting on stock price increases. Put options give the right to sell a stock at a fixed price and therefore are a way of betting on stock price decreases. The ratio of outstanding put options to outstanding call options is called teh `put/call ratio`. Typically, the put/call ratio hovers around 65%. Because put options do well in falling markets while call options do well in rising markets, deviations of the ratio from historical norms are considered to be a signal of market sentiment and therefore predictive of market movements.
-
-
-
-## Summary
-
-TODO

@@ -129,9 +129,3 @@ $$
 R_{i,t} = \lambda_0 + \lambda_1\beta_i + \lambda_2\sigma_{e_i}^2 + \eta_{i,t}
 $$
 , the CAPM predicts that $\lambda_0 = 0$, that is, the average alpha in the sample will be zero; $\lambda_1 = R_M$, that is, the slope of the SML equals the market-index risk premium; and $\lambda_2 = 0$, that is, unique risk, $\sigma_{e_i}^2$, doesn't earn a risk premium. $\eta_i$ is the zero-mean residual of this regression.
-
-
-
-## Summary
-
-TODO

@@ -1,14 +1,6 @@
 # 利用redis实现消息队列
 
-
-<!-- vim-markdown-toc GFM -->
-
-* [发布订阅](#发布订阅)
-    - [缺点](#缺点)
-* [stream模式](#stream模式)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

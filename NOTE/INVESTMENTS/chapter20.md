@@ -95,9 +95,3 @@ $$
 **Currency-Translated Options** Currency-translated options have either asset or exercise prices denominated in a foreign currency.
 
 **Digital Options** Digital options, also called binary or "bet" options, have fixed payoffs that depend on whether a condition is satisfied by the price of the underlying asset.
-
-
-
-## Summary
-
-TODO

@@ -235,6 +235,69 @@ $$
 
 ### Implementing EKE with Diffie-Hellman
 
-With the Diffie-Hellman protocol, $K$ is generated automatically. The final protocol is even simpler. A value for $g$ and $n$ is set 
+With the Diffie-Hellman protocol, $K$ is generated automatically. The final protocol is even simpler. A value for $g$ and $n$ is set for all users on the network.
 
-TODO
+1. Alice picks a random number, $r_A$, and sends Bob
+   $$
+   A, g^{r_A} \mod n
+   $$
+   With Diffie-Hellman, Alice does not have to encrypt her first message with $P$.
+
+2. Bob picks a random number, $r_B$, and calculates
+   $$
+   K = g^{r_A * r_B} \mod n
+   $$
+   He generates a random string $R_B$, then calculates and sends Alice:
+   $$
+   E_p(g^{r_B} \mod n), E_k(R_B)
+   $$
+
+3. Alice decrypts the first half of Bob's message to obtain $g^{r_B} \mod n$. Then she calculates $K$ and uses $K$ to decrypt $R_B$. She generates another random string, $R_A$, encrypts both strings with $K$, and sends Bob the result.
+   $$
+   E_k(R_A, R_B)
+   $$
+
+4. Bob decrypts the message to obtain $R_A$ and $R_B$. Assuming the $R_B$ he received from Alice is the same as the one he sent to Alice in step 2, he encrypts $R_A$ with $K$ and sends it to Alice.
+   $$
+   E_k(R_A)
+   $$
+
+5. Alice decrypts the message to maintain $R_A$. Assuming the $R_A$ she received from Bob is the same as the one she sent to Bob in step 3, the protocol is complete. Both parties now communicate using $K$ as the session key.
+
+### Augmented EKE
+
+Alice's password $P$ (or perhaps some simple hash of it) will serve as the private key and as $P'$.
+
+1. Alice picks her random exponent $R_a$ and transmits
+   $$
+   E_{p'}(g^{R_A} \mod n)
+   $$
+
+2. Bob, who knows only $P'$ and cannot derive $P$ from it, chooses $R_b$ and sends
+   $$
+   E_{p'}(g^{R_A} \mod n)
+   $$
+
+3. Both Alice and Bob calculate the shared session key $K = g^{r_A \cdot r_B} \mod n$. Finally, Alice proves that she knows $P$ itself, and not just $P'$, by sending
+   $$
+   E_k(S_p(K))
+   $$
+
+
+
+## FORTIFIED KEY NEGOTIATION
+
+Here's the protocol. Alice and Bob share a secret password, $P$, and have just exchanged a secret key, $K$, using Diffie-Hellman key exchange. They use $P$ to check that their two session keys are the same (and that Eve is not attempting a man-in-the-middle attack), without giving $P$ away to Eve.
+
+1. Alice sends Bob
+   $$
+   H'(P, K)
+   $$
+
+2. Bob computes $H'(P, K)$ and compares his result with what he received from Alice. If they match he sends Alice
+   $$
+   H'(H(P, K))
+   $$
+
+3. Alice computes $H'(H(P, K))$ and compares her result with what she received from Bob.
+

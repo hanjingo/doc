@@ -1,5 +1,0 @@
-# Finance Model
-
-[TOC]
-
-TODO

@@ -129,11 +129,3 @@
 - 识别异常度量(Identify Anomalous Measurements)
 - 分析异常组件(Analyze Anomalous Components)
 
-### 24.4.3 度量歧义
-
-
-
-## 总结
-
-TODO
-

@@ -2,14 +2,23 @@
 
 # Economic
 
-- [Finance Model](finance.md)
 - [High Frequency Trading](hft.md)
 - [Economic Terminology](terminology.md)
 - [Principles](principles.md)
 
+
+
 ## Finance
 
 - [Interest](interest.md)
+
+
+
+## HFT
+
+
+
+
 
 ## Investments
 

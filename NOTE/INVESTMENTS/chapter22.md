@@ -82,9 +82,3 @@ F_{0} = E(P_{T}) \left(\frac{1 + r_{f}}{1 + k}\right)^{T}
 $$
 , You can see immediately from this equation that $F_{0}$ will be less than the expectation of $P_{T}$ whenever $k$ is greater than $r_{f}$, which will be the case for any positive-beta asset. This means that the long side of the contract will make an expected profit [$F_{0}$ will be lower than $E(P_{T})$] when the commodity exhibits positive systematic risk ($k$ is greater than $r_{f}$).
 
-
-
-## Summary
-
-TODO
-

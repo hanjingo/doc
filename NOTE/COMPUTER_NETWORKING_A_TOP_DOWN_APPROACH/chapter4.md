@@ -77,7 +77,7 @@ IPv4 datagram format:
 - `Options`. The options fields allow an IP header to be extended.
 - `Data (payload)`. 
 
-The maximum amount of adata that a link-layer frame can carry is called the maximum transmission unit (MTU). 
+The maximum amount of data that a link-layer frame can carry is called the **maximum transmission unit** (MTU). 
 
 ![4_14](res/4_14.png)
 
