@@ -1,4 +1,4 @@
-# ChatGPT CookBook 
+# Prompt
 
 ChatGPT使用手册
 

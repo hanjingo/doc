@@ -4,6 +4,9 @@
 
 ## [AI](AI/README.md)
 
+- [Prompt](AI/prompt.md)
+- [RAG](AI/rag.md)
+
 ---
 
 
