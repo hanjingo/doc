@@ -13,3 +13,6 @@ tags
 
 # gitbook
 _book
+
+# env
+.venv

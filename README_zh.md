@@ -8,6 +8,13 @@
 
 ---
 
+## [AI](AI/README_zh.md)
+
+- [Prompt](AI/prompt.md)
+- [RAG](AI/rag_zh.md)
+
+---
+
 ## [算法](ALGO/README_zh.md)
 
 - [平衡树](ALGO/balance_tree_zh.md)

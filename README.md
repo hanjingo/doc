@@ -4,6 +4,10 @@
 
 ## [AI](AI/README.md)
 
+- [Computer Vision](cv.md)
+- [Large Language Models](llm.md)
+- [Model Context Protocol](AI/mcp.md)
+- [Machine Learning](ml.md)
 - [Prompt](AI/prompt.md)
 - [RAG](AI/rag.md)
 
@@ -187,7 +191,9 @@
 
 - [Design Pattern](PROJ/design_pattern.md)
 
-### ROS
+### [ROS](PROJ/ROS/README.md)
+
+- [ROS Environment](PROJ/ROS/env.md)
 
 ---
 

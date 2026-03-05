@@ -366,6 +366,7 @@ b2.exe stage --stagedir="../bins/lib" --with-log
 export BOOST_ROOT=/usr/local/boost/1_75_0
 export BOOST_INCLUDE=/usr/local/boost/1_75_0/include
 export BOOST_LIB=/usr/local/boost/1_75_0/lib
+echo -e '\nexport Boost_DIR="$BOOST_ROOT/lib/cmake/Boost-1.75.0"' >> ~/.bashrc
 echo -e '\nexport BOOST_INCLUDE="/usr/local/boost/1_75_0/include"' >> ~/.bashrc
 echo -e '\nexport BOOST_LIB="/usr/local/boost/1_75_0/lib"' >> ~/.bashrc
 sudo mkdir -p ${BOOST_ROOT}
