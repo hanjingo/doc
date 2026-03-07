@@ -1,3 +1,5 @@
+中文版 | [English](chapter10.md)
+
 # 第十章 算法设计技巧
 
 [TOC]

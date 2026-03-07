@@ -255,6 +255,10 @@ const int& r2 = b;
 
 `int& const` is invalid because references cannot be reseated.
 
+### constexpr
+
+TODO
+
 ### Notes
 
 1. Pay attention when combining `const` and references.
@@ -532,7 +536,7 @@ static union {
 
 
 
-## C++ Pointers
+## Pointers
 
 ### Pointer to const
 
@@ -1304,6 +1308,14 @@ int main(void)
   return 0;
 }
 ```
+
+---
+
+## move semantics
+
+Move semantics are a modern C++ feature that allows the transfer of ownership of a resource from one object to the next without making a copy. Some classesown resources such as heap memory, file handles, and so on.
+
+TODO
 
 ---
 

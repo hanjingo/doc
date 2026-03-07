@@ -1,4 +1,8 @@
+中文版 | [English](chapter2.md)
+
 # 第二章 算法基础
+
+[TOC]
 
 
 

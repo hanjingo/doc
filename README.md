@@ -20,6 +20,7 @@
 - [Balance Tree](ALGO/balance_tree.md)
 - [Big O Notation](ALGO/big_o_notation.md)
 - [Binary Tree](ALGO/binary_tree.md)
+- [Complexity Analysis](ALGO/complexity_analysis.md)
 - [CRC](ALGO/crc.md)
 - [Deflate Algorithm](ALGO/deflate.md)
 - [Hash](ALGO/hash.md)
@@ -30,7 +31,7 @@
 - [Red Black Tree](ALGO/rb_tree.md)
 - [Search Algorithm Summary](ALGO/search.md)
 - [Sortest Path Problem](ALGO/shortest_path_problem.md)
-- [Sort Algorithm Summary](ALGO/sort.md)
+- [Sorting Algorithm Summary](ALGO/sort.md)
 - [Tree](ALGO/tree.md)
 
 ---
@@ -81,6 +82,7 @@
 - [C++ Terminology](LANG/C++/terminology.md)
 - [C++ Best Practice](LANG/C++/best_practice.md)
 - [C++ Feature](LANG/C++/feature.md)
+- [C++ Object](LANG/C++/object.md)
 - [C++ STL](LANG/C++/stl.md)
 - [C++ Template](LANG/C++/template.md)
 
@@ -195,14 +197,12 @@
 
 - [ROS Environment](PROJ/ROS/env.md)
 
----
+### [System Design](PROJ/SYSTEM_DESIGN/README.md)
 
-
-
-## [System Design](SYSTEM_DESIGN/README.md)
-
-- [Database Design](SYSTEM_DESIGN/db.md)
-- [Distributed System Design](SYSTEM_DESIGN/dcs.md)
-- [File Sharing Service Design](SYSTEM_DESIGN/file_sharing_service.md)
-- [High Frequency Trading System Design](SYSTEM_DESIGN/hft.md)
-- [Universally Unique Identifier](SYSTEM_DESIGN/uuid.md)
+- [System Design Summary](PROJ/SYSTEM_DESIGN/summary.md)
+- [Database Design](PROJ/SYSTEM_DESIGN/db.md)
+- [Distributed System Design](PROJ/SYSTEM_DESIGN/dcs.md)
+- [File Sharing Service Design](PROJ/SYSTEM_DESIGN/file_sharing_service.md)
+- [High Frequency Trading System Design](PROJ/SYSTEM_DESIGN/hft.md)
+- [System Dependability](PROJ/SYSTEM_DESIGN/system_dependability.md)
+- [Universally Unique Identifier](PROJ/SYSTEM_DESIGN/uuid.md)

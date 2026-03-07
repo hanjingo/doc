@@ -1,4 +1,8 @@
+中文版 | [English](chapter27.md)
+
 # 第27章 多线程算法
+
+[TOC]
 
 
 

@@ -1,3 +1,5 @@
+[中文版](chapter7_zh.md) | English
+
 # CHAPTER 7 Sorting
 
 [TOC]

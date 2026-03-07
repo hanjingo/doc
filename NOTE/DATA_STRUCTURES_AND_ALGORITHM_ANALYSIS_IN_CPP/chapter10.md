@@ -1,3 +1,5 @@
+[中文版](chapter10_zh.md) | English
+
 # CHAPTER 10 Algorithm Design Techniques
 
 [TOC]
@@ -25,7 +27,7 @@ We have jobs $j_1, j_2, ..., j_N$, with associated running times $t_1, t_2, ...,
 
 Example:
 
-作为一个例子，设$P=3$，作业如图所示：
+As a example，let $P=3$，then：
 
 ![10_4](res/10_4.png)
 

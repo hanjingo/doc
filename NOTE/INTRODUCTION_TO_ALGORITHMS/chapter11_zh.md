@@ -1,3 +1,5 @@
+中文版 | [English](chapter11.md)
+
 # 第11章 散列表
 
 [TOC]

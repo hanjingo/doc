@@ -1,3 +1,5 @@
+[中文版](chapter6_zh.md) | English
+
 # CHAPTER 6 Priority Queues (Heaps)
 
 [TOC]

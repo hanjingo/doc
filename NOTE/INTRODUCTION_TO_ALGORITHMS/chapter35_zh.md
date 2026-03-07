@@ -1,4 +1,8 @@
+中文版 | [English](chapter35.md)
+
 # 第35章 近似算法
+
+[TOC]
 
 
 

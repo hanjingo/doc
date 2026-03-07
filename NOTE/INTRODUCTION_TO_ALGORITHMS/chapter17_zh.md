@@ -1,4 +1,8 @@
+中文版 | [English](chapter17.md)
+
 # 第17章 摊还分析
+
+[TOC]
 
 
 

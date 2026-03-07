@@ -1,3 +1,5 @@
+中文版 | [English](chapter5.md)
+
 # 第五章 散列
 
 [TOC]

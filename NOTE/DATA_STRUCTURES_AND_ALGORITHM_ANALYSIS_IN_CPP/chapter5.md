@@ -1,3 +1,5 @@
+[中文版](chapter5_zh.md) | English
+
 # CHAPTER 5 Hashing
 
 [TOC]

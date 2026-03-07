@@ -1,3 +1,5 @@
+[中文版](chapter8_zh.md) | English
+
 # CHAPTER 8 The Disjoint Sets Class
 
 [TOC]

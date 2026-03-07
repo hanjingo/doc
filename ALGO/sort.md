@@ -1,4 +1,4 @@
-# Sort Algorithm Summary
+# Sorting Algorithm Summary
 
 [TOC]
 
@@ -110,7 +110,7 @@ void insertionSort(const Iterator& begin, const Iterator& end,
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 $\sum_{i=2}^{N} i=2+3+4+...+N = O(N^2)$
 
@@ -151,7 +151,7 @@ void shellsort(vector<Comparable>& a)
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 - The best case: $O(n)$.
 - The average case: $O(n^{1.3})$
@@ -193,7 +193,7 @@ void select_sort(int *a,int n)
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 - The best/average case: $O(n^2)$
 - The worst case: $O(n^2)$
@@ -240,7 +240,7 @@ int main()
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 - The best case: $O(n)$
 - The average case: $O(n^2)$
@@ -304,7 +304,7 @@ int main(int argc, char * argv[])
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 - The best/average case: $O(N log N)$
 - The worst case: $O(N log N)$
@@ -368,7 +368,7 @@ void quick_sort(int a[], int low, int high)
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 - The best/average case: $O(nlogn)$
 
@@ -444,7 +444,7 @@ int main()
 }
 ```
 
-### Performance Analysis
+### Complexity Analysis
 
 $O(lg\ n)$.
 
@@ -458,6 +458,6 @@ $O(lg\ n)$.
 
 ## Reference
 
-[1] Thomas H.Cormen, Charles E.Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms . 3ED
+[1] Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein. Introduction to Algorithms . 3ED
 
 [2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++ . 4ED

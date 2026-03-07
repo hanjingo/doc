@@ -1,4 +1,8 @@
+中文版 | [English](chapter8.md)
+
 # 第8章 线性时间排序
+
+[TOC]
 
 
 

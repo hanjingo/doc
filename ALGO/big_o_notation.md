@@ -1,150 +1,170 @@
-[中文版](big_o_notation_zh.md) | English
+中文版 | [English](big_o_notation.md)
 
-# Asymptotic Notation and Basic Growth Rates
-
-[TOC]
-
-## Introduction
-
-This note summarizes the common asymptotic notations used to describe algorithm running times (Big-O, Omega, Theta, little-o), lists useful rules, and provides common examples and summation facts used in algorithm analysis. It is adapted and condensed from standard references (see References).
-
-## Asymptotic definitions
-
-Let T(n) and f(n) be functions that map positive integers to positive real numbers. We use the following notations to classify growth rates as n \rightarrow \infty.
-
-- Big-O: T(n) = O(f(n)) if there exist positive constants c and n_0 such that for all n \ge n_0, T(n) \le c f(n). Intuitively, f(n) is an upper bound on T(n) up to constant factors.
-
-- Big-Omega: T(n) = \Omega(f(n)) if there exist positive constants c and n_0 such that for all n \ge n_0, T(n) \ge c f(n). This means f(n) is a lower bound on T(n) up to constant factors.
-
-- Theta: T(n) = \Theta(f(n)) iff T(n) = O(f(n)) and T(n) = \Omega(f(n)). This indicates f(n) tightly bounds T(n) up to constant factors.
-
-- little-o: T(n) = o(f(n)) if for every positive constant c there exists n_0 such that for all n \ge n_0, T(n) < c f(n). Equivalently, \lim_{n\to\infty} T(n)/f(n) = 0.
-
-Remarks: constants and lower-order terms are ignored in asymptotic notation. For example, 3n^2 + 10n + 7 = \Theta(n^2).
-
-## Useful rules and properties
-
-- Addition: If T_1(n) = O(f(n)) and T_2(n) = O(g(n)), then T_1(n) + T_2(n) = O(max(f(n), g(n))).
-- Multiplication by constants: If a is a constant, a \cdot T(n) = O(T(n)).
-- Multiplication: If T_1(n) = O(f(n)) and T_2(n) = O(g(n)), then T_1(n)\cdot T_2(n) = O(f(n)\cdot g(n)).
-- Transitivity: If T(n) = O(f(n)) and f(n) = O(g(n)), then T(n) = O(g(n)).
-- Polynomials: If T(n) is a polynomial of degree k, then T(n) = \Theta(n^k).
-- Logs: For any constant k, (log n)^k = o(n^\epsilon) for any \epsilon > 0; in particular (log n)^k = O(n).
-
-## Common growth classes (ordered from slowest to fastest)
-
-- Constant: 1
-- Logarithmic: log n
-- Polylogarithmic: (log n)^k
-- Linear: n
-- n log n
-- Polynomial: n^c (c > 1)
-- Exponential: a^n (a > 1)
-
-Remember: when comparing two functions for asymptotic growth, look at their dominant terms and ignore constant factors.
-
-## Common summations and identities
-
-- Geometric series: \sum_{i=0}^{N} a^i = (a^{N+1}-1)/(a-1) for a \neq 1. If |a| < 1 the infinite sum converges to 1/(1-a).
-- Powers: \sum_{i=1}^{N} i = N(N+1)/2 = \Theta(N^2).
-- Squares: \sum_{i=1}^{N} i^2 = N(N+1)(2N+1)/6 = \Theta(N^3).
-- General polynomial sums: \sum_{i=1}^{N} i^k = \Theta(N^{k+1}).
-- Harmonic numbers: H_N = \sum_{i=1}^{N} 1/i = \Theta(\log N).
-
-Useful approximation: \sum_{i=1}^{N} f(i) \approx \int_{1}^{N} f(x) dx when f is smooth and monotone; this often helps get intuition for summation growth.
-
-## Examples and typical uses
-
-- If an algorithm does a constant amount of work per element over n elements, its running time is O(n).
-- Binary search on a sorted array runs in O(\log n).
-- Merge sort and other divide-and-conquer algorithms often have recurrences; the Master Theorem (see CLRS) provides a quick way to solve many of them.
-
-## Notes on model and constants
-
-Asymptotic notation hides constant factors and lower-order terms. Two algorithms with the same asymptotic class (e.g., O(n log n)) can have very different actual running times due to constants, memory access patterns, and implementation details. For algorithm engineering it's important to measure and consider these factors.
-
-## Quick reference: small list of identities
-
-- log(ab) = log a + log b
-- log(a^b) = b log a
-- If 0 < a < b then n^a = o(n^b).
-
-## References
-
-1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms. 3rd ed.
-2. Additional classroom notes and standard algorithm texts.
-[中文版](big_o_notation_zh.md) | English
-
-# Asymptotic Notation and Basic Growth Rates
+# Big O Notation
 
 [TOC]
 
-## Introduction
 
-This note summarizes the common asymptotic notations used to describe algorithm running times (Big-O, Omega, Theta, little-o), lists useful rules, and provides common examples and summation facts used in algorithm analysis. It is adapted and condensed from standard references (see References).
 
-## Asymptotic definitions
+## Terminology
 
-Let T(n) and f(n) be functions that map positive integers to positive real numbers. We use the following notations to classify growth rates as n \rightarrow \infty.
+- `time complexity` time complexity
 
-- Big-O: T(n) = O(f(n)) if there exist positive constants c and n_0 such that for all n \ge n_0, T(n) \le c f(n). Intuitively, f(n) is an upper bound on T(n) up to constant factors.
 
-- Big-Omega: T(n) = \Omega(f(n)) if there exist positive constants c and n_0 such that for all n \ge n_0, T(n) \ge c f(n). This means f(n) is a lower bound on T(n) up to constant factors.
 
-- Theta: T(n) = \Theta(f(n)) iff T(n) = O(f(n)) and T(n) = \Omega(f(n)). This indicates f(n) tightly bounds T(n) up to constant factors.
+## Definition
 
-- little-o: T(n) = o(f(n)) if for every positive constant c there exists n_0 such that for all n \ge n_0, T(n) < c f(n). Equivalently, \lim_{n\to\infty} T(n)/f(n) = 0.
+If there exist any positive constants c and $N_0$ such that when $N \geq N_0$, $T(N) \leq cF(N)$, then we can denote the complexity of T(N) as $O(F(N))^3$.
 
-Remarks: constants and lower-order terms are ignored in asymptotic notation. For example, 3n^2 + 10n + 7 = \Theta(n^2).
+**Definition 2.1** If there exist positive constants $c$ and $n_0$ such that when $N \geqslant n_0$, $T(N) \leqslant cf(N)$, then we denote $T(N) = O(f(N))$.
 
-## Useful rules and properties
+**Definition 2.2** If there exist positive constants $c$ and $n_0$ such that when $N \geqslant n_0$, $T(N) \geqslant cg(N)$, then we denote $T(N)= \Omega (g(N))$.
 
-- Addition: If T_1(n) = O(f(n)) and T_2(n) = O(g(n)), then T_1(n) + T_2(n) = O(max(f(n), g(n))).
-- Multiplication by constants: If a is a constant, a \cdot T(n) = O(T(n)).
-- Multiplication: If T_1(n) = O(f(n)) and T_2(n) = O(g(n)), then T_1(n)\cdot T_2(n) = O(f(n)\cdot g(n)).
-- Transitivity: If T(n) = O(f(n)) and f(n) = O(g(n)), then T(n) = O(g(n)).
-- Polynomials: If T(n) is a polynomial of degree k, then T(n) = \Theta(n^k).
-- Logs: For any constant k, (log n)^k = o(n^\epsilon) for any \epsilon > 0; in particular (log n)^k = O(n).
+**Definition 2.3** $T(N) = \Theta (h(N))$ if and only if $T(N) = O(h(N))$ and $T(N) = \Omega(h(N)) $.
 
-## Common growth classes (ordered from slowest to fastest)
+**Definition 2.4** If for all constants $c$ there exists $n_0$ such that when $N > n_0$, $T(N) < cp(N)$, then we denote $T(N) = o(p(N))$. The informal definition is: if $T(N) = O(p(N))$ and $T(N) \neq \Theta(p(N))$, then $T(N) = o(p(N))$.
 
-- Constant: 1
-- Logarithmic: log n
-- Polylogarithmic: (log n)^k
-- Linear: n
-- n log n
-- Polynomial: n^c (c > 1)
-- Exponential: a^n (a > 1)
+**Rule 1** If $T_1(N) = O(f(N))$ and $T_2(N) = O(g(N))$, then
 
-Remember: when comparing two functions for asymptotic growth, look at their dominant terms and ignore constant factors.
+(a) $T_1(N) + T_2(N) = O(f(N) + g(N))$ (informally expressed as $max(O(f(N)), O(g(N)))$)
 
-## Common summations and identities
+(b) $T_1(N)T_2(N) = O(f(N)g(N))$
 
-- Geometric series: \sum_{i=0}^{N} a^i = (a^{N+1}-1)/(a-1) for a \neq 1. If |a| < 1 the infinite sum converges to 1/(1-a).
-- Powers: \sum_{i=1}^{N} i = N(N+1)/2 = \Theta(N^2).
-- Squares: \sum_{i=1}^{N} i^2 = N(N+1)(2N+1)/6 = \Theta(N^3).
-- General polynomial sums: \sum_{i=1}^{N} i^k = \Theta(N^{k+1}).
-- Harmonic numbers: H_N = \sum_{i=1}^{N} 1/i = \Theta(\log N).
+**Rule 2** If $T(N)$ is a polynomial of degree $k$, then $T(N) = \Theta(N^k)$.
 
-Useful approximation: \sum_{i=1}^{N} f(i) \approx \int_{1}^{N} f(x) dx when f is smooth and monotone; this often helps get intuition for summation growth.
+**Rule 3** For any constant $k$, $log^kN = O(N)$. This tells us that logarithmic growth is very slow.
 
-## Examples and typical uses
+Common function orders:
 
-- If an algorithm does a constant amount of work per element over n elements, its running time is O(n).
-- Binary search on a sorted array runs in O(\log n).
-- Merge sort and other divide-and-conquer algorithms often have recurrences; the Master Theorem (see CLRS) provides a quick way to solve many of them.
+| Symbol      | Name     |
+| ----------- | -------- |
+| $O(1)$      | Constant |
+| $O(log n)$  | Logarithmic |
+| $O(n)$      | Linear   |
+| $O(nlog n)$ | Linearithmic |
+| $O(n^2)$    | Quadratic |
+| $O(n^3)$    | Cubic    |
+| $O(c^n)$    | Exponential |
+| $O(n!)$     | Factorial |
 
-## Notes on model and constants
 
-Asymptotic notation hides constant factors and lower-order terms. Two algorithms with the same asymptotic class (e.g., O(n log n)) can have very different actual running times due to constants, memory access patterns, and implementation details. For algorithm engineering it's important to measure and consider these factors.
 
-## Quick reference: small list of identities
+## Running Time Calculation
 
-- log(ab) = log a + log b
-- log(a^b) = b log a
-- If 0 < a < b then n^a = o(n^b).
+### General Rules
+
+**Rule 1: For Loop** The running time of a for loop is at most the running time of the statements inside the for loop (including test) multiplied by the number of iterations.
+
+**Rule 2: Nested Loops** Analyze these loops from the inside out. The total running time of a statement inside a group of nested loops is the running time of that statement multiplied by the product of the sizes of all loops in that group.
+
+**Rule 3: Sequential Statements** Sum the running times of each statement.
+
+**Rule 4: If/Else Statements** For a program segment:
+
+```c++
+if (condition)
+  S1
+else
+  S2
+```
+
+The running time of an if/else statement never exceeds the test plus the sum of the running times of the longer of $S_1$ and $S_2$.
+
+### Solution to the Maximum Subsequence Sum Problem
+
+### Logarithms in Running Time
+
+The most common pattern for logarithms is: if an algorithm reduces the problem size to a fraction in constant time $O(1)$ (usually 1/2), then the algorithm is $O(log\ N)$; on the other hand, if constant time only reduces the problem by a constant amount (such as reducing by 1), then that algorithm is $O(N)$.
+
+1. Binary Search
+
+   `Binary search` Given an integer $X$ and integers $A_0, A_1, ..., A_{N-1}$, which are pre-sorted and in memory, find the index $i$ such that $A_i = X$. If $X$ is not in the data, return $i = -1$.
+
+   The running time is $O(log\ N)$.
+
+2. Euclidean Algorithm
+
+   **Theorem 2.1** If $M > N$, then $M \mod N < M/2$.
+
+3. Exponentiation
+
+
+
+## Mathematical Foundations
+
+### Exponents
+
+$X^A X^B = X^{A+B}$
+
+$\frac{X^A}{X^B} = X^{A-B}$
+
+$(X^A)^B = X^{AB}$
+
+$X^N + X^N = 2X^N \neq X^{2N}$
+
+$2^N + 2^N = 2^{N+1}$
+
+### Logarithms
+
+**Definition 1.1** $X^A = B$ if and only if $log_x{B} = A$.
+
+**Theorem 1.1** $log_A{B} = \frac{log_c{B}}{log_c{A}}; A, B, C > 0, A \neq 1.$
+
+**Theorem 1.2** $log AB = log A + log B; A, B > 0$.
+
+Some other theorems:
+
+$log A/B = log A - log B$
+
+$log(A^B) = B log A$
+
+$log X < X$ for all $X > 0$
+
+$log 1 = 0, log 2 = 1, log 1024 = 10, log 1048576 = 20$
+
+### Series
+
+$\sum_{i = 0}^{N} 2^i = 2^{N+1} - 1$
+
+$\sum_{i=0}^{N} A^i = \frac{A^{N+1} - 1}{A - 1}$, if $0 < A < 1$ then: $\sum_{i = 0}^{N} \leqslant \frac{1}{1 - A}$, as $N$ approaches $\infty$, the sum approaches $1/(1-A)$.
+
+$\sum_{i=1}^{N} i = \frac{N(N+1)}{2} \approx \frac{N^2}{2}$
+
+$\sum_{i = 1}^{N} i^2 = \frac{N(N+1)(2N+1)}{6} \approx \frac{N^3}{3}$
+
+$\sum_{i=1}^{N} i^k \approx \frac{N^{k+1}}{k+1};k \neq -1$
+
+`Euler's constant:` $H_N = \sum_{i=1}^{N} \frac{1}{i} \approx log_e{N}$
+
+$\sum_{i=1}^{N} \frac{1}{i} \approx log_e N$
+
+$\sum_{i=1}^{N} f(N) = Nf(N)$
+
+$\sum_{i=n_0}^{N} f(i) = \sum_{i = 1}^{N} f(i) - \sum_{i = 1}^{n_0 - 1}f(i)$
+
+### Modular Arithmetic
+
+If $N$ divides $A-B$, then we say $A$ is congruent to $B$ (congruent), denoted as $A \equiv B (mod\ N)$. This means that regardless of whether $A$ or $B$ is divided by $N$, the remainder obtained is the same. Therefore, $81 \equiv 61 \equiv 1 (mod\ 10)$. Like equality, if $A \equiv B (mod\ N)$, then $A + C \equiv B + C(mod\ N)$ and $AD \equiv BD(mod\ N)$.
+
+### Proof Methods
+
+1. Proof by Mathematical Induction
+
+   The first step is to prove the `base case`, which is to verify the correctness of the theorem for some small value; then we proceed with the `inductive hypothesis`.
+
+2. Proof by Counterexample
+
+   The formula $F_k \leqslant K^2$ does not hold. The easiest way to prove it is to calculate $F_{11} = 144 > 11^2$.
+
+3. Proof by Contradiction
+
+   Proof by contradiction is done by assuming the theorem does not hold, then proving that this assumption leads to some known property not holding, thus proving the original assumption is false.
+
+
 
 ## References
 
-1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms. 3rd ed.
-2. Additional classroom notes and standard algorithm texts.
+- [Wikipedia - Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
+- [Big O Notation](https://blog.csdn.net/weixin_44560088/article/details/108052225)
+- Introduction to Algorithms. Thomas H Cormen, Charles E Leiserson, Ronald L Rivest, Clifford Stein. Third Edition. 2013
+- [US] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 3rd Edition

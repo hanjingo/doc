@@ -1,4 +1,8 @@
+中文版 | [English](chapter26.md)
+
 # 第26章 最大流
+
+[TOC]
 
 
 

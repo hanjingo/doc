@@ -1,4 +1,8 @@
+中文版 | [English](chapter14.md)
+
 # 第14章 数据结构的扩张
+
+[TOC]
 
 
 

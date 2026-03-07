@@ -1,4 +1,8 @@
+中文版 | [English](chapter12.md)
+
 # 第12章 二叉搜索树
+
+[TOC]
 
 
 

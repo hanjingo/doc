@@ -1,3 +1,5 @@
+中文版 | [English](chapter6.md)
+
 # 第六章 优先队列（堆）
 
 [TOC]

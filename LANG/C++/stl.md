@@ -1,8 +1,10 @@
+English | [中文版](stl_zh.md)
+
 # STL
 
 [TOC]
 
-## C++ Standard Library (STL) — concise guide
+## C++ Standard Library (STL)
 
 This note summarizes commonly used parts of the C++ Standard Library (containers, smart pointers, iterators, algorithms, and I/O). It condenses the material from the Chinese draft while keeping images and examples. The goal is practical: quick references, complexity notes, and short examples you can use as a starting point.
 

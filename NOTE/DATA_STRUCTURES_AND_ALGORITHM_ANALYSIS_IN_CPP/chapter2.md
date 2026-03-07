@@ -1,3 +1,5 @@
+[中文版](chapter2_zh.md) | English
+
 # Chapter 2 Algorithm Analysis
 
 [TOC]

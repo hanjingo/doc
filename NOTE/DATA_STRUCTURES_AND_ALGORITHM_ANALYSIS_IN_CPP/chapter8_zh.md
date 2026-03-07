@@ -1,3 +1,5 @@
+中文版 | [English](chapter8.md)
+
 # 第八章 不相交集类
 
 [TOC]

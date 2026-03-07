@@ -1,3 +1,5 @@
+中文版 | [English](chapter12.md)
+
 # 第12章 高级数据结构及其实现
 
 [TOC]

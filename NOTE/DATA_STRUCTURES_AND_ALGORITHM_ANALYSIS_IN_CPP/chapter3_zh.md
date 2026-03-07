@@ -1,3 +1,5 @@
+中文版 | [English](chapter3.md)
+
 # 第3章 表，栈和队列
 
 [TOC]

@@ -1,4 +1,8 @@
+中文版 | [English](chapter34.md)
+
 # 第34章 NP完全性
+
+[TOC]
 
 
 

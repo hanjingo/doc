@@ -1,4 +1,8 @@
+中文版 | [English](chapter6.md)
+
 # 第6章 堆排序
+
+[TOC]
 
 
 

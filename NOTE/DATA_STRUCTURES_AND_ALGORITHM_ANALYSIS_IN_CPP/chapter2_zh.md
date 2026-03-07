@@ -1,3 +1,5 @@
+中文版 | [English](chapter2.md)
+
 # 第2章 算法分析
 
 [TOC]

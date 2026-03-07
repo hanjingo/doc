@@ -1,4 +1,8 @@
+中文版 | [English](chapter16.md)
+
 # 第16章 贪心算法
+
+[TOC]
 
 
 

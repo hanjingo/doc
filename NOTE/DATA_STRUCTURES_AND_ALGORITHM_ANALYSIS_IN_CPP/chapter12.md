@@ -1,3 +1,5 @@
+[中文版](chapter12_zh.md) | English
+
 # CHAPTER 12 Advanced Data Structures and Implementation
 
 [TOC]

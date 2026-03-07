@@ -1,4 +1,8 @@
+中文版 | [English](chapter10.md)
+
 # 第10章 基本数据结构
+
+[TOC]
 
 
 

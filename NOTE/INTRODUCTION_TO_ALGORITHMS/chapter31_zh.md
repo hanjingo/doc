@@ -1,4 +1,8 @@
+中文版 | [English](chapter31.md)
+
 # 第31章 数论算法
+
+[TOC]
 
 
 

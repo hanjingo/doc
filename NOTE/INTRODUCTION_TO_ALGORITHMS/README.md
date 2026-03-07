@@ -2,7 +2,7 @@
 
 # Introduction to Algorithms
 
-Thomas H.Cormen, Charles E.Leiserson, Ronald L. Rivest, Clifford Stein . 3th Edition
+Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein . 3th Edition
 
 - [1 The Role of Algorithms in Computing](chapter1.md)
 - [2 Getting Started](chapter2.md)

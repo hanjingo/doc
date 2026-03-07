@@ -1,3 +1,5 @@
+[中文版](chapter11_zh.md) | English
+
 # CHAPTER 11 Amortized Analysis
 
 [TOC]

@@ -1,4 +1,8 @@
+中文版 | [English](chapter33.md)
+
 # 第33章 计算几何学
+
+[TOC]
 
 
 

@@ -1,4 +1,8 @@
+中文版 | [English](chapter7.md)
+
 # 第7章 快速排序
+
+[TOC]
 
 
 

@@ -1,4 +1,8 @@
+中文版 | [English](chapter20.md)
+
 # 第20章 van Emde Boas树
+
+[TOC]
 
 
 

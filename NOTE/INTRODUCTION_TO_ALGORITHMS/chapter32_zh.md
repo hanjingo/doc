@@ -1,4 +1,8 @@
+中文版 | [English](chapter32.md)
+
 # 第32章 字符串匹配
+
+[TOC]
 
 
 

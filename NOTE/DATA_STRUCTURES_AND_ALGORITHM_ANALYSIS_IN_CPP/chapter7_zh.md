@@ -1,3 +1,5 @@
+中文版 | [English](chapter7.md)
+
 # 第七章 排序
 
 [TOC]

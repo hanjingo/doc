@@ -7,6 +7,5 @@
 - [Project Management](proj_manage.md)
 - [Software Engineering](software_engineering.md)
 - [Software Test](software_test.md)
-- [System Dependability](system_dependability.md)
-- [System Design](system_design.md)
+- [System Design](SYSTEM_DESIGN/README.md)
 

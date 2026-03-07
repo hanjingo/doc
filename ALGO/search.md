@@ -2,4 +2,208 @@
 
 [TOC]
 
+
+
+## Linear Search
+
+### Step
+
+Start at the beginning of the data set(usually index 0). Next, perform the following two steps in a loop:
+
+1. Compare the current element with the target value you are searching for:
+   - if the current element matches the target: the search is successful, return;
+   - if the current element does not match the target: move to the next element in the list;
+   - if the end of the list is reached and no match was found: the search is unsuccessful, return.
+
+Repeat above steps until the target is found or you have checked every item in the list.
+
+### Implement
+
+```c++
+int linear_search(const std::vector<int>& arr, int target)
+{
+    for (size_t i = 0; i < arr.size(); ++i)
+    {
+        if (arr[i] == target)
+            return i; // Target found at index i
+    }
+    return -1; // Target not found
+}
+```
+
+### Complexity Analysis
+
+Time Complexity:
+
+| Case         | Complexity |
+| ------------ | ---------- |
+| Best Case    | $O(1)$     |
+| Average Case | $O(n)$     |
+| Worst Case   | $O(n)$     |
+
+
+
+## Binary Search
+
+Binary search is an efficient searching algorithm based on the divide-and-conquer strategy. It leverages the orderliness of data to reduce the search range by half in each round until the target element is found or the search interval becomes empty.
+
+### Step
+
+![binary_search_example](res/binary_search_example.png)
+
+We first initialize pointers $i = 0$ and $j = n - 1$, pointing to the first and last elements of the array respectively, representing the search interval $[0, n - 1]$. Note that square brackets denote a closed interval, which includes the boundary values themselves.
+
+Next, perform the following two steps in a loop:
+
+1. Calculate the midpoint index $m = \lfloor (i + j) / 2 \rfloor$, where $\lfloor \rfloor$ denotes the floor operation. 
+
+   (to void large number overflow, we typically use the formula $m=\lfloor i + (j - i) / 2 \rfloor$ to calculate the midpoint)
+
+2. Compare $nums[m]$ and $target$, which results in three cases:
+
+   - When $nums[m] < target$, it indicates that $target$ is in the interval $[m + 1, j]$, so execute $i = m + 1$.
+   - When $nums[m] > target$, it indicates that $target$ is in the interval $[i, m - 1]$, so execute $j = m - 1$.
+   - When $nums[m] = target$, it indicates that $target$ has been found, so return index $m$.
+
+### Implement
+
+```c++
+int binary_search(const std::vector<int>& arr, int target)
+{
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left <= right) 
+    {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target)
+            return mid; // Target found at index mid
+        else if (arr[mid] < target)
+            left = mid + 1; // Search in the right half
+        else
+            right = mid - 1; // Search in the left half
+    }
+
+    return -1; // Target not found
+}
+```
+
+### Complexity Analysis
+
+Time Complexity:
+
+| Case         | Complexity  |
+| ------------ | ----------- |
+| Best Case    | $O(1)$      |
+| Average Case | $O(\log n)$ |
+| Worst Case   | $O(\log n)$ |
+
+Space Complexity(it's refers to the amount of auxiliary memory the algorithm requires):
+
+- Iterative Approach: $O(1)$ (constant space).
+- Recursive Approach: $O(\log n)$ (logarithmic space).
+
+
+
+## Ternary Search
+
 TODO
+
+
+
+## Tree Search
+
+TODO
+
+
+
+## Hash-Based Search
+
+### Step
+
+![hash_based_search](res/hash_based_search.png)
+
+Check if the $hash(target)$ is in the container
+
+- If so, directly return the index;
+- if not, return -1.
+
+### Implement
+
+```c++
+const int TABLE_SIZE = 100;
+
+int hash_based_search(const std::vector<std::string>& arr, const std::string& target)
+{
+    size_t hash_val = std::hash<std::string>{}(target);
+    int i = hash_val % TABLE_SIZE;
+    if (arr[i] == target)
+        return i; // Target found at index i
+    return -1; // Target not found
+}
+```
+
+### Complexity Analysis
+
+| Case         | Complexity |
+| ------------ | ---------- |
+| Best Case    | $O(1)$     |
+| Average Case | $O(1)$     |
+| Worst Case   | $O(n)$     |
+
+
+
+## Summary
+
+### Complixity Analysis
+
+Comparison of search algorithm efficiency:
+
+|                    | Linear Search | Binary Search         | Tree Search                 | Hash-based Search          |
+| ------------------ | ------------- | --------------------- | --------------------------- | -------------------------- |
+| Search element     | $O(n)$        | $O(\log n)$           | $O(\log n)$                 | $O(1)$                     |
+| Insert element     | $O(1)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     |
+| Delete element     | $O(n)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     |
+| Extra space        | $O(1)$        | $O(1)$                | $O(n)$                      | $O(n)$                     |
+| Data preprocessing | /             | Sorting $O(n \log n)$ | Tree building $O(n \log n)$ | Hash table building $O(n)$ |
+| Data ordered       | Unordered     | Ordered               | Ordered                     | Unordered                  |
+
+### Suit Case
+
+Linear search:
+
+- Good generality, requiring no data preprocessing operations;
+- Suitable for small data volumes, where time complexity has less impact on efficiency;
+- Suitable for scenarios with high data update frequency, as this method does not require any additional data maintenance.
+
+Binary search:
+
+- Suitable for large data volumes with the stable efficiency performance;
+- Data volume cannot be too large, as storing arrays requires contiguous memory space;
+- Not suitable for scenarios with frequent data insertion and deletion, as maintaining a sorted array has high overhead.
+
+Hash-based search:
+
+- Suitable for scenarios with high query performance requirements;
+- Not suitable for scenarios requiring ordered data or range searches, as hash tables cannot maintain data orderliness;
+- High dependence on hash functions and hash collision handling strategies, with significant risk of performance degradation;
+- Not suitable for excessively large data volumes, as hash tables require extra space to minimize collisions and thus provide good query performance.
+
+Tree search:
+
+- Suitable for massive data, as tree nodes are stored dispersedly in memory;
+- Suitable for scenarios requiring maintained ordered data or range searches;
+- During continuous node insertion and deletion, binary search trees may become skewed;
+- If using AVL trees or red-black trees, all operations can run stably at $O(\log n)$ efficiency, but operations to maintain tree balance add extra overhead.
+
+
+
+## Reference
+
+[1] Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein. Introduction to Algorithms . 3ED
+
+[2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++ . 4ED
+
+[3] [Hello Algo/Chapter 10.  Searching](https://www.hello-algo.com/en/chapter_searching/#chapter-10-searching)
+

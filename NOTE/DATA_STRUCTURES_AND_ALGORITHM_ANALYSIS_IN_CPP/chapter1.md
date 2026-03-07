@@ -1,3 +1,5 @@
+[中文版](chapter1_zh.md) | English
+
 # Chapter 1 Programming: A General Overview
 
 [TOC]

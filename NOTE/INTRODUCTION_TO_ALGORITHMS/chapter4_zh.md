@@ -1,4 +1,8 @@
+中文版 | [English](chapter4.md)
+
 # 第四章 分治策略
+
+[TOC]
 
 
 

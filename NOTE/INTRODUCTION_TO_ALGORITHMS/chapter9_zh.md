@@ -1,4 +1,8 @@
+中文版 | [English](chapter9.md)
+
 # 第9章 中位数和顺序统计量
+
+[TOC]
 
 
 

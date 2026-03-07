@@ -1,6 +1,6 @@
 # Discrete Mathematics and Its Applications
 
-Kenneth H. Rosen, 8ED
+Kenneth H. Rosen. 8ED
 
 - [CHAPTER 1 The Foundations: Logic and Proofs](chapter1.md)
 - [CHAPTER 2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices](chapter2.md)

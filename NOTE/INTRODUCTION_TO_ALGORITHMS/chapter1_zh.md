@@ -1,4 +1,8 @@
+中文版 | [English](chapter1.md)
+
 # 第一章 算法在计算中的作用
+
+[TOC]
 
 
 

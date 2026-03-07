@@ -1,4 +1,8 @@
+中文版 | [English](chapter3.md)
+
 # 第三章 函数的增长
+
+[TOC]
 
 
 
