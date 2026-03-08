@@ -4,11 +4,11 @@
 
 [TOC]
 
-## Introduction
+
 
 Finding shortest paths in graphs is a central problem in algorithms and has many variants: unweighted vs weighted, nonnegative vs negative edge weights, single-source vs all-pairs, and static vs dynamic graphs. This note summarizes common algorithms (BFS for unweighted graphs, Dijkstra for nonnegative weights, Bellman–Ford for graphs with negative edges, and A* for heuristic-guided search), gives implementation sketches and complexity notes, and points to further reading.
 
-## Breadth-First Search (BFS) — unweighted shortest paths
+## Breadth-First Search (BFS) 
 
 BFS computes shortest path distances (in number of edges) from a source vertex s in an unweighted graph (directed or undirected). It explores the graph in layers: first all vertices at distance 0 (s), then distance 1, then distance 2, and so on.
 
@@ -40,11 +40,25 @@ void BFS(Graph& G, Vertex s) {
 
 Include diagrams (repository `res/`) to illustrate layered exploration.
 
-## Dijkstra's algorithm — single-source, nonnegative weights
+
+
+## Dijkstra's algorithm 
+
+![dijkstra_example](res/dijkstra_example.png)
 
 Dijkstra's algorithm computes shortest paths from a single source in graphs with nonnegative edge weights. It is a generalization of the unweighted layered approach: the algorithm repeatedly selects the vertex with the smallest tentative distance and relaxes its outgoing edges.
 
 Correctness relies on the nonnegativity of edge weights (once the smallest tentative distance vertex is selected, its distance is final).
+
+### Element
+
+**THEOREM** Dijkstra's algorithm finds the length of a shortest path between two vertices in a connected simple undirected weighted graph.
+
+**THEOREM** Dijkstra's algorithm uses $O(n^2)$ operations (additions and comparisons) to find the length of a shortest path between two vertices in a connected simple undirected weighted graph with $n$ vertices.
+
+**THEOREM (Correctness of Dijkstra's algorithm)** Dijkstra's algorithm, run on a weighted, directed graph $G = (V, E)$ with non-negative weight function $w$ and source $s$, terminates with $u.d = \delta(s, u)$ for all vertices $u \in V$.
+
+### Implement
 
 Priority-queue implementation (sketch):
 
@@ -71,10 +85,12 @@ void Dijkstra(Graph& G, Vertex s) {
 ```
 
 Complexity:
-- Using a binary heap (priority_queue): O((V + E) log V) which is commonly written as O(E log V).
-- With a Fibonacci heap: O(E + V log V) (rarely used in practice due to complexity of implementation).
+- Using a binary heap (priority_queue): $O((V + E) \log V)$ which is commonly written as $O(E \log V)$.
+- With a Fibonacci heap: $O(E + V \log V)$ (rarely used in practice due to complexity of implementation).
 
-## Bellman–Ford — graphs with negative edge weights
+
+
+## Bellman–Ford
 
 Bellman–Ford computes single-source shortest paths even when some edges have negative weights, and it detects negative-weight cycles reachable from the source.
 
@@ -86,7 +102,9 @@ Algorithm sketch:
 
 Complexity: O(V * E) time, O(V) space.
 
-## A* Search — heuristic-guided single-source shortest path
+
+
+## A* Search
 
 A* is used to find shortest paths when a heuristic estimate h(v) approximating the remaining distance to the target is available. A* expands nodes in order of f(v) = g(v) + h(v) where g(v) is the distance from the start to v. If h is admissible (never overestimates), A* is guaranteed to find an optimal path.
 
@@ -116,10 +134,14 @@ void AStar(Graph& G, Vertex s, Vertex goal, function<Dist(Vertex)> h) {
 }
 ```
 
+
+
 ## All-pairs shortest paths
 
-- Floyd–Warshall: O(V^3) dynamic programming algorithm that computes shortest paths between all pairs; supports negative weights (but no negative cycles). Useful for dense graphs or when V is small.
+- Floyd–Warshall: $O(V^3)$ dynamic programming algorithm that computes shortest paths between all pairs; supports negative weights (but no negative cycles). Useful for dense graphs or when V is small.
 - Repeated Dijkstra: run Dijkstra from every source; O(V * (E log V)) total time.
+
+
 
 ## Practical notes and tips
 
@@ -128,6 +150,8 @@ void AStar(Graph& G, Vertex s, Vertex goal, function<Dist(Vertex)> h) {
 - Use Bellman–Ford if negative weights must be supported or if negative-cycle detection is required.
 - Use A* when you have a good admissible heuristic and a specific target; it can dramatically reduce explored nodes.
 - Watch out for implementation details: use adjacency lists for sparse graphs, and avoid expensive decrease-key operations by pushing duplicates into the heap and skipping visited entries when popped.
+
+
 
 ## References
 

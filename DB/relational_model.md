@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 This note summarizes the relational data model and practical concepts you need when designing relational schemas and queries. It covers relations, schemas and tuples, keys and constraints, a brief overview of relational algebra and SQL mapping, integrity constraints, and normalization. The presentation follows the practical emphasis in standard database texts (see `NOTE/DATABASE_SYSTEM_CONCEPTS`).
 
 ## Relations, schemas, and tuples
@@ -11,6 +13,8 @@ This note summarizes the relational data model and practical concepts you need w
 - Tuple: an ordered mapping from attribute names to values. In practice, SQL tables do not enforce tuple ordering; rows are an unordered multiset unless an ORDER BY is applied.
 
 Example: a relation `Employee(EmpID, Name, DeptID, Salary)`.
+
+
 
 ## Keys and integrity constraints
 
@@ -25,7 +29,9 @@ Integrity constraints:
 - Unique constraints: ensure attribute values are unique across tuples.
 - Referential integrity: foreign keys must reference existing tuples in the parent relation (or be NULL if allowed).
 
-## Relational algebra (brief)
+
+
+## Relational algebra
 
 Relational algebra is a set of operations on relations that form the theoretical foundation for SQL. Key operators:
 
@@ -37,6 +43,8 @@ Relational algebra is a set of operations on relations that form the theoretical
 - Aggregation and grouping (in practical systems) compute summaries (SUM, AVG, COUNT) over groups.
 
 These operators compose to express complex queries; SQL implements a rich dialect that maps to relational-algebraic plans in the query optimizer.
+
+
 
 ## Normalization and functional dependencies
 
@@ -53,6 +61,8 @@ Normalization workflow:
 
 Trade-offs: normalization reduces redundancy and update anomalies but may increase the number of joins required at query time. Denormalize selectively for performance in read-heavy schemas.
 
+
+
 ## NULLs, three-valued logic and practical considerations
 
 NULL represents missing or unknown values in SQL and introduces three-valued logic (true/false/unknown). Practical tips:
@@ -60,12 +70,16 @@ NULL represents missing or unknown values in SQL and introduces three-valued log
 - Be explicit about whether attributes allow NULL; use NOT NULL for required attributes.
 - Be careful with predicates and NULLs: comparisons with NULL yield UNKNOWN; use IS NULL / IS NOT NULL when testing.
 
+
+
 ## Mapping to SQL and implementation notes
 
 - SQL tables implement the relational model with extensions (NULLs, duplicates, ordering, procedural features).
 - The DBMS query optimizer rewrites SQL into relational-algebraic plans and chooses execution strategies (indexes, join algorithms, scans) based on statistics and available access paths.
 
-## Design checklist (quick)
+
+
+## Design checklist
 
 1. Define relations and attributes from the conceptual model.
 2. Identify primary keys and foreign keys.
@@ -73,7 +87,8 @@ NULL represents missing or unknown values in SQL and introduces three-valued log
 4. Add indexes for common query predicates and joins.
 5. Consider denormalization and partitioning for performance when necessary.
 
+
+
 ## References
 
-- `NOTE/DATABASE_SYSTEM_CONCEPTS` (selected chapters on relational model and normalization)
-- Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts.
+[1] Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts.

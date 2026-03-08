@@ -10,7 +10,6 @@
 
 - [BitTorrent协议](PROTOCOL/bittorrent_zh.md)
 - [DHT(Distributed Hash Table, 分布式哈希表)](PROTOCOL/dht_zh.md)
-- [DTP(分布式事务)](PROTOCOL/dtp_zh.md)
 - [Kad算法](PROTOCOL/kad_zh.md)
 - [Merkle tree](PROTOCOL/merkle_zh.md)
 

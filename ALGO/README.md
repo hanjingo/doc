@@ -9,6 +9,7 @@
 - [Complexity Analysis](complexity_analysis.md)
 - [CRC](crc.md)
 - [Deflate Algorithm](deflate.md)
+- [Dynamic Programming](dynamic_programming.md)
 - [Greedy Algorithm](greedy_algorithm.md)
 - [Hash](hash.md)
 - [Huffman Code](huffman.md)

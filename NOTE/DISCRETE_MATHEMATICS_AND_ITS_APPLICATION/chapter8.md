@@ -10,7 +10,7 @@
 
 **THEOREM**: Let $c_1$ and $c_2$ be real numbers. Suppose that $r^2 - c_1r - c_2 = 0$ has two distinct roots $r_1$ and $r_2$. Then the sequence $\{a_n\}$ is a solution of the recurrence relation $a_n = c_1 a_{n - 1} + c_2 a_{n - 2}$ if and only if $a_n = \alpha_{1} r_{1}^n + \alpha_{2}r_{2}^{n}$ for $n = 0, 1, 2, ...,$ where $\alpha_1$ and $\alpha_2$ are constants.
 
-**THEOREM:** Let $c_1, c_2, ..., c_k$ be real numbers. Suppose that the characteristic equation $r^k - c_1 r^{k - 1} - \cdots c_k = 0$ has $k$ distinct roots $r_1, r_2, \cdots, r_k$. THen a sequence $\{a_n\}$ is a solution of the recurrence relation $a_n = c_1 a_{n - 1} + c_2 a_{n - 2} + \cdots + c_k a_{n - k}$ if and only if $a_n = \alpha_1 r_{1}^{n} + \alpha_2 r_{2}^{n} + \cdots + \alpha_{k}r_{k}^{n}$ for $n = 0, 1, 2, ..., $ where $\alpha_1, \alpha_2, ..., \alpha_{k}$ are constants.
+**THEOREM:** Let $c_1, c_2, ..., c_k$ be real numbers. Suppose that the characteristic equation $r^k - c_1 r^{k - 1} - \cdots c_k = 0$ has $k$ distinct roots $r_1, r_2, \cdots, r_k$. Then a sequence $\{a_n\}$ is a solution of the recurrence relation $a_n = c_1 a_{n - 1} + c_2 a_{n - 2} + \cdots + c_k a_{n - k}$ if and only if $a_n = \alpha_1 r_{1}^{n} + \alpha_2 r_{2}^{n} + \cdots + \alpha_{k}r_{k}^{n}$ for $n = 0, 1, 2, ..., $ where $\alpha_1, \alpha_2, ..., \alpha_{k}$ are constants.
 
 **THEOREM:** Let $c_1, c_2, ..., c_k$ be real numbers. Suppose that the characteristic equation:
 

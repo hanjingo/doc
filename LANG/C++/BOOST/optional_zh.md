@@ -1,12 +1,7 @@
 # boost.optional
 
 
-<!-- vim-markdown-toc GFM -->
-
-* [摘要](#摘要)
-* [用法](#用法)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

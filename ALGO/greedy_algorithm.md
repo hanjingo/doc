@@ -22,7 +22,18 @@ A problem exhibits **optimal substructure** if an optimal solution to the proble
 
 ![greedy_algo_example](res/greedy_algo_example.png)
 
-The problem-solving process for greedy problems 
+The problem-solving process for greedy problems can generally be divided into the following three steps:
+
+1. Problem analysis: Sort out and understand the problem characteristics, including state definition, optimization objectives, and constraints, etc. This step is also involved in backtracking and dynamic programming.
+
+2. Determine the greedy strategy: Determine how to make greedy choices at each step. This strategy should be able to reduce the problem size at each step, ultimately solving the entire problem
+
+   Determining the greedy strategy may not be easy to implement, mainly for the following reasons:
+
+   - Greedy strategies differ greatly between different problems.
+   - Some greedy strategies are highly misleading.
+
+3. Correctness proof: it is usually necessary to prove that the problem has both greedy choice property and optimal substructure. This step may require mathematical proofs, such as mathematical induction or proof by contradiction.
 
 
 
@@ -50,9 +61,21 @@ int coin_change_greedy(const std::vector<int>& coins, int amount)
 
 ## Summary
 
-### Advantags And Limitations
+### Suitcase
 
-TODO
+Generally, the applicability of greedy algorithms falls into the following two situations:
+
+- Can guarantee finding the optimal solution;
+- Can find an approximate optimal solution.
+
+Below are some typical greedy algorithms problems:
+
+- Coin change problem;
+- Interval scheduling problem;
+- Fractional knapsack problem;
+- Stock trading problem;
+- Huffman coding;
+- Dijkstra's algorithm.
 
 ### Greedy Algorithm VS Dynamic Programming
 

@@ -1,13 +1,7 @@
 # Qt进程
 
 
-<!-- vim-markdown-toc GFM -->
-
-* [打包可执行程序](#打包可执行程序)
-* [正确退出Qt程序](#正确退出qt程序)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 
@@ -30,12 +24,6 @@
      ```shell
      windeployqt xx.exe –qmldir xxx # xx.exe：可执行程序名，xxx：qml路径
      ```
-
-
-
-## 正确退出Qt程序
-
-TODO
 
 
 

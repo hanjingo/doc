@@ -11,8 +11,6 @@
 ## 应用
 
 - [利用redis实现异步队列](async_queue_zh.md)
-- [利用redis实现分布式锁](dcs_lock_zh.md)
-- [利用redis实现延时队列](delay_queue_zh.md)
 - [利用redis实现消息队列](mq_zh.md)
 
 
@@ -25,13 +23,11 @@
 - [redis源码分析-命令行](ansys_cmd_zh.md)
 - [redis源码分析-数据库实现](ansys_db_zh.md)
 - [redis源码分析-事件](ansys_event_zh.md)
-- [redis源码分析-内存回收](ansys_gc_zh.md)
 - [redis源码分析-整数集合](ansys_intset_zh.md)
 - [redis源码分析-链表](ansys_linklist_zh.md)
 - [redis源码分析-Lua脚本](ansys_lua_zh.md)
 - [redis源码分析-字典](ansys_map_zh.md)
 - [redis源码分析-监视器](ansys_moniter_zh.md)
-- [redis源码分析-网络连接](ansys_network_zh.md)
 - [redis源码分析-数据类型](ansys_object_zh.md)
 - [redis源码分析-持久化](ansys_persistence_zh.md)
 - [redis源码分析-发布订阅](ansys_pub_sub_zh.md)

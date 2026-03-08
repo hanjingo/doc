@@ -2,7 +2,6 @@
 
 # 数据库
 
-- [数据库最佳实践](best_practice_zh.md)
 - [sql语言](sql_zh.md)
 
 

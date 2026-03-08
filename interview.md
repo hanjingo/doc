@@ -264,7 +264,111 @@ For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
 
 ## DB
 
-TODO
+### SQL
+
+#### What is the difference between CHAR and VARCHAR2?
+
+CHAR stores fixed-length data and pads extra spaces; VARCHAR2 stores variable-length data, saving storage space.
+
+#### What is a view in SQL?
+
+A view is a virtual table created by a `SELECT` query. It does not store data itself, but presents data from one ore more tables in a structured way. Views simplify complex queries, improve readability, and enhance security by restricting access to specific rows or columns.
+
+For more info, see: [SQL Language#Views](DB/sql.md)
+
+#### What is the purpose of the UNIQUE constraint?
+
+The UNIQUE constraint ensures that all values in a column (or combination of columns) are distinct. This prevents duplicate values and helps maintain data integrity.
+
+#### What is a composite primary key?
+
+A composite primary key uses two or more columns together to uniquely identify each row when one column alone isn't sufficient.
+
+#### Explain the difference between the `WHERE` and `HAVING` clauses
+
+`WHERE` filters individual rows before grouping or aggregation, so it can't use aggregate functions like SUM or COUNT; it's best for narrowing raw data early (e.g., a date range or status).
+
+`HAVING` filters the resulting groups after `GROUP BY`, so it's meant for conditions on aggregates (e.g., groups with totals above a threshold).
+
+#### What are SQL joins, and what are the differences between `INNER`, `LEFT`, `RIGHT`, and `FULL` joins?
+
+SQL joins combine rows from two tables based on a matching condition (typically keys) to answer questions that span both tables...
+
+An `INNER JOIN` returns only matches that exist in both tables (the intersection). 
+
+A `LEFT JOIN` returns all rows from the left table and the matching rows from the right; when there's no match, right-side columns are `NULL`. 
+
+A `RIGHT JOIN` is the mirror image: all rows from the right table plus matches from the left, `NULL` when absent.
+
+A `FULL(OUTER) JOIN` returns all rows from either table, filling in `NULL` where a counterpart is missing.
+
+For more info, see: [SQL Language#Joins](DB/sql.md)
+
+#### Describe a `PRIMARY KEY` and how it differs from a `UNIQUE` key
+
+A `PRIMARY KEY` uniquely identifies each row in a table: it combines `UNIQUE + NOT NULL`, there can be only one per table, and it's the default target for foreign keys.
+
+A `UNIQUE` key also enforces uniqueness, but doesn't require `NOT NULL` and you can have many `UNIQUE` constraints per table.
+
+#### What is a CTE (Common Table Expression) and when would you use it?
+
+A CTE (Common Table Expression) is a temporary, named result set defined with `WITH` that exists only for the duration of a single statement. You use CTEs to break complex logic into steps, avoid repeating the same subquery, improve readability/maintenance, enable recursion, and make debugging easier.
+
+#### Explain normalization and briefly describe the different normal forms.
+
+Normalization organizes relational data to minimize redundancy and prevent `update/insert/delete` anomalies by splitting tables based on dependencies while preserving meaning.
+
+For more info, see: [SQL Language#Relational Model](DB/relational_model.md)
+
+#### What is the difference between `UNION` and `UNION ALL`?
+
+`UNION` combines results from two (or more) `SELECT`s and removes duplicates (it performs a `DISTINCT` across all columns), which adds sorting/hash work and can be slower.
+
+`UNION ALL` keeps duplicates and usually runs faster because it simply appends result sets.
+
+#### How do clustered and non‑clustered indexes differ?
+
+A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
+
+For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
+
+#### How do you perform pattern matching in SQL?
+
+SQL supports pattern matching mainly with `LIKE` (and `NOT LIKE`) using wildcards `%` for any-length string and `_` for a single character.
+
+#### How would you calculate the running total of sales for each product?
+
+Use a window (analytic) function: compute `SUM(amount)` over rows of the same product, ordered by time, accumulating from the start up to the current row.
+
+#### What are EXISTS and NOT EXISTS and how do they differ from IN
+
+`EXISTS` checks whether a correlated subquery returns at least one row; `NOT EXISTS` checks that it returns none. They return boolean and stop at the first match, ignoring what the subquery selects. `IN` compares a value against a list/set (literal list or subquery output).
+
+#### Explain the difference between `RANK()`, `DENSE_RANK()` and `ROW_NUMBER()`
+
+`ROW_NUMBER()` assigns a unique sequential number to each row within a partition based on the order--no ties share a number (ties are broken arbitrarily by the `ORDER BY`).
+
+`RANK()` assigns the same rank to tied rows but leaves gaps after ties.
+
+`DENSE_RANK()` also assigns the same rank to ties but doesn't leave gaps.
+
+#### Explain the purpose of LAG and LEAD functions.
+
+LAG and LEAD are window functions that let you look at values from previous (LAG) or next (LEAD) rows in the same result set without self-joins. They're used for comparisons across rows e.g., changes yesterday to today, detecting trends, or filling forward/backward values.
+
+#### What is a cross join and how does it differ from an inner join?
+
+A `CROSS JOIN` returns teh cartesian product of two tables--every row from A paired with every row from B so the result size is `rows(A) x rows(B)`, and it doesn't use a join condition.
+
+An `INNER JOIN` returns only the rows where the specified join condition matches between the two tables, so its result is a filtered subset, not every combination.
+
+#### Explain foreign keys and how they enforce referential integrity.
+
+A foreign key (FK) is a column (or set of columns) in a child table taht references a primary/unique key in a parent table to ensure the child's values actually exist in the parent. This enforces referential integrity by preventing actions that would create "orphan" rows.
+
+#### Describe set operations like UNION, INTERSECT and EXCEPT and when each is useful.
+
+`UNION`, `INTERSECT`, and `EXCEPT` are SQL set operations that combine results from two queries with the same number of columns and compatible data types. `UNION` returns the distinct union of both result sets (removes duplicates).
 
 ---
 
@@ -289,6 +393,64 @@ TODO
 TODO
 
 ### Dynamic Programming
+
+#### What is dynamic programming and how does it differ from other methods?
+
+Dynamic programming breaks down complex problems into smaller, simpler subproblems and stores solutions to avoid repeating calculations, unlike other methods that may solve problems directly without reusing solutions.
+
+For more info, see: [Dynamic Programming Algorithm](ALGO/dynamic_programming.md)
+
+#### What kinds of problems are suitable for dynamic programming solutions?
+
+Dynamic programming works well for problems with overlapping subproblems and optimal substructure, meaning solutions can be built from smaller optimal solutions.
+
+For more info, see: [Dynamic Programming Algorithm](ALGO/dynamic_programming.md)
+
+#### What is memoization in dynamic programming and why is it useful?
+
+Memoization involves storing previously calculated results to avoid redundant computations in recursive algorithms, saving time and improving efficiency. Memoization is used in Top-Down approach.
+
+For more info, see: [Dynamic Programming Algorithm](ALGO/dynamic_programming.md)
+
+#### What's the difference between top-down and bottom-up dynamic programming?
+
+Top-down starts from the top and breaks down the problem recursively, while bottom-up builds solutions iteratively from the smallest subproblems.
+
+### Greedy Algorithm
+
+#### What is a greedy algorithm?
+
+A greedy algorithm makes locally optimal choices at each step with the hope of finding a global optimum solution.
+
+For more info, see: [Greedy Algorithm](ALGO/greedy_algorithm.md)
+
+#### What is greedy algorithm used for?
+
+Greedy algorithms are primarily used for optimization problems where making locally optimal choices at each step leads to finding a globally optimal solution. They find applications in various domains such as scheduling, routing, resource allocation and combinatorial optimization.
+
+For more info, see: [Greedy Algorithm#Suitcase](ALGO/greedy_algorithm.md)
+
+#### Explain Dijkstra's algorithm and its application.
+
+Dijkstra's algorithm finds the shortest path from a starting node to all other nodes in a weighted graph. It's commonly used in routing and network optimization problems.
+
+For more info, see: [Shortest-Path Algorithms#Dijkstra's algorithm ](ALGO/shortest_path_problem.md)
+
+#### What is Huffman coding and how does it utilize a greedy strategy to compress data?
+
+Huffman coding is a technique for lossless data compression where characters are represented by variable-length codes. It uses a greedy strategy to assign shorter codes to more frequent characters.
+
+For more info, see: [Huffman Codes](ALGO/huffman.md)
+
+### Recursive Algorithm
+
+TODO
+
+### Divide and Conquer Algorithm
+
+TODO
+
+### Backtracking Algorithm
 
 TODO
 
@@ -399,6 +561,14 @@ For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
 #### What is the worst-case time complexity of Quick Sort?
 
 In the worst case, Quick Sort may take $O(N^2)$ time to sort the array. The worst case will occur when every time the problem of size $N$, get divided into 2 subproblems of size 1 and $N - 1$.
+
+### Tree
+
+TODO
+
+### Graph
+
+TODO
 
 ---
 

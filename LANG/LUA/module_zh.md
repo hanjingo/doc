@@ -1,13 +1,7 @@
 # LUA模块
 
 
-<!-- vim-markdown-toc GFM -->
-
-* [require机制](#require机制)
-    - [加载策略](#加载策略)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

@@ -1,11 +1,6 @@
 # 谷歌c++编码规范
 
-<!-- vim-markdown-toc GFM -->
-
-* [头文件](#头文件)
-* [源文件](#源文件)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 ## 头文件

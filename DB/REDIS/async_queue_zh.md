@@ -1,11 +1,7 @@
 # Redis实现异步队列
 
 
-<!-- vim-markdown-toc GFM -->
-
-* [摘要](#摘要)
-
-<!-- vim-markdown-toc -->
+[TOC]
 
 
 

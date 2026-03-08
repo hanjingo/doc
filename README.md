@@ -23,6 +23,7 @@
 - [Complexity Analysis](ALGO/complexity_analysis.md)
 - [CRC](ALGO/crc.md)
 - [Deflate Algorithm](ALGO/deflate.md)
+- [Dynamic Programming Algorithm](ALGO/dynamic_programming.md)
 - [Hash](ALGO/hash.md)
 - [Huffman Code](ALGO/huffman.md)
 - [Linked List](ALGO/link_list.md)

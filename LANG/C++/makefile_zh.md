@@ -1,6 +1,6 @@
 # makefile
 
-
+[TOC]
 
 make是一个自动化构建工具，通过读取“makefile”文件来构建项目。
 

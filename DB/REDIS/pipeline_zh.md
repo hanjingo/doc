@@ -1,13 +1,7 @@
 # redis管道
 
 
-<!-- vim-markdown-toc GFM -->
-
-* [摘要](#摘要)
-* [缺点](#缺点)
-
-<!-- vim-markdown-toc -->
-
+[TOC]
 
 
 ## 摘要
