@@ -1,5 +1,9 @@
 # Portfolio
 
+[TOC]
+
+
+
 This note consolidates capital-allocation principles and optimal-portfolio ideas into a single, practical reference. It explains how investors allocate capital across asset classes, construct efficient portfolios, and manage risk through rebalancing and position sizing. The note emphasizes actionable methods (mean-variance optimization, risk budgeting, practical constraints) and highlights common pitfalls and mitigations.
 
 ## Why allocation and optimal portfolios matter

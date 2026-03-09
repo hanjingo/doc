@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 This note summarizes practical concepts and implementation notes for statistical arbitrage (StatArb). It explains the core idea (exploiting short-term mispricings using statistical relationships), common strategies (pairs trading and mean-reversion spread trading), model building (cointegration, spread modeling, Kalman filters), signal construction, execution considerations, risk management, and backtesting caveats. The content is aimed at a practitioner who wants a compact, actionable reference.
 
 ## What is statistical arbitrage?

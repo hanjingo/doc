@@ -4,176 +4,209 @@
 
 
 
-## Modeling
+## Requirements
 
-### Behavioral Models
+![system_design_requirements](res/system_design_requirements.png)
 
-Behavioral models are models of the dynamic behavior of the system as it is executing. They show what happens or what is supposed to happen when a system responds to a stimulus from its environment. You can think of these stimuli as being of two types:
+### Functional Requirements
 
-1. `Data` Some data arrives that has to be processed by the system.
-2. `Events` Some event happens that triggers system processing. Events may have associated data but this is not always the case.
+Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included into the system as part of the contract.
 
-### Model-driven Architecture
+### Non-Functional Requirements
 
-The MDA(model-driven architecture) method recommends that three types of abstract system models should be produced:
+Non-functional Requirements are the quality constraints that the system must satisfy according to the project contract. The priority or extent to which these factors are implemented varies from one project to another. They are also called non-behavioral requirements. For example: portability, maintainability, reliability, scalability, security, etc.
 
-1. A computation-independent model (CIM) that models the important domain abstractions used in the system.
-2. A platform-independent model (PIM) that models the operation of the system without reference to its implementation.
-3. Platform-specific models (PSM) which are transformations of the platform-independent model, with a separate PSM for each application platform.
+### Extended requirements
 
-![model_driven_arch](res/model_driven_arch.png)
-
-*Multiple platform-specific models*
-
-### Executable UML
-
-To create an executable sub-set of UML, the number of model types has therefore been dramatically reduced to three key model types:
-
-1. Domain models identify the principal concerns in the system. These are defined using UML class diagrams that include objects, attributes, and associations.
-2. Class models, in which classes are defined, along with their attributes and operations.
-3. State models, in which a state diagram is associated with each class and is used to describe the lifecycle of the class.
+These are basically "nice to have" requirements that might be out of the scope of the system.
 
 ---
 
 
 
-## Architectural Design
+## Design
 
-### MVC Pattern
+### SOLID
 
-The MVC pattern is used when there are multiple ways to view and interact with data. Also used when the future requirements for interaction and presentation of data are unknown.
+![solid_principle](res/solid_principle.png)
 
-By separates presentation and interaction from the system data. The system is structured into three logical components that interact with each other. The **Model** component manages the system data and associated operations on that data. The **View** component defines and manages how the data is presented to the user. The **Controller** component manages user interaction (e.g., key presses, mouse clicks, etc) and passes these interactions to the view and the Model.
+- Single-responsibility principle(SRP)
 
-*Notic*:
+  This principle states that "A class should have only one reason to change.", which means a class should have only one job or purpose within the software system."
 
-- MVC pattern allows the data to change independently of its representation and vice versa. Supports presentation of the same data in different ways with changes made in one representation shown in all of them.
-- It can involve additional code and code complexity when the data model and interactions are simple.
+- Open-closed principle(OCP)
 
-### Layered Architecture Pattern
+  This principle states that "Software entities should be open for extension, but closed modification.", which means you should be able to extend a class behavior, without modifying it.
 
-The Layered Architecture pattern is used when building new facilities on top of existing systems; when the development is spread across several teams with each responsibility for a layer of functionality; when there is a requirement for multi-level security.
+- Liskov's Substitution Principle(LSP)
 
-By organizing the system into layers with related functionality associated with each layer. A layer provides services to the layer above it, so the lowest-level layers represent core services that are likely to be used throughout the system.
+  This principle states that "derived or child classes must be able to replace their base or parent classes". This ensures that any subclass can be used in place of its parent class without causing unexpected behavior in the program.
 
-*Notice*:
+- Interface Segregation Principle(ISP)
 
-- Layer Architecture Pattern allows replacement of entire layers so long as the interface is maintained. Redundant facilities (e.g., authentication) can be provided in each layer to increase the dependability of the system.
-- In practice, providing a clean separation between layers is often difficult and a high-level layer may have to interact directly with lower-level layers rather than through the layer immediately below it. Performance can be a problem because of multiple levels of interpretation of a service request as it is processed at each layer.
+  This principle states that "do not force any client to depend on methods which is irrelevant to them".
 
-### Repository Architecture Pattern
+- Dependency Inversion Principle(DIP)
 
-The Repository Architecture Pattern is used when you have a system in which large volumes of information are generated that have to be stored for a long time. You may also use it in data-driven systems where the inclusion of data in the repository triggers an action or tool.
+  This principle states that "High-level modules should not depend on low-level modules. Both should depend on abstractions".
 
-All data in a system is managed in a central repository that is accessible to all system components. Components do not interact directly, only through the repository.
+### DRY
 
-*Notice*:
+![dry_principle](res/dry_principle.png)
 
-- Components can be independent--they do not need to know of the existence of other components. Changes made by one component can be propagated to all components. All data can be managed consistently (e.g., backups done at the same time) as it is all in one place.
-- The repository is a single point of failure, so problems in the repository affect the whole system. May be inefficiencies in organizing all communication through the repository. Distributing the repository across several computers may be difficult.
+### KISS
 
-### Client-Server Architecture
+### YAGNI
 
-The Client-Server Architecture is used when data in a shared database to be accessed from a range of locations. Because servers can be replicated, may be used when the load on a system is variable.
-
-In a client-server architecture, the functionality of the system is organized into services, with each service delivered from a separate server. Clients are users of these services and access servers to make use of them.
-
-*Notice*:
-
-- The principal advantage of this model is that servers can be distributed across a network. General functionality (e.g., a printing service) can be available to all clients and does not need to be implemented by all services.
-- Each service is a single point of failure so susceptible to denial of service attacks or server failure. Performance may be unpredictable because it depends on the network as well as the system. May be management problems if servers are owned by different organizations.
-
-### Pipe And Filter Architecture
-
-The Pipe And Filter Architecture Pattern is commonly used in data processing applications (both batch- and transaction-based) where inputs are processed in separate stages to generate related outputs.
-
-The processing of the data in a system is organized so that each processing component (filter) is discrete and carries out one type of data transformation. The data follows (as in a pipe) from one component to another for processing.
-
-*Notice*:
-
-- The Pipe And Filter Architecture is easy to understand and supports transformation reuse.  Workflow style matches the structure of many business processes. Evolution by adding transformations is straightforward. Can be implemented as either a sequential or concurrent system.
-- The format for data transfer has to be agreed upon between communicating transformations. Each transformation must parse its input and unparse its output tp the agreed form. This increases system overhead and may mean that it is impossible to reuse functional transformations that use incompatible data structures.
+![yagni_principle](res/yagni_principle.png)
 
 ---
 
 
 
-## Embedded System Design
+## High Level Design(HLD) and Low Level Design(LLD)
 
-As well as the need for real-time response, there are other important differences between embedded systems and other types of software systems:
+System design involves creating both a High-Level Design(HLD), which is like a roadmap showing the overall plan, and a Low-Level Design(LLD), which is a detailed guide for programmers on how to build each part.
 
-1. Embedded systems generally run continuously and do not terminate.
-2. Interactions with the system's environment are uncontrollable and unpredictable.
-3. There may be physical limitations that affect the design of a system.
-4. Direct hardware interaction may be necessary.
-5. Issues of safety and reliability may dominate the system design.
+![hld_lld](res/hld_lld.png)
 
-There is no standard embedded system design process. Rather, different processes are used that depend on the type of system, available hardware, and the organization that is developing the system. The following activities may be included in a real-time software design process:
+### High Level Design(HLD)
 
-1. Platform selection.
-2. Stimuli/response identification.
-3. Timing analysis.
-4. Process design.
-5. Algorithm design.
-6. Data design.
-7. Process scheduling.
+High Level Design(HLD) is an initial step in the development of applications where the overall structure of a system is planned.
 
-### Real-time operating systems
+A diagram representing each design aspect is include in the HLD (which is based on business requirements and anticipated results):
 
-![real_time_os](res/real_time_os.png)
+- It contains description of hardware, software interfaces, and also user interfaces;
+- It is also known as macro level/system, design;
+- It is created by solution architect;
+- The workflow of the user's typical process is detailed in the HLD, along with performance specifications.
 
-*Components of a real-time operating system*
+#### Components
 
-For all except the simplest systems, they usually include:
+Below are the main components of high-level design:
 
-1. A real-time clock, which provides the information required to schedule processes periodically.
-2. An interrupt handler, which manages aperiodic requests for service.
-3. A scheduler, which is responsible for examining the processes that can be executed and choosing one of these for execution.
-4. A resource manager, which allocates appropriate memory and processor resources to processes that have been scheduled for execution.
-5. A dispatcher, which is responsible for starting the execution of processes.
+- System Architecture;
+- Modules and Components;
+- Data Flow Diagrams(DFDs);
+- Interface Design;
+- Technology Stack;
+- Deployment Architecture.
 
-![embedded_real_time_system](res/embedded_real_time_system.png)
+#### Roadmap
 
-*A general model of an embedded real-time system*
+![hld_roadmap](res/hld_roadmap.png)
 
-![sensor_actuator_proc](res/sensor_actuator_proc.png)
+1. Capacity Estimation
 
-*Sensor and actuator processes*
+   ![behaviour_of_server](res/behaviour_of_server.png)
 
-The RTOS has to be able to manage at least two priority levels for system processes:
+   Capacity estimation in system design involves predicting the resources required to meet the expected workload. It ensures that a system can handle current and future demands efficiently, helping in the proper allocation of resources and preventing performance bootlenecks.
 
-1. `Interrupt level` This is teh highest priority level. It is allocated to processes that need a very fast response. One of these processes will be the real-time clock process.
-2. `Clock level` This level of prioroty is allocated to periodic processes.
+2. HTTP and HTTPS and Their Methods
 
-![rtos_action](res/rtos_action.png)
+   ![http_connection](res/http_connection.png)
 
-*RTOS actions required to start a process*
+3. Web Sockets
 
-There are two commonly used scheduling strategies:
+   ![ws_connection](res/ws_connection.png)
 
-1. `Non-pre-emptive scheduling` Once a process has been scheduled for execution it runs to completion or until it is blocked for some reason, such as waiting for input.
-2. `pre-emptive scheduling` The execution of an executing process may be stopped if a higher-priority process requires service.
+4. Pooling
 
-Stimuli fall into two classes:
+   ![short_polling_vs_long_polling](res/short_polling_vs_long_polling.png)
 
-1. `Periodic stimuli:` These occur at predictable time intervals.
-2. `Aperiodic stimuli:` These occur irregularly and unpredictably and are usually signaled using the computer's interrupt mechanism.
+5. Server-Sent Events(SSE)
 
-### Architectural patterns
+   ![server_sent_event](res/server_sent_event.png)
 
-Three real-time architectural patterns that are commonly used:
+6. Filtering and logging
 
-1. Observe and React.
-2. Environmental Control.
-3. Process Pipeline.
+7. Rate Limiting
 
-### Timing analysis
+   ![rate_limiting](res/rate_limiting.png)
 
-When you are analyzing the timing requirements of embedded real-time systems and designing systems to meet these requirements, there are three key factors that you have to consider:
+8. Resiliency
 
-1. Deadlines.
-2. Frequency.
-3. Execution time.
+9. Paging
+
+   ![paging_and_filtering_data](res/paging_and_filtering_data.png)
+
+10. Logging
+
+### Low Level Design(LLD)
+
+Low-Level Design(LLD) plays a crucial role in software development, transforming high-level abstract concepts into detailed, actionable components that developers can use to build the system.
+
+LLD is a phase in the software development process where detailed system components and their interactions are specified:
+
+- It describes detailed description of each and every module means it includes actual logic for every system component and it goes deep into each modules specification.
+- It is also known as micro level/detailed design.
+- It is created by designers and developers.
+- It involves converting the high-level design into a more detailed blueprint, addressing specific algorithms, data structures, and interfaces.
+- LLD serves as a guide for developers during coding, ensuring the accurate and efficient implementation of the system's functionality.
+
+#### Roadmap
+
+![low_level_design_roadmap](res/low_level_design_roadmap.png)
+
+1. Understanding Object-Oriented Principles
+
+   The user requirement is processed by using concepts of OOPS programming. OOP concepts serve as the foundation for LLD, and having a deep understanding of them will help you design maintainable and scalable software components.
+
+2. Analyzing and Designing Components
+
+   LLD requires you to analyze real-world problems and break then down into object-world problems using OOP concepts.
+
+3. Implementing Design Patterns
+
+   Design patterns are reusable solutions to common problems encountered in software design. They provide a structured approach to design by capturing best practices and proven solutions, making it easier to develop scalable, maintainable, and efficient software. By using these patterns, developers can solve problems more effectively while adhering to best practices.
+
+4. Use of UML Diagram in LLD
+
+   Unified Modeling Language(UML) diagrams play an important role in converting HLD to LLD. They provide a proper and clear visual representation of the components and their relationships, which helps developers significantly.
+
+5. Implementing SOLID Principles
+
+---
+
+
+
+## API Design
+
+![api_design_flow](res/api_design_flow.png)
+
+---
+
+
+
+## System Design Workflows
+
+Steps to crack system design:
+
+1. Understand the goal and gather all the requirements;
+
+   Asking questions about the exact scope of the problem, and clarifying functional requirements early in the interview is essential.
+
+2. Understand the estimation and constraints;
+
+   Estimate the scale of the system we're going to design. Focus on the system's expected scale (like user volume and request rates) and practical limits (like latency and budget). 
+
+3. High-level component design;
+
+   Identify system components that are needed to solve our problem and draft the first design of our system and outline the flow of data between them. This gives an organized view of the system's architecture and sets up a foundation for further detailed design.
+
+4. Define the Data Model / Database Design
+
+   Doing so would help us to understand the data flow which is the core of every system. In this step, we basically define all the entities and relationships between them.
+
+5. API design
+
+   These APIs will help us define the expectations from the system explicitly. We don't have to write any code, just a simple interface defining the API requirements such as parameters, functions, classes, types, entities, etc.
+
+6. Detailed design
+
+   Now it's time to go into detail about the major components of the system we designed.
+
+7. Identify and resolve bottlenecks.
 
 ---
 
@@ -182,3 +215,11 @@ When you are analyzing the timing requirements of embedded real-time systems and
 ## Reference
 
 [1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+
+[2] [Cracking the System Design Interview Round](https://www.geeksforgeeks.org/system-design/how-to-crack-system-design-round-in-interviews/)
+
+[3] [Difference between High Level Design(HLD) and Low Level Design(LLD)](https://www.geeksforgeeks.org/system-design/difference-between-high-level-design-and-low-level-design/)
+
+[4] [Data Modeling in System Design](https://www.geeksforgeeks.org/system-design/data-modeling-in-system-design/)
+
+[5] [What is Low Level Design or LLD?](https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/)

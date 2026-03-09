@@ -1,5 +1,9 @@
 # Market Making
 
+[TOC]
+
+
+
 This note summarizes practical concepts for market making: the role of market makers, components of the bid-ask spread, inventory and adverse-selection risk, quoting strategies, simple modeling approaches, execution considerations (latency, fees, slippage), monitoring metrics, and a short toy simulation example. The goal is a concise practitioner reference that complements the broader INVESTMENTS notes.
 
 ## What is market making?
@@ -130,7 +134,3 @@ Extend this snippet with inventory-skewing, fee models, and more realistic fill 
 - Avellaneda, Marco & Stoikov (2008) — High-frequency market-making
 - Cartea, Jaimungal & Penalva — Algorithmic and High-Frequency Trading (market microstructure chapters)
 - Papers and blog posts on queue dynamics, limit order book simulation, and empirical studies of spread and liquidity.
-
----
-
-If you want, I can: (1) add a small Avellaneda–Stoikov worked derivation with formulae, (2) expand the simulation into a Jupyter notebook with parameterized experiments and fee models, or (3) insert practical production notes on order router design and exchange connectivity. Tell me which next step you prefer and I will follow the same todo → edit → verify workflow.

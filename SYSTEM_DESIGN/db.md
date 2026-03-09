@@ -1,103 +1,208 @@
-[中文版](db_zh.md) | English
+[Chinese](db_zh.md) | English
 
 # Database Design
 
 [TOC]
 
-This note summarizes practical principles for designing and operating relational and analytical databases. It covers schema design and normalization, common system architectures, data partitioning strategies for scale-out systems, distributed database types and trade-offs, and an introduction to data warehousing and OLAP design. Diagrams under `res/` illustrate the architectures.
 
-## Relational schema design
 
-Good schema design starts with modeling entities and relationships, identifying keys and functional dependencies (FDs), and normalizing to reduce redundancy and anomalies.
+## CAP Theorem In Database Designing
 
-Important rules for reasoning about functional dependencies:
+### CP Database
 
-- Reflexivity: if β ⊆ α then α → β.
-- Augmentation: if α → β then αγ → βγ for any attribute set γ.
-- Transitivity: if α → β and β → γ then α → γ.
+A CP database prioritizes Consistency and Partition Tolerance from the CAP theorem, it sacrifices Availability, meaning the system might not respond during network issues to maintain data accuracy.
 
-From FDs you can derive candidate keys and reason about normalization. Normal forms reduce update anomalies:
+### AP Database
 
-- 1NF (atomicity)
-- 2NF (no partial dependency on a composite key)
-- 3NF (no transitive dependency on a key)
-- BCNF (every nontrivial FD has a superkey on the left)
+An AP database is a type of database that prioritizes Availability and Partition Tolerance from the CAP theorem, it sacrifices Consistency, meaning different nodes might have slightly different data from a short time.
 
-Normalization trades redundancy for more joins; in practice OLTP schemas are usually normalized while OLAP schemas are denormalized for read performance.
+### CA Database
 
-Schema design steps (recommended):
+A CA database is a type of database that prioritizes Consistency and Availability from the CAP theorem, it sacrifices Partition Tolerance meaning that if there is a network issue, the database might stop functioning rather than returning inconsistent or unavailable data.
 
-1. Elicit requirements and draw an ER model.
-2. List attributes and candidate keys; infer functional dependencies.
-3. Normalize to the desired normal form, then consider denormalization where justified by performance.
-4. Add indexes, constraints, and physical design choices (partitioning, clustering) to match workload characteristics.
+---
 
-## System architectures
 
-Architectural choices affect scalability, fault tolerance, and operational complexity:
 
-- Client–server: single DB server or cluster accessed by clients; simple but may become a bottleneck.
-- Shared-disk: multiple server instances access the same storage (SAN); requires coordination to keep caches coherent.
-- Shared-nothing: each node owns its storage and processes a partition of the data; this model scales well horizontally and is common in parallel DBMS and distributed stores.
+## Types
 
-Refer to `res/center_computer_system.png`, `res/cs_system.png`, and `res/paral_db_arch.png` for illustrations.
+Types of Databases in System Design:
 
-## Data partitioning strategies
+- Relational Databases
+- NoSQL Databases
+- NewSQL Databases
+- Time-Series Databases
+- Object-Oriented Databases
 
-Partitioning (sharding) is a primary technique for scaling databases. Common strategies include:
+### Relational VS Non-Relational Databases
 
-- Round-robin: scatter tuples cyclically across nodes/disks. It balances raw storage and sequential I/O but destroys locality (poor for range queries and colocated joins).
-- Hash partitioning: hash on one or more attributes to determine the home partition. Hashing balances load and is ideal for equality joins on the partition key because matching tuples appear on the same node.
-- Range partitioning: assign contiguous key ranges to partitions. Range partitioning preserves ordering and supports efficient range scans but requires careful split-point selection to avoid hotspots.
+Here are a few key factors to consider when choosing the right database:
 
-Other considerations:
+| Factor                          | Relational Databases                                         | Non-Relational Databases                                     |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Data Structure                  | If your data is structured, and you need to handle complex relationships. | If your data is unstructured or semi-structured.             |
+| Scalability Needs               | Typically scale vertically(adding more power to a single server). | Of ten scale horizontally(adding more servers to distribute the load). |
+| Consistency VS Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
+| Transaction Support             | If you need ACID properties(Atomicity, Consistency, Isolation, Durability) for transaction. | If your system can work without strict transaction guarantees. |
+| Development Speed & Flexibility | If you need a stable, structured design.                     | If your project evolve rapidly or need to handle changing types of data. |
 
-- Replication: copy data to multiple nodes for read scaling and fault tolerance. Synchronous replication preserves strong consistency but adds latency; asynchronous replication favors availability.
-- Composite/hybrid partitioning: combine hash and range partitioning (subpartitioning) to exploit multiple access patterns.
-- Skew mitigation: monitor and rebalance partitions, use adaptive hashing or hotspot offloading to handle skewed workloads.
+---
 
-## Distributed database models and consistency
 
-Distributed databases span multiple sites and must trade off consistency, availability, and partition tolerance (CAP theorem). Two common setups:
 
-- Homogeneous distributed DB: all sites run the same DBMS and share a global schema and coordination protocol. Easier coordination and uniform tooling.
-- Heterogeneous/federated DB: sites may run different systems and schemas; middleware performs schema translation and query federation.
+## Data Sharding And Partitioning
 
-Transaction and consistency approaches:
+### Data Sharding
 
-- Two-phase commit (2PC): provides atomic commit for distributed transactions but can block during coordinator failures.
-- Consensus-based replication (Paxos/Raft): builds highly-available replicated state machines and supports leader-based replication.
-- Eventual consistency / BASE: relax strong consistency for higher availability and lower latency (common in many NoSQL systems).
+![data_sharding](res/data_sharding.png)
 
-Choose the appropriate consistency and replication strategy based on application semantics (financial transactions need serializability; user-facing caches may tolerate weaker guarantees).
+Database Sharding is especially useful when a database becomes too large to fit on a single machine or when the traffic load is too high for one server to handle. It helps distribute the load across multiple server.
 
-## Data warehouse and OLAP design
+#### Key Based Sharding
 
-Data warehouses centralize historical data for analytics. Typical characteristics:
+![key_based_sharding](res/key_based_sharding.png)
 
-- ETL: Extract, Transform, Load pipelines ingest and clean data from transactional sources.
-- Schema patterns: star schema (fact table + dimension tables) and snowflake schema (normalized dimensions). Star schemas are common for reporting because they simplify queries.
-- Columnar storage, compression, and vectorized execution: common optimizations for scan-heavy analytic workloads.
-- Materialized views and pre-aggregations: speed up frequent queries at the cost of maintenance overhead.
+Key-Based Sharding uses a hash function on a shard key. The generated hash value decides which shard will store the data.
 
-See `res/data_warehouse_arch.png` for an architecture diagram.
+Advantages:
 
-## Physical design and operational considerations
+- Key-based sharding assigns each key to a specific shard, ensuring uniform and consistent data distribution.
+- It can be optimized to efficiently handle queries over consecutive key ranges.
 
-- Index selection: choose B-tree, hash, bitmap, or inverted indexes depending on query patterns and cardinality.
-- Partitioning and locality: align partitions with typical query predicates and geographic requirements.
-- Isolation levels: choose between read committed, repeatable read, and serializable based on correctness and performance needs.
-- Backups and recovery: design backup frequency, retention, and point-in-time recovery capability.
+Disadvantages:
 
-## Practical checklist for database design
+- Uneven data distribution can occur if the sharding key isn't well-distributed.
+- Scalability may be limited when certain keys receive heavy traffic or data is skewed.
+- Choosing the right sharding key is crucial for effective sharding.
 
-1. Model entities and relationships (ER).
-2. Identify candidate keys and functional dependencies.
-3. Normalize to the desired normal form; consider selective denormalization for performance.
-4. Select partitioning/sharding and replication strategies aligned with workload and availability goals.
-5. Design indexes and access paths for critical queries.
-6. Plan monitoring, backup, and operational procedures.
+#### Horizontal or Range Based Sharding
+
+![range_based_sharding](res/range_based_sharding.png)
+
+In Horizontal or Range Based Sharding, we divide the data by separating it into different parts based on the range of a specific value within each record.
+
+Advantages:
+
+- Scalability: Horizontal or range-based sharding allows for seamless scalability by distributing data across multiple shards, accommodating growing datasets.
+- Improved Performance: Data distribution among shards enhances query performance through parallelization, ensuring faster operations with smaller subsets of data handled by each shard.
+
+Disadvantages:
+
+- Complex Querying Across Shards: Coordinating queries involving multiple shards can be challenging.
+- Uneven Data Distribution: Poorly managed data distribution may lead to uneven workloads among shards.
+
+#### Vertical Sharding
+
+![vertical_sharding](res/vertical_sharding.png)
+
+In Vertical Sharding, we split the entire column from the table and we put those columns into new distinct tables. Data is totally independent of one partition to the other ones. Also, each partition holds both distinct rows and columns. We can split different features of an entity in different shards on different machines.
+
+Advantages:
+
+- Query Performance: Vertical sharding can improve query performance by allowing each shard to focus on a specific subset of columns. This specialization enhances the efficiency of queries that involve only a subset of the available columns.
+- Simplified Queries: Queries that require a specific set of columns can be simplified, as they only need to interact with the shard containing the relevant columns.
+
+Disadvantages:
+
+- Potential for Hotspots: Certain shards may become hotspots if they contain highly accessed columns, leading to uneven distribution of workloads.
+- Challenges in Schema Changes: Making changes to the schema, such as adding or removing columns, may be more challenging in a vertically sharded system. Changes can impact multiple shards and require careful coordination.
+
+#### Directory-Based Sharding
+
+![directory_based_sharding](res/directory_based_sharding.png)
+
+In Directory-Based Sharding, we create and maintain a lookup service or lookup table for the original database. Basically we use a shard key for lookup table and we do mapping for each entity that exists in the database. This way we keep track of which database shards hold which data.
+
+Advantages:
+
+- Flexible Data Distribution: Directory-based sharding allows for flexible data distribution, where the central directory can dynamically manage and update the mapping of data to shard locations.
+- Efficient Query Routing: Queries can be efficiently routed to the appropriate shard using the information stored in the directory. This results in improved query performance.
+- Dynamic Scalability: The system can dynamically scale by adding or removing shards without requiring changes to the application logic.
+
+Disadvantages:
+
+- Centralized Point of Failure: The central directory represents a single point of failure. If the directory becomes unavailable or experiences issues, it can disrupt the entire system, impacting data access and query routing.
+- Increased Latency: Query routing through a central directory introduces an additional layer, potentially leading to increased latency compared to other sharding strategies.
+
+### Data Partitioning
+
+Partitioning helps improve query performance by limiting the amount of data the system has to process for specific queries. It also makes it easier to manage large datasets.
+
+---
+
+
+
+## Database Replication
+
+Database replication in system design means creating and maintaining multiple copies of the same database on different servers. If one database server fails, another replica can continue serving requests, ensuring the system stays online.
+
+Database replication is important for several reasons:
+
+- High Availability
+- Disaster Recovery
+- Load Balancer/Load Balancing
+- Fault Tolerance
+- Scalability
+- Data Locality
+
+### Working of Database Replication
+
+Here are the steps explaining how database replication works:
+
+![working_of_database_replication](res/working_of_database_replication.png)
+
+1. Identify the Primary Database(Source);
+2. Set up Replica Databases(Targets);
+3. Data changes captured;
+4. Transmit changes to replicas;
+5. Apply changes on replicas;
+6. Monitor and maintain synchronization;
+7. Read or write operations.
+
+### Types of Database Replication
+
+![types_of_database_replication](res/types_of_database_replication.png)
+
+- Master-Slave Replication
+- Master-Master Replication/Multi-Master Replication
+- Snapshot Replication
+- Transactional Replication
+- Merge Replication
+
+### Strategies for Database Replication
+
+Some common database replication strategies include the following:
+
+- Full Replication
+- Partial Replication
+- Selective Replication
+- Sharding
+- Hybrid Replication
+
+### Configurations of Database Replication
+
+To accomplish particular objectives related to data consistency, availability, and performance, database replication can be set up and run in a variety of ways:
+
+- Synchronous Replication Configuration
+- Asynchronous Replication Configuration
+- Semi-synchronous Replication Configuration
+
+---
+
+
+
+## Database Normalization And Denormalization
+
+TODO
+
+---
+
+
 
 ## References
 
-- Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts, 6th Edition.
+[1] [Database Replication in System Design](https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/)
+
+[2] [Introduction to Database Normalization](https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/)
+
+[3] [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)

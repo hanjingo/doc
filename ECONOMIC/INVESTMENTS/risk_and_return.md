@@ -1,4 +1,8 @@
-# Risk and Return — Overview
+# Risk and Return
+
+[TOC]
+
+
 
 This note summarizes the core concepts linking risk and return in investments, explains common measures, and outlines how these ideas apply when building and evaluating portfolios. It is written for readers who know basic statistics (mean, variance, covariance) and want a concise, practical reference.
 

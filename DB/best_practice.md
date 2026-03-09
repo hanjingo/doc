@@ -11,6 +11,8 @@ There are two main measures of performance of a database system:
 1. `throughput`. The number of tasks that can be completed in a given time interval.
 2. `response time`. The amount of time it takes to complete a single task from the time it is submitted.
 
+---
+
 
 
 ## Indices
@@ -19,6 +21,8 @@ There are two basic kinds of indices:
 
 - Ordered indices. Based on a sorted ordering of the values.
 - Hash indices. Based on a uniform distribution of values across a range of buckets. The bucket to which a value is assigned is determined by a function, called a `hash function`.
+
+---
 
 
 
@@ -183,6 +187,8 @@ Optimized Example:
 SELECT col FROM tbl1 UNION ALL SELECT col FROM tbl2;
 ```
 
+---
+
 
 
 ## Partitioning
@@ -287,9 +293,23 @@ There are some data-partitioning strategies:
 - Ensure that your partitioning scheme can scale seamlessly as your data volume increases;
 - Reevaluate and adjust your partitioning strategy periodically to accommodate changes in data patterns and business requirements.
 
+---
+
+
+
+## Cluster
+
+TODO
+
+---
+
 
 
 ## Safety
+
+### Logging
+
+TODO
 
 ### Parameterized Query
 

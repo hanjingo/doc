@@ -1,5 +1,9 @@
 # Investment Income Analysis
 
+[TOC]
+
+
+
 ## Introduction
 
 Investment income analysis is a fundamental cornerstone of financial mathematics, providing essential tools and methodologies for evaluating the profitability and viability of investment opportunities. In an increasingly complex financial landscape, the ability to accurately assess and compare different investment options has become crucial for both individual and institutional investors. This analysis encompasses various quantitative techniques that help investors make informed decisions by measuring potential returns, assessing risks, and optimizing resource allocation.

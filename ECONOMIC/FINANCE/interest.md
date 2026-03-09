@@ -1,6 +1,8 @@
-# Interest — Practical Reference
+# Interest
 
 [TOC]
+
+
 
 This note summarizes the core concepts and practical formulas for interest and discounting used across finance: simple and compound interest, effective and nominal rates, continuous compounding, present and future value, discount factors, yield measures (spot, forward, and yield-to-maturity), and a short discussion of the term structure and bootstrapping. Examples and brief numerical calculations are included to illustrate the mechanics.
 
@@ -29,6 +31,8 @@ Effective annual rate (EAR): the actual annual growth rate with compounding:
 
 As $m\to\infty$ (continuous compounding) the limit is $e^{r} - 1$ when $r$ is the continuously compounded annual rate.
 
+
+
 ## Continuous compounding
 
 With continuous compounding at rate $r$ (annual),
@@ -41,6 +45,8 @@ and the present value is
 
 Continuous compounding simplifies many analytical formulas and is commonly used in mathematical finance.
 
+
+
 ## Discounting and present value
 
 Discounting converts future cash flows into present value using an appropriate discount rate. For discrete compounding,
@@ -52,6 +58,8 @@ and for continuous compounding,
   $PV = FV\,e^{-r t}$.
 
 Discount factors are often written as $DF(t) = e^{-r(t) t}$ (continuous) or $DF(t) = (1 + r_p)^{-n}$ (discrete). Many pricing models express cash flows multiplied by discount factors to compute present value.
+
+
 
 ## Yields and rates: spot, forward, and yield-to-maturity (YTM)
 
@@ -66,6 +74,8 @@ Discount factors are often written as $DF(t) = e^{-r(t) t}$ (continuous) or $DF(
 
 When markets quote yields they may use different conventions (ACT/360, ACT/365, semiannual compounding, etc.), so always confirm the convention when comparing rates.
 
+
+
 ## Term structure and bootstrapping
 
 The term structure (yield curve) displays spot rates $r(0,t)$ across maturities. Bootstrapping constructs spot rates from observed market prices of coupon bonds by solving for zero rates that match prices sequentially from short to long maturities.
@@ -74,12 +84,16 @@ Key practical points:
 - Short-term rates are often set by money market instruments (deposits, FRAs, T-bills).
 - Longer-term zero rates can be bootstrapped from coupon-bearing bond prices or swap rates.
 
+
+
 ## Converting between conventions
 
 - From continuously compounded rate $r_c$ to effective rate over period $t$: $1 + r_{eff} = e^{r_c t}$.
 - From nominal rate $r_{nom}$ with $m$ compounding to continuous rate $r_c$: $r_c = m \ln\left(1 + \frac{r_{nom}}{m}\right)$.
 
 Always be explicit about compounding frequency when reporting or using rates.
+
+
 
 ## Simple numerical examples
 
@@ -97,6 +111,8 @@ Always be explicit about compounding frequency when reporting or using rates.
 
    $PV = 1000 e^{-0.04 \times 3} \approx 1000 \times 0.88692 = 886.92$.
 
+
+
 ## Applications and practical notes
 
 - Bond pricing: discount each coupon and principal by appropriate zero rates and sum.
@@ -104,11 +120,15 @@ Always be explicit about compounding frequency when reporting or using rates.
 - Risk management: small changes in rates (DV01, duration) measure sensitivity of PV to yield shifts.
 - Rate conventions: money-market instruments may use ACT/360, bonds ACT/365 or ACT/365F, swaps often use ACT/360 for money market leg — confirm convention before computing.
 
+
+
 ## Common mistakes to avoid
 
 - Mixing compounding conventions (comparing a nominal semiannual quote to a continuously compounded rate directly).
 - Forgetting day-count conventions that affect accrual and interest amounts.
 - Imprecise quoting: ensure whether quoted rates are nominal or effective and the compounding frequency.
+
+
 
 ## Further reading
 

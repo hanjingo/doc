@@ -67,10 +67,27 @@
 
 ## [Economic](ECONOMIC/README.md)
 
-- [Finance Model](ECONOMIC/finance.md)
-- [High Frequency Trading](ECONOMIC/hft.md)
-- [Economic Terminology](ECONOMIC/terminology.md)
-- [Ten Principles](ECONOMIC/10principles.md)
+### [Finance](ECONOMIC/FINANCE/README.md)
+
+- [Annuity](ECONOMIC/FINANCE/annuity.md)
+- [Interest](ECONOMIC/FINANCE/interest.md)
+- [Investment Income Analysis](ECONOMIC/FINANCE/investment_income_analysis.md)
+- [Principal-Interest Separation Techniques](ECONOMIC/FINANCE/principal_interest_separation_tech.md)
+- [Stochastic Models in Finance](ECONOMIC/FINANCE/stochastic_model.md)
+
+### [High Frequency Trading](ECONOMIC/HFT/README.md)
+
+- [High Frequency Trading Summary](ECONOMIC/HFT/summary.md)
+- [HFT Hardware](ECONOMIC/HFT/hardware.md)
+
+### [Investments](ECONOMIC/INVESTMENTS/README.md)
+
+- [Investment Instruments](ECONOMIC/INVESTMENTS/instruments.md)
+- [Market Making](ECONOMIC/INVESTMENTS/market_making.md)
+- [Portfolio](ECONOMIC/INVESTMENTS/portfolio.md)
+- [Risk and Return](ECONOMIC/INVESTMENTS/risk_and_return.md)
+- [Securities](ECONOMIC/INVESTMENTS/security.md)
+- [Statistical Arbitrage (StatArb)](ECONOMIC/INVESTMENTS/statistical_arbitrage.md)
 
 ---
 
@@ -200,7 +217,6 @@
 - [Database Design](SYSTEM_DESIGN/db.md)
 - [Distributed System Design](SYSTEM_DESIGN/dcs.md)
 - [File Sharing Service Design](SYSTEM_DESIGN/file_sharing_service.md)
-- [High Frequency Trading System Design](SYSTEM_DESIGN/hft.md)
 - [System Dependability](SYSTEM_DESIGN/system_dependability.md)
 - [Universally Unique Identifier](SYSTEM_DESIGN/uuid.md)
 

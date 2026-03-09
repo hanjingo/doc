@@ -1,5 +1,9 @@
 # Stochastic Models in Finance
 
+[TOC]
+
+
+
 ## Introduction
 
 Stochastic models are fundamental tools in modern financial mathematics, enabling the modeling and analysis of uncertainty in interest rates, asset prices, and investment returns. By treating key financial variables as random processes, these models provide a rigorous framework for pricing, risk management, and strategic decision-making in uncertain environments. This document summarizes the main stochastic models used in finance, including random interest rate models, the Capital Asset Pricing Model (CAPM), and option pricing models.

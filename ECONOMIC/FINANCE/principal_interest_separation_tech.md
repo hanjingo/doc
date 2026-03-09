@@ -1,5 +1,9 @@
 # Principal-Interest Separation Techniques
 
+[TOC]
+
+
+
 ## Introduction
 
 Principal-interest separation techniques form a crucial component of loan analysis and debt management in financial mathematics. These methodologies provide systematic approaches for decomposing loan payments into their constituent parts: the portion that pays interest on outstanding debt and the portion that reduces the principal balance. Understanding these separation techniques is essential for borrowers, lenders, and financial analysts who need to evaluate loan structures, compare financing alternatives, and manage cash flows effectively.

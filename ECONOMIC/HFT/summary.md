@@ -1,6 +1,6 @@
-[中文版](hft_zh.md) | English
+[中文版] | English
 
-# High Frequency Trading
+# High Frequency Trading Summary
 
 [TOC]
 

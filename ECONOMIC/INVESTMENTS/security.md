@@ -1,6 +1,8 @@
-# Securities — Overview
+# Securities
 
 [TOC]
+
+
 
 This note summarizes financial securities: what they are, common types, how they trade and are valued, the risks they carry, and key market infrastructure. It condenses material from the `INVESTMENTS` notes into a practical reference for students and practitioners.
 

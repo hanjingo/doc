@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 This note summarizes common financial instruments, their characteristics, risks, and typical uses. It condenses material from the INVESTMENTS notes into a practical reference for students and practitioners.
 
 ## Quick orientation
@@ -233,8 +235,4 @@ Key metrics and concepts:
 
 - See the `INVESTMENTS` notes in `c:\work\doc\NOTE\INVESTMENTS` for chapter-level depth on valuation, portfolio theory, and financial markets.
 - Standard textbooks: Bodie, Kane, and Marcus; John C. Hull (derivatives); Fabozzi (fixed income).
-
----
-
-If you want, I can expand any section into a full chapter (e.g., bond valuation and duration, options basics and payoff diagrams, ETF vs mutual fund comparison) or add short worked examples and simple code snippets for basic valuation formulas.
 
