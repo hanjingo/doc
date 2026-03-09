@@ -182,14 +182,6 @@
 
 
 
-## [Others](OTHERS/README.md)
-
-- [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
-
----
-
-
-
 ## [Project](PROJ/README.md)
 
 - [Design Pattern](PROJ/design_pattern.md)
@@ -198,12 +190,24 @@
 
 - [ROS Environment](PROJ/ROS/env.md)
 
-### [System Design](PROJ/SYSTEM_DESIGN/README.md)
+---
 
-- [System Design Summary](PROJ/SYSTEM_DESIGN/summary.md)
-- [Database Design](PROJ/SYSTEM_DESIGN/db.md)
-- [Distributed System Design](PROJ/SYSTEM_DESIGN/dcs.md)
-- [File Sharing Service Design](PROJ/SYSTEM_DESIGN/file_sharing_service.md)
-- [High Frequency Trading System Design](PROJ/SYSTEM_DESIGN/hft.md)
-- [System Dependability](PROJ/SYSTEM_DESIGN/system_dependability.md)
-- [Universally Unique Identifier](PROJ/SYSTEM_DESIGN/uuid.md)
+
+
+## [System Design](SYSTEM_DESIGN/README.md)
+
+- [System Design Summary](SYSTEM_DESIGN/summary.md)
+- [Database Design](SYSTEM_DESIGN/db.md)
+- [Distributed System Design](SYSTEM_DESIGN/dcs.md)
+- [File Sharing Service Design](SYSTEM_DESIGN/file_sharing_service.md)
+- [High Frequency Trading System Design](SYSTEM_DESIGN/hft.md)
+- [System Dependability](SYSTEM_DESIGN/system_dependability.md)
+- [Universally Unique Identifier](SYSTEM_DESIGN/uuid.md)
+
+---
+
+
+
+## [Others](OTHERS/README.md)
+
+- [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)

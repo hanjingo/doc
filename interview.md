@@ -326,6 +326,12 @@ For more info, see: [SQL Language#Relational Model](DB/relational_model.md)
 
 `UNION ALL` keeps duplicates and usually runs faster because it simply appends result sets.
 
+#### What are indexes, and why are they used?
+
+Indexes are database objects that improve query performance by allowing faster retrieval of rows. They function like a book's index, making it quicker to find specific data without scanning the entire table. However, indexes require additional storage and can slightly slow down data modification operations.
+
+For more info, see: [SQL Language#Indexes](DB/sql.md)
+
 #### How do clustered and non‑clustered indexes differ?
 
 A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
@@ -369,6 +375,75 @@ A foreign key (FK) is a column (or set of columns) in a child table taht referen
 #### Describe set operations like UNION, INTERSECT and EXCEPT and when each is useful.
 
 `UNION`, `INTERSECT`, and `EXCEPT` are SQL set operations that combine results from two queries with the same number of columns and compatible data types. `UNION` returns the distinct union of both result sets (removes duplicates).
+
+#### What is a query in SQL?
+
+A query is a SQL statement used to retrieve, update, or manipulate data in a database. The most common type of query is a `SELECT` statement, which fetches data from one or more tables based on specified conditons.
+
+For more info, see: [DB Query](DB/query.md)
+
+#### What is a subquery?
+
+A subquery is a query nested within another query. It is often used in the `WHERE` clause to filter data based on the results of another query, making it easier to handle complex conditons.
+
+For more info, see: [DB Query](DB/query.md)
+
+#### How would you optimize a slow query?
+
+1. measure: reproduce the issue, capture timings, and run `EXPLAIN/EXPLAIN ANALYZE` to see teh plan, row estimates, and bottlenecks;
+2. fix fundamentals: ensure current statistics, right indexes;
+3. sargable predicates: avoid functions on columns, leading `%` wildcards, or expressions that prevent;
+4. Reduce data early with selective `WHERE` filters, fetch only needed columns (no `SELECT *`), and prefer `EXISTS` over `IN` for semi-joins;
+5. Tame row explosion by checking `JOIN` selectivity, deduplicating before joins, and pre-aggregating where helpful;
+6. Rewrite problematic patterns: split wide ORs into `UNION ALL`, replace correlated subqueries with joins, consider window functions carefully;
+7. For large sets, use keyset pagination (seek method) instead of `OFFSET`, and consider materialized views, caching, or partitioning for heavy, recurring analytics.
+
+For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
+
+#### What are the main types of SQL commands?
+
+SQL commands are broadly classified into:
+
+- DDL(Data Definition Language)
+- DML(Data Manipulation Language)
+- DCL(Data Control Language)
+- TCL(Transaction Control Language)
+
+#### What is the purpose of the DEFAULT constraint?
+
+The `DEFAULT` constraint assigns a default value to a column when no value is provided during an `INSERT` operation. This helps maintain consistent data and simplifies data entry.
+
+#### What is the purpose of the GROUP BY clause?
+
+The `GROUP BY` clause is used to ararnge identical data into groups. It is typically used with aggregate functions to perform calculations on each group rather than on the entire dataset.
+
+#### What are aggregate functions in SQL?
+
+Aggregate functions perform calculations on a set of values and return a single value.
+
+#### What is the difference between DELETE and TRUNCATE commands?
+
+`TRUNCATE` is a DDL command, while `DELETE` is a DML command, which is why they differ in speed and logging behavior. `DELETE` removes rows one at a time and records each deletion in the transaction log, allowing rollback. It can have a `WHERE` clause. `TRUNCATE` removes all rows at once without logging individual row deletions.
+
+### Partitioning
+
+#### Explain database partitioning
+
+Database partitioning is the practice of splitting a large table (and its indexes) into smaller, more manageable pieces called partitions while keeping it logically a single table. This improves query performance, eases maintenance, and enhances availability.
+
+For more info, see: [Database Best Practice#Partitioning](DB/best_practice.md)
+
+### What is denormalization, and when is it used?
+
+Denormalization is the process of combining normalized tables into larger tables for performance reasons. It is used when complex queries and joins slow down data retrieval, and the performance benefits outweigh the drawbacks of redundancy.
+
+### Safety
+
+#### What strategies can protect a web application from SQL injection?
+
+The primary defense against SQL injection is to use parameterized queries (prepared statements) everywhere never build SQL with string concatenation. Combines this with allow-list input validation, least-privilege DB account, and safe stored procedures that don't assemble dynamic SQL.
+
+For more info, see: [Database Best Practice#Parameterized Query](DB/best_practice.md)
 
 ---
 

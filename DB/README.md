@@ -3,6 +3,8 @@
 # DB
 
 - [Best Practice](best_practice.md)
+- [SQL Indexing And Hashing](index.md)
+- [DB Query](query.md)
 - [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
 - [Terminology](terminology.md)
