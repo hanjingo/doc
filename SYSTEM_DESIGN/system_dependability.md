@@ -26,15 +26,120 @@ To develop dependable software, you therefore need to ensure that:
 
 *Principal dependability properties*
 
+
+
 ## Availability
 
-System **availability** may be defined more precisely as: The probability that a system, at a point in time, will be operational and able to deliver the requested services.
+System **availability** defined as: The probability that a system, at a point in time, will be operational and able to deliver the requested services.
 
 System faults do not always result in system errors and system errors do not necessarily result in system failures. The reasons for this are as follows:
 
 1. Not all code in a program is executed.
 2. Errors are transient.
 3. The system may include fault detection and protection mechanisms.
+
+### Measured
+
+Availability is measured as the percentage of time a system or service is operational and accessible to users over a specific period. It is expressed using the formula:
+$$
+Availability(\%) = ((Uptime) / (Uptime + Downtime)) * 100;
+$$
+
+- $Uptime$: The total time a system is operational and functioning as expected.
+- $Downtime$: The total time the system is unavailable due to failures, maintenance, or other issues.
+
+For example: 
+
+If a system has 99.9% availability in a year:
+
+- Total time in a year: $365 \times 24 \times 60 = 525,600$ minutes
+- Downtime allowed: $0.1\% \times 525,600 = 525.6$ minutes
+
+### Achieve High Availability
+
+System designers implement various strategies and technologies to achieve high availability, such as:
+
+- Redundancy: Use redundant servers or components so that, in the event of a failure, another can take over without any problems.
+- Load balancing: Incoming requests are divided among several servers or resources to enhance system performance and fault tolerance while avoiding overload on any one part.
+- Failover mechanisms: Implementing automated processes to detect failures and switch to redundant systems without manual intervention.
+- Disaster Recovery(DR): Having a comprehensive plan is place to recover the system in case of a catastrophic event that affects the primary infrastructure.
+- Monitoring and Alerting: putting in place reliable monitoring systems that can identify problems instantly and alert administrators so they can act quickly.
+- Performance optimization: Lowering the possibility of bottlenecks and breakdowns by making sure the system is built and adjusted to efficiently manage the expected load.
+- Scalability: Designing the system to scale easily by adding more resources when needed to accommodate increased demand.
+
+---
+
+
+
+## Consistency
+
+Consistency plays a crucial role in system design for several reasons:
+
+- Correctness
+- Reliability
+- Data Integrity
+- Concurrency Control
+- User Experience
+
+### Types
+
+![consistency](res/consistency.png)
+
+- Strong Consistency
+
+  ![strong_consistency_example](res/strong_consistency_example.png)
+
+  It guarantees that every read operation receives the most recent write operation's value or an error.
+
+- Eventual Consistency
+
+  ![eventual_consistency_example](res/eventual_consistency_example.png)
+
+  It guarantees that data replicas will eventually converge to the same value even while it permits them to diverge briefly.
+
+- Causal Consistency
+
+  It ensures that clients observing concurrent events maintain a consistent view of their causality relationship, which is essential for maintaining application semantics and correctness.
+
+- Weak Consistency
+
+  ![weak_consistency_example](res/weak_consistency_example.png)
+
+  It just ensures that updates will eventually spread to every duplicate, even though it permits significant differences between them.
+
+- Read-your-Writes Consistency
+
+  It guarantees that after a client writes a value to a data item, it will always be able to read that value or any subsequent value it has written.
+
+- Monotonic Consistency
+
+  It ensures that if a client observes a particular order of updates (reads or writes) to a data item, it will never observe a conflicting order of updates.
+
+- Monotonic Reads and Writes
+
+  It guarantees that if a client performs a sequence of reads or writes, it will observe a monotonically increasing sequence of values or updates.
+
+### Strategies for achieving Consistency
+
+Design Patterns and Best Practices
+
+- Single Source of Truth
+- Unchanged Operations
+- Versioning
+- Asynchronous Updates
+
+Consistency Models:
+
+- Eventual Consistency
+- Strong Consistency
+- Causal Consistency
+
+Conflict Resolution Techniques:
+
+- Last-Writer-Wins(LWW)
+- Merge Strategies
+
+---
 
 
 
@@ -44,24 +149,16 @@ System **reliability** may be defined more precisely as: The probability of fail
 
 Identify three complementary approaches that are used to improve the reliability of a system:
 
-1. Fault avoidance.
-2. Fault detection and removal.
-3. Fault tolerance.
+- Fault avoidance.
+- Fault detection and removal.
+- Fault tolerance.
 
-### Reliability specification
+### Specification
 
 Reliability requirements are, therefore, of two kinds:
 
 1. Non-functional requirements, which define the number of failures that are acceptable during normal use of the system, or the time in which the system is unavailable for use. These are quantitative reliability requirements.
 2. Functional requirements, which define system and software functions that avoid, detect, or tolerate faults in the software and so ensure that these faults do not lead to system failure.
-
-### Reliability metrics
-
-The choice of metric depends on the type of system that is being specified and the requirements of the application domain. The metrics are:
-
-1. `Probability of failure on demand (POFOD)` If you use this metric, you define the probability that a demand for service from a system will result in a system failure.
-2. `Rate of occurrence of failures (ROCOF)` This metric sets out the probable number of system failures that are likely to be observed relative to a certain time period (e.g., an hour), or to the number of system executions.
-3. `Availability (AVAIL)` The availability of a system reflects its ability to deliver services when requested.
 
 ### Non-functional reliability requirements
 
@@ -80,7 +177,35 @@ There are three types of functional reliability requirements for a system:
 2. Recovery requirements
 3. Redundancy requirements
 
-### Reliability testing
+### Factors that affect Reliability
+
+- Design Quality
+- Hardware Quality
+- Software Bugs
+- Maintenance
+- Workload
+- External Conditions
+- Redundancy
+
+### Metrics
+
+The choice of metric depends on the type of system that is being specified and the requirements of the application domain. The metrics are:
+
+1. `Probability of failure on demand (POFOD)` If you use this metric, you define the probability that a demand for service from a system will result in a system failure.
+2. `Rate of occurrence of failures (ROCOF)` This metric sets out the probable number of system failures that are likely to be observed relative to a certain time period (e.g., an hour), or to the number of system executions.
+3. `Availability (AVAIL)` The availability of a system reflects its ability to deliver services when requested.
+
+### Achieve high reliability
+
+![achieve_high_reliability](res/achieve_high_reliability.png)
+
+- Scalability and Maintainability: Scalability and Maintainability ensure the system continues to work efficiently as it grows and evolves over time.
+- Fault Tolerance: Fault Tolerance enables the system to detect errors and recover automatically without failure.
+- Load Balancing: Load Balancing distributes traffic across systems to avoid overload and handle high demand smoothly.
+- Monitoring and Analytics: Monitoring and analytics track performance and help detect issues early.
+- Redundancy: Redundancy duplicates critical components so the system keeps running even if one fails.
+
+### Testing
 
 ![reliability_measurement](res/reliability_measurement.png)
 
@@ -92,6 +217,46 @@ This conceptually attractive approach to reliability measurement is not easy to 
 2. High costs of test data generation.
 3. Statistical uncertainty when high reliability is specified. 
 4. Recognizing failure.
+
+### Measure Reliability
+
+Here's how reliability can be measured with formulas for better clarity:
+
+- Uptime Percentage
+  $$
+  \text{Uptime Percentage} = ((TotalTime - Downtime) / TotalTime) * 100
+  $$
+
+- Mean Time Between Failures(MTBF)
+  $$
+  MTBF = (\text{Total Operational Time} / \text{Number of Failures})
+  $$
+
+- Mean Time to Repair(MTTR)
+  $$
+  MTTR = \text{Total Repair Time} / \text{Number of Failures}
+  $$
+
+- Error Rate
+  $$
+  \text{Error Rate} = (\text{Number of Errors} / \text{Total Transactions or Operations}) * 100
+  $$
+
+### Single Point of Failure(SPOF)
+
+A single point of failure(SPOF) is a system component that, if it fails, can cause the entire system to stop working, making the system less reliable.
+
+To avoiding single points of failure(SPOFs), here are several strategies to help mitigate or eliminate SPOFs:
+
+- Redundancy
+- Load Balancing
+- Failover
+- Regular Testing
+- Monitoring & Alerts
+- Documentation
+- Continuous Improvement
+
+---
 
 
 
@@ -139,6 +304,8 @@ There are three risk categories that you can use in hazard assessment:
 ![safety_argument](res/safety_argument.png)
 
 *Informal safety argument based on demonstrating contradictions*
+
+---
 
 
 
@@ -222,6 +389,88 @@ Fundamentally, there are two reasons why security testing is so difficult:
 1. Security requirements, like some safety requirements, are `shall not` requirements.
 2. The people attacking a system are intelligent and are actively looking for vulnerabilities that they can exploit.
 
+---
+
+
+
+## Maintainability
+
+Maintainability determines how easy and profitable it will be to maintain, update, and do upgrades in that software system. A largely maintainable system contains the following characteristics:
+
+- Modularity
+- Readability
+- Error Handling
+- Utilizes VCS
+- Testability
+
+### Measure
+
+![maintanability_measure](res/maintanability_measure.png)
+
+- Maintainability Index
+
+  It provides an overall score that represents the maintainability of a specific component/Code module/Entire system.
+
+- Code Churn
+
+  It measures the frequency of changes to a code module over time using Version Control's data.
+
+- Cyclomatic Complexity
+
+  It measures the complexity of a code module.
+
+- Time and Resource constraints
+
+  It's important to balance between speed of development as well as speed of maintainability.
+
+- Team Collaboration
+
+- Documentation
+
+  Good documentation reduces the learning curve for new Devs and helps the existing team understand it better during maintenance.
+
+- Test Coverage
+
+  It measures the extent to which automated tests cover the codebase, It helps prevent regressions from being introduced.
+
+- Code Duplication
+
+  The Percentage of duplicated code present in the system can be an indicator of maintainability.
+
+### Achieve High Maintainability
+
+![achieve_high_maintainability](res/achieve_high_maintainability.png)
+
+- Follow Design Patterns
+
+  Design patterns and SOLID principle promote modularity and flexibility.
+
+- Code Consistency
+
+  Well-written, readable code with meaningful variables, comments, and documentation makes maintenance tasks even smoother.
+
+- Conduct Code Review
+
+  Code reviews by peers, and maintainers can help in identifying potential issues early on, while making sure that code adheres to maintainability standards and preferred code style or not.
+
+- Test-Driven Development(TDD)
+
+  Adopting TDD ensures that test cases are written before the code implementation, helping developers understand the codebase easily while troubleshooting an issue.
+
+- Documentation
+
+  Good documentation reduces the learning curve for new Devs and helps the existing team understand it better during maintenance.
+
+- Plan for Change
+
+  Design the system in such a way, that makes it easier to add new features and adapt to evolving requirements of daily enhancements.
+
+- Automate Testing and Deployment 
+
+  Automating testing and deployment processes reduces the chance of human error helps maintain the stability of the system during updates and also save time and effort of team members, allowing them to work on important issues.
+
+---
+
 
 
 ## Dependable Programming
@@ -237,8 +486,14 @@ There are some good practice guidelines for dependable programming:
 7. Include timeouts when calling external components.
 8. Name all constants that represent real-world values.
 
+---
+
 
 
 ## REFERENCE
 
 [1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+
+[2] [Availability in System Design](https://www.geeksforgeeks.org/system-design/availability-in-system-design/)
+
+[3] [Reliability in System Design](https://www.geeksforgeeks.org/system-design/reliability-in-system-design/)

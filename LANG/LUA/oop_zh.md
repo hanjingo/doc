@@ -65,7 +65,7 @@ TODO
 
 ## 示例
 
-### 1 lua实现继承
+### lua实现继承
 
 ```lua
 local child = Class(parent)

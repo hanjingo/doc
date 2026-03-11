@@ -8,6 +8,10 @@
 
 ## CAP Theorem In Database Designing
 
+![cap_theorem](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cap_theorem.png)
+
+According to the CAP theorem, only two of the three desirable characteristics consistency, availability, and partition tolerance can be shared or present in a networked shared-data system or distributed system.
+
 ### CP Database
 
 A CP database prioritizes Consistency and Partition Tolerance from the CAP theorem, it sacrifices Availability, meaning the system might not respond during network issues to maintain data accuracy.

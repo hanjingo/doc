@@ -24,41 +24,29 @@ These are basically "nice to have" requirements that might be out of the scope o
 
 
 
-## Design
+## Design Principle
 
 ### SOLID
 
 ![solid_principle](res/solid_principle.png)
 
-- Single-responsibility principle(SRP)
-
-  This principle states that "A class should have only one reason to change.", which means a class should have only one job or purpose within the software system."
-
-- Open-closed principle(OCP)
-
-  This principle states that "Software entities should be open for extension, but closed modification.", which means you should be able to extend a class behavior, without modifying it.
-
-- Liskov's Substitution Principle(LSP)
-
-  This principle states that "derived or child classes must be able to replace their base or parent classes". This ensures that any subclass can be used in place of its parent class without causing unexpected behavior in the program.
-
-- Interface Segregation Principle(ISP)
-
-  This principle states that "do not force any client to depend on methods which is irrelevant to them".
-
-- Dependency Inversion Principle(DIP)
-
-  This principle states that "High-level modules should not depend on low-level modules. Both should depend on abstractions".
+The SOLID principles are five essential guidelines that enhance software design, making code more maintainable and scalable.
 
 ### DRY
 
 ![dry_principle](res/dry_principle.png)
 
+DRY(Don't Repeat Yourself) is a software development principle that says the same logic or knowledge should not be written multiple times in a system.
+
 ### KISS
+
+The KISS principle, which stands for "Keep It Simple, Stupid", is a design principle that suggests simplicity should be a key goal in design, development, and other fields, such as engineering, software development, and user interface design.
 
 ### YAGNI
 
 ![yagni_principle](res/yagni_principle.png)
+
+"YAGNI" stands for "You Aren't Gonna Need It". YAGNI is a software development principle that advises developers to implement only what is required for current needs.
 
 ---
 
@@ -100,7 +88,7 @@ Below are the main components of high-level design:
 
    ![behaviour_of_server](res/behaviour_of_server.png)
 
-   Capacity estimation in system design involves predicting the resources required to meet the expected workload. It ensures that a system can handle current and future demands efficiently, helping in the proper allocation of resources and preventing performance bootlenecks.
+   Capacity estimation in system design involves predicting the resources required to meet the expected workload.
 
 2. HTTP and HTTPS and Their Methods
 
@@ -170,15 +158,7 @@ LLD is a phase in the software development process where detailed system compone
 
 
 
-## API Design
-
-![api_design_flow](res/api_design_flow.png)
-
----
-
-
-
-## System Design Workflows
+## Work Flows
 
 Steps to crack system design:
 

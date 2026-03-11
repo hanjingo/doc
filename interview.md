@@ -258,6 +258,11 @@ For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
 
 `std::function` is a polymorphic wrapper used to store and invoke any callable object, such as functions, lambdas, or bind expressions. `std::bind` allows you to bind specific arguments to a function, creating a new function object.
 
+### Concurrency
+
+TODO
+
+
 ---
 
 

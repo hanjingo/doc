@@ -1,6 +1,6 @@
 English | [中文版](balance_tree_zh.md)
 
-# Balanced Trees (overview)
+# Balanced Trees
 
 [TOC]
 

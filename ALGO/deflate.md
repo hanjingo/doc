@@ -4,7 +4,7 @@
 
 [TOC]
 
-## 
+
 
 DEFLATE is a widely used lossless data-compression format that combines LZ77-style sliding-window compression with Huffman coding. It was designed to give good compression ratio and fast performance, and is the compression method used by gzip, zlib, PNG, and many other formats and protocols. The DEFLATE bitstream format is specified in RFC 1951.
 
