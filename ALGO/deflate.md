@@ -1,5 +1,3 @@
-[中文版](deflate_zh.md) | English
-
 # DEFLATE
 
 [TOC]

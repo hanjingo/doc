@@ -1,4 +1,4 @@
-中文版 | [English](big_o_notation.md)
+English | [中文版](big_o_notation_zh.md)
 
 # Big O Notation
 

@@ -118,3 +118,119 @@ It is appropriate to use a peer-to-peer architectural model for a system in two 
 
 1. Where the system is computationally intensive and it is possible to separate the processing required into a large number of independent computations.
 2. Where the system primarily involves the exchange of information between individual computers on a network and there is no need for this information to be centrally stored or managed.
+
+
+
+## Consensus Algorithms
+
+- Crash Fault Tolerant(CFT) Algorithms:
+  - Paxos (for more detail, see:[doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
+  - Raft (for more detail, see:[doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
+- Byzantine Fault Tolerant(BFT) Algorithms:
+  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see:[doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
+  - Tendermint
+- Proof-Based Algorithms:
+  - Proof of Work(PoW) (for more detail, see:[doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
+  - Proof of Stake(PoS) (for more detail, see:[doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
+  - Delegate Proof of Stake(DPoS) (for more detail, see:[doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
+- Leader-Based Algorithms:
+  - Viewstamped Replication(VR)
+  - Multi-Paxos
+- Voting-Based Algorithm
+  - Quorum-Based Algorithms
+  - Federated Byzantine Agreement(FBA)
+
+
+
+## Secure
+
+Authentication and authorization mechanisms are essential for securing structures and facts. Authentication verifies person identities, while authorization controls their get entry to sources.
+
+### Authentication Mechanisms
+
+1. Passwords and PINs
+
+   - Pros: Simple, widely used.
+   - Cons: Vulnerable to assaults(brute pressure, phishing).
+
+2. Biometrics
+
+   - Pros: Hard to forge.
+   - Cons: Privacy concerns, false positives/negatives.
+
+3. Multi-Factor Authentication(MFA)
+
+   - Pros: Stronger security.
+   - Cons: More complex for users.
+
+4. Token-Based Authentication
+
+   - Pros: Enhances protection.
+   - Cons: Tokens can be misplaced or stolen.
+
+5. Certificate-Based Authentication
+
+   - Pros: Strong safety, broadly used in corporations.
+   - Cons: Requires infrastructure for dealing with certificates(PKI).
+
+6. Single Sign-On(SSO)
+
+   - Pros: Convenient, improves user experience.
+   - Cons: Single factor of failure.
+
+### Authorization mechanisms
+
+1. Role-Based Access Control(RBAC)
+
+   - Pros: Simplifies control, enforces least privilege.
+   - Cons: Can be rigid in dynamic environments.
+
+2. Attribute-Based Access Control(ABAC)
+
+   - Pros: Flexible, quality-grained manage.
+   - Cons: Complex to put into effect and manage.
+
+3. Discretionary Access Control(DAC)
+
+   - Pros: Flexible, simple
+   - Cons: Less secure, liable to insider threats.
+
+4. Mandatory Access Control(MAC)
+
+   - Pros: High safety.
+   - Cons: Rigid, hard to control in large businesses.
+
+5. Policy-Based Access Control
+
+   - Pros: Flexible, adaptable to complicated environments.
+   - Cons: Can be tough to outline and control regulations.
+
+
+
+## Advantage And Disadvantage
+
+Advantages:
+
+- Resource Sharing
+- Multiple Independent Nodes
+- Transparency
+- Scalability
+- Reliability and Fault Tolerance
+- Performance
+
+Disadvantages:
+
+- Complexity
+- Security Challenges
+- Network Dependency
+- Data Consistency Issues
+- Higher Cost
+- Troubleshooting Difficulties
+
+
+
+## Reference
+
+[1] George Coulouris; Jean Dolimore; Tim Kindberg; Gordon Blair . DISTRIBUTED SYSTEMS: Concepts and Design . 5ED
+
+[2] [Introduction to Distributed System](https://www.geeksforgeeks.org/computer-networks/what-is-a-distributed-system/)

@@ -1,3 +1,5 @@
+[English](paxos.md) | 中文版
+
 # Paxos
 
 [TOC]

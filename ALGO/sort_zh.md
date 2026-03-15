@@ -1,3 +1,5 @@
+中文版 | [English](sort.md)
+
 # 排序算法总结
 
 [TOC]

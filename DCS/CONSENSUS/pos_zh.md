@@ -1,3 +1,5 @@
+[English](pos.md) | 中文版
+
 # 权益证明(PoS)
 
 [TOC]

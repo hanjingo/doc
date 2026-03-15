@@ -1,3 +1,5 @@
+中文版 | [English](lru_zh.md)
+
 # LRU算法
 
 [TOC]

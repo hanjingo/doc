@@ -1,3 +1,5 @@
+[English](dpos.md) | 中文版
+
 # 股份授权证明(DPoS)
 
 [TOC]

@@ -331,6 +331,10 @@ Risk assessment stage:
 2. Life-cycle risk assessment.
 3. Operational risk assessment.
 
+### Life-cycle Secure Software Development
+
+![life_cycle_secure_software_dev](res/life_cycle_secure_software_dev.png)
+
 ### Life-cycle risk assessment
 
 ![life_cycle_risk_analysis](res/life_cycle_risk_analysis.png)
@@ -497,3 +501,5 @@ There are some good practice guidelines for dependable programming:
 [2] [Availability in System Design](https://www.geeksforgeeks.org/system-design/availability-in-system-design/)
 
 [3] [Reliability in System Design](https://www.geeksforgeeks.org/system-design/reliability-in-system-design/)
+
+[4] [Essential Security Measures in System Design](https://www.geeksforgeeks.org/system-design/essential-security-measures-in-system-design/)

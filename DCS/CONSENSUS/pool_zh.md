@@ -1,3 +1,5 @@
+[English](pool.md) | 中文版
+
 # Pool验证池(Verify the pooling)
 
 [TOC]

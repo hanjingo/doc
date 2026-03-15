@@ -158,35 +158,45 @@ LLD is a phase in the software development process where detailed system compone
 
 
 
-## Work Flows
+## Workflaws
 
-Steps to crack system design:
+### Life Cycle
 
-1. Understand the goal and gather all the requirements;
+![system_development_life_cycle](res/system_development_life_cycle.png)
 
-   Asking questions about the exact scope of the problem, and clarifying functional requirements early in the interview is essential.
+### Steps
 
-2. Understand the estimation and constraints;
+![system_design_step](res/system_design_step.png)
 
-   Estimate the scale of the system we're going to design. Focus on the system's expected scale (like user volume and request rates) and practical limits (like latency and budget). 
+Here are some steps to get started with system design:
 
-3. High-level component design;
+1. Understand Requirements
 
-   Identify system components that are needed to solve our problem and draft the first design of our system and outline the flow of data between them. This gives an organized view of the system's architecture and sets up a foundation for further detailed design.
+   This step involves gathering and analyzing the business needs of the system.
 
-4. Define the Data Model / Database Design
+2. Define Architecture
 
-   Doing so would help us to understand the data flow which is the core of every system. In this step, we basically define all the entities and relationships between them.
+   In this step, the overall structure of the system is planned.
 
-5. API design
+3. Choose Tech Stack
 
-   These APIs will help us define the expectations from the system explicitly. We don't have to write any code, just a simple interface defining the API requirements such as parameters, functions, classes, types, entities, etc.
+   Here, the technologies used to build the system are selected.
 
-6. Detailed design
+4. Design Modules
 
-   Now it's time to go into detail about the major components of the system we designed.
+   The system is divided into smaller modules or components, each with a specific responsibility.
 
-7. Identify and resolve bottlenecks.
+5. Plan for Scalability
+
+   Developers identify possible bottlenecks and use scalable solutions such as load balancing or distributed systems.
+
+6. Ensure Security & Privacy
+
+   Security measures are added to protect user data and prevent unauthorized access.
+
+7. Test & Validate
+
+   After designing the system, it is tested to ensure it works as expected.
 
 ---
 
@@ -203,3 +213,5 @@ Steps to crack system design:
 [4] [Data Modeling in System Design](https://www.geeksforgeeks.org/system-design/data-modeling-in-system-design/)
 
 [5] [What is Low Level Design or LLD?](https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/)
+
+[6] [System Design Introduction - LLD & HLD](https://www.geeksforgeeks.org/system-design/getting-started-with-system-design/)

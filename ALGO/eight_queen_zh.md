@@ -1,3 +1,5 @@
+中文版 | [English](eight_queen.md)
+
 # 八皇后问题
 
 [TOC]

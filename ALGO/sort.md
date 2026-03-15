@@ -1,3 +1,5 @@
+[中文版](sort_zh.md) | English
+
 # Sorting Algorithm Summary
 
 [TOC]

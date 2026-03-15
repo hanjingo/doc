@@ -1,3 +1,5 @@
+[English](casper.md) | 中文版
+
 # 投注共识
 
 [TOC]

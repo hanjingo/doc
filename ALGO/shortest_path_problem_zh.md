@@ -1,5 +1,3 @@
-
-
 中文版 | [English](shortest_path_problem.md)
 
 # 最短路径算法

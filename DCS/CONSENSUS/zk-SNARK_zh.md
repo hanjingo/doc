@@ -1,3 +1,5 @@
+[English](zk-SNARK.md) | 中文版
+
 # 零知识证明(zero-knowledge-proof)
 
 [TOC]

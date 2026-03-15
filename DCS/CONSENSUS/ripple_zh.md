@@ -1,3 +1,5 @@
+[English](ripple.md) | 中文版
+
 # 瑞波共识(Rayleigh wave consensus mechanism)
 
 [TOC]

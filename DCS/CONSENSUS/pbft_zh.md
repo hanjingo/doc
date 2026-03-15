@@ -1,3 +1,5 @@
+[English](pbft.md) | 中文版
+
 # 实用拜占庭容错(pbft)
 
 [TOC]

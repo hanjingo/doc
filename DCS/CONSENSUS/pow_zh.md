@@ -1,3 +1,5 @@
+[English](pow.md) | 中文版
+
 # 工作量证明(PoW)
 
 [TOC]

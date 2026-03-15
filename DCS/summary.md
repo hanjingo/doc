@@ -140,21 +140,6 @@ They address **different dimensions**.
 
 
 
-## CAP theorem
-
-![cap](res/cap.png)
-
-CAP states that **during a network partition**, a system must choose between:
-
-- Consistency (linearizability)
-- Availability
-
-CAP describes **constraints**, not design goals.
-
----
-
-
-
 ## Replication and Partitioning (Storage Perspective)
 
 ### Replication
@@ -299,6 +284,134 @@ Security assumptions define the attack surface.
 
 
 
+## Summary
+
+### Consensus Algorithm 
+
+| Algorithm           | Description                                                  | Fault Tolerance               | Benefits                                      | Challenges                                          |
+| ------------------- | ------------------------------------------------------------ | ----------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| Paxos               | Achieves consensus despite network delays and node failures. | Crash Fault Tolerant(CFT)     | Robust and proven; high fault tolerance       | Complex to understand and implement                 |
+| Raft                | Leader-based log replication for consensus.                  | Crash Fault Tolerant(CFT)     | Easier to understand and implement than Paxos | Leader election can cause delays                    |
+| PBFT                | Handles Byzantine faults with supermajority agreement.       | Byzantine Fault Tolerant(BFT) | High security, handles arbitray faults        | Requires high message overhead; limited scalability |
+| Proof of Work(PoW)  | Miners solve cryptographic puzzles to validate transactions. | Byzantine Fault Tolerant(BFT) | Highly secure; decentralized                  | High energy consumption slow transaction times      |
+| Proof of Stake(PoS) | Validators are chosen based on stake to propose new blocks.  | Byzantine Fault Tolerant(BFT) | Energy efficient; scalable                    | Wealth concentration; potential centralization      |
+
+### Consensus Algorithm Challenges
+
+1. Fault Tolerance
+
+   - Crash Fault Tolerance(CFT)
+
+     Algorithms like Paxos and Raft are designed to handle node crashes and recover without data loss.
+
+   - Byzantine Fault Tolerance(BFT)
+
+     Algorithms like PBFT and Tendermint are designed to handle arbitrary failures, including malicious behavior, which is more complex and resource-intensive.
+
+2. Scalability
+
+   - Message Overhead
+
+     Many consensus algorithms require extensive communication between nodes. As the number of nodes increases, the message complexity can grow significantly, leading to network congestion and latency.
+
+   - Performance Bottlenecks
+
+     Centralized points of failure, such as leaders in Raft, can become performance bottlenecks in large-scale systems.
+
+3. Security
+
+   - Sybil Attacks
+
+     Attackers create multiple fake identities to gain influence over the network. Pow and Pos address this by requiring computational work or stake, respectively, making it costly to mount such attacks.
+
+   - Double-Spending
+
+     Ensuring that a digital currency cannot be spent more than once is critical in blockchain systems, requiring mechanisms to detect and prevent double spending.
+
+   - Denial-of-Service(DoS) Attacks
+
+     Consensus algorithms must include measures to protect against DoS attacks that aim to disrupt network operations.
+
+4. Synchronization
+
+   - Network Latency
+
+     Variations in network latency can cause delays in message delivery, leading to nodes having different views of the system state.
+
+   - Clock Synchronization
+
+     In many algorithms, nodes rely on synchronized clocks to order events correctly. Asynchronous clocks can lead to inconsistencies and disagreements among nodes.
+
+5. Configuration Management
+
+   - Dynamic Membership
+
+     Handling changes in the set of participating nodes dynamically while maintaining consensus is challenging. Algorithms need mechanisms to accommodate nodes joining or leaving without causing inconsistencies.
+
+   - Parameter Tuning
+
+     Properly tuning parameters like timeout periods, message intervals, and quorum size is critical for optimal performance but can be difficult to get right.
+
+### Issues
+
+The following are some of the major design issues of distributed systems:
+
+1. Communication Issues
+   - Message Passing
+   - Communication Latency and Bandwidth
+   - Communication Protocols
+2. Process Management
+   - Process Coordination
+   - Process Migration
+   - Thread Management
+3. Data management
+   - Data Storage
+   - Data Access
+   - Consistency and Replication
+   - Data Integrity
+4. Fault Tolerance and Reliability
+   - Failure Detection
+   - Redundancy and Recovery
+   - Consensus and Quorum Systems
+5. Security
+   - Authentication and Authorization
+   - Cryptography
+   - Data Privacy
+6. Scalability and Modularity
+   - Scalable Architectures
+   - Modular Design
+   - Elasticity
+7. Synchronization and Coordination
+   - Clock Synchronization
+   - Leader Election
+   - Mutual Exclusion
+8. Transparency
+   - Access Transparency
+   - Location transparency
+   - Replication Transparency
+9. Performance
+   - Load Balancing
+   - Caching and Cache Management
+   - Latency and Throughput
+10. Algorithmic Challenges
+    - Distributed Algorithms
+    - Global State Management
+    - Distributed Synchronization
+11. Application-Specific Design Challenges
+    - Mobile Systems
+    - Sensor Networks
+    - Peer-to-Peer(P2P) Systems
+    - Cloud Computing
+12. Debugging and Monitoring
+    - Debugging Distributed Systems
+    - Event Monitoring
+    - Distributed Tracing
+13. Real-Time Systems
+    - Real-Time Scheduling
+    - Quality of Service(QoS)
+
+
+
 ## Reference
 
 [1] George Coulouris, Jean Dolimore, Tim Kindberg, Gordon Blair. DISTRIBUTED SYSTEMS: Concepts and Design. 5ED
@@ -310,3 +423,5 @@ Security assumptions define the attack surface.
 [4] [A Beginner's Guide To Distributed Systems](https://www.designgurus.io/blog/a-beginners-guide-to-distributed-systems)
 
 [5] [What is a distributed system?](https://www.atlassian.com/microservices/microservices-architecture/distributed-architecture)
+
+[6] [Comparison of different Consensus Algorithms](https://www.geeksforgeeks.org/operating-systems/consensus-algorithms-in-distributed-system/)

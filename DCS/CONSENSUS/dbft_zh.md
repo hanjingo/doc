@@ -1,3 +1,5 @@
+[English](dbft.md) | 中文版
+
 # 授权拜占庭容错(Delegated Byzantine Fault Tolerance)
 
 [TOC]

@@ -67,6 +67,12 @@ Message Routing involves determining how messages are directed to their intended
 
 
 
+## Usage
+
+![mq_usage](res/mq_usage.png)
+
+
+
 ## References
 
 [1] [Message Queues - System Design](https://www.geeksforgeeks.org/system-design/message-queues-system-design/)

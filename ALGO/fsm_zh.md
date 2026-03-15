@@ -1,3 +1,5 @@
+中文版 | [English](fsm.md)
+
 # 有限状态机
 
 [TOC]

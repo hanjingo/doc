@@ -1,5 +1,3 @@
-[中文版](huffman_zh.md) | English
-
 # Huffman Coding
 
 [TOC]

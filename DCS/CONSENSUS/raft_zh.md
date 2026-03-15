@@ -1,3 +1,6 @@
+[English](raft.md) | 中文版
+
+
 # Raft
 
 [TOC]

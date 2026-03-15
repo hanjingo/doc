@@ -254,6 +254,14 @@ Smart pointers are template classes in `<memory>` that automate memory managemen
 
 For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
 
+#### Can you explain the differences between `unique_ptr`, `shared_ptr`, and `weak_ptr` in terms of ownership and use cases?
+
+TODO
+
+#### Can you clarify how `shared_ptr` handles reference counting and why `weak_ptr` is used to break circular references?
+
+TODO
+
 #### How Do `std::function` and `std::bind` Work in C++?
 
 `std::function` is a polymorphic wrapper used to store and invoke any callable object, such as functions, lambdas, or bind expressions. `std::bind` allows you to bind specific arguments to a function, creating a new function object.

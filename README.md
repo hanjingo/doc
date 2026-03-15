@@ -56,10 +56,27 @@
 
 - [Summary](DCS/summary.md)
 - [Google Big Table](DCS/big_table.md)
+- [CAP Theorem](DCS/cap.md)
 - [Google File System](DCS/gfs.md)
 - [Google MapReduce](DCS/map_reduce.md)
+- [Secure In Distributed System](DCS/secure.md)
 - [Synchronization](DCS/synchronization.md)
 - [System Models](DCS/system_model.md)
+- [Distributed Tracing](DCS/tracing.md)
+
+## [Consensus](DCS/CONSENSUS/README.md)
+
+- [Casper Consensus](DCS/CONSENSUS/casper.md)
+- [Delegated Byzantine Fault Tolerance (DBFT)](DCS/CONSENSUS/dbft.md)
+- [Delegated Proof of Stake (DPoS)](DCS/CONSENSUS/dpos.md)
+- [Paxos](DCS/CONSENSUS/paxos.md)
+- [Practical Byzantine Fault Tolerance (PBFT)](DCS/CONSENSUS/pbft.md)
+- [Pool Verification (Verify the pooling)](DCS/CONSENSUS/pool.md)
+- [Proof of Stake (PoS)](DCS/CONSENSUS/pos.md)
+- [Proof of Work (PoW)](DCS/CONSENSUS/pow.md)
+- [Raft](DCS/CONSENSUS/raft.md)
+- [Ripple Consensus (Rayleigh wave consensus mechanism)](DCS/CONSENSUS/ripple.md)
+- [Zero-Knowledge Proof (zero-knowledge-proof)](DCS/CONSENSUS/zk-SNARK.md)
 
 ---
 

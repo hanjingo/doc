@@ -3,6 +3,8 @@
 
 [TOC]
 
+
+
 This note summarizes the DNS architecture and protocol: message format, resource records, name resolution process (recursive vs. iterative), caching and TTLs, server roles (root, TLD, authoritative), delegation, a brief note on DNSSEC, and practical troubleshooting tips. The content follows Kurose & Ross (A Top‑Down Approach) and is reorganized for clarity.
 
 ## What DNS provides
@@ -37,6 +39,8 @@ Notes:
 - A reply may contain multiple answers (e.g., multiple A records for load balancing).
 - Truncation (TC) indicates the UDP response was too large; the client may retry over TCP.
 
+
+
 ## Resource records (RRs)
 
 Common RR types:
@@ -49,6 +53,8 @@ Common RR types:
 - TXT, SRV, PTR — various text, service, and reverse lookup records.
 
 Each RR has a TTL field that controls caching lifetime for resolvers and caches.
+
+
 
 ## Resolution process: recursive vs iterative
 
@@ -65,6 +71,8 @@ Typical flow for a resolver starting from the root:
 
 Caching at each step (with TTLs) reduces load and latency for repeated queries.
 
+
+
 ## Hierarchy, delegation, and servers
 
 ![dns_serv_hierarchy](res/dns_serv_hierarchy.png)
@@ -77,13 +85,19 @@ Server roles:
 
 Delegation is performed using NS records at the parent zone and glue records (A/AAAA) when the name server's name is inside the delegated zone.
 
+
+
 ## Caching and TTLs
 
 Resolvers and authoritative servers cache records according to the TTL present in RRs. Lower TTLs reduce cache staleness but increase query load; higher TTLs reduce load but delay propagation of changes. Zone administrators choose TTLs based on update frequency and performance tradeoffs.
 
+
+
 ## DNSSEC (brief)
 
 DNSSEC adds origin authentication and integrity for DNS data using digital signatures (RRSIG) and public keys (DNSKEY). DNSSEC prevents certain attacks such as cache poisoning by allowing resolvers to validate that records are authentic and unmodified. DNSSEC does not provide confidentiality.
+
+
 
 ## Operational notes and common issues
 
@@ -98,6 +112,8 @@ Troubleshooting tips:
 - Check serial numbers in SOA to confirm zone propagation between master and slaves.
 - Verify glue records when delegation causes resolution failures.
 - Monitor for unusual NXDOMAIN or SERVFAIL responses and check DNSSEC validation errors when DNSSEC is enabled.
+
+
 
 ## References
 

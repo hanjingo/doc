@@ -1,10 +1,12 @@
-# Software Engineering — Concise Notes
+# Software Engineering
 
 [TOC]
 
+
+
 This document summarizes core concepts in software engineering, consolidating content from the provided NOTES. It is organized to give a practical overview: requirements, process models, design and implementation activities, validation and testing, risk-driven approaches, and agile practices. Where helpful, diagrams referenced from the repository are retained.
 
-## 1. Requirements Engineering
+## Requirements Engineering
 
 Requirements capture what the system should do and the constraints it must satisfy. Requirements are commonly classified into:
 
@@ -28,11 +30,13 @@ Good requirements are clear, consistent, complete, and verifiable. Requirements 
 
 ---
 
-## 2. Software Process Models
+
+
+## Software Process Models
 
 Software process models describe how development activities are organized. The right model depends on project size, risk, stakeholder involvement, and domain.
 
-### 2.1 Waterfall model
+### Waterfall model
 
 The waterfall model sequences activities into distinct phases: requirements, system/software design, implementation, integration and testing, and operation/maintenance. It is easy to understand and manage for projects with stable and well-understood requirements, but it is inflexible when requirements change.
 
@@ -46,7 +50,7 @@ Cons:
 - Poor adaptability to change
 - Late delivery of working software
 
-### 2.2 Incremental development
+### Incremental development
 
 In incremental development, the system is delivered in a series of releases (increments). Each increment adds functionality and is validated with stakeholders.
 
@@ -61,7 +65,7 @@ Risks:
 
 Diagram: ![incremental_development](res/incremental_development.png)
 
-### 2.3 Reuse-oriented development
+### Reuse-oriented development
 
 This approach focuses on assembling systems from existing components or COTS products. Key activities include component analysis, requirements adaptation, system design with reuse, and integration.
 
@@ -75,7 +79,7 @@ Challenges:
 - Component mismatch and need to adapt requirements
 - Integration and licensing issues
 
-### 2.4 Risk-driven (Spiral) model
+### Risk-driven (Spiral) model
 
 The spiral model (Boehm) centers development around iterative risk analysis and reduction. Each loop includes objective setting, risk analysis, development/validation, and planning.
 
@@ -85,11 +89,13 @@ Use the spiral model when the project has high technical, managerial, or market 
 
 ---
 
-## 3. Core Process Activities
+
+
+## Core Process Activities
 
 Software engineering splits broadly into three interleaved activities: specification, development (design and implementation), and validation.
 
-### 3.1 Specification (Requirements engineering)
+### Specification (Requirements engineering)
 
 Main tasks:
 
@@ -100,7 +106,7 @@ Main tasks:
 
 Diagram: ![requirement_engineering_proc](res/requirement_engineering_proc.png)
 
-### 3.2 Design and Implementation
+### Design and Implementation
 
 Design decomposes the system into architecture, components, and interfaces. Typical activities:
 
@@ -117,7 +123,7 @@ Good design practices:
 - Define clear separation of concerns and abstraction boundaries
 - Use proven architectural patterns and document key design decisions
 
-### 3.3 Validation and Testing
+### Validation and Testing
 
 Testing strategies should be planned early and aligned with requirements. Typical test levels:
 
@@ -136,7 +142,9 @@ Good testing practices:
 
 ---
 
-## 4. Agile Software Development
+
+
+## Agile Software Development
 
 Agile methods prioritize working software, customer collaboration, and responsiveness to change. Key characteristics:
 
@@ -171,13 +179,17 @@ Hybrid approaches often combine agile practices for development with plan-driven
 
 ---
 
-## 5. Practical Advice & Patterns
+
+
+## Practical Advice & Patterns
 
 - Prioritize requirements with stakeholders and keep acceptance criteria explicit.
 - Invest in automated testing and continuous integration early.
 - Keep architecture resilient to change: design for modularity and loose coupling.
 - Monitor non-functional requirements (SLA metrics) and treat them as first-class requirements.
 - Reuse components when it reduces risk and cost, but validate integration and licensing implications.
+
+
 
 ## References
 

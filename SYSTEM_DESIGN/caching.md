@@ -4,7 +4,7 @@
 
 
 
-## General-Purpose Caching System
+## General-Purpose DB Caching System
 
 ### Cache System Evaluation Metrics
 
