@@ -1,3 +1,5 @@
+[English](unix_core.md) | 中文版
+
 # UNIX内核
 
 [TOC]

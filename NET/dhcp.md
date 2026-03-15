@@ -1,3 +1,4 @@
+English | [中文版](dhcp_zh.md)
 
 # DHCP (Dynamic Host Configuration Protocol)
 

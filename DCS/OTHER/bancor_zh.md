@@ -1,3 +1,5 @@
+[English](bancor.md) | 中文版
+
 # bancor算法
 
 [TOC]

@@ -1,3 +1,5 @@
+[English](cmake.md) | 中文版
+
 # CMake
 
 [TOC]

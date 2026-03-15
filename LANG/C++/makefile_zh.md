@@ -1,3 +1,5 @@
+[English](makefile.md) | 中文版
+
 # makefile
 
 [TOC]

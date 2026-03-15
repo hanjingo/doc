@@ -1,3 +1,5 @@
+[English](daemon.md) | 中文版
+
 # 守护进程
 
 [TOC]

@@ -1,3 +1,4 @@
+English | [中文版](dns_zh.md)
 
 # Domain Name System (DNS)
 

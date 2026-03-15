@@ -26,6 +26,7 @@ Common concurrency-control approaches:
 - Multi-version concurrency control (MVCC): maintain multiple versions of data so readers can access a consistent snapshot without blocking writers; writers create new versions.
 
 Each approach trades implementation complexity, read/write conflict behavior, and performance characteristics.
+
 ## ACID
 
 ### Atomicity

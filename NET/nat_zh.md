@@ -1,3 +1,5 @@
+[English](nat.md) | 中文版
+
 # 网络地址转换
 
 [TOC]

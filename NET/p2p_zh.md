@@ -1,3 +1,5 @@
+[English](p2p.md) | 中文版
+
 # P2P协议
 
 [TOC]

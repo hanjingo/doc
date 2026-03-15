@@ -1,3 +1,5 @@
+[English](multi_processor.md) | 中文版
+
 # 多处理机系统
 
 [TOC]

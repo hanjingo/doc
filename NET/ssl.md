@@ -1,4 +1,4 @@
-## TLS / SSL — concise overview
+## TLS / SSL
 
 [TOC]
 

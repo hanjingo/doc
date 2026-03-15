@@ -1,4 +1,6 @@
-## P2P file distribution
+English | [中文版](p2p_zh.md)
+
+# P2P Protocol
 
 [TOC]
 

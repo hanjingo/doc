@@ -1,3 +1,5 @@
+[English](dns.md) | 中文版
+
 # DNS协议
 
 [TOC]

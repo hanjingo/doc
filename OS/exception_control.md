@@ -1,4 +1,4 @@
-# Exceptional control flow — concise guide
+# Exceptional control flow
 
 [TOC]
 

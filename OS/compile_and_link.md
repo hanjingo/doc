@@ -1,4 +1,4 @@
-# Compile & Link — concise guide
+# Compile & Link
 
 [TOC]
 

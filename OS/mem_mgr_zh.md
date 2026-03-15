@@ -1,3 +1,5 @@
+[English](mem_mgr.md) | 中文版
+
 # 内存管理
 
 [TOC]

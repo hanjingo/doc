@@ -1,3 +1,5 @@
+[English](mdns.md) | 中文版
+
 # MDNS协议
 
 [TOC]

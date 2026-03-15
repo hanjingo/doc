@@ -13,6 +13,13 @@
 - [Distributed Tracing](tracing.md)
 
 
+# Protocol
+
+- [BitTorrent Protocol](PROTOCOL/bittorrent.md)
+- [DHT](PROTOCOL/dht.md)
+- [Kademlia Algorithm](PROTOCOL/kad.md)
+- [Merkle Tree](PROTOCOL/merkle.md)
+
 
 ## Consensus
 
@@ -27,3 +34,7 @@
 - [Raft](CONSENSUS/raft.md)
 - [Ripple Consensus (Rayleigh wave consensus mechanism)](CONSENSUS/ripple.md)
 - [Zero-Knowledge Proof (zero-knowledge-proof)](CONSENSUS/zk-SNARK.md)
+
+## Other
+
+- [Bancor Protocol](OTHER/bancor.md)

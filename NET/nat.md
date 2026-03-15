@@ -1,3 +1,5 @@
+ English | [中文版](nat_zh.md)
+
  # Network Address Translation (NAT)
 
  [TOC]

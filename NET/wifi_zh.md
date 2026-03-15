@@ -1,3 +1,5 @@
+[English](wifi.md) | 中文版
+
 # WIFI
 
 [TOC]

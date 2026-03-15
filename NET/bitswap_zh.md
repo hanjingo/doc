@@ -1,3 +1,5 @@
+[English](bitswap.md) | 中文版
+
 # BitSwap协议(数据块交换协议)
 
 [TOC]

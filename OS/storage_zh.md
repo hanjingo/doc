@@ -1,3 +1,5 @@
+[English](storage.md) | 中文版
+
 # 存储器
 
 [TOC]

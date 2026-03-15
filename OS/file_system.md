@@ -1,4 +1,4 @@
-# File systems — concise guide
+# File systems
 
 [TOC]
 

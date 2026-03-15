@@ -1,3 +1,5 @@
+[English](static_link.md) | 中文版
+
 # 静态链接
 
 [TOC]

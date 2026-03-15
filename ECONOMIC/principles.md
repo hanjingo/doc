@@ -1,4 +1,4 @@
-# Ten Principles of Economics — Notes and Summary
+# Ten Principles of Economics
 
 [TOC]
 

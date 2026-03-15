@@ -1,3 +1,5 @@
+[English](dhcp.md) | 中文版
+
 # DHCP协议
 
 [TOC]

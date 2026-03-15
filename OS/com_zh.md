@@ -1,3 +1,5 @@
+[English](com.md) | 中文版
+
 # COM技术
 
 [TOC]

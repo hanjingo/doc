@@ -1,4 +1,6 @@
-# Wi‑Fi (IEEE 802.11) — concise overview
+English | [中文版](wifi_zh.md)
+
+# Wi‑Fi (IEEE 802.11)
 
 [TOC]
 

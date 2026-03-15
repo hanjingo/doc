@@ -1,3 +1,4 @@
+English | [中文版](multi_processor_zh.md)
 
 # Multi-Processor Systems
 

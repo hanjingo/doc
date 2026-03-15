@@ -17,16 +17,6 @@
 
 
 
-## Google分布式系统三大论文
-
-  - TheGoogleFileSystem
-  - MapReduce
-  - Bigtable
-
----
-
-
-
 ## 共识算法
 
   - [零知识证明](CONSENSUS/zk-SNARK_zh.md)

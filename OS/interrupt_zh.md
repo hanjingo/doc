@@ -1,3 +1,5 @@
+[English](interrupt.md) | 中文版
+
 # 中断
 
 [TOC]

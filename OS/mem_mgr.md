@@ -1,3 +1,4 @@
+English | [中文版](mem_mgr_zh.md)
 
 # Memory Management
 

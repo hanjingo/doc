@@ -1,3 +1,5 @@
+[English](kad.md) | 中文版
+
 # Kademlia算法
 
 [TOC]

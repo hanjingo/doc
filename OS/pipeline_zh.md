@@ -1,3 +1,5 @@
+[English](pipeline.md) | 中文版
+
 # 指令流水线模型
 
 [TOC]
