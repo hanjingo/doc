@@ -30,10 +30,20 @@
 - [Minimum Spanning Tree](ALGO/minimum_spanning_tree.md)
 - [Queue](ALGO/queue.md)
 - [Red Black Tree](ALGO/rb_tree.md)
+- [Recursion](ALGO/recursion.md)
 - [Search Algorithm Summary](ALGO/search.md)
 - [Sortest Path Problem](ALGO/shortest_path_problem.md)
 - [Sorting Algorithm Summary](ALGO/sort.md)
 - [Tree](ALGO/tree.md)
+
+### LeetCode
+
+- [Backtracking Problem](ALGO/LEET_CODE/back_tracking.md)
+- [Eight Queens Problem](ALGO/LEET_CODE/eight_queen.md)
+- [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+- [Recursive Problem](ALGO/LEET_CODE/recursive.md)
+- [Search Problem](ALGO/LEET_CODE/search.md)
+- [Tree Problem](ALGO/LEET_CODE/tree.md)
 
 ---
 
@@ -45,6 +55,7 @@
 - [Design](DB/design.md)
 - [Relational Model](DB/relational_model.md)
 - [SQL Language](DB/sql.md)
+- [DB Table](DB/table.md)
 - [Terminology](DB/terminology.md)
 - [Transaction](DB/transaction.md)
 
@@ -64,14 +75,14 @@
 - [System Models](DCS/system_model.md)
 - [Distributed Tracing](DCS/tracing.md)
 
-# Protocol
+### Protocol
 
 - [BitTorrent Protocol](DCS/PROTOCOL/bittorrent.md)
 - [DHT](DCS/PROTOCOL/dht.md)
 - [Kademlia Algorithm](DCS/PROTOCOL/kad.md)
 - [Merkle Tree](DCS/PROTOCOL/merkle.md)
 
-## [Consensus](DCS/CONSENSUS/README.md)
+### [Consensus](DCS/CONSENSUS/README.md)
 
 - [Casper Consensus](DCS/CONSENSUS/casper.md)
 - [Delegated Byzantine Fault Tolerance (DBFT)](DCS/CONSENSUS/dbft.md)
@@ -85,7 +96,7 @@
 - [Ripple Consensus (Rayleigh wave consensus mechanism)](DCS/CONSENSUS/ripple.md)
 - [Zero-Knowledge Proof (zero-knowledge-proof)](DCS/CONSENSUS/zk-SNARK.md)
 
-## [Other](DCS/OTHER/README.md)
+### [Other](DCS/OTHER/README.md)
 
 - [Bancor Protocol](DCS/OTHER/bancor.md)
 
@@ -243,6 +254,7 @@
 - [Multi Processor](OS/multi_processor.md)
 - [Instruction Pipeline Model](OS/pipeline.md)
 - [Process, Thread And Coroutine](OS/progress_thread_coroutine.md)
+- [System Security](OS/safe.md)
 - [Static Linking](OS/static_link.md)
 - [Storage](OS/storage.md)
 - [UNIX Kernel](OS/unix_core.md)
@@ -253,7 +265,11 @@
 
 ## [Project](PROJ/README.md)
 
-- [Design Pattern](PROJ/design_pattern.md)
+- [Terminology](PROJ/terminology.md)
+- [Development Tools](PROJ/dev_tool.md)
+- [Project Management](PROJ/proj_manage.md)
+- [Software Engineering](PROJ/software_engineering.md)
+- [Software Test](PROJ/software_test.md)
 
 ### [ROS](PROJ/ROS/README.md)
 

@@ -1,120 +1,374 @@
 English | [中文版](io_zh.md)
 
-# Input/Output (I/O)
+# I/O
 
 [TOC]
 
-This note summarizes key concepts about I/O from a programmer's perspective, following the style and emphasis of CS:APP. It explains the Unix I/O abstraction, the kernel data structures used to represent open files, buffering and caching, synchronous vs asynchronous I/O, I/O multiplexing (select/poll/epoll), DMA and interrupts, and practical performance and correctness tips.
 
-## I/O as Files
+## I/O System Hierarchy
 
-Unix treats devices and many other communication endpoints as files: a uniform interface for reading and writing data. The common system calls are read, write, open, close, lseek, pread/pwrite, and variants such as readv/writev for scatter/gather.
+### I/O System Module Hierarchy
 
-This single-file abstraction lets programmers manipulate diverse resources (regular files, pipes, sockets, character devices, block devices) with the same basic API, while device-specific behavior is handled inside the kernel or device driver.
+![io_layer](res/io_layer.png)
 
-## Kernel data structures for open files
+### Interface Between Device and Controller
 
-When a process opens a file, the kernel builds/links several objects to represent the operation. A simplified view is:
+![io_controller_interface](res/io_controller_interface.png)
 
-- Process file descriptor table: a per-process array mapping small integers (file descriptors) to pointers to open-file entries.
-- System-wide open-file table (open-file entries): each entry holds the current file offset, access mode flags, reference count, and a pointer to an underlying vnode/inode or device object.
-- Vnode / inode / file object: represents the underlying filesystem object (inode on Unix), containing metadata (owner, permissions, size, timestamps) and pointers to the on-disk blocks.
+### Device Controller
 
-The separation makes it possible to have multiple descriptors (possibly in different processes) that share the same open-file entry (e.g., after fork), or to have distinct entries with their own offsets (e.g., after dup2 or separate opens).
+![io_device_controller](res/io_device_controller.png)
 
-Refer to the illustrations in `res/open_file.png` and `res/file_sharing.png` for a visual of these relationships.
+### Memory-Mapped I/O
 
-## Buffering, caching, and the page cache
+![io_mem_image_io](res/io_mem_image_io.png)
 
-To reduce device I/O overhead, modern kernels use buffering and caching layers:
+*Uses specific instruction forms*
 
-- Page cache (or buffer cache): file data read from disk is cached in memory in pages. Subsequent reads may be satisfied from memory without hitting the disk. Writes are often buffered and flushed later (write-back) unless the file was opened with synchronous flags.
-- Block/device buffers: block devices (disks) may have additional buffering inside the driver or hardware.
+### I/O Channel
 
-Important implications:
+There is an `I/O Channel` between the CPU and I/O devices. Its main purpose is to establish independent I/O operations, so that data transfer can be independent of the CPU, and also to make the organization, management, and completion handling of I/O operations as independent as possible, ensuring the CPU has more time for data processing.
 
-- Consistency: applications must use fsync or O_SYNC if they require durability guarantees; without that, buffered writes may be lost on crash.
-- Memory pressure: the page cache competes with application memory; under memory pressure the kernel reclaims cache pages.
-- Direct I/O and O_DIRECT: bypass the page cache to avoid copying and caching for workloads that manage their own buffering (databases, some high-performance apps).
+#### Byte Multiplexor Channel
 
-## Blocking vs non-blocking I/O
+![io_BMC](res/io_BMC.png)
 
-- Blocking I/O: a read or write call blocks the calling thread until data is available or the operation completes.
-- Non-blocking I/O: file descriptors can be configured with O_NONBLOCK; calls return immediately with EAGAIN/EWOULDBLOCK if they would block.
+**As long as the byte multiplexor channel scans each subchannel fast enough, and the devices connected to the subchannels are not too fast (not suitable for high-speed devices), information will not be lost.**
 
-Non-blocking I/O is useful in event-driven programs, but it requires handling partial reads/writes and retry logic.
+#### Block Selector Channel
 
-## I/O Multiplexing: select, poll, epoll
+TODO
 
-I/O multiplexing lets a single thread wait for events on many descriptors.
+#### Block Multiplexor Channel
 
-- select: portable but has limits (fixed FD_SETSIZE, O(N) scanning). Not suitable for very large numbers of descriptors.
-- poll: addresses FD_SET size limits but still O(N) and requires rebuilding event arrays.
-- epoll (Linux): scalable, edge-triggered or level-triggered modes, efficient for large numbers of descriptors because it avoids scanning busy lists on every call.
+TODO
 
-When to use multiplexing vs threads:
 
-- Multiplexing: fits event-driven architectures and avoids per-connection threads; good for workloads with many concurrent, mostly-idle connections.
-- Threads: easier to program with blocking I/O; each thread blocks independently. On many-core systems, threads can exploit parallelism but introduce synchronization complexity.
+## Summary of fcntl, ioctl, and Routing Socket Operations
 
-Trade-offs:
+| Operation                        | fcntl               | ioctl                | Routing Socket | POSIX      |
+| --------------------------------- | ------------------- | -------------------- | ------------- | ---------- |
+| Set socket to non-blocking I/O    | F_SETFL, O_NONBLOCK | FIONBIO              |               | fcntl      |
+| Set socket to signal-driven I/O   | F_SETFL, O_ASYNC    | FIOASYNC             |               | fcntl      |
+| Set socket owner                  | F_SETOWN            | SIOCSPGRP or FIOSETOWN |             | fcntl      |
+| Get socket owner                  | F_GETOWN            | SIOCGPGRP or FIOGETOWN |             | fcntl      |
+| Get bytes in receive buffer       |                     | FIONREAD             |               |            |
+| Test if socket is at out-of-band  |                     | SIOCATMARK           |               | sockatmark |
+| Get interface list                |                     | SIOCGIFCONF          | sysctl        |            |
+| Interface operations              |                     | `SIOC[GS]IFxxx`      |               |            |
+| ARP cache operations              |                     | SIOCxARP             | RTM_xxx       |            |
+| Routing table operations          |                     | SIOCxxxRT            | RTM_xxx       |            |
 
-- Event-driven code can be more complex (state machines, careful partial I/O handling).
-- Thread-per-connection designs can simplify logic but incur higher context-switch and memory costs for many connections.
+The fcntl function provides the following features related to network programming:
 
-## Asynchronous I/O and modern interfaces
+- Non-blocking I/O: Use F_SETFL with O_NONBLOCK to set a socket to non-blocking mode.
+- Signal-driven I/O: Use F_SETFL with O_ASYNC to set a socket so that the kernel generates a SIGIO signal when its state changes.
+- F_SETOWN: Allows specifying the owner of the socket to receive SIGIO and SIGURG signals. SIGIO is generated when the socket is set to signal-driven I/O, and SIGURG is generated when new out-of-band data arrives. F_GETOWN returns the current owner.
 
-Historically, POSIX AIO and Linux aio provided kernel-assisted async I/O but had portability and implementation limitations. More recent approaches include:
 
-- io_uring (Linux): a powerful, efficient API based on submission and completion queues that supports true async operations, zero-copy where possible, and reduced syscall overhead.
-- platform-specific async frameworks: Windows IOCP, BSD kqueue, etc.
+## I/O Efficiency
 
-Use cases for async I/O: high-performance servers, storage systems, and programs that want to overlap I/O and computation without many threads.
+### Read Ahead
 
-## DMA, interrupts, and device drivers
+Most file systems use some form of read ahead to improve performance. When sequential reading is detected, the system tries to read more data than requested, assuming the application will soon read it.
 
-At the hardware level, devices often use DMA (Direct Memory Access) to transfer data between device memory and system memory without continuous CPU intervention. Key points:
+### Delayed Write
 
-- Interrupts notify the CPU that an I/O event completed (or needs service). Drivers run interrupt handlers to schedule work and wake blocked processes.
-- For high throughput, drivers and hardware use techniques like scatter/gather DMA, NIC receive/transmit rings, and interrupt mitigation (coalescing).
+In traditional UNIX systems, the kernel has buffer or page caches, and most disk I/O goes through these buffers. When writing to a file, the kernel usually copies data to the buffer first, queues it, and writes to disk later.
 
-Device drivers abstract these details and present a standardized interface (character/block device semantics, or socket-like APIs for network devices).
 
-## Scatter/gather and vectored I/O
+## Common I/O Errors
 
-System calls like readv/writev let you perform scatter/gather I/O (read into multiple buffers or write from multiple buffers) in a single syscall. These reduce copies and syscalls for common patterns (e.g., header+payload writes).
+### TOCTTOU Error
 
-## File locking and concurrency
+`time-of-check-to-time-of-use`: If there are two file-based function calls, and the second depends on the result of the first, the program is fragile; the file may change between the two calls, making the first result invalid and leading to errors.
 
-- Advisory locks: fcntl locks are advisory on Unix: cooperating processes must respect them.
-- flock is a simpler flock-style lock; semantics differ across systems.
 
-Locks are about coordinating access; they do not replace careful handling of partial I/O or atomicity where required.
+## Posix API
 
-## Performance and correctness tips
+### access/faccessat
 
-- Use the right abstraction: regular file I/O, sockets, and device I/O have different performance characteristics.
-- Minimize syscalls: batch I/O when possible (writev, readv, sendmmsg, recvmmsg).
-- Prefer non-blocking + event-driven or async APIs for high-concurrency servers.
-- Measure and tune: use tools like iostat, sar, perf, and strace to find bottlenecks.
-- Use O_DIRECT or tuned fsync policies for workloads that need predictable latency (but be careful: O_DIRECT imposes alignment constraints).
-- Be explicit about durability: use fsync/fdatasync or O_SYNC when you need crash-consistent behavior.
+```c++
+#include <unistd.h>
+int access(const char *pathname, int mode);
+int faccessat(int fd, const char *pathname, int mode, int flag);
+```
 
-## I/O multiplexing: pros and cons (summary)
+- `fd`: File descriptor
+- `pathname`: Absolute/relative path
+- `mode`: Mode
 
-Pros:
+	| mode | Description    |
+	| ---- | -------------- |
+	| R_OK | Test read      |
+	| W_OK | Test write     |
+	| X_OK | Test execute   |
 
-- Event-driven designs provide fine-grained control and can be more efficient for many concurrent idle connections.
-- Single-threaded event loops avoid many synchronization bugs and reduce context-switch overhead.
+- `flags`: Flags
+- Return value:
+	- Success: 0
+	- Failure: -1
 
-Cons:
+*Test access permissions.*
 
-- Event-driven code is more complex to write and reason about.
-- Single-threaded event loops do not automatically utilize multiple CPU cores; combining them with thread pools or multiple event loops is common.
+### fcntl
 
-## Additional references
+```c
+#include<fcntl.h>
+int fcntl(int fd, int cmd, ...);
+```
 
-- Randal E. Bryant and David R. O'Hallaron, Computer Systems: A Programmer's Perspective (CS:APP), 3rd ed.
-- Linux man pages: open(2), read(2), write(2), select(2), poll(2), epoll(7), aio(7), io_uring(7).
+- `fd`: File descriptor
+- `cmd`: Command
+	- `F_DUPFD`: Duplicate file descriptor, returns new fd.
+	- `F_DUPFD_CLOEXEC`: Duplicate fd, set FD_CLOEXEC, return new fd.
+	- `F_GETFD`: Get fd flags.
+	- `F_SETFD`: Set fd flags.
+	- `F_GETFL`: Get file status flags.
+	- `F_SETFL`: Set file status flags (O_APPEND, O_NONBLOCK, O_SYNC, O_DSYNC, O_RSYNC, O_FSYNC, O_ASYNC).
+	- `F_GETOWN`: Get process/group ID for SIGIO/SIGURG.
+	- `F_SETOWN`: Set process/group ID for SIGIO/SIGURG.
+- Return value:
+	- Success: depends on cmd
+	- Failure: -1
 
-<!-- End of I/O note -->
+fcntl has 5 functions:
+
+1. Duplicate an existing descriptor (F_DUPFD or F_DUPFD_CLOEXEC)
+2. Get/set fd flags (F_GETFD or F_SETFD)
+3. Get/set file status flags (F_GETFL or F_SETFL)
+4. Get/set async I/O ownership (F_GETOWN or F_SETOWN)
+5. Get/set record locks (F_GETLK, F_SETLK, F_SETLKW)
+
+File status flags for fcntl:
+
+| Flag       | Description                                 |
+| ---------- | ------------------------------------------- |
+| O_RDONLY   | Open for read only                          |
+| O_WRONLY   | Open for write only                         |
+| O_RDWR     | Open for read and write                     |
+| O_EXEC     | Open for execute only                       |
+| O_SEARCH   | Open directory for search only               |
+| O_APPEND   | Append on each write                        |
+| O_NONBLOCK | Non-blocking mode                           |
+| O_SYNC     | Wait for write complete (data and attr)     |
+| O_DSYNC    | Wait for write complete (data only)         |
+| O_RSYNC    | Synchronized read and write                 |
+| O_FSYNC    | Wait for write complete (FreeBSD/Mac OS X)  |
+| O_ASYNC    | Async I/O (FreeBSD/Mac OS X only)           |
+
+### open/openat
+
+```c
+#include <fcntl>
+int open(const char* path, int oflag, ...);
+int openat(int fd, const char* path, int oflag, ...);
+```
+
+- `fd`: File descriptor
+	1. If path is absolute, fd is ignored, open=openat
+	2. If path is relative, fd is the base dir
+	3. If path is relative and fd is AT_FDCWD, path is relative to cwd
+- `path`: File/dir name to open/create
+- `oflag`: Options
+	Required:
+	- `O_RDONLY` Open for read only
+	- `O_WRONLY` Open for write only
+	- `O_RDWR` Open for read/write
+	- `O_EXEC` Open for execute only
+	- `O_SEARCH` Open dir for search only
+	Optional:
+	- `O_APPEND` Append on each write
+	- `O_CLOEXEC` Set FD_CLOEXEC
+	- `O_CREAT` Create if not exist
+	- `O_DIRECTORY` Error if not dir
+	- `O_EXCL` Error if exists and O_CREAT
+	- `O_NOCTTY` Do not assign controlling terminal
+	- `O_NOFOLLOW` Error if symlink
+	- `O_NONBLOCK` Non-blocking for FIFO/block/char
+	- `O_SYNC` Wait for write complete (incl. attr)
+- Return value:
+	- Success: file descriptor
+	- Failure: -1
+
+Open file/dir.
+
+### creat
+
+```c
+#include <fcntl.h>
+int create(const char* path, mode_t mode);
+```
+
+- `path`: Path
+- `mode`: Creation mode
+- Return value:
+	- Success: write-only fd
+	- Failure: -1
+
+Create new file, equivalent to `open(path, O_RDWR|O_CREAT|O_TRUNC, mode);`
+
+### close
+
+```c
+#include <unistd.h>
+int close(int fd);
+```
+
+- `fd`: File descriptor
+- Return value:
+	- Success: 0
+	- Failure: -1
+
+Close file
+
+### lseek
+
+```c
+#include <unistd.h>
+off_t lseek(int fd, off_t offset, int whence);
+```
+
+- `fd`: File descriptor
+- `offset`: Offset
+- `whence`: Position
+	- `SEEK_SET` Set offset from start
+	- `SEEK_CUR` Set offset from current
+	- `SEEK_END` Set offset from end
+- Return value:
+	- Success: new offset
+	- Failure: -1
+
+Set offset for open file
+
+### read
+
+```c
+#include <unistd.h>
+ssize_t read(int fd, void *buf, size_t nbytes);
+```
+
+- `fd`: File descriptor
+- `buf`: Buffer
+- `nbytes`: Number of bytes to read
+- Return value:
+	- Success: bytes read
+	- EOF: 0
+	- Failure: -1
+
+Read data from file
+
+Cases where fewer bytes than requested are read:
+
+- End of file before requested bytes
+- Terminal device buffering
+- Pipe/FIFO with fewer bytes than requested
+- Record-oriented device (e.g., tape): at most one record
+- Interrupted by signal after partial read
+
+### write
+
+```c
+#include <unistd.h>
+ssize_t write(int fd, const void* buf, size_t nbytes);
+```
+
+- `fd`: File descriptor
+- `buf`: Buffer
+- `nbytes`: Number of bytes to write
+- Return value:
+	- Success: bytes written (== requested)
+	- Failure: -1 or bytes written (< requested)
+
+Write data to file
+
+### dup/dup2
+
+```c
+#include <unistd.h>
+int dup(int fd);
+int dup2(int fd, int fd2);
+```
+
+- `fd`: File descriptor to duplicate
+- `fd2`: Desired value for new fd
+	- If `fd2` is open, close it first
+	- If `fd` == `fd2`, return `fd2` without closing
+	- Otherwise, `fd2`'s FD_CLOEXEC is cleared, and it remains open after exec
+- Return value:
+	- Success: new fd
+	- Failure: -1
+
+Duplicate an existing file descriptor
+
+Example: structure when new fd shares file table entry with fd:
+
+![io_file_table_example](res/io_file_table_example.png)
+
+### sync
+
+```c
+#include <unistd.h>
+void sync(void);
+```
+
+`sync` queues all modified buffer blocks for writing and returns immediately; **it does not wait for actual disk write to finish.**
+
+### fsync
+
+```c
+#include <unistd.h>
+int fsync(int fd);
+```
+
+- `fd`: File descriptor
+- Return value:
+	- Success: 0
+	- Failure: -1
+
+`fsync` only affects the file specified by fd and waits for disk write to finish before returning.
+
+### fdatasync
+
+```c
+#include <unistd.h>
+int fdatasync(int fd);
+```
+
+- `fd`: File descriptor
+- Return value:
+	- Success: 0
+	- Failure: -1
+
+`fdatasync` is similar to `fsync`, but only affects file data, not attributes.
+
+### ioctl
+
+```c
+#include <unistd.h>
+#include <sys/ioctl.h>
+int ioctl(int fd, int request, ...);
+```
+
+- `fd`: File descriptor
+- `request`: Request
+- Return value:
+	- Success: other value
+	- Failure: -1
+
+UNIX systems use ioctl for many miscellaneous device operations, and some implementations extend it to regular files.
+
+Common ioctl operations in FreeBSD:
+
+| Category   | Constant | Header                | Count |
+| ---------- | -------- | --------------------- | ----- |
+| Disk label | DIOxxx   | `<sys/disklable.h>`   | 4     |
+| File I/O   | FIOxxx   | `<sys/filio.h>`       | 14    |
+| Tape I/O   | MTIOxxx  | `<sys/mtio.h>`        | 11    |
+| Socket I/O | SIOxxx   | `<sys/sockio.h>`      | 73    |
+| Terminal   | TIOxxx   | `<sys/ttycom.h>`      | 43    |
+
+
+## Reference
+
+[1] Advanced Programming in the UNIX Environment, 3rd Edition, Chapter 3: File I/O

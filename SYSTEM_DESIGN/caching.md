@@ -4,6 +4,14 @@
 
 
 
+## Eviction Strategies
+
+### Least Recently Used(LRU)
+
+
+
+
+
 ## General-Purpose DB Caching System
 
 ### Cache System Evaluation Metrics
@@ -329,4 +337,5 @@ TODO
 - [Database Replication in System Design](https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/)
 - [Introduction to Database Normalization](https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/)
 - [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
+- [Cache Eviction Policies | System Design](https://www.geeksforgeeks.org/system-design/cache-eviction-policies-system-design/)
 

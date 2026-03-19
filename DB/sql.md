@@ -7,46 +7,6 @@ English | [中文版](sql_zh.md)
 
 
 
-## Terminology
-
-- Database
-- Table
-- Column
-- Row
-- Primary key
-- Structured Query Language (SQL)
-- Keyword
-- Clause
-- Wildcard
-- Search pattern
-- Predicate
-- Field
-- Concatenate
-- Alias
-- Derived column
-- Aggregate function
-- Query
-- Subquery
-- Scale
-- Cartesian product
-- Cross join
-- Equi join
-- Inner join
-- Self join
-- Natural join
-- Outer join
-- Union
-- Compound query
-- Transaction
-- Roll back
-- Commit
-- Savepoint
-- Placeholder
-- Implicit commit
-- Cursor
-- Constraint
-
-
 ## Data Types
 
 | Data Type           | Description                                           |
@@ -72,6 +32,7 @@ English | [中文版](sql_zh.md)
 | VARBINARY           | Variable-length binary data [255B, 8000B]             |
 
 
+
 ## Retrieval
 
 SELECT clause order and usage:
@@ -87,70 +48,70 @@ SELECT clause order and usage:
 
 - Retrieve a single column
 
-```sql
-SELECT prod_name FROM Products;
-```
+  ```sql
+  SELECT prod_name FROM Products;
+  ```
 
 - Retrieve multiple columns
 
-```sql
-SELECT prod_id, prod_name, prod_price FROM Products;
-```
+  ```sql
+  SELECT prod_id, prod_name, prod_price FROM Products;
+  ```
 
 - Retrieve all columns
 
-```sql
-SELECT * FROM Products;
-```
+  ```sql
+  SELECT * FROM Products;
+  ```
 
-Note: selecting unused columns can reduce query and application performance.
+  **Note: selecting unused columns can reduce query and application performance.**
 
 - Retrieve distinct values
 
-```sql
-SELECT DISTINCT vend_id FROM Products;
-```
+  ```sql
+  SELECT DISTINCT vend_id FROM Products;
+  ```
 
 - Limit results
 
-```sql
--- MySQL, MariaDB, PostgreSQL, SQLite
-SELECT prod_name FROM Products LIMIT 5;
-SELECT prod_name FROM Products LIMIT 5 OFFSET 2; -- start from row 2
--- SQL Server, Access
-SELECT TOP 5 prod_name FROM Products;
--- DB2
-SELECT prod_name FROM Products FETCH FIRST 5 ROWS ONLY;
--- Oracle
-SELECT prod_name FROM Products WHERE ROWNUM <= 5;
-```
+  ```sql
+  -- MySQL, MariaDB, PostgreSQL, SQLite
+  SELECT prod_name FROM Products LIMIT 5;
+  SELECT prod_name FROM Products LIMIT 5 OFFSET 2; -- start from row 2
+  -- SQL Server, Access
+  SELECT TOP 5 prod_name FROM Products;
+  -- DB2
+  SELECT prod_name FROM Products FETCH FIRST 5 ROWS ONLY;
+  -- Oracle
+  SELECT prod_name FROM Products WHERE ROWNUM <= 5;
+  ```
 
 ### Ordering
 
 - Sort results
 
-```sql
-SELECT prod_name FROM Products ORDER BY prod_name;
-```
+  ```sql
+  SELECT prod_name FROM Products ORDER BY prod_name;
+  ```
 
 - Sort by multiple columns
 
-```sql
-SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price, prod_name;
-```
+  ```sql
+  SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price, prod_name;
+  ```
 
 - Sort by column position
 
-```sql
-SELECT prod_id, prod_price, prod_name FROM Products ORDER BY 2, 3; -- first by prod_price, then by prod_name
-```
+  ```sql
+  SELECT prod_id, prod_price, prod_name FROM Products ORDER BY 2, 3; -- first by prod_price, then by prod_name
+  ```
 
 - Specify sort direction
 
-```sql
-SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC; -- descending
-SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC, prod_name; -- prod_name defaults to ascending
-```
+  ```sql
+  SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC; -- descending
+  SELECT prod_id, prod_price, prod_name FROM Products ORDER BY prod_price DESC, prod_name; -- prod_name defaults to ascending
+  ```
 
 ### Filtering
 
@@ -167,76 +128,77 @@ WHERE operators:
 
 - Filter by a condition
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE prod_price = 3.49;
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE prod_price = 3.49;
+  ```
 
-Note: `ORDER BY` must appear after `WHERE` when both are used.
+  **Note: `ORDER BY` must appear after `WHERE` when both are used.**
 
 - Check a single condition
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE prod_price < 10;
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE prod_price < 10;
+  ```
 
 - Not equal checks
 
-```sql
-SELECT vend_id, prod_name FROM Products WHERE vend_id <> 'DLL01';
-SELECT vend_id, prod_name FROM Products WHERE vend_id != 'DLL01';
-```
+  ```sql
+  SELECT vend_id, prod_name FROM Products WHERE vend_id <> 'DLL01';
+  SELECT vend_id, prod_name FROM Products WHERE vend_id != 'DLL01';
+  ```
 
-Note: `!=` and `<>` are generally interchangeable.
+  **Note: `!=` and `<>` are generally interchangeable.**
 
 - Range check
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE prod_price BETWEEN 5 AND 10;
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE prod_price BETWEEN 5 AND 10;
+  ```
 
 - NULL check
 
-```sql
-SELECT prod_name FROM Products WHERE prod_price IS NULL;
-```
+  ```sql
+  SELECT prod_name FROM Products WHERE prod_price IS NULL;
+  ```
 
 - Multiple conditions
 
-```sql
-SELECT prod_id, prod_price, prod_name FROM Products WHERE vend_id = 'DLL01' AND prod_price <= 4;
-```
+  ```sql
+  SELECT prod_id, prod_price, prod_name FROM Products WHERE vend_id = 'DLL01' AND prod_price <= 4;
+  ```
 
 - Match any condition
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE vend_id = 'DLL01' OR vend_id = 'BRS01';
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE vend_id = 'DLL01' OR vend_id = 'BRS01';
+  ```
 
 - Specify order of evaluation
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE (vend_id = 'DLL01' OR vend_id = 'BRS01') AND prod_price >= 10; -- parentheses precedence
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE (vend_id = 'DLL01' OR vend_id = 'BRS01') AND prod_price >= 10; -- parentheses precedence
+  ```
 
 - Specify a set
 
-```sql
-SELECT prod_name, prod_price FROM Products WHERE vend_id IN ('DLL01', 'BRS01') ORDER BY prod_name;
-SELECT prod_name, prod_price FROM Products WHERE vend_id = 'DLL01' OR vend_id = 'BRS01' ORDER BY prod_name; -- equivalent
-```
+  ```sql
+  SELECT prod_name, prod_price FROM Products WHERE vend_id IN ('DLL01', 'BRS01') ORDER BY prod_name;
+  SELECT prod_name, prod_price FROM Products WHERE vend_id = 'DLL01' OR vend_id = 'BRS01' ORDER BY prod_name; -- equivalent
+  ```
 
-Advantages of `IN`:
-1. Clearer syntax when many valid options exist;
-2. Easier precedence management when combined with `AND`/`OR`;
-3. Often faster than multiple `OR` conditions;
-4. `IN` can include another `SELECT`, making WHERE more dynamic.
+  Advantages of `IN`:
+
+  1. Clearer syntax when many valid options exist;
+  2. Easier precedence management when combined with `AND`/`OR`;
+  3. Often faster than multiple `OR` conditions;
+  4. `IN` can include another `SELECT`, making WHERE more dynamic.
 
 - Negation
 
-```sql
-SELECT prod_name FROM Products WHERE NOT vend_id = 'DLL01' ORDER BY prod_name;
-SELECT prod_name FROM Products WHERE vend_id <> 'DLL01' ORDER BY prod_name; -- equivalent
-```
+  ```sql
+  SELECT prod_name FROM Products WHERE NOT vend_id = 'DLL01' ORDER BY prod_name;
+  SELECT prod_name FROM Products WHERE vend_id <> 'DLL01' ORDER BY prod_name; -- equivalent
+  ```
 
 ### Wildcards
 
@@ -247,31 +209,32 @@ Wildcard usage tips:
 
 - `%`
 
-```sql
-SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE 'Fish%'; -- starts with 'Fish'
-SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE '%bean bag%'; -- contains 'bean bag'
-SELECT prod_name FROM Products WHERE prod_name LIKE 'F%y'; -- starts with F and ends with y
-```
+  ```sql
+  SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE 'Fish%'; -- starts with 'Fish'
+  SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE '%bean bag%'; -- contains 'bean bag'
+  SELECT prod_name FROM Products WHERE prod_name LIKE 'F%y'; -- starts with F and ends with y
+  ```
 
-Note: `%` does not match NULL values.
+  Note: `%` does not match NULL values.
 
 - `_`
 
-```sql
-SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE '__ inch teddy bear'; -- matches a two-digit number
-```
+  ```sql
+  SELECT prod_id, prod_name FROM Products WHERE prod_name LIKE '__ inch teddy bear'; -- matches a two-digit number
+  ```
 
-Note 1: DB2 may not support `_`.
-Note 2: Microsoft Access uses `?` instead of `_`.
+  Note 1: DB2 may not support `_`.
+  Note 2: Microsoft Access uses `?` instead of `_`.
 
 - `[]`
 
-```sql
-SELECT cust_contact FROM Customers WHERE cust_contact LIKE '[JM]%' ORDER BY cust_contact; -- matches values starting with 'J' or 'M'
+  ```sql
+  SELECT cust_contact FROM Customers WHERE cust_contact LIKE '[JM]%' ORDER BY cust_contact; -- matches values starting with 'J' or 'M'
+  
+  SELECT cust_contact FROM Customers WHERE cust_contact LIKE '[^JM]%' ORDER BY cust_contact; -- matches values not starting with 'J' or 'M'
+  SELECT cust_contact FROM NOT cust_contact LIKE '[JM]%' ORDER BY cust_contact; -- equivalent to '[^JM]%'
+  ```
 
-SELECT cust_contact FROM Customers WHERE cust_contact LIKE '[^JM]%' ORDER BY cust_contact; -- matches values not starting with 'J' or 'M'
-SELECT cust_contact FROM NOT cust_contact LIKE '[JM]%' ORDER BY cust_contact; -- equivalent to '[^JM]%'
-```
 
 
 ## Computed Columns
@@ -312,6 +275,7 @@ SELECT prod_id, quantity, item_price, quantity*item_price AS expanded_price FROM
 ```
 
 
+
 ## Functions
 
 ### Text functions
@@ -331,9 +295,9 @@ Common text functions:
 
 - Search by SOUNDEX
 
-```sql
-SELECT cust_name, cust_contact FROM Customers WHERE SOUNDEX(cust_contact) = SOUNDEX('Michael Green'); -- find similar-sounding values
-```
+  ```sql
+  SELECT cust_name, cust_contact FROM Customers WHERE SOUNDEX(cust_contact) = SOUNDEX('Michael Green'); -- find similar-sounding values
+  ```
 
 ### Date and time functions
 
@@ -380,6 +344,7 @@ SELECT order_num FROM Orders WHERE strftime('%Y', order_date) = '2012';
 | `TAN()`  | Tangent of an angle        |
 
 
+
 ## Aggregation
 
 SQL aggregate functions:
@@ -394,50 +359,52 @@ SQL aggregate functions:
 
 - Average
 
-```sql
-SELECT AVG(prod_price) AS avg_price FROM Products;
-SELECT AVG(prod_price) AS avg_price FROM Products WHERE vend_id = 'DLL01';
-```
+  ```sql
+  SELECT AVG(prod_price) AS avg_price FROM Products;
+  SELECT AVG(prod_price) AS avg_price FROM Products WHERE vend_id = 'DLL01';
+  ```
 
 - Count
 
-```sql
-SELECT COUNT(*) AS num_cust FROM Customers;
-SELECT COUNT(cust_email) AS num_cust FROM Customers; -- count non-null emails
-```
+  ```sql
+  SELECT COUNT(*) AS num_cust FROM Customers;
+  SELECT COUNT(cust_email) AS num_cust FROM Customers; -- count non-null emails
+  ```
 
 - Max
 
-```sql
-SELECT MAX(prod_price) AS max_price FROM Products;
-```
+  ```sql
+  SELECT MAX(prod_price) AS max_price FROM Products;
+  ```
 
 - Min
 
-```sql
-SELECT MIN(prod_price) AS min_price FROM Products;
-```
+  ```sql
+  SELECT MIN(prod_price) AS min_price FROM Products;
+  ```
 
 - Sum
 
-```sql
-SELECT SUM(quantity) AS items_ordered FROM OrderItems WHERE order_num = 20005;
-SELECT SUM(item_price*quantity) AS total_price FROM OrderItems WHERE order_num = 20005;
-```
+  ```sql
+  SELECT SUM(quantity) AS items_ordered FROM OrderItems WHERE order_num = 20005;
+  SELECT SUM(item_price*quantity) AS total_price FROM OrderItems WHERE order_num = 20005;
+  ```
 
 - Distinct averages
 
-```sql
-SELECT AVG(DISTINCT prod_price) AS avg_price FROM Products WHERE vend_id = 'DLL01';
-```
+  ```sql
+  SELECT AVG(DISTINCT prod_price) AS avg_price FROM Products WHERE vend_id = 'DLL01';
+  ```
 
-Note: `DISTINCT` cannot be used with `COUNT(*)`.
+  **Note: `DISTINCT` cannot be used with `COUNT(*)`.**
 
 - Combine multiple aggregates
 
-```sql
-SELECT COUNT(*) AS num_items, MIN(prod_price) AS price_min, MAX(prod_price) AS price_max, AVG(prod_price) AS price_avg FROM Products;
-```
+  ```sql
+  SELECT COUNT(*) AS num_items, MIN(prod_price) AS price_min, MAX(prod_price) AS price_max, AVG(prod_price) AS price_avg FROM Products;
+  ```
+
+  
 
 
 ## Grouping
@@ -461,47 +428,51 @@ Difference between `ORDER BY` and `GROUP BY`:
 
 - Grouping example
 
-```sql
-SELECT vend_id, COUNT(*) AS num_prods FROM Products GROUP BY vend_id;
-```
+  ```sql
+  SELECT vend_id, COUNT(*) AS num_prods FROM Products GROUP BY vend_id;
+  ```
 
 - `HAVING` to filter groups
 
-```sql
-SELECT cust_id, COUNT(*) AS orders FROM Orders GROUP BY cust_id HAVING COUNT(*) >= 2;
-
-SELECT vend_id, COUNT(*) AS num_prods FROM Products WHERE prod_price >= 4 GROUP BY vend_id HAVING COUNT(*) >= 2;
-
-SELECT vend_id, COUNT(*) AS num_prods FROM Products GROUP BY vend_id HAVING COUNT(*) >= 2;
-```
+  ```sql
+  SELECT cust_id, COUNT(*) AS orders FROM Orders GROUP BY cust_id HAVING COUNT(*) >= 2;
+  
+  SELECT vend_id, COUNT(*) AS num_prods FROM Products WHERE prod_price >= 4 GROUP BY vend_id HAVING COUNT(*) >= 2;
+  
+  SELECT vend_id, COUNT(*) AS num_prods FROM Products GROUP BY vend_id HAVING COUNT(*) >= 2;
+  ```
 
 - Grouped sorting
 
-```sql
-SELECT order_num, COUNT(*) AS items FROM OrderItems GROUP BY order_num HAVING COUNT(*) >= 3 ORDER BY items, order_num;
-```
+  ```sql
+  SELECT order_num, COUNT(*) AS items FROM OrderItems GROUP BY order_num HAVING COUNT(*) >= 3 ORDER BY items, order_num;
+  ```
+
+  
 
 
 ## Subqueries
 
 - Subquery examples
 
-```sql
-SELECT cust_id FROM Orders WHERE order_num IN (SELECT order_num FROM OrderItems WHERE prod_id = 'RGAN01');
+  ```sql
+  SELECT cust_id FROM Orders WHERE order_num IN (SELECT order_num FROM OrderItems WHERE prod_id = 'RGAN01');
+  
+  SELECT cust_name, cust_contact FROM Customers WHERE cust_id IN (SELECT cust_id FROM Orders WHERE order_num IN (SELECT order_num FROM OrderItems WHERE prod_id = 'RGAN01'));
+  ```
 
-SELECT cust_name, cust_contact FROM Customers WHERE cust_id IN (SELECT cust_id FROM Orders WHERE order_num IN (SELECT order_num FROM OrderItems WHERE prod_id = 'RGAN01'));
-```
-
-Note 1: a subquery used as a value must return a single column.
-Note 2: subqueries can be less efficient; use with care.
+  **Note 1: a subquery used as a value must return a single column.**
+  **Note 2: subqueries can be less efficient; use with care.**
 
 - Create computed column with subquery
 
-```sql
-SELECT cust_name, cust_state, (SELECT COUNT(*) FROM Orders WHERE Orders.cust_id = Customers.cust_id) AS orders FROM Customers ORDER BY cust_name;
-```
+  ```sql
+  SELECT cust_name, cust_state, (SELECT COUNT(*) FROM Orders WHERE Orders.cust_id = Customers.cust_id) AS orders FROM Customers ORDER BY cust_name;
+  ```
 
-Note: this is not the most efficient retrieval method.
+  **Note: this is not the most efficient retrieval method.**
+
+  
 
 
 ## Joins
@@ -515,62 +486,63 @@ Join usage notes:
 
 - Simple join
 
-```sql
-SELECT vend_name, prod_name, prod_price FROM Vendors, Products WHERE Vendors.vend_id = Products.vend_id;
-```
+  ```sql
+  SELECT vend_name, prod_name, prod_price FROM Vendors, Products WHERE Vendors.vend_id = Products.vend_id;
+  ```
 
 - Inner join
 
-```sql
-SELECT vend_name, prod_name, prod_price FROM Vendors INNER JOIN Products ON Vendors.vend_id = Products.vend_id;
-```
+  ```sql
+  SELECT vend_name, prod_name, prod_price FROM Vendors INNER JOIN Products ON Vendors.vend_id = Products.vend_id;
+  ```
 
 - Multi-table join
 
-```sql
-SELECT prod_name, vend_name, prod_price, quantity FROM OrderItems, Products, Vendors WHERE Products.vend_id = Vendors.vend_id AND OrderItems.prod_id = Products.prod_id AND order_num = 20007;
-```
+  ```sql
+  SELECT prod_name, vend_name, prod_price, quantity FROM OrderItems, Products, Vendors WHERE Products.vend_id = Vendors.vend_id AND OrderItems.prod_id = Products.prod_id AND order_num = 20007;
+  ```
 
-Note 1: more tables in a join generally reduce performance.
-Note 2: SQL does not limit join count, but DBMS implementations may.
+  **Note 1: more tables in a join generally reduce performance.**
+  **Note 2: SQL does not limit join count, but DBMS implementations may.**
 
 - Use table aliases
 
-```sql
-SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors ORDER BY vend_name;
+  ```sql
+  SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors ORDER BY vend_name;
 
-SELECT cust_name, cust_contact FROM Customers AS C, Orders AS O, OrderItems AS OI WHERE C.cust_id = O.cust_id AND OI.order_num = O.order_num AND prod_id = 'RGAN01';
+  SELECT cust_name, cust_contact FROM Customers AS C, Orders AS O, OrderItems AS OI WHERE C.cust_id = O.cust_id AND OI.order_num = O.order_num AND prod_id = 'RGAN01';
 
-SELECT c1.cust_id, c1.cust_name, c1.cust_contact FROM Customers AS c1, Customers AS c2 WHERE c1.cust_name = c2.cust_name AND c2.cust_contact = 'Jim Jones';
-```
+  SELECT c1.cust_id, c1.cust_name, c1.cust_contact FROM Customers AS c1, Customers AS c2 WHERE c1.cust_name = c2.cust_name AND c2.cust_contact = 'Jim Jones';
+  ```
 
-Note: self-joins are generally faster than equivalent subqueries.
+  **Note: self-joins are generally faster than equivalent subqueries.**
 
 - Natural join example
 
-```sql
-SELECT C.*, O.order_num, O.order_date, OI.prod_id, OI.quantity, OI.item_price FROM Customers AS C, Orders AS O, OrderItems AS OI WHERE C.cust_id = O.cust_id AND OI.order_num = O.order_num AND prod_id = 'RGAN01';
-```
+  ```sql
+  SELECT C.*, O.order_num, O.order_date, OI.prod_id, OI.quantity, OI.item_price FROM Customers AS C, Orders AS O, OrderItems AS OI WHERE C.cust_id = O.cust_id AND OI.order_num = O.order_num AND prod_id = 'RGAN01';
+  ```
 
 - Outer joins
 
-```sql
-SELECT Customers.cust_id, Orders.order_num FROM Customers LEFT OUTER JOIN Orders ON Customers.cust_id = Orders.cust_id;
+  ```sql
+  SELECT Customers.cust_id, Orders.order_num FROM Customers LEFT OUTER JOIN Orders ON Customers.cust_id = Orders.cust_id;
 
--- SQLite does not support RIGHT OUTER JOIN
-SELECT Customers.cust_id, Orders.order_num FROM Customers RIGHT OUTER JOIN Orders ON Orders.cust_id = Customers.cust_id;
+  -- SQLite does not support RIGHT OUTER JOIN
+  SELECT Customers.cust_id, Orders.order_num FROM Customers RIGHT OUTER JOIN Orders ON Orders.cust_id = Customers.cust_id;
 
--- Access, MariaDB, MySQL, Open Office Base, SQLite do not support FULL OUTER JOIN
-SELECT Customers.cust_id, Orders.order_num FROM Orders FULL OUTER JOIN Customers ON Orders.cust_id = Customers.cust_id;
-```
+  -- Access, MariaDB, MySQL, Open Office Base, SQLite do not support FULL OUTER JOIN
+  SELECT Customers.cust_id, Orders.order_num FROM Orders FULL OUTER JOIN Customers ON Orders.cust_id = Customers.cust_id;
+  ```
 
 - Joins with aggregates
 
-```sql
-SELECT Customers.cust_id, COUNT(Orders.order_num) AS num_ord FROM Customers INNER JOIN Orders ON Customers.cust_id = Orders.cust_id GROUP BY Customers.cust_id;
+  ```sql
+  SELECT Customers.cust_id, COUNT(Orders.order_num) AS num_ord FROM Customers INNER JOIN Orders ON Customers.cust_id = Orders.cust_id GROUP BY Customers.cust_id;
+  
+  SELECT Customers.cust_id, COUNT(Orders.order_num) AS num_ord FROM Customers LEFT JOIN Orders ON Customers.cust_id = Orders.cust_id GROUP BY Customers.cust_id;
+  ```
 
-SELECT Customers.cust_id, COUNT(Orders.order_num) AS num_ord FROM Customers LEFT JOIN Orders ON Customers.cust_id = Orders.cust_id GROUP BY Customers.cust_id;
-```
 
 
 ## Compound Queries
@@ -582,99 +554,101 @@ SELECT Customers.cust_id, COUNT(Orders.order_num) AS num_ord FROM Customers LEFT
 
 - `UNION` example
 
-```sql
-SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All';
+  ```sql
+  SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All';
 
-SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') OR cust_name = 'Fun4All';
-```
+  SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') OR cust_name = 'Fun4All';
+  ```
 
 - Include or allow duplicates
 
-```sql
-SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION ALL SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All';
-```
+  ```sql
+  SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION ALL SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All';
+  ```
 
 - Sort union results
 
-```sql
-SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All' ORDER BY cust_name, cust_contact;
-```
+  ```sql
+  SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_state IN ('IL', 'IN', 'MI') UNION SELECT cust_name, cust_contact, cust_email FROM Customers WHERE cust_name = 'Fun4All' ORDER BY cust_name, cust_contact;
+  ```
+
 
 
 ## Insert
 
 - Insert full row
 
-```sql
-INSERT INTO Customers(cust_id, 
-					  cust_name,
-					  cust_address,
-					  cust_city,
-					  cust_state,
-					  cust_zip,
-					  cust_country,
-					  cust_contact,
-					  cust_email) 
-			   VALUES('10000006', 
-					  'Toy Land', 
-					  '123', 
-					  'New York',
-					  'NY', 
-					  '1',
-					  'USA',
-					  NULL, 
-					  NULL);
-```
+  ```sql
+  INSERT INTO Customers(cust_id, 
+              cust_name,
+              cust_address,
+              cust_city,
+              cust_state,
+              cust_zip,
+              cust_country,
+              cust_contact,
+              cust_email) 
+          VALUES('10000006', 
+              'Toy Land', 
+              '123', 
+              'New York',
+              'NY', 
+              '1',
+              'USA',
+              NULL, 
+              NULL);
+  ```
 
 - Insert partial row
 
-```sql
-INSERT INTO Customers(cust_id,
-					  cust_name,
-					  cust_address,
-					  cust_city,
-					  cust_state,
-					  cust_zip,
-					  cust_country)
-			   VALUES('10000006', 
-					  'Toy Land', 
-					  '123', 
-					  'New York',
-					  'NY', 
-					  '1',
-					  'USA');
-```
+  ```sql
+  INSERT INTO Customers(cust_id,
+              cust_name,
+              cust_address,
+              cust_city,
+              cust_state,
+              cust_zip,
+              cust_country)
+          VALUES('10000006', 
+              'Toy Land', 
+              '123', 
+              'New York',
+              'NY', 
+              '1',
+              'USA');
+  ```
 
 - Insert from a query
 
-```sql
-INSERT INTO Customers(cust_id,
-					  cust_contact,
-					  cust_email,
-					  cust_name,
-					  cust_address,
-					  cust_city,
-					  cust_state,
-					  cust_zip,
-					  cust_country)
-SELECT cust_id,
-	   cust_contact,
-	   cust_email,
-	   cust_name,
-	   cust_address,
-	   cust_city,
-	   cust_state,
-	   cust_zip,
-	   cust_country
-FROM CustNew;
-```
+  ```sql
+  INSERT INTO Customers(cust_id,
+              cust_contact,
+              cust_email,
+              cust_name,
+              cust_address,
+              cust_city,
+              cust_state,
+              cust_zip,
+              cust_country)
+  SELECT cust_id,
+      cust_contact,
+      cust_email,
+      cust_name,
+      cust_address,
+      cust_city,
+      cust_state,
+      cust_zip,
+      cust_country
+  FROM CustNew;
+  ```
 
 - Copy table
 
-```sql
-SELECT * INTO CustCopy FROM Customers; -- copy Customers into CustCopy
-CREATE TABLE CustCopy AS SELECT * FROM Customers; -- create CustCopy and copy data
-```
+  ```sql
+  SELECT * INTO CustCopy FROM Customers; -- copy Customers into CustCopy
+  CREATE TABLE CustCopy AS SELECT * FROM Customers; -- create CustCopy and copy data
+  ```
+
 
 
 ## Update and Delete
@@ -688,19 +662,20 @@ Principles when using `UPDATE` or `DELETE`:
 
 - Update data
 
-```sql
-UPDATE Customers SET cust_email = 'abc@qq.com' WHERE cust_id = '100';
+  ```sql
+  UPDATE Customers SET cust_email = 'abc@qq.com' WHERE cust_id = '100';
 
-UPDATE Customers SET cust_contact = 'abc', cust_email = 'abc@qq.com' WHERE cust_id = '100';
+  UPDATE Customers SET cust_contact = 'abc', cust_email = 'abc@qq.com' WHERE cust_id = '100';
 
-UPDATE Customers SET cust_email = NULL WHERE cust_id = '100';
-```
+  UPDATE Customers SET cust_email = NULL WHERE cust_id = '100';
+  ```
 
 - Delete data
 
-```sql
-DELETE FROM Customers WHERE cust_id = '100';
-```
+  ```sql
+  DELETE FROM Customers WHERE cust_id = '100';
+  ```
+
 
 
 ## Table operations
@@ -714,32 +689,33 @@ Table modification notes:
 
 - Create table
 
-```sql
-CREATE TABLE Products
-(
-	prod_id    CHAR(10)      NOT NULL,
-	vend_id    CHAR(10)      NOT NULL DEFAULT "a",
-	prod_name  CHAR(254)     NULL,
-	prod_price DECIMAL(8, 2) ,
-	prod_desc  VARCHAR(1000)
-);
-```
+  ```sql
+  CREATE TABLE Products
+  (
+    prod_id    CHAR(10)      NOT NULL,
+    vend_id    CHAR(10)      NOT NULL DEFAULT "a",
+    prod_name  CHAR(254)     NULL,
+    prod_price DECIMAL(8, 2) ,
+    prod_desc  VARCHAR(1000)
+  );
+  ```
 
-Note: primary keys uniquely identify rows and cannot be NULL.
+  **Note: primary keys uniquely identify rows and cannot be NULL.**
 
 - Alter table
 
-```sql
-ALTER TABLE Vendors ADD vend_phone CHAR(20);
+  ```sql
+  ALTER TABLE Vendors ADD vend_phone CHAR(20);
 
-ALTER TABLE Vendors DROP COLUMN vend_phone;
-```
+  ALTER TABLE Vendors DROP COLUMN vend_phone;
+  ```
 
 - Drop table
 
-```sql
-DROP TABLE CustCopy;
-```
+  ```sql
+  DROP TABLE CustCopy;
+  ```
+
 
 
 ## Views
@@ -757,46 +733,47 @@ View rules and limitations:
 
 - Create view
 
-```sql
-CREATE VIEW ProductCustomers AS 
-	SELECT cust_name, cust_contact, prod_id 
-	FROM Customers, Orders, OrderItems 
-	WHERE Customers.cust_id = Orders.cust_id AND OrderItems.order_num = Orders.order_num;
-```
+  ```sql
+  CREATE VIEW ProductCustomers AS 
+    SELECT cust_name, cust_contact, prod_id 
+    FROM Customers, Orders, OrderItems 
+    WHERE Customers.cust_id = Orders.cust_id AND OrderItems.order_num = Orders.order_num;
+  ```
 
 - Use view
 
-```sql
-SELECT cust_name, cust_contact FROM ProductCustomers WHERE prod_id = 'RGAN01';
-```
+  ```sql
+  SELECT cust_name, cust_contact FROM ProductCustomers WHERE prod_id = 'RGAN01';
+  ```
 
 - Use views to format output
 
-```sql
-SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors ORDER BY vend_name;
+  ```sql
+  SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors ORDER BY vend_name;
 
-SELECT RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' AS vend_title FROM Vendors ORDER BY vend_name;
+  SELECT RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' AS vend_title FROM Vendors ORDER BY vend_name;
 
-CREATE VIEW VendorLocations AS SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors;
-SELECT * FROM VendorLocations;
+  CREATE VIEW VendorLocations AS SELECT RTRIM(vend_name) + '(' + RTRIM(vend_country) + ')' AS vend_title FROM Vendors;
+  SELECT * FROM VendorLocations;
 
-CREATE VIEW VendorLocations AS SELECT RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' AS vend_title FROM Vendors; 
-SELECT * FROM VendorLocations;
-```
+  CREATE VIEW VendorLocations AS SELECT RTRIM(vend_name) || '(' || RTRIM(vend_country) || ')' AS vend_title FROM Vendors; 
+  SELECT * FROM VendorLocations;
+  ```
 
 - Use view to filter
 
-```sql
-CREATE VIEW CustomerEMailList AS SELECT cust_id, cust_name, cust_email FROM Customers WHERE cust_email IS NOT NULL;
-SELECT * FROM CustomerEMailList;
-```
+  ```sql
+  CREATE VIEW CustomerEMailList AS SELECT cust_id, cust_name, cust_email FROM Customers WHERE cust_email IS NOT NULL;
+  SELECT * FROM CustomerEMailList;
+  ```
 
 - Use view to simplify computed columns
 
-```sql
-CREATE VIEW OrderItemsExpanded AS SELECT prod_num, prod_id, quantity, item_price, quantity*item_price AS expanded_price FROM OrderItems;
-SELECT * FROM OrderItemsExpanded WHERE order_num = 20008;
-```
+  ```sql
+  CREATE VIEW OrderItemsExpanded AS SELECT prod_num, prod_id, quantity, item_price, quantity*item_price AS expanded_price FROM OrderItems;
+  SELECT * FROM OrderItemsExpanded WHERE order_num = 20008;
+  ```
+
 
 
 ## Stored Procedures
@@ -809,89 +786,90 @@ SELECT * FROM OrderItemsExpanded WHERE order_num = 20008;
 
 - Create a stored procedure
 
-```sql
-CREATE PROCEDURE MailingListCount (
-	ListCount OUT INTEGER
-)
-BEGIN
-	SELECT COUNT(*) INTO v_rows 
-	FROM Customers 
-	WHERE NOT cust_email IS NULL;
-	ListCount := v_rows;
-END;
+  ```sql
+  CREATE PROCEDURE MailingListCount (
+    ListCount OUT INTEGER
+  )
+  BEGIN
+    SELECT COUNT(*) INTO v_rows 
+    FROM Customers 
+    WHERE NOT cust_email IS NULL;
+    ListCount := v_rows;
+  END;
+  
+  -- Oracle example
+  var ReturnValue NUMBER EXEC MailingListCount(:ReturnValue);
+  SELECT ReturnValue;
+  
+  -- SQL Server example
+  CREATE PROCEDURE MailingListCount AS DECLARE @cnt INTEGER SELECT @cnt = COUNT(*) FROM Customers WHERE NOT cust_email IS NULL;
+  RETURN @cnt;
+  
+  -- SQL Server usage
+  DECLARE @ReturnValue INT
+  EXECUTE @ReturnValue=MailingListCount;
+  SELECT @ReturnValue;
+  ```
 
--- Oracle example
-var ReturnValue NUMBER EXEC MailingListCount(:ReturnValue);
-SELECT ReturnValue;
-
--- SQL Server example
-CREATE PROCEDURE MailingListCount AS DECLARE @cnt INTEGER SELECT @cnt = COUNT(*) FROM Customers WHERE NOT cust_email IS NULL;
-RETURN @cnt;
-
--- SQL Server usage
-DECLARE @ReturnValue INT
-EXECUTE @ReturnValue=MailingListCount;
-SELECT @ReturnValue;
-```
 
 
 ## Transactions
 
 - Transaction block
 
-```sql
--- SQL Server
-BEGIN TRANSACTION
-...
-COMMIT TRANSACTION
+  ```sql
+  -- SQL Server
+  BEGIN TRANSACTION
+  ...
+  COMMIT TRANSACTION
 
--- MariaDB, MySQL
-START TRANSACTION
-...
+  -- MariaDB, MySQL
+  START TRANSACTION
+  ...
 
--- Oracle
-SET TRANSACTION
-...
+  -- Oracle
+  SET TRANSACTION
+  ...
 
--- PostgreSQL
-BEGIN
-...
-```
+  -- PostgreSQL
+  BEGIN
+  ...
+  ```
 
 - Rollback
 
-```sql
-DELETE FROM Orders;
-ROLLBACK;
-```
+  ```sql
+  DELETE FROM Orders;
+  ROLLBACK;
+  ```
 
 - Explicit commit
 
-```sql
--- SQL Server
-BEGIN TRANSACTION 
-DELETE OrderItems WHERE order_num = 12345 
-DELETE Orders WHERE order_num = 12345 
-COMMIT TRANSACTION
+  ```sql
+  -- SQL Server
+  BEGIN TRANSACTION 
+  DELETE OrderItems WHERE order_num = 12345 
+  DELETE Orders WHERE order_num = 12345 
+  COMMIT TRANSACTION
 
--- Oracle
-SET TRANSACTION 
-DELETE OrderItems WHERE order_num = 12345; 
-DELETE Orders WHERE order_num = 12345; 
-COMMIT;
-```
+  -- Oracle
+  SET TRANSACTION 
+  DELETE OrderItems WHERE order_num = 12345; 
+  DELETE Orders WHERE order_num = 12345; 
+  COMMIT;
+  ```
 
 - Savepoints
 
-```sql
--- MariaDB, MySQL, Oracle
-SAVEPOINT delete1;
-ROLLBACK TO delete1;
-
--- SQL Server
-SAVE TRANSACTION delete1;
-ROLLBACK TRANSACTION delete1;
-```
+  ```sql
+  -- MariaDB, MySQL, Oracle
+  SAVEPOINT delete1;
+  ROLLBACK TO delete1;
+  
+  -- SQL Server
+  SAVE TRANSACTION delete1;
+  ROLLBACK TRANSACTION delete1;
+  ```
 
 ```sql
 -- SQL Server full example
@@ -908,88 +886,90 @@ COMMIT TRANSACTION
 ```
 
 
+
 ## Cursors
 
 - Declare cursor
 
-```sql
--- DB2, MariaDB, MySQL, SQL Server
-DECLARE CustCursor CURSOR 
-FOR 
-SELECT * FROM Customers WHERE cust_email IS NULL
+  ```sql
+  -- DB2, MariaDB, MySQL, SQL Server
+  DECLARE CustCursor CURSOR 
+  FOR 
+  SELECT * FROM Customers WHERE cust_email IS NULL
 
--- Oracle, PostgreSQL
-DECLARE CURSOR CustCursor 
-IS 
-SELECT * FROM Customers WHERE cust_email IS NULL
-```
+  -- Oracle, PostgreSQL
+  DECLARE CURSOR CustCursor 
+  IS 
+  SELECT * FROM Customers WHERE cust_email IS NULL
+  ```
 
 - Use cursors (Oracle example)
 
-```sql
--- Fetch single row
-DECLARE TYPE CustCursor IS REF CURSOR
-	RETURN Customers%ROWTYPE;
-DECLARE CustRecord Customers%ROWTYPE
-BEGIN
-	OPEN CustCursor;
-	FETCH CustCursor INTO CustRecord;
-	CLOSE CustCursor;
-END;
-
--- Loop through rows
-DECLARE TYPE CustCursor IS REF CURSOR
-	RETURN Customers%ROWTYPE;
-DECLARE CustRecord Customers%ROWTYPE
-BEGIN 
-	OPEN CustCursor;
-	LOOP 
-		FETCH CustCursor INTO CustRecord;
-		EXIT WHEN CustCursor%NOTFOUND;
-		...
-	END LOOP;
-	CLOSE CustCursor;
-END;
-```
+  ```sql
+  -- Fetch single row
+  DECLARE TYPE CustCursor IS REF CURSOR
+    RETURN Customers%ROWTYPE;
+  DECLARE CustRecord Customers%ROWTYPE
+  BEGIN
+    OPEN CustCursor;
+    FETCH CustCursor INTO CustRecord;
+    CLOSE CustCursor;
+  END;
+  
+  -- Loop through rows
+  DECLARE TYPE CustCursor IS REF CURSOR
+    RETURN Customers%ROWTYPE;
+  DECLARE CustRecord Customers%ROWTYPE
+  BEGIN 
+    OPEN CustCursor;
+    LOOP 
+      FETCH CustCursor INTO CustRecord;
+      EXIT WHEN CustCursor%NOTFOUND;
+      ...
+    END LOOP;
+    CLOSE CustCursor;
+  END;
+  ```
 
 -- Microsoft SQL Server example
 
-```sql
-DECLARE @cust_id CHAR(10),
-		@cust_name CHAR(50),
-		@cust_address CHAR(50),
-		@cust_city CHAR(50),
-		@cust_state CHAR(5),
-		@cust_zip CHAR(10),
-		@cust_country CHAR(50),
-		@cust_contact CHAR(50),
-		@cust_email CHAR(255)
-OPEN CustCursor 
-FETCH NEXT FROM CustCursor 
-	INTO @cust_id, @cust_name, @cust_address,
-		 @cust_city, @cust_state, @cust_zip,
-		 @cust_country, @cust_contact, @cust_email 
-WHILE @@FETCH_STATUS = 0
-BEGIN
+  ```sql
+  DECLARE @cust_id CHAR(10),
+      @cust_name CHAR(50),
+      @cust_address CHAR(50),
+      @cust_city CHAR(50),
+      @cust_state CHAR(5),
+      @cust_zip CHAR(10),
+      @cust_country CHAR(50),
+      @cust_contact CHAR(50),
+      @cust_email CHAR(255)
+  OPEN CustCursor 
+  FETCH NEXT FROM CustCursor 
+    INTO @cust_id, @cust_name, @cust_address,
+      @cust_city, @cust_state, @cust_zip,
+      @cust_country, @cust_contact, @cust_email 
+  WHILE @@FETCH_STATUS = 0
+  BEGIN
 
-FETCH NEXT FROM CustCursor 
-	INTO @cust_id, @cust_name, @cust_address,
-		 @cust_city, @cust_state, @cust_zip,
-		 @cust_country, @cust_contact, @cust_email 
-END
-CLOSE CustCursor
-```
+  FETCH NEXT FROM CustCursor 
+    INTO @cust_id, @cust_name, @cust_address,
+      @cust_city, @cust_state, @cust_zip,
+      @cust_country, @cust_contact, @cust_email 
+  END
+  CLOSE CustCursor
+  ```
 
 - Close cursor
 
-```sql
--- DB2, Oracle, PostgreSQL
-CLOSE CustCursor
+  ```sql
+  -- DB2, Oracle, PostgreSQL
+  CLOSE CustCursor
+  
+  -- SQL Server
+  CLOSE CustCursor 
+  DEALLOCATE CURSOR CustCursor 
+  ```
 
--- SQL Server
-CLOSE CustCursor 
-DEALLOCATE CURSOR CustCursor 
-```
 
 
 ## Advanced Features
@@ -998,66 +978,79 @@ DEALLOCATE CURSOR CustCursor
 
 - Primary key
 
-```sql
-CREATE TABLE Vendors
-(
-	vend_id       CHAR(10) NOT NULL PRIMARY KEY,
-	vend_name     CHAR(10) NOT NULL,
-	vend_address  CHAR(10) NULL,
-	vend_city     CHAR(10) NULL,
-	vend_state    CHAR(10) NULL,
-	vend_zip      CHAR(10) NULL,
-	vend_country  CHAR(10) NULL
-);
-```
+  ```sql
+  CREATE TABLE Vendors
+  (
+    vend_id       CHAR(10) NOT NULL PRIMARY KEY,
+    vend_name     CHAR(10) NOT NULL,
+    vend_address  CHAR(10) NULL,
+    vend_city     CHAR(10) NULL,
+    vend_state    CHAR(10) NULL,
+    vend_zip      CHAR(10) NULL,
+    vend_country  CHAR(10) NULL
+  );
+  ```
 
-```sql
-ALTER TABLE Vendors ADD CONSTRAINT PRIMARY KEY (vend_id);
-```
+  ```sql
+  ALTER TABLE Vendors ADD CONSTRAINT PRIMARY KEY (vend_id);
+  ```
 
 - Foreign key
 
-```sql
-CREATE TABLE Orders
-(
-	order_num  INTEGER  NOT NULL PRIMARY KEY,
-	order_date DATETIME NOT NULL,
-	cust_id    CHAR(10) NOT NULL REFERENCES Customers(cust_id)
-);
-```
+  ```sql
+  CREATE TABLE Orders
+  (
+    order_num  INTEGER  NOT NULL PRIMARY KEY,
+    order_date DATETIME NOT NULL,
+    cust_id    CHAR(10) NOT NULL REFERENCES Customers(cust_id)
+  );
+  ```
 
-```sql
-ALTER TABLE Orders ADD CONSTRAINT FOREIGN KEY (cust_id) REFERENCES Customers (cust_id)
-```
+  ```sql
+  ALTER TABLE Orders ADD CONSTRAINT FOREIGN KEY (cust_id) REFERENCES Customers (cust_id)
+  ```
 
 - Unique constraint
 
-  TODO
+  ```sql
+  CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    emp_email VARCHAR(255) UNIQUE,
+    emp_name VARCHAR(100)
+  );
+
+  -- Or using ALTER TABLE
+  ALTER TABLE Employees ADD CONSTRAINT unique_email UNIQUE (emp_email);
+  ```
 
 - Check constraint
 
-```sql
-CREATE TABLE OrderItems
-(
-	order_num  INTEGER  NOT NULL,
-	order_item INTEGER  NOT NULL,
-	prod_id    CHAR(10) NOT NULL,
-	quantity   INTEGER  NOT NULL CHECK(quantity > 0),
-	item_price MONEY    NOT NULL
-);
-ADD CONSTRAINT CHECK (gender LIKE '[MF]')
-```
+  ```sql
+  CREATE TABLE OrderItems
+  (
+    order_num  INTEGER  NOT NULL,
+    order_item INTEGER  NOT NULL,
+    prod_id    CHAR(10) NOT NULL,
+    quantity   INTEGER  NOT NULL CHECK(quantity > 0),
+    item_price MONEY    NOT NULL
+  );
+  ADD CONSTRAINT CHECK (gender LIKE '[MF]')
+  ```
 
 ### Indexes
 
 Indexing notes:
 1. Indexes improve retrieval performance but slow inserts/updates/deletes;
+
 2. Indexes can consume significant storage;
+
 3. Index columns should have many distinct values;
+
 4. Indexes help filtering and sorting;
+
 5. Multi-column indexes are supported.
 
-- Create index
+Create index
 
 ```sql
 CREATE INDEX prod_name_ind ON Products(prod_name);
@@ -1078,26 +1071,26 @@ Uses:
 
 - Create a trigger
 
-```sql
--- SQL Server
-CREATE TRIGGER customer_state 
-ON Customers 
-FOR INSERT, UPDATE 
-AS 
-UPDATE Customers 
-SET cust_state = Upper(cust_state) 
-WHERE Customers.cust_id = inserted.cust_id;
-
--- Oracle, PostgreSQL
-CREATE TRIGGER customer_state 
-AFTER INSERT OR UPDATE 
-FOR EACH ROW 
-BEGIN 
-UPDATE Customers 
-SET cust_state = Upper(cust_state) 
-WHERE Customers.cust_id = :OLD.cust_id 
-END;
-```
+  ```sql
+  -- SQL Server
+  CREATE TRIGGER customer_state 
+  ON Customers 
+  FOR INSERT, UPDATE 
+  AS 
+  UPDATE Customers 
+  SET cust_state = Upper(cust_state) 
+  WHERE Customers.cust_id = inserted.cust_id;
+  
+  -- Oracle, PostgreSQL
+  CREATE TRIGGER customer_state 
+  AFTER INSERT OR UPDATE 
+  FOR EACH ROW 
+  BEGIN 
+  UPDATE Customers 
+  SET cust_state = Upper(cust_state) 
+  WHERE Customers.cust_id = :OLD.cust_id 
+  END;
+  ```
 
 
 

@@ -1,12 +1,8 @@
-English | [中文版](coroutine_zh.md)
-
 # C++ Coroutines
 
 [TOC]
 
 
-
-This note summarizes the C++ coroutine model (C++20 and practical extensions), explains the main concepts (coroutine frame, promise_type, coroutine_handle, awaiter/awaitable), and shows small illustrative patterns: generators and simple asynchronous tasks. It also covers lifetime and resource management, common pitfalls, and best practices for production code. The goal is a compact, practical reference rather than an exhaustive tutorial.
 
 ## What is a coroutine?
 

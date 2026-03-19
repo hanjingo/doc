@@ -1,106 +1,133 @@
-English | [中文版](udp_zh.md)
+[中文版](udp_zh.md) | English
 
-# User Datagram Protocol (UDP)
+# UDP Protocol
 
 [TOC]
 
-UDP is a simple, connectionless, datagram‑oriented transport protocol that preserves message boundaries and provides minimal services: multiplexing via ports and an optional checksum. Because UDP is lightweight and offers no built‑in reliability, applications using UDP (DNS, VoIP, streaming, DNS, some VPNs, NAT traversal) implement their own reliability, ordering, or retransmission logic when needed.
 
-## UDP datagram and encapsulation
+
+## Datagram
+
+### IPv4
 
 ![udp_ipv4_pack](res/udp_ipv4_pack.png)
 
-A UDP datagram is carried in the payload of an IP datagram (IPv4 or IPv6). The UDP header immediately follows the IP header (or the last IPv6 extension header).
+IPv6 is similar.
 
-### UDP header (IPv4 / IPv6)
+
+
+## Header
+
+### IPv4
 
 ![udp_head_ipv4](res/udp_head_ipv4.png)
 
-- Source Port (16 bits) — optional (0 indicates no source port).
-- Destination Port (16 bits) — identifies the receiving application.
-- Length (16 bits) — length of UDP header + data in bytes (minimum 8 for UDP).
-- Checksum (16 bits) — optional in IPv4 (but recommended); mandatory in IPv6. The checksum covers a pseudo‑header (from IP), the UDP header, and the payload.
+- `Source Port Number`
+- `Destination Port Number`
+- `Length`
+  
+  Theoretically, the maximum length of a datagram is 65535 bytes (8 bytes for the UDP header);
+  
+  The UDP programming interface allows applications to specify the maximum number of bytes returned for each network read operation. If the received datagram exceeds this specified size, the API will `truncate` the datagram.
+- `Checksum`
+  
+  ![udp_checksum](res/udp_checksum.png)
+  
+  **Note: When a UDP/IPv4 datagram passes through a NAT, not only must the IP layer header checksum be modified, but the UDP pseudo-header checksum must also be correctly updated, since the IP address and/or UDP port may change.**
+- `Payload Data`
 
-The checksum pseudo‑header includes source and destination IP addresses, protocol number, and UDP length. If the payload length is odd, a padding zero byte is appended for checksum calculation; the pad byte is not transmitted.
+### IPv6
 
-![udp_checksum](res/udp_checksum.png)
+![udp_head_ipv6](res/udp_head_ipv6.png)
 
-IPv6 UDP header layout is similar (image: `res/udp_head_ipv6.png`); IPv6 requires checksums and supports larger payloads via jumbograms.
+- `Source IPv6 Address`
+- `Destination IPv6 Address`
+- `Length`
+- `Reserved`
+- `Next Header`
 
-## Behavior and semantics
+**Notes:**
 
-- Connectionless: there is no handshake or connection state at the transport layer.
-- Message boundaries: each send corresponds to one datagram; recv returns a single datagram (or a truncated datagram if the application buffer is smaller than the datagram).
-- Best‑effort delivery: UDP does not provide retransmission, ordering, congestion control, or flow control.
+1. In IPv6, the minimum MTU is 1280 bytes (unlike IPv4, which requires all hosts to support a minimum of 576 bytes);
+2. IPv6 supports jumbo datagrams (packets >65535 bytes).
 
-Applications choose UDP when low latency, multicast support, or simple request/response semantics are more important than built‑in reliability.
 
-## Maximum datagram size and fragmentation
 
-The theoretical maximum IPv4 datagram size is 65,535 bytes (16‑bit total length). With a 20‑byte IPv4 header and an 8‑byte UDP header, the maximum UDP payload is 65,507 bytes. IPv6 payload length and jumbograms can permit larger UDP datagrams when supported end‑to‑end.
-
-In practice, path MTU limits (and intermediate MTU restrictions) make very large UDP datagrams fragile: IP fragmentation may occur, and some networks/firewalls drop fragments. Fragmentation complicates NATs and firewalls because the UDP header appears only in the first fragment.
-
-Example (fragmentation):
-
-![udp_ip_split](res/udp_ip_split.png)
-
-Recommendation: use application‑layer fragmentation (chunking) or PMTUD to avoid IP fragmentation where possible.
-
-## Teredo (IPv6 over UDP tunneling)
-
-Teredo is a transition mechanism that encapsulates IPv6 datagrams inside UDP/IPv4 packets to allow IPv6 connectivity across IPv4 NATs. Teredo clients obtain an IPv6 address in the 2001::/32 prefix; the address encodes the Teredo server IPv4 and client’s mapped port/address (obfuscated) and flags that describe NAT behavior.
+## Teredo
 
 ![udp_teredo](res/udp_teredo.png)
 
-Teredo messages carry additional fields (origin indication, obfuscated mapped port/address) used to discover NAT mappings and to enable relays to forward traffic between Teredo and native IPv6 hosts.
+*Teredo is an IPv6 transition mechanism that encapsulates IPv6 datagrams and optional tracers in the payload of UDP/IPv4 datagrams, allowing IPv6 traffic to traverse IPv4-only infrastructure. Servers help clients obtain an IPv6 address and determine their mapped address and port. If needed, relays forward traffic between Teredo, 6to4, and native IPv6 clients.*
+
+### IPv4 Encapsulation
 
 ![udp_teredo_ipv4](res/udp_teredo_ipv4.png)
 
-Teredo is useful when no native IPv6 or simpler transition mechanism is available, but it adds complexity and potential performance costs.
+- `Tracer`
 
-## UDP‑Lite
+  The Teredo tracer is carried after the IPv6 payload encapsulated in the UDP/IPv4 datagram. Each tracer has a type value, name, and interpretation. In some cases, the length is a constant:
 
-UDP‑Lite (RFC 3828) is a variation of UDP intended for applications (audio, video) that can tolerate some payload corruption but cannot tolerate retransmission delays. UDP‑Lite allows the sender to indicate the number of payload bytes covered by the checksum (checksum coverage). Bytes beyond the coverage are not protected and may be delivered even if corrupted.
+  | Type | Length  | Name                | Usage                | Notes                                                  |
+  | ---- | ------- | ------------------- | -------------------- | ------------------------------------------------------ |
+  | 0x00 | Reserved| Unassigned          | Unassigned           | Unassigned                                             |
+  | 0x01 | 0x04    | Nonce               | SNS, UP, PP, SP, HP  | 32-bit random number, used to prevent replay attacks    |
+  | 0x02 | Reserved| Unassigned          | Unassigned           | Unassigned                                             |
+  | 0x03 | [8, 26] | Alternate Address   | HP                   | Extra address/port for Teredo clients behind same NAT   |
+  | 0x04 | 0x04    | ND (Neighbor Disc.) | SLR                  | Allows NAT to update using direct bubble (with NS msg)  |
+  | 0x05 | 0x02    | Random Port         | PP                   | Sender's predicted mapped port                         |
+
+### IPv6 Encapsulation
+
+![udp_teredo_ipv6](res/udp_teredo_ipv6.png)
+
+
+
+## UDP-Lite
 
 ![udp_lite](res/udp_lite.png)
 
-Use UDP‑Lite when partial checksum coverage improves application quality (e.g., media codecs that tolerate minor bit errors better than packet loss).
+- `Source Port Number`
+- `Destination Port Number`
+- `Checksum Coverage`
+  
+  This field gives the number of bytes covered by the checksum (starting from the first byte of the UDP-Lite header). The minimum value is 0, meaning the entire datagram is covered. Values 1~7 are invalid, as the header must always be covered. UDP-Lite uses a different IPv4 protocol number (136) than UDP (17). IPv6 uses the same value in the next header field.
+- `Checksum`
 
-## Socket API and programming notes
 
-- recvfrom()/sendto() preserve message boundaries; if the application passes a smaller buffer than the datagram, excess bytes are discarded (truncation).
-- Applications must set appropriate socket buffer sizes (SO_RCVBUF/SO_SNDBUF) when expecting large or bursty datagrams.
-- For high‑throughput/low‑latency UDP, consider using batching APIs (recvmmsg/sendmmsg) where available.
 
-## Security and attacks involving UDP
+## IP Fragmentation
 
-UDP’s statelessness makes it attractive for several attack types:
+### Maximum Datagram Length
 
-- Amplification/magnification DDoS: small spoofed requests (e.g., to DNS, NTP, or memcached) can trigger larger responses toward a victim.
-- Reflection attacks: attackers spoof a victim’s IP and send requests to UDP services that reply to the spoofed address.
-- Fraggle and smurf: broadcasts or amplification combined with spoofing amplify traffic.
-- Teardrop/overlapping fragment attacks: specially crafted fragments with overlapping offsets historically crashed some implementations.
+**Theoretically**, the maximum length of an IPv4 datagram is 65535 bytes, determined by the 16-bit `Total Length` field in the IPv4 header. For IPv6, without using jumbo datagrams, the 16-bit `Payload Length` field allows up to 65527 bytes of valid UDP payload. In practice, there are further limitations.
 
-Mitigations:
+UDP implementations provide a socket API function `setsocketopt()` to set the maximum UDP datagram size.
 
-- Disable or restrict open resolvers and vulnerable services.
-- Rate‑limit and filter suspicious traffic, block obvious spoofing at network edges (BCP 38 ingress filtering).
-- Use application‑level verification and challenge‑response where appropriate.
+The UDP programming interface allows applications to specify the maximum number of bytes returned for each network read operation. If the received datagram exceeds this specified size, the API will `truncate` the datagram.
 
-## Maximum safe payload guidance
+### Reassembly Timeout
 
-To be robust, prefer UDP payloads smaller than common path MTUs (e.g., 1200 bytes for IPv6/QUIC or ~1472 bytes for IPv4 UDP over Ethernet with 1500 MTU). For new application protocols consider using QUIC (reliable, congestion-controlled, but runs over UDP) which implements connection, retransmission, and multiplexing at user level.
+When any fragment of a datagram arrives, the IP layer must start a timer. Otherwise, undeliverable fragments could eventually exhaust the receiver's buffer, creating an attack opportunity.
 
-## Attacks and operational notes (summary)
+### Example
 
-- DoS amplification — harden DNS/NTP servers and avoid responding to arbitrary addresses.
-- NAT traversal — UDP works well with STUN/TURN/ICE; Teredo is a legacy fallback.
-- Logging and troubleshooting — UDP is connectionless so inspect packet flows and correlate via 5‑tuple and timestamps.
+![udp_ip_split](res/udp_ip_split.png)
+
+*A UDP datagram with a 2992-byte payload is fragmented into three UDP/IPv4 packets (no options). The UDP header containing the source and destination port numbers appears only in the first fragment (which complicates things for firewalls and NATs). Fragmentation is controlled by the Identification, Fragment Offset, and More Fragments (MF) fields in the IPv4 header.*
+
+
+
+## Security
+
+### IP Fragmentation Attacks
+
+1. `DoS attack`: UDP-based DoS attacks can generate large amounts of traffic instantly, since UDP does not manage its sending rate, negatively impacting other applications.
+2. `Amplification attack`: The attacker sends a small amount of traffic, causing other systems to generate much more traffic.
+3. `IP fragmentation attack`: Exploits vulnerabilities in IPv4 reassembly code by sending fragments with no data, causing system crashes.
+4. `Teardrop attack`: Uses overlapping fragment offsets to craft a series of fragments that can crash or severely affect some systems.
+
+
 
 ## References
 
-- RFC 768: User Datagram Protocol
-- RFC 4380: Teredo: Tunneling IPv6 over UDP through NATs
-- RFC 3828: UDP‑Lite for IP Multicast and Real‑Time Multimedia
-- K. R. Fall, W. R. Stevens. TCP/IP Illustrated, Volume 1 (relevant sections on UDP/IPv4/IPv6)
+[1] Kevin R. Fall, W. Richard Stevens. TCP/IP Illustrated, 3rd Edition

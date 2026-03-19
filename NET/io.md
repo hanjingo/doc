@@ -4,6 +4,8 @@ English | [中文版](io_zh.md)
 
 [TOC]
 
+
+
 ## I/O Models
 
 ### Blocking I/O
@@ -37,6 +39,8 @@ The main difference among the first four models is in the first phase, as their 
 TODO
 
 ---
+
+
 
 ## Multiplexing
 
@@ -256,7 +260,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 - `return value`
 	success: 0
 	failure: -1
-*Add, modify, or delete event monitoring for fd on the kernel epoll instance corresponding to epfd.*
+	*Add, modify, or delete event monitoring for fd on the kernel epoll instance corresponding to epfd.*
 #### epoll_wait
 ```c++
 #include <sys/epoll.h>
@@ -271,8 +275,8 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 	| 0             | Return immediately.                            |
 	| -1            | Block until a registered event is ready.       |
 	| >0            | Block until time expires or a registered event is ready. |
-*Checks for data, returns if data is available, otherwise sleeps until timeout expires; diagram below:*
-![epoll_wait](res/epoll_wait.png)
+	*Checks for data, returns if data is available, otherwise sleeps until timeout expires; diagram below:*
+	![epoll_wait](res/epoll_wait.png)
 | Trigger Mode | Description                                                                                                   |
 | ------------ | ------------------------------------------------------------------------------------------------------------- |
 | LT           | (Level Triggered) default mode, **triggers as long as there is data**, unread data in the buffer causes epoll_wait to return. |
@@ -511,7 +515,10 @@ int main(int argc, char** argv)
 }
 ```
 ---
+
+
 ## Stream Operations
+
 ### recv/send
 ```c++
 #include <sys/socket.h>
@@ -544,7 +551,7 @@ ssize_t send(int sockfd, const void *buff, size_t nbytes, int flags);
 - `return value`
 	success: number of bytes read/written
 	failure: -1
-*Read/write socket*
+	*Read/write socket*
 ### readv/writev
 ```c++
 #include <sys/uio.h>
@@ -565,7 +572,7 @@ ssize_t writev(int filedes, const struct iovec *iov, int iovcnt);
 - `return value`
 	- success: number of bytes read/written
 	- failure: -1
-*Read/write one or more buffers, called `scatter read` and `gather write` respectively, because input data from a read is scattered into multiple application buffers, and output data from multiple application buffers is gathered for a single write operation.*
+	*Read/write one or more buffers, called `scatter read` and `gather write` respectively, because input data from a read is scattered into multiple application buffers, and output data from multiple application buffers is gathered for a single write operation.*
 ### recvmsg/sendmsg
 ```c++
 #include <sys/socket.h>
@@ -594,9 +601,12 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
 - `return value`
 	success: number of bytes read/written
 	failure: -1
-*Read/write socket*
+	*Read/write socket*
 ---
+
+
 ## Summary
+
 ### Multiplexing Comparison
 |            |           select           |            poll            |                        epoll                        |
 | :--------- | :-----------------------: | :------------------------: | :--------------------------------------------------: |
@@ -614,7 +624,10 @@ ssize_t sendmsg(int sockfd, struct msghdr *msg, int flags);
 | recvfrom/sendto  |                | Y           | Y             |                | Y              | Y                  |                      |
 | recvmsg/sendmsg  |                | Y           |               | Y              | Y              | Y                  | Y                    |
 ---
+
+
 ## References
+
 - [Wikipedia - epoll](https://en.wikipedia.org/wiki/Epoll)
 - [Summary of differences between select, poll, and epoll [整理]](https://www.cnblogs.com/Anker/p/3265058.html)
 - [Three mechanisms of IO multiplexing: Select, Poll, Epoll](https://www.jianshu.com/p/397449cadc9a)

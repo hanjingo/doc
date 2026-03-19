@@ -67,9 +67,18 @@ Constructing an Expression Tree:
 
 
 
-## The Search Tree ADT - Binary Search Trees
+## Binary Search Trees
 
-The average depth of a binary search tree turns out to be $O(log N)$, we generally do not need to worry about running out of stack space.
+![binary_search_tree](res/binary_search_tree.png)
+
+A Binary Search Tree is a binary tree that satisfies the following conditions:
+
+- All nodes in the left subtree have values smaller than the root.
+- All nodes in the right subtree have values greater than the root.
+- Both left and right subtrees are themselves BSTs.
+- All node values are distinct.
+
+The average depth of a binary search tree turns out to be $O(\log N)$, we generally do not need to worry about running out of stack space.
 
 ```c++
 // binary search tree
@@ -310,6 +319,43 @@ reference to [Red Black Tree](rb_tree.md)
 
 
 
+## Balanced Binary Tree
+
+A balanced binary tree is a tree where the heights of the left and right subtrees of any node differ by at most one. This balance condition is maintained through rotations during insertions and deletions.
+
+### Property
+
+- The height difference between the lseft and right subtrees of any node is at most 1.
+- Both the left and right subtrees are also balanced binary trees.
+- The height of an empty tree is considered -1.
+- The height of a tree with one node is 0.
+
+![balanced_vs_unbalanced_binary_tree](res/balanced_vs_unbalanced_binary_tree.png)
+
+### Implement
+
+```c++
+#include <algorithm>
+#include <iostream>
+
+template<typename T>
+class balanced_binary_tree
+{
+    struct Node
+    {
+        T data;
+        Node* left;
+        Node* right;
+        int height;
+    };
+    
+    Node* root;
+    ...
+};
+```
+
+
+
 ## Sets and Maps in the Standard Library
 
 ### set
@@ -368,3 +414,7 @@ The hard part is efficiently advancing to the next node. There are several possi
 ## Reference
 
 [1] Mark Allen Weiss.Data Structures and Algorithm Analysis in C++.4ED
+
+[2] [Balanced Binary Tree in C++](https://www.geeksforgeeks.org/cpp/balanced-binary-tree-in-cpp/)
+
+[3] [Check if a Binary Tree is BST or not](https://www.geeksforgeeks.org/dsa/a-program-to-check-if-a-binary-tree-is-bst-or-not/)

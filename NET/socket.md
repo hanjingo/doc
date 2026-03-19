@@ -4,6 +4,8 @@ English | [中文版](socket_zh.md)
 
 [TOC]
 
+
+
 ## Socket Addresses
 
 ### Generic Unix Socket Address
@@ -72,7 +74,10 @@ TODO
 ### Comparison of Different Socket Addresses
 ![sockaddr_compare](res/sockaddr_compare.png)
 
+
+
 ## Socket Functions
+
 ![sock_usage](res/sock_usage.png)
 
 ### socket
@@ -104,7 +109,7 @@ int socket(int family, int type, int protocol)
  - `return value`
 	 Success: socket descriptor (non-negative)
 	 Failure: -1
-*Creates a socket and returns a socket descriptor*
+	 *Creates a socket and returns a socket descriptor*
 
 |                | AF_INET    | AF_INET6   | AF_LOCAL | AF_ROUTE | AF_KEY |
 | -------------- | ---------- | ---------- | -------- | -------- | ------ |
@@ -125,7 +130,7 @@ int connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen)
 - `return value`
 	Success: 0
 	Failure: -1
-*Establish a connection to a TCP server*
+	*Establish a connection to a TCP server*
 
 ### bind
 ```c++
@@ -138,7 +143,7 @@ int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen)
 - `return value`
 	Success: 0
 	Failure: -1
-*Bind address (assign a local protocol address to a socket)*
+	*Bind address (assign a local protocol address to a socket)*
 
 ### listen
 ```c++
@@ -150,7 +155,7 @@ int listen(int sockfd, int backlog);
 - `return value`
 	Success: 0
 	Failure: -1
-*Listen on a socket (convert an unconnected socket to a passive socket, instructing the kernel to accept connection requests to the socket, and set the max length of the pending socket queue)*
+	*Listen on a socket (convert an unconnected socket to a passive socket, instructing the kernel to accept connection requests to the socket, and set the max length of the pending socket queue)*
 
 ### accept
 ```c++
@@ -163,7 +168,7 @@ int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen);
 - `return value`
 	Success: a new descriptor
 	Failure: error code
-*Accept connection (returns the next completed connection from the head of the completed connection queue; if the queue is empty, the process sleeps)*
+	*Accept connection (returns the next completed connection from the head of the completed connection queue; if the queue is empty, the process sleeps)*
 
 ### close
 ```c++
@@ -174,7 +179,7 @@ int close(int sockfd);
 - `return value`
 	Success: 0
 	Failure: -1
-*Marks the socket as closed so it can no longer be used by read or write*
+	*Marks the socket as closed so it can no longer be used by read or write*
 
 ### getsockname
 ```c++
@@ -187,7 +192,7 @@ int getsockname(int sockfd, struct sockaddr *localaddr, socklen_t *addrlen);
 - `return value`
 	Success: 0
 	Failure: -1
-*Returns the local protocol address associated with the socket*
+	*Returns the local protocol address associated with the socket*
 
 ### getpeername
 ```c++
@@ -200,7 +205,7 @@ int getpeername(int sockfd, struct sockaddr *peeraddr, socklen_t *addrlen);
 - `return value`
 	Success: 0
 	Failure: -1
-*Returns the remote protocol address associated with the socket (getpeername)*
+	*Returns the remote protocol address associated with the socket (getpeername)*
 
 ### shutdown
 ```c++
@@ -217,7 +222,7 @@ int shutdown(int sockfd, int howto);
 - `return value`
 	Success: 0
 	Failure: -1
-*Close connection*
+	*Close connection*
 
 ### fcntl
 ```c++
@@ -229,7 +234,7 @@ int fcntl(int fd, int cmd, ...)
 - `return value`
 	Success: depends on cmd
 	Failure: -1
-*Performs various descriptor control operations.*
+	*Performs various descriptor control operations.*
 
 ### ioctl
 ```c++
@@ -241,7 +246,7 @@ int ioctl(int fd, int request, ...);
 - `return value`
 	Success: 0
 	Failure: -1
-*Affects an open file referenced by fd.*
+	*Affects an open file referenced by fd.*
 
 | Operation                        | fcntl               | ioctl                | Routing Socket | POSIX      |
 | -------------------------------- | ------------------- | -------------------- | ------------- | ---------- |
@@ -255,6 +260,8 @@ int ioctl(int fd, int request, ...);
 | Interface operations             |                     | SIOC[GS]IFxxx        |               |            |
 | ARP cache operations             |                     | SIOCxARP             | RTM_xxx       |            |
 | Routing table operations         |                     | SIOCxxxRT            | RTM_xxx       |            |
+
+
 
 ## Socket Options
 
@@ -271,7 +278,7 @@ int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optl
 - return value
 	Success: 0
 	Failure: -1
-*Get socket option*
+	*Get socket option*
 
 ### setsockopt
 ```c++
@@ -286,7 +293,7 @@ int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t
 - return value
 	- Success: 0
 	- Failure: -1
-*Set socket option*
+	*Set socket option*
 
 ### IP Options
 TODO
@@ -307,6 +314,8 @@ TODO
 | ------------- | -------------------------------------------------- | ----------- | ----------- |
 | IPPROTO_TCP   | TCP_MAXSEG<br>TCP_NODELAY                         | int<br>int  | - TCP max segment size<br>- Disable Nagle algorithm |
 | IPPROTO_SCTP  | SCTP_ADAPTION_LAYER<br>SCTP_ASSOCINFO<br>SCTP_AUTOCLOSE<br>SCTP_DEFAULT_SEND_PARAM<br>SCTP_DISABLE_FRAGMENTS<br>SCTP_EVENTS<br>SCTP_GET_PEER_ADDR_INFO<br>SCTP_I_WANT_MAPPED_V4_ADDR<br>SCTP_INITMSG<br>SCTP_MAXBURST<br>SCTP_MAXSEG<br>SCTP_NODELAY<br>SCTP_PEER_ADDR_PARAMS<br>SCTP_PRIMARY_ADDR<br>SCTP_RTOINFO<br>SCTP_SET_PEER_PRIMARY_ADDR<br>SCTP_STATUS | sctp_setadaption{}<br/>sctp_assocparams{}<br/>int<br/>sctp_sndrcvinfo{}<br/>int<br/>sctp_event_subscribe{}<br/>sctp_paddrinfo{}<br/>int<br/>sctp_initmsg{}<br/>int<br/>int<br/>int<br/>sctp_paddrparams{}<br/>sctp_setprim{}<br/>sctp_rtoinfo{}<br/>sctp_setpeerprim{}<br/>sctp_status{} | - Adaptation layer indication<br>- Check and set association info<br>- Auto close operation<br>- Default send params<br>- SCTP fragmentation<br>- Notification of interested events<br>- Get peer address status<br>- Mapped v4 address<br>- Default INIT params<br>- Max burst size<br>- Max segment size<br>- Disable Nagle algorithm<br>- Peer address params<br>- Primary destination address<br>- RTO info<br>- Peer primary destination address<br>- Get association status |
+
+
 
 ## Data Link Layer Access
 
@@ -357,9 +366,12 @@ int sysctl(int *name, u_int namelen, void *oldp, size_t *oldlenp,
 - `return value`
 	Success: 0
 	Failure: -1
-*Check routing table and interface list, create routing socket.*
+	*Check routing table and interface list, create routing socket.*
+
+
 
 ## UDP Socket Programming
+
 ![udp_sock_program](res/udp_sock_program.png)
 ```c++
 #include <sys/socket.h>
@@ -373,7 +385,7 @@ size_t recvfrom(int sockfd, void *buff, size_t nbytes, int flags, struct sockadd
 - `return value`
 	Success: number of bytes read
 	Failure: -1
-*Receive message* (recvfrom needs timeout option, otherwise it will block forever).
+	*Receive message* (recvfrom needs timeout option, otherwise it will block forever).
 ```c++
 #include <sys/socket.h>
 ssize_t sendto(int sockfd, const void *buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t *addrlen)
@@ -387,7 +399,7 @@ ssize_t sendto(int sockfd, const void *buff, size_t nbytes, int flags, const str
 - `return value`
 	Success: number of bytes written
 	Failure: -1
-*Send message*
+	*Send message*
 
 ### Broadcast
 TODO
@@ -395,7 +407,10 @@ TODO
 ### Multicast
 TODO
 
+
+
 ## TCP Socket Programming
+
 TODO
 
 ### Out-of-band Data
@@ -410,7 +425,9 @@ int sockatmark(int sockfd);
 	1: at out-of-band mark
 	0: not at out-of-band mark
 	-1: failure
-*Check if socket is at out-of-band mark*
+	*Check if socket is at out-of-band mark*
+
+
 
 ## SCTP Socket Programming
 
@@ -419,6 +436,8 @@ int sockatmark(int sockfd);
 
 ### One-to-many Mode
 ![sock_sctp_1vn](res/sock_sctp_1vn.png)
+
+
 
 ## Raw Socket Programming
 
@@ -484,7 +503,10 @@ int ICMP6_FILTER_WILLPASS(int msgtype, const struct icmp6_filter *filt); // Chec
 int ICMP6_FILTER_WILLBLOCK(int msgtype, const struct icmp6_filter *filt);// Check if message type is blocked by the filter
 ```
 
+
+
 ## Stream Programming
+
 ![tcp_ip_stream](res/tcp_ip_stream.png)
 *TCP/IP stream-based implementation*
 
@@ -509,7 +531,7 @@ int getmsg(int fd, struct strbuf *ctlptr, struct strbuf *dataptr, int *flagsp);
 	| -------- | ------------- |
 	| 0        | Normal message|
 	| RS_HIPRI | High priority |
-*Receive control info and data.*
+	*Receive control info and data.*
 
 #### putmsg
 ```c++
@@ -546,6 +568,8 @@ int putpmsg(int fd, const struct strbuf *ctlptr, const struct strbuf *dataptr, i
 - `flagsp` flag
 *Send control info and data with priority.*
 
+
+
 ## Unix Domain Socket Programming
 
 ### Unix Domain Socket Address Structure
@@ -568,7 +592,9 @@ int socketpair(int family, int type, int protocol, int sockfd[2]);
 - `return value`
 	Success: nonzero
 	Failure: -1
-*Creates two sockets that are then connected to each other*
+	*Creates two sockets that are then connected to each other*
+
+
 
 ## Windows Socket Programming
 
@@ -782,6 +808,8 @@ int main()
 }
 ```
 
+
+
 ## Summary
 
 ### Socket Programming Paradigms
@@ -801,7 +829,13 @@ int main()
 | `destination unreachable`  | This is a **soft error**. The client kernel saves this message and continues to send SYNs at intervals. If no response is received after a specified time (4.4BSD: 75s), the saved message (ICMP error) is returned as EHOSTUNREACH or ENETUNREACH. Two possible cases:<br>  1. No route to the remote system in the local routing table.<br>  2. connect returns immediately. |
 
 ### Timeout Handling
-TODO
+For TCP connection timeout:
+
+- Use Asynchronous Methods;
+- Implement Error Handling;
+- Graceful Closure & Reconnection.
+
+
 
 ## References
 

@@ -8,6 +8,24 @@
 
 `LRU (Least Recently Used) algorithm` is a cache eviction policy. This algorithm assumes that recently used data is hot data and is likely to be used again soon; while data that has not been used recently is less likely to be used next time. When the cache is full, the least recently used data is evicted first.
 
+## Intro
+
+### Workflaw
+
+When the cache hits its capacity limit, the Least Recently Used(LRU) cache eviction policy is designed to eliminate the item that has been accessed the least recently. Items that have not been accessed for a longer period of time are assumed to be less likely to be used in the near future.  When the cache is full, LRU evicts the item that hasn't been accessed in the longest time since it keeps track of the order in which items are accessed.
+
+For Example:
+
+![lru_example](res/lru_example.jpg)
+
+### Advantages
+
+- Easy Implementation.
+- Efficient Use of Cache.
+- Adaptability.
+
+
+
 ## Implementation
 
 ### Doubly Linked List

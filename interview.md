@@ -22,27 +22,19 @@ Access modifiers control who can access class members and data members. They hel
 
 For more info, see: [C++ Object](LANG/C++/object.md)
 
-#### Can you describe what the basic structure of a C++ program is?
-
-TODO
-
 #### What is the purpose of comments in C++?
 
-TODO
+The purpose is to provide information about code lines.
 
 #### What is the difference between a declaration and a definition of a variable used in C++?
 
-TODO
+A declaration introduces a variable's name and type to the compiler, while a definition goes further by allocating storage(memory) for that variable.
+
+For more info, see: [C++ Feature](LANG/C++/feature.md)
 
 #### Can you discuss the difference between a local and global scope of a variable?
 
-TODO
-
-#### What is a pointer in C++, and how is it different from a reference?
-
-A pointer stores the memory address of a variable. Each pointer has a unique memory address and can directly access the value it points to. Reference, on the other hand, is an alias to an existing variable. The main difference between the two is that the pointer can be null and can also be reassigned, while reference can not.
-
-For more info, see: [C++ Features#Pointers](LANG/C++/feature.md)
+Local variables are declared inside functions, existing only temporarily within that block. Global variables are declared outside functions and are accessible throughout the entire program.
 
 #### What is the difference between pass by value and pass by reference?
 
@@ -74,39 +66,19 @@ In function overriding, a derived class provides a new implementation for a virt
 
 Function overloading allows you to define multiple functions in the same scope with the same name but different parameters. Function overriding occurs in inheritance hierarchies when a derived class provides a specific implementation for a function that is already defined in its base class. Function overwrite occurs in inhertitance hierarchies when a derived class hides base class method.
 
-#### What is a friend function?
-
-A friend function (or class) has access to a class's private and protected members. It can be used sparingly to implement symmetric operators or tightly coupled utilities without exposing internals publicly.
-
-For more info, see: [C++ Objects](LANG/C++/object.md)
-
-#### What is object slicing in C++? How can you avoid it?
-
-Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members fo the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
-
-For more info, see: [C++ Objects](LANG/C++/object.md)
-
-#### What is the difference between an abstract class and an interface in C++? How do you implement an interface-like behavior in C++?
-
-An abstract class is a class with **at least** one pure virtual function. An interface is a class with **only** pure virtual functions, it is a contract that defines a set of methods that a class must implement, without providing any implementation details ...
-
-For more info, see: [C++ Objects](LANG/C++/object.md)
-
-#### Explain the concept of encapsulation
-
-Encapsulation is one of the core principles of OOP. It bundles data(member variables) with the methods (member functions) that operate on that data inside a single unit, called a class. It restricts direct access to some parts of an object and hides the data to protect its integrity.
-
-For more info, see: [C++ Objects](LANG/C++/object.md)
-
-#### What is multiple inheritance, and what problems can it cause?
-
-Multiple inheritance (MI) lets a class inherit from more than one base. Here are the common issues that result from MI: Ambiguity, Diamond problem, complexity.
-
-For more info, see: [C++ Objects](LANG/C++/object.md)
-
 #### What is the difference between static data members and non-static data members?
 
 static data member shared among all instances, by contrast, each object has its own copy of non-static member .
+
+#### What is a pointer in C++, and how is it different from a reference?
+
+A pointer stores the memory address of a variable. Each pointer has a unique memory address and can directly access the value it points to. Reference, on the other hand, is an alias to an existing variable. The main difference between the two is that the pointer can be null and can also be reassigned, while reference can not.
+
+For more info, see: [C++ Features#Pointers](LANG/C++/feature.md)
+
+#### What happens if you return a pointer to a local variable from a function?
+
+The pointer becomes dangling because the variable's lifetime ends when the function exits. Accessing it causes undefined behavior.
 
 #### What is the “this” pointer, and how is it used?
 
@@ -116,45 +88,21 @@ Inside a non-static member function, this is a pointer to the current object.
 
 A function pointer stores the address of a function with a specific signature, which lets you call it indirectly or pass it around (callbacks, table-driven code).
 
+#### In the line "int* a, b;", how many pointers are declared?
+
+Only `a` is a pointer, `b` is just an int.
+
+#### How does pointer arithmetic lead to undefined behavior if misused?
+
+Pointer arithmetic allows direct memory access, but accessing out-of-bounds memory is undefined. Compiler may not throw errors, but program may crash or show garbage.
+
 #### How does inline expansion of functions affect performance?
 
 Inline expansion replaces a function call with the function body, potentially reducing call overhead and enabling further optimizations (constant propagation, loop unrolling).
 
-#### How is exception handling implemented in C++?
+#### Can we have a recursive inline function in C++?
 
-Exception handling in C++ is implemented using three keywords: `try`, `catch` and `throw`. This mechanism allows a program to deal with runtime errors in a a structured way so that it doesn't stop abruptly.
-
-#### What is the difference between std::exception and user-defined exceptions?
-
-`std::exception` is the root of the standard hierarchy and provides a virtual `what()` string. Standard library errors derive from it. User-defined exceptions let you encode domain context. As long as they ultimately derive from `std::exception`, callers can catch generically while still matching specific types when desired.
-
-#### How can RAII (Resource Acquisition is Initialization) help in exception safety?
-
-RAII binds a resource's lifetime to an object's lifetime so that destructors perform cleanup automatically during normal execution and during exception unwinding. This prevents leaks and makes code exception-safe.
-
-#### Explain templates in C++?
-
-Templates enable generic programming by parameterizing code over types. The compiler generates concrete instantiations on use.
-
-For more info, see: [C++ Templates](LANG/C++/template.md)
-
-#### What is Template Metaprogramming in C++?
-
-Template Metaprogramming (TMP) is a technique where templates are used to compute values at compile time, enabling optimization and stack checks.
-
-For more info, see: [C++ Templates](LANG/C++/template.md)
-
-#### What Is Template Specialization, and How Is It Useful?
-
-Template specialization allows you to create a customized version of a template for a specific data type or condition. It's useful when the generic template does not fit all data types or when you want optimized behavior for a particular type.
-
-For more info, see: [C++ Templates](LANG/C++/template.md)
-
-#### What Are Variadic Templates in C++?
-
-Variadic templates are an extension to C++ templates that allow them to accept a variable number of template arguments. This feature is invaluable for creating more flexible and reusable code structures, such as wrappers around existing functionality.
-
-For more info, see: [C++ Templates](LANG/C++/template.md)
+An inline function suggests to the compiler that function calls may be replaced with the function body to reduce overhead. Recursive functions can technically be marked inline, but in practice, the compiler will inline only a limited number of calls(if any). For deep recursion, inlining is not practical.
 
 #### What does the Scope Resolution operator do?
 
@@ -176,15 +124,17 @@ Default arguments are values that are used when a function is called without som
 
 Prefix and postfix operators differ primarily in the timing of their operation relative to expression evaluation. Prefix(`++x`) increments the variable first and returns the updated value, while postfix(`x++`) returns the original value before incrementing. Both increment the variable by 1, but prefix affects the current expression immediately.
 
-#### In the line "int* a, b;", how many pointers are declared?
-
-Only `a` is a pointer, `b` is just an int.
-
 ### New Feature
 
 #### Can you explain move semantics and why they are important in modern C++?
 
 Move semantics allow resources to be transferred (moved) from temporaries or expiring objects instead of expensive deep copies, enabling performance gains and exception safety improvements.
+
+For more info, see: [C++ Features#Move](LANG/C++/feature.md)
+
+#### Explain how `std::move` and `std::forward` differ in perfect forwarding?
+
+In C++, the key difference is that `std::move` unconditionally casts its argument to an rvalue reference to enable move semantics, while `std::forward` conditionally casts it argument to preserve its original value category in generic code. This preservation of value category is the core of perfect forwarding.
 
 For more info, see: [C++ Features#Move](LANG/C++/feature.md)
 
@@ -207,6 +157,15 @@ Perfect forwarding is a technique to pass arguments to another function without 
 #### What are decltype and auto keywords used for?
 
 `auto` deduces the variable type from the initializer. It's great for long iterator types, lambdas, and templates. `decltype(expr)` yields the exact tyep of an expression(including references and cv-qualifiers) without evaluating it.
+
+For more info, see: [C++ Features#decltype](LANG/C++/feature.md)
+
+#### How does type deduction using auto and decltype in C++ enhance type safety and flexibility?
+
+Instead of manually specifying data types, C++ allows the compiler to deduce the type using:
+
+- auto: Deduces the type from initializer.
+- decltype: Infers type from an expression.
 
 For more info, see: [C++ Features#decltype](LANG/C++/feature.md)
 
@@ -236,6 +195,329 @@ The `mutable` keyword is a storage class specifier used only with non-static dat
 
 For more info, see: [C++ Features#mutable](LANG/C++/feature.md)
 
+### Smart Point
+
+#### Explain Smart Pointers in C++?
+
+Smart pointers are template classes in `<memory>` that automate memory management and prevent leaks by destroying objects when they go out of scope.
+
+For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
+
+#### Can you explain the differences between `unique_ptr`, `shared_ptr`, and `weak_ptr` in terms of ownership and use cases?
+
+`unique_ptr` provides exclusive ownership of a resource, `shared_ptr` enables shared ownership via reference counting, and `weak_ptr` observes a `shared_ptr` without managing its lifetime, preventing circular dependencies. 
+
+For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
+
+#### Can you clarify how `shared_ptr` handles reference counting and why `weak_ptr` is used to break circular references?
+
+`std::shared_ptr` manages object lifetimes using an atomically updated reference cout stored in a shared control block.
+
+`std::weak_ptr` is used to break circular references because it observes the object without contributing to this count, preventing memory leaks.
+
+For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
+
+#### In a `std::shared_ptr` cycle, how does `std::weak_ptr` help avoid memory leaks when one object references another?
+
+It observes the object without contributing to its reference count, thus allowing the memory to be deallocated when all strong references are gone.
+
+For more info, see: [C++ STL#weak_ptr](LANG/C++/stl.md)
+
+#### How do you safely pass a `std::shared_ptr` to a thread?
+
+To safely pass a `std::shared_ptr` to a thread, you should pass it by value. This ensures the new thread gets its own copy, making the shared pointer's reference count management thread-safe and guaranteeing the object's lifetime extends as long as the thread is running.
+
+For more info, see: [C++ STL#shared_ptr](LANG/C++/stl.md)
+
+#### What's a potential issue when passing `std::shared_ptr` to a thread, and how can you avoid it?
+
+The main issue when using `std::shared_ptr` in a multithreaded environment is the potential for data races on the managed object and, less commonly, data races on the `std::shared_ptr` instance itself.
+
+For more info, see: [C++ STL#shared_ptr](LANG/C++/stl.md)
+
+#### Can you write a simple example where `std::unique_ptr` prevents a memory leak in a function that returns a dynamically allocated object?
+
+For more info, see: [C++ STL#unique_ptr](LANG/C++/stl.md)
+
+#### Can you explain what a dangling pointer is and how smart pointers help prevent it?
+
+For more info, see: [C++ Feature#Dangling Pointer](LANG/C++/feature.md)
+
+### Exception
+
+#### How is exception handling implemented in C++?
+
+Exception handling in C++ is implemented using three keywords: `try`, `catch` and `throw`. This mechanism allows a program to deal with runtime errors in a a structured way so that it doesn't stop abruptly.
+
+#### What is the use of the `catch(...)` block? How is it different from specific catch blocks?
+
+The `catch(...)` block is used to catch any type of exception, regardless of its data type or class. It acts as a generic fallback handler.
+
+#### How do you create a custom exception in C++?
+
+You can create a custom exception by defining a class that inherits from the `std::exception` class and overriding its `what()` method, which returns an error message.
+
+#### What is the difference between std::exception and user-defined exceptions?
+
+`std::exception` is the root of the standard hierarchy and provides a virtual `what()` string. Standard library errors derive from it. User-defined exceptions let you encode domain context. As long as they ultimately derive from `std::exception`, callers can catch generically while still matching specific types when desired.
+
+#### What happens if an exception is thrown but not caught?
+
+If an exception is thrown but not caught anywhere in the call stack, the program calls `std::terminate()`, which by default aborts execution. Exceptions can propagate up the call stack until a suitable catch block is found. If none is found, the program terminates.
+
+#### What is stack unwinding in exception handling? Explain its role.
+
+Stack unwinding is the process of cleaning up the call stack after an exception is thrown and before it is caught. During unwinding, destructors of all local objects are called in reverse order of construction, ensuring proper cleanup. This prevents resource leaks and enforces RAII(Resoruce Acquistition Is Initialization).
+
+#### What is the use of noexcept in C++ exception handling?
+
+The noexcept keyword specifies that a function does not throw exceptions. It makes intent clear to both the compiler and developers. If a nonexcept function does throw, `std::terminate()` is called. noexcept is especially important for move constructors and destructors, where it enables optimizations such as exception-safe move operations in standard containers.
+
+#### What will happen if you throw an exception from a destructor?
+
+Throwing an exception from a destructor during stack unwinding results in a call to `std::terminate()`, which aborts the program.
+
+#### What happens when you throw a pointer and throw an object in C++?
+
+Throwing a pointer means you're throwing an address. It won't trigger automatic destruction of the object pointed to, and catching it requires catching the same pointer type. Throwing by value creates a copy, and cleanup is automatic.
+
+#### How can RAII (Resource Acquisition is Initialization) help in exception safety?
+
+RAII binds a resource's lifetime to an object's lifetime so that destructors perform cleanup automatically during normal execution and during exception unwinding. This prevents leaks and makes code exception-safe.
+
+For more info, see: [C++ Best Practice#Ensure thread safety](LANG/C++/best_practice.md)
+
+### OOP
+
+#### What is a class and object in C++?
+
+A class is a blueprint or template that defines the properties(data members) and behaviors(member functions/methods) that all objects of that specific type will have. An object is a real-world instance of a class that occupies memory and can perform the actions defined by the class.
+
+#### What are type modifiers in C++?
+
+Modifiers like signed, unsigned, long, short change the size or sign of basic data types.
+
+#### What is a friend function?
+
+A friend function (or class) has access to a class's private and protected members. It can be used sparingly to implement symmetric operators or tightly coupled utilities without exposing internals publicly.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is a friend class?
+
+A friend class is a class that can access the private and protected members of another class. The friendship is declared inside the class using friend class.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is object slicing in C++? How can you avoid it?
+
+Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members fo the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is the difference between an abstract class and an interface in C++? How do you implement an interface-like behavior in C++?
+
+An abstract class is a class with **at least** one pure virtual function. An interface is a class with **only** pure virtual functions, it is a contract that defines a set of methods that a class must implement, without providing any implementation details ...
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### Explain the concept of encapsulation
+
+Encapsulation is one of the core principles of OOP. It bundles data(member variables) with the methods (member functions) that operate on that data inside a single unit, called a class. It restricts direct access to some parts of an object and hides the data to protect its integrity.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is inheritance in C++?
+
+Inheritance is a machanism in which a class(derived class) acquires the properties and behaviors of another class(base class).
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is multiple inheritance, and what problems can it cause?
+
+Multiple inheritance (MI) lets a class inherit from more than one base. Here are the common issues that result from MI: Ambiguity, Diamond problem, complexity.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What is virtual inheritance?
+
+Virtual inheritance is a C++ mechanism used to solve the diamond problem in multiple inheritance.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### What happens when we override a function but forget to use `virtual` in the base class?
+
+Function overriding won't work as runtim polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### Can we call a virtual function from a constructor?
+
+Yes, we can call a virtual function from a constructor, but during base class construction the derived part of the object is not yet initialized.
+
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+
+#### What is polymorphism in C++?
+
+Polymorphism means one interface, multiple implementations. It allows the same function or operator to behave differently depending on the context.
+
+For more info, see: [C++ Objects](LANG/C++/object.md)
+
+#### Can constructors be private in C++?
+
+Yes, constructors can be private in C++. When a constructor is private, objects of the class cannot be created directly outside the class.
+
+For more info, see: [C++ Object](LANG/C++/object.md)
+
+#### Can a derived class access private members of the base class?
+
+A derived class cannot directly access private members of a base class.
+
+For more info, see: [C++ Object](LANG/C++/object.md)
+
+#### How do you free memory allocated with new?
+
+Use `delete` for single values, and `delete[]` for arrays.
+
+For more info, see: [C++ Objects#new and delete Operators](LANG/C++/object.md)
+
+#### How we can make custom delete?
+
+You can overload operator delete or operator delete[] in your class:
+
+```c++
+void operator delete(void* ptr){
+    ...
+    ::operator delete(ptr);
+}
+```
+
+#### What is the difference between `new` and `malloc()`
+
+| new                                     | malloc                                      |
+| --------------------------------------- | ------------------------------------------- |
+| An operator which performs an operation | A function that returns and accepts values. |
+| Calls the constructors                  | Cannot call a constructor                   |
+| Returns the exact data type             | Return void*                                |
+
+For more info, see: [C++ Objects#Summary](LANG/C++/object.md)
+
+#### Why base class destructors should be virtual?
+
+If the base class destructor is not virtual, deleting a derived object through a base pointer calls only the base destructor, can cause memory leaks or incomplete destruction, and can ensures the derived destructor is called first.
+
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+
+#### Is destructor overloading possible?
+
+Destructor overloading is not possible in C++. A class can have only one destructor, and it cannot take parameters or have a return type.
+
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+
+### Template
+
+#### Explain templates in C++?
+
+Templates enable generic programming by parameterizing code over types. The compiler generates concrete instantiations on use.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### What is Template Metaprogramming in C++?
+
+Template Metaprogramming (TMP) is a technique where templates are used to compute values at compile time, enabling optimization and stack checks.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### What Is Template Specialization, and How Is It Useful?
+
+Template specialization allows you to create a customized version of a template for a specific data type or condition. It's useful when the generic template does not fit all data types or when you want optimized behavior for a particular type.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### Can function templates be partially specialized in C++?
+
+Function templates cannot be partially specialized, only fully specialized. Partial specialization is only supported for class templates.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### What Are Variadic Templates in C++?
+
+Variadic templates are an extension to C++ templates that allow them to accept a variable number of template arguments. This feature is invaluable for creating more flexible and reusable code structures, such as wrappers around existing functionality.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### What is a function template in C++?
+
+A function template allows a function to operate on generic data types. It provides a way to write one function for multiple types, which is resolved at compile-time.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### Can a function template throw an exception based on the type it is instantiated with?
+
+Yes. Templates can use static_assert or if constexpr to control logic at compile-time based on type, and can throw exceptions conditionally at runtime.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
+### Concurrency
+
+#### What are the major multithreading features introduced in C++11 and later?
+
+Modern C++ provides a full-fledged standard threading library with: `std::thread`, `std::mutex`, `std::lock_guard`, `std::condition_variable`, `std::atomic`, `std::async`, `std::future`.
+
+For more info, see: [C++ Concurrency Programming#std::thread](LANG/C++/concurrency.md)
+
+#### What's the major challenges when sharing data between threads in C++?
+
+The major challenges when sharing data between threads in C++ include race conditions, data corruption, deadlocks, and performance overhead from synchroniation, all of which can lead to unpredictable behavior and program crashes.
+
+For more info, see: [C++ Concurrency Programming](LANG/C++/concurrency.md)
+
+#### What is a race condition, and how can you prevent it in C++?
+
+A race conditon is a bug occuring when multiple threads access shared data simultaneously, and the final outcome depends on the unpredictable timing or sequence of their execution, leading to data corruption or inconsistent behavior. In C++, it is prevented by synchronizing access to shared data, ensuring only one thread accesses the critical section at a time.
+
+For more info, see: [C++ Concurrency Programming#Race Condition](LANG/C++/concurrency.md)
+
+#### How do you ensure thread safety when multiple threads access shared data in C++?
+
+In C++, thread safety for shared data access is primarily ensured using synchronization primitives like mutexes and atomic operations. These mechanisms prevent data races, which lead to undefined behavior when multiple threads concurrently read and write to the same memory location.
+
+For more info, see: [C++ Concurrency Programming](LANG/C++/concurrency.md)
+
+#### Can you explain when you'd choose `std::atomic` over a mutex for thread-safe operations?
+
+You should choose `std::atomic` for simple, single-variable operations where maximum performance is critical, and a mutex for complex operations involving multiple variables or where blocking is acceptable.
+
+For more info, see: [C++ Concurrency Programming#std::atomic](LANG/C++/concurrency.md)
+
+#### can you briefly explain how `std::atomic` helps prevents race conditions in a simple counter increment
+
+`std::atomic` prevents race conditions by ensuring that operations on a shared variable, such as incrementing a counter, are indivisible and uniterruptible. This means the entire "read-modify-write" sequence is completed as a single, atomic step, without interference from other threads.
+
+For more info, see: [C++ Concurrency Programming#std::atomic](LANG/C++/concurrency.md)
+
+#### Can you write a small example where `std::atomic` safely signals a thread to stop?
+
+A `std::atomic<bool>` provides a lightweight, thread-safe mechanism to signal a worker thread to stop. The main thread sets the atomic flag, which the worker thread periodically checks.
+
+For more info, see: [C++ Concurrency Programming#std::atomic](LANG/C++/concurrency.md)
+
+#### Describe a real-world scenario where thread safety is critical in C++ and how you'd ensure it.
+
+A critical real-world scenario where thread safety is vital in C++ is a financial trading system, specifically in managing shared resources like an account balance or order book. A race condition could lead to lost updates, data corruption, and incorrect financial calculations, with significant real-world monetary consequences.
+
+#### Describe a situation where `std::shared_mutex` is better than `std::mutex` for shared access.
+
+`std::shared_mutex` is better than `std::mutex` in read-heavy scenarios where multiple threads read data frequently, but write are infrequent. It boosts performance by allowing concurrent reads, while `std::mutex` unnecessarily serializes all accesses, causing bottlenecks.
+
+For more info, see: [C++ Concurrency Programming#shared_mutex](LANG/C++/concurrency.md)
+
+#### Explain the difference between `std::thread::join` and `std::thread::detach()`
+
+The primary difference is that `std::thread::join()` blocks the calling thread until the spawned thread finishes, which `std::thread::detach()` separates the spawned thread from its `std::thread` object, allowing it to run independently in the background.
+
+For more info, see: [C++ Concurrency Programming#Waiting for Thread Completion, Detaching Threads](LANG/C++/concurrency.md)
+
 ### STL
 
 #### What is 'namespace'?
@@ -248,25 +530,78 @@ Namespace is a feature that provides a way to group related identifiers such as 
 
 For more info, see: [C++ STL](LANG/C++/stl.md)
 
-#### Explain Smart Pointers in C++?
-
-Smart pointers are template classes in `<memory>` that automate memory management and prevent leaks by destroying objects when they go out of scope.
-
-For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
-
-#### Can you explain the differences between `unique_ptr`, `shared_ptr`, and `weak_ptr` in terms of ownership and use cases?
-
-TODO
-
-#### Can you clarify how `shared_ptr` handles reference counting and why `weak_ptr` is used to break circular references?
-
-TODO
-
 #### How Do `std::function` and `std::bind` Work in C++?
 
 `std::function` is a polymorphic wrapper used to store and invoke any callable object, such as functions, lambdas, or bind expressions. `std::bind` allows you to bind specific arguments to a function, creating a new function object.
 
-### Concurrency
+#### How is the vector container implemented in STL?
+
+The vector container in C++ STL is a dynamic array that can grow or shrink in size at runtime. It provides random access to elements and stores them in contiguous memory locations, like traditional arrays.
+
+For more info, see: [C++ STL#vector](LANG/C++/stl.md)
+
+#### What happens if you modify a vector while iterating through it using a rang-based for loop?
+
+If you modify a `std::vector` while iterating through it using a rang-based for loop, the behavior can be unpredictable and often unsafe.
+
+For more info, see: [C++ STL#vector](LANG/C++/stl.md)
+
+#### How can you safely erase elements from a vector or set while iterating?
+
+To safely erase elements during iteration, we must avoid incrementing the iterator manually after erase(use returned iterator), or use remove-erase idiom(for vector), or use post-increment technique in containers like set.
+
+For more info, see: [C++ STL#vector](LANG/C++/stl.md)
+
+#### What are iterators in STL?
+
+An iterator is an object(like a pointer) used to traverse containers. STL uses iterators to access elements in a uniform manner, regardless of the container. Iterators help in writing generic algorithms that work across differnt container types.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### What are allocators in STL? Can they be customized?
+
+Allocators define how memory is allocated and deallocated for STL containers. By default, containers use `std::allocator<T>` which uses `new/delete`. Custom allocators can be provided for special needs such as memory pools, shared memory, or tracking.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### What happens if you insert a duplicate key in `std::set` or `std::map`? How do you detect insertion success?
+
+`std::set` and `std::map` do not allow duplicate keys. The `insert()` method returns a pair `<iterator, bool>`, where bool indicates success.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### How do you sort a `vector<pair<int, int>>` by second element using STL?
+
+To sort a `vector<pair<int, int>>` by the second element of the pairs using STL, you can use `std::sort` with a custom comparator.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### What happens if you use a vector as a key in an unordered_map?
+
+Using a `std::vector` as a key in an `unordered_map` is not allowed by default because unordered_map requires the key type to be hashable.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### Write a function that takes a vector of integers and returns the sum of all even numbers using `std::transform` and `std::accumulate`.
+
+```c++
+#include <algorithm>
+#include <vector>
+#include <numeric>
+
+int sum(const std::vector<int>& arr)
+{
+	std::vector<int> evens(arr.size());
+	std::transform(arr.begin(), arr.end(), evens.begin(), [](int x) {
+		return (x % 2 == 0) ? x : 0;
+	});
+	return std::accumulate(evens.begin(), evens.end(), 0);
+}
+```
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
+### Boost
 
 TODO
 
@@ -293,9 +628,7 @@ For more info, see: [SQL Language#Views](DB/sql.md)
 
 The UNIQUE constraint ensures that all values in a column (or combination of columns) are distinct. This prevents duplicate values and helps maintain data integrity.
 
-#### What is a composite primary key?
-
-A composite primary key uses two or more columns together to uniquely identify each row when one column alone isn't sufficient.
+For more info, see: [SQL Language#Unique constraint](DB/sql.md)
 
 #### Explain the difference between the `WHERE` and `HAVING` clauses
 
@@ -307,53 +640,17 @@ A composite primary key uses two or more columns together to uniquely identify e
 
 SQL joins combine rows from two tables based on a matching condition (typically keys) to answer questions that span both tables...
 
-An `INNER JOIN` returns only matches that exist in both tables (the intersection). 
-
-A `LEFT JOIN` returns all rows from the left table and the matching rows from the right; when there's no match, right-side columns are `NULL`. 
-
-A `RIGHT JOIN` is the mirror image: all rows from the right table plus matches from the left, `NULL` when absent.
-
-A `FULL(OUTER) JOIN` returns all rows from either table, filling in `NULL` where a counterpart is missing.
-
 For more info, see: [SQL Language#Joins](DB/sql.md)
-
-#### Describe a `PRIMARY KEY` and how it differs from a `UNIQUE` key
-
-A `PRIMARY KEY` uniquely identifies each row in a table: it combines `UNIQUE + NOT NULL`, there can be only one per table, and it's the default target for foreign keys.
-
-A `UNIQUE` key also enforces uniqueness, but doesn't require `NOT NULL` and you can have many `UNIQUE` constraints per table.
 
 #### What is a CTE (Common Table Expression) and when would you use it?
 
 A CTE (Common Table Expression) is a temporary, named result set defined with `WITH` that exists only for the duration of a single statement. You use CTEs to break complex logic into steps, avoid repeating the same subquery, improve readability/maintenance, enable recursion, and make debugging easier.
-
-#### Explain normalization and briefly describe the different normal forms.
-
-Normalization organizes relational data to minimize redundancy and prevent `update/insert/delete` anomalies by splitting tables based on dependencies while preserving meaning.
-
-For more info, see: [SQL Language#Relational Model](DB/relational_model.md)
 
 #### What is the difference between `UNION` and `UNION ALL`?
 
 `UNION` combines results from two (or more) `SELECT`s and removes duplicates (it performs a `DISTINCT` across all columns), which adds sorting/hash work and can be slower.
 
 `UNION ALL` keeps duplicates and usually runs faster because it simply appends result sets.
-
-#### What are indexes, and why are they used?
-
-Indexes are database objects that improve query performance by allowing faster retrieval of rows. They function like a book's index, making it quicker to find specific data without scanning the entire table. However, indexes require additional storage and can slightly slow down data modification operations.
-
-For more info, see: [SQL Language#Indexes](DB/sql.md)
-
-#### How do clustered and non‑clustered indexes differ?
-
-A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
-
-For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
-
-#### How do you perform pattern matching in SQL?
-
-SQL supports pattern matching mainly with `LIKE` (and `NOT LIKE`) using wildcards `%` for any-length string and `_` for a single character.
 
 #### How would you calculate the running total of sales for each product?
 
@@ -389,30 +686,6 @@ A foreign key (FK) is a column (or set of columns) in a child table taht referen
 
 `UNION`, `INTERSECT`, and `EXCEPT` are SQL set operations that combine results from two queries with the same number of columns and compatible data types. `UNION` returns the distinct union of both result sets (removes duplicates).
 
-#### What is a query in SQL?
-
-A query is a SQL statement used to retrieve, update, or manipulate data in a database. The most common type of query is a `SELECT` statement, which fetches data from one or more tables based on specified conditons.
-
-For more info, see: [DB Query](DB/query.md)
-
-#### What is a subquery?
-
-A subquery is a query nested within another query. It is often used in the `WHERE` clause to filter data based on the results of another query, making it easier to handle complex conditons.
-
-For more info, see: [DB Query](DB/query.md)
-
-#### How would you optimize a slow query?
-
-1. measure: reproduce the issue, capture timings, and run `EXPLAIN/EXPLAIN ANALYZE` to see teh plan, row estimates, and bottlenecks;
-2. fix fundamentals: ensure current statistics, right indexes;
-3. sargable predicates: avoid functions on columns, leading `%` wildcards, or expressions that prevent;
-4. Reduce data early with selective `WHERE` filters, fetch only needed columns (no `SELECT *`), and prefer `EXISTS` over `IN` for semi-joins;
-5. Tame row explosion by checking `JOIN` selectivity, deduplicating before joins, and pre-aggregating where helpful;
-6. Rewrite problematic patterns: split wide ORs into `UNION ALL`, replace correlated subqueries with joins, consider window functions carefully;
-7. For large sets, use keyset pagination (seek method) instead of `OFFSET`, and consider materialized views, caching, or partitioning for heavy, recurring analytics.
-
-For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
-
 #### What are the main types of SQL commands?
 
 SQL commands are broadly classified into:
@@ -430,6 +703,10 @@ The `DEFAULT` constraint assigns a default value to a column when no value is pr
 
 The `GROUP BY` clause is used to ararnge identical data into groups. It is typically used with aggregate functions to perform calculations on each group rather than on the entire dataset.
 
+#### What is the purpose of the ALTER command in SQL?
+
+The ALTER command is used to modify the structure of an existing database object. This command is essential for adapting our database schema as requirements evolve.
+
 #### What are aggregate functions in SQL?
 
 Aggregate functions perform calculations on a set of values and return a single value.
@@ -437,6 +714,106 @@ Aggregate functions perform calculations on a set of values and return a single 
 #### What is the difference between DELETE and TRUNCATE commands?
 
 `TRUNCATE` is a DDL command, while `DELETE` is a DML command, which is why they differ in speed and logging behavior. `DELETE` removes rows one at a time and records each deletion in the transaction log, allowing rollback. It can have a `WHERE` clause. `TRUNCATE` removes all rows at once without logging individual row deletions.
+
+For more info, see: [SQL Language](DB/sql.md)
+
+### Query
+
+#### What is a query in SQL?
+
+A query is a SQL statement used to retrieve, update, or manipulate data in a database. The most common type of query is a `SELECT` statement, which fetches data from one or more tables based on specified conditons.
+
+For more info, see: [DB Query](DB/query.md)
+
+#### What is a subquery?
+
+A subquery is a query nested within another query. It is often used in the `WHERE` clause to filter data based on the results of another query, making it easier to handle complex conditons.
+
+For more info, see: [DB Query](DB/query.md)
+
+#### How would you optimize a slow query?
+
+1. measure: reproduce the issue, capture timings, and run `EXPLAIN/EXPLAIN ANALYZE` to see teh plan, row estimates, and bottlenecks;
+2. fix fundamentals
+3. sargable predicates: avoid functions on columns, leading `%` wildcards, or expressions that prevent;
+4. Reduce data early with selective `WHERE` filters, fetch only needed columns (no `SELECT *`), and prefer `EXISTS` over `IN` for semi-joins;
+5. Tame row explosion by checking `JOIN` selectivity, deduplicating before joins, and pre-aggregating where helpful;
+6. Rewrite problematic patterns: split wide ORs into `UNION ALL`, replace correlated subqueries with joins, consider window functions carefully;
+7. For large sets, use keyset pagination (seek method) instead of `OFFSET`, and consider materialized views, caching, or partitioning for heavy, recurring analytics.
+
+For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
+
+#### Write a SQL query to retrieve all employees from the "Employees" table who work in the "Engineering" department, assuming there's a "Department" table.
+
+```sql
+SELECT E.* FROM Employees AS E JOIN Departments AS D ON E.DepartmentID = D.DepartmentID WHERE D.DepartmentName = 'Engineering';
+```
+
+### Index
+
+#### What are indexes, and why are they used?
+
+Indexes are database objects that improve query performance by allowing faster retrieval of rows. They function like a book's index, making it quicker to find specific data without scanning the entire table. However, indexes require additional storage and can slightly slow down data modification operations.
+
+For more info, see: [SQL Language#Indexes](DB/sql.md)
+
+#### How do clustered and non‑clustered indexes differ?
+
+A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
+
+For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
+
+#### How do you perform pattern matching in SQL?
+
+SQL supports pattern matching mainly with `LIKE` (and `NOT LIKE`) using wildcards `%` for any-length string and `_` for a single character.
+
+### Cursor
+
+#### What is a cursor in SQL?
+
+A cursor is a database object used to retrieve, manipulate, and traverse through rows in a result set one row at a time.
+
+For more info, see: [SQL Language](DB/sql.md)
+
+### Trigger
+
+#### What is a trigger in SQL?
+
+A trigger is a set of SQL statemetns that automatically execute in response to certain events on a table, such as `INSERT`, `UPDATE`, or `DELETE`. Triggers help maintain data consistency, enforce business rules, and implement complex integrity constraints.
+
+For more info, see: [SQL Language](DB/sql.md)
+
+### Table
+
+#### What is a table in SQL?
+
+A table is a structured collection of related data organized into rows and columns. Columns define the type of data stored, while rows contain individual records.
+
+For more info, see: [SQL Language#Table operations](DB/sql.md)
+
+#### What is a composite primary key?
+
+A composite primary key uses two or more columns together to uniquely identify each row when one column alone isn't sufficient.
+
+#### Describe a `PRIMARY KEY` and how it differs from a `UNIQUE` key
+
+A `PRIMARY KEY` uniquely identifies each row in a table: it combines `UNIQUE + NOT NULL`, there can be only one per table, and it's the default target for foreign keys.
+
+A `UNIQUE` key also enforces uniqueness, but doesn't require `NOT NULL` and you can have many `UNIQUE` constraints per table.
+
+#### Explain the difference between a primary key and a foreign key in a relational database.
+
+A primary key uniquely identifies each record within a table, while a foreign key links two table together by referencing the primary key of another table.
+
+For more info, see: [DB Table#Compare Primary Key And Foreign Key](DB/table.md)
+
+### Stored Procedure
+
+#### What is a stored procedure?
+
+A stored procedure is a precompiled set of SQL statements stored in the database. It can take input parameters, perform logic and queries, and return output values or result sets.
+
+For more info, see: [SQL Language#Stored Procedures](DB/sql.md)
 
 ### Partitioning
 
@@ -446,9 +823,19 @@ Database partitioning is the practice of splitting a large table (and its indexe
 
 For more info, see: [Database Best Practice#Partitioning](DB/best_practice.md)
 
-### What is denormalization, and when is it used?
+### Normalization
+
+#### Explain normalization and briefly describe the different normal forms.
+
+Normalization organizes relational data to minimize redundancy and prevent `update/insert/delete` anomalies by splitting tables based on dependencies while preserving meaning.
+
+For more info, see: [Relational Model#Normalization and functional dependencies](DB/relational_model.md)
+
+#### What is denormalization, and when is it used?
 
 Denormalization is the process of combining normalized tables into larger tables for performance reasons. It is used when complex queries and joins slow down data retrieval, and the performance benefits outweigh the drawbacks of redundancy.
+
+For more info, see: [Relational Model#Normalization and functional dependencies](DB/relational_model.md)
 
 ### Safety
 
@@ -458,13 +845,63 @@ The primary defense against SQL injection is to use parameterized queries (prepa
 
 For more info, see: [Database Best Practice#Parameterized Query](DB/best_practice.md)
 
+### NoSQL
+
+#### What are the differences between SQL and NoSQL databases?
+
+SQL is best for structured, reliable transactions, while NoSQL shines in handling massive, fast-changing, and unstructured data.
+
+For more info, see: [SQL Language](DB/sql.md)
+
 ---
 
 
 
 ## Network
 
-TODO
+### TCP
+
+#### Explain how to create a simple TCP server that accepts one client connection and sends msg back.
+
+Creating a simple TCP server involves a standard sequence of steps: creating a socket, binding it to an address and port, listening for incoming connections, accepting a client, communicating and closing the connection.
+
+For more info, see: [TCP Protocol](NET/tcp.md), [Socket Programming](NET/socket.md)
+
+#### How to use `select()` to handle multiple client connections in a non-blocking TCP server.
+
+Set all sockets (listening and client) to non-blocking mode and use an event loop to monitor their activity. The `select()` call blocks the server until an event occurs on one or more of the monitored file descriptors.
+
+For more info, see: [TCP Protocol](NET/tcp.md), [Socket Programming](NET/socket.md)
+
+#### How to handle connection timeout in a TCP client by using `setsockopt()` and `select()`.
+
+Setting explicit timeouts on connection(example for linux: `setsockopt(..., SO_RCVTIMEO/SO_SNDTIMEO)`), and use `select(..., timeval)` to wait with a timeout.
+
+For more info, see: [Socket Programming#Timeout Handling](NET/socket.md)
+
+### UDP
+
+#### How to implement a UDP client-server communication for sending and receiving messages.
+
+Creating a connectionless link using datagram sockets. The server bind port and listen for incoming packets, and the client sends datagrams to the server's address and port without formally establishing a connection first.
+
+For more info, see: [UDP Protocol](NET/udp.md), [Socket Programming#UDP Socket Programming](NET/socket.md)
+
+### IO
+
+#### How to use `poll()` instead of `select()` for handling multiple connections, and what advantages it offers.
+
+First define a struct `pollfd` array, then initialize the structures, then pass the array to `poll()`, finally check `revents`.
+
+`poll()` offering better scalability and efficiency than `select()`, and not file descriptor limit.
+
+For more info, see: [Network I/O](NET/tcp.md)
+
+#### How to use non-blocking I/O with `epoll` for handling high-concurrency network connections.
+
+Configure all sockets as non-blocking, create an `epoll` instance to monitor events, and use an event loop with `epoll_wait()` to handle I/O on ready socket without blocking.
+
+For more info, see: [Network I/O#epoll](NET/tcp.md)
 
 ---
 
@@ -472,13 +909,39 @@ TODO
 
 ## Algorithm
 
-### Complexity Analysis
+### Linked List
 
-TODO
+#### Reverses a linked list iteratively using three pointers: current, previous, and next.
 
-### Array
+At each step, point the current node to its previous node and then move all three pointers forward until the list is fully reversed.
 
-TODO
+For more info, see: [Linked List#Reverse](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+
+#### Finds the middle of a linked list using the slow and fast pointer technique.
+
+The idea is to traverse the entire linked list once to count the total number of nodes. After determining the total count, traverse the list again and stop the middle node to return its value.
+
+For more info, see: [Linked List#Reverse](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+
+### Tree
+
+#### Checks if a binary tree is balanced using a recursive approach.
+
+Define a function that simultaneously calculates the height of the tree and checks for the balance condition. Calculate the absolute difference between left height and right heigh, if the difference is greater than 1, it is unbalanced. otherwise, it is balanced.
+
+For more info, see: [Binary Tree#Balanced Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
+
+#### Find the lowest common ancestor in a binary search tree.
+
+We just recursively traverse the BST(binary search tree), if node's value is greater than both n1 and n2 then our LCA lies in the left side of the node, if it is smaller than both n1 and n2, then LCA lies on the right side. Otherwise, the root is LCA.
+
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
+
+#### Check if a binary tree is a valid binary search tree using in-order traversal.
+
+Traverse the tree and verify that each element encountered is greater than the previous one.
+
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
 
 ### Dynamic Programming
 
@@ -532,6 +995,8 @@ For more info, see: [Huffman Codes](ALGO/huffman.md)
 
 ### Recursive Algorithm
 
+#### What is recursion and how does it work?
+
 TODO
 
 ### Divide and Conquer Algorithm
@@ -540,7 +1005,11 @@ TODO
 
 ### Backtracking Algorithm
 
-TODO
+#### Generates all permutations of a string using recursion and backtracking.
+
+First initialize an array of string `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the lememts in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
+
+For more info, see: [Backtracking Problem](ALGO/LEETCODE.md)
 
 ### Searching
 
@@ -596,6 +1065,60 @@ Hashing uses a hash function to compute an index for each element, allowing for 
 
 For more info, see: [Searching Algorithm Summary#Hash-Based Search](ALGO/search.md)
 
+#### Compare Linear Search and Binary Search
+
+Linear Search checks elements sequentially, while Binary Search halves teh search space with each step, making it more efficient for sorted data with a time complexity of $O(\log n)$.
+
+For more info, see: [Searching Algorithm Summary#Complixity Analysis](ALGO/search.md)
+
+#### Recursive and Iterative Binary Search: Which one is more efficient and why?
+
+Iterative Binary Search is typically more efficient than Recursive Binary Search. This is because iterative binary search avoids the overhead of recursive function calls and stack space consumption, resulting in lower memory usage and potentially faster execution, especially for large datasets.
+
+For more info, see: [Searching Algorithm Summary#Complixity Analysis](ALGO/search.md)
+
+#### Why use binary search if there is a ternary search?
+
+Binary search is preferred for finding specific values in sorted arrays, as it divides the search space in half with each step, resulting in efficient searches with a time complexity of $O(\log_2 n)$. Binary Search is useful for finding maximum or minimum value in a Monotonic function whereas Ternary search is useful for finding the maximum or minimum value in a unimodal function. Also, the time complexity of Ternary Search is $O(2 * \log_3 N)$ which is greater than $O(\log_2 n)$.
+
+For more info, see: [Searching Algorithm Summary#Ternary Search](ALGO/search.md)
+
+#### Can you write a function that finds the first non-repeating character in a string?
+
+Using a container to count character times.
+
+For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Given a sorted array, find two numbers that add up to a target. Write the code using two pointers.
+
+Using a container(example: unordered_map) to cache parameter.
+
+For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Write a function that checks if a string is a palindrome using two iterators.
+
+Using a index move from begin to end, another index move from end to begin; compare two index, if not equal, it's not palindrome, eitherwise, it's palindrome.
+
+For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Write a function that removes duplicates from a sorted vector using the two-pointer technique.
+
+Using a index move from o to end, another index move from 1 to end; compare two index, if not equal, move two index; else, erase the right index position.
+
+For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Checks if two strings are anagrams using character frequency counting.
+
+Use either a fixed-size array or a `std::unordered_map` to storage character frequency counting.
+
+For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Finds the maximum sum of any contiguous subarray using Kadane's algorithm.
+
+The algorithm maintains two variables: `max_ending_here` to track teh maimum sum ending at the current position, and `max_so_far` for the overall maximum sum found so far.
+
+For more info, see: [Search Algorithm Summary#Kadane's Algorithm](ALGO/search.md), [Search Problem](ALGO/LEET_CODE/search.md)
+
 ### Sorting
 
 #### What is a sorting algorithm?
@@ -607,6 +1130,8 @@ For more info, see: [Sorting Algorithm Summary](ALGO/sort.md)
 #### Why Sorting algorithms are important?
 
 The effectiveness of other algorithms that depend on input data being in sorted lists is enhanced by efficient sorting. Sorting is also frequently helpful for generating output that is readable by humans. Sorting is directly used in divide-and-conquer strategies, database algorithms, data structure algorithms and many other applications.
+
+For more info, see: [Sorting Algorithm Summary](ALGO/sort.md)
 
 #### What are the different types of sorting algorithms?
 
@@ -650,21 +1175,53 @@ For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
 
 In the worst case, Quick Sort may take $O(N^2)$ time to sort the array. The worst case will occur when every time the problem of size $N$, get divided into 2 subproblems of size 1 and $N - 1$.
 
-### Tree
-
-TODO
-
-### Graph
-
-TODO
-
 ---
 
 
 
 ## OS
 
-TODO
+### Process, Thread, and Coroutine
+
+#### Explain the difference between a process and a thread in operating systems.
+
+A process is an independent, executing program with its own dedicated memory space, while a thread is a smaller, lightweight unit of execution within a process that shares the parent process's memory and resources.
+
+For more info, see: [Process, Thread, and Coroutine#Summary](OS/progress_thread_coroutine.md)
+
+#### Explain what a deadlock is and describe two conditions that must hold for a deadlock to occur.
+
+A deadlock is a computing state where two or more processes are permanently blocked because each holds a resource the other needs, resulting in an indefinite wait. It requires four conditions: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait.
+
+For more info, see: [Process, Thread, and Coroutine#Deadlock](OS/progress_thread_coroutine.md)
+
+### Memory Management
+
+#### Explain how virtual memory works and why it's essential for modern operating systems.
+
+Virtual memory gives each process the illusion of a large, private, contiguous address space. Provide an efficient use of physical memory by keeping only active page in RAM; Simpler programming model; Isolate processes from each other and from the kernel.
+
+For more info, see: [Memory Management#Virtual memory](OS/mem_mgr.md)
+
+#### Explain how page faults occur and what the OS does when a page fault happens.
+
+A page fault occurs when a program tries to access data on a page not currently mapped to physical RAM. The OS handles this by pausing the process, fetching the required page from disk into a free RAM frame, updating the page table, and resuming the process.
+
+For more info, see: [Memory Management#Virtual memory](OS/mem_mgr.md)
+
+#### How the OS manages the page replacement algorithm? using LRU as an example.
+
+The OS manges the page replacement strategies include: LRU, FIFO, Working-set algorithms. For example, When physical memory is full and a new page needs to be loaded, the LRU algorithm selects the page that has not been used for the longest period of time and replaces it.
+
+For more info, see: [Memory Management#Page replacement policies](OS/mem_mgr.md)
+
+### IO
+
+#### Why is exclusive ownership important when managing a file handle?
+
+Exclusive ownership in file handle managment ensures data integrity, prevents resource leaks, and guarantees that only one process can safely modify a file, mitigating risks of corruption.
+
+For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design_pattern.md)
 
 ---
 
@@ -685,3 +1242,53 @@ For more info, see: [Design Pattern#SINGLETON](PROJ/design_pattern.md)
 The Observer Pattern defines a one-to-many dependency so that when one object (subject) changes, all dependent objects(observers) are notified...
 
 For more info, see: [Design Pattern#OBSERVER](PROJ/design_pattern.md)
+
+### Optimize
+
+#### Tell me about a time you had to optime C++ Code for performance; what was the bottleneck and how did you improve it?
+
+In my last company, a teammate committed a function that I found to be qutie resource-intensive. During a code review, I noticed he had used pass by value, whereas I would have used pass by reference.
+
+For more info, see: [C++ Best Practice](LANG/C++/best_practice.md)
+
+---
+
+
+
+## Tool
+
+### GDB
+
+For more info, see: [Development Tools#GDB](PROJ/dev_tool.md)
+
+### Valgrind
+
+For more info, see: [Development Tools#Valgrind](PROJ/dev_tool.md)
+
+### Google Breakpad
+
+#### What specific crash data did Google Breakpad help you capture, and how did you use it to identify and fix the bug?
+
+The Google Breakpad will storage the core file when application crashed. It contains the runtime values, environment setting and source code. It will help you a lot by checkout the core file.
+
+For more info, see: [Development Tools#Breakpad](PROJ/dev_tool.md)
+
+---
+
+
+
+## Behavior Test
+
+### Deadline
+
+#### What steps did you take to stay focused and deliver on time?
+
+To stay focused and deliver on time, key steps included prioritizing tasks, utilizing time-blocking, and eliminating distractions by diabling notifications and using headphones.
+
+#### How did you use key milestones to prioritize tasks and ensure timely delivery, and what did you do if a milestone was at risk?
+
+Key milestones serve as crucial checkpoints that transform a project's major components into actionable tasks. This leads to the development of the best plans. I prioritize tasks by planning backward from the milestones to identify the cirtical path and ensure that high-risk elements are addressed early. When a milestone is at risk, I communicate with stakeholders to manage expectations, assess the impact on the schedule, and then reallocate resources accordingly.
+
+#### How did you handle unexpected delays on the critical path, and what specific actions did you take to get back on track?
+
+To handle unexpected critical path delays, I immediately assess the impact, communicate transparently with stakeholders, and implement schedule compression techniques like crashing (adding resources) or fast-tracking (parallel tasks). My focus is on reassessing the schedule to identify new bottlenecks and updating the project plan to regain lost time.

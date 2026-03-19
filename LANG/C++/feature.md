@@ -257,24 +257,33 @@ const int& r2 = b;
 
 ### constexpr
 
-TODO
+`constexpr` is a feature added in C++11. The main idea is a performance improvement of programs by doing computations at compile time rather than run time.
+
+```c++
+const expr int mul(int x, int y) { return x * y; }
+int main(void)
+{
+    constexpr int x = mul(10, 20);
+    return 0;
+}
+```
 
 ### Notes
 
 1. Pay attention when combining `const` and references.
 
-	 ```c++
-	 const int a = 1;
-	 const int& ref1 = a;
-	 const int& ref2 = 1;
-	```
+    ```c++
+     const int a = 1;
+     const int& ref1 = a;
+     const int& ref2 = 1;
+    ```
 
 2. Casting away `const` may cause undefined behavior.
 
-	 ```c++
-	 const int i = 1;
-	 *(const_cast<int*>(&i)) = 2;
-	```
+    ```c++
+     const int i = 1;
+     *(const_cast<int*>(&i)) = 2;
+    ```
 
 3. `const` objects/references/pointers cannot appear as assignable lvalues.
 
@@ -289,6 +298,24 @@ TODO
 8. Return value constness rules differ for built-ins/pointers versus user-defined types.
 
 9. Const objects call only const member functions; overload resolution picks the const/non-const overload accordingly.
+
+10. A function be declared as **constexpr**:
+
+    - In C++11, a constexpr function should contain only one return statement. C++14 allows more than one statement.
+    - constexpr function should refer only to constant global variables.
+    - constexpr function can call only other constexpr functions not simple functions.
+    - the function should not be of a void type.
+    - In C++11, prefix increment(`++v`) was not allowd in constexpr function but this restriction has been removed in C++14.
+
+11. A constructor that is declared with a constexpr specifier is a **constexpr constructor** also constexpr can be used in the making of constructors and objects.
+
+12. A **constexpr constructor** is implicitly inline.
+
+13. Restrictions on constructors that can use constexpr:
+
+     - No virtual base class.
+     - Each parameter should be literal.
+     - It is not a tray block function.
 
 [Top](#C++ Features)
 
@@ -575,7 +602,124 @@ const int* const b = &a;
 
 ### Smart pointers
 
-See: [STL#Smart Pointers](stl.md)
+A smart pointer is a stack-allocated object that wraps a raw pointer and automatically manages the lifetime of dynamically allocated memory.
+
+For more detail, See: [STL#Smart Pointers](stl.md)
+
+### Dangling Pointer
+
+![dangling_pointer](res/dangling_pointer.png)
+
+A dangling pointer is a very common occurrence that generally occurs when we use the `delete` to deallocate memory that was previously allocated and the pointer that was pointing to that memory still points to the same address.
+
+Cases that leads to dangling pointer in C++:
+
+- Deallocation of memory using delete or free().
+
+  For example:
+
+  ```c++
+  #include <iostream>
+  int main(void)
+  {
+      int* ptr = new int(5);
+      delete ptr; // ptr is now a dangling pointer
+      std::cout << "*ptr=" << *ptr << std::endl; // Undefined behavior: accessing a dangling pointer
+      return 0;
+  }
+  ```
+
+- Referencing the local variable of the function after it is executed.
+
+  For example:
+
+  ```c++
+  #include <iostream>
+  int* create_dangling_pointer()
+  {
+      int local_var = 10; // local variable on the stack
+      return &local_var; // returning address of local variable (dangling pointer)
+  }
+  int main(void)
+  {
+      int* dangling_ptr = create_dangling_pointer(); // dangling_ptr now points to a local variable that has gone out of scope
+      std::cout << "*dangling_ptr=" << *dangling_ptr << std::endl; // Undefined behavior: accessing a dangling pointer
+      return 0;
+  }
+  ```
+
+- Variable goes out of scope.
+
+  For example:
+
+  ```c++
+  #include <iostream>
+  int main(void)
+  {
+      int* ptr;
+      {
+          int local_var = 10; // local variable on the stack
+          ptr = &local_var; // ptr now points to a local variable that will go out of scope
+      }
+      std::cout << "*ptr=" << *ptr << std::endl; // Undefined behavior: accessing a dangling pointer
+      return 0;
+  }
+  ```
+
+The list of methods using which we can prevent the dangling pointers:
+
+1. Assign NULL or nullptr to the pointers that are not in use.
+
+   For example:
+
+   ```c++
+   int* val = new int(11);
+   delete val;
+   val = nullptr;
+   ```
+
+2. Using smart pointers.
+
+   For example:
+
+   ```c++
+   std::shared_ptr<std::string> get_smart_ptr()
+   {
+       return std::make_shared<std::string>("hello");
+   }
+   ```
+
+3. Use dynamic memory allocation for the local variables that are to be returned.
+
+   For example:
+
+   ```c++
+   int* get_ptr()
+   {
+       int* local_val = new int(42); // Allocate on the heap
+       return local_val;
+   }
+   int main(void)
+   {
+       int* ptr = get_ptr();
+       delete ptr; // manually deallocating it
+       ptr = NULL; // setting ptr to null
+   }
+   ```
+
+4. Using references instead of pointers
+
+   ```c++
+   int& get_ref()
+   {
+       static int local_val = 42;
+       return local_val;
+   }
+   int main(void)
+   {
+       int& ref = get_reg();
+   }
+   ```
 
 [Top](#C++ Features)
 
@@ -979,19 +1123,55 @@ private:
 
 
 
-## execution_character_set
-
-TODO
-
-[Top](#C++ Features)
-
----
-
-
-
 ## sizeof
 
-TODO
+The sizeof operator is a `unary`, `compile-time operator` in C++ used to determine the memory size (in bytes) of variables, data types, constants, as well as user-defined types such as structures, unions, and classes.
+
+### Syntax
+
+```c++
+sizeof(expression)
+```
+
+- Paramerters (expression): The variable, data type, or expression whose size(in bytes) is to be determined.
+- Return Type: Returns a value of type `size_t`, representing the size in bytes.
+
+### Examples
+
+```c++
+#include <iostream>
+
+int main(void)
+{
+    std::cout << "sizeof(int) = " << sizeof(int) << std::endl; // 4
+    std::cout << "sizeof(char) = " << sizeof(char) << std::endl; // 1
+    std::cout << "sizeof(float) = " << sizeof(float) << std::endl; // 4
+    std::cout << "sizeof(double) = " << sizeof(double) << std::endl; // 8
+    std::cout << "sizeof(long) = " << sizeof(long) << std::endl; // 8
+    std::cout << "sizeof(long long) = " << sizeof(long long) << std::endl; // 8
+
+    int a; float b; double c; char d;
+    std::cout << "sizeof(a) = " << sizeof(a) << std::endl; // 4
+    std::cout << "sizeof(b) = " << sizeof(b) << std::endl; // 4
+    std::cout << "sizeof(c) = " << sizeof(c) << std::endl; // 8
+    std::cout << "sizeof(d) = " << sizeof(d) << std::endl; // 1
+
+    int arr[] = {1, 2, 3, 4, 5};
+    std::cout << "sizeof(arr) = " << sizeof(arr) << std::endl; // 20, because arr is an array of 5 integers, and each integer is 4 bytes
+    std::cout << "sizeof(arr[0]) = " << sizeof(arr[0]) << std::endl; // 4, because arr[0] is an integer, and each integer is 4 bytes
+    std::cout << "sizeof(arr) / sizeof(arr[0]) = " << sizeof(arr) / sizeof(arr[0]) << std::endl; // 5
+    
+    class A
+    {
+        int a;
+        float b;
+        double c;
+        char d;
+    };
+    std::cout << "sizeof(A) = " << sizeof(A) << std::endl; // 24, because of padding. The size of A is the sum of the sizes of its members (4 + 4 + 8 + 1 = 17), but it is padded to a multiple of the largest member (8), so it becomes 24.
+    return 0;
+}
+```
 
 [Top](#C++ Features)
 
@@ -1311,9 +1491,51 @@ int main(void)
 
 ---
 
+
+
 ## move semantics
 
 Move semantics are a modern C++ feature that allows the transfer of ownership of a resource from one object to the next without making a copy. Some classesown resources such as heap memory, file handles, and so on.
+
+### Benefit
+
+Copying is expensive especially for big data. With move semantics we can transfer the resource from one object to another, leaving the first object in the "moved-from" state which means it's still a valid object but it no longer owns the original resource.
+
+### Types of Expressions in C++
+
+- Lvalue Reference(`T&`): A lvalue reference is a reference that refers to an existing object with a name and a stable location in memory.
+- Rvalue Reference(`T&&`): An rvalue reference is a reference that can bind to temporary objects or values that are about to be destroyed.
+
+### Move Semantics in STL Containers
+
+STL containers like `std::vector` use move semantics to improve performance in two main cases:
+
+1. During Reallocation
+
+   When a container grows and needs more space, it reallocates memory transfers existing elements.
+
+   If the element type supports move, the container moves elements instead of copying them - making reallocation faster.
+
+2. When Inserting Elements
+
+   Move semantics are also used when inserting elements:
+
+   - `push_back(std::move(x))` - Moves an existing object into the container.
+   - `emplace_back(args...)` - Constructs the object directly in-place, avoiding copies or moves.
+
+### Example
+
+```c++
+std::string temp = "Alice";
+names.push_back(std::move(temp));
+names.emplace_back("Bob");
+```
+
+---
+
+
+
+## Std::forward
 
 TODO
 
@@ -1362,3 +1584,9 @@ TODO
 [19] [Microsoft/initializer_list class](https://learn.microsoft.com/en-us/cpp/standard-library/initializer-list-class?view=msvc-170)
 
 [20] [Microsoft/Trivial, standard-layout, POD, and literal types](https://learn.microsoft.com/en-us/cpp/cpp/trivial-standard-layout-and-pod-types?view=msvc-170)
+
+[21] [Dangling Pointers in C++](https://www.geeksforgeeks.org/cpp/dangling-pointers-in-cpp/)
+
+[22] [Understanding constexpr Specifier in C++](https://www.geeksforgeeks.org/cpp/understanding-constexper-specifier-in-cpp/)
+
+[23] [C++ sizeof Operator](https://www.geeksforgeeks.org/cpp/cpp-sizeof-operator/)

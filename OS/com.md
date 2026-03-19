@@ -4,6 +4,8 @@ English | [中文版](com_zh.md)
 
 [TOC]
 
+
+
 ## HRESULT and GUID
 
 ### HRESULT
@@ -62,6 +64,7 @@ ProgID refers to an identifier defined by the programmer for a CLSID, usually in
 `<Program>.<Component>.<Version>`
 
 COM provides functions: `CLSIDFromProgID`, `ProgIDFromCLSID` for conversion between ProgID and CLSID.
+
 
 
 ## Creating Components
@@ -233,9 +236,11 @@ In most cases, `CoCreateInstance` should be preferred over `CoGetClassObject`, e
 - You need to create multiple instances of the same component.
 
 
+
 ## Component Registration
 
 `DllRegisterServer` and `DllUnregisterServer` are used to register/unregister components in the Windows registry.
+
 
 
 ## Component Usage
@@ -253,6 +258,7 @@ Remote Procedure Call (RPC), for communication between processes on different ma
 
 ### Component Reuse
 TODO
+
 
 
 ## References

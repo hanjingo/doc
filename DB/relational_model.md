@@ -48,6 +48,8 @@ These operators compose to express complex queries; SQL implements a rich dialec
 
 ## Normalization and functional dependencies
 
+Database normalization is an important process in relational database design aimed at organizing data to minimize redundancy, enhance data integrity, and improve database efficiency.
+
 Normalization uses functional dependencies (FDs) to reduce redundancy and update anomalies. Important points:
 
 - A functional dependency X → Y means that for any two tuples, if they agree on X they must agree on Y.
@@ -92,3 +94,5 @@ NULL represents missing or unknown values in SQL and introduces three-valued log
 ## References
 
 [1] Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts.
+
+[2] [Database Normalization: 1NF, 2NF, 3NF & BCNF Examples](https://www.digitalocean.com/community/tutorials/database-normalization)

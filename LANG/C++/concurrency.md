@@ -4,6 +4,8 @@ English | [中文版](concurrency_zh.md)
 
 [TOC]
 
+
+
 ## std::thread
 
 ### Creating Threads
@@ -39,21 +41,28 @@ Call `join()` to wait for a thread to finish. You can only call `join()` once fo
 	 	throw;
 	 }
 	 t.join();
-	 ```
+	```
 
 2. Use RAII syntax
 
-	 ```c++
-	 class thread_guard
-	 {
-		 std::thread& t;
-	 public:
-		 explicit thread_guard(std::thread& t_) : t(t_) {}
-		 // ...existing code...
-	 };
-	 std::thread t(...);
-	 thread_guard g(t);
-	 ```
+	```c++
+	class thread_guard
+	{
+		std::thread& t;
+	public:
+		explicit thread_guard(std::thread& t_) : t(t_) {}
+		~thread_guard()
+		{
+		if(t.joinable())
+		{
+			t.join();
+		}
+		}
+		...
+	};
+	std::thread t(...);
+	thread_guard g(t);
+	```
 
 ### Detaching Threads
 
@@ -119,6 +128,7 @@ Thread identifiers are of type `std::thread::id`, and can be obtained in two way
 - Returned when the thread is constructed.
 
 
+
 ## std::mutex
 
 `std::mutex` is used to protect shared data in multithreaded scenarios.
@@ -180,7 +190,9 @@ void process_data()
 }
 ```
 
-### Using `boost::shared_mutex` to Protect Rarely Updated Data Structures
+### shared_mutex
+
+Using `boost::shared_mutex` to Protect Rarely Updated Data Structures:
 
 ```c++
 #include <mutex>
@@ -190,9 +202,45 @@ mutable boost::shared_mutex sm;
 boost::shared_lock<boost::shared_mutex> lk(sm); // Shared, read-only access
 ```
 
+Using std::shared_mutex:
+
+```c++
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <shared_mutex>
+
+static std::shared_mutex mu;
+static int data = 0;
+void read(int id)
+{
+    std::shared_lock<std::shared_mutex> lk(mu);
+    std::cout << "reader " << id << ": data = " << data << std::endl;
+}
+void write(int id)
+{
+    std::unique_lock<std::shared_mutex> lk(mu);
+    data++;
+    std::cout << "writer " << id << ": data = " << data << std::endl;
+}
+int main(void)
+{
+    std::thread t1(read, 1);
+    std::thread t2(read, 2);
+    std::thread t3(write, 1);
+
+    t1.join();
+    t2.join();
+    t3.join();
+
+    return 0;
+}
+```
+
 ### Recursive Locks
 
-**Recursive locks are not recommended.**
+NOTE:**Recursive locks are not recommended.**
+
 
 
 ## std::atomic
@@ -255,7 +303,30 @@ boost::shared_lock<boost::shared_mutex> lk(sm); // Shared, read-only access
 Example:
 
 ```c++
-TODO
+#include <iostream>
+#include <thread>
+#include <atomic>
+#include <chrono>
+
+std::atomic<bool> stop_thread(false);
+
+void worker_thread()
+{
+    std::cout << "Worker thread started." << std::endl;
+    while (!stop_thread.load(std::memory_order_relaxed)) // Check the atomic flag
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Simulate work
+    std::cout << "Worker thread stopping." << std::endl;
+}
+
+int main(void)
+{
+    std::thread worker(worker_thread); // Start the worker thread
+    std::this_thread::sleep_for(std::chrono::seconds(1)); // Let the worker run for a while
+    stop_thread.store(true, std::memory_order_relaxed); // Signal the worker to stop
+    worker.join(); // Wait for the worker thread to finish
+    std::cout << "Main thread exiting." << std::endl;
+    return 0;
+}
 ```
 
 #### Pointer Arithmetic
@@ -321,101 +392,123 @@ Example:
 
 int main(int argc, char* argv[])
 {
-		// std::memory_order_relaxed
-		std::atomic<int>x = {0};
-		std::atomic<int>y = {0};
-		auto fn1 = std::bind([&]() {
-				auto tmp1 = x.load(std::memory_order_relaxed);
-				// ...existing code...
-				}
-		});
-		std::vector<std::thread> pool;
-		for (auto i = 0; i < 100; ++i) {
-				pool.emplace_back(fn1);
-		}
-		for (auto& t : pool) {
-				t.join();
-		}
-		std::cout << "x = " << x << std::endl; // x = 0
-		std::cout << "y = " << y << std::endl; // y = 0
+    // std::memory_order_relaxed 宽松
+    std::atomic<int>x = {0};
+    std::atomic<int>y = {0};
+    auto fn1 = std::bind([&]() {
+        auto tmp1 = x.load(std::memory_order_relaxed);
+        if (tmp1 == 42) {
+            y.store(tmp1, std::memory_order_relaxed);
+        }
 
-		// std::memory_order_release--std::memory_order_acquire
-		std::atomic<int>z = {0};
-		auto fn2_1 = std::bind([&]() {
-				z.store(1, std::memory_order_release);
-		});
-		auto fn2_2 = std::bind([&]() {
-				while (!(z.load(std::memory_order_acquire))) {
-						// ...existing code...
-				z.store(2);
-		});
-		std::thread t2_2(fn2_2);
-		std::thread t2_1(fn2_1);
-		std::cout << "z = " << z << std::endl; // z = 2
+        auto tmp2 = y.load(std::memory_order_relaxed);
+        if (tmp2 == 42) {
+            x.store(42, std::memory_order_relaxed);
+        }
+    });
+    std::vector<std::thread> pool;
+    for (auto i = 0; i < 100; ++i) {
+        pool.emplace_back(fn1);
+    }
+    for (auto& t : pool) {
+        t.join();
+    }
+    std::cout << "x = " << x << std::endl; // x = 0
+    std::cout << "y = " << y << std::endl; // y = 0
 
-		// std::memory_order_release--std::memory_order_acq_rel--std::memory_order_acquire
-		std::atomic<int>m = {0};
-		auto fn3_1 = std::bind([&]() {
-				m.store(1, std::memory_order_release);
-		});
-		auto fn3_2 = std::bind([&]() {
-				int expected = 1;
-				// ...existing code...
-				}
-		});
-		auto fn3_3 = std::bind([&]() {
-				while (m.load(std::memory_order_acquire) != 2) {
-						// ...existing code...
-				m.store(3);
-		});
-		std::thread t3_3(fn3_3);
-		std::thread t3_1(fn3_1);
-		std::thread t3_2(fn3_2);
-		t3_3.join();
-		t3_1.join();
-		t3_2.join();
-		std::cout << "m = " << m << std::endl; // m = 3
+    // std::memory_order_release--std::memory_order_acquire 释放--获得
+    std::atomic<int>z = {0};
+    auto fn2_1 = std::bind([&]() {
+        z.store(1, std::memory_order_release);
+    });
+    auto fn2_2 = std::bind([&]() {
+        while (!(z.load(std::memory_order_acquire))) {
+            continue;
+        }
+        z.store(2);
+    });
+    std::thread t2_2(fn2_2);
+    std::thread t2_1(fn2_1);
+    std::cout << "z = " << z << std::endl; // z = 2
 
-		// std::memory_order_release -- std::memory_order_consume
-		std::atomic<int>n = {0};
-		auto fn4_1 = std::bind([&]() {
-				n.store(1, std::memory_order_release);
-		});
-		auto fn4_2 = std::bind([&]() {
-				int tmp = 0;
-				// ...existing code...
-				std::cout << "n = " << tmp << std::endl; // n = 1
-		});
-		std::thread t4_1(fn4_1);
-		std::thread t4_2(fn4_2);
-		t4_1.join();
-		t4_2.join();
+    // std::memory_order_release--std::memory_order_acq_rel--std::memory_order_acquire
+    // 释放--中继--获得
+    std::atomic<int>m = {0};
+    auto fn3_1 = std::bind([&]() {
+        m.store(1, std::memory_order_release);
+    });
+    auto fn3_2 = std::bind([&]() {
+        int expected = 1;
+        while (!m.compare_exchange_strong(expected, 2, std::memory_order_acq_rel)) {
+            continue;
+        }
+    });
+    auto fn3_3 = std::bind([&]() {
+        while (m.load(std::memory_order_acquire) != 2) {
+            continue;
+        }
+        m.store(3);
+    });
+    std::thread t3_3(fn3_3);
+    std::thread t3_1(fn3_1);
+    std::thread t3_2(fn3_2);
+    t3_3.join();
+    t3_1.join();
+    t3_2.join();
+    std::cout << "m = " << m << std::endl; // m = 3
 
-		// std::memory_order_seq_cst
-		std::atomic<bool>c1 = {false};
-		std::atomic<bool>c2 = {false};
-		std::atomic<int>c3 = {0};
-		auto fn5_1 = std::bind([&]() {
-				c1.store(1, std::memory_order_seq_cst);
-		});
-		auto fn5_2 = std::bind([&]() {
-				c2.store(1, std::memory_order_seq_cst);
-		});
-		auto fn5_3 = std::bind([&]() {
-				while (!c1.load(std::memory_order_seq_cst)) {/* ...existing code... */}
-		});
-		auto fn5_4 = std::bind([&]() {
-				while (!c2.load(std::memory_order_seq_cst)) {/* ...existing code... */}
-		});
-		std::thread t5_1(fn5_1);
-		std::thread t5_2(fn5_2);
-		std::thread t5_3(fn5_3);
-		std::thread t5_4(fn5_4);
-		t5_1.join();
-		t5_2.join();
-		t5_3.join();
-		t5_4.join();
-		std::cout << "c3 = " << c3 << std::endl; // c3 = 2
+    // std::memory_order_release -- std::memory_order_consume 释放 -- 消费
+    std::atomic<int>n = {0};
+    auto fn4_1 = std::bind([&]() {
+        n.store(1, std::memory_order_release);
+    });
+    auto fn4_2 = std::bind([&]() {
+        int tmp = 0;
+        while (!(tmp = n.load(std::memory_order_consume))) {
+            continue;
+        }
+        std::cout << "n = " << tmp << std::endl; // n = 1
+    });
+    std::thread t4_1(fn4_1);
+    std::thread t4_2(fn4_2);
+    t4_1.join();
+    t4_2.join();
+
+    // std::memory_order_seq_cst 序列一致
+    std::atomic<bool>c1 = {false};
+    std::atomic<bool>c2 = {false};
+    std::atomic<int>c3 = {0};
+    auto fn5_1 = std::bind([&]() {
+        c1.store(1, std::memory_order_seq_cst);
+    });
+    auto fn5_2 = std::bind([&]() {
+        c2.store(1, std::memory_order_seq_cst);
+    });
+    auto fn5_3 = std::bind([&]() {
+        while (!c1.load(std::memory_order_seq_cst)) {
+            continue;
+        }
+        if (c2.load(std::memory_order_seq_cst)) {
+            ++c3;
+        }
+    });
+    auto fn5_4 = std::bind([&]() {
+        while (!c2.load(std::memory_order_seq_cst)) {
+            continue;
+        }
+        if (c1.load(std::memory_order_seq_cst)) {
+            ++c3;
+        }
+    });
+    std::thread t5_1(fn5_1);
+    std::thread t5_2(fn5_2);
+    std::thread t5_3(fn5_3);
+    std::thread t5_4(fn5_4);
+    t5_1.join();
+    t5_2.join();
+    t5_3.join();
+    t5_4.join();
+    std::cout << "c3 = " << c3 << std::endl; // c3 = 2
 }
 ```
 
@@ -454,6 +547,7 @@ int main()
 		assert(z.load() != 0);
 }
 ```
+
 
 
 ## std::future
@@ -562,26 +656,26 @@ Example:
 
 int main(int argc, char* argv[])
 {
-		// Produce value
-		std::promise<int> p;
-		std::future<int> f = p.get_future();
-		std::thread t1(std::bind([](std::promise<int>& p) {
-				std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-				// ...existing code...
-				//        p.set_value(2); // Error, std::promise can only be used once
-		}, std::move(p)));
+    // 产生值
+    std::promise<int> p;
+    std::future<int> f = p.get_future();
+    std::thread t1(std::bind([](std::promise<int>& p) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        p.set_value(1);
+        //        p.set_value(2); // 报错，std::promise只能用一次
+    }, std::move(p)));
 
-		// Receive value
-		std::thread t2(std::bind([](std::future<int>& f) {
-				std::cout << "recv :" << f.get();
-				//        std::cout << "recv :" << f.get(); // Error, std::promise can only be used once
-		}, std::move(f)));
+    // 接收值
+    std::thread t2(std::bind([](std::future<int>& f) {
+        std::cout << "recv :" << f.get();
+        //        std::cout << "recv :" << f.get(); // 报错，std::promise只能用一次
+    }, std::move(f)));
 
-		t1.join();
-		t2.join();
+    t1.join();
+    t2.join();
 
-		t1.join();
-		t2.join();
+    t1.join();
+    t2.join();
 }
 ```
 
@@ -630,6 +724,7 @@ int main(int argc, char* argv[])
 		return a.exec();
 }
 ```
+
 
 
 ## std::condition_variable
@@ -727,6 +822,7 @@ std::future<void> f2(Func f)
 Can work with anything that can be composed into a mutex-like object. This function is more general but has a performance cost; prefer `std::condition_variable` unless necessary.
 
 
+
 ## Lock-free Concurrency
 
 By using `std::atomic` (atomic operations), lock-free concurrency can be achieved for maximum concurrency.
@@ -792,76 +888,181 @@ template<typename T>
 class lock_free_queue
 {
 private:
-	struct node;
-	struct counted_node_ptr
-	{
-		int external_count;
-		node* ptr;
-	};
-	std::atomic<counted_node_ptr> head;
-	std::atomic<counted_node_ptr> tail;
-	struct node_counter
-	{
-		unsigned internal_count=30;
-		unsigned external_counters=2;
-	};
-	struct node
-	{
-		std::atomic<T*> data;
-		// ...existing code...
-		}
-	};
+  struct node;
+  struct counted_node_ptr
+  {
+    int external_count;
+    node* ptr;
+  }
+  std::atomic<counted_node_ptr> head;
+  std::atomic<counted_node_ptr> tail;
+  struct node_counter
+  {
+    unsigned internal_count=30;
+    unsigned external_counters=2;
+  };
+  struct node
+  {
+    std::atomic<T*> data;
+    std::atomic<node_counter> count;
+    std::atomic<counted_node_ptr> next;
+    
+    void release_ref()
+    {
+    	node_counter old_counter = count.load(std::memory_order_relaxed);
+      node_counter new_counter;
+      do
+      {
+        new_counter = old_counter;
+        --new_counter.internal_count;
+      }
+      while (!count.compare_exchange_strong(old_counter, new_counter,
+                                            std::memory_order_acquire,
+                                            std::memory_order_relaxed));
+      if (!new_counter.internal_count && 
+          !new_counter.external_counters)
+      {
+        delete this;
+      }
+    };
+    
+    node()
+    {
+      node_counter new_count;
+      new_count.internal_count = 0;
+      new_count.external_counters = 2;
+      count.store(new_count);
+      
+      next.ptr = nullptr;
+      next.external_count = 0;
+    }
+  };
   
-	node* pop_head()
-	{
-		node* const old_head = head.load();
-		// ...existing code...
-		return old_head;
-	};
+  node* pop_head()
+  {
+    node* const old_head = head.load();
+    if (old_head == tail.load())
+    {
+      return nullptr;
+    }
+    head.store(old_head->next);
+    return old_head;
+  };
   
-	static void increase_external_count(std::atomic<counted_node_ptr>& counter,
-																			counted_node_ptr& old_counter)
-	{
-		counted_node_ptr new_counter;
-		// ...existing code...
-		old_counter.external_count = new_counter.external_count;
-	};
+  static void increase_external_count(std::atomic<counted_node_ptr>& counter,
+                                      counted_node_ptr& old_counter)
+  {
+    counted_node_ptr new_counter;
+    do
+    {
+      new_counter = old_counter;
+      ++new_counter.external_count;
+    }
+    while (!counter.compare_exchange_strong(old_counter, new_counter, 
+           	std::memory_order_acquire, std::memory_order_relaxed));
+    old_counter.external_count = new_counter.external_count;
+  };
   
-	static void free_external_counter(counted_node_ptr &old_node_ptr)
-	{
-		node* const ptr = old_node_ptr.ptr;
-		// ...existing code...
-		}
-	};
+  static void free_external_counter(counted_node_ptr &old_node_ptr)
+  {
+    node* const ptr = old_node_ptr.ptr;
+    int const count_increase = old_node_ptr.external_count - 2;
+    node_counter old_counter = ptr->count.load(std::memory_order_relaxed);
+    node_counter new_counter;
+    do
+    {
+      new_counter = old_counter;
+      --new_counter.external_counters;
+      new_counter.internal_count += count_increase; // 更新值
+    }
+    while (!ptr->count.compare_exchange_strong(
+    			 old_counter, new_counter,
+    		   std::memory_order_acquire, std::memory_order_relaxed));
+    if (!new_counter.internal_count && !new_counter.external_counters) // 此节点没有引用，删除
+    {
+      delete ptr;
+    }
+  };
   
-	void set_new_tail(counted_node_ptr &old_tail,
-										counted_node_ptr const &new_tail)
-	{
-		node* const current_tail_ptr = old_tail.ptr;
-	}
+  void set_new_tail(counted_node_ptr &old_tail,
+                    counted_node_ptr const &new_tail)
+  {
+  	node* const current_tail_ptr = old_tail.ptr;
+    while (!tail.compare_exchange_weak(old_tail, new_tail) &&
+           old_tail.ptr == current_tail_ptr);
+    if (old_tail.ptr == current_tail_ptr)
+      free_external_counter(old_tail);
+    else
+      current_tail_ptr->release_ref();
+  }
   
 public:
-	lock_free_queue() : head(new node), tail(head.load()) {}
-	lock_free_queue(const lock_free_queue& other) = delete;
-	lock_free_queue& operator=(const lock_free_queue& other) = delete;
-	~lock_free_queue()
-	{
-		while(node* const old_head = head.load())
-		// ...existing code...
-		}
-	}
-	std::unique_ptr<T> pop()
-	{
-		counted_node_ptr old_head = head.load(std::memory_order_relaxed);
-		// ...existing code...
-		}
-	}
-	void push(T new_value)
-	{
-		std::unique_ptr<T> new_data(new T(new_value));
-		// ...existing code...
-		}
-	}
+  lodk_free_queue() : head(new node), tail(head.load()) {}
+  lock_free_queue(const lock_free_queue& other) = delete;
+  lock_free_queue& operator=(const lock_free_queue& other) = delete;
+  ~lock_free_queue()
+  {
+    while(node* const old_head = head.load())
+    {
+      head.store(old_head->next);
+      delete old_head;
+    }
+  }
+  std::unique_ptr<T> pop()
+  {
+    counted_node_ptr old_head = head.load(std::memory_order_relaxed);
+    for (;;)
+    {
+      increase_external_count(head, old_head);
+      node* const ptr = old_head.ptr;
+      if (ptr == tail.load().ptr)
+      {
+        return std::unique_ptr<T>();
+      }
+      counted_node_ptr next = ptr->next.load();
+      if (head.compare_exchange_strong(old_head, ptr->next))
+      {
+        T* const res = ptr->data.exchange(nullptr);
+        free_external_counter(old_head);
+        return std::unique_ptr<T>(res);
+      }
+      ptr->release_ref();
+    }
+  }
+  void push(T new_value)
+  {
+    std::unique_ptr<T> new_data(new T(new_value));
+    counted_node_ptr new_next;
+    new_next.ptr = new node;
+    new_next.external_count = 1;
+    for (;;)
+    {
+      increase_external_count(tail, old_tail);
+      T* old_data = nullptr;
+      if (old_tail.ptr->data.compare_exchange_strong(
+      			old_data, new_data.get())) // 解引用原子指针
+      {
+        couted_node_ptr old_next = {0};
+        if (!old_tail.ptr->next.compare_exchange_strong(old_next, new_next))
+        {
+          delete new_next.ptr;
+          new_next = old_next;
+        }
+        set_new_tail(old_tail, new_next);
+        new_data.release();
+        break;
+      }
+      else
+      {
+        counted_node_ptr old_next={0};
+        if (old_tail.ptr->next.compare_exchange_strong(old_next, new_next)) {
+          old_next = new_next;
+          new_next.ptr = new node;
+        }
+        set_new_tail(old_tail, old_next); // 真正的更新
+      }
+    }
+  }
 };
 ```
 
@@ -876,91 +1077,264 @@ public:
 unsigned const max_hazard_pointers=100;
 struct hazard_pointer
 {
-	std::atomic<std::thread::id> id;
-	std::atomic<void*> pointer;
+  std::atomic<std::thread::id> id;
+  std::atomic<void*> pointer;
 };
 hazard_pointer hazard_pointers[max_hazard_pointers];
 
 class hp_owner
 {
-	hazard_pointer* hp;
+  hazard_pointer* hp;
 public:
-	hp_owner(hp_owner const&)=delete;
-	hp_owner operator=(hp_owner const&)=delete;
-	hp_owner() : hp(nullptr)
-	{
-		for (unsigned i = 0; i < max_hazard_pointers; ++i)
-		// ...existing code...
-		}
-	}
-	std::atomic<void*>& get_pointer()
-	{
-		return hp->pointer;
-	}
-	~hp_owner()
-	{
-		hp->pointer.store(nullptr);
-		hp->id.store(std::thread::id());
-	}
+  hp_owner(hp_owner const&)=delete;
+  hp_owner operator=(hp_owner const&)=delete;
+  hp_owner() : hp(nullptr)
+  {
+    for (unsigned i = 0; i < max_hazard_pointers; ++i)
+    {
+      std::thread::id old_id;
+      if(hazard_pointers[i].id.compare_exchange_strong( // 试着获取风险指针的所有权
+        old_id, std::this_thread::get_id())){
+        hp = &hazard_pointers[i];
+        break;
+      }
+    }
+    if (!hp)
+    {
+      throw std::runtime_error("No hazard pointers available");
+    }
+  }
+  std::atomic<void*>& get_pointer()
+  {
+    return hp->pointer;
+  }
+  ~hp_owner()
+  {
+    hp->pointer.store(nullptr);
+    hp->id.store(std::thread::id());
+  }
 }
 
 template<typename T>
 class lock_free_stack
 {
 private:
-	struct node;
-	struct counted_node_ptr
-	{
-		int external_count;
-		node* ptr;
-	};
-	struct node
-	{
-		std::shared_ptr<T> data;
-		// ...existing code...
-		node(T const& data_) : data(std::make_shared<T>(data_)) {}
-	};
+  struct node;
+  struct counted_node_ptr
+  {
+    int external_count;
+    node* ptr;
+  };
+  struct node
+  {
+    std::shared_ptr<T> data;
+    node* next;
+    
+    node(T const& data_) : data(std::make_shared<T>(data_)) {}
+  };
   
-	std::atomic<counted_node_ptr> head;
-	std::atomic<unsigned> thread_in_pop;
-	std::atomic<node*> to_be_deleted;
-	std::atomic<data_to_reclaim*> nodes_to_reclaim;
+  std::atomic<counted_node_ptr> head;
+  std::atomic<unsigned> thread_in_pop;
+  std::atomic<node*> to_be_deleted;
+  std::atomic<data_to_reclaim*> nodes_to_reclaim;
   
-	void try_reclaim(node* old_head);
-	static void delete_nodes(node* nodes)
+  void try_reclaim(node* old_head);
+  static void delete_nodes(node* nodes)
+  {
+    while(nodes)
+    {
+      node* next = nodes->next;
+      delte nodes;
+      nodes = next;
+    }
+  }
+  void increase_head_count(counted_node_ptr& old_counter)
+  {
+    counted_node_ptr new_counter;
+    do
+    {
+      new_counter = old_counter;
+      ++new_counter.external_count;
+    }
+    while (!head.compare_exchange_strong(old_counter, new_counter, 
+                                         std::memory_order_acquire,
+                                         std::memory_order_relaxed));
+    old_counter.external_count = new_counter.external_count;
+  }
+  void try_reclaim(node* old_head)
+  {
+    if (threads_in_pop == 1)
+    {
+      node* nodes_to_delete = to_be_deleted.exchange(nullptr); // 列出将要被删除的节点清单
+      if (!--threads_in_pop)
+      {
+        delete_nodes(nodes_to_delete);
+      }
+      else if (nodes_to_delete)
+      {
+        chain_pending_nodes(nodes_to_delete);
+      }
+      delete old_head;
+    }
+    else
+    {
+      chain_pending_node(old_head);
+      --threads_in_pop;
+    }
+  }
+  void chain_pending_nodes(node* nodes)
+  {
+    node* last = nodes;
+    while (node* const next = last->next) // 跟随下一个指针，链至末尾
+    {
+      last = next;
+    }
+    chain_pending_nodes(nodes, last);
+  }
+  void chain_pending_nodes(node* first, node* last)
+  {
+    last->next = to_be_deleted;
+    while (!to_be_deleted.compare_exchange_weak(last->next, first)); // 循环以保证last->next正确
+  }
+  void chain_pending_node(node* n)
+  {
+    chain_pending_nodes(n, n);
+  }
+  std::atomic<void*>& get_hazard_pointer_for_current_thread()
+  {
+    thread_local static hp_owner hazard; // 每个线程都有自己的风险指针
+    return hazard.get_pointer();
+  }
+  bool outstanding_hazard_pointers_for(void* p)
+  {
+    for(unsigned i=0; i<maz_hazard_pointers; ++i)
+    {
+      if(hazard_pointers[i].pointer.load() == p)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+  void add_to_reclaim_list(data_to_reclaim* node)
 	{
-		while(nodes)
-		// ...existing code...
-		}
+  	node->next = nodes_to_reclaim.load();
+  	while (!nodes_to_reclaim.compare_exchange_weak(node->next, node));
 	}
-	void increase_head_count(counted_node_ptr& old_counter)
+	template<typename T>
+	void reclaim_later(T* data)
 	{
-		counted_node_ptr new_counter;
-		// ...existing code...
-		old_counter.external_count = new_counter.external_count;
+  	add_to_reclaim_list(new data_to_reclaim(data));
 	}
-	void try_reclaim(node* old_head)
+	void delete_nodes_with_no_hazards()
 	{
-		if (threads_in_pop == 1)
-		// ...existing code...
-		}
+  	data_to_reclaim* current=nodes_to_reclaim.exchange(nullptr);
+  	while(current)
+    {
+    	data_to_reclaim* const next = current->next;
+    	if (!outstanding_hazard_pointers_for(current->data))
+    	{
+      	delete current;
+    	}
+    	else
+    	{
+      	add_to_reclaim_list(current);
+    	}
+    	current = next;
+  	}
 	}
-	void chain_pending_nodes(node* nodes)
+  template<typename T>
+	void do_delete(void* p)
 	{
-		node* last = nodes;
-		// ...existing code...
-		chain_pending_nodes(nodes, last);
+  	delete static_cast<T*>(p);
 	}
+  
+	struct data_to_reclaim
+	{
+  	void* data;
+  	std::function<void(void*)> deleter;
+  	data_to_reclaim* next;
+  
+  	template<typename T>
+  	data_to_reclaim(T* p) : data(p), deleter(&do_delete<T>), next(0) {}
+  	~data_to_reclaim()
+  	{
+    	deleter(data);
+  	}
+	};
 public:
-	~lock_free_stack()
-	// ...existing code...
-	}
+  ~lock_free_stack()
+  {
+    while(pop());
+  }
+  void push(T const& data)
+  {
+    counted_node_ptr new_node; // 创建节点
+    new_node.ptr = new node(data);
+    new_node.external_count = 1;
+    new_node.ptr->next = head.load(std::memory_order_relaxed); // 将next指针指向head
+    while(!head.compare_exchange_weak(new_node->next, new_node,
+                                      std::memory_order_release,
+                                      std::memory_order_relaxed)); // 将head指向新节点
+  }
+  std::shared_ptr<T> pop()
+  {
+    counted_node_ptr old_head = head.load(std::memory_order_relaxed);
+    for (;;)
+    {
+      increase_head_count(old_head);
+      node* const ptr = old_head.ptr;
+      if (!ptr)
+      {
+        return std::shared_ptr<T>();
+      }
+      if (head.compare_exchange_strong(old_head, ptr->next, std::memory_order_relaxed))
+      {
+        std::shared_ptr<T> res;
+        res.swap(ptr->data);
+        int const count_increase = old_head.external_count - 2;
+        if (ptr->internal_count.fetch_add(count_increase,
+                                         std::memory_order_release)==-count_increase)
+        {
+          delete ptr;
+        }
+        return res;
+      }
+      else if(ptr->internal_count.fetch_add(-1, std::memory_order_relaxed) == 1)
+      {
+        ptr->internal_count.load(std::memory_order_acquire);
+        delete ptr;
+      }
+    }
+  }
 };
 ```
 
 #### Third-party Implementations
 
 - boost.lockfree.stack
+
+
+
+## Challenges
+
+### Race Condition
+
+A race condition occurs when two or more processes or threads access and modify the same data at the same time, and the final result depends on the order in which they run. Without proper coordination, this can lead to incorrect or unpredictable results.
+
+![race_condition](res/race_condition.png)
+
+### Deadlock
+
+Deadlock is a state in an operation system where two or more processes are stuck forever because each is waiting for a resource held by another. It happens only when four conditions exist: 
+
+![deadlock_condition](res/deadlock_condition.png)
+
+- Mutual Exclusion: Only one process can use a resource at any given time i.e. the resource are non-shareble.
+- Hold and Wait: A process is holding at least one resource at a time and is waiting to acquire other resources held by some other process.
+- No Preemption: A resource cannot be taken from a process unless the process releases the resource.
+- Circular Wait: set of processes are waiting for each other in a circular fashion.
+
 
 
 ## Concurrency Experience
@@ -988,9 +1362,12 @@ Factors affecting concurrent code performance:
 
 - Data races
 
-	// ...existing code...
-	- **Cache ping-pong:** Data is passed between processor caches. If a processor is suspended waiting for cache, it cannot work, severely affecting performance.
-
+	Data races on the processor can significantly impact concurrent performance. Data races are classified as follows:
+	
+	- **High contention:** One processor is ready to update the value, but another processor is already doing so. This requires waiting for the other processor to finish updating and for the change to propagate.
+	- **Low contention:** Processors rarely need to wait for each other.
+	- **Cache ping-pong:** Data is transferred back and forth between processor caches. If a processor is suspended while waiting for the cache, it cannot work during this time, which severely affects program performance.
+	
 - False sharing
 
 	**False sharing:** When a thread modifies its data, the cache line's ownership must transfer to its processor. If another thread's data is on the same cache line, the line must transfer again. The cache line is shared, but the data is not. In short, data accessed by one thread is too close to another's, causing problems.
@@ -1003,10 +1380,44 @@ Factors affecting concurrent code performance:
 
 ```mermaid
 graph TD
-		start(Start)
-		// ...existing code...
-		t2 -.No.->finish
+	start(Start)
+	finish(Finish)
+	subgraph Read Source Code
+		r1{Are multiple threads accessing this code simultaneously?}
+		r2{Is the accessed data protected?}
+		r3{Is locking performed?}
+		r4{Is unlocking performed?}
+		r5{Is the same lock/unlock order used?<br>1. Are there nested locks?<br>2. Is the same lock being locked/unlocked?}
+		r6{No exceptions thrown?}
+		r7{Do threads end normally?}
+	end
+	
+	subgraph Testing
+		t1{Does it work correctly in a single-threaded scenario?}
+		t2{Does the hardware support multithreading?}
+	end
+	
+	start --> r1
+	r1 -.Yes.-> r2
+	r1 -.No.-> finish
+	r2 -.Yes.-> r3
+	r2 -.No.-> finish
+	r3 -.Yes.-> r4
+	r3 -.No.-> finish
+	r4 -.Yes.-> r5
+	r4 -.No.-> finish
+	r5 -.Yes.-> r6
+	r5 -.No.-> finish
+	r6 -.Yes.-> r7
+	r6 -.No.-> finish
+	r7 -.Yes.-> t1
+	r7 -.No.-> finish
+	
+	t1 -.Yes.-> t2
+	t1 -.No.-> finish
+	t2 -.No.-> finish
 ```
+
 
 
 ## Examples
@@ -1017,9 +1428,20 @@ graph TD
 template <typename Iterator, typename Func>
 void parallel_for_each(Iterator first, Iterator last, Func f)
 {
-		unsigned long const length = std::distance(first, last);
-		// ...existing code...
-		}
+    unsigned long const length = std::distance(first, last);
+    if (!length) {
+        return;
+    }
+    unsigned long const min_per_threads = 25;
+    if (length < (2 * min_per_threads)) {
+        std::for_each(first, last, f);
+    } else {
+        Iterator const mid_point = first + length / 2;
+        std::future<void> first_half = std::async(&parallel_for_each<Iterator, Func>,
+                                       first, mid_point, f);
+        parallel_for_each(mid_point, last, f);
+        first_half.get();
+    }
 }
 ```
 
@@ -1028,15 +1450,36 @@ void parallel_for_each(Iterator first, Iterator last, Func f)
 ```c++
 template<typename Iterator, typename MatchType>
 Iterator parallel_find_impl(Iterator first, Iterator last, MatchType match,
-														std::atomic<bool>& done)
+                            std::atomic<bool>& done)
 {
-		try {// ...existing code...}
+    try {
+        unsigned long const length = std::distance(first, last);
+        unsigned long const min_per_thread = 25;
+        if (length < (2 * min_per_thread)) {
+            for (; (first != last) && !done.load(); ++first) {
+                if (*first == match) {
+                    done = true;
+                    return first;
+                }
+            }
+            return last;
+        } else {
+            Iterator const mid_point = first + (length / 2);
+            std::future<Iterator> async_result =
+                std::async(&parallel_find_impl<Iterator, MatchType>, mid_point, last, match, std::ref(done));
+            Iterator const direct_result = parallel_find_impl(first, mid_point, match, done);
+            return (direct_result == mid_point) ? async_result.get() : direct_result;
+        }
+    } catch (_exception e) {
+        done = true;
+        throw;
+    }
 }
 template <typename Iterator, typename MatchType>
 Iterator parallel_find(Iterator first, Iterator last, MatchType match)
 {
-		std::atomic<bool> done{false};
-		return parallel_find_impl(first, last, match, done);
+    std::atomic<bool> done{false};
+    return parallel_find_impl(first, last, match, done);
 }
 ```
 
@@ -1047,6 +1490,7 @@ TODO
 ```
 
 
+
 ## Summary
 
 1. Use `join()` to join (wait for) threads, use `detach()` to detach (not wait).
@@ -1055,12 +1499,12 @@ TODO
 
 3. You can pass arguments to thread functions by:
 
-	 // ...existing code...
+	 - Use `std::ref` to wrap parameters.
 	 - Use `std::move` to transfer ownership.
 
 4. Get thread identifier `std::thread::id` by:
 
-	 // ...existing code...
+	 - Obtain by calling `get_id()` on the associated `std::thread` object.
 	 - Returned when the thread is constructed.
 
 5. Use RAII mutex: `std::lock_guard<std::mutex> guard(mutex_obj)`
@@ -1075,13 +1519,16 @@ TODO
 
 9. Lock-free programming guidelines:
 
-	 // ...existing code...
+	 - Use std::memory_order_seq_cst as the default.
+	 - Use lock-free memory reclamation methods.
+	 - Beware of the ABA problem.
 	 - Identify busy-wait loops and help other threads.
 
 10. **Amdahl's law:** $P=\frac{1}{f_s + \frac{1 - f_s}{N}}$
-		- $P$: performance
-		// ...existing code...
-		- $N$: number of processors
+	- $P$: performance
+	- $f_s$: "serial portion"
+	- $N$: number of processors
+
 
 
 ## References
@@ -1095,3 +1542,7 @@ TODO
 [4] [Interview Question -- How to Design a Thread Pool](https://segmentfault.com/a/1190000040631931)
 
 [5] [C++ Standard Library Thread Safety Discussion](https://en.cppreference.com/w/cpp/container#Thread_safety)
+
+[6] [Race condition](https://www.geeksforgeeks.org/operating-systems/race-condition-in-operating-systems/)
+
+[7] [Introduction of Deadlock in Operating System](https://www.geeksforgeeks.org/operating-systems/introduction-of-deadlock-in-operating-system/)

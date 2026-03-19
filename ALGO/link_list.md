@@ -4,6 +4,8 @@
 
 [TOC]
 
+
+
 A linked list is a linear collection of nodes where each node holds a value and references (pointers) to other nodes. Linked lists are a fundamental building block for many data structures (stacks, queues, adjacency lists) and are useful when you need constant-time insertions and deletions at known positions.
 
 This note focuses on doubly linked lists (each node has pointers to both predecessor and successor). It provides a C++-style implementation sketch, explains common operations (insert/erase), lists complexity, and gives practical advice.
@@ -13,6 +15,8 @@ This note focuses on doubly linked lists (each node has pointers to both predece
 ![doubly_linked_list](res/doubly_linked_list.png)
 
 ![empty_doubly_linked_list](res/empty_doubly_linked_list.png)
+
+
 
 ## C++ implementation sketch
 
@@ -108,7 +112,9 @@ private:
 
 Notes: sentinel head/tail nodes simplify insertion and deletion at boundaries. `begin()` points to the first real node (head->next). `end()` returns the tail sentinel and must not be dereferenced.
 
-## Insert (example)
+
+
+## Insert
 
 ![link_list_insert](res/link_list_insert.png)
 
@@ -125,7 +131,9 @@ iterator insert(iterator itr, const Object& x) {
 
 Explanation: the new node is created and linked between `p->prev` and `p`; the expression assigns the new node to both `p->prev->next` and `p->prev` and returns an iterator to it.
 
-## Erase (example)
+
+
+## Erase
 
 ![link_list_delete](res/link_list_delete.png)
 
@@ -149,11 +157,56 @@ iterator erase(iterator start, iterator end) {
 }
 ```
 
+
+
+## Reverse
+
+![link_list_reverse1](res/link_list_reverse1.png)
+
+![link_list_reverse2](res/link_list_reverse2.png)
+
+![link_list_reverse3](res/link_list_reverse3.png)
+
+![link_list_reverse4](res/link_list_reverse4.png)
+
+![link_list_reverse5](res/link_list_reverse5.png)
+
+![link_list_reverse6](res/link_list_reverse6.png)
+
+![link_list_reverse7](res/link_list_reverse7.png)
+
+![link_list_reverse8](res/link_list_reverse8.png)
+
+This idea ia to reverse the linke list by changing the direction of links using three pointers: prev, curr, and next. At each step, point the current node to its previous node and then move all three pointers forward until the list is fully reversed.
+
+Implement:
+
+```c++
+void reverse_linked_list(singly_linked_list& li) 
+{
+    list_node* previous = nullptr;
+    list_node* current = li.head;
+    list_node* next = nullptr;
+    while (current) 
+    {
+        next = current->next;
+        current->next = previous;
+        previous = current;
+        current = next;
+    }
+    li.head = previous;
+}
+```
+
+
+
 ## Complexity
 
 - Moving an iterator to the next/previous node: O(1).
 - Insertion or deletion given an iterator: O(1).
 - Random access by index: O(n) — linked lists are not suitable for constant-time indexing.
+
+
 
 ## Practical considerations
 
@@ -161,6 +214,10 @@ iterator erase(iterator start, iterator end) {
 - For stacks/queues or when locality matters, `vector` or `deque` often perform better due to cache friendliness and lower per-node overhead.
 - Avoid linked lists when you need frequent random access or tight memory/cache performance.
 
+
+
 ## Reference
 
-1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms. 3rd ed.
+[1] Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. Introduction to Algorithms. 3rd ed.
+
+[2] [Reverse a Linked List](https://www.geeksforgeeks.org/dsa/reverse-a-linked-list/)

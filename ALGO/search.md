@@ -108,7 +108,59 @@ Space Complexity(it's refers to the amount of auxiliary memory the algorithm req
 
 ## Ternary Search
 
-TODO
+Ternary search is a divide-and-conquer search algorithm used to find the position of a target value within a monotonically increasing or decreasing function or in a unimodal array.
+
+### Working of Ternary Search
+
+Given an array that first strictly decreases and then strictly increases, we want to find the index of the minimum element. This kind of array is known as a U-shaped or unimodal array; For example:
+
+```markdown
+Input: arr[] = [9, 7, 5, 2, 3, 6, 10]
+Output: 3
+Explanation: The minimum of the given array is 2, which is at index 3.
+```
+
+### Implement
+
+```c++
+int ternary_search(std::vector<int>& arr)
+{
+    int low = 0, high = arr.size() - 1, min_index = -1;
+    int mid1, mid2;
+    while(low <= high)
+    {
+        mid1 = low + (high - low) / 3;
+        mid2 = high - (high - low) / 3;
+        if (arr[mid1] == arr[mid2])
+        {
+            low = mid1 + 1;
+            high = mid2 - 1;
+            min_index = mid1;
+        }
+        else if (arr[mid1] < arr[mid2])
+        {
+            high = mid2 - 1;
+            mid_index = mid1;
+        }
+        else
+        {
+            low = mid1 + 1;
+            min_index = mid2;
+        }
+    }
+    return min_index;
+}
+```
+
+### Complexity Analysis
+
+Time Complexity:
+
+| Case         | Complexity         |
+| ------------ | ------------------ |
+| Best Case    | $\Omega (1)$       |
+| Average Case | $\Theta(\log_3 n)$ |
+| Worst Case   | $O(\log_3 n)$      |
 
 
 
@@ -154,20 +206,56 @@ int hash_based_search(const std::vector<std::string>& arr, const std::string& ta
 
 
 
+## Kadane's Algorithm
+
+Kadane's algorithm is an efficient, linear-time method for solving the Maximum Subarray Sum problem, which finds the highest sum of a contiguous subarray within a one-dimensional array. By traversing the array once, it tracks the local maximum sum ending at each position to update the global maximum sum, operating in space.
+
+![kadane_algorithm](res/kadane_algorithm.png)
+
+### Implement
+
+```c++
+int kadane(const std::vector<int>& arr)
+{
+    int ret = 0;
+    int sum = 0;
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        sum = 0;
+        for (int j = i; j < arr.size(); ++j)
+        {
+            sum += arr[j];
+            ret = (sum > ret) ? sum : ret;
+        }
+    }
+    return ret;
+}
+```
+
+### Complexity Analysis
+
+| Case         | Time Complexity | Space Complexity |
+| ------------ | --------------- | ---------------- |
+| Best Case    | $O(n^2)$        | $O(1)$           |
+| Average Case | $O(n^2)$        | $O(1)$           |
+| Worst Case   | $O(n^2)$        | $O(1)$           |
+
+
+
 ## Summary
 
 ### Complixity Analysis
 
 Comparison of search algorithm efficiency:
 
-|                    | Linear Search | Binary Search         | Tree Search                 | Hash-based Search          |
-| ------------------ | ------------- | --------------------- | --------------------------- | -------------------------- |
-| Search element     | $O(n)$        | $O(\log n)$           | $O(\log n)$                 | $O(1)$                     |
-| Insert element     | $O(1)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     |
-| Delete element     | $O(n)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     |
-| Extra space        | $O(1)$        | $O(1)$                | $O(n)$                      | $O(n)$                     |
-| Data preprocessing | /             | Sorting $O(n \log n)$ | Tree building $O(n \log n)$ | Hash table building $O(n)$ |
-| Data ordered       | Unordered     | Ordered               | Ordered                     | Unordered                  |
+|                    | Linear Search | Binary Search         | Tree Search                 | Hash-based Search          | Ternary Search         |
+| ------------------ | ------------- | --------------------- | --------------------------- | -------------------------- | ---------------------- |
+| Search element     | $O(n)$        | $O(\log n)$           | $O(\log n)$                 | $O(1)$                     | $O(\log_3 n)$         |
+| Insert element     | $O(1)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     | $O(n)$                |
+| Delete element     | $O(n)$        | $O(n)$                | $O(\log n)$                 | $O(1)$                     | $O(n)$                |
+| Extra space        | $O(1)$        | $O(1)$                | $O(n)$                      | $O(n)$                     | $O(1)$                |
+| Data preprocessing | /             | Sorting $O(n \log n)$ | Tree building $O(n \log n)$ | Hash table building $O(n)$ | Sorting $O(n \log n)$ |
+| Data ordered       | Unordered     | Ordered               | Ordered                     | Unordered                  | Ordered                |
 
 ### Suit Case
 
@@ -197,6 +285,11 @@ Tree search:
 - During continuous node insertion and deletion, binary search trees may become skewed;
 - If using AVL trees or red-black trees, all operations can run stably at $O(\log n)$ efficiency, but operations to maintain tree balance add extra overhead.
 
+Ternary search:
+
+- Suitable for finding the maximum or minimum in unimodal functions, where the function first increases and then decreases(or vice versa).
+- Also be applied to monotonic functions, but it is generally less efficient than binary search due to its higher number of comparisons.
+
 
 
 ## Reference
@@ -206,4 +299,10 @@ Tree search:
 [2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++ . 4ED
 
 [3] [Hello Algo/Chapter 10.  Searching](https://www.hello-algo.com/en/chapter_searching/#chapter-10-searching)
+
+[4] [Ternary Search](https://www.geeksforgeeks.org/dsa/ternary-search/)
+
+[5] [Maximum Subarray Sum - Kadane's Algorithm](https://www.geeksforgeeks.org/dsa/largest-sum-contiguous-subarray/)
+
+[6] [WIKIPEDIA/Maximum subarray problem](https://en.wikipedia.org/wiki/Maximum_subarray_problem)
 

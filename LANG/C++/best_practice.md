@@ -85,11 +85,12 @@ English | [中文版](best_practice_zh.md)
 
 
 
+
 ### 5.Define constructor correctly
 
-- 成员变量初始化的顺序要与类定义中声明的顺序始终保持一致；
+- The order of member variable initialization must always match the order of declaration in the class definition.
 
-- 构造对象时推荐使用成员初始化列表，这样可以避免一次赋值动作；
+- It is recommended to use member initializer lists when constructing objects, as this avoids an extra assignment operation.
 
   ```c++
   class A {
@@ -99,7 +100,7 @@ English | [中文版](best_practice_zh.md)
   }
   ```
 
-- **禁止在构造函数中调用虚拟函数**；
+- **Never call virtual functions in constructors.**
 
 [TOP](#C++ Best Practice)
 
@@ -274,15 +275,15 @@ English | [中文版](best_practice_zh.md)
 
 ### 10.Avoid resource leak
 
-- 推荐自定义new和delete来替换编译器的operator new和operator delete；
+- It is recommended to customize new and delete to replace the compiler's operator new and operator delete.
 
 - Use RAII objects to manage resources.
 
   `Resource Acquisition Is Initialization (RAII)` is so common to acquire a resource and initialize a resource-managing object in the same statement.
 
-- 成对使用new和delete；
+- Use new and delete in pairs;
 
-  使用typedef时必须要说清楚，当以new创建该种typedef类型对象时，应该以哪种delete方式删除；
+  When using typedef, you must clarify which delete method should be used when creating such typedef objects with new;
 
   ```c++
   typedef std::string AddressLines[4];
@@ -318,7 +319,7 @@ English | [中文版](best_practice_zh.md)
   f(++a, ++a); // unknow order
   ```
   
-- 始终使用const限制所有指向只输入参数的指针和引用；
+- Always use const to restrict all pointers and references to input-only parameters;
 
 - If you have an object of a built-in type (e.g., an int), it's often mroe efficient to pass it by value than by reference.
 
@@ -1568,7 +1569,7 @@ Perfect forwarding fails when template type deduction fails or when it deduces t
 
 - Declare `std::thread` objects last in lists of data members.
 
-- 考虑针对一次性事件通信使用以void为模板型别实参的期值；
+- Consider using a promise with void as the template type argument for one-time event communication;
 
   ```c++
   std::promise<void> p;

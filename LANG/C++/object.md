@@ -564,12 +564,6 @@ C++ supports polymorphism through the following mechanisms:
 
 
 
-## Templates
-
-TODO
-
-
-
 ## Others
 
 ### NRV Optimization
@@ -627,38 +621,70 @@ TODO
 ## Summary
 
 1. new function: allocate memory first, then call constructor; delete function: call destructor first, then release memory;
+
 2. Only `nonstatic data member` is inside the object, everything else is outside;
+
 3. Any class that declares `virtual function` will have a virtual table (multiple inheritance and virtual inheritance may have multiple virtual tables), and the virtual table stores the addresses of `virtual function` of the class. Each object of this class has a pointer (vptr) pointing to the virtual table. The vptr is assigned during `constructor`. **Each class that declares virtual functions has a virtual table, and each of its instances has a pointer pointing to the virtual table.**
+
 4. Inheritance relationships can also be specified as `virtual` (shared), e.g.: `class istream : virtual public ios { ... };`; in this case, no matter how many times the base class is derived in the inheritance chain, it always exists as only one instance.
+
 5. Virtual inheritance affects efficiency.
+
 6. The memory size of a `class object` = total size of `nonstatic data member` + space filled due to `alignment` + overhead produced by `virtual`.
+
 7. `cast` cannot change the actual address that a pointer points to, it only affects the "interpretation method" of that address.
+
 8. Assigning a `base class object` to a `derived class object`, initializing it, or using type conversion to convert `base class` to `derived class` is **illegal**;
+
 9. Assigning a `derived class object` to a `base class object`, initializing it, or using type conversion to convert `derived class object` to `base class object` is **allowed**; but slicing occurs.
+
 10. A `base class object pointer` **can** point to a `derived class object`; a `derived class object pointer` **cannot** point to a `base class object`. This is the fundamental condition for implementing polymorphism.
+
 11. Using **type conversion** to convert `derived class object` to `base class object` **will not cause slicing**;
+
 12. explicit can prevent a "single-parameter constructor" from being treated as a `conversion` operator.
+
 13. When the compiler generates a default constructor, it **will not** initialize other members in the class.
+
 14. An `empty class object` has a non-zero size; the compiler inserts a `char` to allow any two objects of the class to have unique addresses in memory; if there are `virtual function`, a vptr is also added to point to the `virtual table`;
+
 15. Generally, members declared later are in higher positions in the `class object`, and for C compatibility, `vptr` is usually placed at the end of the `class object`.
+
 16. `static member` is placed in the `data segment` and **not in** the `class object`.
+
 17. The role of `virtual destructor` is to make the base class destructor shared, preventing memory leaks. **Do not declare `virtual destructor` as `pure virtual destructor`.**
+
 18. In the following 3 cases, the compiler will call the copy constructor:
     - An object is passed by value into a function body
 
     - An object is returned by value from a function
 
     - An object needs to be initialized through another object
+
 19. `protected` inheritance converts `public` members to `protected`
+
 20. `private` inheritance converts public and protected members to `private`
+
 21. The three major characteristics of object-oriented programming: polymorphism (Polymorphism), encapsulation (Encapsulation), and inheritance (Inheritance)
+
 22. Polymorphism: the same operation acts on different objects, producing different results. It has the following classifications:
     - Compile-time polymorphism (overloading)
     - Runtime polymorphism (virtual functions)
 
+23. The differences between malloc and operator new:
 
+    - Calling Constructors: `new` calls constructors, while `malloc` does not.
+    - Operator vs function: `new` is an operator, while `malloc` is a function.
+    - Return Type: `new` returns exact data type, while `malloc` returns void*.
+    - Failure Condition: on failure, `malloc` returns NULL where as `new` throws bad_alloc exception.
+    - Memory: In case of `new`, memory is allocated from free store where as in `malloc` memory allocation is done from heap.
+    - Size: Required size of memory is calculated by compiler for `new`, where as we have to manually calculate size for `malloc`.
+    - Buffer Size: `malloc` allows to change the size of buffer using realloc while `new` doesn't.
+
+    
 
 ## References
 
 - [`#pragma pack(push) and #pragma pack(pop) and #pragma pack()`](https://blog.csdn.net/myyllove/article/details/84560893/)
 - [First Exploration of C++ CRTP (Curiously Recurring Template Pattern)](https://blog.csdn.net/u011436427/article/details/125597908)
+- [malloc vs new](https://www.geeksforgeeks.org/cpp/malloc-vs-new/)

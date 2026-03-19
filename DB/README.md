@@ -7,6 +7,7 @@
 - [DB Query](query.md)
 - [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
+- [DB Table](table.md)
 - [Terminology](terminology.md)
 - [Transaction](transaction.md)
 

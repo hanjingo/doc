@@ -6,7 +6,7 @@
 
 The three most important representations of numbers:
 
-- `Unsigned` encodings are based on traditional binary notation, representing numbers greater than or equal to 0.
+- `Unsigned` encodings are based on traditional binary notation, representing numbers greater than or equCache metricsal to 0.
 - `Two's-complement` encoding are the most common way to represent signed integers, that is, numbers that may be either positive or negative.
 - `Floating-point` encodings are a base-2 version of scientific notation for representing real numbers.
 
