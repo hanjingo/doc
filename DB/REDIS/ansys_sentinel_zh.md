@@ -1,3 +1,5 @@
+中文版 | [English](ansys_sentinel.md)
+
 # Redis源码分析-哨兵
 
 

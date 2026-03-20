@@ -1,3 +1,5 @@
+中文版 | [English](log.md)
+
 # Redis源码分析-慢查询日志
 
 

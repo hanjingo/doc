@@ -1,4 +1,4 @@
-# Cost
+# Cost Estimation
 
 [TOC]
 

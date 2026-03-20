@@ -1,3 +1,5 @@
+中文版 | [English](pipeline.md)
+
 # redis管道
 
 

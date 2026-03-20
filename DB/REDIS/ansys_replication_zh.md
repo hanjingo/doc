@@ -1,3 +1,5 @@
+中文版 | [English](ansys_replication.md)
+
 # Redis源码分析-复制
 
 

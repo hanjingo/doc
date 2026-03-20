@@ -1251,6 +1251,12 @@ In my last company, a teammate committed a function that I found to be qutie res
 
 For more info, see: [C++ Best Practice](LANG/C++/best_practice.md)
 
+### Practice
+
+#### High traffic system
+
+For more info, see: [URL Storage](SYSTEM_DESIGN/EXAMPLE/high_traffic_system.md)
+
 ---
 
 

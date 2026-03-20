@@ -1,3 +1,5 @@
+中文版 | [English](ansys_cmd.md)
+
 # Redis源码分析-命令行
 
 [TOC]

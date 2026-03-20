@@ -1,3 +1,5 @@
+中文版 | [English](ansys_bit_array.md)
+
 # Redis源码分析-二进制位数组
 
 [TOC]

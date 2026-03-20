@@ -1,3 +1,5 @@
+中文版 | [English](mq.md)
+
 # 利用redis实现消息队列
 
 [TOC]

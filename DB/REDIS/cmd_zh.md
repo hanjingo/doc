@@ -1,3 +1,5 @@
+中文版 | [English](cmd.md)
+
 # Redis命令
 
 [TOC]
