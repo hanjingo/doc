@@ -86,7 +86,7 @@ The MDA(model-driven architecture) method recommends that three types of abstrac
 2. A platform-independent model (PIM) that models the operation of the system without reference to its implementation.
 3. Platform-specific models (PSM) which are transformations of the platform-independent model, with a separate PSM for each application platform.
 
-![model_driven_arch](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/model_driven_arch.png)
+![model_driven_arch](res/model_driven_arch.png)
 
 *Multiple platform-specific models*
 

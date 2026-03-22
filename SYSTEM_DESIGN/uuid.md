@@ -4,7 +4,23 @@
 
 [TOC]
 
+
+
 ## Generation
+
+![uuid_generator](res/uuid_generator.png)
+
+### SnowFlake
+
+SnowFlake algorithm is Twitter's open-source distributed ID generation algorithm; its core idea is: use a 64-bit long type number as the global unique ID; its structure is as follows:
+
+| Reserved (all 0) | Timestamp (ms) | Machine ID | Increment |
+| ---------------- | -------------- | ---------- | --------- |
+| 1bit             | 41bit          | 10bit      | 12bit     |
+
+Disadvantages:
+
+- Depends on machine clock, if the clock goes back, it may cause ID duplication or service unavailability;
 
 ### Database Auto-Increment
 
@@ -20,17 +36,15 @@ Optimizations:
 
 1. Can use segment number method, generate IDs through clusters;
 
-### SnowFlake Algorithm
+### Database Segment
 
-SnowFlake algorithm is Twitter's open-source distributed ID generation algorithm; its core idea is: use a 64-bit long type number as the global unique ID; its structure is as follows:
+TODO
 
-| Reserved (all 0) | Timestamp (ms) | Machine ID | Increment |
-| ---------------- | -------------- | ---------- | --------- |
-| 1bit             | 41bit          | 10bit      | 12bit     |
+### Redis
 
-Disadvantages:
+TODO
 
-- Depends on machine clock, if the clock goes back, it may cause ID duplication or service unavailability;
+
 
 ## Examples
 
@@ -130,11 +144,19 @@ Rongyun's ID structure:
 | -------------- | ------------ | ------------ | ---------- |
 | 42bit          | 12bit        | 4bit         | 22bit      |
 
+
+
 ## References
 
-- [IM消息ID技术专题(一)：微信的海量IM聊天消息序列号生成实践（算法原理篇）](http://www.52im.net/forum.php?mod=viewthread&tid=1998&highlight=ID)
-- [IM消息ID技术专题(二)：微信的海量IM聊天消息序列号生成实践（容灾方案篇）](http://www.52im.net/thread-1999-1-1.html)
-- [IM消息ID技术专题(三)：解密融云IM产品的聊天消息ID生成策略](http://www.52im.net/thread-2747-1-1.html)
-- [IM消息ID技术专题(四)：深度解密美团的分布式ID生成算法](http://www.52im.net/thread-2751-1-1.html)
-- [IM消息ID技术专题(五)：开源分布式ID生成器UidGenerator的技术实现](http://www.52im.net/thread-2953-1-1.html)
+[1] [IM消息ID技术专题(一)：微信的海量IM聊天消息序列号生成实践（算法原理篇）](http://www.52im.net/forum.php?mod=viewthread&tid=1998&highlight=ID)
+
+[2] [IM消息ID技术专题(二)：微信的海量IM聊天消息序列号生成实践（容灾方案篇）](http://www.52im.net/thread-1999-1-1.html)
+
+[3] [IM消息ID技术专题(三)：解密融云IM产品的聊天消息ID生成策略](http://www.52im.net/thread-2747-1-1.html)
+
+[4] [IM消息ID技术专题(四)：深度解密美团的分布式ID生成算法](http://www.52im.net/thread-2751-1-1.html)
+
+[5] [IM消息ID技术专题(五)：开源分布式ID生成器UidGenerator的技术实现](http://www.52im.net/thread-2953-1-1.html)
+
+[6] []
 

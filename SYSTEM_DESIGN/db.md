@@ -6,9 +6,15 @@
 
 
 
+## ACID
+
+![acid](res/acid.png)
+
+
+
 ## CAP Theorem In Database Designing
 
-![cap_theorem](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cap_theorem.png)
+![cap_theorem](res/cap_theorem.png)
 
 According to the CAP theorem, only two of the three desirable characteristics consistency, availability, and partition tolerance can be shared or present in a networked shared-data system or distributed system.
 
@@ -30,6 +36,8 @@ A CA database is a type of database that prioritizes Consistency and Availabilit
 
 ## Types
 
+![types_of_db](res/types_of_db.png)
+
 Types of Databases in System Design:
 
 - Relational Databases
@@ -38,7 +46,7 @@ Types of Databases in System Design:
 - Time-Series Databases
 - Object-Oriented Databases
 
-### Relational VS Non-Relational Databases
+### Relational vs Non-Relational Databases
 
 Here are a few key factors to consider when choosing the right database:
 
@@ -46,7 +54,7 @@ Here are a few key factors to consider when choosing the right database:
 | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Data Structure                  | If your data is structured, and you need to handle complex relationships. | If your data is unstructured or semi-structured.             |
 | Scalability Needs               | Typically scale vertically(adding more power to a single server). | Of ten scale horizontally(adding more servers to distribute the load). |
-| Consistency VS Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
+| Consistency vs Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
 | Transaction Support             | If you need ACID properties(Atomicity, Consistency, Isolation, Durability) for transaction. | If your system can work without strict transaction guarantees. |
 | Development Speed & Flexibility | If you need a stable, structured design.                     | If your project evolve rapidly or need to handle changing types of data. |
 
@@ -55,6 +63,8 @@ Here are a few key factors to consider when choosing the right database:
 
 
 ## Data Sharding And Partitioning
+
+![db_data_sharding](res/db_data_sharding.png)
 
 ### Data Sharding
 
@@ -128,6 +138,10 @@ Disadvantages:
 - Centralized Point of Failure: The central directory represents a single point of failure. If the directory becomes unavailable or experiences issues, it can disrupt the entire system, impacting data access and query routing.
 - Increased Latency: Query routing through a central directory introduces an additional layer, potentially leading to increased latency compared to other sharding strategies.
 
+#### Horizontal Partitioning vs Vertical Partitioning
+
+![horizontal_partitioning_vs_vertical_partitioning](res/horizontal_partitioning_vs_vertical_partitioning.png)
+
 ### Data Partitioning
 
 Partitioning helps improve query performance by limiting the amount of data the system has to process for specific queries. It also makes it easier to manage large datasets.
@@ -195,6 +209,14 @@ To accomplish particular objectives related to data consistency, availability, a
 
 
 
+## Database Persists
+
+### Redis
+
+![redis_persists](res/redis_persists.png)
+
+
+
 ## Database Normalization And Denormalization
 
 TODO
@@ -210,3 +232,7 @@ TODO
 [2] [Introduction to Database Normalization](https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/)
 
 [3] [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
+
+[4] [Top 50 System Design Interview Questions for 2026](https://dev.to/somadevtoo/top-50-system-design-interview-questions-for-2024-5dbk)
+
+[5] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)

@@ -8,7 +8,7 @@ Rate Limiting is a technique used in system architecture to regulate how quickly
 
 ## Rate Limiter
 
-![rate_limiter](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/rate_limiter.png)
+![rate_limiter](res/rate_limiter.png)
 
 A rate limiter is a component that controls the rate of traffic or requests to a system. It is a specific implementation or tool used to enforce rate-limiting.
 
@@ -90,9 +90,38 @@ The sliding window algorithm is actually a variation of the two algorithms, name
 
 
 
+## Summary
+
+### Rate Limiting Strategies Use Case
+
+| Strategy                     | Use Case                         |
+| ---------------------------- | -------------------------------- |
+| Fixed Window Rate Limiting   | API gateways, basic API security |
+| Sliding Window Rate Limiting | High-traffic APIs, dynamic apps  |
+| Token Bucket Algorithm       | Payment processing, banking APIs |
+| Leaky Bucket Algorithm       | Enterprise SaaS APIs             |
+
+### API Throttling vs API Rate Limiting
+
+![api_throttling_vs_api_rate_limiting](res/api_throttling_vs_api_rate_limiting.png)
+
+| API Throttling                                      | API Rate Limiting                                   |
+| --------------------------------------------------- | --------------------------------------------------- |
+| Slows down requests after a certain threshold.      | Blocks requests entirely once the limit is reached. |
+| Reduces the speed but allows continued usage.       | Completely blocks requests after the limit.         |
+| Applies to immediate traffic spikes.                | Enforces a hard limit over a set time window.       |
+| Slower but continues to provide access.             | Users are denied access until the limit resets.     |
+| Allows more flexible handling of traffic surges.    | Enforces strict limits.                             |
+| Lower risk, but not as strict.                      | Higher security against misuse.                     |
+| Managing fluctuating traffic, ensuring fair access. | Preventing abuse and enforcing strong limits.       |
+
+
+
 ## References
 
 [1] [Rate Limiting in System Design](https://www.geeksforgeeks.org/system-design/rate-limiting-in-system-design/)
 
 [2] [Rate Limiting Algorithms - System Design](https://www.geeksforgeeks.org/system-design/rate-limiting-algorithms-system-design/)
+
+[3] [API Throttling vs. API Rate Limiting - System Design](https://www.geeksforgeeks.org/system-design/api-throttling-vs-api-rate-limiting-system-design/)
 

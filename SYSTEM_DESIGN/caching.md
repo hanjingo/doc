@@ -1,18 +1,194 @@
-# Caching Desi
+# Caching Design
 
 [TOC]
 
 
 
+![caching_arch_example](res/caching_arch_example.png)
+
 ## Eviction Strategies
 
 ### Least Recently Used(LRU)
 
+![lru](res/lru.jpg)
+
+Advantages:
+
+- Easy Implementation
+- Efficient Use of Cache
+- Adaptability
+
+Disadvantages:
+
+- Strict Ordering
+- Cold Start Issues
+- Memory Overhead
+
+### Least Frequently Used(LFU)
+
+![lfu](res/lfu.jpg)
+
+Advantages:
+
+- Adaptability to Varied Access Patterns
+- Optimized for Long-Term Trends
+- Low Memory Overhead
+
+Disadvantages:
+
+- Sensitivity to Initial Access
+- Difficulty in Handling Changing Access Patterns
+- Complexity of Frequency Counters
+
+### First-In-First-Out(FIFO)
+
+![fifo](res/fifo.jpg)
+
+Advantages:
+
+- Simple Implementation
+- Predictable Behavior
+- Memory Efficiency
+
+Disadvantages:
+
+- Lack of Adaptability
+- Inefficiency in Handling Variable Importance
+- Cold Start Issues
+
+### Random Replacement
+
+![random_replacement](res/random_replacement.jpg)
+
+Advantages:
+
+- Simplicity
+- Avoids Biases
+- Low Overhead
+
+Disadvantages:
+
+- Suboptimal Performance
+- No Adaptability
+- Possibility of Poor Hit Rates
 
 
 
+## Caching For API
 
-## General-Purpose DB Caching System
+Caching APIs can significantly improve performance in system design by addressing several key factors:
+
+- Faster Data Retrieval
+- Reduced Database Load
+- Minimized Network Latency
+- Enhanced Throughput
+- Improved User Experience
+- Resource Optimization
+- Decreased API Rate Limiting
+- Scalability
+
+Caching APIs reduces server load in system design through several mechanisms:
+
+- Serving Repeat Requests from Cache
+- Decreasing Database Queries
+- Reducing Computational Work
+- Handling Spikes in Traffic
+- Efficient Use of Resources
+- Enhanced System Stability and Reliability
+
+### Client-Side Caching
+
+![client_side_caching](res/client_side_caching.png)
+
+Benefits:
+
+- Reduces server load by storing responses directly on the client.
+- Decreases latency since the data is fetched from the client's local storage.
+
+Use Cases:
+
+- Static assets like images, CSS, and JavaScript files.
+- API responses that change infrequently, such as user profile data.
+
+### Server-Side Caching
+
+![server_side_caching](res/server_side_caching.png)
+
+Benefits:
+
+- Reduces the need to recompute responses for repeated requests.
+- Can handle a large number of requests efficiently.
+
+Use Cases:
+
+- Frequently accessed data like product catalogs or new feeds.
+- API responses that are resource-intensive to generate.
+
+### Reverse Proxy Caching
+
+![reverse_proxy_caching](res/reverse_proxy_caching.png)
+
+Benefits:
+
+- Caches responses at the network edge, reducing latency and load on the origin server.
+- Improves response times for end-users.
+
+Use Cases:
+
+- Publicly accessible APIs with high traffic volumes.
+- Content delivery networks(CDNs) for static and dynamic content.
+
+### Distributed Caching
+
+![distributed_caching](res/distributed_caching.png)
+
+Benefits:
+
+- Spreads the cache across multiple nodes, improving scalability and fault tolerance.
+- Maintains data availability in the event that a node fails.
+
+Use Cases:
+
+- Large-scale applications with significant amounts of data to cache.
+- Systems requiring high availability and reliability.
+
+### Application-Level Caching
+
+![application_level_caching](res/application_level_caching.png)
+
+Benefits:
+
+- Customizable caching strategies based on application logic.
+- Can be integrated directly into the application code.
+
+Use Cases:
+
+- Specific parts of an application that require fine-grained control over caching.
+- Scenarios where data validity and freshness need to be closely managed.
+
+### Database Caching
+
+![database_caching](res/database_caching.png)
+
+Benefits:
+
+- Offloads database queries, improving database performance.
+- Can cache query results or specific database rows.
+
+Use Cases:
+
+- Frequently queried database tables.
+- Complex queries that require significant computation.
+
+
+
+## Caching Strategy
+
+![caching_strategy](res/caching_strategy.png)
+
+
+
+## Example: General-Purpose DB Caching System
 
 ### Cache System Evaluation Metrics
 
@@ -29,7 +205,7 @@
 
 #### Solution One: Delete Cache First, Then Update Database
 
-![cache_proj1](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cache_proj1.png)
+![cache_proj1](res/cache_proj1.png)
 
 - Write Operation
 
@@ -93,13 +269,13 @@ Disadvantages:
 
 Summary:
 
-Use Case: Scenarios with low concurrency and not very high consistency requirements
-
-Since its cache refresh strategy may fail, cache data remains in an error state after failure. It cannot guarantee eventual consistency and cannot ensure concurrent read-write safety.
+>  Use Case: Scenarios with low concurrency and not very high consistency requirements
+>
+> Since its cache refresh strategy may fail, cache data remains in an error state after failure. It cannot guarantee eventual consistency and cannot ensure concurrent read-write safety.
 
 #### Solution Two: Delete Cache First, Update Database with Binlog Mechanism
 
-![cache_proj2](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cache_proj2.png)
+![cache_proj2](res/cache_proj2.png)
 
 - Write Operation
   1. Delete cache data
@@ -128,9 +304,9 @@ Disadvantages:
 
 Summary:
 
-Applicable Scenario: Simple business logic, relatively low read-write QPS.
-
-Binlog refreshes cache. Due to its natural sequentiality, it has advantages for synchronous operations. However, when binlogs from different rows, tables, and databases are consumed simultaneously, binlog is not time-sequential.
+> Applicable Scenario: Simple business logic, relatively low read-write QPS.
+>
+> Binlog refreshes cache. Due to its natural sequentiality, it has advantages for synchronous operations. However, when binlogs from different rows, tables, and databases are consumed simultaneously, binlog is not time-sequential.
 
 Use Cases:
 
@@ -139,7 +315,7 @@ Use Cases:
 
 #### Solution Three: Based on Solution Two with MQ Serialization Mechanism
 
-![cache_proj3](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cache_proj3.png)
+![cache_proj3](res/cache_proj3.png)
 
 - Write Operation
   1. Delete cache first
@@ -174,7 +350,7 @@ Disadvantages:
 
 #### Solution Four: Based on Solution Three with Marking
 
-![cache_proj4](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/cache_proj4.png)
+![cache_proj4](res/cache_proj4.png)
 
 - Write Operation
   1. Mark the data to be modified, indicating "being modified", and set the mark validity period. If marking fails, abandon this modification.
@@ -191,11 +367,6 @@ Disadvantages:
   4. Push data identifiers needing update to MQ
   5. Consume data identifiers from MQ, read data from database based on identifiers
   6. Update cache
-
-### Cache System Components
-
-- Redis
-- ...
 
 ### Common Cache System Problems
 
@@ -249,93 +420,31 @@ Solutions:
 
 
 
-## Examples
-
-### Game Server
-
-Characteristics:
-
-- Latency Sensitive
-
-  Users generate a large number of operations in games that require real-time feedback, generally cannot tolerate more than 1 second delay;
-
-- Strong Interaction
-
-  In games, real-time player interactions are very frequent;
-
-- Centralized Data
-
-  A game is an almost completely virtual world. The data generated in the game actually produces little value in other systems, with low distributed requirements and very high data centralization;
-
-- Read Heavy, Write Light
-
-  Game data follows one rule: "the faster the data changes, the lower its importance". For security reasons, modifications to game data generally only occur through game servers, prohibiting other systems from modifying data. To reduce latency, data is typically loaded into memory once at login, modified in memory, and periodically/opportunistically synchronized to the database;
-
-Design Approach:
-
-Due to differences between games and other industries (low latency, strong interaction), using general-purpose cache/database systems on game servers faces the following problems:
-
-- Excessive Latency
-
-  For general-purpose cache/database systems (redis, memcache...), each data access operation takes several to tens of times longer than direct memory operations. For some latency-sensitive games (combat, competition), this latency is unacceptable;
-
-Thus far, there is no universal caching solution in gaming. Instead, solutions are typically custom-tailored for specific games/game types.
-
-An excellent game caching system should include the following characteristics:
-
-- Automatic Management of In-Memory Cache Data
-
-  No need for business logic to manage data operations; the system automatically maintains data, reducing business development burden;
-
-- Automatic Data Persistence and Disaster Recovery Management
-
-  Large amounts of data are generated during gameplay and concentrated in memory. Once the game process crashes, it causes massive losses. An efficient disaster recovery mechanism is needed to minimize losses;
-
-- Good Programming Usability
-
-  Ideally, directly access objects in code, implementing automatic conversion between code data and in-memory data. Avoid adding additional data structure descriptions (such as SQL), saving development time;
-
-### E-commerce
-
-Characteristics:
-
-- Latency Insensitive
-
-  Low latency requirements for operations, low user operation frequency;
-
-- Weak Interaction
-
-  E-commerce businesses are generally browser/app-based, with low real-time interaction requirements between users;
-
-- Dispersed Data
-
-  E-commerce data is typically generated in multiple different business systems, with lower data centralization and higher distributed requirements compared to games;
-
-- Read Heavy, Write Heavy
-
-  Due to the special nature of the e-commerce industry, large amounts of data are generated while requiring significant data modifications;
-
-Design Approach:
-
-TODO
-
----
-
-
-
 ## References
 
-- [How to Design Game Database for 200,000 Concurrent Users](https://cloud.tencent.com/developer/article/1071145)
-- [Game Database Design Experience](https://blog.csdn.net/pengdali/article/details/95376038)
-- [E-commerce System Design: Orders](https://segmentfault.com/a/1190000015784047)
-- [Cache and Database Consistency Series-01](https://blog.kido.site/2018/12/01/db-and-cache-01/)
-- [Cache and Database Consistency Series-02](https://blog.kido.site/2018/12/07/db-and-cache-02/)
-- [Canal and Databus Comparison](https://www.cnblogs.com/xunshao/p/9762377.html)
-- [Most Comprehensive Cache Architecture Design](https://blog.csdn.net/zjttlance/article/details/80234341)
-- [Cache Architecture in Large Distributed Systems](https://www.cnblogs.com/panchanggui/p/9503666.html)
-- [Discussion on Web Cache Architecture](https://www.cnblogs.com/neal-ke/p/8966971.html)
-- [Database Replication in System Design](https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/)
-- [Introduction to Database Normalization](https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/)
-- [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
-- [Cache Eviction Policies | System Design](https://www.geeksforgeeks.org/system-design/cache-eviction-policies-system-design/)
+[1] [How to Design Game Database for 200,000 Concurrent Users](https://cloud.tencent.com/developer/article/1071145)
+
+[2] [Game Database Design Experience](https://blog.csdn.net/pengdali/article/details/95376038)
+
+[3] [E-commerce System Design: Orders](https://segmentfault.com/a/1190000015784047)
+
+[4] [Cache and Database Consistency Series-01](https://blog.kido.site/2018/12/01/db-and-cache-01/)
+
+[5] [Cache and Database Consistency Series-02](https://blog.kido.site/2018/12/07/db-and-cache-02/)
+
+[6] [Canal and Databus Comparison](https://www.cnblogs.com/xunshao/p/9762377.html)
+
+[7] [Most Comprehensive Cache Architecture Design](https://blog.csdn.net/zjttlance/article/details/80234341)
+
+[8] [Cache Architecture in Large Distributed Systems](https://www.cnblogs.com/panchanggui/p/9503666.html)
+
+[9] [Discussion on Web Cache Architecture](https://www.cnblogs.com/neal-ke/p/8966971.html)
+
+[10] [Database Replication in System Design](https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/)
+
+[11] [Introduction to Database Normalization](https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/)
+
+[12] [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
+
+[13] [Cache Eviction Policies | System Design](https://www.geeksforgeeks.org/system-design/cache-eviction-policies-system-design/)
 

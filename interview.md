@@ -1229,6 +1229,48 @@ For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design
 
 ## System Design
 
+### Base
+
+#### What is difference between API Gateway and Load Balancer?
+
+TODO
+
+#### What is difference between Reverse Proxy and Forward Proxy?
+
+TODO
+
+#### What is difference between Horizontal scaling and vertical scaling?
+
+TODO
+
+#### What is difference between Microservices and Monolithic architecture?
+
+TODO
+
+#### What is difference between vertical and horizontal partitioning?
+
+TODO
+
+#### What is rate limiter? How does it work?
+
+TODO
+
+#### How deos Single Sign On(SSO) works?
+
+TODO
+
+#### How deos Apache Kafka works? why it so fast?
+
+TODO
+
+#### Difference between Kafka, ActiveMQ, and RabbitMQ?
+
+TODO
+
+#### Difference between JWT, OAuth, and SAML?
+
+TODO
+
 ### Design Pattern
 
 #### What is the Singleton Design Pattern?
@@ -1253,9 +1295,25 @@ For more info, see: [C++ Best Practice](LANG/C++/best_practice.md)
 
 ### Practice
 
-#### High traffic system
+#### Youtube Design
 
-For more info, see: [URL Storage](SYSTEM_DESIGN/EXAMPLE/high_traffic_system.md)
+TODO
+
+#### URL Shortner
+
+For more info, see: [URL Shortner](SYSTEM_DESIGN/EXAMPLE/url_shortner.md)
+
+#### Real-Time Gaming Leaderboard
+
+TODO
+
+#### WhatsApp Design
+
+TODO
+
+#### Parking Lot Design
+
+TODO
 
 ---
 

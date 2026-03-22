@@ -187,6 +187,10 @@ TODO
 | Documentation             | In manual testing, there is no documentation.                | In automation teting, the documentation acts as a training resource for new developer. He/She can look into unit test cases and understand the code base quickly. |
 | When To Use?              | Manual testing is usable for Exploratory testing, Usability testing, and Adhoc testing. | Automated testing is suitable for Regression testing, Load testing, and Performance testing. |
 
+### Test Tools
+
+![best_way_to_test_system_functionality](res/best_way_to_test_system_functionality.png)
+
 
 
 ## Reference

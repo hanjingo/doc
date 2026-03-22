@@ -4,6 +4,14 @@
 
 
 
+![system_design_blueprint](res/system_design_blueprint.jpg)
+
+## Terminology
+
+![system_design_terminology](res/system_design_terminology.png)
+
+
+
 ## Requirements
 
 ![system_design_requirements](res/system_design_requirements.png)
@@ -158,47 +166,34 @@ LLD is a phase in the software development process where detailed system compone
 
 
 
-## Workflaws
+## Workflows
 
-### Life Cycle
+### System Development Life Cycle
 
 ![system_development_life_cycle](res/system_development_life_cycle.png)
 
+### General Template
+
+![system_design_general_template](res/system_design_general_template.jpeg)
+
 ### Steps
 
-![system_design_step](res/system_design_step.png)
+![system_design_step](res/system_design_step.jpg)
 
 Here are some steps to get started with system design:
 
 1. Understand Requirements
+2. Cost Estimation
+3. Data Model Design
+4. High-Level Design
+5. API Design
+6. Detailed Design
+7. Evaluation
+8. Identify And Resolve Bottlenecks
 
-   This step involves gathering and analyzing the business needs of the system.
+### Data Pipeline
 
-2. Define Architecture
-
-   In this step, the overall structure of the system is planned.
-
-3. Choose Tech Stack
-
-   Here, the technologies used to build the system are selected.
-
-4. Design Modules
-
-   The system is divided into smaller modules or components, each with a specific responsibility.
-
-5. Plan for Scalability
-
-   Developers identify possible bottlenecks and use scalable solutions such as load balancing or distributed systems.
-
-6. Ensure Security & Privacy
-
-   Security measures are added to protect user data and prevent unauthorized access.
-
-7. Test & Validate
-
-   After designing the system, it is tested to ensure it works as expected.
-
----
+![data_pipeline_overview](res/data_pipeline_overview.png)
 
 
 
@@ -215,3 +210,7 @@ Here are some steps to get started with system design:
 [5] [What is Low Level Design or LLD?](https://www.geeksforgeeks.org/system-design/what-is-low-level-design-or-lld-learn-system-design/)
 
 [6] [System Design Introduction - LLD & HLD](https://www.geeksforgeeks.org/system-design/getting-started-with-system-design/)
+
+[7] [100+ Best System Design Resources for Interview and Learning](https://github.com/javabuddy/best-system-design-resources?tab=readme-ov-file)
+
+[8] [EP56: System Design Blueprint: The Ultimate Guide](https://blog.bytebytego.com/p/ep56-system-design-blueprint-the)

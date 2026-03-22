@@ -4,13 +4,7 @@
 
 
 
-The advantages of using a distributed approach to system development:
-
-1. Resource sharing.
-2. Openness.
-3. Concurrency.
-4. Scalability.
-5. Fault tolerance.
+![dcs_workflow](res/dcs_workflow.png)
 
 ## Distributed systems issues
 
@@ -59,14 +53,6 @@ In a distributed system, middleware normally provides two distinct types of supp
 
 
 ## Architectural patterns for distributed systems
-
-Five architectural styles:
-
-1. Master-slave architecture, which is used in real-time systems in which guaranteed interaction response times are required.
-2. Two-tier client-server architecture, which is used for simple client-server systems, and in situations where it is important to centralize the system for security reasons. In such cases, communication between the client and server is normally encrypted.
-3. Multitier client-server, which is used when there is a high volume of transactions to be processed by the server.
-4. Distributed component architecture, which is used when resources from different systems and databases need to be combined, or as an implementation model for multi-tier client-server systems.
-5. Peer-to-peer architecture, which is used when clients exchange locally stored information, and the role of the server is to introduce clients to each other. It may also be used when a large number of independent computations may have to be made.
 
 ### Master-slave architectures
 
@@ -140,76 +126,13 @@ It is appropriate to use a peer-to-peer architectural model for a system in two 
   - Quorum-Based Algorithms
   - Federated Byzantine Agreement(FBA)
 
-
-
-## Secure
-
-Authentication and authorization mechanisms are essential for securing structures and facts. Authentication verifies person identities, while authorization controls their get entry to sources.
-
-### Authentication Mechanisms
-
-1. Passwords and PINs
-
-   - Pros: Simple, widely used.
-   - Cons: Vulnerable to assaults(brute pressure, phishing).
-
-2. Biometrics
-
-   - Pros: Hard to forge.
-   - Cons: Privacy concerns, false positives/negatives.
-
-3. Multi-Factor Authentication(MFA)
-
-   - Pros: Stronger security.
-   - Cons: More complex for users.
-
-4. Token-Based Authentication
-
-   - Pros: Enhances protection.
-   - Cons: Tokens can be misplaced or stolen.
-
-5. Certificate-Based Authentication
-
-   - Pros: Strong safety, broadly used in corporations.
-   - Cons: Requires infrastructure for dealing with certificates(PKI).
-
-6. Single Sign-On(SSO)
-
-   - Pros: Convenient, improves user experience.
-   - Cons: Single factor of failure.
-
-### Authorization mechanisms
-
-1. Role-Based Access Control(RBAC)
-
-   - Pros: Simplifies control, enforces least privilege.
-   - Cons: Can be rigid in dynamic environments.
-
-2. Attribute-Based Access Control(ABAC)
-
-   - Pros: Flexible, quality-grained manage.
-   - Cons: Complex to put into effect and manage.
-
-3. Discretionary Access Control(DAC)
-
-   - Pros: Flexible, simple
-   - Cons: Less secure, liable to insider threats.
-
-4. Mandatory Access Control(MAC)
-
-   - Pros: High safety.
-   - Cons: Rigid, hard to control in large businesses.
-
-5. Policy-Based Access Control
-
-   - Pros: Flexible, adaptable to complicated environments.
-   - Cons: Can be tough to outline and control regulations.
+For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/master/DCS/README.md)
 
 
 
-## Advantage And Disadvantage
+## Summary
 
-Advantages:
+### Advantage
 
 - Resource Sharing
 - Multiple Independent Nodes
@@ -218,7 +141,7 @@ Advantages:
 - Reliability and Fault Tolerance
 - Performance
 
-Disadvantages:
+### Disadvantage
 
 - Complexity
 - Security Challenges
@@ -226,6 +149,14 @@ Disadvantages:
 - Data Consistency Issues
 - Higher Cost
 - Troubleshooting Difficulties
+
+### Use Case
+
+1. Online Banking Systems
+2. E-Commerce Platforms
+3. Social Media Platforms
+4. Online Gaming Systems
+5. ...
 
 
 

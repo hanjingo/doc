@@ -4,6 +4,8 @@
 
 
 
+![software_arch_style](res/software_arch_style.png)
+
 ## Architectural Design
 
 ### MVC Pattern
@@ -151,7 +153,13 @@ Event-Driven Architecture(EDA) has a few key challenges:
 
 ## Microservice Architecture
 
+![microservice_arch](res/microservice_arch.png)
+
 Microservice architecture is an approach to system design where a large application is built as a collection of small, loosely coupled, and independently deployable services. Each service, known as a microservice, focuses on a specific business function and can be developed, deployed, and scaled independently of otehr services.
+
+### Tech Stack
+
+![microservice_tech_stack](res/microservice_tech_stack.png)
 
 ### APIs
 
@@ -164,7 +172,25 @@ APIs (Application Programming Interfaces) are crucial in microservice architectu
 - Reusability
 - Evolvability
 
-### Request-Driven VS Event-Driven Microservices
+### Advantage
+
+- Independent Development and Deployment
+- Small Focused Team
+- Small CodeBase
+- Mix of Technologies
+- Fault Isolation
+- Scalability
+- Data Isolation
+
+### Disadvantage
+
+- Complexity
+- Testing
+- Data Integrity
+- Network Latency
+- Versioning
+
+### Request-Driven vs Event-Driven Microservices
 
 ![req_driven_vs_event_driven_microservices](res/req_driven_vs_event_driven_microservices.png)
 
@@ -179,6 +205,8 @@ APIs (Application Programming Interfaces) are crucial in microservice architectu
 | Use Cases           | APIs, payment processing        | Order management, notifications              |
 | Data Consistency    | Easier to ensure consistency    | Requires strategies for eventual consistency |
 
+### Use Case
+
 Below are the use cases of request-driven microservices:
 
 - User Authentication
@@ -192,6 +220,10 @@ Below are the use cases of event-driven microservices:
 - Notification Systems
 - Real-time Analytics
 - Microservices Communication
+
+### Best Practice
+
+![microservice_best_practice](res/microservice_best_practice.png)
 
 
 

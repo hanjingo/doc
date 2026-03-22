@@ -4,6 +4,8 @@
 
 
 
+![what_is_performance](res/what_is_performance.png)
+
 Software Cost Estimation is a systematic process used to forecast the amount of effort (person-hours or person-months), duration(calendar time), and financial cost required to develop, deploy, and maintain a software product.
 
 ## Purpose
@@ -110,3 +112,5 @@ Trade-offs between cost and performance profoundly influence architectural decis
 [1] [Software Cost Estimation](https://www.geeksforgeeks.org/software-engineering/software-cost-estimation/)
 
 [2] [Cost Vs Performance](https://www.geeksforgeeks.org/system-design/cost-vs-performance/)
+
+[3] [Top 8 Educative Courses for System Design and API Design Interview in 2025](https://medium.com/javarevisited/top-6-system-design-and-api-design-interview-courses-from-educative-io-e9c149039410)

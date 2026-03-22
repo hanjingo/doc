@@ -4,9 +4,9 @@
 
 
 
-When a user requests content from a website with a CDN, the CDN identifies the user's location and routes the request to the nearest edge server. The edge server, which stores cached copies of the website's content, quickly delivers teh requested content to the user.
+![cdn_guide](res/cdn_guide.png)
 
-![cdn_example](res/cdn_example.png)
+When a user requests content from a website with a CDN, the CDN identifies the user's location and routes the request to the nearest edge server. The edge server, which stores cached copies of the website's content, quickly delivers teh requested content to the user.
 
 ## Importance
 
@@ -54,7 +54,7 @@ CDNs can be classified into several types based on their architecture and functi
 
 
 
-## How Does CDN Work?
+## Workflow
 
 ![cdn_work](res/cdn_work.png)
 

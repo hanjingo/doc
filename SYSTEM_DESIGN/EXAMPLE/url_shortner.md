@@ -1,4 +1,4 @@
-# URL Shorter
+# URL Shortner
 
 [TOC]
 
@@ -35,6 +35,10 @@ $$
 - Short URL size: 17Bytes for 17 characters.
 - Created at -7 bytes.
 - Expiration length in minutes -7 bytes.
+
+
+
+## Low-Level
 
 
 

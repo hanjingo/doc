@@ -4,7 +4,7 @@
 
 
 
-## Event Sourcing Pattern
+## Event Sourcing
 
 ![event_sourcing](res/event_sourcing.png)
 
@@ -70,7 +70,7 @@ Event Streaming is a data processing paradigm that focuses on the continuous flo
 
 ## Summary
 
-### Event Sourcing VS Event Streaming
+### Event Sourcing vs Event Streaming
 
 ![event_sourcing_vs_event_streaming](res/event_sourcing_vs_event_streaming.png)
 
@@ -83,6 +83,10 @@ Event Streaming is a data processing paradigm that focuses on the continuous flo
 | Complexity       | More complex to manage long-term           | Can be complex to set up and maintain           |
 | Processing Speed | Slower due to replaying events             | Faster as it processes events live              |
 | Error Handling   | Easier to fix issues by replaying events   | More difficult if an event is lost in real-time |
+
+### Differences in Event Sourcing
+
+![differences_in_event_sourcing_system_design](res/differences_in_event_sourcing_system_design.png)
 
 
 

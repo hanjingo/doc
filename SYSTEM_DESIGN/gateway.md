@@ -10,6 +10,13 @@ An API Gateway is a key component in system design, particularly in microservice
 
 ![api_gateway](res/api_gateway.png)
 
+### Methods Of Authentication
+
+- API Keys
+- OAuth
+- JWT(JSON Web Tokens)
+- LDAP(Lightweight Directory Access Protocol)
+
 ### Work Flow
 
 ![working_of_api_gateway](res/working_of_api_gateway.png)

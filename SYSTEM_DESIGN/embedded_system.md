@@ -24,7 +24,7 @@ There is no standard embedded system design process. Rather, different processes
 
 ### Real-time operating systems
 
-![real_time_os](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/real_time_os.png)
+![real_time_os](res/real_time_os.png)
 
 *Components of a real-time operating system*
 
@@ -36,11 +36,11 @@ For all except the simplest systems, they usually include:
 4. A resource manager, which allocates appropriate memory and processor resources to processes that have been scheduled for execution.
 5. A dispatcher, which is responsible for starting the execution of processes.
 
-![embedded_real_time_system](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/embedded_real_time_system.png)
+![embedded_real_time_system](res/embedded_real_time_system.png)
 
 *A general model of an embedded real-time system*
 
-![sensor_actuator_proc](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/sensor_actuator_proc.png)
+![sensor_actuator_proc](res/sensor_actuator_proc.png)
 
 *Sensor and actuator processes*
 
@@ -49,7 +49,7 @@ The RTOS has to be able to manage at least two priority levels for system proces
 1. `Interrupt level` This is teh highest priority level. It is allocated to processes that need a very fast response. One of these processes will be the real-time clock process.
 2. `Clock level` This level of prioroty is allocated to periodic processes.
 
-![rtos_action](/usr/local/src/github.com/hanjingo/doc/SYSTEM_DESIGN/res/rtos_action.png)
+![rtos_action](res/rtos_action.png)
 
 *RTOS actions required to start a process*
 

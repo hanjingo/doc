@@ -33,7 +33,7 @@ A load balancer receives incoming requests, checks server health, and routes eac
 
 ## Algorithms
 
-![load_balancing_algo](res/load_balancing_algo.pgn)
+![load_balancing_algo](res/load_balancing_algo.png)
 
 ### Static Load Balancing
 
@@ -42,15 +42,15 @@ Static load balancing assigns tasks to servers using predefined rules, without c
 - Workloads are allocated in a fixed and predetermined manner.
 - Does not adapt to changes during runtime.
 
-#### Round Robin Load Balancing Algorithm
+#### Round Robin
 
 Round Robin is a simple static load balancing technique that distributes incoming requests to servers in a fixed sequential or rotational order.
 
-#### Weighted Round Robin Load Balancing Algorithm
+#### Weighted Round Robin
 
 Weighted Round Robin is a static load balancing technique similar to Round Robin, but it distributes requests based on assigned weight values that represent each server's capacity.
 
-#### Source IP Hash Load Balancing Algorithm
+#### Source IP Hash
 
 The Source IP Hash Load Balancing Algorithm distributes incoming requests by computing a hash of the client's source IP address. This approach helps route request from the same client to the same backend server consistently.
 
@@ -58,19 +58,19 @@ The Source IP Hash Load Balancing Algorithm distributes incoming requests by com
 
 Dynamic load balancing makes real-time decisions to distribute incoming traffic or workloads across multiple servers based on current system conditions. It continuously adapts to changes such as server load, network traffic, and resource availability.
 
-#### Least Connection Method Load Balancing Algorithm
+#### Least Connection Method
 
 The Least Connections algorithm is a dynamic load balancing technique that routes new requests to the server with the fewest active connections. It focuses on balancing workload by considering the current load on each server.
 
-#### Least Response Time Method Load Balancing Algorithm
+#### Least Response Time Method
 
 The least Response method is a dynamic load balancing approach that aims to minimize response times by directing new requests to the server with the quickest response time.
 
-#### Resource-based Load Balancing Algorithm
+#### Resource-based
 
 Resource-Based Load Balancing assigns incoming requests to servers based on their current resource availability, such as CPU usage, memory, or bandwidth, ensuring efficient and balanced system performance.
 
-### Static VS Dynamic Load Balancing
+### Static vs Dynamic Load Balancing
 
 | Static                                        | Dynamic                                              |
 | --------------------------------------------- | ---------------------------------------------------- |
@@ -104,7 +104,7 @@ Key Characteristics of Stateful Load Balancing include:
 - Consistency
 - Complexity
 
-### Stateless VS Stateful Load Balancing
+### Stateless vs Stateful Load Balancing
 
 | Feature           | Stateless Load Balancing                                     | Stateful Load Balancing                                      |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -120,7 +120,7 @@ Key Characteristics of Stateful Load Balancing include:
 
 
 
-## Advantage And Disadvantage
+## Summary
 
 ### Advantage
 
@@ -136,8 +136,18 @@ Key Characteristics of Stateful Load Balancing include:
 - Load balancing can cost more because you need extra tools and regular upkeep.
 - Requires monitoring to make sure everything is working correctly and to fix problems quickly.
 
+### Challenge
+
+- Single Point of Failure
+- Performance Bottleneck
+- Configuration Complexity
+- Security Risks
+- Cost
+
 
 
 ## Reference
 
 [1] [Introduction to Load Balancer](https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/)
+
+[2] [Load Balancer](https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/)
