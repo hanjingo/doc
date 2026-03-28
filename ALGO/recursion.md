@@ -6,14 +6,6 @@
 
 The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function.
 
-## Benefit
-
-- Recursion helps in logic building. Recursive thinking helps in solving complex problems by breaking them into smaller subproblems.
-- Recursive solutions work as a basic for Dynamic Programming and Divide and Conquer algorithms.
-- Certain problem can be solved quite easily using recursion.
-
-
-
 ## Base Condition
 
 A recursive program stops at a base condition. There can be more than one base conditions in a recursion.
@@ -23,6 +15,16 @@ A recursive program stops at a base condition. There can be more than one base c
 ## Direct And Indirect Recursive Function
 
 A function is called **direct recursive** if it calls itself directly during its execution. 
+
+An **indirect recursive function** is one that calls another function, and that other function, in turn, calls the original function either directly or through other functions. This creates a chain of recursive calls involving multiple functions, as opposed to direct recursion, where a function calls itself.
+
+
+
+## Advantage
+
+- Recursion helps in logic building. Recursive thinking helps in solving complex problems by breaking them into smaller subproblems.
+- Recursive solutions work as a basic for Dynamic Programming and Divide and Conquer algorithms.
+- Certain problem can be solved quite easily using recursion.
 
 
 

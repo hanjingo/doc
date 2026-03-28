@@ -71,9 +71,22 @@ Message Routing involves determining how messages are directed to their intended
 
 ## Kafka
 
+![kafka_arch](res/kafka_arch.png)
+
+### Why is Kafka Fast
+
 ![why_kafka_fast](res/why_kafka_fast.png)
 
-### Use Case
+How Kafka is built to be so fast:
+
+1. Low-Latency I/O
+2. Kafka Avoids the Seek Time
+3. Zero Copy Principle
+4. Optimal Data Structure
+5. Horizontal Scaling
+6. Compression & Batching of Data
+
+### Usage
 
 ![kafka_usecase](res/kafka_usecase.png)
 
@@ -101,8 +114,23 @@ TODO
 
 ![mq_vs_no_mq](res/mq_vs_no_mq.png)
 
+### RabbitMQ vs Apache Kafka vs ActiveMQ
 
+| Feature            | Apache Kafka                                   | RabbitMQ                                 | Apache ActiveMQ                |
+| :----------------- | :--------------------------------------------- | :--------------------------------------- | :----------------------------- |
+| **Architecture**   | **Distributed Log**                            | **Smart Broker**                         | **Traditional Broker**         |
+| **Data Flow**      | **Pull-based** (Consumer pulls)                | **Push-based** (Broker pushes)           | **Push-based**                 |
+| **Throughput**     | **Extremely High** (Millions/sec)              | High (Thousands/sec)                     | Medium (Thousands/sec)         |
+| **Data Retention** | Persistent (keeps data for days/weeks)         | Transient (deletes after delivery)       | Optional persistence           |
+| **Routing**        | Basic (Topic-based)                            | **Complex & Flexible**                   | Flexible (JMS standards)       |
+| **Best Use Case**  | Log aggregation, Big Data, Real-time Analytics | Task queues, Microservices communication | Legacy Java enterprise systems |
 
 ## References
 
 [1] [Message Queues - System Design](https://www.geeksforgeeks.org/system-design/message-queues-system-design/)
+
+[2] [Why is Kafka so fast? How does it work?](https://blog.bytebytego.com/p/why-is-kafka-so-fast-how-does-it)
+
+[3] [Why Apache Kafka is so Fast?](https://www.geeksforgeeks.org/blogs/why-apache-kafka-is-so-fast/)
+
+[4] [Difference between RabbitMQ, Apache Kafka, and ActiveMQ](https://medium.com/javarevisited/difference-between-rabbitmq-apache-kafka-and-activemq-65e26b923114)

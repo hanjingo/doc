@@ -138,10 +138,6 @@ Disadvantages:
 - Centralized Point of Failure: The central directory represents a single point of failure. If the directory becomes unavailable or experiences issues, it can disrupt the entire system, impacting data access and query routing.
 - Increased Latency: Query routing through a central directory introduces an additional layer, potentially leading to increased latency compared to other sharding strategies.
 
-#### Horizontal Partitioning vs Vertical Partitioning
-
-![horizontal_partitioning_vs_vertical_partitioning](res/horizontal_partitioning_vs_vertical_partitioning.png)
-
 ### Data Partitioning
 
 Partitioning helps improve query performance by limiting the amount of data the system has to process for specific queries. It also makes it easier to manage large datasets.
@@ -220,6 +216,29 @@ To accomplish particular objectives related to data consistency, availability, a
 ## Database Normalization And Denormalization
 
 TODO
+
+---
+
+
+
+## Summary
+
+### Horizontal Partitioning vs Vertical Partitioning
+
+![horizontal_partitioning_vs_vertical_partitioning](res/horizontal_partitioning_vs_vertical_partitioning.png)
+
+| Feature                  | Vertical Partitioning                                        | Horizontal Partitioning                                      |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Definition               | Dividing a table into smaller tables based on columns.       | Dividing a table into smaller tables based on rows(usually ranges of rows). |
+| Purpose                  | Reduce the number of columns in a table to improve query performance and reduce I/O. | Divide a table into smaller tables to manage large volumes of data efficiently. |
+| Data distribution        | Columns with related data are placed together in the same table. | Rows with related data(typically based on a range or a condition) are placed together in the same table. |
+| Query performance        | Improves query performance when queries only involve specific columns that are part of a partition. | Improves query performance when queries primarily access a subset of rows in a large table. |
+| Maintenance and indexing | Easier to manage and index specific columns based on their characteristics and access patterns. | Each partition can be indexed independently, making indexing more efficient. |
+| Joins                    | May require joins to combine data from multiple partitions when querying. | Joins between partitions are typically not needed, as they contain disjoint sets of data. |
+| Data integrity           | Ensuring data consistency across partitions can be challenging. | Easier to maintain data integrity, as each partition contains a self-contained subset of data. |
+| Use cases                | Commonly used for tables with a wide range of columns, where not all columns are frequently accessed together. | Commonly used for tables with a large number of rows, where data can be grouped based on some criteria(e.g., data ranges). |
+
+
 
 ---
 

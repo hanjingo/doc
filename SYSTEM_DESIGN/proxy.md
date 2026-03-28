@@ -76,6 +76,17 @@ The disadvantages of proxy servers:
 
 ![proxy_vs_reverse_proxy](res/proxy_vs_reverse_proxy.png)
 
+| Forward Proxy                                                | Reverse Proxy                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Acts on behalf of the client to control access and enhance privacy. | Acts on behalf of the server to optimize performance and improve security. |
+| Sits between the client and the internet.                    | Sits between the internet and the server.                    |
+| The client is aware of the proxy and must configure it.      | The client is typically unaware of the proxy.                |
+| The client needs to configure their device to use the proxy. | The server is configured to use the reverse proxy.           |
+| Bypassing content filters, controlling access, privacy enhancement. | Load balancing, caching, DDoS protection, SSL offloading.    |
+| Intercepts requests from the client to the internet and forwards them. | Intercepts requests from the internet and forwards them to the appropriate server. |
+| Can cache content on the client side to improve response times. | Can cache server responses to reduce load and speed up content delivery. |
+| Does not typically handle SSL/TLS encryption.                | Can handle SSL/TLS offloading, easing encryptions/decryption tasks for the server. |
+
 
 
 ## References
@@ -85,3 +96,5 @@ The disadvantages of proxy servers:
 [2] [Difference between Forward Proxy and Reverse Proxy](https://www.geeksforgeeks.org/system-design/difference-between-forward-proxy-and-reverse-proxy/)
 
 [3] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)
+
+[4] [Difference between Forward Proxy and Reverse Proxy](https://www.geeksforgeeks.org/system-design/difference-between-forward-proxy-and-reverse-proxy/)

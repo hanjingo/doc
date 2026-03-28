@@ -122,6 +122,21 @@ Key Characteristics of Stateful Load Balancing include:
 
 ## Summary
 
+### API Gateway vs Load Balancer
+
+![api_gateway_vs_load_balancer](res/api_gateway_vs_load_balancer.png)
+
+| Feature            | API Gateway                                                  | Load Balancer                                                |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Function           | Acts as an intermediary between clients and microservices, enabling developers to create, manage, and secure APIs | Distributes traffic across multiple servers to ensure availability and prevent overloading |
+| Traffic Management | Controls traffic to microservices                            | Distributes traffic across multiple servers                  |
+| Protocol Support   | Supports multiple protocols such as HTTP, WebSocket, and RESTful APIs | Supports HTTP, TCP, and UDP protocols                        |
+| Security           | Provides various security features such as authentication, authorization, and encryption | Supports SSL/TLS encryption                                  |
+| Monitoring         | Provides in-depth insights into API usage, latency, and error rates | Provides basic monitoring of server health                   |
+| Scalability        | Can horizontally scale to handle increasing traffic          | Can horizontally scale to handle increasing traffic          |
+| Deployment         | Deployed as a separate service or hosted solution            | Deployed on premise or as a cloud service cost typically     |
+| Cost               | Typically more expensive than a load balancer                | Typically less expensive than an API gateway                 |
+
 ### Advantage
 
 - Load Balancing distributes the load evenly, which reduces stress on servers and speeds up response times.
@@ -151,3 +166,5 @@ Key Characteristics of Stateful Load Balancing include:
 [1] [Introduction to Load Balancer](https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/)
 
 [2] [Load Balancer](https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/)
+
+[3] [Differences between an API Gateway and a Load Balancer](https://www.geeksforgeeks.org/system-design/difference-between-an-api-gateway-and-a-load-balancer/)

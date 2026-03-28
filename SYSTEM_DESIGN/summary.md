@@ -1,4 +1,4 @@
-# System Design
+# System Design Summary
 
 [TOC]
 
@@ -9,24 +9,6 @@
 ## Terminology
 
 ![system_design_terminology](res/system_design_terminology.png)
-
-
-
-## Requirements
-
-![system_design_requirements](res/system_design_requirements.png)
-
-### Functional Requirements
-
-Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included into the system as part of the contract.
-
-### Non-Functional Requirements
-
-Non-functional Requirements are the quality constraints that the system must satisfy according to the project contract. The priority or extent to which these factors are implemented varies from one project to another. They are also called non-behavioral requirements. For example: portability, maintainability, reliability, scalability, security, etc.
-
-### Extended requirements
-
-These are basically "nice to have" requirements that might be out of the scope of the system.
 
 ---
 
@@ -60,13 +42,47 @@ The KISS principle, which stands for "Keep It Simple, Stupid", is a design princ
 
 
 
-## High Level Design(HLD) and Low Level Design(LLD)
+## Workflow
 
-System design involves creating both a High-Level Design(HLD), which is like a roadmap showing the overall plan, and a Low-Level Design(LLD), which is a detailed guide for programmers on how to build each part.
+![system_design_step](res/system_design_step.jpg)
 
-![hld_lld](res/hld_lld.png)
+---
 
-### High Level Design(HLD)
+
+
+## Requirements
+
+![system_design_requirements](res/system_design_requirements.png)
+
+### Functional Requirements
+
+Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included into the system as part of the contract.
+
+### Non-Functional Requirements
+
+Non-functional Requirements are the quality constraints that the system must satisfy according to the project contract. The priority or extent to which these factors are implemented varies from one project to another. They are also called non-behavioral requirements. For example: portability, maintainability, reliability, scalability, security, etc.
+
+### Extended requirements
+
+These are basically "nice to have" requirements that might be out of the scope of the system.
+
+---
+
+
+
+## Cost Estimation
+
+![what_is_performance](res/what_is_performance.png)
+
+Software Cost Estimation is a systematic process used to forecast the amount of effort (person-hours or person-months), duration(calendar time), and financial cost required to develop, deploy, and maintain a software product.
+
+---
+
+
+
+## High Level Design(HLD)
+
+![software_arch_style](res/software_arch_style.png)
 
 High Level Design(HLD) is an initial step in the development of applications where the overall structure of a system is planned.
 
@@ -77,119 +93,57 @@ A diagram representing each design aspect is include in the HLD (which is based 
 - It is created by solution architect;
 - The workflow of the user's typical process is detailed in the HLD, along with performance specifications.
 
-#### Components
+---
 
-Below are the main components of high-level design:
 
-- System Architecture;
-- Modules and Components;
-- Data Flow Diagrams(DFDs);
-- Interface Design;
-- Technology Stack;
-- Deployment Architecture.
 
-#### Roadmap
+## APIs
 
-![hld_roadmap](res/hld_roadmap.png)
-
-1. Capacity Estimation
-
-   ![behaviour_of_server](res/behaviour_of_server.png)
-
-   Capacity estimation in system design involves predicting the resources required to meet the expected workload.
-
-2. HTTP and HTTPS and Their Methods
-
-   ![http_connection](res/http_connection.png)
-
-3. Web Sockets
-
-   ![ws_connection](res/ws_connection.png)
-
-4. Pooling
-
-   ![short_polling_vs_long_polling](res/short_polling_vs_long_polling.png)
-
-5. Server-Sent Events(SSE)
-
-   ![server_sent_event](res/server_sent_event.png)
-
-6. Filtering and logging
-
-7. Rate Limiting
-
-   ![rate_limiting](res/rate_limiting.png)
-
-8. Resiliency
-
-9. Paging
-
-   ![paging_and_filtering_data](res/paging_and_filtering_data.png)
-
-10. Logging
-
-### Low Level Design(LLD)
-
-Low-Level Design(LLD) plays a crucial role in software development, transforming high-level abstract concepts into detailed, actionable components that developers can use to build the system.
-
-LLD is a phase in the software development process where detailed system components and their interactions are specified:
-
-- It describes detailed description of each and every module means it includes actual logic for every system component and it goes deep into each modules specification.
-- It is also known as micro level/detailed design.
-- It is created by designers and developers.
-- It involves converting the high-level design into a more detailed blueprint, addressing specific algorithms, data structures, and interfaces.
-- LLD serves as a guide for developers during coding, ensuring the accurate and efficient implementation of the system's functionality.
-
-#### Roadmap
-
-![low_level_design_roadmap](res/low_level_design_roadmap.png)
-
-1. Understanding Object-Oriented Principles
-
-   The user requirement is processed by using concepts of OOPS programming. OOP concepts serve as the foundation for LLD, and having a deep understanding of them will help you design maintainable and scalable software components.
-
-2. Analyzing and Designing Components
-
-   LLD requires you to analyze real-world problems and break then down into object-world problems using OOP concepts.
-
-3. Implementing Design Patterns
-
-   Design patterns are reusable solutions to common problems encountered in software design. They provide a structured approach to design by capturing best practices and proven solutions, making it easier to develop scalable, maintainable, and efficient software. By using these patterns, developers can solve problems more effectively while adhering to best practices.
-
-4. Use of UML Diagram in LLD
-
-   Unified Modeling Language(UML) diagrams play an important role in converting HLD to LLD. They provide a proper and clear visual representation of the components and their relationships, which helps developers significantly.
-
-5. Implementing SOLID Principles
+![api_arch_type](res/api_arch_type.png)
 
 ---
 
 
 
-## Workflows
+## Dive In
 
-### System Development Life Cycle
+### Load Balancer
 
-![system_development_life_cycle](res/system_development_life_cycle.png)
+![load_balancer](res/load_balancer.png)
+
+### API Gateway
+
+![api_gateway](res/api_gateway.png)
+
+### MQ
+
+![mq_vs_no_mq](res/mq_vs_no_mq.png)
+
+### DB
+
+![types_of_db](res/types_of_db.png)
+
+### Caching
+
+![caching_arch_example](res/caching_arch_example.png)
+
+### Storage
+
+![object_store_use_case](res/object_store_use_case.png)
+
+### CDN
+
+![cdn_work](res/cdn_work.png)
+
+---
+
+
+
+## Other
 
 ### General Template
 
 ![system_design_general_template](res/system_design_general_template.jpeg)
-
-### Steps
-
-![system_design_step](res/system_design_step.jpg)
-
-Here are some steps to get started with system design:
-
-1. Understand Requirements
-2. Cost Estimation
-3. Data Model Design
-4. High-Level Design
-5. API Design
-6. Detailed Design
-7. Evaluation
-8. Identify And Resolve Bottlenecks
 
 ### Data Pipeline
 

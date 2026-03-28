@@ -256,6 +256,16 @@ To avoiding single points of failure(SPOFs), here are several strategies to help
 - Documentation
 - Continuous Improvement
 
+### Horizontal and Vertical Scaling
+
+![vertical_scaling](res/vertical_scaling.png)
+
+Vertical scaling, also known as scaling up, refers to the process of increasing the capacity or capabilities of an individual hardware or software component within a system.
+
+![horizontal_scaling](res/horizontal_scaling.png)
+
+Horizontal scaling, also known as scaling out, refers to the process of increasing the capacity or performance of a system by adding more machines or servers to distribute the workload across a larger number of individual units.
+
 ---
 
 
@@ -477,7 +487,26 @@ Maintainability determines how easy and profitable it will be to maintain, updat
 
 
 
-## Dependable Programming
+## Summary
+
+### Horizontal vs Vertical Scaling
+
+| Horizontal Scaling                                           | Vertical Scaling                                           |
+| ------------------------------------------------------------ | ---------------------------------------------------------- |
+| Adds more machines or servers to distribute the workload.    | Increases CPU, RAM, or storage of a single machine.        |
+| More cost-effective for large-scale systems.                 | Simpler initially but can become expensive over time.      |
+| Highly flexible because new servers can be added easily.     | Limited flexibility due to hardware limits.                |
+| Better fault tolerance since workload is spread across multiple machines. | Lower fault tolerance because it depends on one machine.   |
+| Improves performance by distributing traffic across servers. | Performance improves only up to hardware capacity.         |
+| Less risk of single point of failure.                        | Higher risk of single point of failure.                    |
+| More complex to manage because it involves distributed systems. | Easier to manage since it uses a single machine.           |
+| Suitable for applications requiring massive scalability.     | Suitable for applications with moderate scalability needs. |
+| Requires load balancing to distribute traffic across servers. | Load balancing is usually not required.                    |
+| Relies on network communication between multiple machines.   | Mostly uses communication within a single machine.         |
+
+
+
+### Dependable Programming
 
 There are some good practice guidelines for dependable programming:
 
@@ -503,3 +532,5 @@ There are some good practice guidelines for dependable programming:
 [3] [Reliability in System Design](https://www.geeksforgeeks.org/system-design/reliability-in-system-design/)
 
 [4] [Essential Security Measures in System Design](https://www.geeksforgeeks.org/system-design/essential-security-measures-in-system-design/)
+
+[5] [Horizontal and Vertical Scaling | System Design](https://www.geeksforgeeks.org/system-design/system-design-horizontal-and-vertical-scaling/)

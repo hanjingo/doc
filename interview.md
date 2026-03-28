@@ -997,7 +997,9 @@ For more info, see: [Huffman Codes](ALGO/huffman.md)
 
 #### What is recursion and how does it work?
 
-TODO
+Recursion is a programming technique where a function calls itself to solve a problem.
+
+For more info, see: [Recursion](ALGO/recursion.md)
 
 ### Divide and Conquer Algorithm
 
@@ -1233,43 +1235,63 @@ For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design
 
 #### What is difference between API Gateway and Load Balancer?
 
-TODO
+An API Gateway is an intelligent entry point that manages, secures, and routes API requests to specific microservices, while a Load Balancer focuses on distributing traffic across multiple servers to ensure high availability and prevent overload.
+
+For more info, see: [Load Balancing#API Gateway vs Load Balancer](SYSTEM_DESIGN/load_balance.md)
 
 #### What is difference between Reverse Proxy and Forward Proxy?
 
-TODO
+A forward proxy acts on behalf of the client while a reverse proxy acts on behalf of the server.
+
+For more info, see: [Proxy#Proxy Vs Reverse Proxy](SYSTEM_DESIGN/proxy.md)
 
 #### What is difference between Horizontal scaling and vertical scaling?
 
-TODO
+Horizontal scaling adds more machines to your pool of resources(scaling out), while vertical scaling adds more power(CPU, RAM) to an existing machine(scaling up).
+
+For more info, see: [System Dependabilityy#Horizontal vs Vertical Scaling](SYSTEM_DESIGN/system_dependability.md)
 
 #### What is difference between Microservices and Monolithic architecture?
 
-TODO
+A Monolithic architecture is a single, unified unit where all functions are tightly coupled, while a Microservices architecture is a collection of small, independent services that communicate via APIs.
+
+For more info, see: [Architectural#Microservices vs Monolithic Architecture](SYSTEM_DESIGN/architectural.md)
 
 #### What is difference between vertical and horizontal partitioning?
 
-TODO
+Horizontal partitioning splits a table by its rows(reducing table size), while Vertical partitioning splits it by its columns(reducing table width).
+
+For more info, see: [Database Designl#Horizontal Partitioning vs Vertical Partitioning](SYSTEM_DESIGN/db.md)
 
 #### What is rate limiter? How does it work?
 
-TODO
+A Rate Limiter is a tool used to control the rate of traffic sents by a client or received by a server. It acts as a "gatekeeper" that defines how many requests a user can make within a specific timeframe. Rate limiters track requests using specific logic to decide whether to allow, drop, or delay a request.
 
-#### How deos Single Sign On(SSO) works?
+For more info, see: [Rate Limiting](SYSTEM_DESIGN/rate_limiting.md)
 
-TODO
+#### How does Single Sign On(SSO) works?
 
-#### How deos Apache Kafka works? why it so fast?
+Single Sign-On(SSO) is an authentication method that allows users to log in once and gain access to multiple independent software systems. It works by establishing a trust relationship between an Identity Provider (IdP) and various Service Providers (SPs).
 
-TODO
+For more info, see: [Security#SSO(Single Sign-On)](SYSTEM_DESIGN/security.md)
+
+#### How does Apache Kafka works? why it so fast?
+
+Apache Kafka is a distributed event streaming platform designed to handle trillions of events a day. At its core, it is a distributed commit log--an immutable, append-only sequence of records spread across multiple servers.
+
+For more info, see: [Message Queues#Why is Kafka Fast](SYSTEM_DESIGN/mq.md)
 
 #### Difference between Kafka, ActiveMQ, and RabbitMQ?
 
-TODO
+Kafka is a distributed streaming platform, RabbitMQ is a versatile message broker, and ActiveMQ is a traditional enterprise-grade broker.
+
+For more info, see: [Message Queues#RabbitMQ vs Apache Kafka vs ActiveMQ](SYSTEM_DESIGN/mq.md)
 
 #### Difference between JWT, OAuth, and SAML?
 
-TODO
+JWT is a data format(like a passport), while OAuth and SAML are protocols (the rules for checking that passport).
+
+For more info, see: [Security#Difference between JWT, OAuth and SAML](SYSTEM_DESIGN/security.md)
 
 ### Design Pattern
 
@@ -1277,13 +1299,13 @@ TODO
 
 The Singleton Pattern ensures that only one instance of a class is created throughout the program and it provides a global point of access to that instance...
 
-For more info, see: [Design Pattern#SINGLETON](PROJ/design_pattern.md)
+For more info, see: [Design Pattern#SINGLETON](SYSTEM_DESIGN/design_pattern.md)
 
 #### What is the Observer Design Pattern?
 
 The Observer Pattern defines a one-to-many dependency so that when one object (subject) changes, all dependent objects(observers) are notified...
 
-For more info, see: [Design Pattern#OBSERVER](PROJ/design_pattern.md)
+For more info, see: [Design Pattern#OBSERVER](SYSTEM_DESIGN/design_pattern.md)
 
 ### Optimize
 
@@ -1295,25 +1317,17 @@ For more info, see: [C++ Best Practice](LANG/C++/best_practice.md)
 
 ### Practice
 
-#### Youtube Design
+#### Facebook
 
-TODO
+For more info, see: EXAMPLE/facebook.drawio
 
-#### URL Shortner
+#### Drop Box
 
-For more info, see: [URL Shortner](SYSTEM_DESIGN/EXAMPLE/url_shortner.md)
+For more info, see: EXAMPLE/drop_box.drawio
 
-#### Real-Time Gaming Leaderboard
+#### Uber
 
-TODO
-
-#### WhatsApp Design
-
-TODO
-
-#### Parking Lot Design
-
-TODO
+For more info, see: EXAMPLE/uber.drawio
 
 ---
 

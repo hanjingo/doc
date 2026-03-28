@@ -1,4 +1,0 @@
-# ROS Node
-
-[TOC]
-
