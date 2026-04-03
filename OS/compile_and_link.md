@@ -1,6 +1,10 @@
+English | [中文版](compile_and_link_zh.md)
+
 # Compile & Link
 
 [TOC]
+
+
 
 This file condenses the key compile-and-link concepts (lexing, parsing, automata, object formats, and linking) into a practical reference. Diagrams in `res/` illustrate the pipeline and object layouts.
 

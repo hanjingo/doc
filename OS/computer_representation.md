@@ -2,9 +2,9 @@
 
 [TOC]
 
-This short note explains how computers represent integers and floating-point numbers, what "endianness" means, how overflow happens, and practical consequences for code that reads, writes, or communicates binary data. It is a compact, developer-focused complement to the CS:APP material.
 
-## 1. Fixed-width integer representation
+
+## Fixed-width integer representation
 
 Most modern systems use fixed-width binary encodings for integers (commonly 8-, 16-, 32-, or 64-bit types). Two important categorizations:
 
@@ -23,7 +23,9 @@ Example (8-bit two's complement):
 
 Be mindful: interpreting the same bytes as signed vs unsigned changes the numeric meaning.
 
-## 2. Integer overflow and wraparound
+
+
+## Integer overflow and wraparound
 
 Because integers are fixed-width, arithmetic can overflow. Rules differ by language:
 
@@ -35,7 +37,9 @@ Practical consequences:
 - Prefer unsigned arithmetic when you need modular wraparound semantics.
 - Use safe checks or builtin intrinsics (e.g., compiler intrinsics or language features) to detect overflow when correctness depends on it.
 
-## 3. Endianness (byte order)
+
+
+## Endianness (byte order)
 
 Endianness describes how multi-byte values are laid out in memory:
 
@@ -60,7 +64,9 @@ Common platforms:
 
 Why it matters: reading or writing raw bytes (files, sockets, shared memory, disk) requires a consistent interpretation of byte order across producers and consumers.
 
-## 4. Host order vs network order
+
+
+## Host order vs network order
 
 Network byte order is a convention (big-endian) used by many network protocols. When serializing integers for network transport, convert between host byte order and network byte order using standard helpers:
 
@@ -69,7 +75,9 @@ Network byte order is a convention (big-endian) used by many network protocols. 
 
 If you write cross-platform or cross-endian code, always define the wire-format explicitly (e.g., use little-endian or big-endian consistently) and convert at the API boundary.
 
-## 5. Byte-swapping and helpers
+
+
+## Byte-swapping and helpers
 
 If you need to change byte order in-place, use tested helper functions instead of hand-coded loops. Examples:
 
@@ -78,7 +86,9 @@ If you need to change byte order in-place, use tested helper functions instead o
 
 Using intrinsics is faster and less error-prone than manual byte manipulation.
 
-## 6. Floating-point representation (brief)
+
+
+## Floating-point representation (brief)
 
 Most systems implement IEEE 754 binary floating-point (single and double precision). Floating-point is not a simple fixed-point integer:
 
@@ -90,12 +100,16 @@ Implications:
 - Bit-level layout and endianness also affect floating-point when transferring raw bytes; prefer text or a defined binary format (e.g., IEEE 754 in a chosen endianness) for portability.
 - Do not compare floats for equality; use tolerances.
 
-## 7. Alignment and multi-byte access
+
+
+## Alignment and multi-byte access
 
 - Many architectures require or prefer aligned accesses: reading a 32-bit value at an address not divisible by 4 may be slower or fault.
 - When reading unaligned data (e.g., packed file formats), use memcpy into an aligned local variable or use platform-provided unaligned access helpers.
 
-## 8. Serialization guidance (practical checklist)
+
+
+## Serialization guidance (practical checklist)
 
 1. Define the on-wire format explicitly: integer sizes (e.g., uint32_t), signedness, and byte order.
 2. Use fixed-width types (`uint8_t`, `uint16_t`, `uint32_t`, `uint64_t`).
@@ -103,7 +117,9 @@ Implications:
 4. Prefer safe routines (`hton*`, `ntoh*`, `byteswap` intrinsics, `memcpy` for unaligned loads) over pointer-casting raw byte buffers.
 5. Include versioning and length prefixes for forward/backward compatibility.
 
-## 9. Examples
+
+
+## Examples
 
 Interpretation example (32-bit hex 0x0A0B0C0D stored at address p):
 
@@ -121,20 +137,18 @@ uint32_t read_be32(const uint8_t *buf) {
 
 Or with intrinsics on a little-endian host, memcpy and byteswap may be faster and clearer.
 
-## 10. Summary
+
+
+## Summary
 
 - Endianness affects how multi-byte values are laid out; always agree on byte order for persistence and network protocols.
 - Use fixed-width integer types and explicit conversions at boundaries.
 - Beware of signed-integer overflow (undefined in C/C++) and use unsigned or checked arithmetic when necessary.
 - Prefer library helpers and intrinsics for byte-swapping and unaligned access.
 
+
+
 ## Reference
 
-[1] Randal E. Bryant, David R. O'Hallaron. Computer Systems: A Programmer's Perspective. 3rd ed. (CS:APP)
-
----
-
-If you want, I can now:
-- Expand this into a short tutorial with interactive examples (byte-dumps on little vs big endian).
-- Add a small C/C++ code sample that demonstrates `htonl`/`ntohl`, `__builtin_bswap32`, and safe unaligned access.
+[1] Randal E. Bryant, David R. O'Hallaron. Computer Systems: A Programmer's Perspective. 3rd ed.
 

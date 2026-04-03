@@ -10,6 +10,7 @@
 - [Redis Source Code Analysis - Events](ansys_event.md)
 - [Redis Source Code Analysis - intset](ansys_intset.md)
 - [Redis Source Code Analysis - Linked List](ansys_linklist.md)
+- [Redis Source Code Analysis - Slow Log](log.md)
 - [Redis Source Code Analysis - Lua Scripting](ansys_lua.md)
 - [Redis Source Code Analysis - Dictionary](ansys_map.md)
 - [Redis Source Code Analysis - Monitor](ansys_moniter.md)
@@ -27,7 +28,11 @@
 - [Building an Asynchronous Queue with Redis](async_queue.md)
 - [Redis Commands](cmd.md)
 - [Redis Configuration](env.md)
-- [Redis Source Analysis - Slow Log](log.md)
-- [Implementing a Message Queue with Redis](mq.md)
 - [Redis Pipeline](pipline.md)
 - [Redis Summary](summary.md)
+
+
+
+## Use Case
+
+- [Implementing a Message Queue with Redis](mq.md)

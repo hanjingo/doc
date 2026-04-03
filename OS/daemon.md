@@ -4,6 +4,8 @@ English | [中文版](daemon_zh.md)
 
 [TOC]
 
+
+
 ## System Logging
 
 ### Logging Messages
@@ -74,6 +76,7 @@ void closelog(void);
 - `facility`
 
 Open/close log (by default, openlog does not immediately create a Unix domain socket; it is created on the first call to syslog. This can be changed by setting LOG_NDELAY).
+
 
 
 ## References

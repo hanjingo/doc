@@ -4,12 +4,15 @@ English | [中文版](drive_zh.md)
 
 [TOC]
 
+
+
 ## Functions
 
 - Receives commands and parameters from device-independent software and translates the abstract requirements in the commands into device-specific low-level operation sequences.
 - Checks the validity of I/O requests, understands the working status of I/O devices, passes parameters related to I/O device operations, and sets the device's working mode.
 - Issues I/O commands: if the device is idle, it immediately starts the I/O device to complete the specified I/O operation; if the device is busy, it queues the request block for the requester on the device queue to wait.
 - Responds promptly to interrupt requests from the device controller and, according to the interrupt type, calls the corresponding interrupt handler for processing.
+
 
 
 ## Processing Procedure
@@ -41,6 +44,7 @@ English | [中文版](drive_zh.md)
 	5. `Record end flag R`: $R=0$ means this channel instruction and the next process data belonging to the same record; $R=1$ means this is the last instruction for a record.
 
 
+
 ## Device Allocation
 
 ### Device Control Table (DCT)
@@ -54,6 +58,7 @@ English | [中文版](drive_zh.md)
 
 ### System Device Table (SDT)
 ![drive_sdt](res/drive_sdt.png)
+
 
 
 ## Mapping Logical Device Names to Physical Device Names

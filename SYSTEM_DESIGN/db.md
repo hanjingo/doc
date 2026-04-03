@@ -211,11 +211,220 @@ To accomplish particular objectives related to data consistency, availability, a
 
 ![redis_persists](res/redis_persists.png)
 
+---
+
 
 
 ## Database Normalization And Denormalization
 
 TODO
+
+---
+
+
+
+## General Cache System
+
+### Cache System Evaluation Metrics
+
+- Strong Consistency
+  1. Any read can always get the latest written data (eventual consistency)
+  2. All processes in the system see operations in the same order as a global clock
+- Weak Consistency
+  1. After data is updated, it is acceptable if subsequent accesses can only see part of the update or none at all
+- Concurrency
+  1. Concurrent read/write on a single table/database
+  2. Concurrent read/write on multiple tables/databases
+
+### Data Consistency Solutions
+
+#### Solution 1: Delete Cache First, Then Update Database
+
+![cache_proj1](res/cache_proj1.png)
+
+- Write Operation
+  1. Delete cache data first
+  2. Update database data to avoid dirty data
+  3. Asynchronously refresh data back to cache
+
+- Read Operation
+  1. Read cache data
+  2. If cache miss, read from database
+  3. Asynchronously refresh data back to cache
+
+Advantages:
+
+1. The whole process is very simple, suitable for low concurrency scenarios
+
+Disadvantages:
+
+1. Insufficient disaster recovery
+   What if deleting the cache fails in step 1 of writing? If you continue, the cache may always have stale data.
+
+2. Concurrency issues
+   - Write-Write Concurrency
+     If multiple services update the database at the same time, operation order cannot be guaranteed, leading to overwrites
+   - Read-Write Concurrency
+     If consumer A reads and consumer B writes at the same time, the process is as follows:
+     1. B deletes cache data v1
+     2. A reads cache, cache miss
+     3. A reads database, gets v1
+     4. B updates database data to v2
+     5. B writes v2 to cache
+     6. A writes v1 to cache
+        Now, A's "dirty data" overwrites B's updated cache, so cache is still v1. This solution cannot guarantee eventual consistency.
+
+     Diagram:
+
+     ```sequence
+     Title: Read-Write Concurrency Exception
+     B->Cache: 1. Delete cache data v1
+     A->Cache: 2. Read cache data
+     Cache-->A: Cache miss
+     A->DB: Read database data
+     DB-->A: Return data v1
+     B->DB: Update database data to v2
+     B->Cache: Update cache data to v2
+     A->Cache: Update cache data to v1
+     ```
+
+Summary:
+
+Use case: Scenarios with low concurrency and low consistency requirements
+
+Because the cache refresh strategy may fail, and after failure the cache may always be in an incorrect state, this solution cannot guarantee eventual consistency or safe concurrent read/write.
+
+#### Solution 2: Delete Cache First, Then Update Database, with Binlog Mechanism
+
+![cache_proj2](res/cache_proj2.png)
+
+- Write Operation
+  1. Delete cache data
+  2. Update database
+  3. Listen to database binlog to find data to refresh
+  4. Read database data
+  5. Write data to cache
+- Read Operation
+  1. Read cache data
+  2. If cache miss, read from database
+  3. Asynchronously refresh data back to cache
+
+Advantages:
+
+1. If step 4 or 5 of writing fails, you can replay logs and retry
+2. Whether or not step 1 succeeds, the cache will be refreshed later
+
+Disadvantages:
+
+1. Concurrency issues
+   Ineffective when cache is empty:
+   - When reading, cache data is already invalid, and an update happens
+   - When updating, cache data is already invalid, and another update happens
+
+Summary:
+
+Use case: Simple business, low read/write QPS
+
+Binlog is used to refresh cache, and its natural ordering is advantageous for synchronization. But when binlogs from different rows, tables, or databases are consumed simultaneously, binlog is not strictly sequential.
+
+Examples:
+- [Alibaba open source: canal](https://github.com/alibaba/canal)
+- [LinkedIn open source: databus](https://github.com/linkedin/databus)
+
+#### Solution 3: Add MQ Serialization Mechanism on Top of Solution 2
+
+![cache_proj3](res/cache_proj3.png)
+
+- Write Operation
+  1. Delete cache first
+  2. Update database
+  3. Listen to database binlog, analyze which data needs to be refreshed
+  4. Push data identifier to MQ
+  5. Consume data identifier from MQ, read data from database
+  6. Update cache
+- Read Operation
+  1. Read cache first
+  2. If cache miss, read from database
+  3. Push data identifier to MQ
+  4. Consume data identifier from MQ, read data from database
+  5. Update cache
+
+Advantages:
+
+1. Complete disaster recovery
+   - Step 1 delete cache fails: will be overwritten later
+   - Step 4 write to MQ fails: Databus or Canal will retry
+   - Step 5 or 6 fails: MQ supports re-consume
+   - Step 3 of read, write to MQ fails: does not affect cache, next time will still read database
+
+2. Serialization
+   With MQ, read and write operations are serialized, so no concurrency issues
+
+Disadvantages:
+
+1. Step 5 of writing always reads database, increasing DB load (but only one extra read per write, not a big problem)
+
+#### Solution 4: Add Marking Mechanism on Top of Solution 3
+
+![cache_proj4](res/cache_proj4.png)
+
+- Write Operation
+  1. Mark the data to be modified as "being modified" with a valid time; if marking fails, abandon this modification
+  2. Update database
+  3. Delete cache
+  4. Listen to database binlog, analyze which data needs to be refreshed
+  5. Push data identifier to MQ
+  6. Consume data identifier from MQ, read data from database
+  7. Update cache
+- Read Operation
+  1. Check data mark; if marked, read database directly and finish
+  2. If not marked, read cache first
+  3. If cache miss, read from database
+  4. Push data identifier to MQ
+  5. Consume data identifier from MQ, read data from database
+  6. Update cache
+
+### Cache System Components
+
+- Redis
+- ...
+
+### Common Cache System Issues
+
+#### Cache Penetration
+
+If neither cache nor database has the data, but users keep sending requests, every request hits the database, overwhelming it
+
+Solutions:
+
+1. Business layer validation
+   Check user requests and block invalid ones
+2. For data not found, set value as NULL in cache with a short expiration
+3. Bloom filter
+   Use Bloom filter to check if data exists before querying
+
+#### Cache Breakdown
+
+When a hot key in cache expires, a large number of requests come in, all hitting the database and overwhelming it
+
+Solutions:
+
+1. Set hot data to never expire
+   For frequently read data, set it to never expire
+2. Periodically update expiration
+   Before expiration, refresh the expiration (keep-alive)
+3. Mutex lock
+   Use a value in cache as a lock; set to 1/true when locked, 0/false when released (remember to set expiration to avoid deadlock); to modify DB, must acquire the lock first
+
+#### Cache Avalanche
+
+When a large amount of cached data expires or cache crashes, a flood of requests hit the database, overwhelming it
+
+Solutions:
+
+1. Stagger data expiration times; don't let all expire at once
+2. Data preheating: pre-cache data before a large number of requests arrive
+3. Ensure high cache availability, use clustering
 
 ---
 

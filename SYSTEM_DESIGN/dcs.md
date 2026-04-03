@@ -130,6 +130,12 @@ For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/m
 
 
 
+## Distributed Locking
+
+TODO
+
+
+
 ## Summary
 
 ### Advantage
@@ -165,3 +171,7 @@ For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/m
 [1] George Coulouris; Jean Dolimore; Tim Kindberg; Gordon Blair . DISTRIBUTED SYSTEMS: Concepts and Design . 5ED
 
 [2] [Introduction to Distributed System](https://www.geeksforgeeks.org/computer-networks/what-is-a-distributed-system/)
+
+[3] [How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
+
+[4] [Is Redlock safe?](https://antirez.com/news/101)

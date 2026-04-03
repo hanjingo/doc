@@ -69,6 +69,7 @@
 - [Redis Source Code Analysis - Events](DB/REDIS/ansys_event.md)
 - [Redis Source Code Analysis - intset](DB/REDIS/ansys_intset.md)
 - [Redis Source Code Analysis - Linked List](DB/REDIS/ansys_linklist.md)
+- [Redis Source Code Analysis - Slow Log](DB/REDIS/log.md)
 - [Redis Source Code Analysis - Lua Scripting](DB/REDIS/ansys_lua.md)
 - [Redis Source Code Analysis - Dictionary](DB/REDIS/ansys_map.md)
 - [Redis Source Code Analysis - Monitor](DB/REDIS/ansys_moniter.md)
@@ -86,10 +87,14 @@
 - [Building an Asynchronous Queue with Redis](DB/REDIS/async_queue.md)
 - [Redis Commands](DB/REDIS/cmd.md)
 - [Redis Configuration](DB/REDIS/env.md)
-- [Redis Source Analysis - Slow Log](DB/REDIS/log.md)
-- [Implementing a Message Queue with Redis](DB/REDIS/mq.md)
 - [Redis Pipeline](DB/REDIS/pipline.md)
 - [Redis Summary](DB/REDIS/summary.md)
+
+
+
+## Use Case
+
+- [Implementing a Message Queue with Redis](DB/REDIS/mq.md)
 
 ---
 
@@ -282,6 +287,7 @@
 - [File System](OS/file_system.md)
 - [Interrupts](OS/interrupt.md)
 - [IO](OS/io.md)
+- [OS Kernel](OS/kernel.md)
 - [Memory Manage](OS/mem_mgr.md)
 - [Multi Processor](OS/multi_processor.md)
 - [Instruction Pipeline Model](OS/pipeline.md)
