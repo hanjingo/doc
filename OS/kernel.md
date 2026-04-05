@@ -38,11 +38,11 @@ The kernel is responsible for various critical functions that ensure the smooth 
 
 ## UNIX Kernel Structure
 
-![unix_core_struct](/usr/local/src/github.com/hanjingo/doc/OS/res/unix_core_struct.png)
+![unix_core_struct](res/unix_core_struct.png)
 
 ### Process State Transitions
 
-![unix_core_progress_stat_transform](/usr/local/src/github.com/hanjingo/doc/OS/res/unix_core_progress_stat_transform.png)
+![unix_core_progress_stat_transform](res/unix_core_progress_stat_transform.png)
 
 ### Process Priority
 
@@ -52,7 +52,7 @@ $Priority = (recent CPU time \div 2) + base user priority$
 
 ### Device Switch Table and Interface Between System Calls and Drivers
 
-![unix_core_interrupt](/usr/local/src/github.com/hanjingo/doc/OS/res/unix_core_interrupt.png)
+![unix_core_interrupt](res/unix_core_interrupt.png)
 
 
 

@@ -389,11 +389,11 @@ Example:
 
 1. Create a heap.
 
-   ![heap_sort1](/usr/local/src/github.com/hanjingo/doc/ALGO/res/heap_sort1.png)
+   ![heap_sort1](res/heap_sort1.png)
 
 2. Exchange head and tail.
 
-   ![heap_sort2](/usr/local/src/github.com/hanjingo/doc/ALGO/res/heap_sort2.png)
+   ![heap_sort2](res/heap_sort2.png)
 
 3. So on, until the heap size equals 1.
 

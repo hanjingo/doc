@@ -21,4 +21,5 @@
 - [Process](process.md)
 - [System Security](safe.md)
 - [Storage](storage.md)
+- [Synchronization](sync.md)
 - [Thread](thread.md)

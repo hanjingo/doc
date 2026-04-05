@@ -69,7 +69,7 @@
 
 ### 数据结构
 
-![progress_mgr_datastruct](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_mgr_datastruct.png)
+![progress_mgr_datastruct](res/progress_mgr_datastruct.png)
 
 *操作系统控制表的一般结构*
 
@@ -87,19 +87,19 @@ PCB组织方式：
 
 - 线性方式
 
-  ![progress_pcb_sequential_way](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_pcb_sequential_way.png)
+  ![progress_pcb_sequential_way](res/progress_pcb_sequential_way.png)
 
   *PCB线性表示示意图*
 
 - 链接方式
 
-  ![progress_pcb_link_way](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_pcb_link_way.png)
+  ![progress_pcb_link_way](res/progress_pcb_link_way.png)
 
   *PCB链接队列示意图*
 
 - 索引方式
 
-  ![progress_pcb_index_way](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_pcb_index_way.png)
+  ![progress_pcb_index_way](res/progress_pcb_index_way.png)
 
   *按索引方式组织PCB*
 
@@ -115,13 +115,13 @@ PCB组织方式：
 - `创建（Create）状态`
 - `终止（Stop）状态`
 
-![progress_base_stat_transform](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_base_stat_transform.png)
+![progress_base_stat_transform](res/progress_base_stat_transform.png)
 
 *进程的五种基本状态及转换*
 
 ### 状态转换
 
-![progress_stat_transform](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_stat_transform.png)
+![progress_stat_transform](res/progress_stat_transform.png)
 
 *具有创建，终止和挂起状态的进程状态图*
 
@@ -181,7 +181,7 @@ PCB组织方式：
 
 将所有的就绪进程按FCFS策略排成一个就绪队列。设置每隔一定时间产生一次中断，去激活进程调度程序进程调度，把CPU分配给队首进程，并令其执行一个时间片。当它运行完毕后，又把处理机分配给就绪队列中新的队首进程，也让它执行一个时间片。保证就绪队列中的所有进程在确定的时间段内，都能获得一个时间片的处理机时间。
 
-![progress_schedule_RR](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_schedule_RR.png)
+![progress_schedule_RR](res/progress_schedule_RR.png)
 
 *时间片大小对响应时间的影响*
 
@@ -201,7 +201,7 @@ PCB组织方式：
 
 ### 多级反馈队列(multileved feedback queue)调度算法
 
-![progress_schedule_mfq](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_schedule_mfq.png)
+![progress_schedule_mfq](res/progress_schedule_mfq.png)
 
 *多级反馈队列调度算法*
 
@@ -236,13 +236,13 @@ PCB组织方式：
 
 - 非抢占式调度方式用于非周期实时任务
 
-  ![progress_schedule_EDF1](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_schedule_EDF1.png)
+  ![progress_schedule_EDF1](res/progress_schedule_EDF1.png)
 
   *EDF算法用于非抢占调度方式*
 
 - 抢占式调度方式用于周期实时任务
 
-  ![progress_schedule_EDF2](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_schedule_EDF2.png)
+  ![progress_schedule_EDF2](res/progress_schedule_EDF2.png)
 
   *最早截止时间优先算法用于抢占调度方式之例*
 
@@ -250,7 +250,7 @@ PCB组织方式：
 
 根据任务的紧急（或松弛）程度，确定任务的优先级。
 
-![progress_schedule_ELLF](/usr/local/src/github.com/hanjingo/doc/OS/res/progress_schedule_ELLF.png)
+![progress_schedule_ELLF](res/progress_schedule_ELLF.png)
 
 *利用ELLF算法进行调度的情况*
 

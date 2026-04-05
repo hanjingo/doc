@@ -5,6 +5,7 @@ English | [中文版](safe_zh.md)
 [TOC]
 
 
+
 ## Classification of Computer Security
 
 - Class $D$: The lowest security category, also known as the security protection deficiency level. This class only includes the lowest security level $D_1$. Any system that does not meet the requirements of the other three classes is classified as Class D.
@@ -14,6 +15,7 @@ English | [中文版](safe_zh.md)
 - Level $B_2$: $B_2$ includes all security attributes of $B_1$. $B_2$ requires the system to use a top-down structured design method, be able to verify the design method, and perform security analysis of possible covert channels.
 - Level $B_3$: $B_3$ includes all security attributes of $B_2$. In $B_3$, an access control list (ACL) for users and groups, sufficient security auditing, and disaster recovery capabilities must be included. In addition, the system must include a TCB to control user access to files and prevent unauthorized access.
 - Level $A_1$: $A_1$ is the highest security level. Currently, Class A only includes $A_1$. $A_1$ is similar to $B_3$ and does not have special requirements for system structure and policy. $A_1$ systems require mandatory access control and the application of formal model techniques, must prove the correctness of the model, and explain that the implementation method is consistent with the protection model. Formal analysis of covert channels is also required.
+
 
 
 ## Symmetric and Asymmetric Encryption Algorithms
@@ -43,9 +45,11 @@ English | [中文版](safe_zh.md)
 	  $E_{Ke}(D_{Kd}(P)) = P$
 
 
+
 ## Digital Signature and Digital Certificate
 
 TODO
+
 
 
 ## User Authentication
@@ -97,6 +101,7 @@ Methods to improve password security:
 3. Fingerprint recognition system
 	- Fingerprint acquisition sensor
 	- Fingerprint recognition system
+
 
 
 ## Attacks
@@ -185,6 +190,7 @@ c[i] = 0; // 10,976 bytes exceed the range defined by array C
 3. Mobile Code
 
 	On a network, if code can be executed on a remote computer, the system is considered to have remote execution capability. If a program can migrate between different machines during execution, it is called mobile code.
+
 
 
 ## Trusted System

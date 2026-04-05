@@ -2,9 +2,11 @@
 
 [TOC]
 
+
+
 This note summarizes core file-system concepts from a programmer's perspective: the file abstraction, directories and inodes, block allocation and free-space management, metadata and consistency (journaling), common system-call APIs, caching and performance trade-offs, and security considerations. It complements the CS:APP material with a practical overview you can use when reading code or designing storage layout.
 
-## 1. The file abstraction
+## The file abstraction
 
 Files present a nameable, byte-addressable view of persistent data. From the programmer's viewpoint a file supports operations such as create, open, read, write, truncate, rename, and delete. The file-system implementation maps these high-level operations to on-disk structures, I/O requests, and kernel data structures.
 
@@ -13,7 +15,9 @@ Key concepts:
 - Metadata: each file has metadata (size, timestamps, permissions, owner, link count) separate from its content.
 - Persistent storage: file contents are stored on devices (disks, SSDs, remote storage) and survive process termination.
 
-## 2. Inodes and directory entries
+
+
+## Inodes and directory entries
 
 Many Unix-like file systems use the inode model:
 
@@ -23,7 +27,9 @@ Many Unix-like file systems use the inode model:
 Separation of name and object:
 - A file can have multiple hard links (multiple directory entries pointing to the same inode). Removing a name decrements the inode link count; the inode is freed only when link count reaches zero and no process has it open.
 
-## 3. Block allocation and addressing
+
+
+## Block allocation and addressing
 
 Files are stored in fixed-size blocks (commonly 4 KiB). Typical allocation strategies:
 
@@ -33,7 +39,9 @@ Files are stored in fixed-size blocks (commonly 4 KiB). Typical allocation strat
 
 Block addressing in inodes often mixes direct, single-indirect, double-indirect, and sometimes triple-indirect pointers to handle both small and large files efficiently.
 
-## 4. Free-space management
+
+
+## Free-space management
 
 Common free-space structures:
 - Free lists / bitmaps: track which blocks are free; bitmaps are compact and efficient for large devices.
@@ -43,7 +51,9 @@ Allocation policies:
 - First-fit / best-fit / next-fit for block selection.
 - Allocation tries to keep related blocks (same file or directory) close to reduce seek/migration costs.
 
-## 5. Consistency: crashes, journaling, and fsck
+
+
+## Consistency: crashes, journaling, and fsck
 
 File systems must remain consistent after crashes or power failures. Approaches:
 
@@ -55,13 +65,17 @@ File systems must remain consistent after crashes or power failures. Approaches:
 
 After an unclean shutdown, fsck (file-system check) inspects on-disk structures and repairs inconsistencies; journaling reduces the need for long fsck runs.
 
-## 6. Namespaces, links, and special files
+
+
+## Namespaces, links, and special files
 
 - Hard links: multiple directory entries for the same inode; only supported for files, not typically for directories (to avoid cycles).
 - Symbolic (soft) links: special files containing a pathname that the kernel resolves at lookup time; they can point across filesystems.
 - Special files (device nodes, FIFOs, sockets) provide interfaces to devices and IPC and are represented in the filesystem namespace.
 
-## 7. File-system APIs and semantics
+
+
+## File-system APIs and semantics
 
 Common system calls and semantics (POSIX): `open`, `read`, `write`, `lseek`, `fsync`, `close`, `unlink`, `rename`, `stat`, `mkdir`, `rmdir`.
 
@@ -70,7 +84,9 @@ Important semantics to be aware of:
 - `fsync` forces dirty data and metadata to persistent storage — required for durability guarantees.
 - When files are memory-mapped (`mmap`), writes may be buffered and flushed later; `msync` and `msync(MS_SYNC)` provide control over persistence.
 
-## 8. Caching and performance
+
+
+## Caching and performance
 
 Kernel caches dramatically affect performance:
 
@@ -86,19 +102,25 @@ Storage-media considerations:
 - HDDs: minimize seeks; allocate contiguous blocks and tune layout for locality.
 - SSDs: avoid excessive write amplification; prefer large sequential writes and use wear-leveling–aware allocation strategies.
 
-## 9. Security and permissions
+
+
+## Security and permissions
 
 - POSIX permissions (rwx for owner/group/other) and ACLs control access.
 - File ownership and setuid/setgid bits affect privilege behavior when executing programs.
 - Mount options (noexec, nosuid, nodev) restrict executable or device access on mounted filesystems.
 
-## 10. Advanced features (brief)
+
+
+## Advanced features (brief)
 
 - Snapshots: point-in-time views implemented via copy-on-write or metadata tricks.
 - Quotas: limit space/inode usage per user or group.
 - Encryption at rest: filesystem-level or block-level encryption for confidentiality.
 
-## 11. Tools and inspection
+
+
+## Tools and inspection
 
 Useful tools for inspection and debugging:
 - `df`, `du` — usage summaries.
@@ -106,16 +128,14 @@ Useful tools for inspection and debugging:
 - `tune2fs`, `dumpe2fs`, `debugfs` (ext filesystems) — low-level inspection.
 - `xfs_info`, `btrfs`-specific tools for other filesystems.
 
+
+
 ## Summary
 
 File systems expose a simple program-facing abstraction built on complex structures: metadata, block allocation, free-space tracking, caching, and consistency mechanisms. Choosing the right filesystem and tuning depends on workload characteristics (large files vs many small files, random vs sequential I/O, SSD vs HDD) and durability requirements.
 
+
+
 ## Reference
 
 [1] Randal E. Bryant, David R. O'Hallaron. Computer Systems: A Programmer's Perspective. 3rd ed.
-
----
-
-If you'd like, I can:
-- Add a worked example showing inode block addressing for a large file (direct/indirect pointers).
-- Provide a short `dd` + `strace` demo showing caching and write-back behavior.

@@ -80,7 +80,7 @@
 
 在`*nix`系统上，静态库以`.a`为文件扩展名；在windows系统上，静态库以`.lib`为文件扩展名。
 
-![static_link_compile](/usr/local/src/github.com/hanjingo/doc/OS/res/static_link_compile.png)
+![static_link_compile](res/static_link_compile.png)
 
 ### 优缺点
 
@@ -94,7 +94,7 @@
 
 动态链接库（Dynamic Link Library，DLL），是一个目标文件，包含代码和数据，它可以在程序运行时动态的加载并链接。
 
-![dynamic_link_compile](/usr/local/src/github.com/hanjingo/doc/OS/res/dynamic_link_compile.png)
+![dynamic_link_compile](res/dynamic_link_compile.png)
 
 ### 优缺点
 
@@ -110,7 +110,7 @@
 
 程序的结构头如下图所示：
 
-![dll_program_head](/usr/local/src/github.com/hanjingo/doc/OS/res/dll_program_head.png)
+![dll_program_head](res/dll_program_head.png)
 
 1. 加载器加载动态链接器
 

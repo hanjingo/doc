@@ -34,7 +34,7 @@
 
 - 内核支持线程KST(Kernel Supported Threads)
 
-  ![thread_impl_core](/usr/local/src/github.com/hanjingo/doc/OS/res/thread_impl_core.png)
+  ![thread_impl_core](res/thread_impl_core.png)
 
   *任务数据区空间*
 
@@ -48,7 +48,7 @@
 
      又称为`轻型进程LWP(Light Weight Process)`，每一个进程都可拥有多个LWP，同用户级线程一样，每个LWP都有自己的数据结构（如TCB），其中包括线程标识符，优先级，状态，另外还有栈和局部存储区。
 
-     ![thread_impl_lwp](/usr/local/src/github.com/hanjingo/doc/OS/res/thread_impl_lwp.png)
+     ![thread_impl_lwp](res/thread_impl_lwp.png)
 
      *利用轻型进程作为中间系统*
 
@@ -56,19 +56,19 @@
 
   1. 多对一模型，将用户线程映射到一个内核控制线程；
 
-     ![thread_impl_comb1](/usr/local/src/github.com/hanjingo/doc/OS/res/thread_impl_comb1.png)
+     ![thread_impl_comb1](res/thread_impl_comb1.png)
 
      *多对一模型*
 
   2. 一对一模型，将每一个用户级线程映射到一个内核支持线程；
 
-     ![thread_impl_comb2](/usr/local/src/github.com/hanjingo/doc/OS/res/thread_impl_comb2.png)
+     ![thread_impl_comb2](res/thread_impl_comb2.png)
 
      *一对一模型*
 
   3. 多对多模型，将许多用户线程映射到同样数量或者更少数量的内核线程上。
 
-     ![thread_impl_comb3](/usr/local/src/github.com/hanjingo/doc/OS/res/thread_impl_comb3.png)
+     ![thread_impl_comb3](res/thread_impl_comb3.png)
 
      *多对多模型*
 
@@ -96,19 +96,19 @@
 
 - 竞争不可抢占性资源引起死锁
 
-  ![deadlock_reason1](/usr/local/src/github.com/hanjingo/doc/OS/res/deadlock_reason1.png)
+  ![deadlock_reason1](res/deadlock_reason1.png)
 
   *共享文件时的死锁情况*
 
 - 竞争可消耗资源引起死锁
 
-  ![deadlock_reason2](/usr/local/src/github.com/hanjingo/doc/OS/res/deadlock_reason2.png)
+  ![deadlock_reason2](res/deadlock_reason2.png)
 
   *进程之间通信时的死锁*
 
 - 进程推进顺序不当引起死锁
 
-  ![deadlock_reason3](/usr/local/src/github.com/hanjingo/doc/OS/res/deadlock_reason3.png)
+  ![deadlock_reason3](res/deadlock_reason3.png)
 
   - $D$ 不安全区
   - $P_1, P_2$ 进程
@@ -176,7 +176,7 @@
 
 - 资源分配图(Resource Allocation Graph)
 
-  ![deadlock_detect1](/usr/local/src/github.com/hanjingo/doc/OS/res/deadlock_detect1.png)
+  ![deadlock_detect1](res/deadlock_detect1.png)
 
   系统死锁，可利用资源分配图来描述。该图是由一组结点$N$和一组边$E$所组成的一对偶$G=(N,E)$，它具有下述形式的定义和限制：
 
@@ -185,7 +185,7 @@
 
 - 死锁定理
 
-  ![deadlock_detect2](/usr/local/src/github.com/hanjingo/doc/OS/res/deadlock_detect2.png)
+  ![deadlock_detect2](res/deadlock_detect2.png)
 
   1. 在资源分配途中，找出一个既不阻塞又非独立地进程节点$P_i$。在顺利的情况下，$P_i$可获得所需资源而继续运行，直至运行完毕，再释放其所占有地全部资源，这相当于消去$P_i$的请求边和分配边，使之成为孤立的节点；如图b。
   2. $P_1$释放资源后，便可使$P_2$获得资源而继续运行，直至$P_2$完成后又释放出它所占有的全部资源，形成图c所示的情况，即将$P_2$的两条请求边和一条分配边消去。

@@ -6,7 +6,40 @@ English | [中文版](mem_mgr_zh.md)
 
 
 
-## Memory hierarchy
+Memory is an essential component of a computer system, responsible for storing data and instructions needed for processing. It enables the CPU to execute programs efficiently and ensures smooth system operation.
+
+## Classification of Memory
+
+![mem_class](res/mem_class.png)
+
+### RAM (Random Access Memory)
+
+RAM is the computer's main memory used for temporary storage of active programs and data. Data is lost when power is off. It provides fast CPU access, improving multitasking and performance.
+
+Types of RAM:
+
+- SRAM (Static RAM)
+- DRAM (Dynamic RAM)
+
+### ROM (Read-Only Memory)
+
+ROM is non-volatile memory that stores essential instructions permanently. It holds system firmware and boot instructions.
+
+Types of ROM:
+
+- MROM: Pre-programmed at manufacture.
+- PROM: User-programmable once
+- EPROM: UV-erasable
+- EEPROM: Electrically erasable
+- Flash Memory: Fast, used in SSDs and USB drives
+
+---
+
+
+
+## Memory Hierarchy
+
+![mem_hierarchy](res/mem_hierarchy.png)
 
 Real systems arrange storage as a hierarchy with different capacities, latencies, and costs. Typical levels are:
 
@@ -15,13 +48,9 @@ Real systems arrange storage as a hierarchy with different capacities, latencies
 - Main memory (DRAM)
 - Persistent storage (SSD/HDD)
 
-### Disk Capacity
-
 SRAM is usually used for caches (fast, expensive). DRAM is used for main memory (slower, cheaper).
 
-![mem_hierarchy](res/mem_hierarchy.png)
-
-Disk capacity and timings
+### Disk Capacity
 
 Disk capacity depends on recording density, track density, and platter count. Disks transfer data in sector-sized blocks. Access time for a sector includes:
 
@@ -44,9 +73,94 @@ Common miss types:
 
 - Compulsory (cold) misses: first reference to a block
 - Capacity misses: working set larger than the cache
-- Conflict misses: multiple blocks map to same cache set (for set-associative caches)
+- Conflict misses: multiple blocks map to the same cache set (for set-associative caches)
 
 Performance: throughput (bytes/sec) and latency are both important; many workloads are latency-sensitive.
+
+---
+
+
+
+## Memory Management
+
+![memory_management](res/memory_management.png)
+
+Memory management is the process of controlling and organising a computer's memory by allocating portions, called blocks, to different executing programmes to improve the overall system performance.
+
+### Memory Allocation
+
+![memory_mgr_tech](res/memory_mgr_tech.png)
+
+#### Single Contiguous Memory Allocation
+
+Simplest form of memory management. In this technique, the main memory is divided into two parts:
+
+- One part is reserved for the Operating System
+- The remaining part is allocated to a single user process
+
+#### Partitioned Memory Allocation
+
+Main memory is divided into multiple contiguous partitions, and each partition can hold one process. This technique supports multiprogramming.
+
+#### Paged Memory Management
+
+TODO
+
+#### Segmented Memory Management
+
+![logical_view_of_segmentation](res/logical_view_of_segmentation.png)
+
+Segmentation is a memory management technique where a process is divided into variable-sized chunks called segments.
+
+#### Segmented Memory Management With Paging
+
+![workflow_of_segmented_paging](res/workflow_of_segmented_paging.png)
+
+Segmentation with Paging is a hybrid memory management technique that combines the advantages of both segmentation and paging.
+
+### Fragmentation
+
+#### Internal Fragmentation
+
+![internal_fragmentation](res/internal_fragmentation.png)
+
+Internal Fragmentation is the wastage of memory that occurs when fixed-sized memory blocks are allocated to processes, but the process does not use the entire allocated block.
+
+#### External Fragmentation
+
+![external_fragmentation](res/external_fragmentation.png)
+
+External fragmentation is a problem in memory management where free memory is divided into small, non-contiguous blocks. Even though there may be enough total free memory to run a new program, the memory is scattered in tiny pieces, so it's impossible to find a single, large block for the program to use.
+
+Solution of External Fragmentation:
+
+1. Memory Compaction
+2. Paging
+
+### Next Fit Algorithm
+
+![next_fit_algo](res/next_fit_algo.png)
+
+The Next Fit algorithm is a modified version of the First Fit memory allocation technique. While the First Fit algorithm always starts searching from the beginning of the memory block list for each new process, the Next Fit algorithm optimizes this behavior by continuing the search from where it last left off.
+
+Time and Space Complexity:
+
+- Time Complexity: $O(N \times M)$
+- Auxiliary Space: $O(N)$
+
+The Next Fit algorithm helps in reducing external fragmentation by:
+
+- Avoiding repeated use of initial memory blocks.
+- Spreading allocations more evenly across memory.
+- Leaving larger free gaps between allocated partitions that can accommodate future large processes.
+
+### Buddy System Algorithm
+
+![buddy_system_algo](res/buddy_system_algo.png)
+
+The Buddy Allocation System is a memory management technique that divides a large memroy block into smaller power-of-two blocks called buddies.
+
+---
 
 
 
@@ -80,6 +194,14 @@ There are two main types of virtual memory:
 
 
 
+## Swap Space
+
+![swap_space](res/swap_space.png)
+
+Modern operating systems use both physical memory (RAM) and virtual memory to manage processes efficiently. Swap space (also called paging space or swap file) plays a key role in this memory management strategy. It is a dedicated area on the hard disk used by the operating system as an extension of physical RAM.
+
+
+
 ## Pages, Page Tables, and the MMU
 
 Virtual memory is organized in pages (commonly 4 KiB, though large pages exist). The page table maps virtual page numbers (VPNs) to physical page frames. Each page table entry (PTE) typically contains:
@@ -87,6 +209,8 @@ Virtual memory is organized in pages (commonly 4 KiB, though large pages exist).
 - A valid/present bit
 - The physical frame number (PFN) or a pointer to disk location when not present
 - Access bits (read/write/execute), dirty bit, and other control flags
+
+### MMU
 
 The CPU's MMU uses the current page table (pointed to by a register like CR3 on x86) to translate virtual addresses to physical addresses on every memory reference.
 
@@ -101,6 +225,10 @@ To avoid huge contiguous page tables, architectures use multi-level page tables 
 ![tlb_hit_and_miss](res/tlb_hit_and_miss.png)
 
 Because walking page tables is expensive, CPUs use a TLB — a small, fast cache of recent virtual-to-physical translations. TLB hits are critical to performance; TLB misses force a page-table walk (software or hardware-assisted) and can be expensive.
+
+### Page hit and page faults
+
+![page_hit_and_fault](res/page_hit_and_fault.png)
 
 ### Demand paging and page faults
 
@@ -143,6 +271,21 @@ Replacement policy interacts with workload behavior; swapping introduces large l
 
 Large pages (huge pages) reduce TLB pressure and can improve throughput for big-memory workloads. On NUMA machines, memory access latency depends on the memory's proximity to the CPU — NUMA-aware allocation and thread placement are important for performance.
 
+### Page Replacement & Thrashing
+
+In an operating system that uses paging, a page replacement algorithm is needed when a page fault occurs and no free page frame is available. In this case, one of the existing pages in memory must be replaced with the new page.
+
+Common Page Replacement Techniques:
+
+- First In First Out(FIFO)
+- Optimal Page Replacement
+- Least Recently Used (LRU)
+- Most Recently Used (MRU)
+
+Thrashing:
+
+![thrashing](res/thrashing.png)
+
 
 
 ## Copy-on-write and shared mappings
@@ -157,45 +300,26 @@ Copy-on-write is heavily used at fork() to avoid copying the entire address spac
 
 
 
-## Fragmentation
-
-- Internal fragmentation: allocated region contains unused space (e.g., fixed-size blocks with wasted slack)
-- External fragmentation: free memory is split into small pieces making large contiguous allocations difficult
-
-Virtual memory (paging) largely eliminates external fragmentation for user allocations, but internal fragmentation and allocator-level fragmentation remain concerns.
-
-
-
-## Memory allocators and kernel interfaces
-
-At user level, allocators (malloc, free, jemalloc, tcmalloc) manage heap memory and implement strategies to reduce fragmentation and contention. They typically obtain memory from the kernel via brk/sbrk or mmap/munmap.
-
-Kernel interfaces for memory management include:
-
-- brk/sbrk: grow/shrink the heap (simple, less flexible)
-- mmap/munmap: map files or anonymous memory, used for large allocations and shared mappings
-
-Choosing the right interface and allocator matters for latency and scalability.
-
-
-
-## Security features
-
-- Address Space Layout Randomization (ASLR) randomizes base addresses of segments to make exploitation harder
-- NX/DEP (non-executable pages) mark data pages non-executable
-- Page protection bits prevent unauthorized access
-
-
-
 ## Summary
 
-- Measure first: use perf, vmstat, iostat, and custom benchmarks to locate memory bottlenecks.
-- Use appropriate page sizes: default 4 KiB for general use; huge pages for TLB-sensitive workloads.
-- Avoid unnecessary page faults: touch large allocations (if appropriate) or use madvise to influence kernel behavior.
-- Use mmap for large or shared allocations; use tuned allocators for concurrent workloads.
-- Use O_DIRECT, fsync, and tuned flushing when building storage systems that need strict durability or predictable latency.
+### Differences Among RAM, ROM and Secondary Memory
 
-![page_hit_and_fault](res/page_hit_and_fault.png)
+| RAM                 | ROM                    | Secondary Memory   |
+| ------------------- | ---------------------- | ------------------ |
+| Volatile            | Non-volatile           | Non-volatile       |
+| Temporary workspace | Permanent instructions | Long-term storagte |
+| Fast                | Moderate               | Slow               |
+| Read/Write          | Mostly Read-only       | Read/Write         |
+| DRAM, SRAM          | PROM, EPROM, EEPROM    | HDD, SSD, USB      |
+
+### Swap Space vs Virtual Memory
+
+| Feature        | Swap Space                                          | Virtual Memory                                            |
+| -------------- | --------------------------------------------------- | --------------------------------------------------------- |
+| Definition     | Physical disk space used for swapping memory pages. | Abstract combination of physical RAM and swap space.      |
+| Role           | Storage area for inactive pages.                    | Provides an abstraction of larger memory to applications. |
+| Performance    | Slow access (due to disk I/O)                       | Appears seamless to applications                          |
+| Implementation | Typically a swap partition or swap file             | Managed by OS using page tables.                          |
 
 
 
@@ -206,3 +330,29 @@ Choosing the right interface and allocator matters for latency and scalability.
 [2] [Virtual Memory in Operating System](https://www.geeksforgeeks.org/operating-systems/virtual-memory-in-operating-system/)
 
 [3] [Page Fault Handling in Operating System](https://www.geeksforgeeks.org/operating-systems/page-fault-handling-in-operating-system/)
+
+[4] [Introduction to memory and memory units](https://www.geeksforgeeks.org/computer-organization-architecture/introduction-to-memory-and-memory-units/)
+
+[5] [Memory Management in Operating System](https://www.geeksforgeeks.org/operating-systems/memory-management-in-operating-system/)
+
+[6] [Segmentation in Operating System](https://www.geeksforgeeks.org/operating-systems/segmentation-in-operating-system/)
+
+[7] [Segmentation with Paging](https://www.geeksforgeeks.org/operating-systems/segmentation-with-paging/)
+
+[8] [Internal Fragmentation in OS](https://www.geeksforgeeks.org/operating-systems/internal-fragmentation-in-os/)
+
+[9] [External Fragmentation in OS](https://www.geeksforgeeks.org/operating-systems/external-fragmentation-in-os/)
+
+[10] [Program for Next Fit algorithm in Memory Management](https://www.geeksforgeeks.org/dsa/program-for-next-fit-algorithm-in-memory-management/)
+
+[11] [Buddy System - Memory Allocation Technique](https://www.geeksforgeeks.org/operating-systems/buddy-system-memory-allocation-technique/)
+
+[12] [Page Replacement Algorithms in Operating Systems](https://www.geeksforgeeks.org/operating-systems/page-replacement-algorithms-in-operating-systems/)
+
+[13] [Belady's Anomaly in Page Replacement Algorithms](https://www.geeksforgeeks.org/operating-systems/beladys-anomaly-in-page-replacement-algorithms/)
+
+[14] [Thrashing](https://www.geeksforgeeks.org/operating-systems/techniques-to-handle-thrashing/)
+
+[15] [Second Chance (or Clock) Page Replacement Policy](https://www.geeksforgeeks.org/operating-systems/second-chance-or-clock-page-replacement-policy/)
+
+[16] [Belady's Anomaly in Page Replacement Algorithms]()

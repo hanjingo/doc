@@ -5,6 +5,7 @@ English | [中文版](io_zh.md)
 [TOC]
 
 
+
 ## I/O System Hierarchy
 
 ### I/O System Module Hierarchy
@@ -44,6 +45,7 @@ TODO
 TODO
 
 
+
 ## Summary of fcntl, ioctl, and Routing Socket Operations
 
 | Operation                        | fcntl               | ioctl                | Routing Socket | POSIX      |
@@ -66,6 +68,7 @@ The fcntl function provides the following features related to network programmin
 - F_SETOWN: Allows specifying the owner of the socket to receive SIGIO and SIGURG signals. SIGIO is generated when the socket is set to signal-driven I/O, and SIGURG is generated when new out-of-band data arrives. F_GETOWN returns the current owner.
 
 
+
 ## I/O Efficiency
 
 ### Read Ahead
@@ -77,11 +80,13 @@ Most file systems use some form of read ahead to improve performance. When seque
 In traditional UNIX systems, the kernel has buffer or page caches, and most disk I/O goes through these buffers. When writing to a file, the kernel usually copies data to the buffer first, queues it, and writes to disk later.
 
 
+
 ## Common I/O Errors
 
 ### TOCTTOU Error
 
 `time-of-check-to-time-of-use`: If there are two file-based function calls, and the second depends on the result of the first, the program is fragile; the file may change between the two calls, making the first result invalid and leading to errors.
+
 
 
 ## Posix API
@@ -367,6 +372,7 @@ Common ioctl operations in FreeBSD:
 | Tape I/O   | MTIOxxx  | `<sys/mtio.h>`        | 11    |
 | Socket I/O | SIOxxx   | `<sys/sockio.h>`      | 73    |
 | Terminal   | TIOxxx   | `<sys/ttycom.h>`      | 43    |
+
 
 
 ## Reference

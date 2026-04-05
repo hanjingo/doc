@@ -72,9 +72,43 @@ Shell is the outermost layer of the Operating System and handles user interactio
 
 Kernel is the core component of the operating system. The kernel is the primary interface between the Operating system and Hardware.
 
+### Process Schedulers
+
+Process Schedulers are fundamental components of operating systems responsible for deciding the order in which processes are executed by the CPU. Include:
+
+1. Long-Term Scheduler(Job Scheduler)
+
+2. Short-Term Scheduler(CPU Scheduler)
+
+   ![short_term_scheduler](res/short_term_scheduler.png)
+
+3. Medium-Term Scheduler
+
+   ![medium_term_scheduler](res/medium_term_scheduler.png)
+
+Comparison Among Scheduler:
+
+| Long-Term Scheduler                                          | Short-Term Scheduler                                      | Medium-Term Scheduler                                        |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
+| It is a job scheduler                                        | It is a CPU scheduler                                     | It is a process-swapping scheduler                           |
+| It is the slowest scheduler                                  | It is the fastest scheduler                               | It's speed lies between long-term and short-term schedulers  |
+| It controls the degree of multiprogramming                   | It gives less control over the degree of multiprogramming | It reduces the degree of multiprogramming                    |
+| It is barely present or nonexistent in time-sharing systems  | It is essential for time-sharing systems                  | It is a component of time-sharing systems                    |
+| It selects processes from the job poll and loads them into memory | It selects ready processes for execution by the CPU       | It can re-introduce processes into memory and resume execution |
 
 
-## Process vs Thread vs Coroutine
+
+## Process
+
+### States Transaction
+
+![process_seven_state_model](res/process_seven_state_model.png)
+
+
+
+## Summary
+
+### Process vs Thread vs Coroutine
 
 |             | Process                                                     | Thread                                                       | Coroutine                                                 |
 | ----------- | ----------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
@@ -82,6 +116,28 @@ Kernel is the core component of the operating system. The kernel is the primary 
 | Resources   | Has independent resources.                                  | All threads in a process share resources; more efficient.    | Has its own register context and stack.                   |
 | Overhead    | Large overhead for creation/destruction and context switch. | Small overhead.                                              | Can save/restore state; switching has almost no overhead. |
 | Concurrency | Processes run independently.                                | Preemptive multitasking; threads need locks; less robust.    | Cooperative multitasking; no locks needed; more robust.   |
+
+### Dispatcher vs Scheduler
+
+![os_dispatcher](res/os_dispatcher.png)
+
+*OS Dispather*
+
+![os_scheduler](res/os_scheduler.png)
+
+*OS Scheduler*
+
+| Scheduler                                            | Dispatcher                                                   |
+| ---------------------------------------------------- | ------------------------------------------------------------ |
+| Decides which process should be executed next.       | Transfers control of CPU to the process selected by the scheduler. |
+| To select the process and determine execution order. | To start the execution of the selected process.              |
+| Long-term, Medium-term and Short-term.               | No types; it's a single module.                              |
+| Works independently.                                 | Dependent on the scheduler's decision.                       |
+| Uses algorithms like FCFS, SJF, RR, Priority, etc.   | No specific algorithm used.                                  |
+| Negligible and occurs less frequently.               | Time taken is known as Dispatch Latency.                     |
+| Process selection and queue management.              | Context switching, mode change and process start.            |
+| Works with the ready queue and dispatcher.           | Works with CPU and the selected process.                     |
+| Takes longer than the dispatcher.                    | Executes in a very short time.                               |
 
 
 
@@ -98,3 +154,7 @@ Kernel is the core component of the operating system. The kernel is the primary 
 [5] [Kernel in Operating System](https://www.geeksforgeeks.org/operating-systems/kernel-in-operating-system/)
 
 [6] [System Call](https://www.geeksforgeeks.org/operating-systems/introduction-of-system-call/)
+
+[7] [Process Schedulers in Operating System](https://www.geeksforgeeks.org/operating-systems/process-schedulers-in-operating-system/)
+
+[8] [Dispatcher vs Scheduler in OS](https://www.geeksforgeeks.org/operating-systems/difference-between-dispatcher-and-scheduler/)

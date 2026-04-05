@@ -4,489 +4,322 @@ English | [中文版](storage_zh.md)
 
 [TOC]
 
-## Hierarchy
-
-- CPU registers
-  - Registers
-- Main memory
-  - Cache
-  - Main memory
-  - Disk cache
-- Secondary storage
-  - Fixed disk
-  - Removable storage media
 
 
-## Contiguous Allocation Storage Management
+![file_system_arch](res/file_system_arch.png)
 
-### Single Contiguous Allocation
+File systems are a crucial part of any operating system, providing a structured way to store, organize and manage data on storage devices such as hard drives, SSDs and USB drives.
 
-Only for single-user, single-task OS, divided into system area and user area.
+## Popular File Systems
 
-### Fixed Partition Allocation
+![popular_file_systems](res/popular_file_systems.png)
 
-Divides user space in memory into several fixed-size partitions, each loaded with a job.
-
-Partitioning methods:
-- Equal-size partitions
-- Unequal-size partitions
-
-Memory allocation method:
-Queue partitions by size and create a partition usage table.
-![storage_mem_alloc](res/storage_mem_alloc.png)
-*Fixed partition usage table*
-
-### Dynamic Partition Allocation
-
-Data structures in dynamic partition allocation:
-- Free Partition Table (FPT)
-  ![storage_dynamic_FPT](res/storage_dynamic_FPT.png)
-- Free Partition Chain (FPC)
-  ![storage_dynamic_FPC](res/storage_dynamic_FPC.png)
-
-Memory allocation method:
-![storage_dynamic_mem_alloc](res/storage_dynamic_mem_alloc.png)
-
-Memory reclamation method:
-![storage_dynamic_mem_free](res/storage_dynamic_mem_free.png)
-*Memory reclamation process*
-
-#### Sequential Search-Based Dynamic Partition Allocation Algorithms
-
-- `First fit (FF)`: Search from the head of the list until a suitable partition is found.
-- `Next fit (NF)`: Start searching from the last found position; if not found by the end, start again from the head.
-- `Best fit (BF)`: Sort spaces from small to large, always find the closest fit.
-- `Worst fit (WF)`: Sort spaces from large to small, helps reduce fragmentation.
-
-#### Index Search-Based Dynamic Partition Allocation Algorithms
-
-- `Quick fit (QF)`: Classify free spaces by size, create an index table, each entry for a size type, each free partition holds a process.
-- `Buddy system (BS)`: All allocated or free partitions are powers of 2 in size ($1 \leqslant k \leqslant m$).
-  For a block of size $2^k$ at address $x$, its buddy's address is:
-  $$
-  buddy_k(x) = 
-  \begin{cases}
-  x + 2^k \quad (if\ x \bmod 2^{k+1} = 0) \\
-  x - 2^k \quad (if\ x \bmod 2^{k+1} = 2^k)
-  \end{cases}
-  $$
-- `Hash algorithm`: When allocating, use a hash function on the required size to find the position in the hash table and the corresponding free partition list for optimal allocation.
-
-#### Dynamic Relocatable Partition Allocation
-
-![storage_dynamic_redirect_alloc](res/storage_dynamic_redirect_alloc.png)
-*Dynamic partition allocation algorithm flowchart*
+---
 
 
-## Paging Storage Management
 
-### Basic Information
-1. Pages and frames
-	- `Page`: Paging divides a process's logical address space into pages, each with a number.
-	- `Page size`: The size of each memory page.
-2. Address structure
-	![storage_page_addr_struct](res/storage_addr_struct.png)
-	$P = INT [\frac{A}{L}], d = [A] \bmod L$
-	- $L$: page size
-	- $P$: page number
-	- $A$: address in logical address space
-	- $d$: offset within page
-	- $INT$: integer division
-	- $MOD$: modulo
-3. Page table
-	![storage_page_tbl](res/storage_page_tbl.png)
+## Path
 
-### Address Translation
-![storage_PTR](res/storage_PTR.png)
-*Address translation mechanism with TLB*
+When files are organized as a directory tree, there must be a way to uniquely identify and access them. This is done through path names.
 
-### Effective Access Time
-`Effective Access Time (EAT)`: The total time from a process issuing a logical address access request, through address translation, to finding and retrieving the data from the physical address in memory.
-$EAT = a \times \lambda + (t + \lambda)(1 - a) + t = 2t + \lambda - t \times a $
-- $\lambda$: TLB lookup time
-- $a$: hit rate
-- $t$: memory access time
+### Absolute Path Name
 
-Relationship between hit rate and EAT:
-| Hit rate (%) a | EAT |
-| ------------- | --- |
-| 0             | 220 |
-| 50            | 170 |
-| 80            | 140 |
-| 90            | 130 |
-| 98            | 122 |
+An absolute path name (also known as a full path) specifies the complete path from the root directory ("/") to the target file or directory.
 
-### Multilevel Page Table
-![storage_2page](res/storage_2page.png)
-*Two-level page table address translation*
+### Relative Path Name
 
-### Information Sharing
-![storage_page_msg_share](res/storage_page_msg_share.png)
+A relative path name specifies the file or directory in relation to the current working directory (also known as the present working directory). It does not start from the root and is shorter and more flexible than an absolute path.
+
+---
 
 
-## Segmented Storage Management
 
-### Basic Principle
-1. Segmentation
-	![storage_segment_addr_struct](res/storage_segment_addr_struct.png)
-	This address structure allows a job to have up to 64K segments, each up to 64KB.
-2. Segment table
-	![storage_segment_table](res/storage_segment_table.png)
-3. Address translation mechanism
-	![storage_segment_addr_chg](res/storage_segment_addr_chg.png)
+## Directory
 
-### Information Sharing
-![segment_msg_share](res/segment_msg_share.png)
+### Single-Level Directory
+
+![single_level_directory](res/single_level_directory.png)
+
+In the single-level directory, all files are contained in the same directory which makes it easy to support and understand.
+
+### Two-Level Directory
+
+![two_level_directory](res/two_level_directory.png)
+
+In a two-level directory structure, each user has a separate User File Directory (UFD) containing only their files. A Master File Directory (MFD) stores entries for all users and points to their respective UFDs, preventing filename conflicts between users.
+
+### Tree Structure/Hierarchical Structure
+
+![three_structure_directory](res/three_structure_directory.png)
+
+The tree directory structure resembles an upside-down tree, with the root directory at the top containing all user directories. Each user can create files and subdirectories within their own directory but cannot access or modify the root or other users' directories.
+
+### Acyclic Graph Structure
+
+![acyclic_graph_structure_directory](res/acyclic_graph_structure_directory.png)
+
+The acyclic graph directory structure allowing a file or subdirectory to be shared across multiple directories suing links. Changes made by one user are visible to all users sharing that file.
+
+### General-Graph Directory Structure
+
+![general_graph_directory](res/general_graph_directory.png)
+
+General-Graph directory avoids loops, the general-graph directory can have cycles, meaning a directory can contain paths that loop back to the starting point. This can make navigating and managing files more complex.
+
+---
 
 
-## Segmented Paging Storage Management
 
-![storage_segment_page](res/storage_segment_page.png)
-*Address mapping using segment and page tables*
-![storage_segment_page_addr_chg](res/storage_segment_page_addr_chg.png)
-*Address translation mechanism in segmented paging systems*
+## File Allocation Methods
+
+The allocation methods define how the files are stored in the disk blocks. Ther are three main disk space or file allocation methods:
+
+- Contiguous Allocation
+- Linked Allocation
+- Indexed Allocation
+
+### Contiguous Allocation
+
+![contiguous_allocation](res/contiguous_allocation.png)
+
+In this scheme, each file occupies a contiguous set of blocks on the disk. This means that given the starting block address and the length of the file (in terms of blocks required), we can determine the block occupied by the file.
+
+### Linked Allocation
+
+![linked_allocation](res/linked_allocation.png)
+
+In this scheme, each file is a linked list of disk blocks which need not be contiguous.
+
+### Indexed Allocation
+
+![indexed_allocation](res/indexed_allocation.png)
+
+In this scheme, a special block known as the Index block contains the pointers to all the blocks occupied by a file.
+
+---
 
 
-## Virtual Memory
 
-Has demand paging and replacement, can logically expand memory capacity.
+## File Access Methods
 
-### Implementation Methods
-1. Demand paging system
-	Main hardware support:
-	- Page table mechanism for demand paging
-	  `|Page#|Frame#|Present bit P|Access field A|Modify bit M|Disk address|`
-	  - `Present bit P`: indicates if the page is in memory
-	  - `Access field A`: records how often or how recently the page was accessed
-	  - `Modify bit M`: indicates if the page has been modified since being loaded
-	  - `Disk address`: where the page is on disk, usually a block number
-	- Page fault interrupt mechanism
-	  When the required page is not in memory, a page fault interrupt is generated, requesting the OS to load the page.
-	- Address translation mechanism
-	  ![virtual_storage_addr_chg](res/virtual_storage_addr_chg.png)
-2. Demand segmentation system
-	Hardware support:
-	- Segment table mechanism for demand segmentation
-	- Page fault interrupt mechanism
-	- Address translation mechanism
-	Segment table entry for demand segmentation:
-	`|Segment name|Length|Base|Access mode|Access field A|Modify bit M|Present bit P|Growth bit|Disk base|`
-	- `Access mode`
-	- `Access field`: frequency of access
-	- `Modify bit M`: whether the segment has been modified since loaded
-	- `Present bit P`: whether the segment is in memory
-	- `Growth bit`: whether the segment has grown dynamically
-	- `Disk base`: starting address on disk
-	Page fault interrupt mechanism:
-	![virtual_storage_segment_interrupt](res/virtual_storage_segment_interrupt.png)
-	Address translation mechanism:
-	![virtual_storage_segment_addr_chg](res/virtual_storage_segment_addr_chg.png)
-	Shared segment table:
-	![virtual_storage_segment_share_tbl](res/virtual_storage_segment_share_tbl.png)
-	- `Count`: number of processes sharing the segment
-	- `Access control field`: different permissions for different processes
-	- `Segment number`: different processes can have different segment numbers for the same segment
-	Segment protection:
-	- Bounds checking
-	- Access control checking
-	- Ring protection
-	  Lower-numbered rings have higher privilege; OS kernel is in ring 0; important apps and services in middle rings; general apps in outer rings. Rules:
-	  1. A program can access data in the same or lower-privilege (outer) rings.
-	  2. A program can call services in the same or higher-privilege (inner) rings.
-	  ![virtual_storage_ring_protect](res/virtual_storage_ring_protect.png)
-	  *Ring protection mechanism*
+File access methods are techniques used by an OS to read and write data in files. They define how information is organzied, retrieved, and modified. There are three ways to access a file in a computer system:
 
-### Memory Allocation and Reclamation
+- Sequential-Access
+- Direct Access
+- Index Sequential Method
 
-`Minimum number of frames`: minimum required for a process to run normally.
+### Sequential Access
 
-#### Memory Allocation Strategies
+![sequential_access_method](res/sequential_access_method.png)
 
-- `Fixed allocation, local replacement`: Each process gets a fixed number of frames; on a page fault, only pages from its own set are replaced.
-- `Variable allocation, global replacement`: Each process gets a certain number of frames, which can change; on a page fault, a free frame is allocated from the OS pool.
-- `Variable allocation, local replacement`: Each process gets a certain number of frames; on a page fault, only its own pages are replaced. If page faults are frequent, more frames are allocated; if rare, frames may be reduced.
+A file access method where data is read or written in order, one record after anotehr, starting from the beginning. The file pointer moves forward automatically after each operation.
 
-#### Frame Allocation Algorithms
+### Direct Access Method
 
-- `Equal allocation`: Divide all available frames equally among processes.
-- `Proportional allocation`: Allocate frames based on process size.
-  Total pages: $S = \sum_{i=1}^{n} S_i$
-  - $S$: total pages
-  - $S_i$: pages per process
-  - $n$: number of processes
-  Frames per process: $b_i = \frac{S_i}{S} \times m$
-  - $b_i$: frames per process (rounded, must be at least the minimum)
-  - $m$: total frames
-- `Priority-based allocation`: Divide frames into two parts: one part is allocated proportionally, the other by process priority.
+![direct_access_method](res/direct_access_method.png)
 
-### Page-In
+A file access method that allows data to be read or written directly at any block or record, using its address (block number). It supports random access without scanning previous records.
 
-| Page-in strategy | Description | Pros and Cons |
-| ---------------- | ----------- | ------------ |
-| Prepaging        | Load several adjacent pages at once | Inefficient if most are not used; current success rate only 50% |
-| Demand paging    | OS loads a page only when requested | Simple, but loads only one page at a time, increasing overhead and disk I/O |
+### Index Sequential Method
 
-#### Where to Page-In From
+![index_sequential_method](res/index_sequential_method.png)
 
-Swap space is divided into:
-- `File area`: for user files, discrete allocation
-- `Swap area`: for swapped pages, contiguous allocation, higher I/O efficiency
+It is the other method of accessing a file that is built on the top of the sequential access method. These methods construct an index for the file. The index, like an index in the back of a book, contains the pointer to the various blocks. To find a record in the file, we first search the index, and then by the help of pointer we access the file directly.
 
-Depending on the situation:
-- Enough swap space: all pages are loaded from swap area
-- Insufficient swap space: unmodified files are loaded from file area; modified parts are swapped out to swap area
-- UNIX: never-run pages from file area; previously swapped-out pages from swap area
+---
 
-#### Page Fault Rate
 
-Page fault rate formula:
-$f = \frac{F}{S+F}$
-- $F$: failed accesses
-- $S$: successful accesses
 
-Page fault handling time:
-$t = \beta \times t_a + (1 - \beta) \times t_b$
-- $\beta$: probability the replaced page was modified
-- $t_a$: handling time if modified
-- $t_b$: handling time if not modified
+## Disk Scheduling Algorithms
 
-Factors affecting page fault rate:
-- `Page size`: larger pages, lower fault rate; smaller, higher fault rate
-- `Number of frames`: more frames, lower fault rate
-- `Page replacement algorithm`: determines number of faults
-- `Program locality`: higher locality, lower fault rate
+Disk scheduling algorithms manage how data is read from and written to a computer's hard disk.
 
-### Page Replacement
+### Key Terms
 
-#### Optimal Replacement Algorithm
-![storage_optimal_page_swap](res/storage_optimal_page_swap.png)
+![disk_access_time_and_disk_response_time](res/disk_access_time_and_disk_response_time.png)
 
-#### FIFO Replacement Algorithm
-![storage_fifo_page_swap](res/storage_fifo_page_swap.png)
+Disk Access Time = Seek Time + Rotational latency + Transfer Time
 
-#### Least Recently Used (LRU) Replacement Algorithm
-![storage_lru_page_swap](res/storage_lru_page_swap.png)
+Total Seek Time = Total head Movement * Seek Time
 
-#### Least Frequently Used (LFU) Replacement Algorithm
-Each page has a shift register to record access frequency.
+- **Seek Time**: Time taken to move the disk arm to the track where data is located.
+- **Rotational Latency**: Time taken for the desired sector to rotate under the read/write head.
+- **Transfer Time**: Time taken to actually read or write the data, depending on disk speed and data size.
 
-#### Clock Replacement Algorithm
-1. Simple Clock (Not Recently Used, NRU)
-	![storage_nru_page_swap](res/storage_nru_page_swap.png)
-2. Improved Clock
-	Adds "replacement cost" using access bit $A$ and modify bit $M$ to form four types:
-	- Class 1 (A=0, M=0): not recently accessed or modified, best to replace
-	- Class 2 (A=0, M=1): not recently accessed but modified, not ideal to replace
-	- Class 3 (A=1, M=0): recently accessed, not modified, may be accessed again
-	- Class 4 (A=1, M=1): recently accessed and modified, may be accessed again
+### FCFS (First Come First Serve)
 
-#### Page Buffering Algorithm (PBA)
+![fcfs_disk_sceduling_algorithm](res/fcfs_disk_sceduling_algorithm.png)
+
+In FCFS, the requests are addressed in the order they arrive in the disk queue.
+
+### SSTF (Shortest Seek Time First)
+
+![sstf_disk_sceduling_algorithm](res/sstf_disk_sceduling_algorithm.png)
+
+In SSTF, requests having the shortest seek time are executed first. So, the seek time of every request is calculated in advance in the queue and then they are scheduled according to their calculated seek time. As a result, the request near the disk arm will get executed first.
+
+### SCAN
+
+![scan_disk_sceduling_algorithm](res/scan_disk_sceduling_algorithm.png)
+
+In the SCAN algorithm the disk arm moves in a particular direction and services the requests coming in its path and after reaching the end of the disk, it reverses its direction and again services the request arriving in its path. So, this algorithm works as an elevator and is hence also requests at the midrange are serviced more and those arriving behind the disk arm will have to wait.
+
+### C-SCAN
+
+![cscan_disk_sceduling_algorithm](res/cscan_disk_sceduling_algorithm.png)
+
+The CSCAN algorithm reversing the disk arm direction goes to the other end of the disk and starts servicing the requests from there. So, the disk arm moves in a circular fashion and this algorithm is also similar tothe SCAN algorithm hence it is known as C-SCAN (Circular SCAN).
+
+### LOOK
+
+![look_disk_sceduling_algorithm](res/look_disk_sceduling_algorithm.png)
+
+LOOK Algorithm is similar to the SCAN disk scheduling algorithm except for the difference that the disk arm in spite of going to the end of the disk goes only to the last request to be serviced in front of the head and then reverses its direction from there only. Thus it prevents the extra delay which occurred due to unnecessary traversal to the end of the disk.
+
+### C-LOOK
+
+![clook_disk_sceduling_algorithm](res/clook_disk_sceduling_algorithm.png)
+
+In CLOOK, the disk arm in spite of going to the end goes only to the last request to be serviced in front of the head and then from there goes to the other end's last request. Thus, it also prevents the extra dealy which occurred due to unnecessary traversal to the end of the disk.
+
+### RSS (Random Scheduling)
+
 TODO
 
+### LIFO (Last-In First-Out)
 
-## Thrashing
+TODO
 
-`Thrashing`: Too many processes run simultaneously, each with too few frames, causing frequent page faults.
+### N-STEP SCAN
 
-### Multiprogramming Degree and Thrashing
-![storage_thrash](res/storage_thrash.png)
+TODO
 
-### Preventing Thrashing
-1. Use local replacement
-2. Integrate working set algorithm into CPU scheduling
-3. Use the "L=S" rule to adjust fault rate (L: mean time between faults, S: mean fault service time)
-4. Select processes to suspend
+### F-SCAN
 
+TODO
 
-## Data Consistency Control
-
-Recovery algorithms
-- $undo <T_i>$: restores all data modified by transaction $T_i$ to its previous value
-- $redo <T_i>$: sets all data modified by $T_i$ to the new value
-
-### Checkpoints
-
-The main purpose of checkpoints is to regularly clean up the transaction log. At intervals:
-1. Write all records in the current transaction log in volatile memory to stable storage
-2. Write all modified data in volatile memory to stable storage
-3. Write the (checkpoint) record in the transaction log to stable storage
-4. When a checkpoint record appears, the system uses redo and undo for recovery
-
-### Concurrency Control
-1. Use mutexes for sequentiality
-2. Use mutexes and shared locks for sequentiality
-
-### Consistency Issues with Redundant Data
-1. Consistency of duplicate files
-	![storage_data_consistency](res/storage_data_consistency.png)
-2. 
+---
 
 
-## Disk Storage
 
-### Classification
-- Fixed-head disk
-- Movable-head disk
+## Secondary Memory
 
-### Data Organization and Format
-![storage_disk](res/storage_disk.png)
-*Disk structure and layout*
-Each sector contains two fields:
-- `ID Field`: A byte of SYNCH as a delimiter, uses track number, head number, and sector number to identify a sector; CRC for error checking.
-- `Data Field`: Stores 512 bytes of data.
-  ![storage_disk_fmt](res/storage_disk_fmt.png)
-  *Disk formatting*
+![secondary_memory](res/secondary_memory.png)
 
-#### Contiguous Organization
-Also called contiguous allocation, allocates a group of adjacent blocks for each file, usually on the same track. No head movement is needed for read/write. This forms a sequential file structure.
-Advantages:
-1. Easy sequential access
-2. Fast sequential access
-Disadvantages:
-1. Requires contiguous space, causing external fragmentation and low utilization
-2. File length must be known in advance
-3. Inflexible deletion/insertion
-4. Hard to allocate space for dynamically growing files
+Secondary memory, also known as secondary storage, refers to the storage devices and systems used to store data persistently, even when the computer is powered off.
 
-#### Linked Organization
-**Implicit linking**
-![storage_implicit_link](res/storage_implicit_link.png)
-**Explicit linking**
-![storage_explicit_link](res/storage_explicit_link.png)
-Advantages:
-1. Eliminates external fragmentation, improves utilization
-2. Easy insertion, deletion, modification
-3. Adapts to dynamic file growth
+### Hard Disk Drive (HDD)
 
-#### FAT
-1. FAT12
-	![storage_fat12](res/storage_fat12.png)
-2. FAT16
-3. FAT32
-	![storage_fat32](res/storage_fat32.png)
+![components_of_HDD](res/components_of_HDD.png)
 
-#### NTFS
-NTFS uses Logical Cluster Number (LCN) and Virtual Cluster Number (VCN).
-LCN numbers all clusters in a volume sequentially. NTFS maps addresses by multiplying the volume factor by the LCN to get the byte offset, thus finding the physical disk address.
-NTFS records all file, directory, and free space info in a Master File Table (MFT).
+A hard disk drive (HDD) is a fixed storage device inside a comuter that uses magnetic technology to retrieve and store digital data for long-term.
 
-#### Indexed Organization
-1. Single-level index
-	![storage_single_index](res/storage_single_index.png)
-2. Multi-level index
-	![storage_multi_index](res/storage_multi_index.png)
-	**Advantages**
-	1. Greatly speeds up large file searches
-	**Disadvantages**
-	1. More index levels means more disk accesses per block
-3. Incremental index
-	![storage_mix_index](res/storage_mix_index.png)
-	*Mixed index*
+How HDDs Work:
 
-### Storage Space Management
+![HDD_workflow](res/HDD_workflow.png)
 
-#### Free Table Method
-- Free table: System creates a table for all free areas, each entry includes index, first block, and number of free blocks. All free areas are sorted by starting block number.
-  ![storage_empty_tbl](res/storage_empty_tbl.png)
-- Allocation and reclamation: To allocate, scan the table for the first area large enough, allocate, and update the table.
+### Solid-State Drive (SSD)
 
-#### Free List Method
-- Free block list: All free blocks are linked; each block points to the next. To allocate, take blocks from the head; to reclaim, add to the tail.
-- Free area list: All free areas (each with several blocks) are linked; each area has a pointer to the next and info on its size.
+TODO
 
-#### Bitmap Method
-![storage_bitmap](res/storage_bitmap.png)
-- 0: block is free
-- 1: block is allocated
-Block allocation steps:
-1. Scan bitmap for 0 bits (free)
-2. Convert found bits to block numbers: $b = n(i - 1) + j$
-	- $n$: bits per row
-	- $i$: row
-	- $j$: column
-3. Set $map[i, j] = 1$
-Block reclamation steps:
-1. Convert block number to row/column: $i = (b - 1) \div n + 1$, $j = (b - 1) \bmod n + 1$
-2. Set $map[i, j] = 0$
+### Optical DIscs (CD, DVD, Blu-ray)
 
-#### Group Linking Method
-![storage_group_link](res/storage_group_link.png)
-1. Free block number stack stores a group of free block numbers (up to 100) and the count N.
-2. All free blocks are divided into groups.
-3. Each group's count and block numbers are stored in the first block of the previous group.
-4. The first group's info is in the stack as the current available blocks.
-5. The last group has 99 blocks; their numbers are in the previous group's first block, with 0 in S.free(0) to mark the end.
+TODO
 
-### Disk Access
+### USB Flash Drives
 
-- Seek time $T_s$: time to move the arm to the target track: $T_s = m \times n + s$
-  - $m$: constant, usually $m = 0.2$ for normal disks, $m \leqslant 0.1$ for high-speed disks
-  - $s$: arm start time
-  - $n$: number of tracks moved
-- Rotational latency $T_t$: time for the target sector to reach the head; varies by disk speed
-- Transfer time $T_t$: time to read/write data: $T_t = \frac{b}{rN}$
-  - $b$: bytes per transfer
-  - $r$: rotations per second
-  - $N$: bytes per track
-**Concentrating data transfer improves efficiency.**
+TODO
 
-### Disk Scheduling Algorithms
-1. First-Come, First-Served (FCFS)
-	![storage_disk_schedule_fcfs](res/storage_disk_schedule_fcfs.png)
-	FCFS is only suitable when there are few disk I/O requests.
-2. Shortest Seek Time First (SSTF)
-	![storage_disk_schedule_sstf](res/storage_disk_schedule_sstf.png)
-	Chooses the request closest to the current head position; does not guarantee minimum average seek time.
-3. SCAN (Elevator) Algorithm
-	Considers both distance and head movement direction.
-	![storage_disk_schedule_scan](res/storage_disk_schedule_scan.png)
-4. Circular SCAN (CSCAN) Algorithm
-	![storage_disk_schedule_cscan](res/storage_disk_schedule_cscan.png)
-5. NStepSCAN Algorithm
-6. FSCAN Algorithm
+### Magnetic Tapes
 
-### Techniques to Improve Disk I/O Speed
+TODO
 
-#### Disk Cache
-1. Data delivery: transfer data directly from cache to process memory
-2. Pointer delivery: give a pointer to the cache area
-3. Replacement algorithms: based on access frequency, predictability, and data consistency
-4. Periodic write-back: In UNIX, an update program runs in the background, periodically calling SYNC to write modified blocks back to disk.
+### Flash Memory Cards (SD Cards, MicroSD Cards)
 
-#### RAID
-![storage_raid](res/storage_raid.png)
-Multiple disk drives; data in each block is split and stored across disks. Parallel transfer greatly reduces transfer time.
+TODO
 
-#### Others
-1. Read-ahead: When reading a block, also read the next block into the buffer.
-2. Delayed write: Buffer data is written to disk only when the buffer is reused.
-3. Optimize block layout: Place blocks of the same file on the same or adjacent tracks.
-4. RAM disk: Simulate a disk using memory; device driver accepts standard disk operations, but they are performed in memory.
+### External Hard Drives
 
-### Techniques to Improve Disk Reliability
+TODO
 
-#### SFT-1 (First Level Fault Tolerance)
-1. Dual directory and dual FAT: Maintain main and backup copies on different disks or areas. If the main is damaged, use the backup.
-2. Hot-fix redirection and write-after-read verification: Use a small area for hot-fix; after writing, read back and compare. If mismatch, write to hot-fix area.
+---
 
-#### SFT-2 (Second Level Fault Tolerance)
-1. Disk mirroring: ![storage_sft2_disk_mirroring](res/storage_sft2_disk_mirroring.png) Add an identical disk under the same controller.
-2. Disk duplexing: ![storage_sft2_disk_duplexing](res/storage_sft2_disk_duplexing.png) Two disks on separate controllers, mirrored.
 
-#### Cluster-Based Fault Tolerance
-1. Dual-machine hot backup: ![storage_msl](res/storage_msl.png)
-2. Mutual backup: ![storage_hot_backup](res/storage_hot_backup.png)
-3. Shared disk: Multiple computers share a disk system, divided into volumes. If one fails, another takes over, reducing replication and network/server load.
+
+## Spooling
+
+![spooling](res/spooling.png)
+
+Spooling is a special process in a special area on disk where data is temporarily stored and queued for execution. A spool is similar to a buffer as it holds the jobs for a device until the device is ready to accept the job. It considers the disk as a huge buffer that can store as many jobs for the device till the output devices are ready to accept them.
+
+---
+
+
+
+## Unix File System
+
+![unix_file_system](res/unix_file_system.png)
+
+Unix (UNiplexed Information Computing System) File System is a logical method of organizing and storing large amounts of information in a way that makes it easy to manage.
+
+### Types
+
+![unix_file_system_classification](res/unix_file_system_classification.png)
+
+---
+
 
 
 ## Summary
 
-Main differences between paging and segmentation:
-- Pages are physical units, system-managed
-- Page size is fixed and system-determined; segment length is variable and user-determined
-- Paging gives a one-dimensional address space; segmentation gives a two-dimensional address space
+### Absolute vs Relative Path
+
+| Criteria   | Absolute Path                                                | Relative Path                                   |
+| ---------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| Definition | Full path from root directory                                | Path relative to current working directory      |
+| Dependency | Independent of working directory                             | Depends on working directory                    |
+| Uniqueness | Always unique                                                | May vary depending on current directory         |
+| Usage      | Used in scripts or programs requiring fixed file references. | Used in user-level commands or local navigation |
+
+### HDD vs SDD
+
+![HDD_vs_SDD](res/HDD_vs_SDD.png)
+
+### Spooling vs Buffering
+
+| Spooling                                                     | Buffering                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Overlaps the input/output of one job with the execution of another job. | Overlaps the input/output of a job with the execution of the same job. |
+| Stands for Simultaneous Peripheral Operation On-Line.        | Has no full form.                                            |
+| More efficient since multiple jobs can be processed at the same time. | Less efficient compared to spooling.                         |
+| Uses disk as a large buffer.                                 | Uses a limited area of main memory (RAM).                    |
+| Supports remote processing.                                  | Does not support remote processing.                          |
+| Implemented using spoolers to manage I/O requests and resources. | Implemented using software or hardware buffers like FIFO or circular buffers. |
+| Can handle large amounts of data as storage is on disk.      | Limited by the size of main memory.                          |
+| Provides better recovery from errors since data is stored on disk. | Buffer overflow may cause data loss or corruption.           |
+| More complex due to additional management software.          | Simpler and easier to implement.                             |
+
+
 
 
 ## References
 
-[1] Tang Xiaodan, Liang Hongbing, Zhe Fengping, Tang Ziying. Computer Operating Systems. 3rd Edition. P120 - P172
+[1] [File Systems in Operating System](https://www.geeksforgeeks.org/operating-systems/file-systems-in-operating-system/)
+
+[2] [Unix File System](https://www.geeksforgeeks.org/operating-systems/unix-file-system/)
+
+[3] [Path Name in File Directory](https://www.geeksforgeeks.org/operating-systems/path-name-in-file-directory/)
+
+[4] [Structures of Directory in Operating System](https://www.geeksforgeeks.org/operating-systems/structures-of-directory-in-operating-system/)
+
+[5] [File Allocation Methods](https://www.geeksforgeeks.org/operating-systems/file-allocation-methods/)
+
+[6] [File Access Methods in Operating System](https://www.geeksforgeeks.org/operating-systems/file-access-methods-in-operating-system/)
+
+[7] [Secondary Memory](https://www.geeksforgeeks.org/computer-science-fundamentals/secondary-memory/)
+
+[8] [Hard Disk Drive (HDD) Secondary Memory](https://www.geeksforgeeks.org/computer-organization-architecture/hard-disk-drive-hdd-secondary-memory/)
+
+[9] [Disk Scheduling Algorithms](https://www.geeksforgeeks.org/operating-systems/disk-scheduling-algorithms/)
+
+[10] [Spooling vs Buffering](https://www.geeksforgeeks.org/operating-systems/difference-between-spooling-and-buffering/)

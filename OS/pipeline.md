@@ -4,6 +4,8 @@ English | [中文版](pipeline_zh.md)
 
 [TOC]
 
+
+
 ## Performance Metrics
 
 Three types of factors affecting pipeline operation:
@@ -86,6 +88,7 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 - $TP$: actual throughput when all stages are equal
 
 
+
 ## Pipeline Multiple-Issue Techniques
 
 ### Ordinary Pipeline
@@ -117,8 +120,11 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 *VLIW diagram*
 
 
+
 ## References
 
 [1] Tang Shuofei. Computer Organization Principles
+
 [2] [Computer Organization and Structure](http://staff.ustc.edu.cn/~hdrq/jsjzcyl/text/chapter8/sec3/part1/index1.htm)
+
 [3] [5.2.2 Throughput, Speedup](http://kjwy.5any.com/jsjxtjg/content/cl/jsjxtjg-kcjj-050202.htm)

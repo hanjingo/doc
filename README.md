@@ -280,6 +280,7 @@
 - [COM Technology](OS/com.md)
 - [Compile&Link](OS/compile_and_link.md)
 - [Computer Representation](OS/computer_representation.md)
+- [Coroutine](OS/coroutine.md)
 - [Daemon Process](OS/daemon.md)
 - [Driver](OS/drive.md)
 - [Exception Control](OS/exception_control.md)
@@ -291,11 +292,11 @@
 - [Memory Manage](OS/mem_mgr.md)
 - [Multi Processor](OS/multi_processor.md)
 - [Instruction Pipeline Model](OS/pipeline.md)
-- [Process, Thread And Coroutine](OS/progress_thread_coroutine.md)
+- [Process](OS/process.md)
 - [System Security](OS/safe.md)
-- [Static Linking](OS/static_link.md)
 - [Storage](OS/storage.md)
-- [UNIX Kernel](OS/unix_core.md)
+- [Synchronization](OS/sync.md)
+- [Thread](OS/thread.md)
 
 ---
 

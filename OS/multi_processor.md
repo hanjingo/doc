@@ -67,6 +67,8 @@ By processor similarity:
 
 
 
+
+
 ## Types of Multiprocessor Operating Systems
 
 1. Master-slave
@@ -89,6 +91,8 @@ By processor similarity:
 	| Advantages                                 | Disadvantages |
 	| ------------------------------------------ | ------------- |
 	| - High flexibility<br>- High reliability<br>- Load balancing | - Complex implementation |
+
+
 
 
 
@@ -200,6 +204,8 @@ Algorithm:
 ### Token Ring Algorithm
 
 All processes form a logical ring. A single token circulates; only the process holding the token can enter the critical section and access shared resources. Since there is only one token, mutual exclusion is guaranteed.
+
+
 
 
 

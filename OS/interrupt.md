@@ -4,6 +4,8 @@ English | [中文版](interrupt_zh.md)
 
 [TOC]
 
+
+
 ## Classification
 
 `External interrupt`: The CPU's response to interrupt signals from I/O devices. The CPU suspends the currently executing program, saves the CPU context, and automatically executes the interrupt handler for that I/O device. After completion, it returns to the breakpoint and continues executing the original program.
@@ -11,14 +13,17 @@ English | [中文版](interrupt_zh.md)
 `Internal interrupt`: Interrupts caused by internal CPU events. If the system detects a trap event, the CPU suspends the current program and executes the handler for that trap event.
 
 
+
 ## Interrupt Vector Table
 
 Each device is assigned a corresponding interrupt handler, and the entry address of that handler is placed in an entry of the interrupt vector table. When an I/O device sends an interrupt request signal, the interrupt controller determines the interrupt number, and the system looks up the interrupt vector table using this number to obtain the entry address of the device's interrupt handler, thus transferring control to the handler.
 
 
+
 ## Interrupt Priority
 
 For multiple interrupt sources, the system assigns different priorities to each.
+
 
 
 ## Interrupt Handling
