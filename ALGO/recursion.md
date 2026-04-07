@@ -24,7 +24,7 @@ An **indirect recursive function** is one that calls another function, and that 
 
 - Recursion helps in logic building. Recursive thinking helps in solving complex problems by breaking them into smaller subproblems.
 - Recursive solutions work as a basic for Dynamic Programming and Divide and Conquer algorithms.
-- Certain problem can be solved quite easily using recursion.
+- Certain problems can be solved quite easily using recursion.
 
 
 

@@ -1,10 +1,8 @@
-# Tree Problem
+# Binary Tree Problem
 
 [TOC]
 
 
-
-## Binary Tree
 
 ### Checks if a binary tree is balanced using a recursive approach.
 
@@ -125,3 +123,51 @@ Complexity Analysis:
 - Time Complexity: $O(n)$, where $n$ is the number of nodes in the tree.
 
 - Space Complexity: $O(h)$, where $h$ is the height of the tree, due to the recursion stack.
+
+
+
+### Level-Order traversal of a binary tree. Process each level layer by layer, storing nodes in a list. Classic for breadth-first search.
+
+```c++
+struct node 
+{
+    int val;
+    node* left;
+    node* right;
+    node(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+std::list<int> bfs_lvl_order(node* root) 
+{
+    std::list<int> ret;
+    if (!root)
+        return ret;
+
+    std::queue<node*> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        for (int i = 0; i < q.size(); ++i)
+        {
+            node* curr_node = q.front();
+            q.pop();
+            
+            ret.push_back(curr_node->val);
+            if (curr_node->left)
+                q.push(curr_node->left);
+            if (curr_node->right)
+                q.push(curr_node->right);
+        }
+    }
+
+    return ret;
+}
+```
+
+Complexity Analysis:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | O(n)            | O(n)             |
+| Average Case | O(n)            | O(n)             |
+| Worst Case   | O(n)            | O(n)             |

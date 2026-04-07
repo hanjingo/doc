@@ -268,6 +268,92 @@ int main(void)
 }
 ```
 
+Common Use Cases:
+
+- Compile-time hashing
+
+  ```c++
+  constexpr uint32_t hash(const char* str) 
+  {
+    uint32_t h = 0;
+    while (*str) { h = h * 31 + *str++; }
+    return h;
+  }
+  ```
+
+- Template metaprogramming replacement
+
+  ```c++
+  template<int N>
+  struct Factorial
+  {
+    static constexpr int value = N * Factorial<N-1>::value;
+  };
+  ```
+
+- Lookup tables at compile time
+
+  ```c++
+  constexpr auto fun()
+  {
+    std::array<int, 10> arr{};
+    for (int i = 0; i < 10; ++i)
+      arr[i] = i * i;
+    return arr;
+  }
+  
+  constexpr auto val = fun(); // Computed at compile time
+  ```
+
+### The Dual Nature of constexpr Functions
+
+If a constexpr function is called with non-constant arguments, It falls back to runtime evaluation (unless consteval). For example:
+
+```c++
+constexpr int fun(int x) { return x * x; }
+
+// Case 1: Called with constant expression → Compile-time evaluation
+constexpr int compile_time = square(5);     // ✅ Evaluated at compile time
+
+// Case 2: Called with runtime value → Runtime evaluation
+int runtime_value = 5;
+int runtime_result = square(runtime_value);  // ✅ Evaluated at runtime
+```
+
+We can use `if constexpr` for performance optimization. For example:
+
+```c++
+constexpr int process(int value, bool mode) {
+    if constexpr (mode) {
+        return value * 100;  // Compile-time branch
+    } else {
+        return value;         // Runtime branch
+    }
+}
+
+// Or with regular if (works in both contexts)
+constexpr int smart_process(int value) {
+    if (value > 1000) {
+        return value / 2;     // Branch determined at runtime if value is runtime
+    } else {
+        return value * 2;
+    }
+}
+```
+
+We can use `consteval` (C++ 20) forces compile-time evaluation. For example:
+
+```c++
+consteval int fun(int x) { return x * x; }
+int main()
+{
+  constexpr int a = fun(5);     // ✅ OK
+  
+  int n = 10;
+  int b = fun(n); // ❌ Error! Must be compile-time
+}
+```
+
 ### Notes
 
 1. Pay attention when combining `const` and references.
@@ -299,23 +385,174 @@ int main(void)
 
 9. Const objects call only const member functions; overload resolution picks the const/non-const overload accordingly.
 
-10. A function be declared as **constexpr**:
+10. A constructor that is declared with a constexpr specifier is a **constexpr constructor** also constexpr can be used in the making of constructors and objects.
 
-    - In C++11, a constexpr function should contain only one return statement. C++14 allows more than one statement.
-    - constexpr function should refer only to constant global variables.
-    - constexpr function can call only other constexpr functions not simple functions.
-    - the function should not be of a void type.
-    - In C++11, prefix increment(`++v`) was not allowd in constexpr function but this restriction has been removed in C++14.
+     ```c++
+     class point
+     {
+     	int x, y;
+     public:
+       constexpr point(int a, int b) : x{a}, y{b} {}
+       constexpr int get_x() const { return x; }
+     };
+     constexpr Point p(3, 4);    // ✅ Compile-time object
+     constexpr int x = p.getX(); // ✅ 3 (compile-time)
+     ```
 
-11. A constructor that is declared with a constexpr specifier is a **constexpr constructor** also constexpr can be used in the making of constructors and objects.
+11. A constexpr constructor is implicitly inline.
 
-12. A **constexpr constructor** is implicitly inline.
+12. Restrictions on constructors that **can** use constexpr:
 
-13. Restrictions on constructors that can use constexpr:
+        - No virtual base class.
+        - Each parameter should be literal.
+        - It is not a tray block function.
 
-     - No virtual base class.
-     - Each parameter should be literal.
-     - It is not a tray block function.
+13. constexpr function evaluation **can** be compile-time
+
+      ```c++
+      constexpr int d = hello(); // ❌ Error: Compile error if not constant
+      ```
+
+14. `constexpr` functions **can** be recursive
+
+     ```c++
+     constexpr int fun(int n) { return n <= 1 ? 1 : n * fun(n - 1); }
+     constexpr int n = fun(100);     // ✅ Usually OK
+     constexpr int n = fun(100000);  // ❌ May exceed compiler limit
+     
+     constexpr int* bad_recursion() {
+         return new int(n);  // ❌ Cannot use new in constexpr
+     }
+     ```
+
+     There are some important limitations
+
+     - Depth Limits
+     - No Dynamic Memory in Recursion
+
+15. constexpr **must** be initialized with a constant expression
+
+       ```c++
+      constexpr int invalid;        // ❌ Error: uninitialized
+       ```
+
+16. **Cannot** use `static` variables inside `constexpr` functions.
+
+       ```c++
+       constexpr int example()
+       {
+         static int counter = 0; // ❌ Error: static variable not allowed
+         return ++counter;
+       }
+       ```
+
+       `constexpr` functions must produce the same result for the same inputs at compile time. Static variables maintain state between calls, which would make the function's output depend on hidden state and the number of previous calls - impossible to evaluate at compile time.
+
+17. **Cannot** use `dynamic_cast`, `typeid`, `new/delete` with `constexpr`.
+
+        ```c++
+        constexpr int fun()
+        {
+          int* p = new int(42); // ❌ No dynamic allocation
+          delete p; 					  // ❌ No deallocation
+          
+          Base* b = new Derived();
+          Derived* d = dynamic_cast<Derived*>(b); // ❌ No dynamic_cast
+          
+          if (typeid(*b) == typeid(Derived)) {}   // ❌ No typeid
+          
+          return 1;
+        }
+        ```
+        
+        - `new/delete` involve runtime heap allocation, which the compiler cannot do at compile time.
+        - `dynamic_cast` requires RTTI(Run-Time Type Information) and polymorphic class hierarchies that only exist at runtime.
+        - `typeid` similarly depends on runtime type information.
+
+18. ~~**Cannot** have `try/catch` blocks (before C++20)~~
+
+       ```c++
+       constexpr int divide(int a, int b)
+       {
+         try{ // ❌ Error before C++20
+           if (b == 0) throw 0;
+           return a / b;
+         } catch(...) {
+           return 0;
+         }
+       }
+       ```
+
+       Before C++20, exception handling machinery was considered run-time only. C++20 relaxed this, allowing `try/catch` but with limitations (can't actually throw at compile time--will trigger compile error).
+
+19. I/O operations **not allowed** `constexpr`.
+
+       ```c++
+       constexpr void example()
+       {
+         std::cout << "hello\n"; // ❌ Error: I/O not constexpr
+         printf("World\n");      // ❌ Error: I/O not constexpr
+       }
+       ```
+
+       I/O operations interact with external systems (console, files, network) that don't exist at compile time. The compiler would have no way to "output" something during compilation.
+
+20. **Non-constexpr** library functions can't be called
+
+       ```c++
+       int hello() { return 1; }
+       constexpr int fun1() { return hello(); } // ❌ Error: calling non-constexpr function
+       constexpr int fun2() { return 3; } 			 // OK
+       ```
+
+21. In C++11, a constexpr function should contain **only** one return statement. C++14 allows **more than** one statement.
+
+      ```c++
+      // C++11 style
+      constexpr int fun(int n) {
+        return 1; // only single return statement
+      }
+      ```
+
+      ```c++
+      // >= C++14 style
+      constexpr int fun(int n) {
+        int a = n;
+        return a;
+      }
+      ```
+
+ 22. A constexpr function should refer **only** to constant global variables.
+
+     ```c++
+     // ❌ Wrong: Non-constant global variable
+     int global_counter = 100;  // Not constexpr
+     constexpr int multiply(int x) {
+         return x * global_counter;  // ❌ Error: global_counter not constant
+     }
+     
+     // ✅ Correct: Constant global variable
+     constexpr int CONSTANT_VALUE = 100;
+     constexpr int multiply(int x) {
+         return x * CONSTANT_VALUE;  // ✅ OK - CONSTANT_VALUE is constexpr
+     }
+     ```
+
+ 23. ~~In C++11, prefix increment(`++v`) was not allowed in a constexpr function, but this restriction has been removed in C++14 and above.~~
+
+     ```c++
+     // C++11 - ❌ NOT allowed
+     constexpr int increment(int x) {
+         ++x; // ❌ Error: increment operator not allowed in constexpr
+         return x;
+     }
+     
+     // C++14+ - ✅ Allowed
+     constexpr int increment(int x) {
+         ++x; // ✅ OK - prefix increment
+         return x;
+     }
+     ```
 
 [Top](#C++ Features)
 
@@ -463,9 +700,74 @@ public:
 
 ### Uses
 
-- **Static local variables**: initialized once and live until program termination.
-- **Static global variables**: visible only within the current translation unit.
-- **Static functions**: callable only within the current translation unit.
+- **Static local variables** (Inside a function): initialized once and live until program termination
+
+  ```c++
+// Meyers Singleton Pattern (function-local static)
+  Foo& Instance()
+  {
+    static Foo inst;
+    return inst;
+  }
+  ```
+  
+  Use case: memoization, singleton instance getter, tracking call counts.
+
+- **Static global variables** (At file scope): visible only within the current translation unit; Cannot be accessed from other files
+
+  ```c++
+  // file1.cpp
+  static int hidden = 42; 	  // Only visible in file1.cpp
+  void fun() { hidden = 10; } // OK
+  ```
+
+  ```c++
+  // file2.cpp
+  extern int hidden; // Error! Cannot access static global from other file
+  ```
+
+  Best Practice: Use anonymous namespaces in modern C++ files for implementation details that should be private to that translation unit. Reserve `static` for inside functions or classes.
+
+  ```c++
+  // file1.cpp
+  namespace {
+    int hidden = 42; // Only visible in file1.cpp
+    void fun() { hidden = 10; } // OK
+  }
+  ```
+
+  ```c++
+  // file2.cpp - CANNOT access anything from file1.cpp's anonymous namespace
+  ```
+
+- **Static Member Variables** (Inside a class)
+
+  1. Shared across all objects of the class.
+  2. Must be defined outside the class (in .cpp file).
+  3. Can be accessed without creating an object.
+
+  ```c++
+  class MyClass
+  {
+  	inline static int count = 0; // C++17: define directly
+  };
+  ```
+
+- **Static Member Functions** (Inside a class)
+
+  1. Can only access static members (no `this` pointer).
+  2. Can be called without an object.
+
+  ```c++
+  class MyClass
+  {
+  public:
+    	static int fun() { return 1; }
+  };
+  int ret = MyClass::fun(); // No object needed
+  ```
+
+  Common uses: Factory methods, utility functions, the singleton pattern.
 
 ### Notes
 
@@ -1080,6 +1382,8 @@ decltype(a->x); 	// double
 decltype((a->x)); // const double& (The inner parentheses cause the statement to be evaluated as an expression instead of a member access. And because `a` is declared as a `const` pointer, the type is a reference to `const double`.)
 ```
 
+### decltype vs auto
+
 `decltype` and `auto`, for example:
 
 ```c++
@@ -1127,7 +1431,7 @@ private:
 
 The sizeof operator is a `unary`, `compile-time operator` in C++ used to determine the memory size (in bytes) of variables, data types, constants, as well as user-defined types such as structures, unions, and classes.
 
-### Syntax
+Syntax:
 
 ```c++
 sizeof(expression)
@@ -1136,7 +1440,7 @@ sizeof(expression)
 - Paramerters (expression): The variable, data type, or expression whose size(in bytes) is to be determined.
 - Return Type: Returns a value of type `size_t`, representing the size in bytes.
 
-### Examples
+Examples:
 
 ```c++
 #include <iostream>
@@ -1535,14 +1839,6 @@ names.emplace_back("Bob");
 
 
 
-## Std::forward
-
-TODO
-
----
-
-
-
 ## References
 
 [1] [C++ reference manual](https://en.cppreference.com)
@@ -1590,3 +1886,6 @@ TODO
 [22] [Understanding constexpr Specifier in C++](https://www.geeksforgeeks.org/cpp/understanding-constexper-specifier-in-cpp/)
 
 [23] [C++ sizeof Operator](https://www.geeksforgeeks.org/cpp/cpp-sizeof-operator/)
+
+[24] [static_cast in C++](https://www.geeksforgeeks.org/cpp/static_cast-in-cpp/)
+

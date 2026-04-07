@@ -68,7 +68,31 @@ Function overloading allows you to define multiple functions in the same scope w
 
 #### What is the difference between static data members and non-static data members?
 
-static data member shared among all instances, by contrast, each object has its own copy of non-static member .
+static data member shared among all instances; by contrast, each object has its own copy of non-static member .
+
+#### Can static member functions be virtual?
+
+No, virtual functions require `this` pointer (dynamic dispatch), static functions have no `this`.
+
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
+
+#### When are static variables initialized?
+
+Before `main()` (static initialization) or on first use (dynamic initialization). Can lead to static initialization order fiasco.
+
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
+
+#### How to fix static initialization order fiasco?
+
+Use Meyers Singleton pattern(function-local static)
+
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
+
+#### Can we have static constructors in C++?
+
+No, but you can use static initialization blocks.
+
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
 
 #### What is a pointer in C++, and how is it different from a reference?
 
@@ -184,6 +208,26 @@ For more info, see: [C++ Features#volatile](LANG/C++/feature.md)
 `constexpr` is used to define expressions or functions that are evaluated at compile-time, ensuring greater efficiency by precomputing values wherever possible.
 
 For more info, see: [C++ Features#constexpr](LANG/C++/feature.md)
+
+#### What happens if a `constexpr` function is called with non-constant arguments?
+
+It falls back to runtime evaluation (unless `consteval`(C++20 above)).
+
+For more info, see: [C++ Features#The Dual Nature of constexpr Functions](LANG/C++/feature.md)
+
+#### Can `constexpr` functions be recursive?
+
+Yes, but watch for compile-time recursion limits, and no dynamic memory in recursion.
+
+For more info, see: [C++ Features#constexpr](LANG/C++/feature.md)
+
+#### When should I use `constexpr` vs `templates`?
+
+Use `constexpr` for numeric computations, use `if constexpr` for conditional compilation. `Templates` for type-based dispatch.
+
+#### Can virtual functions be `constexpr`?
+
+No! Virtual dispatch requires a runtime.
 
 #### What is C++ storage class?
 
@@ -347,7 +391,7 @@ For more info, see: [C++ Objects](LANG/C++/object.md)
 
 #### What happens when we override a function but forget to use `virtual` in the base class?
 
-Function overriding won't work as runtim polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
+Function overriding won't work as runtime polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
 
 For more info, see: [C++ Objects](LANG/C++/object.md)
 
@@ -402,7 +446,7 @@ void operator delete(void* ptr){
 
 For more info, see: [C++ Objects#Summary](LANG/C++/object.md)
 
-#### Why base class destructors should be virtual?
+#### Why should base class destructors be virtual?
 
 If the base class destructor is not virtual, deleting a derived object through a base pointer calls only the base destructor, can cause memory leaks or incomplete destruction, and can ensures the derived destructor is called first.
 
@@ -413,6 +457,30 @@ For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.m
 Destructor overloading is not possible in C++. A class can have only one destructor, and it cannot take parameters or have a return type.
 
 For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+
+#### Why use `static_cast` over C-style cast?
+
+`static_cast` provides compile-time type safety, code clarity, and reduced risk of unintended conversions.
+
+For more info, see: [C++ Objects#static_cast](LANG/C++/object.md)
+
+#### Can `dynamic_cast` be used with non-ploymorphic types?
+
+No. Compiler error (no vtable).
+
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
+
+#### What's the cost of `dynamic_cast`?
+
+Depends on inheritance depth.
+
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
+
+#### How does `dynamic_cast` work internally?
+
+Each polymorphic class has a vtable. The compiler stores the RTTI pointer in the vtable. `dynamic_cast` traverses the inheritance graph by following these pointers and comparing `type_info` objects.
+
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
 
 ### Template
 
@@ -923,25 +991,37 @@ The idea is to traverse the entire linked list once to count the total number of
 
 For more info, see: [Linked List#Reverse](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
 
-### Tree
+#### Detecting a cycle in a linked list.
+
+Using Floyd's Algorithm is the best choice with average time complexity equal to O(n).
+
+For more info, see: [Linked List](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+
+### Binary Tree
 
 #### Checks if a binary tree is balanced using a recursive approach.
 
 Define a function that simultaneously calculates the height of the tree and checks for the balance condition. Calculate the absolute difference between left height and right heigh, if the difference is greater than 1, it is unbalanced. otherwise, it is balanced.
 
-For more info, see: [Binary Tree#Balanced Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
+For more info, see: [Binary Tree#Balanced Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
 
 #### Find the lowest common ancestor in a binary search tree.
 
 We just recursively traverse the BST(binary search tree), if node's value is greater than both n1 and n2 then our LCA lies in the left side of the node, if it is smaller than both n1 and n2, then LCA lies on the right side. Otherwise, the root is LCA.
 
-For more info, see: [Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
 
 #### Check if a binary tree is a valid binary search tree using in-order traversal.
 
 Traverse the tree and verify that each element encountered is greater than the previous one.
 
-For more info, see: [Binary Tree](ALGO/binary_tree.md), [Tree Problem](ALGO/LEET_CODE/tree.md)
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
+
+#### Level-Order traversal of a binary tree. Process each level layer by layer, storing nodes in a list. Classic for breadth-first search.
+
+Using BFS(Breadth First Search) level order raversal a binary tree, using a linked list container to save the node value.
+
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
 
 ### Dynamic Programming
 
@@ -966,6 +1046,12 @@ For more info, see: [Dynamic Programming Algorithm](ALGO/dynamic_programming.md)
 #### What's the difference between top-down and bottom-up dynamic programming?
 
 Top-down starts from the top and breaks down the problem recursively, while bottom-up builds solutions iteratively from the smallest subproblems.
+
+#### Given an array and a target, how'd you use dynamic programming to find the two numbers that add up to the target?
+
+Using dynamic programming to fix this problem is **NOT RECOMMEND**, it's the worst choice with time complexity = O(n × target) in average case.
+
+For more info, see: [Dynamic Programming](ALGO/LEET_CODE/dynamic_programming.md)
 
 ### Greedy Algorithm
 
@@ -1003,7 +1089,11 @@ For more info, see: [Recursion](ALGO/recursion.md)
 
 ### Divide and Conquer Algorithm
 
-TODO
+#### Split the array in half, sort both halves, then merge them back.
+
+We use the two positions (left, right) divide the array continuously, until array's size equal to 2; then sorted it.
+
+For more info, see: [Sorting Algorithm Summary](ALGO/sort.md), [Divide and Conquer Algorithm](ALGO/LEET_CODE/divide_and_conquer.md)
 
 ### Backtracking Algorithm
 
@@ -1011,7 +1101,7 @@ TODO
 
 First initialize an array of string `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the lememts in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
 
-For more info, see: [Backtracking Problem](ALGO/LEETCODE.md)
+For more info, see: [Backtracking Problem](ALGO/LEET_CODE/backtracking.md)
 
 ### Searching
 
@@ -1055,12 +1145,6 @@ Binary Search requires a sorted array and the ability to access elements by inde
 
 For more info, see: [Searching Algorithm Summary](ALGO/search.md)
 
-#### Compare Linear Search and Binary Search.
-
-Linear Search checks elements sequentially, while Binary Search halves the search space with each step, making it more efficient for sorted data.
-
-For more info, see: [Searching Algorithm Summary](ALGO/search.md)
-
 #### How deos Hashing work in searching?
 
 Hashing uses a hash function to compute an index for each element, allowing for constant-time search operations in the average case by storing elements in a hash table.
@@ -1093,7 +1177,7 @@ For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
 
 #### Given a sorted array, find two numbers that add up to a target. Write the code using two pointers.
 
-Using a container(example: unordered_map) to cache parameter.
+Using a container(e.g. unordered_map) to cache parameters.
 
 For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
 
@@ -1354,23 +1438,3 @@ For more info, see: [Development Tools#Valgrind](PROJ/dev_tool.md)
 The Google Breakpad will storage the core file when application crashed. It contains the runtime values, environment setting and source code. It will help you a lot by checkout the core file.
 
 For more info, see: [Development Tools#Breakpad](PROJ/dev_tool.md)
-
----
-
-
-
-## Behavior Test
-
-### Deadline
-
-#### What steps did you take to stay focused and deliver on time?
-
-To stay focused and deliver on time, key steps included prioritizing tasks, utilizing time-blocking, and eliminating distractions by diabling notifications and using headphones.
-
-#### How did you use key milestones to prioritize tasks and ensure timely delivery, and what did you do if a milestone was at risk?
-
-Key milestones serve as crucial checkpoints that transform a project's major components into actionable tasks. This leads to the development of the best plans. I prioritize tasks by planning backward from the milestones to identify the cirtical path and ensure that high-risk elements are addressed early. When a milestone is at risk, I communicate with stakeholders to manage expectations, assess the impact on the schedule, and then reallocate resources accordingly.
-
-#### How did you handle unexpected delays on the critical path, and what specific actions did you take to get back on track?
-
-To handle unexpected critical path delays, I immediately assess the impact, communicate transparently with stakeholders, and implement schedule compression techniques like crashing (adding resources) or fast-tracking (parallel tasks). My focus is on reassessing the schedule to identify new bottlenecks and updating the project plan to regain lost time.

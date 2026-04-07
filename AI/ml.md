@@ -6,13 +6,13 @@
 
 ## Intro
 
-Machine Learning(ML) is the subset of artificial intelligence(AI) focused on algorithms that can "learn" the patterns of training data and, subsequently, make accurate `inferences` about new data. This pattern recognition ability enables machine learning models to make decisions or predictions without explicit, hard-coded instructions.
+Machine Learning(ML) is a subset of artificial intelligence(AI) focused on algorithms that can "learn" the patterns of training data and, subsequently, make accurate `inferences` about new data. This pattern recognition ability enables machine learning models to make decisions or predictions without explicit, hard-coded instructions.
 
 ML finds application in many fields, including natural language processing, computer vision, speech recognition, email filtering, agriculture, and medicine. The application of ML to business problems is known as predictive analytics.
 
 ![ml_hierarchy](res/ml_hierarchy.png)
 
-*Deep learning is a subsetof machine learning, which is itself a subset of artificial intelligence. *
+*Deep learning is a subset of machine learning, which is itself a subset of artificial intelligence.*
 
 
 

@@ -58,3 +58,40 @@ Complexity Analysis:
 
 - Time complexity: $O(n)$
 - Space complexity: $O(1)$
+
+
+
+#### Detecting a cycle in a linked list.
+
+```c++
+struct node
+{
+    int val;
+    node* next;
+    node(int x) : val{x}, next{nullptr} {}
+};
+
+bool is_cycled(node* head)
+{
+    if (!head || !head->next)
+        return false;
+
+    node* slow = head;
+    node* fast = head;
+    while (fast && fast->next)
+    {
+        slow = slow->next;       // move 1 step
+        fast = fast->next->next; // move 2 step
+        if (slow == fast)
+            return true;
+    }
+
+    return false;
+}
+```
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | O(1)            | O(1)             |
+| Average Case | O(n)            | O(1)             |
+| Worst Case   | O(n)            | O(1)             |
