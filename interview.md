@@ -14,13 +14,13 @@ English | [中文版](interview_zh.md)
 
 c++ is a general-purpose, object-oriented programming language built as a extension of C. While C focuses on structred programming, C++ adds OOP features like classes, inheritance, poolymorphism, and encapsulation. It also supports function and operator overloading, plus templates, making code more reusable, efficient, and flexible.
 
-For more info, see: [C++ Features](LANG/C++/feature.md), [C++ Object](LANG/C++/object.md)
+For more info, see: [C++ Features](LANG/C++/feature.md), [C++ Object](LANG/C++/oop.md)
 
 #### What are access modifiers in C++?
 
 Access modifiers control who can access class members and data members. They help encorce object oriented programming principles like encapsulation. There are three access modifieers in C++: public, private, protected.
 
-For more info, see: [C++ Object](LANG/C++/object.md)
+For more info, see: [C++ Object](LANG/C++/oop.md)
 
 #### What is the purpose of comments in C++?
 
@@ -48,7 +48,7 @@ A shallow copy means copying an object in a way that only the outer structure is
 
 Stack memory handles static allocation(local variables, function calls), while heap memory manages dynamic allocation(objects).
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is a recursive function? 
 
@@ -158,7 +158,7 @@ For more info, see: [C++ Features#Move](LANG/C++/feature.md)
 
 #### Explain how `std::move` and `std::forward` differ in perfect forwarding?
 
-In C++, the key difference is that `std::move` unconditionally casts its argument to an rvalue reference to enable move semantics, while `std::forward` conditionally casts it argument to preserve its original value category in generic code. This preservation of value category is the core of perfect forwarding.
+In C++, the key difference is that `std::move` unconditionally casts its argument to an rvalue reference to enable move semantics, while `std::forward` conditionally casts it argument to preserve its original value category in generic code. This preservation of the value category is the core of perfect forwarding.
 
 For more info, see: [C++ Features#Move](LANG/C++/feature.md)
 
@@ -239,6 +239,12 @@ The `mutable` keyword is a storage class specifier used only with non-static dat
 
 For more info, see: [C++ Features#mutable](LANG/C++/feature.md)
 
+#### What's the difference between `override` and `final`?
+
+`override` tells the compiler this function is meant to override a base virtual function (catches signature errors). `fina` prevents further overriding in derived classes.
+
+For more info, see: [C++ Features#override](LANG/C++/feature.md), [C++ Features#final](LANG/C++/feature.md)
+
 ### Smart Point
 
 #### Explain Smart Pointers in C++?
@@ -247,11 +253,11 @@ Smart pointers are template classes in `<memory>` that automate memory managemen
 
 For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
 
-#### Can you explain the differences between `unique_ptr`, `shared_ptr`, and `weak_ptr` in terms of ownership and use cases?
+#### Explain the differences between `unique_ptr`, `shared_ptr`, and `weak_ptr` in terms of ownership and use cases?
 
 `unique_ptr` provides exclusive ownership of a resource, `shared_ptr` enables shared ownership via reference counting, and `weak_ptr` observes a `shared_ptr` without managing its lifetime, preventing circular dependencies. 
 
-For more info, see: [C++ STL#Smart pointers](LANG/C++/stl.md)
+For more info, see: [C++ STL#unique_ptr vs shared_ptr vs weak_ptr](LANG/C++/stl.md)
 
 #### Can you clarify how `shared_ptr` handles reference counting and why `weak_ptr` is used to break circular references?
 
@@ -279,11 +285,11 @@ The main issue when using `std::shared_ptr` in a multithreaded environment is th
 
 For more info, see: [C++ STL#shared_ptr](LANG/C++/stl.md)
 
-#### Can you write a simple example where `std::unique_ptr` prevents a memory leak in a function that returns a dynamically allocated object?
-
-For more info, see: [C++ STL#unique_ptr](LANG/C++/stl.md)
-
 #### Can you explain what a dangling pointer is and how smart pointers help prevent it?
+
+A dangling pointer generally occurs when we use the `delete` to deallocate memory that was previously allocated, and the pointer that was pointing to that memory still points to the same address.
+
+Smart pointers implement RAII (Resource Acquisition Is Initialization), they automatically manage object lifetime.
 
 For more info, see: [C++ Feature#Dangling Pointer](LANG/C++/feature.md)
 
@@ -333,9 +339,23 @@ For more info, see: [C++ Best Practice#Ensure thread safety](LANG/C++/best_pract
 
 ### OOP
 
+#### What is Object Oriented Progamming (OOP)?
+
+Object-Oriented Programming is a programming paradigm that organizes code around objects(data + behavior) rather than functions and data separately.
+
+For more info, see: [C++ Objects](LANG/C++/oop.md)
+
 #### What is a class and object in C++?
 
-A class is a blueprint or template that defines the properties(data members) and behaviors(member functions/methods) that all objects of that specific type will have. An object is a real-world instance of a class that occupies memory and can perform the actions defined by the class.
+A class is a blueprint or template that defines the properties(data members) and behaviors(member functions/methods) that all objects of that specific type will have. 
+
+An object is a real-world instance of a class that occupies memory and can perform the actions defined by the class.
+
+#### What are the C++ Access Specifiers?
+
+In C++, the access specifiers are used to define how the functions and variables can be accessed outside the class. There are three access specifiers: `public`, `protected`, and `private`. `public` members are accessible from anywhere. `private` members are only accessible within the same class. `protected` members are accessible within the class and its derived classes.
+
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What are type modifiers in C++?
 
@@ -345,85 +365,127 @@ Modifiers like signed, unsigned, long, short change the size or sign of basic da
 
 A friend function (or class) has access to a class's private and protected members. It can be used sparingly to implement symmetric operators or tightly coupled utilities without exposing internals publicly.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects#Access Specifiers](LANG/C++/oop.md)
 
 #### What is a friend class?
 
 A friend class is a class that can access the private and protected members of another class. The friendship is declared inside the class using friend class.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is object slicing in C++? How can you avoid it?
 
 Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members fo the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is the difference between an abstract class and an interface in C++? How do you implement an interface-like behavior in C++?
 
 An abstract class is a class with **at least** one pure virtual function. An interface is a class with **only** pure virtual functions, it is a contract that defines a set of methods that a class must implement, without providing any implementation details ...
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### Explain the concept of encapsulation
 
 Encapsulation is one of the core principles of OOP. It bundles data(member variables) with the methods (member functions) that operate on that data inside a single unit, called a class. It restricts direct access to some parts of an object and hides the data to protect its integrity.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is inheritance in C++?
 
 Inheritance is a machanism in which a class(derived class) acquires the properties and behaviors of another class(base class).
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is multiple inheritance, and what problems can it cause?
 
 Multiple inheritance (MI) lets a class inherit from more than one base. Here are the common issues that result from MI: Ambiguity, Diamond problem, complexity.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects#Multiple Inheritance](LANG/C++/oop.md)
+
+#### When should we use multiple inheritance?
+
+In C++, multiple Inheritance should be used when a class is required to inherit features (data members and member functions) from more than one base class, and each base class offers a different cunctionality or behavior that is logically required in the derived class.
+
+For more info, see: [C++ Objects#Multiple Inheritance](LANG/C++/oop.md)
+
+#### What is a virtual function?
+
+A virtual function is a member function declared with the `virtual` keyword that can be overridden in derived classes. When you call a virtual function through a base class pointer or reference, C++ determines at runtime which function to execute based on the actual object type - not the pointer type. Virtual functions are implemented via a vtable (virtual table) - an array of function pointers, and each object contains a vptr (virtual pointer) to its class's vtable.
+
+For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+
+#### What's the size overhead of a virtual function?
+
+Each object gets one `vptr` (8bytes on 64-bit os) regardless of how many virtual functions. Each class gets one vtable (shared across all instances).
+
+For more info, see: [C++ Objects#Object Model](LANG/C++/oop.md)
 
 #### What is virtual inheritance?
 
 Virtual inheritance is a C++ mechanism used to solve the diamond problem in multiple inheritance.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
-#### What happens when we override a function but forget to use `virtual` in the base class?
+#### What's the diamond problem with virtual inheritance?
 
-Function overriding won't work as runtime polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
+When a class inherits from two classes that share a common base, virtual inheritance ensures only one copy of the base class exists.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects#Virtual Inheritance](LANG/C++/oop.md)
+
+#### Can you have a virtual function with default arguments?
+
+Yes, but DANGEROUS! Default arguments are determined at compile-time based on the static type.
+
+For more info, see: [C++ Objects#Virtual Inheritance](LANG/C++/oop.md)
 
 #### Can we call a virtual function from a constructor?
 
 Yes, we can call a virtual function from a constructor, but during base class construction the derived part of the object is not yet initialized.
 
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
+
+#### Can constructors be virtual?
+
+No. Constructors are aclled before the object exists - no vpt yet. The virtual mechnism requires a fully constructed object with a valid vtable.
+
+For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+
+#### Can static functions be virtual?
+
+No, Virtual dispatch requires a `this` pointer (object instance). Static functions belong to the class, not objects.
+
+For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+
+#### What happens when we override a function but forget to use `virtual` in the base class?
+
+Function overriding won't work as runtime polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
+
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### What is polymorphism in C++?
 
 Polymorphism means one interface, multiple implementations. It allows the same function or operator to behave differently depending on the context.
 
-For more info, see: [C++ Objects](LANG/C++/object.md)
+For more info, see: [C++ Objects](LANG/C++/oop.md)
 
 #### Can constructors be private in C++?
 
 Yes, constructors can be private in C++. When a constructor is private, objects of the class cannot be created directly outside the class.
 
-For more info, see: [C++ Object](LANG/C++/object.md)
+For more info, see: [C++ Object](LANG/C++/oop.md)
 
 #### Can a derived class access private members of the base class?
 
 A derived class cannot directly access private members of a base class.
 
-For more info, see: [C++ Object](LANG/C++/object.md)
+For more info, see: [C++ Object](LANG/C++/oop.md)
 
 #### How do you free memory allocated with new?
 
 Use `delete` for single values, and `delete[]` for arrays.
 
-For more info, see: [C++ Objects#new and delete Operators](LANG/C++/object.md)
+For more info, see: [C++ Objects#new and delete Operators](LANG/C++/oop.md)
 
 #### How we can make custom delete?
 
@@ -438,49 +500,51 @@ void operator delete(void* ptr){
 
 #### What is the difference between `new` and `malloc()`
 
-| new                                     | malloc                                      |
-| --------------------------------------- | ------------------------------------------- |
-| An operator which performs an operation | A function that returns and accepts values. |
-| Calls the constructors                  | Cannot call a constructor                   |
-| Returns the exact data type             | Return void*                                |
+`new` is a C++ operator that allocates memory and calls constructors, while `malloc()` is a C function that only allocates raw memory. `new` returns the correct typed pointer; `malloc()` returns `void*`. `new` throws `std::bad_alloc` on failure, `malloc()` return `NULL`. Memory allocated with `new` must be freed with `delete`, memory from `malloc()` with `free()`, mixing them is undefined behavior.
 
-For more info, see: [C++ Objects#Summary](LANG/C++/object.md)
+For more info, see: [C++ Objects#Summary](LANG/C++/oop.md)
 
 #### Why should base class destructors be virtual?
 
 If the base class destructor is not virtual, deleting a derived object through a base pointer calls only the base destructor, can cause memory leaks or incomplete destruction, and can ensures the derived destructor is called first.
 
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
 
 #### Is destructor overloading possible?
 
 Destructor overloading is not possible in C++. A class can have only one destructor, and it cannot take parameters or have a return type.
 
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/object.md)
+For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
 
 #### Why use `static_cast` over C-style cast?
 
 `static_cast` provides compile-time type safety, code clarity, and reduced risk of unintended conversions.
 
-For more info, see: [C++ Objects#static_cast](LANG/C++/object.md)
+For more info, see: [C++ Objects#static_cast](LANG/C++/oop.md)
 
 #### Can `dynamic_cast` be used with non-ploymorphic types?
 
 No. Compiler error (no vtable).
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
 
 #### What's the cost of `dynamic_cast`?
 
 Depends on inheritance depth.
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
 
 #### How does `dynamic_cast` work internally?
 
 Each polymorphic class has a vtable. The compiler stores the RTTI pointer in the vtable. `dynamic_cast` traverses the inheritance graph by following these pointers and comparing `type_info` objects.
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/object.md)
+For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
+
+#### Explain the difference between `static_cast`, `dynamic_cast` and `reinterpret_cast`.
+
+`static_cast` does compile-time checked conversions between related types. `dynamic_cast` does runtime-checked downcasting. `reinterpret_cast` does dangerous bit-level reinterpretation with no checks whatsoever.
+
+For more info, see: [C++ Objects#`static_cast` vs `dynamic_cast` vs `reinterpret_cast`](LANG/C++/oop.md)
 
 ### Template
 
@@ -670,6 +734,16 @@ int sum(const std::vector<int>& arr)
 For more info, see: [C++ STL](LANG/C++/stl.md)
 
 ### Boost
+
+TODO
+
+### Compile & Link
+
+#### What is token in C++?
+
+TODO
+
+#### What are the methods of exporting a function from a DLL?
 
 TODO
 
@@ -978,6 +1052,12 @@ For more info, see: [Network I/O#epoll](NET/tcp.md)
 ## Algorithm
 
 ### Linked List
+
+#### What are the differences between an `array` and a `list`?
+
+The main differences are in the memory layout. Arrays store elements contiguously in memory, providing random access. List store elements non-continuously via pointers, **not providing** random access.
+
+For more info, see: [Linked List#Diagrams](ALGO/link_list.md)
 
 #### Reverses a linked list iteratively using three pointers: current, previous, and next.
 

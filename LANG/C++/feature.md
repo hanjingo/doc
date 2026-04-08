@@ -613,85 +613,6 @@ while(bStop);
 
 
 
-## virtual
-
-### Virtual functions
-
-Default arguments of virtual functions are statically bound:
-
-```c++
-#include <iostream>
-using namespace std;
-class Base {
-public:
-	virtual void fun(int x = 0) { cout << "Base::fun(), x = " << x << endl; }
-};
-class Derived : public Base {
-public:
-	virtual void fun(int x) { cout << "Derived::fun(), x = " << x << endl; }
-};
-int main(void) {
-	Derived d1;
-	Base* bp = &d1;
-	bp->fun();
-	return 0;
-}
-```
-
-Output:
-
-```sh
-Derived::fun(), x = 0
-```
-
-### Pure virtual functions
-
-```c++
-virtual func() = 0;
-```
-
-Purpose:
-
-1. Requires derived classes to provide implementations.
-2. Makes the base class abstract and non-instantiable.
-
-### Abstract classes
-
-An abstract class can have constructors and destructors:
-
-```c++
-class Base {
-protected:
-		int x;
-public:
-		virtual void fun() = 0;
-		Base(int i) { x = i; }
-		virtual ~Base() = 0;
-};
-Base::~Base() { cout << "~Base()" << endl; }
-
-class Derived : public Base {
-		int y;
-public:
-		Derived(int i, int j) : Base(i) { y = j; }
-		~Derived() { cout << "~Derived()" << endl; }
-		void fun() { cout << "x = " << x << ", y = " << y << endl; }
-};
-```
-
-### Notes
-
-1. Calling virtual functions from constructors/destructors is valid syntax but generally discouraged.
-2. These cannot be virtual: constructors, static member functions, friend functions, and non-member ordinary functions.
-3. If deleting derived objects through base pointers is possible, the base destructor should be virtual.
-4. Virtual functions can be private; access rules still apply.
-
-[Top](#C++ Features)
-
----
-
-
-
 ## static
 
 `static` is a common C/C++ specifier that controls storage duration and visibility.
@@ -865,7 +786,7 @@ static union {
 
 
 
-## Pointers
+## pointers
 
 ### Pointer to const
 
@@ -916,9 +837,7 @@ A dangling pointer is a very common occurrence that generally occurs when we use
 
 Cases that leads to dangling pointer in C++:
 
-- Deallocation of memory using delete or free().
-
-  For example:
+- Deallocation of memory using delete or free()
 
   ```c++
   #include <iostream>
@@ -930,10 +849,8 @@ Cases that leads to dangling pointer in C++:
       return 0;
   }
   ```
-
-- Referencing the local variable of the function after it is executed.
-
-  For example:
+  
+- Referencing the local variable of the function after it is executed
 
   ```c++
   #include <iostream>
@@ -949,10 +866,8 @@ Cases that leads to dangling pointer in C++:
       return 0;
   }
   ```
-
-- Variable goes out of scope.
-
-  For example:
+  
+- Variable goes out of scope
 
   ```c++
   #include <iostream>
@@ -1147,6 +1062,11 @@ struct DerivedTop : public DerivedMid
 
 
 ## final
+
+The `final` specifier in C++ was introduced in C++11 to provide additional control over inheritance and overriding in class hierarchies. It is used in two primary contexts: 
+
+- preventing function
+- preventing class inheritance.
 
 Uses:
 

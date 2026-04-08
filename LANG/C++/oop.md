@@ -1,8 +1,114 @@
-English | [中文版](object_zh.md)
+English | [中文版](oop_zh.md)
 
-# C++ Objects
+# C++ Object Oriented Progamming
 
 [TOC]
+
+
+
+## Access Specifiers
+
+### Inheritance Access Specifiers
+
+The inheritance type controls how base class members are inherited:
+
+- Public Inheritance
+
+  | Base Member | Access in Derived | External Access |
+  | :---------- | :---------------- | :-------------- |
+  | `public`    | `public`          | ✅ Yes           |
+  | `protected` | `protected`       | ❌ No            |
+  | `private`   | Inaccessible      | ❌ No            |
+
+  ```c++
+  class Base
+  {
+  public: int pub;
+  protected: int prot;
+  private: int priv;
+  };
+  class Derived : public Base
+  {
+    void func()
+    {
+      pub = 1;    // ✅ public
+      prot = 2;   // ✅ protected
+      priv = 3;   // ❌ inaccessible
+    }
+  };
+  ```
+
+- Protected Inheritance
+
+  | Base Member | Access in Derived | External Access |
+  | :---------- | :---------------- | :-------------- |
+  | `public`    | `protected`       | ❌ No            |
+  | `protected` | `protected`       | ❌ No            |
+  | `private`   | Inaccessible      | ❌ No            |
+
+  ```c++
+  class Base
+  {
+  public: int pub;
+  protected: int prot;
+  private: int priv;
+  };
+  class Derived : protected Base
+  {
+    void func()
+    {
+      pub = 1;    // ✅ becomes protected
+      prot = 2;   // ✅ protected
+      priv = 3;   // ❌ inaccessible
+    }
+  };
+  
+  Derived obj; obj.pub = 5; // ❌ Error
+  ```
+
+- Private Inheritance
+
+  | Base Member | Access in Derived | External Access |
+  | :---------- | :---------------- | :-------------- |
+  | `public`    | `private`         | ❌ No            |
+  | `protected` | `private`         | ❌ No            |
+  | `private`   | Inaccessible      | ❌ No            |
+
+  ```c++
+  class Base
+  {
+  public: int pub;
+  protected: int prot;
+  private: int priv;
+  };
+  class Derived : private Base
+  {
+    void func()
+    {
+      pub = 1;    // ✅ becomes private
+      prot = 2;   // ✅ becomes private
+      priv = 3;   // ❌ inaccessible
+    }
+  };
+  
+  Derived obj; obj.pub = 5; // ❌ Error
+  ```
+
+### Summary
+
+#### Specifier Access Summary
+
+| Specifier       | Inside Class | Derived Class | Outside Class | Default for `class` | Default for `struct` |
+| :-------------- | :----------- | :------------ | :------------ | :------------------ | :------------------- |
+| **`public`**    | ✅ Yes        | ✅ Yes         | ✅ Yes         | ❌ No                | ✅ Yes                |
+| **`protected`** | ✅ Yes        | ✅ Yes         | ❌ No          | ❌ No                | ❌ No                 |
+| **`private`**   | ✅ Yes        | ❌ No          | ❌ No          | ✅ Yes               | ❌ No                 |
+
+#### struct vs class
+
+`struct` defaults to `public`, `class` defaults to `private`; otherwise they are identical.
+
+---
 
 
 
@@ -176,14 +282,16 @@ int(*)();
 
 ### Inline Functions
 
-**Inline functions are only a request to the compiler; the compiler itself decides whether to actually inline. Usually the compiler calculates the total number of operations like `assignments`, `function calls`, `virtual function calls` to decide whether to inline.**
+Inline functions are only a request to the compiler; the compiler itself decides whether to actually inline. Usually the compiler calculates the total number of operations like `assignments`, `function calls`, `virtual function calls` to decide whether to inline.
 
 Two general phases for handling `inline function`:
 
 - Analyze the function definition to determine the function's `"instrinsic inline ability"`;
 - Actual inline function expansion occurs at the call site.
 
-Inline function expansion of formal arguments, example:
+Inline function expansion of formal arguments;
+
+example:
 
 ```c++
 inline int min(int i, int j) { return i < j ? i : j; }
@@ -198,7 +306,9 @@ inline int bar() {
 }
 ```
 
-Inline function expansion of local variables, example:
+Inline function expansion of local variables;
+
+example:
 
 ```c++
 inline int min(int i, int j) {
@@ -217,7 +327,9 @@ inline int bar() {
 }
 ```
 
-**If an inline function parameter has side effects or multiple calls, or the function has multiple local variables, this will produce temporary objects and result in extensive expanded code, causing program size to explode;** example:
+If an inline function parameter has side effects or multiple calls, or the function has multiple local variables, this will produce temporary objects and result in extensively expanded code, causing program size to explode; 
+
+example:
 
 ```c++
 int minval = min(val1, val2) + min(foo(), foo() + 1);
@@ -241,13 +353,95 @@ int minval = (__min_lv_minval_00 = val1 < val2 ? val1 : val2),
 
 The memory size of a `class object` is calculated by the formula: $N + P + V$
 
-- N: size of `nonstatic data members`;
-- P: space filled due to memory alignment (adjusting values to multiples of certain numbers; on 32-bit computers, alignment is usually 4 bytes (32 bits) to maximize bus "transportation" efficiency);
-- V: any additional overhead (`overhead`) produced internally to support `virtual`.
+- $N$: size of `nonstatic data members`;
+- $P$: space filled due to memory alignment (adjusting values to multiples of certain numbers; on 32-bit computers, alignment is usually 4 bytes (32 bits) to maximize bus "transportation" efficiency);
+- $V$: any additional overhead (`overhead`) produced internally to support `virtual`.
 
-An empty class usually has a size of 1, because the compiler inserts a char to allow any two objects of the class to have unique addresses in memory.
+#### Empty base class optimization
 
-Example:
+An empty class usually has a size of **1**, because the compiler inserts a char to allow any two objects of the class to have unique addresses in memory.
+
+Empty base class optimization (EBCO), Compiler **doesn't** allocate space for empty base classes if they don't increase alignment.
+
+When EBCO works:
+
+| Scenario                                            | Works?              | Reason                                  |
+| --------------------------------------------------- | ------------------- | --------------------------------------- |
+| Single empty base class                             | ✅ Yes               | Can occupy zero space                   |
+| Multiple distinct empty bases                       | ✅ Yes               | Each is a different type                |
+| Empty Base Classes with Different Access Specifiers | ✅ Yes               | Do not force different layout for EBCO. |
+| Multiple identical empty bases                      | ❌ No                | Need distinct addresses                 |
+| Empty as a member(not base)                         | ❌ No                | Members can't be optimized until C++20  |
+| Empty with virtual functions                        | ❌ No                | Has vtable pointer (not empty)          |
+| Empty with alignment requirements                   | ⚠️ Partial           | Alignment forces padding                |
+| Empty base with `[[no_unique_address]]`(C++20)      | ✅ Yes (for members) | Standardized member optimization        |
+| Empty base in standard layout                       | ✅ Yes               | But imposes restrictions                |
+| Empty base in template with same type twice         | ❌ No                | Same type needs distinct addresses      |
+| Empty base with non-empty base                      | ⚠️ May fail          | Address uniqueness requirements         |
+
+- Multiple identical empty bases
+
+  ```c++
+  TODO
+  ```
+
+- Empty as a member(not base)
+
+  ```c++
+  // test environment: MACOS aarch 64bit
+  struct Base {};
+  struct NoEBCO1
+  {
+    Base base; // not a inheritance base - take 1 byte
+    int x; // 4 bytes
+    // Total size: 1 (base) + 4 (x) + padding = 8 bytes
+  };
+  struct NoEBCO2
+  {
+    int x; // 4 bytes
+    Base base; // not a inheritance base - take 1 byte
+    // Total size: 1 (base) + 4 (x) + padding = 8 bytes
+  };
+  struct WithEBCO : Base
+  {
+    int x; // 4 bytes
+    // Total size: 0 (EBCO) + 4 (x) = 4 bytes
+  };
+  ```
+
+- Empty with virtual functions
+
+  ```c++
+  TODO
+  ```
+
+- Empty base in template with same type twice
+
+  ```c++
+  TODO
+  ```
+
+#### Note
+
+1. C++ standard forbids objects of size 0, each object must have a unique address, so the compiler adds 1 byte (dummy byte) as a placeholder
+
+   ```c++
+   class A {};
+   
+   sizeof(A); // 1 byte
+   
+   A a1, a2;
+   &a1 != &a2; // ✅ Must be different addresses
+   ```
+
+1. EBCP fails most commonly when:
+
+   - ~~Multiple inheritance of the same empty base type (need distinct addresses).~~
+   - Empty classes as members instead of bases (until C++20 `[[no_unique_address]]`)
+   - ~~Empty classes with virtual functions (not actually empty - have vptr)~~
+   - ~~Empty classes with alignment requirements (alignment forces padding)~~
+
+Space Calculation Example:
 
 ```c++
 class ZooAnimal {
@@ -292,8 +486,8 @@ Bear &rb = *pb;
 
 ### new and delete Operators
 
-1. **The process of the new operator is: first allocate memory, then call the constructor (built-in types are directly assigned). (If memory allocation fails, the memory still needs to be released.)**
-2. **The process of the delete operator is: first call the destructor (built-in types do not have this step), then release memory.**
+1. The process of the new operator is: first allocate memory, then call the constructor (built-in types are directly assigned). (If memory allocation fails, the memory still needs to be released.)
+2. The process of the delete operator is: first call the destructor (built-in types do not have this step), then release memory.
 
 Example, new operation:
 
@@ -462,10 +656,6 @@ The following cases must use a member initialization list (initialization list):
 
 ### Memory Alignment
 
-`#pragma pack(push)` TODO
-
-`#pragma pack(pop)` TODO
-
 TODO
 
 ### Inheritance
@@ -477,6 +667,8 @@ graph LR
 BaseClass   --illegal conversion/assignment--> DerivedClass
 DerivedClass --legal conversion/assignment--> BaseClass
 ```
+
+#### Multiple Inheritance
 
 Example, memory layout of multiple inheritance:
 
@@ -513,6 +705,8 @@ protected:
 
 ![MultipleInheritance](res/MultipleInheritance.png)
 
+#### Virtual Inheritance
+
 Example, memory layout of virtual inheritance:
 
 ```c++
@@ -538,6 +732,119 @@ protected:
 
 ![VirtualInheritance](res/VirtualInheritance.png)
 
+Usage:
+
+1. You have a genuine diamond hierarchy
+
+   ```c++
+   class Animal {};
+   class Mammal : virtual public Animal {};
+   class Bird : virtual public Animal {};
+   class Platypus : public Mammal, public Bird {};  // Needs one Animal
+   ```
+
+2. Creating interfaces that will be combined
+
+   ```c++
+   class Drawable { virtual void draw() = 0; };
+   class Clickable { virtual void onClick() = 0; };
+   class Button : virtual public Drawable, virtual public Clickable {};
+   ```
+
+Avoid virtual inheritance when:
+
+1. No diamond exists (unnecessary overhead)
+2. Performance critical (virtual inheritance adds overhead)
+3. You can use composition istead
+
+Summary:
+
+| Aspect                 | Without Virtual             | With Virtual                       |
+| :--------------------- | :-------------------------- | :--------------------------------- |
+| Number of base copies  | Multiple (one per path)     | Single (shared)                    |
+| Member access          | Ambiguous - must qualify    | Unambiguous                        |
+| Memory size            | Larger (multiple copies)    | Smaller (single copy)              |
+| Performance            | Faster (direct access)      | Slower (indirection)               |
+| Constructor complexity | Simple                      | Complex (most derived initializes) |
+| Use case               | Simple multiple inheritance | Diamond inheritance                |
+
+#### The Diamond Problem
+
+The Diamond Problem occurs in multiple inheritance when a derived class inherits from two classes that both inherit from the same base class, creating an ambiguous "diamond" shape in the inheritance hierarchy.
+
+For Example:
+
+```c++
+class Base 
+{
+public:
+    int value = 10;
+    void function() { std::cout << "Base function\n"; }
+};
+class Left : public Base 
+{
+public:
+    void leftOnly() {}
+};
+class Right : public Base 
+{
+public:
+    void rightOnly() {}
+};
+class Derived : public Left, public Right 
+{
+    // Derived now has TWO copies of Base
+    // One through Left, one through Right
+};
+
+Derived d;
+d.value; // ❌ ERROR: Ambiguous
+d.function(); // ❌ ERROR: Ambiguous
+
+d.Left::value;   // OK - access Left's Base
+d.Right::value;  // OK - access Right's Base
+d.Left::function();   // OK
+d.Right::function();  // OK
+```
+
+**The Solution**:
+
+1. Virtual Inheritance
+
+   ```c++
+   class Base 
+   {
+   public:
+       int value = 10;
+       void function() { std::cout << "Base function\n"; }
+   };
+   class Left : virtual public Base 
+   {
+   public:
+       void leftOnly() {}
+   };
+   class Right : virtual public Base 
+   {
+   public:
+       void rightOnly() {}
+   };
+   class Derived : public Left, public Right 
+   {
+       // Now only ONE copy of Base exists
+   };
+   
+   Derived d;
+   d.value; // ✅
+   d.function(); // ✅
+   
+   d.Left::value;   // OK - access Left's Base
+   d.Right::value;  // OK - access Right's Base
+   d.Left::function();   // OK
+   d.Right::function();  // OK
+   ```
+
+   
+
 ### Polymorphism
 
 C++ supports polymorphism through the following mechanisms:
@@ -545,6 +852,85 @@ C++ supports polymorphism through the following mechanisms:
 1. Through a set of implicit conversion operations;
 2. Through the virtual function mechanism;
 3. Through dynamic_cast and typeid operators.
+
+#### Virtual functions
+
+Virtual functions are a cornerstone of polymorphism in C++.
+
+Default arguments of virtual functions are statically bound:
+
+```c++
+#include <iostream>
+using namespace std;
+class Base {
+public:
+	virtual void fun(int x = 0) { cout << "Base::fun(), x = " << x << endl; }
+};
+class Derived : public Base {
+public:
+	virtual void fun(int x) { cout << "Derived::fun(), x = " << x << endl; }
+};
+int main(void) {
+	Derived d1;
+	Base* bp = &d1;
+	bp->fun();
+	return 0;
+}
+```
+
+Output:
+
+```sh
+Derived::fun(), x = 0
+```
+
+#### Pure virtual functions
+
+```c++
+virtual func() = 0;
+```
+
+Purpose:
+
+1. Requires derived classes to provide implementations.
+2. Makes the base class abstract and non-instantiable.
+
+#### Abstract classes
+
+An abstract class can have constructors and destructors:
+
+```c++
+class Base {
+protected:
+		int x;
+public:
+		virtual void fun() = 0;
+		Base(int i) { x = i; }
+		virtual ~Base() = 0;
+};
+Base::~Base() { cout << "~Base()" << endl; }
+
+class Derived : public Base {
+		int y;
+public:
+		Derived(int i, int j) : Base(i) { y = j; }
+		~Derived() { cout << "~Derived()" << endl; }
+		void fun() { cout << "x = " << x << ", y = " << y << endl; }
+};
+```
+
+**Notes**:
+
+1. Calling virtual functions from constructors/destructors is valid syntax but generally discouraged.
+2. These cannot be virtual: 
+   - constructors
+   - static member functions
+   - friend functions
+   - non-member ordinary functions
+3. If deleting derived objects through base pointers is possible, the base destructor should be virtual.
+4. Virtual functions can be private; access rules still apply.
+
+[Top](#C++ Features)
 
 ---
 
@@ -554,19 +940,21 @@ C++ supports polymorphism through the following mechanisms:
 
 ### Upcast
 
-Upcast (casting from derived to base) is generally safe, but there are specific unsafe conditions:
+In C++, upcasting is the process of converting a pointer or reference of a derived class to its base class type.
 
-| Scenario                              | Safety    | Notes                          |
-| ------------------------------------- | --------- | ------------------------------ |
-| Single inheritance, pointer/reference | ✅ Safe    | Implicit conversion works.     |
-| Single inheritance, by value          | ❌ Slicing | Use pointer/reference instead  |
-| Multiple inheritance, ambiguous       | ❌ Unsafe  | Must specify path              |
-| Virtual inheritance                   | ⚠️ Tricky  | Compiler handles, but complex  |
-| Cross-cast (siblings)                 | ❌ Unsafe  | Must go through derived        |
-| Null pointer                          | ✅ Safe    | Remains null                   |
-| Const violation                       | ❌ Unsafe  | Use const pointer              |
-| Dangling object                       | ❌ Unsafe  | Upcast doesn't extend lifetime |
-| Incorrect static_cast                 | ❌ UB      | Use dynamic_cast for safety    |
+Upcast (casting from derived to base) is generally safe and implicit, but there are specific unsafe conditions:
+
+| Scenario                              | Safety    | Method                                            | Notes                          |
+| ------------------------------------- | --------- | ------------------------------------------------- | ------------------------------ |
+| Single inheritance, pointer/reference | ✅ Safe    | Implicit conversion                               | Implicit conversion works.     |
+| Single inheritance, by value          | ❌ Slicing | Implicit conversion (dangerous)                   | Use pointer/reference instead  |
+| Multiple inheritance, ambiguous       | ❌ Unsafe  | Explicit cast required (`static_cast` or C-style) | Must specify path              |
+| Virtual inheritance                   | ⚠️ Tricky  | Implicit conversion                               | Compiler handles, but complex  |
+| Cross-cast (siblings)                 | ❌ Unsafe  | Not directly possible                             | Must go through derived        |
+| Null pointer                          | ✅ Safe    | Implicit conversion or `dynamic_cast`             | Remains null                   |
+| Const violation                       | ❌ Unsafe  | Implicit conversion                               | Use const pointer              |
+| Dangling object                       | ❌ Unsafe  | Any method                                        | Upcast doesn't extend lifetime |
+| Incorrect static_cast                 | ❌ UB      | `static_cast`                                     | Use dynamic_cast for safety    |
 
 - Single Inheritance
 
@@ -674,7 +1062,141 @@ Upcast (casting from derived to base) is generally safe, but there are specific 
 
 ### Downcast
 
-TODO
+Downcasting is the process of casting a base class pointer/reference to a derived class pointer/reference. It's the opposite of upcasting (which is safe and implicit).
+
+Downcast (casting from base to derived) is generally safe and implicit, but there are specific unsafe conditions:
+
+| Scenario                                      | Safety               | Method                  | Notes                                                  |
+| :-------------------------------------------- | :------------------- | :---------------------- | :----------------------------------------------------- |
+| **Single inheritance, pointer, type known**   | ⚠️ Conditionally Safe | `static_cast`           | Safe ONLY if you're 100% certain of actual type        |
+| **Single inheritance, pointer, type unknown** | ✅ Safe               | `dynamic_cast`          | Returns nullptr if type mismatch, always check result  |
+| **Single inheritance, reference**             | ✅ Safe               | `dynamic_cast`          | Throws `std::bad_cast` on failure, catch to handle     |
+| **Single inheritance, by value**              | ❌ Impossible         | N/A                     | Cannot downcast values - only pointers/references      |
+| **Multiple inheritance, simple downcast**     | ✅ Safe               | `dynamic_cast`          | Handles pointer adjustments automatically              |
+| **Multiple inheritance, cross-cast**          | ✅ Safe               | `dynamic_cast`          | Cast between siblings, returns nullptr if not related  |
+| **Virtual inheritance**                       | ✅ Safe               | `dynamic_cast`          | Required for virtual bases, handles offset correctly   |
+| **Non-polymorphic types (no virtual)**        | ❌ Unsafe             | `static_cast`           | `dynamic_cast` won't compile; no RTTI available        |
+| **Null pointer**                              | ✅ Safe               | Any cast                | Casting null remains null (check before use)           |
+| **Const violation**                           | ❌ Unsafe             | `const_cast` + downcast | Don't cast away constness; use `const` pointer instead |
+| **Dangling object**                           | ❌ Unsafe             | Any cast                | Cast doesn't extend lifetime; object already destroyed |
+| **Incorrect `static_cast`**                   | ❌ UB                 | `static_cast`           | Undefined behavior if type mismatch                    |
+| **Incorrect `dynamic_cast`**                  | ✅ Safe               | `dynamic_cast`          | Returns nullptr (pointer) or throws (reference)        |
+| **Downcast then delete**                      | ⚠️ Tricky             | Both                    | Base destructor must be virtual for safe deletion      |
+| **Private inheritance**                       | ❌ Unsafe             | Any cast                | Derived class not accessible through Base interface    |
+
+- Single Inheritance - Pointer
+
+  ```c++
+  class Base { public: virtual ~Base() = default; };
+  class Derived : public Base { public: void hello() { }; };
+  
+  Derived d;
+  Base* b = &d;
+  Derived* d1 = static_cast<Derived*>(b); // ✅ Safe
+  
+  Base* b_null = new Base();
+  Derived* d2 = static_cast<Derived*>(b_null); // ⚠️ Undefined Behavior! (type unknown)
+  d2->hello(); // ⚠️ May crash or print garbage! (undefined behavior)
+  
+  Derived* d3 = dynamic_cast<Derived*>(b_null); // ✅ Safe (returns nullptr if not Derived)
+  if (d3) { d3->hello(); }
+  ```
+
+- Single Inheritance - Reference
+
+  ```c++
+  class Base { public: virtual ~Base() = default; };
+  class Derived : public Base { public: void hello() { }; };
+  
+  Derived d;
+  Base& b = d;
+  try {
+      Derived& d = dynamic_cast<Derived&>(b);
+      d.hello();  // ✅ Safe
+  } catch (const std::bad_cast& e) {}
+  ```
+
+- Multiple Inheritance
+
+  ```c++
+  class Base1 { public: virtual ~Base1() = default; };
+  class Base2 { public: virtual ~Base2() = default; };
+  class Derived : public Base1, public Base2 {};
+  
+  Base1* b1 = new Derived();
+  Base2* b2 = dynamic_cast<Base2*>(b1); // ✅ Safe cross-cast
+  Base2* b3 = static_cast<Base2*>(b1);   // ❌ would be unsafe - wrong offset!
+  ```
+
+- Virtual Inheritance
+
+  ```c++
+  class VBase { public: virtual ~VBase() = default; };
+  class D1 : virtual public VBase {};
+  class D2 : virtual public VBase {};
+  class Final : public D1, public D2 {};
+  
+  Final f;
+  VBase* vb = &f;
+  D1* d1 = dynamic_cast<D1*>(vb); // ✅ Safe - dynamic_cast required
+  D1* d1_bad = static_cast<D1*>(vb); // ❌ Compiler error or wrong offset
+  ```
+
+- Non-polymorphic Types
+
+  ```c++
+  class Base {}; // Non-Polymorphic(no virtual functions)
+  class Derived : public Base {};
+  
+  Base* b = new Derived();
+  Derived* d1 = dynamic_cast<Derived*>(b); // ❌ Compiler error!
+  Derived* d2 = static_cast<Derived*>(b);  // ⚠️ Compiler ok, but unsafe
+  ```
+
+- Const Correctness
+
+  ```c++
+  class Base { public: virtual ~Base() = default; };
+  class Derived : public Base {};
+  
+  const Base* cb = new Derived();
+  Derived* d = dynamic_cast<Derived*>(cb); // ❌ Compiler error!
+  const Derived* cd = dynamic_cast<const Derived*>(cb); // ✅ OK
+  ```
+
+- Dangling Object
+
+  ```c++
+  class Base { public: virtual ~Base() = default; };
+  class Derived : public Base { public: void hello() {}; };
+  
+  Base* gen_dangling() 
+  {
+      Derived d;
+      return &d;  // Returns pointer to local object
+  }  // d destroyed here
+  
+  Base* b = gen_dangling();
+  Derived* d = dynamic_cast<Derived*>(b); // ⚠️ Compiler succeeds but object dead!
+  d->hello(); // ❌ UB - object already destroyed
+  ```
+
+- Downcast and Delete
+
+  ```c++
+  class Base { public: virtual ~Base() = default; }; // ✅ Virtual destructor
+  class Derived : public Base {};
+  
+  class BadBase { public: ~BadBase(){}; }; // non-virtual
+  class BadDerived : public BadBase {};
+  
+  Base* b = new Derived();
+  Derived* d = dynamic_cast<Derived*>(b);
+  delete d; // ✅ Safe - virtual destructor calls Derived::~Derived()
+  
+  BadBase* bb = new BadDerived();
+  delete bb; // ❌ UB - Derived destructor not called
+  ```
 
 ### Cast Function
 
@@ -949,7 +1471,7 @@ Usage:
 
 #### reinterpret_cast
 
-`reinterpret_cast` is a type of casting operator used in C++. It is used to convert a pointer of some data type into a pointer of another data type, even if the data types before an after conversion are different.
+`reinterpret_cast` is a type of casting operator used in C++. It is used to convert a pointer of some data type into a pointer of another data type, even if the data types before and after conversion are different.
 
 Usage:
 
@@ -978,9 +1500,21 @@ Usage:
 
 **Note**:
 
-1. It does not check if the pointer type and the data pointer by the pointer are the same or not.
+1. It does not check if the pointer type and the data pointer are the same or not.
 2. Dereferencing the result of a `reinterpret_cast` for unrelated types causes undefined behavior (strict aliasing violation).
 3. Casting between function and data pointers causes undefined behavior (except on some platforms).
+
+#### `static_cast` vs `dynamic_cast` vs `reinterpret_cast`
+
+| Feature                    | `static_cast`                  | `dynamic_cast`                        | `reinterpret_cast`          |
+| :------------------------- | :----------------------------- | :------------------------------------ | :-------------------------- |
+| **When checked**           | Compile time                   | Runtime (RTTI)                        | Compile time                |
+| **Safety**                 | Moderate                       | Safe (returns nullptr on failure)     | Very dangerous              |
+| **Performance**            | Zero overhead                  | Overhead (vtable lookup)              | Zero overhead               |
+| **Required conditions**    | Related types                  | Polymorphic types (virtual functions) | Anything (blind conversion) |
+| **Failure behavior (ptr)** | Undefined behavior             | Returns `nullptr`                     | Undefined behavior          |
+| **Failure behavior (ref)** | Undefined behavior             | Throws `std::bad_cast`                | Undefined behavior          |
+| **Use case**               | Safe, well-defined conversions | Safe downcasting in hierarchies       | Low-level bit manipulation  |
 
 ---
 

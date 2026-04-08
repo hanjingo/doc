@@ -6,27 +6,21 @@ English | [中文版](stl_zh.md)
 
 
 
-This note summarizes commonly used parts of the C++ Standard Library (containers, smart pointers, iterators, algorithms, and I/O). It condenses the material from the Chinese draft while keeping images and examples. The goal is practical: quick references, complexity notes, and short examples you can use as a starting point.
-
-## Quick orientation
-
-- Containers: sequence containers (vector, deque, list, array, forward_list), associative containers (set, map, multiset, multimap), unordered containers (unordered_map/set), and container adaptors (stack, queue, priority_queue).
-- Iterators: abstract the traversal of a container (input, output, forward, bidirectional, random access). Algorithms work with iterators.
-- Algorithms: non‑mutating (find, count), mutating (sort, transform), partitioning, numeric, heap operations, etc. Most algorithms express complexity guarantees in the standard.
-- Smart pointers: unique_ptr, shared_ptr, weak_ptr and helpers such as make_unique/make_shared.
-- I/O: iostreams family (ios_base, istream, ostream, iostream, fstream).
-
 ## Smart pointers
 
 Smart pointers provide RAII ownership and reduce manual delete errors.
 
-- `std::unique_ptr<T>`: exclusive ownership, lightweight, movable but not copyable. Use for single ownership and custom deleters when needed.
+- `std::unique_ptr<T>`
 
-- `std::shared_ptr<T>`: reference‑counted shared ownership. Use `std::make_shared<T>(...)` to allocate a control block and object in one allocation (more efficient). Supports custom deleters and aliasing constructors (create a shared_ptr that shares ownership but points to a different object).
+  exclusive ownership, lightweight, movable but not copyable. Use for single ownership and custom deleters when needed.
 
-- `std::weak_ptr<T>`: non‑owning observer of an object managed by shared_ptr. Use weak_ptr::lock() to obtain a temporary shared_ptr, and `expired()/use_count()` to check state.
+- `std::shared_ptr<T>`
 
-Key member functions (shared_ptr / weak_ptr): `get(), reset(), swap(), use_count(), unique(), expired(), lock()`.
+  reference‑counted shared ownership. Use `std::make_shared<T>(...)` to allocate a control block and object in one allocation (more efficient). Supports custom deleters and aliasing constructors (create a shared_ptr that shares ownership but points to a different object).
+
+- `std::weak_ptr<T>`
+
+  non‑owning observer of an object managed by shared_ptr. Use weak_ptr::lock() to obtain a temporary shared_ptr, and `expired()/use_count()` to check state.
 
 Example (shared/weak):
 
@@ -266,9 +260,20 @@ int main()
 }
 ```
 
+### unique_ptr vs shared_ptr vs weak_ptr
 
+| Aspect              | `unique_ptr`               | `shared_ptr`                   | `weak_ptr`            |
+| :------------------ | :------------------------- | :----------------------------- | :-------------------- |
+| **Ownership**       | Exclusive                  | Shared (reference counted)     | Non-owning observer   |
+| **Copyable**        | ❌ No (move-only)           | ✅ Yes                          | ✅ Yes                 |
+| **Moveable**        | ✅ Yes                      | ✅ Yes                          | ✅ Yes                 |
+| **Reference Count** | No                         | Yes (control block)            | No (observes count)   |
+| **Memory Overhead** | Minimal (raw pointer size) | 2x raw pointer + control block | Same as `shared_ptr`  |
+| **Thread Safety**   | N/A                        | Count operations are atomic    | Lock is atomic        |
+| **Use Case**        | Single ownership           | Shared ownership               | Break cycles, caching |
 
 ---
+
 
 
 ## Containers
@@ -1355,6 +1360,7 @@ int main()
 
 
 ---
+
 
 
 ## Algorithms

@@ -73,7 +73,7 @@
 - [Redis Source Code Analysis - Lua Scripting](DB/REDIS/ansys_lua.md)
 - [Redis Source Code Analysis - Dictionary](DB/REDIS/ansys_map.md)
 - [Redis Source Code Analysis - Monitor](DB/REDIS/ansys_moniter.md)
-- [Redis Source Code Analysis - Data Types](DB/REDIS/ansys_object.md)
+- [Redis Source Code Analysis - Data Types](DB/REDIS/ansys_oop.md)
 - [Redis Source Code Analysis - Persistence](DB/REDIS/ansys_persistence.md)
 - [Redis Source Code Analysis - Pub/Sub](DB/REDIS/ansys_pub_sub.md)
 - [Redis Source Code Analysis - Replication](DB/REDIS/ansys_replication.md)
@@ -182,7 +182,7 @@
 - [C++ Coroutine](LANG/C++/coroutine.md)
 - [C++ Feature](LANG/C++/feature.md)
 - [Makefile](LANG/C++/makefile.md)
-- [C++ Object](LANG/C++/object.md)
+- [C++ Object](LANG/C++/oop.md)
 - [C++ STL](LANG/C++/stl.md)
 - [C++ Template](LANG/C++/template.md)
 

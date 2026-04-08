@@ -1,4 +1,4 @@
-中文版 | [English](ansys_object.md)
+中文版 | [English](ansys_oop.md)
 
 # Redis源码分析-数据类型
 

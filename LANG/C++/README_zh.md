@@ -7,7 +7,7 @@
 - [CMake](cmake_zh.md)
 - [并发编程](concurrency_zh.md)
 - [c++特性](feature_zh.md)
-- [对象模型](object_zh.md)
+- [对象模型](oop_zh.md)
 - [makefile](makefile_zh.md)
 - [STL](stl_zh.md)
 

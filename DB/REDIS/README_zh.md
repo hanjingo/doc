@@ -28,7 +28,7 @@
 - [redis源码分析-Lua脚本](ansys_lua_zh.md)
 - [redis源码分析-字典](ansys_map_zh.md)
 - [redis源码分析-监视器](ansys_moniter_zh.md)
-- [redis源码分析-数据类型](ansys_object_zh.md)
+- [redis源码分析-数据类型](ansys_oop_zh.md)
 - [redis源码分析-持久化](ansys_persistence_zh.md)
 - [redis源码分析-发布订阅](ansys_pub_sub_zh.md)
 - [redis源码分析-复制](ansys_replication_zh.md)

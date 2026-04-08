@@ -1,4 +1,4 @@
-[English](object.md) | 中文版
+[English](oop.md) | 中文版
 
 # C++对象
 

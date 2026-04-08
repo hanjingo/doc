@@ -67,7 +67,7 @@
 - [redis源码分析-Lua脚本](DB/REDIS/ansys_lua_zh.md)
 - [redis源码分析-字典](DB/REDIS/ansys_map_zh.md)
 - [redis源码分析-监视器](DB/REDIS/ansys_moniter_zh.md)
-- [redis源码分析-数据类型](DB/REDIS/ansys_object_zh.md)
+- [redis源码分析-数据类型](DB/REDIS/ansys_oop_zh.md)
 - [redis源码分析-持久化](DB/REDIS/ansys_persistence_zh.md)
 - [redis源码分析-发布订阅](DB/REDIS/ansys_pub_sub_zh.md)
 - [redis源码分析-复制](DB/REDIS/ansys_replication_zh.md)
@@ -138,7 +138,7 @@
 - [CMake](LANG/C++/cmake_zh.md)
 - [并发编程](LANG/C++/concurrency_zh.md)
 - [c++特性](LANG/C++/feature_zh.md)
-- [对象模型](LANG/C++/object_zh.md)
+- [对象模型](LANG/C++/oop_zh.md)
 - [STL](LANG/C++/stl_zh.md)
 
 Boost
