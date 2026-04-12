@@ -1592,9 +1592,549 @@ Perfect forwarding fails when template type deduction fails or when it deduces t
 
 [TOP](#C++ Best Practice)
 
-
-
 ---
+
+
+
+## STL
+
+### 1. Choose the Right Algorithm
+
+Sorting algorithms:
+
+| Requirement                                                  | sort | stable_sort | partial | stable_partition | nth_element |
+| ------------------------------------------------------------ | ---- | ----------- | ------- | ---------------- | ----------- |
+| Need to fully sort elements in vector, string, deque, or array | *    | *           |         |                  |             |
+| Only need to sort the first n equivalent elements            |      |             | *       |                  |             |
+| Need to find the nth element or the first n equivalent elements without sorting them |      |             |         |                  | *           |
+| Need to partition elements in a standard sequence container by a condition |      |             | *       | *                |             |
+| Need to sort data in a list                                  |      |             | *       | *                |             |
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 2. Choose the Right Container
+
+| Requirement                                                 | vector | list | deque | set<br>multiset | map<br>multimap | stack | queue<br>priority queues |
+| ----------------------------------------------------------- | ------ | ---- | ----- | --------------- | --------------- | ----- | ------------------------ |
+| Insert new elements at any position                         | *      | *    | *     |                 |                 |       |                          |
+| Don't care about element order                              |        |      |       |                 |                 |       |                          |
+| Random access iterator                                      | *      |      | *     |                 |                 |       |                          |
+| Avoid moving existing elements on insert/delete             |        | *    |       | *               | *               |       |                          |
+| Data layout needs to be C-compatible                        | *      |      |       |                 |                 |       |                          |
+| Sensitive to element lookup speed                           | *      |      |       | *               | *               |       |                          |
+| Minimize invalidation of iterators, pointers, or references |        | *    |       |                 |                 |       |                          |
+| Use random access iterator, no delete, insert only at end   |        |      | *     |                 |                 |       |                          |
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 3. Prefer empty() over size()==0 for Checking Emptiness
+
+- empty() is **constant time** for all standard containers and is often inlined, while size() can be **linear time** for some lists.
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 4. Prefer Range Member Functions over Single-Element Functions
+
+- Using range member functions usually results in less code.
+- Range member functions make code clearer and more direct.
+- Single-element functions require more allocator calls, more frequent object copies, and redundant operations.
+- Use assign instead of operator= when assigning a new set of values to a container.
+
+Single-element insertion:
+
+```c++
+int data[numValues];
+vector<int> v;
+vector<int>::iterator insertLoc(v.begin());
+for (int i = 0; i < numValues; ++i) {
+        insertLoc = v.insert(insertLoc, data[i]);
+        ++insertLoc;
+}
+```
+
+Range insertion:
+
+```c++
+int data[numValues];
+vector<int> v;
+```
+
+[TOP](#C++ Best Practice)
+
+
+
+### 5. Beware of C++'s Most Vexing Parse—Code May Be Interpreted as a Function Declaration
+
+Incorrect:
+
+```c++
+list<int> data(istream_iterator<int>(dataFile), 
+                                istream_iterator<int>()); // Interpreted as a pointer to a function returning istream_iterator<int>
+```
+
+Correct:
+
+```c++
+istream_iterator<int> dataBegin(dataFile);
+istream_iterator<int> dataEnd;
+list<int> data(dataBegin, dataEnd);
+```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 6. If a Container Holds Pointers Created with new, Delete Them Before the Container is Destroyed
+
+- Pointer containers will destroy their elements, but not the objects pointed to (no delete is called).
+
+  Incorrect:
+
+  ```c++
+  void doSomething()
+  {
+          vector<Widget*> vwp;
+          for (int i = 0; i < SOME_MAGIC_NUMBER; ++i)
+                  vwp.push_back(new Widget); // Created with new
+  }
+  ... // Memory leak! When vwp goes out of scope, the pointers are destroyed but not the objects.
+  ```
+
+  Correct:
+
+  ```c++
+  void doSomething()
+  {
+          vector<Widget*> vwp;
+          for (int i = 0; i < SOME_MAGIC_NUMBER; ++i)
+                  vwp.push_back(new Widget); // Created with new
+  
+          // Manually free
+          for (vector<Widget*>::iterator i = vwp.begin(); i != vwp.end(); ++i)
+                  delete *i;
+  }
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 7. Do Not Create Containers of auto_ptr
+
+- Containers of auto_ptr are not portable.
+
+- Copying an auto_ptr changes its value (ownership transfer).
+
+  ```c++
+  auto_ptr<Widget> pw1(new Widget); // pw1 points to a Widget.
+  auto_ptr<Widget> pw2(pw1);        // pw2 takes ownership, pw1 is set to NULL.
+  pw1 = pw2;                        // pw1 takes ownership, pw2 is set to NULL.
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+### 8. STL Containers Are Not Thread-Safe
+
+- **Multiple threads reading is safe**—multiple threads can read the same container simultaneously, but no writing is allowed during reads.
+
+- **Multiple threads writing to different containers is safe**—multiple threads can write to different containers at the same time.
+
+- Use RAII (Resource Acquisition Is Initialization) to manually control synchronization.
+
+  ```c++
+  TODO
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 9. Prefer vector and string over Dynamically Allocated Arrays
+
+- In most cases, use vector and string instead of dynamically allocated arrays.
+- In multithreaded environments, prefer built-in arrays over reference-counted strings, as string's reference counting can hurt performance.
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 10. Use reserve to Avoid Unnecessary Reallocation
+
+- Use reserve early to set container capacity large enough to avoid reallocations.
+
+  ```c++
+  vector<int> v;
+  v.reserve(1000); // Preallocate capacity to avoid resizing during push_back
+  for (int i = 1; i <= 1000; ++i)
+          v.push_back(i);
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 11. Avoid Using `vector<bool>`
+
+- `vector<bool>` is a fake container; to save space, it uses a bitfield (e.g., 1 byte for 8 bools) instead of storing bools directly.
+
+[TOP](#C++ Best Practice)
+
+
+
+### 12. Specify Comparator for Associative Containers of Pointers
+
+- Associative containers of pointers are sorted by pointer value, not by the pointed-to content.
+
+- Always specify a comparator when creating associative containers of pointers.
+
+  Example comparator template:
+
+  ```c++
+  struct DereferenceLess {
+          template<typename PtrType>
+          bool operator()(PtrType pT1, PtrType pT2) const 
+          {
+                  return *pT1 < *pT2;
+          }
+  };
+  
+  set<string*, DereferenceLess> ssp;
+  
+  // Print using normal method
+  for (StringPtrSet::const_iterator i = ssp.begin(); i != ssp.end(); ++i)
+          cout << i << endl;
+  
+  // Print using for_each
+  void print(const string *ps)
+  {
+          cout << *ps << endl;
+  }
+  for_each(ssp.begin(), ssp.end(), print);
+  ```
+
+- `>=` is not a valid comparator for associative containers; equal values never have an order.
+
+  ```c++
+  set<int, less_equal<int> > s;
+  s.insert(10);
+  
+  struct StringPtrGreater : public binary_function<const string*, const string*, bool> 
+  {
+          bool operator()(const string *ps1, const string *ps2) const
+          {
+                  return !(*ps1 < *ps2); // !(<) is equivalent to >=; not valid for associative containers
+          }
+  };
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 13. Never Modify Keys in set or multiset Directly
+
+- For map and multimap, keys are const; modifying them breaks ordering and won't compile.
+
+  ```c++
+  map<int, string> m;
+  m.begin()->first = 10; // Error: map keys cannot be modified
+  
+  multimap<int, string> mm;
+  mm.begin()->first = 20; // Error: multimap keys cannot be modified
+  ```
+
+- For set and multiset, modifying element values is non-portable.
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 14. For Performance, Choose map::operator[] or map::insert Appropriately
+
+- When adding elements, prefer insert over operator[].
+
+  ```c++
+  class Widget {
+  public:
+          Widget();
+          Widget(double weight);
+          Widget& operator=(double weight);
+          ...
+  };
+  
+  map<int, Widget> m;
+  // Inefficient
+  m[1] = 1.50; // Checks existence, updates if exists, inserts if not (inefficient for new keys)
+  // Efficient
+  m.insert(IntWidgetMap::value_type(1, 1.50)); // Direct insert, more efficient
+  ```
+
+- When updating existing elements, prefer operator[].
+
+[TOP](#C++ Best Practice)
+
+
+
+### 15. Avoid Mixing Iterator Types; Prefer iterator over Others
+
+- Prefer iterator over const or reverse iterators for simplicity and to avoid potential issues:
+
+  - Some insert/erase functions require iterator, not const/reverse.
+  - Cannot implicitly convert const_iterator to iterator.
+  - iterator from reverse_iterator may need adjustment before use.
+
+- Avoid mixing iterator types.
+
+  ```c++
+  typedef deque<int> IntDeque;
+  typedef IntDeque::iterator Iter;
+  typedef IntDeque::const_iterator ConstIter;
+  Iter i;
+  ConstIter ci;
+  ...
+  if (i == ci) // Comparing iterator and const_iterator (iterator is implicitly converted)
+          ...
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 16. For Character-by-Character Input, Use istreambuf_iterator
+
+- istream_iterator does formatted input (object construction/destruction, stream flag checks, error checks), which is inefficient.
+
+  ```c++
+  ifstream inputFile("interestingData.txt");
+  inputFile.unsetf(ios::skipws); // Don't skip whitespace
+  string fileData((istream_iterator<char>(inputFile)), istream_iterator<char>()); // Read inputFile into fileData
+  ```
+
+- istreambuf_iterator reads one character at a time from the stream buffer, more efficient.
+
+  ```c++
+  ifstream inputFile("interestingData.txt");
+  string fileData((istreambuf_iterator<char>(inputFile)), istreambuf_iterator<char>()); // Reads all characters, including whitespace
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+### 17. Prefer Encapsulation
+
+- Use encapsulation to convert one container type to another.
+
+  ```c++
+  class Widget {...};
+  typedef vector<Widget> WidgetContainer;
+  typedef WidgetContainer::iterator WCIterator; // Encapsulation
+  WidgetContainer cw;
+  Widget bestWidget;
+  ...
+  WCIterator i = find(cw.begin(), cw.end(), bestWidget);
+  ```
+
+- Hide containers inside classes and minimize container-related info exposed via interfaces to reduce code changes when replacing container types.
+
+  ```c++
+  class CustomerList {
+  private:
+      typedef list<Customer> CustomerContainer;
+      typedef CustumorContainer::iterator CCIterator;
+  
+      CustomerContainer customers; // Hide container, access via interface
+  public:
+      ...
+  };
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 18. Use erase-remove Idiom to Completely Delete Elements
+
+- remove doesn't actually delete elements; it moves them to the end, but the container size doesn't change.
+
+  ```c++
+  vector<int> v;
+  v.reserve(10);
+  for (int i = 1; i <= 10; ++i)
+          v.push_back(i);
+  
+  cout << v.size();               // Outputs 10
+  v[3] = v[5] = v[9] = 99;
+  remove(v.begin(), v.end(), 99); // Moves all 99s to the end
+  cout << v.size();               // Still outputs 10
+  ```
+
+- Avoid remove/remove_if/unique on containers of pointers to dynamically allocated objects, as this causes memory leaks.
+
+  ```c++
+  class Widget {
+  public:
+          bool isCertified() const;
+  };
+  vector<Widget*> v;
+  v.push_back(new Widget);
+  
+  v.erase(remove_if(v.begin(), v.end(), fun(&Widget::isCertified)), v.end()); // Memory leak
+  ```
+
+- Use erase with remove (erase-remove idiom) to actually delete elements.
+
+  ```c++
+  vector<int> v;
+  v.reserve(10);
+  for (int i = 1; i <= 10; ++i)
+          v.push_back(i);
+  
+  cout << v.size();                        // Outputs 10
+  v[3] = v[5] = v[9] = 99;
+  v.erase(remove(v.begin(), v.end(), 99)); // Actually deletes elements
+  cout << v.size();                        // Outputs 7
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+### 19. Use Function Objects Instead of Functions as STL Algorithm Parameters
+
+- Passing function objects (functors) to STL algorithms is often more efficient than passing actual functions.
+
+  ```c++
+  vector<double> v;
+  
+  sort(v.begin(), v.end(), greater<double>()); // Function object (efficient)
+  
+  inline bool doubleGreater(double d1, double d2) { return d1 > d2; }
+  sort(v.begin(), v.end(), doubleGreater); // Function (less efficient)
+  ```
+
+- Sometimes using functions as parameters may not compile due to compiler/STL issues.
+
+  ```c++
+  set<string> s;
+  
+  // Using function as parameter may not compile
+  transform(s.begin(), s.end(), ostream_iterator<string::size_type>(count, "\n"), mem_fun_ref(&string::size));
+  
+  // Using function object as parameter
+  struct StringSize : public unary_function<string, string::size_type> {
+          string::size_type operator()(const string& s) const
+          {
+                  return s.size();
+          }
+  };
+  transform(s.begin(), s.end(), ostream_iterator<string::size_type>(count, "\n"), StringSize());
+  ```
+
+- Function objects help avoid some language limitations.
+
+  Using a function as a parameter is syntactically fine, but STL may not support it in some cases:
+
+  ```c++
+  template<typename FPType>
+  FPType average(FPType val1, FPType val2)
+  {
+          return (val1 + val2) / 2;
+  }
+  template<typename InputIter1, typename InputIter2>
+  void writeAverages(InputIter1 begin1, InputIter1 end1, InputIter2 begin2, ostream& s)
+  {
+          transform(begin1, end1, begin2, 
+                              ostream_iterator<typename iterator_traits<InputIter1>::value_type(s, "\n")>,
+                              average<typename iterator_traits<InputIter1>::value_type>); // Not supported by STL due to ambiguity
+  }
+  ```
+
+- Function pointers and function objects are passed by value between functions (except when wrapped in class/struct).
+
+  ```c++
+  // Wrapping a function in a class forces pass-by-reference
+  class DoSomething : public unary_function<int, void> {
+  public:
+          void operator()(int x) {...}
+  };
+  
+  typedef deque<int>::iterator DequeIntIter;
+  deque<int> di;
+  DoSomething d; // Create function object
+  // Use DequeIntIter and DoSomething& to call for_each, forcing d to be passed by reference
+  for_each<DequeIntIter, DoSomething&>(di.begin(), di.end(), d); 
+  ```
+
+[TOP](#C++ Best Practice)
+
+
+
+### 20. Prefer Container Member Functions over Algorithms with the Same Name
+
+- Member functions are usually faster.
+- Member functions are more tightly integrated with containers (especially associative containers).
+
+```c++
+set<int> s;
+
+set<int>::iterator i = s.find(727); // Member function, faster
+if (i != s.end())
+        ...
+
+set<int>::iterator i = find(s.begin(), s.end(), 727); // Algorithm, slower
+if (i != s.end())
+        ...
+```
+
+[TOP](#C++ Best Practice)
+
+
+
+
+### 21. Ensure Objects in Containers are Copied Correctly and Efficiently
+
+- Filling containers with objects that are expensive to copy can be a performance bottleneck.
+
+- Copying to a base class container strips derived class info (copying pointers avoids this).
+
+  ```c++
+  vector<Widget> vw;
+  class SpecialWidget : public Widget{...};
+  SpecialWidget sw;
+  vw.push_back(sw); // Derived class info is lost on copy
+  ```
+
+- Avoid unnecessary copies.
+
+  ```c++
+  Widget w[n]; // Creates n Widget objects, each with default constructor (wasteful)
+  vector<Widget> vw; // Creates empty vector, grows as needed (avoids copies)
+  ```
+
+[TOP](#C++ Best Practice)
+
+----
 
 
 

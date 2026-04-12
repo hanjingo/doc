@@ -90,8 +90,6 @@
 - [Redis Pipeline](DB/REDIS/pipline.md)
 - [Redis Summary](DB/REDIS/summary.md)
 
-
-
 ## Use Case
 
 - [Implementing a Message Queue with Redis](DB/REDIS/mq.md)
@@ -180,9 +178,10 @@
 - [CMake](LANG/C++/cmake.md)
 - [C++ Concurrency](LANG/C++/concurrency.md)
 - [C++ Coroutine](LANG/C++/coroutine.md)
+- [C++ Exception](LANG/C++/exception.md)
 - [C++ Feature](LANG/C++/feature.md)
 - [Makefile](LANG/C++/makefile.md)
-- [C++ Object](LANG/C++/oop.md)
+- [C++ Object Oriented Programming](LANG/C++/oop.md)
 - [C++ STL](LANG/C++/stl.md)
 - [C++ Template](LANG/C++/template.md)
 

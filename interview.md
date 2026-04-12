@@ -14,13 +14,13 @@ English | [中文版](interview_zh.md)
 
 c++ is a general-purpose, object-oriented programming language built as a extension of C. While C focuses on structred programming, C++ adds OOP features like classes, inheritance, poolymorphism, and encapsulation. It also supports function and operator overloading, plus templates, making code more reusable, efficient, and flexible.
 
-For more info, see: [C++ Features](LANG/C++/feature.md), [C++ Object](LANG/C++/oop.md)
+For more info, see: [C++ Features](LANG/C++/feature.md), [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What are access modifiers in C++?
 
 Access modifiers control who can access class members and data members. They help encorce object oriented programming principles like encapsulation. There are three access modifieers in C++: public, private, protected.
 
-For more info, see: [C++ Object](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is the purpose of comments in C++?
 
@@ -48,23 +48,63 @@ A shallow copy means copying an object in a way that only the outer structure is
 
 Stack memory handles static allocation(local variables, function calls), while heap memory manages dynamic allocation(objects).
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is a recursive function? 
 
 A recursive function calls itself to solve a problem by breaking it into smaller subproblems, with at least one base case to stop recursion.
 
-#### What is Function Overloading in C++ (Compile Time Polymorphism)?
-
-Function overloading allows multiple functions with the same name but different parameter lists(types or arity). The compiler will pick the best match at compile-time.
-
 #### What is Function Overriding in C++ and How Does the Base Class Affect It?
 
 In function overriding, a derived class provides a new implementation for a virtual function with the same signature as in the base. Resolution happens at runtime (dynamic dispatch).
 
-#### What is the difference between function overriding, function overloading and function overwriting?
+For more info, see: [C++ Object Oriented Programming#Function Overriding](LANG/C++/oop.md)
 
-Function overloading allows you to define multiple functions in the same scope with the same name but different parameters. Function overriding occurs in inheritance hierarchies when a derived class provides a specific implementation for a function that is already defined in its base class. Function overwrite occurs in inhertitance hierarchies when a derived class hides base class method.
+#### What is Function Overloading in C++ (Compile Time Polymorphism)?
+
+Function overloading allows multiple functions with the same name but different parameter lists(types or arity). The compiler will pick the best match at compile-time.
+
+For more info, see: [C++ Feature#Function Overloading](LANG/C++/feature.md)
+
+#### Can `main()` be overloaded?
+
+No! The C++ standard requires exactly one `main()` function. Overloading `main()` is not allowed.
+
+For more info, see: [C++ Feature#Function Overloading](LANG/C++/feature.md)
+
+#### Can overloaded functions have default arguments?
+
+Yes! but be careful of ambiguity.
+
+For more info, see: [C++ Feature#Function Overloading](LANG/C++/feature.md)
+
+#### Why can't overloading be based on return type along?
+
+Because the return type is not included in the function call, the compiler won't be able to distinguish between them, resulting in an ambiguity issue.
+
+For more info, see: [C++ Feature#Function Overloading](LANG/C++/feature.md)
+
+#### Is destructor overloading possible?
+
+Destructor overloading is not possible in C++. A class can have only one destructor, and it cannot take parameters or have a return type.
+
+For more info, see: [C++ Object Oriented Programming#Destruction#Notice](LANG/C++/oop.md)
+
+#### What's the difference between function overloading and templates?
+
+Overloading creates multiple distinct functions. Templates generate functions as needed. Use overloading for specific type handling, templates for generic algorithms.
+
+#### What is the difference between function overriding, function overloading?
+
+Function overloading allows you to define multiple functions in the same scope with the same name but different parameters. Function overriding occurs in inheritance hierarchies when a derived class provides a specific implementation for a function that is already defined in its base class.
+
+For more info, see: [C++ Feature#Function Overloading vs Overriding](LANG/C++/feature.md)
+
+#### What is the difference between function overloading and operator overloading?
+
+Function overloading is about having multiple versiosn of a function with the same name but different signatures, while operator overloading is about giving new meaning to existing operators for user-defined types.
+
+For more info, see: [C++ Feature#Function Overloading vs Overriding](LANG/C++/feature.md)
 
 #### What is the difference between static data members and non-static data members?
 
@@ -85,12 +125,6 @@ For more info, see: [C++ Features#static](LANG/C++/feature.md)
 #### How to fix static initialization order fiasco?
 
 Use Meyers Singleton pattern(function-local static)
-
-For more info, see: [C++ Features#static](LANG/C++/feature.md)
-
-#### Can we have static constructors in C++?
-
-No, but you can use static initialization blocks.
 
 For more info, see: [C++ Features#static](LANG/C++/feature.md)
 
@@ -120,13 +154,33 @@ Only `a` is a pointer, `b` is just an int.
 
 Pointer arithmetic allows direct memory access, but accessing out-of-bounds memory is undefined. Compiler may not throw errors, but program may crash or show garbage.
 
+#### Is the inline keyword mandatory for inlining?
+
+No! modern compilers aggressively inline functions even without the inline keyword, especially with optimization flags like `-O2` or `-O3`.
+
 #### How does inline expansion of functions affect performance?
 
 Inline expansion replaces a function call with the function body, potentially reducing call overhead and enabling further optimizations (constant propagation, loop unrolling).
 
+For more info, see: [C++ Features#inline](LANG/C++/feature.md)
+
+#### What's the difference between `#define` and `inline`?
+
+inlie is a C++ keyword with proper scoping, type checking, and no side-effect issues. Macros are preprocessor text substitution with none of these benefits.
+
+For more info, see: [C++ Features#inline vs macros](LANG/C++/feature.md)
+
 #### Can we have a recursive inline function in C++?
 
-An inline function suggests to the compiler that function calls may be replaced with the function body to reduce overhead. Recursive functions can technically be marked inline, but in practice, the compiler will inline only a limited number of calls(if any). For deep recursion, inlining is not practical.
+Typically no! An inline function suggests to the compiler that function calls may be replaced with the function body to reduce overhead. Recursive functions can technically be marked inline, but in practice, the compiler will inline only a limited number of calls(if any). For deep recursion, inlining is not practical.
+
+For more info, see: [C++ Features#inline](LANG/C++/feature.md)
+
+#### Does inline guarantee no function call?
+
+No! It's a request. The compiler can ignore it. Conversely, compilers can inline functions without the inline keyword.
+
+For more info, see: [C++ Features#inline](LANG/C++/feature.md)
 
 #### What does the Scope Resolution operator do?
 
@@ -147,6 +201,10 @@ Default arguments are values that are used when a function is called without som
 #### Discuss the difference between prefix and postfix?
 
 Prefix and postfix operators differ primarily in the timing of their operation relative to expression evaluation. Prefix(`++x`) increments the variable first and returns the updated value, while postfix(`x++`) returns the original value before incrementing. Both increment the variable by 1, but prefix affects the current expression immediately.
+
+#### What are the different data tyeps present in C++
+
+C++ data types are divided into 4 main categories: primitive(built-in) types, derived types, enumeration and user-defined types.
 
 ### New Feature
 
@@ -178,9 +236,27 @@ For more info, see: [C++ Template#SFINAE](LANG/C++/template.md)
 
 Perfect forwarding is a technique to pass arguments to another function without losing their value category (lvalue or rvalue). It's essential in generic programming to write functions that forward arguments efficiently.
 
-#### What are decltype and auto keywords used for?
+#### Can `auto` be used in function parameters?
 
-`auto` deduces the variable type from the initializer. It's great for long iterator types, lambdas, and templates. `decltype(expr)` yields the exact tyep of an expression(including references and cv-qualifiers) without evaluating it.
+Yes, `auto` can used in generic lambdas (e.g., `[](auto x){}`).
+
+For more info, see: [C++ Features#auto](LANG/C++/feature.md)
+
+#### What's the difference between `auto` and `template` type deduction?
+
+Almost identical, except that `auto` assumes `std::initializer_list` for braced initializer, while template don't.
+
+For more info, see: [C++ Features#auto vs template type deduction](LANG/C++/feature.md)
+
+#### What are `decltype` and `auto` keywords used for?
+
+`auto` deduces the variable type from the initializer. It's great for long iterator types, lambdas, and templates. `decltype(expr)` yields the exact type of an expression(including references and cv-qualifiers) without evaluating it.
+
+For more info, see: [C++ Features#decltype](LANG/C++/feature.md)
+
+#### What's the difference between `auto` and `decltype`?
+
+`auto` deduces type from an initializer value, stripping references and `const`/`volatile` qualifiers. `decltype` examines the declared type of an expression without evaluating it, preserving all qualifiers.
 
 For more info, see: [C++ Features#decltype](LANG/C++/feature.md)
 
@@ -192,6 +268,18 @@ Instead of manually specifying data types, C++ allows the compiler to deduce the
 - decltype: Infers type from an expression.
 
 For more info, see: [C++ Features#decltype](LANG/C++/feature.md)
+
+#### When would `decltype((x))` be different from `decltype(x)`?
+
+`decltype(x)` gives the exact type of variable `x`. `decltype((x))` treats `(x)` as an expression - if `x` is an lvalue, it yields `T&`. This is known as the "parentheses trick".
+
+For more info, see: [C++ Features#decltype#Notice](LANG/C++/feature.md)
+
+#### What is `decltype(auto)` and when would you use it?
+
+`decltype(auto)` deduces a type using `auto`'s syntax but `decltype`'s rules. It's perfect for forwarding return types in wrapper functions, especially when you need to preserve references.
+
+For more info, see: [C++ Features#decltype(auto)](LANG/C++/feature.md)
 
 #### What are lambda expressions in C++11 and later?
 
@@ -293,49 +381,107 @@ Smart pointers implement RAII (Resource Acquisition Is Initialization), they aut
 
 For more info, see: [C++ Feature#Dangling Pointer](LANG/C++/feature.md)
 
-### Exception
+### Exception & Error
 
 #### How is exception handling implemented in C++?
 
 Exception handling in C++ is implemented using three keywords: `try`, `catch` and `throw`. This mechanism allows a program to deal with runtime errors in a a structured way so that it doesn't stop abruptly.
 
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
+
 #### What is the use of the `catch(...)` block? How is it different from specific catch blocks?
 
 The `catch(...)` block is used to catch any type of exception, regardless of its data type or class. It acts as a generic fallback handler.
+
+For more info, see: [C++ Exception#Exception Handling#Notice](LANG/C++/exception.md)
 
 #### How do you create a custom exception in C++?
 
 You can create a custom exception by defining a class that inherits from the `std::exception` class and overriding its `what()` method, which returns an error message.
 
+For more info, see: [C++ Exception#Exception Handling#Throwing Exceptions](LANG/C++/exception.md)
+
 #### What is the difference between std::exception and user-defined exceptions?
 
 `std::exception` is the root of the standard hierarchy and provides a virtual `what()` string. Standard library errors derive from it. User-defined exceptions let you encode domain context. As long as they ultimately derive from `std::exception`, callers can catch generically while still matching specific types when desired.
+
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
 
 #### What happens if an exception is thrown but not caught?
 
 If an exception is thrown but not caught anywhere in the call stack, the program calls `std::terminate()`, which by default aborts execution. Exceptions can propagate up the call stack until a suitable catch block is found. If none is found, the program terminates.
 
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
+
 #### What is stack unwinding in exception handling? Explain its role.
 
 Stack unwinding is the process of cleaning up the call stack after an exception is thrown and before it is caught. During unwinding, destructors of all local objects are called in reverse order of construction, ensuring proper cleanup. This prevents resource leaks and enforces RAII(Resoruce Acquistition Is Initialization).
 
+For more info, see: [C++ Exception#Exception Handling#Exception Propagation](LANG/C++/exception.md)
+
 #### What is the use of noexcept in C++ exception handling?
 
-The noexcept keyword specifies that a function does not throw exceptions. It makes intent clear to both the compiler and developers. If a nonexcept function does throw, `std::terminate()` is called. noexcept is especially important for move constructors and destructors, where it enables optimizations such as exception-safe move operations in standard containers.
+The `noexcept` keyword specifies that a function does not throw exceptions. It makes intent clear to both the compiler and developers. If a nonexcept function does throw, `std::terminate()` is called. noexcept is especially important for move constructors and destructors, where it enables optimizations such as exception-safe move operations in standard containers.
+
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
 
 #### What will happen if you throw an exception from a destructor?
 
 Throwing an exception from a destructor during stack unwinding results in a call to `std::terminate()`, which aborts the program.
 
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
+
 #### What happens when you throw a pointer and throw an object in C++?
 
 Throwing a pointer means you're throwing an address. It won't trigger automatic destruction of the object pointed to, and catching it requires catching the same pointer type. Throwing by value creates a copy, and cleanup is automatic.
 
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
+
 #### How can RAII (Resource Acquisition is Initialization) help in exception safety?
 
-RAII binds a resource's lifetime to an object's lifetime so that destructors perform cleanup automatically during normal execution and during exception unwinding. This prevents leaks and makes code exception-safe.
+Yes. RAII binds a resource's lifetime to an object's lifetime so that destructors perform cleanup automatically during normal execution and during exception unwinding. This prevents leaks and makes code exception-safe.
 
 For more info, see: [C++ Best Practice#Ensure thread safety](LANG/C++/best_practice.md)
+
+#### What is an Overflow Error?
+
+An overflow error happens when a value is too large (or too small in magnitude) to be represented in the allocated memory. These errors can cause crashes, incorrect calculations, security vulnerabilities, and hard-to-find bugs.
+
+For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
+
+#### Is signed integer overflow undefined behavior in C++?
+
+Yes! Signed integer overflow is undefined behavior - the compiler can assume it never happens and optimize accordingly. Unsigned overflow is well-defined (wraps modulo $2^n$, not an error or undefined behavior).
+
+For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
+
+#### Why is signed overflow UB while unsigned wraps?
+
+Historical: Different hardware (ones' complement, sign-magnitude) handled overflow differently. C++ standard chose to allow flexibility. Modern CPUs use two's complement, but UB remains for optimization opportunities.
+
+For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
+
+#### How can buffer overflows be prevented in C++?
+
+Enable compiler warnings, Use safe functions/containers.
+
+For more info, see: [C++ Exception#Overflow#Compile-Time Prevention](LANG/C++/exception.md)
+
+#### What's the difference between overflow and underflow?
+
+Overflow exceeds maximum representable value, Underflow exceeds minimum (negative) value.
+
+For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
+
+#### Can floating-point overflow be detected?
+
+Yes! using `std::isinf()` to check for infinity, or enabling floating-point exceptiosn with `std::fenv`.
+
+For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
+
+#### What's integer promotion and how does it affect overflow?
+
+Small integers (`char`, `short`) are promoted to `int` before arithmetic. This can prevent overflow in the smaller type but cause overflow in `int`.
 
 ### OOP
 
@@ -343,7 +489,7 @@ For more info, see: [C++ Best Practice#Ensure thread safety](LANG/C++/best_pract
 
 Object-Oriented Programming is a programming paradigm that organizes code around objects(data + behavior) rather than functions and data separately.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is a class and object in C++?
 
@@ -351,11 +497,19 @@ A class is a blueprint or template that defines the properties(data members) and
 
 An object is a real-world instance of a class that occupies memory and can perform the actions defined by the class.
 
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+
+#### What is the difference between structures and class
+
+The only technical difference between `struct` and `class` in C++ is the default access specifier; `struct`'s members and base classes are `public` by default, `class`'s members and base classes are `private` by default.
+
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+
 #### What are the C++ Access Specifiers?
 
 In C++, the access specifiers are used to define how the functions and variables can be accessed outside the class. There are three access specifiers: `public`, `protected`, and `private`. `public` members are accessible from anywhere. `private` members are only accessible within the same class. `protected` members are accessible within the class and its derived classes.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What are type modifiers in C++?
 
@@ -365,127 +519,195 @@ Modifiers like signed, unsigned, long, short change the size or sign of basic da
 
 A friend function (or class) has access to a class's private and protected members. It can be used sparingly to implement symmetric operators or tightly coupled utilities without exposing internals publicly.
 
-For more info, see: [C++ Objects#Access Specifiers](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Access Specifiers](LANG/C++/oop.md)
 
 #### What is a friend class?
 
 A friend class is a class that can access the private and protected members of another class. The friendship is declared inside the class using friend class.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is object slicing in C++? How can you avoid it?
 
 Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members fo the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+
+#### What do you mean by abstraction in C++?
+
+Abstraction means hiding complex implementation details and showing only the essential features to the user. It's about focusing on what domething does rather than how it does it.
+
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is the difference between an abstract class and an interface in C++? How do you implement an interface-like behavior in C++?
 
 An abstract class is a class with **at least** one pure virtual function. An interface is a class with **only** pure virtual functions, it is a contract that defines a set of methods that a class must implement, without providing any implementation details ...
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### Explain the concept of encapsulation
 
 Encapsulation is one of the core principles of OOP. It bundles data(member variables) with the methods (member functions) that operate on that data inside a single unit, called a class. It restricts direct access to some parts of an object and hides the data to protect its integrity.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is inheritance in C++?
 
 Inheritance is a machanism in which a class(derived class) acquires the properties and behaviors of another class(base class).
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is multiple inheritance, and what problems can it cause?
 
 Multiple inheritance (MI) lets a class inherit from more than one base. Here are the common issues that result from MI: Ambiguity, Diamond problem, complexity.
 
-For more info, see: [C++ Objects#Multiple Inheritance](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Multiple Inheritance](LANG/C++/oop.md)
 
 #### When should we use multiple inheritance?
 
-In C++, multiple Inheritance should be used when a class is required to inherit features (data members and member functions) from more than one base class, and each base class offers a different cunctionality or behavior that is logically required in the derived class.
+In C++, multiple Inheritance should be used when a class is required to inherit features (data members and member functions) from more than one base class, and each base class offers a different functionality or behavior that is logically required in the derived class.
 
-For more info, see: [C++ Objects#Multiple Inheritance](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Multiple Inheritance](LANG/C++/oop.md)
 
 #### What is a virtual function?
 
 A virtual function is a member function declared with the `virtual` keyword that can be overridden in derived classes. When you call a virtual function through a base class pointer or reference, C++ determines at runtime which function to execute based on the actual object type - not the pointer type. Virtual functions are implemented via a vtable (virtual table) - an array of function pointers, and each object contains a vptr (virtual pointer) to its class's vtable.
 
-For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
 
 #### What's the size overhead of a virtual function?
 
 Each object gets one `vptr` (8bytes on 64-bit os) regardless of how many virtual functions. Each class gets one vtable (shared across all instances).
 
-For more info, see: [C++ Objects#Object Model](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Object Model](LANG/C++/oop.md)
 
 #### What is virtual inheritance?
 
 Virtual inheritance is a C++ mechanism used to solve the diamond problem in multiple inheritance.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
 
 #### What's the diamond problem with virtual inheritance?
 
 When a class inherits from two classes that share a common base, virtual inheritance ensures only one copy of the base class exists.
 
-For more info, see: [C++ Objects#Virtual Inheritance](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
+
+#### What's the cost of virtual inheritance?
+
+Additional memory per object (virtual base pointer), slower member access (indirection), more complex construction/destruction, and larger object code.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
+
+#### Can a class be both virtual and non-virtually inherited?
+
+Yes! but it creates separate instance.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
+
+#### How deos `dynamic_cast` work with virtual inheritance
+
+`dynamic_cast` is essential for navigating virtual inheritance hierarchies because offsets aren't fixed at compile time. By contrast, `static_cast` may fail.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance#Notice](LANG/C++/oop.md)
+
+#### Why must the most derived class initialize virtual bases?
+
+Because the virtual base is shared and constructed once. Only the most derived class knows the entire hierarchy and can ensure the virtual base is onstructed before any intermediate classes use it.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance#Notice](LANG/C++/oop.md)
 
 #### Can you have a virtual function with default arguments?
 
 Yes, but DANGEROUS! Default arguments are determined at compile-time based on the static type.
 
-For more info, see: [C++ Objects#Virtual Inheritance](LANG/C++/oop.md)
-
-#### Can we call a virtual function from a constructor?
-
-Yes, we can call a virtual function from a constructor, but during base class construction the derived part of the object is not yet initialized.
-
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
-
-#### Can constructors be virtual?
-
-No. Constructors are aclled before the object exists - no vpt yet. The virtual mechnism requires a fully constructed object with a valid vtable.
-
-For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
 
 #### Can static functions be virtual?
 
 No, Virtual dispatch requires a `this` pointer (object instance). Static functions belong to the class, not objects.
 
-For more info, see: [C++ Objects#Virtual functions](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
 
 #### What happens when we override a function but forget to use `virtual` in the base class?
 
 Function overriding won't work as runtime polymorphism, instead, function hiding occurs when the base class function is hidden by the derived class function if called through a derived object.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is polymorphism in C++?
 
 Polymorphism means one interface, multiple implementations. It allows the same function or operator to behave differently depending on the context.
 
-For more info, see: [C++ Objects](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+
+#### What's a constructor
+
+In C++, a constructor is a special method that initializes an object. Its name must be the same as the class name. These constructors are called automatically whenever we create an object of a class.
+
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### Can constructors be private in C++?
 
 Yes, constructors can be private in C++. When a constructor is private, objects of the class cannot be created directly outside the class.
 
-For more info, see: [C++ Object](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+
+#### Can we have static constructors in C++?
+
+No, but you can use static initialization blocks.
+
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
+
+#### Can constructors be private?
+
+Yes! used in singleton pattern or factory methods.
+
+#### Can constructors be virtual?
+
+No. Constructors are called before the object exists - no vpt yet. The virtual mechanism requires a fully constructed object with a valid vtable.
+
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
+
+#### Can constructors of virtual base classes have parameters?
+
+Yes! but they must be explicitly called from the most derived class constructuctor.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance#Notice](LANG/C++/oop.md)
+
+#### Can we call a virtual function from a constructor?
+
+Yes, we can call a virtual function from a constructor, but during base class construction, the derived part of the object is not yet initialized.
+
+For more info, see: [C++ Object Oriented Programming#Construction and Destruction](LANG/C++/oop.md)
+
+#### What happens if you don't define any constructor?
+
+Compiler generates a default constructor automatically.
+
+For more info, see: [C++ Object Oriented Programming#Default Constructor](LANG/C++/oop.md)
+
+#### Can a constructor throw exceptions?
+
+Yes! but be careful about resource leaks. Use RAII or try-catch blocks.
+
+#### What's an explicit constructor?
+
+Prevents implicit conversions.
+
+For more info, see: [C++ Object Oriented Programming#Default Constructor](LANG/C++/oop.md)
 
 #### Can a derived class access private members of the base class?
 
 A derived class cannot directly access private members of a base class.
 
-For more info, see: [C++ Object](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### How do you free memory allocated with new?
 
 Use `delete` for single values, and `delete[]` for arrays.
 
-For more info, see: [C++ Objects#new and delete Operators](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#new and delete Operators](LANG/C++/oop.md)
 
 #### How we can make custom delete?
 
@@ -502,49 +724,97 @@ void operator delete(void* ptr){
 
 `new` is a C++ operator that allocates memory and calls constructors, while `malloc()` is a C function that only allocates raw memory. `new` returns the correct typed pointer; `malloc()` returns `void*`. `new` throws `std::bad_alloc` on failure, `malloc()` return `NULL`. Memory allocated with `new` must be freed with `delete`, memory from `malloc()` with `free()`, mixing them is undefined behavior.
 
-For more info, see: [C++ Objects#Summary](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Summary](LANG/C++/oop.md)
+
+#### What is a destructor in C++?
+
+A destructor is a special member function that cleans up resources when an object is destroyed. It has the same name as the class, takes no parameters, and has no return type. Its primary job is to release resources like dynamically allocated memory, file handles, database connections, or mutex locks to prevent resource leaks.
+
+For more info, see: [C++ Object Oriented Programming#Destructor](LANG/C++/oop.md)
+
+#### Do I always need to write a destructor?
+
+NO! If your class does not allocate resources, or manage resources by using RAII. Let the compiler generate the destructor.
+
+For more info, see: [C++ Object Oriented Programming#Destructor](LANG/C++/oop.md)
+
+#### Why can't destructor take parameters?
+
+Destructors are called implicitly during object destruction; there's no way to pass arguments.
+
+For more info, see: [C++ Object Oriented Programming#Destructor](LANG/C++/oop.md)
+
+#### Can I call a destructor explicitly?
+
+Yes, to destroy an object created with the placement new operator, you can explicitly call the object's destructor.
+
+For more info, see: [C++ Object Oriented Programming#Destructor#Notice](LANG/C++/oop.md)
 
 #### Why should base class destructors be virtual?
 
-If the base class destructor is not virtual, deleting a derived object through a base pointer calls only the base destructor, can cause memory leaks or incomplete destruction, and can ensures the derived destructor is called first.
+If the base class destructor is not virtual, deleting a derived object through a base pointer calls only the base destructor, which can cause memory leaks or incomplete destruction, and can ensure the derived destructor is called first.
 
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Construction and Destruction](LANG/C++/oop.md)
 
-#### Is destructor overloading possible?
+#### Can a destructor be private?
 
-Destructor overloading is not possible in C++. A class can have only one destructor, and it cannot take parameters or have a return type.
+Yes, this prevents stack allocation (automatic destruction) and forces heap allocation with manual deletion, often used in singleton patterns or reference-counted objects.
 
-For more info, see: [C++ Objects#Construction and Destruction](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Destruction#Notice](LANG/C++/oop.md)
+
+#### Can a destructor be pure virtual?
+
+Yes! but you must still provide a body for it because base class destructors are always called during derived object destruction.
+
+For more info, see: [C++ Object Oriented Programming#Private Destructor#Notice](LANG/C++/oop.md)
+
+#### What's the order of destruction for member objects?
+
+Members are destroyed in reverse of their declaration order.
+
+For more info, see: [C++ Object Oriented Programming#Destruction Order](LANG/C++/oop.md)
+
+#### What happens if a destructor throws an exception?
+
+If another exception is already propagating, `std::terminate()` is called. Please always mark destructors `noexcept` and never throw from them.
+
+For more info, see:  [C++ Object Oriented Programming#Destruction#Notice](LANG/C++/oop.md)
+
+#### What is a virutal destructor?
+
+A virtual destructor is a destructor declared with the `virtual` keyword. It ensures that when you delete a derived class object through a base class pointer, the correct destructor (starting from the derived class all the way up to the base class) gets called.
+
+For more info, see:  [C++ Object Oriented Programming#Destruction#Notice](LANG/C++/oop.md)
 
 #### Why use `static_cast` over C-style cast?
 
 `static_cast` provides compile-time type safety, code clarity, and reduced risk of unintended conversions.
 
-For more info, see: [C++ Objects#static_cast](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#static_cast](LANG/C++/oop.md)
 
 #### Can `dynamic_cast` be used with non-ploymorphic types?
 
 No. Compiler error (no vtable).
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#dynamic_cast](LANG/C++/oop.md)
 
 #### What's the cost of `dynamic_cast`?
 
 Depends on inheritance depth.
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#dynamic_cast](LANG/C++/oop.md)
 
 #### How does `dynamic_cast` work internally?
 
 Each polymorphic class has a vtable. The compiler stores the RTTI pointer in the vtable. `dynamic_cast` traverses the inheritance graph by following these pointers and comparing `type_info` objects.
 
-For more info, see: [C++ Objects#dynamic_cast](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#dynamic_cast](LANG/C++/oop.md)
 
 #### Explain the difference between `static_cast`, `dynamic_cast` and `reinterpret_cast`.
 
 `static_cast` does compile-time checked conversions between related types. `dynamic_cast` does runtime-checked downcasting. `reinterpret_cast` does dangerous bit-level reinterpretation with no checks whatsoever.
 
-For more info, see: [C++ Objects#`static_cast` vs `dynamic_cast` vs `reinterpret_cast`](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#`static_cast` vs `dynamic_cast` vs `reinterpret_cast`](LANG/C++/oop.md)
 
 ### Template
 
@@ -578,11 +848,45 @@ Variadic templates are an extension to C++ templates that allow them to accept a
 
 For more info, see: [C++ Templates](LANG/C++/template.md)
 
+#### What is a class template?
+
+A `class template` is a blueprint for creating classes that work with different data types without rewriting the code for each type. It allows you to define a generic class where the data types are specified as parameters.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
 #### What is a function template in C++?
 
 A function template allows a function to operate on generic data types. It provides a way to write one function for multiple types, which is resolved at compile-time.
 
 For more info, see: [C++ Templates](LANG/C++/template.md)
+
+#### How are class templates different from function templates?
+
+Class templates require explicit template arguments when instantiating objects (until C++ 17 CTAD), while function templates can often deduce types from arguments.
+
+For more info, see: [C++ Templates#Function Template vs Class Template](LANG/C++/template.md)
+
+#### What is CTAD(Class Template Argument Deduction)?
+
+Allows the compiler to deduce template arguments from constructor arguments.
+
+For more info, see: [C++ Templates#Class Template Arguments Deduction(CTAD)](LANG/C++/template.md)
+
+#### Can class templates be virtual?
+
+Class templates can have virtual functions, but template functions cannot be (virtual functions must be known at compile time for vtable layout).
+
+For more info, see: [C++ Templates#Class templates](LANG/C++/template.md)
+
+#### What's the difference between `typename` and `class` in templates?
+
+No difference. `typename` and `class` are identical, but `typename` is preferred to avoid confusion with class keyword.
+
+#### What is template specialization?
+
+Defining a different implementation for specific template arguments, useful for optimization or handling special cases.
+
+For more info, see: [C++ Templates#Template Specialization](LANG/C++/template.md)
 
 #### Can a function template throw an exception based on the type it is instantiated with?
 

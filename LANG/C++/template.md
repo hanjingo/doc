@@ -4,12 +4,22 @@
 
 
 
-Templates are C++'s mechanism for generic, compile-time polymorphism. They let you write functions and classes that operate on unspecified types. Unlike run-time polymorphism (virtual functions), templates are resolved at compile time, enabling highly optimized and type-safe code.
+A C++ template is a tool for creating generic classes or functions. This allows us to write code that works for any data type without rewriting it for each type.
 
-## Quick summary (contract)
-- Inputs: type and value template parameters; function/class usage sites.
-- Outputs: compiler-generated instantiations of functions/classes.
-- Error modes: failed deduction, substitution failure (SFINAE), ambiguous overloads, two-phase lookup surprises.
+![cpp_template_example](res/cpp_template_example.png)
+
+## Syntax
+
+```c++
+template <typename A, typename B, ...>
+entity_definition
+```
+
+Templates can be used to define:
+
+1. Function Templates
+2. Class Templates
+3. Variable Templates (C++14 onwards)
 
 
 
@@ -21,19 +31,15 @@ Function templates define families of functions parametrized by types (and somet
 - Template arguments are usually deduced from call arguments; you can also explicitly provide them (`f<int>(...)`).
 - Function templates can be overloaded; non-template overloads are preferred when equally viable.
 
-Example:
-
 ```c++
-inline int const& max(int const& a, int const& b) { return a < b ? b : a; }
-
 template <typename T>
-inline T const& max(T const& a, T const& b) { return a < b ? b : a; }
+T add(T x, T y) { return a + b; };
 
-template <typename T>
-inline T const& max(T const& a, T const& b, T const& c) { return max(max(a, b), c); }
+add<int>(1, 2);
 ```
 
-Notes:
+**Notice**:
+
 - Default template arguments are common for class templates; for function templates, template-argument deduction typically makes defaults unnecessary.
 - Prefer `typename` for type template parameters in modern code for clarity.
 
@@ -43,57 +49,407 @@ Notes:
 
 Class templates parametrize classes by types or values. You instantiate them by supplying template arguments (`Stack<int>`).
 
-Example:
+```c++
+template <typename T>
+class Test
+{
+public:
+  T val;
+  Test(T x) : val{x} {};
+};
+
+Test<int> t;
+```
+
+**Notice**:
+
+- Class templates **can** have virtual functions, but template functions cannot be virtual(virtual functions must be known at compile time for vtable layout)
+
+  ```c++
+  template <typename T>
+  class Base
+  {
+  public:
+    virtual void fun() { }; // ✅OK
+  };
+  
+  class Norm
+  {
+  public:
+    template<typename T>
+    virtual void fun() {}; // ❌ERROR! Cannot be virtual
+  }
+  ```
+
+- Class templates **may** have default template arguments.
+
+- You can fully specialize a class template for a particular argument list: `template<> class Stack<std::string> { ... };` (specialized members must be provided).
+
+- Partial specialization is allowed for class templates (not for function templates): `template<typename T> class MyClass<T*, T*> { ... };`.
+
+- All three correspond to definitions of members of class templates:
+
+  1. Definitions of member functions of class templates
+  2. Definitions of nested class members of class templates
+  3. Definitions of static data members of class templates
+  
+- Template parameters are placeholders for class templates. They are declared much like class templates, but the keywords `struct` and `union` cannot be used.
+
+
+
+
+## Template Variables (Since C++ 14)
+
+A template variable is a variable that can work with any type specified when the variable is used, similar to how we use templates for functions or classes.
 
 ```c++
-template<typename T, typename Container = std::vector<T>>
-class Stack {
+template <typename T> constexpr T pi = T(3.14);
+
+pi<double>; // 3.14
+pi<float>;  // 3.14
+```
+
+
+
+## Template Parameters
+
+### Multiple Template Parameters
+
+```c++
+template <typename T, typename U>
+class Test
+{
 public:
-  void push(T const& elem) { elems.push_back(elem); }
-  void pop() { elems.pop_back(); }
-  T& top() { return elems.back(); }
-private:
-  Container elems;
+  T first;
+  U second;
+  Test(T a, U b) : first{a}, second{b} {}
+};
+
+Test<int, float> t1{1, 0.5};
+Test<int, std::string> t2{2, std::string("abc")};
+```
+
+### Default Template Parameters
+
+Like normal parameters, we can also specify default type arguments to templates.
+
+```c++
+template <typename T1, typename T2 = double>
+class A
+{
+public:
+  T1 val1;
+  T2 val2;
+  A(T1 t1, T2 t2) : val1{t1}, val2{t2} {};
+};
+
+A<int, float> a1{1, 2.3};
+A<int> a2{1, 2.3};
+```
+
+```c++
+template <typename T1, int T2 = 100>
+class B
+{
+public:
+  T1 val1;
+  int val2 = T2;
+  B(T1 t1) : val1{t1} {};
+};
+
+B<int> b1{1}; 	 // val1: 1, val2: 100
+B<int, 2> b2{1}; // val1: 1, val2: 2
+```
+
+### Template Non-Type Parameters
+
+Templates can take non-type parameters (constant values, not types). These are used to fix values like size, max, or min for a template. Non-type parameters must be compile-time constants because the compiler generates the template code using those values at compile time.
+
+```c++
+template <class T, int INIT>
+int add(T a)
+{
+  return a + INIT;
+}
+
+add<int, 100>(1); // 101
+```
+
+**Notice**:
+
+1. Non-type parameters are typically integral values, pointers, references, or enums. Floating-point and class-type nontype parameters are not supported.
+
+2. Nontype template arguments are the values substituted for nontype parameters. Such a value must be one of the following things:
+
+   - Another nontype template parameter that has the right type
+   - A compile-time constant value of integer(or enumeration) type. This is acceptable only if the corresponding parameter has a type that matches that of the value, or a type to which the value can be implicitly converted(for example, a `char` can be provided for an `int` parameter).
+   - The name of an external variable or function preceded by the built-in unary `&` ("address of") operator. For functions and array variables, `&` can be left out. Such template arguments match nontype parameters of a pointer type.
+   - The previous kind of argument, but without a leading `&` operator, is a valid argument for a non-type parameter of reference type.
+   - A pointer-to-member constant; in other words, an expression of the form `&C::m` where `C` is a class type and `m` is a nonstatic member (data or function). This matches nontype parameters of a pointer-to-member type only.
+
+3. Nontype template parameters are declared much like variables, but they cannot have nontype specifiers like `static`, `mutable`, and so forth. They can have `const` and `volatile` qualifiers, but if such a qualifier appears at the outermost level of the parameter type, it is simply ignored.
+
+   ```c++
+   template<int N> 							 struct A{}; // ✅
+   template<const int N> 				 struct B{}; // ✅
+   template<volatile int N> 			 struct C{}; // ✅
+   template<const volatile int N> struct D{}; // ✅
+   
+   template<static int N> 			 struct E{}; // ❌
+   template<mutable int N> 		 struct F{}; // ❌
+   template<register int N> 		 struct G{}; // ❌
+   template<thread_local int N> struct H{}; // ❌
+   // ---------------------------------------------
+     
+   // const at outermost - ⚠️IGNORED (treats N as plain int)
+   template<const int N> struct S1 {};
+   // const in pointer target - ✅NOT ignored (different type!)
+   template<const int* P> struct S2 {};
+   // const reference - ✅NOT ignored
+   template<const int& R> struct S3 {};
+   // volatile pointer - ✅NOT ignored
+   template<volatile int* P> struct S4 {};
+   // ---------------------------------------------
+   
+   // These are considered different templates
+   template<int* P> struct T1 {};
+   template<const int* P> struct T2 {};  // ⚠️Different from T1!
+   
+   int global = 42;
+   const int const_global = 100;
+   T1<&global> t1;         // ✅OK: int*
+   T1<&const_global>   		// ❌ERROR: const int* cannot convert to int*
+   T2<&const_global> t2;   // ✅OK: const int*
+   T2<&global> t3;         // ✅OK: int* converts to const int*
+   
+   ```
+
+4. Non-type parameters are always rvalues (Their address cannot be taken, and they cannot be assigned to).
+
+   ```c++
+   template<int N>
+   struct Test
+   {
+     void fun()
+     {
+       N = N + 1;            // ❌ERROR: N is not a modifiable lvalue
+       N++;          			  // ❌ERROR: same issue
+       N += 5;       				// ❌ERROR: assignment of read-only parameter
+       int* ptr = &N; 				// ❌ERROR: lvalue required as unary '&' operand
+       const int* cptr = &N; // ❌ERROR: lvalue required as unary '&' operand
+       auto& ref = N; 				// ❌ERROR: cannot bind rvalue to lvalue reference
+       
+       int copy = N;   					// ✅OK: N is an rvalue, but can be copied
+       const int& const_ref = N; // ✅OK: const lvalue reference binds to rvalue
+       int&& rvalue_ref = N;     // ✅OK: binding rvalue reference to rvalue
+     }
+     
+     // ✅OK:  can be passed by value (copy)
+     static void by_value(int x) {};
+     // ❌ERROR: Cannot pass N by lvalue reference
+     static void by_lvalue_ref(int& x) {};
+     // ✅OK: Can pass by const lvalue reference
+     static void by_const_lvalue_ref(const int& x) {};
+     // ✅OK: an pass by rvalue reference
+     static void by_rvalue_ref(int&& x) {};
+     void test_static()
+     {
+       by_value(N);
+       by_lvalue_ref(N);
+       by_const_lvalue_ref(N);
+       by_rvalue_ref(static_cast<int&&>(N));
+     };
+   };
+   ```
+
+### Template Arguments Deduction
+
+Template argument deduction automatically deduces the data type of the argument passed to the templates. This allows us to instantiate the template without explicitly specifying the data type. (The template argument deduction for classes is only available since C++17.)
+
+#### Function Template Arguments Deduction(FTAD)
+
+Function template argument deduction has been part of C++ since the C++98 standard. We can skip declaring the type of arguments we want to pass to the function template, and the compiler will automatically deduce the type using the arguments we passed in the function call.
+
+```c++
+template<typename T>
+T mul(T first, T second) { return first * sceond; }
+
+mul(3, 4); // auto deduce to mul<int>(3, 4)
+```
+
+#### Class Template Arguments Deduction(CTAD)
+
+The class template argument deduction was added in C++17 and has since been part of the language. It allows us to create the class template instances without explicitly defining the types, just like function templates.
+
+```c++
+// build with: g++ -std=c++17 -o xx xx.cpp 
+template<typename T>
+class Test
+{
+public:
+  T val;
+  Test(T x) : val{x} {}
+  void print() { std::cout << val << std::endl; }
+};
+
+Test t1{1};   // deduce to Test<int>
+Test t2{1.2}; // deduce to Test<double>
+t1.print();
+```
+
+### Notice
+
+1. Template type arguments are the "values" specified for template type parameters. Most commonly used types can be used as template arguments, but there are two exceptions:
+
+   - Local classes and enumerations(in other words, types declared in a function definition) cannot be involved in template type arguments.
+   - Types that involve unnamed class types or unnamed enumeration types cannot be template type arguments(unnamed classes or enumerations that are given a name through a typedef declaration are OK).
+
+   ```c++
+   TODO
+   ```
+
+2. Two sets of template arguments are equivalent when the values of the arguments are identical one-for-one.
+
+3. Template argument deduction applies exclusively to function and member function templates. In particular, the arguments for a class template are not deduced from the arguments to a call of one of its constructors. For example:
+
+   ```c++
+   template<typename T>
+   class S 
+   {
+       public:
+       	S(T b) : a(b) {}
+       private:
+       	T a;
+   };
+   
+   S x(12); // error
+   ```
+
+4. Even when a default call argument is not dependent, it cannot be used to deduce template arguments. This means that the following is invalid C++:
+
+   ```c++
+   template<typename T>
+   void f(T x = 42){...}
+   
+   f<int>(); // correct；T=int
+   f();      // error
+   ```
+
+
+
+## Template Metaprogramming
+
+In C++, template metaprogramming refers to templates performing computation at compile time rather than runtime. To perform computation at compile time, template metaprogramming involves recursive template structures where templates call other templates during compilation.
+
+```c++
+template<int N>
+struct Factorial
+{
+	static const int value = N * Factorial<N - 1>::value;
+};
+
+template<>
+struct Factorial<0>
+{
+  static const int value = 1;
+};
+
+Factorial<5>::value; // 120 (5 * 4 * 3 * 2 * 1)
+```
+
+### Notice
+
+1. Template arguments for a function template can be specified explicitly or deduced from the way the template is used.
+
+   ```c++
+   template <typename Func, typename T>
+   void apply(Func f, T x) {
+       f(x);
+   }
+   
+   template <typename T> void multi(T t) {
+       cout << 1 << ": " << t << endl;
+   }
+   
+   template <typename T> void multi(T *t) {
+       cout << 2 << ": " << *t << endl;
+   }
+   
+   int i = 3;
+   apply(&multi<int>, i); // SFINAE
+   ```
+   
+   This "substitution-failure-is-not-an-error"(SFINAE) principle is clearly an important ingredient to make the overloading of function templates practical. However, it also enables remarkable compile-time techniques.
+   
+1. Deduction rules in brief:
+
+   - Arrays and functions decay to pointers during deduction.
+   - Top-level `const`/`volatile` qualifiers are ignored.
+   - Qualified type names and certain non-type expressions are not deduced.
+
+   (If deduction fails, provide explicit template arguments or use overloads. SFINAE enables graceful exclusion of templates during overload resolution.)
+
+
+
+## Template Specialization
+
+Template specialization means: We write a special/custom version of a template for a specific data type or condition.
+
+### Full Specialization
+
+provide an alternative implementation for specific template arguments: `template<> class Foo<int> { ... };`.
+
+```c++
+template <typename T>
+class Storage
+{
+  T data;
+public:
+  Storage(T value) : data(value) {}
+};
+
+template <>
+class Storage<bool>
+{
+  bool data;
+public:
+  Storage(bool value) : data(value) {}
 };
 ```
 
-Key points:
-- Class templates may have default template arguments.
-- You can fully specialize a class template for a particular argument list: `template<> class Stack<std::string> { ... };` (specialized members must be provided).
-- Partial specialization is allowed for class templates (not for function templates): `template<typename T> class MyClass<T*, T*> { ... };`.
+### Partial Specialization
 
+Adjust class-template behavior for a range of argument patterns.
 
+```c++
+template <typename T, typename U>
+class MyClass {};
 
-## Kinds of template parameters
+// Partial specialization: both types are the same
+template <typename T>
+class MyClass<T, T> {};
 
-1. Type parameters: `template<typename T>`.
-2. Non-type parameters: compile-time constants like `int N` or pointers; e.g. `template<typename T, int N>`.
-3. Template-template parameters: parameters that accept other templates, e.g. `template<template<typename> class C>`.
+// Partial specilization: second type is int
+template <typename T>
+class MyClass<T, int> {};
+```
 
-Restrictions:
-- Non-type parameters are typically integral values, pointers, references, or enums. Floating-point and class-type nontype parameters are not supported.
+### Function Template Specialization
 
+Function Template Specialization allows you to define a custom version of a function template for a specific data type, enabling different behavior while keeping the same function name and structure.
 
+```c++
+template <typename T>
+void fun(T x) {}; // generic function template
 
-## Dependent names and `typename`
+template <>
+void fun<int>(int x) {}; // spcialized version for int
 
-When a name depends on a template parameter (dependent name) and denotes a type, prefix it with `typename`: `typename T::value_type`.
+fun(1.2); // call the generic function template
+fun(1); // call the spcialized version for int
+```
 
-Use `template` to disambiguate dependent template members when necessary: `X<T>::template rebind<U>`.
-
-## Template argument deduction
-
-Deduction rules in brief:
-
-- Arrays and functions decay to pointers during deduction.
-- Top-level `const`/`volatile` qualifiers are ignored.
-- Qualified type names and certain non-type expressions are not deduced.
-
-If deduction fails, provide explicit template arguments or use overloads. SFINAE enables graceful exclusion of templates during overload resolution.
-
-
-
-## Instantiation and two-phase lookup
+## Template Instantiation
 
 Instantiation substitutes template arguments to produce concrete code. Two-phase lookup means:
 
@@ -101,56 +457,6 @@ Instantiation substitutes template arguments to produce concrete code. Two-phase
 2. Second phase: at instantiation, resolve dependent names.
 
 This separation can cause surprising lookup behaviour; use explicit qualification, `this->`, or `typename`/`template` to resolve ambiguities.
-
-
-
-## Specialization and overloading
-
-- Full specialization: provide an alternative implementation for specific template arguments: `template<> class Foo<int> { ... };`.
-- Partial specialization: adjust class-template behavior for a range of argument patterns.
-- Function templates: prefer overloads or SFINAE over explicit specializations in most cases.
-
-Overload resolution prefers non-template functions when they are otherwise equally good matches.
-
-
-
-## Practical tips and pitfalls
-
-- Use `typename` correctly for dependent types; missing `typename` is a common compile error.
-- Remember two-phase lookup; qualifying dependent names can avoid subtle errors.
-- Keep templates readable: prefer clear naming and small responsibilities.
-- Use standard library traits and helper utilities (e.g., `<type_traits>`) rather than reinventing type checks.
-
-
-
-## Short examples
-
-Function with a nontype default:
-
-```c++
-template<typename T, int VAL = 6>
-T addValue(T const& x) { return x + VAL; }
-
-int x = addValue<int, 3>(4); // 7
-```
-
-Template-template parameter:
-
-```c++
-template<template<typename, typename> class Container, typename T>
-class Wrapper { Container<T, std::allocator<T>> c; };
-```
-
-Edited for clarity, corrected typos (e.g., `tempalte` → `template`), and reorganized topics for easier reading.
-
-```c++
-class S<int, I*2>; // error
-
-template<typename U, int K>
-class S<U, K>;     // error
-```
-
----
 
 
 
@@ -190,8 +496,6 @@ However, even though there are no zero-size types in C++, the C++ standard does 
 empty base class optimization (or EBCO) means in practice:
 
 ```c++
-#include <iostream>
-
 class Empty{
     typedef int Int;
 };
@@ -246,54 +550,44 @@ The problem with function types is that, because of the arbitrary number of para
 
 
 
-## Smart Pointers
+## Summary
 
-In C++, smart pointers are classes that behave somewhat like ordinary pointers(in that they provide the dereferencing operators `->` and `*`) but in addition, encapsulate some memory or resource management policy.
+### Function Template vs Class Template
 
+| Feature                    | Function Template                     | Class Template                                               |
+| :------------------------- | :------------------------------------ | :----------------------------------------------------------- |
+| **Argument Deduction**     | Usually automatic from call arguments | Must be explicit (until C++17's CTAD)                        |
+| **Default Arguments**      | Not allowed (or unusual)              | Allowed and common                                           |
+| **Partial Specialization** | Not allowed (use overloading)         | Allowed                                                      |
+| **Primary Use Case**       | Algorithms (e.g., `sort`, `find`)     | Containers (e.g., `vector`, `map`), and type wrappers        |
+| **Member Functions**       | N/A (it *is* a function)              | Defined inside or outside, but the class template parameter scope applies |
 
-two different ownership models:
+### Best Practices
 
-- `exclusive`: Exclusive ownership can be enforced with little overhead, compared with handling raw pointers. Smart pointers that enforce such a policy are useful to deal with exceptions thrown while manipulating dynamically allocated objects.
-- `shared`: Shared ownership can sometimes lead to excessively complicated object lifetime situations. In such cases, it may be advisable to move the burden of the lifetime decisions from the programmer to the program.
+1. Keep template definitions in headers (They need to be visible to all translation units).
 
-Built-in pointers are subject to several implicit conversions:
+2. Use `typename` instead of `class` (More descriptive for type parameters).
 
-- Conversion to `void*`
-- Conversion to a pointer to a base subobject of the object pointed to
-- Conversion to `bool`(`false` if the pointer is null, `true` otherwise)
+3. Minimize template bloat (Factor non-type-dependent code into base classes).
 
-Other drawbacks to implicit conversions to built-in pointer types include(assume `cp` is a counting pointer):
+4. Use `static_assert` for constraints
 
-- `delete cp;` and `::delete cp;` become valid
-- All sort of meaningless pointer arithmetic goes undiagnosed (for example, `cp[n], cp2 - cp1`, and so forth)
+   ```c++
+   // < C++20
+   template <typename T>
+   class A { static_assert(std::is_arithmetic_v<T>, "xxx"); };
+                          
+   // >= C++20
+   template <std::integral T>
+   class B {};
+   ```
 
+5. This has two important consequences for class members:
 
+   1. A function generated from a member function template never overrides a virtual function.
+   2. A constructor generated from a constructor template is never a default copy constructor. (Similarly, an assignment generated from an assignment template is never a copy-assignment operator. However, this is less prone to problems because, unlike copy constructors, assignment operators are never called implicitly.)
 
-## Functor
-
-The outline is not sufficient when it comes to virtual functions, and in practice, many implementations use a three-word structure for pointers to member functions:
-
-1. The address of the member function, or `NULL` if it is a virtual function
-2. The required `this` adjustment
-3. A virtual function index
-
-pass functors as function call arguments, this allows the caller to construct the function object(possibly using a nontrivial constructor) at run time.
-
-In our framework, we handle only class-type functors and require them to provide the following information:
-
-- The number of parameters of the functor(as a member enumerator constant `NumParams`)
-- The type of each parameter(through member typedefs `Param1T, Param2T, Param3T, ...`)
-- The return type of the functor(through a member typedef `Return T`)
-
-The argument to be passed to the underlying functor can be one of three different values:
-
-- The corresponding parameter of the bound functor
-- The bound value
-- The parameter of the bound functor is one position to the left of the argument we must pass
-
-
-
-## Tricky Basics
+### Tricky Basics
 
 The keyword `typename` was introduced during the standardization of C++ to clarify that an identifier inside a template is a type. Consider the following example:
 
@@ -307,7 +601,7 @@ class MyClass{
 
 Here, the second `typename` is used to clarify that `SubType` is a type defined within class  `T`. Thus, `ptr` is a pointer to the type `T::SubType`.
 
-Without `typename`, `SubType` would be considered a static member. Thus it would be a concrete variable or object As a result, the expression 
+Without a `typename`, `SubType` would be considered a static member. Thus, it would be a concrete variable or object. As a result, the expression 
 
 `T::SubType *ptr` 
 
@@ -366,7 +660,7 @@ class Stack{
 };
 ```
 
-For funcamental types such as `int`, `double`, or pointer types, there is no default constructor that initializes them with a useful default value. Instead, any noninitialized local variable has a undefined value:
+For fundamental types such as `int`, `double`, or pointer types, there is no default constructor that initializes them with a useful default value. Instead, any non-initialized local variable has an undefined value:
 
 ```c++
 template <typename T>
@@ -377,7 +671,7 @@ void foo()
 
 ```
 
-The explanation for this behavior is that during argument deduction array-to-pointer conversion(often called decay) occurs only if the parameter does not have a reference type. This is demonstrated by the following program:
+The explanation for this behavior is that during argument deduction, array-to-pointer conversion(often called decay) occurs only if the parameter does not have a reference type. This is demonstrated by the following program:
 
 ```c++
 template <typename T>
@@ -392,7 +686,7 @@ std::string s;
 
 ```
 
-- use nonreferences instead of references (however, this can lead to unnecessary copying)
+- Use non-references instead of references (however, this can lead to unnecessary copying)
 
 - overload using both reference and nonreference parameters(however, this might lead to ambiguities)
 
@@ -412,152 +706,10 @@ std::string s;
 
 
 
-## Notice
-
-- All three correspond to definitions of members of class templates:
-
-  1. Definitions of member functions of class templates
-  2. Definitions of nested class members of class templates
-  3. Definitions of static data members of class templates
-
-- Member function templates cannot be declared virtual. This constraint is imposed because the usual implementation of the virtual function call mechanism uses a fixed-size table with one entry per virtual function. However, the number of instantiations of a member function template is not fixed until the entire program has been translated.
-
-- Every template must have a name and that name must be unique within its scope, except that function templates can be overloaded. Note especially that, unlike class types, class templates cannot share a name with a different kind of entity:
-
-  ```C++
-  int c;
-  class c; // correct
-  
-  int x;
-  template <typename T>
-  class x; // error
-  
-  struct s;
-  template <typename T>
-  class s; // error
-  ```
-
-- Template names have linkage, but they cannot have C linkage.
-
-- Normal declarations of templates declare so-called primary templates. Such template declarations are declared without adding template arguments in angle brackets after the template name:
-
-  ```c++
-  template <typename T> class Box;    // correct
-  
-  template <typename T> class Box<T>; // error
-  
-  template <typename T> void translate(T*);    // correct
-  
-  template <typename T> void translate<T>(T*); // error
-  ```
-  
-- Nontype template parameters are declared much like variables, but they cannot have nontype specifiers like `static`, `mutable`, and so forth. They can have `const` and `volatile` qualifiers, but if such a qualifier appears at the outermost level of the parameter type, it is simply ignored.
-- Non-type parameters are always rvalues: Their address cannot be taken, and they cannot be assigned to.
-- Template template parameters are placeholders for class templates. They are declared much like class templates, but the keywords `struct` and `union` cannot be used.
-- Template arguments for a function template can be specified explicitly or deduced from the way the template is used.
-
-  ```c++
-  template <typename Func, typename T>
-  void apply(Func f, T x) {
-      f(x);
-  }
-  
-  template <typename T> void multi(T t) {
-      cout << 1 << ": " << t << endl;
-  }
-  
-  template <typename T> void multi(T *t) {
-      cout << 2 << ": " << *t << endl;
-  }
-  
-  int i = 3;
-  apply(&multi<int>, i); // SFINAE
-  ```
-
-  This "substitution-failure-is-not-an-error"(SFINAE) principle is clearly an important ingredient to make the overloading of function templates practical. However, it also enables remarkable compile-time techniques.
-- Template type arguments are the "values" specified for template type parameters. Most commonly used types can be used as template arguments, but there are two exceptions:
-
-  - Local classes and enumerations(in other words, types declared in a function definition) cannot be involved in template type arguments.
-  - Types that involve unnamed class types or unnamed enumeration types cannot be template type arguments(unnamed classes or enumerations that are given a name through a typedef declaration are OK).
-- Nontype template arguments are the values substituted for nontype parameters. Such a value must be one of the following things:
-
-  - Another nontype template parameter that has the right type
-  - A compile-time constant value of integer(or enumeration) type. This is acceptable only if the corresponding parameter has a type that matches that of the value, or a type to which the value can be implicitly converted(for example, a `char` can be provided for an `int` parameter).
-  - The name of an external variable or function preceded by the built-in unary `&` ("address of") operator. For functions and array variables, `&` can be left out. Such template arguments match nontype parameters of a pointer type.
-  - The previous kind of argument, but without a leading `&` operator, is a valid argument for a non-type parameter of reference type.
-  - A pointer-to-member constant; in other words, an expression of the form `&C::m` where `C` is a class type and `m` is a nonstatic member (data or function). This matches nontype parameters of a pointer-to-member type only.
-- there are some constant values that are, perhaps surprisingly, not currently valid:
-
-  - Null pointer constants
-  - Floating-point numbers
-  - String literals
-- Two sets of template arguments are equivalent when values of the arguments are identical one-for-one.
-- This has two important consequences for class members:
-
-  1. A function generated from a member function template never overrides a virtual function.
-  2. A constructor generated from a constructor template is never a default copy constructor.(Similarly, an assignment generated from an assignment template is never a copy-assignment operator. However, this is less prone to problems because unlike copy constructors, assignment operators are never called implicitly.)
-- Friends:
-
-  1. A friend declaration may be the only declaration of an entity.
-  2. A friend function declaration can be a definition.
-- If the name is not followed by angle brackets, there are two possibilities:
-
-  1. If the name isn't qualified (in other words, it doesn't contain a double colon), it never refers to a template instance. If no matching nontemplate function is visible at the point of the friend declaration, the friend declaration is the first declaration of that function. The declaration could also be a definition.
-  2. If the name is qualified (it contains `::`), the name must refer to a previously declared function or function template. A matching function is preferred over a matching function template. However, such a friend declaration cannot be a definition.
-
-  ```c++
-  void multiply(void*);
-  template<typename T>
-  void multiply(T);
-  class Comrades {
-     friend void multiply(int){}
-     friend void ::multiply(void*);
-     friend void ::multiply(int);
-     friend void ::multiply<double*>(double*);
-     friend void ::error(){}
-  };
-  ```
-
-  two different instantiations create two identical definitions-a direct violation of the ODR。
-
-  Friend Templates:
-
-  ```c++
-  class Manager{
-      template<typename T>
-      friend int ticket(){}
-  };
-  ```
-  
-- Template argument deduction applies exclusively to function and member function templates. In particular, the arguments for a class template are not deduced from the arguments to a call of one of its constructors. For example:
-
-  ```c++
-  template<typename T>
-  class S {
-      public:
-      	S(T b) : a(b) {}
-      private:
-      	T a;
-  };
-  
-  S x(12); // error
-  ```
-
-- Even when a default call argument is not dependent, it cannot be used to deduce template arguments. This means that the following is invalid C++:
-
-  ```c++
-  template<typename T>
-  void f(T x = 42){...}
-  int main()
-  {
-      f<int>(); // correct；T=int
-      f();      // error
-  }
-  ```
-
-
-
-
 ## Reference
 
 [1] C++ Templates: The Complete Guide. David Vandevoorde, Nicolai M. Josuttis . 2004
+
+[2] [Templates in C++](https://www.geeksforgeeks.org/cpp/templates-cpp/)
+
+[3] [Template Specialization in C++](https://www.geeksforgeeks.org/cpp/template-specialization-c/)

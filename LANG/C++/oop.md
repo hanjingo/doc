@@ -1,6 +1,6 @@
 English | [中文版](oop_zh.md)
 
-# C++ Object Oriented Progamming
+# C++ Object Oriented Programming
 
 [TOC]
 
@@ -94,9 +94,9 @@ The inheritance type controls how base class members are inherited:
   Derived obj; obj.pub = 5; // ❌ Error
   ```
 
-### Summary
+### Notice
 
-#### Specifier Access Summary
+Specifier Access Summary:
 
 | Specifier       | Inside Class | Derived Class | Outside Class | Default for `class` | Default for `struct` |
 | :-------------- | :----------- | :------------ | :------------ | :------------------ | :------------------- |
@@ -104,9 +104,11 @@ The inheritance type controls how base class members are inherited:
 | **`protected`** | ✅ Yes        | ✅ Yes         | ❌ No          | ❌ No                | ❌ No                 |
 | **`private`**   | ✅ Yes        | ❌ No          | ❌ No          | ✅ Yes               | ❌ No                 |
 
-#### struct vs class
+struct vs class:
 
 `struct` defaults to `public`, `class` defaults to `private`; otherwise they are identical.
+
+[Top](#C++ Object Oriented Programming)
 
 ---
 
@@ -421,7 +423,11 @@ When EBCO works:
   TODO
   ```
 
-#### Note
+### Memory Alignment
+
+TODO
+
+### Notice
 
 1. C++ standard forbids objects of size 0, each object must have a unique address, so the compiler adds 1 byte (dummy byte) as a placeholder
 
@@ -477,6 +483,8 @@ Bear &rb = *pb;
 ```
 
 ![Bear](res/Bear.png)
+
+[Top](#C++ Object Oriented Programming)
 
 ---
 
@@ -549,90 +557,96 @@ if(ptw2 != 0) ptw2->Point2w::Point2w();
 
 Generally, Placement Operator new does not support polymorphism; if the derived class is much larger than the base class, the derived class constructor will cause serious destruction;
 
-### Default Constructor
+### Constructor
+
+Constructors are special methods that are automatically called whenever an object of a class is created. 
+
+There are 4 types of constructors in C++:
+
+- Default Constructor
+- Parameterized Constructor
+- Copy Constructor
+- Move Constructor
+
+#### Default Constructor
+
+A default constructor is automatically created by the compiler if no constructor is defined. It takes no arguments and initializes members with default values, and it is not generated if the programmer defines any constructor.
+
+```c++
+class A {};
+```
+
+*Notice*:
 
 1. Any class that does not define a default constructor, the compiler **does not necessarily** synthesize a default constructor; only when it deems you need one will it synthesize one for you;
 2. The default constructor synthesized by the compiler **may not** explicitly assign default values to each data member;
+3. The following cases will result in a default constructor:
 
-The following are cases where a default constructor needs to be synthesized:
+   - Explicitly initialize an object;
+   - When an object is passed as a parameter to a function;
+   - When a function returns a non-reference class object;
 
-1. A class member that is a class object with a default constructor;
+#### Parameterized Constructor
 
-   ```c++
-   class Foo { public: Foo(), Foo( int ) ... };
-   class Bar { public: Foo foo; char *str; };
-   void foo_bar()
-   {
-       Bar bar; // Bar::foo must be initialized here
-       if (str) {}
-       ...
-   }
-   ```
-   
-2. A base class with a default constructor;
+A parameterized constructor lets us pass arguments to initialize an object's members. It is created by adding parameters to the constructor and using them to set the values of the data members.
 
-   ```c++
-   TODO
-   ```
+```c++
+class A
+{
+public:
+  int val;
+  A(int x) : val{x} {}; // Parameterized Constructor
+}
+```
 
-3. A class with virtual functions;
+*Notice*:
 
-   ```c++
-   class Widget {
-   public:
-       virtual void flip() = 0;
-       ...
-   };
-   void flip( const Widget& widget ) { widget.flip(); }
-   class Bell : public Widget{};
-   class Whistle : public Widget{};
-   void foo()
-   {
-       Bell b;
-       Whistle w;
-       flip( b );
-       flip( w );
-   }
-   ```
+1. If a parameterized constructor is defined, the non-parameterized constructor should also be defined as the compiler does not create the default constructor.
 
-4. Existence of virtual base class (has direct virtual base class or virtual base class in inheritance chain);
+#### Copy Constructor
 
-   ```c++
-   class X { public: int i; }
-   class A : public virtual X { public: int j; };
-   class B : public virtual X { public: double d; };
-   class C : public A, public B { public: int k; };
-   void foo( const A* pa ) { pa->i = 1024; }
-   main()
-   {
-       foo( new A );
-       foo( new C );
-   }
-   ```
+A copy constructor is a member function that initializes an object using another object of the same class. Copy constructor takes a reference to an object of the same class as an argument.
 
-### Copy Constructor
+```c++
+class A 
+{ 
+public: 
+  int val;
+  A(A& a) { val = a.val; };
+};
+```
 
-The following cases will result in a default constructor:
+*Notice*:
 
-1. Explicitly initialize an object;
-2. When an object is passed as a parameter to a function;
-3. When a function returns a non-reference class object;
+1. If a class does not provide a copy constructor, the class internally uses `default memberwise initialization` to perform the copy construction.
+2. The following cases do not exhibit `bitwise copy semantics`:
 
-If a class does not provide any copy constructor, the class internally uses `default memberwise initialization` to perform the copy construction;
+   - The class contains a member class object with a copy constructor;
+   - Base class has a copy constructor;
+   - The class has virtual functions;
+   - Virtual base class exists (has direct virtual base class or virtual base class in inheritance chain).
+3. If no copy or move constructor is defined, the compiler automatically creates an implicit copy constructor, unlike the default constructor which is removed when any constructor is defined.
 
-The following cases do not exhibit `bitwise copy semantics`:
+#### Move Constructor
 
-1. The class contains a member class object with a copy constructor;
-2. Base class has a copy constructor;
-3. The class has virtual functions;
-4. Virtual base class exists (has direct virtual base class or virtual base class in inheritance chain).
+A move constructor is a special constructor in C++ that creates an object by transferring resources from another object instead of copying them. It uses move semantics (often with `std::move`) to take ownership of memory or handles from a temporary object, avoiding extra copies and improving performance.
 
-### Default Constructor Parameters
+```c++
+class MyClass
+{
+public:
+  int val;
+  MyClass(int&& x) : val(std::move(x)) {}
+}
+```
+
+#### Default Constructor Parameters
 
 If a constructor of a class has one or more default parameter values, for example:
 
 ```c++
-class complex {
+class complex 
+{
     complex(double = 0.0, double = 0.0);
 }
 ```
@@ -643,7 +657,35 @@ Then when we write `complex array[10];`, the compiler ultimately needs to call:
 vec_nex(&array, sizeof(complex), 10, &complex::complex, 0);
 ```
 
-### Member Initialization List
+#### Explicit Constructor
+
+An explicit constructor in C++ is a constructor declared with the `explicit` keyword. It prevents the compiler from using that constructor for `implicit conversions` or `copy-initialization`.
+
+```c++
+class A { public: A(long x){}; };
+class B { public: explicit B(long x){}; };
+
+A a = x; // ⚠️Warning: implicit conversion: int -> long -> A
+B b = x; // ❌Error: no viable conversion from 'int' to 'B'
+```
+
+*Notice*:
+
+1. Mark single-argument constructors as `explicit` (prevents unexpected implicit conversions).
+
+#### Delegating Constructor
+
+```c++
+class A
+{
+public:
+  int val;
+  A() : A(0) {}; // Delegates To Parameterized (one constructor can call another)
+  A(int a) : val{a} {}
+};
+```
+
+#### Member Initialization List
 
 The following cases must use a member initialization list (initialization list):
 
@@ -652,11 +694,293 @@ The following cases must use a member initialization list (initialization list):
 3. When calling a base class constructor that has a set of parameters;
 4. When calling a member class constructor that has a set of parameters.
 
-**Note: The order of items in the list is determined by the declaration order of members in the class, not by the sorted order in the `initialization list`.**
+*Notice*:
 
-### Memory Alignment
+1. The order of items in the list is determined by the declaration order of members in the class, not by the sorted order in the `initialization list`.
 
-TODO
+### Destructor
+
+A destructor is a special member function, prefixed wiht `~`, thsi is automatically called when an object goes out of scope or is destroyed to free resources like memory, files, or connections.
+
+Destructors are automatically present in every C++ class but we can also redefine them using the following syntax:
+
+```c++
+~ClassName() {};
+```
+
+Destructors are called when:
+
+1. The function ends.
+2. The program ends.
+3. When a block containing local variables ends.
+4. A delete operator is called.
+
+Destructor Usages:
+
+1. If we don't write a destructor, the compiler provides a default one.
+
+2. The default destructor works fine for classes without dynamic memory or pointers.
+
+3. If a class has pointers or dynamically allocated memory, we must write a destructor.
+
+4. A user-defined destructor releases memory or other resources before the object is destroyed.
+
+5. Writing a destructor in such cases prevents memory leaks.
+
+#### Destruction Order
+
+The destructors of base classes and members are called in the reverse order of the completion of their constructor:
+
+1. The destructor for a class object is called before destructors for the members and bases are called.
+2. Destructors for nonstatic members are called before destructors for base classes are called.
+3. Destructors for nonvirtual base classes are called before destructors for virtual base classes are called.
+
+```c++
+struct VirtualBase 
+{
+    VirtualBase() { std::cout << "VirtualBase constructor\n"; }
+    ~VirtualBase() { std::cout << "VirtualBase destructor\n"; }
+};
+struct NonVirtualBase1 
+{
+    NonVirtualBase1() { std::cout << "NonVirtualBase1 constructor\n"; }
+    ~NonVirtualBase1() { std::cout << "NonVirtualBase1 destructor\n"; }
+};
+struct NonVirtualBase2 
+{
+    NonVirtualBase2() { std::cout << "NonVirtualBase2 constructor\n"; }
+    ~NonVirtualBase2() { std::cout << "NonVirtualBase2 destructor\n"; }
+};
+struct Member1 
+{
+    Member1() { std::cout << "Member1 constructor\n"; }
+    ~Member1() { std::cout << "Member1 destructor\n"; }
+};
+struct Member2 
+{
+    Member2() { std::cout << "Member2 constructor\n"; }
+    ~Member2() { std::cout << "Member2 destructor\n"; }
+};
+class Derived : public NonVirtualBase1, public NonVirtualBase2, public virtual VirtualBase 
+{
+private:
+    Member1 m1;
+    Member2 m2;
+    
+public:
+    Derived() : NonVirtualBase1(), NonVirtualBase2(), VirtualBase(), m1(), m2() 
+    {
+        std::cout << "Derived constructor\n";
+    }
+    ~Derived() 
+    {
+        std::cout << "Derived destructor\n";
+    }
+};
+
+// VirtualBase constructor
+// ↓
+// NonVirtualBase1 constructor
+// ↓
+// NonVirtualBase2 constructor
+// ↓
+// Member1 constructor
+// ↓
+// Member2 constructor
+// ↓
+// Derived constructor
+Derived d;
+// Derived destructor
+// ↓
+// Member2 destructor
+// ↓
+// Member1 destructor
+// ↓
+// NonVirtualBase2 destructor
+// ↓
+// NonVirtualBase1 destructor
+// ↓
+// VirtualBase destructor
+```
+
+#### Immortal Objects
+
+Creating immortal objects by using deleted destructor:
+
+```c++
+class Immortal { public: ~Immortal() = delete; };
+
+Immortal obj; // ❌ Error: destructor deleted
+
+Immortal* ptr = new Immortal();
+delete ptr; // ❌ Error: destructor deleted – memory leak!
+```
+
+#### Virtual Destructor
+
+A virtual destructor is a destructor declared with the `virtual` keyword. It ensures that when you delete a derived class object through a base class pointer, the correct destructor (starting from the derived class all they way up to the base class) gets called.
+
+```c++
+class Base {public: virtual ~Base() {std::cout << "Base Destructor\n";} };
+class Derived : public Base 
+{
+	int* data;
+public:
+  ~Derived() {std::cout << "Derived Destructor\n";}
+};
+
+Base* ptr = new Derived();
+delete ptr;
+// Derived Destructor
+// Base Destructor
+```
+
+*Notice*:
+
+1. If your class has any virtual functions, it **needs** a virtual destructor;
+2. If your class is designed as a base class (even without virtual functions), make destructor virtual;
+3. If your class is final(not meant for inheritance), a non-virtual destructor is fine.
+
+#### Private Destructor
+
+Private Destructor can prevents the destruction of an object, we ususlly use it to control the destruction of objects of a class:
+
+```c++
+class Test;
+void destroy_test(Test* ptr);
+
+class Test
+{
+private: 
+  ~Test() { std::cout << "Test Destruction\n"; }
+public:
+  friend void destroy_test(Test* t);
+};
+// Only this function can destruct objects of Test
+void destroy_test(Test* ptr)
+{
+  delete ptr;
+};
+
+Test t; // ❌ Error: the local variable 't' cannot be destructed because the destructor is private. 
+    
+Test* t; // ✅ OK: pointer can be declared
+delete t; // ❌ Error: cannot delete pointer to Test because destructor is private – memory leak!
+    
+Test* t = (Test*)malloc(sizeof(Test)); // ✅ OK: memory allocated, but no destructor called
+free(t); // ✅ OK: memory freed, but no destructor called – no output
+
+Test* t = new Test(); // ✅ OK: memory allocated, but destructor is private
+destroy_test(t); // ✅ OK: destructor called through friend function, output: "Test
+```
+
+#### Notice
+
+1. Destructors cannot be overloaded, a class has exactly one destructor
+
+   ```c++
+   class hello
+   {
+   public:
+     ~hello() {};
+     ~hello(int a) {}; // ❌ WRONG - destructor cannot have any parameters
+     int ~hello() {}; // ❌ WRONG - destructor cannot have a return type
+   };
+   ```
+
+2. If a class has any virtual functions, its destructor **must** be declared virtual
+
+   ```c++
+   class Base 
+   { 
+     // ❌ WRONG – Non-virtual destructor 
+   };
+   class Derived : public Base 
+   {
+       int* data;
+   public:
+       Derived() : data(new int[100]) {}
+       ~Derived() 
+       { 
+           delete[] data;  // ❌This never called! memory leak!!!
+       }
+   };
+   ```
+
+3. Never throw Exceptions from Destructors (Please always mark destructors `noexcept` and never throw from them.)
+
+   ```c++
+   class Dangerous
+   {
+   public:
+     ~Dangerous() 
+     { 
+       throw std::runtime_error("Exception in destructor!"); // ⚠️ Warning, never throw exception from destructor
+     }
+   };
+   
+   try {
+   	Dangerous d;
+   } catch(...) {
+   	// This will NOT catch the exception thrown from the destructor, and will call std::terminate() instead!
+   }
+   ```
+
+   ```c++
+   class Safe
+   {
+   public:
+     ~Safe() noexcept // ✅ Marked as noexcept to prevent exceptions from propagating
+     { 
+       try {
+         // Code that might throw an exception
+       } catch(...) {
+         std::cerr << "Caught exception in Safe destructor, but won't propagate!\n";
+       }
+     }
+   };
+   ```
+
+4. Pure virtual Destructor **MUST** have a body
+
+   ```c++
+   class Abstract 
+   {
+   public:
+       virtual ~Abstract() = 0;  // Pure virtual destructor
+   };
+   
+   // ❌ MUST provide a body!!!
+   // Abstract::~Abstract() 
+   // {
+   //     std::cout << "Abstract destructor\n";
+   // }
+   
+   class Concrete : public Abstract 
+   {
+   public:
+       ~Concrete() override 
+       {
+           std::cout << "Concrete destructor\n";
+       }
+   };
+   ```
+
+5. To destroy an object created with the placement new operator, you can explicitly call the object's destructor
+
+   ```c++
+   class A 
+   {
+     public:
+       A() { std::cout << "A::A()" << std::endl; }
+       ~A() { std::cout << "A::~A()" << std::endl; }
+   };
+   
+   char* p = new char[sizeof(A)];
+   A* ap = new (p) A;
+   ap->A::~A();
+   delete [] p;
+   ```
 
 ### Inheritance
 
@@ -704,69 +1028,6 @@ protected:
 ```
 
 ![MultipleInheritance](res/MultipleInheritance.png)
-
-#### Virtual Inheritance
-
-Example, memory layout of virtual inheritance:
-
-```c++
-class Point2d {
-public:
-    Point2d(float x = 0.0, float y = 0.0);
-    virtual ~Point2d();
-    virtual void mumble();
-    virtual float z();
-protected:
-    float _x, _y;
-};
-
-class Point3d : public virtual Point2d {
-public:
-    Point3d(float x = 0.0, float y = 0.0, float z = 0.0);
-    ~Point3d();
-    float z();
-protected:
-    float _z;
-}
-```
-
-![VirtualInheritance](res/VirtualInheritance.png)
-
-Usage:
-
-1. You have a genuine diamond hierarchy
-
-   ```c++
-   class Animal {};
-   class Mammal : virtual public Animal {};
-   class Bird : virtual public Animal {};
-   class Platypus : public Mammal, public Bird {};  // Needs one Animal
-   ```
-
-2. Creating interfaces that will be combined
-
-   ```c++
-   class Drawable { virtual void draw() = 0; };
-   class Clickable { virtual void onClick() = 0; };
-   class Button : virtual public Drawable, virtual public Clickable {};
-   ```
-
-Avoid virtual inheritance when:
-
-1. No diamond exists (unnecessary overhead)
-2. Performance critical (virtual inheritance adds overhead)
-3. You can use composition istead
-
-Summary:
-
-| Aspect                 | Without Virtual             | With Virtual                       |
-| :--------------------- | :-------------------------- | :--------------------------------- |
-| Number of base copies  | Multiple (one per path)     | Single (shared)                    |
-| Member access          | Ambiguous - must qualify    | Unambiguous                        |
-| Memory size            | Larger (multiple copies)    | Smaller (single copy)              |
-| Performance            | Faster (direct access)      | Slower (indirection)               |
-| Constructor complexity | Simple                      | Complex (most derived initializes) |
-| Use case               | Simple multiple inheritance | Diamond inheritance                |
 
 #### The Diamond Problem
 
@@ -843,7 +1104,176 @@ d.Right::function();  // OK
    d.Right::function();  // OK
    ```
 
-   
+
+#### Virtual Inheritance
+
+Virtual Inheritance is a specialized form of inheritance that solves the [diamond problem](#The Diamond Problem) - ensuring that a base class appears only once in an inheritance hierarchy, even when derived from multiple paths.
+
+Usage:
+
+1. You have a genuine diamond hierarchy
+
+   ```c++
+   class Animal {};
+   class Mammal : virtual public Animal {};
+   class Bird : virtual public Animal {};
+   class Platypus : public Mammal, public Bird {};  // Needs one Animal
+   ```
+
+2. Creating interfaces that will be combined
+
+   ```c++
+   class Drawable { virtual void draw() = 0; };
+   class Clickable { virtual void onClick() = 0; };
+   class Button : virtual public Drawable, virtual public Clickable {};
+   ```
+
+Avoid virtual inheritance when:
+
+1. No diamond exists (unnecessary overhead)
+2. Performance critical (virtual inheritance adds overhead)
+3. You can use composition istead
+
+Summary:
+
+| Aspect                 | Without Virtual             | With Virtual                       |
+| :--------------------- | :-------------------------- | :--------------------------------- |
+| Number of base copies  | Multiple (one per path)     | Single (shared)                    |
+| Member access          | Ambiguous - must qualify    | Unambiguous                        |
+| Memory size            | Larger (multiple copies)    | Smaller (single copy)              |
+| Performance            | Faster (direct access)      | Slower (indirection)               |
+| Constructor complexity | Simple                      | Complex (most derived initializes) |
+| Use case               | Simple multiple inheritance | Diamond inheritance                |
+
+*Notice*:
+
+- Virtual Bases Are Constructed First:
+
+  1. Virtual base classes (in declaration, depth-first);
+  2. Non-virtual base classes (in declaration order);
+  3. Member objects (in declaration order);
+  4. Derived class constructor body.
+
+  ```c++
+  class Animal 
+  {
+  public:
+      Animal() { std::cout << "Animal constructor\n"; }
+      ~Animal() { std::cout << "Animal destructor\n"; }
+  };
+  class Mammal : virtual public Animal 
+  {
+  public:
+      Mammal() { std::cout << "Mammal constructor\n"; }
+      ~Mammal() { std::cout << "Mammal destructor\n"; }
+  };
+  class Bird : virtual public Animal 
+  {
+  public:
+      Bird() { std::cout << "Bird constructor\n"; }
+      ~Bird() { std::cout << "Bird destructor\n"; }
+  };
+  class Bat : public Mammal, public Bird 
+  {
+  public:
+      Bat() { std::cout << "Bat constructor\n"; }
+      ~Bat() { std::cout << "Bat destructor\n"; }
+  };
+  
+  // Animal constructor
+  // Mammal constructor
+  // Bird constructor
+  // Bat constructor
+  Bat b;
+  // Bat destructor
+  // Bird destructor
+  // Mammal destructor
+  // Animal destructor
+  ```
+
+- **Most** Derived Class Initializes Virtual Base
+
+  ```c++
+  class VirtualBase {
+  public:
+      VirtualBase(int x) { std::cout << "VirtualBase: " << x << "\n"; }
+  };
+  
+  class Intermediate : virtual public VirtualBase {
+  public:
+      // ⚠️ This constructor will be IGNORED for virtual base initialization!
+      Intermediate() : VirtualBase(10) { }
+  };
+  
+  class Derived : public Intermediate {
+  public:
+      // ✅ Derived MUST initialize VirtualBase directly
+      Derived() : VirtualBase(20), Intermediate() { }
+  };
+  
+  Derived d;  // Output: VirtualBase: 20 (not 10!)
+  ```
+
+- Avoid `static_cast` with Virtual Inheritance
+
+  ```c++
+  class A { public: virtual ~A() {} };
+  class B : virtual public A {};
+  class C : virtual public A {};
+  class D : public B, public C {};
+  
+  D d;
+  A* a = &d;      // ✅ OK
+  B* b = &d;      // ✅ OK
+  C* c = &d;      // ✅ OK
+  
+  // ⚠️ Static cast may not work correctly with virtual bases
+  A* a2 = static_cast<A*>(b);  // Might need offset adjustment
+  // Use dynamic_cast for safe down/up casting in hierarchies with virtual inheritance
+  ```
+  
+- Virtual Inheritance adds indirection, use only when necessary
+
+  ```c++
+  class Regular { int data; };
+  class RegularDerived : public Regular 
+  { 
+    int more; 
+  }; // Access to Regular::data: direct (fast)
+  
+  class VirtualBase { int data; };
+  class VirtualDerived : virtual public VirtualBase {
+      int more;
+  }; // Access to VirtualBase::data: indirect through pointer (slower)
+  
+  sizeof(Regular); 				// 4 byte (data)
+  sizeof(RegularDerived); // 8 byte (data + more)
+  sizeof(VirtualBase); 		// 4 byte (data)
+  sizeof(VirtualDerived); // 16 byte (data + more + vptr) 
+  ```
+
+- A class can be both virtual and non-virtually inherited, but it creates separate instances
+
+  ```c++
+  class A {};
+  class B : virtual public A {};
+  class C : public A {};      // Non-virtual
+  class D : public B, public C {};  // D has TWO A's: one shared (via B), one separate (via C)
+  
+  D d; // d (B subobject + vptr(pointer to virtual A) + C subobject)
+  ```
+
+- Constructors of virtual base classes **CAN** have parameters, but they **MUST** be explicitly called from the most derived class constructor
+
+  ```c++
+  class Base { public: Base(int x) {} };
+  class Mid : virtual public Base { public: Mid() : Base(0) {} };  // ⚠️Ignored!
+  class Derived : public Mid 
+  {
+  public:
+      Derived() : Base(42), Mid() {}  // Must initialize Base
+  };
+  ```
 
 ### Polymorphism
 
@@ -919,7 +1349,7 @@ public:
 };
 ```
 
-**Notes**:
+*Notice*:
 
 1. Calling virtual functions from constructors/destructors is valid syntax but generally discouraged.
 2. These cannot be virtual: 
@@ -930,7 +1360,113 @@ public:
 3. If deleting derived objects through base pointers is possible, the base destructor should be virtual.
 4. Virtual functions can be private; access rules still apply.
 
-[Top](#C++ Features)
+#### Function Overriding
+
+Function Overriding in C++ is a type of polymorphism where a derived class refines a function from its base class using the same name, return type, and parameters (i.e., the same function signature).
+
+Conditions:
+
+- The base class function must be `virtual`.
+- The derived class must use the same signature.
+- It's a form of runtime polymorphism (dynamic binding).
+
+Example:
+
+```c++
+struct Base
+{
+	virtual void hello(int g) = 0;
+	virtual void world() const {};
+	void print() {};
+  void say() {};
+  virtual void fun() {};
+};
+struct DerivedMid : public Base
+{
+};
+struct DerivedTop : public DerivedMid
+{
+	void hello(double g) override {}; // ❌ ERROR: parameter mismatch
+	void world() override {}; // ❌ ERROR: cv-qualifier mismatch
+	void print() override {}; // ❌ ERROR: base function not virtual
+  void say() {}; // ⚠️ It's not function overriding, it's function hidding
+  void fun() override {}; // ✅
+};
+```
+
+**Notice:**
+
+1. If the base function is not `virtual`, the derived function with the same name just hides the base function. This is called function hiding, not overriding
+
+   ```c++
+   struct Base
+   {
+     void say() {};
+     virtual void fun() {};
+   };
+   struct Derived : public Base
+   {
+     void say() {}; // ⚠️ It's not function overriding, it's function hidding
+     void fun() override {}; // ✅
+   };
+   ```
+
+2. Function Overriding slightly slower than normal function calls due to virtual table lookup
+
+   ```c++
+   // environment: Macos aarch64
+   #include <chrono>
+   struct Base
+   {
+     virtual void fun(int i) { i += 1; };
+   };
+   struct Derived : public Base
+   {
+     __attribute__((noinline)) void say(int i) { i += 1; }; // AVOID compiler inline
+     __attribute__((noinline)) void fun(int i) override { i += 1; }; // AVOID compiler inline
+   };
+   
+   Derived d;
+   auto start = std::chrono::high_resolution_clock::now();
+   for (int i = 0; i < 1000000000; ++i)
+   	d.say(i); // Non-virtual function call (1931ms)
+   auto end = std::chrono::high_resolution_clock::now();
+   
+   start = std::chrono::high_resolution_clock::now();
+   for (int i = 0; i < 1000000000; ++i)
+   	d.fun(i); // Virtual function call (2150ms)
+   end = std::chrono::high_resolution_clock::now();
+   ```
+
+3. Function Overriding could adds memory overhead (vtable, vptr)
+
+   ```c++
+   struct Base1
+   {
+     virtual void fun(int i) { i += 1; };
+   };
+   struct Base2
+   {
+     void fun(int i) { i += 1; };
+   };
+   struct Derived1 : public Base1
+   {
+     void fun(int i) override { i += 1; };
+   };
+   struct Derived2 : public Base2
+   {
+     void fun(int i) { i += 1; };
+   };
+   
+   sizeof(Base1); // 8 byte (virtual table pointer)
+   sizeof(Base2); // 1 byte (empty class)
+   sizeof(Derived1); // 8 byte (inherits virtual table pointer from Base1)
+   sizeof(Derived2); // 1 byte
+   ```
+
+4. Function Overriding could increases complexity in large inheritance hierarchies.
+
+[Top](#C++ Object Oriented Programming)
 
 ---
 
@@ -944,7 +1480,7 @@ In C++, upcasting is the process of converting a pointer or reference of a deriv
 
 Upcast (casting from derived to base) is generally safe and implicit, but there are specific unsafe conditions:
 
-| Scenario                              | Safety    | Method                                            | Notes                          |
+| Scenario                              | Safety    | Method                                            | Notice                         |
 | ------------------------------------- | --------- | ------------------------------------------------- | ------------------------------ |
 | Single inheritance, pointer/reference | ✅ Safe    | Implicit conversion                               | Implicit conversion works.     |
 | Single inheritance, by value          | ❌ Slicing | Implicit conversion (dangerous)                   | Use pointer/reference instead  |
@@ -1066,7 +1602,7 @@ Downcasting is the process of casting a base class pointer/reference to a derive
 
 Downcast (casting from base to derived) is generally safe and implicit, but there are specific unsafe conditions:
 
-| Scenario                                      | Safety               | Method                  | Notes                                                  |
+| Scenario                                      | Safety               | Method                  | Notice                                                 |
 | :-------------------------------------------- | :------------------- | :---------------------- | :----------------------------------------------------- |
 | **Single inheritance, pointer, type known**   | ⚠️ Conditionally Safe | `static_cast`           | Safe ONLY if you're 100% certain of actual type        |
 | **Single inheritance, pointer, type unknown** | ✅ Safe               | `dynamic_cast`          | Returns nullptr if type mismatch, always check result  |
@@ -1247,7 +1783,7 @@ Usage:
    Status OK = static_cast<Status>(0); // ✅ Must use static_cast
    ```
 
-**Note**:
+*Notice*:
 
 1. **Not allowed** casting between unrelated types (e.g., `int*`->`float*`).
 
@@ -1357,7 +1893,7 @@ Usage:
    B* b = dynamic_cast<B*>(a); // ✅ Safe
    ```
 
-**Note**:
+*Notice*:
 
 1. `dynamic_cast` works **only** for polymorphic types (with `virtual` functions)
 
@@ -1498,7 +2034,7 @@ Usage:
    std::cout << *f; // ⚠️ Undefined behavior - violates strict aliasing rule
    ```
 
-**Note**:
+*Notice*:
 
 1. It does not check if the pointer type and the data pointer are the same or not.
 2. Dereferencing the result of a `reinterpret_cast` for unrelated types causes undefined behavior (strict aliasing violation).
@@ -1515,6 +2051,8 @@ Usage:
 | **Failure behavior (ptr)** | Undefined behavior             | Returns `nullptr`                     | Undefined behavior          |
 | **Failure behavior (ref)** | Undefined behavior             | Throws `std::bad_cast`                | Undefined behavior          |
 | **Use case**               | Safe, well-defined conversions | Safe downcasting in hierarchies       | Low-level bit manipulation  |
+
+[Top](#C++ Object Oriented Programming)
 
 ---
 
@@ -1571,6 +2109,8 @@ TODO
 ### CRTP
 
 TODO
+
+[Top](#C++ Object Oriented Programming)
 
 ---
 
@@ -1639,10 +2179,30 @@ TODO
     - Size: Required size of memory is calculated by compiler for `new`, where as we have to manually calculate size for `malloc`.
     - Buffer Size: `malloc` allows to change the size of buffer using realloc while `new` doesn't.
 
-    
+[Top](#C++ Object Oriented Programming)
+
+---
+
+
 
 ## References
 
-- [`#pragma pack(push) and #pragma pack(pop) and #pragma pack()`](https://blog.csdn.net/myyllove/article/details/84560893/)
-- [First Exploration of C++ CRTP (Curiously Recurring Template Pattern)](https://blog.csdn.net/u011436427/article/details/125597908)
-- [malloc vs new](https://www.geeksforgeeks.org/cpp/malloc-vs-new/)
+[1] [`#pragma pack(push) and #pragma pack(pop) and #pragma pack()`](https://blog.csdn.net/myyllove/article/details/84560893/)
+
+[2] [First Exploration of C++ CRTP (Curiously Recurring Template Pattern)](https://blog.csdn.net/u011436427/article/details/125597908)
+
+[3] [malloc vs new](https://www.geeksforgeeks.org/cpp/malloc-vs-new/)
+
+[4] [Destructors in C++](https://www.geeksforgeeks.org/cpp/destructors-c/)
+
+[5] [Virtual Function in C++](https://www.geeksforgeeks.org/cpp/virtual-function-cpp/)
+
+[6] [Private Destructor in C++](https://www.geeksforgeeks.org/cpp/private-destructor-in-cpp/)
+
+[7] [Destructors (C++ only)](https://www.ibm.com/docs/en/zos/3.1.0?topic=only-destructors-c)
+
+[8] [Function Overriding in C++](https://www.geeksforgeeks.org/cpp/function-overriding-in-cpp/)
+
+[9] [Constructors in C++](https://www.geeksforgeeks.org/cpp/constructors-c/)
+
+[10] [Use of explicit keyword in C++](https://www.geeksforgeeks.org/cpp/use-of-explicit-keyword-in-cpp/)

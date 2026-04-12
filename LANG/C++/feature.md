@@ -6,217 +6,70 @@ English | [中文版](feature_zh.md)
 
 
 
-## new
+## auto
 
-### new operator
+The `auto` keywords in C++ are used in variable declarations or function declarations. It specifies that the type of the variable that is being declared will be automatically deducted from its initializer. In the case of functions, if their return type is auto, then that will be evaluated by the return type expression at compile time. The `auto` is commonly used to avoid long initializations when creating iterators for containers or variables with complex data types. 
 
-The **new operator** is an **operator** and **cannot be overloaded**. If `A` is a class, then `A* a = new A;` actually performs the following three steps:
-
-1. Calls `operator new` to allocate enough memory, equivalent to `operator new(sizeof(A))`;
-2. Calls the constructor to create the class object, `A::A()`;
-3. Returns the corresponding pointer.
-
-In fact, memory allocation is done by `operator new(size_t)`. If class `A` overloads `operator new`, then `A::operator new(size_t)` is called; otherwise, the global  `::operator new(size_t)` is called (provided by C++ by default).
-
-### operator new
-
-`operator new` is a **function** and has three forms (the first two only allocate memory and do not call constructors, which is different from the new operator):
-
-- `void* operator new (std::size_t size) throw (std::bad_alloc);`
-
-	(can be overloaded). Allocates `size` bytes and aligns memory for the object type. On success, returns a non-null pointer to the first address; on failure, throws `bad_alloc`.
-
-- `void* operator new (std::size_t size, const std::nothrow_t& nothrow_constant) throw();`
-
-	(can be overloaded). Does not throw on allocation failure and instead returns `NULL`.
-
-- `void* operator new (std::size_t size, void* ptr) throw();`
-
-	(cannot be overloaded). This is the placement new version, defined in `#include <new>`. It does not allocate memory.
+For example:
 
 ```c++
-A* a = new A;                 // calls the first form
-A* a = new(std::nothrow) A;   // calls the second form
-new (p) A();                  // calls the third form
-
-// After placement new, A::A() is also called at p.
-// p may point to dynamic heap memory or stack buffer memory.
-```
-
-### placement new
-
-Placement new is an overloaded form of `operator new`. It allows constructing a new object in memory that has already been allocated (stack or heap).
-
-Using the new operator requires searching heap space large enough for allocation, which can be slow and may fail due to insufficient memory. Placement new addresses this by constructing objects in a pre-prepared memory buffer without allocation search. Allocation time is constant, and memory-shortage exceptions during runtime can be avoided.
-
-Benefits of placement new:
-
-- Suitable for applications with strict timing constraints that should not be interrupted.
-- Preallocated memory can be reused repeatedly, reducing memory fragmentation.
-
-Usage:
-
-1. Pre-allocate a buffer
-
-	 ````c++
-	 // You can use heap space or stack space:
-	 class MyClass { ... };
-	 char* buf = new char[N * sizeof(MyClass) + sizeof(int)];
-	 // or: char buf[N * sizeof(MyClass) + sizeof(int)];
-	````
-
-2. Construct object
-
-	 ```c++
-	 MyClass* pClass = new(buf) MyClass;
-	```
-
-3. Destroy object
-
-	 Once finished, you must explicitly call the destructor. The memory is not released at this point and can be reused:
-
-	 ```c++
-	 pClass->~MyClass();
-	 ```
-
-4. Release memory
-
-	 If the buffer is in heap memory, call `delete[] buf`; if it is on the stack, memory is released automatically at scope end.
-
-**Notes:**
-
-- According to the C++ standard, `placement operator new[]` needs an implementation-defined amount of extra storage to save the array size. Therefore, allocate extra `sizeof(int)` bytes.
-- The `new` in step 2 is placement new: it does not allocate memory, it only calls the constructor and returns a pointer into already allocated memory. Therefore, do not call `delete` for deallocation there; call the destructor explicitly.
-- Include `new.h` (or modern `<new>`) before using placement new.
-
-[Top](#C++ Features)
-
----
-
-
-
-## explicit
-
-In C++, the `explicit` keyword is used for constructors that can be called with one argument. It marks that constructor as explicit rather than implicit.
-
-Example of automatic conversion:
-
-```c++
-#include "stdafx.h"
-#include <string>
-#include <iostream>
-using namespace std;
-
-class BOOK {
-private:
-		string _bookISBN;
-		float _price;
-
-public:
-		bool isSameISBN(const BOOK& other) {
-				return other._bookISBN == _bookISBN;
-		}
-
-		BOOK(string ISBN, float price = 0.0f)
-				: _bookISBN(ISBN), _price(price) {}
-};
-
-int main() {
-		BOOK A("A-A-A");
-		BOOK B("B-B-B");
-
-		cout << A.isSameISBN(B) << endl;
-
-		// implicit conversion: string -> BOOK
-		cout << A.isSameISBN(string("A-A-A")) << endl;
-
-		// explicit temporary object
-		cout << A.isSameISBN(BOOK("A-A-A")) << endl;
-}
-```
-
-Implicit class-type conversion can be risky: a temporary object may be created and discarded immediately.
-
-You can suppress such conversions using `explicit`:
-
-```c++
-explicit BOOK(string ISBN, float price = 0.0f)
-	: _bookISBN(ISBN), _price(price) {}
-```
-
-`explicit` can only appear on constructor declarations inside the class. Then, implicit construction is disallowed, and conversion errors will be reported.
-
-### Explicit and implicit declarations
-
-Implicit declaration:
-
-```c++
-class CxString {
-public:
-	char* _pstr;
-	int _size;
-	CxString(int size) {
-		_size = size;
-		_pstr = (char*)malloc(size + 1);
-		memset(_pstr, 0, size + 1);
-	}
-	CxString(const char* p) {
-		int size = strlen(p);
-		_pstr = (char*)malloc(size + 1);
-		strcpy(_pstr, p);
-		_size = strlen(_pstr);
-	}
-};
-
-CxString string1(24);      // OK
-CxString string2 = 10;     // OK: implicit conversion
-CxString string4("aaaa"); // OK
-CxString string5 = "bbb";  // OK
-CxString string6 = 'c';    // OK: calls CxString(int)
-```
-
-If a constructor can be called with one argument, the compiler provides implicit conversion from that argument type to the class type.
-
-Using `explicit`:
-
-```c++
-class CxString {
-public:
-	char* _pstr;
-	int _size;
-	explicit CxString(int size) {
-		_size = size;
-	}
-	CxString(const char* p) {
-	}
-};
-
-CxString string1(24);      // OK
-CxString string2 = 10;     // Error: implicit conversion disabled
-CxString string4("aaaa"); // OK
-CxString string6 = 'c';    // Error
-```
-
-`explicit` is meaningful not only for single-parameter constructors, but also when other parameters have defaults:
-
-```c++
-class CxString {
-public:
-		int _age;
-		int _size;
-		explicit CxString(int age, int size = 0) {
-				_age = age;
-				_size = size;
-		}
-		CxString(const char* p) {}
+auto i = 1;
+auto s = std::string("hello");
+auto lambda = [](auto x)->auto{
+  return x + 1;
 };
 ```
 
-### Notes
+### Type Deduce In auto
 
-1. “Callable with one argument” does not mean “has exactly one parameter”.
-2. Unless you explicitly want implicit conversion, mark such constructors as `explicit`.
-3. `explicit` applies to constructor declarations inside class definitions.
+`auto` deduces the type based on the value of the initializer, following template type deduction rules.
+
+```c++
+// auto strips references and const/violatile
+int a = 1;
+const int b = 10;
+const int& c = a;
+
+auto d = a; // d is int
+auto e = b; // e is int (const stripped)
+auto f = c; // f is int (const and reference stripped)
+
+auto& g = c; // g is int& (reference preserved)
+const auto& h = c; // h is const int& (explicit const)
+```
+
+### auto vs template type deduction
+
+```c++
+auto x = {1, 2, 3}; // ⚠️Tricky, compile ok, but not recommand
+
+template<typename T>
+void fun(T t) { };
+f({1, 2, 3});  // ❌ERROR: can't deduce
+```
+
+### Notice
+
+1. Avoid using `auto` with Braced Initializers, it will make confusions
+
+   ```c++
+   auto x = {1, 2, 3}; // x is std::initializer_list<int>
+   auto y = {1}; // y is std::initializer_list<int>
+   auto z{1}; // C++17: z is int
+   
+   // To avoid confusion:
+   auto v1 = std::vector<int>{1, 2, 3};
+   // or
+   std::vector<int> tmp{1, 2, 3};
+   auto v2 = tmp;
+   ```
+
+2. Becare loses precison
+
+   ```c++
+   auto i = 5 / 2; // expect i = 2.5, actually i = 2
+   double f = 5 / 2; // f = 2.5 (using double literals)
+   ```
 
 [Top](#C++ Features)
 
@@ -354,7 +207,7 @@ int main()
 }
 ```
 
-### Notes
+### Notice
 
 1. Pay attention when combining `const` and references.
 
@@ -560,52 +413,124 @@ int main()
 
 
 
-## volatile
+## data types
 
-`volatile` indicates that a variable may be changed by factors unknown to the compiler, such as hardware, operating system, or other threads. Accesses to volatile objects are not optimized away.
+### Trivial types
 
-When reading a volatile variable, data is fetched from memory each time:
+Trivial types are the "simplest" types in C++ and include:
 
-```c++
-volatile int i = 10;
-int a = i;
-...
-int b = i;
-```
+- Scalar types: built-in types like `int`, `char`, `float`, `double`, and pointers(`T*`).
+- Arrays of trivial types.
+- Trivial class types (classes, structs, or unions).
 
-`volatile` can qualify pointed objects:
+A class or struct is a trivial class if it has: 
 
-```c++
-const char* cpch;
-volatile char* vpch;
-```
+- No **virtual functions** or virtual base classes.
+- All special member functions (default constructor, copy/move constructors, copy/move assignment operators, and destructor) are **compiler-provided** or explicitly **defaulted** , and all are trivial.
+- All **non-static data members** and **base classes** are themselves of a trivial type.
+- It can have different access specifiers for its members, unlike a standard-layout type. 
 
-### volatile in multithreading
+for example:
 
 ```c++
-volatile BOOL bStop = FALSE;
+#include <type_traits>
+#include <iostream>
+
+class A
+{
+public:
+  A() {}
+};
+
+class B
+{
+public:
+  B() = default;
+};
+
+int main(void)
+{
+    std::cout << "A is trivial? " << std::is_trivial<A>::value << std::endl; // A is trivial? 0
+    std::cout << "B is trivial? " << std::is_trivial<B>::value << std::endl; // B is trivial? 1
+    return 0;
+}
 ```
 
-Thread 1:
+### Standard layout types
+
+Standard layout types have these characteristics:
+
+1. no virtual functions or virtual base classes;
+2. all non-static data members have the same access control(`public`/`protected`/`private`);
+3. all non-static members of class type are standard-layout;
+4. any base classes are standard-layout;
+5. has no base classes of the same type as the first non-static data member;
+6. meets one of these conditions:
+   - no non-static data member in the most-derived class and no more than one base class with non-static data members;
+   - has no base clases with non-static data members.
+
+for example:
 
 ```c++
-while(!bStop) { ... }
-bStop = FALSE;
-return;
+#include <iostream>
+#include <type_traits>
+
+struct A{};     // standard layout
+struct B : A    // not standard layout(rule5)
+{
+    A a;
+    int i;
+};
+struct C : A    // standard layout
+{
+    int i;
+    A a;
+};
+
+int main(void)
+{
+    std::cout << "A is standard layout: " << std::is_standard_layout<A>::value << std::endl; // A is standard layout: 1
+    std::cout << "B is standard layout: " << std::is_standard_layout<B>::value << std::endl; // B is standard layout: 0
+    std::cout << "C is standard layout: " << std::is_standard_layout<C>::value << std::endl; // C is standard layout: 1
+    return 0;
+}
 ```
 
-Thread 2:
+### POD types
+
+In C++ a POD (Plain Old Data) type is a class or structure designed to be compatible with C-style data structures, ensuring a predictable, contiguous memory layout and the absence of complex object-oriented features. 
+
+A POD type is a type that is both trivial and has a standard layout. The specific characteristics include:
+
+- No User-Defined Special Members;
+- No Virtual Functions or Base Classes;
+- Consistent Access Control;
+- Contains only POD members (recursively);
+- No Reference Members.
+
+for example:
 
 ```c++
-bStop = TRUE;
-while(bStop);
+#include <iostream>
+#include <type_traits>
+
+class A
+{
+public:
+  int x;
+  double y;
+};
+
+int main(void)
+{
+  std::cout << "A is POD: " << std::is_pod<A>::value << std::endl; // A is POD: 1
+
+  // std::is_pod<A>::value == std::is_trivial<A>::value && std::is_standard_layout<A>::value
+  std::cout << "A is trivial: " << std::is_trivial<A>::value << std::endl; // A is trivial: 1
+  std::cout << "A is standard layout: " << std::is_standard_layout<A>::value << std::endl; // A is standard layout: 1
+  return 0;
+}
 ```
-
-### Notes
-
-1. Basic-type conversion to volatile is allowed under standard qualification rules.
-2. User-defined types can also be qualified with `volatile`.
-3. For volatile-qualified class objects, accessible operations are restricted by qualifiers similarly to const propagation.
 
 [Top](#C++ Features)
 
@@ -613,90 +538,534 @@ while(bStop);
 
 
 
-## static
+## decltype
 
-`static` is a common C/C++ specifier that controls storage duration and visibility.
+The `decltype` type specifier yields the type of a specified expression.
 
-`static` places objects in static storage rather than stack storage. Static data members exist from program start.
+Key Rules:
 
-### Uses
+1. decltype(variable) -> exact type of variable
+2. decltype(expression) -> based on value category
+   - lvalue expression -> T&
+   - prvalue expression -> T
+   - xvalue expression -> T&&
 
-- **Static local variables** (Inside a function): initialized once and live until program termination
+for example (general rules):
+
+```c++
+int var;
+const int&& fx();
+struct A
+{
+  double x;
+};
+const A* a = new A();
+
+decltype(fx()); 	// const int&&
+decltype(var);  	// int
+decltype(a->x); 	// double
+decltype((a->x)); // const double& (The inner parentheses cause the statement to be evaluated as an expression instead of a member access. And because `a` is declared as a `const` pointer, the type is a reference to `const double`.)
+```
+
+for example (with template):
+
+```c++
+// c++11
+template<typename T, typename U>
+auto f1(T&& t, U&& u) -> decltype(forward<T>(t) + forward<U>(u))
+{ return forward<T>(t) + forward<U>(u); }
+
+// c++14
+template<typename T, typename U>
+decltype(auto) f1(T&& t, U&& u)
+{ return forward<T>(t) + forward<U>(u); }
+```
+
+### decltype(auto)
+
+`decltype(auto)` combines `auto`'s convenience with `decltype`'s type preservation.
+
+```c++
+template <typename Container, typename Index>
+decltype(auto) get_val(Container&& c, Index i)
+{
+  // if c is lvalue -> returns reference
+  // if c is rvalue -> returns value
+  return std::forward<Container>(c)[i];
+}
+
+std::vector<int> vec{1, 2, 3};
+get_val(vec, 0) = 7; // lvalue -> return int&; equals: vec[0] = 7;
+int val = get_val(std::vector<int>{4, 5, 6}, 0); // rvalue -> return int;
+```
+
+Usage: 
+
+- wrapper functions
+
+  for example(without decltype(auto)):
 
   ```c++
-// Meyers Singleton Pattern (function-local static)
-  Foo& Instance()
+  // 🤮verbose and error-prone
+  template<typename F, typename... Args>
+  auto wrapper(F&& f, Args&&... args) -> decltype(std::forward<F>(f)(std::forward<Args>(args)...))
   {
-    static Foo inst;
-    return inst;
+    return std::forward<F>(f)(std::forward<Args>(args)...);
   }
   ```
+
+  for example(with decltype):
+
+  ```c++
+  //  🤗clean and correct
+  template<typename F, typename... Args>
+  decltype(auto) wrapper(F&& f, Args&&... args)
+  {
+    return std::forward<F>(f)(std::forward<Args>(args)...);
+  }
+  ```
+
+### decltype vs auto
+
+| Feature                   | `auto`                                                       | `decltype`                                      |
+| :------------------------ | :----------------------------------------------------------- | :---------------------------------------------- |
+| **When evaluated**        | At compile time (from initializer)                           | At compile time (from expression)               |
+| **Expression evaluated?** | Yes (initializer executed)                                   | No (only type examined)                         |
+| **References**            | Stripped by default                                          | Preserved                                       |
+| **`const`/`volatile`**    | Stripped by default (see also: [Type Deduce In auto](#Type Deduce In auto)) | Preserved                                       |
+| **Main use**              | Variable declarations                                        | Template metaprogramming, return type deduction |
+| **C++ version**           | C++11                                                        | C++11                                           |
+| **Combined form**         | N/A                                                          | `decltype(auto)` (C++14)                        |
+
+- `decltype` examines the declared type of an expression without evaluating it
+
+  ```c++
+  // basic usage
+  int x = 1;
+  decltype(x) y = 1; // y is int
+  const int& z = x;
+  decltype(z) w = x; // w is const int& (references preserved!)
   
-  Use case: memoization, singleton instance getter, tracking call counts.
-
-- **Static global variables** (At file scope): visible only within the current translation unit; Cannot be accessed from other files
-
-  ```c++
-  // file1.cpp
-  static int hidden = 42; 	  // Only visible in file1.cpp
-  void fun() { hidden = 10; } // OK
+  // expressions usage
+  int a = 5;
+  decltype(a) b = 10; // b is int
+  decltype((a)) c = a; // c is int& (parentheses change meaning!)
+  decltype(1 + 2)d = 8; // d is int (prvalue) 
+  
+  // decltype doesn't evaluate the expression
+  int hello() { std::cout << "hello"; return 1; }
+  decltype(hello()) e = 0; // e is int, ⚠️ but hello() NOT CALLED!!!
   ```
 
-  ```c++
-  // file2.cpp
-  extern int hidden; // Error! Cannot access static global from other file
-  ```
+### Notice
 
-  Best Practice: Use anonymous namespaces in modern C++ files for implementation details that should be private to that translation unit. Reserve `static` for inside functions or classes.
+1. Becare Parentheses Trick
 
-  ```c++
-  // file1.cpp
-  namespace {
-    int hidden = 42; // Only visible in file1.cpp
-    void fun() { hidden = 10; } // OK
-  }
-  ```
+   ```c++
+   int a = 5;
+   decltype(a) b = 10;  // b is int
+   decltype((a)) c = a; // c is int& (parentheses change meaning!)
+   ```
+   
+1. Avoid Dangling
 
-  ```c++
-  // file2.cpp - CANNOT access anything from file1.cpp's anonymous namespace
-  ```
+   ```c++
+   std::string hello() { return std::string("hello"); }
+   decltype(hello()) str = hello(); // str is std::string
+   decltype(hello().c_str()) pstr = hello().c_str(); // ⚠️ Dangling pointer!
+   ```
 
-- **Static Member Variables** (Inside a class)
+[Top](#C++ Features)
 
-  1. Shared across all objects of the class.
-  2. Must be defined outside the class (in .cpp file).
-  3. Can be accessed without creating an object.
+---
 
-  ```c++
-  class MyClass
-  {
-  	inline static int count = 0; // C++17: define directly
-  };
-  ```
 
-- **Static Member Functions** (Inside a class)
 
-  1. Can only access static members (no `this` pointer).
-  2. Can be called without an object.
+## explicit
 
-  ```c++
-  class MyClass
-  {
-  public:
-    	static int fun() { return 1; }
-  };
-  int ret = MyClass::fun(); // No object needed
-  ```
+In C++, the `explicit` keyword is used for constructors that can be called with one argument. It marks that constructor as explicit rather than implicit.
 
-  Common uses: Factory methods, utility functions, the singleton pattern.
+Example of automatic conversion:
 
-### Notes
+```c++
+#include "stdafx.h"
+#include <string>
+#include <iostream>
+using namespace std;
 
-- Do not define static data members inside class declarations only; provide a definition in a source file.
-- Do not define non-inline static data members in headers in a way that causes multiple definitions.
-- Non-static member functions cannot be called via the class name directly.
-- Static member functions cannot access non-static members directly.
-- Static member variables must be defined and initialized before use.
+class BOOK {
+private:
+		string _bookISBN;
+		float _price;
+
+public:
+		bool isSameISBN(const BOOK& other) {
+				return other._bookISBN == _bookISBN;
+		}
+
+		BOOK(string ISBN, float price = 0.0f)
+				: _bookISBN(ISBN), _price(price) {}
+};
+
+int main() {
+		BOOK A("A-A-A");
+		BOOK B("B-B-B");
+
+		cout << A.isSameISBN(B) << endl;
+
+		// implicit conversion: string -> BOOK
+		cout << A.isSameISBN(string("A-A-A")) << endl;
+
+		// explicit temporary object
+		cout << A.isSameISBN(BOOK("A-A-A")) << endl;
+}
+```
+
+Implicit class-type conversion can be risky: a temporary object may be created and discarded immediately.
+
+You can suppress such conversions using `explicit`:
+
+```c++
+explicit BOOK(string ISBN, float price = 0.0f)
+	: _bookISBN(ISBN), _price(price) {}
+```
+
+`explicit` can only appear on constructor declarations inside the class. Then, implicit construction is disallowed, and conversion errors will be reported.
+
+### Explicit and implicit declarations
+
+Implicit declaration:
+
+```c++
+class CxString {
+public:
+	char* _pstr;
+	int _size;
+	CxString(int size) {
+		_size = size;
+		_pstr = (char*)malloc(size + 1);
+		memset(_pstr, 0, size + 1);
+	}
+	CxString(const char* p) {
+		int size = strlen(p);
+		_pstr = (char*)malloc(size + 1);
+		strcpy(_pstr, p);
+		_size = strlen(_pstr);
+	}
+};
+
+CxString string1(24);      // OK
+CxString string2 = 10;     // OK: implicit conversion
+CxString string4("aaaa"); // OK
+CxString string5 = "bbb";  // OK
+CxString string6 = 'c';    // OK: calls CxString(int)
+```
+
+If a constructor can be called with one argument, the compiler provides implicit conversion from that argument type to the class type.
+
+Using `explicit`:
+
+```c++
+class CxString {
+public:
+	char* _pstr;
+	int _size;
+	explicit CxString(int size) {
+		_size = size;
+	}
+	CxString(const char* p) {
+	}
+};
+
+CxString string1(24);      // OK
+CxString string2 = 10;     // Error: implicit conversion disabled
+CxString string4("aaaa"); // OK
+CxString string6 = 'c';    // Error
+```
+
+`explicit` is meaningful not only for single-parameter constructors, but also when other parameters have defaults:
+
+```c++
+class CxString {
+public:
+		int _age;
+		int _size;
+		explicit CxString(int age, int size = 0) {
+				_age = age;
+				_size = size;
+		}
+		CxString(const char* p) {}
+};
+```
+
+### Notice
+
+1. “Callable with one argument” does not mean “has exactly one parameter”.
+2. Unless you explicitly want implicit conversion, mark such constructors as `explicit`.
+3. `explicit` applies to constructor declarations inside class definitions.
+
+[Top](#C++ Features)
+
+---
+
+## final
+
+The `final` specifier in C++ was introduced in C++11 to provide additional control over inheritance and overriding in class hierarchies. It is used in two primary contexts: 
+
+- preventing function
+- preventing class inheritance.
+
+Uses:
+
+1. Disable inheritance
+
+	 ```c++
+	 class Base final
+	 {
+	 };
+
+	 class Derive : public Base // error
+	 {
+	 };
+	```
+
+2. Disable overriding
+
+	 ```c++
+	 class Super
+	 {
+	 public:
+			 Super();
+			 virtual void SomeMethod() final;
+	 };
+	```
+
+[Top](#C++ Features)
+
+---
+
+
+
+## inline
+
+![inline_example](res/inline_example.png)
+
+An inline function is a function in C++ whose code is expanded at the point of call at compile time. It reduces function-call overhead.
+
+*Notice*:
+
+1. The inline keywrod suggests replacing a function call with its code to reduce overhead.
+2. Inlining is a request, **not guaranteed** by the compiler.
+3. The compiler **may** ignore inlining if the function contains loops, recursion, static variables, switch/goto, or a non-void function without a return statement.
+4. Runtime resolution conflicts with compile-time inlining, making inlining of virtual functions **impossible**.
+5. Inline increases the number of variables and registers used at each call.
+6. Excessive inlining **can** enlarge the binary and reduce instruction cache efficiency.
+7. Changes in an inline function require recompiling all calling locations.
+8. Inline functions **may not** suit embedded systems where code size is more critical than speed.
+
+### inline functions in headers
+
+Unlike regular functions, inline functions can be defined in header files withotu causing multiple definition errors:
+
+```c++
+// xx.h
+inline int add(int a, int b) { return a + b; }
+```
+
+### member functions inline
+
+Member functions defined inside the class are implicitly inline:
+
+```c++
+class A 
+{
+public: 
+  int fun1() { return }; // implicitly inline (defined inside class)
+  void fun2(); // not implicitly inline (defined outside)
+};
+
+void A::fun2() {} 
+```
+
+### inline variables
+
+Inline variables (C++17) allows defining variables in headers without multiple definition errors.
+
+```c++
+// xx.h
+class A 
+{
+  static inline int val = 0; // C++17 safe in header
+};
+
+inline int g_val = 1; // C++17 inline variable
+```
+
+### inline vs macros
+
+|         **Aspect**          |                  **Inline Functions**                  |                       **Macros**                       |
+| :-------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|       **Definition**        | Inline functions are functions defined with the `inline` keyword. | Macros are preprocessor directives defined using. `#define`. |
+|          **Scope**          | Inline functions have scope and type checking, like regular functions. | Macros have no scope or type checking. They are replaced by the preprocessor. |
+| **Evaluation of Arguments** |                Arguments are evaluated once.                 | Arguments may be evaluated multiple times (e.g., in expressions). |
+|        **Handling**         |        Inline functions are handled by the compiler.         |           Macros are handled by the preprocessor.            |
+|     **Private Members**     |            Can access private members of a class.            |          Cannot access private members of a class.           |
+|   **Execution Overhead**    | Compiler may ignore the `inline` request if the function is too large. |           Macros are always substituted into code.           |
+|        **Recursion**        |      Inline functions can call themselves recursively.       |                 Macros cannot be recursive.                  |
+
+[Top](#C++ Features)
+
+---
+
+
+
+## lambda
+
+A major C++11 feature is lambda expressions, which make defining anonymous functions convenient.
+
+```c++
+[captured external variables] (params) mutable-spec exception-spec -> return-type { ... }
+```
+
+### Value capture
+
+Variables are captured by copy; modifications inside a lambda do not affect outer variables.
+
+### Reference capture
+
+Prefix with `&`; modifications inside a lambda do affect outer variables.
+
+### Implicit capture
+
+- `[=]` capture by value
+- `[&]` capture by reference
+
+### Mixed capture
+
+| Capture form  | Meaning                                |
+| ------------- | -------------------------------------- |
+| `[]`          | Capture nothing                        |
+| `[name, ...]` | Capture listed variables by value      |
+| `[this]`      | Capture `this`                         |
+| `[=]`         | Capture all by value                   |
+| `[&]`         | Capture all by reference               |
+| `[=, &x]`     | Capture all by value, `x` by reference |
+| `[&, x]`      | Capture all by reference, `x` by value |
+
+### mutable
+
+If external variables are captured by value, they are read-only in a lambda by default. `mutable` allows modifying those captured copies.
+
+### Parameter restrictions
+
+1. No default arguments in the parameter list.
+2. No variadic C-style parameters.
+3. All parameters must have names.
+
+[Top](#C++ Features)
+
+---
+
+
+
+## list-initialization
+
+There are two ways to initialize class members:
+
+- Member initializer list (`list-initialization`)
+- Assignment in the constructor body
+  1. initialization phase
+  2. computation/assignment phase
+
+Initializer lists are often used for performance and avoid extra default-construction for data-heavy classes.
+
+Must-use cases for initializer lists:
+
+- `const` data members
+- reference data members
+- class-type members without default constructors
+
+### Initialization order
+
+Members are initialized in the order they are **declared in the class**, not the order in the initializer list.
+
+```c++
+struct foo
+{
+	int i;
+	int j;
+	foo(int x) : j(x), i(j) // i is undefined
+};
+```
+
+Even though `j` appears first in the initializer list, `i` is declared first and initialized first.
+
+[Top](#C++ Features)
+
+---
+
+
+
+## move semantics
+
+Move semantics are a modern C++ feature that allows the transfer of ownership of a resource from one object to the next without making a copy. Some classesown resources such as heap memory, file handles, and so on.
+
+### Benefit
+
+Copying is expensive especially for big data. With move semantics we can transfer the resource from one object to another, leaving the first object in the "moved-from" state which means it's still a valid object but it no longer owns the original resource.
+
+### Types of Expressions in C++
+
+- Lvalue Reference(`T&`): A lvalue reference is a reference that refers to an existing object with a name and a stable location in memory.
+- Rvalue Reference(`T&&`): An rvalue reference is a reference that can bind to temporary objects or values that are about to be destroyed.
+
+### Move Semantics in STL Containers
+
+STL containers like `std::vector` use move semantics to improve performance in two main cases:
+
+1. During Reallocation
+
+   When a container grows and needs more space, it reallocates memory transfers existing elements.
+
+   If the element type supports move, the container moves elements instead of copying them - making reallocation faster.
+
+2. When Inserting Elements
+
+   Move semantics are also used when inserting elements:
+
+   - `push_back(std::move(x))` - Moves an existing object into the container.
+   - `emplace_back(args...)` - Constructs the object directly in-place, avoiding copies or moves.
+
+### Example
+
+```c++
+std::string temp = "Alice";
+names.push_back(std::move(temp));
+names.emplace_back("Bob");
+```
+
+[Top](#C++ Features)
+
+---
+
+
+
+## mutable
+
+This keyword can only be applied to non-static, non-const, and non-reference data members of a class. If a data member is declared `mutable`, then it is legal to assign a value to this data member from a `const` member function.
+
+for example:
+
+```c++
+class x
+{
+public:
+  bool get_flag() const { m_count++; return m_flag; }
+private:
+  bool m_flag;
+  mutable int m_count; // correct
+}
+```
 
 [Top](#C++ Features)
 
@@ -740,7 +1109,7 @@ Namespaces help avoid name conflicts in large projects by placing declarations i
 
 5. Same class names in different namespaces can coexist.
 
-### Notes
+### Notice
 
 1. Avoid `using namespace` at the global scope in headers.
 
@@ -750,35 +1119,308 @@ Namespaces help avoid name conflicts in large projects by placing declarations i
 
 
 
-## union
 
-A union is a special class type that can hold only one **non-static** data member at a time. Members share the same memory. Union size equals its largest member.
+## new
 
-Characteristics:
+### new operator
 
-1. Default access control is `public`.
-2. Member functions are allowed (including constructors/destructors).
-3. Reference-type members are not allowed.
-4. Cannot derive from other classes and cannot be a base class.
-5. Virtual functions are not allowed.
-6. Members of anonymous unions are directly accessible in scope.
-7. Anonymous unions cannot contain protected/private members.
-8. Global anonymous unions must be `static`.
+The **new operator** is an **operator** and **cannot be overloaded**. If `A` is a class, then `A* a = new A;` actually performs the following three steps:
 
-Example:
+1. Calls `operator new` to allocate enough memory, equivalent to `operator new(sizeof(A))`;
+2. Calls the constructor to create the class object, `A::A()`;
+3. Returns the corresponding pointer.
+
+In fact, memory allocation is done by `operator new(size_t)`. If class `A` overloads `operator new`, then `A::operator new(size_t)` is called; otherwise, the global  `::operator new(size_t)` is called (provided by C++ by default).
+
+### operator new
+
+`operator new` is a **function** and has three forms (the first two only allocate memory and do not call constructors, which is different from the new operator):
+
+- `void* operator new (std::size_t size) throw (std::bad_alloc);`
+
+	(can be overloaded). Allocates `size` bytes and aligns memory for the object type. On success, returns a non-null pointer to the first address; on failure, throws `bad_alloc`.
+
+- `void* operator new (std::size_t size, const std::nothrow_t& nothrow_constant) throw();`
+
+	(can be overloaded). Does not throw on allocation failure and instead returns `NULL`.
+
+- `void* operator new (std::size_t size, void* ptr) throw();`
+
+	(cannot be overloaded). This is the placement new version, defined in `#include <new>`. It does not allocate memory.
 
 ```c++
-union u {
-		u() : i(1), s("abc") {};
-		int i;
-		string s;
-};
+A* a = new A;                 // calls the first form
+A* a = new(std::nothrow) A;   // calls the second form
+new (p) A();                  // calls the third form
 
-static union {
-		int i;
-		string s;
+// After placement new, A::A() is also called at p.
+// p may point to dynamic heap memory or stack buffer memory.
+```
+
+### placement new
+
+Placement new is an overloaded form of `operator new`. It allows constructing a new object in memory that has already been allocated (stack or heap).
+
+Using the new operator requires searching heap space large enough for allocation, which can be slow and may fail due to insufficient memory. Placement new addresses this by constructing objects in a pre-prepared memory buffer without allocation search. Allocation time is constant, and memory-shortage exceptions during runtime can be avoided.
+
+Benefits of placement new:
+
+- Suitable for applications with strict timing constraints that should not be interrupted.
+- Preallocated memory can be reused repeatedly, reducing memory fragmentation.
+
+Usage:
+
+1. Pre-allocate a buffer
+
+	 ````c++
+	 // You can use heap space or stack space:
+	 class MyClass { ... };
+	 char* buf = new char[N * sizeof(MyClass) + sizeof(int)];
+	 // or: char buf[N * sizeof(MyClass) + sizeof(int)];
+	````
+
+2. Construct object
+
+	 ```c++
+	 MyClass* pClass = new(buf) MyClass;
+	```
+
+3. Destroy object
+
+	 Once finished, you must explicitly call the destructor. The memory is not released at this point and can be reused:
+
+	 ```c++
+	 pClass->~MyClass();
+	 ```
+
+4. Release memory
+
+	 If the buffer is in heap memory, call `delete[] buf`; if it is on the stack, memory is released automatically at scope end.
+
+**Notice:**
+
+- According to the C++ standard, `placement operator new[]` needs an implementation-defined amount of extra storage to save the array size. Therefore, allocate extra `sizeof(int)` bytes.
+- The `new` in step 2 is placement new: it does not allocate memory, it only calls the constructor and returns a pointer into already allocated memory. Therefore, do not call `delete` for deallocation there; call the destructor explicitly.
+- Include `new.h` (or modern `<new>`) before using placement new.
+
+[Top](#C++ Features)
+
+---
+
+
+
+## overload
+
+### Function Overloading
+
+Function overloading allows us to define multiple functions with the same name but with different parameters, so that the same function name can perform different tasks depending on the values and types of arguments passed.
+
+```c++
+int add(int a, int b) { return a + b; }
+int add(int a, int b, int c) { return a + b + c; }
+```
+
+A function in C++ **can** be overloaded in different ways:
+
+- By having different number of parameters
+
+  ```c++
+  int add(int a, int b) { return a + b; }
+  int add(int a, int b, int c) { return a + b + c; }
+  ```
+
+- By having different types of parameters
+
+  ```c++
+  int add(int a, int b) { return a + b; }
+  double add(double a, double b) { return a + b; }
+  ```
+
+- By having different order of parameters (becare ambiguous)
+
+  ```c++
+  long add(int a, long b) { return a + b; }
+  long add(long b, int a) { return a + b; }
+  ```
+  
+- By having different const/non-cost member functions
+
+  ```c++
+  class Test
+  {
+  	void func() {};
+    void func() const {};
+  };
+  ```
+
+- By having different const/volatile pointer parameters
+
+  ```c++
+  void func1(int* a) {};
+  void func1(const int* a) {}; // ✅
+  
+  void func2(int a) {};
+  void func2(const int a) {}; // ❌error: redefinition of 'func2'
+  ```
+
+- By passing by reference or value
+
+  ```c++
+  void fun(int x) {};
+  void fun(int& x) {};
+  ```
+
+Functions that **Cannot** be overloaded:
+
+- Functions that differ only in their return type
+
+  ```c++
+  int fun() { return 1; }
+  float fun() { return 1.0; } // ❌
+  ```
+
+  C++ doesn't allow function overloading by changing the return type. It is because the return type is not included in the function call, due to which the compiler won't be able to distinguish between them, resulting in an ambiguity issue.
+
+- Functions with parameter declarations that differ only in a pointer `*` versus an array `[]`
+
+  ```c++
+  int fun(int* ptr) {};
+  int fun(int ptr[]) {}; // ❌ redeclaration of fun(int* ptr)
+  ```
+
+- Function with parameter declarations that differ only in that one is a function type and the other is a pointer to the same function type
+
+  ```c++
+  void fun(int ()) {};
+  void fun(int (*)()) {}; // ❌ redeclaration of fun(int())
+  ```
+
+- Function with default parameter don't create new overloads
+
+  ```c++
+  void fun(int a, int b) {};
+  void fun(int a, int b = 0) {}; // ❌ error: redefinition of 'fun'
+  ```
+  
+- Function with same parameter but different volatile type specifier
+
+  ```c++
+  void fun(int x){};
+  void fun(const int x){}; // ❌
+  ```
+
+### Operator Overloading
+
+Operator overloading means giving a new meaning to an operator (like `+`, `-`, `*`, `[]`), when it is used with objects. With operator overloading, we can make operators work for user defined classes structures.
+
+```c++
+struct Number
+{
+  int val;
+  Number(int v) : val{v} {};
+	Number opertor+(const Number& n)
+  {
+    return Number(val + n.val);
+  };
 };
 ```
+
+Why use Operator Overloading?
+
+1. Allows objects to behave like basic data types.
+2. Useful for mathematical objects like Complex numbers and Vectors.
+3. Reduces the need for extra function calls.
+
+Operators that **CANNOT** be overloaded:
+
+1. sizeof
+2. typeid
+3. Scope resolution(`::`)
+4. Class member access operators (`.` and `.*`)
+5. Ternary/conditional operator (`?:`)
+
+### Function Overloading vs Overriding
+
+|        **Feature**         |   **Function Overloading**   |           **Function Overriding**           |
+| :------------------------: | :--------------------------: | :-----------------------------------------: |
+|    Type of Polymorphism    |         Compile-time         |        Mostly Runtime (with virtual)        |
+|    Inheritance Required    |              No              |                     Yes                     |
+|     Function Signature     |      Must be different       |                Must be same                 |
+|           Scope            |          Same class          |           Base and Derived class            |
+|   Execution Time Binding   | Early binding (compile time) |           Late binding (runtime)            |
+|      Keyword Required      |      No special keyword      | Needs `virtual` and (optionally) `override` |
+| Can Be Done Multiple Times |             Yes              |   Yes, but must follow inheritance rules    |
+
+### Operator Functions vs Normal Functions
+
+|  **Feature**   |      **Operator Function**      |    **Normal Function**    |
+| :------------: | :-----------------------------: | :-----------------------: |
+|   **Syntax**   |      Uses operator keyword      |  Standard function name   |
+| **Invocation** | Triggered by using an operator  | Called explicitly by name |
+|  **Purpose**   | Redefines behavior of operators | Performs defined actions  |
+
+### Function Overloading vs Operator Overloading
+
+| Feature                      | Function Overloading                                        | Operator Overloading                                         |
+| :--------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- |
+| **Purpose**                  | Multiple functions with the same name, different parameters | Define custom behavior for operators with user-defined types |
+| **Syntax**                   | Regular function names                                      | Operator keyword + symbol (e.g., `operator+`)                |
+| **Parameters**               | Can differ in number and/or type                            | Must have at least one user-defined type parameter           |
+| **Default availability**     | Not available (must be defined)                             | Some operators have default behavior for built-in types      |
+| **Can create new operators** | N/A                                                         | No (cannot create new symbols like `**`)                     |
+| **Can change arity**         | Yes                                                         | No (must respect operator's original arity)                  |
+
+### Notice
+
+1. Becare Ambiguous Overloads
+
+   ```c++
+   void fun(int x, double y) { }
+   void fun(double x, int y) { }
+   
+   fun(1, 2); // ❌ERROR: call is ambiguous - both overloads are equally good matches
+   fun(1, static_cast<double>(2)); // ✅OK: calls fun(int, double)
+   fun(1.0, 2); // ✅OK: calls fun(int, double)
+   fun(1, 2.0); // ✅OK: calls fun(double, int)
+   ```
+
+2. Becare Default Arguments Confusion
+
+   ```c++
+   void fun(int a) {}
+   void fun(int a, int b = 0) {}
+   
+   fun(1); // Which one? fun(int) or fun(int, int)
+   fun(1, 2);
+   ```
+
+3. Becore Inheritance Hiding
+
+   ```c++
+   class Base
+   {
+   public: void fun(int x) { std::cout << "Base::fun\n"; }
+   };
+   class Derived1 : public Base
+   {
+   public: void fun(double x) { std::cout << "Derived1::fun\n"; }
+   };
+   class Derived2 : public Base
+   {
+   public: 
+     using Base::fun; // Brings Base::fun(int) into scope
+     void fun(double x) { std::cout << "Derived2::fun\n"; }
+   };
+   
+   Derived1 d1;
+   Derived2 d2;
+   d1.fun(5); 	 // Calls Derived1::fun(double)
+   d2.fun(5); 	 // calls Base::fun(int)
+   d1.fun(5.0); // Calls Derived1::fun(double)
+   d2.fun(5.0); // Calls Derived2::fun(double)
+   ```
+
+4. Overloading has **ZERO** runtime overhead! All resolution happens at compile time; Just use it!
 
 [Top](#C++ Features)
 
@@ -944,198 +1586,6 @@ The list of methods using which we can prevent the dangling pointers:
 
 
 
-## lambda
-
-A major C++11 feature is lambda expressions, which make defining anonymous functions convenient.
-
-```c++
-[captured external variables] (params) mutable-spec exception-spec -> return-type { ... }
-```
-
-### Value capture
-
-Variables are captured by copy; modifications inside a lambda do not affect outer variables.
-
-### Reference capture
-
-Prefix with `&`; modifications inside a lambda do affect outer variables.
-
-### Implicit capture
-
-- `[=]` capture by value
-- `[&]` capture by reference
-
-### Mixed capture
-
-| Capture form | Meaning |
-| ------------ | ------- |
-| `[]` | Capture nothing |
-| `[name, ...]` | Capture listed variables by value |
-| `[this]` | Capture `this` |
-| `[=]` | Capture all by value |
-| `[&]` | Capture all by reference |
-| `[=, &x]` | Capture all by value, `x` by reference |
-| `[&, x]` | Capture all by reference, `x` by value |
-
-### mutable
-
-If external variables are captured by value, they are read-only in a lambda by default. `mutable` allows modifying those captured copies.
-
-### Parameter restrictions
-
-1. No default arguments in the parameter list.
-2. No variadic C-style parameters.
-3. All parameters must have names.
-
-[Top](#C++ Features)
-
----
-
-
-
-## list-initialization
-
-There are two ways to initialize class members:
-
-- Member initializer list (`list-initialization`)
-- Assignment in the constructor body
-	1. initialization phase
-	2. computation/assignment phase
-
-Initializer lists are often used for performance and avoid extra default-construction for data-heavy classes.
-
-Must-use cases for initializer lists:
-
-- `const` data members
-- reference data members
-- class-type members without default constructors
-
-### Initialization order
-
-Members are initialized in the order they are **declared in the class**, not the order in the initializer list.
-
-```c++
-struct foo
-{
-	int i;
-	int j;
-	foo(int x) : j(x), i(j) // i is undefined
-};
-```
-
-Even though `j` appears first in the initializer list, `i` is declared first and initialized first.
-
-[Top](#C++ Features)
-
----
-
-
-
-## override
-
-If a derived class virtual function declaration uses `override`, it must override a base class function correctly; otherwise, compilation fails.
-
-Example:
-
-```c++
-struct Base
-{
-		virtual void VNeumann(int g) = 0;
-		virtual void DKnuth() const;
-		void Print();
-};
-struct DerivedMid : public Base
-{
-};
-struct DerivedTop : public DerivedMid
-{
-		void VNeumann(double g) override; // compile error: parameter mismatch
-		void DKnuth() override;           // compile error: cv-qualifier mismatch
-		void Print() override;            // compile error: base function not virtual
-};
-```
-
-[Top](#C++ Features)
-
----
-
-
-
-## final
-
-The `final` specifier in C++ was introduced in C++11 to provide additional control over inheritance and overriding in class hierarchies. It is used in two primary contexts: 
-
-- preventing function
-- preventing class inheritance.
-
-Uses:
-
-1. Disable inheritance
-
-	 ```c++
-	 class Base final
-	 {
-	 };
-
-	 class Derive : public Base // error
-	 {
-	 };
-	```
-
-2. Disable overriding
-
-	 ```c++
-	 class Super
-	 {
-	 public:
-			 Super();
-			 virtual void SomeMethod() final;
-	 };
-	```
-
-[Top](#C++ Features)
-
----
-
-
-
-## =default and =delete
-
-If you define constructors yourself, the compiler will not generate a default constructor for you automatically. Adding `=default` explicitly restores it.
-
-Uses of `=delete`:
-
-1. Explicitly disable a function;
-2. Disable conversion constructors to avoid unwanted conversions.
-3. Disable custom-class `new` behavior to prevent allocation on free store.
-
-Any function can be deleted, including non-member and template functions. Example:
-
-```c++
-template <class charT, class traits = char_traits<charT> >
-class basic_ios : public ios_base {
-public:
-		basic_ios(const basic_ios&) = delete;
-		basic_ios& operator=(const basic_ios&) = delete;
-};
-```
-
-```c++
-class Widget {
-public:
-		template<typename T>
-		void processPointer(T* ptr) { ... }
-};
-template<>
-void Widget::processPointer<void>(void*) = delete;
-```
-
-[Top](#C++ Features)
-
----
-
-
-
 ## pragma
 
 Pragma directive controls implementation-specific behavior of the compiler, such as disabling compiler warnings or changing alignment requirements. Any pragmatics that are not recognized are ignored.
@@ -1275,78 +1725,6 @@ for example:
 
 
 
-## decltype
-
-The `decltype` type specifier yields the type of a specified expression.
-
-```c++
-decltype(expression)
-```
-
-- `expression`
-
-for example:
-
-```c++
-int var;
-const int&& fx();
-struct A
-{
-  double x;
-};
-const A* a = new A();
-
-decltype(fx()); 	// const int&&
-decltype(var);  	// int
-decltype(a->x); 	// double
-decltype((a->x)); // const double& (The inner parentheses cause the statement to be evaluated as an expression instead of a member access. And because `a` is declared as a `const` pointer, the type is a reference to `const double`.)
-```
-
-### decltype vs auto
-
-`decltype` and `auto`, for example:
-
-```c++
-// c++11
-template<typename T, typename U>
-auto f1(T&& t, U&& u) -> decltype(forward<T>(t) + forward<U>(u))
-{ return forward<T>(t) + forward<U>(u); }
-
-// c++14
-template<typename T, typename U>
-decltype(auto) f1(T&& t, U&& u)
-{ return forward<T>(t) + forward<U>(u); }
-```
-
-[Top](#C++ Features)
-
----
-
-
-
-## mutable
-
-This keyword can only be applied to non-static, non-const, and non-reference data members of a class. If a data member is declared `mutable`, then it is legal to assign a value to this data member from a `const` member function.
-
-for example:
-
-```c++
-class x
-{
-public:
-  bool get_flag() const { m_count++; return m_flag; }
-private:
-  bool m_flag;
-  mutable int m_count; // correct
-}
-```
-
-[Top](#C++ Features)
-
----
-
-
-
 ## sizeof
 
 The sizeof operator is a `unary`, `compile-time operator` in C++ used to determine the memory size (in bytes) of variables, data types, constants, as well as user-defined types such as structures, unions, and classes.
@@ -1395,6 +1773,42 @@ int main(void)
     std::cout << "sizeof(A) = " << sizeof(A) << std::endl; // 24, because of padding. The size of A is the sum of the sizes of its members (4 + 4 + 8 + 1 = 17), but it is padded to a multiple of the largest member (8), so it becomes 24.
     return 0;
 }
+```
+
+[Top](#C++ Features)
+
+---
+
+
+
+## union
+
+A union is a special class type that can hold only one **non-static** data member at a time. Members share the same memory. Union size equals its largest member.
+
+Characteristics:
+
+1. Default access control is `public`.
+2. Member functions are allowed (including constructors/destructors).
+3. Reference-type members are not allowed.
+4. Cannot derive from other classes and cannot be a base class.
+5. Virtual functions are not allowed.
+6. Members of anonymous unions are directly accessible in scope.
+7. Anonymous unions cannot contain protected/private members.
+8. Global anonymous unions must be `static`.
+
+Example:
+
+```c++
+union u {
+		u() : i(1), s("abc") {};
+		int i;
+		string s;
+};
+
+static union {
+		int i;
+		string s;
+};
 ```
 
 [Top](#C++ Features)
@@ -1594,168 +2008,182 @@ int main(void)
 
 
 
-## Data Types
+## volatile
 
-### Trivial types
+`volatile` indicates that a variable may be changed by factors unknown to the compiler, such as hardware, operating system, or other threads. Accesses to volatile objects are not optimized away.
 
-Trivial types are the "simplest" types in C++ and include:
-
-- Scalar types: built-in types like `int`, `char`, `float`, `double`, and pointers(`T*`).
-- Arrays of trivial types.
-- Trivial class types (classes, structs, or unions).
-
-A class or struct is a trivial class if it has: 
-
-- No **virtual functions** or virtual base classes.
-- All special member functions (default constructor, copy/move constructors, copy/move assignment operators, and destructor) are **compiler-provided** or explicitly **defaulted** , and all are trivial.
-- All **non-static data members** and **base classes** are themselves of a trivial type.
-- It can have different access specifiers for its members, unlike a standard-layout type. 
-
-for example:
+When reading a volatile variable, data is fetched from memory each time:
 
 ```c++
-#include <type_traits>
-#include <iostream>
-
-class A
-{
-public:
-  A() {}
-};
-
-class B
-{
-public:
-  B() = default;
-};
-
-int main(void)
-{
-    std::cout << "A is trivial? " << std::is_trivial<A>::value << std::endl; // A is trivial? 0
-    std::cout << "B is trivial? " << std::is_trivial<B>::value << std::endl; // B is trivial? 1
-    return 0;
-}
+volatile int i = 10;
+int a = i;
+...
+int b = i;
 ```
 
-### Standard layout types
-
-Standard layout types have these characteristics:
-
-1. no virtual functions or virtual base classes;
-2. all non-static data members have the same access control(`public`/`protected`/`private`);
-3. all non-static members of class type are standard-layout;
-4. any base classes are standard-layout;
-5. has no base classes of the same type as the first non-static data member;
-6. meets one of these conditions:
-   - no non-static data member in the most-derived class and no more than one base class with non-static data members;
-   - has no base clases with non-static data members.
-
-for example:
+`volatile` can qualify pointed objects:
 
 ```c++
-#include <iostream>
-#include <type_traits>
-
-struct A{};     // standard layout
-struct B : A    // not standard layout(rule5)
-{
-    A a;
-    int i;
-};
-struct C : A    // standard layout
-{
-    int i;
-    A a;
-};
-
-int main(void)
-{
-    std::cout << "A is standard layout: " << std::is_standard_layout<A>::value << std::endl; // A is standard layout: 1
-    std::cout << "B is standard layout: " << std::is_standard_layout<B>::value << std::endl; // B is standard layout: 0
-    std::cout << "C is standard layout: " << std::is_standard_layout<C>::value << std::endl; // C is standard layout: 1
-    return 0;
-}
+const char* cpch;
+volatile char* vpch;
 ```
 
-### POD types
-
-In C++ a POD (Plain Old Data) type is a class or structure designed to be compatible with C-style data structures, ensuring a predictable, contiguous memory layout and the absence of complex object-oriented features. 
-
-A POD type is a type that is both trivial and has a standard layout. The specific characteristics include:
-
-- No User-Defined Special Members;
-- No Virtual Functions or Base Classes;
-- Consistent Access Control;
-- Contains only POD members (recursively);
-- No Reference Members.
-
-for example:
+### volatile in multithreading
 
 ```c++
-#include <iostream>
-#include <type_traits>
-
-class A
-{
-public:
-  int x;
-  double y;
-};
-
-int main(void)
-{
-  std::cout << "A is POD: " << std::is_pod<A>::value << std::endl; // A is POD: 1
-
-  // std::is_pod<A>::value == std::is_trivial<A>::value && std::is_standard_layout<A>::value
-  std::cout << "A is trivial: " << std::is_trivial<A>::value << std::endl; // A is trivial: 1
-  std::cout << "A is standard layout: " << std::is_standard_layout<A>::value << std::endl; // A is standard layout: 1
-  return 0;
-}
+volatile BOOL bStop = FALSE;
 ```
+
+Thread 1:
+
+```c++
+while(!bStop) { ... }
+bStop = FALSE;
+return;
+```
+
+Thread 2:
+
+```c++
+bStop = TRUE;
+while(bStop);
+```
+
+### Notice
+
+1. Basic-type conversion to volatile is allowed under standard qualification rules.
+2. User-defined types can also be qualified with `volatile`.
+3. For volatile-qualified class objects, accessible operations are restricted by qualifiers similarly to const propagation.
+
+[Top](#C++ Features)
 
 ---
 
 
 
-## move semantics
+## static
 
-Move semantics are a modern C++ feature that allows the transfer of ownership of a resource from one object to the next without making a copy. Some classesown resources such as heap memory, file handles, and so on.
+`static` is a common C/C++ specifier that controls storage duration and visibility.
 
-### Benefit
+`static` places objects in static storage rather than stack storage. Static data members exist from program start.
 
-Copying is expensive especially for big data. With move semantics we can transfer the resource from one object to another, leaving the first object in the "moved-from" state which means it's still a valid object but it no longer owns the original resource.
+### Uses
 
-### Types of Expressions in C++
+- **Static local variables** (Inside a function): initialized once and live until program termination
 
-- Lvalue Reference(`T&`): A lvalue reference is a reference that refers to an existing object with a name and a stable location in memory.
-- Rvalue Reference(`T&&`): An rvalue reference is a reference that can bind to temporary objects or values that are about to be destroyed.
+  ```c++
+// Meyers Singleton Pattern (function-local static)
+  Foo& Instance()
+  {
+    static Foo inst;
+    return inst;
+  }
+  ```
+  
+  Use case: memoization, singleton instance getter, tracking call counts.
 
-### Move Semantics in STL Containers
+- **Static global variables** (At file scope): visible only within the current translation unit; Cannot be accessed from other files
 
-STL containers like `std::vector` use move semantics to improve performance in two main cases:
+  ```c++
+  // file1.cpp
+  static int hidden = 42; 	  // Only visible in file1.cpp
+  void fun() { hidden = 10; } // OK
+  ```
 
-1. During Reallocation
+  ```c++
+  // file2.cpp
+  extern int hidden; // Error! Cannot access static global from other file
+  ```
 
-   When a container grows and needs more space, it reallocates memory transfers existing elements.
+  Best Practice: Use anonymous namespaces in modern C++ files for implementation details that should be private to that translation unit. Reserve `static` for inside functions or classes.
 
-   If the element type supports move, the container moves elements instead of copying them - making reallocation faster.
+  ```c++
+  // file1.cpp
+  namespace {
+    int hidden = 42; // Only visible in file1.cpp
+    void fun() { hidden = 10; } // OK
+  }
+  ```
 
-2. When Inserting Elements
+  ```c++
+  // file2.cpp - CANNOT access anything from file1.cpp's anonymous namespace
+  ```
 
-   Move semantics are also used when inserting elements:
+- **Static Member Variables** (Inside a class)
 
-   - `push_back(std::move(x))` - Moves an existing object into the container.
-   - `emplace_back(args...)` - Constructs the object directly in-place, avoiding copies or moves.
+  1. Shared across all objects of the class.
+  2. Must be defined outside the class (in .cpp file).
+  3. Can be accessed without creating an object.
 
-### Example
+  ```c++
+  class MyClass
+  {
+  	inline static int count = 0; // C++17: define directly
+  };
+  ```
 
-```c++
-std::string temp = "Alice";
-names.push_back(std::move(temp));
-names.emplace_back("Bob");
-```
+- **Static Member Functions** (Inside a class)
+
+  1. Can only access static members (no `this` pointer).
+  2. Can be called without an object.
+
+  ```c++
+  class MyClass
+  {
+  public:
+    	static int fun() { return 1; }
+  };
+  int ret = MyClass::fun(); // No object needed
+  ```
+
+  Common uses: Factory methods, utility functions, the singleton pattern.
+
+### Notice
+
+- Do not define static data members inside class declarations only; provide a definition in a source file.
+- Do not define non-inline static data members in headers in a way that causes multiple definitions.
+- Non-static member functions cannot be called via the class name directly.
+- Static member functions cannot access non-static members directly.
+- Static member variables must be defined and initialized before use.
+
+[Top](#C++ Features)
 
 ---
+
+
+
+## =default and =delete
+
+If you define constructors yourself, the compiler will not generate a default constructor for you automatically. Adding `=default` explicitly restores it.
+
+Uses of `=delete`:
+
+1. Explicitly disable a function;
+2. Disable conversion constructors to avoid unwanted conversions.
+3. Disable custom-class `new` behavior to prevent allocation on free store.
+
+Any function can be deleted, including non-member and template functions. Example:
+
+```c++
+template <class charT, class traits = char_traits<charT> >
+class basic_ios : public ios_base {
+public:
+		basic_ios(const basic_ios&) = delete;
+		basic_ios& operator=(const basic_ios&) = delete;
+};
+```
+
+```c++
+class Widget {
+public:
+		template<typename T>
+		void processPointer(T* ptr) { ... }
+};
+template<>
+void Widget::processPointer<void>(void*) = delete;
+```
+
+[Top](#C++ Features)
 
 
 
@@ -1808,4 +2236,10 @@ names.emplace_back("Bob");
 [23] [C++ sizeof Operator](https://www.geeksforgeeks.org/cpp/cpp-sizeof-operator/)
 
 [24] [static_cast in C++](https://www.geeksforgeeks.org/cpp/static_cast-in-cpp/)
+
+[25] [Type Inference in C++ (auto and decltype)](https://www.geeksforgeeks.org/cpp/type-inference-in-c-auto-and-decltype/)
+
+[26] [Function Overloading in C++](https://www.geeksforgeeks.org/cpp/function-overloading-c/)
+
+[27] [Inline Functions in C++](https://www.geeksforgeeks.org/cpp/inline-functions-cpp/)
 
