@@ -166,7 +166,161 @@ Time Complexity:
 
 ## Tree Search
 
-TODO
+### Depth-First Search (DFS)
+
+In Depth First Search (DFS) for a graph, we traverse all adjacent vertices one by one. When we traverse an adjacent vertex, we completely finish the traversal of all vertices reachable through that adjacent vertex.
+
+#### WorkFlow
+
+```txt
+        A
+       /   \
+      B     C
+     / \   / \
+    D   E F   G
+
+DFS Order (Pre-order):  A → B → D → E → C → F → G
+DFS Order (In-order):   D → B → E → A → F → C → G
+DFS Order (Post-order): D → E → B → F → G → C → A
+```
+
+#### Implement
+
+- DFS from a given source of graph
+
+  ```c++
+  void dfs(std::vector<std::vector<int>>& arr,
+           std::vector<bool>& visited, 
+           int s, 
+           std::vector<int>& ret)
+  {
+    visited[s] = true;
+    ret.push_back(s);
+    for (int i : arr[s])
+      if (visited[i] == false)
+        dfs(arr, visited, i, ret);
+  }
+  
+  std::vector<int> dfs(std::vector<std::vector<int>>& arr)
+  {
+    std::vector<bool> visited(arr.size(), false);
+    std::vector<int> ret;
+    dfs(arr, visited, 0, ret);
+    return ret;
+  }
+  
+  std::vector<std::vector<int>> arr = {{1, 2}, {2, 0}, {1, 0, 3, 4}, {2}, {2}};
+  auto ret = dfs(arr); // 0 1 2 3 4
+  ```
+
+- DFS of a disconnected graph
+
+  ```c++
+  void dfs(std::vector<std::vector<int>>& arr,
+           std::vector<bool>& visited, 
+           int s, 
+           std::vector<int>& ret)
+  {
+    visited[s] = true;
+    ret.push_back(s);
+    for (int i : arr[s])
+      if (visited[i] == false)
+        dfs(arr, visited, i, ret);
+  }
+  
+  std::vector<int> dfs(std::vector<std::vector<int>>& arr)
+  {
+    std::vector<bool> visited(arr.size(), false);
+    std::vector<int> ret;
+    for (int i = 0; i < arr.size(); i++)
+    {
+      if (visited[i] == false)
+        dfs(arr, visited, i, ret);
+    }
+    return ret;
+  }
+  
+  std::vector<std::vector<int>> arr = {{3, 2}, {2}, {1, 0}, {0}, {5}, {4}};
+  auto ret = dfs(arr); // 0 3 2 1 4 5
+  ```
+
+#### Complexity Analysis
+
+1. Time Complexity: $O(V + E)$
+
+   - $V$ is the number of vertices;
+
+   - $E$ is the number of edges in the graph.
+
+2. Auxiliary Space: $O(V + E)$
+
+### Breadth-First Search (BFS)
+
+#### WorkFlow
+
+```txt
+         A
+       /   \
+      B     C
+     / \   / \
+    D   E F   G
+    
+    BFS Order (Level-order):  A → B → C → D → E → F → G
+```
+
+#### Implement
+
+```c++
+std::vector<int> bfs(std::vector<std::vector<int>>& arr)
+{
+  int v = arr.size();
+  std::vector<bool> visited(arr.size(), false);
+  std::vector<int> ret;
+  std::queue<int> q;
+  int src = 0;
+  visited[src] = true;
+  q.push(src);
+  while (!q.empty())
+  {
+    int curr = q.front();
+    q.pop();
+    ret.push_back(curr);
+    for (int x : arr[curr])
+    {
+      if (!visited[x])
+      {
+        visited[x] = true;
+        q.push(x);
+      }
+    }
+  }
+  return ret;
+}
+
+std::vector<std::vector<int>> arr{{1, 2}, {2, 0}, {1, 0, 3, 4}, {2}, {2}};
+dfs(arr); // 0 1 2 3 4
+```
+
+#### Complexity Analysis
+
+1. Time Complexity: $O(V + E)$
+
+   - $V$ is the number of vertices;
+
+   - $E$ is the number of edges in the graph.
+
+2. Auxiliary Space: $O(w)$, where $w$ = width.
+
+### DFS vs BFS
+
+| Feature            | BFS                    | DFS                        |
+| :----------------- | :--------------------- | :------------------------- |
+| **Data structure** | Queue (FIFO)           | Stack (LIFO)               |
+| **Memory usage**   | O(width) - can be huge | O(depth) - usually smaller |
+| **Shortest path**  | ✅ Yes (unweighted)     | ❌ No                       |
+| **Completeness**   | ✅ Yes (finite graphs)  | ❌ Not for infinite graphs  |
+| **Optimal**        | ✅ Yes (uniform cost)   | ❌ No                       |
+| **Better for**     | Closest nodes, levels  | Deep exploration, puzzles  |
 
 
 
@@ -244,7 +398,7 @@ int kadane(const std::vector<int>& arr)
 
 ## Summary
 
-### Complixity Analysis
+### Complexity Analysis
 
 Comparison of search algorithm efficiency:
 
@@ -294,9 +448,9 @@ Ternary search:
 
 ## Reference
 
-[1] Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein. Introduction to Algorithms . 3ED
+[1] Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein. Introduction to Algorithms. 3ED
 
-[2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++ . 4ED
+[2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 4ED
 
 [3] [Hello Algo/Chapter 10.  Searching](https://www.hello-algo.com/en/chapter_searching/#chapter-10-searching)
 
@@ -305,4 +459,8 @@ Ternary search:
 [5] [Maximum Subarray Sum - Kadane's Algorithm](https://www.geeksforgeeks.org/dsa/largest-sum-contiguous-subarray/)
 
 [6] [WIKIPEDIA/Maximum subarray problem](https://en.wikipedia.org/wiki/Maximum_subarray_problem)
+
+[7] [Depth First Search or DFS for a Graph](https://www.geeksforgeeks.org/dsa/depth-first-search-or-dfs-for-a-graph/)
+
+[8] [Breadth First Search or BFS for a Graph](https://www.geeksforgeeks.org/dsa/breadth-first-search-or-bfs-for-a-graph/)
 

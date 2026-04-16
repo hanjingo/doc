@@ -21,6 +21,7 @@
 - [P2P](p2p.md)
 - [Protobuf Encoding](protobuf.md)
 - [QOS](qos.md)
+- [Router](router.md)
 - [RTMP Protocol](rtmp.md)
 - [Socket Programming](socket.md)
 - [SSL](ssl.md)

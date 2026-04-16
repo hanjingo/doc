@@ -1305,6 +1305,132 @@ For more info, see: [SQL Language](DB/sql.md)
 
 ## Network
 
+### Base
+
+#### How are Network types classified?
+
+Network types can be classified along several dimensions. At the area of the distribution level, we divided personal area network, local area network, metropolitan area network, wide area network and the internet. At the protocol level, we distinguish TCP from UDP. At the communication behavior level, we consider whether a connection is established, whether data delivery is guaranteed, and whether transmission unicast, multicast or broadcast.
+
+#### What is the network topology?
+
+Network topology is a physical layout of the network, connecting the different nodes using the links. It depicts the connectivity between the computers, devices, cables, etc.
+
+For more info, see: [Network Summary#Network Topology](NET/summary.md)
+
+#### Which topology is used in modern Ethernet networks?
+
+Physical star (all devices connect to a central switch), but switched Ethernet creates a logical star with microsegmentation--each port is its own collision domain. This gives dedicated bandwidth to each device.
+
+For more info, see: [Network Summary#Network Topology](NET/summary.md)
+
+#### What's the main disadvantage of bus topology?
+
+Single point of failure. If the backbone cable breaks anywhere, the entire network goes down. Also, performance collapses under heavy load due to collisions.
+
+For more info, see: [Network Summary#Bus Topology](NET/summary.md)
+
+#### Why don't we use full mesh for everything?
+
+Cost and complexity. For n devices, you need n(n - 1) / 2 connections. It's impractical for most networks. We use partial mesh or hybrid designs instead.
+
+For more info, see: [Network Summary#Mesh Topology](NET/summary.md)
+
+#### What topology does the internet use?
+
+The internet backbone uses a partial mesh of routers, with multiple redundant paths. At the edge, it uses various topologies--star in homes, tree in enterprises, etc. It's a massive hybrid topology.
+
+#### How does ring topology handle a break?
+
+Single ring fails completely. Dual ring (like FDDI) wraps around: when a break occurs, the two rings combine into a single ring that includes all working nodes, maintaining connectivity.
+
+For more info, see: [Network Summary#Ring Topology](NET/summary.md)
+
+#### Which topology is best for fault tolerance?
+
+Full mesh provides the highest fault tolerance--every device has multiple paths. If any single connection fails, traffic reroutes automatically. For most real applications, a partial mesh offers good tolerance at lower cost.
+
+For more info, see: [Network Summary#Mesh Topology](NET/summary.md)
+
+#### What is the use of a router and how is it different from a gateway?
+
+A router forwards data between different networks by directing traffic based on IP addresses. A gateway is a broader term--it's any device that acts as an entry/exit point between networks. While a router can function as a gateway, a gateway isn't necessarily a router; it could be a firewall, proxy server, or NAT device. The key difference: routers always operate at Layer 3 (network layer), while gateways can operate at any layer and often perform protocol translation.
+
+For more info, see: [Routing#Router](NET/routing.md)
+
+#### Can a switch function as a gateway?
+
+Generally no! Switches operate at Layer 2 and don't understand IP addresses. A gateway needs to operate at Layer 3 or higher. However, a 'layer 3 switch' (multilayer switch) can perform routing functions and could serve as a gateway.
+
+For more info, see: [Routing#Gateway](NET/routing.md)
+
+#### What happens when i remove the default gateway from my device?
+
+Your device can only communicate within its local subnet. Any attempt to reach a different subnet (including the internet) will fail because the device doesn't know where to send packets destined outside its networks.
+
+For more info, see: [Routing#Gateway](NET/routing.md)
+
+#### What's the difference between a gateway and a proxy?
+
+A proxy operates at the application layer (Layer 7) and is application-specific (HTTP proxy, SOCKS proxy). A gateway can operate at multiple layers. All proxies are a type of gateway, but not all gateways are proxies. A router acting as a default gateway is NOT a proxy.
+
+For more info, see: [Routing#Gateway](NET/routing.md)
+
+### IP
+
+#### What are private and special IP addresses?
+
+Private IP addresses are reserved ranges used exclusively within internal networks and cannot be routed on the public internet. Special IP addresses serve specific purposes like loopback testing, broadcasting, or automatic configuration.
+
+For more info, see: [Internet Protocol (IP)#Special IP Addresses](NET/ip.md)
+
+#### What is an IPv4 address?
+
+An IPv4 address is a 32-bit numerical identifier assigned to devices on a network, written in dotted-decimal notation as four 8-bit octets. It has two main parts: the network portion (identifies the subnet) and the host portion (identifies the specific device).
+
+For more info, see: [Internet Protocol (IP)#IPv4](NET/ip.md)
+
+#### How many IPv4 addresses exist?
+
+$2^{32} = 4,294,967,296$. But subtract special addresses (loopback, private ranges, multicast, broadcast), and about 3.7 billion are potentially usable for public internet.
+
+For more info, see: [Internet Protocol (IP)#IPv4](NET/ip.md)
+
+#### What does the 255 in subnet masks represent?
+
+255 in decimal equals 11111111 in binary--all 8 bits set to 1. In a subnet mask, each 255 means 'these bits belong to the network portion'.
+
+For more info, see: [Internet Protocol (IP)](NET/ip.md)
+
+#### What's the difference between IPv4 and IPv6?
+
+IPv4 uses 32-bit addresses written in dotted-decimal, while IPv6 uses 128-bit addresses written in hexadecimal. IPv6 eliminates NAT, has built-in security (IPsec), simpler headers for faster routing, and autoconfiguration capabilities. The transition is necessary due to IPv4 exhaustion.
+
+For more info, see: [Internet Protocol (IP)#IPv4 vs IPv6](NET/ip.md)
+
+#### How does IPv6 solve the NAT problem?
+
+IPv6 doesn't need NAT because there are enough addresses for every device to have a globally unique public IP. This restores end-to-end connectivity, making peer-to-peer applications, VoIP, and gaming work nativelly without complex NAT traversal techniques.
+
+For more info, see: [Internet Protocol (IP)#IPv6](NET/ip.md)
+
+#### What's the equivalent of 127.0.0.1 in IPv6?
+
+`::1`. It's a 128-bit address with 127 zeros and a single 1 at the end.
+
+For more info, see: [Internet Protocol (IP)#IPv6](NET/ip.md)
+
+#### What are the differnt types of VPN?
+
+VPNs are broadly classified into three main types by deployment: Remote Access VPN, Site-to-Site VPN, and Personal VPN. By protocol, common types include IPsec, SSL/TLS, OpenVPN, WireGuard, and IKEv2. The right choice depends on use case, security requirements, and platform compatibility.
+
+For more info, see: [Virtual Private Networks (VPNs)#Types of VPN](NET/vpn.md)
+
+#### What are the advantages of using a VPN?
+
+The primary advantages of using a VPN are security, privacy, and access control. It creates an encrypted tunnel between a user's device and a remote network, protecting data from interception, masking the user's real IP address, and allowing secure access to private network resources from untrusted locations like public Wi-Fi or the internet.
+
+For more info, see: [Virtual Private Networks (VPNs)](NET/vpn.md)
+
 ### TCP
 
 #### Explain how to create a simple TCP server that accepts one client connection and sends msg back.
@@ -1333,6 +1459,56 @@ Creating a connectionless link using datagram sockets. The server bind port and 
 
 For more info, see: [UDP Protocol](NET/udp.md), [Socket Programming#UDP Socket Programming](NET/socket.md)
 
+### DNS
+
+#### What is the DNS?
+
+DNS (Domain Name System) translates human-readable domain names into machine-readable IP addresses. It's a distributed, hierarchical database that acts as the internet's phonebook, allowing users to access websites without memorizing numeric IP addresses.
+
+For more info, see: [Domain Name System (DNS)](NET/dns.md)
+
+#### What happens when you type a URL into a browser?
+
+First, the browser checks its DNS cache. If not found, it asks the OS resolver, which checks `/etc/hosts` and its own cache. Then the request goes to the configured DNS resolver. That resolver performs iterative queries starting at the root servers, then the TLD servers, then the authoritative nameservers for the domain, and finally returns the IP address. The browser then opens a TCP connection to that IP.
+
+For more info, see: [Domain Name System (DNS)#Workflow](NET/dns.md)
+
+#### What's the difference between A and CNAME records?
+
+An A record maps a domain directly to an IPv4 address. A CNAME maps a domain to another domain name (an alias). CNAME can't be used for the root domain (apex) of a zone.
+
+For more info, see: [Domain Name System (DNS)#DNS Record Types](NET/dns.md)
+
+#### Why is DNS distributed instead of centrialized?
+
+Centralized DNS would be a single point of failure, couldn't handle billions of queries per second, and one organization would control the entire internet's naming system. Distribution provides redundancy, load balancing, and allows organizations to manage their own domains.
+
+For more info, see: [Domain Name System (DNS)](NET/dns.md)
+
+#### What's DNS propagation?
+
+DNS doesn't actually 'propagate'--it's not a push system. When you change DNS records, caches expire based on their TTL values. 'Propagation' refers to the time it takes for all caches around the world to expire and fetch the new record. Maximum propagation time is the old TTL value, typically 24-48 hours.
+
+For more info, see: [Domain Name System (DNS)](NET/dns.md)
+
+#### What happens when a DNS server goes down?
+
+Cached records continue to work until they expire. If the authoritative server for a domain goes down, existing caches still serve the domain for the remaining TTL period. Once caches expire, the domain becomes unreachable. This is why we use multiple authoritative nameserver for reduendancy.
+
+For more info, see: [Domain Name System (DNS)](NET/dns.md)
+
+#### What's split-horizon DNS?
+
+Different DNS answers based on the requester's location. Internal users get private IP addresses for internal servers, external users get public IPs. This allows using the same domain name internally and externally with different resolutions.
+
+For more info, see: [Domain Name System (DNS)](NET/dns.md)
+
+### SMTP
+
+#### What is the SMTP protocol?
+
+
+
 ### IO
 
 #### How to use `poll()` instead of `select()` for handling multiple connections, and what advantages it offers.
@@ -1354,6 +1530,12 @@ For more info, see: [Network I/O#epoll](NET/tcp.md)
 
 
 ## Algorithm
+
+### Base
+
+#### How can we compare between two algorithmns written for the same problem?
+
+We compare algorithms primarily by their complexity and space complexity. But for real-world decisions, we also consider constants, input characteristics, implementation ease, and data cache behavior.
 
 ### Linked List
 
@@ -1404,6 +1586,12 @@ For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](AL
 #### Level-Order traversal of a binary tree. Process each level layer by layer, storing nodes in a list. Classic for breadth-first search.
 
 Using BFS(Breadth First Search) level order raversal a binary tree, using a linked list container to save the node value.
+
+For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
+
+#### Counting the number of leaf nodes in a binary tree.
+
+Count leaf nodes by traversing the tree and incrementing a counter whenever we find a node with no children. Both recursive and iterative approaches work in O(n) time with O(h) space, where h is the tree height.
 
 For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
 
@@ -1504,6 +1692,48 @@ For more info, see: [Searching Algorithm Summary](ALGO/search.md)
 Choose the appropriate searching algorithm based on factors like data structure, data size and desired search efficiency, such as Binary Search for sorted arrays and Hashing for constant-time searches.
 
 For more info, see: [Searching Algorithm Summary](ALGO/search.md)
+
+#### What do you understand about the DFS(Depth First Search) algorithm.
+
+DFS is a graph traversal algorithm that explores as far as possible along each branch before backtracking. It uses a stack (explicitly or via recursion) and has $O(V + E)$ time complexity. It's particularly useful for pathfinding in mazes, topological sorting, detecting cycles, and solving puzzles.
+
+For more info, see: [Searching Algorithm Summary#Depth-First Search (DFS)](ALGO/search.md)
+
+#### Can DFS get stuck in infinite loops?
+
+Only if we forget to mark nodes as visited. With proper visit tracking, it terminates in $O(V + E)$ time.
+
+For more info, see: [Searching Algorithm Summary#Depth-First Search (DFS)](ALGO/search.md)
+
+#### What do you understand about the BFS (Breadth First Search) algorithm?
+
+BFS is a graph traversal algorithm that explores vertices in layers, visiting all neighbors at the current depth before moving to the next level. It uses a queue (FIFO) and has $O(V + E)$ time complexity. BFS guarantees the shortest path in unweighted graphs and is ideal for finding minimum steps, web crawling, and social network analysis.
+
+For more info, see: [Searching Algorithm Summary#Breadth-First Search (BFS)](ALGO/search.md)
+
+#### How to find the shortest path in a grid with obstacles using BFS?
+
+Treat each cell as a node, with edges to adjacent open cells. BFS guarantees the shortest path because all edges have uniform weight (1 step). Track parent pointers to reconstruct path.
+
+For more info, see: [Searching Algorithm Summary#Breadth-First Search (BFS)](ALGO/search.md)
+
+#### What's the space complexity of BFS on a complete binary tree of height h?
+
+$O(2^h)$ in worst case because the last level has $2^h$ nodes, all potentially in the queue simultaneously. This is why BFS is memory-intensive for deep trees.
+
+For more info, see: [Searching Algorithm Summary#Breadth-First Search (BFS)](ALGO/search.md)
+
+#### How to optimize BFS for very large graphs?
+
+Use bidirectional BFS(search from both ends), use bitsets for visited tracking, consider IDDFS if depth is known, or use `A*` with a heuristic if applicable.
+
+For more info, see: [Searching Algorithm Summary#Breadth-First Search (BFS)](ALGO/search.md)
+
+#### When would you choose DFS over BFS?
+
+DFS when memory is constrained (depth < width), when finding any path (not shortest), for topological sorting, or when solving puzzles like Sudoku. BFS when finding shortest path in unweighted graphs or when the graph is wide but shallow.
+
+For more info, see: [Searching Algorithm Summary#DFS vs BFS](ALGO/search.md)
 
 #### Explain Linear Search and its time complexity.
 
@@ -1701,47 +1931,29 @@ For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design
 
 ### Base
 
-#### What is difference between API Gateway and Load Balancer?
+#### What do you understand by latency, throughput, and availability of a system?
 
-An API Gateway is an intelligent entry point that manages, secures, and routes API requests to specific microservices, while a Load Balancer focuses on distributing traffic across multiple servers to ensure high availability and prevent overload.
+Latency is the time it takes to complete a single operation. Throughput is the number of operations a system can handle per unit of time. Availability is the percentage of time a system is operational and accessible. They're interconnected trade-offs: optimizing for one often impacts the others. A system can have low latency but low throughput, or high throughput with higher latency.
 
-For more info, see: [Load Balancing#API Gateway vs Load Balancer](SYSTEM_DESIGN/load_balance.md)
+For more info, see: [System Metrics#Availability](SYSTEM_DESIGN/system_metrics.md)
 
-#### What is difference between Reverse Proxy and Forward Proxy?
+#### What is the difference between Reverse Proxy and Forward Proxy?
 
 A forward proxy acts on behalf of the client while a reverse proxy acts on behalf of the server.
 
 For more info, see: [Proxy#Proxy Vs Reverse Proxy](SYSTEM_DESIGN/proxy.md)
 
-#### What is difference between Horizontal scaling and vertical scaling?
-
-Horizontal scaling adds more machines to your pool of resources(scaling out), while vertical scaling adds more power(CPU, RAM) to an existing machine(scaling up).
-
-For more info, see: [System Dependabilityy#Horizontal vs Vertical Scaling](SYSTEM_DESIGN/system_dependability.md)
-
-#### What is difference between Microservices and Monolithic architecture?
+#### What is the difference between Microservices and Monolithic architecture?
 
 A Monolithic architecture is a single, unified unit where all functions are tightly coupled, while a Microservices architecture is a collection of small, independent services that communicate via APIs.
 
 For more info, see: [Architectural#Microservices vs Monolithic Architecture](SYSTEM_DESIGN/architectural.md)
-
-#### What is difference between vertical and horizontal partitioning?
-
-Horizontal partitioning splits a table by its rows(reducing table size), while Vertical partitioning splits it by its columns(reducing table width).
-
-For more info, see: [Database Designl#Horizontal Partitioning vs Vertical Partitioning](SYSTEM_DESIGN/db.md)
 
 #### What is rate limiter? How does it work?
 
 A Rate Limiter is a tool used to control the rate of traffic sents by a client or received by a server. It acts as a "gatekeeper" that defines how many requests a user can make within a specific timeframe. Rate limiters track requests using specific logic to decide whether to allow, drop, or delay a request.
 
 For more info, see: [Rate Limiting](SYSTEM_DESIGN/rate_limiting.md)
-
-#### How does Single Sign On(SSO) works?
-
-Single Sign-On(SSO) is an authentication method that allows users to log in once and gain access to multiple independent software systems. It works by establishing a trust relationship between an Identity Provider (IdP) and various Service Providers (SPs).
-
-For more info, see: [Security#SSO(Single Sign-On)](SYSTEM_DESIGN/security.md)
 
 #### How does Apache Kafka works? why it so fast?
 
@@ -1755,13 +1967,191 @@ Kafka is a distributed streaming platform, RabbitMQ is a versatile message broke
 
 For more info, see: [Message Queues#RabbitMQ vs Apache Kafka vs ActiveMQ](SYSTEM_DESIGN/mq.md)
 
-#### Difference between JWT, OAuth, and SAML?
+### Consistency
 
-JWT is a data format(like a passport), while OAuth and SAML are protocols (the rules for checking that passport).
+#### What are the various Consistency patterns available in system design?
 
-For more info, see: [Security#Difference between JWT, OAuth and SAML](SYSTEM_DESIGN/security.md)
+Consistency from the CAP theorem states that every read request should get the most recently written data. When there are multiple data copies available, there arises a problem of synchronizing them so that the clients get fresh data consistently. There are the consistency patterns available: Weak consistency, Eventual Consistency, and Strong consistency.
+
+For more info, see: [System Metrics#Consistency](SYSTEM_DESIGN/system_metrics.md)
+
+#### What's the differnce between strong and eventual consistency?
+
+Strong consistency guarantees that after a write, all subsequent reads return that value. Eventual consistency guarantees that if no new writes happen, all replicas will eventually converge, but reads may see stale data temporarily. Strong consistency has higher latency and lower availability; eventual consistency is faster and more available.
+
+For more info, see: [System Metrics#Consistency](SYSTEM_DESIGN/system_metrics.md)
+
+#### When would you choose eventual over strong consistency?
+
+Choose eventual consistency when: 1. Stale data is acceptable, 2. High write throughput is critical, 3. System must remain available during network partitions, 4. Cross-region replication is needed. Choose strong consistency for financial transactions, inventory, locks, and system where inconsistency has high cost.
+
+For more info, see: [System Metrics#Consistency](SYSTEM_DESIGN/system_metrics.md)
+
+#### How does causal consistency differ from eventual?
+
+Causal consistency preserves cause-and-effect relationships. If operation B depends on operation A, any node that sees B must also see A. Unrelated operations can be seen in any order. Eventual consistency makes no such guarantees--a user could see a reply without seeing the original comment.
+
+For more info, see: [System Metrics#Consistency](SYSTEM_DESIGN/system_metrics.md)
+
+#### What are CRDTs and how do they help with consistency?
+
+CRDTs (Conflict-free Replicated Data Types) are data structures that guarantee eventual consistency without complex coordination. They have merge functions that are commutative, associative, and idempotent, allowing concurrent updates to be merged deterministically.
+
+For more info, see: [Consistency#CRDTs (Conflict-free Replicated Data Types)](SYSTEM_DESIGN/system_metrics.md)
+
+#### How do you choose consistency levels in a distributed database?
+
+Based on your application's requirements: For critical writes (e.g., payment), use strong consistency. For non-critical writes, use ONe. For reads, use ONE for non-critical reads, QUORUM for reads that affect user experience. Monitor performance and consistency violations in productions.
+
+For more info, see: [Consistency](SYSTEM_DESIGN/system_metrics.md)
+
+### Scalability
+
+#### How is performance and scalability related to each other?
+
+Performance and scalability are related but distinct concepts. Performance is about response time for a single user or operation. Scalability is about the system's ability to handle increased load by adding resources. A system can have great performance for one user but fail to scale to many users. Conversely, a system can scale well but have poor baseline performance. The relationship is that poor performance limits scalability, and good scalability preserves performance under load.
+
+For more info, see: [System Metrics#Scalability](SYSTEM_DESIGN/system_metrics.md)
+
+#### Can a system have good scalability but poor performance?
+
+Yes. For example, a system that uses a heavy framework with 500ms baseline latency, but is stateless and horizontally scalable. Adding servers increases throughput linearly, but every individual request is still slow. Users will be unhappy despite good scalability.
+
+For more info, see: [System Metrics#Scalability](SYSTEM_DESIGN/system_metrics.md)
+
+#### How do you identify if a problem is performance or scalability related?
+
+Test at different loads. If it's slow with one user, it's a performance problem. If it's fast with one user but slows down with many, it's a scalability problem.
+
+For more info, see: [System Metrics#Scalability](SYSTEM_DESIGN/system_metrics.md)
+
+#### What's the relationship between Amdahl's law and scalability?
+
+Amdahl's law states that the serial portion of your application limits maximum speedup. If 10% of the work is serial, you can't get more than 10x speedup regardless of how many servers you add. This is the fundamental limit of scalability--improving performance directly improves scalability.
+
+For more info, see: [System Metrics#Scalability#Amdahl’s law](SYSTEM_DESIGN/system_metrics.md)
+
+#### What is the difference between vertical and horizontal partitioning?
+
+Horizontal partitioning splits a table by its rows(reducing table size), while Vertical partitioning splits it by its columns(reducing table width).
+
+For more info, see: [Database Designl#Horizontal Partitioning vs Vertical Partitioning](SYSTEM_DESIGN/db.md)
+
+#### How does horizontal scaling relate to performance?
+
+Horizontal scaling improves throughput but doesn't necessarily improve latency. In fact, adding servers can increase latency slightly due to netowrk hops. The goal is to keep latency constant while increasing throughput--that's good scalability.
+
+For more info, see: [Database Designl#Horizontal Partitioning vs Vertical Partitioning](SYSTEM_DESIGN/db.md)
+
+### Load Balancing
+
+#### What do you understand by load balancing? Why is it important in system design?
+
+Load balancing is the practice of distributing incoming network traffic across multiple backend servers to ensure no single server bears too much load. It's crucial in system design because it prevents any server from becoming a bottleneck, and provides high availability by rerouting traffic when servers fail, enables horizontal scaling, and improves user experience by reducing response times. Without load balancing, a single server failure or traffic spike can bring down an entire system.
+
+For more info, see: [Load Balancing](SYSTEM_DESIGN/load_balance.md)
+
+#### What happens if your load balancer becomes the bottleneck?
+
+If a single load balancer becomes the bottleneck, I'd first switch to a multi-tiered or distributed load-balancing architecture. I'd also implement DNS round-robin to distribute traffic before reaching the bottleneck, enable direct server return (DSR) for heavy outbound traffic, and use anycast IP to route clients to the nearest balancer. Failing that, I'd move logic to the client side (smart clients) or use a service mesh with client-side load awareness.
+
+For more info, see: [Load Balancing](SYSTEM_DESIGN/load_balance.md)
+
+#### Can you use multiple load balancing algorithms together?
+
+Yes! Common pattern: Use DNS GSLB for geographic distribution (round robin), then Layer 7 with proper timeout configuration. Ensure sticky sessions (by IP hash or cookie) so all messages from a client go to the same server. Most modern L7 LBs (Nginx, HAProxy) support WebSocket upgrades.
+
+For more info, see: [Load Balancing#Algorithms](SYSTEM_DESIGN/load_balance.md)
+
+#### How does load balancing work with WebSockets?
+
+WebSockets are long-lived persistent connections. Use Layer 4 (TCP) load balancing or Layer 7 with proper timeout configuration. Ensure sticky sessions (by IP hash or cookie) so all messages from a client go to the same server. Most modern L7 LBs support WebSocket upgrades.
+
+For more info, see: [Load Balancing#Stateless And Stateful Load Balancing](SYSTEM_DESIGN/load_balance.md)
+
+#### What's the difference between hardware and software load balancers?
+
+Hardware LBs are appliances with specialized ASICs--extremely fast but expensive and less flexible. Software LBs run on commodity hardware-slower but cheaper, more configurable, and cloud-friendly. Most modern systems use software LBs in the cloud.
+
+For more info, see: [Load Balancing](SYSTEM_DESIGN/load_balance.md)
+
+#### What is the difference between API Gateway and Load Balancer?
+
+An API Gateway is an intelligent entry point that manages, secures, and routes API requests to specific microservices, while a Load Balancer focuses on distributing traffic across multiple servers to ensure high availability and prevent overload.
+
+For more info, see: [Load Balancing#API Gateway vs Load Balancer](SYSTEM_DESIGN/load_balance.md)
+
+### CDN
+
+#### What do you understand by CDN(Content Delivery Network)?
+
+A Content Delivery Network (CDN) is a geographically distributed network of proxy servers that cache content closer to end users to reduce latency, improve availability, and lower bandwidth costs. Instead of all users fetching content from a single origin server, a CDN serves static assets from edge servers located near each user, dramatically reducing load times and origin server load.
+
+For more info, see: [CDN](SYSTEM_DESIGN/cdn.md)
+
+#### What happens when a user requests a file not in the CDN cache?
+
+The CDN edge server forwards the request to the origin server (or upstream cache), fetches the file, stores it in its local cache according to cache headers, then serves it to the user. Subsequent requests for the same file will be served from cache. This first request is called a 'cache miss' or 'cold start' and will have higher latency.
+
+For more info, see: [CDN#Workflow](SYSTEM_DESIGN/cdn.md)
+
+#### How do you invalidate content on a CDN?
+
+There are several methods: 1. Set short TTLs in Cache-Control headers, 2. use versioned URLs, 3. Explicit purge API calls (by URL or wildcard), 4. Use tag-based purging, 5. Wait for natural TTL expiration. For production, versioned URLs are best--they avoid invalidation entirely.
+
+For more info, see: [CDN#Invalidate Content](SYSTEM_DESIGN/cdn.md)
+
+#### Can a CDN serve dynamic content?
+
+Yes, but with caveats. Edge computing platforms can generate dynamic content at the edge. You can also cache dynamic content with short TTLs for semi-dynamic data like leaderborads or news headlines. True real-time data (e.g., stock prices, chat) isn't suitable for CDN caching.
+
+For more info, see: [CDN](SYSTEM_DESIGN/cdn.md)
+
+#### How does a CDN handle SSL/TLS?
+
+CDNs terminate SSL/TLS at the edge. The user connects to the CDN edge via HTTPS, and the CDN typically connects to the origin via HTTPS as well. CDNs manage SSL certificates for your domains, including automatic renewal. This offloads SSL processing from your origin servers.
+
+For more info, see: [CDN#SSL/TLS](SYSTEM_DESIGN/cdn.md)
+
+#### What's the difference between a CDN and a reverse proxy?
+
+A reverse proxy sits in front of one or more origin servers, typically in the same data center, for load balancing, caching, and security. A CDN is a globally distributed network of reverse proxies. All CDNs use reverse proxy technology, but not all reverse proxies are CDNs. CDNs add geopgraphic distribution, DDoS protection, and global routing.
+
+For more info, see: [CDN](SYSTEM_DESIGN/cdn.md)
+
+### Distributed System
+
+#### What is CAP theorem?
+
+The CAP theorem states that in a distributed system, you can only guarantee two of three properties simultaneously: Consistency, Availability, and Partition tolerance. Since network partitions are unavoidable in distributed systems, you must choose between Consistency and Availability when a partition occurs.
+
+For more info, see: [CAP Theorem](DCS/cap.md), [Database Design#CAP Theorem In Database Designing](SYSTEM_DESIGN/dcs.md)
+
+#### What do you understand by Leader Election?
+
+Leader Election is the process by which a distributed system selects a single node to act as the primary coordinator, decision-maker, or master. This leader is responsible for making critical decisions, coordinating tasks, or managing shared rexources while other nodes (followers) wait for instructions. When the leader fails, the system automatically elects a new leader to maintain availability.
+
+For more info, see: [Database Design#Consensus Algorithms](SYSTEM_DESIGN/dcs.md)
 
 ### Design Pattern
+
+#### What are design patterns?
+
+Design patterns are the reusable solutions that solve common problems of software development. These problems include repetitive code, redundant functions, and logic etc. These help to save considerable effort and time required for the developers while developing software. Design patterns are commonly used in object-oriented software products by incorporating best practices and promoting reusability for developing robust code.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### What's the difference between a design pattern and a framework?
+
+A design pattern is a reusable solution to a problem--it's an idea or template. A framework is an actual code that provides a structure for applications. Frameworks use design patterns internally. For example, Spring is a framework; Dependency Injection is a pattern that Spring implements.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### How are design pattern different from algorithms?
+
+Both Design Patterns and Algorithms describe typical solutions to any given problem. But the main difference is that the algorithm defines a clear set of actions for achieving a goal and a design pattern provides a high-level description of any solution. Design patterns applied to two different problems might be the same but the logic of implementation would be different and is based on the requirements.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
 
 #### What is the Singleton Design Pattern?
 
@@ -1782,6 +2172,74 @@ For more info, see: [Design Pattern#OBSERVER](SYSTEM_DESIGN/design_pattern.md)
 In my last company, a teammate committed a function that I found to be qutie resource-intensive. During a code review, I noticed he had used pass by value, whereas I would have used pass by reference.
 
 For more info, see: [C++ Best Practice](LANG/C++/best_practice.md)
+
+#### What is sharding?
+
+Sharding is a database partitioning technique that splits a large dataset across multiple servers horizontally, with each shard holding a subset of the data. This allows the database to scale horizontally beyond the limits of a single machine. Each shard is an independent database, and together they form a single logical database. The key challenge is choosing a shard key to distribute data evenly while supporting efficient queries.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESIGN/db.md)
+
+#### How is sharing different from partitioning?
+
+Partitioning splits data within a single database server, while sharding distributes data across multiple servers. Partitioning is about organization and performance on one machine; sharding is about horizontal scalabilty across many machines. You can partition within a shard, and you can share a partitioned table--they're complementary, not mutually exclusive.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](DB/best_practice.md)
+
+#### How do you handle a 'hot partition' where one server gets all traffic?
+
+A hot partition happens when load distribution isn't uniform--usually due to a popular key, poor hashing, or sticky sessions. I'd first identify if it's logical or pathological. For logical hotspots, I'd use shard splitting or read replicas with write partitioning. For pathological, I'd switch to consistent hashing with virtual nodes or use two-level routing. Failing that, I'd move to client-side random partitioning or write-ahead logging with batching.
+
+#### What is the difference between Horizontal scaling and vertical scaling?
+
+Horizontal scaling adds more machines to your pool of resources(scaling out), while vertical scaling adds more power(CPU, RAM) to an existing machine(scaling up).
+
+For more info, see: [System Dependability#Horizontal vs Vertical Scaling](SYSTEM_DESIGN/system_metrics.md)
+
+#### Can you partition a sharded table?
+
+Yes! In fact, this is common in large systems. Each shard is a separate database server, and each server can partition its data locally. For example, a social media platform might shard by `user_id` across 100 servers, then within each server partition posts by month for efficient querying and archiving.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESIGN/db.md)
+
+#### Is harding just partitioning across servers?
+
+Conceptually yes, but practically no. Partitioning is transparent to the application and maintains ACID properties across partitions. Sharding introduces network latency, partial failures, cross-shard query complexity, and distributed transaction challenges. The operational reality is very different.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESIGN/db.md)
+
+#### When should you choose partitioning over sharding?
+
+Choose partitioning when your data fits on a single server, but you need better query performance or easier data management. Choose sharding when you've exhausted vertical scaling and need to scale horizontally. Start with partitioning, add sharding only when necessary.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESIGN/db.md)
+
+#### Does sharding eliminate the need for partitioning?
+
+No, they solve different problems. Sharding handles scale-out across servers. Partitioning handles data organization within a server. A sharded system can still benefit from partitioning within each shard for better query performance and easier data lifecyle management.
+
+For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESIGN/db.md)
+
+### Caching
+
+#### What is caching? what are the various cache update strategies available in caching?
+
+Caching is the temporary storage of frequently accessed data in a high-speed storage layer to reduce latency and database load. Cache update strategies determine how the cache stays synchronized with the source of truth. The main strategies are Cache-Aside, Read-Through, Write-Behind, and Write-Around. Each makes different trade-offs between consistency, performance, and complexity.
+
+For more info, see: [Caching Design#Caching Strategy](SYSTEM_DESIGN/caching.md)
+
+### Auth
+
+#### Difference between JWT, OAuth, and SAML?
+
+JWT is a data format(like a passport), while OAuth and SAML are protocols (the rules for checking that passport).
+
+For more info, see: [Security#Difference between JWT, OAuth and SAML](SYSTEM_DESIGN/security.md)
+
+#### How does Single Sign On(SSO) works?
+
+Single Sign-On(SSO) is an authentication method that allows users to log in once and gain access to multiple independent software systems. It works by establishing a trust relationship between an Identity Provider (IdP) and various Service Providers (SPs).
+
+For more info, see: [Security#SSO(Single Sign-On)](SYSTEM_DESIGN/security.md)
 
 ### Practice
 

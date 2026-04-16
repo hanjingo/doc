@@ -32,7 +32,7 @@ Most packet switches use `store-and-forward transmission` at the inputs to the l
 
 ![1_11](res/1_11.png)
 
-Sending one packet from the source to the destination over a path consisting of $N$ links each of the rates $R$(thus, there are $N - 1$ routers between the source and destination). Applying the same logic as above, we see that the end-to-end delay is:
+Sending one packet from the source to the destination over a path consisting of $N$ links each of the rates $R$(thus, there are $N - 1$ routers between the source and destination. Applying the same logic as above, we see that the end-to-end delay is:
 $$
 d_{end-to-end} = N \frac{L}{R} \qquad (1.1)
 $$

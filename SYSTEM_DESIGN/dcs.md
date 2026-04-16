@@ -102,23 +102,23 @@ Distributed component architectures suffer from two major disadvantages:
 
 It is appropriate to use a peer-to-peer architectural model for a system in two circumstances:
 
-1. Where the system is computationally intensive and it is possible to separate the processing required into a large number of independent computations.
-2. Where the system primarily involves the exchange of information between individual computers on a network and there is no need for this information to be centrally stored or managed.
+1. Where the system is computationally intensive, it is possible to separate the processing required into a large number of independent computations.
+2. Where the system primarily involves the exchange of information between individual computers on a network, and there is no need for this information to be centrally stored or managed.
 
 
 
 ## Consensus Algorithms
 
 - Crash Fault Tolerant(CFT) Algorithms:
-  - Paxos (for more detail, see:[doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
-  - Raft (for more detail, see:[doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
+  - Paxos (for more detail, see: [doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
+  - Raft (for more detail, see: [doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
 - Byzantine Fault Tolerant(BFT) Algorithms:
-  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see:[doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
+  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see: [doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
   - Tendermint
 - Proof-Based Algorithms:
-  - Proof of Work(PoW) (for more detail, see:[doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
-  - Proof of Stake(PoS) (for more detail, see:[doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
-  - Delegate Proof of Stake(DPoS) (for more detail, see:[doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
+  - Proof of Work(PoW) (for more detail, see: [doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
+  - Proof of Stake(PoS) (for more detail, see: [doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
+  - Delegate Proof of Stake(DPoS) (for more detail, see: [doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
 - Leader-Based Algorithms:
   - Viewstamped Replication(VR)
   - Multi-Paxos

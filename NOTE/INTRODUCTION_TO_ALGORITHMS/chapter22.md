@@ -19,7 +19,7 @@ We can choose between two standard ways to represent a graph $G= (V, E)$:
 
 
 
-## Bradth-first search
+## Breadth-first search
 
 Example. BFS(G, s):
 $$

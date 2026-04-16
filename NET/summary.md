@@ -6,6 +6,44 @@ English | [中文版](summary_zh.md)
 
 
 
+## Network Topology
+
+### Mesh Topology
+
+![mesh_topology](res/mesh_topology.png)
+
+### Star Topology
+
+![star_topology](res/star_topology.png)
+
+### Bus Topology
+
+![bus_topology](res/bus_topology.png)
+
+### Ring Topology
+
+![ring_topology](res/ring_topology.png)
+
+### Tree Topology
+
+![tree_topology](res/tree_topology.png)
+
+### Hybrid Topology
+
+![hybrid_topology](res/hybrid_topology.png)
+
+### Point to Point Topology
+
+![p2p_topology](res/p2p_topology.png)
+
+### Daisy Chain Topology
+
+![daisy_chain_topology](res/daisy_chain_topology.png)
+
+---
+
+
+
 ## OSI Reference Model
 
 ![layer7_and_5_osi_model](res/layer7_and_5_osi_model.png)
@@ -64,6 +102,8 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 
 *Network adapter: its relationship to other host components and to protocol stack functionality*
 
+---
+
 
 
 ## Socket Programming
@@ -75,6 +115,8 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 ### UDP
 
 ![udp_programming](res/udp_programming.png)
+
+---
 
 
 

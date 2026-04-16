@@ -2,17 +2,19 @@
 
 [TOC]
 
-This note summarizes the main sources of delay experienced by packets in a network, explains how delays accumulate end-to-end, and highlights practical points for measuring and reducing latency. The content is adapted and condensed from Kurose & Ross (A Top‑Down Approach) and reorganized to focus on the key ideas.
+
 
 ## High-level view
 
-When a packet travels from a sender to a receiver it experiences delays at each node and on each link along the path. For a simple path with N links (and N−1 intermediate routers), sending a packet of size L bits over links of transmission rate R (bits/s) yields the following idealized transmission contribution to the end‑to‑end delay:
+When a packet travels from a sender to a receiver, it experiences delays at each node and on each link along the path. For a simple path with N links (and N−1 intermediate routers), sending a packet of size L bits over links of transmission rate R (bits/s) yields the following idealized transmission contribution to the end‑to‑end delay:
 
 $$
 d_{end\text{-}to\text{-}end}^{\;transmission} = N\cdot\frac{L}{R} \quad(\text{seconds})
 $$
 
 This expression counts the transmission time on each link; additional components (propagation, processing, queuing) add to the total experienced latency.
+
+
 
 ## Components of nodal delay
 
@@ -28,6 +30,8 @@ $$
 - d_{queue} (queuing delay): time the packet spends waiting in output buffers before transmission. This is the most variable component and depends on instantaneous traffic load and buffer management.
 
 The relative importance of these components varies by technology: on local links transmission and processing may dominate; on long‑haul links propagation delay can be significant.
+
+
 
 ## Queuing delay and traffic intensity
 
@@ -50,6 +54,8 @@ Practical implications:
 - Keep utilization below high thresholds (the safe threshold depends on required latency and workload variability).
 - Use active queue management (AQM) like RED or CoDel and appropriate scheduling to control queue growth and reduce latency spikes.
 
+
+
 ## Round‑trip time (RTT)
 
 Round‑trip time (RTT) is the time for a small packet to travel from a sender to a receiver and for the acknowledgment to come back. RTT includes propagation, transmission (for small packets often negligible), processing, and queuing delays in both directions. RTT is fundamental for protocols that rely on acknowledgements (TCP) and for measuring path latency.
@@ -57,6 +63,8 @@ Round‑trip time (RTT) is the time for a small packet to travel from a sender t
 RTT ~= 2\cdot (one‑way propagation) + queuing + processing + small transmission components
 
 When measuring RTT, remember that the forward and reverse paths may be asymmetric and queuing may vary over time; use statistical summaries (min, median, percentiles) rather than a single sample.
+
+
 
 ## Total end‑to‑end delay and examples
 
@@ -68,12 +76,16 @@ $$
 
 Example: for paths with many short links, transmission delays add up; for long‑distance paths, propagation can dominate. For interactive applications (VoIP, gaming) keeping per‑packet latency low and bounded is essential; for bulk transfer (large file copies) throughput matters more than a single‑packet latency.
 
+
+
 ## Measurement and engineering tips
 
 - Measure latency using percentiles (p50, p95, p99) rather than only averages; tail latency often dominates user experience.
 - Avoid operating links/queues at very high utilization if low latency is required. Aim to provision headroom for traffic bursts.
 - Consider techniques that reduce queue buildup: small buffers with AQM, prioritization for latency‑sensitive flows, offloading on hardware (e.g., NIC features) for processing speed.
 - For wide‑area links, use protocols and congestion control tuned for high‑bandwidth delay product links (e.g., BBR, tuned TCP variants).
+
+
 
 ## References
 

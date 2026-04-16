@@ -87,7 +87,7 @@ Because TCP is not permitted to overflow the allocated buffer, we must have:
 $$
 LastByteRcvd - LastByteRead \leq RcvBuffer
 $$
-The receive window, denoted `rwnd` is set to the amount of spare room in the buffer:
+The receive window, denoted `rwnd`, is set to the amount of spare room in the buffer:
 $$
 rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]
 $$

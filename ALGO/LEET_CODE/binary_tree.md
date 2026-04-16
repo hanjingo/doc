@@ -171,3 +171,36 @@ Complexity Analysis:
 | Best Case    | O(n)            | O(n)             |
 | Average Case | O(n)            | O(n)             |
 | Worst Case   | O(n)            | O(n)             |
+
+
+
+#### Counting the number of leaf nodes in a binary tree.
+
+```c++
+struct node
+{
+  int data;
+  node* left;
+  node* right;
+  
+  node(int val) : data(val), left(nullptr), right(nullptr) {}
+};
+
+int count_leaves(node* root)
+{
+  if (root == nullptr)
+    return 0;
+  
+  if (root->left == nullptr && root->right == nullptr)
+    return 1;
+  
+  return count_leaves(root->left) + count_leaves(root->right);
+}
+```
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | O(n)            | O(h)             |
+| Average Case | O(n)            | O(h)             |
+| Worst Case   | O(n)            | O(n)             |
+

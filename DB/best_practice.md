@@ -129,7 +129,7 @@ Optimized Example:
 SELECT u.name FROM users u JOIN orders o ON u.user_id = o.user_id;
 ```
 
-### Use EXISTS Instead of IN (for subqueries)
+### Use EXISTS instead of IN (for subqueries)
 
 When you want to check whether a specific record exists in a table, using the EXISTS operator is often faster than using IN. This is particularly true when the subquery returns a large number of rows, because `EXISTS` stops searching as soon as it finds the first matching record, whereas `IN` has to process all the results before making the comparison.
 
@@ -260,37 +260,37 @@ There are some data-partitioning strategies:
 
 ### Choose the right Partitioning Strategy
 
-- Select a partitioning method that aligns with your data characteristics and access patterns (for example, use range partitioning for time-series data or hash partitioning for evenly distributed data);
+- Select a partitioning method that aligns with your data characteristics and access patterns (for example, use range partitioning for time-series data or hash partitioning for evenly distributed data).
 - Consider combining multiple strategies, like composite partitioning, to address complex data requirements and optimized performance further.
 
 ### Optimize Partition Size
 
-- Balance partition sizes to avoid having too many small partitions or a few very large ones. Optimal partition sizes ensure efficient query performance and manageable maintenance tasks;
+- Balance partition sizes to avoid having too many small partitions or a few very large ones. Optimal partition sizes ensure efficient query performance and manageable maintenance tasks.
 - Monitor and adjust partition sizes based on data growth and query performance to maintain an optimal balance.
 
 ### Leverage Partition Pruning
 
-- Design queries to take advantage of partition pruning, where teh database engine automatically skips irrelevant partitions. This significantly reduces query execution time by limiting the data scanned;
+- Design queries to take advantage of partition pruning, where the database engine automatically skips irrelevant partitions. This significantly reduces query execution time by limiting the data scanned.
 - Ensure that partition keys are used in `WHERE` clauses to maximize the benefits of partition pruning.
 
 ### Implement Maintenance Automation
 
-- Automation reduces the risk of human error and ensures consistency in partition management;
+- Automation reduces the risk of human error and ensures consistency in partition management.
 - Schedule regular maintenance windows to perform partition-related tasks without disrupting normal database operations.
 
 ### Monitor and Tune Partition Performance
 
-- Monitor helps identify performance bottlenecks and areas for improvement;
+- Monitor helps identify performance bottlenecks and areas for improvement.
 - Regularly review partition performance metrics and make necessary adjustments to maintain optimal database performance.
 
 ### Ensure Data Integrity and Consistency
 
-- Data integrity is crucial for maintaining reliable query rsults and overall database health;
+- Data integrity is crucial for maintaining reliable query results and overall database health.
 - Use validation scripts and automated tests to verify partition boundaries and data consistency regularly.
 
 ### Plan for Scalability
 
-- Ensure that your partitioning scheme can scale seamlessly as your data volume increases;
+- Ensure that your partitioning scheme can scale seamlessly as your data volume increases.
 - Reevaluate and adjust your partitioning strategy periodically to accommodate changes in data patterns and business requirements.
 
 ---

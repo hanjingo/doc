@@ -27,7 +27,7 @@
 - [Proxy](proxy.md)
 - [Rate Limiting](rate_limiting.md)
 - [Storage In System Design](storage.md)
-- [System Dependability](system_dependability.md)
+- [System Metrics](system_metrics.md)
 - [Testing](testing.md)
 - [Universally Unique Identifier](uuid.md)
 

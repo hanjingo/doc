@@ -10,6 +10,8 @@
 - [CRC](crc.md)
 - [Deflate Algorithm](deflate.md)
 - [Dynamic Programming](dynamic_programming.md)
+- [Finite State Machine](fsm.md)
+- [Graph](graph.md)
 - [Greedy Algorithm](greedy_algorithm.md)
 - [Hash](hash.md)
 - [Huffman Code](huffman.md)

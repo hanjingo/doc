@@ -12,7 +12,7 @@ In a `P2P architecture`, there is minimal (or no) reliance on dedicated servers 
 
 ![2_2](res/2_2.png)
 
-The services that a transport-layer protocol can offer the possible services along four dimensions:
+The services that a transport-layer protocol can offer are possible services along four dimensions:
 
 - Reliable Data Transfer.
 - Throughput.
@@ -26,7 +26,7 @@ The TCP service model includes a connection-oriented service and a reliable data
 - Connection-oriented service.
 - Reliable data transfer service.
 
-UDP is a no-frills, lightweight transport protocol, providing minimal services, includeing: an unreliable data transfer service. Does not include a congestion-control mechanism, so the sending side of UDP can pump data into the layer below (the network layer) at any rate it pleases.
+UDP is a no-frills, lightweight transport protocol, providing minimal services, including an unreliable data transfer service. Does not include a congestion-control mechanism, so the sending side of UDP can pump data into the layer below (the network layer) at any rate it pleases.
 
 An `application-layer protocol` defines how an application's processes, running on different end systems, pass messages to each other. In particular, an application-layer protocol defines:
 

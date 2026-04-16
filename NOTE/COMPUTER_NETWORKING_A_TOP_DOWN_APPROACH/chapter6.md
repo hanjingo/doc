@@ -23,7 +23,7 @@ We can  find a number of important differences between a wired link and a wirele
 - `Interference from other sources`.
 - `Multipath propagation`.
 
-`The signal-to-noise ratio (SNR)` is a relative measure of the strength of the received signal (i.e., the information being transmitted) and this noise.
+`The signal-to-noise ratio (SNR)` is a relative measure of the strength of the received signal (i.e., the information being transmitted) and the noise.
 
 There are several physical-layer characteristics:
 
@@ -41,7 +41,7 @@ Code division multiple access (CDMA) belongs to the family of channel partitioni
 
 ![6_5](res/6_5.png)
 
-To illustrate how CDMA works, let us focus on the $i$th data bit, $d_i$. For the $m$th mini-slot of the bit-transmission time of $d_i$, the output of the CDMA encoder, $Z_{i, m}$, is the value of $d_i$ multiplied by the $m$th bit in the assigned CDMA code, $c_m$:
+To illustrate how CDMA works, let us focus on the $i$th data bit, $d_i$. For the $m$the mini-slot of the bit-transmission time of $d_i$, the output of the CDMA encoder, $Z_{i, m}$, is the value of $d_i$ multiplied by the $m$th bit in the assigned CDMA code, $c_m$:
 $$
 Z_{i, m} = d_i \cdot c_m \qquad (6.1)
 $$

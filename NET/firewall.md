@@ -3,7 +3,7 @@
 
 [TOC]
 
-This note summarizes firewall concepts and common deployment patterns: goals and placement, basic types (packet filter, stateful, application proxy), policy examples, interactions with NAT, logging/monitoring, and a brief note on modern (next‑generation) firewalls. The content is condensed from Kurose & Ross (A Top‑Down Approach) and organized for quick reference.
+
 
 ## What is a firewall?
 
@@ -16,6 +16,8 @@ A firewall is a combination of hardware and software that enforces a network sec
 ![firewall](res/firewall.png)
 
 Figure: firewall placement between an administered network and the outside world.
+
+
 
 ## Common firewall types
 
@@ -31,7 +33,7 @@ Figure: firewall placement between an administered network and the outside world
 - Enables policies like “allow established responses to internal connections” while blocking unsolicited inbound attempts.
 - Balances performance and security for many use cases.
 
-3. Application‑layer gateway (proxy / application firewall)
+3. Application‑layer gateway (proxy/application firewall)
 
 - Proxies traffic at the application layer: the firewall terminates the client connection and initiates its own connection to the server, inspecting payload (HTTP, FTP, DNS) and enforcing application‑specific policies.
 - Provides fine‑grained control and deep protocol validation but introduces processing overhead and may require application‑specific configuration.
@@ -39,6 +41,8 @@ Figure: firewall placement between an administered network and the outside world
 4. Next‑Generation Firewalls (NGFW)
 
 - Combine traditional stateful filtering with features such as application awareness (identify applications regardless of port), intrusion prevention (IPS), URL filtering, and integration with identity systems.
+
+
 
 ## Policy model and rule examples
 
@@ -59,22 +63,28 @@ Best practices:
 
 - Default deny (deny by default, explicitly allow required flows).
 - Keep rules minimal and specific (avoid overly broad allow rules).
-- Organize rules by purpose and document rationale to simplify audits.
+- Organize rules by purpose and document the rationale to simplify audits.
+
+
 
 ## Placement patterns and DMZs
 
 - Single firewall at network edge (simple deployments).
 - Two‑firewall DMZ: one firewall separates the Internet from the DMZ, the second separates the DMZ from the internal network — used to host public services while protecting internal hosts.
-- Host‑based firewalls: software firewalls on end hosts add an extra layer of defense.
+- Host‑based firewalls: Software firewalls on end hosts add an extra layer of defense.
 
 ![firewall_gate](res/firewall_gate.png)
 
 Figure: combined application gateway and packet filter placement.
 
+
+
 ## Interaction with NAT and connection tracking
 
-- Many firewalls perform Network Address Translation (NAT) to map internal private addresses to public IPs. NAT and stateful tracking must cooperate: the firewall keeps NAT mapping and connection state so return traffic can be properly forwarded.
+- Many firewalls perform Network Address Translation (NAT) to map internal private addresses to public IPs. NAT and stateful tracking must cooperate: the firewall keeps NAT mapping and connection state, so return traffic can be properly forwarded.
 - Port forwarding (DNAT) is used to expose specific internal services to the Internet while keeping other hosts protected.
+
+
 
 ## Logging, monitoring and auditing
 
@@ -82,17 +92,23 @@ Figure: combined application gateway and packet filter placement.
 - Export logs to a centralized system (SIEM) for correlation and alerting.
 - Keep rule change history and use automated tools to detect redundant or shadowed rules.
 
+
+
 ## Limitations and evasion techniques
 
-- Firewall cannot protect against attacks carried over allowed protocols (e.g., malware over HTTPS) without deeper inspection.
+- A firewall cannot protect against attacks carried over allowed protocols (e.g., malware over HTTPS) without deeper inspection.
 - Encrypted traffic (TLS) limits payload inspection; solutions include TLS interception (proxying) or endpoint controls.
 - Attackers can attempt to tunnel disallowed protocols over allowed ones; application awareness and content inspection mitigate this.
+
+
 
 ## Troubleshooting tips
 
 - If a flow is blocked, test with packet captures on both sides of the firewall to see where drops occur.
 - Check rule ordering and explicitly look for matching rules and hit counts.
 - Verify NAT and port forwarding rules when external clients cannot reach published services.
+
+
 
 ## References
 

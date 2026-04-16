@@ -137,6 +137,16 @@ Key Characteristics of Stateful Load Balancing include:
 | Deployment         | Deployed as a separate service or hosted solution            | Deployed on premise or as a cloud service cost typically     |
 | Cost               | Typically more expensive than a load balancer                | Typically less expensive than an API gateway                 |
 
+### Load Balancing vs Other Concepts
+
+| **Concept**         | **Purpose**                         | **Layer** | **Example**        |
+| :------------------ | :---------------------------------- | :-------- | :----------------- |
+| **Load Balancing**  | Distribute traffic across servers   | L4/L7     | Nginx, HAProxy     |
+| **Reverse Proxy**   | Hide backend servers, add features  | L7        | Nginx, Apache      |
+| **API Gateway**     | Manage APIs, auth, rate limiting    | L7        | Kong, Apigee       |
+| **CDN**             | Cache static content geographically | Edge      | Cloudflare, Akamai |
+| **DNS Round Robin** | Distribute at domain level          | DNS       | Route 53           |
+
 ### Advantage
 
 - Load Balancing distributes the load evenly, which reduces stress on servers and speeds up response times.

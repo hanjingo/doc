@@ -1,4 +1,4 @@
-# System Dependability
+# System Metrics
 
 [TOC]
 
@@ -30,13 +30,45 @@ To develop dependable software, you therefore need to ensure that:
 
 ## Availability
 
-System **availability** defined as: The probability that a system, at a point in time, will be operational and able to deliver the requested services.
+System **availability** is defined as: The probability that a system, at a point in time, will be operational and able to deliver the requested services.
 
-System faults do not always result in system errors and system errors do not necessarily result in system failures. The reasons for this are as follows:
+System faults do not always result in system errors, and system errors do not necessarily result in system failures. The reasons for this are as follows:
 
 1. Not all code in a program is executed.
 2. Errors are transient.
 3. The system may include fault detection and protection mechanisms.
+
+### Key Concepts
+
+System designers implement various strategies and technologies to achieve high availability, such as:
+
+- Redundancy
+
+  Use redundant servers or components so that, in the event of a failure, another can take over without any problems.
+
+- Load balancing
+
+  Incoming requests are divided among several servers or resources to enhance system performance and fault tolerance while avoiding overload on any one part.
+
+- Failover mechanisms
+
+  Implementing automated processes to detect failures and switch to redundant systems without manual intervention.
+
+- Disaster Recovery(DR)
+
+  Having a comprehensive plan is a way to recover the system in case of a catastrophic event that affects the primary infrastructure.
+
+- Monitoring and Alerting
+
+  putting in place reliable monitoring systems that can identify problems instantly and alert administrators so they can act quickly.
+
+- Performance optimization
+
+  Lowering the possibility of bottlenecks and breakdowns by making sure the system is built and adjusted to efficiently manage the expected load.
+
+- Scalability
+
+  Designing the system to scale easily by adding more resources when needed to accommodate increased demand.
 
 ### Measured
 
@@ -54,18 +86,6 @@ If a system has 99.9% availability in a year:
 
 - Total time in a year: $365 \times 24 \times 60 = 525,600$ minutes
 - Downtime allowed: $0.1\% \times 525,600 = 525.6$ minutes
-
-### Achieve High Availability
-
-System designers implement various strategies and technologies to achieve high availability, such as:
-
-- Redundancy: Use redundant servers or components so that, in the event of a failure, another can take over without any problems.
-- Load balancing: Incoming requests are divided among several servers or resources to enhance system performance and fault tolerance while avoiding overload on any one part.
-- Failover mechanisms: Implementing automated processes to detect failures and switch to redundant systems without manual intervention.
-- Disaster Recovery(DR): Having a comprehensive plan is place to recover the system in case of a catastrophic event that affects the primary infrastructure.
-- Monitoring and Alerting: putting in place reliable monitoring systems that can identify problems instantly and alert administrators so they can act quickly.
-- Performance optimization: Lowering the possibility of bottlenecks and breakdowns by making sure the system is built and adjusted to efficiently manage the expected load.
-- Scalability: Designing the system to scale easily by adding more resources when needed to accommodate increased demand.
 
 ---
 
@@ -139,6 +159,10 @@ Conflict Resolution Techniques:
 - Last-Writer-Wins(LWW)
 - Merge Strategies
 
+### CRDTs (Conflict-free Replicated Data Types)
+
+TODO
+
 ---
 
 
@@ -157,14 +181,14 @@ Identify three complementary approaches that are used to improve the reliability
 
 Reliability requirements are, therefore, of two kinds:
 
-1. Non-functional requirements, which define the number of failures that are acceptable during normal use of the system, or the time in which the system is unavailable for use. These are quantitative reliability requirements.
-2. Functional requirements, which define system and software functions that avoid, detect, or tolerate faults in the software and so ensure that these faults do not lead to system failure.
+1. Non-functional requirements, which define the number of failures that are acceptable during normal use of the system, or the time during which the system is unavailable for use. These are quantitative reliability requirements.
+2. Functional requirements, which define system and software functions that avoid, detect, or tolerate faults in the software, and so ensure that these faults do not lead to system failure.
 
 ### Non-functional reliability requirements
 
 There are several advantages in deriving quantitative reliability specifications:
 
-1. The process of deciding what required level of the reliability helps to clarify what stakeholders really need. It helps stakeholders understand that there are different types of system failure, and it makes clear to them that high levels of reliability are very expensive to achieve.
+1. The process of deciding what required level of reliability helps to clarify what stakeholders really need. It helps stakeholders understand that there are different types of system failure, and it makes clear to them that high levels of reliability are very expensive to achieve.
 2. It provides a basis for assessing when to stop testing a system. You stop when the system has achieved its required reliability level.
 3. It is a means of assessing different design strategies intended to improve the reliability of a system. You can make a judgment about how each strategy might lead to the required levels of reliability.
 4. If a regulator has to approve a system before it goes into service (e.g., all systems that are critical to flight safety on an aircraft are regulated), then evidence that a required reliability target has been met is important for system certification.
@@ -487,6 +511,58 @@ Maintainability determines how easy and profitable it will be to maintain, updat
 
 
 
+## Scalability
+
+| **Metric**              | **What It Measures**           | **Formula**   |
+| :---------------------- | :----------------------------- | :------------ |
+| **Speedup**             | Improvement from parallelism   | $T(1) / T(N)$ |
+| **Efficiency**          | Utilization of added resources | $Speedup / N$ |
+| **Scalability factor**  | Throughput growth              | $λ(N) / λ(1)$ |
+| **Latency degradation** | Performance loss under load    | $W(N) / W(1)$ |
+
+TODO
+
+---
+
+
+
+## Performance
+
+### Latency
+
+Latency refers to the time taken for a single request to travel from the client to the server, get processed, and return a response. It is essentially the delay experienced by a user.
+
+### Throughput
+
+Throughput measures the amount of work a system can handle over a given period of time.
+
+### Amdahl’s law
+
+The main idea is that when we speed up one part of a system, the effect on the overall system performance depends on both how significant this part was and how much it sped up. Consider a system in which executing some application requires time $T_{old}$. Suppose some part of the system requires a fraction $\alpha$ of this time, and that we improve its performance by a factor of $k$. That is, the component originally required time $\alpha T_{old}$, and it now requires time $(\alpha T_{old})/k$. The overall execution time would thus be:
+
+$$
+\begin{equation}\begin{split}
+T_{new} &= (1 - \alpha)T_{old} + (\alpha T_{old})/k \\
+&= T_{old}[(1 - \alpha) + \alpha / k]
+\end{split}\end{equation}
+$$
+
+From this, we can compute the speedup $S = T_{old} / T_{new}$ as 
+
+$$
+S = \frac{1}{(1 - \alpha) + \alpha / k}
+$$
+
+One interesting special case of Amdahl's law is to consider the effect of setting $k$ to $\infty$. That is, we are able to take some part of the system and speed it up to the point at which it takes a negligible amount of time. We then get:
+
+$$
+S_{\infty} = \frac{1}{(1 - \alpha)}
+$$
+
+---
+
+
+
 ## Summary
 
 ### Horizontal vs Vertical Scaling
@@ -504,7 +580,17 @@ Maintainability determines how easy and profitable it will be to maintain, updat
 | Requires load balancing to distribute traffic across servers. | Load balancing is usually not required.                    |
 | Relies on network communication between multiple machines.   | Mostly uses communication within a single machine.         |
 
+### Latency vs throughput
 
+|                         Latency                         |                     Throughput                     |
+| :-----------------------------------------------------: | :------------------------------------------------: |
+|         Time delay between request and response         |      Amount of data transferred per unit time      |
+|              Measured in milliseconds (ms)              |            Measured in bps, Mbps, Gbps             |
+|          Represents speed of a single request           |       Represents system or network capacity        |
+| Affected by distance, congestion, and processing delays | Affected by bandwidth, congestion, and packet loss |
+|           High latency causes slow responses            |      Low throughput causes slow data transfer      |
+|                     Measure of time                     |                  Measure of data                   |
+|           Critical for real-time applications           |     Important for data-intensive applications      |
 
 ### Dependable Programming
 
@@ -527,10 +613,18 @@ There are some good practice guidelines for dependable programming:
 
 [1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
-[2] [Availability in System Design](https://www.geeksforgeeks.org/system-design/availability-in-system-design/)
+[2] Randal E. Bryant;David R. O'Hallaron . COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE . 3ED
 
-[3] [Reliability in System Design](https://www.geeksforgeeks.org/system-design/reliability-in-system-design/)
+[3] [Availability in System Design](https://www.geeksforgeeks.org/system-design/availability-in-system-design/)
 
-[4] [Essential Security Measures in System Design](https://www.geeksforgeeks.org/system-design/essential-security-measures-in-system-design/)
+[4] [Reliability in System Design](https://www.geeksforgeeks.org/system-design/reliability-in-system-design/)
 
-[5] [Horizontal and Vertical Scaling | System Design](https://www.geeksforgeeks.org/system-design/system-design-horizontal-and-vertical-scaling/)
+[5] [Essential Security Measures in System Design](https://www.geeksforgeeks.org/system-design/essential-security-measures-in-system-design/)
+
+[6] [Horizontal and Vertical Scaling | System Design](https://www.geeksforgeeks.org/system-design/system-design-horizontal-and-vertical-scaling/)
+
+[7] [What is Latency?](https://www.geeksforgeeks.org/computer-networks/what-is-latency/)
+
+[8] [Difference Between Latency and Throughput](https://www.geeksforgeeks.org/computer-networks/difference-between-latency-and-throughput/)
+
+[9] [Availability in Distributed System](https://www.geeksforgeeks.org/computer-networks/availability-in-distributed-system/)

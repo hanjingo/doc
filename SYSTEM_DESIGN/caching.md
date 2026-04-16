@@ -186,6 +186,26 @@ Use Cases:
 
 ![caching_strategy](res/caching_strategy.png)
 
+### Cache Aside
+
+TODO
+
+### Read Through
+
+TODO
+
+### Write Around
+
+TODO
+
+### Write Back
+
+TODO
+
+### Write Through
+
+TODO
+
 
 
 ## Example: General-Purpose DB Caching System
@@ -198,8 +218,8 @@ Use Cases:
 - Weak Consistency (Weak Consistency)
   1. After data updates, subsequent accesses can tolerate only partial or no access to the data
 - Concurrency
-  1. Single table single database concurrent reads and writes
-  2. Multiple tables multiple databases concurrent reads and writes
+  1. Single table, single database, concurrent reads and writes
+  2. Multiple tables, multiple databases, concurrent reads and writes
 
 ### Data Consistency Solutions
 
@@ -210,34 +230,34 @@ Use Cases:
 - Write Operation
 
   1. Delete cache data first
-  2. Update database data to avoid dirty data
+  2. Update the database data to avoid dirty data
   3. Asynchronously refresh data back to cache
 
 - Read Operation
 
   1. Read cache data
-  2. If cache data is not found, read from database
+  2. If cache data is not found, read from the database
   3. Asynchronously refresh data back to cache
 
 Advantages:
 
-1. The entire process is very simple, suitable for low concurrency scenarios
+1. The entire process is very simple, suitable for low-concurrency scenarios
 
 Disadvantages:
 
 1. Insufficient Disaster Recovery
 
-   What to do if deleting cache fails in "Write 1"? If execution continues, the cache data being read would be incorrect;
+   What to do if deleting the cache fails in "Write 1"? If execution continues, the cache data being read would be incorrect;
 
 2. Concurrency Issues
 
    - Write-Write Concurrency
 
-     If multiple services update the database simultaneously, operation order cannot be guaranteed, causing mutual overwriting issues
+     If multiple services update the database simultaneously, the operation order cannot be guaranteed, causing mutual overwriting issues
 
    - Read-Write Concurrency
 
-     If consumer A's read operation occurs simultaneously with consumer B's write operation; the process is as follows:
+     If consumer A's read operation occurs simultaneously with consumer B's write operation, the process is as follows:
 
      1. B deletes cache data v1
 
@@ -245,7 +265,7 @@ Disadvantages:
 
      3. A reads database data, database returns data v1
 
-     4. B updates database data from v1 to v2
+     4. B updates the database data from v1 to v2
 
      5. B refreshes v2 back to cache
 
