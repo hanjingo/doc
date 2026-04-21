@@ -309,7 +309,7 @@ template<typename _Tp, std::size_t _Nm>
     {
       typedef _Tp 	    			      value_type;
       // Support for zero-sized arrays mandatory.
-      value_type _M_instance[_Nm ? _Nm : 1]; // array数组
+    value_type _M_instance[_Nm ? _Nm : 1]; // array storage
     };
 ```
 
@@ -342,29 +342,29 @@ template<typename _Tp, std::size_t _Nm>
 int main()
 {
 	std::array<int, 10> a1{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    std::array<int, 10> a2; // 创建具有10个0的array
+    std::array<int, 10> a2; // create an array with 10 zeros
 	std::array<int, 5>  a3 = std::experimental::make_array(1, 2, 3, 4, 5);
 
 	std::array<int, 10>::iterator ret1 = a1.begin();   // *ret1: 1
 
-	std::array<int, 10>::iterator ret2 = a1.end();     // *ret2: 未知变量
+    std::array<int, 10>::iterator ret2 = a1.end();     // *ret2: indeterminate value
 
 	std::array<int, 10>::reverse_iterator ret3 =       // *ret3: 10
         a1.rbegin();
 
-	std::array<int, 10>::reverse_iterator ret4 =       // *ret4: 未知变量
+    std::array<int, 10>::reverse_iterator ret4 =       // *ret4: indeterminate value
         a1.rend();
 
 	std::array<int, 10>::const_iterator ret5 =         // *ret5: 1
         a1.cbegin();
 
-	std::array<int, 10>::const_iterator ret6 =         // *ret6: 未知变量
+    std::array<int, 10>::const_iterator ret6 =         // *ret6: indeterminate value
         a1.cend();
 
 	std::array<int, 10>::const_reverse_iterator ret7 = // *ret7: 10
         a1.crbegin();
 
-	std::array<int, 10>::const_reverse_iterator ret8 = // *ret8: 未知变量
+    std::array<int, 10>::const_reverse_iterator ret8 = // *ret8: indeterminate value
         a1.crend();
 
 	a2 = a1;                      // a2: [1,2,3,4,5,6,7,8,9,10]
@@ -396,9 +396,9 @@ template <class _Tp, class _Alloc>
 class _Vector_base {
 ...
 protected:
-  _Tp* _M_start;          // 头指针
-  _Tp* _M_finish;         // 尾指针
-  _Tp* _M_end_of_storage; // 分配的存储空间的尾部
+    _Tp* _M_start;          // start pointer
+    _Tp* _M_finish;         // finish pointer
+    _Tp* _M_end_of_storage; // end of allocated storage
 }
 ```
 
@@ -439,30 +439,30 @@ Example:
 
 int main()
 {
-	std::vector<int> v1(5);          // 初始化5个元素，其值为默认值
-	std::vector<int> v2{ 5 };        // 初始化1个元素，其值为5
-	std::vector<int> v3(5, 1);       // 初始化5个元素，其值都为1
+    std::vector<int> v1(5);          // initialize 5 elements with default values
+    std::vector<int> v2{ 5 };        // initialize 1 element with value 5
+    std::vector<int> v3(5, 1);       // initialize 5 elements, each with value 1
 	std::vector<int> v4{       
         std::begin(v3), 
         std::end(v3) 
-	};                               // 复制一个容器的片段来初始化
+    };                               // initialize from a subrange of another container
 	std::vector<int> v5(
-		v1.get_allocator());         // 构造拥有给定分配器 alloc 的空容器
+        v1.get_allocator());         // construct an empty container with the given allocator
 	std::vector<int> v6{
 		std::begin(v3),
 		std::end(v3),
 		v3.get_allocator(),
-	};                               // 复制一个容器的片段并提供分配器来初始化
+    };                               // initialize from a subrange and provide an allocator
 	std::vector<int> v7{       
         std::make_move_iterator(std::begin(v4)),
         std::make_move_iterator(std::end(v4)) 
-	};                               // 移动一个容器的片段来初始化
-	std::vector<int> v8(v5);         // 用另一个容器来初始化
+    };                               // initialize by moving a subrange from another container
+    std::vector<int> v8(v5);         // initialize from another container
 	std::vector<int> v9(v5, 
-	    v6.get_allocator());         // 用另一个容器和分配器来初始化
-	std::vector<int> v10({1, 2, 3}); // 用初始化列表来初始化
+        v6.get_allocator());         // initialize from another container and allocator
+    std::vector<int> v10({1, 2, 3}); // initialize from an initializer list
 	std::vector<int> v11({1, 2, 3}, 
-	    v6.get_allocator());         // 用初始化列表和分配器来初始化
+        v6.get_allocator());         // initialize from an initializer list and allocator
 
 	v1.assign({1, 2, 3, 4, 5});          // v1: [1,2,3,4,5]
 
@@ -521,8 +521,8 @@ int main()
 
 	v1.resize(3);                     // v1: [12,5,10]
 
-	v1.shrink_to_fit();               // 调用前, v1.capacity(): 10
-                                      // 调用后: v1.capacity(): 3
+    v1.shrink_to_fit();               // before call, v1.capacity(): 10
+                                      // after call, v1.capacity(): 3
 
 	size_t ret18 = v1.size();         // ret18: 3
 
@@ -533,23 +533,23 @@ int main()
 ### list
 
 ```c++
-// 双向链表节点
+// doubly linked list node
 struct _List_node_base {
-  _List_node_base* _M_next; // 指向下个节点
-  _List_node_base* _M_prev;	// 指向上个节点
+    _List_node_base* _M_next; // points to the next node
+    _List_node_base* _M_prev;	// points to the previous node
 };
-// list节点
+// list node
 template <class _Tp>
 struct _List_node : public _List_node_base {
-  _Tp _M_data;	// 节点存储的值
+    _Tp _M_data;	// value stored in the node
 }
-// list 基类
+// list base class
 template <class _Tp, class _Alloc>
 class _List_base
 {
 ...
 protected:
-  // 只要一个指针，便可表示整个环状双向链表，空白节点  
+    // a single pointer can represent the whole circular doubly linked list (sentinel node)
   _List_node<_Tp>* _M_node;	
 }
 ```
@@ -594,24 +594,24 @@ Example:
 
 int main()
 {
-	std::list<int> L1;                        // 创建空的容器
-	std::list<int> L2{ 10 };                  // 构造包含1个元素(值为10)的容器
-	std::list<int> L3(10, 1);                 // 构造包含10个元素(值为1)的容器
-	std::list<int> L4{ L3 };                  // 创建L3的副本
+    std::list<int> L1;                        // create an empty container
+    std::list<int> L2{ 10 };                  // construct a container with 1 element (value 10)
+    std::list<int> L3(10, 1);                 // construct a container with 10 elements (value 1)
+    std::list<int> L4{ L3 };                  // create a copy of L3
     std::list<int> L5{ L3, 
-                      L2.get_allocator() };   // 用另一个list和分配器来构造
+                      L2.get_allocator() };   // construct from another list and allocator
 	std::list<int> L6{ ++L3.cbegin(), 
-                      --L3.cend() };          // 用一段元素来构造
-    std::list<int> L7(L2.get_allocator());    // 提供分配器
+                      --L3.cend() };          // construct from an element range
+    std::list<int> L7(L2.get_allocator());    // provide allocator
     std::list<int> L8{ 
         std::make_move_iterator(L4.begin()), 
-        std::make_move_iterator(L4.end())};   // 移动迭代器构造
+        std::make_move_iterator(L4.end())};   // construct with move iterators
     std::list<int> L9{
         std::make_move_iterator(L4.begin()), 
         std::make_move_iterator(L4.end()),
         L8.get_allocator()
-    };                                        // 移动迭代器和提供分配器构造
-    std::list<int> L10({1, 2, 3});            // 用初始化列表构造
+    };                                        // construct with move iterators and allocator
+    std::list<int> L10({1, 2, 3});            // construct from initializer list
 
 
 	L1.assign(10, 1);                         // L1: [1,1,1,1,1,1,1,1,1,1]
@@ -713,15 +713,15 @@ int main()
 ### deque
 
 ```c++
-// deque迭代器
+// deque iterator
 template <class _Tp, class _Ref, class _Ptr>
 struct _Deque_iterator {
   typedef _Tp** _Map_pointer;
 
-  _Tp* _M_curr;         // 指向节点的当前元素
-  _Tp* _M_first;        // 指向节点的头
-  _Tp* _M_last;         // 指向节点的尾部（含备用空间）
-  _Map_pointer _M_node; // 指向所在的map
+    _Tp* _M_curr;         // points to current element in the node
+    _Tp* _M_first;        // points to the start of the node
+    _Tp* _M_last;         // points to the end of the node (including spare space)
+    _Map_pointer _M_node; // points to the map slot
   ...
 };
 
@@ -730,9 +730,9 @@ class _Deque_base {
 ...
 protected:
   _Tp** _M_map;	        // map
-  size_t _Map_map_size; // map的节点数量大小
-  iterator _M_start;    // 指向第一个缓冲区的第一个元素
-  iterator _M_finish;   // 指向最后一个缓冲区的最后一个元素
+    size_t _Map_map_size; // number of nodes in the map
+    iterator _M_start;    // points to first element of the first buffer
+    iterator _M_finish;   // points to last element of the last buffer
   ...
 };
 ```
@@ -779,21 +779,21 @@ Example:
 
 int main()
 {
-    std::deque<int> d1;               // 构造空容器
-    std::deque<int> d2(5);            // 构造带5个元素（默认值）的容器
-    std::deque<int> d3(5, 1);         // 构造带5个元素（值为1）的容器
+    std::deque<int> d1;               // construct an empty container
+    std::deque<int> d2(5);            // construct a container with 5 default-initialized elements
+    std::deque<int> d3(5, 1);         // construct a container with 5 elements of value 1
     std::deque<int> d4(5, 
-        d2.get_allocator());          // 使用分配器构造带5个元素（默认值）的容器
+        d2.get_allocator());          // construct with allocator: 5 default-initialized elements
     std::deque<int> d5(5, 1, 
-        d3.get_allocator());          // 使用分配器构造带5个元素（值为1）的容器
+        d3.get_allocator());          // construct with allocator: 5 elements of value 1
     std::deque<int> d6{d3.begin(), 
-        d3.end()};                    // 使用迭代器来构造容器
-    std::deque<int> d7(d3);           // 使用容器的副本构造容器
+        d3.end()};                    // construct from iterator range
+    std::deque<int> d7(d3);           // construct from a copy of another container
     std::deque<int> d8(d3, 
-        d2.get_allocator());          // 使用分配器和容器的副本构造容器
-    std::deque<int> d9{1, 2, 3};      // 使用初始化列表构造容器
+        d2.get_allocator());          // construct from container copy and allocator
+    std::deque<int> d9{1, 2, 3};      // construct from initializer list
     std::deque<int> d10({1, 2, 3}, 
-        d3.get_allocator());          // 使用初始化列表和分配器来构造容器
+        d3.get_allocator());          // construct from initializer list and allocator
 
     d1.assign(5, 2);                  // d1: [2,2,2,2,2]
     d1.assign(d3.begin(), d3.end());  // d1: [1,1,1,1,1]
@@ -881,18 +881,18 @@ int main()
 `std::set` and `std::multiset` are typically implemented as red-black trees.
 
 ```c++
-// set & multiset底层机制为RB-tree。
-// RB-tree节点
+// set & multiset are implemented with an RB-tree internally.
+// RB-tree node
 struct _Rb_tree_node_base
 {  
   ...
-  _Color_type _M_color;	// 节点颜色，非红即黑
-  _Base_ptr _M_parent;	// 父节点
-  _Base_ptr _M_left;    // 左节点（小）
-  _Base_ptr _M_right;   // 右节点（大）
+    _Color_type _M_color;	// node color: red or black
+    _Base_ptr _M_parent;	// parent node
+    _Base_ptr _M_left;    // left child (smaller)
+    _Base_ptr _M_right;   // right child (larger)
 };
 
-// RB-tree迭代器
+// RB-tree iterator
 struct _Rb_tree_base_iterator
 {
   ...
@@ -904,22 +904,22 @@ struct _Rb_tree_base_iterator
 template <class _Value>
 struct _Rb_tree_node : public _Rb_tree_node_base
 {
-  _Value _M_value_field;          // 节点的值
+    _Value _M_value_field;          // node value
 };
 
 template <class _Tp, class _Alloc>
 struct _Rb_tree_base
 {
 protected:
-  _Rb_tree_node<_Tp>* _M_header; // 头节点
+    _Rb_tree_node<_Tp>* _M_header; // header node
   ...
 }
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc = __STL_DEFAULT_ALLOCATOR(_Value) >
 class _Rb_tree : protected _Rb_tree_base<_Value, _Alloc> {
 protected:
-  size_type _M_node_count; // 节点数量
-  _Compare _M_key_compare; // 节点的键比较函数
+    size_type _M_node_count; // number of nodes
+    _Compare _M_key_compare; // key comparator for nodes
   ...
 }
 ```
@@ -962,20 +962,20 @@ Example:
 
 int main()
 {
-    std::set<int> s1{1, 2, 3};              // 使用初始化列表构造
-    std::set<int> s2({1, 2, 3});            // 通过初始化列表构造
-    std::set<int> s3(s1.begin(), s1.end()); // 使用迭代器范围构造
+    std::set<int> s1{1, 2, 3};              // construct from initializer list
+    std::set<int> s2({1, 2, 3});            // construct via initializer list
+    std::set<int> s3(s1.begin(), s1.end()); // construct from iterator range
     std::set<int> s4(s1.begin(), s1.end(), 
-        s1.get_allocator());                // 使用迭代器范围和分配器构造
+        s1.get_allocator());                // construct from iterator range and allocator
     std::set<int, std::greater<int> > s5{
-        s1.begin(), s1.end() };             // 使用迭代器范围和函数对象构造
-    std::set<int> s6(s1);                   // 使用另一个容器的副本构造
-    std::set<int> s7(std::move(s6));        // 通过移动另一个容器来构造
-    std::set<int> s8(s1.get_allocator());   // 使用分配器构造容器
+        s1.begin(), s1.end() };             // construct from iterator range and function object
+    std::set<int> s6(s1);                   // construct from copy of another container
+    std::set<int> s7(std::move(s6));        // construct by moving another container
+    std::set<int> s8(s1.get_allocator());   // construct container with allocator
     std::set<int> s9(s1, 
-        s1.get_allocator());                // 使用另一个容器的副本和分配器构造
+        s1.get_allocator());                // construct from container copy and allocator
     std::set<int> s10({1, 2, 3}, 
-        s2.get_allocator());                // 使用初始化列表和分配器构造
+        s2.get_allocator());                // construct from initializer list and allocator
 
     std::set<int>::iterator ret1 = 
         s1.begin();               // s1:[1,2,3], *ret1:1
@@ -1067,7 +1067,7 @@ template <class _Key, class _Tp, class _Compare, class _Alloc>
 class map {
 private:
   typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
-  _Rep_type _M_t;	// 底层实现为 RB-tree
+    _Rep_type _M_t;	// internally implemented with an RB-tree
   ...
 }
 ```
@@ -1110,13 +1110,13 @@ Example:
 int main()
 {
 	std::map<int, std::string> m1{ {1, "one"}, 
-                                  {2, "two"} };    // 根据初始化列表构造
+                                  {2, "two"} };    // construct from initializer list
 	std::map<int, std::string> m2{ 
         std::make_pair(1, "one"), 
-        std::make_pair(2, "two")};                 // 根据初始化列表构造
-	std::map<int, std::string> m3{ m1 };           // 构造一个map的副本
+        std::make_pair(2, "two")};                 // construct from initializer list
+    	std::map<int, std::string> m3{ m1 };           // construct a copy of a map
 	std::map<int, std::string> m4{ std::begin(m1), 
-                                   std::end(m1) }; // 构造指定范围的map
+                                   std::end(m1) }; // construct a map from a specified range
 
 	std::string ret1 = m1.at(1);// ret1: one
 
@@ -1227,14 +1227,14 @@ int main()
 {
     std::list<int> values{1, 2, 3};
 
-    std::stack<int> s1;                          // 创建容器
-    std::stack<int> s2(s1);                      // 使用另一个容器来初始化
-    std::stack<int, std::list<int> > s3(values); // 指定底层容器，用来初始化
-    std::stack<int, std::list<int> > s4{values}; // 指定底层容器，用初始化列表来初始化
+    std::stack<int> s1;                          // create container
+    std::stack<int> s2(s1);                      // initialize from another container
+    std::stack<int, std::list<int> > s3(values); // initialize with specified underlying container
+    std::stack<int, std::list<int> > s4{values}; // initialize with specified underlying container and initializer list
     std::stack<int, std::list<int> > s5(values, 
-                        values.get_allocator()); // 指定底层容器和内存分配器来初始化
+                        values.get_allocator()); // initialize with specified underlying container and allocator
     std::stack<int, std::list<int> > s6(s3, 
-                        values.get_allocator()); // 指定容器和内存分配器来初始化
+                        values.get_allocator()); // initialize with specified container and allocator
 
     s1.emplace(4);           // s1: [4]
 
@@ -1248,7 +1248,7 @@ int main()
 
     s1.swap(s2);             // s1: [], s2: [5]
 
-    int& ret3 = s1.top();    // s1: [], ret3: 未定义值
+    int& ret3 = s1.top();    // s1: [], ret3: undefined value
 }
 ```
 
@@ -1274,20 +1274,20 @@ int main()
 {
     int a[]{1, 2, 3};
     std::deque<int> values{1, 2, 3};
-    std::queue<int> q1(values);                 // 使用构造容器初始化
-    std::queue<int> q2(q1);                     // 复制构造初始化
-    std::queue<int> q3(std::move(q2));          // 移动构造初始化
-    std::queue<int> q4(values.get_allocator()); // 使用底层容器初始化
+    std::queue<int> q1(values);                 // initialize from constructed container
+    std::queue<int> q2(q1);                     // initialize by copy construction
+    std::queue<int> q3(std::move(q2));          // initialize by move construction
+    std::queue<int> q4(values.get_allocator()); // initialize with underlying container allocator
     std::queue<int> q5(values, 
-        values.get_allocator());                // 使用指定的容器和内存分配器初始化
+        values.get_allocator());                // initialize with specified container and allocator
     std::queue<int> q6(std::move(values), 
-        values.get_allocator());                // 移动指定的容器和内存分配器初始化
+        values.get_allocator());                // initialize by moving specified container and allocator
     std::queue<int> q7(q5, 
-        values.get_allocator());                // 使用另一个容器和内存分配器初始化
+        values.get_allocator());                // initialize from another container and allocator
     std::queue<int> q8(std::begin(a), 
-        std::end(a));                           // 使用迭代器初始化
+        std::end(a));                           // initialize from iterators
     std::queue<int> q9(std::begin(a), std::end(a), 
-        values.get_allocator());                // 使用迭代器和内存分配器初始化
+        values.get_allocator());                // initialize with iterators and allocator
     
 
     int& ret1 = q1.back();  // ret1: 3
@@ -1332,11 +1332,11 @@ Example:
 int main()
 {
     int values[]{1, 2, 3};
-    std::priority_queue<int> p1{                 // 使用迭代器初始化
+    std::priority_queue<int> p1{                 // initialize from iterators
         std::begin(values), std::end(values)};
-    std::priority_queue<int> p2{p1};             // 使用另一个容器初始化
+    std::priority_queue<int> p2{p1};             // initialize from another container
     std::priority_queue<int, std::vector<int>, std::greater<int> > p3 { 
-        std::begin(values), std::end(values)};   // 使用迭代器和指定底层容器及比较函数初始化
+        std::begin(values), std::end(values)};   // initialize with iterators, underlying container, and comparator
 
     p1.emplace(4);           // p1: [4,3,2,1]
 
@@ -1403,11 +1403,11 @@ Example:
 int main()
 {
     int values[]{1, 2, 3};
-    std::priority_queue<int> p1{                 // 使用迭代器初始化
+    std::priority_queue<int> p1{                 // initialize from iterators
         std::begin(values), std::end(values)};
-    std::priority_queue<int> p2{p1};             // 使用另一个容器初始化
+    std::priority_queue<int> p2{p1};             // initialize from another container
     std::priority_queue<int, std::vector<int>, std::greater<int> > p3 { 
-        std::begin(values), std::end(values)};   // 使用迭代器和指定底层容器及比较函数初始化
+        std::begin(values), std::end(values)};   // initialize with iterators, underlying container, and comparator
 
     p1.emplace(4);           // p1: [4,3,2,1]
 
@@ -2902,7 +2902,7 @@ public:
 };
 int main()
 {
-    { // 限定作用域，确保智能指针在system("pause")之前析构
+    { // limit scope so smart pointers are destroyed before system("pause")
         std::shared_ptr<Good> gp1(new Good());
         std::shared_ptr<Good> gp2 = gp1->getptr();
         std::cout << gp1.use_count() << std::endl;

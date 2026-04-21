@@ -110,6 +110,8 @@ For more info, see: [C++ Feature#Function Overloading vs Overriding](LANG/C++/fe
 
 static data member shared among all instances; by contrast, each object has its own copy of non-static member .
 
+For more info, see: [C++ Features#static](LANG/C++/feature.md)
+
 #### Can static member functions be virtual?
 
 No, virtual functions require `this` pointer (dynamic dispatch), static functions have no `this`.
@@ -190,9 +192,37 @@ A scope resolution operator (::) is used to reference a member function or a glo
 
 An overflow occurs when a calculation produces a result outside the range representable by a data type. In C++, signed integer overflow leads to undefined behavior, while unsigned integer overflow wraps around modulo the maximum value.
 
+For more info, see: [C++ Exception#Overflow Error](LANG/C++/exception.md)
+
 #### What is the difference between `const` and `#define`?
 
 `const` and `#define` are used to define constants, but `const` is a type-safe variable checked at compile-time with scope, while `#define` is a preprocessor macro that performs simple text substitution before compilation.
+
+For more info, see: [C++ Features#const](LANG/C++/feature.md)
+
+#### What's the difference between const parameters and non-const parameters?
+
+Const parameters promise not to modify the argument, while non-const parameters allow modification. For value parameters, const affects only the function's local copy and doesn't impact the caller. For reference/pointer parameters, const prevents modification fo the original object, enabling safer interfaces, better documentation, and allowing the function to accept both const and non-const arguments, including temporaries and literals.
+
+For more info, see: [C++ Features#const](LANG/C++/feature.md)
+
+#### What's the difference between `const T&` and `T&&`?
+
+`const T&` is a const lvalue reference--it binds to anything and promises not to modify. `T&&` is an rvalue reference--it bidns only to rvalues and indicates the function may 'steal' resource. They serve different purposes: const& for ready-only access, && for move optimization.
+
+For more info, see: [C++ Features#const](LANG/C++/feature.md)
+
+#### Can you modify a const reference parameter using const_cast?
+
+Yes! but it's undefined behavior if the original object was actually const. If you cast away constness on a reference that refers to a truly const object, modifying it is UB. Only use const_cast when you're certain the underlying object isn't const.
+
+For more info, see: [C++ Features#const](LANG/C++/feature.md)
+
+#### Should I pass `std::unique_ptr` by const reference?
+
+Usually, no. `std::unique_ptr` represents ownership. If you just need to access the object, pass a raw pointer or reference. If you need to transfer ownership, pass by value. Pass const reference to `unique_ptr` only if you need to inspect the pointer itself without modifying it.
+
+For more info, see: [STL#Smart pointers](LANG/C++/stl.md)
 
 #### What are default arguments?
 
@@ -202,9 +232,23 @@ Default arguments are values that are used when a function is called without som
 
 Prefix and postfix operators differ primarily in the timing of their operation relative to expression evaluation. Prefix(`++x`) increments the variable first and returns the updated value, while postfix(`x++`) returns the original value before incrementing. Both increment the variable by 1, but prefix affects the current expression immediately.
 
-#### What are the different data tyeps present in C++
+#### What are the different data types present in C++
 
 C++ data types are divided into 4 main categories: primitive(built-in) types, derived types, enumeration and user-defined types.
+
+For more info, see: [C++ Features#data types](LANG/C++/feature.md)
+
+#### What's the difference between static binding and dynamic binding?
+
+Static binding resolves function calls at compile time based on the static type of the object, while dynamic binding resolves them at runtime based on the dynamic type. Static binding is used for non-virtual functions, overloaded functions, and templates, offering better performance. Dynamic binding is used for virtual functions, enabling runtime polymorphism through vtable lookup, with a small performance cost.
+
+For more info, see: [C++ Features#overload](LANG/C++/feature.md), [C++ Object Oriented Programming#Polymorphism](LANG/C++/oop.md)
+
+#### What about `typedef` versus macros in C++?
+
+`typedef` creates type aliases at the compiler level with proper scope and type safelty, while macros are preprocessor text substitutions that happen before compilation with no type checking. In modern C++, macros should be avoided for type aliasing due to their global scope, lack of type safety, and debugging difficulties.
+
+For more info, see: [C++ Best Practice#Prefer alias declarations (using) to typedefs](LANG/C++/best_practice.md)
 
 ### New Feature
 
@@ -313,10 +357,6 @@ For more info, see: [C++ Features#constexpr](LANG/C++/feature.md)
 
 Use `constexpr` for numeric computations, use `if constexpr` for conditional compilation. `Templates` for type-based dispatch.
 
-#### Can virtual functions be `constexpr`?
-
-No! Virtual dispatch requires a runtime.
-
 #### What is C++ storage class?
 
 Storage class is used to defines the scope(visibility), lifetime, and linkage of variables or functions. These features usually help in tracing the existence of a variable during the runtime of a program.
@@ -329,7 +369,7 @@ For more info, see: [C++ Features#mutable](LANG/C++/feature.md)
 
 #### What's the difference between `override` and `final`?
 
-`override` tells the compiler this function is meant to override a base virtual function (catches signature errors). `fina` prevents further overriding in derived classes.
+`override` tells the compiler this function is meant to override a base virtual function (catches signature errors). `final` prevents further overriding in derived classes.
 
 For more info, see: [C++ Features#override](LANG/C++/feature.md), [C++ Features#final](LANG/C++/feature.md)
 
@@ -382,6 +422,12 @@ Smart pointers implement RAII (Resource Acquisition Is Initialization), they aut
 For more info, see: [C++ Feature#Dangling Pointer](LANG/C++/feature.md)
 
 ### Exception & Error
+
+#### How do you handle errors in C++? Are you mostly using exceptions, return codes, or something else?
+
+I use a hybrid approach based on the context: exception for truly exceptional, rare errors that should propagate up, return codes for expected, recoverable failures, and assertions for catching programming bugs during development. The key is matching the error handling strategy to the error's severity and frequency.
+
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
 
 #### How is exception handling implemented in C++?
 
@@ -581,6 +627,42 @@ Each object gets one `vptr` (8bytes on 64-bit os) regardless of how many virtual
 
 For more info, see: [C++ Object Oriented Programming#Object Model](LANG/C++/oop.md)
 
+#### Can you have a virtual function with default arguments?
+
+Yes, but DANGEROUS! Default arguments are determined at compile-time based on the static type.
+
+For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
+
+#### Can we call a virtual function from a constructor?
+
+Yes, we can call a virtual function from a constructor, but during base class construction, the derived part of the object is not yet initialized.
+
+For more info, see: [C++ Object Oriented Programming#Construction and Destruction](LANG/C++/oop.md)
+
+#### When should you use templates vs virtual functions?
+
+Use templates when types are known at compile time and you need maximum performance. Use virtual functions when you need runtime polymorphism.
+
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md), [C++ Templates](LANG/C++/template.md)
+
+#### What's the performance cost of virtual functions?
+
+Virtual functions add 2-3 extra instructions per call: load vptr, load function pointer, indirect call. This prevents inlining and may hurt branch prediction. However, the cost is typically 5-15% and only matters in tight loops. For most applications, the flexibility is worth the small overhead.
+
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
+
+#### Can virtual functions be `constexpr`?
+
+No! Virtual dispatch requires a runtime.
+
+For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
+
+#### What's the difference between virtual functions and pure virtual functions?
+
+A virtual function has an implementation in the base class and can be overridden in derived classes, making the base class concrete and instantiable. A pure virtual function has no implementation in the base class, forcing dervied classes to provide an implementation and making the base class abstract--you cannot create objects of that class. Pure virtual functions are used to define interfaces.
+
+For more info, see: [C++ Object Oriented Programming#Polymorphism](LANG/C++/oop.md)
+
 #### What is virtual inheritance?
 
 Virtual inheritance is a C++ mechanism used to solve the diamond problem in multiple inheritance.
@@ -617,12 +699,6 @@ Because the virtual base is shared and constructed once. Only the most derived c
 
 For more info, see: [C++ Object Oriented Programming#Virtual Inheritance#Notice](LANG/C++/oop.md)
 
-#### Can you have a virtual function with default arguments?
-
-Yes, but DANGEROUS! Default arguments are determined at compile-time based on the static type.
-
-For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
-
 #### Can static functions be virtual?
 
 No, Virtual dispatch requires a `this` pointer (object instance). Static functions belong to the class, not objects.
@@ -639,7 +715,13 @@ For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 Polymorphism means one interface, multiple implementations. It allows the same function or operator to behave differently depending on the context.
 
-For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
+For more info, see: [C++ Object Oriented Programming#Polymorphism](LANG/C++/oop.md)
+
+#### Can you explain the difference between compile-time and run-time polymorphism in C++?
+
+Compile-time polymorphism is resolved during compilation using templates and function overloading, resulting in no runtime overhead but less flexibility. Runtime polymorphism is resolved during execution using virtual functions and inheritance, providing flexibility through dynamic dispatch but with a small performance cost (vtable lookup). The choice depends on whether you need the type to be determined at compile time (templates) or at runtime (virtual functions).
+
+For more info, see: [C++ Object Oriented Programming#Polymorphism](LANG/C++/oop.md)
 
 #### What's a constructor
 
@@ -674,12 +756,6 @@ For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++
 Yes! but they must be explicitly called from the most derived class constructuctor.
 
 For more info, see: [C++ Object Oriented Programming#Virtual Inheritance#Notice](LANG/C++/oop.md)
-
-#### Can we call a virtual function from a constructor?
-
-Yes, we can call a virtual function from a constructor, but during base class construction, the derived part of the object is not yet initialized.
-
-For more info, see: [C++ Object Oriented Programming#Construction and Destruction](LANG/C++/oop.md)
 
 #### What happens if you don't define any constructor?
 
@@ -800,7 +876,7 @@ For more info, see: [C++ Object Oriented Programming#dynamic_cast](LANG/C++/oop.
 
 #### What's the cost of `dynamic_cast`?
 
-Depends on inheritance depth.
+`dynamic_cast` for polymorphic types requires runtime type information (RTTI). It's slower than `static_cast` because it needs to traverse the inheritance hierarchy.
 
 For more info, see: [C++ Object Oriented Programming#dynamic_cast](LANG/C++/oop.md)
 
@@ -988,9 +1064,15 @@ To safely erase elements during iteration, we must avoid incrementing the iterat
 
 For more info, see: [C++ STL#vector](LANG/C++/stl.md)
 
+#### How do you pick between  vector, list, and deque for a dynamic container?
+
+Choose vector for most use cases due to cache locality and low overhead. Use list when you need frequent insertions/deletions in the middle and iterator stability is critical. Use deque when you need efficient push/pop at both ends and random access, but can aacept slightly slower random access than vector. The default should always be vector unless you have a specific rason to choose otherwise.
+
+For more info, see: [C++ STL#Container](LANG/C++/stl.md), [C++ Best Practice#Choose the Right Container](LANG/C++/best_practice.md)
+
 #### What are iterators in STL?
 
-An iterator is an object(like a pointer) used to traverse containers. STL uses iterators to access elements in a uniform manner, regardless of the container. Iterators help in writing generic algorithms that work across differnt container types.
+An iterator is an object(like a pointer) used to traverse containers. STL uses iterators to access elements in a uniform manner, regardless of the container. Iterators help in writing generic algorithms that work across different container types.
 
 For more info, see: [C++ STL](LANG/C++/stl.md)
 
@@ -1068,13 +1150,19 @@ CHAR stores fixed-length data and pads extra spaces; VARCHAR2 stores variable-le
 
 A view is a virtual table created by a `SELECT` query. It does not store data itself, but presents data from one ore more tables in a structured way. Views simplify complex queries, improve readability, and enhance security by restricting access to specific rows or columns.
 
-For more info, see: [SQL Language#Views](DB/sql.md)
+For more info, see: [SQL#Views](DB/sql.md)
+
+#### How to create empty tables with the same structure as another table?
+
+Use `CREATE TABLE new_table LIKE old_table` to copy only the structure, or `CREATE TABLE new_table AS SELECT * FROM old_table` for a condition-based approach that works across more databases.
+
+For more info, see: [SQL#COPY TABLE](DB/sql.md)
 
 #### What is the purpose of the UNIQUE constraint?
 
 The UNIQUE constraint ensures that all values in a column (or combination of columns) are distinct. This prevents duplicate values and helps maintain data integrity.
 
-For more info, see: [SQL Language#Unique constraint](DB/sql.md)
+For more info, see: [SQL#Unique constraint](DB/sql.md)
 
 #### Explain the difference between the `WHERE` and `HAVING` clauses
 
@@ -1086,7 +1174,7 @@ For more info, see: [SQL Language#Unique constraint](DB/sql.md)
 
 SQL joins combine rows from two tables based on a matching condition (typically keys) to answer questions that span both tables...
 
-For more info, see: [SQL Language#Joins](DB/sql.md)
+For more info, see: [SQL#Joins](DB/sql.md)
 
 #### What is a CTE (Common Table Expression) and when would you use it?
 
@@ -1169,13 +1257,13 @@ For more info, see: [SQL Language](DB/sql.md)
 
 A query is a SQL statement used to retrieve, update, or manipulate data in a database. The most common type of query is a `SELECT` statement, which fetches data from one or more tables based on specified conditons.
 
-For more info, see: [DB Query](DB/query.md)
+For more info, see: [SQL](DB/sql.md)
 
 #### What is a subquery?
 
 A subquery is a query nested within another query. It is often used in the `WHERE` clause to filter data based on the results of another query, making it easier to handle complex conditons.
 
-For more info, see: [DB Query](DB/query.md)
+For more info, see: [SQL](DB/sql.md)
 
 #### How would you optimize a slow query?
 
@@ -1195,23 +1283,31 @@ For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
 SELECT E.* FROM Employees AS E JOIN Departments AS D ON E.DepartmentID = D.DepartmentID WHERE D.DepartmentName = 'Engineering';
 ```
 
+#### What is Pattern Matching in SQL?
+
+Pattern matching in SQL is the ability to search for specific patterns within string data using special operators and wildcard characters. The most common approach is the `LIKE` operator with `%` and `_` wildcards, but modern SQL also offers `REGEXP`, `RLIKE`, and full-text search for more complex scenarios.
+
+For more info, see: [SQL#Wildcards](DB/sql.md)
+
+#### How do you perform pattern matching in SQL?
+
+SQL supports pattern matching mainly with `LIKE` (and `NOT LIKE`) using wildcards `%` for any-length string and `_` for a single character.
+
+For more info, see: [SQL#LIKE](DB/sql.md)
+
 ### Index
 
 #### What are indexes, and why are they used?
 
 Indexes are database objects that improve query performance by allowing faster retrieval of rows. They function like a book's index, making it quicker to find specific data without scanning the entire table. However, indexes require additional storage and can slightly slow down data modification operations.
 
-For more info, see: [SQL Language#Indexes](DB/sql.md)
+For more info, see: [SQL#Indexes](DB/sql.md)
 
 #### How do clustered and non‑clustered indexes differ?
 
 A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
 
 For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
-
-#### How do you perform pattern matching in SQL?
-
-SQL supports pattern matching mainly with `LIKE` (and `NOT LIKE`) using wildcards `%` for any-length string and `_` for a single character.
 
 ### Cursor
 
@@ -1235,7 +1331,7 @@ For more info, see: [SQL Language](DB/sql.md)
 
 A table is a structured collection of related data organized into rows and columns. Columns define the type of data stored, while rows contain individual records.
 
-For more info, see: [SQL Language#Table operations](DB/sql.md)
+For more info, see: [SQL#Table operations](DB/sql.md)
 
 #### What is a composite primary key?
 
@@ -1259,7 +1355,7 @@ For more info, see: [DB Table#Compare Primary Key And Foreign Key](DB/table.md)
 
 A stored procedure is a precompiled set of SQL statements stored in the database. It can take input parameters, perform logic and queries, and return output values or result sets.
 
-For more info, see: [SQL Language#Stored Procedures](DB/sql.md)
+For more info, see: [SQL#Stored Procedures](DB/sql.md)
 
 ### Partitioning
 
@@ -1298,6 +1394,14 @@ For more info, see: [Database Best Practice#Parameterized Query](DB/best_practic
 SQL is best for structured, reliable transactions, while NoSQL shines in handling massive, fast-changing, and unstructured data.
 
 For more info, see: [SQL Language](DB/sql.md)
+
+### MySQL
+
+#### What are the String Data Types in MySQL?
+
+MySQL provides several string data types that differ in storage, performance, and behavior. The main categories are: CHAR, VARCHAR, TEXT, BLOB, and ENUM/SET. Choosing the right one is critical for performance and storge efficiency.
+
+For more info, see: [MySQL Data Types](DB/MYSQL/data_type.md)
 
 ---
 
@@ -1671,7 +1775,7 @@ For more info, see: [Sorting Algorithm Summary](ALGO/sort.md), [Divide and Conqu
 
 #### Generates all permutations of a string using recursion and backtracking.
 
-First initialize an array of string `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the lememts in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
+First, initialize an array of string `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the lememts in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
 
 For more info, see: [Backtracking Problem](ALGO/LEET_CODE/backtracking.md)
 
@@ -1692,6 +1796,12 @@ For more info, see: [Searching Algorithm Summary](ALGO/search.md)
 Choose the appropriate searching algorithm based on factors like data structure, data size and desired search efficiency, such as Binary Search for sorted arrays and Hashing for constant-time searches.
 
 For more info, see: [Searching Algorithm Summary](ALGO/search.md)
+
+#### How deos Hashing work in searching?
+
+Hashing uses a hash function to compute an index for each element, allowing for constant-time search operations in the average case by storing elements in a hash table.
+
+For more info, see: [Searching Algorithm Summary#Hash-Based Search](ALGO/search.md)
 
 #### What do you understand about the DFS(Depth First Search) algorithm.
 
@@ -1759,12 +1869,6 @@ Binary Search requires a sorted array and the ability to access elements by inde
 
 For more info, see: [Searching Algorithm Summary](ALGO/search.md)
 
-#### How deos Hashing work in searching?
-
-Hashing uses a hash function to compute an index for each element, allowing for constant-time search operations in the average case by storing elements in a hash table.
-
-For more info, see: [Searching Algorithm Summary#Hash-Based Search](ALGO/search.md)
-
 #### Compare Linear Search and Binary Search
 
 Linear Search checks elements sequentially, while Binary Search halves teh search space with each step, making it more efficient for sorted data with a time complexity of $O(\log n)$.
@@ -1774,6 +1878,12 @@ For more info, see: [Searching Algorithm Summary#Complixity Analysis](ALGO/searc
 #### Recursive and Iterative Binary Search: Which one is more efficient and why?
 
 Iterative Binary Search is typically more efficient than Recursive Binary Search. This is because iterative binary search avoids the overhead of recursive function calls and stack space consumption, resulting in lower memory usage and potentially faster execution, especially for large datasets.
+
+For more info, see: [Searching Algorithm Summary#Complixity Analysis](ALGO/search.md)
+
+#### What's the worst scenario in Binary Search?
+
+Binary search's worst-case time complexity is $O(\log n)$, which is excellent. However, the worst-case scenario occurs when the target element is not in the array (or is at the first/last position requiring full search depth), requiring approximately $\log_2{(n)}$ comparisons. The real 'worst case' for binary search is when it's applied incorrectly--on unsorted data, on linkede lists, or with integer overflow bugs in mid-point calculation.
 
 For more info, see: [Searching Algorithm Summary#Complixity Analysis](ALGO/search.md)
 
@@ -1875,6 +1985,14 @@ For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
 
 In the worst case, Quick Sort may take $O(N^2)$ time to sort the array. The worst case will occur when every time the problem of size $N$, get divided into 2 subproblems of size 1 and $N - 1$.
 
+For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
+
+#### Explain the worst-case scenario for Quick Sort and how you might avoid it?
+
+Quick Sort's worst-case time complexity is $O(n^2)$, which occurs when the pivot selection consistently results in highly unbalanced partitions--specifically, when the array is already sorted (or reverse sorted) and the pivot is always chosen as the first or last element. This can be avoided by using randomized pivot selection.
+
+For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
+
 ---
 
 
@@ -1930,6 +2048,16 @@ For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design
 ## System Design
 
 ### Base
+
+#### What are the key principles you follow for maintainability and code quality in C++?
+
+I use the principle of DRY in keeping projects maintainable and high code quality. DRY(Don't Repeat Yourself) is a software development principle that says the same logic or knowledge should not be written multiple times in a system.
+
+For more info, see: [System Design Summary](SYSTEM_DESIGN/summary.md)
+
+#### Are there any specific areas you find challenging in maintaining code quality?
+
+The most challenging areas in maintaining code quality are managing technical debt in legacy code without tests, resisting over-engineering while keeping code extensible, balancing performance with readability in hot paths, maintaining discipline when deadlines are tight, and evolving interfaces without breaking dependent code. Each challenge requires judgment and trade-offs rather than absolute rules.
 
 #### What do you understand by latency, throughput, and availability of a system?
 
@@ -2153,9 +2281,27 @@ Both Design Patterns and Algorithms describe typical solutions to any given prob
 
 For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
 
+#### What is the main advantage of using a prototype design pattern over object creation using a new keyword?
+
+The main advantage of the Prototype pattern is that it clones existing objects rather than creating new instances from scratch, which avoids the cost of repeated initialization, complex construction logic, or expensive resource acquisition. This is particularly valuable when object creation is costly, when objects have many configuration parameters, or when you need to create many similar objects with slight variations.
+
+For more info, see: [Design Pattern#PROTOTYPE](SYSTEM_DESIGN/design_pattern.md)
+
 #### What is the Singleton Design Pattern?
 
 The Singleton Pattern ensures that only one instance of a class is created throughout the program and it provides a global point of access to that instance...
+
+For more info, see: [Design Pattern#SINGLETON](SYSTEM_DESIGN/design_pattern.md)
+
+#### How would you implement a singleton in C++11?
+
+In C++ 11 and later, the simplest and most robust way to implement a Singleton is using a static local variable inside a static method. This is thread-safe due to C++11's guarantee that static local variables are initialized in a thread-safe manner. I'd delete the copy constructor, assignment operator, and optionally the move operations to prevent copying.
+
+For more info, see: [Design Pattern#SINGLETON](SYSTEM_DESIGN/design_pattern.md)
+
+#### What would happen if we do not have a synchronized method for returning Singleton instance in a multi-threaded environment?
+
+If we don't synchronize the Singleton instance creation method in a multi-threaded environment, we can end up with multiple instances of what should be a single-instance class--completely breaking the Singleton pattern. Worse, we might get partially constructed objects or even crashes.
 
 For more info, see: [Design Pattern#SINGLETON](SYSTEM_DESIGN/design_pattern.md)
 
@@ -2164,6 +2310,98 @@ For more info, see: [Design Pattern#SINGLETON](SYSTEM_DESIGN/design_pattern.md)
 The Observer Pattern defines a one-to-many dependency so that when one object (subject) changes, all dependent objects(observers) are notified...
 
 For more info, see: [Design Pattern#OBSERVER](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is Decorator Design Pattern?
+
+The Decorator pattern is a structural design pattern that allows behavior to be added to individual objects dynamically, without affecting the behavior of other objects from the same class. It wraps an object inside another object that adds the new behavior, following the Open-Closed Principle. This is often a more flexible alternative to subclassing for extending functionality, especially when you need combinations of features.
+
+For more info, see: [Design Pattern#DECORATOR](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is a Command Pattern?
+
+The Command pattern encapsulates a request as an object, thereby allowing you to parameterize clients with different requests, queue or log requests, and support undoable operations. It decouples the object that invokes an operation from the one that knows how to perform it, turning method calls into first-class objects that can be stored, passed around, and executed later.
+
+For more info, see: [Design Pattern#COMMAND](SYSTEM_DESIGN/design_pattern.md)
+
+#### What problem does Builder Pattern try to solve?
+
+The Builder pattern solves the problem of constructing complex objects with many optional parameters, especially when the construction process involves multiple steps or when objects need to be created in different representations. it separates the construction of a complex object from its representation, allowing the same construction process to create different variations of the object. This avoids telescoping constructors, improves code readability, and ensures object validity.
+
+For more info, see: [Design Pattern#BUILDER](SYSTEM_DESIGN/design_pattern.md)
+
+#### What do you understand by the Null Object pattern?
+
+The Null Object Pattern is a design pattern that replaces null references with a special, inert object that implements the expected interface but does nothing.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is the MVC design pattern?
+
+MVC is an architectural pattern that separates an application into three interconnected components: Model, View, and Controller. This separation promotes organized code, easier maintenance, and parallel development.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### What are the components of the Composite Entity pattern?
+
+The Composite Entity Pattern is a structural design pattern used in enterprise applications to represent a graph of related objects as a single, coarse-grained entity. It's particularly useful for persisting complex object graphs without exposing the internal details to clients.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is a Chain of Responsibility pattern? In what scenarios to apply this pattern?
+
+The Chain of Responsibility pattern decouples the sender of a request from its receiver by giving multiple objects a chance to handle the request. The request passes along a chain of handlers until one handles it--or reaches the end of the chain.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is a Bridge Design Pattern?
+
+The Bridge pattern decouples an abstraction from its implementation so that the two can vary independently. Instead of creating a static inheritance hierarchy that combines both, you use composition to separate 'what something does' from 'how it does it'.
+
+For more info, see: [Design Pattern#BRIDGE](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is a Proxy Design Pattern?
+
+The Proxy pattern provides a surrogate or placeholder for another object to control access to it. The proxy acts as an intermediary, adding a layer of indirection that can handle things like lazy loading, access control, logging, or caching without modifying the original object.
+
+For more info, see: [Design Pattern#PROXY](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is an Adapter Design Pattern?
+
+The Adapter pattern converts the interface of a class into another interface that clients expect. It allows classes to work together that couldn't otherwise because of incompatible interfaces--like a real-world electrical plug adapter.
+
+For more info, see: [Design Pattern#ADAPTER](SYSTEM_DESIGN/design_pattern.md)
+
+#### What is a Factory Design Pattern?
+
+The Factory pattern is a creational design pattern that provides an interface for creating objects without exposing the instantiation logic to the client. It delegates the responsibility of 'which class to instantiate' to a separate factory object or method.
+
+For more info, see: [Design Pattern#FACTORY METHOD](SYSTEM_DESIGN/design_pattern.md)
+
+### Design Principles
+
+#### What is Inversion of Control?
+
+Inversion of Control (IoC) is a design principle where the control flow of a program is inverted: instead of your code calling into libraries or frameworks, the framework calls your code. This shifts the responsibility of managing components, their lifecycle, and dependencies away from your application code to a container or framework. IoC enables better decoupling, testability, and flexibility, with Dependency Injection being the most common implementation.
+
+For more info, see: [System Design Summary](SYSTEM_DESIGN/summary.md)
+
+#### What are the SOLID principles?
+
+SOLID is an acronym for five design principles that make software more maintainable, flexible, and understandable. They are: Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. These principles guide object-oriented design to reduce coupling, increase cohesion, and manage complexity.
+
+For more info, see: [System Design Summary#SOLID](SYSTEM_DESIGN/summary.md)
+
+#### How are design principles different from design patterns?
+
+Design principles are high-level, language-agnostic guidelines that inform good software design, while design patterns are concrete, reusable solutions to specific recurring problems. Principles are the 'why' and 'what' of good design--the foundational beliefs; patterns are the 'how'--proven implementation recipes that embody those principles.
+
+For more info, see: [Design Pattern](SYSTEM_DESIGN/design_pattern.md), [System Design Summary#Design Principle](SYSTEM_DESIGN/summary.md)
+
+#### What do you understand by the Open-Closed Principle (OCP)?
+
+The Open-Closed Principle (OCP) states that software entities should be open for extension but closed for modification. This means you should be able to add new functionality without changing existing code. OCP is typically achieved through abstraction, polymophism, and design patterns likt Strategy, Template Method, and Observer. It's the 'O' in SOLID and is crucial for creating maintainable systems that can evolve without breaking existing features.
+
+For more info, see: [System Design Summary](SYSTEM_DESIGN/summary.md)
 
 ### Optimize
 
@@ -2261,6 +2499,16 @@ For more info, see: EXAMPLE/uber.drawio
 
 ## Tool
 
+### Base
+
+#### What's your go-to method for profiling a slow C++ function?
+
+My go-to approach is a systematic process. First, I use sampling profiler (e.g., perf) to get a high-level view without slowing down the code too much. Then I add targeted instrumentation around the suspect function using Google benchmark. Finally, I use micro-benchmarking to test hypotheses. The key is to measure before optimizing--never guess where the bottleneck is.
+
+#### How do you handle a memory leak in a long-running C++ service?
+
+To handle a memory leak in a long-running C++ service, I follow a systematic process: First, I confirm it's actually a leak using monitoring tools (e.g., RSS). Then I use Valgrind or AddressSanitizer to identify the soruce. For production systems where I can't run heavy tools, I use runtime instrumentation, custom allocator tracking, or restart strategies as a temporary mitigation while investigating the root cause.
+
 ### ROS
 
 TODO
@@ -2268,6 +2516,10 @@ TODO
 ### GDB
 
 For more info, see: [Development Tools#GDB](PROJ/dev_tool.md)
+
+### Perf
+
+TODO
 
 ### Valgrind
 
@@ -2280,3 +2532,7 @@ For more info, see: [Development Tools#Valgrind](PROJ/dev_tool.md)
 The Google Breakpad will storage the core file when application crashed. It contains the runtime values, environment setting and source code. It will help you a lot by checkout the core file.
 
 For more info, see: [Development Tools#Breakpad](PROJ/dev_tool.md)
+
+#### Google Benchmark
+
+TODO

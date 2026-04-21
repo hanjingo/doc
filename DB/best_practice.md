@@ -305,6 +305,14 @@ TODO
 
 
 
+## Normalization
+
+Normalization removes duplicate data by splitting large tables into smaller, related tables. This improves data consistency, reduces redundancy, and makes queries faster.
+
+TODO
+
+
+
 ## Safety
 
 ### Logging
@@ -314,6 +322,8 @@ TODO
 ### Parameterized Query
 
 In `SQL injection` attacks, the attacker manages to get an application to execute an SQL query created by the attacker. The primary defense against SQL injection is to use parameterized queries (prepared statements) everywhere never build SQL with string concatenation.
+
+---
 
 
 
@@ -326,3 +336,7 @@ In `SQL injection` attacks, the attacker manages to get an application to execut
 [3] [MySQL Partitioning for Performance Optimization](https://www.datacamp.com/doc/mysql/mysql-partitioning)
 
 [4] [Partitioning Strategies: Optimizing Database Performance](https://solvaria.com/database-partitioning-strategies/)
+
+[5] [SQL Performance Tuning](https://www.geeksforgeeks.org/sql/sql-performance-tuning/)
+
+[6] [SQL Database Tuning](https://www.geeksforgeeks.org/sql/sql-database-tuning/)

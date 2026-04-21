@@ -25,7 +25,7 @@ The ways to represent a graph:
 
 - adjacency matrix
 
-  For each $edge(u, v)$, we set $A[u][v]$ to true; otherwise the entry in the array is false. If the edge has a weight associated with it, then we can set $A[u][v]$ equal to the weight and use either a very large or a very small weight as a sentinel to indicate nonexistent edges.
+  For each $edge(u, v)$, we set $A[u][v]$ to true; otherwise, the entry in the array is false. If the edge has a weight associated with it, then we can set $A[u][v]$ equal to the weight and use either a very large or a very small weight as a sentinel to indicate nonexistent edges.
 
 - adjacency list
 

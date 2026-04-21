@@ -51,7 +51,7 @@ Binary search is an efficient searching algorithm based on the divide-and-conque
 
 ![binary_search_example](res/binary_search_example.png)
 
-We first initialize pointers $i = 0$ and $j = n - 1$, pointing to the first and last elements of the array respectively, representing the search interval $[0, n - 1]$. Note that square brackets denote a closed interval, which includes the boundary values themselves.
+We first initialize pointers $i = 0$ and $j = n - 1$, pointing to the first and last elements of the array, respectively, representing the search interval $[0, n - 1]$. Note that square brackets denote a closed interval, which includes the boundary values themselves.
 
 Next, perform the following two steps in a loop:
 
@@ -312,6 +312,8 @@ dfs(arr); // 0 1 2 3 4
 2. Auxiliary Space: $O(w)$, where $w$ = width.
 
 ### DFS vs BFS
+
+![bfs_vs_dfs](res/bfs_vs_dfs.png)
 
 | Feature            | BFS                    | DFS                        |
 | :----------------- | :--------------------- | :------------------------- |

@@ -2,30 +2,9 @@
 
 [TOC]
 
-This note summarizes the fundamentals of database transactions and concurrency control with a practical emphasis: the ACID properties, concurrency-control techniques (locking, timestamps, MVCC/snapshot isolation), two‑phase locking and deadlock handling, basic performance considerations, and the role of transaction-processing monitors.
 
-## ACID properties
 
-ACID is a concise way to describe the correctness guarantees that transactions provide:
-
-- Atomicity — all or nothing: a transaction's changes are made visible only if the transaction commits; on failure the system must roll back all partial effects.
-- Consistency — integrity preservation: if the database satisfies integrity constraints before a transaction, then it should satisfy them after the transaction (assuming the transaction is correct). Consistency is usually an application-level property enforced by constraints and transaction logic.
-- Isolation — apparent serial execution: concurrent transactions should behave as if they executed in some serial order. Different isolation levels relax this requirement to trade off performance and concurrency.
-- Durability — persistence of committed updates: once a transaction commits, its effects survive crashes (typically via logging and careful write ordering).
-
-Note: in practice isolation has multiple levels (read uncommitted, read committed, repeatable read, serializable) which allow different anomalies; serializability is the strongest property that guarantees equivalence to some serial schedule.
-
-## Why concurrency control matters
-
-Concurrent execution increases throughput and resource utilization but introduces interference between transactions. Concurrency control enforces correctness (typically serializability or a weaker, controlled isolation) while allowing high concurrency when safe.
-
-Common concurrency-control approaches:
-
-- Lock-based protocols (blocking): transactions acquire locks on data items to prevent conflicting accesses.
-- Timestamp-based protocols: assign logical timestamps to transactions and order conflicting operations by timestamps.
-- Multi-version concurrency control (MVCC): maintain multiple versions of data so readers can access a consistent snapshot without blocking writers; writers create new versions.
-
-Each approach trades implementation complexity, read/write conflict behavior, and performance characteristics.
+An SQL transaction groups one or more SQL operations into a single unit of work to ensure reliable data processing. It guarantees that all operations are completed successfully or none are applied, preserving data integrity.
 
 ## ACID
 
@@ -47,9 +26,25 @@ Durability ensures that, once a transaction has been committed, that transaction
 
 
 
+## Types
+
+### Read Transactions
+
+### Write Transactions
+
+### Distributed Transactions
+
+### Implicit Transactions
+
+### Explicit Transactions
+
+
+
 ## Concurrent Execution
 
 Concurrent execution of transactions improves the throughput of transactions and system utilization, and also reduces the waiting time of transactions.
+
+### Policies
 
 There are various `concurrency-control` policies:
 
@@ -57,10 +52,14 @@ There are various `concurrency-control` policies:
 - Timestamps
 - Multiple Versions and Snapshot Isolation
 
+### Two-Phase Locking Protocol
+
 One protocol that ensures serializability is the `two-phase locking protocol`. This protocol requires that each transaction issue lock and unlock requests in two phases:
 
 1. `Growing phase`. A transaction may obtain locks, but may not release any lock.
 2. `Shrinking phase`. A transaction may release locks, but may not obtain any new locks.
+
+### Deadlock
 
 There are two principal methods for dealing with the deadlock problem:
 

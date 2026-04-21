@@ -53,13 +53,15 @@
 
 ## [DB](DB/README.md)
 
+- [DB Summary](DB/summary.md)
 - [Best Practice](DB/best_practice.md)
-- [Design](DB/design.md)
 - [Relational Model](DB/relational_model.md)
 - [SQL Language](DB/sql.md)
-- [DB Table](DB/table.md)
-- [Terminology](DB/terminology.md)
 - [Transaction](DB/transaction.md)
+
+### [MySQL](DB/MYSQL/README.md)
+
+- [MySQL Data Types](DB/MYSQL/data_type.md)
 
 ### [Redis](DB/REDIS/README.md)
 
