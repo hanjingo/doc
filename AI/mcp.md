@@ -16,7 +16,7 @@ The key participants in the MCP architecture are:
 
 - MCP Host: The AI application that coordinates and manages one or multiple MCP clients.
 - MCP Clients: A component that maintains a connection to an MCP server and obtains context from an MCP server for the MCP host to use.
-- MCP Server: A program that provides context to MCP cleints.
+- MCP Server: A program that provides context to MCP clients.
 
 This architecture provides a clean separation of concerns:
 
@@ -26,7 +26,7 @@ This architecture provides a clean separation of concerns:
 
 ### Data Layer
 
-The data layer implements a JSON-RPC 2.0 based exchange protocol that defines the message structure and semantics. 
+The data layer implements a JSON-RPC 2.0-based exchange protocol that defines the message structure and semantics. 
 
 This layer includes:
 

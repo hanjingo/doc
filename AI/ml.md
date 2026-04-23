@@ -4,19 +4,15 @@
 
 
 
-## Intro
-
 Machine Learning(ML) is a subset of artificial intelligence(AI) focused on algorithms that can "learn" the patterns of training data and, subsequently, make accurate `inferences` about new data. This pattern recognition ability enables machine learning models to make decisions or predictions without explicit, hard-coded instructions.
+
+## Intro
 
 ML finds application in many fields, including natural language processing, computer vision, speech recognition, email filtering, agriculture, and medicine. The application of ML to business problems is known as predictive analytics.
 
-![ml_hierarchy](res/ml_hierarchy.png)
-
-*Deep learning is a subset of machine learning, which is itself a subset of artificial intelligence.*
 
 
-
-## Approaches
+## Types
 
 ![ml_approaches](res/ml_approaches.png)
 
@@ -25,7 +21,7 @@ Machine learning approaches are traditionally divided into three broad categorie
 - **Supervised learning**: The computer is presented with example inputs and their desired outputs, given by a "teacher", and the goal is to learn a general rule that maps inputs to outputs.
 - **Unsupervised learning**: No labels are given to the learning algorithm, leaving it on its own to find structure in its input. Unsupervised learning can be a goal in itself (discovering hidden patterns in data) or a means towards an end (feature learning).
 - **Reinforcement learning**: A computer program interacts with a dynamic environment in which it must perform a certain goal. As it navigates its problem space, the program is provided feedback that's analogous to rewards, which it tries to maximise.
-- **Other types**
+- **Other types**: 
 
 **Note: Although each algorithm has advantages and limitations, no single algorithm works for all problems.**
 
@@ -49,13 +45,19 @@ Semi-supervised learning comprises techniques that use information from the avai
 
 ### Unsupervised learning
 
-Unsupervised learning algorithms find structures in data that has not been labelled, classified or categorized. Instead of responding to feedback, unsupervised learning algorithms identify commonalities in the data and react based on the presence or absence of such commonalities in each new piece of data.
+Unsupervised learning algorithms find structures in data that has not been labelled, classified, or categorized. Instead of responding to feedback, unsupervised learning algorithms identify commonalities in the data and react based on the presence or absence of such commonalities in each new piece of data.
 
 ### Reinforcement learning
 
 ![ml_reinforcement_learning](res/ml_reinforcement_learning.png)
 
 Whereas supervised learning trains models by optimizing them to match ideal exemplars and unsupervised learning algorithms fit themselves to a dataset, reinforcement learning models are trained holistically through trial and error. In RL literature, an AI system is often referred to as an "agent".
+
+
+
+## Workflow
+
+![ml_workflow](res/ml_workflow.png)
 
 
 
@@ -67,39 +69,7 @@ Deep learning algorithms can be applied to unsupervised learning tasks. This is 
 
 ### Deep neural networks
 
-A deep neural network(DNN) is an artificial neural network with multiple layers between the input and output layers. There are different types of neural networks, but they always consist of the same components: neurons, synapses, weights, biases, and functions. These components as a whole function in a way that mimics functions of the human brain, and can be trained like any other ML algorithm.
-
-### Artificial neural networks(ANNs)
-
-![ml_ann](res/ml_ann.png)
-
-Artificial neural networks (ANNs), or connectionist systems, are computing systems vaguely inspired by the biological neural networks that constitute animal brains. Such systems "learn" to perform tasks by considering examples, generally without being programmed with any task-specific rules.
-
-### Recurrent neural networks(CNNs)
-
-![ml_rnn](res/ml_rnn.png)
-
-Recurrent neural networks(RNNs) are designed to work on sequential data. Whereas a conventional feedforward neural network maps a single output, RNNs map a sequence of inputs to an output by operating in a recurrent loop in which the output for a given step in the input sequence serves as input to the computation for the following step. In effect, this creates an internal "memory", called the `hidden` state, that allows RNNs to understand context and order.
-
-### Convolutional neural networks(CNNs)
-
-Convolutional neural networks(CNNs) are used in computer vision. CNNs also have been applied to acoustic modeling for automatic speech recognition(ASR).
-
-### Transformer models
-
-The transformer model is a type of neural network architecture tha texcells at processing sequential data, most prominently associated with alrge language models (LLMs). Transformer models have also achieved elite performance in other fields of artificial intelligence(AI), such as computer vision, speech recognition and time series forecasting.
-
-### Autoencoder
-
-An autoencoder is a type of neural network architecture designed to efficiently compress (encode) input data down to its essential features, then reconstruct (decode) the original input from this compressed representation.
-
-### Mamba model
-
-Mamba is a neural network architecture, derived from state space models (SSMs), used for language modeling and other sequence modeling tasks. The Mamba architecture's fast inference speed and computational efficiency, particularly for long sequences, make it the first competitive alternative to the transformer architecture for autoregressive large language models(LLMs).
-
-### Graph neural network
-
-TODO
+A deep neural network(DNN) is an artificial neural network with multiple layers between the input and output layers. There are different types of neural networks, but they always consist of the same components: neurons, synapses, weights, biases, and functions. These components, as a whole, function in a way that mimics functions of the human brain, and can be trained like any other ML algorithm.
 
 
 
@@ -119,11 +89,11 @@ Decision tree learning uses a **decision tree** as a predictive model to go from
 
 ### Random forest regression
 
-Random forest regression(RFR) falls under the umbrella of decision tree-based models. RFR is an ensemble learning method that builds multiple decision trees and averages their predictions to improve accuracy and to avoid overfitting. To build decision trees, RFR uses bootstrapped sampling. RFR generates independent decision trees, and it can work on single-output data as well as multiple regressor tasks. This makes RFR compatible to be use in various applications.
+Random forest regression(RFR) falls under the umbrella of decision tree-based models. RFR is an ensemble learning method that builds multiple decision trees and averages their predictions to improve accuracy and to avoid overfitting. To build decision trees, RFR uses bootstrapped sampling. RFR generates independent decision trees, and it can work on single-output data as well as multiple regressor tasks. This makes RFR compatible for use in various applications.
 
 ### Support-vector machines
 
-Support-vector machines (SVMs), also known as support-vector networks, are a set of related supervised learning methods used for classification and regression. Given a set of training example, each marked as belonging to one of two categories, an SVM training algorithm builds a model that predicts whether a new example falls into one category.
+Support-vector machines (SVMs), also known as support-vector networks, are a set of related supervised learning methods used for classification and regression. Given a set of training examples, each marked as belonging to one of two categories, an SVM training algorithm builds a model that predicts whether a new example falls into one category.
 
 ### Regression analysis
 
@@ -163,15 +133,15 @@ Federated learning is an adapted form of distributed artificial intelligence to 
 
 ## Reference
 
-[1] [WIKIPEDIA: Machine learning](https://en.wikipedia.org/wiki/Machine_learning)
+[1] Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N. Gomez; Łukasz Kaiser; Illia Polosukhin. Attention Is All You Need
 
-[2] [WIKIPEDIA: Deep Learning](https://en.wikipedia.org/wiki/Deep_learning)
+[2] [WIKIPEDIA: Machine learning](https://en.wikipedia.org/wiki/Machine_learning)
 
-[3] [IBM: What is machine learning?](https://www.ibm.com/think/topics/machine-learning)
+[3] [WIKIPEDIA: Deep Learning](https://en.wikipedia.org/wiki/Deep_learning)
 
-[4] [IBM: What is a transformer model?](https://www.ibm.com/think/topics/transformer-model#1280257394)
+[4] [IBM: What is machine learning?](https://www.ibm.com/think/topics/machine-learning)
 
-[5] Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N. Gomez; Łukasz Kaiser; Illia Polosukhin . Attention Is All You Need
+[5] [IBM: What is a transformer model?](https://www.ibm.com/think/topics/transformer-model#1280257394)
 
 [6] [IBM: What is an autoencoder?](https://www.ibm.com/think/topics/autoencoder#763338462)
 

@@ -569,6 +569,8 @@ INSERT INTO Emp (EmpID, Name, Country, Age, Salary) VALUES
 
 #### Primary Key Constraints
 
+The `PRIMARY KEY` constraint in SQL uniquely identifies each record in a table and ensures strong data integrity. It prevents duplicate and `NULL` values, making it essential for reliable relational database design.
+
 Syntax:
 
 - SQL primary key syntax with `CREATE TABLE` statement is
@@ -611,6 +613,8 @@ INSERT INTO Persons VALUES (NULL, 'Miller', 'Ethan', 32);
 
 #### Foreign Key Constraints
 
+A `FOREIGN KEY` constraint is a concept in SQL that enforces a valid relationship between two tables by ensuring that the values stored in the child table correspond to existing values in the parent table. This constraint protects the database from inconsistent or invalid relational data.
+
 Syntax:
 
 - Create a foreign key in `CREATE TABLE` statement
@@ -634,6 +638,45 @@ Syntax:
      FOREIGN KEY (column1, column2, ...)
      REFERENCES parent_table(column1, column2, ...);
   ```
+
+Examples:
+
+```sql
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Persons;
+CREATE TABLE Persons (
+  PersonID INT PRIMARY KEY,
+  LastName VARCHAR(255),
+  FirstName VARCHAR(255),
+  Age INT
+);
+
+INSERT INTO Persons (PersonID, LastName, FirstName, Age) VALUES
+  (1, 'Johnson', 'Emily', 25),
+  (2, 'Walker', 'James', 30);
+  
+CREATE TABLE Orders (
+  OrderID INT PRIMARY KEY,
+  PersonID INT,
+  OrderDate DATE,
+  Amount DECIMAL(10,2),
+  CONSTRAINT fk_orders_person
+  FOREIGN KEY (PersonID)
+  REFERENCES Persons(PersonID)
+  ON UPDATE CASCADE
+  ON DELETE RESTRICT
+);
+
+INSERT INTO Orders (OrderID, PersonID, OrderDate, Amount) VALUES
+(1001, 1, '2026-04-20', 49.99),
+(1002, 2, '2026-04-21', 79.50);
+
+-- ❌ERROR! Cannot add or update a child row: a foreign key constraint fails
+INSERT INTO Orders (OrderID, PersonID, OrderDate, Amount) VALUES (1003, 999, '2026-04-22', 10.00);
+
+-- ❌ERROR! PersonID=1 has child rows in Orders, so this should fail:
+DELETE FROM Persons WHERE PersonID = 1;
+```
 
 #### Composite Key Constraints
 
@@ -1893,7 +1936,17 @@ There are two types of aliases:
 Examples:
 
 ```sql
-SELECT c.CustomerName AS Name, c.Country AS Location FROM Customer AS c WHERE c.Age >= 21;
+DROP TABLE IF EXISTS Customer;
+CREATE TABLE Customer (
+    name VARCHAR(50),
+    age INT,
+    country VARCHAR(50)
+);
+INSERT INTO Customer (name, age, country) VALUES 
+	('Alice', 20, 'JAPAN'), 
+	('Bob', 21, 'CHINA');
+	
+SELECT c.name AS Name, c.country AS Location FROM Customer AS c WHERE c.age >= 21;
 ```
 
 ---
@@ -2396,17 +2449,45 @@ SELECT column_name(s) FROM table_name WHERE EXISTS ( SELECT column_name(s) FROM 
 Examples:
 
 ```sql
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    website VARCHAR(50),
+  	name VARCHAR(50)
+);
+INSERT INTO Customers (customer_id, website, name) VALUES 
+	(1, 'www.google.com', 'harry'),
+	(2, 'www.google.com', 'bob');
+	
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT
+);
+INSERT INTO Orders (order_id, customer_id) VALUES 
+	(1, 1);
+	
 -- Using `EXISTS` with `SELECT`
 SELECT c1.* FROM Customers c1 WHERE EXISTS (SELECT 1 FROM Customers c2 WHERE c2.website = c1.website AND c2.customer_id <> c1.customer_id);
 
 -- Using `NOT` with `EXISTS`
-SELECT c.lname, c.fname FROM Customers c WHERE NOT EXISTS (SELECT 1 FROM Orders o WHERE o.CustomerID = c.customer_id);
+SELECT * FROM Customers c WHERE NOT EXISTS (SELECT 1 FROM Orders o WHERE o.customer_id = c.customer_id);
 
 -- Using `EXISTS` condition with `DELETE` statement
-DELETE FROM Orders WHERE EXISTS (SELECT 1 FROM Customers c WHERE c.customer_id = Orders.CustomerID AND c.website = 'abc.com');
+DELETE FROM Orders WHERE EXISTS (SELECT 1 FROM Customers c WHERE c.customer_id = Orders.customer_id AND c.website = 'www.google.com');
 
 -- Using `EXISTS` condition with `UPDATE` statement
-UPDATE Customers SET lname = 'Martin' WHERE EXISTS (SELECT 1 FROM Customers c2 WHERE c2.customer_id = 401 AND c2.customer_id = Customers.customer_id);
+UPDATE Customers c
+SET c.name = 'KIK'
+WHERE EXISTS (
+  SELECT 1
+  FROM (
+    SELECT customer_id
+    FROM Customers
+    WHERE customer_id = 2
+  ) x
+  WHERE x.customer_id = c.customer_id
+);
 ```
 
 ### CASE
@@ -2675,7 +2756,62 @@ SELECT columns FROM table1 FULL JOIN table2 ON table1.column = table2.column;
 Examples:
 
 ```sql
-TODO
+DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Customers (
+  customer_id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  customer_id INT,
+  amount DECIMAL(10,2)
+);
+
+INSERT INTO Customers (customer_id, name) VALUES
+  (1, 'Harry'),
+  (2, 'Bob'),
+  (3, 'Alice');
+
+INSERT INTO Orders (order_id, customer_id, amount) VALUES
+  (101, 1, 99.99),
+  (102, 1, 49.50),
+  (103, 4, 20.00);
+
+SELECT
+  c.customer_id,
+  c.name,
+  o.order_id,
+  o.amount
+FROM Customers c
+	LEFT JOIN Orders o
+ON c.customer_id = o.customer_id
+
+UNION ALL
+
+SELECT
+  c.customer_id,
+  c.name,
+  o.order_id,
+  o.amount
+FROM Customers c
+  RIGHT JOIN Orders o
+ON c.customer_id = o.customer_id
+WHERE c.customer_id IS NULL
+
+ORDER BY customer_id, order_id;
+
++-------------+-------+----------+--------+
+| customer_id | name  | order_id | amount |
++-------------+-------+----------+--------+
+|        NULL | NULL  |      103 |  20.00 |
+|           1 | Harry |      101 |  99.99 |
+|           1 | Harry |      102 |  49.50 |
+|           2 | Bob   |     NULL |   NULL |
+|           3 | Alice |     NULL |   NULL |
++-------------+-------+----------+--------+
 ```
 
 ### Cross Join
@@ -2691,7 +2827,40 @@ SELECT * FROM table1 CROSS JOIN table2;
 Examples:
 
 ```sql
-SELECT * FROM Customer CROSS JOIN Orders;
+DROP TABLE IF EXISTS Sizes;
+DROP TABLE IF EXISTS Colors;
+
+CREATE TABLE Sizes (
+  size_code VARCHAR(10) PRIMARY KEY
+);
+CREATE TABLE Colors (
+  color_name VARCHAR(20) PRIMARY KEY
+);
+INSERT INTO Sizes (size_code) VALUES
+  ('S'),
+  ('M'),
+  ('L');
+INSERT INTO Colors (color_name) VALUES
+  ('Red'),
+  ('Blue');
+
+SELECT
+  s.size_code,
+  c.color_name
+FROM Sizes s
+CROSS JOIN Colors c
+ORDER BY s.size_code, c.color_name;
+
++-----------+------------+
+| size_code | color_name |
++-----------+------------+
+| L         | Blue       |
+| L         | Red        |
+| M         | Blue       |
+| M         | Red        |
+| S         | Blue       |
+| S         | Red        |
++-----------+------------+
 ```
 
 ### Self Join
@@ -2712,7 +2881,42 @@ SELECT columns FROM table AS alias1 JOIN table AS alias2 ON alias1.column = alia
 Examples:
 
 ```sql
-SELECT e.employee_name AS employee, m.employee_name AS manager FROM GFGemployees AS e JOIN GFGemployees AS m ON e.manager_id = m.employee_id;
+DROP TABLE IF EXISTS Employees;
+CREATE TABLE Employees (
+  emp_id INT PRIMARY KEY,
+  emp_name VARCHAR(50) NOT NULL,
+  manager_id INT NULL
+);
+
+INSERT INTO Employees (emp_id, emp_name, manager_id) VALUES
+  (1, 'CEO', NULL),
+  (2, 'Alice', 1),
+  (3, 'Bob', 1),
+  (4, 'Carol', 2),
+  (5, 'David', 2),
+  (6, 'Eve', 3);
+
+-- Self join: employee row joins manager row in the same table
+SELECT
+  e.emp_id,
+  e.emp_name AS employee,
+  m.emp_id AS manager_id,
+  m.emp_name AS manager
+FROM Employees e
+  LEFT JOIN Employees m
+ON e.manager_id = m.emp_id
+ORDER BY e.emp_id;
+
++--------+----------+------------+---------+
+| emp_id | employee | manager_id | manager |
++--------+----------+------------+---------+
+|      1 | CEO      |       NULL | NULL    |
+|      2 | Alice    |          1 | CEO     |
+|      3 | Bob      |          1 | CEO     |
+|      4 | Carol    |          2 | Alice   |
+|      5 | David    |          2 | Alice   |
+|      6 | Eve      |          3 | Bob     |
++--------+----------+------------+---------+
 ```
 
 ### UPDATE with JOIN
@@ -2729,29 +2933,56 @@ ON target_table.column_name = source_table.column_name
 WHERE condition;
 ```
 
-- target_table: The table whose records you want to update.
-- source_table: The table containing the data you want to use for the update.
-- SET: Specifies the columns in the target table that will be updated.
-- INNER JOIN: Ensures only matching rows from both tables are considered.
-- ON: The condition that specifies how the tables are related.
-- WHERE: An optional clause to filter which rows to update.
+- `target_table`: The table whose records you want to update.
+- `source_table`: The table containing the data you want to use for the update.
+- `SET`: Specifies the columns in the target table that will be updated.
+- `INNER JOIN`: Ensures only matching rows from both tables are considered.
+- `ON`: The condition that specifies how the tables are related.
+- `WHERE`: An optional clause to filter which rows to update.
 
 Examples:
 
 ```sql
-UPDATE Geeks1  
-SET col2 = Geeks2.col2,  
-col3 = Geeks2.col3  
-FROM Geeks1  
-INNER JOIN Geeks2 
-ON Geeks1.col1 = Geeks2.col1  
-WHERE Geeks1.col1 IN (21, 31);
+DROP TABLE IF EXISTS Geeks1;
+CREATE TABLE Geeks1 (
+  col1 INT,
+  col2 INT,
+  col3 INT,
+  memo VARCHAR(50)
+);
+INSERT INTO Geeks1 (col1, col2, col3, memo) VALUES
+  (1, 1, 1, 'GEEK1-COL1'),
+  (2, 2, 2, 'GEEK1-COL2'),
+  (3, 3, 3, 'GEEK1-COL3');
 
-UPDATE Geeks1
-SET col2 = ISNULL(Geeks2.col2, 0)
-FROM Geeks1
-LEFT JOIN Geeks2
-ON Geeks1.col1 = Geeks2.col1;
+DROP TABLE IF EXISTS Geeks2;
+CREATE TABLE Geeks2 (
+  col1 INT,
+  col2 INT,
+  col3 INT,
+  memo VARCHAR(50)
+);
+INSERT INTO Geeks2 (col1, col2, col3, memo) VALUES
+  (1, 10, 10, 'GEEK2-COL1'),
+  (2, 20, 20, 'GEEK2-COL2'),
+  (3, 30, 30, 'GEEK2-COL3');
+
+UPDATE Geeks1 g1
+JOIN Geeks2 g2
+  ON g1.col1 = g2.col1
+SET
+  g1.col2 = g2.col2,
+  g1.col3 = g2.col3
+WHERE g1.col1 IN (0, 2);
+
+SELECT * FROM Geeks1;
++------+------+------+------------+
+| col1 | col2 | col3 | memo       |
++------+------+------+------------+
+|    1 |    1 |    1 | GEEK1-COL1 |
+|    2 |   20 |   20 | GEEK1-COL2 |
+|    3 |    3 |    3 | GEEK1-COL3 |
++------+------+------+------------+
 ```
 
 ### DELETE JOIN
@@ -2774,13 +3005,45 @@ WHERE condition;
 Example:
 
 ```sql
-DELETE Orders
-FROM Orders
-JOIN Customers
-ON Orders.customer_id = Customers.customer_id
-WHERE Customers.status = 'inactive';
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Customers;
 
-SELECT * FROM Orders;
+CREATE TABLE Customers (
+  customer_id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO Customers (customer_id, name) VALUES
+(1, 'Harry'),
+(2, 'Bob'),
+(3, 'Alice'),
+(4, 'Eve');
+
+INSERT INTO Orders (order_id, customer_id, amount) VALUES
+(101, 1, 120.00),
+(102, 1, 80.00),
+(103, 3, 50.00);
+
+DELETE c
+FROM Customers c
+LEFT JOIN Orders o
+  ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;
+
+SELECT * FROM Customers ORDER BY customer_id;
+
++-------------+-------+
+| customer_id | name  |
++-------------+-------+
+|           1 | Harry |
+|           3 | Alice |
++-------------+-------+
 ```
 
 ### Recursive Join
@@ -2806,20 +3069,51 @@ WITH RECURSIVE cte_name AS (
 Examples:
 
 ```sql
+DROP TABLE IF EXISTS employees;
+CREATE TABLE employees (
+  employee_id INT PRIMARY KEY,
+  employee_name VARCHAR(100) NOT NULL,
+  manager_id INT NULL,
+  age INT NOT NULL
+);
+INSERT INTO employees (employee_id, employee_name, manager_id, age) VALUES
+(1, 'Michael', NULL, 45),
+(2, 'Sarah',   1,    38),
+(3, 'David',   1,    35),
+(4, 'Emma',    2,    30),
+(5, 'James',   2,    29),
+(6, 'Olivia',  3,    31),
+(7, 'Daniel',  3,    28),
+(8, 'Sophia',  4,    26);
+
 WITH RECURSIVE employee_hierarchy AS (
-    -- Anchor query: Start with Michael  (employee_id = 1)
-    SELECT employee_id, employee_name, manager_id, age
-    FROM employees
-    WHERE employee_id = 1
-    
-    UNION ALL
-    
-    -- Recursive query: Join the employees table with itself to get the employees reporting to each manager
-    SELECT e.employee_id, e.employee_name, e.manager_id, e.age
-    FROM employees e
-    INNER JOIN employee_hierarchy eh ON e.manager_id = eh.employee_id
+  -- Anchor: start at Michael
+  SELECT
+    employee_id,
+    employee_name,
+    manager_id,
+    age,
+    0 AS level,
+    CAST(employee_name AS CHAR(500)) AS path
+  FROM employees
+  WHERE employee_id = 1
+
+  UNION ALL
+
+  -- Recursive part: direct reports of previous level
+  SELECT
+    e.employee_id,
+    e.employee_name,
+    e.manager_id,
+    e.age,
+    eh.level + 1 AS level,
+    CONCAT(eh.path, ' -> ', e.employee_name) AS path
+  FROM employees e
+  INNER JOIN employee_hierarchy eh
+    ON e.manager_id = eh.employee_id
 )
-SELECT * FROM employee_hierarchy;
+
+SELECT * FROM employee_hierarchy ORDER BY level, employee_id;
 ```
 
 ---
@@ -2913,21 +3207,33 @@ SELECT cust_name, cust_contact FROM Customers WHERE SOUNDEX(cust_contact) = SOUN
 Examples:
 
 ```sql
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_date DATE
+);
+
+INSERT INTO Orders (order_id, order_date) VALUES
+  (1, '2025-01-01'),
+  (2, '2026-01-01'),
+  (3, '2026-02-01');
+
 -- MySQL, MariaDB
-SELECT order_num FROM Orders WHERE YEAR(order_date) = 2012;
+SELECT * FROM Orders WHERE YEAR(order_date) = 2025;
 
 -- SQL Server
-SELECT order_num FROM Orders WHERE DATEPART(yy, order_date) = 2012;
+SELECT order_num FROM Orders WHERE DATEPART(yy, order_date) = 2025;
 
 -- Access
-SELECT order_num FROM Orders WHERE DATEPART('yyyy', order_date) = 2012;
+SELECT order_num FROM Orders WHERE DATEPART('yyyy', order_date) = 2025;
 
 -- Oracle
-SELECT order_num FROM Orders WHERE to_number(to_char(order_date, 'YYYY')) = 2012;
-SELECT order_num FROM Orders WHERE order_date BETWEEN to_date('01-01-2012') AND to_date('12-31-2012');
+SELECT order_num FROM Orders WHERE to_number(to_char(order_date, 'YYYY')) = 2025;
+SELECT order_num FROM Orders WHERE order_date BETWEEN to_date('01-01-2025') AND to_date('12-31-2025');
 
 -- SQLite
-SELECT order_num FROM Orders WHERE strftime('%Y', order_date) = '2012';
+SELECT order_num FROM Orders WHERE strftime('%Y', order_date) = '2025';
 ```
 
 ### Numeric functions
@@ -2968,21 +3274,116 @@ SELECT RAND(); -- 0.287372
 
 ### JSON Functions
 
-#### Working with JSON in SQL Server
-
-| Function      | Desc |
-| ------------- | ---- |
-| `ISJSON`      |      |
-| `JSON_VALUE`  |      |
-| `JSON_QUERY`  |      |
-| `JSON_MODIFY` |      |
-| `FOR JSON`    |      |
-| `OPENJSON`    |      |
+| Function      | Oral Answer                                                  |
+| :------------ | :----------------------------------------------------------- |
+| `ISJSON`      | "Checks if a string contains valid JSON — returns 1 if yes, 0 if no." |
+| `JSON_VALUE`  | "Extracts a single scalar value from JSON — like a specific number, string, or boolean. Returns one value." |
+| `JSON_QUERY`  | "Extracts an entire JSON object or array — not a single value. Returns a JSON fragment." |
+| `JSON_MODIFY` | "Updates or modifies JSON content — you can add, change, or delete properties inside a JSON string." |
+| `FOR JSON`    | "Converts query results from rows into JSON format — opposite of `OPENJSON`. Used at the end of a `SELECT`." |
+| `OPENJSON`    | "Turns JSON text into rows and columns — so you can query JSON like a table. Often used with `CROSS APPLY`." |
 
 Examples:
 
 ```sql
--- Storing JSON in SQL Server
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  user_id INT PRIMARY KEY,
+  profile JSON NOT NULL
+);
+
+CREATE TABLE orders (
+  order_id INT PRIMARY KEY,
+  user_id INT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO users (user_id, profile) VALUES
+(1, JSON_OBJECT(
+      'name', 'Alice',
+      'age', 30,
+      'address', JSON_OBJECT('city', 'Seoul', 'zip', '04524'),
+      'skills', JSON_ARRAY('SQL', 'Python')
+    )),
+(2, JSON_OBJECT(
+      'name', 'Bob',
+      'age', 25,
+      'address', JSON_OBJECT('city', 'Busan', 'zip', '48058'),
+      'skills', JSON_ARRAY('Java')
+    ));
+
+INSERT INTO orders (order_id, user_id, amount) VALUES
+  (101, 1, 120.50),
+  (102, 1, 80.00),
+  (103, 2, 50.00);
+
+SELECT
+  '{"a":1}' AS sample_json,
+  JSON_VALID('{"a":1}') AS is_valid_json,
+  JSON_VALID('{a:1}')   AS invalid_json_check;
+
+SELECT
+  user_id,
+  profile->>'$.name' AS name_scalar,   -- shorthand
+  JSON_UNQUOTE(JSON_EXTRACT(profile, '$.address.city')) AS city_scalar
+FROM users
+ORDER BY user_id;
+
+SELECT
+  user_id,
+  JSON_EXTRACT(profile, '$.address') AS address_object,
+  profile->'$.skills' AS skills_array
+FROM users
+ORDER BY user_id;
+
+UPDATE users
+SET profile = JSON_SET(profile, '$.age', 31)
+WHERE user_id = 1;
+
+UPDATE users
+SET profile = JSON_REPLACE(profile, '$.address.city', 'Incheon')
+WHERE user_id = 1;
+
+UPDATE users
+SET profile = JSON_REMOVE(profile, '$.address.zip')
+WHERE user_id = 2;
+
+SELECT user_id, JSON_PRETTY(profile) AS profile_after_modify
+FROM users
+ORDER BY user_id;
+
+SELECT JSON_ARRAYAGG(
+         JSON_OBJECT(
+           'user_id', u.user_id,
+           'name', u.profile->>'$.name',
+           'orders', (
+             SELECT JSON_ARRAYAGG(
+                      JSON_OBJECT('order_id', o.order_id, 'amount', o.amount)
+                    )
+             FROM orders o
+             WHERE o.user_id = u.user_id
+           )
+         )
+       ) AS users_json
+FROM users u;
+
+SELECT
+  u.user_id,
+  jt.skill
+FROM users u
+JOIN JSON_TABLE(
+  u.profile,
+  '$.skills[*]' COLUMNS (
+    skill VARCHAR(50) PATH '$'
+  )
+) AS jt
+ORDER BY u.user_id, jt.skill;
+```
+
+```sql
+-- SQL Server
 CREATE TABLE Authors (
     ID INT IDENTITY NOT NULL PRIMARY KEY,
     AuthorName NVARCHAR(MAX),
@@ -3018,37 +3419,18 @@ If (ISJSON(@JSON)=1)
 	SELECT @JSON AS 'JSON Text'
 ```
 
-#### Working with JSON in AZure SQL Database
-
-| Function        | Desc |
-| --------------- | ---- |
-| `JSON_VALUE()`  |      |
-| `JSON_QUERY()`  |      |
-| `JSON_MODIFY()` |      |
-| `OPENJSON()`    |      |
-
-Examples:
-
-```sql
-SELECT JSON_VALUE(data, '$.name') AS name FROM Users;
-
-SELECT JSON_QUERY(data, '$.address') AS address FROM Users;
-
-UPDATE Users SET data = JSON_MODIFY(data, '$.address.city', 'New York') WHERE UserID = 1;
-```
-
 ### Conversion Functions
 
 There are two main types of data type conversion in SQL:
 
 - Implicit Data Type Conversion
 
-  |       From       |    To    |
-  | :--------------: | :------: |
-  | VARCHAR2 or CHAR |  NUMBER  |
-  | VARCHAR2 or CHAR |   DATE   |
-  |       DATE       | VARCHAR2 |
-  |      NUMBER      | VARCHAR2 |
+  |         From         |     To     |
+  | :------------------: | :--------: |
+  | `VARCHAR2` or `CHAR` |  `NUMBER`  |
+  | `VARCHAR2` or `CHAR` |   `DATE`   |
+  |        `DATE`        | `VARCHAR2` |
+  |       `NUMBER`       | `VARCHAR2` |
 
   Automatic conversion of one data type to another by SQL during query execution.
 
@@ -3058,46 +3440,14 @@ There are two main types of data type conversion in SQL:
 
   Done by the user when SQL can't convert automatically or when precise control is needed.
 
-Syntax:
-
-- `TO_CHAR()`: Converts numbers or dates to a string.
-
-  Using the function with Date:
-
-  | Format |                   Description                    |
-  | :----: | :----------------------------------------------: |
-  |  YYYY  |               Full-year in Numbers               |
-  |  YEAR  |                 Year spelled out                 |
-  |   YY   |             Two-digit value of year              |
-  |   MM   |          Two-digit value for the month           |
-  | MONTH  |              Full name of the month              |
-  |  MON   |      Three Letter abbreviation of the month      |
-  |   D    |             Number of Days in a Week             |
-  |   DY   | Three-letter abbreviation of the day of the week |
-  |  DAY   |               Full Name of the Day               |
-  |   DD   |             Numeric day of the month             |
-
-  Using the function with number:
-
-  | **Format** |              **Description**               |
-  | :--------: | :----------------------------------------: |
-  |     9      |             Represent a number             |
-  |     0      |       Forces a zero to be displayed        |
-  |     $      |       places a floating dollar sign        |
-  |     L      | It uses the floating local currency symbol |
-  |     .      |           Print a decimal point            |
-  |     ,      |        Prints a Thousand indicator         |
-
-- `TO_NUMBER()`: Converts a string to a numeric type.
-
-- `TO_DATE()`: Converts a string to a date.
-
 Examples:
 
 ```sql
-SELECT employee_id, TO_CHAR(hire_date, 'MM/YY') Month_Hired FROM employees WHERE last_name = 'Higgins';
-
-SELECT last_name, hire_date FROM employees WHERE hire_date = TO_DATE('June 20, 2004', 'fxMonth DD, YYYY');
+-- MySQL
+SELECT DATE_FORMAT('2026-04-22 14:35:10', '%m/%y');
+SELECT STR_TO_DATE('2026-04-22 14:35:10', '%Y-%m-%d %H:%i:%s');
+SELECT CONVERT(1234.56, CHAR);
+SELECT CONVERT('123.45', DECIMAL(10,2));
 ```
 
 ### Aggregation Functions
@@ -3129,12 +3479,21 @@ Syntax:
 Examples:
 
 ```sql
-SELECT COUNT(*) AS num_cust FROM Customers;
-SELECT COUNT(DISTINCT Country) FROM Customers;
-SELECT COUNT(cust_email) AS num_cust FROM Customers; -- count non-null emails
-SELECT COUNT(CASE WHEN Age > 30 THEN 1 ELSE NULL END) AS Adults FROM Customers;
-SELECT Country, COUNT(*) AS CustomerCount FROM Customers GROUP BY Country;
-SELECT Country, COUNT(*) AS CustomerCount FROM Customers GROUP BY Country HAVING COUNT(*) > 2;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT
+);
+
+INSERT INTO Orders (order_id, order_num) VALUES
+  (1, 30),
+  (2, 50),
+  (3, 100);
+  
+SELECT COUNT(*) AS cnt FROM Orders;
+SELECT COUNT(DISTINCT order_id) FROM Orders;
+SELECT COUNT(CASE WHEN order_num > 30 THEN 1 ELSE NULL END) AS cnt FROM Orders;
 ```
 
 **Notice**:
@@ -3166,13 +3525,24 @@ SELECT SUM(column_name) FROM table_name;
 Examples:
 
 ```sql
-SELECT SUM(Price) AS TotalPrice FROM Sales;
-SELECT SUM(Quantity * Price) AS TotalRevenue FROM Sales;
-SELECT Product, SUM(Quantity * Price) AS TotalRevenue FROM Sales GROUP BY Product;
-SELECT SUM(DISTINCT Price) AS SumDistinctPrice FROM Sales;
-SELECT Product, SUM(Quantity * Price) AS TotalRevenue FROM Sales GROUP BY Product HAVING SUM(Quantity * Price) > 2000;
-SELECT SUM(quantity) AS items_ordered FROM OrderItems WHERE order_num = 20005;
-SELECT SUM(item_price*quantity) AS total_price FROM OrderItems WHERE order_num = 20005;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT,
+  order_price INT
+);
+
+INSERT INTO Orders (order_id, order_num, order_price) VALUES
+  (1, 30, 1000),
+  (2, 50, 2000),
+  (3, 100, 100);
+  
+SELECT SUM(order_num) AS TotalNum FROM Orders;
+SELECT SUM(order_num * order_price) AS TotalRevenue FROM Orders;
+SELECT SUM(order_num * order_price) AS TotalRevenue FROM Orders GROUP BY order_num;
+SELECT SUM(DISTINCT order_price) AS SumDistinctPrice FROM Orders;
+SELECT SUM(order_num * order_price) AS TotalRevenue FROM Orders GROUP BY order_num HAVING SUM(order_num * order_price) > 10000;
 ```
 
 #### MIN()
@@ -3186,11 +3556,20 @@ SELECT MIN(column_name) FROM table_name;
 Examples:
 
 ```sql
-SELECT MIN(prod_price) AS min_price FROM Products;
-SELECT MIN(price) AS [Lowest Invoice] FROM Sales WHERE InvoiceMonth = 'July';
-SELECT MIN(price) AS [Lowest Invoice] FROM Sales WHERE InvoiceMonth IN ('June', 'July');
-SELECT InvoiceMonth, MIN(price) AS [Lowest Invoice] FROM Sales GROUP BY InvoiceMonth;
-SELECT InvoiceMonth, MIN(price) AS [Lowest Invoice] FROM Sales WHERE InvoiceMonth IN ('June', 'July') GROUP BY InvoiceMonth;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT,
+  order_price INT
+);
+
+INSERT INTO Orders (order_id, order_num, order_price) VALUES
+  (1, 30, 1000),
+  (2, 50, 2000),
+  (3, 100, 100);
+  
+SELECT MIN(order_price) AS min_price FROM Orders;
 ```
 
 #### MAX()
@@ -3204,13 +3583,20 @@ SELECT MAX(column_name) FROM table_name;
 Examples:
 
 ```sql
-SELECT MAX(prod_price) AS max_price FROM Products;
-SELECT MAX(total_sales) AS [Highest Total Sales] FROM Products;
-SELECT MAX(price) AS [Highest Price in Electronics] FROM Products WHERE category = 'Electronics';
-SELECT MAX(sale_date) AS [Latest Sale Date] FROM Products;
-SELECT product_name, MAX(total_sales) AS [Top Sales Amount] FROM Products GROUP BY product_name;
-SELECT * FROM Products WHERE total_sales = (SELECT MAX(total_sales) FROM Products);
-SELECT product_name, MAX(total_sales) AS HighestSale FROM Products GROUP BY product_name HAVING MAX(total_sales) > 50000;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT,
+  order_price INT
+);
+
+INSERT INTO Orders (order_id, order_num, order_price) VALUES
+  (1, 30, 1000),
+  (2, 50, 2000),
+  (3, 100, 100);
+  
+SELECT MAX(order_price) AS min_price FROM Orders;
 ```
 
 #### AVG()
@@ -3224,12 +3610,80 @@ SELECT AVG(column_name) FROM table_name;
 Examples:
 
 ```sql
-SELECT AVG(prod_price) AS avg_price FROM Products;
-SELECT AVG(prod_price) AS avg_price FROM Products WHERE vend_id = 'DLL01';
-SELECT AVG(score) AS overall_average_score FROM student_scores;
-SELECT subject, AVG(score) AS average_score FROM student_scores GROUP BY subject;
-SELECT AVG(score) AS average_science_score FROM student_scores WHERE subject = 'Science';
-SELECT subject, AVG(score) AS average_score FROM student_scores GROUP BY subject HAVING AVG(score) > 85;
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT,
+  order_price INT
+);
+
+INSERT INTO Orders (order_id, order_num, order_price) VALUES
+  (1, 30, 1000),
+  (2, 50, 2000),
+  (3, 100, 100);
+
+SELECT AVG(order_price) AS avg_price FROM Orders;
+```
+
+### User-Defined Function (UDF)
+
+A User-Defined Function (UDF) is a function created by the database user to perform specific operations that are not covered by built-in functions. UDFs allow us to encapsulate complex logic, make the code more reusable, and streamline database operations.
+
+Examples:
+
+```sql
+-- Clean setup
+DROP TABLE IF EXISTS employees;
+CREATE TABLE employees (
+  employee_id INT PRIMARY KEY,
+  employee_name VARCHAR(100) NOT NULL,
+  salary DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO employees (employee_id, employee_name, salary) VALUES
+  (1, 'Michael', 120000.00),
+  (2, 'Sarah',    85000.00),
+  (3, 'David',    60000.00);
+
+-- If function already exists, drop it first
+DROP FUNCTION IF EXISTS fn_tax;
+
+-- Change delimiter so we can define function body
+DELIMITER $$
+
+CREATE FUNCTION fn_tax(
+  p_salary DECIMAL(10,2),
+  p_rate   DECIMAL(5,2)   -- e.g. 10.00 means 10%
+)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+  DECLARE v_tax DECIMAL(10,2);
+
+  -- Simple validation
+  IF p_salary IS NULL OR p_rate IS NULL OR p_salary < 0 OR p_rate < 0 THEN
+    RETURN NULL;
+  END IF;
+
+  SET v_tax = ROUND(p_salary * (p_rate / 100), 2);
+  RETURN v_tax;
+END$$
+
+DELIMITER ;
+
+-- Call function directly
+SELECT fn_tax(1000.00, 12.50) AS tax_amount;
+
+-- Use function in query
+SELECT
+  employee_id,
+  employee_name,
+  salary,
+  fn_tax(salary, 10.00) AS tax_10_percent,
+  salary - fn_tax(salary, 10.00) AS salary_after_tax
+FROM employees
+ORDER BY employee_id;
 ```
 
 
@@ -3247,17 +3701,30 @@ Syntax:
 CREATE VIEW view_name AS SELECT column1, column2, ... FROM table_name WHERE condition;
 ```
 
-- CREATE VIEW view_name: Creates a view with the specified name.
-- AS: Indicates that the view will be defined based on the following SELECT query.
-- SELECT column1, column2…: Columns included in the view (can be from one or multiple tables).
-- FROM table_name: Table(s) from which the view will fetch data.
-- WHERE condition: Optional filter to restrict the data included in the view.
+- `CREATE VIEW view_name`: Creates a view with the specified name.
+- `AS`: Indicates that the view will be defined based on the following SELECT query.
+- `SELECT column1, column2…`: Columns included in the view (can be from one or multiple tables).
+- `FROM table_name`: Table(s) from which the view will fetch data.
+- `WHERE condition`: Optional filter to restrict the data included in the view.
 
 Examples:
 
 ```sql
+DROP TABLE IF EXISTS Orders;
+
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  order_num INT,
+  order_price INT
+);
+
+INSERT INTO Orders (order_id, order_num, order_price) VALUES
+  (1, 30, 1000),
+  (2, 50, 2000),
+  (3, 100, 100);
+  
 -- Creating a simple view
-CREATE VIEW expensive_products AS SELECT product_id, product_name, price FROM products WHERE price > 100;
+CREATE VIEW expensive_products AS SELECT * FROM Orders WHERE order_price > 1000;
 
 -- Creating a joined view
 CREATE VIEW employee_department_info AS SELECT e.employee_id, e.first_name, e.last_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;
@@ -3671,7 +4138,7 @@ BEGIN
 END;
 ```
 
-### PROCEDURE
+### Stored Procedure
 
 Stored procedures are used to group SQL statements and business logic into a single reusable unit that runs inside the database.
 
@@ -3693,9 +4160,9 @@ BEGIN
 END
 ```
 
-- CREATE PROCEDURE: Creates a new stored procedure.
-- @parameters: Used to pass values into the procedure.
-- BEGIN…END: Contains the SQL code that the procedure runs.
+- `CREATE PROCEDURE`: Creates a new stored procedure.
+- `@parameters`: Used to pass values into the procedure.
+- `BEGIN…END`: Contains the SQL code that the procedure runs.
 
 Examples:
 
@@ -3721,6 +4188,10 @@ A trigger in SQL is a special stored procedure that runs automatically when an `
 Examples:
 
 ```sql
+-- For MySQL
+TODO
+
+-- For SQL Server
 CREATE TRIGGER update_student_score
 AFTER UPDATE ON student_grades
 FOR EACH ROW
@@ -3847,6 +4318,18 @@ END;
 |                 Handles NULL values safely.                  |   Fails or behaves unexpectedly if the list contains NULL.   |
 | `SELECT * FROM Customers cWHERE EXISTS ( SELECT 1 FROM Orders oWHERE o.CustomerID = c.customer_id );` | `SELECT * FROM CustomersWHERE customer_id IN ( SELECT CustomerIDFROM Orders );` |
 
+### Primary Key vs Foreign Key
+
+| **PRIMARY KEY**                                              | **FOREIGN KEY**                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| A primary key is used to ensure data in the specific column is unique. | A foreign key is a column or group of columns in a relational database table that provides a link between data in two tables. |
+| It uniquely identifies a record in the relational database table. | It refers to the field in a table which is the primary key of another table. |
+| Only one primary key is allowed in a table.                  | Whereas more than one foreign key is allowed in a table.     |
+| It is a combination of `UNIQUE` and `Not Null` constraints.  | It can contain duplicate values and a table in a relational database. |
+| It does not allow `NULL` values .                            | It can also contain `NULL` values.                           |
+| Its value cannot be deleted from the parent table.           | Its value can be deleted from the child table.               |
+| It constraint can be implicitly defined on the temporary tables. | It constraint cannot be defined on the local or global temporary tables. |
+
 ### Primary Key vs Alternate Key
 
 |          **Primary Key**           |              **Alternate Key**               |
@@ -3869,6 +4352,10 @@ END;
 |               Common in transactional queries.               |  Common in reporting, analytics and data integration tasks.  |
 
 ### Clustered and Non-Clustered Indexing
+
+![clustered_index](res/clustered_index.png)
+
+![nonclustered_index](res/nonclustered_index.png)
 
 |                       Clustered Index                        |                     Non-Clustered Index                      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -4069,3 +4556,5 @@ END;
 [79] [SQL Triggers](https://www.geeksforgeeks.org/sql/sql-trigger-student-database/)
 
 [80] [Cursor in SQL](https://www.geeksforgeeks.org/sql/what-is-cursor-in-sql/)
+
+[81] [Difference between Primary Key and Foreign Key](https://www.geeksforgeeks.org/dbms/difference-between-primary-key-and-foreign-key/)

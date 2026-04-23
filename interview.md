@@ -1140,23 +1140,51 @@ TODO
 
 ## DB
 
+### Base
+
+#### What is ACID properties?
+
+ACID is a set of properties that guarantee reliable processing of database transactions, ensuring data integrity even in the case of errors, power failures, or concurrent access. A standard for Atomicity, C standards for Consistency, I standards for Isolation, and D standards for Durability.
+
+For more info, see: [DB Summary#ACID](DB/summary.md)
+
+#### What is OLTP?
+
+OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An essential attribute of an OLTP system is its ability to maintain concurrency. To avoid single points of failure, OLTP systems are often decentralized. 
+
+For more info, see: [Transaction#OLTP](DB/transaction.md)
+
+#### What are the differences between OLTP and OLAP?
+
+OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An important attribute of an OLTP system is its ability to maintain concurrency. OLTP systems often follow a decentralized architecture to avoid single points of failure. These systems are generally designed for a large audience of end-users who conduct short transactions.
+
+For more info, see: [Transaction#OLAP vs OLTP](DB/transaction.md)
+
+#### What is Data Integrity?
+
+Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle and is a critical aspect of the design, implementation, and usage of any system which stores, processes, or retrieves data. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
+
+For more info, see: [Transaction#Data Integrity](DB/transaction.md)
+
 ### SQL
+
+#### What is SQL?
+
+SQL stands for Structured Query Language. It is the standard language for relational database management systems. It is especially useful in handling organized data comprised of entities (variables) and relations between different entities of the data.
+
+For more info, see: [SQL](DB/sql.md)
 
 #### What is the difference between CHAR and VARCHAR2?
 
 CHAR stores fixed-length data and pads extra spaces; VARCHAR2 stores variable-length data, saving storage space.
+
+For more info, see: [SQL#Data Types](DB/sql.md)
 
 #### What is a view in SQL?
 
 A view is a virtual table created by a `SELECT` query. It does not store data itself, but presents data from one ore more tables in a structured way. Views simplify complex queries, improve readability, and enhance security by restricting access to specific rows or columns.
 
 For more info, see: [SQL#Views](DB/sql.md)
-
-#### How to create empty tables with the same structure as another table?
-
-Use `CREATE TABLE new_table LIKE old_table` to copy only the structure, or `CREATE TABLE new_table AS SELECT * FROM old_table` for a condition-based approach that works across more databases.
-
-For more info, see: [SQL#COPY TABLE](DB/sql.md)
 
 #### What is the purpose of the UNIQUE constraint?
 
@@ -1175,6 +1203,18 @@ For more info, see: [SQL#Unique constraint](DB/sql.md)
 SQL joins combine rows from two tables based on a matching condition (typically keys) to answer questions that span both tables...
 
 For more info, see: [SQL#Joins](DB/sql.md)
+
+#### What is a Cross-Join?
+
+Cross join can be defined as a cartesian product of the two tables included in the join. The table after join contains the same number of rows as in the cross-product of the number of rows in the two tables. If a `WHERE` clause is used in cross join then the query will work like an `INNER JOIN`.
+
+For more info, see: [SQL#Cross Join](DB/sql.md)
+
+#### What is a Self-Join?
+
+A `Self JOIN` is a case of a regular join where a table is joined to itself based on some relation between its own column(s). Self-join uses the `INNER JOIN` or `LEFT JOIN` clause, and a table alias is used to assign different names to the table within the query.
+
+For more info, see: [SQL#Self Join](DB/sql.md)
 
 #### What is a CTE (Common Table Expression) and when would you use it?
 
@@ -1216,18 +1256,17 @@ An `INNER JOIN` returns only the rows where the specified join condition matches
 
 A foreign key (FK) is a column (or set of columns) in a child table taht references a primary/unique key in a parent table to ensure the child's values actually exist in the parent. This enforces referential integrity by preventing actions that would create "orphan" rows.
 
+For more info, see: [SQL#Foreign Key Constraints](DB/sql.md)
+
 #### Describe set operations like UNION, INTERSECT and EXCEPT and when each is useful.
 
 `UNION`, `INTERSECT`, and `EXCEPT` are SQL set operations that combine results from two queries with the same number of columns and compatible data types. `UNION` returns the distinct union of both result sets (removes duplicates).
 
 #### What are the main types of SQL commands?
 
-SQL commands are broadly classified into:
+SQL commands are divided into five main types based on their function, include: DDL (Data Definition Language), DQL (Data Query Language), DML (Data Manipulation Language), DCL (Data Control Language), TCL (Transaction Control Language).
 
-- DDL(Data Definition Language)
-- DML(Data Manipulation Language)
-- DCL(Data Control Language)
-- TCL(Transaction Control Language)
+For more info, see: [SQL#Commands](DB/sql.md)
 
 #### What is the purpose of the DEFAULT constraint?
 
@@ -1249,7 +1288,19 @@ Aggregate functions perform calculations on a set of values and return a single 
 
 `TRUNCATE` is a DDL command, while `DELETE` is a DML command, which is why they differ in speed and logging behavior. `DELETE` removes rows one at a time and records each deletion in the transaction log, allowing rollback. It can have a `WHERE` clause. `TRUNCATE` removes all rows at once without logging individual row deletions.
 
-For more info, see: [SQL Language](DB/sql.md)
+For more info, see: [SQL](DB/sql.md)
+
+#### What is Collation? What are the different types of Collation Sensitivity?
+
+Collation refers to a set of rules that determine how data is sorted and compared. Rules defining the correct character sequence are used to sort the character data. It incorporates options for specifying case sensitivity, accent marks, kana character types, and character width.
+
+For more info, see: [SQL](DB/sql.md)
+
+#### What is User-defined function? What are its various types?
+
+A **User-Defined Function** is a reusable database routine that accepts parameters, performs calculations or data manipulation, and returns a value. Unlike stored procedures, UDFs can be used inline in SQL statements (e.g., `SELECT`, `WHERE`).
+
+For more info, see: [SQL#User-Defined Function (UDF)](DB/sql.md)
 
 ### Query
 
@@ -1257,13 +1308,13 @@ For more info, see: [SQL Language](DB/sql.md)
 
 A query is a SQL statement used to retrieve, update, or manipulate data in a database. The most common type of query is a `SELECT` statement, which fetches data from one or more tables based on specified conditons.
 
-For more info, see: [SQL](DB/sql.md)
+For more info, see: [SQL#SELECT](DB/sql.md)
 
 #### What is a subquery?
 
 A subquery is a query nested within another query. It is often used in the `WHERE` clause to filter data based on the results of another query, making it easier to handle complex conditons.
 
-For more info, see: [SQL](DB/sql.md)
+For more info, see: [SQL#Subquery](DB/sql.md)
 
 #### How would you optimize a slow query?
 
@@ -1276,12 +1327,6 @@ For more info, see: [SQL](DB/sql.md)
 7. For large sets, use keyset pagination (seek method) instead of `OFFSET`, and consider materialized views, caching, or partitioning for heavy, recurring analytics.
 
 For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
-
-#### Write a SQL query to retrieve all employees from the "Employees" table who work in the "Engineering" department, assuming there's a "Department" table.
-
-```sql
-SELECT E.* FROM Employees AS E JOIN Departments AS D ON E.DepartmentID = D.DepartmentID WHERE D.DepartmentName = 'Engineering';
-```
 
 #### What is Pattern Matching in SQL?
 
@@ -1307,7 +1352,7 @@ For more info, see: [SQL#Indexes](DB/sql.md)
 
 A clustered index stores table rows in the physical order of the index key, so you can have only one; by contrast, A `non-clustered` index is a separate structure and you can have many.
 
-For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
+For more info, see: [SQL#Clustered and Non-Clustered Indexing](DB/sql.md)
 
 ### Cursor
 
@@ -1315,7 +1360,7 @@ For more info, see: [SQL Indexing And Hashing#Terminology](DB/index.md)
 
 A cursor is a database object used to retrieve, manipulate, and traverse through rows in a result set one row at a time.
 
-For more info, see: [SQL Language](DB/sql.md)
+For more info, see: [SQL#Cursor](DB/sql.md)
 
 ### Trigger
 
@@ -1323,7 +1368,7 @@ For more info, see: [SQL Language](DB/sql.md)
 
 A trigger is a set of SQL statemetns that automatically execute in response to certain events on a table, such as `INSERT`, `UPDATE`, or `DELETE`. Triggers help maintain data consistency, enforce business rules, and implement complex integrity constraints.
 
-For more info, see: [SQL Language](DB/sql.md)
+For more info, see: [SQL#Trigger](DB/sql.md)
 
 ### Table
 
@@ -1333,9 +1378,17 @@ A table is a structured collection of related data organized into rows and colum
 
 For more info, see: [SQL#Table operations](DB/sql.md)
 
+#### How to create empty tables with the same structure as another table?
+
+Use `CREATE TABLE new_table LIKE old_table` to copy only the structure, or `CREATE TABLE new_table AS SELECT * FROM old_table` for a condition-based approach that works across more databases.
+
+For more info, see: [SQL#COPY TABLE](DB/sql.md)
+
 #### What is a composite primary key?
 
 A composite primary key uses two or more columns together to uniquely identify each row when one column alone isn't sufficient.
+
+For more info, see: [SQL#Composite Key Constraints](DB/sql.md)
 
 #### Describe a `PRIMARY KEY` and how it differs from a `UNIQUE` key
 
@@ -1343,17 +1396,31 @@ A `PRIMARY KEY` uniquely identifies each row in a table: it combines `UNIQUE + N
 
 A `UNIQUE` key also enforces uniqueness, but doesn't require `NOT NULL` and you can have many `UNIQUE` constraints per table.
 
+For more info, see: [SQL#Primary Key Constraints](DB/sql.md)
+
 #### Explain the difference between a primary key and a foreign key in a relational database.
 
 A primary key uniquely identifies each record within a table, while a foreign key links two table together by referencing the primary key of another table.
 
-For more info, see: [DB Table#Compare Primary Key And Foreign Key](DB/table.md)
+For more info, see: [SQL#Primary Key vs Foreign Key](DB/sql.md)
+
+#### What are Constraints in SQL?
+
+Constraints are used to specify the rules concerning data in the table. It can be applied for single or multiple fields in an SQL table during the creation of the table or after creating using the `ALTER TABLE` command.
+
+For more info, see: [SQL#Constraints](DB/sql.md)
 
 ### Stored Procedure
 
 #### What is a stored procedure?
 
-A stored procedure is a precompiled set of SQL statements stored in the database. It can take input parameters, perform logic and queries, and return output values or result sets.
+Stored procedures are used to group SQL statements and business logic into a single reusable unit that runs inside the database.
+
+For more info, see: [SQL#Stored Procedures](DB/sql.md)
+
+#### What is a recursive stored procedure?
+
+A stored procedure that calls itself until a boundary condition is reached, is called a recursive stored procedure. 
 
 For more info, see: [SQL#Stored Procedures](DB/sql.md)
 
@@ -1393,9 +1460,15 @@ For more info, see: [Database Best Practice#Parameterized Query](DB/best_practic
 
 SQL is best for structured, reliable transactions, while NoSQL shines in handling massive, fast-changing, and unstructured data.
 
-For more info, see: [SQL Language](DB/sql.md)
+For more info, see: [SQL](DB/sql.md)
 
 ### MySQL
+
+#### What is the difference between SQL and MySQL?
+
+SQL is the language. MySQL is one of many systems that implements it. While MySQL follows most SQL standards, it has proprietary extensions like storage engines and the `LIMIT` clause.
+
+For more info, see: [SQL](DB/sql.md)
 
 #### What are the String Data Types in MySQL?
 

@@ -4,6 +4,7 @@
 
 - [DB Summary](summary.md)
 - [Best Practice](best_practice.md)
+- [Normalization](normalization.md)
 - [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
 - [Transaction](transaction.md)
