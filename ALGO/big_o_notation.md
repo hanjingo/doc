@@ -6,6 +6,8 @@ English | [中文版](big_o_notation_zh.md)
 
 
 
+![big_o_notation](res/big_o_notation.png)
+
 ## Terminology
 
 - `time complexity` time complexity
@@ -164,7 +166,12 @@ If $N$ divides $A-B$, then we say $A$ is congruent to $B$ (congruent), denoted a
 
 ## References
 
-- [Wikipedia - Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
-- [Big O Notation](https://blog.csdn.net/weixin_44560088/article/details/108052225)
-- Introduction to Algorithms. Thomas H Cormen, Charles E Leiserson, Ronald L Rivest, Clifford Stein. Third Edition. 2013
-- [US] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 3rd Edition
+[1] Introduction to Algorithms. Thomas H Cormen, Charles E Leiserson, Ronald L Rivest, Clifford Stein. Third Edition. 2013
+
+[2] [US] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 3rd Edition
+
+[3] [Wikipedia - Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
+
+[4] [Big O Notation](https://blog.csdn.net/weixin_44560088/article/details/108052225)
+
+[5] [EP132: Big O Notation 101: The Secret to Writing Efficient Algorithms](https://blog.bytebytego.com/p/ep132-big-o-notation-101-the-secret)

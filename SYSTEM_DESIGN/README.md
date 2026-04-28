@@ -3,6 +3,7 @@
 # System Design
 
 - [System Design Summary](summary.md)
+- [AI](ai.md)
 - [API Design](api_design.md)
 - [Architectural](architectural.md)
 - [Caching Design](caching.md)

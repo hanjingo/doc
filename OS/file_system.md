@@ -185,6 +185,10 @@ Disadvantages:
 - Cannot span several file systems.
 - Directories cannot be hyperlinked.
 
+### Linux Directory Structure
+
+![linux_dir_structure](res/linux_dir_structure.jpg)
+
 ---
 
 
@@ -224,3 +228,5 @@ Disadvantages:
 [4] [Directory Implementation in Operating System](https://www.geeksforgeeks.org/operating-systems/directory-implementation-in-operating-system/)
 
 [5] [Protection in File System](https://www.geeksforgeeks.org/operating-systems/protection-in-file-system/)
+
+[6] [EP199: Behind the Scenes: What Happens When You Enter Google.com](https://blog.bytebytego.com/p/ep199-behind-the-scenes-what-happens)

@@ -4,6 +4,8 @@
 
 
 
+![transaction_concurrency](res/transaction_concurrency.png)
+
 An SQL transaction groups one or more SQL operations into a single unit of work to ensure reliable data processing. It guarantees that all operations are completed successfully or none are applied, preserving data integrity.
 
 ## ACID
@@ -297,3 +299,5 @@ Online Analytical Processing (OLAP) refers to software tools used for the analys
 [10] [Starvation in DBMS](https://www.geeksforgeeks.org/dbms/starvation-in-dbms/)
 
 [11] [Log based Recovery in DBMS](https://www.geeksforgeeks.org/dbms/log-based-recovery-in-dbms/)
+
+[12] [A Guide to Database Transactions: From ACID to Concurrency Control](https://blog.bytebytego.com/p/a-guide-to-database-transactions)

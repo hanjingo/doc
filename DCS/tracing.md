@@ -51,13 +51,23 @@ Below are the challenges for distributed tracing:
 
 ### Jaeger
 
+TODO
+
 ### Zipkin
+
+TODO
 
 ### Open Telemetry
 
+TODO
+
 ### AWS X-Ray
 
+TODO
+
 ### Datadog APM
+
+TODO
 
 
 

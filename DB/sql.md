@@ -4,6 +4,8 @@
 
 
 
+![sql_summary](res/sql_summary.png)
+
 Structured Query Language (SQL) is the standard language used to interact with relational databases.
 
 ## Basic
@@ -4558,3 +4560,5 @@ END;
 [80] [Cursor in SQL](https://www.geeksforgeeks.org/sql/what-is-cursor-in-sql/)
 
 [81] [Difference between Primary Key and Foreign Key](https://www.geeksforgeeks.org/dbms/difference-between-primary-key-and-foreign-key/)
+
+[82] [A Crash Course on Relational Database Design](https://blog.bytebytego.com/p/a-crash-course-on-relational-database)

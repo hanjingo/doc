@@ -12,6 +12,8 @@ When a user requests content from a website with a CDN, the CDN identifies the u
 
 ### Importance
 
+![cdn_importance](res/cdn_importance.png)
+
 CDNs offer several key benefits that make them important for delivering content over the internet:
 
 - Faster Content Delivery
@@ -136,4 +138,6 @@ CDNs are not limited to websites and can be used for various purposes, including
 [2] [CDN Vs Edge Server - System Design](https://www.geeksforgeeks.org/system-design/cdn-vs-edge-server-system-design/)
 
 [3] [Content Delivery Network(CDN) in System Design](https://www.geeksforgeeks.org/system-design/what-is-content-delivery-networkcdn-in-system-design/)
+
+[4] [EP122: API Gateway 101](https://blog.bytebytego.com/p/ep122-api-gateway-101)
 

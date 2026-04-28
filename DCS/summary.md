@@ -4,6 +4,8 @@
 
 
 
+![dcs_intro](res/dcs_intro.png)
+
 ## Introduction
 
 This document summarizes the core concepts and design principles of **Distributed Systems**, based primarily on *Distributed Systems: Concepts and Design (5th Edition)* by Coulouris et al.
@@ -425,3 +427,5 @@ The following are some of the major design issues of distributed systems:
 [5] [What is a distributed system?](https://www.atlassian.com/microservices/microservices-architecture/distributed-architecture)
 
 [6] [Comparison of different Consensus Algorithms](https://www.geeksforgeeks.org/operating-systems/consensus-algorithms-in-distributed-system/)
+
+[7] [A Crash Course on Distributed Systems](https://blog.bytebytego.com/p/a-crash-course-on-distributed-systems)

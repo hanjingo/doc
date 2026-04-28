@@ -14,7 +14,7 @@ Memory is an essential component of a computer system, responsible for storing d
 
 ### RAM (Random Access Memory)
 
-RAM is the computer's main memory used for temporary storage of active programs and data. Data is lost when power is off. It provides fast CPU access, improving multitasking and performance.
+RAM is the computer's main memory used for the temporary storage of active programs and data. Data is lost when the power is off. It provides fast CPU access, improving multitasking and performance.
 
 Types of RAM:
 

@@ -111,6 +111,10 @@ A race condition occurs when two or more processes or threads access and modify 
 
 ## Deadlock
 
+![deadlock_intro](res/deadlock_intro.png)
+
+### Intro
+
 ![deadlock](res/deadlock.png)
 
 ![deadlock_handling](res/deadlock_handling.png)
@@ -634,6 +638,10 @@ Monitors are a high-level synchronization mechanism that simplify process and th
 |  Complexity  |          Mutexes are simpler to use and implement.           | Monitors are more complex to use and implement due to the use of condition variables. |
 | Performance  | Mutexes are faster than Monitors due to their lower overhead. | Monitors have higher overhead due to the use of condition variables, but can be more efficient in some situations. |
 
+### Mutex vs Read-Writer Mutex
+
+![mutex_vs_rwmutex](res/mutex_vs_rwmutex.png)
+
 ### Difference Between Starvation And Livelock
 
 | Feature         | Starvation                                                   | Livelock                                                     |
@@ -682,3 +690,7 @@ Monitors are a high-level synchronization mechanism that simplify process and th
 [16] [Priority Inversion in Operating Systems](https://www.geeksforgeeks.org/operating-systems/priority-inversion/)
 
 [17] [Monitors in Process Synchronization](https://www.geeksforgeeks.org/operating-systems/monitors-in-process-synchronization/)
+
+[18] [How AMEX Processes Millions of Daily Transactions With Millisecond Latency](https://blog.bytebytego.com/p/how-amex-processes-millions-of-daily)
+
+[19] [What is a deadlock?](https://blog.bytebytego.com/p/ep138-how-do-airtags-work)

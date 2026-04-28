@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## Data Model
 
 A Bigtable is a sparse, distributed, persistent multi-dimensional sorted map. Each value in the map is an uninterpreted array of bytes:

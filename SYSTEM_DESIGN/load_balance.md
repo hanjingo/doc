@@ -8,6 +8,32 @@ A load balancer is a networking device or software application that distributes 
 
 ![load_balancer](res/load_balancer.png)
 
+## Intro
+
+Advantage:
+
+- Load Balancing distributes the load evenly, which reduces stress on servers and speeds up response times.
+- It automatically sends traffic from failing servers to working ones, reducing time when servers are down.
+- It can easily handle more traffic by adding more servers as needed.
+- Load balancing improves security by blocking bad traffic or attacks before they reach the servers.
+
+Disadvantage:
+
+- It needs careful setup and can be tricky to arrange.
+- If the load balancer fails, it can stop access to all servers unless you have backup systems in place.
+- Load balancing can cost more because you need extra tools and regular upkeep.
+- Requires monitoring to make sure everything is working correctly and to fix problems quickly.
+
+Challenge:
+
+- Single Point of Failure
+- Performance Bottleneck
+- Configuration Complexity
+- Security Risks
+- Cost
+
+
+
 ## Working of a Load Balancer
 
 ![working_of_load_balancer](res/working_of_load_balancer.png)
@@ -146,28 +172,6 @@ Key Characteristics of Stateful Load Balancing include:
 | **API Gateway**     | Manage APIs, auth, rate limiting    | L7        | Kong, Apigee       |
 | **CDN**             | Cache static content geographically | Edge      | Cloudflare, Akamai |
 | **DNS Round Robin** | Distribute at domain level          | DNS       | Route 53           |
-
-### Advantage
-
-- Load Balancing distributes the load evenly, which reduces stress on servers and speeds up response times.
-- It automatically sends traffic from failing servers to working ones, reducing time when servers are down.
-- It can easily handle more traffic by adding more servers as needed.
-- Load balancing improves security by blocking bad traffic or attacks before they reach the servers.
-
-### Disadvantage
-
-- It needs careful setup and can be tricky to arrange.
-- If the load balancer fails, it can stop access to all servers unless you have backup systems in place.
-- Load balancing can cost more because you need extra tools and regular upkeep.
-- Requires monitoring to make sure everything is working correctly and to fix problems quickly.
-
-### Challenge
-
-- Single Point of Failure
-- Performance Bottleneck
-- Configuration Complexity
-- Security Risks
-- Cost
 
 
 

@@ -46,17 +46,21 @@ Types of Databases in System Design:
 - Time-Series Databases
 - Object-Oriented Databases
 
-### Relational vs Non-Relational Databases
+### MongoDB
 
-Here are a few key factors to consider when choosing the right database:
+![mongodb_workflow](res/mongodb_workflow.png)
 
-| Factor                          | Relational Databases                                         | Non-Relational Databases                                     |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Data Structure                  | If your data is structured, and you need to handle complex relationships. | If your data is unstructured or semi-structured.             |
-| Scalability Needs               | Typically scale vertically(adding more power to a single server). | Of ten scale horizontally(adding more servers to distribute the load). |
-| Consistency vs Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
-| Transaction Support             | If you need ACID properties(Atomicity, Consistency, Isolation, Durability) for transaction. | If your system can work without strict transaction guarantees. |
-| Development Speed & Flexibility | If you need a stable, structured design.                     | If your project evolve rapidly or need to handle changing types of data. |
+MongoDB is a popular NoSQL database designed for flexibility, scalability, and high performance. It stores data in a JSON-like format (BSON) and supports horizontal scaling through sharding and replication.
+
+---
+
+
+
+## Database Scaling
+
+![db_scaling](res/db_scaling.jpg)
+
+Database scaling is the process of adapting and expanding the database infrastructure to accommodate growth and maintain performance under increased load. It involves employing various techniques and strategies to distribute data efficiently, optimize query execution, and utilize hardware resources judiciously.
 
 ---
 
@@ -70,9 +74,9 @@ Here are a few key factors to consider when choosing the right database:
 
 ![data_sharding](res/data_sharding.png)
 
-Database Sharding is especially useful when a database becomes too large to fit on a single machine or when the traffic load is too high for one server to handle. It helps distribute the load across multiple server.
+Database Sharding is especially useful when a database becomes too large to fit on a single machine or when the traffic load is too high for one server to handle. It helps distribute the load across multiple servers.
 
-#### Key Based Sharding
+#### Key-Based Sharding
 
 ![key_based_sharding](res/key_based_sharding.png)
 
@@ -89,11 +93,11 @@ Disadvantages:
 - Scalability may be limited when certain keys receive heavy traffic or data is skewed.
 - Choosing the right sharding key is crucial for effective sharding.
 
-#### Horizontal or Range Based Sharding
+#### Horizontal or Range-Based Sharding
 
 ![range_based_sharding](res/range_based_sharding.png)
 
-In Horizontal or Range Based Sharding, we divide the data by separating it into different parts based on the range of a specific value within each record.
+In Horizontal or Range-Based Sharding, we divide the data by separating it into different parts based on the range of a specific value within each record.
 
 Advantages:
 
@@ -147,6 +151,8 @@ Partitioning helps improve query performance by limiting the amount of data the 
 
 
 ## Database Replication
+
+![db_replication](res/db_replication.png)
 
 Database replication in system design means creating and maintaining multiple copies of the same database on different servers. If one database server fails, another replica can continue serving requests, ensuring the system stays online.
 
@@ -223,7 +229,15 @@ TODO
 
 
 
-## General Cache System
+## Cluster
+
+TODO
+
+---
+
+
+
+## Example 1: General Cache System Design
 
 ### Cache System Evaluation Metrics
 
@@ -430,7 +444,90 @@ Solutions:
 
 
 
+## Example 2: OpenAI With PostgresSQL
+
+### Single-Primary Architecture
+
+![openai_single_leader_replication](res/openai_single_leader_replication.png)
+
+### Minimizing Primary Database Load
+
+The primary database represents the system’s most critical bottleneck. OpenAI implemented multiple strategies to reduce pressure on this single writer:
+
+- Offloading Read Traffic.
+- Migrating Write-Heavy Workloads.
+- Application-Level Write Optimization.
+
+### Query and Connection Optimization
+
+![openai_pg_bouncer_as_pg_proxy](res/openai_pg_bouncer_as_pg_proxy.png)
+
+### Preventing Cascading Failures
+
+![openai_vicious_cycle_under_load](res/openai_vicious_cycle_under_load.png)
+
+---
+
+
+
+## Example 3: Facebook’s Database Handling Billions of Messages
+
+### Cassandra
+
+![facebook_cassandra](res/facebook_cassandra.png)
+
+By combining the best parts of these two systems, Facebook created Apache Cassandra®, which became a decentralized, highly scalable, and fault-tolerant database.
+
+### Cassandra Data Model
+
+![facebook_cassandra_data_model](res/facebook_cassandra_data_model.png)
+
+Apache Cassandra®’s data model is like a multi-dimensional map (or dictionary), where each piece of data is indexed by a row key. This means that instead of rigidly defining tables and columns in advance, data can be stored in a way that best suits the needs of the application.
+
+The data is organized into column families that are of two types:
+
+- Simple Column Family
+- Super Column Family
+
+### Cassandra Consistent Hashing
+
+![facebook_cassandra_consistent_hashing](res/facebook_cassandra_consistent_hashing.png)
+
+There is no master node, meaning any node can handle read and write requests. Since all nodes are equal, there is no single point of failure. If a node fails, other nodes in the system can continue handling requests without disruption.
+
+### Cassandra Query
+
+![facebook_cassandra_query_execution](res/facebook_cassandra_query_execution.png)
+
+Instead of storing data like traditional relational databases, which write changes immediately to disk, Apache Cassandra® follows a log-structured storage model that optimizes speed and reliability.
+
+### Cassandra Write
+
+![facebook_cassandra_write_execution](res/facebook_cassandra_write_execution.png)
+
+This write process is efficient because, unlike traditional databases that modify data in place (causing random disk writes), Apache Cassandra® writes data sequentially, which is much faster and more efficient.
+
+### Cassandra Search
+
+![facebook_cassandra_search_execution](res/facebook_cassandra_search_execution.png)
+
+One of the biggest challenges in Facebook’s messaging system was ensuring low-latency searches across a massive dataset. Apache Cassandra®’s highly optimized architecture allowed it to achieve impressive performance:
+
+- Minimum Latency
+- Median Latency
+- Maximum Latency
+
+---
+
+
+
 ## Summary
+
+### CAP vs PACELC
+
+![cap_vs_pacelc](res/cap_vs_pacelc.png)
+
+CAP explains why databases must choose between staying available and staying consistent in the presence of network partitions. PACELC extends that reasoning to the normal case: even without failure, databases still trade latency for consistency.
 
 ### Horizontal Partitioning vs Vertical Partitioning
 
@@ -447,7 +544,21 @@ Solutions:
 | Data integrity           | Ensuring data consistency across partitions can be challenging. | Easier to maintain data integrity, as each partition contains a self-contained subset of data. |
 | Use cases                | Commonly used for tables with a wide range of columns, where not all columns are frequently accessed together. | Commonly used for tables with a large number of rows, where data can be grouped based on some criteria(e.g., data ranges). |
 
+### Redis vs Memcached
 
+![redis_vs_memcached](res/redis_vs_memcached.png)
+
+### Relational vs Non-Relational Databases
+
+Here are a few key factors to consider when choosing the right database:
+
+| Factor                          | Relational Databases                                         | Non-Relational Databases                                     |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Data Structure                  | If your data is structured, and you need to handle complex relationships. | If your data is unstructured or semi-structured.             |
+| Scalability Needs               | Typically scale vertically(adding more power to a single server). | Of ten scale horizontally(adding more servers to distribute the load). |
+| Consistency vs Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
+| Transaction Support             | If you need ACID properties(Atomicity, Consistency, Isolation, Durability) for transaction. | If your system can work without strict transaction guarantees. |
+| Development Speed & Flexibility | If you need a stable, structured design.                     | If your project evolve rapidly or need to handle changing types of data. |
 
 ---
 
@@ -464,3 +575,19 @@ Solutions:
 [4] [Top 50 System Design Interview Questions for 2026](https://dev.to/somadevtoo/top-50-system-design-interview-questions-for-2024-5dbk)
 
 [5] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)
+
+[6] [How OpenAI Scaled to 800 Million Users With Postgres](https://blog.bytebytego.com/p/how-openai-scaled-to-800-million)
+
+[7] [EP155: The Shopify Tech Stack](https://blog.bytebytego.com/p/ep155-the-shopify-tech-stack)
+
+[8] [A Guide to Database Replication: Key Concepts and Strategies](https://blog.bytebytego.com/p/a-guide-to-database-replication-key)
+
+[9] [Facebook’s Database Handling Billions of Messages (Apache Cassandra® Deep Dive)](https://blog.bytebytego.com/p/facebooks-database-handling-billions)
+
+[10] [A Crash Course in Database Scaling Strategies](https://blog.bytebytego.com/p/a-crash-course-in-database-scaling)
+
+[11] [Consistency and Partition Tolerance: Understanding CAP vs PACELC](https://blog.bytebytego.com/p/consistency-and-partition-tolerance)
+
+[12] [A Guide to Database Sharding](https://blog.bytebytego.com/p/must-know-message-broker-patterns-4c4)
+
+[13] [How MongoDB Works?](https://blog.bytebytego.com/p/ep170-best-ways-to-test-system-functionality)

@@ -26,8 +26,6 @@ To develop dependable software, you therefore need to ensure that:
 
 *Principal dependability properties*
 
-
-
 ## Availability
 
 System **availability** is defined as: The probability that a system, at a point in time, will be operational and able to deliver the requested services.
@@ -219,7 +217,7 @@ The choice of metric depends on the type of system that is being specified and t
 2. `Rate of occurrence of failures (ROCOF)` This metric sets out the probable number of system failures that are likely to be observed relative to a certain time period (e.g., an hour), or to the number of system executions.
 3. `Availability (AVAIL)` The availability of a system reflects its ability to deliver services when requested.
 
-### Achieve high reliability
+### Achieve High Reliability
 
 ![achieve_high_reliability](res/achieve_high_reliability.png)
 
@@ -513,6 +511,8 @@ Maintainability determines how easy and profitable it will be to maintain, updat
 
 ## Scalability
 
+![arch_scalability](res/arch_scalability.png)
+
 | **Metric**              | **What It Measures**           | **Formula**   |
 | :---------------------- | :----------------------------- | :------------ |
 | **Speedup**             | Improvement from parallelism   | $T(1) / T(N)$ |
@@ -520,13 +520,17 @@ Maintainability determines how easy and profitable it will be to maintain, updat
 | **Scalability factor**  | Throughput growth              | $λ(N) / λ(1)$ |
 | **Latency degradation** | Performance loss under load    | $W(N) / W(1)$ |
 
-TODO
+### Patterns
+
+![scalability_patterns](res/scalability_patterns.png)
 
 ---
 
 
 
 ## Performance
+
+![system_performance_metrics](res/system_performance_metrics.png)
 
 ### Latency
 
@@ -564,6 +568,10 @@ $$
 
 
 ## Summary
+
+### Strategies For Reliability And Fault Tolerance
+
+![strategies_for_reliability_fault_tolerance](res/strategies_for_reliability_fault_tolerance.png)
 
 ### Horizontal vs Vertical Scaling
 
@@ -609,7 +617,7 @@ There are some good practice guidelines for dependable programming:
 
 
 
-## REFERENCE
+## Reference
 
 [1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
@@ -628,3 +636,11 @@ There are some good practice guidelines for dependable programming:
 [8] [Difference Between Latency and Throughput](https://www.geeksforgeeks.org/computer-networks/difference-between-latency-and-throughput/)
 
 [9] [Availability in Distributed System](https://www.geeksforgeeks.org/computer-networks/availability-in-distributed-system/)
+
+[10] [A Crash Course on Architectural Scalability](https://blog.bytebytego.com/p/ep145-infrastructure-as-code-landscape)
+
+[11] [Scalability Patterns for Modern Distributed Systems](https://blog.bytebytego.com/p/scalability-patterns-for-modern-distributed)
+
+[12] [Top Strategies to Improve Reliability in Distributed Systems](https://blog.bytebytego.com/p/top-strategies-to-improve-reliability)
+
+[13] [System Performance Metrics Every Engineer Should Know](https://blog.bytebytego.com/p/ep194-evolution-of-http)

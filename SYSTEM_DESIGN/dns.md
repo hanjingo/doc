@@ -4,6 +4,8 @@
 
 
 
+![dns_workflow](res/dns_workflow.png)
+
 The Domain Name System(DNS) is a hierarchical and distributed naming system that translates human-readable domain names into IP addresses, enabling users to access websites easily.
 
 ## Working of DNS
@@ -84,6 +86,8 @@ Reverse DNS Lookup is the process of mapping an IP address back to its correspon
 
 ## Types Of DNS Records
 
+![dns_record_types](res/dns_record_types.png)
+
 DNS records are essential for defining how domain names are used and how services are configured. Here are some of the most commonly used DNS record types:
 
 - A Record
@@ -154,3 +158,7 @@ Importance of TTL in DNS Caching:
 [1] [Domain Name System (DNS)](https://www.geeksforgeeks.org/computer-networks/domain-name-system-dns-in-application-layer/)
 
 [2] [What is DNS Caching](https://www.geeksforgeeks.org/computer-networks/what-is-dns-caching/)
+
+[3] [EP143: DNS Record Types You Should Know](https://blog.bytebytego.com/p/ep143-dns-record-types-you-should)
+
+[4] [How DNS Works](https://blog.bytebytego.com/p/ep193-database-types-you-should-know)

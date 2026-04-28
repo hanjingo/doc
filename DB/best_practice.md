@@ -311,6 +311,8 @@ Normalization removes duplicate data by splitting large tables into smaller, rel
 
 TODO
 
+---
+
 
 
 ## Safety
@@ -322,6 +324,14 @@ TODO
 ### Parameterized Query
 
 In `SQL injection` attacks, the attacker manages to get an application to execute an SQL query created by the attacker. The primary defense against SQL injection is to use parameterized queries (prepared statements) everywhere never build SQL with string concatenation.
+
+---
+
+
+
+## Performance
+
+![db_perform](res/db_perform.png)
 
 ---
 
@@ -340,3 +350,5 @@ In `SQL injection` attacks, the attacker manages to get an application to execut
 [5] [SQL Performance Tuning](https://www.geeksforgeeks.org/sql/sql-performance-tuning/)
 
 [6] [SQL Database Tuning](https://www.geeksforgeeks.org/sql/sql-database-tuning/)
+
+[7] [Database Performance Demystified: Essential Tips and Strategies](https://blog.bytebytego.com/p/database-performance-demystified)

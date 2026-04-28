@@ -147,3 +147,5 @@ TODO
 [1] [Router in Computer Networks](https://www.geeksforgeeks.org/computer-networks/introduction-of-a-router/)
 
 [2] [Routing](https://www.geeksforgeeks.org/computer-networks/what-is-routing/)
+
+[3] [Hub, Switch, & Router Explained](https://blog.bytebytego.com/p/ep194-evolution-of-http)

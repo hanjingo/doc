@@ -46,6 +46,18 @@ TODO
 
 
 
+## I/O Event
+
+### Synchronous Communication
+
+TODO
+
+### Asynchronous Communication
+
+TODO
+
+
+
 ## I/O Efficiency
 
 ### Read Ahead

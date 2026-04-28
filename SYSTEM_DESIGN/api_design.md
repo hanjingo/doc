@@ -4,7 +4,7 @@
 
 
 
-![api_protocols](res/api_protocols.png)
+![api_protocols](res/api_protocols.jpg)
 
 ## Intro
 
@@ -56,7 +56,7 @@ Disadvantages:
 
 ### API Integration
 
-The process of connection two or more software applications or processes using APIs is referred to as API integration.
+The process of connecting two or more software applications or processes using APIs is referred to as API integration.
 
 Benefits of API integration:
 
@@ -116,7 +116,27 @@ curl -X GET "https://maps.googleapis.com/maps/api/geocode/json?address=New+York&
 
 ### API Performance
 
-![api_performance](res/api_performance.png)
+![api_performance](res/api_performance.jpg)
+
+- Result Pagination
+
+  This method is used to optimize large result sets by streaming them back to the client, enhancing service responsiveness and user experience.
+
+- Asynchronous Logging
+
+  This approach involves sending logs to a lock-free buffer and returning immediately, rather than dealing with the disk on every call. Logs are periodically flushed to the disk, significantly reducing I/O overhead.
+
+- Data Caching
+
+  Frequently accessed data can be stored in a cache to speed up retrieval. Clients check the cache before querying the database, with data storage solutions like Redis offering faster access due to in-memory storage.
+
+- Payload Compression
+
+  To reduce data transmission time, requests and responses can be compressed (e.g., using gzip), making the upload and download processes quicker.
+
+- Connection Pooling
+
+  This technique involves using a pool of open connections to manage database interaction, which reduces the overhead associated with opening and closing connections each time data needs to be loaded. The pool manages the lifecycle of connections for efficient resource use.
 
 ### API Security
 
@@ -282,6 +302,8 @@ Non-idempotent methods:
 
 ### Rules
 
+![rest_api_design_best_practice](res/rest_api_design_best_practice.jpg)
+
 - REST is based on the resource or noun instead of action or verb based
 
   For example:
@@ -323,6 +345,8 @@ SOAP, or Simple Object Access Protocol, is a messaging protocol. It allows the e
 
 
 ## GraphQL API
+
+![graphql_api_intro](res/graphql_api_intro.jpg)
 
 GraphQL consists of several core components that define how data is structured, queried, and modified in an API. Include:
 
@@ -384,6 +408,10 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 ## Summary
 
+### API Scale
+
+![api_scale](res/api_scale.png)
+
 ### API vs SDK
 
 ![api_vs_sdk](res/api_vs_sdk.png)
@@ -394,7 +422,7 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 ### GraphQL vs REST API
 
-![rest_api_vs_graphql](res/rest_api_vs_graphql.png)
+![rest_api_vs_graphql](res/rest_api_vs_graphql.jpg)
 
 | Graph QL                                                     | REST API                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -440,7 +468,7 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 | Usage                           | Sent with each request in an Authorization Header, Query String, or Body Data. | Uses tokens instead of credentials, reducing exposure. Tokens expire after a session. |
 | Token Expiry                    | No expiration--an API Key remains valid until revoked manually. | Expires after each session, requiring reauthentication for continued access. |
 | Access Control                  | Lacks granular access control--either grants full access or no access. | Allows role-based access control(RBAC), restricting access to specific resources. |
-| Best Used For                   | Simple applications where security is not a major concern.   | Secure an scalable applications requiring user-specific access control. |
+| Best Used For                   | Simple applications where security is not a major concern.   | Secure a scalable applications requiring user-specific access control. |
 | Risk of Unauthorized Access     | High--stolen API Keys grant full access until revoked.       | Low--tokens expire after a session, and multi-factor authentication can be added. |
 | Performance                     | Fast and lightweight, since it does not require token management. | Slightly slower, due to authentication flow but significantly more secure. |
 
@@ -452,11 +480,11 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 - Reliability
 
-  For systems that may exhibit network issues or retries, idempotent APIs guarantee that repeated requests do not cause different response.
+  For systems that may exhibit network issues or retries, idempotent APIs guarantee that repeated requests do not cause different responses.
 
 - Consistency
 
-  Idempotent APIs do not alter the state of the server which avoids the occurrence of undesired impacts or alterations to data.
+  Idempotent APIs do not alter the state of the server, which avoids the occurrence of undesired impacts or alterations to data.
 
 - Predictability
 
@@ -464,7 +492,7 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 - Robustness
 
-  Idempotent APIs also make the system more reliable since only the intended modification is made without repetition or mistakes hence making it friendly to users.
+  Idempotent APIs also make the system more reliable since only the intended modification is made without repetition or mistakes, hence making it friendly to users.
 
 - Simplified Client Logic
 
@@ -472,10 +500,28 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 - Improved User Experience
 
-  It makes the APIs more user friendly because operations are guaranteed to complete regardless of network conditions or retries.
+  It makes the APIs more user-friendly because operations are guaranteed to complete regardless of network conditions or retries.
+
+### Best Practices
+
+![api_design_best_practices](res/api_design_best_practices.png)
 
 
 
 ## References
 
 [1] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)
+
+[2] [The Art of REST API Design: Idempotency, Pagination, and Security](https://blog.bytebytego.com/p/the-art-of-rest-api-design-idempotency)
+
+[3] [EP176: How Does SSO Work?](https://blog.bytebytego.com/p/ep176-how-does-sso-work)
+
+[4] [How to Scale An API](https://blog.bytebytego.com/p/how-to-scale-an-api)
+
+[5] [GraphQL 101: API Approach Beyond REST](https://blog.bytebytego.com/p/graphql-101-api-approach-beyond-rest)
+
+[6] [A Crash Course in GraphQL](https://blog.bytebytego.com/p/a-crash-course-in-graphql)
+
+[7] [EP172: Top 5 common ways to improve API performance](https://blog.bytebytego.com/p/ep172-top-5-common-ways-to-improve)
+
+[8] [A Crash Course on Scaling the API Layer](https://blog.bytebytego.com/p/a-crash-course-on-scaling-the-api)

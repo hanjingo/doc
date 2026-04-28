@@ -6,6 +6,8 @@ English | [中文版](http_zh.md)
 
 
 
+![https_full_chain_example](res/https_full_chain_example.jpg)
+
 ## URI
 
 Resources requested over HTTP or HTTPS are identified by a Uniform Resource Identifier (URI).
@@ -211,6 +213,8 @@ Entity cache headers:
 
 ### HTTP Request
 
+![http_request_response](res/http_request_response.png)
+
 HTTP Requests are the messages sent by the client to request data from the server or to perform some actions.
 
 Syntax:
@@ -299,6 +303,8 @@ Content-Type: text/plain
 
 ### HTTP Status Code
 
+![http_status_code](res/http_status_code.jpg)
+
 HTTP Status codes are three-digit numbers that servers use to tell your browser what happened with the request you sent. There are different types of status codes:
 
 | Code                | Description                                                  |
@@ -349,6 +355,20 @@ The main responsibility of SSL is to ensure that the data transfer between the c
 
 
 
+## HTTP Version
+
+![http_version](res/http_version.png)
+
+### HTTP/2
+
+![http_2_0_multiplexing](res/http_2_0_multiplexing.png)
+
+### HTTP/3
+
+![http_3_0](res/http_3_0.png)
+
+
+
 ## Summary
 
 ### HTTP vs HTTPS
@@ -361,6 +381,10 @@ The main responsibility of SSL is to ensure that the data transfer between the c
 |  **Speed**   |         Slightly slower on old systems.         |    Often faster due to newer protocols and optimizations.    |
 | **Use case** |   Suitable for public or non-sensitive info.    | Best for sensitive data like payments, logins, personal info. |
 
+### HTTP/2 vs HTTP/3
+
+![http2_vs_http3](res/http2_vs_http3.png)
+
 
 
 ## References
@@ -372,3 +396,17 @@ The main responsibility of SSL is to ensure that the data transfer between the c
 [3] [HTTP vs HTTPS](https://www.geeksforgeeks.org/computer-networks/difference-between-http-and-https-2/)
 
 [4] [Different kinds of HTTP requests](https://www.geeksforgeeks.org/node-js/different-kinds-of-http-requests/)
+
+[5] [HTTP1 vs HTTP2 vs HTTP3 - A Deep Dive](https://blog.bytebytego.com/p/http1-vs-http2-vs-http3-a-deep-dive)
+
+[6] [A Deep Dive into HTTP: From HTTP 1 to HTTP 3](https://blog.bytebytego.com/p/a-deep-dive-into-http-from-http-1?utm_source=publication-search)
+
+[7] [HTTP 1.0 -> HTTP 1.1 -> HTTP 2.0 -> HTTP 3.0 (QUIC)](https://blog.bytebytego.com/p/http-10-http-11-http-20-http-30-quic?utm_source=publication-search)
+
+[8] [HTTP Status Code You Should Know](https://blog.bytebytego.com/p/ep133-api-vs-sdk?utm_source=publication-search)
+
+[9] [EP199: Behind the Scenes: What Happens When You Enter Google.com](https://blog.bytebytego.com/p/ep199-behind-the-scenes-what-happens)
+
+[10] [How AMEX Processes Millions of Daily Transactions With Millisecond Latency](https://blog.bytebytego.com/p/how-amex-processes-millions-of-daily)
+
+[11] [Evolution of HTTP](https://blog.bytebytego.com/p/ep194-evolution-of-http)

@@ -71,6 +71,8 @@ The RAID Levels Comparison Table (0–6, 10, 50, 60):
 
 ## Indexing
 
+![db_index_data_structure](res/db_index_data_structure.png)
+
 Indexing in databases is a data structure technique used to speed up data retrieval operations by minimizing the number of disk accesses required to locate records.
 
 ### File Organization
@@ -237,3 +239,7 @@ B+ Tree, as the name suggests, uses a tree-like structure to store records in a 
 [9] [Inverted Index](https://www.geeksforgeeks.org/dbms/inverted-index/)
 
 [10] [RAID (Redundant Arrays of Independent Disks)](https://www.geeksforgeeks.org/dbms/raid-redundant-arrays-of-independent-disks/)
+
+[11] [Database Index Internals: Understanding the Data Structures](https://blog.bytebytego.com/p/database-index-internals-understanding)
+
+[12] [EP172: Top 5 common ways to improve API performance](https://blog.bytebytego.com/p/ep172-top-5-common-ways-to-improve)

@@ -6,7 +6,7 @@
 
 ## Protocol
 
-![network_protocol](res/network_protocol.png)
+![network_protocol](res/network_protocol.jpg)
 
 ### TCP
 
@@ -102,6 +102,10 @@ TODO
 
 ![internet_traffic_routing](res/internet_traffic_routing.png)
 
+### NAT
+
+![nat_workflow](res/nat_workflow.png)
+
 
 
 ## Summary
@@ -177,6 +181,10 @@ The differences between Synchronous and Asynchronous Communication:
 
 ![url_vs_uri_vs_urn](res/url_vs_uri_vs_urn.png)
 
+### Unicast vs Broadcast vs Multicast vs Anycast
+
+![unicast_vs_broadcast_vs_multicast_vs_anycast](res/unicast_vs_broadcast_vs_multicast_vs_anycast.png)
+
 
 
 ## Reference
@@ -186,3 +194,5 @@ The differences between Synchronous and Asynchronous Communication:
 [2] [WebSocket and Its Difference from HTTP](https://www.geeksforgeeks.org/web-tech/what-is-web-socket-and-how-it-is-different-from-the-http/)
 
 [3] [Types of Network Protocols and Their Uses](https://www.geeksforgeeks.org/computer-networks/types-of-network-protocols-and-their-uses/)
+
+[4] [How NAT Works](https://blog.bytebytego.com/p/ep200-http2-over-tcp-vs-http3-over)

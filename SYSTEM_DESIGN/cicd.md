@@ -4,6 +4,8 @@
 
 
 
+![cicd](res/cicd.png)
+
 CI/CD stands for continuous integration and continuous deployment (or continuous delivery) and is an essential practice in modern software development. It focuses on automating and streamlining the process of integrating code changes, testing, and deploying software.
 
 ## CI/CD
@@ -80,7 +82,53 @@ A code change passes all automated checks in:
 
 
 
+## Ship Code To Production
+
+![ship_code_to_production](res/ship_code_to_production.png)
+
+---
+
+
+
 ## Git
+
+### Git Storage
+
+![git_workflow](res/git_workflow.png)
+
+Git has two layers:
+
+1. Porcelain (user-facing commands): add, commit, checkout, rebase, etc.
+2. Plumbing (low-level building blocks): hash-object, cat-file, read-tree, update-index, and more.
+
+When you trigger a Git command:
+
+1. Your porcelain command is translated by Git
+2. It calls lower-level plumbing operations
+3. Plumbing writes directly into the .git directory (Git’s entire internal database)
+
+Inside the .git directory: Git stores everything it needs to reconstruct your repo.
+
+- `objects/`: all file content and metadata stored by hash
+- `refs/`: branches and tags
+- `index` : staging area
+- `config`: repo configuration
+- `HEAD`: current branch pointer
+
+The .git folder is your repository. If you delete it, the project loses its entire history.
+
+Everything in Git is built from just four objects:
+
+- `blob`: file contents
+- `tree`: directories
+- `commit`: metadata + parents
+- `tag`: annotated reference
+
+### Git Reset
+
+![git_reset_workflow](res/git_reset_workflow.png)
+
+Git Reset moves your current git branch (HEAD) to a different commit and can make the index and working directory match it.
 
 ### Git Fetch vs Git Pull
 
@@ -107,6 +155,8 @@ A code change passes all automated checks in:
 
 TODO
 
+---
+
 
 
 ## References
@@ -114,3 +164,11 @@ TODO
 [1] [CI/CD Pipeline - System Design](https://www.geeksforgeeks.org/system-design/cicd-pipeline-system-design/)
 
 [2] [DevOps Interview Questions and Answers](https://www.geeksforgeeks.org/devops/devops-interview-questions/)
+
+[3] [A Crash Course in CI/CD](https://blog.bytebytego.com/p/a-crash-course-in-cicd)
+
+[4] [How Git Really Stores Your Data](https://blog.bytebytego.com/p/ep200-http2-over-tcp-vs-http3-over)
+
+[5] [How Git Reset Works?](https://blog.bytebytego.com/p/ep182-cookies-vs-sessions)
+
+[6] [How Do Companies Ship Code to Production?](https://blog.bytebytego.com/p/ep166-what-is-event-sourcing)

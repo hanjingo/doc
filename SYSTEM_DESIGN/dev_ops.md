@@ -59,20 +59,38 @@ Benefit:
 
 ![k8s_tools_ecosystem](res/k8s_tools_ecosystem.png)
 
+### Control Plane
+
+![kubernetes_control_plane](res/kubernetes_control_plane.png)
+
+### Kubernetes Pod
+
+![kubernetes_pod](res/kubernetes_pod.png)
+
 
 
 ## Summary
 
 ### Docker vs K8s
 
-![docker_vs_k8s](res/docker_vs_k8s.png)
+![docker_vs_k8s](res/docker_vs_k8s.jpg)
 
 ### DevOps vs NoOps
 
 ![dev_ops_vs_no_ops](res/dev_ops_vs_no_ops.png)
+
+### Virtualization vs Containerization
+
+![virtualization_vs_containerization](res/virtualization_vs_containerization.png)
 
 
 
 ## Reference
 
 [1] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)
+
+[2] [A Crash Course in Kubernetes](https://blog.bytebytego.com/p/a-crash-course-in-kubernetes)
+
+[3] [EP191: Virtualization vs. Containerization](https://blog.bytebytego.com/p/ep191-virtualization-vs-containerization)
+
+[4] [EP178: The Lifecycle of a Kubernetes Pod](https://blog.bytebytego.com/p/ep178-the-lifecycle-of-a-kubernetes)

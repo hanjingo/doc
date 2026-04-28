@@ -4,6 +4,8 @@
 
 
 
+![api_security](res/api_security.png)
+
 ## Encrypt
 
 TODO
@@ -16,13 +18,21 @@ TODO
 
 ### Authentication
 
+![authentication](res/authentication.png)
+
 Authentication is the process of verifying the identity of a user or system. It ensures that the user is legitimate by validating credentials like passwords, OTPs, or biometrics.
 
-![authentication](res/authentication.png)
+![authentication_tech](res/authentication_tech.png)
 
 ### Authorization
 
 Authorization determines the access rights and permissions of an authenticated user. It decides what resources the user can access and what actions they are allowed to perform.
+
+![authorization_model](res/authorization_model.png)
+
+- Role-Based Access Control (RBAC): Access based on roles (e.g., Maintainer, Viewer). Simple, scalable.
+- Attribute-Based Access Control (ABAC): Access based on attributes (user, resource, environment). Flexible, but complex.
+- Access Control List (ACL): Explicit permissions for each user or group. Direct, but hard to manage at scale.
 
 
 
@@ -40,7 +50,7 @@ The Transport Layer Security(TLS) is the successor to SSL and is designed to pro
 
 ## SSO(Single Sign-On)
 
-Single Sign-On(SSO) is an authentication schema. It allows a user to login to different systems using a single ID.
+Single Sign-On(SSO) is an authentication schema. It allows a user to log in to different systems using a single ID.
 
 ### Types
 
@@ -156,6 +166,10 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 | Common Use  | Mobile apps, Modern APIs     | "Login with Google/Facebook"  | Corporate/Enterprise login   |
 | Security    | Digital Signatures(HMAC/RSA) | Tokens(Access/Refresh)        | Digital Signatures(XML-DSig) |
 
+### Tokens vs API Keys
+
+![tokens_vs_api_keys](res/tokens_vs_api_keys.jpg)
+
 
 
 ## Reference
@@ -169,3 +183,9 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 [4] [Difference between JWT, OAuth, and SAML for Authentication and Authorization in Web Apps?](https://medium.com/javarevisited/difference-between-jwt-oauth-and-saml-for-authentication-and-authorization-in-web-apps-75b412754127)
 
 [5] [What is OAuth (Open Authorization) ?](https://www.geeksforgeeks.org/ethical-hacking/what-is-oauth-open-authorization/)
+
+[6] [Top Authentication Techniques to Build Secure Applications](https://blog.bytebytego.com/p/top-authentication-techniques-to)
+
+[7] [EP172: Top 5 common ways to improve API performance](https://blog.bytebytego.com/p/ep172-top-5-common-ways-to-improve)
+
+[8] [Access Control Clearly Explained](https://blog.bytebytego.com/p/ep182-cookies-vs-sessions)

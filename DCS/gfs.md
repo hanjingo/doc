@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 The Google File System is a scalable distributed file system for large distributed data-intensive applications. It provides fault tolerance while running on inexpensive commodity hardware, and it delivers high aggregate performance to a large number of clients.
 
 ## DESIGN OVERVIEW

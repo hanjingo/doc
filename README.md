@@ -65,6 +65,8 @@
 
 - [MySQL Data Types](DB/MYSQL/data_type.md)
 
+### [PostgreSQL](POSTGRESQL/README.md)
+
 ### [Redis](DB/REDIS/README.md)
 
 - [Redis Source Code Analysis - Bit Array](DB/REDIS/ansys_bit_array.md)
@@ -326,6 +328,7 @@
 ## [System Design](SYSTEM_DESIGN/README.md)
 
 - [System Design Summary](SYSTEM_DESIGN/summary.md)
+- [AI](SYSTEM_DESIGN/ai.md)
 - [API Design](SYSTEM_DESIGN/api_design.md)
 - [Architectural](SYSTEM_DESIGN/architectural.md)
 - [Caching Design](SYSTEM_DESIGN/caching.md)

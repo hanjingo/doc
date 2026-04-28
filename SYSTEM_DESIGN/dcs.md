@@ -32,6 +32,38 @@ The types of attacks that a distributed system must defend itself against are th
 
 The quality of service (QoS) offered by a distributed system reflects the system's ability to deliver its services dependably and with a response time and throughput that is acceptable to its users.
 
+Advantages:
+
+- Resource Sharing
+- Multiple Independent Nodes
+- Transparency
+- Scalability
+- Reliability and Fault Tolerance
+- Performance
+
+Disadvantages:
+
+- Complexity
+- Security Challenges
+- Network Dependency
+- Data Consistency Issues
+- Higher Cost
+- Troubleshooting Difficulties
+
+Use Case:
+
+1. Online Banking Systems
+2. E-Commerce Platforms
+3. Social Media Platforms
+4. Online Gaming Systems
+5. ...
+
+### Fundamental
+
+![dcs_fundamental](res/dcs_fundamental.png)
+
+The fundamental challenge that makes distributed systems different is partial failure. In single-computer programs, everything typically crashes together. In distributed systems, some components can fail while others continue operating.
+
 ### Models of interaction
 
 There are two fundamental types of interaction that may take place between the computers in a distributed computing system:
@@ -130,39 +162,31 @@ For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/m
 
 
 
+## Leader Election Algorithms
+
+![dcs_leader_election_algo](res/dcs_leader_election_algo.png)
+
+Leader Election Algorithms are important in distributed systems to manage tasks, maintain consistency, and make decisions.
+
+
+
 ## Distributed Locking
 
 TODO
 
 
 
+## Distributed Counter
+
+### Netflix Implement
+
+![netflix_distributed_counter](res/netflix_distributed_counter.png)
+
+
+
 ## Summary
 
-### Advantage
-
-- Resource Sharing
-- Multiple Independent Nodes
-- Transparency
-- Scalability
-- Reliability and Fault Tolerance
-- Performance
-
-### Disadvantage
-
-- Complexity
-- Security Challenges
-- Network Dependency
-- Data Consistency Issues
-- Higher Cost
-- Troubleshooting Difficulties
-
-### Use Case
-
-1. Online Banking Systems
-2. E-Commerce Platforms
-3. Social Media Platforms
-4. Online Gaming Systems
-5. ...
+TODO
 
 
 
@@ -175,3 +199,9 @@ TODO
 [3] [How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
 
 [4] [Is Redlock safe?](https://antirez.com/news/101)
+
+[5] [EP157: How to Learn Backend Development?](https://blog.bytebytego.com/p/ep157-how-to-learn-backend-development)
+
+[6] [5 Leader Election Algorithms Powering Modern Databases](https://blog.bytebytego.com/p/ep197-12-architectural-concepts-developers)
+
+[7] [The Must-Know Fundamentals of Distributed Systems](https://blog.bytebytego.com/p/the-must-know-fundamentals-of-distributed)

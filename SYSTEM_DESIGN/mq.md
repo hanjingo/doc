@@ -4,7 +4,9 @@
 
 
 
-Message queue enable asynchronous communication between system components, acting as buffers that decouple producers (senders) from consumers (receivers).
+![mq_summary](res/mq_summary.png)
+
+Message queues enable asynchronous communication between system components, acting as buffers that decouple producers (senders) from consumers (receivers).
 
 ## MQ
 
@@ -36,7 +38,7 @@ Message queue enable asynchronous communication between system components, actin
 
 When a producer sends a message to a point-to-point queue, the message is stored in the queue until a consumer retrieves it. Once the message is retrieved by a consumer, it is removed from the queue and cannot be processed by any other consumer.
 
-Point-to-point message queues can be used to implement a variety of patterns such as:
+Point-to-point message queues can be used to implement a variety of patterns, such as:
 
 - Request-Response
 - Work Queue
@@ -44,15 +46,17 @@ Point-to-point message queues can be used to implement a variety of patterns suc
 
 #### Publish-Subscribe Message Queues
 
-When a producer publishes a message to publish/subscribe queue, the message is routed to all consumers that are subscribed to the queue. Consumers can subscribe to multiple queues, and they can also unsubscribe from queues at any time.
+When a producer publishes a message to the publish/subscribe queue, the message is routed to all consumers that are subscribed to the queue. Consumers can subscribe to multiple queues, and they can also unsubscribe from queues at any time.
 
 ### Message
+
+![mq_msg_pattern](res/mq_msg_pattern.jpg)
 
 #### Structure
 
 A typical message structure consists of two main parts:
 
-- Headers: These contain metadata about the message, such as unique identifier, timestamp, message type, and routing information.
+- Headers: These contain metadata about the message, such as a unique identifier, timestamp, message type, and routing information.
 - Body: The body contains the actual message payload or content.
 
 #### Routing
@@ -116,6 +120,8 @@ TODO
 
 ### RabbitMQ vs Apache Kafka vs ActiveMQ
 
+![kafka_vs_rabbitmq](res/kafka_vs_rabbitmq.png)
+
 | Feature            | Apache Kafka                                   | RabbitMQ                                 | Apache ActiveMQ                |
 | :----------------- | :--------------------------------------------- | :--------------------------------------- | :----------------------------- |
 | **Architecture**   | **Distributed Log**                            | **Smart Broker**                         | **Traditional Broker**         |
@@ -124,6 +130,8 @@ TODO
 | **Data Retention** | Persistent (keeps data for days/weeks)         | Transient (deletes after delivery)       | Optional persistence           |
 | **Routing**        | Basic (Topic-based)                            | **Complex & Flexible**                   | Flexible (JMS standards)       |
 | **Best Use Case**  | Log aggregation, Big Data, Real-time Analytics | Task queues, Microservices communication | Legacy Java enterprise systems |
+
+
 
 ## References
 
@@ -134,3 +142,9 @@ TODO
 [3] [Why Apache Kafka is so Fast?](https://www.geeksforgeeks.org/blogs/why-apache-kafka-is-so-fast/)
 
 [4] [Difference between RabbitMQ, Apache Kafka, and ActiveMQ](https://medium.com/javarevisited/difference-between-rabbitmq-apache-kafka-and-activemq-65e26b923114)
+
+[5] [Understanding Message Queues](https://blog.bytebytego.com/p/understanding-message-queues)
+
+[6] [Messaging Patterns Explained: Pub-Sub, Queues, and Event Streams](https://blog.bytebytego.com/p/messaging-patterns-explained-pub)
+
+[7] [Apache Kafka vs. RabbitMQ](https://blog.bytebytego.com/p/ep193-database-types-you-should-know)

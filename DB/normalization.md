@@ -4,6 +4,8 @@
 
 
 
+![normalization_denormalization](res/normalization_denormalization.png)
+
 Normalization is an important process in database design that helps improve the database's efficiency, consistency, and accuracy.
 
 ## Features
@@ -251,3 +253,5 @@ Using these rules, you can determine the closure of attribute sets, which helps 
 [6] [Domain Key Normal Form in DBMS](https://www.geeksforgeeks.org/dbms/domain-key-normal-form-in-dbms/)
 
 [7] [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
+
+[8] [Database Schema Design Simplified: Normalization vs Denormalization](https://blog.bytebytego.com/p/database-schema-design-simplified)

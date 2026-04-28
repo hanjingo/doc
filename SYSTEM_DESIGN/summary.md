@@ -44,7 +44,7 @@ The KISS principle, which stands for "Keep It Simple, Stupid", is a design princ
 
 ## Workflow
 
-![system_design_step](res/system_design_step.jpg)
+![system_design_step](res/system_design_step.png)
 
 ---
 
@@ -107,6 +107,8 @@ A diagram representing each design aspect is include in the HLD (which is based 
 
 ## Dive In
 
+![system_design_concepts](res/system_design_concepts.jpg)
+
 ### Load Balancer
 
 ![load_balancer](res/load_balancer.png)
@@ -135,6 +137,18 @@ A diagram representing each design aspect is include in the HLD (which is based 
 
 ![cdn_work](res/cdn_work.png)
 
+### Circuit Breaker
+
+TODO
+
+### Service Discovery
+
+TODO
+
+### Scaling
+
+TODO
+
 ---
 
 
@@ -148,6 +162,22 @@ A diagram representing each design aspect is include in the HLD (which is based 
 ### Data Pipeline
 
 ![data_pipeline_overview](res/data_pipeline_overview.png)
+
+### AI
+
+TODO
+
+### Reduce Latency
+
+![latency_reduce](res/latency_reduce.png)
+
+### Latency vs Throughput
+
+![latency_vs_throughput](res/latency_vs_throughput.png)
+
+### Version Strategies
+
+![common_versioning_strategies](res/common_versioning_strategies.png)
 
 
 
@@ -168,3 +198,13 @@ A diagram representing each design aspect is include in the HLD (which is based 
 [7] [100+ Best System Design Resources for Interview and Learning](https://github.com/javabuddy/best-system-design-resources?tab=readme-ov-file)
 
 [8] [EP56: System Design Blueprint: The Ultimate Guide](https://blog.bytebytego.com/p/ep56-system-design-blueprint-the)
+
+[9] [Top Strategies to Reduce Latency](https://blog.bytebytego.com/p/top-strategies-to-reduce-latency)
+
+[10] [EP160: Top 20 System Design Concepts You Should Know](https://blog.bytebytego.com/p/ep160-top-20-system-design-concepts)
+
+[11] [EP186: Latency vs. Throughput](https://blog.bytebytego.com/p/ep186-latency-vs-throughput)
+
+[12] [EP175: What is the SOLID Principle?](https://blog.bytebytego.com/p/ep175-what-is-the-solid-principle)
+
+[13] [What are some of the most popular versioning strategies?](https://blog.bytebytego.com/p/ep178-the-lifecycle-of-a-kubernetes)

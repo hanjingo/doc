@@ -4,6 +4,8 @@
 
 
 
+![test_system_functionality](res/test_system_functionality.png)
+
 ## Unit Testing
 
 A unit test is a small piece of code that checks if a specific function or method in is an application works correctly. It will work as the function inputs and verifying the outputs. These tests check that the code work as expected based on teh logic the developer intended.
@@ -189,7 +191,7 @@ TODO
 
 ### Test Tools
 
-![best_way_to_test_system_functionality](res/best_way_to_test_system_functionality.png)
+![best_way_to_test_system_functionality](res/best_way_to_test_system_functionality.jpg)
 
 
 
@@ -198,3 +200,5 @@ TODO
 [1] [Unit Testing - Software Testing](https://www.geeksforgeeks.org/software-testing/unit-testing-software-testing/)
 
 [2] [Integration Testing - Software Engineering](https://www.geeksforgeeks.org/software-testing/software-engineering-integration-testing/)
+
+[3] [Best ways to test system functionality](https://blog.bytebytego.com/p/ep170-best-ways-to-test-system-functionality)

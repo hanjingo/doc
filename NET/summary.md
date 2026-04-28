@@ -130,6 +130,8 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 
 ## Protocol
 
+![protocol_dependencies](res/protocol_dependencies.jpg)
+
 A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.
 
 
@@ -137,3 +139,7 @@ A protocol defines the format and the order of messages exchanged between two or
 ## Reference
 
 [1] James F. Kurose, Keith W. Ross . COMPUTER NETWORKING: A Top-Down Approach . 6ED
+
+[2] [EP158: How to Learn API Development](https://blog.bytebytego.com/p/ep158-how-to-learn-api-development)
+
+[3] [8 Popular Network Protocols](https://blog.bytebytego.com/p/ep195-common-network-protocols-every)

@@ -6,6 +6,8 @@
 
 ## DBMS Intro
 
+![db_types](res/db_types.jpg)
+
 ### DBMS Types
 
 - Relational Database Management System (RDBMS)
@@ -50,8 +52,6 @@
 ### 3-Tier Architecture
 
 ![3_tier_arch](res/3_tier_arch.png)
-
-
 
 ### Relational Algebra
 
@@ -160,6 +160,14 @@
 
 
 
+## Summary
+
+### SQL vs NoSQL
+
+![sql_vs_nosql](res/sql_vs_nosql.png)
+
+
+
 ## Reference
 
 [1] Abraham Silberschatz; Henry F. Korth; S. Sudarshan. Database System Concepts. 6th Edition
@@ -185,3 +193,7 @@
 [11] [Indexing in Databases](https://www.geeksforgeeks.org/dbms/indexing-in-databases-set-1/)
 
 [12] [Difference Between RDBMS and DBMS](https://www.geeksforgeeks.org/dbms/difference-between-rdbms-and-dbms/)
+
+[13] [Understanding Database Types](https://blog.bytebytego.com/p/understanding-database-types)
+
+[14] [SQL vs NoSQL: Choosing the Right Database for An Application](https://blog.bytebytego.com/p/sql-vs-nosql-choosing-the-right-database)

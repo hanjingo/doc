@@ -70,6 +70,19 @@ The disadvantages of proxy servers:
 
 
 
+## Nginx
+
+![nginx_intro](res/nginx_intro.png)
+
+Here’s what makes Nginx so popular:
+
+- High-Performance Web Server
+- Reverse Proxy & Load Balancer
+- Caching Layer
+- SSL Termination (Offloading)
+
+
+
 ## Summary
 
 ### Proxy Vs Reverse Proxy
@@ -98,3 +111,5 @@ The disadvantages of proxy servers:
 [3] [System Design CheatSheet for Interview](https://medium.com/javarevisited/system-design-cheatsheet-4607e716db5a)
 
 [4] [Difference between Forward Proxy and Reverse Proxy](https://www.geeksforgeeks.org/system-design/difference-between-forward-proxy-and-reverse-proxy/)
+
+[5] [Why Is Nginx So Popular?](https://blog.bytebytego.com/p/ep194-evolution-of-http)

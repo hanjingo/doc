@@ -4,6 +4,8 @@
 
 
 
+![api_gateway_summary](res/api_gateway_summary.png)
+
 ## API Gateway
 
 An API Gateway is a key component in system design, particularly in microservices architectures and modern web applications. It serves as a centralized entry point for managing and routing requests from clients to the appropriate microservices or backend services within a system.
@@ -79,6 +81,48 @@ An API Gateway is a key component in system design, particularly in microservice
 
 
 
+## Example 1: Tinder’s API Gateway
+
+### High-Level Design
+
+![tinder_api_gateway_high_lvl_design](res/tinder_api_gateway_high_lvl_design.png)
+
+(TAG: Tinder API Gateway)
+
+This design unlocks three critical outcomes:
+
+- Faster developer workflows, since most changes require no code, only config.
+- Stronger security boundaries, because teams own and isolate their gateway instances.
+- Better reuse, through shared filters and common middleware patterns.
+
+### Boot Flow
+
+![tinder_proc_flow](res/tinder_proc_flow.png)
+
+This design ensures that routing logic executes with minimal overhead. Every decision has already been made. Every route, predicate, and filter is compiled into the runtime graph.
+
+### Request Lifecycle
+
+![tinder_request_lifecycle](res/tinder_request_lifecycle.png)
+
+When a request hits a TAG-powered gateway, it passes through a well-defined pipeline of filters, transformations, and lookups before reaching the backend.
+
+
+
+## Summary
+
+### API Gateway vs Service Mesh
+
+![api_gateway_vs_service_mesh](res/api_gateway_vs_service_mesh.png)
+
+
+
 ## Reference
 
 [1] [What is API Gateway?](https://www.geeksforgeeks.org/system-design/what-is-api-gateway-system-design/)
+
+[2] [API Gateway](https://blog.bytebytego.com/p/api-gateway)
+
+[3] [API Gateway vs Service Mesh - Which One Do You Need](https://blog.bytebytego.com/p/api-gateway-vs-service-mesh-which)
+
+[4] [How Tinder’s API Gateway Handles A Billion Swipes Per Day](https://blog.bytebytego.com/p/how-tinders-api-gateway-handles-a)

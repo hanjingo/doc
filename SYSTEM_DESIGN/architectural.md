@@ -4,7 +4,7 @@
 
 
 
-![software_arch_style](res/software_arch_style.png)
+![software_arch_style](res/software_arch_style.jpg)
 
 ## Architectural Design
 
@@ -12,23 +12,23 @@
 
 The MVC pattern is used when there are multiple ways to view and interact with data. Also used when the future requirements for interaction and presentation of data are unknown.
 
-By separates presentation and interaction from the system data. The system is structured into three logical components that interact with each other. The **Model** component manages the system data and associated operations on that data. The **View** component defines and manages how the data is presented to the user. The **Controller** component manages user interaction (e.g., key presses, mouse clicks, etc) and passes these interactions to the view and the Model.
+By separating presentation and interaction from the system data. The system is structured into three logical components that interact with each other. The **Model** component manages the system data and associated operations on that data. The **View** component defines and manages how the data is presented to the user. The **Controller** component manages user interaction (e.g., key presses, mouse clicks, etc) and passes these interactions to the view and the Model.
 
 *Notic*:
 
-- MVC pattern allows the data to change independently of its representation and vice versa. Supports presentation of the same data in different ways with changes made in one representation shown in all of them.
+- The MVC pattern allows the data to change independently of its representation and vice versa. Supports presentation of the same data in different ways, with changes made in one representation shown in all of them.
 - It can involve additional code and code complexity when the data model and interactions are simple.
 
 ### Layered Architecture Pattern
 
-The Layered Architecture pattern is used when building new facilities on top of existing systems; when the development is spread across several teams with each responsibility for a layer of functionality; when there is a requirement for multi-level security.
+The Layered Architecture pattern is used when building new facilities on top of existing systems; when the development is spread across several teams, with each responsibility for a layer of functionality; and when there is a requirement for multi-level security.
 
 By organizing the system into layers with related functionality associated with each layer. A layer provides services to the layer above it, so the lowest-level layers represent core services that are likely to be used throughout the system.
 
 *Notice*:
 
 - Layer Architecture Pattern allows replacement of entire layers so long as the interface is maintained. Redundant facilities (e.g., authentication) can be provided in each layer to increase the dependability of the system.
-- In practice, providing a clean separation between layers is often difficult and a high-level layer may have to interact directly with lower-level layers rather than through the layer immediately below it. Performance can be a problem because of multiple levels of interpretation of a service request as it is processed at each layer.
+- In practice, providing a clean separation between layers is often difficult, and a high-level layer may have to interact directly with lower-level layers rather than through the layer immediately below it. Performance can be a problem because of multiple levels of interpretation of a service request as it is processed at each layer.
 
 ### Repository Architecture Pattern
 
@@ -43,7 +43,7 @@ All data in a system is managed in a central repository that is accessible to al
 
 ### Client-Server Architecture
 
-The Client-Server Architecture is used when data in a shared database to be accessed from a range of locations. Because servers can be replicated, may be used when the load on a system is variable.
+The Client-Server Architecture is used when data in a shared database is accessed from a range of locations. Because servers can be replicated, they may be used when the load on a system is variable.
 
 In a client-server architecture, the functionality of the system is organized into services, with each service delivered from a separate server. Clients are users of these services and access servers to make use of them.
 
@@ -155,11 +155,33 @@ Event-Driven Architecture(EDA) has a few key challenges:
 
 ![microservice_arch](res/microservice_arch.png)
 
-Microservice architecture is an approach to system design where a large application is built as a collection of small, loosely coupled, and independently deployable services. Each service, known as a microservice, focuses on a specific business function and can be developed, deployed, and scaled independently of otehr services.
+Microservice architecture is an approach to system design where a large application is built as a collection of small, loosely coupled, and independently deployable services. Each service, known as a microservice, focuses on a specific business function and can be developed, deployed, and scaled independently of other services.
+
+Advantages:
+
+- Independent Development and Deployment
+- Small Focused Team
+- Small CodeBase
+- Mix of Technologies
+- Fault Isolation
+- Scalability
+- Data Isolation
+
+Disadvantages:
+
+- Complexity
+- Testing
+- Data Integrity
+- Network Latency
+- Versioning
 
 ### Tech Stack
 
 ![microservice_tech_stack](res/microservice_tech_stack.png)
+
+### Design Pattern
+
+![microservice_design_pattern](res/microservice_design_pattern.png)
 
 ### APIs
 
@@ -171,39 +193,6 @@ APIs (Application Programming Interfaces) are crucial in microservice architectu
 - Interoperability
 - Reusability
 - Evolvability
-
-### Advantage
-
-- Independent Development and Deployment
-- Small Focused Team
-- Small CodeBase
-- Mix of Technologies
-- Fault Isolation
-- Scalability
-- Data Isolation
-
-### Disadvantage
-
-- Complexity
-- Testing
-- Data Integrity
-- Network Latency
-- Versioning
-
-### Request-Driven vs Event-Driven Microservices
-
-![req_driven_vs_event_driven_microservices](res/req_driven_vs_event_driven_microservices.png)
-
-| Feature             | Request-driven Microservices    | Event-driven microservices                   |
-| ------------------- | ------------------------------- | -------------------------------------------- |
-| Communication Model | Synchronous(request-response)   | Asynchronous(event-based)                    |
-| Coupling            | Tight coupling between services | Loose coupling                               |
-| Response Time       | Direct waiting for responses    | Non-blocking; responses occur independently  |
-| Scalability         | Can lead to bottlenecks         | High scalability, suitable for many events   |
-| Complexity          | Generally simpler to implement  | More complex due to event management         |
-| Debugging           | Easier to trace request flows   | Harder to debug; requires tracking events    |
-| Use Cases           | APIs, payment processing        | Order management, notifications              |
-| Data Consistency    | Easier to ensure consistency    | Requires strategies for eventual consistency |
 
 ### Use Case
 
@@ -221,13 +210,49 @@ Below are the use cases of event-driven microservices:
 - Real-time Analytics
 - Microservices Communication
 
+### Data Consistency
+
+![microservice_data_consistency](res/microservice_data_consistency.png)
+
+### Data Sharing
+
+![microservice_data_sharing](res/microservice_data_sharing.png)
+
 ### Best Practice
 
 ![microservice_best_practice](res/microservice_best_practice.png)
 
 
 
+## Example 1: Reddit's Go Microservice Migration
+
+### Datastore Solutions
+
+![reddit_sister_datastore_solution](res/reddit_sister_datastore_solution.png)
+
+Reddit’s engineering team came up with a solution they called “sister datastores”. They created three completely separate datastores that mirrored their production infrastructure (Postgres, Memcached, and Redis). The critical difference was that only the new Go microservice would write to these sister stores.
+
+### Verification
+
+![reddit_verification_process](res/reddit_verification_process.png)
+
+Reddit’s engineering team added another verification layer. They ran all tap comparisons through actual CDC event consumers in the legacy Python service. This meant Python code would attempt to deserialize and process events written by Go. If Python could successfully read and handle these events, they knew cross-language compatibility was working. This end-to-end verification ensured not just that Go wrote correct data, but that the entire ecosystem could consume it.
+
+
+
 ## Summary
+
+### System Integration
+
+![system_integration](res/system_integration.png)
+
+### Handling Growth and Failure
+
+![handling_growth_and_failure](res/handling_growth_and_failure.jpg)
+
+### Monolith vs Microservices vs Modular Monolith
+
+![monolith_vs_microservices_vs_modular_monolith](res/monolith_vs_microservices_vs_modular_monolith.png)
 
 ### Microservices vs Monolithic Architecture
 
@@ -246,6 +271,29 @@ Below are the use cases of event-driven microservices:
 | Less flexible as all components are tightly coupled          | More flexible as components can be developed, deployed, and scaled independently |
 | Communication between components is faster                   | Communication may be slower due to network calls             |
 
+### Orchestraion vs Choreography
+
+![orchestraion_vs_choreography](res/orchestraion_vs_choreography.png)
+
+### Request-Driven vs Event-Driven Microservices
+
+![req_driven_vs_event_driven_microservices](res/req_driven_vs_event_driven_microservices.png)
+
+| Feature             | Request-driven Microservices    | Event-driven microservices                   |
+| ------------------- | ------------------------------- | -------------------------------------------- |
+| Communication Model | Synchronous(request-response)   | Asynchronous(event-based)                    |
+| Coupling            | Tight coupling between services | Loose coupling                               |
+| Response Time       | Direct waiting for responses    | Non-blocking; responses occur independently  |
+| Scalability         | Can lead to bottlenecks         | High scalability, suitable for many events   |
+| Complexity          | Generally simpler to implement  | More complex due to event management         |
+| Debugging           | Easier to trace request flows   | Harder to debug; requires tracking events    |
+| Use Cases           | APIs, payment processing        | Order management, notifications              |
+| Data Consistency    | Easier to ensure consistency    | Requires strategies for eventual consistency |
+
+### Batch vs Stream Processing
+
+![batch_vs_stream_proc](res/batch_vs_stream_proc.png)
+
 
 
 ## Reference
@@ -253,3 +301,21 @@ Below are the use cases of event-driven microservices:
 [1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
 
 [2] [Event-Driven APIs in Microservice Architectures](https://www.geeksforgeeks.org/system-design/event-driven-apis-in-microservice-architectures/)
+
+[3] [Monolith vs Microservices vs Modular Monoliths: What's the Right Choice](https://blog.bytebytego.com/p/monolith-vs-microservices-vs-modular)
+
+[4] [A Crash Course on Microservices Design Patterns](https://blog.bytebytego.com/p/a-crash-course-on-microservices-design)
+
+[5] [Mastering Data Consistency Across Microservices](https://blog.bytebytego.com/p/mastering-data-consistency-across)
+
+[6] [Data Sharing Between Microservices](https://blog.bytebytego.com/p/data-sharing-between-microservices)
+
+[7] [Saga Pattern Demystified: Orchestration vs Choreography](https://blog.bytebytego.com/p/saga-pattern-demystified-orchestration)
+
+[8] [EP122: API Gateway 101](https://blog.bytebytego.com/p/ep122-api-gateway-101)
+
+[9] [Consistent Hashing 101: How Modern Systems Handle Growth and Failure](https://blog.bytebytego.com/p/consistent-hashing-101-how-modern)
+
+[10] [Batch vs Stream Processing](https://blog.bytebytego.com/p/ep185-docker-vs-kubernetes)
+
+[11] [How Reddit Migrated Comments Functionality from Python to Go](https://blog.bytebytego.com/p/how-reddit-migrated-comments-functionality)

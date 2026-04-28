@@ -62,7 +62,9 @@ Limitations:
 
 ## Algorithms
 
-Rate Limiting Algorithms are mechanisms designed to control the rate at which requests are processed or served by a system.
+![rate_limiting_algo](res/rate_limiting_algo.png)
+
+Rate-limiting algorithms are mechanisms designed to control the rate at which requests are processed or served by a system.
 
 ### Token Bucket Algorithm
 
@@ -124,4 +126,6 @@ The sliding window algorithm is actually a variation of the two algorithms, name
 [2] [Rate Limiting Algorithms - System Design](https://www.geeksforgeeks.org/system-design/rate-limiting-algorithms-system-design/)
 
 [3] [API Throttling vs. API Rate Limiting - System Design](https://www.geeksforgeeks.org/system-design/api-throttling-vs-api-rate-limiting-system-design/)
+
+[4] [A Guide to Rate Limiting Strategies](https://blog.bytebytego.com/p/a-guide-to-rate-limiting-strategies)
 
