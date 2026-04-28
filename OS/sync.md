@@ -58,6 +58,15 @@ A critical section is a part of a program where shared resources (like memory, f
 2. Progress
 3. Bounded Waiting
 
+### Reentrant Function
+
+A function is said to be reentrant if there is a provision to interrupt the function in the course of execution, service the interrupt service routine, and then resume the earlier going on function, without hampering its earlier course of action.
+
+The function has to satisfy certain conditions to be called as reentrant: 
+
+1. It may not use global and static data.
+2. It should not modify its own code.
+
 ---
 
 
@@ -145,9 +154,9 @@ We can prevent a Deadlock by eliminating any of the above [four conditions](#Con
 
 ### Deadlock Avoidance
 
-#### Mathematical Condtion For Deadlock Avoidance
+#### Mathematical Conditions for Deadlock Avoidance
 
-In a system with $R$ identical resources and $P$ processes competing for them, the goal is to determine the minimum number of resoruces required to ensure a deadlock neve occurs. The condition for avoid deadlock is:
+In a system with $R$ identical resources and $P$ processes competing for them, the goal is to determine the minimum number of resources required to ensure a deadlock never occurs. The condition for avoiding deadlock is:
 $$
 R \geq P(N - 1) + 1
 $$
@@ -289,6 +298,43 @@ Causes of Livelock:
 
 
 
+## Priority Inversion
+
+Priority inversion is a scheduling problem where a low-priority task holds a resource (like a lock) that a high-priority task needs. This forces the high-priority task to wait for the low one.
+
+### Bounded Priority Inversion
+
+Bounded priority inversion occurs when a high-priority task is delayed by a lower-priority task holding a resource. The delay is predictable and limited to the time the lower-priority task holds the resource.
+
+![bounded_priority_inversion](res/bounded_priority_inversion.png)
+
+1. L acquires the mutex and enters its critical section.
+2. H arrives and attempts to acquire the mutex but is blocked, waiting for L to release it.
+3. M becomes ready to run and preempts L.
+4. M executes until it completes its task.
+5. L resumes, finishes its critical section, and releases the mutex.
+6. H acquires the mutex and enters its critical section.
+
+### Unbounded Priority Inversion
+
+Unbounded priority inversion occurs when a medium-priority task (M) preempts L while it holds the lock. This action delays L from releasing the resource, which in turn delays H. The delay H experiences becomes unpredictable and can potentially be indefinite, hence the term "unbounded."
+
+![unbounded_priority_inversion](res/unbounded_priority_inversion.png)
+
+1. Task L (Low Priority) starts and acquires a lock on a shared resource.
+2. Task H (High Priority) starts and needs the same lock. It gets blocked because Task L has it.
+3. This situation, where a high-priority task waits for a low-priority one, is called Priority Inversion.
+4. Task M (Medium Priority) now starts. Its priority is higher than Task L's.
+5. The scheduler lets Task M preempt Task L, so Task M begins running.
+6. This is the critical problem: Task M runs, preventing Task L from finishing its work.
+7. Because Task L can't run, it cannot release the lock.
+8. This means Task H remains blocked indefinitely, even though it's the most important task.
+9. The high-priority task is stuck waiting for a medium-priority task to finish, which is a serious flaw. This can cause a system failure or trigger a watchdog timer.
+
+---
+
+
+
 ## Process Synchronization
 
 ![process_sync](/usr/local/src/github/hanjingo/doc/OS/res/process_sync.png)
@@ -402,6 +448,13 @@ until false;
 
 In the Bakery Algorithm, each process is assigned a number (a ticket) in a lexicographical order. Before entering the critical section, a process receives a ticket number, and the process with the smallest ticket number enters the critical section. If two processes receive the same ticket number, the process with the lower process ID is given priority.
 
+Events are sorted for critical resource access using FCFS. Assumptions:
+
+- System has $N$ nodes, each with one process controlling a critical resource and handling simultaneous requests.
+- Each process keeps a queue of recent and self-generated messages.
+- Messages: request, reply, and release; request messages are sorted by event order, queue starts empty.
+- $P_i$ sends $request(T_i, i)$, where $T_i = C_i$ is the logical clock value, $i$ is the content.
+
 Algorithm Pseudocode:
 
 ```c++
@@ -424,6 +477,16 @@ repeat
 
 until false
 ```
+
+Algorithm Steps:
+
+1. $P_i$ requests resource: queues $request(T_i, i)$ and sends to others.
+2. $P_j$ receives $request(T_i, i)$: replies with $reply(T_j, j)$, queues $request(T_i, i)$; if $P_j$ already requested, its timestamp is less than $(T_i, i)$.
+3. $P_i$ can access resource if:
+   - Its request is at the head of its queue
+   - It has replies from all others with later timestamps
+4. To release, $P_i$ removes its request and sends a timestamped release to others.
+5. $P_j$ on receiving release from $P_i$ removes $P_i$'s request from its queue.
 
 ### Hardware-Based Solutions
 
@@ -511,7 +574,9 @@ Various hardware solutions to the Critical Section Problem are:
 
 
 
-## Semaphore
+## Thread Synchronization
+
+### Semaphore
 
 ![semaphore](res/semaphore.png)
 
@@ -530,15 +595,15 @@ Types of Semaphores:
 1. Counting Semaphore
 2. Binary Semaphore
 
----
-
-
-
-## Mutex
+### Mutex
 
 ![mutex](res/mutex.png)
 
 Mutex is mainly used to provide mutual exclusion to a specific portion of the code so that the process can execute and work with a particular section of the code at a particular time.
+
+### Monitor
+
+Monitors are a high-level synchronization mechanism that simplify process and thread synchronization. Unlike semaphores, where the programmer must explicitly call wait() and signal(), monitors combine shared data and the operations on that data inside a single structure, making synchronization safer and easier to manage.
 
 ---
 
@@ -556,6 +621,18 @@ Mutex is mainly used to provide mutual exclusion to a specific portion of the co
 | Mutex does not have any subtypes.                            | Semaphore is of two types: Counting Semaphore & Binary Semaphore. |
 | A mutex can only be modified by the process that is requesting or releasing a resource. | Semaphore work with two atomic operations (Wait, signal) which can modify it. |
 | If the mutex is locked then the process needs to wait in the process queue and the mutex can only be accessed once the lock is released. | If the process needs a resource and no resource is free. So, the process needs to perform a wait operation until the semaphore value is greater than zero. |
+
+### Mutex vs Monitor
+
+|  Parameters  |                            Mutex                             |                           Monitor                            |
+| :----------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   Purpose    |      Provide mutual exclusion and ensure thread safety.      | Provide higher-level synchronization and communication functionality. |
+|  Mechanism   |           Uses a lock to provide mutual exclusion.           | Uses lock and condition variables to provide higher-level synchronization. |
+| Notification | Mutexes do not provide notification when a resource becomes available. | Monitors can notify waiting threads when a condition becomes true. |
+| Wait/Signal  |         Mutexes do not have wait/signal operations.          | Monitors have wait/signal operations for waiting on and signaling condition variables. |
+|    Scope     |            Mutexes can be used across processes.             |     Monitors are typically used within a single process.     |
+|  Complexity  |          Mutexes are simpler to use and implement.           | Monitors are more complex to use and implement due to the use of condition variables. |
+| Performance  | Mutexes are faster than Monitors due to their lower overhead. | Monitors have higher overhead due to the use of condition variables, but can be more efficient in some situations. |
 
 ### Difference Between Starvation And Livelock
 
@@ -597,3 +674,11 @@ Mutex is mainly used to provide mutual exclusion to a specific portion of the co
 [12] [Deadlock Ignorance](https://www.geeksforgeeks.org/operating-systems/deadlock-ignorance-in-operating-system/)
 
 [13] [Starvation and Livelock](https://www.geeksforgeeks.org/operating-systems/deadlock-starvation-and-livelock/)
+
+[14] [Reentrant Function](https://www.geeksforgeeks.org/cpp/reentrant-function/)
+
+[15] [Priority Inversion in Operating Systems](https://www.geeksforgeeks.org/operating-systems/priority-inversion/)
+
+[16] [Priority Inversion in Operating Systems](https://www.geeksforgeeks.org/operating-systems/priority-inversion/)
+
+[17] [Monitors in Process Synchronization](https://www.geeksforgeeks.org/operating-systems/monitors-in-process-synchronization/)

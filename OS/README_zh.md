@@ -14,7 +14,6 @@
 - [文件I/O](io_zh.md)
 - [内存管理](mem_mgr_zh.md)
 - [多处理机系统](multi_processor_zh.md)
-- [流水线模型](pipeline_zh.md)
 - [posix接口](posix_zh.md)
 - [进程](process_zh.md)
 - [系统安全](safe_zh.md)

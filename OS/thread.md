@@ -64,188 +64,43 @@ Kernel-level threads (KLTs) are created and managed directly by the operating sy
 
 
 
-## POSIX API
+## Thread Scheduling
 
-### pthread_create
+### Self-scheduling
 
-```c++
-#include <pthread.h>
-int pthread_create(pthread_t *tid, const pthread_attr_t *attr, void *(*func)(void *), void *arg);
-```
+All processors share a common ready queue; idle processors pick up processes/threads to run.
 
-- `tid`: returned thread ID
-- `attr`: attributes
-- `func`: function to execute
-- `arg`: argument to function
-- `return value`: 0 on success, error code on failure
+| Advantages                                                   | Disadvantages                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| - Easy to port single-machine scheduling<br>- Avoids imbalance, improves utilization | - Bottleneck<br>- Inefficiency<br>- Frequent thread switches |
 
-Creates a thread.
+### Gang scheduling
 
-### pthread_join
+A group of threads from a process is assigned to a group of processors. Processor time can be allocated:
 
-```c++
-#include <pthread.h>
-int pthread_join(pthread_t *tid, void **status);
-```
+- Evenly among all applications
+- Evenly among all threads
 
-- `tid`: thread ID
-- `status`: thread return value
-- `return value`: 0 on success, error code on failure
+| Advantages                                                   | Disadvantages |
+| ------------------------------------------------------------ | ------------- |
+| - Reduces context switches, improves efficiency<br>- Reduces scheduling frequency and overhead |               |
 
-Waits for thread to terminate.
+### Dedicated processor assignment
 
-### pthread_self
+During an application's execution, a set of processors is dedicated to it, one per thread, until completion.
 
-```c++
-#include <pthread.h>
-int pthread_detach(pthread_t tid);
-```
+### Dynamic scheduling
 
-- `tid`: thread ID
-- `return value`: 0 on success, error code on failure
+Allows processes to change thread count during execution. The OS mainly allocates processors, following:
 
-Detaches the specified thread.
+- Allocate if idle
+- New jobs have absolute priority
+- Keep waiting
+- Allocate on release
 
-### pthread_exit
+### Conext Switch
 
-```c++
-#include <pthread.h>
-void pthread_exit(void *status);
-```
-
-- `status`: thread exit status
-
-Terminates the thread.
-
-### pthread_once
-
-```c++
-#include <pthread.h>
-int pthread_once(pthread_once_t *onceptr, void (*init)(void));
-```
-
-- `onceptr`: call record pointer
-- `init`: initialization function
-- `return value`: 0 on success, error code on failure
-
-Ensures init is called only once.
-
-### pthread_key_create
-
-```c++
-#include <pthread.h>
-int pthread_key_create(pthread_key_t *keyptr, void (*destructor)(void *value));
-```
-
-- `keyptr`: created key
-- `destructor`: key destructor
-- `return value`: 0 on success, error code on failure
-
-Allocates a key for thread-specific data.
-
-### pthread_getspecific
-
-```c++
-#include <pthread.h>
-void *pthread_getspecific(pthread_key_t key);
-```
-
-- `key`: key
-- `return value`: pointer to thread-specific data (nullable)
-
-Gets value by key.
-
-### pthread_setspecific
-
-```c++
-#include <pthread.h>
-int pthread_setspecific(pthread_key_t key, const void *value);
-```
-
-- `key`: key
-- `value`: value
-- `return value`: 0 on success, error code on failure
-
-Sets value by key.
-
-### pthread_mutex_lock
-
-```c++
-#include <pthread.h>
-int pthread_mutex_lock(pthread_mutex_t *mptr);
-```
-
-- `mptr`: mutex
-- `return value`: 0 on success, error code on failure
-
-Locks the mutex.
-
-### pthread_mutex_unlock
-
-```c++
-#include <pthread.h>
-int pthread_mutex_unlock(pthread_mutex_t *mptr);
-```
-
-- `mptr`: mutex
-- `return value`: 0 on success, error code on failure
-
-Unlocks the mutex.
-
-### pthread_cond_wait
-
-```c++
-#include <pthread.h>
-int pthread_cond_wait(pthread_cond_t *cptr, pthread_mutex_t *mptr);
-```
-
-- `cptr`: condition variable
-- `mptr`: mutex
-- `return value`: 0 on success, error code on failure
-
-Waits on a condition variable (single thread).
-
-### pthread_cond_signal
-
-```c++
-#include <pthread.h>
-int pthread_cond_signal(pthread_cond_t *cptr);
-```
-
-- `cptr`: condition variable
-- `mptr`: mutex
-- `return value`: 0 on success, error code on failure
-
-Wakes up a single thread waiting on the condition variable.
-
-### pthread_cond_timedwait
-
-```c++
-#include <pthread.h>
-int pthread_cond_timedwait(pthread_cond_t *cptr, pthread_kmutex_t *mptr, 
-                           const struct timespec *abstime);
-```
-
-- `cptr`: condition variable
-- `mptr`: mutex
-- `abstime`: absolute wait time (seconds and nanoseconds since 1970-01-01 UTC)
-- `return value`: 0 on success, error code on failure
-
-Timeout wait for all threads on the condition variable.
-
-### pthread_cond_broadcast
-
-```c++
-#include <pthread.h>
-int pthread_cond_broadcast(pthread_cond_t *cptr);
-```
-
-- `cptr`: condition variable
-- `mptr`: mutex
-- `abstime`: absolute wait time (seconds and nanoseconds since 1970-01-01 UTC)
-- `return value`: 0 on success, error code on failure
-
-Wakes up all threads waiting on the condition variable.
+Thread Context Switch is a process of switching the working from one thread to another. The computer CPU stores the state of the current thread, so that it can be returned later. Next, it switches to the next thread, picks up where it was left before, and continues to start working.
 
 
 
@@ -262,7 +117,7 @@ Wakes up all threads waiting on the condition variable.
 | Limited use of multiprocessing            | Fully utilizes multiprocessing              |
 | Fast and simple creation and management   | Slower and more complex management          |
 | Threads share the same address space      | Each thread has its own address space       |
-| More portable, works on any OS            | OS-dependent and less portable              |
+| More portable, works on any OS            | OS-dependent, and less portable             |
 
 ### Benefits Of Multithreading
 

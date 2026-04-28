@@ -26,6 +26,14 @@ Isolation ensures that concurrently executing transactions are isolated from one
 
 Durability ensures that, once a transaction has been committed, that transaction's updates do not get lost, even if there is a system failure.
 
+### Data Integrity
+
+Data integrity is defined as the data contained in the database is both correct and consistent. For this purpose, the data stored in the database must satisfy certain procedures (rules). The data in a database must be correct and consistent.
+
+### Data Security
+
+Data security refers to the prevention of data from unauthorized users. It is only allowed to access the data by the authorized users.
+
 
 
 ## Concurrent execution
@@ -250,6 +258,19 @@ Online Analytical Processing (OLAP) refers to software tools used for the analys
 | **Type of Serializability** |           Conflict serializable            | View serializable (not always conflict serializable) |
 |    **Concurrency Level**    |            Low (more rollbacks)            |               Higher (fewer rollbacks)               |
 |    **System Throughput**    |                    Low                     |                         High                         |
+
+### Data Security vs Data Integrity
+
+| Data Security                                                | Data Integrity                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Data security refers to the prevention of data corruption through the use of controlled access mechanisms. | Data integrity refers to the quality of data, which assures that the data is complete and has a whole structure. |
+| Its motive is the protection of data.                        | Its motive is the validity of data.                          |
+| Its work is to only the people who should have access to the data are the only ones who can access the data. | Its work is to check that the data is correct and not corrupt. |
+| It refers to making sure that data is accessed by its intended users, thus ensuring the privacy and protection of data. | It refers to the structure of the data and how it matches the schema of the database. |
+| Some of the popular means of data security are authentication/authorization, masking, and encryption. | Some of the means to preserve integrity are backing up, error detection, designing a suitable user interface, and correcting data. |
+| It relates to the physical form of data against accidental or intentional loss or misuse and destruction. | It relates to the logical protection (correct, complete, and consistent) of data. |
+| It avoids unauthorized access to data.                       | It avoids human error when data is entered.                  |
+| It can be implemented through: user accounts (passwords), authentication schemes | It can be implemented by following the rules: Primary Key, Foreign Key, Relationship |
 
 
 

@@ -4,63 +4,61 @@
 
  [TOC]
 
- ![nat_example](res/nat_example.png)
+ 
 
- Network Address Translation (NAT) is a technique that allows a network device (usually a router or firewall) to rewrite IP addresses and optionally ports in packet headers as packets pass between two networks. NAT is most commonly used to map private (RFC 1918) addresses used in local networks to one or more public IPv4 addresses. This note summarizes common NAT types, how NAT works, its interaction with other protocols, common issues, and migration considerations for IPv6.
+Network Address Translation (NAT) allows multiple devices in a private network to access the internet using a single public IP address. It helps conserve IPv4 addresses and hides internal systems for added security.
 
- ## Why NAT?
+![nat](res/nat.png)
 
- - IPv4 address scarcity: NAT allows many hosts to share a small number of public IPv4 addresses.
- - Network isolation and simplified address management for private networks.
- - Policy enforcement and basic topology hiding: NAT can act as a primitive form of access control and conceal internal addressing.
+## NAT Types
 
- While NAT solved practical deployment problems for IPv4, it breaks the original end-to-end addressing model and introduces complications for some applications and protocols.
+![nat_types](res/nat_types.png)
 
- ## Basic concepts
+### Static NAT (One-To-One)
 
- - Inside (local) vs outside (global) addresses: NAT translates between internal (private) addresses and external (public) addresses.
- - Mapping: a NAT maintains a mapping table that associates an internal endpoint (IP:port) with an external address (and sometimes port).
- - Types of mappings: one-to-one (static), many-to-one (dynamic, often with port translation), and port-preserving vs port-assigning behaviors.
+Static NAT creates a one-to-one mapping between a private IP address and a public IP address.
 
- ## Common NAT types
+### Dynamic NAT (Pool)
 
- - Static NAT (one-to-one): maps a specific internal IP to a specific external IP. Often used for servers that must be reachable from the public Internet.
+Dynamic NAT maps private IP addresses to public IP addresses from a predefined pool.
 
- - Dynamic NAT (pool): translates internal addresses to a pool of public addresses on demand. When the pool is exhausted, new connections cannot be created.
+### Port Address Translation (PAT)
 
- - Port Address Translation (PAT) / NAT overload / masquerading: many internal hosts share a single public address; translations use different external ports to distinguish flows. This is the most common home-router NAT behavior.
+PAT, also known as NAT Overload, allows multiple private IPs to share a single public IP using different port numbers.
 
- - Destination NAT (DNAT): rewrites the destination IP (and optionally port) of incoming packets, commonly used for port forwarding to internal servers.
+### Destination NAT (DNAT)
 
- - Source NAT (SNAT): rewrites the source IP of outgoing packets (often used in enterprise or cloud environments).
+![dnat](res/dnat.png)
 
- - Hairpin NAT (NAT loopback): allows internal hosts to access an internal server using the public IP and have the NAT loop the traffic back inside.
+DNAT, as the name suggests, is a technique that translates the destination IP address generally when connecting from a public IP address to a private IP address.
 
- ## How NAT operates (simplified packet flow)
+### Source NAT (SNAT)
 
- 1. Outbound packet from an internal host arrives at the NAT device.
- 2. NAT consults its mapping table. If no mapping exists, it creates one according to its policy (static, dynamic, or PAT).
- 3. NAT rewrites the source IP (and possibly source port) to the external address/port and forwards the packet to the outside network.
- 4. Return packets arriving at the external address are matched against the NAT table; the NAT rewrites destination IP/port back to the internal endpoint and forwards the packet.
+![snat](res/snat.png)
 
- Mappings usually include a timeout so that ephemeral entries are removed after inactivity. Long-lived inbound mappings (e.g., for servers) are typically static or explicitly configured.
+SNAT, as the name suggests, is a technique that translates source IP addresses generally when connecting from a private IP address to a public IP address. It maps the source client IP address in a request to a translation defined on a BIG-IP device.
 
- ## NAT and transport-level identifiers
+### Hairpin NAT (NAT loopback)
 
- Because NAT may change ports, protocols that embed IP addresses/ports in the application payload (FTP, SIP, H.323, some VPNs) need special handling. Common mitigations:
+TODO
 
- - Application-Level Gateways (ALGs): device components that inspect and rewrite application payloads to update embedded addresses/ports.
- - Protocol-aware proxies: terminate and re-establish sessions at the NAT.
- - Use of protocols that support NAT traversal (STUN, TURN, ICE) for peer-to-peer applications.
 
- ## NAT traversal techniques
 
- - STUN (Session Traversal Utilities for NAT): discovers the public mapping created by NAT; works with some NAT types but fails with symmetric NAT.
- - TURN (Traversal Using Relays around NAT): relays media through a public server; works reliably but consumes bandwidth on the relay.
- - ICE (Interactive Connectivity Establishment): coordinates candidate addresses (host, reflexive, relay) and attempts connectivity in order of preference.
- - UPnP and NAT-PMP: protocols that let hosts request port mappings from a local NAT device (common on consumer routers).
+## NAT Inside and Outside Addresses
 
- ## Interaction with tunneling and VPNs
+In NAT terminology, inside and outside describe the location of devices relative to the local network and define which addresses are subject to translation.
+
+![nat_inside_outside_address](res/nat_inside_outside_address.png)
+
+### Workflow
+
+![nat_workflow](res/nat_workflow.png)
+
+
+
+ ##  Tunneling
+
+![nat_tunneling](res/nat_tunneling.png)
 
  NAT interacts with tunneling protocols in different ways:
 
@@ -68,46 +66,156 @@
  - GRE and other tunnels: may require special handling (NAT traversal, port mapping) because tunnels encapsulate original headers.
  - When IP-in-IP or layer-2 tunnels traverse NAT, the outer headers must be translated; this can complicate path MTU discovery.
 
- ![nat_tunneling](res/nat_tunneling.png)
+### STUN (Session Traversal Utilities for NAT)
 
- ## Problems and limitations
+discovers the public mapping created by NAT; works with some NAT types but fails with symmetric NAT.
 
- - Breaks end-to-end connectivity: inbound connections require explicit port forwarding or static mappings.
- - Port exhaustion: with PAT, a single IPv4 address only provides ~65k ports; real usable ports are fewer and can be exhausted under heavy NAT usage.
- - Application incompatibility: protocols embedding addresses in payload often fail without ALGs or proxies.
- - Performance and statefulness: NAT devices must maintain per-flow state, which adds memory and processing overhead and is a scalability concern for very large deployments.
- - Logging and traceability: NAT obscures original internal IPs in public logs unless translations are recorded.
+### TURN (Traversal Using Relays around NAT)
 
- ## Security considerations
+relays media through a public server; works reliably but consumes bandwidth on the relay.
 
- - NAT provides a modest degree of address hiding, but it is not a security boundary. Relying on NAT alone for security is insufficient; firewall policies and access control are still required.
- - ALGs can introduce vulnerabilities if they are buggy; prefer endpoint-aware traversal (STUN/TURN/ICE) when possible.
+### ICE (Interactive Connectivity Establishment)
 
- ## NAT and IPv6
+coordinates candidate addresses (host, reflexive, relay) and attempts connectivity in order of preference.
 
- IPv6 was designed to restore end-to-end addressing and avoid the need for IPv4-style NAT. Recommended practices:
+### UPnP and NAT-PMP
 
- - Prefer native IPv6 addressing without NAT when possible.
- - Use IPv6 Prefix Delegation and proper address planning instead of NAT.
- - For IPv4/IPv6 coexistence, various transition mechanisms exist (NAT64, DNS64, 464XLAT). NAT64 provides protocol translation between IPv6 clients and IPv4 servers by combining DNS64 and a stateful translator.
+protocols that let hosts request port mappings from a local NAT device (common on consumer routers).
 
- ## Practical examples and configuration notes
 
- - Home router (PAT): a single public address with per-flow port translations. Outbound TCP/UDP flows are automatically mapped; inbound flows require static port forwarding.
- - Data center (SNAT/DNAT): cloud platforms often SNAT instances in private subnets to a set of public IPs and use DNAT/load-balancers for inbound traffic to services.
 
- When configuring NAT, consider mapping timeouts (short for UDP, longer for TCP), logging of mappings for auditing, and monitoring for port exhaustion.
+## Virtual Private Networks (VPNs)
 
- ## Troubleshooting checklist
+![vpn](res/vpn.png)
 
- - Check mapping table on NAT device for expected entry.
- - Ensure required ports are forwarded for incoming services.
- - If an application uses embedded IPs, verify ALGs or use an application proxy.
- - For P2P issues, try STUN/ICE or enable UPnP/NAT-PMP if secure in your environment.
+VPNs (Virtual Private Networks) provide private, secure connectivity over shared/public networks. Organizations use VPNs to connect remote users to corporate resources (remote‑access VPNs) or to interconnect branch offices and data centers (site‑to‑site VPNs). This note summarizes common VPN technologies, how they secure traffic, and operational considerations.
 
- ## References
+### Types based on usage(deployment)
 
- - Jim Kurose, Keith Ross, Computer Networking: A Top-Down Approach
- - RFC 3022: Traditional IP Network Address Translator (Traditional NAT)
- - RFC 2663: IP Network Address Translator (NAT)
- - RFC 6147, RFC 6146: NAT64/DNS64
+![vpn_based_on_usage](res/vpn_based_on_usage.png)
+
+| Type                      | Connection        | Typical Users            | Use Case                                      |
+| :------------------------ | :---------------- | :----------------------- | :-------------------------------------------- |
+| **Remote Access VPN**     | User → Network    | Employees, contractors   | Secure access from home, travel               |
+| **Site-to-Site VPN**      | Network → Network | Branch offices, partners | Connecting entire LANs across locations       |
+| **Personal/Consumer VPN** | User → Internet   | Individual consumers     | Privacy, geo-spoofing, public Wi-Fi           |
+| **Mobile VPN**            | Device → Network  | Mobile workers           | Persistent connection despite network changes |
+| **Cloud VPN**             | Cloud resources   | Cloud-native teams       | Secure cloud access without on-prem hardware  |
+
+#### Remote Access VPN
+
+![remote_access_vpn](res/remote_access_vpn.png)
+
+It allows an individual user to securely connect to a private network over the internet, and it is widely used by employees working remotely.
+
+#### Site-to-Site VPN
+
+![site_to_site_vpn](res/site_to_site_vpn.png)
+
+It securely connects two or more separate networks, such as a head office and branch offices, so internal communication remains protected across locations.
+
+#### Mobile VPN
+
+It is designed for mobile users and keeps the VPN session stable even when the device switches between Wi-Fi and cellular networks.
+
+#### MPLS VPN
+
+It is a provider-managed enterprise WAN solution that offers scalable connectivity and traffic prioritization, but it typically does not provide end-to-end encryption by default.
+
+### Types based on protocols(tunnelling technology)
+
+![vpn_based_on_protocols](res/vpn_based_on_protocols.png)
+
+#### PPTP
+
+It is an older protocol that can be fast, but it provides weak security, so it is mainly used only for legacy systems.
+
+#### L2TP/IPsec
+
+It combines L2TP tunneling with IPsec encryption, which improves security, but it can add performance overhead.
+
+#### OpenVPN
+
+It is an open-source protocol that uses SSL/TLS for encryption, and it is widely adopted because it provides strong security and flexibility.
+
+#### IKEv2/IPsec
+
+It is a secure and fast protocol that works very well on mobile devices because it reconnects quickly when network conditions change.
+
+### VPN Protocols
+
+| Protocol          | Speed     | Security        | Best For              | Platform Support              |
+| :---------------- | :-------- | :-------------- | :-------------------- | :---------------------------- |
+| **WireGuard**     | Very Fast | Excellent       | Modern general use    | Most platforms (3rd party)    |
+| **OpenVPN**       | Moderate  | Excellent       | Enterprise, firewalls | All platforms (3rd party)     |
+| **IKEv2/IPsec**   | Fast      | Excellent       | Mobile users          | Native on iOS/Android/Windows |
+| **IPsec (IKEv1)** | Moderate  | Good            | Site-to-site          | Universal                     |
+| **SSL/TLS**       | Moderate  | Good            | Web-based access      | Browser only (no client)      |
+| **L2TP/IPsec**    | Moderate  | Good            | Legacy compatibility  | Native on most OS             |
+| **PPTP**          | Fast      | Poor/DEPRECATED | Avoid completely      | Being removed from OS         |
+
+#### OpenVPN
+
+OpenVPN is an open-source VPN protocol that uses SSL/TLS to provide secure authentication and encryption.
+
+#### WireGuard
+
+WireGuard is a modern VPN protocol designed to be lightweight, fast, and easier to secure due to a small codebase.
+
+#### IKEv2/IPsec
+
+IKEv2/IPsec uses IKEv2 to set up secure tunnels and IPsec to provide encryption and integrity.
+
+#### L2TP/IPsec
+
+L2TP/IPsec combines L2TP tunnelling with IPsec encryption to secure traffic.
+
+#### PPTP
+
+PPTP is an older VPN protocol that is fast but not secure by modern standards.
+
+#### SSTP
+
+SSTP is a Microsoft VPN protocol that tunnels traffic over SSL/TLS using TCP port 443.
+
+
+
+## Summary
+
+### SNAT vs DNAT
+
+|                             SNAT                             |                             DNAT                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| It is generally used to change the private address or port into a public address or port for packets leaving network. | It is generally used to redirect incoming packets with a destination of a public address or port to a private IP address or port inside the network. |
+| It translates the source IP address within a connection to the BIG-IP system IP address that one defines. | It translates the IP addresses of internal servers that are protected by the device to public IP addresses. |
+|    It is used to change the source address of the packet.    | It is used to change the destination address of the packet.  |
+|     It also changes the source port in TCP/UDP headers.      |   It also changes the destination port in TCP/UDP headers.   |
+| It generally allows multiple hosts on the inside to get any host on the outside. | It generally allows multiple hosts on the outside to get a single host on the inside. |
+|     It is performed after the routing decision is made.      |     It is performed before the routing decision is made.     |
+| In this, the destination IP address is maintained and the source IP address is changed. | In this, the source IP address is maintained and the destination IP address is changed. |
+| Client inside LAN and behind Firewall needs to browse the Internet. | Website hosted inside data center behind Firewall and needs to be accessible to users over the Internet. |
+
+
+
+## Refernces
+
+[1] James F. Kurose and Keith W. Ross. COMPUTER NETWORKING: A Top-Down Approach. 6th ed.
+
+[2] RFC 4301: Security Architecture for the Internet Protocol
+
+[3] RFC 5996 / RFC 7296: IKEv2
+
+[4] RFC 2401–2412: IPsec (historical foundational RFCs)
+
+[5] WireGuard documentation and modern deployment guides
+
+[6] Kurose & Ross. Computer Networking: A Top‑Down Approach (VPN and IPsec sections)
+
+[7] [Types of Virtual Private Network (VPN) and its Protocols](https://www.geeksforgeeks.org/computer-networks/types-of-virtual-private-network-vpn-and-its-protocols/)
+
+[8] [Network Address Translation (NAT)](https://www.geeksforgeeks.org/computer-networks/network-address-translation-nat/)
+
+[9] [Difference Between SNAT and DNAT](https://www.geeksforgeeks.org/computer-networks/difference-between-snat-and-dnat/)
+
+
+

@@ -1,8 +1,8 @@
-# QOS
-
-## Quality of Service (QoS) — concise reference
+# Quality of Service (QoS) — concise reference
 
 [TOC]
+
+
 
 This note collects the most important QoS concepts from a network perspective: performance metrics, delay components and their intuition, basic queuing behaviour, QoS architectures (IntServ vs DiffServ), common queuing disciplines, policing and shaping, and practical measurement/troubleshooting tips. The treatment follows the style of Kurose & Ross while keeping the presentation compact.
 

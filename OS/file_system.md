@@ -1,141 +1,226 @@
-# File systems
+# File System
 
 [TOC]
 
 
 
-This note summarizes core file-system concepts from a programmer's perspective: the file abstraction, directories and inodes, block allocation and free-space management, metadata and consistency (journaling), common system-call APIs, caching and performance trade-offs, and security considerations. It complements the CS:APP material with a practical overview you can use when reading code or designing storage layout.
+![file_system_arch](res/file_system_arch.png)
 
-## The file abstraction
+File systems are a crucial part of any operating system, providing a structured way to store, organize, and manage data on storage devices such as hard drives, SSDs, and USB drives.
 
-Files present a nameable, byte-addressable view of persistent data. From the programmer's viewpoint a file supports operations such as create, open, read, write, truncate, rename, and delete. The file-system implementation maps these high-level operations to on-disk structures, I/O requests, and kernel data structures.
+## Popular File Systems
 
-Key concepts:
-- Namespace: directories map human-readable names to file objects.
-- Metadata: each file has metadata (size, timestamps, permissions, owner, link count) separate from its content.
-- Persistent storage: file contents are stored on devices (disks, SSDs, remote storage) and survive process termination.
+![popular_file_systems](res/popular_file_systems.png)
 
-
-
-## Inodes and directory entries
-
-Many Unix-like file systems use the inode model:
-
-- Inode: an on-disk record that stores metadata and pointers (direct, indirect) to data blocks. Inodes are identified by inode numbers (ino).
-- Directory: a special file that contains mappings from filename → inode number. Directory operations (lookup, create, unlink) manipulate directory entries and inode link counts.
-
-Separation of name and object:
-- A file can have multiple hard links (multiple directory entries pointing to the same inode). Removing a name decrements the inode link count; the inode is freed only when link count reaches zero and no process has it open.
+---
 
 
 
-## Block allocation and addressing
+## Path
 
-Files are stored in fixed-size blocks (commonly 4 KiB). Typical allocation strategies:
+When files are organized as a directory tree, there must be a way to uniquely identify and access them. This is done through path names.
 
-- Contiguous allocation: simple, fast sequential access but leads to fragmentation.
-- Linked allocation: blocks linked together in a list (simple but poor random access).
-- Indexed allocation (inode-based): inode stores direct pointers to a small number of blocks and indirect pointers to blocks that contain more pointers (common in ext2/ext3).
+### Absolute Path Name
 
-Block addressing in inodes often mixes direct, single-indirect, double-indirect, and sometimes triple-indirect pointers to handle both small and large files efficiently.
+An absolute path name (also known as a full path) specifies the complete path from the root directory ("/") to the target file or directory.
 
+### Relative Path Name
 
+A relative path name specifies the file or directory in relation to the current working directory (also known as the present working directory). It does not start from the root and is shorter and more flexible than an absolute path.
 
-## Free-space management
-
-Common free-space structures:
-- Free lists / bitmaps: track which blocks are free; bitmaps are compact and efficient for large devices.
-- B-trees or extent trees: record contiguous runs of blocks (extents) for more efficient allocation and less fragmentation (used by modern filesystems like XFS, ext4 extents, Btrfs).
-
-Allocation policies:
-- First-fit / best-fit / next-fit for block selection.
-- Allocation tries to keep related blocks (same file or directory) close to reduce seek/migration costs.
+---
 
 
 
-## Consistency: crashes, journaling, and fsck
+## Directory
 
-File systems must remain consistent after crashes or power failures. Approaches:
+### Single-Level Directory
 
-- Simple write ordering: carefully order writes so metadata is never left in an inconsistent state; hard to get right and slow.
-- Journaling: write intent records to a journal (log) before applying changes. On crash recovery, the filesystem replays or discards incomplete transactions.
-	- Metadata journaling: only metadata changes are journaled (fast, safe for structure consistency).
-	- Full data journaling: both data and metadata journaled (slower, safer for applications that rely on synchronous semantics).
-- Copy-on-write (COW): writing creates new versions of blocks and atomically updates pointers (used by ZFS, Btrfs) which simplifies atomicity and enables snapshots.
+![single_level_directory](res/single_level_directory.png)
 
-After an unclean shutdown, fsck (file-system check) inspects on-disk structures and repairs inconsistencies; journaling reduces the need for long fsck runs.
+In the single-level directory, all files are contained in the same directory, which makes it easy to support and understand.
+
+Disadvantages:
+
+- Slow search speed. For a single-level directory with $N$ directory entries, searching for one entry requires $N/2$ comparisons on average.
+- Duplicate names are not allowed.
+- Inconvenient for file sharing. A single-level directory requires all users to access the same file using the same name, so it is only suitable for single-user environments.
+
+### Two-Level Directory
+
+![two_level_directory](res/two_level_directory.png)
+
+In a two-level directory structure, each user has a separate User File Directory (UFD) containing only their files. A Master File Directory (MFD) stores entries for all users and points to their respective UFDs, preventing filename conflicts between users.
+
+Advantages:
+
+- Improves directory lookup speed. If there are $n$ subdirectories in the master directory and each user directory has at most $m$ entries, then finding a specified entry requires searching at most $n + m$ entries.
+- The same file name can be used in different user directories;
+- Different users can use different names to access the same shared file in the system.
+
+### Tree Structure/Hierarchical Structure
+
+![three_structure_directory](res/three_structure_directory.png)
+
+The tree directory structure resembles an upside-down tree, with the root directory at the top containing all user directories. Each user can create files and subdirectories within their own directory but cannot access or modify the root or other users' directories.
+
+### Acyclic Graph Structure
+
+![acyclic_graph_structure_directory](res/acyclic_graph_structure_directory.png)
+
+The acyclic graph directory structure allows a file or subdirectory to be shared across multiple directories using links. Changes made by one user are visible to all users sharing that file.
+
+### General-Graph Directory Structure
+
+![general_graph_directory](res/general_graph_directory.png)
+
+The general-graph directory avoids loops; the general-graph directory can have cycles, meaning a directory can contain paths that loop back to the starting point. This can make navigating and managing files more complex.
+
+### Directory Implementation
+
+#### Implementation using Singly Linked List
+
+![dir_impl_by_linked_list](res/dir_impl_by_linked_list.png)
+
+The implementation of directories using a singly linked list is easy to program, but is time-consuming to execute. Here, we implement a directory by using a linear list of filenames with pointers to the data blocks.
+
+Advantages
+
+- Simple Implementation: Easy to implement with low memory overhead.
+- Dynamic Structure: Grows or shrinks as needed without fixed size constraints.
+- Efficient for Small Directories: Works well when the number of files is small and manageable.
+- Low Complexity: No need for collision handling or resizing, making it simpler.
+
+Disadvantages
+
+- Lookup Time: File lookup requires a linear search, which can be time-consuming.
+- Impact of Frequent Access: Directory information is accessed frequently, leading to slow access times with larger directories.
+- Solution: Caching: Operating systems maintain a cache of recently accessed entries to enable quicker access without full traversal.
+
+#### Implementation using Hash Table
+
+![dir_impl_by_hash_tbl](res/dir_impl_by_hash_tbl.png)
+
+An alternative data structure that can be used for directory implementation is a hash table. It overcomes the major drawbacks of directory implementation using a linked list. In this method, we use a hash table along with a linked list. Here, the linked list stores the directory entries, but a hash data structure is used in combination with the linked list. 
+
+The following steps are taken for the implementation of the directory using the hash table :
+
+1. Combine a hash table with a linked list to implement the directory structure.
+2. Generate a key-value pair for each file using a hash function on the file name.
+3. Insert the file into the linked list and store the key-pointer pair in the hash table.
+4. To search, compute the key using the file name and look it up in the hash table.
+5. Fetch the file directly using the pointer from the hash table, avoiding full list traversal.
+6. This hybrid method significantly reduces search time and improves efficiency.
+
+Advantages:
+
+- Fast File Lookup: Provides average O(1) time complexity for quick search and retrieval.
+- Efficient for Large Directories: Handles large directories with many files without significant performance loss.
+- Scalable: Easily accommodates an increasing number of files without degrading access speed.
+- Reduced Search Time: Eliminates the need for full traversal, making directory operations faster.
+
+Disadvantage:
+
+- Fixed Size: Limited scalability due to a fixed size, affecting performance as data grows.
+- Size Dependent Performance: Performance degrades as the table becomes full (high load factor).
+- Collision Handling Complexity: Collisions add complexity and can slow down performance.
+- Performance Trade-off: Despite drawbacks, hash tables are faster than linked lists for lookups.
+
+---
 
 
 
-## Namespaces, links, and special files
+## File Protection
 
-- Hard links: multiple directory entries for the same inode; only supported for files, not typically for directories (to avoid cycles).
-- Symbolic (soft) links: special files containing a pathname that the kernel resolves at lookup time; they can point across filesystems.
-- Special files (device nodes, FIFOs, sockets) provide interfaces to devices and IPC and are represented in the filesystem namespace.
+### Types of Access
 
+TODO
 
+### Access Control
 
-## File-system APIs and semantics
+TODO
 
-Common system calls and semantics (POSIX): `open`, `read`, `write`, `lseek`, `fsync`, `close`, `unlink`, `rename`, `stat`, `mkdir`, `rmdir`.
-
-Important semantics to be aware of:
-- Atomic rename: `rename` is atomic with respect to other pathname operations (helps implement safe updates).
-- `fsync` forces dirty data and metadata to persistent storage — required for durability guarantees.
-- When files are memory-mapped (`mmap`), writes may be buffered and flushed later; `msync` and `msync(MS_SYNC)` provide control over persistence.
+---
 
 
 
-## Caching and performance
+## Unix File System
 
-Kernel caches dramatically affect performance:
+![unix_file_system](res/unix_file_system.png)
 
-- Page cache / buffer cache: keep recently accessed file data in RAM to serve reads and coalesce writes.
-- Metadata caches: name-to-inode caches (dentry/dircache) speed up path lookups.
+Unix (UNiplexed Information Computing System) File System is a logical method of organizing and storing large amounts of information in a way that makes it easy to manage.
 
-Performance trade-offs and optimizations:
-- Read-ahead: predict and fetch future blocks to reduce latency for sequential reads.
-- Write-back vs write-through: write-back delays flushes for efficiency but risks data loss on crash unless combined with journaling.
-- Coalescing small writes into larger requests reduces I/O overhead.
+### Types
 
-Storage-media considerations:
-- HDDs: minimize seeks; allocate contiguous blocks and tune layout for locality.
-- SSDs: avoid excessive write amplification; prefer large sequential writes and use wear-leveling–aware allocation strategies.
+![unix_file_system_classification](res/unix_file_system_classification.png)
 
+### Soft Link
 
+A soft link (also known as a Symbolic link) acts as a pointer or a reference to the file name. It does not access the data available in the original file. If the earlier file is deleted, the soft link will be pointing to a file that does not exist anymore.
 
-## Security and permissions
+Advantages:
 
-- POSIX permissions (rwx for owner/group/other) and ACLs control access.
-- File ownership and setuid/setgid bits affect privilege behavior when executing programs.
-- Mount options (noexec, nosuid, nodev) restrict executable or device access on mounted filesystems.
+- Versatility in linking files across different localities and document systems.
+- Can link directories.
 
+Disadvantages:
 
+- Slightly slower access than hard links.
+- Deleting or moving the original file will cause soft links to fail.
 
-## Advanced features (brief)
+### Hard Link
 
-- Snapshots: point-in-time views implemented via copy-on-write or metadata tricks.
-- Quotas: limit space/inode usage per user or group.
-- Encryption at rest: filesystem-level or block-level encryption for confidentiality.
+![hard_link](res/hard_link.png)
 
+A Hard link acts as a copy (mirrored) of the selected file. It accesses the data available in the original file. If the earlier selected file is deleted, the hard link to the file will still contain the data of that file.
 
+Advantages:
 
-## Tools and inspection
+- It makes efficient use of disc space by avoiding the unnecessary creation of record blocks.
+- There is no risk of link breaking as a result of the removal of the actual file(as long as one hard hyperlink survives, the data will persist).
+- The speed of Hard Links is fast.
 
-Useful tools for inspection and debugging:
-- `df`, `du` — usage summaries.
-- `stat`, `ls -l` — metadata and permissions.
-- `tune2fs`, `dumpe2fs`, `debugfs` (ext filesystems) — low-level inspection.
-- `xfs_info`, `btrfs`-specific tools for other filesystems.
+Disadvantages:
+
+- Cannot span several file systems.
+- Directories cannot be hyperlinked.
+
+---
 
 
 
 ## Summary
 
-File systems expose a simple program-facing abstraction built on complex structures: metadata, block allocation, free-space tracking, caching, and consistency mechanisms. Choosing the right filesystem and tuning depends on workload characteristics (large files vs many small files, random vs sequential I/O, SSD vs HDD) and durability requirements.
+### Absolute vs Relative Path
+
+| Criteria   | Absolute Path                                                | Relative Path                                   |
+| ---------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| Definition | Full path from root directory                                | Path relative to current working directory      |
+| Dependency | Independent of working directory                             | Depends on working directory                    |
+| Uniqueness | Always unique                                                | May vary depending on the current directory     |
+| Usage      | Used in scripts or programs requiring fixed file references. | Used in user-level commands or local navigation |
+
+### Hard Link vs Soft Link
+
+| Comparison Parameters    | Hard link                                                    | Soft link                                                    |
+| :----------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Inode number*            | Files that are hard-linked take the same inode number.       | Files that are soft-linked take a different inode number.    |
+| Directories              | Hard links are not allowed for directories. (Only a superuser* can do it) | Soft links can be used for linking directories.              |
+| File system              | It cannot be used across file systems.                       | It can be used across file systems.                          |
+| Data                     | Data present in the original file will still be available in the hard links. | Soft links only point to the file name, it does not retain the data of the file. |
+| Original file's deletion | If the original file is removed, the link will still work as it accesses the data the original was having access to. | If the original file is removed, the link will not work as it doesn't access the original file's data. |
+| Speed                    | Hard links are comparatively faster.                         | Soft links are comparatively slower.                         |
 
 
 
 ## Reference
 
-[1] Randal E. Bryant, David R. O'Hallaron. Computer Systems: A Programmer's Perspective. 3rd ed.
+[1] [File Systems in Operating System](https://www.geeksforgeeks.org/operating-systems/file-systems-in-operating-system/)
+
+[2] [Difference between Hard Link and Soft Link](https://www.geeksforgeeks.org/operating-systems/difference-between-hard-link-and-soft-link/)
+
+[3] [Soft and Hard links in Unix/Linux](https://www.geeksforgeeks.org/linux-unix/soft-hard-links-unixlinux/)
+
+[4] [Directory Implementation in Operating System](https://www.geeksforgeeks.org/operating-systems/directory-implementation-in-operating-system/)
+
+[5] [Protection in File System](https://www.geeksforgeeks.org/operating-systems/protection-in-file-system/)

@@ -120,6 +120,14 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 
 
 
+## SSL/TLS
+
+![ssl_tls_handshake](res/ssl_tls_handshake.png)
+
+
+
+---
+
 ## Protocol
 
 A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.

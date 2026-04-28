@@ -4,7 +4,9 @@
 
 
 
-## DBMS Types
+## DBMS Intro
+
+### DBMS Types
 
 - Relational Database Management System (RDBMS)
 - NoSQL DBMS
@@ -12,6 +14,26 @@
 - Hierarchical Database
 - Network Database
 - Cloud-Based Database
+
+### DBMS vs RDBMS
+
+|                             DBMS                             |                            RDBMS                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                 DBMS stores data as a file.                  |              RDBMS stores data in tabular form.              |
+|       Data elements need to be accessed individually.        |   Multiple data elements can be accessed at the same time.   |
+|                No relationship between data.                 | Data is stored in the form of tables, which are related to each other. |
+|                Normalization is not present.                 |                  Normalization is present.                   |
+|        DBMS does not support a distributed database.         |            RDBMS supports a distributed database.            |
+| It stores data in either a navigational or hierarchical form. | It uses a tabular structure where the headers are the column names, and the rows contain corresponding values. |
+|           It deals with a small quantity of data.            |            It deals with a large amount of data.             |
+|           Data redundancy is common in this model.           |        Keys and indexes do not allow Data redundancy.        |
+| It is used for small organizations and deals with small amounts of data. |         It is used to handle a large amount of data.         |
+|              Not all Codd rules are satisfied.               |               All 12 Codd rules are satisfied.               |
+|                       Security is less                       |             More security measures are provided.             |
+|                  It supports a single user.                  |                 It supports multiple users.                  |
+|     Data fetching is slower for a large amount of data.      |  Data fetching is fast because of the relational approach.   |
+| The data in a DBMS is subject to low security levels with regard to data manipulation. |  There exist multiple levels of data security in an RDBMS.   |
+|            Low software and hardware necessities.            |          Higher software and hardware necessities.           |
 
 
 
@@ -53,21 +75,19 @@
 
 ![enhanced_er_model](res/enhanced_er_model.png)
 
-### Generalization, Specialization, Inheritance, and Aggregation in ER Model
-
-#### Generalization
+### Generalization in ER Model
 
 ![generalization_in_er_model](res/generalization_in_er_model.png)
 
-#### Specialization
+### Specialization in ER Model
 
 ![specialization_in_er_model](res/specialization_in_er_model.png)
 
-#### Inheritance
+### Inheritance in ER Model
 
 ![inheritance_in_er_model](res/inheritance_in_er_model.png)
 
-#### Aggregation
+### Aggregation in ER Model
 
 ![aggregation_in_er_model](res/aggregation_in_er_model.png)
 
@@ -163,3 +183,5 @@
 [10] [Lock Based Concurrency Control Protocol in DBMS](https://www.geeksforgeeks.org/dbms/lock-based-concurrency-control-protocol-in-dbms/)
 
 [11] [Indexing in Databases](https://www.geeksforgeeks.org/dbms/indexing-in-databases-set-1/)
+
+[12] [Difference Between RDBMS and DBMS](https://www.geeksforgeeks.org/dbms/difference-between-rdbms-and-dbms/)

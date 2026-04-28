@@ -6,73 +6,11 @@ English | [中文版](storage_zh.md)
 
 
 
-![file_system_arch](res/file_system_arch.png)
-
-File systems are a crucial part of any operating system, providing a structured way to store, organize and manage data on storage devices such as hard drives, SSDs and USB drives.
-
-## Popular File Systems
-
-![popular_file_systems](res/popular_file_systems.png)
-
----
-
-
-
-## Path
-
-When files are organized as a directory tree, there must be a way to uniquely identify and access them. This is done through path names.
-
-### Absolute Path Name
-
-An absolute path name (also known as a full path) specifies the complete path from the root directory ("/") to the target file or directory.
-
-### Relative Path Name
-
-A relative path name specifies the file or directory in relation to the current working directory (also known as the present working directory). It does not start from the root and is shorter and more flexible than an absolute path.
-
----
-
-
-
-## Directory
-
-### Single-Level Directory
-
-![single_level_directory](res/single_level_directory.png)
-
-In the single-level directory, all files are contained in the same directory which makes it easy to support and understand.
-
-### Two-Level Directory
-
-![two_level_directory](res/two_level_directory.png)
-
-In a two-level directory structure, each user has a separate User File Directory (UFD) containing only their files. A Master File Directory (MFD) stores entries for all users and points to their respective UFDs, preventing filename conflicts between users.
-
-### Tree Structure/Hierarchical Structure
-
-![three_structure_directory](res/three_structure_directory.png)
-
-The tree directory structure resembles an upside-down tree, with the root directory at the top containing all user directories. Each user can create files and subdirectories within their own directory but cannot access or modify the root or other users' directories.
-
-### Acyclic Graph Structure
-
-![acyclic_graph_structure_directory](res/acyclic_graph_structure_directory.png)
-
-The acyclic graph directory structure allowing a file or subdirectory to be shared across multiple directories suing links. Changes made by one user are visible to all users sharing that file.
-
-### General-Graph Directory Structure
-
-![general_graph_directory](res/general_graph_directory.png)
-
-General-Graph directory avoids loops, the general-graph directory can have cycles, meaning a directory can contain paths that loop back to the starting point. This can make navigating and managing files more complex.
-
----
-
 
 
 ## File Allocation Methods
 
-The allocation methods define how the files are stored in the disk blocks. Ther are three main disk space or file allocation methods:
+The allocation methods define how the files are stored in the disk blocks. There are three main disk space or file allocation methods:
 
 - Contiguous Allocation
 - Linked Allocation
@@ -88,7 +26,7 @@ In this scheme, each file occupies a contiguous set of blocks on the disk. This 
 
 ![linked_allocation](res/linked_allocation.png)
 
-In this scheme, each file is a linked list of disk blocks which need not be contiguous.
+In this scheme, each file is a linked list of disk blocks, which need not be contiguous.
 
 ### Indexed Allocation
 
@@ -102,7 +40,7 @@ In this scheme, a special block known as the Index block contains the pointers t
 
 ## File Access Methods
 
-File access methods are techniques used by an OS to read and write data in files. They define how information is organzied, retrieved, and modified. There are three ways to access a file in a computer system:
+File access methods are techniques used by an OS to read and write data in files. They define how information is organized, retrieved, and modified. There are three ways to access a file in a computer system:
 
 - Sequential-Access
 - Direct Access
@@ -112,7 +50,7 @@ File access methods are techniques used by an OS to read and write data in files
 
 ![sequential_access_method](res/sequential_access_method.png)
 
-A file access method where data is read or written in order, one record after anotehr, starting from the beginning. The file pointer moves forward automatically after each operation.
+A file access method where data is read or written in order, one record after another, starting from the beginning. The file pointer moves forward automatically after each operation.
 
 ### Direct Access Method
 
@@ -124,7 +62,7 @@ A file access method that allows data to be read or written directly at any bloc
 
 ![index_sequential_method](res/index_sequential_method.png)
 
-It is the other method of accessing a file that is built on the top of the sequential access method. These methods construct an index for the file. The index, like an index in the back of a book, contains the pointer to the various blocks. To find a record in the file, we first search the index, and then by the help of pointer we access the file directly.
+It is the other method of accessing a file that is built on top of the sequential access method. These methods construct an index for the file. The index, like an index in the back of a book, contains pointers to the various blocks. To find a record in the file, we first search the index, and then, with the help of a pointer, we access the file directly.
 
 ---
 
@@ -180,7 +118,7 @@ LOOK Algorithm is similar to the SCAN disk scheduling algorithm except for the d
 
 ![clook_disk_sceduling_algorithm](res/clook_disk_sceduling_algorithm.png)
 
-In CLOOK, the disk arm in spite of going to the end goes only to the last request to be serviced in front of the head and then from there goes to the other end's last request. Thus, it also prevents the extra dealy which occurred due to unnecessary traversal to the end of the disk.
+In CLOOK, the disk arm, in spite of going to the end, goes only to the last request to be serviced in front of the head, and then from there goes to the other end's last request. Thus, it also prevents the extra delay that occurred due to unnecessary traversal to the end of the disk.
 
 ### RSS (Random Scheduling)
 
@@ -202,7 +140,7 @@ TODO
 
 
 
-## Secondary Memory
+## Secondary Memory Device
 
 ![secondary_memory](res/secondary_memory.png)
 
@@ -212,9 +150,7 @@ Secondary memory, also known as secondary storage, refers to the storage devices
 
 ![components_of_HDD](res/components_of_HDD.png)
 
-A hard disk drive (HDD) is a fixed storage device inside a comuter that uses magnetic technology to retrieve and store digital data for long-term.
-
-How HDDs Work:
+A hard disk drive (HDD) is a fixed storage device inside a computer that uses magnetic technology to retrieve and store digital data for the long term.
 
 ![HDD_workflow](res/HDD_workflow.png)
 
@@ -222,9 +158,9 @@ How HDDs Work:
 
 TODO
 
-### Optical DIscs (CD, DVD, Blu-ray)
+### Optical Discs (CD, DVD, Blu-ray)
 
-TODO
+An optical disk is a storage medium that relies on laser technology to read and write data. In shape, it is a flat circular disk that is made up of polycarbonate or a similar material with a very shiny reflective layer on the surface.
 
 ### USB Flash Drives
 
@@ -232,11 +168,13 @@ TODO
 
 ### Magnetic Tapes
 
-TODO
+![magnetic_tape](res/magnetic_tape.png)
+
+In magnetic tape, only one side of the ribbon is used for storing data. It is a sequential memory that contains a thin plastic ribbon to store data and is coated with magnetic oxide. Data read/write speed is slower because of sequential access. It is highly reliable, which requires a magnetic tape drive for writing and reading data.
 
 ### Flash Memory Cards (SD Cards, MicroSD Cards)
 
-TODO
+Flash memory is secondary memory, and so it is not volatile, which means it retains the data even if there is no electrical supply provided. This flash memory works on the principle of EEPROM. EEPROM stands for Electrically Erasable Programmable Read-Only Memory. ROM operation can only one time write once and read many times, and we can't erase it. But Flash Memory can be erased multiple times and update the data or program integrated into it. So it gives flexibility to the updation of the program, but ROM has no such type of feature.
 
 ### External Hard Drives
 
@@ -256,30 +194,63 @@ Spooling is a special process in a special area on disk where data is temporaril
 
 
 
-## Unix File System
+## RAID
 
-![unix_file_system](res/unix_file_system.png)
+RAID(Redundant Array of Independent Disks) is a technique that combines multiple hard drives or SSDs into a single system to improve performance, data safety, or both. If one drive fails, data can still be recovered from the others.
 
-Unix (UNiplexed Information Computing System) File System is a logical method of organizing and storing large amounts of information in a way that makes it easy to manage.
+### Key Evaluation Points
 
-### Types
+When evaluating a RAID system, the following critical aspects should be considered:
 
-![unix_file_system_classification](res/unix_file_system_classification.png)
+1. Reliability
+2. Availability
+3. Performance
+4. Capacity
+
+### RAID Controller
+
+![raid_controller](res/raid_controller.png)
+
+A RAID controller manages multiple hard drives, making them work together as one system. It helps improve speed and adds data protection by handling drive failures. Think of it as a smart manager that boosts performance and keeps your data safe.
+
+Types of RAID Controller:
+
+1. Hardware-Based
+2. Software-Based
+3. Firmware-Based
+
+### RAID Levels
+
+![raid_lvl](res/raid_lvl.png)
+
+- `RAID level 0`, refers to disk arrays with striping at the level of blocks, but without any redundancy (such as mirroring or parity bits).
+- `RAID level 1`, refers to disk mirroring with block striping.
+- `RAID level 2`, known as memory-style error-correcting code (ECC) organization, employs parity bits. 
+- `RAID level 3`, bit-interleaved parity organization.
+- `RAID level 4`, block-interleaved parity organization.
+- `RAID level 5`, block-interleaved distributed parity.
+- `RAID level 6`, the $P + Q$ The redundancy scheme is much like RAID level 5, but stores extra redundant information to guard against multiple disk failures.
+
+The RAID Levels Comparison Table (0–6, 10, 50, 60):
+
+|  RAID Level   |                    Technique                     |       Fault Tolerance       |     Usable Capacity     |            Performance             |                      Advantages                      |                        Disadvantages                         |
+| :-----------: | :----------------------------------------------: | :-------------------------: | :---------------------: | :--------------------------------: | :--------------------------------------------------: | :----------------------------------------------------------: |
+|  **RAID 0**   |               Block-Level Striping               |           0 disks           |          N × B          |        Excellent read/write        |          Fastest performance, full capacity          |      No redundancy, one disk failure → total data loss       |
+|    RAID 1     |                    Mirroring                     | Up to N/2 disks (best case) |       (N × B) / 2       |      Good read, average write      |           High reliability, easy recovery            |                 50% storage loss, expensive                  |
+|    RAID 2     |        Bit-Level Striping + Hamming Code         |           1 disk            | (N − parity drives) × B |                Fast                |               Strong error correction                |                     Complex, rarely used                     |
+|    RAID 3     |      Byte-Level Striping + Dedicated Parity      |           1 disk            |       (N − 1) × B       |    Good sequential performance     |           High throughput for large files            |      Slow for small/random I/O, parity disk bottleneck       |
+|    RAID 4     |     Block-Level Striping + Dedicated Parity      |           1 disk            |       (N − 1) × B       |             Fast reads             |         Single parity disk makes writes slow         |                    Parity disk bottleneck                    |
+|    RAID 5     |    Block-Level Striping + Distributed Parity     |           1 disk            |       (N − 1) × B       |     Good read, moderate write      |       Balanced cost + performance + redundancy       |               Slow random writes due to parity               |
+|    RAID 6     | Block-Level Striping + Double Distributed Parity |           2 disks           |       (N − 2) × B       |      Good read, slower write       | Can survive ***\*2 disk failures\****, very reliable |                 More parity → slower writes                  |
+| RAID 10 (1+0) |               Mirroring + Striping               |   1 disk per mirror pair    |       (N × B) / 2       |        Excellent read/write        |                 Fastest + redundancy                 |               Needs even # of disks, expensive               |
+| RAID 50 (5+0) |        Block Striping over RAID-5 arrays         |   1 disk per RAID-5 group   |     G × (n − 1) × B     | High performance & good redundancy |   High speed + better fault tolerance than RAID 5    | Cannot tolerate >1 disk failure per group; rebuilds are slow; parity overhead; complex setup |
+| RAID 60 (6+0) |        Block Striping over RAID-6 arrays         |  2 disks per RAID-6 group   |     G × (n − 2) × B     | Very high redundancy + good speed  |     Survives 2 failures per group, very reliable     | High cost; requires many disks; slower writes due to double parity; complex configuration |
 
 ---
 
 
 
 ## Summary
-
-### Absolute vs Relative Path
-
-| Criteria   | Absolute Path                                                | Relative Path                                   |
-| ---------- | ------------------------------------------------------------ | ----------------------------------------------- |
-| Definition | Full path from root directory                                | Path relative to current working directory      |
-| Dependency | Independent of working directory                             | Depends on working directory                    |
-| Uniqueness | Always unique                                                | May vary depending on current directory         |
-| Usage      | Used in scripts or programs requiring fixed file references. | Used in user-level commands or local navigation |
 
 ### HDD vs SDD
 
@@ -323,3 +294,9 @@ Unix (UNiplexed Information Computing System) File System is a logical method of
 [9] [Disk Scheduling Algorithms](https://www.geeksforgeeks.org/operating-systems/disk-scheduling-algorithms/)
 
 [10] [Spooling vs Buffering](https://www.geeksforgeeks.org/operating-systems/difference-between-spooling-and-buffering/)
+
+[11] [RAID (Redundant Arrays of Independent Disks)](https://www.geeksforgeeks.org/dbms/raid-redundant-arrays-of-independent-disks/)
+
+[12] [Magnetic Tape memory](https://www.geeksforgeeks.org/computer-organization-architecture/magnetic-tape-memory/)
+
+[13] [What is an Optical Disk?](https://www.geeksforgeeks.org/computer-organization-architecture/what-is-an-optical-disk/)

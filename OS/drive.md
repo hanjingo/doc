@@ -41,7 +41,7 @@ English | [中文版](drive_zh.md)
 	2. `Memory address`: Indicates where to send characters in memory (for read) or the starting address for write operations.
 	3. `Count`: Number of bytes to read (or write) for this instruction.
 	4. `Channel program end bit P`: Indicates whether the channel program ends. $P=1$ means this is the last instruction of the channel program.
-	5. `Record end flag R`: $R=0$ means this channel instruction and the next process data belonging to the same record; $R=1$ means this is the last instruction for a record.
+	5. `Record end flag R`: $R=0$ means this channel instruction and the next process data belong to the same record; $R=1$ means this is the last instruction for a record.
 
 
 

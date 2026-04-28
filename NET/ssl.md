@@ -1,100 +1,112 @@
-## TLS / SSL
+## SSL/TLS
 
 [TOC]
 
+
+
+## Secure Socket Layer (SSL)
+
+Secure Sockets Layer (SSL) is an Internet security protocol that encrypts data to ensure secure communication between devices over a network. SSL provides privacy, authentication, and data integrity for online communications. SSL is the predecessor of TLS (Transport Layer Security), which is now the standard protocol for secure communications on the Internet.
+
+SSL ensures secure communication through three main mechanisms:
+
+1. Encryption: Data transmitted over the network is encrypted, preventing unauthorized parties from reading it. If intercepted, encrypted data appears as an unreadable jumble of characters.
+2. Authentication: SSL uses a handshake process to authenticate both the client and server, ensuring each party is legitimate and not an imposter.
+3. Data Integrity: SSL digitally signs transmitted data to detect any tampering, ensuring that the data received is exactly what was sent.
+
+### Protocol
+
 ![ssl](res/ssl.png)
 
-Note: “SSL” historically refers to the Secure Sockets Layer. TLS (Transport Layer Security) is its modern successor; in most current contexts people use the term TLS even when they say “SSL.” This note uses the terms interchangeably but focuses on TLS concepts and practical behavior.
+#### Handshake Protocol
 
-### What TLS provides
+![handshake_protocol](res/handshake_protocol.png)
 
-TLS provides three core security services to applications that run over TCP (most commonly HTTPS):
+Establishes SSL sessions and authenticates clients and servers by 4 phases:
 
-- Confidentiality — encrypts payloads to prevent passive eavesdropping.
-- Integrity — ensures messages are not silently altered (using MACs or AEAD).
-- Authentication — typically server authentication via X.509 certificates; optional client authentication.
+1. Client and server exchange hello packets, protocol versions, and cipher suites.
+2. The server sends its certificate and server key information.
+3. Client responds with its certificate and key exchange.
+4. Change Cipher Spec finalizes the handshake, activating secure communication.
 
-TLS operates between the application layer and the transport layer (TCP) and exposes a socket-like API to applications.
+#### Change-Cipher Spec Protocol
 
-### High-level structure
+![change_cipher_spec_protocol](res/change_cipher_spec_protocol.png)
 
-TLS is usually described in two logical layers:
+- Signals that pending cryptographic parameters from the handshake should now become active.
+- Consists of a single 1-byte message.
 
-- The Record Layer: fragments, compresses (optional), applies message authentication and encryption, and multiplexes higher-level protocol messages.
-- The Handshake Protocol: negotiates version, cipher suite, authenticates peers, and establishes session keys.
+#### Alert Protocol
 
-### Handshake (simplified)
+![alert_protocol](res/alert_protocol.png)
 
-1. ClientHello: the client sends supported TLS versions, a list of cipher suites, and a random nonce.
-2. ServerHello: the server selects TLS version and cipher suite and returns its random nonce.
-3. Certificate: server sends its X.509 certificate chain (unless using PSK or anonymous cipher suites).
-4. (Optional) ServerKeyExchange: when ephemeral key exchange is used (e.g., ECDHE), server provides key material.
-5. (Optional) CertificateRequest: server may request client certificate.
-6. ServerHelloDone.
-7. ClientKeyExchange: client sends pre-master secret or key-exchange material; with ECDHE this conveys ephemeral public key.
-8. (Optional) CertificateVerify: client proves possession of private key when client certificate was used.
-9. Both sides compute master secret and derive symmetric keys.
-10. Client and server send Finished messages encrypted with the negotiated keys to verify the handshake integrity.
+- Communicates SSL-related warnings or errors.
+- Warning alerts (level 1): Non-critical issues, such as expired or unsupported certificates.
+- Fatal alerts (level 2): Critical errors, such as handshake failures, bad record MAC, or illegal parameters, which terminate the connection.
 
-Key points:
+#### SSL Record Protocol
 
-- Ephemeral Diffie–Hellman (DHE/ECDHE) provides forward secrecy: compromise of long-term keys does not recover past session keys.
-- RSA key transport (older) is less favored today because it lacks forward secrecy.
+![ssl_record_protocol](res/ssl_record_protocol.png)
 
-### Cipher suites and primitives
+- Provides confidentiality and message integrity.
+- Application data is divided into fragments, optionally compressed, and appended with a Message Authentication Code (MAC).
+- The data is then encrypted and transmitted with an SSL header.
 
-Cipher suites specify the key-exchange algorithm, the symmetric encryption algorithm, and the MAC/AEAD mode. Example: ECDHE-RSA-AES128-GCM-SHA256 means ECDHE key exchange, RSA for authentication, AES-128 in GCM AEAD mode, and SHA-256 for certain PRFs.
+### Certificates
 
-Modern recommendations:
+SSL certificates are digital certificates issued by trusted Certificate Authorities (CAs) to secure and verify websites.
 
-- Prefer TLS 1.2+ and TLS 1.3.
-- Prefer AEAD ciphers (AES-GCM, CHACHA20-POLY1305).
-- Prefer ECDHE for key exchange for forward secrecy.
+Types of SSL certificates:
 
-### TLS versions and evolution
+1. Single-Domain: Secures one domain.
+2. Wildcard: Secures one domain and all its subdomains.
+3. Multi-Domain: Secures multiple unrelated domains in one certificate.
 
-- SSLv2/SSLv3: obsolete and insecure.
-- TLS 1.0/1.1: deprecated.
-- TLS 1.2: widely deployed, supports AEAD via extensions.
-- TLS 1.3: a substantial simplification of the handshake (fewer round trips), mandates forward secrecy, and removes many legacy options.
+Validation Levels:
 
-### Certificates and authentication
+- Domain Validation (DV): Confirms domain ownership.
+- Organization Validation (OV): Confirms the organization's identity.
+- Extended Validation (EV): Rigorous verification, highest trust level, often indicated by a green address bar.
 
-- Servers present X.509 certificate chains that a client validates: chain of trust to a trusted root CA, validity period, hostname matching, and revocation checks (CRL/OCSP).
-- Certificate validation pitfalls: expired certs, mismatched hostnames, missing intermediate CA, and CRL/OCSP unavailability.
-- Certificate pinning and short-lived certificates can reduce risk of CA compromise but require careful management.
 
-### Session resumption and performance
 
-- Session IDs (TLS <=1.2) and session tickets allow clients to resume prior sessions and avoid costly full handshakes.
-- TLS 1.3 improves resumption (0-RTT) but 0-RTT introduces replay risks that must be considered for idempotent operations.
+## Transport Layer Security (TLS)
 
-### TLS + HTTP = HTTPS
+The `Transport Layer Security (TLS)` is the successor to SSL and is designed to provide improved security and efficiency. TLS was developed as an enhancement of SSL to address various vulnerabilities and to incorporate modern cryptographic techniques.
 
-- Most web security depends on TLS for transport security; HTTPS uses TLS to secure HTTP semantics (headers, cookies, bodies).
-- Practical considerations: HSTS, certificate chains, OCSP stapling, secure cookie flags, and ALPN (Application-Layer Protocol Negotiation) for choosing HTTP/2 or HTTP/3.
+### SSL/TLS Handshake
 
-### Common pitfalls and attacks
+![ssl_tls_handshake](res/ssl_tls_handshake.png)
 
-- Man-in-the-middle (MITM) with forged certificates — mitigated by correct certificate validation and CA hygiene.
-- Downgrade attacks — protocol/version/cipher negotiation must resist forced downgrades (TLS 1.3 and proper server config help).
-- Insecure cipher suites or weak key sizes — enforce modern cipher selection.
-- Misconfigured intermediaries (proxies, TLS-terminating load balancers) that mishandle certificates or break end-to-end security.
 
-### Tools and diagnostics
 
-- OpenSSL: `openssl s_client -connect host:443` to inspect certs and handshake.
-- `ssllabs.com` or similar scanners for server configuration checks.
-- Browser devtools show certificate chains and TLS details.
+## Summary
 
-### Practical deployment notes
+### SSL vs TLS
 
-- Use TLS 1.3 where possible; support TLS 1.2 with modern cipher suites for older clients.
-- Prefer HSTS, OCSP stapling, and secure default configurations (forward secrecy, AEAD ciphers).
-- Monitor certificate expiry and automate renewal (Let's Encrypt / ACME).
+|                             SSL                              |                             TLS                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|             SSL stands for Secure Socket Layer.              |           TLS stands for Transport Layer Security.           |
+|             It supports the Fortezza algorithm.              |         It does not support the Fortezza algorithm.          |
+|                    It is the 3.0 version.                    |                    It is the 1.0 version.                    |
+| In SSL( Secure Socket Layer), the Message Digest is used to create a master secret. | In TLS(Transport Layer Security), a Pseudo-random function is used to create a master secret. |
+| In SSL( Secure Socket Layer), the Message Authentication Code protocol is used. | In TLS(Transport Layer Security), the Hashed Message Authentication Code protocol is used. |
+|    It is more complex than TLS(Transport Layer Security).    |                   It is simpler than SSL.                    |
+| It is less secured as compared to TLS(Transport Layer Security). |                  It provides high security.                  |
+|               It is less reliable and slower.                | It is highly reliable and upgraded. It provides less latency. |
+|                   It has been deprecated.                    |                   It is still widely used.                   |
+|       It uses a port to set up an explicit connection.       |     It uses a protocol to set up an implicit connection.     |
+
+
 
 ## References
 
-- RFC 8446: TLS 1.3
-- RFC 5246: TLS 1.2
-- Practical guides: OWASP TLS/SSL best practices, Mozilla TLS configuration recommendations.
+[1] James F. Kurose; Keith W. Ross. COMPUTER NETWORKING: A Top-Down Approach. 6ED
+
+[2] [Secure Socket Layer (SSL)](https://www.geeksforgeeks.org/computer-networks/secure-socket-layer-ssl/)
+
+[3] [Secure Socket Layer (SSL) vs. Transport Layer Security (TLS)](https://www.geeksforgeeks.org/computer-networks/difference-between-secure-socket-layer-ssl-and-transport-layer-security-tls/)
+
+[4] [Transport Layer Security (TLS) Handshake](https://www.geeksforgeeks.org/computer-networks/transport-layer-security-tls-handshake/)
+
+[5] [Transport Layer Security (TLS)](https://www.geeksforgeeks.org/computer-networks/transport-layer-security-tls/)

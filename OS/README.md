@@ -16,8 +16,6 @@
 - [IO](io.md)
 - [OS Kernel](kernel.md)
 - [Memory Manage](mem_mgr.md)
-- [Multi Processor](multi_processor.md)
-- [Instruction Pipeline Model](pipeline.md)
 - [Process](process.md)
 - [System Security](safe.md)
 - [Storage](storage.md)

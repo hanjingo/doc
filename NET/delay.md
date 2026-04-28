@@ -58,10 +58,14 @@ Practical implications:
 
 ## Round‑trip time (RTT)
 
-Round‑trip time (RTT) is the time for a small packet to travel from a sender to a receiver and for the acknowledgment to come back. RTT includes propagation, transmission (for small packets often negligible), processing, and queuing delays in both directions. RTT is fundamental for protocols that rely on acknowledgements (TCP) and for measuring path latency.
+![rtt](res/rtt.png)
 
-RTT ~= 2\cdot (one‑way propagation) + queuing + processing + small transmission components
+`Round‑trip time (RTT)` is the time for a small packet to travel from a sender to a receiver and for the acknowledgment to come back. RTT includes propagation, transmission (for small packets often negligible), processing, and queuing delays in both directions. RTT is fundamental for protocols that rely on acknowledgements (TCP) and for measuring path latency.
 
+Formula to calculating the expected Round Trip Time:
+$$
+\text{Expected RTT} = (1 - α) * \text{Previous RTT} + α * \text{Sample RTT}
+$$
 When measuring RTT, remember that the forward and reverse paths may be asymmetric and queuing may vary over time; use statistical summaries (min, median, percentiles) rather than a single sample.
 
 
@@ -90,3 +94,5 @@ Example: for paths with many short links, transmission delays add up; for long�
 ## References
 
 [1] James F. Kurose and Keith W. Ross. Computer Networking: A Top‑Down Approach. 6th ed.
+
+[2] [What is RTT(Round Trip Time)?](https://www.geeksforgeeks.org/computer-networks/what-is-rttround-trip-time/)

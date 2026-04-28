@@ -104,7 +104,9 @@ Main memory is divided into multiple contiguous partitions, and each partition c
 
 #### Paged Memory Management
 
-TODO
+![working_of_paging](res/working_of_paging.png)
+
+Paging is a memory management technique in which a process is divided into fixed-size blocks called pages, and physical memory is divided into frames of the same size. Pages are loaded from secondary storage into main memory as needed.
 
 #### Segmented Memory Management
 
@@ -158,13 +160,15 @@ The Next Fit algorithm helps in reducing external fragmentation by:
 
 ![buddy_system_algo](res/buddy_system_algo.png)
 
-The Buddy Allocation System is a memory management technique that divides a large memroy block into smaller power-of-two blocks called buddies.
+The Buddy Allocation System is a memory management technique that divides a large memory block into smaller power-of-two blocks called buddies.
 
 ---
 
 
 
 ## Virtual memory
+
+![virtual_memory](res/virtual_memory.png)
 
 Virtual memory (VM) gives each process the illusion of a large, private, contiguous address space. Key benefits:
 
@@ -255,7 +259,11 @@ Most systems use demand paging: pages are loaded into physical memory only when 
 3. Updates the page table and PTE flags
 4. Restarts the faulting instruction
 
-Image sequence for page fault handling is illustrated in `res/vm_page_fault_before` and `res/vm_page_fault_after`.
+Image sequence for page fault handling is illustrated in:
+
+![vm_page_fault_before](res/vm_page_fault_before.png)
+
+![vm_page_fault_after](res/vm_page_fault_after.png)
 
 ### Page replacement policies
 
@@ -267,13 +275,19 @@ When physical memory is full, the OS chooses victim pages to evict. Common strat
 
 Replacement policy interacts with workload behavior; swapping introduces large latency spikes.
 
+#### Belady's Anomaly
+
+![belady_anomaly_fifo](res/belady_anomaly_fifo.png)
+
+Belady’s Anomaly is a phenomenon in operating systems where increasing the number of page frames can unexpectedly increase the number of page faults in certain page replacement algorithms. Normally, more frames should reduce page faults, but in some cases, the opposite happens, leading to inefficient memory performance.
+
 ### Large pages and NUMA
 
 Large pages (huge pages) reduce TLB pressure and can improve throughput for big-memory workloads. On NUMA machines, memory access latency depends on the memory's proximity to the CPU — NUMA-aware allocation and thread placement are important for performance.
 
 ### Page Replacement & Thrashing
 
-In an operating system that uses paging, a page replacement algorithm is needed when a page fault occurs and no free page frame is available. In this case, one of the existing pages in memory must be replaced with the new page.
+In an operating system that uses paging, a page replacement algorithm is needed when a page fault occurs, and no free page frame is available. In this case, one of the existing pages in memory must be replaced with the new page.
 
 Common Page Replacement Techniques:
 
@@ -300,6 +314,22 @@ Copy-on-write is heavily used at fork() to avoid copying the entire address spac
 
 
 
+## Overlays
+
+![overlays](res/overlays.png)
+
+Overlays are a memory management technique used to efficiently manage limited memory by loading only necessary parts of a program into memory at a time. This allows larger programs to run smoothly, even when the available memory is smaller than the program's size.
+
+### Workflow
+
+The program is divided into smaller modules or segments. Only the module needed at a specific time is loaded into memory. Once the module finishes executing, it is unloaded and another module is loaded into the same space. The program remains functional as only the necessary parts are in memory at any given time.
+
+### Driver
+
+The overlays driver is the user's responsibility. The operating system does not provide an automatic mechanism for swapping the different parts of the program in and out of memory. The user must manually manage the overlay process.
+
+
+
 ## Summary
 
 ### Differences Among RAM, ROM and Secondary Memory
@@ -314,18 +344,49 @@ Copy-on-write is heavily used at fork() to avoid copying the entire address spac
 
 ### Swap Space vs Virtual Memory
 
-| Feature        | Swap Space                                          | Virtual Memory                                            |
-| -------------- | --------------------------------------------------- | --------------------------------------------------------- |
-| Definition     | Physical disk space used for swapping memory pages. | Abstract combination of physical RAM and swap space.      |
-| Role           | Storage area for inactive pages.                    | Provides an abstraction of larger memory to applications. |
-| Performance    | Slow access (due to disk I/O)                       | Appears seamless to applications                          |
-| Implementation | Typically a swap partition or swap file             | Managed by OS using page tables.                          |
+| Feature        | Swap Space                                          | Virtual Memory                                              |
+| -------------- | --------------------------------------------------- | ----------------------------------------------------------- |
+| Definition     | Physical disk space used for swapping memory pages. | Abstract combination of physical RAM and swap space.        |
+| Role           | Storage area for inactive pages.                    | Provides an abstraction of a larger memory to applications. |
+| Performance    | Slow access (due to disk I/O)                       | Appears seamless to applications                            |
+| Implementation | Typically a swap partition or swap file             | Is managed by the OS using page tables.                     |
+
+### Main Memory vs Secondary Memory
+
+| Primary Memory                                               | Secondary Memory                                             |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Data can be directly accessed by the processing unit.        | Firstly, data is transferred to primary memory and after then routed to the processing unit. |
+| It can be both volatile and non-volatile in nature.          | It is non-volatile in nature.                                |
+| It is more costly than secondary memory.                     | It is more cost-effective or less costly than primary memory. |
+| It is temporary because the data is stored temporarily.      | It is permanent because the data is stored permanently.      |
+| In this memory, data can be lost whenever there is a power failure. | In this memory, data is stored permanently and therefore cannot be lost even in the case of a power failure. |
+| It is much faster than secondary memory and saves data that is currently used by the computer. | It is slower than primary memory and saves different kinds of data in different formats. |
+| It can be accessed by data.                                  | It can be accessed by I/O channels.                          |
+
+### Paging vs Segmentation
+
+|         **Feature**         |          Paging           |          Segmentation           |
+| :-------------------------: | :-----------------------: | :-----------------------------: |
+|      **Division Unit**      |     Fixed-size pages      |     Variable-size segments      |
+|       **Managed By**        |     Operating system      |            Compiler             |
+| **Unit Size Determined By** |         Hardware          |         User/programmer         |
+|    **Address Structure**    | Page number + page offset | Segment number + segment offset |
+|   **Data Structure Used**   |        Page table         |          Segment table          |
+|   **Fragmentation Type**    |  Internal fragmentation   |     External fragmentation      |
+|          **Speed**          |          Faster           |             Slower              |
+|  **Programmer Visibility**  |   Invisible to the user   |       Visible to the user       |
+|         **Sharing**         |         Difficult         |              Easy               |
+| **Data Structure Handling** |        Inefficient        |            Efficient            |
+|       **Protection**        |     Hard to implement     |         Easier to apply         |
+|    **Size Constraints**     |     Page = Frame size     |     No fixed size required      |
+| **Memory Unit Perspective** |       Physical unit       |          Logical unit           |
+|    **System Efficiency**    |      Less efficient       |         More efficient          |
 
 
 
 ## References
 
-[1] Randal E. Bryant and David R. O'Hallaron, Computer Systems: A Programmer's Perspective (CS:APP), 3rd ed.
+[1] Randal E. Bryan; David R. O'Hallaron. Computer Systems: A Programmer's Perspective (CSAPP). 3rd ed.
 
 [2] [Virtual Memory in Operating System](https://www.geeksforgeeks.org/operating-systems/virtual-memory-in-operating-system/)
 
@@ -355,4 +416,6 @@ Copy-on-write is heavily used at fork() to avoid copying the entire address spac
 
 [15] [Second Chance (or Clock) Page Replacement Policy](https://www.geeksforgeeks.org/operating-systems/second-chance-or-clock-page-replacement-policy/)
 
-[16] [Belady's Anomaly in Page Replacement Algorithms]()
+[16] [Overlays in Memory Management](https://www.geeksforgeeks.org/operating-systems/overlays-in-memory-management/)
+
+[17] [Paging vs. Segmentation](https://www.geeksforgeeks.org/operating-systems/difference-between-paging-and-segmentation/)

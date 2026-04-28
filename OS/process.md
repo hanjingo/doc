@@ -23,9 +23,7 @@ Characteristics:
 - Independence: A process entity can run independently, obtain resources independently, and accept investigation independently.
 - Asynchrony: Processes run asynchronously, i.e., they progress at their own unpredictable speeds.
 
-
-
-## Precedence Graph
+### Precedence Graph
 
 A `Precedence Graph` is a directed acyclic graph (DAG) used to describe the execution order between processes.
 
@@ -33,35 +31,24 @@ The precedence relationship between processes (or programs) can be denoted as "$
 
 
 
-## Execution Order
+## Process Allocation Methods
 
-- Sequential Execution
+1. In symmetric multiprocessor systems:
 
-  ![](https://g.gravizo.com/svg?
-  	digraph G{
-          nodesep=2;
-          ranksep=1;
-          rankdir=LR;
-      	S1 -> S2 -> S3;
-      }
-  )
+   - Static assignment: A process is fixed to a processor from start to finish.
+   - Dynamic assignment: All ready processes are in a common queue; any processor can pick up any process.
 
-  In the above statements, there is the following precedence relationship: $S_1 \rightarrow S_2 \rightarrow S_3$.
+   |         | Advantages                                                   | Disadvantages                                    |
+   | ------- | ------------------------------------------------------------ | ------------------------------------------------ |
+   | Static  | - Low overhead                                               | - May cause processor imbalance                  |
+   | Dynamic | - Avoids imbalance<br>- No extra overhead for tightly coupled systems | - Increases overhead for loosely coupled systems |
 
-- Concurrent Execution
+2. In asymmetric MPS:
+   The OS core resides on a master; slaves only run user programs, and scheduling is done by the master.
 
-  ![](https://g.gravizo.com/svg?
-  	digraph G{
-          nodesep=2;
-          ranksep=1;
-          rankdir=LR;
-      	S1 -> S3;
-      	S2 -> S3;
-      	S3 -> S4;
-      }
-  )
-
-  In the above statements, $S_3$ must be executed after both $S_1$ and $S_2$ have finished; $S_4$ must be executed after $S_3$; but $S_1$ and $S_2$ can be executed concurrently because they are independent of each other.
+   | Advantages      | Disadvantages                               |
+   | --------------- | ------------------------------------------- |
+   | - Simple system | - Low reliability<br>- Bottleneck at master |
 
 
 
@@ -104,6 +91,90 @@ PCB organization:
   ![progress_pcb_index_way](res/progress_pcb_index_way.png)
 
   *Indexed organization of PCB*
+
+### Process Attributes
+
+The PCB keeps all the key information about the process, including:
+
+1. Process ID (PID): A unique number assigned to each process so the operating system can identify it.
+2. Process State: This shows the current status of the process, like whether it is running, waiting, or ready to execute.
+3. Priority and other CPU Scheduling Information: Data that helps the operating system decide which process should run next, like priority levels and pointers to scheduling queues.
+4. I/O Information: Information about input/output devices the process is using.
+5. File Descriptors: Information about open files and network connections.
+6. Accounting Information: Tracks how long the process has run, the amount of CPU time used, and other resource usage data.
+7. Memory Management Information: Details about the memory space allocated to the process, including where it is loaded in memory and the structure of its memory layout (stack, heap, etc.).
+
+### Process Create
+
+![proc_creation](res/proc_creation.png)
+
+Operating systems like Windows and Linux maintain a parent–child hierarchy of processes. Every new process is created by an already running process using system calls, making the creator the parent and the newly formed one the child.
+
+Steps involved in creating a new process:
+
+1. PID Assignment
+2. Memory Allocation
+3. PCB Initialisation
+
+### Process Delete
+
+Processes terminate themselves when they finish executing their last statement, after which the operating system uses the `exit()` system call to delete their context. 
+
+A parent may terminate a process due to one of the following reasons:
+
+1. When a task is given to the child is not required now.
+2. When the child has taken more resources than their limit.
+3. The parent of the process is exiting; as a result, all its children are deleted. This is called cascaded termination.
+
+A process can be terminated/deleted in many ways:
+
+1. Normal termination
+2. Abnormal termination/Error exit
+3. Termination by parent process
+4. Termination by signal
+
+
+
+## Process Execution Order
+
+- Sequential Execution
+
+  ![](https://g.gravizo.com/svg?
+  	digraph G{
+          nodesep=2;
+          ranksep=1;
+          rankdir=LR;
+      	S1 -> S2 -> S3;
+      }
+  )
+
+  In the above statements, there is the following precedence relationship: $S_1 \rightarrow S_2 \rightarrow S_3$.
+
+- Concurrent Execution
+
+  ![](https://g.gravizo.com/svg?
+  	digraph G{
+          nodesep=2;
+          ranksep=1;
+          rankdir=LR;
+      	S1 -> S3;
+      	S2 -> S3;
+      	S3 -> S4;
+      }
+  )
+
+  In the above statements, $S_3$ must be executed after both $S_1$ and $S_2$ have finished; $S_4$ must be executed after $S_3$; but $S_1$ and $S_2$ can be executed concurrently because they are independent of each other.
+
+
+
+## Process Structure
+
+![process_structure](res/process_structure.png)
+
+- Text Section: A text or code segment contains executable instructions. It is typically a read-only section
+- Stack: The stack contains temporary data, such as function parameters, returns addresses, and local variables. 
+- Data Section: Contains the global variable. 
+- Heap Section: Dynamically allocated memory to process during its run time.
 
 
 
@@ -153,6 +224,24 @@ A process transitions between different states depending on its progress and the
 
   A process may move between ready, running, and blocked many times, but new and terminated happen only once in its lifetime.
 
+### Zombie Process
+
+![zombie_process](res/zombie_process.png)
+
+A `zombie process` is a process that has completed its execution but still remains in the process table because its parent process has not yet read its exit status.
+
+### Orphan Process
+
+![orphan_process](res/orphan_process.png)
+
+An `orphan process` is a process in an operating system whose parent process has terminated or exited while the child process is still running. In simple terms, the parent process is no longer available to manage the child process, leaving it "orphaned."
+
+### Daemon Process
+
+![daemon_process](res/daemon_process.png)
+
+A `daemon process` is a background process that runs independently of any user control and performs specific tasks for the system. Daemons are usually started when the system starts, and they run until the system stops.
+
 
 
 ## Process Scheduling
@@ -167,6 +256,15 @@ A process transitions between different states depending on its progress and the
 
    The scheduler is allowed to suspend a running process according to certain rules and reassign the processor to another process.
 
+### Scheduling Performance Metrics
+
+- `Task flow time`: Time required to complete a task.
+- `Scheduling flow time`: In multiprocessor systems, tasks are assigned to multiple processors; scheduling flow time is the sum of all processors' task flow times.
+- `Average flow`: Scheduling flow time divided by the number of tasks. Lower average flow means higher resource utilization and throughput, and lower cost per task.
+- `Processor utilization`: Sum of task flows on a processor divided by the maximum effective time unit.
+- `Speedup`: Sum of busy times of all processors divided by parallel work time. More processors increase speedup and throughput, but fewer processors reduce cost and may improve overall system performance by freeing processors for other tasks.
+- `Throughput`: Number of tasks completed per unit time, measured by the minimum completion time of task flows; it depends on the scheduling algorithm efficiency.
+
 ### Priority Scheduling
 
 The process with the highest priority is selected for execution first. If there are multiple processes sharing the same priority, they are scheduled in the order they arrived, following a First-Come, First-Served approach. The chosen process is then executed, either until completion or until it is preempted, depending on whether the scheduling is preemptive or non-preemptive.
@@ -175,7 +273,7 @@ The process with the highest priority is selected for execution first. If there 
 
 The pre-emptive version of Shortest Job First (SJF) scheduling is called Shortest Remaining Time First (SRTF). In SRTF, the process with the least time left to finish is selected to run. The running process continues until it finishes or a new process with a shorter remaining time arrives, ensuring the fastest finishing process always gets priority.
 
-### Round Robin Scheduling
+### Round Robin Scheduling(RR)
 
 ![process_round_robin_scheduling](res/process_round_robin_scheduling.png)
 
@@ -221,6 +319,19 @@ Multilevel Queue(MLQ) CPU Scheduling is a type of scheduling that is applied at 
 
 Multilevel Feedback Queue Scheduling (MLFQ) CPU Scheduling is like Multilevel Queue(MLQ) Scheduling but in this process can move between the queues. And thus, much more efficient than multilevel queue scheduling.
 
+### Conext Switch
+
+![context_switching](res/context_switching.png)
+
+Context switching is the process where the CPU stops running one process, saves its current state, and loads the saved state of another process so that multiple processes can share the CPU effectively.
+
+Context switching trigger conditions:
+
+- When a high-priority process comes to a ready state (i.e. with higher priority than the running process). 
+- An Interrupt occurs.
+- User and kernel-mode switch (It is not necessary though) 
+- Preemptive CPU scheduling is used. 
+
 
 
 ## Inter Process Communication(IPC)
@@ -250,7 +361,7 @@ On process sends a message and the other process receives it, allowing them to s
 3. Readers-Writers Problem
 4. Sleeping Barber Problem
 
-### Role of Synchroniztion in IPC
+### Role of Synchronization in IPC
 
 1. Preventing Race Conditions
 2. Mutual Exclusion
@@ -277,6 +388,19 @@ On process sends a message and the other process receives it, allowing them to s
 | Decisions are made by the scheduler and are based on priority and time slice allocation. | Decisions are made by the process itself and the OS just follows the process's instructions. |
 | More a a process might be preempted when it was accessing a shared resource. | Less as a process is never preempted.                        |
 | Examples of preemptive scheduling are Round Robin and Shortest Remaining Time First. | Examples of non-preemptive scheduling are First Come First Serve and Shortest Job First. |
+
+### Comparison of CPU Scheduling Algorithms
+
+|          Algorithm          |                          Allocation                          |                          Complexity                          |                  Average waiting time (AWT)                  | Preemption | **Starvation** |                    Performance                    |
+| :-------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :--------: | :------------: | :-----------------------------------------------: |
+|          **FCFS**           | According to the arrival time of the processes, the CPU is allocated. |                 Simple and easy to implement                 |                            Large.                            |     No     |       No       |                 Slow performance                  |
+|           **SJF**           |          Based on the lowest CPU burst time  (BT).           |                    More complex than FCFS                    |                      Smaller than FCFS                       |     No     |      Yes       |           Minimum Average Waiting Time            |
+|          **SRTF**           | Same as SJF the allocation of the CPU is based on the lowest CPU burst time (BT). But it is preemptive. |                    More complex than FCFS                    | Depending on some measures e.g., arrival time, process size, etc |    Yes     |      Yes       |     The preference is given to the short jobs     |
+|           **RR**            | According to the order of the process arrives with fixed time quantum (TQ) |         The complexity depends on Time Quantum size          |      Large as compared to SJF and Priority scheduling.       |    Yes     |       No       |    Each process has given a fairly fixed time     |
+|  **Priority Pre-emptive**   | According to the priority. The bigger priority task executes first |                  This type is less complex                   |                      Smaller than FCFS                       |    Yes     |      Yes       | Well performance but contain a starvation problem |
+| **Priority non-preemptive** | According to the priority with monitoring the new incoming higher priority jobs |      This type is less complex than Priority preemptive      |                 Preemptive Smaller than FCFS                 |     No     |      Yes       |        Most beneficial with batch systems         |
+|           **MLQ**           | According to the process that resides in the bigger queue priority |     More complex than the priority scheduling algorithms     |                      Smaller than FCFS                       |     No     |      Yes       | Good performance but contain a starvation problem |
+|          **MFLQ**           |     According to the process of a bigger priority queue.     | It is the most Complex but its complexity rate depends on the TQ size |       Smaller than all scheduling types in many cases        |     No     |       No       |                 Good performance                  |
 
 
 
@@ -309,3 +433,13 @@ On process sends a message and the other process receives it, allowing them to s
 [13] [Inter Process Communication (IPC)](https://www.geeksforgeeks.org/operating-systems/inter-process-communication-ipc/)
 
 [14] [Introduction to Process Synchronization](https://www.geeksforgeeks.org/operating-systems/introduction-of-process-synchronization/)
+
+[15] [Context Switching in Operating System](https://www.geeksforgeeks.org/operating-systems/context-switch-in-operating-system/)
+
+[16] [Zombie Processes and their Prevention](https://www.geeksforgeeks.org/operating-systems/zombie-processes-prevention/)
+
+[17] [What is an Orphan Processes?](https://www.geeksforgeeks.org/operating-systems/orphan-processes/)
+
+[18] [Process Creation and Deletions in Operating Systems](https://www.geeksforgeeks.org/operating-systems/process-creation-and-deletions-in-operating-systems/)
+
+[19] [Process in Operating System](https://www.geeksforgeeks.org/operating-systems/process-in-operating-system/)

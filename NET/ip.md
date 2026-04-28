@@ -48,7 +48,7 @@ IPv4 is the most common form IP Address. It consists of four sets of numbers(oct
 
 IPv6 addresses were created to deal with the shortage of IPv4 addresses. They use 128 bits instead of 32, offering a vastly greater number of possible addresses. These addresses are expressed as eight groups of four hexadecimal digits, each group representing 16 bits. The groups are separated by colons.
 
-### Based on Assignment
+### Based on the assignment
 
 #### Static IP Addresses
 
@@ -68,7 +68,7 @@ In unicast, data is sent from one sender to one specific receiver identified by 
 
 #### Broadcast Address
 
-In broadcast, a message is sent from one device to all devices in the same network segment. Every device in the network receives and processes the broadcast message. Its purpose is one-to-all communication within a network.
+In broadcasting, a message is sent from one device to all devices in the same network segment. Every device in the network receives and processes the broadcast message. Its purpose is one-to-all communication within a network.
 
 #### Multicast Address
 
@@ -106,7 +106,7 @@ Key IPv4 header fields:
 - `Total Length (16 bits)`: entire datagram size in bytes (header + data).
 - `Identification (16 bits)`: identifies fragments of the same original datagram.
 - `Flags (3 bits)`: control fragmentation (DF = don't fragment, MF = more fragments).
-- `Fragment Offset (13 bits)`: location of this fragment's data relative to original datagram (in 8‑byte units).
+- `Fragment Offset (13 bits)`: location of this fragment's data relative to the original datagram (in 8‑byte units).
 - `TTL (Time‑to‑Live, 8 bits)`: maximum number of hops (routers) the datagram may traverse; decremented by each router.
 - `Protocol (8 bits)`: indicates the encapsulated transport protocol (e.g., TCP=6, UDP=17, ICMP=1).
 - `Header Checksum (16 bits)`: covers the IPv4 header only; recomputed at each hop if header fields change.
@@ -138,6 +138,8 @@ Note: IPv6 removes the header checksum to avoid per‑hop recomputation and impr
 
 ## IPv6 header
 
+IPv6 was designed to address IPv4 limitations: vastly larger address space (128‑bit), simpler header processing, improved support for extension headers, and built‑in features for autoconfiguration and mobility.
+
 ![ipv6_head_struct](res/ipv6_head_struct.png)
 
 Key IPv6 header fields:
@@ -156,15 +158,46 @@ Notable differences from IPv4:
 - Fragmentation is only performed by the source host (intermediate routers do not fragment in IPv6). Hosts use Path MTU Discovery to avoid fragmentation.
 - Extension headers (Hop-by-Hop, Routing, Fragment, Destination Options, Authentication, Encapsulation) are chained after the main header when needed.
 
-### Why IPv6?
-
-IPv6 was designed to address IPv4 limitations: vastly larger address space (128‑bit), simpler header processing, improved support for extension headers, and built‑in features for autoconfiguration and mobility.
-
 
 
 ## Mobile IP (brief)
 
 Mobile IP provides mobility support by allowing a mobile node to receive packets at a care‑of address while maintaining a permanent home address. Mobile IP involves home agents, foreign agents, and tunneling (IP‑in‑IP or other encapsulation). Modern mobility solutions increasingly rely on higher‑layer or network‑based mechanisms, but Mobile IP remains a canonical example in protocol literature.
+
+
+
+## Port
+
+TODO
+
+
+
+## Classless Inter-Domain Routing (CIDR)
+
+CIDR(Classless Inter-Domain Routing) is a method of IP address allocation and routing that allows more efficient use of IP addresses. Unlike traditional class-based addressing, CIDR allocates IP addresses based on a network prefix rather than a fixed class (A, B, or C).
+
+### Rules
+
+- All IPs must be contiguous.
+- Block size must be a $2^n$ to simplify network division.
+- First IP of block divisible by block size, the least significant bits of the host ID should be 0.
+
+For example: `192.168.1.0/24`, the first 24 bits are the network, and the remaining 8 bits are the host ID.
+
+### Advantages and Disadvantages
+
+Advantages:
+
+- Efficient IP usage: Minimizes IPv4 address wastage.
+- Flexible allocation: Supports networks of any size.
+- Improved routing: Aggregates addresses for faster, simpler routing.
+- Lower administrative overhead: Easier IP and network management.
+
+Disadvantages:
+
+- Complexity: CIDR is more complex to implement and manage compared to traditional class-based addressing.
+- Compatibility Issues: Some older network devices may not support CIDR.
+- Security Concerns: Implementing security measures like firewall rules and access control lists can be more difficult.
 
 
 
@@ -234,4 +267,6 @@ Practical notes:
 [6] [Reserved IP Addresses](https://www.geeksforgeeks.org/computer-networks/reserved-ip-addresses/)
 
 [7] [Difference Between IPv4 and IPv6](https://www.geeksforgeeks.org/computer-networks/differences-between-ipv4-and-ipv6/)
+
+[8] [Classless Inter Domain Routing (CIDR)](https://www.geeksforgeeks.org/computer-networks/classless-inter-domain-routing-cidr/)
 

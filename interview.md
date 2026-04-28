@@ -1152,19 +1152,43 @@ For more info, see: [DB Summary#ACID](DB/summary.md)
 
 OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An essential attribute of an OLTP system is its ability to maintain concurrency. To avoid single points of failure, OLTP systems are often decentralized. 
 
-For more info, see: [Transaction#OLTP](DB/transaction.md)
+For more info, see: [Transactions#Online Analytical Processing (OLAP)](DB/transaction.md)
 
 #### What are the differences between OLTP and OLAP?
 
 OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An important attribute of an OLTP system is its ability to maintain concurrency. OLTP systems often follow a decentralized architecture to avoid single points of failure. These systems are generally designed for a large audience of end-users who conduct short transactions.
 
-For more info, see: [Transaction#OLAP vs OLTP](DB/transaction.md)
+For more info, see: [Transactions#OLAP vs OLTP](DB/transaction.md)
 
 #### What is Data Integrity?
 
-Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle and is a critical aspect of the design, implementation, and usage of any system which stores, processes, or retrieves data. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
+Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle and is a critical aspect of the design, implementation, and usage of any system that stores, processes, or retrieves data. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
 
-For more info, see: [Transaction#Data Integrity](DB/transaction.md)
+For more info, see: [Transactions#Data Integrity](DB/transaction.md)
+
+#### What is DBMS?
+
+DBMS stands for Database Management System. DBMS is a system software responsible for the creation, retrieval, updation, and management of the database. It ensures that our data is consistent, organized, and is easily accessible by serving as an interface between the database and its end-users or application software.
+
+For more info, see: [DB Summary#DBMS Intro](DB/summary.md)
+
+#### What is RDBMS? How is it different from DBMS?
+
+RDBMS stands for Relational Database Management System. Compared to DBMS, is that RDBMS stores data in the form of a collection of tables, and relations can be defined between the common fields of these tables.
+
+For more info, see: [DB Summary#DBMS vs RDBMS](DB/summary.md)
+
+#### What are Entities and Relationships?
+
+Entities are distinct objects or things in the real world that have a physical or conceptual existence, like a customer or product. Relationships are the associations or connections between those entities, like a customer placing an order.
+
+For more info, see: [Relational Model](DB/relational_model.md)
+
+#### List the different types of relationships in SQL.
+
+The three main types of relationships are One-to-One, One-to-Many, and Many-to-Many. One-to-Many is the most common, while Many-to-Many requires a junction table.
+
+For more info, see: [Relationship](DB/relational_model.md)
 
 ### SQL
 
@@ -1182,7 +1206,7 @@ For more info, see: [SQL#Data Types](DB/sql.md)
 
 #### What is a view in SQL?
 
-A view is a virtual table created by a `SELECT` query. It does not store data itself, but presents data from one ore more tables in a structured way. Views simplify complex queries, improve readability, and enhance security by restricting access to specific rows or columns.
+A view is a virtual table created by a `SELECT` query. It does not store data itself, but presents data from one or more tables in a structured way. Views simplify complex queries, improve readability, and enhance security by restricting access to specific rows or columns.
 
 For more info, see: [SQL#Views](DB/sql.md)
 
@@ -1194,9 +1218,9 @@ For more info, see: [SQL#Unique constraint](DB/sql.md)
 
 #### Explain the difference between the `WHERE` and `HAVING` clauses
 
-`WHERE` filters individual rows before grouping or aggregation, so it can't use aggregate functions like SUM or COUNT; it's best for narrowing raw data early (e.g., a date range or status).
+WHERE filters individual rows BEFORE aggregation, while HAVING filters groups AFTER aggregation. WHERE cannot use aggregate functions (like SUM, AVG, COUNT), but HAVING can. Use WHERE to filter raw data, and HAVING to filter grouped results.
 
-`HAVING` filters the resulting groups after `GROUP BY`, so it's meant for conditions on aggregates (e.g., groups with totals above a threshold).
+For more info, see: [SQL#WHERE#HAVING](DB/sql.md)
 
 #### What are SQL joins, and what are the differences between `INNER`, `LEFT`, `RIGHT`, and `FULL` joins?
 
@@ -1222,25 +1246,27 @@ A CTE (Common Table Expression) is a temporary, named result set defined with `W
 
 #### What is the difference between `UNION` and `UNION ALL`?
 
-`UNION` combines results from two (or more) `SELECT`s and removes duplicates (it performs a `DISTINCT` across all columns), which adds sorting/hash work and can be slower.
+UNION removes duplicate rows from the combined result set, while UNION ALL retains all rows including duplicates. UNION ALL is faster because it doesn't perform the expensive duplicate check. Use UNION when you need distinct results, but use UNION ALL when you know there are no duplicates or when duplicates are acceptable.
 
-`UNION ALL` keeps duplicates and usually runs faster because it simply appends result sets.
+For more info, see: [SQL#UNION#UNION ALL](DB/sql.md)
 
 #### How would you calculate the running total of sales for each product?
 
 Use a window (analytic) function: compute `SUM(amount)` over rows of the same product, ordered by time, accumulating from the start up to the current row.
 
-#### What are EXISTS and NOT EXISTS and how do they differ from IN
+For more info, see: [SQL#SUM()](DB/sql.md)
+
+#### What are EXISTS and NOT EXISTS, and how do they differ from IN
 
 `EXISTS` checks whether a correlated subquery returns at least one row; `NOT EXISTS` checks that it returns none. They return boolean and stop at the first match, ignoring what the subquery selects. `IN` compares a value against a list/set (literal list or subquery output).
 
-#### Explain the difference between `RANK()`, `DENSE_RANK()` and `ROW_NUMBER()`
+For more info, see: [SQL#EXISTS](DB/sql.md)
 
-`ROW_NUMBER()` assigns a unique sequential number to each row within a partition based on the order--no ties share a number (ties are broken arbitrarily by the `ORDER BY`).
+#### Explain the difference between `RANK()`, `DENSE_RANK()` and `ROW_NUMBER()`.
 
-`RANK()` assigns the same rank to tied rows but leaves gaps after ties.
+ROW_NUMBER() assigns a unique sequential number to each row, even with ties. RANK() assigns the same rank to ties but leaves gaps in subsequent ranks. DENSE_RANK() assigns the same rank to ties but without gaps.
 
-`DENSE_RANK()` also assigns the same rank to ties but doesn't leave gaps.
+For more info, see: [SQL](DB/sql.md)
 
 #### Explain the purpose of LAG and LEAD functions.
 
@@ -1248,9 +1274,9 @@ LAG and LEAD are window functions that let you look at values from previous (LAG
 
 #### What is a cross join and how does it differ from an inner join?
 
-A `CROSS JOIN` returns teh cartesian product of two tables--every row from A paired with every row from B so the result size is `rows(A) x rows(B)`, and it doesn't use a join condition.
+A CROSS JOIN returns the Cartesian product — every row from the first table combined with every row from the second table. No join condition is needed. An INNER JOIN returns only matching rows based on a condition. CROSS JOIN without a WHERE clause produces all combinations, while INNER JOIN filters to only related rows.
 
-An `INNER JOIN` returns only the rows where the specified join condition matches between the two tables, so its result is a filtered subset, not every combination.
+For more info, see: [SQL#Cross Join#INNER JOIN](DB/sql.md)
 
 #### Explain foreign keys and how they enforce referential integrity.
 
@@ -1288,7 +1314,13 @@ Aggregate functions perform calculations on a set of values and return a single 
 
 `TRUNCATE` is a DDL command, while `DELETE` is a DML command, which is why they differ in speed and logging behavior. `DELETE` removes rows one at a time and records each deletion in the transaction log, allowing rollback. It can have a `WHERE` clause. `TRUNCATE` removes all rows at once without logging individual row deletions.
 
-For more info, see: [SQL](DB/sql.md)
+For more info, see: [SQL#TRUNCATE vs DELETE](DB/sql.md)
+
+#### What is the difference between DROP and TRUNCATE statements?
+
+TRUNCATE removes all rows from a table but keeps the table structure intact for future use. DROP removes the entire table including its structure, indexes, constraints, and data — the table ceases to exist. TRUNCATE resets identity counters while DROP requires recreating the table from scratch.
+
+For more info, see: [SQL#TRUNCATE vs DROP](DB/sql.md)
 
 #### What is Collation? What are the different types of Collation Sensitivity?
 
@@ -1296,11 +1328,29 @@ Collation refers to a set of rules that determine how data is sorted and compare
 
 For more info, see: [SQL](DB/sql.md)
 
+#### What are Aggregate and Scalar functions?
+
+Aggregate functions perform calculations across multiple rows and return a single value per group. Scalar functions operate on each row individually and return one value per row. Aggregate examples include SUM, COUNT, AVG, MIN, MAX. Scalar examples include UPPER, LOWER, ROUND, LEN, DATEADD, and GETDATE.
+
+For more info, see: [SQL#Aggregation Functions](DB/sql.md)
+
 #### What is User-defined function? What are its various types?
 
 A **User-Defined Function** is a reusable database routine that accepts parameters, performs calculations or data manipulation, and returns a value. Unlike stored procedures, UDFs can be used inline in SQL statements (e.g., `SELECT`, `WHERE`).
 
 For more info, see: [SQL#User-Defined Function (UDF)](DB/sql.md)
+
+#### What are UNION, MINUS and INTERSECT commands?
+
+UNION, MINUS (called EXCEPT in some databases), and INTERSECT are set operators that combine results from two or more SELECT statements. UNION returns all distinct rows from both queries. INTERSECT returns only rows common to both queries. MINUS/EXCEPT returns rows from the first query that are not in the second. All require the same number and compatible types of columns.
+
+For more info, see: [SQL#UNION](DB/sql.md)
+
+#### What is an Alias in SQL?
+
+An alias is a temporary, alternate name assigned to a table or column for the duration of a query. It improves readability, simplifies complex queries, and is essential for self-joins or subqueries. It does not permanently rename the database object.
+
+For more info, see: [SQL#ALIASES](DB/sql.md)
 
 ### Query
 
@@ -1318,15 +1368,21 @@ For more info, see: [SQL#Subquery](DB/sql.md)
 
 #### How would you optimize a slow query?
 
-1. measure: reproduce the issue, capture timings, and run `EXPLAIN/EXPLAIN ANALYZE` to see teh plan, row estimates, and bottlenecks;
-2. fix fundamentals
-3. sargable predicates: avoid functions on columns, leading `%` wildcards, or expressions that prevent;
-4. Reduce data early with selective `WHERE` filters, fetch only needed columns (no `SELECT *`), and prefer `EXISTS` over `IN` for semi-joins;
-5. Tame row explosion by checking `JOIN` selectivity, deduplicating before joins, and pre-aggregating where helpful;
-6. Rewrite problematic patterns: split wide ORs into `UNION ALL`, replace correlated subqueries with joins, consider window functions carefully;
-7. For large sets, use keyset pagination (seek method) instead of `OFFSET`, and consider materialized views, caching, or partitioning for heavy, recurring analytics.
+I follow a systematic approach: First, identify the slow query using slow query logs or EXPLAIN. Then analyze the execution plan to find bottlenecks like full table scans or filesort. Next, optimize by adding indexes, rewriting the query, or adjusting schema design. Finally, measure the improvement. The most common fix is adding a covering index on columns used in WHERE, JOIN, ORDER BY, or GROUP BY clauses.
 
 For more info, see: [Database Best Practice#Optimization](DB/best_practice.md)
+
+#### What is the SELECT statement?
+
+The SELECT operator in SQL is used to select data from a database. The data returned is stored in a result table, called the result-set.
+
+For more info, see: [SQL#SELECT](DB/sql.md)
+
+#### What are some common clauses used with SELECT query in SQL?
+
+Some common SQL clauses used in conjuction with a SELECT query are:WHERE, ORDER BY, GROUP BY, HAVING.
+
+For more info, see: [SQL#SELECT](DB/sql.md)
 
 #### What is Pattern Matching in SQL?
 
@@ -1392,9 +1448,7 @@ For more info, see: [SQL#Composite Key Constraints](DB/sql.md)
 
 #### Describe a `PRIMARY KEY` and how it differs from a `UNIQUE` key
 
-A `PRIMARY KEY` uniquely identifies each row in a table: it combines `UNIQUE + NOT NULL`, there can be only one per table, and it's the default target for foreign keys.
-
-A `UNIQUE` key also enforces uniqueness, but doesn't require `NOT NULL` and you can have many `UNIQUE` constraints per table.
+Both PRIMARY KEY and UNIQUE KEY enforce uniqueness on a column or set of columns. However, a PRIMARY KEY cannot contain NULL values, and a table can have only one PRIMARY KEY. A UNIQUE KEY can have multiple per table and allows a single NULL value (or multiple NULLs depending on the database). PRIMARY KEY also creates a clustered index by default in most databases, while UNIQUE creates a non-clustered index.
 
 For more info, see: [SQL#Primary Key Constraints](DB/sql.md)
 
@@ -1436,15 +1490,21 @@ For more info, see: [Database Best Practice#Partitioning](DB/best_practice.md)
 
 #### Explain normalization and briefly describe the different normal forms.
 
-Normalization organizes relational data to minimize redundancy and prevent `update/insert/delete` anomalies by splitting tables based on dependencies while preserving meaning.
+Normalization is the process of organizing data to minimize redundancy and avoid anomalies (insertion, update, deletion). It involves breaking tables into smaller, related tables and defining relationships. The main normal forms are 1NF, 2NF, 3NF, and BCNF — with 3NF being the standard for most production databases.
 
-For more info, see: [Relational Model#Normalization and functional dependencies](DB/relational_model.md)
+For more info, see: [Normalization#Normal Forms](DB/normalization.md)
 
 #### What is denormalization, and when is it used?
 
 Denormalization is the process of combining normalized tables into larger tables for performance reasons. It is used when complex queries and joins slow down data retrieval, and the performance benefits outweigh the drawbacks of redundancy.
 
-For more info, see: [Relational Model#Normalization and functional dependencies](DB/relational_model.md)
+For more info, see: [Normalization#Denormalization](DB/normalization.md)
+
+#### What are the various forms of Normalization?
+
+The main normal forms are 1NF, 2NF, 3NF, and BCNF, with 4NF and 5NF as advanced forms for specialized scenarios. 1NF eliminates repeating groups, 2NF eliminates partial dependencies, 3NF eliminates transitive dependencies, and BCNF handles overlapping candidate keys. Most production databases are normalized to 3NF.
+
+For more info, see: [Normalization#Normal Forms](DB/normalization.md)
 
 ### Safety
 
@@ -1476,6 +1536,10 @@ MySQL provides several string data types that differ in storage, performance, an
 
 For more info, see: [MySQL Data Types](DB/MYSQL/data_type.md)
 
+#### How to add users in MySQL?
+
+Users are added in MySQL using the `CREATE USER` command, specifying a username, host, and password. For example: `CREATE USER 'name'@'localhost' IDENTIFIED BY 'password';` The 'host' part is critical because in MySQL, a user is identified by both the username AND the host they connect from. After creating a user, you grant privileges with `GRANT` and apply changes with `FLUSH PRIVILEGES`.
+
 ---
 
 
@@ -1487,6 +1551,12 @@ For more info, see: [MySQL Data Types](DB/MYSQL/data_type.md)
 #### How are Network types classified?
 
 Network types can be classified along several dimensions. At the area of the distribution level, we divided personal area network, local area network, metropolitan area network, wide area network and the internet. At the protocol level, we distinguish TCP from UDP. At the communication behavior level, we consider whether a connection is established, whether data delivery is guaranteed, and whether transmission unicast, multicast or broadcast.
+
+#### Describe the OSI Reference Model.
+
+The OSI (Open Systems Interconnection) Reference Model is a conceptual framework that standardizes network communication into seven layers. Each layer serves a specific function and communicates only with the layer directly above and below it. From bottom to top: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
+
+For more info, see: [Network Summary#OSI Reference Model](NET/summary.md)
 
 #### What is the network topology?
 
@@ -1528,6 +1598,12 @@ Full mesh provides the highest fault tolerance--every device has multiple paths.
 
 For more info, see: [Network Summary#Mesh Topology](NET/summary.md)
 
+#### What is the difference between a switch, router, and bridge?
+
+A bridge connects two network segments and forwards frames based on MAC addresses (Layer 2). A switch is a multiport bridge that connects many devices, learns MAC addresses, and forwards frames only to the destination port (Layer 2). A router connects different networks and forwards packets based on IP addresses, performing routing and network address translation (Layer 3). Bridges and switches are mostly obsolete for modern networks; switches replaced bridges, and routers connect networks (including to the internet).
+
+For more info, see: [Routing](NET/routing.md)
+
 #### What is the use of a router and how is it different from a gateway?
 
 A router forwards data between different networks by directing traffic based on IP addresses. A gateway is a broader term--it's any device that acts as an entry/exit point between networks. While a router can function as a gateway, a gateway isn't necessarily a router; it could be a firewall, proxy server, or NAT device. The key difference: routers always operate at Layer 3 (network layer), while gateways can operate at any layer and often perform protocol translation.
@@ -1551,6 +1627,24 @@ For more info, see: [Routing#Gateway](NET/routing.md)
 A proxy operates at the application layer (Layer 7) and is application-specific (HTTP proxy, SOCKS proxy). A gateway can operate at multiple layers. All proxies are a type of gateway, but not all gateways are proxies. A router acting as a default gateway is NOT a proxy.
 
 For more info, see: [Routing#Gateway](NET/routing.md)
+
+#### What are the different types of network delays?
+
+Network delays fall into four main categories: Processing delay (time to process packet header), Queuing delay (time waiting in output queue), Transmission delay (time to push bits onto wire), and Propagation delay (time for signal to travel the physical medium). Total delay = Processing + Queuing + Transmission + Propagation.
+
+For more info, see: [Network Delay](NET/delay.md)
+
+#### How does SSL/TLS work? What happens during a TLS handshake?
+
+TLS (Transport Layer Security) is a cryptographic protocol that provides encryption, authentication, and integrity for network communications. During the TLS handshake, client and server negotiate cipher suites, exchange certificates for authentication, and generate session keys using asymmetric cryptography (RSA or ECDHE). The handshake establishes a shared secret without exposing it, then switches to symmetric encryption (AES) for bulk data transfer. This entire process happens in milliseconds before any application data is sent.
+
+For more info, see: [SSL/TLS](NET/ssl.md)
+
+#### What is a VLAN (Virtual LAN)?
+
+A VLAN (Virtual LAN) is a logical segmentation of a physical network into multiple isolated broadcast domains. Devices in different VLANs cannot communicate directly without a router or Layer 3 switch, even if they're connected to the same physical switch. VLANs improve security by isolating traffic, reducing broadcast storms, simplifying network management, and helping enforce security policies.
+
+For more info, see: [Virtual LAN (VLAN)](NET/vlan.md)
 
 ### IP
 
@@ -1584,9 +1678,21 @@ IPv4 uses 32-bit addresses written in dotted-decimal, while IPv6 uses 128-bit ad
 
 For more info, see: [Internet Protocol (IP)#IPv4 vs IPv6](NET/ip.md)
 
+#### What is NAT (Network Address Translation)?
+
+NAT (Network Address Translation) is a technique that maps private IP addresses to public IP addresses, allowing multiple devices on a private network to share a single public IP address when accessing the internet. It operates at the network layer, modifying IP headers in transit.
+
+For more info, see: [Network Address Translation (NAT)](NET/nat.md)
+
 #### How does IPv6 solve the NAT problem?
 
 IPv6 doesn't need NAT because there are enough addresses for every device to have a globally unique public IP. This restores end-to-end connectivity, making peer-to-peer applications, VoIP, and gaming work nativelly without complex NAT traversal techniques.
+
+For more info, see: [Network Address Translation (NAT)](NET/nat.md)
+
+#### What are port numbers?
+
+Port numbers are 16-bit identifiers (0-65535) that allow multiple network services to run on the same IP address. They differentiate between different applications or services on the same host. Ports are divided into Well-Known Ports, Registered Ports, and Dynamic/Private Ports.
 
 For more info, see: [Internet Protocol (IP)#IPv6](NET/ip.md)
 
@@ -1600,15 +1706,33 @@ For more info, see: [Internet Protocol (IP)#IPv6](NET/ip.md)
 
 VPNs are broadly classified into three main types by deployment: Remote Access VPN, Site-to-Site VPN, and Personal VPN. By protocol, common types include IPsec, SSL/TLS, OpenVPN, WireGuard, and IKEv2. The right choice depends on use case, security requirements, and platform compatibility.
 
-For more info, see: [Virtual Private Networks (VPNs)#Types of VPN](NET/vpn.md)
+For more info, see: [Network Address Translation (NAT)#Types of VPN](NET/nat.md)
 
 #### What are the advantages of using a VPN?
 
 The primary advantages of using a VPN are security, privacy, and access control. It creates an encrypted tunnel between a user's device and a remote network, protecting data from interception, masking the user's real IP address, and allowing secure access to private network resources from untrusted locations like public Wi-Fi or the internet.
 
-For more info, see: [Virtual Private Networks (VPNs)](NET/vpn.md)
+For more info, see: [Network Address Translation (NAT)#Virtual Private Networks (VPNs)](NET/nat.md)
+
+#### What is TTL?
+
+TTL (Time To Live) is an 8-bit field in the IP header that prevents packets from circulating forever in the network. Each router decrements the TTL by 1 when forwarding a packet. If TTL reaches 0, the router discards the packet and sends an ICMP Time Exceeded message back to the sender. This mechanism limits the packet's lifetime, typically to 64 or 128 hops, preventing infinite loops due to routing errors.
+
+For more info, see: [Internet Protocol (IP)#IPv4 header](NET/ip.md)
+
+#### Explain subnetting and CIDR notation.
+
+Subnetting divides a large IP network into smaller, manageable sub-networks by borrowing bits from the host portion of the IP address for the network portion. CIDR (Classless Inter-Domain Routing) notation represents IP addresses with a suffix indicating the number of network bits.
+
+For more info, see: [Internet Protocol (IP)#Classless Inter-Domain Routing (CIDR)](NET/ip.md)
 
 ### TCP
+
+#### Explain the TCP three-way handshake in detail.
+
+The TCP three-way handshake establishes a reliable connection between client and server. Step 1: Client sends SYN (synchronize) packet with a random sequence number (client_isn). Step 2: Server responds with SYN-ACK, acknowledging client's sequence number (ACK = client_isn + 1) and sending its own random sequence number (server_isn). Step 3: Client sends ACK, acknowledging server's sequence number (ACK = server_isn + 1). After this, both sides can send data. The handshake synchronizes sequence numbers and negotiates TCP options like window scaling.
+
+For more info, see: [TCP Protocol#Connection Establishment and Termination](NET/tcp.md)
 
 #### Explain how to create a simple TCP server that accepts one client connection and sends msg back.
 
@@ -1635,6 +1759,14 @@ For more info, see: [Socket Programming#Timeout Handling](NET/socket.md)
 Creating a connectionless link using datagram sockets. The server bind port and listen for incoming packets, and the client sends datagrams to the server's address and port without formally establishing a connection first.
 
 For more info, see: [UDP Protocol](NET/udp.md), [Socket Programming#UDP Socket Programming](NET/socket.md)
+
+### HTTP/HTTPS
+
+#### What are the HTTP and the HTTPS protocol?
+
+HTTP (HyperText Transfer Protocol) is the foundational protocol for web communication, defining how clients (browsers) request resources from servers. It operates on port 80 and transmits data in plain text, making it vulnerable to eavesdropping. HTTPS (HTTP Secure) adds a TLS/SSL encryption layer on top of HTTP, running on port 443. HTTPS provides confidentiality (encryption), integrity (can't be altered), and authentication (verifies server identity via certificates).
+
+For more info, see: [HTTP Protocol#HTTP vs HTTPS](NET/http.md)
 
 ### DNS
 
@@ -1684,7 +1816,9 @@ For more info, see: [Domain Name System (DNS)](NET/dns.md)
 
 #### What is the SMTP protocol?
 
+SMTP (Simple Mail Transfer Protocol) is the standard protocol for sending email between servers on the internet. SMTP is a push protocol that transfers outgoing mail from a client to a server and between servers, but it cannot receive messages — that's handled by POP3 or IMAP.
 
+For more info, see: [SMTP Protocol](NET/smtp.md)
 
 ### IO
 
@@ -2072,27 +2206,327 @@ For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
 
 ## OS
 
+### Base
+
+#### Explain the main purpose of an operating system?
+
+The operating system serves two main purposes: First, as a resource manager that allocates CPU, memory, I/O devices, and storage among competing programs efficiently and fairly. Second, as a virtual machine that provides a clean, abstract interface to hardware, hiding complexity and providing services like file systems, networking, and process management. In essence, the OS is an intermediary between user applications and computer hardware.
+
+#### What do you mean by RTOS?
+
+RTOS (Real-Time Operating System) is an operating system designed to process data and respond to events within strict, predictable time constraints (deadlines). Unlike general-purpose OSes that optimize for average throughput, RTOS prioritizes deterministic behavior and worst-case execution time. RTOS is used in systems where timing is critical, such as medical devices, automotive airbags, industrial robots, and avionics.
+
+For more info, see: [OS Summary#Real-Time Operating System](OS/summary.md)
+
+#### What is the main objective of multiprogramming?
+
+The main objective of multiprogramming is to maximize CPU utilization by keeping the CPU busy at all times. It achieves this by having multiple programs loaded in memory simultaneously, so when one program waits for I/O (slow operation), the CPU can switch to another program. Without multiprogramming, the CPU sits idle during I/O, wasting expensive computing resources.
+
+For more info, see: [Multiprocessor Systems#Multi Programming](OS/multi_processor.md)
+
+#### What is time sharing, and how does it help users?
+
+Time-sharing is a technique that allows multiple users to interact with a computer simultaneously by rapidly switching the CPU between their tasks. Each user gets a small time slice (quantum), creating the illusion that they have dedicated access to the computer. Time-sharing provides interactive response, resource sharing, and fair CPU allocation, replacing batch processing where users had to wait hours or days for results.
+
+For more info, see: [Multiprocessor Systems#Time-Sharing System](OS/multi_processor.md)
+
+#### What is latency, and why does it matter in an operating system?
+
+Latency is the time delay between initiating an operation and getting the first response. In operating systems, low latency matters for interactive responsiveness, real-time guarantees, database performance, and user experience. High latency makes systems feel sluggish, while unpredictable latency (jitter) breaks real-time applications. OS latency comes from interrupt handling, scheduling delays, I/O waits, and synchronization overhead.
+
+#### What is the difference between an interrupt, a trap, and an exception?
+
+An interrupt is an asynchronous event triggered by external hardware (I/O devices, timers). A trap is a synchronous, software-generated interrupt caused by intentional events like system calls or breakpoints. An exception is a synchronous event caused by error conditions during instruction execution, such as division by zero or page faults. Interrupts are asynchronous (can happen anytime), while traps and exceptions are synchronous (occur at specific instructions).
+
+For more info, see: [I/O#Interrupt](OS/io.md)
+
+#### What do you mean by asymmetric clustering?
+
+Asymmetric clustering is a high-availability architecture where one node (the active primary) runs applications while other nodes (standby) remain idle, ready to take over if the primary fails. The standby nodes constantly monitor the primary's health via heartbeat signals. If the primary fails, a standby node detects the failure, acquires shared resources (disk LUNs, IP addresses), and restarts the applications. This provides failover capability but leaves standby resources idle, making it less efficient than symmetric clustering.
+
+For more info, see: [Multiprocessor Systems#Asymmetric Multiprocessing (AMP)](OS/multi_processor.md)
+
+#### What is SMP (Symmetric Multiprocessing)?
+
+SMP (Symmetric Multiprocessing) is an architecture where two or more identical processors share a single main memory and are controlled by a single OS instance. All processors have equal access to memory and I/O, and the OS can run any process on any CPU. Symmetric means all CPUs are peers — no master-slave relationship. Modern multi-core processors are SMP systems: each core is symmetric to others.
+
+For more info, see: [Multiprocessor Systems#Symmetric Multiprocessing (SMP)](OS/multi_processor.md)
+
+#### What is NUMA architecture, and how is it different from SMP?
+
+NUMA (Non-Uniform Memory Access) is a multiprocessing architecture where each CPU has its own local memory (fast access) and also can access memory attached to other CPUs (slower access). This contrasts with SMP (Symmetric Multiprocessing) which is UMA (Uniform Memory Access) — all CPUs access all memory at the same speed.
+
+For more info, see: [Multiprocessor Systems#Symmetric Multiprocessing (SMP)](OS/multi_processor.md)
+
+#### What is spooling in OS?
+
+Spooling (Simultaneous Peripheral Operation On-Line) is a technique that uses a buffer (usually on disk) to hold data for slow I/O devices, allowing faster programs to continue without waiting. The classic example is print spooling: programs write output to disk (fast), and a background printer daemon prints from the disk (slow). This decouples programs from slow devices, allowing both to work simultaneously.
+
+For more info, see: [Multiprocessor Systems#Spooling](OS/storage.md)
+
+### Kernel
+
+#### What is a kernel?
+
+The kernel is the core, privileged component of an operating system that manages system resources and provides a secure interface between hardware and user applications. It runs in protected kernel mode with full hardware access, handling CPU scheduling, memory management, I/O operations, and inter-process communication. The kernel acts as a bridge between user programs and hardware, ensuring security and resource sharing.
+
+For more info, see: [OS Kernel](OS/kernel.md)
+
+#### What are different types of Kernel?
+
+There are basically five types of Kernels as given: Monolithic Kernel, Micro Kernel, Hybrid Kernel, Nano Kernel, Exo Kernel.
+
+For more info, see: [OS Kernel#Kernel Types](OS/kernel.md)
+
+#### What is difference between Kernel and OS?
+
+The kernel is the core, privileged component of an operating system that manages CPU, memory, and devices. It's the lowest layer of the OS. The operating system includes the kernel plus system libraries, system utilities (shell, file managers), configuration files, and often applications (browser, text editor).
+
+For more info, see: [OS Kernel](OS/kernel.md)
+
+#### What are different between micro kernel and monolithic kernel?
+
+A monolithic kernel runs all OS services in kernel space, making it fast but less stable—a driver crash can crash the whole system. A microkernel runs only essential services in kernel space, moving drivers and file systems to user space as separate processes. This makes microkernels more stable and secure, but slower due to IPC overhead.
+
+For more info, see: [OS Kernel#Micro Kernel vs Monolithic Kernel](OS/kernel.md)
+
+#### What is a bootstrap program in OS?
+
+A bootstrap program (or bootloader) is the first code that runs when a computer powers on. It initializes the system hardware, locates and loads the operating system kernel into memory, and transfers control to it. The bootstrap program is stored in ROM/EPROM (firmware) because RAM is empty at startup. Modern systems use a two-stage boot process: the primary bootloader in firmware loads a secondary bootloader (like GRUB) which then loads the OS.
+
+For more info, see: [OS Kernel#Boot Manager](OS/kernel.md)
+
+#### What is a system call, and why is it needed?
+
+A system call is a controlled, kernel-mode entry point that allows user programs to request services from the operating system, such as file I/O, process creation, or network communication. System calls are needed because user programs run in restricted user mode and cannot directly access hardware or kernel memory. They provide a secure, controlled interface between applications and the OS, ensuring protection, stability, and abstraction.
+
+For more info, see: [OS Kernel#System Call](OS/kernel.md)
+
+#### What is the difference between a system call and a library call?
+
+A system call is a request from a user program to the kernel for a service (file I/O, process control, networking), requiring a mode switch from user to kernel mode. A library call is a function call within a library (like printf, strcpy, malloc) that executes entirely in user mode. System calls are more expensive (mode switch overhead) but provide access to OS resources. Many library calls use system calls internally—for example, printf eventually calls write().
+
+For more info, see: [OS Kernel#System Call](OS/kernel.md)
+
+#### What is the difference between user mode and kernel mode?
+
+User mode and kernel mode are privilege levels enforced by the CPU. User mode has restricted access to hardware and memory, while kernel mode has full, unrestricted access. User programs run in user mode; the OS kernel runs in kernel mode. Switching from user mode to kernel mode requires a system call, interrupt, or exception. This separation prevents user programs from crashing the system or accessing protected resources.
+
+For more info, see: [OS Kernel#Kernel Mode vs User Mode](OS/kernel.md)
+
 ### Process, Thread, and Coroutine
+
+#### What is a process and a process table?
+
+A process is an independent unit for resource allocation and scheduling in the system. Each process has its own independent memory space, and different processes communicate via inter-process communication. Processes are relatively heavy, context switching overhead is large, but they are more stable than threads.
+
+For more info, see: [Process](OS/process.md)
+
+#### What are the different states of the process?
+
+A process moves through five primary states: New (being created), Ready (waiting for CPU), Running (executing on CPU), Waiting/Blocked (waiting for I/O or event), and Terminated (finished execution). The OS scheduler moves processes between these states based on events like timer interrupts, I/O completion, and resource availability.
+
+For more info, see: [Process#States](OS/process.md)
+
+#### What are various sections of the process?
+
+A process is divided into several memory sections: Text (code) — contains executable instructions, read-only; Data — initialized global and static variables; BSS — uninitialized global and static variables (zero-initialized); Heap — dynamically allocated memory (grows upward); Stack — local variables, function parameters, return addresses (grows downward). Additionally, there may be memory-mapped regions for shared libraries.
+
+For more info, see: [Process#Process Structure](OS/process.md)
+
+#### What is a Thread? 
+
+A thread is the smallest unit of execution within a process. It represents a single sequence of instructions that can run independently. Multiple threads within the same process share the process's memory space, file descriptors, and other resources, but each has its own program counter, stack, and registers. This makes threads lightweight compared to processes — faster to create and switch between.
+
+For more info, see: [Thread](OS/thread.md)
+
+#### What are the benefits of multithreaded programming? 
+
+Multithreaded programming improves performance through parallelism, resource sharing, and responsiveness. Benefits include: utilizing multiple CPU cores, keeping applications responsive during long operations, sharing memory efficiently (faster than inter-process communication), and reducing overhead compared to multiple processes.
+
+For more info, see: [Thread](OS/thread.md)
 
 #### Explain the difference between a process and a thread in operating systems.
 
 A process is an independent, executing program with its own dedicated memory space, while a thread is a smaller, lightweight unit of execution within a process that shares the parent process's memory and resources.
 
-For more info, see: [Process, Thread, and Coroutine#Summary](OS/progress_thread_coroutine.md)
+For more info, see: [Summary#Process vs Thread vs Coroutine](OS/summary.md)
 
 #### Explain what a deadlock is and describe two conditions that must hold for a deadlock to occur.
 
 A deadlock is a computing state where two or more processes are permanently blocked because each holds a resource the other needs, resulting in an indefinite wait. It requires four conditions: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait.
 
-For more info, see: [Process, Thread, and Coroutine#Deadlock](OS/progress_thread_coroutine.md)
+For more info, see: [Synchronization#Deadlock](OS/sync.md)
+
+#### How does the OS handle deadlock detection vs deadlock prevention?
+
+Deadlock prevention ensures that at least one of the four necessary conditions (mutual exclusion, hold-and-wait, no preemption, circular wait) never occurs, making deadlocks impossible. Deadlock detection allows deadlocks to occur, but periodically checks for them and then recovers by aborting processes or preempting resources. Prevention is safer but can reduce resource utilization; detection allows more concurrency but requires recovery overhead.
+
+For more info, see: [Synchronization#Deadlock](OS/sync.md)
+
+#### What is a Scheduling Algorithm?
+
+A scheduling algorithm is the method an operating system uses to select which process or thread runs next on the CPU. It balances competing goals like fairness, response time, throughput, and resource utilization.
+
+For more info, see: [Process#Process Scheduling](OS/process.md)
+
+#### What are the different scheduling algorithms?
+
+CPU scheduling algorithms determine which process runs next on the CPU. The main algorithms are: FCFS (First Come First Serve) — simple but suffers from convoy effect; SJF (Shortest Job First) — optimal for average wait time but needs job length prediction; Round Robin — fair with time slices; Priority Scheduling — supports importance but can starve low-priority processes; and Multilevel Queue — separates processes into priority groups. Modern systems use multilevel feedback queues that adapt to process behavior.
+
+For more info, see: [Process#Comparison of CPU Scheduling Algorithms](OS/process.md)
+
+#### What is preemptive vs non-preemptive scheduling?
+
+In preemptive scheduling, the OS can forcibly take the CPU away from a running process at any time (typically via timer interrupts). In non-preemptive scheduling, a process keeps the CPU until it voluntarily yields (by waiting for I/O, calling sleep, or exiting). Preemptive scheduling provides better responsiveness and fairness but adds overhead; non-preemptive scheduling is simpler but can freeze the system if a process doesn't yield.
+
+For more info, see: [Process#Process Scheduling](OS/process.md)
+
+#### Briefly explain FCFS?
+
+FCFS (First Come First Serve) is the simplest CPU scheduling algorithm, where processes are executed in the exact order they arrive. It's implemented using a FIFO queue. The first process to request the CPU gets it first and runs to completion without preemption. FCFS is non-preemptive, easy to understand, but suffers from the convoy effect where short jobs get stuck behind long ones, leading to poor average waiting time.
+
+For more info, see: [Process#First Come First Serve CPU Scheduling(FCFS)](OS/process.md)
+
+#### What is the RR scheduling algorithm?
+
+Round Robin (RR) is a preemptive CPU scheduling algorithm where each process gets a fixed time slice (quantum) to execute. Processes are arranged in a circular ready queue. When a process's quantum expires, it's preempted and moved to the end of the queue, and the next process gets the CPU. This ensures fair CPU distribution and excellent response time for interactive users. The performance heavily depends on choosing the right quantum size.
+
+For more info, see: [Process#Round Robin Scheduling(RR)](OS/process.md)
+
+#### Describe the objective of multi-programming?
+
+The primary objective of multi-programming is to maximize CPU utilization and system throughput by keeping the CPU busy at all times. It achieves this by having multiple programs loaded in memory simultaneously, so when one program waits for I/O, the CPU can switch to another program. This prevents the CPU from sitting idle while waiting for slow I/O operations.
+
+#### What is process context switching?
+
+Context switching is the process of saving the state of a currently executing process or thread and restoring the state of another, allowing the CPU to switch between multiple tasks. The saved state includes the program counter, CPU registers, stack pointer, and memory management information. Process context switching enables multitasking by giving each process a slice of CPU time, but it has overhead and impacts performance.
+
+For more info, see: [Process#Conext Switch](OS/process.md)
+
+#### What is the difference between a process context switch and a thread context switch?
+
+A process context switch switches the entire address space, including page tables and memory mappings, while a thread context switch switches only CPU registers and stack within the same address space. Process switches require flushing the TLB (Translation Lookaside Buffer) and changing page tables, making them more expensive than thread switches. Thread switches are lightweight because threads share the same memory space, so no TLB flush is needed.
+
+For more info, see: [OS Summary#Thread Context Switch vs Process Context Switch](OS/summary.md), [Process#Conext Switch](OS/process.md), [Thread#Conext Switch](OS/thread.md)
+
+#### What is IPC? What are the different IPC mechanisms?
+
+IPC (Inter-Process Communication) refers to the mechanisms that allow processes to exchange data and synchronize their actions. The main IPC mechanisms include: Pipes (anonymous and named) for unidirectional data flow, Message Queues for structured messages, Shared Memory for fast data sharing, Semaphores for synchronization, Signals for asynchronous notifications, and Sockets for network communication. Each mechanism offers different trade-offs between speed, complexity, and use cases.
+
+For more info, see: [Process#Inter Process Communication(IPC)](OS/process.md)
+
+#### What is a Pipe and when it is used?
+
+A pipe is a unidirectional communication channel that allows data to flow from one process to another, typically connecting the standard output of one process to the standard input of another. Pipes are used for inter-process communication (IPC) between related processes, especially parent-child processes. In the shell, the pipe symbol (|) chains commands together. Anonymous pipes exist only while processes run, while named pipes (FIFOs) persist in the filesystem for unrelated processes to communicate.
+
+For more info, see: [Process#Pipe Communication](OS/process.md)
+
+#### Explain zombie process?
+
+A zombie process is a process that has terminated but still has an entry in the process table because its parent hasn't read its exit status. Zombies consume no CPU or memory (except the process table entry), but they cannot be killed because they're already dead. They remain until the parent calls `wait()` to reap them. If the parent dies first, the zombie is adopted by `init` (PID 1), which automatically reaps it.
+
+For more info, see: [Process#Zombie Process](OS/process.md)
+
+#### What do you mean by cascading termination?
+
+Cascading termination occurs when the operating system automatically terminates all child processes when their parent process terminates. This prevents orphaned processes and ensures proper resource cleanup. However, children can continue running if the parent allows it (detached processes) or if 'init' (PID 1) adopts them. Cascading termination is the default behavior in most OSes for all child processes unless the parent explicitly prevents it.
+
+For more info, see: [Process#Process Delete](OS/process.md)
+
+#### What is priority inversion, and how can it be solved?
+
+Priority inversion occurs when a low-priority task holds a lock needed by a high-priority task, and a medium-priority task preempts the low-priority task. The high-priority task ends up waiting for the low-priority task, which can't run because the medium-priority task is running. This violates priority ordering. The solution is priority inheritance, where the low-priority task temporarily inherits the high priority of the waiting task, preventing medium-priority tasks from preempting it.
+
+For more info, see: [Synchronization#Priority Inversion](OS/sync.md)
+
+#### What is starvation and aging in OS?
+
+Starvation occurs when a low-priority process is indefinitely denied access to a required resource (like CPU time or a lock) because higher-priority processes keep using it. Aging is the solution: gradually increasing the priority of waiting processes over time, ensuring they eventually get the resource. Without aging, starvation can cause indefinite postponement; with aging, even the lowest priority process will eventually get CPU time.
+
+For more info, see: [Synchronization#Starvation](OS/sync.md)
+
+#### What happens inside the OS when a process crashes unexpectedly?
+
+When a process crashes, the CPU traps to kernel mode via an exception (page fault, division by zero, illegal instruction). The OS identifies the faulting process, saves its crash state (core dump optional), releases all resources (memory, file descriptors, locks), removes the process from the scheduler, and notifies the parent process via SIGCHLD. Other processes continue running unaffected. Critical system processes may trigger a kernel panic if they crash.
+
+For more info, see: [Process](OS/process.md)
+
+#### How does an operating system ensure memory protection between processes?
+
+Operating systems ensure memory protection through hardware support from the Memory Management Unit (MMU). Each process has its own virtual address space with a page table that maps virtual addresses to physical frames. Processes cannot access addresses outside their allocated pages. Page table entries include protection bits (read, write, execute) that the CPU checks on every memory access. The OS also uses privilege levels (user vs kernel mode) to prevent user processes from accessing kernel memory.
+
+For more info, see: [Process#MMU](OS/mem_mgr.md)
+
+#### What is Multi-Level Feedback Queue (MLFQ) scheduling?
+
+MLFQ (Multi-Level Feedback Queue) is a scheduling algorithm that uses multiple priority queues and learns from process behavior. Interactive/I/O-bound processes get high priority (quick response), while CPU-bound processes get low priority (longer quanta). Processes automatically 'feedback' between queues: if they use their full time slice, they move down; if they yield (I/O), they stay or move up. Aging prevents starvation. This adaptive approach balances responsiveness for interactive tasks with throughput for CPU-intensive tasks.
+
+For more info, see: [Process#Multilevel Feedback Queue Scheduling(MLFQ))](OS/process.md)
+
+### Sync
+
+#### What is Reentrancy?
+
+Reentrancy is a property of a function or code block that allows multiple invocations to run concurrently without interfering with each other. A reentrant function can be called before its previous invocation has completed, even by different threads or interrupt handlers, and still produce correct results. Reentrant functions avoid using static/global data, do not call non-reentrant functions, and properly manage their own state—typically by using local variables or protecting shared data with synchronization.
+
+For more info, see: [Synchronization#Reentrant Function](OS/sync.md)
+
+#### What do you mean by process synchronization?
+
+Process synchronization coordinates the execution of concurrent processes to ensure they access shared resources in a controlled manner, preventing race conditions, data inconsistency, and deadlocks. It ensures that when multiple processes access shared data, only one process at a time can modify the data (mutual exclusion), and processes can coordinate their execution order when needed. Common synchronization mechanisms include mutexes, semaphores, monitors, and critical sections.
+
+For more info, see: [Synchronization#Process Synchronization](OS/sync.md)
+
+#### What do you mean by Semaphore in OS?
+
+A semaphore is a synchronization primitive that uses an integer counter to control access to shared resources. It supports two atomic operations: wait() and signal(). Semaphores can be binary (0/1) for mutual exclusion or counting (0..N) for managing multiple identical resources.
+
+For more info, see: [Synchronization#Semaphore](OS/sync.md)
+
+#### What are the different kinds of operations that are possible on semaphore?
+
+Semaphore supports two atomic operations: wait() (also called P or down) and signal() (also called V or up). wait() decrements the semaphore value and blocks if the value becomes negative. signal() increments the semaphore value and wakes up any waiting process. Additionally, semaphores can be initialized with a value, but there are no other operations. These two operations must be atomic to prevent race conditions.
+
+For more info, see: [Synchronization#Semaphore](OS/sync.md)
+
+#### What is the difference between a mutex and a semaphore?
+
+A mutex is a binary lock with ownership — only the thread that locked it can unlock it. A semaphore is a counter that can be incremented (signal) and decremented (wait) by any thread. Mutexes are for mutual exclusion (protecting critical sections), while semaphores are for signaling and resource counting. Counting semaphores can allow multiple threads to access a resource pool, whereas mutexes allow only one.
+
+For more info, see: [Synchronization#Mutex vs Semaphore](OS/sync.md)
+
+#### What is the difference between multitasking and multiprocessing OS?
+
+Multitasking OS runs multiple tasks on a single CPU by rapidly switching between them (concurrency). Multiprocessing OS uses multiple physical CPUs/cores to run tasks simultaneously (parallelism). Multitasking gives the illusion of parallelism through time-sharing, while multiprocessing provides true simultaneous execution. Modern OSes combine both: they use multiprocessing on multiple cores and multitasking within each core.
+
+For more info, see: [OS Summary#Multitasking vs Multiprocessing](OS/summary.md)
+
+#### What is a monitor in operating systems?
+
+A monitor is a high-level synchronization construct that encapsulates shared data, operations on that data, and mutual exclusion. Only one process can execute inside a monitor at a time, automatically providing mutual exclusion. Monitors also provide condition variables that allow processes to wait for specific conditions (like 'buffer not empty') and signal other processes when conditions change. Monitors are implemented in programming languages (Java's `synchronized`, C#'s `lock`) rather than the OS kernel.
+
+For more info, see: [Synchronization#Monitor](OS/sync.md)
 
 ### Memory Management
 
-#### Explain how virtual memory works and why it's essential for modern operating systems.
+#### What is virtual memory?
 
-Virtual memory gives each process the illusion of a large, private, contiguous address space. Provide an efficient use of physical memory by keeping only active page in RAM; Simpler programming model; Isolate processes from each other and from the kernel.
+Virtual memory is a memory management technique that gives each process the illusion of having its own large, contiguous address space, while physically the data may be scattered across RAM and disk. It allows programs to run even if their total memory requirements exceed physical RAM by swapping pages between RAM and disk (swap space). Virtual memory provides isolation between processes, simplifies memory management for programmers, and enables efficient use of limited physical memory through demand paging.
 
 For more info, see: [Memory Management#Virtual memory](OS/mem_mgr.md)
+
+#### Explain how virtual memory works and why it's essential for modern operating systems.
+
+Virtual memory gives each process the illusion of a large, private, contiguous address space. Provide an efficient use of physical memory by keeping only the active page in RAM; Simpler programming model; Isolate processes from each other and from the kernel.
+
+For more info, see: [Memory Management#Virtual memory](OS/mem_mgr.md)
+
+#### What is Thrashing? 
+
+Thrashing occurs when a system spends more time swapping pages between RAM and disk than executing actual instructions. It happens when the working set of all active processes exceeds available physical memory, causing constant page faults. The CPU becomes highly utilized (but on swapping, not computation), throughput drops dramatically, and the system becomes unresponsive.
+
+For more info, see: [Memory Management#Page Replacement & Thrashing](OS/mem_mgr.md)
 
 #### Explain how page faults occur and what the OS does when a page fault happens.
 
@@ -2106,13 +2540,91 @@ The OS manges the page replacement strategies include: LRU, FIFO, Working-set al
 
 For more info, see: [Memory Management#Page replacement policies](OS/mem_mgr.md)
 
-### IO
+#### What is demand paging and how it works?
+
+Demand paging is a virtual memory technique where pages are loaded into physical memory only when they are actually accessed (on demand), not when the process starts. When a program accesses an address not in physical memory, a page fault occurs, the OS loads the required page from disk, updates the page table, and restarts the instruction. This allows processes to run with less physical memory than their total size, reduces I/O, and enables faster process startup.
+
+For more info, see: [Memory Management#Demand paging and page faults](OS/mem_mgr.md)
+
+#### What is different between main memory and secondary memory.
+
+Main memory in a computer is RAM (Random Access Memory). It is also known as primary memory or read-write memory or internal memory. The programs and data that the CPU requires during the execution of a program are stored in this memory. Secondary memory in a computer are storage devices that can store data and programs. It is also known as external memory or additional memory or backup memory or auxiliary memory. Such storage devices are capable of storing high-volume data. Storage devices can be hard drives, USB flash drives, CDs, etc. 
+
+For more info, see: [Memory Management#Main Memory vs Secondary Memory](OS/mem_mgr.md)
+
+#### What is the difference between paging and segmentation?
+
+Paging divides memory into fixed-size blocks called frames (physical) and pages (virtual), using a page table for mapping. Segmentation divides memory into variable-sized logical segments (code, data, stack) based on program structure, using a segment table. Paging is invisible to the programmer and eliminates external fragmentation, while segmentation is visible, allows sharing and protection per segment, but suffers from external fragmentation.
+
+For more info, see: [Memory Management#Paging vs Segmentation](OS/mem_mgr.md)
+
+#### What do you mean by overlays in OS?
+
+Overlays are a memory management technique that allows a program larger than physical memory to run by keeping only the currently needed code and data in memory, while the rest remains on disk. The program is divided into logical segments called overlays. When a segment not in memory is needed, it 'overlays' (replaces) an existing segment in memory.
+
+For more info, see: [Memory Management#Overlays](OS/mem_mgr.md)
+
+#### What is thrashing in OS?
+
+Thrashing occurs when a system spends more time swapping pages between RAM and disk than executing actual instructions. It happens when the working set of all active processes exceeds available physical memory, causing constant page faults. CPU utilization drops dramatically (often below 20%) while disk I/O maxes out. The system becomes unresponsive. Solutions include reducing the number of running processes, adding more RAM, or adjusting the swappiness parameter.
+
+For more info, see: [Memory Management#Page Replacement & Thrashing](OS/mem_mgr.md)
+
+#### What is the difference between page size and frame size?
+
+Page size and frame size are always equal. A page is the fixed-size block of virtual memory (the logical view), while a frame is the same-size block of physical memory (the hardware view). The OS maps pages to frames of identical size. Having equal sizes allows the MMU to simply replace the page number with a frame number while keeping the offset unchanged.
+
+For more info, see: [Memory Management#MMU](OS/mem_mgr.md)
+
+#### What is copy-on-write, and where is it used?
+
+Copy-on-write (COW) is a memory management technique where multiple processes initially share the same memory pages, and a copy is created only when one process tries to modify the data. This approach improves performance and reduces memory usage because unnecessary copying is avoided.
+
+For more info, see: [Memory Management#Copy-on-write and shared mappings](OS/mem_mgr.md)
+
+#### What is internal vs external fragmentation?
+
+Internal fragmentation is wasted space inside an allocated memory block because the allocated block is larger than the requested memory. External fragmentation is wasted space between allocated blocks that is too small to satisfy any allocation request. Paging causes internal fragmentation (unused space at the end of the last page), while segmentation causes external fragmentation (small unusable holes between segments).
+
+For more info, see: [Memory Management#Fragmentation](OS/mem_mgr.md)
+
+#### What do you mean by Belady’s Anomaly?
+
+Belady's Anomaly is a counterintuitive phenomenon where increasing the number of page frames in memory can actually cause MORE page faults, not fewer. This anomaly occurs with FIFO (First-In-First-Out) page replacement algorithms, but not with optimal or LRU algorithms. It demonstrates that for some algorithms, more memory doesn't always mean better performance.
+
+For more info, see: [Memory Management#Belady's Anomaly](OS/mem_mgr.md)
+
+#### How does a Translation Lookaside Buffer (TLB) improve performance?
+
+The TLB (Translation Lookaside Buffer) is a hardware cache that stores recent virtual-to-physical address mappings, avoiding the need for expensive page table walks. Without a TLB, every memory access would require multiple memory accesses to traverse the page table. With a TLB hit, translation takes 1 cycle. With a TLB miss, the CPU must perform a page table walk. This speedup makes virtual memory feasible.
+
+For more info, see: [Memory Management#Translation Lookaside Buffer (TLB)](OS/mem_mgr.md)
+
+### Storage
 
 #### Why is exclusive ownership important when managing a file handle?
 
 Exclusive ownership in file handle managment ensures data integrity, prevents resource leaks, and guarantees that only one process can safely modify a file, mitigating risks of corruption.
 
-For more info, see: [Multiprocessor Systems#Process Synchronization](PROJ/design_pattern.md)
+For more info, see: [Storage](OS/storage.md)
+
+#### Enumerate the different RAID levels?
+
+RAID (Redundant Array of Independent Disks) combines multiple physical disks into logical units for redundancy and performance. The main RAID levels are: RAID 0 (striping, no redundancy, max performance), RAID 1 (mirroring, 100% redundancy, good read performance), RAID 5 (striping with distributed parity, good balance), RAID 6 (dual parity, tolerates two disk failures), and RAID 10 (mirrored stripes, best performance and redundancy). Each level offers different trade-offs between cost, performance, and fault tolerance.
+
+For more info, see: [Storage#RAID](OS/storage.md)
+
+#### What is the difference between a hard link and a soft link?
+
+A hard link is a directory entry that points directly to the inode, effectively creating another name for the same file. All hard links are equal; deleting one doesn't affect others. A soft/symbolic link is a special file that stores the pathname of another file. Deleting the target file breaks the soft link, but deleting the soft link itself doesn't affect the target. Hard links cannot span filesystems or link to directories, while soft links can.
+
+For more info, see: [File System#Hard Link vs Soft Link](OS/file_system.md)
+
+#### What is an inode in a file system?
+
+An inode (index node) is a data structure that stores all metadata about a file except its name and content. This includes file size, permissions, timestamps, ownership, and pointers to the disk blocks where the file's data is stored. Each file and directory has a unique inode number. The filename is stored in directory entries that map filenames to inode numbers. Inodes are stored in a special area of the disk called the inode table.
+
+For more info, see: [File System#](OS/file_system.md)
 
 ---
 
@@ -2138,9 +2650,15 @@ Latency is the time it takes to complete a single operation. Throughput is the n
 
 For more info, see: [System Metrics#Availability](SYSTEM_DESIGN/system_metrics.md)
 
+#### What is a proxy server?
+
+A proxy server is an intermediary that sits between clients and servers, forwarding requests and responses. It can modify traffic, cache content, filter requests, anonymize clients, or load balance servers.
+
+For more info, see: [Proxy#Proxy Server](SYSTEM_DESIGN/proxy.md)
+
 #### What is the difference between Reverse Proxy and Forward Proxy?
 
-A forward proxy acts on behalf of the client while a reverse proxy acts on behalf of the server.
+A forward proxy sits in front of clients, intercepting outbound requests to external servers on behalf of internal users. It hides client identities, bypasses restrictions, and caches content. A reverse proxy sits in front of servers, intercepting inbound requests from external clients to internal servers. Forward proxies protect clients; reverse proxies protect servers.
 
 For more info, see: [Proxy#Proxy Vs Reverse Proxy](SYSTEM_DESIGN/proxy.md)
 

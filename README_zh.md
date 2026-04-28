@@ -234,7 +234,6 @@ Qt
 - [文件I/O](OS/io_zh.md)
 - [内存管理函数](OS/mem_mgr_zh.md)
 - [多处理机系统](OS/multi_processor_zh.md)
-- [流水线模型](OS/pipeline_zh.md)
 - [posix接口](OS/posix_zh.md)
 - [进程，线程和协程](OS/progress_thread_coroutine_zh.md)
 - [系统安全](OS/safe_zh.md)

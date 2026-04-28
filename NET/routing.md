@@ -28,7 +28,11 @@ Default routing sends packets to a predefined gateway when no specific route is 
 
 ### Distance Vector Routing
 
+TODO
+
 ### Link State Routing
+
+TODO
 
 
 
@@ -36,13 +40,23 @@ Default routing sends packets to a predefined gateway when no specific route is 
 
 ### RIP (Routing Information Protocol)
 
+TODO
+
 ### OSPF (Open Shortest Path First)
+
+TODO
 
 ### EIGRP (Enhanced Interior Gateway Routing Protocol)
 
+TODO
+
 ### BGP (Border Gateway Protocol)
 
-### IS-IS ((Intermediate System to Intermediate System))
+TODO
+
+### IS-IS (Intermediate System to Intermediate System)
+
+TODO
 
 
 
@@ -70,6 +84,26 @@ A router is a networking device that controls how data moves between different n
 
 
 
+## Switch
+
+A switch is basically a hardware device that is responsible for channeling the data that is coming into the various input ports to a particular output port, which will further take the data to the desired destination.
+
+### Workflow
+
+![switch_workflow](res/switch_workflow.png)
+
+
+
+## Bridge
+
+A bridge is basically a device which is responsible for dividing a single network into various network segments. Thus the process of dividing a single network into various multiple network segments is called as network bridging.
+
+### Workflow
+
+![bridge_workflow](res/bridge_workflow.png)
+
+
+
 ## Gateway
 
 TODO
@@ -94,6 +128,17 @@ TODO
 | **Default route**       | One of its functions               | The "door" out of a network                 |
 | **Examples**            | Home router, core router           | Default gateway, VoIP gateway, IoT gateway  |
 | **Relationship**        | A router can be a gateway          | A gateway may or may not be a router        |
+
+### Switch vs Bridge
+
+|                            Switch                            |                            Bridge                            |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| A device which is responsible for channeling the data that is coming into the various input ports to a particular output port which will further take the data to the desired destination. | A device which is responsible for dividing a single network into various network segments. |
+|              A switch can have a lot of ports.               |             A bridge can have 2 or 4 ports only.             |
+| The switch performs the packet forwarding by using hardwares such as ASICS hence, it is hardware based. | The bridge performs the packet forwarding by using softwares so it is software based. |
+| The switching method in case of a switch can thus be store, forward, fragment free or cut through. | The switching method in case of a bridge is store and forward. |
+|     The task of error checking is performed by a switch.     |         A bridge cannot perform the error checking.          |
+|                    A switch has buffers.                     |               A bridge may not have a buffer.                |
 
 
 

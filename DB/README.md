@@ -7,6 +7,7 @@
 - [Normalization](normalization.md)
 - [Relational Model](relational_model.md)
 - [SQL Language](sql.md)
+- [DB Storage](storage.md)
 - [Transaction](transaction.md)
 
 
