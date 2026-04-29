@@ -24,7 +24,7 @@ Normalization is an important process in database design that helps improve the 
 
 ## Normal Forms
 
-![db_normal_forms_hierarchy](/usr/local/src/github/hanjingo/doc/DB/res/db_normal_forms_hierarchy.png)
+![db_normal_forms_hierarchy](res/db_normal_forms_hierarchy.png)
 
 | Normal Forms                  | Description of Normal Forms                                  |
 | :---------------------------- | :----------------------------------------------------------- |
@@ -132,7 +132,7 @@ Disadvantages:
 
 ## Data Replication
 
-![data_replication](/usr/local/src/github/hanjingo/doc/DB/res/data_replication.png)
+![data_replication](res/data_replication.png)
 
 Data Replication in DBMS refers to the process of storing copies of the same data at multiple sites or nodes within a distributed database system. The main purpose of replication is to improve data availability, reliability, performance, and fault tolerance. 
 

@@ -210,3 +210,5 @@ Troubleshooting tips:
 [2] [Domain Name System (DNS)](https://www.geeksforgeeks.org/computer-networks/domain-name-system-dns-in-application-layer/)
 
 [3] [DNS Tunneling](https://www.geeksforgeeks.org/computer-networks/dns-tunneling/)
+
+[4] [How DNS Works](https://blog.bytebytego.com/i/180825096/how-dns-works)

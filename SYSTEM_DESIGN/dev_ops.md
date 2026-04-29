@@ -43,6 +43,12 @@ Benefit:
 
 ## Docker
 
+### Concepts
+
+![docker_concepts](res/docker_concepts.png)
+
+### Workflow
+
 ![docker_workflow](res/docker_workflow.png)
 
 
@@ -66,6 +72,29 @@ Benefit:
 ### Kubernetes Pod
 
 ![kubernetes_pod](res/kubernetes_pod.png)
+
+
+
+## Example 1: Airbnb Runs Distributed Databases on Kubernetes at Scale
+
+![airbnd_distributed_db_k8s](res/airbnd_distributed_db_k8s.png)
+
+### Persistent Volume Claim
+
+![airbnb_k8s_pvc](res/airbnb_k8s_pvc.png)
+
+By combining EBS volumes, PVCs, and a custom operator, Airbnb has found a way to safely run a distributed database on Kubernetes. This allows them to benefit from Kubernetes automation without sacrificing the consistency or availability that a database requires.
+
+### Multi-Cluster Deployment for Fault Tolerance
+
+![airbnb_fault_tolerance](res/airbnb_fault_tolerance.png)
+
+This setup brings several benefits:
+
+- Fault isolation
+- Reduced blast radius of deployments
+- Canary deployments for safety
+- Overprovisioning for resilience
 
 
 
@@ -94,3 +123,5 @@ Benefit:
 [3] [EP191: Virtualization vs. Containerization](https://blog.bytebytego.com/p/ep191-virtualization-vs-containerization)
 
 [4] [EP178: The Lifecycle of a Kubernetes Pod](https://blog.bytebytego.com/p/ep178-the-lifecycle-of-a-kubernetes)
+
+[5] [Top 8 must-know Docker concepts](https://blog.bytebytego.com/i/145628005/top-8-must-know-docker-concepts)

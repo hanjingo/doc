@@ -224,6 +224,35 @@ Below are the use cases of event-driven microservices:
 
 
 
+## SOA Architecture
+
+Service-Oriented Architecture (SOA) is a huge collection of services in which services communicate with each other.
+
+### Roles
+
+![soa_roles](res/soa_roles.png)
+
+- **Service provider:** The service provider is the maintainer of the service and the organization that makes available one or more services for others to use. To advertise services, the provider can publish them in a registry, together with a service contract that specifies the nature of the service, how to use it, the requirements for the service, and the fees charged.
+- **Service consumer:** The service consumer can locate the service metadata in the registry and develop the required client components to bind and use the service.
+
+### Components
+
+![soa_components](res/soa_components.png)
+
+
+
+## Cell-Based Architecture
+
+![cell_based_arch](res/cell_based_arch.png)
+
+In cell-based architecture, there are multiple isolated instances of a workload, where each instance is known as a cell. There are three properties of a cell:
+
+- Each cell is independent.
+- A cell does not share the state with other cells.
+- Each cell handles a subset of the overall traffic.
+
+
+
 ## Example 1: Reddit's Go Microservice Migration
 
 ### Datastore Solutions
@@ -271,6 +300,23 @@ Reddit’s engineering team added another verification layer. They ran all tap c
 | Less flexible as all components are tightly coupled          | More flexible as components can be developed, deployed, and scaled independently |
 | Communication between components is faster                   | Communication may be slower due to network calls             |
 
+### Microservices vs SOA
+
+![microservices_vs_soa](res/microservices_vs_soa.png)
+
+|                             SOA.                             |                             MSA.                             |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| It is a huge collection of services in which services communicate with each other. | It is a general architecture that takes a large number of services and break down into small services or shareable components. |
+|      It works on a Share-as-much-as-possible approach.       |       It works on a Share-little-as-promise approach.        |
+|            It is used to share the data storage.             |               It has independent data storage.               |
+|               It supports multiple protocols.                |       It supports the HTTP/REST lightweight protocol.        |
+| In service-oriented architecture, there is a multi-threaded system with more handle I/O. | In Micro service Architecture, there is a single-threaded with non-locking I/O handle. |
+|          It has a common platform for all services.          | It has a platform like Nodejs is used, and an application server not used. |
+|   It uses of containers is less popular with Docker Linux.   |                Its container works very well.                |
+|               It uses a traditional database.                |              It uses a non-relational database.              |
+|           It uses ESB services for communication.            | It does not use ESB services. It has a simple messaging system. |
+|             It has a common governance standard.             |        Relaxed governance with more focus on people.         |
+
 ### Orchestraion vs Choreography
 
 ![orchestraion_vs_choreography](res/orchestraion_vs_choreography.png)
@@ -294,11 +340,15 @@ Reddit’s engineering team added another verification layer. They ran all tap c
 
 ![batch_vs_stream_proc](res/batch_vs_stream_proc.png)
 
+### Strategies To Share Data Between Services
+
+![strategies_to_share_data](res/strategies_to_share_data.png)
+
 
 
 ## Reference
 
-[1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+[1] Ian Sommerville. SOFTWARE ENGINEERING. 9th Edition
 
 [2] [Event-Driven APIs in Microservice Architectures](https://www.geeksforgeeks.org/system-design/event-driven-apis-in-microservice-architectures/)
 
@@ -319,3 +369,9 @@ Reddit’s engineering team added another verification layer. They ran all tap c
 [10] [Batch vs Stream Processing](https://blog.bytebytego.com/p/ep185-docker-vs-kubernetes)
 
 [11] [How Reddit Migrated Comments Functionality from Python to Go](https://blog.bytebytego.com/p/how-reddit-migrated-comments-functionality)
+
+[12] [2. What Are the Differences Between SOA and Microservices?](https://blog.bytebytego.com/i/139741133/2-what-are-the-differences-between-soa-and-microservices)
+
+[13] [Service-Oriented Architecture](https://www.geeksforgeeks.org/software-engineering/service-oriented-architecture/)
+
+[14] [Top Strategies to Share Data Between Services](https://blog.bytebytego.com/p/top-strategies-to-share-data-between)

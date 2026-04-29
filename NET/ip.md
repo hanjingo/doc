@@ -6,6 +6,8 @@ English | [中文版](ip_zh.md)
 
 
 
+![ip_summary](res/ip_summary.png)
+
 IP is the network‑layer workhorse of the Internet protocol suite. It provides a best‑effort, connectionless datagram service that carries transport protocols (TCP, UDP) and control protocols (ICMP, IGMP). IP does not guarantee delivery, ordering, or duplicate suppression — those are handled by higher layers when needed.
 
 ## Types
@@ -269,4 +271,6 @@ Practical notes:
 [7] [Difference Between IPv4 and IPv6](https://www.geeksforgeeks.org/computer-networks/differences-between-ipv4-and-ipv6/)
 
 [8] [Classless Inter Domain Routing (CIDR)](https://www.geeksforgeeks.org/computer-networks/classless-inter-domain-routing-cidr/)
+
+[9] [IP Address Cheat Sheet Every Engineer Should Know](https://blog.bytebytego.com/i/177690588/ip-address-cheat-sheet-every-engineer-should-know)
 

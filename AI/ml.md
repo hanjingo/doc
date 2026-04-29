@@ -8,6 +8,8 @@ Machine Learning(ML) is a subset of artificial intelligence(AI) focused on algor
 
 ## Intro
 
+![ml_arch](res/ml_arch.jpg)
+
 ML finds application in many fields, including natural language processing, computer vision, speech recognition, email filtering, agriculture, and medicine. The application of ML to business problems is known as predictive analytics.
 
 
@@ -115,11 +117,11 @@ A genetic algorithm(GA) is a search algorithm and heuristic technique that mimic
 
 ### Belief functions
 
-The theory of belief functions, also referred to as evidence theory or Dempster-Shafer theory, is a general framework for reasoning with uncertainty, with understood connections to other frameworks such as probability, possibility and imprecise probability theories.
+The theory of belief functions, also referred to as evidence theory or Dempster-Shafer theory, is a general framework for reasoning with uncertainty, with understood connections to other frameworks such as probability, possibility, and imprecise probability theories.
 
 ### Rule-based models
 
-Rule-based machine learning (RBML) is a branch of machine learning that automatically discovers and learns 'rule' from data. It provides interpretable models, making it useful fo decision-making in fields like healthcare, fraud detection, and cybersecurity.
+Rule-based machine learning (RBML) is a branch of machine learning that automatically discovers and learns rules from data. It provides interpretable models, making it useful for decision-making in fields like healthcare, fraud detection, and cybersecurity.
 
 ### Training models
 
@@ -148,4 +150,6 @@ Federated learning is an adapted form of distributed artificial intelligence to 
 [7] [IBM: What is a Mamba model?](https://www.ibm.com/think/topics/mamba-model#763338463)
 
 [8] [IBM: What is a GNN (graph neural network)?](https://www.ibm.com/think/topics/graph-neural-network#763338464)
+
+[9] [A piece of knowledge each day: AI and Machine Learning (ML)](https://blog.bytebytego.com/p/ep183-mcp-vs-api-whats-the-difference)
 

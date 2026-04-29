@@ -98,9 +98,23 @@ SAML is the underlying technology that allows people to sign in once using one s
 
 
 
+## Cookies and Sessions
+
+Sessions are ideal for applications requiring strict server-side control over user data.
+
+session data is stored on the server and referenced via a client-side cookie.
+
+
+
+## PASETO
+
+Platform-Agnostic Security Tokens or PASETO improve upon JWT by enforcing stronger cryptographic defaults and eliminating algorithmic vulnerabilities.
+
+
+
 ## OAuth
 
-OAuth is an open-standard authorization protocol that allows applications to access user data withotu requiring the user's password.
+OAuth is an open-standard authorization protocol that allows applications to access user data without requiring the user's password.
 
 ### JWT
 
@@ -170,6 +184,10 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 
 ![tokens_vs_api_keys](res/tokens_vs_api_keys.jpg)
 
+### Cookies vs Sessions vs JWT vs Paseto
+
+![cookies_vs_sessions_vs_jwt_vs_paseto](res/cookies_vs_sessions_vs_jwt_vs_paseto.png)
+
 
 
 ## Reference
@@ -189,3 +207,5 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 [7] [EP172: Top 5 common ways to improve API performance](https://blog.bytebytego.com/p/ep172-top-5-common-ways-to-improve)
 
 [8] [Access Control Clearly Explained](https://blog.bytebytego.com/p/ep182-cookies-vs-sessions)
+
+[9] [Cookies Vs Sessions Vs JWT Vs PASETO](https://blog.bytebytego.com/i/155048027/cookies-vs-sessions-vs-jwt-vs-paseto)

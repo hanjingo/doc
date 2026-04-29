@@ -4,11 +4,15 @@
 
 ## [AI](AI/README.md)
 
-- [Computer Vision](cv.md)
-- [Large Language Models](llm.md)
+- [AI Summary](AI/summary.md)
+- [AI Agent](AI/agent.md)
+- [Computer Vision](AI/cv.md)
+- [Deep Learning](AI/dl.md)
+- [AI Hardware](AI/hw.md)
+- [Large Language Models](AI/llm.md)
 - [Model Context Protocol](AI/mcp.md)
-- [Machine Learning](ml.md)
-- [Prompt](AI/prompt.md)
+- [Machine Learning](AI/ml.md)
+- [Prompt Cookbook](AI/prompt.md)
 - [RAG](AI/rag.md)
 
 ---

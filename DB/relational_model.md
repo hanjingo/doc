@@ -126,7 +126,7 @@ A Category (or Union Type) is a subclass that is derived from two or more superc
 
 ### Attribute and Relationship Inheritance
 
-In the EER model, subclasses inherit all attributes and relationships of their superclasses. This supports reusability and data consistency, as common attributes don’t need to be redefined. An entity can be a sub-class of multiple entity types such entities are sub-class of multiple entities and have multiple super-classes. In multiple inheritances, attributes of sub-class are the union of attributes of all super-classes. 
+In the EER model, subclasses inherit all attributes and relationships of their superclasses. This supports reusability and data consistency, as common attributes don’t need to be redefined. An entity can be a subclass of multiple entity types; such entities are subclasses of multiple entities and have multiple superclasses. In multiple inheritance, attributes of a subclass are the union of attributes of all superclasses. 
 
 
 

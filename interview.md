@@ -2662,12 +2662,6 @@ A forward proxy sits in front of clients, intercepting outbound requests to exte
 
 For more info, see: [Proxy#Proxy Vs Reverse Proxy](SYSTEM_DESIGN/proxy.md)
 
-#### What is the difference between Microservices and Monolithic architecture?
-
-A Monolithic architecture is a single, unified unit where all functions are tightly coupled, while a Microservices architecture is a collection of small, independent services that communicate via APIs.
-
-For more info, see: [Architectural#Microservices vs Monolithic Architecture](SYSTEM_DESIGN/architectural.md)
-
 #### What is rate limiter? How does it work?
 
 A Rate Limiter is a tool used to control the rate of traffic sents by a client or received by a server. It acts as a "gatekeeper" that defines how many requests a user can make within a specific timeframe. Rate limiters track requests using specific logic to decide whether to allow, drop, or delay a request.
@@ -3069,6 +3063,26 @@ For more info, see: [Security#Difference between JWT, OAuth and SAML](SYSTEM_DES
 Single Sign-On(SSO) is an authentication method that allows users to log in once and gain access to multiple independent software systems. It works by establishing a trust relationship between an Identity Provider (IdP) and various Service Providers (SPs).
 
 For more info, see: [Security#SSO(Single Sign-On)](SYSTEM_DESIGN/security.md)
+
+### Microservices
+
+#### What Are Microservices?
+
+Microservices is an architectural style where an application is composed of small, independent services, each running in its own process and communicating via lightweight mechanisms like HTTP/REST or messaging. Each service focuses on a specific business capability, can be developed, deployed, and scaled independently, and uses its own database. This contrasts with monolithic architecture where all components are tightly coupled in a single deployment unit.
+
+For more info, see: [Architectural#Microservice Architecture](SYSTEM_DESIGN/architectural.md)
+
+#### What Are the Differences Between SOA and Microservices?
+
+SOA typically uses an Enterprise Service Bus (ESB) for centralized communication and often shares a single database, while microservices use lightweight protocols (HTTP/gRPC) directly between services and mandate database-per-service. SOA services are generally larger (coarser-grained) and deployed as monolithic applications, while microservices are smaller (finer-grained), independently deployable, and organized around business capabilities. SOA emphasizes integration of legacy systems; microservices emphasize agility and modern cloud-native development.
+
+For more info, see: [Architectural#Microservice Architecture](SYSTEM_DESIGN/architectural.md)
+
+#### What is the difference between Microservices and Monolithic architecture?
+
+A Monolithic architecture is a single, unified unit where all functions are tightly coupled, while a Microservices architecture is a collection of small, independent services that communicate via APIs.
+
+For more info, see: [Architectural#Microservices vs Monolithic Architecture](SYSTEM_DESIGN/architectural.md)
 
 ### Practice
 

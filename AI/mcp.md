@@ -133,6 +133,32 @@ TODO
 
 
 
+## Summary
+
+### MCP vs A2A Protocol
+
+![mcp_vs_a2a_protocol](res/mcp_vs_a2a_protocol.png)
+
+Google’s Agent-to-Agent (A2A) Protocol enables AI agents to communicate and collaborate, allowing them to delegate tasks, share results, and enhance each other’s capabilities.
+
+### MCP vs API
+
+![mcp_vs_api](res/mcp_vs_api.png)
+
+API (Application Programming Interface):
+
+- Purpose: Enables software-to-software communication.
+- Discovery: Requires documentation.
+- Standardization: Varies — REST, GraphQL, gRPC, etc.
+
+MCP (Model Context Protocol):
+
+- Purpose: Enables AI-native communication between clients (agents, IDEs, LLMs) and servers.
+- Discovery: Self-describing (no external docs needed).
+- Standardization: One uniform protocol for resources, tools, and prompts.
+
+
+
 ## Reference
 
 [1] [Gihub/Model Context Protocol](https://github.com/modelcontextprotocol)
@@ -140,3 +166,9 @@ TODO
 [2] [The Complete Guide to Model Context Protocol](https://machinelearningmastery.com/the-complete-guide-to-model-context-protocol/)
 
 [3] [What is the Model Context Protocol (MCP)?](https://modelcontextprotocol.io/docs/getting-started/intro)
+
+[4] [EP154: What is MCP?](https://blog.bytebytego.com/p/ep154-what-is-mcp)
+
+[5] [MCP Versus A2A Protocol](https://blog.bytebytego.com/p/ep173-12-mcp-servers-you-can-use)
+
+[6] [MCP vs API: what’s the difference?](https://blog.bytebytego.com/i/175237895/mcp-vs-api-whats-the-difference)

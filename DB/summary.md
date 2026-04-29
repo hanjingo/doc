@@ -158,6 +158,10 @@
 
 ![sparse_index](res/sparse_index.png)
 
+### CQRS (Command Query Responsibility Segregation)
+
+![cqrs](res/cqrs.png)
+
 
 
 ## Summary
@@ -197,3 +201,5 @@
 [13] [Understanding Database Types](https://blog.bytebytego.com/p/understanding-database-types)
 
 [14] [SQL vs NoSQL: Choosing the Right Database for An Application](https://blog.bytebytego.com/p/sql-vs-nosql-choosing-the-right-database)
+
+[15] [How CQRS Works?](https://blog.bytebytego.com/i/183283151/how-cqrs-works)

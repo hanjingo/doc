@@ -6,8 +6,6 @@ English | [中文版](storage_zh.md)
 
 
 
-
-
 ## File Allocation Methods
 
 The allocation methods define how the files are stored in the disk blocks. There are three main disk space or file allocation methods:

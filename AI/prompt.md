@@ -1,12 +1,40 @@
-# Prompt
+# Prompt Cookbook
 
 ChatGPT使用手册
 
 [TOC]
 
-## 环境搭建
 
-TODO
+
+## The Components of a Prompt
+
+![promp_components](res/promp_components.png)
+
+A prompt typically consists of several components:
+
+- The task description explains what we want the model to do, including any role or persona we want it to adopt.
+- The context provides necessary background information. Examples demonstrate the desired behavior or format.
+- Finally, the concrete task is the specific question to answer or action to perform.
+
+
+
+## Best Practice
+
+Some best practices for effective prompting are as follows:
+
+- Be Clear and Specific.
+- Provide Sufficient Context
+- Specify Output Format
+- Use Examples Strategically
+- Iterate and Experiment
+- Versioning Prompts
+
+Some common pitfalls that should be avoided when writing prompts are as follows:
+
+- Being Too Vague
+- Overcomplicating Prompts
+- Ignoring Output Format
+- Not Testing Sufficiently
 
 
 
@@ -15,29 +43,32 @@ TODO
 ### C++ Programmer C++程序员
 
 > Please act as a C++ software development expert and evaluate this file against industrial-grade library standards. Compare it with other well-known similar projects and, from an engineering perspective, identify areas for improvement (for example: performance; security — memory management and resource control; reliability; architecture — extensibility, compatibility, generality; simplicity). Finally, provide an overall rating for the file.
-
+>
 > 请你扮演一个C++软件开发专家的角色，以工业化软件库标准评价这个文件；对比其它著名的类似项目，基于工程角度指出有哪些可以优化的地方（如：性能，安全性（内存管理与资源控制），可靠性，架构设计（扩展性，兼容性，通用性），简洁性）；并对该文件进行总体评分。
 
-### 写作助手
+### English Writer 写作助手
 
 > Edit (algorithm.md) in English using the notes in (DISCRETE_MATHEMATICS_AND_ITS_APPLICATION) as a reference: organize this note on (software system design); consolidate relevant information, restructure paragraphs, fill in missing content, add appropriate introductions and explanatory text, remove redundant or low‑value material, correct typos, and improve sentence clarity and overall fluency.
-
+>
 > 使用英语修改（algorithm.md），根据笔记（DISCRETE_MATHEMATICS_AND_ITS_APPLICATION）中的内容，整理这篇关于（软件系统设计）的笔记；汇总相关信息，调整文章段落结构，补充缺失的相关内容，适当增加一些说明和导语，削减冗余或不重要的内容，查找错别字，使文章和句子通顺。
 
 
 ### English Translator and Improver 英文翻译器
 
-> I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is "how are you"
+> I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is "how are you".
+>
 > 我希望你能担任英语翻译、拼写校对和修辞改进的角色。我会用任何语言和你交流，你会识别语言，将其翻译并用更为优美和精炼的英语回答我。请将我简单的词汇和句子替换成更为优美和高雅的表达方式，确保意思不变，但使其更具文学性。请仅回答更正和改进的部分，不要写解释。我的第一句话是“how are you ?”，请翻译它。
 
 ### English Pronunciation Helper 英语发音帮手
 
-> I want you to act as an English pronunciation assistant for Turkish speaking people. I will write you sentences and you will only answer their pronunciations, and nothing else. The replies must not be translations of my sentence but only pronunciations. Pronunciations should use Turkish Latin letters for phonetics. Do not write explanations on replies. My first sentence is "how the weather is in shanghai?"
+> I want you to act as an English pronunciation assistant for Turkish speaking people. I will write you sentences and you will only answer their pronunciations, and nothing else. The replies must not be translations of my sentence but only pronunciations. Pronunciations should use Turkish Latin letters for phonetics. Do not write explanations on replies. My first sentence is "how the weather is in shanghai?".
+>
 > 请为说汉语的人提供英语发音帮助。我会给你汉语句子，你需回答正确的英语发音。仅回答发音，不需要翻译或解释。请使用汉语谐音注音。首句：“上海的天气怎么样？”
 
 ### Advertiser 广告商
 
 > I want you to act as an advertiser. You will create a campaign to promote a product or service of your choice. You will choose a target audience, develop key messages and slogans, select the media channels for promotion, and decide on any additional activities needed to reach your goals. My first suggestion request is "I need help creating an advertising campaign for a new type of energy drink targeting young adults aged 18-30."
+>
 > 我想让你充当广告商。您将创建一个活动来推广您选择的产品或服务。您将选择目标受众，制定关键信息和口号，选择宣传媒体渠道，并决定实现目标所需的任何其他活动。我的第一个建议请求是“我需要帮助针对 18-30 岁的年轻人制作一种新型能量饮料的广告活动。”
 
 ### Debater 辩手
@@ -278,7 +309,7 @@ TODO
 
 
 
-## Reference 参考
+## References
 
 [1] Chatgpt https://chat.openai.com/chat
 
@@ -287,3 +318,5 @@ TODO
 [3] awesome-chatgpt-prompts-zh https://github.com/PlexPt/awesome-chatgpt-prompts-zh
 
 [4]  Marco Dondi, Julia Klier, Frederic Panier, and Jörg Schubert . Defining the skills  citizens will need in the  future world of work
+
+[5] [What Makes a Good Prompt](https://blog.bytebytego.com/i/186800497/what-makes-a-good-prompt)

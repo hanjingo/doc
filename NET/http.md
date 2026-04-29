@@ -345,7 +345,7 @@ Disadvantages:
 
 ### Workflow
 
-![https_workflow](res/https_workflow.png)
+![https_workflow](res/https_workflow.jpg)
 
 HTTPS establishes the communication between the browser and the web server. It uses the Secure Socket Layer (SSL) and Transport Layer Security (TLS) protocols for establishing communication. 
 
@@ -410,3 +410,5 @@ The main responsibility of SSL is to ensure that the data transfer between the c
 [10] [How AMEX Processes Millions of Daily Transactions With Millisecond Latency](https://blog.bytebytego.com/p/how-amex-processes-millions-of-daily)
 
 [11] [Evolution of HTTP](https://blog.bytebytego.com/p/ep194-evolution-of-http)
+
+[12] [How does HTTPS work?](https://blog.bytebytego.com/i/164838806/how-does-https-work)

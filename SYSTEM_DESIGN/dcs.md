@@ -82,6 +82,41 @@ In a distributed system, middleware normally provides two distinct types of supp
 1. Interaction support, where the middleware coordinates interactions between different components in the system.
 2. The provision of common services, where the middleware provides reusable implementations of services that may be required by several components in the distributed system.
 
+### Consensus Algorithms
+
+- Crash Fault Tolerant(CFT) Algorithms:
+  - Paxos (for more detail, see: [doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
+  - Raft (for more detail, see: [doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
+- Byzantine Fault Tolerant(BFT) Algorithms:
+  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see: [doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
+  - Tendermint
+- Proof-Based Algorithms:
+  - Proof of Work(PoW) (for more detail, see: [doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
+  - Proof of Stake(PoS) (for more detail, see: [doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
+  - Delegate Proof of Stake(DPoS) (for more detail, see: [doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
+- Leader-Based Algorithms:
+  - Viewstamped Replication(VR)
+  - Multi-Paxos
+- Voting-Based Algorithm
+  - Quorum-Based Algorithms
+  - Federated Byzantine Agreement(FBA)
+
+For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/master/DCS/README.md)
+
+### Leader Election Algorithms
+
+![dcs_leader_election_algo](res/dcs_leader_election_algo.png)
+
+Leader Election Algorithms are important in distributed systems to manage tasks, maintain consistency, and make decisions.
+
+### Service Discovery
+
+![service_discovery](res/service_discovery.jpg)
+
+### Retry Pattern
+
+![dcs_retry_pattern](res/dcs_retry_pattern.png)
+
 
 
 ## Architectural patterns for distributed systems
@@ -139,37 +174,6 @@ It is appropriate to use a peer-to-peer architectural model for a system in two 
 
 
 
-## Consensus Algorithms
-
-- Crash Fault Tolerant(CFT) Algorithms:
-  - Paxos (for more detail, see: [doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
-  - Raft (for more detail, see: [doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
-- Byzantine Fault Tolerant(BFT) Algorithms:
-  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see: [doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
-  - Tendermint
-- Proof-Based Algorithms:
-  - Proof of Work(PoW) (for more detail, see: [doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
-  - Proof of Stake(PoS) (for more detail, see: [doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
-  - Delegate Proof of Stake(DPoS) (for more detail, see: [doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
-- Leader-Based Algorithms:
-  - Viewstamped Replication(VR)
-  - Multi-Paxos
-- Voting-Based Algorithm
-  - Quorum-Based Algorithms
-  - Federated Byzantine Agreement(FBA)
-
-For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/master/DCS/README.md)
-
-
-
-## Leader Election Algorithms
-
-![dcs_leader_election_algo](res/dcs_leader_election_algo.png)
-
-Leader Election Algorithms are important in distributed systems to manage tasks, maintain consistency, and make decisions.
-
-
-
 ## Distributed Locking
 
 TODO
@@ -205,3 +209,7 @@ TODO
 [6] [5 Leader Election Algorithms Powering Modern Databases](https://blog.bytebytego.com/p/ep197-12-architectural-concepts-developers)
 
 [7] [The Must-Know Fundamentals of Distributed Systems](https://blog.bytebytego.com/p/the-must-know-fundamentals-of-distributed)
+
+[8] [Service Discovery 101: The Phonebook for Distributed Systems](https://blog.bytebytego.com/p/service-discovery-101-the-phonebook)
+
+[9] [A Guide to Retry Pattern in Distributed Systems](https://blog.bytebytego.com/p/a-guide-to-retry-pattern-in-distributed)

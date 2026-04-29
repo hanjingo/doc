@@ -104,7 +104,15 @@ TODO
 
 ## RabbitMQ
 
-TODO
+![rabbit_mq](res/rabbit_mq.png)
+
+1. A producer (usually an application or service) sends messages to the RabbitMQ broker, which manages message routing and delivery.
+2. Within the broker, messages are sent to an exchange, which determines how they should be routed based on the type of exchange: Direct, Topic, or Fanout.
+3. Bindings connect exchanges to queues using a binding key, which defines the rules for routing messages (for example, exact match or pattern-based)
+4. Direct exchanges route messages to queues that match the routing key exactly, as shown with Queue 1.
+5. Topic exchanges use patterns to route messages to matching queues.
+6. Fanout exchanges broadcast messages to all bound queues, regardless of routing keys.
+7. Finally, messages are pulled from the queues by a consumer, which processes them and can pass the results to other systems.
 
 
 
@@ -148,3 +156,5 @@ TODO
 [6] [Messaging Patterns Explained: Pub-Sub, Queues, and Event Streams](https://blog.bytebytego.com/p/messaging-patterns-explained-pub)
 
 [7] [Apache Kafka vs. RabbitMQ](https://blog.bytebytego.com/p/ep193-database-types-you-should-know)
+
+[8] [How RabbitMQ Works?](https://blog.bytebytego.com/i/166418419/how-rabbitmq-works)

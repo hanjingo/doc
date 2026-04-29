@@ -182,43 +182,237 @@ TODO
 
 ## B+ Tree
 
+![b_plus_tree](res/b_plus_tree.png)
+
 B+ tree is an improved version of B-tree, with higher query performance; by maximizing the data in each internal node, it reduces the tree height and thus the frequency of rebalancing.
 
-### Applications
+### Properties
 
-### Structure
+- Every node in a B+ Tree, except the root, will hold a maximum of $m$ children and ($m - 1$) keys, and a minimum of $\lceil \frac{m}{2} \rceil$ children and $\lceil \frac{m - 1}{2} \rceil$ keys, since the order of the tree is $m$.
+- The root node must have no less than two children and at least one search key.
+- All the paths in a B tree must end at the same level, i.e., the leaf nodes must be at the same level.
+- A B+ tree always maintains sorted data.
 
-- Internal node (index node)
-- Leaf node
+### Nodes
 
-### Features
+In a B+ Tree, nodes are of two main types:
 
-1. A non-leaf node with n subtrees contains n keys (B-tree has n-1); these keys do not store data, only for indexing, all data is stored in leaf nodes.
-2. All leaf nodes contain all key information and pointers to the records, and leaf nodes are linked in order.
-3. All non-leaf nodes can be seen as index parts, only containing the maximum (or minimum) key in their subtrees.
-4. Usually, a B+ tree has two head pointers, one to the root, one to the smallest leaf.
-5. The same number may appear in different nodes; the largest element in the root is the largest in the B+ tree.
+- Internal Nodes
 
-### Search
+  Internal nodes are used for indexing and routing purposes within the tree. They do not store actual data values but rather keys that help in navigating the tree.
 
-Start from the root, traverse top-down, binary search;
+- Leaf Nodes
 
-#### Implementation
+  Leaf nodes store the actual data values. All the data in a B+ Tree is contained within the leaf nodes.
+
+implementation:
+
+```c++
+struct Node 
+{
+    bool is_leaf;
+    std::vector<int> keys;
+    std::vector<Node*> children;     // internal nodes
+    std::vector<std::string> values; // leaf nodes
+    Node* parent;
+    Node* next;
+
+    explicit Node(bool leaf)
+        : is_leaf(leaf), parent(nullptr), next(nullptr) {}
+};
+
+Node* root;
+```
 
 ### Insertion
 
-1. If the tree is empty, create a leaf node and insert the record; this leaf is also the root, done.
-2. TODO
+Algorithm:
 
-Implementation: TODO
+| Leaf Page Full | Index page Full | Action                                                       |
+| -------------- | --------------- | ------------------------------------------------------------ |
+| NO             | NO              | 1. Place the record in sorted position in the appropriate leaf page. |
+| YES            | NO              | 1. Split the leaf page.<br>2. Place Middle Key in the index page in sorted order.<br>3. Left leaf page contains records with keys below the middle key.<br>4. Right leaf page contains records with keys equal to or greater than the middle key. |
+| YES            | YES             | 1. Split the leaf page.<br>2. Records with keys < middle key go to the left leaf page. <br>3. Records with keys >= middle key go to the right leaf page.<br>4. Split the index page.<br>5. Keys < middle key go to the left index page.<br>6. Keys > middle key go to the right index page.<br>7. The middle key goes to the next (higher level) index.<br>8. (IF the next level index page is full, continue splitting the index.) |
+
+Complexity:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(\log n)$     | $O(1)$           |
+| Average Case | $O(\log n)$     | $O(1)$           |
+| Worst Case   | $O(\log n)$     | $O(\log n)$     |
+
+Notice: Worst-case space becomes $O(\log⁡ n)$ when splits propagate up multiple levels (and/or a recursive call stack is used).
+
+Example: 
+
+1. Insert a record with a key value of 28 into the B+ tree.
+
+   ![b_plus_tree_insert1](res/b_plus_tree_insert1.png)
+
+2. Insert a record with a key value of 70 into our B+ tree.
+
+   ![b_plus_tree_insert2](res/b_plus_tree_insert2.png)
+
+   (This record should go in the leaf page containing 50, 55, 60, and 65. Unfortunately this page is **full**. The middle key of 60 is placed in the index page between 50 and 75, so we must split the page to: ([50, 55], [60, 65, 70]) )
+
+3. Add a record containing a key value of 95 to our B+ tree.
+
+   ![b_plus_tree_insert3](res/b_plus_tree_insert3.png)
+
+   (This record belongs in the page containing 75, 80, 85, and 90. Since this page is full we split it into two pages:([75, 80], [85, 90, 95]); Unfortunately, the index page is also full, so we split the index page: ([25, 50], [75, 85], [60])).
+
+Implementation:
+
+```c++
+Node* root;
+int order; // max children for internal node
+
+void insert(int key, const std::string& value) 
+{
+    Node* leaf = find_leaf(key);
+    auto it = std::lower_bound(leaf->keys.begin(), leaf->keys.end(), key);
+    size_t idx = static_cast<size_t>(it - leaf->keys.begin());
+
+    if (it != leaf->keys.end() && *it == key) 
+    {
+        leaf->values[idx] = value;
+        return;
+    }
+
+    leaf->keys.insert(it, key);
+    leaf->values.insert(leaf->values.begin() + idx, value);
+    if (static_cast<int>(leaf->keys.size()) > max_keys())
+        split_leaf(leaf);
+}
+```
 
 ### Deletion
 
-Implementation: TODO
+Algorithm:
 
-### INNODB
+| Leaf Page Below Fill Factor | Index Page Below Fill Factor | Action                                                       |
+| --------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| NO                          | NO                           | 1. Delete the record from the leaf page. Arrange keys in ascending order to fill void. If the key of the deleted record appears in the index page, use the next key to replace it. |
+| YES                         | NO                           | 1. Combine the leaf page and its sibling. Change the index page to reflect the change. |
+| YES                         | YES                          | 1. Combine the leaf page and its sibling.<br>2. Adjust the index page to reflect the change.<br>3. Combine the index page with its sibling.<br>4. (Continue combining index pages until you reach a page with the correct fill factor or you reach the root page.) |
 
-TODO
+Complexity:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(\log n)$     | $O(1)$           |
+| Average Case | $O(\log n)$     | $O(1)$           |
+| Worst Case   | $O(\log n)$     | $O(\log n)$     |
+
+Notice: Worst-case space becomes $O(\log n)$ when merges/redistributions propagate up multiple levels (and/or a recursive call stack is used).
+
+Example:
+
+1. Deleting the record with key 70 from the B+ tree.
+
+   ![b_plus_tree_delete1](res/b_plus_tree_delete1.png)
+
+2. Delete the record containing 25 from the B+ tree.
+
+   ![b_plus_tree_delete2](res/b_plus_tree_delete2.png)
+
+   (This record is found in the leaf node containing 25, 28, and 30. The fill factor will be 50% after the deletion; however, 25 appears in the index page. Thus, when we delete 25 we must replace it with 28 in the index page.)
+
+3. Delete 60 from the B+ tree.
+
+   ![b_plus_tree_delete3](res/b_plus_tree_delete3.png)
+
+   1. The leaf page containing 60 (60 65) will be below the fill factor after the deletion. Thus, we must combine leaf pages.
+
+   2. With recombined pages, the index page will be reduced by one key. Hence, it will also fall below the fill factor. Thus, we must combine index pages.
+
+   3. Sixty appears as the only key in the root index page. Obviously, it will be removed with the deletion.
+
+Implemention:
+
+```c++
+Node* root;
+int order; // max children for internal node
+
+bool remove(int key) 
+{
+    Node* leaf = find_leaf(key);
+    if (leaf == nullptr)
+        return false;
+
+    auto it = lower_bound(leaf->keys.begin(), leaf->keys.end(), key);
+    if (it == leaf->keys.end() || *it != key)
+        return false;
+
+    size_t idx = static_cast<size_t>(it - leaf->keys.begin());
+    leaf->keys.erase(it);
+    leaf->values.erase(leaf->values.begin() + idx);
+
+    rebalance_after_delete(leaf);
+    return true;
+}
+```
+
+### Search
+
+Algorithm:
+
+1. Begin the search from the root node.
+2. Compare the key with the keys in the current node:
+   - If the key is less than a key in the node, follow the corresponding child pointer.
+   - If the key is greater, move to the next key or child pointer.
+3. Continue this process until you reach the leaf node.
+4. Look for the key in the leaf node.
+
+Complexity:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(\log n)$     | $O(1)$           |
+| Average Case | $O(\log n)$     | $O(1)$           |
+| Worst Case   | $O(\log n)$     | $O(\log n)$     |
+
+Notice: Worst-case space becomes $O(\log n)$ only for recursive implementations; iterative search uses $O(1)$ auxiliary space.
+
+Implementation:
+
+```c++
+Node* root;
+int order; // max children for internal node
+
+Node* find_leaf(int key) const 
+{
+    Node* current = root;
+    while (current != nullptr && !current->is_leaf) 
+    {
+        size_t i = 0;
+        while (i < current->keys.size() && key >= current->keys[i])
+            ++i;
+
+        current = current->children[i];
+    }
+    return current;
+}
+
+bool search(int key, std::string* out_value = nullptr) const 
+{
+    Node* leaf = find_leaf(key);
+    if (leaf == nullptr)
+        return false;
+
+    auto it = lower_bound(leaf->keys.begin(), leaf->keys.end(), key);
+    if (it == leaf->keys.end() || *it != key)
+        return false;
+
+    if (out_value != nullptr) 
+    {
+        size_t idx = static_cast<size_t>(it - leaf->keys.begin());
+        *out_value = leaf->values[idx];
+    }
+    return true;
+}
+```
 
 ---
 
@@ -227,20 +421,6 @@ TODO
 ## B* Tree
 
 Is a variant of B+ tree, in B+ tree, non-root and non-leaf nodes add pointers to siblings
-
----
-
-
-
-## Differences
-
-| -         | B-Tree               | B+ Tree |
-| --------- | -------------------- | ------- |
-| Balancing |                      |         |
-| Search    | Must use in-order    |         |
-| Range     | Not supported        | Supported|
-| Key length| Cannot change max    |         |
-| I/O       |                      |         |
 
 ---
 
@@ -256,12 +436,34 @@ TODO
 
 
 
+## Summary
+
+### B-Tree vs B+Tree vs LSM Tree
+
+![b_tree_vs_b_plus_tree_vs_lsm_tree](res/b_tree_vs_b_plus_tree_vs_lsm_tree.png)
+
+---
+
+
 
 ## References
 
-- [Wikipedia - B-Tree](https://en.wikipedia.org/wiki/B-tree)
-- [Wikipedia - B+ Tree](https://en.wikipedia.org/wiki/B%2B_tree)
-- [B-Tree and B+ Tree Insertion, Deletion Illustrated](https://www.cnblogs.com/nullzx/p/8729425.html)
-- [B-tree, B+ tree, Red-Black tree application notes](https://blog.csdn.net/qq_36183935/article/details/81095212)
-- [B+ trees](res/b+trees.pdf)
-- [Bp-Tree: A Predictive B+-Tree for Reducing Writes on Phase Change Memory](res/bptree.pdf)
+[1] [B+ TREES](res/b_plus_trees.pdf)
+
+[2] [Wikipedia - B-Tree](https://en.wikipedia.org/wiki/B-tree)
+
+[3] [Wikipedia - B+ Tree](https://en.wikipedia.org/wiki/B%2B_tree)
+
+[4] [B-Tree and B+ Tree Insertion, Deletion Illustrated](https://www.cnblogs.com/nullzx/p/8729425.html)
+
+[5] [B-tree, B+ tree, Red-Black tree application notes](https://blog.csdn.net/qq_36183935/article/details/81095212)
+
+[6] [Bp-Tree: A Predictive B+-Tree for Reducing Writes on Phase Change Memory](res/bptree.pdf)
+
+[7] [Introduction of B+ Tree](https://www.geeksforgeeks.org/dbms/introduction-of-b-tree/)
+
+[8] [B+ Trees](https://www.tutorialspoint.com/data_structures_algorithms/b_plus_trees.htm)
+
+[9] [C++ Program to Implement B+ Tree](https://www.geeksforgeeks.org/cpp/cpp-program-to-implement-b-plus-tree/)
+
+[10] [B-Trees vs LSM Trees: Comparison and Trade-Offs](https://blog.bytebytego.com/p/b-trees-vs-lsm-trees-comparison-and?utm_source=publication-search)

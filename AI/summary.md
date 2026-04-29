@@ -4,6 +4,8 @@
 
 
 
+![ai_concepts](res/ai_concepts.jpg)
+
 ## Types
 
 ![type_of_ai](res/type_of_ai.png)
@@ -86,13 +88,35 @@
 
 ## Generative AI
 
-TODO
+![genai_summary](res/genai_summary.png)
 
 
 
 ## Agentic AI
 
 TODO
+
+
+
+## Other
+
+### Library/Tools
+
+![ai_tool_stack](res/ai_tool_stack.jpg)
+
+
+
+## Summary
+
+### AI Agent vs MCP vs RAG
+
+![agent_vs_mcp_vs_rag](res/agent_vs_mcp_vs_rag.jpg)
+
+An AI agent is a software program that can interact with its environment, gather data, and use that data to achieve predetermined goals. AI agents can choose the best actions to perform to meet those goals.
+
+Model Context Protocol (MCP) is an open standard that allows AI models (like Claude) to connect to databases, APIs, file systems, and other tools without needing custom code for each new integration.
+
+RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. The model stays frozen. No retraining. When a user asks a question, a retriever fetches relevant documents (PDFs, code, vector DBs), and those are injected into the prompt.
 
 
 
@@ -127,3 +151,11 @@ TODO
 [14] [What is LSTM - Long Short Term Memory?](https://www.geeksforgeeks.org/deep-learning/deep-learning-introduction-to-long-short-term-memory/)
 
 [15] [Autoencoders in Machine Learning](https://www.geeksforgeeks.org/machine-learning/auto-encoders/)
+
+[16] [EP129: The Ultimate Walkthrough of the Generative AI Landscape](https://blog.bytebytego.com/p/ep129-the-ultimate-walkthrough-of)
+
+[17] [EP167: Top 20 AI Concepts You Should Know](https://blog.bytebytego.com/p/ep167-top-20-ai-concepts-you-should)
+
+[18] [The Open Source AI Stack](https://blog.bytebytego.com/i/155048027/the-open-source-ai-stack)
+
+[19] [AI Agent versus MCP](https://blog.bytebytego.com/i/164838806/ai-agent-versus-mcp)

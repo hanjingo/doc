@@ -83,6 +83,29 @@ Here’s what makes Nginx so popular:
 
 
 
+## Linear's Multi-Region System
+
+### Architecture
+
+![linear_multi_region_system_arch](res/linear_multi_region_system_arch.png)
+
+The multi-region architecture Linear implemented follows four strict requirements that shaped every technical decision in the system:
+
+- Invisible to Users
+- Developer Simplicity
+- Feature Parity
+- Full Regional Isolation
+
+### Infrastructure as Code Transformation
+
+![linear_multi_region_system_terraform](res/linear_multi_region_system_terraform.png)
+
+### Request Routing Layer
+
+![linear_multi_region_system_proxy_evolution](res/linear_multi_region_system_proxy_evolution.png)
+
+
+
 ## Summary
 
 ### Proxy Vs Reverse Proxy
@@ -113,3 +136,5 @@ Here’s what makes Nginx so popular:
 [4] [Difference between Forward Proxy and Reverse Proxy](https://www.geeksforgeeks.org/system-design/difference-between-forward-proxy-and-reverse-proxy/)
 
 [5] [Why Is Nginx So Popular?](https://blog.bytebytego.com/p/ep194-evolution-of-http)
+
+[6] [How Linear Implemented Multi-Region Support For Customers](https://blog.bytebytego.com/p/how-linear-implemented-multi-region)

@@ -573,6 +573,14 @@ $$
 
 ![strategies_for_reliability_fault_tolerance](res/strategies_for_reliability_fault_tolerance.png)
 
+### Strategies For System Performance
+
+![strategies_for_system_performance](res/strategies_for_system_performance.png)
+
+### Strategies For System Availability
+
+![strategies_for_system_availability](res/strategies_for_system_availability.png)
+
 ### Horizontal vs Vertical Scaling
 
 | Horizontal Scaling                                           | Vertical Scaling                                           |
@@ -644,3 +652,7 @@ There are some good practice guidelines for dependable programming:
 [12] [Top Strategies to Improve Reliability in Distributed Systems](https://blog.bytebytego.com/p/top-strategies-to-improve-reliability)
 
 [13] [System Performance Metrics Every Engineer Should Know](https://blog.bytebytego.com/p/ep194-evolution-of-http)
+
+[14] [Must-Know System Performance Strategies](https://blog.bytebytego.com/p/must-know-system-performance-strategies)
+
+[15] [Top Strategies to Build High Availability Systems](https://blog.bytebytego.com/p/top-strategies-to-build-high-availability)

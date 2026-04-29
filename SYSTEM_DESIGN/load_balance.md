@@ -59,7 +59,7 @@ A load balancer receives incoming requests, checks server health, and routes eac
 
 ## Algorithms
 
-![load_balancing_algo](res/load_balancing_algo.png)
+![load_balancing_algo](res/load_balancing_algo.jpg)
 
 ### Static Load Balancing
 
@@ -70,11 +70,11 @@ Static load balancing assigns tasks to servers using predefined rules, without c
 
 #### Round Robin
 
-Round Robin is a simple static load balancing technique that distributes incoming requests to servers in a fixed sequential or rotational order.
+Round Robin is a simple static load-balancing technique that distributes incoming requests to servers in a fixed sequential or rotational order.
 
 #### Weighted Round Robin
 
-Weighted Round Robin is a static load balancing technique similar to Round Robin, but it distributes requests based on assigned weight values that represent each server's capacity.
+Weighted Round Robin is a static load-balancing technique similar to Round Robin, but it distributes requests based on assigned weight values that represent each server's capacity.
 
 #### Source IP Hash
 
@@ -130,20 +130,6 @@ Key Characteristics of Stateful Load Balancing include:
 - Consistency
 - Complexity
 
-### Stateless vs Stateful Load Balancing
-
-| Feature           | Stateless Load Balancing                                     | Stateful Load Balancing                                      |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Definition        | Distributes requests without maintaining any session information. | Maintains session information across multiple requests.      |
-| Session Handling  | Does not retain information about client sessions.           | Retains and manages client session information.              |
-| Load Distribution | Requests are distributed based on current load, without regard to previous interactions. | Requests are directed to the same server to maintain session continuity. |
-| Scalability       | Generally more scalable due to lack of session management overhead. | May have limitations due to the need to track session state. |
-| Fault Tolerance   | If a server fails, requests are redistributed without session loss. | Session loss can occur if a server fails and the session is not replicated. |
-| Implementation    | Easier to implement as there is no need for session tracking. | More complex due to the need for session persistence or replication. |
-| Use Cases         | Suitable for stateless applications, such as APIs or web services. | Ideal for applications requiring session persistence, like online shopping carts. |
-| Performance       | Typically faster due to lower overhead.                      | May incur performance overhead due to session management.    |
-| Consistency       | Each request is independent reducing the chance of state-related issues. | Ensures that all requests from a client are handled consistently. |
-
 
 
 ## Summary
@@ -172,6 +158,20 @@ Key Characteristics of Stateful Load Balancing include:
 | **API Gateway**     | Manage APIs, auth, rate limiting    | L7        | Kong, Apigee       |
 | **CDN**             | Cache static content geographically | Edge      | Cloudflare, Akamai |
 | **DNS Round Robin** | Distribute at domain level          | DNS       | Route 53           |
+
+### Stateless vs Stateful Load Balancing
+
+| Feature           | Stateless Load Balancing                                     | Stateful Load Balancing                                      |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Definition        | Distributes requests without maintaining any session information. | Maintains session information across multiple requests.      |
+| Session Handling  | Does not retain information about client sessions.           | Retains and manages client session information.              |
+| Load Distribution | Requests are distributed based on current load, without regard to previous interactions. | Requests are directed to the same server to maintain session continuity. |
+| Scalability       | Generally more scalable due to lack of session management overhead. | May have limitations due to the need to track session state. |
+| Fault Tolerance   | If a server fails, requests are redistributed without session loss. | Session loss can occur if a server fails and the session is not replicated. |
+| Implementation    | Easier to implement as there is no need for session tracking. | More complex due to the need for session persistence or replication. |
+| Use Cases         | Suitable for stateless applications, such as APIs or web services. | Ideal for applications requiring session persistence, like online shopping carts. |
+| Performance       | Typically faster due to lower overhead.                      | May incur performance overhead due to session management.    |
+| Consistency       | Each request is independent reducing the chance of state-related issues. | Ensures that all requests from a client are handled consistently. |
 
 
 

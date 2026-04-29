@@ -40,6 +40,10 @@ WebSocket keeps the connection open, allowing for real-time, two-way communicati
 
 ### UDP
 
+![udp_usage](res/udp_usage.png)
+
+Features:
+
 - Does not establish a connection before sending data.
 - No error recovery, flow control, or reliability mechanisms.
 - Faster than TCP due to minimal overhead.
@@ -196,3 +200,5 @@ The differences between Synchronous and Asynchronous Communication:
 [3] [Types of Network Protocols and Their Uses](https://www.geeksforgeeks.org/computer-networks/types-of-network-protocols-and-their-uses/)
 
 [4] [How NAT Works](https://blog.bytebytego.com/p/ep200-http2-over-tcp-vs-http3-over)
+
+[5] [Top 4 Most Popular Use Cases for UDP](https://blog.bytebytego.com/i/140533892/top-4-most-popular-use-cases-for-udp)

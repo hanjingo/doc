@@ -365,6 +365,8 @@ The overlays driver is the user's responsibility. The operating system does not 
 
 ### Paging vs Segmentation
 
+![paging_vs_segmentation](res/paging_vs_segmentation.png)
+
 |         **Feature**         |          Paging           |          Segmentation           |
 | :-------------------------: | :-----------------------: | :-----------------------------: |
 |      **Division Unit**      |     Fixed-size pages      |     Variable-size segments      |
@@ -419,3 +421,5 @@ The overlays driver is the user's responsibility. The operating system does not 
 [16] [Overlays in Memory Management](https://www.geeksforgeeks.org/operating-systems/overlays-in-memory-management/)
 
 [17] [Paging vs. Segmentation](https://www.geeksforgeeks.org/operating-systems/difference-between-paging-and-segmentation/)
+
+[18] [What are the differences between paging and segmentation?](https://blog.bytebytego.com/i/150395317/what-are-the-differences-between-paging-and-segmentation)

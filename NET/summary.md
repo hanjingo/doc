@@ -130,9 +130,21 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 
 ## Protocol
 
-![protocol_dependencies](res/protocol_dependencies.jpg)
+![protocol_dependencies](res/protocol_dependencies.png)
 
 A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or other event.
+
+
+
+## Summary
+
+### TCP vs UDP
+
+![tcp_vs_udp](res/tcp_vs_udp.png)
+
+TCP: Connection-oriented and reliable. It ensures ordered, duplicate-free delivery with flow and congestion control, making it ideal for web browsing, email, and file transfers.
+
+UDP: Connectionless and lightweight. It sends packets without guarantees of delivery or order, but with minimal overhead. It is perfect for gaming, streaming, and real-time communication.
 
 
 
@@ -143,3 +155,5 @@ A protocol defines the format and the order of messages exchanged between two or
 [2] [EP158: How to Learn API Development](https://blog.bytebytego.com/p/ep158-how-to-learn-api-development)
 
 [3] [8 Popular Network Protocols](https://blog.bytebytego.com/p/ep195-common-network-protocols-every)
+
+[4] [TCP vs UDP](https://blog.bytebytego.com/i/175237895/tcp-vs-udp)
