@@ -6,14 +6,6 @@ English | [中文版](big_o_notation_zh.md)
 
 
 
-![big_o_notation](res/big_o_notation.png)
-
-## Terminology
-
-- `time complexity` time complexity
-
-
-
 ## Definition
 
 If there exist any positive constants c and $N_0$ such that when $N \geq N_0$, $T(N) \leq cF(N)$, then we can denote the complexity of T(N) as $O(F(N))^3$.
@@ -37,6 +29,8 @@ If there exist any positive constants c and $N_0$ such that when $N \geq N_0$, $
 **Rule 3** For any constant $k$, $log^kN = O(N)$. This tells us that logarithmic growth is very slow.
 
 Common function orders:
+
+![big_o_notation](res/big_o_notation.png)
 
 | Symbol      | Name     |
 | ----------- | -------- |

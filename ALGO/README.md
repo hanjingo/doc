@@ -2,7 +2,8 @@
 
 # Algorithm
 
-- [Balance Tree](balance_tree.md)
+- [AVL Tree](avl_tree.md)
+- [B-Tree](b_tree.md)
 - [Big O Notation](big_o_notation.md)
 - [Binary Tree](binary_tree.md)
 - [Bloom Filter](bloom_filter.md)

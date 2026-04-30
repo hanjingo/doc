@@ -17,7 +17,7 @@
 
 ## [算法](ALGO/README_zh.md)
 
-- [平衡树](ALGO/balance_tree_zh.md)
+- [B树](ALGO/b_tree_zh.md)
 - [大O计数法](ALGO/big_o_notation_zh.md)
 - [二叉树](ALGO/binary_tree_zh.md)
 - [二叉树](ALGO/binary_tree_zh.md)

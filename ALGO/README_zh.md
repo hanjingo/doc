@@ -4,7 +4,7 @@
 
 # 算法
 
-- [平衡树](balance_tree_zh.md)
+- [B树](b_tree_zh.md)
 - [大O计数法](big_o_notation_zh.md)
 - [二叉树](binary_tree_zh.md)
 - [二叉树](binary_tree_zh.md)

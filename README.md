@@ -21,7 +21,8 @@
 
 ## [Algorithm](ALGO/README.md)
 
-- [Balance Tree](ALGO/balance_tree.md)
+- [AVL Tree](ALGO/avl_tree.md)
+- [B-Tree](ALGO/b_tree.md)
 - [Big O Notation](ALGO/big_o_notation.md)
 - [Binary Tree](ALGO/binary_tree.md)
 - [Complexity Analysis](ALGO/complexity_analysis.md)

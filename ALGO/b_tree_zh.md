@@ -1,4 +1,4 @@
-[English](balance_tree.md) | 中文版
+[English](b_tree.md) | 中文版
 
 # 平衡树
 
@@ -239,14 +239,6 @@ TODO
 | 区间查询  | 不支持               | 支持 |
 | 键值长度  | 无法改变键值最大长度 |      |
 | `I/O`操作 |                      |      |
-
-
-
-## 展望未来
-
-### Bp-Tree
-
-TODO
 
 
 

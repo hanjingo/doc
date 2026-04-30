@@ -1,5 +1,3 @@
-English | [中文版](tree_zh.md)
-
 # Tree
 
 [TOC]
@@ -44,8 +42,18 @@ In an `inorder traversal`, the general strategy is to process the left subtree f
 
 In a `level-order traversal`, all nodes at depth $d$ are processed before any node at depth $d + 1$.
 
+### DFS (Depth-First Search)
+
+#### In-Order
+
+#### Pre-Order
+
+#### Post-Order
+
+### BFS (Breadth-First Search)
+
 
 
 ## Reference
 
-[1] Mark Allen Weiss.Data Structures and Algorithm Analysis in C++.4ED
+[1] Mark Allen Weiss.Data Structures and Algorithm Analysis in C++. 4ED
