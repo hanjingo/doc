@@ -77,13 +77,13 @@ Below are some typical greedy algorithms problems:
 - Huffman coding;
 - Dijkstra's algorithm.
 
-### Greedy Algorithm VS Dynamic Programming
+### Greedy Algorithm vs Dynamic Programming
 
 ![greedy_algo_vs_dynamic_program](res/greedy_algo_vs_dynamic_program.png)
 
 Greedy algorithms and dynamic programming are both commonly used to solve optimization problems. They share some similarities, such as relying on the optimal substructure property, but they work differently:
 
-- Dynamic programming consider all previous decisions when making the current decision, and uses solutions to past subproblems to construct the solution to the current subproblem;
+- Dynamic programming considers all previous decisions when making the current decision, and uses solutions to past subproblems to construct the solution to the current subproblem.
 - Greedy algorithms do not consider past decisions, but instead make greedy choices moving forward, continually reducing the problem size until the problem is solved.
 
 

@@ -490,7 +490,10 @@ private:
 
 ## References
 
-- [Wikipedia - Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
-- [Baidu Baike - Heap](https://baike.baidu.com/item/%E5%A0%86/20606834?fr=aladdin)
-- [Heap in Data Structures](https://blog.csdn.net/qq_34270874/article/details/113091364)
-- [Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 3ED]
+[1] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++. 3ED
+
+[2] [Wikipedia - Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
+
+[3] [Baidu Baike - Heap](https://baike.baidu.com/item/%E5%A0%86/20606834?fr=aladdin)
+
+[4] [Heap in Data Structures](https://blog.csdn.net/qq_34270874/article/details/113091364)

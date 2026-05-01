@@ -4,19 +4,15 @@ English | [中文版](bloom_filter_zh.md)
 
 [TOC]
 
-To determine whether an element is in a set, one generally thinks of saving all elements and then confirming by comparison. Data structures like linked lists, trees, and hash tables follow this approach. These data structures show disadvantages when faced with particularly large amounts of data:
 
-- High storage capacity ratio; considering the load factor, usually the space cannot be completely filled
-- When the data volume is particularly large, it will consume a lot of memory space. If you store keys like URLs, the memory consumption is too severe
-- If using hashmap, once the existing elements exceed half of the total capacity, expansion generally needs to be considered, because as the number of elements increases, hash collisions will increase, reducing to the efficiency of linked list storage
 
-The Bloom filter is a compact and ingenious probabilistic data structure proposed by Burton Howard Bloom in 1970. Its characteristics are efficient insertion and query, and it can tell you "a certain thing must not exist or may exist". It uses multiple hash functions to map data to a bitmap structure. This method not only improves query efficiency but also saves a lot of memory space. Bloom filters are generally used in scenarios with particularly large amounts of data.
+A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element is a member of a set. It is used where we just need to know whether the element belongs to the object or not. A bloom filter uses k hash functions and an array of n bits, where an array bit set to 0 means the element doesn't exist, and 1 indicates that the element is present.
 
 ## Principle
 
-The principle of the Bloom filter is that when an element is added to a set, K hash functions map this element to K points in a bit array, and set them to 1. During retrieval, we only need to check whether these points are all 1s to (roughly) know whether the element is in the set or not: if any of these points is 0, the element being checked is definitely not present; if all are 1, the element being checked is likely present. This is the basic idea of Bloom filter. So a Bloom filter may produce false positives, but not false negatives.
+The principle of the Bloom filter is that when an element is added to a set, K hash functions map this element to K points in a bit array, and set them to 1. During retrieval, we only need to check whether these points are all 1s to (roughly) know whether the element is in the set or not: if any of these points is 0, the element being checked is definitely not present; if all are 1, the element being checked is likely present. This is the basic idea of a Bloom filter. So a Bloom filter may produce false positives, but not false negatives.
 
-Why does Bloom filter need to use multiple hash functions?
+Why does a Bloom filter need to use multiple hash functions?
 
 - The problem hash faces is collision. Assuming the hash function is good, if our bit array length is m points, then if we want to reduce the collision rate to, for example, 1%, this hash table can only accommodate m/100 elements
 - The solution is relatively simple: use a Bloom filter with K > 1, that is, K functions map each element to K bits, because the false positive rate will be reduced significantly, and if parameters k and m are chosen well, approximately half of m will be set to 1
@@ -41,19 +37,19 @@ Bloom filter query principle:
 
 For example, suppose our Bloom filter has three hash functions named hash1, hash2, and hash3:
 
-1. For the element "baidu", we call three hash functions to map it to three positions in the bit vector (1, 4, 7 respectively), and set the corresponding positions to 1
+1. For the element "baidu", we call three hash functions to map it to three positions in the bit vector (1, 4, 7, respectively), and set the corresponding positions to 1
 
    ![bloom_filter_exampl1](res/bloom_filter_exampl1.png)
 
-2. Now for the element "tencent", we also call three hash functions to map it to three positions in the bit vector (3, 4, 8 respectively), and set the corresponding positions to 1
+2. Now, for the element "tencent", we also call three hash functions to map it to three positions in the bit vector (3, 4, 8, respectively), and set the corresponding positions to 1
 
    ![bloom_filter_exampl2](res/bloom_filter_exampl2.png)
 
-3. The positions 1, 3, 4, 7, 8 of the entire bit vector are now set to 1. The index 4 is overwritten because both "baidu" and "tencent" set it to 1. The overlapped index is related to the false positive rate.
+3. Positions 1, 3, 4, 7, and 8 of the entire bit vector are now set to 1. The index 4 is overwritten because both "baidu" and "tencent" set it to 1. The overlapped index is related to the false positive rate.
 
 4. Query an element that does not exist and confirm that it definitely does not exist: for example, suppose we query the element "dongshao", and calling the above three hash functions returns indexes 1, 5, 8. From the above figure, we know that the index 5 is 0, so the element "dongshao" definitely does not exist, because if it did exist, that position 5 should have been set to 1.
 
-5. Query the element "baidu", but cannot determine with certainty that it exists: we pass "baidu" into the above three hash functions, the hash returns the corresponding index values 1, 4, 7. We find that the indexes 1, 4, 7 are all 1, so we determine that the element "baidu" may exist.
+5. Query the element "baidu", but cannot determine with certainty that it exists: we pass "baidu" into the above three hash functions, the hash returns the corresponding index values 1, 4, 7. We find that the indices 1, 4, and 7 are all 1, so we determine that the element "baidu" may exist.
 
 ### Deletion
 
@@ -65,20 +61,20 @@ We generally cannot delete elements from a Bloom filter. Consider the following 
 
 - Also, counter wraparound can cause problems.
 
-- If we delete a bit position corresponding to an element by setting it to 0, then if these bit positions are also being used by other elements, those other elements will return 0 when querying, thus thinking the element does not exist and causing false negatives.
+- If we delete a bit position corresponding to an element by setting it to 0, then if these bit positions are also being used by other elements, those other elements will return 0 when querying, thus thinking the element does not exist, and causing false negatives.
 
 
 
 ## False Positive Rate
 
-Bloom filters allow a certain degree of false judgments. The false positive rate is also called "false positive"
+Bloom filters allow a certain degree of false judgments. The false positive rate is also called "false positive."
 
-The false positive rate generally occurs during query
+The false positive rate generally occurs during the query
 
 For example, when we query "baidu" above, since "baidu" was previously inserted, why can't we be 100% certain that it definitely exists?
 
 - Because when the element "tencent" was inserted, it set index 4 to 1
-- Suppose when we query "baidu", the actual return is that indexes 1, 7 are 1, and index 4 is 0. But index 4 was overwritten by tencent to 1, so finally "baidu" sees indexes 1, 4, 7 are all 1, and we cannot be 100% certain that the element "baidu" exists
+- Suppose when we query "baidu", the actual return is that indexes 1, 7 are 1, and index 4 is 0. But index 4 was overwritten by Tencent to 1, so finally "baidu" sees indexes 1, 4, 7 are all 1, and we cannot be 100% certain that the element "baidu" exists
 
 Therefore, as more and more values are added, the number of bits in the bit vector that are set to 1 increases, thus the false positive rate becomes larger. For example, when querying "taobao", if all hash functions happen to return corresponding bits that are all 1, then the Bloom filter may also think the element "taobao" exists.
 
@@ -130,6 +126,8 @@ From the above formula, it can be seen that when m increases or n decreases, the
 
 ## Summary
 
+### Advantages and Disadvantages
+
 Advantages:
 
 - The time complexity of adding and querying elements is O(K), (K is the number of hash functions, generally quite small), independent of the data size.
@@ -145,6 +143,17 @@ Disadvantages:
 - Cannot retrieve the element itself.
 - Generally does not provide deletion operations.
 
+### Bloom Filter vs Hash Table
+
+|                         Hash Tables                          |                        Bloom Filters                         |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| In hash table the object gets stored to the bucket(index position in the hashtable) the hash function maps to. | Bloom filters doesn't store the associated object. It just tells whether it is there in the bloom filter or not. |
+|            Hash tables are less space efficient.             | Bloom filters are more space efficient. it's size is even the less than the associated object which it is mapping. |
+|                     Supports deletions.                      |  It is not possible to delete elements from bloom filters.   |
+|              Hashtables give accurate results.               | Bloom filters have small false positive probability. ( False positive means it might be in bloom filter but actually it is not.) |
+| In a hashtable either we should implement multiple hash functions or have a strong hash function to minimize collisions. | A bloom filter uses many hash functions. There is no need to handle collisions. |
+| Hashtables are used in compiler operations, programming languages(hash table based data structures),password verification, etc. | Bloom filters find application in network routers, in web browsers(to detect the malicious urls), in password checkers(to not a set a weak or guessable or list of forbidden passwords), etc. |
+
 ### Application Scenarios
 
 - Scenarios where absolute accuracy is not required
@@ -155,6 +164,8 @@ Disadvantages:
 
   On the client, look up a user's ID against the server's, adding a Bloom filter layer to improve lookup efficiency.
 
+
+
 ## References
 
 [1] [Wikipedia - Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter)
@@ -162,4 +173,6 @@ Disadvantages:
 [2] [C++ Data Structures and Algorithms: Bloom Filter (Bloom Filter) Principles and Implementation](https://zhuanlan.zhihu.com/p/557308262)
 
 [3] [C++ BloomFilter——Bloom Filter](https://cloud.tencent.com/developer/article/2341670)
+
+[4] [Difference between Bloom filters and Hashtable](https://www.geeksforgeeks.org/dsa/difference-between-bloom-filters-and-hashtable/)
 

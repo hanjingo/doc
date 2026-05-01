@@ -30,7 +30,6 @@
 - [LRU算法](ALGO/lru_zh.md)
 - [链表](ALGO/link_list_zh.md)
 - [最小生成树](ALGO/minimum_spanning_tree_zh.md)
-- [MurmurHash算法](ALGO/murmur_hash_zh.md)
 - [队列](ALGO/queue_zh.md)
 - [红黑树](ALGO/rb_tree_zh.md)
 - [最短路径算法](ALGO/shortest_path_problem_zh.md)

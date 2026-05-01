@@ -208,6 +208,16 @@ TODO
 
 
 
+## Challenges
+
+### Cache Miss Attack
+
+![cache_miss_attack](res/cache_miss_attack.jpg)
+
+`Cache Miss Attack`: It refers to the scenario where data to fetch doesn't exist in the database and the data isn’t cached either. So every request hits the database eventually, defeating the purpose of using a cache. If a malicious user initiates lots of queries with such keys, the database can easily be overloaded.
+
+
+
 ## References
 
 [1] [How to Design Game Database for 200,000 Concurrent Users](https://cloud.tencent.com/developer/article/1071145)
@@ -237,4 +247,6 @@ TODO
 [13] [Cache Eviction Policies | System Design](https://www.geeksforgeeks.org/system-design/cache-eviction-policies-system-design/)
 
 [14] [Distributed Caching: The Secret to High-Performance Applications](https://blog.bytebytego.com/p/distributed-caching-the-secret-to)
+
+[15] [Cache miss attack](https://blog.bytebytego.com/p/cache-miss-attack?utm_source=publication-search)
 

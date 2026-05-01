@@ -1,16 +1,70 @@
 [中文版](minimum_spanning_tree_zh.md) | English
 
-# Mimimum Spanning Tree
+# Minimum Spanning Tree
 
 [TOC]
 
 
 
-Informally, a minimum spanning tree of an undirected graph G is a tree formed from graph edges that connects all the vertices of G at lowest total cost. A minimum spanning tree exists if and only if G is connected.
+Informally, a minimum spanning tree of an undirected graph G is a tree formed from graph edges that connects all the vertices of G at the lowest total cost. A minimum spanning tree exists if and only if G is connected.
 
 ![minimum_spanning_tree](res/minimum_spanning_tree.png)
 
 *graph G and it's mimimum spanning trees*
+
+## Prim's Algorithm
+
+Prim’s algorithm is a Greedy algorithm like Kruskal's algorithm. This algorithm always starts with a single node and moves through several adjacent nodes, in order to explore all of the connected edges along the way.
+
+### Implement
+
+Algorithm:
+
+1. The algorithm starts with an empty spanning tree.
+2. The idea is to maintain two sets of vertices. The first set contains the vertices already included in the MST, and the other set contains the vertices not yet included.
+3. At every step, it considers all the edges that connect the two sets and picks the minimum-weight edge from these edges. After picking the edge, it moves the other endpoint of the edge to the set containing the MST. 
+
+Example:
+
+![prim_algo1](res/prim_algo1.png)
+
+![prim_algo2](res/prim_algo2.png)
+
+![prim_algo3](res/prim_algo3.png)
+
+![prim_algo4](res/prim_algo4.png)
+
+![prim_algo5](res/prim_algo5.png)
+
+![prim_algo6](res/prim_algo6.png)
+
+![prim_algo7](res/prim_algo7.png)
+
+![prim_algo8](res/prim_algo8.png)
+
+![prim_algo9](res/prim_algo9.png)
+
+![prim_algo10](res/prim_algo10.png)
+
+![prim_algo11](res/prim_algo11.png)
+
+![prim_algo12](res/prim_algo12.png)
+
+
+
+
+
+## Reference
+
+[1] [Prim’s Algorithm for Minimum Spanning Tree (MST)](https://www.geeksforgeeks.org/dsa/prims-minimum-spanning-tree-mst-greedy-algo-5/)
+
+
+
+---
+
+
+
+
 
 
 

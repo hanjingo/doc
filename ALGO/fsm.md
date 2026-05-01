@@ -182,15 +182,18 @@ TODO
 
 ## References
 
-### External Links
+[1] [Wikipedia - Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
 
-- [Wikipedia - Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
-- [Wikipedia - Automaton programming](https://en.wikipedia.org/wiki/Automaton_(programming))
-- [Wikipedia - State transition table](https://en.wikipedia.org/wiki/State_transition_table)
-- [Understanding Finite State Machines](https://zhuanlan.zhihu.com/p/46347732)
-- [Algorithm: Finite State Machine FSM](https://www.cnblogs.com/bandaoyu/p/14624895.html)
-- [State Pattern](https://gpp.tkchu.me/state.html)
-- [6.3 Verilog FSM](https://www.runoob.com/w3cnote/verilog-fsm.html)
-- [A Method for Expressing Machine Tool Control Processes with FSM](http://www.doczj.com/doc/0447414dde80d4d8d15a4f62.html)
+[2] [Wikipedia - Automaton programming](https://en.wikipedia.org/wiki/Automaton_(programming))
 
-### References
+[3] [Wikipedia - State transition table](https://en.wikipedia.org/wiki/State_transition_table)
+
+[4] [Understanding Finite State Machines](https://zhuanlan.zhihu.com/p/46347732)
+
+[5] [Algorithm: Finite State Machine FSM](https://www.cnblogs.com/bandaoyu/p/14624895.html)
+
+[6] [State Pattern](https://gpp.tkchu.me/state.html)
+
+[7] [6.3 Verilog FSM](https://www.runoob.com/w3cnote/verilog-fsm.html)
+
+[8] [A Method for Expressing Machine Tool Control Processes with FSM](http://www.doczj.com/doc/0447414dde80d4d8d15a4f62.html)

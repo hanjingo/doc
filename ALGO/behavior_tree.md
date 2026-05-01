@@ -1,3 +1,0 @@
-# Behavior Trees
-
-TODO

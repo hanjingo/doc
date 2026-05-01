@@ -48,6 +48,8 @@ $$
 
 ![22_3](res/22_3.png)
 
+**Breadth-first search** is one of the simplest algorithms fro searching a graph and the archetype for many important graph algorithms.
+
 **Analysis**
 
 The breadth-first search runs in time linear in the size of the adjacency-list representation of $G$.
@@ -66,11 +68,15 @@ The breadth-first search runs in time linear in the size of the adjacency-list r
 
 **Breadth-first trees**
 
+For a graph $G = (V, E)$ with source $s$, we define the **predecessor subgraph** of $G$ as $G_{\pi} = (V_{\pi}, E_{\pi})$, where: $V_{\pi} = \{ v \in V : v.\pi \neq NIL \} \cup \{s\}$ and $E_{\pi} = \{(v.\pi, v) : v \in V_{\pi} - \{s\}\}$. The Predecessor subgraph $G_{\pi}$ is a **breadth-first tree** if $V_{\pi}$ consists of the vertices reachable from $s$ and for all $v \in V_{\pi}$, the subgraph $G_{\pi}$ contains a unique, simple path from $s$ to $v$ that is also the shortest path from $s$ to $v$ in $G$. A breadth-first tree is in fact a tree, since it is connected and $|E_{\pi}| = |V_{\pi}| - 1$. We call the edges in $E_{\pi}$ **tree edges**.
+
 **Lemma 22.6** When applied to a directed or undirected graph $G = (V, E)$, procedure BFS constructs $\pi$ so that the predecessor subgraph $G_{\pi} = (V_{\pi}, E_{\pi})$ is a breadth-first tree.
 
 
 
 ## Depth-first search
+
+We define the **predecessor subgraph** of a depth-first search slightly differently from that of a breadth-first search: we let $G_{\pi} = (V, E_{\pi})$, where $E_{\pi} = \{(v.\pi, v):v \in V \text{ and } v.\pi \neq NIL\}$. The predecessor subgraph of a depth-first search forms a **depth-first forest** comprising several **depth-first trees**. The edges in $E_{\pi}$ are **tree edges**.
 
 Example:
 $$
@@ -144,6 +150,8 @@ We can define four edge types in terms of the depth-first forest $G_{\pi}$ produ
 
 
 ## Topological sort
+
+A **topological sort** of a dagger $G = (V, E)$ is a linear ordering of all its vertices such that if $G$ contains an edge $(u, v)$, then $u$ appears before $v$ in the ordering.
 
 ![22_7](res/22_7.png)
 

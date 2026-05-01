@@ -38,7 +38,7 @@ void BFS(Graph& G, Vertex s) {
 }
 ```
 
-Include diagrams (repository `res/`) to illustrate layered exploration.
+---
 
 
 
@@ -50,13 +50,13 @@ Dijkstra's algorithm computes shortest paths from a single source in graphs with
 
 Correctness relies on the nonnegativity of edge weights (once the smallest tentative distance vertex is selected, its distance is final).
 
-### Element
+### Math Fundamentals
 
-**THEOREM** Dijkstra's algorithm finds the length of a shortest path between two vertices in a connected simple undirected weighted graph.
+**Theorem** Dijkstra's algorithm finds the length of the shortest path between two vertices in a connected simple undirected weighted graph.
 
-**THEOREM** Dijkstra's algorithm uses $O(n^2)$ operations (additions and comparisons) to find the length of a shortest path between two vertices in a connected simple undirected weighted graph with $n$ vertices.
+**Theorem** Dijkstra's algorithm uses $O(n^2)$ operations (additions and comparisons) to find the length of the shortest path between two vertices in a connected, simple undirected weighted graph with $n$ vertices.
 
-**THEOREM (Correctness of Dijkstra's algorithm)** Dijkstra's algorithm, run on a weighted, directed graph $G = (V, E)$ with non-negative weight function $w$ and source $s$, terminates with $u.d = \delta(s, u)$ for all vertices $u \in V$.
+**Theorem (Correctness of Dijkstra's algorithm)** Dijkstra's algorithm, run on a weighted, directed graph $G = (V, E)$ with a non-negative weight function $w$ and source $s$, terminates with $u.d = \delta(s, u)$ for all vertices $u \in V$.
 
 ### Implement
 
@@ -86,7 +86,9 @@ void Dijkstra(Graph& G, Vertex s) {
 
 Complexity:
 - Using a binary heap (priority_queue): $O((V + E) \log V)$ which is commonly written as $O(E \log V)$.
-- With a Fibonacci heap: $O(E + V \log V)$ (rarely used in practice due to complexity of implementation).
+- With a Fibonacci heap: $O(E + V \log V)$ (rarely used in practice due to the complexity of implementation).
+
+---
 
 
 
@@ -102,11 +104,15 @@ Algorithm sketch:
 
 Complexity: O(V * E) time, O(V) space.
 
+---
+
 
 
 ## A* Search
 
-A* is used to find shortest paths when a heuristic estimate h(v) approximating the remaining distance to the target is available. A* expands nodes in order of f(v) = g(v) + h(v) where g(v) is the distance from the start to v. If h is admissible (never overestimates), A* is guaranteed to find an optimal path.
+![astar_progress_animation](res/astar_progress_animation.gif)
+
+A* is used to find shortest paths when a heuristic estimate h(v) approximating the remaining distance to the target is available. A* expands nodes in order of f(v) = g(v) + h(v), where g(v) is the distance from the start to v. If h is admissible (never overestimates), A* is guaranteed to find an optimal path.
 
 Common uses: pathfinding on grids or maps where a heuristic (Euclidean or Manhattan distance) significantly reduces the search space.
 
@@ -134,12 +140,16 @@ void AStar(Graph& G, Vertex s, Vertex goal, function<Dist(Vertex)> h) {
 }
 ```
 
+---
+
 
 
 ## All-pairs shortest paths
 
 - Floyd–Warshall: $O(V^3)$ dynamic programming algorithm that computes shortest paths between all pairs; supports negative weights (but no negative cycles). Useful for dense graphs or when V is small.
 - Repeated Dijkstra: run Dijkstra from every source; O(V * (E log V)) total time.
+
+---
 
 
 
@@ -151,10 +161,11 @@ void AStar(Graph& G, Vertex s, Vertex goal, function<Dist(Vertex)> h) {
 - Use A* when you have a good admissible heuristic and a specific target; it can dramatically reduce explored nodes.
 - Watch out for implementation details: use adjacency lists for sparse graphs, and avoid expensive decrease-key operations by pushing duplicates into the heap and skipping visited entries when popped.
 
+---
+
 
 
 ## References
 
 1. Cormen, Leiserson, Rivest, and Stein. Introduction to Algorithms (CLRS).
 2. Mark Allen Weiss. Data Structures and Algorithm Analysis in C++.
-3. Amit Patel. "A"). (See: https://www.redblobgames.com for excellent pathfinding visualizations and explanations.)

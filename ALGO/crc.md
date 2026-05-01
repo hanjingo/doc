@@ -4,7 +4,9 @@ English | [中文版](crc_zh.md)
 
 [TOC]
 
-CRC (Cyclic Redundancy Check) is a method used to verify the accuracy of digital transmission on communication links (by establishing a relationship between data bits and check bits through certain mathematical operations).
+
+
+`CRC (Cyclic Redundancy Check)` is a method used to verify the accuracy of digital transmission on communication links (by establishing a relationship between data bits and check bits through certain mathematical operations).
 
 
 ## Definition
@@ -15,17 +17,16 @@ For CRC standard divisors, polynomials (or binomials) are generally used; as sho
 
 ![crc_poly](res/crc_poly.png)
 
-**Note:**
-
-- The polynomial used as the divisor can be chosen randomly or according to international standards, but the highest and lowest bits must both be "1".
+**Note:** The polynomial used as the divisor can be chosen randomly or according to international standards, but the highest and lowest bits must both be "1".
 
 ### Polynomial Short Notation
 
-With a basic understanding of CRC, the first and last bits of the polynomial must be 1, and the 1 at the front will always be 0 in the next calculation step, so it is omitted, resulting in a short notation. For example, the short notation for divisor 11011 is 1011. For the CRC_16 standard G(X) = X^16+X^15+X^2+1 (16#18005), the poly value is actually 8005, which uses the short notation.
+With a basic understanding of CRC, the first and last bits of the polynomial must be 1, and the 1 at the front will always be 0 in the next calculation step, so it is omitted, resulting in a short notation. For example, the short notation for the divisor 11011 is 1011. For the CRC_16 standard G(X) = X^16+X^15+X^2+1 (16#18005), the poly value is actually 8005, which uses the short notation.
 
 ### Data Width
 
 Data width refers to the length (number of bits) of the CRC check code. With the concept of CRC operation and polynomials, this is easy to understand. The CRC length is always one less than the divisor's bit length, which matches the length of the short notation.
+
 
 
 ## Principle
@@ -52,6 +53,7 @@ Define A = a1 xor a2 xor a3 xor a4. Upon careful observation, A's value is uniqu
 ![crc_check_tbl](res/crc_check_tbl.png)
 
 
+
 ## CRC Check
 
 ![crc_check_graph](res/crc_check_graph.jpeg)
@@ -66,6 +68,7 @@ Specifically, the CRC check principle involves the following steps:
 ### Check Order
 
 If, during communication, the lower bits of the data are received first, the direction of data movement is reversed (i.e., reverse check), and the order of the divisor polynomial must also be reversed.
+
 
 
 ## CRC Standards
@@ -83,10 +86,16 @@ If, during communication, the lower bits of the data are received first, the dir
 
 ## References
 
-- [CRC RevEng](https://reveng.sourceforge.io/crc-catalogue/all.htm)
-- [Detailed CRC (C code)](https://liht1634.blog.csdn.net/article/details/124328005?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7Ebaidujs_baidulandingword%7ECtr-1-124328005-blog-7882789.235%5Ev43%5Epc_blog_bottom_relevance_base2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7Ebaidujs_baidulandingword%7ECtr-1-124328005-blog-7882789.235%5Ev43%5Epc_blog_bottom_relevance_base2&utm_relevant_index=1)
-- [On-line CRC calculation and free library](https://www.lammertbies.nl/comm/info/crc-calculation)
-- [Detailed CRC algorithm and code implementation](https://cloud.tencent.com/developer/article/2063788)
-- [Detailed CRC table lookup method](https://blog.csdn.net/weixin_47409662/article/details/120098915)
-- [Introduction to CRC algorithm](https://blog.csdn.net/liyuanbhu/article/details/7882789)
-- [CRC-32](https://blog.csdn.net/qq_40019719/article/details/147627122)
+[1] [CRC RevEng](https://reveng.sourceforge.io/crc-catalogue/all.htm)
+
+[2] [Detailed CRC (C code)](https://liht1634.blog.csdn.net/article/details/124328005?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7Ebaidujs_baidulandingword%7ECtr-1-124328005-blog-7882789.235%5Ev43%5Epc_blog_bottom_relevance_base2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7Ebaidujs_baidulandingword%7ECtr-1-124328005-blog-7882789.235%5Ev43%5Epc_blog_bottom_relevance_base2&utm_relevant_index=1)
+
+[3] [On-line CRC calculation and free library](https://www.lammertbies.nl/comm/info/crc-calculation)
+
+[4] [Detailed CRC algorithm and code implementation](https://cloud.tencent.com/developer/article/2063788)
+
+[5] [Detailed CRC table lookup method](https://blog.csdn.net/weixin_47409662/article/details/120098915)
+
+[6] [Introduction to CRC algorithm](https://blog.csdn.net/liyuanbhu/article/details/7882789)
+
+[7] [CRC-32](https://blog.csdn.net/qq_40019719/article/details/147627122)
