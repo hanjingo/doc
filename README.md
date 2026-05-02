@@ -32,7 +32,6 @@
 - [Hash](ALGO/hash.md)
 - [Huffman Code](ALGO/huffman.md)
 - [Linked List](ALGO/link_list.md)
-- [Minimum Spanning Tree](ALGO/minimum_spanning_tree.md)
 - [Queue](ALGO/queue.md)
 - [Red Black Tree](ALGO/rb_tree.md)
 - [Recursion](ALGO/recursion.md)

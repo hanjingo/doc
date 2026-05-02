@@ -11,8 +11,8 @@
 - A **graph** $G = (V, E)$ consists of a set of vertices, $V$​, and a set of edges, E.
 - Each graph edge is a pair $(v, w)$, where $v, w \in V$. Edges are sometimes refered to as **arcs**.
 - Directed graphs are sometimes referred to as **digraphs**.
-- A **path** in a graph is sequence of vertices $w_1, w_2, w_3, ..., w_N$ such that $(w_i, w_{i+1}) \in E$ for $1 \leq i < N$.
-- A **cycle** in a direted graph is a path of length at least 1 such that $w_1 = w_N$.
+- A **path** in a graph is a sequence of vertices $w_1, w_2, w_3, ..., w_N$ such that $(w_i, w_{i+1}) \in E$ for $1 \leq i < N$.
+- A **cycle** in a directed graph is a path of length at least 1 such that $w_1 = w_N$.
 - A directed graph is **acyclic** if it has no cycles.
 - An undirected graph is **connected** if there is a path from every vertex to every other vertex.
 - A directed graph with this property is called **strongly connected**.

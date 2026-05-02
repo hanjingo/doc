@@ -15,7 +15,6 @@
 - [Hash](hash.md)
 - [Huffman Code](huffman.md)
 - [Linked List](link_list.md)
-- [Minimum Spanning Tree](minimum_spanning_tree.md)
 - [Queue](queue.md)
 - [Red Black Tree](rb_tree.md)
 - [Recursion](recursion.md)

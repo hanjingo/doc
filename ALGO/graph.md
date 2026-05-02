@@ -1,20 +1,142 @@
+English | [中文版](graph_zh.md)
+
 # Graph Algorithm
 
 [TOC]
 
 
 
-A Graph is composed of a set of vertices($V$) and a set of edges($E$). The vertices are connected to each other through edges.
+A Graph $G = (V, E)$ is composed of a set of vertices($V$) and a set of edges($E$). The vertices are connected to each other through edges.
+
+## Properties
+
+- Each graph edge is a pair $(v, w)$, where $v, w \in V$. Edges are sometimes refered to as **arcs**.
+- A directed graph is **acyclic** if it has no cycles.
+- A directed graph with this property is called **strongly connected**.
+- If a directed graph is not strongly connected, but the underlying graph (without direction to the arcs) is connected, then the graph is said to be **weakly connected**.
+- An undirected graph is **connected** if there is a path from every vertex to every other vertex.
+- A **path** in a graph is a sequence of vertices $w_1, w_2, w_3, ..., w_N$ such that $(w_i, w_{i+1}) \in E$ for $1 \leq i < N$.
+- A **cycle** in a directed graph is a path of length at least 1 such that $w_1 = w_N$.
+- A **complete graph** is a graph in which there is an edge between every pair of vertices.
+
+---
+
+
 
 ## Types
 
-![directed_undirected_graph](res/directed_undirected_graph.png)
+### Finite Graphs
 
-![weighted_unweighted_graph](res/weighted_unweighted_graph.png)
+![finite_graph](res/finite_graph.png)
 
-![cyclic_acyclic_graph](res/cyclic_acyclic_graph.png)
+A **finite graph** is a graph with a finite number of vertices and edges. In other words, both the number of vertices and the number of edges in a finite graph are limited and can be counted.
+
+### Infinite Graph
+
+![infinite_graph](res/infinite_graph.png)
+
+A graph is called an **infinite graph** if it has an infinite number of vertices and an infinite number of edges.
+
+### Trivial Graph
+
+![trivial_graph](res/trivial_graph.png)
+
+A finite graph is said to be **trivial** if it contains only one vertex and no edges. It is also known as a singleton graph or a single-vertex graph.
+
+### Simple Graph
+
+![simple_graph](res/simple_graph.png)
+
+A **simple graph** is a graph that does not contain more than one edge between any pair of vertices.
+
+### Multi Graph
+
+![multi_graph](res/multi_graph.png)
+
+Any graph that contains some parallel edges but doesn’t contain any self-loops is called a **multigraph**.
+
+### Null Graph
+
+![null_graph](res/null_graph.png)
+
+A graph of order n and size zero is a graph where there are only isolated vertices with no edges connecting any pair of vertices. A **null graph** is a graph with no edges.
+
+### Complete Graph
+
+![complete_graph](res/complete_graph.png)
+
+A simple graph with n vertices is called a **complete graph** if the degree of each vertex is n-1, that is, one vertex is attached with n-1 edges or the rest of the vertices in the graph. A complete graph is also called **Full Graph**. 
+
+### Directed Graph
+
+![directed_graph](res/directed_graph.png)
+
+*A* **directed graph** is a graph where the edges have a direction associated with them. Directed graphs are sometimes referred to as **digraphs**.
+
+### Undirected Graph
+
+![undirected_graph](res/undirected_graph.png)
+
+An **undirected graph** is a graph where edges do not have a specific direction, meaning connections go both ways. If two places are connected, you can travel in either direction.
+
+### Weighted Graph
+
+![weighted_graph](res/weighted_graph.png)
+
+A **weighted graph** is a graph where each edge has a number (weight) that represents distance, cost, or time. These graphs help find the shortest or cheapest paths.
+
+### Unweighted Graph
+
+![unweighted_graph](res/unweighted_graph.png)
+
+An **unweighted graph** is a graph where all edges are treated equally, with no extra values like distance or cost. It simply shows connections between points.
+
+### Pseudo Graph
+
+![pseudo_graph](res/pseudo_graph.png)
+
+A **pseudograph** is a type of graph that allows for the existence of self-loops (edges that connect a vertex to itself) and multiple edges (more than one edge connecting two vertices).
+
+### Regular Graph
+
+![regular_graph](res/regular_graph.png)
+
+A **regular graph** is a type of undirected graph in which every vertex has the same number of edges (or neighbors). In other words, all vertices in a regular graph have the same degree.
+
+### Sparse Graph
+
+![sparse_graph](res/sparse_graph.png)
+
+A **sparse graph** is a type of graph with relatively few edges compared to the number of vertices.
+
+### Dense Graph
+
+![dense_graph](res/dense_graph.png)
+
+A **dense graph** is a type of graph with many edges compared to the number of vertices.
+
+### Cyclic Graph
+
+![cyclic_graph](res/cyclic_graph.png)
+
+A graph G consisting of n vertices and n> = 3 that is V1, V2, V3... Vn and edges (V1, V2), (V2, V3), (V3, V4)... (Vn, V1) are called **cyclic graph**. 
+
+### Connected Graph
 
 ![connected_disconnected_graph](res/connected_disconnected_graph.png)
+
+Graph is said to be **connected** if there exists at least one path between each and every pair of vertices in graph G, otherwise, it is **disconnected**.
+
+### Biconnected Graph
+
+![biconnected_graph](res/biconnected_graph.png)
+
+A graph is said to be **Biconnected** if: 
+
+1. It is connected, i.e. it is possible to reach every vertex from every other vertex, by a simple path. 
+2. Even after removing any vertex the graph remains connected.
+
+---
 
 
 
@@ -35,6 +157,8 @@ For each $edge(u, v)$, we set $A[u][v]$ to true; otherwise, the entry in the arr
 ![adjacency_list_directed_graph](res/adjacency_list_directed_graph.png)
 
 For each vertex, we keep a list of all adjacent vertices. The space requirement is then $O(|E| + |V|)$, which is linear in the size of the graph.
+
+---
 
 
 
@@ -143,6 +267,8 @@ For the adjacency-list implementation above, each reachable vertex is enqueued a
 For a graph $G = (V, E)$ with source $s$, we define the **predecessor subgraph** of $G$ as $G_{\pi} = (V_{\pi}, E_{\pi})$, where: $V_{\pi} = \{ v \in V : v.\pi \neq NIL \} \cup \{s\}$ and $E_{\pi} = \{(v.\pi, v) : v \in V_{\pi} - \{s\}\}$. The Predecessor subgraph $G_{\pi}$ is a **breadth-first tree** if $V_{\pi}$ consists of the vertices reachable from $s$ and for all $v \in V_{\pi}$, the subgraph $G_{\pi}$ contains a unique, simple path from $s$ to $v$ that is also the shortest path from $s$ to $v$ in $G$. A breadth-first tree is in fact a tree, since it is connected and $|E_{\pi}| = |V_{\pi}| - 1$. We call the edges in $E_{\pi}$ **tree edges**.
 
 **Lemma** When applied to a directed or undirected graph $G = (V, E)$, procedure BFS constructs $\pi$ so that the predecessor subgraph $G_{\pi} = (V_{\pi}, E_{\pi})$ is a breadth-first tree.
+
+---
 
 
 
@@ -280,11 +406,13 @@ We can define four edge types in terms of the depth-first forest $G_{\pi}$ produ
 
 **Theorem** In a depth-first search of an undirected graph $G$, every edge of $G$ is either a tree edge or a back edge.
 
+---
+
 
 
 ## Topological Sort
 
-A **topological sort** of a dagger $G = (V, E)$ is a linear ordering of all its vertices such that if $G$ contains an edge $(u, v)$, then $u$ appears before $v$ in the ordering.
+A **topological sort** is an ordering of vertices in a directed acyclic graph, such that if there is a path from $v_i$ to $v_j$ appears after $v_i$ in the ordering.
 
 Examples:
 
@@ -369,9 +497,247 @@ Complexity:
 
 For the DFS-based implementation above (adjacency list), each vertex is colored at most once and each edge is explored at most once, so full traversal costs $O(|V| + |E|)$. The algorithm allocates `state` and `stack` arrays of size $|V|$, and recursive DFS depth can reach $|V|$, so auxiliary space is $O(|V|)$. In sparse best-case inputs (for example, no edges), running time becomes $O(|V|)$.
 
+---
 
 
-## Cycles
+
+## Minimum Spanning Tree
+
+Informally, a **minimum spanning tree** of an undirected graph G is a tree formed from graph edges that connects all the vertices of G at the lowest total cost. A minimum spanning tree exists if and only if G is connected.
+
+![minimum_spanning_tree](/usr/local/src/github/hanjingo/doc/ALGO/res/minimum_spanning_tree.png)
+
+*graph G and it's mimimum spanning trees*
+
+### Prim's Algorithm
+
+Prim’s algorithm is a Greedy algorithm like Kruskal's algorithm. This algorithm always starts with a single node and moves through several adjacent nodes, in order to explore all of the connected edges along the way.
+
+Algorithm:
+
+1. The algorithm starts with an empty spanning tree.
+2. The idea is to maintain two sets of vertices. The first set contains the vertices already included in the MST, and the other set contains the vertices not yet included.
+3. At every step, it considers all the edges that connect the two sets and picks the minimum-weight edge from these edges. After picking the edge, it moves the other endpoint of the edge to the set containing the MST. 
+
+Example:
+
+![prim_algo1](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo1.png)
+
+![prim_algo2](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo2.png)
+
+![prim_algo3](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo3.png)
+
+![prim_algo4](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo4.png)
+
+![prim_algo5](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo5.png)
+
+![prim_algo6](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo6.png)
+
+![prim_algo7](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo7.png)
+
+![prim_algo8](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo8.png)
+
+![prim_algo9](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo9.png)
+
+![prim_algo10](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo10.png)
+
+![prim_algo11](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo11.png)
+
+![prim_algo12](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo12.png)
+
+Implement:
+
+```c++
+// A utility function to find the vertex with
+// minimum key value, from the set of vertices
+// not yet included in MST
+int min_key(vector<int> &key, vector<bool> &mst_set) 
+{
+  
+    // Initialize min value
+    int min = INT_MAX, min_index;
+    for (int v = 0; v < mst_set.size(); v++)
+        if (mst_set[v] == false && key[v] < min)
+            min = key[v], min_index = v;
+
+    return min_index;
+}
+
+// Function to construct and print MST for
+// a graph represented using adjacency
+// matrix representation
+void prim_mst(vector<vector<int>> &graph) 
+{
+    
+    int V = graph.size();
+  
+    // Array to store constructed MST
+    vector<int> parent(V);
+
+    // Key values used to pick minimum weight edge in cut
+    vector<int> key(V);
+
+    // To represent set of vertices included in MST
+    vector<bool> mst_set(V);
+
+    // Initialize all keys as INFINITE
+    for (int i = 0; i < V; i++)
+        key[i] = INT_MAX, mst_set[i] = false;
+
+    // Always include first 1st vertex in MST.
+    // Make key 0 so that this vertex is picked as first
+    // vertex.
+    key[0] = 0;
+  
+    // First node is always root of MST
+    parent[0] = -1;
+
+    // The MST will have V vertices
+    for (int count = 0; count < V - 1; count++) 
+    {
+        
+        // Pick the minimum key vertex from the
+        // set of vertices not yet included in MST
+        int u = min_key(key, mst_set);
+
+        // Add the picked vertex to the MST Set
+        mst_set[u] = true;
+
+        // Update key value and parent index of
+        // the adjacent vertices of the picked vertex.
+        // Consider only those vertices which are not
+        // yet included in MST
+        for (int v = 0; v < V; v++)
+            // graph[u][v] is non zero only for adjacent
+            // vertices of m mst_set[v] is false for vertices
+            // not yet included in MST Update the key only
+            // if graph[u][v] is smaller than key[v]
+            if (graph[u][v] && mst_set[v] == false && graph[u][v] < key[v])
+                parent[v] = u, key[v] = graph[u][v];
+    }
+
+    // Print the constructed MST
+    print_mst(parent, graph);
+}
+```
+
+Complexity:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(|V|^2)$      | $O(|V|)$         |
+| Average Case | $O(|V|^2)$      | $O(|V|)$         |
+| Worst Case   | $O(|V|^2)$      | $O(|V|)$         |
+
+For this adjacency-matrix implementation, `min_key` scans all vertices in $O(|V|)$ and is called $|V|-1$ times. The inner update loop also scans all vertices each iteration, giving total time $O(|V|^2)$. Auxiliary space is $O(|V|)$ for `parent`, `key`, and `mst_set` (excluding the input graph matrix).
+
+### Kruskal’s Algorithm
+
+A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, and undirected graph is a [spanning tree](https://www.geeksforgeeks.org/dsa/spanning-tree/) (no cycles and connects all vertices) that has minimum weight. The weight of a spanning tree is the sum of all edges in the tree.  
+
+Algorithm:
+
+1. Sort all the edges in a non-decreasing order of their weight. 
+2. Pick the smallest edge. Check if it forms a cycle with the spanning tree formed so far. If the cycle is not formed, include this edge. Otherwise, discard it. It uses the Disjoint Sets to detect cycles.
+3. Repeat step 2 until there are (V-1) edges in the spanning tree.
+
+Example:
+
+![kruskal_algo1](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo1.png)
+
+![kruskal_algo2](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo2.png)
+
+![kruskal_algo3](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo3.png)
+
+![kruskal_algo4](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo4.png)
+
+![kruskal_algo5](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo5.png)
+
+![kruskal_algo6](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo6.png)
+
+![kruskal_algo7](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo7.png)
+
+![kruskal_algo8](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo8.png)
+
+![kruskal_algo9](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo9.png)
+
+![kruskal_algo10](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo10.png)
+
+Implement:
+
+```c++
+bool comparator(std::vector<int> &a,std::vector<int> &b)
+{
+   return a[2] < b[2]; 
+}
+
+int find(int i, std::vector<int> &parent) 
+{
+    return (parent[i] == i) ? i : (parent[i] = find(parent[i], parent));
+}
+
+void unite(int x, int y, std::vector<int> &parent, std::vector<int> &rank) 
+{
+    int s1 = find(x, parent), s2 = find(y, parent);
+    if (s1 == s2) 
+        return;
+
+    if (rank[s1] < rank[s2]) 
+        parent[s1] = s2;
+    else if (rank[s1] > rank[s2]) 
+        parent[s2] = s1;
+    else 
+        parent[s2] = s1;
+        rank[s1]++;
+}
+
+int kruskals_mst(int V, std::vector<std::vector<int>> &edges) 
+{
+    std::vector<int> parent, rank;
+    parent.resize(V);
+    rank.resize(V);
+    for (int i = 0; i < V; i++) 
+    {
+        parent[i] = i;
+        rank[i] = 1;
+    }
+
+    // Sort all edges
+    std::sort(edges.begin(), edges.end(), comparator);
+    
+    // Traverse edges in sorted order
+    int cost = 0, count = 0;
+    for (auto &e : edges) 
+    {
+        int x = e[0], y = e[1], w = e[2];
+        // Make sure that there is no cycle
+        if (find(x, parent) == find(y, parent)) 
+            continue;
+
+        unite(x, y, parent, rank);
+        cost += w;
+        if (++count == V - 1) 
+            break;
+    }
+    return cost;
+}
+```
+
+Complexity:
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(|E|\log|E|)$ | $O(|V|)$         |
+| Average Case | $O(|E|\log|E|)$ | $O(|V|)$         |
+| Worst Case   | $O(|E|\log|E|)$ | $O(|V|)$         |
+
+This implementation always sorts all edges first, which costs $O(|E|\log|E|)$ and dominates runtime. The union-find operations (`find` with path compression and `unite` with rank) are nearly constant amortized per edge, so traversal after sorting is $O(|E|\,\alpha(|V|))$. Extra memory is $O(|V|)$ for `parent` and `rank` (excluding the input edge list).
+
+---
+
+
+
+## Cycles Detect
 
 ### Detect Cycle In a Directed Graph By Using DFS
 
@@ -590,17 +956,7 @@ Complexity:
 
 This implementation performs exactly $|V|-1$ full relaxation passes over all edges, followed by one additional full pass to detect whether any edge can still relax. Therefore, total work is proportional to $|V| \cdot |E|$ in all cases. Auxiliary space is $O(|V|)$ for the `dist` array.
 
-
-
-## Connectivity
-
-TODO
-
-
-
-## Maximum Flow
-
-TODO
+---
 
 
 
@@ -620,6 +976,27 @@ TODO
 |     **Suitable for**      | BFS is more suitable for searching vertices closer to the given source. | DFS is more suitable when there are solutions away from source. |
 |     **Applications**      | BFS is used in various applications such as bipartite graphs, shortest paths, etc. If weight of every edge is same, then BFS gives shortest path from source to every other vertex. | DFS is used in various applications such as acyclic graphs and finding strongly connected components etc. There are many applications where both BFS and DFS can be used like Topological Sorting, Cycle Detection, etc. |
 
+### Prim's Algorithm vs Kruskal's Algorithm
+
+|          Feature          |                       Prim's Algorithm                       |                    Kruskal's Algorithm                    |
+| :-----------------------: | :----------------------------------------------------------: | :-------------------------------------------------------: |
+|         Approach          |       Vertex-based, grows the MST one vertex at a time       |   Edge-based, adds edges in increasing order of weight    |
+|      Data Structure       |                  Priority queue (min-heap)                   |                 Union-Find data structure                 |
+|   Graph Representation    |              Adjacency matrix or adjacency list              |                         Edge list                         |
+|      Initialization       |               Starts from an arbitrary vertex                |    Starts with all vertices as separate trees (forest)    |
+|      Edge Selection       | Chooses the minimum weight edge from the connected vertices  |      Chooses the minimum weight edge from all edges       |
+|     Cycle Management      |      Not explicitly managed; grows connected component       |              Uses Union-Find to avoid cycles              |
+|        Complexity         | O(V^2) for adjacency matrix, O((E + V) log V) with a priority queue |       O(E log E) or O(E log V), due to edge sorting       |
+|       Suitable for        |                         Dense graphs                         |                       Sparse graphs                       |
+| Implementation Complexity |              Relatively simpler in dense graphs              |           More complex due to cycle management            |
+|        Parallelism        |                   Difficult to parallelize                   |  Easier to parallelize edge sorting and union operations  |
+|       Memory Usage        |                More memory for priority queue                |       Less memory if edges can be sorted externally       |
+|     Example Use Cases     |      Network design, clustering with dense connections       | Road networks, telecommunications with sparse connections |
+|      Starting Point       |                  Requires a starting vertex                  |   No specific starting point, operates on global edges    |
+|        Optimal for        |        Dense graphs where the adjacency list is used         |      Sparse graphs, where the edge list is efficient      |
+
+---
+
 
 
 ## Reference
@@ -633,4 +1010,10 @@ TODO
 [4] [Representation of Graph](https://www.geeksforgeeks.org/dsa/graph-and-its-representations/)
 
 [5] [Topological Sorting](https://www.geeksforgeeks.org/dsa/topological-sorting/)
+
+[6] [Types of Graphs with Examples](https://www.geeksforgeeks.org/dsa/graph-types-and-applications/)
+
+[7] [Prim’s Algorithm for Minimum Spanning Tree (MST)](https://www.geeksforgeeks.org/dsa/prims-minimum-spanning-tree-mst-greedy-algo-5/)
+
+[8] [Difference between Prim's and Kruskal's algorithm for MST](https://www.geeksforgeeks.org/dsa/difference-between-prims-and-kruskals-algorithm-for-mst/)
 
