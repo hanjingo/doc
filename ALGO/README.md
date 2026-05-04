@@ -14,7 +14,7 @@
 - [Greedy Algorithm](greedy_algorithm.md)
 - [Hash](hash.md)
 - [Huffman Code](huffman.md)
-- [Linked List](link_list.md)
+- [List](list.md)
 - [Queue](queue.md)
 - [Red Black Tree](rb_tree.md)
 - [Recursion](recursion.md)

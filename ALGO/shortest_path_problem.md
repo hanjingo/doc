@@ -167,5 +167,6 @@ void AStar(Graph& G, Vertex s, Vertex goal, function<Dist(Vertex)> h) {
 
 ## References
 
-1. Cormen, Leiserson, Rivest, and Stein. Introduction to Algorithms (CLRS).
-2. Mark Allen Weiss. Data Structures and Algorithm Analysis in C++.
+[1] Cormen, Leiserson, Rivest, and Stein. Introduction to Algorithms (CLRS).
+
+[2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++.

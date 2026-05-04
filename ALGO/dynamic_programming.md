@@ -144,7 +144,7 @@ Disadvantage:
 ### Application
 
 - Dynamic programming is used to solve economic like resource allocation, optimal growth, and decision-making.
-- Problems in game theory like optimal strategies, value iteration, and Markov decision processes are solved using dynamic programming.
+- Problems in game theory, like optimal strategies, value iteration, and Markov decision processes, are solved using dynamic programming.
 - To solve issues like speech recognition, machine translation, and language modelling, dynamic programming is used in natural language processing.
 
 

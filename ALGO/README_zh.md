@@ -15,7 +15,7 @@
 - [散列算法](hash_zh.md)
 - [堆](heap_zh.md)
 - [LRU算法](lru_zh.md)
-- [链表](link_list_zh.md)
+- [链表](list_zh.md)
 - [队列](queue_zh.md)
 - [红黑树](rb_tree_zh.md)
 - [最短路径算法](shortest_path_problem_zh.md)

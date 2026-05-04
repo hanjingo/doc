@@ -4,17 +4,17 @@
 
 
 
-The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function.
+The process in which a function calls itself directly or indirectly is called recursion, and the corresponding function is called a recursive function.
 
 ## Base Condition
 
-A recursive program stops at a base condition. There can be more than one base conditions in a recursion.
+A recursive program stops at a base condition. There can be more than one base condition in a recursion.
 
 
 
 ## Direct And Indirect Recursive Function
 
-A function is called **direct recursive** if it calls itself directly during its execution. 
+A function is called **directly recursive** if it calls itself directly during its execution. 
 
 An **indirect recursive function** is one that calls another function, and that other function, in turn, calls the original function either directly or through other functions. This creates a chain of recursive calls involving multiple functions, as opposed to direct recursion, where a function calls itself.
 
@@ -43,8 +43,6 @@ int fact(int n)
         return n * fact(n - 1);
 }
 ```
-
-
 
 
 
