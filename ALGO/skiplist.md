@@ -6,7 +6,7 @@
 
 
 
-A skip list is an ordered data structure that allows search and insert operations in an ordered sequence of n elements with average time complexity $O(\log n)$, better than the $O(n)$ complexity of arrays.
+A skip list is a data structure that allows for efficient search, insertion and deletion of elements in a sorted list. It is a probabilistic data structure, meaning that its average time complexity is determined through a probabilistic analysis.
 
 ## Definition
 
@@ -18,7 +18,7 @@ A skip list is an ordered data structure that allows search and insert operation
 
 ## Structure
 
-Example: The structure of a skip list is shown below:
+The structure of a skip list is shown below:
 
 ![skiplist_struct](res/skiplist_struct.png)
 
@@ -27,198 +27,247 @@ Example: The structure of a skip list is shown below:
 - Level: Stores pointers to other elements; the program always starts from the top level and then goes down to the bottom (close to the yellow part).
 - Tail: All NULL, indicating the end of the skip list
 
+**Implement**:
+
 ```c++
-template <typename Comparable>
-class DSL
+#define MAX_LEVEL 6
+
+// Node structure
+struct Node 
 {
-public:
-	explicit DSL(const Comparable &inf) : INFINITY(inf)
-	{
-		bottom = new SkipNode();
-		bottom->right = bottom->down = bottom;
-		tail = new SkipNode(INFINITY);
-		tail->right = tail;
-		header = new SkipNode(INFINITY, tail, bottom);
-	}
-
-	bool contains(const Comparable &x) const;
-	void insert(const Comparable &x);
-
-private:
-	struct SkipNode
-	{
-		Comparable element;
-		SkipNode   *right;
-		SkipNode   *down;
-
-		SkipNode(const Comparable &theElement = Comparable(),
-				 SkipNode *rt = NULL, SkipNode *dt = NULL)
-			: element(theElement), right(rt), down(dt) {}
-	};
-
-	Comparable INFINITY;
-	SkipNode   *header;
-	SkipNode   *bottom;
-	SkipNode   *tail;
+   int key;
+   struct Node *forward[MAX_LEVEL];
 };
 
-template <typename Comparable>
-bool DSL<Comparable>::contains(const Comparable &x) const
+// SkipList structure
+struct SkipList 
 {
-	SkipNode *current = header;
+   struct Node *header;
+   int level;
+};
 
-	bottom->element = x;
-	for (; ;)
-		if (x < current->element)
-			current = current->down;
-		else if (current->element < x)
-			current = current->right;
-		else
-			return current != bottom;
+// Create a node
+struct Node* create_node(int key, int level) 
+{
+   struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+   if (newNode == NULL)
+      return NULL;
+
+   newNode->key = key;
+   for (int i = 0; i < MAX_LEVEL; i++)
+      newNode->forward[i] = NULL;
+
+   return newNode;
 }
 
-
+// Create a SkipList
+struct SkipList* create_skip_list() 
+{
+   struct SkipList *list = (struct SkipList*)malloc(sizeof(struct SkipList));
+   list->header = create_node(INT_MIN, MAX_LEVEL);
+   list->level = 0;
+   return list;
+}
 ```
 
 
 
-## Search
+## Operations
+
+### Search
 
 Start from the head element, search along each level until you find an element greater than or equal to the target.
 
-Process:
+**Algorithm:**
 
 - If equal to the target element, it is found
 - If greater than the target element or at the end of the list, go back to the previous element at the current level and enter the next level to search
 
-Example, searching for number 19:
+**Example:** 
+
+searching for number 19:
 
 ![skiplist_search_example1](res/skiplist_search_example1.png)
 
+**Implement:**
 
+```c++
+// Search for a key
+struct Node* search_node(struct SkipList *list, int key) 
+{
+   struct Node *current = list->header;
+   for (int i = list->level; i >= 0; i--)
+      while (current->forward[i] != NULL && current->forward[i]->key < key)
+         current = current->forward[i];
 
-## Insert
+   current = current->forward[0];
+   if (current != NULL && current->key == key)
+      return current;
+
+   return NULL;
+}
+```
+
+**Complexity:**
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(1)$          | $O(1)$           |
+| Average Case | $O(\log n)$     | $O(1)$           |
+| Worst Case   | $O(n)$          | $O(1)$           |
+
+For a single search operation, only a constant number of pointers/variables are used, so extra space is $O(1)$. Time is probabilistic: expected $O(\log n)$ with balanced random levels, but it can degrade to $O(n)$ in an unlucky/unbalanced layout.
+
+### Insert
 
 Skip lists cannot guarantee worst-case performance, because the method of randomly selecting elements to enter higher levels when building the skip list may, with small probability, generate an unbalanced skip list; **thus, the complexity of skip lists is affected by the random algorithm**.
 
-Process:
+**Algorithm:**
 
 - Compare the value to be inserted with the index nodes at each level to determine the insertion position
 - Allocate a new node and insert it
 - Adjust levels (random algorithm)
 
-```c++
-template <typename Comparable>
-void DSL<Comparable>::insert(const Comparable &x)
-{
-	SkipNode *current = header;
-	bottom->element = x;
-	while (current != bottom)
-	{
-		while (current->element < x)
-			current = current->right;
+**Example:**
 
-		if (current->down->right->right->element < current->element)
-		{
-			current->right = new SkipNode(current->element, current->right, 
-				currernt->down->right->right);
-			current->element = current->down->right->element;
-		}
-		else
-			current = current->down;
-	}
-
-	if (header->right != tail)
-		header = new SkipNode(INFINITY, tail, header);
-}
-```
-
-Example, inserting 17:
+inserting 17
 
 ![skiplist_insert_example1](res/skiplist_insert_example1.png)
 
+**Implement:**
 
+```c++
+// Insert a node
+void insert_node(struct SkipList *list, int key) 
+{
+   struct Node *current = list->header;
+   struct Node *update[MAX_LEVEL];
+   for (int i = list->level; i >= 0; i--) 
+   {
+      while (current->forward[i] != NULL && current->forward[i]->key < key)
+         current = current->forward[i];
 
-## Delete
+      update[i] = current;
+   }
+   current = current->forward[0];
+   if (current == NULL || current->key != key) 
+   {
+      int rlevel = 0;
+      while (rand() < RAND_MAX / 2 && rlevel < MAX_LEVEL - 1)
+         rlevel++;
+
+      if (rlevel > list->level) 
+      {
+         for (int i = list->level + 1; i <= rlevel; i++)
+            update[i] = list->header;
+
+         list->level = rlevel;
+      }
+      struct Node *newNode = create_node(key, rlevel);
+      if (newNode == NULL)
+         return;
+
+      for (int i = 0; i <= rlevel; i++) 
+      {
+         newNode->forward[i] = update[i]->forward[i];
+         update[i]->forward[i] = newNode;
+      }
+   }
+}
+```
+
+**Complexity:**
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(1)$          | $O(\log n)$      |
+| Average Case | $O(\log n)$     | $O(\log n)$      |
+| Worst Case   | $O(n)$          | $O(\log n)$      |
+
+Insertion first performs a search-like traversal, then rewires forward pointers up to the chosen random level. The temporary `update[]` array stores predecessor nodes per level, so auxiliary space is proportional to the number of levels (typically $O(\log n)$, or $O(\text{MAX\_LEVEL})$ in fixed-level implementations).
+
+### Delete
 
 Deleting a node requires updating the levels.
 
-Process:
+**Algorithm:**
 
 - Determine the node to delete
 - Delete the node
 - Update levels
 
-Pseudocode:
+**Example:**
 
-```txt
-Delete(list, searchKey)
-	local update[1..MaxLevel]
-	x := list→header
-	for i := list→level downto 1 do
-		while x→forward[i]→key < searchKey do
-			x := x→forward[i]
-		update[i] := x
-	x := x→forward[1]
-	if x→key = searchKey then
-		for i := 1 to list→level do
-			if update[i]→forward[i] ≠ x then break
-			update[i]→forward[i] := x→forward[i]
-		free(x)
-		while list→level > 1 and list→header→forward[list→level] = NIL do
-			list→level := list→level – 1
-```
-
-Example, deleting 17:
+deleting 17.
 
 ![skiplist_delete_example1](res/skiplist_delete_example1.png)
 
+**Implement:**
 
+```c++
+// Delete a key
+void delete_node(struct SkipList *list, int key) 
+{
+   struct Node *current = list->header;
+   struct Node *update[MAX_LEVEL];
+   for (int i = list->level; i >= 0; i--) 
+   {
+      while (current->forward[i] != NULL && current->forward[i]->key < key)
+        current = current->forward[i];
 
-## Release List
+      update[i] = current;
+   }
 
-Example, releasing the list:
+   current = current->forward[0];
+   if (current != NULL && current->key == key) 
+   {
+      for (int i = 0; i <= list->level; i++) 
+      {
+         if (update[i]->forward[i] != current)
+            break;
+
+         update[i]->forward[i] = current->forward[i];
+      }
+
+      free(current);
+      while (list->level > 0 && list->header->forward[list->level] == NULL)
+         list->level--;
+   }
+}
+```
+
+**Complexity:**
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(1)$          | $O(\log n)$      |
+| Average Case | $O(\log n)$     | $O(\log n)$      |
+| Worst Case   | $O(n)$          | $O(\log n)$      |
+
+Deletion performs a search-like traversal to locate predecessor nodes at each level, then rewires pointers and possibly decreases the current top level. The temporary `update[]` array dominates auxiliary space, so space is proportional to level count (typically $O(\log n)$, or $O(\text{MAX\_LEVEL})$ in fixed-level implementations).
+
+### Release List
+
+**Example:**
+
+releasing the list:
 
 ![skiplist_release_example1](res/skiplist_release_example1.png)
 
 
 
-## Random Algorithm
+## Summary
 
-Pseudocode:
+### Pros and Cons
 
-```txt
-randomLevel()
-	lvl := 1
-	-- random() that returns a random value in [0...1)
-	while random() < p and lvl < MaxLevel do
-		lvl := lvl + 1
-	return lvl
-```
-
-
-
-## Complexity
-
-|      | Average      | Worst         |
-| ---- | ------------ | ------------- |
-| Space| $o(n)$       | $o(n \log n)$ |
-| Search| $o(\log n)$ | $o(n)$        |
-| Insert| $o(\log n)$ | $o(n)$        |
-| Delete| $o(\log n)$ | $o(n)$        |
-
-
-
-## Pros and Cons
-
-### Pros
+Pros:
 
 - Simple implementation
 - No need to globally rebalance the data structure during insert/delete, so in concurrent scenarios, the lock scope is smaller and performance is better
 - Range queries are simpler than in balanced trees
 - Uses less memory than balanced trees
 
-### Cons
+Cons:
 
 - For lookups, hash tables are generally the most efficient; skip lists are a bit less efficient, so Redis uses `hash table` for lookups
 
@@ -226,7 +275,16 @@ randomLevel()
 
 ## References
 
-- [Skip Lists: A Probabilistic Alternative to Balanced Trees](res/skiplists.pdf)
-- [Wikipedia - Skip list](https://en.wikipedia.org/wiki/Skip_list)
-- [Redis Design and Implementation - Skip list](https://redisbook.readthedocs.io/en/latest/internal-datastruct/skiplist.html)
-- [why redis use skiplist](https://news.ycombinator.com/item?id=1171423)
+[1] [Skip Lists: A Probabilistic Alternative to Balanced Trees](res/skiplists.pdf)
+
+[2] [Wikipedia - Skip list](https://en.wikipedia.org/wiki/Skip_list)
+
+[3] [Redis Design and Implementation - Skip list](https://redisbook.readthedocs.io/en/latest/internal-datastruct/skiplist.html)
+
+[4] [why redis use skiplist](https://news.ycombinator.com/item?id=1171423)
+
+[5] [Skip List - Efficient Search, Insert and Delete in Linked List](https://www.geeksforgeeks.org/dsa/skip-list/)
+
+[6] [Skip List | Set 2 (Insertion)](https://www.geeksforgeeks.org/dsa/skip-list-set-2-insertion/)
+
+[7] [Skip List | Set 3 (Searching and Deletion)](https://www.geeksforgeeks.org/dsa/skip-list-set-3-searching-deletion/)

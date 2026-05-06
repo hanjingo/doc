@@ -6,160 +6,56 @@
 
 
 
-## Overview
-
-There is a summary of sorting algorithms:
-
-| Sort Algorithm | Average Case | Best Case    | Worst Case  | Space Complexity | Stability |
-| -------------- | ------------ | ------------ | ----------- | ---------------- | --------- |
-| Insertion Sort | $O(n^2)$     | $O(n)$       | $O(n^2)$    | $O(1)$           | Stable    |
-| Shell Sort     | $O(n^{1.3})$ | $O(n)$       | $O(n^2)$    | $O(1)$           | Unstable  |
-| Selection Sort | $O(n^2)$     | $O(n^2)$     | $O(n^2)$    | $O(1)$           | Unstable  |
-| Heap Sort      | $O(nlog n)$  | $O(nlog n)$  | $O(nlog n)$ | $O(1)$           | Unstable  |
-| Bubble Sort    | $O(n^2)$     | $O(n)$       | $O(n^2)$    | $O(1)$           | Stable    |
-| Quick Sort     | $O(nlog n)$  | $O(nlog n)$  | $O(n^2)$    | $O(nlog n)$      | Unstable  |
-| Merge Sort     | $O(nlog n)$  | $O(nlog n)$  | $O(nlog n)$ | $O(n)$           | Stable    |
-| Radix Sort     | $O(d(r+n))$  | $O(d(n+rd))$ | $O(d(r+n))$ | $O(rd+n)$        | Stable    |
-
----
-
-
-
 ## Insertion Sort
 
-The insertion sort is the simplest sorting algorithms.
+Insertion sort is a simple sorting algorithm that works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list.
 
-### Step
+**Algorithm:**
 
-Example:
+1. Start with the second element as the first element is assumed to be sorted.
+2. Compare the second element with the first if the second is smaller then swap them.
+3. Move to the third element, compare it with the first two, and put it in its correct position
+4. Repeat until the entire array is sorted.
 
-| Step  | 5     | 6     | 3    | 1     | 8     | 7    | 2    | 4    |
-| ----- | ----- | ----- | ---- | ----- | ----- | ---- | ---- | ---- |
-| one   | **3** | 5     | 6    | 1     | 8     | 7    | 2    | 4    |
-| two   | **1** | 3     | 5    | 6     | 8     | 7    | 2    | 4    |
-| three | 1     | 3     | 5    | 6     | **7** | 8    | 2    | 4    |
-| four  | 1     | **2** | 3    | 5     | 6     | 7    | 8    | 4    |
-| five  | 1     | 2     | 3    | **4** | 5     | 6    | 7    | 8    |
+**Example:**
 
-### Implement
+![insertion_sort1](res/insertion_sort1.png)
 
-(C++)
+![insertion_sort2](res/insertion_sort2.png)
+
+![insertion_sort3](res/insertion_sort3.png)
+
+![insertion_sort4](res/insertion_sort4.png)
+
+![insertion_sort5](res/insertion_sort5.png)
+
+**Implement:**
 
 ```c++
-void insert_sort(int array[], unsignedint n)
+void insertion_sort(int arr[], int n)
 {
-    int i,j;
-    int temp;
-    for(i = 1;i < n;i++)
+    for (int i = 1; i < n; ++i) 
     {
-        temp = array[i];
-        for(j = i;j > 0 && array[j - 1] > temp;j--)
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) 
         {
-            array[j]= array[j - 1];
+            arr[j + 1] = arr[j];
+            j = j - 1;
         }
-        array[j] = temp;
+        arr[j + 1] = key;
     }
 }
 ```
 
-(C++ STL Implementation)
+**Complexity:**
 
-```c++
-template <typename Comparable>
-void insertionSort(vector<Comparable>& a)
-{
-    int j;
-    for (int p = 1; p < a.size(); p++)
-    {
-        Comparable tmp = a[p];
-        for (j = p; j > 0 && tmp < a[j - 1]; j--)
-            a[j] = a[j - 1];
-        a[j] = tmp;
-    }
-}
-
-template <typename Iterator>
-void insertionSort(const Iterator& begin, const Iterator& end)
-{
-    if (begin != end)
-        inertionSortHelp(begin, end, *begin);
-}
-template <typename Iterator, typename Object>
-void insertionSortHelp(const Iterator& begin, const Iterator& end, const Object& obj)
-{
-    insertionSort(begin, end, less<Object>());
-}
-
-template<typename Iterator, typename Comparator>
-void insertionSort(const Iterator& begin, const Iterator& end, Comparator lessThan)
-{
-    if (begin != end)
-        insertionSort(begin, end, lessThan, *begin);
-}
-template<typename Iterator, typename Comparator, typename Object>
-void insertionSort(const Iterator& begin, const Iterator& end, 
-    Comparator lessThan, const Object& obj)
-{
-    Iterator j;
-
-    for (Iterator p = begin + 1; p != end; ++p)
-    {
-        Object tmp = *p;
-        for (j = p; j != begin && lessThan(tmp, *(j-1)); --j)
-            *j = *(j - 1);
-        *j = tmp;
-    }
-}
-```
-
-### Complexity Analysis
-
-$\sum_{i=2}^{N} i=2+3+4+...+N = O(N^2)$
-
-- The average and worst case: $O(N^2)$
-
-  We express the running time of INSERTION-SORT as $an^2 + bn + c$ for constants $a, b$ and $c$ that again depends on the statement costs $c_i$; it is thus a `quadratic function` of $n$.
-
-- The best case:  $O(N)$
-
-  we can express this running time as $an+b$ for constants $a$ and $b$ that depend on the statement costs $c_i$; it is thus a `linear function` of $n$.
-
----
-
-
-
-## Shell Sort
-
-Shellsort works by comparing elements that are distant; the distance between comparisons decreases as the algorithm runs until the last phase, in which adjacent elements are compared. For this reason, Shellsort is sometimes referred to as **diminishing increment sort**.
-
-### Implement
-
-(C++)
-
-```c++
-template <typename Comparable>
-void shellsort(vector<Comparable>& a)
-{
-    for (int gap = a.size() / 2; gap > 0; gap /= 2)
-        for (int i = gap; i < a.size(); i++)
-        {
-            Comparable tmp = a[i];
-            int j = i;
-
-            for (; j >= gap && tmp < a[j-gap]; j -= gap)
-                a[j] = a[j - gap];
-            a[j] = tmp;
-        }
-}
-```
-
-### Complexity Analysis
-
-- The best case: $O(n)$.
-- The average case: $O(n^{1.3})$
-- The worst case:
-  1. The worst-case running time of Shell sort using Shell's increments is $\Theta(N^2)$.
-  2. The worst-case running time of Shell sort using Hibbard's increments is $\Theta(N^{3/2})$.
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n)$          | $O(1)$           |
+| Average Case | $O(n^2)$        | $O(1)$           |
+| Worst Case   | $O(n^2)$        | $O(1)$           |
 
 ---
 
@@ -167,38 +63,57 @@ void shellsort(vector<Comparable>& a)
 
 ## Selection Sort
 
-Selection sort is an easy sort algorithm.
+**Selection Sort** is a comparison-based sorting algorithm. It sorts by repeatedly selecting the **smallest (or largest)** element from the unsorted portion and swapping it with the first unsorted element
 
-### Step
+**Algorithm**:
 
-### Implement
+1. Find the smallest element and swap it with the first element. This way, we get the smallest element at its correct position.
+2. Then find the smallest among the remaining elements (or second smallest) and swap it with the second element.
+3. We keep doing this until we get all elements moved to the correct position.
 
-(C++)
+**Example:**
+
+![select_sort1](res/select_sort1.png)
+
+![select_sort2](res/select_sort2.png)
+
+![select_sort3](res/select_sort3.png)
+
+![select_sort4](res/select_sort4.png)
+
+![select_sort5](res/select_sort5.png)
+
+![select_sort6](res/select_sort6.png)
+
+**Implement:**
 
 ```c++
-void select_sort(int *a,int n)
+void selection_sort(int arr[], int n) 
 {
-    register int i,j,min,t;
-    for(i = 0;i < n-1;i++)
+    for (int i = 0; i < n - 1; i++) 
     {
-        min = i;
-        for(j = i + 1;j < n;j++)
-            if(a[min] > a[j])
-                min = j;
-        if(min != i)
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) 
         {
-            t = a[min];
-            a[min] = a[i];
-            a[i] = t;
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
         }
+        
+        int temp = arr[i];
+        arr[i] = arr[min_idx];
+        arr[min_idx] = temp;
     }
 }
+
 ```
 
-### Complexity Analysis
+**Complexity:**
 
-- The best/average case: $O(n^2)$
-- The worst case: $O(n^2)$
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n^2)$        | $O(1)$           |
+| Average Case | $O(n^2)$        | $O(1)$           |
+| Worst Case   | $O(n^2)$        | $O(1)$           |
 
 ---
 
@@ -206,47 +121,59 @@ void select_sort(int *a,int n)
 
 ## Bubble Sort
 
-### Step
+**Bubble Sort** is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not efficient for large data sets as its average and worst-case time complexity are quite high.
 
-### Implement
+**Algorithm:**
 
-(C++)
+1. Sorts the array using multiple passes. After the first pass, the maximum goes to the end (it's in the correct position). In the same way, after the second pass, the second largest goes to the second last position, and so on.
+2. In every pass, process only those that have not already moved to the correct position. After k passes, the largest k must have been moved to the last k positions.
+3. In a pass, we consider the remaining elements and compare all adjacent elements and swap if a larger element is before a smaller element. If we keep doing this, we get the largest (among the remaining elements) at its correct position.
+
+**Example:**
+
+![bubble_sort1](res/bubble_sort1.png)
+
+![bubble_sort2](res/bubble_sort2.png)
+
+![bubble_sort3](res/bubble_sort3.png)
+
+**Implement:**
 
 ```c++
-#include <stdio.h>
-#define SIZE 8void bubble_sort(int a[], int n)
+// An optimized version of Bubble Sort
+void bubble_sort(int arr[], int n)
 {
-    int i, j, temp;
-    for (j = 0;j < n - 1;j++)
-        for (i = 0;i < n - 1 - j;i++)
+    int i, j;
+    bool swapped;
+    for (i = 0; i < n - 1; i++) 
+    {
+        swapped = false;
+        for (j = 0; j < n - i - 1; j++) 
         {
-            if(a[i] > a[i + 1])
+            if (arr[j] > arr[j + 1]) 
             {
-                temp = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = temp;
+                int tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+                swapped = true;
             }
         }
-}
- 
-int main()
-{
-    int number[SIZE] = {95, 45, 15, 78, 84, 51, 24, 12};
-    int i;
-    bubble_sort(number, SIZE);
-    for (i = 0; i < SIZE; i++)
-    {
-        printf("%d", number[i]);
+
+        // If no two elements were swapped by inner loop,
+        // then break
+        if (swapped == false)
+            break;
     }
-    printf("\n");
 }
 ```
 
-### Complexity Analysis
+**Complexity:**
 
-- The best case: $O(n)$
-- The average case: $O(n^2)$
-- The worst case: $O(n^2)$
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n)$          | $O(1)$           |
+| Average Case | $O(n^2)$        | $O(1)$           |
+| Worst Case   | $O(n^2)$        | $O(1)$           |
 
 ---
 
@@ -254,62 +181,102 @@ int main()
 
 ## Merge Sort
 
-### Step
+**Merge sort** is a popular sorting algorithm known for its efficiency and stability. It follows the Divide and Conquer approach. It works by recursively dividing the input array into two halves, recursively sorting the two halves, and finally merging them back together to obtain the sorted array.
 
-### Implement
+**Algorithm:**
 
-(C++)
+1. **Divide:** Divide the list or array recursively into two halves until it can no longer be divided.
+2. **Conquer:** Each subarray is sorted individually using the merge sort algorithm.
+3. **Merge:** The sorted subarrays are merged back together in sorted order. The process continues until all elements from both subarrays have been merged.
+
+**Example:**
+
+![merge_sort_example1](res/merge_sort_example1.png)
+
+![merge_sort_example2](res/merge_sort_example2.png)
+
+![merge_sort_example3](res/merge_sort_example3.png)
+
+![merge_sort_example4](res/merge_sort_example4.png)
+
+**Implement:**
 
 ```c++
-#include <stdlib.h>
-#include <stdio.h>
- 
-void Merge(int sourceArr[],int tempArr[], int startIndex, int midIndex, int endIndex)
+void merge(int arr[], int l, int m, int r)
 {
-    int i = startIndex, j=midIndex+1, k = startIndex;
-    while(i != midIndex + 1 && j != endIndex + 1)
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+
+    // Copy data to temp arrays L[] and R[]
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    // Merge the temp arrays back into arr[l..r]
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2) 
     {
-        if(sourceArr[i] >= sourceArr[j])
-            tempArr[k++] = sourceArr[j++];
-        else
-            tempArr[k++] = sourceArr[i++];
+        if (L[i] <= R[j]) 
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else 
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
     }
-    while(i != midIndex+1)
-        tempArr[k++] = sourceArr[i++];
-    while(j != endIndex+1)
-        tempArr[k++] = sourceArr[j++];
-    for(i = startIndex; i <= endIndex; i++)
-        sourceArr[i] = tempArr[i];
-}
- 
-void MergeSort(int sourceArr[], int tempArr[], int startIndex, int endIndex)
-{
-    int midIndex;
-    if(startIndex < endIndex)
+
+    // Copy the remaining elements of L[],
+    // if there are any
+    while (i < n1) 
     {
-        midIndex = (startIndex + endIndex) / 2;
-        MergeSort(sourceArr, tempArr, startIndex, midIndex);
-        MergeSort(sourceArr, tempArr, midIndex+1, endIndex);
-        Merge(sourceArr, tempArr, startIndex, midIndex, endIndex);
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[],
+    // if there are any
+    while (j < n2) 
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
     }
 }
- 
-int main(int argc, char * argv[])
-{
-    int a[8] = {50, 10, 20, 30, 70, 40, 80, 60};
-    int i, b[8];
-    MergeSort(a, b, 0, 7);
-    for(i=0; i<8; i++)
-        printf("%d ", a[i]);
-    printf("\n");
-    return 0;
+
+// l is for left index and r is right index of the
+// sub-array of arr to be sorted
+void merge_sort(int arr[], int l, int r)
+{ 
+    if (l < r) 
+    {
+        int m = l + (r - l) / 2;
+
+        // Sort first and second halves
+        merge_sort(arr, l, m);
+        merge_sort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
 }
 ```
 
-### Complexity Analysis
+**Complexity:**
 
-- The best/average case: $O(N log N)$
-- The worst case: $O(N log N)$
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n \log n)$   | $O(n)$           |
+| Average Case | $O(n \log n)$   | $O(n)$           |
+| Worst Case   | $O(n \log n)$   | $O(n)$           |
 
 ---
 
@@ -317,35 +284,28 @@ int main(int argc, char * argv[])
 
 ## Quick Sort
 
-### Step
+**QuickSort** is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
 
-Here is the three-step divide-and-conquer process for quick sort:
+**Algorithm:**
 
-1. Divide
-2. Conquer
-3. Combine
+1. **Choose a Pivot:** Select an element from the array as the pivot. The choice of pivot can vary (e.g., first element, last element, random element, or median).
+2. **Partition the Array:** Re-arrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right.
+3. **Recursively Call:** Recursively apply the same process to the two partitioned sub-arrays.
+4. **Base Case:** The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.
 
-Example:
+**Example:**
 
-1. Choose pivot：
+![quick_sort1](res/quick_sort1.png)
 
-   | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
-   | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-   | 69   | 81   | 30   | 38   | 9    | 2    | 47   | 61   | 32   | 79   |
+![quick_sort2](res/quick_sort2.png)
 
-2. Partition：
+![quick_sort3](res/quick_sort3.png)
 
-   | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
-   | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-   | 2    | 61   | 30   | 38   | 9    | 61   | 47   | 69   | 81   | 79   |
+![quick_sort4](res/quick_sort4.png)
 
-3. Recursive：
+![quick_sort5](res/quick_sort5.png)
 
-   | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
-   | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-   | 2    | 9    | 30   | 32   | 38   | 47   | 61   | 69   | 79   | 81   |
-
-### Implement
+![quick_sort6](res/quick_sort6.png)
 
 ```c++
 void quick_sort(int a[], int low, int high)
@@ -370,12 +330,85 @@ void quick_sort(int a[], int low, int high)
 }
 ```
 
-### Complexity Analysis
+**Complexity:**
 
-- The best/average case: $O(nlogn)$
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n \log n)$   | $O(\log n)$      |
+| Average Case | $O(n \log n)$   | $O(\log n)$      |
+| Worst Case   | $O(n^2)$        | $O(n)$           |
 
-- The worst case:  $O(n^2)$
 
+---
+
+
+
+## Bucket Sort
+
+**Bucket sort** is a sorting technique that involves dividing elements into various groups, or buckets. These buckets are formed by uniformly distributing the elements. Once the elements are divided into buckets, they can be sorted using any other sorting algorithm. Finally, the sorted elements are gathered together in an ordered fashion.
+
+**Algorithm:**
+
+Create **n** empty buckets (Or lists) and do the following for every array element arr[i].
+
+1. Insert $arr[i]$ into the bucket $[n \times array[i]]$
+2. Sort individual buckets using insertion sort.
+3. Concatenate all sorted buckets.
+
+**Example:**
+
+![bucket_sort1](res/bucket_sort1.png)
+
+![bucket_sort2](res/bucket_sort2.png)
+
+![bucket_sort3](res/bucket_sort3.png)
+
+![bucket_sort4](res/bucket_sort4.png)
+
+![bucket_sort5](res/bucket_sort5.png)
+
+**Implement:**
+
+```c++
+void bucket_sort(float arr[], int n) 
+{
+    std::vector<float> b[n];
+    for (int i = 0; i < n; i++) 
+    {
+        int bi = n * arr[i];
+        b[bi].push_back(arr[i]);
+    }
+
+    for (int i = 0; i < n; i++) 
+    {
+        // Insertion sort function to sort individual buckets
+        for (int i = 1; i < b[i].size(); ++i) 
+        {
+            float key = b[i][i];
+            int j = i - 1;
+            while (j >= 0 && b[i][j] > key) 
+            {
+                b[i][j + 1] = b[i][j];
+                j--;
+            }
+            b[i][j + 1] = key;
+        }
+    }
+
+    int index = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < b[i].size(); j++)
+            arr[index++] = b[i][j];
+}
+```
+
+**Complexity:**
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n)$          | $O(n)$           |
+| Average Case | $O(n)$          | $O(n)$           |
+| Worst Case   | $O(n^2)$        | $O(n)$           |
 
 ---
 
@@ -383,76 +416,170 @@ void quick_sort(int a[], int low, int high)
 
 ## Heap Sort
 
-### Step
+**Heap Sort** is a comparison-based sorting algorithm based on the **Binary Heap** data structure. It is an optimized version of selection sort. The algorithm repeatedly finds the maximum (or minimum) element and swaps it with the last (or first) element. Using a binary heap allows efficient access to the max (or min) element in $O(\log n)$ time instead of $O(n)$. The process is repeated for the remaining elements until the array is sorted.
 
-Example:
+**Algorithm:**
 
-1. Create a heap.
+1. Treat the Array as a Complete Binary Tree
 
-   ![heap_sort1](res/heap_sort1.png)
+   ![heap_sort_visualize_array](res/heap_sort_visualize_array.png)
 
-2. Exchange head and tail.
+2. Build a Max Heap
 
-   ![heap_sort2](res/heap_sort2.png)
+   ![heap_sort_build_max_heap1](res/heap_sort_build_max_heap1.png)
 
-3. So on, until the heap size equals 1.
+   ![heap_sort_build_max_heap2](res/heap_sort_build_max_heap2.png)
 
-### Implement
+   ![heap_sort_build_max_heap3](res/heap_sort_build_max_heap3.png)
+
+   ![heap_sort_build_max_heap4](res/heap_sort_build_max_heap4.png)
+
+   ![heap_sort_build_max_heap5](res/heap_sort_build_max_heap5.png)
+
+   ![heap_sort_build_max_heap6](res/heap_sort_build_max_heap6.png)
+
+   ![heap_sort_build_max_heap7](res/heap_sort_build_max_heap7.png)
+
+3. Sort the array by placing the largest element at the end of the unsorted array.
+
+   ![heap_sort_remove_from_max_heap1](res/heap_sort_remove_from_max_heap1.png)
+
+   ![heap_sort_remove_from_max_heap2](res/heap_sort_remove_from_max_heap2.png)
+
+   ![heap_sort_remove_from_max_heap3](res/heap_sort_remove_from_max_heap3.png)
+
+   ![heap_sort_remove_from_max_heap4](res/heap_sort_remove_from_max_heap4.png)
+
+   ![heap_sort_remove_from_max_heap5](res/heap_sort_remove_from_max_heap5.png)
+
+   ![heap_sort_remove_from_max_heap6](res/heap_sort_remove_from_max_heap6.png)
+
+**Implement:**
 
 ```c++
-void HeapAdjust(int array[],int i,int nLength)
+void heapify(int arr[], int n, int i)
 {
-    int nChild;
-    int nTemp;
-    for(; 2 * i + 1 < nLength;i = nChild)
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+    if (largest != i) 
     {
-        nChild = 2 * i + 1;
-        if(nChild < nLength - 1 && array[nChild + 1] > array[nChild]) ++nChild;
-        if(array[i] < array[nChild])
-        {
-            nTemp = array[i];
-            array[i] = array[nChild];
-            array[nChild] = nTemp; 
-        }
-        else break;
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, n, largest);
     }
 }
 
-void HeapSort(int array[],int length)
+void heap_sort(int arr[], int n)
 {
-    int i;
-    for(i = length / 2 - 1;i >= 0;--i)
-    HeapAdjust(array,i,length);
-    for(i = length - 1;i > 0;--i)
-    {
-        array[i] = array[0] ^ array[i];
-        array[0] = array[0] ^ array[i];
-        array[i] = array[0] ^ array[i];
-        HeapAdjust(array,0,i);
-    }
-}
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
 
-int main()
-{
-    int i;
-    int num[]={9,8,7,6,5,4,3,2,1,0};
-    HeapSort(num,sizeof(num)/sizeof(int));
-    for(i = 0;i < sizeof(num) / sizeof(int);i++)
+    for (int i = n - 1; i > 0; i--) 
     {
-        printf("%d ",num[i]);
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
     }
-    printf("\nok\n");
-    return 0;
 }
 ```
 
-### Complexity Analysis
+**Complexity:**
 
-$O(lg\ n)$.
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n \log n)$   | $O(1)$           |
+| Average Case | $O(n \log n)$   | $O(1)$           |
+| Worst Case   | $O(n \log n)$   | $O(1)$           |
 
-- The worst case:  $O(nlog n)$
-- The average case: $O(nlog n)$
-- The worst case: $O(nlog n)$
+---
+
+
+
+## Shell Sort
+
+**Shell Sort**, also known as Shell's method, is an in-place comparison sort and an optimization of Insertion Sort. It improves upon the efficiency of Insertion Sort by allowing elements to be moved over larger distances in the initial stages, which significantly reduces the number of swaps required, especially for larger datasets. 
+
+**Algorithm:**
+
+1. Choose a gap sequence (commonly `n/2, n/4, ... , 1`).
+2. Sort elements at each gap using Insertion Sort.
+3. Reduce the gap and repeat until the gap becomes 1.
+
+**Example:**
+
+![shell_sort1](res/shell_sort1.png)
+
+![shell_sort2](res/shell_sort2.png)
+
+![shell_sort3](res/shell_sort3.png)
+
+![shell_sort4](res/shell_sort4.png)
+
+![shell_sort5](res/shell_sort5.png)
+
+**Implement:**
+
+```c++
+void shell_sort(std::vector<int>& arr) 
+{
+    int n = arr.size();
+    for (int gap = n / 2; gap > 0; gap /= 2) 
+    {
+        for (int i = gap; i < n; i++) 
+        {
+            int temp = arr[i];  
+            int j = i;
+            while (j >= gap && arr[j - gap] > temp) 
+            {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+            arr[j] = temp;
+        }
+    }
+}
+```
+
+**Complexity:**
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n)$          | $O(1)$           |
+| Average Case | $O(n^{1.3})$    | $O(1)$           |
+| Worst Case   | $O(n^2)$        | $O(1)$           |
+
+---
+
+
+
+## Summary
+
+### Complexity
+
+There is a summary of sorting algorithms:
+
+| Sort Algorithm | Average Case   | Best Case      | Worst Case     | Space Complexity | Stability |
+| -------------- | -------------- | -------------- | -------------- | ---------------- | --------- |
+| Insertion Sort | $O(n^2)$       | $O(n)$         | $O(n^2)$       | $O(1)$           | Stable    |
+| Shell Sort     | $O(n^{1.3})$   | $O(n)$         | $O(n^2)$       | $O(1)$           | Unstable  |
+| Selection Sort | $O(n^2)$       | $O(n^2)$       | $O(n^2)$       | $O(1)$           | Unstable  |
+| Heap Sort      | $O(n \log  n)$ | $O(n \log  n)$ | $O(n \log  n)$ | $O(1)$           | Unstable  |
+| Bubble Sort    | $O(n^2)$       | $O(n)$         | $O(n^2)$       | $O(1)$           | Stable    |
+| Quick Sort     | $O(n \log  n)$ | $O(n \log  n)$ | $O(n^2)$       | $O(n \log  n)$   | Unstable  |
+| Merge Sort     | $O(n \log  n)$ | $O(n \log  n)$ | $O(n \log  n)$ | $O(n)$           | Stable    |
+| Radix Sort     | $O(d(r+n))$    | $O(d(n+rd))$   | $O(d(r+n))$    | $O(rd+n)$        | Stable    |
+| Bucket Sort    | $O(n)$         | $O(n)$         | $O(n^2)$       | $O(n)$           | Stable    |
 
 ---
 
@@ -463,3 +590,13 @@ $O(lg\ n)$.
 [1] Thomas H.Cormen; Charles E.Leiserson; Ronald L. Rivest; Clifford Stein. Introduction to Algorithms . 3ED
 
 [2] Mark Allen Weiss. Data Structures and Algorithm Analysis in C++ . 4ED
+
+[3] [Insertion Sort Algorithm](https://www.geeksforgeeks.org/dsa/insertion-sort-algorithm/)
+
+[4] [Selection Sort](https://www.geeksforgeeks.org/dsa/selection-sort-algorithm-2/)
+
+[5] [Merge Sort](https://www.geeksforgeeks.org/dsa/merge-sort/)
+
+[6] [Quick Sort](https://www.geeksforgeeks.org/dsa/quick-sort-algorithm/)
+
+[7] [Bucket Sort](https://www.geeksforgeeks.org/dsa/bucket-sort-2/)
