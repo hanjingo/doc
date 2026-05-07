@@ -60,7 +60,7 @@ The processing of the data in a system is organized so that each processing comp
 
 *Notice*:
 
-- The Pipe And Filter Architecture is easy to understand and supports transformation reuse.  Workflow style matches the structure of many business processes. Evolution by adding transformations is straightforward. Can be implemented as either a sequential or concurrent system.
+- The Pipe and Filter Architecture is easy to understand and supports transformation reuse.  Workflow style matches the structure of many business processes. Evolution by adding transformations is straightforward. Can be implemented as either a sequential or concurrent system.
 - The format for data transfer has to be agreed upon between communicating transformations. Each transformation must parse its input and unparse its output tp the agreed form. This increases system overhead and may mean that it is impossible to reuse functional transformations that use incompatible data structures.
 
 
@@ -218,6 +218,12 @@ Below are the use cases of event-driven microservices:
 
 ![microservice_data_sharing](res/microservice_data_sharing.png)
 
+### Key Transition Patterns From Monolith
+
+![microservice_key_transition](res/microservice_key_transition.png)
+
+Microservices architecture addresses the challenges of monoliths by breaking the application into smaller, independent services. Each service is responsible for a specific functionality and can be developed, deployed, and scaled independently.
+
 ### Best Practice
 
 ![microservice_best_practice](res/microservice_best_practice.png)
@@ -250,6 +256,20 @@ In cell-based architecture, there are multiple isolated instances of a workload,
 - Each cell is independent.
 - A cell does not share the state with other cells.
 - Each cell handles a subset of the overall traffic.
+
+
+
+## Domain-Driven Design (DDD)
+
+![domain_driven_design_arch](res/domain_driven_design_arch.png)
+
+Domain-Driven Design (DDD) is an approach to software development that tackles domain complexity by emphasizing the importance of modeling the core domain and business logic and using those models as the foundation for software design.
+
+At its heart, Domain-Driven Design is about:
+
+- Placing the primary focus on the core domain.
+- Basing complex designs on a model of the domain
+- Building collaboration between technical and domain experts.
 
 
 
@@ -375,3 +395,7 @@ Reddit’s engineering team added another verification layer. They ran all tap c
 [13] [Service-Oriented Architecture](https://www.geeksforgeeks.org/software-engineering/service-oriented-architecture/)
 
 [14] [Top Strategies to Share Data Between Services](https://blog.bytebytego.com/p/top-strategies-to-share-data-between)
+
+[15] [From Monolith to Microservices: Key Transition Patterns](https://blog.bytebytego.com/p/from-monolith-to-microservices-key)
+
+[16] [A Crash Course on Domain-Driven Design](https://blog.bytebytego.com/p/a-crash-course-on-domain-driven-design)

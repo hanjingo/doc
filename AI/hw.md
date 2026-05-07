@@ -4,11 +4,76 @@
 
 
 
-## Define
+## Metrics
 
-### Floating Point Format
+|            | Full Name                            | Measures                       | Typical Use Case                 | Factors Affecting |
+| ---------- | ------------------------------------ | ------------------------------ | -------------------------------- | ----------------- |
+| **FLOPS**  | Floating Point Operations Per Second | Floating-point performance     | Scientific computing, GPUs, HPC  |                   |
+| **TOPS**   | Tera Operations Per Second           | AI-specific operations         | AI inference, NPUs, accelerators |                   |
+| **MIPS**   | Million Instructions Per Second      | General instruction throughput | CPUs, embedded systems           |                   |
+| **DMIPS**  | Dhrystone MIPS                       | Real-world CPU performance     | Benchmarking CPUs and MCUs       |                   |
+| **Hash/s** | Hashes Per Second                    | Cryptographic hashing rate     | Mining, security workloads       |                   |
+
+### Precision
 
 ![fp32_vs_fp16_bfloat16](res/fp32_vs_fp16_bfloat16.png)
+
+| Precision Type               | Typical Use Case                                             | Performance (TOPS) | Accuracy Impact                 | Common in [Edge AI](https://snuc.com/edge-ai/)? |
+| ---------------------------- | ------------------------------------------------------------ | ------------------ | ------------------------------- | ----------------------------------------------- |
+| INT8 (8-bit integer)         | Vision inference, object detection, speech recognition       | Highest            | Slight drop in accuracy vs FP32 | Yes: favored for speed & efficiency             |
+| FP16 (16-bit floating point) | Real-time processing where some precision is needed          | High               | Small accuracy loss             | Sometimes: balance of speed & precision         |
+| FP32 (32-bit floating point) | Model training, scientific computing, high-precision inference | Lower              | Full precision                  | Rare: too slow/power-hungry for most edge use   |
+
+### FLOPS (Floating Point Operations Per Second)
+
+![flops_scale](res/flops_scale.png)
+
+FLOPS (Floating-Point Operations per Second) is a measure of a computer’s ability to perform arithmetic calculations on real numbers.
+
+FLOPS Calculation Formula:
+$$
+FLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)}}
+$$
+MFLOPS (Millions of FLOPS) Calculation Formula:
+$$
+MFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)} \times 10^{6}}
+$$
+GFLOPS Calculation Formula:
+$$
+GFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)} \times 10^{9}}
+$$
+PFLOPS Calculation Formula:
+$$
+PFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)}  \times 10^{12}}
+$$
+Factors Affecting FLOPS Performance:
+
+1. Processor Architecture: The design of the CPU or GPU determines how efficiently it performs floating-point operations.
+   Modern processors have specialized units called Floating Point Units (FPUs) for these tasks.
+2. Clock Speed (GHz): Higher clock speeds allow more instructions per second, improving FLOPS—though architecture and parallelism also matter.
+3. Parallelism: Systems with multiple cores or threads can execute many operations simultaneously. GPUs, for instance, excel in parallel computation, achieving high FLOPS rates.
+4. Memory Bandwidth: If data cannot be supplied to the processor fast enough, performance drops. High bandwidth memory allows continuous data flow, improving FLOPS.
+5. Algorithm Efficiency: Well-optimized algorithms require fewer operations to achieve the same result, thus improving effective FLOPS.
+
+### TOPS (Tera Operations Per Second)
+
+TODO
+
+### MIPS (Million Instructions Per Second)
+
+![mips_calc](res/mips_calc.png)
+
+MIPS measures the number of instructions a CPU can execute in one second, indicating its processing speed. A higher MIPS generally means the processor can handle more tasks, but it does not always reflect real-world performance.
+
+### DMIPS (Dhrystone MIPS)
+
+TODO
+
+### Hash/s (Hashes Per Second)
+
+TODO
+
+
 
 
 
@@ -48,7 +113,27 @@ Modern CPUs are designed to be super-efficient. Here are a few ways they speed t
 
 GPUs are specialized hardware designed to accelerate computations that involve parallel processing, making them crucial for deep learning and other computationally intensive ML tasks. They are particularly effective in handling large-scale matrix operations, which are common in training neural networks.
 
-TODO
+### GPU Workflow
+
+![gpu_workflow](res/gpu_workflow.jpg)
+
+At the top level, a GPU chip is made up of many Streaming Multiprocessors (SMs). Think of SMs as mini parallel engines replicated across the chip. Instead of one big brain, you get dozens of smaller ones working simultaneously.
+
+Inside each SM:
+
+- A Warp Scheduler decides which group of threads (a warp) runs next.
+- Dozens of CUDA Cores execute instructions in parallel.
+- A Register File stores thread-local data at ultra-low latency.
+- Load/Store units move data between registers and memory.
+- Texture units handle specialized memory operations.
+- L1 Cache provides fast, on-SM data access.
+
+Each SM works independently, but they’re connected through an on-chip interconnect. Below that sits the L2 Cache, shared across all SMs. This is the coordination layer. If one SM misses in L1, it checks L2 before going to global memory.
+
+Then come the Memory Controllers, which interface with Global Memory. This is where things get interesting:
+
+- Extremely high bandwidth
+- Much higher latency than on-chip memory
 
 
 
@@ -152,20 +237,22 @@ The PSU provides power to all components and must be able to supply sufficient w
 | **FPGAs (Field-Programmable Gate Arrays)**           | + **Customization**: They can be reprogrammed, providing a balance between good performance and flexibility in optimization for specific AI tasks.<br>+ **Reduced Latency**: This is significant in that FPGAs can offer reduced latency compared to CPUs or GPUs and, therefore, prove ideal for real-time AI applications.<br>+ **Energy Efficiency**: Often — but not always — more energy efficient than CPUs and GPUs for specific tasks. | + **Programming Complexity**: Specialized knowledge in programming and optimization is required, which then becomes a barrier to wider usage.<br>+ **Performance**: Although flexible, the performance of FPGAs does not reach that of raw performance from GPUs or TPUs in large-scale AI tasks. | + Real-time AI applications.<br>+ Low-latency requirements.<br>+ Specialized, customizable AI tasks. |
 | **ASICs (Application-Specific Integrated Circuits)** | + **Performance**: Best performance provided for specific tasks, as they are built to be application-specific.<br>+ **Power efficiency**: Highly power-efficient for the tasks at hand. | + Cost and Development Time: As ASICs are costly and take a lot of time in their development, they are recommended for high-volume, special-purpose applications.<br>+ Lack of flexibility: Once designed, the ASICs cannot be reprogrammed, and hence they find applications among only those targeted. | + High-volume, specialized AI applications.<br>+ Edge computing with specific AI functions.<br>+ Large-scale data centers. |
 
-### TPUs vs GPUs
+### TPU vs GPU vs CPU
 
-|        Feature        |                             GPUs                             |                             TPUs                             |
-| :-------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|   **Architecture**    | GPUs are designed for rendering graphics and handling parallel tasks. | TPUs are specialized hardware developed by Google for AI tasks. |
-|    **Flexibility**    | GPUs are versatile and used in gaming, video rendering, and AI. | TPUs are optimized specifically for tensor operations in AI. |
-|    **Performance**    | GPUs excel in tasks requiring high precision and flexibility. |   TPUs provide superior performance for inferencing tasks.   |
-| **Energy Efficiency** | GPUs are energy-efficient but can consume significant power under load. | TPUs are designed for high efficiency in specific AI tasks.  |
-|   **Manufacturers**   |      Leading GPU manufacturers include NVIDIA and AMD.       |  Google is the primary developer and manufacturer of TPUs.   |
-|     **Use Case**      |     GPUs are widely used in training complex AI models.      | TPUs are optimized for real-time inference and TensorFlow tasks. |
-|      **Latency**      | GPUs can have higher latency in real-time tasks compared to TPUs. |   TPUs achieve low latency, typically around two seconds.    |
-|    **Scalability**    | GPUs scale well for extensive computational tasks and large datasets. | TPUs are highly scalable within Google's ecosystem and cloud services. |
-|  **Specialization**   | GPUs are general-purpose and cater to a broad range of applications. | TPUs are highly specialized for deep learning and AI operations. |
-|    **Deployment**     | GPUs are commonly used in personal computers, data centers, and cloud services. | TPUs are primarily deployed within Google's infrastructure and cloud services. |
+![cpu_vs_gpu_vs_tpu](res/cpu_vs_gpu_vs_tpu.png)
+
+|        Feature        | CPUs |                             GPUs                             |                             TPUs                             |
+| :-------------------: | ---- | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   **Architecture**    | CPUs are general-purpose processors optimized for sequential and branch-heavy tasks. | GPUs are designed for rendering graphics and handling parallel tasks. | TPUs are specialized hardware developed by Google for AI tasks. |
+|    **Flexibility**    | CPUs are highly flexible and can run almost any operating system and software workload. | GPUs are versatile and used in gaming, video rendering, and AI. | TPUs are optimized specifically for tensor operations in AI. |
+|    **Performance**    | CPUs perform well on control-intensive tasks and workloads with strong single-thread dependence. | GPUs excel in tasks requiring high precision and flexibility. |   TPUs provide superior performance for inferencing tasks.   |
+| **Energy Efficiency** | CPUs are power-efficient for general-purpose workloads but less efficient for large-scale parallel AI compute. | GPUs are energy-efficient but can consume significant power under load. | TPUs are designed for high efficiency in specific AI tasks.  |
+|   **Manufacturers**   | Leading CPU manufacturers include Intel, AMD, and ARM-based vendors such as Apple. |      Leading GPU manufacturers include NVIDIA and AMD.       |  Google is the primary developer and manufacturer of TPUs.   |
+|     **Use Case**      | CPUs are widely used for system control, data preprocessing, and mixed general workloads. |     GPUs are widely used in training complex AI models.      | TPUs are optimized for real-time inference and TensorFlow tasks. |
+|      **Latency**      | CPUs can provide low latency for control logic and small-batch inference tasks. | GPUs can have higher latency in real-time tasks compared to TPUs. |   TPUs achieve low latency, typically around two seconds.    |
+|    **Scalability**    | CPUs scale well across multi-core and multi-socket servers, but AI scaling is slower than GPUs/TPUs. | GPUs scale well for extensive computational tasks and large datasets. | TPUs are highly scalable within Google's ecosystem and cloud services. |
+|  **Specialization**   | CPUs are least specialized and designed to support a wide variety of computing tasks. | GPUs are general-purpose and cater to a broad range of applications. | TPUs are highly specialized for deep learning and AI operations. |
+|    **Deployment**     | CPUs are deployed universally in personal devices, edge systems, servers, and cloud platforms. | GPUs are commonly used in personal computers, data centers, and cloud services. | TPUs are primarily deployed within Google's infrastructure and cloud services. |
 
 
 
@@ -190,3 +277,13 @@ The PSU provides power to all components and must be able to supply sufficient w
 [9] [Recommended Hardware for Running LLMs Locally](https://www.geeksforgeeks.org/deep-learning/recommended-hardware-for-running-llms-locally/)
 
 [10] [Hardware Requirements for Machine Learning](https://www.geeksforgeeks.org/machine-learning/hardware-requirements-for-machine-learning/)
+
+[11] [CPU vs GPU vs TPU](https://blog.bytebytego.com/i/190028819/cpu-vs-gpu-vs-tpu)
+
+[12] [How GPUs Work at a High Level](https://blog.bytebytego.com/p/ep205-cpu-vs-gpu-vs-tpu?utm_source=publication-search)
+
+[13] [Understanding TOPS, FLOPS, MIPS, and DMIPS](https://www.kad8.com/ai/understanding-tops-flops-mips-and-dmips/)
+
+[14] [Floating-Point Operations Per Second (FLOPS)](https://www.geeksforgeeks.org/computer-organization-architecture/what-is-floating-point-operations-per-second-flops/)
+
+[15] [Million Instructions Per Second (MIPS)](https://www.geeksforgeeks.org/operating-systems/what-is-mipsmillion-of-instructions-per-second/)

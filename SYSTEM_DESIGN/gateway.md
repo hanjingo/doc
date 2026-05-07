@@ -79,6 +79,10 @@ An API Gateway is a key component in system design, particularly in microservice
 - Authentication & Authorization
 - Request & Response Transformation
 
+### Use Cases
+
+![api_gateway_use_case](res/api_gateway_use_case.jpg)
+
 
 
 ## Example 1: Tinder’s API Gateway
@@ -126,3 +130,5 @@ When a request hits a TAG-powered gateway, it passes through a well-defined pipe
 [3] [API Gateway vs Service Mesh - Which One Do You Need](https://blog.bytebytego.com/p/api-gateway-vs-service-mesh-which)
 
 [4] [How Tinder’s API Gateway Handles A Billion Swipes Per Day](https://blog.bytebytego.com/p/how-tinders-api-gateway-handles-a)
+
+[5] [Top 4 API Gateway Use Cases](https://blog.bytebytego.com/p/ep205-cpu-vs-gpu-vs-tpu?utm_source=publication-search)

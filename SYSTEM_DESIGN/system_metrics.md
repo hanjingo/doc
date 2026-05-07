@@ -581,6 +581,10 @@ $$
 
 ![strategies_for_system_availability](res/strategies_for_system_availability.png)
 
+### Strategies To Reduce Latency
+
+![latency_reduce](res/latency_reduce.png)
+
 ### Horizontal vs Vertical Scaling
 
 | Horizontal Scaling                                           | Vertical Scaling                                           |

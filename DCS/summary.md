@@ -8,12 +8,6 @@
 
 ## Introduction
 
-This document summarizes the core concepts and design principles of **Distributed Systems**, based primarily on *Distributed Systems: Concepts and Design (5th Edition)* by Coulouris et al.
-
-It is intended for **engineers and system designers** seeking a concise yet principled overview for learning, revision, or interview preparation.
-
-### What is a distributed system?
-
 A **distributed system** is a collection of independent computers that appears to its users as a single coherent system.
 
 ### Key characteristics
@@ -29,6 +23,14 @@ A **distributed system** is a collection of independent computers that appears t
 - Scalability
 - Fault tolerance
 - Transparency (access, location, replication, failure, concurrency)
+
+---
+
+
+
+## Concepts
+
+![concepts_summary](res/concepts_summary.png)
 
 ---
 
@@ -429,3 +431,5 @@ The following are some of the major design issues of distributed systems:
 [6] [Comparison of different Consensus Algorithms](https://www.geeksforgeeks.org/operating-systems/consensus-algorithms-in-distributed-system/)
 
 [7] [A Crash Course on Distributed Systems](https://blog.bytebytego.com/p/a-crash-course-on-distributed-systems)
+
+[8] [CAP, PACELC, ACID, BASE - Essential Concepts for an Architect’s Toolkit](https://blog.bytebytego.com/p/cap-pacelc-acid-base-essential-concepts)

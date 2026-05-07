@@ -30,12 +30,12 @@ When the processor detects an event that requires attention, it performs a contr
 
 Key points:
 - The saved return address may be either the faulting instruction or the logically next instruction — hardware defines which.
-- Additional registers or processor state may be pushed to the kernel stack so the handler can examine and restore execution context.
+- Additional registers or processor state may be pushed to the kernel stack so the handler can examine and restore the execution context.
 - Handlers execute in kernel mode with privileged access to system resources.
 
 
 
-## Exception table / vector table
+## Exception table/vector table
 
 Hardware provides an exception/interrupt vector table: a small, fixed table used to select the appropriate entry point for an event type. The firmware or OS initializes this table at boot.
 
@@ -47,8 +47,8 @@ The vector table maps event numbers (interrupt numbers, trap numbers) to handler
 
 ## Stack and context during exceptions
 
-- Kernel vs user stack: when control transfers from user code to the kernel, the CPU switches to the kernel stack (per-CPU or per-thread) before running handler prologue.
-- Saved context: the CPU will either push part of the context automatically or provide a mechanism for the handler to store the rest. The OS typically saves registers, faulting instruction pointer, and processor status words.
+- Kernel vs user stack: when control transfers from user code to the kernel, the CPU switches to the kernel stack (per-CPU or per-thread) before running the handler prologue.
+- Saved context: the CPU will either push part of the context automatically or provide a mechanism for the handler to store the rest. The OS typically saves registers, the faulting instruction pointer, and processor status words.
 - Restoring execution: the handler must restore the saved state correctly to resume execution or perform a safe exit.
 
 Practical advice:

@@ -86,15 +86,37 @@ A code change passes all automated checks in:
 
 ![ship_code_to_production](res/ship_code_to_production.png)
 
+### Deploy Services
+
+![deploy_services_workflow](res/deploy_services_workflow.gif)
+
+- Multi-Service Deployment
+
+  In this model, we deploy new changes to multiple services simultaneously. This approach is easy to implement. But since all the services are upgraded at the same time, it is hard to manage and test dependencies. It’s also hard to rollback safely.
+
+- Blue-Green Deployment
+
+  With blue-green deployment, we have two identical environments: one is staging (blue), and the other is production (green). The staging environment is one version ahead of production. Once testing is done in the staging environment, user traffic is switched to the staging environment, and the staging environment becomes the production. This deployment strategy is simple to perform a rollback, but having two identical production quality environments could be expensive.
+
+- Canary Deployment
+
+  A canary deployment upgrades services gradually, each time to a subset of users. It is cheaper than blue-green deployment and easy to perform a rollback. However, since there is no staging environment, we have to test on production. This process is more complicated because we need to monitor the canary while gradually migrating more and more users away from the old version.
+
+- A/B Test
+
+  In the A/B test, different versions of services run in production simultaneously. Each version runs an “experiment” for a subset of users. An A/B test is a cheap method to test new features in production. We need to control the deployment process in case some features are pushed to users by accident.
+
 ---
 
 
 
 ## Git
 
+![git_cmd_workflow](res/git_cmd_workflow.gif)
+
 ### Git Storage
 
-![git_workflow](res/git_workflow.png)
+![git_storage_workflow](res/git_storage_workflow.png)
 
 Git has two layers:
 
@@ -145,7 +167,7 @@ Git Reset moves your current git branch (HEAD) to a different commit and can mak
 | Git Merge merges two branches to create a "feature" branch.  | Git Rebase rebases the feature branch to add the feature branch to the main branch. |
 | Git Merge is comparatively easy.                             | Git Rebase is comparatively harder.                          |
 | Git Merge safeguards history.                                | Git Rebase doesn't safeguard history.                        |
-| Git Merge is more suitable for projects with the less active main branch. | Git Rebase is suitable for projects with frequently active main branches. |
+| Git Merge is more suitable for projects with a less active main branch. | Git Rebase is suitable for projects with frequently active main branches. |
 
 ---
 
@@ -172,3 +194,5 @@ TODO
 [5] [How Git Reset Works?](https://blog.bytebytego.com/p/ep182-cookies-vs-sessions)
 
 [6] [How Do Companies Ship Code to Production?](https://blog.bytebytego.com/p/ep166-what-is-event-sourcing)
+
+[7] [How to Deploy Services](https://blog.bytebytego.com/i/163736711/how-to-deploy-services)

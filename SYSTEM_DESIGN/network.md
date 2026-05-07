@@ -74,11 +74,11 @@ Polling simply means checking for new data over a fixed interval of time by maki
 
 ### Short Polling
 
-In a short polling client requests data from the server and the server will return the response if it is available and if it is not available then it returns an empty response. This process will be repeated at regular intervals.
+In a short polling client, it requests data from the server, and the server will return the response if it is available, and if it is not available, then it returns an empty response. This process will be repeated at regular intervals.
 
 ### Long Polling
 
-In long polling, the client sends a request to the server and if the response is not available then the server will hold the request till the response gets available, after teh availability of the response, the server will send the response back. In simple words, the client will always be in the live connection to the server.
+In long polling, the client sends a request to the server and if the response is not available then the server will hold the request till the response gets available, after teh availability of the response, the server will send the response back. In simple words, the client will always be in a live connection to the server.
 
 
 
@@ -154,14 +154,14 @@ The differences between Synchronous and Asynchronous Communication:
 | It is based on Timer. So, it is used for those applications that need to update data at a fixed interval of time. | It is based on getting the response. So, It is used for those applications that don't want empty responses. |
 | Here, an empty response can be sent if a response is not available. | Here empty response can never be sent.                       |
 | It is less preferred.                                        | It is more preferred, in comparison to Short Polling.        |
-| It creates lots of traffic.                                  | It also creates traffic but less than short polling.         |
+| It creates lots of traffic.                                  | It also creates traffic, but less than short polling.        |
 
 ### HTTP vs HTTPS
 
 | HTTP                                            | HTTPS                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| HTTP does not use data hashtags to secure data. | While HTTPS will have the data before sending it and return it to its original state on the receiver side. |
-| In HTTP Data is transfer in plaintext.          | In HTTPS Data transfer in ciphertext.                        |
+| HTTP does not use data hashtags to secure data. | HTTPS will have the data before sending it and return it to its original state on the receiver side. |
+| In HTTP, data is transferred in plaintext.      | In HTTPS, data transfer is in ciphertext.                    |
 | HTTP does not require any certificates.         | HTTPS needs SSL Certificates.                                |
 | HTTP does not improve search ranking.           | HTTPS helps to improve search ranking.                       |
 
@@ -173,9 +173,9 @@ The differences between Synchronous and Asynchronous Communication:
 
 | WebSocket Connection                                         | HTTP Connection                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| WebSocket is a bidirectional communication protocol that can send the data from the client to the server or from the server to the client by reusing the established connection channel. The connection is kept alive until terminated by either the client or the server. | The HTTP protocol is a unidirectional protocol that works on top of TCP protocol which is a connection-oriented transport layer protocol, we can create the connection by using HTTP request methods after getting the response HTTP connection get closed. |
-| Almost all the real-time applications like(trading, monitoring, notification) services use WebSocket to receive the data on a single communication channel. | Simple RESTful application uses HTTP protocol which is stateless. |
-| All the frequently updated applications used WebSocket because it is faster than HTTP Connection. | It is used when we do not want to retain a connection for a particular amount of time or reuse the connection for transmitting data; An HTTP connection is slower than WebSockets. |
+| WebSocket is a bidirectional communication protocol that can send the data from the client to the server or from the server to the client by reusing the established connection channel. The connection is kept alive until terminated by either the client or the server. | The HTTP protocol is a unidirectional protocol that works on top of the TCP protocol, which is a connection-oriented transport layer protocol. We can create a connection by using HTTP request methods after getting the response HTTP connection is closed. |
+| Almost all the real-time applications, like trading, monitoring, and notification services, use WebSocket to receive the data on a single communication channel. | A simple RESTful application uses the HTTP protocol, which is stateless. |
+| All the frequently updated applications use WebSocket because it is faster than HTTP connections. | It is used when we do not want to retain a connection for a particular amount of time or reuse the connection for transmitting data. An HTTP connection is slower than WebSockets. |
 
 ### Cookie vs Session
 
@@ -202,3 +202,5 @@ The differences between Synchronous and Asynchronous Communication:
 [4] [How NAT Works](https://blog.bytebytego.com/p/ep200-http2-over-tcp-vs-http3-over)
 
 [5] [Top 4 Most Popular Use Cases for UDP](https://blog.bytebytego.com/i/140533892/top-4-most-popular-use-cases-for-udp)
+
+[6] [Synchronous vs Asynchronous Communication: When to Use What?](https://blog.bytebytego.com/p/synchronous-vs-asynchronous-communication)

@@ -48,7 +48,11 @@ English | [中文版](safe_zh.md)
 
 ## Digital Signature and Digital Certificate
 
-TODO
+![digital_signature_workflow](res/digital_signature_workflow.gif)
+
+A digital signature is a specific kind of electronic signature to sign and secure electronically transmitted documents.
+
+Digital signatures are similar to physical signatures since they are unique to every person. They identify the identity of the signer.
 
 
 
@@ -265,3 +269,11 @@ c[i] = 0; // 10,976 bytes exceed the range defined by array C
 	- Ensure system security
 
 6. Layered Design Principle.
+
+
+
+## Reference
+
+[1] Randal E. Bryant; David R. O'Hallaron. COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE. 3ED
+
+[2] [How Digital Signatures Work?](https://blog.bytebytego.com/p/ep149-jwt-101-key-to-stateless-authentication)

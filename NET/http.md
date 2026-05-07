@@ -41,12 +41,6 @@ Example:
 
 URLs can be absolute (full) or relative (partial). Relative URLs must be resolved against a base URL.
 
-#### Relative URL resolution
-
-![http_url_parse](res/http_url_parse.png)
-
-This diagram shows converting a relative URL to an absolute URL.
-
 ### Differences: URI / URL / URN
 
 - URI: a unique identifier for a resource.
@@ -384,6 +378,10 @@ The main responsibility of SSL is to ensure that the data transfer between the c
 ### HTTP/2 vs HTTP/3
 
 ![http2_vs_http3](res/http2_vs_http3.png)
+
+### URL vs URI vs URN
+
+![url_vs_uri_vs_urn](res/url_vs_uri_vs_urn.png)
 
 
 

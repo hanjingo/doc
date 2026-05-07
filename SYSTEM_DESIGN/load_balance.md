@@ -112,6 +112,8 @@ Resource-Based Load Balancing assigns incoming requests to servers based on thei
 
 ### Stateless Load Balancing
 
+![stateless_arch](res/stateless_arch.png)
+
 Stateless load balancing refers to the practice of distributing incoming requests to servers without considering the state or context of previous interactions.
 
 Key Characteristics of Stateless Load Balancing include:
@@ -182,3 +184,5 @@ Key Characteristics of Stateful Load Balancing include:
 [2] [Load Balancer](https://www.geeksforgeeks.org/system-design/what-is-load-balancer-system-design/)
 
 [3] [Differences between an API Gateway and a Load Balancer](https://www.geeksforgeeks.org/system-design/difference-between-an-api-gateway-and-a-load-balancer/)
+
+[4] [Stateless Architecture: The Key to Building Scalable and Resilient Systems](https://blog.bytebytego.com/p/stateless-architecture-the-key-to)

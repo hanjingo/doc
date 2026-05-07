@@ -293,7 +293,7 @@ How is DeepSeek-OCR built? The system has two main parts:
 5. Not relying solely on vibes and anecdotes is problematic.
 6. In the rush to ship features, evaluation often gets deprioritized. But shipping without evals means we have no idea if we’re making things better or worse.
 
-### Prons and Cons Of LLM Distillation
+### Pros and Cons Of LLM Distillation
 
 Benefits of LLM Distillation:
 

@@ -32,13 +32,13 @@ While Event Sourcing offers various benefits, it also presents several challenge
 
 ### Practice
 
-Use Event Sourcing Pattern when:
+Use the Event Sourcing Pattern when:
 
 - It's good for apps with complicated rules that need to keep track of how things change over time.
 - It helps when you need a complete history of changes for legal reasons or audits.
 - Useful for systems that need to save old data, like financial information.
 - Helps your app bounce back quickly from problems by rep.
-- Laying past events.
+- Lying past events.
 - Works well in systems with separate parts that need to communicate without being tightly linked.
 
 Event Sourcing may not be the best choice in these situations:
@@ -58,7 +58,7 @@ Event Streaming is a data processing paradigm that focuses on the continuous flo
 
 - Events are handled as they happen, leading to fast reactions.
 - It works well even when there are lots of events coming in quickly.
-- Different parts of a system can work alone by read to the events they need.
+- Different parts of a system can work alone by reading the events they need.
 
 ### Disadvantages
 

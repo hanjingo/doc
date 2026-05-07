@@ -8,7 +8,7 @@
 
 ![anthropic_multi_agent_research_system](res/anthropic_multi_agent_research_system.png)
 
-### High Level Design
+**High-Level Design:**
 
 ![anthropic_high_lvl_arch_of_advanced_research](res/anthropic_high_lvl_arch_of_advanced_research.png)
 

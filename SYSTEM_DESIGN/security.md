@@ -64,7 +64,7 @@ Single Sign-On(SSO) is an authentication schema. It allows a user to log in to d
 
 ![sso_workflow](res/sso_workflow.jpeg)
 
-### Advantage
+**Advantage:**
 
 For Users:
 
@@ -77,7 +77,7 @@ For Businesses:
 - Increase customer base and satisfaction as SSO provides a lower barrier to entry and seamless user experience.
 - Reduce IT costs for managing customer's usernames and passwords.
 
-### Disadvantage
+**Disadvantage:**
 
 - Increased security risk if login credentials are not securely protected and are exposed or stolen as adversaries can now access many websites and applications with a single credential.
 - Authentication systems must have high availability as loss of availability can lead to denial of service for applications using a shard cluster of authentication systems.
@@ -126,6 +126,28 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 
 ![jwt_structure](res/jwt_structure.png)
 
+#### Stateless Authentication
+
+![jwt_stateless_authentication](res/jwt_stateless_authentication.gif)
+
+
+
+## Two-factor Authentication (2FA)
+
+![2fa](res/2fa.gif)
+
+Two-factor authentication (2FA) is a type of multi-factor authentication that makes accounts more secure.
+
+**Workflow:**
+
+1. The user enters username and password. This is for the first level of authentication, also known as single-factor.
+2. The authentication request goes to the authentication server.
+3. The authentication credentials are verified.
+4. In case of any incorrect credentials, a certain number of retries may be allowed.
+5. If the credentials are correct, the two-factor authentication kicks in. There are multiple options available: biometric verification, OTP verification, or Authenticator App Verification. Organizations like Google and Microsoft also provide such apps.
+6. The user verifies using the chosen option.
+7. If the verification fails, access is denied. However, if verification succeeds, access is granted.
+
 
 
 ## Summary
@@ -137,11 +159,6 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 ### Authentication vs Authorization
 
 ![work_of_authentication_and_authorization](res/work_of_authentication_and_authorization.png)
-
-- Authentication: Confirms the user's identity(proves who the user is).
-- Authorization: Controls what the verified user is allowed to do(decides what they can access).
-
-### Difference Between Authentication And Authorization
 
 | Authentication                                         | Authorization                                                |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
@@ -209,3 +226,5 @@ A JSON Web Token(JWT) is a secure way to send information between a client and a
 [8] [Access Control Clearly Explained](https://blog.bytebytego.com/p/ep182-cookies-vs-sessions)
 
 [9] [Cookies Vs Sessions Vs JWT Vs PASETO](https://blog.bytebytego.com/i/155048027/cookies-vs-sessions-vs-jwt-vs-paseto)
+
+[10] [How Two-factor Authentication (2FA) Works?](https://blog.bytebytego.com/i/159794025/how-two-factor-authentication-2fa-works)

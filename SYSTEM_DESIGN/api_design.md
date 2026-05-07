@@ -29,7 +29,7 @@ API Versioning is the practice of creating different versions of an API to ensur
 Advantages:
 
 - Old clients can continue to use the old version without issues.
-- It's different versions can have distinct features or behaviors, making it easy to manage changes.
+- Its different versions can have distinct features or behaviors, making it easy to manage changes.
 - Users can choose when to upgrade to a new version based on their needs.
 
 Disadvantages:
@@ -50,7 +50,7 @@ Advantages:
 
 Disadvantages:
 
-- It changes might by mistake disrupt existing users.
+- The changes might by mistake, disrupt existing users.
 - Users must adapt to changes without the option to stick to an old version.
 - If something goes wrong, reverting to an old state can be difficult.
 
@@ -87,7 +87,7 @@ curl -H "x-api-key: YOUR_API_KEY" https://api.example.com/user/profile
 
 API Keys can be configured with different permission levels, such as:
 
-- Read-Only Access: the API Key allows fetching data but restricts modification.
+- Read-Only Access: The API Key allows fetching data but restricts modification.
 - Write Access: The API Key permits data updates but restricts administrative changes.
 - Admin Access: Full access to API resources, including sensitive operations.
 
@@ -188,6 +188,10 @@ Here are some key reasons why API contracts are important:
    - Defined Errors
    - Better Reliability
 
+### API Effective
+
+![api_effective](res/api_effective.jpg)
+
 
 
 ## REST API
@@ -211,73 +215,6 @@ A REST API(Representational State Transfer API) enables communication between cl
 ### Method
 
 ![http_request_method](res/http_request_method.png)
-
-- GET
-
-  The HTTP GET method retrieves a resource:
-
-  ```http
-  GET /users/123
-  ```
-
-- PUT
-
-  The HTTP PUT is used to update or create a resource. It sends the complete resource in the request body and replaces the existing one at the specified URL:
-
-  ```http
-  PUT /users/123
-  { 
-    "name": "Anne", 
-    "email": "gfg@example.com"
-  }
-  ```
-
-- POST
-
-  The HTTP POST method creates new resources:
-
-  ```http
-  POST /users
-  { 
-    "name": "Anne", 
-    "email": "gfg@example.com"
-  }
-  ```
-
-- DELETE
-
-  It is used to delete a resource identified by a URI:
-
-  ```http
-  DELETE /users/123
-  ```
-  
-- PATCH
-
-  The HTTP PATCH is used to partially update a resource. It sends only the fields to be modified, instead of replacing the entire resource:
-
-  ```http
-  PATCH /users/123
-  { 
-    "email": "new.email@example.com" 
-  }
-  ```
-  
-- HEAD
-
-  TODO
-
-- CONNECT
-
-  TODO
-
-- OPTIONS
-
-  TODO
-
-- TRACE
-
-  TODO
 
 ### Idempotency
 
@@ -412,6 +349,10 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 ![api_scale](res/api_scale.png)
 
+### Code First vs API First
+
+![code_first_vs_api_first](res/code_first_vs_api_first.jpg)
+
 ### API vs SDK
 
 ![api_vs_sdk](res/api_vs_sdk.png)
@@ -439,7 +380,7 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 | SOAP API                                                     | REST API                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Relies on SOAP(Simple Object Access Protocol)                | Relies on REST(Representational State Transfer) architecture using HTTP. |
-| Transport data in standard XML format.                       | Generally transports data in JSON. It it based on URI. Because REST follows a stateless model, REST does not enforce message format as XML or JSON et. |
+| Transport data in standard XML format.                       | Generally transports data in JSON. It is based on URI. Because REST follows a stateless model, REST does not enforce a message format such as XML or JSON et. |
 | Because it is XML based and relies on SOAP, it works with WSDL | It works with GET, POST, PUT, DELETE                         |
 | Works over HTTP, HTTPS, SMTP, XMPP                           | Works over HTTP and HTTPS                                    |
 | Highly structured/typed                                      | Less structured -> less bulky data                           |
@@ -506,6 +447,19 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 
 ![api_design_best_practices](res/api_design_best_practices.png)
 
+- Use Clear Naming: When building an API, choose straightforward and logical names. Be consistent and stick with intuitive URLs that denote collections.
+- Idempotency: APIs should be idempotent. They ensure safe retries by making repeated requests to produce the same result, especially for POST operations.
+- Pagination: APIs should support pagination to prevent performance bottlenecks and payload bloat. Some common pagination strategies are offset-based and cursor-based.
+- Sorting and Filtering: Query strings are an effective way to allow sorting and filtering of API responses. This makes it easy for developers to see what filters and sort orders are applied.
+- Cross Resource References: Use clear linking between connected resources. Avoid excessively long query strings that make the API harder to understand.
+- Rate Limiting: Rate limiting is used to control the number of requests a user can make to an API within a certain timeframe. This is crucial for maintaining the reliability and availability of the API.
+- Versioning: When modifying API endpoints, proper versioning to support backward compatibility is important.
+- Security: API security is mandatory for well-designed APIs. Use proper authentication and authorization with APIs using API Keys, JWTs, OAuth2, and other mechanisms.
+
+### Pillars
+
+![api_design_pillars](res/api_design_pillars.gif)
+
 
 
 ## References
@@ -525,3 +479,5 @@ The architecture of gRPC centres on Protocol Buffers' definition of service meth
 [7] [EP172: Top 5 common ways to improve API performance](https://blog.bytebytego.com/p/ep172-top-5-common-ways-to-improve)
 
 [8] [A Crash Course on Scaling the API Layer](https://blog.bytebytego.com/p/a-crash-course-on-scaling-the-api)
+
+[9] [Code First v.s. API First](https://blog.bytebytego.com/i/155600813/code-first-vs-api-first)

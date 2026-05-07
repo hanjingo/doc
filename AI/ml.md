@@ -125,7 +125,7 @@ Rule-based machine learning (RBML) is a branch of machine learning that automati
 
 ### Training models
 
-Typically, machine learning models require a high quantity of reliable data to perform accurate predictions. When training a machine learning model, machine learning engineers need to target and collect a large and representative sample of data.S
+Typically, machine learning models require a high quantity of reliable data to perform accurate predictions. When training a machine learning model, machine learning engineers need to target and collect a large and representative sample of data.
 
 ### Federated learning
 

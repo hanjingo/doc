@@ -73,6 +73,26 @@ Benefit:
 
 ![kubernetes_pod](res/kubernetes_pod.png)
 
+### Scaling Strategies
+
+![k8s_scaling_strategies](res/k8s_scaling_strategies.gif)
+
+- Horizontal Pod Autoscaling or HPA
+
+  Horizontal Pod Autoscaler automatically scales the number of Pods in a Deployment, ReplicaSet, or StatefulSet based on observed CPU utilization, memory usage, or custom metrics.
+
+- Vertical Pod Autoscaling or VPA
+
+  Based on application requirements, VPA adjusts the resources allocated to individual pods, such as CPU and memory. This approach dynamically changes pod resource settings based on workload metrics.
+
+- Cluster Auto Scaling
+
+  The Cluster Autoscaler automatically adjusts the number of nodes in a Kubernetes cluster. It interacts with the cloud provider to add or remove nodes based on requirements. This is important to maintain a balanced cluster.
+
+- Predictive Auto Scaling
+
+  Predictive Autoscaling uses machine learning to forecast future resource requirements. It helps Kubernetes adjust resources by anticipating workload demands.
+
 
 
 ## Example 1: Airbnb Runs Distributed Databases on Kubernetes at Scale
@@ -100,6 +120,50 @@ This setup brings several benefits:
 
 ## Summary
 
+### Scaling Infrastructure Provisioning and Management
+
+![scaling_infrastructure](res/scaling_infrastructure.png)
+
+### Docker Best Practices
+
+![docker_best_practices](res/docker_best_practices.png)
+
+- Use official images
+
+  This ensures security, reliability, and regular updates.
+
+- Use a specific image version
+
+  The default latest tag is unpredictable and causes unexpected behavior.
+
+- Multi-Stage builds
+
+  Reduces final image size by excluding build tools and dependencies.
+
+- Use .dockerignore
+
+  Excludes unnecessary files, speeds up builds, and reduces image size.
+
+- Use the least privileged user
+
+  Enhances security by limiting container privileges.
+
+- Use environment variables
+
+  Increases flexibility and portability across different environments.
+
+- Order matters for caching
+
+  Order your steps from least to most frequently changing to optimize caching.
+
+- Label your images
+
+  It improves organization and helps with image management.
+
+- Scan images
+
+  Find security vulnerabilities before they become bigger problems.
+
 ### Docker vs K8s
 
 ![docker_vs_k8s](res/docker_vs_k8s.jpg)
@@ -125,3 +189,9 @@ This setup brings several benefits:
 [4] [EP178: The Lifecycle of a Kubernetes Pod](https://blog.bytebytego.com/p/ep178-the-lifecycle-of-a-kubernetes)
 
 [5] [Top 8 must-know Docker concepts](https://blog.bytebytego.com/i/145628005/top-8-must-know-docker-concepts)
+
+[6] [Infrastructure as Code](https://blog.bytebytego.com/p/infrastructure-as-code)
+
+[7] [Top Kubernetes Scaling Strategies You Must Know](https://blog.bytebytego.com/p/ep164-jwt-simply-explained)
+
+[8] [9 Docker Best Practices You Should Know](https://blog.bytebytego.com/i/172894034/9-docker-best-practices-you-should-know)

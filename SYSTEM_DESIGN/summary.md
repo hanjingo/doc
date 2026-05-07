@@ -6,15 +6,17 @@
 
 ![system_design_blueprint](res/system_design_blueprint.jpg)
 
-## Terminology
+## Topics
 
-![system_design_terminology](res/system_design_terminology.png)
+![system_design_topics](res/system_design_topics.gif)
 
 ---
 
 
 
 ## Design Principle
+
+![system_design_terminology](res/system_design_terminology.png)
 
 ### SOLID
 
@@ -56,9 +58,11 @@ The KISS principle, which stands for "Keep It Simple, Stupid", is a design princ
 
 ### Functional Requirements
 
-Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included into the system as part of the contract.
+Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included in the system as part of the contract.
 
 ### Non-Functional Requirements
+
+![non_functional_requirement](res/non_functional_requirement.jpg)
 
 Non-functional Requirements are the quality constraints that the system must satisfy according to the project contract. The priority or extent to which these factors are implemented varies from one project to another. They are also called non-behavioral requirements. For example: portability, maintainability, reliability, scalability, security, etc.
 
@@ -80,26 +84,88 @@ Software Cost Estimation is a systematic process used to forecast the amount of 
 
 
 
+## API Design
+
+![api_protocols](res/api_protocols.jpg)
+
+### Best Practices
+
+![api_design_best_practices](res/api_design_best_practices.png)
+
+### Effective API
+
+![api_effective](res/api_effective.jpg)
+
+---
+
+
+
 ## High Level Design(HLD)
 
-![software_arch_style](res/software_arch_style.png)
+![software_arch_style](res/software_arch_style.jpg)
 
-High Level Design(HLD) is an initial step in the development of applications where the overall structure of a system is planned.
+High-Level Design(HLD) is an initial step in the development of applications where the overall structure of a system is planned.
 
-A diagram representing each design aspect is include in the HLD (which is based on business requirements and anticipated results):
+A diagram representing each design aspect is included in the HLD (which is based on business requirements and anticipated results):
 
-- It contains description of hardware, software interfaces, and also user interfaces;
-- It is also known as macro level/system, design;
-- It is created by solution architect;
+- It contains descriptions of hardware, software interfaces, and also user interfaces.
+- It is also known as the macro level/system design.
+- It is created by a solution architect.
 - The workflow of the user's typical process is detailed in the HLD, along with performance specifications.
 
 ---
 
 
 
-## APIs
+## Database Design
 
-![api_arch_type](res/api_arch_type.png)
+### DB
+
+![types_of_db](res/types_of_db.png)
+
+### Caching
+
+![caching_arch_example](res/caching_arch_example.png)
+
+### Storage
+
+![object_store_use_case](res/object_store_use_case.png)
+
+---
+
+
+
+## Scalability and Performance 
+
+### Scalability Pattern
+
+![scalability_patterns](res/scalability_patterns.png)
+
+### Performance Metrics
+
+![system_performance_metrics](res/system_performance_metrics.png)
+
+### Strategies For System Performance
+
+![strategies_for_system_performance](res/strategies_for_system_performance.png)
+
+### Reduce Latency
+
+![latency_reduce](res/latency_reduce.png)
+
+### Latency vs Throughput
+
+![latency_vs_throughput](res/latency_vs_throughput.jpg)
+
+---
+
+
+
+## Reliability and Resiliency
+
+### Strategies For Reliability And Fault Tolerance
+
+![strategies_for_reliability_fault_tolerance](res/strategies_for_reliability_fault_tolerance.png)
 
 ---
 
@@ -121,18 +187,6 @@ A diagram representing each design aspect is include in the HLD (which is based 
 
 ![mq_vs_no_mq](res/mq_vs_no_mq.png)
 
-### DB
-
-![types_of_db](res/types_of_db.png)
-
-### Caching
-
-![caching_arch_example](res/caching_arch_example.png)
-
-### Storage
-
-![object_store_use_case](res/object_store_use_case.png)
-
 ### CDN
 
 ![cdn_work](res/cdn_work.png)
@@ -143,7 +197,7 @@ TODO
 
 ### Service Discovery
 
-TODO
+![service_discovery](res/service_discovery.jpg)
 
 ### Scaling
 
@@ -166,14 +220,6 @@ TODO
 ### AI
 
 TODO
-
-### Reduce Latency
-
-![latency_reduce](res/latency_reduce.png)
-
-### Latency vs Throughput
-
-![latency_vs_throughput](res/latency_vs_throughput.png)
 
 ### Version Strategies
 
@@ -208,3 +254,7 @@ TODO
 [12] [EP175: What is the SOLID Principle?](https://blog.bytebytego.com/p/ep175-what-is-the-solid-principle)
 
 [13] [What are some of the most popular versioning strategies?](https://blog.bytebytego.com/p/ep178-the-lifecycle-of-a-kubernetes)
+
+[14] [Non-Functional Requirements: The Backbone of Great Software - Part 1](https://blog.bytebytego.com/p/non-functional-requirements-the-backbone)
+
+[15] [The System Design Topic Map](https://blog.bytebytego.com/p/ep163-12-mcp-servers-you-can-use)

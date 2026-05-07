@@ -209,6 +209,14 @@ Cursor uses three key techniques to keep this loop fast:
 
 
 
+## Summary
+
+### N8N vs LangGraph
+
+![n8n_vs_lang_graph](res/n8n_vs_lang_graph.jpg)
+
+
+
 ## Reference
 
 [1] [Top AI Agentic Workflow Patterns](https://blog.bytebytego.com/p/top-ai-agentic-workflow-patterns)
@@ -226,3 +234,5 @@ Cursor uses three key techniques to keep this loop fast:
 [7] [How Uber Built a Conversational AI Agent For Financial Analysis](https://blog.bytebytego.com/p/how-uber-built-a-conversational-ai)
 
 [8] [Top 20 AI Agent Concepts You Should Know](https://blog.bytebytego.com/i/166418419/top-20-ai-agent-concepts-you-should-know)
+
+[9] [N8N versus LangGraph](https://blog.bytebytego.com/i/172894034/n8n-versus-langgraph)

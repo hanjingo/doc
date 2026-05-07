@@ -218,7 +218,7 @@ Comparison Among Scheduler:
 
 ## Reference
 
-[1] Randal E. Bryant, David R. O'Hallaron . COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE . 3ED
+[1] Randal E. Bryant; David R. O'Hallaron. COMPUTER SYSTEMS: A PROGRAMMER'S PERSPECTIVE. 3ED
 
 [2] [Operating System Tutorial](https://www.geeksforgeeks.org/blogs/operating-systems/)
 

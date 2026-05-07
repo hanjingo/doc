@@ -52,6 +52,31 @@ Types of Databases in System Design:
 
 MongoDB is a popular NoSQL database designed for flexibility, scalability, and high performance. It stores data in a JSON-like format (BSON) and supports horizontal scaling through sharding and replication.
 
+### PostgreSQL
+
+![postgre_sql_workflow](res/postgre_sql_workflow.gif)
+
+The key points about PostgreSQL’s Architecture are as follows:
+
+1. PostgreSQL supports concurrent client connections independently. Each client connection to PostgreSQL creates a dedicated server process.
+2. The Postmaster Process is the main supervisor that manages all other PostgreSQL processes. It controls the entire database instance.
+3. Background workers run parallel processes when needed to handle specialized tasks.
+4. PostgreSQL shared memory is a central memory area containing multiple buffers such as Shared, WAL, Clog, and Temporary buffers. All components communicate through this shared memory.
+5. PostgreSQL also has several auxiliary processes such as:
+   - BG Writer: Manages background writing
+   - WAL Writer: Handles write-ahead logging
+   - Auto Vacuum: Maintains database cleanliness
+   - Checkpointer: Ensures data consistency
+   - Stats Collector: Gathers statistics
+   - System Logger: Manages Logging
+   - Archiver: Handles archiving
+   - Replication launcher: Manages replication
+6. PostgreSQL has different types of physical files for varied needs such as:
+   - Data Files: Stores actual database data
+   - WAL Files: Write-ahead log storage
+   - Archive Files: Backup and recovery data
+   - Log Files: System and error logs
+
 ---
 
 
@@ -69,6 +94,10 @@ Database scaling is the process of adapting and expanding the database infrastru
 ## Data Sharding And Partitioning
 
 ![db_data_sharding](res/db_data_sharding.png)
+
+Sharding splits a large database into smaller, independent chunks called shards. Each shard handles a subset of the data, allowing traffic and storage to scale out across multiple machines instead of piling onto one.
+
+But sharding is a major shift with real consequences. Application logic often needs to adapt. Query patterns change, and joins become harder. Transactions span physical boundaries. There’s overhead in managing routing, rebalancing, and failover.
 
 ### Data Sharding
 
@@ -150,6 +179,16 @@ Partitioning helps improve query performance by limiting the amount of data the 
 
 
 
+## Database Transaction
+
+![db_transaction](res/db_transaction.png)
+
+A database transaction wraps a series of actions into an all-or-nothing unit. Either the entire thing commits and becomes visible to the world, or none of it does. In other words, the goal is to have no half-finished orders, no inconsistent account balances, and no phantom bookings.
+
+---
+
+
+
 ## Database Replication
 
 ![db_replication](res/db_replication.png)
@@ -223,13 +262,13 @@ To accomplish particular objectives related to data consistency, availability, a
 
 ## Database Normalization And Denormalization
 
-TODO
+![db_normalization_denormalization](res/db_normalization_denormalization.png)
 
 ---
 
 
 
-## Cluster
+## Database Cluster
 
 TODO
 
@@ -591,3 +630,9 @@ Here are a few key factors to consider when choosing the right database:
 [12] [A Guide to Database Sharding](https://blog.bytebytego.com/p/must-know-message-broker-patterns-4c4)
 
 [13] [How MongoDB Works?](https://blog.bytebytego.com/p/ep170-best-ways-to-test-system-functionality)
+
+[14] [PostgreSQL 101: The Everything Database](https://blog.bytebytego.com/p/ep150-12-algorithms-for-system-design)
+
+[15] [Database Schema Design Simplified: Normalization vs Denormalization](https://blog.bytebytego.com/p/database-schema-design-simplified)
+
+[16] [A Guide to Database Transactions: From ACID to Concurrency Control](https://blog.bytebytego.com/p/a-guide-to-database-transactions)

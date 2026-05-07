@@ -70,7 +70,7 @@ Disadvantages
 
 ![numa](res/numa.png)
 
-In NUMA, where a different memory controller is used. Non-uniform Memory Access is faster than uniform Memory Access. Non-uniform Memory Access is applicable for real-time applications and time-critical applications. 
+In NUMA, a different memory controller is used. Non-uniform Memory Access is faster than uniform Memory Access. Non-uniform Memory Access is applicable for real-time applications and time-critical applications. 
 
 Advantages
 
@@ -102,7 +102,7 @@ In a multiprogramming system, multiple programs are to be stored in memory, and 
 
 ![time_sharing_system](res/time_sharing_system.png)
 
-**A time-shared operating system** uses CPU scheduling and multi-programming to provide each user with a small portion of a shared computer at once. Each user has at least one separate program in memory. A program is loaded into memory and executes, it performs a short period of time either before completion or to complete I/O. This short period of time during which the user gets the attention of the CPU  is known as **time slice, time slot, or quantum**.
+**A time-shared operating system** uses CPU scheduling and multi-programming to provide each user with a small portion of a shared computer at once. Each user has at least one separate program in memory. A program is loaded into memory and executes, it performs a short period of time either before completion or to complete I/O. This short period of time during which the user gets the attention of the CPU  is known as a **time slice, time slot, or quantum**.
 
 ### Multitasking System
 
@@ -230,6 +230,10 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 
 ## Summary
 
+### Concurrency is Not Parallelism
+
+![concurrency_vs_parallelism](res/concurrency_vs_parallelism.png)
+
 ### Asymmetric vs Symmetric Multiprocessing
 
 |                  Asymmetric Multiprocessing                  |                  Symmetric Multiprocessing                   |
@@ -277,3 +281,5 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 [7] [Difference between Asymmetric and Symmetric Multiprocessing](https://www.geeksforgeeks.org/computer-organization-architecture/difference-between-asymmetric-and-symmetric-multiprocessing/)
 
 [8] [Multi Processing Operating System](https://www.geeksforgeeks.org/operating-systems/multi-processing-operating-system/)
+
+[9] [Concurrency is NOT Parallelism](https://blog.bytebytego.com/i/171681790/concurrency-is-not-parallelism)

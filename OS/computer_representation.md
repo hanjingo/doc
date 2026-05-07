@@ -11,7 +11,7 @@ Most modern systems use fixed-width binary encodings for integers (commonly 8-, 
 - Unsigned integers represent values 0..2^N - 1.
 - Signed integers are usually represented in two's complement. For an N-bit two's-complement integer, values range from -2^{N-1} to 2^{N-1}-1.
 
-Two's-complement advantages:
+Two 's-complement advantages:
 
 - Single zero representation.
 - Same binary addition circuitry for signed and unsigned arithmetic (modular arithmetic semantics).
@@ -30,12 +30,12 @@ Be mindful: interpreting the same bytes as signed vs unsigned changes the numeri
 Because integers are fixed-width, arithmetic can overflow. Rules differ by language:
 
 - In unsigned arithmetic (C/C++), operations wrap modulo 2^N — this is well-defined.
-- In signed C/C++ integer overflow is undefined behavior (compiler may assume it never happens), so avoid writing code that relies on signed overflow.
+- In signed C/C++, integer overflow is undefined behavior (the compiler may assume it never happens), so avoid writing code that relies on signed overflow.
 
 Practical consequences:
 
 - Prefer unsigned arithmetic when you need modular wraparound semantics.
-- Use safe checks or builtin intrinsics (e.g., compiler intrinsics or language features) to detect overflow when correctness depends on it.
+- Use safe checks or built-in intrinsics (e.g., compiler intrinsics or language features) to detect overflow when correctness depends on it.
 
 
 
@@ -62,7 +62,7 @@ Common platforms:
 - x86/x86-64: little-endian.
 - Many network protocols and some RISC platforms use big-endian or define network byte order as big-endian.
 
-Why it matters: reading or writing raw bytes (files, sockets, shared memory, disk) requires a consistent interpretation of byte order across producers and consumers.
+Why it matters: Reading or writing raw bytes (files, sockets, shared memory, disk) requires a consistent interpretation of byte order across producers and consumers.
 
 
 

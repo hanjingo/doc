@@ -377,9 +377,11 @@ Data Sharding is a technique used to divide a large database into smaller parts 
 
 
 
-## Denormalization
+## Normalization and Denormalization
 
-Denormalization is a database optimization technique where redundant data is intentionally added to one or more tables to reduce the need for complex joins and improve query performance. It is not the opposite of normalization, but rather an optimization applied after normalization.
+![normalization_denormalization](res/normalization_denormalization.png)
+
+**Normalization** and **Denormalization** aren't rival approaches, but just tools to get the job done. Each solves a different kind of problem. Normalization focuses on data integrity, minimal redundancy, and long-term maintainability. Denormalization prioritizes read efficiency, simplicity of access, and performance under load.
 
 ---
 

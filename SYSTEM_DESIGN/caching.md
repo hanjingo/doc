@@ -4,7 +4,7 @@
 
 
 
-![caching_arch_example](res/caching_arch_example.png)
+![caching_arch_example](res/caching_arch_example.jpg)
 
 ## Eviction Strategies
 

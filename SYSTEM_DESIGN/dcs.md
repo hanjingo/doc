@@ -4,7 +4,7 @@
 
 
 
-![dcs_workflow](res/dcs_workflow.png)
+![dcs_intro](res/dcs_intro.png)
 
 ## Distributed systems issues
 
@@ -58,11 +58,21 @@ Use Case:
 4. Online Gaming Systems
 5. ...
 
+### Latency and Partition
+
+![dcs_latency_partition](res/dcs_latency_partition.png)
+
+Latency, or the delay in communication between nodes, can degrade user experience and complicate real-time processing. Partition tolerance, the capacity of a system to continue operating despite communication breakdowns among nodes, highlights the trade-offs between maintaining availability and ensuring data consistency. 
+
 ### Fundamental
 
 ![dcs_fundamental](res/dcs_fundamental.png)
 
 The fundamental challenge that makes distributed systems different is partial failure. In single-computer programs, everything typically crashes together. In distributed systems, some components can fail while others continue operating.
+
+### Workflow
+
+![dcs_workflow](res/dcs_workflow.png)
 
 ### Models of interaction
 
@@ -174,6 +184,14 @@ It is appropriate to use a peer-to-peer architectural model for a system in two 
 
 
 
+## Distributed Caching
+
+![dcs_caching](res/dcs_caching.png)
+
+Distributed caching involves spreading the cached data across multiple servers or nodes, allowing the cache to scale horizontally to handle large-scale applications. With a distributed cache, data is stored across multiple locations, meaning a single-node failure doesn’t compromise the entire cache, and the system can continue to serve requests seamlessly. 
+
+
+
 ## Distributed Locking
 
 TODO
@@ -185,6 +203,12 @@ TODO
 ### Netflix Implement
 
 ![netflix_distributed_counter](res/netflix_distributed_counter.png)
+
+
+
+## Distributed Tracing
+
+![distributed_tracing](res/distributed_tracing.png)
 
 
 
@@ -213,3 +237,11 @@ TODO
 [8] [Service Discovery 101: The Phonebook for Distributed Systems](https://blog.bytebytego.com/p/service-discovery-101-the-phonebook)
 
 [9] [A Guide to Retry Pattern in Distributed Systems](https://blog.bytebytego.com/p/a-guide-to-retry-pattern-in-distributed)
+
+[10] [Distributed Caching: The Secret to High-Performance Applications](https://blog.bytebytego.com/p/distributed-caching-the-secret-to)
+
+[11] [Dark Side of Distributed Systems: Latency and Partition Tolerance](https://blog.bytebytego.com/p/dark-side-of-distributed-systems)
+
+[12] [A Crash Course on Distributed Systems](https://blog.bytebytego.com/p/a-crash-course-on-distributed-systems)
+
+[13] [How Distributed Tracing Works at the High Level?](https://blog.bytebytego.com/i/190028819/how-distributed-tracing-works-at-the-high-level)

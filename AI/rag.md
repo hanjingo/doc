@@ -6,6 +6,8 @@
 
 
 
+![rag_intro](res/rag_intro.gif)
+
 RAG (Retrieval Augmented Generation) is a method that combines information retrieval with large language models to generate answers.
 
 ## Workflow
@@ -34,6 +36,20 @@ This approach can make a reasonably sized context window feel almost limitless. 
 
 ![rag_vs_agentic_rag](res/rag_vs_agentic_rag.jpg)
 
+RAG (Retrieval Augmented Generation) is a method that combines information retrieval with large language models to generate answers. Here’s how RAG works on a high level:
+
+1. The model retrieves relevant data from data sources and then extracts it to a vector database from the pre-indexed model.
+2. Augment the prompts by retrieving information and merging it with the query prompt.
+3. A Large Language Model (like GPT, Claude, or Gemini) understands the combined query and generates the final response.
+
+Agentic RAG improves on this by introducing AI agents that can make decisions, select tools, and even refine queries for more accurate and flexible responses. Here’s how Agentic RAG works on a high level:
+
+1. The user query is directed to an AI Agent for processing.
+2. The agent uses short-term and long-term memory to track query context. It also formulates a retrieval strategy and selects appropriate tools for the job.
+3. The data fetching process can use tools such as vector search, multiple agents, and MCP servers to gather relevant data from the knowledge base.
+4. The agent then combines retrieved data with a query and system prompt. It passes this data to the LLM.
+5. LLM processes the optimized input to answer the user’s query.
+
 ### RAG vs Fine-tuning
 
 ![rag_vs_fine_tuning](res/rag_vs_fine_tuning.jpg)
@@ -53,3 +69,5 @@ Fine-tuning: Offline training that updates model weights with domain-specific da
 [3] [RAG vs Fine-tuning: Which one should you use?](https://blog.bytebytego.com/i/177034686/rag-vs-fine-tuning-which-one-should-you-use)
 
 [4] [How RAG Helps with Context Windows?](https://blog.bytebytego.com/i/176340112/how-rag-helps-with-context-windows)
+
+[5] [What is Retrieval-Augmented Generation (RAG)?](https://blog.bytebytego.com/i/159794025/what-is-retrieval-augmented-generation-rag)

@@ -154,9 +154,7 @@
 
 ### Indexing
 
-![dense_index](res/dense_index.png)
-
-![sparse_index](res/sparse_index.png)
+![db_index_types](res/db_index_types.png)
 
 ### CQRS (Command Query Responsibility Segregation)
 
@@ -213,3 +211,5 @@
 [15] [How CQRS Works?](https://blog.bytebytego.com/i/183283151/how-cqrs-works)
 
 [16] [How SQL Query Executes In A Database?](https://blog.bytebytego.com/i/166418419/how-sql-query-executes-in-a-database)
+
+[17] [Database Index Types Every Developer Should Know](https://blog.bytebytego.com/i/167925185/database-index-types-every-developer-should-know)

@@ -4,7 +4,7 @@
 
 
 
-![design_pattern_summary](res/design_pattern_summary.png)
+![design_pattern_summary](res/design_pattern_summary.gif)
 
 ---
 
@@ -3721,3 +3721,5 @@
 ## REFERENCE
 
 [1] Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides. Design Pattern . 1th Edition
+
+[2] [18 Key Design Patterns Every Developer Should Know](https://blog.bytebytego.com/i/159916938/18-key-design-patterns-every-developer-should-know)
