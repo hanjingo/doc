@@ -8,6 +8,8 @@
 
 ## Insertion Sort
 
+![insertion_sort](res/insertion_sort.gif)
+
 Insertion sort is a simple sorting algorithm that works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list.
 
 **Algorithm:**
@@ -62,6 +64,8 @@ void insertion_sort(int arr[], int n)
 
 
 ## Selection Sort
+
+![selection_sort](res/selection_sort.gif)
 
 **Selection Sort** is a comparison-based sorting algorithm. It sorts by repeatedly selecting the **smallest (or largest)** element from the unsorted portion and swapping it with the first unsorted element
 
@@ -120,6 +124,8 @@ void selection_sort(int arr[], int n)
 
 
 ## Bubble Sort
+
+![bubble_sort](res/bubble_sort.gif)
 
 **Bubble Sort** is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not efficient for large data sets as its average and worst-case time complexity are quite high.
 
@@ -180,6 +186,8 @@ void bubble_sort(int arr[], int n)
 
 
 ## Merge Sort
+
+![merge_sort](res/merge_sort.gif)
 
 **Merge sort** is a popular sorting algorithm known for its efficiency and stability. It follows the Divide and Conquer approach. It works by recursively dividing the input array into two halves, recursively sorting the two halves, and finally merging them back together to obtain the sorted array.
 
@@ -284,6 +292,8 @@ void merge_sort(int arr[], int l, int r)
 
 ## Quick Sort
 
+![quick_sort](res/quick_sort.gif)
+
 **QuickSort** is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
 
 **Algorithm:**
@@ -344,6 +354,8 @@ void quick_sort(int a[], int low, int high)
 
 
 ## Bucket Sort
+
+![bucket_sort](res/bucket_sort.gif)
 
 **Bucket sort** is a sorting technique that involves dividing elements into various groups, or buckets. These buckets are formed by uniformly distributing the elements. Once the elements are divided into buckets, they can be sorted using any other sorting algorithm. Finally, the sorted elements are gathered together in an ordered fashion.
 
@@ -415,6 +427,8 @@ void bucket_sort(float arr[], int n)
 
 
 ## Heap Sort
+
+![heap_sort](res/heap_sort.gif)
 
 **Heap Sort** is a comparison-based sorting algorithm based on the **Binary Heap** data structure. It is an optimized version of selection sort. The algorithm repeatedly finds the maximum (or minimum) element and swaps it with the last (or first) element. Using a binary heap allows efficient access to the max (or min) element in $O(\log n)$ time instead of $O(n)$. The process is repeated for the remaining elements until the array is sorted.
 
@@ -507,6 +521,8 @@ void heap_sort(int arr[], int n)
 
 
 ## Shell Sort
+
+![shell_sort](res/shell_sort.gif)
 
 **Shell Sort**, also known as Shell's method, is an in-place comparison sort and an optimization of Insertion Sort. It improves upon the efficiency of Insertion Sort by allowing elements to be moved over larger distances in the initial stages, which significantly reduces the number of swaps required, especially for larger datasets. 
 

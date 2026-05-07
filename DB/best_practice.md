@@ -6,6 +6,8 @@
 
 ## Performance
 
+![db_perform](res/db_perform.png)
+
 There are two main measures of performance of a database system:
 
 1. `throughput`. The number of tasks that can be completed in a given time interval.
@@ -15,18 +17,88 @@ There are two main measures of performance of a database system:
 
 
 
-## Indices
+## Choose the Right Database
 
-There are two basic kinds of indices:
+Choosing the right database depends on the needs of your application. Here are a few key factors to consider when making this decision:
 
-- Ordered indices. Based on a sorted ordering of the values.
-- Hash indices. Based on a uniform distribution of values across a range of buckets. The bucket to which a value is assigned is determined by a function, called a `hash function`.
+1. Data Structure
+
+   Defines how data is organized, stored, and managed within the database system.
+
+   - **Relational Databases (SQL):** Best for structured data with clearly defined tables and relationships.
+   - **Non-Relational Databases (NoSQL):** Suitable for unstructured or semi-structured data with flexible formats.
+
+2. Scalability Needs
+
+   Determines how well a database can handle growing data and increasing user traffic.
+
+   - **Relational Databases:** Usually scale vertically by increasing the resources of a single server.
+   - **Non-Relational Databases:** Commonly scale horizontally by adding more servers to distribute workload.
+
+3. Consistency Vs Availability
+
+   Represents the balance between maintaining strict data accuracy and ensuring continuous system availability.
+
+   - **Relational Databases:** Preferred when applications require strong consistency and accurate transactions.
+   - **Non-Relational Databases:** Better suited for systems needing high availability even with temporary data inconsistency.
+
+4. Transaction Support
+
+   Refers to how reliably a database processes and maintains data during operations.
+
+   - **Relational Databases:** Support ACID properties ensuring reliable and consistent transactions.
+   - **Non-Relational Databases:** Often prioritize speed and flexibility over strict transactional guarantees.
+
+5. Development Speed & Flexibility
+
+   Indicates how easily the database can adapt to changing application requirements.
+
+   - **Relational Databases:** Suitable when the data structure is stable and well-defined.
+   - **Non-Relational Databases:** Ideal for rapidly evolving applications with frequently changing data structures.
 
 ---
 
 
 
-## Query
+## Indices Optimization
+
+### Using Clustering Indexing
+
+![clustered_indexing](res/clustered_indexing.png)
+
+Clustered Indexing stores related records together in the same file, reducing search time and improving performance, especially for join operations. Data is stored in sorted order based on a key (often a non-primary key) to group similar records, like students by semester. If the indexed column isn't unique, multiple columns can be combined to form a unique key. This makes data retrieval faster by keeping related records close and allowing quicker access through the index.
+
+### Using Multilevel Indexing
+
+![multilevel_indexing](/usr/local/src/github/hanjingo/doc/DB/res/multilevel_indexing.png)
+
+The multilevel indexing segregates the main block into various smaller blocks so that the same data can be stored in a single block.
+
+The outer blocks are divided into inner blocks, which in turn point to the data blocks. This can be easily stored in the main memory with fewer overheads. This hierarchical approach reduces memory overhead and speeds up query execution.
+
+### Using Bitmap Indexing
+
+![bitmap_indexing1](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing1.png)
+
+![bitmap_indexing2](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing2.png)
+
+![bitmap_indexing3](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing3.png)
+
+![bitmap_indexing4](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing4.png)
+
+Bitmap Indexing is a powerful data indexing technique used in Database Management Systems (DBMS) to speed up queries- especially those involving large datasets and columns with only a few unique values (called low-cardinality columns).
+
+Creating a bitmap index in SQL:
+
+```sql
+CREATE BITMAP INDEX Index_Name ON Table_Name (Column_Name);
+```
+
+---
+
+
+
+## Query Optimization 
 
 ![query_proc](res/query_proc.png)
 
@@ -297,19 +369,25 @@ There are some data-partitioning strategies:
 
 
 
-## Cluster
+## Sharding
 
-TODO
+Data Sharding is a technique used to divide a large database into smaller parts called shards, which are stored across multiple servers. It helps distribute data and workload, improving database scalability and performance.
 
 ---
 
 
 
-## Normalization
+## Denormalization
 
-Normalization removes duplicate data by splitting large tables into smaller, related tables. This improves data consistency, reduces redundancy, and makes queries faster.
+Denormalization is a database optimization technique where redundant data is intentionally added to one or more tables to reduce the need for complex joins and improve query performance. It is not the opposite of normalization, but rather an optimization applied after normalization.
 
-TODO
+---
+
+
+
+## Replication
+
+Master-slave replication is a database replication technique where the master database handles write operations, while slave databases replicate the data and handle read operations. This helps distribute workload and improve database performance.
 
 ---
 
@@ -317,21 +395,9 @@ TODO
 
 ## Safety
 
-### Logging
-
-TODO
-
 ### Parameterized Query
 
 In `SQL injection` attacks, the attacker manages to get an application to execute an SQL query created by the attacker. The primary defense against SQL injection is to use parameterized queries (prepared statements) everywhere never build SQL with string concatenation.
-
----
-
-
-
-## Performance
-
-![db_perform](res/db_perform.png)
 
 ---
 
@@ -352,3 +418,7 @@ In `SQL injection` attacks, the attacker manages to get an application to execut
 [6] [SQL Database Tuning](https://www.geeksforgeeks.org/sql/sql-database-tuning/)
 
 [7] [Database Performance Demystified: Essential Tips and Strategies](https://blog.bytebytego.com/p/database-performance-demystified)
+
+[8] [Database Design - System Design](https://www.geeksforgeeks.org/system-design/complete-reference-to-databases-in-designing-systems/)
+
+[9] [How SQL Query Executes In A Database?](https://blog.bytebytego.com/i/166418419/how-sql-query-executes-in-a-database)

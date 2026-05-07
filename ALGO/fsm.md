@@ -162,24 +162,6 @@ An FSM transducer is a 6-tuple $(\sum, \Gamma, S, s_0, \delta, \omega)$:
 
 
 
-## Design Pattern - State Pattern
-
-### Design Ideas
-
-### Implementation Methods
-
-- FSM implemented by Executable Code mapping;
-- FSM implemented by Passive Data mapping;
-
-
-
-
-## Open Source Implementations
-
-TODO
-
-
-
 ## References
 
 [1] [Wikipedia - Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)

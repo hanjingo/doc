@@ -21,6 +21,10 @@ Four key characteristics define what makes something an AI agent:
 - Third is proactiveness, which is about taking initiative to achieve goals rather than just reacting to immediate stimuli.
 - Fourth is social ability, or the capacity to interact with other agents or humans through some form of communication.
 
+### Concepts
+
+![agent_concepts](res/agent_concepts.png)
+
 
 
 ## Types
@@ -220,3 +224,5 @@ Cursor uses three key techniques to keep this loop fast:
 [6] [What are AI Agents?](https://blog.bytebytego.com/p/what-are-ai-agents)
 
 [7] [How Uber Built a Conversational AI Agent For Financial Analysis](https://blog.bytebytego.com/p/how-uber-built-a-conversational-ai)
+
+[8] [Top 20 AI Agent Concepts You Should Know](https://blog.bytebytego.com/i/166418419/top-20-ai-agent-concepts-you-should-know)

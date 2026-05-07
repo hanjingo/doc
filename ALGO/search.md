@@ -728,16 +728,27 @@ Ternary Search:
 
 Jump Search:
 
-- TODO
-
+- Suitable for sorted arrays when random access is available;
+- Reduces the number of comparisons compared with linear search by skipping ahead in blocks;
+- Works well for medium-sized ordered data when binary search is unnecessary or more complex than needed;
+- Not suitable for unsorted data, since ordering is required to decide where to jump;
+- Usually slower than binary search on large sorted arrays, but can be simpler in some practical cases.
 
 Fibonacci Search:
 
-- TODO
+- Suitable for sorted arrays, especially when random access is available;
+- Useful when division is relatively expensive, since it uses only addition and subtraction with Fibonacci offsets;
+- Can be a practical alternative to binary search on some systems with non-uniform memory access patterns;
+- Not suitable for unsorted data, because the algorithm depends on array order;
+- Usually offers similar asymptotic performance to binary search, but is less commonly used in general-purpose applications.
 
 Exponential Search:
 
-- TODO
+- Suitable for sorted arrays when the target is likely to be near the beginning of the data;
+- Works well for unbounded or very large sorted data, because it first finds a small search range quickly;
+- Combines range expansion with binary search, making it efficient when the possible position is unknown;
+- Not suitable for unsorted data, since the binary search step requires ordering;
+- Often preferred over plain binary search when the searchable range is not known in advance.
 
 Tree Search:
 
@@ -786,4 +797,6 @@ Hash-Based Search:
 [14] [Fibonacci Search](https://www.geeksforgeeks.org/dsa/fibonacci-search/)
 
 [15] [Exponential Search](https://www.geeksforgeeks.org/dsa/exponential-search/)
+
+[16] [Maximum Subarray Sum (Kadane's Algorithm): Explanation & Solution](https://www.w3resource.com/data-structures-and-algorithms/array/dsa-max-subarray-sum-kadane-algorithm.php)
 

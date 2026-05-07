@@ -219,6 +219,8 @@ For more info, see: [Search Algorithm Summary#Breadth-First Search (BFS)](search
 
 ## Dijkstra's algorithm 
 
+![dijkstra](res/dijkstra.gif)
+
 Dijkstra's algorithm computes shortest paths from a single source in graphs with nonnegative edge weights. It is a generalization of the unweighted layered approach: the algorithm repeatedly selects the vertex with the smallest tentative distance and relaxes its outgoing edges.
 
 Correctness relies on the nonnegativity of edge weights (once the smallest tentative distance vertex is selected, its distance is final).

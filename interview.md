@@ -6,6 +6,14 @@ English | [中文版](interview_zh.md)
 
 
 
+## AI
+
+TODO
+
+---
+
+
+
 ## C/C++
 
 ### Base
@@ -1127,11 +1135,11 @@ TODO
 
 #### What is token in C++?
 
-TODO
+A token in C++ is the smallest individual unit of a program that the compiler recognizes. Tokens are the building blocks of C++ source code. The compiler breaks source code into tokens during lexical analysis before parsing.
 
 #### What are the methods of exporting a function from a DLL?
 
-TODO
+There are two primary methods to export functions from a DLL: using `__declspec(dllexport)` at the function declaration, or using a `.def` (Module Definition File) listing exported functions. `__declspec(dllexport)` is simpler and most common. For importing in client code, use `__declspec(dllimport)`.
 
 
 ---
@@ -1848,31 +1856,45 @@ For more info, see: [Network I/O#epoll](NET/tcp.md)
 
 We compare algorithms primarily by their complexity and space complexity. But for real-world decisions, we also consider constants, input characteristics, implementation ease, and data cache behavior.
 
+For more info, see: [Algorithm Summary#Complexity Analysis](ALGO/summary.md), [Big O Notation](ALGO/list.md)
+
+#### What do you understand by the Asymptotic Notations?
+
+Asymptotic notations are mathematical tools used to describe the limiting behavior of algorithm's time or space complexity as input size grows to infinity. The three main notations are: Big-O (O) - upper bound (worst-case), Omega (Ω) - lower bound (best-case), and Theta (Θ) - tight bound (average).
+
+For more info, see: [Algorithm Summary#Complexity Analysis](ALGO/summary.md), [Big O Notation](ALGO/list.md)
+
+#### What do you understand by the best case, worst case and average case scenario of an algorithm?
+
+Best case, worst case, and average case describe algorithm performance under different input conditions. Best case is the minimum time for the most favorable input (e.g., already sorted array for sorting). Worst case is the maximum time for the worst possible input (e.g., reverse sorted for sorting). Average case considers typical input distribution (e.g., random order). These analyses help choose algorithms based on guaranteed performance (worst case) or expected performance (average case).
+
+For more info, see: [Algorithm Summary#Complexity Analysis](ALGO/summary.md)
+
 ### Linked List
 
 #### What are the differences between an `array` and a `list`?
 
 The main differences are in the memory layout. Arrays store elements contiguously in memory, providing random access. List store elements non-continuously via pointers, **not providing** random access.
 
-For more info, see: [Linked List#Diagrams](ALGO/link_list.md)
+For more info, see: [Linked List#Diagrams](ALGO/list.md)
 
 #### Reverses a linked list iteratively using three pointers: current, previous, and next.
 
 At each step, point the current node to its previous node and then move all three pointers forward until the list is fully reversed.
 
-For more info, see: [Linked List#Reverse](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+For more info, see: [Linked List#Reverse](ALGO/list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
 
 #### Finds the middle of a linked list using the slow and fast pointer technique.
 
 The idea is to traverse the entire linked list once to count the total number of nodes. After determining the total count, traverse the list again and stop the middle node to return its value.
 
-For more info, see: [Linked List#Reverse](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+For more info, see: [Linked List#Reverse](ALGO/list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
 
 #### Detecting a cycle in a linked list.
 
 Using Floyd's Algorithm is the best choice with average time complexity equal to O(n).
 
-For more info, see: [Linked List](ALGO/link_list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
+For more info, see: [Linked List](ALGO/list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
 
 ### Binary Tree
 
@@ -1905,6 +1927,12 @@ For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](AL
 Count leaf nodes by traversing the tree and incrementing a counter whenever we find a node with no children. Both recursive and iterative approaches work in O(n) time with O(h) space, where h is the tree height.
 
 For more info, see: [Binary Tree](ALGO/binary_tree.md), [Binary Tree Problem](ALGO/LEET_CODE/binary_tree.md)
+
+#### Define tree traversal and list some of the algorithms to traverse a binary tree.
+
+Tree traversal is the process of visiting each node in a tree exactly once. For binary trees, the main traversal algorithms are: Depth-First Search (DFS) and Breadth-First Search (BFS) or Level Order traversal.
+
+For more info, see: [Binary Tree](ALGO/binary_tree.md)
 
 ### Dynamic Programming
 
@@ -1952,7 +1980,7 @@ For more info, see: [Greedy Algorithm#Suitcase](ALGO/greedy_algorithm.md)
 
 #### Explain Dijkstra's algorithm and its application.
 
-Dijkstra's algorithm finds the shortest path from a starting node to all other nodes in a weighted graph. It's commonly used in routing and network optimization problems.
+Dijkstra's algorithm finds the shortest path from a source node to all other nodes in a weighted graph with non-negative edge weights. It works by greedily selecting the unvisited node with the smallest known distance, updating its neighbors' distances, and marking it as visited. This process repeats until all nodes are visited.
 
 For more info, see: [Shortest-Path Algorithms#Dijkstra's algorithm ](ALGO/shortest_path_problem.md)
 
@@ -1970,19 +1998,31 @@ Recursion is a programming technique where a function calls itself to solve a pr
 
 For more info, see: [Recursion](ALGO/recursion.md)
 
+#### State the important rules which every recursive algorithm must follow.
+
+Every recursive algorithm must follow three essential rules: First, it must have a base case that terminates the recursion (no further recursive calls). Second, it must make progress toward the base case with each recursive call (typically by reducing the problem size). Third, it must call itself recursively to solve smaller subproblems. Additionally, for efficiency, avoid overlapping subproblems (use memoization) and ensure the recursion depth doesn't exceed stack limits.
+
+For more info, see: [Recursion](ALGO/recursion.md)
+
 ### Divide and Conquer Algorithm
+
+#### Explain the Divide and Conquer Algorithmic Paradigm. Also list a few algorithms which use this paradigm.
+
+Divide and Conquer is an algorithmic paradigm that solves a problem by breaking it into smaller, independent subproblems of the same type, recursively solving each subproblem, and then combining their results to solve the original problem. Classic examples include Merge Sort, Quick Sort, Binary Search, etc.
+
+For more info, see: [Search Algorithm Summary](ALGO/search.md), [Divide and Conquer Algorithm](ALGO/LEET_CODE/divide_and_conquer.md)
 
 #### Split the array in half, sort both halves, then merge them back.
 
 We use the two positions (left, right) divide the array continuously, until array's size equal to 2; then sorted it.
 
-For more info, see: [Sorting Algorithm Summary](ALGO/sort.md), [Divide and Conquer Algorithm](ALGO/LEET_CODE/divide_and_conquer.md)
+For more info, see: [Search Algorithm Summary](ALGO/search.md), [Divide and Conquer Algorithm](ALGO/LEET_CODE/divide_and_conquer.md)
 
 ### Backtracking Algorithm
 
 #### Generates all permutations of a string using recursion and backtracking.
 
-First, initialize an array of string `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the lememts in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
+First, initialize an array of strings `arr[]` to store all the permutations. Start from the 0th index and for each index `i`, swap the value `str[i]` with all the elements in its right i.e. From `i + 1` to `n - 1`, and recur to the index `i + 1`. If the index `i` is equal to `n`, store the resultant string in `arr[]`, else keep operating similarly for all other indices. Thereafter, swap back the values to original values to initiate backtracking. At last sort the array `arr[]`.
 
 For more info, see: [Backtracking Problem](ALGO/LEET_CODE/backtracking.md)
 
@@ -1991,6 +2031,8 @@ For more info, see: [Backtracking Problem](ALGO/LEET_CODE/backtracking.md)
 #### What is a searching algorithm?
 
 A searching algorithm is a method used to find a specific item within a collection of data. Searching Algorithms are designed to check for an element or retrieve an element from any data structure where it is stored.
+
+For more info, see: [Searching Algorithm Summary](ALGO/search.md)
 
 #### What are the different types of searching algorithms?
 
@@ -2058,6 +2100,12 @@ Linear Search checks each element in a list one by one until finding the target 
 
 For more info, see: [Searching Algorithm Summary#Linear Search](ALGO/search.md)
 
+#### Describe the Binary Search Algorithm.
+
+Binary search is an efficient algorithm for finding a target value within a sorted array. It works by repeatedly dividing the search interval in half. It compares the target to the middle element; if they are not equal, it eliminates the half where the target cannot lie and continues searching the remaining half. Binary search requires the array to be sorted and can be implemented both iteratively and recursively.
+
+For more info, see: [Searching Algorithm Summary#Binary Search](ALGO/search.md)
+
 #### How does Binary Search work?
 
 Binary Search divides a sorted array in half repeatedly, narrowing down the search space by comparing the target with the mid until finding the target or exhausting the elements.
@@ -2067,6 +2115,12 @@ For more info, see: [Searching Algorithm Summary#Binary Search](ALGO/search.md)
 #### Recursive and Iterative Binary Search: Which one is more efficient and why?
 
 Iterative Binary Search is typically more efficient than Recursive Binary Search. This is because iterative binary search avoids teh overhead of recursive function calls and tasks space consumption, resulting in lower memory usage and potentially faster execution, especially for large datasets.
+
+For more info, see: [Searching Algorithm Summary#Binary Search](ALGO/search.md)
+
+#### Can we use the binary search algorithm for linked lists?
+
+No, standard binary search cannot be applied to singly linked lists because binary search requires O(1) random access to find the middle element.
 
 For more info, see: [Searching Algorithm Summary#Binary Search](ALGO/search.md)
 
@@ -2132,7 +2186,7 @@ For more info, see: [Search Problem](ALGO/LEET_CODE/search.md)
 
 #### Finds the maximum sum of any contiguous subarray using Kadane's algorithm.
 
-The algorithm maintains two variables: `max_ending_here` to track teh maimum sum ending at the current position, and `max_so_far` for the overall maximum sum found so far.
+Kadane's algorithm finds the maximum sum of any contiguous subarray in O(n) time. It works by keeping track of the current subarray sum and resetting it to 0 if it becomes negative because a negative prefix only reduces future sums. The maximum sum seen so far is tracked separately. This elegantly handles all negative numbers by always keeping at least one element.
 
 For more info, see: [Search Algorithm Summary#Kadane's Algorithm](ALGO/search.md), [Search Problem](ALGO/LEET_CODE/search.md)
 
@@ -2168,6 +2222,24 @@ For mostly sorted data, Insertion Sort typically works best. It's efficient when
 
 For more info, see: [Sorting Algorithm Summary#Insertion Sort](ALGO/sort.md)
 
+#### What is the insertion sort algorithm?
+
+Insertion sort is a simple sorting algorithm that builds the final sorted array one element at a time. It works by taking each element from the unsorted portion and inserting it into its correct position in the already-sorted portion, shifting larger elements to the right.
+
+For more info, see: [Sorting Algorithm Summary#Insertion Sort](ALGO/sort.md)
+
+#### What is the space complexity of the insertion sort algorithm?
+
+Insertion Sort has a space complexity of O(1), or constant space. It sorts the array in-place, using only a handful of extra variables regardless of input size. The algorithm maintains a 'key' variable for the element being inserted, along with loop counters and an index variable for shifting elements. No additional data structures are allocated that grow with the input size.
+
+For more info, see: [Sorting Algorithm Summary#Insertion Sort](ALGO/sort.md)
+
+#### Describe the merge sort algorithm.
+
+Merge sort is a divide-and-conquer sorting algorithm that recursively divides the array into halves until each subarray has one element, then merges them back together in sorted order.
+
+For more info, see: [Sorting Algorithm Summary#Merge Sort](ALGO/sort.md)
+
 #### Why is Merge sort preferred over Quick Sort for sorting linked lists?
 
 Merge Sort is preferred fro sorting linked lists because its divide-and-conquer approach easily divides the list into halves and merges them efficiently without requiring random access, which is difficult in linked lists. Quick Sort's reliance on random access and potential worst-case time complexity makes it less suitable for linked lists.
@@ -2199,6 +2271,36 @@ For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
 Quick Sort's worst-case time complexity is $O(n^2)$, which occurs when the pivot selection consistently results in highly unbalanced partitions--specifically, when the array is already sorted (or reverse sorted) and the pivot is always chosen as the first or last element. This can be avoided by using randomized pivot selection.
 
 For more info, see: [Sorting Algorithm Summary#Quick Sort](ALGO/sort.md)
+
+#### What is the selection sort algorithm?
+
+Selection sort is a simple sorting algorithm that repeatedly finds the minimum element from the unsorted portion and swaps it with the first unsorted element. It works in-place and runs in O(n²) time for all cases (best, average, worst) because it always scans the entire unsorted portion to find the minimum. Selection sort is not stable by default but can be made stable with modifications. It's easy to implement and has minimal writes (n swaps), making it good for data where writes are expensive.
+
+For more info, see: [Sorting Algorithm Summary#Selection Sort](ALGO/sort.md)
+
+#### What is the space complexity of the selection sort algorithm?
+
+Selection Sort has a space complexity of O(1), or constant space. It operates in-place, meaning it sorts the array by swapping elements without requiring additional data structures that grow with input size. Regardless of whether you're sorting 10 elements or 10 million elements, Selection Sort only uses a few extra variables (like indices for tracking min/max positions and temporary swap storage).
+
+For more info, see: [Sorting Algorithm Summary#Selection Sort](ALGO/sort.md)
+
+#### Describe the heap sort algorithm.
+
+Heap sort is a comparison-based sorting algorithm that uses a binary heap data structure. It works in two phases: First, build a max heap from the input array ($O(n)$). Second, repeatedly extract the maximum element (the root) and place it at the end of the array, then heapify the remaining elements ($O(n \log n)$). Heap sort is in-place, not stable, and guarantees $O(n \log n)$ time in all cases (best, average, worst), unlike Quick Sort, which can degrade to $O(n^{2})$.
+
+For more info, see: [Sorting Algorithm Summary#Heap Sort](ALGO/sort.md)
+
+#### Describe the bubble sort algorithm.
+
+Bubble sort repeatedly steps through a list, compares adjacent elements, and swaps them if they're in the wrong order. Each pass through the list 'bubbles' the largest unsorted element to its correct position at the end.
+
+For more info, see: [Sorting Algorithm Summary#Bubble Sort](ALGO/sort.md)
+
+### Encryption
+
+#### How do the encryption algorithms work?
+
+Encryption algorithms transform plaintext into ciphertext using mathematical operations and a secret key. They work in two main categories: Symmetric encryption (AES, ChaCha20) uses the same key for encryption and decryption, relying on substitution, permutation, and key expansion. Asymmetric encryption (RSA, ECC) uses a key pair: public for encryption, private for decryption, relying on mathematical problems like prime factorization or discrete logarithms. Hashing (SHA-256) is one-way encryption for integrity verification.
 
 ---
 
@@ -2489,6 +2591,12 @@ For more info, see: [Synchronization#Semaphore](OS/sync.md)
 Semaphore supports two atomic operations: wait() (also called P or down) and signal() (also called V or up). wait() decrements the semaphore value and blocks if the value becomes negative. signal() increments the semaphore value and wakes up any waiting process. Additionally, semaphores can be initialized with a value, but there are no other operations. These two operations must be atomic to prevent race conditions.
 
 For more info, see: [Synchronization#Semaphore](OS/sync.md)
+
+#### What is the difference between mutex and lock-free containers?
+
+A mutex-based container uses locks to protect shared data, causing threads to block (sleep) when waiting for access. Lock-free containers use atomic operations (CAS - Compare-And-Swap) to update data without blocking, guaranteeing that at least one thread makes progress. Lock-free containers avoid deadlocks, priority inversion, and have better scalability under high contention, but are much harder to implement correctly.
+
+For more info, see: [Synchronization#Thread Synchronization](OS/sync.md)
 
 #### What is the difference between a mutex and a semaphore?
 

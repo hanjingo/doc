@@ -170,6 +170,14 @@
 
 ![sql_vs_nosql](res/sql_vs_nosql.png)
 
+### Performance Optimization 
+
+![db_perform](res/db_perform.png)
+
+### SQL Query Execution
+
+![sql_query_execution](res/sql_query_execution.png)
+
 
 
 ## Reference
@@ -203,3 +211,5 @@
 [14] [SQL vs NoSQL: Choosing the Right Database for An Application](https://blog.bytebytego.com/p/sql-vs-nosql-choosing-the-right-database)
 
 [15] [How CQRS Works?](https://blog.bytebytego.com/i/183283151/how-cqrs-works)
+
+[16] [How SQL Query Executes In A Database?](https://blog.bytebytego.com/i/166418419/how-sql-query-executes-in-a-database)

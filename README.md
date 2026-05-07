@@ -6,12 +6,14 @@
 
 - [AI Summary](AI/summary.md)
 - [AI Agent](AI/agent.md)
+- [Artificial Intelligence (AI) Algorithms](AI/algo.md)
 - [Computer Vision](AI/cv.md)
 - [Deep Learning](AI/dl.md)
 - [AI Hardware](AI/hw.md)
 - [Large Language Models](AI/llm.md)
 - [Model Context Protocol](AI/mcp.md)
 - [Machine Learning](AI/ml.md)
+- [Natural Language Processing (NLP)](AI/nlp.md)
 - [Prompt Cookbook](AI/prompt.md)
 - [RAG](AI/rag.md)
 

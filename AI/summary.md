@@ -6,9 +6,17 @@
 
 ![ai_concepts](res/ai_concepts.jpg)
 
+Artificial Intelligence (AI) refers to the simulation of human intelligence in machines, allowing them to perform tasks that typically require human cognitive functions such as learning, reasoning, problem-solving, perception, and decision-making.
+
 ## Types
 
 ![type_of_ai](res/type_of_ai.png)
+
+
+
+## Hierarchy
+
+![ai_hierarchy](res/ai_hierarchy.png)
 
 
 
@@ -94,7 +102,7 @@
 
 ## Agentic AI
 
-TODO
+![agent_intro](res/agent_intro.png)
 
 
 
@@ -103,6 +111,16 @@ TODO
 ### Library/Tools
 
 ![ai_tool_stack](res/ai_tool_stack.jpg)
+
+### NLP Python Library
+
+![nlp_python_lib](res/nlp_python_lib.png)
+
+
+
+## AI Algorithms
+
+![ai_algo](res/ai_algo.png)
 
 
 
@@ -117,6 +135,19 @@ An AI agent is a software program that can interact with its environment, gather
 Model Context Protocol (MCP) is an open standard that allows AI models (like Claude) to connect to databases, APIs, file systems, and other tools without needing custom code for each new integration.
 
 RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. The model stays frozen. No retraining. When a user asks a question, a retriever fetches relevant documents (PDFs, code, vector DBs), and those are injected into the prompt.
+
+### Traditional AI vs Agentic AI
+
+|      Feature       |                        Traditional AI                        |                          Agentic AI                          |
+| :----------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Core Function**  |            Performs specific, preprogrammed tasks            |      Executes tasks autonomously using predefined goals      |
+| **Typical output** | Deterministic results—answers, classifications, predictions  |           Actions, decisions, multi-step workflows           |
+|    **Autonomy**    | Low as it requires explicit instructions, operates within set boundaries | High as it plans, adapts, and makes decisions with minimal human direction |
+|    **Learning**    | Learns from labeled data, often needs retraining for new situations | Learns from experience, adapts strategies and workflows in real time |
+|   **Use cases**    |      Data sorting, image recognition, basic diagnostics      | Workflow automation, dynamic planning, virtual assistants, problem solving |
+|  **Scalability**   |          Requires manual oversight as systems grow.          | Oversees and coordinates whole systems hence reducing manual monitoring. |
+|  **Adaptability**  |  Struggles with unexpected changes and may need retraining.  | Adjusts strategies and learns in real time and is best suited for fast-changing situations. |
+| **Business value** |   Automates simple, rule-based jobs, increases consistency   | Automates complex operations, reduces manual work, and enables personalized tasks |
 
 
 
@@ -159,3 +190,11 @@ RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. T
 [18] [The Open Source AI Stack](https://blog.bytebytego.com/i/155048027/the-open-source-ai-stack)
 
 [19] [AI Agent versus MCP](https://blog.bytebytego.com/i/164838806/ai-agent-versus-mcp)
+
+[20] [How does AI work?](https://www.geeksforgeeks.org/artificial-intelligence/how-does-ai-work/)
+
+[21] [Artificial Intelligence (AI) Algorithms](https://www.geeksforgeeks.org/artificial-intelligence/ai-algorithms/)
+
+[22] [Agentic AI vs. Traditional AI](https://www.geeksforgeeks.org/artificial-intelligence/agentic-ai-vs-traditional-ai/)
+
+[23] [What is Agentic AI](https://www.geeksforgeeks.org/artificial-intelligence/what-is-agentic-ai/)

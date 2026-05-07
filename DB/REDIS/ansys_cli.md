@@ -8,10 +8,6 @@ English | [中文版](ansys_cli_zh.md)
 
 ## Client Properties
 
-```c
-TODO
-```
-
 - `fd` The client's socket descriptor
 	- `>-1` Normal client, commands come from the network
 	- `-1` Fake client, commands come from AOF file or LUA script, not from the network

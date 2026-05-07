@@ -22,7 +22,7 @@ CAP describes **constraints**, not design goals.
 
 ![consistency](res/consistency.png)
 
-Consistency defines that all clients see the same data simulaneously, no matter which node they connect to in a distributed system. For eventual consistency, the guarantees are a bit loose. Eventual consistency guarantee means client will eventually see the same data on all the nodes at some point of time in the future.
+Consistency ensures that all clients see the same data simultaneously, no matter which node they connect to in a distributed system. For eventual consistency, the guarantees are a bit loose. Eventual consistency guarantee means the client will eventually see the same data on all the nodes at some point of time in the future.
 
 
 
@@ -74,12 +74,16 @@ An AP system provides Availability and Partition Tolerance but does not guarante
 
 ## PACELC Theorem (The CAP Extension)
 
-PACELC extends CAP to account for latency even without partitions.
+The **PACELC Theorem** is an extension of the **CAP Theorem**. PACELC extends CAP to account for latency even without partitions.
 
-TODO
+PACELC theorem states that in the case of Network Partition 'P' a distributed system can have tradeoffs between Availability 'A' and Consistency 'C'. Else 'E' if there is no Network Partition, then a distributed system can have tradeoffs between Latency 'L' and Consistency 'C'.
+
+![pacelc_theorem](res/pacelc_theorem.png)
 
 
 
 ## References
 
 [1] [CAP Theorem in System Design](https://www.geeksforgeeks.org/system-design/cap-theorem-in-system-design/)
+
+[2] [PACELC Theorem](https://www.geeksforgeeks.org/operating-systems/pacelc-theorem/)

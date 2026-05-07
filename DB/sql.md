@@ -4190,9 +4190,6 @@ A trigger in SQL is a special stored procedure that runs automatically when an `
 Examples:
 
 ```sql
--- For MySQL
-TODO
-
 -- For SQL Server
 CREATE TRIGGER update_student_score
 AFTER UPDATE ON student_grades
@@ -4354,10 +4351,6 @@ END;
 |               Common in transactional queries.               |  Common in reporting, analytics and data integration tasks.  |
 
 ### Clustered and Non-Clustered Indexing
-
-![clustered_index](res/clustered_index.png)
-
-![nonclustered_index](res/nonclustered_index.png)
 
 |                       Clustered Index                        |                     Non-Clustered Index                      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |

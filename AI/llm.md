@@ -184,6 +184,38 @@ The ML research community has developed standardized benchmark datasets for eval
 
 
 
+## Distillation
+
+LLM Distillation is a specialized form of Knowledge Distillation(KD) that compresses large-scale LLMs into smaller, faster, and more efficient models while preserving a significant portion of the performance. It enables lightweight models to approximate the capabilities of massive LLMs, making them deployable on a broader range of applications and devices.
+
+![knowledge_distillation_framework](res/knowledge_distillation_framework.png)
+
+### LLM Distillation Techniques
+
+1. Logit-Based Distillation
+
+   The student model learns from the soft probability distributions of the teacher rather than just hard labels. It uses `Kullback-Leibler (KL)` divergence loss:
+   $$
+   L_{KD} = T^{2} \sum p_{teacher(x)} \log \frac{p_{teacher(x)}}{p_{student(x)}}
+   $$
+   where $T$(temperature) smooths the soft probabilities, helping the student generalize better.
+
+2. Feature-Based Distillation
+
+   Instead of just logits, the hidden representations from intermediate layers of the teacher model are transferred to the student. The student learns to mimic internal activations using an `L2 loss` or `mean squared error (MSE)` between corresponding layers.
+
+3. Progressive Layer Dropping
+
+   Instead of using all layers of the teacher model, the student selectively learns from a subset of layers to reduce redundancy.
+
+4. Task-Specific Distillation
+
+   The student model is fine-tuned on specific downstream tasks (e.g., sentiment analysis, summarization) to optimize performance for real-world applications.
+
+---
+
+
+
 ## Challenges
 
 ### The Memory Problem
@@ -261,6 +293,22 @@ How is DeepSeek-OCR built? The system has two main parts:
 5. Not relying solely on vibes and anecdotes is problematic.
 6. In the rush to ship features, evaluation often gets deprioritized. But shipping without evals means we have no idea if we’re making things better or worse.
 
+### Prons and Cons Of LLM Distillation
+
+Benefits of LLM Distillation:
+
+- **Computational Efficiency**: Smaller models require significantly less memory, computation power and storage. They enable LLMs to run on consumer hardware, mobile devices or edge computing environments.
+- **Reduced Latency**: A distilled LLM provides faster inference times, making it more suitable for real-time applications such as chatbots and virtual assistants.
+- **Lower Energy Consumption**: Deploying a lightweight model results in lower energy usage, which is crucial for sustainability and cost-effective AI solutions.
+- **Maintained Performance**: Despite being smaller, a well-distilled model retains much of the accuracy and capabilities of the teacher model.
+
+Challenges in LLM Distillation:
+
+- **Trade-off Between Model Size and Performance**: Reducing model size too much can lead to significant performance degradation and finding the right balance is important for effective distillation.
+- **Knowledge Transfer Limitations**: Some complex knowledge from the teacher model may be ***\*lost\**** in the distillation process.
+- **Computational Costs of Distillation**: The process itself is expensive because it requires training the student model on vast amounts of teacher-generated data.
+- **Domain-Specific Adaptation**: Some tasks require domain-specific fine-tuning after distillation to ensure high accuracy.
+
 ---
 
 
@@ -286,3 +334,5 @@ How is DeepSeek-OCR built? The system has two main parts:
 [9] [Multimodal LLMs Basics: How LLMs Process Text, Images, Audio & Videos](https://blog.bytebytego.com/p/multimodal-llms-basics-how-llms-process)
 
 [10] [Why is DeepSeek-OCR such a BIG DEAL?](https://blog.bytebytego.com/i/177690588/why-is-deepseek-ocr-such-a-big-deal)
+
+[11] [What is LLM Distillation?](https://www.geeksforgeeks.org/nlp/what-is-llm-distillation/)
