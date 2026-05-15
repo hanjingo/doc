@@ -2,9 +2,7 @@
 
 [TOC]
 
-## Introduction
 
-This note summarizes the core concepts about functions used in discrete mathematics. It organizes standard definitions, common properties, examples, proof techniques, and useful identities (such as floor/ceiling rules). The content follows and condenses material from Kenneth H. Rosen, Discrete Mathematics and Its Applications (8th ed.).
 
 ## Definition and notation
 
@@ -80,7 +78,7 @@ Two functions $f,g:A\to B$ are equal if for every $x\in A$ we have $f(x)=g(x)$. 
 - Many proofs about functions use elementwise reasoning (pick arbitrary element of domain) and quantifier manipulation.
 - In discrete mathematics, functions are often used to define sequences, recurrence relations, combinatorial constructions, and encodings between sets.
 
-## Further reading and references
+## References
 
 [1] Kenneth H. Rosen. Discrete Mathematics and Its Applications. 8th Edition.
 

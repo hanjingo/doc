@@ -125,7 +125,7 @@ A diagram representing each design aspect is included in the HLD (which is based
 
 ### Caching
 
-![caching_arch_example](res/caching_arch_example.png)
+![caching_arch_example](res/caching_arch_example.jpg)
 
 ### Storage
 
@@ -189,7 +189,7 @@ A diagram representing each design aspect is included in the HLD (which is based
 
 ### CDN
 
-![cdn_work](res/cdn_work.png)
+![cdn_intro](res/cdn_intro.png)
 
 ### Circuit Breaker
 
@@ -229,7 +229,7 @@ TODO
 
 ## Reference
 
-[1] Ian Sommerville. SOFTWARE ENGINEERING . 9th Edition
+[1] Ian Sommerville. SOFTWARE ENGINEERING. 9th Edition
 
 [2] [Cracking the System Design Interview Round](https://www.geeksforgeeks.org/system-design/how-to-crack-system-design-round-in-interviews/)
 
@@ -258,3 +258,5 @@ TODO
 [14] [Non-Functional Requirements: The Backbone of Great Software - Part 1](https://blog.bytebytego.com/p/non-functional-requirements-the-backbone)
 
 [15] [The System Design Topic Map](https://blog.bytebytego.com/p/ep163-12-mcp-servers-you-can-use)
+
+[16] [A Detailed Guide to Content Delivery Networks](https://blog.bytebytego.com/p/a-detailed-guide-to-content-delivery)

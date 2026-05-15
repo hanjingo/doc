@@ -100,6 +100,7 @@ English | [中文版](README_zh.md)
 - Deep Learning
 - The Elements of Statistical Learning: Data Mining, Inference, and Prediction
 - [LINEAR ALGEBRA WITH APPLICATIONS](LINEAR_ALGEBRA_WITH_APPLICATIONS/README.md)
+- [A First Course in Probability](res/A_FIRST_COURSE_IN_PROBABILITY/README.md)
 - [DPDK Programmer's Guide](DPDK_PROGRAMMER_GUIDE/README.md)
 - [The Calculus Lifesaver](THE_CALCULUS_LIFESAVER/README.md)
 - [The Probability Lifesaver](THE_PROBABILITY_LIFESAVER/README.md)

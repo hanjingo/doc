@@ -65,7 +65,7 @@ Whereas supervised learning trains models by optimizing them to match ideal exem
 
 ## Deep Learning
 
-In machine learning, deep learning(DL) focuses on utilizing multilayered neural networks to perform tasks such as classification, regression, and representation learning. The field takes inspiration from biological neuroscience and revolves around stacking artificial neurons into layers and "training" them to process data.
+In machine learning, [deep learning(DL)](dl.md) focuses on utilizing multilayered neural networks to perform tasks such as classification, regression, and representation learning. The field takes inspiration from biological neuroscience and revolves around stacking artificial neurons into layers and "training" them to process data.
 
 Deep learning algorithms can be applied to unsupervised learning tasks. This is an important benefit because unlabeled data is more abundant than the labeled data.
 
@@ -133,6 +133,70 @@ Federated learning is an adapted form of distributed artificial intelligence to 
 
 
 
+## Fundamention
+
+### Naive Bayes Algorithm
+
+Naive Bayes is a machine learning classification algorithm that predicts the category of a data point using probability. It assumes that all features are independent of each other. 
+
+The main idea behind the Naive Bayes classifier is to use [Bayes' Theorem](#Introduction to Bayes' Theorem) to classify data based on the probabilities of different classes given the features of the data. It is used mostly in high-dimensional text classification:
+
+- The Naive Bayes Classifier is a simple probabilistic classifier, and it has a very small number of parameters, which are used to build ML models that can predict at a faster speed than other classification algorithms.
+- It is a probabilistic classifier because it assumes that one feature in the model is independent of the existence of another feature. In other words, each feature contributes to the predictions with no relation to the others.
+- Naive Bayes Algorithm is used in spam filtration, sentiment analysis, classifying articles and many more.
+
+#### Types of Naive Bayes Model
+
+- Gaussian Naive Bayes
+- Multinomial Naive Bayes
+- Bernoulli Naive Bayes
+
+#### Introduction to Bayes' Theorem
+
+*Bayes’ Theorem* provides a principled way to reverse conditional probabilities. It is defined as:
+$$
+P(y | X) = \frac{P(X | y) \cdot P(y)}{P(X)}
+$$
+
+- $P(y | X)$: Posterior probability, probability of class $y$ given features $X$.
+- $P(X | y)$: Likelihood, probability of features $X$ given class $y$.
+- $P(y)$: Prior probability of class $y$.
+- $P(X)$: Marginal likelihood or evidence.
+
+### Logistic Regression
+
+![logistic_regression_intro](res/logistic_regression_intro.png)
+
+Logistic Regression is a supervised machine learning algorithm used for classification problems. Unlike linear regression, which predicts continuous values it predicts the probability that an input belongs to a specific class.
+
+#### Types of Logistic Regression
+
+![logistic_regression_types](res/logistic_regression_types.png)
+
+- **Binomial Logistic Regression**: This type is used when the dependent variable has only two possible categories.
+- **Multinomial Logistic Regression**: This is used when the dependent variable has three or more possible categories that are not ordered.
+- **Ordinal Logistic Regression**: This type applies when the dependent variable has three or more categories with a natural order or ranking.
+
+#### Linear Regression vs Logistic Regression
+
+![linear_regression_vs_logistic_regression](res/linear_regression_vs_logistic_regression.png)
+
+### Support Vector Machine (SVM) Algorithm
+
+![svm_intro](res/svm_intro.png)
+
+Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks. It tries to find the best boundary known as hyperplane that separates different classes in the data.
+
+The main goal of SVM is to maximize the margin between the two classes. The larger the margin the better the model performs on new and unseen data.
+
+### Random Forest Algorithm
+
+![random_forest_algo](res/random_forest_algo.png)
+
+Random Forest is a machine learning algorithm that uses many decision trees to make better predictions. Each tree looks at different random parts of the data and their results are combined by voting for classification or averaging for regression which makes it as ensemble learning technique. This helps in improving accuracy and reducing errors.
+
+
+
 ## Reference
 
 [1] Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N. Gomez; Łukasz Kaiser; Illia Polosukhin. Attention Is All You Need
@@ -153,3 +217,10 @@ Federated learning is an adapted form of distributed artificial intelligence to 
 
 [9] [A piece of knowledge each day: AI and Machine Learning (ML)](https://blog.bytebytego.com/p/ep183-mcp-vs-api-whats-the-difference)
 
+[10] [Naive Bayes Classifiers](https://www.geeksforgeeks.org/machine-learning/naive-bayes-classifiers/)
+
+[11] [Logistic Regression in Machine Learning](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/)
+
+[12] [Support Vector Machine (SVM) Algorithm](https://www.geeksforgeeks.org/machine-learning/support-vector-machine-algorithm/)
+
+[13] [Random Forest Algorithm in Machine Learning](https://www.geeksforgeeks.org/machine-learning/random-forest-algorithm-in-machine-learning/)

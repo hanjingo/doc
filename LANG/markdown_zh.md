@@ -442,6 +442,7 @@ $$
 | $O(n \log n)$                                                | `$O(n \log n)$`                                              |                                                              |                                                              |
 | $\aleph_0$                                                   | `$\aleph_0$`                                                 |                                                              |                                                              |
 | $\vartheta_i$                                                | `$\vartheta_i$`                                              |                                                              |                                                              |
+| $\mathbb{R}^n$                                               | `$\mathbb{R}^n$`                                             |                                                              |                                                              |
 
 ### 数学公式
 
@@ -488,11 +489,13 @@ $$
 **矩阵(bmatrix)的表示:**
 
 ```markdown
-$$ \begin{bmatrix}
+$$
+\begin{bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{bmatrix} $$
+\end{bmatrix}
+$$
 ```
 
 $$ \begin{bmatrix}
@@ -504,11 +507,13 @@ $$ \begin{bmatrix}
 **矩阵(Bmatrix)的表示:**
 
 ```markdown
-$$ \begin{Bmatrix}
+$$
+\begin{Bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{Bmatrix} $$
+\end{Bmatrix}
+$$
 ```
 
 $$ \begin{Bmatrix}
@@ -540,6 +545,37 @@ $\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
 ```
 
 $\begin{Vmatrix}1 & 2 \\ 3 & 4\\ \end{Vmatrix}$
+
+**增广矩阵(Augmented Matrix)的表示:**
+
+```markdown
+$$
+\left[\begin{array}{ccc|c}
+1 & 2 & 3 & 0\\
+4 & 5 & 6 & 0\\
+7 & 8 & 9 & 0
+\end{array}\right]
+$$
+```
+
+$$
+\left[\begin{array}{ccc|c}
+1 & 2 & 3 & 0\\
+4 & 5 & 6 & 0\\
+7 & 8 & 9 & 0
+\end{array}\right]
+$$
+
+**行向量**
+$$
+\vec{x} = (x_1, x_2, x_3, x_4)
+$$
+
+```markdown
+$$
+$\vec{x} = (x_1, x_2, x_3, x_4)$
+$$
+```
 
 ### 分类表达式
 

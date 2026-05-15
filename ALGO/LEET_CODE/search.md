@@ -62,6 +62,90 @@ Complexity Analysis:
 
 
 
+### Given an unsorted array of integers, how would you find the kth smallest element efficiently?
+
+```c++
+void quick_select(int arr[], int left, int right, int k)
+{
+    if (left >= right)
+        return;
+
+    int pivot = arr[left];
+    int first = left;
+    int last = right;
+    while (first < last)
+    {
+        while (first < last && arr[last] >= pivot)
+            last--;
+        arr[first] = arr[last];
+
+        while (first < last && arr[first] <= pivot)
+            first++;
+        arr[last] = arr[first];
+    }
+
+    arr[first] = pivot;
+    if (first == k)
+        return;
+    else if (first < k)
+        quick_select(arr, first + 1, right, k);
+    else
+        quick_select(arr, left, first - 1, k);
+}
+```
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n)$          | $O(1)$           |
+| Average Case | $O(n)$          | $O(\log n)$      |
+| Worst Case   | $O(n^2)$        | $O(n)$           |
+
+
+
+### Given a stream of integers, how would you efficiently find the median of the elements seen so far at any given time?
+
+```c++
+double find_median(std::vector<int>& nums) 
+{
+    std::priority_queue<int> max_heap; // Max-heap for the lower half
+    std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap; // Min-heap for the upper half
+
+    for (int num : nums) 
+    {
+        if (max_heap.empty() || num <= max_heap.top()) 
+            max_heap.push(num);
+        else 
+            min_heap.push(num);
+
+        // Balance the heaps
+        if (max_heap.size() > min_heap.size() + 1) 
+        {
+            min_heap.push(max_heap.top());
+            max_heap.pop();
+        } 
+        else if (min_heap.size() > max_heap.size()) 
+        {
+            max_heap.push(min_heap.top());
+            min_heap.pop();
+        }
+    }
+
+    // Calculate median
+    if (max_heap.size() == min_heap.size()) 
+        return (max_heap.top() + min_heap.top()) / 2.0;
+    else 
+        return max_heap.top();
+}
+```
+
+| Scenario     | Time Complexity | Space Complexity |
+| :----------- | :-------------- | :--------------- |
+| Best Case    | $O(n \log n)$  | $O(n)$           |
+| Average Case | $O(n \log n)$  | $O(n)$           |
+| Worst Case   | $O(n \log n)$  | $O(n)$           |
+
+
+
 ### Write a function that finds the two numbers in an array that add up to a target sum by using a hash map.
 
 ```c++

@@ -23,4 +23,3 @@
 
 - [决策树](MODEL/decision_table_zh.md)
 - [传染病模型](MODEL/infectious_disease_zh.md)
-

@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 **Definition**: A `set` is an unordered collection of distinct objects, called `elements or members` of the set. A set is said to `contain` its elements. We write $a \in A$ to denote that $a$ is an element of the set A. The notation $a \notin A$ denotes that $a$ is not an element of the set A.
 
 There are several ways to describe a set:

@@ -834,6 +834,56 @@ private:
 
 
 
+## Heap In C++ STL
+
+Heap-based adaptor using underlying container (by default vector) and `make_heap` operations.
+
+| Member  | Complexity  | Notes                                            |
+| :------ | :---------- | ------------------------------------------------ |
+| emplace | $O(\log n)$ | (C++11) Constructs and inserts a new element.    |
+| empty   | $O(1)$      | Checks whether the container is empty.           |
+| pop     | $O(\log n)$ | Removes the top element.                         |
+| push    | $O(\log n)$ | Inserts a new element.                           |
+| size    | $O(1)$      | Returns the number of elements in the container. |
+| swap    | $O(1)$      | (C++11) Swaps the contents of two containers.    |
+| top     | $O(1)$      | Returns a reference to the top element.          |
+
+Example:
+
+```c++
+#include <iostream>
+#include <queue>
+#include <vector>
+
+int main()
+{
+    int values[]{1, 2, 3};
+    std::priority_queue<int> p1{                 // initialize from iterators
+        std::begin(values), std::end(values)};
+    std::priority_queue<int> p2{p1};             // initialize from another container
+    std::priority_queue<int, std::vector<int>, std::greater<int> > p3 { 
+        std::begin(values), std::end(values)};   // initialize with iterators, underlying container, and comparator
+
+    p1.emplace(4);           // p1: [4,3,2,1]
+
+    bool ret1 = p1.empty();  // ret1: false
+
+    p1.pop();                // p1: [3,2,1]
+
+    p1.push(5);              // p1: [5,3,2,1]
+
+    size_t ret2 = p1.size(); // ret2: 4
+
+    p1.swap(p2);             // p1: [3,2,1], p2: [5,3,2,1]
+
+    int ret3 = p1.top();     // ret3: 3
+}
+```
+
+---
+
+
+
 ## Summary
 
 ### Advantage and Disadvantage

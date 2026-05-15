@@ -26,13 +26,31 @@
 
 **THE BUBBLE SORT**. The bubble sort puts a list into increasing order by successively comparing adjacent elements, interchanging them if they are in the wrong order.
 
-**THE INSERTION SORT**. In the $j$th step of the insertion sort, the $j$th element of the list is inserted into the correct position in the list of the previously sorted $j - 1$ elements. To insert the $j$the element in the list, a linear search technique is used; the $j$th element is successively compared with the already sorted $j - 1$ elements at the start of the list until the first element that is not less than this element is found or until it has been compared with all $j - 1$ elements; the $j$th element is inserted in the correct position so that the first $j$ elements are sorted. The algorithm continues until the last element is placed in the correct position relative to the already sorted list of the first $n - 1$ elements.
+**THE INSERTION SORT**. In the $j$th step of the insertion sort, the $j$th element of the list is inserted into the correct position in the list of the previously sorted $j - 1$ elements. To insert the $j$the element in the list, a linear search technique is used; the $j$th element is successively compared with the already sorted $j - 1$ elements at the start of the list until the first element that is not less than this element is found, or until it has been compared with all $j - 1$ elements; the $j$th element is inserted in the correct position so that the first $j$ elements are sorted. The algorithm continues until the last element is placed in the correct position relative to the already sorted list of the first $n - 1$ elements.
 
 Finding where a pattern occurs in a text string is called **string matching**.
 
 Algorithms that make what seems to be the "best" choice at each step are called **greedy algorithms**.
 
-**Halting problem**. It asks whether there is a procedure that does this: It takes as input a computer program and input to the program and determines whether the program will eventually stop when run with this input.
+**Cashier's Algorithm** (make change using coins):
+
+> procedure change($c_1, c_2, ..., c_r$: values of denominations of coins, where $c_1 > c_2 > ... > c_r$; $n$: a positive integer)
+>
+> for i := 1 to r
+>
+> ​	$d_i = 0$ {$d_i$ counts the coins of a denomination $c_i$ used}
+>
+> ​	while $n \geq c_i$
+>
+> ​		$d_i := d_i + 1$ {add a coin of denomination $c_i$}
+>
+> ​		$n := n - c_i$ {$d_i$ is the number of coins of denomination $c_i$ in the change for $i = 1, 2, ..., r$} 
+
+**THEOREM:** The cashier's algorithm always makes changes using the fewest coins possible when change is made from quarters, dimes, nickels, and pennies.
+
+**LEMMA**: If $n$ is a positive integer, then $n$ cents in change using quarters, dimes, nickels, and pennies using the fewest coins possible has at most two dimes, at most one nickel, and at most four pennies, and cannot have two dimes and a nickel. The amount of change in dimes, nickels, and pennies cannot exceed 24 cents.
+
+**Halting problem**. It asks whether there is a procedure that does this: It takes as input a computer program and input to the program, and determines whether the program will eventually stop when run with this input.
 
 
 
@@ -50,13 +68,21 @@ Algorithms that make what seems to be the "best" choice at each step are called 
 
 **THEOREM** Suppose that $f_1(x)$ is $O(g_1(x))$ and $f_2(x)$ is $O(g_2(x))$. Then $(f_1 f_2)(x)$ is $O(g_1(x) g_2(x))$.
 
-**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Omega(g(x))$ if there are constants $C$ and $k$ with $C$ positive such that $|f(x)| \geq C|g(x)|$ whenever $x > k$. [This is read as "$f(x)$ is big-Omega of $g(x)$."]
+**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Omega(g(x))$ If there are constants $C$ and $k$ with $C$ positive such that $|f(x)| \geq C|g(x)|$ whenever $x > k$. [This is read as "$f(x)$ is big-Omega of $g(x)$."]
 
-**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Theta(g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega(g(x))$. When $f(x)$ is $\Omega(g(x))$, we say that $f$ is big-Theta of $g(x)$, that $f(x)$ is of `order` $g(x)$, and that $f(x)$ and $g(x)$ are of the `same order`.
+**Definition** Let $f$ and $g$ be functions from the set of integers or the set of real numbers to the set of real numbers. We say that $f(x)$ is $\Theta(g(x))$ if $f(x)$ is $O(g(x))$ and $f(x)$ is $\Omega(g(x))$. When $f(x)$ is $\Omega(g(x))$, We say that $f$ is big-Theta of $g(x)$, that $f(x)$ is of `order` $g(x)$, and that $f(x)$ and $g(x)$ are of the `same order`.
 
 **THEOREM** Let $f(x) = a_n x^n + a_{n-1}x^{n-1} + ... + a_1 x + a_0$, where $a_0, a_1, ..., a_n$ are real numbers with $a_n \neq 0$. Then $f(x)$ is of order $x^n$.
 
-**WORST-CASE COMPLEXITY** By the worst-case performance of an algorithm, we mean the largest number of operations needed to solve the given problem using this algorithm on input of specified size.
+
+
+## Complexity of Algorithms
+
+An analysis of the time required to solve a problem of a particular size involves the **time complexity** of the algorithm.
+
+An analysis of the computer memory required involves the **space complexity** of the algorithm.
+
+**WORST-CASE COMPLEXITY** By the worst-case performance of an algorithm, we mean the largest number of operations needed to solve the given problem using this algorithm on an input of specified size.
 
 **AVERAGE-CASE COMPLEXITY** The average number of operations used to solve the problem over all possible inputs of a given size is found in this type of analysis.
 

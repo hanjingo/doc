@@ -28,7 +28,13 @@ A deep neural network(DNN) is an artificial neural network with multiple layers 
 
 ![ann_intro](res/ann_intro.png)
 
-Artificial neural networks (ANNs), or connectionist systems, are computing systems vaguely inspired by the biological neural networks that constitute animal brains. Such systems "learn" to perform tasks by considering examples, generally without being programmed with any task-specific rules.
+**Artificial neural networks (ANNs)**, or connectionist systems, are computing systems vaguely inspired by the biological neural networks that constitute animal brains. Such systems "learn" to perform tasks by considering examples, generally without being programmed with any task-specific rules.
+
+![ann_workflow](res/ann_workflow.png)
+
+- Input Layer: This is where the network receives information.
+- Hidden Layers: These layers process the data received from the input layer. The more hidden layers there are, the more complex patterns the network can learn and understand. Each hidden layer transforms the data into more abstract information.
+- Output Layer: This is where the final decision or prediction is made.
 
 ### Convolutional Neural Networks(CNNs)
 
@@ -40,7 +46,7 @@ Convolutional neural networks(CNNs) are used in computer vision. CNNs have also 
 
 ![rnn_intro](res/rnn_intro.png)
 
-Recurrent neural networks(RNNs) are designed to work on sequential data. Whereas a conventional feedforward neural network maps a single output, RNNs map a sequence of inputs to an output by operating in a recurrent loop in which the output for a given step in the input sequence serves as input to the computation for the following step. In effect, this creates an internal "memory", called the `hidden` state, that allows RNNs to understand context and order.
+**Recurrent neural networks(RNNs)** are designed to work on sequential data. Whereas a conventional feedforward neural network maps a single output, RNNs map a sequence of inputs to an output by operating in a recurrent loop in which the output for a given step in the input sequence serves as input to the computation for the following step. In effect, this creates an internal "memory", called the `hidden` state, that allows RNNs to understand context and order.
 
 ### Long Short-Term Memory Networks (LSTMs)
 
@@ -78,6 +84,46 @@ TODO
 
 
 
+## Mixed Precision
+
+![mixed_precision_training](res/mixed_precision_training.png)
+
+Mixed Precision Training is a deep learning optimization technique that uses both 16-bit (half precision) and 32-bit (single precision) floating point representations during model training. It is designed to reduce memory usage and speed up computation without significantly affecting model accuracy.
+
+Mixed precision combines:
+
+- Float32: for critical operations requiring high accuracy.
+- Float16: for less sensitive operations where precision loss is acceptable.
+
+Benefits:
+
+1. Faster Training: Float16 operations execute faster on GPUs with specialized hardware (like NVIDIA Tensor Cores).
+2. Lower Memory Usage: Reducing variable sizes from 32 bits to 16 bits nearly halves memory usage, enabling larger models or larger batch sizes.
+3. Comparable Accuracy: When used with techniques like loss scaling, models trained with mixed precision perform similarly to full precision models.
+
+
+
+## Summary
+
+### Artificial Neurons vs Biological Neurons
+
+![biological_neurons_to_artificial_neurons](res/biological_neurons_to_artificial_neurons.png)
+
+|         Aspect         |                      Biological Neurons                      |                      Artificial Neurons                      |
+| :--------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|     **Structure**      |        Dendrites: Receive signals from other neurons.        | Input Nodes: Receive data and pass it on to the next layer.  |
+|           -            |           Cell Body (Soma): Processes the signals.           |     Hidden Layer Nodes: Process and transform the data.      |
+|           -            |     Axon: Transmits processed signals to other neurons.      |   Output Nodes: Produce the final result after processing.   |
+|    **Connections**     |    Synapses: Links between neurons that transmit signals.    | Weights: Connections between neurons that control the influence of one neuron on another. |
+| **Learning Mechanism** | Synaptic Plasticity: Changes in synaptic strength based on activity over time. | Backpropagation: Adjusts the weights based on errors in predictions to improve future performance. |
+|     **Activation**     | Activation: Neurons fire when signals are strong enough to reach a threshold. | Activation Function: Maps input to output, deciding if the neuron should fire based on the processed data. |
+
+
+
 ## Reference
 
 [1] [OpenAI CLIP: The Model That Learnt Zero-Shot Image Recognition Using Text](https://blog.bytebytego.com/p/openai-clip-the-model-that-learnt)
+
+[2] [What is Mixed Precision Training?](https://www.geeksforgeeks.org/deep-learning/what-is-mixed-precision-training/)
+
+[3] [Artificial Neural Networks and its Applications](https://www.geeksforgeeks.org/deep-learning/artificial-neural-networks-and-its-applications/)

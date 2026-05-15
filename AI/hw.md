@@ -6,15 +6,15 @@
 
 ## Metrics
 
-|            | Full Name                            | Measures                       | Typical Use Case                 | Factors Affecting |
-| ---------- | ------------------------------------ | ------------------------------ | -------------------------------- | ----------------- |
-| **FLOPS**  | Floating Point Operations Per Second | Floating-point performance     | Scientific computing, GPUs, HPC  |                   |
-| **TOPS**   | Tera Operations Per Second           | AI-specific operations         | AI inference, NPUs, accelerators |                   |
-| **MIPS**   | Million Instructions Per Second      | General instruction throughput | CPUs, embedded systems           |                   |
-| **DMIPS**  | Dhrystone MIPS                       | Real-world CPU performance     | Benchmarking CPUs and MCUs       |                   |
-| **Hash/s** | Hashes Per Second                    | Cryptographic hashing rate     | Mining, security workloads       |                   |
+|            | Full Name                            | Measures                       | Typical Use Case                 |
+| ---------- | ------------------------------------ | ------------------------------ | -------------------------------- |
+| **FLOPS**  | Floating Point Operations Per Second | Floating-point performance     | Scientific computing, GPUs, HPC  |
+| **TOPS**   | Tera Operations Per Second           | AI-specific operations         | AI inference, NPUs, accelerators |
+| **MIPS**   | Million Instructions Per Second      | General instruction throughput | CPUs, embedded systems           |
+| **DMIPS**  | Dhrystone MIPS                       | Real-world CPU performance     | Benchmarking CPUs and MCUs       |
+| **Hash/s** | Hashes Per Second                    | Cryptographic hashing rate     | Mining, security workloads       |
 
-### Precision
+### Precision Format
 
 ![fp32_vs_fp16_bfloat16](res/fp32_vs_fp16_bfloat16.png)
 
@@ -38,14 +38,29 @@ MFLOPS (Millions of FLOPS) Calculation Formula:
 $$
 MFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)} \times 10^{6}}
 $$
-GFLOPS Calculation Formula:
+GFLOPS (Billions of FLOPS) Calculation Formula:
 $$
 GFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)} \times 10^{9}}
 $$
-PFLOPS Calculation Formula:
+TFLOPS (Trillions of FLOPS) Calculation Formula:
 $$
-PFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)}  \times 10^{12}}
+TFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)}  \times 10^{12}}
 $$
+PFLOPS (Quadrillions of FLOPS) Calculation Formula:
+$$
+PFLOPS = \frac{\text{Number of Floating-Point Operations}}{\text{Execution Time (in seconds)}  \times 10^{15}}
+$$
+Estimate CPU/GPU/etc Formula:
+$$
+FLOPS = \text{Core Count} \times \text{Frequency} \times \text{Instructions per Cycle} \times \text{FLOPs per Instruction}
+$$
+For Example: 
+
+> A CPU with 4 cores at 3.5 GHz, 4 IPC, and 1 FLOP per instruction: 
+> $$
+> 4 \times 3.5,GHz \times 4 = 56,GFLOPS
+> $$
+
 Factors Affecting FLOPS Performance:
 
 1. Processor Architecture: The design of the CPU or GPU determines how efficiently it performs floating-point operations.
@@ -57,23 +72,58 @@ Factors Affecting FLOPS Performance:
 
 ### TOPS (Tera Operations Per Second)
 
-TODO
+**TOPS** measures trillion operations per second and is widely used in AI accelerators, NPUs, and ML inference engines.
+
+TOPS (Tera Operations Per Second) Calculation Formula:
+$$
+TOPS = \text{Clock Frequency} \times \text{Instructions per Cycle} \times \text{Ops per Instruction}
+$$
 
 ### MIPS (Million Instructions Per Second)
 
 ![mips_calc](res/mips_calc.png)
 
-MIPS measures the number of instructions a CPU can execute in one second, indicating its processing speed. A higher MIPS generally means the processor can handle more tasks, but it does not always reflect real-world performance.
+**MIPS** measures the number of instructions a CPU can execute in one second, indicating its processing speed. A higher MIPS generally means the processor can handle more tasks, but it does not always reflect real-world performance.
+
+Calculate MIPS(Million Instructions Per Second) Formula:
+$$
+\text{MIPS} = \frac{\text{Number of Instructions}}{\text{Execution time} \times 10^{6}}
+$$
+Calculate IPS(Instructions per second) Formula:
+$$
+\text{Instructions per second (IPS)} = \frac{\text{CPU Clock Speed}}{\text{CPI}}
+$$
+For Example: 
+
+> A CPU executing 500,000 instructions per second achieves:
+> $$
+> MIPS = \frac{500,000}{10^{6}} = 0.5
+> $$
 
 ### DMIPS (Dhrystone MIPS)
 
-TODO
+**DMIPS** is based on the **Dhrystone benchmark**, providing a more realistic measure of CPU performance under typical workloads.
+
+Calculate DMIPS (Dhrystone MIPS) Formula:
+$$
+DMIPS = \frac{\text{Dhrystone Instruction Count}}{10^{6}}
+$$
+For Example:
+
+> A CPU executing 800,000 Dhrystone operations per second achieves:
+> $$
+> DMIPS = \frac{800,000}{10^{6}} = 0.8
+> $$
 
 ### Hash/s (Hashes Per Second)
 
-TODO
+Used primarily in **cryptography and blockchain mining**, Hash/s quantifies how many hash calculations a device can perform per second.
 
+For Example:
 
+> If a system performs 100,000 SHA-256 hashes per second:
+>
+> Hash Rate = 100,000
 
 
 
@@ -119,6 +169,8 @@ GPUs are specialized hardware designed to accelerate computations that involve p
 
 At the top level, a GPU chip is made up of many Streaming Multiprocessors (SMs). Think of SMs as mini parallel engines replicated across the chip. Instead of one big brain, you get dozens of smaller ones working simultaneously.
 
+### SM
+
 Inside each SM:
 
 - A Warp Scheduler decides which group of threads (a warp) runs next.
@@ -129,6 +181,8 @@ Inside each SM:
 - L1 Cache provides fast, on-SM data access.
 
 Each SM works independently, but they’re connected through an on-chip interconnect. Below that sits the L2 Cache, shared across all SMs. This is the coordination layer. If one SM misses in L1, it checks L2 before going to global memory.
+
+### Memory Controller
 
 Then come the Memory Controllers, which interface with Global Memory. This is where things get interesting:
 
@@ -171,7 +225,7 @@ FPGA stands for **Field Programmable Gate Array,** which is an IC that can be pr
 
 Types of FPGA Based on their applications, FPGAs are classified as :
 
-- **Low-End FPGAs: They consume less power than the other two and are less complex as no of gates is less.
+- **Low-End FPGAs**: They consume less power than the other two and are less complex as no of gates is less.
 - **Mid-Range FPGAs**: They consume more power than low-end FPGAs and have a larger number of gates, so more complex. They provide a balance between performance and cost.
 - **High-End FPGAs**: They have a large gate density, so are more complex than mid-range. Their performance is better than low-end and mid-range FPGAs, but some High-End FPGAs.
 

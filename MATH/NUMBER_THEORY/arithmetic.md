@@ -103,4 +103,4 @@ $$
 
 ## References
 
-[1] Kenneth H. Rosen . Discrete Mathematics and Its Applications . 8Edition
+[1] Kenneth H. Rosen. Discrete Mathematics and Its Applications. 8Edition

@@ -8,7 +8,7 @@
 
 Artificial Intelligence (AI) refers to the simulation of human intelligence in machines, allowing them to perform tasks that typically require human cognitive functions such as learning, reasoning, problem-solving, perception, and decision-making.
 
-## Types
+## AI Types
 
 ![type_of_ai](res/type_of_ai.png)
 
@@ -54,7 +54,7 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 
 ### Artificial Neural Networks (ANNs)
 
-![ann_intro](res/ann_intro.png)
+![ann_intro](res/ann_workflow.png)
 
 ### Convolutional Neural Networks (CNNs)
 
@@ -107,6 +107,10 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 
 
 ## Other
+
+### Hardware
+
+![cpu_vs_gpu_vs_tpu](res/cpu_vs_gpu_vs_tpu.png)
 
 ### Library/Tools
 

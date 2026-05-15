@@ -978,6 +978,12 @@ Yes. Templates can use static_assert or if constexpr to control logic at compile
 
 For more info, see: [C++ Templates](LANG/C++/template.md)
 
+#### How would you write a generic function to swap two values by using template for different kinds of parameter.
+
+write a template function that takes two references to the same type `T` and swaps their values using a temporary variable. The template allows the function to work with any type (int, float, string, custom classes) as long as that type supports copy assignment.
+
+For more info, see: [C++ Templates](LANG/C++/template.md)
+
 ### Concurrency
 
 #### What are the major multithreading features introduced in C++11 and later?
@@ -2190,6 +2196,18 @@ Kadane's algorithm finds the maximum sum of any contiguous subarray in O(n) time
 
 For more info, see: [Search Algorithm Summary#Kadane's Algorithm](ALGO/search.md), [Search Problem](ALGO/LEET_CODE/search.md)
 
+#### Given an unsorted array of integers, how would you find the kth smallest element efficiently?
+
+The most efficient average-case solution is Quick Select (a variation of Quick Sort), which offers O(n) average time complexity and O(1) space. For guaranteed worst-case performance, you can use Median of Medians (O(n) worst-case) or a Min-Heap of size k (O(n log k)).
+
+For more info, see: [Search Algorithm Summary](ALGO/search.md), [Search Problem](ALGO/LEET_CODE/search.md)
+
+#### Given a stream of integers, how would you efficiently find the median of the elements seen so far at any given time?
+
+To efficiently find the median of a **dynamic stream** of integers, use the **Two-Heap (or Median Heap)** approach: maintain a **max-heap** for the lower half and a **min-heap** for the upper half. Ensure the heap sizes differ by at most 1, with the max-heap containing the lower half. The median is the top of the larger heap (odd total) or the average of both tops (even total).
+
+For more info, see: [Heap](ALGO/heap.md), [Search Problem](ALGO/LEET_CODE/search.md)
+
 ### Sorting
 
 #### What is a sorting algorithm?
@@ -2250,9 +2268,13 @@ For more info, see: [Sorting Algorithm Summary#Merge Sort](ALGO/sort.md)
 
 Stability in sorting algorithms means that the relative order of equal elements remains unchanged after sorting. Stable sorting algorithms ensure that equal elements maintain their original positions in the sorted sequence.
 
+For more info, see: [Sorting Algorithm Summary#Complexity](ALGO/sort.md)
+
 #### What is the best sorting algorithm for large datasets?
 
 For large datasets, efficient sorting algorithms like Merge Sort, Quick Sort or Heap Sort are commonly used due to their average time complexity of $O(n \log n)$, which performs well even with large amounts of data.
+
+For more info, see: [Sorting Algorithm Summary#Complexity](ALGO/sort.md)
 
 #### How does Quick Sort work?
 
@@ -2953,6 +2975,10 @@ For more info, see: [CAP Theorem](DCS/cap.md), [Database Design#CAP Theorem In D
 Leader Election is the process by which a distributed system selects a single node to act as the primary coordinator, decision-maker, or master. This leader is responsible for making critical decisions, coordinating tasks, or managing shared rexources while other nodes (followers) wait for instructions. When the leader fails, the system automatically elects a new leader to maintain availability.
 
 For more info, see: [Database Design#Consensus Algorithms](SYSTEM_DESIGN/dcs.md)
+
+#### Imaging you're designing a distributed key-value store. How do you handle data replication across multiple nodes, and how do you ensure consistency in the face of network partitions?
+
+In a distributed key-value store, the CAP theorem with C stands for consistency, A stands for Availability, P stands for Partition Tolerance, which forces you to choose two of three. Since network partitions are unavoidable, you must choose between CP (Consistency + Partition tolerance) or AP (Availability + Partition tolerance). For data replication, I'd use quorum-based replication (`W + R > N`, `W > N/2`). 
 
 ### Design Pattern
 
