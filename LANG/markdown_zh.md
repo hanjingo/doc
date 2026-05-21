@@ -443,6 +443,7 @@ $$
 | $\aleph_0$                                                   | `$\aleph_0$`                                                 |                                                              |                                                              |
 | $\vartheta_i$                                                | `$\vartheta_i$`                                              |                                                              |                                                              |
 | $\mathbb{R}^n$                                               | `$\mathbb{R}^n$`                                             |                                                              |                                                              |
+| $\nabla_{x_t}$                                               | `$\nabla_{x_t}$`                                             |                                                              |                                                              |
 
 ### 数学公式
 

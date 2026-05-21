@@ -8,7 +8,19 @@ English | [中文版](interview_zh.md)
 
 ## AI
 
-TODO
+### RAG
+
+### NLP
+
+### CV
+
+### Agent
+
+### Gen AI
+
+#### What is Generative AI and how does its architecture work?
+
+For more info, see: [Generative AI](AI/genai.md)
 
 ---
 
@@ -264,13 +276,27 @@ For more info, see: [C++ Best Practice#Prefer alias declarations (using) to type
 
 Move semantics allow resources to be transferred (moved) from temporaries or expiring objects instead of expensive deep copies, enabling performance gains and exception safety improvements.
 
-For more info, see: [C++ Features#Move](LANG/C++/feature.md)
+For more info, see: [C++ Features#move semantics](LANG/C++/feature.md)
 
 #### Explain how `std::move` and `std::forward` differ in perfect forwarding?
 
 In C++, the key difference is that `std::move` unconditionally casts its argument to an rvalue reference to enable move semantics, while `std::forward` conditionally casts it argument to preserve its original value category in generic code. This preservation of the value category is the core of perfect forwarding.
 
-For more info, see: [C++ Features#Move](LANG/C++/feature.md)
+For more info, see: [C++ Features#move semantics](LANG/C++/feature.md)
+
+#### Explain why std::move was introduced in C++11, and how it interacts with the Rule of Five?
+
+Move semantics allow resources to be transferred (moved) from temporaries or expiring objects instead of expensive deep copies, enabling performance gains and exception safety improvements. It directly enables the **Rule of Five**: when a class manages resources, you should define:
+
+- Destructor
+- Copy constructor
+- Copy assignment operator
+- Move constructor
+- Move assignment operator
+
+Without `std::move` and move semantics, classes managing resources would suffer unnecessary deep copies, especially with temporary objects in modern C++ code.
+
+For more info, see: [C++ Features#move semantics](LANG/C++/feature.md)
 
 #### What is lvalue and rvalue?
 
@@ -336,6 +362,20 @@ For more info, see: [C++ Features#decltype(auto)](LANG/C++/feature.md)
 #### What are lambda expressions in C++11 and later?
 
 Lambdas are inline, anonymous function objects with optional captures. They enable concise callbacks and algorithms.
+
+For more info, see: [C++ Features#lambda](LANG/C++/feature.md)
+
+#### Explain how lambda expressions capture variables by value versus by reference, and what potential pitfalls should you be aware of with each?
+
+Lambda expressions capture variables either by value (`[=]` or `[var]`) or by reference (`[&]` or `[&var]`). By value copies the variable into the lambda's closure at creation time – safe but may be stale if you expect changes. By reference captures the variable's address – changes outside the lambda are visible, but you risk dangling references if the referenced variable goes out of scope before the lambda is called.
+
+For more info, see: [C++ Features#lambda](LANG/C++/feature.md)
+
+#### How would you ensure safety when deciding which lambda capture method to use in a multi-threaded application?
+
+In multi-threaded applications, **prefer capture-by-value** for safety unless you have specific performance or synchronization requirements. By-value captures eliminate data races because each thread gets its own independent copy. When you must capture by reference, **guarantee the referenced object outlives the lambda** using proper synchronization (`std::mutex`, atomic operations, or lifetime management like `std::shared_ptr`). Never capture local stack variables by reference in lambdas passed to other threads.
+
+For more info, see: [C++ Features#lambda](LANG/C++/feature.md)
 
 #### What is the main use of the keyword “Volatile”?
 
@@ -478,6 +518,12 @@ For more info, see: [C++ Exception#Exception Handling#Exception Propagation](LAN
 The `noexcept` keyword specifies that a function does not throw exceptions. It makes intent clear to both the compiler and developers. If a nonexcept function does throw, `std::terminate()` is called. noexcept is especially important for move constructors and destructors, where it enables optimizations such as exception-safe move operations in standard containers.
 
 For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md)
+
+#### Why is `noexcept` important for move operations?
+
+Containers like `std::vector` provide strong exception guarantee. During reallocation, if elements' move constructors can throw, vector must copy instead (for safety). Marking moves `noexcept` enables performance optimizations.
+
+For more info, see: [C++ Exception#Exception Handling](LANG/C++/exception.md), [C++ Features#move semantics](LANG/C++/feature.md)
 
 #### What will happen if you throw an exception from a destructor?
 
@@ -1748,6 +1794,12 @@ The TCP three-way handshake establishes a reliable connection between client and
 
 For more info, see: [TCP Protocol#Connection Establishment and Termination](NET/tcp.md)
 
+#### What happened if we lost the final ACK in TCP handshake?
+
+If the **final ACK** in the TCP three-way handshake is lost, the **client** transitions to **ESTABLISHED** state and starts sending data, while the **server** remains in **SYN-RCVD** (waiting for the ACK). The server will **retransmit** its SYN-ACK packet according to its retransmission timer (typically starting at 1 second, doubling each time). The client's data packet will carry the required ACK number, so when the server receives the client's data, it will recognize the ACK and transition to ESTABLISHED. If the client sends no data, the server will eventually time out and reset the connection.
+
+For more info, see: [TCP Protocol#Connection Establishment and Termination](NET/tcp.md)
+
 #### Explain how to create a simple TCP server that accepts one client connection and sends msg back.
 
 Creating a simple TCP server involves a standard sequence of steps: creating a socket, binding it to an address and port, listening for incoming connections, accepting a client, communicating and closing the connection.
@@ -2097,6 +2149,12 @@ For more info, see: [Searching Algorithm Summary#Breadth-First Search (BFS)](ALG
 #### When would you choose DFS over BFS?
 
 DFS when memory is constrained (depth < width), when finding any path (not shortest), for topological sorting, or when solving puzzles like Sudoku. BFS when finding shortest path in unweighted graphs or when the graph is wide but shallow.
+
+For more info, see: [Searching Algorithm Summary#DFS vs BFS](ALGO/search.md)
+
+#### Explain the difference between traversing a tree using Breadth-First Search(BFS) and Depth-First Search(DFS)?
+
+**BFS** (Breadth-First Search) explores a tree **level by level** (wide), using a **queue** (FIFO), ensuring the shortest path to each node. **DFS** (Depth-First Search) explores **branch by branch** (deep), using a **stack** (LIFO) or recursion, going as far as possible before backtracking.
 
 For more info, see: [Searching Algorithm Summary#DFS vs BFS](ALGO/search.md)
 
@@ -2968,7 +3026,7 @@ For more info, see: [CDN](SYSTEM_DESIGN/cdn.md)
 
 The CAP theorem states that in a distributed system, you can only guarantee two of three properties simultaneously: Consistency, Availability, and Partition tolerance. Since network partitions are unavoidable in distributed systems, you must choose between Consistency and Availability when a partition occurs.
 
-For more info, see: [CAP Theorem](DCS/cap.md), [Database Design#CAP Theorem In Database Designing](SYSTEM_DESIGN/dcs.md)
+For more info, see: [CAP Theorem](DCS/cap.md), [Distributed System Design](SYSTEM_DESIGN/dcs.md)
 
 #### What do you understand by Leader Election?
 
@@ -2979,6 +3037,12 @@ For more info, see: [Database Design#Consensus Algorithms](SYSTEM_DESIGN/dcs.md)
 #### Imaging you're designing a distributed key-value store. How do you handle data replication across multiple nodes, and how do you ensure consistency in the face of network partitions?
 
 In a distributed key-value store, the CAP theorem with C stands for consistency, A stands for Availability, P stands for Partition Tolerance, which forces you to choose two of three. Since network partitions are unavoidable, you must choose between CP (Consistency + Partition tolerance) or AP (Availability + Partition tolerance). For data replication, I'd use quorum-based replication (`W + R > N`, `W > N/2`). 
+
+#### How would you approach partitioning or sharding the data across your nodes to ensure the load is evenly distributed?
+
+To partition data evenly across nodes, I'd use **consistent hashing with virtual nodes** (like Cassandra) or **fixed hash slot partitioning** (like Redis Cluster). Consistent hashing maps both keys and nodes onto a hash ring, with each physical node represented by multiple virtual nodes to ensure even distribution. When nodes are added or removed, only **O(K/N)** keys need to be moved (where K = total keys, N = nodes), making rebalancing efficient. I'd also monitor **key distribution, request rate, and memory usage** to detect hotspots and trigger automatic rebalancing.
+
+For more info, see: [Distributed System Design](SYSTEM_DESIGN/dcs.md)
 
 ### Design Pattern
 
@@ -3183,6 +3247,12 @@ For more info, see: [Database Design#Data Sharding And Partitioning](SYSTEM_DESI
 Caching is the temporary storage of frequently accessed data in a high-speed storage layer to reduce latency and database load. Cache update strategies determine how the cache stays synchronized with the source of truth. The main strategies are Cache-Aside, Read-Through, Write-Behind, and Write-Around. Each makes different trade-offs between consistency, performance, and complexity.
 
 For more info, see: [Caching Design#Caching Strategy](SYSTEM_DESIGN/caching.md)
+
+#### How you'd design a caching layer to improve the performance of your distributed key-value store, and how you would handle cache invalidation or synchronization across nodes?
+
+To ensure your caching layer is as efficient and reliable as possible, you'll want to implement strategies like cache-aside, where the application checks the cache first, and only queries the primary database on a miss, subsequently populating the cache. For replication, using asynchronous replication with master-replica setups, similar to how Redis clusters operate, ensures high availability and fault tolerance, though you must carefully consider the trade-offs regarding data consistency during failures.
+
+For more info, see: [Caching Design](SYSTEM_DESIGN/caching.md)
 
 ### Auth
 

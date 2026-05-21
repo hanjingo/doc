@@ -46,7 +46,7 @@ E[s] = 2 \sqrt{-cov[\Delta_{P_t}, \Delta_{P_{t + 1}}]} \text{ whenever } cov[\De
 $$
 To use standard econometric techniques in the presence of the bid-ask bounce, many practitioners convert the tick data to "midquote" format: the simple average of the latest bid and ask quotes. The midquote is used to approximate the price level at which the market is theoretically willing to trade if buyers and sellers agreed to meet each other halfway on the price spectrum. Mathematically, the midquote can be expressed as follows:
 $$
-\hat{q}_{t_m}^m = \frac{1}{2} \left( q_{t_a}^a + q_{t_b}^b \right), where t_m =
+\hat{q}_{t_m}^m = \frac{1}{2} \left( q_{t_a}^a + q_{t_b}^b \right), \text{where } t_m =
 \begin{cases}
 t_a, &\text{if } t_a \geq t_b\\
 t_b, &\text{otherwise }

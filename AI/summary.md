@@ -12,6 +12,18 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 
 ![type_of_ai](res/type_of_ai.png)
 
+### Types of AI Based on Functionalities
+
+![type_of_ai_based_functionality](res/type_of_ai_based_functionality.png)
+
+|            **Basis**             |        **Reactive AI**         |   **Limited Memory AI**    |        **Theory of Mind AI**         |                **Self-Aware AI**                |
+| :------------------------------: | :----------------------------: | :------------------------: | :----------------------------------: | :---------------------------------------------: |
+| Level of Intelligence  |      Basic response-based      |     Learned from data      |     Social/emotional (emerging)      |         Conscious-level (hypothetical)          |
+|    Learning Ability    |          No learning           |   Learns from past data    | Limited/experimental social learning |     Self-reflective learning (theoretical)      |
+|    Decision-Making     | Rule-based, immediate response | Data-driven, probabilistic | Context + emotion + intention-based  |         Fully autonomous, self-directed         |
+| Interaction Complexity |    Simple, fixed responses     | Context-aware interaction  |    Human-like social interaction     | Highly advanced, human-equivalent (theoretical) |
+|   Real-World Status    |          Fully exists          |     Widely used today      |            Research stage            |                Not yet achieved                 |
+
 
 
 ## Hierarchy
@@ -128,6 +140,50 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 
 
 
+## Challenge
+
+### Ignorable Problems
+
+These are minor issues that have little or no effect on the AI system’s overall performance. They are often harmless and do not require immediate attention.
+
+Examples:
+
+- Small inaccuracies in predictions that don't affect the final result like a slight error in image classification.
+- Minor issues in data preprocessing that don't change the outcome.
+
+### Recoverable Problems
+
+Recoverable problems are those where the AI system encounters an issue but can be fixed with intervention, either automatically or manually, such as error-handling functions.
+
+Examples:
+
+- Missing data that can be filled in using statistical methods.
+- System crashes that can be fixed by restoring from a backup.
+
+### Irrecoverable Problems
+
+These are severe issues that cause permanent damage or failure, making it impossible for the system to recover. They can lead to significant performance loss.
+
+Examples:
+
+- Corrupted training data that causes bias and reduces the model's effectiveness.
+- Adversarial attacks that make the model untrustworthy.
+- Overfitting, where the model becomes too specialized and cannot adapt to new data.
+
+
+
+## Application
+
+### AI in Manufacturing
+
+![ai_in_manufacturing](res/ai_in_manufacturing.png)
+
+### AI in Transportation
+
+![ai_in_transportation](res/ai_in_transportation.png)
+
+
+
 ## Summary
 
 ### AI Agent vs MCP vs RAG
@@ -152,6 +208,17 @@ RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. T
 |  **Scalability**   |          Requires manual oversight as systems grow.          | Oversees and coordinates whole systems hence reducing manual monitoring. |
 |  **Adaptability**  |  Struggles with unexpected changes and may need retraining.  | Adjusts strategies and learns in real time and is best suited for fast-changing situations. |
 | **Business value** |   Automates simple, rule-based jobs, increases consistency   | Automates complex operations, reduces manual work, and enables personalized tasks |
+
+### AI vs ML vs DL
+
+|       **Aspect**        |                              AI                              |                              ML                              |                              DL                              |
+| :---------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Scope & Application** | Broad – includes ML, DL, expert systems, robotics, computer vision, NLP, symbolic AI, etc. | Narrower – focuses on data-driven algorithms and statistical learning. |  Narrowest – focuses specifically on deep neural networks.   |
+|   **Core Techniques**   | Rule-based systems, search algorithms, expert systems, ML, DL, reinforcement learning, NLP. | Supervised learning, unsupervised learning, reinforcement learning, regression, classification, clustering. | CNNs (Convolutional Neural Networks), RNNs (Recurrent Neural Networks), LSTMs, Transformers, GANs. |
+|      **Data Type**      | Can work with structured, semi-structured or unstructured data depending on the approach. | Mainly structured and labeled data (though some algorithms handle unstructured data). |  Primarily unstructured data (images, audio, text, video).   |
+| **Learning Dependency** | May or may not involve learning (AI can be purely rule-based). |        Always involves learning from historical data.        | Fully dependent on large-scale learning with neural networks. |
+|  **Model Complexity**   | Can range from simple decision trees to complex hybrid AI systems. | Relatively simpler – linear models, trees, SVMs, ensemble methods. | Very complex – multi-layer neural networks with millions to billions of parameters. |
+|  **Computation Power**  | Low to high, depending on the AI technique (expert systems vs DL). |      Moderate – runs well on CPUs for most algorithms.       |  Very high – requires GPUs/TPUs for training large models.   |
 
 
 
@@ -202,3 +269,13 @@ RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. T
 [22] [Agentic AI vs. Traditional AI](https://www.geeksforgeeks.org/artificial-intelligence/agentic-ai-vs-traditional-ai/)
 
 [23] [What is Agentic AI](https://www.geeksforgeeks.org/artificial-intelligence/what-is-agentic-ai/)
+
+[24] [Types of AI Based on Functionalities](https://www.geeksforgeeks.org/artificial-intelligence/types-of-ai-based-on-functionalities/)
+
+[25] [Artificial intelligence vs Machine Learning vs Deep Learning](https://www.geeksforgeeks.org/artificial-intelligence/artificial-intelligence-vs-machine-learning-vs-deep-learning/)
+
+[26] [Problem Solving in Artificial Intelligence](https://www.geeksforgeeks.org/artificial-intelligence/problem-solving-in-artificial-intelligence/)
+
+[27] [AI in Manufacturing : Revolutionizing the Industry](https://www.geeksforgeeks.org/artificial-intelligence/ai-in-manufacturing-revolutionizing-the-industry/)
+
+[28] [AI in Transportation](https://www.geeksforgeeks.org/artificial-intelligence/ai-in-transportation/)

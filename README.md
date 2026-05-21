@@ -34,6 +34,8 @@
 - [Hash](ALGO/hash.md)
 - [Huffman Code](ALGO/huffman.md)
 - [Linked List](ALGO/link_list.md)
+- [LRU Algorithm](lru.md)
+- [Monte Carlo Tree](monte_carlo_tree.md)
 - [Queue](ALGO/queue.md)
 - [Red Black Tree](ALGO/rb_tree.md)
 - [Recursion](ALGO/recursion.md)

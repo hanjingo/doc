@@ -63,6 +63,18 @@ While goal-based agents treat objectives as binary (achieved or not achieved), u
 
 Learning agents represent the most advanced category because they improve their performance over time through experience.
 
+### Multi-Agent Systems (MAS)
+
+![agent_multi_agent_systems](res/agent_multi_agent_systems.png)
+
+Multi-agent systems consist of multiple autonomous agents that interact within a shared environment, where they may cooperate, compete, or do both depending on the situation.
+
+### Hierarchical Agents
+
+![agent_hierarchical_agents](res/agent_hierarchical_agents.png)
+
+Hierarchical agents organize decision-making in layers, where higher levels focus on planning and lower levels handle execution. This structure helps manage complex tasks by separating strategy from operational details.
+
 
 
 ## Workflow
