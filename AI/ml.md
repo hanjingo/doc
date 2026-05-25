@@ -47,6 +47,10 @@ In machine learning, [Deep Learning(DL)](dl.md) focuses on utilizing multilayere
 
 Deep learning algorithms can be applied to unsupervised learning tasks. This is an important benefit because unlabeled data is more abundant than labeled data.
 
+### Deep Reinforcement Learning
+
+Deep Reinforcement Learning (DRL) is the crucial fusion of two powerful artificial intelligence fields: deep neural networks and reinforcement learning. By combining the benefits of data-driven neural networks and intelligent decision-making, it has sparked an evolutionary change that crosses traditional boundaries
+
 ---
 
 
@@ -284,7 +288,11 @@ Scaling ensures that all features contribute equally to the model. Include:
 
 ### Model Selection
 
+TODO
+
 ### Model Training
+
+TODO
 
 ### Model Evaluation and Tuning
 
@@ -498,7 +506,42 @@ The two best strategies for Hyperparameter tuning are:
 
 ### Model Deployment
 
+![ml_deployment](res/ml_deployment.png)
+
+Machine learning deployment is the process of integrating a trained model into a real-world environment so it can generate predictions on live data and deliver practical value. It transforms models from experimental setups into scalable, reliable systems while also ensuring continuous monitoring and updates for long-term performance.
+
+Process to deploy ML models:
+
+1. Develop and Create a Model in a Training Environment
+2. Optimize and Test Code
+3. Prepare for Container Deployment
+4. Plan for Continuous Monitoring and Maintenance
+
+#### Shadow Deployment
+
+Shadow deployment is a deployment strategy used in microservices and distributed systems to test new versions of a service without affecting live users. In this approach, the new version of the service is deployed alongside the existing (live) version and receives a copy of real-time production traffic.
+
+#### Canary Deployment
+
+Implementing Canary Releases helps introduce application updates gradually while reducing the associated risk. You can define both old and new versions in a docker-compose.yml file, making testing for new features easy with only a small subset of users before a full rollout. Important steps include preparing Docker images, configuring Docker Compose, and monitoring the new version for issues. Ensure correct image tags and repository access to avoid deployment errors, troubleshoot common issues, for example, missing images or command not found errors by verifying the configurations and installations in place. This approach helps validate changes, enhance deployment safety, and optimize application stability.
+
+#### A/B Testing
+
+A/B Testing is used online when one wants to test a new feature or a product. The main agenda over here is to design an experiment that gives repeatable results and is robust enough to make an informed decision to launch it or not. Generally, this test includes a comparison of two web pages by representing variants A and B for them. As the number of visitors is similar, the conversion rate given by the variant becomes better. Overall, it's an experiment where two or more variations of the same web page are compared against each other by showcasing them to real-time visitors, and through that, determine which one performs better for a given goal. A/B testing is not only used or limited to web pages only, but it can be used in emails, pop-ups, sign-up forms, apps, and more.
+
+#### Tools and Platforms for Model Deployment
+
+![kubeflow](res/kubeflow.png)
+
+Kubeflow is an open-source machine learning toolkit built on top of Kubernetes. It is utilized for coordinating, delivering, and operating machine learning workloads. By making the deployment procedure straightforward, adaptable, and scalable, it makes machine learning workload deployment simple. Kubeflow can run in a Kubernetes cluster on-premises or the cloud.
+
+![mlflow](res/mlflow.png)
+
+MLflow is an open-source platform designed to manage and streamline the entire machine learning lifecycle. It provides a set of tools for tracking experiments, packaging models and deploying them, making it easier to manage the various stages of ML workflows. Whether we are a data scientist, ML engineer or DevOps engineer, MLflow offers a robust solution to track our experiments and manage models throughout their lifecycle.
+
 ### Model Monitoring & Maintenance
+
+TODO
 
 ---
 
@@ -684,7 +727,7 @@ Logistic Regression is a supervised machine learning algorithm used for classifi
 
 #### Logistic Regression Workflow
 
-Logistic regression computes a linear combination of input features $(z = w \cdot X + b)$ and passes it through a sigmoid function to produce a probability between 0 and 1. This probability is then used to assign the input to a class.
+Logistic regression computes a linear combination of input features $(z = w \cdot X + b)$ and passes it through a [Deep Learning#Sigmoid Activation Function](dl.md) to produce a probability between 0 and 1. This probability is then used to assign the input to a class.
 
 Suppose we have input features represented as a matrix:
 $$
@@ -712,7 +755,7 @@ Here $x_i$ is the $i$th observation of $X$, $w_i = [w_1, w_2, w_3, ..., w_m]$ is
 $$
 z = w \cdot X + b
 $$
-At this stage, $z$ is a continuous value from the linear regression. Logistic regression then applies the sigmoid function to $z$ to convert it into a probability between 0 and 1, which can be used to predict the class.
+At this stage, $z$ is a continuous value from the linear regression. Logistic regression then applies the [Deep Learning#Sigmoid Activation Function](dl.md) to $z$ to convert it into a probability between 0 and 1, which can be used to predict the class.
 
 #### Logistic Regression Equation and Odds
 
@@ -1970,6 +2013,16 @@ ECLAT workflow:
 
 Whereas supervised learning trains models by optimizing them to match ideal exemplars and unsupervised learning algorithms fit themselves to a dataset, reinforcement learning models are trained holistically through trial and error. In RL literature, an AI system is often referred to as an "agent".
 
+Types of Reinforcements:
+
+1. *Positive Reinforcement*
+
+   Positive Reinforcement is defined as when an event, occurs due to a particular behavior, increases the strength and the frequency of the behavior. In other words, it has a positive effect on behavior. 
+
+2. *Negative Reinforcement*
+
+   Negative Reinforcement is defined as strengthening of behavior because a negative condition is stopped or avoided. 
+
 ### Bellman Equation
 
 The Bellman Equation is a formula used in reinforcement learning to calculate the value of a state. It says that the value of a state is equal to the reward received now plus the expected value of the next state. This helps an agent make better decisions by considering both immediate and future rewards. It is based on the principle of optimality which means the best value of a state depends on the immediate reward and the value of the next state.
@@ -2364,6 +2417,59 @@ Advantage Function:
 > - Provide clearer learning signals
 > - Reduce the variance in policy gradient updates.
 
+### Proximal Policy Optimization (PPO)
+
+Proximal Policy Optimization (PPO) is a reinforcement learning algorithm that helps agents improve their actions while keeping learning stable. It directly updates the policy like other policy gradient methods but uses a clipping rule to limit large destabilizing changes.
+
+Reasons for using PPO in [Generative AI](genai.md) are:
+
+1. *Fine Tuning with Human Feedback:* PPO is the backbone of RLHF aligning large language models with human preferences.
+2. *Stability in Training:* Ensures safe and steady updates while optimizing massive generative models.
+3. *Balancing Exploration and Safety:* Helps GenAI systems generate creative responses without drifting into harmful outputs.
+4. *Efficient Large Scale Optimization:* Handles huge datasets and parameters making training feasible at scale.
+5. *Human Like Interaction:* Improves coherence, relevance and alignment of AI outputs with human intent.
+
+Here are the main parameters in PPO:
+
+1. *Clip Range ($\epsilon$):* Controls how much the new policy can deviate from the old one ensuring stable updates.
+2. *Learning Rate:* Step size for updating network weights during training.
+3. *Discount Factor ($\gamma$):* Determines how much future rewards are valued compared to immediate rewards.
+4. *GAE Lambda ($\lambda$):* Balances bias and variance in advantage estimation using Generalized Advantage Estimation.
+5. *Number of Epochs:* How many times each batch of data is used for policy updates.
+6. *Batch Size:* Number of samples per update affecting stability and efficiency.
+7. *Value Loss Coefficient ($c1$):* Weight given to the critic loss in the total objective.
+8. *Entropy Coefficient ($c2$):* Encourages exploration by penalizing low entropy i.e. overconfident policies.
+
+Mathematical formulation and algorithm of PPO:
+
+1. Policy Update Rule
+
+   - PPO updates the agent’s policy using policy gradients adjusting it in the direction that maximizes the expected cumulative reward.
+   - Unlike standard policy gradient methods, it ensures updates are controlled and stable.
+
+2. Surrogate Objective
+
+   - Instead of directly maximizing rewards, PPO maximizes a surrogate objective that measures improvement over the old policy:
+     $$
+     L(\theta) = \mathbb{E}_{t}[\frac{\pi_{\theta}(a_t | s_t)}{\pi_{\theta_{old}}(a_t | s_t)} A_{t}]
+     $$
+
+   - This allows the algorithm to evaluate the benefit of new actions while referencing the old policy.
+
+3. Clipping Mechanism
+
+   - Introduces a clip function to limit the probability ratio between new and old policies:
+     $$
+     clip(\frac{\pi_{\theta}(a_t | s_t)}{\pi_{\theta_{old}}(a_t | s_t)}, 1 - \epsilon, 1 + \epsilon)
+     $$
+
+   - Prevents excessively large policy updates that could destabilize learning.
+
+4. Advantage Estimation
+
+   - Computes the advantage $A_t$ to determine how much better or worse an action was compared to the expected value of the state.
+   - Guides the policy update by increasing the probability of better actions and decreasing that of worse actions.
+
 ---
 
 
@@ -2588,10 +2694,10 @@ Types of Exponential Smoothing:
    - $s_{t - 1}$: previous smoothed statistic
    - $\alpha$: smoothing factor of data ($0 < \alpha < 1$)
    - $t$: time period
-   - $b_t$:
-   - $\beta$:
-   - $c_{t}$:
-   - $\gamma$:
+   - $b_t$: best estimate of a trend at time $t$
+   - $\beta$: trend smoothing factor ($0 < \beta < 1$)
+   - $c_{t}$: seasonal component at time $t$
+   - $\gamma$: seasonal smoothing parameter ($0 < \gamma < 1$)
 
 ---
 
@@ -2741,6 +2847,39 @@ Types of Exponential Smoothing:
 |         **Behavior**         | Learns a safer policy because updates depend on exploration |       Learns more aggressive policies        |
 |    **Convergence Speed**     |                           Slower                            |                    Faster                    |
 |         **Best For**         |       Environments where exploration affects outcomes       | Environments where optimal actions are clear |
+
+### DevOps vs MLOps
+
+|          **Feature**          |                          **DevOps**                          |                          **MLOps**                           |
+| :---------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|    **Core Purpose**     | Focuses on automating the development and deployment of traditional software. | Extends DevOps principles to machine learning systems, managing not only code but also data and models. |
+| **Main Assets Managed** |    Handles code, application binaries and infrastructure.    | Handles code plus datasets, features, model versions and experiments. |
+| **Lifecycle Coverage**  |      Covers coding → testing → deployment → monitoring.      | Adds stages like data preparation, feature engineering, model training, validation, deployment, retraining and drift management. |
+|  **Nature of Updates**  | Updates happen when developers push new features or bug fixes. | Updates are triggered not only by new features but also by changing data, shifting patterns or model performance drops. |
+|     **Complexity**      | Mostly predictable, since software code is static once shipped. | Dynamic and complex, because data evolves, models decay and retraining is often required. |
+|  **Monitoring Needs**   | Monitors system uptime, response times, errors and stability. | Monitors model accuracy, fairness, bias, drift in data, latency of predictions and compliance with regulations. |
+|     **Tools Used**      |    Jenkins, Git, Docker, Kubernetes, Terraform, Ansible.     | Adds ML-specific tools like MLflow, Kubeflow, TensorFlow Extended (TFX), DVC, Weights & Biases and feature stores. |
+|   **Teams Involved**    |        Software developers and operations engineers.         | Includes data scientists, ML engineers, DevOps and domain experts working together. |
+
+### Online vs Offline Learning
+
+![online_vs_offline_rl](res/online_vs_offline_rl.png)
+
+|      **Aspect**      |                   **Online RL**                   |                    **Offline RL**                     |
+| :------------------: | :-----------------------------------------------: | :---------------------------------------------------: |
+| **Data Acquisition** |  Direct, real-time interaction with environment   |             Static, pre-collected dataset             |
+|    **Adaptivity**    |             High, continuously adapts             |         Limited, depends on dataset coverage          |
+|   **Suitability**    | When environment access or simulation is feasible |    When environment interaction is costly or risky    |
+|    **Challenges**    |      Resource-intensive, potentially unsafe       | Distributional shift, counterfactual inference issues |
+
+### PPO vs Earlier Methods
+
+Comparison of PPO with earlier policy gradient methods:
+
+1. *Reinforce:* Simple and easy to understand but often unstable due to high variance in updates. PPO improves stability by limiting how much the policy can change at each step.
+2. *Actor-Critic:* Uses an actor to choose actions and a critic to evaluate them, thereby reducing the variance of policy gradients. PPO achieves similar stability while still leveraging a value function (critic) for advantage estimation.
+
+---
 
 
 
@@ -2907,3 +3046,15 @@ Types of Exponential Smoothing:
 [80] [SARIMA (Seasonal Autoregressive Integrated Moving Average)](https://www.geeksforgeeks.org/machine-learning/sarima-seasonal-autoregressive-integrated-moving-average/)
 
 [81] [Exponential Smoothing for Time Series Forecasting](https://www.geeksforgeeks.org/artificial-intelligence/exponential-smoothing-for-time-series-forecasting/)
+
+[82] [Machine learning deployment](https://www.geeksforgeeks.org/machine-learning/machine-learning-deployment/)
+
+[83] [Shadow Deployment in Microservices](https://www.geeksforgeeks.org/system-design/shadow-deployment-in-microservices/)
+
+[84] [MLOps: Everything You Need to Know](https://www.geeksforgeeks.org/machine-learning/mlops-everything-you-need-to-know/)
+
+[85] [A Beginner's Guide to Deep Reinforcement Learning](https://www.geeksforgeeks.org/artificial-intelligence/a-beginners-guide-to-deep-reinforcement-learning/)
+
+[86] [Reinforcement Learning](https://www.geeksforgeeks.org/machine-learning/what-is-reinforcement-learning/)
+
+[87] [Proximal Policy Optimization (PPO)](https://www.geeksforgeeks.org/machine-learning/a-brief-introduction-to-proximal-policy-optimization/)

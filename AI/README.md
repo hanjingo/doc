@@ -15,3 +15,5 @@
 - [Prompt Cookbook](prompt.md)
 - [RAG](rag.md)
 - [Robotics](robotics.md)
+- [Simultaneous Localization and Mapping (SLAM)](slam.md)
+- [Transformer](transformer.md)

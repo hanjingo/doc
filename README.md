@@ -16,6 +16,9 @@
 - [Natural Language Processing (NLP)](AI/nlp.md)
 - [Prompt Cookbook](AI/prompt.md)
 - [RAG](AI/rag.md)
+- [Robotics](AI/robotics.md)
+- [Simultaneous Localization and Mapping (SLAM)](AI/slam.md)
+- [Transformer](AI/transformer.md)
 
 ---
 

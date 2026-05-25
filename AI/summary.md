@@ -24,6 +24,10 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 | Interaction Complexity |    Simple, fixed responses     | Context-aware interaction  |    Human-like social interaction     | Highly advanced, human-equivalent (theoretical) |
 |   Real-World Status    |          Fully exists          |     Widely used today      |            Research stage            |                Not yet achieved                 |
 
+### Types of AI Models
+
+![types_of_ai_models](res/types_of_ai_models.png)
+
 
 
 ## Hierarchy
@@ -116,9 +120,65 @@ Artificial Intelligence (AI) refers to the simulation of human intelligence in m
 
 ![agent_intro](res/agent_intro.png)
 
+### Types of Agents
+
+1. Simple Reflex Agents
+
+   ![simple_reflex_agent](res/simple_reflex_agent.png)Simple reflex agents act only on the current perception of the environment using predefined condition–action rules. They do not rely on past experiences or predict future outcomes and respond directly using simple “if–then” logic.
+
+2. Model-Based Reflex Agents
+
+   ![model_based_reflex_agent](res/model_based_reflex_agent.png)
+
+   Model-based reflex agents maintain an internal model of the environment to handle situations where full information is not directly available. This helps them make better decisions by considering changes in the environment and the impact of their actions.
+
+3. Goal-Based Agents
+
+   ![goal_based_agent](res/goal_based_agent.png)
+
+   Goal-based agents choose their actions by focusing on a specific objective and evaluating how different choices can help achieve it. Instead of reacting only to the current situation, they plan ahead and consider possible future outcomes.
+
+4. Utility-Based Agents
+
+   ![utility_based_agent](res/utility_based_agent.png)
+
+   Utility-based agents go beyond simply achieving goals by evaluating how beneficial each action is using a utility function, which measures the overall “value” or satisfaction of an outcome. This helps them choose the best option when dealing with trade-offs or uncertainty.
+
+5. Learning Agents
+
+   ![learning_agent_working](res/learning_agent_working.png)
+
+   Learning agents improve their behavior over time by using feedback from past actions. They continuously refine their internal models to make better decisions in future situations.
+
+6. Multi-Agent Systems (MAS)
+
+   ![multi_agent_system](res/multi_agent_system.png)
+
+   Multi-agent systems consist of multiple autonomous agents that interact within a shared environment, where they may cooperate, compete, or do both depending on the situation.
+
+7. Hierarchical Agents
+
+   ![hierarchical_agents](res/hierarchical_agents.png)
+
+   Hierarchical agents organize decision-making in layers, where higher levels focus on planning and lower levels handle execution. This structure helps manage complex tasks by separating strategy from operational details.
+
 
 
 ## Other
+
+### Knowledge Representation
+
+![knowledge_representation_in_ai](res/knowledge_representation_in_ai.png)
+
+Knowledge Representation (KR) in AI focuses on how machines store and organize real-world information so they can reason, learn, and make intelligent decisions like humans.
+
+![type_of_knowledge](res/type_of_knowledge.png)
+
+- **Declarative Knowledge:** Knowledge about facts and concepts it answers what something is . Example: Paris is the capital of France.
+- **Procedural Knowledge:** Knowledge about how to perform a task or solve a problem. Example: Steps to sort numbers using an algorithm.
+- **Meta knowledge:** Knowledge about other knowledge or how knowledge is used. Example: Knowing that a certain rule works better for solving math problems.
+- **Heuristic Knowledge:** Experience based knowledge or rules of thumb used by experts. Example: A doctor using past experience to guess a possible disease.
+- **Structural Knowledge:** Knowledge that shows relationships between concepts. Example: A car is a type of vehicle.
 
 ### Hardware
 
@@ -168,7 +228,27 @@ Examples:
 
 - Corrupted training data that causes bias and reduces the model's effectiveness.
 - Adversarial attacks that make the model untrustworthy.
-- Overfitting, where the model becomes too specialized and cannot adapt to new data.
+- Overfitting where the model becomes too specialized and cannot adapt to new data.
+
+### Constraint Satisfaction Problems (CSP)
+
+A *Constraint Satisfaction Problem* is a mathematical problem where the solution must meet a number of constraints. In CSP, the objective is to assign values to variables such that all the constraints are satisfied. Many AI applications use CSPs to solve decision-making problems that involve managing or arranging resources under strict guidelines.
+
+CSPs can be classified into different types based on their constraints and problem characteristics:
+
+1. *Binary CSPs*: In these problems, each constraint involves only two variables. Like in a scheduling problem, the constraint could specify that task A must be completed before task B.
+2. *Non-Binary CSPs*: These problems have constraints that involve more than two variables. For instance, in a seating arrangement problem, a constraint could state that three people cannot sit next to each other.
+3. *Hard and Soft Constraints*: Hard constraints must be strictly satisfied, while soft constraints can be violated but at a certain cost. This is often used in real-world applications where not all constraints are equally important.
+
+In CSP it involves the interaction of variables, domains and constraints. Below is a structured representation of how CSP is formulated:
+
+1. Finite Set of Variables $(V_1, V_2, ..., V_n)$: The problem consists of a set of variables, each of which needs to be assigned a value that satisfies the given constraints.
+2. Non-Empty Domain for Each Variable ($D_1, D_2, ..., D_n$): Each variable has a domain a set of possible values that it can take.
+3. Finite Set of Constraints ($C_1, C_2, ..., C_m$): Constraints restrict the possible values that variables can take. Each constraint defines a rule or relationship between variables.
+4. Constraint Representation: Each constraint $C_i$ is 
+5. represented as a pair of (scope, relation) where:
+   - *Scope:* The set of variables involved in the constraint.
+   - *Relation:* A list of valid combinations of variable values that satisfy the constraint.
 
 
 
@@ -279,3 +359,5 @@ RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. T
 [27] [AI in Manufacturing : Revolutionizing the Industry](https://www.geeksforgeeks.org/artificial-intelligence/ai-in-manufacturing-revolutionizing-the-industry/)
 
 [28] [AI in Transportation](https://www.geeksforgeeks.org/artificial-intelligence/ai-in-transportation/)
+
+[29] [Agents in AI](https://www.geeksforgeeks.org/artificial-intelligence/agents-artificial-intelligence/)

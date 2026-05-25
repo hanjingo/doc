@@ -4,13 +4,39 @@
 
 
 
-Natural Language Processing (NLP) helps machines to understand and process human languages, either in text or audio form. It is used across a variety of applications, from speech recognition to language translation and text summarization.
-
 ![nlp_intro](res/nlp_intro.png)
+
+Natural Language Processing (NLP) helps machines to understand and process human languages, either in text or audio form. It is used across a variety of applications, from speech recognition to language translation and text summarization.
 
 ## Tasks
 
 ![nlp_tasks](res/nlp_tasks.png)
+
+### Text Classification
+
+Text classification is a fundamental task in natural language processing (NLP) that involves categorizing text documents into predefined classes or categories based on their content.
+
+### Sentiment Analysis
+
+Sentiment Analysis is the process of analyzing textual data to determine the emotional tone expressed in it. It classifies text as positive, negative or neutral and can also detect more nuanced emotions like happy, sad, angry or frustrated.
+
+### Text Summarization
+
+Text summarization has become increasingly important as massive amounts of textual data is generated daily. The ability to extract key information quickly is important.
+
+### Named Entity Recognition (NER)
+
+TODO
+
+### Text Generation
+
+Text generation in natural language processing (NLP) has improved significantly with Transformer-based models like GPT and BERT. These models use self-attention to understand how words relate to each other in a sentence which is very slow and costly, especially when working with long sequences of text.
+
+### Machine Translation
+
+Machine translation is the process of converting text from one language to another using AI models. Modern systems, such as Google Translate, rely on advanced architectures like Transformers to understand and generate accurate translations.
+
+---
 
 
 
@@ -97,6 +123,8 @@ TODO
 ### Pragmatic Analysis
 
 Pragmatic analysis helps in understanding the deeper meaning behind words and sentences by looking beyond their literal meanings. While semantic analysis looks at the direct meaning, it considers the speaker's or writer's intentions, tone, and context of the communication.
+
+---
 
 
 
@@ -211,6 +239,8 @@ Latent Semantic Analysis (LSA) is a method used to find hidden meanings in text.
 ### Latent Dirichlet Allocation (LDA)
 
 Latent Dirichlet Allocation (LDA), the most widely applied topic modeling method, works as an unsupervised probabilistic model. It assumes that similar documents will share similar word usage and thus, will likely belong to the same topics. Each document is viewed as a mixture of topics and each topic is characterized by a distribution over words.
+
+---
 
 
 
@@ -333,17 +363,142 @@ The rise of transformer models brought major progress in natural language proces
 
 ### DistilBERT
 
-**DistilBERT** is a distilled version of BERT meaning it is trained using *knowledge distillation* a technique where a smaller model (student) learns from a larger model (teacher). It retains 97% of BERT’s performance while being 40% smaller and 60% faster making it highly efficient for NLP tasks such as text classification, sentiment analysis and question-answering.
+*DistilBERT* is a distilled version of BERT meaning it is trained using *knowledge distillation* a technique where a smaller model (student) learns from a larger model (teacher). It retains 97% of BERT’s performance while being 40% smaller and 60% faster making it highly efficient for NLP tasks such as text classification, sentiment analysis and question-answering.
 
 **Workflow:**
 
 ![distil_bert_workflow](res/distil_bert_workflow.png)
 
+---
+
 
 
 ## Model Training
 
-TODO
+Traditional Machine Learning Techniques:
+
+- [Machine Learning#Naive Bayes](ml.md)
+- [Machine Learning#Logistic Regression](ml.md)
+- [Machine Learning#Support Vector Machines (SVM)](ml.md)
+- [Machine Learning#Random Forest (Bagging Algorithm)](ml.md)
+
+Deep Learning Techniques:
+
+- [Deep Learning#Artificial Neural Networks(ANNs)](dl.md)
+- [Deep Learning#Recurrent Neural Networks(RNNs)](dl.md)
+- [Deep Learning#Long Short-Term Memory Networks (LSTMs)](dl.md)
+- Gated Recurrent Unit (GRU)
+- Seq2Seq Models
+- Deep Learning#Transformer Models
+
+### GPT (Generative Pre-trained Transformer)
+
+Generative Pre trained Transformer (GPT) is a language model that understands and generates human like text. It learns patterns and relationships between words from large data and can perform multiple language tasks using a single model.
+
+GPT models are built upon the [transformer architecture](transformer.md) introduced in 2017, which uses self attention mechanisms to process input data in parallel, allowing for efficient handling of long range dependencies in text. The core process involves:
+
+1. **Pre-training:** The model is trained on vast amounts of text data to learn language patterns, grammar, facts and some reasoning abilities.
+2. **Fine-tuning:** The pre-trained model is further trained on specific datasets with human feedback to align its responses with desired outputs.
+
+GPT architecture:
+
+![gpt_arch](res/gpt_arch.png)
+
+### Transformer XL
+
+Transformer XL is an extension of the vanilla [transformer architecture](transformer.md) designed to address the challenges associated with them for language modeling task as highlighted above. It introduces two key features:
+
+- Segment-level recurrent mechanism
+- Relative Positional Encoding
+
+#### Segment-level recurrent mechanism
+
+In a standard Transformer, the hidden state at a given position is a vector that encodes information about the token at that position and its relationships with other tokens in the sequence. The hidden state is updated through self-attention mechanisms and feedforward layers in each layer of the Transformer.
+
+The segment-level recurrent mechanism involves updating the hidden states not only within the current segment but also by attending to the hidden states from previous segments. This enables the model to extend its context window beyond the current segment.
+
+Let:
+
+- $S_{\tau}$ and $S_{\tau + 1}$ be two segments
+- $L$ be the length of sequence
+- $D$ be the hidden dimension of the layer
+- $n$ be the number of layers
+
+Now the hidden state being feed into nth layer of segment $S_{\tau + 1}$ depends not only the hidden state of $S_{\tau + 1}$ at $n$- 1but also the hidden state of layer $n - 1$ at $S_{\tau}$. The two hidden state vectors are concatenated along the length dimension. This is expressed as:
+$$
+h_{\tau + 1}^{\sim n - 1} = [SGh_{\tau}^{n - 1} \oplus SGh_{\tau + 1}^{n - 1}]
+$$
+Here we take the hidden state from previous layer of same segment and hidden state from previous layer of last segment and concatenate its. The SG denotes that the gradient is not backpropagated through previous layer.
+
+This modified hidden state is used in for key and value calculation to key QKV matrices.
+$$
+q_{\tau + 1}^{n} = h_{\tau + 1}^{n - 1}W_q \\
+k_{\tau + 1}^{n} = h_{\tau + 1}^{\sim n - 1}W_{k}^{T} \\
+v_{\tau + 1}^{n} = h_{\tau + 1}^{\sim n - 1}W_{v}^{T} 
+$$
+Note that modified hidden state is used only for K and V. The Query calculation remains dependent only on hidden state of current segment previous layer. The gradient remains within a segment, but the additional history allows the network to model long-term dependency and avoid context fragmentation.
+
+With this recurrence mechanism applied to every two consecutive segments of a corpus, it essentially creates a segment-level recurrence in the hidden states. Notice that the recurrent dependency between $h_{\tau + 1}^{n}$ and $h_{\tau}^{n - 1}$ shifts one layer downwards per segment. This can be visualized as below:
+
+![segment_lvl_recurrent_mechanism_training_phase](res/segment_lvl_recurrent_mechanism_training_phase.png)
+
+![segment_lvl_recurrent_mechanism_evaluation_phase](res/segment_lvl_recurrent_mechanism_evaluation_phase.png)
+
+#### Relative Positional Encoding
+
+In the original transformer paper, we add the positional encoding vector (U) with the embedding vector(E). We multiply the result of this with weight matrices $W_q$ and $W_k$ to get the Q and K vectors.
+
+The attention score between $i$ and $j$ token is obtained by multiplying the Query of $i$th vector with Key of $j$th vector.
+
+This attention score between two tokens at position $i$ and $j$ from the original transformer architecture can be mathematically decomposed into U and E vectors as below:
+$$
+A_{ij} = E_{x_i}^{T}W_{q}^{T}W_{k}E_{x_j} + E_{x_i}^{T}W_{q}^{T}W_{k}U_{j} + U_{i}^{T}W_{q}^{T}W_{k}E_{x_j} + U_{i}^{T}W_{q}^{T}W_{k}U_{j}
+$$
+here:
+
+- $A_{ij}$ Is the attention score between words at position $i$ and $j$
+- $E_{x_i}$ and $E_{x_j}$ are the embedding vectors for word at $i$ and $j$
+- $U_i$ and $U_j$ are the positional encoding vectors at position $i$ and $j$
+- $W_q$ and $W_k$ are the query and key matrix
+
+The attention score in transformer XL architecture can mathematically be formulated as below:
+$$
+A_{ij} = E_{x_i}^{T}W_{q}^{T}W_{k}E_{x_j} + E_{x_i}^{T}W_{q}^{T}W_{k}R_{i - j} + u^{T}W_{k, E}E_{x_j} + v^{T}W_{K, R}U_{j}
+$$
+
+- $U_j$ are replaced by $R_{i - j}$ which is a positional bedding based on distance between $i$ and $j$ instead of absolute position of $j$
+- The terms $U_i W_q$ in part 3 remains constant for all query positions. The author replaced this with two new vecotrs U and V which are learned during the training. These vectors represent global content bias (since the third part has vecotr $E_j$) and global positional bias (since the fourt part has vecotr $R_{i - j}$).
+- The weight matrix $W_K$ in term 3 and 4 is separated the two weight matrices $W_{K, E}$ and $W_{K, R}$ for producing the content-based key vectors and position-based key vectors respectively.
+
+### T5 (Text-to-Text Transfer Transformer)
+
+![t5](res/t5.png)
+
+*T5 (Text-to-Text Transfer Transformer)* is a transformer-based model developed by Google Research. Unlike traditional NLP models that have task-specific architectures, T5 treats every NLP task as a text-to-text problem. This unified framework allow it to be applied to various tasks such as translation, summarization and question answering.
+
+T5 follows a simple yet effective principle i.e it convert all NLP problems into a text-to-text format. Model uses encoder-decoder architecture similar to Transformer-based sequence-to-sequence models. It works by:
+
+1. Task Formulation as Text-to-Text
+
+   Instead of treating different NLP tasks separately it reformulates each problem into a text-based input and output.
+
+2. Encoding the Input
+
+   The input text is tokenized using SentencePiece, then passed through the encoder which generates a contextual representation.
+
+3. Decoding the Output
+
+   The decoder takes the encoded representation and generates the output text in a autoregressive manner.
+
+4. Training the Model
+
+   T5 is pre-trained using a denoising objective where portions of text are masked and the model learns to reconstruct them. It is then fine-tuned for various tasks.
+
+### Transfer Learning with Fine-tunning
+
+Natural Language Processing (NLP) has transformed models like BERT which can understand language context deeply by looking at words both before and after a target word. While BERT is pre-trained on vast amounts of general text making it adapt it to specific tasks like sentiment analysis that requires fine tuning. This process customizes BERT’s knowledge to perform well on domain-specific data while saving time and computational effort compared to training a model from scratch.
+
+---
 
 
 
@@ -356,6 +511,8 @@ TODO
 ![nltk](res/nltk.png)
 
 Natural Language Processing (NLP) plays an important role in enabling machines to understand and generate human language. Natural Language Toolkit (NLTK) stands out as one of the most widely used libraries. It provides a combination of linguistic resources, including text processing libraries and pre-trained models, which makes it ideal for both academic research and practical applications.
+
+---
 
 
 
@@ -404,6 +561,8 @@ Natural Language Processing (NLP) plays an important role in enabling machines t
 |    **Batch Size**    |         256         |              Up to 8,000              |
 |  **Training Steps**  |         1M          | 500K–1.5M (varied across experiments) |
 |    **Optimizer**     |        Adam         |    Adam with tuned hyperparameters    |
+
+---
 
 
 
@@ -454,3 +613,23 @@ Natural Language Processing (NLP) plays an important role in enabling machines t
 [22] [Overview of RoBERTa model](https://www.geeksforgeeks.org/machine-learning/overview-of-roberta-model/)
 
 [23] [DistilBERT in Natural Language Processing](https://www.geeksforgeeks.org/nlp/distilbert-in-natural-language-processing/)
+
+[24] [Introduction to Generative Pre-trained Transformer (GPT)](https://www.geeksforgeeks.org/artificial-intelligence/introduction-to-generative-pre-trained-transformer-gpt/)
+
+[25] [Transformer XL: Beyond a Fixed-Length Context](https://www.geeksforgeeks.org/nlp/trasformer-xl-beyond-a-fixed-length-context/)
+
+[26] [T5 (Text-to-Text Transfer Transformer)](https://www.geeksforgeeks.org/nlp/t5-text-to-text-transfer-transformer/)
+
+[27] [Transfer Learning with Fine-Tuning in NLP](https://www.geeksforgeeks.org/nlp/transfer-learning-and-fine-tuning-in-nlp/)
+
+[28] [Dataset for Text Classification](https://www.geeksforgeeks.org/nlp/dataset-for-text-classification/)
+
+[29] [Classification of Text Documents using Naive Bayes](https://www.geeksforgeeks.org/machine-learning/classification-of-text-documents-using-the-approach-of-naive-bayes/)
+
+[30] [Text Classification using Logistic Regression](https://www.geeksforgeeks.org/machine-learning/text-classification-using-logistic-regression/)
+
+[31] [RNN for Text Classifications in NLP](https://www.geeksforgeeks.org/nlp/rnn-for-text-classifications-in-nlp/)
+
+[32] [Text classification using CNN](https://www.geeksforgeeks.org/nlp/text-classification-using-cnn/)
+
+[33] [Sentiment Analysis using VADER - Using Python](https://www.geeksforgeeks.org/python/python-sentiment-analysis-using-vader/)
