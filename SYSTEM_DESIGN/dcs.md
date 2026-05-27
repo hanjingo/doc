@@ -58,7 +58,7 @@ Use Case:
 4. Online Gaming Systems
 5. ...
 
-### Latency and Partition
+### Latency and Partition Tolerance
 
 ![dcs_latency_partition](res/dcs_latency_partition.png)
 
@@ -73,6 +73,8 @@ The fundamental challenge that makes distributed systems different is partial fa
 ### Workflow
 
 ![dcs_workflow](res/dcs_workflow.png)
+
+A distributed system works by dividing tasks among multiple nodes, which communicate and coordinate over a network to achieve a common goal.
 
 ### Models of interaction
 
@@ -92,27 +94,6 @@ In a distributed system, middleware normally provides two distinct types of supp
 1. Interaction support, where the middleware coordinates interactions between different components in the system.
 2. The provision of common services, where the middleware provides reusable implementations of services that may be required by several components in the distributed system.
 
-### Consensus Algorithms
-
-- Crash Fault Tolerant(CFT) Algorithms:
-  - Paxos (for more detail, see: [doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
-  - Raft (for more detail, see: [doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
-- Byzantine Fault Tolerant(BFT) Algorithms:
-  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see: [doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
-  - Tendermint
-- Proof-Based Algorithms:
-  - Proof of Work(PoW) (for more detail, see: [doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
-  - Proof of Stake(PoS) (for more detail, see: [doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
-  - Delegate Proof of Stake(DPoS) (for more detail, see: [doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
-- Leader-Based Algorithms:
-  - Viewstamped Replication(VR)
-  - Multi-Paxos
-- Voting-Based Algorithm
-  - Quorum-Based Algorithms
-  - Federated Byzantine Agreement(FBA)
-
-For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/master/DCS/README.md)
-
 ### Leader Election Algorithms
 
 ![dcs_leader_election_algo](res/dcs_leader_election_algo.png)
@@ -126,6 +107,26 @@ Leader Election Algorithms are important in distributed systems to manage tasks,
 ### Retry Pattern
 
 ![dcs_retry_pattern](res/dcs_retry_pattern.png)
+
+
+
+## Types of Distributed Systems
+
+### Client-Server Systems
+
+A client-server system is a distributed system where a central server provides services and multiple clients request those services over a network.
+
+### Peer-to-Peer (P2P) Systems
+
+A peer-to-peer system is a distributed system where all nodes are equal and can act as both client and server without a central authority.
+
+### Clustered Systems
+
+A clustered system is a group of closely connected computers that work together as a single system to improve performance and reliability.
+
+### Cloud-Based Distributed Systems
+
+A cloud-based distributed system uses cloud infrastructure where computing resources are distributed across multiple data centers and accessed over the internet.
 
 
 
@@ -184,25 +185,53 @@ It is appropriate to use a peer-to-peer architectural model for a system in two 
 
 
 
-## Distributed Caching
+## Consensus Algorithms
 
-![dcs_caching](res/dcs_caching.png)
+- Crash Fault Tolerant(CFT) Algorithms:
+  - Paxos (for more detail, see: [doc/DCS/CONSENSUS/paxos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/paxos.md))
+  - Raft (for more detail, see: [doc/DCS/CONSENSUS/raft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/raft.md))
+- Byzantine Fault Tolerant(BFT) Algorithms:
+  - Practical Byzantine Fault Tolerance(PBFT) (for more detail, see: [doc/DCS/CONSENSUS/pbft.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pbft.md))
+  - Tendermint
+- Proof-Based Algorithms:
+  - Proof of Work(PoW) (for more detail, see: [doc/DCS/CONSENSUS/pow.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pow.md))
+  - Proof of Stake(PoS) (for more detail, see: [doc/DCS/CONSENSUS/pos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/pos.md))
+  - Delegate Proof of Stake(DPoS) (for more detail, see: [doc/DCS/CONSENSUS/dpos.md](https://github.com/hanjingo/doc/blob/master/DCS/CONSENSUS/dpos.md))
+- Leader-Based Algorithms:
+  - Viewstamped Replication(VR)
+  - Multi-Paxos
+- Voting-Based Algorithm
+  - Quorum-Based Algorithms
+  - Federated Byzantine Agreement(FBA)
 
-Distributed caching involves spreading the cached data across multiple servers or nodes, allowing the cache to scale horizontally to handle large-scale applications. With a distributed cache, data is stored across multiple locations, meaning a single-node failure doesn’t compromise the entire cache, and the system can continue to serve requests seamlessly. 
+For more information, see: [hanjingo/dcs](https://github.com/hanjingo/doc/blob/master/DCS/README.md)
 
+### Paxos
 
+The Paxos algorithm is a consensus algorithm designed to achieve agreement among a group of distributed or decentralized processes in a network, even if some of those processes are unreliable. The Paxos algorithm, devised by Leslie Lamport, is a protocol for achieving consensus in a network of unreliable processors (distributed systems). 
 
-## Distributed Locking
+Below are the fundamentals of Paxos:
 
-TODO
+- Roles
+- Pahses
+- [Quorum](#Quorum)
+- Fault Tolerance
 
+### Raft
 
+Raft is a consensus algorithm designed to be easier to understand and implement than Paxos. It works by electing a leader among the nodes to manage log replication and ensure consistency. Raft breaks down consensus into three main sub-problems: leader election, log replication, and safety.
 
-## Distributed Counter
+### Practical Byzantine Fault Tolerance (PBFT)
 
-### Netflix Implement
+PBFT is designed to handle Byzantine faults, where nodes may fail or act maliciously. It ensures consensus as long as less than one-third of the nodes are faulty. PBFT operates in three phases: pre-prepare, prepare, and commit. In the pre-prepare phase, the leader proposes a value.
 
-![netflix_distributed_counter](res/netflix_distributed_counter.png)
+### Proof of Work (PoW)
+
+PoW is a consensus mechanism used primarily in cryptocurrencies like Bitcoin.
+
+### Proof of Stake (PoS)
+
+PoS is a more energy-efficient consensus algorithm where validators are chosen based on the number of tokens they hold and are willing to stake as collateral. Validators create and propose new blocks, and their stake incentivizes them to act honestly.
 
 
 
@@ -210,11 +239,127 @@ TODO
 
 ![distributed_tracing](res/distributed_tracing.png)
 
+Distributed Tracing is a powerful monitoring technique that provides visibility into how requests flow through complex distributed systems, such as microservice architectures. By capturing and visualizing the journey of each request across multiple services, it helps developers and operators identify performance bottlenecks, latency issues, and system errors effectively.
+
+### Types of Distributed Tracing
+
+Distributed tracing helps teams monitor and analyze applications by tracking how requests flow and perform across systems. The main types include:
+
+- Code Tracing
+
+  Tracks the flow of source code during a specific function to identify logical issues or errors.
+
+- Program Tracing
+
+  Examines instruction addresses and memory variables during execution to detect deep performance issues.
+
+- End-to-End Tracing
+
+  Follows data as it moves across multiple services to understand transformations and dependencies.
+
+### Vector Clocks
+
+Vector clocks are a mechanism used in distributed systems to track the causality and ordering of events across multiple nodes or processes. Each process in the system maintains a vector of logical clocks, with each element in the vector representing the state of that process's clock. When events occur, these clocks are incremented, and the vectors are exchanged and updated during communication between processes.
+
+Vector clocks have several important use cases in distributed systems, particularly in scenarios where tracking the order of events and understanding causality is critical. Here are some key use cases:
+
+- Vector clocks are used in distributed databases such as Cassandra or Amazon DynamoDB to settle disputes that arise when several data replicas are updated separately.
+- Several people can edit the same document at once using collaborative editing programs like Google Docs.
+- In event-driven systems, like distributed logging or monitoring systems, where the sequence of occurrences is important.
+- Knowing the sequence in which various nodes operate is crucial for debugging or monitoring distributed systems.
+- Several clients may read and edit files simultaneously in distributed file systems such as the Hadoop Distributed File System (HDFS) or Google File System (GFS).
+
+### Distributed Tracing Tools
+
+These tools help developers monitor complex distributed systems by tracking requests across services and improving performance visibility.
+
+- Jaeger
+
+  An open-source, end-to-end distributed tracing tool which is originally created by Uber. It offers tools for trace collection, storage and analysis/visualization.
+
+- Zipkin
+
+  An open-source distributed system for trace whose main function is to provide support in the collection of timing data required in…
+
+- OpenTelemetry
+
+  A set of tools, APIs and SDK for attach trace, metrics data generation, log data collection and exporting for analysis.
+
+- AWS X-Ray
+
+  A tool provided by Amazon Web Services, which is in charge of distributed tracing and diagnosis of program performance and dependencies.
+
+- Datadog APM
+
+  An application performance monitoring tool with Distributed Tracing Functionality, that delivers holistic information about the operations of an application.
+
+
+
+## Quorum
+
+Quorum, within distributed systems, denotes the minimum number of nodes or processes required to reach a consensus on a specific action or decision to validate it. This consensus is essential for maintaining system coherence and ensuring effective operation, even in the presence of failures or network partitions.
+
+### Read Quorum
+
+It is a number of nodes that must agree on the reading process for it to be valid.
+
+### Write Quorum
+
+A group of nodes in a distributed system that all have to agree on a write action for it to be valid is called a "write quorum.
+
+### Membership Quorum
+
+Membership Quorum refers to the minimum number of nodes that must be present and operational for the system to consider itself healthy and operational. This is important for ensuring that the system can continue to function even if some nodes fail.
+
+### Configuration Quorum
+
+Configuration Quorum refers to the minimum number of nodes that must agree on changes to the system's configuration, such as adding or removing nodes. This helps prevent conflicts and ensures that configuration changes are applied consistently across the system, and regulates modifications to system configuration parameters, requiring consensus among nodes for configuration changes.
+
+
+
+## Distributed System Usage
+
+### Distributed Caching
+
+![dcs_caching](res/dcs_caching.png)
+
+Distributed caching involves spreading the cached data across multiple servers or nodes, allowing the cache to scale horizontally to handle large-scale applications. With a distributed cache, data is stored across multiple locations, meaning a single-node failure doesn’t compromise the entire cache, and the system can continue to serve requests seamlessly. 
+
+### Distributed Locking
+
+TODO
+
+### Distributed Counter
+
+### Netflix Implement
+
+![netflix_distributed_counter](res/netflix_distributed_counter.png)
+
 
 
 ## Summary
 
-TODO
+### Paxos vs Raft Algorithm
+
+|        **Aspect**        |                          **Paxos**                          |                           **Raft**                           |
+| :----------------------: | :---------------------------------------------------------: | :----------------------------------------------------------: |
+|  **Design Philosophy**   |         Theoretical robustness, minimalistic design         |          Understandability, ease of implementation           |
+|        **Roles**         |               Proposers, Acceptors, Learners                |                Leader, Followers, Candidates                 |
+|   **Leader Election**    | Not a primary focus, can have multiple concurrent proposers | Well-defined leader election process, ensures a single leader |
+|        **Phases**        |               Prepare, Promise, Accept, Learn               |         Leader Election, Log Replication, Commitment         |
+| **Communication Rounds** |             Multiple rounds, higher complexity              |          Streamlined, fewer rounds, simpler process          |
+|   **Fault Tolerance**    |              High, tolerates (N-1)/2 failures               |               Similar fault tolerance as Paxos               |
+|     **Performance**      |    Potential overhead from multiple rounds and conflicts    |   Generally more efficient due to single leader management   |
+
+### Comparison of Different Consensus Algorithms
+
+|      **Algorithm**       |                       **Description**                        |      **Fault Tolerance**       |           **Use Cases**            |                 **Benefits**                  |                   **Challenges**                    |
+| :----------------------: | :----------------------------------------------------------: | :----------------------------: | :--------------------------------: | :-------------------------------------------: | :-------------------------------------------------: |
+|        **Paxos**         | Achieves consensus despite network delays and node failures. |   Crash Fault Tolerant (CFT)   | Google’s Chubby, Microsoft’s Azure |    Robust and proven; high fault tolerance    |         Complex to understand and implement         |
+|         **Raft**         |         Leader-based log replication for consensus.          |   Crash Fault Tolerant (CFT)   |     etcd, Consul, CockroachDB      | Easier to understand and implement than Paxos |          Leader election can cause delays           |
+|         **PBFT**         |    Handles Byzantine faults with supermajority agreement.    | Byzantine Fault Tolerant (BFT) |    Hyperledger Fabric, Zilliqa     |    High security, handles arbitrary faults    | Requires high message overhead; limited scalability |
+| **Proof of Work (PoW)**  | Miners solve cryptographic puzzles to validate transactions. | Byzantine Fault Tolerant (BFT) |         Bitcoin, Litecoin          |         Highly secure; decentralized          |   High energy consumption; slow transaction times   |
+| **Proof of Stake (PoS)** | Validators are chosen based on stake to propose new blocks.  | Byzantine Fault Tolerant (BFT) |       Ethereum 2.0, Cardano        |          Energy efficient; scalable           |                                                     |
 
 
 
@@ -245,3 +390,13 @@ TODO
 [12] [A Crash Course on Distributed Systems](https://blog.bytebytego.com/p/a-crash-course-on-distributed-systems)
 
 [13] [How Distributed Tracing Works at the High Level?](https://blog.bytebytego.com/i/190028819/how-distributed-tracing-works-at-the-high-level)
+
+[14] [Vector Clocks in Distributed Systems](https://www.geeksforgeeks.org/computer-networks/vector-clocks-in-distributed-systems/)
+
+[15] [Paxos Algorithm in Distributed System](https://www.geeksforgeeks.org/operating-systems/paxos-algorithm-in-distributed-system/)
+
+[16] [Quorum in System Design](https://www.geeksforgeeks.org/system-design/quorum-in-system-design/)
+
+[17] [Consensus Algorithms in Distributed System](https://www.geeksforgeeks.org/operating-systems/consensus-algorithms-in-distributed-system/)
+
+[18] [Distributed Tracing - System Design](https://www.geeksforgeeks.org/system-design/distributed-tracing-system-design/)

@@ -4,14 +4,21 @@
 
 
 
-## Forward Proxy And Reverse Proxy
+## Types of Proxies
 
 ![forward_vs_reverse_proxy](res/forward_vs_reverse_proxy.png)
 
-- Forward Proxy: Acts on behalf of the client to enhance privacy and control access.
-- Reverse Proxy: Acts on behalf of the server to optimize performance and security.
+- Forward Proxy
+
+  Acts on behalf of the client to enhance privacy and control access.
+
+- Reverse Proxy
+
+  Acts on behalf of the server to optimize performance and security.
 
 ### Forward Proxy
+
+A server that serves as an intermediary between your computer or other device and the internet is known as a forward proxy. Your request passes through the forward proxy before reaching the website when you attempt to view it. On your behalf, the proxy then submits the request to the website, receives the response, and sends it back to you.
 
 Usage of Forward Proxy:
 
@@ -22,6 +29,8 @@ Usage of Forward Proxy:
 - Logging and tracking user activity for compliance.
 
 ### Reverse Proxy
+
+A reverse proxy is a server that sits between clients (like web browsers) and another server, handling requests on behalf of that server. Instead of a client connecting directly to the main server, the reverse proxy intercepts requests and forwards them to the server.
 
 Usage of Reverse Proxy:
 
@@ -35,7 +44,7 @@ Usage of Reverse Proxy:
 
 ## Proxy Server
 
-A proxy server acts as an intermediary between client devices and servers, facilitating communication through forwarding requests and responses. It intercepts traffic between client and destination, offering several functionalities to enhance overall network performance, protection, and privacy.
+A proxy server acts as an intermediary between client devices and servers, facilitating communication through forwarding requests and responses. It intercepts traffic between the client and destination, offering several functionalities to enhance overall network performance, protection, and privacy.
 
 ![proxy_server](res/proxy_server.png)
 
@@ -118,7 +127,7 @@ The multi-region architecture Linear implemented follows four strict requirement
 | Sits between the client and the internet.                    | Sits between the internet and the server.                    |
 | The client is aware of the proxy and must configure it.      | The client is typically unaware of the proxy.                |
 | The client needs to configure their device to use the proxy. | The server is configured to use the reverse proxy.           |
-| Bypassing content filters, controlling access, privacy enhancement. | Load balancing, caching, DDoS protection, SSL offloading.    |
+| Bypassing content filters, controlling access, and privacy enhancement. | Load balancing, caching, DDoS protection, SSL offloading.    |
 | Intercepts requests from the client to the internet and forwards them. | Intercepts requests from the internet and forwards them to the appropriate server. |
 | Can cache content on the client side to improve response times. | Can cache server responses to reduce load and speed up content delivery. |
 | Does not typically handle SSL/TLS encryption.                | Can handle SSL/TLS offloading, easing encryptions/decryption tasks for the server. |

@@ -4,7 +4,7 @@
 
 
 
-Rate Limiting is a technique used in system architecture to regulate how quickly a system processes or serves incoming requests or a actions. It limits the quantity or frequency of client requests to prevent overload, maintain stability, and ensure fair resource distribution.
+Rate limiting is a technique used in system architecture to regulate how quickly a system processes or serves incoming requests or actions. It limits the quantity or frequency of client requests to prevent overload, maintain stability, and ensure fair resource distribution.
 
 ## Rate Limiter
 
@@ -117,6 +117,16 @@ The sliding window algorithm is actually a variation of the two algorithms, name
 | Lower risk, but not as strict.                      | Higher security against misuse.                     |
 | Managing fluctuating traffic, ensuring fair access. | Preventing abuse and enforcing strong limits.       |
 
+### Client-Side vs Server-Side Rate Limiting
+
+|                 Client-Side Rate Limiting                  |               Server-Side Rate Limiting               |
+| :--------------------------------------------------------: | :---------------------------------------------------: |
+|    Enforced by the client application or client library    |         Enforced by the server or API Gateway         |
+|     Requests are controlled before reaching the server     |  Server decides to allow, reject, or delay requests   |
+| Limited flexibility as it depends on client implementation | High flexibility with centralized control and updates |
+|      Less secure as it can be bypassed or manipulated      |      More secure due to centralized enforcement       |
+|    May impact client performance in large-scale systems    |    Better scalability with global traffic control     |
+
 
 
 ## References
@@ -129,3 +139,4 @@ The sliding window algorithm is actually a variation of the two algorithms, name
 
 [4] [A Guide to Rate Limiting Strategies](https://blog.bytebytego.com/p/a-guide-to-rate-limiting-strategies)
 
+[5] [Rate Limiting in System Design](https://www.geeksforgeeks.org/system-design/rate-limiting-in-system-design/)

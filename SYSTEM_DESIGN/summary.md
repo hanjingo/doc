@@ -32,6 +32,8 @@ DRY(Don't Repeat Yourself) is a software development principle that says the sam
 
 ### KISS
 
+![kiss_principle](res/kiss_principle.png)
+
 The KISS principle, which stands for "Keep It Simple, Stupid", is a design principle that suggests simplicity should be a key goal in design, development, and other fields, such as engineering, software development, and user interface design.
 
 ### YAGNI
@@ -166,7 +168,54 @@ Software Cost Estimation is a systematic process used to forecast the amount of 
 
 ![hld_roadmap](res/hld_roadmap.png)
 
+1. Capacity Estimation
 
+   ![behaviour_of_server](res/behaviour_of_server.png)
+
+2. HTTP and HTTPS
+
+   ![http_connection](res/http_connection.png)
+
+3. Web Sockets
+
+   ![websocket_connection](res/websocket_connection.png)
+
+4. Polling
+
+   ![short_polling_vs_long_polling](res/short_polling_vs_long_polling.png)
+
+5. Server-Sent Events (SSE)
+
+   ![server_sent_events](res/server_sent_events.png)
+
+6. Rate Limiting
+
+   ![rate_limiting](res/rate_limiting.png)
+
+7. Resiliency
+
+8. Paging
+
+   ![paging_and_filtering_data](res/paging_and_filtering_data.png)
+
+9. Logging
+
+### High Level Design vs Low Level Design
+
+![hld_vs_lld](res/hld_vs_lld.png)
+
+|                    **HIGH-LEVEL DESIGN**                     |                     **LOW-LEVEL DESIGN**                     |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| High Level Design is the general system design means it refers to the overall system design. | Low Level Design is like detailing HLD means it refers to component-level design process. |
+|          High Level Design in short called as HLD.           |           Low Level Design in short called as LLD.           |
+|        It is also known as macro level/system design.        |       It is also known as micro level/detailed design.       |
+| Furthermore, it describes the overall description/architecture of the application. | It describes detailed description of each and every module.  |
+| High Level Design expresses the brief functionality of each module. | Low Level Design expresses details of functional logic of the module. |
+|             It is created by solution architect.             |          It is created by designers and developers.          |
+| Here in High Level Design the participants are design team, review team, and client team. | Here in Low Level Design participants are design team, Operation Teams, and Implementers. |
+|      It is created first means before Low Level Design.      |     It is created second means after High Level Design.      |
+| In HLD the input criteria is Software Requirement Specification (SRS). | In LLD the input criteria is reviewed High Level Design (HLD). |
+| In HLD the output criteria is database design, functional design and review record. | In LLD the output criteria is program specification and unit test plan. |
 
 ---
 
@@ -317,3 +366,9 @@ TODO
 [16] [A Detailed Guide to Content Delivery Networks](https://blog.bytebytego.com/p/a-detailed-guide-to-content-delivery)
 
 [17] [Functional and Non Functional Requirements](https://www.geeksforgeeks.org/software-engineering/functional-vs-non-functional-requirements/)
+
+[18] [Introduction to High level Design](https://www.geeksforgeeks.org/system-design/what-is-high-level-design-learn-system-design/)
+
+[19] [Difference between High Level Design(HLD) and Low Level Design(LLD)](https://www.geeksforgeeks.org/system-design/difference-between-high-level-design-and-low-level-design/)
+
+[20] [KISS Principle in Software Development](https://www.geeksforgeeks.org/software-engineering/kiss-principle-in-software-development/)

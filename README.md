@@ -350,7 +350,6 @@
 - [Debug](SYSTEM_DESIGN/debug.md)
 - [Design Pattern](SYSTEM_DESIGN/design_pattern.md)
 - [DevOps](SYSTEM_DESIGN/dev_ops.md)
-- [Disaster Recovery](SYSTEM_DESIGN/disaster_recovery.md)
 - [Domain Name System(DNS)](SYSTEM_DESIGN/dns.md)
 - [Embedded System Design](SYSTEM_DESIGN/embedded_system.md)
 - [Event](SYSTEM_DESIGN/event.md)

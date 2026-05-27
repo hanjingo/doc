@@ -1,4 +1,4 @@
-# Domain Name System(DNS)
+# Domain Name System (DNS)
 
 [TOC]
 
@@ -44,17 +44,25 @@ DNS operates through a hierarchical structure, ensuring scalability and reliabil
 
 ### Types Of Domains
 
-DNS helps manage a wide variety of domain types to organize teh vast number of websites on the internet:
+DNS helps manage a wide variety of domain types to organize the vast number of websites on the internet:
 
 ![domain_type](res/domain_type.png)
 
-- Generic Domains
-- Country Code Domains
+- Generic Domains (gTLDs)
+
+  These domains are used for general purposes and are not tied to any country.
+
+- Country Code Domains (ccTLDs)
+
+  These domains represent specific countries or geographic regions.
+
 - Inverse Domains
+
+  These domains are used to map IP addresses back to domain names.
 
 ### Domain Name Server
 
-The client machine sends a request to the local name server, which, if the root does not find the address in its database, send a request to the root name server, which in turn, will route the query to a top-level domain(TLD) or authoritative name server.
+The client machine sends a request to the local name server, which, if the root does not find the address in its database, sends a request to the root name server, which, in turn, will route the query to a top-level domain(TLD) or authoritative name server.
 
 
 
@@ -63,9 +71,20 @@ The client machine sends a request to the local name server, which, if the root 
 DNS Lookup, also called DNS Resolution, is the process of translating a human-readable domain name into its corresponding IP address. The process involves:
 
 - DNS Resolver
+
+  Starts the DNS lookup process and acts as an intermediary between client and DNS servers.
+
 - Recursive Query
+
+  A query where the resolver fetches the complete answer on behalf of the client.
+
 - Iterative Query
+
+  A query where the server provides the best information it has or a referral.
+
 - Non-Recursive Query
+
+  A query where the answer is already available in cache or authoritative server.
 
 ### Reverse DNS Lookup
 
@@ -99,15 +118,23 @@ DNS records are essential for defining how domain names are used and how service
 
 ## DNS Caching
 
-DNS caching is a temporary storage system that keeps records of recent domain name lookups like `google.com <-> 172.217.0.46` to speed up future requests. Instead of querying a DNS server every time you visit a website, your computer or network checks the cache first, reducing load times and improving efficiency.
+DNS caching is a temporary storage system that keeps records of recent domain name lookups like `google.com <-> 172.217.0.46,` to speed up future requests. Instead of querying a DNS server every time you visit a website, your computer or network checks the cache first, reducing load times and improving efficiency.
 
 ![dns_uncached_response](res/dns_uncached_response.png)
 
 ![dns_cached_response](res/dns_cached_response.png)
 
 1. First Request
+
+   When you visit a website (e.g., example.com), your system queries a DNS server for its IP address.
+
 2. Cache Storage
+
+   The IP address is saved locally—on your device, router, or ISP’s servers—for a set duration defined by TTL (Time to Live).
+
 3. Subsequent Requests
+
+   Future visits to example.com use the cached IP, skipping the DNS lookup and making the connection faster.
 
 ### DNS Cache Hierarchy
 
@@ -126,9 +153,29 @@ DNS caching occurs at multiple levels, forming a hierarchical structure that opt
 - Content Delivery Network(CDN) Caching
 - Host File Caching
 
-### TTL(Time to Live)
+### Layers of DNS Caching
 
-Time to Live dictates how long DNS record should be stored in the cache memory before it is considered outdated and must be discarded or refreshed. TTL is measured in seconds.
+DNS caching occurs at different layers in the system to improve performance and reduce repeated DNS lookups.
+
+- Router-Level DNS Caching
+
+  Routers cache DNS queries locally for connected devices, reducing external DNS requests and improving network efficiency.
+
+- DNS Resolver (ISP/Third-Party) Caching
+
+  DNS resolvers cache responses for multiple users, reducing the need to query authoritative servers repeatedly and improving resolution speed.
+
+- Content Delivery Network (CDN) Caching
+
+  CDNs cache content and help route users to the nearest server, reducing latency and improving load times.
+
+- Host File Caching
+
+  The hosts file acts as a manual override, allowing systems to resolve domain names before making any DNS query.
+
+### TTL (Time to Live)
+
+Time to Live dictates how long a DNS record should be stored in the cache memory before it is considered outdated and must be discarded or refreshed. TTL is measured in seconds.
 
 ![ttl_working](res/ttl_working.png)
 
@@ -162,3 +209,5 @@ Importance of TTL in DNS Caching:
 [3] [EP143: DNS Record Types You Should Know](https://blog.bytebytego.com/p/ep143-dns-record-types-you-should)
 
 [4] [How DNS Works](https://blog.bytebytego.com/p/ep193-database-types-you-should-know)
+
+[5] [DNS Caching](https://www.geeksforgeeks.org/computer-networks/what-is-dns-caching/)

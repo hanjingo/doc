@@ -18,6 +18,8 @@
 
 ### HTTP
 
+![http_connection](res/http_connection.png)
+
 - Works on a client-server model.
 - Used for loading web pages in browers.
 - Stateless protocol.
@@ -28,13 +30,11 @@
 
 ![how_https_works](res/how_https_works.png)
 
-- Uses SSL/TLS to secure data transmission.
-- Protects user data from interception and tampering.
-- Commonly used for secure web browsing.
-- Ensures data confidentiality and integrity.
-- Indicated by a padlock icon in web browsers.
+HTTPS stands for HyperText Transfer Protocol Secure. It is the most common protocol for sending data between a web browser and a website. HTTPS is the secure variant of HTTP and is used to communicate between the user's browser and the website, ensuring that data transfer is encrypted for added security.
 
 ### WebSocket
+
+![websocket_connection](res/websocket_connection.png)
 
 WebSocket keeps the connection open, allowing for real-time, two-way communication, making it great for things like live chats or online games where constant updates are needed.
 
@@ -54,13 +54,13 @@ Features:
 
 ## IO
 
-### Synchronous Communication
+### Synchronous
 
 ![synchronous_communication](res/synchronous_communication.png)
 
 The pattern of communication known as "synchronous communication" occurs when services exchange requests and answers, typically waiting for a response before proceeding.
 
-### Asynchronous Communication
+### Asynchronous
 
 ![asynchronous_communication](res/asynchronous_communication.png)
 
@@ -74,9 +74,13 @@ Polling simply means checking for new data over a fixed interval of time by maki
 
 ### Short Polling
 
+![short_polling](res/short_polling.png)
+
 In a short polling client, it requests data from the server, and the server will return the response if it is available, and if it is not available, then it returns an empty response. This process will be repeated at regular intervals.
 
 ### Long Polling
+
+![long_polling](res/long_polling.png)
 
 In long polling, the client sends a request to the server and if the response is not available then the server will hold the request till the response gets available, after teh availability of the response, the server will send the response back. In simple words, the client will always be in a live connection to the server.
 
@@ -109,6 +113,22 @@ TODO
 ### NAT
 
 ![nat_workflow](res/nat_workflow.png)
+
+
+
+## Server
+
+### Web Server
+
+![web_server](res/web_server.png)
+
+A web server is a system that stores, processes, and delivers web content to users over the internet. It handles requests from clients (like browsers) and responds with web pages, images, or data. A web server can be both hardware (a machine) and software that manages these requests.
+
+### Application Server
+
+![application_server](res/application_server.png)
+
+An application server is designed to run and manage business logic and complex operations required by applications. It provides an environment (hardware + software) to execute dynamic tasks and process client requests beyond simple content delivery.
 
 
 
@@ -151,7 +171,7 @@ The differences between Synchronous and Asynchronous Communication:
 
 | Short Polling                                                | Long Polling                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| It is based on Timer. So, it is used for those applications that need to update data at a fixed interval of time. | It is based on getting the response. So, It is used for those applications that don't want empty responses. |
+| It is based on a timer. So, it is used for those applications that need to update data at a fixed interval of time. | It is based on getting the response. So, It is used for those applications that don't want empty responses. |
 | Here, an empty response can be sent if a response is not available. | Here empty response can never be sent.                       |
 | It is less preferred.                                        | It is more preferred, in comparison to Short Polling.        |
 | It creates lots of traffic.                                  | It also creates traffic, but less than short polling.        |
@@ -173,7 +193,7 @@ The differences between Synchronous and Asynchronous Communication:
 
 | WebSocket Connection                                         | HTTP Connection                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| WebSocket is a bidirectional communication protocol that can send the data from the client to the server or from the server to the client by reusing the established connection channel. The connection is kept alive until terminated by either the client or the server. | The HTTP protocol is a unidirectional protocol that works on top of the TCP protocol, which is a connection-oriented transport layer protocol. We can create a connection by using HTTP request methods after getting the response HTTP connection is closed. |
+| WebSocket is a bidirectional communication protocol that can send data from the client to the server or from the server to the client by reusing the established connection channel. The connection is kept alive until terminated by either the client or the server. | The HTTP protocol is a unidirectional protocol that works on top of the TCP protocol, which is a connection-oriented transport layer protocol. We can create a connection by using HTTP request methods after getting the response HTTP connection is closed. |
 | Almost all the real-time applications, like trading, monitoring, and notification services, use WebSocket to receive the data on a single communication channel. | A simple RESTful application uses the HTTP protocol, which is stateless. |
 | All the frequently updated applications use WebSocket because it is faster than HTTP connections. | It is used when we do not want to retain a connection for a particular amount of time or reuse the connection for transmitting data. An HTTP connection is slower than WebSockets. |
 
@@ -188,6 +208,17 @@ The differences between Synchronous and Asynchronous Communication:
 ### Unicast vs Broadcast vs Multicast vs Anycast
 
 ![unicast_vs_broadcast_vs_multicast_vs_anycast](res/unicast_vs_broadcast_vs_multicast_vs_anycast.png)
+
+### Static vs Dynamic Web Server
+
+![static_vs_dynamic_web_server](res/static_vs_dynamic_web_server.png)
+
+|           **Web Server**           |        **Application Server**         |
+| :--------------------------------: | :-----------------------------------: |
+|    Handles HTTP/HTTPS requests     | Handles business logic and processing |
+|       Serves static content        |       Generates dynamic content       |
+|       Lightweight and faster       |    Heavier and resource-intensive     |
+| Limited or no database interaction |   Direct interaction with databases   |
 
 
 
@@ -204,3 +235,5 @@ The differences between Synchronous and Asynchronous Communication:
 [5] [Top 4 Most Popular Use Cases for UDP](https://blog.bytebytego.com/i/140533892/top-4-most-popular-use-cases-for-udp)
 
 [6] [Synchronous vs Asynchronous Communication: When to Use What?](https://blog.bytebytego.com/p/synchronous-vs-asynchronous-communication)
+
+[7] [Web and Application Server in Designing Systems](https://www.geeksforgeeks.org/system-design/web-server-proxies-and-their-role-in-designing-systems/)

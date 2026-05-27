@@ -19,14 +19,12 @@ Types Of CI Tests:
 - Unit Tests
 - Integration Tests
 
-#### How CI Works
-
 Each push automatically triggers:
 
 - Application build
 - Automated tests(unit + integration)
 
-#### Main Goal of CI
+Main Goal of CI:
 
 - Massive conflicts
 - Hidden bugs
@@ -36,14 +34,12 @@ Each push automatically triggers:
 
 Continuous Delivery(CD) extends continuous integration by automating everything needed to prepare code for production release. Where CI stops after building & testing, CD starts and moves the validated artifact through preproduction environments.
 
-#### How CD Works
-
 After CI passes, the pipeline automatically deploys the build to:
 
 - Testing environment
 - Staging environment
 
-#### Main Goal of CD
+Main Goal of CD:
 
 - Ensure there is always a production-ready build that has passed all automated checks.
 - Enable releases at any time with confidence and stability.
@@ -52,31 +48,54 @@ After CI passes, the pipeline automatically deploys the build to:
 
 Continuous Deployment(CD) is the highest level of automation in the CI/CD pipeline. It takes Continuous Delivery one step further by removing the final manual approval and automatically deploying every validated change straight to production.
 
-#### How CD Works
-
 A code change passes all automated checks in:
 
 - CI(build + unit test + integration tests)
 - CD(E2E tests, performance tests, security tests)
 
-### Components
+### CI/CD Components
 
 ![components_of_cicd_pipeline](res/components_of_cicd_pipeline.png)
 
 1. Source
+
+   The Source stage is the entry point and trigger for the entire CI/CD pipeline. It is intrinsically linked to the version control system, which acts as the single source of truth for the codebase.
+
 2. Build
+
+   Once the source code passes the initial checks, the Build stage transforms it from human-readable code into a runnable, packaged application.
+
 3. Test
+
+   The Test stage is where the build artifact is subjected to a rigorous and multi-layered validation process to ensure its quality, correctness, and stability. This stage is often the most time-consuming part of the pipeline and is composed of several sub-stages of automated testing.
+
 4. Deploy
 
-### Challenges
+   After the build artifact has successfully passed all automated tests, the Deploy stage is responsible for releasing it to various environments and, ultimately, to end-users.
 
-- Complexity of Pipeline Configuration
-- Integration Issues
-- Slow Build/Test Execution
-- Maintaining Pipeline Reliability
-- Security Concerns
-- Scaling Challenges
-- Lack of Testing Coverage
+### CI/CD Tools
+
+These tools help automate the entire software delivery process, from code integration to deployment, making development faster and more reliable.
+
+1. Jenkins
+
+   Open-source automation server; highly extensible with plugins; ideal for complex pipelines.
+
+2. GitLab CI/CD
+
+   Built into GitLab; easy setup; supports pipelines as code and Kubernetes integration.
+
+3. CircleCI
+
+   Cloud-based; fast builds with parallelism and caching; works well with Docker.
+
+4. Travis CI
+
+   Cloud-based; simple setup; popular for open-source projects and multiple languages.
+
+5. GitHub Actions
+
+   Integrated into GitHub, event-driven workflows, and easy automation using prebuilt actions.
 
 ---
 

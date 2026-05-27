@@ -16,7 +16,6 @@
 - [Debug](debug.md)
 - [Design Pattern](design_pattern.md)
 - [DevOps](dev_ops.md)
-- [Disaster Recovery](disaster_recovery.md)
 - [Domain Name System(DNS)](dns.md)
 - [Embedded System Design](embedded_system.md)
 - [Event](event.md)

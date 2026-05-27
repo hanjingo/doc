@@ -10,47 +10,83 @@
 
 ![acid](res/acid.png)
 
+---
+
 
 
 ## CAP Theorem In Database Designing
 
 ![cap_theorem](res/cap_theorem.png)
 
-According to the CAP theorem, only two of the three desirable characteristics consistency, availability, and partition tolerance can be shared or present in a networked shared-data system or distributed system.
+- Consistency
+
+  ![cap_consistency](res/cap_consistency.png)
+
+  Consistency defines that all clients see the same data simultaneously, no matter which node they connect to in a distributed system. For eventual consistency, the guarantees are a bit loose. Eventual consistency guarantee means client will eventually see the same data on all the nodes at some point of time in the future.
+
+- Availability
+
+  ![cap_availability](res/cap_availability.png)
+
+  Availability defines that all non-failing nodes in a distributed system return a response for all read and write requests in a bounded amount of time, even if one or more other nodes are down.
+
+- Partition Tolerance
+
+  ![cap_partition_tolerance](res/cap_partition_tolerance.png)
+
+  Partition Tolerance defines that the system continues to operate despite arbitrary message loss or failure in parts of the system. Distributed systems guaranteeing partition tolerance can gracefully recover from partitions once the partition heals.
+
+According to the CAP theorem, only two of the three desirable characteristics, consistency, availability, and partition tolerance, can be shared or present in a networked shared-data system or distributed system.
+
+![cap_trade_offs](res/cap_trade_offs.png)
 
 ### CP Database
 
-A CP database prioritizes Consistency and Partition Tolerance from the CAP theorem, it sacrifices Availability, meaning the system might not respond during network issues to maintain data accuracy.
+A CP database prioritizes Consistency and Partition Tolerance from the CAP theorem; it sacrifices Availability, meaning the system might not respond during network issues to maintain data accuracy.
 
 ### AP Database
 
-An AP database is a type of database that prioritizes Availability and Partition Tolerance from the CAP theorem, it sacrifices Consistency, meaning different nodes might have slightly different data from a short time.
+An AP database is a type of database that prioritizes Availability and Partition Tolerance from the CAP theorem; it sacrifices Consistency, meaning different nodes might have slightly different data for a short time.
 
 ### CA Database
 
-A CA database is a type of database that prioritizes Consistency and Availability from the CAP theorem, it sacrifices Partition Tolerance meaning that if there is a network issue, the database might stop functioning rather than returning inconsistent or unavailable data.
+A CA database is a type of database that prioritizes Consistency and Availability from the CAP theorem; it sacrifices Partition Tolerance, meaning that if there is a network issue, the database might stop functioning rather than returning inconsistent or unavailable data.
 
 ---
 
 
 
-## Types
+## Database Types
 
 ![types_of_db](res/types_of_db.png)
 
-Types of Databases in System Design:
+- Relational Databases (SQL)
 
-- Relational Databases
-- NoSQL Databases
+  Relational databases in system design are structured storage systems that organize data into tables, each with predefined columns and rows. They ensure data integrity and facilitate efficient querying through Structured Query Language (SQL).
+
+- Non-Relational Databases (NoSQL)
+
+  NoSQL databases handle large volumes of unstructured or semi-structured data with high scalability and flexibility. They support distributed systems and are ideal for modern, high-performance applications.
+
 - NewSQL Databases
+
+  NewSQL databases combine the benefits of traditional relational databases (ACID transactions and strong consistency) with the scalability and performance of NoSQL systems. They emerged to overcome the limitations of traditional databases in handling modern big data and distributed computing needs.
+
 - Time-Series Databases
+
+  Time series databases are specialized databases optimized for storing and querying time-stamped data points or measurements. They excel at handling large volumes of sequential data generated over time, such as sensor data, financial market data, IoT telemetry, and log data from applications or systems.
+
 - Object-Oriented Databases
+
+  Object-oriented databases (OODBs) are databases that store data in the form of objects, akin to object-oriented programming concepts. Unlike relational databases that store data in tables, OODBs directly store complex data structures as objects, along with their attributes and methods.
 
 ### MongoDB
 
 ![mongodb_workflow](res/mongodb_workflow.png)
 
 MongoDB is a popular NoSQL database designed for flexibility, scalability, and high performance. It stores data in a JSON-like format (BSON) and supports horizontal scaling through sharding and replication.
+
+MongoDB uses a form of Eventual Consistency called "Eventual Consistency with Immediate Consistency for most reads." This means that while MongoDB does not guarantee immediate consistency for all reads, it does guarantee that after a write operation, the data will eventually be consistent across all replicas.
 
 ### PostgreSQL
 
@@ -76,6 +112,30 @@ The key points about PostgreSQL’s Architecture are as follows:
    - WAL Files: Write-ahead log storage
    - Archive Files: Backup and recovery data
    - Log Files: System and error logs
+
+### Redis
+
+![redis_workflow](res/redis_workflow.png)
+
+1. Request Handling
+
+   When a client sends a request, it is first routed through the API Gateway. The API Gateway checks Redis (cache) to see if the requested data is already available.
+
+2. Cache Hit
+
+   If the data is found in Redis, it is immediately returned to the client. This avoids querying the main database and significantly improves response time.
+
+3. Cache Miss
+
+   If the data is not present in Redis, the request is forwarded to the main database. The database processes the request and returns the required data to the application.
+
+4. Cache Update
+
+   After fetching data from the database, it is stored in Redis for future use. This ensures that subsequent requests for the same data can be served faster.
+
+5. Response to Client
+
+   The final response is sent back to the client through the API Gateway. The data may come from either Redis (cache) or the main database depending on availability.
 
 ---
 
@@ -175,6 +235,113 @@ Disadvantages:
 
 Partitioning helps improve query performance by limiting the amount of data the system has to process for specific queries. It also makes it easier to manage large datasets.
 
+#### Horizontal Partitioning
+
+![horizontal_partitioning](res/horizontal_partitioning.png)
+
+Horizontal Partitioning divides data by rows, but all partitions may still exist on the same server. When these horizontal partitions are placed across multiple servers, the approach is called [Sharding](#Data Sharding).
+
+Advantages:
+
+- Scalability: Allows parallel processing of large datasets across multiple nodes.
+- Load Balancing: Distributes workload evenly, reducing system bottlenecks.
+- Fault Tolerance: Each partition works independently, improving reliability during failures.
+
+Disadvantages:
+
+- Complex Joins: Joins across multiple partitions can be slower and harder to manage.
+- Data Skew: Uneven data distribution may cause certain partitions to handle more load than others.
+
+#### Vertical Partitioning
+
+![vertical_partitioning](res/vertical_partitioning.png)
+
+Vertical partitioning divides a dataset based on columns (attributes) instead of rows. Each partition contains only a subset of columns for all rows, depending on access patterns. It is useful when different columns are accessed more frequently or independently.
+
+Advantage:
+
+- Better Query Performance: Reduces data read by isolating frequently accessed columns.
+- Efficient Retrieval: Fetches only needed columns, saving I/O and storage.
+- Easier Schema Changes: Simplifies adding or removing columns.
+
+Disadvantages:
+
+- Query Complexity: Queries may need to access multiple partitions.
+- Slower Joins: Combining data from different partitions adds overhead.
+- Limited Scalability: Not ideal for datasets with rapidly growing columns.
+
+#### Key-Based Partitioning
+
+![key_based_partitioning](res/key_based_partitioning.png)
+
+Divides data based on a specific key or attribute, with each partition holding all data related to that key. Common in distributed systems for uniform data distribution and efficient key-based lookups.
+
+Advantages:
+
+- Even Distribution: Stores data with the same key together for efficient lookups.
+- Scalability: Enables parallel processing across partitions.
+- Load Balancing: Distributes workload to avoid performance bottlenecks.
+
+Disadvantages:
+
+- Data Skew: Uneven key access can create hotspots.
+- Limited Flexibility: Less efficient for range or multi-key queries.
+- Partition Overhead: Requires careful management as data or key patterns evolve.
+
+#### Range Partitioning
+
+![range_partitioning](res/range_partitioning.png)
+
+The dataset is divided using range partitioning based on a preset range of values. For example, if your dataset has timestamps, you can divide it according to a specific time range. Range partitioning might be useful when you have data with natural ordering and wish to distribute it evenly based on the range of values.
+
+Advantage:
+
+- Natural Ordering: Ideal for data with an inherent range-based structure.
+- Efficient Range Queries: Quickly locates data within specified value ranges.
+- Simplified Query Planning: System easily identifies relevant partitions for range conditions.
+
+Disadvantage:
+
+- Data Skew: Uneven data across ranges can affect performance.
+- Growth Management: Adding or adjusting ranges requires ongoing maintenance.
+- Complex Joins: Joins and non-contiguous range queries can be slower and harder to manage.
+
+#### Hash-Based Partitioning
+
+![hash_based_partitioning](res/hash_based_partitioning.png)
+
+Hash partitioning uses a hash function to map data into different partitions. The hash value determines which partition the data belongs to, enabling even distribution and faster lookup. It helps with load balancing by spreading data randomly across partitions and improves data retrieval performance by reducing hotspots.
+
+Advantage:
+
+- Even Distribution: Randomized hashing spreads data uniformly across partitions.
+- Scalability: Supports parallel processing across multiple nodes.
+- Simplicity: Easy to implement and doesn’t rely on data order.
+
+Disadvantage:
+
+- Inefficient Lookups: Poor performance for key-based or range queries.
+- Possible Imbalances: Hashing may not always ensure perfect load distribution.
+- Maintenance Overhead: Scaling may require repartitioning and rehashing data.
+
+#### Round-Robin Partitioning
+
+![round_robin_partitioning](res/round_robin_partitioning.png)
+
+Data is cyclically and equally distributed among partitions in round-robin partitioning. Regardless of the properties of the data, each split is sequentially assigned the next accessible data item. Implementing round-robin partitioning is simple and can offer a minimal degree of load balancing.
+
+Advantage:
+
+- Even Data Distribution: Ensures near-uniform distribution of records across partitions.
+- Simple Implementation: Very easy to implement; no hashing or key logic required.
+- Good Load Balancing: Works well for write-heavy workloads and parallel processing.
+
+Disadvantage:
+
+- Inefficient Lookups: Poor performance for key-based or range queries.
+- No Data Locality: Related records may be spread across different partitions.
+- Limited Query Optimization: Not suitable for analytical queries that depend on grouping or ranges.
+
 ---
 
 
@@ -210,33 +377,99 @@ Here are the steps explaining how database replication works:
 
 ![working_of_database_replication](res/working_of_database_replication.png)
 
-1. Identify the Primary Database(Source);
-2. Set up Replica Databases(Targets);
-3. Data changes captured;
-4. Transmit changes to replicas;
-5. Apply changes on replicas;
-6. Monitor and maintain synchronization;
-7. Read or write operations.
+1. Identify the Primary Database(Source)
+
+   A primary (master) database is selected as the main source where all data changes originate.
+
+2. Set up Replica Databases(Targets)
+
+   One or more replica databases are configured to receive data from the primary database.
+
+3. Data changes captured
+
+   All inserts, updates, and deletes are recorded using logs or change data capture mechanisms.
+
+4. Transmit changes to replicas
+
+   Captured changes are sent to replica databases either in real-time or at scheduled intervals.
+
+5. Apply changes on replicas
+
+   Replica databases apply the received updates to stay synchronized with the primary database.
+
+6. Monitor and maintain synchronization
+
+   The system continuously checks replication status and resolves delays or synchronization issues.
+
+7. Read or write operations
+
+   Read operations are distributed across replicas, while write operations typically go to the primary database (depending on the model).
 
 ### Types of Database Replication
 
 ![types_of_database_replication](res/types_of_database_replication.png)
 
 - Master-Slave Replication
+
+  ![mster_slave_replication](res/mster_slave_replication.png)
+
+  In this replication model, one database acts as the primary server while others maintain copies of its data.
+
 - Master-Master Replication/Multi-Master Replication
+
+  ![master_master_replication](res/master_master_replication.png)
+
+  In this setup, multiple databases act as masters and can accept both read and write operations.
+
 - Snapshot Replication
+
+  ![snapshot_replication](res/snapshot_replication.png)
+
+  This method replicates the entire database by taking a snapshot at a specific point in time.
+
 - Transactional Replication
+
+  ![transactional_replication](res/transactional_replication.png)
+
+  Transactional replication synchronizes databases by replicating changes as they occur.
+
 - Merge Replication
+
+  ![merge_replication](res/merge_replication.png)
+  
+  Merge replication allows multiple databases to update data independently and later synchronize the changes.
+
+| Database Replication | Pros                                                         | Cons                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Master-Slave         | + High Availability<br>+ Scalability<br>+ Data Consistency   | - Replication Lag<br>- Single Point of Failure<br>- Limited Write Scalability |
+| Master-Master        | + Improved Write Scalability<br>+ High Availability          | - Complexity<br>- Conflict Resolution                        |
+| Snapshot             | + Easy Implementation<br>+ Offline Access<br>+ Data Protection | - Data Consistency<br>- Storage Requirements                 |
+| Transactional        | + Real-Time Updates<br>+ Disaster Recovery<br>+ Data Distribution | - Configuration<br>- Overhead                                |
+| Merge                | + Offline Updates<br>+ Two-way Synchronization<br>+ Flexibility | - Complexity<br>- Performance<br>- Data Consistency          |
 
 ### Strategies for Database Replication
 
 Some common database replication strategies include the following:
 
 - Full Replication
+
+  Also referred to as full database replication, this is a technique in which the whole database is replicated to one or more destination servers. All the tables, rows, and columns in the database are copied to the destination servers. The replicas thus obtain an exact copy of the original database.
+
 - Partial Replication
+
+  This method involves not replicating the entire database, but merely a subset of it, such as particular tables, rows, or columns. This method can be useful when only specific data has to be reproduced for reporting, analysis, or other reasons, and it enables a more effective use of resources.
+
 - Selective Replication
+
+  It is a database replication strategy that involves replicating data based on predefined criteria or conditions. Unlike full replication, which replicates the entire database, or partial replication, which replicates a subset of the database, selective replication allows for more granular control over which data is replicated.
+
 - Sharding
+
+  It is a database scaling technique that involves partitioning data across multiple database instances (shards) based on a key. This approach allows for distributing the workload and data storage across multiple servers, improving scalability and performance.
+
 - Hybrid Replication
+
+  It is a database replication strategy that combines multiple replication techniques to achieve specific goals. This approach allows for the customization of replication methods based on the requirements of different parts of the database or application.
 
 ### Configurations of Database Replication
 
@@ -252,9 +485,13 @@ To accomplish particular objectives related to data consistency, availability, a
 
 ## Database Persists
 
-### Redis
+### Redis Persists
+
+`Redis (Remote Dictionary Server)` is an in-memory database that stores data in RAM instead of disk, making it extremely fast. It is mainly used to cache frequently used data and reduce the load on the main database, which improves system performance and response time.
 
 ![redis_persists](res/redis_persists.png)
+
+**Notice: Redis does not natively support [Eventual Consistency](system_metrics.md) as a built-in feature. Instead, Redis focuses on providing high-performance, in-memory data storage with strong consistency guarantees. When data is written to Redis, it is immediately available for reading, and all subsequent reads will reflect the latest written value.**
 
 ---
 
@@ -263,6 +500,35 @@ To accomplish particular objectives related to data consistency, availability, a
 ## Database Normalization And Denormalization
 
 ![db_normalization_denormalization](res/db_normalization_denormalization.png)
+
+Normalization is used for reduce or removing the redundancy which means there will be no duplicate data or entries in the same table and also optimizes for data integrity and efficient storage
+
+Denormalization is used for add the redundancy into normalized table so that enhance the functionality and minimize the running time of database queries (like joins operation ) and optimizes for performance and query simplicity. In a system that demands scalability, like that of any major tech company, we almost always use elements of both normalized and denormalized databases.
+
+### Normalization
+
+![db_normalization1](res/db_normalization1.png)
+
+![db_normalization2](res/db_normalization2.png)
+
+Normalization is an important process in database design that helps improve the database's efficiency, consistency, and accuracy. It makes it easier to manage and maintain the data and ensures that the database is adaptable to changing business needs.
+
+Normal Forms in DBMS:
+
+| **Normal Forms**                  | **Description of Normal Forms**                              |
+| :-------------------------------- | :----------------------------------------------------------- |
+| **First Normal Form (1NF)**       | A relation is in first normal form if every attribute in that relation is a single-valued attribute. |
+| **Second Normal Form (2NF)**      | A relation that is in First Normal Form and every non-primary-key attribute is fully functionally dependent on the primary key, then the relation is in Second Normal Form (2NF). |
+| **Third Normal Form (3NF)**       | A relation is in the third normal form, if there is no transitive dependency for non-prime attributes and it is in the second normal form. A relation is in 3NF if at least one of the following conditions holds in every non-trivial function dependency X –> Y.X is a super key.Y is a prime attribute (each element of Y is part of some candidate key). |
+| **Boyce-Codd Normal Form (BCNF)** | For BCNF the relation should satisfy the below conditionsThe relation should be in the 3rd Normal Form. X should be a super-key for every functional dependency (FD) X−>Y in a given relation. |
+| **Fourth Normal Form (4NF)**      | A relation R is in 4NF if and only if the following conditions are satisfied: It should be in the Boyce-Codd Normal Form (BCNF). The table should not have any Multi-valued Dependency. |
+| **Fifth Normal Form (5NF)**       | A relation R is in 5NF if and only if it satisfies the following conditions:R should be already in 4NF. It cannot be further non loss decomposed (join dependency) |
+
+### Denormalization
+
+![db_denormalization](res/db_denormalization.png)
+
+Denormalization is a database optimization technique where redundant data is intentionally added to one or more tables to reduce the need for complex joins and improve query performance. It is not the opposite of normalization, but rather an optimization applied after normalization.
 
 ---
 
@@ -276,214 +542,122 @@ TODO
 
 
 
-## Example 1: General Cache System Design
+## Database CQRS (Command Query Responsibility Segregation)
 
-### Cache System Evaluation Metrics
+![db_cqrs](res/db_cqrs.png)
 
-- Strong Consistency
-  1. Any read can always get the latest written data (eventual consistency)
-  2. All processes in the system see operations in the same order as a global clock
-- Weak Consistency
-  1. After data is updated, it is acceptable if subsequent accesses can only see part of the update or none at all
-- Concurrency
-  1. Concurrent read/write on a single table/database
-  2. Concurrent read/write on multiple tables/databases
+Command Query Responsibility Segregation (CQRS) is an architectural pattern that improves scalability and performance by separating read and write operations into distinct models. Instead of using a single model to both retrieve and modify data, CQRS divides responsibilities into two parts:
 
-### Data Consistency Solutions
+- Commands, which handle state-changing operations such as insert, update, and delete.
+- Queries, which retrieve data without modifying the system state.
 
-#### Solution 1: Delete Cache First, Then Update Database
+### Database CQRS Architecture
 
-![cache_proj1](res/cache_proj1.png)
+![db_cqrs_arch](res/db_cqrs_arch.png)
 
-- Write Operation
-  1. Delete cache data first
-  2. Update database data to avoid dirty data
-  3. Asynchronously refresh data back to cache
+### Database Synchronization in CQRS
 
-- Read Operation
-  1. Read cache data
-  2. If cache miss, read from database
-  3. Asynchronously refresh data back to cache
+Synchronizing databases in a system that follows the CQRS pattern can be challenging due to the separation of the write and read sides of the application.
 
-Advantages:
+![db_sync_in_cqrs](res/db_sync_in_cqrs.png)
 
-1. The whole process is very simple, suitable for low concurrency scenarios
+1. Write to the Command Database
 
-Disadvantages:
+   When you make changes (create, update, delete), they are first saved in the command database. This database is optimized for handling write operations.
 
-1. Insufficient disaster recovery
-   What if deleting the cache fails in step 1 of writing? If you continue, the cache may always have stale data.
+2. Generate Events
 
-2. Concurrency issues
-   - Write-Write Concurrency
-     If multiple services update the database at the same time, operation order cannot be guaranteed, leading to overwrites
-   - Read-Write Concurrency
-     If consumer A reads and consumer B writes at the same time, the process is as follows:
-     1. B deletes cache data v1
-     2. A reads cache, cache miss
-     3. A reads database, gets v1
-     4. B updates database data to v2
-     5. B writes v2 to cache
-     6. A writes v1 to cache
-        Now, A's "dirty data" overwrites B's updated cache, so cache is still v1. This solution cannot guarantee eventual consistency.
+   After the write operation is successful, the system generates events that describe what changed (like "Order Created" or "User Updated"). These events serve as notifications about the updates.
 
-     Diagram:
+3. Update the Query Database
 
-     ```sequence
-     Title: Read-Write Concurrency Exception
-     B->Cache: 1. Delete cache data v1
-     A->Cache: 2. Read cache data
-     Cache-->A: Cache miss
-     A->DB: Read database data
-     DB-->A: Return data v1
-     B->DB: Update database data to v2
-     B->Cache: Update cache data to v2
-     A->Cache: Update cache data to v1
-     ```
+   The read database, optimized for fast queries, listens for these events and applies the changes to its own copy of the data. This way, the query database gets updated with the latest information.
 
-Summary:
+4. Eventual Consistency
 
-Use case: Scenarios with low concurrency and low consistency requirements
-
-Because the cache refresh strategy may fail, and after failure the cache may always be in an incorrect state, this solution cannot guarantee eventual consistency or safe concurrent read/write.
-
-#### Solution 2: Delete Cache First, Then Update Database, with Binlog Mechanism
-
-![cache_proj2](res/cache_proj2.png)
-
-- Write Operation
-  1. Delete cache data
-  2. Update database
-  3. Listen to database binlog to find data to refresh
-  4. Read database data
-  5. Write data to cache
-- Read Operation
-  1. Read cache data
-  2. If cache miss, read from database
-  3. Asynchronously refresh data back to cache
-
-Advantages:
-
-1. If step 4 or 5 of writing fails, you can replay logs and retry
-2. Whether or not step 1 succeeds, the cache will be refreshed later
-
-Disadvantages:
-
-1. Concurrency issues
-   Ineffective when cache is empty:
-   - When reading, cache data is already invalid, and an update happens
-   - When updating, cache data is already invalid, and another update happens
-
-Summary:
-
-Use case: Simple business, low read/write QPS
-
-Binlog is used to refresh cache, and its natural ordering is advantageous for synchronization. But when binlogs from different rows, tables, or databases are consumed simultaneously, binlog is not strictly sequential.
-
-Examples:
-- [Alibaba open source: canal](https://github.com/alibaba/canal)
-- [LinkedIn open source: databus](https://github.com/linkedin/databus)
-
-#### Solution 3: Add MQ Serialization Mechanism on Top of Solution 2
-
-![cache_proj3](res/cache_proj3.png)
-
-- Write Operation
-  1. Delete cache first
-  2. Update database
-  3. Listen to database binlog, analyze which data needs to be refreshed
-  4. Push data identifier to MQ
-  5. Consume data identifier from MQ, read data from database
-  6. Update cache
-- Read Operation
-  1. Read cache first
-  2. If cache miss, read from database
-  3. Push data identifier to MQ
-  4. Consume data identifier from MQ, read data from database
-  5. Update cache
-
-Advantages:
-
-1. Complete disaster recovery
-   - Step 1 delete cache fails: will be overwritten later
-   - Step 4 write to MQ fails: Databus or Canal will retry
-   - Step 5 or 6 fails: MQ supports re-consume
-   - Step 3 of read, write to MQ fails: does not affect cache, next time will still read database
-
-2. Serialization
-   With MQ, read and write operations are serialized, so no concurrency issues
-
-Disadvantages:
-
-1. Step 5 of writing always reads database, increasing DB load (but only one extra read per write, not a big problem)
-
-#### Solution 4: Add Marking Mechanism on Top of Solution 3
-
-![cache_proj4](res/cache_proj4.png)
-
-- Write Operation
-  1. Mark the data to be modified as "being modified" with a valid time; if marking fails, abandon this modification
-  2. Update database
-  3. Delete cache
-  4. Listen to database binlog, analyze which data needs to be refreshed
-  5. Push data identifier to MQ
-  6. Consume data identifier from MQ, read data from database
-  7. Update cache
-- Read Operation
-  1. Check data mark; if marked, read database directly and finish
-  2. If not marked, read cache first
-  3. If cache miss, read from database
-  4. Push data identifier to MQ
-  5. Consume data identifier from MQ, read data from database
-  6. Update cache
-
-### Cache System Components
-
-- Redis
-- ...
-
-### Common Cache System Issues
-
-#### Cache Penetration
-
-If neither cache nor database has the data, but users keep sending requests, every request hits the database, overwhelming it
-
-Solutions:
-
-1. Business layer validation
-   Check user requests and block invalid ones
-2. For data not found, set value as NULL in cache with a short expiration
-3. Bloom filter
-   Use Bloom filter to check if data exists before querying
-
-#### Cache Breakdown
-
-When a hot key in cache expires, a large number of requests come in, all hitting the database and overwhelming it
-
-Solutions:
-
-1. Set hot data to never expire
-   For frequently read data, set it to never expire
-2. Periodically update expiration
-   Before expiration, refresh the expiration (keep-alive)
-3. Mutex lock
-   Use a value in cache as a lock; set to 1/true when locked, 0/false when released (remember to set expiration to avoid deadlock); to modify DB, must acquire the lock first
-
-#### Cache Avalanche
-
-When a large amount of cached data expires or cache crashes, a flood of requests hit the database, overwhelming it
-
-Solutions:
-
-1. Stagger data expiration times; don't let all expire at once
-2. Data preheating: pre-cache data before a large number of requests arrive
-3. Ensure high cache availability, use clustering
+   The key idea is that the query database doesn’t have to update immediately. There can be a slight delay, but eventually, both databases will sync, ensuring consistency over time.
 
 ---
 
 
 
-## Example 2: OpenAI With PostgresSQL
+## Database Consistency
+
+TODO
+
+---
+
+
+
+## Database Selection
+
+Choosing the right database depends on the needs of your application. Here are a few key factors to consider when making this decision:
+
+1. Data Structure
+
+   Defines how data is organized, stored, and managed within the database system.
+
+   - Relational Databases (SQL)
+
+     Best for structured data with clearly defined tables and relationships.
+
+   - Non-Relational Databases (NoSQL)
+
+     Suitable for unstructured or semi-structured data with flexible formats.
+
+2. Scalability Needs
+
+   Determines how well a database can handle growing data and increasing user traffic.
+
+   - Relational Databases
+
+     Usually, scale vertically by increasing the resources of a single server.
+
+   - Non-Relational Databases
+
+     Commonly scale horizontally by adding more servers to distribute the workload.
+
+3. Consistency vs Availability
+
+   Represents the balance between maintaining strict data accuracy and ensuring continuous system availability.
+
+   - Relational Databases
+
+     Preferred when applications require strong consistency and accurate transactions.
+
+   - Non-Relational Databases
+
+     Better suited for systems needing high availability, even with temporary data inconsistency.
+
+4. Transaction Support
+
+   Refers to how reliably a database processes and maintains data during operations.
+
+   - Relational Databases
+
+     Support ACID properties, ensuring reliable and consistent transactions.
+
+   - Non-Relational Databases
+
+     Often prioritize speed and flexibility over strict transactional guarantees.
+
+5. Development Speed & Flexibility
+
+   Indicates how easily the database can adapt to changing application requirements.
+
+   - Relational Databases
+
+     Suitable when the data structure is stable and well-defined.
+
+   - Non-Relational Databases
+
+     Ideal for rapidly evolving applications with frequently changing data structures.
+
+---
+
+
+
+## Example 1: OpenAI With PostgresSQL
 
 ### Single-Primary Architecture
 
@@ -509,7 +683,7 @@ The primary database represents the system’s most critical bottleneck. OpenAI 
 
 
 
-## Example 3: Facebook’s Database Handling Billions of Messages
+## Example 2: Facebook’s Database Handling Billions of Messages
 
 ### Cassandra
 
@@ -587,9 +761,20 @@ CAP explains why databases must choose between staying available and staying con
 
 ![redis_vs_memcached](res/redis_vs_memcached.png)
 
-### Relational vs Non-Relational Databases
+### Redis vs MongoDB
 
-Here are a few key factors to consider when choosing the right database:
+|                         **MongoDB**                          |                          **Redis**                           |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                Document-based NoSQL database                 |               In-memory key-value store, NoSQL               |
+|          Stores data as BSON documents (JSON-like)           | Stores data as key-value pairs, strings, sets, lists, hashes, etc. |
+|                Disk-based, persistent storage                | Primarily in-memory, but can persist data to disk (RDB, AOF) |
+|        Slower compared to in-memory stores like Redis        |           Extremely fast due to in-memory storage            |
+|         Built-in persistence with automatic backups          |     Optional persistence with RDB snapshots or AOF logs      |
+| Supports complex querying with rich operators like $gt, $lt, $regex, etc. |  Limited querying capabilities (basic key-value operations)  |
+| Ideal for large datasets, complex queries, and rich document structures | Ideal for caching, real-time analytics, messaging, and high-speed applications |
+|  More complex to manage and scale due to its rich features   | Simple to use, mainly for high-speed, low-latency use cases  |
+
+### Relational (SQL) vs Non-Relational Databases (NoSQL)
 
 | Factor                          | Relational Databases                                         | Non-Relational Databases                                     |
 | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -598,6 +783,54 @@ Here are a few key factors to consider when choosing the right database:
 | Consistency vs Availability     | If your application requires strong consistency.             | If your application needs to be highly available and can tolerate some inconsistency for a short time. |
 | Transaction Support             | If you need ACID properties(Atomicity, Consistency, Isolation, Durability) for transaction. | If your system can work without strict transaction guarantees. |
 | Development Speed & Flexibility | If you need a stable, structured design.                     | If your project evolve rapidly or need to handle changing types of data. |
+
+### Comparison of Different Databases
+
+|    **Database Type**    |              **Performance**               |            **Scalability**            |                **Consistency**                 |         **Availability**          |
+| :---------------------: | :----------------------------------------: | :-----------------------------------: | :--------------------------------------------: | :-------------------------------: |
+| **Relational (RDBMS)**  |    High performance for complex queries    | Vertical scaling (limited horizontal) |           Strong consistency (ACID)            | High availability with clustering |
+|   **NoSQL Document**    | High performance for read/write operations |      High horizontal scalability      |         Eventual consistency (tunable)         |         High availability         |
+|   **NoSQL Key-Value**   |    Extremely fast for simple read/write    |      High horizontal scalability      |              Eventual consistency              |         High availability         |
+| **NoSQL Column-Family** |    High performance for large datasets     |      High horizontal scalability      |              Tunable consistency               |         High availability         |
+|     **NoSQL Graph**     | High performance for relationship queries  |    Scales well with relationships     |               Strong consistency               |         High availability         |
+|       **NewSQL**        |   High performance with ACID properties    |      High horizontal scalability      |           Strong consistency (ACID)            | High availability with clustering |
+|     **Time-Series**     |   Optimized for time-series data queries   |      High horizontal scalability      |              Tunable consistency               |         High availability         |
+|   **Object-Oriented**   |  High performance for object manipulation  |         Moderate scalability          | Strong consistency (depends on implementation) |       Moderate availability       |
+
+### File vs Database Storage Systems
+
+|                   **File Storage System**                    |                 **Database Storage System**                  |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| Data is stored as individual files within folders or directories. | Data is organized in structured formats such as tables with rows and columns. |
+| Does not provide built-in support for relationships between files. | Supports relationships between data using keys, constraints, and joins. |
+| Does not support advanced querying; files must be accessed and processed manually. |    Supports complex queries using languages such as SQL.     |
+| Limited scalability and usually suitable for smaller datasets. | Highly scalable and designed to handle large volumes of data. |
+|      Simple to implement and manage with minimal setup.      | Requires proper schema design, configuration, and management. |
+| Best suited for storing documents, images, videos, or log files. | Ideal for transactional systems and applications requiring structured data management. |
+
+### Best Practices For CQRS Pattern
+
+Below are some of the best practices for implementing CQRS pattern:
+
+- Separate Read and Write Models Carefully
+
+  Clearly divide the system into models for reading data (queries) and writing data (commands). This separation helps keep each model simple and optimized for its specific task.
+
+- Use Asynchronous Communication When Needed
+
+  Since commands and queries are separated, consider using asynchronous messaging for commands. This helps the system stay responsive and handle high traffic efficiently, even if some operations take longer.
+
+- Keep Commands and Queries as Simple as Possible
+
+  Design commands to focus only on changing data (like “CreateOrder” or “UpdateUser”) and queries only on retrieving data (like “GetOrderDetails”). Avoid mixing read and write logic in either part to keep things clean and maintainable.
+
+- Embrace Event Sourcing for Data Consistency
+
+  Event sourcing can be paired with CQRS to keep a record of all changes. Each change is saved as an event, and the current state is rebuilt from these events. This can make it easier to track history, recover data, or audit changes.
+
+- Consider the Complexity of Your System
+
+  CQRS adds some complexity, so it’s best suited for systems with high read and write demands or complex business rules. For simpler systems, CQRS might be overkill and add unnecessary development overhead.
 
 ---
 
@@ -636,3 +869,27 @@ Here are a few key factors to consider when choosing the right database:
 [15] [Database Schema Design Simplified: Normalization vs Denormalization](https://blog.bytebytego.com/p/database-schema-design-simplified)
 
 [16] [A Guide to Database Transactions: From ACID to Concurrency Control](https://blog.bytebytego.com/p/a-guide-to-database-transactions)
+
+[17] [Database Design - System Design](https://www.geeksforgeeks.org/system-design/complete-reference-to-databases-in-designing-systems/)
+
+[18] [CQRS - Command Query Responsibility Segregation Design Pattern](https://www.geeksforgeeks.org/system-design/cqrs-command-query-responsibility-segregation/)
+
+[19] [Types of Databases in System Design](https://www.geeksforgeeks.org/system-design/types-of-databases-in-system-design/)
+
+[20] [File and Database Storage Systems in System Design](https://www.geeksforgeeks.org/system-design/file-and-database-storage-systems-in-system-design/)
+
+[21] [Database Replication in System Design](https://www.geeksforgeeks.org/system-design/database-replication-and-their-types-in-system-design/)
+
+[22] [Data Partitioning Techniques in System Design](https://www.geeksforgeeks.org/system-design/data-partitioning-techniques/)
+
+[23] [Redis Introduction](https://www.geeksforgeeks.org/system-design/introduction-to-redis-server/)
+
+[24] [Denormalization in Databases](https://www.geeksforgeeks.org/dbms/denormalization-in-databases/)
+
+[25] [Types of Database Replication](https://www.geeksforgeeks.org/system-design/types-of-database-replication-system-design/)
+
+[26] [CAP Theorem in System Design](https://www.geeksforgeeks.org/system-design/cap-theorem-in-system-design/)
+
+[27] [Does Redis have Eventual Consistency?](https://www.geeksforgeeks.org/system-design/does-redis-have-eventual-consistency/)
+
+[28] [Does MongoDB use Eventual Consistency?](https://www.geeksforgeeks.org/system-design/does-mongodb-use-eventual-consistency/)

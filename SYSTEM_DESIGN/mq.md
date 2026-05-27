@@ -41,14 +41,22 @@ When a producer sends a message to a point-to-point queue, the message is stored
 Point-to-point message queues can be used to implement a variety of patterns, such as:
 
 - Request-Response
+
+  A producer sends a request message to a queue, and a consumer retrieves the message and sends back a response message.
+
 - Work Queue
+
+  Producers send work items to a queue, and consumers retrieve the work items and process them.
+
 - Guaranteed Delivery
+
+  Producers send messages to a queue, and consumers can be configured retry retrieving messages until they are successfully processed.
 
 #### Publish-Subscribe Message Queues
 
 When a producer publishes a message to the publish/subscribe queue, the message is routed to all consumers that are subscribed to the queue. Consumers can subscribe to multiple queues, and they can also unsubscribe from queues at any time.
 
-### Message
+### Messaging Patterns
 
 ![mq_msg_pattern](res/mq_msg_pattern.jpg)
 
@@ -64,8 +72,32 @@ A typical message structure consists of two main parts:
 Message Routing involves determining how messages are directed to their intended recipients. The following methods can be employed:
 
 - Topic-Based Routing
+
+  Messages are sent to topics or channels, and subscribers express interest in specific topics. Messages are delivered to all subscribers of a particular topic.
+
 - Direct Routing
+
+  Messages are sent directly to specific queues or consumers based on their addresses or routing keys.
+
 - Content-Based Routing
+
+  The routing decision is based on the content of the message. Filters or rules are defined to route messages that meet specific criteria.
+
+### Dead Letter
+
+Dead Letter Queues (DLQs) are a mechanism for handling messages that cannot be processed successfully. This includes:
+
+- Messages with errors in their content or format.
+- Messages that exceed their time-to-live (TTL) or delivery attempts.
+- Messages that cannot be delivered to any consumer.
+
+DLQs provide way to investigate and potentially reprocess failed messages while preventing them from blocking the system.
+
+Message Prioritization is the process of assigning priority levels to messages to control their processing order. Prioritization criteria can include:
+
+- Urgency: Messages with higher priority may need to processed before lower-priority messages.
+- Message Content: Messages containing critical information or commands may receive higher priority.
+- Business Rules: Custom business rules or algorithms may be used to determine message priority.
 
 ### Usage
 
@@ -158,3 +190,5 @@ TODO
 [7] [Apache Kafka vs. RabbitMQ](https://blog.bytebytego.com/p/ep193-database-types-you-should-know)
 
 [8] [How RabbitMQ Works?](https://blog.bytebytego.com/i/166418419/how-rabbitmq-works)
+
+[9] [Message Queues - System Design](https://www.geeksforgeeks.org/system-design/message-queues-system-design/)

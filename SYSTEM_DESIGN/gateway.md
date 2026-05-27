@@ -19,7 +19,7 @@ An API Gateway is a key component in system design, particularly in microservice
 - JWT(JSON Web Tokens)
 - LDAP(Lightweight Directory Access Protocol)
 
-### Work Flow
+### API Gateway Workflow
 
 ![working_of_api_gateway](res/working_of_api_gateway.png)
 
@@ -72,14 +72,7 @@ An API Gateway is a key component in system design, particularly in microservice
 - The API Gateway simplifies client interactions and provides security and caching and other features.
 - It also manages API versioning and error handling.
 
-### Advantage
-
-- Centralized Entry Point
-- Routing & Load Balancing
-- Authentication & Authorization
-- Request & Response Transformation
-
-### Use Cases
+### API Gateway Use Cases
 
 ![api_gateway_use_case](res/api_gateway_use_case.jpg)
 
@@ -132,3 +125,5 @@ When a request hits a TAG-powered gateway, it passes through a well-defined pipe
 [4] [How Tinder’s API Gateway Handles A Billion Swipes Per Day](https://blog.bytebytego.com/p/how-tinders-api-gateway-handles-a)
 
 [5] [Top 4 API Gateway Use Cases](https://blog.bytebytego.com/p/ep205-cpu-vs-gpu-vs-tpu?utm_source=publication-search)
+
+[6] [API Gateway](https://www.geeksforgeeks.org/system-design/what-is-api-gateway-system-design/)
