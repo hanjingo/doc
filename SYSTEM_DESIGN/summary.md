@@ -58,7 +58,7 @@ The KISS principle, which stands for "Keep It Simple, Stupid", is a design princ
 
 ### Functional Requirements
 
-Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be necessarily included in the system as part of the contract.
+Functional requirements are the requirements that the end user specifically demands as basic functionalities that the system should offer. All these functionalities need to be included in the system as part of the contract.
 
 ### Non-Functional Requirements
 
@@ -69,6 +69,32 @@ Non-functional Requirements are the quality constraints that the system must sat
 ### Extended requirements
 
 These are basically "nice to have" requirements that might be out of the scope of the system.
+
+These requirements help improve monitoring, reliability, and future expansion of the system:
+
+- Logging
+
+  recording system activities and errors for debugging and analysis
+
+- Monitoring & Alerting
+
+  tracking system health, performance, and failures
+
+- Analytics
+
+  collecting usage data to understand user behavior and system performance
+
+- Backup & Disaster Recovery
+
+  ensuring data can be restored in case of failures
+
+- Rate Limiting
+
+  controlling the number of requests to prevent system overload or abuse
+
+- Feature Flags / A-B Testing
+
+  enabling controlled feature releases and experiments
 
 ---
 
@@ -104,14 +130,43 @@ Software Cost Estimation is a systematic process used to forecast the amount of 
 
 ![software_arch_style](res/software_arch_style.jpg)
 
-High-Level Design(HLD) is an initial step in the development of applications where the overall structure of a system is planned.
+`High-Level Design(HLD)` is an initial step in the development of applications where the overall structure of a system is planned.
 
-A diagram representing each design aspect is included in the HLD (which is based on business requirements and anticipated results):
+### HLD Data Flow
 
-- It contains descriptions of hardware, software interfaces, and also user interfaces.
-- It is also known as the macro level/system design.
-- It is created by a solution architect.
-- The workflow of the user's typical process is detailed in the HLD, along with performance specifications.
+ The common request flow most applications follow from user to data and back.
+
+![hld_data_flow](res/hld_data_flow.png)
+
+- Users - Edge/Gateway
+
+  CDN/Edge handles cache, TLS, basic DDoS; LB/API Gateway routes.
+
+- Gateway - Services
+
+  App layer runs auth/logic and fans out to deps.
+
+- Services - Data
+
+  Read/write to SQL/NoSQL/object/storage/search; cache hot reads; persist writes.
+
+- Services - Async
+
+  Offload emails/webhooks/reindex/heavy jobs to queues; workers update later.
+
+- Auth & Observability
+
+  Auth at gateway/services; emit logs, metrics, traces for monitoring/alerts.
+
+- Response - User
+
+  Reply goes back via gateway/edge; update caches for faster next hits.
+
+### HLD Designing Scalable
+
+![hld_roadmap](res/hld_roadmap.png)
+
+
 
 ---
 
@@ -260,3 +315,5 @@ TODO
 [15] [The System Design Topic Map](https://blog.bytebytego.com/p/ep163-12-mcp-servers-you-can-use)
 
 [16] [A Detailed Guide to Content Delivery Networks](https://blog.bytebytego.com/p/a-detailed-guide-to-content-delivery)
+
+[17] [Functional and Non Functional Requirements](https://www.geeksforgeeks.org/software-engineering/functional-vs-non-functional-requirements/)
