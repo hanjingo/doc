@@ -22,15 +22,15 @@ ML finds application in many fields, including natural language processing, comp
 
 Machine Learning is mainly divided into three core types:
 
-- Supervised learning
+- Supervised Learning
 
   Trains models on labeled data to predict or classify new, unseen data.
 
-- Unsupervised learning
+- Unsupervised Learning
 
   Finds patterns or groups in unlabeled data, like clustering or dimensionality reduction.
 
-- Reinforcement learning
+- Reinforcement Learning
 
   Learns through trial and error to maximize rewards, ideal for decision-making tasks.
 
@@ -50,6 +50,47 @@ Deep learning algorithms can be applied to unsupervised learning tasks. This is 
 ### Deep Reinforcement Learning
 
 Deep Reinforcement Learning (DRL) is the crucial fusion of two powerful artificial intelligence fields: deep neural networks and reinforcement learning. By combining the benefits of data-driven neural networks and intelligent decision-making, it has sparked an evolutionary change that crosses traditional boundaries
+
+### Bias and Variance
+
+![bias_variance_tradeoff](res/bias_variance_tradeoff.png)
+
+Bias and Variance are two fundamental concepts that help explain a model’s prediction errors in machine learning. Bias refers to the error caused by oversimplifying a model while variance refers to the error from making the model too sensitive to training data.
+
+**Bias** is the error that occurs when a model is too simple to capture the true patterns in the data.
+
+1. High bias: The model oversimplifies, misses patterns and underfits the data.
+2. Low bias: The model captures patterns well and is closer to the true values.
+
+Some methods to lower bias in models are:
+
+1. Use More Complex Models: Use models capable of capturing non-linear relationships such as neural networks or ensemble methods.
+2. Add Relevant Features: Include additional informative features in the training data to give the model for capturing underlying patterns.
+3. Adjust Regularization Strength: Reduce regularization to allow the model more flexibility in fitting the data.
+
+Mathematically, the formula for bias is:
+$$
+Bias^{2} = (\mathbb{E}[\hat{f}(x)] - f(x))^{2}
+$$
+where,
+
+- $\hat{f}(x)$: predicted value by the model
+- $f(x)$: true value
+- $\mathbb{E}[\hat{f}(x)]$: expected prediction over different training sets
+
+**Variance** arises when a model becomes too sensitive to training data and it captures noises in data too. It fails to give prediction on unseen new data.
+
+1. High variance: The model is too sensitive to small changes and may overfit.
+2. Low variance: The model is more stable but might miss some patterns.
+
+Mathematically, the formula for variance is:
+$$
+Variance = \mathbb{E}[(\hat{f}(x) - E[\hat{f}(x)])^2]
+$$
+where,
+
+- $\hat{f}(x)$: predicted value by the model
+- $\mathbb{E}[\hat{f}(x)]$: average prediction over multiple training sets
 
 ---
 
@@ -1590,18 +1631,13 @@ GMM workflow:
    $$
    EM increases this likelihood in every iteration.
 
-#### Expectation-Maximization Algorithm
+#### Expectation-Maximization (EM) Algorithm
 
 ![expectation_maximization_algo](res/expectation_maximization_algo.png)
 
 The Expectation-Maximization (EM) algorithm is an iterative optimization technique used to estimate unknown parameters in probabilistic models, particularly when the data is incomplete, noisy or contains hidden (latent) variables.
 
- It works in two steps:
-
-![expectation_maximization_workflow](res/expectation_maximization_workflow.png)
-
-- E-step (Expectation Step): Using the current parameter estimates, the algorithm calculates the expected values of the missing or hidden variables. Essentially, it assigns probabilities or "responsibilities" to different hidden outcomes given the observed data.
-- M-step (Maximization Step): With these updated expectations from the E-step, the algorithm then re-estimates the model parameters by maximizing the expected log-likelihood. This improves how well the model explains the observed data.
+For more info, see: [AI Algorithms#Expectation-Maximization (EM) Algorithm](algo.md)
 
 #### DBSCAN Clustering
 
@@ -2007,11 +2043,11 @@ ECLAT workflow:
 
 
 
-## Reinforcement learning
+## Reinforcement Learning
 
 ![ml_reinforcement_learning](res/ml_reinforcement_learning.png)
 
-Whereas supervised learning trains models by optimizing them to match ideal exemplars and unsupervised learning algorithms fit themselves to a dataset, reinforcement learning models are trained holistically through trial and error. In RL literature, an AI system is often referred to as an "agent".
+Reinforcement Learning (RL) is a branch of machine learning that focuses on how agents can learn to make decisions through trial and error to maximize cumulative rewards. RL allows machines to learn by interacting with an environment and receiving feedback based on their actions. This feedback comes in the form of rewards or penalties.
 
 Types of Reinforcements:
 
@@ -2022,6 +2058,156 @@ Types of Reinforcements:
 2. *Negative Reinforcement*
 
    Negative Reinforcement is defined as strengthening of behavior because a negative condition is stopped or avoided. 
+
+Core Components:
+
+1. Policy
+
+   Defines the agent’s behavior i.e maps states for actions.
+
+2. Reward Signal
+
+   Represents the goal of the RL problem.
+
+3. Value Function
+
+   Evaluates long-term benefits, not just immediate rewards.
+
+4. Model
+
+   Simulates the environment to predict outcomes of actions.
+
+### Exploitation and Exploration
+
+Exploitation is a strategy of using the accumulated knowledge to make decisions that maximize the expected reward based on the present information. The focus of exploitation is on utilizing what is already known about the environment and achieving the best outcome using that information. The key aspects of exploitation include:
+
+1. Reward Maximization
+
+   Maximizing the immediate or short-term reward based on the current understanding of the environment is the main objective of exploitation. This is choosing courses of action based on learned values or rewards that the model predicts will yield the highest expected payoff.
+
+2. Decision Efficiency
+
+   Exploitation can often make more efficient decisions by concentrating on known high-reward actions, which lowers the computational and temporal costs associated with exploration.
+
+3. Risk Aversion
+
+   Exploitation inherently involves a lower level of risk as it relies on tried and tested actions, avoiding the uncertainty associated with less familiar options.
+
+Exploration is used to increase knowledge about an environment or model. The exploration process selects actions with uncertain outcomes to gather information about the possible states and rewards that the performed actions will result. The key aspects of exploration include:
+
+1. Information Gain
+
+   The main objective of exploration is to gather fresh data that can improve the model's comprehension of the surroundings. This involves exploring distinct regions of the state space or experimenting with different actions whose outcomes are unknown.
+
+2. Uncertainty Reduction
+
+   Reducing uncertainty in the model's estimates of the environment guides the actions that are selected. For example, activities that are rarely selected in the past are ranked in order of possible rewards.
+
+3. State Space Coverage
+
+   In certain models, especially those with large or continuous state spaces, exploration makes sure that enough different areas of the state space are visited to prevent learning that is biased toward a small number of experiences.
+
+### Reward Maximization Framework
+
+In RL, the agent focuses on cumulative reward rather than immediate reward. The cumulative reward, also known as the return, is the total reward the agent accumulates over time.
+
+The discount factor ($\gamma$) is a parameter between 0 and 1 that represents the importance of future rewards. A discount factor close to 0 makes the agent prioritize immediate rewards, while a factor close to 1 makes it consider long-term rewards.
+$$
+Q(s, a) = Q(s, a) + \alpha[R + \gamma max_{a}Q(s', a') - Q(s, a)]
+$$
+`Deep Q-Network (DQN)` combines Q-learning with deep neural networks to handle environments with high-dimensional state spaces. The neural network approximates the Q-function, allowing the agent to learn policies in complex environments.
+
+Policy gradient methods optimize the policy directly by maximizing the expected cumulative reward. These methods are effective in continuous action spaces and involve calculating the gradient of the reward with respect to the policy parameters.
+$$
+\nabla_{\theta}J(\theta) = E[\nabla_{\theta}\log \pi_{\theta}(s, a)Q_{\pi}(s, a)]
+$$
+
+### Curiosity-Driven Exploration
+
+Curiosity-driven exploration is approach in reinforcement learning (RL) that addresses the challenge of sparse or delayed rewards by introducing internal, self-generated incentives for agents to explore and learn.
+
+Types of Rewards:
+
+- Extrinsic Reward: Comes from the environment (e.g., points for finishing a level).
+- Intrinsic (Curiosity) Reward: Generated by the agent, typically for visiting novel or unpredictable states.
+
+The most common method is prediction-based curiosity:
+
+- The agent builds a model (often a neural network) to predict the next state given the current state and action.
+- After taking an action, the agent compares its predicted next state to the actual next state.
+- The difference (prediction error) becomes the curiosity reward: the larger the error, the more novel or surprising the state, and the higher the reward.
+
+The Intrinsic Curiosity Module (ICM) is a popular module for curiosity-driven RL, typically consisting of three main components:
+
+1. Encoder
+
+   Converts high-dimensional observations (e.g., images) into lower-dimensional feature vectors, denoted as $\phi(s_t)$ for state $s_t$ and $\phi(s_{t + 1})$ or next state $s_{t + 1}$.
+
+   Mathematical Representation:
+   $$
+   \phi(s_t) = Encoder(s_{t}) \\
+   \phi(s_{t + 1}) = Encoder(s_{t + 1})
+   $$
+
+2. Inverse Dynamics Model
+
+   Predicts the action $\hat{a}_{t}$ taken by the agent, given the encoded representations of the current and next states. This encourages the encoder to focus on aspects of the environment controlled by the agent, filtering out irrelevant or uncontrollable features (e.g., background noise).
+
+   Mathematical Representation:
+   $$
+   \hat{a}_{t} = g(\phi(s_t), \phi(s_{t + 1}); \theta_{I})
+   $$
+   where $g$: Inverse model neural network with parameters $\theta_{I}$
+
+   Loss Function:
+
+   - For discrete actions (e.g., Atari), use cross-entropy loss: $L_{inv} = -\log P(a_t | \phi(s_t), \phi(s_{t + 1}))$
+   - For continuous actions, use mean squared error (MSE): $L_{inv} = ||a_t - \hat{a}_{t}||^2$
+
+3. Forward Dynamics Model
+
+   Predicts the encoded feature vector of the next state $\hat{s_{t + 1}}$, given the encoded current state and the action .
+
+   Mathematical Representation:
+   $$
+   \hat{\phi}(s_{t + 1}) = f(\phi(s_t), a_t; \theta_{F})
+   $$
+   where $f$ is the forward model (a neural network with parameters $\theta_{F}$).
+
+   The forward model is trained to minimize the prediction error in the feature space
+
+   Mean squared error in feature space: $L_{fwd} = \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}$
+
+   Intrinsic Reward (Curiosity Signal); The agent receives an intrinsic reward proportional to this prediction error:
+   $$
+   r_{t}^{int} = \eta \cdot \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}
+   $$
+   where $\eta$ is Scaling factor for the curiosity reward.
+
+4. Combined Optimization
+
+   Total Loss: The ICM is trained by combining the inverse and forward losses:
+   $$
+   L_{ICM} = (1 - \lambda)L_{inv} + \lambda L_{fwd}
+   $$
+   where $\lambda$ Hyperparameter balancing the two losses (e.g., λ*λ*=0.1 in the original paper).
+
+   Policy Training: The agent’s policy is trained using both extrinsic (environment) and intrinsic (curiosity) rewards:
+   $$
+   r_t = r_{t}^{ext} + \beta r_{t}^{int}
+   $$
+   where $r_t$ is total reward received by the agent at time step t, $\beta$ controls the influence of curiosity.
+
+### Epsilon-Greedy Algorithm
+
+Epsilon-Greedy is a simple method to balance exploration and exploitation by choosing between exploration and exploitation randomly. The epsilon-greedy, where epsilon refers to the probability of choosing to explore, exploits most of the time with a small chance of exploring.
+$$
+\text{Action at time(t)} 
+\begin{cases}
+\text{max }Q_t(a), & \text{with probability } 1 - \epsilon \\
+\text{any action }(a), & \text{with probability } \epsilon
+\end{cases}
+$$
 
 ### Bellman Equation
 
@@ -2075,55 +2261,21 @@ These equations form the foundation for Dynamic Programming, Temporal Difference
 
 #### Markov Decision Processes (MDPs)
 
-Markov Decision Process (MDP) is a framework for decision-making under uncertainty and is formally defined by a tuple (S, A, P, R, γ), representing states, actions, transition probabilities, rewards and the discount factor.
+Markov Decision Process (MDP) is a framework for decision-making under uncertainty and is formally defined by a tuple $(S, A, P, R, γ)$, representing states, actions, transition probabilities, rewards and the discount factor.
 
-An MDP has five main parts:
+For more info, see: [AI Algorithms#Markov Decision Process (MDP)](algo.md)
 
-![mdp_main_parts](res/mdp_main_parts.png)
+#### Hidden Markov Model (HMM)
 
-1. $States (S)$: A state is a situation or condition the agent can be in.
-2. $Actions (A)$: An action is something the agent can do.
-3. $\text{Transition Model} (T)$: The model tells us what happens when an action is taken in a state.
-4. $Reward (R)$: A reward is a number given to the agent after it takes an action. If the reward is positive, it means the result of the action was good. If the reward is negative, it means the outcome was bad, or there was a penalty help the agent learn what’s good or bad.
-5. $Policy (\pi)$: A policy is the agent’s plan. The goal is to find the best policy that helps the agent earn the highest total reward over time.
+To work with sequential data where the actual states are not directly visible, the Hidden Markov Model (HMM) is a widely used probabilistic model in machine learning. It assumes that a system moves through hidden states over time, and each hidden state produces an observable output based on certain probabilities.
+
+For more info, see: [AI Algorithms#Hidden Markov Model (HMM)](algo.md)
 
 #### Monte Carlo Tree Search
 
-Monte Carlo Tree Search (MCTS) is a method used for problems with very large decision spaces, such as game Go, which has around 10170 possible states. It builds a search tree step-by-step using random simulations to choose better moves.
+[Monte Carlo Tree Search (MCTS) is a method used for problems with very large decision spaces, such as game Go, which has around 10170 possible states. It builds a search tree step-by-step using random simulations to choose better moves.
 
-MCTS workflow:
-
-![mcts_workflow](res/mcts_workflow.png)
-
-1. Selection
-
-   Starting at the root node, MCTS moves down the tree using a selection rule. The most common rule is UCT (Upper Confidence Bounds for Trees), which balances:
-
-   - Exploitation: choosing moves with higher average reward
-   - Exploration: trying moves with less information
-
-2. Expansion
-
-   When the selection phase reaches a leaf node that isn't terminal, the algorithm expands the tree by adding one or more child nodes representing possible actions from that state.
-
-3. Simulation Phase
-
-   From the newly added node, a random playout is performed until reaching a terminal state. During this phase, moves are chosen randomly or using simple heuristics, making the simulation computationally inexpensive.
-
-4. Backpropagation Phase
-
-   The result of the simulation is propagated back up the tree to the root, updating statistics (visit counts and win rates) for all nodes visited during the selection phase.
-
-The selection phase relies on the `UCB1 (Upper Confidence Bound)` formula to determine which child node to visit next:
-$$
-UCB1(i) = \overline{X_i} + c\sqrt{\frac{\ln N}{n_i}}
-$$
-where:
-
-- $\overline{X_i}$ is the average reward of node $i$
-- $c$ is the exploration parameter (typically $\sqrt{2}$)
-- $N$ is the total number of visits to the parent node
-- $n_i$ is the number of visits to node $i$
+For more info, see: [AI Algorithms#Monte Carlo Tree Search (MCTS)](AI/algo.md)
 
 ### Model-Free Methods
 
@@ -2861,7 +3013,7 @@ Types of Exponential Smoothing:
 |     **Tools Used**      |    Jenkins, Git, Docker, Kubernetes, Terraform, Ansible.     | Adds ML-specific tools like MLflow, Kubeflow, TensorFlow Extended (TFX), DVC, Weights & Biases and feature stores. |
 |   **Teams Involved**    |        Software developers and operations engineers.         | Includes data scientists, ML engineers, DevOps and domain experts working together. |
 
-### Online vs Offline Learning
+### Online vs Offline Reinforcement Learning
 
 ![online_vs_offline_rl](res/online_vs_offline_rl.png)
 
@@ -2871,6 +3023,59 @@ Types of Exponential Smoothing:
 |    **Adaptivity**    |             High, continuously adapts             |         Limited, depends on dataset coverage          |
 |   **Suitability**    | When environment access or simulation is feasible |    When environment interaction is costly or risky    |
 |    **Challenges**    |      Resource-intensive, potentially unsafe       | Distributional shift, counterfactual inference issues |
+
+### Exploration vs Exploitation
+
+|     **Aspect**      |                 **Exploration**                  |                  **Exploitation**                  |
+| :-----------------: | :----------------------------------------------: | :------------------------------------------------: |
+|      **Goal**       |        Discover new strategies or states         | Use known strategies to maximize immediate reward  |
+|  **Action Choice**  |           Random or less-known actions           |       Actions with highest expected Q-value        |
+|      **Risk**       |    May lead to suboptimal or negative rewards    |         May miss better long-term rewards          |
+| **Learning Effect** | Helps the agent learn more about the environment |   Solidifies knowledge about known good actions    |
+|     **Example**     |           Trying a new path in a maze            | Following a path that previously gave high rewards |
+
+### Model-Based vs Model-Free Reinforcement Learning
+
+|        **Feature**        |                      **Model-Based RL**                      |                      **Model-Free RL**                       |
+| :-----------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **Environment Knowledge** | Requires or learns a model of the environment (transition probabilities & rewards) |       Does not require a model; learns from experience       |
+| **Planning vs Learning**  |                Can plan ahead using the model                |               Learns only from trial-and-error               |
+|   **Sample Efficiency**   |      More sample-efficient (fewer interactions needed)       |        Less sample-efficient; needs more interactions        |
+|      **Computation**      |       Often computationally intensive due to planning        |               Computationally simpler per step               |
+|  **Example Algorithms**   |          Value Iteration, Policy Iteration, Dyna-Q           |            Q-Learning, SARSA, Monte Carlo methods            |
+|     **Adaptability**      |          Can adapt quickly if the model is accurate          |       Slower adaptation; requires repeated exploration       |
+|       **Key Idea**        | “I know or learn the rules, so I can plan the best actions.” | “I don’t know the rules; I learn what works by trial-and-error.” |
+
+### Policy vs Value Function vs Reward Function In Reinforcement Learning
+
+|      **Aspect**       |                  **Policy**                  |             **Value Function**              |           **Reward Function**            |
+| :-------------------: | :------------------------------------------: | :-----------------------------------------: | :--------------------------------------: |
+|      **Purpose**      | Strategy for selecting actions in each state |    Estimates long-term expected returns     |  Provides immediate numerical feedback   |
+|       **Input**       |              State information               |        State or (state, action) pair        | State, action or state-action transition |
+|      **Output**       |     Action or distribution over actions      | Expected value of future cumulative rewards |          Instant reward signal           |
+| **Role in Learning**  |    Guides agent’s decision-making process    |   Assesses desirability of states/actions   |        Directs agent toward goals        |
+|    **Dependency**     |     May depend on value/reward functions     |    Depends on policy and reward function    |     Independent, foundational signal     |
+| **Optimization Goal** |        Learn optimal action-selection        |      Accurately predict future rewards      |     Shape agent behavior via rewards     |
+
+### Bias Variance Tradeoff
+
+|  **Model Type**  | **Bias** | **Variance** |             **Result**             |
+| :--------------: | :------: | :----------: | :--------------------------------: |
+| **Underfitting** |   High   |     Low      | Poor training and test performance |
+|   **Optimal**    | Moderate |   Moderate   |        Best generalization         |
+| **Overfitting**  |   Low    |     High     |       Poor test performance        |
+
+The bias variance tradeoff describes the balance between a model being too simple and too complex. A simple model may miss important patterns (high bias), while a very complex model may learn noise from training data (high variance). The aim is to balance both so the model performs well on new data.
+
+The total prediction error can be expressed as:
+$$
+\text{Total Error} = \text{Bias}^{2} + \text{Variance} + \text{Irreducible Error}
+$$
+Here,
+
+- $\text{Bias}^2$: Error caused by incorrect assumptions in the model.
+- $\text{Variance}$: Error caused by sensitivity to training data.
+- $\text{Irreducible Error}$: Random noise in the data that cannot be eliminated.
 
 ### PPO vs Earlier Methods
 
@@ -2885,7 +3090,7 @@ Comparison of PPO with earlier policy gradient methods:
 
 ## Reference
 
-[1] Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N. Gomez; Łukasz Kaiser; Illia Polosukhin. Attention Is All You Need
+[1] Christopher M. Bishop . Pattern Recognition and Machine Learning
 
 [2] [WIKIPEDIA: Machine learning](https://en.wikipedia.org/wiki/Machine_learning)
 
@@ -3058,3 +3263,13 @@ Comparison of PPO with earlier policy gradient methods:
 [86] [Reinforcement Learning](https://www.geeksforgeeks.org/machine-learning/what-is-reinforcement-learning/)
 
 [87] [Proximal Policy Optimization (PPO)](https://www.geeksforgeeks.org/machine-learning/a-brief-introduction-to-proximal-policy-optimization/)
+
+[88] [How does reward maximization work in reinforcement learning?](https://www.geeksforgeeks.org/machine-learning/how-does-reward-maximization-work-in-reinforcement-learning/)
+
+[89] [Exploitation and Exploration in Machine Learning](https://www.geeksforgeeks.org/machine-learning/exploitation-and-exploration-in-machine-learning/)
+
+[90] [Curiosity-Driven Exploration in Reinforcement Learning](https://www.geeksforgeeks.org/deep-learning/curiosity-driven-exploration-in-reinforcement-learning/)
+
+[91] [Bias and Variance in Machine Learning](https://www.geeksforgeeks.org/machine-learning/bias-vs-variance-in-machine-learning/)
+
+[92] [Bias-Variance Trade Off - Machine Learning](https://www.geeksforgeeks.org/machine-learning/ml-bias-variance-trade-off/)

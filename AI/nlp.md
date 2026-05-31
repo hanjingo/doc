@@ -64,6 +64,26 @@ Types of Tokenization in NLP:
 
 ![nlp_tokenization_types](res/nlp_tokenization_types.png)
 
+- Word Tokenization
+
+  Word tokenization is the most commonly used method, where text is divided into individual words. It works well for languages with clear word boundaries, like English
+
+- Character Tokenization
+
+  In Character Tokenization, the textual data is split and converted to a sequence of individual characters. This is beneficial for tasks that require a detailed analysis, such as spelling correction or for tasks with unclear boundaries. It can also be useful for modelling character-level language.
+
+- Sub-word Tokenization
+
+  This strikes a balance between word and character tokenization by breaking down text into units that are larger than a single character but smaller than a full word. This is useful when dealing with morphologically rich languages or rare words.
+
+- Sentence Tokenization
+
+  Sentence tokenization is also a common technique used to make a division of paragraphs or a large set of sentences into separate sentences as tokens. This is useful for tasks requiring individual sentence analysis or processing.
+
+- N-gram Tokenization
+
+  N-gram tokenization splits words into fixed-sized chunks (size = n) of data.
+
 #### POS(Part-of-Speech) Tagging
 
 Parts of Speech (PoS) tagging is a fundamental task in Natural Language Processing (NLP) where each word in a sentence is assigned a grammatical category such as noun, verb, adjective or adverb. This process helps machines to understand the structure and meaning of sentences by identifying the roles of words and their relationships.
@@ -244,9 +264,13 @@ Latent Dirichlet Allocation (LDA), the most widely applied topic modeling method
 
 
 
-## Text Embedding Techniques
+## Embedding
 
-### Word2Vec
+### Embedding Techniques
+
+![embedding_in_nlp](res/embedding_in_nlp.png)
+
+#### Word2Vec
 
 Word2Vec is a word embedding technique in NLP that represents words as vectors in a continuous space. Developed by Google, it captures semantic relationships by assigning similar vectors to words with similar meanings.
 
@@ -264,11 +288,11 @@ Two main architectures:
 
   The Skip gram predicts the surrounding context words within specific window given current word. The input layer contains the current word and the output layer contains the context words. The hidden layer contains the number of dimensions in which we want to represent current word present at the input layer.
 
-### GloVe
+#### GloVe
 
 GloVe (Global Vectors for Word Representation) is an unsupervised learning algorithm that generates dense word embeddings by analyzing co-occurrence patterns in a large text corpus, capturing semantic relationships between words.
 
-**Workflow:**
+Workflow:
 
 1. Preprocess the Text
 
@@ -298,15 +322,15 @@ GloVe (Global Vectors for Word Representation) is an unsupervised learning algor
 
    After training, the model outputs an embedding matrix where each word is represented by a dense vector. These vectors are able to capture the semantic and syntactic relationships between words.
 
-### FastText
+#### FastText
 
 FastText embeddings are a type of word embedding developed by Facebook's AI Research (FAIR) lab. They are based on the idea of subword embeddings, which means that instead of representing words as single entities, FastText breaks them down into smaller components called character n-grams. By doing so, FastText can capture the semantic meaning of morphologically related words, even for out-of-vocabulary words or rare words, making it particularly useful for handling languages with rich morphology or for tasks where out-of-vocabulary words are common.
 
-### ELMo
+#### ELMo
 
 ELMo (Embeddings from Language Models) generates word vectors by considering the entire sentence. Unlike traditional methods, ELMo derives word meanings from the internal states of a deep bi-directional LSTM network trained as a language model.
 
-**Workflow:**
+Workflow:
 
 1. Pre-training Phase
 
@@ -325,23 +349,23 @@ ELMo (Embeddings from Language Models) generates word vectors by considering the
    - biLM can be either frozen to preserve general knowledge or fine-tuned on the specific task to improve performance.
    - The downstream model learns to use these embeddings for improved predictions.
 
-### BERT
+#### BERT
 
 ![bert](res/bert.png)
 
 BERT (Bidirectional Encoder Representations from Transformers) is a machine learning model designed for natural language processing tasks, focusing on understanding the context of text.
 
-**Workflow:**
+Workflow:
 
 ![bert_workflow](res/bert_workflow.png)
 
-**Architecture:**
+Architecture:
 
 ![bert_arch](res/bert_arch.png)
 
 BERT uses a multilayer bidirectional Transformer encoder to understand text by capturing context from both directions. Unlike the original Transformer, which has both encoder and decoder, BERT uses only the encoder for language understanding tasks.
 
-### Doc2Vec
+#### Doc2Vec
 
 Doc2Vec is also called a Paragraph Vector a popular technique in Natural Language Processing that enables the representation of documents as vectors. 
 
@@ -357,17 +381,29 @@ There are two main variants of the Doc2Vec approach:
 
   ![dbow_arch](res/dbow_arch.png)
 
-### RoBERTa
+#### RoBERTa
 
 The rise of transformer models brought major progress in natural language processing, especially with BERT. RoBERTa (Robustly Optimized BERT Pretraining Approach) kept the same architecture but refined the training process to achieve better results. By making some minor changes in BERT, RoBERTa produced stronger language representations without changing the model’s core design.
 
-### DistilBERT
+#### DistilBERT
 
 *DistilBERT* is a distilled version of BERT meaning it is trained using *knowledge distillation* a technique where a smaller model (student) learns from a larger model (teacher). It retains 97% of BERT’s performance while being 40% smaller and 60% faster making it highly efficient for NLP tasks such as text classification, sentiment analysis and question-answering.
 
-**Workflow:**
-
 ![distil_bert_workflow](res/distil_bert_workflow.png)
+
+### Vector Database
+
+#### Milvus
+
+![milvus](res/milvus.png)
+
+Milvus is an open-source vector database designed for managing and searching large-scale embedding data efficiently. It is widely used in AI, machine learning, and semantic search applications where similarity search and retrieval play a key role.
+
+#### FAISS
+
+![faiss](res/faiss.png)
+
+[Faiss](https://github.com/facebookresearch/faiss) (Facebook AI Similarity Search) is an open-source library developed by Meta for efficient similarity search and clustering of dense vectors. It is designed to handle datasets ranging from a few million to over a billion high-dimensional vectors, making it a backbone for modern recommendation systems, search engines, and AI applications.
 
 ---
 
@@ -494,23 +530,9 @@ T5 follows a simple yet effective principle i.e it convert all NLP problems into
 
    T5 is pre-trained using a denoising objective where portions of text are masked and the model learns to reconstruct them. It is then fine-tuned for various tasks.
 
-### Transfer Learning with Fine-tunning
+### Transfer Learning with Fine-Tunning
 
 Natural Language Processing (NLP) has transformed models like BERT which can understand language context deeply by looking at words both before and after a target word. While BERT is pre-trained on vast amounts of general text making it adapt it to specific tasks like sentiment analysis that requires fine tuning. This process customizes BERT’s knowledge to perform well on domain-specific data while saving time and computational effort compared to training a model from scratch.
-
----
-
-
-
-## Libraries
-
-![nlp_python_lib](res/nlp_python_lib.png)
-
-### NLTK
-
-![nltk](res/nltk.png)
-
-Natural Language Processing (NLP) plays an important role in enabling machines to understand and generate human language. Natural Language Toolkit (NLTK) stands out as one of the most widely used libraries. It provides a combination of linguistic resources, including text processing libraries and pre-trained models, which makes it ideal for both academic research and practical applications.
 
 ---
 
@@ -633,3 +655,5 @@ Natural Language Processing (NLP) plays an important role in enabling machines t
 [32] [Text classification using CNN](https://www.geeksforgeeks.org/nlp/text-classification-using-cnn/)
 
 [33] [Sentiment Analysis using VADER - Using Python](https://www.geeksforgeeks.org/python/python-sentiment-analysis-using-vader/)
+
+[34] [Tokenization in NLP](https://www.geeksforgeeks.org/nlp/nlp-how-tokenizing-text-sentence-words-works/)

@@ -1630,7 +1630,7 @@ Training a sparse autoencoder follows the same workflow as a standard autoencode
 
 4. Backpropagation and Optimization: Gradients are computed from the combined loss and used to update the network weights, ensuring the model learns both accurate reconstruction and sparse feature representations.
 
-#### Variational AutoEncoders
+#### Variational AutoEncoders (VAEs)
 
 Variational Autoencoders (VAEs) are generative models that learn a smooth, probabilistic latent space, allowing them not only to compress and reconstruct data but also to generate entirely new, realistic samples. VAEs capture the underlying structure of a dataset and produce outputs that closely resemble the original data.
 

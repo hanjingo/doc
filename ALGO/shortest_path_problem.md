@@ -54,7 +54,7 @@ The shortest path problem is the problem of finding a path between two vertices 
 
 In an in-depth first search (or DFS) for a graph, we traverse all adjacent vertices one by one. When we traverse an adjacent vertex, we completely finish the traversal of all vertices reachable through that adjacent vertex.
 
-**Algorithm:**
+Algorithm:
 
 - DFS from a Given Source of Graph
 
@@ -66,7 +66,7 @@ In an in-depth first search (or DFS) for a graph, we traverse all adjacent verti
 
   In a disconnected graph, some vertices may not be reachable from a single source. To ensure all vertices are visited in DFS traversal, we iterate through each vertex, and if a vertex is unvisited, we perform a DFS starting from that vertex as the source. This way, DFS explores every connected component of the graph.
 
-**Examples:**
+Examples:
 
 ![short_path_algo_dfs1](res/short_path_algo_dfs1.png)
 
@@ -86,7 +86,7 @@ In an in-depth first search (or DFS) for a graph, we traverse all adjacent verti
 
 ![short_path_algo_dfs9](res/short_path_algo_dfs9.png)
 
-**Implement:**
+Implement:
 
 (DFS from a Given Source of Graph)
 
@@ -116,7 +116,7 @@ std::vector<int> dfs(std::vector<std::vector<int>> &adj)
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -136,16 +136,16 @@ Breadth First Search (BFS) is a graph traversal algorithm that starts from a sou
 
 BFS computes shortest path distances (in number of edges) from a source vertex s in an unweighted graph (directed or undirected). It explores the graph in layers: first all vertices at distance 0 (s), then distance 1, then distance 2, and so on.
 
-**Key properties:**
+Key properties:
 
 - Correctness: BFS finds shortest paths in unweighted graphs.
 - Complexity: O(V + E) time using adjacency lists and O(V) space for the queue and distance array.
 
-**Algorithm:**
+Algorithm:
 
 The algorithm starts from a given source vertex and explores all vertices reachable from that source, visiting nodes in increasing order of their distance from the source, level by level, using a queue. Since graphs may contain cycles, a vertex could be visited multiple times. To prevent revisiting a vertex, a visited array is used.
 
-**Example:**
+Example:
 
 ![short_path_algo_bfs1](res/short_path_algo_bfs1.png)
 
@@ -165,7 +165,7 @@ The algorithm starts from a given source vertex and explores all vertices reacha
 
 ![short_path_algo_bfs9](res/short_path_algo_bfs9.png)
 
-**Implement:**
+Implement:
 
 ```c++
 // BFS for single connected component
@@ -203,7 +203,7 @@ vector<int> bfs(vector<vector<int>>& adj)
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -225,7 +225,7 @@ Dijkstra's algorithm computes shortest paths from a single source in graphs with
 
 Correctness relies on the nonnegativity of edge weights (once the smallest tentative distance vertex is selected, its distance is final).
 
-**Math Fundamentals:**
+Math Fundamentals:
 
 **Theorem** Dijkstra's algorithm finds the length of the shortest path between two vertices in a connected simple undirected weighted graph.
 
@@ -235,7 +235,7 @@ Correctness relies on the nonnegativity of edge weights (once the smallest tenta
 
 ### Dijkstra's algorithm by using priority queue
 
-**Algorithm:**
+Algorithm:
 
 1. Create a distance array dist[] of size V and initialize all values to infinity (∞) since no paths are known yet.
 2. Set the distance of the source vertex to 0 and insert it into the priority queue.
@@ -246,7 +246,7 @@ Correctness relies on the nonnegativity of edge weights (once the smallest tenta
 6. Continue this process until the priority queue becomes empty.
 7. Once done, the dist[] array will contain the shortest distance from the source to every vertex in the graph.
 
-**Examples:**
+Examples:
 
 ![dijkstra_using_priority_queue1](res/dijkstra_using_priority_queue1.png)
 
@@ -262,7 +262,7 @@ Correctness relies on the nonnegativity of edge weights (once the smallest tenta
 
 ![dijkstra_using_priority_queue7](res/dijkstra_using_priority_queue7.png)
 
-**Implement:**
+Implement:
 
 ```c++
 std::vector<int> dijkstra_pq(std::vector<std::vector<std::pair<int,int>>>& adj, int src) 
@@ -314,7 +314,7 @@ std::vector<int> dijkstra_pq(std::vector<std::vector<std::pair<int,int>>>& adj, 
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -330,13 +330,13 @@ std::vector<int> dijkstra_pq(std::vector<std::vector<std::pair<int,int>>>& adj, 
 
 Bellman–Ford computes single-source shortest paths even when some edges have negative weights, and it detects negative-weight cycles reachable from the source.
 
-**Algorithm:**
+Algorithm:
 
 1. Initialize distances: dist[s] = 0, others = INF.
 2. Repeat V-1 times: relax every edge (u, v) with weight w: if dist[u] + w < dist[v], set dist[v] = dist[u] + w and parent[v] = u.
 3. Check for negative cycles: if any edge can still be relaxed, report a negative cycle.
 
-**Example:**
+Example:
 
 ![short_path_algo_bellman_ford1](res/short_path_algo_bellman_ford1.png)
 
@@ -350,7 +350,7 @@ Bellman–Ford computes single-source shortest paths even when some edges have n
 
 ![short_path_algo_bellman_ford6](res/short_path_algo_bellman_ford6.png)
 
-**Implement:**
+Implement:
 
 ```c++
 std::vector<int> bellman_ford(int V, std::vector<std::vector<int>>& edges, int src) 
@@ -377,7 +377,7 @@ std::vector<int> bellman_ford(int V, std::vector<std::vector<int>>& edges, int s
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -393,7 +393,7 @@ std::vector<int> bellman_ford(int V, std::vector<std::vector<int>>& edges, int s
 
 Topological sorting for a Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge u→v, vertex u comes before v in the ordering.
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -411,9 +411,9 @@ For more info, see: [Graph Algorithm#Topological Sort](graph.md)
 
 ![astar_progress_animation](res/astar_progress_animation.gif)
 
-A* is used to find shortest paths when a heuristic estimate $h(v)$ approximating the remaining distance to the target is available. A* expands nodes in order of $f(v) = g(v) + h(v)$, where $g(v)$ is the distance from the start to v. If h is admissible (never overestimates), A* is guaranteed to find an optimal path.
+`A*` is used to find shortest paths when a heuristic estimate $h(v)$ approximating the remaining distance to the target is available. A* expands nodes in order of $f(v) = g(v) + h(v)$, where $g(v)$ is the distance from the start to v. If h is admissible (never overestimates), A* is guaranteed to find an optimal path.
 
-**Algorithm**:
+Algorithm:
 
 ```txt
 // A* Search Algorithm
@@ -455,11 +455,11 @@ A* is used to find shortest paths when a heuristic estimate $h(v)$ approximating
     end (while loop)
 ```
 
-**Example**:
+Example:
 
 ![astar_example](res/astar_example.png)
 
-**Implement:**
+Implement:
 
 ```c++
 // A C++ Program to implement A* Search Algorithm
@@ -1102,7 +1102,7 @@ int main()
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -1117,15 +1117,15 @@ int main()
 
 ## Floyd Warshall Algorithm
 
-Given a matrix **dist[][]** of size **n x n**, where dist[i][j] represents the weight of the edge from node i to node j.
+Given a matrix `dist[][]` of size $n \times n$, where dist[i][j] represents the weight of the edge from node i to node j.
 
 - If there is no direct edge, dist[i][j] is set to INF (a large value, i.e., 108).
-- The diagonal entries dist[i][i] are ***\*0\****, since the distance from a node to itself is zero.
+- The diagonal entries dist[i][i] are $0$, since the distance from a node to itself is zero.
 - The graph may contain negative edge weights, but it does not contain any negative-weight cycles.
 
 Determine the shortest path distance between all pairs of nodes in the graph.
 
-**Algorithm**:
+Algorithm:
 
 1. Start by updating the distance matrix by treating each vertex as a possible intermediate node between all pairs of vertices.
 2. Iterate through each vertex, one at a time. For each selected vertex `k`, attempt to improve the shortest paths that pass through it.
@@ -1135,7 +1135,7 @@ Determine the shortest path distance between all pairs of nodes in the graph.
    - k is an intermediate vertex in the shortest path from i to j. We update the value of dist[i][j] as dist[i][k] + dist[k][j], if dist[i][j] > dist[i][k] + dist[k][j]
 5. Repeat this process for each vertex `k` until all intermediate possibilities have been considered.
 
-**Example:**
+Example:
 
 ![short_path_algo_floyd_warshal1](res/short_path_algo_floyd_warshal1.png)
 
@@ -1151,7 +1151,7 @@ Determine the shortest path distance between all pairs of nodes in the graph.
 
 ![short_path_algo_floyd_warshal7](res/short_path_algo_floyd_warshal7.png)
 
-**Implement:**
+Implement:
 
 ```c++
 void floyd_warshall(std::vector<std::vector<int>> &dist) 
@@ -1178,7 +1178,7 @@ void floyd_warshall(std::vector<std::vector<int>> &dist)
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -1194,14 +1194,14 @@ void floyd_warshall(std::vector<std::vector<int>> &dist)
 
 Johnson's Algorithm is an efficient algorithm used to find the shortest paths between all pairs of vertices in a weighted graph. It works even for graphs with negative weights, provided there are no negative weight cycles. This algorithm is particularly useful for sparse graphs and combines both Dijkstra's and Bellman-Ford algorithms to achieve optimal performance.
 
-**Algorithm:**
+Algorithm:
 
 1. Let the given graph be G. Add a new vertex s to the graph, add edges from new vertex to all vertices of G. Let the modified graph be G'.
 2. Run Bellman-Ford algorithm on G' with s as source. Let the distances calculated by Bellman-Ford be h[0], h[1], .. h[V-1]. If we find a negative weight cycle, then return. Note that the negative weight cycle cannot be created by new vertex s as there is no edge to s. All edges are from s.
 3. Reweight the edges of original graph. For each edge (u, v), assign the new weight as "original weight + h[u] - h[v]".
 4. Remove the added vertex s and run Dijkstra's algorithm for every vertex.
 
-**Example:**
+Example:
 
 ![johnson_algo1](res/johnson_algo1.png)
 
@@ -1209,7 +1209,7 @@ Johnson's Algorithm is an efficient algorithm used to find the shortest paths be
 
 ![johnson_algo3](res/johnson_algo3.png)
 
-**Implement:**
+Implement:
 
 ```c++
 #define INF INT_MAX
@@ -1316,7 +1316,7 @@ void johnson_algorithm(std::vector<std::vector<int>> graph) {
 }
 ```
 
-**Complexity:**
+Complexity:
 
 | Case         | Time Complexity | Space Complexity |
 | ------------ | --------------- | ---------------- |
@@ -1340,20 +1340,20 @@ void johnson_algorithm(std::vector<std::vector<int>> graph) {
 
 ### Complexity Analysis
 
-|      **Algorithm**       |    **Time Complexity**    | **Space Complexity** |
-| :----------------------: | :-----------------------: | :------------------: |
-|           DFS            |        $O(V + E)$         |        $O(V)$        |
-|           BFS            |         $O(V+E)$          |        $O(V)$        |
-|     MultiSource BFS      |         $O(V+E)$          |        $O(V)$        |
-|   Dijkstra's algorithm   |     $O(E * \log(V))$      |        $O(V)$        |
-|  Bellman-Ford algorithm  |        $O(V * E)$         |        $O(V)$        |
-| Floyd-Warshall algorithm |         $O(V^3)$          |       $O(V^2)$       |
-|   A\* search algorithm   |     $O(E * \log(V))$      |        $O(V)$        |
-|   Johnson's algorithm    | $O(V^2 * \log V + V * E)$ |       $O(V^2)$       |
+|        Algorithm         |      Time Complexity      | Space Complexity |
+| :----------------------: | :-----------------------: | :--------------: |
+|           DFS            |        $O(V + E)$         |      $O(V)$      |
+|           BFS            |         $O(V+E)$          |      $O(V)$      |
+|     MultiSource BFS      |         $O(V+E)$          |      $O(V)$      |
+|   Dijkstra's algorithm   |     $O(E * \log(V))$      |      $O(V)$      |
+|  Bellman-Ford algorithm  |        $O(V * E)$         |      $O(V)$      |
+| Floyd-Warshall algorithm |         $O(V^3)$          |     $O(V^2)$     |
+|   A\* search algorithm   |     $O(E * \log(V))$      |      $O(V)$      |
+|   Johnson's algorithm    | $O(V^2 * \log V + V * E)$ |     $O(V^2)$     |
 
 ### Shortest Path vs Minimum Spanning Tree
 
-| **Minimum spanning tree(MST)**                               | **The Shortest path**                                        |
+| Minimum spanning tree(MST)                                   | The Shortest path                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | In MST there is no source and no destination, but it is the subset (tree) of the graph(**G**) which connects all the vertices of the graph **G** without any cycles and the minimum possible total edge weight. | There is a source and destination, and one need to find out the shortest path between them |
 | Graph **(G)** should be connected, undirected, edge-weighted, labeled. | It is not necessary for the Graph **(G)** to be connected, undirected, edge-weighted, labeled. |

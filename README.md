@@ -378,3 +378,4 @@
 ## [Others](OTHERS/README.md)
 
 - [En-Zh-Dictionary](OTHERS/en_zh_dictionary.md)
+- [Prompt Cookbook](OTHERS/prompt_cookbook.md)

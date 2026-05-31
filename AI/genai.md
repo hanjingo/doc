@@ -6,15 +6,13 @@
 
 ![genai_hierarchy](res/genai_hierarchy.png)
 
-GenAI, short for Generative Artificial Intelligence, refers to AI systems that can generate new content, such as text, images, or music. It can be considered a subset of Deep Learning.
-
-GenAI models can generate novel and coherent outputs that resemble the training data. They use machine learning models, particularly deep learning models, to learn patterns and representations from existing data.
+Generative AI is a type of artificial intelligence designed to create new content such as text, images, music or even code by learning patterns from existing data. These models generate original outputs that are often indistinguishable from human-created content. These models use techniques like deep learning and neural networks to generate output.
 
 ## Types Of GenAI Model
 
 ![genai_model_types](res/genai_model_types.png)
 
-### Transformers or Autoregressive Models
+### Autoregressive Models
 
 Autoregressive Transformers Models generate sequences by predicting the next token based on all previous ones, moving step by step through the text.
 
@@ -114,6 +112,51 @@ VAE is a special kind of autoencoder that can generate new data instead of just 
 ![encoder_decoder_model_arch](res/encoder_decoder_model_arch.png)
 
 The encoder-decoder model is a neural network used for tasks where both input and output are sequences, often of different lengths. It is commonly applied in areas like translation, summarization and speech processing.
+
+
+
+## Workflow
+
+![genai_workflow](res/genai_workflow.png)
+
+### Training & Inference
+
+Generative AI is trained on large datasets like text, images, audio or video using deep learning networks. During training, the model learns parameters (millions or billions of them) that help them predict or generate content. Here models generate output based on learned patterns and prompts provided
+
+### Media Type
+
+- Text
+
+  Uses large language models (LLMs) to predict the next token in a sequence, enabling coherent paragraph or essay generation.
+
+- Images
+
+  Diffusion models like DALL·E or Stable Diffusion start with noise and iteratively denoise to create realistic visuals
+
+- Speech
+
+  Text-to-speech models synthesize human-like voice by modeling acoustic features based on prompt.
+
+- Video
+
+  Multimodal systems like Sora by OpenAI or Runway generate short, temporally coherent video clips from text or other prompts
+
+### Agents
+
+Modern systems often uses [agents](agent.md) which are semi-autonomous components that interact with the environment, obtain information and execute chains of tasks. These agents uses LLMs to reason, plan and act enabling workflows like querying databases, performing retrieval or controlling external APIs.
+
+### Fine-Tuning
+
+LLMs are trained on massive general corpora (e.g., web text) using self-supervised methods. These models become pre-trained models which can be further trained on domain-specific labeled data to adapt to specialized tasks or stylistic needs. This technique is called fine tuning and it can be done using:
+
+### Retrieval-Augmented Generation (RAG)
+
+Modern systems also uses RAG which enhances outputs by retrieving relevant documents at query time to ground the generation in accurate, up-to-date information, reducing hallucinations and improving factuality. The process typically involves:
+
+- Indexing documents into embeddings stored in vector databases
+- Retrieval of relevant passages
+- Augmentation of the prompt with retrieved content
+- Generation of grounded, informed responses
 
 
 

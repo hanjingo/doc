@@ -8,19 +8,609 @@ English | [中文版](interview_zh.md)
 
 ## AI
 
+### Base
+
+#### What is Artificial Intelligence and how does it differ from traditional programming?
+
+Artificial Intelligence(AI) is a branch of computer science that enables machines to simulate human intelligence. Unlike traditional programming where explicit rules are written for every scenario, AI systems can learn from data, adapt to new situations and make decisions.
+
+#### What are the types of AI based on capabilities?
+
+AI can be classified into 3 types based on its capabilities: Narrow AI (Weak AI), General AI (Strong AI), Super AI.
+
+For more info, see: [AI Summary#AI Types](AI/summary.md)
+
+#### What are the types of AI based on functionalities?
+
+AI can be classified into 4 types based on its functionalities: Reactive Machines, Limited Memory, Theory of Mind, Self-Aware AI.
+
+For more info, see: [AI Summary#Types of AI Based on Functionalities](AI/summary.md)
+
+#### What is the difference between Symbolic AI and Connectionist AI?
+
+Symbolic AI (Good Old-Fashioned AI) represents knowledge using explicit symbols, rules, and logic – like writing 'if it has feathers and flies, then it's a bird.' It's transparent, explainable, and good for well-defined tasks but brittle with messy real-world data. Connectionist AI (neural networks) learns patterns from data by adjusting connections between artificial neurons – no explicit rules are programmed. It's flexible, handles noisy data well, and powers modern breakthroughs like computer vision and language models, but acts as a 'black box' with limited explainability.
+
+For more info, see: [AI Summary#Symbolic AI vs Connectionist AI](AI/summary.md)
+
+#### What is the difference between Parametric and Non-Parametric Models?
+
+Parametric models assume the data follows a specific distribution with a fixed number of parameters. Once trained, you can discard the training data. Non-parametric models make no strong assumptions about data distribution, and the number of parameters grows with the training data (e.g., k-NN stores all training points). Parametric models are simpler, faster, and work well with small datasets but can underfit complex patterns. Non-parametric models are more flexible and can fit any shape but require more data and are computationally expensive.
+
+For more info, see: [AI Summary#Parametric vs Non-Parametric Models](AI/summary.md)
+
+#### What is Knowledge Representation in AI and Why Is It Important?
+
+Knowledge Representation (KR) in AI is the process of encoding information about the world into a form that a computer system can utilize to solve complex problems. It allows AI systems to reason, infer and make decisions based on stored knowledge. KR is essential because it bridges the gap between raw data and intelligent behavior, enabling machines to understand relationships, constraints and patterns in a structured way. Without effective knowledge representation, AI systems cannot perform reasoning, planning or problem-solving reliably.
+
+For more info, see: [AI Summary#Knowledge Representation](AI/summary.md)
+
+#### What is Inference in AI?
+
+Inference in AI is the process of deriving new facts or conclusions from existing knowledge using logical reasoning or rules. It is a fundamental component of expert systems, rule-based systems, and knowledge representation frameworks. Through inference, an AI system can answer queries, make decisions, or deduce unknown information based on the knowledge it has stored.
+
+For more info, see: [AI Summary](AI/summary.md)
+
+### AI Algorithm
+
+#### What is the difference between informed and uninformed search algorithms?
+
+Search algorithms in AI are used to explore the state space of a problem to find a solution. They can be broadly classified into: Uninformed (Blind) Search, Informed (Heuristic) Search.
+
+For more info, see: [AI Algorithms#Search Algorithms](AI/algo.md)
+
+#### Explain Uniform-Cost Search (UCS) and its use cases.
+
+Uniform-Cost Search is an uninformed search algorithm that expands the node with the lowest cumulative path cost from the start node. Unlike BFS which expands nodes level by level, UCS considers the cost of reaching a state, making it more suitable when step costs vary.
+
+For more info, see: [AI Algorithms#Search Algorithms](AI/algo.md)
+
+#### What is the A* Search algorithm and how does it combine cost and heuristic?
+
+The `A* (A-star) algorithm` is an informed search algorithm used to find the least-cost path from a start node to a goal node. It combines both the actual cost of reaching a state and the estimated cost of reaching the goal from that state into a single evaluation function.
+
+For more info, see: [AI Algorithms#A* Search](AI/algo.md)
+
+#### Explain Hill Climbing Search and discuss local optima problems.
+
+`Hill Climbing` is a heuristic-based optimization algorithm in Artificial Intelligence that belongs to the family of local search methods. It treats problem-solving as a process of searching for the best state in a state space using an evaluation (objective) function.
+
+For more info, see: [AI Algorithms#Hill-Climbing Search Algorithm](AI/algo.md)
+
+#### Define Stochastic Hill Climbing and Simulated Annealing?
+
+Stochastic Hill Climbing is a local search optimization algorithm. Unlike deterministic hill climbing (which always picks the best neighbor), it randomly selects a single neighbor at each step. If the chosen neighbor is better than the current state, it moves there; otherwise, it stays or (in some variants) still moves with a small probability.
+
+Simulated Annealing is a probabilistic local search algorithm inspired by the annealing process in metallurgy (heating and controlled cooling of metal to reach a low-energy crystalline state). It allows occasional worse moves to escape local optima, with the probability of accepting a worse move decreasing over time according to a *temperature schedule*.
+
+For more info, see: [AI Algorithms#Hill-Climbing Search Algorithm](AI/algo.md), For more info, see: [AI Algorithms#Simulated Annealing](AI/algo.md)
+
+#### Explain Backtracking Search with Sudoku or N-Queens Example.
+
+Backtracking is a systematic search technique used to solve constraint satisfaction problems. It builds a solution incrementally, one assignment at a time and abandons a candidate (backtracks) as soon as it violates a constraint. By pruning impossible paths early, backtracking efficiently explores the solution space while guaranteeing a valid solution if one exists.
+
+For more info, see: [AI Algorithms#Backtracking Search](AI/algo.md)
+
+#### What is Adversarial Search? Give an example with Tic-Tac-Toe or Chess.
+
+Adversarial search is a type of search used in competitive environments where multiple agents (players) have conflicting goals. Unlike standard search problems, the outcome depends not only on the actions of the searching agent but also on the actions of opponents. The goal of adversarial search is to maximize an agent’s advantage while minimizing the opponent’s advantage. This is typical in games such as chess, tic-tac-toe or checkers where one player’s gain is another player’s loss.
+
+For more info, see: [AI Algorithms#Adversarial Search Algorithms](AI/algo.md)
+
+#### Explain Mini-Max Algorithm and Alpha-Beta Pruning.
+
+Minimax algorithm is a decision-making algorithm used in adversarial search problems such as games where two players have opposing objectives. It assumes that one player (Max) aims to maximize their utility while the other player (Min) aims to minimize Max’s utility. The algorithm explores the game tree, evaluating all possible moves and counter-moves to determine the optimal strategy for the player.
+
+Alpha-Beta Pruning is an enhancement of Minimax that reduces the number of nodes evaluated in the game tree by eliminating branches that cannot influence the final decision, improving efficiency without affecting the optimality of the result.
+
+For more info, see: [AI Algorithms#Adversarial Search Algorithms](AI/algo.md)
+
+#### Discuss Constraint Satisfaction Problems (CSP) and their real-life applications
+
+A `Constraint Satisfaction Problem (CSP)` is a type of problem in Artificial Intelligence where the goal is to find values for a set of variables while satisfying a set of constraints. Unlike standard search problems, CSPs focus on constraints between variables rather than a sequential path. Solving a CSP involves finding an assignment of values to all variables that does not violate any constraints, making it a natural framework for many real-world problems that involve planning, scheduling or configuration.
+
+For more info, see: [AI Algorithms#Constraint Satisfaction Problems (CSP)](AI/algo.md)
+
+#### What are Forward and Backward State-Space Search Strategies?
+
+State-space search strategies are fundamental in AI for problem-solving where the goal is to find a sequence of actions that leads from an initial state to a goal state. Forward state-space search begins at the initial state and explores successors until the goal is reached while backward state-space search starts from the goal state and works backward to determine which predecessor states could lead to it. Both strategies systematically explore the problem space but differ in their starting points and the way they expand the search tree.
+
+For more info, see: [AI Algorithms#SSS (State Space Search) Algorithm](AI/algo.md)
+
+#### Explain the Concept of Local Optima in Local Search Algorithms
+
+Local optima are points in the search space where a local search algorithm such as hill climbing, cannot find any neighboring state that improves the evaluation function, even though better solutions exist elsewhere in the space. In other words, the algorithm is “stuck” at a suboptimal peak (or valley for minimization problems) because it only considers immediate neighbors and ignores the global structure of the search space.
+
+For more info, see: [AI Algorithms#Local Search Algorithm](AI/algo.md)
+
+#### Discuss the Trade-offs Between Exploration and Exploitation in Search Strategies
+
+In search and optimization algorithms, especially in local search and reinforcement learning, exploration and exploitation represent two competing strategies. Exploration involves trying out new, unvisited states or actions to gather more information about the search space. Exploitation, on the other hand, focuses on using the current knowledge to select the best-known options to improve performance. Balancing these two strategies is critical because excessive exploration can waste time on suboptimal paths while excessive exploitation can lead the algorithm to get trapped in local optima or miss better solutions.
+
+For more info, see: [AI Algorithms#Local Search Algorithm](AI/algo.md)
+
+#### What is a Markov Decision Process (MDP) and Its Components?
+
+A Markov Decision Process (MDP) is a mathematical framework used in AI to model sequential decision-making problems under uncertainty. It provides a formal way to represent an agent interacting with a stochastic environment where the outcomes of actions are not deterministic. MDPs are widely used in reinforcement learning, planning and control systems. The defining property of an MDP is the Markov property which states that the future state depends only on the current state and action, not on past states.
+
+For more info, see: [AI Algorithms#Markov Decision Process (MDP)](AI/algo.md)
+
+#### Explain the Hidden Markov Model (HMM) and Its Applications.
+
+A Hidden Markov Model (HMM) is a statistical model used to represent systems that are assumed to be a Markov process with hidden (unobservable) states. In an HMM, the system transitions between a finite set of hidden states, each of which emits observable outputs probabilistically. HMMs are widely used in AI for sequence modeling, temporal pattern recognition and probabilistic reasoning in situations where the true state of the system is not directly observable.
+
+For more info, see: [AI Algorithms#Hidden Markov Model (HMM)](AI/algo.md)
+
+#### Explain the Bellman Equation and Its Role in Decision-Making.
+
+The Bellman equation provides a recursive decomposition of the value function in an MDP. It expresses the value of a state as the expected sum of immediate reward and the discounted value of successor states. This equation is fundamental in dynamic programming, reinforcement learning and optimal control, as it allows agents to compute optimal policies that maximize cumulative reward over time.
+
+For more info, see: [Machine Learning#Bellman Equation](AI/ml.md)
+
+#### Discuss the Concept of Utility and Expected Utility in Decision-Making.
+
+In AI and decision theory, utility is a quantitative measure of the desirability or preference of a particular outcome. It allows an agent to rank possible outcomes and make rational choices. Expected utility extends this concept to uncertain or probabilistic environments by combining the utility of each possible outcome with its probability. Rational agents choose actions that maximize expected utility, ensuring optimal decision-making even when the consequences of actions are uncertain.
+
+For more info, see: [AI Algorithms#Decision Theory](AI/algo.md)
+
+#### Explain Partially Observable Markov Decision Processes (POMDPs) in AI Planning
+
+A Partially Observable Markov Decision Process (POMDP) is an extension of the standard MDP that models decision-making under uncertainty when the agent cannot fully observe the environment’s state. In a POMDP, the agent maintains a belief state which is a probability distribution over possible actual states and chooses actions based on this belief. They are widely used in AI planning for robotics, autonomous navigation and intelligent agents where sensors provide noisy or incomplete information about the environment.
+
+For more info, see: [AI Algorithms#Partially Observable Markov Decision Processes (POMDP)](AI/algo.md)
+
+#### What Are Heuristic Functions and How Do They Guide Search?
+
+A heuristic function in Artificial Intelligence is an evaluation function that provides an estimate of the cost or distance from a given state to the goal. It does not guarantee exact values but helps the search algorithm decide which paths are more promising to explore. By prioritizing nodes with lower heuristic values, search algorithms can significantly reduce the search space and improve efficiency.
+
+For more info, see: [AI Algorithms](AI/algo.md)
+
+#### Explain the Expectation-Maximization (EM) algorithm.
+
+The Expectation-Maximization (EM) algorithm is a classical, iterative optimization technique in artificial intelligence and statistics, used to estimate the parameters of probabilistic models—especially when the data involves hidden or latent variables.
+
+For more info, see: [AI Algorithms#Expectation-Maximization (EM) Algorithm](AI/algo.md)
+
+#### What are Monte Carlo methods and how are they used in AI?
+
+Monte Carlo methods are statistical techniques that rely on repeated random sampling to solve complex problems which may be deterministic or probabilistic in nature. They are widely used in artificial intelligence (AI) for their ability to model uncertainty, simulate systems and approximate solutions where traditional analytical calculations are impractical.
+
+For more info, see: [AI Algorithms#Monte Carlo Tree Search (MCTS)](AI/algo.md)
+
+#### Discuss forward state-space search and its advantages.
+
+Forward state-space search in AI is a search strategy that starts from an initial state and explores the possible successor states by applying valid actions until a goal state is reached. It progressively moves forward state by state toward achieving the desired goal by methodically generating and evaluating new states.
+
+For more info, see: [AI Algorithms#SSS (State Space Search) Algorithm](AI/algo.md)
+
+#### Explain local search optimization techniques and their applications.
+
+Local search optimization techniques are simple, practical methods used to find good solutions to complex problems by improving an initial solution step-by-step. They work by exploring the "neighbors" of a current solution—slightly changed versions—and moving to better ones until no improvement is found.
+
+For more info, see: [AI Algorithms#Local Search Algorithm](AI/algo.md)
+
+#### How does simulated annealing avoid local optima?
+
+Simulated annealing is an optimization algorithm inspired by the annealing process in metallurgy, designed to find an optimal or near-optimal solution in large and complex search spaces.
+
+For more info, see: [AI Algorithms#Simulated Annealing](AI/algo.md)
+
+#### Explain Iterative Deepening Search (IDS) with examples.
+
+Iterative Deepening Search (IDS), also known as Iterative Deepening Depth-First Search (IDDFS), is a search algorithm used in artificial intelligence that combines the benefits of Depth-First Search (DFS) and Breadth-First Search (BFS). It is especially useful when the depth of the solution is unknown. IDS performs a series of depth-limited DFS searches, increasing the depth limit by one at each iteration until the goal is found or the entire search space is exhausted.
+
+For more info, see: [AI Algorithms#Iterative Deepening Depth First Search](AI/algo.md)
+
+#### Compare Global Search and Local Search Algorithms.
+
+Global search algorithms explore the entire solution space systematically to find the global optimum (e.g., BFS, A\*, genetic algorithms). Local search algorithms start from an initial solution and iteratively move to neighboring solutions, focusing on a local region (e.g., hill climbing, simulated annealing). Global search guarantees finding the optimal solution but can be exponentially slow. Local search is fast and memory-efficient but may get stuck in local optima. The choice depends on problem size, need for optimality, and available time.
+
+For more info, see: [AI Algorithms#Global Search vs Local Search Algorithm](AI/algo.md)
+
+#### Explain gradient-based optimization vs heuristic-based search.
+
+Gradient-based optimization uses derivative information (gradients) to iteratively move in the direction of steepest descent (or ascent) toward an optimum. It's efficient, smooth, and works well for differentiable, convex, or well-behaved functions. Heuristic-based search uses rules of thumb, randomness, or biological inspiration (e.g., genetic algorithms, simulated annealing) to explore the solution space without requiring derivatives. Heuristics are more flexible, handle non-differentiable, noisy, or discrete spaces, but are slower and don't guarantee optimality. Deep learning relies on gradient-based methods (SGD, Adam). Black-box optimization often uses heuristics.
+
+For more info, see: [AI Algorithms#Global Search vs Local Search Algorithm](AI/algo.md)
+
+### ML
+
+#### What is Reinforcement Learning and What Are Its Key Components?
+
+Reinforcement Learning (RL) is a type of machine learning where an agent learns to make decisions by interacting with an environment and receiving feedback in the form of rewards or penalties. The agent’s goal is to learn a policy that maximizes cumulative reward over time. Unlike supervised learning, RL does not rely on labeled data; instead, the agent explores and learns from trial-and-error interactions.
+
+For more info, see: [Machine Learning#Reinforcement Learning](AI/ml.md)
+
+#### How Does Reward Maximization Work in Reinforcement Learning?
+
+In Reinforcement Learning (RL), reward maximization is the process by which an agent learns to choose actions that maximize the cumulative reward over time. Instead of focusing solely on immediate gains, the agent considers the long-term consequences of its actions and adapts its behavior to achieve the highest overall reward.
+
+For more info, see: [Machine Learning#Reward Maximization Framework](AI/ml.md)
+
+#### Discuss Q-Learning and Its Update Rule
+
+Q-Learning is a model-free reinforcement learning algorithm used to learn the optimal action-selection policy for an agent interacting with an environment. It does not require prior knowledge of the environment’s dynamics (transition probabilities). Instead, the agent learns from trial-and-error experiences by updating a Q-value table which represents the expected cumulative reward for taking an action in a given state.
+
+For more info, see: [Machine Learning#Q-Learning](AI/ml.md)
+
+#### What Are the Key Differences Between Q-Learning and SARSA?
+
+Q-Learning is an `off-policy` algorithm that learns the optimal policy regardless of the agent's current behavior. It updates Q-values using the maximum possible future reward, even if the agent wouldn't take that action. SARSA (State-Action-Reward-State-Action) is an `on-policy` algorithm that learns the value of the policy the agent is currently following. It updates Q-values using the actual next action the agent takes, not the maximum. The practical difference: Q-Learning tends to be more aggressive (can learn optimal policy from exploratory data), while SARSA is safer (considers the consequences of exploration and tends to avoid cliffs).
+
+For more info, see: [Machine Learning#Q-Learning](AI/ml.md)
+
+#### Discuss the Exploration vs Exploitation Trade-Off in Reinforcement Learning.
+
+The exploration-exploitation trade-off is the dilemma between trying new actions to discover potentially better rewards (exploration) and taking known high-reward actions to maximize immediate return (exploitation). An agent must explore enough to find optimal policies but exploit enough to get good rewards. Pure exploitation leads to suboptimal policies (getting stuck in local optima). Pure exploration leads to low rewards (never leveraging what's learned). Common solutions include ε-greedy (random exploration with probability ε), Upper Confidence Bounds (UCB) for bandits, and entropy bonuses in policy gradients.
+
+For more info, see: [Machine Learning#Exploitation and Exploration](AI/ml.md)
+
+#### Explain Model-Based vs Model-Free Reinforcement Learning
+
+Model-based RL learns or uses a model of the environment (transition probabilities and rewards) to plan and simulate actions. Model-free RL directly learns a policy or value function from experience without explicitly modeling the environment. Model-based methods are more sample efficient (can plan without real environment interaction) but computationally expensive and can suffer from model bias. Model-free methods are simpler, more stable, and work well in high-dimensional domains, but require many real environment interactions. Model-based excels when simulation is cheap (robotics, games); model-free excels when environment interaction is cheap (video games, simulated environments).
+
+For more info, see: [Machine Learning#Model-Based vs Model-Free Reinforcement Learning](AI/ml.md)
+
+#### How Does an RL Agent Handle Stochastic Environments?
+
+A stochastic environment is one where the outcomes of an agent’s actions are probabilistic rather than deterministic. That is, taking the same action in the same state may lead to different next states or rewards. In such environments, an RL agent cannot rely on fixed outcomes and must learn policies that maximize expected cumulative reward rather than immediate reward.
+
+For more info, see: [AI Summary#Deterministic vs Stochastic Environment](AI/summary.md)
+
+#### What Are Policy, Value Function and Reward Function in Reinforcement Learning?
+
+The `reward function` defines the goal: it maps (state, action) or (state) to a scalar reward signal that tells the agent what is good or bad. The `value function` predicts the expected total future reward from a given state (or state-action pair), answering 'how good is this state?' The `policy` is the agent's behavior: a mapping from state to action, answering 'what should I do?' The reward defines the task, the value function evaluates states, and the policy dictates behavior.
+
+For more info, see: [Machine Learning#Policy vs Value Function vs Reward Function In Reinforcement Learning](AI/ml.md)
+
+#### How would a robot navigate a maze using reinforcement learning?
+
+A robot can navigate a maze using reinforcement learning (RL) by treating the maze as an environment where it learns an optimal policy to reach the goal through trial and error.
+
+For more info, see: [Machine Learning](AI/ml.md)
+
+#### What is the bias-variance tradeoff?
+
+The bias-variance tradeoff describes the tension between a model's ability to fit training data (low bias) and its sensitivity to small fluctuations in the training set (low variance). High bias (underfitting) means the model is too simple to capture patterns; high variance (overfitting) means the model is too complex and memorizes noise.
+
+For more info, see: [Machine Learning#Bias Variance Tradeoff](AI/ml.md)
+
+#### Why can’t linear regression be used for classification tasks?
+
+Linear regression cannot be reliably used for classification because it assumes continuous, unbounded output, while classification requires discrete, bounded class labels (e.g., 0/1). Linear regression's outputs are not constrained to [0,1], can be <0 or >1, which doesn't map well to probabilities. It's also highly sensitive to outliers and doesn't model decision boundaries well for non-linear separability. For binary classification, the linear regression line can be pulled arbitrarily far by outliers, corrupting the decision threshold. Logistic regression solves these issues by using a sigmoid function to map outputs to [0,1] probabilities.
+
+For more info, see: [Machine Learning](AI/ml.md)
+
+### DL
+
+#### What are Autoencoders and how do they work?
+
+Autoencoders are a type of neural network designed to learn efficient representations of input data by compressing it into a lower-dimensional latent space and then reconstructing it back to its original form. The main goal is to capture the most important features of the data while minimizing information loss.
+
+For more info, see: [Deep Learning#Autoencoder](AI/dl.md)
+
+#### What is a Variational Autoencoder (VAE)? How does it differ from a standard autoencoder?
+
+A Variational Autoencoder (VAE) is a type of autoencoder that encodes input data into a probabilistic latent space instead of a fixed point, allowing it to generate new data by sampling from this latent distribution. VAEs combine neural networks with probabilistic modeling, making them suitable for generative tasks like creating images, text or other complex data.
+
+For more info, see: [Deep Learning#Variational AutoEncoders (VAEs)](AI/dl.md), [AI Summary#Variational Autoencoder (VAE) vs Standard Autoencoder](AI/summary.md)
+
+#### Explain GANs (Generative Adversarial Networks) and how the generator and discriminator interact.
+
+Generative Adversarial Networks (GANs) are a type of neural network architecture used for generative tasks. They consist of two networks—the generator and the discriminator—that compete in a game-like setting. The generator creates fake data and the discriminator evaluates whether the data is real or fake, improving both networks over time.
+
+For more info, see: [Deep Learning#Generative Adversarial Networks (GANs)](AI/dl.md)
+
 ### RAG
 
+#### What are the use cases of Vector Databases in RAG pipelines?
+
+Vector Databases are specialized databases designed to store and search high-dimensional vector representations (embeddings) efficiently. In Retrieval-Augmented Generation(RAG) pipelines, they enable fast and accurate retrieval of relevant information from large datasets which the LLM can then use to generate context-aware responses.
+
+For more info, see: [RAG#Vector Database](AI/rag.md)
+
+#### What is the role of Vector Stores in a RAG pipeline?
+
+Vector Stores are specialized databases designed to store and retrieve high-dimensional embeddings (vectors) efficiently. In a RAG (Retrieval-Augmented Generation) pipeline, vector stores play a crucial role in retrieving relevant context from large external datasets to enhance the language model’s responses.
+
+#### Explain RAG (Retrieval-Augmented Generation) architecture in detail.
+
+RAG (Retrieval-Augmented Generation) is an architecture that combines retrieval-based and generation-based approaches to improve the accuracy, factuality and context-awareness of large language models (LLMs). Instead of relying solely on pre-trained knowledge, RAG retrieves relevant information from an external knowledge base and uses it as context for generating responses.
+
+For more info, see: [RAG#Architecture](AI/rag.md)
+
+#### Explain BLEU (Bilingual Evaluation Understudy) and where it is used.
+
+BLEU (Bilingual Evaluation Understudy) is an automatic metric for evaluating the quality of generated text by comparing it to one or more reference texts. It measures how many n-grams in the generated output match the reference, providing a score that reflects fluency and similarity to human-written text.
+
+For more info, see: [RAG#Generation Level Metrices](AI/rag.md)
+
 ### NLP
+
+#### What are Embeddings and how do they capture semantic meaning?
+
+Embeddings are dense numerical vectors that represent words, tokens or other data in a continuous vector space. In LLMs, embeddings capture the semantic meaning of text by placing similar words or phrases close together in this vector space, allowing the model to understand relationships, context and nuances in language.
+
+For more info, see: [Natural Language Processing (NLP)#Vector Database](AI/nlp.md)
+
+#### Compare different types of Embedding Databases.
+
+The term "Embedding Database" typically refers to `Vector Databases`, as they are the specialized systems built to store, index, and retrieve embedding vectors. While a standard database can store vectors, a vector database is optimized for the specific challenge of `similarity search` (finding the most semantically similar items) rather than exact matches
+
+For more info, see: [Natural Language Processing (NLP)#Vector Database](AI/nlp.md)
 
 ### CV
 
 ### Agent
 
+#### What is an AI Agent? How does it perceive and act in an environment?
+
+An [AI agent](AI/agent.md) is an autonomous system or software entity that interacts with its environment to achieve specific objectives. Unlike traditional programs that execute fixed instructions, an AI agent senses the environment, reasons about it and takes actions to maximize a defined goal or utility.
+
+For more info, see: [AI Agent#Intro](AI/agent.md)
+
+#### What are the different types of AI agents?
+
+AI agents can be classified based on how they perceive, reason and act in the environment. Their complexity increases from simple reflex agents to utility-based agents, allowing them to handle more sophisticated tasks: Simple Reflex Agents, Model-Based Reflex Agents, Goal-Based Agents, Utility-Based Agents.
+
+For more info, see: [AI Agent#Types](AI/agent.md)
+
+#### What are Multimodal Agents and give examples of their applications.
+
+Multimodal Agents are AI systems capable of processing, understanding and generating content across multiple data modalities such as text, images, audio and video. Unlike traditional language models that handle only text, multimodal agents can interpret and combine information from different input types to perform complex reasoning and interaction tasks.
+
+For more info, see: [AI Agent#Multimodal Agents](AI/agent.md)
+
+#### Explain LangGraph and how it enhances agentic workflows.
+
+LangGraph is a framework built on top of LangChain that provides a graph-based approach to building and managing LLM-powered agentic workflows. It allows developers to design AI agents as interconnected nodes in a directed graph where each node represents a step, tool or decision process in the agent’s reasoning flow.
+
+For more info, see: [AI Agent](AI/agent.md)
+
+#### How does an agent formulate a problem in AI?
+
+In AI, problem formulation is the process by which an agent defines the task it needs to solve in terms of states, actions, goals and path costs. Proper problem formulation is critical because it determines the efficiency and feasibility of search and decision-making algorithms.
+
+For more info, see: [AI Agent#Problem Formulation](AI/agent.md)
+
+#### Explain How an Agent Can Reason with Incomplete or Uncertain Knowledge
+
+In real-world environments, AI agents often operate with incomplete, uncertain or noisy information. Reasoning under such conditions requires the agent to draw plausible conclusions, make predictions or take decisions despite the uncertainty. Agents use techniques from probabilistic reasoning, belief representation and non-monotonic logic to handle uncertainty. By quantifying uncertainty and updating beliefs based on new evidence, agents can act intelligently even when they do not have complete knowledge of the world.
+
+For more info, see: [AI Agent](AI/agent.md)
+
+### LLM
+
+#### Explain the concept of Context Window in LLMs.
+
+The Context Window in Large Language Models (LLMs) is the maximum span of text (in tokens) that the model can process and consider at once when generating or interpreting language. It determines how much previous information the model can “remember” to make predictions, maintain coherence and understand relationships between words, sentences or paragraphs. A larger context window enables the model to handle longer documents, maintain consistency across multiple interactions and capture dependencies that occur over extended text.
+
+For more info, see: [Large Language Model#Context Window](AI/llm.md)
+
+#### What is Memory in LLMs and how is it implemented in agentic systems?
+
+Memory in LLMs refers to the ability of a model or agent to retain information from past interactions or context beyond the current input. It allows the system to recall previous conversations, decisions or facts, enabling more coherent, context-aware, and personalized responses.
+
+For more info, see: [Large Language Model](AI/llm.md)
+
+#### What is Tokenization and why is it important for LLMs?
+
+Tokenization is the process of dividing text into smaller, meaningful units called tokens which can be words, subwords or characters, depending on the model’s design. In Large Language Models (LLMs), tokenization is a critical preprocessing step that converts raw text into numerical representations the model can process. Each token is mapped to an embedding vector, allowing the model to learn semantic relationships, syntax and context. Proper tokenization ensures that the model can understand language efficiently, handle rare or unseen words and maintain performance across different languages and domains.
+
+For more info, see: [Large Language Model#Tokenization](AI/llm.md)
+
+#### What is the difference between Fine-tuning and Transfer Learning?
+
+Transfer Learning is the broader technique of reusing a pre-trained model on a new, related task. Fine-tuning is a specific type of transfer learning where you not only reuse the model but also continue training some or all of its layers on the new task's data.
+
+For more info, see: [Large Language Model](AI/llm.md), [AI Summary#Fine-tuning vs Transfer Learning](AI/summary.md)
+
+#### Explain LoRA (Low-Rank Adaptation) and how it helps in fine-tuning.
+
+LoRA (Low-Rank Adaptation) is a fine-tuning technique for large pre-trained models that adds small, trainable low-rank matrices to certain layers of the model instead of updating all model parameters. This allows adaptation to a new task while keeping the majority of the original model weights frozen, reducing computational cost and memory usage.
+
+For more info, see: [Large Language Model#LoRA (Low Rank Adaptation)](AI/llm.md)
+
+#### What is QLoRA and how is it different from LoRA?
+
+QLoRA (Quantized Low-Rank Adaptation) is an advanced fine-tuning technique that combines LoRA with quantization to further reduce memory and computational requirements when adapting large language models. It allows fine-tuning of extremely large models on modest hardware by using 8-bit or 4-bit quantized weights.
+
+For more info, see: [Large Language Model#QLoRA vs LoRA)](AI/llm.md)
+
+#### What is PEFT (Parameter-Efficient Fine-Tuning)?
+
+PEFT (Parameter-Efficient Fine-Tuning) refers to a set of techniques that allow adapting large pre-trained models to new tasks by training only a small subset of parameters instead of updating the entire model. The goal is to achieve high performance on downstream tasks while significantly reducing computational cost, memory usage and storage requirements.
+
+For more info, see: [Large Language Model#Parameter-Efficient Fine-Tuning (PEFT)](AI/llm.md)
+
+#### Explain RLHF (Reinforcement Learning from Human Feedback).
+
+RLHF (Reinforcement Learning from Human Feedback) is a technique used to fine-tune large language models by using human feedback to guide the model toward producing more useful, safe and aligned outputs. Instead of relying solely on supervised data, RLHF uses human judgments to shape the model’s behavior through reinforcement learning.
+
+For more info, see: [Large Language Model#Reinforcement Learning from Human Feedback (RLHF)](AI/llm.md)
+
+#### What is LLM Distillation and why is it used?
+
+LLM Distillation is the process of compressing a large pre-trained language model into a smaller model while retaining most of its performance. The goal is to create a lighter, faster and more efficient model that can run on limited hardware without significant loss in accuracy or capabilities.
+
+For more info, see: [Large Language Model#Distillation](AI/llm.md)
+
+#### What is Constitutional AI and how does it differ from RLHF?
+
+Constitutional AI is a technique for aligning language models by using a set of predefined principles or rules (a “constitution”) to guide the model’s behavior, rather than relying directly on human feedback. The model evaluates and revises its outputs based on these principles to ensure responses are safe, ethical and consistent.
+
+For more info, see: [Large Language Model#Constitutional AI](AI/llm.md)
+
+#### What is LLM Injection (Prompt Injection) and how can it be prevented?
+
+LLM Injection (Prompt Injection) is a security vulnerability where malicious users manipulate the input prompt to make a large language model (LLM) behave unexpectedly, reveal sensitive information or bypass restrictions. Essentially, it’s an attack that “injects” instructions into the prompt to override the intended behavior of the model.
+
+For more info, see: [Large Language Model#Prompt Injection](AI/llm.md)
+
+#### What are Guardrails in LLMs and why are they important?
+
+Guardrails in LLMs are systematic safety, ethical and behavioral constraints applied to large language models to ensure that their outputs remain aligned with human values organizational policies and societal norms. They act as protective boundaries that guide the model’s responses, preventing harmful, biased or unintended behavior. Guardrails are especially important in applications where LLMs interact with users, access sensitive information or perform decision-making tasks.
+
+For more info, see: [Large Language Model#AI Guardrail](AI/llm.md)
+
+#### What is Hallucination in LLMs and how can it be mitigated?
+
+Hallucination in LLMs refers to instances where a large language model generates information that is false, fabricated or not supported by the input data or external knowledge. Even if the output appears fluent and confident, it may contain inaccuracies, made-up facts or unsupported claims which can reduce trust and reliability in AI systems.
+
+For more info, see: [Large Language Model#AI Hallucinations](AI/llm.md)
+
+#### What is Knowledge in LLMs and how can we update or augment it?
+
+Knowledge in LLMs refers to the information, facts, patterns and relationships that a large language model has acquired during pre-training on large datasets. This knowledge is stored in the model’s parameters and allows it to generate responses, answer questions and reason about various topics. However, this knowledge is static unless updated or augmented, meaning the model may not be aware of recent events, new data or domain-specific information.
+
+For more info, see: [Large Language Model](AI/llm.md)
+
+#### What is LLM Evaluation and why is it necessary?
+
+LLM Evaluation is the process of assessing the performance, accuracy, reliability and safety of a large language model (LLM). It involves testing the model on specific tasks or datasets to measure how well it meets desired criteria such as factual correctness, coherence, reasoning ability and ethical alignment. Evaluation ensures that the model behaves as expected before deployment in real-world applications.
+
+For more info, see: [Large Language Model#Evaluation](AI/llm.md)
+
+#### What are different types of LLM evaluation techniques?
+
+LLM Evaluation Techniques are methods used to assess the performance, accuracy, reasoning and safety of large language models. Evaluation can be performed using human judgment, automated metrics or standardized benchmark datasets, depending on the task and the level of rigor required.
+
+For more info, see: [Large Language Model#Evaluation](AI/llm.md)
+
+#### What are agentic LLMs and how do they differ from simple chat-based LLMs?
+
+Agentic LLMs are large language models that act as autonomous agents, capable of planning, reasoning, taking multi-step actions and interacting with external tools or environments to accomplish goals. Unlike simple chat-based LLMs that only respond to queries, agentic LLMs can make decisions, retrieve information, execute tasks and maintain context over time.
+
+For more info, see: [Large Language Model#Agentic LLMs vs Chat-Based LLMs](AI/llm.md)
+
+#### What are multimodal LLMs and how do they process text, image and audio simultaneously?
+
+Multimodal LLMs (Large Language Models) are models designed to understand and generate information across multiple data types—such as text, images, audio or video—within a single unified architecture. Unlike traditional text-only LLMs, multimodal models can interpret and reason over different kinds of inputs together, enabling richer understanding and context-aware responses.
+
 ### Gen AI
 
 #### What is Generative AI and how does its architecture work?
 
+Generative AI (Gen AI) refers to a category of artificial intelligence models that can create new data such as text, images, audio or code, instead of just analyzing existing data. These models learn patterns and structures from large datasets and then use this knowledge to generate outputs that resemble human-created content.
+
+For more info, see: [Generative AI](AI/genai.md), [AI Summary](AI/summary.md)
+
+#### What is the difference between Traditional AI and Generative AI?
+
+Traditional AI (including discriminative models) focuses on recognizing patterns and making predictions – it classifies, detects, or predicts based on input data. Generative AI focuses on creating new content that resembles the training data – it generates text, images, code, or audio. Traditional AI excels at understanding and categorization, while Generative AI excels at creation and synthesis. The key difference is that traditional models learn boundaries between classes, while generative models learn the underlying probability distribution of the data itself.
+
+For more info, see: [Generative AI](AI/genai.md), [AI Summary#Generative AI vs Traditional AI](AI/summary.md)
+
+#### How does Generative AI differ from Agentic AI?
+
+Generative AI creates content (text, images, code) based on patterns learned from training data. It's a `passive creator` – it responds to prompts but doesn't act on its own. Agentic AI, or AI Agents, are `autonomous systems` that perceive their environment, set goals, make decisions, and take actions to achieve those goals.
+
+For more info, see: [Generative AI](AI/genai.md), [AI Summary#Generative AI vs Agentic AI](AI/summary.md)
+
+#### What is the Encoder-Decoder Model in AI?
+
+The Encoder-Decoder model is a common architecture used in sequence-to-sequence tasks such as machine translation, text summarization and image captioning. It consists of two main parts — the Encoder which processes the input and the Decoder which generates the output.
+
+For more info, see: [Generative AI#Encoder Decoder Models](AI/genai.md)
+
+#### What are Diffusion Models and how do they generate data?
+
+Diffusion Models are generative models that learn to create data by reversing a gradual noising process. During training, they learn how data becomes corrupted by noise step by step. During generation, they start with random noise and progressively remove it, reconstructing structured data that resembles the original dataset.
+
+For more info, see: [Generative AI#Diffusion Models](AI/genai.md)
+
+#### Compare Diffusion Models and GANs.
+
+GANs (Generative Adversarial Networks) use a 'two-player game' between a generator (creates fakes) and a discriminator (detects fakes) that compete, forcing the generator to produce increasingly realistic outputs. Diffusion Models work by 'progressively adding noise' to data until it becomes pure noise, then 'learn to reverse this process' – starting from noise and iteratively denoising to generate new samples. GANs are generally faster at inference (single forward pass) but harder to train (mode collapse, instability). Diffusion Models are slower (multiple denoising steps) but more stable to train and produce higher quality, diverse outputs, which is why they power DALL-E 2, Stable Diffusion, and Midjourney.
+
+For more info, see: [Generative AI#Diffusion Models](AI/genai.md), [AI Summary#Diffusion Model vs GANs](AI/summary.md)
+
+#### How do frameworks like LangChain, LangGraph and LlamaIndex interconnect in an end-to-end GenAI project?
+
+In an end-to-end GenAI project, LangChain, LangGraph and LlamaIndex are frameworks that connect LLMs with data, workflows and tools to build intelligent, agentic systems. LlamaIndex handles data ingestion and indexing, LangChain manages LLM orchestration and tool integration and LangGraph provides visual workflow management and execution of agentic reasoning. Together, they create a complete pipeline from raw data to actionable outputs.
+
 For more info, see: [Generative AI](AI/genai.md)
+
+### Transformer
+
+#### What are Transformers and what is attention mechanism?
+
+Transformers are a type of neural network architecture designed to handle sequential data such as text, without relying on recurrent processing. They use attention mechanisms to model relationships between all elements in a sequence simultaneously, allowing the network to capture context and dependencies more effectively than RNNs or LSTMs.
+
+The attention mechanism allows a model to focus on relevant parts of the input sequence when producing an output. Instead of treating all elements equally, it assigns different weights to different parts, so the model “pays more attention” to the important parts.
+
+For more info, see: [Transformer#Self-Attention Mechanism](AI/transformer.md)
+
+#### What is Self-Attention and how does it differ from Cross-Attention?
+
+Self-Attention is an attention mechanism where a sequence attends to itself, meaning each element of the sequence considers all other elements in the same sequence to compute a weighted representation. It helps capture dependencies between words or tokens within the same input.
+
+Cross-Attention is an attention mechanism where one sequence attends to a different sequence, allowing the model to incorporate information from another source.
+
+For more info, see: [Transformer#Cross-Attention Mechanism](AI/transformer.md), [AI Summary#Cross-Attention vs Self-Attention](AI/summary.md)
+
+#### What is the role of Positional Encoding in Transformers?
+
+Positional Encoding is a technique used in transformers to provide information about the position of tokens in a sequence. Since transformers process all tokens in parallel and do not inherently understand order, positional encoding allows the model to capture sequence structure and relative positions of elements.
+
+For more info, see: [Transformer#Positional Encoding](AI/transformer.md)
+
+### Prompt Engineering
+
+#### What is Prompt Engineering and why is it important?
+
+Prompt Engineering is the practice of designing and refining input prompts for large language models (LLMs) to guide them toward producing accurate, relevant and context-aware outputs. It involves carefully crafting the wording, structure and instructions in the prompt to achieve the desired response from the model.
+
+For more info, see: [Prompt Engineering](AI/prompt.md)
+
+#### Explain different types of prompting.
+
+Prompting refers to the way input instructions or examples are provided to a large language model (LLM) to guide its output. Different prompting strategies influence how the model interprets the task and generates responses. Type of Prompting include: Zero-Shot Prompting, Few-Shot Prompting, Chain-of-Thought (CoT) Prompting, Self-Consistency Prompting.
+
+For more info, see: [Prompt Engineering#Types of Prompting](AI/prompt.md)
+
+#### What is commonsense reasoning and why is it challenging?
+
+Commonsense reasoning refers to the human-like ability of an AI system to make presumptions about the everyday world, fill in gaps in knowledge and infer implicit facts that are obvious to humans based on general world knowledge.
+
+For more info, see: [Prompt Engineering#Types of Prompting](AI/prompt.md)
+
+### Others
+
+#### What is Hugging Face and what are its main use cases?
+
+Hugging Face is an AI company and open-source platform that provides tools, libraries and models for natural language processing (NLP) and machine learning. It hosts a large repository of pre-trained models, datasets and frameworks that make it easier to train, deploy and use machine learning models, especially transformers and LLMs.
+
+#### What is the Model Hub, Model Card and Dataset Hub on Hugging Face?
+
+The Hugging Face Hub is more than just a storage locker for AI files; it functions as a complete operating system for the entire machine learning lifecycle, from data discovery and model training to final deployment. 
+
+The *Model Hub* is the repository for pre-trained model weights. However, a model without instructions is useless; this is where *Model Cards* come in.
+
+A *Model Card* is essentially the `README.md` file inside a model repository. It is the critical interface that helps users decide whether a model suits their needs. It contains two core parts: *Metadata (YAML Frontmatter)* and *Markdown Content*.
+
+If Model Cards are the documentation for AI functions, *Dataset Cards* are the documentation for the raw data.
+
+#### What are Spaces in Hugging Face and what are their applications?
+
+Spaces in Hugging Face are a platform for hosting and sharing machine learning demos and web applications. They allow developers and researchers to deploy interactive applications using models, datasets and pipelines directly on the Hugging Face Hub.
+
+#### What is LangChain and what problem does it solve?
+
+LangChain is an open-source framework designed to build applications using large language models (LLMs) by enabling them to interact with external data, tools and APIs. It provides a structured way to connect LLMs with various components like prompts, memory, agents and chains to create complex, real-world AI applications.
+
+For more info, see: [Large Language Model#Lang Chain](AI/llm.md)
+
+#### What is LlamaIndex and how does it integrate with external data sources?
+
+LlamaIndex (formerly known as GPT Index) is a framework designed to connect large language models (LLMs) with external data sources in a structured and efficient way. It provides tools to ingest, index and retrieve information from various data formats so that LLMs can access and reason over private or domain-specific knowledge.
+
+For more info, see: [RAG#LlamaIndex](AI/rag.md)
+
+#### Explain Forward vs Backward Planning.
+
+Forward planning (or progression) starts from the initial state and applies actions forward until reaching a goal state. Backward planning (or regression) starts from the goal state and applies actions backward, trying to reach the initial state. Forward planning is more intuitive and works well when the branching factor is manageable. Backward planning is often more efficient because it focuses only on actions relevant to achieving the goal, especially when the goal is specific and many actions don't matter. Real-world planners often use bidirectional search, working from both ends simultaneously.
+
+For more info, see: [AI Summary#](AI/summary.md)
 
 ---
 

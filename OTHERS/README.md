@@ -2,4 +2,4 @@
 
 # Others
 
-- [Interview](interview.md)
+- [Prompt Cookbook](prompt_cookbook.md)

@@ -587,18 +587,18 @@ $$
 $$
 f(n)
 \begin{cases}
-\cfrac n2, &if\ n\ is\ even\\
-3n + 1, &if\  n\ is\ odd
+\cfrac n2, &\text{if n is even} \\
+3n + 1, &\text{if n is odd}
 \end{cases}
-\qquad (1)
+\qquad (1)f(n)
 $$
 ```
 
 $$
 f(n)
 \begin{cases}
-\cfrac n2, &if\ n\ is\ even\\
-3n + 1, &if\  n\ is\ odd
+\cfrac n2, &\text{if n is even} \\
+3n + 1, &\text{if n is odd}
 \end{cases}
 \qquad (1)f(n)
 $$

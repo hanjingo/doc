@@ -141,6 +141,14 @@ TODO
 
 Google’s Agent-to-Agent (A2A) Protocol enables AI agents to communicate and collaborate, allowing them to delegate tasks, share results, and enhance each other’s capabilities.
 
+|        **Feature**         |                    **Agent2Agent (A2A)**                     |               **Model Context Protocol (MCP)**               |
+| :------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|     **Primary Focus**      | Facilitates communication and collaboration between autonomous agents. | Enables interaction between a model and external tools or data sources. |
+|       **Originator**       |                            Google                            |                          Anthropic                           |
+| **Key Technical Concepts** | Agent Cards, Tasks, Messages (Parts), HTTP/JSON-RPC, SSE for real-time streaming. |       Host, Client, Server, Tools, Resources, Prompts.       |
+|     **Communication**      | Task-based, asynchronous communication with potential natural language tasks. | Structured requests for accessing external tools and contextual data, typically using specific schemas like JSON Schema. |
+|    **Primary Use Case**    | Supports collaborative workflows across independent agents in various systems. | Facilitates AI models' access to external data, files, and APIs. |
+
 ### MCP vs API
 
 ![mcp_vs_api](res/mcp_vs_api.png)
