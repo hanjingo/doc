@@ -47,10 +47,6 @@ In machine learning, [Deep Learning(DL)](dl.md) focuses on utilizing multilayere
 
 Deep learning algorithms can be applied to unsupervised learning tasks. This is an important benefit because unlabeled data is more abundant than labeled data.
 
-### Deep Reinforcement Learning
-
-Deep Reinforcement Learning (DRL) is the crucial fusion of two powerful artificial intelligence fields: deep neural networks and reinforcement learning. By combining the benefits of data-driven neural networks and intelligent decision-making, it has sparked an evolutionary change that crosses traditional boundaries
-
 ### Bias and Variance
 
 ![bias_variance_tradeoff](res/bias_variance_tradeoff.png)
@@ -91,6 +87,36 @@ where,
 
 - $\hat{f}(x)$: predicted value by the model
 - $\mathbb{E}[\hat{f}(x)]$: average prediction over multiple training sets
+
+### Exploitation and Exploration
+
+**Exploitation** is a strategy of using the accumulated knowledge to make decisions that maximize the expected reward based on the present information. The focus of exploitation is on utilizing what is already known about the environment and achieving the best outcome using that information. The key aspects of exploitation include:
+
+1. Reward Maximization
+
+   Maximizing the immediate or short-term reward based on the current understanding of the environment is the main objective of exploitation. This is choosing courses of action based on learned values or rewards that the model predicts will yield the highest expected payoff.
+
+2. Decision Efficiency
+
+   Exploitation can often make more efficient decisions by concentrating on known high-reward actions, which lowers the computational and temporal costs associated with exploration.
+
+3. Risk Aversion
+
+   Exploitation inherently involves a lower level of risk as it relies on tried and tested actions, avoiding the uncertainty associated with less familiar options.
+
+**Exploration** is used to increase knowledge about an environment or model. The exploration process selects actions with uncertain outcomes to gather information about the possible states and rewards that the performed actions will result. The key aspects of exploration include:
+
+1. Information Gain
+
+   The main objective of exploration is to gather fresh data that can improve the model's comprehension of the surroundings. This involves exploring distinct regions of the state space or experimenting with different actions whose outcomes are unknown.
+
+2. Uncertainty Reduction
+
+   Reducing uncertainty in the model's estimates of the environment guides the actions that are selected. For example, activities that are rarely selected in the past are ranked in order of possible rewards.
+
+3. State Space Coverage
+
+   In certain models, especially those with large or continuous state spaces, exploration makes sure that enough different areas of the state space are visited to prevent learning that is biased toward a small number of experiences.
 
 ---
 
@@ -140,7 +166,13 @@ where,
 
     After deployment, models must be monitored to ensure they perform well over time. Regular tracking helps detect data drift, accuracy drops, or changing patterns, and retraining may be needed to keep the model reliable in real-world use.
 
-### Data Cleaning
+### Data Preprocessing
+
+![data_preprocessing](res/data_preprocessing.png)
+
+Data preprocessing involves cleaning, transforming, and organizing raw data to ensure it is accurate, consistent, and ready for modeling.
+
+#### Data Cleaning
 
 Data cleaning is the process of preparing raw data by detecting and correcting errors so it can be effectively used for analysis. It is a foundational step in data preprocessing that ensures datasets are suitable for analytical, statistical and machine learning tasks.
 
@@ -174,21 +206,13 @@ Data Cleaning Process:
 
    Outliers are data points that deviate significantly from the rest of the dataset and can affect analysis accuracy. Properly handling them ensures more reliable insights.
 
-### Data Preprocessing
-
-![data_preprocessing](res/data_preprocessing.png)
-
-Data preprocessing involves cleaning, transforming, and organizing raw data to ensure it is accurate, consistent, and ready for modeling.
-
-### Feature Engineering
+#### Feature Engineering
 
 Well-designed Feature engineering is the process of creating, transforming or selecting important features from raw data to improve model performance. These features help the model capture useful patterns and relationships in the data.
 
 ![feature_engineering](res/feature_engineering.png)
 
-#### Feature Creation
-
-Feature creation involves generating new features from domain knowledge or by observing patterns in the data. It can be:
+**Feature creation** involves generating new features from domain knowledge or by observing patterns in the data. It can be:
 
 - Domain-specific
 
@@ -202,9 +226,7 @@ Feature creation involves generating new features from domain knowledge or by ob
 
   Formed by combining existing features.
 
-#### Feature Transformation
-
-Transformation adjusts features to improve model learning:
+**Feature Transformation** adjusts features to improve model learning:
 
 - Normalization & Scaling
 
@@ -218,11 +240,9 @@ Transformation adjusts features to improve model learning:
 
   Like logarithmic transformations for skewed data.
 
-#### Feature Extraction
-
 ![feature_extraction](res/feature_extraction.png)
 
-Transform existing features into a lower-dimensional or more informative representation (e.g., PCA).
+**Feature Extraction**: Transform existing features into a lower-dimensional or more informative representation (e.g., PCA).
 
 1. Statistical Methods
 
@@ -258,9 +278,7 @@ Transform existing features into a lower-dimensional or more informative represe
 
    Summing or averaging features to simplify the model.
 
-#### Feature Selection
-
-Feature selection involves choosing a subset of relevant features to use:
+**Feature Selection** involves choosing a subset of relevant features to use:
 
 1. Filter methods
 
@@ -280,9 +298,7 @@ Feature selection involves choosing a subset of relevant features to use:
 
    Feature selection is integrated within model training.
 
-#### Feature Scaling
-
-Scaling ensures that all features contribute equally to the model. Include:
+**Feature Scaling** ensures that all features contribute equally to the model. Include:
 
 1. Absolute Maximum Scaling
 
@@ -329,11 +345,19 @@ Scaling ensures that all features contribute equally to the model. Include:
 
 ### Model Selection
 
-TODO
+Model selection is a key step in machine learning because it affects how well a system can learn from data and make accurate predictions. Different models have different ways of processing data and choosing the right one ensures that the system works efficiently. A simple model cannot capture details and has poor accuracy, while a model too complex might overfit that is doing very well on training data but fails on new data. The goal is to find a model that learns patterns effectively without being too simple or too complex.
 
-### Model Training
+#### Understanding the Problem and Data
 
-TODO
+Before selecting a model, it is important to first analyze the problem we are trying to solve. The initial step is to determine whether it is a regression problem, where the goal is to predict continuous values like house prices. If the task involves predicting categorical labels, such as distinguishing between spam and non-spam emails, it falls under classification problem. On the other hand, if the objective is to group similar data points, like segmenting customers based on behavior, then it is a clustering problem. Understanding the type of problem helps in choosing the most suitable machine learning model.
+
+#### Selecting Suitable Models
+
+After understanding the problem, we then choose a best model that should solve the problem. Different types of models work better for different kinds of problems:
+
+- For Regression: [Linear Regression](#Linear Regression), [Decision Trees](#Decision Tree), [Random Forest](#Random Forest (Bagging Algorithm)), Neural Networks, etc.
+- For Classification:[ Logistic Regression](#Logistic Regression), [Support Vector Machines (SVM)](#Logistic Regression), [k-Nearest Neighbors (k-NN)](#k-Nearest Neighbors (KNN)), Neural Networks, etc.
+- For Clustering: [k-Means](#K-Means), Hierarchical Clustering, [DBSCAN](#DBSCAN).
 
 ### Model Evaluation and Tuning
 
@@ -570,16 +594,6 @@ Implementing Canary Releases helps introduce application updates gradually while
 
 A/B Testing is used online when one wants to test a new feature or a product. The main agenda over here is to design an experiment that gives repeatable results and is robust enough to make an informed decision to launch it or not. Generally, this test includes a comparison of two web pages by representing variants A and B for them. As the number of visitors is similar, the conversion rate given by the variant becomes better. Overall, it's an experiment where two or more variations of the same web page are compared against each other by showcasing them to real-time visitors, and through that, determine which one performs better for a given goal. A/B testing is not only used or limited to web pages only, but it can be used in emails, pop-ups, sign-up forms, apps, and more.
 
-#### Tools and Platforms for Model Deployment
-
-![kubeflow](res/kubeflow.png)
-
-Kubeflow is an open-source machine learning toolkit built on top of Kubernetes. It is utilized for coordinating, delivering, and operating machine learning workloads. By making the deployment procedure straightforward, adaptable, and scalable, it makes machine learning workload deployment simple. Kubeflow can run in a Kubernetes cluster on-premises or the cloud.
-
-![mlflow](res/mlflow.png)
-
-MLflow is an open-source platform designed to manage and streamline the entire machine learning lifecycle. It provides a set of tools for tracking experiments, packaging models and deploying them, making it easier to manage the various stages of ML workflows. Whether we are a data scientist, ML engineer or DevOps engineer, MLflow offers a robust solution to track our experiments and manage models throughout their lifecycle.
-
 ### Model Monitoring & Maintenance
 
 TODO
@@ -611,8 +625,6 @@ The types of supervised-learning algorithms include:
 ![linear_regression_intro](res/linear_regression_intro.png)
 
 Linear Regression is a fundamental supervised learning algorithm used to model the relationship between a dependent variable and one or more independent variables. It predicts continuous values by fitting a straight line that best represents the data.
-
-#### Types of Linear Regression
 
 ![linear_regression_types](res/linear_regression_types.png)
 
@@ -758,13 +770,11 @@ Various steps involved in the working fo Gradient Descent in Linear Regression:
 
 Logistic Regression is a supervised machine learning algorithm used for classification problems. Unlike linear regression, which predicts continuous values it predicts the probability that an input belongs to a specific class.
 
-#### Types of Logistic Regression
-
 ![logistic_regression_types](res/logistic_regression_types.png)
 
-- **Binomial Logistic Regression**: This type is used when the dependent variable has only two possible categories.
-- **Multinomial Logistic Regression**: This is used when the dependent variable has three or more possible categories that are not ordered.
-- **Ordinal Logistic Regression**: This type applies when the dependent variable has three or more categories with a natural order or ranking.
+- Binomial Logistic Regression: This type is used when the dependent variable has only two possible categories.
+- Multinomial Logistic Regression: This is used when the dependent variable has three or more possible categories that are not ordered.
+- Ordinal Logistic Regression: This type applies when the dependent variable has three or more categories with a natural order or ranking.
 
 #### Logistic Regression Workflow
 
@@ -1418,6 +1428,12 @@ AdaBoost (Adaptive Boosting) is an ensemble learning technique that combines mul
 
 ![stacking](res/stacking.png)
 
+### Neural Networks
+
+Neural Networks learn patterns using layers of connected neurons. It require labeled data. It trained using backpropagation and Used for classification and regression
+
+For more info, see: [Deep Learning#Neural Networks](dl.md)
+
 
 ---
 
@@ -1449,11 +1465,11 @@ Types of Clustering:
 
    Soft clustering allows a data point to belong to multiple clusters with different probabilities. Instead of assigning a strict cluster, it gives a degree of membership to each cluster.
 
-#### K-Means Clustering
+#### K-Means
 
-K-Means Clustering groups similar data points into clusters without needing labeled data. It is used to uncover hidden patterns when the goal is to organize data based on similarity.
+K-Means groups similar data points into clusters without needing labeled data. It is used to uncover hidden patterns when the goal is to organize data based on similarity.
 
-Working of k-Means Clustering:
+Working of K-Means:
 
 1. Initialization
 
@@ -1525,7 +1541,7 @@ Two metrics commonly used in the Elbow Method are:
    \text{Inertia} = \sum_{i=1}^{n} \text{distance}(x_i, c_j^*)^2 
    $$
 
-#### K-Medoids Clutering
+#### K-Medoids
 
 ![k_medoids_clustering](res/k_medoids_clustering.png)
 
@@ -1639,7 +1655,7 @@ The Expectation-Maximization (EM) algorithm is an iterative optimization techniq
 
 For more info, see: [AI Algorithms#Expectation-Maximization (EM) Algorithm](algo.md)
 
-#### DBSCAN Clustering
+#### DBSCAN
 
 ![dbscan_clustering](res/dbscan_clustering.png)
 
@@ -1662,9 +1678,9 @@ DBSCAN workflow:
 3. **Density Connectivity**: Two points a and b are density-connected if there exists a chain of points where each point is within the eps radius of the next and at least one point in the chain is a core point. This chaining process ensures that all points in a cluster are connected through a series of dense regions.
 4. **Label Noise Points**: After processing all points any point that does not belong to a cluster is labeled as noise.
 
-#### OPTICS Clustering
+#### OPTICS
 
-OPTICS (Ordering Points To Identify the Clustering Structure) is a density-based clustering algorithm similar to DBSCAN clustering. Unlike DBSCAN which struggles with varying densities. OPTICS does not directly assign clusters but instead creates a reachability plot which visually represents clusters.
+OPTICS (Ordering Points To Identify the Clustering Structure) is a density-based clustering algorithm similar to DBSCAN. Unlike DBSCAN which struggles with varying densities. OPTICS does not directly assign clusters but instead creates a reachability plot which visually represents clusters.
 
 ![optics_example](res/optics_example.png)
 
@@ -2077,187 +2093,7 @@ Core Components:
 
    Simulates the environment to predict outcomes of actions.
 
-### Exploitation and Exploration
-
-Exploitation is a strategy of using the accumulated knowledge to make decisions that maximize the expected reward based on the present information. The focus of exploitation is on utilizing what is already known about the environment and achieving the best outcome using that information. The key aspects of exploitation include:
-
-1. Reward Maximization
-
-   Maximizing the immediate or short-term reward based on the current understanding of the environment is the main objective of exploitation. This is choosing courses of action based on learned values or rewards that the model predicts will yield the highest expected payoff.
-
-2. Decision Efficiency
-
-   Exploitation can often make more efficient decisions by concentrating on known high-reward actions, which lowers the computational and temporal costs associated with exploration.
-
-3. Risk Aversion
-
-   Exploitation inherently involves a lower level of risk as it relies on tried and tested actions, avoiding the uncertainty associated with less familiar options.
-
-Exploration is used to increase knowledge about an environment or model. The exploration process selects actions with uncertain outcomes to gather information about the possible states and rewards that the performed actions will result. The key aspects of exploration include:
-
-1. Information Gain
-
-   The main objective of exploration is to gather fresh data that can improve the model's comprehension of the surroundings. This involves exploring distinct regions of the state space or experimenting with different actions whose outcomes are unknown.
-
-2. Uncertainty Reduction
-
-   Reducing uncertainty in the model's estimates of the environment guides the actions that are selected. For example, activities that are rarely selected in the past are ranked in order of possible rewards.
-
-3. State Space Coverage
-
-   In certain models, especially those with large or continuous state spaces, exploration makes sure that enough different areas of the state space are visited to prevent learning that is biased toward a small number of experiences.
-
-### Reward Maximization Framework
-
-In RL, the agent focuses on cumulative reward rather than immediate reward. The cumulative reward, also known as the return, is the total reward the agent accumulates over time.
-
-The discount factor ($\gamma$) is a parameter between 0 and 1 that represents the importance of future rewards. A discount factor close to 0 makes the agent prioritize immediate rewards, while a factor close to 1 makes it consider long-term rewards.
-$$
-Q(s, a) = Q(s, a) + \alpha[R + \gamma max_{a}Q(s', a') - Q(s, a)]
-$$
-`Deep Q-Network (DQN)` combines Q-learning with deep neural networks to handle environments with high-dimensional state spaces. The neural network approximates the Q-function, allowing the agent to learn policies in complex environments.
-
-Policy gradient methods optimize the policy directly by maximizing the expected cumulative reward. These methods are effective in continuous action spaces and involve calculating the gradient of the reward with respect to the policy parameters.
-$$
-\nabla_{\theta}J(\theta) = E[\nabla_{\theta}\log \pi_{\theta}(s, a)Q_{\pi}(s, a)]
-$$
-
-### Curiosity-Driven Exploration
-
-Curiosity-driven exploration is approach in reinforcement learning (RL) that addresses the challenge of sparse or delayed rewards by introducing internal, self-generated incentives for agents to explore and learn.
-
-Types of Rewards:
-
-- Extrinsic Reward: Comes from the environment (e.g., points for finishing a level).
-- Intrinsic (Curiosity) Reward: Generated by the agent, typically for visiting novel or unpredictable states.
-
-The most common method is prediction-based curiosity:
-
-- The agent builds a model (often a neural network) to predict the next state given the current state and action.
-- After taking an action, the agent compares its predicted next state to the actual next state.
-- The difference (prediction error) becomes the curiosity reward: the larger the error, the more novel or surprising the state, and the higher the reward.
-
-The Intrinsic Curiosity Module (ICM) is a popular module for curiosity-driven RL, typically consisting of three main components:
-
-1. Encoder
-
-   Converts high-dimensional observations (e.g., images) into lower-dimensional feature vectors, denoted as $\phi(s_t)$ for state $s_t$ and $\phi(s_{t + 1})$ or next state $s_{t + 1}$.
-
-   Mathematical Representation:
-   $$
-   \phi(s_t) = Encoder(s_{t}) \\
-   \phi(s_{t + 1}) = Encoder(s_{t + 1})
-   $$
-
-2. Inverse Dynamics Model
-
-   Predicts the action $\hat{a}_{t}$ taken by the agent, given the encoded representations of the current and next states. This encourages the encoder to focus on aspects of the environment controlled by the agent, filtering out irrelevant or uncontrollable features (e.g., background noise).
-
-   Mathematical Representation:
-   $$
-   \hat{a}_{t} = g(\phi(s_t), \phi(s_{t + 1}); \theta_{I})
-   $$
-   where $g$: Inverse model neural network with parameters $\theta_{I}$
-
-   Loss Function:
-
-   - For discrete actions (e.g., Atari), use cross-entropy loss: $L_{inv} = -\log P(a_t | \phi(s_t), \phi(s_{t + 1}))$
-   - For continuous actions, use mean squared error (MSE): $L_{inv} = ||a_t - \hat{a}_{t}||^2$
-
-3. Forward Dynamics Model
-
-   Predicts the encoded feature vector of the next state $\hat{s_{t + 1}}$, given the encoded current state and the action .
-
-   Mathematical Representation:
-   $$
-   \hat{\phi}(s_{t + 1}) = f(\phi(s_t), a_t; \theta_{F})
-   $$
-   where $f$ is the forward model (a neural network with parameters $\theta_{F}$).
-
-   The forward model is trained to minimize the prediction error in the feature space
-
-   Mean squared error in feature space: $L_{fwd} = \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}$
-
-   Intrinsic Reward (Curiosity Signal); The agent receives an intrinsic reward proportional to this prediction error:
-   $$
-   r_{t}^{int} = \eta \cdot \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}
-   $$
-   where $\eta$ is Scaling factor for the curiosity reward.
-
-4. Combined Optimization
-
-   Total Loss: The ICM is trained by combining the inverse and forward losses:
-   $$
-   L_{ICM} = (1 - \lambda)L_{inv} + \lambda L_{fwd}
-   $$
-   where $\lambda$ Hyperparameter balancing the two losses (e.g., λ*λ*=0.1 in the original paper).
-
-   Policy Training: The agent’s policy is trained using both extrinsic (environment) and intrinsic (curiosity) rewards:
-   $$
-   r_t = r_{t}^{ext} + \beta r_{t}^{int}
-   $$
-   where $r_t$ is total reward received by the agent at time step t, $\beta$ controls the influence of curiosity.
-
-### Epsilon-Greedy Algorithm
-
-Epsilon-Greedy is a simple method to balance exploration and exploitation by choosing between exploration and exploitation randomly. The epsilon-greedy, where epsilon refers to the probability of choosing to explore, exploits most of the time with a small chance of exploring.
-$$
-\text{Action at time(t)} 
-\begin{cases}
-\text{max }Q_t(a), & \text{with probability } 1 - \epsilon \\
-\text{any action }(a), & \text{with probability } \epsilon
-\end{cases}
-$$
-
-### Bellman Equation
-
-The Bellman Equation is a formula used in reinforcement learning to calculate the value of a state. It says that the value of a state is equal to the reward received now plus the expected value of the next state. This helps an agent make better decisions by considering both immediate and future rewards. It is based on the principle of optimality which means the best value of a state depends on the immediate reward and the value of the next state.
-
-#### Bellman Equation for State Value Function
-
-State value function denoted as $V(s)$ under a given policy represents the expected cumulative reward when starting from state s and following that policy:
-$$
-V^{\pi}(s) = \mathbb{E}[R(s,a) + \gamma V^{\pi }(s')]
-$$
-Expanding this equation with transition probabilities we get:
-$$
-V^{\pi}(s) = \sum_{a \in A} \pi(a | s) \sum_{s' \in S} P(s' | s, a) \left[ R(s, a) + \gamma V^{\pi}(s') \right]
-$$
-where:
-
-- $V^{\pi}(s)$: Value function of state $s$ under policy.
-- $P(s' | s, a)$: Transition probability from state s to state s' when taking action a.
-- $R(s, a)$: Reward obtained after taking action a in state $s$.
-- $\gamma$: Discount factor controlling the importance of future rewards.
-- $\pi(a | s)$: Probability of taking action a in state s under policy.
-
-Q-function $(Q(s, a))$ represents the expected return for taking action a in state s and following the policy afterward:
-$$
-Q^{\pi}(s, a) = \mathbb{E} \left[ R(s, a) + \gamma V^{\pi}(s') \right]
-$$
-Expanding it using transition probabilities:
-$$
-Q^{\pi}(s, a) = \sum_{s' \in S} P(s' | s, a) \left[ R(s, a) + \gamma \sum_{a'} \pi(a' | s') Q^{\pi}(s', a') \right]
-$$
-This equation helps compute the expected future rewards based on both current action a and subsequent policy actions.
-
-#### Bellman Optimality Equations
-
-For an optimal policy $\pi^*$, the Bellman equation becomes:
-
-1. Optimal State Value Function
-   $$
-   V^*(s) = \max_{a} \sum_{s'} P(s' | s, a) \left[ R(s, a) + \gamma V^*(s') \right]
-   $$
-
-2. Optimal Action Value Function ([Q-Learning](#Q-Learning))
-   $$
-   Q^*(s, a) = \sum_{s'} P(s' | s, a) \left[ R(s, a) + \gamma \max_{a'} Q^*(s', a') \right]
-   $$
-
-These equations form the foundation for Dynamic Programming, Temporal Difference (TD) Learning and Q-Learning.
-
-### Model-Based Methods
+### Model-Based Learning
 
 #### Markov Decision Processes (MDPs)
 
@@ -2277,7 +2113,7 @@ For more info, see: [AI Algorithms#Hidden Markov Model (HMM)](algo.md)
 
 For more info, see: [AI Algorithms#Monte Carlo Tree Search (MCTS)](AI/algo.md)
 
-### Model-Free Methods
+### Model-Free Learning
 
 #### Q-Learning
 
@@ -2569,7 +2405,155 @@ Advantage Function:
 > - Provide clearer learning signals
 > - Reduce the variance in policy gradient updates.
 
-### Proximal Policy Optimization (PPO)
+### Other
+
+#### Reward Maximization Framework
+
+In RL, the agent focuses on cumulative reward rather than immediate reward. The cumulative reward, also known as the return, is the total reward the agent accumulates over time.
+
+The discount factor ($\gamma$) is a parameter between 0 and 1 that represents the importance of future rewards. A discount factor close to 0 makes the agent prioritize immediate rewards, while a factor close to 1 makes it consider long-term rewards.
+$$
+Q(s, a) = Q(s, a) + \alpha[R + \gamma max_{a}Q(s', a') - Q(s, a)]
+$$
+`Deep Q-Network (DQN)` combines Q-learning with deep neural networks to handle environments with high-dimensional state spaces. The neural network approximates the Q-function, allowing the agent to learn policies in complex environments.
+
+Policy gradient methods optimize the policy directly by maximizing the expected cumulative reward. These methods are effective in continuous action spaces and involve calculating the gradient of the reward with respect to the policy parameters.
+$$
+\nabla_{\theta}J(\theta) = E[\nabla_{\theta}\log \pi_{\theta}(s, a)Q_{\pi}(s, a)]
+$$
+
+#### Curiosity-Driven Exploration
+
+Curiosity-driven exploration is approach in reinforcement learning (RL) that addresses the challenge of sparse or delayed rewards by introducing internal, self-generated incentives for agents to explore and learn.
+
+Types of Rewards:
+
+- Extrinsic Reward: Comes from the environment (e.g., points for finishing a level).
+- Intrinsic (Curiosity) Reward: Generated by the agent, typically for visiting novel or unpredictable states.
+
+The most common method is prediction-based curiosity:
+
+- The agent builds a model (often a neural network) to predict the next state given the current state and action.
+- After taking an action, the agent compares its predicted next state to the actual next state.
+- The difference (prediction error) becomes the curiosity reward: the larger the error, the more novel or surprising the state, and the higher the reward.
+
+The Intrinsic Curiosity Module (ICM) is a popular module for curiosity-driven RL, typically consisting of three main components:
+
+1. Encoder
+
+   Converts high-dimensional observations (e.g., images) into lower-dimensional feature vectors, denoted as $\phi(s_t)$ for state $s_t$ and $\phi(s_{t + 1})$ or next state $s_{t + 1}$.
+
+   Mathematical Representation:
+   $$
+   \phi(s_t) = Encoder(s_{t}) \\
+   \phi(s_{t + 1}) = Encoder(s_{t + 1})
+   $$
+
+2. Inverse Dynamics Model
+
+   Predicts the action $\hat{a}_{t}$ taken by the agent, given the encoded representations of the current and next states. This encourages the encoder to focus on aspects of the environment controlled by the agent, filtering out irrelevant or uncontrollable features (e.g., background noise).
+
+   Mathematical Representation:
+   $$
+   \hat{a}_{t} = g(\phi(s_t), \phi(s_{t + 1}); \theta_{I})
+   $$
+   where $g$: Inverse model neural network with parameters $\theta_{I}$
+
+   Loss Function:
+
+   - For discrete actions (e.g., Atari), use cross-entropy loss: $L_{inv} = -\log P(a_t | \phi(s_t), \phi(s_{t + 1}))$
+   - For continuous actions, use mean squared error (MSE): $L_{inv} = ||a_t - \hat{a}_{t}||^2$
+
+3. Forward Dynamics Model
+
+   Predicts the encoded feature vector of the next state $\hat{s_{t + 1}}$, given the encoded current state and the action .
+
+   Mathematical Representation:
+   $$
+   \hat{\phi}(s_{t + 1}) = f(\phi(s_t), a_t; \theta_{F})
+   $$
+   where $f$ is the forward model (a neural network with parameters $\theta_{F}$).
+
+   The forward model is trained to minimize the prediction error in the feature space
+
+   Mean squared error in feature space: $L_{fwd} = \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}$
+
+   Intrinsic Reward (Curiosity Signal); The agent receives an intrinsic reward proportional to this prediction error:
+   $$
+   r_{t}^{int} = \eta \cdot \frac{1}{2}||\hat{\phi}(s_{t + 1}) - \phi(s_{t + 1})||^{2}
+   $$
+   where $\eta$ is Scaling factor for the curiosity reward.
+
+4. Combined Optimization
+
+   Total Loss: The ICM is trained by combining the inverse and forward losses:
+   $$
+   L_{ICM} = (1 - \lambda)L_{inv} + \lambda L_{fwd}
+   $$
+   where $\lambda$ Hyperparameter balancing the two losses (e.g., λ*λ*=0.1 in the original paper).
+
+   Policy Training: The agent’s policy is trained using both extrinsic (environment) and intrinsic (curiosity) rewards:
+   $$
+   r_t = r_{t}^{ext} + \beta r_{t}^{int}
+   $$
+   where $r_t$ is total reward received by the agent at time step t, $\beta$ controls the influence of curiosity.
+
+#### Epsilon-Greedy Algorithm
+
+Epsilon-Greedy is a simple method to balance exploration and exploitation by choosing between exploration and exploitation randomly. The epsilon-greedy, where epsilon refers to the probability of choosing to explore, exploits most of the time with a small chance of exploring.
+$$
+\text{Action at time(t)} 
+\begin{cases}
+\text{max }Q_t(a), & \text{with probability } 1 - \epsilon \\
+\text{any action }(a), & \text{with probability } \epsilon
+\end{cases}
+$$
+
+#### Bellman Equation
+
+The Bellman Equation is a formula used in reinforcement learning to calculate the value of a state. It says that the value of a state is equal to the reward received now plus the expected value of the next state. This helps an agent make better decisions by considering both immediate and future rewards. It is based on the principle of optimality which means the best value of a state depends on the immediate reward and the value of the next state.
+
+State value function denoted as $V(s)$ under a given policy represents the expected cumulative reward when starting from state s and following that policy:
+$$
+V^{\pi}(s) = \mathbb{E}[R(s,a) + \gamma V^{\pi }(s')]
+$$
+Expanding this equation with transition probabilities we get:
+$$
+V^{\pi}(s) = \sum_{a \in A} \pi(a | s) \sum_{s' \in S} P(s' | s, a) \left[ R(s, a) + \gamma V^{\pi}(s') \right]
+$$
+where:
+
+- $V^{\pi}(s)$: Value function of state $s$ under policy.
+- $P(s' | s, a)$: Transition probability from state s to state s' when taking action a.
+- $R(s, a)$: Reward obtained after taking action a in state $s$.
+- $\gamma$: Discount factor controlling the importance of future rewards.
+- $\pi(a | s)$: Probability of taking action a in state s under policy.
+
+Q-function $(Q(s, a))$ represents the expected return for taking action a in state s and following the policy afterward:
+$$
+Q^{\pi}(s, a) = \mathbb{E} \left[ R(s, a) + \gamma V^{\pi}(s') \right]
+$$
+Expanding it using transition probabilities:
+$$
+Q^{\pi}(s, a) = \sum_{s' \in S} P(s' | s, a) \left[ R(s, a) + \gamma \sum_{a'} \pi(a' | s') Q^{\pi}(s', a') \right]
+$$
+This equation helps compute the expected future rewards based on both current action a and subsequent policy actions.
+
+For an optimal policy $\pi^*$, the Bellman equation becomes:
+
+1. Optimal State Value Function
+   $$
+   V^*(s) = \max_{a} \sum_{s'} P(s' | s, a) \left[ R(s, a) + \gamma V^*(s') \right]
+   $$
+
+2. Optimal Action Value Function ([Q-Learning](#Q-Learning))
+   $$
+   Q^*(s, a) = \sum_{s'} P(s' | s, a) \left[ R(s, a) + \gamma \max_{a'} Q^*(s', a') \right]
+   $$
+
+These equations form the foundation for Dynamic Programming, Temporal Difference (TD) Learning and Q-Learning.
+
+#### Proximal Policy Optimization (PPO)
 
 Proximal Policy Optimization (PPO) is a reinforcement learning algorithm that helps agents improve their actions while keeping learning stable. It directly updates the policy like other policy gradient methods but uses a clipping rule to limit large destabilizing changes.
 
@@ -2850,6 +2834,14 @@ Types of Exponential Smoothing:
    - $\beta$: trend smoothing factor ($0 < \beta < 1$)
    - $c_{t}$: seasonal component at time $t$
    - $\gamma$: seasonal smoothing parameter ($0 < \gamma < 1$)
+
+---
+
+
+
+## Deep Reinforcement Learning
+
+Deep Reinforcement Learning (DRL) is the crucial fusion of two powerful artificial intelligence fields: deep neural networks and reinforcement learning. By combining the benefits of data-driven neural networks and intelligent decision-making, it has sparked an evolutionary change that crosses traditional boundaries
 
 ---
 
@@ -3190,9 +3182,9 @@ Comparison of PPO with earlier policy gradient methods:
 
 [50] [Expectation-Maximization Algorithm - ML](https://www.geeksforgeeks.org/machine-learning/ml-expectation-maximization-algorithm/)
 
-[51] [DBSCAN Clustering in ML - Density based clustering](https://www.geeksforgeeks.org/machine-learning/dbscan-clustering-in-ml-density-based-clustering/)
+[51] [DBSCAN in ML - Density based clustering](https://www.geeksforgeeks.org/machine-learning/dbscan-clustering-in-ml-density-based-clustering/)
 
-[52] [OPTICS Clustering - ML](https://www.geeksforgeeks.org/machine-learning/ml-optics-clustering/)
+[52] [OPTICS - ML](https://www.geeksforgeeks.org/machine-learning/ml-optics-clustering/)
 
 [53] [Fuzzy Clustering - ML](https://www.geeksforgeeks.org/machine-learning/ml-fuzzy-clustering/)
 

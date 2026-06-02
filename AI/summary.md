@@ -360,6 +360,117 @@ Natural Language Processing (NLP) plays an important role in enabling machines t
 
 The [Unstructured](https://docs.unstructured.io/open-source/introduction/overview) open source library offers an open-source toolkit designed to simplify the ingestion and pre-processing of diverse data formats, including images and text-based documents such as PDFs, HTML files, Word documents, and more. With a focus on optimizing data workflows for Large Language Models (LLMs), the Unstructured open source library provides modular functions and connectors that work seamlessly together. This cohesive system ensures efficient transformation of unstructured data into structured formats, while also offering adaptability to various platforms and use cases.
 
+### Tools and Platforms for Model Deployment
+
+![kubeflow](res/kubeflow.png)
+
+Kubeflow is an open-source machine learning toolkit built on top of Kubernetes. It is utilized for coordinating, delivering, and operating machine learning workloads. By making the deployment procedure straightforward, adaptable, and scalable, it makes machine learning workload deployment simple. Kubeflow can run in a Kubernetes cluster on-premises or the cloud.
+
+![mlflow](/usr/local/src/github/hanjingo/doc/AI/res/mlflow.png)
+
+MLflow is an open-source platform designed to manage and streamline the entire machine learning lifecycle. It provides a set of tools for tracking experiments, packaging models and deploying them, making it easier to manage the various stages of ML workflows. Whether we are a data scientist, ML engineer or DevOps engineer, MLflow offers a robust solution to track our experiments and manage models throughout their lifecycle.
+
+### YOLO (You Only Look Once)
+
+YOLO was proposed by Joseph Redmond et al. in 2015 to deal with the problems faced by the object recognition models at that time, Fast R-CNN was one of the models at that time but it had its own challenges such as that network could not be used in real-time because it took 2-3 seconds to predict an image and therefore could not be used in real-time. Whereas in YOLO we have to look only once in the network i.e. only one forward pass is required through the network to make the final predictions.  
+
+![yolo_arch](/usr/local/src/github/hanjingo/doc/AI/res/yolo_arch.png)
+
+- Input Preprocessing
+
+  The model accepts an image as input. It resizes the input image to 448×448 pixels ensuring that the aspect ratio is preserved using padding. This ensures uniformity of input dimensions across the network which is essential for batch processing in deep learning.
+
+- Backbone Convolutional Neural Network (CNN)
+
+  After preprocessing the image is passed through a deep CNN architecture designed for object detection:
+
+  - The model consists of *24 convolutional layers* and *4 max-pooling layers*.
+  - These layers help in extracting hierarchical spatial features from the image.
+
+- Use of 1×1 and 3×3 Convolutions:
+
+  - To reduce the number of parameters and compress channels, 1×1 convolutions are employed.
+  - These are followed by 3×3 convolutions to capture spatial patterns in the feature maps.
+
+  This design pattern i.e 1×1 followed by 3×3 improves computational efficiency while maintaining expressive power.
+
+- Fully Connected Layers
+
+  Following the convolutional layers, the architecture has 2 fully connected layers. The final fully connected layer produces an output of shape (1, 1470).
+
+- Cuboidal Prediction Output
+
+  The output vector of size 1470 is reshaped to (7, 7, 30). Here, 7×7 represents the grid cells, and 30 represents the prediction vector for each cell:
+  $$
+  30 = (2 \text{ bounding boxes} \times 5) + (20 \text{ class probabilities}) 
+  $$
+
+- Activation Functions
+
+  The architecture predominantly uses Leaky ReLU as its activation function. The Leaky ReLU is defined as:
+  $$
+  f(x) = \begin{cases} x, & \text{if } x > 0 \\ 0.01x, & \text{if } x \leq 0 \end{cases} 
+  $$
+  This activation allows a small gradient when the unit is not active, preventing dead neurons.
+
+- Output Layer Activation
+
+  The last layer uses a linear activation function, suitable for making raw predictions like bounding box coordinates and confidence scores.
+
+- Regularization Techniques
+
+  1. *Batch Normalization* is employed across layers to stabilize and accelerate training.
+  2. *Dropout* is also incorporated to prevent overfitting by randomly deactivating neurons during training, encouraging the network to learn more robust features.
+
+**YOLO** uses sum-squared error loss function which is easy to optimize. However, this function gives equal weight to the classification and localization task. The loss function defined in YOLO as follows: 
+$$
+\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^{B} \mathbb{1}_{ij}^{obj}[(x_i - \hat{x_i})^{2} + (y_i - \hat{y_i})^{2}] \\
++ \lambda_{coord}\sum_{i = 0}^{S^2}\sum_{j = 0}^{B} \mathbb{1}_{ij}^{obj}[(\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2] \\
++ \sum_{i = 0}^{S^2}\sum_{j = 0}^{B}\mathbb{1}_{ij}^{obj}(C_i - \hat{C_i})^2 \\
++ \lambda_{noobj}\sum_{i = 0}^{S^2}\sum_{j = 0}^{B} \mathbb{1}_{ij}^{noobj}(C_i - \hat{C_i})^2 \\
++ \sum_{i = 0}^{S^2} \mathbb{1}_{i}^{obj} \sum_{c \in classes}(p_i(c) - \hat{p_i}(c))^2
+$$
+where:
+
+- $l_{i}^{obj}$ denotes if object is present in cell $i$.
+- $l_{ij}^{obj}$ denotes $j_{th}$ bounding box responsible for prediction of object in the cell $i$. 
+- $\lambda_{coord}$ and $\lambda_{noobj}$ are regularization parameter required to balance the loss function. 
+
+In this model, we take $\lambda_{coord}=5$ and $\lambda_{noobj}=5$.
+
+The first two parts of the above loss equation represent localization mean-squared error, but the other three parts represent classification error:
+
+- Localization Error
+  1. The first term calculates the deviation from the ground truth bounding box.
+  2. The second term calculates the square root of the difference between height and width of the bounding box. In the second term, we take the square root of width and height because our loss function should be able to consider the deviation in terms of the size of the bounding box.
+  3. For small bounding boxes, the little deviation should be more important as compared to large bounding boxes. 
+- Classification Loss
+  1. The first term calculates the sum-squared error between the predicted confidence score that whether the object present or not  and the ground truth for each bounding box in each cell.
+  2. Similarly, the second term calculates the mean-squared sum of cells that do not contain any bounding box and a regularization parameter is used to make this loss small.
+  3. The third term calculates the sum-squared error of the classes belongs to these grid cells. 
+
+At test time we multiply the conditional class probabilities and the individual box confidence predictions. We define our confidence score as follows:
+$$
+\kern 6pc P_{r}\left( \text{Object} \right) * \text{IOU}_{\text{pred}}^{\text{truth}}
+$$
+ ![yolo_single_grid_bounding_box_box](/usr/local/src/github/hanjingo/doc/AI/res/yolo_single_grid_bounding_box_box.png)
+
+This results in combination of bounding boxes from each grid like this:
+
+![yolo_bounding_box_combination](/usr/local/src/github/hanjingo/doc/AI/res/yolo_bounding_box_combination.png)
+
+Each grid also predicts $C$ conditional class probability, $P_r$ ($Class_i$ | Object):
+
+![yolo_conditional_probability_map](/usr/local/src/github/hanjingo/doc/AI/res/yolo_conditional_probability_map.png)
+
+This probability were conditional based on the presence of an object in grid cell. Regardless the number of boxes each grid cell predicts only one set of class probabilities. These prediction are encoded in the 3D tensor of size `S * S * (5 * B +C)`.
+
+Now, we multiply the conditional class probabilities and the individual box confidence predictions:
+
+![yolo_output_feature_map](/usr/local/src/github/hanjingo/doc/AI/res/yolo_output_feature_map.png)
+
+![yolo_test_result](res/yolo_test_result.png)
+
 
 
 ## Summary

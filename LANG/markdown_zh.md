@@ -394,7 +394,7 @@ $$
 | $x \neq y$                                                   | `$x \neq y$`                                                 | $x \sim y$       | `$x \sim y$`       | $x \approx y$   | `$x \approx y$`   | $x \equiv y$      | `$x \equiv y$`      |
 | $x \not\equiv y$                                             | `$x \not\equiv y$`                                           |                  |                    |                 |                   |                   |                     |
 | $x \odot y$                                                  | `$x \odot y$`                                                | $x \oplus y$     | `$x \oplus y$`     | $x \circ y$     | `$x \circ y$`     | $x \ominus$y      | `$x \ominus y$`     |
-| $x \bullet y$                                                | `$x \bullet y$`                                              |                  |                    |                 |                   |                   |                     |
+| $x \bullet y$                                                | `$x \bullet y$`                                              | $x \otimes y$    | `$x \otimes y$`    |                 |                   |                   |                     |
 | $(s, \preccurlyeq)$                                          | `$(s, \preccurlyeq)$`                                        | $x \prec y$      | `x \prec y`        |                 |                   |                   |                     |
 | $(\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D})$ | `$(\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D})$` |                  |                    |                 |                   |                   |                     |
 

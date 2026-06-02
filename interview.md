@@ -282,6 +282,24 @@ For more info, see: [Machine Learning](AI/ml.md)
 
 ### DL
 
+#### How does deep learning differ from traditional machine learning?
+
+Deep learning is a subset of machine learning that uses multi-layered neural networks to automatically learn hierarchical feature representations from raw data. Traditional machine learning requires manual feature engineering, where domain experts hand-craft input features. Deep learning eliminates feature engineering by learning features end-to-end, but requires much more data and compute. Traditional ML works well with small datasets and is more interpretable; deep learning excels at unstructured data (images, audio, text) and scales with data size and compute.
+
+For more info, see: [Deep Learning](AI/dl.md)
+
+#### How are biological neurons similar to artificial neural networks?
+
+Both biological and artificial neurons receive inputs, process them, and produce outputs when a threshold is reached. Biological neurons receive signals through dendrites, integrate them in the cell body (soma), and fire an action potential down the axon if the sum exceeds a threshold. Artificial neurons perform a weighted sum of inputs, apply an activation function (like sigmoid or ReLU), and output a value. Both are connected in networks where the strength of connections (synaptic weights in biology, numerical weights in ANNs) determines influence. The key difference is that biological neurons are far more complex, with temporal dynamics, chemical signaling, and various neurotransmitter types.
+
+For more info, see: [Deep Learning](AI/dl.md)
+
+#### What are activation functions, and where are they used?
+
+Activation functions introduce non-linearity into neural networks, allowing them to learn complex patterns beyond simple linear transformations. Without activation functions, stacking multiple layers would be equivalent to a single linear layer. They are used in every hidden layer and output layer of a neural network to transform the weighted sum of inputs into an output value. Common activation functions include ReLU (most popular for hidden layers), sigmoid (for binary classification outputs), softmax (for multi-class), and tanh. The choice depends on the problem, network architecture, and training dynamics.
+
+For more info, see: [Deep Learning#Activation Function](AI/dl.md)
+
 #### What are Autoencoders and how do they work?
 
 Autoencoders are a type of neural network designed to learn efficient representations of input data by compressing it into a lower-dimensional latent space and then reconstructing it back to its original form. The main goal is to capture the most important features of the data while minimizing information loss.
@@ -299,6 +317,12 @@ For more info, see: [Deep Learning#Variational AutoEncoders (VAEs)](AI/dl.md), [
 Generative Adversarial Networks (GANs) are a type of neural network architecture used for generative tasks. They consist of two networks—the generator and the discriminator—that compete in a game-like setting. The generator creates fake data and the discriminator evaluates whether the data is real or fake, improving both networks over time.
 
 For more info, see: [Deep Learning#Generative Adversarial Networks (GANs)](AI/dl.md)
+
+#### Explain forward and backward propagation in neural networks.
+
+Forward propagation passes input data through the network layer by layer, applying weights, biases, and activation functions to generate predictions. Backward propagation (backprop) computes the gradient of the loss function with respect to each weight using the chain rule, then updates weights via gradient descent. Together, they enable neural networks to learn from data.
+
+For more info, see: [Deep Learning#Back Propagation](AI/dl.md)
 
 ### RAG
 
@@ -339,6 +363,112 @@ The term "Embedding Database" typically refers to `Vector Databases`, as they ar
 For more info, see: [Natural Language Processing (NLP)#Vector Database](AI/nlp.md)
 
 ### CV
+
+#### Explain the concept of pixels and image resolution.
+
+A pixel (short for picture element) is the smallest unit of a digital image. Each pixel holds a value representing color or intensity and when combined with millions of other pixels, it forms a complete image. Image resolution, on the other hand, refers to the amount of detail an image holds. It is usually expressed as the number of pixels along the width and height of an image or as pixel density (pixels per inch, PPI). Higher resolution means more pixels which generally results in clearer and sharper images.
+
+For more info, see: [Computer Vision#Pixel and Resolution](AI/cv.md)
+
+#### Explain the 2D Discrete Fourier Transform (DFT).
+
+The 2D Discrete Fourier Transform (DFT) is a way to convert a 2D image from its spatial form (pixels) into the frequency domain. In the frequency domain, we can see which patterns or details (like edges or textures) are present in the image. Each value in the DFT tells us the strength (amplitude) and orientation (phase) of a specific frequency component in the image. This is very useful for tasks like filtering, compression and detecting patterns.
+
+For more info, see: [Computer Vision#Discrete Fourier Transform (DFT)](AI/cv.md)
+
+#### How does the Fast Fourier Transform (FFT) improve over DFT?
+
+The Fast Fourier Transform (FFT) is a faster way to compute the DFT. Normally, calculating DFT for an $N \times N$ image takes $O(N^4)$ operations in 2D. FFT reduces this to $O(N^2 \log N)$ which is much faster. It does this by breaking the problem into smaller parts and reusing calculations. This makes FFT very practical for real-time image and signal processing.
+
+For more info, see: [Computer Vision#Fast Fourier Transform (FFT)](AI/cv.md)
+
+#### What is convolution in image processing and why is it important?
+
+Convolution is a fundamental operation in image processing where a small matrix, called a kernel or filter, is applied over an image to extract certain features or modify the image. It works by sliding the kernel across the image and performing element-wise multiplication followed by summation to produce a new value for each pixel. Convolution is important because it allows us to perform essential tasks such as blurring, sharpening, edge detection and feature extraction in a systematic and efficient way. Most image processing and computer vision techniques rely on convolution for analyzing patterns in images.
+
+For more info, see: [Computer Vision#Convolution](AI/cv.md)
+
+#### What is correlation and how does it differ from convolution?
+
+Correlation is a technique used to measure the similarity between two signals or images. In image processing, it involves sliding a small template or kernel over an image and computing a similarity measure at each position. High correlation values indicate that the pattern in the kernel closely matches the region in the image. Correlation is commonly used in template matching, pattern recognition and feature detection.
+
+For more info, see: [Computer Vision#Covariance vs Correlation](AI/cv.md)
+
+#### What are linear and non-linear filters? Give examples.
+
+Filters are used in image processing to modify an image, either to enhance features, remove noise or detect edges. Filters are classified into linear and non-linear based on how the output pixel is computed from its neighborhood.
+
+Linear Filter is a linear filter computes each output pixel as a weighted sum of its neighboring pixels. These filters follow the principles of linearity and superposition, meaning the output changes proportionally to the input. Linear filters are mainly used for smoothing, sharpening and edge detection.
+
+A non-linear filter computes each output pixel using a non-linear function of neighboring pixels. These filters are effective for noise removal while preserving edges and details.
+
+For more info, see: [Computer Vision#Linear vs Non-Linear Filter](AI/cv.md)
+
+#### Explain Gaussian filtering and its purpose.
+
+Gaussian filtering is a type of linear smoothing filter used to reduce noise and blur an image in a controlled way. It uses a Gaussian function to assign weights to neighboring pixels, giving more importance to pixels near the center and less to those farther away. This weighted averaging preserves the general structure of the image while effectively removing high-frequency noise.
+
+For more info, see: [Computer Vision#Gaussian Filter](AI/cv.md)
+
+#### What are some commonly used image enhancement techniques?
+
+Image enhancement involves improving the visual appearance of an image or making it easier to analyze. The goal is to highlight important features, improve contrast, reduce noise, and make details more visible. Enhancement can be applied in the spatial domain (directly on pixels) or the frequency domain. The commonly used enhancement techniques include: 
+
+For more info, see: [Computer Vision#Image Enhancement](AI/cv.md)
+
+#### What is histogram equalization and how does it enhance images?
+
+Histogram equalization is an image enhancement technique that improves the contrast of an image by redistributing its intensity values. It spreads out the most frequent intensity values across the entire range, making dark regions brighter and bright regions darker when necessary. 
+
+For more info, see: [Computer Vision#Histogram Equalization](AI/cv.md)
+
+#### Explain the concept of color correction and its applications.
+
+Color correction is an image enhancement technique that adjusts the colors of an image to make them appear more natural, accurate or visually appealing. It is used to compensate for lighting conditions, sensor limitations or color casts caused by environmental factors. The goal is to ensure that objects in the image have the correct color representation and maintain consistent color balance across different images or scenes.
+
+For more info, see: [Computer Vision#](AI/cv.md)
+
+#### What are the different types of noise that can occur in images?
+
+Noise in images refers to unwanted random variations in pixel intensity which can degrade image quality and affect analysis. Noise can be introduced during image acquisition, transmission or compression. Different types of noise have distinct characteristics and require different filtering techniques for removal.
+
+For more info, see: [Computer Vision#Noise Reduction (Smoothing)](AI/cv.md)
+
+#### Explain different noise reduction techniques.
+
+Noise reduction techniques are used to remove unwanted variations in pixel intensity while preserving important image details like edges and textures. Include: Gaussian Filter, Median Filter, Non-Local Means, CNNs, GANs, Sptial FIltering, Bilateral FIltering.
+
+For more info, see: [Computer Vision#Noise Reduction (Smoothing)](AI/cv.md)
+
+#### What is Principal Component Analysis (PCA) and how is it used in image processing?
+
+Principal Component Analysis (PCA) is a dimensionality reduction technique that transforms high-dimensional data into a lower-dimensional space while retaining most of the important information. In image processing, It is often used to reduce the number of features or pixels, compress images, remove redundancy and extract the most significant patterns. It works by finding the principal components which are directions of maximum variance in the data and projecting the original image onto these components.
+
+For more info, see: [Computer Vision#Principal Component Analysis (PCA)](AI/cv.md)
+
+#### What are Affine Transformations in images?
+
+Affine transformations are geometric transformations that preserve points, straight lines and parallelism in an image. They are used to rotate, scale, translate, shear or reflect images while maintaining the general structure. Affine transformations are widely applied in image registration, object detection, image stitching, and geometric corrections. They can be represented using matrix multiplication and vector addition, making them computationally efficient for image processing tasks.
+
+For more info, see: [Computer Vision#Geometric Transformation](AI/cv.md)
+
+#### What are geometric transformations in image processing?
+
+Geometric transformations are operations that change the spatial arrangement of pixels in an image. These transformations are used to resize, rotate, translate, warp or map images to a different coordinate system. They are essential for tasks like image registration, object alignment, perspective correction and image stitching.
+
+For more info, see: [Computer Vision#Geometric Transformation](AI/cv.md)
+
+#### What are morphological operations and why are they useful?
+
+Morphological operations are image processing techniques that focus on the shape and structure of objects within an image. They analyze and process images using a small shape called a structuring element to probe and transform the objects. These operations are widely used in binary and grayscale images for tasks like noise removal, object segmentation and shape analysis.
+
+For more info, see: [Computer Vision#Morphological Operation](AI/cv.md)
+
+#### What is the morphological gradient?
+
+The morphological gradient is a morphological operation that highlights the edges or boundaries of objects in an image. It is computed as the difference between the dilation and erosion of an image using a structuring element. This operation emphasizes the transition regions between foreground and background, making it useful for edge detection and shape analysis in both binary and grayscale images.
+
+For more info, see: [Computer Vision#Morphological Operation](AI/cv.md)
 
 ### Agent
 

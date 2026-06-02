@@ -229,11 +229,214 @@ Definition: A transformation $T$ is linear if it satisfies:
 
 Singular Value Decomposition (SVD) is a factorization method in linear algebra that decomposes a matrix into three other matrices, providing a way to represent data in terms of its singular values.
 
-TODO
+SVD helps you split that table into three parts:
+
+- $U$: This part tells you about the people (like their general preferences).
+- $\sum$: This part shows how important each factor is (how much each rating matters).
+- $V^T$: This part tells you about the products (how similar they are to each other)
+
+To perform Singular Value Decomposition (SVD) for the matrix
+$$
+A = 
+\begin{bmatrix}
+3 & 2 & 2 \\
+2 & 3 & -2
+\end{bmatrix}
+$$
+, let's break it down step by step:
+
+1. Compute $AA^T$
+
+   First, we need to calculate the matrix $AA^T$ (*where* $A^T$ *is the transpose of matrix* $A$):
+   $$
+   A =
+   \begin{bmatrix}
+   3 & 2 & 2 \\
+   2 & 3 & -2
+   \end{bmatrix}
+   $$
+
+   $$
+   A^T = 
+   \begin{bmatrix}
+   3 & 2 \\
+   2 & 3 \\
+   2 & -2
+   \end{bmatrix}
+   $$
+
+   compute $AA^T$:
+   $$
+   AA^T =
+   \begin{bmatrix}
+   3 & 2 & 2 \\
+   2 & 3 & -2
+   \end{bmatrix}
+   
+   \cdot
+   
+   \begin{bmatrix}
+   3 & 2 \\
+   2 & 3 \\
+   2 & -2
+   \end{bmatrix}
+   
+   =
+   
+   \begin{bmatrix}
+   17 & 8 \\
+   8 & 17
+   \end{bmatrix}
+   $$
+
+2. Find the Eigenvalues of $AA^T$
+
+   To find the eigenvalues of $AA^T$, we solve the characteristic equation:
+   $$
+   det(AA^T - \lambda I) = 0
+   $$
+
+   $$
+   det
+   \begin{bmatrix}
+   17 - \lambda & 8 \\
+   8 & 17 - \lambda
+   \end{bmatrix}
+   =
+   0
+   $$
+
+   $$
+   (\lambda - 25)(\lambda - 9) = 0
+   $$
+
+   Thus, the eigenvalues are $\lambda_{1} = 25$ *and* $\lambda_{2} = 9$. These eigenvalues correspond to the singular values $\sigma_{1} = 5$ and $\lambda_{2} = 3$, since the singular values are the square roots of the eigenvalues.
+
+3. Find the Right Singular Vectors (Eigenvectors of $A^TA$)
+
+   Next, we find the eigenvectors of $A^T A$ for $\lambda = 25$ and $\lambda = 9$;
+
+   For $\lambda = 25$:
+
+   > Solve $(A^T A - 25I)v = 0$:
+   > $$
+   > A^T A - 25I =
+   > \begin{bmatrix}
+   > -12 & 12 & 2 \\
+   > 12 & -12 & -2 \\
+   > 2 & -2 & -17
+   > \end{bmatrix}
+   > $$
+   > Row-Reduce this matrix to:
+   > $$
+   > \begin{bmatrix}
+   > 1 & -1 & 0 \\
+   > 0 & 0 & 1 \\
+   > 0 & 0 & 0
+   > \end{bmatrix}
+   > $$
+   > The eigenvector corresponding to $\lambda = 25$ is:
+   > $$
+   > v_1 =
+   > \begin{bmatrix}
+   > \frac{1}{\sqrt{2}} \\
+   > \frac{1}{\sqrt{2}} \\
+   > 0
+   > \end{bmatrix}
+   > $$
+
+   For $\lambda = 9$:
+
+   > Solve $(A^T A - 9I)v = 0$:
+   >
+   > The eigenvector corresponding to $\lambda = 9$ is:
+   > $$
+   > v_2 =
+   > \begin{bmatrix}
+   > \frac{1}{\sqrt{18}} \\
+   > \frac{-1}{\sqrt{18}} \\
+   > \frac{4}{\sqrt{18}}
+   > \end{bmatrix}
+   > $$
+   > For the third eigenvector $v_3$:
+   >
+   > Since $v_3$ must be perpendicular to $v_1$ and $v_2$, we solve the system $v_{1}^{T}v_3 = 0$ and $v_{2}^{T}v_3 = 3$, leading to:
+   > $$
+   > v_3 =
+   > \begin{bmatrix}
+   > \frac{2}{3} \\
+   > \frac{-2}{3} \\
+   > \frac{-1}{3}
+   > \end{bmatrix}
+   > $$
+
+4. Compute the Left Singular Vectors (Matrix U)
+
+   To compute the left singular vectors $U$, we use the formula $u_i = \frac{1}{\sigma_{i}Av_i}$. This results in:
+   $$
+   U =
+   \begin{bmatrix}
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+   \frac{1}{\sqrt{2}} & \frac{-1}{\sqrt{2}}
+   \end{bmatrix}
+   $$
+
+5. Final SVD Equation
+
+   Finally, the Singular Value Decomposition of matrix $A$ is:
+   $$
+   A = U \sum V^T
+   $$
+   where:
+   $$
+   U =
+   \begin{bmatrix}
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+   \frac{1}{\sqrt{2}} & \frac{-1}{\sqrt{2}}
+   \end{bmatrix}
+   $$
+
+   $$
+   \sum = 
+   \begin{bmatrix}
+   5 & 0 & 0 \\
+   0 & 3 & 0
+   \end{bmatrix}
+   $$
+
+   $$
+   V =
+   \begin{bmatrix}
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+   \frac{1}{\sqrt{18}} & \frac{-1}{\sqrt{18}} & \frac{4}{\sqrt{18}} \\
+   \frac{2}{3} & \frac{-2}{3} & \frac{1}{3}
+   \end{bmatrix}
+   $$
+
+   Thus, the SVD of matrix A is:
+   $$
+   A =
+   \begin{bmatrix}
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+   \frac{1}{\sqrt{2}} & \frac{-1}{\sqrt{2}}
+   \end{bmatrix}
+   
+   \begin{bmatrix}
+   5 & 0 & 0 \\
+   0 & 3 & 0
+   \end{bmatrix}
+   
+   \begin{bmatrix}
+   \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+   \frac{1}{\sqrt{18}} & \frac{-1}{\sqrt{18}} & \frac{4}{18} \\
+   \frac{2}{3} & \frac{-2}{3} & \frac{1}{3} 
+   \end{bmatrix}
+   $$
+   This is the Result SVD matrix of matrix A.
 
 ### Signal Processing
 
-#### Discrete Fourier Transform
+#### Discrete Fourier Transform (DFT)
 
 The `Discrete Fourier Transform (DFT)` and its `Inverse (IDFT)` are core techniques in digital signal processing. They convert signals between the time or spatial domain and the frequency domain, revealing frequency components in data.
 
@@ -259,21 +462,252 @@ The `Discrete Fourier Transform (DFT)` and its `Inverse (IDFT)` are core techniq
 
 *Fast Fourier Transform (FFT)* is a mathematical algorithm widely used in image processing to transform images between the *spatial domain* and the *frequency domain*. ( It is like a special translator for images).
 
-TODO
+- Spatial domain
+
+  Each pixel in image has color or brightness value and together these values form the image you see. This is the spatial domain—the image described by its pixels.
+
+- Frequency domain
+
+  Now imagine describing the same image in a different way—not by the pixels directly, but by how patterns of light and dark change across the image.
+
+- frequency domain shows how much of these patterns (or frequencies) are present in the image)
 
 #### Principal Component Analysis (PCA)
 
 ![principal_component_analysis](res/principal_component_analysis.png)
 
-TODO
+PCA (Principal Component Analysis) is a dimensionality reduction technique and helps us to reduce the number of features in a dataset while keeping the most important information. It changes complex datasets by transforming correlated features into a smaller set of uncorrelated components.
+
+PCA uses linear algebra to transform data into new features called principal components. It finds these by calculating eigenvectors (directions) and eigenvalues (importance) from the covariance matrix. PCA selects the top components with the highest eigenvalues and projects the data onto them simplify the dataset. Here’s how it works step by step:
+
+1. Standardize the Data
+
+   Different features may have different units and scales like salary vs. age. To compare them fairly PCA first standardizes the data by making each feature have:
+
+   - A mean of 0
+   - A standard deviation of 1
+
+   $$
+   Z = \frac{X-\mu}{\sigma} 
+   $$
+
+   where:
+
+   - $\mu$ is the mean of independent features  $\mu = \left \{ \mu_1, \mu_2, \cdots, \mu_m \right \}$
+   - $\sigma$ is the standard deviation of independent features $\sigma = \left \{ \sigma_1, \sigma_2, \cdots, \sigma_m \right \}$
+
+2. Calculate Covariance Matrix
+
+   Next PCA calculates the covariance matrix to see how features relate to each other whether they increase or decrease together. The covariance between two features x_1 and x_2 is:
+   $$
+   cov(x1,x2) = \frac{\sum_{i=1}^{n}(x1_i-\bar{x1})(x2_i-\bar{x2})}{n-1}
+   $$
+   Where:
+
+   - $\bar{x}_1$, and $\bar{x}_2$ are the mean values of features $x_1$ and $x_2$
+   - $n$ is the number of data points
+
+   The value of covariance can be positive, negative or zeros.
+
+3. Find the Principal Components
+
+   PCA identifies new axes where the data spreads out the most:
+
+   - 1st Principal Component (PC1): The direction of maximum variance (most spread).
+   - 2nd Principal Component (PC2): The next best direction, perpendicular to PC1 and so on.
+
+   These directions come from the eigenvectors of the covariance matrix and their importance is measured by eigenvalues. For a square matrix A an eigenvector X (a non-zero vector) and its corresponding eigenvalue λ satisfy:
+   $$
+   AX = \lambda X
+   $$
+   
+
+   This means:
+
+   - When $A$ acts on $X$ it only stretches or shrinks $X$ by the scalar $\lambda$.
+   - The direction of $X$ remains unchanged hence eigenvectors define "stable directions" of $A$.
+
+   Eigenvalues help rank these directions by importance.
+
+4. Pick the Top Directions & Transform Data
+
+   After calculating the eigenvalues and eigenvectors PCA ranks them by the amount of information they capture. We then:
+
+   - Select the top k components that capture most of the variance like 95%.
+   - Transform the original dataset by projecting it onto these top components.
+
+   ![transform_dataset](res/transform_dataset.png)
+
+   In the above image the original dataset has two features "Radius" and "Area" represented by the black axes. PCA identifies two new directions: PC₁ and PC₂ which are the principal components.
+
+   - These new axes are rotated versions of the original ones. PC₁ captures the maximum variance in the data meaning it holds the most information while PC₂ captures the remaining variance and is perpendicular to PC₁.
+   - The spread of data is much wider along PC₁ than along PC₂. This is why PC₁ is chosen for dimensionality reduction. By projecting the data points (blue crosses) onto PC₁ we effectively transform the 2D data into 1D and retain most of the important structure and patterns.
+
+### Convolution
+
+Convolution is a mathematical operation that combines two functions to produce a third function. In the context of signal processing and image processing, it involves applying a filter (also known as a kernel) to an input signal or image. The convolution operation is often denoted by the symbol `*`, and it is used to express how one function (the filter) modifies another (the input signal or image).
+
+#### 1D Convolution
+
+In 1D convolution, the filter is a 1D array, and the convolution operation is performed by sliding the filter over the input signal and computing the sum of element-wise products at each position.
+$$
+(f \times g)[n] = \sum_{m = -\infty}^{\infty}f[m] \cdot g[n - m]
+$$
+The formula represents the mathematical formula for the discrete convolution of two sequences $f$ and $g$.
+
+- $f$ and $g$ are discrete sequences.
+- $(f \times g)[n]$ denotes the convolution output at the position $n$.
+- the summation is performed over all possible values of m (from negative infinity to positive infinity).
+
+#### 2D Convolution
+
+In 2D convolution, the filter is a 2D matrix, and the convolution operation is applied to a 2D input, such as an image. The filter is moved across the image, and at each position, the element-wise product is computed and summed.
+$$
+(I * K)[i, j] = \sum_{m}\sum_{n}I[i - m, j - n] \cdot K[m, n]
+$$
+The formula represents the mathematical formula for the 2D discrete convolution of an image I with a kernel K.
+
+- $I$ and $K$ are 2D matrices representing an image and a convolution kernel, respectively.
+- $(I * K)[i, j]$ denotes the convolution output at position $(i, j)$.
+- The summation is performed over all possible values of m and $n$.
+
+### Deconvolution
+
+Deconvolution is a computational process that aims to invert a [convolution operation](#Convolution), reconstructing the original signal or image from its convolved representation. Convolution involves the mathematical integration of an input signal with a filter or kernel, producing a transformed output. Deconvolution is employed to reverse this convolution process, undoing the effects of the convolution and restoring the initial signal or image.
+
+In the discrete domain, the 1D deconvolution is defined as:
+$$
+(f \otimes g)[n] = \sum mf[n - m] \cdot g[m]
+$$
+And for 2D signals:
+$$
+(I \otimes K)[i, j] = \sum m \sum nI[i + m, j + n] \cdot K[m, n]
+$$
+
+#### Fourier Transform
+
+The convolution operation in the spatial domain is equivalent to multiplication in the frequency domain. Mathematically, if $F$ is the Fourier transform of $f$ and $G$ is the `Fourier transform` of g, then :
+$$
+F(f \times g) = F \cdot G
+$$
+Deconvolution, in turn, involves dividing the Fourier transform of the convolved signal by the Fourier transform of the kernel:
+$$
+F(f \otimes g) = GF
+$$
+
+#### Inverse Filtering
+
+Deconvolution can be seen as a form of inverse filtering. If H is the Fourier transform of the kernel, then the inverse filter is given by:
+$$
+F(f \otimes g) = 1 / H \cdot F
+$$
+However, inverse filtering can be sensitive to noise, and regularization techniques are often employed to stabilize the deconvolution process.
+
+#### Wiener Deconvolution
+
+Wiener deconvolution is a common approach that combines information from the observed signal, the point spread function (PSF), and an estimate of the noise to recover the original signal. The Wiener deconvolution in the Fourier domain is given by:
+$$
+F(f \otimes g) = G^{*} | G | 2 + NSG^{*} \cdot F
+$$
+Here, $G^{*}$ is the complex conjugate of $G$ , and $S/N$ is the signal-to-noise ratio.
+
+### Covariance
+
+Covariance measures how two random variables change together. It is calculated by averaging the product of their deviations from their means. A positive value means they move in the same direction, while a negative value means they move in opposite directions.
+
+![types_of_covariance](res/types_of_covariance.png)
+
+- Positive Covariance
+
+  When one variable increases, the other variable tends to increase as well and vice versa.
+
+- Negative Covariance
+
+  When one variable increases, the other variable tends to decrease.
+
+- Zero Covariance
+
+  There is no linear relationship between the two variables; they move independently of each other.
+
+#### Covariance Formula
+
+1. Sample Covariance
+   $$
+   Cov_{S}(X, Y) = \frac{1}{n - 1}\sum_{i = 1}^{n}(X_i - X)(Y_i - Y)
+   $$
+   where:
+
+   - $X_i$: The $i$th value of the variable $X$ in the sample.
+   - $Y_i$: The $i$th value of the variable $Y$ in the sample.
+   - $X$: The sample mean of variable $X$ (i.e., the average of all $X_i$ values in the sample).
+   - $Y$: The sample mean of variable $Y$ (i.e., the average of all $Y_i$ values in the sample).
+   - $n$: The number of data points in the sample.
+   - $\sum$: The summation symbol means we sum the products of the deviations for all the data points.
+   - $n$- 1: This is the degrees of freedom. When working with a sample, we divide by $n - 1$ to correct for the bias introduced by estimating the population covariance based on the sample data. This is known as Bessel's correction.
+
+2. Population Covariance
+   $$
+   Cov_{P}(X, Y) = \frac{1}{n}\sum_{i = 1}^{n}(X_i - \mu_{X})(Y_i - \mu_{Y})
+   $$
+   where:
+
+   - $X_i$: The $i$th value of the variable $X$ in the population.
+   - $Y_i$: The $i$th value of the variable $Y$ in the population.
+   - $\mu_{X}$: The population mean of variable $X$ (i.e., the average of all $X_i$ values in the population).
+   - $\mu_{Y}$: The population mean of variable $Y$ (i.e., the average of all $Y_i$ values in the population).
+   - $n$: The total number of data points in the population.
+   - $\sum$: The summation symbol means we sum the products of the deviations for all the data points.
+   - $n$: In the case of population covariance, we divide by $n$ because we are using the entire population data. There’s no need for Bessel’s correction since we’re not estimating anything.
+
+### Correlation
+
+Correlation is a standardized measure of the strength and direction of the linear relationship between two variables. It is derived from covariance and ranges between -1 and 1. Unlike covariance, which only indicates the direction of the relationship, correlation provides a standardized measure.
+
+![types_of_correlation](res/types_of_correlation.png)
+
+- Positive Correlation (close to +1)
+
+  As one variable increases, the other variable also tends to increase.
+
+- Negative Correlation (close to -1)
+
+  As one variable increases, the other variable tends to decrease.
+
+- Zero Correlation
+
+  There is no linear relationship between the variables.
+
+The correlation coefficient $\rho$ for variables X and Y is defined as:
+
+1. Correlation takes values between -1 to +1, wherein values close to +1 represents strong positive correlation and values close to -1 represents strong negative correlation.
+2. The variables may be negatively related (i.e., move in opposite directions).
+3. It gives the direction and strength of relationship between variables.
+
+Forrelation Formula:
+$$
+Corr(x, y) = \frac{\sum_{i = 1}^{n}(x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i = 1}^{n}(x_i - \overline{x})^2 \sum_{i = 1}^{n}(y_i - \overline{y})^2}}
+$$
+here,
+
+- $x'$ and $y'$: mean of given sample set
+- $n$: total no of sample
+- $x_i$ and $y_i$: individual sample of set
+
+---
 
 
 
 ## Intro
 
-![cv_intro](res/cv_intro.png)
+![cv_arch](res/cv_arch.png)
 
 Computer Vision (CV) in artificial intelligence (AI) help machines to interpret and understand visual information similar to how humans use their eyes and brains. It involves teaching computers to analyze and understand images and videos, helping them "see" the world.
+
+### Pixel and Resolution
+
+A **pixel**, short for "picture element," is the smallest unit of a digital image or display that can be controlled or manipulated. Pixels are the smallest fragments of a digital photo. Pixels are tiny square or rectangular elements that make up the images we see on screens, from smartphones to televisions.
+
+The word **resolution** may mean many things. It is used to describe the crispness and clarity of the images seen on screens in the context of digital technology, which are based on the number of pixels arranged both horizontally and vertically. Image resolution, which expresses the amount of information in digital pictures and is measured in `pixels per inch (PPI)` or `dot per inch (DPI)`, is essential for producing high-quality prints and visual presentations.
 
 ### Computer Vision Workflow
 
@@ -319,11 +753,13 @@ Computer Vision (CV) in artificial intelligence (AI) help machines to interpret 
 
    OCR helps in recognizing text in images, such as scanning documents or extracting text from pictures of signs. It’s used in document scanners, translation apps, and more.
 
+---
 
 
-## Image Process
 
-### Image Representation and Pixels
+## Image Processing
+
+### Image Representation
 
 As we know, images are represented in rows and columns we have the following syntax in which images are represented: 
 $$
@@ -335,9 +771,7 @@ f(1, 0) & f(1, 1) & f(1, 2) & \cdots & f(1, N - 1)\\
 f(M - 1, 0) & f(M - 1, 1) & f(M - 1, 2) & \cdots & f(M - 1, N - 1)\\
 \end{bmatrix}
 $$
-The right side of this equation is digital image by definition. Every element of this matrix is called image element , picture element , or pixel. 
-
-A pixel, short for "picture element," is the smallest unit of a digital image or display that can be controlled or manipulated. Pixels are the smallest fragments of a digital photo. Pixels are tiny square or rectangular elements that make up the images we see on screens, from smartphones to televisions.
+The right side of this equation is digital image by definition. Every element of this matrix is called image element , picture element , or [pixel](#Pixel and Resolution). 
 
 ### Image Transformation
 
@@ -554,6 +988,32 @@ This process expands the range of intensity levels in an image so that it spans 
 
 ### Image Enhancement
 
+Image enhancement is the process of improving the quality and appearance of an image. It can be used to correct flaws or defects in an image or to simply make an image more visually appealing.
+
+#### Contrast Enhancement
+
+Improves the difference between dark and bright regions. Makes features more distinguishable in an image.
+
+#### Brightness Adjustment
+
+Modifies the overall lightness of the image. Achieved by adding or subtracting constant values to pixel intensities. Helps in making dark images clearer or reducing overexposure.
+
+#### Sharpening
+
+Enhances edges and fine details in an image. Makes features clearer and more defined.
+
+#### Endge Enchancement
+
+Highlights boundaries between objects or regions in an image. Helps in feature extraction and object detection.
+
+#### Color Enhancement
+
+Improves color balance, saturation or hue. Enhances visual appeal or clarifies features in colored images.
+
+#### Frequency Domain Enhancement
+
+Applies filters in the frequency domain to improve image quality. Can remove noise or enhance details based on frequency components.
+
 #### Histogram Equalization
 
 The histogram of a digital image, with intensity levels between 0 and (L-1), is a function $h(r_k) = n_k$, where $r_k$ is the $k$th intensity level and $n_k$ is the number of pixels in the image having that intensity level. We can also normalize the histogram by dividing it by the total number of pixels in the image. For an N x N image, we have the following definition of a normalized histogram function: 
@@ -607,9 +1067,70 @@ s_k = T(r_k) = (L - 1)\sum_{j = 0}^{k}p_r(r_j) = \frac{(L - 1)}{N^2}\sum_{j = 0}
 $$
 Since $s$ must have integer values, any non-integer value obtained from the above function is rounded off to the nearest integer. 
 
-### Noise Reduction
+### Noise Reduction (Smoothing)
 
 Image denoising techniques in computer vision are essential for enhancing the quality of images corrupted by noise, thereby improving the accuracy of subsequent image processing tasks. 
+
+Types of Noise:
+
+1. Gaussian Noise
+
+   Gaussian noise arises in an image due to factors such as electronic circuit noise and sensor noise due to poor illumination or high temperature.
+   $$
+   p(z) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(z - m)^2}{2\sigma^{2}}}
+   $$
+   Here, $m$ is the mean and $\sigma^{2}$ is the variance. 
+
+2. Rayleigh Noise
+   $$
+   p(z) = \frac{2}{b}(z - a)e^{-\frac{(z - a)^2}{b}} \text{ for } z \geq a, \text{ and } p(z) = 0 \text{ otherwise}
+   $$
+   Here mean $m$ and variance $\sigma^{2}$ are the following:
+   $$
+   m = a + \sqrt{\pi b / 4} \\
+   \sigma^{2} = \frac{b(4 - \pi)}{4}
+   $$
+   Rayleigh noise is usually used to characterize noise phenomena in range imaging. 
+
+3. Erlang (or gamma) Noise
+   $$
+   p(z) = \frac{a^b z^{b - 1}}{(b - 1)!}e^{-az} \text{ for } z \geq 0 \text{ and } p(z) = 0 \text{ otherwise}.
+   $$
+   Here ! indicates factorial. The mean and variance are given below:
+   $$
+   m = b / a, \sigma2 = b / a2
+   $$
+   Gamma noise density finds application in laser imaging.
+
+4. Exponential Noise
+   $$
+   p(z) = ae^{-az} \text{ for } z \geq 0 \text{ and } p(z) = 0 \text{ otherwise.}
+   $$
+   Here $a > 0$. The mean and variance of this noise pdf are:
+   $$
+   m = 1 / a, \sigma2 = 1/\sigma2
+   $$
+   This density function is a special case of b = 1. 
+
+   Exponential noise is also commonly present in cases of laser imaging.
+
+5. Uniform Noise
+   $$
+   p(z) = \frac{1}{b - a} \text{ if } a \leq z \leq b, \text{ and } p(z) = 0 \text{ otherwise.}
+   $$
+   The mean and variance are given below.
+   $$
+   m = \frac{a + b}{2} \sigma^{2} = \frac{(b - a)^{2}}{12}
+   $$
+   Uniform noise is not practically present but is often used in numerical simulations to analyze systems.
+
+6. Impulse Noise
+   $$
+   p(z) = Pa \text{ for } z = a, \\
+   p(z) = Pb \text{ for } z = b, \\
+   p(z) = 0 \text{ otherwise}
+   $$
+   If b > a, intensity b will appear as a light dot in the image.
 
 #### Gaussian Filter
 
@@ -618,11 +1139,21 @@ The Gaussian filter blurs the image as output is an average of the pixels value 
 - Small sigma: They have less smoothing which retains more of the features and details of the objects and surfaces.
 - Large sigma: A little more smoothing, which is even capable of washing out the important features.
 
+The 2D Gaussian function is defined as:
+$$
+G(x, y) = \frac{1}{2\pi\sigma^{2}}e^{-\frac{x^2 + y^2}{2\sigma^{2}}}
+$$
+where:
+
+- $x$, $y$ are the coordinates
+- Mathematical Constant PI (value = 3.13)
+- $\sigma$ is the Standard Deviation
+
 #### Median Filter
 
 The Median filter is a non-linear filter that replaces each pixel value with median value of the pixels in its neighborhood. This filter proves quite useful in the removal of salt-and-pepper noise which is characterized by isolated black and white speckles. The Median filter works well because:
 
-Actually, it yields edges in better preservation than the Gaussian filter.
+Actually, it yields edges in better preservation than the [Gaussian filter](#Gaussian Filter).
 
 - It can effectively filter out any noise particularly the outliers WHILE at the same time making sure that overall important features will not be lost.
 - The size of the neighborhood or the kernel by which we can increase or reduce defines the degree of noise removal or the degree of detail preservation.
@@ -742,6 +1273,26 @@ $$
 
 Gradient highlights the boundaries of objects by finding difference between their dilated and eroded versions. It’s useful for detecting edges and outlining shapes without affecting their internal regions.
 
+### Image Compression
+
+Image compression is used to make image file sizes smaller so that they take up less space on a computer and can be shared faster over the internet. The goal is to reduce the file size without changing how the image looks. In computers, images are made up of tiny blocks called `pixels,` and each pixel stores an information intensity value (colour). When an image is very large, it contains millions of these numbers, which means the file size becomes big.
+
+To compress an image we usually follow three main steps:
+
+1. Transforming The Image
+
+   ![transforming_image](res/transforming_image.png)
+
+2. Quantization
+
+   Once we have transformed the image, we get many numbers. Some of these numbers are very small and don’t contribute much to how the image looks. In quantization, we `reduce the number of different values` by rounding them off to the nearest level.
+
+3. Symbol Encoding
+
+   After quantization we are left with few values and some values like 0s might repeat many times. In this step we use `smart coding methods` to save more space.
+
+---
+
 
 
 ## Feature Extraction
@@ -776,11 +1327,11 @@ Steps Involved:
 
 1. Smoothing
 
-   The first step involves reducing noise in the image using a Gaussian filter: $G(x, y) = \frac{1}{2\pi\sigma^{2}}e^{\frac{x^2 + y^2}{2\sigma^{2}}}$. The image is convolved with this Gaussian kernel to produce a smoothed image.
+   The first step involves reducing noise in the image using a  [Gaussian filter](#Gaussian Filter). The image is convolved with this Gaussian kernel to produce a smoothed image.
 
 2. Finding Gradients
 
-   The gradients of the smoothed image are computed using finite difference approximations, typically with the Sobel
+   The gradients of the smoothed image are computed using finite difference approximations, typically with the Sobel operator
 
    operator: 
    $$
@@ -841,7 +1392,7 @@ By combining the results from both it finds the overall edge strength and direct
 
 #### Prewitt Operator
 
-It is very similar to the Sobel Operator, but with a slight difference is that it calculates the edge gradients. Like Sobel, it detects edges in the horizontal and vertical directions using two 3×3 matrices, but it uses a *uniform averaging technique* in its kernel, making it less accurate than Sobel but faster and simpler to implement:
+It is very similar to the [Sobel Operator](#Sobel Operator), but with a slight difference is that it calculates the edge gradients. Like Sobel, it detects edges in the horizontal and vertical directions using two 3×3 matrices, but it uses a *uniform averaging technique* in its kernel, making it less accurate than Sobel but faster and simpler to implement:
 $$
 G_x = 
 \begin{pmatrix}
@@ -886,9 +1437,23 @@ $$
 G = \sqrt{G_{x}^{2} + G_{y}^{2}}
 $$
 
+#### Difference of Gaussian (DoG)
+
+The Difference of Gaussian (DoG) is an edge detection technique that approximates the Laplacian of Gaussian by subtracting two Gaussian-blurred versions of the image with different standard deviations. This method is simpler and faster to compute than LoG while providing similar edge detection capabilities.
+
+Mathematical Formulation:
+
+1. Gaussian Smoothing
+
+   The image is smoothed using two [Gaussian filter](#Gaussian Filter) with different standard deviations, $\sigma_{1}$ and $\sigma_{2}$: $G_1(x, y) = \frac{1}{2\pi\sigma_{1}^{2}}e^{-\frac{x^2 + y^2}{2\sigma_{1}^{2}}}, G_2(x, y) = \frac{1}{2\pi\sigma_{2}^{2}}e^{-\frac{x^2 + y^2}{2\pi_{2}^{2}}}$
+
+2. Difference of Gaussian
+
+   The DoG is computed by subtracting the two Gaussian-blurred images: $DoG(x, y) = (G_{\sigma_{1}(x, y)} - G_{\sigma_{2}}(x, y)) * I(x, y)$
+
 #### Laplacian of Gaussian (LoG)
 
-*Marr-Hildreth Operator* is also called *Laplacian of Gaussian (LoG)* and it is a *Gaussian-based edge detection method*. It works by first smoothing the image using a Gaussian filter to remove noise and then applying the Laplacian operator to detect regions where the intensity changes sharply. The LoG operator first smooths the image using a Gaussian filter to reduce noise then applies the Laplacian to detect edges. It detects edges at zero-crossings where the result changes from positive to negative.
+*Marr-Hildreth Operator* is also called *Laplacian of Gaussian (LoG)* and it is a *Gaussian-based edge detection method*. It works by first smoothing the image using a [Gaussian filter](#Gaussian Filter) to remove noise and then applying the Laplacian operator to detect regions where the intensity changes sharply. The LoG operator first smooths the image using a [Gaussian filter](#Gaussian Filter) to reduce noise then applies the Laplacian to detect edges. It detects edges at zero-crossings where the result changes from positive to negative.
 $$
 LoG(x, y) = (\frac{x^2 + y^2 - 2\sigma^{2}}{\sigma^{4}}) \cdot e^{-\frac{x^2 + y^2}{2\sigma^{2}}}
 $$
@@ -912,23 +1477,23 @@ Mathematical Formulation:
 
 Use LoG when your image is noisy, and you need to clean it.
 
-#### Difference of Gaussian (DoG)
+### Corner and Interest Point Detection
 
-The Difference of Gaussian (DoG) is an edge detection technique that approximates the Laplacian of Gaussian by subtracting two Gaussian-blurred versions of the image with different standard deviations. This method is simpler and faster to compute than LoG while providing similar edge detection capabilities.
+An **interest point** can be defined as a location or a part of an image that possesses a distinct texture or exhibits unique characteristics such as the intersection of multiple edge segments or a rapid change in the direction of edges. These interest points are distinguished by their ability to maintain stability even when subjected to variations in scale, rotation, and lighting conditions. Mainly, it is of paramount importance to accurately compute these interest points with a high level of consistency, ensuring effective and reliable detection.
 
-Mathematical Formulation:
+#### Harris Corner Detection
 
-1. Gaussian Smoothing
+Harris Corner Detection is a key technique in computer vision for detecting corners in images. It works by analyzing how the intensity of the image changes in different directions, helping us identify areas with significant variations which are considered corners.
 
-   The image is smoothed using two Gaussian filters with different standard deviations, $\sigma_{1}$ and $\sigma_{2}$: $G_1(x, y) = \frac{1}{2\pi\sigma_{1}^{2}}e^{\frac{x^2 + y^2}{2\sigma_{1}^{2}}}, G_2(x, y) = \frac{1}{2\pi\sigma_{2}^{2}}e^{\frac{x^2 + y^2}{2\pi_{2}^{2}}}$
+### Feature Detection
 
-2. Difference of Gaussian
+**Feature Descriptor** is basically a way of representing a part of an image that has some distinctive or interesting characteristics. It is usually a set of numbers that describe the appearance, shape, or texture of the region around a key point, which is a point of interest in the image. Feature descriptors are useful for comparing and matching images, as they allow algorithms to find similar regions or objects in different images.
 
-   The DoG is computed by subtracting the two Gaussian-blurred images: $DoG(x, y) = (G_{\sigma_{1}(x, y)} - G_{\sigma_{2}}(x, y)) * I(x, y)$
+**Feature Vector** is defined as a mathematical representation of the feature descriptor in a vector format with one or more dimensions. It is basically a one-dimensional vector that encapsulates information from a feature descriptor to a multi-dimensional feature space. It can also take the form of a text or mathematical-logical descriptions of an interest point. It compiles diverse pieces of information related to an object. 
 
 #### Scale Invariant Feature Transform (SIFT)
 
-*SIFT (Scale Invariant Feature Transform)* Detector is used in the detection of *interest points* on an input image. Unlike the *Harris Detector*, which is dependent on properties of the image such as viewpoint, depth, and scale, SIFT can perform feature detection independent of these properties of the image. This is achieved by the transformation of the image data into *scale-invariant coordinates*. The SIFT Detector has been said to be a close approximation of the system used in the primate visual system.
+**SIFT (Scale Invariant Feature Transform)** Detector is used in the detection of *interest points* on an input image. Unlike the *Harris Detector*, which is dependent on properties of the image such as viewpoint, depth, and scale, SIFT can perform feature detection independent of these properties of the image. This is achieved by the transformation of the image data into *scale-invariant coordinates*. The SIFT Detector has been said to be a close approximation of the system used in the primate visual system.
 
 ![sift_detector_steps](res/sift_detector_steps.png)
 
@@ -986,7 +1551,7 @@ Key Steps in SURF:
 
    Construct a descriptor by considering the Haar wavelet responses in the horizontal and vertical directions within a square region around the keypoint, resulting in a 64-dimensional vector.
 
-#### Oriented FAST and Rotated BRIEF (ORB)
+#### Oriented FAST and Rotated BRIEF (OFRB)
 
 The ORB (Oriented FAST and Rotated BRIEF) algorithm is an efficient method for feature matching. It combines FAST which detects keypoints and BRIEF which describes those keypoints. Since BRIEF struggles with rotation, ORB makes it better by rotating the descriptors based on the keypoints orientation. It is a great alternative to SIFT and SURF, providing similar results without licensing fees, as it is patent-free.
 
@@ -996,21 +1561,97 @@ TODO
 
 This algorithm checks directly surrounding pixels of every single pixel. The goal is to check how darker is the current pixel compared to the surrounding pixels. The algorithm draws and arrows showing the direction of the image getting darker. It repeats the process for each and every pixel in the image. At last, every pixel would be replaced by an arrow, these arrows are called **Gradients**. These gradients show the flow of light from light to dark. By using these gradients algorithms perform further analysis.
 
-#### Harris Corner Detector
+### Feature Matching
+
+#### Brute-Force Matching
 
 TODO
 
-#### Wavelet Transform
+#### Fast Library for Approximate Nearest Neighbors (FLANN)
 
 TODO
 
-#### Structured Forests
+#### Random Sample Consensus (RANSAC)
 
 TODO
 
-#### Convolutional Neural Networks (CNNs)
+---
 
-TODO
+
+
+## Image Segmentation
+
+Image Segmentation is a computer vision technique used to divide an image into multiple segments or regions, making it easier to analyze and understand specific parts of the image. It helps identify objects, boundaries and relevant features within an image for further processing.
+
+Various types of image segmentation techniques are:
+
+1. Semantic Segmentation
+
+   ![semantic_segmentation](res/semantic_segmentation.png)
+
+   Semantic Segmentation involves assigning a class label to every pixel in an image based on shared characteristics such as colour, texture and shape.
+
+2. Instance Segmentation
+
+   ![instance_segmentation](res/instance_segmentation.png)
+
+   Instance Segmentation extends semantic segmentation by not only labelling colour of each pixel but also distinguishing between individual objects of the same class.
+
+3. Panoptic Segmentation
+
+   ![panoptic_segmentation](res/panoptic_segmentation.png)
+
+   Panoptic segmentation combines both semantic and instance segmentation techniques providing a complete image analysis.
+
+### U-Net
+
+U-Net is a kind of neural network mainly used for image segmentation which means dividing an image into different parts to identify specific objects for example separating a tumor from healthy tissue in a medical scan. The name “U-Net” comes from the shape of its architecture which looks like the letter “U” when drawn.
+
+![unet_arch](res/unet_arch.png)
+
+- Contracting Path (Encoder)
+
+  - Uses small filters (3×3 pixels) to scan the image and find features.
+  - Apply an activation function called ReLU to add non-linearity help the model to learn better.
+  - Uses max pooling (2×2 filters) to shrink the image size while keeping important information. This helps the network focus on bigger features.
+
+- Bottleneck
+
+  The middle of the “U” where the most compressed and abstract information is stored. It links the encoder and decoder.
+
+- Expansive Path (Decoder)
+
+  - Uses upsampling i.e increasing image size to get back the original image size.
+  - Combines information from the encoder using “skip connections.” These connections help the decoder get spatial details that might have been lost when shrinking the image.
+  - Uses convolution layers again to clean up and refine the output.
+
+After understanding the architecture, it’s important to see how U-Net actually processes data to perform segmentation:
+
+1. Input Image
+
+   The process starts by feeding a medical or other input image typically grayscale into the network.
+
+2. Feature Extraction (Encoder)
+
+   The encoder extracts increasingly abstract features by applying convolutions and downsampling. At each level the spatial size decreases while the number of feature channels increases and allow the model to capture higher-level patterns.
+
+3. Bottleneck Processing
+
+   This is the middle part of the network where the image is reduced the most. It holds a small but very meaningful version of the image that captures the main features.
+
+4. Reconstruction and Localization (Decoder)
+
+   The decoder begins to reconstruct the original image size through upsampling. At each level it combines decoder features with corresponding encoder features using skip connections to retain fine-grained spatial details.
+
+5. Skip Connections for Precision
+
+   Skip connections help preserve spatial accuracy by bringing forward detailed features from earlier layers. These are especially useful when the model needs to distinguish boundaries in segmentation tasks.
+
+6. Final Prediction
+
+   A 1×1 convolution at the end converts the refined feature maps into the final segmentation map where each pixel is classified into a specific class like foreground or background. This output has the same spatial resolution as the input image.
+
+---
 
 
 
@@ -1026,8 +1667,6 @@ Types of Image Classification:
 2. Multiclass Classification: It involves categorizing images into more than two classes. For example, classifying images of different types of animals.
 3. Multilabel Classification: It allows an image to be associated with multiple labels. For example, an image might be classified as both "sunset" and "beach."
 4. Hierarchical Classification: It involves classifying images at multiple levels of hierarchy. For example, an image of an animal can first be classified as a "mammal" and then further classified as "cat" or "dog".
-
-### Image Classification Workflow
 
 The image classification process involves several steps:
 
@@ -1050,8 +1689,6 @@ The image classification process involves several steps:
 5. Deployment
 
    After validation, the model is deployed to classify new images in real-time or batch mode for practical applications.
-
-#### Image Classification Evaluation Metrics
 
 To measure the performance of an image classification model, several metrics which are commonly used are:
 
@@ -1087,6 +1724,8 @@ One of the most used capabilities of supervised machine learning techniques is f
 
 Zero-shot learning (ZSL) allows models to classify objects they’ve never seen by using semantic information. The [Contrastive Language-Image Pretraining (CLIP) ](#Contrastive Language-Image Pretraining (CLIP))model represents a significant advancement in zero-shot learning. Unlike traditional deep learning models that are limited to a fixed set of output classes, CLIP can generalize to new tasks and classes by combining image and text embeddings.
 
+---
+
 
 
 ## Object Detection
@@ -1110,116 +1749,11 @@ Types of object detection methods:
 1. Two-Stage Detectors: These detectors work in two stages: first, they will propose candidate region and then classify the region into categories. Some of the two stage detectors are R-CNN, Fast R-CNN and Faster R-CNN.
 2. Single-stage Detectors: In a single pass, these detectors accurately forecast the bounding boxes and class probabilities for every area of the picture. `YOLO (You Only Look Once)` and `SSD (Single Shot MultiBox Detector)` are two examples.
 
-### YOLO (You Only Look Once)
-
-YOLO was proposed by Joseph Redmond et al. in 2015 to deal with the problems faced by the object recognition models at that time, Fast R-CNN was one of the models at that time but it had its own challenges such as that network could not be used in real-time because it took 2-3 seconds to predict an image and therefore could not be used in real-time. Whereas in YOLO we have to look only once in the network i.e. only one forward pass is required through the network to make the final predictions.  
-
-![yolo_arch](res/yolo_arch.png)
-
-- Input Preprocessing
-
-  The model accepts an image as input. It resizes the input image to 448×448 pixels ensuring that the aspect ratio is preserved using padding. This ensures uniformity of input dimensions across the network which is essential for batch processing in deep learning.
-
-- Backbone Convolutional Neural Network (CNN)
-
-  After preprocessing the image is passed through a deep CNN architecture designed for object detection:
-
-  - The model consists of *24 convolutional layers* and *4 max-pooling layers*.
-  - These layers help in extracting hierarchical spatial features from the image.
-
-- Use of 1×1 and 3×3 Convolutions:
-
-  - To reduce the number of parameters and compress channels, 1×1 convolutions are employed.
-  - These are followed by 3×3 convolutions to capture spatial patterns in the feature maps.
-  
-  This design pattern i.e 1×1 followed by 3×3 improves computational efficiency while maintaining expressive power.
-  
-- Fully Connected Layers
-
-  Following the convolutional layers, the architecture has 2 fully connected layers. The final fully connected layer produces an output of shape (1, 1470).
-  
-- Cuboidal Prediction Output
-
-  The output vector of size 1470 is reshaped to (7, 7, 30). Here, 7×7 represents the grid cells, and 30 represents the prediction vector for each cell:
-  $$
-  30 = (2 \text{ bounding boxes} \times 5) + (20 \text{ class probabilities}) 
-  $$
-
-- Activation Functions
-
-  The architecture predominantly uses Leaky ReLU as its activation function. The Leaky ReLU is defined as:
-  $$
-  f(x) = \begin{cases} x, & \text{if } x > 0 \\ 0.01x, & \text{if } x \leq 0 \end{cases} 
-  $$
-  This activation allows a small gradient when the unit is not active, preventing dead neurons.
-
-- Output Layer Activation
-
-  The last layer uses a linear activation function, suitable for making raw predictions like bounding box coordinates and confidence scores.
-
-- Regularization Techniques
-
-  1. *Batch Normalization* is employed across layers to stabilize and accelerate training.
-  2. *Dropout* is also incorporated to prevent overfitting by randomly deactivating neurons during training, encouraging the network to learn more robust features.
-
-#### YOLO Training Process
-
-YOLO uses sum-squared error loss function which is easy to optimize. However, this function gives equal weight to the classification and localization task. The loss function defined in YOLO as follows: 
-$$
-\lambda_{coord} \sum_{i = 0}^{S^2} \sum_{j = 0}^{B} \mathbb{1}_{ij}^{obj}[(x_i - \hat{x_i})^{2} + (y_i - \hat{y_i})^{2}] \\
-+ \lambda_{coord}\sum_{i = 0}^{S^2}\sum_{j = 0}^{B} \mathbb{1}_{ij}^{obj}[(\sqrt{w_i} - \sqrt{\hat{w_i}})^2 + (\sqrt{h_i} - \sqrt{\hat{h_i}})^2] \\
-+ \sum_{i = 0}^{S^2}\sum_{j = 0}^{B}\mathbb{1}_{ij}^{obj}(C_i - \hat{C_i})^2 \\
-+ \lambda_{noobj}\sum_{i = 0}^{S^2}\sum_{j = 0}^{B} \mathbb{1}_{ij}^{noobj}(C_i - \hat{C_i})^2 \\
-+ \sum_{i = 0}^{S^2} \mathbb{1}_{i}^{obj} \sum_{c \in classes}(p_i(c) - \hat{p_i}(c))^2
-$$
-where:
-
-- $l_{i}^{obj}$ denotes if object is present in cell $i$.
-- $l_{ij}^{obj}$ denotes $j_{th}$ bounding box responsible for prediction of object in the cell $i$. 
-- $\lambda_{coord}$ and $\lambda_{noobj}$ are regularization parameter required to balance the loss function. 
-
-In this model, we take $\lambda_{coord}=5$ and $\lambda_{noobj}=5$.
-
-The first two parts of the above loss equation represent localization mean-squared error, but the other three parts represent classification error:
-
-- Localization Error
-  1. The first term calculates the deviation from the ground truth bounding box.
-  2. The second term calculates the square root of the difference between height and width of the bounding box. In the second term, we take the square root of width and height because our loss function should be able to consider the deviation in terms of the size of the bounding box.
-  3. For small bounding boxes, the little deviation should be more important as compared to large bounding boxes. 
-- Classification Loss
-  1. The first term calculates the sum-squared error between the predicted confidence score that whether the object present or not  and the ground truth for each bounding box in each cell.
-  2. Similarly, the second term calculates the mean-squared sum of cells that do not contain any bounding box and a regularization parameter is used to make this loss small.
-  3. The third term calculates the sum-squared error of the classes belongs to these grid cells. 
-
-#### YOLO Detection
-
-At test time we multiply the conditional class probabilities and the individual box confidence predictions. We define our confidence score as follows:
-$$
-\kern 6pc P_{r}\left( \text{Object} \right) * \text{IOU}_{\text{pred}}^{\text{truth}}
-$$
- ![yolo_single_grid_bounding_box_box](res/yolo_single_grid_bounding_box_box.png)
-
-This results in combination of bounding boxes from each grid like this:
-
-![yolo_bounding_box_combination](res/yolo_bounding_box_combination.png)
-
-Each grid also predicts $C$ conditional class probability, $P_r$ ($Class_i$ | Object):
-
-![yolo_conditional_probability_map](res/yolo_conditional_probability_map.png)
-
-This probability were conditional based on the presence of an object in grid cell. Regardless the number of boxes each grid cell predicts only one set of class probabilities. These prediction are encoded in the 3D tensor of size `S * S * (5 * B +C)`.
-
-Now, we multiply the conditional class probabilities and the individual box confidence predictions:
-
-![yolo_output_feature_map](res/yolo_output_feature_map.png)
-
-![yolo_test_result](res/yolo_test_result.png)
-
 ### Single-Shot Detector (SSD)
 
 Object detection involves identifying and locating objects within an image. Traditional methods required multiple passes over the image, making them computationally expensive and slow. SSD simplifies this process by detecting objects in a single pass, hence the name "**Single Shot Detector**." This approach not only speeds up the detection process but also maintains high accuracy, making SSD a popular choice for real-time applications.
 
-#### SSD Model Architecture
+SSD Model Architecture:
 
 - Base Network
 
@@ -1229,23 +1763,17 @@ Object detection involves identifying and locating objects within an image. Trad
 
   Beyond the base network, SSD includes extra convolutional layers. These layers progressively decrease in size and are responsible for detecting objects at different scales. Each additional layer generates feature maps that contribute to the final detection process.
 
-#### SSD Default Boxes (Anchor Boxes)
-
 SSD employs a technique called default boxes (also known as anchor boxes) at each location in the feature maps. These boxes come in various aspect ratios and scales, providing a diverse set of potential object locations. Each default box is associated with two sets of predictions:
 
 - Class Scores: These scores indicate the likelihood of an object belonging to a specific class.
 - Bounding Box Offsets: These offsets refine the default box to better match the actual object's location.
 
-#### SSD Predictions
-
-For each default box, SSD predicts:
+For each default box, **SSD Predicts**:
 
 - Class Confidences: The probability of the box containing a specific object class.
 - Bounding Box Adjustments: The coordinates to refine the position and size of the default box to match the detected object more precisely.
 
-#### SSD Loss Function
-
-The SSD loss function combines two components:
+The **SSD loss function** combines two components:
 
 - Localization Loss (Lloc): This measures how accurately the predicted bounding boxes match the ground truth boxes using Smooth L1 loss.
 - Confidence Loss (Lconf): This evaluates the confidence in the predicted class scores using softmax loss.
@@ -1272,17 +1800,13 @@ R-CNN presents a smarter approach by using a selective search algorithm to gener
 
   Use the extracted features to classify each region using SVMs into object categories (e.g. person, car) or background.
 
-#### R-CNN Region Proposal
-
 ![rcnn_region_proposal](res/rcnn_region_proposal.png)
 
-R-CNNs begin by generating region proposals, which are smaller sections of the image that may contain the objects we are searching for. The algorithm employs a method called selective search, a greedy approach that generates approximately 2,000 region proposals per image. Selective search effectively balances the number of proposals while maintaining high object recall, ensuring efficient object detection.
+R-CNNs begin by generating **region proposals**, which are smaller sections of the image that may contain the objects we are searching for. The algorithm employs a method called selective search, a greedy approach that generates approximately 2,000 region proposals per image. Selective search effectively balances the number of proposals while maintaining high object recall, ensuring efficient object detection.
 
 By limiting the number of regions for detailed analysis, this method enhances the overall performance of the R-CNN in detecting objects within images.
 
-#### R-CNN Selective Search
-
-Selective Search is a greedy algorithm that generates region proposals by combining smaller segmented regions. It takes an image as input and produces region proposals that are crucial for object detection. This method offers significant advantages over random proposal generation by limiting the number of proposals to approximately 2,000 while ensuring high object recall.
+**Selective Search** is a greedy algorithm that generates region proposals by combining smaller segmented regions. It takes an image as input and produces region proposals that are crucial for object detection. This method offers significant advantages over random proposal generation by limiting the number of proposals to approximately 2,000 while ensuring high object recall.
 
 Algorithm Steps:
 
@@ -1290,13 +1814,9 @@ Algorithm Steps:
 2. Combine Similar Regions: It then recursively combines similar bounding boxes into larger ones. Similarities are evaluated based on factors such as color, texture, and region size.
 3. Generate Region Proposals: Finally, these larger bounding boxes are used to create region proposals for object detection.
 
-#### R-CNN Input Preparation
-
 ![rcnn_input_preparation](res/rcnn_input_preparation.png)
 
 After generating the region proposals, these regions are warped into a uniform square shape to match the input dimensions required by the CNN model. In this case, we use the pre-trained AlexNet model, which was considered the state-of-the-art CNN for image classification at the time.
-
-#### R-CNN SVM (Support Vector Machine)
 
 The feature vector generated by the CNN is then utilized by a binary Support Vector Machine (SVM), which is trained independently for each class. This SVM model takes the feature vector produced by the previous CNN architecture and outputs a confidence score indicating the likelihood of an object being present in that region.
 
@@ -1429,83 +1949,11 @@ Mask R-CNN was proposed by Kaiming He et al. in 2017 as an extension of Faster R
 
   The mask R-CNN inference speed is around *2 fps*, which is good considering the addition of a segmentation branch in the architecture.
 
+### Cascade R-CNN
 
+Cascade R-CNN, developed by Zhaowei Cai and Nuno Vasconcelos, is an extension of Faster R-CNN that improves detection performance by using a cascade of R-CNN detectors, each trained with an increasing intersection over union (IoU) threshold. This multi-stage approach refines the predictions progressively, leading to more accurate object detections.
 
-## Image Segmentation
-
-Image Segmentation is a computer vision technique used to divide an image into multiple segments or regions, making it easier to analyze and understand specific parts of the image. It helps identify objects, boundaries and relevant features within an image for further processing.
-
-Various types of image segmentation techniques are:
-
-1. Semantic Segmentation
-
-   ![semantic_segmentation](res/semantic_segmentation.png)
-
-   Semantic Segmentation involves assigning a class label to every pixel in an image based on shared characteristics such as colour, texture and shape.
-
-2. Instance Segmentation
-
-   ![instance_segmentation](res/instance_segmentation.png)
-
-   Instance Segmentation extends semantic segmentation by not only labelling colour of each pixel but also distinguishing between individual objects of the same class.
-
-3. Panoptic Segmentation
-
-   ![panoptic_segmentation](res/panoptic_segmentation.png)
-
-   Panoptic segmentation combines both semantic and instance segmentation techniques providing a complete image analysis.
-
-### U-Net
-
-U-Net is a kind of neural network mainly used for image segmentation which means dividing an image into different parts to identify specific objects for example separating a tumor from healthy tissue in a medical scan. The name “U-Net” comes from the shape of its architecture which looks like the letter “U” when drawn.
-
-#### U-Net Architecture
-
-![unet_arch](res/unet_arch.png)
-
-- Contracting Path (Encoder)
-
-  - Uses small filters (3×3 pixels) to scan the image and find features.
-  - Apply an activation function called ReLU to add non-linearity help the model to learn better.
-  - Uses max pooling (2×2 filters) to shrink the image size while keeping important information. This helps the network focus on bigger features.
-
-- Bottleneck
-
-  The middle of the “U” where the most compressed and abstract information is stored. It links the encoder and decoder.
-
-- Expansive Path (Decoder)
-
-  - Uses upsampling i.e increasing image size to get back the original image size.
-  - Combines information from the encoder using “skip connections.” These connections help the decoder get spatial details that might have been lost when shrinking the image.
-  - Uses convolution layers again to clean up and refine the output.
-
-#### U-Net Workflow
-
-After understanding the architecture, it’s important to see how U-Net actually processes data to perform segmentation:
-
-1. Input Image
-
-   The process starts by feeding a medical or other input image typically grayscale into the network.
-
-2. Feature Extraction (Encoder)
-
-   The encoder extracts increasingly abstract features by applying convolutions and downsampling. At each level the spatial size decreases while the number of feature channels increases and allow the model to capture higher-level patterns.
-
-3. Bottleneck Processing
-
-   This is the middle part of the network where the image is reduced the most. It holds a small but very meaningful version of the image that captures the main features.
-
-4. Reconstruction and Localization (Decoder)
-
-   The decoder begins to reconstruct the original image size through upsampling. At each level it combines decoder features with corresponding encoder features using skip connections to retain fine-grained spatial details.
-
-5. Skip Connections for Precision
-
-   Skip connections help preserve spatial accuracy by bringing forward detailed features from earlier layers. These are especially useful when the model needs to distinguish boundaries in segmentation tasks.
-
-6. Final Prediction
-
-   A 1×1 convolution at the end converts the refined feature maps into the final segmentation map where each pixel is classified into a specific class like foreground or background. This output has the same spatial resolution as the input image.
+---
 
 
 
@@ -1686,6 +2134,8 @@ The Swin Transformer (Shifted Window Transformer) is a type of vision transforme
    - *Stage 3:* The windows are shifted over next layer for overlapping and self-attention is recomputed with shifted windows.
    - *Stage 4:* Hierarchical processing continues combining features to know fine details in each window without losing global context of image.
 
+---
+
 
 
 ## Vision Language Models
@@ -1819,6 +2269,8 @@ BLIP uses three main objectives during pre-training:
 
   Trains the model to generate plausible text from images using an autoregressive approach.
 
+---
+
 
 
 ## Summary
@@ -1902,15 +2354,49 @@ BLIP uses three main objectives during pre-training:
 |      **Applications**       | Ideal for tasks requiring accurate object detection, tracking, and recognition in complex scenes. | Commonly used in applications where a general understanding of the image content is sufficient, such as scene understanding and object classification. |
 |        **Datasets**         | Examples include LiDAR Bonnetal Dataset, HRSID, SSDD, Pascal SBD, iSAID, etc. | Examples include Stanford Background Dataset, Microsoft COCO Dataset, MSRC Dataset, KITTI Dataset, Microsoft AirSim Dataset, etc. |
 
+### Covariance vs Correlation
+
+|                        **Covariance**                        |                       **Correlation**                        |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| Covariance is a measure of how much two random variables vary together | Correlation is a statistical measure that indicates how strongly two variables are related. |
+| Involves the relationship between two variables or data sets | Involves the relationship between multiple variables as wellCorrelation (specifically Pearson correlation) measures the relationship between two variables. |
+|             Lie between -infinity and +infinity              |                    Lie between -1 and +1                     |
+|                    Measure of correlation                    |                 Scaled version of covariance                 |
+|              Provides direction of relationship              |       Provides direction and strength of relationship        |
+|                Dependent on scale of variable                |               Independent on scale of variable               |
+|                       Have dimensions                        |                        Dimensionless                         |
+
+### Linear vs Non-Linear Filter
+
+|         **Parameter**         |               **Linear Filters**                |            **Non-linear filters**             |
+| :---------------------------: | :---------------------------------------------: | :-------------------------------------------: |
+|  **Superposition Principle**  |          Obeys superposition principle          |     Does not obey superposition principle     |
+|        **Homogeneity**        |      Response is proportional to the input      |   Response is not necessarily proportional    |
+|    **Mathematical Basis**     |     Based on linear algebra and convolution     |    Based on complex mathematical functions    |
+| **Frequency Domain Analysis** |     Can be analyzed using Fourier Transform     |  Not easily analyzed using Fourier Transform  |
+|   **Output Predictability**   |   Predictable and straightforward to analyze    |  Less predictable, complex analysis required  |
+|      **Noise Reduction**      |    Moderate noise reduction, can blur edges     | Effective at noise reduction, preserves edges |
+|     **Edge Preservation**     |                 Can blur edges                  |    Excels at preserving or enhancing edges    |
+| **Computational Complexity**  |           Generally lower complexity            |        Higher computational complexity        |
+|     **Adaptive Behavior**     | Static, does not adapt to input characteristics |   Can adapt to local input characteristics    |
+|     **Impulse Response**      |         Defined impulse response (h(t))         |          No defined impulse response          |
+|      **Implementation**       |              Simpler to implement               |           More complex to implement           |
+
+**Linear filters** are signal or image processing filters that implement linear operations, this therefore implies that the result produced by the filter is a linear function of the input values. This means the filter’s response to a weighted sum of the inputs is equal to the weighted sum of the responses of the filter to all inputs. 
+
+**Non-linear filters** can be defined as signal or image processing that does not consist of superposition and homogeneity. This means that what they produce as output is not just a proportionate relation to the input values. These filters apply operations that are functions of the inputs’ values and arrangement, or other more complex mathematical operations and algorithms.
+
+---
+
 
 
 ## Reference
 
-[1] [Computer Vision Tutorial](https://www.geeksforgeeks.org/computer-vision/computer-vision/)
+[1] Richard Szeliski. Computer Vision: Algorithms and Applications. 1ED
 
-[2] [Computer Vision - Introduction](https://www.geeksforgeeks.org/computer-vision/computer-vision-introduction/)
+[2] [Computer Vision Tutorial](https://www.geeksforgeeks.org/computer-vision/computer-vision/)
 
-[3] [What is a Pixel?](https://www.geeksforgeeks.org/computer-graphics/what-is-a-pixel/)
+[3] [Computer Vision - Introduction](https://www.geeksforgeeks.org/computer-vision/computer-vision-introduction/)
 
 [4] [Linear Algebra Operations For Machine Learning](https://www.geeksforgeeks.org/machine-learning/ml-linear-algebra-operations/)
 
@@ -1989,3 +2475,15 @@ BLIP uses three main objectives during pre-training:
 [41] [Image Segmentation: Techniques and Applications](https://www.geeksforgeeks.org/computer-vision/image-segmentation-techniques-and-applications/)
 
 [42] [U-Net Architecture Explained](https://www.geeksforgeeks.org/machine-learning/u-net-architecture-explained/)
+
+[43] [Deconvolution vs Convolutions](https://www.geeksforgeeks.org/computer-vision/deconvolution-vs-convolutions/)
+
+[44] [Covariance and Correlation](https://www.geeksforgeeks.org/data-analysis/mathematics-covariance-and-correlation/)
+
+[45] [Covariance and Correlation](https://www.geeksforgeeks.org/data-analysis/mathematics-covariance-and-correlation/)
+
+[46] [What is the difference between Linear and non-linear filters?](https://www.geeksforgeeks.org/computer-vision/what-is-the-difference-between-linear-and-non-linear-filters/)
+
+[47] [What is Image Compression?](https://www.geeksforgeeks.org/machine-learning/what-is-image-compression/)
+
+[48] [Noise Models in Digital Image Processing](https://www.geeksforgeeks.org/computer-vision/noise-models-in-digital-image-processing/)

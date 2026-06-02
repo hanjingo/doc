@@ -16,6 +16,23 @@ In machine learning, deep learning(DL) focuses on utilizing multilayered neural 
 
 Deep learning algorithms can be applied to unsupervised learning tasks. This is an important benefit because unlabeled data is more abundant than labeled data.
 
+### Mixed Precision
+
+![mixed_precision_training](res/mixed_precision_training.png)
+
+Mixed Precision Training is a deep learning optimization technique that uses both 16-bit (half precision) and 32-bit (single precision) floating point representations during model training. It is designed to reduce memory usage and speed up computation without significantly affecting model accuracy.
+
+Mixed precision combines:
+
+- Float32: for critical operations requiring high accuracy.
+- Float16: for less sensitive operations where precision loss is acceptable.
+
+Benefits:
+
+1. Faster Training: Float16 operations execute faster on GPUs with specialized hardware (like NVIDIA Tensor Cores).
+2. Lower Memory Usage: Reducing variable sizes from 32 bits to 16 bits nearly halves memory usage, enabling larger models or larger batch sizes.
+3. Comparable Accuracy: When used with techniques like loss scaling, models trained with mixed precision perform similarly to full precision models.
+
 ---
 
 
@@ -1843,27 +1860,6 @@ CLIP (Contrastive Language-Image Pre-training) is a neural network that connects
 
 
 
-## Mixed Precision
-
-![mixed_precision_training](res/mixed_precision_training.png)
-
-Mixed Precision Training is a deep learning optimization technique that uses both 16-bit (half precision) and 32-bit (single precision) floating point representations during model training. It is designed to reduce memory usage and speed up computation without significantly affecting model accuracy.
-
-Mixed precision combines:
-
-- Float32: for critical operations requiring high accuracy.
-- Float16: for less sensitive operations where precision loss is acceptable.
-
-Benefits:
-
-1. Faster Training: Float16 operations execute faster on GPUs with specialized hardware (like NVIDIA Tensor Cores).
-2. Lower Memory Usage: Reducing variable sizes from 32 bits to 16 bits nearly halves memory usage, enabling larger models or larger batch sizes.
-3. Comparable Accuracy: When used with techniques like loss scaling, models trained with mixed precision perform similarly to full precision models.
-
----
-
-
-
 ## Perceptron
 
 ### Single Layer Perceptron (SLP)
@@ -2094,7 +2090,7 @@ Softmax function is used for multi-class classification and converts raw output 
 
 
 
-## Training and Evaluation of neural network
+## Training and Evaluation Of Neural Network
 
 ### Weight and Bias
 
