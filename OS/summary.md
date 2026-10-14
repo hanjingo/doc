@@ -131,7 +131,7 @@ Comparison Among Scheduler:
 | Overhead    | Large overhead for creation/destruction and context switch. | Small overhead.                                              | Can save/restore state; switching has almost no overhead. |
 | Concurrency | Processes run independently.                                | Preemptive multitasking; threads need locks; less robust.    | Cooperative multitasking; no locks needed; more robust.   |
 
-### Thread Context Switch vs Process Context Switch
+### Thread Context Switch (TCS) vs Process Context Switch (PCS)
 
 | Thread Context Switch                                        | Process Context Switch                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -146,17 +146,17 @@ Comparison Among Scheduler:
 
 |                        Zombie Process                        |                        Orphan Process                        |                        Daemon Process                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| A zombie is a process that has completed its task but still shows an entry in a process table. | An orphan process is a computer process that continues even after its parent terminates. The init process becomes its parent and continues the remaining task. | A daemon process is a system-related process that always runs in the background. |
-|      Zombie process states are always indicated by "Z"       | An orphan process is often created unintentionally due to a system crash. | A daemon process state indicated by '?' in the TTY column in the output |
-|     A zombie process does not have controlling terminals     |         An Orphan process has controlling terminals.         |    A daemon process does not have controlling terminals.     |
-| A zombie process is treated as dead and is not used for system processing. | An orphan process is a computer process that, even after its parent terminates, init is become a parent and continues the remaining task. | A program that runs for a long time makes them as a daemon process and runs it in the background. |
+| A zombie is a process that has completed its task but still shows an entry in the process table. | An orphan process is a computer process that continues even after its parent terminates. The init process becomes its parent and continues the remaining task. | A daemon process is a system-related process that always runs in the background. |
+|      Zombie process states are always indicated by "Z".      | An orphan process is often created unintentionally due to a system crash. | A daemon process state is indicated by '?' in the TTY column in the output |
+|    A zombie process does not have controlling terminals.     |         An Orphan process has controlling terminals.         |    A daemon process does not have controlling terminals.     |
+| A zombie process is treated as dead and is not used for system processing. | An orphan process is a computer process that, even after its parent terminates, init becomes a parent and continues the remaining task. | A program that runs for a long time is made a daemon process and runs in the background. |
 |   To remove the zombie process, execute the kill command.    |   To terminate the Orphan process, use the SIGHUP signal.    | A daemon process terminates only when the system shuts down. |
 
 ### Dispatcher vs Scheduler
 
 ![os_dispatcher](res/os_dispatcher.png)
 
-*OS Dispather*
+*OS Dispatcher*
 
 ![os_scheduler](res/os_scheduler.png)
 

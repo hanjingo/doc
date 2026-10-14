@@ -111,6 +111,86 @@ When developing a dynamic-programming algorithm, we follow a sequence of four st
 
 
 
+## Longest Increasing Subsequence (LIS) Problem
+
+The `Longest Increasing Subsequence (LIS)` problem asks us to find th elength of the longest subsequence in an array whose elements are strictly increasing. The elements do not need to be contiguous, but their original relative order must be preserved.
+
+### Analysis
+
+Let $dp[i]$ represent the length of the longest strictly increasing subsequence that ends at index $i$. Initially, every element forms a subsequence of length one:
+$$
+dp[i] = 1
+$$
+For each index $i$, examine all previous indices $j < i$.
+
+If $nums[j] < nums[i]$, we can append $nums[i]$ to an increasing subsequence ending at $j$:
+$$
+dp[i] = max(dp[i], dp[j] + 1)
+$$
+The final answer is the maximum value in $dp$, because the longest subsequence can end at any index.
+$$
+LIS = max_{0 \leq i < n} dp[i]
+$$
+Let $n$ be the length of the input array:
+
+- **Time complexity**: $O(n^2)$
+
+  The nested loops examine every pair of indices where $j < i$. There are $n(n - 1) / 2$ such pairs.
+
+- **Space complexity**: $O(n)$
+
+  The $dp$ array stores one value for each input element.
+
+### Example
+
+Given the array:
+
+```c++
+nums = {10, 9, 2, 5, 3, 7, 101, 18};
+```
+
+One longest increasing subsequence is:
+
+```c++
+{2, 3, 7, 18}
+```
+
+the answer is 4.
+
+Implement:
+
+```c++
+
+#include <algorithm>
+#include <vector>
+
+int length_of_lis(const std::vector<int>& nums) {
+    const int n = static_cast<int>(nums.size());
+    if (n == 0) {
+        return 0;
+    }
+
+    std::vector<int> dp(n, 1);
+    int result = 1;
+
+    for (int i = 1; i < n; ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (nums[j] < nums[i]) {
+                dp[i] = std::max(dp[i], dp[j] + 1);
+            }
+        }
+        result = std::max(result, dp[i]);
+    }
+
+    return result;
+}
+
+```
+
+
+
+
+
 ## Summary
 
 ### Advantage And Disadvantage

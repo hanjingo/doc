@@ -179,6 +179,62 @@ int main()
 }
 ```
 
+NOTICE:
+
+- `std::shared_ptr` typically makes its **control block's reference counts thread-safe using atomic operations**.
+
+  When a `shared_ptr` is copied, the **strong reference count is atomically incremented**. When a `shared_ptr` is destroyed or reset, the count is **atomically decremented**. If the decrement reaches zero, the managed object is destroyed. The control block itself is then released when both the strong and weak reference counts reach zero.
+
+  This means multiple `shared_ptr` objects that share the **same control block** can be copied, destroyed, or reset concurrently from different threads without corrupting the reference count.
+
+  ```c++
+  std::shared_ptr<Foo> p = std::make_shared<Foo>();
+  
+  std::thread t1([&](){
+    // Thread 1
+  	auto p1 = p; // ✅
+  })
+  
+  std::thread t2=([&](){
+    // Thread 2
+  	auto p2 = p; // ✅
+  })
+  ```
+
+  The increments of the reference count are synchronized internally.
+
+- `shared_ptr`'s thread safety **does not mean the pointed-to object is thread-safe**.
+
+  ```c++
+  auto p = std::make_shared<int>(0);
+  
+  std::thread t1([&](){
+    // Thread 1
+  	*p = 1; // ❌ Error: data race
+  })
+  
+  std::thread t2=([&](){
+    // Thread 2
+  	*p = 2; // ❌ Error: data race
+  })
+  ```
+
+- Different `shared_ptr` instances sharing the same control block can be operated on concurrently. But concurrently modifying the **same `shared_ptr` object** is not generally safe.
+
+  ```c++
+  std::shared_ptr<Foo> p;
+  
+  std::thread t1([&](){
+    // Thread 1
+  	p = std::make_shared<Foo>();
+  })
+  
+  std::thread t2=([&](){
+    // Thread 2
+  	p.reset();   // ❌ Error: unsafe without synchronization
+  })
+  ```
+
 ### weak_ptr
 
 `std::weak_ptr` is a non-owning observer of an object managed by `shared_ptr`.

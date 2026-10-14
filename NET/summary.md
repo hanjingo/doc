@@ -110,7 +110,9 @@ The link layer is implemented in a `network adapter`, also sometimes known as a 
 
 ### TCP
 
-![tcp_programming](res/tcp_programming.png)
+![tcp_start_end](res/tcp_start_end.png)
+
+*A typical TCP connection establishment and termination. Usually, the client initiates a three-way handshake. During this process, the client and server exchange their initial sequence numbers using SYN segments (including the client's and server's initial sequence numbers). After both sides send a FIN packet and receive the corresponding ACK from the other, the connection is terminated.*
 
 ### UDP
 
@@ -145,6 +147,10 @@ A protocol defines the format and the order of messages exchanged between two or
 TCP: Connection-oriented and reliable. It ensures ordered, duplicate-free delivery with flow and congestion control, making it ideal for web browsing, email, and file transfers.
 
 UDP: Connectionless and lightweight. It sends packets without guarantees of delivery or order, but with minimal overhead. It is perfect for gaming, streaming, and real-time communication.
+
+### TCP Stat Transmit
+
+![tcp_stat](res/tcp_stat.png)
 
 
 

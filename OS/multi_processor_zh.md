@@ -356,7 +356,7 @@
 
 - `控制相关` 主要由转移指令引起，当转移发生时，将使流水线的连续流动收到破坏。
 
-  ![pipeline_condition_move](/usr/local/src/github/hanjingo/doc/OS/res/pipeline_condition_move.png)
+  ![pipeline_condition_move](res/pipeline_condition_move.png)
 
   *条件转移对指令流水操作的影响*
 
@@ -372,7 +372,7 @@
 
 1. 流水线各段执行时间相等时：
 
-   ![through_put_rate_average](/usr/local/src/github/hanjingo/doc/OS/res/through_put_rate_average.jpg)
+   ![through_put_rate_average](res/through_put_rate_average.jpg)
 
    实际吞吐率：$TP = \frac{n}{(k + n - 1)\Delta t}$
 
@@ -406,13 +406,13 @@
 
 1. 将“瓶颈”流水段细分：
 
-   ![through_put_rate_optimize1](/usr/local/src/github/hanjingo/doc/OS/res/through_put_rate_optimize1.jpg)
+   ![through_put_rate_optimize1](res/through_put_rate_optimize1.jpg)
 
    其中的21，22，23为第2个子过程的细分。
 
 2. 将“瓶颈”流水段重复设置：
 
-   ![through_put_rate_optimize2](/usr/local/src/github/hanjingo/doc/OS/res/through_put_rate_optimize2.jpg)
+   ![through_put_rate_optimize2](res/through_put_rate_optimize2.jpg)
 
    其中的s2-1，s2-2，s2-3位重复设置的流水段。
 
@@ -460,7 +460,7 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 
 `普通流水` 一个时钟周期出一个结果。
 
-![pipeline_norm](/usr/local/src/github/hanjingo/doc/OS/res/pipeline_norm.png)
+![pipeline_norm](res/pipeline_norm.png)
 
 *普通流水示意图*
 
@@ -468,7 +468,7 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 
 `超标量（Super Scalar）` 每个时钟周期内可同时并发多条独立指令，即以并行操作方式将两条或两条以上指令编译并执行。
 
-![pipeline_super_scalar](/usr/local/src/github/hanjingo/doc/OS/res/pipeline_super_scalar.png)
+![pipeline_super_scalar](res/pipeline_super_scalar.png)
 
 *超标量流水示意图*
 
@@ -476,7 +476,7 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 
 `超流水线（Super pipe lining）技术` 将一些流水线寄存器插入到流水线段中，好比将流水线再分道。
 
-![pipeline_super](/usr/local/src/github/hanjingo/doc/OS/res/pipeline_super.png)
+![pipeline_super](res/pipeline_super.png)
 
 *超流水线示意图。将原来的一个时钟周期分成三段，使超级流水线的处理器周期比一般流水线的处理器周期短，这样，在原来的时钟周期内，功能部件被使用三次，使流水线以3倍于原来时钟频率的速度运行。*
 
@@ -484,7 +484,7 @@ $E = \frac{kn\Delta t}{k(k + n - 1)\Delta t} = \frac{n}{k + n - 1} = \frac{S_p}{
 
 `超长指令字（VLIW）技术` 采用多条指令在多个处理部件中并行处理的体系结构，在一个时钟周期内能流出多条指令。
 
-![pipeline_vliw](/usr/local/src/github/hanjingo/doc/OS/res/pipeline_vliw.png)
+![pipeline_vliw](res/pipeline_vliw.png)
 
 *超长指令字示意图*
 

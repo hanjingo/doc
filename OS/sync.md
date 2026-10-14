@@ -73,7 +73,7 @@ The function has to satisfy certain conditions to be called as reentrant:
 
 ## Race Condition
 
-![race_condition](/usr/local/src/github/hanjingo/doc/OS/res/race_condition.png)
+![race_condition](res/race_condition.png)
 
 A race condition occurs when two or more processes or threads access and modify the same data at the same time, and the final result depends on the order in which they run.
 
@@ -341,7 +341,7 @@ Unbounded priority inversion occurs when a medium-priority task (M) preempts L w
 
 ## Process Synchronization
 
-![process_sync](/usr/local/src/github/hanjingo/doc/OS/res/process_sync.png)
+![process_sync](res/process_sync.png)
 
 Process Synchronization is the coordination of multiple cooperating processes in a system to ensure controlled access to shared resources, thereby preventing race conditions and other synchronization problems.
 

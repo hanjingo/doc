@@ -70,7 +70,7 @@ Clustered Indexing stores related records together in the same file, reducing se
 
 ### Using Multilevel Indexing
 
-![multilevel_indexing](/usr/local/src/github/hanjingo/doc/DB/res/multilevel_indexing.png)
+![multilevel_indexing](res/multilevel_indexing.png)
 
 The multilevel indexing segregates the main block into various smaller blocks so that the same data can be stored in a single block.
 
@@ -78,13 +78,13 @@ The outer blocks are divided into inner blocks, which in turn point to the data 
 
 ### Using Bitmap Indexing
 
-![bitmap_indexing1](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing1.png)
+![bitmap_indexing1](res/bitmap_indexing1.png)
 
-![bitmap_indexing2](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing2.png)
+![bitmap_indexing2](res/bitmap_indexing2.png)
 
-![bitmap_indexing3](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing3.png)
+![bitmap_indexing3](res/bitmap_indexing3.png)
 
-![bitmap_indexing4](/usr/local/src/github/hanjingo/doc/DB/res/bitmap_indexing4.png)
+![bitmap_indexing4](res/bitmap_indexing4.png)
 
 Bitmap Indexing is a powerful data indexing technique used in Database Management Systems (DBMS) to speed up queries- especially those involving large datasets and columns with only a few unique values (called low-cardinality columns).
 

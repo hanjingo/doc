@@ -61,7 +61,7 @@ Complexity Analysis:
 
 
 
-#### Detecting a cycle in a linked list.
+### Detecting a cycle in a linked list.
 
 ```c++
 struct node

@@ -12,9 +12,10 @@ Each machine has a local hardware clock; clocks differ due to *skew* (instantane
 
 Key properties:
 
-- A hardware clock $H$ is often modeled with a bound on drift $
-ho>0$:
-$$ (1 - \rho)(t' - t) \le H(t') - H(t) \le (1 + \rho)(t' - t). $$
+- A hardware clock $H$ is often modeled with a bound on drift 
+
+  $$ho>0 : (1 - \rho)(t' - t) \le H(t') - H(t) \le (1 + \rho)(t' - t). $$
+
 - A weaker requirement is *monotonicity*: $t' > t \Rightarrow C(t') > C(t)$.
 
 Clock faults include crashes (clock stops) and arbitrary failures (incorrect values).

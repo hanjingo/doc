@@ -505,7 +505,7 @@ For the DFS-based implementation above (adjacency list), each vertex is colored 
 
 Informally, a **minimum spanning tree** of an undirected graph G is a tree formed from graph edges that connects all the vertices of G at the lowest total cost. A minimum spanning tree exists if and only if G is connected.
 
-![minimum_spanning_tree](/usr/local/src/github/hanjingo/doc/ALGO/res/minimum_spanning_tree.png)
+![minimum_spanning_tree](res/minimum_spanning_tree.png)
 
 *graph G and it's mimimum spanning trees*
 
@@ -521,29 +521,29 @@ Algorithm:
 
 Example:
 
-![prim_algo1](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo1.png)
+![prim_algo1](res/prim_algo1.png)
 
-![prim_algo2](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo2.png)
+![prim_algo2](res/prim_algo2.png)
 
-![prim_algo3](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo3.png)
+![prim_algo3](res/prim_algo3.png)
 
-![prim_algo4](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo4.png)
+![prim_algo4](res/prim_algo4.png)
 
-![prim_algo5](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo5.png)
+![prim_algo5](res/prim_algo5.png)
 
-![prim_algo6](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo6.png)
+![prim_algo6](res/prim_algo6.png)
 
-![prim_algo7](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo7.png)
+![prim_algo7](res/prim_algo7.png)
 
-![prim_algo8](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo8.png)
+![prim_algo8](res/prim_algo8.png)
 
-![prim_algo9](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo9.png)
+![prim_algo9](res/prim_algo9.png)
 
-![prim_algo10](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo10.png)
+![prim_algo10](res/prim_algo10.png)
 
-![prim_algo11](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo11.png)
+![prim_algo11](res/prim_algo11.png)
 
-![prim_algo12](/usr/local/src/github/hanjingo/doc/ALGO/res/prim_algo12.png)
+![prim_algo12](res/prim_algo12.png)
 
 Implement:
 
@@ -643,25 +643,25 @@ Algorithm:
 
 Example:
 
-![kruskal_algo1](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo1.png)
+![kruskal_algo1](res/kruskal_algo1.png)
 
-![kruskal_algo2](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo2.png)
+![kruskal_algo2](res/kruskal_algo2.png)
 
-![kruskal_algo3](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo3.png)
+![kruskal_algo3](res/kruskal_algo3.png)
 
-![kruskal_algo4](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo4.png)
+![kruskal_algo4](res/kruskal_algo4.png)
 
-![kruskal_algo5](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo5.png)
+![kruskal_algo5](res/kruskal_algo5.png)
 
-![kruskal_algo6](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo6.png)
+![kruskal_algo6](res/kruskal_algo6.png)
 
-![kruskal_algo7](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo7.png)
+![kruskal_algo7](res/kruskal_algo7.png)
 
-![kruskal_algo8](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo8.png)
+![kruskal_algo8](res/kruskal_algo8.png)
 
-![kruskal_algo9](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo9.png)
+![kruskal_algo9](res/kruskal_algo9.png)
 
-![kruskal_algo10](/usr/local/src/github/hanjingo/doc/ALGO/res/kruskal_algo10.png)
+![kruskal_algo10](res/kruskal_algo10.png)
 
 Implement:
 

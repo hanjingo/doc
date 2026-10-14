@@ -134,15 +134,15 @@ In the EER model, subclasses inherit all attributes and relationships of their s
 
 ### Generalization
 
-![generalization_in_er_model](/usr/local/src/github/hanjingo/doc/DB/res/generalization_in_er_model.png)
+![generalization_in_er_model](res/generalization_in_er_model.png)
 
 ### Specialization
 
-![specialization_in_er_model](/usr/local/src/github/hanjingo/doc/DB/res/specialization_in_er_model.png)
+![specialization_in_er_model](res/specialization_in_er_model.png)
 
 ### Inheritance
 
-![inheritance_in_er_model](/usr/local/src/github/hanjingo/doc/DB/res/inheritance_in_er_model.png)
+![inheritance_in_er_model](res/inheritance_in_er_model.png)
 
 ### Aggregation
 

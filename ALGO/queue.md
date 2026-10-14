@@ -419,6 +419,75 @@ public:
 
 
 
+## Sliding Window Maximum Problem
+
+The Sliding Window Maximum problem asks us to find the maximum element in every contiguous subarray (window) of size $k$.
+
+The optimal solution uses a **monotonic deque**, achieving $O(n)$ time complexity and $O(k)$ auxiliary space complexity.
+
+### Approach
+
+The deque stores indices rather than values because we need to determine when elements fall outside the current window.
+
+For each index `i`, perform three steps:
+
+1. Remove expired indices. Remove indices from the front if they are outside the current window: `deque.front() <= i - k`.
+2. Maintain decreasing order. While the deque is not empty and `nums[deque.back()] <= nums[i]`, remove indices from the back. Those elements can never be the maximum of any future window containing the current element.
+3. Insert and record. Add `i` to the back. Once `i >= k - 1`, the front of the deque identifies the maximum of the current window.
+
+### Implement
+
+```c++
+
+#include <deque>
+#include <vector>
+
+std::vector<int> max_sliding_window(
+    const std::vector<int>& nums,
+    int k
+) {
+    if (k <= 0 || nums.empty() ||
+        static_cast<std::size_t>(k) > nums.size()) {
+        return {};
+    }
+
+    std::deque<int> dq;  // Indices, values decreasing
+    std::vector<int> result;
+    result.reserve(nums.size() - k + 1);
+
+    for (int i = 0; i < static_cast<int>(nums.size()); ++i) {
+        // Remove indices outside the current window.
+        while (!dq.empty() && dq.front() <= i - k) {
+            dq.pop_front();
+        }
+
+        // Remove dominated candidates.
+        while (!dq.empty() && nums[dq.back()] <= nums[i]) {
+            dq.pop_back();
+        }
+
+        dq.push_back(i);
+
+        // The first complete window ends at k - 1.
+        if (i >= k - 1) {
+            result.push_back(nums[dq.front()]);
+        }
+    }
+
+    return result;
+}
+
+```
+
+### Analysis
+
+Let $n$ be the array length and $k$ the window size:
+
+- **Time complexity**: $O(n)$
+- **Auxiliary space**: $O(k)$
+
+
+
 ## Queue in C++ STL
 
 Adapter providing FIFO queue semantics.

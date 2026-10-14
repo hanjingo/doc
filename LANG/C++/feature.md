@@ -681,6 +681,36 @@ Usage:
 
 
 
+## Extern
+
+The extern keyword in C++ is used to declare a global variable or function that can be accessed from any part of the program or from other files included in the program's header. The variables or functions declared with the extern keyword will have a larger scope than normally declared variables. Those variables can be accessed from any part of the program.
+
+Usage:
+
+- Does not allocate memory for a variable or create a function definition.
+- Helps the linker resolve references across multiple source files.
+- Commonly used in multi-file programs to access shared global variables and functions.
+
+### Syntax
+
+- The syntax to declare a variable with the extern keyword in C++ is:
+
+  ```c++
+  extern data_type variable_name
+  ```
+
+- The syntax to declare a function with an extern keyword in C++ is:
+
+  ```c++
+  extern return_data_type function_name() {}
+  ```
+
+[Top](#C++ Features)
+
+---
+
+
+
 ## explicit
 
 In C++, the `explicit` keyword is used for constructors that can be called with one argument. It marks that constructor as explicit rather than implicit.
@@ -2152,6 +2182,152 @@ while(bStop);
 
 
 
+## Calling Conventions
+
+In C/C++ programming, a calling convention is a set of rules that specify how a function will be called. 
+
+The calling Conventions in C/C++ are the guidelines that determine:
+
+- How the arguments are passed onto the stack.
+- Who will clear the stack, caller or callee?
+- What registers will be used and how.
+
+### Caller and Callee
+
+When we call a function, a stack frame is allocated for the function, arguments are passed to the function, and after the function does its work, the allocated stack frame is deallocated and control is passed to the calling function.
+
+The function that calls the subroutine is called the **caller**. The function that gets called (i.e. subroutine) by the caller is called the **callee**. For example:
+
+```c++
+// C++ Program to illustrate the caller and callee
+#include <iostream>
+
+// callee
+void func() { std::cout << "Geeks"; }
+
+// caller
+int main()
+{
+
+    // function call
+    func();
+
+    return 0;
+}
+```
+
+### Syntax
+
+The following syntax shows how to use the calling convention:
+
+```c++
+return_type calling_convention function_name {
+  // statements
+}
+```
+
+Different calling conventions produce different assembly codes. There are many calling conventions for different platforms:
+
+- `__cdecl`
+- `__stdcall`
+- `__fastcall`
+- `__thiscall` (C++ only)
+
+For example:
+
+```c++
+// C++ Program to demonstrate the calling convention
+#include <iostream>
+
+// __cdecl calling convention
+int __cdecl cdeclAdd(int a, int b)
+{
+    int c = a + b;
+    return c;
+}
+
+// __stdcall calling convention
+int __stdcall stdcallAdd(int a, int b)
+{
+    int c = a + b;
+    return c;
+}
+
+// __fastcall calling convention
+int __fastcall fastcallAdd(int a, int b, int c, int d)
+{
+    int e = a + b + c + d;
+    return e;
+}
+
+// __thiscall calling convention
+class Temp {
+public:
+    int __thiscall thiscallAdd(int a, int b)
+    {
+        int c = a + b;
+        return c;
+    }
+};
+
+// driver code
+int main()
+{
+    int result;
+    Temp obj;
+
+    // Function calls and output
+    result = cdeclAdd(1, 2);
+    std::cout << "Result: " << result << std::endl; // 3
+
+    result = stdcallAdd(3, 4);
+    std::cout << "Result: " << result << std::endl; // 7
+
+    result = fastcallAdd(7, 8, 9, 10);
+    std::cout << "Result: " << result << std::endl; // 34
+
+    result = obj.thiscallAdd(5, 6);
+    std::cout << "Result: " << result << std::endl; // 11
+}
+```
+
+### `__cdecl`
+
+The `__cdecl` calling convention is the **default calling convention** in C/C++. In this convention:
+
+1. The arguments are pushed from **Right to Left** (so that the first argument is nearest to the top-of-stack).
+2. Caller cleans the stack.
+3. Creates larger executables than `__stdcall`, because it requires each function call to include stack cleanup code.
+
+### `__stdcall`
+
+This is a **Microsoft-specific** calling convention used by Win32 API functions. In this convention:
+
+1. Arguments are pushed from **Right to Left**.
+2. Callee cleans the stack.
+
+### `__fastcall`
+
+In `__fastcall` calling convention, the arguments are passed to the register if possible:
+
+1. The first two arguments are passed in registers ECX and EDX. The remaining arguments are passed on the stack from Right to Left.
+2. Callee cleans the stack.
+
+### `__thiscall`
+
+The `__thiscall` calling convention is the default calling convention used by methods inside a class. That is why it is only possible in C++ but not in C. In this convention:
+
+1. Arguments are pushed on the stack from **Right to Left**.
+2. The **this** pointer is passed via register ECX, and not on the stack.
+3. Since we pass this pointer as well, we cannot use this calling convention for non-member functions.
+4. Callee cleans the stack.
+
+[Top](#C++ Features)
+
+---
+
+
+
 ## =default and =delete
 
 If you define constructors yourself, the compiler will not generate a default constructor for you automatically. Adding `=default` explicitly restores it.
@@ -2243,3 +2419,4 @@ void Widget::processPointer<void>(void*) = delete;
 
 [27] [Inline Functions in C++](https://www.geeksforgeeks.org/cpp/inline-functions-cpp/)
 
+[28] [Calling Conventions in C/C++](https://www.geeksforgeeks.org/cpp/calling-conventions-in-c-cpp/)

@@ -752,7 +752,7 @@ For more info, see: [AI Summary#](AI/summary.md)
 
 #### What is C++? How is it different from C?
 
-c++ is a general-purpose, object-oriented programming language built as a extension of C. While C focuses on structred programming, C++ adds OOP features like classes, inheritance, poolymorphism, and encapsulation. It also supports function and operator overloading, plus templates, making code more reusable, efficient, and flexible.
+C++ is a general-purpose, object-oriented programming language built as a extension of C. While C focuses on structured programming, C++ adds OOP features like classes, inheritance, polymorphism, and encapsulation. It also supports function and operator overloading, plus templates, making code more reusable, efficient, and flexible.
 
 For more info, see: [C++ Features](LANG/C++/feature.md), [C++ Object Oriented Programming](LANG/C++/oop.md)
 
@@ -876,6 +876,12 @@ A pointer stores the memory address of a variable. Each pointer has a unique mem
 
 For more info, see: [C++ Features#Pointers](LANG/C++/feature.md)
 
+#### Explain the difference between array and pointer?
+
+An array is a collection of elements of the same type stored contiguously in memory, whereas a pointer is a variable that stores an address. The main differences are that an array represents its entire collection of elements, while a pointer is an independent object that can be reassigned. Applying `sizeof` to a built-in array gves the total size of its elements, whereas applying `sizeof` to a pointer gives the size of the pointer itself.
+
+For more info, see: [C++ Features#Pointers](LANG/C++/feature.md)
+
 #### What happens if you return a pointer to a local variable from a function?
 
 The pointer becomes dangling because the variable's lifetime ends when the function exits. Accessing it causes undefined behavior.
@@ -989,6 +995,24 @@ For more info, see: [C++ Features#overload](LANG/C++/feature.md), [C++ Object Or
 `typedef` creates type aliases at the compiler level with proper scope and type safelty, while macros are preprocessor text substitutions that happen before compilation with no type checking. In modern C++, macros should be avoided for type aliasing due to their global scope, lack of type safety, and debugging difficulties.
 
 For more info, see: [C++ Best Practice#Prefer alias declarations (using) to typedefs](LANG/C++/best_practice.md)
+
+#### Explain the difference between `__stdcall` and `__cdecl`?
+
+`__cdecl` and `__stdcall` are calling conventions that define how functions receive arguments and manage the stack. `__cdecl` supports variadic functions, such as functions with a variable number of arguments, while traditional `__stdcall` does not generally support them.
+
+For more info, see: [C++ Features#Calling Conventions](LANG/C++/feature.md)
+
+#### How does a function call work? Which comes first: the return value or the parameters?
+
+The exact behavior depends on the architecture, calling convention, return type, and compiler optimizations. In common x86 calling conventions, arguments are prepared before the call, while the return value is produced at the end and is usually returned through a register.
+
+For more info, see: [C++ Features#Calling Conventions](LANG/C++/feature.md)
+
+#### Explain the usage of extern in C++.
+
+In C++, extern is mainly used to declare variables or functions that are defined in another translation unit. It allows multiple source files to share the same global symbol without defining it multiple times.
+
+For more info, see: [C++ Features#Extern](LANG/C++/feature.md)
 
 ### New Feature
 
@@ -1169,6 +1193,12 @@ It observes the object without contributing to its reference count, thus allowin
 
 For more info, see: [C++ STL#weak_ptr](LANG/C++/stl.md)
 
+#### How does `std::shared_ptr` manage the thread safety of that reference counter during copy and destruction operations?
+
+When a `shared_ptr` is copied, the **strong reference count is atomically incremented**. When a `shared_ptr` is destroyed or reset, the count is **atomically decremented**. If the decrement reaches zero, the managed object is destroyed. The control block itself is then released when both the strong and weak reference counts reach zero. This means multiple `shared_ptr` objects that share the **same control block** can be copied, destroyed, or reset concurrently from different threads without corrupting the reference count.
+
+For more info, see:  [C++ STL#shared_ptr](LANG/C++/stl.md)
+
 #### How do you safely pass a `std::shared_ptr` to a thread?
 
 To safely pass a `std::shared_ptr` to a thread, you should pass it by value. This ensures the new thread gets its own copy, making the shared pointer's reference count management thread-safe and guaranteeing the object's lifetime extends as long as the thread is running.
@@ -1303,6 +1333,23 @@ For more info, see: [C++ Exception#Overflow](LANG/C++/exception.md)
 
 Small integers (`char`, `short`) are promoted to `int` before arithmetic. This can prevent overflow in the smaller type but cause overflow in `int`.
 
+#### Explain what's memory leak?
+
+A memory leak occurs when a program allocates memory but fails to release it when it is no longer needed. As a result, the memory remains allocated and unavailable for reuse by the program, potentially causing increasing memory consumption over time.
+
+For more info, see: [C++ Exception#Memory Leak](LANG/C++/exception.md)
+
+#### How to avoid memory leak?
+
+To avoid memory leaks in C++, I follow several principles:
+
+1. Prefer RAII and standard containers instead of manually allocating memory with `new` and `delete`.
+2. Use smart pointers according to ownership requirements.
+3. Make resource ownership explicit and ensure that resources are released correctly, including when exceptions occur.
+4. Use tools such as AddressSanitizer(Asan) and Valgrind to detect memory leaks and related memory errors during testing.
+
+For more info, see: [C++ Exception#Memory Leak](LANG/C++/exception.md)
+
 ### OOP
 
 #### What is Object Oriented Progamming (OOP)?
@@ -1335,6 +1382,12 @@ For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 Modifiers like signed, unsigned, long, short change the size or sign of basic data types.
 
+#### Explain the memory alignment in C++?
+
+Memory alignment in C++ is the requirement that an object be stored at a memory address that satisfies the alignment requirements of its type.
+
+For more info, see: [C++ Object Oriented Programming#Memory Alignment](LANG/C++/oop.md)
+
 #### What is a friend function?
 
 A friend function (or class) has access to a class's private and protected members. It can be used sparingly to implement symmetric operators or tightly coupled utilities without exposing internals publicly.
@@ -1349,7 +1402,7 @@ For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
 #### What is object slicing in C++? How can you avoid it?
 
-Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members fo the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
+Object slicing occurs when a derived object is copied by value into a base object, losing the derived part. During this process, the extra data members of the derived class are "sliced off" or lost, leaving only the base class's members. We can avoid slicing by: passing by pointer or reference, use smart pointers, use `std::variant`, ...
 
 For more info, see: [C++ Object Oriented Programming](LANG/C++/oop.md)
 
@@ -1394,6 +1447,12 @@ For more info, see: [C++ Object Oriented Programming#Multiple Inheritance](LANG/
 A virtual function is a member function declared with the `virtual` keyword that can be overridden in derived classes. When you call a virtual function through a base class pointer or reference, C++ determines at runtime which function to execute based on the actual object type - not the pointer type. Virtual functions are implemented via a vtable (virtual table) - an array of function pointers, and each object contains a vptr (virtual pointer) to its class's vtable.
 
 For more info, see: [C++ Object Oriented Programming#Virtual functions](LANG/C++/oop.md)
+
+#### How does the presence of virtual functions affect the size of objects of that class?
+
+Virtual functions usually introduce a **vtable pointer (`vptr`)** into each polymorphic subobject. Therefore, multiple inheritance can result in multiple `vptr`s and increase the object size. However, the exact layout is **implementation- and ABI-dependent**; the C++ standard does not mandate a particular memory layout.
+
+For more info, see: [C++ Object Oriented Programming#Object Model](LANG/C++/oop.md)
 
 #### What's the size overhead of a virtual function?
 
@@ -1448,6 +1507,12 @@ For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C
 When a class inherits from two classes that share a common base, virtual inheritance ensures only one copy of the base class exists.
 
 For more info, see: [C++ Object Oriented Programming#Virtual Inheritance](LANG/C++/oop.md)
+
+#### How does virtual inheritance resolve the diamond problem in C++?
+
+Virtual inheritance ensures that a derived class has only one shared instance of a common virtual base class, even if that base is inherited through multiple paths. This solves the classic diamond problem.
+
+For more info, see: [C++ Object Oriented Programming#The Diamond Problem](LANG/C++/oop.md)
 
 #### What's the cost of virtual inheritance?
 
@@ -1758,6 +1823,12 @@ Modern C++ provides a full-fledged standard threading library with: `std::thread
 
 For more info, see: [C++ Concurrency Programming#std::thread](LANG/C++/concurrency.md)
 
+#### Could you explain how `std::async` differs from directly managing `std::thread` objects?
+
+In C++, the main difference is that `std::async` provides a higher-level abstraction for asynchronous execution and result retrieval, while `std::thread` gives you direct control over thread management and lifecycle.
+
+For more info, see: [C++ Concurrency Programming#Asynchronous Execution](LANG/C++/concurrency.md)
+
 #### What's the major challenges when sharing data between threads in C++?
 
 The major challenges when sharing data between threads in C++ include race conditions, data corruption, deadlocks, and performance overhead from synchroniation, all of which can lead to unpredictable behavior and program crashes.
@@ -1804,6 +1875,18 @@ A critical real-world scenario where thread safety is vital in C++ is a financia
 
 For more info, see: [C++ Concurrency Programming#shared_mutex](LANG/C++/concurrency.md)
 
+#### What's the difference between `std::lock_guard`, `std::unique_lock` and `std::scoped_lock`?
+
+`std::lock_guard` is the simplest option. It acquires a mutex when constructed and releases it when destroyed. It cannot be moved, manually unlocked, or used for deferred locking, so it is ideal for simple critical sections.
+
+`std::unique_lock` provides more flexible lock ownership. It supports deferred locking, manual locking and unlocking, try-locking, timed locking when supported by the mutex, and move semantics. It is also commonly used with `std::condition_variable`.
+
+`std::scoped_lock`, introduced in C++17, is designed to lock one or multiple mutexes using RAII. When multiple mutexes are passed, it uses deadlock-avoidance logic to acquire them safely.
+
+In practice, I use `lock_guard` for simple critical sections, `unique_lock` when I need flexible lock management or condition variables, and `scoped_lock` when I need to acquire multiple mutexes simultaneously.
+
+For more info, see: [C++ Concurrency Programming#std::lock_guard vs std::unique_lock vs std::scoped_lock](LANG/C++/concurrency.md)
+
 #### Explain the difference between `std::thread::join` and `std::thread::detach()`
 
 The primary difference is that `std::thread::join()` blocks the calling thread until the spawned thread finishes, which `std::thread::detach()` separates the spawned thread from its `std::thread` object, allowing it to run independently in the background.
@@ -1829,6 +1912,12 @@ For more info, see: [C++ STL](LANG/C++/stl.md)
 #### How is the vector container implemented in STL?
 
 The vector container in C++ STL is a dynamic array that can grow or shrink in size at runtime. It provides random access to elements and stores them in contiguous memory locations, like traditional arrays.
+
+For more info, see: [C++ STL#vector](LANG/C++/stl.md)
+
+#### How does the capacity of `std::vector` grow automatically?
+
+When an insertion exceeds the current capacity, the vector allocates a larger memory block, moves or copies the existing elements into it, constructs the new element, and releases the old storage. The growth factor is implementation-dependent; the C++ standard does not require the capacity to double.
 
 For more info, see: [C++ STL#vector](LANG/C++/stl.md)
 
@@ -1862,11 +1951,35 @@ Allocators define how memory is allocated and deallocated for STL containers. By
 
 For more info, see: [C++ STL](LANG/C++/stl.md)
 
+#### How to use the STL in shared memory?
+
+I would construct the container inside the shared-memory segment and ensure that its allocator allocates elements from that segment. I would also use process-shared synchronization, such as an interprocess mutex, to protect concurrent modifications.
+
+For more info, see: [C++ STL](LANG/C++/stl.md)
+
 #### What happens if you insert a duplicate key in `std::set` or `std::map`? How do you detect insertion success?
 
 `std::set` and `std::map` do not allow duplicate keys. The `insert()` method returns a pair `<iterator, bool>`, where bool indicates success.
 
 For more info, see: [C++ STL](LANG/C++/stl.md)
+
+#### What's the difference between `std::unordered_map` and `std::map`?
+
+`std::map` is typically implemented as a balanced binary search tree, such as a red-black tree. It keeps keys sorted and provides $O(\log n)$ lookup, insertion and deletion. It's useful when I need ordered iteration or range queries. `std::unordered_map` uses a hash table. It provides average $O(1)$ lookup, insertion, and delteion, but it's worst-case complexity is $O(n)$. It does not guarantee any particular iteration order.
+
+For more info, see: [C++ STL#map](LANG/C++/stl.md)
+
+#### How does `std::unordered_map` handle collisions?
+
+In C++, `std::unordered_map` handles hash collisions by using a hash table with buckets. When multiple keys map to the same bucket, the container stores and manages those elements within that bucket and uses key equality to distinguish them.
+
+For more info, see: [C++ STL#map](LANG/C++/stl.md)
+
+#### How does the capacity of `std::unordered_map` grow automatically?
+
+`std::unordered_map` grows automatically through a process called rehashing. It maintains a bucket array, and its load factor is the number of elements divided by the number of buckets. When insertion requires more buckets to satisfy the maximum load factor, the container can allocate a larger bucket array and redistribute the existing elements.
+
+For more info, see: [C++ STL#map](LANG/C++/stl.md)
 
 #### How do you sort a `vector<pair<int, int>>` by second element using STL?
 
@@ -1905,13 +2018,23 @@ TODO
 
 ### Compile & Link
 
+#### Explain the process of turning C++ source code into an executable file?
+
+The process of converting C++ source code into an executable generally consists of four stages: preprocessing, compilation, assembly, and linking.
+
+For more info, see: [Compile & Link](OS/compile_and_link.md)
+
 #### What is token in C++?
 
 A token in C++ is the smallest individual unit of a program that the compiler recognizes. Tokens are the building blocks of C++ source code. The compiler breaks source code into tokens during lexical analysis before parsing.
 
+For more info, see: [Compile & Link](OS/compile_and_link.md)
+
 #### What are the methods of exporting a function from a DLL?
 
 There are two primary methods to export functions from a DLL: using `__declspec(dllexport)` at the function declaration, or using a `.def` (Module Definition File) listing exported functions. `__declspec(dllexport)` is simpler and most common. For importing in client code, use `__declspec(dllimport)`.
+
+For more info, see: [Compile & Link](OS/compile_and_link.md)
 
 
 ---
@@ -2674,6 +2797,14 @@ Using Floyd's Algorithm is the best choice with average time complexity equal to
 
 For more info, see: [Linked List](ALGO/list.md), [Linked List Problems](ALGO/LEET_CODE/linked_list.md)
 
+### Dequeue
+
+#### Could you explain how to solve the "Sliding Window Maximum" problem, and what the time and space complexities are for your approach?
+
+I would solve the Sliding Window Maximum problem using a monotonic deque. The deque stores indices of elements in decreasing order of their values. For each new element, I first remove indices that have fallen outside the current window. Then I remove elements from the back whose values are less than or equal to the current value, because they can no longer be useful maximum candidates. Finally, I insert the current index. The time complexity is $O(n)$, the total space complexity is $O(n)$.
+
+For more info, see: [Queue#Sliding Window Maximum Problem](ALGO/queue.md)
+
 ### Binary Tree
 
 #### Checks if a binary tree is balanced using a recursive approach.
@@ -2742,6 +2873,12 @@ Using dynamic programming to fix this problem is **NOT RECOMMEND**, it's the wor
 
 For more info, see: [Dynamic Programming](ALGO/LEET_CODE/dynamic_programming.md)
 
+#### Could you explain how to solve the "Longest Increasing Subsequence" problem using dynamic programming. and what its time and space complexities are?
+
+I define `dp[i]` as the length of the longest strictly increasing subsequence ending at index `i`. Each element can form a subsequence of length one, so I initialize every `dp[i]` to one. Then, for each index `i`, I examine every previous index `j`. If `nums[j] < nums[i]`, I can extend the subsequence ending at `j`, so the transition is `dp[i] = max(dp[i], dp[j] + 1)`. The final answer is the maximum value in the DP array. The time complexity is $O(n^2)$, space complexity is $O(n)$.
+
+For more info, see: [Dynamic Programming Algorithm#Longest Increasing Subsequence (LIS) Problem](ALGO/dynamic_programming.md)
+
 ### Greedy Algorithm
 
 #### What is a greedy algorithm?
@@ -2795,6 +2932,14 @@ For more info, see: [Search Algorithm Summary](ALGO/search.md), [Divide and Conq
 We use the two positions (left, right) divide the array continuously, until array's size equal to 2; then sorted it.
 
 For more info, see: [Search Algorithm Summary](ALGO/search.md), [Divide and Conquer Algorithm](ALGO/LEET_CODE/divide_and_conquer.md)
+
+### LRU
+
+#### Can you explain how you would implement an LRU cache.
+
+I would implement an LRU cache using a doubly linked list and an unordered map. The linked list maintains entries in recency order, with the least recently used entry at the front and the most recently used entry at the back. The unordered map maps each key to its corresponding list iterator, allowing constant-time average lookup.
+
+For more info, see: [LRU Algorithm#Implementation](ALGO/lru.md)
 
 ### Backtracking Algorithm
 
@@ -3587,6 +3732,14 @@ For more info, see: [Message Queues#Why is Kafka Fast](SYSTEM_DESIGN/mq.md)
 Kafka is a distributed streaming platform, RabbitMQ is a versatile message broker, and ActiveMQ is a traditional enterprise-grade broker.
 
 For more info, see: [Message Queues#RabbitMQ vs Apache Kafka vs ActiveMQ](SYSTEM_DESIGN/mq.md)
+
+### Availability
+
+#### How would you redesign the system to eliminate single point of failure (SPOF)?
+
+My goal would not simply be to add redundant servers, but to ensure that the system can detect failures, fail over safely, preserve data integrity, and recover automatically within the required service-level objectives.
+
+For more info, see: [System Metrics#Availability](SYSTEM_DESIGN/system_metrics.md)
 
 ### Consistency
 

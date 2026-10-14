@@ -129,7 +129,9 @@ Thread identifiers are of type `std::thread::id`, and can be obtained in two way
 
 
 
-## std::mutex
+## STL Locking
+
+### `std::mutex`
 
 `std::mutex` is used to protect shared data in multithreaded scenarios.
 
@@ -146,9 +148,27 @@ void f()
 }
 ```
 
-### RAII Mechanism
+### `std::lock_guard`
 
 `std::lock_guard` is an RAII-based mutex wrapper. By creating a `lock_guard` object in a scope, the mutex is automatically released when leaving the scope, preventing issues from forgetting to unlock.
+
+Features:
+
+- Simplicity: lock_guard is very simple to use with minimal overhead.
+- RAII(Resource Acquisition Is Initialization): ensures that mutex is released when the lock_guard goes out of scope.
+- No Unlocking: does not support manual unlocking before the end of its scope.
+
+Syntax:
+
+```c++
+std::lock_guard<std::mutex> lock(mtx);
+```
+
+Usage:
+
+- It is used when you need simple lock that automatically unlocks when the scope ends.
+- The locking operation is straightforward and does not require unlocking before scope ends.
+- You prioritize minimal overhead and simplicity.
 
 Example:
 
@@ -163,6 +183,71 @@ void f()
 ```
 
 **Note: `std::lock_guard` is not copyable.**
+
+### `std::unique_lock`
+
+`std::unique_lock` is a flexible mutex wrapper that supports manual locking and unlocking, deferred locking, timed locking, and ownership transfer. It is suitable for scenarios where greater control over mutex management is required.
+
+Features:
+
+- Flexibility: Can lock and unlock multiple times within its scope.
+- Timed Locking: Supports times and try-locking operations.
+- Ownership Transfer: It allows transferring mutex ownership to another unique_lock.
+
+Syntax:
+
+```c++
+std::unique_lock<std::mutex> lock(mtx);
+std::unique_lock<std::mutex> lock(mtx, std::defer_lock);
+```
+
+Usage:
+
+- We need to defer locking or conditionally lock a mutex.
+- We require timed locking to prevent blocking indefinitely.
+- We need to transfer lock ownership between different scopes or threads.
+
+Example:
+
+```c++
+#include <mutex>
+
+std::mutex mu;
+void f() 
+{ 
+  std::unique_lock<std::mutex> locker(mu, std::defer_lock); 
+  locker.lock();
+  ...
+  locker.unlock();
+}
+```
+
+### `std::scoped_lock`
+
+The class `std::scoped_lock` is a mutex wrapper that provides a convenient RAII-style mechanism for owning zero or more mutexes for the duration of a scoped block.
+
+Syntax:
+
+```c++
+std::scoped_lock locker(mtx1, ...);
+```
+
+Usage:
+
+- When you need to acquire multiple mutexes together while avoiding common lock-order deadlocks.
+
+For Example:
+
+```c++
+#include <mutex>
+
+std::mutex mu_a;
+std::mutex mu_b;
+void f()
+{
+  std::scoped_lock locker(mu_a, mu_b);
+}
+```
 
 ### How to Avoid Deadlocks
 
@@ -1528,6 +1613,32 @@ TODO
 	- $P$: performance
 	- $f_s$: "serial portion"
 	- $N$: number of processors
+
+### std::async vs std::thread
+
+| Feature             | std::async                                                   | std::thread                                                 |
+| ------------------- | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| Abstraction         | Task-based concurrency.                                      | Thread-based concurrency.                                   |
+| Return value        | Returns a `std::future` for retrieving results.              | Requires manual synchronization or promises.                |
+| Exception handling  | Exceptions are propagated through `future::get()`.           | Uncaught exceptions in a thread call `std::terminate().`    |
+| Execution policy    | Supports `std::launch::async` and `std::launch::defered`.    | Starts a new thread when constructed.                       |
+| Lifecycle           | Managed through the associated shared state and future semantics. | Must explicitly `join()` or `detach()`.                     |
+| Resource management | Less boilerplate.                                            | More control, but more responsibility.                      |
+| Thread control      | Limited direct control.                                      | More flexibility over thread lifecycle and synchronization. |
+
+`std::async` is task-oriented. It executes a callable according to its launch policy and returns a `std::future`, which lets me retrieve the result and propagate exceptions through `get()`. However, its default launch policy may defer execution, and it does not guarantee thread-pool reuse.
+
+### std::lock_guard vs std::unique_lock vs std::scoped_lock
+
+| Feature                             | `std::lock_guard` | `std::unique_lock` | `std::scoped_lock`            |
+| ----------------------------------- | ----------------- | ------------------ | ----------------------------- |
+| **Introduced**                      | C++11             | C++11              | C++17                         |
+| **Multiple Mutexes**                | No                | Manual only        | Yes (with deadlock avoidance) |
+| **Manual Unlock / Relock**          | No                | Yes                | No                            |
+| **Deferred / Timed Lock**           | No                | Yes                | No                            |
+| **Movable / Transferable**          | No                | Yes                | No                            |
+| **Works with `condition_variable`** | No                | Yes                | No                            |
+
 
 
 

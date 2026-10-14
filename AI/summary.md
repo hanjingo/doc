@@ -280,13 +280,13 @@ A *Constraint Satisfaction Problem* is a mathematical problem where the solution
 
 ### Framework
 
-![agent_framework](/usr/local/src/github/hanjingo/doc/AI/res/agent_framework.jpg)
+![agent_framework](res/agent_framework.jpg)
 
 ![rag_tech_stack](res/rag_tech_stack.jpg)
 
 #### LangChain
 
-![lang_chain_components](/usr/local/src/github/hanjingo/doc/AI/res/lang_chain_components.png)
+![lang_chain_components](res/lang_chain_components.png)
 
 [LangChain](https://github.com/langchain-ai/langchain) is a framework for building agents and LLM-powered applications. It helps you chain together interoperable components and third-party integrations to simplify AI application development — all while future-proofing decisions as the underlying technology evolves.
 
@@ -298,7 +298,7 @@ LangChain enables Retrieval-Augmented Generation (RAG) by combining document pro
 
 LangGraph is an open-source framework from [RAG#LangChain](rag.md) designed to build and manage AI agent workflows using graph-based structures. It allows developers to define workflows as nodes and edges, making complex agent interactions more structured, scalable, and easier to control.
 
-![lang_graph_workflow](/usr/local/src/github/hanjingo/doc/AI/res/lang_graph_workflow.png)
+![lang_graph_workflow](res/lang_graph_workflow.png)
 
 1. Start
 
@@ -338,7 +338,7 @@ As the name suggests, CrewAI is all about teamwork. It orchestrates teams of AI 
 
 #### LlamaIndex
 
-![llama_index_workflow](/usr/local/src/github/hanjingo/doc/AI/res/llama_index_workflow.png)
+![llama_index_workflow](res/llama_index_workflow.png)
 
 [LlamaIndex](https://github.com/run-llama/llama_index) is an open-source framework that helps connect private and domain-specific data with large language models to build context-aware AI applications. It simplifies data ingestion, indexing and querying for better and more efficient outputs.
 
@@ -348,11 +348,11 @@ Semantic Kernel connects AI services (OpenAI, Calude, Hugging Face models, etc) 
 
 ### Libraries
 
-![nlp_python_lib](/usr/local/src/github/hanjingo/doc/AI/res/nlp_python_lib.png)
+![nlp_python_lib](res/nlp_python_lib.png)
 
 #### NLTK
 
-![nltk](/usr/local/src/github/hanjingo/doc/AI/res/nltk.png)
+![nltk](res/nltk.png)
 
 Natural Language Processing (NLP) plays an important role in enabling machines to understand and generate human language. Natural Language Toolkit (NLTK) stands out as one of the most widely used libraries. It provides a combination of linguistic resources, including text processing libraries and pre-trained models, which makes it ideal for both academic research and practical applications.
 
@@ -366,7 +366,7 @@ The [Unstructured](https://docs.unstructured.io/open-source/introduction/overvie
 
 Kubeflow is an open-source machine learning toolkit built on top of Kubernetes. It is utilized for coordinating, delivering, and operating machine learning workloads. By making the deployment procedure straightforward, adaptable, and scalable, it makes machine learning workload deployment simple. Kubeflow can run in a Kubernetes cluster on-premises or the cloud.
 
-![mlflow](/usr/local/src/github/hanjingo/doc/AI/res/mlflow.png)
+![mlflow](res/mlflow.png)
 
 MLflow is an open-source platform designed to manage and streamline the entire machine learning lifecycle. It provides a set of tools for tracking experiments, packaging models and deploying them, making it easier to manage the various stages of ML workflows. Whether we are a data scientist, ML engineer or DevOps engineer, MLflow offers a robust solution to track our experiments and manage models throughout their lifecycle.
 
@@ -374,7 +374,7 @@ MLflow is an open-source platform designed to manage and streamline the entire m
 
 YOLO was proposed by Joseph Redmond et al. in 2015 to deal with the problems faced by the object recognition models at that time, Fast R-CNN was one of the models at that time but it had its own challenges such as that network could not be used in real-time because it took 2-3 seconds to predict an image and therefore could not be used in real-time. Whereas in YOLO we have to look only once in the network i.e. only one forward pass is required through the network to make the final predictions.  
 
-![yolo_arch](/usr/local/src/github/hanjingo/doc/AI/res/yolo_arch.png)
+![yolo_arch](res/yolo_arch.png)
 
 - Input Preprocessing
 
@@ -453,21 +453,21 @@ At test time we multiply the conditional class probabilities and the individual 
 $$
 \kern 6pc P_{r}\left( \text{Object} \right) * \text{IOU}_{\text{pred}}^{\text{truth}}
 $$
- ![yolo_single_grid_bounding_box_box](/usr/local/src/github/hanjingo/doc/AI/res/yolo_single_grid_bounding_box_box.png)
+ ![yolo_single_grid_bounding_box_box](res/yolo_single_grid_bounding_box_box.png)
 
 This results in combination of bounding boxes from each grid like this:
 
-![yolo_bounding_box_combination](/usr/local/src/github/hanjingo/doc/AI/res/yolo_bounding_box_combination.png)
+![yolo_bounding_box_combination](res/yolo_bounding_box_combination.png)
 
 Each grid also predicts $C$ conditional class probability, $P_r$ ($Class_i$ | Object):
 
-![yolo_conditional_probability_map](/usr/local/src/github/hanjingo/doc/AI/res/yolo_conditional_probability_map.png)
+![yolo_conditional_probability_map](res/yolo_conditional_probability_map.png)
 
 This probability were conditional based on the presence of an object in grid cell. Regardless the number of boxes each grid cell predicts only one set of class probabilities. These prediction are encoded in the 3D tensor of size `S * S * (5 * B +C)`.
 
 Now, we multiply the conditional class probabilities and the individual box confidence predictions:
 
-![yolo_output_feature_map](/usr/local/src/github/hanjingo/doc/AI/res/yolo_output_feature_map.png)
+![yolo_output_feature_map](res/yolo_output_feature_map.png)
 
 ![yolo_test_result](res/yolo_test_result.png)
 
@@ -605,7 +605,7 @@ RAG (Retrieval-Augmented Generation) is about what the model knows at runtime. T
 
 ### MCP vs A2A Protocol
 
-![mcp_vs_a2a_protocol](/usr/local/src/github/hanjingo/doc/AI/res/mcp_vs_a2a_protocol.png)
+![mcp_vs_a2a_protocol](res/mcp_vs_a2a_protocol.png)
 
 Google’s Agent-to-Agent (A2A) Protocol enables AI agents to communicate and collaborate, allowing them to delegate tasks, share results, and enhance each other’s capabilities.
 

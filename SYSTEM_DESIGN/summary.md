@@ -200,14 +200,14 @@ Software Cost Estimation is a systematic process used to forecast the amount of 
 
 9. Logging
 
-### High Level Design vs Low Level Design
+### High-Level Design vs Low-Level Design
 
 ![hld_vs_lld](res/hld_vs_lld.png)
 
 |                    **HIGH-LEVEL DESIGN**                     |                     **LOW-LEVEL DESIGN**                     |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| High Level Design is the general system design means it refers to the overall system design. | Low Level Design is like detailing HLD means it refers to component-level design process. |
-|          High Level Design in short called as HLD.           |           Low Level Design in short called as LLD.           |
+| High-level design is the general system design; it refers to the overall system design. | Low-level design is like detailing HLD means it refers to component-level design process. |
+|             High Level Design in short for HLD.              |           Low-level design is also called as LLD.            |
 |        It is also known as macro level/system design.        |       It is also known as micro level/detailed design.       |
 | Furthermore, it describes the overall description/architecture of the application. | It describes detailed description of each and every module.  |
 | High Level Design expresses the brief functionality of each module. | Low Level Design expresses details of functional logic of the module. |

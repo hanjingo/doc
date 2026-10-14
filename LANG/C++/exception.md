@@ -296,6 +296,116 @@ void func2(int b) noexcept(false) {}
 
 
 
+## Memory Leak
+
+A memory leak happens when a program dynamically allocates memory (usually using `new`, `malloc`, or similar functions) but doesn't properly release it using `delete` or `free` once the memory is no longer needed. As a result, the program consumes memory without releasing it, which can eventually exhaust the available memory and lead to system slowdowns or crashes.
+
+### Cause of memory Leaks
+
+The cause of memory leaks:
+
+1. Improper Memory Deallocation:
+
+   One of the most common causes of memory leaks is forgetting to free the dynamically allocated memory using `delete` or `free`. For example:
+
+   ```c++
+   int* p = new int(5);
+   // memory allocated but not release
+   ```
+
+2. Losing the Pointer to Allocated Memory:
+
+   If you lose the reference to dynamically allocated memory before deallocating it, the memory will still be allocated but becomes inaccessible. This leads to a memory leak. For example:
+
+   ```c++
+   int* p = new int(5);
+   p = nullptr; // Pointer is reassigned, original memory is lost!
+   ```
+
+3. Memory Leaks in Exception Handling:
+
+   If an exception is thrown between memory allocation and deallocation, memory leaks can occur. For example:
+
+   ```c++
+   int* p = new int(5);
+   throw std::runtime_error("Error!"); // Memory allocated is not freed
+   ```
+
+4. Circular References with Smart Pointers:
+
+   Although smart pointers helps manage memory, they can lead to leaks if two or more objects hold circular references to each other. For example:
+
+   ```c++
+   std::shared_ptr<Node> nodeA = std::make_shared<Node>();
+   std::shared_ptr<Node> nodeB = std::make_shared<Node>();
+   nodeA->next = nodeB; 
+   nodeB->next = nodeA; // Circular reference causing memory leak
+   ```
+
+### Avoid Memory Leaks
+
+Avoid Memory Leaks by using:
+
+1. Smart Pointers
+
+   The most effective ways to avoid manual memory management errors is by using smart pointers(`std::unique_ptr`, `std::shared_ptr`, ...), automatically handle memory allocation and deallocation. For example:
+
+   ```c++
+   std::unique_ptr<int> ptr = std::make_unique<int>(5);
+   ```
+
+   **NOTICE**: Avoid circula reference in smart pointers. When using `std::shared_ptr`, the circular references can be avoided by using `std::weak_ptr`. For example:
+
+   ```c++
+   std::shared_ptr<Node> node_a = std::make_shared<Node>();
+   std::weak_ptr<Node> node_b = node_a; // use weak_ptr to prevent circular reference
+   ```
+
+2. Resource Acquisition Is Initialization (RAII)
+
+   RAII pattern ensures that resources like memory are tied to object lifetimes, meaning that they are automatically released when the object goes out of scope. For example:
+
+   ```c++
+   class Deleter {
+     public:
+     	Deleter(int* data) : ptr{data} {}
+     	~Deleter() { delete ptr; }
+     
+     private:
+     	int* ptr;
+   }
+   ```
+
+3. Avoid Manual Memory Management
+
+   When possible, avoid manually allocating and deallocating memory. Instead, use containers like `std::vector`, `std::string`, and other STL containers that manage memory automatically.
+
+4. Proper Exception Handling
+
+   Ensure that exceptions do not bypass memory deallocation. Using RAII or smart pointers can help prevent leaks due to exceptions.
+
+### Detect Memory Leaks
+
+There are several tools to detect memory leaks in C++ programs. Include:
+
+1. Valgrind
+
+   ```sh
+   valgrind --leak-check=full ./your_program
+   ```
+
+2. AddressSanitizer (ASan)
+
+   ```sh
+   g++ -fsanitize=address -g your_program.cpp -o your_program
+   ```
+
+---
+
+
+
 ## Reference
 
 [1] [Exception Handling in C++](https://www.geeksforgeeks.org/cpp/exception-handling-c/)
+
+[2] [Memory Leaks in C++ Causes, Tools & How to Avoid Them](https://simplifycpp.org/articles/a0343/memory-leaks-in-cpp-causes-tools-how-to-avoid-them/)

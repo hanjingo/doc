@@ -1,6 +1,6 @@
 English | [中文版](oop_zh.md)
 
-# C++ Object Oriented Programming
+# C++ Object-Oriented Programming
 
 [TOC]
 
@@ -353,7 +353,7 @@ int minval = (__min_lv_minval_00 = val1 < val2 ? val1 : val2),
 
 ### Object Space Size
 
-The memory size of a `class object` is calculated by the formula: $N + P + V$
+The memory size of a C++ `class object` is calculated by the formula: $N + P + V$
 
 - $N$: size of `nonstatic data members`;
 - $P$: space filled due to memory alignment (adjusting values to multiples of certain numbers; on 32-bit computers, alignment is usually 4 bytes (32 bits) to maximize bus "transportation" efficiency);
@@ -425,7 +425,115 @@ When EBCO works:
 
 ### Memory Alignment
 
-TODO
+Memory alignment in C++ is the requirement that an object be stored at a meory address that satisfies the alginment requirements of its type.
+
+Alignment is important because some processors handle aligned memory accesses more efficiently, and misaligned access can be invalid on certain architectures.
+
+#### Data Alignment in Memory
+
+Every data type has a natural alighment requirement that depends on the processor architecture. For example, on most systems:
+
+| Data Type | Typical Alignment (byte) |
+| --------- | ------------------------ |
+| char      | 1                        |
+| short     | 2                        |
+| int       | 4                        |
+| float     | 4                        |
+| double    | 8                        |
+
+A CPU doesn't read memory one byte at a time. Instead, it pulls data in fixed-size chunks called cache lines. A common cache line size is 64 bytes. When your data is aligned, an entire data type, like a 4-byte integer or an 8-byte struct, fits neatly within a single cache line. The CPU can fetch it with just one memory access.
+
+When a variable is stored at its natural alignment boundary, the processor can usually access it in fewer memory operations, improving performance.
+
+![mem_align](res/mem_align.png)
+
+![mem_misalign](res/mem_misalign.png)
+
+#### Structure Padding
+
+Structure padding is the process of inserting unused bytes between memebers or at the end of a structure to satisfy alignment requirement.
+
+Without padding, some members would begin at misaligned addresses, reducing memory access efficiency. For example:
+
+```c++
+// Alignment requirements
+// (typical 32 bit machine)
+
+// char         1 byte
+// short int    2 bytes
+// int          4 bytes
+// double       8 bytes
+
+typedef struct tag
+{
+  char c; // 1
+  // auto padding 1
+  short int s; // 2
+} tag_a; // 1 + 1(padding) + 2= 4
+
+typedef struct tag 
+{
+  short int s; // 2
+  char c; // 1
+  // auto padding 1
+  int i; // 4
+} tag_b; // 2 + 1 + 1(padding) + 4 = 8
+
+typedef struct tag 
+{
+  char c; // 1
+  // auto padding 7
+  double d; // 8
+  int s; // 4
+  // auto padding 4
+} tag_c; // 1 + 7(padding) + 8 + 4 + 4(padding) = 24
+
+typedef struct tag
+{
+  double d; // 8
+  int s; // 4
+  char c; // 1
+  // auto padding 3
+} tag_d; // 8 + 4 + 1 + 3(padding) = 16
+```
+
+Padding cannot always be avoided, but it can often be minimized by arranging structure members by:
+
+- Place larger data types before smaller ones.
+- Group members with similar sizes together.
+- Avoid placing small members between larger members.
+
+#### Structure Packing
+
+Structure packing removes the padding bytes inserted by the compiler.
+
+The compilers implement structure packing by using:
+
+```c++
+// MSVC
+#pragma pack(push, 1)
+struct Data {
+    char   a;
+    int    b;
+    short  c;
+};
+#pragma pack(pop)
+
+// GCC/CLANG
+#pragma pack(push, 1)
+struct Data {
+    char   a;
+    int    b;
+    short  c;
+};
+#pragma pack(pop)
+// or
+struct __attribute__((packed)) Data {
+    char   a;
+    int    b;
+    short  c;
+};
+```
 
 ### Notice
 
@@ -494,8 +602,8 @@ Bear &rb = *pb;
 
 ### new and delete Operators
 
-1. The process of the new operator is: first allocate memory, then call the constructor (built-in types are directly assigned). (If memory allocation fails, the memory still needs to be released.)
-2. The process of the delete operator is: first call the destructor (built-in types do not have this step), then release memory.
+1. **The process of the new operator is**: first allocate memory, then call the constructor (built-in types are directly assigned). (If memory allocation fails, the memory still needs to be released.)
+2. **The process of the delete operator is**: first call the destructor (built-in types do not have this step), then release memory.
 
 Example, new operation:
 
@@ -700,7 +808,7 @@ The following cases must use a member initialization list (initialization list):
 
 ### Destructor
 
-A destructor is a special member function, prefixed wiht `~`, thsi is automatically called when an object goes out of scope or is destroyed to free resources like memory, files, or connections.
+A destructor is a special member function, prefixed wiht `~`, this is automatically called when an object goes out of scope or is destroyed to free resources like memory, files, or connections.
 
 Destructors are automatically present in every C++ class but we can also redefine them using the following syntax:
 
@@ -1062,10 +1170,10 @@ Derived d;
 d.value; // ❌ ERROR: Ambiguous
 d.function(); // ❌ ERROR: Ambiguous
 
-d.Left::value;   // OK - access Left's Base
-d.Right::value;  // OK - access Right's Base
-d.Left::function();   // OK
-d.Right::function();  // OK
+d.Left::value;   // ✅ OK - access Left's Base
+d.Right::value;  // ✅ OK - access Right's Base
+d.Left::function();   // ✅ OK
+d.Right::function();  // ✅ OK
 ```
 
 **The Solution**:
@@ -1098,10 +1206,10 @@ d.Right::function();  // OK
    d.value; // ✅
    d.function(); // ✅
    
-   d.Left::value;   // OK - access Left's Base
-   d.Right::value;  // OK - access Right's Base
-   d.Left::function();   // OK
-   d.Right::function();  // OK
+   d.Left::value;   // ✅ OK - access Left's Base
+   d.Right::value;  // ✅ OK - access Right's Base
+   d.Left::function();   // ✅ OK
+   d.Right::function();  // ✅ OK
    ```
 
 
@@ -1130,9 +1238,9 @@ Usage:
 
 Avoid virtual inheritance when:
 
-1. No diamond exists (unnecessary overhead)
-2. Performance critical (virtual inheritance adds overhead)
-3. You can use composition istead
+1. No diamond exists (unnecessary overhead).
+2. Performance critical (virtual inheritance adds overhead).
+3. You can use composition istead.
 
 Summary:
 
@@ -2206,3 +2314,5 @@ TODO
 [9] [Constructors in C++](https://www.geeksforgeeks.org/cpp/constructors-c/)
 
 [10] [Use of explicit keyword in C++](https://www.geeksforgeeks.org/cpp/use-of-explicit-keyword-in-cpp/)
+
+[11] [Structure Member Alignment, Padding and Data Packing](https://www.geeksforgeeks.org/c/structure-member-alignment-padding-and-data-packing/)
